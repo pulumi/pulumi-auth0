@@ -59,10 +59,10 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying the prompt and language separated by ":". # Example
+    /// This resource can be imported by specifying the prompt and language separated by "::" (note the double colon) &lt;prompt&gt;::&lt;language&gt; # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/promptCustomText:PromptCustomText example login:en
+    ///  $ pulumi import auth0:index/promptCustomText:PromptCustomText example "login::en"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/promptCustomText:PromptCustomText")]
@@ -75,7 +75,7 @@ namespace Pulumi.Auth0
         public Output<string> Body { get; private set; } = null!;
 
         /// <summary>
-        /// Language of the custom text. Options include: `ar`, `bg`, `bs`, `cs`, `da`, `de`, `el`, `en`, `es`, `et`, `fi`, `fr`, `fr-CA`, `fr-FR`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
+        /// Language of the custom text. Options include: `ar`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `eu-ES`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
         /// </summary>
         [Output("language")]
         public Output<string> Language { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.Auth0
         public Input<string> Body { get; set; } = null!;
 
         /// <summary>
-        /// Language of the custom text. Options include: `ar`, `bg`, `bs`, `cs`, `da`, `de`, `el`, `en`, `es`, `et`, `fi`, `fr`, `fr-CA`, `fr-FR`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
+        /// Language of the custom text. Options include: `ar`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `eu-ES`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
         /// </summary>
         [Input("language", required: true)]
         public Input<string> Language { get; set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.Auth0
         public Input<string>? Body { get; set; }
 
         /// <summary>
-        /// Language of the custom text. Options include: `ar`, `bg`, `bs`, `cs`, `da`, `de`, `el`, `en`, `es`, `et`, `fi`, `fr`, `fr-CA`, `fr-FR`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
+        /// Language of the custom text. Options include: `ar`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `eu-ES`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }

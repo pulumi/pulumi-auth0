@@ -35,21 +35,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
-     * 
-     */
-    @Import(name="enabledClients")
-    private @Nullable Output<List<String>> enabledClients;
-
-    /**
-     * @return IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
-     * 
-     */
-    public Optional<Output<List<String>>> enabledClients() {
-        return Optional.ofNullable(this.enabledClients);
-    }
-
-    /**
      * Indicates whether the connection is domain level.
      * 
      */
@@ -158,7 +143,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
     private ConnectionState(ConnectionState $) {
         this.displayName = $.displayName;
-        this.enabledClients = $.enabledClients;
         this.isDomainConnection = $.isDomainConnection;
         this.metadata = $.metadata;
         this.name = $.name;
@@ -205,37 +189,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
-        }
-
-        /**
-         * @param enabledClients IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enabledClients(@Nullable Output<List<String>> enabledClients) {
-            $.enabledClients = enabledClients;
-            return this;
-        }
-
-        /**
-         * @param enabledClients IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enabledClients(List<String> enabledClients) {
-            return enabledClients(Output.of(enabledClients));
-        }
-
-        /**
-         * @param enabledClients IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enabledClients(String... enabledClients) {
-            return enabledClients(List.of(enabledClients));
         }
 
         /**

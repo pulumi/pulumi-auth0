@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -28,7 +28,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -61,11 +61,11 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by specifying the trigger and action ID separated by "::". # Example
+// This resource can be imported by specifying the trigger and action ID separated by "::" (note the double colon) <trigger>::<actionID> # Example
 //
 // ```sh
 //
-//	$ pulumi import auth0:index/triggerAction:TriggerAction post_login_action post-login::28b5c8fa-d371-5734-acf6-d0cf80ead918
+//	$ pulumi import auth0:index/triggerAction:TriggerAction post_login_action "post-login::28b5c8fa-d371-5734-acf6-d0cf80ead918"
 //
 // ```
 type TriggerAction struct {
@@ -75,7 +75,7 @@ type TriggerAction struct {
 	ActionId pulumi.StringOutput `pulumi:"actionId"`
 	// The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
 	Trigger pulumi.StringOutput `pulumi:"trigger"`
 }
 
@@ -119,7 +119,7 @@ type triggerActionState struct {
 	ActionId *string `pulumi:"actionId"`
 	// The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
 	DisplayName *string `pulumi:"displayName"`
-	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
 	Trigger *string `pulumi:"trigger"`
 }
 
@@ -128,7 +128,7 @@ type TriggerActionState struct {
 	ActionId pulumi.StringPtrInput
 	// The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
 	DisplayName pulumi.StringPtrInput
-	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
 	Trigger pulumi.StringPtrInput
 }
 
@@ -141,7 +141,7 @@ type triggerActionArgs struct {
 	ActionId string `pulumi:"actionId"`
 	// The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
 	DisplayName *string `pulumi:"displayName"`
-	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
 	Trigger string `pulumi:"trigger"`
 }
 
@@ -151,7 +151,7 @@ type TriggerActionArgs struct {
 	ActionId pulumi.StringInput
 	// The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
 	DisplayName pulumi.StringPtrInput
-	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
 	Trigger pulumi.StringInput
 }
 
@@ -276,7 +276,7 @@ func (o TriggerActionOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TriggerAction) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
 func (o TriggerActionOutput) Trigger() pulumi.StringOutput {
 	return o.ApplyT(func(v *TriggerAction) pulumi.StringOutput { return v.Trigger }).(pulumi.StringOutput)
 }

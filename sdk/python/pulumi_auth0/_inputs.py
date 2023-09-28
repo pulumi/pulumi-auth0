@@ -34,7 +34,36 @@ __all__ = [
     'BrandingThemeWidgetArgs',
     'BrandingUniversalLoginArgs',
     'ClientAddonsArgs',
+    'ClientAddonsAwsArgs',
+    'ClientAddonsAzureBlobArgs',
+    'ClientAddonsAzureSbArgs',
+    'ClientAddonsBoxArgs',
+    'ClientAddonsCloudbeesArgs',
+    'ClientAddonsConcurArgs',
+    'ClientAddonsDropboxArgs',
+    'ClientAddonsEchosignArgs',
+    'ClientAddonsEgnyteArgs',
+    'ClientAddonsFirebaseArgs',
+    'ClientAddonsLayerArgs',
+    'ClientAddonsMscrmArgs',
+    'ClientAddonsNewrelicArgs',
+    'ClientAddonsOffice365Args',
+    'ClientAddonsRmsArgs',
+    'ClientAddonsSalesforceArgs',
+    'ClientAddonsSalesforceApiArgs',
+    'ClientAddonsSalesforceSandboxApiArgs',
     'ClientAddonsSamlpArgs',
+    'ClientAddonsSamlpLogoutArgs',
+    'ClientAddonsSapApiArgs',
+    'ClientAddonsSentryArgs',
+    'ClientAddonsSharepointArgs',
+    'ClientAddonsSlackArgs',
+    'ClientAddonsSpringcmArgs',
+    'ClientAddonsSsoIntegrationArgs',
+    'ClientAddonsWamsArgs',
+    'ClientAddonsWsfedArgs',
+    'ClientAddonsZendeskArgs',
+    'ClientAddonsZoomArgs',
     'ClientCredentialsPrivateKeyJwtArgs',
     'ClientCredentialsPrivateKeyJwtCredentialArgs',
     'ClientJwtConfigurationArgs',
@@ -46,6 +75,9 @@ __all__ = [
     'ClientNativeSocialLoginFacebookArgs',
     'ClientRefreshTokenArgs',
     'ConnectionOptionsArgs',
+    'ConnectionOptionsAttributeMapArgs',
+    'ConnectionOptionsConnectionSettingsArgs',
+    'ConnectionOptionsDecryptionKeyArgs',
     'ConnectionOptionsGatewayAuthenticationArgs',
     'ConnectionOptionsIdpInitiatedArgs',
     'ConnectionOptionsMfaArgs',
@@ -58,20 +90,10 @@ __all__ = [
     'ConnectionOptionsValidationArgs',
     'ConnectionOptionsValidationUsernameArgs',
     'CustomDomainVerificationArgs',
-    'EmailCredentialsArgs',
-    'EmailSettingsArgs',
-    'EmailSettingsHeadersArgs',
-    'EmailSettingsMessageArgs',
-    'GlobalClientAddonsArgs',
-    'GlobalClientAddonsSamlpArgs',
-    'GlobalClientJwtConfigurationArgs',
-    'GlobalClientMobileArgs',
-    'GlobalClientMobileAndroidArgs',
-    'GlobalClientMobileIosArgs',
-    'GlobalClientNativeSocialLoginArgs',
-    'GlobalClientNativeSocialLoginAppleArgs',
-    'GlobalClientNativeSocialLoginFacebookArgs',
-    'GlobalClientRefreshTokenArgs',
+    'EmailProviderCredentialsArgs',
+    'EmailProviderSettingsArgs',
+    'EmailProviderSettingsHeadersArgs',
+    'EmailProviderSettingsMessageArgs',
     'GuardianDuoArgs',
     'GuardianPhoneArgs',
     'GuardianPhoneOptionsArgs',
@@ -89,20 +111,12 @@ __all__ = [
     'PagesErrorArgs',
     'PagesGuardianMfaArgs',
     'PagesLoginArgs',
-    'ResourceServerScopeArgs',
     'ResourceServerScopesScopeArgs',
-    'RolePermissionArgs',
     'RolePermissionsPermissionArgs',
-    'TenantChangePasswordArgs',
-    'TenantErrorPageArgs',
     'TenantFlagsArgs',
-    'TenantGuardianMfaPageArgs',
     'TenantSessionCookieArgs',
-    'TenantUniversalLoginArgs',
-    'TenantUniversalLoginColorsArgs',
+    'TenantSessionsArgs',
     'TriggerActionsActionArgs',
-    'TriggerBindingActionArgs',
-    'UserPermissionArgs',
     'UserPermissionsPermissionArgs',
 ]
 
@@ -220,22 +234,21 @@ class ActionSupportedTriggersArgs:
 @pulumi.input_type
 class AttackProtectionBreachedPasswordDetectionArgs:
     def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
                  admin_notification_frequencies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 enabled: Optional[pulumi.Input[bool]] = None,
                  method: Optional[pulumi.Input[str]] = None,
                  pre_user_registration: Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs']] = None,
                  shields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] admin_notification_frequencies: When "admin_notification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
         :param pulumi.Input[bool] enabled: Whether breached password detection is active.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] admin_notification_frequencies: When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
         :param pulumi.Input[str] method: The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
         :param pulumi.Input['AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs'] pre_user_registration: Configuration options that apply before every user registration attempt. Only available on public tenants.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] shields: Action to take when a breached password is detected.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] shields: Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
         """
+        pulumi.set(__self__, "enabled", enabled)
         if admin_notification_frequencies is not None:
             pulumi.set(__self__, "admin_notification_frequencies", admin_notification_frequencies)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
         if method is not None:
             pulumi.set(__self__, "method", method)
         if pre_user_registration is not None:
@@ -244,28 +257,28 @@ class AttackProtectionBreachedPasswordDetectionArgs:
             pulumi.set(__self__, "shields", shields)
 
     @property
-    @pulumi.getter(name="adminNotificationFrequencies")
-    def admin_notification_frequencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        When "admin_notification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
-        """
-        return pulumi.get(self, "admin_notification_frequencies")
-
-    @admin_notification_frequencies.setter
-    def admin_notification_frequencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "admin_notification_frequencies", value)
-
-    @property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[bool]]:
+    def enabled(self) -> pulumi.Input[bool]:
         """
         Whether breached password detection is active.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[bool]]):
+    def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="adminNotificationFrequencies")
+    def admin_notification_frequencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+        """
+        return pulumi.get(self, "admin_notification_frequencies")
+
+    @admin_notification_frequencies.setter
+    def admin_notification_frequencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "admin_notification_frequencies", value)
 
     @property
     @pulumi.getter
@@ -295,7 +308,7 @@ class AttackProtectionBreachedPasswordDetectionArgs:
     @pulumi.getter
     def shields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Action to take when a breached password is detected.
+        Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
         """
         return pulumi.get(self, "shields")
 
@@ -324,22 +337,21 @@ class AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs:
 @pulumi.input_type
 class AttackProtectionBruteForceProtectionArgs:
     def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
                  allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 enabled: Optional[pulumi.Input[bool]] = None,
                  max_attempts: Optional[pulumi.Input[int]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  shields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowlists: List of trusted IP addresses that will not have attack protection enforced against them.
         :param pulumi.Input[bool] enabled: Whether brute force attack protections are active.
-        :param pulumi.Input[int] max_attempts: Maximum number of unsuccessful attempts. Only available on public tenants.
-        :param pulumi.Input[str] mode: Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] shields: Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowlists: List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
+        :param pulumi.Input[int] max_attempts: Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+        :param pulumi.Input[str] mode: Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` (lockout an account from a given IP Address) or `count_per_identifier` (lockout an account regardless of IP Address).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] shields: Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
         """
+        pulumi.set(__self__, "enabled", enabled)
         if allowlists is not None:
             pulumi.set(__self__, "allowlists", allowlists)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
         if max_attempts is not None:
             pulumi.set(__self__, "max_attempts", max_attempts)
         if mode is not None:
@@ -349,9 +361,21 @@ class AttackProtectionBruteForceProtectionArgs:
 
     @property
     @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether brute force attack protections are active.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
     def allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of trusted IP addresses that will not have attack protection enforced against them.
+        List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
         """
         return pulumi.get(self, "allowlists")
 
@@ -360,22 +384,10 @@ class AttackProtectionBruteForceProtectionArgs:
         pulumi.set(self, "allowlists", value)
 
     @property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether brute force attack protections are active.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enabled", value)
-
-    @property
     @pulumi.getter(name="maxAttempts")
     def max_attempts(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of unsuccessful attempts. Only available on public tenants.
+        Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
         """
         return pulumi.get(self, "max_attempts")
 
@@ -387,7 +399,7 @@ class AttackProtectionBruteForceProtectionArgs:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+        Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` (lockout an account from a given IP Address) or `count_per_identifier` (lockout an account regardless of IP Address).
         """
         return pulumi.get(self, "mode")
 
@@ -399,7 +411,7 @@ class AttackProtectionBruteForceProtectionArgs:
     @pulumi.getter
     def shields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
+        Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
         """
         return pulumi.get(self, "shields")
 
@@ -411,22 +423,21 @@ class AttackProtectionBruteForceProtectionArgs:
 @pulumi.input_type
 class AttackProtectionSuspiciousIpThrottlingArgs:
     def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
                  allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 enabled: Optional[pulumi.Input[bool]] = None,
                  pre_login: Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingPreLoginArgs']] = None,
                  pre_user_registration: Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs']] = None,
                  shields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowlists: List of trusted IP addresses that will not have attack protection enforced against them.
         :param pulumi.Input[bool] enabled: Whether suspicious IP throttling attack protections are active.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowlists: List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
         :param pulumi.Input['AttackProtectionSuspiciousIpThrottlingPreLoginArgs'] pre_login: Configuration options that apply before every login attempt. Only available on public tenants.
         :param pulumi.Input['AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs'] pre_user_registration: Configuration options that apply before every user registration attempt. Only available on public tenants.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] shields: Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] shields: Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `admin_notification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
         """
+        pulumi.set(__self__, "enabled", enabled)
         if allowlists is not None:
             pulumi.set(__self__, "allowlists", allowlists)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
         if pre_login is not None:
             pulumi.set(__self__, "pre_login", pre_login)
         if pre_user_registration is not None:
@@ -436,27 +447,27 @@ class AttackProtectionSuspiciousIpThrottlingArgs:
 
     @property
     @pulumi.getter
-    def allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of trusted IP addresses that will not have attack protection enforced against them.
-        """
-        return pulumi.get(self, "allowlists")
-
-    @allowlists.setter
-    def allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "allowlists", value)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[bool]]:
+    def enabled(self) -> pulumi.Input[bool]:
         """
         Whether suspicious IP throttling attack protections are active.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[bool]]):
+    def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
+        """
+        return pulumi.get(self, "allowlists")
+
+    @allowlists.setter
+    def allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowlists", value)
 
     @property
     @pulumi.getter(name="preLogin")
@@ -486,7 +497,7 @@ class AttackProtectionSuspiciousIpThrottlingArgs:
     @pulumi.getter
     def shields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
+        Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `admin_notification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
         """
         return pulumi.get(self, "shields")
 
@@ -1547,37 +1558,65 @@ class BrandingUniversalLoginArgs:
 @pulumi.input_type
 class ClientAddonsArgs:
     def __init__(__self__, *,
-                 aws: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 azure_blob: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 azure_sb: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 box: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 cloudbees: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 concur: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 dropbox: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 echosign: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 egnyte: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 firebase: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 layer: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 mscrm: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 newrelic: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 office365: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 rms: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 salesforce: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 salesforce_api: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 salesforce_sandbox_api: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 aws: Optional[pulumi.Input['ClientAddonsAwsArgs']] = None,
+                 azure_blob: Optional[pulumi.Input['ClientAddonsAzureBlobArgs']] = None,
+                 azure_sb: Optional[pulumi.Input['ClientAddonsAzureSbArgs']] = None,
+                 box: Optional[pulumi.Input['ClientAddonsBoxArgs']] = None,
+                 cloudbees: Optional[pulumi.Input['ClientAddonsCloudbeesArgs']] = None,
+                 concur: Optional[pulumi.Input['ClientAddonsConcurArgs']] = None,
+                 dropbox: Optional[pulumi.Input['ClientAddonsDropboxArgs']] = None,
+                 echosign: Optional[pulumi.Input['ClientAddonsEchosignArgs']] = None,
+                 egnyte: Optional[pulumi.Input['ClientAddonsEgnyteArgs']] = None,
+                 firebase: Optional[pulumi.Input['ClientAddonsFirebaseArgs']] = None,
+                 layer: Optional[pulumi.Input['ClientAddonsLayerArgs']] = None,
+                 mscrm: Optional[pulumi.Input['ClientAddonsMscrmArgs']] = None,
+                 newrelic: Optional[pulumi.Input['ClientAddonsNewrelicArgs']] = None,
+                 office365: Optional[pulumi.Input['ClientAddonsOffice365Args']] = None,
+                 rms: Optional[pulumi.Input['ClientAddonsRmsArgs']] = None,
+                 salesforce: Optional[pulumi.Input['ClientAddonsSalesforceArgs']] = None,
+                 salesforce_api: Optional[pulumi.Input['ClientAddonsSalesforceApiArgs']] = None,
+                 salesforce_sandbox_api: Optional[pulumi.Input['ClientAddonsSalesforceSandboxApiArgs']] = None,
                  samlp: Optional[pulumi.Input['ClientAddonsSamlpArgs']] = None,
-                 sap_api: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 sentry: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 sharepoint: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 slack: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 springcm: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 wams: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 wsfed: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 zendesk: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 zoom: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 sap_api: Optional[pulumi.Input['ClientAddonsSapApiArgs']] = None,
+                 sentry: Optional[pulumi.Input['ClientAddonsSentryArgs']] = None,
+                 sharepoint: Optional[pulumi.Input['ClientAddonsSharepointArgs']] = None,
+                 slack: Optional[pulumi.Input['ClientAddonsSlackArgs']] = None,
+                 springcm: Optional[pulumi.Input['ClientAddonsSpringcmArgs']] = None,
+                 sso_integration: Optional[pulumi.Input['ClientAddonsSsoIntegrationArgs']] = None,
+                 wams: Optional[pulumi.Input['ClientAddonsWamsArgs']] = None,
+                 wsfed: Optional[pulumi.Input['ClientAddonsWsfedArgs']] = None,
+                 zendesk: Optional[pulumi.Input['ClientAddonsZendeskArgs']] = None,
+                 zoom: Optional[pulumi.Input['ClientAddonsZoomArgs']] = None):
         """
+        :param pulumi.Input['ClientAddonsAwsArgs'] aws: AWS Addon configuration.
+        :param pulumi.Input['ClientAddonsAzureBlobArgs'] azure_blob: Azure Blob Storage Addon configuration.
+        :param pulumi.Input['ClientAddonsAzureSbArgs'] azure_sb: Azure Storage Bus Addon configuration.
+        :param pulumi.Input['ClientAddonsBoxArgs'] box: Box SSO indicator (no configuration settings needed for Box SSO).
+        :param pulumi.Input['ClientAddonsCloudbeesArgs'] cloudbees: CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+        :param pulumi.Input['ClientAddonsConcurArgs'] concur: Concur SSO indicator (no configuration settings needed for Concur SSO).
+        :param pulumi.Input['ClientAddonsDropboxArgs'] dropbox: Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+        :param pulumi.Input['ClientAddonsEchosignArgs'] echosign: Adobe EchoSign SSO configuration.
+        :param pulumi.Input['ClientAddonsEgnyteArgs'] egnyte: Egnyte SSO configuration.
+        :param pulumi.Input['ClientAddonsFirebaseArgs'] firebase: Google Firebase addon configuration.
+        :param pulumi.Input['ClientAddonsLayerArgs'] layer: Layer addon configuration.
+        :param pulumi.Input['ClientAddonsMscrmArgs'] mscrm: Microsoft Dynamics CRM SSO configuration.
+        :param pulumi.Input['ClientAddonsNewrelicArgs'] newrelic: New Relic SSO configuration.
+        :param pulumi.Input['ClientAddonsOffice365Args'] office365: Microsoft Office 365 SSO configuration.
+        :param pulumi.Input['ClientAddonsRmsArgs'] rms: Active Directory Rights Management Service SSO configuration.
+        :param pulumi.Input['ClientAddonsSalesforceArgs'] salesforce: Salesforce SSO configuration.
+        :param pulumi.Input['ClientAddonsSalesforceApiArgs'] salesforce_api: Salesforce API addon configuration.
+        :param pulumi.Input['ClientAddonsSalesforceSandboxApiArgs'] salesforce_sandbox_api: Salesforce Sandbox addon configuration.
         :param pulumi.Input['ClientAddonsSamlpArgs'] samlp: Configuration settings for a SAML add-on.
-        :param pulumi.Input[Mapping[str, Any]] wsfed: WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+        :param pulumi.Input['ClientAddonsSapApiArgs'] sap_api: SAP API addon configuration.
+        :param pulumi.Input['ClientAddonsSentryArgs'] sentry: Sentry SSO configuration.
+        :param pulumi.Input['ClientAddonsSharepointArgs'] sharepoint: SharePoint SSO configuration.
+        :param pulumi.Input['ClientAddonsSlackArgs'] slack: Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+        :param pulumi.Input['ClientAddonsSpringcmArgs'] springcm: SpringCM SSO configuration.
+        :param pulumi.Input['ClientAddonsSsoIntegrationArgs'] sso_integration: Generic SSO configuration.
+        :param pulumi.Input['ClientAddonsWamsArgs'] wams: Windows Azure Mobile Services addon configuration.
+        :param pulumi.Input['ClientAddonsWsfedArgs'] wsfed: WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+        :param pulumi.Input['ClientAddonsZendeskArgs'] zendesk: Zendesk SSO configuration.
+        :param pulumi.Input['ClientAddonsZoomArgs'] zoom: Zoom SSO configuration.
         """
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
@@ -1627,6 +1666,8 @@ class ClientAddonsArgs:
             pulumi.set(__self__, "slack", slack)
         if springcm is not None:
             pulumi.set(__self__, "springcm", springcm)
+        if sso_integration is not None:
+            pulumi.set(__self__, "sso_integration", sso_integration)
         if wams is not None:
             pulumi.set(__self__, "wams", wams)
         if wsfed is not None:
@@ -1638,164 +1679,218 @@ class ClientAddonsArgs:
 
     @property
     @pulumi.getter
-    def aws(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def aws(self) -> Optional[pulumi.Input['ClientAddonsAwsArgs']]:
+        """
+        AWS Addon configuration.
+        """
         return pulumi.get(self, "aws")
 
     @aws.setter
-    def aws(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def aws(self, value: Optional[pulumi.Input['ClientAddonsAwsArgs']]):
         pulumi.set(self, "aws", value)
 
     @property
     @pulumi.getter(name="azureBlob")
-    def azure_blob(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def azure_blob(self) -> Optional[pulumi.Input['ClientAddonsAzureBlobArgs']]:
+        """
+        Azure Blob Storage Addon configuration.
+        """
         return pulumi.get(self, "azure_blob")
 
     @azure_blob.setter
-    def azure_blob(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def azure_blob(self, value: Optional[pulumi.Input['ClientAddonsAzureBlobArgs']]):
         pulumi.set(self, "azure_blob", value)
 
     @property
     @pulumi.getter(name="azureSb")
-    def azure_sb(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def azure_sb(self) -> Optional[pulumi.Input['ClientAddonsAzureSbArgs']]:
+        """
+        Azure Storage Bus Addon configuration.
+        """
         return pulumi.get(self, "azure_sb")
 
     @azure_sb.setter
-    def azure_sb(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def azure_sb(self, value: Optional[pulumi.Input['ClientAddonsAzureSbArgs']]):
         pulumi.set(self, "azure_sb", value)
 
     @property
     @pulumi.getter
-    def box(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def box(self) -> Optional[pulumi.Input['ClientAddonsBoxArgs']]:
+        """
+        Box SSO indicator (no configuration settings needed for Box SSO).
+        """
         return pulumi.get(self, "box")
 
     @box.setter
-    def box(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def box(self, value: Optional[pulumi.Input['ClientAddonsBoxArgs']]):
         pulumi.set(self, "box", value)
 
     @property
     @pulumi.getter
-    def cloudbees(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def cloudbees(self) -> Optional[pulumi.Input['ClientAddonsCloudbeesArgs']]:
+        """
+        CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+        """
         return pulumi.get(self, "cloudbees")
 
     @cloudbees.setter
-    def cloudbees(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def cloudbees(self, value: Optional[pulumi.Input['ClientAddonsCloudbeesArgs']]):
         pulumi.set(self, "cloudbees", value)
 
     @property
     @pulumi.getter
-    def concur(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def concur(self) -> Optional[pulumi.Input['ClientAddonsConcurArgs']]:
+        """
+        Concur SSO indicator (no configuration settings needed for Concur SSO).
+        """
         return pulumi.get(self, "concur")
 
     @concur.setter
-    def concur(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def concur(self, value: Optional[pulumi.Input['ClientAddonsConcurArgs']]):
         pulumi.set(self, "concur", value)
 
     @property
     @pulumi.getter
-    def dropbox(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def dropbox(self) -> Optional[pulumi.Input['ClientAddonsDropboxArgs']]:
+        """
+        Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+        """
         return pulumi.get(self, "dropbox")
 
     @dropbox.setter
-    def dropbox(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def dropbox(self, value: Optional[pulumi.Input['ClientAddonsDropboxArgs']]):
         pulumi.set(self, "dropbox", value)
 
     @property
     @pulumi.getter
-    def echosign(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def echosign(self) -> Optional[pulumi.Input['ClientAddonsEchosignArgs']]:
+        """
+        Adobe EchoSign SSO configuration.
+        """
         return pulumi.get(self, "echosign")
 
     @echosign.setter
-    def echosign(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def echosign(self, value: Optional[pulumi.Input['ClientAddonsEchosignArgs']]):
         pulumi.set(self, "echosign", value)
 
     @property
     @pulumi.getter
-    def egnyte(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def egnyte(self) -> Optional[pulumi.Input['ClientAddonsEgnyteArgs']]:
+        """
+        Egnyte SSO configuration.
+        """
         return pulumi.get(self, "egnyte")
 
     @egnyte.setter
-    def egnyte(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def egnyte(self, value: Optional[pulumi.Input['ClientAddonsEgnyteArgs']]):
         pulumi.set(self, "egnyte", value)
 
     @property
     @pulumi.getter
-    def firebase(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def firebase(self) -> Optional[pulumi.Input['ClientAddonsFirebaseArgs']]:
+        """
+        Google Firebase addon configuration.
+        """
         return pulumi.get(self, "firebase")
 
     @firebase.setter
-    def firebase(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def firebase(self, value: Optional[pulumi.Input['ClientAddonsFirebaseArgs']]):
         pulumi.set(self, "firebase", value)
 
     @property
     @pulumi.getter
-    def layer(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def layer(self) -> Optional[pulumi.Input['ClientAddonsLayerArgs']]:
+        """
+        Layer addon configuration.
+        """
         return pulumi.get(self, "layer")
 
     @layer.setter
-    def layer(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def layer(self, value: Optional[pulumi.Input['ClientAddonsLayerArgs']]):
         pulumi.set(self, "layer", value)
 
     @property
     @pulumi.getter
-    def mscrm(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def mscrm(self) -> Optional[pulumi.Input['ClientAddonsMscrmArgs']]:
+        """
+        Microsoft Dynamics CRM SSO configuration.
+        """
         return pulumi.get(self, "mscrm")
 
     @mscrm.setter
-    def mscrm(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def mscrm(self, value: Optional[pulumi.Input['ClientAddonsMscrmArgs']]):
         pulumi.set(self, "mscrm", value)
 
     @property
     @pulumi.getter
-    def newrelic(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def newrelic(self) -> Optional[pulumi.Input['ClientAddonsNewrelicArgs']]:
+        """
+        New Relic SSO configuration.
+        """
         return pulumi.get(self, "newrelic")
 
     @newrelic.setter
-    def newrelic(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def newrelic(self, value: Optional[pulumi.Input['ClientAddonsNewrelicArgs']]):
         pulumi.set(self, "newrelic", value)
 
     @property
     @pulumi.getter
-    def office365(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def office365(self) -> Optional[pulumi.Input['ClientAddonsOffice365Args']]:
+        """
+        Microsoft Office 365 SSO configuration.
+        """
         return pulumi.get(self, "office365")
 
     @office365.setter
-    def office365(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def office365(self, value: Optional[pulumi.Input['ClientAddonsOffice365Args']]):
         pulumi.set(self, "office365", value)
 
     @property
     @pulumi.getter
-    def rms(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def rms(self) -> Optional[pulumi.Input['ClientAddonsRmsArgs']]:
+        """
+        Active Directory Rights Management Service SSO configuration.
+        """
         return pulumi.get(self, "rms")
 
     @rms.setter
-    def rms(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def rms(self, value: Optional[pulumi.Input['ClientAddonsRmsArgs']]):
         pulumi.set(self, "rms", value)
 
     @property
     @pulumi.getter
-    def salesforce(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def salesforce(self) -> Optional[pulumi.Input['ClientAddonsSalesforceArgs']]:
+        """
+        Salesforce SSO configuration.
+        """
         return pulumi.get(self, "salesforce")
 
     @salesforce.setter
-    def salesforce(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def salesforce(self, value: Optional[pulumi.Input['ClientAddonsSalesforceArgs']]):
         pulumi.set(self, "salesforce", value)
 
     @property
     @pulumi.getter(name="salesforceApi")
-    def salesforce_api(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def salesforce_api(self) -> Optional[pulumi.Input['ClientAddonsSalesforceApiArgs']]:
+        """
+        Salesforce API addon configuration.
+        """
         return pulumi.get(self, "salesforce_api")
 
     @salesforce_api.setter
-    def salesforce_api(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def salesforce_api(self, value: Optional[pulumi.Input['ClientAddonsSalesforceApiArgs']]):
         pulumi.set(self, "salesforce_api", value)
 
     @property
     @pulumi.getter(name="salesforceSandboxApi")
-    def salesforce_sandbox_api(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def salesforce_sandbox_api(self) -> Optional[pulumi.Input['ClientAddonsSalesforceSandboxApiArgs']]:
+        """
+        Salesforce Sandbox addon configuration.
+        """
         return pulumi.get(self, "salesforce_sandbox_api")
 
     @salesforce_sandbox_api.setter
-    def salesforce_sandbox_api(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def salesforce_sandbox_api(self, value: Optional[pulumi.Input['ClientAddonsSalesforceSandboxApiArgs']]):
         pulumi.set(self, "salesforce_sandbox_api", value)
 
     @property
@@ -1812,87 +1907,790 @@ class ClientAddonsArgs:
 
     @property
     @pulumi.getter(name="sapApi")
-    def sap_api(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def sap_api(self) -> Optional[pulumi.Input['ClientAddonsSapApiArgs']]:
+        """
+        SAP API addon configuration.
+        """
         return pulumi.get(self, "sap_api")
 
     @sap_api.setter
-    def sap_api(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def sap_api(self, value: Optional[pulumi.Input['ClientAddonsSapApiArgs']]):
         pulumi.set(self, "sap_api", value)
 
     @property
     @pulumi.getter
-    def sentry(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def sentry(self) -> Optional[pulumi.Input['ClientAddonsSentryArgs']]:
+        """
+        Sentry SSO configuration.
+        """
         return pulumi.get(self, "sentry")
 
     @sentry.setter
-    def sentry(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def sentry(self, value: Optional[pulumi.Input['ClientAddonsSentryArgs']]):
         pulumi.set(self, "sentry", value)
 
     @property
     @pulumi.getter
-    def sharepoint(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def sharepoint(self) -> Optional[pulumi.Input['ClientAddonsSharepointArgs']]:
+        """
+        SharePoint SSO configuration.
+        """
         return pulumi.get(self, "sharepoint")
 
     @sharepoint.setter
-    def sharepoint(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def sharepoint(self, value: Optional[pulumi.Input['ClientAddonsSharepointArgs']]):
         pulumi.set(self, "sharepoint", value)
 
     @property
     @pulumi.getter
-    def slack(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def slack(self) -> Optional[pulumi.Input['ClientAddonsSlackArgs']]:
+        """
+        Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+        """
         return pulumi.get(self, "slack")
 
     @slack.setter
-    def slack(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def slack(self, value: Optional[pulumi.Input['ClientAddonsSlackArgs']]):
         pulumi.set(self, "slack", value)
 
     @property
     @pulumi.getter
-    def springcm(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def springcm(self) -> Optional[pulumi.Input['ClientAddonsSpringcmArgs']]:
+        """
+        SpringCM SSO configuration.
+        """
         return pulumi.get(self, "springcm")
 
     @springcm.setter
-    def springcm(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def springcm(self, value: Optional[pulumi.Input['ClientAddonsSpringcmArgs']]):
         pulumi.set(self, "springcm", value)
 
     @property
+    @pulumi.getter(name="ssoIntegration")
+    def sso_integration(self) -> Optional[pulumi.Input['ClientAddonsSsoIntegrationArgs']]:
+        """
+        Generic SSO configuration.
+        """
+        return pulumi.get(self, "sso_integration")
+
+    @sso_integration.setter
+    def sso_integration(self, value: Optional[pulumi.Input['ClientAddonsSsoIntegrationArgs']]):
+        pulumi.set(self, "sso_integration", value)
+
+    @property
     @pulumi.getter
-    def wams(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def wams(self) -> Optional[pulumi.Input['ClientAddonsWamsArgs']]:
+        """
+        Windows Azure Mobile Services addon configuration.
+        """
         return pulumi.get(self, "wams")
 
     @wams.setter
-    def wams(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def wams(self, value: Optional[pulumi.Input['ClientAddonsWamsArgs']]):
         pulumi.set(self, "wams", value)
 
     @property
     @pulumi.getter
-    def wsfed(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def wsfed(self) -> Optional[pulumi.Input['ClientAddonsWsfedArgs']]:
         """
-        WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+        WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
         """
         return pulumi.get(self, "wsfed")
 
     @wsfed.setter
-    def wsfed(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def wsfed(self, value: Optional[pulumi.Input['ClientAddonsWsfedArgs']]):
         pulumi.set(self, "wsfed", value)
 
     @property
     @pulumi.getter
-    def zendesk(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def zendesk(self) -> Optional[pulumi.Input['ClientAddonsZendeskArgs']]:
+        """
+        Zendesk SSO configuration.
+        """
         return pulumi.get(self, "zendesk")
 
     @zendesk.setter
-    def zendesk(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def zendesk(self, value: Optional[pulumi.Input['ClientAddonsZendeskArgs']]):
         pulumi.set(self, "zendesk", value)
 
     @property
     @pulumi.getter
-    def zoom(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def zoom(self) -> Optional[pulumi.Input['ClientAddonsZoomArgs']]:
+        """
+        Zoom SSO configuration.
+        """
         return pulumi.get(self, "zoom")
 
     @zoom.setter
-    def zoom(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def zoom(self, value: Optional[pulumi.Input['ClientAddonsZoomArgs']]):
         pulumi.set(self, "zoom", value)
+
+
+@pulumi.input_type
+class ClientAddonsAwsArgs:
+    def __init__(__self__, *,
+                 lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
+                 principal: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        if lifetime_in_seconds is not None:
+            pulumi.set(__self__, "lifetime_in_seconds", lifetime_in_seconds)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter(name="lifetimeInSeconds")
+    def lifetime_in_seconds(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "lifetime_in_seconds")
+
+    @lifetime_in_seconds.setter
+    def lifetime_in_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "lifetime_in_seconds", value)
+
+    @property
+    @pulumi.getter
+    def principal(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "principal", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+
+@pulumi.input_type
+class ClientAddonsAzureBlobArgs:
+    def __init__(__self__, *,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 blob_delete: Optional[pulumi.Input[bool]] = None,
+                 blob_name: Optional[pulumi.Input[str]] = None,
+                 blob_read: Optional[pulumi.Input[bool]] = None,
+                 blob_write: Optional[pulumi.Input[bool]] = None,
+                 container_delete: Optional[pulumi.Input[bool]] = None,
+                 container_list: Optional[pulumi.Input[bool]] = None,
+                 container_name: Optional[pulumi.Input[str]] = None,
+                 container_read: Optional[pulumi.Input[bool]] = None,
+                 container_write: Optional[pulumi.Input[bool]] = None,
+                 expiration: Optional[pulumi.Input[int]] = None,
+                 signed_identifier: Optional[pulumi.Input[str]] = None,
+                 storage_access_key: Optional[pulumi.Input[str]] = None):
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if blob_delete is not None:
+            pulumi.set(__self__, "blob_delete", blob_delete)
+        if blob_name is not None:
+            pulumi.set(__self__, "blob_name", blob_name)
+        if blob_read is not None:
+            pulumi.set(__self__, "blob_read", blob_read)
+        if blob_write is not None:
+            pulumi.set(__self__, "blob_write", blob_write)
+        if container_delete is not None:
+            pulumi.set(__self__, "container_delete", container_delete)
+        if container_list is not None:
+            pulumi.set(__self__, "container_list", container_list)
+        if container_name is not None:
+            pulumi.set(__self__, "container_name", container_name)
+        if container_read is not None:
+            pulumi.set(__self__, "container_read", container_read)
+        if container_write is not None:
+            pulumi.set(__self__, "container_write", container_write)
+        if expiration is not None:
+            pulumi.set(__self__, "expiration", expiration)
+        if signed_identifier is not None:
+            pulumi.set(__self__, "signed_identifier", signed_identifier)
+        if storage_access_key is not None:
+            pulumi.set(__self__, "storage_access_key", storage_access_key)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter(name="blobDelete")
+    def blob_delete(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "blob_delete")
+
+    @blob_delete.setter
+    def blob_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "blob_delete", value)
+
+    @property
+    @pulumi.getter(name="blobName")
+    def blob_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "blob_name")
+
+    @blob_name.setter
+    def blob_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blob_name", value)
+
+    @property
+    @pulumi.getter(name="blobRead")
+    def blob_read(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "blob_read")
+
+    @blob_read.setter
+    def blob_read(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "blob_read", value)
+
+    @property
+    @pulumi.getter(name="blobWrite")
+    def blob_write(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "blob_write")
+
+    @blob_write.setter
+    def blob_write(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "blob_write", value)
+
+    @property
+    @pulumi.getter(name="containerDelete")
+    def container_delete(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "container_delete")
+
+    @container_delete.setter
+    def container_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "container_delete", value)
+
+    @property
+    @pulumi.getter(name="containerList")
+    def container_list(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "container_list")
+
+    @container_list.setter
+    def container_list(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "container_list", value)
+
+    @property
+    @pulumi.getter(name="containerName")
+    def container_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "container_name")
+
+    @container_name.setter
+    def container_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_name", value)
+
+    @property
+    @pulumi.getter(name="containerRead")
+    def container_read(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "container_read")
+
+    @container_read.setter
+    def container_read(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "container_read", value)
+
+    @property
+    @pulumi.getter(name="containerWrite")
+    def container_write(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "container_write")
+
+    @container_write.setter
+    def container_write(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "container_write", value)
+
+    @property
+    @pulumi.getter
+    def expiration(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "expiration")
+
+    @expiration.setter
+    def expiration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "expiration", value)
+
+    @property
+    @pulumi.getter(name="signedIdentifier")
+    def signed_identifier(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "signed_identifier")
+
+    @signed_identifier.setter
+    def signed_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "signed_identifier", value)
+
+    @property
+    @pulumi.getter(name="storageAccessKey")
+    def storage_access_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage_access_key")
+
+    @storage_access_key.setter
+    def storage_access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_access_key", value)
+
+
+@pulumi.input_type
+class ClientAddonsAzureSbArgs:
+    def __init__(__self__, *,
+                 entity_path: Optional[pulumi.Input[str]] = None,
+                 expiration: Optional[pulumi.Input[int]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 sas_key: Optional[pulumi.Input[str]] = None,
+                 sas_key_name: Optional[pulumi.Input[str]] = None):
+        if entity_path is not None:
+            pulumi.set(__self__, "entity_path", entity_path)
+        if expiration is not None:
+            pulumi.set(__self__, "expiration", expiration)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if sas_key is not None:
+            pulumi.set(__self__, "sas_key", sas_key)
+        if sas_key_name is not None:
+            pulumi.set(__self__, "sas_key_name", sas_key_name)
+
+    @property
+    @pulumi.getter(name="entityPath")
+    def entity_path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "entity_path")
+
+    @entity_path.setter
+    def entity_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_path", value)
+
+    @property
+    @pulumi.getter
+    def expiration(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "expiration")
+
+    @expiration.setter
+    def expiration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "expiration", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter(name="sasKey")
+    def sas_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sas_key")
+
+    @sas_key.setter
+    def sas_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sas_key", value)
+
+    @property
+    @pulumi.getter(name="sasKeyName")
+    def sas_key_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sas_key_name")
+
+    @sas_key_name.setter
+    def sas_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sas_key_name", value)
+
+
+@pulumi.input_type
+class ClientAddonsBoxArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class ClientAddonsCloudbeesArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class ClientAddonsConcurArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class ClientAddonsDropboxArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class ClientAddonsEchosignArgs:
+    def __init__(__self__, *,
+                 domain: Optional[pulumi.Input[str]] = None):
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+
+@pulumi.input_type
+class ClientAddonsEgnyteArgs:
+    def __init__(__self__, *,
+                 domain: Optional[pulumi.Input[str]] = None):
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+
+@pulumi.input_type
+class ClientAddonsFirebaseArgs:
+    def __init__(__self__, *,
+                 client_email: Optional[pulumi.Input[str]] = None,
+                 lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
+                 private_key: Optional[pulumi.Input[str]] = None,
+                 private_key_id: Optional[pulumi.Input[str]] = None,
+                 secret: Optional[pulumi.Input[str]] = None):
+        if client_email is not None:
+            pulumi.set(__self__, "client_email", client_email)
+        if lifetime_in_seconds is not None:
+            pulumi.set(__self__, "lifetime_in_seconds", lifetime_in_seconds)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if private_key_id is not None:
+            pulumi.set(__self__, "private_key_id", private_key_id)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+
+    @property
+    @pulumi.getter(name="clientEmail")
+    def client_email(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_email")
+
+    @client_email.setter
+    def client_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_email", value)
+
+    @property
+    @pulumi.getter(name="lifetimeInSeconds")
+    def lifetime_in_seconds(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "lifetime_in_seconds")
+
+    @lifetime_in_seconds.setter
+    def lifetime_in_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "lifetime_in_seconds", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key", value)
+
+    @property
+    @pulumi.getter(name="privateKeyId")
+    def private_key_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "private_key_id")
+
+    @private_key_id.setter
+    def private_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key_id", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret", value)
+
+
+@pulumi.input_type
+class ClientAddonsLayerArgs:
+    def __init__(__self__, *,
+                 key_id: pulumi.Input[str],
+                 private_key: pulumi.Input[str],
+                 provider_id: pulumi.Input[str],
+                 expiration: Optional[pulumi.Input[int]] = None,
+                 principal: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "private_key", private_key)
+        pulumi.set(__self__, "provider_id", provider_id)
+        if expiration is not None:
+            pulumi.set(__self__, "expiration", expiration)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "private_key", value)
+
+    @property
+    @pulumi.getter(name="providerId")
+    def provider_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "provider_id")
+
+    @provider_id.setter
+    def provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "provider_id", value)
+
+    @property
+    @pulumi.getter
+    def expiration(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "expiration")
+
+    @expiration.setter
+    def expiration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "expiration", value)
+
+    @property
+    @pulumi.getter
+    def principal(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "principal", value)
+
+
+@pulumi.input_type
+class ClientAddonsMscrmArgs:
+    def __init__(__self__, *,
+                 url: Optional[pulumi.Input[str]] = None):
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+
+@pulumi.input_type
+class ClientAddonsNewrelicArgs:
+    def __init__(__self__, *,
+                 account: Optional[pulumi.Input[str]] = None):
+        if account is not None:
+            pulumi.set(__self__, "account", account)
+
+    @property
+    @pulumi.getter
+    def account(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "account")
+
+    @account.setter
+    def account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account", value)
+
+
+@pulumi.input_type
+class ClientAddonsOffice365Args:
+    def __init__(__self__, *,
+                 connection: Optional[pulumi.Input[str]] = None,
+                 domain: Optional[pulumi.Input[str]] = None):
+        if connection is not None:
+            pulumi.set(__self__, "connection", connection)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def connection(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "connection")
+
+    @connection.setter
+    def connection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection", value)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+
+@pulumi.input_type
+class ClientAddonsRmsArgs:
+    def __init__(__self__, *,
+                 url: Optional[pulumi.Input[str]] = None):
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+
+@pulumi.input_type
+class ClientAddonsSalesforceArgs:
+    def __init__(__self__, *,
+                 entity_id: Optional[pulumi.Input[str]] = None):
+        if entity_id is not None:
+            pulumi.set(__self__, "entity_id", entity_id)
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "entity_id")
+
+    @entity_id.setter
+    def entity_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_id", value)
+
+
+@pulumi.input_type
+class ClientAddonsSalesforceApiArgs:
+    def __init__(__self__, *,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 community_name: Optional[pulumi.Input[str]] = None,
+                 community_url_section: Optional[pulumi.Input[str]] = None,
+                 principal: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] client_id: The ID of the client.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if community_name is not None:
+            pulumi.set(__self__, "community_name", community_name)
+        if community_url_section is not None:
+            pulumi.set(__self__, "community_url_section", community_url_section)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the client.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="communityName")
+    def community_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "community_name")
+
+    @community_name.setter
+    def community_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "community_name", value)
+
+    @property
+    @pulumi.getter(name="communityUrlSection")
+    def community_url_section(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "community_url_section")
+
+    @community_url_section.setter
+    def community_url_section(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "community_url_section", value)
+
+    @property
+    @pulumi.getter
+    def principal(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "principal", value)
+
+
+@pulumi.input_type
+class ClientAddonsSalesforceSandboxApiArgs:
+    def __init__(__self__, *,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 community_name: Optional[pulumi.Input[str]] = None,
+                 community_url_section: Optional[pulumi.Input[str]] = None,
+                 principal: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] client_id: The ID of the client.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if community_name is not None:
+            pulumi.set(__self__, "community_name", community_name)
+        if community_url_section is not None:
+            pulumi.set(__self__, "community_url_section", community_url_section)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the client.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="communityName")
+    def community_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "community_name")
+
+    @community_name.setter
+    def community_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "community_name", value)
+
+    @property
+    @pulumi.getter(name="communityUrlSection")
+    def community_url_section(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "community_url_section")
+
+    @community_url_section.setter
+    def community_url_section(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "community_url_section", value)
+
+    @property
+    @pulumi.getter
+    def principal(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "principal", value)
 
 
 @pulumi.input_type
@@ -1907,7 +2705,7 @@ class ClientAddonsSamlpArgs:
                  include_attribute_name_format: Optional[pulumi.Input[bool]] = None,
                  issuer: Optional[pulumi.Input[str]] = None,
                  lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
-                 logout: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 logout: Optional[pulumi.Input['ClientAddonsSamlpLogoutArgs']] = None,
                  map_identities: Optional[pulumi.Input[bool]] = None,
                  map_unknown_claims_as_is: Optional[pulumi.Input[bool]] = None,
                  mappings: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -2045,11 +2843,11 @@ class ClientAddonsSamlpArgs:
 
     @property
     @pulumi.getter
-    def logout(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def logout(self) -> Optional[pulumi.Input['ClientAddonsSamlpLogoutArgs']]:
         return pulumi.get(self, "logout")
 
     @logout.setter
-    def logout(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def logout(self, value: Optional[pulumi.Input['ClientAddonsSamlpLogoutArgs']]):
         pulumi.set(self, "logout", value)
 
     @property
@@ -2150,6 +2948,302 @@ class ClientAddonsSamlpArgs:
     @typed_attributes.setter
     def typed_attributes(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "typed_attributes", value)
+
+
+@pulumi.input_type
+class ClientAddonsSamlpLogoutArgs:
+    def __init__(__self__, *,
+                 callback: Optional[pulumi.Input[str]] = None,
+                 slo_enabled: Optional[pulumi.Input[bool]] = None):
+        if callback is not None:
+            pulumi.set(__self__, "callback", callback)
+        if slo_enabled is not None:
+            pulumi.set(__self__, "slo_enabled", slo_enabled)
+
+    @property
+    @pulumi.getter
+    def callback(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "callback")
+
+    @callback.setter
+    def callback(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "callback", value)
+
+    @property
+    @pulumi.getter(name="sloEnabled")
+    def slo_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "slo_enabled")
+
+    @slo_enabled.setter
+    def slo_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "slo_enabled", value)
+
+
+@pulumi.input_type
+class ClientAddonsSapApiArgs:
+    def __init__(__self__, *,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 name_identifier_format: Optional[pulumi.Input[str]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 service_password: Optional[pulumi.Input[str]] = None,
+                 token_endpoint_url: Optional[pulumi.Input[str]] = None,
+                 username_attribute: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] client_id: The ID of the client.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if name_identifier_format is not None:
+            pulumi.set(__self__, "name_identifier_format", name_identifier_format)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if service_password is not None:
+            pulumi.set(__self__, "service_password", service_password)
+        if token_endpoint_url is not None:
+            pulumi.set(__self__, "token_endpoint_url", token_endpoint_url)
+        if username_attribute is not None:
+            pulumi.set(__self__, "username_attribute", username_attribute)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the client.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="nameIdentifierFormat")
+    def name_identifier_format(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name_identifier_format")
+
+    @name_identifier_format.setter
+    def name_identifier_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_identifier_format", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter(name="servicePassword")
+    def service_password(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_password")
+
+    @service_password.setter
+    def service_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_password", value)
+
+    @property
+    @pulumi.getter(name="tokenEndpointUrl")
+    def token_endpoint_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "token_endpoint_url")
+
+    @token_endpoint_url.setter
+    def token_endpoint_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_endpoint_url", value)
+
+    @property
+    @pulumi.getter(name="usernameAttribute")
+    def username_attribute(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "username_attribute")
+
+    @username_attribute.setter
+    def username_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_attribute", value)
+
+
+@pulumi.input_type
+class ClientAddonsSentryArgs:
+    def __init__(__self__, *,
+                 base_url: Optional[pulumi.Input[str]] = None,
+                 org_slug: Optional[pulumi.Input[str]] = None):
+        if base_url is not None:
+            pulumi.set(__self__, "base_url", base_url)
+        if org_slug is not None:
+            pulumi.set(__self__, "org_slug", org_slug)
+
+    @property
+    @pulumi.getter(name="baseUrl")
+    def base_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "base_url")
+
+    @base_url.setter
+    def base_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "base_url", value)
+
+    @property
+    @pulumi.getter(name="orgSlug")
+    def org_slug(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "org_slug")
+
+    @org_slug.setter
+    def org_slug(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "org_slug", value)
+
+
+@pulumi.input_type
+class ClientAddonsSharepointArgs:
+    def __init__(__self__, *,
+                 external_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        if external_urls is not None:
+            pulumi.set(__self__, "external_urls", external_urls)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="externalUrls")
+    def external_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "external_urls")
+
+    @external_urls.setter
+    def external_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "external_urls", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+
+@pulumi.input_type
+class ClientAddonsSlackArgs:
+    def __init__(__self__, *,
+                 team: Optional[pulumi.Input[str]] = None):
+        if team is not None:
+            pulumi.set(__self__, "team", team)
+
+    @property
+    @pulumi.getter
+    def team(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "team")
+
+    @team.setter
+    def team(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team", value)
+
+
+@pulumi.input_type
+class ClientAddonsSpringcmArgs:
+    def __init__(__self__, *,
+                 acs_url: Optional[pulumi.Input[str]] = None):
+        if acs_url is not None:
+            pulumi.set(__self__, "acs_url", acs_url)
+
+    @property
+    @pulumi.getter(name="acsUrl")
+    def acs_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "acs_url")
+
+    @acs_url.setter
+    def acs_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acs_url", value)
+
+
+@pulumi.input_type
+class ClientAddonsSsoIntegrationArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the client.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the client.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class ClientAddonsWamsArgs:
+    def __init__(__self__, *,
+                 master_key: Optional[pulumi.Input[str]] = None):
+        if master_key is not None:
+            pulumi.set(__self__, "master_key", master_key)
+
+    @property
+    @pulumi.getter(name="masterKey")
+    def master_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "master_key")
+
+    @master_key.setter
+    def master_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "master_key", value)
+
+
+@pulumi.input_type
+class ClientAddonsWsfedArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class ClientAddonsZendeskArgs:
+    def __init__(__self__, *,
+                 account_name: Optional[pulumi.Input[str]] = None):
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_name", value)
+
+
+@pulumi.input_type
+class ClientAddonsZoomArgs:
+    def __init__(__self__, *,
+                 account: Optional[pulumi.Input[str]] = None):
+        if account is not None:
+            pulumi.set(__self__, "account", account)
+
+    @property
+    @pulumi.getter
+    def account(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "account")
+
+    @account.setter
+    def account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account", value)
 
 
 @pulumi.input_type
@@ -2658,6 +3752,7 @@ class ConnectionOptionsArgs:
                  allowed_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  api_enable_users: Optional[pulumi.Input[bool]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
+                 attribute_map: Optional[pulumi.Input['ConnectionOptionsAttributeMapArgs']] = None,
                  auth_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  authorization_endpoint: Optional[pulumi.Input[str]] = None,
                  brute_force_protection: Optional[pulumi.Input[bool]] = None,
@@ -2665,8 +3760,10 @@ class ConnectionOptionsArgs:
                  client_secret: Optional[pulumi.Input[str]] = None,
                  community_base_url: Optional[pulumi.Input[str]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 connection_settings: Optional[pulumi.Input['ConnectionOptionsConnectionSettingsArgs']] = None,
                  custom_scripts: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  debug: Optional[pulumi.Input[bool]] = None,
+                 decryption_key: Optional[pulumi.Input['ConnectionOptionsDecryptionKeyArgs']] = None,
                  digest_algorithm: Optional[pulumi.Input[str]] = None,
                  disable_cache: Optional[pulumi.Input[bool]] = None,
                  disable_self_service_change_password: Optional[pulumi.Input[bool]] = None,
@@ -2692,6 +3789,7 @@ class ConnectionOptionsArgs:
                  issuer: Optional[pulumi.Input[str]] = None,
                  jwks_uri: Optional[pulumi.Input[str]] = None,
                  key_id: Optional[pulumi.Input[str]] = None,
+                 map_user_id_to_id: Optional[pulumi.Input[bool]] = None,
                  max_groups_to_retrieve: Optional[pulumi.Input[str]] = None,
                  messaging_service_sid: Optional[pulumi.Input[str]] = None,
                  metadata_url: Optional[pulumi.Input[str]] = None,
@@ -2745,6 +3843,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_audiences: List of allowed audiences.
         :param pulumi.Input[bool] api_enable_users: Enable API Access to users.
         :param pulumi.Input[str] app_id: App ID.
+        :param pulumi.Input['ConnectionOptionsAttributeMapArgs'] attribute_map: OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] auth_params: Query string parameters to be included as part of the generated passwordless email link.
         :param pulumi.Input[str] authorization_endpoint: Authorization endpoint.
         :param pulumi.Input[bool] brute_force_protection: Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
@@ -2752,8 +3851,10 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[str] client_secret: The strategy's client secret.
         :param pulumi.Input[str] community_base_url: Salesforce community base URL.
         :param pulumi.Input[Mapping[str, Any]] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
+        :param pulumi.Input['ConnectionOptionsConnectionSettingsArgs'] connection_settings: Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_scripts: A map of scripts used to integrate with a custom database.
         :param pulumi.Input[bool] debug: When enabled, additional debug information will be generated.
+        :param pulumi.Input['ConnectionOptionsDecryptionKeyArgs'] decryption_key: The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
         :param pulumi.Input[str] digest_algorithm: Sign Request Algorithm Digest.
         :param pulumi.Input[bool] disable_cache: Indicates whether to disable the cache or not.
         :param pulumi.Input[bool] disable_self_service_change_password: Indicates whether to remove the forgot password link within the New Universal Login.
@@ -2779,10 +3880,11 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[str] issuer: Issuer URL, e.g. `https://auth.example.com`.
         :param pulumi.Input[str] jwks_uri: JWKS URI.
         :param pulumi.Input[str] key_id: Apple Key ID.
+        :param pulumi.Input[bool] map_user_id_to_id: By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to 'id' instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
         :param pulumi.Input[str] max_groups_to_retrieve: Maximum number of groups to retrieve.
         :param pulumi.Input[str] messaging_service_sid: SID for Copilot. Used when SMS Source is Copilot.
         :param pulumi.Input[str] metadata_url: The URL of the SAML metadata document.
-        :param pulumi.Input[str] metadata_xml: The XML content for the SAML metadata document.
+        :param pulumi.Input[str] metadata_xml: The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
         :param pulumi.Input['ConnectionOptionsMfaArgs'] mfa: Configuration options for multifactor authentication.
         :param pulumi.Input[str] name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] non_persistent_attrs: If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
@@ -2836,6 +3938,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "api_enable_users", api_enable_users)
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
+        if attribute_map is not None:
+            pulumi.set(__self__, "attribute_map", attribute_map)
         if auth_params is not None:
             pulumi.set(__self__, "auth_params", auth_params)
         if authorization_endpoint is not None:
@@ -2850,10 +3954,14 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "community_base_url", community_base_url)
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
+        if connection_settings is not None:
+            pulumi.set(__self__, "connection_settings", connection_settings)
         if custom_scripts is not None:
             pulumi.set(__self__, "custom_scripts", custom_scripts)
         if debug is not None:
             pulumi.set(__self__, "debug", debug)
+        if decryption_key is not None:
+            pulumi.set(__self__, "decryption_key", decryption_key)
         if digest_algorithm is not None:
             pulumi.set(__self__, "digest_algorithm", digest_algorithm)
         if disable_cache is not None:
@@ -2904,6 +4012,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "jwks_uri", jwks_uri)
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
+        if map_user_id_to_id is not None:
+            pulumi.set(__self__, "map_user_id_to_id", map_user_id_to_id)
         if max_groups_to_retrieve is not None:
             pulumi.set(__self__, "max_groups_to_retrieve", max_groups_to_retrieve)
         if messaging_service_sid is not None:
@@ -3050,6 +4160,18 @@ class ConnectionOptionsArgs:
         pulumi.set(self, "app_id", value)
 
     @property
+    @pulumi.getter(name="attributeMap")
+    def attribute_map(self) -> Optional[pulumi.Input['ConnectionOptionsAttributeMapArgs']]:
+        """
+        OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+        """
+        return pulumi.get(self, "attribute_map")
+
+    @attribute_map.setter
+    def attribute_map(self, value: Optional[pulumi.Input['ConnectionOptionsAttributeMapArgs']]):
+        pulumi.set(self, "attribute_map", value)
+
+    @property
     @pulumi.getter(name="authParams")
     def auth_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -3134,6 +4256,18 @@ class ConnectionOptionsArgs:
         pulumi.set(self, "configuration", value)
 
     @property
+    @pulumi.getter(name="connectionSettings")
+    def connection_settings(self) -> Optional[pulumi.Input['ConnectionOptionsConnectionSettingsArgs']]:
+        """
+        Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+        """
+        return pulumi.get(self, "connection_settings")
+
+    @connection_settings.setter
+    def connection_settings(self, value: Optional[pulumi.Input['ConnectionOptionsConnectionSettingsArgs']]):
+        pulumi.set(self, "connection_settings", value)
+
+    @property
     @pulumi.getter(name="customScripts")
     def custom_scripts(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -3156,6 +4290,18 @@ class ConnectionOptionsArgs:
     @debug.setter
     def debug(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "debug", value)
+
+    @property
+    @pulumi.getter(name="decryptionKey")
+    def decryption_key(self) -> Optional[pulumi.Input['ConnectionOptionsDecryptionKeyArgs']]:
+        """
+        The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+        """
+        return pulumi.get(self, "decryption_key")
+
+    @decryption_key.setter
+    def decryption_key(self, value: Optional[pulumi.Input['ConnectionOptionsDecryptionKeyArgs']]):
+        pulumi.set(self, "decryption_key", value)
 
     @property
     @pulumi.getter(name="digestAlgorithm")
@@ -3458,6 +4604,18 @@ class ConnectionOptionsArgs:
         pulumi.set(self, "key_id", value)
 
     @property
+    @pulumi.getter(name="mapUserIdToId")
+    def map_user_id_to_id(self) -> Optional[pulumi.Input[bool]]:
+        """
+        By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to 'id' instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+        """
+        return pulumi.get(self, "map_user_id_to_id")
+
+    @map_user_id_to_id.setter
+    def map_user_id_to_id(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "map_user_id_to_id", value)
+
+    @property
     @pulumi.getter(name="maxGroupsToRetrieve")
     def max_groups_to_retrieve(self) -> Optional[pulumi.Input[str]]:
         """
@@ -3497,7 +4655,7 @@ class ConnectionOptionsArgs:
     @pulumi.getter(name="metadataXml")
     def metadata_xml(self) -> Optional[pulumi.Input[str]]:
         """
-        The XML content for the SAML metadata document.
+        The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
         """
         return pulumi.get(self, "metadata_xml")
 
@@ -4035,6 +5193,89 @@ class ConnectionOptionsArgs:
 
 
 @pulumi.input_type
+class ConnectionOptionsAttributeMapArgs:
+    def __init__(__self__, *,
+                 mapping_mode: pulumi.Input[str],
+                 attributes: Optional[pulumi.Input[str]] = None,
+                 userinfo_scope: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "mapping_mode", mapping_mode)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+        if userinfo_scope is not None:
+            pulumi.set(__self__, "userinfo_scope", userinfo_scope)
+
+    @property
+    @pulumi.getter(name="mappingMode")
+    def mapping_mode(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "mapping_mode")
+
+    @mapping_mode.setter
+    def mapping_mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mapping_mode", value)
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "attributes")
+
+    @attributes.setter
+    def attributes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "attributes", value)
+
+    @property
+    @pulumi.getter(name="userinfoScope")
+    def userinfo_scope(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "userinfo_scope")
+
+    @userinfo_scope.setter
+    def userinfo_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "userinfo_scope", value)
+
+
+@pulumi.input_type
+class ConnectionOptionsConnectionSettingsArgs:
+    def __init__(__self__, *,
+                 pkce: pulumi.Input[str]):
+        pulumi.set(__self__, "pkce", pkce)
+
+    @property
+    @pulumi.getter
+    def pkce(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "pkce")
+
+    @pkce.setter
+    def pkce(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pkce", value)
+
+
+@pulumi.input_type
+class ConnectionOptionsDecryptionKeyArgs:
+    def __init__(__self__, *,
+                 cert: pulumi.Input[str],
+                 key: pulumi.Input[str]):
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def cert(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "cert")
+
+    @cert.setter
+    def cert(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cert", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+
+@pulumi.input_type
 class ConnectionOptionsGatewayAuthenticationArgs:
     def __init__(__self__, *,
                  audience: Optional[pulumi.Input[str]] = None,
@@ -4381,12 +5622,15 @@ class CustomDomainVerificationArgs:
 
 
 @pulumi.input_type
-class EmailCredentialsArgs:
+class EmailProviderCredentialsArgs:
     def __init__(__self__, *,
                  access_key_id: Optional[pulumi.Input[str]] = None,
                  api_key: Optional[pulumi.Input[str]] = None,
-                 api_user: Optional[pulumi.Input[str]] = None,
+                 azure_cs_connection_string: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
+                 ms365_client_id: Optional[pulumi.Input[str]] = None,
+                 ms365_client_secret: Optional[pulumi.Input[str]] = None,
+                 ms365_tenant_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  secret_access_key: Optional[pulumi.Input[str]] = None,
                  smtp_host: Optional[pulumi.Input[str]] = None,
@@ -4396,8 +5640,11 @@ class EmailCredentialsArgs:
         """
         :param pulumi.Input[str] access_key_id: AWS Access Key ID. Used only for AWS.
         :param pulumi.Input[str] api_key: API Key for your email service. Will always be encrypted in our database.
-        :param pulumi.Input[str] api_user: API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
+        :param pulumi.Input[str] azure_cs_connection_string: Azure Communication Services Connection String.
         :param pulumi.Input[str] domain: Domain name.
+        :param pulumi.Input[str] ms365_client_id: Microsoft 365 Client ID.
+        :param pulumi.Input[str] ms365_client_secret: Microsoft 365 Client Secret.
+        :param pulumi.Input[str] ms365_tenant_id: Microsoft 365 Tenant ID.
         :param pulumi.Input[str] region: Default region. Used only for AWS, Mailgun, and SparkPost.
         :param pulumi.Input[str] secret_access_key: AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
         :param pulumi.Input[str] smtp_host: Hostname or IP address of your SMTP server. Used only for SMTP.
@@ -4409,13 +5656,16 @@ class EmailCredentialsArgs:
             pulumi.set(__self__, "access_key_id", access_key_id)
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
-        if api_user is not None:
-            warnings.warn("""This field is not accepted by the API any more so it will be removed soon.""", DeprecationWarning)
-            pulumi.log.warn("""api_user is deprecated: This field is not accepted by the API any more so it will be removed soon.""")
-        if api_user is not None:
-            pulumi.set(__self__, "api_user", api_user)
+        if azure_cs_connection_string is not None:
+            pulumi.set(__self__, "azure_cs_connection_string", azure_cs_connection_string)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
+        if ms365_client_id is not None:
+            pulumi.set(__self__, "ms365_client_id", ms365_client_id)
+        if ms365_client_secret is not None:
+            pulumi.set(__self__, "ms365_client_secret", ms365_client_secret)
+        if ms365_tenant_id is not None:
+            pulumi.set(__self__, "ms365_tenant_id", ms365_tenant_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if secret_access_key is not None:
@@ -4454,19 +5704,16 @@ class EmailCredentialsArgs:
         pulumi.set(self, "api_key", value)
 
     @property
-    @pulumi.getter(name="apiUser")
-    def api_user(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="azureCsConnectionString")
+    def azure_cs_connection_string(self) -> Optional[pulumi.Input[str]]:
         """
-        API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
+        Azure Communication Services Connection String.
         """
-        warnings.warn("""This field is not accepted by the API any more so it will be removed soon.""", DeprecationWarning)
-        pulumi.log.warn("""api_user is deprecated: This field is not accepted by the API any more so it will be removed soon.""")
+        return pulumi.get(self, "azure_cs_connection_string")
 
-        return pulumi.get(self, "api_user")
-
-    @api_user.setter
-    def api_user(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "api_user", value)
+    @azure_cs_connection_string.setter
+    def azure_cs_connection_string(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "azure_cs_connection_string", value)
 
     @property
     @pulumi.getter
@@ -4479,6 +5726,42 @@ class EmailCredentialsArgs:
     @domain.setter
     def domain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="ms365ClientId")
+    def ms365_client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Microsoft 365 Client ID.
+        """
+        return pulumi.get(self, "ms365_client_id")
+
+    @ms365_client_id.setter
+    def ms365_client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ms365_client_id", value)
+
+    @property
+    @pulumi.getter(name="ms365ClientSecret")
+    def ms365_client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Microsoft 365 Client Secret.
+        """
+        return pulumi.get(self, "ms365_client_secret")
+
+    @ms365_client_secret.setter
+    def ms365_client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ms365_client_secret", value)
+
+    @property
+    @pulumi.getter(name="ms365TenantId")
+    def ms365_tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Microsoft 365 Tenant ID.
+        """
+        return pulumi.get(self, "ms365_tenant_id")
+
+    @ms365_tenant_id.setter
+    def ms365_tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ms365_tenant_id", value)
 
     @property
     @pulumi.getter
@@ -4554,13 +5837,13 @@ class EmailCredentialsArgs:
 
 
 @pulumi.input_type
-class EmailSettingsArgs:
+class EmailProviderSettingsArgs:
     def __init__(__self__, *,
-                 headers: Optional[pulumi.Input['EmailSettingsHeadersArgs']] = None,
-                 message: Optional[pulumi.Input['EmailSettingsMessageArgs']] = None):
+                 headers: Optional[pulumi.Input['EmailProviderSettingsHeadersArgs']] = None,
+                 message: Optional[pulumi.Input['EmailProviderSettingsMessageArgs']] = None):
         """
-        :param pulumi.Input['EmailSettingsHeadersArgs'] headers: Headers settings for the `smtp` email provider.
-        :param pulumi.Input['EmailSettingsMessageArgs'] message: Message settings for the `mandrill` or `ses` email provider.
+        :param pulumi.Input['EmailProviderSettingsHeadersArgs'] headers: Headers settings for the `smtp` email provider.
+        :param pulumi.Input['EmailProviderSettingsMessageArgs'] message: Message settings for the `mandrill` or `ses` email provider.
         """
         if headers is not None:
             pulumi.set(__self__, "headers", headers)
@@ -4569,31 +5852,31 @@ class EmailSettingsArgs:
 
     @property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input['EmailSettingsHeadersArgs']]:
+    def headers(self) -> Optional[pulumi.Input['EmailProviderSettingsHeadersArgs']]:
         """
         Headers settings for the `smtp` email provider.
         """
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input['EmailSettingsHeadersArgs']]):
+    def headers(self, value: Optional[pulumi.Input['EmailProviderSettingsHeadersArgs']]):
         pulumi.set(self, "headers", value)
 
     @property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input['EmailSettingsMessageArgs']]:
+    def message(self) -> Optional[pulumi.Input['EmailProviderSettingsMessageArgs']]:
         """
         Message settings for the `mandrill` or `ses` email provider.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input['EmailSettingsMessageArgs']]):
+    def message(self, value: Optional[pulumi.Input['EmailProviderSettingsMessageArgs']]):
         pulumi.set(self, "message", value)
 
 
 @pulumi.input_type
-class EmailSettingsHeadersArgs:
+class EmailProviderSettingsHeadersArgs:
     def __init__(__self__, *,
                  x_mc_view_content_link: Optional[pulumi.Input[str]] = None,
                  x_ses_configuration_set: Optional[pulumi.Input[str]] = None):
@@ -4622,7 +5905,7 @@ class EmailSettingsHeadersArgs:
 
 
 @pulumi.input_type
-class EmailSettingsMessageArgs:
+class EmailProviderSettingsMessageArgs:
     def __init__(__self__, *,
                  configuration_set_name: Optional[pulumi.Input[str]] = None,
                  view_content_link: Optional[pulumi.Input[bool]] = None):
@@ -4648,962 +5931,6 @@ class EmailSettingsMessageArgs:
     @view_content_link.setter
     def view_content_link(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "view_content_link", value)
-
-
-@pulumi.input_type
-class GlobalClientAddonsArgs:
-    def __init__(__self__, *,
-                 aws: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 azure_blob: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 azure_sb: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 box: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 cloudbees: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 concur: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 dropbox: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 echosign: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 egnyte: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 firebase: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 layer: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 mscrm: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 newrelic: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 office365: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 rms: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 salesforce: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 salesforce_api: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 salesforce_sandbox_api: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 samlp: Optional[pulumi.Input['GlobalClientAddonsSamlpArgs']] = None,
-                 sap_api: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 sentry: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 sharepoint: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 slack: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 springcm: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 wams: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 wsfed: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 zendesk: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 zoom: Optional[pulumi.Input[Mapping[str, Any]]] = None):
-        """
-        :param pulumi.Input['GlobalClientAddonsSamlpArgs'] samlp: Configuration settings for a SAML add-on.
-        :param pulumi.Input[Mapping[str, Any]] wsfed: WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
-        """
-        if aws is not None:
-            pulumi.set(__self__, "aws", aws)
-        if azure_blob is not None:
-            pulumi.set(__self__, "azure_blob", azure_blob)
-        if azure_sb is not None:
-            pulumi.set(__self__, "azure_sb", azure_sb)
-        if box is not None:
-            pulumi.set(__self__, "box", box)
-        if cloudbees is not None:
-            pulumi.set(__self__, "cloudbees", cloudbees)
-        if concur is not None:
-            pulumi.set(__self__, "concur", concur)
-        if dropbox is not None:
-            pulumi.set(__self__, "dropbox", dropbox)
-        if echosign is not None:
-            pulumi.set(__self__, "echosign", echosign)
-        if egnyte is not None:
-            pulumi.set(__self__, "egnyte", egnyte)
-        if firebase is not None:
-            pulumi.set(__self__, "firebase", firebase)
-        if layer is not None:
-            pulumi.set(__self__, "layer", layer)
-        if mscrm is not None:
-            pulumi.set(__self__, "mscrm", mscrm)
-        if newrelic is not None:
-            pulumi.set(__self__, "newrelic", newrelic)
-        if office365 is not None:
-            pulumi.set(__self__, "office365", office365)
-        if rms is not None:
-            pulumi.set(__self__, "rms", rms)
-        if salesforce is not None:
-            pulumi.set(__self__, "salesforce", salesforce)
-        if salesforce_api is not None:
-            pulumi.set(__self__, "salesforce_api", salesforce_api)
-        if salesforce_sandbox_api is not None:
-            pulumi.set(__self__, "salesforce_sandbox_api", salesforce_sandbox_api)
-        if samlp is not None:
-            pulumi.set(__self__, "samlp", samlp)
-        if sap_api is not None:
-            pulumi.set(__self__, "sap_api", sap_api)
-        if sentry is not None:
-            pulumi.set(__self__, "sentry", sentry)
-        if sharepoint is not None:
-            pulumi.set(__self__, "sharepoint", sharepoint)
-        if slack is not None:
-            pulumi.set(__self__, "slack", slack)
-        if springcm is not None:
-            pulumi.set(__self__, "springcm", springcm)
-        if wams is not None:
-            pulumi.set(__self__, "wams", wams)
-        if wsfed is not None:
-            pulumi.set(__self__, "wsfed", wsfed)
-        if zendesk is not None:
-            pulumi.set(__self__, "zendesk", zendesk)
-        if zoom is not None:
-            pulumi.set(__self__, "zoom", zoom)
-
-    @property
-    @pulumi.getter
-    def aws(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "aws")
-
-    @aws.setter
-    def aws(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "aws", value)
-
-    @property
-    @pulumi.getter(name="azureBlob")
-    def azure_blob(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "azure_blob")
-
-    @azure_blob.setter
-    def azure_blob(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "azure_blob", value)
-
-    @property
-    @pulumi.getter(name="azureSb")
-    def azure_sb(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "azure_sb")
-
-    @azure_sb.setter
-    def azure_sb(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "azure_sb", value)
-
-    @property
-    @pulumi.getter
-    def box(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "box")
-
-    @box.setter
-    def box(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "box", value)
-
-    @property
-    @pulumi.getter
-    def cloudbees(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "cloudbees")
-
-    @cloudbees.setter
-    def cloudbees(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "cloudbees", value)
-
-    @property
-    @pulumi.getter
-    def concur(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "concur")
-
-    @concur.setter
-    def concur(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "concur", value)
-
-    @property
-    @pulumi.getter
-    def dropbox(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "dropbox")
-
-    @dropbox.setter
-    def dropbox(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "dropbox", value)
-
-    @property
-    @pulumi.getter
-    def echosign(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "echosign")
-
-    @echosign.setter
-    def echosign(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "echosign", value)
-
-    @property
-    @pulumi.getter
-    def egnyte(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "egnyte")
-
-    @egnyte.setter
-    def egnyte(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "egnyte", value)
-
-    @property
-    @pulumi.getter
-    def firebase(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "firebase")
-
-    @firebase.setter
-    def firebase(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "firebase", value)
-
-    @property
-    @pulumi.getter
-    def layer(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "layer")
-
-    @layer.setter
-    def layer(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "layer", value)
-
-    @property
-    @pulumi.getter
-    def mscrm(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "mscrm")
-
-    @mscrm.setter
-    def mscrm(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "mscrm", value)
-
-    @property
-    @pulumi.getter
-    def newrelic(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "newrelic")
-
-    @newrelic.setter
-    def newrelic(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "newrelic", value)
-
-    @property
-    @pulumi.getter
-    def office365(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "office365")
-
-    @office365.setter
-    def office365(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "office365", value)
-
-    @property
-    @pulumi.getter
-    def rms(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "rms")
-
-    @rms.setter
-    def rms(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "rms", value)
-
-    @property
-    @pulumi.getter
-    def salesforce(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "salesforce")
-
-    @salesforce.setter
-    def salesforce(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "salesforce", value)
-
-    @property
-    @pulumi.getter(name="salesforceApi")
-    def salesforce_api(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "salesforce_api")
-
-    @salesforce_api.setter
-    def salesforce_api(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "salesforce_api", value)
-
-    @property
-    @pulumi.getter(name="salesforceSandboxApi")
-    def salesforce_sandbox_api(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "salesforce_sandbox_api")
-
-    @salesforce_sandbox_api.setter
-    def salesforce_sandbox_api(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "salesforce_sandbox_api", value)
-
-    @property
-    @pulumi.getter
-    def samlp(self) -> Optional[pulumi.Input['GlobalClientAddonsSamlpArgs']]:
-        """
-        Configuration settings for a SAML add-on.
-        """
-        return pulumi.get(self, "samlp")
-
-    @samlp.setter
-    def samlp(self, value: Optional[pulumi.Input['GlobalClientAddonsSamlpArgs']]):
-        pulumi.set(self, "samlp", value)
-
-    @property
-    @pulumi.getter(name="sapApi")
-    def sap_api(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "sap_api")
-
-    @sap_api.setter
-    def sap_api(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "sap_api", value)
-
-    @property
-    @pulumi.getter
-    def sentry(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "sentry")
-
-    @sentry.setter
-    def sentry(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "sentry", value)
-
-    @property
-    @pulumi.getter
-    def sharepoint(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "sharepoint")
-
-    @sharepoint.setter
-    def sharepoint(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "sharepoint", value)
-
-    @property
-    @pulumi.getter
-    def slack(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "slack")
-
-    @slack.setter
-    def slack(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "slack", value)
-
-    @property
-    @pulumi.getter
-    def springcm(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "springcm")
-
-    @springcm.setter
-    def springcm(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "springcm", value)
-
-    @property
-    @pulumi.getter
-    def wams(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "wams")
-
-    @wams.setter
-    def wams(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "wams", value)
-
-    @property
-    @pulumi.getter
-    def wsfed(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
-        """
-        return pulumi.get(self, "wsfed")
-
-    @wsfed.setter
-    def wsfed(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "wsfed", value)
-
-    @property
-    @pulumi.getter
-    def zendesk(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "zendesk")
-
-    @zendesk.setter
-    def zendesk(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "zendesk", value)
-
-    @property
-    @pulumi.getter
-    def zoom(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "zoom")
-
-    @zoom.setter
-    def zoom(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "zoom", value)
-
-
-@pulumi.input_type
-class GlobalClientAddonsSamlpArgs:
-    def __init__(__self__, *,
-                 audience: Optional[pulumi.Input[str]] = None,
-                 authn_context_class_ref: Optional[pulumi.Input[str]] = None,
-                 binding: Optional[pulumi.Input[str]] = None,
-                 create_upn_claim: Optional[pulumi.Input[bool]] = None,
-                 destination: Optional[pulumi.Input[str]] = None,
-                 digest_algorithm: Optional[pulumi.Input[str]] = None,
-                 include_attribute_name_format: Optional[pulumi.Input[bool]] = None,
-                 issuer: Optional[pulumi.Input[str]] = None,
-                 lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
-                 logout: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 map_identities: Optional[pulumi.Input[bool]] = None,
-                 map_unknown_claims_as_is: Optional[pulumi.Input[bool]] = None,
-                 mappings: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 name_identifier_format: Optional[pulumi.Input[str]] = None,
-                 name_identifier_probes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 passthrough_claims_with_no_mapping: Optional[pulumi.Input[bool]] = None,
-                 recipient: Optional[pulumi.Input[str]] = None,
-                 sign_response: Optional[pulumi.Input[bool]] = None,
-                 signature_algorithm: Optional[pulumi.Input[str]] = None,
-                 signing_cert: Optional[pulumi.Input[str]] = None,
-                 typed_attributes: Optional[pulumi.Input[bool]] = None):
-        if audience is not None:
-            pulumi.set(__self__, "audience", audience)
-        if authn_context_class_ref is not None:
-            pulumi.set(__self__, "authn_context_class_ref", authn_context_class_ref)
-        if binding is not None:
-            pulumi.set(__self__, "binding", binding)
-        if create_upn_claim is not None:
-            pulumi.set(__self__, "create_upn_claim", create_upn_claim)
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
-        if digest_algorithm is not None:
-            pulumi.set(__self__, "digest_algorithm", digest_algorithm)
-        if include_attribute_name_format is not None:
-            pulumi.set(__self__, "include_attribute_name_format", include_attribute_name_format)
-        if issuer is not None:
-            pulumi.set(__self__, "issuer", issuer)
-        if lifetime_in_seconds is not None:
-            pulumi.set(__self__, "lifetime_in_seconds", lifetime_in_seconds)
-        if logout is not None:
-            pulumi.set(__self__, "logout", logout)
-        if map_identities is not None:
-            pulumi.set(__self__, "map_identities", map_identities)
-        if map_unknown_claims_as_is is not None:
-            pulumi.set(__self__, "map_unknown_claims_as_is", map_unknown_claims_as_is)
-        if mappings is not None:
-            pulumi.set(__self__, "mappings", mappings)
-        if name_identifier_format is not None:
-            pulumi.set(__self__, "name_identifier_format", name_identifier_format)
-        if name_identifier_probes is not None:
-            pulumi.set(__self__, "name_identifier_probes", name_identifier_probes)
-        if passthrough_claims_with_no_mapping is not None:
-            pulumi.set(__self__, "passthrough_claims_with_no_mapping", passthrough_claims_with_no_mapping)
-        if recipient is not None:
-            pulumi.set(__self__, "recipient", recipient)
-        if sign_response is not None:
-            pulumi.set(__self__, "sign_response", sign_response)
-        if signature_algorithm is not None:
-            pulumi.set(__self__, "signature_algorithm", signature_algorithm)
-        if signing_cert is not None:
-            pulumi.set(__self__, "signing_cert", signing_cert)
-        if typed_attributes is not None:
-            pulumi.set(__self__, "typed_attributes", typed_attributes)
-
-    @property
-    @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "audience")
-
-    @audience.setter
-    def audience(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "audience", value)
-
-    @property
-    @pulumi.getter(name="authnContextClassRef")
-    def authn_context_class_ref(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "authn_context_class_ref")
-
-    @authn_context_class_ref.setter
-    def authn_context_class_ref(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "authn_context_class_ref", value)
-
-    @property
-    @pulumi.getter
-    def binding(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "binding")
-
-    @binding.setter
-    def binding(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "binding", value)
-
-    @property
-    @pulumi.getter(name="createUpnClaim")
-    def create_upn_claim(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "create_upn_claim")
-
-    @create_upn_claim.setter
-    def create_upn_claim(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "create_upn_claim", value)
-
-    @property
-    @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "destination")
-
-    @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "destination", value)
-
-    @property
-    @pulumi.getter(name="digestAlgorithm")
-    def digest_algorithm(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "digest_algorithm")
-
-    @digest_algorithm.setter
-    def digest_algorithm(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "digest_algorithm", value)
-
-    @property
-    @pulumi.getter(name="includeAttributeNameFormat")
-    def include_attribute_name_format(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "include_attribute_name_format")
-
-    @include_attribute_name_format.setter
-    def include_attribute_name_format(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "include_attribute_name_format", value)
-
-    @property
-    @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "issuer")
-
-    @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "issuer", value)
-
-    @property
-    @pulumi.getter(name="lifetimeInSeconds")
-    def lifetime_in_seconds(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "lifetime_in_seconds")
-
-    @lifetime_in_seconds.setter
-    def lifetime_in_seconds(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "lifetime_in_seconds", value)
-
-    @property
-    @pulumi.getter
-    def logout(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "logout")
-
-    @logout.setter
-    def logout(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "logout", value)
-
-    @property
-    @pulumi.getter(name="mapIdentities")
-    def map_identities(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "map_identities")
-
-    @map_identities.setter
-    def map_identities(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "map_identities", value)
-
-    @property
-    @pulumi.getter(name="mapUnknownClaimsAsIs")
-    def map_unknown_claims_as_is(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "map_unknown_claims_as_is")
-
-    @map_unknown_claims_as_is.setter
-    def map_unknown_claims_as_is(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "map_unknown_claims_as_is", value)
-
-    @property
-    @pulumi.getter
-    def mappings(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        return pulumi.get(self, "mappings")
-
-    @mappings.setter
-    def mappings(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "mappings", value)
-
-    @property
-    @pulumi.getter(name="nameIdentifierFormat")
-    def name_identifier_format(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "name_identifier_format")
-
-    @name_identifier_format.setter
-    def name_identifier_format(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name_identifier_format", value)
-
-    @property
-    @pulumi.getter(name="nameIdentifierProbes")
-    def name_identifier_probes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        return pulumi.get(self, "name_identifier_probes")
-
-    @name_identifier_probes.setter
-    def name_identifier_probes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "name_identifier_probes", value)
-
-    @property
-    @pulumi.getter(name="passthroughClaimsWithNoMapping")
-    def passthrough_claims_with_no_mapping(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "passthrough_claims_with_no_mapping")
-
-    @passthrough_claims_with_no_mapping.setter
-    def passthrough_claims_with_no_mapping(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "passthrough_claims_with_no_mapping", value)
-
-    @property
-    @pulumi.getter
-    def recipient(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "recipient")
-
-    @recipient.setter
-    def recipient(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "recipient", value)
-
-    @property
-    @pulumi.getter(name="signResponse")
-    def sign_response(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "sign_response")
-
-    @sign_response.setter
-    def sign_response(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "sign_response", value)
-
-    @property
-    @pulumi.getter(name="signatureAlgorithm")
-    def signature_algorithm(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "signature_algorithm")
-
-    @signature_algorithm.setter
-    def signature_algorithm(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "signature_algorithm", value)
-
-    @property
-    @pulumi.getter(name="signingCert")
-    def signing_cert(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "signing_cert")
-
-    @signing_cert.setter
-    def signing_cert(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "signing_cert", value)
-
-    @property
-    @pulumi.getter(name="typedAttributes")
-    def typed_attributes(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "typed_attributes")
-
-    @typed_attributes.setter
-    def typed_attributes(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "typed_attributes", value)
-
-
-@pulumi.input_type
-class GlobalClientJwtConfigurationArgs:
-    def __init__(__self__, *,
-                 alg: Optional[pulumi.Input[str]] = None,
-                 lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
-                 scopes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 secret_encoded: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[str] alg: Algorithm used to sign JWTs.
-        :param pulumi.Input[int] lifetime_in_seconds: Number of seconds during which the JWT will be valid.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] scopes: Permissions (scopes) included in JWTs.
-        :param pulumi.Input[bool] secret_encoded: Indicates whether the client secret is Base64-encoded.
-        """
-        if alg is not None:
-            pulumi.set(__self__, "alg", alg)
-        if lifetime_in_seconds is not None:
-            pulumi.set(__self__, "lifetime_in_seconds", lifetime_in_seconds)
-        if scopes is not None:
-            pulumi.set(__self__, "scopes", scopes)
-        if secret_encoded is not None:
-            pulumi.set(__self__, "secret_encoded", secret_encoded)
-
-    @property
-    @pulumi.getter
-    def alg(self) -> Optional[pulumi.Input[str]]:
-        """
-        Algorithm used to sign JWTs.
-        """
-        return pulumi.get(self, "alg")
-
-    @alg.setter
-    def alg(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "alg", value)
-
-    @property
-    @pulumi.getter(name="lifetimeInSeconds")
-    def lifetime_in_seconds(self) -> Optional[pulumi.Input[int]]:
-        """
-        Number of seconds during which the JWT will be valid.
-        """
-        return pulumi.get(self, "lifetime_in_seconds")
-
-    @lifetime_in_seconds.setter
-    def lifetime_in_seconds(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "lifetime_in_seconds", value)
-
-    @property
-    @pulumi.getter
-    def scopes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Permissions (scopes) included in JWTs.
-        """
-        return pulumi.get(self, "scopes")
-
-    @scopes.setter
-    def scopes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "scopes", value)
-
-    @property
-    @pulumi.getter(name="secretEncoded")
-    def secret_encoded(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether the client secret is Base64-encoded.
-        """
-        return pulumi.get(self, "secret_encoded")
-
-    @secret_encoded.setter
-    def secret_encoded(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "secret_encoded", value)
-
-
-@pulumi.input_type
-class GlobalClientMobileArgs:
-    def __init__(__self__, *,
-                 android: Optional[pulumi.Input['GlobalClientMobileAndroidArgs']] = None,
-                 ios: Optional[pulumi.Input['GlobalClientMobileIosArgs']] = None):
-        """
-        :param pulumi.Input['GlobalClientMobileAndroidArgs'] android: Configuration settings for Android native apps.
-        :param pulumi.Input['GlobalClientMobileIosArgs'] ios: Configuration settings for i0S native apps.
-        """
-        if android is not None:
-            pulumi.set(__self__, "android", android)
-        if ios is not None:
-            pulumi.set(__self__, "ios", ios)
-
-    @property
-    @pulumi.getter
-    def android(self) -> Optional[pulumi.Input['GlobalClientMobileAndroidArgs']]:
-        """
-        Configuration settings for Android native apps.
-        """
-        return pulumi.get(self, "android")
-
-    @android.setter
-    def android(self, value: Optional[pulumi.Input['GlobalClientMobileAndroidArgs']]):
-        pulumi.set(self, "android", value)
-
-    @property
-    @pulumi.getter
-    def ios(self) -> Optional[pulumi.Input['GlobalClientMobileIosArgs']]:
-        """
-        Configuration settings for i0S native apps.
-        """
-        return pulumi.get(self, "ios")
-
-    @ios.setter
-    def ios(self, value: Optional[pulumi.Input['GlobalClientMobileIosArgs']]):
-        pulumi.set(self, "ios", value)
-
-
-@pulumi.input_type
-class GlobalClientMobileAndroidArgs:
-    def __init__(__self__, *,
-                 app_package_name: Optional[pulumi.Input[str]] = None,
-                 sha256_cert_fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        if app_package_name is not None:
-            pulumi.set(__self__, "app_package_name", app_package_name)
-        if sha256_cert_fingerprints is not None:
-            pulumi.set(__self__, "sha256_cert_fingerprints", sha256_cert_fingerprints)
-
-    @property
-    @pulumi.getter(name="appPackageName")
-    def app_package_name(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "app_package_name")
-
-    @app_package_name.setter
-    def app_package_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "app_package_name", value)
-
-    @property
-    @pulumi.getter(name="sha256CertFingerprints")
-    def sha256_cert_fingerprints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        return pulumi.get(self, "sha256_cert_fingerprints")
-
-    @sha256_cert_fingerprints.setter
-    def sha256_cert_fingerprints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "sha256_cert_fingerprints", value)
-
-
-@pulumi.input_type
-class GlobalClientMobileIosArgs:
-    def __init__(__self__, *,
-                 app_bundle_identifier: Optional[pulumi.Input[str]] = None,
-                 team_id: Optional[pulumi.Input[str]] = None):
-        if app_bundle_identifier is not None:
-            pulumi.set(__self__, "app_bundle_identifier", app_bundle_identifier)
-        if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
-
-    @property
-    @pulumi.getter(name="appBundleIdentifier")
-    def app_bundle_identifier(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "app_bundle_identifier")
-
-    @app_bundle_identifier.setter
-    def app_bundle_identifier(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "app_bundle_identifier", value)
-
-    @property
-    @pulumi.getter(name="teamId")
-    def team_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "team_id")
-
-    @team_id.setter
-    def team_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "team_id", value)
-
-
-@pulumi.input_type
-class GlobalClientNativeSocialLoginArgs:
-    def __init__(__self__, *,
-                 apple: Optional[pulumi.Input['GlobalClientNativeSocialLoginAppleArgs']] = None,
-                 facebook: Optional[pulumi.Input['GlobalClientNativeSocialLoginFacebookArgs']] = None):
-        if apple is not None:
-            pulumi.set(__self__, "apple", apple)
-        if facebook is not None:
-            pulumi.set(__self__, "facebook", facebook)
-
-    @property
-    @pulumi.getter
-    def apple(self) -> Optional[pulumi.Input['GlobalClientNativeSocialLoginAppleArgs']]:
-        return pulumi.get(self, "apple")
-
-    @apple.setter
-    def apple(self, value: Optional[pulumi.Input['GlobalClientNativeSocialLoginAppleArgs']]):
-        pulumi.set(self, "apple", value)
-
-    @property
-    @pulumi.getter
-    def facebook(self) -> Optional[pulumi.Input['GlobalClientNativeSocialLoginFacebookArgs']]:
-        return pulumi.get(self, "facebook")
-
-    @facebook.setter
-    def facebook(self, value: Optional[pulumi.Input['GlobalClientNativeSocialLoginFacebookArgs']]):
-        pulumi.set(self, "facebook", value)
-
-
-@pulumi.input_type
-class GlobalClientNativeSocialLoginAppleArgs:
-    def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[bool]] = None):
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enabled", value)
-
-
-@pulumi.input_type
-class GlobalClientNativeSocialLoginFacebookArgs:
-    def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[bool]] = None):
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enabled", value)
-
-
-@pulumi.input_type
-class GlobalClientRefreshTokenArgs:
-    def __init__(__self__, *,
-                 expiration_type: pulumi.Input[str],
-                 rotation_type: pulumi.Input[str],
-                 idle_token_lifetime: Optional[pulumi.Input[int]] = None,
-                 infinite_idle_token_lifetime: Optional[pulumi.Input[bool]] = None,
-                 infinite_token_lifetime: Optional[pulumi.Input[bool]] = None,
-                 leeway: Optional[pulumi.Input[int]] = None,
-                 token_lifetime: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[str] expiration_type: Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
-        :param pulumi.Input[str] rotation_type: Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
-        :param pulumi.Input[int] idle_token_lifetime: The time in seconds after which inactive refresh tokens will expire.
-        :param pulumi.Input[bool] infinite_idle_token_lifetime: Whether inactive refresh tokens should remain valid indefinitely.
-        :param pulumi.Input[bool] infinite_token_lifetime: Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
-        :param pulumi.Input[int] leeway: The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
-        :param pulumi.Input[int] token_lifetime: The absolute lifetime of a refresh token in seconds.
-        """
-        pulumi.set(__self__, "expiration_type", expiration_type)
-        pulumi.set(__self__, "rotation_type", rotation_type)
-        if idle_token_lifetime is not None:
-            pulumi.set(__self__, "idle_token_lifetime", idle_token_lifetime)
-        if infinite_idle_token_lifetime is not None:
-            pulumi.set(__self__, "infinite_idle_token_lifetime", infinite_idle_token_lifetime)
-        if infinite_token_lifetime is not None:
-            pulumi.set(__self__, "infinite_token_lifetime", infinite_token_lifetime)
-        if leeway is not None:
-            pulumi.set(__self__, "leeway", leeway)
-        if token_lifetime is not None:
-            pulumi.set(__self__, "token_lifetime", token_lifetime)
-
-    @property
-    @pulumi.getter(name="expirationType")
-    def expiration_type(self) -> pulumi.Input[str]:
-        """
-        Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
-        """
-        return pulumi.get(self, "expiration_type")
-
-    @expiration_type.setter
-    def expiration_type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "expiration_type", value)
-
-    @property
-    @pulumi.getter(name="rotationType")
-    def rotation_type(self) -> pulumi.Input[str]:
-        """
-        Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
-        """
-        return pulumi.get(self, "rotation_type")
-
-    @rotation_type.setter
-    def rotation_type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "rotation_type", value)
-
-    @property
-    @pulumi.getter(name="idleTokenLifetime")
-    def idle_token_lifetime(self) -> Optional[pulumi.Input[int]]:
-        """
-        The time in seconds after which inactive refresh tokens will expire.
-        """
-        return pulumi.get(self, "idle_token_lifetime")
-
-    @idle_token_lifetime.setter
-    def idle_token_lifetime(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "idle_token_lifetime", value)
-
-    @property
-    @pulumi.getter(name="infiniteIdleTokenLifetime")
-    def infinite_idle_token_lifetime(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether inactive refresh tokens should remain valid indefinitely.
-        """
-        return pulumi.get(self, "infinite_idle_token_lifetime")
-
-    @infinite_idle_token_lifetime.setter
-    def infinite_idle_token_lifetime(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "infinite_idle_token_lifetime", value)
-
-    @property
-    @pulumi.getter(name="infiniteTokenLifetime")
-    def infinite_token_lifetime(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
-        """
-        return pulumi.get(self, "infinite_token_lifetime")
-
-    @infinite_token_lifetime.setter
-    def infinite_token_lifetime(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "infinite_token_lifetime", value)
-
-    @property
-    @pulumi.getter
-    def leeway(self) -> Optional[pulumi.Input[int]]:
-        """
-        The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
-        """
-        return pulumi.get(self, "leeway")
-
-    @leeway.setter
-    def leeway(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "leeway", value)
-
-    @property
-    @pulumi.getter(name="tokenLifetime")
-    def token_lifetime(self) -> Optional[pulumi.Input[int]]:
-        """
-        The absolute lifetime of a refresh token in seconds.
-        """
-        return pulumi.get(self, "token_lifetime")
-
-    @token_lifetime.setter
-    def token_lifetime(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "token_lifetime", value)
 
 
 @pulumi.input_type
@@ -6246,13 +6573,13 @@ class LogStreamSinkArgs:
         """
         :param pulumi.Input[str] aws_account_id: The AWS Account ID.
         :param pulumi.Input[str] aws_partner_event_source: Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS, so this should be an output attribute.
-        :param pulumi.Input[str] aws_region: The AWS Region, e.g. "us-east-2").
+        :param pulumi.Input[str] aws_region: The region in which the EventBridge event source will be created. Possible values: `ap-east-1`, `ap-northeast-1`, `ap-northeast-2`, `ap-northeast-3`, `ap-south-1`, `ap-southeast-1`, `ap-southeast-2`, `ca-central-1`, `cn-north-1`, `cn-northwest-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `me-south-1`, `sa-east-1`, `us-gov-east-1`, `us-gov-west-1`, `us-east-1`, `us-east-2`, `us-west-1`, `us-west-2`.
         :param pulumi.Input[str] azure_partner_topic: Name of the Partner Topic to be used with Azure. Generally should not be specified.
-        :param pulumi.Input[str] azure_region: The Azure region code, e.g. "ne")
+        :param pulumi.Input[str] azure_region: The Azure region code. Possible values: `australiacentral`, `australiaeast`, `australiasoutheast`, `brazilsouth`, `canadacentral`, `canadaeast`, `centralindia`, `centralus`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `germanywestcentral`, `japaneast`, `japanwest`, `koreacentral`, `koreasouth`, `northcentralus`, `northeurope`, `norwayeast`, `southafricanorth`, `southcentralus`, `southeastasia`, `southindia`, `switzerlandnorth`, `uaenorth`, `uksouth`, `ukwest`, `westcentralus`, `westeurope`, `westindia`, `westus`, `westus2`.
         :param pulumi.Input[str] azure_resource_group: The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription.
         :param pulumi.Input[str] azure_subscription_id: The unique alphanumeric string that identifies your Azure subscription.
         :param pulumi.Input[str] datadog_api_key: The Datadog API key.
-        :param pulumi.Input[str] datadog_region: The Datadog region. Options are ["us", "eu", "us3", "us5"].
+        :param pulumi.Input[str] datadog_region: The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
         :param pulumi.Input[str] http_authorization: Sent in the HTTP "Authorization" header with each request.
         :param pulumi.Input[str] http_content_format: The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
         :param pulumi.Input[str] http_content_type: The "Content-Type" header to send over HTTP. Common value is "application/json".
@@ -6346,7 +6673,7 @@ class LogStreamSinkArgs:
     @pulumi.getter(name="awsRegion")
     def aws_region(self) -> Optional[pulumi.Input[str]]:
         """
-        The AWS Region, e.g. "us-east-2").
+        The region in which the EventBridge event source will be created. Possible values: `ap-east-1`, `ap-northeast-1`, `ap-northeast-2`, `ap-northeast-3`, `ap-south-1`, `ap-southeast-1`, `ap-southeast-2`, `ca-central-1`, `cn-north-1`, `cn-northwest-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `me-south-1`, `sa-east-1`, `us-gov-east-1`, `us-gov-west-1`, `us-east-1`, `us-east-2`, `us-west-1`, `us-west-2`.
         """
         return pulumi.get(self, "aws_region")
 
@@ -6370,7 +6697,7 @@ class LogStreamSinkArgs:
     @pulumi.getter(name="azureRegion")
     def azure_region(self) -> Optional[pulumi.Input[str]]:
         """
-        The Azure region code, e.g. "ne")
+        The Azure region code. Possible values: `australiacentral`, `australiaeast`, `australiasoutheast`, `brazilsouth`, `canadacentral`, `canadaeast`, `centralindia`, `centralus`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `germanywestcentral`, `japaneast`, `japanwest`, `koreacentral`, `koreasouth`, `northcentralus`, `northeurope`, `norwayeast`, `southafricanorth`, `southcentralus`, `southeastasia`, `southindia`, `switzerlandnorth`, `uaenorth`, `uksouth`, `ukwest`, `westcentralus`, `westeurope`, `westindia`, `westus`, `westus2`.
         """
         return pulumi.get(self, "azure_region")
 
@@ -6418,7 +6745,7 @@ class LogStreamSinkArgs:
     @pulumi.getter(name="datadogRegion")
     def datadog_region(self) -> Optional[pulumi.Input[str]]:
         """
-        The Datadog region. Options are ["us", "eu", "us3", "us5"].
+        The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
         """
         return pulumi.get(self, "datadog_region")
 
@@ -6850,44 +7177,6 @@ class PagesLoginArgs:
 
 
 @pulumi.input_type
-class ResourceServerScopeArgs:
-    def __init__(__self__, *,
-                 value: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] value: Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
-        :param pulumi.Input[str] description: Description of the permission (scope).
-        """
-        pulumi.set(__self__, "value", value)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-
-    @property
-    @pulumi.getter
-    def value(self) -> pulumi.Input[str]:
-        """
-        Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input[str]):
-        pulumi.set(self, "value", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Description of the permission (scope).
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-
-@pulumi.input_type
 class ResourceServerScopesScopeArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
@@ -6923,75 +7212,6 @@ class ResourceServerScopesScopeArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-
-@pulumi.input_type
-class RolePermissionArgs:
-    def __init__(__self__, *,
-                 name: pulumi.Input[str],
-                 resource_server_identifier: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None,
-                 resource_server_name: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] name: Name of the permission (scope) configured on the resource server. If referencing a scope from an `ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
-        :param pulumi.Input[str] resource_server_identifier: Unique identifier for the resource server.
-        :param pulumi.Input[str] description: Description of the permission.
-        :param pulumi.Input[str] resource_server_name: Name of resource server that the permission is associated with.
-        """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if resource_server_name is not None:
-            pulumi.set(__self__, "resource_server_name", resource_server_name)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        Name of the permission (scope) configured on the resource server. If referencing a scope from an `ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="resourceServerIdentifier")
-    def resource_server_identifier(self) -> pulumi.Input[str]:
-        """
-        Unique identifier for the resource server.
-        """
-        return pulumi.get(self, "resource_server_identifier")
-
-    @resource_server_identifier.setter
-    def resource_server_identifier(self, value: pulumi.Input[str]):
-        pulumi.set(self, "resource_server_identifier", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Description of the permission.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="resourceServerName")
-    def resource_server_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of resource server that the permission is associated with.
-        """
-        return pulumi.get(self, "resource_server_name")
-
-    @resource_server_name.setter
-    def resource_server_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "resource_server_name", value)
 
 
 @pulumi.input_type
@@ -7064,95 +7284,6 @@ class RolePermissionsPermissionArgs:
 
 
 @pulumi.input_type
-class TenantChangePasswordArgs:
-    def __init__(__self__, *,
-                 enabled: pulumi.Input[bool],
-                 html: pulumi.Input[str]):
-        """
-        :param pulumi.Input[bool] enabled: Indicates whether to use the custom change password page.
-        :param pulumi.Input[str] html: HTML format with supported Liquid syntax. Customized content of the change password page.
-        """
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "html", html)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> pulumi.Input[bool]:
-        """
-        Indicates whether to use the custom change password page.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "enabled", value)
-
-    @property
-    @pulumi.getter
-    def html(self) -> pulumi.Input[str]:
-        """
-        HTML format with supported Liquid syntax. Customized content of the change password page.
-        """
-        return pulumi.get(self, "html")
-
-    @html.setter
-    def html(self, value: pulumi.Input[str]):
-        pulumi.set(self, "html", value)
-
-
-@pulumi.input_type
-class TenantErrorPageArgs:
-    def __init__(__self__, *,
-                 html: pulumi.Input[str],
-                 show_log_link: pulumi.Input[bool],
-                 url: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] html: HTML format with supported Liquid syntax. Customized content of the error page.
-        :param pulumi.Input[bool] show_log_link: Indicates whether to show the link to logs as part of the default error page.
-        :param pulumi.Input[str] url: URL to redirect to when an error occurs rather than showing the default error page.
-        """
-        pulumi.set(__self__, "html", html)
-        pulumi.set(__self__, "show_log_link", show_log_link)
-        pulumi.set(__self__, "url", url)
-
-    @property
-    @pulumi.getter
-    def html(self) -> pulumi.Input[str]:
-        """
-        HTML format with supported Liquid syntax. Customized content of the error page.
-        """
-        return pulumi.get(self, "html")
-
-    @html.setter
-    def html(self, value: pulumi.Input[str]):
-        pulumi.set(self, "html", value)
-
-    @property
-    @pulumi.getter(name="showLogLink")
-    def show_log_link(self) -> pulumi.Input[bool]:
-        """
-        Indicates whether to show the link to logs as part of the default error page.
-        """
-        return pulumi.get(self, "show_log_link")
-
-    @show_log_link.setter
-    def show_log_link(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "show_log_link", value)
-
-    @property
-    @pulumi.getter
-    def url(self) -> pulumi.Input[str]:
-        """
-        URL to redirect to when an error occurs rather than showing the default error page.
-        """
-        return pulumi.get(self, "url")
-
-    @url.setter
-    def url(self, value: pulumi.Input[str]):
-        pulumi.set(self, "url", value)
-
-
-@pulumi.input_type
 class TenantFlagsArgs:
     def __init__(__self__, *,
                  allow_legacy_delegation_grant_types: Optional[pulumi.Input[bool]] = None,
@@ -7175,8 +7306,8 @@ class TenantFlagsArgs:
                  enable_public_signup_user_exists_error: Optional[pulumi.Input[bool]] = None,
                  mfa_show_factor_list_on_enrollment: Optional[pulumi.Input[bool]] = None,
                  no_disclose_enterprise_connections: Optional[pulumi.Input[bool]] = None,
+                 require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
                  revoke_refresh_token_grant: Optional[pulumi.Input[bool]] = None,
-                 universal_login: Optional[pulumi.Input[bool]] = None,
                  use_scope_descriptions_for_consent: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] allow_legacy_delegation_grant_types: Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
@@ -7190,7 +7321,7 @@ class TenantFlagsArgs:
         :param pulumi.Input[bool] enable_adfs_waad_email_verification: If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
         :param pulumi.Input[bool] enable_apis_section: Indicates whether the APIs section is enabled for the tenant.
         :param pulumi.Input[bool] enable_client_connections: Indicates whether all current connections should be enabled when a new client is created.
-        :param pulumi.Input[bool] enable_custom_domain_in_emails: Indicates whether the tenant allows custom domains in emails.
+        :param pulumi.Input[bool] enable_custom_domain_in_emails: Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
         :param pulumi.Input[bool] enable_dynamic_client_registration: Indicates whether the tenant allows dynamic client registration.
         :param pulumi.Input[bool] enable_idtoken_api2: Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
         :param pulumi.Input[bool] enable_legacy_logs_search_v2: Indicates whether to use the older v2 legacy logs search.
@@ -7199,8 +7330,8 @@ class TenantFlagsArgs:
         :param pulumi.Input[bool] enable_public_signup_user_exists_error: Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
         :param pulumi.Input[bool] mfa_show_factor_list_on_enrollment: Used to allow users to pick which factor to enroll with from the list of available MFA factors.
         :param pulumi.Input[bool] no_disclose_enterprise_connections: Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+        :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
         :param pulumi.Input[bool] revoke_refresh_token_grant: Delete underlying grant when a refresh token is revoked via the Authentication API.
-        :param pulumi.Input[bool] universal_login: Indicates whether the New Universal Login Experience is enabled.
         :param pulumi.Input[bool] use_scope_descriptions_for_consent: Indicates whether to use scope descriptions for consent.
         """
         if allow_legacy_delegation_grant_types is not None:
@@ -7243,13 +7374,10 @@ class TenantFlagsArgs:
             pulumi.set(__self__, "mfa_show_factor_list_on_enrollment", mfa_show_factor_list_on_enrollment)
         if no_disclose_enterprise_connections is not None:
             pulumi.set(__self__, "no_disclose_enterprise_connections", no_disclose_enterprise_connections)
+        if require_pushed_authorization_requests is not None:
+            pulumi.set(__self__, "require_pushed_authorization_requests", require_pushed_authorization_requests)
         if revoke_refresh_token_grant is not None:
             pulumi.set(__self__, "revoke_refresh_token_grant", revoke_refresh_token_grant)
-        if universal_login is not None:
-            warnings.warn("""This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.""", DeprecationWarning)
-            pulumi.log.warn("""universal_login is deprecated: This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.""")
-        if universal_login is not None:
-            pulumi.set(__self__, "universal_login", universal_login)
         if use_scope_descriptions_for_consent is not None:
             pulumi.set(__self__, "use_scope_descriptions_for_consent", use_scope_descriptions_for_consent)
 
@@ -7389,7 +7517,7 @@ class TenantFlagsArgs:
     @pulumi.getter(name="enableCustomDomainInEmails")
     def enable_custom_domain_in_emails(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the tenant allows custom domains in emails.
+        Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
         """
         return pulumi.get(self, "enable_custom_domain_in_emails")
 
@@ -7494,6 +7622,18 @@ class TenantFlagsArgs:
         pulumi.set(self, "no_disclose_enterprise_connections", value)
 
     @property
+    @pulumi.getter(name="requirePushedAuthorizationRequests")
+    def require_pushed_authorization_requests(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+        """
+        return pulumi.get(self, "require_pushed_authorization_requests")
+
+    @require_pushed_authorization_requests.setter
+    def require_pushed_authorization_requests(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_pushed_authorization_requests", value)
+
+    @property
     @pulumi.getter(name="revokeRefreshTokenGrant")
     def revoke_refresh_token_grant(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -7506,21 +7646,6 @@ class TenantFlagsArgs:
         pulumi.set(self, "revoke_refresh_token_grant", value)
 
     @property
-    @pulumi.getter(name="universalLogin")
-    def universal_login(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether the New Universal Login Experience is enabled.
-        """
-        warnings.warn("""This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.""", DeprecationWarning)
-        pulumi.log.warn("""universal_login is deprecated: This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.""")
-
-        return pulumi.get(self, "universal_login")
-
-    @universal_login.setter
-    def universal_login(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "universal_login", value)
-
-    @property
     @pulumi.getter(name="useScopeDescriptionsForConsent")
     def use_scope_descriptions_for_consent(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -7531,43 +7656,6 @@ class TenantFlagsArgs:
     @use_scope_descriptions_for_consent.setter
     def use_scope_descriptions_for_consent(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_scope_descriptions_for_consent", value)
-
-
-@pulumi.input_type
-class TenantGuardianMfaPageArgs:
-    def __init__(__self__, *,
-                 enabled: pulumi.Input[bool],
-                 html: pulumi.Input[str]):
-        """
-        :param pulumi.Input[bool] enabled: Indicates whether to use the custom Guardian page.
-        :param pulumi.Input[str] html: HTML format with supported Liquid syntax. Customized content of the Guardian page.
-        """
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "html", html)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> pulumi.Input[bool]:
-        """
-        Indicates whether to use the custom Guardian page.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "enabled", value)
-
-    @property
-    @pulumi.getter
-    def html(self) -> pulumi.Input[str]:
-        """
-        HTML format with supported Liquid syntax. Customized content of the Guardian page.
-        """
-        return pulumi.get(self, "html")
-
-    @html.setter
-    def html(self, value: pulumi.Input[str]):
-        pulumi.set(self, "html", value)
 
 
 @pulumi.input_type
@@ -7594,55 +7682,25 @@ class TenantSessionCookieArgs:
 
 
 @pulumi.input_type
-class TenantUniversalLoginArgs:
+class TenantSessionsArgs:
     def __init__(__self__, *,
-                 colors: Optional[pulumi.Input['TenantUniversalLoginColorsArgs']] = None):
+                 oidc_logout_prompt_enabled: pulumi.Input[bool]):
         """
-        :param pulumi.Input['TenantUniversalLoginColorsArgs'] colors: Configuration settings for Universal Login colors.
+        :param pulumi.Input[bool] oidc_logout_prompt_enabled: When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
         """
-        if colors is not None:
-            pulumi.set(__self__, "colors", colors)
+        pulumi.set(__self__, "oidc_logout_prompt_enabled", oidc_logout_prompt_enabled)
 
     @property
-    @pulumi.getter
-    def colors(self) -> Optional[pulumi.Input['TenantUniversalLoginColorsArgs']]:
+    @pulumi.getter(name="oidcLogoutPromptEnabled")
+    def oidc_logout_prompt_enabled(self) -> pulumi.Input[bool]:
         """
-        Configuration settings for Universal Login colors.
+        When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
         """
-        return pulumi.get(self, "colors")
+        return pulumi.get(self, "oidc_logout_prompt_enabled")
 
-    @colors.setter
-    def colors(self, value: Optional[pulumi.Input['TenantUniversalLoginColorsArgs']]):
-        pulumi.set(self, "colors", value)
-
-
-@pulumi.input_type
-class TenantUniversalLoginColorsArgs:
-    def __init__(__self__, *,
-                 page_background: Optional[pulumi.Input[str]] = None,
-                 primary: Optional[pulumi.Input[str]] = None):
-        if page_background is not None:
-            pulumi.set(__self__, "page_background", page_background)
-        if primary is not None:
-            pulumi.set(__self__, "primary", primary)
-
-    @property
-    @pulumi.getter(name="pageBackground")
-    def page_background(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "page_background")
-
-    @page_background.setter
-    def page_background(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "page_background", value)
-
-    @property
-    @pulumi.getter
-    def primary(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "primary")
-
-    @primary.setter
-    def primary(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "primary", value)
+    @oidc_logout_prompt_enabled.setter
+    def oidc_logout_prompt_enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "oidc_logout_prompt_enabled", value)
 
 
 @pulumi.input_type
@@ -7680,102 +7738,6 @@ class TriggerActionsActionArgs:
     @id.setter
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
-
-
-@pulumi.input_type
-class TriggerBindingActionArgs:
-    def __init__(__self__, *,
-                 display_name: pulumi.Input[str],
-                 id: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] display_name: The display name of the action within the flow.
-        :param pulumi.Input[str] id: Action ID.
-        """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "id", id)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> pulumi.Input[str]:
-        """
-        The display name of the action within the flow.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
-        """
-        Action ID.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
-
-
-@pulumi.input_type
-class UserPermissionArgs:
-    def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 resource_server_identifier: Optional[pulumi.Input[str]] = None,
-                 resource_server_name: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] name: Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-        """
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if resource_server_identifier is not None:
-            pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
-        if resource_server_name is not None:
-            pulumi.set(__self__, "resource_server_name", resource_server_name)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="resourceServerIdentifier")
-    def resource_server_identifier(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "resource_server_identifier")
-
-    @resource_server_identifier.setter
-    def resource_server_identifier(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "resource_server_identifier", value)
-
-    @property
-    @pulumi.getter(name="resourceServerName")
-    def resource_server_name(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "resource_server_name")
-
-    @resource_server_name.setter
-    def resource_server_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "resource_server_name", value)
 
 
 @pulumi.input_type

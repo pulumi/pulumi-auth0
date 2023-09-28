@@ -71,10 +71,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the trigger and action ID separated by &#34;::&#34;. # Example
+ * This resource can be imported by specifying the trigger and action ID separated by &#34;::&#34; (note the double colon) &lt;trigger&gt;::&lt;actionID&gt; # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/triggerAction:TriggerAction post_login_action post-login::28b5c8fa-d371-5734-acf6-d0cf80ead918
+ *  $ pulumi import auth0:index/triggerAction:TriggerAction post_login_action &#34;post-login::28b5c8fa-d371-5734-acf6-d0cf80ead918&#34;
  * ```
  * 
  */
@@ -109,14 +109,14 @@ public class TriggerAction extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
-     * The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+     * The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
      * 
      */
     @Export(name="trigger", type=String.class, parameters={})
     private Output<String> trigger;
 
     /**
-     * @return The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+     * @return The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
      * 
      */
     public Output<String> trigger() {

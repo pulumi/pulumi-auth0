@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.ClientAddonsSamlpLogoutArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -84,9 +85,9 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
     }
 
     @Import(name="logout")
-    private @Nullable Output<Map<String,Object>> logout;
+    private @Nullable Output<ClientAddonsSamlpLogoutArgs> logout;
 
-    public Optional<Output<Map<String,Object>>> logout() {
+    public Optional<Output<ClientAddonsSamlpLogoutArgs>> logout() {
         return Optional.ofNullable(this.logout);
     }
 
@@ -292,12 +293,12 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
             return lifetimeInSeconds(Output.of(lifetimeInSeconds));
         }
 
-        public Builder logout(@Nullable Output<Map<String,Object>> logout) {
+        public Builder logout(@Nullable Output<ClientAddonsSamlpLogoutArgs> logout) {
             $.logout = logout;
             return this;
         }
 
-        public Builder logout(Map<String,Object> logout) {
+        public Builder logout(ClientAddonsSamlpLogoutArgs logout) {
             return logout(Output.of(logout));
         }
 

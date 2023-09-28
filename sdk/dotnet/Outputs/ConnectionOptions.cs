@@ -30,6 +30,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? AppId;
         /// <summary>
+        /// OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+        /// </summary>
+        public readonly Outputs.ConnectionOptionsAttributeMap? AttributeMap;
+        /// <summary>
         /// Query string parameters to be included as part of the generated passwordless email link.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? AuthParams;
@@ -58,6 +62,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Configuration;
         /// <summary>
+        /// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+        /// </summary>
+        public readonly Outputs.ConnectionOptionsConnectionSettings? ConnectionSettings;
+        /// <summary>
         /// A map of scripts used to integrate with a custom database.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? CustomScripts;
@@ -65,6 +73,10 @@ namespace Pulumi.Auth0.Outputs
         /// When enabled, additional debug information will be generated.
         /// </summary>
         public readonly bool? Debug;
+        /// <summary>
+        /// The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+        /// </summary>
+        public readonly Outputs.ConnectionOptionsDecryptionKey? DecryptionKey;
         /// <summary>
         /// Sign Request Algorithm Digest.
         /// </summary>
@@ -166,6 +178,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? KeyId;
         /// <summary>
+        /// By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to 'id' instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+        /// </summary>
+        public readonly bool? MapUserIdToId;
+        /// <summary>
         /// Maximum number of groups to retrieve.
         /// </summary>
         public readonly string? MaxGroupsToRetrieve;
@@ -178,7 +194,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? MetadataUrl;
         /// <summary>
-        /// The XML content for the SAML metadata document.
+        /// The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
         /// </summary>
         public readonly string? MetadataXml;
         /// <summary>
@@ -368,6 +384,8 @@ namespace Pulumi.Auth0.Outputs
 
             string? appId,
 
+            Outputs.ConnectionOptionsAttributeMap? attributeMap,
+
             ImmutableDictionary<string, string>? authParams,
 
             string? authorizationEndpoint,
@@ -382,9 +400,13 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableDictionary<string, object>? configuration,
 
+            Outputs.ConnectionOptionsConnectionSettings? connectionSettings,
+
             ImmutableDictionary<string, string>? customScripts,
 
             bool? debug,
+
+            Outputs.ConnectionOptionsDecryptionKey? decryptionKey,
 
             string? digestAlgorithm,
 
@@ -435,6 +457,8 @@ namespace Pulumi.Auth0.Outputs
             string? jwksUri,
 
             string? keyId,
+
+            bool? mapUserIdToId,
 
             string? maxGroupsToRetrieve,
 
@@ -536,6 +560,7 @@ namespace Pulumi.Auth0.Outputs
             AllowedAudiences = allowedAudiences;
             ApiEnableUsers = apiEnableUsers;
             AppId = appId;
+            AttributeMap = attributeMap;
             AuthParams = authParams;
             AuthorizationEndpoint = authorizationEndpoint;
             BruteForceProtection = bruteForceProtection;
@@ -543,8 +568,10 @@ namespace Pulumi.Auth0.Outputs
             ClientSecret = clientSecret;
             CommunityBaseUrl = communityBaseUrl;
             Configuration = configuration;
+            ConnectionSettings = connectionSettings;
             CustomScripts = customScripts;
             Debug = debug;
+            DecryptionKey = decryptionKey;
             DigestAlgorithm = digestAlgorithm;
             DisableCache = disableCache;
             DisableSelfServiceChangePassword = disableSelfServiceChangePassword;
@@ -570,6 +597,7 @@ namespace Pulumi.Auth0.Outputs
             Issuer = issuer;
             JwksUri = jwksUri;
             KeyId = keyId;
+            MapUserIdToId = mapUserIdToId;
             MaxGroupsToRetrieve = maxGroupsToRetrieve;
             MessagingServiceSid = messagingServiceSid;
             MetadataUrl = metadataUrl;

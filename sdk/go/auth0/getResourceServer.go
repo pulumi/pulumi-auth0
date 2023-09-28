@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -57,7 +57,7 @@ func LookupResourceServer(ctx *pulumi.Context, args *LookupResourceServerArgs, o
 
 // A collection of arguments for invoking getResourceServer.
 type LookupResourceServerArgs struct {
-	// The unique identifier for the resource server. If not provided, `resourceServerId` must be set.
+	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resourceServerId` must be set.
 	Identifier *string `pulumi:"identifier"`
 	// The ID of the resource server. If not provided, `identifier` must be set.
 	ResourceServerId *string `pulumi:"resourceServerId"`
@@ -71,7 +71,7 @@ type LookupResourceServerResult struct {
 	EnforcePolicies bool `pulumi:"enforcePolicies"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The unique identifier for the resource server. If not provided, `resourceServerId` must be set.
+	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resourceServerId` must be set.
 	Identifier *string `pulumi:"identifier"`
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name string `pulumi:"name"`
@@ -110,7 +110,7 @@ func LookupResourceServerOutput(ctx *pulumi.Context, args LookupResourceServerOu
 
 // A collection of arguments for invoking getResourceServer.
 type LookupResourceServerOutputArgs struct {
-	// The unique identifier for the resource server. If not provided, `resourceServerId` must be set.
+	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resourceServerId` must be set.
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// The ID of the resource server. If not provided, `identifier` must be set.
 	ResourceServerId pulumi.StringPtrInput `pulumi:"resourceServerId"`
@@ -156,7 +156,7 @@ func (o LookupResourceServerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourceServerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The unique identifier for the resource server. If not provided, `resourceServerId` must be set.
+// Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resourceServerId` must be set.
 func (o LookupResourceServerResultOutput) Identifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourceServerResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
 }

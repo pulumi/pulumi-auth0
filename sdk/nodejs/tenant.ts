@@ -20,45 +20,28 @@ import * as utilities from "./utilities";
  *
  * const myTenant = new auth0.Tenant("myTenant", {
  *     allowedLogoutUrls: ["http://example.com/logout"],
- *     changePassword: {
- *         enabled: true,
- *         html: "<html>Change Password</html>",
- *     },
  *     defaultRedirectionUri: "https://example.com/login",
  *     enabledLocales: ["en"],
- *     errorPage: {
- *         html: "<html>Error Page</html>",
- *         showLogLink: true,
- *         url: "https://example.com/errors",
- *     },
  *     flags: {
  *         disableClickjackProtectionHeaders: true,
  *         disableFieldsMapFix: false,
  *         disableManagementApiSmsObfuscation: false,
  *         enablePublicSignupUserExistsError: true,
  *         noDiscloseEnterpriseConnections: false,
- *         universalLogin: true,
  *         useScopeDescriptionsForConsent: true,
  *     },
  *     friendlyName: "Tenant Name",
- *     guardianMfaPage: {
- *         enabled: true,
- *         html: "<html>MFA</html>",
- *     },
  *     pictureUrl: "http://example.com/logo.png",
  *     sandboxVersion: "12",
  *     sessionCookie: {
  *         mode: "non-persistent",
  *     },
  *     sessionLifetime: 8760,
+ *     sessions: {
+ *         oidcLogoutPromptEnabled: false,
+ *     },
  *     supportEmail: "support@example.com",
  *     supportUrl: "http://example.com/support",
- *     universalLogin: {
- *         colors: {
- *             pageBackground: "#000000",
- *             primary: "#0059d6",
- *         },
- *     },
  * });
  * ```
  *
@@ -67,7 +50,7 @@ import * as utilities from "./utilities";
  * As this is not a resource identifiable by an ID within the Auth0 Management API, tenant can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
  *
  * ```sh
- *  $ pulumi import auth0:index/tenant:Tenant my_tenant 82f4f21b-017a-319d-92e7-2291c1ca36c4
+ *  $ pulumi import auth0:index/tenant:Tenant my_tenant "82f4f21b-017a-319d-92e7-2291c1ca36c4"
  * ```
  */
 export class Tenant extends pulumi.CustomResource {
@@ -99,18 +82,13 @@ export class Tenant extends pulumi.CustomResource {
     }
 
     /**
+     * Whether to accept an organization name instead of an ID on auth endpoints.
+     */
+    public readonly allowOrganizationNameInAuthenticationApi!: pulumi.Output<boolean>;
+    /**
      * URLs that Auth0 may redirect to after logout.
      */
     public readonly allowedLogoutUrls!: pulumi.Output<string[]>;
-    /**
-     * Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
-     * it will be removed in a future major version. Check the
-     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-     * info.
-     *
-     * @deprecated This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.
-     */
-    public readonly changePassword!: pulumi.Output<outputs.TenantChangePassword>;
     /**
      * API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      */
@@ -128,15 +106,6 @@ export class Tenant extends pulumi.CustomResource {
      */
     public readonly enabledLocales!: pulumi.Output<string[]>;
     /**
-     * Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
-     * be removed in a future major version. Check the
-     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-     * info.
-     *
-     * @deprecated This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.
-     */
-    public readonly errorPage!: pulumi.Output<outputs.TenantErrorPage>;
-    /**
      * Configuration settings for tenant flags.
      */
     public readonly flags!: pulumi.Output<outputs.TenantFlags>;
@@ -144,15 +113,6 @@ export class Tenant extends pulumi.CustomResource {
      * Friendly name for the tenant.
      */
     public readonly friendlyName!: pulumi.Output<string>;
-    /**
-     * Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
-     * and it will be removed in a future major version. Check the
-     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-     * info.
-     *
-     * @deprecated This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.
-     */
-    public readonly guardianMfaPage!: pulumi.Output<outputs.TenantGuardianMfaPage>;
     /**
      * Number of hours during which a session can be inactive before the user must log in again.
      */
@@ -174,6 +134,10 @@ export class Tenant extends pulumi.CustomResource {
      */
     public readonly sessionLifetime!: pulumi.Output<number | undefined>;
     /**
+     * Sessions related settings for the tenant.
+     */
+    public readonly sessions!: pulumi.Output<outputs.TenantSessions>;
+    /**
      * Support email address for authenticating users.
      */
     public readonly supportEmail!: pulumi.Output<string>;
@@ -181,15 +145,6 @@ export class Tenant extends pulumi.CustomResource {
      * Support URL for authenticating users.
      */
     public readonly supportUrl!: pulumi.Output<string>;
-    /**
-     * Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
-     * settings through the `auth0_branding` resource. Check the
-     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
-     * for more info.
-     *
-     * @deprecated These configuration settings have been deprecated. Migrate to managing these settings through the `auth0_branding` resource. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login) for more info.
-     */
-    public readonly universalLogin!: pulumi.Output<outputs.TenantUniversalLogin>;
 
     /**
      * Create a Tenant resource with the given unique name, arguments, and options.
@@ -204,44 +159,40 @@ export class Tenant extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TenantState | undefined;
+            resourceInputs["allowOrganizationNameInAuthenticationApi"] = state ? state.allowOrganizationNameInAuthenticationApi : undefined;
             resourceInputs["allowedLogoutUrls"] = state ? state.allowedLogoutUrls : undefined;
-            resourceInputs["changePassword"] = state ? state.changePassword : undefined;
             resourceInputs["defaultAudience"] = state ? state.defaultAudience : undefined;
             resourceInputs["defaultDirectory"] = state ? state.defaultDirectory : undefined;
             resourceInputs["defaultRedirectionUri"] = state ? state.defaultRedirectionUri : undefined;
             resourceInputs["enabledLocales"] = state ? state.enabledLocales : undefined;
-            resourceInputs["errorPage"] = state ? state.errorPage : undefined;
             resourceInputs["flags"] = state ? state.flags : undefined;
             resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
-            resourceInputs["guardianMfaPage"] = state ? state.guardianMfaPage : undefined;
             resourceInputs["idleSessionLifetime"] = state ? state.idleSessionLifetime : undefined;
             resourceInputs["pictureUrl"] = state ? state.pictureUrl : undefined;
             resourceInputs["sandboxVersion"] = state ? state.sandboxVersion : undefined;
             resourceInputs["sessionCookie"] = state ? state.sessionCookie : undefined;
             resourceInputs["sessionLifetime"] = state ? state.sessionLifetime : undefined;
+            resourceInputs["sessions"] = state ? state.sessions : undefined;
             resourceInputs["supportEmail"] = state ? state.supportEmail : undefined;
             resourceInputs["supportUrl"] = state ? state.supportUrl : undefined;
-            resourceInputs["universalLogin"] = state ? state.universalLogin : undefined;
         } else {
             const args = argsOrState as TenantArgs | undefined;
+            resourceInputs["allowOrganizationNameInAuthenticationApi"] = args ? args.allowOrganizationNameInAuthenticationApi : undefined;
             resourceInputs["allowedLogoutUrls"] = args ? args.allowedLogoutUrls : undefined;
-            resourceInputs["changePassword"] = args ? args.changePassword : undefined;
             resourceInputs["defaultAudience"] = args ? args.defaultAudience : undefined;
             resourceInputs["defaultDirectory"] = args ? args.defaultDirectory : undefined;
             resourceInputs["defaultRedirectionUri"] = args ? args.defaultRedirectionUri : undefined;
             resourceInputs["enabledLocales"] = args ? args.enabledLocales : undefined;
-            resourceInputs["errorPage"] = args ? args.errorPage : undefined;
             resourceInputs["flags"] = args ? args.flags : undefined;
             resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
-            resourceInputs["guardianMfaPage"] = args ? args.guardianMfaPage : undefined;
             resourceInputs["idleSessionLifetime"] = args ? args.idleSessionLifetime : undefined;
             resourceInputs["pictureUrl"] = args ? args.pictureUrl : undefined;
             resourceInputs["sandboxVersion"] = args ? args.sandboxVersion : undefined;
             resourceInputs["sessionCookie"] = args ? args.sessionCookie : undefined;
             resourceInputs["sessionLifetime"] = args ? args.sessionLifetime : undefined;
+            resourceInputs["sessions"] = args ? args.sessions : undefined;
             resourceInputs["supportEmail"] = args ? args.supportEmail : undefined;
             resourceInputs["supportUrl"] = args ? args.supportUrl : undefined;
-            resourceInputs["universalLogin"] = args ? args.universalLogin : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Tenant.__pulumiType, name, resourceInputs, opts);
@@ -253,18 +204,13 @@ export class Tenant extends pulumi.CustomResource {
  */
 export interface TenantState {
     /**
+     * Whether to accept an organization name instead of an ID on auth endpoints.
+     */
+    allowOrganizationNameInAuthenticationApi?: pulumi.Input<boolean>;
+    /**
      * URLs that Auth0 may redirect to after logout.
      */
     allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
-     * it will be removed in a future major version. Check the
-     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-     * info.
-     *
-     * @deprecated This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.
-     */
-    changePassword?: pulumi.Input<inputs.TenantChangePassword>;
     /**
      * API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      */
@@ -282,15 +228,6 @@ export interface TenantState {
      */
     enabledLocales?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
-     * be removed in a future major version. Check the
-     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-     * info.
-     *
-     * @deprecated This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.
-     */
-    errorPage?: pulumi.Input<inputs.TenantErrorPage>;
-    /**
      * Configuration settings for tenant flags.
      */
     flags?: pulumi.Input<inputs.TenantFlags>;
@@ -298,15 +235,6 @@ export interface TenantState {
      * Friendly name for the tenant.
      */
     friendlyName?: pulumi.Input<string>;
-    /**
-     * Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
-     * and it will be removed in a future major version. Check the
-     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-     * info.
-     *
-     * @deprecated This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.
-     */
-    guardianMfaPage?: pulumi.Input<inputs.TenantGuardianMfaPage>;
     /**
      * Number of hours during which a session can be inactive before the user must log in again.
      */
@@ -328,6 +256,10 @@ export interface TenantState {
      */
     sessionLifetime?: pulumi.Input<number>;
     /**
+     * Sessions related settings for the tenant.
+     */
+    sessions?: pulumi.Input<inputs.TenantSessions>;
+    /**
      * Support email address for authenticating users.
      */
     supportEmail?: pulumi.Input<string>;
@@ -335,15 +267,6 @@ export interface TenantState {
      * Support URL for authenticating users.
      */
     supportUrl?: pulumi.Input<string>;
-    /**
-     * Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
-     * settings through the `auth0_branding` resource. Check the
-     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
-     * for more info.
-     *
-     * @deprecated These configuration settings have been deprecated. Migrate to managing these settings through the `auth0_branding` resource. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login) for more info.
-     */
-    universalLogin?: pulumi.Input<inputs.TenantUniversalLogin>;
 }
 
 /**
@@ -351,18 +274,13 @@ export interface TenantState {
  */
 export interface TenantArgs {
     /**
+     * Whether to accept an organization name instead of an ID on auth endpoints.
+     */
+    allowOrganizationNameInAuthenticationApi?: pulumi.Input<boolean>;
+    /**
      * URLs that Auth0 may redirect to after logout.
      */
     allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
-     * it will be removed in a future major version. Check the
-     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-     * info.
-     *
-     * @deprecated This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.
-     */
-    changePassword?: pulumi.Input<inputs.TenantChangePassword>;
     /**
      * API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      */
@@ -380,15 +298,6 @@ export interface TenantArgs {
      */
     enabledLocales?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
-     * be removed in a future major version. Check the
-     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-     * info.
-     *
-     * @deprecated This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.
-     */
-    errorPage?: pulumi.Input<inputs.TenantErrorPage>;
-    /**
      * Configuration settings for tenant flags.
      */
     flags?: pulumi.Input<inputs.TenantFlags>;
@@ -396,15 +305,6 @@ export interface TenantArgs {
      * Friendly name for the tenant.
      */
     friendlyName?: pulumi.Input<string>;
-    /**
-     * Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
-     * and it will be removed in a future major version. Check the
-     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-     * info.
-     *
-     * @deprecated This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.
-     */
-    guardianMfaPage?: pulumi.Input<inputs.TenantGuardianMfaPage>;
     /**
      * Number of hours during which a session can be inactive before the user must log in again.
      */
@@ -426,6 +326,10 @@ export interface TenantArgs {
      */
     sessionLifetime?: pulumi.Input<number>;
     /**
+     * Sessions related settings for the tenant.
+     */
+    sessions?: pulumi.Input<inputs.TenantSessions>;
+    /**
      * Support email address for authenticating users.
      */
     supportEmail?: pulumi.Input<string>;
@@ -433,13 +337,4 @@ export interface TenantArgs {
      * Support URL for authenticating users.
      */
     supportUrl?: pulumi.Input<string>;
-    /**
-     * Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
-     * settings through the `auth0_branding` resource. Check the
-     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
-     * for more info.
-     *
-     * @deprecated These configuration settings have been deprecated. Migrate to managing these settings through the `auth0_branding` resource. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login) for more info.
-     */
-    universalLogin?: pulumi.Input<inputs.TenantUniversalLogin>;
 }

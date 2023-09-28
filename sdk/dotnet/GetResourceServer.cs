@@ -82,7 +82,7 @@ namespace Pulumi.Auth0
     public sealed class GetResourceServerArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique identifier for the resource server. If not provided, `resource_server_id` must be set.
+        /// Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
         /// </summary>
         [Input("identifier")]
         public string? Identifier { get; set; }
@@ -102,7 +102,7 @@ namespace Pulumi.Auth0
     public sealed class GetResourceServerInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique identifier for the resource server. If not provided, `resource_server_id` must be set.
+        /// Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
@@ -136,7 +136,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The unique identifier for the resource server. If not provided, `resource_server_id` must be set.
+        /// Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
         /// </summary>
         public readonly string? Identifier;
         /// <summary>

@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
  * Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
  * 
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 
@@ -27,7 +28,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.Client;
  * import com.pulumi.auth0.ResourceServer;
  * import com.pulumi.auth0.ResourceServerArgs;
- * import com.pulumi.auth0.inputs.ResourceServerScopeArgs;
  * import com.pulumi.auth0.ClientGrant;
  * import com.pulumi.auth0.ClientGrantArgs;
  * import java.util.List;
@@ -48,20 +48,16 @@ import javax.annotation.Nullable;
  *         var myResourceServer = new ResourceServer(&#34;myResourceServer&#34;, ResourceServerArgs.builder()        
  *             .identifier(&#34;https://api.example.com/client-grant&#34;)
  *             .scopes(            
- *                 ResourceServerScopeArgs.builder()
- *                     .value(&#34;create:foo&#34;)
- *                     .description(&#34;Create foos&#34;)
- *                     .build(),
- *                 ResourceServerScopeArgs.builder()
- *                     .value(&#34;create:bar&#34;)
- *                     .description(&#34;Create bars&#34;)
- *                     .build())
+ *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+ *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *         var myClientGrant = new ClientGrant(&#34;myClientGrant&#34;, ClientGrantArgs.builder()        
  *             .clientId(myClient.id())
  *             .audience(myResourceServer.identifier())
- *             .scopes(&#34;create:foo&#34;)
+ *             .scopes(            
+ *                 &#34;create:foo&#34;,
+ *                 &#34;create:bar&#34;)
  *             .build());
  * 
  *     }
@@ -70,10 +66,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Client grants can be imported using the grant ID. # Application -&gt; APIs -&gt; Expand the required API # Example
+ * This resource can be imported by specifying the client grant ID. You can find this within the Management Dashboard in Application -&gt; APIs -&gt; Expand the required API. # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant cgr_XXXXXXXXXXXXXXXX
+ *  $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant &#34;cgr_XXXXXXXXXXXXXXXX&#34;
  * ```
  * 
  */

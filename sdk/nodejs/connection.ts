@@ -298,48 +298,13 @@ import * as utilities from "./utilities";
  *     strategy: "windowslive",
  * });
  * ```
- * ### OIDC Connection
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const oidc = new auth0.Connection("oidc", {
- *     displayName: "OIDC Connection",
- *     options: {
- *         authorizationEndpoint: "https://www.paypal.com/signin/authorize",
- *         clientId: "1234567",
- *         clientSecret: "1234567",
- *         discoveryUrl: "https://www.paypalobjects.com/.well-known/openid-configuration",
- *         domainAliases: ["example.com"],
- *         iconUrl: "https://example.com/assets/logo.png",
- *         issuer: "https://www.paypalobjects.com",
- *         jwksUri: "https://api.paypal.com/v1/oauth2/certs",
- *         nonPersistentAttrs: [
- *             "ethnicity",
- *             "gender",
- *         ],
- *         scopes: [
- *             "openid",
- *             "email",
- *         ],
- *         setUserRootAttributes: "on_first_login",
- *         tenantDomain: "",
- *         tokenEndpoint: "https://api.paypal.com/v1/oauth2/token",
- *         type: "front_channel",
- *         userinfoEndpoint: "https://api.paypal.com/v1/oauth2/token/userinfo",
- *     },
- *     showAsButton: false,
- *     strategy: "oidc",
- * });
- * ```
  *
  * ## Import
  *
- * Connections can be imported using their ID. # Example
+ * This resource can be imported by specifying the connection ID. # Example
  *
  * ```sh
- *  $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
+ *  $ pulumi import auth0:index/connection:Connection google "con_a17f21fdb24d48a0"
  * ```
  */
 export class Connection extends pulumi.CustomResource {
@@ -374,10 +339,6 @@ export class Connection extends pulumi.CustomResource {
      * Name used in login screen.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
-    /**
-     * IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
-     */
-    public /*out*/ readonly enabledClients!: pulumi.Output<string[]>;
     /**
      * Indicates whether the connection is domain level.
      */
@@ -421,7 +382,6 @@ export class Connection extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["enabledClients"] = state ? state.enabledClients : undefined;
             resourceInputs["isDomainConnection"] = state ? state.isDomainConnection : undefined;
             resourceInputs["metadata"] = state ? state.metadata : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -442,7 +402,6 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["realms"] = args ? args.realms : undefined;
             resourceInputs["showAsButton"] = args ? args.showAsButton : undefined;
             resourceInputs["strategy"] = args ? args.strategy : undefined;
-            resourceInputs["enabledClients"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Connection.__pulumiType, name, resourceInputs, opts);
@@ -457,10 +416,6 @@ export interface ConnectionState {
      * Name used in login screen.
      */
     displayName?: pulumi.Input<string>;
-    /**
-     * IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
-     */
-    enabledClients?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether the connection is domain level.
      */

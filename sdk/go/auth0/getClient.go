@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -84,7 +84,7 @@ type LookupClientResult struct {
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata map[string]interface{} `pulumi:"clientMetadata"`
 	ClientSecret   string                 `pulumi:"clientSecret"`
-	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coaToggleEnabled` feature flag to be enabled on the tenant by the support team.
+	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
 	CrossOriginAuth bool `pulumi:"crossOriginAuth"`
 	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
 	CrossOriginLoc string `pulumi:"crossOriginLoc"`
@@ -106,7 +106,7 @@ type LookupClientResult struct {
 	InitiateLoginUri string `pulumi:"initiateLoginUri"`
 	// Indicates whether this client is a first-party client.
 	IsFirstParty bool `pulumi:"isFirstParty"`
-	// Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
 	IsTokenEndpointIpHeaderTrusted bool `pulumi:"isTokenEndpointIpHeaderTrusted"`
 	// Configuration settings for the JWTs issued for this client.
 	JwtConfigurations []GetClientJwtConfiguration `pulumi:"jwtConfigurations"`
@@ -128,12 +128,15 @@ type LookupClientResult struct {
 	OrganizationUsage string `pulumi:"organizationUsage"`
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshTokens []GetClientRefreshToken `pulumi:"refreshTokens"`
+	// Makes the use of Pushed Authorization Requests mandatory for this client.
+	RequirePushedAuthorizationRequests bool `pulumi:"requirePushedAuthorizationRequests"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 	SigningKeys []map[string]interface{} `pulumi:"signingKeys"`
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso bool `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
-	SsoDisabled             bool   `pulumi:"ssoDisabled"`
+	SsoDisabled bool `pulumi:"ssoDisabled"`
+	// The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic). Managing a client's authentication method can be done via the `ClientCredentials` resource.
 	TokenEndpointAuthMethod string `pulumi:"tokenEndpointAuthMethod"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins []string `pulumi:"webOrigins"`
@@ -234,7 +237,7 @@ func (o LookupClientResultOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
-// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coaToggleEnabled` feature flag to be enabled on the tenant by the support team.
+// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
 func (o LookupClientResultOutput) CrossOriginAuth() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClientResult) bool { return v.CrossOriginAuth }).(pulumi.BoolOutput)
 }
@@ -289,7 +292,7 @@ func (o LookupClientResultOutput) IsFirstParty() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClientResult) bool { return v.IsFirstParty }).(pulumi.BoolOutput)
 }
 
-// Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
 func (o LookupClientResultOutput) IsTokenEndpointIpHeaderTrusted() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClientResult) bool { return v.IsTokenEndpointIpHeaderTrusted }).(pulumi.BoolOutput)
 }
@@ -344,6 +347,11 @@ func (o LookupClientResultOutput) RefreshTokens() GetClientRefreshTokenArrayOutp
 	return o.ApplyT(func(v LookupClientResult) []GetClientRefreshToken { return v.RefreshTokens }).(GetClientRefreshTokenArrayOutput)
 }
 
+// Makes the use of Pushed Authorization Requests mandatory for this client.
+func (o LookupClientResultOutput) RequirePushedAuthorizationRequests() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClientResult) bool { return v.RequirePushedAuthorizationRequests }).(pulumi.BoolOutput)
+}
+
 // List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 func (o LookupClientResultOutput) SigningKeys() pulumi.MapArrayOutput {
 	return o.ApplyT(func(v LookupClientResult) []map[string]interface{} { return v.SigningKeys }).(pulumi.MapArrayOutput)
@@ -359,6 +367,7 @@ func (o LookupClientResultOutput) SsoDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClientResult) bool { return v.SsoDisabled }).(pulumi.BoolOutput)
 }
 
+// The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic). Managing a client's authentication method can be done via the `ClientCredentials` resource.
 func (o LookupClientResultOutput) TokenEndpointAuthMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.TokenEndpointAuthMethod }).(pulumi.StringOutput)
 }

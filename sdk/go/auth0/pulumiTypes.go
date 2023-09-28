@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -455,15 +455,15 @@ func (o ActionSupportedTriggersPtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type AttackProtectionBreachedPasswordDetection struct {
-	// When "adminNotification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+	// When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
 	AdminNotificationFrequencies []string `pulumi:"adminNotificationFrequencies"`
 	// Whether breached password detection is active.
-	Enabled *bool `pulumi:"enabled"`
+	Enabled bool `pulumi:"enabled"`
 	// The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
 	Method *string `pulumi:"method"`
 	// Configuration options that apply before every user registration attempt. Only available on public tenants.
 	PreUserRegistration *AttackProtectionBreachedPasswordDetectionPreUserRegistration `pulumi:"preUserRegistration"`
-	// Action to take when a breached password is detected.
+	// Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
 	Shields []string `pulumi:"shields"`
 }
 
@@ -479,15 +479,15 @@ type AttackProtectionBreachedPasswordDetectionInput interface {
 }
 
 type AttackProtectionBreachedPasswordDetectionArgs struct {
-	// When "adminNotification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+	// When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
 	AdminNotificationFrequencies pulumi.StringArrayInput `pulumi:"adminNotificationFrequencies"`
 	// Whether breached password detection is active.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
 	Method pulumi.StringPtrInput `pulumi:"method"`
 	// Configuration options that apply before every user registration attempt. Only available on public tenants.
 	PreUserRegistration AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrInput `pulumi:"preUserRegistration"`
-	// Action to take when a breached password is detected.
+	// Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
 	Shields pulumi.StringArrayInput `pulumi:"shields"`
 }
 
@@ -586,14 +586,14 @@ func (o AttackProtectionBreachedPasswordDetectionOutput) ToOutput(ctx context.Co
 	}
 }
 
-// When "adminNotification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+// When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
 func (o AttackProtectionBreachedPasswordDetectionOutput) AdminNotificationFrequencies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttackProtectionBreachedPasswordDetection) []string { return v.AdminNotificationFrequencies }).(pulumi.StringArrayOutput)
 }
 
 // Whether breached password detection is active.
-func (o AttackProtectionBreachedPasswordDetectionOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AttackProtectionBreachedPasswordDetection) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o AttackProtectionBreachedPasswordDetectionOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v AttackProtectionBreachedPasswordDetection) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
@@ -608,7 +608,7 @@ func (o AttackProtectionBreachedPasswordDetectionOutput) PreUserRegistration() A
 	}).(AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput)
 }
 
-// Action to take when a breached password is detected.
+// Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
 func (o AttackProtectionBreachedPasswordDetectionOutput) Shields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttackProtectionBreachedPasswordDetection) []string { return v.Shields }).(pulumi.StringArrayOutput)
 }
@@ -643,7 +643,7 @@ func (o AttackProtectionBreachedPasswordDetectionPtrOutput) Elem() AttackProtect
 	}).(AttackProtectionBreachedPasswordDetectionOutput)
 }
 
-// When "adminNotification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+// When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
 func (o AttackProtectionBreachedPasswordDetectionPtrOutput) AdminNotificationFrequencies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttackProtectionBreachedPasswordDetection) []string {
 		if v == nil {
@@ -659,7 +659,7 @@ func (o AttackProtectionBreachedPasswordDetectionPtrOutput) Enabled() pulumi.Boo
 		if v == nil {
 			return nil
 		}
-		return v.Enabled
+		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -683,7 +683,7 @@ func (o AttackProtectionBreachedPasswordDetectionPtrOutput) PreUserRegistration(
 	}).(AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput)
 }
 
-// Action to take when a breached password is detected.
+// Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
 func (o AttackProtectionBreachedPasswordDetectionPtrOutput) Shields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttackProtectionBreachedPasswordDetection) []string {
 		if v == nil {
@@ -851,15 +851,15 @@ func (o AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput) S
 }
 
 type AttackProtectionBruteForceProtection struct {
-	// List of trusted IP addresses that will not have attack protection enforced against them.
+	// List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
 	Allowlists []string `pulumi:"allowlists"`
 	// Whether brute force attack protections are active.
-	Enabled *bool `pulumi:"enabled"`
-	// Maximum number of unsuccessful attempts. Only available on public tenants.
+	Enabled bool `pulumi:"enabled"`
+	// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
 	MaxAttempts *int `pulumi:"maxAttempts"`
-	// Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` or `countPerIdentifier`.
+	// Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` (lockout an account from a given IP Address) or `countPerIdentifier` (lockout an account regardless of IP Address).
 	Mode *string `pulumi:"mode"`
-	// Action to take when a brute force protection threshold is violated. Possible values: `block`, `userNotification`
+	// Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `userNotification` (send an email to user when their account has been blocked).
 	Shields []string `pulumi:"shields"`
 }
 
@@ -875,15 +875,15 @@ type AttackProtectionBruteForceProtectionInput interface {
 }
 
 type AttackProtectionBruteForceProtectionArgs struct {
-	// List of trusted IP addresses that will not have attack protection enforced against them.
+	// List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
 	Allowlists pulumi.StringArrayInput `pulumi:"allowlists"`
 	// Whether brute force attack protections are active.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Maximum number of unsuccessful attempts. Only available on public tenants.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
 	MaxAttempts pulumi.IntPtrInput `pulumi:"maxAttempts"`
-	// Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` or `countPerIdentifier`.
+	// Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` (lockout an account from a given IP Address) or `countPerIdentifier` (lockout an account regardless of IP Address).
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// Action to take when a brute force protection threshold is violated. Possible values: `block`, `userNotification`
+	// Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `userNotification` (send an email to user when their account has been blocked).
 	Shields pulumi.StringArrayInput `pulumi:"shields"`
 }
 
@@ -982,27 +982,27 @@ func (o AttackProtectionBruteForceProtectionOutput) ToOutput(ctx context.Context
 	}
 }
 
-// List of trusted IP addresses that will not have attack protection enforced against them.
+// List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
 func (o AttackProtectionBruteForceProtectionOutput) Allowlists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttackProtectionBruteForceProtection) []string { return v.Allowlists }).(pulumi.StringArrayOutput)
 }
 
 // Whether brute force attack protections are active.
-func (o AttackProtectionBruteForceProtectionOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AttackProtectionBruteForceProtection) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o AttackProtectionBruteForceProtectionOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v AttackProtectionBruteForceProtection) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Maximum number of unsuccessful attempts. Only available on public tenants.
+// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
 func (o AttackProtectionBruteForceProtectionOutput) MaxAttempts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AttackProtectionBruteForceProtection) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
 }
 
-// Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` or `countPerIdentifier`.
+// Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` (lockout an account from a given IP Address) or `countPerIdentifier` (lockout an account regardless of IP Address).
 func (o AttackProtectionBruteForceProtectionOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttackProtectionBruteForceProtection) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
-// Action to take when a brute force protection threshold is violated. Possible values: `block`, `userNotification`
+// Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `userNotification` (send an email to user when their account has been blocked).
 func (o AttackProtectionBruteForceProtectionOutput) Shields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttackProtectionBruteForceProtection) []string { return v.Shields }).(pulumi.StringArrayOutput)
 }
@@ -1037,7 +1037,7 @@ func (o AttackProtectionBruteForceProtectionPtrOutput) Elem() AttackProtectionBr
 	}).(AttackProtectionBruteForceProtectionOutput)
 }
 
-// List of trusted IP addresses that will not have attack protection enforced against them.
+// List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
 func (o AttackProtectionBruteForceProtectionPtrOutput) Allowlists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttackProtectionBruteForceProtection) []string {
 		if v == nil {
@@ -1053,11 +1053,11 @@ func (o AttackProtectionBruteForceProtectionPtrOutput) Enabled() pulumi.BoolPtrO
 		if v == nil {
 			return nil
 		}
-		return v.Enabled
+		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Maximum number of unsuccessful attempts. Only available on public tenants.
+// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
 func (o AttackProtectionBruteForceProtectionPtrOutput) MaxAttempts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AttackProtectionBruteForceProtection) *int {
 		if v == nil {
@@ -1067,7 +1067,7 @@ func (o AttackProtectionBruteForceProtectionPtrOutput) MaxAttempts() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` or `countPerIdentifier`.
+// Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` (lockout an account from a given IP Address) or `countPerIdentifier` (lockout an account regardless of IP Address).
 func (o AttackProtectionBruteForceProtectionPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttackProtectionBruteForceProtection) *string {
 		if v == nil {
@@ -1077,7 +1077,7 @@ func (o AttackProtectionBruteForceProtectionPtrOutput) Mode() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Action to take when a brute force protection threshold is violated. Possible values: `block`, `userNotification`
+// Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `userNotification` (send an email to user when their account has been blocked).
 func (o AttackProtectionBruteForceProtectionPtrOutput) Shields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttackProtectionBruteForceProtection) []string {
 		if v == nil {
@@ -1088,15 +1088,15 @@ func (o AttackProtectionBruteForceProtectionPtrOutput) Shields() pulumi.StringAr
 }
 
 type AttackProtectionSuspiciousIpThrottling struct {
-	// List of trusted IP addresses that will not have attack protection enforced against them.
+	// List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
 	Allowlists []string `pulumi:"allowlists"`
 	// Whether suspicious IP throttling attack protections are active.
-	Enabled *bool `pulumi:"enabled"`
+	Enabled bool `pulumi:"enabled"`
 	// Configuration options that apply before every login attempt. Only available on public tenants.
 	PreLogin *AttackProtectionSuspiciousIpThrottlingPreLogin `pulumi:"preLogin"`
 	// Configuration options that apply before every user registration attempt. Only available on public tenants.
 	PreUserRegistration *AttackProtectionSuspiciousIpThrottlingPreUserRegistration `pulumi:"preUserRegistration"`
-	// Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `adminNotification`
+	// Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `adminNotification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
 	Shields []string `pulumi:"shields"`
 }
 
@@ -1112,15 +1112,15 @@ type AttackProtectionSuspiciousIpThrottlingInput interface {
 }
 
 type AttackProtectionSuspiciousIpThrottlingArgs struct {
-	// List of trusted IP addresses that will not have attack protection enforced against them.
+	// List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
 	Allowlists pulumi.StringArrayInput `pulumi:"allowlists"`
 	// Whether suspicious IP throttling attack protections are active.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Configuration options that apply before every login attempt. Only available on public tenants.
 	PreLogin AttackProtectionSuspiciousIpThrottlingPreLoginPtrInput `pulumi:"preLogin"`
 	// Configuration options that apply before every user registration attempt. Only available on public tenants.
 	PreUserRegistration AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrInput `pulumi:"preUserRegistration"`
-	// Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `adminNotification`
+	// Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `adminNotification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
 	Shields pulumi.StringArrayInput `pulumi:"shields"`
 }
 
@@ -1219,14 +1219,14 @@ func (o AttackProtectionSuspiciousIpThrottlingOutput) ToOutput(ctx context.Conte
 	}
 }
 
-// List of trusted IP addresses that will not have attack protection enforced against them.
+// List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
 func (o AttackProtectionSuspiciousIpThrottlingOutput) Allowlists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttackProtectionSuspiciousIpThrottling) []string { return v.Allowlists }).(pulumi.StringArrayOutput)
 }
 
 // Whether suspicious IP throttling attack protections are active.
-func (o AttackProtectionSuspiciousIpThrottlingOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AttackProtectionSuspiciousIpThrottling) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o AttackProtectionSuspiciousIpThrottlingOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v AttackProtectionSuspiciousIpThrottling) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // Configuration options that apply before every login attempt. Only available on public tenants.
@@ -1243,7 +1243,7 @@ func (o AttackProtectionSuspiciousIpThrottlingOutput) PreUserRegistration() Atta
 	}).(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput)
 }
 
-// Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `adminNotification`
+// Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `adminNotification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
 func (o AttackProtectionSuspiciousIpThrottlingOutput) Shields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttackProtectionSuspiciousIpThrottling) []string { return v.Shields }).(pulumi.StringArrayOutput)
 }
@@ -1278,7 +1278,7 @@ func (o AttackProtectionSuspiciousIpThrottlingPtrOutput) Elem() AttackProtection
 	}).(AttackProtectionSuspiciousIpThrottlingOutput)
 }
 
-// List of trusted IP addresses that will not have attack protection enforced against them.
+// List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
 func (o AttackProtectionSuspiciousIpThrottlingPtrOutput) Allowlists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottling) []string {
 		if v == nil {
@@ -1294,7 +1294,7 @@ func (o AttackProtectionSuspiciousIpThrottlingPtrOutput) Enabled() pulumi.BoolPt
 		if v == nil {
 			return nil
 		}
-		return v.Enabled
+		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -1318,7 +1318,7 @@ func (o AttackProtectionSuspiciousIpThrottlingPtrOutput) PreUserRegistration() A
 	}).(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput)
 }
 
-// Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `adminNotification`
+// Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `adminNotification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
 func (o AttackProtectionSuspiciousIpThrottlingPtrOutput) Shields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottling) []string {
 		if v == nil {
@@ -4753,36 +4753,64 @@ func (o BrandingUniversalLoginPtrOutput) Body() pulumi.StringPtrOutput {
 }
 
 type ClientAddons struct {
-	Aws                  map[string]interface{} `pulumi:"aws"`
-	AzureBlob            map[string]interface{} `pulumi:"azureBlob"`
-	AzureSb              map[string]interface{} `pulumi:"azureSb"`
-	Box                  map[string]interface{} `pulumi:"box"`
-	Cloudbees            map[string]interface{} `pulumi:"cloudbees"`
-	Concur               map[string]interface{} `pulumi:"concur"`
-	Dropbox              map[string]interface{} `pulumi:"dropbox"`
-	Echosign             map[string]interface{} `pulumi:"echosign"`
-	Egnyte               map[string]interface{} `pulumi:"egnyte"`
-	Firebase             map[string]interface{} `pulumi:"firebase"`
-	Layer                map[string]interface{} `pulumi:"layer"`
-	Mscrm                map[string]interface{} `pulumi:"mscrm"`
-	Newrelic             map[string]interface{} `pulumi:"newrelic"`
-	Office365            map[string]interface{} `pulumi:"office365"`
-	Rms                  map[string]interface{} `pulumi:"rms"`
-	Salesforce           map[string]interface{} `pulumi:"salesforce"`
-	SalesforceApi        map[string]interface{} `pulumi:"salesforceApi"`
-	SalesforceSandboxApi map[string]interface{} `pulumi:"salesforceSandboxApi"`
+	// AWS Addon configuration.
+	Aws *ClientAddonsAws `pulumi:"aws"`
+	// Azure Blob Storage Addon configuration.
+	AzureBlob *ClientAddonsAzureBlob `pulumi:"azureBlob"`
+	// Azure Storage Bus Addon configuration.
+	AzureSb *ClientAddonsAzureSb `pulumi:"azureSb"`
+	// Box SSO indicator (no configuration settings needed for Box SSO).
+	Box *ClientAddonsBox `pulumi:"box"`
+	// CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+	Cloudbees *ClientAddonsCloudbees `pulumi:"cloudbees"`
+	// Concur SSO indicator (no configuration settings needed for Concur SSO).
+	Concur *ClientAddonsConcur `pulumi:"concur"`
+	// Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+	Dropbox *ClientAddonsDropbox `pulumi:"dropbox"`
+	// Adobe EchoSign SSO configuration.
+	Echosign *ClientAddonsEchosign `pulumi:"echosign"`
+	// Egnyte SSO configuration.
+	Egnyte *ClientAddonsEgnyte `pulumi:"egnyte"`
+	// Google Firebase addon configuration.
+	Firebase *ClientAddonsFirebase `pulumi:"firebase"`
+	// Layer addon configuration.
+	Layer *ClientAddonsLayer `pulumi:"layer"`
+	// Microsoft Dynamics CRM SSO configuration.
+	Mscrm *ClientAddonsMscrm `pulumi:"mscrm"`
+	// New Relic SSO configuration.
+	Newrelic *ClientAddonsNewrelic `pulumi:"newrelic"`
+	// Microsoft Office 365 SSO configuration.
+	Office365 *ClientAddonsOffice365 `pulumi:"office365"`
+	// Active Directory Rights Management Service SSO configuration.
+	Rms *ClientAddonsRms `pulumi:"rms"`
+	// Salesforce SSO configuration.
+	Salesforce *ClientAddonsSalesforce `pulumi:"salesforce"`
+	// Salesforce API addon configuration.
+	SalesforceApi *ClientAddonsSalesforceApi `pulumi:"salesforceApi"`
+	// Salesforce Sandbox addon configuration.
+	SalesforceSandboxApi *ClientAddonsSalesforceSandboxApi `pulumi:"salesforceSandboxApi"`
 	// Configuration settings for a SAML add-on.
-	Samlp      *ClientAddonsSamlp     `pulumi:"samlp"`
-	SapApi     map[string]interface{} `pulumi:"sapApi"`
-	Sentry     map[string]interface{} `pulumi:"sentry"`
-	Sharepoint map[string]interface{} `pulumi:"sharepoint"`
-	Slack      map[string]interface{} `pulumi:"slack"`
-	Springcm   map[string]interface{} `pulumi:"springcm"`
-	Wams       map[string]interface{} `pulumi:"wams"`
-	// WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `clientAliases` properties on the client.
-	Wsfed   map[string]interface{} `pulumi:"wsfed"`
-	Zendesk map[string]interface{} `pulumi:"zendesk"`
-	Zoom    map[string]interface{} `pulumi:"zoom"`
+	Samlp *ClientAddonsSamlp `pulumi:"samlp"`
+	// SAP API addon configuration.
+	SapApi *ClientAddonsSapApi `pulumi:"sapApi"`
+	// Sentry SSO configuration.
+	Sentry *ClientAddonsSentry `pulumi:"sentry"`
+	// SharePoint SSO configuration.
+	Sharepoint *ClientAddonsSharepoint `pulumi:"sharepoint"`
+	// Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+	Slack *ClientAddonsSlack `pulumi:"slack"`
+	// SpringCM SSO configuration.
+	Springcm *ClientAddonsSpringcm `pulumi:"springcm"`
+	// Generic SSO configuration.
+	SsoIntegration *ClientAddonsSsoIntegration `pulumi:"ssoIntegration"`
+	// Windows Azure Mobile Services addon configuration.
+	Wams *ClientAddonsWams `pulumi:"wams"`
+	// WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `clientAliases` properties on the client.
+	Wsfed *ClientAddonsWsfed `pulumi:"wsfed"`
+	// Zendesk SSO configuration.
+	Zendesk *ClientAddonsZendesk `pulumi:"zendesk"`
+	// Zoom SSO configuration.
+	Zoom *ClientAddonsZoom `pulumi:"zoom"`
 }
 
 // ClientAddonsInput is an input type that accepts ClientAddonsArgs and ClientAddonsOutput values.
@@ -4797,36 +4825,64 @@ type ClientAddonsInput interface {
 }
 
 type ClientAddonsArgs struct {
-	Aws                  pulumi.MapInput `pulumi:"aws"`
-	AzureBlob            pulumi.MapInput `pulumi:"azureBlob"`
-	AzureSb              pulumi.MapInput `pulumi:"azureSb"`
-	Box                  pulumi.MapInput `pulumi:"box"`
-	Cloudbees            pulumi.MapInput `pulumi:"cloudbees"`
-	Concur               pulumi.MapInput `pulumi:"concur"`
-	Dropbox              pulumi.MapInput `pulumi:"dropbox"`
-	Echosign             pulumi.MapInput `pulumi:"echosign"`
-	Egnyte               pulumi.MapInput `pulumi:"egnyte"`
-	Firebase             pulumi.MapInput `pulumi:"firebase"`
-	Layer                pulumi.MapInput `pulumi:"layer"`
-	Mscrm                pulumi.MapInput `pulumi:"mscrm"`
-	Newrelic             pulumi.MapInput `pulumi:"newrelic"`
-	Office365            pulumi.MapInput `pulumi:"office365"`
-	Rms                  pulumi.MapInput `pulumi:"rms"`
-	Salesforce           pulumi.MapInput `pulumi:"salesforce"`
-	SalesforceApi        pulumi.MapInput `pulumi:"salesforceApi"`
-	SalesforceSandboxApi pulumi.MapInput `pulumi:"salesforceSandboxApi"`
+	// AWS Addon configuration.
+	Aws ClientAddonsAwsPtrInput `pulumi:"aws"`
+	// Azure Blob Storage Addon configuration.
+	AzureBlob ClientAddonsAzureBlobPtrInput `pulumi:"azureBlob"`
+	// Azure Storage Bus Addon configuration.
+	AzureSb ClientAddonsAzureSbPtrInput `pulumi:"azureSb"`
+	// Box SSO indicator (no configuration settings needed for Box SSO).
+	Box ClientAddonsBoxPtrInput `pulumi:"box"`
+	// CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+	Cloudbees ClientAddonsCloudbeesPtrInput `pulumi:"cloudbees"`
+	// Concur SSO indicator (no configuration settings needed for Concur SSO).
+	Concur ClientAddonsConcurPtrInput `pulumi:"concur"`
+	// Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+	Dropbox ClientAddonsDropboxPtrInput `pulumi:"dropbox"`
+	// Adobe EchoSign SSO configuration.
+	Echosign ClientAddonsEchosignPtrInput `pulumi:"echosign"`
+	// Egnyte SSO configuration.
+	Egnyte ClientAddonsEgnytePtrInput `pulumi:"egnyte"`
+	// Google Firebase addon configuration.
+	Firebase ClientAddonsFirebasePtrInput `pulumi:"firebase"`
+	// Layer addon configuration.
+	Layer ClientAddonsLayerPtrInput `pulumi:"layer"`
+	// Microsoft Dynamics CRM SSO configuration.
+	Mscrm ClientAddonsMscrmPtrInput `pulumi:"mscrm"`
+	// New Relic SSO configuration.
+	Newrelic ClientAddonsNewrelicPtrInput `pulumi:"newrelic"`
+	// Microsoft Office 365 SSO configuration.
+	Office365 ClientAddonsOffice365PtrInput `pulumi:"office365"`
+	// Active Directory Rights Management Service SSO configuration.
+	Rms ClientAddonsRmsPtrInput `pulumi:"rms"`
+	// Salesforce SSO configuration.
+	Salesforce ClientAddonsSalesforcePtrInput `pulumi:"salesforce"`
+	// Salesforce API addon configuration.
+	SalesforceApi ClientAddonsSalesforceApiPtrInput `pulumi:"salesforceApi"`
+	// Salesforce Sandbox addon configuration.
+	SalesforceSandboxApi ClientAddonsSalesforceSandboxApiPtrInput `pulumi:"salesforceSandboxApi"`
 	// Configuration settings for a SAML add-on.
-	Samlp      ClientAddonsSamlpPtrInput `pulumi:"samlp"`
-	SapApi     pulumi.MapInput           `pulumi:"sapApi"`
-	Sentry     pulumi.MapInput           `pulumi:"sentry"`
-	Sharepoint pulumi.MapInput           `pulumi:"sharepoint"`
-	Slack      pulumi.MapInput           `pulumi:"slack"`
-	Springcm   pulumi.MapInput           `pulumi:"springcm"`
-	Wams       pulumi.MapInput           `pulumi:"wams"`
-	// WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `clientAliases` properties on the client.
-	Wsfed   pulumi.MapInput `pulumi:"wsfed"`
-	Zendesk pulumi.MapInput `pulumi:"zendesk"`
-	Zoom    pulumi.MapInput `pulumi:"zoom"`
+	Samlp ClientAddonsSamlpPtrInput `pulumi:"samlp"`
+	// SAP API addon configuration.
+	SapApi ClientAddonsSapApiPtrInput `pulumi:"sapApi"`
+	// Sentry SSO configuration.
+	Sentry ClientAddonsSentryPtrInput `pulumi:"sentry"`
+	// SharePoint SSO configuration.
+	Sharepoint ClientAddonsSharepointPtrInput `pulumi:"sharepoint"`
+	// Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+	Slack ClientAddonsSlackPtrInput `pulumi:"slack"`
+	// SpringCM SSO configuration.
+	Springcm ClientAddonsSpringcmPtrInput `pulumi:"springcm"`
+	// Generic SSO configuration.
+	SsoIntegration ClientAddonsSsoIntegrationPtrInput `pulumi:"ssoIntegration"`
+	// Windows Azure Mobile Services addon configuration.
+	Wams ClientAddonsWamsPtrInput `pulumi:"wams"`
+	// WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `clientAliases` properties on the client.
+	Wsfed ClientAddonsWsfedPtrInput `pulumi:"wsfed"`
+	// Zendesk SSO configuration.
+	Zendesk ClientAddonsZendeskPtrInput `pulumi:"zendesk"`
+	// Zoom SSO configuration.
+	Zoom ClientAddonsZoomPtrInput `pulumi:"zoom"`
 }
 
 func (ClientAddonsArgs) ElementType() reflect.Type {
@@ -4924,76 +4980,94 @@ func (o ClientAddonsOutput) ToOutput(ctx context.Context) pulumix.Output[ClientA
 	}
 }
 
-func (o ClientAddonsOutput) Aws() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Aws }).(pulumi.MapOutput)
+// AWS Addon configuration.
+func (o ClientAddonsOutput) Aws() ClientAddonsAwsPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsAws { return v.Aws }).(ClientAddonsAwsPtrOutput)
 }
 
-func (o ClientAddonsOutput) AzureBlob() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.AzureBlob }).(pulumi.MapOutput)
+// Azure Blob Storage Addon configuration.
+func (o ClientAddonsOutput) AzureBlob() ClientAddonsAzureBlobPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsAzureBlob { return v.AzureBlob }).(ClientAddonsAzureBlobPtrOutput)
 }
 
-func (o ClientAddonsOutput) AzureSb() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.AzureSb }).(pulumi.MapOutput)
+// Azure Storage Bus Addon configuration.
+func (o ClientAddonsOutput) AzureSb() ClientAddonsAzureSbPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsAzureSb { return v.AzureSb }).(ClientAddonsAzureSbPtrOutput)
 }
 
-func (o ClientAddonsOutput) Box() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Box }).(pulumi.MapOutput)
+// Box SSO indicator (no configuration settings needed for Box SSO).
+func (o ClientAddonsOutput) Box() ClientAddonsBoxPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsBox { return v.Box }).(ClientAddonsBoxPtrOutput)
 }
 
-func (o ClientAddonsOutput) Cloudbees() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Cloudbees }).(pulumi.MapOutput)
+// CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+func (o ClientAddonsOutput) Cloudbees() ClientAddonsCloudbeesPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsCloudbees { return v.Cloudbees }).(ClientAddonsCloudbeesPtrOutput)
 }
 
-func (o ClientAddonsOutput) Concur() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Concur }).(pulumi.MapOutput)
+// Concur SSO indicator (no configuration settings needed for Concur SSO).
+func (o ClientAddonsOutput) Concur() ClientAddonsConcurPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsConcur { return v.Concur }).(ClientAddonsConcurPtrOutput)
 }
 
-func (o ClientAddonsOutput) Dropbox() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Dropbox }).(pulumi.MapOutput)
+// Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+func (o ClientAddonsOutput) Dropbox() ClientAddonsDropboxPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsDropbox { return v.Dropbox }).(ClientAddonsDropboxPtrOutput)
 }
 
-func (o ClientAddonsOutput) Echosign() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Echosign }).(pulumi.MapOutput)
+// Adobe EchoSign SSO configuration.
+func (o ClientAddonsOutput) Echosign() ClientAddonsEchosignPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsEchosign { return v.Echosign }).(ClientAddonsEchosignPtrOutput)
 }
 
-func (o ClientAddonsOutput) Egnyte() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Egnyte }).(pulumi.MapOutput)
+// Egnyte SSO configuration.
+func (o ClientAddonsOutput) Egnyte() ClientAddonsEgnytePtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsEgnyte { return v.Egnyte }).(ClientAddonsEgnytePtrOutput)
 }
 
-func (o ClientAddonsOutput) Firebase() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Firebase }).(pulumi.MapOutput)
+// Google Firebase addon configuration.
+func (o ClientAddonsOutput) Firebase() ClientAddonsFirebasePtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsFirebase { return v.Firebase }).(ClientAddonsFirebasePtrOutput)
 }
 
-func (o ClientAddonsOutput) Layer() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Layer }).(pulumi.MapOutput)
+// Layer addon configuration.
+func (o ClientAddonsOutput) Layer() ClientAddonsLayerPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsLayer { return v.Layer }).(ClientAddonsLayerPtrOutput)
 }
 
-func (o ClientAddonsOutput) Mscrm() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Mscrm }).(pulumi.MapOutput)
+// Microsoft Dynamics CRM SSO configuration.
+func (o ClientAddonsOutput) Mscrm() ClientAddonsMscrmPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsMscrm { return v.Mscrm }).(ClientAddonsMscrmPtrOutput)
 }
 
-func (o ClientAddonsOutput) Newrelic() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Newrelic }).(pulumi.MapOutput)
+// New Relic SSO configuration.
+func (o ClientAddonsOutput) Newrelic() ClientAddonsNewrelicPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsNewrelic { return v.Newrelic }).(ClientAddonsNewrelicPtrOutput)
 }
 
-func (o ClientAddonsOutput) Office365() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Office365 }).(pulumi.MapOutput)
+// Microsoft Office 365 SSO configuration.
+func (o ClientAddonsOutput) Office365() ClientAddonsOffice365PtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsOffice365 { return v.Office365 }).(ClientAddonsOffice365PtrOutput)
 }
 
-func (o ClientAddonsOutput) Rms() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Rms }).(pulumi.MapOutput)
+// Active Directory Rights Management Service SSO configuration.
+func (o ClientAddonsOutput) Rms() ClientAddonsRmsPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsRms { return v.Rms }).(ClientAddonsRmsPtrOutput)
 }
 
-func (o ClientAddonsOutput) Salesforce() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Salesforce }).(pulumi.MapOutput)
+// Salesforce SSO configuration.
+func (o ClientAddonsOutput) Salesforce() ClientAddonsSalesforcePtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsSalesforce { return v.Salesforce }).(ClientAddonsSalesforcePtrOutput)
 }
 
-func (o ClientAddonsOutput) SalesforceApi() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.SalesforceApi }).(pulumi.MapOutput)
+// Salesforce API addon configuration.
+func (o ClientAddonsOutput) SalesforceApi() ClientAddonsSalesforceApiPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsSalesforceApi { return v.SalesforceApi }).(ClientAddonsSalesforceApiPtrOutput)
 }
 
-func (o ClientAddonsOutput) SalesforceSandboxApi() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.SalesforceSandboxApi }).(pulumi.MapOutput)
+// Salesforce Sandbox addon configuration.
+func (o ClientAddonsOutput) SalesforceSandboxApi() ClientAddonsSalesforceSandboxApiPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsSalesforceSandboxApi { return v.SalesforceSandboxApi }).(ClientAddonsSalesforceSandboxApiPtrOutput)
 }
 
 // Configuration settings for a SAML add-on.
@@ -5001,41 +5075,54 @@ func (o ClientAddonsOutput) Samlp() ClientAddonsSamlpPtrOutput {
 	return o.ApplyT(func(v ClientAddons) *ClientAddonsSamlp { return v.Samlp }).(ClientAddonsSamlpPtrOutput)
 }
 
-func (o ClientAddonsOutput) SapApi() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.SapApi }).(pulumi.MapOutput)
+// SAP API addon configuration.
+func (o ClientAddonsOutput) SapApi() ClientAddonsSapApiPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsSapApi { return v.SapApi }).(ClientAddonsSapApiPtrOutput)
 }
 
-func (o ClientAddonsOutput) Sentry() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Sentry }).(pulumi.MapOutput)
+// Sentry SSO configuration.
+func (o ClientAddonsOutput) Sentry() ClientAddonsSentryPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsSentry { return v.Sentry }).(ClientAddonsSentryPtrOutput)
 }
 
-func (o ClientAddonsOutput) Sharepoint() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Sharepoint }).(pulumi.MapOutput)
+// SharePoint SSO configuration.
+func (o ClientAddonsOutput) Sharepoint() ClientAddonsSharepointPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsSharepoint { return v.Sharepoint }).(ClientAddonsSharepointPtrOutput)
 }
 
-func (o ClientAddonsOutput) Slack() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Slack }).(pulumi.MapOutput)
+// Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+func (o ClientAddonsOutput) Slack() ClientAddonsSlackPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsSlack { return v.Slack }).(ClientAddonsSlackPtrOutput)
 }
 
-func (o ClientAddonsOutput) Springcm() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Springcm }).(pulumi.MapOutput)
+// SpringCM SSO configuration.
+func (o ClientAddonsOutput) Springcm() ClientAddonsSpringcmPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsSpringcm { return v.Springcm }).(ClientAddonsSpringcmPtrOutput)
 }
 
-func (o ClientAddonsOutput) Wams() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Wams }).(pulumi.MapOutput)
+// Generic SSO configuration.
+func (o ClientAddonsOutput) SsoIntegration() ClientAddonsSsoIntegrationPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsSsoIntegration { return v.SsoIntegration }).(ClientAddonsSsoIntegrationPtrOutput)
 }
 
-// WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `clientAliases` properties on the client.
-func (o ClientAddonsOutput) Wsfed() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Wsfed }).(pulumi.MapOutput)
+// Windows Azure Mobile Services addon configuration.
+func (o ClientAddonsOutput) Wams() ClientAddonsWamsPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsWams { return v.Wams }).(ClientAddonsWamsPtrOutput)
 }
 
-func (o ClientAddonsOutput) Zendesk() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Zendesk }).(pulumi.MapOutput)
+// WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `clientAliases` properties on the client.
+func (o ClientAddonsOutput) Wsfed() ClientAddonsWsfedPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsWsfed { return v.Wsfed }).(ClientAddonsWsfedPtrOutput)
 }
 
-func (o ClientAddonsOutput) Zoom() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Zoom }).(pulumi.MapOutput)
+// Zendesk SSO configuration.
+func (o ClientAddonsOutput) Zendesk() ClientAddonsZendeskPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsZendesk { return v.Zendesk }).(ClientAddonsZendeskPtrOutput)
+}
+
+// Zoom SSO configuration.
+func (o ClientAddonsOutput) Zoom() ClientAddonsZoomPtrOutput {
+	return o.ApplyT(func(v ClientAddons) *ClientAddonsZoom { return v.Zoom }).(ClientAddonsZoomPtrOutput)
 }
 
 type ClientAddonsPtrOutput struct{ *pulumi.OutputState }
@@ -5068,166 +5155,184 @@ func (o ClientAddonsPtrOutput) Elem() ClientAddonsOutput {
 	}).(ClientAddonsOutput)
 }
 
-func (o ClientAddonsPtrOutput) Aws() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// AWS Addon configuration.
+func (o ClientAddonsPtrOutput) Aws() ClientAddonsAwsPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsAws {
 		if v == nil {
 			return nil
 		}
 		return v.Aws
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsAwsPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) AzureBlob() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Azure Blob Storage Addon configuration.
+func (o ClientAddonsPtrOutput) AzureBlob() ClientAddonsAzureBlobPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsAzureBlob {
 		if v == nil {
 			return nil
 		}
 		return v.AzureBlob
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsAzureBlobPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) AzureSb() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Azure Storage Bus Addon configuration.
+func (o ClientAddonsPtrOutput) AzureSb() ClientAddonsAzureSbPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsAzureSb {
 		if v == nil {
 			return nil
 		}
 		return v.AzureSb
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsAzureSbPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Box() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Box SSO indicator (no configuration settings needed for Box SSO).
+func (o ClientAddonsPtrOutput) Box() ClientAddonsBoxPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsBox {
 		if v == nil {
 			return nil
 		}
 		return v.Box
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsBoxPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Cloudbees() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+func (o ClientAddonsPtrOutput) Cloudbees() ClientAddonsCloudbeesPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsCloudbees {
 		if v == nil {
 			return nil
 		}
 		return v.Cloudbees
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsCloudbeesPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Concur() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Concur SSO indicator (no configuration settings needed for Concur SSO).
+func (o ClientAddonsPtrOutput) Concur() ClientAddonsConcurPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsConcur {
 		if v == nil {
 			return nil
 		}
 		return v.Concur
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsConcurPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Dropbox() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+func (o ClientAddonsPtrOutput) Dropbox() ClientAddonsDropboxPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsDropbox {
 		if v == nil {
 			return nil
 		}
 		return v.Dropbox
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsDropboxPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Echosign() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Adobe EchoSign SSO configuration.
+func (o ClientAddonsPtrOutput) Echosign() ClientAddonsEchosignPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsEchosign {
 		if v == nil {
 			return nil
 		}
 		return v.Echosign
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsEchosignPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Egnyte() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Egnyte SSO configuration.
+func (o ClientAddonsPtrOutput) Egnyte() ClientAddonsEgnytePtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsEgnyte {
 		if v == nil {
 			return nil
 		}
 		return v.Egnyte
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsEgnytePtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Firebase() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Google Firebase addon configuration.
+func (o ClientAddonsPtrOutput) Firebase() ClientAddonsFirebasePtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsFirebase {
 		if v == nil {
 			return nil
 		}
 		return v.Firebase
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsFirebasePtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Layer() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Layer addon configuration.
+func (o ClientAddonsPtrOutput) Layer() ClientAddonsLayerPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsLayer {
 		if v == nil {
 			return nil
 		}
 		return v.Layer
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsLayerPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Mscrm() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Microsoft Dynamics CRM SSO configuration.
+func (o ClientAddonsPtrOutput) Mscrm() ClientAddonsMscrmPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsMscrm {
 		if v == nil {
 			return nil
 		}
 		return v.Mscrm
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsMscrmPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Newrelic() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// New Relic SSO configuration.
+func (o ClientAddonsPtrOutput) Newrelic() ClientAddonsNewrelicPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsNewrelic {
 		if v == nil {
 			return nil
 		}
 		return v.Newrelic
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsNewrelicPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Office365() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Microsoft Office 365 SSO configuration.
+func (o ClientAddonsPtrOutput) Office365() ClientAddonsOffice365PtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsOffice365 {
 		if v == nil {
 			return nil
 		}
 		return v.Office365
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsOffice365PtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Rms() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Active Directory Rights Management Service SSO configuration.
+func (o ClientAddonsPtrOutput) Rms() ClientAddonsRmsPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsRms {
 		if v == nil {
 			return nil
 		}
 		return v.Rms
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsRmsPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Salesforce() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Salesforce SSO configuration.
+func (o ClientAddonsPtrOutput) Salesforce() ClientAddonsSalesforcePtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsSalesforce {
 		if v == nil {
 			return nil
 		}
 		return v.Salesforce
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsSalesforcePtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) SalesforceApi() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Salesforce API addon configuration.
+func (o ClientAddonsPtrOutput) SalesforceApi() ClientAddonsSalesforceApiPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsSalesforceApi {
 		if v == nil {
 			return nil
 		}
 		return v.SalesforceApi
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsSalesforceApiPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) SalesforceSandboxApi() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Salesforce Sandbox addon configuration.
+func (o ClientAddonsPtrOutput) SalesforceSandboxApi() ClientAddonsSalesforceSandboxApiPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsSalesforceSandboxApi {
 		if v == nil {
 			return nil
 		}
 		return v.SalesforceSandboxApi
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsSalesforceSandboxApiPtrOutput)
 }
 
 // Configuration settings for a SAML add-on.
@@ -5240,110 +5345,3397 @@ func (o ClientAddonsPtrOutput) Samlp() ClientAddonsSamlpPtrOutput {
 	}).(ClientAddonsSamlpPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) SapApi() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// SAP API addon configuration.
+func (o ClientAddonsPtrOutput) SapApi() ClientAddonsSapApiPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsSapApi {
 		if v == nil {
 			return nil
 		}
 		return v.SapApi
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsSapApiPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Sentry() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Sentry SSO configuration.
+func (o ClientAddonsPtrOutput) Sentry() ClientAddonsSentryPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsSentry {
 		if v == nil {
 			return nil
 		}
 		return v.Sentry
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsSentryPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Sharepoint() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// SharePoint SSO configuration.
+func (o ClientAddonsPtrOutput) Sharepoint() ClientAddonsSharepointPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsSharepoint {
 		if v == nil {
 			return nil
 		}
 		return v.Sharepoint
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsSharepointPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Slack() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+func (o ClientAddonsPtrOutput) Slack() ClientAddonsSlackPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsSlack {
 		if v == nil {
 			return nil
 		}
 		return v.Slack
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsSlackPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Springcm() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// SpringCM SSO configuration.
+func (o ClientAddonsPtrOutput) Springcm() ClientAddonsSpringcmPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsSpringcm {
 		if v == nil {
 			return nil
 		}
 		return v.Springcm
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsSpringcmPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Wams() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Generic SSO configuration.
+func (o ClientAddonsPtrOutput) SsoIntegration() ClientAddonsSsoIntegrationPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsSsoIntegration {
+		if v == nil {
+			return nil
+		}
+		return v.SsoIntegration
+	}).(ClientAddonsSsoIntegrationPtrOutput)
+}
+
+// Windows Azure Mobile Services addon configuration.
+func (o ClientAddonsPtrOutput) Wams() ClientAddonsWamsPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsWams {
 		if v == nil {
 			return nil
 		}
 		return v.Wams
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsWamsPtrOutput)
 }
 
-// WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `clientAliases` properties on the client.
-func (o ClientAddonsPtrOutput) Wsfed() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `clientAliases` properties on the client.
+func (o ClientAddonsPtrOutput) Wsfed() ClientAddonsWsfedPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsWsfed {
 		if v == nil {
 			return nil
 		}
 		return v.Wsfed
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsWsfedPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Zendesk() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Zendesk SSO configuration.
+func (o ClientAddonsPtrOutput) Zendesk() ClientAddonsZendeskPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsZendesk {
 		if v == nil {
 			return nil
 		}
 		return v.Zendesk
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsZendeskPtrOutput)
 }
 
-func (o ClientAddonsPtrOutput) Zoom() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+// Zoom SSO configuration.
+func (o ClientAddonsPtrOutput) Zoom() ClientAddonsZoomPtrOutput {
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsZoom {
 		if v == nil {
 			return nil
 		}
 		return v.Zoom
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsZoomPtrOutput)
+}
+
+type ClientAddonsAws struct {
+	LifetimeInSeconds *int    `pulumi:"lifetimeInSeconds"`
+	Principal         *string `pulumi:"principal"`
+	Role              *string `pulumi:"role"`
+}
+
+// ClientAddonsAwsInput is an input type that accepts ClientAddonsAwsArgs and ClientAddonsAwsOutput values.
+// You can construct a concrete instance of `ClientAddonsAwsInput` via:
+//
+//	ClientAddonsAwsArgs{...}
+type ClientAddonsAwsInput interface {
+	pulumi.Input
+
+	ToClientAddonsAwsOutput() ClientAddonsAwsOutput
+	ToClientAddonsAwsOutputWithContext(context.Context) ClientAddonsAwsOutput
+}
+
+type ClientAddonsAwsArgs struct {
+	LifetimeInSeconds pulumi.IntPtrInput    `pulumi:"lifetimeInSeconds"`
+	Principal         pulumi.StringPtrInput `pulumi:"principal"`
+	Role              pulumi.StringPtrInput `pulumi:"role"`
+}
+
+func (ClientAddonsAwsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsAws)(nil)).Elem()
+}
+
+func (i ClientAddonsAwsArgs) ToClientAddonsAwsOutput() ClientAddonsAwsOutput {
+	return i.ToClientAddonsAwsOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsAwsArgs) ToClientAddonsAwsOutputWithContext(ctx context.Context) ClientAddonsAwsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsAwsOutput)
+}
+
+func (i ClientAddonsAwsArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsAws] {
+	return pulumix.Output[ClientAddonsAws]{
+		OutputState: i.ToClientAddonsAwsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsAwsArgs) ToClientAddonsAwsPtrOutput() ClientAddonsAwsPtrOutput {
+	return i.ToClientAddonsAwsPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsAwsArgs) ToClientAddonsAwsPtrOutputWithContext(ctx context.Context) ClientAddonsAwsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsAwsOutput).ToClientAddonsAwsPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsAwsPtrInput is an input type that accepts ClientAddonsAwsArgs, ClientAddonsAwsPtr and ClientAddonsAwsPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsAwsPtrInput` via:
+//
+//	        ClientAddonsAwsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsAwsPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsAwsPtrOutput() ClientAddonsAwsPtrOutput
+	ToClientAddonsAwsPtrOutputWithContext(context.Context) ClientAddonsAwsPtrOutput
+}
+
+type clientAddonsAwsPtrType ClientAddonsAwsArgs
+
+func ClientAddonsAwsPtr(v *ClientAddonsAwsArgs) ClientAddonsAwsPtrInput {
+	return (*clientAddonsAwsPtrType)(v)
+}
+
+func (*clientAddonsAwsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsAws)(nil)).Elem()
+}
+
+func (i *clientAddonsAwsPtrType) ToClientAddonsAwsPtrOutput() ClientAddonsAwsPtrOutput {
+	return i.ToClientAddonsAwsPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsAwsPtrType) ToClientAddonsAwsPtrOutputWithContext(ctx context.Context) ClientAddonsAwsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsAwsPtrOutput)
+}
+
+func (i *clientAddonsAwsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsAws] {
+	return pulumix.Output[*ClientAddonsAws]{
+		OutputState: i.ToClientAddonsAwsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsAwsOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsAwsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsAws)(nil)).Elem()
+}
+
+func (o ClientAddonsAwsOutput) ToClientAddonsAwsOutput() ClientAddonsAwsOutput {
+	return o
+}
+
+func (o ClientAddonsAwsOutput) ToClientAddonsAwsOutputWithContext(ctx context.Context) ClientAddonsAwsOutput {
+	return o
+}
+
+func (o ClientAddonsAwsOutput) ToClientAddonsAwsPtrOutput() ClientAddonsAwsPtrOutput {
+	return o.ToClientAddonsAwsPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsAwsOutput) ToClientAddonsAwsPtrOutputWithContext(ctx context.Context) ClientAddonsAwsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsAws) *ClientAddonsAws {
+		return &v
+	}).(ClientAddonsAwsPtrOutput)
+}
+
+func (o ClientAddonsAwsOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsAws] {
+	return pulumix.Output[ClientAddonsAws]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsAwsOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAws) *int { return v.LifetimeInSeconds }).(pulumi.IntPtrOutput)
+}
+
+func (o ClientAddonsAwsOutput) Principal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAws) *string { return v.Principal }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsAwsOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAws) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsAwsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsAwsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsAws)(nil)).Elem()
+}
+
+func (o ClientAddonsAwsPtrOutput) ToClientAddonsAwsPtrOutput() ClientAddonsAwsPtrOutput {
+	return o
+}
+
+func (o ClientAddonsAwsPtrOutput) ToClientAddonsAwsPtrOutputWithContext(ctx context.Context) ClientAddonsAwsPtrOutput {
+	return o
+}
+
+func (o ClientAddonsAwsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsAws] {
+	return pulumix.Output[*ClientAddonsAws]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsAwsPtrOutput) Elem() ClientAddonsAwsOutput {
+	return o.ApplyT(func(v *ClientAddonsAws) ClientAddonsAws {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsAws
+		return ret
+	}).(ClientAddonsAwsOutput)
+}
+
+func (o ClientAddonsAwsPtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAws) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LifetimeInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClientAddonsAwsPtrOutput) Principal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Principal
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsAwsPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsAzureBlob struct {
+	AccountName      *string `pulumi:"accountName"`
+	BlobDelete       *bool   `pulumi:"blobDelete"`
+	BlobName         *string `pulumi:"blobName"`
+	BlobRead         *bool   `pulumi:"blobRead"`
+	BlobWrite        *bool   `pulumi:"blobWrite"`
+	ContainerDelete  *bool   `pulumi:"containerDelete"`
+	ContainerList    *bool   `pulumi:"containerList"`
+	ContainerName    *string `pulumi:"containerName"`
+	ContainerRead    *bool   `pulumi:"containerRead"`
+	ContainerWrite   *bool   `pulumi:"containerWrite"`
+	Expiration       *int    `pulumi:"expiration"`
+	SignedIdentifier *string `pulumi:"signedIdentifier"`
+	StorageAccessKey *string `pulumi:"storageAccessKey"`
+}
+
+// ClientAddonsAzureBlobInput is an input type that accepts ClientAddonsAzureBlobArgs and ClientAddonsAzureBlobOutput values.
+// You can construct a concrete instance of `ClientAddonsAzureBlobInput` via:
+//
+//	ClientAddonsAzureBlobArgs{...}
+type ClientAddonsAzureBlobInput interface {
+	pulumi.Input
+
+	ToClientAddonsAzureBlobOutput() ClientAddonsAzureBlobOutput
+	ToClientAddonsAzureBlobOutputWithContext(context.Context) ClientAddonsAzureBlobOutput
+}
+
+type ClientAddonsAzureBlobArgs struct {
+	AccountName      pulumi.StringPtrInput `pulumi:"accountName"`
+	BlobDelete       pulumi.BoolPtrInput   `pulumi:"blobDelete"`
+	BlobName         pulumi.StringPtrInput `pulumi:"blobName"`
+	BlobRead         pulumi.BoolPtrInput   `pulumi:"blobRead"`
+	BlobWrite        pulumi.BoolPtrInput   `pulumi:"blobWrite"`
+	ContainerDelete  pulumi.BoolPtrInput   `pulumi:"containerDelete"`
+	ContainerList    pulumi.BoolPtrInput   `pulumi:"containerList"`
+	ContainerName    pulumi.StringPtrInput `pulumi:"containerName"`
+	ContainerRead    pulumi.BoolPtrInput   `pulumi:"containerRead"`
+	ContainerWrite   pulumi.BoolPtrInput   `pulumi:"containerWrite"`
+	Expiration       pulumi.IntPtrInput    `pulumi:"expiration"`
+	SignedIdentifier pulumi.StringPtrInput `pulumi:"signedIdentifier"`
+	StorageAccessKey pulumi.StringPtrInput `pulumi:"storageAccessKey"`
+}
+
+func (ClientAddonsAzureBlobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsAzureBlob)(nil)).Elem()
+}
+
+func (i ClientAddonsAzureBlobArgs) ToClientAddonsAzureBlobOutput() ClientAddonsAzureBlobOutput {
+	return i.ToClientAddonsAzureBlobOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsAzureBlobArgs) ToClientAddonsAzureBlobOutputWithContext(ctx context.Context) ClientAddonsAzureBlobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsAzureBlobOutput)
+}
+
+func (i ClientAddonsAzureBlobArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsAzureBlob] {
+	return pulumix.Output[ClientAddonsAzureBlob]{
+		OutputState: i.ToClientAddonsAzureBlobOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsAzureBlobArgs) ToClientAddonsAzureBlobPtrOutput() ClientAddonsAzureBlobPtrOutput {
+	return i.ToClientAddonsAzureBlobPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsAzureBlobArgs) ToClientAddonsAzureBlobPtrOutputWithContext(ctx context.Context) ClientAddonsAzureBlobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsAzureBlobOutput).ToClientAddonsAzureBlobPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsAzureBlobPtrInput is an input type that accepts ClientAddonsAzureBlobArgs, ClientAddonsAzureBlobPtr and ClientAddonsAzureBlobPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsAzureBlobPtrInput` via:
+//
+//	        ClientAddonsAzureBlobArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsAzureBlobPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsAzureBlobPtrOutput() ClientAddonsAzureBlobPtrOutput
+	ToClientAddonsAzureBlobPtrOutputWithContext(context.Context) ClientAddonsAzureBlobPtrOutput
+}
+
+type clientAddonsAzureBlobPtrType ClientAddonsAzureBlobArgs
+
+func ClientAddonsAzureBlobPtr(v *ClientAddonsAzureBlobArgs) ClientAddonsAzureBlobPtrInput {
+	return (*clientAddonsAzureBlobPtrType)(v)
+}
+
+func (*clientAddonsAzureBlobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsAzureBlob)(nil)).Elem()
+}
+
+func (i *clientAddonsAzureBlobPtrType) ToClientAddonsAzureBlobPtrOutput() ClientAddonsAzureBlobPtrOutput {
+	return i.ToClientAddonsAzureBlobPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsAzureBlobPtrType) ToClientAddonsAzureBlobPtrOutputWithContext(ctx context.Context) ClientAddonsAzureBlobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsAzureBlobPtrOutput)
+}
+
+func (i *clientAddonsAzureBlobPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsAzureBlob] {
+	return pulumix.Output[*ClientAddonsAzureBlob]{
+		OutputState: i.ToClientAddonsAzureBlobPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsAzureBlobOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsAzureBlobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsAzureBlob)(nil)).Elem()
+}
+
+func (o ClientAddonsAzureBlobOutput) ToClientAddonsAzureBlobOutput() ClientAddonsAzureBlobOutput {
+	return o
+}
+
+func (o ClientAddonsAzureBlobOutput) ToClientAddonsAzureBlobOutputWithContext(ctx context.Context) ClientAddonsAzureBlobOutput {
+	return o
+}
+
+func (o ClientAddonsAzureBlobOutput) ToClientAddonsAzureBlobPtrOutput() ClientAddonsAzureBlobPtrOutput {
+	return o.ToClientAddonsAzureBlobPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsAzureBlobOutput) ToClientAddonsAzureBlobPtrOutputWithContext(ctx context.Context) ClientAddonsAzureBlobPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsAzureBlob) *ClientAddonsAzureBlob {
+		return &v
+	}).(ClientAddonsAzureBlobPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsAzureBlob] {
+	return pulumix.Output[ClientAddonsAzureBlob]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsAzureBlobOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureBlob) *string { return v.AccountName }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobOutput) BlobDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureBlob) *bool { return v.BlobDelete }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobOutput) BlobName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureBlob) *string { return v.BlobName }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobOutput) BlobRead() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureBlob) *bool { return v.BlobRead }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobOutput) BlobWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureBlob) *bool { return v.BlobWrite }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobOutput) ContainerDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureBlob) *bool { return v.ContainerDelete }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobOutput) ContainerList() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureBlob) *bool { return v.ContainerList }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureBlob) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobOutput) ContainerRead() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureBlob) *bool { return v.ContainerRead }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobOutput) ContainerWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureBlob) *bool { return v.ContainerWrite }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobOutput) Expiration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureBlob) *int { return v.Expiration }).(pulumi.IntPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobOutput) SignedIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureBlob) *string { return v.SignedIdentifier }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobOutput) StorageAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureBlob) *string { return v.StorageAccessKey }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsAzureBlobPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsAzureBlobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsAzureBlob)(nil)).Elem()
+}
+
+func (o ClientAddonsAzureBlobPtrOutput) ToClientAddonsAzureBlobPtrOutput() ClientAddonsAzureBlobPtrOutput {
+	return o
+}
+
+func (o ClientAddonsAzureBlobPtrOutput) ToClientAddonsAzureBlobPtrOutputWithContext(ctx context.Context) ClientAddonsAzureBlobPtrOutput {
+	return o
+}
+
+func (o ClientAddonsAzureBlobPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsAzureBlob] {
+	return pulumix.Output[*ClientAddonsAzureBlob]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsAzureBlobPtrOutput) Elem() ClientAddonsAzureBlobOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureBlob) ClientAddonsAzureBlob {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsAzureBlob
+		return ret
+	}).(ClientAddonsAzureBlobOutput)
+}
+
+func (o ClientAddonsAzureBlobPtrOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureBlob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobPtrOutput) BlobDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureBlob) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlobDelete
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobPtrOutput) BlobName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureBlob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BlobName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobPtrOutput) BlobRead() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureBlob) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlobRead
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobPtrOutput) BlobWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureBlob) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlobWrite
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobPtrOutput) ContainerDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureBlob) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerDelete
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobPtrOutput) ContainerList() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureBlob) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerList
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobPtrOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureBlob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobPtrOutput) ContainerRead() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureBlob) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerRead
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobPtrOutput) ContainerWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureBlob) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerWrite
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobPtrOutput) Expiration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureBlob) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Expiration
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobPtrOutput) SignedIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureBlob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignedIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsAzureBlobPtrOutput) StorageAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureBlob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsAzureSb struct {
+	EntityPath *string `pulumi:"entityPath"`
+	Expiration *int    `pulumi:"expiration"`
+	Namespace  *string `pulumi:"namespace"`
+	SasKey     *string `pulumi:"sasKey"`
+	SasKeyName *string `pulumi:"sasKeyName"`
+}
+
+// ClientAddonsAzureSbInput is an input type that accepts ClientAddonsAzureSbArgs and ClientAddonsAzureSbOutput values.
+// You can construct a concrete instance of `ClientAddonsAzureSbInput` via:
+//
+//	ClientAddonsAzureSbArgs{...}
+type ClientAddonsAzureSbInput interface {
+	pulumi.Input
+
+	ToClientAddonsAzureSbOutput() ClientAddonsAzureSbOutput
+	ToClientAddonsAzureSbOutputWithContext(context.Context) ClientAddonsAzureSbOutput
+}
+
+type ClientAddonsAzureSbArgs struct {
+	EntityPath pulumi.StringPtrInput `pulumi:"entityPath"`
+	Expiration pulumi.IntPtrInput    `pulumi:"expiration"`
+	Namespace  pulumi.StringPtrInput `pulumi:"namespace"`
+	SasKey     pulumi.StringPtrInput `pulumi:"sasKey"`
+	SasKeyName pulumi.StringPtrInput `pulumi:"sasKeyName"`
+}
+
+func (ClientAddonsAzureSbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsAzureSb)(nil)).Elem()
+}
+
+func (i ClientAddonsAzureSbArgs) ToClientAddonsAzureSbOutput() ClientAddonsAzureSbOutput {
+	return i.ToClientAddonsAzureSbOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsAzureSbArgs) ToClientAddonsAzureSbOutputWithContext(ctx context.Context) ClientAddonsAzureSbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsAzureSbOutput)
+}
+
+func (i ClientAddonsAzureSbArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsAzureSb] {
+	return pulumix.Output[ClientAddonsAzureSb]{
+		OutputState: i.ToClientAddonsAzureSbOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsAzureSbArgs) ToClientAddonsAzureSbPtrOutput() ClientAddonsAzureSbPtrOutput {
+	return i.ToClientAddonsAzureSbPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsAzureSbArgs) ToClientAddonsAzureSbPtrOutputWithContext(ctx context.Context) ClientAddonsAzureSbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsAzureSbOutput).ToClientAddonsAzureSbPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsAzureSbPtrInput is an input type that accepts ClientAddonsAzureSbArgs, ClientAddonsAzureSbPtr and ClientAddonsAzureSbPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsAzureSbPtrInput` via:
+//
+//	        ClientAddonsAzureSbArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsAzureSbPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsAzureSbPtrOutput() ClientAddonsAzureSbPtrOutput
+	ToClientAddonsAzureSbPtrOutputWithContext(context.Context) ClientAddonsAzureSbPtrOutput
+}
+
+type clientAddonsAzureSbPtrType ClientAddonsAzureSbArgs
+
+func ClientAddonsAzureSbPtr(v *ClientAddonsAzureSbArgs) ClientAddonsAzureSbPtrInput {
+	return (*clientAddonsAzureSbPtrType)(v)
+}
+
+func (*clientAddonsAzureSbPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsAzureSb)(nil)).Elem()
+}
+
+func (i *clientAddonsAzureSbPtrType) ToClientAddonsAzureSbPtrOutput() ClientAddonsAzureSbPtrOutput {
+	return i.ToClientAddonsAzureSbPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsAzureSbPtrType) ToClientAddonsAzureSbPtrOutputWithContext(ctx context.Context) ClientAddonsAzureSbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsAzureSbPtrOutput)
+}
+
+func (i *clientAddonsAzureSbPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsAzureSb] {
+	return pulumix.Output[*ClientAddonsAzureSb]{
+		OutputState: i.ToClientAddonsAzureSbPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsAzureSbOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsAzureSbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsAzureSb)(nil)).Elem()
+}
+
+func (o ClientAddonsAzureSbOutput) ToClientAddonsAzureSbOutput() ClientAddonsAzureSbOutput {
+	return o
+}
+
+func (o ClientAddonsAzureSbOutput) ToClientAddonsAzureSbOutputWithContext(ctx context.Context) ClientAddonsAzureSbOutput {
+	return o
+}
+
+func (o ClientAddonsAzureSbOutput) ToClientAddonsAzureSbPtrOutput() ClientAddonsAzureSbPtrOutput {
+	return o.ToClientAddonsAzureSbPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsAzureSbOutput) ToClientAddonsAzureSbPtrOutputWithContext(ctx context.Context) ClientAddonsAzureSbPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsAzureSb) *ClientAddonsAzureSb {
+		return &v
+	}).(ClientAddonsAzureSbPtrOutput)
+}
+
+func (o ClientAddonsAzureSbOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsAzureSb] {
+	return pulumix.Output[ClientAddonsAzureSb]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsAzureSbOutput) EntityPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureSb) *string { return v.EntityPath }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsAzureSbOutput) Expiration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureSb) *int { return v.Expiration }).(pulumi.IntPtrOutput)
+}
+
+func (o ClientAddonsAzureSbOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureSb) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsAzureSbOutput) SasKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureSb) *string { return v.SasKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsAzureSbOutput) SasKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsAzureSb) *string { return v.SasKeyName }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsAzureSbPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsAzureSbPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsAzureSb)(nil)).Elem()
+}
+
+func (o ClientAddonsAzureSbPtrOutput) ToClientAddonsAzureSbPtrOutput() ClientAddonsAzureSbPtrOutput {
+	return o
+}
+
+func (o ClientAddonsAzureSbPtrOutput) ToClientAddonsAzureSbPtrOutputWithContext(ctx context.Context) ClientAddonsAzureSbPtrOutput {
+	return o
+}
+
+func (o ClientAddonsAzureSbPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsAzureSb] {
+	return pulumix.Output[*ClientAddonsAzureSb]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsAzureSbPtrOutput) Elem() ClientAddonsAzureSbOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureSb) ClientAddonsAzureSb {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsAzureSb
+		return ret
+	}).(ClientAddonsAzureSbOutput)
+}
+
+func (o ClientAddonsAzureSbPtrOutput) EntityPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureSb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntityPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsAzureSbPtrOutput) Expiration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureSb) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Expiration
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClientAddonsAzureSbPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureSb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsAzureSbPtrOutput) SasKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureSb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SasKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsAzureSbPtrOutput) SasKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsAzureSb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SasKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsBox struct {
+}
+
+// ClientAddonsBoxInput is an input type that accepts ClientAddonsBoxArgs and ClientAddonsBoxOutput values.
+// You can construct a concrete instance of `ClientAddonsBoxInput` via:
+//
+//	ClientAddonsBoxArgs{...}
+type ClientAddonsBoxInput interface {
+	pulumi.Input
+
+	ToClientAddonsBoxOutput() ClientAddonsBoxOutput
+	ToClientAddonsBoxOutputWithContext(context.Context) ClientAddonsBoxOutput
+}
+
+type ClientAddonsBoxArgs struct {
+}
+
+func (ClientAddonsBoxArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsBox)(nil)).Elem()
+}
+
+func (i ClientAddonsBoxArgs) ToClientAddonsBoxOutput() ClientAddonsBoxOutput {
+	return i.ToClientAddonsBoxOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsBoxArgs) ToClientAddonsBoxOutputWithContext(ctx context.Context) ClientAddonsBoxOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsBoxOutput)
+}
+
+func (i ClientAddonsBoxArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsBox] {
+	return pulumix.Output[ClientAddonsBox]{
+		OutputState: i.ToClientAddonsBoxOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsBoxArgs) ToClientAddonsBoxPtrOutput() ClientAddonsBoxPtrOutput {
+	return i.ToClientAddonsBoxPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsBoxArgs) ToClientAddonsBoxPtrOutputWithContext(ctx context.Context) ClientAddonsBoxPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsBoxOutput).ToClientAddonsBoxPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsBoxPtrInput is an input type that accepts ClientAddonsBoxArgs, ClientAddonsBoxPtr and ClientAddonsBoxPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsBoxPtrInput` via:
+//
+//	        ClientAddonsBoxArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsBoxPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsBoxPtrOutput() ClientAddonsBoxPtrOutput
+	ToClientAddonsBoxPtrOutputWithContext(context.Context) ClientAddonsBoxPtrOutput
+}
+
+type clientAddonsBoxPtrType ClientAddonsBoxArgs
+
+func ClientAddonsBoxPtr(v *ClientAddonsBoxArgs) ClientAddonsBoxPtrInput {
+	return (*clientAddonsBoxPtrType)(v)
+}
+
+func (*clientAddonsBoxPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsBox)(nil)).Elem()
+}
+
+func (i *clientAddonsBoxPtrType) ToClientAddonsBoxPtrOutput() ClientAddonsBoxPtrOutput {
+	return i.ToClientAddonsBoxPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsBoxPtrType) ToClientAddonsBoxPtrOutputWithContext(ctx context.Context) ClientAddonsBoxPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsBoxPtrOutput)
+}
+
+func (i *clientAddonsBoxPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsBox] {
+	return pulumix.Output[*ClientAddonsBox]{
+		OutputState: i.ToClientAddonsBoxPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsBoxOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsBoxOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsBox)(nil)).Elem()
+}
+
+func (o ClientAddonsBoxOutput) ToClientAddonsBoxOutput() ClientAddonsBoxOutput {
+	return o
+}
+
+func (o ClientAddonsBoxOutput) ToClientAddonsBoxOutputWithContext(ctx context.Context) ClientAddonsBoxOutput {
+	return o
+}
+
+func (o ClientAddonsBoxOutput) ToClientAddonsBoxPtrOutput() ClientAddonsBoxPtrOutput {
+	return o.ToClientAddonsBoxPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsBoxOutput) ToClientAddonsBoxPtrOutputWithContext(ctx context.Context) ClientAddonsBoxPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsBox) *ClientAddonsBox {
+		return &v
+	}).(ClientAddonsBoxPtrOutput)
+}
+
+func (o ClientAddonsBoxOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsBox] {
+	return pulumix.Output[ClientAddonsBox]{
+		OutputState: o.OutputState,
+	}
+}
+
+type ClientAddonsBoxPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsBoxPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsBox)(nil)).Elem()
+}
+
+func (o ClientAddonsBoxPtrOutput) ToClientAddonsBoxPtrOutput() ClientAddonsBoxPtrOutput {
+	return o
+}
+
+func (o ClientAddonsBoxPtrOutput) ToClientAddonsBoxPtrOutputWithContext(ctx context.Context) ClientAddonsBoxPtrOutput {
+	return o
+}
+
+func (o ClientAddonsBoxPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsBox] {
+	return pulumix.Output[*ClientAddonsBox]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsBoxPtrOutput) Elem() ClientAddonsBoxOutput {
+	return o.ApplyT(func(v *ClientAddonsBox) ClientAddonsBox {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsBox
+		return ret
+	}).(ClientAddonsBoxOutput)
+}
+
+type ClientAddonsCloudbees struct {
+}
+
+// ClientAddonsCloudbeesInput is an input type that accepts ClientAddonsCloudbeesArgs and ClientAddonsCloudbeesOutput values.
+// You can construct a concrete instance of `ClientAddonsCloudbeesInput` via:
+//
+//	ClientAddonsCloudbeesArgs{...}
+type ClientAddonsCloudbeesInput interface {
+	pulumi.Input
+
+	ToClientAddonsCloudbeesOutput() ClientAddonsCloudbeesOutput
+	ToClientAddonsCloudbeesOutputWithContext(context.Context) ClientAddonsCloudbeesOutput
+}
+
+type ClientAddonsCloudbeesArgs struct {
+}
+
+func (ClientAddonsCloudbeesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsCloudbees)(nil)).Elem()
+}
+
+func (i ClientAddonsCloudbeesArgs) ToClientAddonsCloudbeesOutput() ClientAddonsCloudbeesOutput {
+	return i.ToClientAddonsCloudbeesOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsCloudbeesArgs) ToClientAddonsCloudbeesOutputWithContext(ctx context.Context) ClientAddonsCloudbeesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsCloudbeesOutput)
+}
+
+func (i ClientAddonsCloudbeesArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsCloudbees] {
+	return pulumix.Output[ClientAddonsCloudbees]{
+		OutputState: i.ToClientAddonsCloudbeesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsCloudbeesArgs) ToClientAddonsCloudbeesPtrOutput() ClientAddonsCloudbeesPtrOutput {
+	return i.ToClientAddonsCloudbeesPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsCloudbeesArgs) ToClientAddonsCloudbeesPtrOutputWithContext(ctx context.Context) ClientAddonsCloudbeesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsCloudbeesOutput).ToClientAddonsCloudbeesPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsCloudbeesPtrInput is an input type that accepts ClientAddonsCloudbeesArgs, ClientAddonsCloudbeesPtr and ClientAddonsCloudbeesPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsCloudbeesPtrInput` via:
+//
+//	        ClientAddonsCloudbeesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsCloudbeesPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsCloudbeesPtrOutput() ClientAddonsCloudbeesPtrOutput
+	ToClientAddonsCloudbeesPtrOutputWithContext(context.Context) ClientAddonsCloudbeesPtrOutput
+}
+
+type clientAddonsCloudbeesPtrType ClientAddonsCloudbeesArgs
+
+func ClientAddonsCloudbeesPtr(v *ClientAddonsCloudbeesArgs) ClientAddonsCloudbeesPtrInput {
+	return (*clientAddonsCloudbeesPtrType)(v)
+}
+
+func (*clientAddonsCloudbeesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsCloudbees)(nil)).Elem()
+}
+
+func (i *clientAddonsCloudbeesPtrType) ToClientAddonsCloudbeesPtrOutput() ClientAddonsCloudbeesPtrOutput {
+	return i.ToClientAddonsCloudbeesPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsCloudbeesPtrType) ToClientAddonsCloudbeesPtrOutputWithContext(ctx context.Context) ClientAddonsCloudbeesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsCloudbeesPtrOutput)
+}
+
+func (i *clientAddonsCloudbeesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsCloudbees] {
+	return pulumix.Output[*ClientAddonsCloudbees]{
+		OutputState: i.ToClientAddonsCloudbeesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsCloudbeesOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsCloudbeesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsCloudbees)(nil)).Elem()
+}
+
+func (o ClientAddonsCloudbeesOutput) ToClientAddonsCloudbeesOutput() ClientAddonsCloudbeesOutput {
+	return o
+}
+
+func (o ClientAddonsCloudbeesOutput) ToClientAddonsCloudbeesOutputWithContext(ctx context.Context) ClientAddonsCloudbeesOutput {
+	return o
+}
+
+func (o ClientAddonsCloudbeesOutput) ToClientAddonsCloudbeesPtrOutput() ClientAddonsCloudbeesPtrOutput {
+	return o.ToClientAddonsCloudbeesPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsCloudbeesOutput) ToClientAddonsCloudbeesPtrOutputWithContext(ctx context.Context) ClientAddonsCloudbeesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsCloudbees) *ClientAddonsCloudbees {
+		return &v
+	}).(ClientAddonsCloudbeesPtrOutput)
+}
+
+func (o ClientAddonsCloudbeesOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsCloudbees] {
+	return pulumix.Output[ClientAddonsCloudbees]{
+		OutputState: o.OutputState,
+	}
+}
+
+type ClientAddonsCloudbeesPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsCloudbeesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsCloudbees)(nil)).Elem()
+}
+
+func (o ClientAddonsCloudbeesPtrOutput) ToClientAddonsCloudbeesPtrOutput() ClientAddonsCloudbeesPtrOutput {
+	return o
+}
+
+func (o ClientAddonsCloudbeesPtrOutput) ToClientAddonsCloudbeesPtrOutputWithContext(ctx context.Context) ClientAddonsCloudbeesPtrOutput {
+	return o
+}
+
+func (o ClientAddonsCloudbeesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsCloudbees] {
+	return pulumix.Output[*ClientAddonsCloudbees]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsCloudbeesPtrOutput) Elem() ClientAddonsCloudbeesOutput {
+	return o.ApplyT(func(v *ClientAddonsCloudbees) ClientAddonsCloudbees {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsCloudbees
+		return ret
+	}).(ClientAddonsCloudbeesOutput)
+}
+
+type ClientAddonsConcur struct {
+}
+
+// ClientAddonsConcurInput is an input type that accepts ClientAddonsConcurArgs and ClientAddonsConcurOutput values.
+// You can construct a concrete instance of `ClientAddonsConcurInput` via:
+//
+//	ClientAddonsConcurArgs{...}
+type ClientAddonsConcurInput interface {
+	pulumi.Input
+
+	ToClientAddonsConcurOutput() ClientAddonsConcurOutput
+	ToClientAddonsConcurOutputWithContext(context.Context) ClientAddonsConcurOutput
+}
+
+type ClientAddonsConcurArgs struct {
+}
+
+func (ClientAddonsConcurArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsConcur)(nil)).Elem()
+}
+
+func (i ClientAddonsConcurArgs) ToClientAddonsConcurOutput() ClientAddonsConcurOutput {
+	return i.ToClientAddonsConcurOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsConcurArgs) ToClientAddonsConcurOutputWithContext(ctx context.Context) ClientAddonsConcurOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsConcurOutput)
+}
+
+func (i ClientAddonsConcurArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsConcur] {
+	return pulumix.Output[ClientAddonsConcur]{
+		OutputState: i.ToClientAddonsConcurOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsConcurArgs) ToClientAddonsConcurPtrOutput() ClientAddonsConcurPtrOutput {
+	return i.ToClientAddonsConcurPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsConcurArgs) ToClientAddonsConcurPtrOutputWithContext(ctx context.Context) ClientAddonsConcurPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsConcurOutput).ToClientAddonsConcurPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsConcurPtrInput is an input type that accepts ClientAddonsConcurArgs, ClientAddonsConcurPtr and ClientAddonsConcurPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsConcurPtrInput` via:
+//
+//	        ClientAddonsConcurArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsConcurPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsConcurPtrOutput() ClientAddonsConcurPtrOutput
+	ToClientAddonsConcurPtrOutputWithContext(context.Context) ClientAddonsConcurPtrOutput
+}
+
+type clientAddonsConcurPtrType ClientAddonsConcurArgs
+
+func ClientAddonsConcurPtr(v *ClientAddonsConcurArgs) ClientAddonsConcurPtrInput {
+	return (*clientAddonsConcurPtrType)(v)
+}
+
+func (*clientAddonsConcurPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsConcur)(nil)).Elem()
+}
+
+func (i *clientAddonsConcurPtrType) ToClientAddonsConcurPtrOutput() ClientAddonsConcurPtrOutput {
+	return i.ToClientAddonsConcurPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsConcurPtrType) ToClientAddonsConcurPtrOutputWithContext(ctx context.Context) ClientAddonsConcurPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsConcurPtrOutput)
+}
+
+func (i *clientAddonsConcurPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsConcur] {
+	return pulumix.Output[*ClientAddonsConcur]{
+		OutputState: i.ToClientAddonsConcurPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsConcurOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsConcurOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsConcur)(nil)).Elem()
+}
+
+func (o ClientAddonsConcurOutput) ToClientAddonsConcurOutput() ClientAddonsConcurOutput {
+	return o
+}
+
+func (o ClientAddonsConcurOutput) ToClientAddonsConcurOutputWithContext(ctx context.Context) ClientAddonsConcurOutput {
+	return o
+}
+
+func (o ClientAddonsConcurOutput) ToClientAddonsConcurPtrOutput() ClientAddonsConcurPtrOutput {
+	return o.ToClientAddonsConcurPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsConcurOutput) ToClientAddonsConcurPtrOutputWithContext(ctx context.Context) ClientAddonsConcurPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsConcur) *ClientAddonsConcur {
+		return &v
+	}).(ClientAddonsConcurPtrOutput)
+}
+
+func (o ClientAddonsConcurOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsConcur] {
+	return pulumix.Output[ClientAddonsConcur]{
+		OutputState: o.OutputState,
+	}
+}
+
+type ClientAddonsConcurPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsConcurPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsConcur)(nil)).Elem()
+}
+
+func (o ClientAddonsConcurPtrOutput) ToClientAddonsConcurPtrOutput() ClientAddonsConcurPtrOutput {
+	return o
+}
+
+func (o ClientAddonsConcurPtrOutput) ToClientAddonsConcurPtrOutputWithContext(ctx context.Context) ClientAddonsConcurPtrOutput {
+	return o
+}
+
+func (o ClientAddonsConcurPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsConcur] {
+	return pulumix.Output[*ClientAddonsConcur]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsConcurPtrOutput) Elem() ClientAddonsConcurOutput {
+	return o.ApplyT(func(v *ClientAddonsConcur) ClientAddonsConcur {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsConcur
+		return ret
+	}).(ClientAddonsConcurOutput)
+}
+
+type ClientAddonsDropbox struct {
+}
+
+// ClientAddonsDropboxInput is an input type that accepts ClientAddonsDropboxArgs and ClientAddonsDropboxOutput values.
+// You can construct a concrete instance of `ClientAddonsDropboxInput` via:
+//
+//	ClientAddonsDropboxArgs{...}
+type ClientAddonsDropboxInput interface {
+	pulumi.Input
+
+	ToClientAddonsDropboxOutput() ClientAddonsDropboxOutput
+	ToClientAddonsDropboxOutputWithContext(context.Context) ClientAddonsDropboxOutput
+}
+
+type ClientAddonsDropboxArgs struct {
+}
+
+func (ClientAddonsDropboxArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsDropbox)(nil)).Elem()
+}
+
+func (i ClientAddonsDropboxArgs) ToClientAddonsDropboxOutput() ClientAddonsDropboxOutput {
+	return i.ToClientAddonsDropboxOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsDropboxArgs) ToClientAddonsDropboxOutputWithContext(ctx context.Context) ClientAddonsDropboxOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsDropboxOutput)
+}
+
+func (i ClientAddonsDropboxArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsDropbox] {
+	return pulumix.Output[ClientAddonsDropbox]{
+		OutputState: i.ToClientAddonsDropboxOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsDropboxArgs) ToClientAddonsDropboxPtrOutput() ClientAddonsDropboxPtrOutput {
+	return i.ToClientAddonsDropboxPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsDropboxArgs) ToClientAddonsDropboxPtrOutputWithContext(ctx context.Context) ClientAddonsDropboxPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsDropboxOutput).ToClientAddonsDropboxPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsDropboxPtrInput is an input type that accepts ClientAddonsDropboxArgs, ClientAddonsDropboxPtr and ClientAddonsDropboxPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsDropboxPtrInput` via:
+//
+//	        ClientAddonsDropboxArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsDropboxPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsDropboxPtrOutput() ClientAddonsDropboxPtrOutput
+	ToClientAddonsDropboxPtrOutputWithContext(context.Context) ClientAddonsDropboxPtrOutput
+}
+
+type clientAddonsDropboxPtrType ClientAddonsDropboxArgs
+
+func ClientAddonsDropboxPtr(v *ClientAddonsDropboxArgs) ClientAddonsDropboxPtrInput {
+	return (*clientAddonsDropboxPtrType)(v)
+}
+
+func (*clientAddonsDropboxPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsDropbox)(nil)).Elem()
+}
+
+func (i *clientAddonsDropboxPtrType) ToClientAddonsDropboxPtrOutput() ClientAddonsDropboxPtrOutput {
+	return i.ToClientAddonsDropboxPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsDropboxPtrType) ToClientAddonsDropboxPtrOutputWithContext(ctx context.Context) ClientAddonsDropboxPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsDropboxPtrOutput)
+}
+
+func (i *clientAddonsDropboxPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsDropbox] {
+	return pulumix.Output[*ClientAddonsDropbox]{
+		OutputState: i.ToClientAddonsDropboxPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsDropboxOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsDropboxOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsDropbox)(nil)).Elem()
+}
+
+func (o ClientAddonsDropboxOutput) ToClientAddonsDropboxOutput() ClientAddonsDropboxOutput {
+	return o
+}
+
+func (o ClientAddonsDropboxOutput) ToClientAddonsDropboxOutputWithContext(ctx context.Context) ClientAddonsDropboxOutput {
+	return o
+}
+
+func (o ClientAddonsDropboxOutput) ToClientAddonsDropboxPtrOutput() ClientAddonsDropboxPtrOutput {
+	return o.ToClientAddonsDropboxPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsDropboxOutput) ToClientAddonsDropboxPtrOutputWithContext(ctx context.Context) ClientAddonsDropboxPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsDropbox) *ClientAddonsDropbox {
+		return &v
+	}).(ClientAddonsDropboxPtrOutput)
+}
+
+func (o ClientAddonsDropboxOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsDropbox] {
+	return pulumix.Output[ClientAddonsDropbox]{
+		OutputState: o.OutputState,
+	}
+}
+
+type ClientAddonsDropboxPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsDropboxPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsDropbox)(nil)).Elem()
+}
+
+func (o ClientAddonsDropboxPtrOutput) ToClientAddonsDropboxPtrOutput() ClientAddonsDropboxPtrOutput {
+	return o
+}
+
+func (o ClientAddonsDropboxPtrOutput) ToClientAddonsDropboxPtrOutputWithContext(ctx context.Context) ClientAddonsDropboxPtrOutput {
+	return o
+}
+
+func (o ClientAddonsDropboxPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsDropbox] {
+	return pulumix.Output[*ClientAddonsDropbox]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsDropboxPtrOutput) Elem() ClientAddonsDropboxOutput {
+	return o.ApplyT(func(v *ClientAddonsDropbox) ClientAddonsDropbox {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsDropbox
+		return ret
+	}).(ClientAddonsDropboxOutput)
+}
+
+type ClientAddonsEchosign struct {
+	Domain *string `pulumi:"domain"`
+}
+
+// ClientAddonsEchosignInput is an input type that accepts ClientAddonsEchosignArgs and ClientAddonsEchosignOutput values.
+// You can construct a concrete instance of `ClientAddonsEchosignInput` via:
+//
+//	ClientAddonsEchosignArgs{...}
+type ClientAddonsEchosignInput interface {
+	pulumi.Input
+
+	ToClientAddonsEchosignOutput() ClientAddonsEchosignOutput
+	ToClientAddonsEchosignOutputWithContext(context.Context) ClientAddonsEchosignOutput
+}
+
+type ClientAddonsEchosignArgs struct {
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+}
+
+func (ClientAddonsEchosignArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsEchosign)(nil)).Elem()
+}
+
+func (i ClientAddonsEchosignArgs) ToClientAddonsEchosignOutput() ClientAddonsEchosignOutput {
+	return i.ToClientAddonsEchosignOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsEchosignArgs) ToClientAddonsEchosignOutputWithContext(ctx context.Context) ClientAddonsEchosignOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsEchosignOutput)
+}
+
+func (i ClientAddonsEchosignArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsEchosign] {
+	return pulumix.Output[ClientAddonsEchosign]{
+		OutputState: i.ToClientAddonsEchosignOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsEchosignArgs) ToClientAddonsEchosignPtrOutput() ClientAddonsEchosignPtrOutput {
+	return i.ToClientAddonsEchosignPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsEchosignArgs) ToClientAddonsEchosignPtrOutputWithContext(ctx context.Context) ClientAddonsEchosignPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsEchosignOutput).ToClientAddonsEchosignPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsEchosignPtrInput is an input type that accepts ClientAddonsEchosignArgs, ClientAddonsEchosignPtr and ClientAddonsEchosignPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsEchosignPtrInput` via:
+//
+//	        ClientAddonsEchosignArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsEchosignPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsEchosignPtrOutput() ClientAddonsEchosignPtrOutput
+	ToClientAddonsEchosignPtrOutputWithContext(context.Context) ClientAddonsEchosignPtrOutput
+}
+
+type clientAddonsEchosignPtrType ClientAddonsEchosignArgs
+
+func ClientAddonsEchosignPtr(v *ClientAddonsEchosignArgs) ClientAddonsEchosignPtrInput {
+	return (*clientAddonsEchosignPtrType)(v)
+}
+
+func (*clientAddonsEchosignPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsEchosign)(nil)).Elem()
+}
+
+func (i *clientAddonsEchosignPtrType) ToClientAddonsEchosignPtrOutput() ClientAddonsEchosignPtrOutput {
+	return i.ToClientAddonsEchosignPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsEchosignPtrType) ToClientAddonsEchosignPtrOutputWithContext(ctx context.Context) ClientAddonsEchosignPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsEchosignPtrOutput)
+}
+
+func (i *clientAddonsEchosignPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsEchosign] {
+	return pulumix.Output[*ClientAddonsEchosign]{
+		OutputState: i.ToClientAddonsEchosignPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsEchosignOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsEchosignOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsEchosign)(nil)).Elem()
+}
+
+func (o ClientAddonsEchosignOutput) ToClientAddonsEchosignOutput() ClientAddonsEchosignOutput {
+	return o
+}
+
+func (o ClientAddonsEchosignOutput) ToClientAddonsEchosignOutputWithContext(ctx context.Context) ClientAddonsEchosignOutput {
+	return o
+}
+
+func (o ClientAddonsEchosignOutput) ToClientAddonsEchosignPtrOutput() ClientAddonsEchosignPtrOutput {
+	return o.ToClientAddonsEchosignPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsEchosignOutput) ToClientAddonsEchosignPtrOutputWithContext(ctx context.Context) ClientAddonsEchosignPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsEchosign) *ClientAddonsEchosign {
+		return &v
+	}).(ClientAddonsEchosignPtrOutput)
+}
+
+func (o ClientAddonsEchosignOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsEchosign] {
+	return pulumix.Output[ClientAddonsEchosign]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsEchosignOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsEchosign) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsEchosignPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsEchosignPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsEchosign)(nil)).Elem()
+}
+
+func (o ClientAddonsEchosignPtrOutput) ToClientAddonsEchosignPtrOutput() ClientAddonsEchosignPtrOutput {
+	return o
+}
+
+func (o ClientAddonsEchosignPtrOutput) ToClientAddonsEchosignPtrOutputWithContext(ctx context.Context) ClientAddonsEchosignPtrOutput {
+	return o
+}
+
+func (o ClientAddonsEchosignPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsEchosign] {
+	return pulumix.Output[*ClientAddonsEchosign]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsEchosignPtrOutput) Elem() ClientAddonsEchosignOutput {
+	return o.ApplyT(func(v *ClientAddonsEchosign) ClientAddonsEchosign {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsEchosign
+		return ret
+	}).(ClientAddonsEchosignOutput)
+}
+
+func (o ClientAddonsEchosignPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsEchosign) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsEgnyte struct {
+	Domain *string `pulumi:"domain"`
+}
+
+// ClientAddonsEgnyteInput is an input type that accepts ClientAddonsEgnyteArgs and ClientAddonsEgnyteOutput values.
+// You can construct a concrete instance of `ClientAddonsEgnyteInput` via:
+//
+//	ClientAddonsEgnyteArgs{...}
+type ClientAddonsEgnyteInput interface {
+	pulumi.Input
+
+	ToClientAddonsEgnyteOutput() ClientAddonsEgnyteOutput
+	ToClientAddonsEgnyteOutputWithContext(context.Context) ClientAddonsEgnyteOutput
+}
+
+type ClientAddonsEgnyteArgs struct {
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+}
+
+func (ClientAddonsEgnyteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsEgnyte)(nil)).Elem()
+}
+
+func (i ClientAddonsEgnyteArgs) ToClientAddonsEgnyteOutput() ClientAddonsEgnyteOutput {
+	return i.ToClientAddonsEgnyteOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsEgnyteArgs) ToClientAddonsEgnyteOutputWithContext(ctx context.Context) ClientAddonsEgnyteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsEgnyteOutput)
+}
+
+func (i ClientAddonsEgnyteArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsEgnyte] {
+	return pulumix.Output[ClientAddonsEgnyte]{
+		OutputState: i.ToClientAddonsEgnyteOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsEgnyteArgs) ToClientAddonsEgnytePtrOutput() ClientAddonsEgnytePtrOutput {
+	return i.ToClientAddonsEgnytePtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsEgnyteArgs) ToClientAddonsEgnytePtrOutputWithContext(ctx context.Context) ClientAddonsEgnytePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsEgnyteOutput).ToClientAddonsEgnytePtrOutputWithContext(ctx)
+}
+
+// ClientAddonsEgnytePtrInput is an input type that accepts ClientAddonsEgnyteArgs, ClientAddonsEgnytePtr and ClientAddonsEgnytePtrOutput values.
+// You can construct a concrete instance of `ClientAddonsEgnytePtrInput` via:
+//
+//	        ClientAddonsEgnyteArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsEgnytePtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsEgnytePtrOutput() ClientAddonsEgnytePtrOutput
+	ToClientAddonsEgnytePtrOutputWithContext(context.Context) ClientAddonsEgnytePtrOutput
+}
+
+type clientAddonsEgnytePtrType ClientAddonsEgnyteArgs
+
+func ClientAddonsEgnytePtr(v *ClientAddonsEgnyteArgs) ClientAddonsEgnytePtrInput {
+	return (*clientAddonsEgnytePtrType)(v)
+}
+
+func (*clientAddonsEgnytePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsEgnyte)(nil)).Elem()
+}
+
+func (i *clientAddonsEgnytePtrType) ToClientAddonsEgnytePtrOutput() ClientAddonsEgnytePtrOutput {
+	return i.ToClientAddonsEgnytePtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsEgnytePtrType) ToClientAddonsEgnytePtrOutputWithContext(ctx context.Context) ClientAddonsEgnytePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsEgnytePtrOutput)
+}
+
+func (i *clientAddonsEgnytePtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsEgnyte] {
+	return pulumix.Output[*ClientAddonsEgnyte]{
+		OutputState: i.ToClientAddonsEgnytePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsEgnyteOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsEgnyteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsEgnyte)(nil)).Elem()
+}
+
+func (o ClientAddonsEgnyteOutput) ToClientAddonsEgnyteOutput() ClientAddonsEgnyteOutput {
+	return o
+}
+
+func (o ClientAddonsEgnyteOutput) ToClientAddonsEgnyteOutputWithContext(ctx context.Context) ClientAddonsEgnyteOutput {
+	return o
+}
+
+func (o ClientAddonsEgnyteOutput) ToClientAddonsEgnytePtrOutput() ClientAddonsEgnytePtrOutput {
+	return o.ToClientAddonsEgnytePtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsEgnyteOutput) ToClientAddonsEgnytePtrOutputWithContext(ctx context.Context) ClientAddonsEgnytePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsEgnyte) *ClientAddonsEgnyte {
+		return &v
+	}).(ClientAddonsEgnytePtrOutput)
+}
+
+func (o ClientAddonsEgnyteOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsEgnyte] {
+	return pulumix.Output[ClientAddonsEgnyte]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsEgnyteOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsEgnyte) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsEgnytePtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsEgnytePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsEgnyte)(nil)).Elem()
+}
+
+func (o ClientAddonsEgnytePtrOutput) ToClientAddonsEgnytePtrOutput() ClientAddonsEgnytePtrOutput {
+	return o
+}
+
+func (o ClientAddonsEgnytePtrOutput) ToClientAddonsEgnytePtrOutputWithContext(ctx context.Context) ClientAddonsEgnytePtrOutput {
+	return o
+}
+
+func (o ClientAddonsEgnytePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsEgnyte] {
+	return pulumix.Output[*ClientAddonsEgnyte]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsEgnytePtrOutput) Elem() ClientAddonsEgnyteOutput {
+	return o.ApplyT(func(v *ClientAddonsEgnyte) ClientAddonsEgnyte {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsEgnyte
+		return ret
+	}).(ClientAddonsEgnyteOutput)
+}
+
+func (o ClientAddonsEgnytePtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsEgnyte) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsFirebase struct {
+	ClientEmail       *string `pulumi:"clientEmail"`
+	LifetimeInSeconds *int    `pulumi:"lifetimeInSeconds"`
+	PrivateKey        *string `pulumi:"privateKey"`
+	PrivateKeyId      *string `pulumi:"privateKeyId"`
+	Secret            *string `pulumi:"secret"`
+}
+
+// ClientAddonsFirebaseInput is an input type that accepts ClientAddonsFirebaseArgs and ClientAddonsFirebaseOutput values.
+// You can construct a concrete instance of `ClientAddonsFirebaseInput` via:
+//
+//	ClientAddonsFirebaseArgs{...}
+type ClientAddonsFirebaseInput interface {
+	pulumi.Input
+
+	ToClientAddonsFirebaseOutput() ClientAddonsFirebaseOutput
+	ToClientAddonsFirebaseOutputWithContext(context.Context) ClientAddonsFirebaseOutput
+}
+
+type ClientAddonsFirebaseArgs struct {
+	ClientEmail       pulumi.StringPtrInput `pulumi:"clientEmail"`
+	LifetimeInSeconds pulumi.IntPtrInput    `pulumi:"lifetimeInSeconds"`
+	PrivateKey        pulumi.StringPtrInput `pulumi:"privateKey"`
+	PrivateKeyId      pulumi.StringPtrInput `pulumi:"privateKeyId"`
+	Secret            pulumi.StringPtrInput `pulumi:"secret"`
+}
+
+func (ClientAddonsFirebaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsFirebase)(nil)).Elem()
+}
+
+func (i ClientAddonsFirebaseArgs) ToClientAddonsFirebaseOutput() ClientAddonsFirebaseOutput {
+	return i.ToClientAddonsFirebaseOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsFirebaseArgs) ToClientAddonsFirebaseOutputWithContext(ctx context.Context) ClientAddonsFirebaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsFirebaseOutput)
+}
+
+func (i ClientAddonsFirebaseArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsFirebase] {
+	return pulumix.Output[ClientAddonsFirebase]{
+		OutputState: i.ToClientAddonsFirebaseOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsFirebaseArgs) ToClientAddonsFirebasePtrOutput() ClientAddonsFirebasePtrOutput {
+	return i.ToClientAddonsFirebasePtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsFirebaseArgs) ToClientAddonsFirebasePtrOutputWithContext(ctx context.Context) ClientAddonsFirebasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsFirebaseOutput).ToClientAddonsFirebasePtrOutputWithContext(ctx)
+}
+
+// ClientAddonsFirebasePtrInput is an input type that accepts ClientAddonsFirebaseArgs, ClientAddonsFirebasePtr and ClientAddonsFirebasePtrOutput values.
+// You can construct a concrete instance of `ClientAddonsFirebasePtrInput` via:
+//
+//	        ClientAddonsFirebaseArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsFirebasePtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsFirebasePtrOutput() ClientAddonsFirebasePtrOutput
+	ToClientAddonsFirebasePtrOutputWithContext(context.Context) ClientAddonsFirebasePtrOutput
+}
+
+type clientAddonsFirebasePtrType ClientAddonsFirebaseArgs
+
+func ClientAddonsFirebasePtr(v *ClientAddonsFirebaseArgs) ClientAddonsFirebasePtrInput {
+	return (*clientAddonsFirebasePtrType)(v)
+}
+
+func (*clientAddonsFirebasePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsFirebase)(nil)).Elem()
+}
+
+func (i *clientAddonsFirebasePtrType) ToClientAddonsFirebasePtrOutput() ClientAddonsFirebasePtrOutput {
+	return i.ToClientAddonsFirebasePtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsFirebasePtrType) ToClientAddonsFirebasePtrOutputWithContext(ctx context.Context) ClientAddonsFirebasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsFirebasePtrOutput)
+}
+
+func (i *clientAddonsFirebasePtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsFirebase] {
+	return pulumix.Output[*ClientAddonsFirebase]{
+		OutputState: i.ToClientAddonsFirebasePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsFirebaseOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsFirebaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsFirebase)(nil)).Elem()
+}
+
+func (o ClientAddonsFirebaseOutput) ToClientAddonsFirebaseOutput() ClientAddonsFirebaseOutput {
+	return o
+}
+
+func (o ClientAddonsFirebaseOutput) ToClientAddonsFirebaseOutputWithContext(ctx context.Context) ClientAddonsFirebaseOutput {
+	return o
+}
+
+func (o ClientAddonsFirebaseOutput) ToClientAddonsFirebasePtrOutput() ClientAddonsFirebasePtrOutput {
+	return o.ToClientAddonsFirebasePtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsFirebaseOutput) ToClientAddonsFirebasePtrOutputWithContext(ctx context.Context) ClientAddonsFirebasePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsFirebase) *ClientAddonsFirebase {
+		return &v
+	}).(ClientAddonsFirebasePtrOutput)
+}
+
+func (o ClientAddonsFirebaseOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsFirebase] {
+	return pulumix.Output[ClientAddonsFirebase]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsFirebaseOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsFirebase) *string { return v.ClientEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsFirebaseOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClientAddonsFirebase) *int { return v.LifetimeInSeconds }).(pulumi.IntPtrOutput)
+}
+
+func (o ClientAddonsFirebaseOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsFirebase) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsFirebaseOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsFirebase) *string { return v.PrivateKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsFirebaseOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsFirebase) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsFirebasePtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsFirebasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsFirebase)(nil)).Elem()
+}
+
+func (o ClientAddonsFirebasePtrOutput) ToClientAddonsFirebasePtrOutput() ClientAddonsFirebasePtrOutput {
+	return o
+}
+
+func (o ClientAddonsFirebasePtrOutput) ToClientAddonsFirebasePtrOutputWithContext(ctx context.Context) ClientAddonsFirebasePtrOutput {
+	return o
+}
+
+func (o ClientAddonsFirebasePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsFirebase] {
+	return pulumix.Output[*ClientAddonsFirebase]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsFirebasePtrOutput) Elem() ClientAddonsFirebaseOutput {
+	return o.ApplyT(func(v *ClientAddonsFirebase) ClientAddonsFirebase {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsFirebase
+		return ret
+	}).(ClientAddonsFirebaseOutput)
+}
+
+func (o ClientAddonsFirebasePtrOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsFirebase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsFirebasePtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsFirebase) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LifetimeInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClientAddonsFirebasePtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsFirebase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsFirebasePtrOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsFirebase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsFirebasePtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsFirebase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsLayer struct {
+	Expiration *int    `pulumi:"expiration"`
+	KeyId      string  `pulumi:"keyId"`
+	Principal  *string `pulumi:"principal"`
+	PrivateKey string  `pulumi:"privateKey"`
+	ProviderId string  `pulumi:"providerId"`
+}
+
+// ClientAddonsLayerInput is an input type that accepts ClientAddonsLayerArgs and ClientAddonsLayerOutput values.
+// You can construct a concrete instance of `ClientAddonsLayerInput` via:
+//
+//	ClientAddonsLayerArgs{...}
+type ClientAddonsLayerInput interface {
+	pulumi.Input
+
+	ToClientAddonsLayerOutput() ClientAddonsLayerOutput
+	ToClientAddonsLayerOutputWithContext(context.Context) ClientAddonsLayerOutput
+}
+
+type ClientAddonsLayerArgs struct {
+	Expiration pulumi.IntPtrInput    `pulumi:"expiration"`
+	KeyId      pulumi.StringInput    `pulumi:"keyId"`
+	Principal  pulumi.StringPtrInput `pulumi:"principal"`
+	PrivateKey pulumi.StringInput    `pulumi:"privateKey"`
+	ProviderId pulumi.StringInput    `pulumi:"providerId"`
+}
+
+func (ClientAddonsLayerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsLayer)(nil)).Elem()
+}
+
+func (i ClientAddonsLayerArgs) ToClientAddonsLayerOutput() ClientAddonsLayerOutput {
+	return i.ToClientAddonsLayerOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsLayerArgs) ToClientAddonsLayerOutputWithContext(ctx context.Context) ClientAddonsLayerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsLayerOutput)
+}
+
+func (i ClientAddonsLayerArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsLayer] {
+	return pulumix.Output[ClientAddonsLayer]{
+		OutputState: i.ToClientAddonsLayerOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsLayerArgs) ToClientAddonsLayerPtrOutput() ClientAddonsLayerPtrOutput {
+	return i.ToClientAddonsLayerPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsLayerArgs) ToClientAddonsLayerPtrOutputWithContext(ctx context.Context) ClientAddonsLayerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsLayerOutput).ToClientAddonsLayerPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsLayerPtrInput is an input type that accepts ClientAddonsLayerArgs, ClientAddonsLayerPtr and ClientAddonsLayerPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsLayerPtrInput` via:
+//
+//	        ClientAddonsLayerArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsLayerPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsLayerPtrOutput() ClientAddonsLayerPtrOutput
+	ToClientAddonsLayerPtrOutputWithContext(context.Context) ClientAddonsLayerPtrOutput
+}
+
+type clientAddonsLayerPtrType ClientAddonsLayerArgs
+
+func ClientAddonsLayerPtr(v *ClientAddonsLayerArgs) ClientAddonsLayerPtrInput {
+	return (*clientAddonsLayerPtrType)(v)
+}
+
+func (*clientAddonsLayerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsLayer)(nil)).Elem()
+}
+
+func (i *clientAddonsLayerPtrType) ToClientAddonsLayerPtrOutput() ClientAddonsLayerPtrOutput {
+	return i.ToClientAddonsLayerPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsLayerPtrType) ToClientAddonsLayerPtrOutputWithContext(ctx context.Context) ClientAddonsLayerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsLayerPtrOutput)
+}
+
+func (i *clientAddonsLayerPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsLayer] {
+	return pulumix.Output[*ClientAddonsLayer]{
+		OutputState: i.ToClientAddonsLayerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsLayerOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsLayerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsLayer)(nil)).Elem()
+}
+
+func (o ClientAddonsLayerOutput) ToClientAddonsLayerOutput() ClientAddonsLayerOutput {
+	return o
+}
+
+func (o ClientAddonsLayerOutput) ToClientAddonsLayerOutputWithContext(ctx context.Context) ClientAddonsLayerOutput {
+	return o
+}
+
+func (o ClientAddonsLayerOutput) ToClientAddonsLayerPtrOutput() ClientAddonsLayerPtrOutput {
+	return o.ToClientAddonsLayerPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsLayerOutput) ToClientAddonsLayerPtrOutputWithContext(ctx context.Context) ClientAddonsLayerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsLayer) *ClientAddonsLayer {
+		return &v
+	}).(ClientAddonsLayerPtrOutput)
+}
+
+func (o ClientAddonsLayerOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsLayer] {
+	return pulumix.Output[ClientAddonsLayer]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsLayerOutput) Expiration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClientAddonsLayer) *int { return v.Expiration }).(pulumi.IntPtrOutput)
+}
+
+func (o ClientAddonsLayerOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientAddonsLayer) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+func (o ClientAddonsLayerOutput) Principal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsLayer) *string { return v.Principal }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsLayerOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientAddonsLayer) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+func (o ClientAddonsLayerOutput) ProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientAddonsLayer) string { return v.ProviderId }).(pulumi.StringOutput)
+}
+
+type ClientAddonsLayerPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsLayerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsLayer)(nil)).Elem()
+}
+
+func (o ClientAddonsLayerPtrOutput) ToClientAddonsLayerPtrOutput() ClientAddonsLayerPtrOutput {
+	return o
+}
+
+func (o ClientAddonsLayerPtrOutput) ToClientAddonsLayerPtrOutputWithContext(ctx context.Context) ClientAddonsLayerPtrOutput {
+	return o
+}
+
+func (o ClientAddonsLayerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsLayer] {
+	return pulumix.Output[*ClientAddonsLayer]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsLayerPtrOutput) Elem() ClientAddonsLayerOutput {
+	return o.ApplyT(func(v *ClientAddonsLayer) ClientAddonsLayer {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsLayer
+		return ret
+	}).(ClientAddonsLayerOutput)
+}
+
+func (o ClientAddonsLayerPtrOutput) Expiration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsLayer) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Expiration
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClientAddonsLayerPtrOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsLayer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsLayerPtrOutput) Principal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsLayer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Principal
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsLayerPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsLayer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsLayerPtrOutput) ProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsLayer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsMscrm struct {
+	Url *string `pulumi:"url"`
+}
+
+// ClientAddonsMscrmInput is an input type that accepts ClientAddonsMscrmArgs and ClientAddonsMscrmOutput values.
+// You can construct a concrete instance of `ClientAddonsMscrmInput` via:
+//
+//	ClientAddonsMscrmArgs{...}
+type ClientAddonsMscrmInput interface {
+	pulumi.Input
+
+	ToClientAddonsMscrmOutput() ClientAddonsMscrmOutput
+	ToClientAddonsMscrmOutputWithContext(context.Context) ClientAddonsMscrmOutput
+}
+
+type ClientAddonsMscrmArgs struct {
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (ClientAddonsMscrmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsMscrm)(nil)).Elem()
+}
+
+func (i ClientAddonsMscrmArgs) ToClientAddonsMscrmOutput() ClientAddonsMscrmOutput {
+	return i.ToClientAddonsMscrmOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsMscrmArgs) ToClientAddonsMscrmOutputWithContext(ctx context.Context) ClientAddonsMscrmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsMscrmOutput)
+}
+
+func (i ClientAddonsMscrmArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsMscrm] {
+	return pulumix.Output[ClientAddonsMscrm]{
+		OutputState: i.ToClientAddonsMscrmOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsMscrmArgs) ToClientAddonsMscrmPtrOutput() ClientAddonsMscrmPtrOutput {
+	return i.ToClientAddonsMscrmPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsMscrmArgs) ToClientAddonsMscrmPtrOutputWithContext(ctx context.Context) ClientAddonsMscrmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsMscrmOutput).ToClientAddonsMscrmPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsMscrmPtrInput is an input type that accepts ClientAddonsMscrmArgs, ClientAddonsMscrmPtr and ClientAddonsMscrmPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsMscrmPtrInput` via:
+//
+//	        ClientAddonsMscrmArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsMscrmPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsMscrmPtrOutput() ClientAddonsMscrmPtrOutput
+	ToClientAddonsMscrmPtrOutputWithContext(context.Context) ClientAddonsMscrmPtrOutput
+}
+
+type clientAddonsMscrmPtrType ClientAddonsMscrmArgs
+
+func ClientAddonsMscrmPtr(v *ClientAddonsMscrmArgs) ClientAddonsMscrmPtrInput {
+	return (*clientAddonsMscrmPtrType)(v)
+}
+
+func (*clientAddonsMscrmPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsMscrm)(nil)).Elem()
+}
+
+func (i *clientAddonsMscrmPtrType) ToClientAddonsMscrmPtrOutput() ClientAddonsMscrmPtrOutput {
+	return i.ToClientAddonsMscrmPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsMscrmPtrType) ToClientAddonsMscrmPtrOutputWithContext(ctx context.Context) ClientAddonsMscrmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsMscrmPtrOutput)
+}
+
+func (i *clientAddonsMscrmPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsMscrm] {
+	return pulumix.Output[*ClientAddonsMscrm]{
+		OutputState: i.ToClientAddonsMscrmPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsMscrmOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsMscrmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsMscrm)(nil)).Elem()
+}
+
+func (o ClientAddonsMscrmOutput) ToClientAddonsMscrmOutput() ClientAddonsMscrmOutput {
+	return o
+}
+
+func (o ClientAddonsMscrmOutput) ToClientAddonsMscrmOutputWithContext(ctx context.Context) ClientAddonsMscrmOutput {
+	return o
+}
+
+func (o ClientAddonsMscrmOutput) ToClientAddonsMscrmPtrOutput() ClientAddonsMscrmPtrOutput {
+	return o.ToClientAddonsMscrmPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsMscrmOutput) ToClientAddonsMscrmPtrOutputWithContext(ctx context.Context) ClientAddonsMscrmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsMscrm) *ClientAddonsMscrm {
+		return &v
+	}).(ClientAddonsMscrmPtrOutput)
+}
+
+func (o ClientAddonsMscrmOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsMscrm] {
+	return pulumix.Output[ClientAddonsMscrm]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsMscrmOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsMscrm) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsMscrmPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsMscrmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsMscrm)(nil)).Elem()
+}
+
+func (o ClientAddonsMscrmPtrOutput) ToClientAddonsMscrmPtrOutput() ClientAddonsMscrmPtrOutput {
+	return o
+}
+
+func (o ClientAddonsMscrmPtrOutput) ToClientAddonsMscrmPtrOutputWithContext(ctx context.Context) ClientAddonsMscrmPtrOutput {
+	return o
+}
+
+func (o ClientAddonsMscrmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsMscrm] {
+	return pulumix.Output[*ClientAddonsMscrm]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsMscrmPtrOutput) Elem() ClientAddonsMscrmOutput {
+	return o.ApplyT(func(v *ClientAddonsMscrm) ClientAddonsMscrm {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsMscrm
+		return ret
+	}).(ClientAddonsMscrmOutput)
+}
+
+func (o ClientAddonsMscrmPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsMscrm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsNewrelic struct {
+	Account *string `pulumi:"account"`
+}
+
+// ClientAddonsNewrelicInput is an input type that accepts ClientAddonsNewrelicArgs and ClientAddonsNewrelicOutput values.
+// You can construct a concrete instance of `ClientAddonsNewrelicInput` via:
+//
+//	ClientAddonsNewrelicArgs{...}
+type ClientAddonsNewrelicInput interface {
+	pulumi.Input
+
+	ToClientAddonsNewrelicOutput() ClientAddonsNewrelicOutput
+	ToClientAddonsNewrelicOutputWithContext(context.Context) ClientAddonsNewrelicOutput
+}
+
+type ClientAddonsNewrelicArgs struct {
+	Account pulumi.StringPtrInput `pulumi:"account"`
+}
+
+func (ClientAddonsNewrelicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsNewrelic)(nil)).Elem()
+}
+
+func (i ClientAddonsNewrelicArgs) ToClientAddonsNewrelicOutput() ClientAddonsNewrelicOutput {
+	return i.ToClientAddonsNewrelicOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsNewrelicArgs) ToClientAddonsNewrelicOutputWithContext(ctx context.Context) ClientAddonsNewrelicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsNewrelicOutput)
+}
+
+func (i ClientAddonsNewrelicArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsNewrelic] {
+	return pulumix.Output[ClientAddonsNewrelic]{
+		OutputState: i.ToClientAddonsNewrelicOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsNewrelicArgs) ToClientAddonsNewrelicPtrOutput() ClientAddonsNewrelicPtrOutput {
+	return i.ToClientAddonsNewrelicPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsNewrelicArgs) ToClientAddonsNewrelicPtrOutputWithContext(ctx context.Context) ClientAddonsNewrelicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsNewrelicOutput).ToClientAddonsNewrelicPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsNewrelicPtrInput is an input type that accepts ClientAddonsNewrelicArgs, ClientAddonsNewrelicPtr and ClientAddonsNewrelicPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsNewrelicPtrInput` via:
+//
+//	        ClientAddonsNewrelicArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsNewrelicPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsNewrelicPtrOutput() ClientAddonsNewrelicPtrOutput
+	ToClientAddonsNewrelicPtrOutputWithContext(context.Context) ClientAddonsNewrelicPtrOutput
+}
+
+type clientAddonsNewrelicPtrType ClientAddonsNewrelicArgs
+
+func ClientAddonsNewrelicPtr(v *ClientAddonsNewrelicArgs) ClientAddonsNewrelicPtrInput {
+	return (*clientAddonsNewrelicPtrType)(v)
+}
+
+func (*clientAddonsNewrelicPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsNewrelic)(nil)).Elem()
+}
+
+func (i *clientAddonsNewrelicPtrType) ToClientAddonsNewrelicPtrOutput() ClientAddonsNewrelicPtrOutput {
+	return i.ToClientAddonsNewrelicPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsNewrelicPtrType) ToClientAddonsNewrelicPtrOutputWithContext(ctx context.Context) ClientAddonsNewrelicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsNewrelicPtrOutput)
+}
+
+func (i *clientAddonsNewrelicPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsNewrelic] {
+	return pulumix.Output[*ClientAddonsNewrelic]{
+		OutputState: i.ToClientAddonsNewrelicPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsNewrelicOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsNewrelicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsNewrelic)(nil)).Elem()
+}
+
+func (o ClientAddonsNewrelicOutput) ToClientAddonsNewrelicOutput() ClientAddonsNewrelicOutput {
+	return o
+}
+
+func (o ClientAddonsNewrelicOutput) ToClientAddonsNewrelicOutputWithContext(ctx context.Context) ClientAddonsNewrelicOutput {
+	return o
+}
+
+func (o ClientAddonsNewrelicOutput) ToClientAddonsNewrelicPtrOutput() ClientAddonsNewrelicPtrOutput {
+	return o.ToClientAddonsNewrelicPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsNewrelicOutput) ToClientAddonsNewrelicPtrOutputWithContext(ctx context.Context) ClientAddonsNewrelicPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsNewrelic) *ClientAddonsNewrelic {
+		return &v
+	}).(ClientAddonsNewrelicPtrOutput)
+}
+
+func (o ClientAddonsNewrelicOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsNewrelic] {
+	return pulumix.Output[ClientAddonsNewrelic]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsNewrelicOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsNewrelic) *string { return v.Account }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsNewrelicPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsNewrelicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsNewrelic)(nil)).Elem()
+}
+
+func (o ClientAddonsNewrelicPtrOutput) ToClientAddonsNewrelicPtrOutput() ClientAddonsNewrelicPtrOutput {
+	return o
+}
+
+func (o ClientAddonsNewrelicPtrOutput) ToClientAddonsNewrelicPtrOutputWithContext(ctx context.Context) ClientAddonsNewrelicPtrOutput {
+	return o
+}
+
+func (o ClientAddonsNewrelicPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsNewrelic] {
+	return pulumix.Output[*ClientAddonsNewrelic]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsNewrelicPtrOutput) Elem() ClientAddonsNewrelicOutput {
+	return o.ApplyT(func(v *ClientAddonsNewrelic) ClientAddonsNewrelic {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsNewrelic
+		return ret
+	}).(ClientAddonsNewrelicOutput)
+}
+
+func (o ClientAddonsNewrelicPtrOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsNewrelic) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Account
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsOffice365 struct {
+	Connection *string `pulumi:"connection"`
+	Domain     *string `pulumi:"domain"`
+}
+
+// ClientAddonsOffice365Input is an input type that accepts ClientAddonsOffice365Args and ClientAddonsOffice365Output values.
+// You can construct a concrete instance of `ClientAddonsOffice365Input` via:
+//
+//	ClientAddonsOffice365Args{...}
+type ClientAddonsOffice365Input interface {
+	pulumi.Input
+
+	ToClientAddonsOffice365Output() ClientAddonsOffice365Output
+	ToClientAddonsOffice365OutputWithContext(context.Context) ClientAddonsOffice365Output
+}
+
+type ClientAddonsOffice365Args struct {
+	Connection pulumi.StringPtrInput `pulumi:"connection"`
+	Domain     pulumi.StringPtrInput `pulumi:"domain"`
+}
+
+func (ClientAddonsOffice365Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsOffice365)(nil)).Elem()
+}
+
+func (i ClientAddonsOffice365Args) ToClientAddonsOffice365Output() ClientAddonsOffice365Output {
+	return i.ToClientAddonsOffice365OutputWithContext(context.Background())
+}
+
+func (i ClientAddonsOffice365Args) ToClientAddonsOffice365OutputWithContext(ctx context.Context) ClientAddonsOffice365Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsOffice365Output)
+}
+
+func (i ClientAddonsOffice365Args) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsOffice365] {
+	return pulumix.Output[ClientAddonsOffice365]{
+		OutputState: i.ToClientAddonsOffice365OutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsOffice365Args) ToClientAddonsOffice365PtrOutput() ClientAddonsOffice365PtrOutput {
+	return i.ToClientAddonsOffice365PtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsOffice365Args) ToClientAddonsOffice365PtrOutputWithContext(ctx context.Context) ClientAddonsOffice365PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsOffice365Output).ToClientAddonsOffice365PtrOutputWithContext(ctx)
+}
+
+// ClientAddonsOffice365PtrInput is an input type that accepts ClientAddonsOffice365Args, ClientAddonsOffice365Ptr and ClientAddonsOffice365PtrOutput values.
+// You can construct a concrete instance of `ClientAddonsOffice365PtrInput` via:
+//
+//	        ClientAddonsOffice365Args{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsOffice365PtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsOffice365PtrOutput() ClientAddonsOffice365PtrOutput
+	ToClientAddonsOffice365PtrOutputWithContext(context.Context) ClientAddonsOffice365PtrOutput
+}
+
+type clientAddonsOffice365PtrType ClientAddonsOffice365Args
+
+func ClientAddonsOffice365Ptr(v *ClientAddonsOffice365Args) ClientAddonsOffice365PtrInput {
+	return (*clientAddonsOffice365PtrType)(v)
+}
+
+func (*clientAddonsOffice365PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsOffice365)(nil)).Elem()
+}
+
+func (i *clientAddonsOffice365PtrType) ToClientAddonsOffice365PtrOutput() ClientAddonsOffice365PtrOutput {
+	return i.ToClientAddonsOffice365PtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsOffice365PtrType) ToClientAddonsOffice365PtrOutputWithContext(ctx context.Context) ClientAddonsOffice365PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsOffice365PtrOutput)
+}
+
+func (i *clientAddonsOffice365PtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsOffice365] {
+	return pulumix.Output[*ClientAddonsOffice365]{
+		OutputState: i.ToClientAddonsOffice365PtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsOffice365Output struct{ *pulumi.OutputState }
+
+func (ClientAddonsOffice365Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsOffice365)(nil)).Elem()
+}
+
+func (o ClientAddonsOffice365Output) ToClientAddonsOffice365Output() ClientAddonsOffice365Output {
+	return o
+}
+
+func (o ClientAddonsOffice365Output) ToClientAddonsOffice365OutputWithContext(ctx context.Context) ClientAddonsOffice365Output {
+	return o
+}
+
+func (o ClientAddonsOffice365Output) ToClientAddonsOffice365PtrOutput() ClientAddonsOffice365PtrOutput {
+	return o.ToClientAddonsOffice365PtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsOffice365Output) ToClientAddonsOffice365PtrOutputWithContext(ctx context.Context) ClientAddonsOffice365PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsOffice365) *ClientAddonsOffice365 {
+		return &v
+	}).(ClientAddonsOffice365PtrOutput)
+}
+
+func (o ClientAddonsOffice365Output) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsOffice365] {
+	return pulumix.Output[ClientAddonsOffice365]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsOffice365Output) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsOffice365) *string { return v.Connection }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsOffice365Output) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsOffice365) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsOffice365PtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsOffice365PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsOffice365)(nil)).Elem()
+}
+
+func (o ClientAddonsOffice365PtrOutput) ToClientAddonsOffice365PtrOutput() ClientAddonsOffice365PtrOutput {
+	return o
+}
+
+func (o ClientAddonsOffice365PtrOutput) ToClientAddonsOffice365PtrOutputWithContext(ctx context.Context) ClientAddonsOffice365PtrOutput {
+	return o
+}
+
+func (o ClientAddonsOffice365PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsOffice365] {
+	return pulumix.Output[*ClientAddonsOffice365]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsOffice365PtrOutput) Elem() ClientAddonsOffice365Output {
+	return o.ApplyT(func(v *ClientAddonsOffice365) ClientAddonsOffice365 {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsOffice365
+		return ret
+	}).(ClientAddonsOffice365Output)
+}
+
+func (o ClientAddonsOffice365PtrOutput) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsOffice365) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Connection
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsOffice365PtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsOffice365) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsRms struct {
+	Url *string `pulumi:"url"`
+}
+
+// ClientAddonsRmsInput is an input type that accepts ClientAddonsRmsArgs and ClientAddonsRmsOutput values.
+// You can construct a concrete instance of `ClientAddonsRmsInput` via:
+//
+//	ClientAddonsRmsArgs{...}
+type ClientAddonsRmsInput interface {
+	pulumi.Input
+
+	ToClientAddonsRmsOutput() ClientAddonsRmsOutput
+	ToClientAddonsRmsOutputWithContext(context.Context) ClientAddonsRmsOutput
+}
+
+type ClientAddonsRmsArgs struct {
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (ClientAddonsRmsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsRms)(nil)).Elem()
+}
+
+func (i ClientAddonsRmsArgs) ToClientAddonsRmsOutput() ClientAddonsRmsOutput {
+	return i.ToClientAddonsRmsOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsRmsArgs) ToClientAddonsRmsOutputWithContext(ctx context.Context) ClientAddonsRmsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsRmsOutput)
+}
+
+func (i ClientAddonsRmsArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsRms] {
+	return pulumix.Output[ClientAddonsRms]{
+		OutputState: i.ToClientAddonsRmsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsRmsArgs) ToClientAddonsRmsPtrOutput() ClientAddonsRmsPtrOutput {
+	return i.ToClientAddonsRmsPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsRmsArgs) ToClientAddonsRmsPtrOutputWithContext(ctx context.Context) ClientAddonsRmsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsRmsOutput).ToClientAddonsRmsPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsRmsPtrInput is an input type that accepts ClientAddonsRmsArgs, ClientAddonsRmsPtr and ClientAddonsRmsPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsRmsPtrInput` via:
+//
+//	        ClientAddonsRmsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsRmsPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsRmsPtrOutput() ClientAddonsRmsPtrOutput
+	ToClientAddonsRmsPtrOutputWithContext(context.Context) ClientAddonsRmsPtrOutput
+}
+
+type clientAddonsRmsPtrType ClientAddonsRmsArgs
+
+func ClientAddonsRmsPtr(v *ClientAddonsRmsArgs) ClientAddonsRmsPtrInput {
+	return (*clientAddonsRmsPtrType)(v)
+}
+
+func (*clientAddonsRmsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsRms)(nil)).Elem()
+}
+
+func (i *clientAddonsRmsPtrType) ToClientAddonsRmsPtrOutput() ClientAddonsRmsPtrOutput {
+	return i.ToClientAddonsRmsPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsRmsPtrType) ToClientAddonsRmsPtrOutputWithContext(ctx context.Context) ClientAddonsRmsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsRmsPtrOutput)
+}
+
+func (i *clientAddonsRmsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsRms] {
+	return pulumix.Output[*ClientAddonsRms]{
+		OutputState: i.ToClientAddonsRmsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsRmsOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsRmsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsRms)(nil)).Elem()
+}
+
+func (o ClientAddonsRmsOutput) ToClientAddonsRmsOutput() ClientAddonsRmsOutput {
+	return o
+}
+
+func (o ClientAddonsRmsOutput) ToClientAddonsRmsOutputWithContext(ctx context.Context) ClientAddonsRmsOutput {
+	return o
+}
+
+func (o ClientAddonsRmsOutput) ToClientAddonsRmsPtrOutput() ClientAddonsRmsPtrOutput {
+	return o.ToClientAddonsRmsPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsRmsOutput) ToClientAddonsRmsPtrOutputWithContext(ctx context.Context) ClientAddonsRmsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsRms) *ClientAddonsRms {
+		return &v
+	}).(ClientAddonsRmsPtrOutput)
+}
+
+func (o ClientAddonsRmsOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsRms] {
+	return pulumix.Output[ClientAddonsRms]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsRmsOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsRms) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsRmsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsRmsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsRms)(nil)).Elem()
+}
+
+func (o ClientAddonsRmsPtrOutput) ToClientAddonsRmsPtrOutput() ClientAddonsRmsPtrOutput {
+	return o
+}
+
+func (o ClientAddonsRmsPtrOutput) ToClientAddonsRmsPtrOutputWithContext(ctx context.Context) ClientAddonsRmsPtrOutput {
+	return o
+}
+
+func (o ClientAddonsRmsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsRms] {
+	return pulumix.Output[*ClientAddonsRms]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsRmsPtrOutput) Elem() ClientAddonsRmsOutput {
+	return o.ApplyT(func(v *ClientAddonsRms) ClientAddonsRms {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsRms
+		return ret
+	}).(ClientAddonsRmsOutput)
+}
+
+func (o ClientAddonsRmsPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsRms) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsSalesforce struct {
+	EntityId *string `pulumi:"entityId"`
+}
+
+// ClientAddonsSalesforceInput is an input type that accepts ClientAddonsSalesforceArgs and ClientAddonsSalesforceOutput values.
+// You can construct a concrete instance of `ClientAddonsSalesforceInput` via:
+//
+//	ClientAddonsSalesforceArgs{...}
+type ClientAddonsSalesforceInput interface {
+	pulumi.Input
+
+	ToClientAddonsSalesforceOutput() ClientAddonsSalesforceOutput
+	ToClientAddonsSalesforceOutputWithContext(context.Context) ClientAddonsSalesforceOutput
+}
+
+type ClientAddonsSalesforceArgs struct {
+	EntityId pulumi.StringPtrInput `pulumi:"entityId"`
+}
+
+func (ClientAddonsSalesforceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSalesforce)(nil)).Elem()
+}
+
+func (i ClientAddonsSalesforceArgs) ToClientAddonsSalesforceOutput() ClientAddonsSalesforceOutput {
+	return i.ToClientAddonsSalesforceOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSalesforceArgs) ToClientAddonsSalesforceOutputWithContext(ctx context.Context) ClientAddonsSalesforceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSalesforceOutput)
+}
+
+func (i ClientAddonsSalesforceArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSalesforce] {
+	return pulumix.Output[ClientAddonsSalesforce]{
+		OutputState: i.ToClientAddonsSalesforceOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsSalesforceArgs) ToClientAddonsSalesforcePtrOutput() ClientAddonsSalesforcePtrOutput {
+	return i.ToClientAddonsSalesforcePtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSalesforceArgs) ToClientAddonsSalesforcePtrOutputWithContext(ctx context.Context) ClientAddonsSalesforcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSalesforceOutput).ToClientAddonsSalesforcePtrOutputWithContext(ctx)
+}
+
+// ClientAddonsSalesforcePtrInput is an input type that accepts ClientAddonsSalesforceArgs, ClientAddonsSalesforcePtr and ClientAddonsSalesforcePtrOutput values.
+// You can construct a concrete instance of `ClientAddonsSalesforcePtrInput` via:
+//
+//	        ClientAddonsSalesforceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsSalesforcePtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsSalesforcePtrOutput() ClientAddonsSalesforcePtrOutput
+	ToClientAddonsSalesforcePtrOutputWithContext(context.Context) ClientAddonsSalesforcePtrOutput
+}
+
+type clientAddonsSalesforcePtrType ClientAddonsSalesforceArgs
+
+func ClientAddonsSalesforcePtr(v *ClientAddonsSalesforceArgs) ClientAddonsSalesforcePtrInput {
+	return (*clientAddonsSalesforcePtrType)(v)
+}
+
+func (*clientAddonsSalesforcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSalesforce)(nil)).Elem()
+}
+
+func (i *clientAddonsSalesforcePtrType) ToClientAddonsSalesforcePtrOutput() ClientAddonsSalesforcePtrOutput {
+	return i.ToClientAddonsSalesforcePtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsSalesforcePtrType) ToClientAddonsSalesforcePtrOutputWithContext(ctx context.Context) ClientAddonsSalesforcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSalesforcePtrOutput)
+}
+
+func (i *clientAddonsSalesforcePtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSalesforce] {
+	return pulumix.Output[*ClientAddonsSalesforce]{
+		OutputState: i.ToClientAddonsSalesforcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsSalesforceOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSalesforceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSalesforce)(nil)).Elem()
+}
+
+func (o ClientAddonsSalesforceOutput) ToClientAddonsSalesforceOutput() ClientAddonsSalesforceOutput {
+	return o
+}
+
+func (o ClientAddonsSalesforceOutput) ToClientAddonsSalesforceOutputWithContext(ctx context.Context) ClientAddonsSalesforceOutput {
+	return o
+}
+
+func (o ClientAddonsSalesforceOutput) ToClientAddonsSalesforcePtrOutput() ClientAddonsSalesforcePtrOutput {
+	return o.ToClientAddonsSalesforcePtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsSalesforceOutput) ToClientAddonsSalesforcePtrOutputWithContext(ctx context.Context) ClientAddonsSalesforcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsSalesforce) *ClientAddonsSalesforce {
+		return &v
+	}).(ClientAddonsSalesforcePtrOutput)
+}
+
+func (o ClientAddonsSalesforceOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSalesforce] {
+	return pulumix.Output[ClientAddonsSalesforce]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsSalesforceOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSalesforce) *string { return v.EntityId }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsSalesforcePtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSalesforcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSalesforce)(nil)).Elem()
+}
+
+func (o ClientAddonsSalesforcePtrOutput) ToClientAddonsSalesforcePtrOutput() ClientAddonsSalesforcePtrOutput {
+	return o
+}
+
+func (o ClientAddonsSalesforcePtrOutput) ToClientAddonsSalesforcePtrOutputWithContext(ctx context.Context) ClientAddonsSalesforcePtrOutput {
+	return o
+}
+
+func (o ClientAddonsSalesforcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSalesforce] {
+	return pulumix.Output[*ClientAddonsSalesforce]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsSalesforcePtrOutput) Elem() ClientAddonsSalesforceOutput {
+	return o.ApplyT(func(v *ClientAddonsSalesforce) ClientAddonsSalesforce {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsSalesforce
+		return ret
+	}).(ClientAddonsSalesforceOutput)
+}
+
+func (o ClientAddonsSalesforcePtrOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSalesforce) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntityId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsSalesforceApi struct {
+	// The ID of the client.
+	ClientId            *string `pulumi:"clientId"`
+	CommunityName       *string `pulumi:"communityName"`
+	CommunityUrlSection *string `pulumi:"communityUrlSection"`
+	Principal           *string `pulumi:"principal"`
+}
+
+// ClientAddonsSalesforceApiInput is an input type that accepts ClientAddonsSalesforceApiArgs and ClientAddonsSalesforceApiOutput values.
+// You can construct a concrete instance of `ClientAddonsSalesforceApiInput` via:
+//
+//	ClientAddonsSalesforceApiArgs{...}
+type ClientAddonsSalesforceApiInput interface {
+	pulumi.Input
+
+	ToClientAddonsSalesforceApiOutput() ClientAddonsSalesforceApiOutput
+	ToClientAddonsSalesforceApiOutputWithContext(context.Context) ClientAddonsSalesforceApiOutput
+}
+
+type ClientAddonsSalesforceApiArgs struct {
+	// The ID of the client.
+	ClientId            pulumi.StringPtrInput `pulumi:"clientId"`
+	CommunityName       pulumi.StringPtrInput `pulumi:"communityName"`
+	CommunityUrlSection pulumi.StringPtrInput `pulumi:"communityUrlSection"`
+	Principal           pulumi.StringPtrInput `pulumi:"principal"`
+}
+
+func (ClientAddonsSalesforceApiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSalesforceApi)(nil)).Elem()
+}
+
+func (i ClientAddonsSalesforceApiArgs) ToClientAddonsSalesforceApiOutput() ClientAddonsSalesforceApiOutput {
+	return i.ToClientAddonsSalesforceApiOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSalesforceApiArgs) ToClientAddonsSalesforceApiOutputWithContext(ctx context.Context) ClientAddonsSalesforceApiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSalesforceApiOutput)
+}
+
+func (i ClientAddonsSalesforceApiArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSalesforceApi] {
+	return pulumix.Output[ClientAddonsSalesforceApi]{
+		OutputState: i.ToClientAddonsSalesforceApiOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsSalesforceApiArgs) ToClientAddonsSalesforceApiPtrOutput() ClientAddonsSalesforceApiPtrOutput {
+	return i.ToClientAddonsSalesforceApiPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSalesforceApiArgs) ToClientAddonsSalesforceApiPtrOutputWithContext(ctx context.Context) ClientAddonsSalesforceApiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSalesforceApiOutput).ToClientAddonsSalesforceApiPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsSalesforceApiPtrInput is an input type that accepts ClientAddonsSalesforceApiArgs, ClientAddonsSalesforceApiPtr and ClientAddonsSalesforceApiPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsSalesforceApiPtrInput` via:
+//
+//	        ClientAddonsSalesforceApiArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsSalesforceApiPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsSalesforceApiPtrOutput() ClientAddonsSalesforceApiPtrOutput
+	ToClientAddonsSalesforceApiPtrOutputWithContext(context.Context) ClientAddonsSalesforceApiPtrOutput
+}
+
+type clientAddonsSalesforceApiPtrType ClientAddonsSalesforceApiArgs
+
+func ClientAddonsSalesforceApiPtr(v *ClientAddonsSalesforceApiArgs) ClientAddonsSalesforceApiPtrInput {
+	return (*clientAddonsSalesforceApiPtrType)(v)
+}
+
+func (*clientAddonsSalesforceApiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSalesforceApi)(nil)).Elem()
+}
+
+func (i *clientAddonsSalesforceApiPtrType) ToClientAddonsSalesforceApiPtrOutput() ClientAddonsSalesforceApiPtrOutput {
+	return i.ToClientAddonsSalesforceApiPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsSalesforceApiPtrType) ToClientAddonsSalesforceApiPtrOutputWithContext(ctx context.Context) ClientAddonsSalesforceApiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSalesforceApiPtrOutput)
+}
+
+func (i *clientAddonsSalesforceApiPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSalesforceApi] {
+	return pulumix.Output[*ClientAddonsSalesforceApi]{
+		OutputState: i.ToClientAddonsSalesforceApiPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsSalesforceApiOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSalesforceApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSalesforceApi)(nil)).Elem()
+}
+
+func (o ClientAddonsSalesforceApiOutput) ToClientAddonsSalesforceApiOutput() ClientAddonsSalesforceApiOutput {
+	return o
+}
+
+func (o ClientAddonsSalesforceApiOutput) ToClientAddonsSalesforceApiOutputWithContext(ctx context.Context) ClientAddonsSalesforceApiOutput {
+	return o
+}
+
+func (o ClientAddonsSalesforceApiOutput) ToClientAddonsSalesforceApiPtrOutput() ClientAddonsSalesforceApiPtrOutput {
+	return o.ToClientAddonsSalesforceApiPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsSalesforceApiOutput) ToClientAddonsSalesforceApiPtrOutputWithContext(ctx context.Context) ClientAddonsSalesforceApiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsSalesforceApi) *ClientAddonsSalesforceApi {
+		return &v
+	}).(ClientAddonsSalesforceApiPtrOutput)
+}
+
+func (o ClientAddonsSalesforceApiOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSalesforceApi] {
+	return pulumix.Output[ClientAddonsSalesforceApi]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The ID of the client.
+func (o ClientAddonsSalesforceApiOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSalesforceApi) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSalesforceApiOutput) CommunityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSalesforceApi) *string { return v.CommunityName }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSalesforceApiOutput) CommunityUrlSection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSalesforceApi) *string { return v.CommunityUrlSection }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSalesforceApiOutput) Principal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSalesforceApi) *string { return v.Principal }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsSalesforceApiPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSalesforceApiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSalesforceApi)(nil)).Elem()
+}
+
+func (o ClientAddonsSalesforceApiPtrOutput) ToClientAddonsSalesforceApiPtrOutput() ClientAddonsSalesforceApiPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSalesforceApiPtrOutput) ToClientAddonsSalesforceApiPtrOutputWithContext(ctx context.Context) ClientAddonsSalesforceApiPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSalesforceApiPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSalesforceApi] {
+	return pulumix.Output[*ClientAddonsSalesforceApi]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsSalesforceApiPtrOutput) Elem() ClientAddonsSalesforceApiOutput {
+	return o.ApplyT(func(v *ClientAddonsSalesforceApi) ClientAddonsSalesforceApi {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsSalesforceApi
+		return ret
+	}).(ClientAddonsSalesforceApiOutput)
+}
+
+// The ID of the client.
+func (o ClientAddonsSalesforceApiPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSalesforceApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSalesforceApiPtrOutput) CommunityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSalesforceApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommunityName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSalesforceApiPtrOutput) CommunityUrlSection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSalesforceApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommunityUrlSection
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSalesforceApiPtrOutput) Principal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSalesforceApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Principal
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsSalesforceSandboxApi struct {
+	// The ID of the client.
+	ClientId            *string `pulumi:"clientId"`
+	CommunityName       *string `pulumi:"communityName"`
+	CommunityUrlSection *string `pulumi:"communityUrlSection"`
+	Principal           *string `pulumi:"principal"`
+}
+
+// ClientAddonsSalesforceSandboxApiInput is an input type that accepts ClientAddonsSalesforceSandboxApiArgs and ClientAddonsSalesforceSandboxApiOutput values.
+// You can construct a concrete instance of `ClientAddonsSalesforceSandboxApiInput` via:
+//
+//	ClientAddonsSalesforceSandboxApiArgs{...}
+type ClientAddonsSalesforceSandboxApiInput interface {
+	pulumi.Input
+
+	ToClientAddonsSalesforceSandboxApiOutput() ClientAddonsSalesforceSandboxApiOutput
+	ToClientAddonsSalesforceSandboxApiOutputWithContext(context.Context) ClientAddonsSalesforceSandboxApiOutput
+}
+
+type ClientAddonsSalesforceSandboxApiArgs struct {
+	// The ID of the client.
+	ClientId            pulumi.StringPtrInput `pulumi:"clientId"`
+	CommunityName       pulumi.StringPtrInput `pulumi:"communityName"`
+	CommunityUrlSection pulumi.StringPtrInput `pulumi:"communityUrlSection"`
+	Principal           pulumi.StringPtrInput `pulumi:"principal"`
+}
+
+func (ClientAddonsSalesforceSandboxApiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSalesforceSandboxApi)(nil)).Elem()
+}
+
+func (i ClientAddonsSalesforceSandboxApiArgs) ToClientAddonsSalesforceSandboxApiOutput() ClientAddonsSalesforceSandboxApiOutput {
+	return i.ToClientAddonsSalesforceSandboxApiOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSalesforceSandboxApiArgs) ToClientAddonsSalesforceSandboxApiOutputWithContext(ctx context.Context) ClientAddonsSalesforceSandboxApiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSalesforceSandboxApiOutput)
+}
+
+func (i ClientAddonsSalesforceSandboxApiArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSalesforceSandboxApi] {
+	return pulumix.Output[ClientAddonsSalesforceSandboxApi]{
+		OutputState: i.ToClientAddonsSalesforceSandboxApiOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsSalesforceSandboxApiArgs) ToClientAddonsSalesforceSandboxApiPtrOutput() ClientAddonsSalesforceSandboxApiPtrOutput {
+	return i.ToClientAddonsSalesforceSandboxApiPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSalesforceSandboxApiArgs) ToClientAddonsSalesforceSandboxApiPtrOutputWithContext(ctx context.Context) ClientAddonsSalesforceSandboxApiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSalesforceSandboxApiOutput).ToClientAddonsSalesforceSandboxApiPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsSalesforceSandboxApiPtrInput is an input type that accepts ClientAddonsSalesforceSandboxApiArgs, ClientAddonsSalesforceSandboxApiPtr and ClientAddonsSalesforceSandboxApiPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsSalesforceSandboxApiPtrInput` via:
+//
+//	        ClientAddonsSalesforceSandboxApiArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsSalesforceSandboxApiPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsSalesforceSandboxApiPtrOutput() ClientAddonsSalesforceSandboxApiPtrOutput
+	ToClientAddonsSalesforceSandboxApiPtrOutputWithContext(context.Context) ClientAddonsSalesforceSandboxApiPtrOutput
+}
+
+type clientAddonsSalesforceSandboxApiPtrType ClientAddonsSalesforceSandboxApiArgs
+
+func ClientAddonsSalesforceSandboxApiPtr(v *ClientAddonsSalesforceSandboxApiArgs) ClientAddonsSalesforceSandboxApiPtrInput {
+	return (*clientAddonsSalesforceSandboxApiPtrType)(v)
+}
+
+func (*clientAddonsSalesforceSandboxApiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSalesforceSandboxApi)(nil)).Elem()
+}
+
+func (i *clientAddonsSalesforceSandboxApiPtrType) ToClientAddonsSalesforceSandboxApiPtrOutput() ClientAddonsSalesforceSandboxApiPtrOutput {
+	return i.ToClientAddonsSalesforceSandboxApiPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsSalesforceSandboxApiPtrType) ToClientAddonsSalesforceSandboxApiPtrOutputWithContext(ctx context.Context) ClientAddonsSalesforceSandboxApiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSalesforceSandboxApiPtrOutput)
+}
+
+func (i *clientAddonsSalesforceSandboxApiPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSalesforceSandboxApi] {
+	return pulumix.Output[*ClientAddonsSalesforceSandboxApi]{
+		OutputState: i.ToClientAddonsSalesforceSandboxApiPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsSalesforceSandboxApiOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSalesforceSandboxApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSalesforceSandboxApi)(nil)).Elem()
+}
+
+func (o ClientAddonsSalesforceSandboxApiOutput) ToClientAddonsSalesforceSandboxApiOutput() ClientAddonsSalesforceSandboxApiOutput {
+	return o
+}
+
+func (o ClientAddonsSalesforceSandboxApiOutput) ToClientAddonsSalesforceSandboxApiOutputWithContext(ctx context.Context) ClientAddonsSalesforceSandboxApiOutput {
+	return o
+}
+
+func (o ClientAddonsSalesforceSandboxApiOutput) ToClientAddonsSalesforceSandboxApiPtrOutput() ClientAddonsSalesforceSandboxApiPtrOutput {
+	return o.ToClientAddonsSalesforceSandboxApiPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsSalesforceSandboxApiOutput) ToClientAddonsSalesforceSandboxApiPtrOutputWithContext(ctx context.Context) ClientAddonsSalesforceSandboxApiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsSalesforceSandboxApi) *ClientAddonsSalesforceSandboxApi {
+		return &v
+	}).(ClientAddonsSalesforceSandboxApiPtrOutput)
+}
+
+func (o ClientAddonsSalesforceSandboxApiOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSalesforceSandboxApi] {
+	return pulumix.Output[ClientAddonsSalesforceSandboxApi]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The ID of the client.
+func (o ClientAddonsSalesforceSandboxApiOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSalesforceSandboxApi) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSalesforceSandboxApiOutput) CommunityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSalesforceSandboxApi) *string { return v.CommunityName }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSalesforceSandboxApiOutput) CommunityUrlSection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSalesforceSandboxApi) *string { return v.CommunityUrlSection }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSalesforceSandboxApiOutput) Principal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSalesforceSandboxApi) *string { return v.Principal }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsSalesforceSandboxApiPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSalesforceSandboxApiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSalesforceSandboxApi)(nil)).Elem()
+}
+
+func (o ClientAddonsSalesforceSandboxApiPtrOutput) ToClientAddonsSalesforceSandboxApiPtrOutput() ClientAddonsSalesforceSandboxApiPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSalesforceSandboxApiPtrOutput) ToClientAddonsSalesforceSandboxApiPtrOutputWithContext(ctx context.Context) ClientAddonsSalesforceSandboxApiPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSalesforceSandboxApiPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSalesforceSandboxApi] {
+	return pulumix.Output[*ClientAddonsSalesforceSandboxApi]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsSalesforceSandboxApiPtrOutput) Elem() ClientAddonsSalesforceSandboxApiOutput {
+	return o.ApplyT(func(v *ClientAddonsSalesforceSandboxApi) ClientAddonsSalesforceSandboxApi {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsSalesforceSandboxApi
+		return ret
+	}).(ClientAddonsSalesforceSandboxApiOutput)
+}
+
+// The ID of the client.
+func (o ClientAddonsSalesforceSandboxApiPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSalesforceSandboxApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSalesforceSandboxApiPtrOutput) CommunityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSalesforceSandboxApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommunityName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSalesforceSandboxApiPtrOutput) CommunityUrlSection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSalesforceSandboxApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommunityUrlSection
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSalesforceSandboxApiPtrOutput) Principal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSalesforceSandboxApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Principal
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClientAddonsSamlp struct {
-	Audience                       *string                `pulumi:"audience"`
-	AuthnContextClassRef           *string                `pulumi:"authnContextClassRef"`
-	Binding                        *string                `pulumi:"binding"`
-	CreateUpnClaim                 *bool                  `pulumi:"createUpnClaim"`
-	Destination                    *string                `pulumi:"destination"`
-	DigestAlgorithm                *string                `pulumi:"digestAlgorithm"`
-	IncludeAttributeNameFormat     *bool                  `pulumi:"includeAttributeNameFormat"`
-	Issuer                         *string                `pulumi:"issuer"`
-	LifetimeInSeconds              *int                   `pulumi:"lifetimeInSeconds"`
-	Logout                         map[string]interface{} `pulumi:"logout"`
-	MapIdentities                  *bool                  `pulumi:"mapIdentities"`
-	MapUnknownClaimsAsIs           *bool                  `pulumi:"mapUnknownClaimsAsIs"`
-	Mappings                       map[string]interface{} `pulumi:"mappings"`
-	NameIdentifierFormat           *string                `pulumi:"nameIdentifierFormat"`
-	NameIdentifierProbes           []string               `pulumi:"nameIdentifierProbes"`
-	PassthroughClaimsWithNoMapping *bool                  `pulumi:"passthroughClaimsWithNoMapping"`
-	Recipient                      *string                `pulumi:"recipient"`
-	SignResponse                   *bool                  `pulumi:"signResponse"`
-	SignatureAlgorithm             *string                `pulumi:"signatureAlgorithm"`
-	SigningCert                    *string                `pulumi:"signingCert"`
-	TypedAttributes                *bool                  `pulumi:"typedAttributes"`
+	Audience                       *string                  `pulumi:"audience"`
+	AuthnContextClassRef           *string                  `pulumi:"authnContextClassRef"`
+	Binding                        *string                  `pulumi:"binding"`
+	CreateUpnClaim                 *bool                    `pulumi:"createUpnClaim"`
+	Destination                    *string                  `pulumi:"destination"`
+	DigestAlgorithm                *string                  `pulumi:"digestAlgorithm"`
+	IncludeAttributeNameFormat     *bool                    `pulumi:"includeAttributeNameFormat"`
+	Issuer                         *string                  `pulumi:"issuer"`
+	LifetimeInSeconds              *int                     `pulumi:"lifetimeInSeconds"`
+	Logout                         *ClientAddonsSamlpLogout `pulumi:"logout"`
+	MapIdentities                  *bool                    `pulumi:"mapIdentities"`
+	MapUnknownClaimsAsIs           *bool                    `pulumi:"mapUnknownClaimsAsIs"`
+	Mappings                       map[string]interface{}   `pulumi:"mappings"`
+	NameIdentifierFormat           *string                  `pulumi:"nameIdentifierFormat"`
+	NameIdentifierProbes           []string                 `pulumi:"nameIdentifierProbes"`
+	PassthroughClaimsWithNoMapping *bool                    `pulumi:"passthroughClaimsWithNoMapping"`
+	Recipient                      *string                  `pulumi:"recipient"`
+	SignResponse                   *bool                    `pulumi:"signResponse"`
+	SignatureAlgorithm             *string                  `pulumi:"signatureAlgorithm"`
+	SigningCert                    *string                  `pulumi:"signingCert"`
+	TypedAttributes                *bool                    `pulumi:"typedAttributes"`
 }
 
 // ClientAddonsSamlpInput is an input type that accepts ClientAddonsSamlpArgs and ClientAddonsSamlpOutput values.
@@ -5358,27 +8750,27 @@ type ClientAddonsSamlpInput interface {
 }
 
 type ClientAddonsSamlpArgs struct {
-	Audience                       pulumi.StringPtrInput   `pulumi:"audience"`
-	AuthnContextClassRef           pulumi.StringPtrInput   `pulumi:"authnContextClassRef"`
-	Binding                        pulumi.StringPtrInput   `pulumi:"binding"`
-	CreateUpnClaim                 pulumi.BoolPtrInput     `pulumi:"createUpnClaim"`
-	Destination                    pulumi.StringPtrInput   `pulumi:"destination"`
-	DigestAlgorithm                pulumi.StringPtrInput   `pulumi:"digestAlgorithm"`
-	IncludeAttributeNameFormat     pulumi.BoolPtrInput     `pulumi:"includeAttributeNameFormat"`
-	Issuer                         pulumi.StringPtrInput   `pulumi:"issuer"`
-	LifetimeInSeconds              pulumi.IntPtrInput      `pulumi:"lifetimeInSeconds"`
-	Logout                         pulumi.MapInput         `pulumi:"logout"`
-	MapIdentities                  pulumi.BoolPtrInput     `pulumi:"mapIdentities"`
-	MapUnknownClaimsAsIs           pulumi.BoolPtrInput     `pulumi:"mapUnknownClaimsAsIs"`
-	Mappings                       pulumi.MapInput         `pulumi:"mappings"`
-	NameIdentifierFormat           pulumi.StringPtrInput   `pulumi:"nameIdentifierFormat"`
-	NameIdentifierProbes           pulumi.StringArrayInput `pulumi:"nameIdentifierProbes"`
-	PassthroughClaimsWithNoMapping pulumi.BoolPtrInput     `pulumi:"passthroughClaimsWithNoMapping"`
-	Recipient                      pulumi.StringPtrInput   `pulumi:"recipient"`
-	SignResponse                   pulumi.BoolPtrInput     `pulumi:"signResponse"`
-	SignatureAlgorithm             pulumi.StringPtrInput   `pulumi:"signatureAlgorithm"`
-	SigningCert                    pulumi.StringPtrInput   `pulumi:"signingCert"`
-	TypedAttributes                pulumi.BoolPtrInput     `pulumi:"typedAttributes"`
+	Audience                       pulumi.StringPtrInput           `pulumi:"audience"`
+	AuthnContextClassRef           pulumi.StringPtrInput           `pulumi:"authnContextClassRef"`
+	Binding                        pulumi.StringPtrInput           `pulumi:"binding"`
+	CreateUpnClaim                 pulumi.BoolPtrInput             `pulumi:"createUpnClaim"`
+	Destination                    pulumi.StringPtrInput           `pulumi:"destination"`
+	DigestAlgorithm                pulumi.StringPtrInput           `pulumi:"digestAlgorithm"`
+	IncludeAttributeNameFormat     pulumi.BoolPtrInput             `pulumi:"includeAttributeNameFormat"`
+	Issuer                         pulumi.StringPtrInput           `pulumi:"issuer"`
+	LifetimeInSeconds              pulumi.IntPtrInput              `pulumi:"lifetimeInSeconds"`
+	Logout                         ClientAddonsSamlpLogoutPtrInput `pulumi:"logout"`
+	MapIdentities                  pulumi.BoolPtrInput             `pulumi:"mapIdentities"`
+	MapUnknownClaimsAsIs           pulumi.BoolPtrInput             `pulumi:"mapUnknownClaimsAsIs"`
+	Mappings                       pulumi.MapInput                 `pulumi:"mappings"`
+	NameIdentifierFormat           pulumi.StringPtrInput           `pulumi:"nameIdentifierFormat"`
+	NameIdentifierProbes           pulumi.StringArrayInput         `pulumi:"nameIdentifierProbes"`
+	PassthroughClaimsWithNoMapping pulumi.BoolPtrInput             `pulumi:"passthroughClaimsWithNoMapping"`
+	Recipient                      pulumi.StringPtrInput           `pulumi:"recipient"`
+	SignResponse                   pulumi.BoolPtrInput             `pulumi:"signResponse"`
+	SignatureAlgorithm             pulumi.StringPtrInput           `pulumi:"signatureAlgorithm"`
+	SigningCert                    pulumi.StringPtrInput           `pulumi:"signingCert"`
+	TypedAttributes                pulumi.BoolPtrInput             `pulumi:"typedAttributes"`
 }
 
 func (ClientAddonsSamlpArgs) ElementType() reflect.Type {
@@ -5512,8 +8904,8 @@ func (o ClientAddonsSamlpOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *int { return v.LifetimeInSeconds }).(pulumi.IntPtrOutput)
 }
 
-func (o ClientAddonsSamlpOutput) Logout() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) map[string]interface{} { return v.Logout }).(pulumi.MapOutput)
+func (o ClientAddonsSamlpOutput) Logout() ClientAddonsSamlpLogoutPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSamlp) *ClientAddonsSamlpLogout { return v.Logout }).(ClientAddonsSamlpLogoutPtrOutput)
 }
 
 func (o ClientAddonsSamlpOutput) MapIdentities() pulumi.BoolPtrOutput {
@@ -5671,13 +9063,13 @@ func (o ClientAddonsSamlpPtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-func (o ClientAddonsSamlpPtrOutput) Logout() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddonsSamlp) map[string]interface{} {
+func (o ClientAddonsSamlpPtrOutput) Logout() ClientAddonsSamlpLogoutPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSamlp) *ClientAddonsSamlpLogout {
 		if v == nil {
 			return nil
 		}
 		return v.Logout
-	}).(pulumi.MapOutput)
+	}).(ClientAddonsSamlpLogoutPtrOutput)
 }
 
 func (o ClientAddonsSamlpPtrOutput) MapIdentities() pulumi.BoolPtrOutput {
@@ -5777,6 +9169,1861 @@ func (o ClientAddonsSamlpPtrOutput) TypedAttributes() pulumi.BoolPtrOutput {
 		}
 		return v.TypedAttributes
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ClientAddonsSamlpLogout struct {
+	Callback   *string `pulumi:"callback"`
+	SloEnabled *bool   `pulumi:"sloEnabled"`
+}
+
+// ClientAddonsSamlpLogoutInput is an input type that accepts ClientAddonsSamlpLogoutArgs and ClientAddonsSamlpLogoutOutput values.
+// You can construct a concrete instance of `ClientAddonsSamlpLogoutInput` via:
+//
+//	ClientAddonsSamlpLogoutArgs{...}
+type ClientAddonsSamlpLogoutInput interface {
+	pulumi.Input
+
+	ToClientAddonsSamlpLogoutOutput() ClientAddonsSamlpLogoutOutput
+	ToClientAddonsSamlpLogoutOutputWithContext(context.Context) ClientAddonsSamlpLogoutOutput
+}
+
+type ClientAddonsSamlpLogoutArgs struct {
+	Callback   pulumi.StringPtrInput `pulumi:"callback"`
+	SloEnabled pulumi.BoolPtrInput   `pulumi:"sloEnabled"`
+}
+
+func (ClientAddonsSamlpLogoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSamlpLogout)(nil)).Elem()
+}
+
+func (i ClientAddonsSamlpLogoutArgs) ToClientAddonsSamlpLogoutOutput() ClientAddonsSamlpLogoutOutput {
+	return i.ToClientAddonsSamlpLogoutOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSamlpLogoutArgs) ToClientAddonsSamlpLogoutOutputWithContext(ctx context.Context) ClientAddonsSamlpLogoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSamlpLogoutOutput)
+}
+
+func (i ClientAddonsSamlpLogoutArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSamlpLogout] {
+	return pulumix.Output[ClientAddonsSamlpLogout]{
+		OutputState: i.ToClientAddonsSamlpLogoutOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsSamlpLogoutArgs) ToClientAddonsSamlpLogoutPtrOutput() ClientAddonsSamlpLogoutPtrOutput {
+	return i.ToClientAddonsSamlpLogoutPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSamlpLogoutArgs) ToClientAddonsSamlpLogoutPtrOutputWithContext(ctx context.Context) ClientAddonsSamlpLogoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSamlpLogoutOutput).ToClientAddonsSamlpLogoutPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsSamlpLogoutPtrInput is an input type that accepts ClientAddonsSamlpLogoutArgs, ClientAddonsSamlpLogoutPtr and ClientAddonsSamlpLogoutPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsSamlpLogoutPtrInput` via:
+//
+//	        ClientAddonsSamlpLogoutArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsSamlpLogoutPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsSamlpLogoutPtrOutput() ClientAddonsSamlpLogoutPtrOutput
+	ToClientAddonsSamlpLogoutPtrOutputWithContext(context.Context) ClientAddonsSamlpLogoutPtrOutput
+}
+
+type clientAddonsSamlpLogoutPtrType ClientAddonsSamlpLogoutArgs
+
+func ClientAddonsSamlpLogoutPtr(v *ClientAddonsSamlpLogoutArgs) ClientAddonsSamlpLogoutPtrInput {
+	return (*clientAddonsSamlpLogoutPtrType)(v)
+}
+
+func (*clientAddonsSamlpLogoutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSamlpLogout)(nil)).Elem()
+}
+
+func (i *clientAddonsSamlpLogoutPtrType) ToClientAddonsSamlpLogoutPtrOutput() ClientAddonsSamlpLogoutPtrOutput {
+	return i.ToClientAddonsSamlpLogoutPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsSamlpLogoutPtrType) ToClientAddonsSamlpLogoutPtrOutputWithContext(ctx context.Context) ClientAddonsSamlpLogoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSamlpLogoutPtrOutput)
+}
+
+func (i *clientAddonsSamlpLogoutPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSamlpLogout] {
+	return pulumix.Output[*ClientAddonsSamlpLogout]{
+		OutputState: i.ToClientAddonsSamlpLogoutPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsSamlpLogoutOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSamlpLogoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSamlpLogout)(nil)).Elem()
+}
+
+func (o ClientAddonsSamlpLogoutOutput) ToClientAddonsSamlpLogoutOutput() ClientAddonsSamlpLogoutOutput {
+	return o
+}
+
+func (o ClientAddonsSamlpLogoutOutput) ToClientAddonsSamlpLogoutOutputWithContext(ctx context.Context) ClientAddonsSamlpLogoutOutput {
+	return o
+}
+
+func (o ClientAddonsSamlpLogoutOutput) ToClientAddonsSamlpLogoutPtrOutput() ClientAddonsSamlpLogoutPtrOutput {
+	return o.ToClientAddonsSamlpLogoutPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsSamlpLogoutOutput) ToClientAddonsSamlpLogoutPtrOutputWithContext(ctx context.Context) ClientAddonsSamlpLogoutPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsSamlpLogout) *ClientAddonsSamlpLogout {
+		return &v
+	}).(ClientAddonsSamlpLogoutPtrOutput)
+}
+
+func (o ClientAddonsSamlpLogoutOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSamlpLogout] {
+	return pulumix.Output[ClientAddonsSamlpLogout]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsSamlpLogoutOutput) Callback() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSamlpLogout) *string { return v.Callback }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSamlpLogoutOutput) SloEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSamlpLogout) *bool { return v.SloEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClientAddonsSamlpLogoutPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSamlpLogoutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSamlpLogout)(nil)).Elem()
+}
+
+func (o ClientAddonsSamlpLogoutPtrOutput) ToClientAddonsSamlpLogoutPtrOutput() ClientAddonsSamlpLogoutPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSamlpLogoutPtrOutput) ToClientAddonsSamlpLogoutPtrOutputWithContext(ctx context.Context) ClientAddonsSamlpLogoutPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSamlpLogoutPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSamlpLogout] {
+	return pulumix.Output[*ClientAddonsSamlpLogout]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsSamlpLogoutPtrOutput) Elem() ClientAddonsSamlpLogoutOutput {
+	return o.ApplyT(func(v *ClientAddonsSamlpLogout) ClientAddonsSamlpLogout {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsSamlpLogout
+		return ret
+	}).(ClientAddonsSamlpLogoutOutput)
+}
+
+func (o ClientAddonsSamlpLogoutPtrOutput) Callback() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSamlpLogout) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Callback
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSamlpLogoutPtrOutput) SloEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSamlpLogout) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SloEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClientAddonsSapApi struct {
+	// The ID of the client.
+	ClientId             *string `pulumi:"clientId"`
+	NameIdentifierFormat *string `pulumi:"nameIdentifierFormat"`
+	Scope                *string `pulumi:"scope"`
+	ServicePassword      *string `pulumi:"servicePassword"`
+	TokenEndpointUrl     *string `pulumi:"tokenEndpointUrl"`
+	UsernameAttribute    *string `pulumi:"usernameAttribute"`
+}
+
+// ClientAddonsSapApiInput is an input type that accepts ClientAddonsSapApiArgs and ClientAddonsSapApiOutput values.
+// You can construct a concrete instance of `ClientAddonsSapApiInput` via:
+//
+//	ClientAddonsSapApiArgs{...}
+type ClientAddonsSapApiInput interface {
+	pulumi.Input
+
+	ToClientAddonsSapApiOutput() ClientAddonsSapApiOutput
+	ToClientAddonsSapApiOutputWithContext(context.Context) ClientAddonsSapApiOutput
+}
+
+type ClientAddonsSapApiArgs struct {
+	// The ID of the client.
+	ClientId             pulumi.StringPtrInput `pulumi:"clientId"`
+	NameIdentifierFormat pulumi.StringPtrInput `pulumi:"nameIdentifierFormat"`
+	Scope                pulumi.StringPtrInput `pulumi:"scope"`
+	ServicePassword      pulumi.StringPtrInput `pulumi:"servicePassword"`
+	TokenEndpointUrl     pulumi.StringPtrInput `pulumi:"tokenEndpointUrl"`
+	UsernameAttribute    pulumi.StringPtrInput `pulumi:"usernameAttribute"`
+}
+
+func (ClientAddonsSapApiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSapApi)(nil)).Elem()
+}
+
+func (i ClientAddonsSapApiArgs) ToClientAddonsSapApiOutput() ClientAddonsSapApiOutput {
+	return i.ToClientAddonsSapApiOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSapApiArgs) ToClientAddonsSapApiOutputWithContext(ctx context.Context) ClientAddonsSapApiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSapApiOutput)
+}
+
+func (i ClientAddonsSapApiArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSapApi] {
+	return pulumix.Output[ClientAddonsSapApi]{
+		OutputState: i.ToClientAddonsSapApiOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsSapApiArgs) ToClientAddonsSapApiPtrOutput() ClientAddonsSapApiPtrOutput {
+	return i.ToClientAddonsSapApiPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSapApiArgs) ToClientAddonsSapApiPtrOutputWithContext(ctx context.Context) ClientAddonsSapApiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSapApiOutput).ToClientAddonsSapApiPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsSapApiPtrInput is an input type that accepts ClientAddonsSapApiArgs, ClientAddonsSapApiPtr and ClientAddonsSapApiPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsSapApiPtrInput` via:
+//
+//	        ClientAddonsSapApiArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsSapApiPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsSapApiPtrOutput() ClientAddonsSapApiPtrOutput
+	ToClientAddonsSapApiPtrOutputWithContext(context.Context) ClientAddonsSapApiPtrOutput
+}
+
+type clientAddonsSapApiPtrType ClientAddonsSapApiArgs
+
+func ClientAddonsSapApiPtr(v *ClientAddonsSapApiArgs) ClientAddonsSapApiPtrInput {
+	return (*clientAddonsSapApiPtrType)(v)
+}
+
+func (*clientAddonsSapApiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSapApi)(nil)).Elem()
+}
+
+func (i *clientAddonsSapApiPtrType) ToClientAddonsSapApiPtrOutput() ClientAddonsSapApiPtrOutput {
+	return i.ToClientAddonsSapApiPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsSapApiPtrType) ToClientAddonsSapApiPtrOutputWithContext(ctx context.Context) ClientAddonsSapApiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSapApiPtrOutput)
+}
+
+func (i *clientAddonsSapApiPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSapApi] {
+	return pulumix.Output[*ClientAddonsSapApi]{
+		OutputState: i.ToClientAddonsSapApiPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsSapApiOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSapApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSapApi)(nil)).Elem()
+}
+
+func (o ClientAddonsSapApiOutput) ToClientAddonsSapApiOutput() ClientAddonsSapApiOutput {
+	return o
+}
+
+func (o ClientAddonsSapApiOutput) ToClientAddonsSapApiOutputWithContext(ctx context.Context) ClientAddonsSapApiOutput {
+	return o
+}
+
+func (o ClientAddonsSapApiOutput) ToClientAddonsSapApiPtrOutput() ClientAddonsSapApiPtrOutput {
+	return o.ToClientAddonsSapApiPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsSapApiOutput) ToClientAddonsSapApiPtrOutputWithContext(ctx context.Context) ClientAddonsSapApiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsSapApi) *ClientAddonsSapApi {
+		return &v
+	}).(ClientAddonsSapApiPtrOutput)
+}
+
+func (o ClientAddonsSapApiOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSapApi] {
+	return pulumix.Output[ClientAddonsSapApi]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The ID of the client.
+func (o ClientAddonsSapApiOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSapApi) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSapApiOutput) NameIdentifierFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSapApi) *string { return v.NameIdentifierFormat }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSapApiOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSapApi) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSapApiOutput) ServicePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSapApi) *string { return v.ServicePassword }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSapApiOutput) TokenEndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSapApi) *string { return v.TokenEndpointUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSapApiOutput) UsernameAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSapApi) *string { return v.UsernameAttribute }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsSapApiPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSapApiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSapApi)(nil)).Elem()
+}
+
+func (o ClientAddonsSapApiPtrOutput) ToClientAddonsSapApiPtrOutput() ClientAddonsSapApiPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSapApiPtrOutput) ToClientAddonsSapApiPtrOutputWithContext(ctx context.Context) ClientAddonsSapApiPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSapApiPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSapApi] {
+	return pulumix.Output[*ClientAddonsSapApi]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsSapApiPtrOutput) Elem() ClientAddonsSapApiOutput {
+	return o.ApplyT(func(v *ClientAddonsSapApi) ClientAddonsSapApi {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsSapApi
+		return ret
+	}).(ClientAddonsSapApiOutput)
+}
+
+// The ID of the client.
+func (o ClientAddonsSapApiPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSapApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSapApiPtrOutput) NameIdentifierFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSapApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameIdentifierFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSapApiPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSapApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSapApiPtrOutput) ServicePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSapApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServicePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSapApiPtrOutput) TokenEndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSapApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenEndpointUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSapApiPtrOutput) UsernameAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSapApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameAttribute
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsSentry struct {
+	BaseUrl *string `pulumi:"baseUrl"`
+	OrgSlug *string `pulumi:"orgSlug"`
+}
+
+// ClientAddonsSentryInput is an input type that accepts ClientAddonsSentryArgs and ClientAddonsSentryOutput values.
+// You can construct a concrete instance of `ClientAddonsSentryInput` via:
+//
+//	ClientAddonsSentryArgs{...}
+type ClientAddonsSentryInput interface {
+	pulumi.Input
+
+	ToClientAddonsSentryOutput() ClientAddonsSentryOutput
+	ToClientAddonsSentryOutputWithContext(context.Context) ClientAddonsSentryOutput
+}
+
+type ClientAddonsSentryArgs struct {
+	BaseUrl pulumi.StringPtrInput `pulumi:"baseUrl"`
+	OrgSlug pulumi.StringPtrInput `pulumi:"orgSlug"`
+}
+
+func (ClientAddonsSentryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSentry)(nil)).Elem()
+}
+
+func (i ClientAddonsSentryArgs) ToClientAddonsSentryOutput() ClientAddonsSentryOutput {
+	return i.ToClientAddonsSentryOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSentryArgs) ToClientAddonsSentryOutputWithContext(ctx context.Context) ClientAddonsSentryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSentryOutput)
+}
+
+func (i ClientAddonsSentryArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSentry] {
+	return pulumix.Output[ClientAddonsSentry]{
+		OutputState: i.ToClientAddonsSentryOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsSentryArgs) ToClientAddonsSentryPtrOutput() ClientAddonsSentryPtrOutput {
+	return i.ToClientAddonsSentryPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSentryArgs) ToClientAddonsSentryPtrOutputWithContext(ctx context.Context) ClientAddonsSentryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSentryOutput).ToClientAddonsSentryPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsSentryPtrInput is an input type that accepts ClientAddonsSentryArgs, ClientAddonsSentryPtr and ClientAddonsSentryPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsSentryPtrInput` via:
+//
+//	        ClientAddonsSentryArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsSentryPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsSentryPtrOutput() ClientAddonsSentryPtrOutput
+	ToClientAddonsSentryPtrOutputWithContext(context.Context) ClientAddonsSentryPtrOutput
+}
+
+type clientAddonsSentryPtrType ClientAddonsSentryArgs
+
+func ClientAddonsSentryPtr(v *ClientAddonsSentryArgs) ClientAddonsSentryPtrInput {
+	return (*clientAddonsSentryPtrType)(v)
+}
+
+func (*clientAddonsSentryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSentry)(nil)).Elem()
+}
+
+func (i *clientAddonsSentryPtrType) ToClientAddonsSentryPtrOutput() ClientAddonsSentryPtrOutput {
+	return i.ToClientAddonsSentryPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsSentryPtrType) ToClientAddonsSentryPtrOutputWithContext(ctx context.Context) ClientAddonsSentryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSentryPtrOutput)
+}
+
+func (i *clientAddonsSentryPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSentry] {
+	return pulumix.Output[*ClientAddonsSentry]{
+		OutputState: i.ToClientAddonsSentryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsSentryOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSentryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSentry)(nil)).Elem()
+}
+
+func (o ClientAddonsSentryOutput) ToClientAddonsSentryOutput() ClientAddonsSentryOutput {
+	return o
+}
+
+func (o ClientAddonsSentryOutput) ToClientAddonsSentryOutputWithContext(ctx context.Context) ClientAddonsSentryOutput {
+	return o
+}
+
+func (o ClientAddonsSentryOutput) ToClientAddonsSentryPtrOutput() ClientAddonsSentryPtrOutput {
+	return o.ToClientAddonsSentryPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsSentryOutput) ToClientAddonsSentryPtrOutputWithContext(ctx context.Context) ClientAddonsSentryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsSentry) *ClientAddonsSentry {
+		return &v
+	}).(ClientAddonsSentryPtrOutput)
+}
+
+func (o ClientAddonsSentryOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSentry] {
+	return pulumix.Output[ClientAddonsSentry]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsSentryOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSentry) *string { return v.BaseUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSentryOutput) OrgSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSentry) *string { return v.OrgSlug }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsSentryPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSentryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSentry)(nil)).Elem()
+}
+
+func (o ClientAddonsSentryPtrOutput) ToClientAddonsSentryPtrOutput() ClientAddonsSentryPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSentryPtrOutput) ToClientAddonsSentryPtrOutputWithContext(ctx context.Context) ClientAddonsSentryPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSentryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSentry] {
+	return pulumix.Output[*ClientAddonsSentry]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsSentryPtrOutput) Elem() ClientAddonsSentryOutput {
+	return o.ApplyT(func(v *ClientAddonsSentry) ClientAddonsSentry {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsSentry
+		return ret
+	}).(ClientAddonsSentryOutput)
+}
+
+func (o ClientAddonsSentryPtrOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSentry) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BaseUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSentryPtrOutput) OrgSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSentry) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrgSlug
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsSharepoint struct {
+	ExternalUrls []string `pulumi:"externalUrls"`
+	Url          *string  `pulumi:"url"`
+}
+
+// ClientAddonsSharepointInput is an input type that accepts ClientAddonsSharepointArgs and ClientAddonsSharepointOutput values.
+// You can construct a concrete instance of `ClientAddonsSharepointInput` via:
+//
+//	ClientAddonsSharepointArgs{...}
+type ClientAddonsSharepointInput interface {
+	pulumi.Input
+
+	ToClientAddonsSharepointOutput() ClientAddonsSharepointOutput
+	ToClientAddonsSharepointOutputWithContext(context.Context) ClientAddonsSharepointOutput
+}
+
+type ClientAddonsSharepointArgs struct {
+	ExternalUrls pulumi.StringArrayInput `pulumi:"externalUrls"`
+	Url          pulumi.StringPtrInput   `pulumi:"url"`
+}
+
+func (ClientAddonsSharepointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSharepoint)(nil)).Elem()
+}
+
+func (i ClientAddonsSharepointArgs) ToClientAddonsSharepointOutput() ClientAddonsSharepointOutput {
+	return i.ToClientAddonsSharepointOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSharepointArgs) ToClientAddonsSharepointOutputWithContext(ctx context.Context) ClientAddonsSharepointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSharepointOutput)
+}
+
+func (i ClientAddonsSharepointArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSharepoint] {
+	return pulumix.Output[ClientAddonsSharepoint]{
+		OutputState: i.ToClientAddonsSharepointOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsSharepointArgs) ToClientAddonsSharepointPtrOutput() ClientAddonsSharepointPtrOutput {
+	return i.ToClientAddonsSharepointPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSharepointArgs) ToClientAddonsSharepointPtrOutputWithContext(ctx context.Context) ClientAddonsSharepointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSharepointOutput).ToClientAddonsSharepointPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsSharepointPtrInput is an input type that accepts ClientAddonsSharepointArgs, ClientAddonsSharepointPtr and ClientAddonsSharepointPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsSharepointPtrInput` via:
+//
+//	        ClientAddonsSharepointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsSharepointPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsSharepointPtrOutput() ClientAddonsSharepointPtrOutput
+	ToClientAddonsSharepointPtrOutputWithContext(context.Context) ClientAddonsSharepointPtrOutput
+}
+
+type clientAddonsSharepointPtrType ClientAddonsSharepointArgs
+
+func ClientAddonsSharepointPtr(v *ClientAddonsSharepointArgs) ClientAddonsSharepointPtrInput {
+	return (*clientAddonsSharepointPtrType)(v)
+}
+
+func (*clientAddonsSharepointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSharepoint)(nil)).Elem()
+}
+
+func (i *clientAddonsSharepointPtrType) ToClientAddonsSharepointPtrOutput() ClientAddonsSharepointPtrOutput {
+	return i.ToClientAddonsSharepointPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsSharepointPtrType) ToClientAddonsSharepointPtrOutputWithContext(ctx context.Context) ClientAddonsSharepointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSharepointPtrOutput)
+}
+
+func (i *clientAddonsSharepointPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSharepoint] {
+	return pulumix.Output[*ClientAddonsSharepoint]{
+		OutputState: i.ToClientAddonsSharepointPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsSharepointOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSharepointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSharepoint)(nil)).Elem()
+}
+
+func (o ClientAddonsSharepointOutput) ToClientAddonsSharepointOutput() ClientAddonsSharepointOutput {
+	return o
+}
+
+func (o ClientAddonsSharepointOutput) ToClientAddonsSharepointOutputWithContext(ctx context.Context) ClientAddonsSharepointOutput {
+	return o
+}
+
+func (o ClientAddonsSharepointOutput) ToClientAddonsSharepointPtrOutput() ClientAddonsSharepointPtrOutput {
+	return o.ToClientAddonsSharepointPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsSharepointOutput) ToClientAddonsSharepointPtrOutputWithContext(ctx context.Context) ClientAddonsSharepointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsSharepoint) *ClientAddonsSharepoint {
+		return &v
+	}).(ClientAddonsSharepointPtrOutput)
+}
+
+func (o ClientAddonsSharepointOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSharepoint] {
+	return pulumix.Output[ClientAddonsSharepoint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsSharepointOutput) ExternalUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientAddonsSharepoint) []string { return v.ExternalUrls }).(pulumi.StringArrayOutput)
+}
+
+func (o ClientAddonsSharepointOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSharepoint) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsSharepointPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSharepointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSharepoint)(nil)).Elem()
+}
+
+func (o ClientAddonsSharepointPtrOutput) ToClientAddonsSharepointPtrOutput() ClientAddonsSharepointPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSharepointPtrOutput) ToClientAddonsSharepointPtrOutputWithContext(ctx context.Context) ClientAddonsSharepointPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSharepointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSharepoint] {
+	return pulumix.Output[*ClientAddonsSharepoint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsSharepointPtrOutput) Elem() ClientAddonsSharepointOutput {
+	return o.ApplyT(func(v *ClientAddonsSharepoint) ClientAddonsSharepoint {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsSharepoint
+		return ret
+	}).(ClientAddonsSharepointOutput)
+}
+
+func (o ClientAddonsSharepointPtrOutput) ExternalUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientAddonsSharepoint) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalUrls
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ClientAddonsSharepointPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSharepoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsSlack struct {
+	Team *string `pulumi:"team"`
+}
+
+// ClientAddonsSlackInput is an input type that accepts ClientAddonsSlackArgs and ClientAddonsSlackOutput values.
+// You can construct a concrete instance of `ClientAddonsSlackInput` via:
+//
+//	ClientAddonsSlackArgs{...}
+type ClientAddonsSlackInput interface {
+	pulumi.Input
+
+	ToClientAddonsSlackOutput() ClientAddonsSlackOutput
+	ToClientAddonsSlackOutputWithContext(context.Context) ClientAddonsSlackOutput
+}
+
+type ClientAddonsSlackArgs struct {
+	Team pulumi.StringPtrInput `pulumi:"team"`
+}
+
+func (ClientAddonsSlackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSlack)(nil)).Elem()
+}
+
+func (i ClientAddonsSlackArgs) ToClientAddonsSlackOutput() ClientAddonsSlackOutput {
+	return i.ToClientAddonsSlackOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSlackArgs) ToClientAddonsSlackOutputWithContext(ctx context.Context) ClientAddonsSlackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSlackOutput)
+}
+
+func (i ClientAddonsSlackArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSlack] {
+	return pulumix.Output[ClientAddonsSlack]{
+		OutputState: i.ToClientAddonsSlackOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsSlackArgs) ToClientAddonsSlackPtrOutput() ClientAddonsSlackPtrOutput {
+	return i.ToClientAddonsSlackPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSlackArgs) ToClientAddonsSlackPtrOutputWithContext(ctx context.Context) ClientAddonsSlackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSlackOutput).ToClientAddonsSlackPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsSlackPtrInput is an input type that accepts ClientAddonsSlackArgs, ClientAddonsSlackPtr and ClientAddonsSlackPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsSlackPtrInput` via:
+//
+//	        ClientAddonsSlackArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsSlackPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsSlackPtrOutput() ClientAddonsSlackPtrOutput
+	ToClientAddonsSlackPtrOutputWithContext(context.Context) ClientAddonsSlackPtrOutput
+}
+
+type clientAddonsSlackPtrType ClientAddonsSlackArgs
+
+func ClientAddonsSlackPtr(v *ClientAddonsSlackArgs) ClientAddonsSlackPtrInput {
+	return (*clientAddonsSlackPtrType)(v)
+}
+
+func (*clientAddonsSlackPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSlack)(nil)).Elem()
+}
+
+func (i *clientAddonsSlackPtrType) ToClientAddonsSlackPtrOutput() ClientAddonsSlackPtrOutput {
+	return i.ToClientAddonsSlackPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsSlackPtrType) ToClientAddonsSlackPtrOutputWithContext(ctx context.Context) ClientAddonsSlackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSlackPtrOutput)
+}
+
+func (i *clientAddonsSlackPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSlack] {
+	return pulumix.Output[*ClientAddonsSlack]{
+		OutputState: i.ToClientAddonsSlackPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsSlackOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSlackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSlack)(nil)).Elem()
+}
+
+func (o ClientAddonsSlackOutput) ToClientAddonsSlackOutput() ClientAddonsSlackOutput {
+	return o
+}
+
+func (o ClientAddonsSlackOutput) ToClientAddonsSlackOutputWithContext(ctx context.Context) ClientAddonsSlackOutput {
+	return o
+}
+
+func (o ClientAddonsSlackOutput) ToClientAddonsSlackPtrOutput() ClientAddonsSlackPtrOutput {
+	return o.ToClientAddonsSlackPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsSlackOutput) ToClientAddonsSlackPtrOutputWithContext(ctx context.Context) ClientAddonsSlackPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsSlack) *ClientAddonsSlack {
+		return &v
+	}).(ClientAddonsSlackPtrOutput)
+}
+
+func (o ClientAddonsSlackOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSlack] {
+	return pulumix.Output[ClientAddonsSlack]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsSlackOutput) Team() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSlack) *string { return v.Team }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsSlackPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSlackPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSlack)(nil)).Elem()
+}
+
+func (o ClientAddonsSlackPtrOutput) ToClientAddonsSlackPtrOutput() ClientAddonsSlackPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSlackPtrOutput) ToClientAddonsSlackPtrOutputWithContext(ctx context.Context) ClientAddonsSlackPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSlackPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSlack] {
+	return pulumix.Output[*ClientAddonsSlack]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsSlackPtrOutput) Elem() ClientAddonsSlackOutput {
+	return o.ApplyT(func(v *ClientAddonsSlack) ClientAddonsSlack {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsSlack
+		return ret
+	}).(ClientAddonsSlackOutput)
+}
+
+func (o ClientAddonsSlackPtrOutput) Team() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSlack) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Team
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsSpringcm struct {
+	AcsUrl *string `pulumi:"acsUrl"`
+}
+
+// ClientAddonsSpringcmInput is an input type that accepts ClientAddonsSpringcmArgs and ClientAddonsSpringcmOutput values.
+// You can construct a concrete instance of `ClientAddonsSpringcmInput` via:
+//
+//	ClientAddonsSpringcmArgs{...}
+type ClientAddonsSpringcmInput interface {
+	pulumi.Input
+
+	ToClientAddonsSpringcmOutput() ClientAddonsSpringcmOutput
+	ToClientAddonsSpringcmOutputWithContext(context.Context) ClientAddonsSpringcmOutput
+}
+
+type ClientAddonsSpringcmArgs struct {
+	AcsUrl pulumi.StringPtrInput `pulumi:"acsUrl"`
+}
+
+func (ClientAddonsSpringcmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSpringcm)(nil)).Elem()
+}
+
+func (i ClientAddonsSpringcmArgs) ToClientAddonsSpringcmOutput() ClientAddonsSpringcmOutput {
+	return i.ToClientAddonsSpringcmOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSpringcmArgs) ToClientAddonsSpringcmOutputWithContext(ctx context.Context) ClientAddonsSpringcmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSpringcmOutput)
+}
+
+func (i ClientAddonsSpringcmArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSpringcm] {
+	return pulumix.Output[ClientAddonsSpringcm]{
+		OutputState: i.ToClientAddonsSpringcmOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsSpringcmArgs) ToClientAddonsSpringcmPtrOutput() ClientAddonsSpringcmPtrOutput {
+	return i.ToClientAddonsSpringcmPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSpringcmArgs) ToClientAddonsSpringcmPtrOutputWithContext(ctx context.Context) ClientAddonsSpringcmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSpringcmOutput).ToClientAddonsSpringcmPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsSpringcmPtrInput is an input type that accepts ClientAddonsSpringcmArgs, ClientAddonsSpringcmPtr and ClientAddonsSpringcmPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsSpringcmPtrInput` via:
+//
+//	        ClientAddonsSpringcmArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsSpringcmPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsSpringcmPtrOutput() ClientAddonsSpringcmPtrOutput
+	ToClientAddonsSpringcmPtrOutputWithContext(context.Context) ClientAddonsSpringcmPtrOutput
+}
+
+type clientAddonsSpringcmPtrType ClientAddonsSpringcmArgs
+
+func ClientAddonsSpringcmPtr(v *ClientAddonsSpringcmArgs) ClientAddonsSpringcmPtrInput {
+	return (*clientAddonsSpringcmPtrType)(v)
+}
+
+func (*clientAddonsSpringcmPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSpringcm)(nil)).Elem()
+}
+
+func (i *clientAddonsSpringcmPtrType) ToClientAddonsSpringcmPtrOutput() ClientAddonsSpringcmPtrOutput {
+	return i.ToClientAddonsSpringcmPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsSpringcmPtrType) ToClientAddonsSpringcmPtrOutputWithContext(ctx context.Context) ClientAddonsSpringcmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSpringcmPtrOutput)
+}
+
+func (i *clientAddonsSpringcmPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSpringcm] {
+	return pulumix.Output[*ClientAddonsSpringcm]{
+		OutputState: i.ToClientAddonsSpringcmPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsSpringcmOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSpringcmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSpringcm)(nil)).Elem()
+}
+
+func (o ClientAddonsSpringcmOutput) ToClientAddonsSpringcmOutput() ClientAddonsSpringcmOutput {
+	return o
+}
+
+func (o ClientAddonsSpringcmOutput) ToClientAddonsSpringcmOutputWithContext(ctx context.Context) ClientAddonsSpringcmOutput {
+	return o
+}
+
+func (o ClientAddonsSpringcmOutput) ToClientAddonsSpringcmPtrOutput() ClientAddonsSpringcmPtrOutput {
+	return o.ToClientAddonsSpringcmPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsSpringcmOutput) ToClientAddonsSpringcmPtrOutputWithContext(ctx context.Context) ClientAddonsSpringcmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsSpringcm) *ClientAddonsSpringcm {
+		return &v
+	}).(ClientAddonsSpringcmPtrOutput)
+}
+
+func (o ClientAddonsSpringcmOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSpringcm] {
+	return pulumix.Output[ClientAddonsSpringcm]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsSpringcmOutput) AcsUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSpringcm) *string { return v.AcsUrl }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsSpringcmPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSpringcmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSpringcm)(nil)).Elem()
+}
+
+func (o ClientAddonsSpringcmPtrOutput) ToClientAddonsSpringcmPtrOutput() ClientAddonsSpringcmPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSpringcmPtrOutput) ToClientAddonsSpringcmPtrOutputWithContext(ctx context.Context) ClientAddonsSpringcmPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSpringcmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSpringcm] {
+	return pulumix.Output[*ClientAddonsSpringcm]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsSpringcmPtrOutput) Elem() ClientAddonsSpringcmOutput {
+	return o.ApplyT(func(v *ClientAddonsSpringcm) ClientAddonsSpringcm {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsSpringcm
+		return ret
+	}).(ClientAddonsSpringcmOutput)
+}
+
+func (o ClientAddonsSpringcmPtrOutput) AcsUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSpringcm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcsUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsSsoIntegration struct {
+	// Name of the client.
+	Name    *string `pulumi:"name"`
+	Version *string `pulumi:"version"`
+}
+
+// ClientAddonsSsoIntegrationInput is an input type that accepts ClientAddonsSsoIntegrationArgs and ClientAddonsSsoIntegrationOutput values.
+// You can construct a concrete instance of `ClientAddonsSsoIntegrationInput` via:
+//
+//	ClientAddonsSsoIntegrationArgs{...}
+type ClientAddonsSsoIntegrationInput interface {
+	pulumi.Input
+
+	ToClientAddonsSsoIntegrationOutput() ClientAddonsSsoIntegrationOutput
+	ToClientAddonsSsoIntegrationOutputWithContext(context.Context) ClientAddonsSsoIntegrationOutput
+}
+
+type ClientAddonsSsoIntegrationArgs struct {
+	// Name of the client.
+	Name    pulumi.StringPtrInput `pulumi:"name"`
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (ClientAddonsSsoIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSsoIntegration)(nil)).Elem()
+}
+
+func (i ClientAddonsSsoIntegrationArgs) ToClientAddonsSsoIntegrationOutput() ClientAddonsSsoIntegrationOutput {
+	return i.ToClientAddonsSsoIntegrationOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSsoIntegrationArgs) ToClientAddonsSsoIntegrationOutputWithContext(ctx context.Context) ClientAddonsSsoIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSsoIntegrationOutput)
+}
+
+func (i ClientAddonsSsoIntegrationArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSsoIntegration] {
+	return pulumix.Output[ClientAddonsSsoIntegration]{
+		OutputState: i.ToClientAddonsSsoIntegrationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsSsoIntegrationArgs) ToClientAddonsSsoIntegrationPtrOutput() ClientAddonsSsoIntegrationPtrOutput {
+	return i.ToClientAddonsSsoIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsSsoIntegrationArgs) ToClientAddonsSsoIntegrationPtrOutputWithContext(ctx context.Context) ClientAddonsSsoIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSsoIntegrationOutput).ToClientAddonsSsoIntegrationPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsSsoIntegrationPtrInput is an input type that accepts ClientAddonsSsoIntegrationArgs, ClientAddonsSsoIntegrationPtr and ClientAddonsSsoIntegrationPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsSsoIntegrationPtrInput` via:
+//
+//	        ClientAddonsSsoIntegrationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsSsoIntegrationPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsSsoIntegrationPtrOutput() ClientAddonsSsoIntegrationPtrOutput
+	ToClientAddonsSsoIntegrationPtrOutputWithContext(context.Context) ClientAddonsSsoIntegrationPtrOutput
+}
+
+type clientAddonsSsoIntegrationPtrType ClientAddonsSsoIntegrationArgs
+
+func ClientAddonsSsoIntegrationPtr(v *ClientAddonsSsoIntegrationArgs) ClientAddonsSsoIntegrationPtrInput {
+	return (*clientAddonsSsoIntegrationPtrType)(v)
+}
+
+func (*clientAddonsSsoIntegrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSsoIntegration)(nil)).Elem()
+}
+
+func (i *clientAddonsSsoIntegrationPtrType) ToClientAddonsSsoIntegrationPtrOutput() ClientAddonsSsoIntegrationPtrOutput {
+	return i.ToClientAddonsSsoIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsSsoIntegrationPtrType) ToClientAddonsSsoIntegrationPtrOutputWithContext(ctx context.Context) ClientAddonsSsoIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSsoIntegrationPtrOutput)
+}
+
+func (i *clientAddonsSsoIntegrationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSsoIntegration] {
+	return pulumix.Output[*ClientAddonsSsoIntegration]{
+		OutputState: i.ToClientAddonsSsoIntegrationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsSsoIntegrationOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSsoIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsSsoIntegration)(nil)).Elem()
+}
+
+func (o ClientAddonsSsoIntegrationOutput) ToClientAddonsSsoIntegrationOutput() ClientAddonsSsoIntegrationOutput {
+	return o
+}
+
+func (o ClientAddonsSsoIntegrationOutput) ToClientAddonsSsoIntegrationOutputWithContext(ctx context.Context) ClientAddonsSsoIntegrationOutput {
+	return o
+}
+
+func (o ClientAddonsSsoIntegrationOutput) ToClientAddonsSsoIntegrationPtrOutput() ClientAddonsSsoIntegrationPtrOutput {
+	return o.ToClientAddonsSsoIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsSsoIntegrationOutput) ToClientAddonsSsoIntegrationPtrOutputWithContext(ctx context.Context) ClientAddonsSsoIntegrationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsSsoIntegration) *ClientAddonsSsoIntegration {
+		return &v
+	}).(ClientAddonsSsoIntegrationPtrOutput)
+}
+
+func (o ClientAddonsSsoIntegrationOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsSsoIntegration] {
+	return pulumix.Output[ClientAddonsSsoIntegration]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Name of the client.
+func (o ClientAddonsSsoIntegrationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSsoIntegration) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSsoIntegrationOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSsoIntegration) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsSsoIntegrationPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsSsoIntegrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsSsoIntegration)(nil)).Elem()
+}
+
+func (o ClientAddonsSsoIntegrationPtrOutput) ToClientAddonsSsoIntegrationPtrOutput() ClientAddonsSsoIntegrationPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSsoIntegrationPtrOutput) ToClientAddonsSsoIntegrationPtrOutputWithContext(ctx context.Context) ClientAddonsSsoIntegrationPtrOutput {
+	return o
+}
+
+func (o ClientAddonsSsoIntegrationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsSsoIntegration] {
+	return pulumix.Output[*ClientAddonsSsoIntegration]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsSsoIntegrationPtrOutput) Elem() ClientAddonsSsoIntegrationOutput {
+	return o.ApplyT(func(v *ClientAddonsSsoIntegration) ClientAddonsSsoIntegration {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsSsoIntegration
+		return ret
+	}).(ClientAddonsSsoIntegrationOutput)
+}
+
+// Name of the client.
+func (o ClientAddonsSsoIntegrationPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSsoIntegration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientAddonsSsoIntegrationPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSsoIntegration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsWams struct {
+	MasterKey *string `pulumi:"masterKey"`
+}
+
+// ClientAddonsWamsInput is an input type that accepts ClientAddonsWamsArgs and ClientAddonsWamsOutput values.
+// You can construct a concrete instance of `ClientAddonsWamsInput` via:
+//
+//	ClientAddonsWamsArgs{...}
+type ClientAddonsWamsInput interface {
+	pulumi.Input
+
+	ToClientAddonsWamsOutput() ClientAddonsWamsOutput
+	ToClientAddonsWamsOutputWithContext(context.Context) ClientAddonsWamsOutput
+}
+
+type ClientAddonsWamsArgs struct {
+	MasterKey pulumi.StringPtrInput `pulumi:"masterKey"`
+}
+
+func (ClientAddonsWamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsWams)(nil)).Elem()
+}
+
+func (i ClientAddonsWamsArgs) ToClientAddonsWamsOutput() ClientAddonsWamsOutput {
+	return i.ToClientAddonsWamsOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsWamsArgs) ToClientAddonsWamsOutputWithContext(ctx context.Context) ClientAddonsWamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsWamsOutput)
+}
+
+func (i ClientAddonsWamsArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsWams] {
+	return pulumix.Output[ClientAddonsWams]{
+		OutputState: i.ToClientAddonsWamsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsWamsArgs) ToClientAddonsWamsPtrOutput() ClientAddonsWamsPtrOutput {
+	return i.ToClientAddonsWamsPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsWamsArgs) ToClientAddonsWamsPtrOutputWithContext(ctx context.Context) ClientAddonsWamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsWamsOutput).ToClientAddonsWamsPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsWamsPtrInput is an input type that accepts ClientAddonsWamsArgs, ClientAddonsWamsPtr and ClientAddonsWamsPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsWamsPtrInput` via:
+//
+//	        ClientAddonsWamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsWamsPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsWamsPtrOutput() ClientAddonsWamsPtrOutput
+	ToClientAddonsWamsPtrOutputWithContext(context.Context) ClientAddonsWamsPtrOutput
+}
+
+type clientAddonsWamsPtrType ClientAddonsWamsArgs
+
+func ClientAddonsWamsPtr(v *ClientAddonsWamsArgs) ClientAddonsWamsPtrInput {
+	return (*clientAddonsWamsPtrType)(v)
+}
+
+func (*clientAddonsWamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsWams)(nil)).Elem()
+}
+
+func (i *clientAddonsWamsPtrType) ToClientAddonsWamsPtrOutput() ClientAddonsWamsPtrOutput {
+	return i.ToClientAddonsWamsPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsWamsPtrType) ToClientAddonsWamsPtrOutputWithContext(ctx context.Context) ClientAddonsWamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsWamsPtrOutput)
+}
+
+func (i *clientAddonsWamsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsWams] {
+	return pulumix.Output[*ClientAddonsWams]{
+		OutputState: i.ToClientAddonsWamsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsWamsOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsWamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsWams)(nil)).Elem()
+}
+
+func (o ClientAddonsWamsOutput) ToClientAddonsWamsOutput() ClientAddonsWamsOutput {
+	return o
+}
+
+func (o ClientAddonsWamsOutput) ToClientAddonsWamsOutputWithContext(ctx context.Context) ClientAddonsWamsOutput {
+	return o
+}
+
+func (o ClientAddonsWamsOutput) ToClientAddonsWamsPtrOutput() ClientAddonsWamsPtrOutput {
+	return o.ToClientAddonsWamsPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsWamsOutput) ToClientAddonsWamsPtrOutputWithContext(ctx context.Context) ClientAddonsWamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsWams) *ClientAddonsWams {
+		return &v
+	}).(ClientAddonsWamsPtrOutput)
+}
+
+func (o ClientAddonsWamsOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsWams] {
+	return pulumix.Output[ClientAddonsWams]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsWamsOutput) MasterKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsWams) *string { return v.MasterKey }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsWamsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsWamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsWams)(nil)).Elem()
+}
+
+func (o ClientAddonsWamsPtrOutput) ToClientAddonsWamsPtrOutput() ClientAddonsWamsPtrOutput {
+	return o
+}
+
+func (o ClientAddonsWamsPtrOutput) ToClientAddonsWamsPtrOutputWithContext(ctx context.Context) ClientAddonsWamsPtrOutput {
+	return o
+}
+
+func (o ClientAddonsWamsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsWams] {
+	return pulumix.Output[*ClientAddonsWams]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsWamsPtrOutput) Elem() ClientAddonsWamsOutput {
+	return o.ApplyT(func(v *ClientAddonsWams) ClientAddonsWams {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsWams
+		return ret
+	}).(ClientAddonsWamsOutput)
+}
+
+func (o ClientAddonsWamsPtrOutput) MasterKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsWams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MasterKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsWsfed struct {
+}
+
+// ClientAddonsWsfedInput is an input type that accepts ClientAddonsWsfedArgs and ClientAddonsWsfedOutput values.
+// You can construct a concrete instance of `ClientAddonsWsfedInput` via:
+//
+//	ClientAddonsWsfedArgs{...}
+type ClientAddonsWsfedInput interface {
+	pulumi.Input
+
+	ToClientAddonsWsfedOutput() ClientAddonsWsfedOutput
+	ToClientAddonsWsfedOutputWithContext(context.Context) ClientAddonsWsfedOutput
+}
+
+type ClientAddonsWsfedArgs struct {
+}
+
+func (ClientAddonsWsfedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsWsfed)(nil)).Elem()
+}
+
+func (i ClientAddonsWsfedArgs) ToClientAddonsWsfedOutput() ClientAddonsWsfedOutput {
+	return i.ToClientAddonsWsfedOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsWsfedArgs) ToClientAddonsWsfedOutputWithContext(ctx context.Context) ClientAddonsWsfedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsWsfedOutput)
+}
+
+func (i ClientAddonsWsfedArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsWsfed] {
+	return pulumix.Output[ClientAddonsWsfed]{
+		OutputState: i.ToClientAddonsWsfedOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsWsfedArgs) ToClientAddonsWsfedPtrOutput() ClientAddonsWsfedPtrOutput {
+	return i.ToClientAddonsWsfedPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsWsfedArgs) ToClientAddonsWsfedPtrOutputWithContext(ctx context.Context) ClientAddonsWsfedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsWsfedOutput).ToClientAddonsWsfedPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsWsfedPtrInput is an input type that accepts ClientAddonsWsfedArgs, ClientAddonsWsfedPtr and ClientAddonsWsfedPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsWsfedPtrInput` via:
+//
+//	        ClientAddonsWsfedArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsWsfedPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsWsfedPtrOutput() ClientAddonsWsfedPtrOutput
+	ToClientAddonsWsfedPtrOutputWithContext(context.Context) ClientAddonsWsfedPtrOutput
+}
+
+type clientAddonsWsfedPtrType ClientAddonsWsfedArgs
+
+func ClientAddonsWsfedPtr(v *ClientAddonsWsfedArgs) ClientAddonsWsfedPtrInput {
+	return (*clientAddonsWsfedPtrType)(v)
+}
+
+func (*clientAddonsWsfedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsWsfed)(nil)).Elem()
+}
+
+func (i *clientAddonsWsfedPtrType) ToClientAddonsWsfedPtrOutput() ClientAddonsWsfedPtrOutput {
+	return i.ToClientAddonsWsfedPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsWsfedPtrType) ToClientAddonsWsfedPtrOutputWithContext(ctx context.Context) ClientAddonsWsfedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsWsfedPtrOutput)
+}
+
+func (i *clientAddonsWsfedPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsWsfed] {
+	return pulumix.Output[*ClientAddonsWsfed]{
+		OutputState: i.ToClientAddonsWsfedPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsWsfedOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsWsfedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsWsfed)(nil)).Elem()
+}
+
+func (o ClientAddonsWsfedOutput) ToClientAddonsWsfedOutput() ClientAddonsWsfedOutput {
+	return o
+}
+
+func (o ClientAddonsWsfedOutput) ToClientAddonsWsfedOutputWithContext(ctx context.Context) ClientAddonsWsfedOutput {
+	return o
+}
+
+func (o ClientAddonsWsfedOutput) ToClientAddonsWsfedPtrOutput() ClientAddonsWsfedPtrOutput {
+	return o.ToClientAddonsWsfedPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsWsfedOutput) ToClientAddonsWsfedPtrOutputWithContext(ctx context.Context) ClientAddonsWsfedPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsWsfed) *ClientAddonsWsfed {
+		return &v
+	}).(ClientAddonsWsfedPtrOutput)
+}
+
+func (o ClientAddonsWsfedOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsWsfed] {
+	return pulumix.Output[ClientAddonsWsfed]{
+		OutputState: o.OutputState,
+	}
+}
+
+type ClientAddonsWsfedPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsWsfedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsWsfed)(nil)).Elem()
+}
+
+func (o ClientAddonsWsfedPtrOutput) ToClientAddonsWsfedPtrOutput() ClientAddonsWsfedPtrOutput {
+	return o
+}
+
+func (o ClientAddonsWsfedPtrOutput) ToClientAddonsWsfedPtrOutputWithContext(ctx context.Context) ClientAddonsWsfedPtrOutput {
+	return o
+}
+
+func (o ClientAddonsWsfedPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsWsfed] {
+	return pulumix.Output[*ClientAddonsWsfed]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsWsfedPtrOutput) Elem() ClientAddonsWsfedOutput {
+	return o.ApplyT(func(v *ClientAddonsWsfed) ClientAddonsWsfed {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsWsfed
+		return ret
+	}).(ClientAddonsWsfedOutput)
+}
+
+type ClientAddonsZendesk struct {
+	AccountName *string `pulumi:"accountName"`
+}
+
+// ClientAddonsZendeskInput is an input type that accepts ClientAddonsZendeskArgs and ClientAddonsZendeskOutput values.
+// You can construct a concrete instance of `ClientAddonsZendeskInput` via:
+//
+//	ClientAddonsZendeskArgs{...}
+type ClientAddonsZendeskInput interface {
+	pulumi.Input
+
+	ToClientAddonsZendeskOutput() ClientAddonsZendeskOutput
+	ToClientAddonsZendeskOutputWithContext(context.Context) ClientAddonsZendeskOutput
+}
+
+type ClientAddonsZendeskArgs struct {
+	AccountName pulumi.StringPtrInput `pulumi:"accountName"`
+}
+
+func (ClientAddonsZendeskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsZendesk)(nil)).Elem()
+}
+
+func (i ClientAddonsZendeskArgs) ToClientAddonsZendeskOutput() ClientAddonsZendeskOutput {
+	return i.ToClientAddonsZendeskOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsZendeskArgs) ToClientAddonsZendeskOutputWithContext(ctx context.Context) ClientAddonsZendeskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsZendeskOutput)
+}
+
+func (i ClientAddonsZendeskArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsZendesk] {
+	return pulumix.Output[ClientAddonsZendesk]{
+		OutputState: i.ToClientAddonsZendeskOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsZendeskArgs) ToClientAddonsZendeskPtrOutput() ClientAddonsZendeskPtrOutput {
+	return i.ToClientAddonsZendeskPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsZendeskArgs) ToClientAddonsZendeskPtrOutputWithContext(ctx context.Context) ClientAddonsZendeskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsZendeskOutput).ToClientAddonsZendeskPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsZendeskPtrInput is an input type that accepts ClientAddonsZendeskArgs, ClientAddonsZendeskPtr and ClientAddonsZendeskPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsZendeskPtrInput` via:
+//
+//	        ClientAddonsZendeskArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsZendeskPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsZendeskPtrOutput() ClientAddonsZendeskPtrOutput
+	ToClientAddonsZendeskPtrOutputWithContext(context.Context) ClientAddonsZendeskPtrOutput
+}
+
+type clientAddonsZendeskPtrType ClientAddonsZendeskArgs
+
+func ClientAddonsZendeskPtr(v *ClientAddonsZendeskArgs) ClientAddonsZendeskPtrInput {
+	return (*clientAddonsZendeskPtrType)(v)
+}
+
+func (*clientAddonsZendeskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsZendesk)(nil)).Elem()
+}
+
+func (i *clientAddonsZendeskPtrType) ToClientAddonsZendeskPtrOutput() ClientAddonsZendeskPtrOutput {
+	return i.ToClientAddonsZendeskPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsZendeskPtrType) ToClientAddonsZendeskPtrOutputWithContext(ctx context.Context) ClientAddonsZendeskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsZendeskPtrOutput)
+}
+
+func (i *clientAddonsZendeskPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsZendesk] {
+	return pulumix.Output[*ClientAddonsZendesk]{
+		OutputState: i.ToClientAddonsZendeskPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsZendeskOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsZendeskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsZendesk)(nil)).Elem()
+}
+
+func (o ClientAddonsZendeskOutput) ToClientAddonsZendeskOutput() ClientAddonsZendeskOutput {
+	return o
+}
+
+func (o ClientAddonsZendeskOutput) ToClientAddonsZendeskOutputWithContext(ctx context.Context) ClientAddonsZendeskOutput {
+	return o
+}
+
+func (o ClientAddonsZendeskOutput) ToClientAddonsZendeskPtrOutput() ClientAddonsZendeskPtrOutput {
+	return o.ToClientAddonsZendeskPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsZendeskOutput) ToClientAddonsZendeskPtrOutputWithContext(ctx context.Context) ClientAddonsZendeskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsZendesk) *ClientAddonsZendesk {
+		return &v
+	}).(ClientAddonsZendeskPtrOutput)
+}
+
+func (o ClientAddonsZendeskOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsZendesk] {
+	return pulumix.Output[ClientAddonsZendesk]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsZendeskOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsZendesk) *string { return v.AccountName }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsZendeskPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsZendeskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsZendesk)(nil)).Elem()
+}
+
+func (o ClientAddonsZendeskPtrOutput) ToClientAddonsZendeskPtrOutput() ClientAddonsZendeskPtrOutput {
+	return o
+}
+
+func (o ClientAddonsZendeskPtrOutput) ToClientAddonsZendeskPtrOutputWithContext(ctx context.Context) ClientAddonsZendeskPtrOutput {
+	return o
+}
+
+func (o ClientAddonsZendeskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsZendesk] {
+	return pulumix.Output[*ClientAddonsZendesk]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsZendeskPtrOutput) Elem() ClientAddonsZendeskOutput {
+	return o.ApplyT(func(v *ClientAddonsZendesk) ClientAddonsZendesk {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsZendesk
+		return ret
+	}).(ClientAddonsZendeskOutput)
+}
+
+func (o ClientAddonsZendeskPtrOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsZendesk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsZoom struct {
+	Account *string `pulumi:"account"`
+}
+
+// ClientAddonsZoomInput is an input type that accepts ClientAddonsZoomArgs and ClientAddonsZoomOutput values.
+// You can construct a concrete instance of `ClientAddonsZoomInput` via:
+//
+//	ClientAddonsZoomArgs{...}
+type ClientAddonsZoomInput interface {
+	pulumi.Input
+
+	ToClientAddonsZoomOutput() ClientAddonsZoomOutput
+	ToClientAddonsZoomOutputWithContext(context.Context) ClientAddonsZoomOutput
+}
+
+type ClientAddonsZoomArgs struct {
+	Account pulumi.StringPtrInput `pulumi:"account"`
+}
+
+func (ClientAddonsZoomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsZoom)(nil)).Elem()
+}
+
+func (i ClientAddonsZoomArgs) ToClientAddonsZoomOutput() ClientAddonsZoomOutput {
+	return i.ToClientAddonsZoomOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsZoomArgs) ToClientAddonsZoomOutputWithContext(ctx context.Context) ClientAddonsZoomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsZoomOutput)
+}
+
+func (i ClientAddonsZoomArgs) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsZoom] {
+	return pulumix.Output[ClientAddonsZoom]{
+		OutputState: i.ToClientAddonsZoomOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientAddonsZoomArgs) ToClientAddonsZoomPtrOutput() ClientAddonsZoomPtrOutput {
+	return i.ToClientAddonsZoomPtrOutputWithContext(context.Background())
+}
+
+func (i ClientAddonsZoomArgs) ToClientAddonsZoomPtrOutputWithContext(ctx context.Context) ClientAddonsZoomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsZoomOutput).ToClientAddonsZoomPtrOutputWithContext(ctx)
+}
+
+// ClientAddonsZoomPtrInput is an input type that accepts ClientAddonsZoomArgs, ClientAddonsZoomPtr and ClientAddonsZoomPtrOutput values.
+// You can construct a concrete instance of `ClientAddonsZoomPtrInput` via:
+//
+//	        ClientAddonsZoomArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientAddonsZoomPtrInput interface {
+	pulumi.Input
+
+	ToClientAddonsZoomPtrOutput() ClientAddonsZoomPtrOutput
+	ToClientAddonsZoomPtrOutputWithContext(context.Context) ClientAddonsZoomPtrOutput
+}
+
+type clientAddonsZoomPtrType ClientAddonsZoomArgs
+
+func ClientAddonsZoomPtr(v *ClientAddonsZoomArgs) ClientAddonsZoomPtrInput {
+	return (*clientAddonsZoomPtrType)(v)
+}
+
+func (*clientAddonsZoomPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsZoom)(nil)).Elem()
+}
+
+func (i *clientAddonsZoomPtrType) ToClientAddonsZoomPtrOutput() ClientAddonsZoomPtrOutput {
+	return i.ToClientAddonsZoomPtrOutputWithContext(context.Background())
+}
+
+func (i *clientAddonsZoomPtrType) ToClientAddonsZoomPtrOutputWithContext(ctx context.Context) ClientAddonsZoomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsZoomPtrOutput)
+}
+
+func (i *clientAddonsZoomPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsZoom] {
+	return pulumix.Output[*ClientAddonsZoom]{
+		OutputState: i.ToClientAddonsZoomPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClientAddonsZoomOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsZoomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientAddonsZoom)(nil)).Elem()
+}
+
+func (o ClientAddonsZoomOutput) ToClientAddonsZoomOutput() ClientAddonsZoomOutput {
+	return o
+}
+
+func (o ClientAddonsZoomOutput) ToClientAddonsZoomOutputWithContext(ctx context.Context) ClientAddonsZoomOutput {
+	return o
+}
+
+func (o ClientAddonsZoomOutput) ToClientAddonsZoomPtrOutput() ClientAddonsZoomPtrOutput {
+	return o.ToClientAddonsZoomPtrOutputWithContext(context.Background())
+}
+
+func (o ClientAddonsZoomOutput) ToClientAddonsZoomPtrOutputWithContext(ctx context.Context) ClientAddonsZoomPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsZoom) *ClientAddonsZoom {
+		return &v
+	}).(ClientAddonsZoomPtrOutput)
+}
+
+func (o ClientAddonsZoomOutput) ToOutput(ctx context.Context) pulumix.Output[ClientAddonsZoom] {
+	return pulumix.Output[ClientAddonsZoom]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsZoomOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsZoom) *string { return v.Account }).(pulumi.StringPtrOutput)
+}
+
+type ClientAddonsZoomPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientAddonsZoomPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientAddonsZoom)(nil)).Elem()
+}
+
+func (o ClientAddonsZoomPtrOutput) ToClientAddonsZoomPtrOutput() ClientAddonsZoomPtrOutput {
+	return o
+}
+
+func (o ClientAddonsZoomPtrOutput) ToClientAddonsZoomPtrOutputWithContext(ctx context.Context) ClientAddonsZoomPtrOutput {
+	return o
+}
+
+func (o ClientAddonsZoomPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientAddonsZoom] {
+	return pulumix.Output[*ClientAddonsZoom]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientAddonsZoomPtrOutput) Elem() ClientAddonsZoomOutput {
+	return o.ApplyT(func(v *ClientAddonsZoom) ClientAddonsZoom {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsZoom
+		return ret
+	}).(ClientAddonsZoomOutput)
+}
+
+func (o ClientAddonsZoomPtrOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsZoom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Account
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClientCredentialsPrivateKeyJwt struct {
@@ -7629,6 +12876,8 @@ type ConnectionOptions struct {
 	ApiEnableUsers *bool `pulumi:"apiEnableUsers"`
 	// App ID.
 	AppId *string `pulumi:"appId"`
+	// OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+	AttributeMap *ConnectionOptionsAttributeMap `pulumi:"attributeMap"`
 	// Query string parameters to be included as part of the generated passwordless email link.
 	AuthParams map[string]string `pulumi:"authParams"`
 	// Authorization endpoint.
@@ -7643,10 +12892,14 @@ type ConnectionOptions struct {
 	CommunityBaseUrl *string `pulumi:"communityBaseUrl"`
 	// A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
 	Configuration map[string]interface{} `pulumi:"configuration"`
+	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+	ConnectionSettings *ConnectionOptionsConnectionSettings `pulumi:"connectionSettings"`
 	// A map of scripts used to integrate with a custom database.
 	CustomScripts map[string]string `pulumi:"customScripts"`
 	// When enabled, additional debug information will be generated.
 	Debug *bool `pulumi:"debug"`
+	// The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+	DecryptionKey *ConnectionOptionsDecryptionKey `pulumi:"decryptionKey"`
 	// Sign Request Algorithm Digest.
 	DigestAlgorithm *string `pulumi:"digestAlgorithm"`
 	// Indicates whether to disable the cache or not.
@@ -7697,13 +12950,15 @@ type ConnectionOptions struct {
 	JwksUri *string `pulumi:"jwksUri"`
 	// Apple Key ID.
 	KeyId *string `pulumi:"keyId"`
+	// By default Auth0 maps `userId` to `email`. Enabling this setting changes the behavior to map `userId` to 'id' instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+	MapUserIdToId *bool `pulumi:"mapUserIdToId"`
 	// Maximum number of groups to retrieve.
 	MaxGroupsToRetrieve *string `pulumi:"maxGroupsToRetrieve"`
 	// SID for Copilot. Used when SMS Source is Copilot.
 	MessagingServiceSid *string `pulumi:"messagingServiceSid"`
 	// The URL of the SAML metadata document.
 	MetadataUrl *string `pulumi:"metadataUrl"`
-	// The XML content for the SAML metadata document.
+	// The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
 	MetadataXml *string `pulumi:"metadataXml"`
 	// Configuration options for multifactor authentication.
 	Mfa *ConnectionOptionsMfa `pulumi:"mfa"`
@@ -7815,6 +13070,8 @@ type ConnectionOptionsArgs struct {
 	ApiEnableUsers pulumi.BoolPtrInput `pulumi:"apiEnableUsers"`
 	// App ID.
 	AppId pulumi.StringPtrInput `pulumi:"appId"`
+	// OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+	AttributeMap ConnectionOptionsAttributeMapPtrInput `pulumi:"attributeMap"`
 	// Query string parameters to be included as part of the generated passwordless email link.
 	AuthParams pulumi.StringMapInput `pulumi:"authParams"`
 	// Authorization endpoint.
@@ -7829,10 +13086,14 @@ type ConnectionOptionsArgs struct {
 	CommunityBaseUrl pulumi.StringPtrInput `pulumi:"communityBaseUrl"`
 	// A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
 	Configuration pulumi.MapInput `pulumi:"configuration"`
+	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+	ConnectionSettings ConnectionOptionsConnectionSettingsPtrInput `pulumi:"connectionSettings"`
 	// A map of scripts used to integrate with a custom database.
 	CustomScripts pulumi.StringMapInput `pulumi:"customScripts"`
 	// When enabled, additional debug information will be generated.
 	Debug pulumi.BoolPtrInput `pulumi:"debug"`
+	// The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+	DecryptionKey ConnectionOptionsDecryptionKeyPtrInput `pulumi:"decryptionKey"`
 	// Sign Request Algorithm Digest.
 	DigestAlgorithm pulumi.StringPtrInput `pulumi:"digestAlgorithm"`
 	// Indicates whether to disable the cache or not.
@@ -7883,13 +13144,15 @@ type ConnectionOptionsArgs struct {
 	JwksUri pulumi.StringPtrInput `pulumi:"jwksUri"`
 	// Apple Key ID.
 	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
+	// By default Auth0 maps `userId` to `email`. Enabling this setting changes the behavior to map `userId` to 'id' instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+	MapUserIdToId pulumi.BoolPtrInput `pulumi:"mapUserIdToId"`
 	// Maximum number of groups to retrieve.
 	MaxGroupsToRetrieve pulumi.StringPtrInput `pulumi:"maxGroupsToRetrieve"`
 	// SID for Copilot. Used when SMS Source is Copilot.
 	MessagingServiceSid pulumi.StringPtrInput `pulumi:"messagingServiceSid"`
 	// The URL of the SAML metadata document.
 	MetadataUrl pulumi.StringPtrInput `pulumi:"metadataUrl"`
-	// The XML content for the SAML metadata document.
+	// The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
 	MetadataXml pulumi.StringPtrInput `pulumi:"metadataXml"`
 	// Configuration options for multifactor authentication.
 	Mfa ConnectionOptionsMfaPtrInput `pulumi:"mfa"`
@@ -8096,6 +13359,11 @@ func (o ConnectionOptionsOutput) AppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.AppId }).(pulumi.StringPtrOutput)
 }
 
+// OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+func (o ConnectionOptionsOutput) AttributeMap() ConnectionOptionsAttributeMapPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsAttributeMap { return v.AttributeMap }).(ConnectionOptionsAttributeMapPtrOutput)
+}
+
 // Query string parameters to be included as part of the generated passwordless email link.
 func (o ConnectionOptionsOutput) AuthParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.AuthParams }).(pulumi.StringMapOutput)
@@ -8131,6 +13399,11 @@ func (o ConnectionOptionsOutput) Configuration() pulumi.MapOutput {
 	return o.ApplyT(func(v ConnectionOptions) map[string]interface{} { return v.Configuration }).(pulumi.MapOutput)
 }
 
+// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+func (o ConnectionOptionsOutput) ConnectionSettings() ConnectionOptionsConnectionSettingsPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsConnectionSettings { return v.ConnectionSettings }).(ConnectionOptionsConnectionSettingsPtrOutput)
+}
+
 // A map of scripts used to integrate with a custom database.
 func (o ConnectionOptionsOutput) CustomScripts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.CustomScripts }).(pulumi.StringMapOutput)
@@ -8139,6 +13412,11 @@ func (o ConnectionOptionsOutput) CustomScripts() pulumi.StringMapOutput {
 // When enabled, additional debug information will be generated.
 func (o ConnectionOptionsOutput) Debug() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.Debug }).(pulumi.BoolPtrOutput)
+}
+
+// The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+func (o ConnectionOptionsOutput) DecryptionKey() ConnectionOptionsDecryptionKeyPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsDecryptionKey { return v.DecryptionKey }).(ConnectionOptionsDecryptionKeyPtrOutput)
 }
 
 // Sign Request Algorithm Digest.
@@ -8266,6 +13544,11 @@ func (o ConnectionOptionsOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.KeyId }).(pulumi.StringPtrOutput)
 }
 
+// By default Auth0 maps `userId` to `email`. Enabling this setting changes the behavior to map `userId` to 'id' instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+func (o ConnectionOptionsOutput) MapUserIdToId() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *bool { return v.MapUserIdToId }).(pulumi.BoolPtrOutput)
+}
+
 // Maximum number of groups to retrieve.
 func (o ConnectionOptionsOutput) MaxGroupsToRetrieve() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.MaxGroupsToRetrieve }).(pulumi.StringPtrOutput)
@@ -8281,7 +13564,7 @@ func (o ConnectionOptionsOutput) MetadataUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.MetadataUrl }).(pulumi.StringPtrOutput)
 }
 
-// The XML content for the SAML metadata document.
+// The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
 func (o ConnectionOptionsOutput) MetadataXml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.MetadataXml }).(pulumi.StringPtrOutput)
 }
@@ -8578,6 +13861,16 @@ func (o ConnectionOptionsPtrOutput) AppId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+func (o ConnectionOptionsPtrOutput) AttributeMap() ConnectionOptionsAttributeMapPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsAttributeMap {
+		if v == nil {
+			return nil
+		}
+		return v.AttributeMap
+	}).(ConnectionOptionsAttributeMapPtrOutput)
+}
+
 // Query string parameters to be included as part of the generated passwordless email link.
 func (o ConnectionOptionsPtrOutput) AuthParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionOptions) map[string]string {
@@ -8648,6 +13941,16 @@ func (o ConnectionOptionsPtrOutput) Configuration() pulumi.MapOutput {
 	}).(pulumi.MapOutput)
 }
 
+// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+func (o ConnectionOptionsPtrOutput) ConnectionSettings() ConnectionOptionsConnectionSettingsPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsConnectionSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionSettings
+	}).(ConnectionOptionsConnectionSettingsPtrOutput)
+}
+
 // A map of scripts used to integrate with a custom database.
 func (o ConnectionOptionsPtrOutput) CustomScripts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionOptions) map[string]string {
@@ -8666,6 +13969,16 @@ func (o ConnectionOptionsPtrOutput) Debug() pulumi.BoolPtrOutput {
 		}
 		return v.Debug
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+func (o ConnectionOptionsPtrOutput) DecryptionKey() ConnectionOptionsDecryptionKeyPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsDecryptionKey {
+		if v == nil {
+			return nil
+		}
+		return v.DecryptionKey
+	}).(ConnectionOptionsDecryptionKeyPtrOutput)
 }
 
 // Sign Request Algorithm Digest.
@@ -8918,6 +14231,16 @@ func (o ConnectionOptionsPtrOutput) KeyId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// By default Auth0 maps `userId` to `email`. Enabling this setting changes the behavior to map `userId` to 'id' instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+func (o ConnectionOptionsPtrOutput) MapUserIdToId() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MapUserIdToId
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Maximum number of groups to retrieve.
 func (o ConnectionOptionsPtrOutput) MaxGroupsToRetrieve() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
@@ -8948,7 +14271,7 @@ func (o ConnectionOptionsPtrOutput) MetadataUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The XML content for the SAML metadata document.
+// The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
 func (o ConnectionOptionsPtrOutput) MetadataXml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -9395,6 +14718,522 @@ func (o ConnectionOptionsPtrOutput) WaadProtocol() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.WaadProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionOptionsAttributeMap struct {
+	Attributes    *string `pulumi:"attributes"`
+	MappingMode   string  `pulumi:"mappingMode"`
+	UserinfoScope *string `pulumi:"userinfoScope"`
+}
+
+// ConnectionOptionsAttributeMapInput is an input type that accepts ConnectionOptionsAttributeMap and ConnectionOptionsAttributeMapOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeMapInput` via:
+//
+//	ConnectionOptionsAttributeMap{ "key": ConnectionOptionsAttributeArgs{...} }
+type ConnectionOptionsAttributeMapInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeMapOutput() ConnectionOptionsAttributeMapOutput
+	ToConnectionOptionsAttributeMapOutputWithContext(context.Context) ConnectionOptionsAttributeMapOutput
+}
+
+type ConnectionOptionsAttributeMapArgs struct {
+	Attributes    pulumi.StringPtrInput `pulumi:"attributes"`
+	MappingMode   pulumi.StringInput    `pulumi:"mappingMode"`
+	UserinfoScope pulumi.StringPtrInput `pulumi:"userinfoScope"`
+}
+
+func (ConnectionOptionsAttributeMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeMap)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeMapArgs) ToConnectionOptionsAttributeMapOutput() ConnectionOptionsAttributeMapOutput {
+	return i.ToConnectionOptionsAttributeMapOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeMapArgs) ToConnectionOptionsAttributeMapOutputWithContext(ctx context.Context) ConnectionOptionsAttributeMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeMapOutput)
+}
+
+func (i ConnectionOptionsAttributeMapArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionOptionsAttributeMap] {
+	return pulumix.Output[ConnectionOptionsAttributeMap]{
+		OutputState: i.ToConnectionOptionsAttributeMapOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ConnectionOptionsAttributeMapArgs) ToConnectionOptionsAttributeMapPtrOutput() ConnectionOptionsAttributeMapPtrOutput {
+	return i.ToConnectionOptionsAttributeMapPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeMapArgs) ToConnectionOptionsAttributeMapPtrOutputWithContext(ctx context.Context) ConnectionOptionsAttributeMapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeMapOutput).ToConnectionOptionsAttributeMapPtrOutputWithContext(ctx)
+}
+
+// ConnectionOptionsAttributeMapPtrInput is an input type that accepts ConnectionOptionsAttributeMapArgs, ConnectionOptionsAttributeMapPtr and ConnectionOptionsAttributeMapPtrOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeMapPtrInput` via:
+//
+//	        ConnectionOptionsAttributeMapArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionOptionsAttributeMapPtrInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeMapPtrOutput() ConnectionOptionsAttributeMapPtrOutput
+	ToConnectionOptionsAttributeMapPtrOutputWithContext(context.Context) ConnectionOptionsAttributeMapPtrOutput
+}
+
+type connectionOptionsAttributeMapPtrType ConnectionOptionsAttributeMapArgs
+
+func ConnectionOptionsAttributeMapPtr(v *ConnectionOptionsAttributeMapArgs) ConnectionOptionsAttributeMapPtrInput {
+	return (*connectionOptionsAttributeMapPtrType)(v)
+}
+
+func (*connectionOptionsAttributeMapPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsAttributeMap)(nil)).Elem()
+}
+
+func (i *connectionOptionsAttributeMapPtrType) ToConnectionOptionsAttributeMapPtrOutput() ConnectionOptionsAttributeMapPtrOutput {
+	return i.ToConnectionOptionsAttributeMapPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOptionsAttributeMapPtrType) ToConnectionOptionsAttributeMapPtrOutputWithContext(ctx context.Context) ConnectionOptionsAttributeMapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeMapPtrOutput)
+}
+
+func (i *connectionOptionsAttributeMapPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionOptionsAttributeMap] {
+	return pulumix.Output[*ConnectionOptionsAttributeMap]{
+		OutputState: i.ToConnectionOptionsAttributeMapPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConnectionOptionsAttributeMapOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeMap)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeMapOutput) ToConnectionOptionsAttributeMapOutput() ConnectionOptionsAttributeMapOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeMapOutput) ToConnectionOptionsAttributeMapOutputWithContext(ctx context.Context) ConnectionOptionsAttributeMapOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeMapOutput) ToConnectionOptionsAttributeMapPtrOutput() ConnectionOptionsAttributeMapPtrOutput {
+	return o.ToConnectionOptionsAttributeMapPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOptionsAttributeMapOutput) ToConnectionOptionsAttributeMapPtrOutputWithContext(ctx context.Context) ConnectionOptionsAttributeMapPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsAttributeMap) *ConnectionOptionsAttributeMap {
+		return &v
+	}).(ConnectionOptionsAttributeMapPtrOutput)
+}
+
+func (o ConnectionOptionsAttributeMapOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionOptionsAttributeMap] {
+	return pulumix.Output[ConnectionOptionsAttributeMap]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectionOptionsAttributeMapOutput) Attributes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeMap) *string { return v.Attributes }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsAttributeMapOutput) MappingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeMap) string { return v.MappingMode }).(pulumi.StringOutput)
+}
+
+func (o ConnectionOptionsAttributeMapOutput) UserinfoScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeMap) *string { return v.UserinfoScope }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionOptionsAttributeMapPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeMapPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsAttributeMap)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeMapPtrOutput) ToConnectionOptionsAttributeMapPtrOutput() ConnectionOptionsAttributeMapPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeMapPtrOutput) ToConnectionOptionsAttributeMapPtrOutputWithContext(ctx context.Context) ConnectionOptionsAttributeMapPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeMapPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionOptionsAttributeMap] {
+	return pulumix.Output[*ConnectionOptionsAttributeMap]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectionOptionsAttributeMapPtrOutput) Elem() ConnectionOptionsAttributeMapOutput {
+	return o.ApplyT(func(v *ConnectionOptionsAttributeMap) ConnectionOptionsAttributeMap {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsAttributeMap
+		return ret
+	}).(ConnectionOptionsAttributeMapOutput)
+}
+
+func (o ConnectionOptionsAttributeMapPtrOutput) Attributes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsAttributeMap) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Attributes
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsAttributeMapPtrOutput) MappingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsAttributeMap) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MappingMode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsAttributeMapPtrOutput) UserinfoScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsAttributeMap) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserinfoScope
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionOptionsConnectionSettings struct {
+	Pkce string `pulumi:"pkce"`
+}
+
+// ConnectionOptionsConnectionSettingsInput is an input type that accepts ConnectionOptionsConnectionSettingsArgs and ConnectionOptionsConnectionSettingsOutput values.
+// You can construct a concrete instance of `ConnectionOptionsConnectionSettingsInput` via:
+//
+//	ConnectionOptionsConnectionSettingsArgs{...}
+type ConnectionOptionsConnectionSettingsInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsConnectionSettingsOutput() ConnectionOptionsConnectionSettingsOutput
+	ToConnectionOptionsConnectionSettingsOutputWithContext(context.Context) ConnectionOptionsConnectionSettingsOutput
+}
+
+type ConnectionOptionsConnectionSettingsArgs struct {
+	Pkce pulumi.StringInput `pulumi:"pkce"`
+}
+
+func (ConnectionOptionsConnectionSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsConnectionSettings)(nil)).Elem()
+}
+
+func (i ConnectionOptionsConnectionSettingsArgs) ToConnectionOptionsConnectionSettingsOutput() ConnectionOptionsConnectionSettingsOutput {
+	return i.ToConnectionOptionsConnectionSettingsOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsConnectionSettingsArgs) ToConnectionOptionsConnectionSettingsOutputWithContext(ctx context.Context) ConnectionOptionsConnectionSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsConnectionSettingsOutput)
+}
+
+func (i ConnectionOptionsConnectionSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionOptionsConnectionSettings] {
+	return pulumix.Output[ConnectionOptionsConnectionSettings]{
+		OutputState: i.ToConnectionOptionsConnectionSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ConnectionOptionsConnectionSettingsArgs) ToConnectionOptionsConnectionSettingsPtrOutput() ConnectionOptionsConnectionSettingsPtrOutput {
+	return i.ToConnectionOptionsConnectionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsConnectionSettingsArgs) ToConnectionOptionsConnectionSettingsPtrOutputWithContext(ctx context.Context) ConnectionOptionsConnectionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsConnectionSettingsOutput).ToConnectionOptionsConnectionSettingsPtrOutputWithContext(ctx)
+}
+
+// ConnectionOptionsConnectionSettingsPtrInput is an input type that accepts ConnectionOptionsConnectionSettingsArgs, ConnectionOptionsConnectionSettingsPtr and ConnectionOptionsConnectionSettingsPtrOutput values.
+// You can construct a concrete instance of `ConnectionOptionsConnectionSettingsPtrInput` via:
+//
+//	        ConnectionOptionsConnectionSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionOptionsConnectionSettingsPtrInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsConnectionSettingsPtrOutput() ConnectionOptionsConnectionSettingsPtrOutput
+	ToConnectionOptionsConnectionSettingsPtrOutputWithContext(context.Context) ConnectionOptionsConnectionSettingsPtrOutput
+}
+
+type connectionOptionsConnectionSettingsPtrType ConnectionOptionsConnectionSettingsArgs
+
+func ConnectionOptionsConnectionSettingsPtr(v *ConnectionOptionsConnectionSettingsArgs) ConnectionOptionsConnectionSettingsPtrInput {
+	return (*connectionOptionsConnectionSettingsPtrType)(v)
+}
+
+func (*connectionOptionsConnectionSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsConnectionSettings)(nil)).Elem()
+}
+
+func (i *connectionOptionsConnectionSettingsPtrType) ToConnectionOptionsConnectionSettingsPtrOutput() ConnectionOptionsConnectionSettingsPtrOutput {
+	return i.ToConnectionOptionsConnectionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOptionsConnectionSettingsPtrType) ToConnectionOptionsConnectionSettingsPtrOutputWithContext(ctx context.Context) ConnectionOptionsConnectionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsConnectionSettingsPtrOutput)
+}
+
+func (i *connectionOptionsConnectionSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionOptionsConnectionSettings] {
+	return pulumix.Output[*ConnectionOptionsConnectionSettings]{
+		OutputState: i.ToConnectionOptionsConnectionSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConnectionOptionsConnectionSettingsOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsConnectionSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsConnectionSettings)(nil)).Elem()
+}
+
+func (o ConnectionOptionsConnectionSettingsOutput) ToConnectionOptionsConnectionSettingsOutput() ConnectionOptionsConnectionSettingsOutput {
+	return o
+}
+
+func (o ConnectionOptionsConnectionSettingsOutput) ToConnectionOptionsConnectionSettingsOutputWithContext(ctx context.Context) ConnectionOptionsConnectionSettingsOutput {
+	return o
+}
+
+func (o ConnectionOptionsConnectionSettingsOutput) ToConnectionOptionsConnectionSettingsPtrOutput() ConnectionOptionsConnectionSettingsPtrOutput {
+	return o.ToConnectionOptionsConnectionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOptionsConnectionSettingsOutput) ToConnectionOptionsConnectionSettingsPtrOutputWithContext(ctx context.Context) ConnectionOptionsConnectionSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsConnectionSettings) *ConnectionOptionsConnectionSettings {
+		return &v
+	}).(ConnectionOptionsConnectionSettingsPtrOutput)
+}
+
+func (o ConnectionOptionsConnectionSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionOptionsConnectionSettings] {
+	return pulumix.Output[ConnectionOptionsConnectionSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectionOptionsConnectionSettingsOutput) Pkce() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionOptionsConnectionSettings) string { return v.Pkce }).(pulumi.StringOutput)
+}
+
+type ConnectionOptionsConnectionSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsConnectionSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsConnectionSettings)(nil)).Elem()
+}
+
+func (o ConnectionOptionsConnectionSettingsPtrOutput) ToConnectionOptionsConnectionSettingsPtrOutput() ConnectionOptionsConnectionSettingsPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsConnectionSettingsPtrOutput) ToConnectionOptionsConnectionSettingsPtrOutputWithContext(ctx context.Context) ConnectionOptionsConnectionSettingsPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsConnectionSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionOptionsConnectionSettings] {
+	return pulumix.Output[*ConnectionOptionsConnectionSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectionOptionsConnectionSettingsPtrOutput) Elem() ConnectionOptionsConnectionSettingsOutput {
+	return o.ApplyT(func(v *ConnectionOptionsConnectionSettings) ConnectionOptionsConnectionSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsConnectionSettings
+		return ret
+	}).(ConnectionOptionsConnectionSettingsOutput)
+}
+
+func (o ConnectionOptionsConnectionSettingsPtrOutput) Pkce() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsConnectionSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Pkce
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionOptionsDecryptionKey struct {
+	Cert string `pulumi:"cert"`
+	Key  string `pulumi:"key"`
+}
+
+// ConnectionOptionsDecryptionKeyInput is an input type that accepts ConnectionOptionsDecryptionKeyArgs and ConnectionOptionsDecryptionKeyOutput values.
+// You can construct a concrete instance of `ConnectionOptionsDecryptionKeyInput` via:
+//
+//	ConnectionOptionsDecryptionKeyArgs{...}
+type ConnectionOptionsDecryptionKeyInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsDecryptionKeyOutput() ConnectionOptionsDecryptionKeyOutput
+	ToConnectionOptionsDecryptionKeyOutputWithContext(context.Context) ConnectionOptionsDecryptionKeyOutput
+}
+
+type ConnectionOptionsDecryptionKeyArgs struct {
+	Cert pulumi.StringInput `pulumi:"cert"`
+	Key  pulumi.StringInput `pulumi:"key"`
+}
+
+func (ConnectionOptionsDecryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsDecryptionKey)(nil)).Elem()
+}
+
+func (i ConnectionOptionsDecryptionKeyArgs) ToConnectionOptionsDecryptionKeyOutput() ConnectionOptionsDecryptionKeyOutput {
+	return i.ToConnectionOptionsDecryptionKeyOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsDecryptionKeyArgs) ToConnectionOptionsDecryptionKeyOutputWithContext(ctx context.Context) ConnectionOptionsDecryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsDecryptionKeyOutput)
+}
+
+func (i ConnectionOptionsDecryptionKeyArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionOptionsDecryptionKey] {
+	return pulumix.Output[ConnectionOptionsDecryptionKey]{
+		OutputState: i.ToConnectionOptionsDecryptionKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ConnectionOptionsDecryptionKeyArgs) ToConnectionOptionsDecryptionKeyPtrOutput() ConnectionOptionsDecryptionKeyPtrOutput {
+	return i.ToConnectionOptionsDecryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsDecryptionKeyArgs) ToConnectionOptionsDecryptionKeyPtrOutputWithContext(ctx context.Context) ConnectionOptionsDecryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsDecryptionKeyOutput).ToConnectionOptionsDecryptionKeyPtrOutputWithContext(ctx)
+}
+
+// ConnectionOptionsDecryptionKeyPtrInput is an input type that accepts ConnectionOptionsDecryptionKeyArgs, ConnectionOptionsDecryptionKeyPtr and ConnectionOptionsDecryptionKeyPtrOutput values.
+// You can construct a concrete instance of `ConnectionOptionsDecryptionKeyPtrInput` via:
+//
+//	        ConnectionOptionsDecryptionKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionOptionsDecryptionKeyPtrInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsDecryptionKeyPtrOutput() ConnectionOptionsDecryptionKeyPtrOutput
+	ToConnectionOptionsDecryptionKeyPtrOutputWithContext(context.Context) ConnectionOptionsDecryptionKeyPtrOutput
+}
+
+type connectionOptionsDecryptionKeyPtrType ConnectionOptionsDecryptionKeyArgs
+
+func ConnectionOptionsDecryptionKeyPtr(v *ConnectionOptionsDecryptionKeyArgs) ConnectionOptionsDecryptionKeyPtrInput {
+	return (*connectionOptionsDecryptionKeyPtrType)(v)
+}
+
+func (*connectionOptionsDecryptionKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsDecryptionKey)(nil)).Elem()
+}
+
+func (i *connectionOptionsDecryptionKeyPtrType) ToConnectionOptionsDecryptionKeyPtrOutput() ConnectionOptionsDecryptionKeyPtrOutput {
+	return i.ToConnectionOptionsDecryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOptionsDecryptionKeyPtrType) ToConnectionOptionsDecryptionKeyPtrOutputWithContext(ctx context.Context) ConnectionOptionsDecryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsDecryptionKeyPtrOutput)
+}
+
+func (i *connectionOptionsDecryptionKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionOptionsDecryptionKey] {
+	return pulumix.Output[*ConnectionOptionsDecryptionKey]{
+		OutputState: i.ToConnectionOptionsDecryptionKeyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConnectionOptionsDecryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsDecryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsDecryptionKey)(nil)).Elem()
+}
+
+func (o ConnectionOptionsDecryptionKeyOutput) ToConnectionOptionsDecryptionKeyOutput() ConnectionOptionsDecryptionKeyOutput {
+	return o
+}
+
+func (o ConnectionOptionsDecryptionKeyOutput) ToConnectionOptionsDecryptionKeyOutputWithContext(ctx context.Context) ConnectionOptionsDecryptionKeyOutput {
+	return o
+}
+
+func (o ConnectionOptionsDecryptionKeyOutput) ToConnectionOptionsDecryptionKeyPtrOutput() ConnectionOptionsDecryptionKeyPtrOutput {
+	return o.ToConnectionOptionsDecryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOptionsDecryptionKeyOutput) ToConnectionOptionsDecryptionKeyPtrOutputWithContext(ctx context.Context) ConnectionOptionsDecryptionKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsDecryptionKey) *ConnectionOptionsDecryptionKey {
+		return &v
+	}).(ConnectionOptionsDecryptionKeyPtrOutput)
+}
+
+func (o ConnectionOptionsDecryptionKeyOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionOptionsDecryptionKey] {
+	return pulumix.Output[ConnectionOptionsDecryptionKey]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectionOptionsDecryptionKeyOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionOptionsDecryptionKey) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+func (o ConnectionOptionsDecryptionKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionOptionsDecryptionKey) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type ConnectionOptionsDecryptionKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsDecryptionKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsDecryptionKey)(nil)).Elem()
+}
+
+func (o ConnectionOptionsDecryptionKeyPtrOutput) ToConnectionOptionsDecryptionKeyPtrOutput() ConnectionOptionsDecryptionKeyPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsDecryptionKeyPtrOutput) ToConnectionOptionsDecryptionKeyPtrOutputWithContext(ctx context.Context) ConnectionOptionsDecryptionKeyPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsDecryptionKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionOptionsDecryptionKey] {
+	return pulumix.Output[*ConnectionOptionsDecryptionKey]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectionOptionsDecryptionKeyPtrOutput) Elem() ConnectionOptionsDecryptionKeyOutput {
+	return o.ApplyT(func(v *ConnectionOptionsDecryptionKey) ConnectionOptionsDecryptionKey {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsDecryptionKey
+		return ret
+	}).(ConnectionOptionsDecryptionKeyOutput)
+}
+
+func (o ConnectionOptionsDecryptionKeyPtrOutput) Cert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsDecryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cert
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsDecryptionKeyPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsDecryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11375,17 +17214,21 @@ func (o CustomDomainVerificationTypeArrayOutput) Index(i pulumi.IntInput) Custom
 	}).(CustomDomainVerificationTypeOutput)
 }
 
-type EmailCredentials struct {
+type EmailProviderCredentials struct {
 	// AWS Access Key ID. Used only for AWS.
 	AccessKeyId *string `pulumi:"accessKeyId"`
 	// API Key for your email service. Will always be encrypted in our database.
 	ApiKey *string `pulumi:"apiKey"`
-	// API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
-	//
-	// Deprecated: This field is not accepted by the API any more so it will be removed soon.
-	ApiUser *string `pulumi:"apiUser"`
+	// Azure Communication Services Connection String.
+	AzureCsConnectionString *string `pulumi:"azureCsConnectionString"`
 	// Domain name.
 	Domain *string `pulumi:"domain"`
+	// Microsoft 365 Client ID.
+	Ms365ClientId *string `pulumi:"ms365ClientId"`
+	// Microsoft 365 Client Secret.
+	Ms365ClientSecret *string `pulumi:"ms365ClientSecret"`
+	// Microsoft 365 Tenant ID.
+	Ms365TenantId *string `pulumi:"ms365TenantId"`
 	// Default region. Used only for AWS, Mailgun, and SparkPost.
 	Region *string `pulumi:"region"`
 	// AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
@@ -11400,28 +17243,32 @@ type EmailCredentials struct {
 	SmtpUser *string `pulumi:"smtpUser"`
 }
 
-// EmailCredentialsInput is an input type that accepts EmailCredentialsArgs and EmailCredentialsOutput values.
-// You can construct a concrete instance of `EmailCredentialsInput` via:
+// EmailProviderCredentialsInput is an input type that accepts EmailProviderCredentialsArgs and EmailProviderCredentialsOutput values.
+// You can construct a concrete instance of `EmailProviderCredentialsInput` via:
 //
-//	EmailCredentialsArgs{...}
-type EmailCredentialsInput interface {
+//	EmailProviderCredentialsArgs{...}
+type EmailProviderCredentialsInput interface {
 	pulumi.Input
 
-	ToEmailCredentialsOutput() EmailCredentialsOutput
-	ToEmailCredentialsOutputWithContext(context.Context) EmailCredentialsOutput
+	ToEmailProviderCredentialsOutput() EmailProviderCredentialsOutput
+	ToEmailProviderCredentialsOutputWithContext(context.Context) EmailProviderCredentialsOutput
 }
 
-type EmailCredentialsArgs struct {
+type EmailProviderCredentialsArgs struct {
 	// AWS Access Key ID. Used only for AWS.
 	AccessKeyId pulumi.StringPtrInput `pulumi:"accessKeyId"`
 	// API Key for your email service. Will always be encrypted in our database.
 	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
-	// API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
-	//
-	// Deprecated: This field is not accepted by the API any more so it will be removed soon.
-	ApiUser pulumi.StringPtrInput `pulumi:"apiUser"`
+	// Azure Communication Services Connection String.
+	AzureCsConnectionString pulumi.StringPtrInput `pulumi:"azureCsConnectionString"`
 	// Domain name.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// Microsoft 365 Client ID.
+	Ms365ClientId pulumi.StringPtrInput `pulumi:"ms365ClientId"`
+	// Microsoft 365 Client Secret.
+	Ms365ClientSecret pulumi.StringPtrInput `pulumi:"ms365ClientSecret"`
+	// Microsoft 365 Tenant ID.
+	Ms365TenantId pulumi.StringPtrInput `pulumi:"ms365TenantId"`
 	// Default region. Used only for AWS, Mailgun, and SparkPost.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
@@ -11436,186 +17283,199 @@ type EmailCredentialsArgs struct {
 	SmtpUser pulumi.StringPtrInput `pulumi:"smtpUser"`
 }
 
-func (EmailCredentialsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailCredentials)(nil)).Elem()
+func (EmailProviderCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailProviderCredentials)(nil)).Elem()
 }
 
-func (i EmailCredentialsArgs) ToEmailCredentialsOutput() EmailCredentialsOutput {
-	return i.ToEmailCredentialsOutputWithContext(context.Background())
+func (i EmailProviderCredentialsArgs) ToEmailProviderCredentialsOutput() EmailProviderCredentialsOutput {
+	return i.ToEmailProviderCredentialsOutputWithContext(context.Background())
 }
 
-func (i EmailCredentialsArgs) ToEmailCredentialsOutputWithContext(ctx context.Context) EmailCredentialsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailCredentialsOutput)
+func (i EmailProviderCredentialsArgs) ToEmailProviderCredentialsOutputWithContext(ctx context.Context) EmailProviderCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailProviderCredentialsOutput)
 }
 
-func (i EmailCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[EmailCredentials] {
-	return pulumix.Output[EmailCredentials]{
-		OutputState: i.ToEmailCredentialsOutputWithContext(ctx).OutputState,
+func (i EmailProviderCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[EmailProviderCredentials] {
+	return pulumix.Output[EmailProviderCredentials]{
+		OutputState: i.ToEmailProviderCredentialsOutputWithContext(ctx).OutputState,
 	}
 }
 
-func (i EmailCredentialsArgs) ToEmailCredentialsPtrOutput() EmailCredentialsPtrOutput {
-	return i.ToEmailCredentialsPtrOutputWithContext(context.Background())
+func (i EmailProviderCredentialsArgs) ToEmailProviderCredentialsPtrOutput() EmailProviderCredentialsPtrOutput {
+	return i.ToEmailProviderCredentialsPtrOutputWithContext(context.Background())
 }
 
-func (i EmailCredentialsArgs) ToEmailCredentialsPtrOutputWithContext(ctx context.Context) EmailCredentialsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailCredentialsOutput).ToEmailCredentialsPtrOutputWithContext(ctx)
+func (i EmailProviderCredentialsArgs) ToEmailProviderCredentialsPtrOutputWithContext(ctx context.Context) EmailProviderCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailProviderCredentialsOutput).ToEmailProviderCredentialsPtrOutputWithContext(ctx)
 }
 
-// EmailCredentialsPtrInput is an input type that accepts EmailCredentialsArgs, EmailCredentialsPtr and EmailCredentialsPtrOutput values.
-// You can construct a concrete instance of `EmailCredentialsPtrInput` via:
+// EmailProviderCredentialsPtrInput is an input type that accepts EmailProviderCredentialsArgs, EmailProviderCredentialsPtr and EmailProviderCredentialsPtrOutput values.
+// You can construct a concrete instance of `EmailProviderCredentialsPtrInput` via:
 //
-//	        EmailCredentialsArgs{...}
+//	        EmailProviderCredentialsArgs{...}
 //
 //	or:
 //
 //	        nil
-type EmailCredentialsPtrInput interface {
+type EmailProviderCredentialsPtrInput interface {
 	pulumi.Input
 
-	ToEmailCredentialsPtrOutput() EmailCredentialsPtrOutput
-	ToEmailCredentialsPtrOutputWithContext(context.Context) EmailCredentialsPtrOutput
+	ToEmailProviderCredentialsPtrOutput() EmailProviderCredentialsPtrOutput
+	ToEmailProviderCredentialsPtrOutputWithContext(context.Context) EmailProviderCredentialsPtrOutput
 }
 
-type emailCredentialsPtrType EmailCredentialsArgs
+type emailProviderCredentialsPtrType EmailProviderCredentialsArgs
 
-func EmailCredentialsPtr(v *EmailCredentialsArgs) EmailCredentialsPtrInput {
-	return (*emailCredentialsPtrType)(v)
+func EmailProviderCredentialsPtr(v *EmailProviderCredentialsArgs) EmailProviderCredentialsPtrInput {
+	return (*emailProviderCredentialsPtrType)(v)
 }
 
-func (*emailCredentialsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailCredentials)(nil)).Elem()
+func (*emailProviderCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailProviderCredentials)(nil)).Elem()
 }
 
-func (i *emailCredentialsPtrType) ToEmailCredentialsPtrOutput() EmailCredentialsPtrOutput {
-	return i.ToEmailCredentialsPtrOutputWithContext(context.Background())
+func (i *emailProviderCredentialsPtrType) ToEmailProviderCredentialsPtrOutput() EmailProviderCredentialsPtrOutput {
+	return i.ToEmailProviderCredentialsPtrOutputWithContext(context.Background())
 }
 
-func (i *emailCredentialsPtrType) ToEmailCredentialsPtrOutputWithContext(ctx context.Context) EmailCredentialsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailCredentialsPtrOutput)
+func (i *emailProviderCredentialsPtrType) ToEmailProviderCredentialsPtrOutputWithContext(ctx context.Context) EmailProviderCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailProviderCredentialsPtrOutput)
 }
 
-func (i *emailCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EmailCredentials] {
-	return pulumix.Output[*EmailCredentials]{
-		OutputState: i.ToEmailCredentialsPtrOutputWithContext(ctx).OutputState,
+func (i *emailProviderCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EmailProviderCredentials] {
+	return pulumix.Output[*EmailProviderCredentials]{
+		OutputState: i.ToEmailProviderCredentialsPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
-type EmailCredentialsOutput struct{ *pulumi.OutputState }
+type EmailProviderCredentialsOutput struct{ *pulumi.OutputState }
 
-func (EmailCredentialsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailCredentials)(nil)).Elem()
+func (EmailProviderCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailProviderCredentials)(nil)).Elem()
 }
 
-func (o EmailCredentialsOutput) ToEmailCredentialsOutput() EmailCredentialsOutput {
+func (o EmailProviderCredentialsOutput) ToEmailProviderCredentialsOutput() EmailProviderCredentialsOutput {
 	return o
 }
 
-func (o EmailCredentialsOutput) ToEmailCredentialsOutputWithContext(ctx context.Context) EmailCredentialsOutput {
+func (o EmailProviderCredentialsOutput) ToEmailProviderCredentialsOutputWithContext(ctx context.Context) EmailProviderCredentialsOutput {
 	return o
 }
 
-func (o EmailCredentialsOutput) ToEmailCredentialsPtrOutput() EmailCredentialsPtrOutput {
-	return o.ToEmailCredentialsPtrOutputWithContext(context.Background())
+func (o EmailProviderCredentialsOutput) ToEmailProviderCredentialsPtrOutput() EmailProviderCredentialsPtrOutput {
+	return o.ToEmailProviderCredentialsPtrOutputWithContext(context.Background())
 }
 
-func (o EmailCredentialsOutput) ToEmailCredentialsPtrOutputWithContext(ctx context.Context) EmailCredentialsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailCredentials) *EmailCredentials {
+func (o EmailProviderCredentialsOutput) ToEmailProviderCredentialsPtrOutputWithContext(ctx context.Context) EmailProviderCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailProviderCredentials) *EmailProviderCredentials {
 		return &v
-	}).(EmailCredentialsPtrOutput)
+	}).(EmailProviderCredentialsPtrOutput)
 }
 
-func (o EmailCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[EmailCredentials] {
-	return pulumix.Output[EmailCredentials]{
+func (o EmailProviderCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[EmailProviderCredentials] {
+	return pulumix.Output[EmailProviderCredentials]{
 		OutputState: o.OutputState,
 	}
 }
 
 // AWS Access Key ID. Used only for AWS.
-func (o EmailCredentialsOutput) AccessKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
+func (o EmailProviderCredentialsOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailProviderCredentials) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
 }
 
 // API Key for your email service. Will always be encrypted in our database.
-func (o EmailCredentialsOutput) ApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+func (o EmailProviderCredentialsOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailProviderCredentials) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
-// API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
-//
-// Deprecated: This field is not accepted by the API any more so it will be removed soon.
-func (o EmailCredentialsOutput) ApiUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.ApiUser }).(pulumi.StringPtrOutput)
+// Azure Communication Services Connection String.
+func (o EmailProviderCredentialsOutput) AzureCsConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailProviderCredentials) *string { return v.AzureCsConnectionString }).(pulumi.StringPtrOutput)
 }
 
 // Domain name.
-func (o EmailCredentialsOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.Domain }).(pulumi.StringPtrOutput)
+func (o EmailProviderCredentialsOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailProviderCredentials) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// Microsoft 365 Client ID.
+func (o EmailProviderCredentialsOutput) Ms365ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailProviderCredentials) *string { return v.Ms365ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Microsoft 365 Client Secret.
+func (o EmailProviderCredentialsOutput) Ms365ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailProviderCredentials) *string { return v.Ms365ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// Microsoft 365 Tenant ID.
+func (o EmailProviderCredentialsOutput) Ms365TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailProviderCredentials) *string { return v.Ms365TenantId }).(pulumi.StringPtrOutput)
 }
 
 // Default region. Used only for AWS, Mailgun, and SparkPost.
-func (o EmailCredentialsOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.Region }).(pulumi.StringPtrOutput)
+func (o EmailProviderCredentialsOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailProviderCredentials) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 // AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
-func (o EmailCredentialsOutput) SecretAccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
+func (o EmailProviderCredentialsOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailProviderCredentials) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
 }
 
 // Hostname or IP address of your SMTP server. Used only for SMTP.
-func (o EmailCredentialsOutput) SmtpHost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.SmtpHost }).(pulumi.StringPtrOutput)
+func (o EmailProviderCredentialsOutput) SmtpHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailProviderCredentials) *string { return v.SmtpHost }).(pulumi.StringPtrOutput)
 }
 
 // SMTP password. Used only for SMTP.
-func (o EmailCredentialsOutput) SmtpPass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.SmtpPass }).(pulumi.StringPtrOutput)
+func (o EmailProviderCredentialsOutput) SmtpPass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailProviderCredentials) *string { return v.SmtpPass }).(pulumi.StringPtrOutput)
 }
 
 // Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
-func (o EmailCredentialsOutput) SmtpPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *int { return v.SmtpPort }).(pulumi.IntPtrOutput)
+func (o EmailProviderCredentialsOutput) SmtpPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EmailProviderCredentials) *int { return v.SmtpPort }).(pulumi.IntPtrOutput)
 }
 
 // SMTP username. Used only for SMTP.
-func (o EmailCredentialsOutput) SmtpUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.SmtpUser }).(pulumi.StringPtrOutput)
+func (o EmailProviderCredentialsOutput) SmtpUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailProviderCredentials) *string { return v.SmtpUser }).(pulumi.StringPtrOutput)
 }
 
-type EmailCredentialsPtrOutput struct{ *pulumi.OutputState }
+type EmailProviderCredentialsPtrOutput struct{ *pulumi.OutputState }
 
-func (EmailCredentialsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailCredentials)(nil)).Elem()
+func (EmailProviderCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailProviderCredentials)(nil)).Elem()
 }
 
-func (o EmailCredentialsPtrOutput) ToEmailCredentialsPtrOutput() EmailCredentialsPtrOutput {
+func (o EmailProviderCredentialsPtrOutput) ToEmailProviderCredentialsPtrOutput() EmailProviderCredentialsPtrOutput {
 	return o
 }
 
-func (o EmailCredentialsPtrOutput) ToEmailCredentialsPtrOutputWithContext(ctx context.Context) EmailCredentialsPtrOutput {
+func (o EmailProviderCredentialsPtrOutput) ToEmailProviderCredentialsPtrOutputWithContext(ctx context.Context) EmailProviderCredentialsPtrOutput {
 	return o
 }
 
-func (o EmailCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailCredentials] {
-	return pulumix.Output[*EmailCredentials]{
+func (o EmailProviderCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailProviderCredentials] {
+	return pulumix.Output[*EmailProviderCredentials]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o EmailCredentialsPtrOutput) Elem() EmailCredentialsOutput {
-	return o.ApplyT(func(v *EmailCredentials) EmailCredentials {
+func (o EmailProviderCredentialsPtrOutput) Elem() EmailProviderCredentialsOutput {
+	return o.ApplyT(func(v *EmailProviderCredentials) EmailProviderCredentials {
 		if v != nil {
 			return *v
 		}
-		var ret EmailCredentials
+		var ret EmailProviderCredentials
 		return ret
-	}).(EmailCredentialsOutput)
+	}).(EmailProviderCredentialsOutput)
 }
 
 // AWS Access Key ID. Used only for AWS.
-func (o EmailCredentialsPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailCredentials) *string {
+func (o EmailProviderCredentialsPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailProviderCredentials) *string {
 		if v == nil {
 			return nil
 		}
@@ -11624,8 +17484,8 @@ func (o EmailCredentialsPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
 }
 
 // API Key for your email service. Will always be encrypted in our database.
-func (o EmailCredentialsPtrOutput) ApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailCredentials) *string {
+func (o EmailProviderCredentialsPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailProviderCredentials) *string {
 		if v == nil {
 			return nil
 		}
@@ -11633,21 +17493,19 @@ func (o EmailCredentialsPtrOutput) ApiKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
-//
-// Deprecated: This field is not accepted by the API any more so it will be removed soon.
-func (o EmailCredentialsPtrOutput) ApiUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailCredentials) *string {
+// Azure Communication Services Connection String.
+func (o EmailProviderCredentialsPtrOutput) AzureCsConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailProviderCredentials) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ApiUser
+		return v.AzureCsConnectionString
 	}).(pulumi.StringPtrOutput)
 }
 
 // Domain name.
-func (o EmailCredentialsPtrOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailCredentials) *string {
+func (o EmailProviderCredentialsPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailProviderCredentials) *string {
 		if v == nil {
 			return nil
 		}
@@ -11655,9 +17513,39 @@ func (o EmailCredentialsPtrOutput) Domain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Microsoft 365 Client ID.
+func (o EmailProviderCredentialsPtrOutput) Ms365ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailProviderCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ms365ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Microsoft 365 Client Secret.
+func (o EmailProviderCredentialsPtrOutput) Ms365ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailProviderCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ms365ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Microsoft 365 Tenant ID.
+func (o EmailProviderCredentialsPtrOutput) Ms365TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailProviderCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ms365TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Default region. Used only for AWS, Mailgun, and SparkPost.
-func (o EmailCredentialsPtrOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailCredentials) *string {
+func (o EmailProviderCredentialsPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailProviderCredentials) *string {
 		if v == nil {
 			return nil
 		}
@@ -11666,8 +17554,8 @@ func (o EmailCredentialsPtrOutput) Region() pulumi.StringPtrOutput {
 }
 
 // AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
-func (o EmailCredentialsPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailCredentials) *string {
+func (o EmailProviderCredentialsPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailProviderCredentials) *string {
 		if v == nil {
 			return nil
 		}
@@ -11676,8 +17564,8 @@ func (o EmailCredentialsPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
 }
 
 // Hostname or IP address of your SMTP server. Used only for SMTP.
-func (o EmailCredentialsPtrOutput) SmtpHost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailCredentials) *string {
+func (o EmailProviderCredentialsPtrOutput) SmtpHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailProviderCredentials) *string {
 		if v == nil {
 			return nil
 		}
@@ -11686,8 +17574,8 @@ func (o EmailCredentialsPtrOutput) SmtpHost() pulumi.StringPtrOutput {
 }
 
 // SMTP password. Used only for SMTP.
-func (o EmailCredentialsPtrOutput) SmtpPass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailCredentials) *string {
+func (o EmailProviderCredentialsPtrOutput) SmtpPass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailProviderCredentials) *string {
 		if v == nil {
 			return nil
 		}
@@ -11696,8 +17584,8 @@ func (o EmailCredentialsPtrOutput) SmtpPass() pulumi.StringPtrOutput {
 }
 
 // Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
-func (o EmailCredentialsPtrOutput) SmtpPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *EmailCredentials) *int {
+func (o EmailProviderCredentialsPtrOutput) SmtpPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EmailProviderCredentials) *int {
 		if v == nil {
 			return nil
 		}
@@ -11706,8 +17594,8 @@ func (o EmailCredentialsPtrOutput) SmtpPort() pulumi.IntPtrOutput {
 }
 
 // SMTP username. Used only for SMTP.
-func (o EmailCredentialsPtrOutput) SmtpUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailCredentials) *string {
+func (o EmailProviderCredentialsPtrOutput) SmtpUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailProviderCredentials) *string {
 		if v == nil {
 			return nil
 		}
@@ -11715,342 +17603,342 @@ func (o EmailCredentialsPtrOutput) SmtpUser() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type EmailSettings struct {
+type EmailProviderSettings struct {
 	// Headers settings for the `smtp` email provider.
-	Headers *EmailSettingsHeaders `pulumi:"headers"`
+	Headers *EmailProviderSettingsHeaders `pulumi:"headers"`
 	// Message settings for the `mandrill` or `ses` email provider.
-	Message *EmailSettingsMessage `pulumi:"message"`
+	Message *EmailProviderSettingsMessage `pulumi:"message"`
 }
 
-// EmailSettingsInput is an input type that accepts EmailSettingsArgs and EmailSettingsOutput values.
-// You can construct a concrete instance of `EmailSettingsInput` via:
+// EmailProviderSettingsInput is an input type that accepts EmailProviderSettingsArgs and EmailProviderSettingsOutput values.
+// You can construct a concrete instance of `EmailProviderSettingsInput` via:
 //
-//	EmailSettingsArgs{...}
-type EmailSettingsInput interface {
+//	EmailProviderSettingsArgs{...}
+type EmailProviderSettingsInput interface {
 	pulumi.Input
 
-	ToEmailSettingsOutput() EmailSettingsOutput
-	ToEmailSettingsOutputWithContext(context.Context) EmailSettingsOutput
+	ToEmailProviderSettingsOutput() EmailProviderSettingsOutput
+	ToEmailProviderSettingsOutputWithContext(context.Context) EmailProviderSettingsOutput
 }
 
-type EmailSettingsArgs struct {
+type EmailProviderSettingsArgs struct {
 	// Headers settings for the `smtp` email provider.
-	Headers EmailSettingsHeadersPtrInput `pulumi:"headers"`
+	Headers EmailProviderSettingsHeadersPtrInput `pulumi:"headers"`
 	// Message settings for the `mandrill` or `ses` email provider.
-	Message EmailSettingsMessagePtrInput `pulumi:"message"`
+	Message EmailProviderSettingsMessagePtrInput `pulumi:"message"`
 }
 
-func (EmailSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailSettings)(nil)).Elem()
+func (EmailProviderSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailProviderSettings)(nil)).Elem()
 }
 
-func (i EmailSettingsArgs) ToEmailSettingsOutput() EmailSettingsOutput {
-	return i.ToEmailSettingsOutputWithContext(context.Background())
+func (i EmailProviderSettingsArgs) ToEmailProviderSettingsOutput() EmailProviderSettingsOutput {
+	return i.ToEmailProviderSettingsOutputWithContext(context.Background())
 }
 
-func (i EmailSettingsArgs) ToEmailSettingsOutputWithContext(ctx context.Context) EmailSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsOutput)
+func (i EmailProviderSettingsArgs) ToEmailProviderSettingsOutputWithContext(ctx context.Context) EmailProviderSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailProviderSettingsOutput)
 }
 
-func (i EmailSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[EmailSettings] {
-	return pulumix.Output[EmailSettings]{
-		OutputState: i.ToEmailSettingsOutputWithContext(ctx).OutputState,
+func (i EmailProviderSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[EmailProviderSettings] {
+	return pulumix.Output[EmailProviderSettings]{
+		OutputState: i.ToEmailProviderSettingsOutputWithContext(ctx).OutputState,
 	}
 }
 
-func (i EmailSettingsArgs) ToEmailSettingsPtrOutput() EmailSettingsPtrOutput {
-	return i.ToEmailSettingsPtrOutputWithContext(context.Background())
+func (i EmailProviderSettingsArgs) ToEmailProviderSettingsPtrOutput() EmailProviderSettingsPtrOutput {
+	return i.ToEmailProviderSettingsPtrOutputWithContext(context.Background())
 }
 
-func (i EmailSettingsArgs) ToEmailSettingsPtrOutputWithContext(ctx context.Context) EmailSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsOutput).ToEmailSettingsPtrOutputWithContext(ctx)
+func (i EmailProviderSettingsArgs) ToEmailProviderSettingsPtrOutputWithContext(ctx context.Context) EmailProviderSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailProviderSettingsOutput).ToEmailProviderSettingsPtrOutputWithContext(ctx)
 }
 
-// EmailSettingsPtrInput is an input type that accepts EmailSettingsArgs, EmailSettingsPtr and EmailSettingsPtrOutput values.
-// You can construct a concrete instance of `EmailSettingsPtrInput` via:
+// EmailProviderSettingsPtrInput is an input type that accepts EmailProviderSettingsArgs, EmailProviderSettingsPtr and EmailProviderSettingsPtrOutput values.
+// You can construct a concrete instance of `EmailProviderSettingsPtrInput` via:
 //
-//	        EmailSettingsArgs{...}
+//	        EmailProviderSettingsArgs{...}
 //
 //	or:
 //
 //	        nil
-type EmailSettingsPtrInput interface {
+type EmailProviderSettingsPtrInput interface {
 	pulumi.Input
 
-	ToEmailSettingsPtrOutput() EmailSettingsPtrOutput
-	ToEmailSettingsPtrOutputWithContext(context.Context) EmailSettingsPtrOutput
+	ToEmailProviderSettingsPtrOutput() EmailProviderSettingsPtrOutput
+	ToEmailProviderSettingsPtrOutputWithContext(context.Context) EmailProviderSettingsPtrOutput
 }
 
-type emailSettingsPtrType EmailSettingsArgs
+type emailProviderSettingsPtrType EmailProviderSettingsArgs
 
-func EmailSettingsPtr(v *EmailSettingsArgs) EmailSettingsPtrInput {
-	return (*emailSettingsPtrType)(v)
+func EmailProviderSettingsPtr(v *EmailProviderSettingsArgs) EmailProviderSettingsPtrInput {
+	return (*emailProviderSettingsPtrType)(v)
 }
 
-func (*emailSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailSettings)(nil)).Elem()
+func (*emailProviderSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailProviderSettings)(nil)).Elem()
 }
 
-func (i *emailSettingsPtrType) ToEmailSettingsPtrOutput() EmailSettingsPtrOutput {
-	return i.ToEmailSettingsPtrOutputWithContext(context.Background())
+func (i *emailProviderSettingsPtrType) ToEmailProviderSettingsPtrOutput() EmailProviderSettingsPtrOutput {
+	return i.ToEmailProviderSettingsPtrOutputWithContext(context.Background())
 }
 
-func (i *emailSettingsPtrType) ToEmailSettingsPtrOutputWithContext(ctx context.Context) EmailSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsPtrOutput)
+func (i *emailProviderSettingsPtrType) ToEmailProviderSettingsPtrOutputWithContext(ctx context.Context) EmailProviderSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailProviderSettingsPtrOutput)
 }
 
-func (i *emailSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EmailSettings] {
-	return pulumix.Output[*EmailSettings]{
-		OutputState: i.ToEmailSettingsPtrOutputWithContext(ctx).OutputState,
+func (i *emailProviderSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EmailProviderSettings] {
+	return pulumix.Output[*EmailProviderSettings]{
+		OutputState: i.ToEmailProviderSettingsPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
-type EmailSettingsOutput struct{ *pulumi.OutputState }
+type EmailProviderSettingsOutput struct{ *pulumi.OutputState }
 
-func (EmailSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailSettings)(nil)).Elem()
+func (EmailProviderSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailProviderSettings)(nil)).Elem()
 }
 
-func (o EmailSettingsOutput) ToEmailSettingsOutput() EmailSettingsOutput {
+func (o EmailProviderSettingsOutput) ToEmailProviderSettingsOutput() EmailProviderSettingsOutput {
 	return o
 }
 
-func (o EmailSettingsOutput) ToEmailSettingsOutputWithContext(ctx context.Context) EmailSettingsOutput {
+func (o EmailProviderSettingsOutput) ToEmailProviderSettingsOutputWithContext(ctx context.Context) EmailProviderSettingsOutput {
 	return o
 }
 
-func (o EmailSettingsOutput) ToEmailSettingsPtrOutput() EmailSettingsPtrOutput {
-	return o.ToEmailSettingsPtrOutputWithContext(context.Background())
+func (o EmailProviderSettingsOutput) ToEmailProviderSettingsPtrOutput() EmailProviderSettingsPtrOutput {
+	return o.ToEmailProviderSettingsPtrOutputWithContext(context.Background())
 }
 
-func (o EmailSettingsOutput) ToEmailSettingsPtrOutputWithContext(ctx context.Context) EmailSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailSettings) *EmailSettings {
+func (o EmailProviderSettingsOutput) ToEmailProviderSettingsPtrOutputWithContext(ctx context.Context) EmailProviderSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailProviderSettings) *EmailProviderSettings {
 		return &v
-	}).(EmailSettingsPtrOutput)
+	}).(EmailProviderSettingsPtrOutput)
 }
 
-func (o EmailSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[EmailSettings] {
-	return pulumix.Output[EmailSettings]{
+func (o EmailProviderSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[EmailProviderSettings] {
+	return pulumix.Output[EmailProviderSettings]{
 		OutputState: o.OutputState,
 	}
 }
 
 // Headers settings for the `smtp` email provider.
-func (o EmailSettingsOutput) Headers() EmailSettingsHeadersPtrOutput {
-	return o.ApplyT(func(v EmailSettings) *EmailSettingsHeaders { return v.Headers }).(EmailSettingsHeadersPtrOutput)
+func (o EmailProviderSettingsOutput) Headers() EmailProviderSettingsHeadersPtrOutput {
+	return o.ApplyT(func(v EmailProviderSettings) *EmailProviderSettingsHeaders { return v.Headers }).(EmailProviderSettingsHeadersPtrOutput)
 }
 
 // Message settings for the `mandrill` or `ses` email provider.
-func (o EmailSettingsOutput) Message() EmailSettingsMessagePtrOutput {
-	return o.ApplyT(func(v EmailSettings) *EmailSettingsMessage { return v.Message }).(EmailSettingsMessagePtrOutput)
+func (o EmailProviderSettingsOutput) Message() EmailProviderSettingsMessagePtrOutput {
+	return o.ApplyT(func(v EmailProviderSettings) *EmailProviderSettingsMessage { return v.Message }).(EmailProviderSettingsMessagePtrOutput)
 }
 
-type EmailSettingsPtrOutput struct{ *pulumi.OutputState }
+type EmailProviderSettingsPtrOutput struct{ *pulumi.OutputState }
 
-func (EmailSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailSettings)(nil)).Elem()
+func (EmailProviderSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailProviderSettings)(nil)).Elem()
 }
 
-func (o EmailSettingsPtrOutput) ToEmailSettingsPtrOutput() EmailSettingsPtrOutput {
+func (o EmailProviderSettingsPtrOutput) ToEmailProviderSettingsPtrOutput() EmailProviderSettingsPtrOutput {
 	return o
 }
 
-func (o EmailSettingsPtrOutput) ToEmailSettingsPtrOutputWithContext(ctx context.Context) EmailSettingsPtrOutput {
+func (o EmailProviderSettingsPtrOutput) ToEmailProviderSettingsPtrOutputWithContext(ctx context.Context) EmailProviderSettingsPtrOutput {
 	return o
 }
 
-func (o EmailSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailSettings] {
-	return pulumix.Output[*EmailSettings]{
+func (o EmailProviderSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailProviderSettings] {
+	return pulumix.Output[*EmailProviderSettings]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o EmailSettingsPtrOutput) Elem() EmailSettingsOutput {
-	return o.ApplyT(func(v *EmailSettings) EmailSettings {
+func (o EmailProviderSettingsPtrOutput) Elem() EmailProviderSettingsOutput {
+	return o.ApplyT(func(v *EmailProviderSettings) EmailProviderSettings {
 		if v != nil {
 			return *v
 		}
-		var ret EmailSettings
+		var ret EmailProviderSettings
 		return ret
-	}).(EmailSettingsOutput)
+	}).(EmailProviderSettingsOutput)
 }
 
 // Headers settings for the `smtp` email provider.
-func (o EmailSettingsPtrOutput) Headers() EmailSettingsHeadersPtrOutput {
-	return o.ApplyT(func(v *EmailSettings) *EmailSettingsHeaders {
+func (o EmailProviderSettingsPtrOutput) Headers() EmailProviderSettingsHeadersPtrOutput {
+	return o.ApplyT(func(v *EmailProviderSettings) *EmailProviderSettingsHeaders {
 		if v == nil {
 			return nil
 		}
 		return v.Headers
-	}).(EmailSettingsHeadersPtrOutput)
+	}).(EmailProviderSettingsHeadersPtrOutput)
 }
 
 // Message settings for the `mandrill` or `ses` email provider.
-func (o EmailSettingsPtrOutput) Message() EmailSettingsMessagePtrOutput {
-	return o.ApplyT(func(v *EmailSettings) *EmailSettingsMessage {
+func (o EmailProviderSettingsPtrOutput) Message() EmailProviderSettingsMessagePtrOutput {
+	return o.ApplyT(func(v *EmailProviderSettings) *EmailProviderSettingsMessage {
 		if v == nil {
 			return nil
 		}
 		return v.Message
-	}).(EmailSettingsMessagePtrOutput)
+	}).(EmailProviderSettingsMessagePtrOutput)
 }
 
-type EmailSettingsHeaders struct {
+type EmailProviderSettingsHeaders struct {
 	XMcViewContentLink   *string `pulumi:"xMcViewContentLink"`
 	XSesConfigurationSet *string `pulumi:"xSesConfigurationSet"`
 }
 
-// EmailSettingsHeadersInput is an input type that accepts EmailSettingsHeadersArgs and EmailSettingsHeadersOutput values.
-// You can construct a concrete instance of `EmailSettingsHeadersInput` via:
+// EmailProviderSettingsHeadersInput is an input type that accepts EmailProviderSettingsHeadersArgs and EmailProviderSettingsHeadersOutput values.
+// You can construct a concrete instance of `EmailProviderSettingsHeadersInput` via:
 //
-//	EmailSettingsHeadersArgs{...}
-type EmailSettingsHeadersInput interface {
+//	EmailProviderSettingsHeadersArgs{...}
+type EmailProviderSettingsHeadersInput interface {
 	pulumi.Input
 
-	ToEmailSettingsHeadersOutput() EmailSettingsHeadersOutput
-	ToEmailSettingsHeadersOutputWithContext(context.Context) EmailSettingsHeadersOutput
+	ToEmailProviderSettingsHeadersOutput() EmailProviderSettingsHeadersOutput
+	ToEmailProviderSettingsHeadersOutputWithContext(context.Context) EmailProviderSettingsHeadersOutput
 }
 
-type EmailSettingsHeadersArgs struct {
+type EmailProviderSettingsHeadersArgs struct {
 	XMcViewContentLink   pulumi.StringPtrInput `pulumi:"xMcViewContentLink"`
 	XSesConfigurationSet pulumi.StringPtrInput `pulumi:"xSesConfigurationSet"`
 }
 
-func (EmailSettingsHeadersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailSettingsHeaders)(nil)).Elem()
+func (EmailProviderSettingsHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailProviderSettingsHeaders)(nil)).Elem()
 }
 
-func (i EmailSettingsHeadersArgs) ToEmailSettingsHeadersOutput() EmailSettingsHeadersOutput {
-	return i.ToEmailSettingsHeadersOutputWithContext(context.Background())
+func (i EmailProviderSettingsHeadersArgs) ToEmailProviderSettingsHeadersOutput() EmailProviderSettingsHeadersOutput {
+	return i.ToEmailProviderSettingsHeadersOutputWithContext(context.Background())
 }
 
-func (i EmailSettingsHeadersArgs) ToEmailSettingsHeadersOutputWithContext(ctx context.Context) EmailSettingsHeadersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsHeadersOutput)
+func (i EmailProviderSettingsHeadersArgs) ToEmailProviderSettingsHeadersOutputWithContext(ctx context.Context) EmailProviderSettingsHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailProviderSettingsHeadersOutput)
 }
 
-func (i EmailSettingsHeadersArgs) ToOutput(ctx context.Context) pulumix.Output[EmailSettingsHeaders] {
-	return pulumix.Output[EmailSettingsHeaders]{
-		OutputState: i.ToEmailSettingsHeadersOutputWithContext(ctx).OutputState,
+func (i EmailProviderSettingsHeadersArgs) ToOutput(ctx context.Context) pulumix.Output[EmailProviderSettingsHeaders] {
+	return pulumix.Output[EmailProviderSettingsHeaders]{
+		OutputState: i.ToEmailProviderSettingsHeadersOutputWithContext(ctx).OutputState,
 	}
 }
 
-func (i EmailSettingsHeadersArgs) ToEmailSettingsHeadersPtrOutput() EmailSettingsHeadersPtrOutput {
-	return i.ToEmailSettingsHeadersPtrOutputWithContext(context.Background())
+func (i EmailProviderSettingsHeadersArgs) ToEmailProviderSettingsHeadersPtrOutput() EmailProviderSettingsHeadersPtrOutput {
+	return i.ToEmailProviderSettingsHeadersPtrOutputWithContext(context.Background())
 }
 
-func (i EmailSettingsHeadersArgs) ToEmailSettingsHeadersPtrOutputWithContext(ctx context.Context) EmailSettingsHeadersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsHeadersOutput).ToEmailSettingsHeadersPtrOutputWithContext(ctx)
+func (i EmailProviderSettingsHeadersArgs) ToEmailProviderSettingsHeadersPtrOutputWithContext(ctx context.Context) EmailProviderSettingsHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailProviderSettingsHeadersOutput).ToEmailProviderSettingsHeadersPtrOutputWithContext(ctx)
 }
 
-// EmailSettingsHeadersPtrInput is an input type that accepts EmailSettingsHeadersArgs, EmailSettingsHeadersPtr and EmailSettingsHeadersPtrOutput values.
-// You can construct a concrete instance of `EmailSettingsHeadersPtrInput` via:
+// EmailProviderSettingsHeadersPtrInput is an input type that accepts EmailProviderSettingsHeadersArgs, EmailProviderSettingsHeadersPtr and EmailProviderSettingsHeadersPtrOutput values.
+// You can construct a concrete instance of `EmailProviderSettingsHeadersPtrInput` via:
 //
-//	        EmailSettingsHeadersArgs{...}
+//	        EmailProviderSettingsHeadersArgs{...}
 //
 //	or:
 //
 //	        nil
-type EmailSettingsHeadersPtrInput interface {
+type EmailProviderSettingsHeadersPtrInput interface {
 	pulumi.Input
 
-	ToEmailSettingsHeadersPtrOutput() EmailSettingsHeadersPtrOutput
-	ToEmailSettingsHeadersPtrOutputWithContext(context.Context) EmailSettingsHeadersPtrOutput
+	ToEmailProviderSettingsHeadersPtrOutput() EmailProviderSettingsHeadersPtrOutput
+	ToEmailProviderSettingsHeadersPtrOutputWithContext(context.Context) EmailProviderSettingsHeadersPtrOutput
 }
 
-type emailSettingsHeadersPtrType EmailSettingsHeadersArgs
+type emailProviderSettingsHeadersPtrType EmailProviderSettingsHeadersArgs
 
-func EmailSettingsHeadersPtr(v *EmailSettingsHeadersArgs) EmailSettingsHeadersPtrInput {
-	return (*emailSettingsHeadersPtrType)(v)
+func EmailProviderSettingsHeadersPtr(v *EmailProviderSettingsHeadersArgs) EmailProviderSettingsHeadersPtrInput {
+	return (*emailProviderSettingsHeadersPtrType)(v)
 }
 
-func (*emailSettingsHeadersPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailSettingsHeaders)(nil)).Elem()
+func (*emailProviderSettingsHeadersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailProviderSettingsHeaders)(nil)).Elem()
 }
 
-func (i *emailSettingsHeadersPtrType) ToEmailSettingsHeadersPtrOutput() EmailSettingsHeadersPtrOutput {
-	return i.ToEmailSettingsHeadersPtrOutputWithContext(context.Background())
+func (i *emailProviderSettingsHeadersPtrType) ToEmailProviderSettingsHeadersPtrOutput() EmailProviderSettingsHeadersPtrOutput {
+	return i.ToEmailProviderSettingsHeadersPtrOutputWithContext(context.Background())
 }
 
-func (i *emailSettingsHeadersPtrType) ToEmailSettingsHeadersPtrOutputWithContext(ctx context.Context) EmailSettingsHeadersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsHeadersPtrOutput)
+func (i *emailProviderSettingsHeadersPtrType) ToEmailProviderSettingsHeadersPtrOutputWithContext(ctx context.Context) EmailProviderSettingsHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailProviderSettingsHeadersPtrOutput)
 }
 
-func (i *emailSettingsHeadersPtrType) ToOutput(ctx context.Context) pulumix.Output[*EmailSettingsHeaders] {
-	return pulumix.Output[*EmailSettingsHeaders]{
-		OutputState: i.ToEmailSettingsHeadersPtrOutputWithContext(ctx).OutputState,
+func (i *emailProviderSettingsHeadersPtrType) ToOutput(ctx context.Context) pulumix.Output[*EmailProviderSettingsHeaders] {
+	return pulumix.Output[*EmailProviderSettingsHeaders]{
+		OutputState: i.ToEmailProviderSettingsHeadersPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
-type EmailSettingsHeadersOutput struct{ *pulumi.OutputState }
+type EmailProviderSettingsHeadersOutput struct{ *pulumi.OutputState }
 
-func (EmailSettingsHeadersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailSettingsHeaders)(nil)).Elem()
+func (EmailProviderSettingsHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailProviderSettingsHeaders)(nil)).Elem()
 }
 
-func (o EmailSettingsHeadersOutput) ToEmailSettingsHeadersOutput() EmailSettingsHeadersOutput {
+func (o EmailProviderSettingsHeadersOutput) ToEmailProviderSettingsHeadersOutput() EmailProviderSettingsHeadersOutput {
 	return o
 }
 
-func (o EmailSettingsHeadersOutput) ToEmailSettingsHeadersOutputWithContext(ctx context.Context) EmailSettingsHeadersOutput {
+func (o EmailProviderSettingsHeadersOutput) ToEmailProviderSettingsHeadersOutputWithContext(ctx context.Context) EmailProviderSettingsHeadersOutput {
 	return o
 }
 
-func (o EmailSettingsHeadersOutput) ToEmailSettingsHeadersPtrOutput() EmailSettingsHeadersPtrOutput {
-	return o.ToEmailSettingsHeadersPtrOutputWithContext(context.Background())
+func (o EmailProviderSettingsHeadersOutput) ToEmailProviderSettingsHeadersPtrOutput() EmailProviderSettingsHeadersPtrOutput {
+	return o.ToEmailProviderSettingsHeadersPtrOutputWithContext(context.Background())
 }
 
-func (o EmailSettingsHeadersOutput) ToEmailSettingsHeadersPtrOutputWithContext(ctx context.Context) EmailSettingsHeadersPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailSettingsHeaders) *EmailSettingsHeaders {
+func (o EmailProviderSettingsHeadersOutput) ToEmailProviderSettingsHeadersPtrOutputWithContext(ctx context.Context) EmailProviderSettingsHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailProviderSettingsHeaders) *EmailProviderSettingsHeaders {
 		return &v
-	}).(EmailSettingsHeadersPtrOutput)
+	}).(EmailProviderSettingsHeadersPtrOutput)
 }
 
-func (o EmailSettingsHeadersOutput) ToOutput(ctx context.Context) pulumix.Output[EmailSettingsHeaders] {
-	return pulumix.Output[EmailSettingsHeaders]{
+func (o EmailProviderSettingsHeadersOutput) ToOutput(ctx context.Context) pulumix.Output[EmailProviderSettingsHeaders] {
+	return pulumix.Output[EmailProviderSettingsHeaders]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o EmailSettingsHeadersOutput) XMcViewContentLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailSettingsHeaders) *string { return v.XMcViewContentLink }).(pulumi.StringPtrOutput)
+func (o EmailProviderSettingsHeadersOutput) XMcViewContentLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailProviderSettingsHeaders) *string { return v.XMcViewContentLink }).(pulumi.StringPtrOutput)
 }
 
-func (o EmailSettingsHeadersOutput) XSesConfigurationSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailSettingsHeaders) *string { return v.XSesConfigurationSet }).(pulumi.StringPtrOutput)
+func (o EmailProviderSettingsHeadersOutput) XSesConfigurationSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailProviderSettingsHeaders) *string { return v.XSesConfigurationSet }).(pulumi.StringPtrOutput)
 }
 
-type EmailSettingsHeadersPtrOutput struct{ *pulumi.OutputState }
+type EmailProviderSettingsHeadersPtrOutput struct{ *pulumi.OutputState }
 
-func (EmailSettingsHeadersPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailSettingsHeaders)(nil)).Elem()
+func (EmailProviderSettingsHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailProviderSettingsHeaders)(nil)).Elem()
 }
 
-func (o EmailSettingsHeadersPtrOutput) ToEmailSettingsHeadersPtrOutput() EmailSettingsHeadersPtrOutput {
+func (o EmailProviderSettingsHeadersPtrOutput) ToEmailProviderSettingsHeadersPtrOutput() EmailProviderSettingsHeadersPtrOutput {
 	return o
 }
 
-func (o EmailSettingsHeadersPtrOutput) ToEmailSettingsHeadersPtrOutputWithContext(ctx context.Context) EmailSettingsHeadersPtrOutput {
+func (o EmailProviderSettingsHeadersPtrOutput) ToEmailProviderSettingsHeadersPtrOutputWithContext(ctx context.Context) EmailProviderSettingsHeadersPtrOutput {
 	return o
 }
 
-func (o EmailSettingsHeadersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailSettingsHeaders] {
-	return pulumix.Output[*EmailSettingsHeaders]{
+func (o EmailProviderSettingsHeadersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailProviderSettingsHeaders] {
+	return pulumix.Output[*EmailProviderSettingsHeaders]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o EmailSettingsHeadersPtrOutput) Elem() EmailSettingsHeadersOutput {
-	return o.ApplyT(func(v *EmailSettingsHeaders) EmailSettingsHeaders {
+func (o EmailProviderSettingsHeadersPtrOutput) Elem() EmailProviderSettingsHeadersOutput {
+	return o.ApplyT(func(v *EmailProviderSettingsHeaders) EmailProviderSettingsHeaders {
 		if v != nil {
 			return *v
 		}
-		var ret EmailSettingsHeaders
+		var ret EmailProviderSettingsHeaders
 		return ret
-	}).(EmailSettingsHeadersOutput)
+	}).(EmailProviderSettingsHeadersOutput)
 }
 
-func (o EmailSettingsHeadersPtrOutput) XMcViewContentLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailSettingsHeaders) *string {
+func (o EmailProviderSettingsHeadersPtrOutput) XMcViewContentLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailProviderSettingsHeaders) *string {
 		if v == nil {
 			return nil
 		}
@@ -12058,8 +17946,8 @@ func (o EmailSettingsHeadersPtrOutput) XMcViewContentLink() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o EmailSettingsHeadersPtrOutput) XSesConfigurationSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailSettingsHeaders) *string {
+func (o EmailProviderSettingsHeadersPtrOutput) XSesConfigurationSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailProviderSettingsHeaders) *string {
 		if v == nil {
 			return nil
 		}
@@ -12067,162 +17955,162 @@ func (o EmailSettingsHeadersPtrOutput) XSesConfigurationSet() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-type EmailSettingsMessage struct {
+type EmailProviderSettingsMessage struct {
 	ConfigurationSetName *string `pulumi:"configurationSetName"`
 	ViewContentLink      *bool   `pulumi:"viewContentLink"`
 }
 
-// EmailSettingsMessageInput is an input type that accepts EmailSettingsMessageArgs and EmailSettingsMessageOutput values.
-// You can construct a concrete instance of `EmailSettingsMessageInput` via:
+// EmailProviderSettingsMessageInput is an input type that accepts EmailProviderSettingsMessageArgs and EmailProviderSettingsMessageOutput values.
+// You can construct a concrete instance of `EmailProviderSettingsMessageInput` via:
 //
-//	EmailSettingsMessageArgs{...}
-type EmailSettingsMessageInput interface {
+//	EmailProviderSettingsMessageArgs{...}
+type EmailProviderSettingsMessageInput interface {
 	pulumi.Input
 
-	ToEmailSettingsMessageOutput() EmailSettingsMessageOutput
-	ToEmailSettingsMessageOutputWithContext(context.Context) EmailSettingsMessageOutput
+	ToEmailProviderSettingsMessageOutput() EmailProviderSettingsMessageOutput
+	ToEmailProviderSettingsMessageOutputWithContext(context.Context) EmailProviderSettingsMessageOutput
 }
 
-type EmailSettingsMessageArgs struct {
+type EmailProviderSettingsMessageArgs struct {
 	ConfigurationSetName pulumi.StringPtrInput `pulumi:"configurationSetName"`
 	ViewContentLink      pulumi.BoolPtrInput   `pulumi:"viewContentLink"`
 }
 
-func (EmailSettingsMessageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailSettingsMessage)(nil)).Elem()
+func (EmailProviderSettingsMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailProviderSettingsMessage)(nil)).Elem()
 }
 
-func (i EmailSettingsMessageArgs) ToEmailSettingsMessageOutput() EmailSettingsMessageOutput {
-	return i.ToEmailSettingsMessageOutputWithContext(context.Background())
+func (i EmailProviderSettingsMessageArgs) ToEmailProviderSettingsMessageOutput() EmailProviderSettingsMessageOutput {
+	return i.ToEmailProviderSettingsMessageOutputWithContext(context.Background())
 }
 
-func (i EmailSettingsMessageArgs) ToEmailSettingsMessageOutputWithContext(ctx context.Context) EmailSettingsMessageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsMessageOutput)
+func (i EmailProviderSettingsMessageArgs) ToEmailProviderSettingsMessageOutputWithContext(ctx context.Context) EmailProviderSettingsMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailProviderSettingsMessageOutput)
 }
 
-func (i EmailSettingsMessageArgs) ToOutput(ctx context.Context) pulumix.Output[EmailSettingsMessage] {
-	return pulumix.Output[EmailSettingsMessage]{
-		OutputState: i.ToEmailSettingsMessageOutputWithContext(ctx).OutputState,
+func (i EmailProviderSettingsMessageArgs) ToOutput(ctx context.Context) pulumix.Output[EmailProviderSettingsMessage] {
+	return pulumix.Output[EmailProviderSettingsMessage]{
+		OutputState: i.ToEmailProviderSettingsMessageOutputWithContext(ctx).OutputState,
 	}
 }
 
-func (i EmailSettingsMessageArgs) ToEmailSettingsMessagePtrOutput() EmailSettingsMessagePtrOutput {
-	return i.ToEmailSettingsMessagePtrOutputWithContext(context.Background())
+func (i EmailProviderSettingsMessageArgs) ToEmailProviderSettingsMessagePtrOutput() EmailProviderSettingsMessagePtrOutput {
+	return i.ToEmailProviderSettingsMessagePtrOutputWithContext(context.Background())
 }
 
-func (i EmailSettingsMessageArgs) ToEmailSettingsMessagePtrOutputWithContext(ctx context.Context) EmailSettingsMessagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsMessageOutput).ToEmailSettingsMessagePtrOutputWithContext(ctx)
+func (i EmailProviderSettingsMessageArgs) ToEmailProviderSettingsMessagePtrOutputWithContext(ctx context.Context) EmailProviderSettingsMessagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailProviderSettingsMessageOutput).ToEmailProviderSettingsMessagePtrOutputWithContext(ctx)
 }
 
-// EmailSettingsMessagePtrInput is an input type that accepts EmailSettingsMessageArgs, EmailSettingsMessagePtr and EmailSettingsMessagePtrOutput values.
-// You can construct a concrete instance of `EmailSettingsMessagePtrInput` via:
+// EmailProviderSettingsMessagePtrInput is an input type that accepts EmailProviderSettingsMessageArgs, EmailProviderSettingsMessagePtr and EmailProviderSettingsMessagePtrOutput values.
+// You can construct a concrete instance of `EmailProviderSettingsMessagePtrInput` via:
 //
-//	        EmailSettingsMessageArgs{...}
+//	        EmailProviderSettingsMessageArgs{...}
 //
 //	or:
 //
 //	        nil
-type EmailSettingsMessagePtrInput interface {
+type EmailProviderSettingsMessagePtrInput interface {
 	pulumi.Input
 
-	ToEmailSettingsMessagePtrOutput() EmailSettingsMessagePtrOutput
-	ToEmailSettingsMessagePtrOutputWithContext(context.Context) EmailSettingsMessagePtrOutput
+	ToEmailProviderSettingsMessagePtrOutput() EmailProviderSettingsMessagePtrOutput
+	ToEmailProviderSettingsMessagePtrOutputWithContext(context.Context) EmailProviderSettingsMessagePtrOutput
 }
 
-type emailSettingsMessagePtrType EmailSettingsMessageArgs
+type emailProviderSettingsMessagePtrType EmailProviderSettingsMessageArgs
 
-func EmailSettingsMessagePtr(v *EmailSettingsMessageArgs) EmailSettingsMessagePtrInput {
-	return (*emailSettingsMessagePtrType)(v)
+func EmailProviderSettingsMessagePtr(v *EmailProviderSettingsMessageArgs) EmailProviderSettingsMessagePtrInput {
+	return (*emailProviderSettingsMessagePtrType)(v)
 }
 
-func (*emailSettingsMessagePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailSettingsMessage)(nil)).Elem()
+func (*emailProviderSettingsMessagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailProviderSettingsMessage)(nil)).Elem()
 }
 
-func (i *emailSettingsMessagePtrType) ToEmailSettingsMessagePtrOutput() EmailSettingsMessagePtrOutput {
-	return i.ToEmailSettingsMessagePtrOutputWithContext(context.Background())
+func (i *emailProviderSettingsMessagePtrType) ToEmailProviderSettingsMessagePtrOutput() EmailProviderSettingsMessagePtrOutput {
+	return i.ToEmailProviderSettingsMessagePtrOutputWithContext(context.Background())
 }
 
-func (i *emailSettingsMessagePtrType) ToEmailSettingsMessagePtrOutputWithContext(ctx context.Context) EmailSettingsMessagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsMessagePtrOutput)
+func (i *emailProviderSettingsMessagePtrType) ToEmailProviderSettingsMessagePtrOutputWithContext(ctx context.Context) EmailProviderSettingsMessagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailProviderSettingsMessagePtrOutput)
 }
 
-func (i *emailSettingsMessagePtrType) ToOutput(ctx context.Context) pulumix.Output[*EmailSettingsMessage] {
-	return pulumix.Output[*EmailSettingsMessage]{
-		OutputState: i.ToEmailSettingsMessagePtrOutputWithContext(ctx).OutputState,
+func (i *emailProviderSettingsMessagePtrType) ToOutput(ctx context.Context) pulumix.Output[*EmailProviderSettingsMessage] {
+	return pulumix.Output[*EmailProviderSettingsMessage]{
+		OutputState: i.ToEmailProviderSettingsMessagePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
-type EmailSettingsMessageOutput struct{ *pulumi.OutputState }
+type EmailProviderSettingsMessageOutput struct{ *pulumi.OutputState }
 
-func (EmailSettingsMessageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailSettingsMessage)(nil)).Elem()
+func (EmailProviderSettingsMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailProviderSettingsMessage)(nil)).Elem()
 }
 
-func (o EmailSettingsMessageOutput) ToEmailSettingsMessageOutput() EmailSettingsMessageOutput {
+func (o EmailProviderSettingsMessageOutput) ToEmailProviderSettingsMessageOutput() EmailProviderSettingsMessageOutput {
 	return o
 }
 
-func (o EmailSettingsMessageOutput) ToEmailSettingsMessageOutputWithContext(ctx context.Context) EmailSettingsMessageOutput {
+func (o EmailProviderSettingsMessageOutput) ToEmailProviderSettingsMessageOutputWithContext(ctx context.Context) EmailProviderSettingsMessageOutput {
 	return o
 }
 
-func (o EmailSettingsMessageOutput) ToEmailSettingsMessagePtrOutput() EmailSettingsMessagePtrOutput {
-	return o.ToEmailSettingsMessagePtrOutputWithContext(context.Background())
+func (o EmailProviderSettingsMessageOutput) ToEmailProviderSettingsMessagePtrOutput() EmailProviderSettingsMessagePtrOutput {
+	return o.ToEmailProviderSettingsMessagePtrOutputWithContext(context.Background())
 }
 
-func (o EmailSettingsMessageOutput) ToEmailSettingsMessagePtrOutputWithContext(ctx context.Context) EmailSettingsMessagePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailSettingsMessage) *EmailSettingsMessage {
+func (o EmailProviderSettingsMessageOutput) ToEmailProviderSettingsMessagePtrOutputWithContext(ctx context.Context) EmailProviderSettingsMessagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailProviderSettingsMessage) *EmailProviderSettingsMessage {
 		return &v
-	}).(EmailSettingsMessagePtrOutput)
+	}).(EmailProviderSettingsMessagePtrOutput)
 }
 
-func (o EmailSettingsMessageOutput) ToOutput(ctx context.Context) pulumix.Output[EmailSettingsMessage] {
-	return pulumix.Output[EmailSettingsMessage]{
+func (o EmailProviderSettingsMessageOutput) ToOutput(ctx context.Context) pulumix.Output[EmailProviderSettingsMessage] {
+	return pulumix.Output[EmailProviderSettingsMessage]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o EmailSettingsMessageOutput) ConfigurationSetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailSettingsMessage) *string { return v.ConfigurationSetName }).(pulumi.StringPtrOutput)
+func (o EmailProviderSettingsMessageOutput) ConfigurationSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailProviderSettingsMessage) *string { return v.ConfigurationSetName }).(pulumi.StringPtrOutput)
 }
 
-func (o EmailSettingsMessageOutput) ViewContentLink() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v EmailSettingsMessage) *bool { return v.ViewContentLink }).(pulumi.BoolPtrOutput)
+func (o EmailProviderSettingsMessageOutput) ViewContentLink() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EmailProviderSettingsMessage) *bool { return v.ViewContentLink }).(pulumi.BoolPtrOutput)
 }
 
-type EmailSettingsMessagePtrOutput struct{ *pulumi.OutputState }
+type EmailProviderSettingsMessagePtrOutput struct{ *pulumi.OutputState }
 
-func (EmailSettingsMessagePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailSettingsMessage)(nil)).Elem()
+func (EmailProviderSettingsMessagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailProviderSettingsMessage)(nil)).Elem()
 }
 
-func (o EmailSettingsMessagePtrOutput) ToEmailSettingsMessagePtrOutput() EmailSettingsMessagePtrOutput {
+func (o EmailProviderSettingsMessagePtrOutput) ToEmailProviderSettingsMessagePtrOutput() EmailProviderSettingsMessagePtrOutput {
 	return o
 }
 
-func (o EmailSettingsMessagePtrOutput) ToEmailSettingsMessagePtrOutputWithContext(ctx context.Context) EmailSettingsMessagePtrOutput {
+func (o EmailProviderSettingsMessagePtrOutput) ToEmailProviderSettingsMessagePtrOutputWithContext(ctx context.Context) EmailProviderSettingsMessagePtrOutput {
 	return o
 }
 
-func (o EmailSettingsMessagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailSettingsMessage] {
-	return pulumix.Output[*EmailSettingsMessage]{
+func (o EmailProviderSettingsMessagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailProviderSettingsMessage] {
+	return pulumix.Output[*EmailProviderSettingsMessage]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o EmailSettingsMessagePtrOutput) Elem() EmailSettingsMessageOutput {
-	return o.ApplyT(func(v *EmailSettingsMessage) EmailSettingsMessage {
+func (o EmailProviderSettingsMessagePtrOutput) Elem() EmailProviderSettingsMessageOutput {
+	return o.ApplyT(func(v *EmailProviderSettingsMessage) EmailProviderSettingsMessage {
 		if v != nil {
 			return *v
 		}
-		var ret EmailSettingsMessage
+		var ret EmailProviderSettingsMessage
 		return ret
-	}).(EmailSettingsMessageOutput)
+	}).(EmailProviderSettingsMessageOutput)
 }
 
-func (o EmailSettingsMessagePtrOutput) ConfigurationSetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailSettingsMessage) *string {
+func (o EmailProviderSettingsMessagePtrOutput) ConfigurationSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailProviderSettingsMessage) *string {
 		if v == nil {
 			return nil
 		}
@@ -12230,2543 +18118,13 @@ func (o EmailSettingsMessagePtrOutput) ConfigurationSetName() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o EmailSettingsMessagePtrOutput) ViewContentLink() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *EmailSettingsMessage) *bool {
+func (o EmailProviderSettingsMessagePtrOutput) ViewContentLink() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EmailProviderSettingsMessage) *bool {
 		if v == nil {
 			return nil
 		}
 		return v.ViewContentLink
 	}).(pulumi.BoolPtrOutput)
-}
-
-type GlobalClientAddons struct {
-	Aws                  map[string]interface{} `pulumi:"aws"`
-	AzureBlob            map[string]interface{} `pulumi:"azureBlob"`
-	AzureSb              map[string]interface{} `pulumi:"azureSb"`
-	Box                  map[string]interface{} `pulumi:"box"`
-	Cloudbees            map[string]interface{} `pulumi:"cloudbees"`
-	Concur               map[string]interface{} `pulumi:"concur"`
-	Dropbox              map[string]interface{} `pulumi:"dropbox"`
-	Echosign             map[string]interface{} `pulumi:"echosign"`
-	Egnyte               map[string]interface{} `pulumi:"egnyte"`
-	Firebase             map[string]interface{} `pulumi:"firebase"`
-	Layer                map[string]interface{} `pulumi:"layer"`
-	Mscrm                map[string]interface{} `pulumi:"mscrm"`
-	Newrelic             map[string]interface{} `pulumi:"newrelic"`
-	Office365            map[string]interface{} `pulumi:"office365"`
-	Rms                  map[string]interface{} `pulumi:"rms"`
-	Salesforce           map[string]interface{} `pulumi:"salesforce"`
-	SalesforceApi        map[string]interface{} `pulumi:"salesforceApi"`
-	SalesforceSandboxApi map[string]interface{} `pulumi:"salesforceSandboxApi"`
-	// Configuration settings for a SAML add-on.
-	Samlp      *GlobalClientAddonsSamlp `pulumi:"samlp"`
-	SapApi     map[string]interface{}   `pulumi:"sapApi"`
-	Sentry     map[string]interface{}   `pulumi:"sentry"`
-	Sharepoint map[string]interface{}   `pulumi:"sharepoint"`
-	Slack      map[string]interface{}   `pulumi:"slack"`
-	Springcm   map[string]interface{}   `pulumi:"springcm"`
-	Wams       map[string]interface{}   `pulumi:"wams"`
-	// WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `clientAliases` properties on the client.
-	Wsfed   map[string]interface{} `pulumi:"wsfed"`
-	Zendesk map[string]interface{} `pulumi:"zendesk"`
-	Zoom    map[string]interface{} `pulumi:"zoom"`
-}
-
-// GlobalClientAddonsInput is an input type that accepts GlobalClientAddonsArgs and GlobalClientAddonsOutput values.
-// You can construct a concrete instance of `GlobalClientAddonsInput` via:
-//
-//	GlobalClientAddonsArgs{...}
-type GlobalClientAddonsInput interface {
-	pulumi.Input
-
-	ToGlobalClientAddonsOutput() GlobalClientAddonsOutput
-	ToGlobalClientAddonsOutputWithContext(context.Context) GlobalClientAddonsOutput
-}
-
-type GlobalClientAddonsArgs struct {
-	Aws                  pulumi.MapInput `pulumi:"aws"`
-	AzureBlob            pulumi.MapInput `pulumi:"azureBlob"`
-	AzureSb              pulumi.MapInput `pulumi:"azureSb"`
-	Box                  pulumi.MapInput `pulumi:"box"`
-	Cloudbees            pulumi.MapInput `pulumi:"cloudbees"`
-	Concur               pulumi.MapInput `pulumi:"concur"`
-	Dropbox              pulumi.MapInput `pulumi:"dropbox"`
-	Echosign             pulumi.MapInput `pulumi:"echosign"`
-	Egnyte               pulumi.MapInput `pulumi:"egnyte"`
-	Firebase             pulumi.MapInput `pulumi:"firebase"`
-	Layer                pulumi.MapInput `pulumi:"layer"`
-	Mscrm                pulumi.MapInput `pulumi:"mscrm"`
-	Newrelic             pulumi.MapInput `pulumi:"newrelic"`
-	Office365            pulumi.MapInput `pulumi:"office365"`
-	Rms                  pulumi.MapInput `pulumi:"rms"`
-	Salesforce           pulumi.MapInput `pulumi:"salesforce"`
-	SalesforceApi        pulumi.MapInput `pulumi:"salesforceApi"`
-	SalesforceSandboxApi pulumi.MapInput `pulumi:"salesforceSandboxApi"`
-	// Configuration settings for a SAML add-on.
-	Samlp      GlobalClientAddonsSamlpPtrInput `pulumi:"samlp"`
-	SapApi     pulumi.MapInput                 `pulumi:"sapApi"`
-	Sentry     pulumi.MapInput                 `pulumi:"sentry"`
-	Sharepoint pulumi.MapInput                 `pulumi:"sharepoint"`
-	Slack      pulumi.MapInput                 `pulumi:"slack"`
-	Springcm   pulumi.MapInput                 `pulumi:"springcm"`
-	Wams       pulumi.MapInput                 `pulumi:"wams"`
-	// WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `clientAliases` properties on the client.
-	Wsfed   pulumi.MapInput `pulumi:"wsfed"`
-	Zendesk pulumi.MapInput `pulumi:"zendesk"`
-	Zoom    pulumi.MapInput `pulumi:"zoom"`
-}
-
-func (GlobalClientAddonsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientAddons)(nil)).Elem()
-}
-
-func (i GlobalClientAddonsArgs) ToGlobalClientAddonsOutput() GlobalClientAddonsOutput {
-	return i.ToGlobalClientAddonsOutputWithContext(context.Background())
-}
-
-func (i GlobalClientAddonsArgs) ToGlobalClientAddonsOutputWithContext(ctx context.Context) GlobalClientAddonsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientAddonsOutput)
-}
-
-func (i GlobalClientAddonsArgs) ToOutput(ctx context.Context) pulumix.Output[GlobalClientAddons] {
-	return pulumix.Output[GlobalClientAddons]{
-		OutputState: i.ToGlobalClientAddonsOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i GlobalClientAddonsArgs) ToGlobalClientAddonsPtrOutput() GlobalClientAddonsPtrOutput {
-	return i.ToGlobalClientAddonsPtrOutputWithContext(context.Background())
-}
-
-func (i GlobalClientAddonsArgs) ToGlobalClientAddonsPtrOutputWithContext(ctx context.Context) GlobalClientAddonsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientAddonsOutput).ToGlobalClientAddonsPtrOutputWithContext(ctx)
-}
-
-// GlobalClientAddonsPtrInput is an input type that accepts GlobalClientAddonsArgs, GlobalClientAddonsPtr and GlobalClientAddonsPtrOutput values.
-// You can construct a concrete instance of `GlobalClientAddonsPtrInput` via:
-//
-//	        GlobalClientAddonsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GlobalClientAddonsPtrInput interface {
-	pulumi.Input
-
-	ToGlobalClientAddonsPtrOutput() GlobalClientAddonsPtrOutput
-	ToGlobalClientAddonsPtrOutputWithContext(context.Context) GlobalClientAddonsPtrOutput
-}
-
-type globalClientAddonsPtrType GlobalClientAddonsArgs
-
-func GlobalClientAddonsPtr(v *GlobalClientAddonsArgs) GlobalClientAddonsPtrInput {
-	return (*globalClientAddonsPtrType)(v)
-}
-
-func (*globalClientAddonsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientAddons)(nil)).Elem()
-}
-
-func (i *globalClientAddonsPtrType) ToGlobalClientAddonsPtrOutput() GlobalClientAddonsPtrOutput {
-	return i.ToGlobalClientAddonsPtrOutputWithContext(context.Background())
-}
-
-func (i *globalClientAddonsPtrType) ToGlobalClientAddonsPtrOutputWithContext(ctx context.Context) GlobalClientAddonsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientAddonsPtrOutput)
-}
-
-func (i *globalClientAddonsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientAddons] {
-	return pulumix.Output[*GlobalClientAddons]{
-		OutputState: i.ToGlobalClientAddonsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GlobalClientAddonsOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientAddonsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientAddons)(nil)).Elem()
-}
-
-func (o GlobalClientAddonsOutput) ToGlobalClientAddonsOutput() GlobalClientAddonsOutput {
-	return o
-}
-
-func (o GlobalClientAddonsOutput) ToGlobalClientAddonsOutputWithContext(ctx context.Context) GlobalClientAddonsOutput {
-	return o
-}
-
-func (o GlobalClientAddonsOutput) ToGlobalClientAddonsPtrOutput() GlobalClientAddonsPtrOutput {
-	return o.ToGlobalClientAddonsPtrOutputWithContext(context.Background())
-}
-
-func (o GlobalClientAddonsOutput) ToGlobalClientAddonsPtrOutputWithContext(ctx context.Context) GlobalClientAddonsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientAddons) *GlobalClientAddons {
-		return &v
-	}).(GlobalClientAddonsPtrOutput)
-}
-
-func (o GlobalClientAddonsOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalClientAddons] {
-	return pulumix.Output[GlobalClientAddons]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GlobalClientAddonsOutput) Aws() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Aws }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) AzureBlob() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.AzureBlob }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) AzureSb() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.AzureSb }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Box() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Box }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Cloudbees() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Cloudbees }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Concur() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Concur }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Dropbox() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Dropbox }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Echosign() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Echosign }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Egnyte() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Egnyte }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Firebase() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Firebase }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Layer() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Layer }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Mscrm() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Mscrm }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Newrelic() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Newrelic }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Office365() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Office365 }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Rms() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Rms }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Salesforce() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Salesforce }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) SalesforceApi() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.SalesforceApi }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) SalesforceSandboxApi() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.SalesforceSandboxApi }).(pulumi.MapOutput)
-}
-
-// Configuration settings for a SAML add-on.
-func (o GlobalClientAddonsOutput) Samlp() GlobalClientAddonsSamlpPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddons) *GlobalClientAddonsSamlp { return v.Samlp }).(GlobalClientAddonsSamlpPtrOutput)
-}
-
-func (o GlobalClientAddonsOutput) SapApi() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.SapApi }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Sentry() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Sentry }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Sharepoint() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Sharepoint }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Slack() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Slack }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Springcm() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Springcm }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Wams() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Wams }).(pulumi.MapOutput)
-}
-
-// WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `clientAliases` properties on the client.
-func (o GlobalClientAddonsOutput) Wsfed() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Wsfed }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Zendesk() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Zendesk }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsOutput) Zoom() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Zoom }).(pulumi.MapOutput)
-}
-
-type GlobalClientAddonsPtrOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientAddonsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientAddons)(nil)).Elem()
-}
-
-func (o GlobalClientAddonsPtrOutput) ToGlobalClientAddonsPtrOutput() GlobalClientAddonsPtrOutput {
-	return o
-}
-
-func (o GlobalClientAddonsPtrOutput) ToGlobalClientAddonsPtrOutputWithContext(ctx context.Context) GlobalClientAddonsPtrOutput {
-	return o
-}
-
-func (o GlobalClientAddonsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientAddons] {
-	return pulumix.Output[*GlobalClientAddons]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GlobalClientAddonsPtrOutput) Elem() GlobalClientAddonsOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) GlobalClientAddons {
-		if v != nil {
-			return *v
-		}
-		var ret GlobalClientAddons
-		return ret
-	}).(GlobalClientAddonsOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Aws() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Aws
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) AzureBlob() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.AzureBlob
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) AzureSb() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.AzureSb
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Box() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Box
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Cloudbees() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Cloudbees
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Concur() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Concur
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Dropbox() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Dropbox
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Echosign() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Echosign
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Egnyte() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Egnyte
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Firebase() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Firebase
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Layer() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Layer
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Mscrm() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Mscrm
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Newrelic() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Newrelic
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Office365() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Office365
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Rms() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Rms
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Salesforce() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Salesforce
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) SalesforceApi() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.SalesforceApi
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) SalesforceSandboxApi() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.SalesforceSandboxApi
-	}).(pulumi.MapOutput)
-}
-
-// Configuration settings for a SAML add-on.
-func (o GlobalClientAddonsPtrOutput) Samlp() GlobalClientAddonsSamlpPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) *GlobalClientAddonsSamlp {
-		if v == nil {
-			return nil
-		}
-		return v.Samlp
-	}).(GlobalClientAddonsSamlpPtrOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) SapApi() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.SapApi
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Sentry() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Sentry
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Sharepoint() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Sharepoint
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Slack() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Slack
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Springcm() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Springcm
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Wams() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Wams
-	}).(pulumi.MapOutput)
-}
-
-// WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `clientAliases` properties on the client.
-func (o GlobalClientAddonsPtrOutput) Wsfed() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Wsfed
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Zendesk() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Zendesk
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsPtrOutput) Zoom() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Zoom
-	}).(pulumi.MapOutput)
-}
-
-type GlobalClientAddonsSamlp struct {
-	Audience                       *string                `pulumi:"audience"`
-	AuthnContextClassRef           *string                `pulumi:"authnContextClassRef"`
-	Binding                        *string                `pulumi:"binding"`
-	CreateUpnClaim                 *bool                  `pulumi:"createUpnClaim"`
-	Destination                    *string                `pulumi:"destination"`
-	DigestAlgorithm                *string                `pulumi:"digestAlgorithm"`
-	IncludeAttributeNameFormat     *bool                  `pulumi:"includeAttributeNameFormat"`
-	Issuer                         *string                `pulumi:"issuer"`
-	LifetimeInSeconds              *int                   `pulumi:"lifetimeInSeconds"`
-	Logout                         map[string]interface{} `pulumi:"logout"`
-	MapIdentities                  *bool                  `pulumi:"mapIdentities"`
-	MapUnknownClaimsAsIs           *bool                  `pulumi:"mapUnknownClaimsAsIs"`
-	Mappings                       map[string]interface{} `pulumi:"mappings"`
-	NameIdentifierFormat           *string                `pulumi:"nameIdentifierFormat"`
-	NameIdentifierProbes           []string               `pulumi:"nameIdentifierProbes"`
-	PassthroughClaimsWithNoMapping *bool                  `pulumi:"passthroughClaimsWithNoMapping"`
-	Recipient                      *string                `pulumi:"recipient"`
-	SignResponse                   *bool                  `pulumi:"signResponse"`
-	SignatureAlgorithm             *string                `pulumi:"signatureAlgorithm"`
-	SigningCert                    *string                `pulumi:"signingCert"`
-	TypedAttributes                *bool                  `pulumi:"typedAttributes"`
-}
-
-// GlobalClientAddonsSamlpInput is an input type that accepts GlobalClientAddonsSamlpArgs and GlobalClientAddonsSamlpOutput values.
-// You can construct a concrete instance of `GlobalClientAddonsSamlpInput` via:
-//
-//	GlobalClientAddonsSamlpArgs{...}
-type GlobalClientAddonsSamlpInput interface {
-	pulumi.Input
-
-	ToGlobalClientAddonsSamlpOutput() GlobalClientAddonsSamlpOutput
-	ToGlobalClientAddonsSamlpOutputWithContext(context.Context) GlobalClientAddonsSamlpOutput
-}
-
-type GlobalClientAddonsSamlpArgs struct {
-	Audience                       pulumi.StringPtrInput   `pulumi:"audience"`
-	AuthnContextClassRef           pulumi.StringPtrInput   `pulumi:"authnContextClassRef"`
-	Binding                        pulumi.StringPtrInput   `pulumi:"binding"`
-	CreateUpnClaim                 pulumi.BoolPtrInput     `pulumi:"createUpnClaim"`
-	Destination                    pulumi.StringPtrInput   `pulumi:"destination"`
-	DigestAlgorithm                pulumi.StringPtrInput   `pulumi:"digestAlgorithm"`
-	IncludeAttributeNameFormat     pulumi.BoolPtrInput     `pulumi:"includeAttributeNameFormat"`
-	Issuer                         pulumi.StringPtrInput   `pulumi:"issuer"`
-	LifetimeInSeconds              pulumi.IntPtrInput      `pulumi:"lifetimeInSeconds"`
-	Logout                         pulumi.MapInput         `pulumi:"logout"`
-	MapIdentities                  pulumi.BoolPtrInput     `pulumi:"mapIdentities"`
-	MapUnknownClaimsAsIs           pulumi.BoolPtrInput     `pulumi:"mapUnknownClaimsAsIs"`
-	Mappings                       pulumi.MapInput         `pulumi:"mappings"`
-	NameIdentifierFormat           pulumi.StringPtrInput   `pulumi:"nameIdentifierFormat"`
-	NameIdentifierProbes           pulumi.StringArrayInput `pulumi:"nameIdentifierProbes"`
-	PassthroughClaimsWithNoMapping pulumi.BoolPtrInput     `pulumi:"passthroughClaimsWithNoMapping"`
-	Recipient                      pulumi.StringPtrInput   `pulumi:"recipient"`
-	SignResponse                   pulumi.BoolPtrInput     `pulumi:"signResponse"`
-	SignatureAlgorithm             pulumi.StringPtrInput   `pulumi:"signatureAlgorithm"`
-	SigningCert                    pulumi.StringPtrInput   `pulumi:"signingCert"`
-	TypedAttributes                pulumi.BoolPtrInput     `pulumi:"typedAttributes"`
-}
-
-func (GlobalClientAddonsSamlpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientAddonsSamlp)(nil)).Elem()
-}
-
-func (i GlobalClientAddonsSamlpArgs) ToGlobalClientAddonsSamlpOutput() GlobalClientAddonsSamlpOutput {
-	return i.ToGlobalClientAddonsSamlpOutputWithContext(context.Background())
-}
-
-func (i GlobalClientAddonsSamlpArgs) ToGlobalClientAddonsSamlpOutputWithContext(ctx context.Context) GlobalClientAddonsSamlpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientAddonsSamlpOutput)
-}
-
-func (i GlobalClientAddonsSamlpArgs) ToOutput(ctx context.Context) pulumix.Output[GlobalClientAddonsSamlp] {
-	return pulumix.Output[GlobalClientAddonsSamlp]{
-		OutputState: i.ToGlobalClientAddonsSamlpOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i GlobalClientAddonsSamlpArgs) ToGlobalClientAddonsSamlpPtrOutput() GlobalClientAddonsSamlpPtrOutput {
-	return i.ToGlobalClientAddonsSamlpPtrOutputWithContext(context.Background())
-}
-
-func (i GlobalClientAddonsSamlpArgs) ToGlobalClientAddonsSamlpPtrOutputWithContext(ctx context.Context) GlobalClientAddonsSamlpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientAddonsSamlpOutput).ToGlobalClientAddonsSamlpPtrOutputWithContext(ctx)
-}
-
-// GlobalClientAddonsSamlpPtrInput is an input type that accepts GlobalClientAddonsSamlpArgs, GlobalClientAddonsSamlpPtr and GlobalClientAddonsSamlpPtrOutput values.
-// You can construct a concrete instance of `GlobalClientAddonsSamlpPtrInput` via:
-//
-//	        GlobalClientAddonsSamlpArgs{...}
-//
-//	or:
-//
-//	        nil
-type GlobalClientAddonsSamlpPtrInput interface {
-	pulumi.Input
-
-	ToGlobalClientAddonsSamlpPtrOutput() GlobalClientAddonsSamlpPtrOutput
-	ToGlobalClientAddonsSamlpPtrOutputWithContext(context.Context) GlobalClientAddonsSamlpPtrOutput
-}
-
-type globalClientAddonsSamlpPtrType GlobalClientAddonsSamlpArgs
-
-func GlobalClientAddonsSamlpPtr(v *GlobalClientAddonsSamlpArgs) GlobalClientAddonsSamlpPtrInput {
-	return (*globalClientAddonsSamlpPtrType)(v)
-}
-
-func (*globalClientAddonsSamlpPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientAddonsSamlp)(nil)).Elem()
-}
-
-func (i *globalClientAddonsSamlpPtrType) ToGlobalClientAddonsSamlpPtrOutput() GlobalClientAddonsSamlpPtrOutput {
-	return i.ToGlobalClientAddonsSamlpPtrOutputWithContext(context.Background())
-}
-
-func (i *globalClientAddonsSamlpPtrType) ToGlobalClientAddonsSamlpPtrOutputWithContext(ctx context.Context) GlobalClientAddonsSamlpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientAddonsSamlpPtrOutput)
-}
-
-func (i *globalClientAddonsSamlpPtrType) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientAddonsSamlp] {
-	return pulumix.Output[*GlobalClientAddonsSamlp]{
-		OutputState: i.ToGlobalClientAddonsSamlpPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GlobalClientAddonsSamlpOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientAddonsSamlpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientAddonsSamlp)(nil)).Elem()
-}
-
-func (o GlobalClientAddonsSamlpOutput) ToGlobalClientAddonsSamlpOutput() GlobalClientAddonsSamlpOutput {
-	return o
-}
-
-func (o GlobalClientAddonsSamlpOutput) ToGlobalClientAddonsSamlpOutputWithContext(ctx context.Context) GlobalClientAddonsSamlpOutput {
-	return o
-}
-
-func (o GlobalClientAddonsSamlpOutput) ToGlobalClientAddonsSamlpPtrOutput() GlobalClientAddonsSamlpPtrOutput {
-	return o.ToGlobalClientAddonsSamlpPtrOutputWithContext(context.Background())
-}
-
-func (o GlobalClientAddonsSamlpOutput) ToGlobalClientAddonsSamlpPtrOutputWithContext(ctx context.Context) GlobalClientAddonsSamlpPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientAddonsSamlp) *GlobalClientAddonsSamlp {
-		return &v
-	}).(GlobalClientAddonsSamlpPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalClientAddonsSamlp] {
-	return pulumix.Output[GlobalClientAddonsSamlp]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GlobalClientAddonsSamlpOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.Audience }).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) AuthnContextClassRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.AuthnContextClassRef }).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) Binding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.Binding }).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) CreateUpnClaim() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *bool { return v.CreateUpnClaim }).(pulumi.BoolPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.Destination }).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) DigestAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.DigestAlgorithm }).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) IncludeAttributeNameFormat() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *bool { return v.IncludeAttributeNameFormat }).(pulumi.BoolPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) Issuer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.Issuer }).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *int { return v.LifetimeInSeconds }).(pulumi.IntPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) Logout() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) map[string]interface{} { return v.Logout }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) MapIdentities() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *bool { return v.MapIdentities }).(pulumi.BoolPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) MapUnknownClaimsAsIs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *bool { return v.MapUnknownClaimsAsIs }).(pulumi.BoolPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) Mappings() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) map[string]interface{} { return v.Mappings }).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) NameIdentifierFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.NameIdentifierFormat }).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) NameIdentifierProbes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) []string { return v.NameIdentifierProbes }).(pulumi.StringArrayOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) PassthroughClaimsWithNoMapping() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *bool { return v.PassthroughClaimsWithNoMapping }).(pulumi.BoolPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) Recipient() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.Recipient }).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) SignResponse() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *bool { return v.SignResponse }).(pulumi.BoolPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) SigningCert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.SigningCert }).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpOutput) TypedAttributes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *bool { return v.TypedAttributes }).(pulumi.BoolPtrOutput)
-}
-
-type GlobalClientAddonsSamlpPtrOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientAddonsSamlpPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientAddonsSamlp)(nil)).Elem()
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) ToGlobalClientAddonsSamlpPtrOutput() GlobalClientAddonsSamlpPtrOutput {
-	return o
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) ToGlobalClientAddonsSamlpPtrOutputWithContext(ctx context.Context) GlobalClientAddonsSamlpPtrOutput {
-	return o
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientAddonsSamlp] {
-	return pulumix.Output[*GlobalClientAddonsSamlp]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) Elem() GlobalClientAddonsSamlpOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) GlobalClientAddonsSamlp {
-		if v != nil {
-			return *v
-		}
-		var ret GlobalClientAddonsSamlp
-		return ret
-	}).(GlobalClientAddonsSamlpOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Audience
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) AuthnContextClassRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AuthnContextClassRef
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) Binding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Binding
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) CreateUpnClaim() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.CreateUpnClaim
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Destination
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) DigestAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DigestAlgorithm
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) IncludeAttributeNameFormat() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IncludeAttributeNameFormat
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) Issuer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Issuer
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *int {
-		if v == nil {
-			return nil
-		}
-		return v.LifetimeInSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) Logout() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Logout
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) MapIdentities() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.MapIdentities
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) MapUnknownClaimsAsIs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.MapUnknownClaimsAsIs
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) Mappings() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Mappings
-	}).(pulumi.MapOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) NameIdentifierFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NameIdentifierFormat
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) NameIdentifierProbes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) []string {
-		if v == nil {
-			return nil
-		}
-		return v.NameIdentifierProbes
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) PassthroughClaimsWithNoMapping() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.PassthroughClaimsWithNoMapping
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) Recipient() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Recipient
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) SignResponse() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.SignResponse
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SignatureAlgorithm
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) SigningCert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SigningCert
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpPtrOutput) TypedAttributes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.TypedAttributes
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GlobalClientJwtConfiguration struct {
-	// Algorithm used to sign JWTs.
-	Alg *string `pulumi:"alg"`
-	// Number of seconds during which the JWT will be valid.
-	LifetimeInSeconds *int `pulumi:"lifetimeInSeconds"`
-	// Permissions (scopes) included in JWTs.
-	Scopes map[string]string `pulumi:"scopes"`
-	// Indicates whether the client secret is Base64-encoded.
-	SecretEncoded *bool `pulumi:"secretEncoded"`
-}
-
-// GlobalClientJwtConfigurationInput is an input type that accepts GlobalClientJwtConfigurationArgs and GlobalClientJwtConfigurationOutput values.
-// You can construct a concrete instance of `GlobalClientJwtConfigurationInput` via:
-//
-//	GlobalClientJwtConfigurationArgs{...}
-type GlobalClientJwtConfigurationInput interface {
-	pulumi.Input
-
-	ToGlobalClientJwtConfigurationOutput() GlobalClientJwtConfigurationOutput
-	ToGlobalClientJwtConfigurationOutputWithContext(context.Context) GlobalClientJwtConfigurationOutput
-}
-
-type GlobalClientJwtConfigurationArgs struct {
-	// Algorithm used to sign JWTs.
-	Alg pulumi.StringPtrInput `pulumi:"alg"`
-	// Number of seconds during which the JWT will be valid.
-	LifetimeInSeconds pulumi.IntPtrInput `pulumi:"lifetimeInSeconds"`
-	// Permissions (scopes) included in JWTs.
-	Scopes pulumi.StringMapInput `pulumi:"scopes"`
-	// Indicates whether the client secret is Base64-encoded.
-	SecretEncoded pulumi.BoolPtrInput `pulumi:"secretEncoded"`
-}
-
-func (GlobalClientJwtConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientJwtConfiguration)(nil)).Elem()
-}
-
-func (i GlobalClientJwtConfigurationArgs) ToGlobalClientJwtConfigurationOutput() GlobalClientJwtConfigurationOutput {
-	return i.ToGlobalClientJwtConfigurationOutputWithContext(context.Background())
-}
-
-func (i GlobalClientJwtConfigurationArgs) ToGlobalClientJwtConfigurationOutputWithContext(ctx context.Context) GlobalClientJwtConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientJwtConfigurationOutput)
-}
-
-func (i GlobalClientJwtConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GlobalClientJwtConfiguration] {
-	return pulumix.Output[GlobalClientJwtConfiguration]{
-		OutputState: i.ToGlobalClientJwtConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i GlobalClientJwtConfigurationArgs) ToGlobalClientJwtConfigurationPtrOutput() GlobalClientJwtConfigurationPtrOutput {
-	return i.ToGlobalClientJwtConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i GlobalClientJwtConfigurationArgs) ToGlobalClientJwtConfigurationPtrOutputWithContext(ctx context.Context) GlobalClientJwtConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientJwtConfigurationOutput).ToGlobalClientJwtConfigurationPtrOutputWithContext(ctx)
-}
-
-// GlobalClientJwtConfigurationPtrInput is an input type that accepts GlobalClientJwtConfigurationArgs, GlobalClientJwtConfigurationPtr and GlobalClientJwtConfigurationPtrOutput values.
-// You can construct a concrete instance of `GlobalClientJwtConfigurationPtrInput` via:
-//
-//	        GlobalClientJwtConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type GlobalClientJwtConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToGlobalClientJwtConfigurationPtrOutput() GlobalClientJwtConfigurationPtrOutput
-	ToGlobalClientJwtConfigurationPtrOutputWithContext(context.Context) GlobalClientJwtConfigurationPtrOutput
-}
-
-type globalClientJwtConfigurationPtrType GlobalClientJwtConfigurationArgs
-
-func GlobalClientJwtConfigurationPtr(v *GlobalClientJwtConfigurationArgs) GlobalClientJwtConfigurationPtrInput {
-	return (*globalClientJwtConfigurationPtrType)(v)
-}
-
-func (*globalClientJwtConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientJwtConfiguration)(nil)).Elem()
-}
-
-func (i *globalClientJwtConfigurationPtrType) ToGlobalClientJwtConfigurationPtrOutput() GlobalClientJwtConfigurationPtrOutput {
-	return i.ToGlobalClientJwtConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *globalClientJwtConfigurationPtrType) ToGlobalClientJwtConfigurationPtrOutputWithContext(ctx context.Context) GlobalClientJwtConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientJwtConfigurationPtrOutput)
-}
-
-func (i *globalClientJwtConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientJwtConfiguration] {
-	return pulumix.Output[*GlobalClientJwtConfiguration]{
-		OutputState: i.ToGlobalClientJwtConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GlobalClientJwtConfigurationOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientJwtConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientJwtConfiguration)(nil)).Elem()
-}
-
-func (o GlobalClientJwtConfigurationOutput) ToGlobalClientJwtConfigurationOutput() GlobalClientJwtConfigurationOutput {
-	return o
-}
-
-func (o GlobalClientJwtConfigurationOutput) ToGlobalClientJwtConfigurationOutputWithContext(ctx context.Context) GlobalClientJwtConfigurationOutput {
-	return o
-}
-
-func (o GlobalClientJwtConfigurationOutput) ToGlobalClientJwtConfigurationPtrOutput() GlobalClientJwtConfigurationPtrOutput {
-	return o.ToGlobalClientJwtConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o GlobalClientJwtConfigurationOutput) ToGlobalClientJwtConfigurationPtrOutputWithContext(ctx context.Context) GlobalClientJwtConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientJwtConfiguration) *GlobalClientJwtConfiguration {
-		return &v
-	}).(GlobalClientJwtConfigurationPtrOutput)
-}
-
-func (o GlobalClientJwtConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalClientJwtConfiguration] {
-	return pulumix.Output[GlobalClientJwtConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Algorithm used to sign JWTs.
-func (o GlobalClientJwtConfigurationOutput) Alg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientJwtConfiguration) *string { return v.Alg }).(pulumi.StringPtrOutput)
-}
-
-// Number of seconds during which the JWT will be valid.
-func (o GlobalClientJwtConfigurationOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GlobalClientJwtConfiguration) *int { return v.LifetimeInSeconds }).(pulumi.IntPtrOutput)
-}
-
-// Permissions (scopes) included in JWTs.
-func (o GlobalClientJwtConfigurationOutput) Scopes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GlobalClientJwtConfiguration) map[string]string { return v.Scopes }).(pulumi.StringMapOutput)
-}
-
-// Indicates whether the client secret is Base64-encoded.
-func (o GlobalClientJwtConfigurationOutput) SecretEncoded() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientJwtConfiguration) *bool { return v.SecretEncoded }).(pulumi.BoolPtrOutput)
-}
-
-type GlobalClientJwtConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientJwtConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientJwtConfiguration)(nil)).Elem()
-}
-
-func (o GlobalClientJwtConfigurationPtrOutput) ToGlobalClientJwtConfigurationPtrOutput() GlobalClientJwtConfigurationPtrOutput {
-	return o
-}
-
-func (o GlobalClientJwtConfigurationPtrOutput) ToGlobalClientJwtConfigurationPtrOutputWithContext(ctx context.Context) GlobalClientJwtConfigurationPtrOutput {
-	return o
-}
-
-func (o GlobalClientJwtConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientJwtConfiguration] {
-	return pulumix.Output[*GlobalClientJwtConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GlobalClientJwtConfigurationPtrOutput) Elem() GlobalClientJwtConfigurationOutput {
-	return o.ApplyT(func(v *GlobalClientJwtConfiguration) GlobalClientJwtConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret GlobalClientJwtConfiguration
-		return ret
-	}).(GlobalClientJwtConfigurationOutput)
-}
-
-// Algorithm used to sign JWTs.
-func (o GlobalClientJwtConfigurationPtrOutput) Alg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GlobalClientJwtConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Alg
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of seconds during which the JWT will be valid.
-func (o GlobalClientJwtConfigurationPtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GlobalClientJwtConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return v.LifetimeInSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-// Permissions (scopes) included in JWTs.
-func (o GlobalClientJwtConfigurationPtrOutput) Scopes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GlobalClientJwtConfiguration) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Scopes
-	}).(pulumi.StringMapOutput)
-}
-
-// Indicates whether the client secret is Base64-encoded.
-func (o GlobalClientJwtConfigurationPtrOutput) SecretEncoded() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GlobalClientJwtConfiguration) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.SecretEncoded
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GlobalClientMobile struct {
-	// Configuration settings for Android native apps.
-	Android *GlobalClientMobileAndroid `pulumi:"android"`
-	// Configuration settings for i0S native apps.
-	Ios *GlobalClientMobileIos `pulumi:"ios"`
-}
-
-// GlobalClientMobileInput is an input type that accepts GlobalClientMobileArgs and GlobalClientMobileOutput values.
-// You can construct a concrete instance of `GlobalClientMobileInput` via:
-//
-//	GlobalClientMobileArgs{...}
-type GlobalClientMobileInput interface {
-	pulumi.Input
-
-	ToGlobalClientMobileOutput() GlobalClientMobileOutput
-	ToGlobalClientMobileOutputWithContext(context.Context) GlobalClientMobileOutput
-}
-
-type GlobalClientMobileArgs struct {
-	// Configuration settings for Android native apps.
-	Android GlobalClientMobileAndroidPtrInput `pulumi:"android"`
-	// Configuration settings for i0S native apps.
-	Ios GlobalClientMobileIosPtrInput `pulumi:"ios"`
-}
-
-func (GlobalClientMobileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientMobile)(nil)).Elem()
-}
-
-func (i GlobalClientMobileArgs) ToGlobalClientMobileOutput() GlobalClientMobileOutput {
-	return i.ToGlobalClientMobileOutputWithContext(context.Background())
-}
-
-func (i GlobalClientMobileArgs) ToGlobalClientMobileOutputWithContext(ctx context.Context) GlobalClientMobileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientMobileOutput)
-}
-
-func (i GlobalClientMobileArgs) ToOutput(ctx context.Context) pulumix.Output[GlobalClientMobile] {
-	return pulumix.Output[GlobalClientMobile]{
-		OutputState: i.ToGlobalClientMobileOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i GlobalClientMobileArgs) ToGlobalClientMobilePtrOutput() GlobalClientMobilePtrOutput {
-	return i.ToGlobalClientMobilePtrOutputWithContext(context.Background())
-}
-
-func (i GlobalClientMobileArgs) ToGlobalClientMobilePtrOutputWithContext(ctx context.Context) GlobalClientMobilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientMobileOutput).ToGlobalClientMobilePtrOutputWithContext(ctx)
-}
-
-// GlobalClientMobilePtrInput is an input type that accepts GlobalClientMobileArgs, GlobalClientMobilePtr and GlobalClientMobilePtrOutput values.
-// You can construct a concrete instance of `GlobalClientMobilePtrInput` via:
-//
-//	        GlobalClientMobileArgs{...}
-//
-//	or:
-//
-//	        nil
-type GlobalClientMobilePtrInput interface {
-	pulumi.Input
-
-	ToGlobalClientMobilePtrOutput() GlobalClientMobilePtrOutput
-	ToGlobalClientMobilePtrOutputWithContext(context.Context) GlobalClientMobilePtrOutput
-}
-
-type globalClientMobilePtrType GlobalClientMobileArgs
-
-func GlobalClientMobilePtr(v *GlobalClientMobileArgs) GlobalClientMobilePtrInput {
-	return (*globalClientMobilePtrType)(v)
-}
-
-func (*globalClientMobilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientMobile)(nil)).Elem()
-}
-
-func (i *globalClientMobilePtrType) ToGlobalClientMobilePtrOutput() GlobalClientMobilePtrOutput {
-	return i.ToGlobalClientMobilePtrOutputWithContext(context.Background())
-}
-
-func (i *globalClientMobilePtrType) ToGlobalClientMobilePtrOutputWithContext(ctx context.Context) GlobalClientMobilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientMobilePtrOutput)
-}
-
-func (i *globalClientMobilePtrType) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientMobile] {
-	return pulumix.Output[*GlobalClientMobile]{
-		OutputState: i.ToGlobalClientMobilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GlobalClientMobileOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientMobileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientMobile)(nil)).Elem()
-}
-
-func (o GlobalClientMobileOutput) ToGlobalClientMobileOutput() GlobalClientMobileOutput {
-	return o
-}
-
-func (o GlobalClientMobileOutput) ToGlobalClientMobileOutputWithContext(ctx context.Context) GlobalClientMobileOutput {
-	return o
-}
-
-func (o GlobalClientMobileOutput) ToGlobalClientMobilePtrOutput() GlobalClientMobilePtrOutput {
-	return o.ToGlobalClientMobilePtrOutputWithContext(context.Background())
-}
-
-func (o GlobalClientMobileOutput) ToGlobalClientMobilePtrOutputWithContext(ctx context.Context) GlobalClientMobilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientMobile) *GlobalClientMobile {
-		return &v
-	}).(GlobalClientMobilePtrOutput)
-}
-
-func (o GlobalClientMobileOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalClientMobile] {
-	return pulumix.Output[GlobalClientMobile]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Configuration settings for Android native apps.
-func (o GlobalClientMobileOutput) Android() GlobalClientMobileAndroidPtrOutput {
-	return o.ApplyT(func(v GlobalClientMobile) *GlobalClientMobileAndroid { return v.Android }).(GlobalClientMobileAndroidPtrOutput)
-}
-
-// Configuration settings for i0S native apps.
-func (o GlobalClientMobileOutput) Ios() GlobalClientMobileIosPtrOutput {
-	return o.ApplyT(func(v GlobalClientMobile) *GlobalClientMobileIos { return v.Ios }).(GlobalClientMobileIosPtrOutput)
-}
-
-type GlobalClientMobilePtrOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientMobilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientMobile)(nil)).Elem()
-}
-
-func (o GlobalClientMobilePtrOutput) ToGlobalClientMobilePtrOutput() GlobalClientMobilePtrOutput {
-	return o
-}
-
-func (o GlobalClientMobilePtrOutput) ToGlobalClientMobilePtrOutputWithContext(ctx context.Context) GlobalClientMobilePtrOutput {
-	return o
-}
-
-func (o GlobalClientMobilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientMobile] {
-	return pulumix.Output[*GlobalClientMobile]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GlobalClientMobilePtrOutput) Elem() GlobalClientMobileOutput {
-	return o.ApplyT(func(v *GlobalClientMobile) GlobalClientMobile {
-		if v != nil {
-			return *v
-		}
-		var ret GlobalClientMobile
-		return ret
-	}).(GlobalClientMobileOutput)
-}
-
-// Configuration settings for Android native apps.
-func (o GlobalClientMobilePtrOutput) Android() GlobalClientMobileAndroidPtrOutput {
-	return o.ApplyT(func(v *GlobalClientMobile) *GlobalClientMobileAndroid {
-		if v == nil {
-			return nil
-		}
-		return v.Android
-	}).(GlobalClientMobileAndroidPtrOutput)
-}
-
-// Configuration settings for i0S native apps.
-func (o GlobalClientMobilePtrOutput) Ios() GlobalClientMobileIosPtrOutput {
-	return o.ApplyT(func(v *GlobalClientMobile) *GlobalClientMobileIos {
-		if v == nil {
-			return nil
-		}
-		return v.Ios
-	}).(GlobalClientMobileIosPtrOutput)
-}
-
-type GlobalClientMobileAndroid struct {
-	AppPackageName         *string  `pulumi:"appPackageName"`
-	Sha256CertFingerprints []string `pulumi:"sha256CertFingerprints"`
-}
-
-// GlobalClientMobileAndroidInput is an input type that accepts GlobalClientMobileAndroidArgs and GlobalClientMobileAndroidOutput values.
-// You can construct a concrete instance of `GlobalClientMobileAndroidInput` via:
-//
-//	GlobalClientMobileAndroidArgs{...}
-type GlobalClientMobileAndroidInput interface {
-	pulumi.Input
-
-	ToGlobalClientMobileAndroidOutput() GlobalClientMobileAndroidOutput
-	ToGlobalClientMobileAndroidOutputWithContext(context.Context) GlobalClientMobileAndroidOutput
-}
-
-type GlobalClientMobileAndroidArgs struct {
-	AppPackageName         pulumi.StringPtrInput   `pulumi:"appPackageName"`
-	Sha256CertFingerprints pulumi.StringArrayInput `pulumi:"sha256CertFingerprints"`
-}
-
-func (GlobalClientMobileAndroidArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientMobileAndroid)(nil)).Elem()
-}
-
-func (i GlobalClientMobileAndroidArgs) ToGlobalClientMobileAndroidOutput() GlobalClientMobileAndroidOutput {
-	return i.ToGlobalClientMobileAndroidOutputWithContext(context.Background())
-}
-
-func (i GlobalClientMobileAndroidArgs) ToGlobalClientMobileAndroidOutputWithContext(ctx context.Context) GlobalClientMobileAndroidOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientMobileAndroidOutput)
-}
-
-func (i GlobalClientMobileAndroidArgs) ToOutput(ctx context.Context) pulumix.Output[GlobalClientMobileAndroid] {
-	return pulumix.Output[GlobalClientMobileAndroid]{
-		OutputState: i.ToGlobalClientMobileAndroidOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i GlobalClientMobileAndroidArgs) ToGlobalClientMobileAndroidPtrOutput() GlobalClientMobileAndroidPtrOutput {
-	return i.ToGlobalClientMobileAndroidPtrOutputWithContext(context.Background())
-}
-
-func (i GlobalClientMobileAndroidArgs) ToGlobalClientMobileAndroidPtrOutputWithContext(ctx context.Context) GlobalClientMobileAndroidPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientMobileAndroidOutput).ToGlobalClientMobileAndroidPtrOutputWithContext(ctx)
-}
-
-// GlobalClientMobileAndroidPtrInput is an input type that accepts GlobalClientMobileAndroidArgs, GlobalClientMobileAndroidPtr and GlobalClientMobileAndroidPtrOutput values.
-// You can construct a concrete instance of `GlobalClientMobileAndroidPtrInput` via:
-//
-//	        GlobalClientMobileAndroidArgs{...}
-//
-//	or:
-//
-//	        nil
-type GlobalClientMobileAndroidPtrInput interface {
-	pulumi.Input
-
-	ToGlobalClientMobileAndroidPtrOutput() GlobalClientMobileAndroidPtrOutput
-	ToGlobalClientMobileAndroidPtrOutputWithContext(context.Context) GlobalClientMobileAndroidPtrOutput
-}
-
-type globalClientMobileAndroidPtrType GlobalClientMobileAndroidArgs
-
-func GlobalClientMobileAndroidPtr(v *GlobalClientMobileAndroidArgs) GlobalClientMobileAndroidPtrInput {
-	return (*globalClientMobileAndroidPtrType)(v)
-}
-
-func (*globalClientMobileAndroidPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientMobileAndroid)(nil)).Elem()
-}
-
-func (i *globalClientMobileAndroidPtrType) ToGlobalClientMobileAndroidPtrOutput() GlobalClientMobileAndroidPtrOutput {
-	return i.ToGlobalClientMobileAndroidPtrOutputWithContext(context.Background())
-}
-
-func (i *globalClientMobileAndroidPtrType) ToGlobalClientMobileAndroidPtrOutputWithContext(ctx context.Context) GlobalClientMobileAndroidPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientMobileAndroidPtrOutput)
-}
-
-func (i *globalClientMobileAndroidPtrType) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientMobileAndroid] {
-	return pulumix.Output[*GlobalClientMobileAndroid]{
-		OutputState: i.ToGlobalClientMobileAndroidPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GlobalClientMobileAndroidOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientMobileAndroidOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientMobileAndroid)(nil)).Elem()
-}
-
-func (o GlobalClientMobileAndroidOutput) ToGlobalClientMobileAndroidOutput() GlobalClientMobileAndroidOutput {
-	return o
-}
-
-func (o GlobalClientMobileAndroidOutput) ToGlobalClientMobileAndroidOutputWithContext(ctx context.Context) GlobalClientMobileAndroidOutput {
-	return o
-}
-
-func (o GlobalClientMobileAndroidOutput) ToGlobalClientMobileAndroidPtrOutput() GlobalClientMobileAndroidPtrOutput {
-	return o.ToGlobalClientMobileAndroidPtrOutputWithContext(context.Background())
-}
-
-func (o GlobalClientMobileAndroidOutput) ToGlobalClientMobileAndroidPtrOutputWithContext(ctx context.Context) GlobalClientMobileAndroidPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientMobileAndroid) *GlobalClientMobileAndroid {
-		return &v
-	}).(GlobalClientMobileAndroidPtrOutput)
-}
-
-func (o GlobalClientMobileAndroidOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalClientMobileAndroid] {
-	return pulumix.Output[GlobalClientMobileAndroid]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GlobalClientMobileAndroidOutput) AppPackageName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientMobileAndroid) *string { return v.AppPackageName }).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientMobileAndroidOutput) Sha256CertFingerprints() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GlobalClientMobileAndroid) []string { return v.Sha256CertFingerprints }).(pulumi.StringArrayOutput)
-}
-
-type GlobalClientMobileAndroidPtrOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientMobileAndroidPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientMobileAndroid)(nil)).Elem()
-}
-
-func (o GlobalClientMobileAndroidPtrOutput) ToGlobalClientMobileAndroidPtrOutput() GlobalClientMobileAndroidPtrOutput {
-	return o
-}
-
-func (o GlobalClientMobileAndroidPtrOutput) ToGlobalClientMobileAndroidPtrOutputWithContext(ctx context.Context) GlobalClientMobileAndroidPtrOutput {
-	return o
-}
-
-func (o GlobalClientMobileAndroidPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientMobileAndroid] {
-	return pulumix.Output[*GlobalClientMobileAndroid]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GlobalClientMobileAndroidPtrOutput) Elem() GlobalClientMobileAndroidOutput {
-	return o.ApplyT(func(v *GlobalClientMobileAndroid) GlobalClientMobileAndroid {
-		if v != nil {
-			return *v
-		}
-		var ret GlobalClientMobileAndroid
-		return ret
-	}).(GlobalClientMobileAndroidOutput)
-}
-
-func (o GlobalClientMobileAndroidPtrOutput) AppPackageName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GlobalClientMobileAndroid) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AppPackageName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientMobileAndroidPtrOutput) Sha256CertFingerprints() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GlobalClientMobileAndroid) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Sha256CertFingerprints
-	}).(pulumi.StringArrayOutput)
-}
-
-type GlobalClientMobileIos struct {
-	AppBundleIdentifier *string `pulumi:"appBundleIdentifier"`
-	TeamId              *string `pulumi:"teamId"`
-}
-
-// GlobalClientMobileIosInput is an input type that accepts GlobalClientMobileIosArgs and GlobalClientMobileIosOutput values.
-// You can construct a concrete instance of `GlobalClientMobileIosInput` via:
-//
-//	GlobalClientMobileIosArgs{...}
-type GlobalClientMobileIosInput interface {
-	pulumi.Input
-
-	ToGlobalClientMobileIosOutput() GlobalClientMobileIosOutput
-	ToGlobalClientMobileIosOutputWithContext(context.Context) GlobalClientMobileIosOutput
-}
-
-type GlobalClientMobileIosArgs struct {
-	AppBundleIdentifier pulumi.StringPtrInput `pulumi:"appBundleIdentifier"`
-	TeamId              pulumi.StringPtrInput `pulumi:"teamId"`
-}
-
-func (GlobalClientMobileIosArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientMobileIos)(nil)).Elem()
-}
-
-func (i GlobalClientMobileIosArgs) ToGlobalClientMobileIosOutput() GlobalClientMobileIosOutput {
-	return i.ToGlobalClientMobileIosOutputWithContext(context.Background())
-}
-
-func (i GlobalClientMobileIosArgs) ToGlobalClientMobileIosOutputWithContext(ctx context.Context) GlobalClientMobileIosOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientMobileIosOutput)
-}
-
-func (i GlobalClientMobileIosArgs) ToOutput(ctx context.Context) pulumix.Output[GlobalClientMobileIos] {
-	return pulumix.Output[GlobalClientMobileIos]{
-		OutputState: i.ToGlobalClientMobileIosOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i GlobalClientMobileIosArgs) ToGlobalClientMobileIosPtrOutput() GlobalClientMobileIosPtrOutput {
-	return i.ToGlobalClientMobileIosPtrOutputWithContext(context.Background())
-}
-
-func (i GlobalClientMobileIosArgs) ToGlobalClientMobileIosPtrOutputWithContext(ctx context.Context) GlobalClientMobileIosPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientMobileIosOutput).ToGlobalClientMobileIosPtrOutputWithContext(ctx)
-}
-
-// GlobalClientMobileIosPtrInput is an input type that accepts GlobalClientMobileIosArgs, GlobalClientMobileIosPtr and GlobalClientMobileIosPtrOutput values.
-// You can construct a concrete instance of `GlobalClientMobileIosPtrInput` via:
-//
-//	        GlobalClientMobileIosArgs{...}
-//
-//	or:
-//
-//	        nil
-type GlobalClientMobileIosPtrInput interface {
-	pulumi.Input
-
-	ToGlobalClientMobileIosPtrOutput() GlobalClientMobileIosPtrOutput
-	ToGlobalClientMobileIosPtrOutputWithContext(context.Context) GlobalClientMobileIosPtrOutput
-}
-
-type globalClientMobileIosPtrType GlobalClientMobileIosArgs
-
-func GlobalClientMobileIosPtr(v *GlobalClientMobileIosArgs) GlobalClientMobileIosPtrInput {
-	return (*globalClientMobileIosPtrType)(v)
-}
-
-func (*globalClientMobileIosPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientMobileIos)(nil)).Elem()
-}
-
-func (i *globalClientMobileIosPtrType) ToGlobalClientMobileIosPtrOutput() GlobalClientMobileIosPtrOutput {
-	return i.ToGlobalClientMobileIosPtrOutputWithContext(context.Background())
-}
-
-func (i *globalClientMobileIosPtrType) ToGlobalClientMobileIosPtrOutputWithContext(ctx context.Context) GlobalClientMobileIosPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientMobileIosPtrOutput)
-}
-
-func (i *globalClientMobileIosPtrType) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientMobileIos] {
-	return pulumix.Output[*GlobalClientMobileIos]{
-		OutputState: i.ToGlobalClientMobileIosPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GlobalClientMobileIosOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientMobileIosOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientMobileIos)(nil)).Elem()
-}
-
-func (o GlobalClientMobileIosOutput) ToGlobalClientMobileIosOutput() GlobalClientMobileIosOutput {
-	return o
-}
-
-func (o GlobalClientMobileIosOutput) ToGlobalClientMobileIosOutputWithContext(ctx context.Context) GlobalClientMobileIosOutput {
-	return o
-}
-
-func (o GlobalClientMobileIosOutput) ToGlobalClientMobileIosPtrOutput() GlobalClientMobileIosPtrOutput {
-	return o.ToGlobalClientMobileIosPtrOutputWithContext(context.Background())
-}
-
-func (o GlobalClientMobileIosOutput) ToGlobalClientMobileIosPtrOutputWithContext(ctx context.Context) GlobalClientMobileIosPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientMobileIos) *GlobalClientMobileIos {
-		return &v
-	}).(GlobalClientMobileIosPtrOutput)
-}
-
-func (o GlobalClientMobileIosOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalClientMobileIos] {
-	return pulumix.Output[GlobalClientMobileIos]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GlobalClientMobileIosOutput) AppBundleIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientMobileIos) *string { return v.AppBundleIdentifier }).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientMobileIosOutput) TeamId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientMobileIos) *string { return v.TeamId }).(pulumi.StringPtrOutput)
-}
-
-type GlobalClientMobileIosPtrOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientMobileIosPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientMobileIos)(nil)).Elem()
-}
-
-func (o GlobalClientMobileIosPtrOutput) ToGlobalClientMobileIosPtrOutput() GlobalClientMobileIosPtrOutput {
-	return o
-}
-
-func (o GlobalClientMobileIosPtrOutput) ToGlobalClientMobileIosPtrOutputWithContext(ctx context.Context) GlobalClientMobileIosPtrOutput {
-	return o
-}
-
-func (o GlobalClientMobileIosPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientMobileIos] {
-	return pulumix.Output[*GlobalClientMobileIos]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GlobalClientMobileIosPtrOutput) Elem() GlobalClientMobileIosOutput {
-	return o.ApplyT(func(v *GlobalClientMobileIos) GlobalClientMobileIos {
-		if v != nil {
-			return *v
-		}
-		var ret GlobalClientMobileIos
-		return ret
-	}).(GlobalClientMobileIosOutput)
-}
-
-func (o GlobalClientMobileIosPtrOutput) AppBundleIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GlobalClientMobileIos) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AppBundleIdentifier
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientMobileIosPtrOutput) TeamId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GlobalClientMobileIos) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TeamId
-	}).(pulumi.StringPtrOutput)
-}
-
-type GlobalClientNativeSocialLogin struct {
-	Apple    *GlobalClientNativeSocialLoginApple    `pulumi:"apple"`
-	Facebook *GlobalClientNativeSocialLoginFacebook `pulumi:"facebook"`
-}
-
-// GlobalClientNativeSocialLoginInput is an input type that accepts GlobalClientNativeSocialLoginArgs and GlobalClientNativeSocialLoginOutput values.
-// You can construct a concrete instance of `GlobalClientNativeSocialLoginInput` via:
-//
-//	GlobalClientNativeSocialLoginArgs{...}
-type GlobalClientNativeSocialLoginInput interface {
-	pulumi.Input
-
-	ToGlobalClientNativeSocialLoginOutput() GlobalClientNativeSocialLoginOutput
-	ToGlobalClientNativeSocialLoginOutputWithContext(context.Context) GlobalClientNativeSocialLoginOutput
-}
-
-type GlobalClientNativeSocialLoginArgs struct {
-	Apple    GlobalClientNativeSocialLoginApplePtrInput    `pulumi:"apple"`
-	Facebook GlobalClientNativeSocialLoginFacebookPtrInput `pulumi:"facebook"`
-}
-
-func (GlobalClientNativeSocialLoginArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientNativeSocialLogin)(nil)).Elem()
-}
-
-func (i GlobalClientNativeSocialLoginArgs) ToGlobalClientNativeSocialLoginOutput() GlobalClientNativeSocialLoginOutput {
-	return i.ToGlobalClientNativeSocialLoginOutputWithContext(context.Background())
-}
-
-func (i GlobalClientNativeSocialLoginArgs) ToGlobalClientNativeSocialLoginOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginOutput)
-}
-
-func (i GlobalClientNativeSocialLoginArgs) ToOutput(ctx context.Context) pulumix.Output[GlobalClientNativeSocialLogin] {
-	return pulumix.Output[GlobalClientNativeSocialLogin]{
-		OutputState: i.ToGlobalClientNativeSocialLoginOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i GlobalClientNativeSocialLoginArgs) ToGlobalClientNativeSocialLoginPtrOutput() GlobalClientNativeSocialLoginPtrOutput {
-	return i.ToGlobalClientNativeSocialLoginPtrOutputWithContext(context.Background())
-}
-
-func (i GlobalClientNativeSocialLoginArgs) ToGlobalClientNativeSocialLoginPtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginOutput).ToGlobalClientNativeSocialLoginPtrOutputWithContext(ctx)
-}
-
-// GlobalClientNativeSocialLoginPtrInput is an input type that accepts GlobalClientNativeSocialLoginArgs, GlobalClientNativeSocialLoginPtr and GlobalClientNativeSocialLoginPtrOutput values.
-// You can construct a concrete instance of `GlobalClientNativeSocialLoginPtrInput` via:
-//
-//	        GlobalClientNativeSocialLoginArgs{...}
-//
-//	or:
-//
-//	        nil
-type GlobalClientNativeSocialLoginPtrInput interface {
-	pulumi.Input
-
-	ToGlobalClientNativeSocialLoginPtrOutput() GlobalClientNativeSocialLoginPtrOutput
-	ToGlobalClientNativeSocialLoginPtrOutputWithContext(context.Context) GlobalClientNativeSocialLoginPtrOutput
-}
-
-type globalClientNativeSocialLoginPtrType GlobalClientNativeSocialLoginArgs
-
-func GlobalClientNativeSocialLoginPtr(v *GlobalClientNativeSocialLoginArgs) GlobalClientNativeSocialLoginPtrInput {
-	return (*globalClientNativeSocialLoginPtrType)(v)
-}
-
-func (*globalClientNativeSocialLoginPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientNativeSocialLogin)(nil)).Elem()
-}
-
-func (i *globalClientNativeSocialLoginPtrType) ToGlobalClientNativeSocialLoginPtrOutput() GlobalClientNativeSocialLoginPtrOutput {
-	return i.ToGlobalClientNativeSocialLoginPtrOutputWithContext(context.Background())
-}
-
-func (i *globalClientNativeSocialLoginPtrType) ToGlobalClientNativeSocialLoginPtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginPtrOutput)
-}
-
-func (i *globalClientNativeSocialLoginPtrType) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientNativeSocialLogin] {
-	return pulumix.Output[*GlobalClientNativeSocialLogin]{
-		OutputState: i.ToGlobalClientNativeSocialLoginPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GlobalClientNativeSocialLoginOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientNativeSocialLoginOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientNativeSocialLogin)(nil)).Elem()
-}
-
-func (o GlobalClientNativeSocialLoginOutput) ToGlobalClientNativeSocialLoginOutput() GlobalClientNativeSocialLoginOutput {
-	return o
-}
-
-func (o GlobalClientNativeSocialLoginOutput) ToGlobalClientNativeSocialLoginOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginOutput {
-	return o
-}
-
-func (o GlobalClientNativeSocialLoginOutput) ToGlobalClientNativeSocialLoginPtrOutput() GlobalClientNativeSocialLoginPtrOutput {
-	return o.ToGlobalClientNativeSocialLoginPtrOutputWithContext(context.Background())
-}
-
-func (o GlobalClientNativeSocialLoginOutput) ToGlobalClientNativeSocialLoginPtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientNativeSocialLogin) *GlobalClientNativeSocialLogin {
-		return &v
-	}).(GlobalClientNativeSocialLoginPtrOutput)
-}
-
-func (o GlobalClientNativeSocialLoginOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalClientNativeSocialLogin] {
-	return pulumix.Output[GlobalClientNativeSocialLogin]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GlobalClientNativeSocialLoginOutput) Apple() GlobalClientNativeSocialLoginApplePtrOutput {
-	return o.ApplyT(func(v GlobalClientNativeSocialLogin) *GlobalClientNativeSocialLoginApple { return v.Apple }).(GlobalClientNativeSocialLoginApplePtrOutput)
-}
-
-func (o GlobalClientNativeSocialLoginOutput) Facebook() GlobalClientNativeSocialLoginFacebookPtrOutput {
-	return o.ApplyT(func(v GlobalClientNativeSocialLogin) *GlobalClientNativeSocialLoginFacebook { return v.Facebook }).(GlobalClientNativeSocialLoginFacebookPtrOutput)
-}
-
-type GlobalClientNativeSocialLoginPtrOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientNativeSocialLoginPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientNativeSocialLogin)(nil)).Elem()
-}
-
-func (o GlobalClientNativeSocialLoginPtrOutput) ToGlobalClientNativeSocialLoginPtrOutput() GlobalClientNativeSocialLoginPtrOutput {
-	return o
-}
-
-func (o GlobalClientNativeSocialLoginPtrOutput) ToGlobalClientNativeSocialLoginPtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginPtrOutput {
-	return o
-}
-
-func (o GlobalClientNativeSocialLoginPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientNativeSocialLogin] {
-	return pulumix.Output[*GlobalClientNativeSocialLogin]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GlobalClientNativeSocialLoginPtrOutput) Elem() GlobalClientNativeSocialLoginOutput {
-	return o.ApplyT(func(v *GlobalClientNativeSocialLogin) GlobalClientNativeSocialLogin {
-		if v != nil {
-			return *v
-		}
-		var ret GlobalClientNativeSocialLogin
-		return ret
-	}).(GlobalClientNativeSocialLoginOutput)
-}
-
-func (o GlobalClientNativeSocialLoginPtrOutput) Apple() GlobalClientNativeSocialLoginApplePtrOutput {
-	return o.ApplyT(func(v *GlobalClientNativeSocialLogin) *GlobalClientNativeSocialLoginApple {
-		if v == nil {
-			return nil
-		}
-		return v.Apple
-	}).(GlobalClientNativeSocialLoginApplePtrOutput)
-}
-
-func (o GlobalClientNativeSocialLoginPtrOutput) Facebook() GlobalClientNativeSocialLoginFacebookPtrOutput {
-	return o.ApplyT(func(v *GlobalClientNativeSocialLogin) *GlobalClientNativeSocialLoginFacebook {
-		if v == nil {
-			return nil
-		}
-		return v.Facebook
-	}).(GlobalClientNativeSocialLoginFacebookPtrOutput)
-}
-
-type GlobalClientNativeSocialLoginApple struct {
-	Enabled *bool `pulumi:"enabled"`
-}
-
-// GlobalClientNativeSocialLoginAppleInput is an input type that accepts GlobalClientNativeSocialLoginAppleArgs and GlobalClientNativeSocialLoginAppleOutput values.
-// You can construct a concrete instance of `GlobalClientNativeSocialLoginAppleInput` via:
-//
-//	GlobalClientNativeSocialLoginAppleArgs{...}
-type GlobalClientNativeSocialLoginAppleInput interface {
-	pulumi.Input
-
-	ToGlobalClientNativeSocialLoginAppleOutput() GlobalClientNativeSocialLoginAppleOutput
-	ToGlobalClientNativeSocialLoginAppleOutputWithContext(context.Context) GlobalClientNativeSocialLoginAppleOutput
-}
-
-type GlobalClientNativeSocialLoginAppleArgs struct {
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-}
-
-func (GlobalClientNativeSocialLoginAppleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientNativeSocialLoginApple)(nil)).Elem()
-}
-
-func (i GlobalClientNativeSocialLoginAppleArgs) ToGlobalClientNativeSocialLoginAppleOutput() GlobalClientNativeSocialLoginAppleOutput {
-	return i.ToGlobalClientNativeSocialLoginAppleOutputWithContext(context.Background())
-}
-
-func (i GlobalClientNativeSocialLoginAppleArgs) ToGlobalClientNativeSocialLoginAppleOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginAppleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginAppleOutput)
-}
-
-func (i GlobalClientNativeSocialLoginAppleArgs) ToOutput(ctx context.Context) pulumix.Output[GlobalClientNativeSocialLoginApple] {
-	return pulumix.Output[GlobalClientNativeSocialLoginApple]{
-		OutputState: i.ToGlobalClientNativeSocialLoginAppleOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i GlobalClientNativeSocialLoginAppleArgs) ToGlobalClientNativeSocialLoginApplePtrOutput() GlobalClientNativeSocialLoginApplePtrOutput {
-	return i.ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(context.Background())
-}
-
-func (i GlobalClientNativeSocialLoginAppleArgs) ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginApplePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginAppleOutput).ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(ctx)
-}
-
-// GlobalClientNativeSocialLoginApplePtrInput is an input type that accepts GlobalClientNativeSocialLoginAppleArgs, GlobalClientNativeSocialLoginApplePtr and GlobalClientNativeSocialLoginApplePtrOutput values.
-// You can construct a concrete instance of `GlobalClientNativeSocialLoginApplePtrInput` via:
-//
-//	        GlobalClientNativeSocialLoginAppleArgs{...}
-//
-//	or:
-//
-//	        nil
-type GlobalClientNativeSocialLoginApplePtrInput interface {
-	pulumi.Input
-
-	ToGlobalClientNativeSocialLoginApplePtrOutput() GlobalClientNativeSocialLoginApplePtrOutput
-	ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(context.Context) GlobalClientNativeSocialLoginApplePtrOutput
-}
-
-type globalClientNativeSocialLoginApplePtrType GlobalClientNativeSocialLoginAppleArgs
-
-func GlobalClientNativeSocialLoginApplePtr(v *GlobalClientNativeSocialLoginAppleArgs) GlobalClientNativeSocialLoginApplePtrInput {
-	return (*globalClientNativeSocialLoginApplePtrType)(v)
-}
-
-func (*globalClientNativeSocialLoginApplePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientNativeSocialLoginApple)(nil)).Elem()
-}
-
-func (i *globalClientNativeSocialLoginApplePtrType) ToGlobalClientNativeSocialLoginApplePtrOutput() GlobalClientNativeSocialLoginApplePtrOutput {
-	return i.ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(context.Background())
-}
-
-func (i *globalClientNativeSocialLoginApplePtrType) ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginApplePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginApplePtrOutput)
-}
-
-func (i *globalClientNativeSocialLoginApplePtrType) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientNativeSocialLoginApple] {
-	return pulumix.Output[*GlobalClientNativeSocialLoginApple]{
-		OutputState: i.ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GlobalClientNativeSocialLoginAppleOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientNativeSocialLoginAppleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientNativeSocialLoginApple)(nil)).Elem()
-}
-
-func (o GlobalClientNativeSocialLoginAppleOutput) ToGlobalClientNativeSocialLoginAppleOutput() GlobalClientNativeSocialLoginAppleOutput {
-	return o
-}
-
-func (o GlobalClientNativeSocialLoginAppleOutput) ToGlobalClientNativeSocialLoginAppleOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginAppleOutput {
-	return o
-}
-
-func (o GlobalClientNativeSocialLoginAppleOutput) ToGlobalClientNativeSocialLoginApplePtrOutput() GlobalClientNativeSocialLoginApplePtrOutput {
-	return o.ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(context.Background())
-}
-
-func (o GlobalClientNativeSocialLoginAppleOutput) ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginApplePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientNativeSocialLoginApple) *GlobalClientNativeSocialLoginApple {
-		return &v
-	}).(GlobalClientNativeSocialLoginApplePtrOutput)
-}
-
-func (o GlobalClientNativeSocialLoginAppleOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalClientNativeSocialLoginApple] {
-	return pulumix.Output[GlobalClientNativeSocialLoginApple]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GlobalClientNativeSocialLoginAppleOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientNativeSocialLoginApple) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-type GlobalClientNativeSocialLoginApplePtrOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientNativeSocialLoginApplePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientNativeSocialLoginApple)(nil)).Elem()
-}
-
-func (o GlobalClientNativeSocialLoginApplePtrOutput) ToGlobalClientNativeSocialLoginApplePtrOutput() GlobalClientNativeSocialLoginApplePtrOutput {
-	return o
-}
-
-func (o GlobalClientNativeSocialLoginApplePtrOutput) ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginApplePtrOutput {
-	return o
-}
-
-func (o GlobalClientNativeSocialLoginApplePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientNativeSocialLoginApple] {
-	return pulumix.Output[*GlobalClientNativeSocialLoginApple]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GlobalClientNativeSocialLoginApplePtrOutput) Elem() GlobalClientNativeSocialLoginAppleOutput {
-	return o.ApplyT(func(v *GlobalClientNativeSocialLoginApple) GlobalClientNativeSocialLoginApple {
-		if v != nil {
-			return *v
-		}
-		var ret GlobalClientNativeSocialLoginApple
-		return ret
-	}).(GlobalClientNativeSocialLoginAppleOutput)
-}
-
-func (o GlobalClientNativeSocialLoginApplePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GlobalClientNativeSocialLoginApple) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GlobalClientNativeSocialLoginFacebook struct {
-	Enabled *bool `pulumi:"enabled"`
-}
-
-// GlobalClientNativeSocialLoginFacebookInput is an input type that accepts GlobalClientNativeSocialLoginFacebookArgs and GlobalClientNativeSocialLoginFacebookOutput values.
-// You can construct a concrete instance of `GlobalClientNativeSocialLoginFacebookInput` via:
-//
-//	GlobalClientNativeSocialLoginFacebookArgs{...}
-type GlobalClientNativeSocialLoginFacebookInput interface {
-	pulumi.Input
-
-	ToGlobalClientNativeSocialLoginFacebookOutput() GlobalClientNativeSocialLoginFacebookOutput
-	ToGlobalClientNativeSocialLoginFacebookOutputWithContext(context.Context) GlobalClientNativeSocialLoginFacebookOutput
-}
-
-type GlobalClientNativeSocialLoginFacebookArgs struct {
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-}
-
-func (GlobalClientNativeSocialLoginFacebookArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientNativeSocialLoginFacebook)(nil)).Elem()
-}
-
-func (i GlobalClientNativeSocialLoginFacebookArgs) ToGlobalClientNativeSocialLoginFacebookOutput() GlobalClientNativeSocialLoginFacebookOutput {
-	return i.ToGlobalClientNativeSocialLoginFacebookOutputWithContext(context.Background())
-}
-
-func (i GlobalClientNativeSocialLoginFacebookArgs) ToGlobalClientNativeSocialLoginFacebookOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginFacebookOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginFacebookOutput)
-}
-
-func (i GlobalClientNativeSocialLoginFacebookArgs) ToOutput(ctx context.Context) pulumix.Output[GlobalClientNativeSocialLoginFacebook] {
-	return pulumix.Output[GlobalClientNativeSocialLoginFacebook]{
-		OutputState: i.ToGlobalClientNativeSocialLoginFacebookOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i GlobalClientNativeSocialLoginFacebookArgs) ToGlobalClientNativeSocialLoginFacebookPtrOutput() GlobalClientNativeSocialLoginFacebookPtrOutput {
-	return i.ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(context.Background())
-}
-
-func (i GlobalClientNativeSocialLoginFacebookArgs) ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginFacebookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginFacebookOutput).ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(ctx)
-}
-
-// GlobalClientNativeSocialLoginFacebookPtrInput is an input type that accepts GlobalClientNativeSocialLoginFacebookArgs, GlobalClientNativeSocialLoginFacebookPtr and GlobalClientNativeSocialLoginFacebookPtrOutput values.
-// You can construct a concrete instance of `GlobalClientNativeSocialLoginFacebookPtrInput` via:
-//
-//	        GlobalClientNativeSocialLoginFacebookArgs{...}
-//
-//	or:
-//
-//	        nil
-type GlobalClientNativeSocialLoginFacebookPtrInput interface {
-	pulumi.Input
-
-	ToGlobalClientNativeSocialLoginFacebookPtrOutput() GlobalClientNativeSocialLoginFacebookPtrOutput
-	ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(context.Context) GlobalClientNativeSocialLoginFacebookPtrOutput
-}
-
-type globalClientNativeSocialLoginFacebookPtrType GlobalClientNativeSocialLoginFacebookArgs
-
-func GlobalClientNativeSocialLoginFacebookPtr(v *GlobalClientNativeSocialLoginFacebookArgs) GlobalClientNativeSocialLoginFacebookPtrInput {
-	return (*globalClientNativeSocialLoginFacebookPtrType)(v)
-}
-
-func (*globalClientNativeSocialLoginFacebookPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientNativeSocialLoginFacebook)(nil)).Elem()
-}
-
-func (i *globalClientNativeSocialLoginFacebookPtrType) ToGlobalClientNativeSocialLoginFacebookPtrOutput() GlobalClientNativeSocialLoginFacebookPtrOutput {
-	return i.ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(context.Background())
-}
-
-func (i *globalClientNativeSocialLoginFacebookPtrType) ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginFacebookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginFacebookPtrOutput)
-}
-
-func (i *globalClientNativeSocialLoginFacebookPtrType) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientNativeSocialLoginFacebook] {
-	return pulumix.Output[*GlobalClientNativeSocialLoginFacebook]{
-		OutputState: i.ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GlobalClientNativeSocialLoginFacebookOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientNativeSocialLoginFacebookOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientNativeSocialLoginFacebook)(nil)).Elem()
-}
-
-func (o GlobalClientNativeSocialLoginFacebookOutput) ToGlobalClientNativeSocialLoginFacebookOutput() GlobalClientNativeSocialLoginFacebookOutput {
-	return o
-}
-
-func (o GlobalClientNativeSocialLoginFacebookOutput) ToGlobalClientNativeSocialLoginFacebookOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginFacebookOutput {
-	return o
-}
-
-func (o GlobalClientNativeSocialLoginFacebookOutput) ToGlobalClientNativeSocialLoginFacebookPtrOutput() GlobalClientNativeSocialLoginFacebookPtrOutput {
-	return o.ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(context.Background())
-}
-
-func (o GlobalClientNativeSocialLoginFacebookOutput) ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginFacebookPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientNativeSocialLoginFacebook) *GlobalClientNativeSocialLoginFacebook {
-		return &v
-	}).(GlobalClientNativeSocialLoginFacebookPtrOutput)
-}
-
-func (o GlobalClientNativeSocialLoginFacebookOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalClientNativeSocialLoginFacebook] {
-	return pulumix.Output[GlobalClientNativeSocialLoginFacebook]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GlobalClientNativeSocialLoginFacebookOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientNativeSocialLoginFacebook) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-type GlobalClientNativeSocialLoginFacebookPtrOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientNativeSocialLoginFacebookPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientNativeSocialLoginFacebook)(nil)).Elem()
-}
-
-func (o GlobalClientNativeSocialLoginFacebookPtrOutput) ToGlobalClientNativeSocialLoginFacebookPtrOutput() GlobalClientNativeSocialLoginFacebookPtrOutput {
-	return o
-}
-
-func (o GlobalClientNativeSocialLoginFacebookPtrOutput) ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginFacebookPtrOutput {
-	return o
-}
-
-func (o GlobalClientNativeSocialLoginFacebookPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientNativeSocialLoginFacebook] {
-	return pulumix.Output[*GlobalClientNativeSocialLoginFacebook]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GlobalClientNativeSocialLoginFacebookPtrOutput) Elem() GlobalClientNativeSocialLoginFacebookOutput {
-	return o.ApplyT(func(v *GlobalClientNativeSocialLoginFacebook) GlobalClientNativeSocialLoginFacebook {
-		if v != nil {
-			return *v
-		}
-		var ret GlobalClientNativeSocialLoginFacebook
-		return ret
-	}).(GlobalClientNativeSocialLoginFacebookOutput)
-}
-
-func (o GlobalClientNativeSocialLoginFacebookPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GlobalClientNativeSocialLoginFacebook) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GlobalClientRefreshToken struct {
-	// Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
-	ExpirationType string `pulumi:"expirationType"`
-	// The time in seconds after which inactive refresh tokens will expire.
-	IdleTokenLifetime *int `pulumi:"idleTokenLifetime"`
-	// Whether inactive refresh tokens should remain valid indefinitely.
-	InfiniteIdleTokenLifetime *bool `pulumi:"infiniteIdleTokenLifetime"`
-	// Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
-	InfiniteTokenLifetime *bool `pulumi:"infiniteTokenLifetime"`
-	// The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
-	Leeway *int `pulumi:"leeway"`
-	// Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
-	RotationType string `pulumi:"rotationType"`
-	// The absolute lifetime of a refresh token in seconds.
-	TokenLifetime *int `pulumi:"tokenLifetime"`
-}
-
-// GlobalClientRefreshTokenInput is an input type that accepts GlobalClientRefreshTokenArgs and GlobalClientRefreshTokenOutput values.
-// You can construct a concrete instance of `GlobalClientRefreshTokenInput` via:
-//
-//	GlobalClientRefreshTokenArgs{...}
-type GlobalClientRefreshTokenInput interface {
-	pulumi.Input
-
-	ToGlobalClientRefreshTokenOutput() GlobalClientRefreshTokenOutput
-	ToGlobalClientRefreshTokenOutputWithContext(context.Context) GlobalClientRefreshTokenOutput
-}
-
-type GlobalClientRefreshTokenArgs struct {
-	// Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
-	ExpirationType pulumi.StringInput `pulumi:"expirationType"`
-	// The time in seconds after which inactive refresh tokens will expire.
-	IdleTokenLifetime pulumi.IntPtrInput `pulumi:"idleTokenLifetime"`
-	// Whether inactive refresh tokens should remain valid indefinitely.
-	InfiniteIdleTokenLifetime pulumi.BoolPtrInput `pulumi:"infiniteIdleTokenLifetime"`
-	// Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
-	InfiniteTokenLifetime pulumi.BoolPtrInput `pulumi:"infiniteTokenLifetime"`
-	// The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
-	Leeway pulumi.IntPtrInput `pulumi:"leeway"`
-	// Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
-	RotationType pulumi.StringInput `pulumi:"rotationType"`
-	// The absolute lifetime of a refresh token in seconds.
-	TokenLifetime pulumi.IntPtrInput `pulumi:"tokenLifetime"`
-}
-
-func (GlobalClientRefreshTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientRefreshToken)(nil)).Elem()
-}
-
-func (i GlobalClientRefreshTokenArgs) ToGlobalClientRefreshTokenOutput() GlobalClientRefreshTokenOutput {
-	return i.ToGlobalClientRefreshTokenOutputWithContext(context.Background())
-}
-
-func (i GlobalClientRefreshTokenArgs) ToGlobalClientRefreshTokenOutputWithContext(ctx context.Context) GlobalClientRefreshTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientRefreshTokenOutput)
-}
-
-func (i GlobalClientRefreshTokenArgs) ToOutput(ctx context.Context) pulumix.Output[GlobalClientRefreshToken] {
-	return pulumix.Output[GlobalClientRefreshToken]{
-		OutputState: i.ToGlobalClientRefreshTokenOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i GlobalClientRefreshTokenArgs) ToGlobalClientRefreshTokenPtrOutput() GlobalClientRefreshTokenPtrOutput {
-	return i.ToGlobalClientRefreshTokenPtrOutputWithContext(context.Background())
-}
-
-func (i GlobalClientRefreshTokenArgs) ToGlobalClientRefreshTokenPtrOutputWithContext(ctx context.Context) GlobalClientRefreshTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientRefreshTokenOutput).ToGlobalClientRefreshTokenPtrOutputWithContext(ctx)
-}
-
-// GlobalClientRefreshTokenPtrInput is an input type that accepts GlobalClientRefreshTokenArgs, GlobalClientRefreshTokenPtr and GlobalClientRefreshTokenPtrOutput values.
-// You can construct a concrete instance of `GlobalClientRefreshTokenPtrInput` via:
-//
-//	        GlobalClientRefreshTokenArgs{...}
-//
-//	or:
-//
-//	        nil
-type GlobalClientRefreshTokenPtrInput interface {
-	pulumi.Input
-
-	ToGlobalClientRefreshTokenPtrOutput() GlobalClientRefreshTokenPtrOutput
-	ToGlobalClientRefreshTokenPtrOutputWithContext(context.Context) GlobalClientRefreshTokenPtrOutput
-}
-
-type globalClientRefreshTokenPtrType GlobalClientRefreshTokenArgs
-
-func GlobalClientRefreshTokenPtr(v *GlobalClientRefreshTokenArgs) GlobalClientRefreshTokenPtrInput {
-	return (*globalClientRefreshTokenPtrType)(v)
-}
-
-func (*globalClientRefreshTokenPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientRefreshToken)(nil)).Elem()
-}
-
-func (i *globalClientRefreshTokenPtrType) ToGlobalClientRefreshTokenPtrOutput() GlobalClientRefreshTokenPtrOutput {
-	return i.ToGlobalClientRefreshTokenPtrOutputWithContext(context.Background())
-}
-
-func (i *globalClientRefreshTokenPtrType) ToGlobalClientRefreshTokenPtrOutputWithContext(ctx context.Context) GlobalClientRefreshTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientRefreshTokenPtrOutput)
-}
-
-func (i *globalClientRefreshTokenPtrType) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientRefreshToken] {
-	return pulumix.Output[*GlobalClientRefreshToken]{
-		OutputState: i.ToGlobalClientRefreshTokenPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GlobalClientRefreshTokenOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientRefreshTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientRefreshToken)(nil)).Elem()
-}
-
-func (o GlobalClientRefreshTokenOutput) ToGlobalClientRefreshTokenOutput() GlobalClientRefreshTokenOutput {
-	return o
-}
-
-func (o GlobalClientRefreshTokenOutput) ToGlobalClientRefreshTokenOutputWithContext(ctx context.Context) GlobalClientRefreshTokenOutput {
-	return o
-}
-
-func (o GlobalClientRefreshTokenOutput) ToGlobalClientRefreshTokenPtrOutput() GlobalClientRefreshTokenPtrOutput {
-	return o.ToGlobalClientRefreshTokenPtrOutputWithContext(context.Background())
-}
-
-func (o GlobalClientRefreshTokenOutput) ToGlobalClientRefreshTokenPtrOutputWithContext(ctx context.Context) GlobalClientRefreshTokenPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientRefreshToken) *GlobalClientRefreshToken {
-		return &v
-	}).(GlobalClientRefreshTokenPtrOutput)
-}
-
-func (o GlobalClientRefreshTokenOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalClientRefreshToken] {
-	return pulumix.Output[GlobalClientRefreshToken]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
-func (o GlobalClientRefreshTokenOutput) ExpirationType() pulumi.StringOutput {
-	return o.ApplyT(func(v GlobalClientRefreshToken) string { return v.ExpirationType }).(pulumi.StringOutput)
-}
-
-// The time in seconds after which inactive refresh tokens will expire.
-func (o GlobalClientRefreshTokenOutput) IdleTokenLifetime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GlobalClientRefreshToken) *int { return v.IdleTokenLifetime }).(pulumi.IntPtrOutput)
-}
-
-// Whether inactive refresh tokens should remain valid indefinitely.
-func (o GlobalClientRefreshTokenOutput) InfiniteIdleTokenLifetime() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientRefreshToken) *bool { return v.InfiniteIdleTokenLifetime }).(pulumi.BoolPtrOutput)
-}
-
-// Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
-func (o GlobalClientRefreshTokenOutput) InfiniteTokenLifetime() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientRefreshToken) *bool { return v.InfiniteTokenLifetime }).(pulumi.BoolPtrOutput)
-}
-
-// The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
-func (o GlobalClientRefreshTokenOutput) Leeway() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GlobalClientRefreshToken) *int { return v.Leeway }).(pulumi.IntPtrOutput)
-}
-
-// Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
-func (o GlobalClientRefreshTokenOutput) RotationType() pulumi.StringOutput {
-	return o.ApplyT(func(v GlobalClientRefreshToken) string { return v.RotationType }).(pulumi.StringOutput)
-}
-
-// The absolute lifetime of a refresh token in seconds.
-func (o GlobalClientRefreshTokenOutput) TokenLifetime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GlobalClientRefreshToken) *int { return v.TokenLifetime }).(pulumi.IntPtrOutput)
-}
-
-type GlobalClientRefreshTokenPtrOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientRefreshTokenPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientRefreshToken)(nil)).Elem()
-}
-
-func (o GlobalClientRefreshTokenPtrOutput) ToGlobalClientRefreshTokenPtrOutput() GlobalClientRefreshTokenPtrOutput {
-	return o
-}
-
-func (o GlobalClientRefreshTokenPtrOutput) ToGlobalClientRefreshTokenPtrOutputWithContext(ctx context.Context) GlobalClientRefreshTokenPtrOutput {
-	return o
-}
-
-func (o GlobalClientRefreshTokenPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalClientRefreshToken] {
-	return pulumix.Output[*GlobalClientRefreshToken]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GlobalClientRefreshTokenPtrOutput) Elem() GlobalClientRefreshTokenOutput {
-	return o.ApplyT(func(v *GlobalClientRefreshToken) GlobalClientRefreshToken {
-		if v != nil {
-			return *v
-		}
-		var ret GlobalClientRefreshToken
-		return ret
-	}).(GlobalClientRefreshTokenOutput)
-}
-
-// Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
-func (o GlobalClientRefreshTokenPtrOutput) ExpirationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GlobalClientRefreshToken) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ExpirationType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time in seconds after which inactive refresh tokens will expire.
-func (o GlobalClientRefreshTokenPtrOutput) IdleTokenLifetime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GlobalClientRefreshToken) *int {
-		if v == nil {
-			return nil
-		}
-		return v.IdleTokenLifetime
-	}).(pulumi.IntPtrOutput)
-}
-
-// Whether inactive refresh tokens should remain valid indefinitely.
-func (o GlobalClientRefreshTokenPtrOutput) InfiniteIdleTokenLifetime() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GlobalClientRefreshToken) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.InfiniteIdleTokenLifetime
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
-func (o GlobalClientRefreshTokenPtrOutput) InfiniteTokenLifetime() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GlobalClientRefreshToken) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.InfiniteTokenLifetime
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
-func (o GlobalClientRefreshTokenPtrOutput) Leeway() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GlobalClientRefreshToken) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Leeway
-	}).(pulumi.IntPtrOutput)
-}
-
-// Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
-func (o GlobalClientRefreshTokenPtrOutput) RotationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GlobalClientRefreshToken) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RotationType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The absolute lifetime of a refresh token in seconds.
-func (o GlobalClientRefreshTokenPtrOutput) TokenLifetime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GlobalClientRefreshToken) *int {
-		if v == nil {
-			return nil
-		}
-		return v.TokenLifetime
-	}).(pulumi.IntPtrOutput)
 }
 
 type GuardianDuo struct {
@@ -16878,11 +20236,11 @@ type LogStreamSink struct {
 	AwsAccountId *string `pulumi:"awsAccountId"`
 	// Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS, so this should be an output attribute.
 	AwsPartnerEventSource *string `pulumi:"awsPartnerEventSource"`
-	// The AWS Region, e.g. "us-east-2").
+	// The region in which the EventBridge event source will be created. Possible values: `ap-east-1`, `ap-northeast-1`, `ap-northeast-2`, `ap-northeast-3`, `ap-south-1`, `ap-southeast-1`, `ap-southeast-2`, `ca-central-1`, `cn-north-1`, `cn-northwest-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `me-south-1`, `sa-east-1`, `us-gov-east-1`, `us-gov-west-1`, `us-east-1`, `us-east-2`, `us-west-1`, `us-west-2`.
 	AwsRegion *string `pulumi:"awsRegion"`
 	// Name of the Partner Topic to be used with Azure. Generally should not be specified.
 	AzurePartnerTopic *string `pulumi:"azurePartnerTopic"`
-	// The Azure region code, e.g. "ne")
+	// The Azure region code. Possible values: `australiacentral`, `australiaeast`, `australiasoutheast`, `brazilsouth`, `canadacentral`, `canadaeast`, `centralindia`, `centralus`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `germanywestcentral`, `japaneast`, `japanwest`, `koreacentral`, `koreasouth`, `northcentralus`, `northeurope`, `norwayeast`, `southafricanorth`, `southcentralus`, `southeastasia`, `southindia`, `switzerlandnorth`, `uaenorth`, `uksouth`, `ukwest`, `westcentralus`, `westeurope`, `westindia`, `westus`, `westus2`.
 	AzureRegion *string `pulumi:"azureRegion"`
 	// The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription.
 	AzureResourceGroup *string `pulumi:"azureResourceGroup"`
@@ -16890,7 +20248,7 @@ type LogStreamSink struct {
 	AzureSubscriptionId *string `pulumi:"azureSubscriptionId"`
 	// The Datadog API key.
 	DatadogApiKey *string `pulumi:"datadogApiKey"`
-	// The Datadog region. Options are ["us", "eu", "us3", "us5"].
+	// The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
 	DatadogRegion *string `pulumi:"datadogRegion"`
 	// Sent in the HTTP "Authorization" header with each request.
 	HttpAuthorization *string `pulumi:"httpAuthorization"`
@@ -16940,11 +20298,11 @@ type LogStreamSinkArgs struct {
 	AwsAccountId pulumi.StringPtrInput `pulumi:"awsAccountId"`
 	// Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS, so this should be an output attribute.
 	AwsPartnerEventSource pulumi.StringPtrInput `pulumi:"awsPartnerEventSource"`
-	// The AWS Region, e.g. "us-east-2").
+	// The region in which the EventBridge event source will be created. Possible values: `ap-east-1`, `ap-northeast-1`, `ap-northeast-2`, `ap-northeast-3`, `ap-south-1`, `ap-southeast-1`, `ap-southeast-2`, `ca-central-1`, `cn-north-1`, `cn-northwest-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `me-south-1`, `sa-east-1`, `us-gov-east-1`, `us-gov-west-1`, `us-east-1`, `us-east-2`, `us-west-1`, `us-west-2`.
 	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
 	// Name of the Partner Topic to be used with Azure. Generally should not be specified.
 	AzurePartnerTopic pulumi.StringPtrInput `pulumi:"azurePartnerTopic"`
-	// The Azure region code, e.g. "ne")
+	// The Azure region code. Possible values: `australiacentral`, `australiaeast`, `australiasoutheast`, `brazilsouth`, `canadacentral`, `canadaeast`, `centralindia`, `centralus`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `germanywestcentral`, `japaneast`, `japanwest`, `koreacentral`, `koreasouth`, `northcentralus`, `northeurope`, `norwayeast`, `southafricanorth`, `southcentralus`, `southeastasia`, `southindia`, `switzerlandnorth`, `uaenorth`, `uksouth`, `ukwest`, `westcentralus`, `westeurope`, `westindia`, `westus`, `westus2`.
 	AzureRegion pulumi.StringPtrInput `pulumi:"azureRegion"`
 	// The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription.
 	AzureResourceGroup pulumi.StringPtrInput `pulumi:"azureResourceGroup"`
@@ -16952,7 +20310,7 @@ type LogStreamSinkArgs struct {
 	AzureSubscriptionId pulumi.StringPtrInput `pulumi:"azureSubscriptionId"`
 	// The Datadog API key.
 	DatadogApiKey pulumi.StringPtrInput `pulumi:"datadogApiKey"`
-	// The Datadog region. Options are ["us", "eu", "us3", "us5"].
+	// The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
 	DatadogRegion pulumi.StringPtrInput `pulumi:"datadogRegion"`
 	// Sent in the HTTP "Authorization" header with each request.
 	HttpAuthorization pulumi.StringPtrInput `pulumi:"httpAuthorization"`
@@ -17091,7 +20449,7 @@ func (o LogStreamSinkOutput) AwsPartnerEventSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.AwsPartnerEventSource }).(pulumi.StringPtrOutput)
 }
 
-// The AWS Region, e.g. "us-east-2").
+// The region in which the EventBridge event source will be created. Possible values: `ap-east-1`, `ap-northeast-1`, `ap-northeast-2`, `ap-northeast-3`, `ap-south-1`, `ap-southeast-1`, `ap-southeast-2`, `ca-central-1`, `cn-north-1`, `cn-northwest-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `me-south-1`, `sa-east-1`, `us-gov-east-1`, `us-gov-west-1`, `us-east-1`, `us-east-2`, `us-west-1`, `us-west-2`.
 func (o LogStreamSinkOutput) AwsRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
 }
@@ -17101,7 +20459,7 @@ func (o LogStreamSinkOutput) AzurePartnerTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.AzurePartnerTopic }).(pulumi.StringPtrOutput)
 }
 
-// The Azure region code, e.g. "ne")
+// The Azure region code. Possible values: `australiacentral`, `australiaeast`, `australiasoutheast`, `brazilsouth`, `canadacentral`, `canadaeast`, `centralindia`, `centralus`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `germanywestcentral`, `japaneast`, `japanwest`, `koreacentral`, `koreasouth`, `northcentralus`, `northeurope`, `norwayeast`, `southafricanorth`, `southcentralus`, `southeastasia`, `southindia`, `switzerlandnorth`, `uaenorth`, `uksouth`, `ukwest`, `westcentralus`, `westeurope`, `westindia`, `westus`, `westus2`.
 func (o LogStreamSinkOutput) AzureRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.AzureRegion }).(pulumi.StringPtrOutput)
 }
@@ -17121,7 +20479,7 @@ func (o LogStreamSinkOutput) DatadogApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.DatadogApiKey }).(pulumi.StringPtrOutput)
 }
 
-// The Datadog region. Options are ["us", "eu", "us3", "us5"].
+// The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
 func (o LogStreamSinkOutput) DatadogRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.DatadogRegion }).(pulumi.StringPtrOutput)
 }
@@ -17251,7 +20609,7 @@ func (o LogStreamSinkPtrOutput) AwsPartnerEventSource() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The AWS Region, e.g. "us-east-2").
+// The region in which the EventBridge event source will be created. Possible values: `ap-east-1`, `ap-northeast-1`, `ap-northeast-2`, `ap-northeast-3`, `ap-south-1`, `ap-southeast-1`, `ap-southeast-2`, `ca-central-1`, `cn-north-1`, `cn-northwest-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `me-south-1`, `sa-east-1`, `us-gov-east-1`, `us-gov-west-1`, `us-east-1`, `us-east-2`, `us-west-1`, `us-west-2`.
 func (o LogStreamSinkPtrOutput) AwsRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -17271,7 +20629,7 @@ func (o LogStreamSinkPtrOutput) AzurePartnerTopic() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Azure region code, e.g. "ne")
+// The Azure region code. Possible values: `australiacentral`, `australiaeast`, `australiasoutheast`, `brazilsouth`, `canadacentral`, `canadaeast`, `centralindia`, `centralus`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `germanywestcentral`, `japaneast`, `japanwest`, `koreacentral`, `koreasouth`, `northcentralus`, `northeurope`, `norwayeast`, `southafricanorth`, `southcentralus`, `southeastasia`, `southindia`, `switzerlandnorth`, `uaenorth`, `uksouth`, `ukwest`, `westcentralus`, `westeurope`, `westindia`, `westus`, `westus2`.
 func (o LogStreamSinkPtrOutput) AzureRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -17311,7 +20669,7 @@ func (o LogStreamSinkPtrOutput) DatadogApiKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Datadog region. Options are ["us", "eu", "us3", "us5"].
+// The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
 func (o LogStreamSinkPtrOutput) DatadogRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -18520,136 +21878,6 @@ func (o PagesLoginPtrOutput) Html() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type ResourceServerScopeType struct {
-	// Description of the permission (scope).
-	Description *string `pulumi:"description"`
-	// Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
-	Value string `pulumi:"value"`
-}
-
-// ResourceServerScopeTypeInput is an input type that accepts ResourceServerScopeTypeArgs and ResourceServerScopeTypeOutput values.
-// You can construct a concrete instance of `ResourceServerScopeTypeInput` via:
-//
-//	ResourceServerScopeTypeArgs{...}
-type ResourceServerScopeTypeInput interface {
-	pulumi.Input
-
-	ToResourceServerScopeTypeOutput() ResourceServerScopeTypeOutput
-	ToResourceServerScopeTypeOutputWithContext(context.Context) ResourceServerScopeTypeOutput
-}
-
-type ResourceServerScopeTypeArgs struct {
-	// Description of the permission (scope).
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (ResourceServerScopeTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceServerScopeType)(nil)).Elem()
-}
-
-func (i ResourceServerScopeTypeArgs) ToResourceServerScopeTypeOutput() ResourceServerScopeTypeOutput {
-	return i.ToResourceServerScopeTypeOutputWithContext(context.Background())
-}
-
-func (i ResourceServerScopeTypeArgs) ToResourceServerScopeTypeOutputWithContext(ctx context.Context) ResourceServerScopeTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerScopeTypeOutput)
-}
-
-func (i ResourceServerScopeTypeArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceServerScopeType] {
-	return pulumix.Output[ResourceServerScopeType]{
-		OutputState: i.ToResourceServerScopeTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
-// ResourceServerScopeTypeArrayInput is an input type that accepts ResourceServerScopeTypeArray and ResourceServerScopeTypeArrayOutput values.
-// You can construct a concrete instance of `ResourceServerScopeTypeArrayInput` via:
-//
-//	ResourceServerScopeTypeArray{ ResourceServerScopeTypeArgs{...} }
-type ResourceServerScopeTypeArrayInput interface {
-	pulumi.Input
-
-	ToResourceServerScopeTypeArrayOutput() ResourceServerScopeTypeArrayOutput
-	ToResourceServerScopeTypeArrayOutputWithContext(context.Context) ResourceServerScopeTypeArrayOutput
-}
-
-type ResourceServerScopeTypeArray []ResourceServerScopeTypeInput
-
-func (ResourceServerScopeTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceServerScopeType)(nil)).Elem()
-}
-
-func (i ResourceServerScopeTypeArray) ToResourceServerScopeTypeArrayOutput() ResourceServerScopeTypeArrayOutput {
-	return i.ToResourceServerScopeTypeArrayOutputWithContext(context.Background())
-}
-
-func (i ResourceServerScopeTypeArray) ToResourceServerScopeTypeArrayOutputWithContext(ctx context.Context) ResourceServerScopeTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerScopeTypeArrayOutput)
-}
-
-func (i ResourceServerScopeTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]ResourceServerScopeType] {
-	return pulumix.Output[[]ResourceServerScopeType]{
-		OutputState: i.ToResourceServerScopeTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type ResourceServerScopeTypeOutput struct{ *pulumi.OutputState }
-
-func (ResourceServerScopeTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceServerScopeType)(nil)).Elem()
-}
-
-func (o ResourceServerScopeTypeOutput) ToResourceServerScopeTypeOutput() ResourceServerScopeTypeOutput {
-	return o
-}
-
-func (o ResourceServerScopeTypeOutput) ToResourceServerScopeTypeOutputWithContext(ctx context.Context) ResourceServerScopeTypeOutput {
-	return o
-}
-
-func (o ResourceServerScopeTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceServerScopeType] {
-	return pulumix.Output[ResourceServerScopeType]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Description of the permission (scope).
-func (o ResourceServerScopeTypeOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceServerScopeType) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
-func (o ResourceServerScopeTypeOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceServerScopeType) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type ResourceServerScopeTypeArrayOutput struct{ *pulumi.OutputState }
-
-func (ResourceServerScopeTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceServerScopeType)(nil)).Elem()
-}
-
-func (o ResourceServerScopeTypeArrayOutput) ToResourceServerScopeTypeArrayOutput() ResourceServerScopeTypeArrayOutput {
-	return o
-}
-
-func (o ResourceServerScopeTypeArrayOutput) ToResourceServerScopeTypeArrayOutputWithContext(ctx context.Context) ResourceServerScopeTypeArrayOutput {
-	return o
-}
-
-func (o ResourceServerScopeTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceServerScopeType] {
-	return pulumix.Output[[]ResourceServerScopeType]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o ResourceServerScopeTypeArrayOutput) Index(i pulumi.IntInput) ResourceServerScopeTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceServerScopeType {
-		return vs[0].([]ResourceServerScopeType)[vs[1].(int)]
-	}).(ResourceServerScopeTypeOutput)
-}
-
 type ResourceServerScopesScope struct {
 	// User-friendly description of the scope (permission).
 	Description *string `pulumi:"description"`
@@ -18778,154 +22006,6 @@ func (o ResourceServerScopesScopeArrayOutput) Index(i pulumi.IntInput) ResourceS
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceServerScopesScope {
 		return vs[0].([]ResourceServerScopesScope)[vs[1].(int)]
 	}).(ResourceServerScopesScopeOutput)
-}
-
-type RolePermissionType struct {
-	// Description of the permission.
-	Description *string `pulumi:"description"`
-	// Name of the permission (scope) configured on the resource server. If referencing a scope from an `ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
-	Name string `pulumi:"name"`
-	// Unique identifier for the resource server.
-	ResourceServerIdentifier string `pulumi:"resourceServerIdentifier"`
-	// Name of resource server that the permission is associated with.
-	ResourceServerName *string `pulumi:"resourceServerName"`
-}
-
-// RolePermissionTypeInput is an input type that accepts RolePermissionTypeArgs and RolePermissionTypeOutput values.
-// You can construct a concrete instance of `RolePermissionTypeInput` via:
-//
-//	RolePermissionTypeArgs{...}
-type RolePermissionTypeInput interface {
-	pulumi.Input
-
-	ToRolePermissionTypeOutput() RolePermissionTypeOutput
-	ToRolePermissionTypeOutputWithContext(context.Context) RolePermissionTypeOutput
-}
-
-type RolePermissionTypeArgs struct {
-	// Description of the permission.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Name of the permission (scope) configured on the resource server. If referencing a scope from an `ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Unique identifier for the resource server.
-	ResourceServerIdentifier pulumi.StringInput `pulumi:"resourceServerIdentifier"`
-	// Name of resource server that the permission is associated with.
-	ResourceServerName pulumi.StringPtrInput `pulumi:"resourceServerName"`
-}
-
-func (RolePermissionTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RolePermissionType)(nil)).Elem()
-}
-
-func (i RolePermissionTypeArgs) ToRolePermissionTypeOutput() RolePermissionTypeOutput {
-	return i.ToRolePermissionTypeOutputWithContext(context.Background())
-}
-
-func (i RolePermissionTypeArgs) ToRolePermissionTypeOutputWithContext(ctx context.Context) RolePermissionTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RolePermissionTypeOutput)
-}
-
-func (i RolePermissionTypeArgs) ToOutput(ctx context.Context) pulumix.Output[RolePermissionType] {
-	return pulumix.Output[RolePermissionType]{
-		OutputState: i.ToRolePermissionTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
-// RolePermissionTypeArrayInput is an input type that accepts RolePermissionTypeArray and RolePermissionTypeArrayOutput values.
-// You can construct a concrete instance of `RolePermissionTypeArrayInput` via:
-//
-//	RolePermissionTypeArray{ RolePermissionTypeArgs{...} }
-type RolePermissionTypeArrayInput interface {
-	pulumi.Input
-
-	ToRolePermissionTypeArrayOutput() RolePermissionTypeArrayOutput
-	ToRolePermissionTypeArrayOutputWithContext(context.Context) RolePermissionTypeArrayOutput
-}
-
-type RolePermissionTypeArray []RolePermissionTypeInput
-
-func (RolePermissionTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RolePermissionType)(nil)).Elem()
-}
-
-func (i RolePermissionTypeArray) ToRolePermissionTypeArrayOutput() RolePermissionTypeArrayOutput {
-	return i.ToRolePermissionTypeArrayOutputWithContext(context.Background())
-}
-
-func (i RolePermissionTypeArray) ToRolePermissionTypeArrayOutputWithContext(ctx context.Context) RolePermissionTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RolePermissionTypeArrayOutput)
-}
-
-func (i RolePermissionTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]RolePermissionType] {
-	return pulumix.Output[[]RolePermissionType]{
-		OutputState: i.ToRolePermissionTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type RolePermissionTypeOutput struct{ *pulumi.OutputState }
-
-func (RolePermissionTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RolePermissionType)(nil)).Elem()
-}
-
-func (o RolePermissionTypeOutput) ToRolePermissionTypeOutput() RolePermissionTypeOutput {
-	return o
-}
-
-func (o RolePermissionTypeOutput) ToRolePermissionTypeOutputWithContext(ctx context.Context) RolePermissionTypeOutput {
-	return o
-}
-
-func (o RolePermissionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RolePermissionType] {
-	return pulumix.Output[RolePermissionType]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Description of the permission.
-func (o RolePermissionTypeOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RolePermissionType) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Name of the permission (scope) configured on the resource server. If referencing a scope from an `ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
-func (o RolePermissionTypeOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v RolePermissionType) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Unique identifier for the resource server.
-func (o RolePermissionTypeOutput) ResourceServerIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v RolePermissionType) string { return v.ResourceServerIdentifier }).(pulumi.StringOutput)
-}
-
-// Name of resource server that the permission is associated with.
-func (o RolePermissionTypeOutput) ResourceServerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RolePermissionType) *string { return v.ResourceServerName }).(pulumi.StringPtrOutput)
-}
-
-type RolePermissionTypeArrayOutput struct{ *pulumi.OutputState }
-
-func (RolePermissionTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RolePermissionType)(nil)).Elem()
-}
-
-func (o RolePermissionTypeArrayOutput) ToRolePermissionTypeArrayOutput() RolePermissionTypeArrayOutput {
-	return o
-}
-
-func (o RolePermissionTypeArrayOutput) ToRolePermissionTypeArrayOutputWithContext(ctx context.Context) RolePermissionTypeArrayOutput {
-	return o
-}
-
-func (o RolePermissionTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RolePermissionType] {
-	return pulumix.Output[[]RolePermissionType]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o RolePermissionTypeArrayOutput) Index(i pulumi.IntInput) RolePermissionTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RolePermissionType {
-		return vs[0].([]RolePermissionType)[vs[1].(int)]
-	}).(RolePermissionTypeOutput)
 }
 
 type RolePermissionsPermission struct {
@@ -19076,385 +22156,6 @@ func (o RolePermissionsPermissionArrayOutput) Index(i pulumi.IntInput) RolePermi
 	}).(RolePermissionsPermissionOutput)
 }
 
-type TenantChangePassword struct {
-	// Indicates whether to use the custom change password page.
-	Enabled bool `pulumi:"enabled"`
-	// HTML format with supported Liquid syntax. Customized content of the change password page.
-	Html string `pulumi:"html"`
-}
-
-// TenantChangePasswordInput is an input type that accepts TenantChangePasswordArgs and TenantChangePasswordOutput values.
-// You can construct a concrete instance of `TenantChangePasswordInput` via:
-//
-//	TenantChangePasswordArgs{...}
-type TenantChangePasswordInput interface {
-	pulumi.Input
-
-	ToTenantChangePasswordOutput() TenantChangePasswordOutput
-	ToTenantChangePasswordOutputWithContext(context.Context) TenantChangePasswordOutput
-}
-
-type TenantChangePasswordArgs struct {
-	// Indicates whether to use the custom change password page.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// HTML format with supported Liquid syntax. Customized content of the change password page.
-	Html pulumi.StringInput `pulumi:"html"`
-}
-
-func (TenantChangePasswordArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TenantChangePassword)(nil)).Elem()
-}
-
-func (i TenantChangePasswordArgs) ToTenantChangePasswordOutput() TenantChangePasswordOutput {
-	return i.ToTenantChangePasswordOutputWithContext(context.Background())
-}
-
-func (i TenantChangePasswordArgs) ToTenantChangePasswordOutputWithContext(ctx context.Context) TenantChangePasswordOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantChangePasswordOutput)
-}
-
-func (i TenantChangePasswordArgs) ToOutput(ctx context.Context) pulumix.Output[TenantChangePassword] {
-	return pulumix.Output[TenantChangePassword]{
-		OutputState: i.ToTenantChangePasswordOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i TenantChangePasswordArgs) ToTenantChangePasswordPtrOutput() TenantChangePasswordPtrOutput {
-	return i.ToTenantChangePasswordPtrOutputWithContext(context.Background())
-}
-
-func (i TenantChangePasswordArgs) ToTenantChangePasswordPtrOutputWithContext(ctx context.Context) TenantChangePasswordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantChangePasswordOutput).ToTenantChangePasswordPtrOutputWithContext(ctx)
-}
-
-// TenantChangePasswordPtrInput is an input type that accepts TenantChangePasswordArgs, TenantChangePasswordPtr and TenantChangePasswordPtrOutput values.
-// You can construct a concrete instance of `TenantChangePasswordPtrInput` via:
-//
-//	        TenantChangePasswordArgs{...}
-//
-//	or:
-//
-//	        nil
-type TenantChangePasswordPtrInput interface {
-	pulumi.Input
-
-	ToTenantChangePasswordPtrOutput() TenantChangePasswordPtrOutput
-	ToTenantChangePasswordPtrOutputWithContext(context.Context) TenantChangePasswordPtrOutput
-}
-
-type tenantChangePasswordPtrType TenantChangePasswordArgs
-
-func TenantChangePasswordPtr(v *TenantChangePasswordArgs) TenantChangePasswordPtrInput {
-	return (*tenantChangePasswordPtrType)(v)
-}
-
-func (*tenantChangePasswordPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TenantChangePassword)(nil)).Elem()
-}
-
-func (i *tenantChangePasswordPtrType) ToTenantChangePasswordPtrOutput() TenantChangePasswordPtrOutput {
-	return i.ToTenantChangePasswordPtrOutputWithContext(context.Background())
-}
-
-func (i *tenantChangePasswordPtrType) ToTenantChangePasswordPtrOutputWithContext(ctx context.Context) TenantChangePasswordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantChangePasswordPtrOutput)
-}
-
-func (i *tenantChangePasswordPtrType) ToOutput(ctx context.Context) pulumix.Output[*TenantChangePassword] {
-	return pulumix.Output[*TenantChangePassword]{
-		OutputState: i.ToTenantChangePasswordPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type TenantChangePasswordOutput struct{ *pulumi.OutputState }
-
-func (TenantChangePasswordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TenantChangePassword)(nil)).Elem()
-}
-
-func (o TenantChangePasswordOutput) ToTenantChangePasswordOutput() TenantChangePasswordOutput {
-	return o
-}
-
-func (o TenantChangePasswordOutput) ToTenantChangePasswordOutputWithContext(ctx context.Context) TenantChangePasswordOutput {
-	return o
-}
-
-func (o TenantChangePasswordOutput) ToTenantChangePasswordPtrOutput() TenantChangePasswordPtrOutput {
-	return o.ToTenantChangePasswordPtrOutputWithContext(context.Background())
-}
-
-func (o TenantChangePasswordOutput) ToTenantChangePasswordPtrOutputWithContext(ctx context.Context) TenantChangePasswordPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantChangePassword) *TenantChangePassword {
-		return &v
-	}).(TenantChangePasswordPtrOutput)
-}
-
-func (o TenantChangePasswordOutput) ToOutput(ctx context.Context) pulumix.Output[TenantChangePassword] {
-	return pulumix.Output[TenantChangePassword]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Indicates whether to use the custom change password page.
-func (o TenantChangePasswordOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v TenantChangePassword) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// HTML format with supported Liquid syntax. Customized content of the change password page.
-func (o TenantChangePasswordOutput) Html() pulumi.StringOutput {
-	return o.ApplyT(func(v TenantChangePassword) string { return v.Html }).(pulumi.StringOutput)
-}
-
-type TenantChangePasswordPtrOutput struct{ *pulumi.OutputState }
-
-func (TenantChangePasswordPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TenantChangePassword)(nil)).Elem()
-}
-
-func (o TenantChangePasswordPtrOutput) ToTenantChangePasswordPtrOutput() TenantChangePasswordPtrOutput {
-	return o
-}
-
-func (o TenantChangePasswordPtrOutput) ToTenantChangePasswordPtrOutputWithContext(ctx context.Context) TenantChangePasswordPtrOutput {
-	return o
-}
-
-func (o TenantChangePasswordPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TenantChangePassword] {
-	return pulumix.Output[*TenantChangePassword]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o TenantChangePasswordPtrOutput) Elem() TenantChangePasswordOutput {
-	return o.ApplyT(func(v *TenantChangePassword) TenantChangePassword {
-		if v != nil {
-			return *v
-		}
-		var ret TenantChangePassword
-		return ret
-	}).(TenantChangePasswordOutput)
-}
-
-// Indicates whether to use the custom change password page.
-func (o TenantChangePasswordPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TenantChangePassword) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// HTML format with supported Liquid syntax. Customized content of the change password page.
-func (o TenantChangePasswordPtrOutput) Html() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TenantChangePassword) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Html
-	}).(pulumi.StringPtrOutput)
-}
-
-type TenantErrorPage struct {
-	// HTML format with supported Liquid syntax. Customized content of the error page.
-	Html string `pulumi:"html"`
-	// Indicates whether to show the link to logs as part of the default error page.
-	ShowLogLink bool `pulumi:"showLogLink"`
-	// URL to redirect to when an error occurs rather than showing the default error page.
-	Url string `pulumi:"url"`
-}
-
-// TenantErrorPageInput is an input type that accepts TenantErrorPageArgs and TenantErrorPageOutput values.
-// You can construct a concrete instance of `TenantErrorPageInput` via:
-//
-//	TenantErrorPageArgs{...}
-type TenantErrorPageInput interface {
-	pulumi.Input
-
-	ToTenantErrorPageOutput() TenantErrorPageOutput
-	ToTenantErrorPageOutputWithContext(context.Context) TenantErrorPageOutput
-}
-
-type TenantErrorPageArgs struct {
-	// HTML format with supported Liquid syntax. Customized content of the error page.
-	Html pulumi.StringInput `pulumi:"html"`
-	// Indicates whether to show the link to logs as part of the default error page.
-	ShowLogLink pulumi.BoolInput `pulumi:"showLogLink"`
-	// URL to redirect to when an error occurs rather than showing the default error page.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (TenantErrorPageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TenantErrorPage)(nil)).Elem()
-}
-
-func (i TenantErrorPageArgs) ToTenantErrorPageOutput() TenantErrorPageOutput {
-	return i.ToTenantErrorPageOutputWithContext(context.Background())
-}
-
-func (i TenantErrorPageArgs) ToTenantErrorPageOutputWithContext(ctx context.Context) TenantErrorPageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantErrorPageOutput)
-}
-
-func (i TenantErrorPageArgs) ToOutput(ctx context.Context) pulumix.Output[TenantErrorPage] {
-	return pulumix.Output[TenantErrorPage]{
-		OutputState: i.ToTenantErrorPageOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i TenantErrorPageArgs) ToTenantErrorPagePtrOutput() TenantErrorPagePtrOutput {
-	return i.ToTenantErrorPagePtrOutputWithContext(context.Background())
-}
-
-func (i TenantErrorPageArgs) ToTenantErrorPagePtrOutputWithContext(ctx context.Context) TenantErrorPagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantErrorPageOutput).ToTenantErrorPagePtrOutputWithContext(ctx)
-}
-
-// TenantErrorPagePtrInput is an input type that accepts TenantErrorPageArgs, TenantErrorPagePtr and TenantErrorPagePtrOutput values.
-// You can construct a concrete instance of `TenantErrorPagePtrInput` via:
-//
-//	        TenantErrorPageArgs{...}
-//
-//	or:
-//
-//	        nil
-type TenantErrorPagePtrInput interface {
-	pulumi.Input
-
-	ToTenantErrorPagePtrOutput() TenantErrorPagePtrOutput
-	ToTenantErrorPagePtrOutputWithContext(context.Context) TenantErrorPagePtrOutput
-}
-
-type tenantErrorPagePtrType TenantErrorPageArgs
-
-func TenantErrorPagePtr(v *TenantErrorPageArgs) TenantErrorPagePtrInput {
-	return (*tenantErrorPagePtrType)(v)
-}
-
-func (*tenantErrorPagePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TenantErrorPage)(nil)).Elem()
-}
-
-func (i *tenantErrorPagePtrType) ToTenantErrorPagePtrOutput() TenantErrorPagePtrOutput {
-	return i.ToTenantErrorPagePtrOutputWithContext(context.Background())
-}
-
-func (i *tenantErrorPagePtrType) ToTenantErrorPagePtrOutputWithContext(ctx context.Context) TenantErrorPagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantErrorPagePtrOutput)
-}
-
-func (i *tenantErrorPagePtrType) ToOutput(ctx context.Context) pulumix.Output[*TenantErrorPage] {
-	return pulumix.Output[*TenantErrorPage]{
-		OutputState: i.ToTenantErrorPagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type TenantErrorPageOutput struct{ *pulumi.OutputState }
-
-func (TenantErrorPageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TenantErrorPage)(nil)).Elem()
-}
-
-func (o TenantErrorPageOutput) ToTenantErrorPageOutput() TenantErrorPageOutput {
-	return o
-}
-
-func (o TenantErrorPageOutput) ToTenantErrorPageOutputWithContext(ctx context.Context) TenantErrorPageOutput {
-	return o
-}
-
-func (o TenantErrorPageOutput) ToTenantErrorPagePtrOutput() TenantErrorPagePtrOutput {
-	return o.ToTenantErrorPagePtrOutputWithContext(context.Background())
-}
-
-func (o TenantErrorPageOutput) ToTenantErrorPagePtrOutputWithContext(ctx context.Context) TenantErrorPagePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantErrorPage) *TenantErrorPage {
-		return &v
-	}).(TenantErrorPagePtrOutput)
-}
-
-func (o TenantErrorPageOutput) ToOutput(ctx context.Context) pulumix.Output[TenantErrorPage] {
-	return pulumix.Output[TenantErrorPage]{
-		OutputState: o.OutputState,
-	}
-}
-
-// HTML format with supported Liquid syntax. Customized content of the error page.
-func (o TenantErrorPageOutput) Html() pulumi.StringOutput {
-	return o.ApplyT(func(v TenantErrorPage) string { return v.Html }).(pulumi.StringOutput)
-}
-
-// Indicates whether to show the link to logs as part of the default error page.
-func (o TenantErrorPageOutput) ShowLogLink() pulumi.BoolOutput {
-	return o.ApplyT(func(v TenantErrorPage) bool { return v.ShowLogLink }).(pulumi.BoolOutput)
-}
-
-// URL to redirect to when an error occurs rather than showing the default error page.
-func (o TenantErrorPageOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v TenantErrorPage) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type TenantErrorPagePtrOutput struct{ *pulumi.OutputState }
-
-func (TenantErrorPagePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TenantErrorPage)(nil)).Elem()
-}
-
-func (o TenantErrorPagePtrOutput) ToTenantErrorPagePtrOutput() TenantErrorPagePtrOutput {
-	return o
-}
-
-func (o TenantErrorPagePtrOutput) ToTenantErrorPagePtrOutputWithContext(ctx context.Context) TenantErrorPagePtrOutput {
-	return o
-}
-
-func (o TenantErrorPagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TenantErrorPage] {
-	return pulumix.Output[*TenantErrorPage]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o TenantErrorPagePtrOutput) Elem() TenantErrorPageOutput {
-	return o.ApplyT(func(v *TenantErrorPage) TenantErrorPage {
-		if v != nil {
-			return *v
-		}
-		var ret TenantErrorPage
-		return ret
-	}).(TenantErrorPageOutput)
-}
-
-// HTML format with supported Liquid syntax. Customized content of the error page.
-func (o TenantErrorPagePtrOutput) Html() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TenantErrorPage) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Html
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether to show the link to logs as part of the default error page.
-func (o TenantErrorPagePtrOutput) ShowLogLink() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TenantErrorPage) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ShowLogLink
-	}).(pulumi.BoolPtrOutput)
-}
-
-// URL to redirect to when an error occurs rather than showing the default error page.
-func (o TenantErrorPagePtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TenantErrorPage) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Url
-	}).(pulumi.StringPtrOutput)
-}
-
 type TenantFlags struct {
 	// Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
 	AllowLegacyDelegationGrantTypes *bool `pulumi:"allowLegacyDelegationGrantTypes"`
@@ -19478,7 +22179,7 @@ type TenantFlags struct {
 	EnableApisSection *bool `pulumi:"enableApisSection"`
 	// Indicates whether all current connections should be enabled when a new client is created.
 	EnableClientConnections *bool `pulumi:"enableClientConnections"`
-	// Indicates whether the tenant allows custom domains in emails.
+	// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
 	EnableCustomDomainInEmails *bool `pulumi:"enableCustomDomainInEmails"`
 	// Indicates whether the tenant allows dynamic client registration.
 	EnableDynamicClientRegistration *bool `pulumi:"enableDynamicClientRegistration"`
@@ -19496,12 +22197,10 @@ type TenantFlags struct {
 	MfaShowFactorListOnEnrollment *bool `pulumi:"mfaShowFactorListOnEnrollment"`
 	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
 	NoDiscloseEnterpriseConnections *bool `pulumi:"noDiscloseEnterpriseConnections"`
+	// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+	RequirePushedAuthorizationRequests *bool `pulumi:"requirePushedAuthorizationRequests"`
 	// Delete underlying grant when a refresh token is revoked via the Authentication API.
 	RevokeRefreshTokenGrant *bool `pulumi:"revokeRefreshTokenGrant"`
-	// Indicates whether the New Universal Login Experience is enabled.
-	//
-	// Deprecated: This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
-	UniversalLogin *bool `pulumi:"universalLogin"`
 	// Indicates whether to use scope descriptions for consent.
 	UseScopeDescriptionsForConsent *bool `pulumi:"useScopeDescriptionsForConsent"`
 }
@@ -19540,7 +22239,7 @@ type TenantFlagsArgs struct {
 	EnableApisSection pulumi.BoolPtrInput `pulumi:"enableApisSection"`
 	// Indicates whether all current connections should be enabled when a new client is created.
 	EnableClientConnections pulumi.BoolPtrInput `pulumi:"enableClientConnections"`
-	// Indicates whether the tenant allows custom domains in emails.
+	// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
 	EnableCustomDomainInEmails pulumi.BoolPtrInput `pulumi:"enableCustomDomainInEmails"`
 	// Indicates whether the tenant allows dynamic client registration.
 	EnableDynamicClientRegistration pulumi.BoolPtrInput `pulumi:"enableDynamicClientRegistration"`
@@ -19558,12 +22257,10 @@ type TenantFlagsArgs struct {
 	MfaShowFactorListOnEnrollment pulumi.BoolPtrInput `pulumi:"mfaShowFactorListOnEnrollment"`
 	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
 	NoDiscloseEnterpriseConnections pulumi.BoolPtrInput `pulumi:"noDiscloseEnterpriseConnections"`
+	// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+	RequirePushedAuthorizationRequests pulumi.BoolPtrInput `pulumi:"requirePushedAuthorizationRequests"`
 	// Delete underlying grant when a refresh token is revoked via the Authentication API.
 	RevokeRefreshTokenGrant pulumi.BoolPtrInput `pulumi:"revokeRefreshTokenGrant"`
-	// Indicates whether the New Universal Login Experience is enabled.
-	//
-	// Deprecated: This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
-	UniversalLogin pulumi.BoolPtrInput `pulumi:"universalLogin"`
 	// Indicates whether to use scope descriptions for consent.
 	UseScopeDescriptionsForConsent pulumi.BoolPtrInput `pulumi:"useScopeDescriptionsForConsent"`
 }
@@ -19718,7 +22415,7 @@ func (o TenantFlagsOutput) EnableClientConnections() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableClientConnections }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether the tenant allows custom domains in emails.
+// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
 func (o TenantFlagsOutput) EnableCustomDomainInEmails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableCustomDomainInEmails }).(pulumi.BoolPtrOutput)
 }
@@ -19763,16 +22460,14 @@ func (o TenantFlagsOutput) NoDiscloseEnterpriseConnections() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v TenantFlags) *bool { return v.NoDiscloseEnterpriseConnections }).(pulumi.BoolPtrOutput)
 }
 
+// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+func (o TenantFlagsOutput) RequirePushedAuthorizationRequests() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantFlags) *bool { return v.RequirePushedAuthorizationRequests }).(pulumi.BoolPtrOutput)
+}
+
 // Delete underlying grant when a refresh token is revoked via the Authentication API.
 func (o TenantFlagsOutput) RevokeRefreshTokenGrant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.RevokeRefreshTokenGrant }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates whether the New Universal Login Experience is enabled.
-//
-// Deprecated: This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
-func (o TenantFlagsOutput) UniversalLogin() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TenantFlags) *bool { return v.UniversalLogin }).(pulumi.BoolPtrOutput)
 }
 
 // Indicates whether to use scope descriptions for consent.
@@ -19920,7 +22615,7 @@ func (o TenantFlagsPtrOutput) EnableClientConnections() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether the tenant allows custom domains in emails.
+// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
 func (o TenantFlagsPtrOutput) EnableCustomDomainInEmails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
 		if v == nil {
@@ -20010,6 +22705,16 @@ func (o TenantFlagsPtrOutput) NoDiscloseEnterpriseConnections() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+func (o TenantFlagsPtrOutput) RequirePushedAuthorizationRequests() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequirePushedAuthorizationRequests
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Delete underlying grant when a refresh token is revoked via the Authentication API.
 func (o TenantFlagsPtrOutput) RevokeRefreshTokenGrant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
@@ -20017,18 +22722,6 @@ func (o TenantFlagsPtrOutput) RevokeRefreshTokenGrant() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.RevokeRefreshTokenGrant
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates whether the New Universal Login Experience is enabled.
-//
-// Deprecated: This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
-func (o TenantFlagsPtrOutput) UniversalLogin() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TenantFlags) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.UniversalLogin
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -20040,186 +22733,6 @@ func (o TenantFlagsPtrOutput) UseScopeDescriptionsForConsent() pulumi.BoolPtrOut
 		}
 		return v.UseScopeDescriptionsForConsent
 	}).(pulumi.BoolPtrOutput)
-}
-
-type TenantGuardianMfaPage struct {
-	// Indicates whether to use the custom Guardian page.
-	Enabled bool `pulumi:"enabled"`
-	// HTML format with supported Liquid syntax. Customized content of the Guardian page.
-	Html string `pulumi:"html"`
-}
-
-// TenantGuardianMfaPageInput is an input type that accepts TenantGuardianMfaPageArgs and TenantGuardianMfaPageOutput values.
-// You can construct a concrete instance of `TenantGuardianMfaPageInput` via:
-//
-//	TenantGuardianMfaPageArgs{...}
-type TenantGuardianMfaPageInput interface {
-	pulumi.Input
-
-	ToTenantGuardianMfaPageOutput() TenantGuardianMfaPageOutput
-	ToTenantGuardianMfaPageOutputWithContext(context.Context) TenantGuardianMfaPageOutput
-}
-
-type TenantGuardianMfaPageArgs struct {
-	// Indicates whether to use the custom Guardian page.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// HTML format with supported Liquid syntax. Customized content of the Guardian page.
-	Html pulumi.StringInput `pulumi:"html"`
-}
-
-func (TenantGuardianMfaPageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TenantGuardianMfaPage)(nil)).Elem()
-}
-
-func (i TenantGuardianMfaPageArgs) ToTenantGuardianMfaPageOutput() TenantGuardianMfaPageOutput {
-	return i.ToTenantGuardianMfaPageOutputWithContext(context.Background())
-}
-
-func (i TenantGuardianMfaPageArgs) ToTenantGuardianMfaPageOutputWithContext(ctx context.Context) TenantGuardianMfaPageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantGuardianMfaPageOutput)
-}
-
-func (i TenantGuardianMfaPageArgs) ToOutput(ctx context.Context) pulumix.Output[TenantGuardianMfaPage] {
-	return pulumix.Output[TenantGuardianMfaPage]{
-		OutputState: i.ToTenantGuardianMfaPageOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i TenantGuardianMfaPageArgs) ToTenantGuardianMfaPagePtrOutput() TenantGuardianMfaPagePtrOutput {
-	return i.ToTenantGuardianMfaPagePtrOutputWithContext(context.Background())
-}
-
-func (i TenantGuardianMfaPageArgs) ToTenantGuardianMfaPagePtrOutputWithContext(ctx context.Context) TenantGuardianMfaPagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantGuardianMfaPageOutput).ToTenantGuardianMfaPagePtrOutputWithContext(ctx)
-}
-
-// TenantGuardianMfaPagePtrInput is an input type that accepts TenantGuardianMfaPageArgs, TenantGuardianMfaPagePtr and TenantGuardianMfaPagePtrOutput values.
-// You can construct a concrete instance of `TenantGuardianMfaPagePtrInput` via:
-//
-//	        TenantGuardianMfaPageArgs{...}
-//
-//	or:
-//
-//	        nil
-type TenantGuardianMfaPagePtrInput interface {
-	pulumi.Input
-
-	ToTenantGuardianMfaPagePtrOutput() TenantGuardianMfaPagePtrOutput
-	ToTenantGuardianMfaPagePtrOutputWithContext(context.Context) TenantGuardianMfaPagePtrOutput
-}
-
-type tenantGuardianMfaPagePtrType TenantGuardianMfaPageArgs
-
-func TenantGuardianMfaPagePtr(v *TenantGuardianMfaPageArgs) TenantGuardianMfaPagePtrInput {
-	return (*tenantGuardianMfaPagePtrType)(v)
-}
-
-func (*tenantGuardianMfaPagePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TenantGuardianMfaPage)(nil)).Elem()
-}
-
-func (i *tenantGuardianMfaPagePtrType) ToTenantGuardianMfaPagePtrOutput() TenantGuardianMfaPagePtrOutput {
-	return i.ToTenantGuardianMfaPagePtrOutputWithContext(context.Background())
-}
-
-func (i *tenantGuardianMfaPagePtrType) ToTenantGuardianMfaPagePtrOutputWithContext(ctx context.Context) TenantGuardianMfaPagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantGuardianMfaPagePtrOutput)
-}
-
-func (i *tenantGuardianMfaPagePtrType) ToOutput(ctx context.Context) pulumix.Output[*TenantGuardianMfaPage] {
-	return pulumix.Output[*TenantGuardianMfaPage]{
-		OutputState: i.ToTenantGuardianMfaPagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type TenantGuardianMfaPageOutput struct{ *pulumi.OutputState }
-
-func (TenantGuardianMfaPageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TenantGuardianMfaPage)(nil)).Elem()
-}
-
-func (o TenantGuardianMfaPageOutput) ToTenantGuardianMfaPageOutput() TenantGuardianMfaPageOutput {
-	return o
-}
-
-func (o TenantGuardianMfaPageOutput) ToTenantGuardianMfaPageOutputWithContext(ctx context.Context) TenantGuardianMfaPageOutput {
-	return o
-}
-
-func (o TenantGuardianMfaPageOutput) ToTenantGuardianMfaPagePtrOutput() TenantGuardianMfaPagePtrOutput {
-	return o.ToTenantGuardianMfaPagePtrOutputWithContext(context.Background())
-}
-
-func (o TenantGuardianMfaPageOutput) ToTenantGuardianMfaPagePtrOutputWithContext(ctx context.Context) TenantGuardianMfaPagePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantGuardianMfaPage) *TenantGuardianMfaPage {
-		return &v
-	}).(TenantGuardianMfaPagePtrOutput)
-}
-
-func (o TenantGuardianMfaPageOutput) ToOutput(ctx context.Context) pulumix.Output[TenantGuardianMfaPage] {
-	return pulumix.Output[TenantGuardianMfaPage]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Indicates whether to use the custom Guardian page.
-func (o TenantGuardianMfaPageOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v TenantGuardianMfaPage) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// HTML format with supported Liquid syntax. Customized content of the Guardian page.
-func (o TenantGuardianMfaPageOutput) Html() pulumi.StringOutput {
-	return o.ApplyT(func(v TenantGuardianMfaPage) string { return v.Html }).(pulumi.StringOutput)
-}
-
-type TenantGuardianMfaPagePtrOutput struct{ *pulumi.OutputState }
-
-func (TenantGuardianMfaPagePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TenantGuardianMfaPage)(nil)).Elem()
-}
-
-func (o TenantGuardianMfaPagePtrOutput) ToTenantGuardianMfaPagePtrOutput() TenantGuardianMfaPagePtrOutput {
-	return o
-}
-
-func (o TenantGuardianMfaPagePtrOutput) ToTenantGuardianMfaPagePtrOutputWithContext(ctx context.Context) TenantGuardianMfaPagePtrOutput {
-	return o
-}
-
-func (o TenantGuardianMfaPagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TenantGuardianMfaPage] {
-	return pulumix.Output[*TenantGuardianMfaPage]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o TenantGuardianMfaPagePtrOutput) Elem() TenantGuardianMfaPageOutput {
-	return o.ApplyT(func(v *TenantGuardianMfaPage) TenantGuardianMfaPage {
-		if v != nil {
-			return *v
-		}
-		var ret TenantGuardianMfaPage
-		return ret
-	}).(TenantGuardianMfaPageOutput)
-}
-
-// Indicates whether to use the custom Guardian page.
-func (o TenantGuardianMfaPagePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TenantGuardianMfaPage) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// HTML format with supported Liquid syntax. Customized content of the Guardian page.
-func (o TenantGuardianMfaPagePtrOutput) Html() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TenantGuardianMfaPage) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Html
-	}).(pulumi.StringPtrOutput)
 }
 
 type TenantSessionCookie struct {
@@ -20383,337 +22896,165 @@ func (o TenantSessionCookiePtrOutput) Mode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type TenantUniversalLogin struct {
-	// Configuration settings for Universal Login colors.
-	Colors *TenantUniversalLoginColors `pulumi:"colors"`
+type TenantSessions struct {
+	// When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
+	OidcLogoutPromptEnabled bool `pulumi:"oidcLogoutPromptEnabled"`
 }
 
-// TenantUniversalLoginInput is an input type that accepts TenantUniversalLoginArgs and TenantUniversalLoginOutput values.
-// You can construct a concrete instance of `TenantUniversalLoginInput` via:
+// TenantSessionsInput is an input type that accepts TenantSessionsArgs and TenantSessionsOutput values.
+// You can construct a concrete instance of `TenantSessionsInput` via:
 //
-//	TenantUniversalLoginArgs{...}
-type TenantUniversalLoginInput interface {
+//	TenantSessionsArgs{...}
+type TenantSessionsInput interface {
 	pulumi.Input
 
-	ToTenantUniversalLoginOutput() TenantUniversalLoginOutput
-	ToTenantUniversalLoginOutputWithContext(context.Context) TenantUniversalLoginOutput
+	ToTenantSessionsOutput() TenantSessionsOutput
+	ToTenantSessionsOutputWithContext(context.Context) TenantSessionsOutput
 }
 
-type TenantUniversalLoginArgs struct {
-	// Configuration settings for Universal Login colors.
-	Colors TenantUniversalLoginColorsPtrInput `pulumi:"colors"`
+type TenantSessionsArgs struct {
+	// When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
+	OidcLogoutPromptEnabled pulumi.BoolInput `pulumi:"oidcLogoutPromptEnabled"`
 }
 
-func (TenantUniversalLoginArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TenantUniversalLogin)(nil)).Elem()
+func (TenantSessionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantSessions)(nil)).Elem()
 }
 
-func (i TenantUniversalLoginArgs) ToTenantUniversalLoginOutput() TenantUniversalLoginOutput {
-	return i.ToTenantUniversalLoginOutputWithContext(context.Background())
+func (i TenantSessionsArgs) ToTenantSessionsOutput() TenantSessionsOutput {
+	return i.ToTenantSessionsOutputWithContext(context.Background())
 }
 
-func (i TenantUniversalLoginArgs) ToTenantUniversalLoginOutputWithContext(ctx context.Context) TenantUniversalLoginOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantUniversalLoginOutput)
+func (i TenantSessionsArgs) ToTenantSessionsOutputWithContext(ctx context.Context) TenantSessionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantSessionsOutput)
 }
 
-func (i TenantUniversalLoginArgs) ToOutput(ctx context.Context) pulumix.Output[TenantUniversalLogin] {
-	return pulumix.Output[TenantUniversalLogin]{
-		OutputState: i.ToTenantUniversalLoginOutputWithContext(ctx).OutputState,
+func (i TenantSessionsArgs) ToOutput(ctx context.Context) pulumix.Output[TenantSessions] {
+	return pulumix.Output[TenantSessions]{
+		OutputState: i.ToTenantSessionsOutputWithContext(ctx).OutputState,
 	}
 }
 
-func (i TenantUniversalLoginArgs) ToTenantUniversalLoginPtrOutput() TenantUniversalLoginPtrOutput {
-	return i.ToTenantUniversalLoginPtrOutputWithContext(context.Background())
+func (i TenantSessionsArgs) ToTenantSessionsPtrOutput() TenantSessionsPtrOutput {
+	return i.ToTenantSessionsPtrOutputWithContext(context.Background())
 }
 
-func (i TenantUniversalLoginArgs) ToTenantUniversalLoginPtrOutputWithContext(ctx context.Context) TenantUniversalLoginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantUniversalLoginOutput).ToTenantUniversalLoginPtrOutputWithContext(ctx)
+func (i TenantSessionsArgs) ToTenantSessionsPtrOutputWithContext(ctx context.Context) TenantSessionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantSessionsOutput).ToTenantSessionsPtrOutputWithContext(ctx)
 }
 
-// TenantUniversalLoginPtrInput is an input type that accepts TenantUniversalLoginArgs, TenantUniversalLoginPtr and TenantUniversalLoginPtrOutput values.
-// You can construct a concrete instance of `TenantUniversalLoginPtrInput` via:
+// TenantSessionsPtrInput is an input type that accepts TenantSessionsArgs, TenantSessionsPtr and TenantSessionsPtrOutput values.
+// You can construct a concrete instance of `TenantSessionsPtrInput` via:
 //
-//	        TenantUniversalLoginArgs{...}
+//	        TenantSessionsArgs{...}
 //
 //	or:
 //
 //	        nil
-type TenantUniversalLoginPtrInput interface {
+type TenantSessionsPtrInput interface {
 	pulumi.Input
 
-	ToTenantUniversalLoginPtrOutput() TenantUniversalLoginPtrOutput
-	ToTenantUniversalLoginPtrOutputWithContext(context.Context) TenantUniversalLoginPtrOutput
+	ToTenantSessionsPtrOutput() TenantSessionsPtrOutput
+	ToTenantSessionsPtrOutputWithContext(context.Context) TenantSessionsPtrOutput
 }
 
-type tenantUniversalLoginPtrType TenantUniversalLoginArgs
+type tenantSessionsPtrType TenantSessionsArgs
 
-func TenantUniversalLoginPtr(v *TenantUniversalLoginArgs) TenantUniversalLoginPtrInput {
-	return (*tenantUniversalLoginPtrType)(v)
+func TenantSessionsPtr(v *TenantSessionsArgs) TenantSessionsPtrInput {
+	return (*tenantSessionsPtrType)(v)
 }
 
-func (*tenantUniversalLoginPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TenantUniversalLogin)(nil)).Elem()
+func (*tenantSessionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantSessions)(nil)).Elem()
 }
 
-func (i *tenantUniversalLoginPtrType) ToTenantUniversalLoginPtrOutput() TenantUniversalLoginPtrOutput {
-	return i.ToTenantUniversalLoginPtrOutputWithContext(context.Background())
+func (i *tenantSessionsPtrType) ToTenantSessionsPtrOutput() TenantSessionsPtrOutput {
+	return i.ToTenantSessionsPtrOutputWithContext(context.Background())
 }
 
-func (i *tenantUniversalLoginPtrType) ToTenantUniversalLoginPtrOutputWithContext(ctx context.Context) TenantUniversalLoginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantUniversalLoginPtrOutput)
+func (i *tenantSessionsPtrType) ToTenantSessionsPtrOutputWithContext(ctx context.Context) TenantSessionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantSessionsPtrOutput)
 }
 
-func (i *tenantUniversalLoginPtrType) ToOutput(ctx context.Context) pulumix.Output[*TenantUniversalLogin] {
-	return pulumix.Output[*TenantUniversalLogin]{
-		OutputState: i.ToTenantUniversalLoginPtrOutputWithContext(ctx).OutputState,
+func (i *tenantSessionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*TenantSessions] {
+	return pulumix.Output[*TenantSessions]{
+		OutputState: i.ToTenantSessionsPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
-type TenantUniversalLoginOutput struct{ *pulumi.OutputState }
+type TenantSessionsOutput struct{ *pulumi.OutputState }
 
-func (TenantUniversalLoginOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TenantUniversalLogin)(nil)).Elem()
+func (TenantSessionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantSessions)(nil)).Elem()
 }
 
-func (o TenantUniversalLoginOutput) ToTenantUniversalLoginOutput() TenantUniversalLoginOutput {
+func (o TenantSessionsOutput) ToTenantSessionsOutput() TenantSessionsOutput {
 	return o
 }
 
-func (o TenantUniversalLoginOutput) ToTenantUniversalLoginOutputWithContext(ctx context.Context) TenantUniversalLoginOutput {
+func (o TenantSessionsOutput) ToTenantSessionsOutputWithContext(ctx context.Context) TenantSessionsOutput {
 	return o
 }
 
-func (o TenantUniversalLoginOutput) ToTenantUniversalLoginPtrOutput() TenantUniversalLoginPtrOutput {
-	return o.ToTenantUniversalLoginPtrOutputWithContext(context.Background())
+func (o TenantSessionsOutput) ToTenantSessionsPtrOutput() TenantSessionsPtrOutput {
+	return o.ToTenantSessionsPtrOutputWithContext(context.Background())
 }
 
-func (o TenantUniversalLoginOutput) ToTenantUniversalLoginPtrOutputWithContext(ctx context.Context) TenantUniversalLoginPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantUniversalLogin) *TenantUniversalLogin {
+func (o TenantSessionsOutput) ToTenantSessionsPtrOutputWithContext(ctx context.Context) TenantSessionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantSessions) *TenantSessions {
 		return &v
-	}).(TenantUniversalLoginPtrOutput)
+	}).(TenantSessionsPtrOutput)
 }
 
-func (o TenantUniversalLoginOutput) ToOutput(ctx context.Context) pulumix.Output[TenantUniversalLogin] {
-	return pulumix.Output[TenantUniversalLogin]{
+func (o TenantSessionsOutput) ToOutput(ctx context.Context) pulumix.Output[TenantSessions] {
+	return pulumix.Output[TenantSessions]{
 		OutputState: o.OutputState,
 	}
 }
 
-// Configuration settings for Universal Login colors.
-func (o TenantUniversalLoginOutput) Colors() TenantUniversalLoginColorsPtrOutput {
-	return o.ApplyT(func(v TenantUniversalLogin) *TenantUniversalLoginColors { return v.Colors }).(TenantUniversalLoginColorsPtrOutput)
+// When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
+func (o TenantSessionsOutput) OidcLogoutPromptEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v TenantSessions) bool { return v.OidcLogoutPromptEnabled }).(pulumi.BoolOutput)
 }
 
-type TenantUniversalLoginPtrOutput struct{ *pulumi.OutputState }
+type TenantSessionsPtrOutput struct{ *pulumi.OutputState }
 
-func (TenantUniversalLoginPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TenantUniversalLogin)(nil)).Elem()
+func (TenantSessionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantSessions)(nil)).Elem()
 }
 
-func (o TenantUniversalLoginPtrOutput) ToTenantUniversalLoginPtrOutput() TenantUniversalLoginPtrOutput {
+func (o TenantSessionsPtrOutput) ToTenantSessionsPtrOutput() TenantSessionsPtrOutput {
 	return o
 }
 
-func (o TenantUniversalLoginPtrOutput) ToTenantUniversalLoginPtrOutputWithContext(ctx context.Context) TenantUniversalLoginPtrOutput {
+func (o TenantSessionsPtrOutput) ToTenantSessionsPtrOutputWithContext(ctx context.Context) TenantSessionsPtrOutput {
 	return o
 }
 
-func (o TenantUniversalLoginPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TenantUniversalLogin] {
-	return pulumix.Output[*TenantUniversalLogin]{
+func (o TenantSessionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TenantSessions] {
+	return pulumix.Output[*TenantSessions]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o TenantUniversalLoginPtrOutput) Elem() TenantUniversalLoginOutput {
-	return o.ApplyT(func(v *TenantUniversalLogin) TenantUniversalLogin {
+func (o TenantSessionsPtrOutput) Elem() TenantSessionsOutput {
+	return o.ApplyT(func(v *TenantSessions) TenantSessions {
 		if v != nil {
 			return *v
 		}
-		var ret TenantUniversalLogin
+		var ret TenantSessions
 		return ret
-	}).(TenantUniversalLoginOutput)
+	}).(TenantSessionsOutput)
 }
 
-// Configuration settings for Universal Login colors.
-func (o TenantUniversalLoginPtrOutput) Colors() TenantUniversalLoginColorsPtrOutput {
-	return o.ApplyT(func(v *TenantUniversalLogin) *TenantUniversalLoginColors {
+// When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
+func (o TenantSessionsPtrOutput) OidcLogoutPromptEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantSessions) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.Colors
-	}).(TenantUniversalLoginColorsPtrOutput)
-}
-
-type TenantUniversalLoginColors struct {
-	PageBackground *string `pulumi:"pageBackground"`
-	Primary        *string `pulumi:"primary"`
-}
-
-// TenantUniversalLoginColorsInput is an input type that accepts TenantUniversalLoginColorsArgs and TenantUniversalLoginColorsOutput values.
-// You can construct a concrete instance of `TenantUniversalLoginColorsInput` via:
-//
-//	TenantUniversalLoginColorsArgs{...}
-type TenantUniversalLoginColorsInput interface {
-	pulumi.Input
-
-	ToTenantUniversalLoginColorsOutput() TenantUniversalLoginColorsOutput
-	ToTenantUniversalLoginColorsOutputWithContext(context.Context) TenantUniversalLoginColorsOutput
-}
-
-type TenantUniversalLoginColorsArgs struct {
-	PageBackground pulumi.StringPtrInput `pulumi:"pageBackground"`
-	Primary        pulumi.StringPtrInput `pulumi:"primary"`
-}
-
-func (TenantUniversalLoginColorsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TenantUniversalLoginColors)(nil)).Elem()
-}
-
-func (i TenantUniversalLoginColorsArgs) ToTenantUniversalLoginColorsOutput() TenantUniversalLoginColorsOutput {
-	return i.ToTenantUniversalLoginColorsOutputWithContext(context.Background())
-}
-
-func (i TenantUniversalLoginColorsArgs) ToTenantUniversalLoginColorsOutputWithContext(ctx context.Context) TenantUniversalLoginColorsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantUniversalLoginColorsOutput)
-}
-
-func (i TenantUniversalLoginColorsArgs) ToOutput(ctx context.Context) pulumix.Output[TenantUniversalLoginColors] {
-	return pulumix.Output[TenantUniversalLoginColors]{
-		OutputState: i.ToTenantUniversalLoginColorsOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i TenantUniversalLoginColorsArgs) ToTenantUniversalLoginColorsPtrOutput() TenantUniversalLoginColorsPtrOutput {
-	return i.ToTenantUniversalLoginColorsPtrOutputWithContext(context.Background())
-}
-
-func (i TenantUniversalLoginColorsArgs) ToTenantUniversalLoginColorsPtrOutputWithContext(ctx context.Context) TenantUniversalLoginColorsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantUniversalLoginColorsOutput).ToTenantUniversalLoginColorsPtrOutputWithContext(ctx)
-}
-
-// TenantUniversalLoginColorsPtrInput is an input type that accepts TenantUniversalLoginColorsArgs, TenantUniversalLoginColorsPtr and TenantUniversalLoginColorsPtrOutput values.
-// You can construct a concrete instance of `TenantUniversalLoginColorsPtrInput` via:
-//
-//	        TenantUniversalLoginColorsArgs{...}
-//
-//	or:
-//
-//	        nil
-type TenantUniversalLoginColorsPtrInput interface {
-	pulumi.Input
-
-	ToTenantUniversalLoginColorsPtrOutput() TenantUniversalLoginColorsPtrOutput
-	ToTenantUniversalLoginColorsPtrOutputWithContext(context.Context) TenantUniversalLoginColorsPtrOutput
-}
-
-type tenantUniversalLoginColorsPtrType TenantUniversalLoginColorsArgs
-
-func TenantUniversalLoginColorsPtr(v *TenantUniversalLoginColorsArgs) TenantUniversalLoginColorsPtrInput {
-	return (*tenantUniversalLoginColorsPtrType)(v)
-}
-
-func (*tenantUniversalLoginColorsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TenantUniversalLoginColors)(nil)).Elem()
-}
-
-func (i *tenantUniversalLoginColorsPtrType) ToTenantUniversalLoginColorsPtrOutput() TenantUniversalLoginColorsPtrOutput {
-	return i.ToTenantUniversalLoginColorsPtrOutputWithContext(context.Background())
-}
-
-func (i *tenantUniversalLoginColorsPtrType) ToTenantUniversalLoginColorsPtrOutputWithContext(ctx context.Context) TenantUniversalLoginColorsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantUniversalLoginColorsPtrOutput)
-}
-
-func (i *tenantUniversalLoginColorsPtrType) ToOutput(ctx context.Context) pulumix.Output[*TenantUniversalLoginColors] {
-	return pulumix.Output[*TenantUniversalLoginColors]{
-		OutputState: i.ToTenantUniversalLoginColorsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type TenantUniversalLoginColorsOutput struct{ *pulumi.OutputState }
-
-func (TenantUniversalLoginColorsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TenantUniversalLoginColors)(nil)).Elem()
-}
-
-func (o TenantUniversalLoginColorsOutput) ToTenantUniversalLoginColorsOutput() TenantUniversalLoginColorsOutput {
-	return o
-}
-
-func (o TenantUniversalLoginColorsOutput) ToTenantUniversalLoginColorsOutputWithContext(ctx context.Context) TenantUniversalLoginColorsOutput {
-	return o
-}
-
-func (o TenantUniversalLoginColorsOutput) ToTenantUniversalLoginColorsPtrOutput() TenantUniversalLoginColorsPtrOutput {
-	return o.ToTenantUniversalLoginColorsPtrOutputWithContext(context.Background())
-}
-
-func (o TenantUniversalLoginColorsOutput) ToTenantUniversalLoginColorsPtrOutputWithContext(ctx context.Context) TenantUniversalLoginColorsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantUniversalLoginColors) *TenantUniversalLoginColors {
-		return &v
-	}).(TenantUniversalLoginColorsPtrOutput)
-}
-
-func (o TenantUniversalLoginColorsOutput) ToOutput(ctx context.Context) pulumix.Output[TenantUniversalLoginColors] {
-	return pulumix.Output[TenantUniversalLoginColors]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o TenantUniversalLoginColorsOutput) PageBackground() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TenantUniversalLoginColors) *string { return v.PageBackground }).(pulumi.StringPtrOutput)
-}
-
-func (o TenantUniversalLoginColorsOutput) Primary() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TenantUniversalLoginColors) *string { return v.Primary }).(pulumi.StringPtrOutput)
-}
-
-type TenantUniversalLoginColorsPtrOutput struct{ *pulumi.OutputState }
-
-func (TenantUniversalLoginColorsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TenantUniversalLoginColors)(nil)).Elem()
-}
-
-func (o TenantUniversalLoginColorsPtrOutput) ToTenantUniversalLoginColorsPtrOutput() TenantUniversalLoginColorsPtrOutput {
-	return o
-}
-
-func (o TenantUniversalLoginColorsPtrOutput) ToTenantUniversalLoginColorsPtrOutputWithContext(ctx context.Context) TenantUniversalLoginColorsPtrOutput {
-	return o
-}
-
-func (o TenantUniversalLoginColorsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TenantUniversalLoginColors] {
-	return pulumix.Output[*TenantUniversalLoginColors]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o TenantUniversalLoginColorsPtrOutput) Elem() TenantUniversalLoginColorsOutput {
-	return o.ApplyT(func(v *TenantUniversalLoginColors) TenantUniversalLoginColors {
-		if v != nil {
-			return *v
-		}
-		var ret TenantUniversalLoginColors
-		return ret
-	}).(TenantUniversalLoginColorsOutput)
-}
-
-func (o TenantUniversalLoginColorsPtrOutput) PageBackground() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TenantUniversalLoginColors) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PageBackground
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o TenantUniversalLoginColorsPtrOutput) Primary() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TenantUniversalLoginColors) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Primary
-	}).(pulumi.StringPtrOutput)
+		return &v.OidcLogoutPromptEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type TriggerActionsAction struct {
@@ -20844,275 +23185,6 @@ func (o TriggerActionsActionArrayOutput) Index(i pulumi.IntInput) TriggerActions
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerActionsAction {
 		return vs[0].([]TriggerActionsAction)[vs[1].(int)]
 	}).(TriggerActionsActionOutput)
-}
-
-type TriggerBindingAction struct {
-	// The display name of the action within the flow.
-	DisplayName string `pulumi:"displayName"`
-	// Action ID.
-	Id string `pulumi:"id"`
-}
-
-// TriggerBindingActionInput is an input type that accepts TriggerBindingActionArgs and TriggerBindingActionOutput values.
-// You can construct a concrete instance of `TriggerBindingActionInput` via:
-//
-//	TriggerBindingActionArgs{...}
-type TriggerBindingActionInput interface {
-	pulumi.Input
-
-	ToTriggerBindingActionOutput() TriggerBindingActionOutput
-	ToTriggerBindingActionOutputWithContext(context.Context) TriggerBindingActionOutput
-}
-
-type TriggerBindingActionArgs struct {
-	// The display name of the action within the flow.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Action ID.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (TriggerBindingActionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerBindingAction)(nil)).Elem()
-}
-
-func (i TriggerBindingActionArgs) ToTriggerBindingActionOutput() TriggerBindingActionOutput {
-	return i.ToTriggerBindingActionOutputWithContext(context.Background())
-}
-
-func (i TriggerBindingActionArgs) ToTriggerBindingActionOutputWithContext(ctx context.Context) TriggerBindingActionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerBindingActionOutput)
-}
-
-func (i TriggerBindingActionArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBindingAction] {
-	return pulumix.Output[TriggerBindingAction]{
-		OutputState: i.ToTriggerBindingActionOutputWithContext(ctx).OutputState,
-	}
-}
-
-// TriggerBindingActionArrayInput is an input type that accepts TriggerBindingActionArray and TriggerBindingActionArrayOutput values.
-// You can construct a concrete instance of `TriggerBindingActionArrayInput` via:
-//
-//	TriggerBindingActionArray{ TriggerBindingActionArgs{...} }
-type TriggerBindingActionArrayInput interface {
-	pulumi.Input
-
-	ToTriggerBindingActionArrayOutput() TriggerBindingActionArrayOutput
-	ToTriggerBindingActionArrayOutputWithContext(context.Context) TriggerBindingActionArrayOutput
-}
-
-type TriggerBindingActionArray []TriggerBindingActionInput
-
-func (TriggerBindingActionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TriggerBindingAction)(nil)).Elem()
-}
-
-func (i TriggerBindingActionArray) ToTriggerBindingActionArrayOutput() TriggerBindingActionArrayOutput {
-	return i.ToTriggerBindingActionArrayOutputWithContext(context.Background())
-}
-
-func (i TriggerBindingActionArray) ToTriggerBindingActionArrayOutputWithContext(ctx context.Context) TriggerBindingActionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerBindingActionArrayOutput)
-}
-
-func (i TriggerBindingActionArray) ToOutput(ctx context.Context) pulumix.Output[[]TriggerBindingAction] {
-	return pulumix.Output[[]TriggerBindingAction]{
-		OutputState: i.ToTriggerBindingActionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type TriggerBindingActionOutput struct{ *pulumi.OutputState }
-
-func (TriggerBindingActionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerBindingAction)(nil)).Elem()
-}
-
-func (o TriggerBindingActionOutput) ToTriggerBindingActionOutput() TriggerBindingActionOutput {
-	return o
-}
-
-func (o TriggerBindingActionOutput) ToTriggerBindingActionOutputWithContext(ctx context.Context) TriggerBindingActionOutput {
-	return o
-}
-
-func (o TriggerBindingActionOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBindingAction] {
-	return pulumix.Output[TriggerBindingAction]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The display name of the action within the flow.
-func (o TriggerBindingActionOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v TriggerBindingAction) string { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// Action ID.
-func (o TriggerBindingActionOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v TriggerBindingAction) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type TriggerBindingActionArrayOutput struct{ *pulumi.OutputState }
-
-func (TriggerBindingActionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TriggerBindingAction)(nil)).Elem()
-}
-
-func (o TriggerBindingActionArrayOutput) ToTriggerBindingActionArrayOutput() TriggerBindingActionArrayOutput {
-	return o
-}
-
-func (o TriggerBindingActionArrayOutput) ToTriggerBindingActionArrayOutputWithContext(ctx context.Context) TriggerBindingActionArrayOutput {
-	return o
-}
-
-func (o TriggerBindingActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TriggerBindingAction] {
-	return pulumix.Output[[]TriggerBindingAction]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o TriggerBindingActionArrayOutput) Index(i pulumi.IntInput) TriggerBindingActionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerBindingAction {
-		return vs[0].([]TriggerBindingAction)[vs[1].(int)]
-	}).(TriggerBindingActionOutput)
-}
-
-type UserPermissionType struct {
-	Description *string `pulumi:"description"`
-	// Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-	Name                     *string `pulumi:"name"`
-	ResourceServerIdentifier *string `pulumi:"resourceServerIdentifier"`
-	ResourceServerName       *string `pulumi:"resourceServerName"`
-}
-
-// UserPermissionTypeInput is an input type that accepts UserPermissionTypeArgs and UserPermissionTypeOutput values.
-// You can construct a concrete instance of `UserPermissionTypeInput` via:
-//
-//	UserPermissionTypeArgs{...}
-type UserPermissionTypeInput interface {
-	pulumi.Input
-
-	ToUserPermissionTypeOutput() UserPermissionTypeOutput
-	ToUserPermissionTypeOutputWithContext(context.Context) UserPermissionTypeOutput
-}
-
-type UserPermissionTypeArgs struct {
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-	Name                     pulumi.StringPtrInput `pulumi:"name"`
-	ResourceServerIdentifier pulumi.StringPtrInput `pulumi:"resourceServerIdentifier"`
-	ResourceServerName       pulumi.StringPtrInput `pulumi:"resourceServerName"`
-}
-
-func (UserPermissionTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserPermissionType)(nil)).Elem()
-}
-
-func (i UserPermissionTypeArgs) ToUserPermissionTypeOutput() UserPermissionTypeOutput {
-	return i.ToUserPermissionTypeOutputWithContext(context.Background())
-}
-
-func (i UserPermissionTypeArgs) ToUserPermissionTypeOutputWithContext(ctx context.Context) UserPermissionTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPermissionTypeOutput)
-}
-
-func (i UserPermissionTypeArgs) ToOutput(ctx context.Context) pulumix.Output[UserPermissionType] {
-	return pulumix.Output[UserPermissionType]{
-		OutputState: i.ToUserPermissionTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
-// UserPermissionTypeArrayInput is an input type that accepts UserPermissionTypeArray and UserPermissionTypeArrayOutput values.
-// You can construct a concrete instance of `UserPermissionTypeArrayInput` via:
-//
-//	UserPermissionTypeArray{ UserPermissionTypeArgs{...} }
-type UserPermissionTypeArrayInput interface {
-	pulumi.Input
-
-	ToUserPermissionTypeArrayOutput() UserPermissionTypeArrayOutput
-	ToUserPermissionTypeArrayOutputWithContext(context.Context) UserPermissionTypeArrayOutput
-}
-
-type UserPermissionTypeArray []UserPermissionTypeInput
-
-func (UserPermissionTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]UserPermissionType)(nil)).Elem()
-}
-
-func (i UserPermissionTypeArray) ToUserPermissionTypeArrayOutput() UserPermissionTypeArrayOutput {
-	return i.ToUserPermissionTypeArrayOutputWithContext(context.Background())
-}
-
-func (i UserPermissionTypeArray) ToUserPermissionTypeArrayOutputWithContext(ctx context.Context) UserPermissionTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPermissionTypeArrayOutput)
-}
-
-func (i UserPermissionTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]UserPermissionType] {
-	return pulumix.Output[[]UserPermissionType]{
-		OutputState: i.ToUserPermissionTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type UserPermissionTypeOutput struct{ *pulumi.OutputState }
-
-func (UserPermissionTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserPermissionType)(nil)).Elem()
-}
-
-func (o UserPermissionTypeOutput) ToUserPermissionTypeOutput() UserPermissionTypeOutput {
-	return o
-}
-
-func (o UserPermissionTypeOutput) ToUserPermissionTypeOutputWithContext(ctx context.Context) UserPermissionTypeOutput {
-	return o
-}
-
-func (o UserPermissionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[UserPermissionType] {
-	return pulumix.Output[UserPermissionType]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o UserPermissionTypeOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserPermissionType) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-func (o UserPermissionTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserPermissionType) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o UserPermissionTypeOutput) ResourceServerIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserPermissionType) *string { return v.ResourceServerIdentifier }).(pulumi.StringPtrOutput)
-}
-
-func (o UserPermissionTypeOutput) ResourceServerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserPermissionType) *string { return v.ResourceServerName }).(pulumi.StringPtrOutput)
-}
-
-type UserPermissionTypeArrayOutput struct{ *pulumi.OutputState }
-
-func (UserPermissionTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]UserPermissionType)(nil)).Elem()
-}
-
-func (o UserPermissionTypeArrayOutput) ToUserPermissionTypeArrayOutput() UserPermissionTypeArrayOutput {
-	return o
-}
-
-func (o UserPermissionTypeArrayOutput) ToUserPermissionTypeArrayOutputWithContext(ctx context.Context) UserPermissionTypeArrayOutput {
-	return o
-}
-
-func (o UserPermissionTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UserPermissionType] {
-	return pulumix.Output[[]UserPermissionType]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o UserPermissionTypeArrayOutput) Index(i pulumi.IntInput) UserPermissionTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserPermissionType {
-		return vs[0].([]UserPermissionType)[vs[1].(int)]
-	}).(UserPermissionTypeOutput)
 }
 
 type UserPermissionsPermission struct {
@@ -23990,34 +26062,35 @@ func (o GetBrandingUniversalLoginArrayOutput) Index(i pulumi.IntInput) GetBrandi
 }
 
 type GetClientAddon struct {
-	Aws                  map[string]interface{} `pulumi:"aws"`
-	AzureBlob            map[string]interface{} `pulumi:"azureBlob"`
-	AzureSb              map[string]interface{} `pulumi:"azureSb"`
-	Box                  map[string]interface{} `pulumi:"box"`
-	Cloudbees            map[string]interface{} `pulumi:"cloudbees"`
-	Concur               map[string]interface{} `pulumi:"concur"`
-	Dropbox              map[string]interface{} `pulumi:"dropbox"`
-	Echosign             map[string]interface{} `pulumi:"echosign"`
-	Egnyte               map[string]interface{} `pulumi:"egnyte"`
-	Firebase             map[string]interface{} `pulumi:"firebase"`
-	Layer                map[string]interface{} `pulumi:"layer"`
-	Mscrm                map[string]interface{} `pulumi:"mscrm"`
-	Newrelic             map[string]interface{} `pulumi:"newrelic"`
-	Office365            map[string]interface{} `pulumi:"office365"`
-	Rms                  map[string]interface{} `pulumi:"rms"`
-	Salesforce           map[string]interface{} `pulumi:"salesforce"`
-	SalesforceApi        map[string]interface{} `pulumi:"salesforceApi"`
-	SalesforceSandboxApi map[string]interface{} `pulumi:"salesforceSandboxApi"`
-	Samlps               []GetClientAddonSamlp  `pulumi:"samlps"`
-	SapApi               map[string]interface{} `pulumi:"sapApi"`
-	Sentry               map[string]interface{} `pulumi:"sentry"`
-	Sharepoint           map[string]interface{} `pulumi:"sharepoint"`
-	Slack                map[string]interface{} `pulumi:"slack"`
-	Springcm             map[string]interface{} `pulumi:"springcm"`
-	Wams                 map[string]interface{} `pulumi:"wams"`
-	Wsfed                map[string]interface{} `pulumi:"wsfed"`
-	Zendesk              map[string]interface{} `pulumi:"zendesk"`
-	Zoom                 map[string]interface{} `pulumi:"zoom"`
+	Aws                   []GetClientAddonAw                   `pulumi:"aws"`
+	AzureBlobs            []GetClientAddonAzureBlob            `pulumi:"azureBlobs"`
+	AzureSbs              []GetClientAddonAzureSb              `pulumi:"azureSbs"`
+	Boxes                 []GetClientAddonBox                  `pulumi:"boxes"`
+	Cloudbees             []GetClientAddonCloudbee             `pulumi:"cloudbees"`
+	Concurs               []GetClientAddonConcur               `pulumi:"concurs"`
+	Dropboxes             []GetClientAddonDropbox              `pulumi:"dropboxes"`
+	Echosigns             []GetClientAddonEchosign             `pulumi:"echosigns"`
+	Egnytes               []GetClientAddonEgnyte               `pulumi:"egnytes"`
+	Firebases             []GetClientAddonFirebase             `pulumi:"firebases"`
+	Layers                []GetClientAddonLayer                `pulumi:"layers"`
+	Mscrms                []GetClientAddonMscrm                `pulumi:"mscrms"`
+	Newrelics             []GetClientAddonNewrelic             `pulumi:"newrelics"`
+	Office365s            []GetClientAddonOffice365            `pulumi:"office365s"`
+	Rms                   []GetClientAddonRm                   `pulumi:"rms"`
+	SalesforceApis        []GetClientAddonSalesforceApi        `pulumi:"salesforceApis"`
+	SalesforceSandboxApis []GetClientAddonSalesforceSandboxApi `pulumi:"salesforceSandboxApis"`
+	Salesforces           []GetClientAddonSalesforce           `pulumi:"salesforces"`
+	Samlps                []GetClientAddonSamlp                `pulumi:"samlps"`
+	SapApis               []GetClientAddonSapApi               `pulumi:"sapApis"`
+	Sentries              []GetClientAddonSentry               `pulumi:"sentries"`
+	Sharepoints           []GetClientAddonSharepoint           `pulumi:"sharepoints"`
+	Slacks                []GetClientAddonSlack                `pulumi:"slacks"`
+	Springcms             []GetClientAddonSpringcm             `pulumi:"springcms"`
+	SsoIntegrations       []GetClientAddonSsoIntegration       `pulumi:"ssoIntegrations"`
+	Wams                  []GetClientAddonWam                  `pulumi:"wams"`
+	Wsfeds                []GetClientAddonWsfed                `pulumi:"wsfeds"`
+	Zendesks              []GetClientAddonZendesk              `pulumi:"zendesks"`
+	Zooms                 []GetClientAddonZoom                 `pulumi:"zooms"`
 }
 
 // GetClientAddonInput is an input type that accepts GetClientAddonArgs and GetClientAddonOutput values.
@@ -24032,34 +26105,35 @@ type GetClientAddonInput interface {
 }
 
 type GetClientAddonArgs struct {
-	Aws                  pulumi.MapInput               `pulumi:"aws"`
-	AzureBlob            pulumi.MapInput               `pulumi:"azureBlob"`
-	AzureSb              pulumi.MapInput               `pulumi:"azureSb"`
-	Box                  pulumi.MapInput               `pulumi:"box"`
-	Cloudbees            pulumi.MapInput               `pulumi:"cloudbees"`
-	Concur               pulumi.MapInput               `pulumi:"concur"`
-	Dropbox              pulumi.MapInput               `pulumi:"dropbox"`
-	Echosign             pulumi.MapInput               `pulumi:"echosign"`
-	Egnyte               pulumi.MapInput               `pulumi:"egnyte"`
-	Firebase             pulumi.MapInput               `pulumi:"firebase"`
-	Layer                pulumi.MapInput               `pulumi:"layer"`
-	Mscrm                pulumi.MapInput               `pulumi:"mscrm"`
-	Newrelic             pulumi.MapInput               `pulumi:"newrelic"`
-	Office365            pulumi.MapInput               `pulumi:"office365"`
-	Rms                  pulumi.MapInput               `pulumi:"rms"`
-	Salesforce           pulumi.MapInput               `pulumi:"salesforce"`
-	SalesforceApi        pulumi.MapInput               `pulumi:"salesforceApi"`
-	SalesforceSandboxApi pulumi.MapInput               `pulumi:"salesforceSandboxApi"`
-	Samlps               GetClientAddonSamlpArrayInput `pulumi:"samlps"`
-	SapApi               pulumi.MapInput               `pulumi:"sapApi"`
-	Sentry               pulumi.MapInput               `pulumi:"sentry"`
-	Sharepoint           pulumi.MapInput               `pulumi:"sharepoint"`
-	Slack                pulumi.MapInput               `pulumi:"slack"`
-	Springcm             pulumi.MapInput               `pulumi:"springcm"`
-	Wams                 pulumi.MapInput               `pulumi:"wams"`
-	Wsfed                pulumi.MapInput               `pulumi:"wsfed"`
-	Zendesk              pulumi.MapInput               `pulumi:"zendesk"`
-	Zoom                 pulumi.MapInput               `pulumi:"zoom"`
+	Aws                   GetClientAddonAwArrayInput                   `pulumi:"aws"`
+	AzureBlobs            GetClientAddonAzureBlobArrayInput            `pulumi:"azureBlobs"`
+	AzureSbs              GetClientAddonAzureSbArrayInput              `pulumi:"azureSbs"`
+	Boxes                 GetClientAddonBoxArrayInput                  `pulumi:"boxes"`
+	Cloudbees             GetClientAddonCloudbeeArrayInput             `pulumi:"cloudbees"`
+	Concurs               GetClientAddonConcurArrayInput               `pulumi:"concurs"`
+	Dropboxes             GetClientAddonDropboxArrayInput              `pulumi:"dropboxes"`
+	Echosigns             GetClientAddonEchosignArrayInput             `pulumi:"echosigns"`
+	Egnytes               GetClientAddonEgnyteArrayInput               `pulumi:"egnytes"`
+	Firebases             GetClientAddonFirebaseArrayInput             `pulumi:"firebases"`
+	Layers                GetClientAddonLayerArrayInput                `pulumi:"layers"`
+	Mscrms                GetClientAddonMscrmArrayInput                `pulumi:"mscrms"`
+	Newrelics             GetClientAddonNewrelicArrayInput             `pulumi:"newrelics"`
+	Office365s            GetClientAddonOffice365ArrayInput            `pulumi:"office365s"`
+	Rms                   GetClientAddonRmArrayInput                   `pulumi:"rms"`
+	SalesforceApis        GetClientAddonSalesforceApiArrayInput        `pulumi:"salesforceApis"`
+	SalesforceSandboxApis GetClientAddonSalesforceSandboxApiArrayInput `pulumi:"salesforceSandboxApis"`
+	Salesforces           GetClientAddonSalesforceArrayInput           `pulumi:"salesforces"`
+	Samlps                GetClientAddonSamlpArrayInput                `pulumi:"samlps"`
+	SapApis               GetClientAddonSapApiArrayInput               `pulumi:"sapApis"`
+	Sentries              GetClientAddonSentryArrayInput               `pulumi:"sentries"`
+	Sharepoints           GetClientAddonSharepointArrayInput           `pulumi:"sharepoints"`
+	Slacks                GetClientAddonSlackArrayInput                `pulumi:"slacks"`
+	Springcms             GetClientAddonSpringcmArrayInput             `pulumi:"springcms"`
+	SsoIntegrations       GetClientAddonSsoIntegrationArrayInput       `pulumi:"ssoIntegrations"`
+	Wams                  GetClientAddonWamArrayInput                  `pulumi:"wams"`
+	Wsfeds                GetClientAddonWsfedArrayInput                `pulumi:"wsfeds"`
+	Zendesks              GetClientAddonZendeskArrayInput              `pulumi:"zendesks"`
+	Zooms                 GetClientAddonZoomArrayInput                 `pulumi:"zooms"`
 }
 
 func (GetClientAddonArgs) ElementType() reflect.Type {
@@ -24131,116 +26205,120 @@ func (o GetClientAddonOutput) ToOutput(ctx context.Context) pulumix.Output[GetCl
 	}
 }
 
-func (o GetClientAddonOutput) Aws() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Aws }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Aws() GetClientAddonAwArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonAw { return v.Aws }).(GetClientAddonAwArrayOutput)
 }
 
-func (o GetClientAddonOutput) AzureBlob() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.AzureBlob }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) AzureBlobs() GetClientAddonAzureBlobArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonAzureBlob { return v.AzureBlobs }).(GetClientAddonAzureBlobArrayOutput)
 }
 
-func (o GetClientAddonOutput) AzureSb() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.AzureSb }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) AzureSbs() GetClientAddonAzureSbArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonAzureSb { return v.AzureSbs }).(GetClientAddonAzureSbArrayOutput)
 }
 
-func (o GetClientAddonOutput) Box() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Box }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Boxes() GetClientAddonBoxArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonBox { return v.Boxes }).(GetClientAddonBoxArrayOutput)
 }
 
-func (o GetClientAddonOutput) Cloudbees() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Cloudbees }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Cloudbees() GetClientAddonCloudbeeArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonCloudbee { return v.Cloudbees }).(GetClientAddonCloudbeeArrayOutput)
 }
 
-func (o GetClientAddonOutput) Concur() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Concur }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Concurs() GetClientAddonConcurArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonConcur { return v.Concurs }).(GetClientAddonConcurArrayOutput)
 }
 
-func (o GetClientAddonOutput) Dropbox() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Dropbox }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Dropboxes() GetClientAddonDropboxArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonDropbox { return v.Dropboxes }).(GetClientAddonDropboxArrayOutput)
 }
 
-func (o GetClientAddonOutput) Echosign() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Echosign }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Echosigns() GetClientAddonEchosignArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonEchosign { return v.Echosigns }).(GetClientAddonEchosignArrayOutput)
 }
 
-func (o GetClientAddonOutput) Egnyte() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Egnyte }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Egnytes() GetClientAddonEgnyteArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonEgnyte { return v.Egnytes }).(GetClientAddonEgnyteArrayOutput)
 }
 
-func (o GetClientAddonOutput) Firebase() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Firebase }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Firebases() GetClientAddonFirebaseArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonFirebase { return v.Firebases }).(GetClientAddonFirebaseArrayOutput)
 }
 
-func (o GetClientAddonOutput) Layer() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Layer }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Layers() GetClientAddonLayerArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonLayer { return v.Layers }).(GetClientAddonLayerArrayOutput)
 }
 
-func (o GetClientAddonOutput) Mscrm() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Mscrm }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Mscrms() GetClientAddonMscrmArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonMscrm { return v.Mscrms }).(GetClientAddonMscrmArrayOutput)
 }
 
-func (o GetClientAddonOutput) Newrelic() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Newrelic }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Newrelics() GetClientAddonNewrelicArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonNewrelic { return v.Newrelics }).(GetClientAddonNewrelicArrayOutput)
 }
 
-func (o GetClientAddonOutput) Office365() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Office365 }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Office365s() GetClientAddonOffice365ArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonOffice365 { return v.Office365s }).(GetClientAddonOffice365ArrayOutput)
 }
 
-func (o GetClientAddonOutput) Rms() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Rms }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Rms() GetClientAddonRmArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonRm { return v.Rms }).(GetClientAddonRmArrayOutput)
 }
 
-func (o GetClientAddonOutput) Salesforce() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Salesforce }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) SalesforceApis() GetClientAddonSalesforceApiArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonSalesforceApi { return v.SalesforceApis }).(GetClientAddonSalesforceApiArrayOutput)
 }
 
-func (o GetClientAddonOutput) SalesforceApi() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.SalesforceApi }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) SalesforceSandboxApis() GetClientAddonSalesforceSandboxApiArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonSalesforceSandboxApi { return v.SalesforceSandboxApis }).(GetClientAddonSalesforceSandboxApiArrayOutput)
 }
 
-func (o GetClientAddonOutput) SalesforceSandboxApi() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.SalesforceSandboxApi }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Salesforces() GetClientAddonSalesforceArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonSalesforce { return v.Salesforces }).(GetClientAddonSalesforceArrayOutput)
 }
 
 func (o GetClientAddonOutput) Samlps() GetClientAddonSamlpArrayOutput {
 	return o.ApplyT(func(v GetClientAddon) []GetClientAddonSamlp { return v.Samlps }).(GetClientAddonSamlpArrayOutput)
 }
 
-func (o GetClientAddonOutput) SapApi() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.SapApi }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) SapApis() GetClientAddonSapApiArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonSapApi { return v.SapApis }).(GetClientAddonSapApiArrayOutput)
 }
 
-func (o GetClientAddonOutput) Sentry() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Sentry }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Sentries() GetClientAddonSentryArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonSentry { return v.Sentries }).(GetClientAddonSentryArrayOutput)
 }
 
-func (o GetClientAddonOutput) Sharepoint() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Sharepoint }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Sharepoints() GetClientAddonSharepointArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonSharepoint { return v.Sharepoints }).(GetClientAddonSharepointArrayOutput)
 }
 
-func (o GetClientAddonOutput) Slack() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Slack }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Slacks() GetClientAddonSlackArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonSlack { return v.Slacks }).(GetClientAddonSlackArrayOutput)
 }
 
-func (o GetClientAddonOutput) Springcm() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Springcm }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Springcms() GetClientAddonSpringcmArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonSpringcm { return v.Springcms }).(GetClientAddonSpringcmArrayOutput)
 }
 
-func (o GetClientAddonOutput) Wams() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Wams }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) SsoIntegrations() GetClientAddonSsoIntegrationArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonSsoIntegration { return v.SsoIntegrations }).(GetClientAddonSsoIntegrationArrayOutput)
 }
 
-func (o GetClientAddonOutput) Wsfed() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Wsfed }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Wams() GetClientAddonWamArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonWam { return v.Wams }).(GetClientAddonWamArrayOutput)
 }
 
-func (o GetClientAddonOutput) Zendesk() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Zendesk }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Wsfeds() GetClientAddonWsfedArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonWsfed { return v.Wsfeds }).(GetClientAddonWsfedArrayOutput)
 }
 
-func (o GetClientAddonOutput) Zoom() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Zoom }).(pulumi.MapOutput)
+func (o GetClientAddonOutput) Zendesks() GetClientAddonZendeskArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonZendesk { return v.Zendesks }).(GetClientAddonZendeskArrayOutput)
+}
+
+func (o GetClientAddonOutput) Zooms() GetClientAddonZoomArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonZoom { return v.Zooms }).(GetClientAddonZoomArrayOutput)
 }
 
 type GetClientAddonArrayOutput struct{ *pulumi.OutputState }
@@ -24269,28 +26347,2332 @@ func (o GetClientAddonArrayOutput) Index(i pulumi.IntInput) GetClientAddonOutput
 	}).(GetClientAddonOutput)
 }
 
+type GetClientAddonAw struct {
+	LifetimeInSeconds int    `pulumi:"lifetimeInSeconds"`
+	Principal         string `pulumi:"principal"`
+	Role              string `pulumi:"role"`
+}
+
+// GetClientAddonAwInput is an input type that accepts GetClientAddonAwArgs and GetClientAddonAwOutput values.
+// You can construct a concrete instance of `GetClientAddonAwInput` via:
+//
+//	GetClientAddonAwArgs{...}
+type GetClientAddonAwInput interface {
+	pulumi.Input
+
+	ToGetClientAddonAwOutput() GetClientAddonAwOutput
+	ToGetClientAddonAwOutputWithContext(context.Context) GetClientAddonAwOutput
+}
+
+type GetClientAddonAwArgs struct {
+	LifetimeInSeconds pulumi.IntInput    `pulumi:"lifetimeInSeconds"`
+	Principal         pulumi.StringInput `pulumi:"principal"`
+	Role              pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetClientAddonAwArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonAw)(nil)).Elem()
+}
+
+func (i GetClientAddonAwArgs) ToGetClientAddonAwOutput() GetClientAddonAwOutput {
+	return i.ToGetClientAddonAwOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonAwArgs) ToGetClientAddonAwOutputWithContext(ctx context.Context) GetClientAddonAwOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonAwOutput)
+}
+
+func (i GetClientAddonAwArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonAw] {
+	return pulumix.Output[GetClientAddonAw]{
+		OutputState: i.ToGetClientAddonAwOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonAwArrayInput is an input type that accepts GetClientAddonAwArray and GetClientAddonAwArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonAwArrayInput` via:
+//
+//	GetClientAddonAwArray{ GetClientAddonAwArgs{...} }
+type GetClientAddonAwArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonAwArrayOutput() GetClientAddonAwArrayOutput
+	ToGetClientAddonAwArrayOutputWithContext(context.Context) GetClientAddonAwArrayOutput
+}
+
+type GetClientAddonAwArray []GetClientAddonAwInput
+
+func (GetClientAddonAwArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonAw)(nil)).Elem()
+}
+
+func (i GetClientAddonAwArray) ToGetClientAddonAwArrayOutput() GetClientAddonAwArrayOutput {
+	return i.ToGetClientAddonAwArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonAwArray) ToGetClientAddonAwArrayOutputWithContext(ctx context.Context) GetClientAddonAwArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonAwArrayOutput)
+}
+
+func (i GetClientAddonAwArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonAw] {
+	return pulumix.Output[[]GetClientAddonAw]{
+		OutputState: i.ToGetClientAddonAwArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonAwOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonAwOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonAw)(nil)).Elem()
+}
+
+func (o GetClientAddonAwOutput) ToGetClientAddonAwOutput() GetClientAddonAwOutput {
+	return o
+}
+
+func (o GetClientAddonAwOutput) ToGetClientAddonAwOutputWithContext(ctx context.Context) GetClientAddonAwOutput {
+	return o
+}
+
+func (o GetClientAddonAwOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonAw] {
+	return pulumix.Output[GetClientAddonAw]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonAwOutput) LifetimeInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientAddonAw) int { return v.LifetimeInSeconds }).(pulumi.IntOutput)
+}
+
+func (o GetClientAddonAwOutput) Principal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonAw) string { return v.Principal }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonAwOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonAw) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetClientAddonAwArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonAwArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonAw)(nil)).Elem()
+}
+
+func (o GetClientAddonAwArrayOutput) ToGetClientAddonAwArrayOutput() GetClientAddonAwArrayOutput {
+	return o
+}
+
+func (o GetClientAddonAwArrayOutput) ToGetClientAddonAwArrayOutputWithContext(ctx context.Context) GetClientAddonAwArrayOutput {
+	return o
+}
+
+func (o GetClientAddonAwArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonAw] {
+	return pulumix.Output[[]GetClientAddonAw]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonAwArrayOutput) Index(i pulumi.IntInput) GetClientAddonAwOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonAw {
+		return vs[0].([]GetClientAddonAw)[vs[1].(int)]
+	}).(GetClientAddonAwOutput)
+}
+
+type GetClientAddonAzureBlob struct {
+	AccountName      string `pulumi:"accountName"`
+	BlobDelete       bool   `pulumi:"blobDelete"`
+	BlobName         string `pulumi:"blobName"`
+	BlobRead         bool   `pulumi:"blobRead"`
+	BlobWrite        bool   `pulumi:"blobWrite"`
+	ContainerDelete  bool   `pulumi:"containerDelete"`
+	ContainerList    bool   `pulumi:"containerList"`
+	ContainerName    string `pulumi:"containerName"`
+	ContainerRead    bool   `pulumi:"containerRead"`
+	ContainerWrite   bool   `pulumi:"containerWrite"`
+	Expiration       int    `pulumi:"expiration"`
+	SignedIdentifier string `pulumi:"signedIdentifier"`
+	StorageAccessKey string `pulumi:"storageAccessKey"`
+}
+
+// GetClientAddonAzureBlobInput is an input type that accepts GetClientAddonAzureBlobArgs and GetClientAddonAzureBlobOutput values.
+// You can construct a concrete instance of `GetClientAddonAzureBlobInput` via:
+//
+//	GetClientAddonAzureBlobArgs{...}
+type GetClientAddonAzureBlobInput interface {
+	pulumi.Input
+
+	ToGetClientAddonAzureBlobOutput() GetClientAddonAzureBlobOutput
+	ToGetClientAddonAzureBlobOutputWithContext(context.Context) GetClientAddonAzureBlobOutput
+}
+
+type GetClientAddonAzureBlobArgs struct {
+	AccountName      pulumi.StringInput `pulumi:"accountName"`
+	BlobDelete       pulumi.BoolInput   `pulumi:"blobDelete"`
+	BlobName         pulumi.StringInput `pulumi:"blobName"`
+	BlobRead         pulumi.BoolInput   `pulumi:"blobRead"`
+	BlobWrite        pulumi.BoolInput   `pulumi:"blobWrite"`
+	ContainerDelete  pulumi.BoolInput   `pulumi:"containerDelete"`
+	ContainerList    pulumi.BoolInput   `pulumi:"containerList"`
+	ContainerName    pulumi.StringInput `pulumi:"containerName"`
+	ContainerRead    pulumi.BoolInput   `pulumi:"containerRead"`
+	ContainerWrite   pulumi.BoolInput   `pulumi:"containerWrite"`
+	Expiration       pulumi.IntInput    `pulumi:"expiration"`
+	SignedIdentifier pulumi.StringInput `pulumi:"signedIdentifier"`
+	StorageAccessKey pulumi.StringInput `pulumi:"storageAccessKey"`
+}
+
+func (GetClientAddonAzureBlobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonAzureBlob)(nil)).Elem()
+}
+
+func (i GetClientAddonAzureBlobArgs) ToGetClientAddonAzureBlobOutput() GetClientAddonAzureBlobOutput {
+	return i.ToGetClientAddonAzureBlobOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonAzureBlobArgs) ToGetClientAddonAzureBlobOutputWithContext(ctx context.Context) GetClientAddonAzureBlobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonAzureBlobOutput)
+}
+
+func (i GetClientAddonAzureBlobArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonAzureBlob] {
+	return pulumix.Output[GetClientAddonAzureBlob]{
+		OutputState: i.ToGetClientAddonAzureBlobOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonAzureBlobArrayInput is an input type that accepts GetClientAddonAzureBlobArray and GetClientAddonAzureBlobArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonAzureBlobArrayInput` via:
+//
+//	GetClientAddonAzureBlobArray{ GetClientAddonAzureBlobArgs{...} }
+type GetClientAddonAzureBlobArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonAzureBlobArrayOutput() GetClientAddonAzureBlobArrayOutput
+	ToGetClientAddonAzureBlobArrayOutputWithContext(context.Context) GetClientAddonAzureBlobArrayOutput
+}
+
+type GetClientAddonAzureBlobArray []GetClientAddonAzureBlobInput
+
+func (GetClientAddonAzureBlobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonAzureBlob)(nil)).Elem()
+}
+
+func (i GetClientAddonAzureBlobArray) ToGetClientAddonAzureBlobArrayOutput() GetClientAddonAzureBlobArrayOutput {
+	return i.ToGetClientAddonAzureBlobArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonAzureBlobArray) ToGetClientAddonAzureBlobArrayOutputWithContext(ctx context.Context) GetClientAddonAzureBlobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonAzureBlobArrayOutput)
+}
+
+func (i GetClientAddonAzureBlobArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonAzureBlob] {
+	return pulumix.Output[[]GetClientAddonAzureBlob]{
+		OutputState: i.ToGetClientAddonAzureBlobArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonAzureBlobOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonAzureBlobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonAzureBlob)(nil)).Elem()
+}
+
+func (o GetClientAddonAzureBlobOutput) ToGetClientAddonAzureBlobOutput() GetClientAddonAzureBlobOutput {
+	return o
+}
+
+func (o GetClientAddonAzureBlobOutput) ToGetClientAddonAzureBlobOutputWithContext(ctx context.Context) GetClientAddonAzureBlobOutput {
+	return o
+}
+
+func (o GetClientAddonAzureBlobOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonAzureBlob] {
+	return pulumix.Output[GetClientAddonAzureBlob]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonAzureBlobOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonAzureBlob) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonAzureBlobOutput) BlobDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientAddonAzureBlob) bool { return v.BlobDelete }).(pulumi.BoolOutput)
+}
+
+func (o GetClientAddonAzureBlobOutput) BlobName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonAzureBlob) string { return v.BlobName }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonAzureBlobOutput) BlobRead() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientAddonAzureBlob) bool { return v.BlobRead }).(pulumi.BoolOutput)
+}
+
+func (o GetClientAddonAzureBlobOutput) BlobWrite() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientAddonAzureBlob) bool { return v.BlobWrite }).(pulumi.BoolOutput)
+}
+
+func (o GetClientAddonAzureBlobOutput) ContainerDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientAddonAzureBlob) bool { return v.ContainerDelete }).(pulumi.BoolOutput)
+}
+
+func (o GetClientAddonAzureBlobOutput) ContainerList() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientAddonAzureBlob) bool { return v.ContainerList }).(pulumi.BoolOutput)
+}
+
+func (o GetClientAddonAzureBlobOutput) ContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonAzureBlob) string { return v.ContainerName }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonAzureBlobOutput) ContainerRead() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientAddonAzureBlob) bool { return v.ContainerRead }).(pulumi.BoolOutput)
+}
+
+func (o GetClientAddonAzureBlobOutput) ContainerWrite() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientAddonAzureBlob) bool { return v.ContainerWrite }).(pulumi.BoolOutput)
+}
+
+func (o GetClientAddonAzureBlobOutput) Expiration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientAddonAzureBlob) int { return v.Expiration }).(pulumi.IntOutput)
+}
+
+func (o GetClientAddonAzureBlobOutput) SignedIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonAzureBlob) string { return v.SignedIdentifier }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonAzureBlobOutput) StorageAccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonAzureBlob) string { return v.StorageAccessKey }).(pulumi.StringOutput)
+}
+
+type GetClientAddonAzureBlobArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonAzureBlobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonAzureBlob)(nil)).Elem()
+}
+
+func (o GetClientAddonAzureBlobArrayOutput) ToGetClientAddonAzureBlobArrayOutput() GetClientAddonAzureBlobArrayOutput {
+	return o
+}
+
+func (o GetClientAddonAzureBlobArrayOutput) ToGetClientAddonAzureBlobArrayOutputWithContext(ctx context.Context) GetClientAddonAzureBlobArrayOutput {
+	return o
+}
+
+func (o GetClientAddonAzureBlobArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonAzureBlob] {
+	return pulumix.Output[[]GetClientAddonAzureBlob]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonAzureBlobArrayOutput) Index(i pulumi.IntInput) GetClientAddonAzureBlobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonAzureBlob {
+		return vs[0].([]GetClientAddonAzureBlob)[vs[1].(int)]
+	}).(GetClientAddonAzureBlobOutput)
+}
+
+type GetClientAddonAzureSb struct {
+	EntityPath string `pulumi:"entityPath"`
+	Expiration int    `pulumi:"expiration"`
+	Namespace  string `pulumi:"namespace"`
+	SasKey     string `pulumi:"sasKey"`
+	SasKeyName string `pulumi:"sasKeyName"`
+}
+
+// GetClientAddonAzureSbInput is an input type that accepts GetClientAddonAzureSbArgs and GetClientAddonAzureSbOutput values.
+// You can construct a concrete instance of `GetClientAddonAzureSbInput` via:
+//
+//	GetClientAddonAzureSbArgs{...}
+type GetClientAddonAzureSbInput interface {
+	pulumi.Input
+
+	ToGetClientAddonAzureSbOutput() GetClientAddonAzureSbOutput
+	ToGetClientAddonAzureSbOutputWithContext(context.Context) GetClientAddonAzureSbOutput
+}
+
+type GetClientAddonAzureSbArgs struct {
+	EntityPath pulumi.StringInput `pulumi:"entityPath"`
+	Expiration pulumi.IntInput    `pulumi:"expiration"`
+	Namespace  pulumi.StringInput `pulumi:"namespace"`
+	SasKey     pulumi.StringInput `pulumi:"sasKey"`
+	SasKeyName pulumi.StringInput `pulumi:"sasKeyName"`
+}
+
+func (GetClientAddonAzureSbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonAzureSb)(nil)).Elem()
+}
+
+func (i GetClientAddonAzureSbArgs) ToGetClientAddonAzureSbOutput() GetClientAddonAzureSbOutput {
+	return i.ToGetClientAddonAzureSbOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonAzureSbArgs) ToGetClientAddonAzureSbOutputWithContext(ctx context.Context) GetClientAddonAzureSbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonAzureSbOutput)
+}
+
+func (i GetClientAddonAzureSbArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonAzureSb] {
+	return pulumix.Output[GetClientAddonAzureSb]{
+		OutputState: i.ToGetClientAddonAzureSbOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonAzureSbArrayInput is an input type that accepts GetClientAddonAzureSbArray and GetClientAddonAzureSbArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonAzureSbArrayInput` via:
+//
+//	GetClientAddonAzureSbArray{ GetClientAddonAzureSbArgs{...} }
+type GetClientAddonAzureSbArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonAzureSbArrayOutput() GetClientAddonAzureSbArrayOutput
+	ToGetClientAddonAzureSbArrayOutputWithContext(context.Context) GetClientAddonAzureSbArrayOutput
+}
+
+type GetClientAddonAzureSbArray []GetClientAddonAzureSbInput
+
+func (GetClientAddonAzureSbArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonAzureSb)(nil)).Elem()
+}
+
+func (i GetClientAddonAzureSbArray) ToGetClientAddonAzureSbArrayOutput() GetClientAddonAzureSbArrayOutput {
+	return i.ToGetClientAddonAzureSbArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonAzureSbArray) ToGetClientAddonAzureSbArrayOutputWithContext(ctx context.Context) GetClientAddonAzureSbArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonAzureSbArrayOutput)
+}
+
+func (i GetClientAddonAzureSbArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonAzureSb] {
+	return pulumix.Output[[]GetClientAddonAzureSb]{
+		OutputState: i.ToGetClientAddonAzureSbArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonAzureSbOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonAzureSbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonAzureSb)(nil)).Elem()
+}
+
+func (o GetClientAddonAzureSbOutput) ToGetClientAddonAzureSbOutput() GetClientAddonAzureSbOutput {
+	return o
+}
+
+func (o GetClientAddonAzureSbOutput) ToGetClientAddonAzureSbOutputWithContext(ctx context.Context) GetClientAddonAzureSbOutput {
+	return o
+}
+
+func (o GetClientAddonAzureSbOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonAzureSb] {
+	return pulumix.Output[GetClientAddonAzureSb]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonAzureSbOutput) EntityPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonAzureSb) string { return v.EntityPath }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonAzureSbOutput) Expiration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientAddonAzureSb) int { return v.Expiration }).(pulumi.IntOutput)
+}
+
+func (o GetClientAddonAzureSbOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonAzureSb) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonAzureSbOutput) SasKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonAzureSb) string { return v.SasKey }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonAzureSbOutput) SasKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonAzureSb) string { return v.SasKeyName }).(pulumi.StringOutput)
+}
+
+type GetClientAddonAzureSbArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonAzureSbArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonAzureSb)(nil)).Elem()
+}
+
+func (o GetClientAddonAzureSbArrayOutput) ToGetClientAddonAzureSbArrayOutput() GetClientAddonAzureSbArrayOutput {
+	return o
+}
+
+func (o GetClientAddonAzureSbArrayOutput) ToGetClientAddonAzureSbArrayOutputWithContext(ctx context.Context) GetClientAddonAzureSbArrayOutput {
+	return o
+}
+
+func (o GetClientAddonAzureSbArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonAzureSb] {
+	return pulumix.Output[[]GetClientAddonAzureSb]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonAzureSbArrayOutput) Index(i pulumi.IntInput) GetClientAddonAzureSbOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonAzureSb {
+		return vs[0].([]GetClientAddonAzureSb)[vs[1].(int)]
+	}).(GetClientAddonAzureSbOutput)
+}
+
+type GetClientAddonBox struct {
+}
+
+// GetClientAddonBoxInput is an input type that accepts GetClientAddonBoxArgs and GetClientAddonBoxOutput values.
+// You can construct a concrete instance of `GetClientAddonBoxInput` via:
+//
+//	GetClientAddonBoxArgs{...}
+type GetClientAddonBoxInput interface {
+	pulumi.Input
+
+	ToGetClientAddonBoxOutput() GetClientAddonBoxOutput
+	ToGetClientAddonBoxOutputWithContext(context.Context) GetClientAddonBoxOutput
+}
+
+type GetClientAddonBoxArgs struct {
+}
+
+func (GetClientAddonBoxArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonBox)(nil)).Elem()
+}
+
+func (i GetClientAddonBoxArgs) ToGetClientAddonBoxOutput() GetClientAddonBoxOutput {
+	return i.ToGetClientAddonBoxOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonBoxArgs) ToGetClientAddonBoxOutputWithContext(ctx context.Context) GetClientAddonBoxOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonBoxOutput)
+}
+
+func (i GetClientAddonBoxArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonBox] {
+	return pulumix.Output[GetClientAddonBox]{
+		OutputState: i.ToGetClientAddonBoxOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonBoxArrayInput is an input type that accepts GetClientAddonBoxArray and GetClientAddonBoxArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonBoxArrayInput` via:
+//
+//	GetClientAddonBoxArray{ GetClientAddonBoxArgs{...} }
+type GetClientAddonBoxArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonBoxArrayOutput() GetClientAddonBoxArrayOutput
+	ToGetClientAddonBoxArrayOutputWithContext(context.Context) GetClientAddonBoxArrayOutput
+}
+
+type GetClientAddonBoxArray []GetClientAddonBoxInput
+
+func (GetClientAddonBoxArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonBox)(nil)).Elem()
+}
+
+func (i GetClientAddonBoxArray) ToGetClientAddonBoxArrayOutput() GetClientAddonBoxArrayOutput {
+	return i.ToGetClientAddonBoxArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonBoxArray) ToGetClientAddonBoxArrayOutputWithContext(ctx context.Context) GetClientAddonBoxArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonBoxArrayOutput)
+}
+
+func (i GetClientAddonBoxArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonBox] {
+	return pulumix.Output[[]GetClientAddonBox]{
+		OutputState: i.ToGetClientAddonBoxArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonBoxOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonBoxOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonBox)(nil)).Elem()
+}
+
+func (o GetClientAddonBoxOutput) ToGetClientAddonBoxOutput() GetClientAddonBoxOutput {
+	return o
+}
+
+func (o GetClientAddonBoxOutput) ToGetClientAddonBoxOutputWithContext(ctx context.Context) GetClientAddonBoxOutput {
+	return o
+}
+
+func (o GetClientAddonBoxOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonBox] {
+	return pulumix.Output[GetClientAddonBox]{
+		OutputState: o.OutputState,
+	}
+}
+
+type GetClientAddonBoxArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonBoxArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonBox)(nil)).Elem()
+}
+
+func (o GetClientAddonBoxArrayOutput) ToGetClientAddonBoxArrayOutput() GetClientAddonBoxArrayOutput {
+	return o
+}
+
+func (o GetClientAddonBoxArrayOutput) ToGetClientAddonBoxArrayOutputWithContext(ctx context.Context) GetClientAddonBoxArrayOutput {
+	return o
+}
+
+func (o GetClientAddonBoxArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonBox] {
+	return pulumix.Output[[]GetClientAddonBox]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonBoxArrayOutput) Index(i pulumi.IntInput) GetClientAddonBoxOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonBox {
+		return vs[0].([]GetClientAddonBox)[vs[1].(int)]
+	}).(GetClientAddonBoxOutput)
+}
+
+type GetClientAddonCloudbee struct {
+}
+
+// GetClientAddonCloudbeeInput is an input type that accepts GetClientAddonCloudbeeArgs and GetClientAddonCloudbeeOutput values.
+// You can construct a concrete instance of `GetClientAddonCloudbeeInput` via:
+//
+//	GetClientAddonCloudbeeArgs{...}
+type GetClientAddonCloudbeeInput interface {
+	pulumi.Input
+
+	ToGetClientAddonCloudbeeOutput() GetClientAddonCloudbeeOutput
+	ToGetClientAddonCloudbeeOutputWithContext(context.Context) GetClientAddonCloudbeeOutput
+}
+
+type GetClientAddonCloudbeeArgs struct {
+}
+
+func (GetClientAddonCloudbeeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonCloudbee)(nil)).Elem()
+}
+
+func (i GetClientAddonCloudbeeArgs) ToGetClientAddonCloudbeeOutput() GetClientAddonCloudbeeOutput {
+	return i.ToGetClientAddonCloudbeeOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonCloudbeeArgs) ToGetClientAddonCloudbeeOutputWithContext(ctx context.Context) GetClientAddonCloudbeeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonCloudbeeOutput)
+}
+
+func (i GetClientAddonCloudbeeArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonCloudbee] {
+	return pulumix.Output[GetClientAddonCloudbee]{
+		OutputState: i.ToGetClientAddonCloudbeeOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonCloudbeeArrayInput is an input type that accepts GetClientAddonCloudbeeArray and GetClientAddonCloudbeeArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonCloudbeeArrayInput` via:
+//
+//	GetClientAddonCloudbeeArray{ GetClientAddonCloudbeeArgs{...} }
+type GetClientAddonCloudbeeArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonCloudbeeArrayOutput() GetClientAddonCloudbeeArrayOutput
+	ToGetClientAddonCloudbeeArrayOutputWithContext(context.Context) GetClientAddonCloudbeeArrayOutput
+}
+
+type GetClientAddonCloudbeeArray []GetClientAddonCloudbeeInput
+
+func (GetClientAddonCloudbeeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonCloudbee)(nil)).Elem()
+}
+
+func (i GetClientAddonCloudbeeArray) ToGetClientAddonCloudbeeArrayOutput() GetClientAddonCloudbeeArrayOutput {
+	return i.ToGetClientAddonCloudbeeArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonCloudbeeArray) ToGetClientAddonCloudbeeArrayOutputWithContext(ctx context.Context) GetClientAddonCloudbeeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonCloudbeeArrayOutput)
+}
+
+func (i GetClientAddonCloudbeeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonCloudbee] {
+	return pulumix.Output[[]GetClientAddonCloudbee]{
+		OutputState: i.ToGetClientAddonCloudbeeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonCloudbeeOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonCloudbeeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonCloudbee)(nil)).Elem()
+}
+
+func (o GetClientAddonCloudbeeOutput) ToGetClientAddonCloudbeeOutput() GetClientAddonCloudbeeOutput {
+	return o
+}
+
+func (o GetClientAddonCloudbeeOutput) ToGetClientAddonCloudbeeOutputWithContext(ctx context.Context) GetClientAddonCloudbeeOutput {
+	return o
+}
+
+func (o GetClientAddonCloudbeeOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonCloudbee] {
+	return pulumix.Output[GetClientAddonCloudbee]{
+		OutputState: o.OutputState,
+	}
+}
+
+type GetClientAddonCloudbeeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonCloudbeeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonCloudbee)(nil)).Elem()
+}
+
+func (o GetClientAddonCloudbeeArrayOutput) ToGetClientAddonCloudbeeArrayOutput() GetClientAddonCloudbeeArrayOutput {
+	return o
+}
+
+func (o GetClientAddonCloudbeeArrayOutput) ToGetClientAddonCloudbeeArrayOutputWithContext(ctx context.Context) GetClientAddonCloudbeeArrayOutput {
+	return o
+}
+
+func (o GetClientAddonCloudbeeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonCloudbee] {
+	return pulumix.Output[[]GetClientAddonCloudbee]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonCloudbeeArrayOutput) Index(i pulumi.IntInput) GetClientAddonCloudbeeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonCloudbee {
+		return vs[0].([]GetClientAddonCloudbee)[vs[1].(int)]
+	}).(GetClientAddonCloudbeeOutput)
+}
+
+type GetClientAddonConcur struct {
+}
+
+// GetClientAddonConcurInput is an input type that accepts GetClientAddonConcurArgs and GetClientAddonConcurOutput values.
+// You can construct a concrete instance of `GetClientAddonConcurInput` via:
+//
+//	GetClientAddonConcurArgs{...}
+type GetClientAddonConcurInput interface {
+	pulumi.Input
+
+	ToGetClientAddonConcurOutput() GetClientAddonConcurOutput
+	ToGetClientAddonConcurOutputWithContext(context.Context) GetClientAddonConcurOutput
+}
+
+type GetClientAddonConcurArgs struct {
+}
+
+func (GetClientAddonConcurArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonConcur)(nil)).Elem()
+}
+
+func (i GetClientAddonConcurArgs) ToGetClientAddonConcurOutput() GetClientAddonConcurOutput {
+	return i.ToGetClientAddonConcurOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonConcurArgs) ToGetClientAddonConcurOutputWithContext(ctx context.Context) GetClientAddonConcurOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonConcurOutput)
+}
+
+func (i GetClientAddonConcurArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonConcur] {
+	return pulumix.Output[GetClientAddonConcur]{
+		OutputState: i.ToGetClientAddonConcurOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonConcurArrayInput is an input type that accepts GetClientAddonConcurArray and GetClientAddonConcurArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonConcurArrayInput` via:
+//
+//	GetClientAddonConcurArray{ GetClientAddonConcurArgs{...} }
+type GetClientAddonConcurArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonConcurArrayOutput() GetClientAddonConcurArrayOutput
+	ToGetClientAddonConcurArrayOutputWithContext(context.Context) GetClientAddonConcurArrayOutput
+}
+
+type GetClientAddonConcurArray []GetClientAddonConcurInput
+
+func (GetClientAddonConcurArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonConcur)(nil)).Elem()
+}
+
+func (i GetClientAddonConcurArray) ToGetClientAddonConcurArrayOutput() GetClientAddonConcurArrayOutput {
+	return i.ToGetClientAddonConcurArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonConcurArray) ToGetClientAddonConcurArrayOutputWithContext(ctx context.Context) GetClientAddonConcurArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonConcurArrayOutput)
+}
+
+func (i GetClientAddonConcurArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonConcur] {
+	return pulumix.Output[[]GetClientAddonConcur]{
+		OutputState: i.ToGetClientAddonConcurArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonConcurOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonConcurOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonConcur)(nil)).Elem()
+}
+
+func (o GetClientAddonConcurOutput) ToGetClientAddonConcurOutput() GetClientAddonConcurOutput {
+	return o
+}
+
+func (o GetClientAddonConcurOutput) ToGetClientAddonConcurOutputWithContext(ctx context.Context) GetClientAddonConcurOutput {
+	return o
+}
+
+func (o GetClientAddonConcurOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonConcur] {
+	return pulumix.Output[GetClientAddonConcur]{
+		OutputState: o.OutputState,
+	}
+}
+
+type GetClientAddonConcurArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonConcurArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonConcur)(nil)).Elem()
+}
+
+func (o GetClientAddonConcurArrayOutput) ToGetClientAddonConcurArrayOutput() GetClientAddonConcurArrayOutput {
+	return o
+}
+
+func (o GetClientAddonConcurArrayOutput) ToGetClientAddonConcurArrayOutputWithContext(ctx context.Context) GetClientAddonConcurArrayOutput {
+	return o
+}
+
+func (o GetClientAddonConcurArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonConcur] {
+	return pulumix.Output[[]GetClientAddonConcur]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonConcurArrayOutput) Index(i pulumi.IntInput) GetClientAddonConcurOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonConcur {
+		return vs[0].([]GetClientAddonConcur)[vs[1].(int)]
+	}).(GetClientAddonConcurOutput)
+}
+
+type GetClientAddonDropbox struct {
+}
+
+// GetClientAddonDropboxInput is an input type that accepts GetClientAddonDropboxArgs and GetClientAddonDropboxOutput values.
+// You can construct a concrete instance of `GetClientAddonDropboxInput` via:
+//
+//	GetClientAddonDropboxArgs{...}
+type GetClientAddonDropboxInput interface {
+	pulumi.Input
+
+	ToGetClientAddonDropboxOutput() GetClientAddonDropboxOutput
+	ToGetClientAddonDropboxOutputWithContext(context.Context) GetClientAddonDropboxOutput
+}
+
+type GetClientAddonDropboxArgs struct {
+}
+
+func (GetClientAddonDropboxArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonDropbox)(nil)).Elem()
+}
+
+func (i GetClientAddonDropboxArgs) ToGetClientAddonDropboxOutput() GetClientAddonDropboxOutput {
+	return i.ToGetClientAddonDropboxOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonDropboxArgs) ToGetClientAddonDropboxOutputWithContext(ctx context.Context) GetClientAddonDropboxOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonDropboxOutput)
+}
+
+func (i GetClientAddonDropboxArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonDropbox] {
+	return pulumix.Output[GetClientAddonDropbox]{
+		OutputState: i.ToGetClientAddonDropboxOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonDropboxArrayInput is an input type that accepts GetClientAddonDropboxArray and GetClientAddonDropboxArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonDropboxArrayInput` via:
+//
+//	GetClientAddonDropboxArray{ GetClientAddonDropboxArgs{...} }
+type GetClientAddonDropboxArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonDropboxArrayOutput() GetClientAddonDropboxArrayOutput
+	ToGetClientAddonDropboxArrayOutputWithContext(context.Context) GetClientAddonDropboxArrayOutput
+}
+
+type GetClientAddonDropboxArray []GetClientAddonDropboxInput
+
+func (GetClientAddonDropboxArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonDropbox)(nil)).Elem()
+}
+
+func (i GetClientAddonDropboxArray) ToGetClientAddonDropboxArrayOutput() GetClientAddonDropboxArrayOutput {
+	return i.ToGetClientAddonDropboxArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonDropboxArray) ToGetClientAddonDropboxArrayOutputWithContext(ctx context.Context) GetClientAddonDropboxArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonDropboxArrayOutput)
+}
+
+func (i GetClientAddonDropboxArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonDropbox] {
+	return pulumix.Output[[]GetClientAddonDropbox]{
+		OutputState: i.ToGetClientAddonDropboxArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonDropboxOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonDropboxOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonDropbox)(nil)).Elem()
+}
+
+func (o GetClientAddonDropboxOutput) ToGetClientAddonDropboxOutput() GetClientAddonDropboxOutput {
+	return o
+}
+
+func (o GetClientAddonDropboxOutput) ToGetClientAddonDropboxOutputWithContext(ctx context.Context) GetClientAddonDropboxOutput {
+	return o
+}
+
+func (o GetClientAddonDropboxOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonDropbox] {
+	return pulumix.Output[GetClientAddonDropbox]{
+		OutputState: o.OutputState,
+	}
+}
+
+type GetClientAddonDropboxArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonDropboxArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonDropbox)(nil)).Elem()
+}
+
+func (o GetClientAddonDropboxArrayOutput) ToGetClientAddonDropboxArrayOutput() GetClientAddonDropboxArrayOutput {
+	return o
+}
+
+func (o GetClientAddonDropboxArrayOutput) ToGetClientAddonDropboxArrayOutputWithContext(ctx context.Context) GetClientAddonDropboxArrayOutput {
+	return o
+}
+
+func (o GetClientAddonDropboxArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonDropbox] {
+	return pulumix.Output[[]GetClientAddonDropbox]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonDropboxArrayOutput) Index(i pulumi.IntInput) GetClientAddonDropboxOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonDropbox {
+		return vs[0].([]GetClientAddonDropbox)[vs[1].(int)]
+	}).(GetClientAddonDropboxOutput)
+}
+
+type GetClientAddonEchosign struct {
+	Domain string `pulumi:"domain"`
+}
+
+// GetClientAddonEchosignInput is an input type that accepts GetClientAddonEchosignArgs and GetClientAddonEchosignOutput values.
+// You can construct a concrete instance of `GetClientAddonEchosignInput` via:
+//
+//	GetClientAddonEchosignArgs{...}
+type GetClientAddonEchosignInput interface {
+	pulumi.Input
+
+	ToGetClientAddonEchosignOutput() GetClientAddonEchosignOutput
+	ToGetClientAddonEchosignOutputWithContext(context.Context) GetClientAddonEchosignOutput
+}
+
+type GetClientAddonEchosignArgs struct {
+	Domain pulumi.StringInput `pulumi:"domain"`
+}
+
+func (GetClientAddonEchosignArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonEchosign)(nil)).Elem()
+}
+
+func (i GetClientAddonEchosignArgs) ToGetClientAddonEchosignOutput() GetClientAddonEchosignOutput {
+	return i.ToGetClientAddonEchosignOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonEchosignArgs) ToGetClientAddonEchosignOutputWithContext(ctx context.Context) GetClientAddonEchosignOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonEchosignOutput)
+}
+
+func (i GetClientAddonEchosignArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonEchosign] {
+	return pulumix.Output[GetClientAddonEchosign]{
+		OutputState: i.ToGetClientAddonEchosignOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonEchosignArrayInput is an input type that accepts GetClientAddonEchosignArray and GetClientAddonEchosignArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonEchosignArrayInput` via:
+//
+//	GetClientAddonEchosignArray{ GetClientAddonEchosignArgs{...} }
+type GetClientAddonEchosignArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonEchosignArrayOutput() GetClientAddonEchosignArrayOutput
+	ToGetClientAddonEchosignArrayOutputWithContext(context.Context) GetClientAddonEchosignArrayOutput
+}
+
+type GetClientAddonEchosignArray []GetClientAddonEchosignInput
+
+func (GetClientAddonEchosignArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonEchosign)(nil)).Elem()
+}
+
+func (i GetClientAddonEchosignArray) ToGetClientAddonEchosignArrayOutput() GetClientAddonEchosignArrayOutput {
+	return i.ToGetClientAddonEchosignArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonEchosignArray) ToGetClientAddonEchosignArrayOutputWithContext(ctx context.Context) GetClientAddonEchosignArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonEchosignArrayOutput)
+}
+
+func (i GetClientAddonEchosignArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonEchosign] {
+	return pulumix.Output[[]GetClientAddonEchosign]{
+		OutputState: i.ToGetClientAddonEchosignArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonEchosignOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonEchosignOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonEchosign)(nil)).Elem()
+}
+
+func (o GetClientAddonEchosignOutput) ToGetClientAddonEchosignOutput() GetClientAddonEchosignOutput {
+	return o
+}
+
+func (o GetClientAddonEchosignOutput) ToGetClientAddonEchosignOutputWithContext(ctx context.Context) GetClientAddonEchosignOutput {
+	return o
+}
+
+func (o GetClientAddonEchosignOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonEchosign] {
+	return pulumix.Output[GetClientAddonEchosign]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonEchosignOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonEchosign) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+type GetClientAddonEchosignArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonEchosignArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonEchosign)(nil)).Elem()
+}
+
+func (o GetClientAddonEchosignArrayOutput) ToGetClientAddonEchosignArrayOutput() GetClientAddonEchosignArrayOutput {
+	return o
+}
+
+func (o GetClientAddonEchosignArrayOutput) ToGetClientAddonEchosignArrayOutputWithContext(ctx context.Context) GetClientAddonEchosignArrayOutput {
+	return o
+}
+
+func (o GetClientAddonEchosignArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonEchosign] {
+	return pulumix.Output[[]GetClientAddonEchosign]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonEchosignArrayOutput) Index(i pulumi.IntInput) GetClientAddonEchosignOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonEchosign {
+		return vs[0].([]GetClientAddonEchosign)[vs[1].(int)]
+	}).(GetClientAddonEchosignOutput)
+}
+
+type GetClientAddonEgnyte struct {
+	Domain string `pulumi:"domain"`
+}
+
+// GetClientAddonEgnyteInput is an input type that accepts GetClientAddonEgnyteArgs and GetClientAddonEgnyteOutput values.
+// You can construct a concrete instance of `GetClientAddonEgnyteInput` via:
+//
+//	GetClientAddonEgnyteArgs{...}
+type GetClientAddonEgnyteInput interface {
+	pulumi.Input
+
+	ToGetClientAddonEgnyteOutput() GetClientAddonEgnyteOutput
+	ToGetClientAddonEgnyteOutputWithContext(context.Context) GetClientAddonEgnyteOutput
+}
+
+type GetClientAddonEgnyteArgs struct {
+	Domain pulumi.StringInput `pulumi:"domain"`
+}
+
+func (GetClientAddonEgnyteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonEgnyte)(nil)).Elem()
+}
+
+func (i GetClientAddonEgnyteArgs) ToGetClientAddonEgnyteOutput() GetClientAddonEgnyteOutput {
+	return i.ToGetClientAddonEgnyteOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonEgnyteArgs) ToGetClientAddonEgnyteOutputWithContext(ctx context.Context) GetClientAddonEgnyteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonEgnyteOutput)
+}
+
+func (i GetClientAddonEgnyteArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonEgnyte] {
+	return pulumix.Output[GetClientAddonEgnyte]{
+		OutputState: i.ToGetClientAddonEgnyteOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonEgnyteArrayInput is an input type that accepts GetClientAddonEgnyteArray and GetClientAddonEgnyteArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonEgnyteArrayInput` via:
+//
+//	GetClientAddonEgnyteArray{ GetClientAddonEgnyteArgs{...} }
+type GetClientAddonEgnyteArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonEgnyteArrayOutput() GetClientAddonEgnyteArrayOutput
+	ToGetClientAddonEgnyteArrayOutputWithContext(context.Context) GetClientAddonEgnyteArrayOutput
+}
+
+type GetClientAddonEgnyteArray []GetClientAddonEgnyteInput
+
+func (GetClientAddonEgnyteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonEgnyte)(nil)).Elem()
+}
+
+func (i GetClientAddonEgnyteArray) ToGetClientAddonEgnyteArrayOutput() GetClientAddonEgnyteArrayOutput {
+	return i.ToGetClientAddonEgnyteArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonEgnyteArray) ToGetClientAddonEgnyteArrayOutputWithContext(ctx context.Context) GetClientAddonEgnyteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonEgnyteArrayOutput)
+}
+
+func (i GetClientAddonEgnyteArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonEgnyte] {
+	return pulumix.Output[[]GetClientAddonEgnyte]{
+		OutputState: i.ToGetClientAddonEgnyteArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonEgnyteOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonEgnyteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonEgnyte)(nil)).Elem()
+}
+
+func (o GetClientAddonEgnyteOutput) ToGetClientAddonEgnyteOutput() GetClientAddonEgnyteOutput {
+	return o
+}
+
+func (o GetClientAddonEgnyteOutput) ToGetClientAddonEgnyteOutputWithContext(ctx context.Context) GetClientAddonEgnyteOutput {
+	return o
+}
+
+func (o GetClientAddonEgnyteOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonEgnyte] {
+	return pulumix.Output[GetClientAddonEgnyte]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonEgnyteOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonEgnyte) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+type GetClientAddonEgnyteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonEgnyteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonEgnyte)(nil)).Elem()
+}
+
+func (o GetClientAddonEgnyteArrayOutput) ToGetClientAddonEgnyteArrayOutput() GetClientAddonEgnyteArrayOutput {
+	return o
+}
+
+func (o GetClientAddonEgnyteArrayOutput) ToGetClientAddonEgnyteArrayOutputWithContext(ctx context.Context) GetClientAddonEgnyteArrayOutput {
+	return o
+}
+
+func (o GetClientAddonEgnyteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonEgnyte] {
+	return pulumix.Output[[]GetClientAddonEgnyte]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonEgnyteArrayOutput) Index(i pulumi.IntInput) GetClientAddonEgnyteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonEgnyte {
+		return vs[0].([]GetClientAddonEgnyte)[vs[1].(int)]
+	}).(GetClientAddonEgnyteOutput)
+}
+
+type GetClientAddonFirebase struct {
+	ClientEmail       string `pulumi:"clientEmail"`
+	LifetimeInSeconds int    `pulumi:"lifetimeInSeconds"`
+	PrivateKey        string `pulumi:"privateKey"`
+	PrivateKeyId      string `pulumi:"privateKeyId"`
+	Secret            string `pulumi:"secret"`
+}
+
+// GetClientAddonFirebaseInput is an input type that accepts GetClientAddonFirebaseArgs and GetClientAddonFirebaseOutput values.
+// You can construct a concrete instance of `GetClientAddonFirebaseInput` via:
+//
+//	GetClientAddonFirebaseArgs{...}
+type GetClientAddonFirebaseInput interface {
+	pulumi.Input
+
+	ToGetClientAddonFirebaseOutput() GetClientAddonFirebaseOutput
+	ToGetClientAddonFirebaseOutputWithContext(context.Context) GetClientAddonFirebaseOutput
+}
+
+type GetClientAddonFirebaseArgs struct {
+	ClientEmail       pulumi.StringInput `pulumi:"clientEmail"`
+	LifetimeInSeconds pulumi.IntInput    `pulumi:"lifetimeInSeconds"`
+	PrivateKey        pulumi.StringInput `pulumi:"privateKey"`
+	PrivateKeyId      pulumi.StringInput `pulumi:"privateKeyId"`
+	Secret            pulumi.StringInput `pulumi:"secret"`
+}
+
+func (GetClientAddonFirebaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonFirebase)(nil)).Elem()
+}
+
+func (i GetClientAddonFirebaseArgs) ToGetClientAddonFirebaseOutput() GetClientAddonFirebaseOutput {
+	return i.ToGetClientAddonFirebaseOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonFirebaseArgs) ToGetClientAddonFirebaseOutputWithContext(ctx context.Context) GetClientAddonFirebaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonFirebaseOutput)
+}
+
+func (i GetClientAddonFirebaseArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonFirebase] {
+	return pulumix.Output[GetClientAddonFirebase]{
+		OutputState: i.ToGetClientAddonFirebaseOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonFirebaseArrayInput is an input type that accepts GetClientAddonFirebaseArray and GetClientAddonFirebaseArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonFirebaseArrayInput` via:
+//
+//	GetClientAddonFirebaseArray{ GetClientAddonFirebaseArgs{...} }
+type GetClientAddonFirebaseArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonFirebaseArrayOutput() GetClientAddonFirebaseArrayOutput
+	ToGetClientAddonFirebaseArrayOutputWithContext(context.Context) GetClientAddonFirebaseArrayOutput
+}
+
+type GetClientAddonFirebaseArray []GetClientAddonFirebaseInput
+
+func (GetClientAddonFirebaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonFirebase)(nil)).Elem()
+}
+
+func (i GetClientAddonFirebaseArray) ToGetClientAddonFirebaseArrayOutput() GetClientAddonFirebaseArrayOutput {
+	return i.ToGetClientAddonFirebaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonFirebaseArray) ToGetClientAddonFirebaseArrayOutputWithContext(ctx context.Context) GetClientAddonFirebaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonFirebaseArrayOutput)
+}
+
+func (i GetClientAddonFirebaseArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonFirebase] {
+	return pulumix.Output[[]GetClientAddonFirebase]{
+		OutputState: i.ToGetClientAddonFirebaseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonFirebaseOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonFirebaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonFirebase)(nil)).Elem()
+}
+
+func (o GetClientAddonFirebaseOutput) ToGetClientAddonFirebaseOutput() GetClientAddonFirebaseOutput {
+	return o
+}
+
+func (o GetClientAddonFirebaseOutput) ToGetClientAddonFirebaseOutputWithContext(ctx context.Context) GetClientAddonFirebaseOutput {
+	return o
+}
+
+func (o GetClientAddonFirebaseOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonFirebase] {
+	return pulumix.Output[GetClientAddonFirebase]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonFirebaseOutput) ClientEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonFirebase) string { return v.ClientEmail }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonFirebaseOutput) LifetimeInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientAddonFirebase) int { return v.LifetimeInSeconds }).(pulumi.IntOutput)
+}
+
+func (o GetClientAddonFirebaseOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonFirebase) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonFirebaseOutput) PrivateKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonFirebase) string { return v.PrivateKeyId }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonFirebaseOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonFirebase) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+type GetClientAddonFirebaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonFirebaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonFirebase)(nil)).Elem()
+}
+
+func (o GetClientAddonFirebaseArrayOutput) ToGetClientAddonFirebaseArrayOutput() GetClientAddonFirebaseArrayOutput {
+	return o
+}
+
+func (o GetClientAddonFirebaseArrayOutput) ToGetClientAddonFirebaseArrayOutputWithContext(ctx context.Context) GetClientAddonFirebaseArrayOutput {
+	return o
+}
+
+func (o GetClientAddonFirebaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonFirebase] {
+	return pulumix.Output[[]GetClientAddonFirebase]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonFirebaseArrayOutput) Index(i pulumi.IntInput) GetClientAddonFirebaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonFirebase {
+		return vs[0].([]GetClientAddonFirebase)[vs[1].(int)]
+	}).(GetClientAddonFirebaseOutput)
+}
+
+type GetClientAddonLayer struct {
+	Expiration int    `pulumi:"expiration"`
+	KeyId      string `pulumi:"keyId"`
+	Principal  string `pulumi:"principal"`
+	PrivateKey string `pulumi:"privateKey"`
+	ProviderId string `pulumi:"providerId"`
+}
+
+// GetClientAddonLayerInput is an input type that accepts GetClientAddonLayerArgs and GetClientAddonLayerOutput values.
+// You can construct a concrete instance of `GetClientAddonLayerInput` via:
+//
+//	GetClientAddonLayerArgs{...}
+type GetClientAddonLayerInput interface {
+	pulumi.Input
+
+	ToGetClientAddonLayerOutput() GetClientAddonLayerOutput
+	ToGetClientAddonLayerOutputWithContext(context.Context) GetClientAddonLayerOutput
+}
+
+type GetClientAddonLayerArgs struct {
+	Expiration pulumi.IntInput    `pulumi:"expiration"`
+	KeyId      pulumi.StringInput `pulumi:"keyId"`
+	Principal  pulumi.StringInput `pulumi:"principal"`
+	PrivateKey pulumi.StringInput `pulumi:"privateKey"`
+	ProviderId pulumi.StringInput `pulumi:"providerId"`
+}
+
+func (GetClientAddonLayerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonLayer)(nil)).Elem()
+}
+
+func (i GetClientAddonLayerArgs) ToGetClientAddonLayerOutput() GetClientAddonLayerOutput {
+	return i.ToGetClientAddonLayerOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonLayerArgs) ToGetClientAddonLayerOutputWithContext(ctx context.Context) GetClientAddonLayerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonLayerOutput)
+}
+
+func (i GetClientAddonLayerArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonLayer] {
+	return pulumix.Output[GetClientAddonLayer]{
+		OutputState: i.ToGetClientAddonLayerOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonLayerArrayInput is an input type that accepts GetClientAddonLayerArray and GetClientAddonLayerArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonLayerArrayInput` via:
+//
+//	GetClientAddonLayerArray{ GetClientAddonLayerArgs{...} }
+type GetClientAddonLayerArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonLayerArrayOutput() GetClientAddonLayerArrayOutput
+	ToGetClientAddonLayerArrayOutputWithContext(context.Context) GetClientAddonLayerArrayOutput
+}
+
+type GetClientAddonLayerArray []GetClientAddonLayerInput
+
+func (GetClientAddonLayerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonLayer)(nil)).Elem()
+}
+
+func (i GetClientAddonLayerArray) ToGetClientAddonLayerArrayOutput() GetClientAddonLayerArrayOutput {
+	return i.ToGetClientAddonLayerArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonLayerArray) ToGetClientAddonLayerArrayOutputWithContext(ctx context.Context) GetClientAddonLayerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonLayerArrayOutput)
+}
+
+func (i GetClientAddonLayerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonLayer] {
+	return pulumix.Output[[]GetClientAddonLayer]{
+		OutputState: i.ToGetClientAddonLayerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonLayerOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonLayerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonLayer)(nil)).Elem()
+}
+
+func (o GetClientAddonLayerOutput) ToGetClientAddonLayerOutput() GetClientAddonLayerOutput {
+	return o
+}
+
+func (o GetClientAddonLayerOutput) ToGetClientAddonLayerOutputWithContext(ctx context.Context) GetClientAddonLayerOutput {
+	return o
+}
+
+func (o GetClientAddonLayerOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonLayer] {
+	return pulumix.Output[GetClientAddonLayer]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonLayerOutput) Expiration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientAddonLayer) int { return v.Expiration }).(pulumi.IntOutput)
+}
+
+func (o GetClientAddonLayerOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonLayer) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonLayerOutput) Principal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonLayer) string { return v.Principal }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonLayerOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonLayer) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonLayerOutput) ProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonLayer) string { return v.ProviderId }).(pulumi.StringOutput)
+}
+
+type GetClientAddonLayerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonLayerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonLayer)(nil)).Elem()
+}
+
+func (o GetClientAddonLayerArrayOutput) ToGetClientAddonLayerArrayOutput() GetClientAddonLayerArrayOutput {
+	return o
+}
+
+func (o GetClientAddonLayerArrayOutput) ToGetClientAddonLayerArrayOutputWithContext(ctx context.Context) GetClientAddonLayerArrayOutput {
+	return o
+}
+
+func (o GetClientAddonLayerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonLayer] {
+	return pulumix.Output[[]GetClientAddonLayer]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonLayerArrayOutput) Index(i pulumi.IntInput) GetClientAddonLayerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonLayer {
+		return vs[0].([]GetClientAddonLayer)[vs[1].(int)]
+	}).(GetClientAddonLayerOutput)
+}
+
+type GetClientAddonMscrm struct {
+	Url string `pulumi:"url"`
+}
+
+// GetClientAddonMscrmInput is an input type that accepts GetClientAddonMscrmArgs and GetClientAddonMscrmOutput values.
+// You can construct a concrete instance of `GetClientAddonMscrmInput` via:
+//
+//	GetClientAddonMscrmArgs{...}
+type GetClientAddonMscrmInput interface {
+	pulumi.Input
+
+	ToGetClientAddonMscrmOutput() GetClientAddonMscrmOutput
+	ToGetClientAddonMscrmOutputWithContext(context.Context) GetClientAddonMscrmOutput
+}
+
+type GetClientAddonMscrmArgs struct {
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetClientAddonMscrmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonMscrm)(nil)).Elem()
+}
+
+func (i GetClientAddonMscrmArgs) ToGetClientAddonMscrmOutput() GetClientAddonMscrmOutput {
+	return i.ToGetClientAddonMscrmOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonMscrmArgs) ToGetClientAddonMscrmOutputWithContext(ctx context.Context) GetClientAddonMscrmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonMscrmOutput)
+}
+
+func (i GetClientAddonMscrmArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonMscrm] {
+	return pulumix.Output[GetClientAddonMscrm]{
+		OutputState: i.ToGetClientAddonMscrmOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonMscrmArrayInput is an input type that accepts GetClientAddonMscrmArray and GetClientAddonMscrmArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonMscrmArrayInput` via:
+//
+//	GetClientAddonMscrmArray{ GetClientAddonMscrmArgs{...} }
+type GetClientAddonMscrmArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonMscrmArrayOutput() GetClientAddonMscrmArrayOutput
+	ToGetClientAddonMscrmArrayOutputWithContext(context.Context) GetClientAddonMscrmArrayOutput
+}
+
+type GetClientAddonMscrmArray []GetClientAddonMscrmInput
+
+func (GetClientAddonMscrmArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonMscrm)(nil)).Elem()
+}
+
+func (i GetClientAddonMscrmArray) ToGetClientAddonMscrmArrayOutput() GetClientAddonMscrmArrayOutput {
+	return i.ToGetClientAddonMscrmArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonMscrmArray) ToGetClientAddonMscrmArrayOutputWithContext(ctx context.Context) GetClientAddonMscrmArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonMscrmArrayOutput)
+}
+
+func (i GetClientAddonMscrmArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonMscrm] {
+	return pulumix.Output[[]GetClientAddonMscrm]{
+		OutputState: i.ToGetClientAddonMscrmArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonMscrmOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonMscrmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonMscrm)(nil)).Elem()
+}
+
+func (o GetClientAddonMscrmOutput) ToGetClientAddonMscrmOutput() GetClientAddonMscrmOutput {
+	return o
+}
+
+func (o GetClientAddonMscrmOutput) ToGetClientAddonMscrmOutputWithContext(ctx context.Context) GetClientAddonMscrmOutput {
+	return o
+}
+
+func (o GetClientAddonMscrmOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonMscrm] {
+	return pulumix.Output[GetClientAddonMscrm]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonMscrmOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonMscrm) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetClientAddonMscrmArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonMscrmArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonMscrm)(nil)).Elem()
+}
+
+func (o GetClientAddonMscrmArrayOutput) ToGetClientAddonMscrmArrayOutput() GetClientAddonMscrmArrayOutput {
+	return o
+}
+
+func (o GetClientAddonMscrmArrayOutput) ToGetClientAddonMscrmArrayOutputWithContext(ctx context.Context) GetClientAddonMscrmArrayOutput {
+	return o
+}
+
+func (o GetClientAddonMscrmArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonMscrm] {
+	return pulumix.Output[[]GetClientAddonMscrm]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonMscrmArrayOutput) Index(i pulumi.IntInput) GetClientAddonMscrmOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonMscrm {
+		return vs[0].([]GetClientAddonMscrm)[vs[1].(int)]
+	}).(GetClientAddonMscrmOutput)
+}
+
+type GetClientAddonNewrelic struct {
+	Account string `pulumi:"account"`
+}
+
+// GetClientAddonNewrelicInput is an input type that accepts GetClientAddonNewrelicArgs and GetClientAddonNewrelicOutput values.
+// You can construct a concrete instance of `GetClientAddonNewrelicInput` via:
+//
+//	GetClientAddonNewrelicArgs{...}
+type GetClientAddonNewrelicInput interface {
+	pulumi.Input
+
+	ToGetClientAddonNewrelicOutput() GetClientAddonNewrelicOutput
+	ToGetClientAddonNewrelicOutputWithContext(context.Context) GetClientAddonNewrelicOutput
+}
+
+type GetClientAddonNewrelicArgs struct {
+	Account pulumi.StringInput `pulumi:"account"`
+}
+
+func (GetClientAddonNewrelicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonNewrelic)(nil)).Elem()
+}
+
+func (i GetClientAddonNewrelicArgs) ToGetClientAddonNewrelicOutput() GetClientAddonNewrelicOutput {
+	return i.ToGetClientAddonNewrelicOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonNewrelicArgs) ToGetClientAddonNewrelicOutputWithContext(ctx context.Context) GetClientAddonNewrelicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonNewrelicOutput)
+}
+
+func (i GetClientAddonNewrelicArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonNewrelic] {
+	return pulumix.Output[GetClientAddonNewrelic]{
+		OutputState: i.ToGetClientAddonNewrelicOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonNewrelicArrayInput is an input type that accepts GetClientAddonNewrelicArray and GetClientAddonNewrelicArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonNewrelicArrayInput` via:
+//
+//	GetClientAddonNewrelicArray{ GetClientAddonNewrelicArgs{...} }
+type GetClientAddonNewrelicArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonNewrelicArrayOutput() GetClientAddonNewrelicArrayOutput
+	ToGetClientAddonNewrelicArrayOutputWithContext(context.Context) GetClientAddonNewrelicArrayOutput
+}
+
+type GetClientAddonNewrelicArray []GetClientAddonNewrelicInput
+
+func (GetClientAddonNewrelicArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonNewrelic)(nil)).Elem()
+}
+
+func (i GetClientAddonNewrelicArray) ToGetClientAddonNewrelicArrayOutput() GetClientAddonNewrelicArrayOutput {
+	return i.ToGetClientAddonNewrelicArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonNewrelicArray) ToGetClientAddonNewrelicArrayOutputWithContext(ctx context.Context) GetClientAddonNewrelicArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonNewrelicArrayOutput)
+}
+
+func (i GetClientAddonNewrelicArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonNewrelic] {
+	return pulumix.Output[[]GetClientAddonNewrelic]{
+		OutputState: i.ToGetClientAddonNewrelicArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonNewrelicOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonNewrelicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonNewrelic)(nil)).Elem()
+}
+
+func (o GetClientAddonNewrelicOutput) ToGetClientAddonNewrelicOutput() GetClientAddonNewrelicOutput {
+	return o
+}
+
+func (o GetClientAddonNewrelicOutput) ToGetClientAddonNewrelicOutputWithContext(ctx context.Context) GetClientAddonNewrelicOutput {
+	return o
+}
+
+func (o GetClientAddonNewrelicOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonNewrelic] {
+	return pulumix.Output[GetClientAddonNewrelic]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonNewrelicOutput) Account() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonNewrelic) string { return v.Account }).(pulumi.StringOutput)
+}
+
+type GetClientAddonNewrelicArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonNewrelicArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonNewrelic)(nil)).Elem()
+}
+
+func (o GetClientAddonNewrelicArrayOutput) ToGetClientAddonNewrelicArrayOutput() GetClientAddonNewrelicArrayOutput {
+	return o
+}
+
+func (o GetClientAddonNewrelicArrayOutput) ToGetClientAddonNewrelicArrayOutputWithContext(ctx context.Context) GetClientAddonNewrelicArrayOutput {
+	return o
+}
+
+func (o GetClientAddonNewrelicArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonNewrelic] {
+	return pulumix.Output[[]GetClientAddonNewrelic]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonNewrelicArrayOutput) Index(i pulumi.IntInput) GetClientAddonNewrelicOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonNewrelic {
+		return vs[0].([]GetClientAddonNewrelic)[vs[1].(int)]
+	}).(GetClientAddonNewrelicOutput)
+}
+
+type GetClientAddonOffice365 struct {
+	Connection string `pulumi:"connection"`
+	Domain     string `pulumi:"domain"`
+}
+
+// GetClientAddonOffice365Input is an input type that accepts GetClientAddonOffice365Args and GetClientAddonOffice365Output values.
+// You can construct a concrete instance of `GetClientAddonOffice365Input` via:
+//
+//	GetClientAddonOffice365Args{...}
+type GetClientAddonOffice365Input interface {
+	pulumi.Input
+
+	ToGetClientAddonOffice365Output() GetClientAddonOffice365Output
+	ToGetClientAddonOffice365OutputWithContext(context.Context) GetClientAddonOffice365Output
+}
+
+type GetClientAddonOffice365Args struct {
+	Connection pulumi.StringInput `pulumi:"connection"`
+	Domain     pulumi.StringInput `pulumi:"domain"`
+}
+
+func (GetClientAddonOffice365Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonOffice365)(nil)).Elem()
+}
+
+func (i GetClientAddonOffice365Args) ToGetClientAddonOffice365Output() GetClientAddonOffice365Output {
+	return i.ToGetClientAddonOffice365OutputWithContext(context.Background())
+}
+
+func (i GetClientAddonOffice365Args) ToGetClientAddonOffice365OutputWithContext(ctx context.Context) GetClientAddonOffice365Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonOffice365Output)
+}
+
+func (i GetClientAddonOffice365Args) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonOffice365] {
+	return pulumix.Output[GetClientAddonOffice365]{
+		OutputState: i.ToGetClientAddonOffice365OutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonOffice365ArrayInput is an input type that accepts GetClientAddonOffice365Array and GetClientAddonOffice365ArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonOffice365ArrayInput` via:
+//
+//	GetClientAddonOffice365Array{ GetClientAddonOffice365Args{...} }
+type GetClientAddonOffice365ArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonOffice365ArrayOutput() GetClientAddonOffice365ArrayOutput
+	ToGetClientAddonOffice365ArrayOutputWithContext(context.Context) GetClientAddonOffice365ArrayOutput
+}
+
+type GetClientAddonOffice365Array []GetClientAddonOffice365Input
+
+func (GetClientAddonOffice365Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonOffice365)(nil)).Elem()
+}
+
+func (i GetClientAddonOffice365Array) ToGetClientAddonOffice365ArrayOutput() GetClientAddonOffice365ArrayOutput {
+	return i.ToGetClientAddonOffice365ArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonOffice365Array) ToGetClientAddonOffice365ArrayOutputWithContext(ctx context.Context) GetClientAddonOffice365ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonOffice365ArrayOutput)
+}
+
+func (i GetClientAddonOffice365Array) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonOffice365] {
+	return pulumix.Output[[]GetClientAddonOffice365]{
+		OutputState: i.ToGetClientAddonOffice365ArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonOffice365Output struct{ *pulumi.OutputState }
+
+func (GetClientAddonOffice365Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonOffice365)(nil)).Elem()
+}
+
+func (o GetClientAddonOffice365Output) ToGetClientAddonOffice365Output() GetClientAddonOffice365Output {
+	return o
+}
+
+func (o GetClientAddonOffice365Output) ToGetClientAddonOffice365OutputWithContext(ctx context.Context) GetClientAddonOffice365Output {
+	return o
+}
+
+func (o GetClientAddonOffice365Output) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonOffice365] {
+	return pulumix.Output[GetClientAddonOffice365]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonOffice365Output) Connection() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonOffice365) string { return v.Connection }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonOffice365Output) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonOffice365) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+type GetClientAddonOffice365ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonOffice365ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonOffice365)(nil)).Elem()
+}
+
+func (o GetClientAddonOffice365ArrayOutput) ToGetClientAddonOffice365ArrayOutput() GetClientAddonOffice365ArrayOutput {
+	return o
+}
+
+func (o GetClientAddonOffice365ArrayOutput) ToGetClientAddonOffice365ArrayOutputWithContext(ctx context.Context) GetClientAddonOffice365ArrayOutput {
+	return o
+}
+
+func (o GetClientAddonOffice365ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonOffice365] {
+	return pulumix.Output[[]GetClientAddonOffice365]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonOffice365ArrayOutput) Index(i pulumi.IntInput) GetClientAddonOffice365Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonOffice365 {
+		return vs[0].([]GetClientAddonOffice365)[vs[1].(int)]
+	}).(GetClientAddonOffice365Output)
+}
+
+type GetClientAddonRm struct {
+	Url string `pulumi:"url"`
+}
+
+// GetClientAddonRmInput is an input type that accepts GetClientAddonRmArgs and GetClientAddonRmOutput values.
+// You can construct a concrete instance of `GetClientAddonRmInput` via:
+//
+//	GetClientAddonRmArgs{...}
+type GetClientAddonRmInput interface {
+	pulumi.Input
+
+	ToGetClientAddonRmOutput() GetClientAddonRmOutput
+	ToGetClientAddonRmOutputWithContext(context.Context) GetClientAddonRmOutput
+}
+
+type GetClientAddonRmArgs struct {
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetClientAddonRmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonRm)(nil)).Elem()
+}
+
+func (i GetClientAddonRmArgs) ToGetClientAddonRmOutput() GetClientAddonRmOutput {
+	return i.ToGetClientAddonRmOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonRmArgs) ToGetClientAddonRmOutputWithContext(ctx context.Context) GetClientAddonRmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonRmOutput)
+}
+
+func (i GetClientAddonRmArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonRm] {
+	return pulumix.Output[GetClientAddonRm]{
+		OutputState: i.ToGetClientAddonRmOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonRmArrayInput is an input type that accepts GetClientAddonRmArray and GetClientAddonRmArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonRmArrayInput` via:
+//
+//	GetClientAddonRmArray{ GetClientAddonRmArgs{...} }
+type GetClientAddonRmArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonRmArrayOutput() GetClientAddonRmArrayOutput
+	ToGetClientAddonRmArrayOutputWithContext(context.Context) GetClientAddonRmArrayOutput
+}
+
+type GetClientAddonRmArray []GetClientAddonRmInput
+
+func (GetClientAddonRmArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonRm)(nil)).Elem()
+}
+
+func (i GetClientAddonRmArray) ToGetClientAddonRmArrayOutput() GetClientAddonRmArrayOutput {
+	return i.ToGetClientAddonRmArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonRmArray) ToGetClientAddonRmArrayOutputWithContext(ctx context.Context) GetClientAddonRmArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonRmArrayOutput)
+}
+
+func (i GetClientAddonRmArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonRm] {
+	return pulumix.Output[[]GetClientAddonRm]{
+		OutputState: i.ToGetClientAddonRmArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonRmOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonRmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonRm)(nil)).Elem()
+}
+
+func (o GetClientAddonRmOutput) ToGetClientAddonRmOutput() GetClientAddonRmOutput {
+	return o
+}
+
+func (o GetClientAddonRmOutput) ToGetClientAddonRmOutputWithContext(ctx context.Context) GetClientAddonRmOutput {
+	return o
+}
+
+func (o GetClientAddonRmOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonRm] {
+	return pulumix.Output[GetClientAddonRm]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonRmOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonRm) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetClientAddonRmArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonRmArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonRm)(nil)).Elem()
+}
+
+func (o GetClientAddonRmArrayOutput) ToGetClientAddonRmArrayOutput() GetClientAddonRmArrayOutput {
+	return o
+}
+
+func (o GetClientAddonRmArrayOutput) ToGetClientAddonRmArrayOutputWithContext(ctx context.Context) GetClientAddonRmArrayOutput {
+	return o
+}
+
+func (o GetClientAddonRmArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonRm] {
+	return pulumix.Output[[]GetClientAddonRm]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonRmArrayOutput) Index(i pulumi.IntInput) GetClientAddonRmOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonRm {
+		return vs[0].([]GetClientAddonRm)[vs[1].(int)]
+	}).(GetClientAddonRmOutput)
+}
+
+type GetClientAddonSalesforce struct {
+	EntityId string `pulumi:"entityId"`
+}
+
+// GetClientAddonSalesforceInput is an input type that accepts GetClientAddonSalesforceArgs and GetClientAddonSalesforceOutput values.
+// You can construct a concrete instance of `GetClientAddonSalesforceInput` via:
+//
+//	GetClientAddonSalesforceArgs{...}
+type GetClientAddonSalesforceInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSalesforceOutput() GetClientAddonSalesforceOutput
+	ToGetClientAddonSalesforceOutputWithContext(context.Context) GetClientAddonSalesforceOutput
+}
+
+type GetClientAddonSalesforceArgs struct {
+	EntityId pulumi.StringInput `pulumi:"entityId"`
+}
+
+func (GetClientAddonSalesforceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSalesforce)(nil)).Elem()
+}
+
+func (i GetClientAddonSalesforceArgs) ToGetClientAddonSalesforceOutput() GetClientAddonSalesforceOutput {
+	return i.ToGetClientAddonSalesforceOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSalesforceArgs) ToGetClientAddonSalesforceOutputWithContext(ctx context.Context) GetClientAddonSalesforceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSalesforceOutput)
+}
+
+func (i GetClientAddonSalesforceArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSalesforce] {
+	return pulumix.Output[GetClientAddonSalesforce]{
+		OutputState: i.ToGetClientAddonSalesforceOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonSalesforceArrayInput is an input type that accepts GetClientAddonSalesforceArray and GetClientAddonSalesforceArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonSalesforceArrayInput` via:
+//
+//	GetClientAddonSalesforceArray{ GetClientAddonSalesforceArgs{...} }
+type GetClientAddonSalesforceArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSalesforceArrayOutput() GetClientAddonSalesforceArrayOutput
+	ToGetClientAddonSalesforceArrayOutputWithContext(context.Context) GetClientAddonSalesforceArrayOutput
+}
+
+type GetClientAddonSalesforceArray []GetClientAddonSalesforceInput
+
+func (GetClientAddonSalesforceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSalesforce)(nil)).Elem()
+}
+
+func (i GetClientAddonSalesforceArray) ToGetClientAddonSalesforceArrayOutput() GetClientAddonSalesforceArrayOutput {
+	return i.ToGetClientAddonSalesforceArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSalesforceArray) ToGetClientAddonSalesforceArrayOutputWithContext(ctx context.Context) GetClientAddonSalesforceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSalesforceArrayOutput)
+}
+
+func (i GetClientAddonSalesforceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSalesforce] {
+	return pulumix.Output[[]GetClientAddonSalesforce]{
+		OutputState: i.ToGetClientAddonSalesforceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonSalesforceOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSalesforceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSalesforce)(nil)).Elem()
+}
+
+func (o GetClientAddonSalesforceOutput) ToGetClientAddonSalesforceOutput() GetClientAddonSalesforceOutput {
+	return o
+}
+
+func (o GetClientAddonSalesforceOutput) ToGetClientAddonSalesforceOutputWithContext(ctx context.Context) GetClientAddonSalesforceOutput {
+	return o
+}
+
+func (o GetClientAddonSalesforceOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSalesforce] {
+	return pulumix.Output[GetClientAddonSalesforce]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonSalesforceOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSalesforce) string { return v.EntityId }).(pulumi.StringOutput)
+}
+
+type GetClientAddonSalesforceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSalesforceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSalesforce)(nil)).Elem()
+}
+
+func (o GetClientAddonSalesforceArrayOutput) ToGetClientAddonSalesforceArrayOutput() GetClientAddonSalesforceArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSalesforceArrayOutput) ToGetClientAddonSalesforceArrayOutputWithContext(ctx context.Context) GetClientAddonSalesforceArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSalesforceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSalesforce] {
+	return pulumix.Output[[]GetClientAddonSalesforce]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonSalesforceArrayOutput) Index(i pulumi.IntInput) GetClientAddonSalesforceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonSalesforce {
+		return vs[0].([]GetClientAddonSalesforce)[vs[1].(int)]
+	}).(GetClientAddonSalesforceOutput)
+}
+
+type GetClientAddonSalesforceApi struct {
+	// The ID of the client. If not provided, `name` must be set.
+	ClientId            string `pulumi:"clientId"`
+	CommunityName       string `pulumi:"communityName"`
+	CommunityUrlSection string `pulumi:"communityUrlSection"`
+	Principal           string `pulumi:"principal"`
+}
+
+// GetClientAddonSalesforceApiInput is an input type that accepts GetClientAddonSalesforceApiArgs and GetClientAddonSalesforceApiOutput values.
+// You can construct a concrete instance of `GetClientAddonSalesforceApiInput` via:
+//
+//	GetClientAddonSalesforceApiArgs{...}
+type GetClientAddonSalesforceApiInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSalesforceApiOutput() GetClientAddonSalesforceApiOutput
+	ToGetClientAddonSalesforceApiOutputWithContext(context.Context) GetClientAddonSalesforceApiOutput
+}
+
+type GetClientAddonSalesforceApiArgs struct {
+	// The ID of the client. If not provided, `name` must be set.
+	ClientId            pulumi.StringInput `pulumi:"clientId"`
+	CommunityName       pulumi.StringInput `pulumi:"communityName"`
+	CommunityUrlSection pulumi.StringInput `pulumi:"communityUrlSection"`
+	Principal           pulumi.StringInput `pulumi:"principal"`
+}
+
+func (GetClientAddonSalesforceApiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSalesforceApi)(nil)).Elem()
+}
+
+func (i GetClientAddonSalesforceApiArgs) ToGetClientAddonSalesforceApiOutput() GetClientAddonSalesforceApiOutput {
+	return i.ToGetClientAddonSalesforceApiOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSalesforceApiArgs) ToGetClientAddonSalesforceApiOutputWithContext(ctx context.Context) GetClientAddonSalesforceApiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSalesforceApiOutput)
+}
+
+func (i GetClientAddonSalesforceApiArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSalesforceApi] {
+	return pulumix.Output[GetClientAddonSalesforceApi]{
+		OutputState: i.ToGetClientAddonSalesforceApiOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonSalesforceApiArrayInput is an input type that accepts GetClientAddonSalesforceApiArray and GetClientAddonSalesforceApiArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonSalesforceApiArrayInput` via:
+//
+//	GetClientAddonSalesforceApiArray{ GetClientAddonSalesforceApiArgs{...} }
+type GetClientAddonSalesforceApiArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSalesforceApiArrayOutput() GetClientAddonSalesforceApiArrayOutput
+	ToGetClientAddonSalesforceApiArrayOutputWithContext(context.Context) GetClientAddonSalesforceApiArrayOutput
+}
+
+type GetClientAddonSalesforceApiArray []GetClientAddonSalesforceApiInput
+
+func (GetClientAddonSalesforceApiArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSalesforceApi)(nil)).Elem()
+}
+
+func (i GetClientAddonSalesforceApiArray) ToGetClientAddonSalesforceApiArrayOutput() GetClientAddonSalesforceApiArrayOutput {
+	return i.ToGetClientAddonSalesforceApiArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSalesforceApiArray) ToGetClientAddonSalesforceApiArrayOutputWithContext(ctx context.Context) GetClientAddonSalesforceApiArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSalesforceApiArrayOutput)
+}
+
+func (i GetClientAddonSalesforceApiArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSalesforceApi] {
+	return pulumix.Output[[]GetClientAddonSalesforceApi]{
+		OutputState: i.ToGetClientAddonSalesforceApiArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonSalesforceApiOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSalesforceApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSalesforceApi)(nil)).Elem()
+}
+
+func (o GetClientAddonSalesforceApiOutput) ToGetClientAddonSalesforceApiOutput() GetClientAddonSalesforceApiOutput {
+	return o
+}
+
+func (o GetClientAddonSalesforceApiOutput) ToGetClientAddonSalesforceApiOutputWithContext(ctx context.Context) GetClientAddonSalesforceApiOutput {
+	return o
+}
+
+func (o GetClientAddonSalesforceApiOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSalesforceApi] {
+	return pulumix.Output[GetClientAddonSalesforceApi]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The ID of the client. If not provided, `name` must be set.
+func (o GetClientAddonSalesforceApiOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSalesforceApi) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSalesforceApiOutput) CommunityName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSalesforceApi) string { return v.CommunityName }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSalesforceApiOutput) CommunityUrlSection() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSalesforceApi) string { return v.CommunityUrlSection }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSalesforceApiOutput) Principal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSalesforceApi) string { return v.Principal }).(pulumi.StringOutput)
+}
+
+type GetClientAddonSalesforceApiArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSalesforceApiArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSalesforceApi)(nil)).Elem()
+}
+
+func (o GetClientAddonSalesforceApiArrayOutput) ToGetClientAddonSalesforceApiArrayOutput() GetClientAddonSalesforceApiArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSalesforceApiArrayOutput) ToGetClientAddonSalesforceApiArrayOutputWithContext(ctx context.Context) GetClientAddonSalesforceApiArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSalesforceApiArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSalesforceApi] {
+	return pulumix.Output[[]GetClientAddonSalesforceApi]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonSalesforceApiArrayOutput) Index(i pulumi.IntInput) GetClientAddonSalesforceApiOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonSalesforceApi {
+		return vs[0].([]GetClientAddonSalesforceApi)[vs[1].(int)]
+	}).(GetClientAddonSalesforceApiOutput)
+}
+
+type GetClientAddonSalesforceSandboxApi struct {
+	// The ID of the client. If not provided, `name` must be set.
+	ClientId            string `pulumi:"clientId"`
+	CommunityName       string `pulumi:"communityName"`
+	CommunityUrlSection string `pulumi:"communityUrlSection"`
+	Principal           string `pulumi:"principal"`
+}
+
+// GetClientAddonSalesforceSandboxApiInput is an input type that accepts GetClientAddonSalesforceSandboxApiArgs and GetClientAddonSalesforceSandboxApiOutput values.
+// You can construct a concrete instance of `GetClientAddonSalesforceSandboxApiInput` via:
+//
+//	GetClientAddonSalesforceSandboxApiArgs{...}
+type GetClientAddonSalesforceSandboxApiInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSalesforceSandboxApiOutput() GetClientAddonSalesforceSandboxApiOutput
+	ToGetClientAddonSalesforceSandboxApiOutputWithContext(context.Context) GetClientAddonSalesforceSandboxApiOutput
+}
+
+type GetClientAddonSalesforceSandboxApiArgs struct {
+	// The ID of the client. If not provided, `name` must be set.
+	ClientId            pulumi.StringInput `pulumi:"clientId"`
+	CommunityName       pulumi.StringInput `pulumi:"communityName"`
+	CommunityUrlSection pulumi.StringInput `pulumi:"communityUrlSection"`
+	Principal           pulumi.StringInput `pulumi:"principal"`
+}
+
+func (GetClientAddonSalesforceSandboxApiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSalesforceSandboxApi)(nil)).Elem()
+}
+
+func (i GetClientAddonSalesforceSandboxApiArgs) ToGetClientAddonSalesforceSandboxApiOutput() GetClientAddonSalesforceSandboxApiOutput {
+	return i.ToGetClientAddonSalesforceSandboxApiOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSalesforceSandboxApiArgs) ToGetClientAddonSalesforceSandboxApiOutputWithContext(ctx context.Context) GetClientAddonSalesforceSandboxApiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSalesforceSandboxApiOutput)
+}
+
+func (i GetClientAddonSalesforceSandboxApiArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSalesforceSandboxApi] {
+	return pulumix.Output[GetClientAddonSalesforceSandboxApi]{
+		OutputState: i.ToGetClientAddonSalesforceSandboxApiOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonSalesforceSandboxApiArrayInput is an input type that accepts GetClientAddonSalesforceSandboxApiArray and GetClientAddonSalesforceSandboxApiArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonSalesforceSandboxApiArrayInput` via:
+//
+//	GetClientAddonSalesforceSandboxApiArray{ GetClientAddonSalesforceSandboxApiArgs{...} }
+type GetClientAddonSalesforceSandboxApiArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSalesforceSandboxApiArrayOutput() GetClientAddonSalesforceSandboxApiArrayOutput
+	ToGetClientAddonSalesforceSandboxApiArrayOutputWithContext(context.Context) GetClientAddonSalesforceSandboxApiArrayOutput
+}
+
+type GetClientAddonSalesforceSandboxApiArray []GetClientAddonSalesforceSandboxApiInput
+
+func (GetClientAddonSalesforceSandboxApiArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSalesforceSandboxApi)(nil)).Elem()
+}
+
+func (i GetClientAddonSalesforceSandboxApiArray) ToGetClientAddonSalesforceSandboxApiArrayOutput() GetClientAddonSalesforceSandboxApiArrayOutput {
+	return i.ToGetClientAddonSalesforceSandboxApiArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSalesforceSandboxApiArray) ToGetClientAddonSalesforceSandboxApiArrayOutputWithContext(ctx context.Context) GetClientAddonSalesforceSandboxApiArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSalesforceSandboxApiArrayOutput)
+}
+
+func (i GetClientAddonSalesforceSandboxApiArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSalesforceSandboxApi] {
+	return pulumix.Output[[]GetClientAddonSalesforceSandboxApi]{
+		OutputState: i.ToGetClientAddonSalesforceSandboxApiArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonSalesforceSandboxApiOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSalesforceSandboxApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSalesforceSandboxApi)(nil)).Elem()
+}
+
+func (o GetClientAddonSalesforceSandboxApiOutput) ToGetClientAddonSalesforceSandboxApiOutput() GetClientAddonSalesforceSandboxApiOutput {
+	return o
+}
+
+func (o GetClientAddonSalesforceSandboxApiOutput) ToGetClientAddonSalesforceSandboxApiOutputWithContext(ctx context.Context) GetClientAddonSalesforceSandboxApiOutput {
+	return o
+}
+
+func (o GetClientAddonSalesforceSandboxApiOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSalesforceSandboxApi] {
+	return pulumix.Output[GetClientAddonSalesforceSandboxApi]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The ID of the client. If not provided, `name` must be set.
+func (o GetClientAddonSalesforceSandboxApiOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSalesforceSandboxApi) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSalesforceSandboxApiOutput) CommunityName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSalesforceSandboxApi) string { return v.CommunityName }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSalesforceSandboxApiOutput) CommunityUrlSection() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSalesforceSandboxApi) string { return v.CommunityUrlSection }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSalesforceSandboxApiOutput) Principal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSalesforceSandboxApi) string { return v.Principal }).(pulumi.StringOutput)
+}
+
+type GetClientAddonSalesforceSandboxApiArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSalesforceSandboxApiArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSalesforceSandboxApi)(nil)).Elem()
+}
+
+func (o GetClientAddonSalesforceSandboxApiArrayOutput) ToGetClientAddonSalesforceSandboxApiArrayOutput() GetClientAddonSalesforceSandboxApiArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSalesforceSandboxApiArrayOutput) ToGetClientAddonSalesforceSandboxApiArrayOutputWithContext(ctx context.Context) GetClientAddonSalesforceSandboxApiArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSalesforceSandboxApiArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSalesforceSandboxApi] {
+	return pulumix.Output[[]GetClientAddonSalesforceSandboxApi]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonSalesforceSandboxApiArrayOutput) Index(i pulumi.IntInput) GetClientAddonSalesforceSandboxApiOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonSalesforceSandboxApi {
+		return vs[0].([]GetClientAddonSalesforceSandboxApi)[vs[1].(int)]
+	}).(GetClientAddonSalesforceSandboxApiOutput)
+}
+
 type GetClientAddonSamlp struct {
-	Audience                       string                 `pulumi:"audience"`
-	AuthnContextClassRef           string                 `pulumi:"authnContextClassRef"`
-	Binding                        string                 `pulumi:"binding"`
-	CreateUpnClaim                 bool                   `pulumi:"createUpnClaim"`
-	Destination                    string                 `pulumi:"destination"`
-	DigestAlgorithm                string                 `pulumi:"digestAlgorithm"`
-	IncludeAttributeNameFormat     bool                   `pulumi:"includeAttributeNameFormat"`
-	Issuer                         string                 `pulumi:"issuer"`
-	LifetimeInSeconds              int                    `pulumi:"lifetimeInSeconds"`
-	Logout                         map[string]interface{} `pulumi:"logout"`
-	MapIdentities                  bool                   `pulumi:"mapIdentities"`
-	MapUnknownClaimsAsIs           bool                   `pulumi:"mapUnknownClaimsAsIs"`
-	Mappings                       map[string]interface{} `pulumi:"mappings"`
-	NameIdentifierFormat           string                 `pulumi:"nameIdentifierFormat"`
-	NameIdentifierProbes           []string               `pulumi:"nameIdentifierProbes"`
-	PassthroughClaimsWithNoMapping bool                   `pulumi:"passthroughClaimsWithNoMapping"`
-	Recipient                      string                 `pulumi:"recipient"`
-	SignResponse                   bool                   `pulumi:"signResponse"`
-	SignatureAlgorithm             string                 `pulumi:"signatureAlgorithm"`
-	SigningCert                    string                 `pulumi:"signingCert"`
-	TypedAttributes                bool                   `pulumi:"typedAttributes"`
+	Audience                       string                      `pulumi:"audience"`
+	AuthnContextClassRef           string                      `pulumi:"authnContextClassRef"`
+	Binding                        string                      `pulumi:"binding"`
+	CreateUpnClaim                 bool                        `pulumi:"createUpnClaim"`
+	Destination                    string                      `pulumi:"destination"`
+	DigestAlgorithm                string                      `pulumi:"digestAlgorithm"`
+	IncludeAttributeNameFormat     bool                        `pulumi:"includeAttributeNameFormat"`
+	Issuer                         string                      `pulumi:"issuer"`
+	LifetimeInSeconds              int                         `pulumi:"lifetimeInSeconds"`
+	Logouts                        []GetClientAddonSamlpLogout `pulumi:"logouts"`
+	MapIdentities                  bool                        `pulumi:"mapIdentities"`
+	MapUnknownClaimsAsIs           bool                        `pulumi:"mapUnknownClaimsAsIs"`
+	Mappings                       map[string]interface{}      `pulumi:"mappings"`
+	NameIdentifierFormat           string                      `pulumi:"nameIdentifierFormat"`
+	NameIdentifierProbes           []string                    `pulumi:"nameIdentifierProbes"`
+	PassthroughClaimsWithNoMapping bool                        `pulumi:"passthroughClaimsWithNoMapping"`
+	Recipient                      string                      `pulumi:"recipient"`
+	SignResponse                   bool                        `pulumi:"signResponse"`
+	SignatureAlgorithm             string                      `pulumi:"signatureAlgorithm"`
+	SigningCert                    string                      `pulumi:"signingCert"`
+	TypedAttributes                bool                        `pulumi:"typedAttributes"`
 }
 
 // GetClientAddonSamlpInput is an input type that accepts GetClientAddonSamlpArgs and GetClientAddonSamlpOutput values.
@@ -24305,27 +28687,27 @@ type GetClientAddonSamlpInput interface {
 }
 
 type GetClientAddonSamlpArgs struct {
-	Audience                       pulumi.StringInput      `pulumi:"audience"`
-	AuthnContextClassRef           pulumi.StringInput      `pulumi:"authnContextClassRef"`
-	Binding                        pulumi.StringInput      `pulumi:"binding"`
-	CreateUpnClaim                 pulumi.BoolInput        `pulumi:"createUpnClaim"`
-	Destination                    pulumi.StringInput      `pulumi:"destination"`
-	DigestAlgorithm                pulumi.StringInput      `pulumi:"digestAlgorithm"`
-	IncludeAttributeNameFormat     pulumi.BoolInput        `pulumi:"includeAttributeNameFormat"`
-	Issuer                         pulumi.StringInput      `pulumi:"issuer"`
-	LifetimeInSeconds              pulumi.IntInput         `pulumi:"lifetimeInSeconds"`
-	Logout                         pulumi.MapInput         `pulumi:"logout"`
-	MapIdentities                  pulumi.BoolInput        `pulumi:"mapIdentities"`
-	MapUnknownClaimsAsIs           pulumi.BoolInput        `pulumi:"mapUnknownClaimsAsIs"`
-	Mappings                       pulumi.MapInput         `pulumi:"mappings"`
-	NameIdentifierFormat           pulumi.StringInput      `pulumi:"nameIdentifierFormat"`
-	NameIdentifierProbes           pulumi.StringArrayInput `pulumi:"nameIdentifierProbes"`
-	PassthroughClaimsWithNoMapping pulumi.BoolInput        `pulumi:"passthroughClaimsWithNoMapping"`
-	Recipient                      pulumi.StringInput      `pulumi:"recipient"`
-	SignResponse                   pulumi.BoolInput        `pulumi:"signResponse"`
-	SignatureAlgorithm             pulumi.StringInput      `pulumi:"signatureAlgorithm"`
-	SigningCert                    pulumi.StringInput      `pulumi:"signingCert"`
-	TypedAttributes                pulumi.BoolInput        `pulumi:"typedAttributes"`
+	Audience                       pulumi.StringInput                  `pulumi:"audience"`
+	AuthnContextClassRef           pulumi.StringInput                  `pulumi:"authnContextClassRef"`
+	Binding                        pulumi.StringInput                  `pulumi:"binding"`
+	CreateUpnClaim                 pulumi.BoolInput                    `pulumi:"createUpnClaim"`
+	Destination                    pulumi.StringInput                  `pulumi:"destination"`
+	DigestAlgorithm                pulumi.StringInput                  `pulumi:"digestAlgorithm"`
+	IncludeAttributeNameFormat     pulumi.BoolInput                    `pulumi:"includeAttributeNameFormat"`
+	Issuer                         pulumi.StringInput                  `pulumi:"issuer"`
+	LifetimeInSeconds              pulumi.IntInput                     `pulumi:"lifetimeInSeconds"`
+	Logouts                        GetClientAddonSamlpLogoutArrayInput `pulumi:"logouts"`
+	MapIdentities                  pulumi.BoolInput                    `pulumi:"mapIdentities"`
+	MapUnknownClaimsAsIs           pulumi.BoolInput                    `pulumi:"mapUnknownClaimsAsIs"`
+	Mappings                       pulumi.MapInput                     `pulumi:"mappings"`
+	NameIdentifierFormat           pulumi.StringInput                  `pulumi:"nameIdentifierFormat"`
+	NameIdentifierProbes           pulumi.StringArrayInput             `pulumi:"nameIdentifierProbes"`
+	PassthroughClaimsWithNoMapping pulumi.BoolInput                    `pulumi:"passthroughClaimsWithNoMapping"`
+	Recipient                      pulumi.StringInput                  `pulumi:"recipient"`
+	SignResponse                   pulumi.BoolInput                    `pulumi:"signResponse"`
+	SignatureAlgorithm             pulumi.StringInput                  `pulumi:"signatureAlgorithm"`
+	SigningCert                    pulumi.StringInput                  `pulumi:"signingCert"`
+	TypedAttributes                pulumi.BoolInput                    `pulumi:"typedAttributes"`
 }
 
 func (GetClientAddonSamlpArgs) ElementType() reflect.Type {
@@ -24433,8 +28815,8 @@ func (o GetClientAddonSamlpOutput) LifetimeInSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) int { return v.LifetimeInSeconds }).(pulumi.IntOutput)
 }
 
-func (o GetClientAddonSamlpOutput) Logout() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddonSamlp) map[string]interface{} { return v.Logout }).(pulumi.MapOutput)
+func (o GetClientAddonSamlpOutput) Logouts() GetClientAddonSamlpLogoutArrayOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) []GetClientAddonSamlpLogout { return v.Logouts }).(GetClientAddonSamlpLogoutArrayOutput)
 }
 
 func (o GetClientAddonSamlpOutput) MapIdentities() pulumi.BoolOutput {
@@ -24505,6 +28887,1358 @@ func (o GetClientAddonSamlpArrayOutput) Index(i pulumi.IntInput) GetClientAddonS
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonSamlp {
 		return vs[0].([]GetClientAddonSamlp)[vs[1].(int)]
 	}).(GetClientAddonSamlpOutput)
+}
+
+type GetClientAddonSamlpLogout struct {
+	Callback   string `pulumi:"callback"`
+	SloEnabled bool   `pulumi:"sloEnabled"`
+}
+
+// GetClientAddonSamlpLogoutInput is an input type that accepts GetClientAddonSamlpLogoutArgs and GetClientAddonSamlpLogoutOutput values.
+// You can construct a concrete instance of `GetClientAddonSamlpLogoutInput` via:
+//
+//	GetClientAddonSamlpLogoutArgs{...}
+type GetClientAddonSamlpLogoutInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSamlpLogoutOutput() GetClientAddonSamlpLogoutOutput
+	ToGetClientAddonSamlpLogoutOutputWithContext(context.Context) GetClientAddonSamlpLogoutOutput
+}
+
+type GetClientAddonSamlpLogoutArgs struct {
+	Callback   pulumi.StringInput `pulumi:"callback"`
+	SloEnabled pulumi.BoolInput   `pulumi:"sloEnabled"`
+}
+
+func (GetClientAddonSamlpLogoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSamlpLogout)(nil)).Elem()
+}
+
+func (i GetClientAddonSamlpLogoutArgs) ToGetClientAddonSamlpLogoutOutput() GetClientAddonSamlpLogoutOutput {
+	return i.ToGetClientAddonSamlpLogoutOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSamlpLogoutArgs) ToGetClientAddonSamlpLogoutOutputWithContext(ctx context.Context) GetClientAddonSamlpLogoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSamlpLogoutOutput)
+}
+
+func (i GetClientAddonSamlpLogoutArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSamlpLogout] {
+	return pulumix.Output[GetClientAddonSamlpLogout]{
+		OutputState: i.ToGetClientAddonSamlpLogoutOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonSamlpLogoutArrayInput is an input type that accepts GetClientAddonSamlpLogoutArray and GetClientAddonSamlpLogoutArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonSamlpLogoutArrayInput` via:
+//
+//	GetClientAddonSamlpLogoutArray{ GetClientAddonSamlpLogoutArgs{...} }
+type GetClientAddonSamlpLogoutArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSamlpLogoutArrayOutput() GetClientAddonSamlpLogoutArrayOutput
+	ToGetClientAddonSamlpLogoutArrayOutputWithContext(context.Context) GetClientAddonSamlpLogoutArrayOutput
+}
+
+type GetClientAddonSamlpLogoutArray []GetClientAddonSamlpLogoutInput
+
+func (GetClientAddonSamlpLogoutArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSamlpLogout)(nil)).Elem()
+}
+
+func (i GetClientAddonSamlpLogoutArray) ToGetClientAddonSamlpLogoutArrayOutput() GetClientAddonSamlpLogoutArrayOutput {
+	return i.ToGetClientAddonSamlpLogoutArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSamlpLogoutArray) ToGetClientAddonSamlpLogoutArrayOutputWithContext(ctx context.Context) GetClientAddonSamlpLogoutArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSamlpLogoutArrayOutput)
+}
+
+func (i GetClientAddonSamlpLogoutArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSamlpLogout] {
+	return pulumix.Output[[]GetClientAddonSamlpLogout]{
+		OutputState: i.ToGetClientAddonSamlpLogoutArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonSamlpLogoutOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSamlpLogoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSamlpLogout)(nil)).Elem()
+}
+
+func (o GetClientAddonSamlpLogoutOutput) ToGetClientAddonSamlpLogoutOutput() GetClientAddonSamlpLogoutOutput {
+	return o
+}
+
+func (o GetClientAddonSamlpLogoutOutput) ToGetClientAddonSamlpLogoutOutputWithContext(ctx context.Context) GetClientAddonSamlpLogoutOutput {
+	return o
+}
+
+func (o GetClientAddonSamlpLogoutOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSamlpLogout] {
+	return pulumix.Output[GetClientAddonSamlpLogout]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonSamlpLogoutOutput) Callback() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSamlpLogout) string { return v.Callback }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSamlpLogoutOutput) SloEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientAddonSamlpLogout) bool { return v.SloEnabled }).(pulumi.BoolOutput)
+}
+
+type GetClientAddonSamlpLogoutArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSamlpLogoutArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSamlpLogout)(nil)).Elem()
+}
+
+func (o GetClientAddonSamlpLogoutArrayOutput) ToGetClientAddonSamlpLogoutArrayOutput() GetClientAddonSamlpLogoutArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSamlpLogoutArrayOutput) ToGetClientAddonSamlpLogoutArrayOutputWithContext(ctx context.Context) GetClientAddonSamlpLogoutArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSamlpLogoutArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSamlpLogout] {
+	return pulumix.Output[[]GetClientAddonSamlpLogout]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonSamlpLogoutArrayOutput) Index(i pulumi.IntInput) GetClientAddonSamlpLogoutOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonSamlpLogout {
+		return vs[0].([]GetClientAddonSamlpLogout)[vs[1].(int)]
+	}).(GetClientAddonSamlpLogoutOutput)
+}
+
+type GetClientAddonSapApi struct {
+	// The ID of the client. If not provided, `name` must be set.
+	ClientId             string `pulumi:"clientId"`
+	NameIdentifierFormat string `pulumi:"nameIdentifierFormat"`
+	Scope                string `pulumi:"scope"`
+	ServicePassword      string `pulumi:"servicePassword"`
+	TokenEndpointUrl     string `pulumi:"tokenEndpointUrl"`
+	UsernameAttribute    string `pulumi:"usernameAttribute"`
+}
+
+// GetClientAddonSapApiInput is an input type that accepts GetClientAddonSapApiArgs and GetClientAddonSapApiOutput values.
+// You can construct a concrete instance of `GetClientAddonSapApiInput` via:
+//
+//	GetClientAddonSapApiArgs{...}
+type GetClientAddonSapApiInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSapApiOutput() GetClientAddonSapApiOutput
+	ToGetClientAddonSapApiOutputWithContext(context.Context) GetClientAddonSapApiOutput
+}
+
+type GetClientAddonSapApiArgs struct {
+	// The ID of the client. If not provided, `name` must be set.
+	ClientId             pulumi.StringInput `pulumi:"clientId"`
+	NameIdentifierFormat pulumi.StringInput `pulumi:"nameIdentifierFormat"`
+	Scope                pulumi.StringInput `pulumi:"scope"`
+	ServicePassword      pulumi.StringInput `pulumi:"servicePassword"`
+	TokenEndpointUrl     pulumi.StringInput `pulumi:"tokenEndpointUrl"`
+	UsernameAttribute    pulumi.StringInput `pulumi:"usernameAttribute"`
+}
+
+func (GetClientAddonSapApiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSapApi)(nil)).Elem()
+}
+
+func (i GetClientAddonSapApiArgs) ToGetClientAddonSapApiOutput() GetClientAddonSapApiOutput {
+	return i.ToGetClientAddonSapApiOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSapApiArgs) ToGetClientAddonSapApiOutputWithContext(ctx context.Context) GetClientAddonSapApiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSapApiOutput)
+}
+
+func (i GetClientAddonSapApiArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSapApi] {
+	return pulumix.Output[GetClientAddonSapApi]{
+		OutputState: i.ToGetClientAddonSapApiOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonSapApiArrayInput is an input type that accepts GetClientAddonSapApiArray and GetClientAddonSapApiArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonSapApiArrayInput` via:
+//
+//	GetClientAddonSapApiArray{ GetClientAddonSapApiArgs{...} }
+type GetClientAddonSapApiArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSapApiArrayOutput() GetClientAddonSapApiArrayOutput
+	ToGetClientAddonSapApiArrayOutputWithContext(context.Context) GetClientAddonSapApiArrayOutput
+}
+
+type GetClientAddonSapApiArray []GetClientAddonSapApiInput
+
+func (GetClientAddonSapApiArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSapApi)(nil)).Elem()
+}
+
+func (i GetClientAddonSapApiArray) ToGetClientAddonSapApiArrayOutput() GetClientAddonSapApiArrayOutput {
+	return i.ToGetClientAddonSapApiArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSapApiArray) ToGetClientAddonSapApiArrayOutputWithContext(ctx context.Context) GetClientAddonSapApiArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSapApiArrayOutput)
+}
+
+func (i GetClientAddonSapApiArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSapApi] {
+	return pulumix.Output[[]GetClientAddonSapApi]{
+		OutputState: i.ToGetClientAddonSapApiArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonSapApiOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSapApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSapApi)(nil)).Elem()
+}
+
+func (o GetClientAddonSapApiOutput) ToGetClientAddonSapApiOutput() GetClientAddonSapApiOutput {
+	return o
+}
+
+func (o GetClientAddonSapApiOutput) ToGetClientAddonSapApiOutputWithContext(ctx context.Context) GetClientAddonSapApiOutput {
+	return o
+}
+
+func (o GetClientAddonSapApiOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSapApi] {
+	return pulumix.Output[GetClientAddonSapApi]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The ID of the client. If not provided, `name` must be set.
+func (o GetClientAddonSapApiOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSapApi) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSapApiOutput) NameIdentifierFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSapApi) string { return v.NameIdentifierFormat }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSapApiOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSapApi) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSapApiOutput) ServicePassword() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSapApi) string { return v.ServicePassword }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSapApiOutput) TokenEndpointUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSapApi) string { return v.TokenEndpointUrl }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSapApiOutput) UsernameAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSapApi) string { return v.UsernameAttribute }).(pulumi.StringOutput)
+}
+
+type GetClientAddonSapApiArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSapApiArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSapApi)(nil)).Elem()
+}
+
+func (o GetClientAddonSapApiArrayOutput) ToGetClientAddonSapApiArrayOutput() GetClientAddonSapApiArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSapApiArrayOutput) ToGetClientAddonSapApiArrayOutputWithContext(ctx context.Context) GetClientAddonSapApiArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSapApiArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSapApi] {
+	return pulumix.Output[[]GetClientAddonSapApi]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonSapApiArrayOutput) Index(i pulumi.IntInput) GetClientAddonSapApiOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonSapApi {
+		return vs[0].([]GetClientAddonSapApi)[vs[1].(int)]
+	}).(GetClientAddonSapApiOutput)
+}
+
+type GetClientAddonSentry struct {
+	BaseUrl string `pulumi:"baseUrl"`
+	OrgSlug string `pulumi:"orgSlug"`
+}
+
+// GetClientAddonSentryInput is an input type that accepts GetClientAddonSentryArgs and GetClientAddonSentryOutput values.
+// You can construct a concrete instance of `GetClientAddonSentryInput` via:
+//
+//	GetClientAddonSentryArgs{...}
+type GetClientAddonSentryInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSentryOutput() GetClientAddonSentryOutput
+	ToGetClientAddonSentryOutputWithContext(context.Context) GetClientAddonSentryOutput
+}
+
+type GetClientAddonSentryArgs struct {
+	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
+	OrgSlug pulumi.StringInput `pulumi:"orgSlug"`
+}
+
+func (GetClientAddonSentryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSentry)(nil)).Elem()
+}
+
+func (i GetClientAddonSentryArgs) ToGetClientAddonSentryOutput() GetClientAddonSentryOutput {
+	return i.ToGetClientAddonSentryOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSentryArgs) ToGetClientAddonSentryOutputWithContext(ctx context.Context) GetClientAddonSentryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSentryOutput)
+}
+
+func (i GetClientAddonSentryArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSentry] {
+	return pulumix.Output[GetClientAddonSentry]{
+		OutputState: i.ToGetClientAddonSentryOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonSentryArrayInput is an input type that accepts GetClientAddonSentryArray and GetClientAddonSentryArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonSentryArrayInput` via:
+//
+//	GetClientAddonSentryArray{ GetClientAddonSentryArgs{...} }
+type GetClientAddonSentryArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSentryArrayOutput() GetClientAddonSentryArrayOutput
+	ToGetClientAddonSentryArrayOutputWithContext(context.Context) GetClientAddonSentryArrayOutput
+}
+
+type GetClientAddonSentryArray []GetClientAddonSentryInput
+
+func (GetClientAddonSentryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSentry)(nil)).Elem()
+}
+
+func (i GetClientAddonSentryArray) ToGetClientAddonSentryArrayOutput() GetClientAddonSentryArrayOutput {
+	return i.ToGetClientAddonSentryArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSentryArray) ToGetClientAddonSentryArrayOutputWithContext(ctx context.Context) GetClientAddonSentryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSentryArrayOutput)
+}
+
+func (i GetClientAddonSentryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSentry] {
+	return pulumix.Output[[]GetClientAddonSentry]{
+		OutputState: i.ToGetClientAddonSentryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonSentryOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSentryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSentry)(nil)).Elem()
+}
+
+func (o GetClientAddonSentryOutput) ToGetClientAddonSentryOutput() GetClientAddonSentryOutput {
+	return o
+}
+
+func (o GetClientAddonSentryOutput) ToGetClientAddonSentryOutputWithContext(ctx context.Context) GetClientAddonSentryOutput {
+	return o
+}
+
+func (o GetClientAddonSentryOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSentry] {
+	return pulumix.Output[GetClientAddonSentry]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonSentryOutput) BaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSentry) string { return v.BaseUrl }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSentryOutput) OrgSlug() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSentry) string { return v.OrgSlug }).(pulumi.StringOutput)
+}
+
+type GetClientAddonSentryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSentryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSentry)(nil)).Elem()
+}
+
+func (o GetClientAddonSentryArrayOutput) ToGetClientAddonSentryArrayOutput() GetClientAddonSentryArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSentryArrayOutput) ToGetClientAddonSentryArrayOutputWithContext(ctx context.Context) GetClientAddonSentryArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSentryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSentry] {
+	return pulumix.Output[[]GetClientAddonSentry]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonSentryArrayOutput) Index(i pulumi.IntInput) GetClientAddonSentryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonSentry {
+		return vs[0].([]GetClientAddonSentry)[vs[1].(int)]
+	}).(GetClientAddonSentryOutput)
+}
+
+type GetClientAddonSharepoint struct {
+	ExternalUrls []string `pulumi:"externalUrls"`
+	Url          string   `pulumi:"url"`
+}
+
+// GetClientAddonSharepointInput is an input type that accepts GetClientAddonSharepointArgs and GetClientAddonSharepointOutput values.
+// You can construct a concrete instance of `GetClientAddonSharepointInput` via:
+//
+//	GetClientAddonSharepointArgs{...}
+type GetClientAddonSharepointInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSharepointOutput() GetClientAddonSharepointOutput
+	ToGetClientAddonSharepointOutputWithContext(context.Context) GetClientAddonSharepointOutput
+}
+
+type GetClientAddonSharepointArgs struct {
+	ExternalUrls pulumi.StringArrayInput `pulumi:"externalUrls"`
+	Url          pulumi.StringInput      `pulumi:"url"`
+}
+
+func (GetClientAddonSharepointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSharepoint)(nil)).Elem()
+}
+
+func (i GetClientAddonSharepointArgs) ToGetClientAddonSharepointOutput() GetClientAddonSharepointOutput {
+	return i.ToGetClientAddonSharepointOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSharepointArgs) ToGetClientAddonSharepointOutputWithContext(ctx context.Context) GetClientAddonSharepointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSharepointOutput)
+}
+
+func (i GetClientAddonSharepointArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSharepoint] {
+	return pulumix.Output[GetClientAddonSharepoint]{
+		OutputState: i.ToGetClientAddonSharepointOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonSharepointArrayInput is an input type that accepts GetClientAddonSharepointArray and GetClientAddonSharepointArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonSharepointArrayInput` via:
+//
+//	GetClientAddonSharepointArray{ GetClientAddonSharepointArgs{...} }
+type GetClientAddonSharepointArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSharepointArrayOutput() GetClientAddonSharepointArrayOutput
+	ToGetClientAddonSharepointArrayOutputWithContext(context.Context) GetClientAddonSharepointArrayOutput
+}
+
+type GetClientAddonSharepointArray []GetClientAddonSharepointInput
+
+func (GetClientAddonSharepointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSharepoint)(nil)).Elem()
+}
+
+func (i GetClientAddonSharepointArray) ToGetClientAddonSharepointArrayOutput() GetClientAddonSharepointArrayOutput {
+	return i.ToGetClientAddonSharepointArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSharepointArray) ToGetClientAddonSharepointArrayOutputWithContext(ctx context.Context) GetClientAddonSharepointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSharepointArrayOutput)
+}
+
+func (i GetClientAddonSharepointArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSharepoint] {
+	return pulumix.Output[[]GetClientAddonSharepoint]{
+		OutputState: i.ToGetClientAddonSharepointArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonSharepointOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSharepointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSharepoint)(nil)).Elem()
+}
+
+func (o GetClientAddonSharepointOutput) ToGetClientAddonSharepointOutput() GetClientAddonSharepointOutput {
+	return o
+}
+
+func (o GetClientAddonSharepointOutput) ToGetClientAddonSharepointOutputWithContext(ctx context.Context) GetClientAddonSharepointOutput {
+	return o
+}
+
+func (o GetClientAddonSharepointOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSharepoint] {
+	return pulumix.Output[GetClientAddonSharepoint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonSharepointOutput) ExternalUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientAddonSharepoint) []string { return v.ExternalUrls }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClientAddonSharepointOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSharepoint) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetClientAddonSharepointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSharepointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSharepoint)(nil)).Elem()
+}
+
+func (o GetClientAddonSharepointArrayOutput) ToGetClientAddonSharepointArrayOutput() GetClientAddonSharepointArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSharepointArrayOutput) ToGetClientAddonSharepointArrayOutputWithContext(ctx context.Context) GetClientAddonSharepointArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSharepointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSharepoint] {
+	return pulumix.Output[[]GetClientAddonSharepoint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonSharepointArrayOutput) Index(i pulumi.IntInput) GetClientAddonSharepointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonSharepoint {
+		return vs[0].([]GetClientAddonSharepoint)[vs[1].(int)]
+	}).(GetClientAddonSharepointOutput)
+}
+
+type GetClientAddonSlack struct {
+	Team string `pulumi:"team"`
+}
+
+// GetClientAddonSlackInput is an input type that accepts GetClientAddonSlackArgs and GetClientAddonSlackOutput values.
+// You can construct a concrete instance of `GetClientAddonSlackInput` via:
+//
+//	GetClientAddonSlackArgs{...}
+type GetClientAddonSlackInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSlackOutput() GetClientAddonSlackOutput
+	ToGetClientAddonSlackOutputWithContext(context.Context) GetClientAddonSlackOutput
+}
+
+type GetClientAddonSlackArgs struct {
+	Team pulumi.StringInput `pulumi:"team"`
+}
+
+func (GetClientAddonSlackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSlack)(nil)).Elem()
+}
+
+func (i GetClientAddonSlackArgs) ToGetClientAddonSlackOutput() GetClientAddonSlackOutput {
+	return i.ToGetClientAddonSlackOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSlackArgs) ToGetClientAddonSlackOutputWithContext(ctx context.Context) GetClientAddonSlackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSlackOutput)
+}
+
+func (i GetClientAddonSlackArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSlack] {
+	return pulumix.Output[GetClientAddonSlack]{
+		OutputState: i.ToGetClientAddonSlackOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonSlackArrayInput is an input type that accepts GetClientAddonSlackArray and GetClientAddonSlackArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonSlackArrayInput` via:
+//
+//	GetClientAddonSlackArray{ GetClientAddonSlackArgs{...} }
+type GetClientAddonSlackArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSlackArrayOutput() GetClientAddonSlackArrayOutput
+	ToGetClientAddonSlackArrayOutputWithContext(context.Context) GetClientAddonSlackArrayOutput
+}
+
+type GetClientAddonSlackArray []GetClientAddonSlackInput
+
+func (GetClientAddonSlackArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSlack)(nil)).Elem()
+}
+
+func (i GetClientAddonSlackArray) ToGetClientAddonSlackArrayOutput() GetClientAddonSlackArrayOutput {
+	return i.ToGetClientAddonSlackArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSlackArray) ToGetClientAddonSlackArrayOutputWithContext(ctx context.Context) GetClientAddonSlackArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSlackArrayOutput)
+}
+
+func (i GetClientAddonSlackArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSlack] {
+	return pulumix.Output[[]GetClientAddonSlack]{
+		OutputState: i.ToGetClientAddonSlackArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonSlackOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSlackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSlack)(nil)).Elem()
+}
+
+func (o GetClientAddonSlackOutput) ToGetClientAddonSlackOutput() GetClientAddonSlackOutput {
+	return o
+}
+
+func (o GetClientAddonSlackOutput) ToGetClientAddonSlackOutputWithContext(ctx context.Context) GetClientAddonSlackOutput {
+	return o
+}
+
+func (o GetClientAddonSlackOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSlack] {
+	return pulumix.Output[GetClientAddonSlack]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonSlackOutput) Team() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSlack) string { return v.Team }).(pulumi.StringOutput)
+}
+
+type GetClientAddonSlackArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSlackArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSlack)(nil)).Elem()
+}
+
+func (o GetClientAddonSlackArrayOutput) ToGetClientAddonSlackArrayOutput() GetClientAddonSlackArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSlackArrayOutput) ToGetClientAddonSlackArrayOutputWithContext(ctx context.Context) GetClientAddonSlackArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSlackArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSlack] {
+	return pulumix.Output[[]GetClientAddonSlack]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonSlackArrayOutput) Index(i pulumi.IntInput) GetClientAddonSlackOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonSlack {
+		return vs[0].([]GetClientAddonSlack)[vs[1].(int)]
+	}).(GetClientAddonSlackOutput)
+}
+
+type GetClientAddonSpringcm struct {
+	AcsUrl string `pulumi:"acsUrl"`
+}
+
+// GetClientAddonSpringcmInput is an input type that accepts GetClientAddonSpringcmArgs and GetClientAddonSpringcmOutput values.
+// You can construct a concrete instance of `GetClientAddonSpringcmInput` via:
+//
+//	GetClientAddonSpringcmArgs{...}
+type GetClientAddonSpringcmInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSpringcmOutput() GetClientAddonSpringcmOutput
+	ToGetClientAddonSpringcmOutputWithContext(context.Context) GetClientAddonSpringcmOutput
+}
+
+type GetClientAddonSpringcmArgs struct {
+	AcsUrl pulumi.StringInput `pulumi:"acsUrl"`
+}
+
+func (GetClientAddonSpringcmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSpringcm)(nil)).Elem()
+}
+
+func (i GetClientAddonSpringcmArgs) ToGetClientAddonSpringcmOutput() GetClientAddonSpringcmOutput {
+	return i.ToGetClientAddonSpringcmOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSpringcmArgs) ToGetClientAddonSpringcmOutputWithContext(ctx context.Context) GetClientAddonSpringcmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSpringcmOutput)
+}
+
+func (i GetClientAddonSpringcmArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSpringcm] {
+	return pulumix.Output[GetClientAddonSpringcm]{
+		OutputState: i.ToGetClientAddonSpringcmOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonSpringcmArrayInput is an input type that accepts GetClientAddonSpringcmArray and GetClientAddonSpringcmArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonSpringcmArrayInput` via:
+//
+//	GetClientAddonSpringcmArray{ GetClientAddonSpringcmArgs{...} }
+type GetClientAddonSpringcmArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSpringcmArrayOutput() GetClientAddonSpringcmArrayOutput
+	ToGetClientAddonSpringcmArrayOutputWithContext(context.Context) GetClientAddonSpringcmArrayOutput
+}
+
+type GetClientAddonSpringcmArray []GetClientAddonSpringcmInput
+
+func (GetClientAddonSpringcmArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSpringcm)(nil)).Elem()
+}
+
+func (i GetClientAddonSpringcmArray) ToGetClientAddonSpringcmArrayOutput() GetClientAddonSpringcmArrayOutput {
+	return i.ToGetClientAddonSpringcmArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSpringcmArray) ToGetClientAddonSpringcmArrayOutputWithContext(ctx context.Context) GetClientAddonSpringcmArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSpringcmArrayOutput)
+}
+
+func (i GetClientAddonSpringcmArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSpringcm] {
+	return pulumix.Output[[]GetClientAddonSpringcm]{
+		OutputState: i.ToGetClientAddonSpringcmArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonSpringcmOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSpringcmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSpringcm)(nil)).Elem()
+}
+
+func (o GetClientAddonSpringcmOutput) ToGetClientAddonSpringcmOutput() GetClientAddonSpringcmOutput {
+	return o
+}
+
+func (o GetClientAddonSpringcmOutput) ToGetClientAddonSpringcmOutputWithContext(ctx context.Context) GetClientAddonSpringcmOutput {
+	return o
+}
+
+func (o GetClientAddonSpringcmOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSpringcm] {
+	return pulumix.Output[GetClientAddonSpringcm]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonSpringcmOutput) AcsUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSpringcm) string { return v.AcsUrl }).(pulumi.StringOutput)
+}
+
+type GetClientAddonSpringcmArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSpringcmArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSpringcm)(nil)).Elem()
+}
+
+func (o GetClientAddonSpringcmArrayOutput) ToGetClientAddonSpringcmArrayOutput() GetClientAddonSpringcmArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSpringcmArrayOutput) ToGetClientAddonSpringcmArrayOutputWithContext(ctx context.Context) GetClientAddonSpringcmArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSpringcmArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSpringcm] {
+	return pulumix.Output[[]GetClientAddonSpringcm]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonSpringcmArrayOutput) Index(i pulumi.IntInput) GetClientAddonSpringcmOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonSpringcm {
+		return vs[0].([]GetClientAddonSpringcm)[vs[1].(int)]
+	}).(GetClientAddonSpringcmOutput)
+}
+
+type GetClientAddonSsoIntegration struct {
+	// The name of the client. If not provided, `clientId` must be set.
+	Name    string `pulumi:"name"`
+	Version string `pulumi:"version"`
+}
+
+// GetClientAddonSsoIntegrationInput is an input type that accepts GetClientAddonSsoIntegrationArgs and GetClientAddonSsoIntegrationOutput values.
+// You can construct a concrete instance of `GetClientAddonSsoIntegrationInput` via:
+//
+//	GetClientAddonSsoIntegrationArgs{...}
+type GetClientAddonSsoIntegrationInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSsoIntegrationOutput() GetClientAddonSsoIntegrationOutput
+	ToGetClientAddonSsoIntegrationOutputWithContext(context.Context) GetClientAddonSsoIntegrationOutput
+}
+
+type GetClientAddonSsoIntegrationArgs struct {
+	// The name of the client. If not provided, `clientId` must be set.
+	Name    pulumi.StringInput `pulumi:"name"`
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetClientAddonSsoIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSsoIntegration)(nil)).Elem()
+}
+
+func (i GetClientAddonSsoIntegrationArgs) ToGetClientAddonSsoIntegrationOutput() GetClientAddonSsoIntegrationOutput {
+	return i.ToGetClientAddonSsoIntegrationOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSsoIntegrationArgs) ToGetClientAddonSsoIntegrationOutputWithContext(ctx context.Context) GetClientAddonSsoIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSsoIntegrationOutput)
+}
+
+func (i GetClientAddonSsoIntegrationArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSsoIntegration] {
+	return pulumix.Output[GetClientAddonSsoIntegration]{
+		OutputState: i.ToGetClientAddonSsoIntegrationOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonSsoIntegrationArrayInput is an input type that accepts GetClientAddonSsoIntegrationArray and GetClientAddonSsoIntegrationArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonSsoIntegrationArrayInput` via:
+//
+//	GetClientAddonSsoIntegrationArray{ GetClientAddonSsoIntegrationArgs{...} }
+type GetClientAddonSsoIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSsoIntegrationArrayOutput() GetClientAddonSsoIntegrationArrayOutput
+	ToGetClientAddonSsoIntegrationArrayOutputWithContext(context.Context) GetClientAddonSsoIntegrationArrayOutput
+}
+
+type GetClientAddonSsoIntegrationArray []GetClientAddonSsoIntegrationInput
+
+func (GetClientAddonSsoIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSsoIntegration)(nil)).Elem()
+}
+
+func (i GetClientAddonSsoIntegrationArray) ToGetClientAddonSsoIntegrationArrayOutput() GetClientAddonSsoIntegrationArrayOutput {
+	return i.ToGetClientAddonSsoIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSsoIntegrationArray) ToGetClientAddonSsoIntegrationArrayOutputWithContext(ctx context.Context) GetClientAddonSsoIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSsoIntegrationArrayOutput)
+}
+
+func (i GetClientAddonSsoIntegrationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSsoIntegration] {
+	return pulumix.Output[[]GetClientAddonSsoIntegration]{
+		OutputState: i.ToGetClientAddonSsoIntegrationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonSsoIntegrationOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSsoIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSsoIntegration)(nil)).Elem()
+}
+
+func (o GetClientAddonSsoIntegrationOutput) ToGetClientAddonSsoIntegrationOutput() GetClientAddonSsoIntegrationOutput {
+	return o
+}
+
+func (o GetClientAddonSsoIntegrationOutput) ToGetClientAddonSsoIntegrationOutputWithContext(ctx context.Context) GetClientAddonSsoIntegrationOutput {
+	return o
+}
+
+func (o GetClientAddonSsoIntegrationOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonSsoIntegration] {
+	return pulumix.Output[GetClientAddonSsoIntegration]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the client. If not provided, `clientId` must be set.
+func (o GetClientAddonSsoIntegrationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSsoIntegration) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSsoIntegrationOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSsoIntegration) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetClientAddonSsoIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSsoIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSsoIntegration)(nil)).Elem()
+}
+
+func (o GetClientAddonSsoIntegrationArrayOutput) ToGetClientAddonSsoIntegrationArrayOutput() GetClientAddonSsoIntegrationArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSsoIntegrationArrayOutput) ToGetClientAddonSsoIntegrationArrayOutputWithContext(ctx context.Context) GetClientAddonSsoIntegrationArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSsoIntegrationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonSsoIntegration] {
+	return pulumix.Output[[]GetClientAddonSsoIntegration]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonSsoIntegrationArrayOutput) Index(i pulumi.IntInput) GetClientAddonSsoIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonSsoIntegration {
+		return vs[0].([]GetClientAddonSsoIntegration)[vs[1].(int)]
+	}).(GetClientAddonSsoIntegrationOutput)
+}
+
+type GetClientAddonWam struct {
+	MasterKey string `pulumi:"masterKey"`
+}
+
+// GetClientAddonWamInput is an input type that accepts GetClientAddonWamArgs and GetClientAddonWamOutput values.
+// You can construct a concrete instance of `GetClientAddonWamInput` via:
+//
+//	GetClientAddonWamArgs{...}
+type GetClientAddonWamInput interface {
+	pulumi.Input
+
+	ToGetClientAddonWamOutput() GetClientAddonWamOutput
+	ToGetClientAddonWamOutputWithContext(context.Context) GetClientAddonWamOutput
+}
+
+type GetClientAddonWamArgs struct {
+	MasterKey pulumi.StringInput `pulumi:"masterKey"`
+}
+
+func (GetClientAddonWamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonWam)(nil)).Elem()
+}
+
+func (i GetClientAddonWamArgs) ToGetClientAddonWamOutput() GetClientAddonWamOutput {
+	return i.ToGetClientAddonWamOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonWamArgs) ToGetClientAddonWamOutputWithContext(ctx context.Context) GetClientAddonWamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonWamOutput)
+}
+
+func (i GetClientAddonWamArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonWam] {
+	return pulumix.Output[GetClientAddonWam]{
+		OutputState: i.ToGetClientAddonWamOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonWamArrayInput is an input type that accepts GetClientAddonWamArray and GetClientAddonWamArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonWamArrayInput` via:
+//
+//	GetClientAddonWamArray{ GetClientAddonWamArgs{...} }
+type GetClientAddonWamArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonWamArrayOutput() GetClientAddonWamArrayOutput
+	ToGetClientAddonWamArrayOutputWithContext(context.Context) GetClientAddonWamArrayOutput
+}
+
+type GetClientAddonWamArray []GetClientAddonWamInput
+
+func (GetClientAddonWamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonWam)(nil)).Elem()
+}
+
+func (i GetClientAddonWamArray) ToGetClientAddonWamArrayOutput() GetClientAddonWamArrayOutput {
+	return i.ToGetClientAddonWamArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonWamArray) ToGetClientAddonWamArrayOutputWithContext(ctx context.Context) GetClientAddonWamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonWamArrayOutput)
+}
+
+func (i GetClientAddonWamArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonWam] {
+	return pulumix.Output[[]GetClientAddonWam]{
+		OutputState: i.ToGetClientAddonWamArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonWamOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonWamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonWam)(nil)).Elem()
+}
+
+func (o GetClientAddonWamOutput) ToGetClientAddonWamOutput() GetClientAddonWamOutput {
+	return o
+}
+
+func (o GetClientAddonWamOutput) ToGetClientAddonWamOutputWithContext(ctx context.Context) GetClientAddonWamOutput {
+	return o
+}
+
+func (o GetClientAddonWamOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonWam] {
+	return pulumix.Output[GetClientAddonWam]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonWamOutput) MasterKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonWam) string { return v.MasterKey }).(pulumi.StringOutput)
+}
+
+type GetClientAddonWamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonWamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonWam)(nil)).Elem()
+}
+
+func (o GetClientAddonWamArrayOutput) ToGetClientAddonWamArrayOutput() GetClientAddonWamArrayOutput {
+	return o
+}
+
+func (o GetClientAddonWamArrayOutput) ToGetClientAddonWamArrayOutputWithContext(ctx context.Context) GetClientAddonWamArrayOutput {
+	return o
+}
+
+func (o GetClientAddonWamArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonWam] {
+	return pulumix.Output[[]GetClientAddonWam]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonWamArrayOutput) Index(i pulumi.IntInput) GetClientAddonWamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonWam {
+		return vs[0].([]GetClientAddonWam)[vs[1].(int)]
+	}).(GetClientAddonWamOutput)
+}
+
+type GetClientAddonWsfed struct {
+}
+
+// GetClientAddonWsfedInput is an input type that accepts GetClientAddonWsfedArgs and GetClientAddonWsfedOutput values.
+// You can construct a concrete instance of `GetClientAddonWsfedInput` via:
+//
+//	GetClientAddonWsfedArgs{...}
+type GetClientAddonWsfedInput interface {
+	pulumi.Input
+
+	ToGetClientAddonWsfedOutput() GetClientAddonWsfedOutput
+	ToGetClientAddonWsfedOutputWithContext(context.Context) GetClientAddonWsfedOutput
+}
+
+type GetClientAddonWsfedArgs struct {
+}
+
+func (GetClientAddonWsfedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonWsfed)(nil)).Elem()
+}
+
+func (i GetClientAddonWsfedArgs) ToGetClientAddonWsfedOutput() GetClientAddonWsfedOutput {
+	return i.ToGetClientAddonWsfedOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonWsfedArgs) ToGetClientAddonWsfedOutputWithContext(ctx context.Context) GetClientAddonWsfedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonWsfedOutput)
+}
+
+func (i GetClientAddonWsfedArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonWsfed] {
+	return pulumix.Output[GetClientAddonWsfed]{
+		OutputState: i.ToGetClientAddonWsfedOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonWsfedArrayInput is an input type that accepts GetClientAddonWsfedArray and GetClientAddonWsfedArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonWsfedArrayInput` via:
+//
+//	GetClientAddonWsfedArray{ GetClientAddonWsfedArgs{...} }
+type GetClientAddonWsfedArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonWsfedArrayOutput() GetClientAddonWsfedArrayOutput
+	ToGetClientAddonWsfedArrayOutputWithContext(context.Context) GetClientAddonWsfedArrayOutput
+}
+
+type GetClientAddonWsfedArray []GetClientAddonWsfedInput
+
+func (GetClientAddonWsfedArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonWsfed)(nil)).Elem()
+}
+
+func (i GetClientAddonWsfedArray) ToGetClientAddonWsfedArrayOutput() GetClientAddonWsfedArrayOutput {
+	return i.ToGetClientAddonWsfedArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonWsfedArray) ToGetClientAddonWsfedArrayOutputWithContext(ctx context.Context) GetClientAddonWsfedArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonWsfedArrayOutput)
+}
+
+func (i GetClientAddonWsfedArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonWsfed] {
+	return pulumix.Output[[]GetClientAddonWsfed]{
+		OutputState: i.ToGetClientAddonWsfedArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonWsfedOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonWsfedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonWsfed)(nil)).Elem()
+}
+
+func (o GetClientAddonWsfedOutput) ToGetClientAddonWsfedOutput() GetClientAddonWsfedOutput {
+	return o
+}
+
+func (o GetClientAddonWsfedOutput) ToGetClientAddonWsfedOutputWithContext(ctx context.Context) GetClientAddonWsfedOutput {
+	return o
+}
+
+func (o GetClientAddonWsfedOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonWsfed] {
+	return pulumix.Output[GetClientAddonWsfed]{
+		OutputState: o.OutputState,
+	}
+}
+
+type GetClientAddonWsfedArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonWsfedArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonWsfed)(nil)).Elem()
+}
+
+func (o GetClientAddonWsfedArrayOutput) ToGetClientAddonWsfedArrayOutput() GetClientAddonWsfedArrayOutput {
+	return o
+}
+
+func (o GetClientAddonWsfedArrayOutput) ToGetClientAddonWsfedArrayOutputWithContext(ctx context.Context) GetClientAddonWsfedArrayOutput {
+	return o
+}
+
+func (o GetClientAddonWsfedArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonWsfed] {
+	return pulumix.Output[[]GetClientAddonWsfed]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonWsfedArrayOutput) Index(i pulumi.IntInput) GetClientAddonWsfedOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonWsfed {
+		return vs[0].([]GetClientAddonWsfed)[vs[1].(int)]
+	}).(GetClientAddonWsfedOutput)
+}
+
+type GetClientAddonZendesk struct {
+	AccountName string `pulumi:"accountName"`
+}
+
+// GetClientAddonZendeskInput is an input type that accepts GetClientAddonZendeskArgs and GetClientAddonZendeskOutput values.
+// You can construct a concrete instance of `GetClientAddonZendeskInput` via:
+//
+//	GetClientAddonZendeskArgs{...}
+type GetClientAddonZendeskInput interface {
+	pulumi.Input
+
+	ToGetClientAddonZendeskOutput() GetClientAddonZendeskOutput
+	ToGetClientAddonZendeskOutputWithContext(context.Context) GetClientAddonZendeskOutput
+}
+
+type GetClientAddonZendeskArgs struct {
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+}
+
+func (GetClientAddonZendeskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonZendesk)(nil)).Elem()
+}
+
+func (i GetClientAddonZendeskArgs) ToGetClientAddonZendeskOutput() GetClientAddonZendeskOutput {
+	return i.ToGetClientAddonZendeskOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonZendeskArgs) ToGetClientAddonZendeskOutputWithContext(ctx context.Context) GetClientAddonZendeskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonZendeskOutput)
+}
+
+func (i GetClientAddonZendeskArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonZendesk] {
+	return pulumix.Output[GetClientAddonZendesk]{
+		OutputState: i.ToGetClientAddonZendeskOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonZendeskArrayInput is an input type that accepts GetClientAddonZendeskArray and GetClientAddonZendeskArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonZendeskArrayInput` via:
+//
+//	GetClientAddonZendeskArray{ GetClientAddonZendeskArgs{...} }
+type GetClientAddonZendeskArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonZendeskArrayOutput() GetClientAddonZendeskArrayOutput
+	ToGetClientAddonZendeskArrayOutputWithContext(context.Context) GetClientAddonZendeskArrayOutput
+}
+
+type GetClientAddonZendeskArray []GetClientAddonZendeskInput
+
+func (GetClientAddonZendeskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonZendesk)(nil)).Elem()
+}
+
+func (i GetClientAddonZendeskArray) ToGetClientAddonZendeskArrayOutput() GetClientAddonZendeskArrayOutput {
+	return i.ToGetClientAddonZendeskArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonZendeskArray) ToGetClientAddonZendeskArrayOutputWithContext(ctx context.Context) GetClientAddonZendeskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonZendeskArrayOutput)
+}
+
+func (i GetClientAddonZendeskArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonZendesk] {
+	return pulumix.Output[[]GetClientAddonZendesk]{
+		OutputState: i.ToGetClientAddonZendeskArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonZendeskOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonZendeskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonZendesk)(nil)).Elem()
+}
+
+func (o GetClientAddonZendeskOutput) ToGetClientAddonZendeskOutput() GetClientAddonZendeskOutput {
+	return o
+}
+
+func (o GetClientAddonZendeskOutput) ToGetClientAddonZendeskOutputWithContext(ctx context.Context) GetClientAddonZendeskOutput {
+	return o
+}
+
+func (o GetClientAddonZendeskOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonZendesk] {
+	return pulumix.Output[GetClientAddonZendesk]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonZendeskOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonZendesk) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+type GetClientAddonZendeskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonZendeskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonZendesk)(nil)).Elem()
+}
+
+func (o GetClientAddonZendeskArrayOutput) ToGetClientAddonZendeskArrayOutput() GetClientAddonZendeskArrayOutput {
+	return o
+}
+
+func (o GetClientAddonZendeskArrayOutput) ToGetClientAddonZendeskArrayOutputWithContext(ctx context.Context) GetClientAddonZendeskArrayOutput {
+	return o
+}
+
+func (o GetClientAddonZendeskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonZendesk] {
+	return pulumix.Output[[]GetClientAddonZendesk]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonZendeskArrayOutput) Index(i pulumi.IntInput) GetClientAddonZendeskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonZendesk {
+		return vs[0].([]GetClientAddonZendesk)[vs[1].(int)]
+	}).(GetClientAddonZendeskOutput)
+}
+
+type GetClientAddonZoom struct {
+	Account string `pulumi:"account"`
+}
+
+// GetClientAddonZoomInput is an input type that accepts GetClientAddonZoomArgs and GetClientAddonZoomOutput values.
+// You can construct a concrete instance of `GetClientAddonZoomInput` via:
+//
+//	GetClientAddonZoomArgs{...}
+type GetClientAddonZoomInput interface {
+	pulumi.Input
+
+	ToGetClientAddonZoomOutput() GetClientAddonZoomOutput
+	ToGetClientAddonZoomOutputWithContext(context.Context) GetClientAddonZoomOutput
+}
+
+type GetClientAddonZoomArgs struct {
+	Account pulumi.StringInput `pulumi:"account"`
+}
+
+func (GetClientAddonZoomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonZoom)(nil)).Elem()
+}
+
+func (i GetClientAddonZoomArgs) ToGetClientAddonZoomOutput() GetClientAddonZoomOutput {
+	return i.ToGetClientAddonZoomOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonZoomArgs) ToGetClientAddonZoomOutputWithContext(ctx context.Context) GetClientAddonZoomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonZoomOutput)
+}
+
+func (i GetClientAddonZoomArgs) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonZoom] {
+	return pulumix.Output[GetClientAddonZoom]{
+		OutputState: i.ToGetClientAddonZoomOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClientAddonZoomArrayInput is an input type that accepts GetClientAddonZoomArray and GetClientAddonZoomArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonZoomArrayInput` via:
+//
+//	GetClientAddonZoomArray{ GetClientAddonZoomArgs{...} }
+type GetClientAddonZoomArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonZoomArrayOutput() GetClientAddonZoomArrayOutput
+	ToGetClientAddonZoomArrayOutputWithContext(context.Context) GetClientAddonZoomArrayOutput
+}
+
+type GetClientAddonZoomArray []GetClientAddonZoomInput
+
+func (GetClientAddonZoomArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonZoom)(nil)).Elem()
+}
+
+func (i GetClientAddonZoomArray) ToGetClientAddonZoomArrayOutput() GetClientAddonZoomArrayOutput {
+	return i.ToGetClientAddonZoomArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonZoomArray) ToGetClientAddonZoomArrayOutputWithContext(ctx context.Context) GetClientAddonZoomArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonZoomArrayOutput)
+}
+
+func (i GetClientAddonZoomArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonZoom] {
+	return pulumix.Output[[]GetClientAddonZoom]{
+		OutputState: i.ToGetClientAddonZoomArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClientAddonZoomOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonZoomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonZoom)(nil)).Elem()
+}
+
+func (o GetClientAddonZoomOutput) ToGetClientAddonZoomOutput() GetClientAddonZoomOutput {
+	return o
+}
+
+func (o GetClientAddonZoomOutput) ToGetClientAddonZoomOutputWithContext(ctx context.Context) GetClientAddonZoomOutput {
+	return o
+}
+
+func (o GetClientAddonZoomOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientAddonZoom] {
+	return pulumix.Output[GetClientAddonZoom]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonZoomOutput) Account() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonZoom) string { return v.Account }).(pulumi.StringOutput)
+}
+
+type GetClientAddonZoomArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonZoomArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonZoom)(nil)).Elem()
+}
+
+func (o GetClientAddonZoomArrayOutput) ToGetClientAddonZoomArrayOutput() GetClientAddonZoomArrayOutput {
+	return o
+}
+
+func (o GetClientAddonZoomArrayOutput) ToGetClientAddonZoomArrayOutputWithContext(ctx context.Context) GetClientAddonZoomArrayOutput {
+	return o
+}
+
+func (o GetClientAddonZoomArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClientAddonZoom] {
+	return pulumix.Output[[]GetClientAddonZoom]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClientAddonZoomArrayOutput) Index(i pulumi.IntInput) GetClientAddonZoomOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonZoom {
+		return vs[0].([]GetClientAddonZoom)[vs[1].(int)]
+	}).(GetClientAddonZoomOutput)
 }
 
 type GetClientJwtConfiguration struct {
@@ -25534,6 +31268,7 @@ type GetConnectionOption struct {
 	AllowedAudiences                 []string                                   `pulumi:"allowedAudiences"`
 	ApiEnableUsers                   bool                                       `pulumi:"apiEnableUsers"`
 	AppId                            string                                     `pulumi:"appId"`
+	AttributeMaps                    []GetConnectionOptionAttributeMap          `pulumi:"attributeMaps"`
 	AuthParams                       map[string]string                          `pulumi:"authParams"`
 	AuthorizationEndpoint            string                                     `pulumi:"authorizationEndpoint"`
 	BruteForceProtection             bool                                       `pulumi:"bruteForceProtection"`
@@ -25541,8 +31276,10 @@ type GetConnectionOption struct {
 	ClientSecret                     string                                     `pulumi:"clientSecret"`
 	CommunityBaseUrl                 string                                     `pulumi:"communityBaseUrl"`
 	Configuration                    map[string]interface{}                     `pulumi:"configuration"`
+	ConnectionSettings               []GetConnectionOptionConnectionSetting     `pulumi:"connectionSettings"`
 	CustomScripts                    map[string]string                          `pulumi:"customScripts"`
 	Debug                            bool                                       `pulumi:"debug"`
+	DecryptionKeys                   []GetConnectionOptionDecryptionKey         `pulumi:"decryptionKeys"`
 	DigestAlgorithm                  string                                     `pulumi:"digestAlgorithm"`
 	DisableCache                     bool                                       `pulumi:"disableCache"`
 	DisableSelfServiceChangePassword bool                                       `pulumi:"disableSelfServiceChangePassword"`
@@ -25568,6 +31305,7 @@ type GetConnectionOption struct {
 	Issuer                           string                                     `pulumi:"issuer"`
 	JwksUri                          string                                     `pulumi:"jwksUri"`
 	KeyId                            string                                     `pulumi:"keyId"`
+	MapUserIdToId                    bool                                       `pulumi:"mapUserIdToId"`
 	MaxGroupsToRetrieve              string                                     `pulumi:"maxGroupsToRetrieve"`
 	MessagingServiceSid              string                                     `pulumi:"messagingServiceSid"`
 	MetadataUrl                      string                                     `pulumi:"metadataUrl"`
@@ -25635,6 +31373,7 @@ type GetConnectionOptionArgs struct {
 	AllowedAudiences                 pulumi.StringArrayInput                            `pulumi:"allowedAudiences"`
 	ApiEnableUsers                   pulumi.BoolInput                                   `pulumi:"apiEnableUsers"`
 	AppId                            pulumi.StringInput                                 `pulumi:"appId"`
+	AttributeMaps                    GetConnectionOptionAttributeMapArrayInput          `pulumi:"attributeMaps"`
 	AuthParams                       pulumi.StringMapInput                              `pulumi:"authParams"`
 	AuthorizationEndpoint            pulumi.StringInput                                 `pulumi:"authorizationEndpoint"`
 	BruteForceProtection             pulumi.BoolInput                                   `pulumi:"bruteForceProtection"`
@@ -25642,8 +31381,10 @@ type GetConnectionOptionArgs struct {
 	ClientSecret                     pulumi.StringInput                                 `pulumi:"clientSecret"`
 	CommunityBaseUrl                 pulumi.StringInput                                 `pulumi:"communityBaseUrl"`
 	Configuration                    pulumi.MapInput                                    `pulumi:"configuration"`
+	ConnectionSettings               GetConnectionOptionConnectionSettingArrayInput     `pulumi:"connectionSettings"`
 	CustomScripts                    pulumi.StringMapInput                              `pulumi:"customScripts"`
 	Debug                            pulumi.BoolInput                                   `pulumi:"debug"`
+	DecryptionKeys                   GetConnectionOptionDecryptionKeyArrayInput         `pulumi:"decryptionKeys"`
 	DigestAlgorithm                  pulumi.StringInput                                 `pulumi:"digestAlgorithm"`
 	DisableCache                     pulumi.BoolInput                                   `pulumi:"disableCache"`
 	DisableSelfServiceChangePassword pulumi.BoolInput                                   `pulumi:"disableSelfServiceChangePassword"`
@@ -25669,6 +31410,7 @@ type GetConnectionOptionArgs struct {
 	Issuer                           pulumi.StringInput                                 `pulumi:"issuer"`
 	JwksUri                          pulumi.StringInput                                 `pulumi:"jwksUri"`
 	KeyId                            pulumi.StringInput                                 `pulumi:"keyId"`
+	MapUserIdToId                    pulumi.BoolInput                                   `pulumi:"mapUserIdToId"`
 	MaxGroupsToRetrieve              pulumi.StringInput                                 `pulumi:"maxGroupsToRetrieve"`
 	MessagingServiceSid              pulumi.StringInput                                 `pulumi:"messagingServiceSid"`
 	MetadataUrl                      pulumi.StringInput                                 `pulumi:"metadataUrl"`
@@ -25805,6 +31547,10 @@ func (o GetConnectionOptionOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.AppId }).(pulumi.StringOutput)
 }
 
+func (o GetConnectionOptionOutput) AttributeMaps() GetConnectionOptionAttributeMapArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionAttributeMap { return v.AttributeMaps }).(GetConnectionOptionAttributeMapArrayOutput)
+}
+
 func (o GetConnectionOptionOutput) AuthParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetConnectionOption) map[string]string { return v.AuthParams }).(pulumi.StringMapOutput)
 }
@@ -25833,12 +31579,20 @@ func (o GetConnectionOptionOutput) Configuration() pulumi.MapOutput {
 	return o.ApplyT(func(v GetConnectionOption) map[string]interface{} { return v.Configuration }).(pulumi.MapOutput)
 }
 
+func (o GetConnectionOptionOutput) ConnectionSettings() GetConnectionOptionConnectionSettingArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionConnectionSetting { return v.ConnectionSettings }).(GetConnectionOptionConnectionSettingArrayOutput)
+}
+
 func (o GetConnectionOptionOutput) CustomScripts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetConnectionOption) map[string]string { return v.CustomScripts }).(pulumi.StringMapOutput)
 }
 
 func (o GetConnectionOptionOutput) Debug() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionOption) bool { return v.Debug }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) DecryptionKeys() GetConnectionOptionDecryptionKeyArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionDecryptionKey { return v.DecryptionKeys }).(GetConnectionOptionDecryptionKeyArrayOutput)
 }
 
 func (o GetConnectionOptionOutput) DigestAlgorithm() pulumi.StringOutput {
@@ -25941,6 +31695,10 @@ func (o GetConnectionOptionOutput) JwksUri() pulumi.StringOutput {
 
 func (o GetConnectionOptionOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) MapUserIdToId() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.MapUserIdToId }).(pulumi.BoolOutput)
 }
 
 func (o GetConnectionOptionOutput) MaxGroupsToRetrieve() pulumi.StringOutput {
@@ -26164,6 +31922,378 @@ func (o GetConnectionOptionArrayOutput) Index(i pulumi.IntInput) GetConnectionOp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOption {
 		return vs[0].([]GetConnectionOption)[vs[1].(int)]
 	}).(GetConnectionOptionOutput)
+}
+
+type GetConnectionOptionAttributeMap struct {
+	Attributes    string `pulumi:"attributes"`
+	MappingMode   string `pulumi:"mappingMode"`
+	UserinfoScope string `pulumi:"userinfoScope"`
+}
+
+// GetConnectionOptionAttributeMapInput is an input type that accepts GetConnectionOptionAttributeMap and GetConnectionOptionAttributeMapOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeMapInput` via:
+//
+//	GetConnectionOptionAttributeMap{ "key": GetConnectionOptionAttributeArgs{...} }
+type GetConnectionOptionAttributeMapInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeMapOutput() GetConnectionOptionAttributeMapOutput
+	ToGetConnectionOptionAttributeMapOutputWithContext(context.Context) GetConnectionOptionAttributeMapOutput
+}
+
+type GetConnectionOptionAttributeMapArgs struct {
+	Attributes    pulumi.StringInput `pulumi:"attributes"`
+	MappingMode   pulumi.StringInput `pulumi:"mappingMode"`
+	UserinfoScope pulumi.StringInput `pulumi:"userinfoScope"`
+}
+
+func (GetConnectionOptionAttributeMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeMap)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeMapArgs) ToGetConnectionOptionAttributeMapOutput() GetConnectionOptionAttributeMapOutput {
+	return i.ToGetConnectionOptionAttributeMapOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeMapArgs) ToGetConnectionOptionAttributeMapOutputWithContext(ctx context.Context) GetConnectionOptionAttributeMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeMapOutput)
+}
+
+func (i GetConnectionOptionAttributeMapArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectionOptionAttributeMap] {
+	return pulumix.Output[GetConnectionOptionAttributeMap]{
+		OutputState: i.ToGetConnectionOptionAttributeMapOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetConnectionOptionAttributeMapArrayInput is an input type that accepts GetConnectionOptionAttributeMapArray and GetConnectionOptionAttributeMapArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeMapArrayInput` via:
+//
+//	GetConnectionOptionAttributeMapArray{ GetConnectionOptionAttributeMapArgs{...} }
+type GetConnectionOptionAttributeMapArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeMapArrayOutput() GetConnectionOptionAttributeMapArrayOutput
+	ToGetConnectionOptionAttributeMapArrayOutputWithContext(context.Context) GetConnectionOptionAttributeMapArrayOutput
+}
+
+type GetConnectionOptionAttributeMapArray []GetConnectionOptionAttributeMapInput
+
+func (GetConnectionOptionAttributeMapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeMap)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeMapArray) ToGetConnectionOptionAttributeMapArrayOutput() GetConnectionOptionAttributeMapArrayOutput {
+	return i.ToGetConnectionOptionAttributeMapArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeMapArray) ToGetConnectionOptionAttributeMapArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeMapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeMapArrayOutput)
+}
+
+func (i GetConnectionOptionAttributeMapArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectionOptionAttributeMap] {
+	return pulumix.Output[[]GetConnectionOptionAttributeMap]{
+		OutputState: i.ToGetConnectionOptionAttributeMapArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetConnectionOptionAttributeMapOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeMap)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeMapOutput) ToGetConnectionOptionAttributeMapOutput() GetConnectionOptionAttributeMapOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeMapOutput) ToGetConnectionOptionAttributeMapOutputWithContext(ctx context.Context) GetConnectionOptionAttributeMapOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeMapOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectionOptionAttributeMap] {
+	return pulumix.Output[GetConnectionOptionAttributeMap]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetConnectionOptionAttributeMapOutput) Attributes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeMap) string { return v.Attributes }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionAttributeMapOutput) MappingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeMap) string { return v.MappingMode }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionAttributeMapOutput) UserinfoScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeMap) string { return v.UserinfoScope }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionAttributeMapArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeMapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeMap)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeMapArrayOutput) ToGetConnectionOptionAttributeMapArrayOutput() GetConnectionOptionAttributeMapArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeMapArrayOutput) ToGetConnectionOptionAttributeMapArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeMapArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeMapArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectionOptionAttributeMap] {
+	return pulumix.Output[[]GetConnectionOptionAttributeMap]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetConnectionOptionAttributeMapArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeMapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeMap {
+		return vs[0].([]GetConnectionOptionAttributeMap)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeMapOutput)
+}
+
+type GetConnectionOptionConnectionSetting struct {
+	Pkce string `pulumi:"pkce"`
+}
+
+// GetConnectionOptionConnectionSettingInput is an input type that accepts GetConnectionOptionConnectionSettingArgs and GetConnectionOptionConnectionSettingOutput values.
+// You can construct a concrete instance of `GetConnectionOptionConnectionSettingInput` via:
+//
+//	GetConnectionOptionConnectionSettingArgs{...}
+type GetConnectionOptionConnectionSettingInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionConnectionSettingOutput() GetConnectionOptionConnectionSettingOutput
+	ToGetConnectionOptionConnectionSettingOutputWithContext(context.Context) GetConnectionOptionConnectionSettingOutput
+}
+
+type GetConnectionOptionConnectionSettingArgs struct {
+	Pkce pulumi.StringInput `pulumi:"pkce"`
+}
+
+func (GetConnectionOptionConnectionSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionConnectionSetting)(nil)).Elem()
+}
+
+func (i GetConnectionOptionConnectionSettingArgs) ToGetConnectionOptionConnectionSettingOutput() GetConnectionOptionConnectionSettingOutput {
+	return i.ToGetConnectionOptionConnectionSettingOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionConnectionSettingArgs) ToGetConnectionOptionConnectionSettingOutputWithContext(ctx context.Context) GetConnectionOptionConnectionSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionConnectionSettingOutput)
+}
+
+func (i GetConnectionOptionConnectionSettingArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectionOptionConnectionSetting] {
+	return pulumix.Output[GetConnectionOptionConnectionSetting]{
+		OutputState: i.ToGetConnectionOptionConnectionSettingOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetConnectionOptionConnectionSettingArrayInput is an input type that accepts GetConnectionOptionConnectionSettingArray and GetConnectionOptionConnectionSettingArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionConnectionSettingArrayInput` via:
+//
+//	GetConnectionOptionConnectionSettingArray{ GetConnectionOptionConnectionSettingArgs{...} }
+type GetConnectionOptionConnectionSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionConnectionSettingArrayOutput() GetConnectionOptionConnectionSettingArrayOutput
+	ToGetConnectionOptionConnectionSettingArrayOutputWithContext(context.Context) GetConnectionOptionConnectionSettingArrayOutput
+}
+
+type GetConnectionOptionConnectionSettingArray []GetConnectionOptionConnectionSettingInput
+
+func (GetConnectionOptionConnectionSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionConnectionSetting)(nil)).Elem()
+}
+
+func (i GetConnectionOptionConnectionSettingArray) ToGetConnectionOptionConnectionSettingArrayOutput() GetConnectionOptionConnectionSettingArrayOutput {
+	return i.ToGetConnectionOptionConnectionSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionConnectionSettingArray) ToGetConnectionOptionConnectionSettingArrayOutputWithContext(ctx context.Context) GetConnectionOptionConnectionSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionConnectionSettingArrayOutput)
+}
+
+func (i GetConnectionOptionConnectionSettingArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectionOptionConnectionSetting] {
+	return pulumix.Output[[]GetConnectionOptionConnectionSetting]{
+		OutputState: i.ToGetConnectionOptionConnectionSettingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetConnectionOptionConnectionSettingOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionConnectionSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionConnectionSetting)(nil)).Elem()
+}
+
+func (o GetConnectionOptionConnectionSettingOutput) ToGetConnectionOptionConnectionSettingOutput() GetConnectionOptionConnectionSettingOutput {
+	return o
+}
+
+func (o GetConnectionOptionConnectionSettingOutput) ToGetConnectionOptionConnectionSettingOutputWithContext(ctx context.Context) GetConnectionOptionConnectionSettingOutput {
+	return o
+}
+
+func (o GetConnectionOptionConnectionSettingOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectionOptionConnectionSetting] {
+	return pulumix.Output[GetConnectionOptionConnectionSetting]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetConnectionOptionConnectionSettingOutput) Pkce() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionConnectionSetting) string { return v.Pkce }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionConnectionSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionConnectionSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionConnectionSetting)(nil)).Elem()
+}
+
+func (o GetConnectionOptionConnectionSettingArrayOutput) ToGetConnectionOptionConnectionSettingArrayOutput() GetConnectionOptionConnectionSettingArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionConnectionSettingArrayOutput) ToGetConnectionOptionConnectionSettingArrayOutputWithContext(ctx context.Context) GetConnectionOptionConnectionSettingArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionConnectionSettingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectionOptionConnectionSetting] {
+	return pulumix.Output[[]GetConnectionOptionConnectionSetting]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetConnectionOptionConnectionSettingArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionConnectionSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionConnectionSetting {
+		return vs[0].([]GetConnectionOptionConnectionSetting)[vs[1].(int)]
+	}).(GetConnectionOptionConnectionSettingOutput)
+}
+
+type GetConnectionOptionDecryptionKey struct {
+	Cert string `pulumi:"cert"`
+	Key  string `pulumi:"key"`
+}
+
+// GetConnectionOptionDecryptionKeyInput is an input type that accepts GetConnectionOptionDecryptionKeyArgs and GetConnectionOptionDecryptionKeyOutput values.
+// You can construct a concrete instance of `GetConnectionOptionDecryptionKeyInput` via:
+//
+//	GetConnectionOptionDecryptionKeyArgs{...}
+type GetConnectionOptionDecryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionDecryptionKeyOutput() GetConnectionOptionDecryptionKeyOutput
+	ToGetConnectionOptionDecryptionKeyOutputWithContext(context.Context) GetConnectionOptionDecryptionKeyOutput
+}
+
+type GetConnectionOptionDecryptionKeyArgs struct {
+	Cert pulumi.StringInput `pulumi:"cert"`
+	Key  pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetConnectionOptionDecryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionDecryptionKey)(nil)).Elem()
+}
+
+func (i GetConnectionOptionDecryptionKeyArgs) ToGetConnectionOptionDecryptionKeyOutput() GetConnectionOptionDecryptionKeyOutput {
+	return i.ToGetConnectionOptionDecryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionDecryptionKeyArgs) ToGetConnectionOptionDecryptionKeyOutputWithContext(ctx context.Context) GetConnectionOptionDecryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionDecryptionKeyOutput)
+}
+
+func (i GetConnectionOptionDecryptionKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GetConnectionOptionDecryptionKey] {
+	return pulumix.Output[GetConnectionOptionDecryptionKey]{
+		OutputState: i.ToGetConnectionOptionDecryptionKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetConnectionOptionDecryptionKeyArrayInput is an input type that accepts GetConnectionOptionDecryptionKeyArray and GetConnectionOptionDecryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionDecryptionKeyArrayInput` via:
+//
+//	GetConnectionOptionDecryptionKeyArray{ GetConnectionOptionDecryptionKeyArgs{...} }
+type GetConnectionOptionDecryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionDecryptionKeyArrayOutput() GetConnectionOptionDecryptionKeyArrayOutput
+	ToGetConnectionOptionDecryptionKeyArrayOutputWithContext(context.Context) GetConnectionOptionDecryptionKeyArrayOutput
+}
+
+type GetConnectionOptionDecryptionKeyArray []GetConnectionOptionDecryptionKeyInput
+
+func (GetConnectionOptionDecryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionDecryptionKey)(nil)).Elem()
+}
+
+func (i GetConnectionOptionDecryptionKeyArray) ToGetConnectionOptionDecryptionKeyArrayOutput() GetConnectionOptionDecryptionKeyArrayOutput {
+	return i.ToGetConnectionOptionDecryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionDecryptionKeyArray) ToGetConnectionOptionDecryptionKeyArrayOutputWithContext(ctx context.Context) GetConnectionOptionDecryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionDecryptionKeyArrayOutput)
+}
+
+func (i GetConnectionOptionDecryptionKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectionOptionDecryptionKey] {
+	return pulumix.Output[[]GetConnectionOptionDecryptionKey]{
+		OutputState: i.ToGetConnectionOptionDecryptionKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetConnectionOptionDecryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionDecryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionDecryptionKey)(nil)).Elem()
+}
+
+func (o GetConnectionOptionDecryptionKeyOutput) ToGetConnectionOptionDecryptionKeyOutput() GetConnectionOptionDecryptionKeyOutput {
+	return o
+}
+
+func (o GetConnectionOptionDecryptionKeyOutput) ToGetConnectionOptionDecryptionKeyOutputWithContext(ctx context.Context) GetConnectionOptionDecryptionKeyOutput {
+	return o
+}
+
+func (o GetConnectionOptionDecryptionKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectionOptionDecryptionKey] {
+	return pulumix.Output[GetConnectionOptionDecryptionKey]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetConnectionOptionDecryptionKeyOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionDecryptionKey) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionDecryptionKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionDecryptionKey) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionDecryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionDecryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionDecryptionKey)(nil)).Elem()
+}
+
+func (o GetConnectionOptionDecryptionKeyArrayOutput) ToGetConnectionOptionDecryptionKeyArrayOutput() GetConnectionOptionDecryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionDecryptionKeyArrayOutput) ToGetConnectionOptionDecryptionKeyArrayOutputWithContext(ctx context.Context) GetConnectionOptionDecryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionDecryptionKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConnectionOptionDecryptionKey] {
+	return pulumix.Output[[]GetConnectionOptionDecryptionKey]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetConnectionOptionDecryptionKeyArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionDecryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionDecryptionKey {
+		return vs[0].([]GetConnectionOptionDecryptionKey)[vs[1].(int)]
+	}).(GetConnectionOptionDecryptionKeyOutput)
 }
 
 type GetConnectionOptionGatewayAuthentication struct {
@@ -27654,1548 +33784,6 @@ func (o GetCustomDomainVerificationTypeArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetCustomDomainVerificationTypeOutput)
 }
 
-type GetGlobalClientAddon struct {
-	Aws                  map[string]interface{}      `pulumi:"aws"`
-	AzureBlob            map[string]interface{}      `pulumi:"azureBlob"`
-	AzureSb              map[string]interface{}      `pulumi:"azureSb"`
-	Box                  map[string]interface{}      `pulumi:"box"`
-	Cloudbees            map[string]interface{}      `pulumi:"cloudbees"`
-	Concur               map[string]interface{}      `pulumi:"concur"`
-	Dropbox              map[string]interface{}      `pulumi:"dropbox"`
-	Echosign             map[string]interface{}      `pulumi:"echosign"`
-	Egnyte               map[string]interface{}      `pulumi:"egnyte"`
-	Firebase             map[string]interface{}      `pulumi:"firebase"`
-	Layer                map[string]interface{}      `pulumi:"layer"`
-	Mscrm                map[string]interface{}      `pulumi:"mscrm"`
-	Newrelic             map[string]interface{}      `pulumi:"newrelic"`
-	Office365            map[string]interface{}      `pulumi:"office365"`
-	Rms                  map[string]interface{}      `pulumi:"rms"`
-	Salesforce           map[string]interface{}      `pulumi:"salesforce"`
-	SalesforceApi        map[string]interface{}      `pulumi:"salesforceApi"`
-	SalesforceSandboxApi map[string]interface{}      `pulumi:"salesforceSandboxApi"`
-	Samlps               []GetGlobalClientAddonSamlp `pulumi:"samlps"`
-	SapApi               map[string]interface{}      `pulumi:"sapApi"`
-	Sentry               map[string]interface{}      `pulumi:"sentry"`
-	Sharepoint           map[string]interface{}      `pulumi:"sharepoint"`
-	Slack                map[string]interface{}      `pulumi:"slack"`
-	Springcm             map[string]interface{}      `pulumi:"springcm"`
-	Wams                 map[string]interface{}      `pulumi:"wams"`
-	Wsfed                map[string]interface{}      `pulumi:"wsfed"`
-	Zendesk              map[string]interface{}      `pulumi:"zendesk"`
-	Zoom                 map[string]interface{}      `pulumi:"zoom"`
-}
-
-// GetGlobalClientAddonInput is an input type that accepts GetGlobalClientAddonArgs and GetGlobalClientAddonOutput values.
-// You can construct a concrete instance of `GetGlobalClientAddonInput` via:
-//
-//	GetGlobalClientAddonArgs{...}
-type GetGlobalClientAddonInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientAddonOutput() GetGlobalClientAddonOutput
-	ToGetGlobalClientAddonOutputWithContext(context.Context) GetGlobalClientAddonOutput
-}
-
-type GetGlobalClientAddonArgs struct {
-	Aws                  pulumi.MapInput                     `pulumi:"aws"`
-	AzureBlob            pulumi.MapInput                     `pulumi:"azureBlob"`
-	AzureSb              pulumi.MapInput                     `pulumi:"azureSb"`
-	Box                  pulumi.MapInput                     `pulumi:"box"`
-	Cloudbees            pulumi.MapInput                     `pulumi:"cloudbees"`
-	Concur               pulumi.MapInput                     `pulumi:"concur"`
-	Dropbox              pulumi.MapInput                     `pulumi:"dropbox"`
-	Echosign             pulumi.MapInput                     `pulumi:"echosign"`
-	Egnyte               pulumi.MapInput                     `pulumi:"egnyte"`
-	Firebase             pulumi.MapInput                     `pulumi:"firebase"`
-	Layer                pulumi.MapInput                     `pulumi:"layer"`
-	Mscrm                pulumi.MapInput                     `pulumi:"mscrm"`
-	Newrelic             pulumi.MapInput                     `pulumi:"newrelic"`
-	Office365            pulumi.MapInput                     `pulumi:"office365"`
-	Rms                  pulumi.MapInput                     `pulumi:"rms"`
-	Salesforce           pulumi.MapInput                     `pulumi:"salesforce"`
-	SalesforceApi        pulumi.MapInput                     `pulumi:"salesforceApi"`
-	SalesforceSandboxApi pulumi.MapInput                     `pulumi:"salesforceSandboxApi"`
-	Samlps               GetGlobalClientAddonSamlpArrayInput `pulumi:"samlps"`
-	SapApi               pulumi.MapInput                     `pulumi:"sapApi"`
-	Sentry               pulumi.MapInput                     `pulumi:"sentry"`
-	Sharepoint           pulumi.MapInput                     `pulumi:"sharepoint"`
-	Slack                pulumi.MapInput                     `pulumi:"slack"`
-	Springcm             pulumi.MapInput                     `pulumi:"springcm"`
-	Wams                 pulumi.MapInput                     `pulumi:"wams"`
-	Wsfed                pulumi.MapInput                     `pulumi:"wsfed"`
-	Zendesk              pulumi.MapInput                     `pulumi:"zendesk"`
-	Zoom                 pulumi.MapInput                     `pulumi:"zoom"`
-}
-
-func (GetGlobalClientAddonArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientAddon)(nil)).Elem()
-}
-
-func (i GetGlobalClientAddonArgs) ToGetGlobalClientAddonOutput() GetGlobalClientAddonOutput {
-	return i.ToGetGlobalClientAddonOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientAddonArgs) ToGetGlobalClientAddonOutputWithContext(ctx context.Context) GetGlobalClientAddonOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientAddonOutput)
-}
-
-func (i GetGlobalClientAddonArgs) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientAddon] {
-	return pulumix.Output[GetGlobalClientAddon]{
-		OutputState: i.ToGetGlobalClientAddonOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetGlobalClientAddonArrayInput is an input type that accepts GetGlobalClientAddonArray and GetGlobalClientAddonArrayOutput values.
-// You can construct a concrete instance of `GetGlobalClientAddonArrayInput` via:
-//
-//	GetGlobalClientAddonArray{ GetGlobalClientAddonArgs{...} }
-type GetGlobalClientAddonArrayInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientAddonArrayOutput() GetGlobalClientAddonArrayOutput
-	ToGetGlobalClientAddonArrayOutputWithContext(context.Context) GetGlobalClientAddonArrayOutput
-}
-
-type GetGlobalClientAddonArray []GetGlobalClientAddonInput
-
-func (GetGlobalClientAddonArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientAddon)(nil)).Elem()
-}
-
-func (i GetGlobalClientAddonArray) ToGetGlobalClientAddonArrayOutput() GetGlobalClientAddonArrayOutput {
-	return i.ToGetGlobalClientAddonArrayOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientAddonArray) ToGetGlobalClientAddonArrayOutputWithContext(ctx context.Context) GetGlobalClientAddonArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientAddonArrayOutput)
-}
-
-func (i GetGlobalClientAddonArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientAddon] {
-	return pulumix.Output[[]GetGlobalClientAddon]{
-		OutputState: i.ToGetGlobalClientAddonArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetGlobalClientAddonOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientAddonOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientAddon)(nil)).Elem()
-}
-
-func (o GetGlobalClientAddonOutput) ToGetGlobalClientAddonOutput() GetGlobalClientAddonOutput {
-	return o
-}
-
-func (o GetGlobalClientAddonOutput) ToGetGlobalClientAddonOutputWithContext(ctx context.Context) GetGlobalClientAddonOutput {
-	return o
-}
-
-func (o GetGlobalClientAddonOutput) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientAddon] {
-	return pulumix.Output[GetGlobalClientAddon]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientAddonOutput) Aws() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Aws }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) AzureBlob() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.AzureBlob }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) AzureSb() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.AzureSb }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Box() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Box }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Cloudbees() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Cloudbees }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Concur() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Concur }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Dropbox() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Dropbox }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Echosign() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Echosign }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Egnyte() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Egnyte }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Firebase() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Firebase }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Layer() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Layer }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Mscrm() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Mscrm }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Newrelic() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Newrelic }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Office365() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Office365 }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Rms() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Rms }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Salesforce() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Salesforce }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) SalesforceApi() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.SalesforceApi }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) SalesforceSandboxApi() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.SalesforceSandboxApi }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Samlps() GetGlobalClientAddonSamlpArrayOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) []GetGlobalClientAddonSamlp { return v.Samlps }).(GetGlobalClientAddonSamlpArrayOutput)
-}
-
-func (o GetGlobalClientAddonOutput) SapApi() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.SapApi }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Sentry() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Sentry }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Sharepoint() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Sharepoint }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Slack() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Slack }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Springcm() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Springcm }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Wams() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Wams }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Wsfed() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Wsfed }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Zendesk() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Zendesk }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonOutput) Zoom() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Zoom }).(pulumi.MapOutput)
-}
-
-type GetGlobalClientAddonArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientAddonArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientAddon)(nil)).Elem()
-}
-
-func (o GetGlobalClientAddonArrayOutput) ToGetGlobalClientAddonArrayOutput() GetGlobalClientAddonArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientAddonArrayOutput) ToGetGlobalClientAddonArrayOutputWithContext(ctx context.Context) GetGlobalClientAddonArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientAddonArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientAddon] {
-	return pulumix.Output[[]GetGlobalClientAddon]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientAddonArrayOutput) Index(i pulumi.IntInput) GetGlobalClientAddonOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientAddon {
-		return vs[0].([]GetGlobalClientAddon)[vs[1].(int)]
-	}).(GetGlobalClientAddonOutput)
-}
-
-type GetGlobalClientAddonSamlp struct {
-	Audience                       string                 `pulumi:"audience"`
-	AuthnContextClassRef           string                 `pulumi:"authnContextClassRef"`
-	Binding                        string                 `pulumi:"binding"`
-	CreateUpnClaim                 bool                   `pulumi:"createUpnClaim"`
-	Destination                    string                 `pulumi:"destination"`
-	DigestAlgorithm                string                 `pulumi:"digestAlgorithm"`
-	IncludeAttributeNameFormat     bool                   `pulumi:"includeAttributeNameFormat"`
-	Issuer                         string                 `pulumi:"issuer"`
-	LifetimeInSeconds              int                    `pulumi:"lifetimeInSeconds"`
-	Logout                         map[string]interface{} `pulumi:"logout"`
-	MapIdentities                  bool                   `pulumi:"mapIdentities"`
-	MapUnknownClaimsAsIs           bool                   `pulumi:"mapUnknownClaimsAsIs"`
-	Mappings                       map[string]interface{} `pulumi:"mappings"`
-	NameIdentifierFormat           string                 `pulumi:"nameIdentifierFormat"`
-	NameIdentifierProbes           []string               `pulumi:"nameIdentifierProbes"`
-	PassthroughClaimsWithNoMapping bool                   `pulumi:"passthroughClaimsWithNoMapping"`
-	Recipient                      string                 `pulumi:"recipient"`
-	SignResponse                   bool                   `pulumi:"signResponse"`
-	SignatureAlgorithm             string                 `pulumi:"signatureAlgorithm"`
-	SigningCert                    string                 `pulumi:"signingCert"`
-	TypedAttributes                bool                   `pulumi:"typedAttributes"`
-}
-
-// GetGlobalClientAddonSamlpInput is an input type that accepts GetGlobalClientAddonSamlpArgs and GetGlobalClientAddonSamlpOutput values.
-// You can construct a concrete instance of `GetGlobalClientAddonSamlpInput` via:
-//
-//	GetGlobalClientAddonSamlpArgs{...}
-type GetGlobalClientAddonSamlpInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientAddonSamlpOutput() GetGlobalClientAddonSamlpOutput
-	ToGetGlobalClientAddonSamlpOutputWithContext(context.Context) GetGlobalClientAddonSamlpOutput
-}
-
-type GetGlobalClientAddonSamlpArgs struct {
-	Audience                       pulumi.StringInput      `pulumi:"audience"`
-	AuthnContextClassRef           pulumi.StringInput      `pulumi:"authnContextClassRef"`
-	Binding                        pulumi.StringInput      `pulumi:"binding"`
-	CreateUpnClaim                 pulumi.BoolInput        `pulumi:"createUpnClaim"`
-	Destination                    pulumi.StringInput      `pulumi:"destination"`
-	DigestAlgorithm                pulumi.StringInput      `pulumi:"digestAlgorithm"`
-	IncludeAttributeNameFormat     pulumi.BoolInput        `pulumi:"includeAttributeNameFormat"`
-	Issuer                         pulumi.StringInput      `pulumi:"issuer"`
-	LifetimeInSeconds              pulumi.IntInput         `pulumi:"lifetimeInSeconds"`
-	Logout                         pulumi.MapInput         `pulumi:"logout"`
-	MapIdentities                  pulumi.BoolInput        `pulumi:"mapIdentities"`
-	MapUnknownClaimsAsIs           pulumi.BoolInput        `pulumi:"mapUnknownClaimsAsIs"`
-	Mappings                       pulumi.MapInput         `pulumi:"mappings"`
-	NameIdentifierFormat           pulumi.StringInput      `pulumi:"nameIdentifierFormat"`
-	NameIdentifierProbes           pulumi.StringArrayInput `pulumi:"nameIdentifierProbes"`
-	PassthroughClaimsWithNoMapping pulumi.BoolInput        `pulumi:"passthroughClaimsWithNoMapping"`
-	Recipient                      pulumi.StringInput      `pulumi:"recipient"`
-	SignResponse                   pulumi.BoolInput        `pulumi:"signResponse"`
-	SignatureAlgorithm             pulumi.StringInput      `pulumi:"signatureAlgorithm"`
-	SigningCert                    pulumi.StringInput      `pulumi:"signingCert"`
-	TypedAttributes                pulumi.BoolInput        `pulumi:"typedAttributes"`
-}
-
-func (GetGlobalClientAddonSamlpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientAddonSamlp)(nil)).Elem()
-}
-
-func (i GetGlobalClientAddonSamlpArgs) ToGetGlobalClientAddonSamlpOutput() GetGlobalClientAddonSamlpOutput {
-	return i.ToGetGlobalClientAddonSamlpOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientAddonSamlpArgs) ToGetGlobalClientAddonSamlpOutputWithContext(ctx context.Context) GetGlobalClientAddonSamlpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientAddonSamlpOutput)
-}
-
-func (i GetGlobalClientAddonSamlpArgs) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientAddonSamlp] {
-	return pulumix.Output[GetGlobalClientAddonSamlp]{
-		OutputState: i.ToGetGlobalClientAddonSamlpOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetGlobalClientAddonSamlpArrayInput is an input type that accepts GetGlobalClientAddonSamlpArray and GetGlobalClientAddonSamlpArrayOutput values.
-// You can construct a concrete instance of `GetGlobalClientAddonSamlpArrayInput` via:
-//
-//	GetGlobalClientAddonSamlpArray{ GetGlobalClientAddonSamlpArgs{...} }
-type GetGlobalClientAddonSamlpArrayInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientAddonSamlpArrayOutput() GetGlobalClientAddonSamlpArrayOutput
-	ToGetGlobalClientAddonSamlpArrayOutputWithContext(context.Context) GetGlobalClientAddonSamlpArrayOutput
-}
-
-type GetGlobalClientAddonSamlpArray []GetGlobalClientAddonSamlpInput
-
-func (GetGlobalClientAddonSamlpArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientAddonSamlp)(nil)).Elem()
-}
-
-func (i GetGlobalClientAddonSamlpArray) ToGetGlobalClientAddonSamlpArrayOutput() GetGlobalClientAddonSamlpArrayOutput {
-	return i.ToGetGlobalClientAddonSamlpArrayOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientAddonSamlpArray) ToGetGlobalClientAddonSamlpArrayOutputWithContext(ctx context.Context) GetGlobalClientAddonSamlpArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientAddonSamlpArrayOutput)
-}
-
-func (i GetGlobalClientAddonSamlpArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientAddonSamlp] {
-	return pulumix.Output[[]GetGlobalClientAddonSamlp]{
-		OutputState: i.ToGetGlobalClientAddonSamlpArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetGlobalClientAddonSamlpOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientAddonSamlpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientAddonSamlp)(nil)).Elem()
-}
-
-func (o GetGlobalClientAddonSamlpOutput) ToGetGlobalClientAddonSamlpOutput() GetGlobalClientAddonSamlpOutput {
-	return o
-}
-
-func (o GetGlobalClientAddonSamlpOutput) ToGetGlobalClientAddonSamlpOutputWithContext(ctx context.Context) GetGlobalClientAddonSamlpOutput {
-	return o
-}
-
-func (o GetGlobalClientAddonSamlpOutput) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientAddonSamlp] {
-	return pulumix.Output[GetGlobalClientAddonSamlp]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientAddonSamlpOutput) Audience() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.Audience }).(pulumi.StringOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) AuthnContextClassRef() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.AuthnContextClassRef }).(pulumi.StringOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) Binding() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.Binding }).(pulumi.StringOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) CreateUpnClaim() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) bool { return v.CreateUpnClaim }).(pulumi.BoolOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) Destination() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.Destination }).(pulumi.StringOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) DigestAlgorithm() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.DigestAlgorithm }).(pulumi.StringOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) IncludeAttributeNameFormat() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) bool { return v.IncludeAttributeNameFormat }).(pulumi.BoolOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) Issuer() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.Issuer }).(pulumi.StringOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) LifetimeInSeconds() pulumi.IntOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) int { return v.LifetimeInSeconds }).(pulumi.IntOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) Logout() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) map[string]interface{} { return v.Logout }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) MapIdentities() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) bool { return v.MapIdentities }).(pulumi.BoolOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) MapUnknownClaimsAsIs() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) bool { return v.MapUnknownClaimsAsIs }).(pulumi.BoolOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) Mappings() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) map[string]interface{} { return v.Mappings }).(pulumi.MapOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) NameIdentifierFormat() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.NameIdentifierFormat }).(pulumi.StringOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) NameIdentifierProbes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) []string { return v.NameIdentifierProbes }).(pulumi.StringArrayOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) PassthroughClaimsWithNoMapping() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) bool { return v.PassthroughClaimsWithNoMapping }).(pulumi.BoolOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) Recipient() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.Recipient }).(pulumi.StringOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) SignResponse() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) bool { return v.SignResponse }).(pulumi.BoolOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) SignatureAlgorithm() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.SignatureAlgorithm }).(pulumi.StringOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) SigningCert() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.SigningCert }).(pulumi.StringOutput)
-}
-
-func (o GetGlobalClientAddonSamlpOutput) TypedAttributes() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) bool { return v.TypedAttributes }).(pulumi.BoolOutput)
-}
-
-type GetGlobalClientAddonSamlpArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientAddonSamlpArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientAddonSamlp)(nil)).Elem()
-}
-
-func (o GetGlobalClientAddonSamlpArrayOutput) ToGetGlobalClientAddonSamlpArrayOutput() GetGlobalClientAddonSamlpArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientAddonSamlpArrayOutput) ToGetGlobalClientAddonSamlpArrayOutputWithContext(ctx context.Context) GetGlobalClientAddonSamlpArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientAddonSamlpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientAddonSamlp] {
-	return pulumix.Output[[]GetGlobalClientAddonSamlp]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientAddonSamlpArrayOutput) Index(i pulumi.IntInput) GetGlobalClientAddonSamlpOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientAddonSamlp {
-		return vs[0].([]GetGlobalClientAddonSamlp)[vs[1].(int)]
-	}).(GetGlobalClientAddonSamlpOutput)
-}
-
-type GetGlobalClientJwtConfiguration struct {
-	Alg               string            `pulumi:"alg"`
-	LifetimeInSeconds int               `pulumi:"lifetimeInSeconds"`
-	Scopes            map[string]string `pulumi:"scopes"`
-	SecretEncoded     bool              `pulumi:"secretEncoded"`
-}
-
-// GetGlobalClientJwtConfigurationInput is an input type that accepts GetGlobalClientJwtConfigurationArgs and GetGlobalClientJwtConfigurationOutput values.
-// You can construct a concrete instance of `GetGlobalClientJwtConfigurationInput` via:
-//
-//	GetGlobalClientJwtConfigurationArgs{...}
-type GetGlobalClientJwtConfigurationInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientJwtConfigurationOutput() GetGlobalClientJwtConfigurationOutput
-	ToGetGlobalClientJwtConfigurationOutputWithContext(context.Context) GetGlobalClientJwtConfigurationOutput
-}
-
-type GetGlobalClientJwtConfigurationArgs struct {
-	Alg               pulumi.StringInput    `pulumi:"alg"`
-	LifetimeInSeconds pulumi.IntInput       `pulumi:"lifetimeInSeconds"`
-	Scopes            pulumi.StringMapInput `pulumi:"scopes"`
-	SecretEncoded     pulumi.BoolInput      `pulumi:"secretEncoded"`
-}
-
-func (GetGlobalClientJwtConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientJwtConfiguration)(nil)).Elem()
-}
-
-func (i GetGlobalClientJwtConfigurationArgs) ToGetGlobalClientJwtConfigurationOutput() GetGlobalClientJwtConfigurationOutput {
-	return i.ToGetGlobalClientJwtConfigurationOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientJwtConfigurationArgs) ToGetGlobalClientJwtConfigurationOutputWithContext(ctx context.Context) GetGlobalClientJwtConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientJwtConfigurationOutput)
-}
-
-func (i GetGlobalClientJwtConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientJwtConfiguration] {
-	return pulumix.Output[GetGlobalClientJwtConfiguration]{
-		OutputState: i.ToGetGlobalClientJwtConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetGlobalClientJwtConfigurationArrayInput is an input type that accepts GetGlobalClientJwtConfigurationArray and GetGlobalClientJwtConfigurationArrayOutput values.
-// You can construct a concrete instance of `GetGlobalClientJwtConfigurationArrayInput` via:
-//
-//	GetGlobalClientJwtConfigurationArray{ GetGlobalClientJwtConfigurationArgs{...} }
-type GetGlobalClientJwtConfigurationArrayInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientJwtConfigurationArrayOutput() GetGlobalClientJwtConfigurationArrayOutput
-	ToGetGlobalClientJwtConfigurationArrayOutputWithContext(context.Context) GetGlobalClientJwtConfigurationArrayOutput
-}
-
-type GetGlobalClientJwtConfigurationArray []GetGlobalClientJwtConfigurationInput
-
-func (GetGlobalClientJwtConfigurationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientJwtConfiguration)(nil)).Elem()
-}
-
-func (i GetGlobalClientJwtConfigurationArray) ToGetGlobalClientJwtConfigurationArrayOutput() GetGlobalClientJwtConfigurationArrayOutput {
-	return i.ToGetGlobalClientJwtConfigurationArrayOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientJwtConfigurationArray) ToGetGlobalClientJwtConfigurationArrayOutputWithContext(ctx context.Context) GetGlobalClientJwtConfigurationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientJwtConfigurationArrayOutput)
-}
-
-func (i GetGlobalClientJwtConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientJwtConfiguration] {
-	return pulumix.Output[[]GetGlobalClientJwtConfiguration]{
-		OutputState: i.ToGetGlobalClientJwtConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetGlobalClientJwtConfigurationOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientJwtConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientJwtConfiguration)(nil)).Elem()
-}
-
-func (o GetGlobalClientJwtConfigurationOutput) ToGetGlobalClientJwtConfigurationOutput() GetGlobalClientJwtConfigurationOutput {
-	return o
-}
-
-func (o GetGlobalClientJwtConfigurationOutput) ToGetGlobalClientJwtConfigurationOutputWithContext(ctx context.Context) GetGlobalClientJwtConfigurationOutput {
-	return o
-}
-
-func (o GetGlobalClientJwtConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientJwtConfiguration] {
-	return pulumix.Output[GetGlobalClientJwtConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientJwtConfigurationOutput) Alg() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGlobalClientJwtConfiguration) string { return v.Alg }).(pulumi.StringOutput)
-}
-
-func (o GetGlobalClientJwtConfigurationOutput) LifetimeInSeconds() pulumi.IntOutput {
-	return o.ApplyT(func(v GetGlobalClientJwtConfiguration) int { return v.LifetimeInSeconds }).(pulumi.IntOutput)
-}
-
-func (o GetGlobalClientJwtConfigurationOutput) Scopes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetGlobalClientJwtConfiguration) map[string]string { return v.Scopes }).(pulumi.StringMapOutput)
-}
-
-func (o GetGlobalClientJwtConfigurationOutput) SecretEncoded() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGlobalClientJwtConfiguration) bool { return v.SecretEncoded }).(pulumi.BoolOutput)
-}
-
-type GetGlobalClientJwtConfigurationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientJwtConfigurationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientJwtConfiguration)(nil)).Elem()
-}
-
-func (o GetGlobalClientJwtConfigurationArrayOutput) ToGetGlobalClientJwtConfigurationArrayOutput() GetGlobalClientJwtConfigurationArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientJwtConfigurationArrayOutput) ToGetGlobalClientJwtConfigurationArrayOutputWithContext(ctx context.Context) GetGlobalClientJwtConfigurationArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientJwtConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientJwtConfiguration] {
-	return pulumix.Output[[]GetGlobalClientJwtConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientJwtConfigurationArrayOutput) Index(i pulumi.IntInput) GetGlobalClientJwtConfigurationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientJwtConfiguration {
-		return vs[0].([]GetGlobalClientJwtConfiguration)[vs[1].(int)]
-	}).(GetGlobalClientJwtConfigurationOutput)
-}
-
-type GetGlobalClientMobile struct {
-	Androids []GetGlobalClientMobileAndroid `pulumi:"androids"`
-	Ios      []GetGlobalClientMobileIo      `pulumi:"ios"`
-}
-
-// GetGlobalClientMobileInput is an input type that accepts GetGlobalClientMobileArgs and GetGlobalClientMobileOutput values.
-// You can construct a concrete instance of `GetGlobalClientMobileInput` via:
-//
-//	GetGlobalClientMobileArgs{...}
-type GetGlobalClientMobileInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientMobileOutput() GetGlobalClientMobileOutput
-	ToGetGlobalClientMobileOutputWithContext(context.Context) GetGlobalClientMobileOutput
-}
-
-type GetGlobalClientMobileArgs struct {
-	Androids GetGlobalClientMobileAndroidArrayInput `pulumi:"androids"`
-	Ios      GetGlobalClientMobileIoArrayInput      `pulumi:"ios"`
-}
-
-func (GetGlobalClientMobileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientMobile)(nil)).Elem()
-}
-
-func (i GetGlobalClientMobileArgs) ToGetGlobalClientMobileOutput() GetGlobalClientMobileOutput {
-	return i.ToGetGlobalClientMobileOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientMobileArgs) ToGetGlobalClientMobileOutputWithContext(ctx context.Context) GetGlobalClientMobileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientMobileOutput)
-}
-
-func (i GetGlobalClientMobileArgs) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientMobile] {
-	return pulumix.Output[GetGlobalClientMobile]{
-		OutputState: i.ToGetGlobalClientMobileOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetGlobalClientMobileArrayInput is an input type that accepts GetGlobalClientMobileArray and GetGlobalClientMobileArrayOutput values.
-// You can construct a concrete instance of `GetGlobalClientMobileArrayInput` via:
-//
-//	GetGlobalClientMobileArray{ GetGlobalClientMobileArgs{...} }
-type GetGlobalClientMobileArrayInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientMobileArrayOutput() GetGlobalClientMobileArrayOutput
-	ToGetGlobalClientMobileArrayOutputWithContext(context.Context) GetGlobalClientMobileArrayOutput
-}
-
-type GetGlobalClientMobileArray []GetGlobalClientMobileInput
-
-func (GetGlobalClientMobileArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientMobile)(nil)).Elem()
-}
-
-func (i GetGlobalClientMobileArray) ToGetGlobalClientMobileArrayOutput() GetGlobalClientMobileArrayOutput {
-	return i.ToGetGlobalClientMobileArrayOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientMobileArray) ToGetGlobalClientMobileArrayOutputWithContext(ctx context.Context) GetGlobalClientMobileArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientMobileArrayOutput)
-}
-
-func (i GetGlobalClientMobileArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientMobile] {
-	return pulumix.Output[[]GetGlobalClientMobile]{
-		OutputState: i.ToGetGlobalClientMobileArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetGlobalClientMobileOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientMobileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientMobile)(nil)).Elem()
-}
-
-func (o GetGlobalClientMobileOutput) ToGetGlobalClientMobileOutput() GetGlobalClientMobileOutput {
-	return o
-}
-
-func (o GetGlobalClientMobileOutput) ToGetGlobalClientMobileOutputWithContext(ctx context.Context) GetGlobalClientMobileOutput {
-	return o
-}
-
-func (o GetGlobalClientMobileOutput) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientMobile] {
-	return pulumix.Output[GetGlobalClientMobile]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientMobileOutput) Androids() GetGlobalClientMobileAndroidArrayOutput {
-	return o.ApplyT(func(v GetGlobalClientMobile) []GetGlobalClientMobileAndroid { return v.Androids }).(GetGlobalClientMobileAndroidArrayOutput)
-}
-
-func (o GetGlobalClientMobileOutput) Ios() GetGlobalClientMobileIoArrayOutput {
-	return o.ApplyT(func(v GetGlobalClientMobile) []GetGlobalClientMobileIo { return v.Ios }).(GetGlobalClientMobileIoArrayOutput)
-}
-
-type GetGlobalClientMobileArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientMobileArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientMobile)(nil)).Elem()
-}
-
-func (o GetGlobalClientMobileArrayOutput) ToGetGlobalClientMobileArrayOutput() GetGlobalClientMobileArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientMobileArrayOutput) ToGetGlobalClientMobileArrayOutputWithContext(ctx context.Context) GetGlobalClientMobileArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientMobileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientMobile] {
-	return pulumix.Output[[]GetGlobalClientMobile]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientMobileArrayOutput) Index(i pulumi.IntInput) GetGlobalClientMobileOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientMobile {
-		return vs[0].([]GetGlobalClientMobile)[vs[1].(int)]
-	}).(GetGlobalClientMobileOutput)
-}
-
-type GetGlobalClientMobileAndroid struct {
-	AppPackageName         string   `pulumi:"appPackageName"`
-	Sha256CertFingerprints []string `pulumi:"sha256CertFingerprints"`
-}
-
-// GetGlobalClientMobileAndroidInput is an input type that accepts GetGlobalClientMobileAndroidArgs and GetGlobalClientMobileAndroidOutput values.
-// You can construct a concrete instance of `GetGlobalClientMobileAndroidInput` via:
-//
-//	GetGlobalClientMobileAndroidArgs{...}
-type GetGlobalClientMobileAndroidInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientMobileAndroidOutput() GetGlobalClientMobileAndroidOutput
-	ToGetGlobalClientMobileAndroidOutputWithContext(context.Context) GetGlobalClientMobileAndroidOutput
-}
-
-type GetGlobalClientMobileAndroidArgs struct {
-	AppPackageName         pulumi.StringInput      `pulumi:"appPackageName"`
-	Sha256CertFingerprints pulumi.StringArrayInput `pulumi:"sha256CertFingerprints"`
-}
-
-func (GetGlobalClientMobileAndroidArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientMobileAndroid)(nil)).Elem()
-}
-
-func (i GetGlobalClientMobileAndroidArgs) ToGetGlobalClientMobileAndroidOutput() GetGlobalClientMobileAndroidOutput {
-	return i.ToGetGlobalClientMobileAndroidOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientMobileAndroidArgs) ToGetGlobalClientMobileAndroidOutputWithContext(ctx context.Context) GetGlobalClientMobileAndroidOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientMobileAndroidOutput)
-}
-
-func (i GetGlobalClientMobileAndroidArgs) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientMobileAndroid] {
-	return pulumix.Output[GetGlobalClientMobileAndroid]{
-		OutputState: i.ToGetGlobalClientMobileAndroidOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetGlobalClientMobileAndroidArrayInput is an input type that accepts GetGlobalClientMobileAndroidArray and GetGlobalClientMobileAndroidArrayOutput values.
-// You can construct a concrete instance of `GetGlobalClientMobileAndroidArrayInput` via:
-//
-//	GetGlobalClientMobileAndroidArray{ GetGlobalClientMobileAndroidArgs{...} }
-type GetGlobalClientMobileAndroidArrayInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientMobileAndroidArrayOutput() GetGlobalClientMobileAndroidArrayOutput
-	ToGetGlobalClientMobileAndroidArrayOutputWithContext(context.Context) GetGlobalClientMobileAndroidArrayOutput
-}
-
-type GetGlobalClientMobileAndroidArray []GetGlobalClientMobileAndroidInput
-
-func (GetGlobalClientMobileAndroidArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientMobileAndroid)(nil)).Elem()
-}
-
-func (i GetGlobalClientMobileAndroidArray) ToGetGlobalClientMobileAndroidArrayOutput() GetGlobalClientMobileAndroidArrayOutput {
-	return i.ToGetGlobalClientMobileAndroidArrayOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientMobileAndroidArray) ToGetGlobalClientMobileAndroidArrayOutputWithContext(ctx context.Context) GetGlobalClientMobileAndroidArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientMobileAndroidArrayOutput)
-}
-
-func (i GetGlobalClientMobileAndroidArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientMobileAndroid] {
-	return pulumix.Output[[]GetGlobalClientMobileAndroid]{
-		OutputState: i.ToGetGlobalClientMobileAndroidArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetGlobalClientMobileAndroidOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientMobileAndroidOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientMobileAndroid)(nil)).Elem()
-}
-
-func (o GetGlobalClientMobileAndroidOutput) ToGetGlobalClientMobileAndroidOutput() GetGlobalClientMobileAndroidOutput {
-	return o
-}
-
-func (o GetGlobalClientMobileAndroidOutput) ToGetGlobalClientMobileAndroidOutputWithContext(ctx context.Context) GetGlobalClientMobileAndroidOutput {
-	return o
-}
-
-func (o GetGlobalClientMobileAndroidOutput) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientMobileAndroid] {
-	return pulumix.Output[GetGlobalClientMobileAndroid]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientMobileAndroidOutput) AppPackageName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGlobalClientMobileAndroid) string { return v.AppPackageName }).(pulumi.StringOutput)
-}
-
-func (o GetGlobalClientMobileAndroidOutput) Sha256CertFingerprints() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetGlobalClientMobileAndroid) []string { return v.Sha256CertFingerprints }).(pulumi.StringArrayOutput)
-}
-
-type GetGlobalClientMobileAndroidArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientMobileAndroidArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientMobileAndroid)(nil)).Elem()
-}
-
-func (o GetGlobalClientMobileAndroidArrayOutput) ToGetGlobalClientMobileAndroidArrayOutput() GetGlobalClientMobileAndroidArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientMobileAndroidArrayOutput) ToGetGlobalClientMobileAndroidArrayOutputWithContext(ctx context.Context) GetGlobalClientMobileAndroidArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientMobileAndroidArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientMobileAndroid] {
-	return pulumix.Output[[]GetGlobalClientMobileAndroid]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientMobileAndroidArrayOutput) Index(i pulumi.IntInput) GetGlobalClientMobileAndroidOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientMobileAndroid {
-		return vs[0].([]GetGlobalClientMobileAndroid)[vs[1].(int)]
-	}).(GetGlobalClientMobileAndroidOutput)
-}
-
-type GetGlobalClientMobileIo struct {
-	AppBundleIdentifier string `pulumi:"appBundleIdentifier"`
-	TeamId              string `pulumi:"teamId"`
-}
-
-// GetGlobalClientMobileIoInput is an input type that accepts GetGlobalClientMobileIoArgs and GetGlobalClientMobileIoOutput values.
-// You can construct a concrete instance of `GetGlobalClientMobileIoInput` via:
-//
-//	GetGlobalClientMobileIoArgs{...}
-type GetGlobalClientMobileIoInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientMobileIoOutput() GetGlobalClientMobileIoOutput
-	ToGetGlobalClientMobileIoOutputWithContext(context.Context) GetGlobalClientMobileIoOutput
-}
-
-type GetGlobalClientMobileIoArgs struct {
-	AppBundleIdentifier pulumi.StringInput `pulumi:"appBundleIdentifier"`
-	TeamId              pulumi.StringInput `pulumi:"teamId"`
-}
-
-func (GetGlobalClientMobileIoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientMobileIo)(nil)).Elem()
-}
-
-func (i GetGlobalClientMobileIoArgs) ToGetGlobalClientMobileIoOutput() GetGlobalClientMobileIoOutput {
-	return i.ToGetGlobalClientMobileIoOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientMobileIoArgs) ToGetGlobalClientMobileIoOutputWithContext(ctx context.Context) GetGlobalClientMobileIoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientMobileIoOutput)
-}
-
-func (i GetGlobalClientMobileIoArgs) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientMobileIo] {
-	return pulumix.Output[GetGlobalClientMobileIo]{
-		OutputState: i.ToGetGlobalClientMobileIoOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetGlobalClientMobileIoArrayInput is an input type that accepts GetGlobalClientMobileIoArray and GetGlobalClientMobileIoArrayOutput values.
-// You can construct a concrete instance of `GetGlobalClientMobileIoArrayInput` via:
-//
-//	GetGlobalClientMobileIoArray{ GetGlobalClientMobileIoArgs{...} }
-type GetGlobalClientMobileIoArrayInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientMobileIoArrayOutput() GetGlobalClientMobileIoArrayOutput
-	ToGetGlobalClientMobileIoArrayOutputWithContext(context.Context) GetGlobalClientMobileIoArrayOutput
-}
-
-type GetGlobalClientMobileIoArray []GetGlobalClientMobileIoInput
-
-func (GetGlobalClientMobileIoArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientMobileIo)(nil)).Elem()
-}
-
-func (i GetGlobalClientMobileIoArray) ToGetGlobalClientMobileIoArrayOutput() GetGlobalClientMobileIoArrayOutput {
-	return i.ToGetGlobalClientMobileIoArrayOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientMobileIoArray) ToGetGlobalClientMobileIoArrayOutputWithContext(ctx context.Context) GetGlobalClientMobileIoArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientMobileIoArrayOutput)
-}
-
-func (i GetGlobalClientMobileIoArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientMobileIo] {
-	return pulumix.Output[[]GetGlobalClientMobileIo]{
-		OutputState: i.ToGetGlobalClientMobileIoArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetGlobalClientMobileIoOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientMobileIoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientMobileIo)(nil)).Elem()
-}
-
-func (o GetGlobalClientMobileIoOutput) ToGetGlobalClientMobileIoOutput() GetGlobalClientMobileIoOutput {
-	return o
-}
-
-func (o GetGlobalClientMobileIoOutput) ToGetGlobalClientMobileIoOutputWithContext(ctx context.Context) GetGlobalClientMobileIoOutput {
-	return o
-}
-
-func (o GetGlobalClientMobileIoOutput) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientMobileIo] {
-	return pulumix.Output[GetGlobalClientMobileIo]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientMobileIoOutput) AppBundleIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGlobalClientMobileIo) string { return v.AppBundleIdentifier }).(pulumi.StringOutput)
-}
-
-func (o GetGlobalClientMobileIoOutput) TeamId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGlobalClientMobileIo) string { return v.TeamId }).(pulumi.StringOutput)
-}
-
-type GetGlobalClientMobileIoArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientMobileIoArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientMobileIo)(nil)).Elem()
-}
-
-func (o GetGlobalClientMobileIoArrayOutput) ToGetGlobalClientMobileIoArrayOutput() GetGlobalClientMobileIoArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientMobileIoArrayOutput) ToGetGlobalClientMobileIoArrayOutputWithContext(ctx context.Context) GetGlobalClientMobileIoArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientMobileIoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientMobileIo] {
-	return pulumix.Output[[]GetGlobalClientMobileIo]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientMobileIoArrayOutput) Index(i pulumi.IntInput) GetGlobalClientMobileIoOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientMobileIo {
-		return vs[0].([]GetGlobalClientMobileIo)[vs[1].(int)]
-	}).(GetGlobalClientMobileIoOutput)
-}
-
-type GetGlobalClientNativeSocialLogin struct {
-	Apples    []GetGlobalClientNativeSocialLoginApple    `pulumi:"apples"`
-	Facebooks []GetGlobalClientNativeSocialLoginFacebook `pulumi:"facebooks"`
-}
-
-// GetGlobalClientNativeSocialLoginInput is an input type that accepts GetGlobalClientNativeSocialLoginArgs and GetGlobalClientNativeSocialLoginOutput values.
-// You can construct a concrete instance of `GetGlobalClientNativeSocialLoginInput` via:
-//
-//	GetGlobalClientNativeSocialLoginArgs{...}
-type GetGlobalClientNativeSocialLoginInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientNativeSocialLoginOutput() GetGlobalClientNativeSocialLoginOutput
-	ToGetGlobalClientNativeSocialLoginOutputWithContext(context.Context) GetGlobalClientNativeSocialLoginOutput
-}
-
-type GetGlobalClientNativeSocialLoginArgs struct {
-	Apples    GetGlobalClientNativeSocialLoginAppleArrayInput    `pulumi:"apples"`
-	Facebooks GetGlobalClientNativeSocialLoginFacebookArrayInput `pulumi:"facebooks"`
-}
-
-func (GetGlobalClientNativeSocialLoginArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientNativeSocialLogin)(nil)).Elem()
-}
-
-func (i GetGlobalClientNativeSocialLoginArgs) ToGetGlobalClientNativeSocialLoginOutput() GetGlobalClientNativeSocialLoginOutput {
-	return i.ToGetGlobalClientNativeSocialLoginOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientNativeSocialLoginArgs) ToGetGlobalClientNativeSocialLoginOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientNativeSocialLoginOutput)
-}
-
-func (i GetGlobalClientNativeSocialLoginArgs) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientNativeSocialLogin] {
-	return pulumix.Output[GetGlobalClientNativeSocialLogin]{
-		OutputState: i.ToGetGlobalClientNativeSocialLoginOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetGlobalClientNativeSocialLoginArrayInput is an input type that accepts GetGlobalClientNativeSocialLoginArray and GetGlobalClientNativeSocialLoginArrayOutput values.
-// You can construct a concrete instance of `GetGlobalClientNativeSocialLoginArrayInput` via:
-//
-//	GetGlobalClientNativeSocialLoginArray{ GetGlobalClientNativeSocialLoginArgs{...} }
-type GetGlobalClientNativeSocialLoginArrayInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientNativeSocialLoginArrayOutput() GetGlobalClientNativeSocialLoginArrayOutput
-	ToGetGlobalClientNativeSocialLoginArrayOutputWithContext(context.Context) GetGlobalClientNativeSocialLoginArrayOutput
-}
-
-type GetGlobalClientNativeSocialLoginArray []GetGlobalClientNativeSocialLoginInput
-
-func (GetGlobalClientNativeSocialLoginArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientNativeSocialLogin)(nil)).Elem()
-}
-
-func (i GetGlobalClientNativeSocialLoginArray) ToGetGlobalClientNativeSocialLoginArrayOutput() GetGlobalClientNativeSocialLoginArrayOutput {
-	return i.ToGetGlobalClientNativeSocialLoginArrayOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientNativeSocialLoginArray) ToGetGlobalClientNativeSocialLoginArrayOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientNativeSocialLoginArrayOutput)
-}
-
-func (i GetGlobalClientNativeSocialLoginArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientNativeSocialLogin] {
-	return pulumix.Output[[]GetGlobalClientNativeSocialLogin]{
-		OutputState: i.ToGetGlobalClientNativeSocialLoginArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetGlobalClientNativeSocialLoginOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientNativeSocialLoginOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientNativeSocialLogin)(nil)).Elem()
-}
-
-func (o GetGlobalClientNativeSocialLoginOutput) ToGetGlobalClientNativeSocialLoginOutput() GetGlobalClientNativeSocialLoginOutput {
-	return o
-}
-
-func (o GetGlobalClientNativeSocialLoginOutput) ToGetGlobalClientNativeSocialLoginOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginOutput {
-	return o
-}
-
-func (o GetGlobalClientNativeSocialLoginOutput) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientNativeSocialLogin] {
-	return pulumix.Output[GetGlobalClientNativeSocialLogin]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientNativeSocialLoginOutput) Apples() GetGlobalClientNativeSocialLoginAppleArrayOutput {
-	return o.ApplyT(func(v GetGlobalClientNativeSocialLogin) []GetGlobalClientNativeSocialLoginApple { return v.Apples }).(GetGlobalClientNativeSocialLoginAppleArrayOutput)
-}
-
-func (o GetGlobalClientNativeSocialLoginOutput) Facebooks() GetGlobalClientNativeSocialLoginFacebookArrayOutput {
-	return o.ApplyT(func(v GetGlobalClientNativeSocialLogin) []GetGlobalClientNativeSocialLoginFacebook {
-		return v.Facebooks
-	}).(GetGlobalClientNativeSocialLoginFacebookArrayOutput)
-}
-
-type GetGlobalClientNativeSocialLoginArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientNativeSocialLoginArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientNativeSocialLogin)(nil)).Elem()
-}
-
-func (o GetGlobalClientNativeSocialLoginArrayOutput) ToGetGlobalClientNativeSocialLoginArrayOutput() GetGlobalClientNativeSocialLoginArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientNativeSocialLoginArrayOutput) ToGetGlobalClientNativeSocialLoginArrayOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientNativeSocialLoginArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientNativeSocialLogin] {
-	return pulumix.Output[[]GetGlobalClientNativeSocialLogin]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientNativeSocialLoginArrayOutput) Index(i pulumi.IntInput) GetGlobalClientNativeSocialLoginOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientNativeSocialLogin {
-		return vs[0].([]GetGlobalClientNativeSocialLogin)[vs[1].(int)]
-	}).(GetGlobalClientNativeSocialLoginOutput)
-}
-
-type GetGlobalClientNativeSocialLoginApple struct {
-	Enabled bool `pulumi:"enabled"`
-}
-
-// GetGlobalClientNativeSocialLoginAppleInput is an input type that accepts GetGlobalClientNativeSocialLoginAppleArgs and GetGlobalClientNativeSocialLoginAppleOutput values.
-// You can construct a concrete instance of `GetGlobalClientNativeSocialLoginAppleInput` via:
-//
-//	GetGlobalClientNativeSocialLoginAppleArgs{...}
-type GetGlobalClientNativeSocialLoginAppleInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientNativeSocialLoginAppleOutput() GetGlobalClientNativeSocialLoginAppleOutput
-	ToGetGlobalClientNativeSocialLoginAppleOutputWithContext(context.Context) GetGlobalClientNativeSocialLoginAppleOutput
-}
-
-type GetGlobalClientNativeSocialLoginAppleArgs struct {
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-func (GetGlobalClientNativeSocialLoginAppleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientNativeSocialLoginApple)(nil)).Elem()
-}
-
-func (i GetGlobalClientNativeSocialLoginAppleArgs) ToGetGlobalClientNativeSocialLoginAppleOutput() GetGlobalClientNativeSocialLoginAppleOutput {
-	return i.ToGetGlobalClientNativeSocialLoginAppleOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientNativeSocialLoginAppleArgs) ToGetGlobalClientNativeSocialLoginAppleOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginAppleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientNativeSocialLoginAppleOutput)
-}
-
-func (i GetGlobalClientNativeSocialLoginAppleArgs) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientNativeSocialLoginApple] {
-	return pulumix.Output[GetGlobalClientNativeSocialLoginApple]{
-		OutputState: i.ToGetGlobalClientNativeSocialLoginAppleOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetGlobalClientNativeSocialLoginAppleArrayInput is an input type that accepts GetGlobalClientNativeSocialLoginAppleArray and GetGlobalClientNativeSocialLoginAppleArrayOutput values.
-// You can construct a concrete instance of `GetGlobalClientNativeSocialLoginAppleArrayInput` via:
-//
-//	GetGlobalClientNativeSocialLoginAppleArray{ GetGlobalClientNativeSocialLoginAppleArgs{...} }
-type GetGlobalClientNativeSocialLoginAppleArrayInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientNativeSocialLoginAppleArrayOutput() GetGlobalClientNativeSocialLoginAppleArrayOutput
-	ToGetGlobalClientNativeSocialLoginAppleArrayOutputWithContext(context.Context) GetGlobalClientNativeSocialLoginAppleArrayOutput
-}
-
-type GetGlobalClientNativeSocialLoginAppleArray []GetGlobalClientNativeSocialLoginAppleInput
-
-func (GetGlobalClientNativeSocialLoginAppleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientNativeSocialLoginApple)(nil)).Elem()
-}
-
-func (i GetGlobalClientNativeSocialLoginAppleArray) ToGetGlobalClientNativeSocialLoginAppleArrayOutput() GetGlobalClientNativeSocialLoginAppleArrayOutput {
-	return i.ToGetGlobalClientNativeSocialLoginAppleArrayOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientNativeSocialLoginAppleArray) ToGetGlobalClientNativeSocialLoginAppleArrayOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginAppleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientNativeSocialLoginAppleArrayOutput)
-}
-
-func (i GetGlobalClientNativeSocialLoginAppleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientNativeSocialLoginApple] {
-	return pulumix.Output[[]GetGlobalClientNativeSocialLoginApple]{
-		OutputState: i.ToGetGlobalClientNativeSocialLoginAppleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetGlobalClientNativeSocialLoginAppleOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientNativeSocialLoginAppleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientNativeSocialLoginApple)(nil)).Elem()
-}
-
-func (o GetGlobalClientNativeSocialLoginAppleOutput) ToGetGlobalClientNativeSocialLoginAppleOutput() GetGlobalClientNativeSocialLoginAppleOutput {
-	return o
-}
-
-func (o GetGlobalClientNativeSocialLoginAppleOutput) ToGetGlobalClientNativeSocialLoginAppleOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginAppleOutput {
-	return o
-}
-
-func (o GetGlobalClientNativeSocialLoginAppleOutput) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientNativeSocialLoginApple] {
-	return pulumix.Output[GetGlobalClientNativeSocialLoginApple]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientNativeSocialLoginAppleOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGlobalClientNativeSocialLoginApple) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type GetGlobalClientNativeSocialLoginAppleArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientNativeSocialLoginAppleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientNativeSocialLoginApple)(nil)).Elem()
-}
-
-func (o GetGlobalClientNativeSocialLoginAppleArrayOutput) ToGetGlobalClientNativeSocialLoginAppleArrayOutput() GetGlobalClientNativeSocialLoginAppleArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientNativeSocialLoginAppleArrayOutput) ToGetGlobalClientNativeSocialLoginAppleArrayOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginAppleArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientNativeSocialLoginAppleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientNativeSocialLoginApple] {
-	return pulumix.Output[[]GetGlobalClientNativeSocialLoginApple]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientNativeSocialLoginAppleArrayOutput) Index(i pulumi.IntInput) GetGlobalClientNativeSocialLoginAppleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientNativeSocialLoginApple {
-		return vs[0].([]GetGlobalClientNativeSocialLoginApple)[vs[1].(int)]
-	}).(GetGlobalClientNativeSocialLoginAppleOutput)
-}
-
-type GetGlobalClientNativeSocialLoginFacebook struct {
-	Enabled bool `pulumi:"enabled"`
-}
-
-// GetGlobalClientNativeSocialLoginFacebookInput is an input type that accepts GetGlobalClientNativeSocialLoginFacebookArgs and GetGlobalClientNativeSocialLoginFacebookOutput values.
-// You can construct a concrete instance of `GetGlobalClientNativeSocialLoginFacebookInput` via:
-//
-//	GetGlobalClientNativeSocialLoginFacebookArgs{...}
-type GetGlobalClientNativeSocialLoginFacebookInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientNativeSocialLoginFacebookOutput() GetGlobalClientNativeSocialLoginFacebookOutput
-	ToGetGlobalClientNativeSocialLoginFacebookOutputWithContext(context.Context) GetGlobalClientNativeSocialLoginFacebookOutput
-}
-
-type GetGlobalClientNativeSocialLoginFacebookArgs struct {
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-func (GetGlobalClientNativeSocialLoginFacebookArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientNativeSocialLoginFacebook)(nil)).Elem()
-}
-
-func (i GetGlobalClientNativeSocialLoginFacebookArgs) ToGetGlobalClientNativeSocialLoginFacebookOutput() GetGlobalClientNativeSocialLoginFacebookOutput {
-	return i.ToGetGlobalClientNativeSocialLoginFacebookOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientNativeSocialLoginFacebookArgs) ToGetGlobalClientNativeSocialLoginFacebookOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginFacebookOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientNativeSocialLoginFacebookOutput)
-}
-
-func (i GetGlobalClientNativeSocialLoginFacebookArgs) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientNativeSocialLoginFacebook] {
-	return pulumix.Output[GetGlobalClientNativeSocialLoginFacebook]{
-		OutputState: i.ToGetGlobalClientNativeSocialLoginFacebookOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetGlobalClientNativeSocialLoginFacebookArrayInput is an input type that accepts GetGlobalClientNativeSocialLoginFacebookArray and GetGlobalClientNativeSocialLoginFacebookArrayOutput values.
-// You can construct a concrete instance of `GetGlobalClientNativeSocialLoginFacebookArrayInput` via:
-//
-//	GetGlobalClientNativeSocialLoginFacebookArray{ GetGlobalClientNativeSocialLoginFacebookArgs{...} }
-type GetGlobalClientNativeSocialLoginFacebookArrayInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientNativeSocialLoginFacebookArrayOutput() GetGlobalClientNativeSocialLoginFacebookArrayOutput
-	ToGetGlobalClientNativeSocialLoginFacebookArrayOutputWithContext(context.Context) GetGlobalClientNativeSocialLoginFacebookArrayOutput
-}
-
-type GetGlobalClientNativeSocialLoginFacebookArray []GetGlobalClientNativeSocialLoginFacebookInput
-
-func (GetGlobalClientNativeSocialLoginFacebookArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientNativeSocialLoginFacebook)(nil)).Elem()
-}
-
-func (i GetGlobalClientNativeSocialLoginFacebookArray) ToGetGlobalClientNativeSocialLoginFacebookArrayOutput() GetGlobalClientNativeSocialLoginFacebookArrayOutput {
-	return i.ToGetGlobalClientNativeSocialLoginFacebookArrayOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientNativeSocialLoginFacebookArray) ToGetGlobalClientNativeSocialLoginFacebookArrayOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginFacebookArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientNativeSocialLoginFacebookArrayOutput)
-}
-
-func (i GetGlobalClientNativeSocialLoginFacebookArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientNativeSocialLoginFacebook] {
-	return pulumix.Output[[]GetGlobalClientNativeSocialLoginFacebook]{
-		OutputState: i.ToGetGlobalClientNativeSocialLoginFacebookArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetGlobalClientNativeSocialLoginFacebookOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientNativeSocialLoginFacebookOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientNativeSocialLoginFacebook)(nil)).Elem()
-}
-
-func (o GetGlobalClientNativeSocialLoginFacebookOutput) ToGetGlobalClientNativeSocialLoginFacebookOutput() GetGlobalClientNativeSocialLoginFacebookOutput {
-	return o
-}
-
-func (o GetGlobalClientNativeSocialLoginFacebookOutput) ToGetGlobalClientNativeSocialLoginFacebookOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginFacebookOutput {
-	return o
-}
-
-func (o GetGlobalClientNativeSocialLoginFacebookOutput) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientNativeSocialLoginFacebook] {
-	return pulumix.Output[GetGlobalClientNativeSocialLoginFacebook]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientNativeSocialLoginFacebookOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGlobalClientNativeSocialLoginFacebook) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type GetGlobalClientNativeSocialLoginFacebookArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientNativeSocialLoginFacebookArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientNativeSocialLoginFacebook)(nil)).Elem()
-}
-
-func (o GetGlobalClientNativeSocialLoginFacebookArrayOutput) ToGetGlobalClientNativeSocialLoginFacebookArrayOutput() GetGlobalClientNativeSocialLoginFacebookArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientNativeSocialLoginFacebookArrayOutput) ToGetGlobalClientNativeSocialLoginFacebookArrayOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginFacebookArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientNativeSocialLoginFacebookArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientNativeSocialLoginFacebook] {
-	return pulumix.Output[[]GetGlobalClientNativeSocialLoginFacebook]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientNativeSocialLoginFacebookArrayOutput) Index(i pulumi.IntInput) GetGlobalClientNativeSocialLoginFacebookOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientNativeSocialLoginFacebook {
-		return vs[0].([]GetGlobalClientNativeSocialLoginFacebook)[vs[1].(int)]
-	}).(GetGlobalClientNativeSocialLoginFacebookOutput)
-}
-
-type GetGlobalClientRefreshToken struct {
-	ExpirationType            string `pulumi:"expirationType"`
-	IdleTokenLifetime         int    `pulumi:"idleTokenLifetime"`
-	InfiniteIdleTokenLifetime bool   `pulumi:"infiniteIdleTokenLifetime"`
-	InfiniteTokenLifetime     bool   `pulumi:"infiniteTokenLifetime"`
-	Leeway                    int    `pulumi:"leeway"`
-	RotationType              string `pulumi:"rotationType"`
-	TokenLifetime             int    `pulumi:"tokenLifetime"`
-}
-
-// GetGlobalClientRefreshTokenInput is an input type that accepts GetGlobalClientRefreshTokenArgs and GetGlobalClientRefreshTokenOutput values.
-// You can construct a concrete instance of `GetGlobalClientRefreshTokenInput` via:
-//
-//	GetGlobalClientRefreshTokenArgs{...}
-type GetGlobalClientRefreshTokenInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientRefreshTokenOutput() GetGlobalClientRefreshTokenOutput
-	ToGetGlobalClientRefreshTokenOutputWithContext(context.Context) GetGlobalClientRefreshTokenOutput
-}
-
-type GetGlobalClientRefreshTokenArgs struct {
-	ExpirationType            pulumi.StringInput `pulumi:"expirationType"`
-	IdleTokenLifetime         pulumi.IntInput    `pulumi:"idleTokenLifetime"`
-	InfiniteIdleTokenLifetime pulumi.BoolInput   `pulumi:"infiniteIdleTokenLifetime"`
-	InfiniteTokenLifetime     pulumi.BoolInput   `pulumi:"infiniteTokenLifetime"`
-	Leeway                    pulumi.IntInput    `pulumi:"leeway"`
-	RotationType              pulumi.StringInput `pulumi:"rotationType"`
-	TokenLifetime             pulumi.IntInput    `pulumi:"tokenLifetime"`
-}
-
-func (GetGlobalClientRefreshTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientRefreshToken)(nil)).Elem()
-}
-
-func (i GetGlobalClientRefreshTokenArgs) ToGetGlobalClientRefreshTokenOutput() GetGlobalClientRefreshTokenOutput {
-	return i.ToGetGlobalClientRefreshTokenOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientRefreshTokenArgs) ToGetGlobalClientRefreshTokenOutputWithContext(ctx context.Context) GetGlobalClientRefreshTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientRefreshTokenOutput)
-}
-
-func (i GetGlobalClientRefreshTokenArgs) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientRefreshToken] {
-	return pulumix.Output[GetGlobalClientRefreshToken]{
-		OutputState: i.ToGetGlobalClientRefreshTokenOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetGlobalClientRefreshTokenArrayInput is an input type that accepts GetGlobalClientRefreshTokenArray and GetGlobalClientRefreshTokenArrayOutput values.
-// You can construct a concrete instance of `GetGlobalClientRefreshTokenArrayInput` via:
-//
-//	GetGlobalClientRefreshTokenArray{ GetGlobalClientRefreshTokenArgs{...} }
-type GetGlobalClientRefreshTokenArrayInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientRefreshTokenArrayOutput() GetGlobalClientRefreshTokenArrayOutput
-	ToGetGlobalClientRefreshTokenArrayOutputWithContext(context.Context) GetGlobalClientRefreshTokenArrayOutput
-}
-
-type GetGlobalClientRefreshTokenArray []GetGlobalClientRefreshTokenInput
-
-func (GetGlobalClientRefreshTokenArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientRefreshToken)(nil)).Elem()
-}
-
-func (i GetGlobalClientRefreshTokenArray) ToGetGlobalClientRefreshTokenArrayOutput() GetGlobalClientRefreshTokenArrayOutput {
-	return i.ToGetGlobalClientRefreshTokenArrayOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientRefreshTokenArray) ToGetGlobalClientRefreshTokenArrayOutputWithContext(ctx context.Context) GetGlobalClientRefreshTokenArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientRefreshTokenArrayOutput)
-}
-
-func (i GetGlobalClientRefreshTokenArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientRefreshToken] {
-	return pulumix.Output[[]GetGlobalClientRefreshToken]{
-		OutputState: i.ToGetGlobalClientRefreshTokenArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetGlobalClientRefreshTokenOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientRefreshTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientRefreshToken)(nil)).Elem()
-}
-
-func (o GetGlobalClientRefreshTokenOutput) ToGetGlobalClientRefreshTokenOutput() GetGlobalClientRefreshTokenOutput {
-	return o
-}
-
-func (o GetGlobalClientRefreshTokenOutput) ToGetGlobalClientRefreshTokenOutputWithContext(ctx context.Context) GetGlobalClientRefreshTokenOutput {
-	return o
-}
-
-func (o GetGlobalClientRefreshTokenOutput) ToOutput(ctx context.Context) pulumix.Output[GetGlobalClientRefreshToken] {
-	return pulumix.Output[GetGlobalClientRefreshToken]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientRefreshTokenOutput) ExpirationType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGlobalClientRefreshToken) string { return v.ExpirationType }).(pulumi.StringOutput)
-}
-
-func (o GetGlobalClientRefreshTokenOutput) IdleTokenLifetime() pulumi.IntOutput {
-	return o.ApplyT(func(v GetGlobalClientRefreshToken) int { return v.IdleTokenLifetime }).(pulumi.IntOutput)
-}
-
-func (o GetGlobalClientRefreshTokenOutput) InfiniteIdleTokenLifetime() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGlobalClientRefreshToken) bool { return v.InfiniteIdleTokenLifetime }).(pulumi.BoolOutput)
-}
-
-func (o GetGlobalClientRefreshTokenOutput) InfiniteTokenLifetime() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGlobalClientRefreshToken) bool { return v.InfiniteTokenLifetime }).(pulumi.BoolOutput)
-}
-
-func (o GetGlobalClientRefreshTokenOutput) Leeway() pulumi.IntOutput {
-	return o.ApplyT(func(v GetGlobalClientRefreshToken) int { return v.Leeway }).(pulumi.IntOutput)
-}
-
-func (o GetGlobalClientRefreshTokenOutput) RotationType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGlobalClientRefreshToken) string { return v.RotationType }).(pulumi.StringOutput)
-}
-
-func (o GetGlobalClientRefreshTokenOutput) TokenLifetime() pulumi.IntOutput {
-	return o.ApplyT(func(v GetGlobalClientRefreshToken) int { return v.TokenLifetime }).(pulumi.IntOutput)
-}
-
-type GetGlobalClientRefreshTokenArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientRefreshTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGlobalClientRefreshToken)(nil)).Elem()
-}
-
-func (o GetGlobalClientRefreshTokenArrayOutput) ToGetGlobalClientRefreshTokenArrayOutput() GetGlobalClientRefreshTokenArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientRefreshTokenArrayOutput) ToGetGlobalClientRefreshTokenArrayOutputWithContext(ctx context.Context) GetGlobalClientRefreshTokenArrayOutput {
-	return o
-}
-
-func (o GetGlobalClientRefreshTokenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGlobalClientRefreshToken] {
-	return pulumix.Output[[]GetGlobalClientRefreshToken]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetGlobalClientRefreshTokenArrayOutput) Index(i pulumi.IntInput) GetGlobalClientRefreshTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientRefreshToken {
-		return vs[0].([]GetGlobalClientRefreshToken)[vs[1].(int)]
-	}).(GetGlobalClientRefreshTokenOutput)
-}
-
 type GetOrganizationBranding struct {
 	Colors  map[string]string `pulumi:"colors"`
 	LogoUrl string            `pulumi:"logoUrl"`
@@ -29444,9 +34032,512 @@ func (o GetOrganizationConnectionTypeArrayOutput) Index(i pulumi.IntInput) GetOr
 	}).(GetOrganizationConnectionTypeOutput)
 }
 
+type GetPagesChangePassword struct {
+	Enabled bool   `pulumi:"enabled"`
+	Html    string `pulumi:"html"`
+}
+
+// GetPagesChangePasswordInput is an input type that accepts GetPagesChangePasswordArgs and GetPagesChangePasswordOutput values.
+// You can construct a concrete instance of `GetPagesChangePasswordInput` via:
+//
+//	GetPagesChangePasswordArgs{...}
+type GetPagesChangePasswordInput interface {
+	pulumi.Input
+
+	ToGetPagesChangePasswordOutput() GetPagesChangePasswordOutput
+	ToGetPagesChangePasswordOutputWithContext(context.Context) GetPagesChangePasswordOutput
+}
+
+type GetPagesChangePasswordArgs struct {
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	Html    pulumi.StringInput `pulumi:"html"`
+}
+
+func (GetPagesChangePasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesChangePassword)(nil)).Elem()
+}
+
+func (i GetPagesChangePasswordArgs) ToGetPagesChangePasswordOutput() GetPagesChangePasswordOutput {
+	return i.ToGetPagesChangePasswordOutputWithContext(context.Background())
+}
+
+func (i GetPagesChangePasswordArgs) ToGetPagesChangePasswordOutputWithContext(ctx context.Context) GetPagesChangePasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesChangePasswordOutput)
+}
+
+func (i GetPagesChangePasswordArgs) ToOutput(ctx context.Context) pulumix.Output[GetPagesChangePassword] {
+	return pulumix.Output[GetPagesChangePassword]{
+		OutputState: i.ToGetPagesChangePasswordOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetPagesChangePasswordArrayInput is an input type that accepts GetPagesChangePasswordArray and GetPagesChangePasswordArrayOutput values.
+// You can construct a concrete instance of `GetPagesChangePasswordArrayInput` via:
+//
+//	GetPagesChangePasswordArray{ GetPagesChangePasswordArgs{...} }
+type GetPagesChangePasswordArrayInput interface {
+	pulumi.Input
+
+	ToGetPagesChangePasswordArrayOutput() GetPagesChangePasswordArrayOutput
+	ToGetPagesChangePasswordArrayOutputWithContext(context.Context) GetPagesChangePasswordArrayOutput
+}
+
+type GetPagesChangePasswordArray []GetPagesChangePasswordInput
+
+func (GetPagesChangePasswordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPagesChangePassword)(nil)).Elem()
+}
+
+func (i GetPagesChangePasswordArray) ToGetPagesChangePasswordArrayOutput() GetPagesChangePasswordArrayOutput {
+	return i.ToGetPagesChangePasswordArrayOutputWithContext(context.Background())
+}
+
+func (i GetPagesChangePasswordArray) ToGetPagesChangePasswordArrayOutputWithContext(ctx context.Context) GetPagesChangePasswordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesChangePasswordArrayOutput)
+}
+
+func (i GetPagesChangePasswordArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPagesChangePassword] {
+	return pulumix.Output[[]GetPagesChangePassword]{
+		OutputState: i.ToGetPagesChangePasswordArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetPagesChangePasswordOutput struct{ *pulumi.OutputState }
+
+func (GetPagesChangePasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesChangePassword)(nil)).Elem()
+}
+
+func (o GetPagesChangePasswordOutput) ToGetPagesChangePasswordOutput() GetPagesChangePasswordOutput {
+	return o
+}
+
+func (o GetPagesChangePasswordOutput) ToGetPagesChangePasswordOutputWithContext(ctx context.Context) GetPagesChangePasswordOutput {
+	return o
+}
+
+func (o GetPagesChangePasswordOutput) ToOutput(ctx context.Context) pulumix.Output[GetPagesChangePassword] {
+	return pulumix.Output[GetPagesChangePassword]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetPagesChangePasswordOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesChangePassword) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetPagesChangePasswordOutput) Html() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesChangePassword) string { return v.Html }).(pulumi.StringOutput)
+}
+
+type GetPagesChangePasswordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPagesChangePasswordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPagesChangePassword)(nil)).Elem()
+}
+
+func (o GetPagesChangePasswordArrayOutput) ToGetPagesChangePasswordArrayOutput() GetPagesChangePasswordArrayOutput {
+	return o
+}
+
+func (o GetPagesChangePasswordArrayOutput) ToGetPagesChangePasswordArrayOutputWithContext(ctx context.Context) GetPagesChangePasswordArrayOutput {
+	return o
+}
+
+func (o GetPagesChangePasswordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPagesChangePassword] {
+	return pulumix.Output[[]GetPagesChangePassword]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetPagesChangePasswordArrayOutput) Index(i pulumi.IntInput) GetPagesChangePasswordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPagesChangePassword {
+		return vs[0].([]GetPagesChangePassword)[vs[1].(int)]
+	}).(GetPagesChangePasswordOutput)
+}
+
+type GetPagesError struct {
+	Html        string `pulumi:"html"`
+	ShowLogLink bool   `pulumi:"showLogLink"`
+	Url         string `pulumi:"url"`
+}
+
+// GetPagesErrorInput is an input type that accepts GetPagesErrorArgs and GetPagesErrorOutput values.
+// You can construct a concrete instance of `GetPagesErrorInput` via:
+//
+//	GetPagesErrorArgs{...}
+type GetPagesErrorInput interface {
+	pulumi.Input
+
+	ToGetPagesErrorOutput() GetPagesErrorOutput
+	ToGetPagesErrorOutputWithContext(context.Context) GetPagesErrorOutput
+}
+
+type GetPagesErrorArgs struct {
+	Html        pulumi.StringInput `pulumi:"html"`
+	ShowLogLink pulumi.BoolInput   `pulumi:"showLogLink"`
+	Url         pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetPagesErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesError)(nil)).Elem()
+}
+
+func (i GetPagesErrorArgs) ToGetPagesErrorOutput() GetPagesErrorOutput {
+	return i.ToGetPagesErrorOutputWithContext(context.Background())
+}
+
+func (i GetPagesErrorArgs) ToGetPagesErrorOutputWithContext(ctx context.Context) GetPagesErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesErrorOutput)
+}
+
+func (i GetPagesErrorArgs) ToOutput(ctx context.Context) pulumix.Output[GetPagesError] {
+	return pulumix.Output[GetPagesError]{
+		OutputState: i.ToGetPagesErrorOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetPagesErrorArrayInput is an input type that accepts GetPagesErrorArray and GetPagesErrorArrayOutput values.
+// You can construct a concrete instance of `GetPagesErrorArrayInput` via:
+//
+//	GetPagesErrorArray{ GetPagesErrorArgs{...} }
+type GetPagesErrorArrayInput interface {
+	pulumi.Input
+
+	ToGetPagesErrorArrayOutput() GetPagesErrorArrayOutput
+	ToGetPagesErrorArrayOutputWithContext(context.Context) GetPagesErrorArrayOutput
+}
+
+type GetPagesErrorArray []GetPagesErrorInput
+
+func (GetPagesErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPagesError)(nil)).Elem()
+}
+
+func (i GetPagesErrorArray) ToGetPagesErrorArrayOutput() GetPagesErrorArrayOutput {
+	return i.ToGetPagesErrorArrayOutputWithContext(context.Background())
+}
+
+func (i GetPagesErrorArray) ToGetPagesErrorArrayOutputWithContext(ctx context.Context) GetPagesErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesErrorArrayOutput)
+}
+
+func (i GetPagesErrorArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPagesError] {
+	return pulumix.Output[[]GetPagesError]{
+		OutputState: i.ToGetPagesErrorArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetPagesErrorOutput struct{ *pulumi.OutputState }
+
+func (GetPagesErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesError)(nil)).Elem()
+}
+
+func (o GetPagesErrorOutput) ToGetPagesErrorOutput() GetPagesErrorOutput {
+	return o
+}
+
+func (o GetPagesErrorOutput) ToGetPagesErrorOutputWithContext(ctx context.Context) GetPagesErrorOutput {
+	return o
+}
+
+func (o GetPagesErrorOutput) ToOutput(ctx context.Context) pulumix.Output[GetPagesError] {
+	return pulumix.Output[GetPagesError]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetPagesErrorOutput) Html() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesError) string { return v.Html }).(pulumi.StringOutput)
+}
+
+func (o GetPagesErrorOutput) ShowLogLink() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesError) bool { return v.ShowLogLink }).(pulumi.BoolOutput)
+}
+
+func (o GetPagesErrorOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesError) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetPagesErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPagesErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPagesError)(nil)).Elem()
+}
+
+func (o GetPagesErrorArrayOutput) ToGetPagesErrorArrayOutput() GetPagesErrorArrayOutput {
+	return o
+}
+
+func (o GetPagesErrorArrayOutput) ToGetPagesErrorArrayOutputWithContext(ctx context.Context) GetPagesErrorArrayOutput {
+	return o
+}
+
+func (o GetPagesErrorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPagesError] {
+	return pulumix.Output[[]GetPagesError]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetPagesErrorArrayOutput) Index(i pulumi.IntInput) GetPagesErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPagesError {
+		return vs[0].([]GetPagesError)[vs[1].(int)]
+	}).(GetPagesErrorOutput)
+}
+
+type GetPagesGuardianMfa struct {
+	Enabled bool   `pulumi:"enabled"`
+	Html    string `pulumi:"html"`
+}
+
+// GetPagesGuardianMfaInput is an input type that accepts GetPagesGuardianMfaArgs and GetPagesGuardianMfaOutput values.
+// You can construct a concrete instance of `GetPagesGuardianMfaInput` via:
+//
+//	GetPagesGuardianMfaArgs{...}
+type GetPagesGuardianMfaInput interface {
+	pulumi.Input
+
+	ToGetPagesGuardianMfaOutput() GetPagesGuardianMfaOutput
+	ToGetPagesGuardianMfaOutputWithContext(context.Context) GetPagesGuardianMfaOutput
+}
+
+type GetPagesGuardianMfaArgs struct {
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	Html    pulumi.StringInput `pulumi:"html"`
+}
+
+func (GetPagesGuardianMfaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesGuardianMfa)(nil)).Elem()
+}
+
+func (i GetPagesGuardianMfaArgs) ToGetPagesGuardianMfaOutput() GetPagesGuardianMfaOutput {
+	return i.ToGetPagesGuardianMfaOutputWithContext(context.Background())
+}
+
+func (i GetPagesGuardianMfaArgs) ToGetPagesGuardianMfaOutputWithContext(ctx context.Context) GetPagesGuardianMfaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesGuardianMfaOutput)
+}
+
+func (i GetPagesGuardianMfaArgs) ToOutput(ctx context.Context) pulumix.Output[GetPagesGuardianMfa] {
+	return pulumix.Output[GetPagesGuardianMfa]{
+		OutputState: i.ToGetPagesGuardianMfaOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetPagesGuardianMfaArrayInput is an input type that accepts GetPagesGuardianMfaArray and GetPagesGuardianMfaArrayOutput values.
+// You can construct a concrete instance of `GetPagesGuardianMfaArrayInput` via:
+//
+//	GetPagesGuardianMfaArray{ GetPagesGuardianMfaArgs{...} }
+type GetPagesGuardianMfaArrayInput interface {
+	pulumi.Input
+
+	ToGetPagesGuardianMfaArrayOutput() GetPagesGuardianMfaArrayOutput
+	ToGetPagesGuardianMfaArrayOutputWithContext(context.Context) GetPagesGuardianMfaArrayOutput
+}
+
+type GetPagesGuardianMfaArray []GetPagesGuardianMfaInput
+
+func (GetPagesGuardianMfaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPagesGuardianMfa)(nil)).Elem()
+}
+
+func (i GetPagesGuardianMfaArray) ToGetPagesGuardianMfaArrayOutput() GetPagesGuardianMfaArrayOutput {
+	return i.ToGetPagesGuardianMfaArrayOutputWithContext(context.Background())
+}
+
+func (i GetPagesGuardianMfaArray) ToGetPagesGuardianMfaArrayOutputWithContext(ctx context.Context) GetPagesGuardianMfaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesGuardianMfaArrayOutput)
+}
+
+func (i GetPagesGuardianMfaArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPagesGuardianMfa] {
+	return pulumix.Output[[]GetPagesGuardianMfa]{
+		OutputState: i.ToGetPagesGuardianMfaArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetPagesGuardianMfaOutput struct{ *pulumi.OutputState }
+
+func (GetPagesGuardianMfaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesGuardianMfa)(nil)).Elem()
+}
+
+func (o GetPagesGuardianMfaOutput) ToGetPagesGuardianMfaOutput() GetPagesGuardianMfaOutput {
+	return o
+}
+
+func (o GetPagesGuardianMfaOutput) ToGetPagesGuardianMfaOutputWithContext(ctx context.Context) GetPagesGuardianMfaOutput {
+	return o
+}
+
+func (o GetPagesGuardianMfaOutput) ToOutput(ctx context.Context) pulumix.Output[GetPagesGuardianMfa] {
+	return pulumix.Output[GetPagesGuardianMfa]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetPagesGuardianMfaOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesGuardianMfa) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetPagesGuardianMfaOutput) Html() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesGuardianMfa) string { return v.Html }).(pulumi.StringOutput)
+}
+
+type GetPagesGuardianMfaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPagesGuardianMfaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPagesGuardianMfa)(nil)).Elem()
+}
+
+func (o GetPagesGuardianMfaArrayOutput) ToGetPagesGuardianMfaArrayOutput() GetPagesGuardianMfaArrayOutput {
+	return o
+}
+
+func (o GetPagesGuardianMfaArrayOutput) ToGetPagesGuardianMfaArrayOutputWithContext(ctx context.Context) GetPagesGuardianMfaArrayOutput {
+	return o
+}
+
+func (o GetPagesGuardianMfaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPagesGuardianMfa] {
+	return pulumix.Output[[]GetPagesGuardianMfa]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetPagesGuardianMfaArrayOutput) Index(i pulumi.IntInput) GetPagesGuardianMfaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPagesGuardianMfa {
+		return vs[0].([]GetPagesGuardianMfa)[vs[1].(int)]
+	}).(GetPagesGuardianMfaOutput)
+}
+
+type GetPagesLogin struct {
+	Enabled bool   `pulumi:"enabled"`
+	Html    string `pulumi:"html"`
+}
+
+// GetPagesLoginInput is an input type that accepts GetPagesLoginArgs and GetPagesLoginOutput values.
+// You can construct a concrete instance of `GetPagesLoginInput` via:
+//
+//	GetPagesLoginArgs{...}
+type GetPagesLoginInput interface {
+	pulumi.Input
+
+	ToGetPagesLoginOutput() GetPagesLoginOutput
+	ToGetPagesLoginOutputWithContext(context.Context) GetPagesLoginOutput
+}
+
+type GetPagesLoginArgs struct {
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	Html    pulumi.StringInput `pulumi:"html"`
+}
+
+func (GetPagesLoginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesLogin)(nil)).Elem()
+}
+
+func (i GetPagesLoginArgs) ToGetPagesLoginOutput() GetPagesLoginOutput {
+	return i.ToGetPagesLoginOutputWithContext(context.Background())
+}
+
+func (i GetPagesLoginArgs) ToGetPagesLoginOutputWithContext(ctx context.Context) GetPagesLoginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesLoginOutput)
+}
+
+func (i GetPagesLoginArgs) ToOutput(ctx context.Context) pulumix.Output[GetPagesLogin] {
+	return pulumix.Output[GetPagesLogin]{
+		OutputState: i.ToGetPagesLoginOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetPagesLoginArrayInput is an input type that accepts GetPagesLoginArray and GetPagesLoginArrayOutput values.
+// You can construct a concrete instance of `GetPagesLoginArrayInput` via:
+//
+//	GetPagesLoginArray{ GetPagesLoginArgs{...} }
+type GetPagesLoginArrayInput interface {
+	pulumi.Input
+
+	ToGetPagesLoginArrayOutput() GetPagesLoginArrayOutput
+	ToGetPagesLoginArrayOutputWithContext(context.Context) GetPagesLoginArrayOutput
+}
+
+type GetPagesLoginArray []GetPagesLoginInput
+
+func (GetPagesLoginArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPagesLogin)(nil)).Elem()
+}
+
+func (i GetPagesLoginArray) ToGetPagesLoginArrayOutput() GetPagesLoginArrayOutput {
+	return i.ToGetPagesLoginArrayOutputWithContext(context.Background())
+}
+
+func (i GetPagesLoginArray) ToGetPagesLoginArrayOutputWithContext(ctx context.Context) GetPagesLoginArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesLoginArrayOutput)
+}
+
+func (i GetPagesLoginArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPagesLogin] {
+	return pulumix.Output[[]GetPagesLogin]{
+		OutputState: i.ToGetPagesLoginArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetPagesLoginOutput struct{ *pulumi.OutputState }
+
+func (GetPagesLoginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesLogin)(nil)).Elem()
+}
+
+func (o GetPagesLoginOutput) ToGetPagesLoginOutput() GetPagesLoginOutput {
+	return o
+}
+
+func (o GetPagesLoginOutput) ToGetPagesLoginOutputWithContext(ctx context.Context) GetPagesLoginOutput {
+	return o
+}
+
+func (o GetPagesLoginOutput) ToOutput(ctx context.Context) pulumix.Output[GetPagesLogin] {
+	return pulumix.Output[GetPagesLogin]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetPagesLoginOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesLogin) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetPagesLoginOutput) Html() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesLogin) string { return v.Html }).(pulumi.StringOutput)
+}
+
+type GetPagesLoginArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPagesLoginArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPagesLogin)(nil)).Elem()
+}
+
+func (o GetPagesLoginArrayOutput) ToGetPagesLoginArrayOutput() GetPagesLoginArrayOutput {
+	return o
+}
+
+func (o GetPagesLoginArrayOutput) ToGetPagesLoginArrayOutputWithContext(ctx context.Context) GetPagesLoginArrayOutput {
+	return o
+}
+
+func (o GetPagesLoginArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPagesLogin] {
+	return pulumix.Output[[]GetPagesLogin]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetPagesLoginArrayOutput) Index(i pulumi.IntInput) GetPagesLoginOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPagesLogin {
+		return vs[0].([]GetPagesLogin)[vs[1].(int)]
+	}).(GetPagesLoginOutput)
+}
+
 type GetResourceServerScopeType struct {
 	Description string `pulumi:"description"`
-	Value       string `pulumi:"value"`
+	// Friendly name for the resource server. Cannot include `<` or `>` characters.
+	Name string `pulumi:"name"`
 }
 
 // GetResourceServerScopeTypeInput is an input type that accepts GetResourceServerScopeTypeArgs and GetResourceServerScopeTypeOutput values.
@@ -29462,7 +34553,8 @@ type GetResourceServerScopeTypeInput interface {
 
 type GetResourceServerScopeTypeArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
-	Value       pulumi.StringInput `pulumi:"value"`
+	// Friendly name for the resource server. Cannot include `<` or `>` characters.
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (GetResourceServerScopeTypeArgs) ElementType() reflect.Type {
@@ -29538,8 +34630,9 @@ func (o GetResourceServerScopeTypeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceServerScopeType) string { return v.Description }).(pulumi.StringOutput)
 }
 
-func (o GetResourceServerScopeTypeOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceServerScopeType) string { return v.Value }).(pulumi.StringOutput)
+// Friendly name for the resource server. Cannot include `<` or `>` characters.
+func (o GetResourceServerScopeTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerScopeType) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type GetResourceServerScopeTypeArrayOutput struct{ *pulumi.OutputState }
@@ -29569,7 +34662,7 @@ func (o GetResourceServerScopeTypeArrayOutput) Index(i pulumi.IntInput) GetResou
 }
 
 type GetRolePermissionType struct {
-	// Description of the role.
+	// The description of the role.
 	Description string `pulumi:"description"`
 	// The name of the role. If not provided, `roleId` must be set.
 	Name                     string `pulumi:"name"`
@@ -29589,7 +34682,7 @@ type GetRolePermissionTypeInput interface {
 }
 
 type GetRolePermissionTypeArgs struct {
-	// Description of the role.
+	// The description of the role.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The name of the role. If not provided, `roleId` must be set.
 	Name                     pulumi.StringInput `pulumi:"name"`
@@ -29666,7 +34759,7 @@ func (o GetRolePermissionTypeOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// Description of the role.
+// The description of the role.
 func (o GetRolePermissionTypeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolePermissionType) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -29710,258 +34803,170 @@ func (o GetRolePermissionTypeArrayOutput) Index(i pulumi.IntInput) GetRolePermis
 	}).(GetRolePermissionTypeOutput)
 }
 
-type GetTenantChangePassword struct {
-	Enabled bool   `pulumi:"enabled"`
-	Html    string `pulumi:"html"`
+type GetSigningKeysSigningKey struct {
+	Cert        string `pulumi:"cert"`
+	Current     bool   `pulumi:"current"`
+	Fingerprint string `pulumi:"fingerprint"`
+	Kid         string `pulumi:"kid"`
+	Next        bool   `pulumi:"next"`
+	Pkcs7       string `pulumi:"pkcs7"`
+	Previous    bool   `pulumi:"previous"`
+	Revoked     bool   `pulumi:"revoked"`
+	Thumbprint  string `pulumi:"thumbprint"`
 }
 
-// GetTenantChangePasswordInput is an input type that accepts GetTenantChangePasswordArgs and GetTenantChangePasswordOutput values.
-// You can construct a concrete instance of `GetTenantChangePasswordInput` via:
+// GetSigningKeysSigningKeyInput is an input type that accepts GetSigningKeysSigningKeyArgs and GetSigningKeysSigningKeyOutput values.
+// You can construct a concrete instance of `GetSigningKeysSigningKeyInput` via:
 //
-//	GetTenantChangePasswordArgs{...}
-type GetTenantChangePasswordInput interface {
+//	GetSigningKeysSigningKeyArgs{...}
+type GetSigningKeysSigningKeyInput interface {
 	pulumi.Input
 
-	ToGetTenantChangePasswordOutput() GetTenantChangePasswordOutput
-	ToGetTenantChangePasswordOutputWithContext(context.Context) GetTenantChangePasswordOutput
+	ToGetSigningKeysSigningKeyOutput() GetSigningKeysSigningKeyOutput
+	ToGetSigningKeysSigningKeyOutputWithContext(context.Context) GetSigningKeysSigningKeyOutput
 }
 
-type GetTenantChangePasswordArgs struct {
-	Enabled pulumi.BoolInput   `pulumi:"enabled"`
-	Html    pulumi.StringInput `pulumi:"html"`
+type GetSigningKeysSigningKeyArgs struct {
+	Cert        pulumi.StringInput `pulumi:"cert"`
+	Current     pulumi.BoolInput   `pulumi:"current"`
+	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
+	Kid         pulumi.StringInput `pulumi:"kid"`
+	Next        pulumi.BoolInput   `pulumi:"next"`
+	Pkcs7       pulumi.StringInput `pulumi:"pkcs7"`
+	Previous    pulumi.BoolInput   `pulumi:"previous"`
+	Revoked     pulumi.BoolInput   `pulumi:"revoked"`
+	Thumbprint  pulumi.StringInput `pulumi:"thumbprint"`
 }
 
-func (GetTenantChangePasswordArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantChangePassword)(nil)).Elem()
+func (GetSigningKeysSigningKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSigningKeysSigningKey)(nil)).Elem()
 }
 
-func (i GetTenantChangePasswordArgs) ToGetTenantChangePasswordOutput() GetTenantChangePasswordOutput {
-	return i.ToGetTenantChangePasswordOutputWithContext(context.Background())
+func (i GetSigningKeysSigningKeyArgs) ToGetSigningKeysSigningKeyOutput() GetSigningKeysSigningKeyOutput {
+	return i.ToGetSigningKeysSigningKeyOutputWithContext(context.Background())
 }
 
-func (i GetTenantChangePasswordArgs) ToGetTenantChangePasswordOutputWithContext(ctx context.Context) GetTenantChangePasswordOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantChangePasswordOutput)
+func (i GetSigningKeysSigningKeyArgs) ToGetSigningKeysSigningKeyOutputWithContext(ctx context.Context) GetSigningKeysSigningKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSigningKeysSigningKeyOutput)
 }
 
-func (i GetTenantChangePasswordArgs) ToOutput(ctx context.Context) pulumix.Output[GetTenantChangePassword] {
-	return pulumix.Output[GetTenantChangePassword]{
-		OutputState: i.ToGetTenantChangePasswordOutputWithContext(ctx).OutputState,
+func (i GetSigningKeysSigningKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GetSigningKeysSigningKey] {
+	return pulumix.Output[GetSigningKeysSigningKey]{
+		OutputState: i.ToGetSigningKeysSigningKeyOutputWithContext(ctx).OutputState,
 	}
 }
 
-// GetTenantChangePasswordArrayInput is an input type that accepts GetTenantChangePasswordArray and GetTenantChangePasswordArrayOutput values.
-// You can construct a concrete instance of `GetTenantChangePasswordArrayInput` via:
+// GetSigningKeysSigningKeyArrayInput is an input type that accepts GetSigningKeysSigningKeyArray and GetSigningKeysSigningKeyArrayOutput values.
+// You can construct a concrete instance of `GetSigningKeysSigningKeyArrayInput` via:
 //
-//	GetTenantChangePasswordArray{ GetTenantChangePasswordArgs{...} }
-type GetTenantChangePasswordArrayInput interface {
+//	GetSigningKeysSigningKeyArray{ GetSigningKeysSigningKeyArgs{...} }
+type GetSigningKeysSigningKeyArrayInput interface {
 	pulumi.Input
 
-	ToGetTenantChangePasswordArrayOutput() GetTenantChangePasswordArrayOutput
-	ToGetTenantChangePasswordArrayOutputWithContext(context.Context) GetTenantChangePasswordArrayOutput
+	ToGetSigningKeysSigningKeyArrayOutput() GetSigningKeysSigningKeyArrayOutput
+	ToGetSigningKeysSigningKeyArrayOutputWithContext(context.Context) GetSigningKeysSigningKeyArrayOutput
 }
 
-type GetTenantChangePasswordArray []GetTenantChangePasswordInput
+type GetSigningKeysSigningKeyArray []GetSigningKeysSigningKeyInput
 
-func (GetTenantChangePasswordArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantChangePassword)(nil)).Elem()
+func (GetSigningKeysSigningKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSigningKeysSigningKey)(nil)).Elem()
 }
 
-func (i GetTenantChangePasswordArray) ToGetTenantChangePasswordArrayOutput() GetTenantChangePasswordArrayOutput {
-	return i.ToGetTenantChangePasswordArrayOutputWithContext(context.Background())
+func (i GetSigningKeysSigningKeyArray) ToGetSigningKeysSigningKeyArrayOutput() GetSigningKeysSigningKeyArrayOutput {
+	return i.ToGetSigningKeysSigningKeyArrayOutputWithContext(context.Background())
 }
 
-func (i GetTenantChangePasswordArray) ToGetTenantChangePasswordArrayOutputWithContext(ctx context.Context) GetTenantChangePasswordArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantChangePasswordArrayOutput)
+func (i GetSigningKeysSigningKeyArray) ToGetSigningKeysSigningKeyArrayOutputWithContext(ctx context.Context) GetSigningKeysSigningKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSigningKeysSigningKeyArrayOutput)
 }
 
-func (i GetTenantChangePasswordArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTenantChangePassword] {
-	return pulumix.Output[[]GetTenantChangePassword]{
-		OutputState: i.ToGetTenantChangePasswordArrayOutputWithContext(ctx).OutputState,
+func (i GetSigningKeysSigningKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSigningKeysSigningKey] {
+	return pulumix.Output[[]GetSigningKeysSigningKey]{
+		OutputState: i.ToGetSigningKeysSigningKeyArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-type GetTenantChangePasswordOutput struct{ *pulumi.OutputState }
+type GetSigningKeysSigningKeyOutput struct{ *pulumi.OutputState }
 
-func (GetTenantChangePasswordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantChangePassword)(nil)).Elem()
+func (GetSigningKeysSigningKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSigningKeysSigningKey)(nil)).Elem()
 }
 
-func (o GetTenantChangePasswordOutput) ToGetTenantChangePasswordOutput() GetTenantChangePasswordOutput {
+func (o GetSigningKeysSigningKeyOutput) ToGetSigningKeysSigningKeyOutput() GetSigningKeysSigningKeyOutput {
 	return o
 }
 
-func (o GetTenantChangePasswordOutput) ToGetTenantChangePasswordOutputWithContext(ctx context.Context) GetTenantChangePasswordOutput {
+func (o GetSigningKeysSigningKeyOutput) ToGetSigningKeysSigningKeyOutputWithContext(ctx context.Context) GetSigningKeysSigningKeyOutput {
 	return o
 }
 
-func (o GetTenantChangePasswordOutput) ToOutput(ctx context.Context) pulumix.Output[GetTenantChangePassword] {
-	return pulumix.Output[GetTenantChangePassword]{
+func (o GetSigningKeysSigningKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GetSigningKeysSigningKey] {
+	return pulumix.Output[GetSigningKeysSigningKey]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o GetTenantChangePasswordOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetTenantChangePassword) bool { return v.Enabled }).(pulumi.BoolOutput)
+func (o GetSigningKeysSigningKeyOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) string { return v.Cert }).(pulumi.StringOutput)
 }
 
-func (o GetTenantChangePasswordOutput) Html() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTenantChangePassword) string { return v.Html }).(pulumi.StringOutput)
+func (o GetSigningKeysSigningKeyOutput) Current() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) bool { return v.Current }).(pulumi.BoolOutput)
 }
 
-type GetTenantChangePasswordArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTenantChangePasswordArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantChangePassword)(nil)).Elem()
+func (o GetSigningKeysSigningKeyOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
-func (o GetTenantChangePasswordArrayOutput) ToGetTenantChangePasswordArrayOutput() GetTenantChangePasswordArrayOutput {
+func (o GetSigningKeysSigningKeyOutput) Kid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) string { return v.Kid }).(pulumi.StringOutput)
+}
+
+func (o GetSigningKeysSigningKeyOutput) Next() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) bool { return v.Next }).(pulumi.BoolOutput)
+}
+
+func (o GetSigningKeysSigningKeyOutput) Pkcs7() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) string { return v.Pkcs7 }).(pulumi.StringOutput)
+}
+
+func (o GetSigningKeysSigningKeyOutput) Previous() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) bool { return v.Previous }).(pulumi.BoolOutput)
+}
+
+func (o GetSigningKeysSigningKeyOutput) Revoked() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) bool { return v.Revoked }).(pulumi.BoolOutput)
+}
+
+func (o GetSigningKeysSigningKeyOutput) Thumbprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) string { return v.Thumbprint }).(pulumi.StringOutput)
+}
+
+type GetSigningKeysSigningKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSigningKeysSigningKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSigningKeysSigningKey)(nil)).Elem()
+}
+
+func (o GetSigningKeysSigningKeyArrayOutput) ToGetSigningKeysSigningKeyArrayOutput() GetSigningKeysSigningKeyArrayOutput {
 	return o
 }
 
-func (o GetTenantChangePasswordArrayOutput) ToGetTenantChangePasswordArrayOutputWithContext(ctx context.Context) GetTenantChangePasswordArrayOutput {
+func (o GetSigningKeysSigningKeyArrayOutput) ToGetSigningKeysSigningKeyArrayOutputWithContext(ctx context.Context) GetSigningKeysSigningKeyArrayOutput {
 	return o
 }
 
-func (o GetTenantChangePasswordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTenantChangePassword] {
-	return pulumix.Output[[]GetTenantChangePassword]{
+func (o GetSigningKeysSigningKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSigningKeysSigningKey] {
+	return pulumix.Output[[]GetSigningKeysSigningKey]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o GetTenantChangePasswordArrayOutput) Index(i pulumi.IntInput) GetTenantChangePasswordOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantChangePassword {
-		return vs[0].([]GetTenantChangePassword)[vs[1].(int)]
-	}).(GetTenantChangePasswordOutput)
-}
-
-type GetTenantErrorPage struct {
-	Html        string `pulumi:"html"`
-	ShowLogLink bool   `pulumi:"showLogLink"`
-	Url         string `pulumi:"url"`
-}
-
-// GetTenantErrorPageInput is an input type that accepts GetTenantErrorPageArgs and GetTenantErrorPageOutput values.
-// You can construct a concrete instance of `GetTenantErrorPageInput` via:
-//
-//	GetTenantErrorPageArgs{...}
-type GetTenantErrorPageInput interface {
-	pulumi.Input
-
-	ToGetTenantErrorPageOutput() GetTenantErrorPageOutput
-	ToGetTenantErrorPageOutputWithContext(context.Context) GetTenantErrorPageOutput
-}
-
-type GetTenantErrorPageArgs struct {
-	Html        pulumi.StringInput `pulumi:"html"`
-	ShowLogLink pulumi.BoolInput   `pulumi:"showLogLink"`
-	Url         pulumi.StringInput `pulumi:"url"`
-}
-
-func (GetTenantErrorPageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantErrorPage)(nil)).Elem()
-}
-
-func (i GetTenantErrorPageArgs) ToGetTenantErrorPageOutput() GetTenantErrorPageOutput {
-	return i.ToGetTenantErrorPageOutputWithContext(context.Background())
-}
-
-func (i GetTenantErrorPageArgs) ToGetTenantErrorPageOutputWithContext(ctx context.Context) GetTenantErrorPageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantErrorPageOutput)
-}
-
-func (i GetTenantErrorPageArgs) ToOutput(ctx context.Context) pulumix.Output[GetTenantErrorPage] {
-	return pulumix.Output[GetTenantErrorPage]{
-		OutputState: i.ToGetTenantErrorPageOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetTenantErrorPageArrayInput is an input type that accepts GetTenantErrorPageArray and GetTenantErrorPageArrayOutput values.
-// You can construct a concrete instance of `GetTenantErrorPageArrayInput` via:
-//
-//	GetTenantErrorPageArray{ GetTenantErrorPageArgs{...} }
-type GetTenantErrorPageArrayInput interface {
-	pulumi.Input
-
-	ToGetTenantErrorPageArrayOutput() GetTenantErrorPageArrayOutput
-	ToGetTenantErrorPageArrayOutputWithContext(context.Context) GetTenantErrorPageArrayOutput
-}
-
-type GetTenantErrorPageArray []GetTenantErrorPageInput
-
-func (GetTenantErrorPageArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantErrorPage)(nil)).Elem()
-}
-
-func (i GetTenantErrorPageArray) ToGetTenantErrorPageArrayOutput() GetTenantErrorPageArrayOutput {
-	return i.ToGetTenantErrorPageArrayOutputWithContext(context.Background())
-}
-
-func (i GetTenantErrorPageArray) ToGetTenantErrorPageArrayOutputWithContext(ctx context.Context) GetTenantErrorPageArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantErrorPageArrayOutput)
-}
-
-func (i GetTenantErrorPageArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTenantErrorPage] {
-	return pulumix.Output[[]GetTenantErrorPage]{
-		OutputState: i.ToGetTenantErrorPageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetTenantErrorPageOutput struct{ *pulumi.OutputState }
-
-func (GetTenantErrorPageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantErrorPage)(nil)).Elem()
-}
-
-func (o GetTenantErrorPageOutput) ToGetTenantErrorPageOutput() GetTenantErrorPageOutput {
-	return o
-}
-
-func (o GetTenantErrorPageOutput) ToGetTenantErrorPageOutputWithContext(ctx context.Context) GetTenantErrorPageOutput {
-	return o
-}
-
-func (o GetTenantErrorPageOutput) ToOutput(ctx context.Context) pulumix.Output[GetTenantErrorPage] {
-	return pulumix.Output[GetTenantErrorPage]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetTenantErrorPageOutput) Html() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTenantErrorPage) string { return v.Html }).(pulumi.StringOutput)
-}
-
-func (o GetTenantErrorPageOutput) ShowLogLink() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetTenantErrorPage) bool { return v.ShowLogLink }).(pulumi.BoolOutput)
-}
-
-func (o GetTenantErrorPageOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTenantErrorPage) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type GetTenantErrorPageArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTenantErrorPageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantErrorPage)(nil)).Elem()
-}
-
-func (o GetTenantErrorPageArrayOutput) ToGetTenantErrorPageArrayOutput() GetTenantErrorPageArrayOutput {
-	return o
-}
-
-func (o GetTenantErrorPageArrayOutput) ToGetTenantErrorPageArrayOutputWithContext(ctx context.Context) GetTenantErrorPageArrayOutput {
-	return o
-}
-
-func (o GetTenantErrorPageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTenantErrorPage] {
-	return pulumix.Output[[]GetTenantErrorPage]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetTenantErrorPageArrayOutput) Index(i pulumi.IntInput) GetTenantErrorPageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantErrorPage {
-		return vs[0].([]GetTenantErrorPage)[vs[1].(int)]
-	}).(GetTenantErrorPageOutput)
+func (o GetSigningKeysSigningKeyArrayOutput) Index(i pulumi.IntInput) GetSigningKeysSigningKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSigningKeysSigningKey {
+		return vs[0].([]GetSigningKeysSigningKey)[vs[1].(int)]
+	}).(GetSigningKeysSigningKeyOutput)
 }
 
 type GetTenantFlag struct {
@@ -29985,8 +34990,8 @@ type GetTenantFlag struct {
 	EnablePublicSignupUserExistsError  bool `pulumi:"enablePublicSignupUserExistsError"`
 	MfaShowFactorListOnEnrollment      bool `pulumi:"mfaShowFactorListOnEnrollment"`
 	NoDiscloseEnterpriseConnections    bool `pulumi:"noDiscloseEnterpriseConnections"`
+	RequirePushedAuthorizationRequests bool `pulumi:"requirePushedAuthorizationRequests"`
 	RevokeRefreshTokenGrant            bool `pulumi:"revokeRefreshTokenGrant"`
-	UniversalLogin                     bool `pulumi:"universalLogin"`
 	UseScopeDescriptionsForConsent     bool `pulumi:"useScopeDescriptionsForConsent"`
 }
 
@@ -30022,8 +35027,8 @@ type GetTenantFlagArgs struct {
 	EnablePublicSignupUserExistsError  pulumi.BoolInput `pulumi:"enablePublicSignupUserExistsError"`
 	MfaShowFactorListOnEnrollment      pulumi.BoolInput `pulumi:"mfaShowFactorListOnEnrollment"`
 	NoDiscloseEnterpriseConnections    pulumi.BoolInput `pulumi:"noDiscloseEnterpriseConnections"`
+	RequirePushedAuthorizationRequests pulumi.BoolInput `pulumi:"requirePushedAuthorizationRequests"`
 	RevokeRefreshTokenGrant            pulumi.BoolInput `pulumi:"revokeRefreshTokenGrant"`
-	UniversalLogin                     pulumi.BoolInput `pulumi:"universalLogin"`
 	UseScopeDescriptionsForConsent     pulumi.BoolInput `pulumi:"useScopeDescriptionsForConsent"`
 }
 
@@ -30176,12 +35181,12 @@ func (o GetTenantFlagOutput) NoDiscloseEnterpriseConnections() pulumi.BoolOutput
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.NoDiscloseEnterpriseConnections }).(pulumi.BoolOutput)
 }
 
-func (o GetTenantFlagOutput) RevokeRefreshTokenGrant() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetTenantFlag) bool { return v.RevokeRefreshTokenGrant }).(pulumi.BoolOutput)
+func (o GetTenantFlagOutput) RequirePushedAuthorizationRequests() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.RequirePushedAuthorizationRequests }).(pulumi.BoolOutput)
 }
 
-func (o GetTenantFlagOutput) UniversalLogin() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetTenantFlag) bool { return v.UniversalLogin }).(pulumi.BoolOutput)
+func (o GetTenantFlagOutput) RevokeRefreshTokenGrant() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.RevokeRefreshTokenGrant }).(pulumi.BoolOutput)
 }
 
 func (o GetTenantFlagOutput) UseScopeDescriptionsForConsent() pulumi.BoolOutput {
@@ -30214,128 +35219,122 @@ func (o GetTenantFlagArrayOutput) Index(i pulumi.IntInput) GetTenantFlagOutput {
 	}).(GetTenantFlagOutput)
 }
 
-type GetTenantGuardianMfaPage struct {
-	Enabled bool   `pulumi:"enabled"`
-	Html    string `pulumi:"html"`
+type GetTenantSession struct {
+	OidcLogoutPromptEnabled bool `pulumi:"oidcLogoutPromptEnabled"`
 }
 
-// GetTenantGuardianMfaPageInput is an input type that accepts GetTenantGuardianMfaPageArgs and GetTenantGuardianMfaPageOutput values.
-// You can construct a concrete instance of `GetTenantGuardianMfaPageInput` via:
+// GetTenantSessionInput is an input type that accepts GetTenantSessionArgs and GetTenantSessionOutput values.
+// You can construct a concrete instance of `GetTenantSessionInput` via:
 //
-//	GetTenantGuardianMfaPageArgs{...}
-type GetTenantGuardianMfaPageInput interface {
+//	GetTenantSessionArgs{...}
+type GetTenantSessionInput interface {
 	pulumi.Input
 
-	ToGetTenantGuardianMfaPageOutput() GetTenantGuardianMfaPageOutput
-	ToGetTenantGuardianMfaPageOutputWithContext(context.Context) GetTenantGuardianMfaPageOutput
+	ToGetTenantSessionOutput() GetTenantSessionOutput
+	ToGetTenantSessionOutputWithContext(context.Context) GetTenantSessionOutput
 }
 
-type GetTenantGuardianMfaPageArgs struct {
-	Enabled pulumi.BoolInput   `pulumi:"enabled"`
-	Html    pulumi.StringInput `pulumi:"html"`
+type GetTenantSessionArgs struct {
+	OidcLogoutPromptEnabled pulumi.BoolInput `pulumi:"oidcLogoutPromptEnabled"`
 }
 
-func (GetTenantGuardianMfaPageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantGuardianMfaPage)(nil)).Elem()
+func (GetTenantSessionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantSession)(nil)).Elem()
 }
 
-func (i GetTenantGuardianMfaPageArgs) ToGetTenantGuardianMfaPageOutput() GetTenantGuardianMfaPageOutput {
-	return i.ToGetTenantGuardianMfaPageOutputWithContext(context.Background())
+func (i GetTenantSessionArgs) ToGetTenantSessionOutput() GetTenantSessionOutput {
+	return i.ToGetTenantSessionOutputWithContext(context.Background())
 }
 
-func (i GetTenantGuardianMfaPageArgs) ToGetTenantGuardianMfaPageOutputWithContext(ctx context.Context) GetTenantGuardianMfaPageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantGuardianMfaPageOutput)
+func (i GetTenantSessionArgs) ToGetTenantSessionOutputWithContext(ctx context.Context) GetTenantSessionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantSessionOutput)
 }
 
-func (i GetTenantGuardianMfaPageArgs) ToOutput(ctx context.Context) pulumix.Output[GetTenantGuardianMfaPage] {
-	return pulumix.Output[GetTenantGuardianMfaPage]{
-		OutputState: i.ToGetTenantGuardianMfaPageOutputWithContext(ctx).OutputState,
+func (i GetTenantSessionArgs) ToOutput(ctx context.Context) pulumix.Output[GetTenantSession] {
+	return pulumix.Output[GetTenantSession]{
+		OutputState: i.ToGetTenantSessionOutputWithContext(ctx).OutputState,
 	}
 }
 
-// GetTenantGuardianMfaPageArrayInput is an input type that accepts GetTenantGuardianMfaPageArray and GetTenantGuardianMfaPageArrayOutput values.
-// You can construct a concrete instance of `GetTenantGuardianMfaPageArrayInput` via:
+// GetTenantSessionArrayInput is an input type that accepts GetTenantSessionArray and GetTenantSessionArrayOutput values.
+// You can construct a concrete instance of `GetTenantSessionArrayInput` via:
 //
-//	GetTenantGuardianMfaPageArray{ GetTenantGuardianMfaPageArgs{...} }
-type GetTenantGuardianMfaPageArrayInput interface {
+//	GetTenantSessionArray{ GetTenantSessionArgs{...} }
+type GetTenantSessionArrayInput interface {
 	pulumi.Input
 
-	ToGetTenantGuardianMfaPageArrayOutput() GetTenantGuardianMfaPageArrayOutput
-	ToGetTenantGuardianMfaPageArrayOutputWithContext(context.Context) GetTenantGuardianMfaPageArrayOutput
+	ToGetTenantSessionArrayOutput() GetTenantSessionArrayOutput
+	ToGetTenantSessionArrayOutputWithContext(context.Context) GetTenantSessionArrayOutput
 }
 
-type GetTenantGuardianMfaPageArray []GetTenantGuardianMfaPageInput
+type GetTenantSessionArray []GetTenantSessionInput
 
-func (GetTenantGuardianMfaPageArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantGuardianMfaPage)(nil)).Elem()
+func (GetTenantSessionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantSession)(nil)).Elem()
 }
 
-func (i GetTenantGuardianMfaPageArray) ToGetTenantGuardianMfaPageArrayOutput() GetTenantGuardianMfaPageArrayOutput {
-	return i.ToGetTenantGuardianMfaPageArrayOutputWithContext(context.Background())
+func (i GetTenantSessionArray) ToGetTenantSessionArrayOutput() GetTenantSessionArrayOutput {
+	return i.ToGetTenantSessionArrayOutputWithContext(context.Background())
 }
 
-func (i GetTenantGuardianMfaPageArray) ToGetTenantGuardianMfaPageArrayOutputWithContext(ctx context.Context) GetTenantGuardianMfaPageArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantGuardianMfaPageArrayOutput)
+func (i GetTenantSessionArray) ToGetTenantSessionArrayOutputWithContext(ctx context.Context) GetTenantSessionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantSessionArrayOutput)
 }
 
-func (i GetTenantGuardianMfaPageArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTenantGuardianMfaPage] {
-	return pulumix.Output[[]GetTenantGuardianMfaPage]{
-		OutputState: i.ToGetTenantGuardianMfaPageArrayOutputWithContext(ctx).OutputState,
+func (i GetTenantSessionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTenantSession] {
+	return pulumix.Output[[]GetTenantSession]{
+		OutputState: i.ToGetTenantSessionArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-type GetTenantGuardianMfaPageOutput struct{ *pulumi.OutputState }
+type GetTenantSessionOutput struct{ *pulumi.OutputState }
 
-func (GetTenantGuardianMfaPageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantGuardianMfaPage)(nil)).Elem()
+func (GetTenantSessionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantSession)(nil)).Elem()
 }
 
-func (o GetTenantGuardianMfaPageOutput) ToGetTenantGuardianMfaPageOutput() GetTenantGuardianMfaPageOutput {
+func (o GetTenantSessionOutput) ToGetTenantSessionOutput() GetTenantSessionOutput {
 	return o
 }
 
-func (o GetTenantGuardianMfaPageOutput) ToGetTenantGuardianMfaPageOutputWithContext(ctx context.Context) GetTenantGuardianMfaPageOutput {
+func (o GetTenantSessionOutput) ToGetTenantSessionOutputWithContext(ctx context.Context) GetTenantSessionOutput {
 	return o
 }
 
-func (o GetTenantGuardianMfaPageOutput) ToOutput(ctx context.Context) pulumix.Output[GetTenantGuardianMfaPage] {
-	return pulumix.Output[GetTenantGuardianMfaPage]{
+func (o GetTenantSessionOutput) ToOutput(ctx context.Context) pulumix.Output[GetTenantSession] {
+	return pulumix.Output[GetTenantSession]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o GetTenantGuardianMfaPageOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetTenantGuardianMfaPage) bool { return v.Enabled }).(pulumi.BoolOutput)
+func (o GetTenantSessionOutput) OidcLogoutPromptEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantSession) bool { return v.OidcLogoutPromptEnabled }).(pulumi.BoolOutput)
 }
 
-func (o GetTenantGuardianMfaPageOutput) Html() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTenantGuardianMfaPage) string { return v.Html }).(pulumi.StringOutput)
+type GetTenantSessionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantSessionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantSession)(nil)).Elem()
 }
 
-type GetTenantGuardianMfaPageArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTenantGuardianMfaPageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantGuardianMfaPage)(nil)).Elem()
-}
-
-func (o GetTenantGuardianMfaPageArrayOutput) ToGetTenantGuardianMfaPageArrayOutput() GetTenantGuardianMfaPageArrayOutput {
+func (o GetTenantSessionArrayOutput) ToGetTenantSessionArrayOutput() GetTenantSessionArrayOutput {
 	return o
 }
 
-func (o GetTenantGuardianMfaPageArrayOutput) ToGetTenantGuardianMfaPageArrayOutputWithContext(ctx context.Context) GetTenantGuardianMfaPageArrayOutput {
+func (o GetTenantSessionArrayOutput) ToGetTenantSessionArrayOutputWithContext(ctx context.Context) GetTenantSessionArrayOutput {
 	return o
 }
 
-func (o GetTenantGuardianMfaPageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTenantGuardianMfaPage] {
-	return pulumix.Output[[]GetTenantGuardianMfaPage]{
+func (o GetTenantSessionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTenantSession] {
+	return pulumix.Output[[]GetTenantSession]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o GetTenantGuardianMfaPageArrayOutput) Index(i pulumi.IntInput) GetTenantGuardianMfaPageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantGuardianMfaPage {
-		return vs[0].([]GetTenantGuardianMfaPage)[vs[1].(int)]
-	}).(GetTenantGuardianMfaPageOutput)
+func (o GetTenantSessionArrayOutput) Index(i pulumi.IntInput) GetTenantSessionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantSession {
+		return vs[0].([]GetTenantSession)[vs[1].(int)]
+	}).(GetTenantSessionOutput)
 }
 
 type GetTenantSessionCooky struct {
@@ -30454,248 +35453,6 @@ func (o GetTenantSessionCookyArrayOutput) Index(i pulumi.IntInput) GetTenantSess
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantSessionCooky {
 		return vs[0].([]GetTenantSessionCooky)[vs[1].(int)]
 	}).(GetTenantSessionCookyOutput)
-}
-
-type GetTenantUniversalLogin struct {
-	Colors []GetTenantUniversalLoginColor `pulumi:"colors"`
-}
-
-// GetTenantUniversalLoginInput is an input type that accepts GetTenantUniversalLoginArgs and GetTenantUniversalLoginOutput values.
-// You can construct a concrete instance of `GetTenantUniversalLoginInput` via:
-//
-//	GetTenantUniversalLoginArgs{...}
-type GetTenantUniversalLoginInput interface {
-	pulumi.Input
-
-	ToGetTenantUniversalLoginOutput() GetTenantUniversalLoginOutput
-	ToGetTenantUniversalLoginOutputWithContext(context.Context) GetTenantUniversalLoginOutput
-}
-
-type GetTenantUniversalLoginArgs struct {
-	Colors GetTenantUniversalLoginColorArrayInput `pulumi:"colors"`
-}
-
-func (GetTenantUniversalLoginArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantUniversalLogin)(nil)).Elem()
-}
-
-func (i GetTenantUniversalLoginArgs) ToGetTenantUniversalLoginOutput() GetTenantUniversalLoginOutput {
-	return i.ToGetTenantUniversalLoginOutputWithContext(context.Background())
-}
-
-func (i GetTenantUniversalLoginArgs) ToGetTenantUniversalLoginOutputWithContext(ctx context.Context) GetTenantUniversalLoginOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantUniversalLoginOutput)
-}
-
-func (i GetTenantUniversalLoginArgs) ToOutput(ctx context.Context) pulumix.Output[GetTenantUniversalLogin] {
-	return pulumix.Output[GetTenantUniversalLogin]{
-		OutputState: i.ToGetTenantUniversalLoginOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetTenantUniversalLoginArrayInput is an input type that accepts GetTenantUniversalLoginArray and GetTenantUniversalLoginArrayOutput values.
-// You can construct a concrete instance of `GetTenantUniversalLoginArrayInput` via:
-//
-//	GetTenantUniversalLoginArray{ GetTenantUniversalLoginArgs{...} }
-type GetTenantUniversalLoginArrayInput interface {
-	pulumi.Input
-
-	ToGetTenantUniversalLoginArrayOutput() GetTenantUniversalLoginArrayOutput
-	ToGetTenantUniversalLoginArrayOutputWithContext(context.Context) GetTenantUniversalLoginArrayOutput
-}
-
-type GetTenantUniversalLoginArray []GetTenantUniversalLoginInput
-
-func (GetTenantUniversalLoginArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantUniversalLogin)(nil)).Elem()
-}
-
-func (i GetTenantUniversalLoginArray) ToGetTenantUniversalLoginArrayOutput() GetTenantUniversalLoginArrayOutput {
-	return i.ToGetTenantUniversalLoginArrayOutputWithContext(context.Background())
-}
-
-func (i GetTenantUniversalLoginArray) ToGetTenantUniversalLoginArrayOutputWithContext(ctx context.Context) GetTenantUniversalLoginArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantUniversalLoginArrayOutput)
-}
-
-func (i GetTenantUniversalLoginArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTenantUniversalLogin] {
-	return pulumix.Output[[]GetTenantUniversalLogin]{
-		OutputState: i.ToGetTenantUniversalLoginArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetTenantUniversalLoginOutput struct{ *pulumi.OutputState }
-
-func (GetTenantUniversalLoginOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantUniversalLogin)(nil)).Elem()
-}
-
-func (o GetTenantUniversalLoginOutput) ToGetTenantUniversalLoginOutput() GetTenantUniversalLoginOutput {
-	return o
-}
-
-func (o GetTenantUniversalLoginOutput) ToGetTenantUniversalLoginOutputWithContext(ctx context.Context) GetTenantUniversalLoginOutput {
-	return o
-}
-
-func (o GetTenantUniversalLoginOutput) ToOutput(ctx context.Context) pulumix.Output[GetTenantUniversalLogin] {
-	return pulumix.Output[GetTenantUniversalLogin]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetTenantUniversalLoginOutput) Colors() GetTenantUniversalLoginColorArrayOutput {
-	return o.ApplyT(func(v GetTenantUniversalLogin) []GetTenantUniversalLoginColor { return v.Colors }).(GetTenantUniversalLoginColorArrayOutput)
-}
-
-type GetTenantUniversalLoginArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTenantUniversalLoginArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantUniversalLogin)(nil)).Elem()
-}
-
-func (o GetTenantUniversalLoginArrayOutput) ToGetTenantUniversalLoginArrayOutput() GetTenantUniversalLoginArrayOutput {
-	return o
-}
-
-func (o GetTenantUniversalLoginArrayOutput) ToGetTenantUniversalLoginArrayOutputWithContext(ctx context.Context) GetTenantUniversalLoginArrayOutput {
-	return o
-}
-
-func (o GetTenantUniversalLoginArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTenantUniversalLogin] {
-	return pulumix.Output[[]GetTenantUniversalLogin]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetTenantUniversalLoginArrayOutput) Index(i pulumi.IntInput) GetTenantUniversalLoginOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantUniversalLogin {
-		return vs[0].([]GetTenantUniversalLogin)[vs[1].(int)]
-	}).(GetTenantUniversalLoginOutput)
-}
-
-type GetTenantUniversalLoginColor struct {
-	PageBackground string `pulumi:"pageBackground"`
-	Primary        string `pulumi:"primary"`
-}
-
-// GetTenantUniversalLoginColorInput is an input type that accepts GetTenantUniversalLoginColorArgs and GetTenantUniversalLoginColorOutput values.
-// You can construct a concrete instance of `GetTenantUniversalLoginColorInput` via:
-//
-//	GetTenantUniversalLoginColorArgs{...}
-type GetTenantUniversalLoginColorInput interface {
-	pulumi.Input
-
-	ToGetTenantUniversalLoginColorOutput() GetTenantUniversalLoginColorOutput
-	ToGetTenantUniversalLoginColorOutputWithContext(context.Context) GetTenantUniversalLoginColorOutput
-}
-
-type GetTenantUniversalLoginColorArgs struct {
-	PageBackground pulumi.StringInput `pulumi:"pageBackground"`
-	Primary        pulumi.StringInput `pulumi:"primary"`
-}
-
-func (GetTenantUniversalLoginColorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantUniversalLoginColor)(nil)).Elem()
-}
-
-func (i GetTenantUniversalLoginColorArgs) ToGetTenantUniversalLoginColorOutput() GetTenantUniversalLoginColorOutput {
-	return i.ToGetTenantUniversalLoginColorOutputWithContext(context.Background())
-}
-
-func (i GetTenantUniversalLoginColorArgs) ToGetTenantUniversalLoginColorOutputWithContext(ctx context.Context) GetTenantUniversalLoginColorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantUniversalLoginColorOutput)
-}
-
-func (i GetTenantUniversalLoginColorArgs) ToOutput(ctx context.Context) pulumix.Output[GetTenantUniversalLoginColor] {
-	return pulumix.Output[GetTenantUniversalLoginColor]{
-		OutputState: i.ToGetTenantUniversalLoginColorOutputWithContext(ctx).OutputState,
-	}
-}
-
-// GetTenantUniversalLoginColorArrayInput is an input type that accepts GetTenantUniversalLoginColorArray and GetTenantUniversalLoginColorArrayOutput values.
-// You can construct a concrete instance of `GetTenantUniversalLoginColorArrayInput` via:
-//
-//	GetTenantUniversalLoginColorArray{ GetTenantUniversalLoginColorArgs{...} }
-type GetTenantUniversalLoginColorArrayInput interface {
-	pulumi.Input
-
-	ToGetTenantUniversalLoginColorArrayOutput() GetTenantUniversalLoginColorArrayOutput
-	ToGetTenantUniversalLoginColorArrayOutputWithContext(context.Context) GetTenantUniversalLoginColorArrayOutput
-}
-
-type GetTenantUniversalLoginColorArray []GetTenantUniversalLoginColorInput
-
-func (GetTenantUniversalLoginColorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantUniversalLoginColor)(nil)).Elem()
-}
-
-func (i GetTenantUniversalLoginColorArray) ToGetTenantUniversalLoginColorArrayOutput() GetTenantUniversalLoginColorArrayOutput {
-	return i.ToGetTenantUniversalLoginColorArrayOutputWithContext(context.Background())
-}
-
-func (i GetTenantUniversalLoginColorArray) ToGetTenantUniversalLoginColorArrayOutputWithContext(ctx context.Context) GetTenantUniversalLoginColorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantUniversalLoginColorArrayOutput)
-}
-
-func (i GetTenantUniversalLoginColorArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTenantUniversalLoginColor] {
-	return pulumix.Output[[]GetTenantUniversalLoginColor]{
-		OutputState: i.ToGetTenantUniversalLoginColorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type GetTenantUniversalLoginColorOutput struct{ *pulumi.OutputState }
-
-func (GetTenantUniversalLoginColorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantUniversalLoginColor)(nil)).Elem()
-}
-
-func (o GetTenantUniversalLoginColorOutput) ToGetTenantUniversalLoginColorOutput() GetTenantUniversalLoginColorOutput {
-	return o
-}
-
-func (o GetTenantUniversalLoginColorOutput) ToGetTenantUniversalLoginColorOutputWithContext(ctx context.Context) GetTenantUniversalLoginColorOutput {
-	return o
-}
-
-func (o GetTenantUniversalLoginColorOutput) ToOutput(ctx context.Context) pulumix.Output[GetTenantUniversalLoginColor] {
-	return pulumix.Output[GetTenantUniversalLoginColor]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetTenantUniversalLoginColorOutput) PageBackground() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTenantUniversalLoginColor) string { return v.PageBackground }).(pulumi.StringOutput)
-}
-
-func (o GetTenantUniversalLoginColorOutput) Primary() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTenantUniversalLoginColor) string { return v.Primary }).(pulumi.StringOutput)
-}
-
-type GetTenantUniversalLoginColorArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTenantUniversalLoginColorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantUniversalLoginColor)(nil)).Elem()
-}
-
-func (o GetTenantUniversalLoginColorArrayOutput) ToGetTenantUniversalLoginColorArrayOutput() GetTenantUniversalLoginColorArrayOutput {
-	return o
-}
-
-func (o GetTenantUniversalLoginColorArrayOutput) ToGetTenantUniversalLoginColorArrayOutputWithContext(ctx context.Context) GetTenantUniversalLoginColorArrayOutput {
-	return o
-}
-
-func (o GetTenantUniversalLoginColorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTenantUniversalLoginColor] {
-	return pulumix.Output[[]GetTenantUniversalLoginColor]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o GetTenantUniversalLoginColorArrayOutput) Index(i pulumi.IntInput) GetTenantUniversalLoginColorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantUniversalLoginColor {
-		return vs[0].([]GetTenantUniversalLoginColor)[vs[1].(int)]
-	}).(GetTenantUniversalLoginColorOutput)
 }
 
 type GetUserPermissionType struct {
@@ -30886,8 +35643,66 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingUniversalLoginPtrInput)(nil)).Elem(), BrandingUniversalLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsInput)(nil)).Elem(), ClientAddonsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsPtrInput)(nil)).Elem(), ClientAddonsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsAwsInput)(nil)).Elem(), ClientAddonsAwsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsAwsPtrInput)(nil)).Elem(), ClientAddonsAwsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsAzureBlobInput)(nil)).Elem(), ClientAddonsAzureBlobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsAzureBlobPtrInput)(nil)).Elem(), ClientAddonsAzureBlobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsAzureSbInput)(nil)).Elem(), ClientAddonsAzureSbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsAzureSbPtrInput)(nil)).Elem(), ClientAddonsAzureSbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsBoxInput)(nil)).Elem(), ClientAddonsBoxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsBoxPtrInput)(nil)).Elem(), ClientAddonsBoxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsCloudbeesInput)(nil)).Elem(), ClientAddonsCloudbeesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsCloudbeesPtrInput)(nil)).Elem(), ClientAddonsCloudbeesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsConcurInput)(nil)).Elem(), ClientAddonsConcurArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsConcurPtrInput)(nil)).Elem(), ClientAddonsConcurArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsDropboxInput)(nil)).Elem(), ClientAddonsDropboxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsDropboxPtrInput)(nil)).Elem(), ClientAddonsDropboxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsEchosignInput)(nil)).Elem(), ClientAddonsEchosignArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsEchosignPtrInput)(nil)).Elem(), ClientAddonsEchosignArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsEgnyteInput)(nil)).Elem(), ClientAddonsEgnyteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsEgnytePtrInput)(nil)).Elem(), ClientAddonsEgnyteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsFirebaseInput)(nil)).Elem(), ClientAddonsFirebaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsFirebasePtrInput)(nil)).Elem(), ClientAddonsFirebaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsLayerInput)(nil)).Elem(), ClientAddonsLayerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsLayerPtrInput)(nil)).Elem(), ClientAddonsLayerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsMscrmInput)(nil)).Elem(), ClientAddonsMscrmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsMscrmPtrInput)(nil)).Elem(), ClientAddonsMscrmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsNewrelicInput)(nil)).Elem(), ClientAddonsNewrelicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsNewrelicPtrInput)(nil)).Elem(), ClientAddonsNewrelicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsOffice365Input)(nil)).Elem(), ClientAddonsOffice365Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsOffice365PtrInput)(nil)).Elem(), ClientAddonsOffice365Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsRmsInput)(nil)).Elem(), ClientAddonsRmsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsRmsPtrInput)(nil)).Elem(), ClientAddonsRmsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSalesforceInput)(nil)).Elem(), ClientAddonsSalesforceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSalesforcePtrInput)(nil)).Elem(), ClientAddonsSalesforceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSalesforceApiInput)(nil)).Elem(), ClientAddonsSalesforceApiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSalesforceApiPtrInput)(nil)).Elem(), ClientAddonsSalesforceApiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSalesforceSandboxApiInput)(nil)).Elem(), ClientAddonsSalesforceSandboxApiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSalesforceSandboxApiPtrInput)(nil)).Elem(), ClientAddonsSalesforceSandboxApiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSamlpInput)(nil)).Elem(), ClientAddonsSamlpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSamlpPtrInput)(nil)).Elem(), ClientAddonsSamlpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSamlpLogoutInput)(nil)).Elem(), ClientAddonsSamlpLogoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSamlpLogoutPtrInput)(nil)).Elem(), ClientAddonsSamlpLogoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSapApiInput)(nil)).Elem(), ClientAddonsSapApiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSapApiPtrInput)(nil)).Elem(), ClientAddonsSapApiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSentryInput)(nil)).Elem(), ClientAddonsSentryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSentryPtrInput)(nil)).Elem(), ClientAddonsSentryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSharepointInput)(nil)).Elem(), ClientAddonsSharepointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSharepointPtrInput)(nil)).Elem(), ClientAddonsSharepointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSlackInput)(nil)).Elem(), ClientAddonsSlackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSlackPtrInput)(nil)).Elem(), ClientAddonsSlackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSpringcmInput)(nil)).Elem(), ClientAddonsSpringcmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSpringcmPtrInput)(nil)).Elem(), ClientAddonsSpringcmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSsoIntegrationInput)(nil)).Elem(), ClientAddonsSsoIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSsoIntegrationPtrInput)(nil)).Elem(), ClientAddonsSsoIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsWamsInput)(nil)).Elem(), ClientAddonsWamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsWamsPtrInput)(nil)).Elem(), ClientAddonsWamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsWsfedInput)(nil)).Elem(), ClientAddonsWsfedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsWsfedPtrInput)(nil)).Elem(), ClientAddonsWsfedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsZendeskInput)(nil)).Elem(), ClientAddonsZendeskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsZendeskPtrInput)(nil)).Elem(), ClientAddonsZendeskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsZoomInput)(nil)).Elem(), ClientAddonsZoomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsZoomPtrInput)(nil)).Elem(), ClientAddonsZoomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsPrivateKeyJwtInput)(nil)).Elem(), ClientCredentialsPrivateKeyJwtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsPrivateKeyJwtPtrInput)(nil)).Elem(), ClientCredentialsPrivateKeyJwtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsPrivateKeyJwtCredentialInput)(nil)).Elem(), ClientCredentialsPrivateKeyJwtCredentialArgs{})
@@ -30910,6 +35725,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientRefreshTokenPtrInput)(nil)).Elem(), ClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsInput)(nil)).Elem(), ConnectionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPtrInput)(nil)).Elem(), ConnectionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeMapInput)(nil)).Elem(), ConnectionOptionsAttributeMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeMapPtrInput)(nil)).Elem(), ConnectionOptionsAttributeMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsConnectionSettingsInput)(nil)).Elem(), ConnectionOptionsConnectionSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsConnectionSettingsPtrInput)(nil)).Elem(), ConnectionOptionsConnectionSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsDecryptionKeyInput)(nil)).Elem(), ConnectionOptionsDecryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsDecryptionKeyPtrInput)(nil)).Elem(), ConnectionOptionsDecryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsGatewayAuthenticationInput)(nil)).Elem(), ConnectionOptionsGatewayAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsGatewayAuthenticationPtrInput)(nil)).Elem(), ConnectionOptionsGatewayAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsIdpInitiatedInput)(nil)).Elem(), ConnectionOptionsIdpInitiatedArgs{})
@@ -30934,34 +35755,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationUsernamePtrInput)(nil)).Elem(), ConnectionOptionsValidationUsernameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationTypeInput)(nil)).Elem(), CustomDomainVerificationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationTypeArrayInput)(nil)).Elem(), CustomDomainVerificationTypeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailCredentialsInput)(nil)).Elem(), EmailCredentialsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailCredentialsPtrInput)(nil)).Elem(), EmailCredentialsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailSettingsInput)(nil)).Elem(), EmailSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailSettingsPtrInput)(nil)).Elem(), EmailSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailSettingsHeadersInput)(nil)).Elem(), EmailSettingsHeadersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailSettingsHeadersPtrInput)(nil)).Elem(), EmailSettingsHeadersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailSettingsMessageInput)(nil)).Elem(), EmailSettingsMessageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailSettingsMessagePtrInput)(nil)).Elem(), EmailSettingsMessageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsInput)(nil)).Elem(), GlobalClientAddonsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsPtrInput)(nil)).Elem(), GlobalClientAddonsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsSamlpInput)(nil)).Elem(), GlobalClientAddonsSamlpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsSamlpPtrInput)(nil)).Elem(), GlobalClientAddonsSamlpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientJwtConfigurationInput)(nil)).Elem(), GlobalClientJwtConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientJwtConfigurationPtrInput)(nil)).Elem(), GlobalClientJwtConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientMobileInput)(nil)).Elem(), GlobalClientMobileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientMobilePtrInput)(nil)).Elem(), GlobalClientMobileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientMobileAndroidInput)(nil)).Elem(), GlobalClientMobileAndroidArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientMobileAndroidPtrInput)(nil)).Elem(), GlobalClientMobileAndroidArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientMobileIosInput)(nil)).Elem(), GlobalClientMobileIosArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientMobileIosPtrInput)(nil)).Elem(), GlobalClientMobileIosArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientNativeSocialLoginInput)(nil)).Elem(), GlobalClientNativeSocialLoginArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientNativeSocialLoginPtrInput)(nil)).Elem(), GlobalClientNativeSocialLoginArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientNativeSocialLoginAppleInput)(nil)).Elem(), GlobalClientNativeSocialLoginAppleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientNativeSocialLoginApplePtrInput)(nil)).Elem(), GlobalClientNativeSocialLoginAppleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientNativeSocialLoginFacebookInput)(nil)).Elem(), GlobalClientNativeSocialLoginFacebookArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientNativeSocialLoginFacebookPtrInput)(nil)).Elem(), GlobalClientNativeSocialLoginFacebookArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientRefreshTokenInput)(nil)).Elem(), GlobalClientRefreshTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientRefreshTokenPtrInput)(nil)).Elem(), GlobalClientRefreshTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailProviderCredentialsInput)(nil)).Elem(), EmailProviderCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailProviderCredentialsPtrInput)(nil)).Elem(), EmailProviderCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailProviderSettingsInput)(nil)).Elem(), EmailProviderSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailProviderSettingsPtrInput)(nil)).Elem(), EmailProviderSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailProviderSettingsHeadersInput)(nil)).Elem(), EmailProviderSettingsHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailProviderSettingsHeadersPtrInput)(nil)).Elem(), EmailProviderSettingsHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailProviderSettingsMessageInput)(nil)).Elem(), EmailProviderSettingsMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailProviderSettingsMessagePtrInput)(nil)).Elem(), EmailProviderSettingsMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianDuoInput)(nil)).Elem(), GuardianDuoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianDuoPtrInput)(nil)).Elem(), GuardianDuoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPhoneInput)(nil)).Elem(), GuardianPhoneArgs{})
@@ -30996,34 +35797,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesGuardianMfaPtrInput)(nil)).Elem(), PagesGuardianMfaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesLoginInput)(nil)).Elem(), PagesLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesLoginPtrInput)(nil)).Elem(), PagesLoginArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeTypeInput)(nil)).Elem(), ResourceServerScopeTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeTypeArrayInput)(nil)).Elem(), ResourceServerScopeTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopesScopeInput)(nil)).Elem(), ResourceServerScopesScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopesScopeArrayInput)(nil)).Elem(), ResourceServerScopesScopeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionTypeInput)(nil)).Elem(), RolePermissionTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionTypeArrayInput)(nil)).Elem(), RolePermissionTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionsPermissionInput)(nil)).Elem(), RolePermissionsPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionsPermissionArrayInput)(nil)).Elem(), RolePermissionsPermissionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TenantChangePasswordInput)(nil)).Elem(), TenantChangePasswordArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TenantChangePasswordPtrInput)(nil)).Elem(), TenantChangePasswordArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TenantErrorPageInput)(nil)).Elem(), TenantErrorPageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TenantErrorPagePtrInput)(nil)).Elem(), TenantErrorPageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantFlagsInput)(nil)).Elem(), TenantFlagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantFlagsPtrInput)(nil)).Elem(), TenantFlagsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TenantGuardianMfaPageInput)(nil)).Elem(), TenantGuardianMfaPageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TenantGuardianMfaPagePtrInput)(nil)).Elem(), TenantGuardianMfaPageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantSessionCookieInput)(nil)).Elem(), TenantSessionCookieArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantSessionCookiePtrInput)(nil)).Elem(), TenantSessionCookieArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginInput)(nil)).Elem(), TenantUniversalLoginArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginPtrInput)(nil)).Elem(), TenantUniversalLoginArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginColorsInput)(nil)).Elem(), TenantUniversalLoginColorsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginColorsPtrInput)(nil)).Elem(), TenantUniversalLoginColorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantSessionsInput)(nil)).Elem(), TenantSessionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantSessionsPtrInput)(nil)).Elem(), TenantSessionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerActionsActionInput)(nil)).Elem(), TriggerActionsActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerActionsActionArrayInput)(nil)).Elem(), TriggerActionsActionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBindingActionInput)(nil)).Elem(), TriggerBindingActionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBindingActionArrayInput)(nil)).Elem(), TriggerBindingActionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UserPermissionTypeInput)(nil)).Elem(), UserPermissionTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UserPermissionTypeArrayInput)(nil)).Elem(), UserPermissionTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPermissionsPermissionInput)(nil)).Elem(), UserPermissionsPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPermissionsPermissionArrayInput)(nil)).Elem(), UserPermissionsPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionArgs{})
@@ -31068,8 +35853,66 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingUniversalLoginArrayInput)(nil)).Elem(), GetBrandingUniversalLoginArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonInput)(nil)).Elem(), GetClientAddonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonArrayInput)(nil)).Elem(), GetClientAddonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonAwInput)(nil)).Elem(), GetClientAddonAwArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonAwArrayInput)(nil)).Elem(), GetClientAddonAwArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonAzureBlobInput)(nil)).Elem(), GetClientAddonAzureBlobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonAzureBlobArrayInput)(nil)).Elem(), GetClientAddonAzureBlobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonAzureSbInput)(nil)).Elem(), GetClientAddonAzureSbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonAzureSbArrayInput)(nil)).Elem(), GetClientAddonAzureSbArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonBoxInput)(nil)).Elem(), GetClientAddonBoxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonBoxArrayInput)(nil)).Elem(), GetClientAddonBoxArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonCloudbeeInput)(nil)).Elem(), GetClientAddonCloudbeeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonCloudbeeArrayInput)(nil)).Elem(), GetClientAddonCloudbeeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonConcurInput)(nil)).Elem(), GetClientAddonConcurArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonConcurArrayInput)(nil)).Elem(), GetClientAddonConcurArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonDropboxInput)(nil)).Elem(), GetClientAddonDropboxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonDropboxArrayInput)(nil)).Elem(), GetClientAddonDropboxArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonEchosignInput)(nil)).Elem(), GetClientAddonEchosignArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonEchosignArrayInput)(nil)).Elem(), GetClientAddonEchosignArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonEgnyteInput)(nil)).Elem(), GetClientAddonEgnyteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonEgnyteArrayInput)(nil)).Elem(), GetClientAddonEgnyteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonFirebaseInput)(nil)).Elem(), GetClientAddonFirebaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonFirebaseArrayInput)(nil)).Elem(), GetClientAddonFirebaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonLayerInput)(nil)).Elem(), GetClientAddonLayerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonLayerArrayInput)(nil)).Elem(), GetClientAddonLayerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonMscrmInput)(nil)).Elem(), GetClientAddonMscrmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonMscrmArrayInput)(nil)).Elem(), GetClientAddonMscrmArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonNewrelicInput)(nil)).Elem(), GetClientAddonNewrelicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonNewrelicArrayInput)(nil)).Elem(), GetClientAddonNewrelicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonOffice365Input)(nil)).Elem(), GetClientAddonOffice365Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonOffice365ArrayInput)(nil)).Elem(), GetClientAddonOffice365Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonRmInput)(nil)).Elem(), GetClientAddonRmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonRmArrayInput)(nil)).Elem(), GetClientAddonRmArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSalesforceInput)(nil)).Elem(), GetClientAddonSalesforceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSalesforceArrayInput)(nil)).Elem(), GetClientAddonSalesforceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSalesforceApiInput)(nil)).Elem(), GetClientAddonSalesforceApiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSalesforceApiArrayInput)(nil)).Elem(), GetClientAddonSalesforceApiArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSalesforceSandboxApiInput)(nil)).Elem(), GetClientAddonSalesforceSandboxApiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSalesforceSandboxApiArrayInput)(nil)).Elem(), GetClientAddonSalesforceSandboxApiArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSamlpInput)(nil)).Elem(), GetClientAddonSamlpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSamlpArrayInput)(nil)).Elem(), GetClientAddonSamlpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSamlpLogoutInput)(nil)).Elem(), GetClientAddonSamlpLogoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSamlpLogoutArrayInput)(nil)).Elem(), GetClientAddonSamlpLogoutArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSapApiInput)(nil)).Elem(), GetClientAddonSapApiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSapApiArrayInput)(nil)).Elem(), GetClientAddonSapApiArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSentryInput)(nil)).Elem(), GetClientAddonSentryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSentryArrayInput)(nil)).Elem(), GetClientAddonSentryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSharepointInput)(nil)).Elem(), GetClientAddonSharepointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSharepointArrayInput)(nil)).Elem(), GetClientAddonSharepointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSlackInput)(nil)).Elem(), GetClientAddonSlackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSlackArrayInput)(nil)).Elem(), GetClientAddonSlackArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSpringcmInput)(nil)).Elem(), GetClientAddonSpringcmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSpringcmArrayInput)(nil)).Elem(), GetClientAddonSpringcmArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSsoIntegrationInput)(nil)).Elem(), GetClientAddonSsoIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSsoIntegrationArrayInput)(nil)).Elem(), GetClientAddonSsoIntegrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonWamInput)(nil)).Elem(), GetClientAddonWamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonWamArrayInput)(nil)).Elem(), GetClientAddonWamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonWsfedInput)(nil)).Elem(), GetClientAddonWsfedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonWsfedArrayInput)(nil)).Elem(), GetClientAddonWsfedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonZendeskInput)(nil)).Elem(), GetClientAddonZendeskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonZendeskArrayInput)(nil)).Elem(), GetClientAddonZendeskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonZoomInput)(nil)).Elem(), GetClientAddonZoomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonZoomArrayInput)(nil)).Elem(), GetClientAddonZoomArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientJwtConfigurationInput)(nil)).Elem(), GetClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientJwtConfigurationArrayInput)(nil)).Elem(), GetClientJwtConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientMobileInput)(nil)).Elem(), GetClientMobileArgs{})
@@ -31088,6 +35931,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientRefreshTokenArrayInput)(nil)).Elem(), GetClientRefreshTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionInput)(nil)).Elem(), GetConnectionOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionArrayInput)(nil)).Elem(), GetConnectionOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeMapInput)(nil)).Elem(), GetConnectionOptionAttributeMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeMapArrayInput)(nil)).Elem(), GetConnectionOptionAttributeMapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionConnectionSettingInput)(nil)).Elem(), GetConnectionOptionConnectionSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionConnectionSettingArrayInput)(nil)).Elem(), GetConnectionOptionConnectionSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionDecryptionKeyInput)(nil)).Elem(), GetConnectionOptionDecryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionDecryptionKeyArrayInput)(nil)).Elem(), GetConnectionOptionDecryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionGatewayAuthenticationInput)(nil)).Elem(), GetConnectionOptionGatewayAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionGatewayAuthenticationArrayInput)(nil)).Elem(), GetConnectionOptionGatewayAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionIdpInitiatedInput)(nil)).Elem(), GetConnectionOptionIdpInitiatedArgs{})
@@ -31112,48 +35961,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationUsernameArrayInput)(nil)).Elem(), GetConnectionOptionValidationUsernameArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeInput)(nil)).Elem(), GetCustomDomainVerificationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeArrayInput)(nil)).Elem(), GetCustomDomainVerificationTypeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonInput)(nil)).Elem(), GetGlobalClientAddonArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonArrayInput)(nil)).Elem(), GetGlobalClientAddonArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonSamlpInput)(nil)).Elem(), GetGlobalClientAddonSamlpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonSamlpArrayInput)(nil)).Elem(), GetGlobalClientAddonSamlpArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientJwtConfigurationInput)(nil)).Elem(), GetGlobalClientJwtConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientJwtConfigurationArrayInput)(nil)).Elem(), GetGlobalClientJwtConfigurationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientMobileInput)(nil)).Elem(), GetGlobalClientMobileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientMobileArrayInput)(nil)).Elem(), GetGlobalClientMobileArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientMobileAndroidInput)(nil)).Elem(), GetGlobalClientMobileAndroidArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientMobileAndroidArrayInput)(nil)).Elem(), GetGlobalClientMobileAndroidArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientMobileIoInput)(nil)).Elem(), GetGlobalClientMobileIoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientMobileIoArrayInput)(nil)).Elem(), GetGlobalClientMobileIoArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientNativeSocialLoginInput)(nil)).Elem(), GetGlobalClientNativeSocialLoginArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientNativeSocialLoginArrayInput)(nil)).Elem(), GetGlobalClientNativeSocialLoginArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientNativeSocialLoginAppleInput)(nil)).Elem(), GetGlobalClientNativeSocialLoginAppleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientNativeSocialLoginAppleArrayInput)(nil)).Elem(), GetGlobalClientNativeSocialLoginAppleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientNativeSocialLoginFacebookInput)(nil)).Elem(), GetGlobalClientNativeSocialLoginFacebookArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientNativeSocialLoginFacebookArrayInput)(nil)).Elem(), GetGlobalClientNativeSocialLoginFacebookArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientRefreshTokenInput)(nil)).Elem(), GetGlobalClientRefreshTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientRefreshTokenArrayInput)(nil)).Elem(), GetGlobalClientRefreshTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBrandingInput)(nil)).Elem(), GetOrganizationBrandingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBrandingArrayInput)(nil)).Elem(), GetOrganizationBrandingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationConnectionTypeInput)(nil)).Elem(), GetOrganizationConnectionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationConnectionTypeArrayInput)(nil)).Elem(), GetOrganizationConnectionTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesChangePasswordInput)(nil)).Elem(), GetPagesChangePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesChangePasswordArrayInput)(nil)).Elem(), GetPagesChangePasswordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesErrorInput)(nil)).Elem(), GetPagesErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesErrorArrayInput)(nil)).Elem(), GetPagesErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesGuardianMfaInput)(nil)).Elem(), GetPagesGuardianMfaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesGuardianMfaArrayInput)(nil)).Elem(), GetPagesGuardianMfaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesLoginInput)(nil)).Elem(), GetPagesLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesLoginArrayInput)(nil)).Elem(), GetPagesLoginArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeTypeInput)(nil)).Elem(), GetResourceServerScopeTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeTypeArrayInput)(nil)).Elem(), GetResourceServerScopeTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionTypeInput)(nil)).Elem(), GetRolePermissionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionTypeArrayInput)(nil)).Elem(), GetRolePermissionTypeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantChangePasswordInput)(nil)).Elem(), GetTenantChangePasswordArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantChangePasswordArrayInput)(nil)).Elem(), GetTenantChangePasswordArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantErrorPageInput)(nil)).Elem(), GetTenantErrorPageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantErrorPageArrayInput)(nil)).Elem(), GetTenantErrorPageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSigningKeysSigningKeyInput)(nil)).Elem(), GetSigningKeysSigningKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSigningKeysSigningKeyArrayInput)(nil)).Elem(), GetSigningKeysSigningKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantFlagInput)(nil)).Elem(), GetTenantFlagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantFlagArrayInput)(nil)).Elem(), GetTenantFlagArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantGuardianMfaPageInput)(nil)).Elem(), GetTenantGuardianMfaPageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantGuardianMfaPageArrayInput)(nil)).Elem(), GetTenantGuardianMfaPageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionInput)(nil)).Elem(), GetTenantSessionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionArrayInput)(nil)).Elem(), GetTenantSessionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionCookyInput)(nil)).Elem(), GetTenantSessionCookyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionCookyArrayInput)(nil)).Elem(), GetTenantSessionCookyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantUniversalLoginInput)(nil)).Elem(), GetTenantUniversalLoginArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantUniversalLoginArrayInput)(nil)).Elem(), GetTenantUniversalLoginArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantUniversalLoginColorInput)(nil)).Elem(), GetTenantUniversalLoginColorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantUniversalLoginColorArrayInput)(nil)).Elem(), GetTenantUniversalLoginColorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeInput)(nil)).Elem(), GetUserPermissionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeArrayInput)(nil)).Elem(), GetUserPermissionTypeArray{})
 	pulumi.RegisterOutputType(ActionDependencyOutput{})
@@ -31204,8 +36035,66 @@ func init() {
 	pulumi.RegisterOutputType(BrandingUniversalLoginPtrOutput{})
 	pulumi.RegisterOutputType(ClientAddonsOutput{})
 	pulumi.RegisterOutputType(ClientAddonsPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsAwsOutput{})
+	pulumi.RegisterOutputType(ClientAddonsAwsPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsAzureBlobOutput{})
+	pulumi.RegisterOutputType(ClientAddonsAzureBlobPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsAzureSbOutput{})
+	pulumi.RegisterOutputType(ClientAddonsAzureSbPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsBoxOutput{})
+	pulumi.RegisterOutputType(ClientAddonsBoxPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsCloudbeesOutput{})
+	pulumi.RegisterOutputType(ClientAddonsCloudbeesPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsConcurOutput{})
+	pulumi.RegisterOutputType(ClientAddonsConcurPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsDropboxOutput{})
+	pulumi.RegisterOutputType(ClientAddonsDropboxPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsEchosignOutput{})
+	pulumi.RegisterOutputType(ClientAddonsEchosignPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsEgnyteOutput{})
+	pulumi.RegisterOutputType(ClientAddonsEgnytePtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsFirebaseOutput{})
+	pulumi.RegisterOutputType(ClientAddonsFirebasePtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsLayerOutput{})
+	pulumi.RegisterOutputType(ClientAddonsLayerPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsMscrmOutput{})
+	pulumi.RegisterOutputType(ClientAddonsMscrmPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsNewrelicOutput{})
+	pulumi.RegisterOutputType(ClientAddonsNewrelicPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsOffice365Output{})
+	pulumi.RegisterOutputType(ClientAddonsOffice365PtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsRmsOutput{})
+	pulumi.RegisterOutputType(ClientAddonsRmsPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSalesforceOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSalesforcePtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSalesforceApiOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSalesforceApiPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSalesforceSandboxApiOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSalesforceSandboxApiPtrOutput{})
 	pulumi.RegisterOutputType(ClientAddonsSamlpOutput{})
 	pulumi.RegisterOutputType(ClientAddonsSamlpPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSamlpLogoutOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSamlpLogoutPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSapApiOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSapApiPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSentryOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSentryPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSharepointOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSharepointPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSlackOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSlackPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSpringcmOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSpringcmPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSsoIntegrationOutput{})
+	pulumi.RegisterOutputType(ClientAddonsSsoIntegrationPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsWamsOutput{})
+	pulumi.RegisterOutputType(ClientAddonsWamsPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsWsfedOutput{})
+	pulumi.RegisterOutputType(ClientAddonsWsfedPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsZendeskOutput{})
+	pulumi.RegisterOutputType(ClientAddonsZendeskPtrOutput{})
+	pulumi.RegisterOutputType(ClientAddonsZoomOutput{})
+	pulumi.RegisterOutputType(ClientAddonsZoomPtrOutput{})
 	pulumi.RegisterOutputType(ClientCredentialsPrivateKeyJwtOutput{})
 	pulumi.RegisterOutputType(ClientCredentialsPrivateKeyJwtPtrOutput{})
 	pulumi.RegisterOutputType(ClientCredentialsPrivateKeyJwtCredentialOutput{})
@@ -31228,6 +36117,12 @@ func init() {
 	pulumi.RegisterOutputType(ClientRefreshTokenPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeMapOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeMapPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsConnectionSettingsOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsConnectionSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsDecryptionKeyOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsDecryptionKeyPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsGatewayAuthenticationOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsGatewayAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsIdpInitiatedOutput{})
@@ -31252,34 +36147,14 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionOptionsValidationUsernamePtrOutput{})
 	pulumi.RegisterOutputType(CustomDomainVerificationTypeOutput{})
 	pulumi.RegisterOutputType(CustomDomainVerificationTypeArrayOutput{})
-	pulumi.RegisterOutputType(EmailCredentialsOutput{})
-	pulumi.RegisterOutputType(EmailCredentialsPtrOutput{})
-	pulumi.RegisterOutputType(EmailSettingsOutput{})
-	pulumi.RegisterOutputType(EmailSettingsPtrOutput{})
-	pulumi.RegisterOutputType(EmailSettingsHeadersOutput{})
-	pulumi.RegisterOutputType(EmailSettingsHeadersPtrOutput{})
-	pulumi.RegisterOutputType(EmailSettingsMessageOutput{})
-	pulumi.RegisterOutputType(EmailSettingsMessagePtrOutput{})
-	pulumi.RegisterOutputType(GlobalClientAddonsOutput{})
-	pulumi.RegisterOutputType(GlobalClientAddonsPtrOutput{})
-	pulumi.RegisterOutputType(GlobalClientAddonsSamlpOutput{})
-	pulumi.RegisterOutputType(GlobalClientAddonsSamlpPtrOutput{})
-	pulumi.RegisterOutputType(GlobalClientJwtConfigurationOutput{})
-	pulumi.RegisterOutputType(GlobalClientJwtConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(GlobalClientMobileOutput{})
-	pulumi.RegisterOutputType(GlobalClientMobilePtrOutput{})
-	pulumi.RegisterOutputType(GlobalClientMobileAndroidOutput{})
-	pulumi.RegisterOutputType(GlobalClientMobileAndroidPtrOutput{})
-	pulumi.RegisterOutputType(GlobalClientMobileIosOutput{})
-	pulumi.RegisterOutputType(GlobalClientMobileIosPtrOutput{})
-	pulumi.RegisterOutputType(GlobalClientNativeSocialLoginOutput{})
-	pulumi.RegisterOutputType(GlobalClientNativeSocialLoginPtrOutput{})
-	pulumi.RegisterOutputType(GlobalClientNativeSocialLoginAppleOutput{})
-	pulumi.RegisterOutputType(GlobalClientNativeSocialLoginApplePtrOutput{})
-	pulumi.RegisterOutputType(GlobalClientNativeSocialLoginFacebookOutput{})
-	pulumi.RegisterOutputType(GlobalClientNativeSocialLoginFacebookPtrOutput{})
-	pulumi.RegisterOutputType(GlobalClientRefreshTokenOutput{})
-	pulumi.RegisterOutputType(GlobalClientRefreshTokenPtrOutput{})
+	pulumi.RegisterOutputType(EmailProviderCredentialsOutput{})
+	pulumi.RegisterOutputType(EmailProviderCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(EmailProviderSettingsOutput{})
+	pulumi.RegisterOutputType(EmailProviderSettingsPtrOutput{})
+	pulumi.RegisterOutputType(EmailProviderSettingsHeadersOutput{})
+	pulumi.RegisterOutputType(EmailProviderSettingsHeadersPtrOutput{})
+	pulumi.RegisterOutputType(EmailProviderSettingsMessageOutput{})
+	pulumi.RegisterOutputType(EmailProviderSettingsMessagePtrOutput{})
 	pulumi.RegisterOutputType(GuardianDuoOutput{})
 	pulumi.RegisterOutputType(GuardianDuoPtrOutput{})
 	pulumi.RegisterOutputType(GuardianPhoneOutput{})
@@ -31314,34 +36189,18 @@ func init() {
 	pulumi.RegisterOutputType(PagesGuardianMfaPtrOutput{})
 	pulumi.RegisterOutputType(PagesLoginOutput{})
 	pulumi.RegisterOutputType(PagesLoginPtrOutput{})
-	pulumi.RegisterOutputType(ResourceServerScopeTypeOutput{})
-	pulumi.RegisterOutputType(ResourceServerScopeTypeArrayOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopesScopeOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopesScopeArrayOutput{})
-	pulumi.RegisterOutputType(RolePermissionTypeOutput{})
-	pulumi.RegisterOutputType(RolePermissionTypeArrayOutput{})
 	pulumi.RegisterOutputType(RolePermissionsPermissionOutput{})
 	pulumi.RegisterOutputType(RolePermissionsPermissionArrayOutput{})
-	pulumi.RegisterOutputType(TenantChangePasswordOutput{})
-	pulumi.RegisterOutputType(TenantChangePasswordPtrOutput{})
-	pulumi.RegisterOutputType(TenantErrorPageOutput{})
-	pulumi.RegisterOutputType(TenantErrorPagePtrOutput{})
 	pulumi.RegisterOutputType(TenantFlagsOutput{})
 	pulumi.RegisterOutputType(TenantFlagsPtrOutput{})
-	pulumi.RegisterOutputType(TenantGuardianMfaPageOutput{})
-	pulumi.RegisterOutputType(TenantGuardianMfaPagePtrOutput{})
 	pulumi.RegisterOutputType(TenantSessionCookieOutput{})
 	pulumi.RegisterOutputType(TenantSessionCookiePtrOutput{})
-	pulumi.RegisterOutputType(TenantUniversalLoginOutput{})
-	pulumi.RegisterOutputType(TenantUniversalLoginPtrOutput{})
-	pulumi.RegisterOutputType(TenantUniversalLoginColorsOutput{})
-	pulumi.RegisterOutputType(TenantUniversalLoginColorsPtrOutput{})
+	pulumi.RegisterOutputType(TenantSessionsOutput{})
+	pulumi.RegisterOutputType(TenantSessionsPtrOutput{})
 	pulumi.RegisterOutputType(TriggerActionsActionOutput{})
 	pulumi.RegisterOutputType(TriggerActionsActionArrayOutput{})
-	pulumi.RegisterOutputType(TriggerBindingActionOutput{})
-	pulumi.RegisterOutputType(TriggerBindingActionArrayOutput{})
-	pulumi.RegisterOutputType(UserPermissionTypeOutput{})
-	pulumi.RegisterOutputType(UserPermissionTypeArrayOutput{})
 	pulumi.RegisterOutputType(UserPermissionsPermissionOutput{})
 	pulumi.RegisterOutputType(UserPermissionsPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionOutput{})
@@ -31386,8 +36245,66 @@ func init() {
 	pulumi.RegisterOutputType(GetBrandingUniversalLoginArrayOutput{})
 	pulumi.RegisterOutputType(GetClientAddonOutput{})
 	pulumi.RegisterOutputType(GetClientAddonArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonAwOutput{})
+	pulumi.RegisterOutputType(GetClientAddonAwArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonAzureBlobOutput{})
+	pulumi.RegisterOutputType(GetClientAddonAzureBlobArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonAzureSbOutput{})
+	pulumi.RegisterOutputType(GetClientAddonAzureSbArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonBoxOutput{})
+	pulumi.RegisterOutputType(GetClientAddonBoxArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonCloudbeeOutput{})
+	pulumi.RegisterOutputType(GetClientAddonCloudbeeArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonConcurOutput{})
+	pulumi.RegisterOutputType(GetClientAddonConcurArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonDropboxOutput{})
+	pulumi.RegisterOutputType(GetClientAddonDropboxArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonEchosignOutput{})
+	pulumi.RegisterOutputType(GetClientAddonEchosignArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonEgnyteOutput{})
+	pulumi.RegisterOutputType(GetClientAddonEgnyteArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonFirebaseOutput{})
+	pulumi.RegisterOutputType(GetClientAddonFirebaseArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonLayerOutput{})
+	pulumi.RegisterOutputType(GetClientAddonLayerArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonMscrmOutput{})
+	pulumi.RegisterOutputType(GetClientAddonMscrmArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonNewrelicOutput{})
+	pulumi.RegisterOutputType(GetClientAddonNewrelicArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonOffice365Output{})
+	pulumi.RegisterOutputType(GetClientAddonOffice365ArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonRmOutput{})
+	pulumi.RegisterOutputType(GetClientAddonRmArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSalesforceOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSalesforceArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSalesforceApiOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSalesforceApiArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSalesforceSandboxApiOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSalesforceSandboxApiArrayOutput{})
 	pulumi.RegisterOutputType(GetClientAddonSamlpOutput{})
 	pulumi.RegisterOutputType(GetClientAddonSamlpArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSamlpLogoutOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSamlpLogoutArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSapApiOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSapApiArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSentryOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSentryArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSharepointOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSharepointArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSlackOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSlackArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSpringcmOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSpringcmArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSsoIntegrationOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSsoIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonWamOutput{})
+	pulumi.RegisterOutputType(GetClientAddonWamArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonWsfedOutput{})
+	pulumi.RegisterOutputType(GetClientAddonWsfedArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonZendeskOutput{})
+	pulumi.RegisterOutputType(GetClientAddonZendeskArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonZoomOutput{})
+	pulumi.RegisterOutputType(GetClientAddonZoomArrayOutput{})
 	pulumi.RegisterOutputType(GetClientJwtConfigurationOutput{})
 	pulumi.RegisterOutputType(GetClientJwtConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetClientMobileOutput{})
@@ -31406,6 +36323,12 @@ func init() {
 	pulumi.RegisterOutputType(GetClientRefreshTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeMapOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeMapArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionConnectionSettingOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionConnectionSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionDecryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionDecryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionGatewayAuthenticationOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionGatewayAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionIdpInitiatedOutput{})
@@ -31430,48 +36353,30 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionOptionValidationUsernameArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeArrayOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientAddonOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientAddonArrayOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientAddonSamlpOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientAddonSamlpArrayOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientJwtConfigurationOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientJwtConfigurationArrayOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientMobileOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientMobileArrayOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientMobileAndroidOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientMobileAndroidArrayOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientMobileIoOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientMobileIoArrayOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientNativeSocialLoginOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientNativeSocialLoginArrayOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientNativeSocialLoginAppleOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientNativeSocialLoginAppleArrayOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientNativeSocialLoginFacebookOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientNativeSocialLoginFacebookArrayOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientRefreshTokenOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientRefreshTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBrandingOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBrandingArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationConnectionTypeOutput{})
 	pulumi.RegisterOutputType(GetOrganizationConnectionTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetPagesChangePasswordOutput{})
+	pulumi.RegisterOutputType(GetPagesChangePasswordArrayOutput{})
+	pulumi.RegisterOutputType(GetPagesErrorOutput{})
+	pulumi.RegisterOutputType(GetPagesErrorArrayOutput{})
+	pulumi.RegisterOutputType(GetPagesGuardianMfaOutput{})
+	pulumi.RegisterOutputType(GetPagesGuardianMfaArrayOutput{})
+	pulumi.RegisterOutputType(GetPagesLoginOutput{})
+	pulumi.RegisterOutputType(GetPagesLoginArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceServerScopeTypeOutput{})
 	pulumi.RegisterOutputType(GetResourceServerScopeTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetRolePermissionTypeOutput{})
 	pulumi.RegisterOutputType(GetRolePermissionTypeArrayOutput{})
-	pulumi.RegisterOutputType(GetTenantChangePasswordOutput{})
-	pulumi.RegisterOutputType(GetTenantChangePasswordArrayOutput{})
-	pulumi.RegisterOutputType(GetTenantErrorPageOutput{})
-	pulumi.RegisterOutputType(GetTenantErrorPageArrayOutput{})
+	pulumi.RegisterOutputType(GetSigningKeysSigningKeyOutput{})
+	pulumi.RegisterOutputType(GetSigningKeysSigningKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantFlagOutput{})
 	pulumi.RegisterOutputType(GetTenantFlagArrayOutput{})
-	pulumi.RegisterOutputType(GetTenantGuardianMfaPageOutput{})
-	pulumi.RegisterOutputType(GetTenantGuardianMfaPageArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantSessionOutput{})
+	pulumi.RegisterOutputType(GetTenantSessionArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantSessionCookyOutput{})
 	pulumi.RegisterOutputType(GetTenantSessionCookyArrayOutput{})
-	pulumi.RegisterOutputType(GetTenantUniversalLoginOutput{})
-	pulumi.RegisterOutputType(GetTenantUniversalLoginArrayOutput{})
-	pulumi.RegisterOutputType(GetTenantUniversalLoginColorOutput{})
-	pulumi.RegisterOutputType(GetTenantUniversalLoginColorArrayOutput{})
 	pulumi.RegisterOutputType(GetUserPermissionTypeOutput{})
 	pulumi.RegisterOutputType(GetUserPermissionTypeArrayOutput{})
 }

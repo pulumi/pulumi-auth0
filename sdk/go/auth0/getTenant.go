@@ -4,7 +4,7 @@
 package auth0
 
 import (
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -17,7 +17,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -45,9 +45,10 @@ func LookupTenant(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupTena
 
 // A collection of values returned by getTenant.
 type LookupTenantResult struct {
+	// Whether to accept an organization name instead of an ID on auth endpoints.
+	AllowOrganizationNameInAuthenticationApi bool `pulumi:"allowOrganizationNameInAuthenticationApi"`
 	// URLs that Auth0 may redirect to after logout.
-	AllowedLogoutUrls []string                  `pulumi:"allowedLogoutUrls"`
-	ChangePasswords   []GetTenantChangePassword `pulumi:"changePasswords"`
+	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
 	DefaultAudience string `pulumi:"defaultAudience"`
 	// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
@@ -57,13 +58,11 @@ type LookupTenantResult struct {
 	// Your Auth0 domain name.
 	Domain string `pulumi:"domain"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
-	EnabledLocales []string             `pulumi:"enabledLocales"`
-	ErrorPages     []GetTenantErrorPage `pulumi:"errorPages"`
+	EnabledLocales []string `pulumi:"enabledLocales"`
 	// Configuration settings for tenant flags.
 	Flags []GetTenantFlag `pulumi:"flags"`
 	// Friendly name for the tenant.
-	FriendlyName     string                     `pulumi:"friendlyName"`
-	GuardianMfaPages []GetTenantGuardianMfaPage `pulumi:"guardianMfaPages"`
+	FriendlyName string `pulumi:"friendlyName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Number of hours during which a session can be inactive before the user must log in again.
@@ -78,9 +77,10 @@ type LookupTenantResult struct {
 	SessionCookies []GetTenantSessionCooky `pulumi:"sessionCookies"`
 	// Number of hours during which a session will stay valid.
 	SessionLifetime float64 `pulumi:"sessionLifetime"`
+	// Sessions related settings for the tenant.
+	Sessions []GetTenantSession `pulumi:"sessions"`
 	// Support email address for authenticating users.
 	SupportEmail string `pulumi:"supportEmail"`
 	// Support URL for authenticating users.
-	SupportUrl      string                    `pulumi:"supportUrl"`
-	UniversalLogins []GetTenantUniversalLogin `pulumi:"universalLogins"`
+	SupportUrl string `pulumi:"supportUrl"`
 }

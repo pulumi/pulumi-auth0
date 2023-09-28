@@ -112,7 +112,6 @@ import javax.annotation.Nullable;
  *                 .rotationType(&#34;rotating&#34;)
  *                 .tokenLifetime(2592000)
  *                 .build())
- *             .tokenEndpointAuthMethod(&#34;client_secret_post&#34;)
  *             .webOrigins(&#34;https://example.com&#34;)
  *             .build());
  * 
@@ -122,10 +121,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * A client can be imported using the client&#39;s ID. # Example
+ * This resource can be imported by specifying the client ID. # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/client:Client my_client AaiyAPdpYdesoKnqjj8HJqRn4T5titww
+ *  $ pulumi import auth0:index/client:Client my_client &#34;AaiyAPdpYdesoKnqjj8HJqRn4T5titww&#34;
  * ```
  * 
  */
@@ -136,14 +135,14 @@ public class Client extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="addons", type=ClientAddons.class, parameters={})
-    private Output<ClientAddons> addons;
+    private Output</* @Nullable */ ClientAddons> addons;
 
     /**
      * @return Addons enabled for this client and their associated configurations.
      * 
      */
-    public Output<ClientAddons> addons() {
-        return this.addons;
+    public Output<Optional<ClientAddons>> addons() {
+        return Codegen.optional(this.addons);
     }
     /**
      * List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
@@ -258,56 +257,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clientMetadata);
     }
     /**
-     * Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-     * Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
-     * `auth0_client_credentials` resource instead, to allow managing it directly or use the `auth0_client` data source to read
-     * this property.
-     * 
-     * @deprecated
-     * Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s secret instead or use the `auth0_client` data source to read this property.
-     * 
-     */
-    @Deprecated /* Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead or use the `auth0_client` data source to read this property. */
-    @Export(name="clientSecret", type=String.class, parameters={})
-    private Output<String> clientSecret;
-
-    /**
-     * @return Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-     * Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
-     * `auth0_client_credentials` resource instead, to allow managing it directly or use the `auth0_client` data source to read
-     * this property.
-     * 
-     */
-    public Output<String> clientSecret() {
-        return this.clientSecret;
-    }
-    /**
-     * Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
-     * 
-     * @deprecated
-     * Rotating a client&#39;s secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.
-     * 
-     */
-    @Deprecated /* Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime. */
-    @Export(name="clientSecretRotationTrigger", type=Map.class, parameters={String.class, Object.class})
-    private Output</* @Nullable */ Map<String,Object>> clientSecretRotationTrigger;
-
-    /**
-     * @return Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
-     * 
-     */
-    public Output<Optional<Map<String,Object>>> clientSecretRotationTrigger() {
-        return Codegen.optional(this.clientSecretRotationTrigger);
-    }
-    /**
-     * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
+     * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      * 
      */
     @Export(name="crossOriginAuth", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> crossOriginAuth;
 
     /**
-     * @return Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
+     * @return Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      * 
      */
     public Output<Optional<Boolean>> crossOriginAuth() {
@@ -440,14 +397,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.isFirstParty;
     }
     /**
-     * Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+     * Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
      * 
      */
     @Export(name="isTokenEndpointIpHeaderTrusted", type=Boolean.class, parameters={})
     private Output<Boolean> isTokenEndpointIpHeaderTrusted;
 
     /**
-     * @return Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+     * @return Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
      * 
      */
     public Output<Boolean> isTokenEndpointIpHeaderTrusted() {
@@ -594,6 +551,20 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.refreshToken;
     }
     /**
+     * Makes the use of Pushed Authorization Requests mandatory for this client.
+     * 
+     */
+    @Export(name="requirePushedAuthorizationRequests", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> requirePushedAuthorizationRequests;
+
+    /**
+     * @return Makes the use of Pushed Authorization Requests mandatory for this client.
+     * 
+     */
+    public Output<Optional<Boolean>> requirePushedAuthorizationRequests() {
+        return Codegen.optional(this.requirePushedAuthorizationRequests);
+    }
+    /**
      * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      * 
      */
@@ -634,36 +605,6 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> ssoDisabled() {
         return Codegen.optional(this.ssoDisabled);
-    }
-    /**
-     * Defines the requested authentication method for the token endpoint. Options include `none` (public client without a
-     * client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-     * Managing the authentication method through this attribute is deprecated and it will be removed in a future major
-     * version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s authentication method instead. Check
-     * the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on
-     * how to do that.
-     * 
-     * @deprecated
-     * Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that.
-     * 
-     */
-    @Deprecated /* Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that. */
-    @Export(name="tokenEndpointAuthMethod", type=String.class, parameters={})
-    private Output<String> tokenEndpointAuthMethod;
-
-    /**
-     * @return Defines the requested authentication method for the token endpoint. Options include `none` (public client without a
-     * client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-     * Managing the authentication method through this attribute is deprecated and it will be removed in a future major
-     * version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s authentication method instead. Check
-     * the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on
-     * how to do that.
-     * 
-     */
-    public Output<String> tokenEndpointAuthMethod() {
-        return this.tokenEndpointAuthMethod;
     }
     /**
      * URLs that represent valid web origins for use with web message response mode.
@@ -713,7 +654,6 @@ public class Client extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "clientSecret",
                 "signingKeys"
             ))
             .build();

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -91,7 +91,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import auth0:index/attackProtection:AttackProtection my_protection 24940d4b-4bd4-44e7-894e-f92e4de36a40
+//	$ pulumi import auth0:index/attackProtection:AttackProtection my_protection "24940d4b-4bd4-44e7-894e-f92e4de36a40"
 //
 // ```
 type AttackProtection struct {

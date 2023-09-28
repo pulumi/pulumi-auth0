@@ -12,149 +12,113 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientAddonsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// AWS Addon configuration.
+        /// </summary>
         [Input("aws")]
-        private InputMap<object>? _aws;
-        public InputMap<object> Aws
-        {
-            get => _aws ?? (_aws = new InputMap<object>());
-            set => _aws = value;
-        }
+        public Input<Inputs.ClientAddonsAwsArgs>? Aws { get; set; }
 
+        /// <summary>
+        /// Azure Blob Storage Addon configuration.
+        /// </summary>
         [Input("azureBlob")]
-        private InputMap<object>? _azureBlob;
-        public InputMap<object> AzureBlob
-        {
-            get => _azureBlob ?? (_azureBlob = new InputMap<object>());
-            set => _azureBlob = value;
-        }
+        public Input<Inputs.ClientAddonsAzureBlobArgs>? AzureBlob { get; set; }
 
+        /// <summary>
+        /// Azure Storage Bus Addon configuration.
+        /// </summary>
         [Input("azureSb")]
-        private InputMap<object>? _azureSb;
-        public InputMap<object> AzureSb
-        {
-            get => _azureSb ?? (_azureSb = new InputMap<object>());
-            set => _azureSb = value;
-        }
+        public Input<Inputs.ClientAddonsAzureSbArgs>? AzureSb { get; set; }
 
+        /// <summary>
+        /// Box SSO indicator (no configuration settings needed for Box SSO).
+        /// </summary>
         [Input("box")]
-        private InputMap<object>? _box;
-        public InputMap<object> Box
-        {
-            get => _box ?? (_box = new InputMap<object>());
-            set => _box = value;
-        }
+        public Input<Inputs.ClientAddonsBoxArgs>? Box { get; set; }
 
+        /// <summary>
+        /// CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+        /// </summary>
         [Input("cloudbees")]
-        private InputMap<object>? _cloudbees;
-        public InputMap<object> Cloudbees
-        {
-            get => _cloudbees ?? (_cloudbees = new InputMap<object>());
-            set => _cloudbees = value;
-        }
+        public Input<Inputs.ClientAddonsCloudbeesArgs>? Cloudbees { get; set; }
 
+        /// <summary>
+        /// Concur SSO indicator (no configuration settings needed for Concur SSO).
+        /// </summary>
         [Input("concur")]
-        private InputMap<object>? _concur;
-        public InputMap<object> Concur
-        {
-            get => _concur ?? (_concur = new InputMap<object>());
-            set => _concur = value;
-        }
+        public Input<Inputs.ClientAddonsConcurArgs>? Concur { get; set; }
 
+        /// <summary>
+        /// Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+        /// </summary>
         [Input("dropbox")]
-        private InputMap<object>? _dropbox;
-        public InputMap<object> Dropbox
-        {
-            get => _dropbox ?? (_dropbox = new InputMap<object>());
-            set => _dropbox = value;
-        }
+        public Input<Inputs.ClientAddonsDropboxArgs>? Dropbox { get; set; }
 
+        /// <summary>
+        /// Adobe EchoSign SSO configuration.
+        /// </summary>
         [Input("echosign")]
-        private InputMap<object>? _echosign;
-        public InputMap<object> Echosign
-        {
-            get => _echosign ?? (_echosign = new InputMap<object>());
-            set => _echosign = value;
-        }
+        public Input<Inputs.ClientAddonsEchosignArgs>? Echosign { get; set; }
 
+        /// <summary>
+        /// Egnyte SSO configuration.
+        /// </summary>
         [Input("egnyte")]
-        private InputMap<object>? _egnyte;
-        public InputMap<object> Egnyte
-        {
-            get => _egnyte ?? (_egnyte = new InputMap<object>());
-            set => _egnyte = value;
-        }
+        public Input<Inputs.ClientAddonsEgnyteArgs>? Egnyte { get; set; }
 
+        /// <summary>
+        /// Google Firebase addon configuration.
+        /// </summary>
         [Input("firebase")]
-        private InputMap<object>? _firebase;
-        public InputMap<object> Firebase
-        {
-            get => _firebase ?? (_firebase = new InputMap<object>());
-            set => _firebase = value;
-        }
+        public Input<Inputs.ClientAddonsFirebaseArgs>? Firebase { get; set; }
 
+        /// <summary>
+        /// Layer addon configuration.
+        /// </summary>
         [Input("layer")]
-        private InputMap<object>? _layer;
-        public InputMap<object> Layer
-        {
-            get => _layer ?? (_layer = new InputMap<object>());
-            set => _layer = value;
-        }
+        public Input<Inputs.ClientAddonsLayerArgs>? Layer { get; set; }
 
+        /// <summary>
+        /// Microsoft Dynamics CRM SSO configuration.
+        /// </summary>
         [Input("mscrm")]
-        private InputMap<object>? _mscrm;
-        public InputMap<object> Mscrm
-        {
-            get => _mscrm ?? (_mscrm = new InputMap<object>());
-            set => _mscrm = value;
-        }
+        public Input<Inputs.ClientAddonsMscrmArgs>? Mscrm { get; set; }
 
+        /// <summary>
+        /// New Relic SSO configuration.
+        /// </summary>
         [Input("newrelic")]
-        private InputMap<object>? _newrelic;
-        public InputMap<object> Newrelic
-        {
-            get => _newrelic ?? (_newrelic = new InputMap<object>());
-            set => _newrelic = value;
-        }
+        public Input<Inputs.ClientAddonsNewrelicArgs>? Newrelic { get; set; }
 
+        /// <summary>
+        /// Microsoft Office 365 SSO configuration.
+        /// </summary>
         [Input("office365")]
-        private InputMap<object>? _office365;
-        public InputMap<object> Office365
-        {
-            get => _office365 ?? (_office365 = new InputMap<object>());
-            set => _office365 = value;
-        }
+        public Input<Inputs.ClientAddonsOffice365Args>? Office365 { get; set; }
 
+        /// <summary>
+        /// Active Directory Rights Management Service SSO configuration.
+        /// </summary>
         [Input("rms")]
-        private InputMap<object>? _rms;
-        public InputMap<object> Rms
-        {
-            get => _rms ?? (_rms = new InputMap<object>());
-            set => _rms = value;
-        }
+        public Input<Inputs.ClientAddonsRmsArgs>? Rms { get; set; }
 
+        /// <summary>
+        /// Salesforce SSO configuration.
+        /// </summary>
         [Input("salesforce")]
-        private InputMap<object>? _salesforce;
-        public InputMap<object> Salesforce
-        {
-            get => _salesforce ?? (_salesforce = new InputMap<object>());
-            set => _salesforce = value;
-        }
+        public Input<Inputs.ClientAddonsSalesforceArgs>? Salesforce { get; set; }
 
+        /// <summary>
+        /// Salesforce API addon configuration.
+        /// </summary>
         [Input("salesforceApi")]
-        private InputMap<object>? _salesforceApi;
-        public InputMap<object> SalesforceApi
-        {
-            get => _salesforceApi ?? (_salesforceApi = new InputMap<object>());
-            set => _salesforceApi = value;
-        }
+        public Input<Inputs.ClientAddonsSalesforceApiArgs>? SalesforceApi { get; set; }
 
+        /// <summary>
+        /// Salesforce Sandbox addon configuration.
+        /// </summary>
         [Input("salesforceSandboxApi")]
-        private InputMap<object>? _salesforceSandboxApi;
-        public InputMap<object> SalesforceSandboxApi
-        {
-            get => _salesforceSandboxApi ?? (_salesforceSandboxApi = new InputMap<object>());
-            set => _salesforceSandboxApi = value;
-        }
+        public Input<Inputs.ClientAddonsSalesforceSandboxApiArgs>? SalesforceSandboxApi { get; set; }
 
         /// <summary>
         /// Configuration settings for a SAML add-on.
@@ -162,81 +126,65 @@ namespace Pulumi.Auth0.Inputs
         [Input("samlp")]
         public Input<Inputs.ClientAddonsSamlpArgs>? Samlp { get; set; }
 
+        /// <summary>
+        /// SAP API addon configuration.
+        /// </summary>
         [Input("sapApi")]
-        private InputMap<object>? _sapApi;
-        public InputMap<object> SapApi
-        {
-            get => _sapApi ?? (_sapApi = new InputMap<object>());
-            set => _sapApi = value;
-        }
-
-        [Input("sentry")]
-        private InputMap<object>? _sentry;
-        public InputMap<object> Sentry
-        {
-            get => _sentry ?? (_sentry = new InputMap<object>());
-            set => _sentry = value;
-        }
-
-        [Input("sharepoint")]
-        private InputMap<object>? _sharepoint;
-        public InputMap<object> Sharepoint
-        {
-            get => _sharepoint ?? (_sharepoint = new InputMap<object>());
-            set => _sharepoint = value;
-        }
-
-        [Input("slack")]
-        private InputMap<object>? _slack;
-        public InputMap<object> Slack
-        {
-            get => _slack ?? (_slack = new InputMap<object>());
-            set => _slack = value;
-        }
-
-        [Input("springcm")]
-        private InputMap<object>? _springcm;
-        public InputMap<object> Springcm
-        {
-            get => _springcm ?? (_springcm = new InputMap<object>());
-            set => _springcm = value;
-        }
-
-        [Input("wams")]
-        private InputMap<object>? _wams;
-        public InputMap<object> Wams
-        {
-            get => _wams ?? (_wams = new InputMap<object>());
-            set => _wams = value;
-        }
-
-        [Input("wsfed")]
-        private InputMap<object>? _wsfed;
+        public Input<Inputs.ClientAddonsSapApiArgs>? SapApi { get; set; }
 
         /// <summary>
-        /// WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+        /// Sentry SSO configuration.
         /// </summary>
-        public InputMap<object> Wsfed
-        {
-            get => _wsfed ?? (_wsfed = new InputMap<object>());
-            set => _wsfed = value;
-        }
+        [Input("sentry")]
+        public Input<Inputs.ClientAddonsSentryArgs>? Sentry { get; set; }
 
+        /// <summary>
+        /// SharePoint SSO configuration.
+        /// </summary>
+        [Input("sharepoint")]
+        public Input<Inputs.ClientAddonsSharepointArgs>? Sharepoint { get; set; }
+
+        /// <summary>
+        /// Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+        /// </summary>
+        [Input("slack")]
+        public Input<Inputs.ClientAddonsSlackArgs>? Slack { get; set; }
+
+        /// <summary>
+        /// SpringCM SSO configuration.
+        /// </summary>
+        [Input("springcm")]
+        public Input<Inputs.ClientAddonsSpringcmArgs>? Springcm { get; set; }
+
+        /// <summary>
+        /// Generic SSO configuration.
+        /// </summary>
+        [Input("ssoIntegration")]
+        public Input<Inputs.ClientAddonsSsoIntegrationArgs>? SsoIntegration { get; set; }
+
+        /// <summary>
+        /// Windows Azure Mobile Services addon configuration.
+        /// </summary>
+        [Input("wams")]
+        public Input<Inputs.ClientAddonsWamsArgs>? Wams { get; set; }
+
+        /// <summary>
+        /// WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+        /// </summary>
+        [Input("wsfed")]
+        public Input<Inputs.ClientAddonsWsfedArgs>? Wsfed { get; set; }
+
+        /// <summary>
+        /// Zendesk SSO configuration.
+        /// </summary>
         [Input("zendesk")]
-        private InputMap<object>? _zendesk;
-        public InputMap<object> Zendesk
-        {
-            get => _zendesk ?? (_zendesk = new InputMap<object>());
-            set => _zendesk = value;
-        }
+        public Input<Inputs.ClientAddonsZendeskArgs>? Zendesk { get; set; }
 
+        /// <summary>
+        /// Zoom SSO configuration.
+        /// </summary>
         [Input("zoom")]
-        private InputMap<object>? _zoom;
-        public InputMap<object> Zoom
-        {
-            get => _zoom ?? (_zoom = new InputMap<object>());
-            set => _zoom = value;
-        }
+        public Input<Inputs.ClientAddonsZoomArgs>? Zoom { get; set; }
 
         public ClientAddonsArgs()
         {

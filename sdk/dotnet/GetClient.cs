@@ -161,7 +161,7 @@ namespace Pulumi.Auth0
         public readonly ImmutableDictionary<string, object> ClientMetadata;
         public readonly string ClientSecret;
         /// <summary>
-        /// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
+        /// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         /// </summary>
         public readonly bool CrossOriginAuth;
         /// <summary>
@@ -205,7 +205,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool IsFirstParty;
         /// <summary>
-        /// Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+        /// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
         /// </summary>
         public readonly bool IsTokenEndpointIpHeaderTrusted;
         /// <summary>
@@ -249,6 +249,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientRefreshTokenResult> RefreshTokens;
         /// <summary>
+        /// Makes the use of Pushed Authorization Requests mandatory for this client.
+        /// </summary>
+        public readonly bool RequirePushedAuthorizationRequests;
+        /// <summary>
         /// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         /// </summary>
         public readonly ImmutableArray<ImmutableDictionary<string, object>> SigningKeys;
@@ -260,6 +264,9 @@ namespace Pulumi.Auth0
         /// Indicates whether or not SSO is disabled.
         /// </summary>
         public readonly bool SsoDisabled;
+        /// <summary>
+        /// The authentication method for the token endpoint. Results include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic). Managing a client's authentication method can be done via the `auth0.ClientCredentials` resource.
+        /// </summary>
         public readonly string TokenEndpointAuthMethod;
         /// <summary>
         /// URLs that represent valid web origins for use with web message response mode.
@@ -332,6 +339,8 @@ namespace Pulumi.Auth0
 
             ImmutableArray<Outputs.GetClientRefreshTokenResult> refreshTokens,
 
+            bool requirePushedAuthorizationRequests,
+
             ImmutableArray<ImmutableDictionary<string, object>> signingKeys,
 
             bool sso,
@@ -374,6 +383,7 @@ namespace Pulumi.Auth0
             OrganizationRequireBehavior = organizationRequireBehavior;
             OrganizationUsage = organizationUsage;
             RefreshTokens = refreshTokens;
+            RequirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
             SigningKeys = signingKeys;
             Sso = sso;
             SsoDisabled = ssoDisabled;

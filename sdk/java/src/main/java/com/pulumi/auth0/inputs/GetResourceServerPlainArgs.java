@@ -15,14 +15,14 @@ public final class GetResourceServerPlainArgs extends com.pulumi.resources.Invok
     public static final GetResourceServerPlainArgs Empty = new GetResourceServerPlainArgs();
 
     /**
-     * The unique identifier for the resource server. If not provided, `resource_server_id` must be set.
+     * Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
      * 
      */
     @Import(name="identifier")
     private @Nullable String identifier;
 
     /**
-     * @return The unique identifier for the resource server. If not provided, `resource_server_id` must be set.
+     * @return Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
      * 
      */
     public Optional<String> identifier() {
@@ -70,7 +70,7 @@ public final class GetResourceServerPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param identifier The unique identifier for the resource server. If not provided, `resource_server_id` must be set.
+         * @param identifier Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
          * 
          * @return builder
          * 

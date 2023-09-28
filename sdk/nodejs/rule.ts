@@ -9,9 +9,6 @@ import * as utilities from "./utilities";
  *
  * !> This resource is deprecated. Refer to the [guide on how to migrate from rules to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-rules-to-actions) and manage your actions using the `auth0.Action` resource.
  *
- * !> This resource is deprecated. Refer to the [guide on how to migrate from hooks to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-hooks-to-actions)
- * and manage your actions using the `auth0.Action` resource.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -33,7 +30,7 @@ import * as utilities from "./utilities";
  * Existing rules can be imported using their ID. # Example
  *
  * ```sh
- *  $ pulumi import auth0:index/rule:Rule my_rule rul_XXXXXXXXXXXXX
+ *  $ pulumi import auth0:index/rule:Rule my_rule "rul_XXXXXXXXXXXXX"
  * ```
  */
 export class Rule extends pulumi.CustomResource {

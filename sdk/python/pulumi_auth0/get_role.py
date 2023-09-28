@@ -22,7 +22,7 @@ class GetRoleResult:
     """
     A collection of values returned by getRole.
     """
-    def __init__(__self__, description=None, id=None, name=None, permissions=None, role_id=None):
+    def __init__(__self__, description=None, id=None, name=None, permissions=None, role_id=None, users=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -38,12 +38,15 @@ class GetRoleResult:
         if role_id and not isinstance(role_id, str):
             raise TypeError("Expected argument 'role_id' to be a str")
         pulumi.set(__self__, "role_id", role_id)
+        if users and not isinstance(users, list):
+            raise TypeError("Expected argument 'users' to be a list")
+        pulumi.set(__self__, "users", users)
 
     @property
     @pulumi.getter
     def description(self) -> str:
         """
-        Description of the role.
+        The description of the role.
         """
         return pulumi.get(self, "description")
 
@@ -66,6 +69,9 @@ class GetRoleResult:
     @property
     @pulumi.getter
     def permissions(self) -> Sequence['outputs.GetRolePermissionResult']:
+        """
+        Configuration settings for permissions (scopes) attached to the role.
+        """
         return pulumi.get(self, "permissions")
 
     @property
@@ -75,6 +81,14 @@ class GetRoleResult:
         The ID of the role. If not provided, `name` must be set.
         """
         return pulumi.get(self, "role_id")
+
+    @property
+    @pulumi.getter
+    def users(self) -> Sequence[str]:
+        """
+        List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs.
+        """
+        return pulumi.get(self, "users")
 
 
 class AwaitableGetRoleResult(GetRoleResult):
@@ -87,7 +101,8 @@ class AwaitableGetRoleResult(GetRoleResult):
             id=self.id,
             name=self.name,
             permissions=self.permissions,
-            role_id=self.role_id)
+            role_id=self.role_id,
+            users=self.users)
 
 
 def get_role(name: Optional[str] = None,
@@ -121,7 +136,8 @@ def get_role(name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         permissions=pulumi.get(__ret__, 'permissions'),
-        role_id=pulumi.get(__ret__, 'role_id'))
+        role_id=pulumi.get(__ret__, 'role_id'),
+        users=pulumi.get(__ret__, 'users'))
 
 
 @_utilities.lift_output_func(get_role)

@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AttackProtectionSuspiciousIpThrottling {
     /**
-     * @return List of trusted IP addresses that will not have attack protection enforced against them.
+     * @return List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
      * 
      */
     private @Nullable List<String> allowlists;
@@ -24,7 +24,7 @@ public final class AttackProtectionSuspiciousIpThrottling {
      * @return Whether suspicious IP throttling attack protections are active.
      * 
      */
-    private @Nullable Boolean enabled;
+    private Boolean enabled;
     /**
      * @return Configuration options that apply before every login attempt. Only available on public tenants.
      * 
@@ -36,14 +36,14 @@ public final class AttackProtectionSuspiciousIpThrottling {
      */
     private @Nullable AttackProtectionSuspiciousIpThrottlingPreUserRegistration preUserRegistration;
     /**
-     * @return Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
+     * @return Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `admin_notification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
      * 
      */
     private @Nullable List<String> shields;
 
     private AttackProtectionSuspiciousIpThrottling() {}
     /**
-     * @return List of trusted IP addresses that will not have attack protection enforced against them.
+     * @return List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
      * 
      */
     public List<String> allowlists() {
@@ -53,8 +53,8 @@ public final class AttackProtectionSuspiciousIpThrottling {
      * @return Whether suspicious IP throttling attack protections are active.
      * 
      */
-    public Optional<Boolean> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Boolean enabled() {
+        return this.enabled;
     }
     /**
      * @return Configuration options that apply before every login attempt. Only available on public tenants.
@@ -71,7 +71,7 @@ public final class AttackProtectionSuspiciousIpThrottling {
         return Optional.ofNullable(this.preUserRegistration);
     }
     /**
-     * @return Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
+     * @return Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `admin_notification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
      * 
      */
     public List<String> shields() {
@@ -88,7 +88,7 @@ public final class AttackProtectionSuspiciousIpThrottling {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> allowlists;
-        private @Nullable Boolean enabled;
+        private Boolean enabled;
         private @Nullable AttackProtectionSuspiciousIpThrottlingPreLogin preLogin;
         private @Nullable AttackProtectionSuspiciousIpThrottlingPreUserRegistration preUserRegistration;
         private @Nullable List<String> shields;
@@ -111,8 +111,8 @@ public final class AttackProtectionSuspiciousIpThrottling {
             return allowlists(List.of(allowlists));
         }
         @CustomType.Setter
-        public Builder enabled(@Nullable Boolean enabled) {
-            this.enabled = enabled;
+        public Builder enabled(Boolean enabled) {
+            this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
         @CustomType.Setter

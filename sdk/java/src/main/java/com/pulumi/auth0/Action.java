@@ -24,10 +24,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * An action can be imported using the action&#39;s ID. # Example
+ * This resource can be imported by specifying the action ID. # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/action:Action my_action 12f4f21b-017a-319d-92e7-2291c1ca36c4
+ *  $ pulumi import auth0:index/action:Action my_action &#34;12f4f21b-017a-319d-92e7-2291c1ca36c4&#34;
  * ```
  * 
  *  ~&gt; For security reasons importing `secrets` is not allowed. Therefore, it is advised to import the action without secrets and adding them back after the action has been imported.
@@ -92,14 +92,14 @@ public class Action extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
+     * The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
      * 
      */
     @Export(name="runtime", type=String.class, parameters={})
     private Output<String> runtime;
 
     /**
-     * @return The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
+     * @return The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
      * 
      */
     public Output<String> runtime() {

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AttackProtectionBreachedPasswordDetection {
     /**
-     * @return When &#34;admin_notification&#34; is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+     * @return When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
      * 
      */
     private @Nullable List<String> adminNotificationFrequencies;
@@ -23,7 +23,7 @@ public final class AttackProtectionBreachedPasswordDetection {
      * @return Whether breached password detection is active.
      * 
      */
-    private @Nullable Boolean enabled;
+    private Boolean enabled;
     /**
      * @return The subscription level for breached password detection methods. Use &#34;enhanced&#34; to enable Credential Guard. Possible values: `standard`, `enhanced`.
      * 
@@ -35,14 +35,14 @@ public final class AttackProtectionBreachedPasswordDetection {
      */
     private @Nullable AttackProtectionBreachedPasswordDetectionPreUserRegistration preUserRegistration;
     /**
-     * @return Action to take when a breached password is detected.
+     * @return Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
      * 
      */
     private @Nullable List<String> shields;
 
     private AttackProtectionBreachedPasswordDetection() {}
     /**
-     * @return When &#34;admin_notification&#34; is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+     * @return When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
      * 
      */
     public List<String> adminNotificationFrequencies() {
@@ -52,8 +52,8 @@ public final class AttackProtectionBreachedPasswordDetection {
      * @return Whether breached password detection is active.
      * 
      */
-    public Optional<Boolean> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Boolean enabled() {
+        return this.enabled;
     }
     /**
      * @return The subscription level for breached password detection methods. Use &#34;enhanced&#34; to enable Credential Guard. Possible values: `standard`, `enhanced`.
@@ -70,7 +70,7 @@ public final class AttackProtectionBreachedPasswordDetection {
         return Optional.ofNullable(this.preUserRegistration);
     }
     /**
-     * @return Action to take when a breached password is detected.
+     * @return Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
      * 
      */
     public List<String> shields() {
@@ -87,7 +87,7 @@ public final class AttackProtectionBreachedPasswordDetection {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> adminNotificationFrequencies;
-        private @Nullable Boolean enabled;
+        private Boolean enabled;
         private @Nullable String method;
         private @Nullable AttackProtectionBreachedPasswordDetectionPreUserRegistration preUserRegistration;
         private @Nullable List<String> shields;
@@ -110,8 +110,8 @@ public final class AttackProtectionBreachedPasswordDetection {
             return adminNotificationFrequencies(List.of(adminNotificationFrequencies));
         }
         @CustomType.Setter
-        public Builder enabled(@Nullable Boolean enabled) {
-            this.enabled = enabled;
+        public Builder enabled(Boolean enabled) {
+            this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
         @CustomType.Setter

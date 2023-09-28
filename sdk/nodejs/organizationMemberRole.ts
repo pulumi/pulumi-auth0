@@ -39,7 +39,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported by specifying the organization ID, user ID and role ID separated by "::". # Example
+ * This resource can be imported by specifying the organization ID, user ID and role ID separated by "::" (note the double colon) <organizationID>::<userID>::<roleID> # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/organizationMemberRole:OrganizationMemberRole my_org_member_role "org_XXXXX::auth0|XXXXX::role_XXXX"

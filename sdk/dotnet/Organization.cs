@@ -47,10 +47,10 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// Existing organizations can be imported using the organization ID. # Example
+    /// This resource can be imported by specifying the organization ID. # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/organization:Organization my_organization org_XXXXXXXXXXXXXX
+    ///  $ pulumi import auth0:index/organization:Organization my_organization "org_XXXXXXXXXXXXXX"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/organization:Organization")]

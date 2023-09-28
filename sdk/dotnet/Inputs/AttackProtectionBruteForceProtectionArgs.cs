@@ -16,7 +16,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _allowlists;
 
         /// <summary>
-        /// List of trusted IP addresses that will not have attack protection enforced against them.
+        /// List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
         /// </summary>
         public InputList<string> Allowlists
         {
@@ -27,17 +27,17 @@ namespace Pulumi.Auth0.Inputs
         /// <summary>
         /// Whether brute force attack protections are active.
         /// </summary>
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// Maximum number of unsuccessful attempts. Only available on public tenants.
+        /// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
         /// </summary>
         [Input("maxAttempts")]
         public Input<int>? MaxAttempts { get; set; }
 
         /// <summary>
-        /// Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+        /// Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` (lockout an account from a given IP Address) or `count_per_identifier` (lockout an account regardless of IP Address).
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _shields;
 
         /// <summary>
-        /// Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
+        /// Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
         /// </summary>
         public InputList<string> Shields
         {

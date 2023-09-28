@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  * This resource can be imported by specifying the organization ID. # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/organizationConnections:OrganizationConnections my_org_conns org_XXXXX
+ *  $ pulumi import auth0:index/organizationConnections:OrganizationConnections my_org_conns &#34;org_XXXXX&#34;
  * ```
  * 
  */

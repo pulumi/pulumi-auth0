@@ -30,10 +30,13 @@ export function getTenant(opts?: pulumi.InvokeOptions): Promise<GetTenantResult>
  */
 export interface GetTenantResult {
     /**
+     * Whether to accept an organization name instead of an ID on auth endpoints.
+     */
+    readonly allowOrganizationNameInAuthenticationApi: boolean;
+    /**
      * URLs that Auth0 may redirect to after logout.
      */
     readonly allowedLogoutUrls: string[];
-    readonly changePasswords: outputs.GetTenantChangePassword[];
     /**
      * API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      */
@@ -54,7 +57,6 @@ export interface GetTenantResult {
      * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      */
     readonly enabledLocales: string[];
-    readonly errorPages: outputs.GetTenantErrorPage[];
     /**
      * Configuration settings for tenant flags.
      */
@@ -63,7 +65,6 @@ export interface GetTenantResult {
      * Friendly name for the tenant.
      */
     readonly friendlyName: string;
-    readonly guardianMfaPages: outputs.GetTenantGuardianMfaPage[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -93,6 +94,10 @@ export interface GetTenantResult {
      */
     readonly sessionLifetime: number;
     /**
+     * Sessions related settings for the tenant.
+     */
+    readonly sessions: outputs.GetTenantSession[];
+    /**
      * Support email address for authenticating users.
      */
     readonly supportEmail: string;
@@ -100,7 +105,6 @@ export interface GetTenantResult {
      * Support URL for authenticating users.
      */
     readonly supportUrl: string;
-    readonly universalLogins: outputs.GetTenantUniversalLogin[];
 }
 /**
  * Use this data source to access information about the tenant this provider is configured to access.

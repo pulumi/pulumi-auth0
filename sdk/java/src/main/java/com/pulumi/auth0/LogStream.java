@@ -81,24 +81,24 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * An existing log stream can be imported using its ID. # Example
+ * This resource can be imported by specifying the log stream ID. # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/logStream:LogStream example lst_XXXXXXXXXXXXXXXX
+ *  $ pulumi import auth0:index/logStream:LogStream example &#34;lst_XXXXXXXXXXXXXXXX&#34;
  * ```
  * 
  */
 @ResourceType(type="auth0:index/logStream:LogStream")
 public class LogStream extends com.pulumi.resources.CustomResource {
     /**
-     * Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
+     * Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
      * 
      */
     @Export(name="filters", type=List.class, parameters={Map.class})
     private Output</* @Nullable */ List<Map<String,String>>> filters;
 
     /**
-     * @return Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
+     * @return Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
      * 
      */
     public Output<Optional<List<Map<String,String>>>> filters() {

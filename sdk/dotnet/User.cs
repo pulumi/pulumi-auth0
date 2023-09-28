@@ -22,25 +22,16 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = new Auth0.Role("admin", new()
-    ///     {
-    ///         Description = "Administrator",
-    ///     });
-    /// 
     ///     var user = new Auth0.User("user", new()
     ///     {
     ///         ConnectionName = "Username-Password-Authentication",
-    ///         UserId = "12345",
-    ///         Username = "unique_username",
-    ///         Nickname = "some.nickname",
     ///         Email = "test@test.com",
     ///         EmailVerified = true,
+    ///         Nickname = "some.nickname",
     ///         Password = "passpass$12$12",
     ///         Picture = "https://www.example.com/a-valid-picture-url.jpg",
-    ///         Roles = new[]
-    ///         {
-    ///             admin.Id,
-    ///         },
+    ///         UserId = "12345",
+    ///         Username = "unique_username",
     ///     });
     /// 
     /// });
@@ -51,7 +42,7 @@ namespace Pulumi.Auth0
     /// This resource can be imported using the user ID. # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/user:User user auth0|111111111111111111111111
+    ///  $ pulumi import auth0:index/user:User user "auth0|111111111111111111111111"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/user:User")]
@@ -118,12 +109,6 @@ namespace Pulumi.Auth0
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.User` data source instead.
-        /// </summary>
-        [Output("permissions")]
-        public Output<ImmutableArray<Outputs.UserPermission>> Permissions { get; private set; } = null!;
-
-        /// <summary>
         /// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         /// </summary>
         [Output("phoneNumber")]
@@ -140,15 +125,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("picture")]
         public Output<string> Picture { get; private set; } = null!;
-
-        /// <summary>
-        /// Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-        /// a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-        /// instead. Check the [MIGRATION
-        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-        /// </summary>
-        [Output("roles")]
-        public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
 
         /// <summary>
         /// ID of the user.
@@ -312,22 +288,6 @@ namespace Pulumi.Auth0
         [Input("picture")]
         public Input<string>? Picture { get; set; }
 
-        [Input("roles")]
-        private InputList<string>? _roles;
-
-        /// <summary>
-        /// Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-        /// a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-        /// instead. Check the [MIGRATION
-        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-        /// </summary>
-        [Obsolete(@"Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.")]
-        public InputList<string> Roles
-        {
-            get => _roles ?? (_roles = new InputList<string>());
-            set => _roles = value;
-        }
-
         /// <summary>
         /// ID of the user.
         /// </summary>
@@ -430,19 +390,6 @@ namespace Pulumi.Auth0
             }
         }
 
-        [Input("permissions")]
-        private InputList<Inputs.UserPermissionGetArgs>? _permissions;
-
-        /// <summary>
-        /// List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.User` data source instead.
-        /// </summary>
-        [Obsolete(@"Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.")]
-        public InputList<Inputs.UserPermissionGetArgs> Permissions
-        {
-            get => _permissions ?? (_permissions = new InputList<Inputs.UserPermissionGetArgs>());
-            set => _permissions = value;
-        }
-
         /// <summary>
         /// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         /// </summary>
@@ -460,22 +407,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("picture")]
         public Input<string>? Picture { get; set; }
-
-        [Input("roles")]
-        private InputList<string>? _roles;
-
-        /// <summary>
-        /// Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-        /// a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-        /// instead. Check the [MIGRATION
-        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-        /// </summary>
-        [Obsolete(@"Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.")]
-        public InputList<string> Roles
-        {
-            get => _roles ?? (_roles = new InputList<string>());
-            set => _roles = value;
-        }
 
         /// <summary>
         /// ID of the user.

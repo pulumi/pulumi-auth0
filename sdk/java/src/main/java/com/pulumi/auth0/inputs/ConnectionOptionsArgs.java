@@ -3,6 +3,9 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.ConnectionOptionsAttributeMapArgs;
+import com.pulumi.auth0.inputs.ConnectionOptionsConnectionSettingsArgs;
+import com.pulumi.auth0.inputs.ConnectionOptionsDecryptionKeyArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsGatewayAuthenticationArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsIdpInitiatedArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsMfaArgs;
@@ -88,6 +91,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> appId() {
         return Optional.ofNullable(this.appId);
+    }
+
+    /**
+     * OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+     * 
+     */
+    @Import(name="attributeMap")
+    private @Nullable Output<ConnectionOptionsAttributeMapArgs> attributeMap;
+
+    /**
+     * @return OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+     * 
+     */
+    public Optional<Output<ConnectionOptionsAttributeMapArgs>> attributeMap() {
+        return Optional.ofNullable(this.attributeMap);
     }
 
     /**
@@ -196,6 +214,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+     * 
+     */
+    @Import(name="connectionSettings")
+    private @Nullable Output<ConnectionOptionsConnectionSettingsArgs> connectionSettings;
+
+    /**
+     * @return Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+     * 
+     */
+    public Optional<Output<ConnectionOptionsConnectionSettingsArgs>> connectionSettings() {
+        return Optional.ofNullable(this.connectionSettings);
+    }
+
+    /**
      * A map of scripts used to integrate with a custom database.
      * 
      */
@@ -223,6 +256,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Boolean>> debug() {
         return Optional.ofNullable(this.debug);
+    }
+
+    /**
+     * The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     * 
+     */
+    @Import(name="decryptionKey")
+    private @Nullable Output<ConnectionOptionsDecryptionKeyArgs> decryptionKey;
+
+    /**
+     * @return The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     * 
+     */
+    public Optional<Output<ConnectionOptionsDecryptionKeyArgs>> decryptionKey() {
+        return Optional.ofNullable(this.decryptionKey);
     }
 
     /**
@@ -601,6 +649,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+     * 
+     */
+    @Import(name="mapUserIdToId")
+    private @Nullable Output<Boolean> mapUserIdToId;
+
+    /**
+     * @return By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+     * 
+     */
+    public Optional<Output<Boolean>> mapUserIdToId() {
+        return Optional.ofNullable(this.mapUserIdToId);
+    }
+
+    /**
      * Maximum number of groups to retrieve.
      * 
      */
@@ -646,14 +709,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The XML content for the SAML metadata document.
+     * The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
      * 
      */
     @Import(name="metadataXml")
     private @Nullable Output<String> metadataXml;
 
     /**
-     * @return The XML content for the SAML metadata document.
+     * @return The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
      * 
      */
     public Optional<Output<String>> metadataXml() {
@@ -1327,6 +1390,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.allowedAudiences = $.allowedAudiences;
         this.apiEnableUsers = $.apiEnableUsers;
         this.appId = $.appId;
+        this.attributeMap = $.attributeMap;
         this.authParams = $.authParams;
         this.authorizationEndpoint = $.authorizationEndpoint;
         this.bruteForceProtection = $.bruteForceProtection;
@@ -1334,8 +1398,10 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.clientSecret = $.clientSecret;
         this.communityBaseUrl = $.communityBaseUrl;
         this.configuration = $.configuration;
+        this.connectionSettings = $.connectionSettings;
         this.customScripts = $.customScripts;
         this.debug = $.debug;
+        this.decryptionKey = $.decryptionKey;
         this.digestAlgorithm = $.digestAlgorithm;
         this.disableCache = $.disableCache;
         this.disableSelfServiceChangePassword = $.disableSelfServiceChangePassword;
@@ -1361,6 +1427,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.issuer = $.issuer;
         this.jwksUri = $.jwksUri;
         this.keyId = $.keyId;
+        this.mapUserIdToId = $.mapUserIdToId;
         this.maxGroupsToRetrieve = $.maxGroupsToRetrieve;
         this.messagingServiceSid = $.messagingServiceSid;
         this.metadataUrl = $.metadataUrl;
@@ -1524,6 +1591,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param attributeMap OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attributeMap(@Nullable Output<ConnectionOptionsAttributeMapArgs> attributeMap) {
+            $.attributeMap = attributeMap;
+            return this;
+        }
+
+        /**
+         * @param attributeMap OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attributeMap(ConnectionOptionsAttributeMapArgs attributeMap) {
+            return attributeMap(Output.of(attributeMap));
+        }
+
+        /**
          * @param authParams Query string parameters to be included as part of the generated passwordless email link.
          * 
          * @return builder
@@ -1671,6 +1759,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param connectionSettings Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionSettings(@Nullable Output<ConnectionOptionsConnectionSettingsArgs> connectionSettings) {
+            $.connectionSettings = connectionSettings;
+            return this;
+        }
+
+        /**
+         * @param connectionSettings Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionSettings(ConnectionOptionsConnectionSettingsArgs connectionSettings) {
+            return connectionSettings(Output.of(connectionSettings));
+        }
+
+        /**
          * @param customScripts A map of scripts used to integrate with a custom database.
          * 
          * @return builder
@@ -1710,6 +1819,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder debug(Boolean debug) {
             return debug(Output.of(debug));
+        }
+
+        /**
+         * @param decryptionKey The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder decryptionKey(@Nullable Output<ConnectionOptionsDecryptionKeyArgs> decryptionKey) {
+            $.decryptionKey = decryptionKey;
+            return this;
+        }
+
+        /**
+         * @param decryptionKey The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder decryptionKey(ConnectionOptionsDecryptionKeyArgs decryptionKey) {
+            return decryptionKey(Output.of(decryptionKey));
         }
 
         /**
@@ -2258,6 +2388,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param mapUserIdToId By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mapUserIdToId(@Nullable Output<Boolean> mapUserIdToId) {
+            $.mapUserIdToId = mapUserIdToId;
+            return this;
+        }
+
+        /**
+         * @param mapUserIdToId By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mapUserIdToId(Boolean mapUserIdToId) {
+            return mapUserIdToId(Output.of(mapUserIdToId));
+        }
+
+        /**
          * @param maxGroupsToRetrieve Maximum number of groups to retrieve.
          * 
          * @return builder
@@ -2321,7 +2472,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param metadataXml The XML content for the SAML metadata document.
+         * @param metadataXml The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
          * 
          * @return builder
          * 
@@ -2332,7 +2483,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param metadataXml The XML content for the SAML metadata document.
+         * @param metadataXml The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
          * 
          * @return builder
          * 

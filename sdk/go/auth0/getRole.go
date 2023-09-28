@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -65,15 +65,18 @@ type LookupRoleArgs struct {
 
 // A collection of values returned by getRole.
 type LookupRoleResult struct {
-	// Description of the role.
+	// The description of the role.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The name of the role. If not provided, `roleId` must be set.
-	Name        *string                 `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Configuration settings for permissions (scopes) attached to the role.
 	Permissions []GetRolePermissionType `pulumi:"permissions"`
 	// The ID of the role. If not provided, `name` must be set.
 	RoleId *string `pulumi:"roleId"`
+	// List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs.
+	Users []string `pulumi:"users"`
 }
 
 func LookupRoleOutput(ctx *pulumi.Context, args LookupRoleOutputArgs, opts ...pulumi.InvokeOption) LookupRoleResultOutput {
@@ -122,7 +125,7 @@ func (o LookupRoleResultOutput) ToOutput(ctx context.Context) pulumix.Output[Loo
 	}
 }
 
-// Description of the role.
+// The description of the role.
 func (o LookupRoleResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -137,6 +140,7 @@ func (o LookupRoleResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Configuration settings for permissions (scopes) attached to the role.
 func (o LookupRoleResultOutput) Permissions() GetRolePermissionTypeArrayOutput {
 	return o.ApplyT(func(v LookupRoleResult) []GetRolePermissionType { return v.Permissions }).(GetRolePermissionTypeArrayOutput)
 }
@@ -144,6 +148,11 @@ func (o LookupRoleResultOutput) Permissions() GetRolePermissionTypeArrayOutput {
 // The ID of the role. If not provided, `name` must be set.
 func (o LookupRoleResultOutput) RoleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleResult) *string { return v.RoleId }).(pulumi.StringPtrOutput)
+}
+
+// List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs.
+func (o LookupRoleResultOutput) Users() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupRoleResult) []string { return v.Users }).(pulumi.StringArrayOutput)
 }
 
 func init() {

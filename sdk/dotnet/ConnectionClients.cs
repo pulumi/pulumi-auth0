@@ -56,7 +56,7 @@ namespace Pulumi.Auth0
     /// This resource can be imported by specifying the Connection ID. # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/connectionClients:ConnectionClients my_conn_clients_assoc con_XXXXX
+    ///  $ pulumi import auth0:index/connectionClients:ConnectionClients my_conn_clients_assoc "con_XXXXX"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/connectionClients:ConnectionClients")]

@@ -10,14 +10,22 @@ import java.util.Objects;
 @CustomType
 public final class GetResourceServerScope {
     private String description;
-    private String value;
+    /**
+     * @return Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
+     * 
+     */
+    private String name;
 
     private GetResourceServerScope() {}
     public String description() {
         return this.description;
     }
-    public String value() {
-        return this.value;
+    /**
+     * @return Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
+     * 
+     */
+    public String name() {
+        return this.name;
     }
 
     public static Builder builder() {
@@ -30,12 +38,12 @@ public final class GetResourceServerScope {
     @CustomType.Builder
     public static final class Builder {
         private String description;
-        private String value;
+        private String name;
         public Builder() {}
         public Builder(GetResourceServerScope defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
-    	      this.value = defaults.value;
+    	      this.name = defaults.name;
         }
 
         @CustomType.Setter
@@ -44,14 +52,14 @@ public final class GetResourceServerScope {
             return this;
         }
         @CustomType.Setter
-        public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+        public Builder name(String name) {
+            this.name = Objects.requireNonNull(name);
             return this;
         }
         public GetResourceServerScope build() {
             final var o = new GetResourceServerScope();
             o.description = description;
-            o.value = value;
+            o.name = name;
             return o;
         }
     }

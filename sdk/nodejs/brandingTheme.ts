@@ -92,10 +92,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Branding Themes can be imported using their ID. # Example
+ * This resource can be imported by specifying the Branding Theme ID. # Example
  *
  * ```sh
- *  $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme XXXXXXXXXXXXXXXXXXXX
+ *  $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme "XXXXXXXXXXXXXXXXXXXX"
  * ```
  */
 export class BrandingTheme extends pulumi.CustomResource {

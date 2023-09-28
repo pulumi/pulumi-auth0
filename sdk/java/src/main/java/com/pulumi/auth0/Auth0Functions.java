@@ -22,10 +22,11 @@ import com.pulumi.auth0.outputs.GetBrandingThemeResult;
 import com.pulumi.auth0.outputs.GetClientResult;
 import com.pulumi.auth0.outputs.GetConnectionResult;
 import com.pulumi.auth0.outputs.GetCustomDomainResult;
-import com.pulumi.auth0.outputs.GetGlobalClientResult;
 import com.pulumi.auth0.outputs.GetOrganizationResult;
+import com.pulumi.auth0.outputs.GetPagesResult;
 import com.pulumi.auth0.outputs.GetResourceServerResult;
 import com.pulumi.auth0.outputs.GetRoleResult;
+import com.pulumi.auth0.outputs.GetSigningKeysResult;
 import com.pulumi.auth0.outputs.GetTenantResult;
 import com.pulumi.auth0.outputs.GetUserResult;
 import com.pulumi.core.Output;
@@ -1183,198 +1184,6 @@ public final class Auth0Functions {
         return Deployment.getInstance().invokeAsync("auth0:index/getCustomDomain:getCustomDomain", TypeShape.of(GetCustomDomainResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var global = Auth0Functions.getGlobalClient();
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static Output<GetGlobalClientResult> getGlobalClient() {
-        return getGlobalClient(InvokeArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var global = Auth0Functions.getGlobalClient();
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static CompletableFuture<GetGlobalClientResult> getGlobalClientPlain() {
-        return getGlobalClientPlain(InvokeArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var global = Auth0Functions.getGlobalClient();
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static Output<GetGlobalClientResult> getGlobalClient(InvokeArgs args) {
-        return getGlobalClient(args, InvokeOptions.Empty);
-    }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var global = Auth0Functions.getGlobalClient();
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static CompletableFuture<GetGlobalClientResult> getGlobalClientPlain(InvokeArgs args) {
-        return getGlobalClientPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var global = Auth0Functions.getGlobalClient();
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static Output<GetGlobalClientResult> getGlobalClient(InvokeArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("auth0:index/getGlobalClient:getGlobalClient", TypeShape.of(GetGlobalClientResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var global = Auth0Functions.getGlobalClient();
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static CompletableFuture<GetGlobalClientResult> getGlobalClientPlain(InvokeArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("auth0:index/getGlobalClient:getGlobalClient", TypeShape.of(GetGlobalClientResult.class), args, Utilities.withVersion(options));
-    }
-    /**
      * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
      * 
      * ## Example Usage
@@ -1619,6 +1428,210 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPages = Auth0Functions.getPages();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPagesResult> getPages() {
+        return getPages(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPages = Auth0Functions.getPages();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPagesResult> getPagesPlain() {
+        return getPagesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPages = Auth0Functions.getPages();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPagesResult> getPages(InvokeArgs args) {
+        return getPages(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPages = Auth0Functions.getPages();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPagesResult> getPagesPlain(InvokeArgs args) {
+        return getPagesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPages = Auth0Functions.getPages();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPagesResult> getPages(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getPages:getPages", TypeShape.of(GetPagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPages = Auth0Functions.getPages();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPagesResult> getPagesPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getPages:getPages", TypeShape.of(GetPagesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
@@ -2111,6 +2124,48 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetRoleResult> getRolePlain(GetRolePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getRole:getRole", TypeShape.of(GetRoleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+     * 
+     */
+    public static Output<GetSigningKeysResult> getSigningKeys() {
+        return getSigningKeys(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+     * 
+     */
+    public static CompletableFuture<GetSigningKeysResult> getSigningKeysPlain() {
+        return getSigningKeysPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+     * 
+     */
+    public static Output<GetSigningKeysResult> getSigningKeys(InvokeArgs args) {
+        return getSigningKeys(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+     * 
+     */
+    public static CompletableFuture<GetSigningKeysResult> getSigningKeysPlain(InvokeArgs args) {
+        return getSigningKeysPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+     * 
+     */
+    public static Output<GetSigningKeysResult> getSigningKeys(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getSigningKeys:getSigningKeys", TypeShape.of(GetSigningKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+     * 
+     */
+    public static CompletableFuture<GetSigningKeysResult> getSigningKeysPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getSigningKeys:getSigningKeys", TypeShape.of(GetSigningKeysResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to access information about the tenant this provider is configured to access.

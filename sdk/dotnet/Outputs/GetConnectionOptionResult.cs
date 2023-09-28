@@ -17,6 +17,7 @@ namespace Pulumi.Auth0.Outputs
         public readonly ImmutableArray<string> AllowedAudiences;
         public readonly bool ApiEnableUsers;
         public readonly string AppId;
+        public readonly ImmutableArray<Outputs.GetConnectionOptionAttributeMapResult> AttributeMaps;
         public readonly ImmutableDictionary<string, string> AuthParams;
         public readonly string AuthorizationEndpoint;
         public readonly bool BruteForceProtection;
@@ -24,8 +25,10 @@ namespace Pulumi.Auth0.Outputs
         public readonly string ClientSecret;
         public readonly string CommunityBaseUrl;
         public readonly ImmutableDictionary<string, object> Configuration;
+        public readonly ImmutableArray<Outputs.GetConnectionOptionConnectionSettingResult> ConnectionSettings;
         public readonly ImmutableDictionary<string, string> CustomScripts;
         public readonly bool Debug;
+        public readonly ImmutableArray<Outputs.GetConnectionOptionDecryptionKeyResult> DecryptionKeys;
         public readonly string DigestAlgorithm;
         public readonly bool DisableCache;
         public readonly bool DisableSelfServiceChangePassword;
@@ -51,6 +54,7 @@ namespace Pulumi.Auth0.Outputs
         public readonly string Issuer;
         public readonly string JwksUri;
         public readonly string KeyId;
+        public readonly bool MapUserIdToId;
         public readonly string MaxGroupsToRetrieve;
         public readonly string MessagingServiceSid;
         public readonly string MetadataUrl;
@@ -113,6 +117,8 @@ namespace Pulumi.Auth0.Outputs
 
             string appId,
 
+            ImmutableArray<Outputs.GetConnectionOptionAttributeMapResult> attributeMaps,
+
             ImmutableDictionary<string, string> authParams,
 
             string authorizationEndpoint,
@@ -127,9 +133,13 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableDictionary<string, object> configuration,
 
+            ImmutableArray<Outputs.GetConnectionOptionConnectionSettingResult> connectionSettings,
+
             ImmutableDictionary<string, string> customScripts,
 
             bool debug,
+
+            ImmutableArray<Outputs.GetConnectionOptionDecryptionKeyResult> decryptionKeys,
 
             string digestAlgorithm,
 
@@ -180,6 +190,8 @@ namespace Pulumi.Auth0.Outputs
             string jwksUri,
 
             string keyId,
+
+            bool mapUserIdToId,
 
             string maxGroupsToRetrieve,
 
@@ -281,6 +293,7 @@ namespace Pulumi.Auth0.Outputs
             AllowedAudiences = allowedAudiences;
             ApiEnableUsers = apiEnableUsers;
             AppId = appId;
+            AttributeMaps = attributeMaps;
             AuthParams = authParams;
             AuthorizationEndpoint = authorizationEndpoint;
             BruteForceProtection = bruteForceProtection;
@@ -288,8 +301,10 @@ namespace Pulumi.Auth0.Outputs
             ClientSecret = clientSecret;
             CommunityBaseUrl = communityBaseUrl;
             Configuration = configuration;
+            ConnectionSettings = connectionSettings;
             CustomScripts = customScripts;
             Debug = debug;
+            DecryptionKeys = decryptionKeys;
             DigestAlgorithm = digestAlgorithm;
             DisableCache = disableCache;
             DisableSelfServiceChangePassword = disableSelfServiceChangePassword;
@@ -315,6 +330,7 @@ namespace Pulumi.Auth0.Outputs
             Issuer = issuer;
             JwksUri = jwksUri;
             KeyId = keyId;
+            MapUserIdToId = mapUserIdToId;
             MaxGroupsToRetrieve = maxGroupsToRetrieve;
             MessagingServiceSid = messagingServiceSid;
             MetadataUrl = metadataUrl;

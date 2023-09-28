@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,17 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const admin = new auth0.Role("admin", {description: "Administrator"});
  * const user = new auth0.User("user", {
  *     connectionName: "Username-Password-Authentication",
- *     userId: "12345",
- *     username: "unique_username",
- *     nickname: "some.nickname",
  *     email: "test@test.com",
  *     emailVerified: true,
+ *     nickname: "some.nickname",
  *     password: "passpass$12$12",
  *     picture: "https://www.example.com/a-valid-picture-url.jpg",
- *     roles: [admin.id],
+ *     userId: "12345",
+ *     username: "unique_username",
  * });
  * ```
  *
@@ -34,7 +30,7 @@ import * as utilities from "./utilities";
  * This resource can be imported using the user ID. # Example
  *
  * ```sh
- *  $ pulumi import auth0:index/user:User user auth0|111111111111111111111111
+ *  $ pulumi import auth0:index/user:User user "auth0|111111111111111111111111"
  * ```
  */
 export class User extends pulumi.CustomResource {
@@ -106,12 +102,6 @@ export class User extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.User` data source instead.
-     *
-     * @deprecated Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.
-     */
-    public /*out*/ readonly permissions!: pulumi.Output<outputs.UserPermission[]>;
-    /**
      * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      */
     public readonly phoneNumber!: pulumi.Output<string | undefined>;
@@ -123,15 +113,6 @@ export class User extends pulumi.CustomResource {
      * Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
     public readonly picture!: pulumi.Output<string>;
-    /**
-     * Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-     * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-     * instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-     *
-     * @deprecated Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-     */
-    public readonly roles!: pulumi.Output<string[] | undefined>;
     /**
      * ID of the user.
      */
@@ -172,11 +153,9 @@ export class User extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nickname"] = state ? state.nickname : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
             resourceInputs["phoneNumber"] = state ? state.phoneNumber : undefined;
             resourceInputs["phoneVerified"] = state ? state.phoneVerified : undefined;
             resourceInputs["picture"] = state ? state.picture : undefined;
-            resourceInputs["roles"] = state ? state.roles : undefined;
             resourceInputs["userId"] = state ? state.userId : undefined;
             resourceInputs["userMetadata"] = state ? state.userMetadata : undefined;
             resourceInputs["username"] = state ? state.username : undefined;
@@ -199,12 +178,10 @@ export class User extends pulumi.CustomResource {
             resourceInputs["phoneNumber"] = args ? args.phoneNumber : undefined;
             resourceInputs["phoneVerified"] = args ? args.phoneVerified : undefined;
             resourceInputs["picture"] = args ? args.picture : undefined;
-            resourceInputs["roles"] = args ? args.roles : undefined;
             resourceInputs["userId"] = args ? args.userId : undefined;
             resourceInputs["userMetadata"] = args ? args.userMetadata : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
             resourceInputs["verifyEmail"] = args ? args.verifyEmail : undefined;
-            resourceInputs["permissions"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };
@@ -258,12 +235,6 @@ export interface UserState {
      */
     password?: pulumi.Input<string>;
     /**
-     * List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.User` data source instead.
-     *
-     * @deprecated Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.
-     */
-    permissions?: pulumi.Input<pulumi.Input<inputs.UserPermission>[]>;
-    /**
      * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      */
     phoneNumber?: pulumi.Input<string>;
@@ -275,15 +246,6 @@ export interface UserState {
      * Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
     picture?: pulumi.Input<string>;
-    /**
-     * Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-     * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-     * instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-     *
-     * @deprecated Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-     */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ID of the user.
      */
@@ -358,15 +320,6 @@ export interface UserArgs {
      * Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
     picture?: pulumi.Input<string>;
-    /**
-     * Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-     * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-     * instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-     *
-     * @deprecated Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-     */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ID of the user.
      */

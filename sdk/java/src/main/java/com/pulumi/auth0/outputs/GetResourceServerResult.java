@@ -31,7 +31,7 @@ public final class GetResourceServerResult {
      */
     private String id;
     /**
-     * @return The unique identifier for the resource server. If not provided, `resource_server_id` must be set.
+     * @return Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
      * 
      */
     private @Nullable String identifier;
@@ -109,7 +109,7 @@ public final class GetResourceServerResult {
         return this.id;
     }
     /**
-     * @return The unique identifier for the resource server. If not provided, `resource_server_id` must be set.
+     * @return Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
      * 
      */
     public Optional<String> identifier() {

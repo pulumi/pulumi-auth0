@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['UserPermissionInitArgs', 'UserPermission']
+__all__ = ['UserPermissionArgs', 'UserPermission']
 
 @pulumi.input_type
-class UserPermissionInitArgs:
+class UserPermissionArgs:
     def __init__(__self__, *,
                  permission: pulumi.Input[str],
                  resource_server_identifier: pulumi.Input[str],
@@ -186,7 +186,7 @@ class UserPermission(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: UserPermissionInitArgs,
+                 args: UserPermissionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can manage user permissions.
@@ -204,12 +204,12 @@ class UserPermission(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param UserPermissionInitArgs args: The arguments to use to populate this resource's properties.
+        :param UserPermissionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(UserPermissionInitArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(UserPermissionArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -228,7 +228,7 @@ class UserPermission(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = UserPermissionInitArgs.__new__(UserPermissionInitArgs)
+            __props__ = UserPermissionArgs.__new__(UserPermissionArgs)
 
             if permission is None and not opts.urn:
                 raise TypeError("Missing required property 'permission'")

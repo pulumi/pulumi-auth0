@@ -195,10 +195,10 @@ class Organization(pulumi.CustomResource):
 
         ## Import
 
-        Existing organizations can be imported using the organization ID. # Example
+        This resource can be imported by specifying the organization ID. # Example
 
         ```sh
-         $ pulumi import auth0:index/organization:Organization my_organization org_XXXXXXXXXXXXXX
+         $ pulumi import auth0:index/organization:Organization my_organization "org_XXXXXXXXXXXXXX"
         ```
 
         :param str resource_name: The name of the resource.
@@ -242,10 +242,10 @@ class Organization(pulumi.CustomResource):
 
         ## Import
 
-        Existing organizations can be imported using the organization ID. # Example
+        This resource can be imported by specifying the organization ID. # Example
 
         ```sh
-         $ pulumi import auth0:index/organization:Organization my_organization org_XXXXXXXXXXXXXX
+         $ pulumi import auth0:index/organization:Organization my_organization "org_XXXXXXXXXXXXXX"
         ```
 
         :param str resource_name: The name of the resource.

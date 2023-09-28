@@ -403,61 +403,13 @@ namespace Pulumi.Auth0
     /// 
     /// });
     /// ```
-    /// ### OIDC Connection
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var oidc = new Auth0.Connection("oidc", new()
-    ///     {
-    ///         DisplayName = "OIDC Connection",
-    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
-    ///         {
-    ///             AuthorizationEndpoint = "https://www.paypal.com/signin/authorize",
-    ///             ClientId = "1234567",
-    ///             ClientSecret = "1234567",
-    ///             DiscoveryUrl = "https://www.paypalobjects.com/.well-known/openid-configuration",
-    ///             DomainAliases = new[]
-    ///             {
-    ///                 "example.com",
-    ///             },
-    ///             IconUrl = "https://example.com/assets/logo.png",
-    ///             Issuer = "https://www.paypalobjects.com",
-    ///             JwksUri = "https://api.paypal.com/v1/oauth2/certs",
-    ///             NonPersistentAttrs = new[]
-    ///             {
-    ///                 "ethnicity",
-    ///                 "gender",
-    ///             },
-    ///             Scopes = new[]
-    ///             {
-    ///                 "openid",
-    ///                 "email",
-    ///             },
-    ///             SetUserRootAttributes = "on_first_login",
-    ///             TenantDomain = "",
-    ///             TokenEndpoint = "https://api.paypal.com/v1/oauth2/token",
-    ///             Type = "front_channel",
-    ///             UserinfoEndpoint = "https://api.paypal.com/v1/oauth2/token/userinfo",
-    ///         },
-    ///         ShowAsButton = false,
-    ///         Strategy = "oidc",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
-    /// Connections can be imported using their ID. # Example
+    /// This resource can be imported by specifying the connection ID. # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
+    ///  $ pulumi import auth0:index/connection:Connection google "con_a17f21fdb24d48a0"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/connection:Connection")]
@@ -468,12 +420,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
-
-        /// <summary>
-        /// IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
-        /// </summary>
-        [Output("enabledClients")]
-        public Output<ImmutableArray<string>> EnabledClients { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether the connection is domain level.
@@ -636,18 +582,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
-
-        [Input("enabledClients")]
-        private InputList<string>? _enabledClients;
-
-        /// <summary>
-        /// IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
-        /// </summary>
-        public InputList<string> EnabledClients
-        {
-            get => _enabledClients ?? (_enabledClients = new InputList<string>());
-            set => _enabledClients = value;
-        }
 
         /// <summary>
         /// Indicates whether the connection is domain level.

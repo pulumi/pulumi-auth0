@@ -113,10 +113,10 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// Branding Themes can be imported using their ID. # Example
+    /// This resource can be imported by specifying the Branding Theme ID. # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme XXXXXXXXXXXXXXXXXXXX
+    ///  $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme "XXXXXXXXXXXXXXXXXXXX"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/brandingTheme:BrandingTheme")]

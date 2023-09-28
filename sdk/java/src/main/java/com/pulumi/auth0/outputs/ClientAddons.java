@@ -3,108 +3,314 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.ClientAddonsAws;
+import com.pulumi.auth0.outputs.ClientAddonsAzureBlob;
+import com.pulumi.auth0.outputs.ClientAddonsAzureSb;
+import com.pulumi.auth0.outputs.ClientAddonsBox;
+import com.pulumi.auth0.outputs.ClientAddonsCloudbees;
+import com.pulumi.auth0.outputs.ClientAddonsConcur;
+import com.pulumi.auth0.outputs.ClientAddonsDropbox;
+import com.pulumi.auth0.outputs.ClientAddonsEchosign;
+import com.pulumi.auth0.outputs.ClientAddonsEgnyte;
+import com.pulumi.auth0.outputs.ClientAddonsFirebase;
+import com.pulumi.auth0.outputs.ClientAddonsLayer;
+import com.pulumi.auth0.outputs.ClientAddonsMscrm;
+import com.pulumi.auth0.outputs.ClientAddonsNewrelic;
+import com.pulumi.auth0.outputs.ClientAddonsOffice365;
+import com.pulumi.auth0.outputs.ClientAddonsRms;
+import com.pulumi.auth0.outputs.ClientAddonsSalesforce;
+import com.pulumi.auth0.outputs.ClientAddonsSalesforceApi;
+import com.pulumi.auth0.outputs.ClientAddonsSalesforceSandboxApi;
 import com.pulumi.auth0.outputs.ClientAddonsSamlp;
+import com.pulumi.auth0.outputs.ClientAddonsSapApi;
+import com.pulumi.auth0.outputs.ClientAddonsSentry;
+import com.pulumi.auth0.outputs.ClientAddonsSharepoint;
+import com.pulumi.auth0.outputs.ClientAddonsSlack;
+import com.pulumi.auth0.outputs.ClientAddonsSpringcm;
+import com.pulumi.auth0.outputs.ClientAddonsSsoIntegration;
+import com.pulumi.auth0.outputs.ClientAddonsWams;
+import com.pulumi.auth0.outputs.ClientAddonsWsfed;
+import com.pulumi.auth0.outputs.ClientAddonsZendesk;
+import com.pulumi.auth0.outputs.ClientAddonsZoom;
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
-import java.lang.String;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddons {
-    private @Nullable Map<String,Object> aws;
-    private @Nullable Map<String,Object> azureBlob;
-    private @Nullable Map<String,Object> azureSb;
-    private @Nullable Map<String,Object> box;
-    private @Nullable Map<String,Object> cloudbees;
-    private @Nullable Map<String,Object> concur;
-    private @Nullable Map<String,Object> dropbox;
-    private @Nullable Map<String,Object> echosign;
-    private @Nullable Map<String,Object> egnyte;
-    private @Nullable Map<String,Object> firebase;
-    private @Nullable Map<String,Object> layer;
-    private @Nullable Map<String,Object> mscrm;
-    private @Nullable Map<String,Object> newrelic;
-    private @Nullable Map<String,Object> office365;
-    private @Nullable Map<String,Object> rms;
-    private @Nullable Map<String,Object> salesforce;
-    private @Nullable Map<String,Object> salesforceApi;
-    private @Nullable Map<String,Object> salesforceSandboxApi;
+    /**
+     * @return AWS Addon configuration.
+     * 
+     */
+    private @Nullable ClientAddonsAws aws;
+    /**
+     * @return Azure Blob Storage Addon configuration.
+     * 
+     */
+    private @Nullable ClientAddonsAzureBlob azureBlob;
+    /**
+     * @return Azure Storage Bus Addon configuration.
+     * 
+     */
+    private @Nullable ClientAddonsAzureSb azureSb;
+    /**
+     * @return Box SSO indicator (no configuration settings needed for Box SSO).
+     * 
+     */
+    private @Nullable ClientAddonsBox box;
+    /**
+     * @return CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+     * 
+     */
+    private @Nullable ClientAddonsCloudbees cloudbees;
+    /**
+     * @return Concur SSO indicator (no configuration settings needed for Concur SSO).
+     * 
+     */
+    private @Nullable ClientAddonsConcur concur;
+    /**
+     * @return Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+     * 
+     */
+    private @Nullable ClientAddonsDropbox dropbox;
+    /**
+     * @return Adobe EchoSign SSO configuration.
+     * 
+     */
+    private @Nullable ClientAddonsEchosign echosign;
+    /**
+     * @return Egnyte SSO configuration.
+     * 
+     */
+    private @Nullable ClientAddonsEgnyte egnyte;
+    /**
+     * @return Google Firebase addon configuration.
+     * 
+     */
+    private @Nullable ClientAddonsFirebase firebase;
+    /**
+     * @return Layer addon configuration.
+     * 
+     */
+    private @Nullable ClientAddonsLayer layer;
+    /**
+     * @return Microsoft Dynamics CRM SSO configuration.
+     * 
+     */
+    private @Nullable ClientAddonsMscrm mscrm;
+    /**
+     * @return New Relic SSO configuration.
+     * 
+     */
+    private @Nullable ClientAddonsNewrelic newrelic;
+    /**
+     * @return Microsoft Office 365 SSO configuration.
+     * 
+     */
+    private @Nullable ClientAddonsOffice365 office365;
+    /**
+     * @return Active Directory Rights Management Service SSO configuration.
+     * 
+     */
+    private @Nullable ClientAddonsRms rms;
+    /**
+     * @return Salesforce SSO configuration.
+     * 
+     */
+    private @Nullable ClientAddonsSalesforce salesforce;
+    /**
+     * @return Salesforce API addon configuration.
+     * 
+     */
+    private @Nullable ClientAddonsSalesforceApi salesforceApi;
+    /**
+     * @return Salesforce Sandbox addon configuration.
+     * 
+     */
+    private @Nullable ClientAddonsSalesforceSandboxApi salesforceSandboxApi;
     /**
      * @return Configuration settings for a SAML add-on.
      * 
      */
     private @Nullable ClientAddonsSamlp samlp;
-    private @Nullable Map<String,Object> sapApi;
-    private @Nullable Map<String,Object> sentry;
-    private @Nullable Map<String,Object> sharepoint;
-    private @Nullable Map<String,Object> slack;
-    private @Nullable Map<String,Object> springcm;
-    private @Nullable Map<String,Object> wams;
     /**
-     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+     * @return SAP API addon configuration.
      * 
      */
-    private @Nullable Map<String,Object> wsfed;
-    private @Nullable Map<String,Object> zendesk;
-    private @Nullable Map<String,Object> zoom;
+    private @Nullable ClientAddonsSapApi sapApi;
+    /**
+     * @return Sentry SSO configuration.
+     * 
+     */
+    private @Nullable ClientAddonsSentry sentry;
+    /**
+     * @return SharePoint SSO configuration.
+     * 
+     */
+    private @Nullable ClientAddonsSharepoint sharepoint;
+    /**
+     * @return Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+     * 
+     */
+    private @Nullable ClientAddonsSlack slack;
+    /**
+     * @return SpringCM SSO configuration.
+     * 
+     */
+    private @Nullable ClientAddonsSpringcm springcm;
+    /**
+     * @return Generic SSO configuration.
+     * 
+     */
+    private @Nullable ClientAddonsSsoIntegration ssoIntegration;
+    /**
+     * @return Windows Azure Mobile Services addon configuration.
+     * 
+     */
+    private @Nullable ClientAddonsWams wams;
+    /**
+     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+     * 
+     */
+    private @Nullable ClientAddonsWsfed wsfed;
+    /**
+     * @return Zendesk SSO configuration.
+     * 
+     */
+    private @Nullable ClientAddonsZendesk zendesk;
+    /**
+     * @return Zoom SSO configuration.
+     * 
+     */
+    private @Nullable ClientAddonsZoom zoom;
 
     private ClientAddons() {}
-    public Map<String,Object> aws() {
-        return this.aws == null ? Map.of() : this.aws;
+    /**
+     * @return AWS Addon configuration.
+     * 
+     */
+    public Optional<ClientAddonsAws> aws() {
+        return Optional.ofNullable(this.aws);
     }
-    public Map<String,Object> azureBlob() {
-        return this.azureBlob == null ? Map.of() : this.azureBlob;
+    /**
+     * @return Azure Blob Storage Addon configuration.
+     * 
+     */
+    public Optional<ClientAddonsAzureBlob> azureBlob() {
+        return Optional.ofNullable(this.azureBlob);
     }
-    public Map<String,Object> azureSb() {
-        return this.azureSb == null ? Map.of() : this.azureSb;
+    /**
+     * @return Azure Storage Bus Addon configuration.
+     * 
+     */
+    public Optional<ClientAddonsAzureSb> azureSb() {
+        return Optional.ofNullable(this.azureSb);
     }
-    public Map<String,Object> box() {
-        return this.box == null ? Map.of() : this.box;
+    /**
+     * @return Box SSO indicator (no configuration settings needed for Box SSO).
+     * 
+     */
+    public Optional<ClientAddonsBox> box() {
+        return Optional.ofNullable(this.box);
     }
-    public Map<String,Object> cloudbees() {
-        return this.cloudbees == null ? Map.of() : this.cloudbees;
+    /**
+     * @return CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+     * 
+     */
+    public Optional<ClientAddonsCloudbees> cloudbees() {
+        return Optional.ofNullable(this.cloudbees);
     }
-    public Map<String,Object> concur() {
-        return this.concur == null ? Map.of() : this.concur;
+    /**
+     * @return Concur SSO indicator (no configuration settings needed for Concur SSO).
+     * 
+     */
+    public Optional<ClientAddonsConcur> concur() {
+        return Optional.ofNullable(this.concur);
     }
-    public Map<String,Object> dropbox() {
-        return this.dropbox == null ? Map.of() : this.dropbox;
+    /**
+     * @return Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+     * 
+     */
+    public Optional<ClientAddonsDropbox> dropbox() {
+        return Optional.ofNullable(this.dropbox);
     }
-    public Map<String,Object> echosign() {
-        return this.echosign == null ? Map.of() : this.echosign;
+    /**
+     * @return Adobe EchoSign SSO configuration.
+     * 
+     */
+    public Optional<ClientAddonsEchosign> echosign() {
+        return Optional.ofNullable(this.echosign);
     }
-    public Map<String,Object> egnyte() {
-        return this.egnyte == null ? Map.of() : this.egnyte;
+    /**
+     * @return Egnyte SSO configuration.
+     * 
+     */
+    public Optional<ClientAddonsEgnyte> egnyte() {
+        return Optional.ofNullable(this.egnyte);
     }
-    public Map<String,Object> firebase() {
-        return this.firebase == null ? Map.of() : this.firebase;
+    /**
+     * @return Google Firebase addon configuration.
+     * 
+     */
+    public Optional<ClientAddonsFirebase> firebase() {
+        return Optional.ofNullable(this.firebase);
     }
-    public Map<String,Object> layer() {
-        return this.layer == null ? Map.of() : this.layer;
+    /**
+     * @return Layer addon configuration.
+     * 
+     */
+    public Optional<ClientAddonsLayer> layer() {
+        return Optional.ofNullable(this.layer);
     }
-    public Map<String,Object> mscrm() {
-        return this.mscrm == null ? Map.of() : this.mscrm;
+    /**
+     * @return Microsoft Dynamics CRM SSO configuration.
+     * 
+     */
+    public Optional<ClientAddonsMscrm> mscrm() {
+        return Optional.ofNullable(this.mscrm);
     }
-    public Map<String,Object> newrelic() {
-        return this.newrelic == null ? Map.of() : this.newrelic;
+    /**
+     * @return New Relic SSO configuration.
+     * 
+     */
+    public Optional<ClientAddonsNewrelic> newrelic() {
+        return Optional.ofNullable(this.newrelic);
     }
-    public Map<String,Object> office365() {
-        return this.office365 == null ? Map.of() : this.office365;
+    /**
+     * @return Microsoft Office 365 SSO configuration.
+     * 
+     */
+    public Optional<ClientAddonsOffice365> office365() {
+        return Optional.ofNullable(this.office365);
     }
-    public Map<String,Object> rms() {
-        return this.rms == null ? Map.of() : this.rms;
+    /**
+     * @return Active Directory Rights Management Service SSO configuration.
+     * 
+     */
+    public Optional<ClientAddonsRms> rms() {
+        return Optional.ofNullable(this.rms);
     }
-    public Map<String,Object> salesforce() {
-        return this.salesforce == null ? Map.of() : this.salesforce;
+    /**
+     * @return Salesforce SSO configuration.
+     * 
+     */
+    public Optional<ClientAddonsSalesforce> salesforce() {
+        return Optional.ofNullable(this.salesforce);
     }
-    public Map<String,Object> salesforceApi() {
-        return this.salesforceApi == null ? Map.of() : this.salesforceApi;
+    /**
+     * @return Salesforce API addon configuration.
+     * 
+     */
+    public Optional<ClientAddonsSalesforceApi> salesforceApi() {
+        return Optional.ofNullable(this.salesforceApi);
     }
-    public Map<String,Object> salesforceSandboxApi() {
-        return this.salesforceSandboxApi == null ? Map.of() : this.salesforceSandboxApi;
+    /**
+     * @return Salesforce Sandbox addon configuration.
+     * 
+     */
+    public Optional<ClientAddonsSalesforceSandboxApi> salesforceSandboxApi() {
+        return Optional.ofNullable(this.salesforceSandboxApi);
     }
     /**
      * @return Configuration settings for a SAML add-on.
@@ -113,36 +319,75 @@ public final class ClientAddons {
     public Optional<ClientAddonsSamlp> samlp() {
         return Optional.ofNullable(this.samlp);
     }
-    public Map<String,Object> sapApi() {
-        return this.sapApi == null ? Map.of() : this.sapApi;
-    }
-    public Map<String,Object> sentry() {
-        return this.sentry == null ? Map.of() : this.sentry;
-    }
-    public Map<String,Object> sharepoint() {
-        return this.sharepoint == null ? Map.of() : this.sharepoint;
-    }
-    public Map<String,Object> slack() {
-        return this.slack == null ? Map.of() : this.slack;
-    }
-    public Map<String,Object> springcm() {
-        return this.springcm == null ? Map.of() : this.springcm;
-    }
-    public Map<String,Object> wams() {
-        return this.wams == null ? Map.of() : this.wams;
-    }
     /**
-     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+     * @return SAP API addon configuration.
      * 
      */
-    public Map<String,Object> wsfed() {
-        return this.wsfed == null ? Map.of() : this.wsfed;
+    public Optional<ClientAddonsSapApi> sapApi() {
+        return Optional.ofNullable(this.sapApi);
     }
-    public Map<String,Object> zendesk() {
-        return this.zendesk == null ? Map.of() : this.zendesk;
+    /**
+     * @return Sentry SSO configuration.
+     * 
+     */
+    public Optional<ClientAddonsSentry> sentry() {
+        return Optional.ofNullable(this.sentry);
     }
-    public Map<String,Object> zoom() {
-        return this.zoom == null ? Map.of() : this.zoom;
+    /**
+     * @return SharePoint SSO configuration.
+     * 
+     */
+    public Optional<ClientAddonsSharepoint> sharepoint() {
+        return Optional.ofNullable(this.sharepoint);
+    }
+    /**
+     * @return Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+     * 
+     */
+    public Optional<ClientAddonsSlack> slack() {
+        return Optional.ofNullable(this.slack);
+    }
+    /**
+     * @return SpringCM SSO configuration.
+     * 
+     */
+    public Optional<ClientAddonsSpringcm> springcm() {
+        return Optional.ofNullable(this.springcm);
+    }
+    /**
+     * @return Generic SSO configuration.
+     * 
+     */
+    public Optional<ClientAddonsSsoIntegration> ssoIntegration() {
+        return Optional.ofNullable(this.ssoIntegration);
+    }
+    /**
+     * @return Windows Azure Mobile Services addon configuration.
+     * 
+     */
+    public Optional<ClientAddonsWams> wams() {
+        return Optional.ofNullable(this.wams);
+    }
+    /**
+     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+     * 
+     */
+    public Optional<ClientAddonsWsfed> wsfed() {
+        return Optional.ofNullable(this.wsfed);
+    }
+    /**
+     * @return Zendesk SSO configuration.
+     * 
+     */
+    public Optional<ClientAddonsZendesk> zendesk() {
+        return Optional.ofNullable(this.zendesk);
+    }
+    /**
+     * @return Zoom SSO configuration.
+     * 
+     */
+    public Optional<ClientAddonsZoom> zoom() {
+        return Optional.ofNullable(this.zoom);
     }
 
     public static Builder builder() {
@@ -154,34 +399,35 @@ public final class ClientAddons {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> aws;
-        private @Nullable Map<String,Object> azureBlob;
-        private @Nullable Map<String,Object> azureSb;
-        private @Nullable Map<String,Object> box;
-        private @Nullable Map<String,Object> cloudbees;
-        private @Nullable Map<String,Object> concur;
-        private @Nullable Map<String,Object> dropbox;
-        private @Nullable Map<String,Object> echosign;
-        private @Nullable Map<String,Object> egnyte;
-        private @Nullable Map<String,Object> firebase;
-        private @Nullable Map<String,Object> layer;
-        private @Nullable Map<String,Object> mscrm;
-        private @Nullable Map<String,Object> newrelic;
-        private @Nullable Map<String,Object> office365;
-        private @Nullable Map<String,Object> rms;
-        private @Nullable Map<String,Object> salesforce;
-        private @Nullable Map<String,Object> salesforceApi;
-        private @Nullable Map<String,Object> salesforceSandboxApi;
+        private @Nullable ClientAddonsAws aws;
+        private @Nullable ClientAddonsAzureBlob azureBlob;
+        private @Nullable ClientAddonsAzureSb azureSb;
+        private @Nullable ClientAddonsBox box;
+        private @Nullable ClientAddonsCloudbees cloudbees;
+        private @Nullable ClientAddonsConcur concur;
+        private @Nullable ClientAddonsDropbox dropbox;
+        private @Nullable ClientAddonsEchosign echosign;
+        private @Nullable ClientAddonsEgnyte egnyte;
+        private @Nullable ClientAddonsFirebase firebase;
+        private @Nullable ClientAddonsLayer layer;
+        private @Nullable ClientAddonsMscrm mscrm;
+        private @Nullable ClientAddonsNewrelic newrelic;
+        private @Nullable ClientAddonsOffice365 office365;
+        private @Nullable ClientAddonsRms rms;
+        private @Nullable ClientAddonsSalesforce salesforce;
+        private @Nullable ClientAddonsSalesforceApi salesforceApi;
+        private @Nullable ClientAddonsSalesforceSandboxApi salesforceSandboxApi;
         private @Nullable ClientAddonsSamlp samlp;
-        private @Nullable Map<String,Object> sapApi;
-        private @Nullable Map<String,Object> sentry;
-        private @Nullable Map<String,Object> sharepoint;
-        private @Nullable Map<String,Object> slack;
-        private @Nullable Map<String,Object> springcm;
-        private @Nullable Map<String,Object> wams;
-        private @Nullable Map<String,Object> wsfed;
-        private @Nullable Map<String,Object> zendesk;
-        private @Nullable Map<String,Object> zoom;
+        private @Nullable ClientAddonsSapApi sapApi;
+        private @Nullable ClientAddonsSentry sentry;
+        private @Nullable ClientAddonsSharepoint sharepoint;
+        private @Nullable ClientAddonsSlack slack;
+        private @Nullable ClientAddonsSpringcm springcm;
+        private @Nullable ClientAddonsSsoIntegration ssoIntegration;
+        private @Nullable ClientAddonsWams wams;
+        private @Nullable ClientAddonsWsfed wsfed;
+        private @Nullable ClientAddonsZendesk zendesk;
+        private @Nullable ClientAddonsZoom zoom;
         public Builder() {}
         public Builder(ClientAddons defaults) {
     	      Objects.requireNonNull(defaults);
@@ -209,6 +455,7 @@ public final class ClientAddons {
     	      this.sharepoint = defaults.sharepoint;
     	      this.slack = defaults.slack;
     	      this.springcm = defaults.springcm;
+    	      this.ssoIntegration = defaults.ssoIntegration;
     	      this.wams = defaults.wams;
     	      this.wsfed = defaults.wsfed;
     	      this.zendesk = defaults.zendesk;
@@ -216,92 +463,92 @@ public final class ClientAddons {
         }
 
         @CustomType.Setter
-        public Builder aws(@Nullable Map<String,Object> aws) {
+        public Builder aws(@Nullable ClientAddonsAws aws) {
             this.aws = aws;
             return this;
         }
         @CustomType.Setter
-        public Builder azureBlob(@Nullable Map<String,Object> azureBlob) {
+        public Builder azureBlob(@Nullable ClientAddonsAzureBlob azureBlob) {
             this.azureBlob = azureBlob;
             return this;
         }
         @CustomType.Setter
-        public Builder azureSb(@Nullable Map<String,Object> azureSb) {
+        public Builder azureSb(@Nullable ClientAddonsAzureSb azureSb) {
             this.azureSb = azureSb;
             return this;
         }
         @CustomType.Setter
-        public Builder box(@Nullable Map<String,Object> box) {
+        public Builder box(@Nullable ClientAddonsBox box) {
             this.box = box;
             return this;
         }
         @CustomType.Setter
-        public Builder cloudbees(@Nullable Map<String,Object> cloudbees) {
+        public Builder cloudbees(@Nullable ClientAddonsCloudbees cloudbees) {
             this.cloudbees = cloudbees;
             return this;
         }
         @CustomType.Setter
-        public Builder concur(@Nullable Map<String,Object> concur) {
+        public Builder concur(@Nullable ClientAddonsConcur concur) {
             this.concur = concur;
             return this;
         }
         @CustomType.Setter
-        public Builder dropbox(@Nullable Map<String,Object> dropbox) {
+        public Builder dropbox(@Nullable ClientAddonsDropbox dropbox) {
             this.dropbox = dropbox;
             return this;
         }
         @CustomType.Setter
-        public Builder echosign(@Nullable Map<String,Object> echosign) {
+        public Builder echosign(@Nullable ClientAddonsEchosign echosign) {
             this.echosign = echosign;
             return this;
         }
         @CustomType.Setter
-        public Builder egnyte(@Nullable Map<String,Object> egnyte) {
+        public Builder egnyte(@Nullable ClientAddonsEgnyte egnyte) {
             this.egnyte = egnyte;
             return this;
         }
         @CustomType.Setter
-        public Builder firebase(@Nullable Map<String,Object> firebase) {
+        public Builder firebase(@Nullable ClientAddonsFirebase firebase) {
             this.firebase = firebase;
             return this;
         }
         @CustomType.Setter
-        public Builder layer(@Nullable Map<String,Object> layer) {
+        public Builder layer(@Nullable ClientAddonsLayer layer) {
             this.layer = layer;
             return this;
         }
         @CustomType.Setter
-        public Builder mscrm(@Nullable Map<String,Object> mscrm) {
+        public Builder mscrm(@Nullable ClientAddonsMscrm mscrm) {
             this.mscrm = mscrm;
             return this;
         }
         @CustomType.Setter
-        public Builder newrelic(@Nullable Map<String,Object> newrelic) {
+        public Builder newrelic(@Nullable ClientAddonsNewrelic newrelic) {
             this.newrelic = newrelic;
             return this;
         }
         @CustomType.Setter
-        public Builder office365(@Nullable Map<String,Object> office365) {
+        public Builder office365(@Nullable ClientAddonsOffice365 office365) {
             this.office365 = office365;
             return this;
         }
         @CustomType.Setter
-        public Builder rms(@Nullable Map<String,Object> rms) {
+        public Builder rms(@Nullable ClientAddonsRms rms) {
             this.rms = rms;
             return this;
         }
         @CustomType.Setter
-        public Builder salesforce(@Nullable Map<String,Object> salesforce) {
+        public Builder salesforce(@Nullable ClientAddonsSalesforce salesforce) {
             this.salesforce = salesforce;
             return this;
         }
         @CustomType.Setter
-        public Builder salesforceApi(@Nullable Map<String,Object> salesforceApi) {
+        public Builder salesforceApi(@Nullable ClientAddonsSalesforceApi salesforceApi) {
             this.salesforceApi = salesforceApi;
             return this;
         }
         @CustomType.Setter
-        public Builder salesforceSandboxApi(@Nullable Map<String,Object> salesforceSandboxApi) {
+        public Builder salesforceSandboxApi(@Nullable ClientAddonsSalesforceSandboxApi salesforceSandboxApi) {
             this.salesforceSandboxApi = salesforceSandboxApi;
             return this;
         }
@@ -311,47 +558,52 @@ public final class ClientAddons {
             return this;
         }
         @CustomType.Setter
-        public Builder sapApi(@Nullable Map<String,Object> sapApi) {
+        public Builder sapApi(@Nullable ClientAddonsSapApi sapApi) {
             this.sapApi = sapApi;
             return this;
         }
         @CustomType.Setter
-        public Builder sentry(@Nullable Map<String,Object> sentry) {
+        public Builder sentry(@Nullable ClientAddonsSentry sentry) {
             this.sentry = sentry;
             return this;
         }
         @CustomType.Setter
-        public Builder sharepoint(@Nullable Map<String,Object> sharepoint) {
+        public Builder sharepoint(@Nullable ClientAddonsSharepoint sharepoint) {
             this.sharepoint = sharepoint;
             return this;
         }
         @CustomType.Setter
-        public Builder slack(@Nullable Map<String,Object> slack) {
+        public Builder slack(@Nullable ClientAddonsSlack slack) {
             this.slack = slack;
             return this;
         }
         @CustomType.Setter
-        public Builder springcm(@Nullable Map<String,Object> springcm) {
+        public Builder springcm(@Nullable ClientAddonsSpringcm springcm) {
             this.springcm = springcm;
             return this;
         }
         @CustomType.Setter
-        public Builder wams(@Nullable Map<String,Object> wams) {
+        public Builder ssoIntegration(@Nullable ClientAddonsSsoIntegration ssoIntegration) {
+            this.ssoIntegration = ssoIntegration;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder wams(@Nullable ClientAddonsWams wams) {
             this.wams = wams;
             return this;
         }
         @CustomType.Setter
-        public Builder wsfed(@Nullable Map<String,Object> wsfed) {
+        public Builder wsfed(@Nullable ClientAddonsWsfed wsfed) {
             this.wsfed = wsfed;
             return this;
         }
         @CustomType.Setter
-        public Builder zendesk(@Nullable Map<String,Object> zendesk) {
+        public Builder zendesk(@Nullable ClientAddonsZendesk zendesk) {
             this.zendesk = zendesk;
             return this;
         }
         @CustomType.Setter
-        public Builder zoom(@Nullable Map<String,Object> zoom) {
+        public Builder zoom(@Nullable ClientAddonsZoom zoom) {
             this.zoom = zoom;
             return this;
         }
@@ -381,6 +633,7 @@ public final class ClientAddons {
             o.sharepoint = sharepoint;
             o.slack = slack;
             o.springcm = springcm;
+            o.ssoIntegration = ssoIntegration;
             o.wams = wams;
             o.wsfed = wsfed;
             o.zendesk = zendesk;

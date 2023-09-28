@@ -26,19 +26,6 @@ namespace Pulumi.Auth0
     ///     {
     ///         AllowOfflineAccess = true,
     ///         Identifier = "https://api.example.com",
-    ///         Scopes = new[]
-    ///         {
-    ///             new Auth0.Inputs.ResourceServerScopeArgs
-    ///             {
-    ///                 Description = "Create foos",
-    ///                 Value = "create:foo",
-    ///             },
-    ///             new Auth0.Inputs.ResourceServerScopeArgs
-    ///             {
-    ///                 Description = "Create bars",
-    ///                 Value = "create:bar",
-    ///             },
-    ///         },
     ///         SigningAlg = "RS256",
     ///         SkipConsentForVerifiableFirstPartyClients = true,
     ///         TokenLifetime = 8600,
@@ -52,7 +39,7 @@ namespace Pulumi.Auth0
     /// Existing resource servers can be imported using their ID. # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server XXXXXXXXXXXXXXXXXXXXXXX
+    ///  $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server "XXXXXXXXXXXXXXXXXXXXXXX"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/resourceServer:ResourceServer")]
@@ -81,16 +68,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        /// <summary>
-        /// List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
-        /// and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
-        /// `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
-        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
-        /// info.
-        /// </summary>
-        [Output("scopes")]
-        public Output<ImmutableArray<Outputs.ResourceServerScope>> Scopes { get; private set; } = null!;
 
         /// <summary>
         /// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
@@ -204,23 +181,6 @@ namespace Pulumi.Auth0
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("scopes")]
-        private InputList<Inputs.ResourceServerScopeArgs>? _scopes;
-
-        /// <summary>
-        /// List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
-        /// and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
-        /// `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
-        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
-        /// info.
-        /// </summary>
-        [Obsolete(@"Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.")]
-        public InputList<Inputs.ResourceServerScopeArgs> Scopes
-        {
-            get => _scopes ?? (_scopes = new InputList<Inputs.ResourceServerScopeArgs>());
-            set => _scopes = value;
-        }
-
         /// <summary>
         /// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         /// </summary>
@@ -294,23 +254,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("scopes")]
-        private InputList<Inputs.ResourceServerScopeGetArgs>? _scopes;
-
-        /// <summary>
-        /// List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
-        /// and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
-        /// `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
-        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
-        /// info.
-        /// </summary>
-        [Obsolete(@"Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.")]
-        public InputList<Inputs.ResourceServerScopeGetArgs> Scopes
-        {
-            get => _scopes ?? (_scopes = new InputList<Inputs.ResourceServerScopeGetArgs>());
-            set => _scopes = value;
-        }
 
         /// <summary>
         /// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.

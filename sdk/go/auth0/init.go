@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,12 +45,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomDomain{}
 	case "auth0:index/customDomainVerification:CustomDomainVerification":
 		r = &CustomDomainVerification{}
-	case "auth0:index/email:Email":
-		r = &Email{}
+	case "auth0:index/emailProvider:EmailProvider":
+		r = &EmailProvider{}
 	case "auth0:index/emailTemplate:EmailTemplate":
 		r = &EmailTemplate{}
-	case "auth0:index/globalClient:GlobalClient":
-		r = &GlobalClient{}
 	case "auth0:index/guardian:Guardian":
 		r = &Guardian{}
 	case "auth0:index/hook:Hook":
@@ -99,8 +97,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TriggerAction{}
 	case "auth0:index/triggerActions:TriggerActions":
 		r = &TriggerActions{}
-	case "auth0:index/triggerBinding:TriggerBinding":
-		r = &TriggerBinding{}
 	case "auth0:index/user:User":
 		r = &User{}
 	case "auth0:index/userPermission:UserPermission":
@@ -204,17 +200,12 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"auth0",
-		"index/email",
+		"index/emailProvider",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/emailTemplate",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"auth0",
-		"index/globalClient",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -335,11 +326,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/triggerActions",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"auth0",
-		"index/triggerBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

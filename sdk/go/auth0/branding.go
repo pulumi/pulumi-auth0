@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -23,7 +23,7 @@ import (
 //
 //	"os"
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -63,7 +63,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import auth0:index/branding:Branding my_brand 22f4f21b-017a-319d-92e7-2291c1ca36c4
+//	$ pulumi import auth0:index/branding:Branding my_brand "22f4f21b-017a-319d-92e7-2291c1ca36c4"
 //
 // ```
 type Branding struct {

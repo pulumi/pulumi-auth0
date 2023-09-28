@@ -63,10 +63,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the connection ID and client ID separated by &#34;:&#34;. # Example
+ * This resource can be imported by specifying the connection ID and client ID separated by &#34;::&#34; (note the double colon) &lt;connectionID&gt;::&lt;clientID&gt; # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/connectionClient:ConnectionClient my_conn_client_assoc con_XXXXX:XXXXXXXX
+ *  $ pulumi import auth0:index/connectionClient:ConnectionClient my_conn_client_assoc &#34;con_XXXXX::XXXXXXXX&#34;
  * ```
  * 
  */

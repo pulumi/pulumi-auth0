@@ -20,7 +20,7 @@ class TriggerActionArgs:
         """
         The set of arguments for constructing a TriggerAction resource.
         :param pulumi.Input[str] action_id: The ID of the action to bind to the trigger.
-        :param pulumi.Input[str] trigger: The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+        :param pulumi.Input[str] trigger: The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
         :param pulumi.Input[str] display_name: The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
         """
         pulumi.set(__self__, "action_id", action_id)
@@ -44,7 +44,7 @@ class TriggerActionArgs:
     @pulumi.getter
     def trigger(self) -> pulumi.Input[str]:
         """
-        The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+        The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
         """
         return pulumi.get(self, "trigger")
 
@@ -75,7 +75,7 @@ class _TriggerActionState:
         Input properties used for looking up and filtering TriggerAction resources.
         :param pulumi.Input[str] action_id: The ID of the action to bind to the trigger.
         :param pulumi.Input[str] display_name: The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
-        :param pulumi.Input[str] trigger: The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+        :param pulumi.Input[str] trigger: The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
         """
         if action_id is not None:
             pulumi.set(__self__, "action_id", action_id)
@@ -112,7 +112,7 @@ class _TriggerActionState:
     @pulumi.getter
     def trigger(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+        The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
         """
         return pulumi.get(self, "trigger")
 
@@ -162,17 +162,17 @@ class TriggerAction(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the trigger and action ID separated by "::". # Example
+        This resource can be imported by specifying the trigger and action ID separated by "::" (note the double colon) <trigger>::<actionID> # Example
 
         ```sh
-         $ pulumi import auth0:index/triggerAction:TriggerAction post_login_action post-login::28b5c8fa-d371-5734-acf6-d0cf80ead918
+         $ pulumi import auth0:index/triggerAction:TriggerAction post_login_action "post-login::28b5c8fa-d371-5734-acf6-d0cf80ead918"
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action_id: The ID of the action to bind to the trigger.
         :param pulumi.Input[str] display_name: The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
-        :param pulumi.Input[str] trigger: The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+        :param pulumi.Input[str] trigger: The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
         """
         ...
     @overload
@@ -212,10 +212,10 @@ class TriggerAction(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the trigger and action ID separated by "::". # Example
+        This resource can be imported by specifying the trigger and action ID separated by "::" (note the double colon) <trigger>::<actionID> # Example
 
         ```sh
-         $ pulumi import auth0:index/triggerAction:TriggerAction post_login_action post-login::28b5c8fa-d371-5734-acf6-d0cf80ead918
+         $ pulumi import auth0:index/triggerAction:TriggerAction post_login_action "post-login::28b5c8fa-d371-5734-acf6-d0cf80ead918"
         ```
 
         :param str resource_name: The name of the resource.
@@ -274,7 +274,7 @@ class TriggerAction(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action_id: The ID of the action to bind to the trigger.
         :param pulumi.Input[str] display_name: The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
-        :param pulumi.Input[str] trigger: The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+        :param pulumi.Input[str] trigger: The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -305,7 +305,7 @@ class TriggerAction(pulumi.CustomResource):
     @pulumi.getter
     def trigger(self) -> pulumi.Output[str]:
         """
-        The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+        The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
         """
         return pulumi.get(self, "trigger")
 

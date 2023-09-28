@@ -3,6 +3,9 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetConnectionOptionAttributeMap;
+import com.pulumi.auth0.outputs.GetConnectionOptionConnectionSetting;
+import com.pulumi.auth0.outputs.GetConnectionOptionDecryptionKey;
 import com.pulumi.auth0.outputs.GetConnectionOptionGatewayAuthentication;
 import com.pulumi.auth0.outputs.GetConnectionOptionIdpInitiated;
 import com.pulumi.auth0.outputs.GetConnectionOptionMfa;
@@ -28,6 +31,7 @@ public final class GetConnectionOption {
     private List<String> allowedAudiences;
     private Boolean apiEnableUsers;
     private String appId;
+    private List<GetConnectionOptionAttributeMap> attributeMaps;
     private Map<String,String> authParams;
     private String authorizationEndpoint;
     private Boolean bruteForceProtection;
@@ -35,8 +39,10 @@ public final class GetConnectionOption {
     private String clientSecret;
     private String communityBaseUrl;
     private Map<String,Object> configuration;
+    private List<GetConnectionOptionConnectionSetting> connectionSettings;
     private Map<String,String> customScripts;
     private Boolean debug;
+    private List<GetConnectionOptionDecryptionKey> decryptionKeys;
     private String digestAlgorithm;
     private Boolean disableCache;
     private Boolean disableSelfServiceChangePassword;
@@ -62,6 +68,7 @@ public final class GetConnectionOption {
     private String issuer;
     private String jwksUri;
     private String keyId;
+    private Boolean mapUserIdToId;
     private String maxGroupsToRetrieve;
     private String messagingServiceSid;
     private String metadataUrl;
@@ -128,6 +135,9 @@ public final class GetConnectionOption {
     public String appId() {
         return this.appId;
     }
+    public List<GetConnectionOptionAttributeMap> attributeMaps() {
+        return this.attributeMaps;
+    }
     public Map<String,String> authParams() {
         return this.authParams;
     }
@@ -149,11 +159,17 @@ public final class GetConnectionOption {
     public Map<String,Object> configuration() {
         return this.configuration;
     }
+    public List<GetConnectionOptionConnectionSetting> connectionSettings() {
+        return this.connectionSettings;
+    }
     public Map<String,String> customScripts() {
         return this.customScripts;
     }
     public Boolean debug() {
         return this.debug;
+    }
+    public List<GetConnectionOptionDecryptionKey> decryptionKeys() {
+        return this.decryptionKeys;
     }
     public String digestAlgorithm() {
         return this.digestAlgorithm;
@@ -229,6 +245,9 @@ public final class GetConnectionOption {
     }
     public String keyId() {
         return this.keyId;
+    }
+    public Boolean mapUserIdToId() {
+        return this.mapUserIdToId;
     }
     public String maxGroupsToRetrieve() {
         return this.maxGroupsToRetrieve;
@@ -392,6 +411,7 @@ public final class GetConnectionOption {
         private List<String> allowedAudiences;
         private Boolean apiEnableUsers;
         private String appId;
+        private List<GetConnectionOptionAttributeMap> attributeMaps;
         private Map<String,String> authParams;
         private String authorizationEndpoint;
         private Boolean bruteForceProtection;
@@ -399,8 +419,10 @@ public final class GetConnectionOption {
         private String clientSecret;
         private String communityBaseUrl;
         private Map<String,Object> configuration;
+        private List<GetConnectionOptionConnectionSetting> connectionSettings;
         private Map<String,String> customScripts;
         private Boolean debug;
+        private List<GetConnectionOptionDecryptionKey> decryptionKeys;
         private String digestAlgorithm;
         private Boolean disableCache;
         private Boolean disableSelfServiceChangePassword;
@@ -426,6 +448,7 @@ public final class GetConnectionOption {
         private String issuer;
         private String jwksUri;
         private String keyId;
+        private Boolean mapUserIdToId;
         private String maxGroupsToRetrieve;
         private String messagingServiceSid;
         private String metadataUrl;
@@ -481,6 +504,7 @@ public final class GetConnectionOption {
     	      this.allowedAudiences = defaults.allowedAudiences;
     	      this.apiEnableUsers = defaults.apiEnableUsers;
     	      this.appId = defaults.appId;
+    	      this.attributeMaps = defaults.attributeMaps;
     	      this.authParams = defaults.authParams;
     	      this.authorizationEndpoint = defaults.authorizationEndpoint;
     	      this.bruteForceProtection = defaults.bruteForceProtection;
@@ -488,8 +512,10 @@ public final class GetConnectionOption {
     	      this.clientSecret = defaults.clientSecret;
     	      this.communityBaseUrl = defaults.communityBaseUrl;
     	      this.configuration = defaults.configuration;
+    	      this.connectionSettings = defaults.connectionSettings;
     	      this.customScripts = defaults.customScripts;
     	      this.debug = defaults.debug;
+    	      this.decryptionKeys = defaults.decryptionKeys;
     	      this.digestAlgorithm = defaults.digestAlgorithm;
     	      this.disableCache = defaults.disableCache;
     	      this.disableSelfServiceChangePassword = defaults.disableSelfServiceChangePassword;
@@ -515,6 +541,7 @@ public final class GetConnectionOption {
     	      this.issuer = defaults.issuer;
     	      this.jwksUri = defaults.jwksUri;
     	      this.keyId = defaults.keyId;
+    	      this.mapUserIdToId = defaults.mapUserIdToId;
     	      this.maxGroupsToRetrieve = defaults.maxGroupsToRetrieve;
     	      this.messagingServiceSid = defaults.messagingServiceSid;
     	      this.metadataUrl = defaults.metadataUrl;
@@ -589,6 +616,14 @@ public final class GetConnectionOption {
             return this;
         }
         @CustomType.Setter
+        public Builder attributeMaps(List<GetConnectionOptionAttributeMap> attributeMaps) {
+            this.attributeMaps = Objects.requireNonNull(attributeMaps);
+            return this;
+        }
+        public Builder attributeMaps(GetConnectionOptionAttributeMap... attributeMaps) {
+            return attributeMaps(List.of(attributeMaps));
+        }
+        @CustomType.Setter
         public Builder authParams(Map<String,String> authParams) {
             this.authParams = Objects.requireNonNull(authParams);
             return this;
@@ -624,6 +659,14 @@ public final class GetConnectionOption {
             return this;
         }
         @CustomType.Setter
+        public Builder connectionSettings(List<GetConnectionOptionConnectionSetting> connectionSettings) {
+            this.connectionSettings = Objects.requireNonNull(connectionSettings);
+            return this;
+        }
+        public Builder connectionSettings(GetConnectionOptionConnectionSetting... connectionSettings) {
+            return connectionSettings(List.of(connectionSettings));
+        }
+        @CustomType.Setter
         public Builder customScripts(Map<String,String> customScripts) {
             this.customScripts = Objects.requireNonNull(customScripts);
             return this;
@@ -632,6 +675,14 @@ public final class GetConnectionOption {
         public Builder debug(Boolean debug) {
             this.debug = Objects.requireNonNull(debug);
             return this;
+        }
+        @CustomType.Setter
+        public Builder decryptionKeys(List<GetConnectionOptionDecryptionKey> decryptionKeys) {
+            this.decryptionKeys = Objects.requireNonNull(decryptionKeys);
+            return this;
+        }
+        public Builder decryptionKeys(GetConnectionOptionDecryptionKey... decryptionKeys) {
+            return decryptionKeys(List.of(decryptionKeys));
         }
         @CustomType.Setter
         public Builder digestAlgorithm(String digestAlgorithm) {
@@ -768,6 +819,11 @@ public final class GetConnectionOption {
         @CustomType.Setter
         public Builder keyId(String keyId) {
             this.keyId = Objects.requireNonNull(keyId);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mapUserIdToId(Boolean mapUserIdToId) {
+            this.mapUserIdToId = Objects.requireNonNull(mapUserIdToId);
             return this;
         }
         @CustomType.Setter
@@ -1046,6 +1102,7 @@ public final class GetConnectionOption {
             o.allowedAudiences = allowedAudiences;
             o.apiEnableUsers = apiEnableUsers;
             o.appId = appId;
+            o.attributeMaps = attributeMaps;
             o.authParams = authParams;
             o.authorizationEndpoint = authorizationEndpoint;
             o.bruteForceProtection = bruteForceProtection;
@@ -1053,8 +1110,10 @@ public final class GetConnectionOption {
             o.clientSecret = clientSecret;
             o.communityBaseUrl = communityBaseUrl;
             o.configuration = configuration;
+            o.connectionSettings = connectionSettings;
             o.customScripts = customScripts;
             o.debug = debug;
+            o.decryptionKeys = decryptionKeys;
             o.digestAlgorithm = digestAlgorithm;
             o.disableCache = disableCache;
             o.disableSelfServiceChangePassword = disableSelfServiceChangePassword;
@@ -1080,6 +1139,7 @@ public final class GetConnectionOption {
             o.issuer = issuer;
             o.jwksUri = jwksUri;
             o.keyId = keyId;
+            o.mapUserIdToId = mapUserIdToId;
             o.maxGroupsToRetrieve = maxGroupsToRetrieve;
             o.messagingServiceSid = messagingServiceSid;
             o.metadataUrl = metadataUrl;

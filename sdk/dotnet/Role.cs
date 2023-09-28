@@ -22,48 +22,9 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myResourceServer = new Auth0.ResourceServer("myResourceServer", new()
-    ///     {
-    ///         Identifier = "my-resource-server-identifier",
-    ///         SigningAlg = "RS256",
-    ///         TokenLifetime = 86400,
-    ///         SkipConsentForVerifiableFirstPartyClients = true,
-    ///         EnforcePolicies = true,
-    ///         Scopes = new[]
-    ///         {
-    ///             new Auth0.Inputs.ResourceServerScopeArgs
-    ///             {
-    ///                 Value = "read:something",
-    ///                 Description = "read something",
-    ///             },
-    ///         },
-    ///     });
-    /// 
     ///     var myRole = new Auth0.Role("myRole", new()
     ///     {
     ///         Description = "Role Description...",
-    ///         Permissions = new[]
-    ///         {
-    ///             new Auth0.Inputs.RolePermissionArgs
-    ///             {
-    ///                 ResourceServerIdentifier = myResourceServer.Identifier,
-    ///                 Name = "read:something",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var myUser = new Auth0.User("myUser", new()
-    ///     {
-    ///         ConnectionName = "Username-Password-Authentication",
-    ///         UserId = "auth0|1234567890",
-    ///         Email = "test@test.com",
-    ///         Password = "passpass$12$12",
-    ///         Nickname = "testnick",
-    ///         Username = "testnick",
-    ///         Roles = new[]
-    ///         {
-    ///             myRole.Id,
-    ///         },
     ///     });
     /// 
     /// });
@@ -74,32 +35,23 @@ namespace Pulumi.Auth0
     /// Existing roles can be imported using their ID. # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/role:Role my_role XXXXXXXXXXXXXXXXXXXXXXX
+    ///  $ pulumi import auth0:index/role:Role my_role "XXXXXXXXXXXXXXXXXXXXXXX"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/role:Role")]
     public partial class Role : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Description of the role.
+        /// The description of the role.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Name for this role.
+        /// The name of the role.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        /// <summary>
-        /// Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-        /// attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-        /// `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-        /// </summary>
-        [Output("permissions")]
-        public Output<ImmutableArray<Outputs.RolePermission>> Permissions { get; private set; } = null!;
 
 
         /// <summary>
@@ -148,32 +100,16 @@ namespace Pulumi.Auth0
     public sealed class RoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the role.
+        /// The description of the role.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name for this role.
+        /// The name of the role.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("permissions")]
-        private InputList<Inputs.RolePermissionArgs>? _permissions;
-
-        /// <summary>
-        /// Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-        /// attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-        /// `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-        /// </summary>
-        [Obsolete(@"Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.")]
-        public InputList<Inputs.RolePermissionArgs> Permissions
-        {
-            get => _permissions ?? (_permissions = new InputList<Inputs.RolePermissionArgs>());
-            set => _permissions = value;
-        }
 
         public RoleArgs()
         {
@@ -185,32 +121,16 @@ namespace Pulumi.Auth0
     public sealed class RoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the role.
+        /// The description of the role.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name for this role.
+        /// The name of the role.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("permissions")]
-        private InputList<Inputs.RolePermissionGetArgs>? _permissions;
-
-        /// <summary>
-        /// Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-        /// attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-        /// `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-        /// </summary>
-        [Obsolete(@"Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.")]
-        public InputList<Inputs.RolePermissionGetArgs> Permissions
-        {
-            get => _permissions ?? (_permissions = new InputList<Inputs.RolePermissionGetArgs>());
-            set => _permissions = value;
-        }
 
         public RoleState()
         {

@@ -52,7 +52,7 @@ export interface GetRoleArgs {
  */
 export interface GetRoleResult {
     /**
-     * Description of the role.
+     * The description of the role.
      */
     readonly description: string;
     /**
@@ -63,11 +63,18 @@ export interface GetRoleResult {
      * The name of the role. If not provided, `roleId` must be set.
      */
     readonly name?: string;
+    /**
+     * Configuration settings for permissions (scopes) attached to the role.
+     */
     readonly permissions: outputs.GetRolePermission[];
     /**
      * The ID of the role. If not provided, `name` must be set.
      */
     readonly roleId?: string;
+    /**
+     * List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs.
+     */
+    readonly users: string[];
 }
 /**
  * Data source to retrieve a specific Auth0 role by `roleId` or `name`.

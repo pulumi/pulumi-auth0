@@ -13,121 +13,125 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetClientAddonResult
     {
-        public readonly ImmutableDictionary<string, object> Aws;
-        public readonly ImmutableDictionary<string, object> AzureBlob;
-        public readonly ImmutableDictionary<string, object> AzureSb;
-        public readonly ImmutableDictionary<string, object> Box;
-        public readonly ImmutableDictionary<string, object> Cloudbees;
-        public readonly ImmutableDictionary<string, object> Concur;
-        public readonly ImmutableDictionary<string, object> Dropbox;
-        public readonly ImmutableDictionary<string, object> Echosign;
-        public readonly ImmutableDictionary<string, object> Egnyte;
-        public readonly ImmutableDictionary<string, object> Firebase;
-        public readonly ImmutableDictionary<string, object> Layer;
-        public readonly ImmutableDictionary<string, object> Mscrm;
-        public readonly ImmutableDictionary<string, object> Newrelic;
-        public readonly ImmutableDictionary<string, object> Office365;
-        public readonly ImmutableDictionary<string, object> Rms;
-        public readonly ImmutableDictionary<string, object> Salesforce;
-        public readonly ImmutableDictionary<string, object> SalesforceApi;
-        public readonly ImmutableDictionary<string, object> SalesforceSandboxApi;
+        public readonly ImmutableArray<Outputs.GetClientAddonAwResult> Aws;
+        public readonly ImmutableArray<Outputs.GetClientAddonAzureBlobResult> AzureBlobs;
+        public readonly ImmutableArray<Outputs.GetClientAddonAzureSbResult> AzureSbs;
+        public readonly ImmutableArray<Outputs.GetClientAddonBoxResult> Boxes;
+        public readonly ImmutableArray<Outputs.GetClientAddonCloudbeeResult> Cloudbees;
+        public readonly ImmutableArray<Outputs.GetClientAddonConcurResult> Concurs;
+        public readonly ImmutableArray<Outputs.GetClientAddonDropboxResult> Dropboxes;
+        public readonly ImmutableArray<Outputs.GetClientAddonEchosignResult> Echosigns;
+        public readonly ImmutableArray<Outputs.GetClientAddonEgnyteResult> Egnytes;
+        public readonly ImmutableArray<Outputs.GetClientAddonFirebaseResult> Firebases;
+        public readonly ImmutableArray<Outputs.GetClientAddonLayerResult> Layers;
+        public readonly ImmutableArray<Outputs.GetClientAddonMscrmResult> Mscrms;
+        public readonly ImmutableArray<Outputs.GetClientAddonNewrelicResult> Newrelics;
+        public readonly ImmutableArray<Outputs.GetClientAddonOffice365Result> Office365s;
+        public readonly ImmutableArray<Outputs.GetClientAddonRmResult> Rms;
+        public readonly ImmutableArray<Outputs.GetClientAddonSalesforceApiResult> SalesforceApis;
+        public readonly ImmutableArray<Outputs.GetClientAddonSalesforceSandboxApiResult> SalesforceSandboxApis;
+        public readonly ImmutableArray<Outputs.GetClientAddonSalesforceResult> Salesforces;
         public readonly ImmutableArray<Outputs.GetClientAddonSamlpResult> Samlps;
-        public readonly ImmutableDictionary<string, object> SapApi;
-        public readonly ImmutableDictionary<string, object> Sentry;
-        public readonly ImmutableDictionary<string, object> Sharepoint;
-        public readonly ImmutableDictionary<string, object> Slack;
-        public readonly ImmutableDictionary<string, object> Springcm;
-        public readonly ImmutableDictionary<string, object> Wams;
-        public readonly ImmutableDictionary<string, object> Wsfed;
-        public readonly ImmutableDictionary<string, object> Zendesk;
-        public readonly ImmutableDictionary<string, object> Zoom;
+        public readonly ImmutableArray<Outputs.GetClientAddonSapApiResult> SapApis;
+        public readonly ImmutableArray<Outputs.GetClientAddonSentryResult> Sentries;
+        public readonly ImmutableArray<Outputs.GetClientAddonSharepointResult> Sharepoints;
+        public readonly ImmutableArray<Outputs.GetClientAddonSlackResult> Slacks;
+        public readonly ImmutableArray<Outputs.GetClientAddonSpringcmResult> Springcms;
+        public readonly ImmutableArray<Outputs.GetClientAddonSsoIntegrationResult> SsoIntegrations;
+        public readonly ImmutableArray<Outputs.GetClientAddonWamResult> Wams;
+        public readonly ImmutableArray<Outputs.GetClientAddonWsfedResult> Wsfeds;
+        public readonly ImmutableArray<Outputs.GetClientAddonZendeskResult> Zendesks;
+        public readonly ImmutableArray<Outputs.GetClientAddonZoomResult> Zooms;
 
         [OutputConstructor]
         private GetClientAddonResult(
-            ImmutableDictionary<string, object> aws,
+            ImmutableArray<Outputs.GetClientAddonAwResult> aws,
 
-            ImmutableDictionary<string, object> azureBlob,
+            ImmutableArray<Outputs.GetClientAddonAzureBlobResult> azureBlobs,
 
-            ImmutableDictionary<string, object> azureSb,
+            ImmutableArray<Outputs.GetClientAddonAzureSbResult> azureSbs,
 
-            ImmutableDictionary<string, object> box,
+            ImmutableArray<Outputs.GetClientAddonBoxResult> boxes,
 
-            ImmutableDictionary<string, object> cloudbees,
+            ImmutableArray<Outputs.GetClientAddonCloudbeeResult> cloudbees,
 
-            ImmutableDictionary<string, object> concur,
+            ImmutableArray<Outputs.GetClientAddonConcurResult> concurs,
 
-            ImmutableDictionary<string, object> dropbox,
+            ImmutableArray<Outputs.GetClientAddonDropboxResult> dropboxes,
 
-            ImmutableDictionary<string, object> echosign,
+            ImmutableArray<Outputs.GetClientAddonEchosignResult> echosigns,
 
-            ImmutableDictionary<string, object> egnyte,
+            ImmutableArray<Outputs.GetClientAddonEgnyteResult> egnytes,
 
-            ImmutableDictionary<string, object> firebase,
+            ImmutableArray<Outputs.GetClientAddonFirebaseResult> firebases,
 
-            ImmutableDictionary<string, object> layer,
+            ImmutableArray<Outputs.GetClientAddonLayerResult> layers,
 
-            ImmutableDictionary<string, object> mscrm,
+            ImmutableArray<Outputs.GetClientAddonMscrmResult> mscrms,
 
-            ImmutableDictionary<string, object> newrelic,
+            ImmutableArray<Outputs.GetClientAddonNewrelicResult> newrelics,
 
-            ImmutableDictionary<string, object> office365,
+            ImmutableArray<Outputs.GetClientAddonOffice365Result> office365s,
 
-            ImmutableDictionary<string, object> rms,
+            ImmutableArray<Outputs.GetClientAddonRmResult> rms,
 
-            ImmutableDictionary<string, object> salesforce,
+            ImmutableArray<Outputs.GetClientAddonSalesforceApiResult> salesforceApis,
 
-            ImmutableDictionary<string, object> salesforceApi,
+            ImmutableArray<Outputs.GetClientAddonSalesforceSandboxApiResult> salesforceSandboxApis,
 
-            ImmutableDictionary<string, object> salesforceSandboxApi,
+            ImmutableArray<Outputs.GetClientAddonSalesforceResult> salesforces,
 
             ImmutableArray<Outputs.GetClientAddonSamlpResult> samlps,
 
-            ImmutableDictionary<string, object> sapApi,
+            ImmutableArray<Outputs.GetClientAddonSapApiResult> sapApis,
 
-            ImmutableDictionary<string, object> sentry,
+            ImmutableArray<Outputs.GetClientAddonSentryResult> sentries,
 
-            ImmutableDictionary<string, object> sharepoint,
+            ImmutableArray<Outputs.GetClientAddonSharepointResult> sharepoints,
 
-            ImmutableDictionary<string, object> slack,
+            ImmutableArray<Outputs.GetClientAddonSlackResult> slacks,
 
-            ImmutableDictionary<string, object> springcm,
+            ImmutableArray<Outputs.GetClientAddonSpringcmResult> springcms,
 
-            ImmutableDictionary<string, object> wams,
+            ImmutableArray<Outputs.GetClientAddonSsoIntegrationResult> ssoIntegrations,
 
-            ImmutableDictionary<string, object> wsfed,
+            ImmutableArray<Outputs.GetClientAddonWamResult> wams,
 
-            ImmutableDictionary<string, object> zendesk,
+            ImmutableArray<Outputs.GetClientAddonWsfedResult> wsfeds,
 
-            ImmutableDictionary<string, object> zoom)
+            ImmutableArray<Outputs.GetClientAddonZendeskResult> zendesks,
+
+            ImmutableArray<Outputs.GetClientAddonZoomResult> zooms)
         {
             Aws = aws;
-            AzureBlob = azureBlob;
-            AzureSb = azureSb;
-            Box = box;
+            AzureBlobs = azureBlobs;
+            AzureSbs = azureSbs;
+            Boxes = boxes;
             Cloudbees = cloudbees;
-            Concur = concur;
-            Dropbox = dropbox;
-            Echosign = echosign;
-            Egnyte = egnyte;
-            Firebase = firebase;
-            Layer = layer;
-            Mscrm = mscrm;
-            Newrelic = newrelic;
-            Office365 = office365;
+            Concurs = concurs;
+            Dropboxes = dropboxes;
+            Echosigns = echosigns;
+            Egnytes = egnytes;
+            Firebases = firebases;
+            Layers = layers;
+            Mscrms = mscrms;
+            Newrelics = newrelics;
+            Office365s = office365s;
             Rms = rms;
-            Salesforce = salesforce;
-            SalesforceApi = salesforceApi;
-            SalesforceSandboxApi = salesforceSandboxApi;
+            SalesforceApis = salesforceApis;
+            SalesforceSandboxApis = salesforceSandboxApis;
+            Salesforces = salesforces;
             Samlps = samlps;
-            SapApi = sapApi;
-            Sentry = sentry;
-            Sharepoint = sharepoint;
-            Slack = slack;
-            Springcm = springcm;
+            SapApis = sapApis;
+            Sentries = sentries;
+            Sharepoints = sharepoints;
+            Slacks = slacks;
+            Springcms = springcms;
+            SsoIntegrations = ssoIntegrations;
             Wams = wams;
-            Wsfed = wsfed;
-            Zendesk = zendesk;
-            Zoom = zoom;
+            Wsfeds = wsfeds;
+            Zendesks = zendesks;
+            Zooms = zooms;
         }
     }
 }

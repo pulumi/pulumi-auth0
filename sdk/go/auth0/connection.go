@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -28,7 +28,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -72,7 +72,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -112,7 +112,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -152,7 +152,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -192,7 +192,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -232,7 +232,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -273,7 +273,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -321,7 +321,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -371,7 +371,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -415,7 +415,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -447,66 +447,14 @@ import (
 //	}
 //
 // ```
-// ### OIDC Connection
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewConnection(ctx, "oidc", &auth0.ConnectionArgs{
-//				DisplayName: pulumi.String("OIDC Connection"),
-//				Options: &auth0.ConnectionOptionsArgs{
-//					AuthorizationEndpoint: pulumi.String("https://www.paypal.com/signin/authorize"),
-//					ClientId:              pulumi.String("1234567"),
-//					ClientSecret:          pulumi.String("1234567"),
-//					DiscoveryUrl:          pulumi.String("https://www.paypalobjects.com/.well-known/openid-configuration"),
-//					DomainAliases: pulumi.StringArray{
-//						pulumi.String("example.com"),
-//					},
-//					IconUrl: pulumi.String("https://example.com/assets/logo.png"),
-//					Issuer:  pulumi.String("https://www.paypalobjects.com"),
-//					JwksUri: pulumi.String("https://api.paypal.com/v1/oauth2/certs"),
-//					NonPersistentAttrs: pulumi.StringArray{
-//						pulumi.String("ethnicity"),
-//						pulumi.String("gender"),
-//					},
-//					Scopes: pulumi.StringArray{
-//						pulumi.String("openid"),
-//						pulumi.String("email"),
-//					},
-//					SetUserRootAttributes: pulumi.String("on_first_login"),
-//					TenantDomain:          pulumi.String(""),
-//					TokenEndpoint:         pulumi.String("https://api.paypal.com/v1/oauth2/token"),
-//					Type:                  pulumi.String("front_channel"),
-//					UserinfoEndpoint:      pulumi.String("https://api.paypal.com/v1/oauth2/token/userinfo"),
-//				},
-//				ShowAsButton: pulumi.Bool(false),
-//				Strategy:     pulumi.String("oidc"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
-// Connections can be imported using their ID. # Example
+// This resource can be imported by specifying the connection ID. # Example
 //
 // ```sh
 //
-//	$ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
+//	$ pulumi import auth0:index/connection:Connection google "con_a17f21fdb24d48a0"
 //
 // ```
 type Connection struct {
@@ -514,8 +462,6 @@ type Connection struct {
 
 	// Name used in login screen.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `Connection` data source instead.
-	EnabledClients pulumi.StringArrayOutput `pulumi:"enabledClients"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolOutput `pulumi:"isDomainConnection"`
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
@@ -567,8 +513,6 @@ func GetConnection(ctx *pulumi.Context,
 type connectionState struct {
 	// Name used in login screen.
 	DisplayName *string `pulumi:"displayName"`
-	// IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `Connection` data source instead.
-	EnabledClients []string `pulumi:"enabledClients"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection *bool `pulumi:"isDomainConnection"`
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
@@ -588,8 +532,6 @@ type connectionState struct {
 type ConnectionState struct {
 	// Name used in login screen.
 	DisplayName pulumi.StringPtrInput
-	// IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `Connection` data source instead.
-	EnabledClients pulumi.StringArrayInput
 	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolPtrInput
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
@@ -763,11 +705,6 @@ func (o ConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*Connecti
 // Name used in login screen.
 func (o ConnectionOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `Connection` data source instead.
-func (o ConnectionOutput) EnabledClients() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringArrayOutput { return v.EnabledClients }).(pulumi.StringArrayOutput)
 }
 
 // Indicates whether the connection is domain level.

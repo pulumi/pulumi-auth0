@@ -234,9 +234,6 @@ class Hook(pulumi.CustomResource):
 
         !> This resource is deprecated. Refer to the [guide on how to migrate from hooks to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-hooks-to-actions) and manage your actions using the `Action` resource.
 
-        !> This resource is deprecated. Refer to the [guide on how to migrate from rules to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-rules-to-actions)
-        and manage your actions using the `Action` resource.
-
         ## Example Usage
 
         ```python
@@ -261,10 +258,10 @@ class Hook(pulumi.CustomResource):
 
         ## Import
 
-        A hook can be imported using the hook's ID. # Example
+        This resource can be imported by specifying the hook ID. # Example
 
         ```sh
-         $ pulumi import auth0:index/hook:Hook my_hook 00001
+         $ pulumi import auth0:index/hook:Hook my_hook "00001"
         ```
 
         :param str resource_name: The name of the resource.
@@ -287,9 +284,6 @@ class Hook(pulumi.CustomResource):
 
         !> This resource is deprecated. Refer to the [guide on how to migrate from hooks to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-hooks-to-actions) and manage your actions using the `Action` resource.
 
-        !> This resource is deprecated. Refer to the [guide on how to migrate from rules to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-rules-to-actions)
-        and manage your actions using the `Action` resource.
-
         ## Example Usage
 
         ```python
@@ -314,10 +308,10 @@ class Hook(pulumi.CustomResource):
 
         ## Import
 
-        A hook can be imported using the hook's ID. # Example
+        This resource can be imported by specifying the hook ID. # Example
 
         ```sh
-         $ pulumi import auth0:index/hook:Hook my_hook 00001
+         $ pulumi import auth0:index/hook:Hook my_hook "00001"
         ```
 
         :param str resource_name: The name of the resource.

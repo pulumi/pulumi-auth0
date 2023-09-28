@@ -12,56 +12,12 @@ namespace Pulumi.Auth0
     /// <summary>
     /// Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // The following example grants a client the "create:foo" permission (scope).
-    ///     var myClient = new Auth0.Client("myClient");
-    /// 
-    ///     var myResourceServer = new Auth0.ResourceServer("myResourceServer", new()
-    ///     {
-    ///         Identifier = "https://api.example.com/client-grant",
-    ///         Scopes = new[]
-    ///         {
-    ///             new Auth0.Inputs.ResourceServerScopeArgs
-    ///             {
-    ///                 Value = "create:foo",
-    ///                 Description = "Create foos",
-    ///             },
-    ///             new Auth0.Inputs.ResourceServerScopeArgs
-    ///             {
-    ///                 Value = "create:bar",
-    ///                 Description = "Create bars",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var myClientGrant = new Auth0.ClientGrant("myClientGrant", new()
-    ///     {
-    ///         ClientId = myClient.Id,
-    ///         Audience = myResourceServer.Identifier,
-    ///         Scopes = new[]
-    ///         {
-    ///             "create:foo",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// Client grants can be imported using the grant ID. # Application -&gt; APIs -&gt; Expand the required API # Example
+    /// This resource can be imported by specifying the client grant ID. You can find this within the Management Dashboard in Application -&gt; APIs -&gt; Expand the required API. # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant cgr_XXXXXXXXXXXXXXXX
+    ///  $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant "cgr_XXXXXXXXXXXXXXXX"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/clientGrant:ClientGrant")]

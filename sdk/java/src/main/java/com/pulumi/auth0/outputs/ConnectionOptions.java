@@ -3,6 +3,9 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.ConnectionOptionsAttributeMap;
+import com.pulumi.auth0.outputs.ConnectionOptionsConnectionSettings;
+import com.pulumi.auth0.outputs.ConnectionOptionsDecryptionKey;
 import com.pulumi.auth0.outputs.ConnectionOptionsGatewayAuthentication;
 import com.pulumi.auth0.outputs.ConnectionOptionsIdpInitiated;
 import com.pulumi.auth0.outputs.ConnectionOptionsMfa;
@@ -47,6 +50,11 @@ public final class ConnectionOptions {
      */
     private @Nullable String appId;
     /**
+     * @return OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+     * 
+     */
+    private @Nullable ConnectionOptionsAttributeMap attributeMap;
+    /**
      * @return Query string parameters to be included as part of the generated passwordless email link.
      * 
      */
@@ -82,6 +90,11 @@ public final class ConnectionOptions {
      */
     private @Nullable Map<String,Object> configuration;
     /**
+     * @return Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+     * 
+     */
+    private @Nullable ConnectionOptionsConnectionSettings connectionSettings;
+    /**
      * @return A map of scripts used to integrate with a custom database.
      * 
      */
@@ -91,6 +104,11 @@ public final class ConnectionOptions {
      * 
      */
     private @Nullable Boolean debug;
+    /**
+     * @return The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     * 
+     */
+    private @Nullable ConnectionOptionsDecryptionKey decryptionKey;
     /**
      * @return Sign Request Algorithm Digest.
      * 
@@ -217,6 +235,11 @@ public final class ConnectionOptions {
      */
     private @Nullable String keyId;
     /**
+     * @return By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+     * 
+     */
+    private @Nullable Boolean mapUserIdToId;
+    /**
      * @return Maximum number of groups to retrieve.
      * 
      */
@@ -232,7 +255,7 @@ public final class ConnectionOptions {
      */
     private @Nullable String metadataUrl;
     /**
-     * @return The XML content for the SAML metadata document.
+     * @return The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
      * 
      */
     private @Nullable String metadataXml;
@@ -487,6 +510,13 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.appId);
     }
     /**
+     * @return OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+     * 
+     */
+    public Optional<ConnectionOptionsAttributeMap> attributeMap() {
+        return Optional.ofNullable(this.attributeMap);
+    }
+    /**
      * @return Query string parameters to be included as part of the generated passwordless email link.
      * 
      */
@@ -536,6 +566,13 @@ public final class ConnectionOptions {
         return this.configuration == null ? Map.of() : this.configuration;
     }
     /**
+     * @return Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+     * 
+     */
+    public Optional<ConnectionOptionsConnectionSettings> connectionSettings() {
+        return Optional.ofNullable(this.connectionSettings);
+    }
+    /**
      * @return A map of scripts used to integrate with a custom database.
      * 
      */
@@ -548,6 +585,13 @@ public final class ConnectionOptions {
      */
     public Optional<Boolean> debug() {
         return Optional.ofNullable(this.debug);
+    }
+    /**
+     * @return The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     * 
+     */
+    public Optional<ConnectionOptionsDecryptionKey> decryptionKey() {
+        return Optional.ofNullable(this.decryptionKey);
     }
     /**
      * @return Sign Request Algorithm Digest.
@@ -725,6 +769,13 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.keyId);
     }
     /**
+     * @return By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+     * 
+     */
+    public Optional<Boolean> mapUserIdToId() {
+        return Optional.ofNullable(this.mapUserIdToId);
+    }
+    /**
      * @return Maximum number of groups to retrieve.
      * 
      */
@@ -746,7 +797,7 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.metadataUrl);
     }
     /**
-     * @return The XML content for the SAML metadata document.
+     * @return The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
      * 
      */
     public Optional<String> metadataXml() {
@@ -1074,6 +1125,7 @@ public final class ConnectionOptions {
         private @Nullable List<String> allowedAudiences;
         private @Nullable Boolean apiEnableUsers;
         private @Nullable String appId;
+        private @Nullable ConnectionOptionsAttributeMap attributeMap;
         private @Nullable Map<String,String> authParams;
         private @Nullable String authorizationEndpoint;
         private @Nullable Boolean bruteForceProtection;
@@ -1081,8 +1133,10 @@ public final class ConnectionOptions {
         private @Nullable String clientSecret;
         private @Nullable String communityBaseUrl;
         private @Nullable Map<String,Object> configuration;
+        private @Nullable ConnectionOptionsConnectionSettings connectionSettings;
         private @Nullable Map<String,String> customScripts;
         private @Nullable Boolean debug;
+        private @Nullable ConnectionOptionsDecryptionKey decryptionKey;
         private @Nullable String digestAlgorithm;
         private @Nullable Boolean disableCache;
         private @Nullable Boolean disableSelfServiceChangePassword;
@@ -1108,6 +1162,7 @@ public final class ConnectionOptions {
         private @Nullable String issuer;
         private @Nullable String jwksUri;
         private @Nullable String keyId;
+        private @Nullable Boolean mapUserIdToId;
         private @Nullable String maxGroupsToRetrieve;
         private @Nullable String messagingServiceSid;
         private @Nullable String metadataUrl;
@@ -1163,6 +1218,7 @@ public final class ConnectionOptions {
     	      this.allowedAudiences = defaults.allowedAudiences;
     	      this.apiEnableUsers = defaults.apiEnableUsers;
     	      this.appId = defaults.appId;
+    	      this.attributeMap = defaults.attributeMap;
     	      this.authParams = defaults.authParams;
     	      this.authorizationEndpoint = defaults.authorizationEndpoint;
     	      this.bruteForceProtection = defaults.bruteForceProtection;
@@ -1170,8 +1226,10 @@ public final class ConnectionOptions {
     	      this.clientSecret = defaults.clientSecret;
     	      this.communityBaseUrl = defaults.communityBaseUrl;
     	      this.configuration = defaults.configuration;
+    	      this.connectionSettings = defaults.connectionSettings;
     	      this.customScripts = defaults.customScripts;
     	      this.debug = defaults.debug;
+    	      this.decryptionKey = defaults.decryptionKey;
     	      this.digestAlgorithm = defaults.digestAlgorithm;
     	      this.disableCache = defaults.disableCache;
     	      this.disableSelfServiceChangePassword = defaults.disableSelfServiceChangePassword;
@@ -1197,6 +1255,7 @@ public final class ConnectionOptions {
     	      this.issuer = defaults.issuer;
     	      this.jwksUri = defaults.jwksUri;
     	      this.keyId = defaults.keyId;
+    	      this.mapUserIdToId = defaults.mapUserIdToId;
     	      this.maxGroupsToRetrieve = defaults.maxGroupsToRetrieve;
     	      this.messagingServiceSid = defaults.messagingServiceSid;
     	      this.metadataUrl = defaults.metadataUrl;
@@ -1271,6 +1330,11 @@ public final class ConnectionOptions {
             return this;
         }
         @CustomType.Setter
+        public Builder attributeMap(@Nullable ConnectionOptionsAttributeMap attributeMap) {
+            this.attributeMap = attributeMap;
+            return this;
+        }
+        @CustomType.Setter
         public Builder authParams(@Nullable Map<String,String> authParams) {
             this.authParams = authParams;
             return this;
@@ -1306,6 +1370,11 @@ public final class ConnectionOptions {
             return this;
         }
         @CustomType.Setter
+        public Builder connectionSettings(@Nullable ConnectionOptionsConnectionSettings connectionSettings) {
+            this.connectionSettings = connectionSettings;
+            return this;
+        }
+        @CustomType.Setter
         public Builder customScripts(@Nullable Map<String,String> customScripts) {
             this.customScripts = customScripts;
             return this;
@@ -1313,6 +1382,11 @@ public final class ConnectionOptions {
         @CustomType.Setter
         public Builder debug(@Nullable Boolean debug) {
             this.debug = debug;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder decryptionKey(@Nullable ConnectionOptionsDecryptionKey decryptionKey) {
+            this.decryptionKey = decryptionKey;
             return this;
         }
         @CustomType.Setter
@@ -1444,6 +1518,11 @@ public final class ConnectionOptions {
         @CustomType.Setter
         public Builder keyId(@Nullable String keyId) {
             this.keyId = keyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mapUserIdToId(@Nullable Boolean mapUserIdToId) {
+            this.mapUserIdToId = mapUserIdToId;
             return this;
         }
         @CustomType.Setter
@@ -1701,6 +1780,7 @@ public final class ConnectionOptions {
             o.allowedAudiences = allowedAudiences;
             o.apiEnableUsers = apiEnableUsers;
             o.appId = appId;
+            o.attributeMap = attributeMap;
             o.authParams = authParams;
             o.authorizationEndpoint = authorizationEndpoint;
             o.bruteForceProtection = bruteForceProtection;
@@ -1708,8 +1788,10 @@ public final class ConnectionOptions {
             o.clientSecret = clientSecret;
             o.communityBaseUrl = communityBaseUrl;
             o.configuration = configuration;
+            o.connectionSettings = connectionSettings;
             o.customScripts = customScripts;
             o.debug = debug;
+            o.decryptionKey = decryptionKey;
             o.digestAlgorithm = digestAlgorithm;
             o.disableCache = disableCache;
             o.disableSelfServiceChangePassword = disableSelfServiceChangePassword;
@@ -1735,6 +1817,7 @@ public final class ConnectionOptions {
             o.issuer = issuer;
             o.jwksUri = jwksUri;
             o.keyId = keyId;
+            o.mapUserIdToId = mapUserIdToId;
             o.maxGroupsToRetrieve = maxGroupsToRetrieve;
             o.messagingServiceSid = messagingServiceSid;
             o.metadataUrl = metadataUrl;

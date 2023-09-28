@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AttackProtectionBruteForceProtection {
     /**
-     * @return List of trusted IP addresses that will not have attack protection enforced against them.
+     * @return List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
      * 
      */
     private @Nullable List<String> allowlists;
@@ -23,26 +23,26 @@ public final class AttackProtectionBruteForceProtection {
      * @return Whether brute force attack protections are active.
      * 
      */
-    private @Nullable Boolean enabled;
+    private Boolean enabled;
     /**
-     * @return Maximum number of unsuccessful attempts. Only available on public tenants.
+     * @return Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
      * 
      */
     private @Nullable Integer maxAttempts;
     /**
-     * @return Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+     * @return Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` (lockout an account from a given IP Address) or `count_per_identifier` (lockout an account regardless of IP Address).
      * 
      */
     private @Nullable String mode;
     /**
-     * @return Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
+     * @return Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
      * 
      */
     private @Nullable List<String> shields;
 
     private AttackProtectionBruteForceProtection() {}
     /**
-     * @return List of trusted IP addresses that will not have attack protection enforced against them.
+     * @return List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
      * 
      */
     public List<String> allowlists() {
@@ -52,25 +52,25 @@ public final class AttackProtectionBruteForceProtection {
      * @return Whether brute force attack protections are active.
      * 
      */
-    public Optional<Boolean> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Boolean enabled() {
+        return this.enabled;
     }
     /**
-     * @return Maximum number of unsuccessful attempts. Only available on public tenants.
+     * @return Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
      * 
      */
     public Optional<Integer> maxAttempts() {
         return Optional.ofNullable(this.maxAttempts);
     }
     /**
-     * @return Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+     * @return Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` (lockout an account from a given IP Address) or `count_per_identifier` (lockout an account regardless of IP Address).
      * 
      */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
+     * @return Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
      * 
      */
     public List<String> shields() {
@@ -87,7 +87,7 @@ public final class AttackProtectionBruteForceProtection {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> allowlists;
-        private @Nullable Boolean enabled;
+        private Boolean enabled;
         private @Nullable Integer maxAttempts;
         private @Nullable String mode;
         private @Nullable List<String> shields;
@@ -110,8 +110,8 @@ public final class AttackProtectionBruteForceProtection {
             return allowlists(List.of(allowlists));
         }
         @CustomType.Setter
-        public Builder enabled(@Nullable Boolean enabled) {
-            this.enabled = enabled;
+        public Builder enabled(Boolean enabled) {
+            this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
         @CustomType.Setter

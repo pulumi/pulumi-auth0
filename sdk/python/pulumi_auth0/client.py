@@ -24,7 +24,6 @@ class ClientArgs:
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 client_secret_rotation_trigger: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cross_origin_auth: Optional[pulumi.Input[bool]] = None,
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
@@ -46,9 +45,9 @@ class ClientArgs:
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
+                 require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
-                 token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
                  web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Client resource.
@@ -60,8 +59,7 @@ class ClientArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
-        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
-        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
+        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
         :param pulumi.Input[bool] custom_login_page_on: Indicates whether a custom login page is to be used.
@@ -71,7 +69,7 @@ class ClientArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
         :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
-        :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+        :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param pulumi.Input['ClientJwtConfigurationArgs'] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         :param pulumi.Input['ClientMobileArgs'] mobile: Additional configuration for native mobile apps.
@@ -82,15 +80,9 @@ class ClientArgs:
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
+        :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
-        :param pulumi.Input[str] token_endpoint_auth_method: Defines the requested authentication method for the token endpoint. Options include `none` (public client without a
-               client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-               Managing the authentication method through this attribute is deprecated and it will be removed in a future major
-               version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check
-               the [MIGRATION
-               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on
-               how to do that.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
         """
         if addons is not None:
@@ -109,11 +101,6 @@ class ClientArgs:
             pulumi.set(__self__, "client_aliases", client_aliases)
         if client_metadata is not None:
             pulumi.set(__self__, "client_metadata", client_metadata)
-        if client_secret_rotation_trigger is not None:
-            warnings.warn("""Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""", DeprecationWarning)
-            pulumi.log.warn("""client_secret_rotation_trigger is deprecated: Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""")
-        if client_secret_rotation_trigger is not None:
-            pulumi.set(__self__, "client_secret_rotation_trigger", client_secret_rotation_trigger)
         if cross_origin_auth is not None:
             pulumi.set(__self__, "cross_origin_auth", cross_origin_auth)
         if cross_origin_loc is not None:
@@ -158,15 +145,12 @@ class ClientArgs:
             pulumi.set(__self__, "organization_usage", organization_usage)
         if refresh_token is not None:
             pulumi.set(__self__, "refresh_token", refresh_token)
+        if require_pushed_authorization_requests is not None:
+            pulumi.set(__self__, "require_pushed_authorization_requests", require_pushed_authorization_requests)
         if sso is not None:
             pulumi.set(__self__, "sso", sso)
         if sso_disabled is not None:
             pulumi.set(__self__, "sso_disabled", sso_disabled)
-        if token_endpoint_auth_method is not None:
-            warnings.warn("""Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that.""", DeprecationWarning)
-            pulumi.log.warn("""token_endpoint_auth_method is deprecated: Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that.""")
-        if token_endpoint_auth_method is not None:
-            pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
         if web_origins is not None:
             pulumi.set(__self__, "web_origins", web_origins)
 
@@ -267,25 +251,10 @@ class ClientArgs:
         pulumi.set(self, "client_metadata", value)
 
     @property
-    @pulumi.getter(name="clientSecretRotationTrigger")
-    def client_secret_rotation_trigger(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
-        """
-        warnings.warn("""Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""", DeprecationWarning)
-        pulumi.log.warn("""client_secret_rotation_trigger is deprecated: Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""")
-
-        return pulumi.get(self, "client_secret_rotation_trigger")
-
-    @client_secret_rotation_trigger.setter
-    def client_secret_rotation_trigger(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "client_secret_rotation_trigger", value)
-
-    @property
     @pulumi.getter(name="crossOriginAuth")
     def cross_origin_auth(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
+        Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         """
         return pulumi.get(self, "cross_origin_auth")
 
@@ -405,7 +374,7 @@ class ClientArgs:
     @pulumi.getter(name="isTokenEndpointIpHeaderTrusted")
     def is_token_endpoint_ip_header_trusted(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+        Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         """
         return pulumi.get(self, "is_token_endpoint_ip_header_trusted")
 
@@ -534,6 +503,18 @@ class ClientArgs:
         pulumi.set(self, "refresh_token", value)
 
     @property
+    @pulumi.getter(name="requirePushedAuthorizationRequests")
+    def require_pushed_authorization_requests(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Makes the use of Pushed Authorization Requests mandatory for this client.
+        """
+        return pulumi.get(self, "require_pushed_authorization_requests")
+
+    @require_pushed_authorization_requests.setter
+    def require_pushed_authorization_requests(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_pushed_authorization_requests", value)
+
+    @property
     @pulumi.getter
     def sso(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -556,27 +537,6 @@ class ClientArgs:
     @sso_disabled.setter
     def sso_disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "sso_disabled", value)
-
-    @property
-    @pulumi.getter(name="tokenEndpointAuthMethod")
-    def token_endpoint_auth_method(self) -> Optional[pulumi.Input[str]]:
-        """
-        Defines the requested authentication method for the token endpoint. Options include `none` (public client without a
-        client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-        Managing the authentication method through this attribute is deprecated and it will be removed in a future major
-        version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check
-        the [MIGRATION
-        GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on
-        how to do that.
-        """
-        warnings.warn("""Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that.""", DeprecationWarning)
-        pulumi.log.warn("""token_endpoint_auth_method is deprecated: Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that.""")
-
-        return pulumi.get(self, "token_endpoint_auth_method")
-
-    @token_endpoint_auth_method.setter
-    def token_endpoint_auth_method(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "token_endpoint_auth_method", value)
 
     @property
     @pulumi.getter(name="webOrigins")
@@ -603,8 +563,6 @@ class _ClientState:
                  client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 client_secret: Optional[pulumi.Input[str]] = None,
-                 client_secret_rotation_trigger: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cross_origin_auth: Optional[pulumi.Input[bool]] = None,
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
@@ -626,10 +584,10 @@ class _ClientState:
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
+                 require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
                  signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
-                 token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
                  web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Client resources.
@@ -642,12 +600,7 @@ class _ClientState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[str] client_id: The ID of the client.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
-        :param pulumi.Input[str] client_secret: Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-               Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
-               `auth0_client_credentials` resource instead, to allow managing it directly or use the `auth0_client` data source to read
-               this property.
-        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
-        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
+        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
         :param pulumi.Input[bool] custom_login_page_on: Indicates whether a custom login page is to be used.
@@ -657,7 +610,7 @@ class _ClientState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
         :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
-        :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+        :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param pulumi.Input['ClientJwtConfigurationArgs'] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         :param pulumi.Input['ClientMobileArgs'] mobile: Additional configuration for native mobile apps.
@@ -668,16 +621,10 @@ class _ClientState:
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
+        :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
-        :param pulumi.Input[str] token_endpoint_auth_method: Defines the requested authentication method for the token endpoint. Options include `none` (public client without a
-               client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-               Managing the authentication method through this attribute is deprecated and it will be removed in a future major
-               version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check
-               the [MIGRATION
-               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on
-               how to do that.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
         """
         if addons is not None:
@@ -698,16 +645,6 @@ class _ClientState:
             pulumi.set(__self__, "client_id", client_id)
         if client_metadata is not None:
             pulumi.set(__self__, "client_metadata", client_metadata)
-        if client_secret is not None:
-            warnings.warn("""Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead or use the `auth0_client` data source to read this property.""", DeprecationWarning)
-            pulumi.log.warn("""client_secret is deprecated: Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead or use the `auth0_client` data source to read this property.""")
-        if client_secret is not None:
-            pulumi.set(__self__, "client_secret", client_secret)
-        if client_secret_rotation_trigger is not None:
-            warnings.warn("""Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""", DeprecationWarning)
-            pulumi.log.warn("""client_secret_rotation_trigger is deprecated: Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""")
-        if client_secret_rotation_trigger is not None:
-            pulumi.set(__self__, "client_secret_rotation_trigger", client_secret_rotation_trigger)
         if cross_origin_auth is not None:
             pulumi.set(__self__, "cross_origin_auth", cross_origin_auth)
         if cross_origin_loc is not None:
@@ -752,17 +689,14 @@ class _ClientState:
             pulumi.set(__self__, "organization_usage", organization_usage)
         if refresh_token is not None:
             pulumi.set(__self__, "refresh_token", refresh_token)
+        if require_pushed_authorization_requests is not None:
+            pulumi.set(__self__, "require_pushed_authorization_requests", require_pushed_authorization_requests)
         if signing_keys is not None:
             pulumi.set(__self__, "signing_keys", signing_keys)
         if sso is not None:
             pulumi.set(__self__, "sso", sso)
         if sso_disabled is not None:
             pulumi.set(__self__, "sso_disabled", sso_disabled)
-        if token_endpoint_auth_method is not None:
-            warnings.warn("""Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that.""", DeprecationWarning)
-            pulumi.log.warn("""token_endpoint_auth_method is deprecated: Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that.""")
-        if token_endpoint_auth_method is not None:
-            pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
         if web_origins is not None:
             pulumi.set(__self__, "web_origins", web_origins)
 
@@ -875,43 +809,10 @@ class _ClientState:
         pulumi.set(self, "client_metadata", value)
 
     @property
-    @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[str]]:
-        """
-        Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-        Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
-        `auth0_client_credentials` resource instead, to allow managing it directly or use the `auth0_client` data source to read
-        this property.
-        """
-        warnings.warn("""Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead or use the `auth0_client` data source to read this property.""", DeprecationWarning)
-        pulumi.log.warn("""client_secret is deprecated: Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead or use the `auth0_client` data source to read this property.""")
-
-        return pulumi.get(self, "client_secret")
-
-    @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_secret", value)
-
-    @property
-    @pulumi.getter(name="clientSecretRotationTrigger")
-    def client_secret_rotation_trigger(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
-        """
-        warnings.warn("""Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""", DeprecationWarning)
-        pulumi.log.warn("""client_secret_rotation_trigger is deprecated: Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""")
-
-        return pulumi.get(self, "client_secret_rotation_trigger")
-
-    @client_secret_rotation_trigger.setter
-    def client_secret_rotation_trigger(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "client_secret_rotation_trigger", value)
-
-    @property
     @pulumi.getter(name="crossOriginAuth")
     def cross_origin_auth(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
+        Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         """
         return pulumi.get(self, "cross_origin_auth")
 
@@ -1031,7 +932,7 @@ class _ClientState:
     @pulumi.getter(name="isTokenEndpointIpHeaderTrusted")
     def is_token_endpoint_ip_header_trusted(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+        Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         """
         return pulumi.get(self, "is_token_endpoint_ip_header_trusted")
 
@@ -1160,6 +1061,18 @@ class _ClientState:
         pulumi.set(self, "refresh_token", value)
 
     @property
+    @pulumi.getter(name="requirePushedAuthorizationRequests")
+    def require_pushed_authorization_requests(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Makes the use of Pushed Authorization Requests mandatory for this client.
+        """
+        return pulumi.get(self, "require_pushed_authorization_requests")
+
+    @require_pushed_authorization_requests.setter
+    def require_pushed_authorization_requests(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_pushed_authorization_requests", value)
+
+    @property
     @pulumi.getter(name="signingKeys")
     def signing_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
         """
@@ -1196,27 +1109,6 @@ class _ClientState:
         pulumi.set(self, "sso_disabled", value)
 
     @property
-    @pulumi.getter(name="tokenEndpointAuthMethod")
-    def token_endpoint_auth_method(self) -> Optional[pulumi.Input[str]]:
-        """
-        Defines the requested authentication method for the token endpoint. Options include `none` (public client without a
-        client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-        Managing the authentication method through this attribute is deprecated and it will be removed in a future major
-        version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check
-        the [MIGRATION
-        GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on
-        how to do that.
-        """
-        warnings.warn("""Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that.""", DeprecationWarning)
-        pulumi.log.warn("""token_endpoint_auth_method is deprecated: Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that.""")
-
-        return pulumi.get(self, "token_endpoint_auth_method")
-
-    @token_endpoint_auth_method.setter
-    def token_endpoint_auth_method(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "token_endpoint_auth_method", value)
-
-    @property
     @pulumi.getter(name="webOrigins")
     def web_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -1242,7 +1134,6 @@ class Client(pulumi.CustomResource):
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 client_secret_rotation_trigger: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cross_origin_auth: Optional[pulumi.Input[bool]] = None,
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
@@ -1264,9 +1155,9 @@ class Client(pulumi.CustomResource):
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']]] = None,
+                 require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
-                 token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
                  web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -1340,16 +1231,15 @@ class Client(pulumi.CustomResource):
                 rotation_type="rotating",
                 token_lifetime=2592000,
             ),
-            token_endpoint_auth_method="client_secret_post",
             web_origins=["https://example.com"])
         ```
 
         ## Import
 
-        A client can be imported using the client's ID. # Example
+        This resource can be imported by specifying the client ID. # Example
 
         ```sh
-         $ pulumi import auth0:index/client:Client my_client AaiyAPdpYdesoKnqjj8HJqRn4T5titww
+         $ pulumi import auth0:index/client:Client my_client "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
         ```
 
         :param str resource_name: The name of the resource.
@@ -1362,8 +1252,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
-        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
-        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
+        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
         :param pulumi.Input[bool] custom_login_page_on: Indicates whether a custom login page is to be used.
@@ -1373,7 +1262,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
         :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
-        :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+        :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         :param pulumi.Input[pulumi.InputType['ClientMobileArgs']] mobile: Additional configuration for native mobile apps.
@@ -1384,15 +1273,9 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']] refresh_token: Configuration settings for the refresh tokens issued for this client.
+        :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
-        :param pulumi.Input[str] token_endpoint_auth_method: Defines the requested authentication method for the token endpoint. Options include `none` (public client without a
-               client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-               Managing the authentication method through this attribute is deprecated and it will be removed in a future major
-               version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check
-               the [MIGRATION
-               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on
-               how to do that.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
         """
         ...
@@ -1472,16 +1355,15 @@ class Client(pulumi.CustomResource):
                 rotation_type="rotating",
                 token_lifetime=2592000,
             ),
-            token_endpoint_auth_method="client_secret_post",
             web_origins=["https://example.com"])
         ```
 
         ## Import
 
-        A client can be imported using the client's ID. # Example
+        This resource can be imported by specifying the client ID. # Example
 
         ```sh
-         $ pulumi import auth0:index/client:Client my_client AaiyAPdpYdesoKnqjj8HJqRn4T5titww
+         $ pulumi import auth0:index/client:Client my_client "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
         ```
 
         :param str resource_name: The name of the resource.
@@ -1507,7 +1389,6 @@ class Client(pulumi.CustomResource):
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 client_secret_rotation_trigger: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cross_origin_auth: Optional[pulumi.Input[bool]] = None,
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
@@ -1529,9 +1410,9 @@ class Client(pulumi.CustomResource):
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']]] = None,
+                 require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
-                 token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
                  web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1550,10 +1431,6 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["callbacks"] = callbacks
             __props__.__dict__["client_aliases"] = client_aliases
             __props__.__dict__["client_metadata"] = client_metadata
-            if client_secret_rotation_trigger is not None and not opts.urn:
-                warnings.warn("""Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""", DeprecationWarning)
-                pulumi.log.warn("""client_secret_rotation_trigger is deprecated: Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""")
-            __props__.__dict__["client_secret_rotation_trigger"] = client_secret_rotation_trigger
             __props__.__dict__["cross_origin_auth"] = cross_origin_auth
             __props__.__dict__["cross_origin_loc"] = cross_origin_loc
             __props__.__dict__["custom_login_page"] = custom_login_page
@@ -1577,17 +1454,13 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["organization_require_behavior"] = organization_require_behavior
             __props__.__dict__["organization_usage"] = organization_usage
             __props__.__dict__["refresh_token"] = refresh_token
+            __props__.__dict__["require_pushed_authorization_requests"] = require_pushed_authorization_requests
             __props__.__dict__["sso"] = sso
             __props__.__dict__["sso_disabled"] = sso_disabled
-            if token_endpoint_auth_method is not None and not opts.urn:
-                warnings.warn("""Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that.""", DeprecationWarning)
-                pulumi.log.warn("""token_endpoint_auth_method is deprecated: Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that.""")
-            __props__.__dict__["token_endpoint_auth_method"] = token_endpoint_auth_method
             __props__.__dict__["web_origins"] = web_origins
             __props__.__dict__["client_id"] = None
-            __props__.__dict__["client_secret"] = None
             __props__.__dict__["signing_keys"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientSecret", "signingKeys"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["signingKeys"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Client, __self__).__init__(
             'auth0:index/client:Client',
@@ -1608,8 +1481,6 @@ class Client(pulumi.CustomResource):
             client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             client_id: Optional[pulumi.Input[str]] = None,
             client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            client_secret: Optional[pulumi.Input[str]] = None,
-            client_secret_rotation_trigger: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             cross_origin_auth: Optional[pulumi.Input[bool]] = None,
             cross_origin_loc: Optional[pulumi.Input[str]] = None,
             custom_login_page: Optional[pulumi.Input[str]] = None,
@@ -1631,10 +1502,10 @@ class Client(pulumi.CustomResource):
             organization_require_behavior: Optional[pulumi.Input[str]] = None,
             organization_usage: Optional[pulumi.Input[str]] = None,
             refresh_token: Optional[pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']]] = None,
+            require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
             signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
             sso: Optional[pulumi.Input[bool]] = None,
             sso_disabled: Optional[pulumi.Input[bool]] = None,
-            token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
             web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Client':
         """
         Get an existing Client resource's state with the given name, id, and optional extra
@@ -1652,12 +1523,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[str] client_id: The ID of the client.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
-        :param pulumi.Input[str] client_secret: Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-               Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
-               `auth0_client_credentials` resource instead, to allow managing it directly or use the `auth0_client` data source to read
-               this property.
-        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
-        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
+        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
         :param pulumi.Input[bool] custom_login_page_on: Indicates whether a custom login page is to be used.
@@ -1667,7 +1533,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
         :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
-        :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+        :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         :param pulumi.Input[pulumi.InputType['ClientMobileArgs']] mobile: Additional configuration for native mobile apps.
@@ -1678,16 +1544,10 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']] refresh_token: Configuration settings for the refresh tokens issued for this client.
+        :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
-        :param pulumi.Input[str] token_endpoint_auth_method: Defines the requested authentication method for the token endpoint. Options include `none` (public client without a
-               client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-               Managing the authentication method through this attribute is deprecated and it will be removed in a future major
-               version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check
-               the [MIGRATION
-               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on
-               how to do that.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1703,8 +1563,6 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["client_aliases"] = client_aliases
         __props__.__dict__["client_id"] = client_id
         __props__.__dict__["client_metadata"] = client_metadata
-        __props__.__dict__["client_secret"] = client_secret
-        __props__.__dict__["client_secret_rotation_trigger"] = client_secret_rotation_trigger
         __props__.__dict__["cross_origin_auth"] = cross_origin_auth
         __props__.__dict__["cross_origin_loc"] = cross_origin_loc
         __props__.__dict__["custom_login_page"] = custom_login_page
@@ -1726,16 +1584,16 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["organization_require_behavior"] = organization_require_behavior
         __props__.__dict__["organization_usage"] = organization_usage
         __props__.__dict__["refresh_token"] = refresh_token
+        __props__.__dict__["require_pushed_authorization_requests"] = require_pushed_authorization_requests
         __props__.__dict__["signing_keys"] = signing_keys
         __props__.__dict__["sso"] = sso
         __props__.__dict__["sso_disabled"] = sso_disabled
-        __props__.__dict__["token_endpoint_auth_method"] = token_endpoint_auth_method
         __props__.__dict__["web_origins"] = web_origins
         return Client(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def addons(self) -> pulumi.Output['outputs.ClientAddons']:
+    def addons(self) -> pulumi.Output[Optional['outputs.ClientAddons']]:
         """
         Addons enabled for this client and their associated configurations.
         """
@@ -1806,35 +1664,10 @@ class Client(pulumi.CustomResource):
         return pulumi.get(self, "client_metadata")
 
     @property
-    @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> pulumi.Output[str]:
-        """
-        Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-        Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
-        `auth0_client_credentials` resource instead, to allow managing it directly or use the `auth0_client` data source to read
-        this property.
-        """
-        warnings.warn("""Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead or use the `auth0_client` data source to read this property.""", DeprecationWarning)
-        pulumi.log.warn("""client_secret is deprecated: Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead or use the `auth0_client` data source to read this property.""")
-
-        return pulumi.get(self, "client_secret")
-
-    @property
-    @pulumi.getter(name="clientSecretRotationTrigger")
-    def client_secret_rotation_trigger(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
-        """
-        Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
-        """
-        warnings.warn("""Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""", DeprecationWarning)
-        pulumi.log.warn("""client_secret_rotation_trigger is deprecated: Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""")
-
-        return pulumi.get(self, "client_secret_rotation_trigger")
-
-    @property
     @pulumi.getter(name="crossOriginAuth")
     def cross_origin_auth(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
+        Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         """
         return pulumi.get(self, "cross_origin_auth")
 
@@ -1914,7 +1747,7 @@ class Client(pulumi.CustomResource):
     @pulumi.getter(name="isTokenEndpointIpHeaderTrusted")
     def is_token_endpoint_ip_header_trusted(self) -> pulumi.Output[bool]:
         """
-        Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+        Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         """
         return pulumi.get(self, "is_token_endpoint_ip_header_trusted")
 
@@ -1999,6 +1832,14 @@ class Client(pulumi.CustomResource):
         return pulumi.get(self, "refresh_token")
 
     @property
+    @pulumi.getter(name="requirePushedAuthorizationRequests")
+    def require_pushed_authorization_requests(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Makes the use of Pushed Authorization Requests mandatory for this client.
+        """
+        return pulumi.get(self, "require_pushed_authorization_requests")
+
+    @property
     @pulumi.getter(name="signingKeys")
     def signing_keys(self) -> pulumi.Output[Sequence[Mapping[str, Any]]]:
         """
@@ -2021,23 +1862,6 @@ class Client(pulumi.CustomResource):
         Indicates whether or not SSO is disabled.
         """
         return pulumi.get(self, "sso_disabled")
-
-    @property
-    @pulumi.getter(name="tokenEndpointAuthMethod")
-    def token_endpoint_auth_method(self) -> pulumi.Output[str]:
-        """
-        Defines the requested authentication method for the token endpoint. Options include `none` (public client without a
-        client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-        Managing the authentication method through this attribute is deprecated and it will be removed in a future major
-        version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check
-        the [MIGRATION
-        GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on
-        how to do that.
-        """
-        warnings.warn("""Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that.""", DeprecationWarning)
-        pulumi.log.warn("""token_endpoint_auth_method is deprecated: Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that.""")
-
-        return pulumi.get(self, "token_endpoint_auth_method")
 
     @property
     @pulumi.getter(name="webOrigins")

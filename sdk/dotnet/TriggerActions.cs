@@ -93,7 +93,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<Outputs.TriggerActionsAction>> Actions { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the trigger to bind with.
+        /// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval` , `iga-certification` , `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
         /// </summary>
         [Output("trigger")]
         public Output<string> Trigger { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// The ID of the trigger to bind with.
+        /// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval` , `iga-certification` , `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
         /// </summary>
         [Input("trigger", required: true)]
         public Input<string> Trigger { get; set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// The ID of the trigger to bind with.
+        /// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval` , `iga-certification` , `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
         /// </summary>
         [Input("trigger")]
         public Input<string>? Trigger { get; set; }

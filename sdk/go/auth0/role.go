@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,51 +21,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myResourceServer, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
-//				Identifier:    pulumi.String("my-resource-server-identifier"),
-//				SigningAlg:    pulumi.String("RS256"),
-//				TokenLifetime: pulumi.Int(86400),
-//				SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),
-//				EnforcePolicies: pulumi.Bool(true),
-//				Scopes: auth0.ResourceServerScopeTypeArray{
-//					&auth0.ResourceServerScopeTypeArgs{
-//						Value:       pulumi.String("read:something"),
-//						Description: pulumi.String("read something"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myRole, err := auth0.NewRole(ctx, "myRole", &auth0.RoleArgs{
+//			_, err := auth0.NewRole(ctx, "myRole", &auth0.RoleArgs{
 //				Description: pulumi.String("Role Description..."),
-//				Permissions: auth0.RolePermissionTypeArray{
-//					&auth0.RolePermissionTypeArgs{
-//						ResourceServerIdentifier: myResourceServer.Identifier,
-//						Name:                     pulumi.String("read:something"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = auth0.NewUser(ctx, "myUser", &auth0.UserArgs{
-//				ConnectionName: pulumi.String("Username-Password-Authentication"),
-//				UserId:         pulumi.String("auth0|1234567890"),
-//				Email:          pulumi.String("test@test.com"),
-//				Password:       pulumi.String("passpass$12$12"),
-//				Nickname:       pulumi.String("testnick"),
-//				Username:       pulumi.String("testnick"),
-//				Roles: pulumi.StringArray{
-//					myRole.ID(),
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -82,23 +46,16 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import auth0:index/role:Role my_role XXXXXXXXXXXXXXXXXXXXXXX
+//	$ pulumi import auth0:index/role:Role my_role "XXXXXXXXXXXXXXXXXXXXXXX"
 //
 // ```
 type Role struct {
 	pulumi.CustomResourceState
 
-	// Description of the role.
+	// The description of the role.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Name for this role.
+	// The name of the role.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-	// attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-	// `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-	// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-	//
-	// Deprecated: Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-	Permissions RolePermissionTypeArrayOutput `pulumi:"permissions"`
 }
 
 // NewRole registers a new resource with the given unique name, arguments, and options.
@@ -134,31 +91,17 @@ func GetRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Role resources.
 type roleState struct {
-	// Description of the role.
+	// The description of the role.
 	Description *string `pulumi:"description"`
-	// Name for this role.
+	// The name of the role.
 	Name *string `pulumi:"name"`
-	// Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-	// attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-	// `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-	// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-	//
-	// Deprecated: Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-	Permissions []RolePermissionType `pulumi:"permissions"`
 }
 
 type RoleState struct {
-	// Description of the role.
+	// The description of the role.
 	Description pulumi.StringPtrInput
-	// Name for this role.
+	// The name of the role.
 	Name pulumi.StringPtrInput
-	// Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-	// attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-	// `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-	// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-	//
-	// Deprecated: Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-	Permissions RolePermissionTypeArrayInput
 }
 
 func (RoleState) ElementType() reflect.Type {
@@ -166,32 +109,18 @@ func (RoleState) ElementType() reflect.Type {
 }
 
 type roleArgs struct {
-	// Description of the role.
+	// The description of the role.
 	Description *string `pulumi:"description"`
-	// Name for this role.
+	// The name of the role.
 	Name *string `pulumi:"name"`
-	// Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-	// attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-	// `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-	// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-	//
-	// Deprecated: Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-	Permissions []RolePermissionType `pulumi:"permissions"`
 }
 
 // The set of arguments for constructing a Role resource.
 type RoleArgs struct {
-	// Description of the role.
+	// The description of the role.
 	Description pulumi.StringPtrInput
-	// Name for this role.
+	// The name of the role.
 	Name pulumi.StringPtrInput
-	// Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-	// attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-	// `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-	// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-	//
-	// Deprecated: Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-	Permissions RolePermissionTypeArrayInput
 }
 
 func (RoleArgs) ElementType() reflect.Type {
@@ -305,24 +234,14 @@ func (o RoleOutput) ToOutput(ctx context.Context) pulumix.Output[*Role] {
 	}
 }
 
-// Description of the role.
+// The description of the role.
 func (o RoleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Name for this role.
+// The name of the role.
 func (o RoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-// attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-// `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-//
-// Deprecated: Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-func (o RoleOutput) Permissions() RolePermissionTypeArrayOutput {
-	return o.ApplyT(func(v *Role) RolePermissionTypeArrayOutput { return v.Permissions }).(RolePermissionTypeArrayOutput)
 }
 
 type RoleArrayOutput struct{ *pulumi.OutputState }

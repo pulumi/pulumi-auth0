@@ -97,7 +97,7 @@ export class TriggerActions extends pulumi.CustomResource {
      */
     public readonly actions!: pulumi.Output<outputs.TriggerActionsAction[]>;
     /**
-     * The ID of the trigger to bind with.
+     * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval` , `iga-certification` , `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
      */
     public readonly trigger!: pulumi.Output<string>;
 
@@ -141,7 +141,7 @@ export interface TriggerActionsState {
      */
     actions?: pulumi.Input<pulumi.Input<inputs.TriggerActionsAction>[]>;
     /**
-     * The ID of the trigger to bind with.
+     * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval` , `iga-certification` , `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
      */
     trigger?: pulumi.Input<string>;
 }
@@ -155,7 +155,7 @@ export interface TriggerActionsArgs {
      */
     actions: pulumi.Input<pulumi.Input<inputs.TriggerActionsAction>[]>;
     /**
-     * The ID of the trigger to bind with.
+     * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval` , `iga-certification` , `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
      */
     trigger: pulumi.Input<string>;
 }

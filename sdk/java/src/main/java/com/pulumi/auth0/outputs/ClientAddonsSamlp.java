@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.ClientAddonsSamlpLogout;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -25,7 +26,7 @@ public final class ClientAddonsSamlp {
     private @Nullable Boolean includeAttributeNameFormat;
     private @Nullable String issuer;
     private @Nullable Integer lifetimeInSeconds;
-    private @Nullable Map<String,Object> logout;
+    private @Nullable ClientAddonsSamlpLogout logout;
     private @Nullable Boolean mapIdentities;
     private @Nullable Boolean mapUnknownClaimsAsIs;
     private @Nullable Map<String,Object> mappings;
@@ -66,8 +67,8 @@ public final class ClientAddonsSamlp {
     public Optional<Integer> lifetimeInSeconds() {
         return Optional.ofNullable(this.lifetimeInSeconds);
     }
-    public Map<String,Object> logout() {
-        return this.logout == null ? Map.of() : this.logout;
+    public Optional<ClientAddonsSamlpLogout> logout() {
+        return Optional.ofNullable(this.logout);
     }
     public Optional<Boolean> mapIdentities() {
         return Optional.ofNullable(this.mapIdentities);
@@ -121,7 +122,7 @@ public final class ClientAddonsSamlp {
         private @Nullable Boolean includeAttributeNameFormat;
         private @Nullable String issuer;
         private @Nullable Integer lifetimeInSeconds;
-        private @Nullable Map<String,Object> logout;
+        private @Nullable ClientAddonsSamlpLogout logout;
         private @Nullable Boolean mapIdentities;
         private @Nullable Boolean mapUnknownClaimsAsIs;
         private @Nullable Map<String,Object> mappings;
@@ -205,7 +206,7 @@ public final class ClientAddonsSamlp {
             return this;
         }
         @CustomType.Setter
-        public Builder logout(@Nullable Map<String,Object> logout) {
+        public Builder logout(@Nullable ClientAddonsSamlpLogout logout) {
             this.logout = logout;
             return this;
         }

@@ -38,7 +38,7 @@ export function getResourceServer(args?: GetResourceServerArgs, opts?: pulumi.In
  */
 export interface GetResourceServerArgs {
     /**
-     * The unique identifier for the resource server. If not provided, `resourceServerId` must be set.
+     * Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resourceServerId` must be set.
      */
     identifier?: string;
     /**
@@ -64,7 +64,7 @@ export interface GetResourceServerResult {
      */
     readonly id: string;
     /**
-     * The unique identifier for the resource server. If not provided, `resourceServerId` must be set.
+     * Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resourceServerId` must be set.
      */
     readonly identifier?: string;
     /**
@@ -134,7 +134,7 @@ export function getResourceServerOutput(args?: GetResourceServerOutputArgs, opts
  */
 export interface GetResourceServerOutputArgs {
     /**
-     * The unique identifier for the resource server. If not provided, `resourceServerId` must be set.
+     * Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resourceServerId` must be set.
      */
     identifier?: pulumi.Input<string>;
     /**

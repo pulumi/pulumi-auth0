@@ -496,66 +496,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### OIDC Connection
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.auth0.Connection;
- * import com.pulumi.auth0.ConnectionArgs;
- * import com.pulumi.auth0.inputs.ConnectionOptionsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var oidc = new Connection(&#34;oidc&#34;, ConnectionArgs.builder()        
- *             .displayName(&#34;OIDC Connection&#34;)
- *             .options(ConnectionOptionsArgs.builder()
- *                 .authorizationEndpoint(&#34;https://www.paypal.com/signin/authorize&#34;)
- *                 .clientId(&#34;1234567&#34;)
- *                 .clientSecret(&#34;1234567&#34;)
- *                 .discoveryUrl(&#34;https://www.paypalobjects.com/.well-known/openid-configuration&#34;)
- *                 .domainAliases(&#34;example.com&#34;)
- *                 .iconUrl(&#34;https://example.com/assets/logo.png&#34;)
- *                 .issuer(&#34;https://www.paypalobjects.com&#34;)
- *                 .jwksUri(&#34;https://api.paypal.com/v1/oauth2/certs&#34;)
- *                 .nonPersistentAttrs(                
- *                     &#34;ethnicity&#34;,
- *                     &#34;gender&#34;)
- *                 .scopes(                
- *                     &#34;openid&#34;,
- *                     &#34;email&#34;)
- *                 .setUserRootAttributes(&#34;on_first_login&#34;)
- *                 .tenantDomain(&#34;&#34;)
- *                 .tokenEndpoint(&#34;https://api.paypal.com/v1/oauth2/token&#34;)
- *                 .type(&#34;front_channel&#34;)
- *                 .userinfoEndpoint(&#34;https://api.paypal.com/v1/oauth2/token/userinfo&#34;)
- *                 .build())
- *             .showAsButton(false)
- *             .strategy(&#34;oidc&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 
- * Connections can be imported using their ID. # Example
+ * This resource can be imported by specifying the connection ID. # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
+ *  $ pulumi import auth0:index/connection:Connection google &#34;con_a17f21fdb24d48a0&#34;
  * ```
  * 
  */
@@ -574,20 +521,6 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
-    }
-    /**
-     * IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
-     * 
-     */
-    @Export(name="enabledClients", type=List.class, parameters={String.class})
-    private Output<List<String>> enabledClients;
-
-    /**
-     * @return IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
-     * 
-     */
-    public Output<List<String>> enabledClients() {
-        return this.enabledClients;
     }
     /**
      * Indicates whether the connection is domain level.

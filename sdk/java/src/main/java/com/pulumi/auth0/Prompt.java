@@ -12,7 +12,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -55,7 +54,7 @@ import javax.annotation.Nullable;
  * As this is not a resource identifiable by an ID within the Auth0 Management API, prompts can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/prompt:Prompt my_prompt 22f4f21b-017a-319d-92e7-2291c1ca36c4
+ *  $ pulumi import auth0:index/prompt:Prompt my_prompt &#34;22f4f21b-017a-319d-92e7-2291c1ca36c4&#34;
  * ```
  * 
  */
@@ -66,14 +65,14 @@ public class Prompt extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="identifierFirst", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> identifierFirst;
+    private Output<Boolean> identifierFirst;
 
     /**
      * @return Indicates whether the identifier first is used when using the new Universal Login experience.
      * 
      */
-    public Output<Optional<Boolean>> identifierFirst() {
-        return Codegen.optional(this.identifierFirst);
+    public Output<Boolean> identifierFirst() {
+        return this.identifierFirst;
     }
     /**
      * Which login experience to use. Options include `classic` and `new`.
@@ -90,14 +89,14 @@ public class Prompt extends com.pulumi.resources.CustomResource {
         return this.universalLoginExperience;
     }
     /**
-     * Determines if the login screen uses identifier and biometrics first.
+     * Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `auth0.Guardian` resource to set one up.
      * 
      */
     @Export(name="webauthnPlatformFirstFactor", type=Boolean.class, parameters={})
     private Output<Boolean> webauthnPlatformFirstFactor;
 
     /**
-     * @return Determines if the login screen uses identifier and biometrics first.
+     * @return Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `auth0.Guardian` resource to set one up.
      * 
      */
     public Output<Boolean> webauthnPlatformFirstFactor() {
