@@ -1,7 +1,7 @@
-From b4d9e22f2b6213a22a2b39790902aa5e147786a6 Mon Sep 17 00:00:00 2001
+From faa437a52d74af80d5c0960a92866a8d95d62da2 Mon Sep 17 00:00:00 2001
 From: Mikhail Shilkov <github@mikhail.io>
 Date: Tue, 19 Sep 2023 17:21:23 +0200
-Subject: [PATCH 2/2] Add a shim
+Subject: [PATCH 1/2] Add a shim
 
 ---
  shim/shim.go | 10 ++++++++++
@@ -25,5 +25,5 @@ index 00000000..3c127eb3
 +	return provider.New()
 +}
 -- 
-2.39.2 (Apple Git-143)
+2.39.3 (Apple Git-145)
 
