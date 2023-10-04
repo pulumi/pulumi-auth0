@@ -6,7 +6,6 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.UserArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.UserState;
-import com.pulumi.auth0.outputs.UserPermission;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -27,8 +26,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.auth0.Role;
- * import com.pulumi.auth0.RoleArgs;
  * import com.pulumi.auth0.User;
  * import com.pulumi.auth0.UserArgs;
  * import java.util.List;
@@ -44,20 +41,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var admin = new Role(&#34;admin&#34;, RoleArgs.builder()        
- *             .description(&#34;Administrator&#34;)
- *             .build());
- * 
  *         var user = new User(&#34;user&#34;, UserArgs.builder()        
  *             .connectionName(&#34;Username-Password-Authentication&#34;)
- *             .userId(&#34;12345&#34;)
- *             .username(&#34;unique_username&#34;)
- *             .nickname(&#34;some.nickname&#34;)
  *             .email(&#34;test@test.com&#34;)
  *             .emailVerified(true)
+ *             .nickname(&#34;some.nickname&#34;)
  *             .password(&#34;passpass$12$12&#34;)
  *             .picture(&#34;https://www.example.com/a-valid-picture-url.jpg&#34;)
- *             .roles(admin.id())
+ *             .userId(&#34;12345&#34;)
+ *             .username(&#34;unique_username&#34;)
  *             .build());
  * 
  *     }
@@ -69,7 +61,7 @@ import javax.annotation.Nullable;
  * This resource can be imported using the user ID. # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/user:User user auth0|111111111111111111111111
+ *  $ pulumi import auth0:index/user:User user &#34;auth0|111111111111111111111111&#34;
  * ```
  * 
  */
@@ -216,24 +208,6 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.password);
     }
     /**
-     * List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.User` data source instead.
-     * 
-     * @deprecated
-     * Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.
-     * 
-     */
-    @Deprecated /* Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead. */
-    @Export(name="permissions", type=List.class, parameters={UserPermission.class})
-    private Output<List<UserPermission>> permissions;
-
-    /**
-     * @return List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.User` data source instead.
-     * 
-     */
-    public Output<List<UserPermission>> permissions() {
-        return this.permissions;
-    }
-    /**
      * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      * 
      */
@@ -274,30 +248,6 @@ public class User extends com.pulumi.resources.CustomResource {
      */
     public Output<String> picture() {
         return this.picture;
-    }
-    /**
-     * Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-     * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-     * instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-     * 
-     * @deprecated
-     * Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-     * 
-     */
-    @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that. */
-    @Export(name="roles", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> roles;
-
-    /**
-     * @return Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-     * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-     * instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-     * 
-     */
-    public Output<Optional<List<String>>> roles() {
-        return Codegen.optional(this.roles);
     }
     /**
      * ID of the user.

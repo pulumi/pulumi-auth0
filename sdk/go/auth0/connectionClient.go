@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -59,11 +59,11 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by specifying the connection ID and client ID separated by ":". # Example
+// This resource can be imported by specifying the connection ID and client ID separated by "::" (note the double colon) <connectionID>::<clientID> # Example
 //
 // ```sh
 //
-//	$ pulumi import auth0:index/connectionClient:ConnectionClient my_conn_client_assoc con_XXXXX:XXXXXXXX
+//	$ pulumi import auth0:index/connectionClient:ConnectionClient my_conn_client_assoc "con_XXXXX::XXXXXXXX"
 //
 // ```
 type ConnectionClient struct {

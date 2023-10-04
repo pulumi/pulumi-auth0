@@ -37,7 +37,7 @@ namespace Pulumi.Auth0
     /// As this is not a resource identifiable by an ID within the Auth0 Management API, prompts can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/prompt:Prompt my_prompt 22f4f21b-017a-319d-92e7-2291c1ca36c4
+    ///  $ pulumi import auth0:index/prompt:Prompt my_prompt "22f4f21b-017a-319d-92e7-2291c1ca36c4"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/prompt:Prompt")]
@@ -47,7 +47,7 @@ namespace Pulumi.Auth0
         /// Indicates whether the identifier first is used when using the new Universal Login experience.
         /// </summary>
         [Output("identifierFirst")]
-        public Output<bool?> IdentifierFirst { get; private set; } = null!;
+        public Output<bool> IdentifierFirst { get; private set; } = null!;
 
         /// <summary>
         /// Which login experience to use. Options include `classic` and `new`.
@@ -56,7 +56,7 @@ namespace Pulumi.Auth0
         public Output<string> UniversalLoginExperience { get; private set; } = null!;
 
         /// <summary>
-        /// Determines if the login screen uses identifier and biometrics first.
+        /// Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `auth0.Guardian` resource to set one up.
         /// </summary>
         [Output("webauthnPlatformFirstFactor")]
         public Output<bool> WebauthnPlatformFirstFactor { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.Auth0
         public Input<string>? UniversalLoginExperience { get; set; }
 
         /// <summary>
-        /// Determines if the login screen uses identifier and biometrics first.
+        /// Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `auth0.Guardian` resource to set one up.
         /// </summary>
         [Input("webauthnPlatformFirstFactor")]
         public Input<bool>? WebauthnPlatformFirstFactor { get; set; }
@@ -146,7 +146,7 @@ namespace Pulumi.Auth0
         public Input<string>? UniversalLoginExperience { get; set; }
 
         /// <summary>
-        /// Determines if the login screen uses identifier and biometrics first.
+        /// Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `auth0.Guardian` resource to set one up.
         /// </summary>
         [Input("webauthnPlatformFirstFactor")]
         public Input<bool>? WebauthnPlatformFirstFactor { get; set; }

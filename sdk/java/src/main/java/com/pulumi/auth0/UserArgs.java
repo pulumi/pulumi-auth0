@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -213,35 +212,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-     * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-     * instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-     * 
-     * @deprecated
-     * Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-     * 
-     */
-    @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that. */
-    @Import(name="roles")
-    private @Nullable Output<List<String>> roles;
-
-    /**
-     * @return Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-     * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-     * instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-     * 
-     * @deprecated
-     * Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-     * 
-     */
-    @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that. */
-    public Optional<Output<List<String>>> roles() {
-        return Optional.ofNullable(this.roles);
-    }
-
-    /**
      * ID of the user.
      * 
      */
@@ -317,7 +287,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         this.phoneNumber = $.phoneNumber;
         this.phoneVerified = $.phoneVerified;
         this.picture = $.picture;
-        this.roles = $.roles;
         this.userId = $.userId;
         this.userMetadata = $.userMetadata;
         this.username = $.username;
@@ -613,58 +582,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder picture(String picture) {
             return picture(Output.of(picture));
-        }
-
-        /**
-         * @param roles Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-         * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-         * instead. Check the [MIGRATION
-         * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-         * 
-         */
-        @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that. */
-        public Builder roles(@Nullable Output<List<String>> roles) {
-            $.roles = roles;
-            return this;
-        }
-
-        /**
-         * @param roles Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-         * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-         * instead. Check the [MIGRATION
-         * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-         * 
-         */
-        @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that. */
-        public Builder roles(List<String> roles) {
-            return roles(Output.of(roles));
-        }
-
-        /**
-         * @param roles Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-         * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-         * instead. Check the [MIGRATION
-         * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-         * 
-         */
-        @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that. */
-        public Builder roles(String... roles) {
-            return roles(List.of(roles));
         }
 
         /**

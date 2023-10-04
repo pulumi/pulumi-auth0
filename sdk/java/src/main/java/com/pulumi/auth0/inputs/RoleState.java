@@ -3,12 +3,10 @@
 
 package com.pulumi.auth0.inputs;
 
-import com.pulumi.auth0.inputs.RolePermissionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,14 +17,14 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     public static final RoleState Empty = new RoleState();
 
     /**
-     * Description of the role.
+     * The description of the role.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the role.
+     * @return The description of the role.
      * 
      */
     public Optional<Output<String>> description() {
@@ -34,47 +32,18 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name for this role.
+     * The name of the role.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name for this role.
+     * @return The name of the role.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
-    }
-
-    /**
-     * Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-     * attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-     * `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-     * 
-     * @deprecated
-     * Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-     * 
-     */
-    @Deprecated /* Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info. */
-    @Import(name="permissions")
-    private @Nullable Output<List<RolePermissionArgs>> permissions;
-
-    /**
-     * @return Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-     * attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-     * `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-     * 
-     * @deprecated
-     * Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-     * 
-     */
-    @Deprecated /* Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info. */
-    public Optional<Output<List<RolePermissionArgs>>> permissions() {
-        return Optional.ofNullable(this.permissions);
     }
 
     private RoleState() {}
@@ -82,7 +51,6 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     private RoleState(RoleState $) {
         this.description = $.description;
         this.name = $.name;
-        this.permissions = $.permissions;
     }
 
     public static Builder builder() {
@@ -104,7 +72,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the role.
+         * @param description The description of the role.
          * 
          * @return builder
          * 
@@ -115,7 +83,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the role.
+         * @param description The description of the role.
          * 
          * @return builder
          * 
@@ -125,7 +93,7 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name for this role.
+         * @param name The name of the role.
          * 
          * @return builder
          * 
@@ -136,65 +104,13 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name for this role.
+         * @param name The name of the role.
          * 
          * @return builder
          * 
          */
         public Builder name(String name) {
             return name(Output.of(name));
-        }
-
-        /**
-         * @param permissions Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-         * attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-         * `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-         * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-         * 
-         */
-        @Deprecated /* Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info. */
-        public Builder permissions(@Nullable Output<List<RolePermissionArgs>> permissions) {
-            $.permissions = permissions;
-            return this;
-        }
-
-        /**
-         * @param permissions Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-         * attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-         * `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-         * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-         * 
-         */
-        @Deprecated /* Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info. */
-        public Builder permissions(List<RolePermissionArgs> permissions) {
-            return permissions(Output.of(permissions));
-        }
-
-        /**
-         * @param permissions Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-         * attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-         * `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-         * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-         * 
-         */
-        @Deprecated /* Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info. */
-        public Builder permissions(RolePermissionArgs... permissions) {
-            return permissions(List.of(permissions));
         }
 
         public RoleState build() {

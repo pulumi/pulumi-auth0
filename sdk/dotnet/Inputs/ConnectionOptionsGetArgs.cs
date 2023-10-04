@@ -42,6 +42,12 @@ namespace Pulumi.Auth0.Inputs
         [Input("appId")]
         public Input<string>? AppId { get; set; }
 
+        /// <summary>
+        /// OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+        /// </summary>
+        [Input("attributeMap")]
+        public Input<Inputs.ConnectionOptionsAttributeMapGetArgs>? AttributeMap { get; set; }
+
         [Input("authParams")]
         private InputMap<string>? _authParams;
 
@@ -110,6 +116,12 @@ namespace Pulumi.Auth0.Inputs
             }
         }
 
+        /// <summary>
+        /// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+        /// </summary>
+        [Input("connectionSettings")]
+        public Input<Inputs.ConnectionOptionsConnectionSettingsGetArgs>? ConnectionSettings { get; set; }
+
         [Input("customScripts")]
         private InputMap<string>? _customScripts;
 
@@ -127,6 +139,12 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("debug")]
         public Input<bool>? Debug { get; set; }
+
+        /// <summary>
+        /// The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+        /// </summary>
+        [Input("decryptionKey")]
+        public Input<Inputs.ConnectionOptionsDecryptionKeyGetArgs>? DecryptionKey { get; set; }
 
         /// <summary>
         /// Sign Request Algorithm Digest.
@@ -291,6 +309,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? KeyId { get; set; }
 
         /// <summary>
+        /// By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to 'id' instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+        /// </summary>
+        [Input("mapUserIdToId")]
+        public Input<bool>? MapUserIdToId { get; set; }
+
+        /// <summary>
         /// Maximum number of groups to retrieve.
         /// </summary>
         [Input("maxGroupsToRetrieve")]
@@ -309,7 +333,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? MetadataUrl { get; set; }
 
         /// <summary>
-        /// The XML content for the SAML metadata document.
+        /// The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
         /// </summary>
         [Input("metadataXml")]
         public Input<string>? MetadataXml { get; set; }

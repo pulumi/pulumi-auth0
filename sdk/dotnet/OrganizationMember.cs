@@ -50,10 +50,10 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying the organization ID and user ID separated by ":". # Example
+    /// This resource can be imported by specifying the organization ID and user ID separated by "::" (note the double colon) &lt;organizationID&gt;::&lt;userID&gt; # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/organizationMember:OrganizationMember my_org_member "org_XXXXX:auth0|XXXXX"
+    ///  $ pulumi import auth0:index/organizationMember:OrganizationMember my_org_member "org_XXXXX::auth0|XXXXX"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/organizationMember:OrganizationMember")]
@@ -64,16 +64,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
-
-        /// <summary>
-        /// The role ID(s) to assign to the organization member. Managing roles through this attribute is deprecated and it will be
-        /// removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role`
-        /// resource to manage organization member roles instead. Check the [MIGRATION
-        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how
-        /// to do that.
-        /// </summary>
-        [Output("roles")]
-        public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
 
         /// <summary>
         /// ID of the user to add as an organization member.
@@ -133,23 +123,6 @@ namespace Pulumi.Auth0
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
-        [Input("roles")]
-        private InputList<string>? _roles;
-
-        /// <summary>
-        /// The role ID(s) to assign to the organization member. Managing roles through this attribute is deprecated and it will be
-        /// removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role`
-        /// resource to manage organization member roles instead. Check the [MIGRATION
-        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how
-        /// to do that.
-        /// </summary>
-        [Obsolete(@"Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that.")]
-        public InputList<string> Roles
-        {
-            get => _roles ?? (_roles = new InputList<string>());
-            set => _roles = value;
-        }
-
         /// <summary>
         /// ID of the user to add as an organization member.
         /// </summary>
@@ -169,23 +142,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
-
-        [Input("roles")]
-        private InputList<string>? _roles;
-
-        /// <summary>
-        /// The role ID(s) to assign to the organization member. Managing roles through this attribute is deprecated and it will be
-        /// removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role`
-        /// resource to manage organization member roles instead. Check the [MIGRATION
-        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how
-        /// to do that.
-        /// </summary>
-        [Obsolete(@"Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that.")]
-        public InputList<string> Roles
-        {
-            get => _roles ?? (_roles = new InputList<string>());
-            set => _roles = value;
-        }
 
         /// <summary>
         /// ID of the user to add as an organization member.

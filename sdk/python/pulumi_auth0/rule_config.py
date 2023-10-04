@@ -123,7 +123,7 @@ class RuleConfig(pulumi.CustomResource):
         Existing rule configs can be imported using their key name. # Example
 
         ```sh
-         $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config foo
+         $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config "foo"
         ```
 
         :param str resource_name: The name of the resource.
@@ -163,7 +163,7 @@ class RuleConfig(pulumi.CustomResource):
         Existing rule configs can be imported using their key name. # Example
 
         ```sh
-         $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config foo
+         $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config "foo"
         ```
 
         :param str resource_name: The name of the resource.

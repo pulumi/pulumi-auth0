@@ -47,14 +47,14 @@ public final class PromptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Determines if the login screen uses identifier and biometrics first.
+     * Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `auth0.Guardian` resource to set one up.
      * 
      */
     @Import(name="webauthnPlatformFirstFactor")
     private @Nullable Output<Boolean> webauthnPlatformFirstFactor;
 
     /**
-     * @return Determines if the login screen uses identifier and biometrics first.
+     * @return Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `auth0.Guardian` resource to set one up.
      * 
      */
     public Optional<Output<Boolean>> webauthnPlatformFirstFactor() {
@@ -130,7 +130,7 @@ public final class PromptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webauthnPlatformFirstFactor Determines if the login screen uses identifier and biometrics first.
+         * @param webauthnPlatformFirstFactor Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `auth0.Guardian` resource to set one up.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class PromptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webauthnPlatformFirstFactor Determines if the login screen uses identifier and biometrics first.
+         * @param webauthnPlatformFirstFactor Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `auth0.Guardian` resource to set one up.
          * 
          * @return builder
          * 

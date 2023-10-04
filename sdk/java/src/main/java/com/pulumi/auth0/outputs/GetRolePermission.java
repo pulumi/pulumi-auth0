@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRolePermission {
     /**
-     * @return Description of the role.
+     * @return The description of the role.
      * 
      */
     private String description;
@@ -24,7 +24,7 @@ public final class GetRolePermission {
 
     private GetRolePermission() {}
     /**
-     * @return Description of the role.
+     * @return The description of the role.
      * 
      */
     public String description() {

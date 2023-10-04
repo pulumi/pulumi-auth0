@@ -3,12 +3,37 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.ClientAddonsAwsArgs;
+import com.pulumi.auth0.inputs.ClientAddonsAzureBlobArgs;
+import com.pulumi.auth0.inputs.ClientAddonsAzureSbArgs;
+import com.pulumi.auth0.inputs.ClientAddonsBoxArgs;
+import com.pulumi.auth0.inputs.ClientAddonsCloudbeesArgs;
+import com.pulumi.auth0.inputs.ClientAddonsConcurArgs;
+import com.pulumi.auth0.inputs.ClientAddonsDropboxArgs;
+import com.pulumi.auth0.inputs.ClientAddonsEchosignArgs;
+import com.pulumi.auth0.inputs.ClientAddonsEgnyteArgs;
+import com.pulumi.auth0.inputs.ClientAddonsFirebaseArgs;
+import com.pulumi.auth0.inputs.ClientAddonsLayerArgs;
+import com.pulumi.auth0.inputs.ClientAddonsMscrmArgs;
+import com.pulumi.auth0.inputs.ClientAddonsNewrelicArgs;
+import com.pulumi.auth0.inputs.ClientAddonsOffice365Args;
+import com.pulumi.auth0.inputs.ClientAddonsRmsArgs;
+import com.pulumi.auth0.inputs.ClientAddonsSalesforceApiArgs;
+import com.pulumi.auth0.inputs.ClientAddonsSalesforceArgs;
+import com.pulumi.auth0.inputs.ClientAddonsSalesforceSandboxApiArgs;
 import com.pulumi.auth0.inputs.ClientAddonsSamlpArgs;
+import com.pulumi.auth0.inputs.ClientAddonsSapApiArgs;
+import com.pulumi.auth0.inputs.ClientAddonsSentryArgs;
+import com.pulumi.auth0.inputs.ClientAddonsSharepointArgs;
+import com.pulumi.auth0.inputs.ClientAddonsSlackArgs;
+import com.pulumi.auth0.inputs.ClientAddonsSpringcmArgs;
+import com.pulumi.auth0.inputs.ClientAddonsSsoIntegrationArgs;
+import com.pulumi.auth0.inputs.ClientAddonsWamsArgs;
+import com.pulumi.auth0.inputs.ClientAddonsWsfedArgs;
+import com.pulumi.auth0.inputs.ClientAddonsZendeskArgs;
+import com.pulumi.auth0.inputs.ClientAddonsZoomArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
-import java.lang.String;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,129 +43,273 @@ public final class ClientAddonsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClientAddonsArgs Empty = new ClientAddonsArgs();
 
+    /**
+     * AWS Addon configuration.
+     * 
+     */
     @Import(name="aws")
-    private @Nullable Output<Map<String,Object>> aws;
+    private @Nullable Output<ClientAddonsAwsArgs> aws;
 
-    public Optional<Output<Map<String,Object>>> aws() {
+    /**
+     * @return AWS Addon configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsAwsArgs>> aws() {
         return Optional.ofNullable(this.aws);
     }
 
+    /**
+     * Azure Blob Storage Addon configuration.
+     * 
+     */
     @Import(name="azureBlob")
-    private @Nullable Output<Map<String,Object>> azureBlob;
+    private @Nullable Output<ClientAddonsAzureBlobArgs> azureBlob;
 
-    public Optional<Output<Map<String,Object>>> azureBlob() {
+    /**
+     * @return Azure Blob Storage Addon configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsAzureBlobArgs>> azureBlob() {
         return Optional.ofNullable(this.azureBlob);
     }
 
+    /**
+     * Azure Storage Bus Addon configuration.
+     * 
+     */
     @Import(name="azureSb")
-    private @Nullable Output<Map<String,Object>> azureSb;
+    private @Nullable Output<ClientAddonsAzureSbArgs> azureSb;
 
-    public Optional<Output<Map<String,Object>>> azureSb() {
+    /**
+     * @return Azure Storage Bus Addon configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsAzureSbArgs>> azureSb() {
         return Optional.ofNullable(this.azureSb);
     }
 
+    /**
+     * Box SSO indicator (no configuration settings needed for Box SSO).
+     * 
+     */
     @Import(name="box")
-    private @Nullable Output<Map<String,Object>> box;
+    private @Nullable Output<ClientAddonsBoxArgs> box;
 
-    public Optional<Output<Map<String,Object>>> box() {
+    /**
+     * @return Box SSO indicator (no configuration settings needed for Box SSO).
+     * 
+     */
+    public Optional<Output<ClientAddonsBoxArgs>> box() {
         return Optional.ofNullable(this.box);
     }
 
+    /**
+     * CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+     * 
+     */
     @Import(name="cloudbees")
-    private @Nullable Output<Map<String,Object>> cloudbees;
+    private @Nullable Output<ClientAddonsCloudbeesArgs> cloudbees;
 
-    public Optional<Output<Map<String,Object>>> cloudbees() {
+    /**
+     * @return CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+     * 
+     */
+    public Optional<Output<ClientAddonsCloudbeesArgs>> cloudbees() {
         return Optional.ofNullable(this.cloudbees);
     }
 
+    /**
+     * Concur SSO indicator (no configuration settings needed for Concur SSO).
+     * 
+     */
     @Import(name="concur")
-    private @Nullable Output<Map<String,Object>> concur;
+    private @Nullable Output<ClientAddonsConcurArgs> concur;
 
-    public Optional<Output<Map<String,Object>>> concur() {
+    /**
+     * @return Concur SSO indicator (no configuration settings needed for Concur SSO).
+     * 
+     */
+    public Optional<Output<ClientAddonsConcurArgs>> concur() {
         return Optional.ofNullable(this.concur);
     }
 
+    /**
+     * Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+     * 
+     */
     @Import(name="dropbox")
-    private @Nullable Output<Map<String,Object>> dropbox;
+    private @Nullable Output<ClientAddonsDropboxArgs> dropbox;
 
-    public Optional<Output<Map<String,Object>>> dropbox() {
+    /**
+     * @return Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+     * 
+     */
+    public Optional<Output<ClientAddonsDropboxArgs>> dropbox() {
         return Optional.ofNullable(this.dropbox);
     }
 
+    /**
+     * Adobe EchoSign SSO configuration.
+     * 
+     */
     @Import(name="echosign")
-    private @Nullable Output<Map<String,Object>> echosign;
+    private @Nullable Output<ClientAddonsEchosignArgs> echosign;
 
-    public Optional<Output<Map<String,Object>>> echosign() {
+    /**
+     * @return Adobe EchoSign SSO configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsEchosignArgs>> echosign() {
         return Optional.ofNullable(this.echosign);
     }
 
+    /**
+     * Egnyte SSO configuration.
+     * 
+     */
     @Import(name="egnyte")
-    private @Nullable Output<Map<String,Object>> egnyte;
+    private @Nullable Output<ClientAddonsEgnyteArgs> egnyte;
 
-    public Optional<Output<Map<String,Object>>> egnyte() {
+    /**
+     * @return Egnyte SSO configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsEgnyteArgs>> egnyte() {
         return Optional.ofNullable(this.egnyte);
     }
 
+    /**
+     * Google Firebase addon configuration.
+     * 
+     */
     @Import(name="firebase")
-    private @Nullable Output<Map<String,Object>> firebase;
+    private @Nullable Output<ClientAddonsFirebaseArgs> firebase;
 
-    public Optional<Output<Map<String,Object>>> firebase() {
+    /**
+     * @return Google Firebase addon configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsFirebaseArgs>> firebase() {
         return Optional.ofNullable(this.firebase);
     }
 
+    /**
+     * Layer addon configuration.
+     * 
+     */
     @Import(name="layer")
-    private @Nullable Output<Map<String,Object>> layer;
+    private @Nullable Output<ClientAddonsLayerArgs> layer;
 
-    public Optional<Output<Map<String,Object>>> layer() {
+    /**
+     * @return Layer addon configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsLayerArgs>> layer() {
         return Optional.ofNullable(this.layer);
     }
 
+    /**
+     * Microsoft Dynamics CRM SSO configuration.
+     * 
+     */
     @Import(name="mscrm")
-    private @Nullable Output<Map<String,Object>> mscrm;
+    private @Nullable Output<ClientAddonsMscrmArgs> mscrm;
 
-    public Optional<Output<Map<String,Object>>> mscrm() {
+    /**
+     * @return Microsoft Dynamics CRM SSO configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsMscrmArgs>> mscrm() {
         return Optional.ofNullable(this.mscrm);
     }
 
+    /**
+     * New Relic SSO configuration.
+     * 
+     */
     @Import(name="newrelic")
-    private @Nullable Output<Map<String,Object>> newrelic;
+    private @Nullable Output<ClientAddonsNewrelicArgs> newrelic;
 
-    public Optional<Output<Map<String,Object>>> newrelic() {
+    /**
+     * @return New Relic SSO configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsNewrelicArgs>> newrelic() {
         return Optional.ofNullable(this.newrelic);
     }
 
+    /**
+     * Microsoft Office 365 SSO configuration.
+     * 
+     */
     @Import(name="office365")
-    private @Nullable Output<Map<String,Object>> office365;
+    private @Nullable Output<ClientAddonsOffice365Args> office365;
 
-    public Optional<Output<Map<String,Object>>> office365() {
+    /**
+     * @return Microsoft Office 365 SSO configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsOffice365Args>> office365() {
         return Optional.ofNullable(this.office365);
     }
 
+    /**
+     * Active Directory Rights Management Service SSO configuration.
+     * 
+     */
     @Import(name="rms")
-    private @Nullable Output<Map<String,Object>> rms;
+    private @Nullable Output<ClientAddonsRmsArgs> rms;
 
-    public Optional<Output<Map<String,Object>>> rms() {
+    /**
+     * @return Active Directory Rights Management Service SSO configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsRmsArgs>> rms() {
         return Optional.ofNullable(this.rms);
     }
 
+    /**
+     * Salesforce SSO configuration.
+     * 
+     */
     @Import(name="salesforce")
-    private @Nullable Output<Map<String,Object>> salesforce;
+    private @Nullable Output<ClientAddonsSalesforceArgs> salesforce;
 
-    public Optional<Output<Map<String,Object>>> salesforce() {
+    /**
+     * @return Salesforce SSO configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsSalesforceArgs>> salesforce() {
         return Optional.ofNullable(this.salesforce);
     }
 
+    /**
+     * Salesforce API addon configuration.
+     * 
+     */
     @Import(name="salesforceApi")
-    private @Nullable Output<Map<String,Object>> salesforceApi;
+    private @Nullable Output<ClientAddonsSalesforceApiArgs> salesforceApi;
 
-    public Optional<Output<Map<String,Object>>> salesforceApi() {
+    /**
+     * @return Salesforce API addon configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsSalesforceApiArgs>> salesforceApi() {
         return Optional.ofNullable(this.salesforceApi);
     }
 
+    /**
+     * Salesforce Sandbox addon configuration.
+     * 
+     */
     @Import(name="salesforceSandboxApi")
-    private @Nullable Output<Map<String,Object>> salesforceSandboxApi;
+    private @Nullable Output<ClientAddonsSalesforceSandboxApiArgs> salesforceSandboxApi;
 
-    public Optional<Output<Map<String,Object>>> salesforceSandboxApi() {
+    /**
+     * @return Salesforce Sandbox addon configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsSalesforceSandboxApiArgs>> salesforceSandboxApi() {
         return Optional.ofNullable(this.salesforceSandboxApi);
     }
 
@@ -159,74 +328,153 @@ public final class ClientAddonsArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.samlp);
     }
 
+    /**
+     * SAP API addon configuration.
+     * 
+     */
     @Import(name="sapApi")
-    private @Nullable Output<Map<String,Object>> sapApi;
+    private @Nullable Output<ClientAddonsSapApiArgs> sapApi;
 
-    public Optional<Output<Map<String,Object>>> sapApi() {
+    /**
+     * @return SAP API addon configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsSapApiArgs>> sapApi() {
         return Optional.ofNullable(this.sapApi);
     }
 
+    /**
+     * Sentry SSO configuration.
+     * 
+     */
     @Import(name="sentry")
-    private @Nullable Output<Map<String,Object>> sentry;
+    private @Nullable Output<ClientAddonsSentryArgs> sentry;
 
-    public Optional<Output<Map<String,Object>>> sentry() {
+    /**
+     * @return Sentry SSO configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsSentryArgs>> sentry() {
         return Optional.ofNullable(this.sentry);
     }
 
+    /**
+     * SharePoint SSO configuration.
+     * 
+     */
     @Import(name="sharepoint")
-    private @Nullable Output<Map<String,Object>> sharepoint;
+    private @Nullable Output<ClientAddonsSharepointArgs> sharepoint;
 
-    public Optional<Output<Map<String,Object>>> sharepoint() {
+    /**
+     * @return SharePoint SSO configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsSharepointArgs>> sharepoint() {
         return Optional.ofNullable(this.sharepoint);
     }
 
+    /**
+     * Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+     * 
+     */
     @Import(name="slack")
-    private @Nullable Output<Map<String,Object>> slack;
+    private @Nullable Output<ClientAddonsSlackArgs> slack;
 
-    public Optional<Output<Map<String,Object>>> slack() {
+    /**
+     * @return Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+     * 
+     */
+    public Optional<Output<ClientAddonsSlackArgs>> slack() {
         return Optional.ofNullable(this.slack);
     }
 
+    /**
+     * SpringCM SSO configuration.
+     * 
+     */
     @Import(name="springcm")
-    private @Nullable Output<Map<String,Object>> springcm;
+    private @Nullable Output<ClientAddonsSpringcmArgs> springcm;
 
-    public Optional<Output<Map<String,Object>>> springcm() {
+    /**
+     * @return SpringCM SSO configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsSpringcmArgs>> springcm() {
         return Optional.ofNullable(this.springcm);
     }
 
-    @Import(name="wams")
-    private @Nullable Output<Map<String,Object>> wams;
+    /**
+     * Generic SSO configuration.
+     * 
+     */
+    @Import(name="ssoIntegration")
+    private @Nullable Output<ClientAddonsSsoIntegrationArgs> ssoIntegration;
 
-    public Optional<Output<Map<String,Object>>> wams() {
+    /**
+     * @return Generic SSO configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsSsoIntegrationArgs>> ssoIntegration() {
+        return Optional.ofNullable(this.ssoIntegration);
+    }
+
+    /**
+     * Windows Azure Mobile Services addon configuration.
+     * 
+     */
+    @Import(name="wams")
+    private @Nullable Output<ClientAddonsWamsArgs> wams;
+
+    /**
+     * @return Windows Azure Mobile Services addon configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsWamsArgs>> wams() {
         return Optional.ofNullable(this.wams);
     }
 
     /**
-     * WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+     * WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
      * 
      */
     @Import(name="wsfed")
-    private @Nullable Output<Map<String,Object>> wsfed;
+    private @Nullable Output<ClientAddonsWsfedArgs> wsfed;
 
     /**
-     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
      * 
      */
-    public Optional<Output<Map<String,Object>>> wsfed() {
+    public Optional<Output<ClientAddonsWsfedArgs>> wsfed() {
         return Optional.ofNullable(this.wsfed);
     }
 
+    /**
+     * Zendesk SSO configuration.
+     * 
+     */
     @Import(name="zendesk")
-    private @Nullable Output<Map<String,Object>> zendesk;
+    private @Nullable Output<ClientAddonsZendeskArgs> zendesk;
 
-    public Optional<Output<Map<String,Object>>> zendesk() {
+    /**
+     * @return Zendesk SSO configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsZendeskArgs>> zendesk() {
         return Optional.ofNullable(this.zendesk);
     }
 
+    /**
+     * Zoom SSO configuration.
+     * 
+     */
     @Import(name="zoom")
-    private @Nullable Output<Map<String,Object>> zoom;
+    private @Nullable Output<ClientAddonsZoomArgs> zoom;
 
-    public Optional<Output<Map<String,Object>>> zoom() {
+    /**
+     * @return Zoom SSO configuration.
+     * 
+     */
+    public Optional<Output<ClientAddonsZoomArgs>> zoom() {
         return Optional.ofNullable(this.zoom);
     }
 
@@ -257,6 +505,7 @@ public final class ClientAddonsArgs extends com.pulumi.resources.ResourceArgs {
         this.sharepoint = $.sharepoint;
         this.slack = $.slack;
         this.springcm = $.springcm;
+        this.ssoIntegration = $.ssoIntegration;
         this.wams = $.wams;
         this.wsfed = $.wsfed;
         this.zendesk = $.zendesk;
@@ -281,165 +530,381 @@ public final class ClientAddonsArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ClientAddonsArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder aws(@Nullable Output<Map<String,Object>> aws) {
+        /**
+         * @param aws AWS Addon configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aws(@Nullable Output<ClientAddonsAwsArgs> aws) {
             $.aws = aws;
             return this;
         }
 
-        public Builder aws(Map<String,Object> aws) {
+        /**
+         * @param aws AWS Addon configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aws(ClientAddonsAwsArgs aws) {
             return aws(Output.of(aws));
         }
 
-        public Builder azureBlob(@Nullable Output<Map<String,Object>> azureBlob) {
+        /**
+         * @param azureBlob Azure Blob Storage Addon configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azureBlob(@Nullable Output<ClientAddonsAzureBlobArgs> azureBlob) {
             $.azureBlob = azureBlob;
             return this;
         }
 
-        public Builder azureBlob(Map<String,Object> azureBlob) {
+        /**
+         * @param azureBlob Azure Blob Storage Addon configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azureBlob(ClientAddonsAzureBlobArgs azureBlob) {
             return azureBlob(Output.of(azureBlob));
         }
 
-        public Builder azureSb(@Nullable Output<Map<String,Object>> azureSb) {
+        /**
+         * @param azureSb Azure Storage Bus Addon configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azureSb(@Nullable Output<ClientAddonsAzureSbArgs> azureSb) {
             $.azureSb = azureSb;
             return this;
         }
 
-        public Builder azureSb(Map<String,Object> azureSb) {
+        /**
+         * @param azureSb Azure Storage Bus Addon configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azureSb(ClientAddonsAzureSbArgs azureSb) {
             return azureSb(Output.of(azureSb));
         }
 
-        public Builder box(@Nullable Output<Map<String,Object>> box) {
+        /**
+         * @param box Box SSO indicator (no configuration settings needed for Box SSO).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder box(@Nullable Output<ClientAddonsBoxArgs> box) {
             $.box = box;
             return this;
         }
 
-        public Builder box(Map<String,Object> box) {
+        /**
+         * @param box Box SSO indicator (no configuration settings needed for Box SSO).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder box(ClientAddonsBoxArgs box) {
             return box(Output.of(box));
         }
 
-        public Builder cloudbees(@Nullable Output<Map<String,Object>> cloudbees) {
+        /**
+         * @param cloudbees CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudbees(@Nullable Output<ClientAddonsCloudbeesArgs> cloudbees) {
             $.cloudbees = cloudbees;
             return this;
         }
 
-        public Builder cloudbees(Map<String,Object> cloudbees) {
+        /**
+         * @param cloudbees CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudbees(ClientAddonsCloudbeesArgs cloudbees) {
             return cloudbees(Output.of(cloudbees));
         }
 
-        public Builder concur(@Nullable Output<Map<String,Object>> concur) {
+        /**
+         * @param concur Concur SSO indicator (no configuration settings needed for Concur SSO).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder concur(@Nullable Output<ClientAddonsConcurArgs> concur) {
             $.concur = concur;
             return this;
         }
 
-        public Builder concur(Map<String,Object> concur) {
+        /**
+         * @param concur Concur SSO indicator (no configuration settings needed for Concur SSO).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder concur(ClientAddonsConcurArgs concur) {
             return concur(Output.of(concur));
         }
 
-        public Builder dropbox(@Nullable Output<Map<String,Object>> dropbox) {
+        /**
+         * @param dropbox Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dropbox(@Nullable Output<ClientAddonsDropboxArgs> dropbox) {
             $.dropbox = dropbox;
             return this;
         }
 
-        public Builder dropbox(Map<String,Object> dropbox) {
+        /**
+         * @param dropbox Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dropbox(ClientAddonsDropboxArgs dropbox) {
             return dropbox(Output.of(dropbox));
         }
 
-        public Builder echosign(@Nullable Output<Map<String,Object>> echosign) {
+        /**
+         * @param echosign Adobe EchoSign SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder echosign(@Nullable Output<ClientAddonsEchosignArgs> echosign) {
             $.echosign = echosign;
             return this;
         }
 
-        public Builder echosign(Map<String,Object> echosign) {
+        /**
+         * @param echosign Adobe EchoSign SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder echosign(ClientAddonsEchosignArgs echosign) {
             return echosign(Output.of(echosign));
         }
 
-        public Builder egnyte(@Nullable Output<Map<String,Object>> egnyte) {
+        /**
+         * @param egnyte Egnyte SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder egnyte(@Nullable Output<ClientAddonsEgnyteArgs> egnyte) {
             $.egnyte = egnyte;
             return this;
         }
 
-        public Builder egnyte(Map<String,Object> egnyte) {
+        /**
+         * @param egnyte Egnyte SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder egnyte(ClientAddonsEgnyteArgs egnyte) {
             return egnyte(Output.of(egnyte));
         }
 
-        public Builder firebase(@Nullable Output<Map<String,Object>> firebase) {
+        /**
+         * @param firebase Google Firebase addon configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firebase(@Nullable Output<ClientAddonsFirebaseArgs> firebase) {
             $.firebase = firebase;
             return this;
         }
 
-        public Builder firebase(Map<String,Object> firebase) {
+        /**
+         * @param firebase Google Firebase addon configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firebase(ClientAddonsFirebaseArgs firebase) {
             return firebase(Output.of(firebase));
         }
 
-        public Builder layer(@Nullable Output<Map<String,Object>> layer) {
+        /**
+         * @param layer Layer addon configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder layer(@Nullable Output<ClientAddonsLayerArgs> layer) {
             $.layer = layer;
             return this;
         }
 
-        public Builder layer(Map<String,Object> layer) {
+        /**
+         * @param layer Layer addon configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder layer(ClientAddonsLayerArgs layer) {
             return layer(Output.of(layer));
         }
 
-        public Builder mscrm(@Nullable Output<Map<String,Object>> mscrm) {
+        /**
+         * @param mscrm Microsoft Dynamics CRM SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mscrm(@Nullable Output<ClientAddonsMscrmArgs> mscrm) {
             $.mscrm = mscrm;
             return this;
         }
 
-        public Builder mscrm(Map<String,Object> mscrm) {
+        /**
+         * @param mscrm Microsoft Dynamics CRM SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mscrm(ClientAddonsMscrmArgs mscrm) {
             return mscrm(Output.of(mscrm));
         }
 
-        public Builder newrelic(@Nullable Output<Map<String,Object>> newrelic) {
+        /**
+         * @param newrelic New Relic SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder newrelic(@Nullable Output<ClientAddonsNewrelicArgs> newrelic) {
             $.newrelic = newrelic;
             return this;
         }
 
-        public Builder newrelic(Map<String,Object> newrelic) {
+        /**
+         * @param newrelic New Relic SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder newrelic(ClientAddonsNewrelicArgs newrelic) {
             return newrelic(Output.of(newrelic));
         }
 
-        public Builder office365(@Nullable Output<Map<String,Object>> office365) {
+        /**
+         * @param office365 Microsoft Office 365 SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder office365(@Nullable Output<ClientAddonsOffice365Args> office365) {
             $.office365 = office365;
             return this;
         }
 
-        public Builder office365(Map<String,Object> office365) {
+        /**
+         * @param office365 Microsoft Office 365 SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder office365(ClientAddonsOffice365Args office365) {
             return office365(Output.of(office365));
         }
 
-        public Builder rms(@Nullable Output<Map<String,Object>> rms) {
+        /**
+         * @param rms Active Directory Rights Management Service SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rms(@Nullable Output<ClientAddonsRmsArgs> rms) {
             $.rms = rms;
             return this;
         }
 
-        public Builder rms(Map<String,Object> rms) {
+        /**
+         * @param rms Active Directory Rights Management Service SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rms(ClientAddonsRmsArgs rms) {
             return rms(Output.of(rms));
         }
 
-        public Builder salesforce(@Nullable Output<Map<String,Object>> salesforce) {
+        /**
+         * @param salesforce Salesforce SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder salesforce(@Nullable Output<ClientAddonsSalesforceArgs> salesforce) {
             $.salesforce = salesforce;
             return this;
         }
 
-        public Builder salesforce(Map<String,Object> salesforce) {
+        /**
+         * @param salesforce Salesforce SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder salesforce(ClientAddonsSalesforceArgs salesforce) {
             return salesforce(Output.of(salesforce));
         }
 
-        public Builder salesforceApi(@Nullable Output<Map<String,Object>> salesforceApi) {
+        /**
+         * @param salesforceApi Salesforce API addon configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder salesforceApi(@Nullable Output<ClientAddonsSalesforceApiArgs> salesforceApi) {
             $.salesforceApi = salesforceApi;
             return this;
         }
 
-        public Builder salesforceApi(Map<String,Object> salesforceApi) {
+        /**
+         * @param salesforceApi Salesforce API addon configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder salesforceApi(ClientAddonsSalesforceApiArgs salesforceApi) {
             return salesforceApi(Output.of(salesforceApi));
         }
 
-        public Builder salesforceSandboxApi(@Nullable Output<Map<String,Object>> salesforceSandboxApi) {
+        /**
+         * @param salesforceSandboxApi Salesforce Sandbox addon configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder salesforceSandboxApi(@Nullable Output<ClientAddonsSalesforceSandboxApiArgs> salesforceSandboxApi) {
             $.salesforceSandboxApi = salesforceSandboxApi;
             return this;
         }
 
-        public Builder salesforceSandboxApi(Map<String,Object> salesforceSandboxApi) {
+        /**
+         * @param salesforceSandboxApi Salesforce Sandbox addon configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder salesforceSandboxApi(ClientAddonsSalesforceSandboxApiArgs salesforceSandboxApi) {
             return salesforceSandboxApi(Output.of(salesforceSandboxApi));
         }
 
@@ -464,96 +929,213 @@ public final class ClientAddonsArgs extends com.pulumi.resources.ResourceArgs {
             return samlp(Output.of(samlp));
         }
 
-        public Builder sapApi(@Nullable Output<Map<String,Object>> sapApi) {
-            $.sapApi = sapApi;
-            return this;
-        }
-
-        public Builder sapApi(Map<String,Object> sapApi) {
-            return sapApi(Output.of(sapApi));
-        }
-
-        public Builder sentry(@Nullable Output<Map<String,Object>> sentry) {
-            $.sentry = sentry;
-            return this;
-        }
-
-        public Builder sentry(Map<String,Object> sentry) {
-            return sentry(Output.of(sentry));
-        }
-
-        public Builder sharepoint(@Nullable Output<Map<String,Object>> sharepoint) {
-            $.sharepoint = sharepoint;
-            return this;
-        }
-
-        public Builder sharepoint(Map<String,Object> sharepoint) {
-            return sharepoint(Output.of(sharepoint));
-        }
-
-        public Builder slack(@Nullable Output<Map<String,Object>> slack) {
-            $.slack = slack;
-            return this;
-        }
-
-        public Builder slack(Map<String,Object> slack) {
-            return slack(Output.of(slack));
-        }
-
-        public Builder springcm(@Nullable Output<Map<String,Object>> springcm) {
-            $.springcm = springcm;
-            return this;
-        }
-
-        public Builder springcm(Map<String,Object> springcm) {
-            return springcm(Output.of(springcm));
-        }
-
-        public Builder wams(@Nullable Output<Map<String,Object>> wams) {
-            $.wams = wams;
-            return this;
-        }
-
-        public Builder wams(Map<String,Object> wams) {
-            return wams(Output.of(wams));
-        }
-
         /**
-         * @param wsfed WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+         * @param sapApi SAP API addon configuration.
          * 
          * @return builder
          * 
          */
-        public Builder wsfed(@Nullable Output<Map<String,Object>> wsfed) {
+        public Builder sapApi(@Nullable Output<ClientAddonsSapApiArgs> sapApi) {
+            $.sapApi = sapApi;
+            return this;
+        }
+
+        /**
+         * @param sapApi SAP API addon configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sapApi(ClientAddonsSapApiArgs sapApi) {
+            return sapApi(Output.of(sapApi));
+        }
+
+        /**
+         * @param sentry Sentry SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sentry(@Nullable Output<ClientAddonsSentryArgs> sentry) {
+            $.sentry = sentry;
+            return this;
+        }
+
+        /**
+         * @param sentry Sentry SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sentry(ClientAddonsSentryArgs sentry) {
+            return sentry(Output.of(sentry));
+        }
+
+        /**
+         * @param sharepoint SharePoint SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharepoint(@Nullable Output<ClientAddonsSharepointArgs> sharepoint) {
+            $.sharepoint = sharepoint;
+            return this;
+        }
+
+        /**
+         * @param sharepoint SharePoint SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharepoint(ClientAddonsSharepointArgs sharepoint) {
+            return sharepoint(Output.of(sharepoint));
+        }
+
+        /**
+         * @param slack Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slack(@Nullable Output<ClientAddonsSlackArgs> slack) {
+            $.slack = slack;
+            return this;
+        }
+
+        /**
+         * @param slack Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slack(ClientAddonsSlackArgs slack) {
+            return slack(Output.of(slack));
+        }
+
+        /**
+         * @param springcm SpringCM SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder springcm(@Nullable Output<ClientAddonsSpringcmArgs> springcm) {
+            $.springcm = springcm;
+            return this;
+        }
+
+        /**
+         * @param springcm SpringCM SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder springcm(ClientAddonsSpringcmArgs springcm) {
+            return springcm(Output.of(springcm));
+        }
+
+        /**
+         * @param ssoIntegration Generic SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ssoIntegration(@Nullable Output<ClientAddonsSsoIntegrationArgs> ssoIntegration) {
+            $.ssoIntegration = ssoIntegration;
+            return this;
+        }
+
+        /**
+         * @param ssoIntegration Generic SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ssoIntegration(ClientAddonsSsoIntegrationArgs ssoIntegration) {
+            return ssoIntegration(Output.of(ssoIntegration));
+        }
+
+        /**
+         * @param wams Windows Azure Mobile Services addon configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wams(@Nullable Output<ClientAddonsWamsArgs> wams) {
+            $.wams = wams;
+            return this;
+        }
+
+        /**
+         * @param wams Windows Azure Mobile Services addon configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wams(ClientAddonsWamsArgs wams) {
+            return wams(Output.of(wams));
+        }
+
+        /**
+         * @param wsfed WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wsfed(@Nullable Output<ClientAddonsWsfedArgs> wsfed) {
             $.wsfed = wsfed;
             return this;
         }
 
         /**
-         * @param wsfed WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+         * @param wsfed WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
          * 
          * @return builder
          * 
          */
-        public Builder wsfed(Map<String,Object> wsfed) {
+        public Builder wsfed(ClientAddonsWsfedArgs wsfed) {
             return wsfed(Output.of(wsfed));
         }
 
-        public Builder zendesk(@Nullable Output<Map<String,Object>> zendesk) {
+        /**
+         * @param zendesk Zendesk SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zendesk(@Nullable Output<ClientAddonsZendeskArgs> zendesk) {
             $.zendesk = zendesk;
             return this;
         }
 
-        public Builder zendesk(Map<String,Object> zendesk) {
+        /**
+         * @param zendesk Zendesk SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zendesk(ClientAddonsZendeskArgs zendesk) {
             return zendesk(Output.of(zendesk));
         }
 
-        public Builder zoom(@Nullable Output<Map<String,Object>> zoom) {
+        /**
+         * @param zoom Zoom SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoom(@Nullable Output<ClientAddonsZoomArgs> zoom) {
             $.zoom = zoom;
             return this;
         }
 
-        public Builder zoom(Map<String,Object> zoom) {
+        /**
+         * @param zoom Zoom SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoom(ClientAddonsZoomArgs zoom) {
             return zoom(Output.of(zoom));
         }
 

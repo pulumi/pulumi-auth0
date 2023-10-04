@@ -65,10 +65,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Existing organizations can be imported using the organization ID. # Example
+ * This resource can be imported by specifying the organization ID. # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/organization:Organization my_organization org_XXXXXXXXXXXXXX
+ *  $ pulumi import auth0:index/organization:Organization my_organization &#34;org_XXXXXXXXXXXXXX&#34;
  * ```
  * 
  */

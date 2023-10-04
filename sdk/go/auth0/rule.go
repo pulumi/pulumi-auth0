@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -17,9 +17,6 @@ import (
 //
 // !> This resource is deprecated. Refer to the [guide on how to migrate from rules to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-rules-to-actions) and manage your actions using the `Action` resource.
 //
-// !> This resource is deprecated. Refer to the [guide on how to migrate from hooks to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-hooks-to-actions)
-// and manage your actions using the `Action` resource.
-//
 // ## Example Usage
 //
 // ```go
@@ -27,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -53,7 +50,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import auth0:index/rule:Rule my_rule rul_XXXXXXXXXXXXX
+//	$ pulumi import auth0:index/rule:Rule my_rule "rul_XXXXXXXXXXXXX"
 //
 // ```
 type Rule struct {

@@ -14,10 +14,10 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// An action can be imported using the action's ID. # Example
+    /// This resource can be imported by specifying the action ID. # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/action:Action my_action 12f4f21b-017a-319d-92e7-2291c1ca36c4
+    ///  $ pulumi import auth0:index/action:Action my_action "12f4f21b-017a-319d-92e7-2291c1ca36c4"
     /// ```
     /// 
     ///  ~&gt; For security reasons importing `secrets` is not allowed. Therefore, it is advised to import the action without secrets and adding them back after the action has been imported.
@@ -50,7 +50,7 @@ namespace Pulumi.Auth0
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
+        /// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
         /// </summary>
         [Output("runtime")]
         public Output<string> Runtime { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
+        /// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }
@@ -212,7 +212,7 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
+        /// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }

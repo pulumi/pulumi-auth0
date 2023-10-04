@@ -17,7 +17,7 @@ namespace Pulumi.Auth0
     /// You can import this resource using the custom domain ID. # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification cd_XXXXXXXXXXXXXXXX
+    ///  $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification "cd_XXXXXXXXXXXXXXXX"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/customDomainVerification:CustomDomainVerification")]

@@ -6,7 +6,6 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.ResourceServerArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.ResourceServerState;
-import com.pulumi.auth0.outputs.ResourceServerScope;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -14,7 +13,6 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -30,7 +28,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.auth0.ResourceServer;
  * import com.pulumi.auth0.ResourceServerArgs;
- * import com.pulumi.auth0.inputs.ResourceServerScopeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -47,15 +44,6 @@ import javax.annotation.Nullable;
  *         var myResourceServer = new ResourceServer(&#34;myResourceServer&#34;, ResourceServerArgs.builder()        
  *             .allowOfflineAccess(true)
  *             .identifier(&#34;https://api.example.com&#34;)
- *             .scopes(            
- *                 ResourceServerScopeArgs.builder()
- *                     .description(&#34;Create foos&#34;)
- *                     .value(&#34;create:foo&#34;)
- *                     .build(),
- *                 ResourceServerScopeArgs.builder()
- *                     .description(&#34;Create bars&#34;)
- *                     .value(&#34;create:bar&#34;)
- *                     .build())
  *             .signingAlg(&#34;RS256&#34;)
  *             .skipConsentForVerifiableFirstPartyClients(true)
  *             .tokenLifetime(8600)
@@ -70,7 +58,7 @@ import javax.annotation.Nullable;
  * Existing resource servers can be imported using their ID. # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server XXXXXXXXXXXXXXXXXXXXXXX
+ *  $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server &#34;XXXXXXXXXXXXXXXXXXXXXXX&#34;
  * ```
  * 
  */
@@ -131,32 +119,6 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
-    }
-    /**
-     * List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
-     * and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
-     * `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
-     * info.
-     * 
-     * @deprecated
-     * Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.
-     * 
-     */
-    @Deprecated /* Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info. */
-    @Export(name="scopes", type=List.class, parameters={ResourceServerScope.class})
-    private Output</* @Nullable */ List<ResourceServerScope>> scopes;
-
-    /**
-     * @return List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
-     * and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
-     * `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
-     * info.
-     * 
-     */
-    public Output<Optional<List<ResourceServerScope>>> scopes() {
-        return Codegen.optional(this.scopes);
     }
     /**
      * Algorithm used to sign JWTs. Options include `HS256` and `RS256`.

@@ -14,13 +14,13 @@ namespace Pulumi.Auth0.Outputs
     public sealed class AttackProtectionBreachedPasswordDetection
     {
         /// <summary>
-        /// When "admin_notification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+        /// When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
         /// </summary>
         public readonly ImmutableArray<string> AdminNotificationFrequencies;
         /// <summary>
         /// Whether breached password detection is active.
         /// </summary>
-        public readonly bool? Enabled;
+        public readonly bool Enabled;
         /// <summary>
         /// The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
         /// </summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly Outputs.AttackProtectionBreachedPasswordDetectionPreUserRegistration? PreUserRegistration;
         /// <summary>
-        /// Action to take when a breached password is detected.
+        /// Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
         /// </summary>
         public readonly ImmutableArray<string> Shields;
 
@@ -38,7 +38,7 @@ namespace Pulumi.Auth0.Outputs
         private AttackProtectionBreachedPasswordDetection(
             ImmutableArray<string> adminNotificationFrequencies,
 
-            bool? enabled,
+            bool enabled,
 
             string? method,
 

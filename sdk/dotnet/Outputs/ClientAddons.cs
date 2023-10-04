@@ -13,98 +13,182 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ClientAddons
     {
-        public readonly ImmutableDictionary<string, object>? Aws;
-        public readonly ImmutableDictionary<string, object>? AzureBlob;
-        public readonly ImmutableDictionary<string, object>? AzureSb;
-        public readonly ImmutableDictionary<string, object>? Box;
-        public readonly ImmutableDictionary<string, object>? Cloudbees;
-        public readonly ImmutableDictionary<string, object>? Concur;
-        public readonly ImmutableDictionary<string, object>? Dropbox;
-        public readonly ImmutableDictionary<string, object>? Echosign;
-        public readonly ImmutableDictionary<string, object>? Egnyte;
-        public readonly ImmutableDictionary<string, object>? Firebase;
-        public readonly ImmutableDictionary<string, object>? Layer;
-        public readonly ImmutableDictionary<string, object>? Mscrm;
-        public readonly ImmutableDictionary<string, object>? Newrelic;
-        public readonly ImmutableDictionary<string, object>? Office365;
-        public readonly ImmutableDictionary<string, object>? Rms;
-        public readonly ImmutableDictionary<string, object>? Salesforce;
-        public readonly ImmutableDictionary<string, object>? SalesforceApi;
-        public readonly ImmutableDictionary<string, object>? SalesforceSandboxApi;
+        /// <summary>
+        /// AWS Addon configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsAws? Aws;
+        /// <summary>
+        /// Azure Blob Storage Addon configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsAzureBlob? AzureBlob;
+        /// <summary>
+        /// Azure Storage Bus Addon configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsAzureSb? AzureSb;
+        /// <summary>
+        /// Box SSO indicator (no configuration settings needed for Box SSO).
+        /// </summary>
+        public readonly Outputs.ClientAddonsBox? Box;
+        /// <summary>
+        /// CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+        /// </summary>
+        public readonly Outputs.ClientAddonsCloudbees? Cloudbees;
+        /// <summary>
+        /// Concur SSO indicator (no configuration settings needed for Concur SSO).
+        /// </summary>
+        public readonly Outputs.ClientAddonsConcur? Concur;
+        /// <summary>
+        /// Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+        /// </summary>
+        public readonly Outputs.ClientAddonsDropbox? Dropbox;
+        /// <summary>
+        /// Adobe EchoSign SSO configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsEchosign? Echosign;
+        /// <summary>
+        /// Egnyte SSO configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsEgnyte? Egnyte;
+        /// <summary>
+        /// Google Firebase addon configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsFirebase? Firebase;
+        /// <summary>
+        /// Layer addon configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsLayer? Layer;
+        /// <summary>
+        /// Microsoft Dynamics CRM SSO configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsMscrm? Mscrm;
+        /// <summary>
+        /// New Relic SSO configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsNewrelic? Newrelic;
+        /// <summary>
+        /// Microsoft Office 365 SSO configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsOffice365? Office365;
+        /// <summary>
+        /// Active Directory Rights Management Service SSO configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsRms? Rms;
+        /// <summary>
+        /// Salesforce SSO configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsSalesforce? Salesforce;
+        /// <summary>
+        /// Salesforce API addon configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsSalesforceApi? SalesforceApi;
+        /// <summary>
+        /// Salesforce Sandbox addon configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsSalesforceSandboxApi? SalesforceSandboxApi;
         /// <summary>
         /// Configuration settings for a SAML add-on.
         /// </summary>
         public readonly Outputs.ClientAddonsSamlp? Samlp;
-        public readonly ImmutableDictionary<string, object>? SapApi;
-        public readonly ImmutableDictionary<string, object>? Sentry;
-        public readonly ImmutableDictionary<string, object>? Sharepoint;
-        public readonly ImmutableDictionary<string, object>? Slack;
-        public readonly ImmutableDictionary<string, object>? Springcm;
-        public readonly ImmutableDictionary<string, object>? Wams;
         /// <summary>
-        /// WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+        /// SAP API addon configuration.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Wsfed;
-        public readonly ImmutableDictionary<string, object>? Zendesk;
-        public readonly ImmutableDictionary<string, object>? Zoom;
+        public readonly Outputs.ClientAddonsSapApi? SapApi;
+        /// <summary>
+        /// Sentry SSO configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsSentry? Sentry;
+        /// <summary>
+        /// SharePoint SSO configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsSharepoint? Sharepoint;
+        /// <summary>
+        /// Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+        /// </summary>
+        public readonly Outputs.ClientAddonsSlack? Slack;
+        /// <summary>
+        /// SpringCM SSO configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsSpringcm? Springcm;
+        /// <summary>
+        /// Generic SSO configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsSsoIntegration? SsoIntegration;
+        /// <summary>
+        /// Windows Azure Mobile Services addon configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsWams? Wams;
+        /// <summary>
+        /// WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+        /// </summary>
+        public readonly Outputs.ClientAddonsWsfed? Wsfed;
+        /// <summary>
+        /// Zendesk SSO configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsZendesk? Zendesk;
+        /// <summary>
+        /// Zoom SSO configuration.
+        /// </summary>
+        public readonly Outputs.ClientAddonsZoom? Zoom;
 
         [OutputConstructor]
         private ClientAddons(
-            ImmutableDictionary<string, object>? aws,
+            Outputs.ClientAddonsAws? aws,
 
-            ImmutableDictionary<string, object>? azureBlob,
+            Outputs.ClientAddonsAzureBlob? azureBlob,
 
-            ImmutableDictionary<string, object>? azureSb,
+            Outputs.ClientAddonsAzureSb? azureSb,
 
-            ImmutableDictionary<string, object>? box,
+            Outputs.ClientAddonsBox? box,
 
-            ImmutableDictionary<string, object>? cloudbees,
+            Outputs.ClientAddonsCloudbees? cloudbees,
 
-            ImmutableDictionary<string, object>? concur,
+            Outputs.ClientAddonsConcur? concur,
 
-            ImmutableDictionary<string, object>? dropbox,
+            Outputs.ClientAddonsDropbox? dropbox,
 
-            ImmutableDictionary<string, object>? echosign,
+            Outputs.ClientAddonsEchosign? echosign,
 
-            ImmutableDictionary<string, object>? egnyte,
+            Outputs.ClientAddonsEgnyte? egnyte,
 
-            ImmutableDictionary<string, object>? firebase,
+            Outputs.ClientAddonsFirebase? firebase,
 
-            ImmutableDictionary<string, object>? layer,
+            Outputs.ClientAddonsLayer? layer,
 
-            ImmutableDictionary<string, object>? mscrm,
+            Outputs.ClientAddonsMscrm? mscrm,
 
-            ImmutableDictionary<string, object>? newrelic,
+            Outputs.ClientAddonsNewrelic? newrelic,
 
-            ImmutableDictionary<string, object>? office365,
+            Outputs.ClientAddonsOffice365? office365,
 
-            ImmutableDictionary<string, object>? rms,
+            Outputs.ClientAddonsRms? rms,
 
-            ImmutableDictionary<string, object>? salesforce,
+            Outputs.ClientAddonsSalesforce? salesforce,
 
-            ImmutableDictionary<string, object>? salesforceApi,
+            Outputs.ClientAddonsSalesforceApi? salesforceApi,
 
-            ImmutableDictionary<string, object>? salesforceSandboxApi,
+            Outputs.ClientAddonsSalesforceSandboxApi? salesforceSandboxApi,
 
             Outputs.ClientAddonsSamlp? samlp,
 
-            ImmutableDictionary<string, object>? sapApi,
+            Outputs.ClientAddonsSapApi? sapApi,
 
-            ImmutableDictionary<string, object>? sentry,
+            Outputs.ClientAddonsSentry? sentry,
 
-            ImmutableDictionary<string, object>? sharepoint,
+            Outputs.ClientAddonsSharepoint? sharepoint,
 
-            ImmutableDictionary<string, object>? slack,
+            Outputs.ClientAddonsSlack? slack,
 
-            ImmutableDictionary<string, object>? springcm,
+            Outputs.ClientAddonsSpringcm? springcm,
 
-            ImmutableDictionary<string, object>? wams,
+            Outputs.ClientAddonsSsoIntegration? ssoIntegration,
 
-            ImmutableDictionary<string, object>? wsfed,
+            Outputs.ClientAddonsWams? wams,
 
-            ImmutableDictionary<string, object>? zendesk,
+            Outputs.ClientAddonsWsfed? wsfed,
 
-            ImmutableDictionary<string, object>? zoom)
+            Outputs.ClientAddonsZendesk? zendesk,
+
+            Outputs.ClientAddonsZoom? zoom)
         {
             Aws = aws;
             AzureBlob = azureBlob;
@@ -130,6 +214,7 @@ namespace Pulumi.Auth0.Outputs
             Sharepoint = sharepoint;
             Slack = slack;
             Springcm = springcm;
+            SsoIntegration = ssoIntegration;
             Wams = wams;
             Wsfed = wsfed;
             Zendesk = zendesk;

@@ -89,7 +89,7 @@ export interface GetClientResult {
     readonly clientMetadata: {[key: string]: any};
     readonly clientSecret: string;
     /**
-     * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coaToggleEnabled` feature flag to be enabled on the tenant by the support team.
+     * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      */
     readonly crossOriginAuth: boolean;
     /**
@@ -133,7 +133,7 @@ export interface GetClientResult {
      */
     readonly isFirstParty: boolean;
     /**
-     * Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+     * Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `auth0.ClientCredentials` resource.
      */
     readonly isTokenEndpointIpHeaderTrusted: boolean;
     /**
@@ -177,6 +177,10 @@ export interface GetClientResult {
      */
     readonly refreshTokens: outputs.GetClientRefreshToken[];
     /**
+     * Makes the use of Pushed Authorization Requests mandatory for this client.
+     */
+    readonly requirePushedAuthorizationRequests: boolean;
+    /**
      * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      */
     readonly signingKeys: {[key: string]: any}[];
@@ -188,6 +192,9 @@ export interface GetClientResult {
      * Indicates whether or not SSO is disabled.
      */
     readonly ssoDisabled: boolean;
+    /**
+     * The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic). Managing a client's authentication method can be done via the `auth0.ClientCredentials` resource.
+     */
     readonly tokenEndpointAuthMethod: string;
     /**
      * URLs that represent valid web origins for use with web message response mode.

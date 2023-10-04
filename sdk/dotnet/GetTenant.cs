@@ -67,10 +67,13 @@ namespace Pulumi.Auth0
     public sealed class GetTenantResult
     {
         /// <summary>
+        /// Whether to accept an organization name instead of an ID on auth endpoints.
+        /// </summary>
+        public readonly bool AllowOrganizationNameInAuthenticationApi;
+        /// <summary>
         /// URLs that Auth0 may redirect to after logout.
         /// </summary>
         public readonly ImmutableArray<string> AllowedLogoutUrls;
-        public readonly ImmutableArray<Outputs.GetTenantChangePasswordResult> ChangePasswords;
         /// <summary>
         /// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         /// </summary>
@@ -91,7 +94,6 @@ namespace Pulumi.Auth0
         /// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         /// </summary>
         public readonly ImmutableArray<string> EnabledLocales;
-        public readonly ImmutableArray<Outputs.GetTenantErrorPageResult> ErrorPages;
         /// <summary>
         /// Configuration settings for tenant flags.
         /// </summary>
@@ -100,7 +102,6 @@ namespace Pulumi.Auth0
         /// Friendly name for the tenant.
         /// </summary>
         public readonly string FriendlyName;
-        public readonly ImmutableArray<Outputs.GetTenantGuardianMfaPageResult> GuardianMfaPages;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -130,6 +131,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly double SessionLifetime;
         /// <summary>
+        /// Sessions related settings for the tenant.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTenantSessionResult> Sessions;
+        /// <summary>
         /// Support email address for authenticating users.
         /// </summary>
         public readonly string SupportEmail;
@@ -137,13 +142,12 @@ namespace Pulumi.Auth0
         /// Support URL for authenticating users.
         /// </summary>
         public readonly string SupportUrl;
-        public readonly ImmutableArray<Outputs.GetTenantUniversalLoginResult> UniversalLogins;
 
         [OutputConstructor]
         private GetTenantResult(
-            ImmutableArray<string> allowedLogoutUrls,
+            bool allowOrganizationNameInAuthenticationApi,
 
-            ImmutableArray<Outputs.GetTenantChangePasswordResult> changePasswords,
+            ImmutableArray<string> allowedLogoutUrls,
 
             string defaultAudience,
 
@@ -155,13 +159,9 @@ namespace Pulumi.Auth0
 
             ImmutableArray<string> enabledLocales,
 
-            ImmutableArray<Outputs.GetTenantErrorPageResult> errorPages,
-
             ImmutableArray<Outputs.GetTenantFlagResult> flags,
 
             string friendlyName,
-
-            ImmutableArray<Outputs.GetTenantGuardianMfaPageResult> guardianMfaPages,
 
             string id,
 
@@ -177,23 +177,21 @@ namespace Pulumi.Auth0
 
             double sessionLifetime,
 
+            ImmutableArray<Outputs.GetTenantSessionResult> sessions,
+
             string supportEmail,
 
-            string supportUrl,
-
-            ImmutableArray<Outputs.GetTenantUniversalLoginResult> universalLogins)
+            string supportUrl)
         {
+            AllowOrganizationNameInAuthenticationApi = allowOrganizationNameInAuthenticationApi;
             AllowedLogoutUrls = allowedLogoutUrls;
-            ChangePasswords = changePasswords;
             DefaultAudience = defaultAudience;
             DefaultDirectory = defaultDirectory;
             DefaultRedirectionUri = defaultRedirectionUri;
             Domain = domain;
             EnabledLocales = enabledLocales;
-            ErrorPages = errorPages;
             Flags = flags;
             FriendlyName = friendlyName;
-            GuardianMfaPages = guardianMfaPages;
             Id = id;
             IdleSessionLifetime = idleSessionLifetime;
             ManagementApiIdentifier = managementApiIdentifier;
@@ -201,9 +199,9 @@ namespace Pulumi.Auth0
             SandboxVersion = sandboxVersion;
             SessionCookies = sessionCookies;
             SessionLifetime = sessionLifetime;
+            Sessions = sessions;
             SupportEmail = supportEmail;
             SupportUrl = supportUrl;
-            UniversalLogins = universalLogins;
         }
     }
 }

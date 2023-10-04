@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRoleResult {
     /**
-     * @return Description of the role.
+     * @return The description of the role.
      * 
      */
     private String description;
@@ -28,16 +28,25 @@ public final class GetRoleResult {
      * 
      */
     private @Nullable String name;
+    /**
+     * @return Configuration settings for permissions (scopes) attached to the role.
+     * 
+     */
     private List<GetRolePermission> permissions;
     /**
      * @return The ID of the role. If not provided, `name` must be set.
      * 
      */
     private @Nullable String roleId;
+    /**
+     * @return List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs.
+     * 
+     */
+    private List<String> users;
 
     private GetRoleResult() {}
     /**
-     * @return Description of the role.
+     * @return The description of the role.
      * 
      */
     public String description() {
@@ -57,6 +66,10 @@ public final class GetRoleResult {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Configuration settings for permissions (scopes) attached to the role.
+     * 
+     */
     public List<GetRolePermission> permissions() {
         return this.permissions;
     }
@@ -66,6 +79,13 @@ public final class GetRoleResult {
      */
     public Optional<String> roleId() {
         return Optional.ofNullable(this.roleId);
+    }
+    /**
+     * @return List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs.
+     * 
+     */
+    public List<String> users() {
+        return this.users;
     }
 
     public static Builder builder() {
@@ -82,6 +102,7 @@ public final class GetRoleResult {
         private @Nullable String name;
         private List<GetRolePermission> permissions;
         private @Nullable String roleId;
+        private List<String> users;
         public Builder() {}
         public Builder(GetRoleResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -90,6 +111,7 @@ public final class GetRoleResult {
     	      this.name = defaults.name;
     	      this.permissions = defaults.permissions;
     	      this.roleId = defaults.roleId;
+    	      this.users = defaults.users;
         }
 
         @CustomType.Setter
@@ -120,6 +142,14 @@ public final class GetRoleResult {
             this.roleId = roleId;
             return this;
         }
+        @CustomType.Setter
+        public Builder users(List<String> users) {
+            this.users = Objects.requireNonNull(users);
+            return this;
+        }
+        public Builder users(String... users) {
+            return users(List.of(users));
+        }
         public GetRoleResult build() {
             final var o = new GetRoleResult();
             o.description = description;
@@ -127,6 +157,7 @@ public final class GetRoleResult {
             o.name = name;
             o.permissions = permissions;
             o.roleId = roleId;
+            o.users = users;
             return o;
         }
     }

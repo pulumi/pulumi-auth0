@@ -40,13 +40,13 @@ export interface ActionSupportedTriggers {
 
 export interface AttackProtectionBreachedPasswordDetection {
     /**
-     * When "adminNotification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+     * When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
      */
     adminNotificationFrequencies: string[];
     /**
      * Whether breached password detection is active.
      */
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
      */
@@ -56,7 +56,7 @@ export interface AttackProtectionBreachedPasswordDetection {
      */
     preUserRegistration: outputs.AttackProtectionBreachedPasswordDetectionPreUserRegistration;
     /**
-     * Action to take when a breached password is detected.
+     * Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
      */
     shields: string[];
 }
@@ -67,36 +67,36 @@ export interface AttackProtectionBreachedPasswordDetectionPreUserRegistration {
 
 export interface AttackProtectionBruteForceProtection {
     /**
-     * List of trusted IP addresses that will not have attack protection enforced against them.
+     * List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
      */
     allowlists: string[];
     /**
      * Whether brute force attack protections are active.
      */
-    enabled?: boolean;
+    enabled: boolean;
     /**
-     * Maximum number of unsuccessful attempts. Only available on public tenants.
+     * Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
      */
     maxAttempts: number;
     /**
-     * Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` or `countPerIdentifier`.
+     * Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` (lockout an account from a given IP Address) or `countPerIdentifier` (lockout an account regardless of IP Address).
      */
     mode: string;
     /**
-     * Action to take when a brute force protection threshold is violated. Possible values: `block`, `userNotification`
+     * Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `userNotification` (send an email to user when their account has been blocked).
      */
     shields: string[];
 }
 
 export interface AttackProtectionSuspiciousIpThrottling {
     /**
-     * List of trusted IP addresses that will not have attack protection enforced against them.
+     * List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
      */
     allowlists: string[];
     /**
      * Whether suspicious IP throttling attack protections are active.
      */
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * Configuration options that apply before every login attempt. Only available on public tenants.
      */
@@ -106,7 +106,7 @@ export interface AttackProtectionSuspiciousIpThrottling {
      */
     preUserRegistration: outputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistration;
     /**
-     * Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `adminNotification`
+     * Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `adminNotification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
      */
     shields: string[];
 }
@@ -368,40 +368,229 @@ export interface BrandingUniversalLogin {
 }
 
 export interface ClientAddons {
-    aws?: {[key: string]: any};
-    azureBlob?: {[key: string]: any};
-    azureSb?: {[key: string]: any};
-    box?: {[key: string]: any};
-    cloudbees?: {[key: string]: any};
-    concur?: {[key: string]: any};
-    dropbox?: {[key: string]: any};
-    echosign?: {[key: string]: any};
-    egnyte?: {[key: string]: any};
-    firebase?: {[key: string]: any};
-    layer?: {[key: string]: any};
-    mscrm?: {[key: string]: any};
-    newrelic?: {[key: string]: any};
-    office365?: {[key: string]: any};
-    rms?: {[key: string]: any};
-    salesforce?: {[key: string]: any};
-    salesforceApi?: {[key: string]: any};
-    salesforceSandboxApi?: {[key: string]: any};
+    /**
+     * AWS Addon configuration.
+     */
+    aws?: outputs.ClientAddonsAws;
+    /**
+     * Azure Blob Storage Addon configuration.
+     */
+    azureBlob?: outputs.ClientAddonsAzureBlob;
+    /**
+     * Azure Storage Bus Addon configuration.
+     */
+    azureSb?: outputs.ClientAddonsAzureSb;
+    /**
+     * Box SSO indicator (no configuration settings needed for Box SSO).
+     */
+    box?: outputs.ClientAddonsBox;
+    /**
+     * CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+     */
+    cloudbees?: outputs.ClientAddonsCloudbees;
+    /**
+     * Concur SSO indicator (no configuration settings needed for Concur SSO).
+     */
+    concur?: outputs.ClientAddonsConcur;
+    /**
+     * Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+     */
+    dropbox?: outputs.ClientAddonsDropbox;
+    /**
+     * Adobe EchoSign SSO configuration.
+     */
+    echosign?: outputs.ClientAddonsEchosign;
+    /**
+     * Egnyte SSO configuration.
+     */
+    egnyte?: outputs.ClientAddonsEgnyte;
+    /**
+     * Google Firebase addon configuration.
+     */
+    firebase?: outputs.ClientAddonsFirebase;
+    /**
+     * Layer addon configuration.
+     */
+    layer?: outputs.ClientAddonsLayer;
+    /**
+     * Microsoft Dynamics CRM SSO configuration.
+     */
+    mscrm?: outputs.ClientAddonsMscrm;
+    /**
+     * New Relic SSO configuration.
+     */
+    newrelic?: outputs.ClientAddonsNewrelic;
+    /**
+     * Microsoft Office 365 SSO configuration.
+     */
+    office365?: outputs.ClientAddonsOffice365;
+    /**
+     * Active Directory Rights Management Service SSO configuration.
+     */
+    rms?: outputs.ClientAddonsRms;
+    /**
+     * Salesforce SSO configuration.
+     */
+    salesforce?: outputs.ClientAddonsSalesforce;
+    /**
+     * Salesforce API addon configuration.
+     */
+    salesforceApi?: outputs.ClientAddonsSalesforceApi;
+    /**
+     * Salesforce Sandbox addon configuration.
+     */
+    salesforceSandboxApi?: outputs.ClientAddonsSalesforceSandboxApi;
     /**
      * Configuration settings for a SAML add-on.
      */
     samlp?: outputs.ClientAddonsSamlp;
-    sapApi?: {[key: string]: any};
-    sentry?: {[key: string]: any};
-    sharepoint?: {[key: string]: any};
-    slack?: {[key: string]: any};
-    springcm?: {[key: string]: any};
-    wams?: {[key: string]: any};
     /**
-     * WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `clientAliases` properties on the client.
+     * SAP API addon configuration.
      */
-    wsfed?: {[key: string]: any};
-    zendesk?: {[key: string]: any};
-    zoom?: {[key: string]: any};
+    sapApi?: outputs.ClientAddonsSapApi;
+    /**
+     * Sentry SSO configuration.
+     */
+    sentry?: outputs.ClientAddonsSentry;
+    /**
+     * SharePoint SSO configuration.
+     */
+    sharepoint?: outputs.ClientAddonsSharepoint;
+    /**
+     * Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+     */
+    slack?: outputs.ClientAddonsSlack;
+    /**
+     * SpringCM SSO configuration.
+     */
+    springcm?: outputs.ClientAddonsSpringcm;
+    /**
+     * Generic SSO configuration.
+     */
+    ssoIntegration?: outputs.ClientAddonsSsoIntegration;
+    /**
+     * Windows Azure Mobile Services addon configuration.
+     */
+    wams?: outputs.ClientAddonsWams;
+    /**
+     * WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `clientAliases` properties on the client.
+     */
+    wsfed?: outputs.ClientAddonsWsfed;
+    /**
+     * Zendesk SSO configuration.
+     */
+    zendesk?: outputs.ClientAddonsZendesk;
+    /**
+     * Zoom SSO configuration.
+     */
+    zoom?: outputs.ClientAddonsZoom;
+}
+
+export interface ClientAddonsAws {
+    lifetimeInSeconds?: number;
+    principal?: string;
+    role?: string;
+}
+
+export interface ClientAddonsAzureBlob {
+    accountName?: string;
+    blobDelete?: boolean;
+    blobName?: string;
+    blobRead?: boolean;
+    blobWrite?: boolean;
+    containerDelete?: boolean;
+    containerList?: boolean;
+    containerName?: string;
+    containerRead?: boolean;
+    containerWrite?: boolean;
+    expiration?: number;
+    signedIdentifier?: string;
+    storageAccessKey?: string;
+}
+
+export interface ClientAddonsAzureSb {
+    entityPath?: string;
+    expiration?: number;
+    namespace?: string;
+    sasKey?: string;
+    sasKeyName?: string;
+}
+
+export interface ClientAddonsBox {
+}
+
+export interface ClientAddonsCloudbees {
+}
+
+export interface ClientAddonsConcur {
+}
+
+export interface ClientAddonsDropbox {
+}
+
+export interface ClientAddonsEchosign {
+    domain?: string;
+}
+
+export interface ClientAddonsEgnyte {
+    domain?: string;
+}
+
+export interface ClientAddonsFirebase {
+    clientEmail?: string;
+    lifetimeInSeconds?: number;
+    privateKey?: string;
+    privateKeyId?: string;
+    secret?: string;
+}
+
+export interface ClientAddonsLayer {
+    expiration?: number;
+    keyId: string;
+    principal?: string;
+    privateKey: string;
+    providerId: string;
+}
+
+export interface ClientAddonsMscrm {
+    url?: string;
+}
+
+export interface ClientAddonsNewrelic {
+    account?: string;
+}
+
+export interface ClientAddonsOffice365 {
+    connection?: string;
+    domain?: string;
+}
+
+export interface ClientAddonsRms {
+    url?: string;
+}
+
+export interface ClientAddonsSalesforce {
+    entityId?: string;
+}
+
+export interface ClientAddonsSalesforceApi {
+    /**
+     * The ID of the client.
+     */
+    clientId?: string;
+    communityName?: string;
+    communityUrlSection?: string;
+    principal?: string;
+}
+
+export interface ClientAddonsSalesforceSandboxApi {
+    /**
+     * The ID of the client.
+     */
+    clientId?: string;
+    communityName?: string;
+    communityUrlSection?: string;
+    principal?: string;
 }
 
 export interface ClientAddonsSamlp {
@@ -414,7 +603,7 @@ export interface ClientAddonsSamlp {
     includeAttributeNameFormat?: boolean;
     issuer?: string;
     lifetimeInSeconds?: number;
-    logout?: {[key: string]: any};
+    logout?: outputs.ClientAddonsSamlpLogout;
     mapIdentities?: boolean;
     mapUnknownClaimsAsIs?: boolean;
     mappings?: {[key: string]: any};
@@ -426,6 +615,64 @@ export interface ClientAddonsSamlp {
     signatureAlgorithm?: string;
     signingCert?: string;
     typedAttributes?: boolean;
+}
+
+export interface ClientAddonsSamlpLogout {
+    callback?: string;
+    sloEnabled?: boolean;
+}
+
+export interface ClientAddonsSapApi {
+    /**
+     * The ID of the client.
+     */
+    clientId?: string;
+    nameIdentifierFormat?: string;
+    scope?: string;
+    servicePassword?: string;
+    tokenEndpointUrl?: string;
+    usernameAttribute?: string;
+}
+
+export interface ClientAddonsSentry {
+    baseUrl?: string;
+    orgSlug?: string;
+}
+
+export interface ClientAddonsSharepoint {
+    externalUrls?: string[];
+    url?: string;
+}
+
+export interface ClientAddonsSlack {
+    team?: string;
+}
+
+export interface ClientAddonsSpringcm {
+    acsUrl?: string;
+}
+
+export interface ClientAddonsSsoIntegration {
+    /**
+     * Name of the client.
+     */
+    name?: string;
+    version?: string;
+}
+
+export interface ClientAddonsWams {
+    masterKey?: string;
+}
+
+export interface ClientAddonsWsfed {
+}
+
+export interface ClientAddonsZendesk {
+    accountName?: string;
+}
+
+export interface ClientAddonsZoom {
+    account?: string;
 }
 
 export interface ClientCredentialsPrivateKeyJwt {
@@ -553,6 +800,10 @@ export interface ConnectionOptions {
      */
     appId?: string;
     /**
+     * OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+     */
+    attributeMap: outputs.ConnectionOptionsAttributeMap;
+    /**
      * Query string parameters to be included as part of the generated passwordless email link.
      */
     authParams?: {[key: string]: string};
@@ -581,6 +832,10 @@ export interface ConnectionOptions {
      */
     configuration?: {[key: string]: any};
     /**
+     * Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+     */
+    connectionSettings: outputs.ConnectionOptionsConnectionSettings;
+    /**
      * A map of scripts used to integrate with a custom database.
      */
     customScripts?: {[key: string]: string};
@@ -588,6 +843,10 @@ export interface ConnectionOptions {
      * When enabled, additional debug information will be generated.
      */
     debug?: boolean;
+    /**
+     * The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     */
+    decryptionKey?: outputs.ConnectionOptionsDecryptionKey;
     /**
      * Sign Request Algorithm Digest.
      */
@@ -689,6 +948,10 @@ export interface ConnectionOptions {
      */
     keyId?: string;
     /**
+     * By default Auth0 maps `userId` to `email`. Enabling this setting changes the behavior to map `userId` to 'id' instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+     */
+    mapUserIdToId: boolean;
+    /**
      * Maximum number of groups to retrieve.
      */
     maxGroupsToRetrieve?: string;
@@ -701,7 +964,7 @@ export interface ConnectionOptions {
      */
     metadataUrl?: string;
     /**
-     * The XML content for the SAML metadata document.
+     * The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
      */
     metadataXml?: string;
     /**
@@ -882,6 +1145,21 @@ export interface ConnectionOptions {
     waadProtocol?: string;
 }
 
+export interface ConnectionOptionsAttributeMap {
+    attributes?: string;
+    mappingMode: string;
+    userinfoScope?: string;
+}
+
+export interface ConnectionOptionsConnectionSettings {
+    pkce: string;
+}
+
+export interface ConnectionOptionsDecryptionKey {
+    cert: string;
+    key: string;
+}
+
 export interface ConnectionOptionsGatewayAuthentication {
     audience?: string;
     method?: string;
@@ -942,7 +1220,7 @@ export interface CustomDomainVerification {
     methods: any[];
 }
 
-export interface EmailCredentials {
+export interface EmailProviderCredentials {
     /**
      * AWS Access Key ID. Used only for AWS.
      */
@@ -952,15 +1230,25 @@ export interface EmailCredentials {
      */
     apiKey?: string;
     /**
-     * API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
-     *
-     * @deprecated This field is not accepted by the API any more so it will be removed soon.
+     * Azure Communication Services Connection String.
      */
-    apiUser?: string;
+    azureCsConnectionString?: string;
     /**
      * Domain name.
      */
     domain?: string;
+    /**
+     * Microsoft 365 Client ID.
+     */
+    ms365ClientId?: string;
+    /**
+     * Microsoft 365 Client Secret.
+     */
+    ms365ClientSecret?: string;
+    /**
+     * Microsoft 365 Tenant ID.
+     */
+    ms365TenantId?: string;
     /**
      * Default region. Used only for AWS, Mailgun, and SparkPost.
      */
@@ -987,23 +1275,23 @@ export interface EmailCredentials {
     smtpUser?: string;
 }
 
-export interface EmailSettings {
+export interface EmailProviderSettings {
     /**
      * Headers settings for the `smtp` email provider.
      */
-    headers?: outputs.EmailSettingsHeaders;
+    headers?: outputs.EmailProviderSettingsHeaders;
     /**
      * Message settings for the `mandrill` or `ses` email provider.
      */
-    message?: outputs.EmailSettingsMessage;
+    message?: outputs.EmailProviderSettingsMessage;
 }
 
-export interface EmailSettingsHeaders {
+export interface EmailProviderSettingsHeaders {
     xMcViewContentLink?: string;
     xSesConfigurationSet?: string;
 }
 
-export interface EmailSettingsMessage {
+export interface EmailProviderSettingsMessage {
     configurationSetName?: string;
     viewContentLink?: boolean;
 }
@@ -1149,34 +1437,142 @@ export interface GetBrandingUniversalLogin {
 }
 
 export interface GetClientAddon {
-    aws: {[key: string]: any};
-    azureBlob: {[key: string]: any};
-    azureSb: {[key: string]: any};
-    box: {[key: string]: any};
-    cloudbees: {[key: string]: any};
-    concur: {[key: string]: any};
-    dropbox: {[key: string]: any};
-    echosign: {[key: string]: any};
-    egnyte: {[key: string]: any};
-    firebase: {[key: string]: any};
-    layer: {[key: string]: any};
-    mscrm: {[key: string]: any};
-    newrelic: {[key: string]: any};
-    office365: {[key: string]: any};
-    rms: {[key: string]: any};
-    salesforce: {[key: string]: any};
-    salesforceApi: {[key: string]: any};
-    salesforceSandboxApi: {[key: string]: any};
+    aws: outputs.GetClientAddonAw[];
+    azureBlobs: outputs.GetClientAddonAzureBlob[];
+    azureSbs: outputs.GetClientAddonAzureSb[];
+    boxes: outputs.GetClientAddonBox[];
+    cloudbees: outputs.GetClientAddonCloudbee[];
+    concurs: outputs.GetClientAddonConcur[];
+    dropboxes: outputs.GetClientAddonDropbox[];
+    echosigns: outputs.GetClientAddonEchosign[];
+    egnytes: outputs.GetClientAddonEgnyte[];
+    firebases: outputs.GetClientAddonFirebase[];
+    layers: outputs.GetClientAddonLayer[];
+    mscrms: outputs.GetClientAddonMscrm[];
+    newrelics: outputs.GetClientAddonNewrelic[];
+    office365s: outputs.GetClientAddonOffice365[];
+    rms: outputs.GetClientAddonRm[];
+    salesforceApis: outputs.GetClientAddonSalesforceApi[];
+    salesforceSandboxApis: outputs.GetClientAddonSalesforceSandboxApi[];
+    salesforces: outputs.GetClientAddonSalesforce[];
     samlps: outputs.GetClientAddonSamlp[];
-    sapApi: {[key: string]: any};
-    sentry: {[key: string]: any};
-    sharepoint: {[key: string]: any};
-    slack: {[key: string]: any};
-    springcm: {[key: string]: any};
-    wams: {[key: string]: any};
-    wsfed: {[key: string]: any};
-    zendesk: {[key: string]: any};
-    zoom: {[key: string]: any};
+    sapApis: outputs.GetClientAddonSapApi[];
+    sentries: outputs.GetClientAddonSentry[];
+    sharepoints: outputs.GetClientAddonSharepoint[];
+    slacks: outputs.GetClientAddonSlack[];
+    springcms: outputs.GetClientAddonSpringcm[];
+    ssoIntegrations: outputs.GetClientAddonSsoIntegration[];
+    wams: outputs.GetClientAddonWam[];
+    wsfeds: outputs.GetClientAddonWsfed[];
+    zendesks: outputs.GetClientAddonZendesk[];
+    zooms: outputs.GetClientAddonZoom[];
+}
+
+export interface GetClientAddonAw {
+    lifetimeInSeconds: number;
+    principal: string;
+    role: string;
+}
+
+export interface GetClientAddonAzureBlob {
+    accountName: string;
+    blobDelete: boolean;
+    blobName: string;
+    blobRead: boolean;
+    blobWrite: boolean;
+    containerDelete: boolean;
+    containerList: boolean;
+    containerName: string;
+    containerRead: boolean;
+    containerWrite: boolean;
+    expiration: number;
+    signedIdentifier: string;
+    storageAccessKey: string;
+}
+
+export interface GetClientAddonAzureSb {
+    entityPath: string;
+    expiration: number;
+    namespace: string;
+    sasKey: string;
+    sasKeyName: string;
+}
+
+export interface GetClientAddonBox {
+}
+
+export interface GetClientAddonCloudbee {
+}
+
+export interface GetClientAddonConcur {
+}
+
+export interface GetClientAddonDropbox {
+}
+
+export interface GetClientAddonEchosign {
+    domain: string;
+}
+
+export interface GetClientAddonEgnyte {
+    domain: string;
+}
+
+export interface GetClientAddonFirebase {
+    clientEmail: string;
+    lifetimeInSeconds: number;
+    privateKey: string;
+    privateKeyId: string;
+    secret: string;
+}
+
+export interface GetClientAddonLayer {
+    expiration: number;
+    keyId: string;
+    principal: string;
+    privateKey: string;
+    providerId: string;
+}
+
+export interface GetClientAddonMscrm {
+    url: string;
+}
+
+export interface GetClientAddonNewrelic {
+    account: string;
+}
+
+export interface GetClientAddonOffice365 {
+    connection: string;
+    domain: string;
+}
+
+export interface GetClientAddonRm {
+    url: string;
+}
+
+export interface GetClientAddonSalesforce {
+    entityId: string;
+}
+
+export interface GetClientAddonSalesforceApi {
+    /**
+     * The ID of the client. If not provided, `name` must be set.
+     */
+    clientId: string;
+    communityName: string;
+    communityUrlSection: string;
+    principal: string;
+}
+
+export interface GetClientAddonSalesforceSandboxApi {
+    /**
+     * The ID of the client. If not provided, `name` must be set.
+     */
+    clientId: string;
+    communityName: string;
+    communityUrlSection: string;
+    principal: string;
 }
 
 export interface GetClientAddonSamlp {
@@ -1189,7 +1585,7 @@ export interface GetClientAddonSamlp {
     includeAttributeNameFormat: boolean;
     issuer: string;
     lifetimeInSeconds: number;
-    logout: {[key: string]: any};
+    logouts: outputs.GetClientAddonSamlpLogout[];
     mapIdentities: boolean;
     mapUnknownClaimsAsIs: boolean;
     mappings: {[key: string]: any};
@@ -1201,6 +1597,64 @@ export interface GetClientAddonSamlp {
     signatureAlgorithm: string;
     signingCert: string;
     typedAttributes: boolean;
+}
+
+export interface GetClientAddonSamlpLogout {
+    callback: string;
+    sloEnabled: boolean;
+}
+
+export interface GetClientAddonSapApi {
+    /**
+     * The ID of the client. If not provided, `name` must be set.
+     */
+    clientId: string;
+    nameIdentifierFormat: string;
+    scope: string;
+    servicePassword: string;
+    tokenEndpointUrl: string;
+    usernameAttribute: string;
+}
+
+export interface GetClientAddonSentry {
+    baseUrl: string;
+    orgSlug: string;
+}
+
+export interface GetClientAddonSharepoint {
+    externalUrls: string[];
+    url: string;
+}
+
+export interface GetClientAddonSlack {
+    team: string;
+}
+
+export interface GetClientAddonSpringcm {
+    acsUrl: string;
+}
+
+export interface GetClientAddonSsoIntegration {
+    /**
+     * The name of the client. If not provided, `clientId` must be set.
+     */
+    name: string;
+    version: string;
+}
+
+export interface GetClientAddonWam {
+    masterKey: string;
+}
+
+export interface GetClientAddonWsfed {
+}
+
+export interface GetClientAddonZendesk {
+    accountName: string;
+}
+
+export interface GetClientAddonZoom {
+    account: string;
 }
 
 export interface GetClientJwtConfiguration {
@@ -1253,6 +1707,7 @@ export interface GetConnectionOption {
     allowedAudiences: string[];
     apiEnableUsers: boolean;
     appId: string;
+    attributeMaps: outputs.GetConnectionOptionAttributeMap[];
     authParams: {[key: string]: string};
     authorizationEndpoint: string;
     bruteForceProtection: boolean;
@@ -1260,8 +1715,10 @@ export interface GetConnectionOption {
     clientSecret: string;
     communityBaseUrl: string;
     configuration: {[key: string]: any};
+    connectionSettings: outputs.GetConnectionOptionConnectionSetting[];
     customScripts: {[key: string]: string};
     debug: boolean;
+    decryptionKeys: outputs.GetConnectionOptionDecryptionKey[];
     digestAlgorithm: string;
     disableCache: boolean;
     disableSelfServiceChangePassword: boolean;
@@ -1287,6 +1744,7 @@ export interface GetConnectionOption {
     issuer: string;
     jwksUri: string;
     keyId: string;
+    mapUserIdToId: boolean;
     maxGroupsToRetrieve: string;
     messagingServiceSid: string;
     metadataUrl: string;
@@ -1338,6 +1796,21 @@ export interface GetConnectionOption {
     validations: outputs.GetConnectionOptionValidation[];
     waadCommonEndpoint: boolean;
     waadProtocol: string;
+}
+
+export interface GetConnectionOptionAttributeMap {
+    attributes: string;
+    mappingMode: string;
+    userinfoScope: string;
+}
+
+export interface GetConnectionOptionConnectionSetting {
+    pkce: string;
+}
+
+export interface GetConnectionOptionDecryptionKey {
+    cert: string;
+    key: string;
 }
 
 export interface GetConnectionOptionGatewayAuthentication {
@@ -1400,106 +1873,6 @@ export interface GetCustomDomainVerification {
     methods: any[];
 }
 
-export interface GetGlobalClientAddon {
-    aws: {[key: string]: any};
-    azureBlob: {[key: string]: any};
-    azureSb: {[key: string]: any};
-    box: {[key: string]: any};
-    cloudbees: {[key: string]: any};
-    concur: {[key: string]: any};
-    dropbox: {[key: string]: any};
-    echosign: {[key: string]: any};
-    egnyte: {[key: string]: any};
-    firebase: {[key: string]: any};
-    layer: {[key: string]: any};
-    mscrm: {[key: string]: any};
-    newrelic: {[key: string]: any};
-    office365: {[key: string]: any};
-    rms: {[key: string]: any};
-    salesforce: {[key: string]: any};
-    salesforceApi: {[key: string]: any};
-    salesforceSandboxApi: {[key: string]: any};
-    samlps: outputs.GetGlobalClientAddonSamlp[];
-    sapApi: {[key: string]: any};
-    sentry: {[key: string]: any};
-    sharepoint: {[key: string]: any};
-    slack: {[key: string]: any};
-    springcm: {[key: string]: any};
-    wams: {[key: string]: any};
-    wsfed: {[key: string]: any};
-    zendesk: {[key: string]: any};
-    zoom: {[key: string]: any};
-}
-
-export interface GetGlobalClientAddonSamlp {
-    audience: string;
-    authnContextClassRef: string;
-    binding: string;
-    createUpnClaim: boolean;
-    destination: string;
-    digestAlgorithm: string;
-    includeAttributeNameFormat: boolean;
-    issuer: string;
-    lifetimeInSeconds: number;
-    logout: {[key: string]: any};
-    mapIdentities: boolean;
-    mapUnknownClaimsAsIs: boolean;
-    mappings: {[key: string]: any};
-    nameIdentifierFormat: string;
-    nameIdentifierProbes: string[];
-    passthroughClaimsWithNoMapping: boolean;
-    recipient: string;
-    signResponse: boolean;
-    signatureAlgorithm: string;
-    signingCert: string;
-    typedAttributes: boolean;
-}
-
-export interface GetGlobalClientJwtConfiguration {
-    alg: string;
-    lifetimeInSeconds: number;
-    scopes: {[key: string]: string};
-    secretEncoded: boolean;
-}
-
-export interface GetGlobalClientMobile {
-    androids: outputs.GetGlobalClientMobileAndroid[];
-    ios: outputs.GetGlobalClientMobileIo[];
-}
-
-export interface GetGlobalClientMobileAndroid {
-    appPackageName: string;
-    sha256CertFingerprints: string[];
-}
-
-export interface GetGlobalClientMobileIo {
-    appBundleIdentifier: string;
-    teamId: string;
-}
-
-export interface GetGlobalClientNativeSocialLogin {
-    apples: outputs.GetGlobalClientNativeSocialLoginApple[];
-    facebooks: outputs.GetGlobalClientNativeSocialLoginFacebook[];
-}
-
-export interface GetGlobalClientNativeSocialLoginApple {
-    enabled: boolean;
-}
-
-export interface GetGlobalClientNativeSocialLoginFacebook {
-    enabled: boolean;
-}
-
-export interface GetGlobalClientRefreshToken {
-    expirationType: string;
-    idleTokenLifetime: number;
-    infiniteIdleTokenLifetime: boolean;
-    infiniteTokenLifetime: boolean;
-    leeway: number;
-    rotationType: string;
-    tokenLifetime: number;
-}
-
 export interface GetOrganizationBranding {
     colors: {[key: string]: string};
     logoUrl: string;
@@ -1510,14 +1883,38 @@ export interface GetOrganizationConnection {
     connectionId: string;
 }
 
+export interface GetPagesChangePassword {
+    enabled: boolean;
+    html: string;
+}
+
+export interface GetPagesError {
+    html: string;
+    showLogLink: boolean;
+    url: string;
+}
+
+export interface GetPagesGuardianMfa {
+    enabled: boolean;
+    html: string;
+}
+
+export interface GetPagesLogin {
+    enabled: boolean;
+    html: string;
+}
+
 export interface GetResourceServerScope {
     description: string;
-    value: string;
+    /**
+     * Friendly name for the resource server. Cannot include `<` or `>` characters.
+     */
+    name: string;
 }
 
 export interface GetRolePermission {
     /**
-     * Description of the role.
+     * The description of the role.
      */
     description: string;
     /**
@@ -1528,15 +1925,16 @@ export interface GetRolePermission {
     resourceServerName: string;
 }
 
-export interface GetTenantChangePassword {
-    enabled: boolean;
-    html: string;
-}
-
-export interface GetTenantErrorPage {
-    html: string;
-    showLogLink: boolean;
-    url: string;
+export interface GetSigningKeysSigningKey {
+    cert: string;
+    current: boolean;
+    fingerprint: string;
+    kid: string;
+    next: boolean;
+    pkcs7: string;
+    previous: boolean;
+    revoked: boolean;
+    thumbprint: string;
 }
 
 export interface GetTenantFlag {
@@ -1560,27 +1958,17 @@ export interface GetTenantFlag {
     enablePublicSignupUserExistsError: boolean;
     mfaShowFactorListOnEnrollment: boolean;
     noDiscloseEnterpriseConnections: boolean;
+    requirePushedAuthorizationRequests: boolean;
     revokeRefreshTokenGrant: boolean;
-    universalLogin: boolean;
     useScopeDescriptionsForConsent: boolean;
 }
 
-export interface GetTenantGuardianMfaPage {
-    enabled: boolean;
-    html: string;
+export interface GetTenantSession {
+    oidcLogoutPromptEnabled: boolean;
 }
 
 export interface GetTenantSessionCooky {
     mode: string;
-}
-
-export interface GetTenantUniversalLogin {
-    colors: outputs.GetTenantUniversalLoginColor[];
-}
-
-export interface GetTenantUniversalLoginColor {
-    pageBackground: string;
-    primary: string;
 }
 
 export interface GetUserPermission {
@@ -1591,151 +1979,6 @@ export interface GetUserPermission {
     name: string;
     resourceServerIdentifier: string;
     resourceServerName: string;
-}
-
-export interface GlobalClientAddons {
-    aws?: {[key: string]: any};
-    azureBlob?: {[key: string]: any};
-    azureSb?: {[key: string]: any};
-    box?: {[key: string]: any};
-    cloudbees?: {[key: string]: any};
-    concur?: {[key: string]: any};
-    dropbox?: {[key: string]: any};
-    echosign?: {[key: string]: any};
-    egnyte?: {[key: string]: any};
-    firebase?: {[key: string]: any};
-    layer?: {[key: string]: any};
-    mscrm?: {[key: string]: any};
-    newrelic?: {[key: string]: any};
-    office365?: {[key: string]: any};
-    rms?: {[key: string]: any};
-    salesforce?: {[key: string]: any};
-    salesforceApi?: {[key: string]: any};
-    salesforceSandboxApi?: {[key: string]: any};
-    /**
-     * Configuration settings for a SAML add-on.
-     */
-    samlp?: outputs.GlobalClientAddonsSamlp;
-    sapApi?: {[key: string]: any};
-    sentry?: {[key: string]: any};
-    sharepoint?: {[key: string]: any};
-    slack?: {[key: string]: any};
-    springcm?: {[key: string]: any};
-    wams?: {[key: string]: any};
-    /**
-     * WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `clientAliases` properties on the client.
-     */
-    wsfed?: {[key: string]: any};
-    zendesk?: {[key: string]: any};
-    zoom?: {[key: string]: any};
-}
-
-export interface GlobalClientAddonsSamlp {
-    audience?: string;
-    authnContextClassRef?: string;
-    binding?: string;
-    createUpnClaim?: boolean;
-    destination?: string;
-    digestAlgorithm?: string;
-    includeAttributeNameFormat?: boolean;
-    issuer?: string;
-    lifetimeInSeconds?: number;
-    logout?: {[key: string]: any};
-    mapIdentities?: boolean;
-    mapUnknownClaimsAsIs?: boolean;
-    mappings?: {[key: string]: any};
-    nameIdentifierFormat?: string;
-    nameIdentifierProbes?: string[];
-    passthroughClaimsWithNoMapping?: boolean;
-    recipient?: string;
-    signResponse?: boolean;
-    signatureAlgorithm?: string;
-    signingCert?: string;
-    typedAttributes?: boolean;
-}
-
-export interface GlobalClientJwtConfiguration {
-    /**
-     * Algorithm used to sign JWTs.
-     */
-    alg?: string;
-    /**
-     * Number of seconds during which the JWT will be valid.
-     */
-    lifetimeInSeconds: number;
-    /**
-     * Permissions (scopes) included in JWTs.
-     */
-    scopes?: {[key: string]: string};
-    /**
-     * Indicates whether the client secret is Base64-encoded.
-     */
-    secretEncoded: boolean;
-}
-
-export interface GlobalClientMobile {
-    /**
-     * Configuration settings for Android native apps.
-     */
-    android: outputs.GlobalClientMobileAndroid;
-    /**
-     * Configuration settings for i0S native apps.
-     */
-    ios: outputs.GlobalClientMobileIos;
-}
-
-export interface GlobalClientMobileAndroid {
-    appPackageName?: string;
-    sha256CertFingerprints?: string[];
-}
-
-export interface GlobalClientMobileIos {
-    appBundleIdentifier?: string;
-    teamId?: string;
-}
-
-export interface GlobalClientNativeSocialLogin {
-    apple: outputs.GlobalClientNativeSocialLoginApple;
-    facebook: outputs.GlobalClientNativeSocialLoginFacebook;
-}
-
-export interface GlobalClientNativeSocialLoginApple {
-    enabled?: boolean;
-}
-
-export interface GlobalClientNativeSocialLoginFacebook {
-    enabled?: boolean;
-}
-
-export interface GlobalClientRefreshToken {
-    /**
-     * Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
-     */
-    expirationType: string;
-    /**
-     * The time in seconds after which inactive refresh tokens will expire.
-     */
-    idleTokenLifetime: number;
-    /**
-     * Whether inactive refresh tokens should remain valid indefinitely.
-     */
-    infiniteIdleTokenLifetime: boolean;
-    /**
-     * Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
-     */
-    infiniteTokenLifetime: boolean;
-    /**
-     * The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
-     */
-    leeway: number;
-    /**
-     * Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
-     */
-    rotationType: string;
-    /**
-     * The absolute lifetime of a refresh token in seconds.
-     */
-    tokenLifetime: number;
 }
 
 export interface GuardianDuo {
@@ -1881,7 +2124,7 @@ export interface LogStreamSink {
      */
     awsPartnerEventSource: string;
     /**
-     * The AWS Region, e.g. "us-east-2").
+     * The region in which the EventBridge event source will be created. Possible values: `ap-east-1`, `ap-northeast-1`, `ap-northeast-2`, `ap-northeast-3`, `ap-south-1`, `ap-southeast-1`, `ap-southeast-2`, `ca-central-1`, `cn-north-1`, `cn-northwest-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `me-south-1`, `sa-east-1`, `us-gov-east-1`, `us-gov-west-1`, `us-east-1`, `us-east-2`, `us-west-1`, `us-west-2`.
      */
     awsRegion?: string;
     /**
@@ -1889,7 +2132,7 @@ export interface LogStreamSink {
      */
     azurePartnerTopic: string;
     /**
-     * The Azure region code, e.g. "ne")
+     * The Azure region code. Possible values: `australiacentral`, `australiaeast`, `australiasoutheast`, `brazilsouth`, `canadacentral`, `canadaeast`, `centralindia`, `centralus`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `germanywestcentral`, `japaneast`, `japanwest`, `koreacentral`, `koreasouth`, `northcentralus`, `northeurope`, `norwayeast`, `southafricanorth`, `southcentralus`, `southeastasia`, `southindia`, `switzerlandnorth`, `uaenorth`, `uksouth`, `ukwest`, `westcentralus`, `westeurope`, `westindia`, `westus`, `westus2`.
      */
     azureRegion?: string;
     /**
@@ -1905,7 +2148,7 @@ export interface LogStreamSink {
      */
     datadogApiKey?: string;
     /**
-     * The Datadog region. Options are ["us", "eu", "us3", "us5"].
+     * The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
      */
     datadogRegion?: string;
     /**
@@ -1915,7 +2158,7 @@ export interface LogStreamSink {
     /**
      * The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
      */
-    httpContentFormat?: string;
+    httpContentFormat: string;
     /**
      * The "Content-Type" header to send over HTTP. Common value is "application/json".
      */
@@ -2040,17 +2283,6 @@ export interface PagesLogin {
     html: string;
 }
 
-export interface ResourceServerScope {
-    /**
-     * Description of the permission (scope).
-     */
-    description?: string;
-    /**
-     * Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
-     */
-    value: string;
-}
-
 export interface ResourceServerScopesScope {
     /**
      * User-friendly description of the scope (permission).
@@ -2060,25 +2292,6 @@ export interface ResourceServerScopesScope {
      * Name of the scope (permission). Examples include `read:appointments` or `delete:appointments`.
      */
     name: string;
-}
-
-export interface RolePermission {
-    /**
-     * Description of the permission.
-     */
-    description: string;
-    /**
-     * Name of the permission (scope) configured on the resource server. If referencing a scope from an `auth0.ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
-     */
-    name: string;
-    /**
-     * Unique identifier for the resource server.
-     */
-    resourceServerIdentifier: string;
-    /**
-     * Name of resource server that the permission is associated with.
-     */
-    resourceServerName: string;
 }
 
 export interface RolePermissionsPermission {
@@ -2098,32 +2311,6 @@ export interface RolePermissionsPermission {
      * Name of resource server that the permission is associated with.
      */
     resourceServerName: string;
-}
-
-export interface TenantChangePassword {
-    /**
-     * Indicates whether to use the custom change password page.
-     */
-    enabled: boolean;
-    /**
-     * HTML format with supported Liquid syntax. Customized content of the change password page.
-     */
-    html: string;
-}
-
-export interface TenantErrorPage {
-    /**
-     * HTML format with supported Liquid syntax. Customized content of the error page.
-     */
-    html: string;
-    /**
-     * Indicates whether to show the link to logs as part of the default error page.
-     */
-    showLogLink: boolean;
-    /**
-     * URL to redirect to when an error occurs rather than showing the default error page.
-     */
-    url: string;
 }
 
 export interface TenantFlags {
@@ -2172,7 +2359,7 @@ export interface TenantFlags {
      */
     enableClientConnections: boolean;
     /**
-     * Indicates whether the tenant allows custom domains in emails.
+     * Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
      */
     enableCustomDomainInEmails: boolean;
     /**
@@ -2208,30 +2395,17 @@ export interface TenantFlags {
      */
     noDiscloseEnterpriseConnections: boolean;
     /**
+     * Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+     */
+    requirePushedAuthorizationRequests: boolean;
+    /**
      * Delete underlying grant when a refresh token is revoked via the Authentication API.
      */
     revokeRefreshTokenGrant: boolean;
     /**
-     * Indicates whether the New Universal Login Experience is enabled.
-     *
-     * @deprecated This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
-     */
-    universalLogin: boolean;
-    /**
      * Indicates whether to use scope descriptions for consent.
      */
     useScopeDescriptionsForConsent: boolean;
-}
-
-export interface TenantGuardianMfaPage {
-    /**
-     * Indicates whether to use the custom Guardian page.
-     */
-    enabled: boolean;
-    /**
-     * HTML format with supported Liquid syntax. Customized content of the Guardian page.
-     */
-    html: string;
 }
 
 export interface TenantSessionCookie {
@@ -2241,16 +2415,11 @@ export interface TenantSessionCookie {
     mode?: string;
 }
 
-export interface TenantUniversalLogin {
+export interface TenantSessions {
     /**
-     * Configuration settings for Universal Login colors.
+     * When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
      */
-    colors?: outputs.TenantUniversalLoginColors;
-}
-
-export interface TenantUniversalLoginColors {
-    pageBackground: string;
-    primary: string;
+    oidcLogoutPromptEnabled: boolean;
 }
 
 export interface TriggerActionsAction {
@@ -2262,27 +2431,6 @@ export interface TriggerActionsAction {
      * Action ID.
      */
     id: string;
-}
-
-export interface TriggerBindingAction {
-    /**
-     * The display name of the action within the flow.
-     */
-    displayName: string;
-    /**
-     * Action ID.
-     */
-    id: string;
-}
-
-export interface UserPermission {
-    description: string;
-    /**
-     * Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-     */
-    name: string;
-    resourceServerIdentifier: string;
-    resourceServerName: string;
 }
 
 export interface UserPermissionsPermission {

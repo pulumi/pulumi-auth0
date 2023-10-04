@@ -181,14 +181,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether the tenant allows custom domains in emails.
+     * Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
      * 
      */
     @Import(name="enableCustomDomainInEmails")
     private @Nullable Output<Boolean> enableCustomDomainInEmails;
 
     /**
-     * @return Indicates whether the tenant allows custom domains in emails.
+     * @return Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
      * 
      */
     public Optional<Output<Boolean>> enableCustomDomainInEmails() {
@@ -316,6 +316,21 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+     * 
+     */
+    @Import(name="requirePushedAuthorizationRequests")
+    private @Nullable Output<Boolean> requirePushedAuthorizationRequests;
+
+    /**
+     * @return Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+     * 
+     */
+    public Optional<Output<Boolean>> requirePushedAuthorizationRequests() {
+        return Optional.ofNullable(this.requirePushedAuthorizationRequests);
+    }
+
+    /**
      * Delete underlying grant when a refresh token is revoked via the Authentication API.
      * 
      */
@@ -328,29 +343,6 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> revokeRefreshTokenGrant() {
         return Optional.ofNullable(this.revokeRefreshTokenGrant);
-    }
-
-    /**
-     * Indicates whether the New Universal Login Experience is enabled.
-     * 
-     * @deprecated
-     * This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead. */
-    @Import(name="universalLogin")
-    private @Nullable Output<Boolean> universalLogin;
-
-    /**
-     * @return Indicates whether the New Universal Login Experience is enabled.
-     * 
-     * @deprecated
-     * This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead. */
-    public Optional<Output<Boolean>> universalLogin() {
-        return Optional.ofNullable(this.universalLogin);
     }
 
     /**
@@ -391,8 +383,8 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         this.enablePublicSignupUserExistsError = $.enablePublicSignupUserExistsError;
         this.mfaShowFactorListOnEnrollment = $.mfaShowFactorListOnEnrollment;
         this.noDiscloseEnterpriseConnections = $.noDiscloseEnterpriseConnections;
+        this.requirePushedAuthorizationRequests = $.requirePushedAuthorizationRequests;
         this.revokeRefreshTokenGrant = $.revokeRefreshTokenGrant;
-        this.universalLogin = $.universalLogin;
         this.useScopeDescriptionsForConsent = $.useScopeDescriptionsForConsent;
     }
 
@@ -646,7 +638,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableCustomDomainInEmails Indicates whether the tenant allows custom domains in emails.
+         * @param enableCustomDomainInEmails Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
          * 
          * @return builder
          * 
@@ -657,7 +649,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableCustomDomainInEmails Indicates whether the tenant allows custom domains in emails.
+         * @param enableCustomDomainInEmails Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
          * 
          * @return builder
          * 
@@ -835,6 +827,27 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param requirePushedAuthorizationRequests Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requirePushedAuthorizationRequests(@Nullable Output<Boolean> requirePushedAuthorizationRequests) {
+            $.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
+            return this;
+        }
+
+        /**
+         * @param requirePushedAuthorizationRequests Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requirePushedAuthorizationRequests(Boolean requirePushedAuthorizationRequests) {
+            return requirePushedAuthorizationRequests(Output.of(requirePushedAuthorizationRequests));
+        }
+
+        /**
          * @param revokeRefreshTokenGrant Delete underlying grant when a refresh token is revoked via the Authentication API.
          * 
          * @return builder
@@ -853,35 +866,6 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder revokeRefreshTokenGrant(Boolean revokeRefreshTokenGrant) {
             return revokeRefreshTokenGrant(Output.of(revokeRefreshTokenGrant));
-        }
-
-        /**
-         * @param universalLogin Indicates whether the New Universal Login Experience is enabled.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
-         * 
-         */
-        @Deprecated /* This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead. */
-        public Builder universalLogin(@Nullable Output<Boolean> universalLogin) {
-            $.universalLogin = universalLogin;
-            return this;
-        }
-
-        /**
-         * @param universalLogin Indicates whether the New Universal Login Experience is enabled.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
-         * 
-         */
-        @Deprecated /* This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead. */
-        public Builder universalLogin(Boolean universalLogin) {
-            return universalLogin(Output.of(universalLogin));
         }
 
         /**

@@ -21,13 +21,13 @@ class GetTenantResult:
     """
     A collection of values returned by getTenant.
     """
-    def __init__(__self__, allowed_logout_urls=None, change_passwords=None, default_audience=None, default_directory=None, default_redirection_uri=None, domain=None, enabled_locales=None, error_pages=None, flags=None, friendly_name=None, guardian_mfa_pages=None, id=None, idle_session_lifetime=None, management_api_identifier=None, picture_url=None, sandbox_version=None, session_cookies=None, session_lifetime=None, support_email=None, support_url=None, universal_logins=None):
+    def __init__(__self__, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, default_audience=None, default_directory=None, default_redirection_uri=None, domain=None, enabled_locales=None, flags=None, friendly_name=None, id=None, idle_session_lifetime=None, management_api_identifier=None, picture_url=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, support_email=None, support_url=None):
+        if allow_organization_name_in_authentication_api and not isinstance(allow_organization_name_in_authentication_api, bool):
+            raise TypeError("Expected argument 'allow_organization_name_in_authentication_api' to be a bool")
+        pulumi.set(__self__, "allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
         if allowed_logout_urls and not isinstance(allowed_logout_urls, list):
             raise TypeError("Expected argument 'allowed_logout_urls' to be a list")
         pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
-        if change_passwords and not isinstance(change_passwords, list):
-            raise TypeError("Expected argument 'change_passwords' to be a list")
-        pulumi.set(__self__, "change_passwords", change_passwords)
         if default_audience and not isinstance(default_audience, str):
             raise TypeError("Expected argument 'default_audience' to be a str")
         pulumi.set(__self__, "default_audience", default_audience)
@@ -43,18 +43,12 @@ class GetTenantResult:
         if enabled_locales and not isinstance(enabled_locales, list):
             raise TypeError("Expected argument 'enabled_locales' to be a list")
         pulumi.set(__self__, "enabled_locales", enabled_locales)
-        if error_pages and not isinstance(error_pages, list):
-            raise TypeError("Expected argument 'error_pages' to be a list")
-        pulumi.set(__self__, "error_pages", error_pages)
         if flags and not isinstance(flags, list):
             raise TypeError("Expected argument 'flags' to be a list")
         pulumi.set(__self__, "flags", flags)
         if friendly_name and not isinstance(friendly_name, str):
             raise TypeError("Expected argument 'friendly_name' to be a str")
         pulumi.set(__self__, "friendly_name", friendly_name)
-        if guardian_mfa_pages and not isinstance(guardian_mfa_pages, list):
-            raise TypeError("Expected argument 'guardian_mfa_pages' to be a list")
-        pulumi.set(__self__, "guardian_mfa_pages", guardian_mfa_pages)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -76,15 +70,23 @@ class GetTenantResult:
         if session_lifetime and not isinstance(session_lifetime, float):
             raise TypeError("Expected argument 'session_lifetime' to be a float")
         pulumi.set(__self__, "session_lifetime", session_lifetime)
+        if sessions and not isinstance(sessions, list):
+            raise TypeError("Expected argument 'sessions' to be a list")
+        pulumi.set(__self__, "sessions", sessions)
         if support_email and not isinstance(support_email, str):
             raise TypeError("Expected argument 'support_email' to be a str")
         pulumi.set(__self__, "support_email", support_email)
         if support_url and not isinstance(support_url, str):
             raise TypeError("Expected argument 'support_url' to be a str")
         pulumi.set(__self__, "support_url", support_url)
-        if universal_logins and not isinstance(universal_logins, list):
-            raise TypeError("Expected argument 'universal_logins' to be a list")
-        pulumi.set(__self__, "universal_logins", universal_logins)
+
+    @property
+    @pulumi.getter(name="allowOrganizationNameInAuthenticationApi")
+    def allow_organization_name_in_authentication_api(self) -> bool:
+        """
+        Whether to accept an organization name instead of an ID on auth endpoints.
+        """
+        return pulumi.get(self, "allow_organization_name_in_authentication_api")
 
     @property
     @pulumi.getter(name="allowedLogoutUrls")
@@ -93,11 +95,6 @@ class GetTenantResult:
         URLs that Auth0 may redirect to after logout.
         """
         return pulumi.get(self, "allowed_logout_urls")
-
-    @property
-    @pulumi.getter(name="changePasswords")
-    def change_passwords(self) -> Sequence['outputs.GetTenantChangePasswordResult']:
-        return pulumi.get(self, "change_passwords")
 
     @property
     @pulumi.getter(name="defaultAudience")
@@ -140,11 +137,6 @@ class GetTenantResult:
         return pulumi.get(self, "enabled_locales")
 
     @property
-    @pulumi.getter(name="errorPages")
-    def error_pages(self) -> Sequence['outputs.GetTenantErrorPageResult']:
-        return pulumi.get(self, "error_pages")
-
-    @property
     @pulumi.getter
     def flags(self) -> Sequence['outputs.GetTenantFlagResult']:
         """
@@ -159,11 +151,6 @@ class GetTenantResult:
         Friendly name for the tenant.
         """
         return pulumi.get(self, "friendly_name")
-
-    @property
-    @pulumi.getter(name="guardianMfaPages")
-    def guardian_mfa_pages(self) -> Sequence['outputs.GetTenantGuardianMfaPageResult']:
-        return pulumi.get(self, "guardian_mfa_pages")
 
     @property
     @pulumi.getter
@@ -222,6 +209,14 @@ class GetTenantResult:
         return pulumi.get(self, "session_lifetime")
 
     @property
+    @pulumi.getter
+    def sessions(self) -> Sequence['outputs.GetTenantSessionResult']:
+        """
+        Sessions related settings for the tenant.
+        """
+        return pulumi.get(self, "sessions")
+
+    @property
     @pulumi.getter(name="supportEmail")
     def support_email(self) -> str:
         """
@@ -237,11 +232,6 @@ class GetTenantResult:
         """
         return pulumi.get(self, "support_url")
 
-    @property
-    @pulumi.getter(name="universalLogins")
-    def universal_logins(self) -> Sequence['outputs.GetTenantUniversalLoginResult']:
-        return pulumi.get(self, "universal_logins")
-
 
 class AwaitableGetTenantResult(GetTenantResult):
     # pylint: disable=using-constant-test
@@ -249,17 +239,15 @@ class AwaitableGetTenantResult(GetTenantResult):
         if False:
             yield self
         return GetTenantResult(
+            allow_organization_name_in_authentication_api=self.allow_organization_name_in_authentication_api,
             allowed_logout_urls=self.allowed_logout_urls,
-            change_passwords=self.change_passwords,
             default_audience=self.default_audience,
             default_directory=self.default_directory,
             default_redirection_uri=self.default_redirection_uri,
             domain=self.domain,
             enabled_locales=self.enabled_locales,
-            error_pages=self.error_pages,
             flags=self.flags,
             friendly_name=self.friendly_name,
-            guardian_mfa_pages=self.guardian_mfa_pages,
             id=self.id,
             idle_session_lifetime=self.idle_session_lifetime,
             management_api_identifier=self.management_api_identifier,
@@ -267,9 +255,9 @@ class AwaitableGetTenantResult(GetTenantResult):
             sandbox_version=self.sandbox_version,
             session_cookies=self.session_cookies,
             session_lifetime=self.session_lifetime,
+            sessions=self.sessions,
             support_email=self.support_email,
-            support_url=self.support_url,
-            universal_logins=self.universal_logins)
+            support_url=self.support_url)
 
 
 def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenantResult:
@@ -290,17 +278,15 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
     __ret__ = pulumi.runtime.invoke('auth0:index/getTenant:getTenant', __args__, opts=opts, typ=GetTenantResult).value
 
     return AwaitableGetTenantResult(
+        allow_organization_name_in_authentication_api=pulumi.get(__ret__, 'allow_organization_name_in_authentication_api'),
         allowed_logout_urls=pulumi.get(__ret__, 'allowed_logout_urls'),
-        change_passwords=pulumi.get(__ret__, 'change_passwords'),
         default_audience=pulumi.get(__ret__, 'default_audience'),
         default_directory=pulumi.get(__ret__, 'default_directory'),
         default_redirection_uri=pulumi.get(__ret__, 'default_redirection_uri'),
         domain=pulumi.get(__ret__, 'domain'),
         enabled_locales=pulumi.get(__ret__, 'enabled_locales'),
-        error_pages=pulumi.get(__ret__, 'error_pages'),
         flags=pulumi.get(__ret__, 'flags'),
         friendly_name=pulumi.get(__ret__, 'friendly_name'),
-        guardian_mfa_pages=pulumi.get(__ret__, 'guardian_mfa_pages'),
         id=pulumi.get(__ret__, 'id'),
         idle_session_lifetime=pulumi.get(__ret__, 'idle_session_lifetime'),
         management_api_identifier=pulumi.get(__ret__, 'management_api_identifier'),
@@ -308,6 +294,6 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
         sandbox_version=pulumi.get(__ret__, 'sandbox_version'),
         session_cookies=pulumi.get(__ret__, 'session_cookies'),
         session_lifetime=pulumi.get(__ret__, 'session_lifetime'),
+        sessions=pulumi.get(__ret__, 'sessions'),
         support_email=pulumi.get(__ret__, 'support_email'),
-        support_url=pulumi.get(__ret__, 'support_url'),
-        universal_logins=pulumi.get(__ret__, 'universal_logins'))
+        support_url=pulumi.get(__ret__, 'support_url'))

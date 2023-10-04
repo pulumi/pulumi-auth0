@@ -14,9 +14,6 @@ namespace Pulumi.Auth0
     /// 
     /// !&gt; This resource is deprecated. Refer to the [guide on how to migrate from hooks to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-hooks-to-actions) and manage your actions using the `auth0.Action` resource.
     /// 
-    /// !&gt; This resource is deprecated. Refer to the [guide on how to migrate from rules to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-rules-to-actions)
-    /// and manage your actions using the `auth0.Action` resource.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -51,10 +48,10 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// A hook can be imported using the hook's ID. # Example
+    /// This resource can be imported by specifying the hook ID. # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/hook:Hook my_hook 00001
+    ///  $ pulumi import auth0:index/hook:Hook my_hook "00001"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/hook:Hook")]

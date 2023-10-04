@@ -19,14 +19,14 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
     public static final AttackProtectionBruteForceProtectionArgs Empty = new AttackProtectionBruteForceProtectionArgs();
 
     /**
-     * List of trusted IP addresses that will not have attack protection enforced against them.
+     * List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
      * 
      */
     @Import(name="allowlists")
     private @Nullable Output<List<String>> allowlists;
 
     /**
-     * @return List of trusted IP addresses that will not have attack protection enforced against them.
+     * @return List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
      * 
      */
     public Optional<Output<List<String>>> allowlists() {
@@ -37,26 +37,26 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
      * Whether brute force attack protections are active.
      * 
      */
-    @Import(name="enabled")
-    private @Nullable Output<Boolean> enabled;
+    @Import(name="enabled", required=true)
+    private Output<Boolean> enabled;
 
     /**
      * @return Whether brute force attack protections are active.
      * 
      */
-    public Optional<Output<Boolean>> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
 
     /**
-     * Maximum number of unsuccessful attempts. Only available on public tenants.
+     * Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
      * 
      */
     @Import(name="maxAttempts")
     private @Nullable Output<Integer> maxAttempts;
 
     /**
-     * @return Maximum number of unsuccessful attempts. Only available on public tenants.
+     * @return Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
      * 
      */
     public Optional<Output<Integer>> maxAttempts() {
@@ -64,14 +64,14 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
     }
 
     /**
-     * Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+     * Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` (lockout an account from a given IP Address) or `count_per_identifier` (lockout an account regardless of IP Address).
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+     * @return Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` (lockout an account from a given IP Address) or `count_per_identifier` (lockout an account regardless of IP Address).
      * 
      */
     public Optional<Output<String>> mode() {
@@ -79,14 +79,14 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
     }
 
     /**
-     * Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
+     * Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
      * 
      */
     @Import(name="shields")
     private @Nullable Output<List<String>> shields;
 
     /**
-     * @return Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
+     * @return Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
      * 
      */
     public Optional<Output<List<String>>> shields() {
@@ -122,7 +122,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param allowlists List of trusted IP addresses that will not have attack protection enforced against them.
+         * @param allowlists List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param allowlists List of trusted IP addresses that will not have attack protection enforced against them.
+         * @param allowlists List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param allowlists List of trusted IP addresses that will not have attack protection enforced against them.
+         * @param allowlists List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder enabled(@Nullable Output<Boolean> enabled) {
+        public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
@@ -174,7 +174,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param maxAttempts Maximum number of unsuccessful attempts. Only available on public tenants.
+         * @param maxAttempts Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param maxAttempts Maximum number of unsuccessful attempts. Only available on public tenants.
+         * @param maxAttempts Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param mode Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+         * @param mode Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` (lockout an account from a given IP Address) or `count_per_identifier` (lockout an account regardless of IP Address).
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param mode Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+         * @param mode Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` (lockout an account from a given IP Address) or `count_per_identifier` (lockout an account regardless of IP Address).
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param shields Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
+         * @param shields Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param shields Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
+         * @param shields Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param shields Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
+         * @param shields Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
          * 
          * @return builder
          * 
@@ -247,6 +247,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         public AttackProtectionBruteForceProtectionArgs build() {
+            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
             return $;
         }
     }

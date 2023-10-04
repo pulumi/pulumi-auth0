@@ -22,7 +22,7 @@ namespace Pulumi.Auth0.Outputs
         public readonly bool IncludeAttributeNameFormat;
         public readonly string Issuer;
         public readonly int LifetimeInSeconds;
-        public readonly ImmutableDictionary<string, object> Logout;
+        public readonly ImmutableArray<Outputs.GetClientAddonSamlpLogoutResult> Logouts;
         public readonly bool MapIdentities;
         public readonly bool MapUnknownClaimsAsIs;
         public readonly ImmutableDictionary<string, object> Mappings;
@@ -55,7 +55,7 @@ namespace Pulumi.Auth0.Outputs
 
             int lifetimeInSeconds,
 
-            ImmutableDictionary<string, object> logout,
+            ImmutableArray<Outputs.GetClientAddonSamlpLogoutResult> logouts,
 
             bool mapIdentities,
 
@@ -88,7 +88,7 @@ namespace Pulumi.Auth0.Outputs
             IncludeAttributeNameFormat = includeAttributeNameFormat;
             Issuer = issuer;
             LifetimeInSeconds = lifetimeInSeconds;
-            Logout = logout;
+            Logouts = logouts;
             MapIdentities = mapIdentities;
             MapUnknownClaimsAsIs = mapUnknownClaimsAsIs;
             Mappings = mappings;

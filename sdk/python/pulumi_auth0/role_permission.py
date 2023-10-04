@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['RolePermissionInitArgs', 'RolePermission']
+__all__ = ['RolePermissionArgs', 'RolePermission']
 
 @pulumi.input_type
-class RolePermissionInitArgs:
+class RolePermissionArgs:
     def __init__(__self__, *,
                  permission: pulumi.Input[str],
                  resource_server_identifier: pulumi.Input[str],
@@ -178,7 +178,7 @@ class RolePermission(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RolePermissionInitArgs,
+                 args: RolePermissionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can manage role permissions (1-1).
@@ -188,12 +188,12 @@ class RolePermission(pulumi.CustomResource):
         with the `RolePermissions` resource when managing permissions for the same role id.
 
         :param str resource_name: The name of the resource.
-        :param RolePermissionInitArgs args: The arguments to use to populate this resource's properties.
+        :param RolePermissionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RolePermissionInitArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RolePermissionArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -212,7 +212,7 @@ class RolePermission(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RolePermissionInitArgs.__new__(RolePermissionInitArgs)
+            __props__ = RolePermissionArgs.__new__(RolePermissionArgs)
 
             if permission is None and not opts.urn:
                 raise TypeError("Missing required property 'permission'")

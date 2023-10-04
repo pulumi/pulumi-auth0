@@ -29,8 +29,8 @@ public final class GetTenantFlag {
     private Boolean enablePublicSignupUserExistsError;
     private Boolean mfaShowFactorListOnEnrollment;
     private Boolean noDiscloseEnterpriseConnections;
+    private Boolean requirePushedAuthorizationRequests;
     private Boolean revokeRefreshTokenGrant;
-    private Boolean universalLogin;
     private Boolean useScopeDescriptionsForConsent;
 
     private GetTenantFlag() {}
@@ -94,11 +94,11 @@ public final class GetTenantFlag {
     public Boolean noDiscloseEnterpriseConnections() {
         return this.noDiscloseEnterpriseConnections;
     }
+    public Boolean requirePushedAuthorizationRequests() {
+        return this.requirePushedAuthorizationRequests;
+    }
     public Boolean revokeRefreshTokenGrant() {
         return this.revokeRefreshTokenGrant;
-    }
-    public Boolean universalLogin() {
-        return this.universalLogin;
     }
     public Boolean useScopeDescriptionsForConsent() {
         return this.useScopeDescriptionsForConsent;
@@ -133,8 +133,8 @@ public final class GetTenantFlag {
         private Boolean enablePublicSignupUserExistsError;
         private Boolean mfaShowFactorListOnEnrollment;
         private Boolean noDiscloseEnterpriseConnections;
+        private Boolean requirePushedAuthorizationRequests;
         private Boolean revokeRefreshTokenGrant;
-        private Boolean universalLogin;
         private Boolean useScopeDescriptionsForConsent;
         public Builder() {}
         public Builder(GetTenantFlag defaults) {
@@ -159,8 +159,8 @@ public final class GetTenantFlag {
     	      this.enablePublicSignupUserExistsError = defaults.enablePublicSignupUserExistsError;
     	      this.mfaShowFactorListOnEnrollment = defaults.mfaShowFactorListOnEnrollment;
     	      this.noDiscloseEnterpriseConnections = defaults.noDiscloseEnterpriseConnections;
+    	      this.requirePushedAuthorizationRequests = defaults.requirePushedAuthorizationRequests;
     	      this.revokeRefreshTokenGrant = defaults.revokeRefreshTokenGrant;
-    	      this.universalLogin = defaults.universalLogin;
     	      this.useScopeDescriptionsForConsent = defaults.useScopeDescriptionsForConsent;
         }
 
@@ -265,13 +265,13 @@ public final class GetTenantFlag {
             return this;
         }
         @CustomType.Setter
-        public Builder revokeRefreshTokenGrant(Boolean revokeRefreshTokenGrant) {
-            this.revokeRefreshTokenGrant = Objects.requireNonNull(revokeRefreshTokenGrant);
+        public Builder requirePushedAuthorizationRequests(Boolean requirePushedAuthorizationRequests) {
+            this.requirePushedAuthorizationRequests = Objects.requireNonNull(requirePushedAuthorizationRequests);
             return this;
         }
         @CustomType.Setter
-        public Builder universalLogin(Boolean universalLogin) {
-            this.universalLogin = Objects.requireNonNull(universalLogin);
+        public Builder revokeRefreshTokenGrant(Boolean revokeRefreshTokenGrant) {
+            this.revokeRefreshTokenGrant = Objects.requireNonNull(revokeRefreshTokenGrant);
             return this;
         }
         @CustomType.Setter
@@ -301,8 +301,8 @@ public final class GetTenantFlag {
             o.enablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
             o.mfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
             o.noDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
+            o.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
             o.revokeRefreshTokenGrant = revokeRefreshTokenGrant;
-            o.universalLogin = universalLogin;
             o.useScopeDescriptionsForConsent = useScopeDescriptionsForConsent;
             return o;
         }

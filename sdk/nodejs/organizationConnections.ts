@@ -43,7 +43,7 @@ import * as utilities from "./utilities";
  * This resource can be imported by specifying the organization ID. # Example
  *
  * ```sh
- *  $ pulumi import auth0:index/organizationConnections:OrganizationConnections my_org_conns org_XXXXX
+ *  $ pulumi import auth0:index/organizationConnections:OrganizationConnections my_org_conns "org_XXXXX"
  * ```
  */
 export class OrganizationConnections extends pulumi.CustomResource {

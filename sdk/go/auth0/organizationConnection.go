@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -62,11 +62,11 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by specifying the organization ID and connection ID separated by ":". # Example
+// This resource can be imported by specifying the organization ID and connection ID separated by "::" (note the double colon) <organizationID>::<connectionID> # Example
 //
 // ```sh
 //
-//	$ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn org_XXXXX:con_XXXXX
+//	$ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn "org_XXXXX::con_XXXXX"
 //
 // ```
 type OrganizationConnection struct {

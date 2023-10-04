@@ -67,7 +67,7 @@ public final class GetClientResult {
     private Map<String,Object> clientMetadata;
     private String clientSecret;
     /**
-     * @return Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
+     * @return Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      * 
      */
     private Boolean crossOriginAuth;
@@ -122,7 +122,7 @@ public final class GetClientResult {
      */
     private Boolean isFirstParty;
     /**
-     * @return Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+     * @return Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
      * 
      */
     private Boolean isTokenEndpointIpHeaderTrusted;
@@ -177,6 +177,11 @@ public final class GetClientResult {
      */
     private List<GetClientRefreshToken> refreshTokens;
     /**
+     * @return Makes the use of Pushed Authorization Requests mandatory for this client.
+     * 
+     */
+    private Boolean requirePushedAuthorizationRequests;
+    /**
      * @return List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      * 
      */
@@ -191,6 +196,10 @@ public final class GetClientResult {
      * 
      */
     private Boolean ssoDisabled;
+    /**
+     * @return The authentication method for the token endpoint. Results include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic). Managing a client&#39;s authentication method can be done via the `auth0.ClientCredentials` resource.
+     * 
+     */
     private String tokenEndpointAuthMethod;
     /**
      * @return URLs that represent valid web origins for use with web message response mode.
@@ -266,7 +275,7 @@ public final class GetClientResult {
         return this.clientSecret;
     }
     /**
-     * @return Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
+     * @return Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      * 
      */
     public Boolean crossOriginAuth() {
@@ -343,7 +352,7 @@ public final class GetClientResult {
         return this.isFirstParty;
     }
     /**
-     * @return Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+     * @return Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
      * 
      */
     public Boolean isTokenEndpointIpHeaderTrusted() {
@@ -420,6 +429,13 @@ public final class GetClientResult {
         return this.refreshTokens;
     }
     /**
+     * @return Makes the use of Pushed Authorization Requests mandatory for this client.
+     * 
+     */
+    public Boolean requirePushedAuthorizationRequests() {
+        return this.requirePushedAuthorizationRequests;
+    }
+    /**
      * @return List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      * 
      */
@@ -440,6 +456,10 @@ public final class GetClientResult {
     public Boolean ssoDisabled() {
         return this.ssoDisabled;
     }
+    /**
+     * @return The authentication method for the token endpoint. Results include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic). Managing a client&#39;s authentication method can be done via the `auth0.ClientCredentials` resource.
+     * 
+     */
     public String tokenEndpointAuthMethod() {
         return this.tokenEndpointAuthMethod;
     }
@@ -492,6 +512,7 @@ public final class GetClientResult {
         private String organizationRequireBehavior;
         private String organizationUsage;
         private List<GetClientRefreshToken> refreshTokens;
+        private Boolean requirePushedAuthorizationRequests;
         private List<Map<String,Object>> signingKeys;
         private Boolean sso;
         private Boolean ssoDisabled;
@@ -532,6 +553,7 @@ public final class GetClientResult {
     	      this.organizationRequireBehavior = defaults.organizationRequireBehavior;
     	      this.organizationUsage = defaults.organizationUsage;
     	      this.refreshTokens = defaults.refreshTokens;
+    	      this.requirePushedAuthorizationRequests = defaults.requirePushedAuthorizationRequests;
     	      this.signingKeys = defaults.signingKeys;
     	      this.sso = defaults.sso;
     	      this.ssoDisabled = defaults.ssoDisabled;
@@ -736,6 +758,11 @@ public final class GetClientResult {
             return refreshTokens(List.of(refreshTokens));
         }
         @CustomType.Setter
+        public Builder requirePushedAuthorizationRequests(Boolean requirePushedAuthorizationRequests) {
+            this.requirePushedAuthorizationRequests = Objects.requireNonNull(requirePushedAuthorizationRequests);
+            return this;
+        }
+        @CustomType.Setter
         public Builder signingKeys(List<Map<String,Object>> signingKeys) {
             this.signingKeys = Objects.requireNonNull(signingKeys);
             return this;
@@ -797,6 +824,7 @@ public final class GetClientResult {
             o.organizationRequireBehavior = organizationRequireBehavior;
             o.organizationUsage = organizationUsage;
             o.refreshTokens = refreshTokens;
+            o.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
             o.signingKeys = signingKeys;
             o.sso = sso;
             o.ssoDisabled = ssoDisabled;

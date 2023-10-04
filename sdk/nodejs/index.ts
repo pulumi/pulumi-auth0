@@ -65,10 +65,10 @@ export type CustomDomainVerification = import("./customDomainVerification").Cust
 export const CustomDomainVerification: typeof import("./customDomainVerification").CustomDomainVerification = null as any;
 utilities.lazyLoad(exports, ["CustomDomainVerification"], () => require("./customDomainVerification"));
 
-export { EmailArgs, EmailState } from "./email";
-export type Email = import("./email").Email;
-export const Email: typeof import("./email").Email = null as any;
-utilities.lazyLoad(exports, ["Email"], () => require("./email"));
+export { EmailProviderArgs, EmailProviderState } from "./emailProvider";
+export type EmailProvider = import("./emailProvider").EmailProvider;
+export const EmailProvider: typeof import("./emailProvider").EmailProvider = null as any;
+utilities.lazyLoad(exports, ["EmailProvider"], () => require("./emailProvider"));
 
 export { EmailTemplateArgs, EmailTemplateState } from "./emailTemplate";
 export type EmailTemplate = import("./emailTemplate").EmailTemplate;
@@ -105,15 +105,15 @@ export const getCustomDomain: typeof import("./getCustomDomain").getCustomDomain
 export const getCustomDomainOutput: typeof import("./getCustomDomain").getCustomDomainOutput = null as any;
 utilities.lazyLoad(exports, ["getCustomDomain","getCustomDomainOutput"], () => require("./getCustomDomain"));
 
-export { GetGlobalClientResult } from "./getGlobalClient";
-export const getGlobalClient: typeof import("./getGlobalClient").getGlobalClient = null as any;
-export const getGlobalClientOutput: typeof import("./getGlobalClient").getGlobalClientOutput = null as any;
-utilities.lazyLoad(exports, ["getGlobalClient","getGlobalClientOutput"], () => require("./getGlobalClient"));
-
 export { GetOrganizationArgs, GetOrganizationResult, GetOrganizationOutputArgs } from "./getOrganization";
 export const getOrganization: typeof import("./getOrganization").getOrganization = null as any;
 export const getOrganizationOutput: typeof import("./getOrganization").getOrganizationOutput = null as any;
 utilities.lazyLoad(exports, ["getOrganization","getOrganizationOutput"], () => require("./getOrganization"));
+
+export { GetPagesResult } from "./getPages";
+export const getPages: typeof import("./getPages").getPages = null as any;
+export const getPagesOutput: typeof import("./getPages").getPagesOutput = null as any;
+utilities.lazyLoad(exports, ["getPages","getPagesOutput"], () => require("./getPages"));
 
 export { GetResourceServerArgs, GetResourceServerResult, GetResourceServerOutputArgs } from "./getResourceServer";
 export const getResourceServer: typeof import("./getResourceServer").getResourceServer = null as any;
@@ -125,6 +125,11 @@ export const getRole: typeof import("./getRole").getRole = null as any;
 export const getRoleOutput: typeof import("./getRole").getRoleOutput = null as any;
 utilities.lazyLoad(exports, ["getRole","getRoleOutput"], () => require("./getRole"));
 
+export { GetSigningKeysResult } from "./getSigningKeys";
+export const getSigningKeys: typeof import("./getSigningKeys").getSigningKeys = null as any;
+export const getSigningKeysOutput: typeof import("./getSigningKeys").getSigningKeysOutput = null as any;
+utilities.lazyLoad(exports, ["getSigningKeys","getSigningKeysOutput"], () => require("./getSigningKeys"));
+
 export { GetTenantResult } from "./getTenant";
 export const getTenant: typeof import("./getTenant").getTenant = null as any;
 export const getTenantOutput: typeof import("./getTenant").getTenantOutput = null as any;
@@ -134,11 +139,6 @@ export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
 utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
-
-export { GlobalClientArgs, GlobalClientState } from "./globalClient";
-export type GlobalClient = import("./globalClient").GlobalClient;
-export const GlobalClient: typeof import("./globalClient").GlobalClient = null as any;
-utilities.lazyLoad(exports, ["GlobalClient"], () => require("./globalClient"));
 
 export { GuardianArgs, GuardianState } from "./guardian";
 export type Guardian = import("./guardian").Guardian;
@@ -265,11 +265,6 @@ export type TriggerActions = import("./triggerActions").TriggerActions;
 export const TriggerActions: typeof import("./triggerActions").TriggerActions = null as any;
 utilities.lazyLoad(exports, ["TriggerActions"], () => require("./triggerActions"));
 
-export { TriggerBindingArgs, TriggerBindingState } from "./triggerBinding";
-export type TriggerBinding = import("./triggerBinding").TriggerBinding;
-export const TriggerBinding: typeof import("./triggerBinding").TriggerBinding = null as any;
-utilities.lazyLoad(exports, ["TriggerBinding"], () => require("./triggerBinding"));
-
 export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
@@ -333,12 +328,10 @@ const _module = {
                 return new CustomDomain(name, <any>undefined, { urn })
             case "auth0:index/customDomainVerification:CustomDomainVerification":
                 return new CustomDomainVerification(name, <any>undefined, { urn })
-            case "auth0:index/email:Email":
-                return new Email(name, <any>undefined, { urn })
+            case "auth0:index/emailProvider:EmailProvider":
+                return new EmailProvider(name, <any>undefined, { urn })
             case "auth0:index/emailTemplate:EmailTemplate":
                 return new EmailTemplate(name, <any>undefined, { urn })
-            case "auth0:index/globalClient:GlobalClient":
-                return new GlobalClient(name, <any>undefined, { urn })
             case "auth0:index/guardian:Guardian":
                 return new Guardian(name, <any>undefined, { urn })
             case "auth0:index/hook:Hook":
@@ -387,8 +380,6 @@ const _module = {
                 return new TriggerAction(name, <any>undefined, { urn })
             case "auth0:index/triggerActions:TriggerActions":
                 return new TriggerActions(name, <any>undefined, { urn })
-            case "auth0:index/triggerBinding:TriggerBinding":
-                return new TriggerBinding(name, <any>undefined, { urn })
             case "auth0:index/user:User":
                 return new User(name, <any>undefined, { urn })
             case "auth0:index/userPermission:UserPermission":
@@ -416,9 +407,8 @@ pulumi.runtime.registerResourceModule("auth0", "index/connectionClient", _module
 pulumi.runtime.registerResourceModule("auth0", "index/connectionClients", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/customDomain", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/customDomainVerification", _module)
-pulumi.runtime.registerResourceModule("auth0", "index/email", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/emailProvider", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/emailTemplate", _module)
-pulumi.runtime.registerResourceModule("auth0", "index/globalClient", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/guardian", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/hook", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/logStream", _module)
@@ -443,7 +433,6 @@ pulumi.runtime.registerResourceModule("auth0", "index/ruleConfig", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/tenant", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/triggerAction", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/triggerActions", _module)
-pulumi.runtime.registerResourceModule("auth0", "index/triggerBinding", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/user", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/userPermission", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/userPermissions", _module)

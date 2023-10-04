@@ -17,7 +17,7 @@ from .connection_client import *
 from .connection_clients import *
 from .custom_domain import *
 from .custom_domain_verification import *
-from .email import *
+from .email_provider import *
 from .email_template import *
 from .get_attack_protection import *
 from .get_branding import *
@@ -25,13 +25,13 @@ from .get_branding_theme import *
 from .get_client import *
 from .get_connection import *
 from .get_custom_domain import *
-from .get_global_client import *
 from .get_organization import *
+from .get_pages import *
 from .get_resource_server import *
 from .get_role import *
+from .get_signing_keys import *
 from .get_tenant import *
 from .get_user import *
-from .global_client import *
 from .guardian import *
 from .hook import *
 from .log_stream import *
@@ -57,7 +57,6 @@ from .rule_config import *
 from .tenant import *
 from .trigger_action import *
 from .trigger_actions import *
-from .trigger_binding import *
 from .user import *
 from .user_permission import *
 from .user_permissions import *
@@ -174,10 +173,10 @@ _utilities.register(
  },
  {
   "pkg": "auth0",
-  "mod": "index/email",
+  "mod": "index/emailProvider",
   "fqn": "pulumi_auth0",
   "classes": {
-   "auth0:index/email:Email": "Email"
+   "auth0:index/emailProvider:EmailProvider": "EmailProvider"
   }
  },
  {
@@ -186,14 +185,6 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/emailTemplate:EmailTemplate": "EmailTemplate"
-  }
- },
- {
-  "pkg": "auth0",
-  "mod": "index/globalClient",
-  "fqn": "pulumi_auth0",
-  "classes": {
-   "auth0:index/globalClient:GlobalClient": "GlobalClient"
   }
  },
  {
@@ -386,14 +377,6 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/triggerActions:TriggerActions": "TriggerActions"
-  }
- },
- {
-  "pkg": "auth0",
-  "mod": "index/triggerBinding",
-  "fqn": "pulumi_auth0",
-  "classes": {
-   "auth0:index/triggerBinding:TriggerBinding": "TriggerBinding"
   }
  },
  {

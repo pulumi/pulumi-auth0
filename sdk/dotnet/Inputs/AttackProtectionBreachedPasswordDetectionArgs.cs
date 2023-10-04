@@ -16,7 +16,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _adminNotificationFrequencies;
 
         /// <summary>
-        /// When "admin_notification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+        /// When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
         /// </summary>
         public InputList<string> AdminNotificationFrequencies
         {
@@ -27,8 +27,8 @@ namespace Pulumi.Auth0.Inputs
         /// <summary>
         /// Whether breached password detection is active.
         /// </summary>
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
         /// The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
@@ -46,7 +46,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _shields;
 
         /// <summary>
-        /// Action to take when a breached password is detected.
+        /// Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
         /// </summary>
         public InputList<string> Shields
         {

@@ -124,7 +124,7 @@ namespace Pulumi.Auth0
     public sealed class GetRoleResult
     {
         /// <summary>
-        /// Description of the role.
+        /// The description of the role.
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -135,11 +135,18 @@ namespace Pulumi.Auth0
         /// The name of the role. If not provided, `role_id` must be set.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Configuration settings for permissions (scopes) attached to the role.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRolePermissionResult> Permissions;
         /// <summary>
         /// The ID of the role. If not provided, `name` must be set.
         /// </summary>
         public readonly string? RoleId;
+        /// <summary>
+        /// List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs.
+        /// </summary>
+        public readonly ImmutableArray<string> Users;
 
         [OutputConstructor]
         private GetRoleResult(
@@ -151,13 +158,16 @@ namespace Pulumi.Auth0
 
             ImmutableArray<Outputs.GetRolePermissionResult> permissions,
 
-            string? roleId)
+            string? roleId,
+
+            ImmutableArray<string> users)
         {
             Description = description;
             Id = id;
             Name = name;
             Permissions = permissions;
             RoleId = roleId;
+            Users = users;
         }
     }
 }

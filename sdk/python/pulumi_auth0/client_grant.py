@@ -132,38 +132,12 @@ class ClientGrant(pulumi.CustomResource):
         """
         Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        # The following example grants a client the "create:foo" permission (scope).
-        my_client = auth0.Client("myClient")
-        my_resource_server = auth0.ResourceServer("myResourceServer",
-            identifier="https://api.example.com/client-grant",
-            scopes=[
-                auth0.ResourceServerScopeArgs(
-                    value="create:foo",
-                    description="Create foos",
-                ),
-                auth0.ResourceServerScopeArgs(
-                    value="create:bar",
-                    description="Create bars",
-                ),
-            ])
-        my_client_grant = auth0.ClientGrant("myClientGrant",
-            client_id=my_client.id,
-            audience=my_resource_server.identifier,
-            scopes=["create:foo"])
-        ```
-
         ## Import
 
-        Client grants can be imported using the grant ID. # Application -> APIs -> Expand the required API # Example
+        This resource can be imported by specifying the client grant ID. You can find this within the Management Dashboard in Application -> APIs -> Expand the required API. # Example
 
         ```sh
-         $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant cgr_XXXXXXXXXXXXXXXX
+         $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant "cgr_XXXXXXXXXXXXXXXX"
         ```
 
         :param str resource_name: The name of the resource.
@@ -181,38 +155,12 @@ class ClientGrant(pulumi.CustomResource):
         """
         Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        # The following example grants a client the "create:foo" permission (scope).
-        my_client = auth0.Client("myClient")
-        my_resource_server = auth0.ResourceServer("myResourceServer",
-            identifier="https://api.example.com/client-grant",
-            scopes=[
-                auth0.ResourceServerScopeArgs(
-                    value="create:foo",
-                    description="Create foos",
-                ),
-                auth0.ResourceServerScopeArgs(
-                    value="create:bar",
-                    description="Create bars",
-                ),
-            ])
-        my_client_grant = auth0.ClientGrant("myClientGrant",
-            client_id=my_client.id,
-            audience=my_resource_server.identifier,
-            scopes=["create:foo"])
-        ```
-
         ## Import
 
-        Client grants can be imported using the grant ID. # Application -> APIs -> Expand the required API # Example
+        This resource can be imported by specifying the client grant ID. You can find this within the Management Dashboard in Application -> APIs -> Expand the required API. # Example
 
         ```sh
-         $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant cgr_XXXXXXXXXXXXXXXX
+         $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant "cgr_XXXXXXXXXXXXXXXX"
         ```
 
         :param str resource_name: The name of the resource.

@@ -31,21 +31,10 @@ namespace Pulumi.Auth0
     ///         {
     ///             "http://example.com/logout",
     ///         },
-    ///         ChangePassword = new Auth0.Inputs.TenantChangePasswordArgs
-    ///         {
-    ///             Enabled = true,
-    ///             Html = "&lt;html&gt;Change Password&lt;/html&gt;",
-    ///         },
     ///         DefaultRedirectionUri = "https://example.com/login",
     ///         EnabledLocales = new[]
     ///         {
     ///             "en",
-    ///         },
-    ///         ErrorPage = new Auth0.Inputs.TenantErrorPageArgs
-    ///         {
-    ///             Html = "&lt;html&gt;Error Page&lt;/html&gt;",
-    ///             ShowLogLink = true,
-    ///             Url = "https://example.com/errors",
     ///         },
     ///         Flags = new Auth0.Inputs.TenantFlagsArgs
     ///         {
@@ -54,15 +43,9 @@ namespace Pulumi.Auth0
     ///             DisableManagementApiSmsObfuscation = false,
     ///             EnablePublicSignupUserExistsError = true,
     ///             NoDiscloseEnterpriseConnections = false,
-    ///             UniversalLogin = true,
     ///             UseScopeDescriptionsForConsent = true,
     ///         },
     ///         FriendlyName = "Tenant Name",
-    ///         GuardianMfaPage = new Auth0.Inputs.TenantGuardianMfaPageArgs
-    ///         {
-    ///             Enabled = true,
-    ///             Html = "&lt;html&gt;MFA&lt;/html&gt;",
-    ///         },
     ///         PictureUrl = "http://example.com/logo.png",
     ///         SandboxVersion = "12",
     ///         SessionCookie = new Auth0.Inputs.TenantSessionCookieArgs
@@ -70,16 +53,12 @@ namespace Pulumi.Auth0
     ///             Mode = "non-persistent",
     ///         },
     ///         SessionLifetime = 8760,
+    ///         Sessions = new Auth0.Inputs.TenantSessionsArgs
+    ///         {
+    ///             OidcLogoutPromptEnabled = false,
+    ///         },
     ///         SupportEmail = "support@example.com",
     ///         SupportUrl = "http://example.com/support",
-    ///         UniversalLogin = new Auth0.Inputs.TenantUniversalLoginArgs
-    ///         {
-    ///             Colors = new Auth0.Inputs.TenantUniversalLoginColorsArgs
-    ///             {
-    ///                 PageBackground = "#000000",
-    ///                 Primary = "#0059d6",
-    ///             },
-    ///         },
     ///     });
     /// 
     /// });
@@ -90,26 +69,23 @@ namespace Pulumi.Auth0
     /// As this is not a resource identifiable by an ID within the Auth0 Management API, tenant can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/tenant:Tenant my_tenant 82f4f21b-017a-319d-92e7-2291c1ca36c4
+    ///  $ pulumi import auth0:index/tenant:Tenant my_tenant "82f4f21b-017a-319d-92e7-2291c1ca36c4"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/tenant:Tenant")]
     public partial class Tenant : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether to accept an organization name instead of an ID on auth endpoints.
+        /// </summary>
+        [Output("allowOrganizationNameInAuthenticationApi")]
+        public Output<bool> AllowOrganizationNameInAuthenticationApi { get; private set; } = null!;
+
+        /// <summary>
         /// URLs that Auth0 may redirect to after logout.
         /// </summary>
         [Output("allowedLogoutUrls")]
         public Output<ImmutableArray<string>> AllowedLogoutUrls { get; private set; } = null!;
-
-        /// <summary>
-        /// Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
-        /// it will be removed in a future major version. Check the
-        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-        /// info.
-        /// </summary>
-        [Output("changePassword")]
-        public Output<Outputs.TenantChangePassword> ChangePassword { get; private set; } = null!;
 
         /// <summary>
         /// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -136,15 +112,6 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> EnabledLocales { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
-        /// be removed in a future major version. Check the
-        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-        /// info.
-        /// </summary>
-        [Output("errorPage")]
-        public Output<Outputs.TenantErrorPage> ErrorPage { get; private set; } = null!;
-
-        /// <summary>
         /// Configuration settings for tenant flags.
         /// </summary>
         [Output("flags")]
@@ -155,15 +122,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("friendlyName")]
         public Output<string> FriendlyName { get; private set; } = null!;
-
-        /// <summary>
-        /// Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
-        /// and it will be removed in a future major version. Check the
-        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-        /// info.
-        /// </summary>
-        [Output("guardianMfaPage")]
-        public Output<Outputs.TenantGuardianMfaPage> GuardianMfaPage { get; private set; } = null!;
 
         /// <summary>
         /// Number of hours during which a session can be inactive before the user must log in again.
@@ -196,6 +154,12 @@ namespace Pulumi.Auth0
         public Output<double?> SessionLifetime { get; private set; } = null!;
 
         /// <summary>
+        /// Sessions related settings for the tenant.
+        /// </summary>
+        [Output("sessions")]
+        public Output<Outputs.TenantSessions> Sessions { get; private set; } = null!;
+
+        /// <summary>
         /// Support email address for authenticating users.
         /// </summary>
         [Output("supportEmail")]
@@ -206,15 +170,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("supportUrl")]
         public Output<string> SupportUrl { get; private set; } = null!;
-
-        /// <summary>
-        /// Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
-        /// settings through the `auth0_branding` resource. Check the
-        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
-        /// for more info.
-        /// </summary>
-        [Output("universalLogin")]
-        public Output<Outputs.TenantUniversalLogin> UniversalLogin { get; private set; } = null!;
 
 
         /// <summary>
@@ -262,6 +217,12 @@ namespace Pulumi.Auth0
 
     public sealed class TenantArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to accept an organization name instead of an ID on auth endpoints.
+        /// </summary>
+        [Input("allowOrganizationNameInAuthenticationApi")]
+        public Input<bool>? AllowOrganizationNameInAuthenticationApi { get; set; }
+
         [Input("allowedLogoutUrls")]
         private InputList<string>? _allowedLogoutUrls;
 
@@ -273,15 +234,6 @@ namespace Pulumi.Auth0
             get => _allowedLogoutUrls ?? (_allowedLogoutUrls = new InputList<string>());
             set => _allowedLogoutUrls = value;
         }
-
-        /// <summary>
-        /// Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
-        /// it will be removed in a future major version. Check the
-        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-        /// info.
-        /// </summary>
-        [Input("changePassword")]
-        public Input<Inputs.TenantChangePasswordArgs>? ChangePassword { get; set; }
 
         /// <summary>
         /// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -314,15 +266,6 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
-        /// be removed in a future major version. Check the
-        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-        /// info.
-        /// </summary>
-        [Input("errorPage")]
-        public Input<Inputs.TenantErrorPageArgs>? ErrorPage { get; set; }
-
-        /// <summary>
         /// Configuration settings for tenant flags.
         /// </summary>
         [Input("flags")]
@@ -333,15 +276,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
-
-        /// <summary>
-        /// Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
-        /// and it will be removed in a future major version. Check the
-        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-        /// info.
-        /// </summary>
-        [Input("guardianMfaPage")]
-        public Input<Inputs.TenantGuardianMfaPageArgs>? GuardianMfaPage { get; set; }
 
         /// <summary>
         /// Number of hours during which a session can be inactive before the user must log in again.
@@ -374,6 +308,12 @@ namespace Pulumi.Auth0
         public Input<double>? SessionLifetime { get; set; }
 
         /// <summary>
+        /// Sessions related settings for the tenant.
+        /// </summary>
+        [Input("sessions")]
+        public Input<Inputs.TenantSessionsArgs>? Sessions { get; set; }
+
+        /// <summary>
         /// Support email address for authenticating users.
         /// </summary>
         [Input("supportEmail")]
@@ -385,15 +325,6 @@ namespace Pulumi.Auth0
         [Input("supportUrl")]
         public Input<string>? SupportUrl { get; set; }
 
-        /// <summary>
-        /// Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
-        /// settings through the `auth0_branding` resource. Check the
-        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
-        /// for more info.
-        /// </summary>
-        [Input("universalLogin")]
-        public Input<Inputs.TenantUniversalLoginArgs>? UniversalLogin { get; set; }
-
         public TenantArgs()
         {
         }
@@ -402,6 +333,12 @@ namespace Pulumi.Auth0
 
     public sealed class TenantState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to accept an organization name instead of an ID on auth endpoints.
+        /// </summary>
+        [Input("allowOrganizationNameInAuthenticationApi")]
+        public Input<bool>? AllowOrganizationNameInAuthenticationApi { get; set; }
+
         [Input("allowedLogoutUrls")]
         private InputList<string>? _allowedLogoutUrls;
 
@@ -413,15 +350,6 @@ namespace Pulumi.Auth0
             get => _allowedLogoutUrls ?? (_allowedLogoutUrls = new InputList<string>());
             set => _allowedLogoutUrls = value;
         }
-
-        /// <summary>
-        /// Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
-        /// it will be removed in a future major version. Check the
-        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-        /// info.
-        /// </summary>
-        [Input("changePassword")]
-        public Input<Inputs.TenantChangePasswordGetArgs>? ChangePassword { get; set; }
 
         /// <summary>
         /// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -454,15 +382,6 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
-        /// be removed in a future major version. Check the
-        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-        /// info.
-        /// </summary>
-        [Input("errorPage")]
-        public Input<Inputs.TenantErrorPageGetArgs>? ErrorPage { get; set; }
-
-        /// <summary>
         /// Configuration settings for tenant flags.
         /// </summary>
         [Input("flags")]
@@ -473,15 +392,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
-
-        /// <summary>
-        /// Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
-        /// and it will be removed in a future major version. Check the
-        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
-        /// info.
-        /// </summary>
-        [Input("guardianMfaPage")]
-        public Input<Inputs.TenantGuardianMfaPageGetArgs>? GuardianMfaPage { get; set; }
 
         /// <summary>
         /// Number of hours during which a session can be inactive before the user must log in again.
@@ -514,6 +424,12 @@ namespace Pulumi.Auth0
         public Input<double>? SessionLifetime { get; set; }
 
         /// <summary>
+        /// Sessions related settings for the tenant.
+        /// </summary>
+        [Input("sessions")]
+        public Input<Inputs.TenantSessionsGetArgs>? Sessions { get; set; }
+
+        /// <summary>
         /// Support email address for authenticating users.
         /// </summary>
         [Input("supportEmail")]
@@ -524,15 +440,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("supportUrl")]
         public Input<string>? SupportUrl { get; set; }
-
-        /// <summary>
-        /// Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
-        /// settings through the `auth0_branding` resource. Check the
-        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
-        /// for more info.
-        /// </summary>
-        [Input("universalLogin")]
-        public Input<Inputs.TenantUniversalLoginGetArgs>? UniversalLogin { get; set; }
 
         public TenantState()
         {

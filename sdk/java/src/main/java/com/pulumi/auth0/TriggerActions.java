@@ -117,14 +117,14 @@ public class TriggerActions extends com.pulumi.resources.CustomResource {
         return this.actions;
     }
     /**
-     * The ID of the trigger to bind with.
+     * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval` , `iga-certification` , `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
      * 
      */
     @Export(name="trigger", type=String.class, parameters={})
     private Output<String> trigger;
 
     /**
-     * @return The ID of the trigger to bind with.
+     * @return The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval` , `iga-certification` , `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
      * 
      */
     public Output<String> trigger() {

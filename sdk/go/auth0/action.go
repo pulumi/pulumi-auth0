@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -17,11 +17,11 @@ import (
 //
 // ## Import
 //
-// An action can be imported using the action's ID. # Example
+// This resource can be imported by specifying the action ID. # Example
 //
 // ```sh
 //
-//	$ pulumi import auth0:index/action:Action my_action 12f4f21b-017a-319d-92e7-2291c1ca36c4
+//	$ pulumi import auth0:index/action:Action my_action "12f4f21b-017a-319d-92e7-2291c1ca36c4"
 //
 // ```
 //
@@ -37,7 +37,7 @@ type Action struct {
 	Deploy pulumi.BoolPtrOutput `pulumi:"deploy"`
 	// The name of the action.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
+	// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
 	// List of secrets that are included in an action or a version of an action.
 	Secrets ActionSecretArrayOutput `pulumi:"secrets"`
@@ -91,7 +91,7 @@ type actionState struct {
 	Deploy *bool `pulumi:"deploy"`
 	// The name of the action.
 	Name *string `pulumi:"name"`
-	// The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
+	// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
 	Runtime *string `pulumi:"runtime"`
 	// List of secrets that are included in an action or a version of an action.
 	Secrets []ActionSecret `pulumi:"secrets"`
@@ -110,7 +110,7 @@ type ActionState struct {
 	Deploy pulumi.BoolPtrInput
 	// The name of the action.
 	Name pulumi.StringPtrInput
-	// The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
+	// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
 	Runtime pulumi.StringPtrInput
 	// List of secrets that are included in an action or a version of an action.
 	Secrets ActionSecretArrayInput
@@ -133,7 +133,7 @@ type actionArgs struct {
 	Deploy *bool `pulumi:"deploy"`
 	// The name of the action.
 	Name *string `pulumi:"name"`
-	// The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
+	// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
 	Runtime *string `pulumi:"runtime"`
 	// List of secrets that are included in an action or a version of an action.
 	Secrets []ActionSecret `pulumi:"secrets"`
@@ -151,7 +151,7 @@ type ActionArgs struct {
 	Deploy pulumi.BoolPtrInput
 	// The name of the action.
 	Name pulumi.StringPtrInput
-	// The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
+	// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
 	Runtime pulumi.StringPtrInput
 	// List of secrets that are included in an action or a version of an action.
 	Secrets ActionSecretArrayInput
@@ -290,7 +290,7 @@ func (o ActionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
+// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
 func (o ActionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }

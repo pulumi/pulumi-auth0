@@ -3,13 +3,11 @@
 
 package com.pulumi.auth0.outputs;
 
-import com.pulumi.auth0.outputs.GetTenantChangePassword;
-import com.pulumi.auth0.outputs.GetTenantErrorPage;
 import com.pulumi.auth0.outputs.GetTenantFlag;
-import com.pulumi.auth0.outputs.GetTenantGuardianMfaPage;
+import com.pulumi.auth0.outputs.GetTenantSession;
 import com.pulumi.auth0.outputs.GetTenantSessionCooky;
-import com.pulumi.auth0.outputs.GetTenantUniversalLogin;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
@@ -18,11 +16,15 @@ import java.util.Objects;
 @CustomType
 public final class GetTenantResult {
     /**
+     * @return Whether to accept an organization name instead of an ID on auth endpoints.
+     * 
+     */
+    private Boolean allowOrganizationNameInAuthenticationApi;
+    /**
      * @return URLs that Auth0 may redirect to after logout.
      * 
      */
     private List<String> allowedLogoutUrls;
-    private List<GetTenantChangePassword> changePasswords;
     /**
      * @return API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      * 
@@ -48,7 +50,6 @@ public final class GetTenantResult {
      * 
      */
     private List<String> enabledLocales;
-    private List<GetTenantErrorPage> errorPages;
     /**
      * @return Configuration settings for tenant flags.
      * 
@@ -59,7 +60,6 @@ public final class GetTenantResult {
      * 
      */
     private String friendlyName;
-    private List<GetTenantGuardianMfaPage> guardianMfaPages;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -96,6 +96,11 @@ public final class GetTenantResult {
      */
     private Double sessionLifetime;
     /**
+     * @return Sessions related settings for the tenant.
+     * 
+     */
+    private List<GetTenantSession> sessions;
+    /**
      * @return Support email address for authenticating users.
      * 
      */
@@ -105,18 +110,21 @@ public final class GetTenantResult {
      * 
      */
     private String supportUrl;
-    private List<GetTenantUniversalLogin> universalLogins;
 
     private GetTenantResult() {}
+    /**
+     * @return Whether to accept an organization name instead of an ID on auth endpoints.
+     * 
+     */
+    public Boolean allowOrganizationNameInAuthenticationApi() {
+        return this.allowOrganizationNameInAuthenticationApi;
+    }
     /**
      * @return URLs that Auth0 may redirect to after logout.
      * 
      */
     public List<String> allowedLogoutUrls() {
         return this.allowedLogoutUrls;
-    }
-    public List<GetTenantChangePassword> changePasswords() {
-        return this.changePasswords;
     }
     /**
      * @return API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -153,9 +161,6 @@ public final class GetTenantResult {
     public List<String> enabledLocales() {
         return this.enabledLocales;
     }
-    public List<GetTenantErrorPage> errorPages() {
-        return this.errorPages;
-    }
     /**
      * @return Configuration settings for tenant flags.
      * 
@@ -169,9 +174,6 @@ public final class GetTenantResult {
      */
     public String friendlyName() {
         return this.friendlyName;
-    }
-    public List<GetTenantGuardianMfaPage> guardianMfaPages() {
-        return this.guardianMfaPages;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -223,6 +225,13 @@ public final class GetTenantResult {
         return this.sessionLifetime;
     }
     /**
+     * @return Sessions related settings for the tenant.
+     * 
+     */
+    public List<GetTenantSession> sessions() {
+        return this.sessions;
+    }
+    /**
      * @return Support email address for authenticating users.
      * 
      */
@@ -236,9 +245,6 @@ public final class GetTenantResult {
     public String supportUrl() {
         return this.supportUrl;
     }
-    public List<GetTenantUniversalLogin> universalLogins() {
-        return this.universalLogins;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -249,17 +255,15 @@ public final class GetTenantResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean allowOrganizationNameInAuthenticationApi;
         private List<String> allowedLogoutUrls;
-        private List<GetTenantChangePassword> changePasswords;
         private String defaultAudience;
         private String defaultDirectory;
         private String defaultRedirectionUri;
         private String domain;
         private List<String> enabledLocales;
-        private List<GetTenantErrorPage> errorPages;
         private List<GetTenantFlag> flags;
         private String friendlyName;
-        private List<GetTenantGuardianMfaPage> guardianMfaPages;
         private String id;
         private Double idleSessionLifetime;
         private String managementApiIdentifier;
@@ -267,23 +271,21 @@ public final class GetTenantResult {
         private String sandboxVersion;
         private List<GetTenantSessionCooky> sessionCookies;
         private Double sessionLifetime;
+        private List<GetTenantSession> sessions;
         private String supportEmail;
         private String supportUrl;
-        private List<GetTenantUniversalLogin> universalLogins;
         public Builder() {}
         public Builder(GetTenantResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowOrganizationNameInAuthenticationApi = defaults.allowOrganizationNameInAuthenticationApi;
     	      this.allowedLogoutUrls = defaults.allowedLogoutUrls;
-    	      this.changePasswords = defaults.changePasswords;
     	      this.defaultAudience = defaults.defaultAudience;
     	      this.defaultDirectory = defaults.defaultDirectory;
     	      this.defaultRedirectionUri = defaults.defaultRedirectionUri;
     	      this.domain = defaults.domain;
     	      this.enabledLocales = defaults.enabledLocales;
-    	      this.errorPages = defaults.errorPages;
     	      this.flags = defaults.flags;
     	      this.friendlyName = defaults.friendlyName;
-    	      this.guardianMfaPages = defaults.guardianMfaPages;
     	      this.id = defaults.id;
     	      this.idleSessionLifetime = defaults.idleSessionLifetime;
     	      this.managementApiIdentifier = defaults.managementApiIdentifier;
@@ -291,11 +293,16 @@ public final class GetTenantResult {
     	      this.sandboxVersion = defaults.sandboxVersion;
     	      this.sessionCookies = defaults.sessionCookies;
     	      this.sessionLifetime = defaults.sessionLifetime;
+    	      this.sessions = defaults.sessions;
     	      this.supportEmail = defaults.supportEmail;
     	      this.supportUrl = defaults.supportUrl;
-    	      this.universalLogins = defaults.universalLogins;
         }
 
+        @CustomType.Setter
+        public Builder allowOrganizationNameInAuthenticationApi(Boolean allowOrganizationNameInAuthenticationApi) {
+            this.allowOrganizationNameInAuthenticationApi = Objects.requireNonNull(allowOrganizationNameInAuthenticationApi);
+            return this;
+        }
         @CustomType.Setter
         public Builder allowedLogoutUrls(List<String> allowedLogoutUrls) {
             this.allowedLogoutUrls = Objects.requireNonNull(allowedLogoutUrls);
@@ -303,14 +310,6 @@ public final class GetTenantResult {
         }
         public Builder allowedLogoutUrls(String... allowedLogoutUrls) {
             return allowedLogoutUrls(List.of(allowedLogoutUrls));
-        }
-        @CustomType.Setter
-        public Builder changePasswords(List<GetTenantChangePassword> changePasswords) {
-            this.changePasswords = Objects.requireNonNull(changePasswords);
-            return this;
-        }
-        public Builder changePasswords(GetTenantChangePassword... changePasswords) {
-            return changePasswords(List.of(changePasswords));
         }
         @CustomType.Setter
         public Builder defaultAudience(String defaultAudience) {
@@ -341,14 +340,6 @@ public final class GetTenantResult {
             return enabledLocales(List.of(enabledLocales));
         }
         @CustomType.Setter
-        public Builder errorPages(List<GetTenantErrorPage> errorPages) {
-            this.errorPages = Objects.requireNonNull(errorPages);
-            return this;
-        }
-        public Builder errorPages(GetTenantErrorPage... errorPages) {
-            return errorPages(List.of(errorPages));
-        }
-        @CustomType.Setter
         public Builder flags(List<GetTenantFlag> flags) {
             this.flags = Objects.requireNonNull(flags);
             return this;
@@ -360,14 +351,6 @@ public final class GetTenantResult {
         public Builder friendlyName(String friendlyName) {
             this.friendlyName = Objects.requireNonNull(friendlyName);
             return this;
-        }
-        @CustomType.Setter
-        public Builder guardianMfaPages(List<GetTenantGuardianMfaPage> guardianMfaPages) {
-            this.guardianMfaPages = Objects.requireNonNull(guardianMfaPages);
-            return this;
-        }
-        public Builder guardianMfaPages(GetTenantGuardianMfaPage... guardianMfaPages) {
-            return guardianMfaPages(List.of(guardianMfaPages));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -408,6 +391,14 @@ public final class GetTenantResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sessions(List<GetTenantSession> sessions) {
+            this.sessions = Objects.requireNonNull(sessions);
+            return this;
+        }
+        public Builder sessions(GetTenantSession... sessions) {
+            return sessions(List.of(sessions));
+        }
+        @CustomType.Setter
         public Builder supportEmail(String supportEmail) {
             this.supportEmail = Objects.requireNonNull(supportEmail);
             return this;
@@ -417,27 +408,17 @@ public final class GetTenantResult {
             this.supportUrl = Objects.requireNonNull(supportUrl);
             return this;
         }
-        @CustomType.Setter
-        public Builder universalLogins(List<GetTenantUniversalLogin> universalLogins) {
-            this.universalLogins = Objects.requireNonNull(universalLogins);
-            return this;
-        }
-        public Builder universalLogins(GetTenantUniversalLogin... universalLogins) {
-            return universalLogins(List.of(universalLogins));
-        }
         public GetTenantResult build() {
             final var o = new GetTenantResult();
+            o.allowOrganizationNameInAuthenticationApi = allowOrganizationNameInAuthenticationApi;
             o.allowedLogoutUrls = allowedLogoutUrls;
-            o.changePasswords = changePasswords;
             o.defaultAudience = defaultAudience;
             o.defaultDirectory = defaultDirectory;
             o.defaultRedirectionUri = defaultRedirectionUri;
             o.domain = domain;
             o.enabledLocales = enabledLocales;
-            o.errorPages = errorPages;
             o.flags = flags;
             o.friendlyName = friendlyName;
-            o.guardianMfaPages = guardianMfaPages;
             o.id = id;
             o.idleSessionLifetime = idleSessionLifetime;
             o.managementApiIdentifier = managementApiIdentifier;
@@ -445,9 +426,9 @@ public final class GetTenantResult {
             o.sandboxVersion = sandboxVersion;
             o.sessionCookies = sessionCookies;
             o.sessionLifetime = sessionLifetime;
+            o.sessions = sessions;
             o.supportEmail = supportEmail;
             o.supportUrl = supportUrl;
-            o.universalLogins = universalLogins;
             return o;
         }
     }

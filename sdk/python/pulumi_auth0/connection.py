@@ -152,7 +152,6 @@ class ConnectionArgs:
 class _ConnectionState:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 enabled_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_domain_connection: Optional[pulumi.Input[bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -163,7 +162,6 @@ class _ConnectionState:
         """
         Input properties used for looking up and filtering Connection resources.
         :param pulumi.Input[str] display_name: Name used in login screen.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `Connection` data source instead.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         :param pulumi.Input[str] name: Name of the connection.
@@ -174,8 +172,6 @@ class _ConnectionState:
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
-        if enabled_clients is not None:
-            pulumi.set(__self__, "enabled_clients", enabled_clients)
         if is_domain_connection is not None:
             pulumi.set(__self__, "is_domain_connection", is_domain_connection)
         if metadata is not None:
@@ -202,18 +198,6 @@ class _ConnectionState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter(name="enabledClients")
-    def enabled_clients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `Connection` data source instead.
-        """
-        return pulumi.get(self, "enabled_clients")
-
-    @enabled_clients.setter
-    def enabled_clients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "enabled_clients", value)
 
     @property
     @pulumi.getter(name="isDomainConnection")
@@ -596,47 +580,13 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="windowslive")
         ```
-        ### OIDC Connection
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        oidc = auth0.Connection("oidc",
-            display_name="OIDC Connection",
-            options=auth0.ConnectionOptionsArgs(
-                authorization_endpoint="https://www.paypal.com/signin/authorize",
-                client_id="1234567",
-                client_secret="1234567",
-                discovery_url="https://www.paypalobjects.com/.well-known/openid-configuration",
-                domain_aliases=["example.com"],
-                icon_url="https://example.com/assets/logo.png",
-                issuer="https://www.paypalobjects.com",
-                jwks_uri="https://api.paypal.com/v1/oauth2/certs",
-                non_persistent_attrs=[
-                    "ethnicity",
-                    "gender",
-                ],
-                scopes=[
-                    "openid",
-                    "email",
-                ],
-                set_user_root_attributes="on_first_login",
-                tenant_domain="",
-                token_endpoint="https://api.paypal.com/v1/oauth2/token",
-                type="front_channel",
-                userinfo_endpoint="https://api.paypal.com/v1/oauth2/token/userinfo",
-            ),
-            show_as_button=False,
-            strategy="oidc")
-        ```
 
         ## Import
 
-        Connections can be imported using their ID. # Example
+        This resource can be imported by specifying the connection ID. # Example
 
         ```sh
-         $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
+         $ pulumi import auth0:index/connection:Connection google "con_a17f21fdb24d48a0"
         ```
 
         :param str resource_name: The name of the resource.
@@ -938,47 +888,13 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="windowslive")
         ```
-        ### OIDC Connection
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        oidc = auth0.Connection("oidc",
-            display_name="OIDC Connection",
-            options=auth0.ConnectionOptionsArgs(
-                authorization_endpoint="https://www.paypal.com/signin/authorize",
-                client_id="1234567",
-                client_secret="1234567",
-                discovery_url="https://www.paypalobjects.com/.well-known/openid-configuration",
-                domain_aliases=["example.com"],
-                icon_url="https://example.com/assets/logo.png",
-                issuer="https://www.paypalobjects.com",
-                jwks_uri="https://api.paypal.com/v1/oauth2/certs",
-                non_persistent_attrs=[
-                    "ethnicity",
-                    "gender",
-                ],
-                scopes=[
-                    "openid",
-                    "email",
-                ],
-                set_user_root_attributes="on_first_login",
-                tenant_domain="",
-                token_endpoint="https://api.paypal.com/v1/oauth2/token",
-                type="front_channel",
-                userinfo_endpoint="https://api.paypal.com/v1/oauth2/token/userinfo",
-            ),
-            show_as_button=False,
-            strategy="oidc")
-        ```
 
         ## Import
 
-        Connections can be imported using their ID. # Example
+        This resource can be imported by specifying the connection ID. # Example
 
         ```sh
-         $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
+         $ pulumi import auth0:index/connection:Connection google "con_a17f21fdb24d48a0"
         ```
 
         :param str resource_name: The name of the resource.
@@ -1023,7 +939,6 @@ class Connection(pulumi.CustomResource):
             if strategy is None and not opts.urn:
                 raise TypeError("Missing required property 'strategy'")
             __props__.__dict__["strategy"] = strategy
-            __props__.__dict__["enabled_clients"] = None
         super(Connection, __self__).__init__(
             'auth0:index/connection:Connection',
             resource_name,
@@ -1035,7 +950,6 @@ class Connection(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            enabled_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             is_domain_connection: Optional[pulumi.Input[bool]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1051,7 +965,6 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Name used in login screen.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `Connection` data source instead.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         :param pulumi.Input[str] name: Name of the connection.
@@ -1065,7 +978,6 @@ class Connection(pulumi.CustomResource):
         __props__ = _ConnectionState.__new__(_ConnectionState)
 
         __props__.__dict__["display_name"] = display_name
-        __props__.__dict__["enabled_clients"] = enabled_clients
         __props__.__dict__["is_domain_connection"] = is_domain_connection
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
@@ -1082,14 +994,6 @@ class Connection(pulumi.CustomResource):
         Name used in login screen.
         """
         return pulumi.get(self, "display_name")
-
-    @property
-    @pulumi.getter(name="enabledClients")
-    def enabled_clients(self) -> pulumi.Output[Sequence[str]]:
-        """
-        IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `Connection` data source instead.
-        """
-        return pulumi.get(self, "enabled_clients")
 
     @property
     @pulumi.getter(name="isDomainConnection")

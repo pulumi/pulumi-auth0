@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -22,31 +22,22 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := auth0.NewRole(ctx, "admin", &auth0.RoleArgs{
-//				Description: pulumi.String("Administrator"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = auth0.NewUser(ctx, "user", &auth0.UserArgs{
+//			_, err := auth0.NewUser(ctx, "user", &auth0.UserArgs{
 //				ConnectionName: pulumi.String("Username-Password-Authentication"),
-//				UserId:         pulumi.String("12345"),
-//				Username:       pulumi.String("unique_username"),
-//				Nickname:       pulumi.String("some.nickname"),
 //				Email:          pulumi.String("test@test.com"),
 //				EmailVerified:  pulumi.Bool(true),
+//				Nickname:       pulumi.String("some.nickname"),
 //				Password:       pulumi.String("passpass$12$12"),
 //				Picture:        pulumi.String("https://www.example.com/a-valid-picture-url.jpg"),
-//				Roles: pulumi.StringArray{
-//					admin.ID(),
-//				},
+//				UserId:         pulumi.String("12345"),
+//				Username:       pulumi.String("unique_username"),
 //			})
 //			if err != nil {
 //				return err
@@ -63,7 +54,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import auth0:index/user:User user auth0|111111111111111111111111
+//	$ pulumi import auth0:index/user:User user "auth0|111111111111111111111111"
 //
 // ```
 type User struct {
@@ -89,23 +80,12 @@ type User struct {
 	Nickname pulumi.StringOutput `pulumi:"nickname"`
 	// Initial password for this user. Required for non-passwordless connections (SMS and email).
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `User` data source instead.
-	//
-	// Deprecated: Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.
-	Permissions UserPermissionTypeArrayOutput `pulumi:"permissions"`
 	// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber pulumi.StringPtrOutput `pulumi:"phoneNumber"`
 	// Indicates whether the phone number has been verified.
 	PhoneVerified pulumi.BoolPtrOutput `pulumi:"phoneVerified"`
 	// Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
 	Picture pulumi.StringOutput `pulumi:"picture"`
-	// Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-	// a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-	// instead. Check the [MIGRATION
-	// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-	//
-	// Deprecated: Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-	Roles pulumi.StringArrayOutput `pulumi:"roles"`
 	// ID of the user.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 	// Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
@@ -176,23 +156,12 @@ type userState struct {
 	Nickname *string `pulumi:"nickname"`
 	// Initial password for this user. Required for non-passwordless connections (SMS and email).
 	Password *string `pulumi:"password"`
-	// List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `User` data source instead.
-	//
-	// Deprecated: Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.
-	Permissions []UserPermissionType `pulumi:"permissions"`
 	// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber *string `pulumi:"phoneNumber"`
 	// Indicates whether the phone number has been verified.
 	PhoneVerified *bool `pulumi:"phoneVerified"`
 	// Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
 	Picture *string `pulumi:"picture"`
-	// Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-	// a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-	// instead. Check the [MIGRATION
-	// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-	//
-	// Deprecated: Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-	Roles []string `pulumi:"roles"`
 	// ID of the user.
 	UserId *string `pulumi:"userId"`
 	// Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
@@ -224,23 +193,12 @@ type UserState struct {
 	Nickname pulumi.StringPtrInput
 	// Initial password for this user. Required for non-passwordless connections (SMS and email).
 	Password pulumi.StringPtrInput
-	// List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `User` data source instead.
-	//
-	// Deprecated: Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.
-	Permissions UserPermissionTypeArrayInput
 	// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber pulumi.StringPtrInput
 	// Indicates whether the phone number has been verified.
 	PhoneVerified pulumi.BoolPtrInput
 	// Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
 	Picture pulumi.StringPtrInput
-	// Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-	// a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-	// instead. Check the [MIGRATION
-	// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-	//
-	// Deprecated: Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-	Roles pulumi.StringArrayInput
 	// ID of the user.
 	UserId pulumi.StringPtrInput
 	// Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
@@ -282,13 +240,6 @@ type userArgs struct {
 	PhoneVerified *bool `pulumi:"phoneVerified"`
 	// Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
 	Picture *string `pulumi:"picture"`
-	// Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-	// a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-	// instead. Check the [MIGRATION
-	// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-	//
-	// Deprecated: Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-	Roles []string `pulumi:"roles"`
 	// ID of the user.
 	UserId *string `pulumi:"userId"`
 	// Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
@@ -327,13 +278,6 @@ type UserArgs struct {
 	PhoneVerified pulumi.BoolPtrInput
 	// Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
 	Picture pulumi.StringPtrInput
-	// Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-	// a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-	// instead. Check the [MIGRATION
-	// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-	//
-	// Deprecated: Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-	Roles pulumi.StringArrayInput
 	// ID of the user.
 	UserId pulumi.StringPtrInput
 	// Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
@@ -505,13 +449,6 @@ func (o UserOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `User` data source instead.
-//
-// Deprecated: Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.
-func (o UserOutput) Permissions() UserPermissionTypeArrayOutput {
-	return o.ApplyT(func(v *User) UserPermissionTypeArrayOutput { return v.Permissions }).(UserPermissionTypeArrayOutput)
-}
-
 // Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 func (o UserOutput) PhoneNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.PhoneNumber }).(pulumi.StringPtrOutput)
@@ -525,16 +462,6 @@ func (o UserOutput) PhoneVerified() pulumi.BoolPtrOutput {
 // Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
 func (o UserOutput) Picture() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Picture }).(pulumi.StringOutput)
-}
-
-// Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-// a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-// instead. Check the [MIGRATION
-// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-//
-// Deprecated: Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-func (o UserOutput) Roles() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
 // ID of the user.

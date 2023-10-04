@@ -14,23 +14,23 @@ namespace Pulumi.Auth0.Outputs
     public sealed class AttackProtectionBruteForceProtection
     {
         /// <summary>
-        /// List of trusted IP addresses that will not have attack protection enforced against them.
+        /// List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
         /// </summary>
         public readonly ImmutableArray<string> Allowlists;
         /// <summary>
         /// Whether brute force attack protections are active.
         /// </summary>
-        public readonly bool? Enabled;
+        public readonly bool Enabled;
         /// <summary>
-        /// Maximum number of unsuccessful attempts. Only available on public tenants.
+        /// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
         /// </summary>
         public readonly int? MaxAttempts;
         /// <summary>
-        /// Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+        /// Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` (lockout an account from a given IP Address) or `count_per_identifier` (lockout an account regardless of IP Address).
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
+        /// Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
         /// </summary>
         public readonly ImmutableArray<string> Shields;
 
@@ -38,7 +38,7 @@ namespace Pulumi.Auth0.Outputs
         private AttackProtectionBruteForceProtection(
             ImmutableArray<string> allowlists,
 
-            bool? enabled,
+            bool enabled,
 
             int? maxAttempts,
 

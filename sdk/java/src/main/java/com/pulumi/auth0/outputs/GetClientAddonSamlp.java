@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetClientAddonSamlpLogout;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -23,7 +24,7 @@ public final class GetClientAddonSamlp {
     private Boolean includeAttributeNameFormat;
     private String issuer;
     private Integer lifetimeInSeconds;
-    private Map<String,Object> logout;
+    private List<GetClientAddonSamlpLogout> logouts;
     private Boolean mapIdentities;
     private Boolean mapUnknownClaimsAsIs;
     private Map<String,Object> mappings;
@@ -64,8 +65,8 @@ public final class GetClientAddonSamlp {
     public Integer lifetimeInSeconds() {
         return this.lifetimeInSeconds;
     }
-    public Map<String,Object> logout() {
-        return this.logout;
+    public List<GetClientAddonSamlpLogout> logouts() {
+        return this.logouts;
     }
     public Boolean mapIdentities() {
         return this.mapIdentities;
@@ -119,7 +120,7 @@ public final class GetClientAddonSamlp {
         private Boolean includeAttributeNameFormat;
         private String issuer;
         private Integer lifetimeInSeconds;
-        private Map<String,Object> logout;
+        private List<GetClientAddonSamlpLogout> logouts;
         private Boolean mapIdentities;
         private Boolean mapUnknownClaimsAsIs;
         private Map<String,Object> mappings;
@@ -143,7 +144,7 @@ public final class GetClientAddonSamlp {
     	      this.includeAttributeNameFormat = defaults.includeAttributeNameFormat;
     	      this.issuer = defaults.issuer;
     	      this.lifetimeInSeconds = defaults.lifetimeInSeconds;
-    	      this.logout = defaults.logout;
+    	      this.logouts = defaults.logouts;
     	      this.mapIdentities = defaults.mapIdentities;
     	      this.mapUnknownClaimsAsIs = defaults.mapUnknownClaimsAsIs;
     	      this.mappings = defaults.mappings;
@@ -203,9 +204,12 @@ public final class GetClientAddonSamlp {
             return this;
         }
         @CustomType.Setter
-        public Builder logout(Map<String,Object> logout) {
-            this.logout = Objects.requireNonNull(logout);
+        public Builder logouts(List<GetClientAddonSamlpLogout> logouts) {
+            this.logouts = Objects.requireNonNull(logouts);
             return this;
+        }
+        public Builder logouts(GetClientAddonSamlpLogout... logouts) {
+            return logouts(List.of(logouts));
         }
         @CustomType.Setter
         public Builder mapIdentities(Boolean mapIdentities) {
@@ -276,7 +280,7 @@ public final class GetClientAddonSamlp {
             o.includeAttributeNameFormat = includeAttributeNameFormat;
             o.issuer = issuer;
             o.lifetimeInSeconds = lifetimeInSeconds;
-            o.logout = logout;
+            o.logouts = logouts;
             o.mapIdentities = mapIdentities;
             o.mapUnknownClaimsAsIs = mapUnknownClaimsAsIs;
             o.mappings = mappings;

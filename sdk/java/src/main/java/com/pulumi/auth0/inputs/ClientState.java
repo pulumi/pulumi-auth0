@@ -161,66 +161,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-     * Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
-     * `auth0_client_credentials` resource instead, to allow managing it directly or use the `auth0_client` data source to read
-     * this property.
-     * 
-     * @deprecated
-     * Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s secret instead or use the `auth0_client` data source to read this property.
-     * 
-     */
-    @Deprecated /* Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead or use the `auth0_client` data source to read this property. */
-    @Import(name="clientSecret")
-    private @Nullable Output<String> clientSecret;
-
-    /**
-     * @return Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-     * Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
-     * `auth0_client_credentials` resource instead, to allow managing it directly or use the `auth0_client` data source to read
-     * this property.
-     * 
-     * @deprecated
-     * Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s secret instead or use the `auth0_client` data source to read this property.
-     * 
-     */
-    @Deprecated /* Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead or use the `auth0_client` data source to read this property. */
-    public Optional<Output<String>> clientSecret() {
-        return Optional.ofNullable(this.clientSecret);
-    }
-
-    /**
-     * Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
-     * 
-     * @deprecated
-     * Rotating a client&#39;s secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.
-     * 
-     */
-    @Deprecated /* Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime. */
-    @Import(name="clientSecretRotationTrigger")
-    private @Nullable Output<Map<String,Object>> clientSecretRotationTrigger;
-
-    /**
-     * @return Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
-     * 
-     * @deprecated
-     * Rotating a client&#39;s secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.
-     * 
-     */
-    @Deprecated /* Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime. */
-    public Optional<Output<Map<String,Object>>> clientSecretRotationTrigger() {
-        return Optional.ofNullable(this.clientSecretRotationTrigger);
-    }
-
-    /**
-     * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
+     * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      * 
      */
     @Import(name="crossOriginAuth")
     private @Nullable Output<Boolean> crossOriginAuth;
 
     /**
-     * @return Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
+     * @return Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      * 
      */
     public Optional<Output<Boolean>> crossOriginAuth() {
@@ -363,14 +311,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+     * Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
      * 
      */
     @Import(name="isTokenEndpointIpHeaderTrusted")
     private @Nullable Output<Boolean> isTokenEndpointIpHeaderTrusted;
 
     /**
-     * @return Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+     * @return Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
      * 
      */
     public Optional<Output<Boolean>> isTokenEndpointIpHeaderTrusted() {
@@ -528,6 +476,21 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Makes the use of Pushed Authorization Requests mandatory for this client.
+     * 
+     */
+    @Import(name="requirePushedAuthorizationRequests")
+    private @Nullable Output<Boolean> requirePushedAuthorizationRequests;
+
+    /**
+     * @return Makes the use of Pushed Authorization Requests mandatory for this client.
+     * 
+     */
+    public Optional<Output<Boolean>> requirePushedAuthorizationRequests() {
+        return Optional.ofNullable(this.requirePushedAuthorizationRequests);
+    }
+
+    /**
      * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      * 
      */
@@ -573,41 +536,6 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines the requested authentication method for the token endpoint. Options include `none` (public client without a
-     * client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-     * Managing the authentication method through this attribute is deprecated and it will be removed in a future major
-     * version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s authentication method instead. Check
-     * the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on
-     * how to do that.
-     * 
-     * @deprecated
-     * Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that.
-     * 
-     */
-    @Deprecated /* Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that. */
-    @Import(name="tokenEndpointAuthMethod")
-    private @Nullable Output<String> tokenEndpointAuthMethod;
-
-    /**
-     * @return Defines the requested authentication method for the token endpoint. Options include `none` (public client without a
-     * client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-     * Managing the authentication method through this attribute is deprecated and it will be removed in a future major
-     * version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s authentication method instead. Check
-     * the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on
-     * how to do that.
-     * 
-     * @deprecated
-     * Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that.
-     * 
-     */
-    @Deprecated /* Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that. */
-    public Optional<Output<String>> tokenEndpointAuthMethod() {
-        return Optional.ofNullable(this.tokenEndpointAuthMethod);
-    }
-
-    /**
      * URLs that represent valid web origins for use with web message response mode.
      * 
      */
@@ -634,8 +562,6 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         this.clientAliases = $.clientAliases;
         this.clientId = $.clientId;
         this.clientMetadata = $.clientMetadata;
-        this.clientSecret = $.clientSecret;
-        this.clientSecretRotationTrigger = $.clientSecretRotationTrigger;
         this.crossOriginAuth = $.crossOriginAuth;
         this.crossOriginLoc = $.crossOriginLoc;
         this.customLoginPage = $.customLoginPage;
@@ -657,10 +583,10 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         this.organizationRequireBehavior = $.organizationRequireBehavior;
         this.organizationUsage = $.organizationUsage;
         this.refreshToken = $.refreshToken;
+        this.requirePushedAuthorizationRequests = $.requirePushedAuthorizationRequests;
         this.signingKeys = $.signingKeys;
         this.sso = $.sso;
         this.ssoDisabled = $.ssoDisabled;
-        this.tokenEndpointAuthMethod = $.tokenEndpointAuthMethod;
         this.webOrigins = $.webOrigins;
     }
 
@@ -922,71 +848,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientSecret Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-         * Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
-         * `auth0_client_credentials` resource instead, to allow managing it directly or use the `auth0_client` data source to read
-         * this property.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s secret instead or use the `auth0_client` data source to read this property.
-         * 
-         */
-        @Deprecated /* Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead or use the `auth0_client` data source to read this property. */
-        public Builder clientSecret(@Nullable Output<String> clientSecret) {
-            $.clientSecret = clientSecret;
-            return this;
-        }
-
-        /**
-         * @param clientSecret Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-         * Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
-         * `auth0_client_credentials` resource instead, to allow managing it directly or use the `auth0_client` data source to read
-         * this property.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s secret instead or use the `auth0_client` data source to read this property.
-         * 
-         */
-        @Deprecated /* Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead or use the `auth0_client` data source to read this property. */
-        public Builder clientSecret(String clientSecret) {
-            return clientSecret(Output.of(clientSecret));
-        }
-
-        /**
-         * @param clientSecretRotationTrigger Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Rotating a client&#39;s secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.
-         * 
-         */
-        @Deprecated /* Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime. */
-        public Builder clientSecretRotationTrigger(@Nullable Output<Map<String,Object>> clientSecretRotationTrigger) {
-            $.clientSecretRotationTrigger = clientSecretRotationTrigger;
-            return this;
-        }
-
-        /**
-         * @param clientSecretRotationTrigger Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Rotating a client&#39;s secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.
-         * 
-         */
-        @Deprecated /* Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime. */
-        public Builder clientSecretRotationTrigger(Map<String,Object> clientSecretRotationTrigger) {
-            return clientSecretRotationTrigger(Output.of(clientSecretRotationTrigger));
-        }
-
-        /**
-         * @param crossOriginAuth Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
+         * @param crossOriginAuth Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
          * 
          * @return builder
          * 
@@ -997,7 +859,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param crossOriginAuth Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
+         * @param crossOriginAuth Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
          * 
          * @return builder
          * 
@@ -1206,7 +1068,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isTokenEndpointIpHeaderTrusted Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+         * @param isTokenEndpointIpHeaderTrusted Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
          * 
          * @return builder
          * 
@@ -1217,7 +1079,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isTokenEndpointIpHeaderTrusted Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+         * @param isTokenEndpointIpHeaderTrusted Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
          * 
          * @return builder
          * 
@@ -1447,6 +1309,27 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param requirePushedAuthorizationRequests Makes the use of Pushed Authorization Requests mandatory for this client.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requirePushedAuthorizationRequests(@Nullable Output<Boolean> requirePushedAuthorizationRequests) {
+            $.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
+            return this;
+        }
+
+        /**
+         * @param requirePushedAuthorizationRequests Makes the use of Pushed Authorization Requests mandatory for this client.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requirePushedAuthorizationRequests(Boolean requirePushedAuthorizationRequests) {
+            return requirePushedAuthorizationRequests(Output.of(requirePushedAuthorizationRequests));
+        }
+
+        /**
          * @param signingKeys List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
          * 
          * @return builder
@@ -1517,47 +1400,6 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ssoDisabled(Boolean ssoDisabled) {
             return ssoDisabled(Output.of(ssoDisabled));
-        }
-
-        /**
-         * @param tokenEndpointAuthMethod Defines the requested authentication method for the token endpoint. Options include `none` (public client without a
-         * client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-         * Managing the authentication method through this attribute is deprecated and it will be removed in a future major
-         * version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s authentication method instead. Check
-         * the [MIGRATION
-         * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on
-         * how to do that.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that.
-         * 
-         */
-        @Deprecated /* Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that. */
-        public Builder tokenEndpointAuthMethod(@Nullable Output<String> tokenEndpointAuthMethod) {
-            $.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
-            return this;
-        }
-
-        /**
-         * @param tokenEndpointAuthMethod Defines the requested authentication method for the token endpoint. Options include `none` (public client without a
-         * client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-         * Managing the authentication method through this attribute is deprecated and it will be removed in a future major
-         * version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s authentication method instead. Check
-         * the [MIGRATION
-         * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on
-         * how to do that.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client&#39;s authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that.
-         * 
-         */
-        @Deprecated /* Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on how to do that. */
-        public Builder tokenEndpointAuthMethod(String tokenEndpointAuthMethod) {
-            return tokenEndpointAuthMethod(Output.of(tokenEndpointAuthMethod));
         }
 
         /**

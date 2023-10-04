@@ -23,9 +23,6 @@ import javax.annotation.Nullable;
  * 
  * !&gt; This resource is deprecated. Refer to the [guide on how to migrate from hooks to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-hooks-to-actions) and manage your actions using the `auth0.Action` resource.
  * 
- * !&gt; This resource is deprecated. Refer to the [guide on how to migrate from rules to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-rules-to-actions)
- * and manage your actions using the `auth0.Action` resource.
- * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -67,10 +64,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * A hook can be imported using the hook&#39;s ID. # Example
+ * This resource can be imported by specifying the hook ID. # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/hook:Hook my_hook 00001
+ *  $ pulumi import auth0:index/hook:Hook my_hook &#34;00001&#34;
  * ```
  * 
  */

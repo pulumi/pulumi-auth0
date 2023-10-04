@@ -58,7 +58,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? EnableClientConnections;
         /// <summary>
-        /// Indicates whether the tenant allows custom domains in emails.
+        /// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
         /// </summary>
         public readonly bool? EnableCustomDomainInEmails;
         /// <summary>
@@ -94,13 +94,13 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? NoDiscloseEnterpriseConnections;
         /// <summary>
+        /// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+        /// </summary>
+        public readonly bool? RequirePushedAuthorizationRequests;
+        /// <summary>
         /// Delete underlying grant when a refresh token is revoked via the Authentication API.
         /// </summary>
         public readonly bool? RevokeRefreshTokenGrant;
-        /// <summary>
-        /// Indicates whether the New Universal Login Experience is enabled.
-        /// </summary>
-        public readonly bool? UniversalLogin;
         /// <summary>
         /// Indicates whether to use scope descriptions for consent.
         /// </summary>
@@ -148,9 +148,9 @@ namespace Pulumi.Auth0.Outputs
 
             bool? noDiscloseEnterpriseConnections,
 
-            bool? revokeRefreshTokenGrant,
+            bool? requirePushedAuthorizationRequests,
 
-            bool? universalLogin,
+            bool? revokeRefreshTokenGrant,
 
             bool? useScopeDescriptionsForConsent)
         {
@@ -174,8 +174,8 @@ namespace Pulumi.Auth0.Outputs
             EnablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
             MfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
             NoDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
+            RequirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
             RevokeRefreshTokenGrant = revokeRefreshTokenGrant;
-            UniversalLogin = universalLogin;
             UseScopeDescriptionsForConsent = useScopeDescriptionsForConsent;
         }
     }

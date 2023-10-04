@@ -37,7 +37,7 @@ import * as utilities from "./utilities";
  * This resource can be imported by specifying the Connection ID. # Example
  *
  * ```sh
- *  $ pulumi import auth0:index/connectionClients:ConnectionClients my_conn_clients_assoc con_XXXXX
+ *  $ pulumi import auth0:index/connectionClients:ConnectionClients my_conn_clients_assoc "con_XXXXX"
  * ```
  */
 export class ConnectionClients extends pulumi.CustomResource {

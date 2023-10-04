@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification cd_XXXXXXXXXXXXXXXX
+//	$ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification "cd_XXXXXXXXXXXXXXXX"
 //
 // ```
 type CustomDomainVerification struct {

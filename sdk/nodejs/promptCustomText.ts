@@ -44,10 +44,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported by specifying the prompt and language separated by ":". # Example
+ * This resource can be imported by specifying the prompt and language separated by "::" (note the double colon) <prompt>::<language> # Example
  *
  * ```sh
- *  $ pulumi import auth0:index/promptCustomText:PromptCustomText example login:en
+ *  $ pulumi import auth0:index/promptCustomText:PromptCustomText example "login::en"
  * ```
  */
 export class PromptCustomText extends pulumi.CustomResource {
@@ -83,7 +83,7 @@ export class PromptCustomText extends pulumi.CustomResource {
      */
     public readonly body!: pulumi.Output<string>;
     /**
-     * Language of the custom text. Options include: `ar`, `bg`, `bs`, `cs`, `da`, `de`, `el`, `en`, `es`, `et`, `fi`, `fr`, `fr-CA`, `fr-FR`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
+     * Language of the custom text. Options include: `ar`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `eu-ES`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
      */
     public readonly language!: pulumi.Output<string>;
     /**
@@ -136,7 +136,7 @@ export interface PromptCustomTextState {
      */
     body?: pulumi.Input<string>;
     /**
-     * Language of the custom text. Options include: `ar`, `bg`, `bs`, `cs`, `da`, `de`, `el`, `en`, `es`, `et`, `fi`, `fr`, `fr-CA`, `fr-FR`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
+     * Language of the custom text. Options include: `ar`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `eu-ES`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
      */
     language?: pulumi.Input<string>;
     /**
@@ -154,7 +154,7 @@ export interface PromptCustomTextArgs {
      */
     body: pulumi.Input<string>;
     /**
-     * Language of the custom text. Options include: `ar`, `bg`, `bs`, `cs`, `da`, `de`, `el`, `en`, `es`, `et`, `fi`, `fr`, `fr-CA`, `fr-FR`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
+     * Language of the custom text. Options include: `ar`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `eu-ES`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
      */
     language: pulumi.Input<string>;
     /**

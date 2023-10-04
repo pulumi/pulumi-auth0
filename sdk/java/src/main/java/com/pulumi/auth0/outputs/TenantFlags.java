@@ -67,7 +67,7 @@ public final class TenantFlags {
      */
     private @Nullable Boolean enableClientConnections;
     /**
-     * @return Indicates whether the tenant allows custom domains in emails.
+     * @return Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
      * 
      */
     private @Nullable Boolean enableCustomDomainInEmails;
@@ -112,19 +112,15 @@ public final class TenantFlags {
      */
     private @Nullable Boolean noDiscloseEnterpriseConnections;
     /**
+     * @return Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+     * 
+     */
+    private @Nullable Boolean requirePushedAuthorizationRequests;
+    /**
      * @return Delete underlying grant when a refresh token is revoked via the Authentication API.
      * 
      */
     private @Nullable Boolean revokeRefreshTokenGrant;
-    /**
-     * @return Indicates whether the New Universal Login Experience is enabled.
-     * 
-     * @deprecated
-     * This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead. */
-    private @Nullable Boolean universalLogin;
     /**
      * @return Indicates whether to use scope descriptions for consent.
      * 
@@ -210,7 +206,7 @@ public final class TenantFlags {
         return Optional.ofNullable(this.enableClientConnections);
     }
     /**
-     * @return Indicates whether the tenant allows custom domains in emails.
+     * @return Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
      * 
      */
     public Optional<Boolean> enableCustomDomainInEmails() {
@@ -273,22 +269,18 @@ public final class TenantFlags {
         return Optional.ofNullable(this.noDiscloseEnterpriseConnections);
     }
     /**
+     * @return Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+     * 
+     */
+    public Optional<Boolean> requirePushedAuthorizationRequests() {
+        return Optional.ofNullable(this.requirePushedAuthorizationRequests);
+    }
+    /**
      * @return Delete underlying grant when a refresh token is revoked via the Authentication API.
      * 
      */
     public Optional<Boolean> revokeRefreshTokenGrant() {
         return Optional.ofNullable(this.revokeRefreshTokenGrant);
-    }
-    /**
-     * @return Indicates whether the New Universal Login Experience is enabled.
-     * 
-     * @deprecated
-     * This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead. */
-    public Optional<Boolean> universalLogin() {
-        return Optional.ofNullable(this.universalLogin);
     }
     /**
      * @return Indicates whether to use scope descriptions for consent.
@@ -327,8 +319,8 @@ public final class TenantFlags {
         private @Nullable Boolean enablePublicSignupUserExistsError;
         private @Nullable Boolean mfaShowFactorListOnEnrollment;
         private @Nullable Boolean noDiscloseEnterpriseConnections;
+        private @Nullable Boolean requirePushedAuthorizationRequests;
         private @Nullable Boolean revokeRefreshTokenGrant;
-        private @Nullable Boolean universalLogin;
         private @Nullable Boolean useScopeDescriptionsForConsent;
         public Builder() {}
         public Builder(TenantFlags defaults) {
@@ -353,8 +345,8 @@ public final class TenantFlags {
     	      this.enablePublicSignupUserExistsError = defaults.enablePublicSignupUserExistsError;
     	      this.mfaShowFactorListOnEnrollment = defaults.mfaShowFactorListOnEnrollment;
     	      this.noDiscloseEnterpriseConnections = defaults.noDiscloseEnterpriseConnections;
+    	      this.requirePushedAuthorizationRequests = defaults.requirePushedAuthorizationRequests;
     	      this.revokeRefreshTokenGrant = defaults.revokeRefreshTokenGrant;
-    	      this.universalLogin = defaults.universalLogin;
     	      this.useScopeDescriptionsForConsent = defaults.useScopeDescriptionsForConsent;
         }
 
@@ -459,13 +451,13 @@ public final class TenantFlags {
             return this;
         }
         @CustomType.Setter
-        public Builder revokeRefreshTokenGrant(@Nullable Boolean revokeRefreshTokenGrant) {
-            this.revokeRefreshTokenGrant = revokeRefreshTokenGrant;
+        public Builder requirePushedAuthorizationRequests(@Nullable Boolean requirePushedAuthorizationRequests) {
+            this.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
             return this;
         }
         @CustomType.Setter
-        public Builder universalLogin(@Nullable Boolean universalLogin) {
-            this.universalLogin = universalLogin;
+        public Builder revokeRefreshTokenGrant(@Nullable Boolean revokeRefreshTokenGrant) {
+            this.revokeRefreshTokenGrant = revokeRefreshTokenGrant;
             return this;
         }
         @CustomType.Setter
@@ -495,8 +487,8 @@ public final class TenantFlags {
             o.enablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
             o.mfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
             o.noDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
+            o.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
             o.revokeRefreshTokenGrant = revokeRefreshTokenGrant;
-            o.universalLogin = universalLogin;
             o.useScopeDescriptionsForConsent = useScopeDescriptionsForConsent;
             return o;
         }

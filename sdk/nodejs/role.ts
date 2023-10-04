@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,33 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
- *     identifier: "my-resource-server-identifier",
- *     signingAlg: "RS256",
- *     tokenLifetime: 86400,
- *     skipConsentForVerifiableFirstPartyClients: true,
- *     enforcePolicies: true,
- *     scopes: [{
- *         value: "read:something",
- *         description: "read something",
- *     }],
- * });
- * const myRole = new auth0.Role("myRole", {
- *     description: "Role Description...",
- *     permissions: [{
- *         resourceServerIdentifier: myResourceServer.identifier,
- *         name: "read:something",
- *     }],
- * });
- * const myUser = new auth0.User("myUser", {
- *     connectionName: "Username-Password-Authentication",
- *     userId: "auth0|1234567890",
- *     email: "test@test.com",
- *     password: "passpass$12$12",
- *     nickname: "testnick",
- *     username: "testnick",
- *     roles: [myRole.id],
- * });
+ * const myRole = new auth0.Role("myRole", {description: "Role Description..."});
  * ```
  *
  * ## Import
@@ -49,7 +21,7 @@ import * as utilities from "./utilities";
  * Existing roles can be imported using their ID. # Example
  *
  * ```sh
- *  $ pulumi import auth0:index/role:Role my_role XXXXXXXXXXXXXXXXXXXXXXX
+ *  $ pulumi import auth0:index/role:Role my_role "XXXXXXXXXXXXXXXXXXXXXXX"
  * ```
  */
 export class Role extends pulumi.CustomResource {
@@ -81,22 +53,13 @@ export class Role extends pulumi.CustomResource {
     }
 
     /**
-     * Description of the role.
+     * The description of the role.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Name for this role.
+     * The name of the role.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-     * attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-     * `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-     *
-     * @deprecated Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-     */
-    public readonly permissions!: pulumi.Output<outputs.RolePermission[] | undefined>;
 
     /**
      * Create a Role resource with the given unique name, arguments, and options.
@@ -113,12 +76,10 @@ export class Role extends pulumi.CustomResource {
             const state = argsOrState as RoleState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
         } else {
             const args = argsOrState as RoleArgs | undefined;
             resourceInputs["description"] = (args ? args.description : undefined) ?? "Managed by Pulumi";
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Role.__pulumiType, name, resourceInputs, opts);
@@ -130,22 +91,13 @@ export class Role extends pulumi.CustomResource {
  */
 export interface RoleState {
     /**
-     * Description of the role.
+     * The description of the role.
      */
     description?: pulumi.Input<string>;
     /**
-     * Name for this role.
+     * The name of the role.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-     * attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-     * `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-     *
-     * @deprecated Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-     */
-    permissions?: pulumi.Input<pulumi.Input<inputs.RolePermission>[]>;
 }
 
 /**
@@ -153,20 +105,11 @@ export interface RoleState {
  */
 export interface RoleArgs {
     /**
-     * Description of the role.
+     * The description of the role.
      */
     description?: pulumi.Input<string>;
     /**
-     * Name for this role.
+     * The name of the role.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-     * attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-     * `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-     *
-     * @deprecated Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-     */
-    permissions?: pulumi.Input<pulumi.Input<inputs.RolePermission>[]>;
 }

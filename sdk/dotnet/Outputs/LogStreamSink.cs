@@ -22,7 +22,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? AwsPartnerEventSource;
         /// <summary>
-        /// The AWS Region, e.g. "us-east-2").
+        /// The region in which the EventBridge event source will be created. Possible values: `ap-east-1`, `ap-northeast-1`, `ap-northeast-2`, `ap-northeast-3`, `ap-south-1`, `ap-southeast-1`, `ap-southeast-2`, `ca-central-1`, `cn-north-1`, `cn-northwest-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `me-south-1`, `sa-east-1`, `us-gov-east-1`, `us-gov-west-1`, `us-east-1`, `us-east-2`, `us-west-1`, `us-west-2`.
         /// </summary>
         public readonly string? AwsRegion;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? AzurePartnerTopic;
         /// <summary>
-        /// The Azure region code, e.g. "ne")
+        /// The Azure region code. Possible values: `australiacentral`, `australiaeast`, `australiasoutheast`, `brazilsouth`, `canadacentral`, `canadaeast`, `centralindia`, `centralus`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `germanywestcentral`, `japaneast`, `japanwest`, `koreacentral`, `koreasouth`, `northcentralus`, `northeurope`, `norwayeast`, `southafricanorth`, `southcentralus`, `southeastasia`, `southindia`, `switzerlandnorth`, `uaenorth`, `uksouth`, `ukwest`, `westcentralus`, `westeurope`, `westindia`, `westus`, `westus2`.
         /// </summary>
         public readonly string? AzureRegion;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? DatadogApiKey;
         /// <summary>
-        /// The Datadog region. Options are ["us", "eu", "us3", "us5"].
+        /// The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
         /// </summary>
         public readonly string? DatadogRegion;
         /// <summary>

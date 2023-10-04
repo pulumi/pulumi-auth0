@@ -11,8 +11,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -70,10 +68,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the organization ID and user ID separated by &#34;:&#34;. # Example
+ * This resource can be imported by specifying the organization ID and user ID separated by &#34;::&#34; (note the double colon) &lt;organizationID&gt;::&lt;userID&gt; # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/organizationMember:OrganizationMember my_org_member &#34;org_XXXXX:auth0|XXXXX&#34;
+ *  $ pulumi import auth0:index/organizationMember:OrganizationMember my_org_member &#34;org_XXXXX::auth0|XXXXX&#34;
  * ```
  * 
  */
@@ -92,32 +90,6 @@ public class OrganizationMember extends com.pulumi.resources.CustomResource {
      */
     public Output<String> organizationId() {
         return this.organizationId;
-    }
-    /**
-     * The role ID(s) to assign to the organization member. Managing roles through this attribute is deprecated and it will be
-     * removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role`
-     * resource to manage organization member roles instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how
-     * to do that.
-     * 
-     * @deprecated
-     * Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that.
-     * 
-     */
-    @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that. */
-    @Export(name="roles", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> roles;
-
-    /**
-     * @return The role ID(s) to assign to the organization member. Managing roles through this attribute is deprecated and it will be
-     * removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role`
-     * resource to manage organization member roles instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how
-     * to do that.
-     * 
-     */
-    public Output<Optional<List<String>>> roles() {
-        return Codegen.optional(this.roles);
     }
     /**
      * ID of the user to add as an organization member.

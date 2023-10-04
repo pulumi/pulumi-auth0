@@ -8,70 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
+	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myClient, err := auth0.NewClient(ctx, "myClient", nil)
-//			if err != nil {
-//				return err
-//			}
-//			myResourceServer, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
-//				Identifier: pulumi.String("https://api.example.com/client-grant"),
-//				Scopes: auth0.ResourceServerScopeTypeArray{
-//					&auth0.ResourceServerScopeTypeArgs{
-//						Value:       pulumi.String("create:foo"),
-//						Description: pulumi.String("Create foos"),
-//					},
-//					&auth0.ResourceServerScopeTypeArgs{
-//						Value:       pulumi.String("create:bar"),
-//						Description: pulumi.String("Create bars"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = auth0.NewClientGrant(ctx, "myClientGrant", &auth0.ClientGrantArgs{
-//				ClientId: myClient.ID(),
-//				Audience: myResourceServer.Identifier,
-//				Scopes: pulumi.StringArray{
-//					pulumi.String("create:foo"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// Client grants can be imported using the grant ID. # Application -> APIs -> Expand the required API # Example
+// This resource can be imported by specifying the client grant ID. You can find this within the Management Dashboard in Application -> APIs -> Expand the required API. # Example
 //
 // ```sh
 //
-//	$ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant cgr_XXXXXXXXXXXXXXXX
+//	$ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant "cgr_XXXXXXXXXXXXXXXX"
 //
 // ```
 type ClientGrant struct {

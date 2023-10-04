@@ -6,14 +6,11 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.RoleArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.RoleState;
-import com.pulumi.auth0.outputs.RolePermission;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -26,14 +23,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.auth0.ResourceServer;
- * import com.pulumi.auth0.ResourceServerArgs;
- * import com.pulumi.auth0.inputs.ResourceServerScopeArgs;
  * import com.pulumi.auth0.Role;
  * import com.pulumi.auth0.RoleArgs;
- * import com.pulumi.auth0.inputs.RolePermissionArgs;
- * import com.pulumi.auth0.User;
- * import com.pulumi.auth0.UserArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -47,34 +38,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myResourceServer = new ResourceServer(&#34;myResourceServer&#34;, ResourceServerArgs.builder()        
- *             .identifier(&#34;my-resource-server-identifier&#34;)
- *             .signingAlg(&#34;RS256&#34;)
- *             .tokenLifetime(86400)
- *             .skipConsentForVerifiableFirstPartyClients(true)
- *             .enforcePolicies(true)
- *             .scopes(ResourceServerScopeArgs.builder()
- *                 .value(&#34;read:something&#34;)
- *                 .description(&#34;read something&#34;)
- *                 .build())
- *             .build());
- * 
  *         var myRole = new Role(&#34;myRole&#34;, RoleArgs.builder()        
  *             .description(&#34;Role Description...&#34;)
- *             .permissions(RolePermissionArgs.builder()
- *                 .resourceServerIdentifier(myResourceServer.identifier())
- *                 .name(&#34;read:something&#34;)
- *                 .build())
- *             .build());
- * 
- *         var myUser = new User(&#34;myUser&#34;, UserArgs.builder()        
- *             .connectionName(&#34;Username-Password-Authentication&#34;)
- *             .userId(&#34;auth0|1234567890&#34;)
- *             .email(&#34;test@test.com&#34;)
- *             .password(&#34;passpass$12$12&#34;)
- *             .nickname(&#34;testnick&#34;)
- *             .username(&#34;testnick&#34;)
- *             .roles(myRole.id())
  *             .build());
  * 
  *     }
@@ -86,63 +51,39 @@ import javax.annotation.Nullable;
  * Existing roles can be imported using their ID. # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/role:Role my_role XXXXXXXXXXXXXXXXXXXXXXX
+ *  $ pulumi import auth0:index/role:Role my_role &#34;XXXXXXXXXXXXXXXXXXXXXXX&#34;
  * ```
  * 
  */
 @ResourceType(type="auth0:index/role:Role")
 public class Role extends com.pulumi.resources.CustomResource {
     /**
-     * Description of the role.
+     * The description of the role.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
-     * @return Description of the role.
+     * @return The description of the role.
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * Name for this role.
+     * The name of the role.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Name for this role.
+     * @return The name of the role.
      * 
      */
     public Output<String> name() {
         return this.name;
-    }
-    /**
-     * Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-     * attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-     * `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-     * 
-     * @deprecated
-     * Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-     * 
-     */
-    @Deprecated /* Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info. */
-    @Export(name="permissions", type=List.class, parameters={RolePermission.class})
-    private Output</* @Nullable */ List<RolePermission>> permissions;
-
-    /**
-     * @return Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
-     * attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
-     * `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
-     * 
-     */
-    public Output<Optional<List<RolePermission>>> permissions() {
-        return Codegen.optional(this.permissions);
     }
 
     /**

@@ -22,7 +22,7 @@ class GetClientResult:
     """
     A collection of values returned by getClient.
     """
-    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_aliases=None, client_id=None, client_metadata=None, client_secret=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, signing_keys=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, web_origins=None):
+    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_aliases=None, client_id=None, client_metadata=None, client_secret=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_pushed_authorization_requests=None, signing_keys=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
@@ -119,6 +119,9 @@ class GetClientResult:
         if refresh_tokens and not isinstance(refresh_tokens, list):
             raise TypeError("Expected argument 'refresh_tokens' to be a list")
         pulumi.set(__self__, "refresh_tokens", refresh_tokens)
+        if require_pushed_authorization_requests and not isinstance(require_pushed_authorization_requests, bool):
+            raise TypeError("Expected argument 'require_pushed_authorization_requests' to be a bool")
+        pulumi.set(__self__, "require_pushed_authorization_requests", require_pushed_authorization_requests)
         if signing_keys and not isinstance(signing_keys, list):
             raise TypeError("Expected argument 'signing_keys' to be a list")
         pulumi.set(__self__, "signing_keys", signing_keys)
@@ -216,7 +219,7 @@ class GetClientResult:
     @pulumi.getter(name="crossOriginAuth")
     def cross_origin_auth(self) -> bool:
         """
-        Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
+        Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         """
         return pulumi.get(self, "cross_origin_auth")
 
@@ -304,7 +307,7 @@ class GetClientResult:
     @pulumi.getter(name="isTokenEndpointIpHeaderTrusted")
     def is_token_endpoint_ip_header_trusted(self) -> bool:
         """
-        Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
+        Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         """
         return pulumi.get(self, "is_token_endpoint_ip_header_trusted")
 
@@ -389,6 +392,14 @@ class GetClientResult:
         return pulumi.get(self, "refresh_tokens")
 
     @property
+    @pulumi.getter(name="requirePushedAuthorizationRequests")
+    def require_pushed_authorization_requests(self) -> bool:
+        """
+        Makes the use of Pushed Authorization Requests mandatory for this client.
+        """
+        return pulumi.get(self, "require_pushed_authorization_requests")
+
+    @property
     @pulumi.getter(name="signingKeys")
     def signing_keys(self) -> Sequence[Mapping[str, Any]]:
         """
@@ -415,6 +426,9 @@ class GetClientResult:
     @property
     @pulumi.getter(name="tokenEndpointAuthMethod")
     def token_endpoint_auth_method(self) -> str:
+        """
+        The authentication method for the token endpoint. Results include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic). Managing a client's authentication method can be done via the `ClientCredentials` resource.
+        """
         return pulumi.get(self, "token_endpoint_auth_method")
 
     @property
@@ -464,6 +478,7 @@ class AwaitableGetClientResult(GetClientResult):
             organization_require_behavior=self.organization_require_behavior,
             organization_usage=self.organization_usage,
             refresh_tokens=self.refresh_tokens,
+            require_pushed_authorization_requests=self.require_pushed_authorization_requests,
             signing_keys=self.signing_keys,
             sso=self.sso,
             sso_disabled=self.sso_disabled,
@@ -530,6 +545,7 @@ def get_client(client_id: Optional[str] = None,
         organization_require_behavior=pulumi.get(__ret__, 'organization_require_behavior'),
         organization_usage=pulumi.get(__ret__, 'organization_usage'),
         refresh_tokens=pulumi.get(__ret__, 'refresh_tokens'),
+        require_pushed_authorization_requests=pulumi.get(__ret__, 'require_pushed_authorization_requests'),
         signing_keys=pulumi.get(__ret__, 'signing_keys'),
         sso=pulumi.get(__ret__, 'sso'),
         sso_disabled=pulumi.get(__ret__, 'sso_disabled'),

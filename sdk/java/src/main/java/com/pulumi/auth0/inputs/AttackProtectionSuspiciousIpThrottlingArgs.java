@@ -20,14 +20,14 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
     public static final AttackProtectionSuspiciousIpThrottlingArgs Empty = new AttackProtectionSuspiciousIpThrottlingArgs();
 
     /**
-     * List of trusted IP addresses that will not have attack protection enforced against them.
+     * List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
      * 
      */
     @Import(name="allowlists")
     private @Nullable Output<List<String>> allowlists;
 
     /**
-     * @return List of trusted IP addresses that will not have attack protection enforced against them.
+     * @return List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
      * 
      */
     public Optional<Output<List<String>>> allowlists() {
@@ -38,15 +38,15 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
      * Whether suspicious IP throttling attack protections are active.
      * 
      */
-    @Import(name="enabled")
-    private @Nullable Output<Boolean> enabled;
+    @Import(name="enabled", required=true)
+    private Output<Boolean> enabled;
 
     /**
      * @return Whether suspicious IP throttling attack protections are active.
      * 
      */
-    public Optional<Output<Boolean>> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
 
     /**
@@ -80,14 +80,14 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
     }
 
     /**
-     * Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
+     * Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `admin_notification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
      * 
      */
     @Import(name="shields")
     private @Nullable Output<List<String>> shields;
 
     /**
-     * @return Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
+     * @return Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `admin_notification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
      * 
      */
     public Optional<Output<List<String>>> shields() {
@@ -123,7 +123,7 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
         }
 
         /**
-         * @param allowlists List of trusted IP addresses that will not have attack protection enforced against them.
+         * @param allowlists List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
         }
 
         /**
-         * @param allowlists List of trusted IP addresses that will not have attack protection enforced against them.
+         * @param allowlists List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
         }
 
         /**
-         * @param allowlists List of trusted IP addresses that will not have attack protection enforced against them.
+         * @param allowlists List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
          * @return builder
          * 
          */
-        public Builder enabled(@Nullable Output<Boolean> enabled) {
+        public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
@@ -217,7 +217,7 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
         }
 
         /**
-         * @param shields Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
+         * @param shields Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `admin_notification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
         }
 
         /**
-         * @param shields Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
+         * @param shields Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `admin_notification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
         }
 
         /**
-         * @param shields Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
+         * @param shields Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `admin_notification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
          * 
          * @return builder
          * 
@@ -248,6 +248,7 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
         }
 
         public AttackProtectionSuspiciousIpThrottlingArgs build() {
+            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
             return $;
         }
     }

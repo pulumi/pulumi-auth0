@@ -3,12 +3,10 @@
 
 package com.pulumi.auth0.inputs;
 
-import com.pulumi.auth0.inputs.UserPermissionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -169,29 +167,6 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.User` data source instead.
-     * 
-     * @deprecated
-     * Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.
-     * 
-     */
-    @Deprecated /* Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead. */
-    @Import(name="permissions")
-    private @Nullable Output<List<UserPermissionArgs>> permissions;
-
-    /**
-     * @return List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.User` data source instead.
-     * 
-     * @deprecated
-     * Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.
-     * 
-     */
-    @Deprecated /* Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead. */
-    public Optional<Output<List<UserPermissionArgs>>> permissions() {
-        return Optional.ofNullable(this.permissions);
-    }
-
-    /**
      * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      * 
      */
@@ -234,35 +209,6 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> picture() {
         return Optional.ofNullable(this.picture);
-    }
-
-    /**
-     * Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-     * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-     * instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-     * 
-     * @deprecated
-     * Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-     * 
-     */
-    @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that. */
-    @Import(name="roles")
-    private @Nullable Output<List<String>> roles;
-
-    /**
-     * @return Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-     * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-     * instead. Check the [MIGRATION
-     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-     * 
-     * @deprecated
-     * Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-     * 
-     */
-    @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that. */
-    public Optional<Output<List<String>>> roles() {
-        return Optional.ofNullable(this.roles);
     }
 
     /**
@@ -338,11 +284,9 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.nickname = $.nickname;
         this.password = $.password;
-        this.permissions = $.permissions;
         this.phoneNumber = $.phoneNumber;
         this.phoneVerified = $.phoneVerified;
         this.picture = $.picture;
-        this.roles = $.roles;
         this.userId = $.userId;
         this.userMetadata = $.userMetadata;
         this.username = $.username;
@@ -578,49 +522,6 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param permissions List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.User` data source instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.
-         * 
-         */
-        @Deprecated /* Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead. */
-        public Builder permissions(@Nullable Output<List<UserPermissionArgs>> permissions) {
-            $.permissions = permissions;
-            return this;
-        }
-
-        /**
-         * @param permissions List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.User` data source instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.
-         * 
-         */
-        @Deprecated /* Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead. */
-        public Builder permissions(List<UserPermissionArgs> permissions) {
-            return permissions(Output.of(permissions));
-        }
-
-        /**
-         * @param permissions List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.User` data source instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.
-         * 
-         */
-        @Deprecated /* Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead. */
-        public Builder permissions(UserPermissionArgs... permissions) {
-            return permissions(List.of(permissions));
-        }
-
-        /**
          * @param phoneNumber Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
          * 
          * @return builder
@@ -681,58 +582,6 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder picture(String picture) {
             return picture(Output.of(picture));
-        }
-
-        /**
-         * @param roles Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-         * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-         * instead. Check the [MIGRATION
-         * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-         * 
-         */
-        @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that. */
-        public Builder roles(@Nullable Output<List<String>> roles) {
-            $.roles = roles;
-            return this;
-        }
-
-        /**
-         * @param roles Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-         * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-         * instead. Check the [MIGRATION
-         * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-         * 
-         */
-        @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that. */
-        public Builder roles(List<String> roles) {
-            return roles(Output.of(roles));
-        }
-
-        /**
-         * @param roles Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-         * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-         * instead. Check the [MIGRATION
-         * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-         * 
-         */
-        @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that. */
-        public Builder roles(String... roles) {
-            return roles(List.of(roles));
         }
 
         /**

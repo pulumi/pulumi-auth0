@@ -53,10 +53,10 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying the trigger and action ID separated by "::". # Example
+    /// This resource can be imported by specifying the trigger and action ID separated by "::" (note the double colon) &lt;trigger&gt;::&lt;actionID&gt; # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/triggerAction:TriggerAction post_login_action post-login::28b5c8fa-d371-5734-acf6-d0cf80ead918
+    ///  $ pulumi import auth0:index/triggerAction:TriggerAction post_login_action "post-login::28b5c8fa-d371-5734-acf6-d0cf80ead918"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/triggerAction:TriggerAction")]
@@ -75,7 +75,7 @@ namespace Pulumi.Auth0
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+        /// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
         /// </summary>
         [Output("trigger")]
         public Output<string> Trigger { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.Auth0
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+        /// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
         /// </summary>
         [Input("trigger", required: true)]
         public Input<string> Trigger { get; set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.Auth0
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`,
+        /// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
         /// </summary>
         [Input("trigger")]
         public Input<string>? Trigger { get; set; }

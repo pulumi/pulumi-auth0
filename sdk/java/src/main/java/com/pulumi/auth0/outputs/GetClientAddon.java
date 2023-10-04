@@ -3,129 +3,158 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetClientAddonAw;
+import com.pulumi.auth0.outputs.GetClientAddonAzureBlob;
+import com.pulumi.auth0.outputs.GetClientAddonAzureSb;
+import com.pulumi.auth0.outputs.GetClientAddonBox;
+import com.pulumi.auth0.outputs.GetClientAddonCloudbee;
+import com.pulumi.auth0.outputs.GetClientAddonConcur;
+import com.pulumi.auth0.outputs.GetClientAddonDropbox;
+import com.pulumi.auth0.outputs.GetClientAddonEchosign;
+import com.pulumi.auth0.outputs.GetClientAddonEgnyte;
+import com.pulumi.auth0.outputs.GetClientAddonFirebase;
+import com.pulumi.auth0.outputs.GetClientAddonLayer;
+import com.pulumi.auth0.outputs.GetClientAddonMscrm;
+import com.pulumi.auth0.outputs.GetClientAddonNewrelic;
+import com.pulumi.auth0.outputs.GetClientAddonOffice365;
+import com.pulumi.auth0.outputs.GetClientAddonRm;
+import com.pulumi.auth0.outputs.GetClientAddonSalesforce;
+import com.pulumi.auth0.outputs.GetClientAddonSalesforceApi;
+import com.pulumi.auth0.outputs.GetClientAddonSalesforceSandboxApi;
 import com.pulumi.auth0.outputs.GetClientAddonSamlp;
+import com.pulumi.auth0.outputs.GetClientAddonSapApi;
+import com.pulumi.auth0.outputs.GetClientAddonSentry;
+import com.pulumi.auth0.outputs.GetClientAddonSharepoint;
+import com.pulumi.auth0.outputs.GetClientAddonSlack;
+import com.pulumi.auth0.outputs.GetClientAddonSpringcm;
+import com.pulumi.auth0.outputs.GetClientAddonSsoIntegration;
+import com.pulumi.auth0.outputs.GetClientAddonWam;
+import com.pulumi.auth0.outputs.GetClientAddonWsfed;
+import com.pulumi.auth0.outputs.GetClientAddonZendesk;
+import com.pulumi.auth0.outputs.GetClientAddonZoom;
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
-import java.lang.String;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 @CustomType
 public final class GetClientAddon {
-    private Map<String,Object> aws;
-    private Map<String,Object> azureBlob;
-    private Map<String,Object> azureSb;
-    private Map<String,Object> box;
-    private Map<String,Object> cloudbees;
-    private Map<String,Object> concur;
-    private Map<String,Object> dropbox;
-    private Map<String,Object> echosign;
-    private Map<String,Object> egnyte;
-    private Map<String,Object> firebase;
-    private Map<String,Object> layer;
-    private Map<String,Object> mscrm;
-    private Map<String,Object> newrelic;
-    private Map<String,Object> office365;
-    private Map<String,Object> rms;
-    private Map<String,Object> salesforce;
-    private Map<String,Object> salesforceApi;
-    private Map<String,Object> salesforceSandboxApi;
+    private List<GetClientAddonAw> aws;
+    private List<GetClientAddonAzureBlob> azureBlobs;
+    private List<GetClientAddonAzureSb> azureSbs;
+    private List<GetClientAddonBox> boxes;
+    private List<GetClientAddonCloudbee> cloudbees;
+    private List<GetClientAddonConcur> concurs;
+    private List<GetClientAddonDropbox> dropboxes;
+    private List<GetClientAddonEchosign> echosigns;
+    private List<GetClientAddonEgnyte> egnytes;
+    private List<GetClientAddonFirebase> firebases;
+    private List<GetClientAddonLayer> layers;
+    private List<GetClientAddonMscrm> mscrms;
+    private List<GetClientAddonNewrelic> newrelics;
+    private List<GetClientAddonOffice365> office365s;
+    private List<GetClientAddonRm> rms;
+    private List<GetClientAddonSalesforceApi> salesforceApis;
+    private List<GetClientAddonSalesforceSandboxApi> salesforceSandboxApis;
+    private List<GetClientAddonSalesforce> salesforces;
     private List<GetClientAddonSamlp> samlps;
-    private Map<String,Object> sapApi;
-    private Map<String,Object> sentry;
-    private Map<String,Object> sharepoint;
-    private Map<String,Object> slack;
-    private Map<String,Object> springcm;
-    private Map<String,Object> wams;
-    private Map<String,Object> wsfed;
-    private Map<String,Object> zendesk;
-    private Map<String,Object> zoom;
+    private List<GetClientAddonSapApi> sapApis;
+    private List<GetClientAddonSentry> sentries;
+    private List<GetClientAddonSharepoint> sharepoints;
+    private List<GetClientAddonSlack> slacks;
+    private List<GetClientAddonSpringcm> springcms;
+    private List<GetClientAddonSsoIntegration> ssoIntegrations;
+    private List<GetClientAddonWam> wams;
+    private List<GetClientAddonWsfed> wsfeds;
+    private List<GetClientAddonZendesk> zendesks;
+    private List<GetClientAddonZoom> zooms;
 
     private GetClientAddon() {}
-    public Map<String,Object> aws() {
+    public List<GetClientAddonAw> aws() {
         return this.aws;
     }
-    public Map<String,Object> azureBlob() {
-        return this.azureBlob;
+    public List<GetClientAddonAzureBlob> azureBlobs() {
+        return this.azureBlobs;
     }
-    public Map<String,Object> azureSb() {
-        return this.azureSb;
+    public List<GetClientAddonAzureSb> azureSbs() {
+        return this.azureSbs;
     }
-    public Map<String,Object> box() {
-        return this.box;
+    public List<GetClientAddonBox> boxes() {
+        return this.boxes;
     }
-    public Map<String,Object> cloudbees() {
+    public List<GetClientAddonCloudbee> cloudbees() {
         return this.cloudbees;
     }
-    public Map<String,Object> concur() {
-        return this.concur;
+    public List<GetClientAddonConcur> concurs() {
+        return this.concurs;
     }
-    public Map<String,Object> dropbox() {
-        return this.dropbox;
+    public List<GetClientAddonDropbox> dropboxes() {
+        return this.dropboxes;
     }
-    public Map<String,Object> echosign() {
-        return this.echosign;
+    public List<GetClientAddonEchosign> echosigns() {
+        return this.echosigns;
     }
-    public Map<String,Object> egnyte() {
-        return this.egnyte;
+    public List<GetClientAddonEgnyte> egnytes() {
+        return this.egnytes;
     }
-    public Map<String,Object> firebase() {
-        return this.firebase;
+    public List<GetClientAddonFirebase> firebases() {
+        return this.firebases;
     }
-    public Map<String,Object> layer() {
-        return this.layer;
+    public List<GetClientAddonLayer> layers() {
+        return this.layers;
     }
-    public Map<String,Object> mscrm() {
-        return this.mscrm;
+    public List<GetClientAddonMscrm> mscrms() {
+        return this.mscrms;
     }
-    public Map<String,Object> newrelic() {
-        return this.newrelic;
+    public List<GetClientAddonNewrelic> newrelics() {
+        return this.newrelics;
     }
-    public Map<String,Object> office365() {
-        return this.office365;
+    public List<GetClientAddonOffice365> office365s() {
+        return this.office365s;
     }
-    public Map<String,Object> rms() {
+    public List<GetClientAddonRm> rms() {
         return this.rms;
     }
-    public Map<String,Object> salesforce() {
-        return this.salesforce;
+    public List<GetClientAddonSalesforceApi> salesforceApis() {
+        return this.salesforceApis;
     }
-    public Map<String,Object> salesforceApi() {
-        return this.salesforceApi;
+    public List<GetClientAddonSalesforceSandboxApi> salesforceSandboxApis() {
+        return this.salesforceSandboxApis;
     }
-    public Map<String,Object> salesforceSandboxApi() {
-        return this.salesforceSandboxApi;
+    public List<GetClientAddonSalesforce> salesforces() {
+        return this.salesforces;
     }
     public List<GetClientAddonSamlp> samlps() {
         return this.samlps;
     }
-    public Map<String,Object> sapApi() {
-        return this.sapApi;
+    public List<GetClientAddonSapApi> sapApis() {
+        return this.sapApis;
     }
-    public Map<String,Object> sentry() {
-        return this.sentry;
+    public List<GetClientAddonSentry> sentries() {
+        return this.sentries;
     }
-    public Map<String,Object> sharepoint() {
-        return this.sharepoint;
+    public List<GetClientAddonSharepoint> sharepoints() {
+        return this.sharepoints;
     }
-    public Map<String,Object> slack() {
-        return this.slack;
+    public List<GetClientAddonSlack> slacks() {
+        return this.slacks;
     }
-    public Map<String,Object> springcm() {
-        return this.springcm;
+    public List<GetClientAddonSpringcm> springcms() {
+        return this.springcms;
     }
-    public Map<String,Object> wams() {
+    public List<GetClientAddonSsoIntegration> ssoIntegrations() {
+        return this.ssoIntegrations;
+    }
+    public List<GetClientAddonWam> wams() {
         return this.wams;
     }
-    public Map<String,Object> wsfed() {
-        return this.wsfed;
+    public List<GetClientAddonWsfed> wsfeds() {
+        return this.wsfeds;
     }
-    public Map<String,Object> zendesk() {
-        return this.zendesk;
+    public List<GetClientAddonZendesk> zendesks() {
+        return this.zendesks;
     }
-    public Map<String,Object> zoom() {
-        return this.zoom;
+    public List<GetClientAddonZoom> zooms() {
+        return this.zooms;
     }
 
     public static Builder builder() {
@@ -137,156 +166,212 @@ public final class GetClientAddon {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> aws;
-        private Map<String,Object> azureBlob;
-        private Map<String,Object> azureSb;
-        private Map<String,Object> box;
-        private Map<String,Object> cloudbees;
-        private Map<String,Object> concur;
-        private Map<String,Object> dropbox;
-        private Map<String,Object> echosign;
-        private Map<String,Object> egnyte;
-        private Map<String,Object> firebase;
-        private Map<String,Object> layer;
-        private Map<String,Object> mscrm;
-        private Map<String,Object> newrelic;
-        private Map<String,Object> office365;
-        private Map<String,Object> rms;
-        private Map<String,Object> salesforce;
-        private Map<String,Object> salesforceApi;
-        private Map<String,Object> salesforceSandboxApi;
+        private List<GetClientAddonAw> aws;
+        private List<GetClientAddonAzureBlob> azureBlobs;
+        private List<GetClientAddonAzureSb> azureSbs;
+        private List<GetClientAddonBox> boxes;
+        private List<GetClientAddonCloudbee> cloudbees;
+        private List<GetClientAddonConcur> concurs;
+        private List<GetClientAddonDropbox> dropboxes;
+        private List<GetClientAddonEchosign> echosigns;
+        private List<GetClientAddonEgnyte> egnytes;
+        private List<GetClientAddonFirebase> firebases;
+        private List<GetClientAddonLayer> layers;
+        private List<GetClientAddonMscrm> mscrms;
+        private List<GetClientAddonNewrelic> newrelics;
+        private List<GetClientAddonOffice365> office365s;
+        private List<GetClientAddonRm> rms;
+        private List<GetClientAddonSalesforceApi> salesforceApis;
+        private List<GetClientAddonSalesforceSandboxApi> salesforceSandboxApis;
+        private List<GetClientAddonSalesforce> salesforces;
         private List<GetClientAddonSamlp> samlps;
-        private Map<String,Object> sapApi;
-        private Map<String,Object> sentry;
-        private Map<String,Object> sharepoint;
-        private Map<String,Object> slack;
-        private Map<String,Object> springcm;
-        private Map<String,Object> wams;
-        private Map<String,Object> wsfed;
-        private Map<String,Object> zendesk;
-        private Map<String,Object> zoom;
+        private List<GetClientAddonSapApi> sapApis;
+        private List<GetClientAddonSentry> sentries;
+        private List<GetClientAddonSharepoint> sharepoints;
+        private List<GetClientAddonSlack> slacks;
+        private List<GetClientAddonSpringcm> springcms;
+        private List<GetClientAddonSsoIntegration> ssoIntegrations;
+        private List<GetClientAddonWam> wams;
+        private List<GetClientAddonWsfed> wsfeds;
+        private List<GetClientAddonZendesk> zendesks;
+        private List<GetClientAddonZoom> zooms;
         public Builder() {}
         public Builder(GetClientAddon defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aws = defaults.aws;
-    	      this.azureBlob = defaults.azureBlob;
-    	      this.azureSb = defaults.azureSb;
-    	      this.box = defaults.box;
+    	      this.azureBlobs = defaults.azureBlobs;
+    	      this.azureSbs = defaults.azureSbs;
+    	      this.boxes = defaults.boxes;
     	      this.cloudbees = defaults.cloudbees;
-    	      this.concur = defaults.concur;
-    	      this.dropbox = defaults.dropbox;
-    	      this.echosign = defaults.echosign;
-    	      this.egnyte = defaults.egnyte;
-    	      this.firebase = defaults.firebase;
-    	      this.layer = defaults.layer;
-    	      this.mscrm = defaults.mscrm;
-    	      this.newrelic = defaults.newrelic;
-    	      this.office365 = defaults.office365;
+    	      this.concurs = defaults.concurs;
+    	      this.dropboxes = defaults.dropboxes;
+    	      this.echosigns = defaults.echosigns;
+    	      this.egnytes = defaults.egnytes;
+    	      this.firebases = defaults.firebases;
+    	      this.layers = defaults.layers;
+    	      this.mscrms = defaults.mscrms;
+    	      this.newrelics = defaults.newrelics;
+    	      this.office365s = defaults.office365s;
     	      this.rms = defaults.rms;
-    	      this.salesforce = defaults.salesforce;
-    	      this.salesforceApi = defaults.salesforceApi;
-    	      this.salesforceSandboxApi = defaults.salesforceSandboxApi;
+    	      this.salesforceApis = defaults.salesforceApis;
+    	      this.salesforceSandboxApis = defaults.salesforceSandboxApis;
+    	      this.salesforces = defaults.salesforces;
     	      this.samlps = defaults.samlps;
-    	      this.sapApi = defaults.sapApi;
-    	      this.sentry = defaults.sentry;
-    	      this.sharepoint = defaults.sharepoint;
-    	      this.slack = defaults.slack;
-    	      this.springcm = defaults.springcm;
+    	      this.sapApis = defaults.sapApis;
+    	      this.sentries = defaults.sentries;
+    	      this.sharepoints = defaults.sharepoints;
+    	      this.slacks = defaults.slacks;
+    	      this.springcms = defaults.springcms;
+    	      this.ssoIntegrations = defaults.ssoIntegrations;
     	      this.wams = defaults.wams;
-    	      this.wsfed = defaults.wsfed;
-    	      this.zendesk = defaults.zendesk;
-    	      this.zoom = defaults.zoom;
+    	      this.wsfeds = defaults.wsfeds;
+    	      this.zendesks = defaults.zendesks;
+    	      this.zooms = defaults.zooms;
         }
 
         @CustomType.Setter
-        public Builder aws(Map<String,Object> aws) {
+        public Builder aws(List<GetClientAddonAw> aws) {
             this.aws = Objects.requireNonNull(aws);
             return this;
         }
-        @CustomType.Setter
-        public Builder azureBlob(Map<String,Object> azureBlob) {
-            this.azureBlob = Objects.requireNonNull(azureBlob);
-            return this;
+        public Builder aws(GetClientAddonAw... aws) {
+            return aws(List.of(aws));
         }
         @CustomType.Setter
-        public Builder azureSb(Map<String,Object> azureSb) {
-            this.azureSb = Objects.requireNonNull(azureSb);
+        public Builder azureBlobs(List<GetClientAddonAzureBlob> azureBlobs) {
+            this.azureBlobs = Objects.requireNonNull(azureBlobs);
             return this;
         }
-        @CustomType.Setter
-        public Builder box(Map<String,Object> box) {
-            this.box = Objects.requireNonNull(box);
-            return this;
+        public Builder azureBlobs(GetClientAddonAzureBlob... azureBlobs) {
+            return azureBlobs(List.of(azureBlobs));
         }
         @CustomType.Setter
-        public Builder cloudbees(Map<String,Object> cloudbees) {
+        public Builder azureSbs(List<GetClientAddonAzureSb> azureSbs) {
+            this.azureSbs = Objects.requireNonNull(azureSbs);
+            return this;
+        }
+        public Builder azureSbs(GetClientAddonAzureSb... azureSbs) {
+            return azureSbs(List.of(azureSbs));
+        }
+        @CustomType.Setter
+        public Builder boxes(List<GetClientAddonBox> boxes) {
+            this.boxes = Objects.requireNonNull(boxes);
+            return this;
+        }
+        public Builder boxes(GetClientAddonBox... boxes) {
+            return boxes(List.of(boxes));
+        }
+        @CustomType.Setter
+        public Builder cloudbees(List<GetClientAddonCloudbee> cloudbees) {
             this.cloudbees = Objects.requireNonNull(cloudbees);
             return this;
         }
-        @CustomType.Setter
-        public Builder concur(Map<String,Object> concur) {
-            this.concur = Objects.requireNonNull(concur);
-            return this;
+        public Builder cloudbees(GetClientAddonCloudbee... cloudbees) {
+            return cloudbees(List.of(cloudbees));
         }
         @CustomType.Setter
-        public Builder dropbox(Map<String,Object> dropbox) {
-            this.dropbox = Objects.requireNonNull(dropbox);
+        public Builder concurs(List<GetClientAddonConcur> concurs) {
+            this.concurs = Objects.requireNonNull(concurs);
             return this;
         }
-        @CustomType.Setter
-        public Builder echosign(Map<String,Object> echosign) {
-            this.echosign = Objects.requireNonNull(echosign);
-            return this;
+        public Builder concurs(GetClientAddonConcur... concurs) {
+            return concurs(List.of(concurs));
         }
         @CustomType.Setter
-        public Builder egnyte(Map<String,Object> egnyte) {
-            this.egnyte = Objects.requireNonNull(egnyte);
+        public Builder dropboxes(List<GetClientAddonDropbox> dropboxes) {
+            this.dropboxes = Objects.requireNonNull(dropboxes);
             return this;
         }
-        @CustomType.Setter
-        public Builder firebase(Map<String,Object> firebase) {
-            this.firebase = Objects.requireNonNull(firebase);
-            return this;
+        public Builder dropboxes(GetClientAddonDropbox... dropboxes) {
+            return dropboxes(List.of(dropboxes));
         }
         @CustomType.Setter
-        public Builder layer(Map<String,Object> layer) {
-            this.layer = Objects.requireNonNull(layer);
+        public Builder echosigns(List<GetClientAddonEchosign> echosigns) {
+            this.echosigns = Objects.requireNonNull(echosigns);
             return this;
         }
-        @CustomType.Setter
-        public Builder mscrm(Map<String,Object> mscrm) {
-            this.mscrm = Objects.requireNonNull(mscrm);
-            return this;
+        public Builder echosigns(GetClientAddonEchosign... echosigns) {
+            return echosigns(List.of(echosigns));
         }
         @CustomType.Setter
-        public Builder newrelic(Map<String,Object> newrelic) {
-            this.newrelic = Objects.requireNonNull(newrelic);
+        public Builder egnytes(List<GetClientAddonEgnyte> egnytes) {
+            this.egnytes = Objects.requireNonNull(egnytes);
             return this;
         }
-        @CustomType.Setter
-        public Builder office365(Map<String,Object> office365) {
-            this.office365 = Objects.requireNonNull(office365);
-            return this;
+        public Builder egnytes(GetClientAddonEgnyte... egnytes) {
+            return egnytes(List.of(egnytes));
         }
         @CustomType.Setter
-        public Builder rms(Map<String,Object> rms) {
+        public Builder firebases(List<GetClientAddonFirebase> firebases) {
+            this.firebases = Objects.requireNonNull(firebases);
+            return this;
+        }
+        public Builder firebases(GetClientAddonFirebase... firebases) {
+            return firebases(List.of(firebases));
+        }
+        @CustomType.Setter
+        public Builder layers(List<GetClientAddonLayer> layers) {
+            this.layers = Objects.requireNonNull(layers);
+            return this;
+        }
+        public Builder layers(GetClientAddonLayer... layers) {
+            return layers(List.of(layers));
+        }
+        @CustomType.Setter
+        public Builder mscrms(List<GetClientAddonMscrm> mscrms) {
+            this.mscrms = Objects.requireNonNull(mscrms);
+            return this;
+        }
+        public Builder mscrms(GetClientAddonMscrm... mscrms) {
+            return mscrms(List.of(mscrms));
+        }
+        @CustomType.Setter
+        public Builder newrelics(List<GetClientAddonNewrelic> newrelics) {
+            this.newrelics = Objects.requireNonNull(newrelics);
+            return this;
+        }
+        public Builder newrelics(GetClientAddonNewrelic... newrelics) {
+            return newrelics(List.of(newrelics));
+        }
+        @CustomType.Setter
+        public Builder office365s(List<GetClientAddonOffice365> office365s) {
+            this.office365s = Objects.requireNonNull(office365s);
+            return this;
+        }
+        public Builder office365s(GetClientAddonOffice365... office365s) {
+            return office365s(List.of(office365s));
+        }
+        @CustomType.Setter
+        public Builder rms(List<GetClientAddonRm> rms) {
             this.rms = Objects.requireNonNull(rms);
             return this;
         }
-        @CustomType.Setter
-        public Builder salesforce(Map<String,Object> salesforce) {
-            this.salesforce = Objects.requireNonNull(salesforce);
-            return this;
+        public Builder rms(GetClientAddonRm... rms) {
+            return rms(List.of(rms));
         }
         @CustomType.Setter
-        public Builder salesforceApi(Map<String,Object> salesforceApi) {
-            this.salesforceApi = Objects.requireNonNull(salesforceApi);
+        public Builder salesforceApis(List<GetClientAddonSalesforceApi> salesforceApis) {
+            this.salesforceApis = Objects.requireNonNull(salesforceApis);
             return this;
         }
+        public Builder salesforceApis(GetClientAddonSalesforceApi... salesforceApis) {
+            return salesforceApis(List.of(salesforceApis));
+        }
         @CustomType.Setter
-        public Builder salesforceSandboxApi(Map<String,Object> salesforceSandboxApi) {
-            this.salesforceSandboxApi = Objects.requireNonNull(salesforceSandboxApi);
+        public Builder salesforceSandboxApis(List<GetClientAddonSalesforceSandboxApi> salesforceSandboxApis) {
+            this.salesforceSandboxApis = Objects.requireNonNull(salesforceSandboxApis);
             return this;
+        }
+        public Builder salesforceSandboxApis(GetClientAddonSalesforceSandboxApi... salesforceSandboxApis) {
+            return salesforceSandboxApis(List.of(salesforceSandboxApis));
+        }
+        @CustomType.Setter
+        public Builder salesforces(List<GetClientAddonSalesforce> salesforces) {
+            this.salesforces = Objects.requireNonNull(salesforces);
+            return this;
+        }
+        public Builder salesforces(GetClientAddonSalesforce... salesforces) {
+            return salesforces(List.of(salesforces));
         }
         @CustomType.Setter
         public Builder samlps(List<GetClientAddonSamlp> samlps) {
@@ -297,80 +382,116 @@ public final class GetClientAddon {
             return samlps(List.of(samlps));
         }
         @CustomType.Setter
-        public Builder sapApi(Map<String,Object> sapApi) {
-            this.sapApi = Objects.requireNonNull(sapApi);
+        public Builder sapApis(List<GetClientAddonSapApi> sapApis) {
+            this.sapApis = Objects.requireNonNull(sapApis);
             return this;
         }
-        @CustomType.Setter
-        public Builder sentry(Map<String,Object> sentry) {
-            this.sentry = Objects.requireNonNull(sentry);
-            return this;
+        public Builder sapApis(GetClientAddonSapApi... sapApis) {
+            return sapApis(List.of(sapApis));
         }
         @CustomType.Setter
-        public Builder sharepoint(Map<String,Object> sharepoint) {
-            this.sharepoint = Objects.requireNonNull(sharepoint);
+        public Builder sentries(List<GetClientAddonSentry> sentries) {
+            this.sentries = Objects.requireNonNull(sentries);
             return this;
         }
-        @CustomType.Setter
-        public Builder slack(Map<String,Object> slack) {
-            this.slack = Objects.requireNonNull(slack);
-            return this;
+        public Builder sentries(GetClientAddonSentry... sentries) {
+            return sentries(List.of(sentries));
         }
         @CustomType.Setter
-        public Builder springcm(Map<String,Object> springcm) {
-            this.springcm = Objects.requireNonNull(springcm);
+        public Builder sharepoints(List<GetClientAddonSharepoint> sharepoints) {
+            this.sharepoints = Objects.requireNonNull(sharepoints);
             return this;
         }
+        public Builder sharepoints(GetClientAddonSharepoint... sharepoints) {
+            return sharepoints(List.of(sharepoints));
+        }
         @CustomType.Setter
-        public Builder wams(Map<String,Object> wams) {
+        public Builder slacks(List<GetClientAddonSlack> slacks) {
+            this.slacks = Objects.requireNonNull(slacks);
+            return this;
+        }
+        public Builder slacks(GetClientAddonSlack... slacks) {
+            return slacks(List.of(slacks));
+        }
+        @CustomType.Setter
+        public Builder springcms(List<GetClientAddonSpringcm> springcms) {
+            this.springcms = Objects.requireNonNull(springcms);
+            return this;
+        }
+        public Builder springcms(GetClientAddonSpringcm... springcms) {
+            return springcms(List.of(springcms));
+        }
+        @CustomType.Setter
+        public Builder ssoIntegrations(List<GetClientAddonSsoIntegration> ssoIntegrations) {
+            this.ssoIntegrations = Objects.requireNonNull(ssoIntegrations);
+            return this;
+        }
+        public Builder ssoIntegrations(GetClientAddonSsoIntegration... ssoIntegrations) {
+            return ssoIntegrations(List.of(ssoIntegrations));
+        }
+        @CustomType.Setter
+        public Builder wams(List<GetClientAddonWam> wams) {
             this.wams = Objects.requireNonNull(wams);
             return this;
         }
-        @CustomType.Setter
-        public Builder wsfed(Map<String,Object> wsfed) {
-            this.wsfed = Objects.requireNonNull(wsfed);
-            return this;
+        public Builder wams(GetClientAddonWam... wams) {
+            return wams(List.of(wams));
         }
         @CustomType.Setter
-        public Builder zendesk(Map<String,Object> zendesk) {
-            this.zendesk = Objects.requireNonNull(zendesk);
+        public Builder wsfeds(List<GetClientAddonWsfed> wsfeds) {
+            this.wsfeds = Objects.requireNonNull(wsfeds);
             return this;
         }
+        public Builder wsfeds(GetClientAddonWsfed... wsfeds) {
+            return wsfeds(List.of(wsfeds));
+        }
         @CustomType.Setter
-        public Builder zoom(Map<String,Object> zoom) {
-            this.zoom = Objects.requireNonNull(zoom);
+        public Builder zendesks(List<GetClientAddonZendesk> zendesks) {
+            this.zendesks = Objects.requireNonNull(zendesks);
             return this;
+        }
+        public Builder zendesks(GetClientAddonZendesk... zendesks) {
+            return zendesks(List.of(zendesks));
+        }
+        @CustomType.Setter
+        public Builder zooms(List<GetClientAddonZoom> zooms) {
+            this.zooms = Objects.requireNonNull(zooms);
+            return this;
+        }
+        public Builder zooms(GetClientAddonZoom... zooms) {
+            return zooms(List.of(zooms));
         }
         public GetClientAddon build() {
             final var o = new GetClientAddon();
             o.aws = aws;
-            o.azureBlob = azureBlob;
-            o.azureSb = azureSb;
-            o.box = box;
+            o.azureBlobs = azureBlobs;
+            o.azureSbs = azureSbs;
+            o.boxes = boxes;
             o.cloudbees = cloudbees;
-            o.concur = concur;
-            o.dropbox = dropbox;
-            o.echosign = echosign;
-            o.egnyte = egnyte;
-            o.firebase = firebase;
-            o.layer = layer;
-            o.mscrm = mscrm;
-            o.newrelic = newrelic;
-            o.office365 = office365;
+            o.concurs = concurs;
+            o.dropboxes = dropboxes;
+            o.echosigns = echosigns;
+            o.egnytes = egnytes;
+            o.firebases = firebases;
+            o.layers = layers;
+            o.mscrms = mscrms;
+            o.newrelics = newrelics;
+            o.office365s = office365s;
             o.rms = rms;
-            o.salesforce = salesforce;
-            o.salesforceApi = salesforceApi;
-            o.salesforceSandboxApi = salesforceSandboxApi;
+            o.salesforceApis = salesforceApis;
+            o.salesforceSandboxApis = salesforceSandboxApis;
+            o.salesforces = salesforces;
             o.samlps = samlps;
-            o.sapApi = sapApi;
-            o.sentry = sentry;
-            o.sharepoint = sharepoint;
-            o.slack = slack;
-            o.springcm = springcm;
+            o.sapApis = sapApis;
+            o.sentries = sentries;
+            o.sharepoints = sharepoints;
+            o.slacks = slacks;
+            o.springcms = springcms;
+            o.ssoIntegrations = ssoIntegrations;
             o.wams = wams;
-            o.wsfed = wsfed;
-            o.zendesk = zendesk;
-            o.zoom = zoom;
+            o.wsfeds = wsfeds;
+            o.zendesks = zendesks;
+            o.zooms = zooms;
             return o;
         }
     }

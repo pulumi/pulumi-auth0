@@ -79,7 +79,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? EnableClientConnections { get; set; }
 
         /// <summary>
-        /// Indicates whether the tenant allows custom domains in emails.
+        /// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
         /// </summary>
         [Input("enableCustomDomainInEmails")]
         public Input<bool>? EnableCustomDomainInEmails { get; set; }
@@ -133,16 +133,16 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? NoDiscloseEnterpriseConnections { get; set; }
 
         /// <summary>
+        /// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+        /// </summary>
+        [Input("requirePushedAuthorizationRequests")]
+        public Input<bool>? RequirePushedAuthorizationRequests { get; set; }
+
+        /// <summary>
         /// Delete underlying grant when a refresh token is revoked via the Authentication API.
         /// </summary>
         [Input("revokeRefreshTokenGrant")]
         public Input<bool>? RevokeRefreshTokenGrant { get; set; }
-
-        /// <summary>
-        /// Indicates whether the New Universal Login Experience is enabled.
-        /// </summary>
-        [Input("universalLogin")]
-        public Input<bool>? UniversalLogin { get; set; }
 
         /// <summary>
         /// Indicates whether to use scope descriptions for consent.

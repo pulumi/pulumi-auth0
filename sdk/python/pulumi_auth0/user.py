@@ -8,8 +8,6 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
-from . import outputs
-from ._inputs import *
 
 __all__ = ['UserArgs', 'User']
 
@@ -29,7 +27,6 @@ class UserArgs:
                  phone_number: Optional[pulumi.Input[str]] = None,
                  phone_verified: Optional[pulumi.Input[bool]] = None,
                  picture: Optional[pulumi.Input[str]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  user_metadata: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -49,10 +46,6 @@ class UserArgs:
         :param pulumi.Input[str] phone_number: Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         :param pulumi.Input[bool] phone_verified: Indicates whether the phone number has been verified.
         :param pulumi.Input[str] picture: Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-               a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-               instead. Check the [MIGRATION
-               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
         :param pulumi.Input[str] user_id: ID of the user.
         :param pulumi.Input[str] user_metadata: Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
         :param pulumi.Input[str] username: Username of the user. Only valid if the connection requires a username.
@@ -83,11 +76,6 @@ class UserArgs:
             pulumi.set(__self__, "phone_verified", phone_verified)
         if picture is not None:
             pulumi.set(__self__, "picture", picture)
-        if roles is not None:
-            warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.""", DeprecationWarning)
-            pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.""")
-        if roles is not None:
-            pulumi.set(__self__, "roles", roles)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
         if user_metadata is not None:
@@ -254,24 +242,6 @@ class UserArgs:
         pulumi.set(self, "picture", value)
 
     @property
-    @pulumi.getter
-    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-        a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-        instead. Check the [MIGRATION
-        GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-        """
-        warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.""", DeprecationWarning)
-        pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.""")
-
-        return pulumi.get(self, "roles")
-
-    @roles.setter
-    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "roles", value)
-
-    @property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -333,11 +303,9 @@ class _UserState:
                  name: Optional[pulumi.Input[str]] = None,
                  nickname: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionArgs']]]] = None,
                  phone_number: Optional[pulumi.Input[str]] = None,
                  phone_verified: Optional[pulumi.Input[bool]] = None,
                  picture: Optional[pulumi.Input[str]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  user_metadata: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -354,14 +322,9 @@ class _UserState:
         :param pulumi.Input[str] name: Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[str] nickname: Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[str] password: Initial password for this user. Required for non-passwordless connections (SMS and email).
-        :param pulumi.Input[Sequence[pulumi.Input['UserPermissionArgs']]] permissions: List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `User` data source instead.
         :param pulumi.Input[str] phone_number: Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         :param pulumi.Input[bool] phone_verified: Indicates whether the phone number has been verified.
         :param pulumi.Input[str] picture: Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-               a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-               instead. Check the [MIGRATION
-               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
         :param pulumi.Input[str] user_id: ID of the user.
         :param pulumi.Input[str] user_metadata: Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
         :param pulumi.Input[str] username: Username of the user. Only valid if the connection requires a username.
@@ -387,22 +350,12 @@ class _UserState:
             pulumi.set(__self__, "nickname", nickname)
         if password is not None:
             pulumi.set(__self__, "password", password)
-        if permissions is not None:
-            warnings.warn("""Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.""", DeprecationWarning)
-            pulumi.log.warn("""permissions is deprecated: Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.""")
-        if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
         if phone_number is not None:
             pulumi.set(__self__, "phone_number", phone_number)
         if phone_verified is not None:
             pulumi.set(__self__, "phone_verified", phone_verified)
         if picture is not None:
             pulumi.set(__self__, "picture", picture)
-        if roles is not None:
-            warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.""", DeprecationWarning)
-            pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.""")
-        if roles is not None:
-            pulumi.set(__self__, "roles", roles)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
         if user_metadata is not None:
@@ -533,21 +486,6 @@ class _UserState:
         pulumi.set(self, "password", value)
 
     @property
-    @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionArgs']]]]:
-        """
-        List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `User` data source instead.
-        """
-        warnings.warn("""Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.""", DeprecationWarning)
-        pulumi.log.warn("""permissions is deprecated: Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.""")
-
-        return pulumi.get(self, "permissions")
-
-    @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionArgs']]]]):
-        pulumi.set(self, "permissions", value)
-
-    @property
     @pulumi.getter(name="phoneNumber")
     def phone_number(self) -> Optional[pulumi.Input[str]]:
         """
@@ -582,24 +520,6 @@ class _UserState:
     @picture.setter
     def picture(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "picture", value)
-
-    @property
-    @pulumi.getter
-    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-        a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-        instead. Check the [MIGRATION
-        GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-        """
-        warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.""", DeprecationWarning)
-        pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.""")
-
-        return pulumi.get(self, "roles")
-
-    @roles.setter
-    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "roles", value)
 
     @property
     @pulumi.getter(name="userId")
@@ -668,7 +588,6 @@ class User(pulumi.CustomResource):
                  phone_number: Optional[pulumi.Input[str]] = None,
                  phone_verified: Optional[pulumi.Input[bool]] = None,
                  picture: Optional[pulumi.Input[str]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  user_metadata: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -683,17 +602,15 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        admin = auth0.Role("admin", description="Administrator")
         user = auth0.User("user",
             connection_name="Username-Password-Authentication",
-            user_id="12345",
-            username="unique_username",
-            nickname="some.nickname",
             email="test@test.com",
             email_verified=True,
+            nickname="some.nickname",
             password="passpass$12$12",
             picture="https://www.example.com/a-valid-picture-url.jpg",
-            roles=[admin.id])
+            user_id="12345",
+            username="unique_username")
         ```
 
         ## Import
@@ -701,7 +618,7 @@ class User(pulumi.CustomResource):
         This resource can be imported using the user ID. # Example
 
         ```sh
-         $ pulumi import auth0:index/user:User user auth0|111111111111111111111111
+         $ pulumi import auth0:index/user:User user "auth0|111111111111111111111111"
         ```
 
         :param str resource_name: The name of the resource.
@@ -719,10 +636,6 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] phone_number: Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         :param pulumi.Input[bool] phone_verified: Indicates whether the phone number has been verified.
         :param pulumi.Input[str] picture: Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-               a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-               instead. Check the [MIGRATION
-               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
         :param pulumi.Input[str] user_id: ID of the user.
         :param pulumi.Input[str] user_metadata: Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
         :param pulumi.Input[str] username: Username of the user. Only valid if the connection requires a username.
@@ -743,17 +656,15 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        admin = auth0.Role("admin", description="Administrator")
         user = auth0.User("user",
             connection_name="Username-Password-Authentication",
-            user_id="12345",
-            username="unique_username",
-            nickname="some.nickname",
             email="test@test.com",
             email_verified=True,
+            nickname="some.nickname",
             password="passpass$12$12",
             picture="https://www.example.com/a-valid-picture-url.jpg",
-            roles=[admin.id])
+            user_id="12345",
+            username="unique_username")
         ```
 
         ## Import
@@ -761,7 +672,7 @@ class User(pulumi.CustomResource):
         This resource can be imported using the user ID. # Example
 
         ```sh
-         $ pulumi import auth0:index/user:User user auth0|111111111111111111111111
+         $ pulumi import auth0:index/user:User user "auth0|111111111111111111111111"
         ```
 
         :param str resource_name: The name of the resource.
@@ -792,7 +703,6 @@ class User(pulumi.CustomResource):
                  phone_number: Optional[pulumi.Input[str]] = None,
                  phone_verified: Optional[pulumi.Input[bool]] = None,
                  picture: Optional[pulumi.Input[str]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  user_metadata: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -821,15 +731,10 @@ class User(pulumi.CustomResource):
             __props__.__dict__["phone_number"] = phone_number
             __props__.__dict__["phone_verified"] = phone_verified
             __props__.__dict__["picture"] = picture
-            if roles is not None and not opts.urn:
-                warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.""", DeprecationWarning)
-                pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.""")
-            __props__.__dict__["roles"] = roles
             __props__.__dict__["user_id"] = user_id
             __props__.__dict__["user_metadata"] = user_metadata
             __props__.__dict__["username"] = username
             __props__.__dict__["verify_email"] = verify_email
-            __props__.__dict__["permissions"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(User, __self__).__init__(
@@ -852,11 +757,9 @@ class User(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             nickname: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
-            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPermissionArgs']]]]] = None,
             phone_number: Optional[pulumi.Input[str]] = None,
             phone_verified: Optional[pulumi.Input[bool]] = None,
             picture: Optional[pulumi.Input[str]] = None,
-            roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             user_id: Optional[pulumi.Input[str]] = None,
             user_metadata: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None,
@@ -878,14 +781,9 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[str] nickname: Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[str] password: Initial password for this user. Required for non-passwordless connections (SMS and email).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPermissionArgs']]]] permissions: List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `User` data source instead.
         :param pulumi.Input[str] phone_number: Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         :param pulumi.Input[bool] phone_verified: Indicates whether the phone number has been verified.
         :param pulumi.Input[str] picture: Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-               a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-               instead. Check the [MIGRATION
-               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
         :param pulumi.Input[str] user_id: ID of the user.
         :param pulumi.Input[str] user_metadata: Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
         :param pulumi.Input[str] username: Username of the user. Only valid if the connection requires a username.
@@ -905,11 +803,9 @@ class User(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["nickname"] = nickname
         __props__.__dict__["password"] = password
-        __props__.__dict__["permissions"] = permissions
         __props__.__dict__["phone_number"] = phone_number
         __props__.__dict__["phone_verified"] = phone_verified
         __props__.__dict__["picture"] = picture
-        __props__.__dict__["roles"] = roles
         __props__.__dict__["user_id"] = user_id
         __props__.__dict__["user_metadata"] = user_metadata
         __props__.__dict__["username"] = username
@@ -997,17 +893,6 @@ class User(pulumi.CustomResource):
         return pulumi.get(self, "password")
 
     @property
-    @pulumi.getter
-    def permissions(self) -> pulumi.Output[Sequence['outputs.UserPermission']]:
-        """
-        List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `User` data source instead.
-        """
-        warnings.warn("""Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.""", DeprecationWarning)
-        pulumi.log.warn("""permissions is deprecated: Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.""")
-
-        return pulumi.get(self, "permissions")
-
-    @property
     @pulumi.getter(name="phoneNumber")
     def phone_number(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1030,20 +915,6 @@ class User(pulumi.CustomResource):
         Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "picture")
-
-    @property
-    @pulumi.getter
-    def roles(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
-        a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
-        instead. Check the [MIGRATION
-        GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
-        """
-        warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.""", DeprecationWarning)
-        pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.""")
-
-        return pulumi.get(self, "roles")
 
     @property
     @pulumi.getter(name="userId")

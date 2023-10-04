@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetRolePermissionResult
     {
         /// <summary>
-        /// Description of the role.
+        /// The description of the role.
         /// </summary>
         public readonly string Description;
         /// <summary>

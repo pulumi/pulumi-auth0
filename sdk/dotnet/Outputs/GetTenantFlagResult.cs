@@ -33,8 +33,8 @@ namespace Pulumi.Auth0.Outputs
         public readonly bool EnablePublicSignupUserExistsError;
         public readonly bool MfaShowFactorListOnEnrollment;
         public readonly bool NoDiscloseEnterpriseConnections;
+        public readonly bool RequirePushedAuthorizationRequests;
         public readonly bool RevokeRefreshTokenGrant;
-        public readonly bool UniversalLogin;
         public readonly bool UseScopeDescriptionsForConsent;
 
         [OutputConstructor]
@@ -79,9 +79,9 @@ namespace Pulumi.Auth0.Outputs
 
             bool noDiscloseEnterpriseConnections,
 
-            bool revokeRefreshTokenGrant,
+            bool requirePushedAuthorizationRequests,
 
-            bool universalLogin,
+            bool revokeRefreshTokenGrant,
 
             bool useScopeDescriptionsForConsent)
         {
@@ -105,8 +105,8 @@ namespace Pulumi.Auth0.Outputs
             EnablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
             MfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
             NoDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
+            RequirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
             RevokeRefreshTokenGrant = revokeRefreshTokenGrant;
-            UniversalLogin = universalLogin;
             UseScopeDescriptionsForConsent = useScopeDescriptionsForConsent;
         }
     }

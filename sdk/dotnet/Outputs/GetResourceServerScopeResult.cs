@@ -14,16 +14,19 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetResourceServerScopeResult
     {
         public readonly string Description;
-        public readonly string Value;
+        /// <summary>
+        /// Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
+        /// </summary>
+        public readonly string Name;
 
         [OutputConstructor]
         private GetResourceServerScopeResult(
             string description,
 
-            string value)
+            string name)
         {
             Description = description;
-            Value = value;
+            Name = name;
         }
     }
 }

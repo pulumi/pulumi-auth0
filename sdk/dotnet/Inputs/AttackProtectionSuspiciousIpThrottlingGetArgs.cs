@@ -16,7 +16,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _allowlists;
 
         /// <summary>
-        /// List of trusted IP addresses that will not have attack protection enforced against them.
+        /// List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
         /// </summary>
         public InputList<string> Allowlists
         {
@@ -27,8 +27,8 @@ namespace Pulumi.Auth0.Inputs
         /// <summary>
         /// Whether suspicious IP throttling attack protections are active.
         /// </summary>
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
         /// Configuration options that apply before every login attempt. Only available on public tenants.
@@ -46,7 +46,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _shields;
 
         /// <summary>
-        /// Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
+        /// Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `admin_notification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
         /// </summary>
         public InputList<string> Shields
         {

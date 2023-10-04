@@ -94,7 +94,7 @@ class GetResourceServerResult:
     @pulumi.getter
     def identifier(self) -> Optional[str]:
         """
-        The unique identifier for the resource server. If not provided, `resource_server_id` must be set.
+        Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
         """
         return pulumi.get(self, "identifier")
 
@@ -218,7 +218,7 @@ def get_resource_server(identifier: Optional[str] = None,
     ```
 
 
-    :param str identifier: The unique identifier for the resource server. If not provided, `resource_server_id` must be set.
+    :param str identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
     :param str resource_server_id: The ID of the resource server. If not provided, `identifier` must be set.
     """
     __args__ = dict()
@@ -262,7 +262,7 @@ def get_resource_server_output(identifier: Optional[pulumi.Input[Optional[str]]]
     ```
 
 
-    :param str identifier: The unique identifier for the resource server. If not provided, `resource_server_id` must be set.
+    :param str identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
     :param str resource_server_id: The ID of the resource server. If not provided, `identifier` must be set.
     """
     ...

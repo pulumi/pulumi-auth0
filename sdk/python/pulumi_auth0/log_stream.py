@@ -25,7 +25,7 @@ class LogStreamArgs:
         The set of arguments for constructing a LogStream resource.
         :param pulumi.Input['LogStreamSinkArgs'] sink: The sink configuration for the log stream.
         :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
         :param pulumi.Input[str] name: Name of the log stream.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
         """
@@ -66,7 +66,7 @@ class LogStreamArgs:
     @pulumi.getter
     def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
         """
-        Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
+        Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
         """
         return pulumi.get(self, "filters")
 
@@ -109,7 +109,7 @@ class _LogStreamState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LogStream resources.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
         :param pulumi.Input[str] name: Name of the log stream.
         :param pulumi.Input['LogStreamSinkArgs'] sink: The sink configuration for the log stream.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
@@ -130,7 +130,7 @@ class _LogStreamState:
     @pulumi.getter
     def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
         """
-        Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
+        Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
         """
         return pulumi.get(self, "filters")
 
@@ -242,15 +242,15 @@ class LogStream(pulumi.CustomResource):
 
         ## Import
 
-        An existing log stream can be imported using its ID. # Example
+        This resource can be imported by specifying the log stream ID. # Example
 
         ```sh
-         $ pulumi import auth0:index/logStream:LogStream example lst_XXXXXXXXXXXXXXXX
+         $ pulumi import auth0:index/logStream:LogStream example "lst_XXXXXXXXXXXXXXXX"
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
         :param pulumi.Input[str] name: Name of the log stream.
         :param pulumi.Input[pulumi.InputType['LogStreamSinkArgs']] sink: The sink configuration for the log stream.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
@@ -306,10 +306,10 @@ class LogStream(pulumi.CustomResource):
 
         ## Import
 
-        An existing log stream can be imported using its ID. # Example
+        This resource can be imported by specifying the log stream ID. # Example
 
         ```sh
-         $ pulumi import auth0:index/logStream:LogStream example lst_XXXXXXXXXXXXXXXX
+         $ pulumi import auth0:index/logStream:LogStream example "lst_XXXXXXXXXXXXXXXX"
         ```
 
         :param str resource_name: The name of the resource.
@@ -372,7 +372,7 @@ class LogStream(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
         :param pulumi.Input[str] name: Name of the log stream.
         :param pulumi.Input[pulumi.InputType['LogStreamSinkArgs']] sink: The sink configuration for the log stream.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
@@ -393,7 +393,7 @@ class LogStream(pulumi.CustomResource):
     @pulumi.getter
     def filters(self) -> pulumi.Output[Optional[Sequence[Mapping[str, str]]]]:
         """
-        Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
+        Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
         """
         return pulumi.get(self, "filters")
 
