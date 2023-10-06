@@ -32,7 +32,7 @@ builds:
     - env GOOS={{ .Os }} GOARCH={{ .Arch }} go clean -modcache
   ignore: []
   ldflags:
-  - -X github.com/pulumi/pulumi-auth0/provider/v2/pkg/version.Version={{.Tag}}
+  - -X github.com/pulumi/pulumi-auth0/provider/v3/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-auth0/
 changelog:
   skip: true
