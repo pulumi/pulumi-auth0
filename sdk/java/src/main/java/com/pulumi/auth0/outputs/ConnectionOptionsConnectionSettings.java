@@ -9,9 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ConnectionOptionsConnectionSettings {
+    /**
+     * @return PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+     * 
+     */
     private String pkce;
 
     private ConnectionOptionsConnectionSettings() {}
+    /**
+     * @return PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+     * 
+     */
     public String pkce() {
         return this.pkce;
     }

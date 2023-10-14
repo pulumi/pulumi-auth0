@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddonsSentry {
+    /**
+     * @return URL prefix only if running Sentry Community Edition, otherwise leave empty.
+     * 
+     */
     private @Nullable String baseUrl;
+    /**
+     * @return Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
+     * 
+     */
     private @Nullable String orgSlug;
 
     private ClientAddonsSentry() {}
+    /**
+     * @return URL prefix only if running Sentry Community Edition, otherwise leave empty.
+     * 
+     */
     public Optional<String> baseUrl() {
         return Optional.ofNullable(this.baseUrl);
     }
+    /**
+     * @return Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
+     * 
+     */
     public Optional<String> orgSlug() {
         return Optional.ofNullable(this.orgSlug);
     }

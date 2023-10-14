@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,14 +27,29 @@ class PagesArgs:
         :param pulumi.Input['PagesGuardianMfaArgs'] guardian_mfa: Configuration settings for customizing the Guardian Multi-Factor Authentication page.
         :param pulumi.Input['PagesLoginArgs'] login: Configuration settings for customizing the Login page.
         """
+        PagesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            change_password=change_password,
+            error=error,
+            guardian_mfa=guardian_mfa,
+            login=login,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             change_password: Optional[pulumi.Input['PagesChangePasswordArgs']] = None,
+             error: Optional[pulumi.Input['PagesErrorArgs']] = None,
+             guardian_mfa: Optional[pulumi.Input['PagesGuardianMfaArgs']] = None,
+             login: Optional[pulumi.Input['PagesLoginArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if change_password is not None:
-            pulumi.set(__self__, "change_password", change_password)
+            _setter("change_password", change_password)
         if error is not None:
-            pulumi.set(__self__, "error", error)
+            _setter("error", error)
         if guardian_mfa is not None:
-            pulumi.set(__self__, "guardian_mfa", guardian_mfa)
+            _setter("guardian_mfa", guardian_mfa)
         if login is not None:
-            pulumi.set(__self__, "login", login)
+            _setter("login", login)
 
     @property
     @pulumi.getter(name="changePassword")
@@ -99,14 +114,29 @@ class _PagesState:
         :param pulumi.Input['PagesGuardianMfaArgs'] guardian_mfa: Configuration settings for customizing the Guardian Multi-Factor Authentication page.
         :param pulumi.Input['PagesLoginArgs'] login: Configuration settings for customizing the Login page.
         """
+        _PagesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            change_password=change_password,
+            error=error,
+            guardian_mfa=guardian_mfa,
+            login=login,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             change_password: Optional[pulumi.Input['PagesChangePasswordArgs']] = None,
+             error: Optional[pulumi.Input['PagesErrorArgs']] = None,
+             guardian_mfa: Optional[pulumi.Input['PagesGuardianMfaArgs']] = None,
+             login: Optional[pulumi.Input['PagesLoginArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if change_password is not None:
-            pulumi.set(__self__, "change_password", change_password)
+            _setter("change_password", change_password)
         if error is not None:
-            pulumi.set(__self__, "error", error)
+            _setter("error", error)
         if guardian_mfa is not None:
-            pulumi.set(__self__, "guardian_mfa", guardian_mfa)
+            _setter("guardian_mfa", guardian_mfa)
         if login is not None:
-            pulumi.set(__self__, "login", login)
+            _setter("login", login)
 
     @property
     @pulumi.getter(name="changePassword")
@@ -264,6 +294,10 @@ class Pages(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PagesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -282,9 +316,29 @@ class Pages(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PagesArgs.__new__(PagesArgs)
 
+            if change_password is not None and not isinstance(change_password, PagesChangePasswordArgs):
+                change_password = change_password or {}
+                def _setter(key, value):
+                    change_password[key] = value
+                PagesChangePasswordArgs._configure(_setter, **change_password)
             __props__.__dict__["change_password"] = change_password
+            if error is not None and not isinstance(error, PagesErrorArgs):
+                error = error or {}
+                def _setter(key, value):
+                    error[key] = value
+                PagesErrorArgs._configure(_setter, **error)
             __props__.__dict__["error"] = error
+            if guardian_mfa is not None and not isinstance(guardian_mfa, PagesGuardianMfaArgs):
+                guardian_mfa = guardian_mfa or {}
+                def _setter(key, value):
+                    guardian_mfa[key] = value
+                PagesGuardianMfaArgs._configure(_setter, **guardian_mfa)
             __props__.__dict__["guardian_mfa"] = guardian_mfa
+            if login is not None and not isinstance(login, PagesLoginArgs):
+                login = login or {}
+                def _setter(key, value):
+                    login[key] = value
+                PagesLoginArgs._configure(_setter, **login)
             __props__.__dict__["login"] = login
         super(Pages, __self__).__init__(
             'auth0:index/pages:Pages',

@@ -14,9 +14,6 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetUserPermissionResult
     {
         public readonly string Description;
-        /// <summary>
-        /// Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-        /// </summary>
         public readonly string Name;
         public readonly string ResourceServerIdentifier;
         public readonly string ResourceServerName;

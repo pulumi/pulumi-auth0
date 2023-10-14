@@ -59,8 +59,7 @@ func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...p
 type LookupConnectionArgs struct {
 	// The ID of the connection. If not provided, `name` must be set.
 	ConnectionId *string `pulumi:"connectionId"`
-	// The name of the connection. If not provided, `connectionId` must be set.
-	Name *string `pulumi:"name"`
+	Name         *string `pulumi:"name"`
 }
 
 // A collection of values returned by getConnection.
@@ -106,8 +105,7 @@ func LookupConnectionOutput(ctx *pulumi.Context, args LookupConnectionOutputArgs
 type LookupConnectionOutputArgs struct {
 	// The ID of the connection. If not provided, `name` must be set.
 	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
-	// The name of the connection. If not provided, `connectionId` must be set.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name         pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupConnectionOutputArgs) ElementType() reflect.Type {

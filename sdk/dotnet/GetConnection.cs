@@ -87,9 +87,6 @@ namespace Pulumi.Auth0
         [Input("connectionId")]
         public string? ConnectionId { get; set; }
 
-        /// <summary>
-        /// The name of the connection. If not provided, `connection_id` must be set.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -107,9 +104,6 @@ namespace Pulumi.Auth0
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
 
-        /// <summary>
-        /// The name of the connection. If not provided, `connection_id` must be set.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

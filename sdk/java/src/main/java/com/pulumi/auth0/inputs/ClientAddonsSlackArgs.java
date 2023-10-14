@@ -15,9 +15,17 @@ public final class ClientAddonsSlackArgs extends com.pulumi.resources.ResourceAr
 
     public static final ClientAddonsSlackArgs Empty = new ClientAddonsSlackArgs();
 
+    /**
+     * Slack team name.
+     * 
+     */
     @Import(name="team")
     private @Nullable Output<String> team;
 
+    /**
+     * @return Slack team name.
+     * 
+     */
     public Optional<Output<String>> team() {
         return Optional.ofNullable(this.team);
     }
@@ -46,11 +54,23 @@ public final class ClientAddonsSlackArgs extends com.pulumi.resources.ResourceAr
             $ = new ClientAddonsSlackArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param team Slack team name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder team(@Nullable Output<String> team) {
             $.team = team;
             return this;
         }
 
+        /**
+         * @param team Slack team name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder team(String team) {
             return team(Output.of(team));
         }

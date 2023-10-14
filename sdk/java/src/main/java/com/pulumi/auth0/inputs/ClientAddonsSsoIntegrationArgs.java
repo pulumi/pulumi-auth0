@@ -16,23 +16,31 @@ public final class ClientAddonsSsoIntegrationArgs extends com.pulumi.resources.R
     public static final ClientAddonsSsoIntegrationArgs Empty = new ClientAddonsSsoIntegrationArgs();
 
     /**
-     * Name of the client.
+     * SSO integration name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the client.
+     * @return SSO integration name.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * SSO integration version installed.
+     * 
+     */
     @Import(name="version")
     private @Nullable Output<String> version;
 
+    /**
+     * @return SSO integration version installed.
+     * 
+     */
     public Optional<Output<String>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -63,7 +71,7 @@ public final class ClientAddonsSsoIntegrationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name Name of the client.
+         * @param name SSO integration name.
          * 
          * @return builder
          * 
@@ -74,7 +82,7 @@ public final class ClientAddonsSsoIntegrationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name Name of the client.
+         * @param name SSO integration name.
          * 
          * @return builder
          * 
@@ -83,11 +91,23 @@ public final class ClientAddonsSsoIntegrationArgs extends com.pulumi.resources.R
             return name(Output.of(name));
         }
 
+        /**
+         * @param version SSO integration version installed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(@Nullable Output<String> version) {
             $.version = version;
             return this;
         }
 
+        /**
+         * @param version SSO integration version installed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(String version) {
             return version(Output.of(version));
         }

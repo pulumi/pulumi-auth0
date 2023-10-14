@@ -12,12 +12,21 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientAddonsAwsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// AWS token lifetime in seconds.
+        /// </summary>
         [Input("lifetimeInSeconds")]
         public Input<int>? LifetimeInSeconds { get; set; }
 
+        /// <summary>
+        /// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        /// </summary>
         [Input("principal")]
         public Input<string>? Principal { get; set; }
 
+        /// <summary>
+        /// AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 

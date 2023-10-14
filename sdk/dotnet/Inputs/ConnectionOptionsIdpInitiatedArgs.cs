@@ -15,6 +15,9 @@ namespace Pulumi.Auth0.Inputs
         [Input("clientAuthorizeQuery")]
         public Input<string>? ClientAuthorizeQuery { get; set; }
 
+        /// <summary>
+        /// The strategy's client ID.
+        /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 

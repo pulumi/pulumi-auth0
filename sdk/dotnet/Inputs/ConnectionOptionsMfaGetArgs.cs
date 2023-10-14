@@ -12,9 +12,15 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ConnectionOptionsMfaGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Indicates whether multifactor authentication is enabled for this connection.
+        /// </summary>
         [Input("active")]
         public Input<bool>? Active { get; set; }
 
+        /// <summary>
+        /// Indicates whether multifactor authentication enrollment settings will be returned.
+        /// </summary>
         [Input("returnEnrollSettings")]
         public Input<bool>? ReturnEnrollSettings { get; set; }
 

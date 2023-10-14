@@ -12,36 +12,76 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClientAddonsSapApi {
     /**
-     * @return The ID of the client.
+     * @return Consumer Key assigned by Salesforce to the Connected App.
      * 
      */
     private @Nullable String clientId;
+    /**
+     * @return Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * 
+     */
     private @Nullable String nameIdentifierFormat;
+    /**
+     * @return Requested scope for SAP APIs.
+     * 
+     */
     private @Nullable String scope;
+    /**
+     * @return Service account password to use to authenticate API calls to the token endpoint.
+     * 
+     */
     private @Nullable String servicePassword;
+    /**
+     * @return The OAuth2 token endpoint URL of your SAP OData server.
+     * 
+     */
     private @Nullable String tokenEndpointUrl;
+    /**
+     * @return Name of the property in the user object that maps to a SAP username, for example `email`.
+     * 
+     */
     private @Nullable String usernameAttribute;
 
     private ClientAddonsSapApi() {}
     /**
-     * @return The ID of the client.
+     * @return Consumer Key assigned by Salesforce to the Connected App.
      * 
      */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }
+    /**
+     * @return Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * 
+     */
     public Optional<String> nameIdentifierFormat() {
         return Optional.ofNullable(this.nameIdentifierFormat);
     }
+    /**
+     * @return Requested scope for SAP APIs.
+     * 
+     */
     public Optional<String> scope() {
         return Optional.ofNullable(this.scope);
     }
+    /**
+     * @return Service account password to use to authenticate API calls to the token endpoint.
+     * 
+     */
     public Optional<String> servicePassword() {
         return Optional.ofNullable(this.servicePassword);
     }
+    /**
+     * @return The OAuth2 token endpoint URL of your SAP OData server.
+     * 
+     */
     public Optional<String> tokenEndpointUrl() {
         return Optional.ofNullable(this.tokenEndpointUrl);
     }
+    /**
+     * @return Name of the property in the user object that maps to a SAP username, for example `email`.
+     * 
+     */
     public Optional<String> usernameAttribute() {
         return Optional.ofNullable(this.usernameAttribute);
     }

@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BrandingThemeFontsTitle {
+    /**
+     * @return Body text bold. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean bold;
+    /**
+     * @return Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * 
+     */
     private @Nullable Double size;
 
     private BrandingThemeFontsTitle() {}
+    /**
+     * @return Body text bold. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> bold() {
         return Optional.ofNullable(this.bold);
     }
+    /**
+     * @return Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * 
+     */
     public Optional<Double> size() {
         return Optional.ofNullable(this.size);
     }

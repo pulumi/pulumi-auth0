@@ -434,7 +434,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the connection.
+        /// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -534,7 +534,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Name of the connection.
+        /// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -602,7 +602,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Name of the connection.
+        /// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

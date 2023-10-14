@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionOptionsMfa {
+    /**
+     * @return Indicates whether multifactor authentication is enabled for this connection.
+     * 
+     */
     private @Nullable Boolean active;
+    /**
+     * @return Indicates whether multifactor authentication enrollment settings will be returned.
+     * 
+     */
     private @Nullable Boolean returnEnrollSettings;
 
     private ConnectionOptionsMfa() {}
+    /**
+     * @return Indicates whether multifactor authentication is enabled for this connection.
+     * 
+     */
     public Optional<Boolean> active() {
         return Optional.ofNullable(this.active);
     }
+    /**
+     * @return Indicates whether multifactor authentication enrollment settings will be returned.
+     * 
+     */
     public Optional<Boolean> returnEnrollSettings() {
         return Optional.ofNullable(this.returnEnrollSettings);
     }

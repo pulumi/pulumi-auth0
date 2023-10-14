@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ClientAddonsZoom
     {
+        /// <summary>
+        /// Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+        /// </summary>
         public readonly string? Account;
 
         [OutputConstructor]

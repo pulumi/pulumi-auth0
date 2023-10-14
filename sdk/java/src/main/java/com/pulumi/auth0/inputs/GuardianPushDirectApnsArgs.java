@@ -16,30 +16,62 @@ public final class GuardianPushDirectApnsArgs extends com.pulumi.resources.Resou
 
     public static final GuardianPushDirectApnsArgs Empty = new GuardianPushDirectApnsArgs();
 
+    /**
+     * The Apple Push Notification service Bundle ID.
+     * 
+     */
     @Import(name="bundleId", required=true)
     private Output<String> bundleId;
 
+    /**
+     * @return The Apple Push Notification service Bundle ID.
+     * 
+     */
     public Output<String> bundleId() {
         return this.bundleId;
     }
 
+    /**
+     * Indicates whether Duo MFA is enabled.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Indicates whether Duo MFA is enabled.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * The base64 encoded certificate in P12 format.
+     * 
+     */
     @Import(name="p12", required=true)
     private Output<String> p12;
 
+    /**
+     * @return The base64 encoded certificate in P12 format.
+     * 
+     */
     public Output<String> p12() {
         return this.p12;
     }
 
+    /**
+     * Set to true to use the sandbox iOS app environment, otherwise set to false to use the production iOS app environment.
+     * 
+     */
     @Import(name="sandbox", required=true)
     private Output<Boolean> sandbox;
 
+    /**
+     * @return Set to true to use the sandbox iOS app environment, otherwise set to false to use the production iOS app environment.
+     * 
+     */
     public Output<Boolean> sandbox() {
         return this.sandbox;
     }
@@ -71,38 +103,86 @@ public final class GuardianPushDirectApnsArgs extends com.pulumi.resources.Resou
             $ = new GuardianPushDirectApnsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param bundleId The Apple Push Notification service Bundle ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bundleId(Output<String> bundleId) {
             $.bundleId = bundleId;
             return this;
         }
 
+        /**
+         * @param bundleId The Apple Push Notification service Bundle ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bundleId(String bundleId) {
             return bundleId(Output.of(bundleId));
         }
 
+        /**
+         * @param enabled Indicates whether Duo MFA is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Indicates whether Duo MFA is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param p12 The base64 encoded certificate in P12 format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder p12(Output<String> p12) {
             $.p12 = p12;
             return this;
         }
 
+        /**
+         * @param p12 The base64 encoded certificate in P12 format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder p12(String p12) {
             return p12(Output.of(p12));
         }
 
+        /**
+         * @param sandbox Set to true to use the sandbox iOS app environment, otherwise set to false to use the production iOS app environment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sandbox(Output<Boolean> sandbox) {
             $.sandbox = sandbox;
             return this;
         }
 
+        /**
+         * @param sandbox Set to true to use the sandbox iOS app environment, otherwise set to false to use the production iOS app environment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sandbox(Boolean sandbox) {
             return sandbox(Output.of(sandbox));
         }

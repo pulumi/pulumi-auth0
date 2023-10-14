@@ -12,6 +12,9 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientAddonsSlackArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Slack team name.
+        /// </summary>
         [Input("team")]
         public Input<string>? Team { get; set; }
 

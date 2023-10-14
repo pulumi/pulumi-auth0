@@ -15,16 +15,32 @@ public final class AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs
 
     public static final AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs Empty = new AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs();
 
+    /**
+     * Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+     * 
+     */
     @Import(name="maxAttempts")
     private @Nullable Output<Integer> maxAttempts;
 
+    /**
+     * @return Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+     * 
+     */
     public Optional<Output<Integer>> maxAttempts() {
         return Optional.ofNullable(this.maxAttempts);
     }
 
+    /**
+     * Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+     * 
+     */
     @Import(name="rate")
     private @Nullable Output<Integer> rate;
 
+    /**
+     * @return Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+     * 
+     */
     public Optional<Output<Integer>> rate() {
         return Optional.ofNullable(this.rate);
     }
@@ -54,20 +70,44 @@ public final class AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs
             $ = new AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param maxAttempts Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxAttempts(@Nullable Output<Integer> maxAttempts) {
             $.maxAttempts = maxAttempts;
             return this;
         }
 
+        /**
+         * @param maxAttempts Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxAttempts(Integer maxAttempts) {
             return maxAttempts(Output.of(maxAttempts));
         }
 
+        /**
+         * @param rate Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rate(@Nullable Output<Integer> rate) {
             $.rate = rate;
             return this;
         }
 
+        /**
+         * @param rate Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rate(Integer rate) {
             return rate(Output.of(rate));
         }

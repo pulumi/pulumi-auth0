@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ConnectionClientsArgs', 'ConnectionClients']
@@ -21,8 +21,19 @@ class ConnectionClientsArgs:
         :param pulumi.Input[str] connection_id: ID of the connection on which to enable the client.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled.
         """
-        pulumi.set(__self__, "connection_id", connection_id)
-        pulumi.set(__self__, "enabled_clients", enabled_clients)
+        ConnectionClientsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_id=connection_id,
+            enabled_clients=enabled_clients,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_id: pulumi.Input[str],
+             enabled_clients: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("connection_id", connection_id)
+        _setter("enabled_clients", enabled_clients)
 
     @property
     @pulumi.getter(name="connectionId")
@@ -63,14 +74,29 @@ class _ConnectionClientsState:
         :param pulumi.Input[str] name: The name of the connection on which to enable the client.
         :param pulumi.Input[str] strategy: The strategy of the connection on which to enable the client.
         """
+        _ConnectionClientsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_id=connection_id,
+            enabled_clients=enabled_clients,
+            name=name,
+            strategy=strategy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_id: Optional[pulumi.Input[str]] = None,
+             enabled_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             strategy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if connection_id is not None:
-            pulumi.set(__self__, "connection_id", connection_id)
+            _setter("connection_id", connection_id)
         if enabled_clients is not None:
-            pulumi.set(__self__, "enabled_clients", enabled_clients)
+            _setter("enabled_clients", enabled_clients)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if strategy is not None:
-            pulumi.set(__self__, "strategy", strategy)
+            _setter("strategy", strategy)
 
     @property
     @pulumi.getter(name="connectionId")
@@ -220,6 +246,10 @@ class ConnectionClients(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConnectionClientsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

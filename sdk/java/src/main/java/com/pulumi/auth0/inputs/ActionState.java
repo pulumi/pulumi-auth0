@@ -66,14 +66,14 @@ public final class ActionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the action.
+     * Dependency name, e.g. `lodash`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the action.
+     * @return Dependency name, e.g. `lodash`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -245,7 +245,7 @@ public final class ActionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the action.
+         * @param name Dependency name, e.g. `lodash`.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class ActionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the action.
+         * @param name Dependency name, e.g. `lodash`.
          * 
          * @return builder
          * 

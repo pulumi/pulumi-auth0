@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -122,7 +122,6 @@ def get_role(name: Optional[str] = None,
     ```
 
 
-    :param str name: The name of the role. If not provided, `role_id` must be set.
     :param str role_id: The ID of the role. If not provided, `name` must be set.
     """
     __args__ = dict()
@@ -158,7 +157,6 @@ def get_role_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     ```
 
 
-    :param str name: The name of the role. If not provided, `role_id` must be set.
     :param str role_id: The ID of the role. If not provided, `name` must be set.
     """
     ...

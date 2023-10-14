@@ -14,11 +14,20 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ClientAddonsSalesforceSandboxApi
     {
         /// <summary>
-        /// The ID of the client.
+        /// Consumer Key assigned by Salesforce to the Connected App.
         /// </summary>
         public readonly string? ClientId;
+        /// <summary>
+        /// Community name.
+        /// </summary>
         public readonly string? CommunityName;
+        /// <summary>
+        /// Community URL section.
+        /// </summary>
         public readonly string? CommunityUrlSection;
+        /// <summary>
+        /// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        /// </summary>
         public readonly string? Principal;
 
         [OutputConstructor]

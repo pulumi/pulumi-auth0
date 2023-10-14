@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ClientAddonsRms
     {
+        /// <summary>
+        /// Microsoft Dynamics CRM application URL.
+        /// </summary>
         public readonly string? Url;
 
         [OutputConstructor]

@@ -60,9 +60,6 @@ namespace Pulumi.Auth0.Outputs
         public readonly string MetadataUrl;
         public readonly string MetadataXml;
         public readonly ImmutableArray<Outputs.GetConnectionOptionMfaResult> Mfas;
-        /// <summary>
-        /// The name of the connection. If not provided, `connection_id` must be set.
-        /// </summary>
         public readonly string Name;
         public readonly ImmutableArray<string> NonPersistentAttrs;
         public readonly ImmutableArray<Outputs.GetConnectionOptionPasswordComplexityOptionResult> PasswordComplexityOptions;

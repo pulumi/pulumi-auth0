@@ -12,9 +12,15 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class AttackProtectionSuspiciousIpThrottlingPreLoginArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+        /// </summary>
         [Input("maxAttempts")]
         public Input<int>? MaxAttempts { get; set; }
 
+        /// <summary>
+        /// Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+        /// </summary>
         [Input("rate")]
         public Input<int>? Rate { get; set; }
 

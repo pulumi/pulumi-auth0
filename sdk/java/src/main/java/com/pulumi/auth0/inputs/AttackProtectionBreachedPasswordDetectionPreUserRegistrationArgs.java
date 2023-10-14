@@ -16,9 +16,17 @@ public final class AttackProtectionBreachedPasswordDetectionPreUserRegistrationA
 
     public static final AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs Empty = new AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs();
 
+    /**
+     * Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+     * 
+     */
     @Import(name="shields")
     private @Nullable Output<List<String>> shields;
 
+    /**
+     * @return Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+     * 
+     */
     public Optional<Output<List<String>>> shields() {
         return Optional.ofNullable(this.shields);
     }
@@ -47,15 +55,33 @@ public final class AttackProtectionBreachedPasswordDetectionPreUserRegistrationA
             $ = new AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param shields Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+         * 
+         * @return builder
+         * 
+         */
         public Builder shields(@Nullable Output<List<String>> shields) {
             $.shields = shields;
             return this;
         }
 
+        /**
+         * @param shields Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+         * 
+         * @return builder
+         * 
+         */
         public Builder shields(List<String> shields) {
             return shields(Output.of(shields));
         }
 
+        /**
+         * @param shields Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+         * 
+         * @return builder
+         * 
+         */
         public Builder shields(String... shields) {
             return shields(List.of(shields));
         }

@@ -78,14 +78,14 @@ public class Action extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deploy);
     }
     /**
-     * The name of the action.
+     * Dependency name, e.g. `lodash`.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the action.
+     * @return Dependency name, e.g. `lodash`.
      * 
      */
     public Output<String> name() {

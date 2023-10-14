@@ -41,9 +41,6 @@ export interface GetConnectionArgs {
      * The ID of the connection. If not provided, `name` must be set.
      */
     connectionId?: string;
-    /**
-     * The name of the connection. If not provided, `connectionId` must be set.
-     */
     name?: string;
 }
 
@@ -125,8 +122,5 @@ export interface GetConnectionOutputArgs {
      * The ID of the connection. If not provided, `name` must be set.
      */
     connectionId?: pulumi.Input<string>;
-    /**
-     * The name of the connection. If not provided, `connectionId` must be set.
-     */
     name?: pulumi.Input<string>;
 }

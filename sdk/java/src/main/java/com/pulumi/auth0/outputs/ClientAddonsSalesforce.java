@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddonsSalesforce {
+    /**
+     * @return Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
+     * 
+     */
     private @Nullable String entityId;
 
     private ClientAddonsSalesforce() {}
+    /**
+     * @return Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
+     * 
+     */
     public Optional<String> entityId() {
         return Optional.ofNullable(this.entityId);
     }

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -14,6 +14,7 @@ __all__ = [
     'GetBrandingThemeResult',
     'AwaitableGetBrandingThemeResult',
     'get_branding_theme',
+    'get_branding_theme_output',
 ]
 
 @pulumi.output_type
@@ -126,3 +127,20 @@ def get_branding_theme(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitable
         id=pulumi.get(__ret__, 'id'),
         page_backgrounds=pulumi.get(__ret__, 'page_backgrounds'),
         widgets=pulumi.get(__ret__, 'widgets'))
+
+
+@_utilities.lift_output_func(get_branding_theme)
+def get_branding_theme_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBrandingThemeResult]:
+    """
+    Use this data source to access information about the tenant's branding theme settings.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_branding_theme = auth0.get_branding_theme()
+    ```
+    """
+    ...

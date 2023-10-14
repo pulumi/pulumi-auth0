@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -501,10 +501,6 @@ def get_client(client_id: Optional[str] = None,
     some_client_by_name = auth0.get_client(name="Name of my Application")
     some_client_by_id = auth0.get_client(client_id="abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
-
-
-    :param str client_id: The ID of the client. If not provided, `name` must be set.
-    :param str name: The name of the client. If not provided, `client_id` must be set.
     """
     __args__ = dict()
     __args__['clientId'] = client_id
@@ -569,9 +565,5 @@ def get_client_output(client_id: Optional[pulumi.Input[Optional[str]]] = None,
     some_client_by_name = auth0.get_client(name="Name of my Application")
     some_client_by_id = auth0.get_client(client_id="abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
-
-
-    :param str client_id: The ID of the client. If not provided, `name` must be set.
-    :param str name: The name of the client. If not provided, `client_id` must be set.
     """
     ...

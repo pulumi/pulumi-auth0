@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,16 +29,33 @@ class BrandingArgs:
         :param pulumi.Input[str] logo_url: URL of logo for branding.
         :param pulumi.Input['BrandingUniversalLoginArgs'] universal_login: Configuration settings for Universal Login.
         """
+        BrandingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            colors=colors,
+            favicon_url=favicon_url,
+            font=font,
+            logo_url=logo_url,
+            universal_login=universal_login,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             colors: Optional[pulumi.Input['BrandingColorsArgs']] = None,
+             favicon_url: Optional[pulumi.Input[str]] = None,
+             font: Optional[pulumi.Input['BrandingFontArgs']] = None,
+             logo_url: Optional[pulumi.Input[str]] = None,
+             universal_login: Optional[pulumi.Input['BrandingUniversalLoginArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if colors is not None:
-            pulumi.set(__self__, "colors", colors)
+            _setter("colors", colors)
         if favicon_url is not None:
-            pulumi.set(__self__, "favicon_url", favicon_url)
+            _setter("favicon_url", favicon_url)
         if font is not None:
-            pulumi.set(__self__, "font", font)
+            _setter("font", font)
         if logo_url is not None:
-            pulumi.set(__self__, "logo_url", logo_url)
+            _setter("logo_url", logo_url)
         if universal_login is not None:
-            pulumi.set(__self__, "universal_login", universal_login)
+            _setter("universal_login", universal_login)
 
     @property
     @pulumi.getter
@@ -117,16 +134,33 @@ class _BrandingState:
         :param pulumi.Input[str] logo_url: URL of logo for branding.
         :param pulumi.Input['BrandingUniversalLoginArgs'] universal_login: Configuration settings for Universal Login.
         """
+        _BrandingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            colors=colors,
+            favicon_url=favicon_url,
+            font=font,
+            logo_url=logo_url,
+            universal_login=universal_login,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             colors: Optional[pulumi.Input['BrandingColorsArgs']] = None,
+             favicon_url: Optional[pulumi.Input[str]] = None,
+             font: Optional[pulumi.Input['BrandingFontArgs']] = None,
+             logo_url: Optional[pulumi.Input[str]] = None,
+             universal_login: Optional[pulumi.Input['BrandingUniversalLoginArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if colors is not None:
-            pulumi.set(__self__, "colors", colors)
+            _setter("colors", colors)
         if favicon_url is not None:
-            pulumi.set(__self__, "favicon_url", favicon_url)
+            _setter("favicon_url", favicon_url)
         if font is not None:
-            pulumi.set(__self__, "font", font)
+            _setter("font", font)
         if logo_url is not None:
-            pulumi.set(__self__, "logo_url", logo_url)
+            _setter("logo_url", logo_url)
         if universal_login is not None:
-            pulumi.set(__self__, "universal_login", universal_login)
+            _setter("universal_login", universal_login)
 
     @property
     @pulumi.getter
@@ -280,6 +314,10 @@ class Branding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BrandingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -299,10 +337,25 @@ class Branding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BrandingArgs.__new__(BrandingArgs)
 
+            if colors is not None and not isinstance(colors, BrandingColorsArgs):
+                colors = colors or {}
+                def _setter(key, value):
+                    colors[key] = value
+                BrandingColorsArgs._configure(_setter, **colors)
             __props__.__dict__["colors"] = colors
             __props__.__dict__["favicon_url"] = favicon_url
+            if font is not None and not isinstance(font, BrandingFontArgs):
+                font = font or {}
+                def _setter(key, value):
+                    font[key] = value
+                BrandingFontArgs._configure(_setter, **font)
             __props__.__dict__["font"] = font
             __props__.__dict__["logo_url"] = logo_url
+            if universal_login is not None and not isinstance(universal_login, BrandingUniversalLoginArgs):
+                universal_login = universal_login or {}
+                def _setter(key, value):
+                    universal_login[key] = value
+                BrandingUniversalLoginArgs._configure(_setter, **universal_login)
             __props__.__dict__["universal_login"] = universal_login
         super(Branding, __self__).__init__(
             'auth0:index/branding:Branding',

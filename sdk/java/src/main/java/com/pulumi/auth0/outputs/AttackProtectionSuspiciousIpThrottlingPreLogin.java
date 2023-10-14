@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AttackProtectionSuspiciousIpThrottlingPreLogin {
+    /**
+     * @return Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+     * 
+     */
     private @Nullable Integer maxAttempts;
+    /**
+     * @return Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+     * 
+     */
     private @Nullable Integer rate;
 
     private AttackProtectionSuspiciousIpThrottlingPreLogin() {}
+    /**
+     * @return Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+     * 
+     */
     public Optional<Integer> maxAttempts() {
         return Optional.ofNullable(this.maxAttempts);
     }
+    /**
+     * @return Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+     * 
+     */
     public Optional<Integer> rate() {
         return Optional.ofNullable(this.rate);
     }

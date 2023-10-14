@@ -10,10 +10,6 @@ import java.util.Objects;
 @CustomType
 public final class GetUserPermission {
     private String description;
-    /**
-     * @return Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-     * 
-     */
     private String name;
     private String resourceServerIdentifier;
     private String resourceServerName;
@@ -22,10 +18,6 @@ public final class GetUserPermission {
     public String description() {
         return this.description;
     }
-    /**
-     * @return Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-     * 
-     */
     public String name() {
         return this.name;
     }

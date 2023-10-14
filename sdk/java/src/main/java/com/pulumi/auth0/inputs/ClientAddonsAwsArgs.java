@@ -16,23 +16,47 @@ public final class ClientAddonsAwsArgs extends com.pulumi.resources.ResourceArgs
 
     public static final ClientAddonsAwsArgs Empty = new ClientAddonsAwsArgs();
 
+    /**
+     * AWS token lifetime in seconds.
+     * 
+     */
     @Import(name="lifetimeInSeconds")
     private @Nullable Output<Integer> lifetimeInSeconds;
 
+    /**
+     * @return AWS token lifetime in seconds.
+     * 
+     */
     public Optional<Output<Integer>> lifetimeInSeconds() {
         return Optional.ofNullable(this.lifetimeInSeconds);
     }
 
+    /**
+     * AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * 
+     */
     @Import(name="principal")
     private @Nullable Output<String> principal;
 
+    /**
+     * @return AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * 
+     */
     public Optional<Output<String>> principal() {
         return Optional.ofNullable(this.principal);
     }
 
+    /**
+     * AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.
+     * 
+     */
     @Import(name="role")
     private @Nullable Output<String> role;
 
+    /**
+     * @return AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.
+     * 
+     */
     public Optional<Output<String>> role() {
         return Optional.ofNullable(this.role);
     }
@@ -63,29 +87,65 @@ public final class ClientAddonsAwsArgs extends com.pulumi.resources.ResourceArgs
             $ = new ClientAddonsAwsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param lifetimeInSeconds AWS token lifetime in seconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lifetimeInSeconds(@Nullable Output<Integer> lifetimeInSeconds) {
             $.lifetimeInSeconds = lifetimeInSeconds;
             return this;
         }
 
+        /**
+         * @param lifetimeInSeconds AWS token lifetime in seconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lifetimeInSeconds(Integer lifetimeInSeconds) {
             return lifetimeInSeconds(Output.of(lifetimeInSeconds));
         }
 
+        /**
+         * @param principal AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder principal(@Nullable Output<String> principal) {
             $.principal = principal;
             return this;
         }
 
+        /**
+         * @param principal AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder principal(String principal) {
             return principal(Output.of(principal));
         }
 
+        /**
+         * @param role AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(@Nullable Output<String> role) {
             $.role = role;
             return this;
         }
 
+        /**
+         * @param role AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(String role) {
             return role(Output.of(role));
         }

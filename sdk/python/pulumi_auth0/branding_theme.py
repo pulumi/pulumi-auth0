@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -26,13 +26,32 @@ class BrandingThemeArgs:
         The set of arguments for constructing a BrandingTheme resource.
         :param pulumi.Input[str] display_name: The display name for the branding theme.
         """
-        pulumi.set(__self__, "borders", borders)
-        pulumi.set(__self__, "colors", colors)
-        pulumi.set(__self__, "fonts", fonts)
-        pulumi.set(__self__, "page_background", page_background)
-        pulumi.set(__self__, "widget", widget)
+        BrandingThemeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            borders=borders,
+            colors=colors,
+            fonts=fonts,
+            page_background=page_background,
+            widget=widget,
+            display_name=display_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             borders: pulumi.Input['BrandingThemeBordersArgs'],
+             colors: pulumi.Input['BrandingThemeColorsArgs'],
+             fonts: pulumi.Input['BrandingThemeFontsArgs'],
+             page_background: pulumi.Input['BrandingThemePageBackgroundArgs'],
+             widget: pulumi.Input['BrandingThemeWidgetArgs'],
+             display_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("borders", borders)
+        _setter("colors", colors)
+        _setter("fonts", fonts)
+        _setter("page_background", page_background)
+        _setter("widget", widget)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
 
     @property
     @pulumi.getter
@@ -105,18 +124,37 @@ class _BrandingThemeState:
         Input properties used for looking up and filtering BrandingTheme resources.
         :param pulumi.Input[str] display_name: The display name for the branding theme.
         """
+        _BrandingThemeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            borders=borders,
+            colors=colors,
+            display_name=display_name,
+            fonts=fonts,
+            page_background=page_background,
+            widget=widget,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             borders: Optional[pulumi.Input['BrandingThemeBordersArgs']] = None,
+             colors: Optional[pulumi.Input['BrandingThemeColorsArgs']] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             fonts: Optional[pulumi.Input['BrandingThemeFontsArgs']] = None,
+             page_background: Optional[pulumi.Input['BrandingThemePageBackgroundArgs']] = None,
+             widget: Optional[pulumi.Input['BrandingThemeWidgetArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if borders is not None:
-            pulumi.set(__self__, "borders", borders)
+            _setter("borders", borders)
         if colors is not None:
-            pulumi.set(__self__, "colors", colors)
+            _setter("colors", colors)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if fonts is not None:
-            pulumi.set(__self__, "fonts", fonts)
+            _setter("fonts", fonts)
         if page_background is not None:
-            pulumi.set(__self__, "page_background", page_background)
+            _setter("page_background", page_background)
         if widget is not None:
-            pulumi.set(__self__, "widget", widget)
+            _setter("widget", widget)
 
     @property
     @pulumi.getter
@@ -390,6 +428,10 @@ class BrandingTheme(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BrandingThemeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -410,19 +452,44 @@ class BrandingTheme(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BrandingThemeArgs.__new__(BrandingThemeArgs)
 
+            if borders is not None and not isinstance(borders, BrandingThemeBordersArgs):
+                borders = borders or {}
+                def _setter(key, value):
+                    borders[key] = value
+                BrandingThemeBordersArgs._configure(_setter, **borders)
             if borders is None and not opts.urn:
                 raise TypeError("Missing required property 'borders'")
             __props__.__dict__["borders"] = borders
+            if colors is not None and not isinstance(colors, BrandingThemeColorsArgs):
+                colors = colors or {}
+                def _setter(key, value):
+                    colors[key] = value
+                BrandingThemeColorsArgs._configure(_setter, **colors)
             if colors is None and not opts.urn:
                 raise TypeError("Missing required property 'colors'")
             __props__.__dict__["colors"] = colors
             __props__.__dict__["display_name"] = display_name
+            if fonts is not None and not isinstance(fonts, BrandingThemeFontsArgs):
+                fonts = fonts or {}
+                def _setter(key, value):
+                    fonts[key] = value
+                BrandingThemeFontsArgs._configure(_setter, **fonts)
             if fonts is None and not opts.urn:
                 raise TypeError("Missing required property 'fonts'")
             __props__.__dict__["fonts"] = fonts
+            if page_background is not None and not isinstance(page_background, BrandingThemePageBackgroundArgs):
+                page_background = page_background or {}
+                def _setter(key, value):
+                    page_background[key] = value
+                BrandingThemePageBackgroundArgs._configure(_setter, **page_background)
             if page_background is None and not opts.urn:
                 raise TypeError("Missing required property 'page_background'")
             __props__.__dict__["page_background"] = page_background
+            if widget is not None and not isinstance(widget, BrandingThemeWidgetArgs):
+                widget = widget or {}
+                def _setter(key, value):
+                    widget[key] = value
+                BrandingThemeWidgetArgs._configure(_setter, **widget)
             if widget is None and not opts.urn:
                 raise TypeError("Missing required property 'widget'")
             __props__.__dict__["widget"] = widget

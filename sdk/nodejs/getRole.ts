@@ -37,9 +37,6 @@ export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getRole.
  */
 export interface GetRoleArgs {
-    /**
-     * The name of the role. If not provided, `roleId` must be set.
-     */
     name?: string;
     /**
      * The ID of the role. If not provided, `name` must be set.
@@ -101,9 +98,6 @@ export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getRole.
  */
 export interface GetRoleOutputArgs {
-    /**
-     * The name of the role. If not provided, `roleId` must be set.
-     */
     name?: pulumi.Input<string>;
     /**
      * The ID of the role. If not provided, `name` must be set.

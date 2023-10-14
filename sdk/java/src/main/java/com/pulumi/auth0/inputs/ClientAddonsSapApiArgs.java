@@ -16,51 +16,91 @@ public final class ClientAddonsSapApiArgs extends com.pulumi.resources.ResourceA
     public static final ClientAddonsSapApiArgs Empty = new ClientAddonsSapApiArgs();
 
     /**
-     * The ID of the client.
+     * Consumer Key assigned by Salesforce to the Connected App.
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return The ID of the client.
+     * @return Consumer Key assigned by Salesforce to the Connected App.
      * 
      */
     public Optional<Output<String>> clientId() {
         return Optional.ofNullable(this.clientId);
     }
 
+    /**
+     * Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * 
+     */
     @Import(name="nameIdentifierFormat")
     private @Nullable Output<String> nameIdentifierFormat;
 
+    /**
+     * @return Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * 
+     */
     public Optional<Output<String>> nameIdentifierFormat() {
         return Optional.ofNullable(this.nameIdentifierFormat);
     }
 
+    /**
+     * Requested scope for SAP APIs.
+     * 
+     */
     @Import(name="scope")
     private @Nullable Output<String> scope;
 
+    /**
+     * @return Requested scope for SAP APIs.
+     * 
+     */
     public Optional<Output<String>> scope() {
         return Optional.ofNullable(this.scope);
     }
 
+    /**
+     * Service account password to use to authenticate API calls to the token endpoint.
+     * 
+     */
     @Import(name="servicePassword")
     private @Nullable Output<String> servicePassword;
 
+    /**
+     * @return Service account password to use to authenticate API calls to the token endpoint.
+     * 
+     */
     public Optional<Output<String>> servicePassword() {
         return Optional.ofNullable(this.servicePassword);
     }
 
+    /**
+     * The OAuth2 token endpoint URL of your SAP OData server.
+     * 
+     */
     @Import(name="tokenEndpointUrl")
     private @Nullable Output<String> tokenEndpointUrl;
 
+    /**
+     * @return The OAuth2 token endpoint URL of your SAP OData server.
+     * 
+     */
     public Optional<Output<String>> tokenEndpointUrl() {
         return Optional.ofNullable(this.tokenEndpointUrl);
     }
 
+    /**
+     * Name of the property in the user object that maps to a SAP username, for example `email`.
+     * 
+     */
     @Import(name="usernameAttribute")
     private @Nullable Output<String> usernameAttribute;
 
+    /**
+     * @return Name of the property in the user object that maps to a SAP username, for example `email`.
+     * 
+     */
     public Optional<Output<String>> usernameAttribute() {
         return Optional.ofNullable(this.usernameAttribute);
     }
@@ -95,7 +135,7 @@ public final class ClientAddonsSapApiArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clientId The ID of the client.
+         * @param clientId Consumer Key assigned by Salesforce to the Connected App.
          * 
          * @return builder
          * 
@@ -106,7 +146,7 @@ public final class ClientAddonsSapApiArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clientId The ID of the client.
+         * @param clientId Consumer Key assigned by Salesforce to the Connected App.
          * 
          * @return builder
          * 
@@ -115,47 +155,107 @@ public final class ClientAddonsSapApiArgs extends com.pulumi.resources.ResourceA
             return clientId(Output.of(clientId));
         }
 
+        /**
+         * @param nameIdentifierFormat Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameIdentifierFormat(@Nullable Output<String> nameIdentifierFormat) {
             $.nameIdentifierFormat = nameIdentifierFormat;
             return this;
         }
 
+        /**
+         * @param nameIdentifierFormat Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameIdentifierFormat(String nameIdentifierFormat) {
             return nameIdentifierFormat(Output.of(nameIdentifierFormat));
         }
 
+        /**
+         * @param scope Requested scope for SAP APIs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scope(@Nullable Output<String> scope) {
             $.scope = scope;
             return this;
         }
 
+        /**
+         * @param scope Requested scope for SAP APIs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scope(String scope) {
             return scope(Output.of(scope));
         }
 
+        /**
+         * @param servicePassword Service account password to use to authenticate API calls to the token endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePassword(@Nullable Output<String> servicePassword) {
             $.servicePassword = servicePassword;
             return this;
         }
 
+        /**
+         * @param servicePassword Service account password to use to authenticate API calls to the token endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePassword(String servicePassword) {
             return servicePassword(Output.of(servicePassword));
         }
 
+        /**
+         * @param tokenEndpointUrl The OAuth2 token endpoint URL of your SAP OData server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokenEndpointUrl(@Nullable Output<String> tokenEndpointUrl) {
             $.tokenEndpointUrl = tokenEndpointUrl;
             return this;
         }
 
+        /**
+         * @param tokenEndpointUrl The OAuth2 token endpoint URL of your SAP OData server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokenEndpointUrl(String tokenEndpointUrl) {
             return tokenEndpointUrl(Output.of(tokenEndpointUrl));
         }
 
+        /**
+         * @param usernameAttribute Name of the property in the user object that maps to a SAP username, for example `email`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder usernameAttribute(@Nullable Output<String> usernameAttribute) {
             $.usernameAttribute = usernameAttribute;
             return this;
         }
 
+        /**
+         * @param usernameAttribute Name of the property in the user object that maps to a SAP username, for example `email`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder usernameAttribute(String usernameAttribute) {
             return usernameAttribute(Output.of(usernameAttribute));
         }

@@ -9,20 +9,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonSalesforceSandboxApi {
-    /**
-     * @return The ID of the client. If not provided, `name` must be set.
-     * 
-     */
     private String clientId;
     private String communityName;
     private String communityUrlSection;
     private String principal;
 
     private GetClientAddonSalesforceSandboxApi() {}
-    /**
-     * @return The ID of the client. If not provided, `name` must be set.
-     * 
-     */
     public String clientId() {
         return this.clientId;
     }

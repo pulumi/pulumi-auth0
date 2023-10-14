@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddonsWams {
+    /**
+     * @return Your master key for Windows Azure Mobile Services.
+     * 
+     */
     private @Nullable String masterKey;
 
     private ClientAddonsWams() {}
+    /**
+     * @return Your master key for Windows Azure Mobile Services.
+     * 
+     */
     public Optional<String> masterKey() {
         return Optional.ofNullable(this.masterKey);
     }

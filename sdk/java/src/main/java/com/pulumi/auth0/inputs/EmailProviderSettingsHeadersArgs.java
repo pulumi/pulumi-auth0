@@ -15,16 +15,32 @@ public final class EmailProviderSettingsHeadersArgs extends com.pulumi.resources
 
     public static final EmailProviderSettingsHeadersArgs Empty = new EmailProviderSettingsHeadersArgs();
 
+    /**
+     * Disable or enable the default View Content Link for sensitive emails.
+     * 
+     */
     @Import(name="xMcViewContentLink")
     private @Nullable Output<String> xMcViewContentLink;
 
+    /**
+     * @return Disable or enable the default View Content Link for sensitive emails.
+     * 
+     */
     public Optional<Output<String>> xMcViewContentLink() {
         return Optional.ofNullable(this.xMcViewContentLink);
     }
 
+    /**
+     * SES Configuration set to include when sending emails.
+     * 
+     */
     @Import(name="xSesConfigurationSet")
     private @Nullable Output<String> xSesConfigurationSet;
 
+    /**
+     * @return SES Configuration set to include when sending emails.
+     * 
+     */
     public Optional<Output<String>> xSesConfigurationSet() {
         return Optional.ofNullable(this.xSesConfigurationSet);
     }
@@ -54,20 +70,44 @@ public final class EmailProviderSettingsHeadersArgs extends com.pulumi.resources
             $ = new EmailProviderSettingsHeadersArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param xMcViewContentLink Disable or enable the default View Content Link for sensitive emails.
+         * 
+         * @return builder
+         * 
+         */
         public Builder xMcViewContentLink(@Nullable Output<String> xMcViewContentLink) {
             $.xMcViewContentLink = xMcViewContentLink;
             return this;
         }
 
+        /**
+         * @param xMcViewContentLink Disable or enable the default View Content Link for sensitive emails.
+         * 
+         * @return builder
+         * 
+         */
         public Builder xMcViewContentLink(String xMcViewContentLink) {
             return xMcViewContentLink(Output.of(xMcViewContentLink));
         }
 
+        /**
+         * @param xSesConfigurationSet SES Configuration set to include when sending emails.
+         * 
+         * @return builder
+         * 
+         */
         public Builder xSesConfigurationSet(@Nullable Output<String> xSesConfigurationSet) {
             $.xSesConfigurationSet = xSesConfigurationSet;
             return this;
         }
 
+        /**
+         * @param xSesConfigurationSet SES Configuration set to include when sending emails.
+         * 
+         * @return builder
+         * 
+         */
         public Builder xSesConfigurationSet(String xSesConfigurationSet) {
             return xSesConfigurationSet(Output.of(xSesConfigurationSet));
         }

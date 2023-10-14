@@ -11,29 +11,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GuardianPhoneOptions {
+    /**
+     * @return AuthToken for your Twilio account.
+     * 
+     */
     private @Nullable String authToken;
+    /**
+     * @return This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+     * 
+     */
     private @Nullable String enrollmentMessage;
+    /**
+     * @return Phone number to use as the sender.
+     * 
+     */
     private @Nullable String from;
+    /**
+     * @return Messaging service SID.
+     * 
+     */
     private @Nullable String messagingServiceSid;
+    /**
+     * @return SID for your Twilio account.
+     * 
+     */
     private @Nullable String sid;
+    /**
+     * @return This message will be sent whenever a user logs in after the enrollment. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+     * 
+     */
     private @Nullable String verificationMessage;
 
     private GuardianPhoneOptions() {}
+    /**
+     * @return AuthToken for your Twilio account.
+     * 
+     */
     public Optional<String> authToken() {
         return Optional.ofNullable(this.authToken);
     }
+    /**
+     * @return This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+     * 
+     */
     public Optional<String> enrollmentMessage() {
         return Optional.ofNullable(this.enrollmentMessage);
     }
+    /**
+     * @return Phone number to use as the sender.
+     * 
+     */
     public Optional<String> from() {
         return Optional.ofNullable(this.from);
     }
+    /**
+     * @return Messaging service SID.
+     * 
+     */
     public Optional<String> messagingServiceSid() {
         return Optional.ofNullable(this.messagingServiceSid);
     }
+    /**
+     * @return SID for your Twilio account.
+     * 
+     */
     public Optional<String> sid() {
         return Optional.ofNullable(this.sid);
     }
+    /**
+     * @return This message will be sent whenever a user logs in after the enrollment. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+     * 
+     */
     public Optional<String> verificationMessage() {
         return Optional.ofNullable(this.verificationMessage);
     }

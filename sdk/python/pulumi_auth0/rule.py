@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['RuleArgs', 'Rule']
@@ -25,13 +25,28 @@ class RuleArgs:
         :param pulumi.Input[str] name: Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
         :param pulumi.Input[int] order: Order in which the rule executes relative to other rules. Lower-valued rules execute first.
         """
-        pulumi.set(__self__, "script", script)
+        RuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            script=script,
+            enabled=enabled,
+            name=name,
+            order=order,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             script: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             order: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("script", script)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if order is not None:
-            pulumi.set(__self__, "order", order)
+            _setter("order", order)
 
     @property
     @pulumi.getter
@@ -96,14 +111,29 @@ class _RuleState:
         :param pulumi.Input[int] order: Order in which the rule executes relative to other rules. Lower-valued rules execute first.
         :param pulumi.Input[str] script: Code to be executed when the rule runs.
         """
+        _RuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            name=name,
+            order=order,
+            script=script,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             order: Optional[pulumi.Input[int]] = None,
+             script: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if order is not None:
-            pulumi.set(__self__, "order", order)
+            _setter("order", order)
         if script is not None:
-            pulumi.set(__self__, "script", script)
+            _setter("script", script)
 
     @property
     @pulumi.getter
@@ -243,6 +273,10 @@ class Rule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

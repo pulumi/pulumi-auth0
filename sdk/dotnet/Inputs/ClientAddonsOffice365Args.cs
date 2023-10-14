@@ -12,9 +12,15 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientAddonsOffice365Args : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional Auth0 database connection for testing an already-configured Office 365 tenant.
+        /// </summary>
         [Input("connection")]
         public Input<string>? Connection { get; set; }
 
+        /// <summary>
+        /// Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+        /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 

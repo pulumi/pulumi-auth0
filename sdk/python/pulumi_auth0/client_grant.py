@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ClientGrantArgs', 'ClientGrant']
@@ -23,9 +23,22 @@ class ClientGrantArgs:
         :param pulumi.Input[str] client_id: ID of the client for this grant.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Permissions (scopes) included in this grant.
         """
-        pulumi.set(__self__, "audience", audience)
-        pulumi.set(__self__, "client_id", client_id)
-        pulumi.set(__self__, "scopes", scopes)
+        ClientGrantArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            audience=audience,
+            client_id=client_id,
+            scopes=scopes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             audience: pulumi.Input[str],
+             client_id: pulumi.Input[str],
+             scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("audience", audience)
+        _setter("client_id", client_id)
+        _setter("scopes", scopes)
 
     @property
     @pulumi.getter
@@ -76,12 +89,25 @@ class _ClientGrantState:
         :param pulumi.Input[str] client_id: ID of the client for this grant.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Permissions (scopes) included in this grant.
         """
+        _ClientGrantState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            audience=audience,
+            client_id=client_id,
+            scopes=scopes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             audience: Optional[pulumi.Input[str]] = None,
+             client_id: Optional[pulumi.Input[str]] = None,
+             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if audience is not None:
-            pulumi.set(__self__, "audience", audience)
+            _setter("audience", audience)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if scopes is not None:
-            pulumi.set(__self__, "scopes", scopes)
+            _setter("scopes", scopes)
 
     @property
     @pulumi.getter
@@ -173,6 +199,10 @@ class ClientGrant(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClientGrantArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -16,37 +16,77 @@ public final class ConnectionOptionsGatewayAuthenticationArgs extends com.pulumi
 
     public static final ConnectionOptionsGatewayAuthenticationArgs Empty = new ConnectionOptionsGatewayAuthenticationArgs();
 
+    /**
+     * Audience claim for the HS256 token sent to `gateway_url`.
+     * 
+     */
     @Import(name="audience")
     private @Nullable Output<String> audience;
 
+    /**
+     * @return Audience claim for the HS256 token sent to `gateway_url`.
+     * 
+     */
     public Optional<Output<String>> audience() {
         return Optional.ofNullable(this.audience);
     }
 
+    /**
+     * Authentication method (default is `bearer` token).
+     * 
+     */
     @Import(name="method")
     private @Nullable Output<String> method;
 
+    /**
+     * @return Authentication method (default is `bearer` token).
+     * 
+     */
     public Optional<Output<String>> method() {
         return Optional.ofNullable(this.method);
     }
 
+    /**
+     * Secret used to sign the HS256 token sent to `gateway_url`.
+     * 
+     */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
+    /**
+     * @return Secret used to sign the HS256 token sent to `gateway_url`.
+     * 
+     */
     public Optional<Output<String>> secret() {
         return Optional.ofNullable(this.secret);
     }
 
+    /**
+     * Specifies whether or not the secret is Base64-encoded.
+     * 
+     */
     @Import(name="secretBase64Encoded")
     private @Nullable Output<Boolean> secretBase64Encoded;
 
+    /**
+     * @return Specifies whether or not the secret is Base64-encoded.
+     * 
+     */
     public Optional<Output<Boolean>> secretBase64Encoded() {
         return Optional.ofNullable(this.secretBase64Encoded);
     }
 
+    /**
+     * Subject claim for the HS256 token sent to `gateway_url`.
+     * 
+     */
     @Import(name="subject")
     private @Nullable Output<String> subject;
 
+    /**
+     * @return Subject claim for the HS256 token sent to `gateway_url`.
+     * 
+     */
     public Optional<Output<String>> subject() {
         return Optional.ofNullable(this.subject);
     }
@@ -79,47 +119,107 @@ public final class ConnectionOptionsGatewayAuthenticationArgs extends com.pulumi
             $ = new ConnectionOptionsGatewayAuthenticationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param audience Audience claim for the HS256 token sent to `gateway_url`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder audience(@Nullable Output<String> audience) {
             $.audience = audience;
             return this;
         }
 
+        /**
+         * @param audience Audience claim for the HS256 token sent to `gateway_url`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder audience(String audience) {
             return audience(Output.of(audience));
         }
 
+        /**
+         * @param method Authentication method (default is `bearer` token).
+         * 
+         * @return builder
+         * 
+         */
         public Builder method(@Nullable Output<String> method) {
             $.method = method;
             return this;
         }
 
+        /**
+         * @param method Authentication method (default is `bearer` token).
+         * 
+         * @return builder
+         * 
+         */
         public Builder method(String method) {
             return method(Output.of(method));
         }
 
+        /**
+         * @param secret Secret used to sign the HS256 token sent to `gateway_url`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(@Nullable Output<String> secret) {
             $.secret = secret;
             return this;
         }
 
+        /**
+         * @param secret Secret used to sign the HS256 token sent to `gateway_url`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(String secret) {
             return secret(Output.of(secret));
         }
 
+        /**
+         * @param secretBase64Encoded Specifies whether or not the secret is Base64-encoded.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretBase64Encoded(@Nullable Output<Boolean> secretBase64Encoded) {
             $.secretBase64Encoded = secretBase64Encoded;
             return this;
         }
 
+        /**
+         * @param secretBase64Encoded Specifies whether or not the secret is Base64-encoded.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretBase64Encoded(Boolean secretBase64Encoded) {
             return secretBase64Encoded(Output.of(secretBase64Encoded));
         }
 
+        /**
+         * @param subject Subject claim for the HS256 token sent to `gateway_url`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subject(@Nullable Output<String> subject) {
             $.subject = subject;
             return this;
         }
 
+        /**
+         * @param subject Subject claim for the HS256 token sent to `gateway_url`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subject(String subject) {
             return subject(Output.of(subject));
         }

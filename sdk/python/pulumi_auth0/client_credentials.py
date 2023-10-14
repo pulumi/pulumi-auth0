@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -30,12 +30,27 @@ class ClientCredentialsArgs:
                authentication method.
         :param pulumi.Input['ClientCredentialsPrivateKeyJwtArgs'] private_key_jwt: Defines `private_key_jwt` client authentication method.
         """
-        pulumi.set(__self__, "authentication_method", authentication_method)
-        pulumi.set(__self__, "client_id", client_id)
+        ClientCredentialsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authentication_method=authentication_method,
+            client_id=client_id,
+            client_secret=client_secret,
+            private_key_jwt=private_key_jwt,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authentication_method: pulumi.Input[str],
+             client_id: pulumi.Input[str],
+             client_secret: Optional[pulumi.Input[str]] = None,
+             private_key_jwt: Optional[pulumi.Input['ClientCredentialsPrivateKeyJwtArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("authentication_method", authentication_method)
+        _setter("client_id", client_id)
         if client_secret is not None:
-            pulumi.set(__self__, "client_secret", client_secret)
+            _setter("client_secret", client_secret)
         if private_key_jwt is not None:
-            pulumi.set(__self__, "private_key_jwt", private_key_jwt)
+            _setter("private_key_jwt", private_key_jwt)
 
     @property
     @pulumi.getter(name="authenticationMethod")
@@ -106,14 +121,29 @@ class _ClientCredentialsState:
                authentication method.
         :param pulumi.Input['ClientCredentialsPrivateKeyJwtArgs'] private_key_jwt: Defines `private_key_jwt` client authentication method.
         """
+        _ClientCredentialsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authentication_method=authentication_method,
+            client_id=client_id,
+            client_secret=client_secret,
+            private_key_jwt=private_key_jwt,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authentication_method: Optional[pulumi.Input[str]] = None,
+             client_id: Optional[pulumi.Input[str]] = None,
+             client_secret: Optional[pulumi.Input[str]] = None,
+             private_key_jwt: Optional[pulumi.Input['ClientCredentialsPrivateKeyJwtArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if authentication_method is not None:
-            pulumi.set(__self__, "authentication_method", authentication_method)
+            _setter("authentication_method", authentication_method)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if client_secret is not None:
-            pulumi.set(__self__, "client_secret", client_secret)
+            _setter("client_secret", client_secret)
         if private_key_jwt is not None:
-            pulumi.set(__self__, "private_key_jwt", private_key_jwt)
+            _setter("private_key_jwt", private_key_jwt)
 
     @property
     @pulumi.getter(name="authenticationMethod")
@@ -327,6 +357,10 @@ class ClientCredentials(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClientCredentialsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -352,6 +386,11 @@ class ClientCredentials(pulumi.CustomResource):
                 raise TypeError("Missing required property 'client_id'")
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["client_secret"] = None if client_secret is None else pulumi.Output.secret(client_secret)
+            if private_key_jwt is not None and not isinstance(private_key_jwt, ClientCredentialsPrivateKeyJwtArgs):
+                private_key_jwt = private_key_jwt or {}
+                def _setter(key, value):
+                    private_key_jwt[key] = value
+                ClientCredentialsPrivateKeyJwtArgs._configure(_setter, **private_key_jwt)
             __props__.__dict__["private_key_jwt"] = private_key_jwt
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientSecret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)

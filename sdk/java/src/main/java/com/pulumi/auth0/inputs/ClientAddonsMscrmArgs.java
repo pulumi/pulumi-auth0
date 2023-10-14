@@ -15,9 +15,17 @@ public final class ClientAddonsMscrmArgs extends com.pulumi.resources.ResourceAr
 
     public static final ClientAddonsMscrmArgs Empty = new ClientAddonsMscrmArgs();
 
+    /**
+     * Microsoft Dynamics CRM application URL.
+     * 
+     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
+    /**
+     * @return Microsoft Dynamics CRM application URL.
+     * 
+     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
@@ -46,11 +54,23 @@ public final class ClientAddonsMscrmArgs extends com.pulumi.resources.ResourceAr
             $ = new ClientAddonsMscrmArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param url Microsoft Dynamics CRM application URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url Microsoft Dynamics CRM application URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

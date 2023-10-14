@@ -16,16 +16,32 @@ public final class ClientAddonsSharepointArgs extends com.pulumi.resources.Resou
 
     public static final ClientAddonsSharepointArgs Empty = new ClientAddonsSharepointArgs();
 
+    /**
+     * External SharePoint application URLs if exposed to the Internet.
+     * 
+     */
     @Import(name="externalUrls")
     private @Nullable Output<List<String>> externalUrls;
 
+    /**
+     * @return External SharePoint application URLs if exposed to the Internet.
+     * 
+     */
     public Optional<Output<List<String>>> externalUrls() {
         return Optional.ofNullable(this.externalUrls);
     }
 
+    /**
+     * Microsoft Dynamics CRM application URL.
+     * 
+     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
+    /**
+     * @return Microsoft Dynamics CRM application URL.
+     * 
+     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
@@ -55,24 +71,54 @@ public final class ClientAddonsSharepointArgs extends com.pulumi.resources.Resou
             $ = new ClientAddonsSharepointArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param externalUrls External SharePoint application URLs if exposed to the Internet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalUrls(@Nullable Output<List<String>> externalUrls) {
             $.externalUrls = externalUrls;
             return this;
         }
 
+        /**
+         * @param externalUrls External SharePoint application URLs if exposed to the Internet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalUrls(List<String> externalUrls) {
             return externalUrls(Output.of(externalUrls));
         }
 
+        /**
+         * @param externalUrls External SharePoint application URLs if exposed to the Internet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalUrls(String... externalUrls) {
             return externalUrls(List.of(externalUrls));
         }
 
+        /**
+         * @param url Microsoft Dynamics CRM application URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url Microsoft Dynamics CRM application URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

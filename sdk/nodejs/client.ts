@@ -146,7 +146,7 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly clientAliases!: pulumi.Output<string[] | undefined>;
     /**
-     * The ID of the client.
+     * Consumer Key assigned by Salesforce to the Connected App.
      */
     public /*out*/ readonly clientId!: pulumi.Output<string>;
     /**
@@ -210,7 +210,7 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly mobile!: pulumi.Output<outputs.ClientMobile>;
     /**
-     * Name of the client.
+     * SSO integration name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -384,7 +384,7 @@ export interface ClientState {
      */
     clientAliases?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the client.
+     * Consumer Key assigned by Salesforce to the Connected App.
      */
     clientId?: pulumi.Input<string>;
     /**
@@ -448,7 +448,7 @@ export interface ClientState {
      */
     mobile?: pulumi.Input<inputs.ClientMobile>;
     /**
-     * Name of the client.
+     * SSO integration name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -590,7 +590,7 @@ export interface ClientArgs {
      */
     mobile?: pulumi.Input<inputs.ClientMobile>;
     /**
-     * Name of the client.
+     * SSO integration name.
      */
     name?: pulumi.Input<string>;
     /**

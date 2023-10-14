@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -14,6 +14,7 @@ __all__ = [
     'GetSigningKeysResult',
     'AwaitableGetSigningKeysResult',
     'get_signing_keys',
+    'get_signing_keys_output',
 ]
 
 @pulumi.output_type
@@ -67,3 +68,11 @@ def get_signing_keys(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     return AwaitableGetSigningKeysResult(
         id=pulumi.get(__ret__, 'id'),
         signing_keys=pulumi.get(__ret__, 'signing_keys'))
+
+
+@_utilities.lift_output_func(get_signing_keys)
+def get_signing_keys_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSigningKeysResult]:
+    """
+    Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+    """
+    ...

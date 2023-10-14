@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ClientAddonsSalesforce
     {
+        /// <summary>
+        /// Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
+        /// </summary>
         public readonly string? EntityId;
 
         [OutputConstructor]

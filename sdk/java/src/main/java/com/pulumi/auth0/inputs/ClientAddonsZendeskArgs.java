@@ -15,9 +15,17 @@ public final class ClientAddonsZendeskArgs extends com.pulumi.resources.Resource
 
     public static final ClientAddonsZendeskArgs Empty = new ClientAddonsZendeskArgs();
 
+    /**
+     * Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+     * 
+     */
     @Import(name="accountName")
     private @Nullable Output<String> accountName;
 
+    /**
+     * @return Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+     * 
+     */
     public Optional<Output<String>> accountName() {
         return Optional.ofNullable(this.accountName);
     }
@@ -46,11 +54,23 @@ public final class ClientAddonsZendeskArgs extends com.pulumi.resources.Resource
             $ = new ClientAddonsZendeskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountName Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountName(@Nullable Output<String> accountName) {
             $.accountName = accountName;
             return this;
         }
 
+        /**
+         * @param accountName Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountName(String accountName) {
             return accountName(Output.of(accountName));
         }

@@ -16,16 +16,32 @@ public final class EmailProviderSettingsMessageArgs extends com.pulumi.resources
 
     public static final EmailProviderSettingsMessageArgs Empty = new EmailProviderSettingsMessageArgs();
 
+    /**
+     * Setting for the `ses` email provider. The name of the configuration set to apply to the sent emails.
+     * 
+     */
     @Import(name="configurationSetName")
     private @Nullable Output<String> configurationSetName;
 
+    /**
+     * @return Setting for the `ses` email provider. The name of the configuration set to apply to the sent emails.
+     * 
+     */
     public Optional<Output<String>> configurationSetName() {
         return Optional.ofNullable(this.configurationSetName);
     }
 
+    /**
+     * Setting for the `mandrill` email provider. Set to `true` to see the content of individual emails sent to users.
+     * 
+     */
     @Import(name="viewContentLink")
     private @Nullable Output<Boolean> viewContentLink;
 
+    /**
+     * @return Setting for the `mandrill` email provider. Set to `true` to see the content of individual emails sent to users.
+     * 
+     */
     public Optional<Output<Boolean>> viewContentLink() {
         return Optional.ofNullable(this.viewContentLink);
     }
@@ -55,20 +71,44 @@ public final class EmailProviderSettingsMessageArgs extends com.pulumi.resources
             $ = new EmailProviderSettingsMessageArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param configurationSetName Setting for the `ses` email provider. The name of the configuration set to apply to the sent emails.
+         * 
+         * @return builder
+         * 
+         */
         public Builder configurationSetName(@Nullable Output<String> configurationSetName) {
             $.configurationSetName = configurationSetName;
             return this;
         }
 
+        /**
+         * @param configurationSetName Setting for the `ses` email provider. The name of the configuration set to apply to the sent emails.
+         * 
+         * @return builder
+         * 
+         */
         public Builder configurationSetName(String configurationSetName) {
             return configurationSetName(Output.of(configurationSetName));
         }
 
+        /**
+         * @param viewContentLink Setting for the `mandrill` email provider. Set to `true` to see the content of individual emails sent to users.
+         * 
+         * @return builder
+         * 
+         */
         public Builder viewContentLink(@Nullable Output<Boolean> viewContentLink) {
             $.viewContentLink = viewContentLink;
             return this;
         }
 
+        /**
+         * @param viewContentLink Setting for the `mandrill` email provider. Set to `true` to see the content of individual emails sent to users.
+         * 
+         * @return builder
+         * 
+         */
         public Builder viewContentLink(Boolean viewContentLink) {
             return viewContentLink(Output.of(viewContentLink));
         }

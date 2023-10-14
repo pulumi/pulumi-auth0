@@ -12,6 +12,9 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientAddonsSpringcmGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
+        /// </summary>
         [Input("acsUrl")]
         public Input<string>? AcsUrl { get; set; }
 

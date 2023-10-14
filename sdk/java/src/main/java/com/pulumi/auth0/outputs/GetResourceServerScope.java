@@ -10,20 +10,12 @@ import java.util.Objects;
 @CustomType
 public final class GetResourceServerScope {
     private String description;
-    /**
-     * @return Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
-     * 
-     */
     private String name;
 
     private GetResourceServerScope() {}
     public String description() {
         return this.description;
     }
-    /**
-     * @return Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
-     * 
-     */
     public String name() {
         return this.name;
     }

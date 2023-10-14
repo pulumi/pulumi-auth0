@@ -13,8 +13,17 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GuardianPushCustomApp
     {
+        /// <summary>
+        /// Custom Application Name.
+        /// </summary>
         public readonly string? AppName;
+        /// <summary>
+        /// Apple App Store URL. Must be HTTPS or an empty string.
+        /// </summary>
         public readonly string? AppleAppLink;
+        /// <summary>
+        /// Google Store URL. Must be HTTPS or an empty string.
+        /// </summary>
         public readonly string? GoogleAppLink;
 
         [OutputConstructor]

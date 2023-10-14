@@ -12,6 +12,9 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientAddonsZendeskArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+        /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
 

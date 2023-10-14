@@ -15,16 +15,32 @@ public final class ClientAddonsSentryArgs extends com.pulumi.resources.ResourceA
 
     public static final ClientAddonsSentryArgs Empty = new ClientAddonsSentryArgs();
 
+    /**
+     * URL prefix only if running Sentry Community Edition, otherwise leave empty.
+     * 
+     */
     @Import(name="baseUrl")
     private @Nullable Output<String> baseUrl;
 
+    /**
+     * @return URL prefix only if running Sentry Community Edition, otherwise leave empty.
+     * 
+     */
     public Optional<Output<String>> baseUrl() {
         return Optional.ofNullable(this.baseUrl);
     }
 
+    /**
+     * Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
+     * 
+     */
     @Import(name="orgSlug")
     private @Nullable Output<String> orgSlug;
 
+    /**
+     * @return Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
+     * 
+     */
     public Optional<Output<String>> orgSlug() {
         return Optional.ofNullable(this.orgSlug);
     }
@@ -54,20 +70,44 @@ public final class ClientAddonsSentryArgs extends com.pulumi.resources.ResourceA
             $ = new ClientAddonsSentryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param baseUrl URL prefix only if running Sentry Community Edition, otherwise leave empty.
+         * 
+         * @return builder
+         * 
+         */
         public Builder baseUrl(@Nullable Output<String> baseUrl) {
             $.baseUrl = baseUrl;
             return this;
         }
 
+        /**
+         * @param baseUrl URL prefix only if running Sentry Community Edition, otherwise leave empty.
+         * 
+         * @return builder
+         * 
+         */
         public Builder baseUrl(String baseUrl) {
             return baseUrl(Output.of(baseUrl));
         }
 
+        /**
+         * @param orgSlug Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgSlug(@Nullable Output<String> orgSlug) {
             $.orgSlug = orgSlug;
             return this;
         }
 
+        /**
+         * @param orgSlug Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgSlug(String orgSlug) {
             return orgSlug(Output.of(orgSlug));
         }

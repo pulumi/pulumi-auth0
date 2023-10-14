@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddonsSamlpLogout {
+    /**
+     * @return The service provider (client application)&#39;s Single Logout Service URL, where Auth0 will send logout requests and responses.
+     * 
+     */
     private @Nullable String callback;
+    /**
+     * @return Controls whether Auth0 should notify service providers of session termination.
+     * 
+     */
     private @Nullable Boolean sloEnabled;
 
     private ClientAddonsSamlpLogout() {}
+    /**
+     * @return The service provider (client application)&#39;s Single Logout Service URL, where Auth0 will send logout requests and responses.
+     * 
+     */
     public Optional<String> callback() {
         return Optional.ofNullable(this.callback);
     }
+    /**
+     * @return Controls whether Auth0 should notify service providers of session termination.
+     * 
+     */
     public Optional<Boolean> sloEnabled() {
         return Optional.ofNullable(this.sloEnabled);
     }

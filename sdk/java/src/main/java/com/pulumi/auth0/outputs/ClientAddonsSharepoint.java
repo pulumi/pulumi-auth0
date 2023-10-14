@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddonsSharepoint {
+    /**
+     * @return External SharePoint application URLs if exposed to the Internet.
+     * 
+     */
     private @Nullable List<String> externalUrls;
+    /**
+     * @return Microsoft Dynamics CRM application URL.
+     * 
+     */
     private @Nullable String url;
 
     private ClientAddonsSharepoint() {}
+    /**
+     * @return External SharePoint application URLs if exposed to the Internet.
+     * 
+     */
     public List<String> externalUrls() {
         return this.externalUrls == null ? List.of() : this.externalUrls;
     }
+    /**
+     * @return Microsoft Dynamics CRM application URL.
+     * 
+     */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }

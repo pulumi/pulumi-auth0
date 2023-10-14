@@ -356,14 +356,14 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the client.
+     * SSO integration name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the client.
+     * @return SSO integration name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -1099,7 +1099,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the client.
+         * @param name SSO integration name.
          * 
          * @return builder
          * 
@@ -1110,7 +1110,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the client.
+         * @param name SSO integration name.
          * 
          * @return builder
          * 

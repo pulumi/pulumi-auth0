@@ -81,15 +81,9 @@ namespace Pulumi.Auth0
 
     public sealed class GetClientArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the client. If not provided, `name` must be set.
-        /// </summary>
         [Input("clientId")]
         public string? ClientId { get; set; }
 
-        /// <summary>
-        /// The name of the client. If not provided, `client_id` must be set.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -101,15 +95,9 @@ namespace Pulumi.Auth0
 
     public sealed class GetClientInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the client. If not provided, `name` must be set.
-        /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
-        /// <summary>
-        /// The name of the client. If not provided, `client_id` must be set.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EmailProviderSettingsMessage {
+    /**
+     * @return Setting for the `ses` email provider. The name of the configuration set to apply to the sent emails.
+     * 
+     */
     private @Nullable String configurationSetName;
+    /**
+     * @return Setting for the `mandrill` email provider. Set to `true` to see the content of individual emails sent to users.
+     * 
+     */
     private @Nullable Boolean viewContentLink;
 
     private EmailProviderSettingsMessage() {}
+    /**
+     * @return Setting for the `ses` email provider. The name of the configuration set to apply to the sent emails.
+     * 
+     */
     public Optional<String> configurationSetName() {
         return Optional.ofNullable(this.configurationSetName);
     }
+    /**
+     * @return Setting for the `mandrill` email provider. Set to `true` to see the content of individual emails sent to users.
+     * 
+     */
     public Optional<Boolean> viewContentLink() {
         return Optional.ofNullable(this.viewContentLink);
     }

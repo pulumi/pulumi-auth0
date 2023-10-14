@@ -15,9 +15,17 @@ public final class ClientAddonsEchosignArgs extends com.pulumi.resources.Resourc
 
     public static final ClientAddonsEchosignArgs Empty = new ClientAddonsEchosignArgs();
 
+    /**
+     * Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * 
+     */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
+    /**
+     * @return Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * 
+     */
     public Optional<Output<String>> domain() {
         return Optional.ofNullable(this.domain);
     }
@@ -46,11 +54,23 @@ public final class ClientAddonsEchosignArgs extends com.pulumi.resources.Resourc
             $ = new ClientAddonsEchosignArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param domain Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(@Nullable Output<String> domain) {
             $.domain = domain;
             return this;
         }
 
+        /**
+         * @param domain Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }

@@ -15,9 +15,17 @@ public final class ClientAddonsNewrelicArgs extends com.pulumi.resources.Resourc
 
     public static final ClientAddonsNewrelicArgs Empty = new ClientAddonsNewrelicArgs();
 
+    /**
+     * Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+     * 
+     */
     @Import(name="account")
     private @Nullable Output<String> account;
 
+    /**
+     * @return Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+     * 
+     */
     public Optional<Output<String>> account() {
         return Optional.ofNullable(this.account);
     }
@@ -46,11 +54,23 @@ public final class ClientAddonsNewrelicArgs extends com.pulumi.resources.Resourc
             $ = new ClientAddonsNewrelicArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param account Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder account(@Nullable Output<String> account) {
             $.account = account;
             return this;
         }
 
+        /**
+         * @param account Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder account(String account) {
             return account(Output.of(account));
         }

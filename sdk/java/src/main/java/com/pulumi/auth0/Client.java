@@ -229,14 +229,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clientAliases);
     }
     /**
-     * The ID of the client.
+     * Consumer Key assigned by Salesforce to the Connected App.
      * 
      */
     @Export(name="clientId", type=String.class, parameters={})
     private Output<String> clientId;
 
     /**
-     * @return The ID of the client.
+     * @return Consumer Key assigned by Salesforce to the Connected App.
      * 
      */
     public Output<String> clientId() {
@@ -453,14 +453,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.mobile;
     }
     /**
-     * Name of the client.
+     * SSO integration name.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Name of the client.
+     * @return SSO integration name.
      * 
      */
     public Output<String> name() {

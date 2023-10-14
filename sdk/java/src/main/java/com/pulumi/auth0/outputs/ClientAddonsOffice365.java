@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddonsOffice365 {
+    /**
+     * @return Optional Auth0 database connection for testing an already-configured Office 365 tenant.
+     * 
+     */
     private @Nullable String connection;
+    /**
+     * @return Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * 
+     */
     private @Nullable String domain;
 
     private ClientAddonsOffice365() {}
+    /**
+     * @return Optional Auth0 database connection for testing an already-configured Office 365 tenant.
+     * 
+     */
     public Optional<String> connection() {
         return Optional.ofNullable(this.connection);
     }
+    /**
+     * @return Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * 
+     */
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
     }

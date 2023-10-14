@@ -12,6 +12,9 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientAddonsNewrelicArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+        /// </summary>
         [Input("account")]
         public Input<string>? Account { get; set; }
 

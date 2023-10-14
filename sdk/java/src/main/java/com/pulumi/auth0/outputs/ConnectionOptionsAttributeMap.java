@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionOptionsAttributeMap {
+    /**
+     * @return This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+     * 
+     */
     private @Nullable String attributes;
+    /**
+     * @return Method used to map incoming claims. Possible values: `use_map`, `bind_all` or `basic_profile`.
+     * 
+     */
     private String mappingMode;
+    /**
+     * @return This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
+     * 
+     */
     private @Nullable String userinfoScope;
 
     private ConnectionOptionsAttributeMap() {}
+    /**
+     * @return This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+     * 
+     */
     public Optional<String> attributes() {
         return Optional.ofNullable(this.attributes);
     }
+    /**
+     * @return Method used to map incoming claims. Possible values: `use_map`, `bind_all` or `basic_profile`.
+     * 
+     */
     public String mappingMode() {
         return this.mappingMode;
     }
+    /**
+     * @return This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
+     * 
+     */
     public Optional<String> userinfoScope() {
         return Optional.ofNullable(this.userinfoScope);
     }

@@ -16,37 +16,77 @@ public final class ClientAddonsAzureSbArgs extends com.pulumi.resources.Resource
 
     public static final ClientAddonsAzureSbArgs Empty = new ClientAddonsAzureSbArgs();
 
+    /**
+     * Entity you want to request a token for, such as `my-queue`.
+     * 
+     */
     @Import(name="entityPath")
     private @Nullable Output<String> entityPath;
 
+    /**
+     * @return Entity you want to request a token for, such as `my-queue`.
+     * 
+     */
     public Optional<Output<String>> entityPath() {
         return Optional.ofNullable(this.entityPath);
     }
 
+    /**
+     * Expiration in minutes for the generated token (default of 5 minutes).
+     * 
+     */
     @Import(name="expiration")
     private @Nullable Output<Integer> expiration;
 
+    /**
+     * @return Expiration in minutes for the generated token (default of 5 minutes).
+     * 
+     */
     public Optional<Output<Integer>> expiration() {
         return Optional.ofNullable(this.expiration);
     }
 
+    /**
+     * Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
+     * 
+     */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
+    /**
+     * @return Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
+     * 
+     */
     public Optional<Output<String>> namespace() {
         return Optional.ofNullable(this.namespace);
     }
 
+    /**
+     * Primary Key associated with your shared access policy.
+     * 
+     */
     @Import(name="sasKey")
     private @Nullable Output<String> sasKey;
 
+    /**
+     * @return Primary Key associated with your shared access policy.
+     * 
+     */
     public Optional<Output<String>> sasKey() {
         return Optional.ofNullable(this.sasKey);
     }
 
+    /**
+     * Your shared access policy name defined in your Service Bus entity.
+     * 
+     */
     @Import(name="sasKeyName")
     private @Nullable Output<String> sasKeyName;
 
+    /**
+     * @return Your shared access policy name defined in your Service Bus entity.
+     * 
+     */
     public Optional<Output<String>> sasKeyName() {
         return Optional.ofNullable(this.sasKeyName);
     }
@@ -79,47 +119,107 @@ public final class ClientAddonsAzureSbArgs extends com.pulumi.resources.Resource
             $ = new ClientAddonsAzureSbArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param entityPath Entity you want to request a token for, such as `my-queue`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder entityPath(@Nullable Output<String> entityPath) {
             $.entityPath = entityPath;
             return this;
         }
 
+        /**
+         * @param entityPath Entity you want to request a token for, such as `my-queue`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder entityPath(String entityPath) {
             return entityPath(Output.of(entityPath));
         }
 
+        /**
+         * @param expiration Expiration in minutes for the generated token (default of 5 minutes).
+         * 
+         * @return builder
+         * 
+         */
         public Builder expiration(@Nullable Output<Integer> expiration) {
             $.expiration = expiration;
             return this;
         }
 
+        /**
+         * @param expiration Expiration in minutes for the generated token (default of 5 minutes).
+         * 
+         * @return builder
+         * 
+         */
         public Builder expiration(Integer expiration) {
             return expiration(Output.of(expiration));
         }
 
+        /**
+         * @param namespace Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(@Nullable Output<String> namespace) {
             $.namespace = namespace;
             return this;
         }
 
+        /**
+         * @param namespace Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
         }
 
+        /**
+         * @param sasKey Primary Key associated with your shared access policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sasKey(@Nullable Output<String> sasKey) {
             $.sasKey = sasKey;
             return this;
         }
 
+        /**
+         * @param sasKey Primary Key associated with your shared access policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sasKey(String sasKey) {
             return sasKey(Output.of(sasKey));
         }
 
+        /**
+         * @param sasKeyName Your shared access policy name defined in your Service Bus entity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sasKeyName(@Nullable Output<String> sasKeyName) {
             $.sasKeyName = sasKeyName;
             return this;
         }
 
+        /**
+         * @param sasKeyName Your shared access policy name defined in your Service Bus entity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sasKeyName(String sasKeyName) {
             return sasKeyName(Output.of(sasKeyName));
         }

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -14,6 +14,7 @@ __all__ = [
     'GetAttackProtectionResult',
     'AwaitableGetAttackProtectionResult',
     'get_attack_protection',
+    'get_attack_protection_output',
 ]
 
 @pulumi.output_type
@@ -102,3 +103,20 @@ def get_attack_protection(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
         brute_force_protections=pulumi.get(__ret__, 'brute_force_protections'),
         id=pulumi.get(__ret__, 'id'),
         suspicious_ip_throttlings=pulumi.get(__ret__, 'suspicious_ip_throttlings'))
+
+
+@_utilities.lift_output_func(get_attack_protection)
+def get_attack_protection_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAttackProtectionResult]:
+    """
+    Use this data source to access information about the tenant's attack protection settings.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_protection = auth0.get_attack_protection()
+    ```
+    """
+    ...

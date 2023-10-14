@@ -62,6 +62,9 @@ export interface AttackProtectionBreachedPasswordDetection {
 }
 
 export interface AttackProtectionBreachedPasswordDetectionPreUserRegistration {
+    /**
+     * Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
+     */
     shields: string[];
 }
 
@@ -112,12 +115,24 @@ export interface AttackProtectionSuspiciousIpThrottling {
 }
 
 export interface AttackProtectionSuspiciousIpThrottlingPreLogin {
+    /**
+     * Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+     */
     maxAttempts: number;
+    /**
+     * Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+     */
     rate: number;
 }
 
 export interface AttackProtectionSuspiciousIpThrottlingPreUserRegistration {
+    /**
+     * Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+     */
     maxAttempts: number;
+    /**
+     * Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+     */
     rate: number;
 }
 
@@ -293,32 +308,68 @@ export interface BrandingThemeFonts {
 }
 
 export interface BrandingThemeFontsBodyText {
+    /**
+     * Body text bold. Defaults to `false`.
+     */
     bold?: boolean;
+    /**
+     * Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     */
     size?: number;
 }
 
 export interface BrandingThemeFontsButtonsText {
+    /**
+     * Body text bold. Defaults to `false`.
+     */
     bold?: boolean;
+    /**
+     * Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     */
     size?: number;
 }
 
 export interface BrandingThemeFontsInputLabels {
+    /**
+     * Body text bold. Defaults to `false`.
+     */
     bold?: boolean;
+    /**
+     * Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     */
     size?: number;
 }
 
 export interface BrandingThemeFontsLinks {
+    /**
+     * Body text bold. Defaults to `false`.
+     */
     bold?: boolean;
+    /**
+     * Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     */
     size?: number;
 }
 
 export interface BrandingThemeFontsSubtitle {
+    /**
+     * Body text bold. Defaults to `false`.
+     */
     bold?: boolean;
+    /**
+     * Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     */
     size?: number;
 }
 
 export interface BrandingThemeFontsTitle {
+    /**
+     * Body text bold. Defaults to `false`.
+     */
     bold?: boolean;
+    /**
+     * Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     */
     size?: number;
 }
 
@@ -487,32 +538,95 @@ export interface ClientAddons {
 }
 
 export interface ClientAddonsAws {
+    /**
+     * AWS token lifetime in seconds.
+     */
     lifetimeInSeconds?: number;
+    /**
+     * AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     */
     principal?: string;
+    /**
+     * AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.
+     */
     role?: string;
 }
 
 export interface ClientAddonsAzureBlob {
+    /**
+     * Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+     */
     accountName?: string;
+    /**
+     * Indicates if the issued token has permission to delete the blob.
+     */
     blobDelete?: boolean;
+    /**
+     * Entity to request a token for, such as `my-blob`. If blank the computed SAS will apply to the entire storage container.
+     */
     blobName?: string;
+    /**
+     * Indicates if the issued token has permission to read the content, properties, metadata and block list. Use the blob as the source of a copy operation.
+     */
     blobRead?: boolean;
+    /**
+     * Indicates if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+     */
     blobWrite?: boolean;
+    /**
+     * Indicates if issued token has permission to delete any blob in the container.
+     */
     containerDelete?: boolean;
+    /**
+     * Indicates if the issued token has permission to list blobs in the container.
+     */
     containerList?: boolean;
+    /**
+     * Container to request a token for, such as `my-container`.
+     */
     containerName?: string;
+    /**
+     * Indicates if the issued token has permission to read the content, properties, metadata or block list of any blob in the container. Use any blob in the container as the source of a copy operation.
+     */
     containerRead?: boolean;
+    /**
+     * Indicates that for any blob in the container if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+     */
     containerWrite?: boolean;
+    /**
+     * Expiration in minutes for the generated token (default of 5 minutes).
+     */
     expiration?: number;
+    /**
+     * Shared access policy identifier defined in your storage account resource.
+     */
     signedIdentifier?: string;
+    /**
+     * Access key associated with this storage account.
+     */
     storageAccessKey?: string;
 }
 
 export interface ClientAddonsAzureSb {
+    /**
+     * Entity you want to request a token for, such as `my-queue`.
+     */
     entityPath?: string;
+    /**
+     * Expiration in minutes for the generated token (default of 5 minutes).
+     */
     expiration?: number;
+    /**
+     * Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
+     */
     namespace?: string;
+    /**
+     * Primary Key associated with your shared access policy.
+     */
     sasKey?: string;
+    /**
+     * Your shared access policy name defined in your Service Bus entity.
+     */
     sasKeyName?: string;
 }
 
@@ -529,138 +643,318 @@ export interface ClientAddonsDropbox {
 }
 
 export interface ClientAddonsEchosign {
+    /**
+     * Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     */
     domain?: string;
 }
 
 export interface ClientAddonsEgnyte {
+    /**
+     * Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     */
     domain?: string;
 }
 
 export interface ClientAddonsFirebase {
+    /**
+     * ID of the Service Account you have created (shown as `clientEmail` in the generated JSON file, SDK v3+ tokens only).
+     */
     clientEmail?: string;
+    /**
+     * AWS token lifetime in seconds.
+     */
     lifetimeInSeconds?: number;
+    /**
+     * Private Key for signing the token (SDK v3+ tokens only).
+     */
     privateKey?: string;
+    /**
+     * Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).
+     */
     privateKeyId?: string;
+    /**
+     * Google Firebase Secret. (SDK v2 only).
+     */
     secret?: string;
 }
 
 export interface ClientAddonsLayer {
+    /**
+     * Expiration in minutes for the generated token (default of 5 minutes).
+     */
     expiration?: number;
+    /**
+     * Authentication Key identifier used to sign the Layer token.
+     */
     keyId: string;
+    /**
+     * AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     */
     principal?: string;
+    /**
+     * Private Key for signing the token (SDK v3+ tokens only).
+     */
     privateKey: string;
+    /**
+     * Provider ID of your Layer account.
+     */
     providerId: string;
 }
 
 export interface ClientAddonsMscrm {
+    /**
+     * Microsoft Dynamics CRM application URL.
+     */
     url?: string;
 }
 
 export interface ClientAddonsNewrelic {
+    /**
+     * Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+     */
     account?: string;
 }
 
 export interface ClientAddonsOffice365 {
+    /**
+     * Optional Auth0 database connection for testing an already-configured Office 365 tenant.
+     */
     connection?: string;
+    /**
+     * Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     */
     domain?: string;
 }
 
 export interface ClientAddonsRms {
+    /**
+     * Microsoft Dynamics CRM application URL.
+     */
     url?: string;
 }
 
 export interface ClientAddonsSalesforce {
+    /**
+     * Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
+     */
     entityId?: string;
 }
 
 export interface ClientAddonsSalesforceApi {
     /**
-     * The ID of the client.
+     * Consumer Key assigned by Salesforce to the Connected App.
      */
     clientId?: string;
+    /**
+     * Community name.
+     */
     communityName?: string;
+    /**
+     * Community URL section.
+     */
     communityUrlSection?: string;
+    /**
+     * AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     */
     principal?: string;
 }
 
 export interface ClientAddonsSalesforceSandboxApi {
     /**
-     * The ID of the client.
+     * Consumer Key assigned by Salesforce to the Connected App.
      */
     clientId?: string;
+    /**
+     * Community name.
+     */
     communityName?: string;
+    /**
+     * Community URL section.
+     */
     communityUrlSection?: string;
+    /**
+     * AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     */
     principal?: string;
 }
 
 export interface ClientAddonsSamlp {
+    /**
+     * Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
+     */
     audience?: string;
+    /**
+     * Class reference of the authentication context.
+     */
     authnContextClassRef?: string;
+    /**
+     * Protocol binding used for SAML logout responses.
+     */
     binding?: string;
+    /**
+     * Indicates whether a UPN claim should be created. Defaults to `true`.
+     */
     createUpnClaim?: boolean;
+    /**
+     * Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
+     */
     destination?: string;
+    /**
+     * Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+     */
     digestAlgorithm?: string;
+    /**
+     * Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+     */
     includeAttributeNameFormat?: boolean;
+    /**
+     * Issuer of the SAML Assertion.
+     */
     issuer?: string;
+    /**
+     * AWS token lifetime in seconds.
+     */
     lifetimeInSeconds?: number;
+    /**
+     * Configuration settings for logout.
+     */
     logout?: outputs.ClientAddonsSamlpLogout;
+    /**
+     * Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+     */
     mapIdentities?: boolean;
+    /**
+     * Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+     */
     mapUnknownClaimsAsIs?: boolean;
+    /**
+     * Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
+     */
     mappings?: {[key: string]: any};
+    /**
+     * Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     */
     nameIdentifierFormat?: string;
+    /**
+     * Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
+     */
     nameIdentifierProbes?: string[];
+    /**
+     * Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+     */
     passthroughClaimsWithNoMapping?: boolean;
+    /**
+     * Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
+     */
     recipient?: string;
+    /**
+     * Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
+     */
     signResponse?: boolean;
+    /**
+     * Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+     */
     signatureAlgorithm?: string;
+    /**
+     * Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+     */
     signingCert?: string;
+    /**
+     * Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+     */
     typedAttributes?: boolean;
 }
 
 export interface ClientAddonsSamlpLogout {
+    /**
+     * The service provider (client application)'s Single Logout Service URL, where Auth0 will send logout requests and responses.
+     */
     callback?: string;
+    /**
+     * Controls whether Auth0 should notify service providers of session termination.
+     */
     sloEnabled?: boolean;
 }
 
 export interface ClientAddonsSapApi {
     /**
-     * The ID of the client.
+     * Consumer Key assigned by Salesforce to the Connected App.
      */
     clientId?: string;
+    /**
+     * Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     */
     nameIdentifierFormat?: string;
+    /**
+     * Requested scope for SAP APIs.
+     */
     scope?: string;
+    /**
+     * Service account password to use to authenticate API calls to the token endpoint.
+     */
     servicePassword?: string;
+    /**
+     * The OAuth2 token endpoint URL of your SAP OData server.
+     */
     tokenEndpointUrl?: string;
+    /**
+     * Name of the property in the user object that maps to a SAP username, for example `email`.
+     */
     usernameAttribute?: string;
 }
 
 export interface ClientAddonsSentry {
+    /**
+     * URL prefix only if running Sentry Community Edition, otherwise leave empty.
+     */
     baseUrl?: string;
+    /**
+     * Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
+     */
     orgSlug?: string;
 }
 
 export interface ClientAddonsSharepoint {
+    /**
+     * External SharePoint application URLs if exposed to the Internet.
+     */
     externalUrls?: string[];
+    /**
+     * Microsoft Dynamics CRM application URL.
+     */
     url?: string;
 }
 
 export interface ClientAddonsSlack {
+    /**
+     * Slack team name.
+     */
     team?: string;
 }
 
 export interface ClientAddonsSpringcm {
+    /**
+     * SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
+     */
     acsUrl?: string;
 }
 
 export interface ClientAddonsSsoIntegration {
     /**
-     * Name of the client.
+     * SSO integration name.
      */
     name?: string;
+    /**
+     * SSO integration version installed.
+     */
     version?: string;
 }
 
 export interface ClientAddonsWams {
+    /**
+     * Your master key for Windows Azure Mobile Services.
+     */
     masterKey?: string;
 }
 
@@ -668,10 +962,16 @@ export interface ClientAddonsWsfed {
 }
 
 export interface ClientAddonsZendesk {
+    /**
+     * Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+     */
     accountName?: string;
 }
 
 export interface ClientAddonsZoom {
+    /**
+     * Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+     */
     account?: string;
 }
 
@@ -683,18 +983,45 @@ export interface ClientCredentialsPrivateKeyJwt {
 }
 
 export interface ClientCredentialsPrivateKeyJwtCredential {
+    /**
+     * Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+     */
     algorithm?: string;
+    /**
+     * The ISO 8601 formatted date the credential was created.
+     */
     createdAt: string;
+    /**
+     * Credential type. Supported types: `publicKey`.
+     */
     credentialType: string;
+    /**
+     * The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+     */
     expiresAt: string;
     /**
-     * The ID of this resource.
+     * The ID of the client credential.
      */
     id: string;
+    /**
+     * The key identifier of the credential, generated on creation.
+     */
     keyId: string;
+    /**
+     * Friendly name for a credential.
+     */
     name?: string;
+    /**
+     * Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
+     */
     parseExpiryFromCert?: boolean;
+    /**
+     * PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+     */
     pem: string;
+    /**
+     * The ISO 8601 formatted date the credential was updated.
+     */
     updatedAt: string;
 }
 
@@ -1146,12 +1473,24 @@ export interface ConnectionOptions {
 }
 
 export interface ConnectionOptionsAttributeMap {
+    /**
+     * This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+     */
     attributes?: string;
+    /**
+     * Method used to map incoming claims. Possible values: `useMap`, `bindAll` or `basicProfile`.
+     */
     mappingMode: string;
+    /**
+     * This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
+     */
     userinfoScope?: string;
 }
 
 export interface ConnectionOptionsConnectionSettings {
+    /**
+     * PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+     */
     pkce: string;
 }
 
@@ -1161,39 +1500,78 @@ export interface ConnectionOptionsDecryptionKey {
 }
 
 export interface ConnectionOptionsGatewayAuthentication {
+    /**
+     * Audience claim for the HS256 token sent to `gatewayUrl`.
+     */
     audience?: string;
+    /**
+     * Authentication method (default is `bearer` token).
+     */
     method?: string;
+    /**
+     * Secret used to sign the HS256 token sent to `gatewayUrl`.
+     */
     secret?: string;
+    /**
+     * Specifies whether or not the secret is Base64-encoded.
+     */
     secretBase64Encoded?: boolean;
+    /**
+     * Subject claim for the HS256 token sent to `gatewayUrl`.
+     */
     subject?: string;
 }
 
 export interface ConnectionOptionsIdpInitiated {
     clientAuthorizeQuery?: string;
+    /**
+     * The strategy's client ID.
+     */
     clientId?: string;
     clientProtocol?: string;
 }
 
 export interface ConnectionOptionsMfa {
+    /**
+     * Indicates whether multifactor authentication is enabled for this connection.
+     */
     active?: boolean;
+    /**
+     * Indicates whether multifactor authentication enrollment settings will be returned.
+     */
     returnEnrollSettings?: boolean;
 }
 
 export interface ConnectionOptionsPasswordComplexityOptions {
+    /**
+     * Minimum number of characters allowed in passwords.
+     */
     minLength?: number;
 }
 
 export interface ConnectionOptionsPasswordDictionary {
+    /**
+     * Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+     */
     dictionaries?: string[];
+    /**
+     * Indicates whether the password dictionary check is enabled for this connection.
+     */
     enable?: boolean;
 }
 
 export interface ConnectionOptionsPasswordHistory {
+    /**
+     * Indicates whether the password dictionary check is enabled for this connection.
+     */
     enable?: boolean;
     size?: number;
 }
 
 export interface ConnectionOptionsPasswordNoPersonalInfo {
+    /**
+     * Indicates whether the password dictionary check is enabled for this connection.
+     */
     enable?: boolean;
 }
 
@@ -1203,11 +1581,20 @@ export interface ConnectionOptionsSigningKey {
 }
 
 export interface ConnectionOptionsTotp {
+    /**
+     * Length of the one-time password.
+     */
     length?: number;
+    /**
+     * Seconds between allowed generation of new passwords.
+     */
     timeStep?: number;
 }
 
 export interface ConnectionOptionsValidation {
+    /**
+     * Specifies the `min` and `max` values of username length.
+     */
     username?: outputs.ConnectionOptionsValidationUsername;
 }
 
@@ -1287,12 +1674,24 @@ export interface EmailProviderSettings {
 }
 
 export interface EmailProviderSettingsHeaders {
+    /**
+     * Disable or enable the default View Content Link for sensitive emails.
+     */
     xMcViewContentLink?: string;
+    /**
+     * SES Configuration set to include when sending emails.
+     */
     xSesConfigurationSet?: string;
 }
 
 export interface EmailProviderSettingsMessage {
+    /**
+     * Setting for the `ses` email provider. The name of the configuration set to apply to the sent emails.
+     */
     configurationSetName?: string;
+    /**
+     * Setting for the `mandrill` email provider. Set to `true` to see the content of individual emails sent to users.
+     */
     viewContentLink?: boolean;
 }
 
@@ -1556,9 +1955,6 @@ export interface GetClientAddonSalesforce {
 }
 
 export interface GetClientAddonSalesforceApi {
-    /**
-     * The ID of the client. If not provided, `name` must be set.
-     */
     clientId: string;
     communityName: string;
     communityUrlSection: string;
@@ -1566,9 +1962,6 @@ export interface GetClientAddonSalesforceApi {
 }
 
 export interface GetClientAddonSalesforceSandboxApi {
-    /**
-     * The ID of the client. If not provided, `name` must be set.
-     */
     clientId: string;
     communityName: string;
     communityUrlSection: string;
@@ -1605,9 +1998,6 @@ export interface GetClientAddonSamlpLogout {
 }
 
 export interface GetClientAddonSapApi {
-    /**
-     * The ID of the client. If not provided, `name` must be set.
-     */
     clientId: string;
     nameIdentifierFormat: string;
     scope: string;
@@ -1635,9 +2025,6 @@ export interface GetClientAddonSpringcm {
 }
 
 export interface GetClientAddonSsoIntegration {
-    /**
-     * The name of the client. If not provided, `clientId` must be set.
-     */
     name: string;
     version: string;
 }
@@ -1750,9 +2137,6 @@ export interface GetConnectionOption {
     metadataUrl: string;
     metadataXml: string;
     mfas: outputs.GetConnectionOptionMfa[];
-    /**
-     * The name of the connection. If not provided, `connectionId` must be set.
-     */
     name: string;
     nonPersistentAttrs: string[];
     passwordComplexityOptions: outputs.GetConnectionOptionPasswordComplexityOption[];
@@ -1906,20 +2290,11 @@ export interface GetPagesLogin {
 
 export interface GetResourceServerScope {
     description: string;
-    /**
-     * Friendly name for the resource server. Cannot include `<` or `>` characters.
-     */
     name: string;
 }
 
 export interface GetRolePermission {
-    /**
-     * The description of the role.
-     */
     description: string;
-    /**
-     * The name of the role. If not provided, `roleId` must be set.
-     */
     name: string;
     resourceServerIdentifier: string;
     resourceServerName: string;
@@ -1973,9 +2348,6 @@ export interface GetTenantSessionCooky {
 
 export interface GetUserPermission {
     description: string;
-    /**
-     * Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-     */
     name: string;
     resourceServerIdentifier: string;
     resourceServerName: string;
@@ -2020,11 +2392,29 @@ export interface GuardianPhone {
 }
 
 export interface GuardianPhoneOptions {
+    /**
+     * AuthToken for your Twilio account.
+     */
     authToken?: string;
+    /**
+     * This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+     */
     enrollmentMessage?: string;
+    /**
+     * Phone number to use as the sender.
+     */
     from?: string;
+    /**
+     * Messaging service SID.
+     */
     messagingServiceSid?: string;
+    /**
+     * SID for your Twilio account.
+     */
     sid?: string;
+    /**
+     * This message will be sent whenever a user logs in after the enrollment. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+     */
     verificationMessage?: string;
 }
 
@@ -2056,27 +2446,66 @@ export interface GuardianPush {
 }
 
 export interface GuardianPushAmazonSns {
+    /**
+     * Your AWS Access Key ID.
+     */
     awsAccessKeyId: string;
+    /**
+     * Your AWS application's region.
+     */
     awsRegion: string;
+    /**
+     * Your AWS Secret Access Key.
+     */
     awsSecretAccessKey: string;
+    /**
+     * The Amazon Resource Name for your Apple Push Notification Service.
+     */
     snsApnsPlatformApplicationArn: string;
+    /**
+     * The Amazon Resource Name for your Firebase Cloud Messaging Service.
+     */
     snsGcmPlatformApplicationArn: string;
 }
 
 export interface GuardianPushCustomApp {
+    /**
+     * Custom Application Name.
+     */
     appName?: string;
+    /**
+     * Apple App Store URL. Must be HTTPS or an empty string.
+     */
     appleAppLink?: string;
+    /**
+     * Google Store URL. Must be HTTPS or an empty string.
+     */
     googleAppLink?: string;
 }
 
 export interface GuardianPushDirectApns {
+    /**
+     * The Apple Push Notification service Bundle ID.
+     */
     bundleId: string;
+    /**
+     * Indicates whether Duo MFA is enabled.
+     */
     enabled: boolean;
+    /**
+     * The base64 encoded certificate in P12 format.
+     */
     p12: string;
+    /**
+     * Set to true to use the sandbox iOS app environment, otherwise set to false to use the production iOS app environment.
+     */
     sandbox: boolean;
 }
 
 export interface GuardianPushDirectFcm {
+    /**
+     * The Firebase Cloud Messaging Server Key. For security purposes, we don’t retrieve your existing FCM server key to check for drift.
+     */
     serverKey: string;
 }
 

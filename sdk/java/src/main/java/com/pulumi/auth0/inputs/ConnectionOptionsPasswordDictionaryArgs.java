@@ -17,16 +17,32 @@ public final class ConnectionOptionsPasswordDictionaryArgs extends com.pulumi.re
 
     public static final ConnectionOptionsPasswordDictionaryArgs Empty = new ConnectionOptionsPasswordDictionaryArgs();
 
+    /**
+     * Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+     * 
+     */
     @Import(name="dictionaries")
     private @Nullable Output<List<String>> dictionaries;
 
+    /**
+     * @return Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+     * 
+     */
     public Optional<Output<List<String>>> dictionaries() {
         return Optional.ofNullable(this.dictionaries);
     }
 
+    /**
+     * Indicates whether the password dictionary check is enabled for this connection.
+     * 
+     */
     @Import(name="enable")
     private @Nullable Output<Boolean> enable;
 
+    /**
+     * @return Indicates whether the password dictionary check is enabled for this connection.
+     * 
+     */
     public Optional<Output<Boolean>> enable() {
         return Optional.ofNullable(this.enable);
     }
@@ -56,24 +72,54 @@ public final class ConnectionOptionsPasswordDictionaryArgs extends com.pulumi.re
             $ = new ConnectionOptionsPasswordDictionaryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dictionaries Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dictionaries(@Nullable Output<List<String>> dictionaries) {
             $.dictionaries = dictionaries;
             return this;
         }
 
+        /**
+         * @param dictionaries Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dictionaries(List<String> dictionaries) {
             return dictionaries(Output.of(dictionaries));
         }
 
+        /**
+         * @param dictionaries Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dictionaries(String... dictionaries) {
             return dictionaries(List.of(dictionaries));
         }
 
+        /**
+         * @param enable Indicates whether the password dictionary check is enabled for this connection.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enable(@Nullable Output<Boolean> enable) {
             $.enable = enable;
             return this;
         }
 
+        /**
+         * @param enable Indicates whether the password dictionary check is enabled for this connection.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enable(Boolean enable) {
             return enable(Output.of(enable));
         }

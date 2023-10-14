@@ -13,9 +13,21 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GuardianPushDirectApns
     {
+        /// <summary>
+        /// The Apple Push Notification service Bundle ID.
+        /// </summary>
         public readonly string BundleId;
+        /// <summary>
+        /// Indicates whether Duo MFA is enabled.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// The base64 encoded certificate in P12 format.
+        /// </summary>
         public readonly string P12;
+        /// <summary>
+        /// Set to true to use the sandbox iOS app environment, otherwise set to false to use the production iOS app environment.
+        /// </summary>
         public readonly bool Sandbox;
 
         [OutputConstructor]

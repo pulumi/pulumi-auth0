@@ -694,6 +694,7 @@ func (o AttackProtectionBreachedPasswordDetectionPtrOutput) Shields() pulumi.Str
 }
 
 type AttackProtectionBreachedPasswordDetectionPreUserRegistration struct {
+	// Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
 	Shields []string `pulumi:"shields"`
 }
 
@@ -709,6 +710,7 @@ type AttackProtectionBreachedPasswordDetectionPreUserRegistrationInput interface
 }
 
 type AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs struct {
+	// Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
 	Shields pulumi.StringArrayInput `pulumi:"shields"`
 }
 
@@ -807,6 +809,7 @@ func (o AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput) ToOu
 	}
 }
 
+// Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
 func (o AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput) Shields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttackProtectionBreachedPasswordDetectionPreUserRegistration) []string { return v.Shields }).(pulumi.StringArrayOutput)
 }
@@ -841,6 +844,7 @@ func (o AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput) E
 	}).(AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput)
 }
 
+// Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
 func (o AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput) Shields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttackProtectionBreachedPasswordDetectionPreUserRegistration) []string {
 		if v == nil {
@@ -1329,8 +1333,10 @@ func (o AttackProtectionSuspiciousIpThrottlingPtrOutput) Shields() pulumi.String
 }
 
 type AttackProtectionSuspiciousIpThrottlingPreLogin struct {
+	// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
 	MaxAttempts *int `pulumi:"maxAttempts"`
-	Rate        *int `pulumi:"rate"`
+	// Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+	Rate *int `pulumi:"rate"`
 }
 
 // AttackProtectionSuspiciousIpThrottlingPreLoginInput is an input type that accepts AttackProtectionSuspiciousIpThrottlingPreLoginArgs and AttackProtectionSuspiciousIpThrottlingPreLoginOutput values.
@@ -1345,8 +1351,10 @@ type AttackProtectionSuspiciousIpThrottlingPreLoginInput interface {
 }
 
 type AttackProtectionSuspiciousIpThrottlingPreLoginArgs struct {
+	// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
 	MaxAttempts pulumi.IntPtrInput `pulumi:"maxAttempts"`
-	Rate        pulumi.IntPtrInput `pulumi:"rate"`
+	// Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+	Rate pulumi.IntPtrInput `pulumi:"rate"`
 }
 
 func (AttackProtectionSuspiciousIpThrottlingPreLoginArgs) ElementType() reflect.Type {
@@ -1444,10 +1452,12 @@ func (o AttackProtectionSuspiciousIpThrottlingPreLoginOutput) ToOutput(ctx conte
 	}
 }
 
+// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
 func (o AttackProtectionSuspiciousIpThrottlingPreLoginOutput) MaxAttempts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AttackProtectionSuspiciousIpThrottlingPreLogin) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
 }
 
+// Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
 func (o AttackProtectionSuspiciousIpThrottlingPreLoginOutput) Rate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AttackProtectionSuspiciousIpThrottlingPreLogin) *int { return v.Rate }).(pulumi.IntPtrOutput)
 }
@@ -1482,6 +1492,7 @@ func (o AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput) Elem() AttackPr
 	}).(AttackProtectionSuspiciousIpThrottlingPreLoginOutput)
 }
 
+// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
 func (o AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput) MaxAttempts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottlingPreLogin) *int {
 		if v == nil {
@@ -1491,6 +1502,7 @@ func (o AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput) MaxAttempts() p
 	}).(pulumi.IntPtrOutput)
 }
 
+// Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
 func (o AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput) Rate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottlingPreLogin) *int {
 		if v == nil {
@@ -1501,8 +1513,10 @@ func (o AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput) Rate() pulumi.I
 }
 
 type AttackProtectionSuspiciousIpThrottlingPreUserRegistration struct {
+	// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
 	MaxAttempts *int `pulumi:"maxAttempts"`
-	Rate        *int `pulumi:"rate"`
+	// Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+	Rate *int `pulumi:"rate"`
 }
 
 // AttackProtectionSuspiciousIpThrottlingPreUserRegistrationInput is an input type that accepts AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs and AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput values.
@@ -1517,8 +1531,10 @@ type AttackProtectionSuspiciousIpThrottlingPreUserRegistrationInput interface {
 }
 
 type AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs struct {
+	// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
 	MaxAttempts pulumi.IntPtrInput `pulumi:"maxAttempts"`
-	Rate        pulumi.IntPtrInput `pulumi:"rate"`
+	// Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+	Rate pulumi.IntPtrInput `pulumi:"rate"`
 }
 
 func (AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs) ElementType() reflect.Type {
@@ -1616,10 +1632,12 @@ func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput) ToOutpu
 	}
 }
 
+// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
 func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput) MaxAttempts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AttackProtectionSuspiciousIpThrottlingPreUserRegistration) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
 }
 
+// Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
 func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput) Rate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AttackProtectionSuspiciousIpThrottlingPreUserRegistration) *int { return v.Rate }).(pulumi.IntPtrOutput)
 }
@@ -1654,6 +1672,7 @@ func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput) Elem
 	}).(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput)
 }
 
+// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
 func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput) MaxAttempts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottlingPreUserRegistration) *int {
 		if v == nil {
@@ -1663,6 +1682,7 @@ func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput) MaxA
 	}).(pulumi.IntPtrOutput)
 }
 
+// Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
 func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput) Rate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottlingPreUserRegistration) *int {
 		if v == nil {
@@ -3124,7 +3144,9 @@ func (o BrandingThemeFontsPtrOutput) Title() BrandingThemeFontsTitlePtrOutput {
 }
 
 type BrandingThemeFontsBodyText struct {
-	Bold *bool    `pulumi:"bold"`
+	// Body text bold. Defaults to `false`.
+	Bold *bool `pulumi:"bold"`
+	// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 	Size *float64 `pulumi:"size"`
 }
 
@@ -3140,7 +3162,9 @@ type BrandingThemeFontsBodyTextInput interface {
 }
 
 type BrandingThemeFontsBodyTextArgs struct {
-	Bold pulumi.BoolPtrInput    `pulumi:"bold"`
+	// Body text bold. Defaults to `false`.
+	Bold pulumi.BoolPtrInput `pulumi:"bold"`
+	// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 	Size pulumi.Float64PtrInput `pulumi:"size"`
 }
 
@@ -3239,10 +3263,12 @@ func (o BrandingThemeFontsBodyTextOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
+// Body text bold. Defaults to `false`.
 func (o BrandingThemeFontsBodyTextOutput) Bold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BrandingThemeFontsBodyText) *bool { return v.Bold }).(pulumi.BoolPtrOutput)
 }
 
+// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 func (o BrandingThemeFontsBodyTextOutput) Size() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BrandingThemeFontsBodyText) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
 }
@@ -3277,6 +3303,7 @@ func (o BrandingThemeFontsBodyTextPtrOutput) Elem() BrandingThemeFontsBodyTextOu
 	}).(BrandingThemeFontsBodyTextOutput)
 }
 
+// Body text bold. Defaults to `false`.
 func (o BrandingThemeFontsBodyTextPtrOutput) Bold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeFontsBodyText) *bool {
 		if v == nil {
@@ -3286,6 +3313,7 @@ func (o BrandingThemeFontsBodyTextPtrOutput) Bold() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 func (o BrandingThemeFontsBodyTextPtrOutput) Size() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BrandingThemeFontsBodyText) *float64 {
 		if v == nil {
@@ -3296,7 +3324,9 @@ func (o BrandingThemeFontsBodyTextPtrOutput) Size() pulumi.Float64PtrOutput {
 }
 
 type BrandingThemeFontsButtonsText struct {
-	Bold *bool    `pulumi:"bold"`
+	// Body text bold. Defaults to `false`.
+	Bold *bool `pulumi:"bold"`
+	// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 	Size *float64 `pulumi:"size"`
 }
 
@@ -3312,7 +3342,9 @@ type BrandingThemeFontsButtonsTextInput interface {
 }
 
 type BrandingThemeFontsButtonsTextArgs struct {
-	Bold pulumi.BoolPtrInput    `pulumi:"bold"`
+	// Body text bold. Defaults to `false`.
+	Bold pulumi.BoolPtrInput `pulumi:"bold"`
+	// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 	Size pulumi.Float64PtrInput `pulumi:"size"`
 }
 
@@ -3411,10 +3443,12 @@ func (o BrandingThemeFontsButtonsTextOutput) ToOutput(ctx context.Context) pulum
 	}
 }
 
+// Body text bold. Defaults to `false`.
 func (o BrandingThemeFontsButtonsTextOutput) Bold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BrandingThemeFontsButtonsText) *bool { return v.Bold }).(pulumi.BoolPtrOutput)
 }
 
+// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 func (o BrandingThemeFontsButtonsTextOutput) Size() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BrandingThemeFontsButtonsText) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
 }
@@ -3449,6 +3483,7 @@ func (o BrandingThemeFontsButtonsTextPtrOutput) Elem() BrandingThemeFontsButtons
 	}).(BrandingThemeFontsButtonsTextOutput)
 }
 
+// Body text bold. Defaults to `false`.
 func (o BrandingThemeFontsButtonsTextPtrOutput) Bold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeFontsButtonsText) *bool {
 		if v == nil {
@@ -3458,6 +3493,7 @@ func (o BrandingThemeFontsButtonsTextPtrOutput) Bold() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 func (o BrandingThemeFontsButtonsTextPtrOutput) Size() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BrandingThemeFontsButtonsText) *float64 {
 		if v == nil {
@@ -3468,7 +3504,9 @@ func (o BrandingThemeFontsButtonsTextPtrOutput) Size() pulumi.Float64PtrOutput {
 }
 
 type BrandingThemeFontsInputLabels struct {
-	Bold *bool    `pulumi:"bold"`
+	// Body text bold. Defaults to `false`.
+	Bold *bool `pulumi:"bold"`
+	// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 	Size *float64 `pulumi:"size"`
 }
 
@@ -3484,7 +3522,9 @@ type BrandingThemeFontsInputLabelsInput interface {
 }
 
 type BrandingThemeFontsInputLabelsArgs struct {
-	Bold pulumi.BoolPtrInput    `pulumi:"bold"`
+	// Body text bold. Defaults to `false`.
+	Bold pulumi.BoolPtrInput `pulumi:"bold"`
+	// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 	Size pulumi.Float64PtrInput `pulumi:"size"`
 }
 
@@ -3583,10 +3623,12 @@ func (o BrandingThemeFontsInputLabelsOutput) ToOutput(ctx context.Context) pulum
 	}
 }
 
+// Body text bold. Defaults to `false`.
 func (o BrandingThemeFontsInputLabelsOutput) Bold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BrandingThemeFontsInputLabels) *bool { return v.Bold }).(pulumi.BoolPtrOutput)
 }
 
+// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 func (o BrandingThemeFontsInputLabelsOutput) Size() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BrandingThemeFontsInputLabels) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
 }
@@ -3621,6 +3663,7 @@ func (o BrandingThemeFontsInputLabelsPtrOutput) Elem() BrandingThemeFontsInputLa
 	}).(BrandingThemeFontsInputLabelsOutput)
 }
 
+// Body text bold. Defaults to `false`.
 func (o BrandingThemeFontsInputLabelsPtrOutput) Bold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeFontsInputLabels) *bool {
 		if v == nil {
@@ -3630,6 +3673,7 @@ func (o BrandingThemeFontsInputLabelsPtrOutput) Bold() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 func (o BrandingThemeFontsInputLabelsPtrOutput) Size() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BrandingThemeFontsInputLabels) *float64 {
 		if v == nil {
@@ -3640,7 +3684,9 @@ func (o BrandingThemeFontsInputLabelsPtrOutput) Size() pulumi.Float64PtrOutput {
 }
 
 type BrandingThemeFontsLinks struct {
-	Bold *bool    `pulumi:"bold"`
+	// Body text bold. Defaults to `false`.
+	Bold *bool `pulumi:"bold"`
+	// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 	Size *float64 `pulumi:"size"`
 }
 
@@ -3656,7 +3702,9 @@ type BrandingThemeFontsLinksInput interface {
 }
 
 type BrandingThemeFontsLinksArgs struct {
-	Bold pulumi.BoolPtrInput    `pulumi:"bold"`
+	// Body text bold. Defaults to `false`.
+	Bold pulumi.BoolPtrInput `pulumi:"bold"`
+	// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 	Size pulumi.Float64PtrInput `pulumi:"size"`
 }
 
@@ -3755,10 +3803,12 @@ func (o BrandingThemeFontsLinksOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
+// Body text bold. Defaults to `false`.
 func (o BrandingThemeFontsLinksOutput) Bold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BrandingThemeFontsLinks) *bool { return v.Bold }).(pulumi.BoolPtrOutput)
 }
 
+// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 func (o BrandingThemeFontsLinksOutput) Size() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BrandingThemeFontsLinks) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
 }
@@ -3793,6 +3843,7 @@ func (o BrandingThemeFontsLinksPtrOutput) Elem() BrandingThemeFontsLinksOutput {
 	}).(BrandingThemeFontsLinksOutput)
 }
 
+// Body text bold. Defaults to `false`.
 func (o BrandingThemeFontsLinksPtrOutput) Bold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeFontsLinks) *bool {
 		if v == nil {
@@ -3802,6 +3853,7 @@ func (o BrandingThemeFontsLinksPtrOutput) Bold() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 func (o BrandingThemeFontsLinksPtrOutput) Size() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BrandingThemeFontsLinks) *float64 {
 		if v == nil {
@@ -3812,7 +3864,9 @@ func (o BrandingThemeFontsLinksPtrOutput) Size() pulumi.Float64PtrOutput {
 }
 
 type BrandingThemeFontsSubtitle struct {
-	Bold *bool    `pulumi:"bold"`
+	// Body text bold. Defaults to `false`.
+	Bold *bool `pulumi:"bold"`
+	// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 	Size *float64 `pulumi:"size"`
 }
 
@@ -3828,7 +3882,9 @@ type BrandingThemeFontsSubtitleInput interface {
 }
 
 type BrandingThemeFontsSubtitleArgs struct {
-	Bold pulumi.BoolPtrInput    `pulumi:"bold"`
+	// Body text bold. Defaults to `false`.
+	Bold pulumi.BoolPtrInput `pulumi:"bold"`
+	// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 	Size pulumi.Float64PtrInput `pulumi:"size"`
 }
 
@@ -3927,10 +3983,12 @@ func (o BrandingThemeFontsSubtitleOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
+// Body text bold. Defaults to `false`.
 func (o BrandingThemeFontsSubtitleOutput) Bold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BrandingThemeFontsSubtitle) *bool { return v.Bold }).(pulumi.BoolPtrOutput)
 }
 
+// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 func (o BrandingThemeFontsSubtitleOutput) Size() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BrandingThemeFontsSubtitle) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
 }
@@ -3965,6 +4023,7 @@ func (o BrandingThemeFontsSubtitlePtrOutput) Elem() BrandingThemeFontsSubtitleOu
 	}).(BrandingThemeFontsSubtitleOutput)
 }
 
+// Body text bold. Defaults to `false`.
 func (o BrandingThemeFontsSubtitlePtrOutput) Bold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeFontsSubtitle) *bool {
 		if v == nil {
@@ -3974,6 +4033,7 @@ func (o BrandingThemeFontsSubtitlePtrOutput) Bold() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 func (o BrandingThemeFontsSubtitlePtrOutput) Size() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BrandingThemeFontsSubtitle) *float64 {
 		if v == nil {
@@ -3984,7 +4044,9 @@ func (o BrandingThemeFontsSubtitlePtrOutput) Size() pulumi.Float64PtrOutput {
 }
 
 type BrandingThemeFontsTitle struct {
-	Bold *bool    `pulumi:"bold"`
+	// Body text bold. Defaults to `false`.
+	Bold *bool `pulumi:"bold"`
+	// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 	Size *float64 `pulumi:"size"`
 }
 
@@ -4000,7 +4062,9 @@ type BrandingThemeFontsTitleInput interface {
 }
 
 type BrandingThemeFontsTitleArgs struct {
-	Bold pulumi.BoolPtrInput    `pulumi:"bold"`
+	// Body text bold. Defaults to `false`.
+	Bold pulumi.BoolPtrInput `pulumi:"bold"`
+	// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 	Size pulumi.Float64PtrInput `pulumi:"size"`
 }
 
@@ -4099,10 +4163,12 @@ func (o BrandingThemeFontsTitleOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
+// Body text bold. Defaults to `false`.
 func (o BrandingThemeFontsTitleOutput) Bold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BrandingThemeFontsTitle) *bool { return v.Bold }).(pulumi.BoolPtrOutput)
 }
 
+// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 func (o BrandingThemeFontsTitleOutput) Size() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BrandingThemeFontsTitle) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
 }
@@ -4137,6 +4203,7 @@ func (o BrandingThemeFontsTitlePtrOutput) Elem() BrandingThemeFontsTitleOutput {
 	}).(BrandingThemeFontsTitleOutput)
 }
 
+// Body text bold. Defaults to `false`.
 func (o BrandingThemeFontsTitlePtrOutput) Bold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeFontsTitle) *bool {
 		if v == nil {
@@ -4146,6 +4213,7 @@ func (o BrandingThemeFontsTitlePtrOutput) Bold() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
 func (o BrandingThemeFontsTitlePtrOutput) Size() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BrandingThemeFontsTitle) *float64 {
 		if v == nil {
@@ -5446,9 +5514,12 @@ func (o ClientAddonsPtrOutput) Zoom() ClientAddonsZoomPtrOutput {
 }
 
 type ClientAddonsAws struct {
-	LifetimeInSeconds *int    `pulumi:"lifetimeInSeconds"`
-	Principal         *string `pulumi:"principal"`
-	Role              *string `pulumi:"role"`
+	// AWS token lifetime in seconds.
+	LifetimeInSeconds *int `pulumi:"lifetimeInSeconds"`
+	// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+	Principal *string `pulumi:"principal"`
+	// AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.
+	Role *string `pulumi:"role"`
 }
 
 // ClientAddonsAwsInput is an input type that accepts ClientAddonsAwsArgs and ClientAddonsAwsOutput values.
@@ -5463,9 +5534,12 @@ type ClientAddonsAwsInput interface {
 }
 
 type ClientAddonsAwsArgs struct {
-	LifetimeInSeconds pulumi.IntPtrInput    `pulumi:"lifetimeInSeconds"`
-	Principal         pulumi.StringPtrInput `pulumi:"principal"`
-	Role              pulumi.StringPtrInput `pulumi:"role"`
+	// AWS token lifetime in seconds.
+	LifetimeInSeconds pulumi.IntPtrInput `pulumi:"lifetimeInSeconds"`
+	// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+	Principal pulumi.StringPtrInput `pulumi:"principal"`
+	// AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.
+	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
 func (ClientAddonsAwsArgs) ElementType() reflect.Type {
@@ -5563,14 +5637,17 @@ func (o ClientAddonsAwsOutput) ToOutput(ctx context.Context) pulumix.Output[Clie
 	}
 }
 
+// AWS token lifetime in seconds.
 func (o ClientAddonsAwsOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAws) *int { return v.LifetimeInSeconds }).(pulumi.IntPtrOutput)
 }
 
+// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
 func (o ClientAddonsAwsOutput) Principal() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAws) *string { return v.Principal }).(pulumi.StringPtrOutput)
 }
 
+// AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.
 func (o ClientAddonsAwsOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAws) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -5605,6 +5682,7 @@ func (o ClientAddonsAwsPtrOutput) Elem() ClientAddonsAwsOutput {
 	}).(ClientAddonsAwsOutput)
 }
 
+// AWS token lifetime in seconds.
 func (o ClientAddonsAwsPtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAws) *int {
 		if v == nil {
@@ -5614,6 +5692,7 @@ func (o ClientAddonsAwsPtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
 func (o ClientAddonsAwsPtrOutput) Principal() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAws) *string {
 		if v == nil {
@@ -5623,6 +5702,7 @@ func (o ClientAddonsAwsPtrOutput) Principal() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.
 func (o ClientAddonsAwsPtrOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAws) *string {
 		if v == nil {
@@ -5633,18 +5713,31 @@ func (o ClientAddonsAwsPtrOutput) Role() pulumi.StringPtrOutput {
 }
 
 type ClientAddonsAzureBlob struct {
-	AccountName      *string `pulumi:"accountName"`
-	BlobDelete       *bool   `pulumi:"blobDelete"`
-	BlobName         *string `pulumi:"blobName"`
-	BlobRead         *bool   `pulumi:"blobRead"`
-	BlobWrite        *bool   `pulumi:"blobWrite"`
-	ContainerDelete  *bool   `pulumi:"containerDelete"`
-	ContainerList    *bool   `pulumi:"containerList"`
-	ContainerName    *string `pulumi:"containerName"`
-	ContainerRead    *bool   `pulumi:"containerRead"`
-	ContainerWrite   *bool   `pulumi:"containerWrite"`
-	Expiration       *int    `pulumi:"expiration"`
+	// Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+	AccountName *string `pulumi:"accountName"`
+	// Indicates if the issued token has permission to delete the blob.
+	BlobDelete *bool `pulumi:"blobDelete"`
+	// Entity to request a token for, such as `my-blob`. If blank the computed SAS will apply to the entire storage container.
+	BlobName *string `pulumi:"blobName"`
+	// Indicates if the issued token has permission to read the content, properties, metadata and block list. Use the blob as the source of a copy operation.
+	BlobRead *bool `pulumi:"blobRead"`
+	// Indicates if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+	BlobWrite *bool `pulumi:"blobWrite"`
+	// Indicates if issued token has permission to delete any blob in the container.
+	ContainerDelete *bool `pulumi:"containerDelete"`
+	// Indicates if the issued token has permission to list blobs in the container.
+	ContainerList *bool `pulumi:"containerList"`
+	// Container to request a token for, such as `my-container`.
+	ContainerName *string `pulumi:"containerName"`
+	// Indicates if the issued token has permission to read the content, properties, metadata or block list of any blob in the container. Use any blob in the container as the source of a copy operation.
+	ContainerRead *bool `pulumi:"containerRead"`
+	// Indicates that for any blob in the container if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+	ContainerWrite *bool `pulumi:"containerWrite"`
+	// Expiration in minutes for the generated token (default of 5 minutes).
+	Expiration *int `pulumi:"expiration"`
+	// Shared access policy identifier defined in your storage account resource.
 	SignedIdentifier *string `pulumi:"signedIdentifier"`
+	// Access key associated with this storage account.
 	StorageAccessKey *string `pulumi:"storageAccessKey"`
 }
 
@@ -5660,18 +5753,31 @@ type ClientAddonsAzureBlobInput interface {
 }
 
 type ClientAddonsAzureBlobArgs struct {
-	AccountName      pulumi.StringPtrInput `pulumi:"accountName"`
-	BlobDelete       pulumi.BoolPtrInput   `pulumi:"blobDelete"`
-	BlobName         pulumi.StringPtrInput `pulumi:"blobName"`
-	BlobRead         pulumi.BoolPtrInput   `pulumi:"blobRead"`
-	BlobWrite        pulumi.BoolPtrInput   `pulumi:"blobWrite"`
-	ContainerDelete  pulumi.BoolPtrInput   `pulumi:"containerDelete"`
-	ContainerList    pulumi.BoolPtrInput   `pulumi:"containerList"`
-	ContainerName    pulumi.StringPtrInput `pulumi:"containerName"`
-	ContainerRead    pulumi.BoolPtrInput   `pulumi:"containerRead"`
-	ContainerWrite   pulumi.BoolPtrInput   `pulumi:"containerWrite"`
-	Expiration       pulumi.IntPtrInput    `pulumi:"expiration"`
+	// Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+	AccountName pulumi.StringPtrInput `pulumi:"accountName"`
+	// Indicates if the issued token has permission to delete the blob.
+	BlobDelete pulumi.BoolPtrInput `pulumi:"blobDelete"`
+	// Entity to request a token for, such as `my-blob`. If blank the computed SAS will apply to the entire storage container.
+	BlobName pulumi.StringPtrInput `pulumi:"blobName"`
+	// Indicates if the issued token has permission to read the content, properties, metadata and block list. Use the blob as the source of a copy operation.
+	BlobRead pulumi.BoolPtrInput `pulumi:"blobRead"`
+	// Indicates if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+	BlobWrite pulumi.BoolPtrInput `pulumi:"blobWrite"`
+	// Indicates if issued token has permission to delete any blob in the container.
+	ContainerDelete pulumi.BoolPtrInput `pulumi:"containerDelete"`
+	// Indicates if the issued token has permission to list blobs in the container.
+	ContainerList pulumi.BoolPtrInput `pulumi:"containerList"`
+	// Container to request a token for, such as `my-container`.
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
+	// Indicates if the issued token has permission to read the content, properties, metadata or block list of any blob in the container. Use any blob in the container as the source of a copy operation.
+	ContainerRead pulumi.BoolPtrInput `pulumi:"containerRead"`
+	// Indicates that for any blob in the container if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+	ContainerWrite pulumi.BoolPtrInput `pulumi:"containerWrite"`
+	// Expiration in minutes for the generated token (default of 5 minutes).
+	Expiration pulumi.IntPtrInput `pulumi:"expiration"`
+	// Shared access policy identifier defined in your storage account resource.
 	SignedIdentifier pulumi.StringPtrInput `pulumi:"signedIdentifier"`
+	// Access key associated with this storage account.
 	StorageAccessKey pulumi.StringPtrInput `pulumi:"storageAccessKey"`
 }
 
@@ -5770,54 +5876,67 @@ func (o ClientAddonsAzureBlobOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
 func (o ClientAddonsAzureBlobOutput) AccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureBlob) *string { return v.AccountName }).(pulumi.StringPtrOutput)
 }
 
+// Indicates if the issued token has permission to delete the blob.
 func (o ClientAddonsAzureBlobOutput) BlobDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureBlob) *bool { return v.BlobDelete }).(pulumi.BoolPtrOutput)
 }
 
+// Entity to request a token for, such as `my-blob`. If blank the computed SAS will apply to the entire storage container.
 func (o ClientAddonsAzureBlobOutput) BlobName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureBlob) *string { return v.BlobName }).(pulumi.StringPtrOutput)
 }
 
+// Indicates if the issued token has permission to read the content, properties, metadata and block list. Use the blob as the source of a copy operation.
 func (o ClientAddonsAzureBlobOutput) BlobRead() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureBlob) *bool { return v.BlobRead }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
 func (o ClientAddonsAzureBlobOutput) BlobWrite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureBlob) *bool { return v.BlobWrite }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates if issued token has permission to delete any blob in the container.
 func (o ClientAddonsAzureBlobOutput) ContainerDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureBlob) *bool { return v.ContainerDelete }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates if the issued token has permission to list blobs in the container.
 func (o ClientAddonsAzureBlobOutput) ContainerList() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureBlob) *bool { return v.ContainerList }).(pulumi.BoolPtrOutput)
 }
 
+// Container to request a token for, such as `my-container`.
 func (o ClientAddonsAzureBlobOutput) ContainerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureBlob) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
 }
 
+// Indicates if the issued token has permission to read the content, properties, metadata or block list of any blob in the container. Use any blob in the container as the source of a copy operation.
 func (o ClientAddonsAzureBlobOutput) ContainerRead() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureBlob) *bool { return v.ContainerRead }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates that for any blob in the container if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
 func (o ClientAddonsAzureBlobOutput) ContainerWrite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureBlob) *bool { return v.ContainerWrite }).(pulumi.BoolPtrOutput)
 }
 
+// Expiration in minutes for the generated token (default of 5 minutes).
 func (o ClientAddonsAzureBlobOutput) Expiration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureBlob) *int { return v.Expiration }).(pulumi.IntPtrOutput)
 }
 
+// Shared access policy identifier defined in your storage account resource.
 func (o ClientAddonsAzureBlobOutput) SignedIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureBlob) *string { return v.SignedIdentifier }).(pulumi.StringPtrOutput)
 }
 
+// Access key associated with this storage account.
 func (o ClientAddonsAzureBlobOutput) StorageAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureBlob) *string { return v.StorageAccessKey }).(pulumi.StringPtrOutput)
 }
@@ -5852,6 +5971,7 @@ func (o ClientAddonsAzureBlobPtrOutput) Elem() ClientAddonsAzureBlobOutput {
 	}).(ClientAddonsAzureBlobOutput)
 }
 
+// Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
 func (o ClientAddonsAzureBlobPtrOutput) AccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureBlob) *string {
 		if v == nil {
@@ -5861,6 +5981,7 @@ func (o ClientAddonsAzureBlobPtrOutput) AccountName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Indicates if the issued token has permission to delete the blob.
 func (o ClientAddonsAzureBlobPtrOutput) BlobDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureBlob) *bool {
 		if v == nil {
@@ -5870,6 +5991,7 @@ func (o ClientAddonsAzureBlobPtrOutput) BlobDelete() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Entity to request a token for, such as `my-blob`. If blank the computed SAS will apply to the entire storage container.
 func (o ClientAddonsAzureBlobPtrOutput) BlobName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureBlob) *string {
 		if v == nil {
@@ -5879,6 +6001,7 @@ func (o ClientAddonsAzureBlobPtrOutput) BlobName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Indicates if the issued token has permission to read the content, properties, metadata and block list. Use the blob as the source of a copy operation.
 func (o ClientAddonsAzureBlobPtrOutput) BlobRead() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureBlob) *bool {
 		if v == nil {
@@ -5888,6 +6011,7 @@ func (o ClientAddonsAzureBlobPtrOutput) BlobRead() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Indicates if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
 func (o ClientAddonsAzureBlobPtrOutput) BlobWrite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureBlob) *bool {
 		if v == nil {
@@ -5897,6 +6021,7 @@ func (o ClientAddonsAzureBlobPtrOutput) BlobWrite() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Indicates if issued token has permission to delete any blob in the container.
 func (o ClientAddonsAzureBlobPtrOutput) ContainerDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureBlob) *bool {
 		if v == nil {
@@ -5906,6 +6031,7 @@ func (o ClientAddonsAzureBlobPtrOutput) ContainerDelete() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Indicates if the issued token has permission to list blobs in the container.
 func (o ClientAddonsAzureBlobPtrOutput) ContainerList() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureBlob) *bool {
 		if v == nil {
@@ -5915,6 +6041,7 @@ func (o ClientAddonsAzureBlobPtrOutput) ContainerList() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Container to request a token for, such as `my-container`.
 func (o ClientAddonsAzureBlobPtrOutput) ContainerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureBlob) *string {
 		if v == nil {
@@ -5924,6 +6051,7 @@ func (o ClientAddonsAzureBlobPtrOutput) ContainerName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Indicates if the issued token has permission to read the content, properties, metadata or block list of any blob in the container. Use any blob in the container as the source of a copy operation.
 func (o ClientAddonsAzureBlobPtrOutput) ContainerRead() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureBlob) *bool {
 		if v == nil {
@@ -5933,6 +6061,7 @@ func (o ClientAddonsAzureBlobPtrOutput) ContainerRead() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Indicates that for any blob in the container if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
 func (o ClientAddonsAzureBlobPtrOutput) ContainerWrite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureBlob) *bool {
 		if v == nil {
@@ -5942,6 +6071,7 @@ func (o ClientAddonsAzureBlobPtrOutput) ContainerWrite() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Expiration in minutes for the generated token (default of 5 minutes).
 func (o ClientAddonsAzureBlobPtrOutput) Expiration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureBlob) *int {
 		if v == nil {
@@ -5951,6 +6081,7 @@ func (o ClientAddonsAzureBlobPtrOutput) Expiration() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Shared access policy identifier defined in your storage account resource.
 func (o ClientAddonsAzureBlobPtrOutput) SignedIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureBlob) *string {
 		if v == nil {
@@ -5960,6 +6091,7 @@ func (o ClientAddonsAzureBlobPtrOutput) SignedIdentifier() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Access key associated with this storage account.
 func (o ClientAddonsAzureBlobPtrOutput) StorageAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureBlob) *string {
 		if v == nil {
@@ -5970,10 +6102,15 @@ func (o ClientAddonsAzureBlobPtrOutput) StorageAccessKey() pulumi.StringPtrOutpu
 }
 
 type ClientAddonsAzureSb struct {
+	// Entity you want to request a token for, such as `my-queue`.
 	EntityPath *string `pulumi:"entityPath"`
-	Expiration *int    `pulumi:"expiration"`
-	Namespace  *string `pulumi:"namespace"`
-	SasKey     *string `pulumi:"sasKey"`
+	// Expiration in minutes for the generated token (default of 5 minutes).
+	Expiration *int `pulumi:"expiration"`
+	// Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
+	Namespace *string `pulumi:"namespace"`
+	// Primary Key associated with your shared access policy.
+	SasKey *string `pulumi:"sasKey"`
+	// Your shared access policy name defined in your Service Bus entity.
 	SasKeyName *string `pulumi:"sasKeyName"`
 }
 
@@ -5989,10 +6126,15 @@ type ClientAddonsAzureSbInput interface {
 }
 
 type ClientAddonsAzureSbArgs struct {
+	// Entity you want to request a token for, such as `my-queue`.
 	EntityPath pulumi.StringPtrInput `pulumi:"entityPath"`
-	Expiration pulumi.IntPtrInput    `pulumi:"expiration"`
-	Namespace  pulumi.StringPtrInput `pulumi:"namespace"`
-	SasKey     pulumi.StringPtrInput `pulumi:"sasKey"`
+	// Expiration in minutes for the generated token (default of 5 minutes).
+	Expiration pulumi.IntPtrInput `pulumi:"expiration"`
+	// Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// Primary Key associated with your shared access policy.
+	SasKey pulumi.StringPtrInput `pulumi:"sasKey"`
+	// Your shared access policy name defined in your Service Bus entity.
 	SasKeyName pulumi.StringPtrInput `pulumi:"sasKeyName"`
 }
 
@@ -6091,22 +6233,27 @@ func (o ClientAddonsAzureSbOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
+// Entity you want to request a token for, such as `my-queue`.
 func (o ClientAddonsAzureSbOutput) EntityPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureSb) *string { return v.EntityPath }).(pulumi.StringPtrOutput)
 }
 
+// Expiration in minutes for the generated token (default of 5 minutes).
 func (o ClientAddonsAzureSbOutput) Expiration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureSb) *int { return v.Expiration }).(pulumi.IntPtrOutput)
 }
 
+// Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
 func (o ClientAddonsAzureSbOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureSb) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
+// Primary Key associated with your shared access policy.
 func (o ClientAddonsAzureSbOutput) SasKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureSb) *string { return v.SasKey }).(pulumi.StringPtrOutput)
 }
 
+// Your shared access policy name defined in your Service Bus entity.
 func (o ClientAddonsAzureSbOutput) SasKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsAzureSb) *string { return v.SasKeyName }).(pulumi.StringPtrOutput)
 }
@@ -6141,6 +6288,7 @@ func (o ClientAddonsAzureSbPtrOutput) Elem() ClientAddonsAzureSbOutput {
 	}).(ClientAddonsAzureSbOutput)
 }
 
+// Entity you want to request a token for, such as `my-queue`.
 func (o ClientAddonsAzureSbPtrOutput) EntityPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureSb) *string {
 		if v == nil {
@@ -6150,6 +6298,7 @@ func (o ClientAddonsAzureSbPtrOutput) EntityPath() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Expiration in minutes for the generated token (default of 5 minutes).
 func (o ClientAddonsAzureSbPtrOutput) Expiration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureSb) *int {
 		if v == nil {
@@ -6159,6 +6308,7 @@ func (o ClientAddonsAzureSbPtrOutput) Expiration() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
 func (o ClientAddonsAzureSbPtrOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureSb) *string {
 		if v == nil {
@@ -6168,6 +6318,7 @@ func (o ClientAddonsAzureSbPtrOutput) Namespace() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Primary Key associated with your shared access policy.
 func (o ClientAddonsAzureSbPtrOutput) SasKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureSb) *string {
 		if v == nil {
@@ -6177,6 +6328,7 @@ func (o ClientAddonsAzureSbPtrOutput) SasKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your shared access policy name defined in your Service Bus entity.
 func (o ClientAddonsAzureSbPtrOutput) SasKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsAzureSb) *string {
 		if v == nil {
@@ -6755,6 +6907,7 @@ func (o ClientAddonsDropboxPtrOutput) Elem() ClientAddonsDropboxOutput {
 }
 
 type ClientAddonsEchosign struct {
+	// Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
 	Domain *string `pulumi:"domain"`
 }
 
@@ -6770,6 +6923,7 @@ type ClientAddonsEchosignInput interface {
 }
 
 type ClientAddonsEchosignArgs struct {
+	// Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 }
 
@@ -6868,6 +7022,7 @@ func (o ClientAddonsEchosignOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
 func (o ClientAddonsEchosignOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsEchosign) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
@@ -6902,6 +7057,7 @@ func (o ClientAddonsEchosignPtrOutput) Elem() ClientAddonsEchosignOutput {
 	}).(ClientAddonsEchosignOutput)
 }
 
+// Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
 func (o ClientAddonsEchosignPtrOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsEchosign) *string {
 		if v == nil {
@@ -6912,6 +7068,7 @@ func (o ClientAddonsEchosignPtrOutput) Domain() pulumi.StringPtrOutput {
 }
 
 type ClientAddonsEgnyte struct {
+	// Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
 	Domain *string `pulumi:"domain"`
 }
 
@@ -6927,6 +7084,7 @@ type ClientAddonsEgnyteInput interface {
 }
 
 type ClientAddonsEgnyteArgs struct {
+	// Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 }
 
@@ -7025,6 +7183,7 @@ func (o ClientAddonsEgnyteOutput) ToOutput(ctx context.Context) pulumix.Output[C
 	}
 }
 
+// Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
 func (o ClientAddonsEgnyteOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsEgnyte) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
@@ -7059,6 +7218,7 @@ func (o ClientAddonsEgnytePtrOutput) Elem() ClientAddonsEgnyteOutput {
 	}).(ClientAddonsEgnyteOutput)
 }
 
+// Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
 func (o ClientAddonsEgnytePtrOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsEgnyte) *string {
 		if v == nil {
@@ -7069,11 +7229,16 @@ func (o ClientAddonsEgnytePtrOutput) Domain() pulumi.StringPtrOutput {
 }
 
 type ClientAddonsFirebase struct {
-	ClientEmail       *string `pulumi:"clientEmail"`
-	LifetimeInSeconds *int    `pulumi:"lifetimeInSeconds"`
-	PrivateKey        *string `pulumi:"privateKey"`
-	PrivateKeyId      *string `pulumi:"privateKeyId"`
-	Secret            *string `pulumi:"secret"`
+	// ID of the Service Account you have created (shown as `clientEmail` in the generated JSON file, SDK v3+ tokens only).
+	ClientEmail *string `pulumi:"clientEmail"`
+	// AWS token lifetime in seconds.
+	LifetimeInSeconds *int `pulumi:"lifetimeInSeconds"`
+	// Private Key for signing the token (SDK v3+ tokens only).
+	PrivateKey *string `pulumi:"privateKey"`
+	// Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).
+	PrivateKeyId *string `pulumi:"privateKeyId"`
+	// Google Firebase Secret. (SDK v2 only).
+	Secret *string `pulumi:"secret"`
 }
 
 // ClientAddonsFirebaseInput is an input type that accepts ClientAddonsFirebaseArgs and ClientAddonsFirebaseOutput values.
@@ -7088,11 +7253,16 @@ type ClientAddonsFirebaseInput interface {
 }
 
 type ClientAddonsFirebaseArgs struct {
-	ClientEmail       pulumi.StringPtrInput `pulumi:"clientEmail"`
-	LifetimeInSeconds pulumi.IntPtrInput    `pulumi:"lifetimeInSeconds"`
-	PrivateKey        pulumi.StringPtrInput `pulumi:"privateKey"`
-	PrivateKeyId      pulumi.StringPtrInput `pulumi:"privateKeyId"`
-	Secret            pulumi.StringPtrInput `pulumi:"secret"`
+	// ID of the Service Account you have created (shown as `clientEmail` in the generated JSON file, SDK v3+ tokens only).
+	ClientEmail pulumi.StringPtrInput `pulumi:"clientEmail"`
+	// AWS token lifetime in seconds.
+	LifetimeInSeconds pulumi.IntPtrInput `pulumi:"lifetimeInSeconds"`
+	// Private Key for signing the token (SDK v3+ tokens only).
+	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+	// Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).
+	PrivateKeyId pulumi.StringPtrInput `pulumi:"privateKeyId"`
+	// Google Firebase Secret. (SDK v2 only).
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
 }
 
 func (ClientAddonsFirebaseArgs) ElementType() reflect.Type {
@@ -7190,22 +7360,27 @@ func (o ClientAddonsFirebaseOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// ID of the Service Account you have created (shown as `clientEmail` in the generated JSON file, SDK v3+ tokens only).
 func (o ClientAddonsFirebaseOutput) ClientEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsFirebase) *string { return v.ClientEmail }).(pulumi.StringPtrOutput)
 }
 
+// AWS token lifetime in seconds.
 func (o ClientAddonsFirebaseOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClientAddonsFirebase) *int { return v.LifetimeInSeconds }).(pulumi.IntPtrOutput)
 }
 
+// Private Key for signing the token (SDK v3+ tokens only).
 func (o ClientAddonsFirebaseOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsFirebase) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
+// Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).
 func (o ClientAddonsFirebaseOutput) PrivateKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsFirebase) *string { return v.PrivateKeyId }).(pulumi.StringPtrOutput)
 }
 
+// Google Firebase Secret. (SDK v2 only).
 func (o ClientAddonsFirebaseOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsFirebase) *string { return v.Secret }).(pulumi.StringPtrOutput)
 }
@@ -7240,6 +7415,7 @@ func (o ClientAddonsFirebasePtrOutput) Elem() ClientAddonsFirebaseOutput {
 	}).(ClientAddonsFirebaseOutput)
 }
 
+// ID of the Service Account you have created (shown as `clientEmail` in the generated JSON file, SDK v3+ tokens only).
 func (o ClientAddonsFirebasePtrOutput) ClientEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsFirebase) *string {
 		if v == nil {
@@ -7249,6 +7425,7 @@ func (o ClientAddonsFirebasePtrOutput) ClientEmail() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// AWS token lifetime in seconds.
 func (o ClientAddonsFirebasePtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsFirebase) *int {
 		if v == nil {
@@ -7258,6 +7435,7 @@ func (o ClientAddonsFirebasePtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Private Key for signing the token (SDK v3+ tokens only).
 func (o ClientAddonsFirebasePtrOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsFirebase) *string {
 		if v == nil {
@@ -7267,6 +7445,7 @@ func (o ClientAddonsFirebasePtrOutput) PrivateKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).
 func (o ClientAddonsFirebasePtrOutput) PrivateKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsFirebase) *string {
 		if v == nil {
@@ -7276,6 +7455,7 @@ func (o ClientAddonsFirebasePtrOutput) PrivateKeyId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Google Firebase Secret. (SDK v2 only).
 func (o ClientAddonsFirebasePtrOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsFirebase) *string {
 		if v == nil {
@@ -7286,11 +7466,16 @@ func (o ClientAddonsFirebasePtrOutput) Secret() pulumi.StringPtrOutput {
 }
 
 type ClientAddonsLayer struct {
-	Expiration *int    `pulumi:"expiration"`
-	KeyId      string  `pulumi:"keyId"`
-	Principal  *string `pulumi:"principal"`
-	PrivateKey string  `pulumi:"privateKey"`
-	ProviderId string  `pulumi:"providerId"`
+	// Expiration in minutes for the generated token (default of 5 minutes).
+	Expiration *int `pulumi:"expiration"`
+	// Authentication Key identifier used to sign the Layer token.
+	KeyId string `pulumi:"keyId"`
+	// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+	Principal *string `pulumi:"principal"`
+	// Private Key for signing the token (SDK v3+ tokens only).
+	PrivateKey string `pulumi:"privateKey"`
+	// Provider ID of your Layer account.
+	ProviderId string `pulumi:"providerId"`
 }
 
 // ClientAddonsLayerInput is an input type that accepts ClientAddonsLayerArgs and ClientAddonsLayerOutput values.
@@ -7305,11 +7490,16 @@ type ClientAddonsLayerInput interface {
 }
 
 type ClientAddonsLayerArgs struct {
-	Expiration pulumi.IntPtrInput    `pulumi:"expiration"`
-	KeyId      pulumi.StringInput    `pulumi:"keyId"`
-	Principal  pulumi.StringPtrInput `pulumi:"principal"`
-	PrivateKey pulumi.StringInput    `pulumi:"privateKey"`
-	ProviderId pulumi.StringInput    `pulumi:"providerId"`
+	// Expiration in minutes for the generated token (default of 5 minutes).
+	Expiration pulumi.IntPtrInput `pulumi:"expiration"`
+	// Authentication Key identifier used to sign the Layer token.
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+	// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+	Principal pulumi.StringPtrInput `pulumi:"principal"`
+	// Private Key for signing the token (SDK v3+ tokens only).
+	PrivateKey pulumi.StringInput `pulumi:"privateKey"`
+	// Provider ID of your Layer account.
+	ProviderId pulumi.StringInput `pulumi:"providerId"`
 }
 
 func (ClientAddonsLayerArgs) ElementType() reflect.Type {
@@ -7407,22 +7597,27 @@ func (o ClientAddonsLayerOutput) ToOutput(ctx context.Context) pulumix.Output[Cl
 	}
 }
 
+// Expiration in minutes for the generated token (default of 5 minutes).
 func (o ClientAddonsLayerOutput) Expiration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClientAddonsLayer) *int { return v.Expiration }).(pulumi.IntPtrOutput)
 }
 
+// Authentication Key identifier used to sign the Layer token.
 func (o ClientAddonsLayerOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientAddonsLayer) string { return v.KeyId }).(pulumi.StringOutput)
 }
 
+// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
 func (o ClientAddonsLayerOutput) Principal() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsLayer) *string { return v.Principal }).(pulumi.StringPtrOutput)
 }
 
+// Private Key for signing the token (SDK v3+ tokens only).
 func (o ClientAddonsLayerOutput) PrivateKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientAddonsLayer) string { return v.PrivateKey }).(pulumi.StringOutput)
 }
 
+// Provider ID of your Layer account.
 func (o ClientAddonsLayerOutput) ProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientAddonsLayer) string { return v.ProviderId }).(pulumi.StringOutput)
 }
@@ -7457,6 +7652,7 @@ func (o ClientAddonsLayerPtrOutput) Elem() ClientAddonsLayerOutput {
 	}).(ClientAddonsLayerOutput)
 }
 
+// Expiration in minutes for the generated token (default of 5 minutes).
 func (o ClientAddonsLayerPtrOutput) Expiration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsLayer) *int {
 		if v == nil {
@@ -7466,6 +7662,7 @@ func (o ClientAddonsLayerPtrOutput) Expiration() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Authentication Key identifier used to sign the Layer token.
 func (o ClientAddonsLayerPtrOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsLayer) *string {
 		if v == nil {
@@ -7475,6 +7672,7 @@ func (o ClientAddonsLayerPtrOutput) KeyId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
 func (o ClientAddonsLayerPtrOutput) Principal() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsLayer) *string {
 		if v == nil {
@@ -7484,6 +7682,7 @@ func (o ClientAddonsLayerPtrOutput) Principal() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Private Key for signing the token (SDK v3+ tokens only).
 func (o ClientAddonsLayerPtrOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsLayer) *string {
 		if v == nil {
@@ -7493,6 +7692,7 @@ func (o ClientAddonsLayerPtrOutput) PrivateKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Provider ID of your Layer account.
 func (o ClientAddonsLayerPtrOutput) ProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsLayer) *string {
 		if v == nil {
@@ -7503,6 +7703,7 @@ func (o ClientAddonsLayerPtrOutput) ProviderId() pulumi.StringPtrOutput {
 }
 
 type ClientAddonsMscrm struct {
+	// Microsoft Dynamics CRM application URL.
 	Url *string `pulumi:"url"`
 }
 
@@ -7518,6 +7719,7 @@ type ClientAddonsMscrmInput interface {
 }
 
 type ClientAddonsMscrmArgs struct {
+	// Microsoft Dynamics CRM application URL.
 	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
@@ -7616,6 +7818,7 @@ func (o ClientAddonsMscrmOutput) ToOutput(ctx context.Context) pulumix.Output[Cl
 	}
 }
 
+// Microsoft Dynamics CRM application URL.
 func (o ClientAddonsMscrmOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsMscrm) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -7650,6 +7853,7 @@ func (o ClientAddonsMscrmPtrOutput) Elem() ClientAddonsMscrmOutput {
 	}).(ClientAddonsMscrmOutput)
 }
 
+// Microsoft Dynamics CRM application URL.
 func (o ClientAddonsMscrmPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsMscrm) *string {
 		if v == nil {
@@ -7660,6 +7864,7 @@ func (o ClientAddonsMscrmPtrOutput) Url() pulumi.StringPtrOutput {
 }
 
 type ClientAddonsNewrelic struct {
+	// Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
 	Account *string `pulumi:"account"`
 }
 
@@ -7675,6 +7880,7 @@ type ClientAddonsNewrelicInput interface {
 }
 
 type ClientAddonsNewrelicArgs struct {
+	// Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
 	Account pulumi.StringPtrInput `pulumi:"account"`
 }
 
@@ -7773,6 +7979,7 @@ func (o ClientAddonsNewrelicOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
 func (o ClientAddonsNewrelicOutput) Account() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsNewrelic) *string { return v.Account }).(pulumi.StringPtrOutput)
 }
@@ -7807,6 +8014,7 @@ func (o ClientAddonsNewrelicPtrOutput) Elem() ClientAddonsNewrelicOutput {
 	}).(ClientAddonsNewrelicOutput)
 }
 
+// Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
 func (o ClientAddonsNewrelicPtrOutput) Account() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsNewrelic) *string {
 		if v == nil {
@@ -7817,8 +8025,10 @@ func (o ClientAddonsNewrelicPtrOutput) Account() pulumi.StringPtrOutput {
 }
 
 type ClientAddonsOffice365 struct {
+	// Optional Auth0 database connection for testing an already-configured Office 365 tenant.
 	Connection *string `pulumi:"connection"`
-	Domain     *string `pulumi:"domain"`
+	// Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+	Domain *string `pulumi:"domain"`
 }
 
 // ClientAddonsOffice365Input is an input type that accepts ClientAddonsOffice365Args and ClientAddonsOffice365Output values.
@@ -7833,8 +8043,10 @@ type ClientAddonsOffice365Input interface {
 }
 
 type ClientAddonsOffice365Args struct {
+	// Optional Auth0 database connection for testing an already-configured Office 365 tenant.
 	Connection pulumi.StringPtrInput `pulumi:"connection"`
-	Domain     pulumi.StringPtrInput `pulumi:"domain"`
+	// Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
 }
 
 func (ClientAddonsOffice365Args) ElementType() reflect.Type {
@@ -7932,10 +8144,12 @@ func (o ClientAddonsOffice365Output) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// Optional Auth0 database connection for testing an already-configured Office 365 tenant.
 func (o ClientAddonsOffice365Output) Connection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsOffice365) *string { return v.Connection }).(pulumi.StringPtrOutput)
 }
 
+// Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
 func (o ClientAddonsOffice365Output) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsOffice365) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
@@ -7970,6 +8184,7 @@ func (o ClientAddonsOffice365PtrOutput) Elem() ClientAddonsOffice365Output {
 	}).(ClientAddonsOffice365Output)
 }
 
+// Optional Auth0 database connection for testing an already-configured Office 365 tenant.
 func (o ClientAddonsOffice365PtrOutput) Connection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsOffice365) *string {
 		if v == nil {
@@ -7979,6 +8194,7 @@ func (o ClientAddonsOffice365PtrOutput) Connection() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
 func (o ClientAddonsOffice365PtrOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsOffice365) *string {
 		if v == nil {
@@ -7989,6 +8205,7 @@ func (o ClientAddonsOffice365PtrOutput) Domain() pulumi.StringPtrOutput {
 }
 
 type ClientAddonsRms struct {
+	// Microsoft Dynamics CRM application URL.
 	Url *string `pulumi:"url"`
 }
 
@@ -8004,6 +8221,7 @@ type ClientAddonsRmsInput interface {
 }
 
 type ClientAddonsRmsArgs struct {
+	// Microsoft Dynamics CRM application URL.
 	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
@@ -8102,6 +8320,7 @@ func (o ClientAddonsRmsOutput) ToOutput(ctx context.Context) pulumix.Output[Clie
 	}
 }
 
+// Microsoft Dynamics CRM application URL.
 func (o ClientAddonsRmsOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsRms) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -8136,6 +8355,7 @@ func (o ClientAddonsRmsPtrOutput) Elem() ClientAddonsRmsOutput {
 	}).(ClientAddonsRmsOutput)
 }
 
+// Microsoft Dynamics CRM application URL.
 func (o ClientAddonsRmsPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsRms) *string {
 		if v == nil {
@@ -8146,6 +8366,7 @@ func (o ClientAddonsRmsPtrOutput) Url() pulumi.StringPtrOutput {
 }
 
 type ClientAddonsSalesforce struct {
+	// Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
 	EntityId *string `pulumi:"entityId"`
 }
 
@@ -8161,6 +8382,7 @@ type ClientAddonsSalesforceInput interface {
 }
 
 type ClientAddonsSalesforceArgs struct {
+	// Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
 	EntityId pulumi.StringPtrInput `pulumi:"entityId"`
 }
 
@@ -8259,6 +8481,7 @@ func (o ClientAddonsSalesforceOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
+// Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
 func (o ClientAddonsSalesforceOutput) EntityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSalesforce) *string { return v.EntityId }).(pulumi.StringPtrOutput)
 }
@@ -8293,6 +8516,7 @@ func (o ClientAddonsSalesforcePtrOutput) Elem() ClientAddonsSalesforceOutput {
 	}).(ClientAddonsSalesforceOutput)
 }
 
+// Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
 func (o ClientAddonsSalesforcePtrOutput) EntityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSalesforce) *string {
 		if v == nil {
@@ -8303,11 +8527,14 @@ func (o ClientAddonsSalesforcePtrOutput) EntityId() pulumi.StringPtrOutput {
 }
 
 type ClientAddonsSalesforceApi struct {
-	// The ID of the client.
-	ClientId            *string `pulumi:"clientId"`
-	CommunityName       *string `pulumi:"communityName"`
+	// Consumer Key assigned by Salesforce to the Connected App.
+	ClientId *string `pulumi:"clientId"`
+	// Community name.
+	CommunityName *string `pulumi:"communityName"`
+	// Community URL section.
 	CommunityUrlSection *string `pulumi:"communityUrlSection"`
-	Principal           *string `pulumi:"principal"`
+	// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+	Principal *string `pulumi:"principal"`
 }
 
 // ClientAddonsSalesforceApiInput is an input type that accepts ClientAddonsSalesforceApiArgs and ClientAddonsSalesforceApiOutput values.
@@ -8322,11 +8549,14 @@ type ClientAddonsSalesforceApiInput interface {
 }
 
 type ClientAddonsSalesforceApiArgs struct {
-	// The ID of the client.
-	ClientId            pulumi.StringPtrInput `pulumi:"clientId"`
-	CommunityName       pulumi.StringPtrInput `pulumi:"communityName"`
+	// Consumer Key assigned by Salesforce to the Connected App.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Community name.
+	CommunityName pulumi.StringPtrInput `pulumi:"communityName"`
+	// Community URL section.
 	CommunityUrlSection pulumi.StringPtrInput `pulumi:"communityUrlSection"`
-	Principal           pulumi.StringPtrInput `pulumi:"principal"`
+	// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+	Principal pulumi.StringPtrInput `pulumi:"principal"`
 }
 
 func (ClientAddonsSalesforceApiArgs) ElementType() reflect.Type {
@@ -8424,19 +8654,22 @@ func (o ClientAddonsSalesforceApiOutput) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
-// The ID of the client.
+// Consumer Key assigned by Salesforce to the Connected App.
 func (o ClientAddonsSalesforceApiOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSalesforceApi) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
+// Community name.
 func (o ClientAddonsSalesforceApiOutput) CommunityName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSalesforceApi) *string { return v.CommunityName }).(pulumi.StringPtrOutput)
 }
 
+// Community URL section.
 func (o ClientAddonsSalesforceApiOutput) CommunityUrlSection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSalesforceApi) *string { return v.CommunityUrlSection }).(pulumi.StringPtrOutput)
 }
 
+// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
 func (o ClientAddonsSalesforceApiOutput) Principal() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSalesforceApi) *string { return v.Principal }).(pulumi.StringPtrOutput)
 }
@@ -8471,7 +8704,7 @@ func (o ClientAddonsSalesforceApiPtrOutput) Elem() ClientAddonsSalesforceApiOutp
 	}).(ClientAddonsSalesforceApiOutput)
 }
 
-// The ID of the client.
+// Consumer Key assigned by Salesforce to the Connected App.
 func (o ClientAddonsSalesforceApiPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSalesforceApi) *string {
 		if v == nil {
@@ -8481,6 +8714,7 @@ func (o ClientAddonsSalesforceApiPtrOutput) ClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Community name.
 func (o ClientAddonsSalesforceApiPtrOutput) CommunityName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSalesforceApi) *string {
 		if v == nil {
@@ -8490,6 +8724,7 @@ func (o ClientAddonsSalesforceApiPtrOutput) CommunityName() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Community URL section.
 func (o ClientAddonsSalesforceApiPtrOutput) CommunityUrlSection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSalesforceApi) *string {
 		if v == nil {
@@ -8499,6 +8734,7 @@ func (o ClientAddonsSalesforceApiPtrOutput) CommunityUrlSection() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
 func (o ClientAddonsSalesforceApiPtrOutput) Principal() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSalesforceApi) *string {
 		if v == nil {
@@ -8509,11 +8745,14 @@ func (o ClientAddonsSalesforceApiPtrOutput) Principal() pulumi.StringPtrOutput {
 }
 
 type ClientAddonsSalesforceSandboxApi struct {
-	// The ID of the client.
-	ClientId            *string `pulumi:"clientId"`
-	CommunityName       *string `pulumi:"communityName"`
+	// Consumer Key assigned by Salesforce to the Connected App.
+	ClientId *string `pulumi:"clientId"`
+	// Community name.
+	CommunityName *string `pulumi:"communityName"`
+	// Community URL section.
 	CommunityUrlSection *string `pulumi:"communityUrlSection"`
-	Principal           *string `pulumi:"principal"`
+	// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+	Principal *string `pulumi:"principal"`
 }
 
 // ClientAddonsSalesforceSandboxApiInput is an input type that accepts ClientAddonsSalesforceSandboxApiArgs and ClientAddonsSalesforceSandboxApiOutput values.
@@ -8528,11 +8767,14 @@ type ClientAddonsSalesforceSandboxApiInput interface {
 }
 
 type ClientAddonsSalesforceSandboxApiArgs struct {
-	// The ID of the client.
-	ClientId            pulumi.StringPtrInput `pulumi:"clientId"`
-	CommunityName       pulumi.StringPtrInput `pulumi:"communityName"`
+	// Consumer Key assigned by Salesforce to the Connected App.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Community name.
+	CommunityName pulumi.StringPtrInput `pulumi:"communityName"`
+	// Community URL section.
 	CommunityUrlSection pulumi.StringPtrInput `pulumi:"communityUrlSection"`
-	Principal           pulumi.StringPtrInput `pulumi:"principal"`
+	// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+	Principal pulumi.StringPtrInput `pulumi:"principal"`
 }
 
 func (ClientAddonsSalesforceSandboxApiArgs) ElementType() reflect.Type {
@@ -8630,19 +8872,22 @@ func (o ClientAddonsSalesforceSandboxApiOutput) ToOutput(ctx context.Context) pu
 	}
 }
 
-// The ID of the client.
+// Consumer Key assigned by Salesforce to the Connected App.
 func (o ClientAddonsSalesforceSandboxApiOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSalesforceSandboxApi) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
+// Community name.
 func (o ClientAddonsSalesforceSandboxApiOutput) CommunityName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSalesforceSandboxApi) *string { return v.CommunityName }).(pulumi.StringPtrOutput)
 }
 
+// Community URL section.
 func (o ClientAddonsSalesforceSandboxApiOutput) CommunityUrlSection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSalesforceSandboxApi) *string { return v.CommunityUrlSection }).(pulumi.StringPtrOutput)
 }
 
+// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
 func (o ClientAddonsSalesforceSandboxApiOutput) Principal() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSalesforceSandboxApi) *string { return v.Principal }).(pulumi.StringPtrOutput)
 }
@@ -8677,7 +8922,7 @@ func (o ClientAddonsSalesforceSandboxApiPtrOutput) Elem() ClientAddonsSalesforce
 	}).(ClientAddonsSalesforceSandboxApiOutput)
 }
 
-// The ID of the client.
+// Consumer Key assigned by Salesforce to the Connected App.
 func (o ClientAddonsSalesforceSandboxApiPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSalesforceSandboxApi) *string {
 		if v == nil {
@@ -8687,6 +8932,7 @@ func (o ClientAddonsSalesforceSandboxApiPtrOutput) ClientId() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Community name.
 func (o ClientAddonsSalesforceSandboxApiPtrOutput) CommunityName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSalesforceSandboxApi) *string {
 		if v == nil {
@@ -8696,6 +8942,7 @@ func (o ClientAddonsSalesforceSandboxApiPtrOutput) CommunityName() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Community URL section.
 func (o ClientAddonsSalesforceSandboxApiPtrOutput) CommunityUrlSection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSalesforceSandboxApi) *string {
 		if v == nil {
@@ -8705,6 +8952,7 @@ func (o ClientAddonsSalesforceSandboxApiPtrOutput) CommunityUrlSection() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
 func (o ClientAddonsSalesforceSandboxApiPtrOutput) Principal() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSalesforceSandboxApi) *string {
 		if v == nil {
@@ -8715,27 +8963,48 @@ func (o ClientAddonsSalesforceSandboxApiPtrOutput) Principal() pulumi.StringPtrO
 }
 
 type ClientAddonsSamlp struct {
-	Audience                       *string                  `pulumi:"audience"`
-	AuthnContextClassRef           *string                  `pulumi:"authnContextClassRef"`
-	Binding                        *string                  `pulumi:"binding"`
-	CreateUpnClaim                 *bool                    `pulumi:"createUpnClaim"`
-	Destination                    *string                  `pulumi:"destination"`
-	DigestAlgorithm                *string                  `pulumi:"digestAlgorithm"`
-	IncludeAttributeNameFormat     *bool                    `pulumi:"includeAttributeNameFormat"`
-	Issuer                         *string                  `pulumi:"issuer"`
-	LifetimeInSeconds              *int                     `pulumi:"lifetimeInSeconds"`
-	Logout                         *ClientAddonsSamlpLogout `pulumi:"logout"`
-	MapIdentities                  *bool                    `pulumi:"mapIdentities"`
-	MapUnknownClaimsAsIs           *bool                    `pulumi:"mapUnknownClaimsAsIs"`
-	Mappings                       map[string]interface{}   `pulumi:"mappings"`
-	NameIdentifierFormat           *string                  `pulumi:"nameIdentifierFormat"`
-	NameIdentifierProbes           []string                 `pulumi:"nameIdentifierProbes"`
-	PassthroughClaimsWithNoMapping *bool                    `pulumi:"passthroughClaimsWithNoMapping"`
-	Recipient                      *string                  `pulumi:"recipient"`
-	SignResponse                   *bool                    `pulumi:"signResponse"`
-	SignatureAlgorithm             *string                  `pulumi:"signatureAlgorithm"`
-	SigningCert                    *string                  `pulumi:"signingCert"`
-	TypedAttributes                *bool                    `pulumi:"typedAttributes"`
+	// Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
+	Audience *string `pulumi:"audience"`
+	// Class reference of the authentication context.
+	AuthnContextClassRef *string `pulumi:"authnContextClassRef"`
+	// Protocol binding used for SAML logout responses.
+	Binding *string `pulumi:"binding"`
+	// Indicates whether a UPN claim should be created. Defaults to `true`.
+	CreateUpnClaim *bool `pulumi:"createUpnClaim"`
+	// Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
+	Destination *string `pulumi:"destination"`
+	// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+	DigestAlgorithm *string `pulumi:"digestAlgorithm"`
+	// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+	IncludeAttributeNameFormat *bool `pulumi:"includeAttributeNameFormat"`
+	// Issuer of the SAML Assertion.
+	Issuer *string `pulumi:"issuer"`
+	// AWS token lifetime in seconds.
+	LifetimeInSeconds *int `pulumi:"lifetimeInSeconds"`
+	// Configuration settings for logout.
+	Logout *ClientAddonsSamlpLogout `pulumi:"logout"`
+	// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+	MapIdentities *bool `pulumi:"mapIdentities"`
+	// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+	MapUnknownClaimsAsIs *bool `pulumi:"mapUnknownClaimsAsIs"`
+	// Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
+	Mappings map[string]interface{} `pulumi:"mappings"`
+	// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+	NameIdentifierFormat *string `pulumi:"nameIdentifierFormat"`
+	// Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
+	NameIdentifierProbes []string `pulumi:"nameIdentifierProbes"`
+	// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+	PassthroughClaimsWithNoMapping *bool `pulumi:"passthroughClaimsWithNoMapping"`
+	// Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
+	Recipient *string `pulumi:"recipient"`
+	// Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
+	SignResponse *bool `pulumi:"signResponse"`
+	// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
+	// Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+	SigningCert *string `pulumi:"signingCert"`
+	// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+	TypedAttributes *bool `pulumi:"typedAttributes"`
 }
 
 // ClientAddonsSamlpInput is an input type that accepts ClientAddonsSamlpArgs and ClientAddonsSamlpOutput values.
@@ -8750,27 +9019,48 @@ type ClientAddonsSamlpInput interface {
 }
 
 type ClientAddonsSamlpArgs struct {
-	Audience                       pulumi.StringPtrInput           `pulumi:"audience"`
-	AuthnContextClassRef           pulumi.StringPtrInput           `pulumi:"authnContextClassRef"`
-	Binding                        pulumi.StringPtrInput           `pulumi:"binding"`
-	CreateUpnClaim                 pulumi.BoolPtrInput             `pulumi:"createUpnClaim"`
-	Destination                    pulumi.StringPtrInput           `pulumi:"destination"`
-	DigestAlgorithm                pulumi.StringPtrInput           `pulumi:"digestAlgorithm"`
-	IncludeAttributeNameFormat     pulumi.BoolPtrInput             `pulumi:"includeAttributeNameFormat"`
-	Issuer                         pulumi.StringPtrInput           `pulumi:"issuer"`
-	LifetimeInSeconds              pulumi.IntPtrInput              `pulumi:"lifetimeInSeconds"`
-	Logout                         ClientAddonsSamlpLogoutPtrInput `pulumi:"logout"`
-	MapIdentities                  pulumi.BoolPtrInput             `pulumi:"mapIdentities"`
-	MapUnknownClaimsAsIs           pulumi.BoolPtrInput             `pulumi:"mapUnknownClaimsAsIs"`
-	Mappings                       pulumi.MapInput                 `pulumi:"mappings"`
-	NameIdentifierFormat           pulumi.StringPtrInput           `pulumi:"nameIdentifierFormat"`
-	NameIdentifierProbes           pulumi.StringArrayInput         `pulumi:"nameIdentifierProbes"`
-	PassthroughClaimsWithNoMapping pulumi.BoolPtrInput             `pulumi:"passthroughClaimsWithNoMapping"`
-	Recipient                      pulumi.StringPtrInput           `pulumi:"recipient"`
-	SignResponse                   pulumi.BoolPtrInput             `pulumi:"signResponse"`
-	SignatureAlgorithm             pulumi.StringPtrInput           `pulumi:"signatureAlgorithm"`
-	SigningCert                    pulumi.StringPtrInput           `pulumi:"signingCert"`
-	TypedAttributes                pulumi.BoolPtrInput             `pulumi:"typedAttributes"`
+	// Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
+	Audience pulumi.StringPtrInput `pulumi:"audience"`
+	// Class reference of the authentication context.
+	AuthnContextClassRef pulumi.StringPtrInput `pulumi:"authnContextClassRef"`
+	// Protocol binding used for SAML logout responses.
+	Binding pulumi.StringPtrInput `pulumi:"binding"`
+	// Indicates whether a UPN claim should be created. Defaults to `true`.
+	CreateUpnClaim pulumi.BoolPtrInput `pulumi:"createUpnClaim"`
+	// Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+	DigestAlgorithm pulumi.StringPtrInput `pulumi:"digestAlgorithm"`
+	// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+	IncludeAttributeNameFormat pulumi.BoolPtrInput `pulumi:"includeAttributeNameFormat"`
+	// Issuer of the SAML Assertion.
+	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
+	// AWS token lifetime in seconds.
+	LifetimeInSeconds pulumi.IntPtrInput `pulumi:"lifetimeInSeconds"`
+	// Configuration settings for logout.
+	Logout ClientAddonsSamlpLogoutPtrInput `pulumi:"logout"`
+	// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+	MapIdentities pulumi.BoolPtrInput `pulumi:"mapIdentities"`
+	// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+	MapUnknownClaimsAsIs pulumi.BoolPtrInput `pulumi:"mapUnknownClaimsAsIs"`
+	// Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
+	Mappings pulumi.MapInput `pulumi:"mappings"`
+	// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+	NameIdentifierFormat pulumi.StringPtrInput `pulumi:"nameIdentifierFormat"`
+	// Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
+	NameIdentifierProbes pulumi.StringArrayInput `pulumi:"nameIdentifierProbes"`
+	// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+	PassthroughClaimsWithNoMapping pulumi.BoolPtrInput `pulumi:"passthroughClaimsWithNoMapping"`
+	// Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
+	Recipient pulumi.StringPtrInput `pulumi:"recipient"`
+	// Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
+	SignResponse pulumi.BoolPtrInput `pulumi:"signResponse"`
+	// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+	SignatureAlgorithm pulumi.StringPtrInput `pulumi:"signatureAlgorithm"`
+	// Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+	SigningCert pulumi.StringPtrInput `pulumi:"signingCert"`
+	// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+	TypedAttributes pulumi.BoolPtrInput `pulumi:"typedAttributes"`
 }
 
 func (ClientAddonsSamlpArgs) ElementType() reflect.Type {
@@ -8868,86 +9158,107 @@ func (o ClientAddonsSamlpOutput) ToOutput(ctx context.Context) pulumix.Output[Cl
 	}
 }
 
+// Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
 func (o ClientAddonsSamlpOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.Audience }).(pulumi.StringPtrOutput)
 }
 
+// Class reference of the authentication context.
 func (o ClientAddonsSamlpOutput) AuthnContextClassRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.AuthnContextClassRef }).(pulumi.StringPtrOutput)
 }
 
+// Protocol binding used for SAML logout responses.
 func (o ClientAddonsSamlpOutput) Binding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.Binding }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether a UPN claim should be created. Defaults to `true`.
 func (o ClientAddonsSamlpOutput) CreateUpnClaim() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.CreateUpnClaim }).(pulumi.BoolPtrOutput)
 }
 
+// Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
 func (o ClientAddonsSamlpOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
 
+// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
 func (o ClientAddonsSamlpOutput) DigestAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.DigestAlgorithm }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
 func (o ClientAddonsSamlpOutput) IncludeAttributeNameFormat() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.IncludeAttributeNameFormat }).(pulumi.BoolPtrOutput)
 }
 
+// Issuer of the SAML Assertion.
 func (o ClientAddonsSamlpOutput) Issuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.Issuer }).(pulumi.StringPtrOutput)
 }
 
+// AWS token lifetime in seconds.
 func (o ClientAddonsSamlpOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *int { return v.LifetimeInSeconds }).(pulumi.IntPtrOutput)
 }
 
+// Configuration settings for logout.
 func (o ClientAddonsSamlpOutput) Logout() ClientAddonsSamlpLogoutPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *ClientAddonsSamlpLogout { return v.Logout }).(ClientAddonsSamlpLogoutPtrOutput)
 }
 
+// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
 func (o ClientAddonsSamlpOutput) MapIdentities() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.MapIdentities }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
 func (o ClientAddonsSamlpOutput) MapUnknownClaimsAsIs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.MapUnknownClaimsAsIs }).(pulumi.BoolPtrOutput)
 }
 
+// Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
 func (o ClientAddonsSamlpOutput) Mappings() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) map[string]interface{} { return v.Mappings }).(pulumi.MapOutput)
 }
 
+// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
 func (o ClientAddonsSamlpOutput) NameIdentifierFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.NameIdentifierFormat }).(pulumi.StringPtrOutput)
 }
 
+// Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
 func (o ClientAddonsSamlpOutput) NameIdentifierProbes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) []string { return v.NameIdentifierProbes }).(pulumi.StringArrayOutput)
 }
 
+// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
 func (o ClientAddonsSamlpOutput) PassthroughClaimsWithNoMapping() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.PassthroughClaimsWithNoMapping }).(pulumi.BoolPtrOutput)
 }
 
+// Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
 func (o ClientAddonsSamlpOutput) Recipient() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.Recipient }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
 func (o ClientAddonsSamlpOutput) SignResponse() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.SignResponse }).(pulumi.BoolPtrOutput)
 }
 
+// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
 func (o ClientAddonsSamlpOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
 }
 
+// Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
 func (o ClientAddonsSamlpOutput) SigningCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.SigningCert }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
 func (o ClientAddonsSamlpOutput) TypedAttributes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.TypedAttributes }).(pulumi.BoolPtrOutput)
 }
@@ -8982,6 +9293,7 @@ func (o ClientAddonsSamlpPtrOutput) Elem() ClientAddonsSamlpOutput {
 	}).(ClientAddonsSamlpOutput)
 }
 
+// Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
 func (o ClientAddonsSamlpPtrOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
 		if v == nil {
@@ -8991,6 +9303,7 @@ func (o ClientAddonsSamlpPtrOutput) Audience() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Class reference of the authentication context.
 func (o ClientAddonsSamlpPtrOutput) AuthnContextClassRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
 		if v == nil {
@@ -9000,6 +9313,7 @@ func (o ClientAddonsSamlpPtrOutput) AuthnContextClassRef() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Protocol binding used for SAML logout responses.
 func (o ClientAddonsSamlpPtrOutput) Binding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
 		if v == nil {
@@ -9009,6 +9323,7 @@ func (o ClientAddonsSamlpPtrOutput) Binding() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether a UPN claim should be created. Defaults to `true`.
 func (o ClientAddonsSamlpPtrOutput) CreateUpnClaim() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
 		if v == nil {
@@ -9018,6 +9333,7 @@ func (o ClientAddonsSamlpPtrOutput) CreateUpnClaim() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
 func (o ClientAddonsSamlpPtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
 		if v == nil {
@@ -9027,6 +9343,7 @@ func (o ClientAddonsSamlpPtrOutput) Destination() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
 func (o ClientAddonsSamlpPtrOutput) DigestAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
 		if v == nil {
@@ -9036,6 +9353,7 @@ func (o ClientAddonsSamlpPtrOutput) DigestAlgorithm() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
 func (o ClientAddonsSamlpPtrOutput) IncludeAttributeNameFormat() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
 		if v == nil {
@@ -9045,6 +9363,7 @@ func (o ClientAddonsSamlpPtrOutput) IncludeAttributeNameFormat() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Issuer of the SAML Assertion.
 func (o ClientAddonsSamlpPtrOutput) Issuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
 		if v == nil {
@@ -9054,6 +9373,7 @@ func (o ClientAddonsSamlpPtrOutput) Issuer() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// AWS token lifetime in seconds.
 func (o ClientAddonsSamlpPtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *int {
 		if v == nil {
@@ -9063,6 +9383,7 @@ func (o ClientAddonsSamlpPtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Configuration settings for logout.
 func (o ClientAddonsSamlpPtrOutput) Logout() ClientAddonsSamlpLogoutPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *ClientAddonsSamlpLogout {
 		if v == nil {
@@ -9072,6 +9393,7 @@ func (o ClientAddonsSamlpPtrOutput) Logout() ClientAddonsSamlpLogoutPtrOutput {
 	}).(ClientAddonsSamlpLogoutPtrOutput)
 }
 
+// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
 func (o ClientAddonsSamlpPtrOutput) MapIdentities() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
 		if v == nil {
@@ -9081,6 +9403,7 @@ func (o ClientAddonsSamlpPtrOutput) MapIdentities() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
 func (o ClientAddonsSamlpPtrOutput) MapUnknownClaimsAsIs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
 		if v == nil {
@@ -9090,6 +9413,7 @@ func (o ClientAddonsSamlpPtrOutput) MapUnknownClaimsAsIs() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
 func (o ClientAddonsSamlpPtrOutput) Mappings() pulumi.MapOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) map[string]interface{} {
 		if v == nil {
@@ -9099,6 +9423,7 @@ func (o ClientAddonsSamlpPtrOutput) Mappings() pulumi.MapOutput {
 	}).(pulumi.MapOutput)
 }
 
+// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
 func (o ClientAddonsSamlpPtrOutput) NameIdentifierFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
 		if v == nil {
@@ -9108,6 +9433,7 @@ func (o ClientAddonsSamlpPtrOutput) NameIdentifierFormat() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
 func (o ClientAddonsSamlpPtrOutput) NameIdentifierProbes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) []string {
 		if v == nil {
@@ -9117,6 +9443,7 @@ func (o ClientAddonsSamlpPtrOutput) NameIdentifierProbes() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
+// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
 func (o ClientAddonsSamlpPtrOutput) PassthroughClaimsWithNoMapping() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
 		if v == nil {
@@ -9126,6 +9453,7 @@ func (o ClientAddonsSamlpPtrOutput) PassthroughClaimsWithNoMapping() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
 func (o ClientAddonsSamlpPtrOutput) Recipient() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
 		if v == nil {
@@ -9135,6 +9463,7 @@ func (o ClientAddonsSamlpPtrOutput) Recipient() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
 func (o ClientAddonsSamlpPtrOutput) SignResponse() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
 		if v == nil {
@@ -9144,6 +9473,7 @@ func (o ClientAddonsSamlpPtrOutput) SignResponse() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
 func (o ClientAddonsSamlpPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
 		if v == nil {
@@ -9153,6 +9483,7 @@ func (o ClientAddonsSamlpPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
 func (o ClientAddonsSamlpPtrOutput) SigningCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
 		if v == nil {
@@ -9162,6 +9493,7 @@ func (o ClientAddonsSamlpPtrOutput) SigningCert() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
 func (o ClientAddonsSamlpPtrOutput) TypedAttributes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
 		if v == nil {
@@ -9172,8 +9504,10 @@ func (o ClientAddonsSamlpPtrOutput) TypedAttributes() pulumi.BoolPtrOutput {
 }
 
 type ClientAddonsSamlpLogout struct {
-	Callback   *string `pulumi:"callback"`
-	SloEnabled *bool   `pulumi:"sloEnabled"`
+	// The service provider (client application)'s Single Logout Service URL, where Auth0 will send logout requests and responses.
+	Callback *string `pulumi:"callback"`
+	// Controls whether Auth0 should notify service providers of session termination.
+	SloEnabled *bool `pulumi:"sloEnabled"`
 }
 
 // ClientAddonsSamlpLogoutInput is an input type that accepts ClientAddonsSamlpLogoutArgs and ClientAddonsSamlpLogoutOutput values.
@@ -9188,8 +9522,10 @@ type ClientAddonsSamlpLogoutInput interface {
 }
 
 type ClientAddonsSamlpLogoutArgs struct {
-	Callback   pulumi.StringPtrInput `pulumi:"callback"`
-	SloEnabled pulumi.BoolPtrInput   `pulumi:"sloEnabled"`
+	// The service provider (client application)'s Single Logout Service URL, where Auth0 will send logout requests and responses.
+	Callback pulumi.StringPtrInput `pulumi:"callback"`
+	// Controls whether Auth0 should notify service providers of session termination.
+	SloEnabled pulumi.BoolPtrInput `pulumi:"sloEnabled"`
 }
 
 func (ClientAddonsSamlpLogoutArgs) ElementType() reflect.Type {
@@ -9287,10 +9623,12 @@ func (o ClientAddonsSamlpLogoutOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
+// The service provider (client application)'s Single Logout Service URL, where Auth0 will send logout requests and responses.
 func (o ClientAddonsSamlpLogoutOutput) Callback() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlpLogout) *string { return v.Callback }).(pulumi.StringPtrOutput)
 }
 
+// Controls whether Auth0 should notify service providers of session termination.
 func (o ClientAddonsSamlpLogoutOutput) SloEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlpLogout) *bool { return v.SloEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -9325,6 +9663,7 @@ func (o ClientAddonsSamlpLogoutPtrOutput) Elem() ClientAddonsSamlpLogoutOutput {
 	}).(ClientAddonsSamlpLogoutOutput)
 }
 
+// The service provider (client application)'s Single Logout Service URL, where Auth0 will send logout requests and responses.
 func (o ClientAddonsSamlpLogoutPtrOutput) Callback() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlpLogout) *string {
 		if v == nil {
@@ -9334,6 +9673,7 @@ func (o ClientAddonsSamlpLogoutPtrOutput) Callback() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Controls whether Auth0 should notify service providers of session termination.
 func (o ClientAddonsSamlpLogoutPtrOutput) SloEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlpLogout) *bool {
 		if v == nil {
@@ -9344,13 +9684,18 @@ func (o ClientAddonsSamlpLogoutPtrOutput) SloEnabled() pulumi.BoolPtrOutput {
 }
 
 type ClientAddonsSapApi struct {
-	// The ID of the client.
-	ClientId             *string `pulumi:"clientId"`
+	// Consumer Key assigned by Salesforce to the Connected App.
+	ClientId *string `pulumi:"clientId"`
+	// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
 	NameIdentifierFormat *string `pulumi:"nameIdentifierFormat"`
-	Scope                *string `pulumi:"scope"`
-	ServicePassword      *string `pulumi:"servicePassword"`
-	TokenEndpointUrl     *string `pulumi:"tokenEndpointUrl"`
-	UsernameAttribute    *string `pulumi:"usernameAttribute"`
+	// Requested scope for SAP APIs.
+	Scope *string `pulumi:"scope"`
+	// Service account password to use to authenticate API calls to the token endpoint.
+	ServicePassword *string `pulumi:"servicePassword"`
+	// The OAuth2 token endpoint URL of your SAP OData server.
+	TokenEndpointUrl *string `pulumi:"tokenEndpointUrl"`
+	// Name of the property in the user object that maps to a SAP username, for example `email`.
+	UsernameAttribute *string `pulumi:"usernameAttribute"`
 }
 
 // ClientAddonsSapApiInput is an input type that accepts ClientAddonsSapApiArgs and ClientAddonsSapApiOutput values.
@@ -9365,13 +9710,18 @@ type ClientAddonsSapApiInput interface {
 }
 
 type ClientAddonsSapApiArgs struct {
-	// The ID of the client.
-	ClientId             pulumi.StringPtrInput `pulumi:"clientId"`
+	// Consumer Key assigned by Salesforce to the Connected App.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
 	NameIdentifierFormat pulumi.StringPtrInput `pulumi:"nameIdentifierFormat"`
-	Scope                pulumi.StringPtrInput `pulumi:"scope"`
-	ServicePassword      pulumi.StringPtrInput `pulumi:"servicePassword"`
-	TokenEndpointUrl     pulumi.StringPtrInput `pulumi:"tokenEndpointUrl"`
-	UsernameAttribute    pulumi.StringPtrInput `pulumi:"usernameAttribute"`
+	// Requested scope for SAP APIs.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// Service account password to use to authenticate API calls to the token endpoint.
+	ServicePassword pulumi.StringPtrInput `pulumi:"servicePassword"`
+	// The OAuth2 token endpoint URL of your SAP OData server.
+	TokenEndpointUrl pulumi.StringPtrInput `pulumi:"tokenEndpointUrl"`
+	// Name of the property in the user object that maps to a SAP username, for example `email`.
+	UsernameAttribute pulumi.StringPtrInput `pulumi:"usernameAttribute"`
 }
 
 func (ClientAddonsSapApiArgs) ElementType() reflect.Type {
@@ -9469,27 +9819,32 @@ func (o ClientAddonsSapApiOutput) ToOutput(ctx context.Context) pulumix.Output[C
 	}
 }
 
-// The ID of the client.
+// Consumer Key assigned by Salesforce to the Connected App.
 func (o ClientAddonsSapApiOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSapApi) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
+// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
 func (o ClientAddonsSapApiOutput) NameIdentifierFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSapApi) *string { return v.NameIdentifierFormat }).(pulumi.StringPtrOutput)
 }
 
+// Requested scope for SAP APIs.
 func (o ClientAddonsSapApiOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSapApi) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
+// Service account password to use to authenticate API calls to the token endpoint.
 func (o ClientAddonsSapApiOutput) ServicePassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSapApi) *string { return v.ServicePassword }).(pulumi.StringPtrOutput)
 }
 
+// The OAuth2 token endpoint URL of your SAP OData server.
 func (o ClientAddonsSapApiOutput) TokenEndpointUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSapApi) *string { return v.TokenEndpointUrl }).(pulumi.StringPtrOutput)
 }
 
+// Name of the property in the user object that maps to a SAP username, for example `email`.
 func (o ClientAddonsSapApiOutput) UsernameAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSapApi) *string { return v.UsernameAttribute }).(pulumi.StringPtrOutput)
 }
@@ -9524,7 +9879,7 @@ func (o ClientAddonsSapApiPtrOutput) Elem() ClientAddonsSapApiOutput {
 	}).(ClientAddonsSapApiOutput)
 }
 
-// The ID of the client.
+// Consumer Key assigned by Salesforce to the Connected App.
 func (o ClientAddonsSapApiPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSapApi) *string {
 		if v == nil {
@@ -9534,6 +9889,7 @@ func (o ClientAddonsSapApiPtrOutput) ClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
 func (o ClientAddonsSapApiPtrOutput) NameIdentifierFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSapApi) *string {
 		if v == nil {
@@ -9543,6 +9899,7 @@ func (o ClientAddonsSapApiPtrOutput) NameIdentifierFormat() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Requested scope for SAP APIs.
 func (o ClientAddonsSapApiPtrOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSapApi) *string {
 		if v == nil {
@@ -9552,6 +9909,7 @@ func (o ClientAddonsSapApiPtrOutput) Scope() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Service account password to use to authenticate API calls to the token endpoint.
 func (o ClientAddonsSapApiPtrOutput) ServicePassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSapApi) *string {
 		if v == nil {
@@ -9561,6 +9919,7 @@ func (o ClientAddonsSapApiPtrOutput) ServicePassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The OAuth2 token endpoint URL of your SAP OData server.
 func (o ClientAddonsSapApiPtrOutput) TokenEndpointUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSapApi) *string {
 		if v == nil {
@@ -9570,6 +9929,7 @@ func (o ClientAddonsSapApiPtrOutput) TokenEndpointUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the property in the user object that maps to a SAP username, for example `email`.
 func (o ClientAddonsSapApiPtrOutput) UsernameAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSapApi) *string {
 		if v == nil {
@@ -9580,7 +9940,9 @@ func (o ClientAddonsSapApiPtrOutput) UsernameAttribute() pulumi.StringPtrOutput 
 }
 
 type ClientAddonsSentry struct {
+	// URL prefix only if running Sentry Community Edition, otherwise leave empty.
 	BaseUrl *string `pulumi:"baseUrl"`
+	// Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
 	OrgSlug *string `pulumi:"orgSlug"`
 }
 
@@ -9596,7 +9958,9 @@ type ClientAddonsSentryInput interface {
 }
 
 type ClientAddonsSentryArgs struct {
+	// URL prefix only if running Sentry Community Edition, otherwise leave empty.
 	BaseUrl pulumi.StringPtrInput `pulumi:"baseUrl"`
+	// Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
 	OrgSlug pulumi.StringPtrInput `pulumi:"orgSlug"`
 }
 
@@ -9695,10 +10059,12 @@ func (o ClientAddonsSentryOutput) ToOutput(ctx context.Context) pulumix.Output[C
 	}
 }
 
+// URL prefix only if running Sentry Community Edition, otherwise leave empty.
 func (o ClientAddonsSentryOutput) BaseUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSentry) *string { return v.BaseUrl }).(pulumi.StringPtrOutput)
 }
 
+// Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
 func (o ClientAddonsSentryOutput) OrgSlug() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSentry) *string { return v.OrgSlug }).(pulumi.StringPtrOutput)
 }
@@ -9733,6 +10099,7 @@ func (o ClientAddonsSentryPtrOutput) Elem() ClientAddonsSentryOutput {
 	}).(ClientAddonsSentryOutput)
 }
 
+// URL prefix only if running Sentry Community Edition, otherwise leave empty.
 func (o ClientAddonsSentryPtrOutput) BaseUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSentry) *string {
 		if v == nil {
@@ -9742,6 +10109,7 @@ func (o ClientAddonsSentryPtrOutput) BaseUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
 func (o ClientAddonsSentryPtrOutput) OrgSlug() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSentry) *string {
 		if v == nil {
@@ -9752,8 +10120,10 @@ func (o ClientAddonsSentryPtrOutput) OrgSlug() pulumi.StringPtrOutput {
 }
 
 type ClientAddonsSharepoint struct {
+	// External SharePoint application URLs if exposed to the Internet.
 	ExternalUrls []string `pulumi:"externalUrls"`
-	Url          *string  `pulumi:"url"`
+	// Microsoft Dynamics CRM application URL.
+	Url *string `pulumi:"url"`
 }
 
 // ClientAddonsSharepointInput is an input type that accepts ClientAddonsSharepointArgs and ClientAddonsSharepointOutput values.
@@ -9768,8 +10138,10 @@ type ClientAddonsSharepointInput interface {
 }
 
 type ClientAddonsSharepointArgs struct {
+	// External SharePoint application URLs if exposed to the Internet.
 	ExternalUrls pulumi.StringArrayInput `pulumi:"externalUrls"`
-	Url          pulumi.StringPtrInput   `pulumi:"url"`
+	// Microsoft Dynamics CRM application URL.
+	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (ClientAddonsSharepointArgs) ElementType() reflect.Type {
@@ -9867,10 +10239,12 @@ func (o ClientAddonsSharepointOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
+// External SharePoint application URLs if exposed to the Internet.
 func (o ClientAddonsSharepointOutput) ExternalUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClientAddonsSharepoint) []string { return v.ExternalUrls }).(pulumi.StringArrayOutput)
 }
 
+// Microsoft Dynamics CRM application URL.
 func (o ClientAddonsSharepointOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSharepoint) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -9905,6 +10279,7 @@ func (o ClientAddonsSharepointPtrOutput) Elem() ClientAddonsSharepointOutput {
 	}).(ClientAddonsSharepointOutput)
 }
 
+// External SharePoint application URLs if exposed to the Internet.
 func (o ClientAddonsSharepointPtrOutput) ExternalUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClientAddonsSharepoint) []string {
 		if v == nil {
@@ -9914,6 +10289,7 @@ func (o ClientAddonsSharepointPtrOutput) ExternalUrls() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
+// Microsoft Dynamics CRM application URL.
 func (o ClientAddonsSharepointPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSharepoint) *string {
 		if v == nil {
@@ -9924,6 +10300,7 @@ func (o ClientAddonsSharepointPtrOutput) Url() pulumi.StringPtrOutput {
 }
 
 type ClientAddonsSlack struct {
+	// Slack team name.
 	Team *string `pulumi:"team"`
 }
 
@@ -9939,6 +10316,7 @@ type ClientAddonsSlackInput interface {
 }
 
 type ClientAddonsSlackArgs struct {
+	// Slack team name.
 	Team pulumi.StringPtrInput `pulumi:"team"`
 }
 
@@ -10037,6 +10415,7 @@ func (o ClientAddonsSlackOutput) ToOutput(ctx context.Context) pulumix.Output[Cl
 	}
 }
 
+// Slack team name.
 func (o ClientAddonsSlackOutput) Team() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSlack) *string { return v.Team }).(pulumi.StringPtrOutput)
 }
@@ -10071,6 +10450,7 @@ func (o ClientAddonsSlackPtrOutput) Elem() ClientAddonsSlackOutput {
 	}).(ClientAddonsSlackOutput)
 }
 
+// Slack team name.
 func (o ClientAddonsSlackPtrOutput) Team() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSlack) *string {
 		if v == nil {
@@ -10081,6 +10461,7 @@ func (o ClientAddonsSlackPtrOutput) Team() pulumi.StringPtrOutput {
 }
 
 type ClientAddonsSpringcm struct {
+	// SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
 	AcsUrl *string `pulumi:"acsUrl"`
 }
 
@@ -10096,6 +10477,7 @@ type ClientAddonsSpringcmInput interface {
 }
 
 type ClientAddonsSpringcmArgs struct {
+	// SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
 	AcsUrl pulumi.StringPtrInput `pulumi:"acsUrl"`
 }
 
@@ -10194,6 +10576,7 @@ func (o ClientAddonsSpringcmOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
 func (o ClientAddonsSpringcmOutput) AcsUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSpringcm) *string { return v.AcsUrl }).(pulumi.StringPtrOutput)
 }
@@ -10228,6 +10611,7 @@ func (o ClientAddonsSpringcmPtrOutput) Elem() ClientAddonsSpringcmOutput {
 	}).(ClientAddonsSpringcmOutput)
 }
 
+// SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
 func (o ClientAddonsSpringcmPtrOutput) AcsUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSpringcm) *string {
 		if v == nil {
@@ -10238,8 +10622,9 @@ func (o ClientAddonsSpringcmPtrOutput) AcsUrl() pulumi.StringPtrOutput {
 }
 
 type ClientAddonsSsoIntegration struct {
-	// Name of the client.
-	Name    *string `pulumi:"name"`
+	// SSO integration name.
+	Name *string `pulumi:"name"`
+	// SSO integration version installed.
 	Version *string `pulumi:"version"`
 }
 
@@ -10255,8 +10640,9 @@ type ClientAddonsSsoIntegrationInput interface {
 }
 
 type ClientAddonsSsoIntegrationArgs struct {
-	// Name of the client.
-	Name    pulumi.StringPtrInput `pulumi:"name"`
+	// SSO integration name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// SSO integration version installed.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -10355,11 +10741,12 @@ func (o ClientAddonsSsoIntegrationOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// Name of the client.
+// SSO integration name.
 func (o ClientAddonsSsoIntegrationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSsoIntegration) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// SSO integration version installed.
 func (o ClientAddonsSsoIntegrationOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSsoIntegration) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -10394,7 +10781,7 @@ func (o ClientAddonsSsoIntegrationPtrOutput) Elem() ClientAddonsSsoIntegrationOu
 	}).(ClientAddonsSsoIntegrationOutput)
 }
 
-// Name of the client.
+// SSO integration name.
 func (o ClientAddonsSsoIntegrationPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSsoIntegration) *string {
 		if v == nil {
@@ -10404,6 +10791,7 @@ func (o ClientAddonsSsoIntegrationPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// SSO integration version installed.
 func (o ClientAddonsSsoIntegrationPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSsoIntegration) *string {
 		if v == nil {
@@ -10414,6 +10802,7 @@ func (o ClientAddonsSsoIntegrationPtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type ClientAddonsWams struct {
+	// Your master key for Windows Azure Mobile Services.
 	MasterKey *string `pulumi:"masterKey"`
 }
 
@@ -10429,6 +10818,7 @@ type ClientAddonsWamsInput interface {
 }
 
 type ClientAddonsWamsArgs struct {
+	// Your master key for Windows Azure Mobile Services.
 	MasterKey pulumi.StringPtrInput `pulumi:"masterKey"`
 }
 
@@ -10527,6 +10917,7 @@ func (o ClientAddonsWamsOutput) ToOutput(ctx context.Context) pulumix.Output[Cli
 	}
 }
 
+// Your master key for Windows Azure Mobile Services.
 func (o ClientAddonsWamsOutput) MasterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsWams) *string { return v.MasterKey }).(pulumi.StringPtrOutput)
 }
@@ -10561,6 +10952,7 @@ func (o ClientAddonsWamsPtrOutput) Elem() ClientAddonsWamsOutput {
 	}).(ClientAddonsWamsOutput)
 }
 
+// Your master key for Windows Azure Mobile Services.
 func (o ClientAddonsWamsPtrOutput) MasterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsWams) *string {
 		if v == nil {
@@ -10713,6 +11105,7 @@ func (o ClientAddonsWsfedPtrOutput) Elem() ClientAddonsWsfedOutput {
 }
 
 type ClientAddonsZendesk struct {
+	// Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
 	AccountName *string `pulumi:"accountName"`
 }
 
@@ -10728,6 +11121,7 @@ type ClientAddonsZendeskInput interface {
 }
 
 type ClientAddonsZendeskArgs struct {
+	// Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
 	AccountName pulumi.StringPtrInput `pulumi:"accountName"`
 }
 
@@ -10826,6 +11220,7 @@ func (o ClientAddonsZendeskOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
+// Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
 func (o ClientAddonsZendeskOutput) AccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsZendesk) *string { return v.AccountName }).(pulumi.StringPtrOutput)
 }
@@ -10860,6 +11255,7 @@ func (o ClientAddonsZendeskPtrOutput) Elem() ClientAddonsZendeskOutput {
 	}).(ClientAddonsZendeskOutput)
 }
 
+// Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
 func (o ClientAddonsZendeskPtrOutput) AccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsZendesk) *string {
 		if v == nil {
@@ -10870,6 +11266,7 @@ func (o ClientAddonsZendeskPtrOutput) AccountName() pulumi.StringPtrOutput {
 }
 
 type ClientAddonsZoom struct {
+	// Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
 	Account *string `pulumi:"account"`
 }
 
@@ -10885,6 +11282,7 @@ type ClientAddonsZoomInput interface {
 }
 
 type ClientAddonsZoomArgs struct {
+	// Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
 	Account pulumi.StringPtrInput `pulumi:"account"`
 }
 
@@ -10983,6 +11381,7 @@ func (o ClientAddonsZoomOutput) ToOutput(ctx context.Context) pulumix.Output[Cli
 	}
 }
 
+// Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
 func (o ClientAddonsZoomOutput) Account() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsZoom) *string { return v.Account }).(pulumi.StringPtrOutput)
 }
@@ -11017,6 +11416,7 @@ func (o ClientAddonsZoomPtrOutput) Elem() ClientAddonsZoomOutput {
 	}).(ClientAddonsZoomOutput)
 }
 
+// Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
 func (o ClientAddonsZoomPtrOutput) Account() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsZoom) *string {
 		if v == nil {
@@ -11190,17 +11590,26 @@ func (o ClientCredentialsPrivateKeyJwtPtrOutput) Credentials() ClientCredentials
 }
 
 type ClientCredentialsPrivateKeyJwtCredential struct {
-	Algorithm      *string `pulumi:"algorithm"`
-	CreatedAt      *string `pulumi:"createdAt"`
-	CredentialType string  `pulumi:"credentialType"`
-	ExpiresAt      *string `pulumi:"expiresAt"`
-	// The ID of this resource.
-	Id                  *string `pulumi:"id"`
-	KeyId               *string `pulumi:"keyId"`
-	Name                *string `pulumi:"name"`
-	ParseExpiryFromCert *bool   `pulumi:"parseExpiryFromCert"`
-	Pem                 string  `pulumi:"pem"`
-	UpdatedAt           *string `pulumi:"updatedAt"`
+	// Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+	Algorithm *string `pulumi:"algorithm"`
+	// The ISO 8601 formatted date the credential was created.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Credential type. Supported types: `publicKey`.
+	CredentialType string `pulumi:"credentialType"`
+	// The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+	ExpiresAt *string `pulumi:"expiresAt"`
+	// The ID of the client credential.
+	Id *string `pulumi:"id"`
+	// The key identifier of the credential, generated on creation.
+	KeyId *string `pulumi:"keyId"`
+	// Friendly name for a credential.
+	Name *string `pulumi:"name"`
+	// Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
+	ParseExpiryFromCert *bool `pulumi:"parseExpiryFromCert"`
+	// PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+	Pem string `pulumi:"pem"`
+	// The ISO 8601 formatted date the credential was updated.
+	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 // ClientCredentialsPrivateKeyJwtCredentialInput is an input type that accepts ClientCredentialsPrivateKeyJwtCredentialArgs and ClientCredentialsPrivateKeyJwtCredentialOutput values.
@@ -11215,17 +11624,26 @@ type ClientCredentialsPrivateKeyJwtCredentialInput interface {
 }
 
 type ClientCredentialsPrivateKeyJwtCredentialArgs struct {
-	Algorithm      pulumi.StringPtrInput `pulumi:"algorithm"`
-	CreatedAt      pulumi.StringPtrInput `pulumi:"createdAt"`
-	CredentialType pulumi.StringInput    `pulumi:"credentialType"`
-	ExpiresAt      pulumi.StringPtrInput `pulumi:"expiresAt"`
-	// The ID of this resource.
-	Id                  pulumi.StringPtrInput `pulumi:"id"`
-	KeyId               pulumi.StringPtrInput `pulumi:"keyId"`
-	Name                pulumi.StringPtrInput `pulumi:"name"`
-	ParseExpiryFromCert pulumi.BoolPtrInput   `pulumi:"parseExpiryFromCert"`
-	Pem                 pulumi.StringInput    `pulumi:"pem"`
-	UpdatedAt           pulumi.StringPtrInput `pulumi:"updatedAt"`
+	// Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
+	// The ISO 8601 formatted date the credential was created.
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Credential type. Supported types: `publicKey`.
+	CredentialType pulumi.StringInput `pulumi:"credentialType"`
+	// The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+	ExpiresAt pulumi.StringPtrInput `pulumi:"expiresAt"`
+	// The ID of the client credential.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The key identifier of the credential, generated on creation.
+	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
+	// Friendly name for a credential.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
+	ParseExpiryFromCert pulumi.BoolPtrInput `pulumi:"parseExpiryFromCert"`
+	// PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+	Pem pulumi.StringInput `pulumi:"pem"`
+	// The ISO 8601 formatted date the credential was updated.
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
 }
 
 func (ClientCredentialsPrivateKeyJwtCredentialArgs) ElementType() reflect.Type {
@@ -11297,43 +11715,52 @@ func (o ClientCredentialsPrivateKeyJwtCredentialOutput) ToOutput(ctx context.Con
 	}
 }
 
+// Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
 func (o ClientCredentialsPrivateKeyJwtCredentialOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
 
+// The ISO 8601 formatted date the credential was created.
 func (o ClientCredentialsPrivateKeyJwtCredentialOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
+// Credential type. Supported types: `publicKey`.
 func (o ClientCredentialsPrivateKeyJwtCredentialOutput) CredentialType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) string { return v.CredentialType }).(pulumi.StringOutput)
 }
 
+// The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
 func (o ClientCredentialsPrivateKeyJwtCredentialOutput) ExpiresAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
 }
 
-// The ID of this resource.
+// The ID of the client credential.
 func (o ClientCredentialsPrivateKeyJwtCredentialOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The key identifier of the credential, generated on creation.
 func (o ClientCredentialsPrivateKeyJwtCredentialOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) *string { return v.KeyId }).(pulumi.StringPtrOutput)
 }
 
+// Friendly name for a credential.
 func (o ClientCredentialsPrivateKeyJwtCredentialOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
 func (o ClientCredentialsPrivateKeyJwtCredentialOutput) ParseExpiryFromCert() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) *bool { return v.ParseExpiryFromCert }).(pulumi.BoolPtrOutput)
 }
 
+// PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
 func (o ClientCredentialsPrivateKeyJwtCredentialOutput) Pem() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) string { return v.Pem }).(pulumi.StringOutput)
 }
 
+// The ISO 8601 formatted date the credential was updated.
 func (o ClientCredentialsPrivateKeyJwtCredentialOutput) UpdatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
@@ -14722,8 +15149,11 @@ func (o ConnectionOptionsPtrOutput) WaadProtocol() pulumi.StringPtrOutput {
 }
 
 type ConnectionOptionsAttributeMap struct {
-	Attributes    *string `pulumi:"attributes"`
-	MappingMode   string  `pulumi:"mappingMode"`
+	// This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+	Attributes *string `pulumi:"attributes"`
+	// Method used to map incoming claims. Possible values: `useMap`, `bindAll` or `basicProfile`.
+	MappingMode string `pulumi:"mappingMode"`
+	// This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
 	UserinfoScope *string `pulumi:"userinfoScope"`
 }
 
@@ -14739,8 +15169,11 @@ type ConnectionOptionsAttributeMapInput interface {
 }
 
 type ConnectionOptionsAttributeMapArgs struct {
-	Attributes    pulumi.StringPtrInput `pulumi:"attributes"`
-	MappingMode   pulumi.StringInput    `pulumi:"mappingMode"`
+	// This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+	Attributes pulumi.StringPtrInput `pulumi:"attributes"`
+	// Method used to map incoming claims. Possible values: `useMap`, `bindAll` or `basicProfile`.
+	MappingMode pulumi.StringInput `pulumi:"mappingMode"`
+	// This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
 	UserinfoScope pulumi.StringPtrInput `pulumi:"userinfoScope"`
 }
 
@@ -14839,14 +15272,17 @@ func (o ConnectionOptionsAttributeMapOutput) ToOutput(ctx context.Context) pulum
 	}
 }
 
+// This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
 func (o ConnectionOptionsAttributeMapOutput) Attributes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsAttributeMap) *string { return v.Attributes }).(pulumi.StringPtrOutput)
 }
 
+// Method used to map incoming claims. Possible values: `useMap`, `bindAll` or `basicProfile`.
 func (o ConnectionOptionsAttributeMapOutput) MappingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionOptionsAttributeMap) string { return v.MappingMode }).(pulumi.StringOutput)
 }
 
+// This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
 func (o ConnectionOptionsAttributeMapOutput) UserinfoScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsAttributeMap) *string { return v.UserinfoScope }).(pulumi.StringPtrOutput)
 }
@@ -14881,6 +15317,7 @@ func (o ConnectionOptionsAttributeMapPtrOutput) Elem() ConnectionOptionsAttribut
 	}).(ConnectionOptionsAttributeMapOutput)
 }
 
+// This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
 func (o ConnectionOptionsAttributeMapPtrOutput) Attributes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsAttributeMap) *string {
 		if v == nil {
@@ -14890,6 +15327,7 @@ func (o ConnectionOptionsAttributeMapPtrOutput) Attributes() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Method used to map incoming claims. Possible values: `useMap`, `bindAll` or `basicProfile`.
 func (o ConnectionOptionsAttributeMapPtrOutput) MappingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsAttributeMap) *string {
 		if v == nil {
@@ -14899,6 +15337,7 @@ func (o ConnectionOptionsAttributeMapPtrOutput) MappingMode() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
 func (o ConnectionOptionsAttributeMapPtrOutput) UserinfoScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsAttributeMap) *string {
 		if v == nil {
@@ -14909,6 +15348,7 @@ func (o ConnectionOptionsAttributeMapPtrOutput) UserinfoScope() pulumi.StringPtr
 }
 
 type ConnectionOptionsConnectionSettings struct {
+	// PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
 	Pkce string `pulumi:"pkce"`
 }
 
@@ -14924,6 +15364,7 @@ type ConnectionOptionsConnectionSettingsInput interface {
 }
 
 type ConnectionOptionsConnectionSettingsArgs struct {
+	// PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
 	Pkce pulumi.StringInput `pulumi:"pkce"`
 }
 
@@ -15022,6 +15463,7 @@ func (o ConnectionOptionsConnectionSettingsOutput) ToOutput(ctx context.Context)
 	}
 }
 
+// PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
 func (o ConnectionOptionsConnectionSettingsOutput) Pkce() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionOptionsConnectionSettings) string { return v.Pkce }).(pulumi.StringOutput)
 }
@@ -15056,6 +15498,7 @@ func (o ConnectionOptionsConnectionSettingsPtrOutput) Elem() ConnectionOptionsCo
 	}).(ConnectionOptionsConnectionSettingsOutput)
 }
 
+// PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
 func (o ConnectionOptionsConnectionSettingsPtrOutput) Pkce() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsConnectionSettings) *string {
 		if v == nil {
@@ -15238,11 +15681,16 @@ func (o ConnectionOptionsDecryptionKeyPtrOutput) Key() pulumi.StringPtrOutput {
 }
 
 type ConnectionOptionsGatewayAuthentication struct {
-	Audience            *string `pulumi:"audience"`
-	Method              *string `pulumi:"method"`
-	Secret              *string `pulumi:"secret"`
-	SecretBase64Encoded *bool   `pulumi:"secretBase64Encoded"`
-	Subject             *string `pulumi:"subject"`
+	// Audience claim for the HS256 token sent to `gatewayUrl`.
+	Audience *string `pulumi:"audience"`
+	// Authentication method (default is `bearer` token).
+	Method *string `pulumi:"method"`
+	// Secret used to sign the HS256 token sent to `gatewayUrl`.
+	Secret *string `pulumi:"secret"`
+	// Specifies whether or not the secret is Base64-encoded.
+	SecretBase64Encoded *bool `pulumi:"secretBase64Encoded"`
+	// Subject claim for the HS256 token sent to `gatewayUrl`.
+	Subject *string `pulumi:"subject"`
 }
 
 // ConnectionOptionsGatewayAuthenticationInput is an input type that accepts ConnectionOptionsGatewayAuthenticationArgs and ConnectionOptionsGatewayAuthenticationOutput values.
@@ -15257,11 +15705,16 @@ type ConnectionOptionsGatewayAuthenticationInput interface {
 }
 
 type ConnectionOptionsGatewayAuthenticationArgs struct {
-	Audience            pulumi.StringPtrInput `pulumi:"audience"`
-	Method              pulumi.StringPtrInput `pulumi:"method"`
-	Secret              pulumi.StringPtrInput `pulumi:"secret"`
-	SecretBase64Encoded pulumi.BoolPtrInput   `pulumi:"secretBase64Encoded"`
-	Subject             pulumi.StringPtrInput `pulumi:"subject"`
+	// Audience claim for the HS256 token sent to `gatewayUrl`.
+	Audience pulumi.StringPtrInput `pulumi:"audience"`
+	// Authentication method (default is `bearer` token).
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// Secret used to sign the HS256 token sent to `gatewayUrl`.
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
+	// Specifies whether or not the secret is Base64-encoded.
+	SecretBase64Encoded pulumi.BoolPtrInput `pulumi:"secretBase64Encoded"`
+	// Subject claim for the HS256 token sent to `gatewayUrl`.
+	Subject pulumi.StringPtrInput `pulumi:"subject"`
 }
 
 func (ConnectionOptionsGatewayAuthenticationArgs) ElementType() reflect.Type {
@@ -15359,22 +15812,27 @@ func (o ConnectionOptionsGatewayAuthenticationOutput) ToOutput(ctx context.Conte
 	}
 }
 
+// Audience claim for the HS256 token sent to `gatewayUrl`.
 func (o ConnectionOptionsGatewayAuthenticationOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsGatewayAuthentication) *string { return v.Audience }).(pulumi.StringPtrOutput)
 }
 
+// Authentication method (default is `bearer` token).
 func (o ConnectionOptionsGatewayAuthenticationOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsGatewayAuthentication) *string { return v.Method }).(pulumi.StringPtrOutput)
 }
 
+// Secret used to sign the HS256 token sent to `gatewayUrl`.
 func (o ConnectionOptionsGatewayAuthenticationOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsGatewayAuthentication) *string { return v.Secret }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether or not the secret is Base64-encoded.
 func (o ConnectionOptionsGatewayAuthenticationOutput) SecretBase64Encoded() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsGatewayAuthentication) *bool { return v.SecretBase64Encoded }).(pulumi.BoolPtrOutput)
 }
 
+// Subject claim for the HS256 token sent to `gatewayUrl`.
 func (o ConnectionOptionsGatewayAuthenticationOutput) Subject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsGatewayAuthentication) *string { return v.Subject }).(pulumi.StringPtrOutput)
 }
@@ -15409,6 +15867,7 @@ func (o ConnectionOptionsGatewayAuthenticationPtrOutput) Elem() ConnectionOption
 	}).(ConnectionOptionsGatewayAuthenticationOutput)
 }
 
+// Audience claim for the HS256 token sent to `gatewayUrl`.
 func (o ConnectionOptionsGatewayAuthenticationPtrOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsGatewayAuthentication) *string {
 		if v == nil {
@@ -15418,6 +15877,7 @@ func (o ConnectionOptionsGatewayAuthenticationPtrOutput) Audience() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Authentication method (default is `bearer` token).
 func (o ConnectionOptionsGatewayAuthenticationPtrOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsGatewayAuthentication) *string {
 		if v == nil {
@@ -15427,6 +15887,7 @@ func (o ConnectionOptionsGatewayAuthenticationPtrOutput) Method() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Secret used to sign the HS256 token sent to `gatewayUrl`.
 func (o ConnectionOptionsGatewayAuthenticationPtrOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsGatewayAuthentication) *string {
 		if v == nil {
@@ -15436,6 +15897,7 @@ func (o ConnectionOptionsGatewayAuthenticationPtrOutput) Secret() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether or not the secret is Base64-encoded.
 func (o ConnectionOptionsGatewayAuthenticationPtrOutput) SecretBase64Encoded() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsGatewayAuthentication) *bool {
 		if v == nil {
@@ -15445,6 +15907,7 @@ func (o ConnectionOptionsGatewayAuthenticationPtrOutput) SecretBase64Encoded() p
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Subject claim for the HS256 token sent to `gatewayUrl`.
 func (o ConnectionOptionsGatewayAuthenticationPtrOutput) Subject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsGatewayAuthentication) *string {
 		if v == nil {
@@ -15456,8 +15919,9 @@ func (o ConnectionOptionsGatewayAuthenticationPtrOutput) Subject() pulumi.String
 
 type ConnectionOptionsIdpInitiated struct {
 	ClientAuthorizeQuery *string `pulumi:"clientAuthorizeQuery"`
-	ClientId             *string `pulumi:"clientId"`
-	ClientProtocol       *string `pulumi:"clientProtocol"`
+	// The strategy's client ID.
+	ClientId       *string `pulumi:"clientId"`
+	ClientProtocol *string `pulumi:"clientProtocol"`
 }
 
 // ConnectionOptionsIdpInitiatedInput is an input type that accepts ConnectionOptionsIdpInitiatedArgs and ConnectionOptionsIdpInitiatedOutput values.
@@ -15473,8 +15937,9 @@ type ConnectionOptionsIdpInitiatedInput interface {
 
 type ConnectionOptionsIdpInitiatedArgs struct {
 	ClientAuthorizeQuery pulumi.StringPtrInput `pulumi:"clientAuthorizeQuery"`
-	ClientId             pulumi.StringPtrInput `pulumi:"clientId"`
-	ClientProtocol       pulumi.StringPtrInput `pulumi:"clientProtocol"`
+	// The strategy's client ID.
+	ClientId       pulumi.StringPtrInput `pulumi:"clientId"`
+	ClientProtocol pulumi.StringPtrInput `pulumi:"clientProtocol"`
 }
 
 func (ConnectionOptionsIdpInitiatedArgs) ElementType() reflect.Type {
@@ -15576,6 +16041,7 @@ func (o ConnectionOptionsIdpInitiatedOutput) ClientAuthorizeQuery() pulumi.Strin
 	return o.ApplyT(func(v ConnectionOptionsIdpInitiated) *string { return v.ClientAuthorizeQuery }).(pulumi.StringPtrOutput)
 }
 
+// The strategy's client ID.
 func (o ConnectionOptionsIdpInitiatedOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsIdpInitiated) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
@@ -15623,6 +16089,7 @@ func (o ConnectionOptionsIdpInitiatedPtrOutput) ClientAuthorizeQuery() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// The strategy's client ID.
 func (o ConnectionOptionsIdpInitiatedPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsIdpInitiated) *string {
 		if v == nil {
@@ -15642,7 +16109,9 @@ func (o ConnectionOptionsIdpInitiatedPtrOutput) ClientProtocol() pulumi.StringPt
 }
 
 type ConnectionOptionsMfa struct {
-	Active               *bool `pulumi:"active"`
+	// Indicates whether multifactor authentication is enabled for this connection.
+	Active *bool `pulumi:"active"`
+	// Indicates whether multifactor authentication enrollment settings will be returned.
 	ReturnEnrollSettings *bool `pulumi:"returnEnrollSettings"`
 }
 
@@ -15658,7 +16127,9 @@ type ConnectionOptionsMfaInput interface {
 }
 
 type ConnectionOptionsMfaArgs struct {
-	Active               pulumi.BoolPtrInput `pulumi:"active"`
+	// Indicates whether multifactor authentication is enabled for this connection.
+	Active pulumi.BoolPtrInput `pulumi:"active"`
+	// Indicates whether multifactor authentication enrollment settings will be returned.
 	ReturnEnrollSettings pulumi.BoolPtrInput `pulumi:"returnEnrollSettings"`
 }
 
@@ -15757,10 +16228,12 @@ func (o ConnectionOptionsMfaOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// Indicates whether multifactor authentication is enabled for this connection.
 func (o ConnectionOptionsMfaOutput) Active() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsMfa) *bool { return v.Active }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether multifactor authentication enrollment settings will be returned.
 func (o ConnectionOptionsMfaOutput) ReturnEnrollSettings() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsMfa) *bool { return v.ReturnEnrollSettings }).(pulumi.BoolPtrOutput)
 }
@@ -15795,6 +16268,7 @@ func (o ConnectionOptionsMfaPtrOutput) Elem() ConnectionOptionsMfaOutput {
 	}).(ConnectionOptionsMfaOutput)
 }
 
+// Indicates whether multifactor authentication is enabled for this connection.
 func (o ConnectionOptionsMfaPtrOutput) Active() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsMfa) *bool {
 		if v == nil {
@@ -15804,6 +16278,7 @@ func (o ConnectionOptionsMfaPtrOutput) Active() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether multifactor authentication enrollment settings will be returned.
 func (o ConnectionOptionsMfaPtrOutput) ReturnEnrollSettings() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsMfa) *bool {
 		if v == nil {
@@ -15814,6 +16289,7 @@ func (o ConnectionOptionsMfaPtrOutput) ReturnEnrollSettings() pulumi.BoolPtrOutp
 }
 
 type ConnectionOptionsPasswordComplexityOptions struct {
+	// Minimum number of characters allowed in passwords.
 	MinLength *int `pulumi:"minLength"`
 }
 
@@ -15829,6 +16305,7 @@ type ConnectionOptionsPasswordComplexityOptionsInput interface {
 }
 
 type ConnectionOptionsPasswordComplexityOptionsArgs struct {
+	// Minimum number of characters allowed in passwords.
 	MinLength pulumi.IntPtrInput `pulumi:"minLength"`
 }
 
@@ -15927,6 +16404,7 @@ func (o ConnectionOptionsPasswordComplexityOptionsOutput) ToOutput(ctx context.C
 	}
 }
 
+// Minimum number of characters allowed in passwords.
 func (o ConnectionOptionsPasswordComplexityOptionsOutput) MinLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsPasswordComplexityOptions) *int { return v.MinLength }).(pulumi.IntPtrOutput)
 }
@@ -15961,6 +16439,7 @@ func (o ConnectionOptionsPasswordComplexityOptionsPtrOutput) Elem() ConnectionOp
 	}).(ConnectionOptionsPasswordComplexityOptionsOutput)
 }
 
+// Minimum number of characters allowed in passwords.
 func (o ConnectionOptionsPasswordComplexityOptionsPtrOutput) MinLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsPasswordComplexityOptions) *int {
 		if v == nil {
@@ -15971,8 +16450,10 @@ func (o ConnectionOptionsPasswordComplexityOptionsPtrOutput) MinLength() pulumi.
 }
 
 type ConnectionOptionsPasswordDictionary struct {
+	// Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
 	Dictionaries []string `pulumi:"dictionaries"`
-	Enable       *bool    `pulumi:"enable"`
+	// Indicates whether the password dictionary check is enabled for this connection.
+	Enable *bool `pulumi:"enable"`
 }
 
 // ConnectionOptionsPasswordDictionaryInput is an input type that accepts ConnectionOptionsPasswordDictionaryArgs and ConnectionOptionsPasswordDictionaryOutput values.
@@ -15987,8 +16468,10 @@ type ConnectionOptionsPasswordDictionaryInput interface {
 }
 
 type ConnectionOptionsPasswordDictionaryArgs struct {
+	// Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
 	Dictionaries pulumi.StringArrayInput `pulumi:"dictionaries"`
-	Enable       pulumi.BoolPtrInput     `pulumi:"enable"`
+	// Indicates whether the password dictionary check is enabled for this connection.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 }
 
 func (ConnectionOptionsPasswordDictionaryArgs) ElementType() reflect.Type {
@@ -16086,10 +16569,12 @@ func (o ConnectionOptionsPasswordDictionaryOutput) ToOutput(ctx context.Context)
 	}
 }
 
+// Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
 func (o ConnectionOptionsPasswordDictionaryOutput) Dictionaries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectionOptionsPasswordDictionary) []string { return v.Dictionaries }).(pulumi.StringArrayOutput)
 }
 
+// Indicates whether the password dictionary check is enabled for this connection.
 func (o ConnectionOptionsPasswordDictionaryOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsPasswordDictionary) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -16124,6 +16609,7 @@ func (o ConnectionOptionsPasswordDictionaryPtrOutput) Elem() ConnectionOptionsPa
 	}).(ConnectionOptionsPasswordDictionaryOutput)
 }
 
+// Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
 func (o ConnectionOptionsPasswordDictionaryPtrOutput) Dictionaries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConnectionOptionsPasswordDictionary) []string {
 		if v == nil {
@@ -16133,6 +16619,7 @@ func (o ConnectionOptionsPasswordDictionaryPtrOutput) Dictionaries() pulumi.Stri
 	}).(pulumi.StringArrayOutput)
 }
 
+// Indicates whether the password dictionary check is enabled for this connection.
 func (o ConnectionOptionsPasswordDictionaryPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsPasswordDictionary) *bool {
 		if v == nil {
@@ -16143,6 +16630,7 @@ func (o ConnectionOptionsPasswordDictionaryPtrOutput) Enable() pulumi.BoolPtrOut
 }
 
 type ConnectionOptionsPasswordHistory struct {
+	// Indicates whether the password dictionary check is enabled for this connection.
 	Enable *bool `pulumi:"enable"`
 	Size   *int  `pulumi:"size"`
 }
@@ -16159,6 +16647,7 @@ type ConnectionOptionsPasswordHistoryInput interface {
 }
 
 type ConnectionOptionsPasswordHistoryArgs struct {
+	// Indicates whether the password dictionary check is enabled for this connection.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	Size   pulumi.IntPtrInput  `pulumi:"size"`
 }
@@ -16232,6 +16721,7 @@ func (o ConnectionOptionsPasswordHistoryOutput) ToOutput(ctx context.Context) pu
 	}
 }
 
+// Indicates whether the password dictionary check is enabled for this connection.
 func (o ConnectionOptionsPasswordHistoryOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsPasswordHistory) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -16267,6 +16757,7 @@ func (o ConnectionOptionsPasswordHistoryArrayOutput) Index(i pulumi.IntInput) Co
 }
 
 type ConnectionOptionsPasswordNoPersonalInfo struct {
+	// Indicates whether the password dictionary check is enabled for this connection.
 	Enable *bool `pulumi:"enable"`
 }
 
@@ -16282,6 +16773,7 @@ type ConnectionOptionsPasswordNoPersonalInfoInput interface {
 }
 
 type ConnectionOptionsPasswordNoPersonalInfoArgs struct {
+	// Indicates whether the password dictionary check is enabled for this connection.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 }
 
@@ -16380,6 +16872,7 @@ func (o ConnectionOptionsPasswordNoPersonalInfoOutput) ToOutput(ctx context.Cont
 	}
 }
 
+// Indicates whether the password dictionary check is enabled for this connection.
 func (o ConnectionOptionsPasswordNoPersonalInfoOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsPasswordNoPersonalInfo) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -16414,6 +16907,7 @@ func (o ConnectionOptionsPasswordNoPersonalInfoPtrOutput) Elem() ConnectionOptio
 	}).(ConnectionOptionsPasswordNoPersonalInfoOutput)
 }
 
+// Indicates whether the password dictionary check is enabled for this connection.
 func (o ConnectionOptionsPasswordNoPersonalInfoPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsPasswordNoPersonalInfo) *bool {
 		if v == nil {
@@ -16596,7 +17090,9 @@ func (o ConnectionOptionsSigningKeyPtrOutput) Key() pulumi.StringPtrOutput {
 }
 
 type ConnectionOptionsTotp struct {
-	Length   *int `pulumi:"length"`
+	// Length of the one-time password.
+	Length *int `pulumi:"length"`
+	// Seconds between allowed generation of new passwords.
 	TimeStep *int `pulumi:"timeStep"`
 }
 
@@ -16612,7 +17108,9 @@ type ConnectionOptionsTotpInput interface {
 }
 
 type ConnectionOptionsTotpArgs struct {
-	Length   pulumi.IntPtrInput `pulumi:"length"`
+	// Length of the one-time password.
+	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Seconds between allowed generation of new passwords.
 	TimeStep pulumi.IntPtrInput `pulumi:"timeStep"`
 }
 
@@ -16711,10 +17209,12 @@ func (o ConnectionOptionsTotpOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// Length of the one-time password.
 func (o ConnectionOptionsTotpOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsTotp) *int { return v.Length }).(pulumi.IntPtrOutput)
 }
 
+// Seconds between allowed generation of new passwords.
 func (o ConnectionOptionsTotpOutput) TimeStep() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsTotp) *int { return v.TimeStep }).(pulumi.IntPtrOutput)
 }
@@ -16749,6 +17249,7 @@ func (o ConnectionOptionsTotpPtrOutput) Elem() ConnectionOptionsTotpOutput {
 	}).(ConnectionOptionsTotpOutput)
 }
 
+// Length of the one-time password.
 func (o ConnectionOptionsTotpPtrOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsTotp) *int {
 		if v == nil {
@@ -16758,6 +17259,7 @@ func (o ConnectionOptionsTotpPtrOutput) Length() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Seconds between allowed generation of new passwords.
 func (o ConnectionOptionsTotpPtrOutput) TimeStep() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsTotp) *int {
 		if v == nil {
@@ -16768,6 +17270,7 @@ func (o ConnectionOptionsTotpPtrOutput) TimeStep() pulumi.IntPtrOutput {
 }
 
 type ConnectionOptionsValidation struct {
+	// Specifies the `min` and `max` values of username length.
 	Username *ConnectionOptionsValidationUsername `pulumi:"username"`
 }
 
@@ -16783,6 +17286,7 @@ type ConnectionOptionsValidationInput interface {
 }
 
 type ConnectionOptionsValidationArgs struct {
+	// Specifies the `min` and `max` values of username length.
 	Username ConnectionOptionsValidationUsernamePtrInput `pulumi:"username"`
 }
 
@@ -16881,6 +17385,7 @@ func (o ConnectionOptionsValidationOutput) ToOutput(ctx context.Context) pulumix
 	}
 }
 
+// Specifies the `min` and `max` values of username length.
 func (o ConnectionOptionsValidationOutput) Username() ConnectionOptionsValidationUsernamePtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsValidation) *ConnectionOptionsValidationUsername { return v.Username }).(ConnectionOptionsValidationUsernamePtrOutput)
 }
@@ -16915,6 +17420,7 @@ func (o ConnectionOptionsValidationPtrOutput) Elem() ConnectionOptionsValidation
 	}).(ConnectionOptionsValidationOutput)
 }
 
+// Specifies the `min` and `max` values of username length.
 func (o ConnectionOptionsValidationPtrOutput) Username() ConnectionOptionsValidationUsernamePtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsValidation) *ConnectionOptionsValidationUsername {
 		if v == nil {
@@ -17784,7 +18290,9 @@ func (o EmailProviderSettingsPtrOutput) Message() EmailProviderSettingsMessagePt
 }
 
 type EmailProviderSettingsHeaders struct {
-	XMcViewContentLink   *string `pulumi:"xMcViewContentLink"`
+	// Disable or enable the default View Content Link for sensitive emails.
+	XMcViewContentLink *string `pulumi:"xMcViewContentLink"`
+	// SES Configuration set to include when sending emails.
 	XSesConfigurationSet *string `pulumi:"xSesConfigurationSet"`
 }
 
@@ -17800,7 +18308,9 @@ type EmailProviderSettingsHeadersInput interface {
 }
 
 type EmailProviderSettingsHeadersArgs struct {
-	XMcViewContentLink   pulumi.StringPtrInput `pulumi:"xMcViewContentLink"`
+	// Disable or enable the default View Content Link for sensitive emails.
+	XMcViewContentLink pulumi.StringPtrInput `pulumi:"xMcViewContentLink"`
+	// SES Configuration set to include when sending emails.
 	XSesConfigurationSet pulumi.StringPtrInput `pulumi:"xSesConfigurationSet"`
 }
 
@@ -17899,10 +18409,12 @@ func (o EmailProviderSettingsHeadersOutput) ToOutput(ctx context.Context) pulumi
 	}
 }
 
+// Disable or enable the default View Content Link for sensitive emails.
 func (o EmailProviderSettingsHeadersOutput) XMcViewContentLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EmailProviderSettingsHeaders) *string { return v.XMcViewContentLink }).(pulumi.StringPtrOutput)
 }
 
+// SES Configuration set to include when sending emails.
 func (o EmailProviderSettingsHeadersOutput) XSesConfigurationSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EmailProviderSettingsHeaders) *string { return v.XSesConfigurationSet }).(pulumi.StringPtrOutput)
 }
@@ -17937,6 +18449,7 @@ func (o EmailProviderSettingsHeadersPtrOutput) Elem() EmailProviderSettingsHeade
 	}).(EmailProviderSettingsHeadersOutput)
 }
 
+// Disable or enable the default View Content Link for sensitive emails.
 func (o EmailProviderSettingsHeadersPtrOutput) XMcViewContentLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EmailProviderSettingsHeaders) *string {
 		if v == nil {
@@ -17946,6 +18459,7 @@ func (o EmailProviderSettingsHeadersPtrOutput) XMcViewContentLink() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// SES Configuration set to include when sending emails.
 func (o EmailProviderSettingsHeadersPtrOutput) XSesConfigurationSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EmailProviderSettingsHeaders) *string {
 		if v == nil {
@@ -17956,8 +18470,10 @@ func (o EmailProviderSettingsHeadersPtrOutput) XSesConfigurationSet() pulumi.Str
 }
 
 type EmailProviderSettingsMessage struct {
+	// Setting for the `ses` email provider. The name of the configuration set to apply to the sent emails.
 	ConfigurationSetName *string `pulumi:"configurationSetName"`
-	ViewContentLink      *bool   `pulumi:"viewContentLink"`
+	// Setting for the `mandrill` email provider. Set to `true` to see the content of individual emails sent to users.
+	ViewContentLink *bool `pulumi:"viewContentLink"`
 }
 
 // EmailProviderSettingsMessageInput is an input type that accepts EmailProviderSettingsMessageArgs and EmailProviderSettingsMessageOutput values.
@@ -17972,8 +18488,10 @@ type EmailProviderSettingsMessageInput interface {
 }
 
 type EmailProviderSettingsMessageArgs struct {
+	// Setting for the `ses` email provider. The name of the configuration set to apply to the sent emails.
 	ConfigurationSetName pulumi.StringPtrInput `pulumi:"configurationSetName"`
-	ViewContentLink      pulumi.BoolPtrInput   `pulumi:"viewContentLink"`
+	// Setting for the `mandrill` email provider. Set to `true` to see the content of individual emails sent to users.
+	ViewContentLink pulumi.BoolPtrInput `pulumi:"viewContentLink"`
 }
 
 func (EmailProviderSettingsMessageArgs) ElementType() reflect.Type {
@@ -18071,10 +18589,12 @@ func (o EmailProviderSettingsMessageOutput) ToOutput(ctx context.Context) pulumi
 	}
 }
 
+// Setting for the `ses` email provider. The name of the configuration set to apply to the sent emails.
 func (o EmailProviderSettingsMessageOutput) ConfigurationSetName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EmailProviderSettingsMessage) *string { return v.ConfigurationSetName }).(pulumi.StringPtrOutput)
 }
 
+// Setting for the `mandrill` email provider. Set to `true` to see the content of individual emails sent to users.
 func (o EmailProviderSettingsMessageOutput) ViewContentLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EmailProviderSettingsMessage) *bool { return v.ViewContentLink }).(pulumi.BoolPtrOutput)
 }
@@ -18109,6 +18629,7 @@ func (o EmailProviderSettingsMessagePtrOutput) Elem() EmailProviderSettingsMessa
 	}).(EmailProviderSettingsMessageOutput)
 }
 
+// Setting for the `ses` email provider. The name of the configuration set to apply to the sent emails.
 func (o EmailProviderSettingsMessagePtrOutput) ConfigurationSetName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EmailProviderSettingsMessage) *string {
 		if v == nil {
@@ -18118,6 +18639,7 @@ func (o EmailProviderSettingsMessagePtrOutput) ConfigurationSetName() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Setting for the `mandrill` email provider. Set to `true` to see the content of individual emails sent to users.
 func (o EmailProviderSettingsMessagePtrOutput) ViewContentLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EmailProviderSettingsMessage) *bool {
 		if v == nil {
@@ -18564,11 +19086,17 @@ func (o GuardianPhonePtrOutput) Provider() pulumi.StringPtrOutput {
 }
 
 type GuardianPhoneOptions struct {
-	AuthToken           *string `pulumi:"authToken"`
-	EnrollmentMessage   *string `pulumi:"enrollmentMessage"`
-	From                *string `pulumi:"from"`
+	// AuthToken for your Twilio account.
+	AuthToken *string `pulumi:"authToken"`
+	// This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+	EnrollmentMessage *string `pulumi:"enrollmentMessage"`
+	// Phone number to use as the sender.
+	From *string `pulumi:"from"`
+	// Messaging service SID.
 	MessagingServiceSid *string `pulumi:"messagingServiceSid"`
-	Sid                 *string `pulumi:"sid"`
+	// SID for your Twilio account.
+	Sid *string `pulumi:"sid"`
+	// This message will be sent whenever a user logs in after the enrollment. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
 	VerificationMessage *string `pulumi:"verificationMessage"`
 }
 
@@ -18584,11 +19112,17 @@ type GuardianPhoneOptionsInput interface {
 }
 
 type GuardianPhoneOptionsArgs struct {
-	AuthToken           pulumi.StringPtrInput `pulumi:"authToken"`
-	EnrollmentMessage   pulumi.StringPtrInput `pulumi:"enrollmentMessage"`
-	From                pulumi.StringPtrInput `pulumi:"from"`
+	// AuthToken for your Twilio account.
+	AuthToken pulumi.StringPtrInput `pulumi:"authToken"`
+	// This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+	EnrollmentMessage pulumi.StringPtrInput `pulumi:"enrollmentMessage"`
+	// Phone number to use as the sender.
+	From pulumi.StringPtrInput `pulumi:"from"`
+	// Messaging service SID.
 	MessagingServiceSid pulumi.StringPtrInput `pulumi:"messagingServiceSid"`
-	Sid                 pulumi.StringPtrInput `pulumi:"sid"`
+	// SID for your Twilio account.
+	Sid pulumi.StringPtrInput `pulumi:"sid"`
+	// This message will be sent whenever a user logs in after the enrollment. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
 	VerificationMessage pulumi.StringPtrInput `pulumi:"verificationMessage"`
 }
 
@@ -18687,26 +19221,32 @@ func (o GuardianPhoneOptionsOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// AuthToken for your Twilio account.
 func (o GuardianPhoneOptionsOutput) AuthToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuardianPhoneOptions) *string { return v.AuthToken }).(pulumi.StringPtrOutput)
 }
 
+// This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
 func (o GuardianPhoneOptionsOutput) EnrollmentMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuardianPhoneOptions) *string { return v.EnrollmentMessage }).(pulumi.StringPtrOutput)
 }
 
+// Phone number to use as the sender.
 func (o GuardianPhoneOptionsOutput) From() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuardianPhoneOptions) *string { return v.From }).(pulumi.StringPtrOutput)
 }
 
+// Messaging service SID.
 func (o GuardianPhoneOptionsOutput) MessagingServiceSid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuardianPhoneOptions) *string { return v.MessagingServiceSid }).(pulumi.StringPtrOutput)
 }
 
+// SID for your Twilio account.
 func (o GuardianPhoneOptionsOutput) Sid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuardianPhoneOptions) *string { return v.Sid }).(pulumi.StringPtrOutput)
 }
 
+// This message will be sent whenever a user logs in after the enrollment. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
 func (o GuardianPhoneOptionsOutput) VerificationMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuardianPhoneOptions) *string { return v.VerificationMessage }).(pulumi.StringPtrOutput)
 }
@@ -18741,6 +19281,7 @@ func (o GuardianPhoneOptionsPtrOutput) Elem() GuardianPhoneOptionsOutput {
 	}).(GuardianPhoneOptionsOutput)
 }
 
+// AuthToken for your Twilio account.
 func (o GuardianPhoneOptionsPtrOutput) AuthToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPhoneOptions) *string {
 		if v == nil {
@@ -18750,6 +19291,7 @@ func (o GuardianPhoneOptionsPtrOutput) AuthToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
 func (o GuardianPhoneOptionsPtrOutput) EnrollmentMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPhoneOptions) *string {
 		if v == nil {
@@ -18759,6 +19301,7 @@ func (o GuardianPhoneOptionsPtrOutput) EnrollmentMessage() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Phone number to use as the sender.
 func (o GuardianPhoneOptionsPtrOutput) From() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPhoneOptions) *string {
 		if v == nil {
@@ -18768,6 +19311,7 @@ func (o GuardianPhoneOptionsPtrOutput) From() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Messaging service SID.
 func (o GuardianPhoneOptionsPtrOutput) MessagingServiceSid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPhoneOptions) *string {
 		if v == nil {
@@ -18777,6 +19321,7 @@ func (o GuardianPhoneOptionsPtrOutput) MessagingServiceSid() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// SID for your Twilio account.
 func (o GuardianPhoneOptionsPtrOutput) Sid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPhoneOptions) *string {
 		if v == nil {
@@ -18786,6 +19331,7 @@ func (o GuardianPhoneOptionsPtrOutput) Sid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// This message will be sent whenever a user logs in after the enrollment. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
 func (o GuardianPhoneOptionsPtrOutput) VerificationMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPhoneOptions) *string {
 		if v == nil {
@@ -19052,11 +19598,16 @@ func (o GuardianPushPtrOutput) Provider() pulumi.StringPtrOutput {
 }
 
 type GuardianPushAmazonSns struct {
-	AwsAccessKeyId                string `pulumi:"awsAccessKeyId"`
-	AwsRegion                     string `pulumi:"awsRegion"`
-	AwsSecretAccessKey            string `pulumi:"awsSecretAccessKey"`
+	// Your AWS Access Key ID.
+	AwsAccessKeyId string `pulumi:"awsAccessKeyId"`
+	// Your AWS application's region.
+	AwsRegion string `pulumi:"awsRegion"`
+	// Your AWS Secret Access Key.
+	AwsSecretAccessKey string `pulumi:"awsSecretAccessKey"`
+	// The Amazon Resource Name for your Apple Push Notification Service.
 	SnsApnsPlatformApplicationArn string `pulumi:"snsApnsPlatformApplicationArn"`
-	SnsGcmPlatformApplicationArn  string `pulumi:"snsGcmPlatformApplicationArn"`
+	// The Amazon Resource Name for your Firebase Cloud Messaging Service.
+	SnsGcmPlatformApplicationArn string `pulumi:"snsGcmPlatformApplicationArn"`
 }
 
 // GuardianPushAmazonSnsInput is an input type that accepts GuardianPushAmazonSnsArgs and GuardianPushAmazonSnsOutput values.
@@ -19071,11 +19622,16 @@ type GuardianPushAmazonSnsInput interface {
 }
 
 type GuardianPushAmazonSnsArgs struct {
-	AwsAccessKeyId                pulumi.StringInput `pulumi:"awsAccessKeyId"`
-	AwsRegion                     pulumi.StringInput `pulumi:"awsRegion"`
-	AwsSecretAccessKey            pulumi.StringInput `pulumi:"awsSecretAccessKey"`
+	// Your AWS Access Key ID.
+	AwsAccessKeyId pulumi.StringInput `pulumi:"awsAccessKeyId"`
+	// Your AWS application's region.
+	AwsRegion pulumi.StringInput `pulumi:"awsRegion"`
+	// Your AWS Secret Access Key.
+	AwsSecretAccessKey pulumi.StringInput `pulumi:"awsSecretAccessKey"`
+	// The Amazon Resource Name for your Apple Push Notification Service.
 	SnsApnsPlatformApplicationArn pulumi.StringInput `pulumi:"snsApnsPlatformApplicationArn"`
-	SnsGcmPlatformApplicationArn  pulumi.StringInput `pulumi:"snsGcmPlatformApplicationArn"`
+	// The Amazon Resource Name for your Firebase Cloud Messaging Service.
+	SnsGcmPlatformApplicationArn pulumi.StringInput `pulumi:"snsGcmPlatformApplicationArn"`
 }
 
 func (GuardianPushAmazonSnsArgs) ElementType() reflect.Type {
@@ -19173,22 +19729,27 @@ func (o GuardianPushAmazonSnsOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// Your AWS Access Key ID.
 func (o GuardianPushAmazonSnsOutput) AwsAccessKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GuardianPushAmazonSns) string { return v.AwsAccessKeyId }).(pulumi.StringOutput)
 }
 
+// Your AWS application's region.
 func (o GuardianPushAmazonSnsOutput) AwsRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v GuardianPushAmazonSns) string { return v.AwsRegion }).(pulumi.StringOutput)
 }
 
+// Your AWS Secret Access Key.
 func (o GuardianPushAmazonSnsOutput) AwsSecretAccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GuardianPushAmazonSns) string { return v.AwsSecretAccessKey }).(pulumi.StringOutput)
 }
 
+// The Amazon Resource Name for your Apple Push Notification Service.
 func (o GuardianPushAmazonSnsOutput) SnsApnsPlatformApplicationArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GuardianPushAmazonSns) string { return v.SnsApnsPlatformApplicationArn }).(pulumi.StringOutput)
 }
 
+// The Amazon Resource Name for your Firebase Cloud Messaging Service.
 func (o GuardianPushAmazonSnsOutput) SnsGcmPlatformApplicationArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GuardianPushAmazonSns) string { return v.SnsGcmPlatformApplicationArn }).(pulumi.StringOutput)
 }
@@ -19223,6 +19784,7 @@ func (o GuardianPushAmazonSnsPtrOutput) Elem() GuardianPushAmazonSnsOutput {
 	}).(GuardianPushAmazonSnsOutput)
 }
 
+// Your AWS Access Key ID.
 func (o GuardianPushAmazonSnsPtrOutput) AwsAccessKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPushAmazonSns) *string {
 		if v == nil {
@@ -19232,6 +19794,7 @@ func (o GuardianPushAmazonSnsPtrOutput) AwsAccessKeyId() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS application's region.
 func (o GuardianPushAmazonSnsPtrOutput) AwsRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPushAmazonSns) *string {
 		if v == nil {
@@ -19241,6 +19804,7 @@ func (o GuardianPushAmazonSnsPtrOutput) AwsRegion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS Secret Access Key.
 func (o GuardianPushAmazonSnsPtrOutput) AwsSecretAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPushAmazonSns) *string {
 		if v == nil {
@@ -19250,6 +19814,7 @@ func (o GuardianPushAmazonSnsPtrOutput) AwsSecretAccessKey() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Amazon Resource Name for your Apple Push Notification Service.
 func (o GuardianPushAmazonSnsPtrOutput) SnsApnsPlatformApplicationArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPushAmazonSns) *string {
 		if v == nil {
@@ -19259,6 +19824,7 @@ func (o GuardianPushAmazonSnsPtrOutput) SnsApnsPlatformApplicationArn() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Amazon Resource Name for your Firebase Cloud Messaging Service.
 func (o GuardianPushAmazonSnsPtrOutput) SnsGcmPlatformApplicationArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPushAmazonSns) *string {
 		if v == nil {
@@ -19269,8 +19835,11 @@ func (o GuardianPushAmazonSnsPtrOutput) SnsGcmPlatformApplicationArn() pulumi.St
 }
 
 type GuardianPushCustomApp struct {
-	AppName       *string `pulumi:"appName"`
-	AppleAppLink  *string `pulumi:"appleAppLink"`
+	// Custom Application Name.
+	AppName *string `pulumi:"appName"`
+	// Apple App Store URL. Must be HTTPS or an empty string.
+	AppleAppLink *string `pulumi:"appleAppLink"`
+	// Google Store URL. Must be HTTPS or an empty string.
 	GoogleAppLink *string `pulumi:"googleAppLink"`
 }
 
@@ -19286,8 +19855,11 @@ type GuardianPushCustomAppInput interface {
 }
 
 type GuardianPushCustomAppArgs struct {
-	AppName       pulumi.StringPtrInput `pulumi:"appName"`
-	AppleAppLink  pulumi.StringPtrInput `pulumi:"appleAppLink"`
+	// Custom Application Name.
+	AppName pulumi.StringPtrInput `pulumi:"appName"`
+	// Apple App Store URL. Must be HTTPS or an empty string.
+	AppleAppLink pulumi.StringPtrInput `pulumi:"appleAppLink"`
+	// Google Store URL. Must be HTTPS or an empty string.
 	GoogleAppLink pulumi.StringPtrInput `pulumi:"googleAppLink"`
 }
 
@@ -19386,14 +19958,17 @@ func (o GuardianPushCustomAppOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// Custom Application Name.
 func (o GuardianPushCustomAppOutput) AppName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuardianPushCustomApp) *string { return v.AppName }).(pulumi.StringPtrOutput)
 }
 
+// Apple App Store URL. Must be HTTPS or an empty string.
 func (o GuardianPushCustomAppOutput) AppleAppLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuardianPushCustomApp) *string { return v.AppleAppLink }).(pulumi.StringPtrOutput)
 }
 
+// Google Store URL. Must be HTTPS or an empty string.
 func (o GuardianPushCustomAppOutput) GoogleAppLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuardianPushCustomApp) *string { return v.GoogleAppLink }).(pulumi.StringPtrOutput)
 }
@@ -19428,6 +20003,7 @@ func (o GuardianPushCustomAppPtrOutput) Elem() GuardianPushCustomAppOutput {
 	}).(GuardianPushCustomAppOutput)
 }
 
+// Custom Application Name.
 func (o GuardianPushCustomAppPtrOutput) AppName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPushCustomApp) *string {
 		if v == nil {
@@ -19437,6 +20013,7 @@ func (o GuardianPushCustomAppPtrOutput) AppName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Apple App Store URL. Must be HTTPS or an empty string.
 func (o GuardianPushCustomAppPtrOutput) AppleAppLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPushCustomApp) *string {
 		if v == nil {
@@ -19446,6 +20023,7 @@ func (o GuardianPushCustomAppPtrOutput) AppleAppLink() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Google Store URL. Must be HTTPS or an empty string.
 func (o GuardianPushCustomAppPtrOutput) GoogleAppLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPushCustomApp) *string {
 		if v == nil {
@@ -19456,10 +20034,14 @@ func (o GuardianPushCustomAppPtrOutput) GoogleAppLink() pulumi.StringPtrOutput {
 }
 
 type GuardianPushDirectApns struct {
+	// The Apple Push Notification service Bundle ID.
 	BundleId string `pulumi:"bundleId"`
-	Enabled  *bool  `pulumi:"enabled"`
-	P12      string `pulumi:"p12"`
-	Sandbox  bool   `pulumi:"sandbox"`
+	// Indicates whether Duo MFA is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// The base64 encoded certificate in P12 format.
+	P12 string `pulumi:"p12"`
+	// Set to true to use the sandbox iOS app environment, otherwise set to false to use the production iOS app environment.
+	Sandbox bool `pulumi:"sandbox"`
 }
 
 // GuardianPushDirectApnsInput is an input type that accepts GuardianPushDirectApnsArgs and GuardianPushDirectApnsOutput values.
@@ -19474,10 +20056,14 @@ type GuardianPushDirectApnsInput interface {
 }
 
 type GuardianPushDirectApnsArgs struct {
-	BundleId pulumi.StringInput  `pulumi:"bundleId"`
-	Enabled  pulumi.BoolPtrInput `pulumi:"enabled"`
-	P12      pulumi.StringInput  `pulumi:"p12"`
-	Sandbox  pulumi.BoolInput    `pulumi:"sandbox"`
+	// The Apple Push Notification service Bundle ID.
+	BundleId pulumi.StringInput `pulumi:"bundleId"`
+	// Indicates whether Duo MFA is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The base64 encoded certificate in P12 format.
+	P12 pulumi.StringInput `pulumi:"p12"`
+	// Set to true to use the sandbox iOS app environment, otherwise set to false to use the production iOS app environment.
+	Sandbox pulumi.BoolInput `pulumi:"sandbox"`
 }
 
 func (GuardianPushDirectApnsArgs) ElementType() reflect.Type {
@@ -19575,18 +20161,22 @@ func (o GuardianPushDirectApnsOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
+// The Apple Push Notification service Bundle ID.
 func (o GuardianPushDirectApnsOutput) BundleId() pulumi.StringOutput {
 	return o.ApplyT(func(v GuardianPushDirectApns) string { return v.BundleId }).(pulumi.StringOutput)
 }
 
+// Indicates whether Duo MFA is enabled.
 func (o GuardianPushDirectApnsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GuardianPushDirectApns) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The base64 encoded certificate in P12 format.
 func (o GuardianPushDirectApnsOutput) P12() pulumi.StringOutput {
 	return o.ApplyT(func(v GuardianPushDirectApns) string { return v.P12 }).(pulumi.StringOutput)
 }
 
+// Set to true to use the sandbox iOS app environment, otherwise set to false to use the production iOS app environment.
 func (o GuardianPushDirectApnsOutput) Sandbox() pulumi.BoolOutput {
 	return o.ApplyT(func(v GuardianPushDirectApns) bool { return v.Sandbox }).(pulumi.BoolOutput)
 }
@@ -19621,6 +20211,7 @@ func (o GuardianPushDirectApnsPtrOutput) Elem() GuardianPushDirectApnsOutput {
 	}).(GuardianPushDirectApnsOutput)
 }
 
+// The Apple Push Notification service Bundle ID.
 func (o GuardianPushDirectApnsPtrOutput) BundleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPushDirectApns) *string {
 		if v == nil {
@@ -19630,6 +20221,7 @@ func (o GuardianPushDirectApnsPtrOutput) BundleId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether Duo MFA is enabled.
 func (o GuardianPushDirectApnsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GuardianPushDirectApns) *bool {
 		if v == nil {
@@ -19639,6 +20231,7 @@ func (o GuardianPushDirectApnsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The base64 encoded certificate in P12 format.
 func (o GuardianPushDirectApnsPtrOutput) P12() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPushDirectApns) *string {
 		if v == nil {
@@ -19648,6 +20241,7 @@ func (o GuardianPushDirectApnsPtrOutput) P12() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Set to true to use the sandbox iOS app environment, otherwise set to false to use the production iOS app environment.
 func (o GuardianPushDirectApnsPtrOutput) Sandbox() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GuardianPushDirectApns) *bool {
 		if v == nil {
@@ -19658,6 +20252,7 @@ func (o GuardianPushDirectApnsPtrOutput) Sandbox() pulumi.BoolPtrOutput {
 }
 
 type GuardianPushDirectFcm struct {
+	// The Firebase Cloud Messaging Server Key. For security purposes, we don’t retrieve your existing FCM server key to check for drift.
 	ServerKey string `pulumi:"serverKey"`
 }
 
@@ -19673,6 +20268,7 @@ type GuardianPushDirectFcmInput interface {
 }
 
 type GuardianPushDirectFcmArgs struct {
+	// The Firebase Cloud Messaging Server Key. For security purposes, we don’t retrieve your existing FCM server key to check for drift.
 	ServerKey pulumi.StringInput `pulumi:"serverKey"`
 }
 
@@ -19771,6 +20367,7 @@ func (o GuardianPushDirectFcmOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// The Firebase Cloud Messaging Server Key. For security purposes, we don’t retrieve your existing FCM server key to check for drift.
 func (o GuardianPushDirectFcmOutput) ServerKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GuardianPushDirectFcm) string { return v.ServerKey }).(pulumi.StringOutput)
 }
@@ -19805,6 +20402,7 @@ func (o GuardianPushDirectFcmPtrOutput) Elem() GuardianPushDirectFcmOutput {
 	}).(GuardianPushDirectFcmOutput)
 }
 
+// The Firebase Cloud Messaging Server Key. For security purposes, we don’t retrieve your existing FCM server key to check for drift.
 func (o GuardianPushDirectFcmPtrOutput) ServerKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPushDirectFcm) *string {
 		if v == nil {
@@ -28374,7 +28972,6 @@ func (o GetClientAddonSalesforceArrayOutput) Index(i pulumi.IntInput) GetClientA
 }
 
 type GetClientAddonSalesforceApi struct {
-	// The ID of the client. If not provided, `name` must be set.
 	ClientId            string `pulumi:"clientId"`
 	CommunityName       string `pulumi:"communityName"`
 	CommunityUrlSection string `pulumi:"communityUrlSection"`
@@ -28393,7 +28990,6 @@ type GetClientAddonSalesforceApiInput interface {
 }
 
 type GetClientAddonSalesforceApiArgs struct {
-	// The ID of the client. If not provided, `name` must be set.
 	ClientId            pulumi.StringInput `pulumi:"clientId"`
 	CommunityName       pulumi.StringInput `pulumi:"communityName"`
 	CommunityUrlSection pulumi.StringInput `pulumi:"communityUrlSection"`
@@ -28469,7 +29065,6 @@ func (o GetClientAddonSalesforceApiOutput) ToOutput(ctx context.Context) pulumix
 	}
 }
 
-// The ID of the client. If not provided, `name` must be set.
 func (o GetClientAddonSalesforceApiOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientAddonSalesforceApi) string { return v.ClientId }).(pulumi.StringOutput)
 }
@@ -28513,7 +29108,6 @@ func (o GetClientAddonSalesforceApiArrayOutput) Index(i pulumi.IntInput) GetClie
 }
 
 type GetClientAddonSalesforceSandboxApi struct {
-	// The ID of the client. If not provided, `name` must be set.
 	ClientId            string `pulumi:"clientId"`
 	CommunityName       string `pulumi:"communityName"`
 	CommunityUrlSection string `pulumi:"communityUrlSection"`
@@ -28532,7 +29126,6 @@ type GetClientAddonSalesforceSandboxApiInput interface {
 }
 
 type GetClientAddonSalesforceSandboxApiArgs struct {
-	// The ID of the client. If not provided, `name` must be set.
 	ClientId            pulumi.StringInput `pulumi:"clientId"`
 	CommunityName       pulumi.StringInput `pulumi:"communityName"`
 	CommunityUrlSection pulumi.StringInput `pulumi:"communityUrlSection"`
@@ -28608,7 +29201,6 @@ func (o GetClientAddonSalesforceSandboxApiOutput) ToOutput(ctx context.Context) 
 	}
 }
 
-// The ID of the client. If not provided, `name` must be set.
 func (o GetClientAddonSalesforceSandboxApiOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientAddonSalesforceSandboxApi) string { return v.ClientId }).(pulumi.StringOutput)
 }
@@ -29014,7 +29606,6 @@ func (o GetClientAddonSamlpLogoutArrayOutput) Index(i pulumi.IntInput) GetClient
 }
 
 type GetClientAddonSapApi struct {
-	// The ID of the client. If not provided, `name` must be set.
 	ClientId             string `pulumi:"clientId"`
 	NameIdentifierFormat string `pulumi:"nameIdentifierFormat"`
 	Scope                string `pulumi:"scope"`
@@ -29035,7 +29626,6 @@ type GetClientAddonSapApiInput interface {
 }
 
 type GetClientAddonSapApiArgs struct {
-	// The ID of the client. If not provided, `name` must be set.
 	ClientId             pulumi.StringInput `pulumi:"clientId"`
 	NameIdentifierFormat pulumi.StringInput `pulumi:"nameIdentifierFormat"`
 	Scope                pulumi.StringInput `pulumi:"scope"`
@@ -29113,7 +29703,6 @@ func (o GetClientAddonSapApiOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
-// The ID of the client. If not provided, `name` must be set.
 func (o GetClientAddonSapApiOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientAddonSapApi) string { return v.ClientId }).(pulumi.StringOutput)
 }
@@ -29649,7 +30238,6 @@ func (o GetClientAddonSpringcmArrayOutput) Index(i pulumi.IntInput) GetClientAdd
 }
 
 type GetClientAddonSsoIntegration struct {
-	// The name of the client. If not provided, `clientId` must be set.
 	Name    string `pulumi:"name"`
 	Version string `pulumi:"version"`
 }
@@ -29666,7 +30254,6 @@ type GetClientAddonSsoIntegrationInput interface {
 }
 
 type GetClientAddonSsoIntegrationArgs struct {
-	// The name of the client. If not provided, `clientId` must be set.
 	Name    pulumi.StringInput `pulumi:"name"`
 	Version pulumi.StringInput `pulumi:"version"`
 }
@@ -29740,7 +30327,6 @@ func (o GetClientAddonSsoIntegrationOutput) ToOutput(ctx context.Context) pulumi
 	}
 }
 
-// The name of the client. If not provided, `clientId` must be set.
 func (o GetClientAddonSsoIntegrationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientAddonSsoIntegration) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -31264,54 +31850,53 @@ func (o GetClientRefreshTokenArrayOutput) Index(i pulumi.IntInput) GetClientRefr
 }
 
 type GetConnectionOption struct {
-	AdfsServer                       string                                     `pulumi:"adfsServer"`
-	AllowedAudiences                 []string                                   `pulumi:"allowedAudiences"`
-	ApiEnableUsers                   bool                                       `pulumi:"apiEnableUsers"`
-	AppId                            string                                     `pulumi:"appId"`
-	AttributeMaps                    []GetConnectionOptionAttributeMap          `pulumi:"attributeMaps"`
-	AuthParams                       map[string]string                          `pulumi:"authParams"`
-	AuthorizationEndpoint            string                                     `pulumi:"authorizationEndpoint"`
-	BruteForceProtection             bool                                       `pulumi:"bruteForceProtection"`
-	ClientId                         string                                     `pulumi:"clientId"`
-	ClientSecret                     string                                     `pulumi:"clientSecret"`
-	CommunityBaseUrl                 string                                     `pulumi:"communityBaseUrl"`
-	Configuration                    map[string]interface{}                     `pulumi:"configuration"`
-	ConnectionSettings               []GetConnectionOptionConnectionSetting     `pulumi:"connectionSettings"`
-	CustomScripts                    map[string]string                          `pulumi:"customScripts"`
-	Debug                            bool                                       `pulumi:"debug"`
-	DecryptionKeys                   []GetConnectionOptionDecryptionKey         `pulumi:"decryptionKeys"`
-	DigestAlgorithm                  string                                     `pulumi:"digestAlgorithm"`
-	DisableCache                     bool                                       `pulumi:"disableCache"`
-	DisableSelfServiceChangePassword bool                                       `pulumi:"disableSelfServiceChangePassword"`
-	DisableSignOut                   bool                                       `pulumi:"disableSignOut"`
-	DisableSignup                    bool                                       `pulumi:"disableSignup"`
-	DiscoveryUrl                     string                                     `pulumi:"discoveryUrl"`
-	Domain                           string                                     `pulumi:"domain"`
-	DomainAliases                    []string                                   `pulumi:"domainAliases"`
-	EnableScriptContext              bool                                       `pulumi:"enableScriptContext"`
-	EnabledDatabaseCustomization     bool                                       `pulumi:"enabledDatabaseCustomization"`
-	EntityId                         string                                     `pulumi:"entityId"`
-	FedMetadataXml                   string                                     `pulumi:"fedMetadataXml"`
-	FieldsMap                        string                                     `pulumi:"fieldsMap"`
-	ForwardRequestInfo               bool                                       `pulumi:"forwardRequestInfo"`
-	From                             string                                     `pulumi:"from"`
-	GatewayAuthentications           []GetConnectionOptionGatewayAuthentication `pulumi:"gatewayAuthentications"`
-	GatewayUrl                       string                                     `pulumi:"gatewayUrl"`
-	IconUrl                          string                                     `pulumi:"iconUrl"`
-	IdentityApi                      string                                     `pulumi:"identityApi"`
-	IdpInitiateds                    []GetConnectionOptionIdpInitiated          `pulumi:"idpInitiateds"`
-	ImportMode                       bool                                       `pulumi:"importMode"`
-	Ips                              []string                                   `pulumi:"ips"`
-	Issuer                           string                                     `pulumi:"issuer"`
-	JwksUri                          string                                     `pulumi:"jwksUri"`
-	KeyId                            string                                     `pulumi:"keyId"`
-	MapUserIdToId                    bool                                       `pulumi:"mapUserIdToId"`
-	MaxGroupsToRetrieve              string                                     `pulumi:"maxGroupsToRetrieve"`
-	MessagingServiceSid              string                                     `pulumi:"messagingServiceSid"`
-	MetadataUrl                      string                                     `pulumi:"metadataUrl"`
-	MetadataXml                      string                                     `pulumi:"metadataXml"`
-	Mfas                             []GetConnectionOptionMfa                   `pulumi:"mfas"`
-	// The name of the connection. If not provided, `connectionId` must be set.
+	AdfsServer                         string                                        `pulumi:"adfsServer"`
+	AllowedAudiences                   []string                                      `pulumi:"allowedAudiences"`
+	ApiEnableUsers                     bool                                          `pulumi:"apiEnableUsers"`
+	AppId                              string                                        `pulumi:"appId"`
+	AttributeMaps                      []GetConnectionOptionAttributeMap             `pulumi:"attributeMaps"`
+	AuthParams                         map[string]string                             `pulumi:"authParams"`
+	AuthorizationEndpoint              string                                        `pulumi:"authorizationEndpoint"`
+	BruteForceProtection               bool                                          `pulumi:"bruteForceProtection"`
+	ClientId                           string                                        `pulumi:"clientId"`
+	ClientSecret                       string                                        `pulumi:"clientSecret"`
+	CommunityBaseUrl                   string                                        `pulumi:"communityBaseUrl"`
+	Configuration                      map[string]interface{}                        `pulumi:"configuration"`
+	ConnectionSettings                 []GetConnectionOptionConnectionSetting        `pulumi:"connectionSettings"`
+	CustomScripts                      map[string]string                             `pulumi:"customScripts"`
+	Debug                              bool                                          `pulumi:"debug"`
+	DecryptionKeys                     []GetConnectionOptionDecryptionKey            `pulumi:"decryptionKeys"`
+	DigestAlgorithm                    string                                        `pulumi:"digestAlgorithm"`
+	DisableCache                       bool                                          `pulumi:"disableCache"`
+	DisableSelfServiceChangePassword   bool                                          `pulumi:"disableSelfServiceChangePassword"`
+	DisableSignOut                     bool                                          `pulumi:"disableSignOut"`
+	DisableSignup                      bool                                          `pulumi:"disableSignup"`
+	DiscoveryUrl                       string                                        `pulumi:"discoveryUrl"`
+	Domain                             string                                        `pulumi:"domain"`
+	DomainAliases                      []string                                      `pulumi:"domainAliases"`
+	EnableScriptContext                bool                                          `pulumi:"enableScriptContext"`
+	EnabledDatabaseCustomization       bool                                          `pulumi:"enabledDatabaseCustomization"`
+	EntityId                           string                                        `pulumi:"entityId"`
+	FedMetadataXml                     string                                        `pulumi:"fedMetadataXml"`
+	FieldsMap                          string                                        `pulumi:"fieldsMap"`
+	ForwardRequestInfo                 bool                                          `pulumi:"forwardRequestInfo"`
+	From                               string                                        `pulumi:"from"`
+	GatewayAuthentications             []GetConnectionOptionGatewayAuthentication    `pulumi:"gatewayAuthentications"`
+	GatewayUrl                         string                                        `pulumi:"gatewayUrl"`
+	IconUrl                            string                                        `pulumi:"iconUrl"`
+	IdentityApi                        string                                        `pulumi:"identityApi"`
+	IdpInitiateds                      []GetConnectionOptionIdpInitiated             `pulumi:"idpInitiateds"`
+	ImportMode                         bool                                          `pulumi:"importMode"`
+	Ips                                []string                                      `pulumi:"ips"`
+	Issuer                             string                                        `pulumi:"issuer"`
+	JwksUri                            string                                        `pulumi:"jwksUri"`
+	KeyId                              string                                        `pulumi:"keyId"`
+	MapUserIdToId                      bool                                          `pulumi:"mapUserIdToId"`
+	MaxGroupsToRetrieve                string                                        `pulumi:"maxGroupsToRetrieve"`
+	MessagingServiceSid                string                                        `pulumi:"messagingServiceSid"`
+	MetadataUrl                        string                                        `pulumi:"metadataUrl"`
+	MetadataXml                        string                                        `pulumi:"metadataXml"`
+	Mfas                               []GetConnectionOptionMfa                      `pulumi:"mfas"`
 	Name                               string                                        `pulumi:"name"`
 	NonPersistentAttrs                 []string                                      `pulumi:"nonPersistentAttrs"`
 	PasswordComplexityOptions          []GetConnectionOptionPasswordComplexityOption `pulumi:"passwordComplexityOptions"`
@@ -31369,54 +31954,53 @@ type GetConnectionOptionInput interface {
 }
 
 type GetConnectionOptionArgs struct {
-	AdfsServer                       pulumi.StringInput                                 `pulumi:"adfsServer"`
-	AllowedAudiences                 pulumi.StringArrayInput                            `pulumi:"allowedAudiences"`
-	ApiEnableUsers                   pulumi.BoolInput                                   `pulumi:"apiEnableUsers"`
-	AppId                            pulumi.StringInput                                 `pulumi:"appId"`
-	AttributeMaps                    GetConnectionOptionAttributeMapArrayInput          `pulumi:"attributeMaps"`
-	AuthParams                       pulumi.StringMapInput                              `pulumi:"authParams"`
-	AuthorizationEndpoint            pulumi.StringInput                                 `pulumi:"authorizationEndpoint"`
-	BruteForceProtection             pulumi.BoolInput                                   `pulumi:"bruteForceProtection"`
-	ClientId                         pulumi.StringInput                                 `pulumi:"clientId"`
-	ClientSecret                     pulumi.StringInput                                 `pulumi:"clientSecret"`
-	CommunityBaseUrl                 pulumi.StringInput                                 `pulumi:"communityBaseUrl"`
-	Configuration                    pulumi.MapInput                                    `pulumi:"configuration"`
-	ConnectionSettings               GetConnectionOptionConnectionSettingArrayInput     `pulumi:"connectionSettings"`
-	CustomScripts                    pulumi.StringMapInput                              `pulumi:"customScripts"`
-	Debug                            pulumi.BoolInput                                   `pulumi:"debug"`
-	DecryptionKeys                   GetConnectionOptionDecryptionKeyArrayInput         `pulumi:"decryptionKeys"`
-	DigestAlgorithm                  pulumi.StringInput                                 `pulumi:"digestAlgorithm"`
-	DisableCache                     pulumi.BoolInput                                   `pulumi:"disableCache"`
-	DisableSelfServiceChangePassword pulumi.BoolInput                                   `pulumi:"disableSelfServiceChangePassword"`
-	DisableSignOut                   pulumi.BoolInput                                   `pulumi:"disableSignOut"`
-	DisableSignup                    pulumi.BoolInput                                   `pulumi:"disableSignup"`
-	DiscoveryUrl                     pulumi.StringInput                                 `pulumi:"discoveryUrl"`
-	Domain                           pulumi.StringInput                                 `pulumi:"domain"`
-	DomainAliases                    pulumi.StringArrayInput                            `pulumi:"domainAliases"`
-	EnableScriptContext              pulumi.BoolInput                                   `pulumi:"enableScriptContext"`
-	EnabledDatabaseCustomization     pulumi.BoolInput                                   `pulumi:"enabledDatabaseCustomization"`
-	EntityId                         pulumi.StringInput                                 `pulumi:"entityId"`
-	FedMetadataXml                   pulumi.StringInput                                 `pulumi:"fedMetadataXml"`
-	FieldsMap                        pulumi.StringInput                                 `pulumi:"fieldsMap"`
-	ForwardRequestInfo               pulumi.BoolInput                                   `pulumi:"forwardRequestInfo"`
-	From                             pulumi.StringInput                                 `pulumi:"from"`
-	GatewayAuthentications           GetConnectionOptionGatewayAuthenticationArrayInput `pulumi:"gatewayAuthentications"`
-	GatewayUrl                       pulumi.StringInput                                 `pulumi:"gatewayUrl"`
-	IconUrl                          pulumi.StringInput                                 `pulumi:"iconUrl"`
-	IdentityApi                      pulumi.StringInput                                 `pulumi:"identityApi"`
-	IdpInitiateds                    GetConnectionOptionIdpInitiatedArrayInput          `pulumi:"idpInitiateds"`
-	ImportMode                       pulumi.BoolInput                                   `pulumi:"importMode"`
-	Ips                              pulumi.StringArrayInput                            `pulumi:"ips"`
-	Issuer                           pulumi.StringInput                                 `pulumi:"issuer"`
-	JwksUri                          pulumi.StringInput                                 `pulumi:"jwksUri"`
-	KeyId                            pulumi.StringInput                                 `pulumi:"keyId"`
-	MapUserIdToId                    pulumi.BoolInput                                   `pulumi:"mapUserIdToId"`
-	MaxGroupsToRetrieve              pulumi.StringInput                                 `pulumi:"maxGroupsToRetrieve"`
-	MessagingServiceSid              pulumi.StringInput                                 `pulumi:"messagingServiceSid"`
-	MetadataUrl                      pulumi.StringInput                                 `pulumi:"metadataUrl"`
-	MetadataXml                      pulumi.StringInput                                 `pulumi:"metadataXml"`
-	Mfas                             GetConnectionOptionMfaArrayInput                   `pulumi:"mfas"`
-	// The name of the connection. If not provided, `connectionId` must be set.
+	AdfsServer                         pulumi.StringInput                                    `pulumi:"adfsServer"`
+	AllowedAudiences                   pulumi.StringArrayInput                               `pulumi:"allowedAudiences"`
+	ApiEnableUsers                     pulumi.BoolInput                                      `pulumi:"apiEnableUsers"`
+	AppId                              pulumi.StringInput                                    `pulumi:"appId"`
+	AttributeMaps                      GetConnectionOptionAttributeMapArrayInput             `pulumi:"attributeMaps"`
+	AuthParams                         pulumi.StringMapInput                                 `pulumi:"authParams"`
+	AuthorizationEndpoint              pulumi.StringInput                                    `pulumi:"authorizationEndpoint"`
+	BruteForceProtection               pulumi.BoolInput                                      `pulumi:"bruteForceProtection"`
+	ClientId                           pulumi.StringInput                                    `pulumi:"clientId"`
+	ClientSecret                       pulumi.StringInput                                    `pulumi:"clientSecret"`
+	CommunityBaseUrl                   pulumi.StringInput                                    `pulumi:"communityBaseUrl"`
+	Configuration                      pulumi.MapInput                                       `pulumi:"configuration"`
+	ConnectionSettings                 GetConnectionOptionConnectionSettingArrayInput        `pulumi:"connectionSettings"`
+	CustomScripts                      pulumi.StringMapInput                                 `pulumi:"customScripts"`
+	Debug                              pulumi.BoolInput                                      `pulumi:"debug"`
+	DecryptionKeys                     GetConnectionOptionDecryptionKeyArrayInput            `pulumi:"decryptionKeys"`
+	DigestAlgorithm                    pulumi.StringInput                                    `pulumi:"digestAlgorithm"`
+	DisableCache                       pulumi.BoolInput                                      `pulumi:"disableCache"`
+	DisableSelfServiceChangePassword   pulumi.BoolInput                                      `pulumi:"disableSelfServiceChangePassword"`
+	DisableSignOut                     pulumi.BoolInput                                      `pulumi:"disableSignOut"`
+	DisableSignup                      pulumi.BoolInput                                      `pulumi:"disableSignup"`
+	DiscoveryUrl                       pulumi.StringInput                                    `pulumi:"discoveryUrl"`
+	Domain                             pulumi.StringInput                                    `pulumi:"domain"`
+	DomainAliases                      pulumi.StringArrayInput                               `pulumi:"domainAliases"`
+	EnableScriptContext                pulumi.BoolInput                                      `pulumi:"enableScriptContext"`
+	EnabledDatabaseCustomization       pulumi.BoolInput                                      `pulumi:"enabledDatabaseCustomization"`
+	EntityId                           pulumi.StringInput                                    `pulumi:"entityId"`
+	FedMetadataXml                     pulumi.StringInput                                    `pulumi:"fedMetadataXml"`
+	FieldsMap                          pulumi.StringInput                                    `pulumi:"fieldsMap"`
+	ForwardRequestInfo                 pulumi.BoolInput                                      `pulumi:"forwardRequestInfo"`
+	From                               pulumi.StringInput                                    `pulumi:"from"`
+	GatewayAuthentications             GetConnectionOptionGatewayAuthenticationArrayInput    `pulumi:"gatewayAuthentications"`
+	GatewayUrl                         pulumi.StringInput                                    `pulumi:"gatewayUrl"`
+	IconUrl                            pulumi.StringInput                                    `pulumi:"iconUrl"`
+	IdentityApi                        pulumi.StringInput                                    `pulumi:"identityApi"`
+	IdpInitiateds                      GetConnectionOptionIdpInitiatedArrayInput             `pulumi:"idpInitiateds"`
+	ImportMode                         pulumi.BoolInput                                      `pulumi:"importMode"`
+	Ips                                pulumi.StringArrayInput                               `pulumi:"ips"`
+	Issuer                             pulumi.StringInput                                    `pulumi:"issuer"`
+	JwksUri                            pulumi.StringInput                                    `pulumi:"jwksUri"`
+	KeyId                              pulumi.StringInput                                    `pulumi:"keyId"`
+	MapUserIdToId                      pulumi.BoolInput                                      `pulumi:"mapUserIdToId"`
+	MaxGroupsToRetrieve                pulumi.StringInput                                    `pulumi:"maxGroupsToRetrieve"`
+	MessagingServiceSid                pulumi.StringInput                                    `pulumi:"messagingServiceSid"`
+	MetadataUrl                        pulumi.StringInput                                    `pulumi:"metadataUrl"`
+	MetadataXml                        pulumi.StringInput                                    `pulumi:"metadataXml"`
+	Mfas                               GetConnectionOptionMfaArrayInput                      `pulumi:"mfas"`
 	Name                               pulumi.StringInput                                    `pulumi:"name"`
 	NonPersistentAttrs                 pulumi.StringArrayInput                               `pulumi:"nonPersistentAttrs"`
 	PasswordComplexityOptions          GetConnectionOptionPasswordComplexityOptionArrayInput `pulumi:"passwordComplexityOptions"`
@@ -31721,7 +32305,6 @@ func (o GetConnectionOptionOutput) Mfas() GetConnectionOptionMfaArrayOutput {
 	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionMfa { return v.Mfas }).(GetConnectionOptionMfaArrayOutput)
 }
 
-// The name of the connection. If not provided, `connectionId` must be set.
 func (o GetConnectionOptionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -34536,8 +35119,7 @@ func (o GetPagesLoginArrayOutput) Index(i pulumi.IntInput) GetPagesLoginOutput {
 
 type GetResourceServerScopeType struct {
 	Description string `pulumi:"description"`
-	// Friendly name for the resource server. Cannot include `<` or `>` characters.
-	Name string `pulumi:"name"`
+	Name        string `pulumi:"name"`
 }
 
 // GetResourceServerScopeTypeInput is an input type that accepts GetResourceServerScopeTypeArgs and GetResourceServerScopeTypeOutput values.
@@ -34553,8 +35135,7 @@ type GetResourceServerScopeTypeInput interface {
 
 type GetResourceServerScopeTypeArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
-	// Friendly name for the resource server. Cannot include `<` or `>` characters.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name        pulumi.StringInput `pulumi:"name"`
 }
 
 func (GetResourceServerScopeTypeArgs) ElementType() reflect.Type {
@@ -34630,7 +35211,6 @@ func (o GetResourceServerScopeTypeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceServerScopeType) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Friendly name for the resource server. Cannot include `<` or `>` characters.
 func (o GetResourceServerScopeTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceServerScopeType) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -34662,9 +35242,7 @@ func (o GetResourceServerScopeTypeArrayOutput) Index(i pulumi.IntInput) GetResou
 }
 
 type GetRolePermissionType struct {
-	// The description of the role.
-	Description string `pulumi:"description"`
-	// The name of the role. If not provided, `roleId` must be set.
+	Description              string `pulumi:"description"`
 	Name                     string `pulumi:"name"`
 	ResourceServerIdentifier string `pulumi:"resourceServerIdentifier"`
 	ResourceServerName       string `pulumi:"resourceServerName"`
@@ -34682,9 +35260,7 @@ type GetRolePermissionTypeInput interface {
 }
 
 type GetRolePermissionTypeArgs struct {
-	// The description of the role.
-	Description pulumi.StringInput `pulumi:"description"`
-	// The name of the role. If not provided, `roleId` must be set.
+	Description              pulumi.StringInput `pulumi:"description"`
 	Name                     pulumi.StringInput `pulumi:"name"`
 	ResourceServerIdentifier pulumi.StringInput `pulumi:"resourceServerIdentifier"`
 	ResourceServerName       pulumi.StringInput `pulumi:"resourceServerName"`
@@ -34759,12 +35335,10 @@ func (o GetRolePermissionTypeOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// The description of the role.
 func (o GetRolePermissionTypeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolePermissionType) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The name of the role. If not provided, `roleId` must be set.
 func (o GetRolePermissionTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolePermissionType) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -35456,8 +36030,7 @@ func (o GetTenantSessionCookyArrayOutput) Index(i pulumi.IntInput) GetTenantSess
 }
 
 type GetUserPermissionType struct {
-	Description string `pulumi:"description"`
-	// Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+	Description              string `pulumi:"description"`
 	Name                     string `pulumi:"name"`
 	ResourceServerIdentifier string `pulumi:"resourceServerIdentifier"`
 	ResourceServerName       string `pulumi:"resourceServerName"`
@@ -35475,8 +36048,7 @@ type GetUserPermissionTypeInput interface {
 }
 
 type GetUserPermissionTypeArgs struct {
-	Description pulumi.StringInput `pulumi:"description"`
-	// Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+	Description              pulumi.StringInput `pulumi:"description"`
 	Name                     pulumi.StringInput `pulumi:"name"`
 	ResourceServerIdentifier pulumi.StringInput `pulumi:"resourceServerIdentifier"`
 	ResourceServerName       pulumi.StringInput `pulumi:"resourceServerName"`
@@ -35555,7 +36127,6 @@ func (o GetUserPermissionTypeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserPermissionType) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
 func (o GetUserPermissionTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserPermissionType) string { return v.Name }).(pulumi.StringOutput)
 }

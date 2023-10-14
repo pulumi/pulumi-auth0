@@ -15,9 +15,17 @@ public final class ClientAddonsWamsArgs extends com.pulumi.resources.ResourceArg
 
     public static final ClientAddonsWamsArgs Empty = new ClientAddonsWamsArgs();
 
+    /**
+     * Your master key for Windows Azure Mobile Services.
+     * 
+     */
     @Import(name="masterKey")
     private @Nullable Output<String> masterKey;
 
+    /**
+     * @return Your master key for Windows Azure Mobile Services.
+     * 
+     */
     public Optional<Output<String>> masterKey() {
         return Optional.ofNullable(this.masterKey);
     }
@@ -46,11 +54,23 @@ public final class ClientAddonsWamsArgs extends com.pulumi.resources.ResourceArg
             $ = new ClientAddonsWamsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param masterKey Your master key for Windows Azure Mobile Services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder masterKey(@Nullable Output<String> masterKey) {
             $.masterKey = masterKey;
             return this;
         }
 
+        /**
+         * @param masterKey Your master key for Windows Azure Mobile Services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder masterKey(String masterKey) {
             return masterKey(Output.of(masterKey));
         }

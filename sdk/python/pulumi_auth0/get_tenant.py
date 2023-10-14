@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -14,6 +14,7 @@ __all__ = [
     'GetTenantResult',
     'AwaitableGetTenantResult',
     'get_tenant',
+    'get_tenant_output',
 ]
 
 @pulumi.output_type
@@ -297,3 +298,20 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
         sessions=pulumi.get(__ret__, 'sessions'),
         support_email=pulumi.get(__ret__, 'support_email'),
         support_url=pulumi.get(__ret__, 'support_url'))
+
+
+@_utilities.lift_output_func(get_tenant)
+def get_tenant_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTenantResult]:
+    """
+    Use this data source to access information about the tenant this provider is configured to access.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_tenant = auth0.get_tenant()
+    ```
+    """
+    ...

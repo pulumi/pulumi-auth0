@@ -466,7 +466,7 @@ type Connection struct {
 	IsDomainConnection pulumi.BoolOutput `pulumi:"isDomainConnection"`
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
-	// Name of the connection.
+	// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configuration settings for connection options.
 	Options ConnectionOptionsOutput `pulumi:"options"`
@@ -517,7 +517,7 @@ type connectionState struct {
 	IsDomainConnection *bool `pulumi:"isDomainConnection"`
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 	Metadata map[string]string `pulumi:"metadata"`
-	// Name of the connection.
+	// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
 	Name *string `pulumi:"name"`
 	// Configuration settings for connection options.
 	Options *ConnectionOptions `pulumi:"options"`
@@ -536,7 +536,7 @@ type ConnectionState struct {
 	IsDomainConnection pulumi.BoolPtrInput
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 	Metadata pulumi.StringMapInput
-	// Name of the connection.
+	// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
 	Name pulumi.StringPtrInput
 	// Configuration settings for connection options.
 	Options ConnectionOptionsPtrInput
@@ -559,7 +559,7 @@ type connectionArgs struct {
 	IsDomainConnection *bool `pulumi:"isDomainConnection"`
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 	Metadata map[string]string `pulumi:"metadata"`
-	// Name of the connection.
+	// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
 	Name *string `pulumi:"name"`
 	// Configuration settings for connection options.
 	Options *ConnectionOptions `pulumi:"options"`
@@ -579,7 +579,7 @@ type ConnectionArgs struct {
 	IsDomainConnection pulumi.BoolPtrInput
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 	Metadata pulumi.StringMapInput
-	// Name of the connection.
+	// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
 	Name pulumi.StringPtrInput
 	// Configuration settings for connection options.
 	Options ConnectionOptionsPtrInput
@@ -717,7 +717,7 @@ func (o ConnectionOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// Name of the connection.
+// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
 func (o ConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

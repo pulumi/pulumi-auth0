@@ -551,14 +551,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metadata);
     }
     /**
-     * Name of the connection.
+     * The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Name of the connection.
+     * @return The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
      * 
      */
     public Output<String> name() {

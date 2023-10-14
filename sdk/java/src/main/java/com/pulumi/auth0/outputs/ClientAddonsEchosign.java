@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddonsEchosign {
+    /**
+     * @return Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * 
+     */
     private @Nullable String domain;
 
     private ClientAddonsEchosign() {}
+    /**
+     * @return Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * 
+     */
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
     }

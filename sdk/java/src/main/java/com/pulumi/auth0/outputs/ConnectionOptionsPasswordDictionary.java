@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionOptionsPasswordDictionary {
+    /**
+     * @return Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+     * 
+     */
     private @Nullable List<String> dictionaries;
+    /**
+     * @return Indicates whether the password dictionary check is enabled for this connection.
+     * 
+     */
     private @Nullable Boolean enable;
 
     private ConnectionOptionsPasswordDictionary() {}
+    /**
+     * @return Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+     * 
+     */
     public List<String> dictionaries() {
         return this.dictionaries == null ? List.of() : this.dictionaries;
     }
+    /**
+     * @return Indicates whether the password dictionary check is enabled for this connection.
+     * 
+     */
     public Optional<Boolean> enable() {
         return Optional.ofNullable(this.enable);
     }

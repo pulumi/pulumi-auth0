@@ -13,9 +13,6 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetClientAddonSalesforceSandboxApiResult
     {
-        /// <summary>
-        /// The ID of the client. If not provided, `name` must be set.
-        /// </summary>
         public readonly string ClientId;
         public readonly string CommunityName;
         public readonly string CommunityUrlSection;

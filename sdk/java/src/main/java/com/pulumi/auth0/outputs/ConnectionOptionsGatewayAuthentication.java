@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionOptionsGatewayAuthentication {
+    /**
+     * @return Audience claim for the HS256 token sent to `gateway_url`.
+     * 
+     */
     private @Nullable String audience;
+    /**
+     * @return Authentication method (default is `bearer` token).
+     * 
+     */
     private @Nullable String method;
+    /**
+     * @return Secret used to sign the HS256 token sent to `gateway_url`.
+     * 
+     */
     private @Nullable String secret;
+    /**
+     * @return Specifies whether or not the secret is Base64-encoded.
+     * 
+     */
     private @Nullable Boolean secretBase64Encoded;
+    /**
+     * @return Subject claim for the HS256 token sent to `gateway_url`.
+     * 
+     */
     private @Nullable String subject;
 
     private ConnectionOptionsGatewayAuthentication() {}
+    /**
+     * @return Audience claim for the HS256 token sent to `gateway_url`.
+     * 
+     */
     public Optional<String> audience() {
         return Optional.ofNullable(this.audience);
     }
+    /**
+     * @return Authentication method (default is `bearer` token).
+     * 
+     */
     public Optional<String> method() {
         return Optional.ofNullable(this.method);
     }
+    /**
+     * @return Secret used to sign the HS256 token sent to `gateway_url`.
+     * 
+     */
     public Optional<String> secret() {
         return Optional.ofNullable(this.secret);
     }
+    /**
+     * @return Specifies whether or not the secret is Base64-encoded.
+     * 
+     */
     public Optional<Boolean> secretBase64Encoded() {
         return Optional.ofNullable(this.secretBase64Encoded);
     }
+    /**
+     * @return Subject claim for the HS256 token sent to `gateway_url`.
+     * 
+     */
     public Optional<String> subject() {
         return Optional.ofNullable(this.subject);
     }

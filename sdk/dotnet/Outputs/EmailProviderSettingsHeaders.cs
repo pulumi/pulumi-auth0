@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class EmailProviderSettingsHeaders
     {
+        /// <summary>
+        /// Disable or enable the default View Content Link for sensitive emails.
+        /// </summary>
         public readonly string? XMcViewContentLink;
+        /// <summary>
+        /// SES Configuration set to include when sending emails.
+        /// </summary>
         public readonly string? XSesConfigurationSet;
 
         [OutputConstructor]

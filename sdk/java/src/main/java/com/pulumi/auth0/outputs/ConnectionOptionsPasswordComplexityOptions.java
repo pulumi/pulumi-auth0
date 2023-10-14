@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionOptionsPasswordComplexityOptions {
+    /**
+     * @return Minimum number of characters allowed in passwords.
+     * 
+     */
     private @Nullable Integer minLength;
 
     private ConnectionOptionsPasswordComplexityOptions() {}
+    /**
+     * @return Minimum number of characters allowed in passwords.
+     * 
+     */
     public Optional<Integer> minLength() {
         return Optional.ofNullable(this.minLength);
     }

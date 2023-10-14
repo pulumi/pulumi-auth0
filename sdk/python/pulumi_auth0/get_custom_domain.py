@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -14,6 +14,7 @@ __all__ = [
     'GetCustomDomainResult',
     'AwaitableGetCustomDomainResult',
     'get_custom_domain',
+    'get_custom_domain_output',
 ]
 
 @pulumi.output_type
@@ -158,3 +159,11 @@ def get_custom_domain(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
         tls_policy=pulumi.get(__ret__, 'tls_policy'),
         type=pulumi.get(__ret__, 'type'),
         verifications=pulumi.get(__ret__, 'verifications'))
+
+
+@_utilities.lift_output_func(get_custom_domain)
+def get_custom_domain_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCustomDomainResult]:
+    """
+    Data source to retrieve the custom domain configuration.
+    """
+    ...

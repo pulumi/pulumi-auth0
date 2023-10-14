@@ -15,16 +15,32 @@ public final class ClientAddonsOffice365Args extends com.pulumi.resources.Resour
 
     public static final ClientAddonsOffice365Args Empty = new ClientAddonsOffice365Args();
 
+    /**
+     * Optional Auth0 database connection for testing an already-configured Office 365 tenant.
+     * 
+     */
     @Import(name="connection")
     private @Nullable Output<String> connection;
 
+    /**
+     * @return Optional Auth0 database connection for testing an already-configured Office 365 tenant.
+     * 
+     */
     public Optional<Output<String>> connection() {
         return Optional.ofNullable(this.connection);
     }
 
+    /**
+     * Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * 
+     */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
+    /**
+     * @return Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * 
+     */
     public Optional<Output<String>> domain() {
         return Optional.ofNullable(this.domain);
     }
@@ -54,20 +70,44 @@ public final class ClientAddonsOffice365Args extends com.pulumi.resources.Resour
             $ = new ClientAddonsOffice365Args(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param connection Optional Auth0 database connection for testing an already-configured Office 365 tenant.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connection(@Nullable Output<String> connection) {
             $.connection = connection;
             return this;
         }
 
+        /**
+         * @param connection Optional Auth0 database connection for testing an already-configured Office 365 tenant.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connection(String connection) {
             return connection(Output.of(connection));
         }
 
+        /**
+         * @param domain Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(@Nullable Output<String> domain) {
             $.domain = domain;
             return this;
         }
 
+        /**
+         * @param domain Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }

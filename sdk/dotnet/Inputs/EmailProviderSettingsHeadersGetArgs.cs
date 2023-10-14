@@ -12,9 +12,15 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class EmailProviderSettingsHeadersGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Disable or enable the default View Content Link for sensitive emails.
+        /// </summary>
         [Input("xMcViewContentLink")]
         public Input<string>? XMcViewContentLink { get; set; }
 
+        /// <summary>
+        /// SES Configuration set to include when sending emails.
+        /// </summary>
         [Input("xSesConfigurationSet")]
         public Input<string>? XSesConfigurationSet { get; set; }
 

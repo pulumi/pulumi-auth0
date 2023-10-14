@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ClientAddonsSlack
     {
+        /// <summary>
+        /// Slack team name.
+        /// </summary>
         public readonly string? Team;
 
         [OutputConstructor]
