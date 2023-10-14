@@ -185,7 +185,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).\n"
                 }
             },
             "type": "object",
@@ -290,10 +291,12 @@
         "auth0:index/AttackProtectionSuspiciousIpThrottlingPreLogin:AttackProtectionSuspiciousIpThrottlingPreLogin": {
             "properties": {
                 "maxAttempts": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.\n"
                 },
                 "rate": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.\n"
                 }
             },
             "type": "object",
@@ -309,10 +312,12 @@
         "auth0:index/AttackProtectionSuspiciousIpThrottlingPreUserRegistration:AttackProtectionSuspiciousIpThrottlingPreUserRegistration": {
             "properties": {
                 "maxAttempts": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.\n"
                 },
                 "rate": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.\n"
                 }
             },
             "type": "object",
@@ -532,10 +537,12 @@
         "auth0:index/BrandingThemeFontsBodyText:BrandingThemeFontsBodyText": {
             "properties": {
                 "bold": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Body text bold. Defaults to `false`.\n"
                 },
                 "size": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.\n"
                 }
             },
             "type": "object"
@@ -543,10 +550,12 @@
         "auth0:index/BrandingThemeFontsButtonsText:BrandingThemeFontsButtonsText": {
             "properties": {
                 "bold": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Body text bold. Defaults to `false`.\n"
                 },
                 "size": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.\n"
                 }
             },
             "type": "object"
@@ -554,10 +563,12 @@
         "auth0:index/BrandingThemeFontsInputLabels:BrandingThemeFontsInputLabels": {
             "properties": {
                 "bold": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Body text bold. Defaults to `false`.\n"
                 },
                 "size": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.\n"
                 }
             },
             "type": "object"
@@ -565,10 +576,12 @@
         "auth0:index/BrandingThemeFontsLinks:BrandingThemeFontsLinks": {
             "properties": {
                 "bold": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Body text bold. Defaults to `false`.\n"
                 },
                 "size": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.\n"
                 }
             },
             "type": "object"
@@ -576,10 +589,12 @@
         "auth0:index/BrandingThemeFontsSubtitle:BrandingThemeFontsSubtitle": {
             "properties": {
                 "bold": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Body text bold. Defaults to `false`.\n"
                 },
                 "size": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.\n"
                 }
             },
             "type": "object"
@@ -587,10 +602,12 @@
         "auth0:index/BrandingThemeFontsTitle:BrandingThemeFontsTitle": {
             "properties": {
                 "bold": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Body text bold. Defaults to `false`.\n"
                 },
                 "size": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.\n"
                 }
             },
             "type": "object"
@@ -773,13 +790,16 @@
         "auth0:index/ClientAddonsAws:ClientAddonsAws": {
             "properties": {
                 "lifetimeInSeconds": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "AWS token lifetime in seconds.\n"
                 },
                 "principal": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.\n"
                 },
                 "role": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.\n"
                 }
             },
             "type": "object"
@@ -787,43 +807,56 @@
         "auth0:index/ClientAddonsAzureBlob:ClientAddonsAzureBlob": {
             "properties": {
                 "accountName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.\n"
                 },
                 "blobDelete": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates if the issued token has permission to delete the blob.\n"
                 },
                 "blobName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Entity to request a token for, such as `my-blob`. If blank the computed SAS will apply to the entire storage container.\n"
                 },
                 "blobRead": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates if the issued token has permission to read the content, properties, metadata and block list. Use the blob as the source of a copy operation.\n"
                 },
                 "blobWrite": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.\n"
                 },
                 "containerDelete": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates if issued token has permission to delete any blob in the container.\n"
                 },
                 "containerList": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates if the issued token has permission to list blobs in the container.\n"
                 },
                 "containerName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Container to request a token for, such as `my-container`.\n"
                 },
                 "containerRead": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates if the issued token has permission to read the content, properties, metadata or block list of any blob in the container. Use any blob in the container as the source of a copy operation.\n"
                 },
                 "containerWrite": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates that for any blob in the container if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.\n"
                 },
                 "expiration": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Expiration in minutes for the generated token (default of 5 minutes).\n"
                 },
                 "signedIdentifier": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Shared access policy identifier defined in your storage account resource.\n"
                 },
                 "storageAccessKey": {
                     "type": "string",
+                    "description": "Access key associated with this storage account.\n",
                     "secret": true
                 }
             },
@@ -832,20 +865,25 @@
         "auth0:index/ClientAddonsAzureSb:ClientAddonsAzureSb": {
             "properties": {
                 "entityPath": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Entity you want to request a token for, such as `my-queue`.\n"
                 },
                 "expiration": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Expiration in minutes for the generated token (default of 5 minutes).\n"
                 },
                 "namespace": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).\n"
                 },
                 "sasKey": {
                     "type": "string",
+                    "description": "Primary Key associated with your shared access policy.\n",
                     "secret": true
                 },
                 "sasKeyName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Your shared access policy name defined in your Service Bus entity.\n"
                 }
             },
             "type": "object"
@@ -865,7 +903,8 @@
         "auth0:index/ClientAddonsEchosign:ClientAddonsEchosign": {
             "properties": {
                 "domain": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.\n"
                 }
             },
             "type": "object"
@@ -873,7 +912,8 @@
         "auth0:index/ClientAddonsEgnyte:ClientAddonsEgnyte": {
             "properties": {
                 "domain": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.\n"
                 }
             },
             "type": "object"
@@ -881,21 +921,26 @@
         "auth0:index/ClientAddonsFirebase:ClientAddonsFirebase": {
             "properties": {
                 "clientEmail": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).\n"
                 },
                 "lifetimeInSeconds": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "AWS token lifetime in seconds.\n"
                 },
                 "privateKey": {
                     "type": "string",
+                    "description": "Private Key for signing the token (SDK v3+ tokens only).\n",
                     "secret": true
                 },
                 "privateKeyId": {
                     "type": "string",
+                    "description": "Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).\n",
                     "secret": true
                 },
                 "secret": {
                     "type": "string",
+                    "description": "Google Firebase Secret. (SDK v2 only).\n",
                     "secret": true
                 }
             },
@@ -904,21 +949,26 @@
         "auth0:index/ClientAddonsLayer:ClientAddonsLayer": {
             "properties": {
                 "expiration": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Expiration in minutes for the generated token (default of 5 minutes).\n"
                 },
                 "keyId": {
                     "type": "string",
+                    "description": "Authentication Key identifier used to sign the Layer token.\n",
                     "secret": true
                 },
                 "principal": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.\n"
                 },
                 "privateKey": {
                     "type": "string",
+                    "description": "Private Key for signing the token (SDK v3+ tokens only).\n",
                     "secret": true
                 },
                 "providerId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Provider ID of your Layer account.\n"
                 }
             },
             "type": "object",
@@ -931,7 +981,8 @@
         "auth0:index/ClientAddonsMscrm:ClientAddonsMscrm": {
             "properties": {
                 "url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Microsoft Dynamics CRM application URL.\n"
                 }
             },
             "type": "object"
@@ -939,7 +990,8 @@
         "auth0:index/ClientAddonsNewrelic:ClientAddonsNewrelic": {
             "properties": {
                 "account": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.\n"
                 }
             },
             "type": "object"
@@ -947,10 +999,12 @@
         "auth0:index/ClientAddonsOffice365:ClientAddonsOffice365": {
             "properties": {
                 "connection": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Optional Auth0 database connection for testing an already-configured Office 365 tenant.\n"
                 },
                 "domain": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.\n"
                 }
             },
             "type": "object"
@@ -958,7 +1012,8 @@
         "auth0:index/ClientAddonsRms:ClientAddonsRms": {
             "properties": {
                 "url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Microsoft Dynamics CRM application URL.\n"
                 }
             },
             "type": "object"
@@ -966,7 +1021,8 @@
         "auth0:index/ClientAddonsSalesforce:ClientAddonsSalesforce": {
             "properties": {
                 "entityId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.\n"
                 }
             },
             "type": "object"
@@ -975,17 +1031,20 @@
             "properties": {
                 "clientId": {
                     "type": "string",
-                    "description": "The ID of the client.\n",
+                    "description": "Consumer Key assigned by Salesforce to the Connected App.\n",
                     "secret": true
                 },
                 "communityName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Community name.\n"
                 },
                 "communityUrlSection": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Community URL section.\n"
                 },
                 "principal": {
                     "type": "string",
+                    "description": "AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.\n",
                     "secret": true
                 }
             },
@@ -995,17 +1054,20 @@
             "properties": {
                 "clientId": {
                     "type": "string",
-                    "description": "The ID of the client.\n",
+                    "description": "Consumer Key assigned by Salesforce to the Connected App.\n",
                     "secret": true
                 },
                 "communityName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Community name.\n"
                 },
                 "communityUrlSection": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Community URL section.\n"
                 },
                 "principal": {
                     "type": "string",
+                    "description": "AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.\n",
                     "secret": true
                 }
             },
@@ -1014,73 +1076,94 @@
         "auth0:index/ClientAddonsSamlp:ClientAddonsSamlp": {
             "properties": {
                 "audience": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.\n"
                 },
                 "authnContextClassRef": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Class reference of the authentication context.\n"
                 },
                 "binding": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Protocol binding used for SAML logout responses.\n"
                 },
                 "createUpnClaim": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates whether a UPN claim should be created. Defaults to `true`.\n"
                 },
                 "destination": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.\n"
                 },
                 "digestAlgorithm": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.\n"
                 },
                 "includeAttributeNameFormat": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.\n"
                 },
                 "issuer": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Issuer of the SAML Assertion.\n"
                 },
                 "lifetimeInSeconds": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "AWS token lifetime in seconds.\n"
                 },
                 "logout": {
-                    "$ref": "#/types/auth0:index/ClientAddonsSamlpLogout:ClientAddonsSamlpLogout"
+                    "$ref": "#/types/auth0:index/ClientAddonsSamlpLogout:ClientAddonsSamlpLogout",
+                    "description": "Configuration settings for logout.\n"
                 },
                 "mapIdentities": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.\n"
                 },
                 "mapUnknownClaimsAsIs": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.\n"
                 },
                 "mappings": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
-                    }
+                    },
+                    "description": "Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).\n"
                 },
                 "nameIdentifierFormat": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.\n"
                 },
                 "nameIdentifierProbes": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.\n"
                 },
                 "passthroughClaimsWithNoMapping": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.\n"
                 },
                 "recipient": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.\n"
                 },
                 "signResponse": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.\n"
                 },
                 "signatureAlgorithm": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.\n"
                 },
                 "signingCert": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\\nMIGf...bpP/t3\\n+JGNGIRMj1hF1rnb6QIDAQAB\\n-----END PUBLIC KEY-----\\n`.\n"
                 },
                 "typedAttributes": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.\n"
                 }
             },
             "type": "object"
@@ -1088,10 +1171,12 @@
         "auth0:index/ClientAddonsSamlpLogout:ClientAddonsSamlpLogout": {
             "properties": {
                 "callback": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The service provider (client application)'s Single Logout Service URL, where Auth0 will send logout requests and responses.\n"
                 },
                 "sloEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Controls whether Auth0 should notify service providers of session termination.\n"
                 }
             },
             "type": "object"
@@ -1100,23 +1185,28 @@
             "properties": {
                 "clientId": {
                     "type": "string",
-                    "description": "The ID of the client.\n"
+                    "description": "Consumer Key assigned by Salesforce to the Connected App.\n"
                 },
                 "nameIdentifierFormat": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.\n"
                 },
                 "scope": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Requested scope for SAP APIs.\n"
                 },
                 "servicePassword": {
                     "type": "string",
+                    "description": "Service account password to use to authenticate API calls to the token endpoint.\n",
                     "secret": true
                 },
                 "tokenEndpointUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The OAuth2 token endpoint URL of your SAP OData server.\n"
                 },
                 "usernameAttribute": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the property in the user object that maps to a SAP username, for example `email`.\n"
                 }
             },
             "type": "object"
@@ -1124,10 +1214,12 @@
         "auth0:index/ClientAddonsSentry:ClientAddonsSentry": {
             "properties": {
                 "baseUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "URL prefix only if running Sentry Community Edition, otherwise leave empty.\n"
                 },
                 "orgSlug": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.\n"
                 }
             },
             "type": "object"
@@ -1138,10 +1230,12 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "External SharePoint application URLs if exposed to the Internet.\n"
                 },
                 "url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Microsoft Dynamics CRM application URL.\n"
                 }
             },
             "type": "object"
@@ -1149,7 +1243,8 @@
         "auth0:index/ClientAddonsSlack:ClientAddonsSlack": {
             "properties": {
                 "team": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Slack team name.\n"
                 }
             },
             "type": "object"
@@ -1157,7 +1252,8 @@
         "auth0:index/ClientAddonsSpringcm:ClientAddonsSpringcm": {
             "properties": {
                 "acsUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.\n"
                 }
             },
             "type": "object"
@@ -1166,10 +1262,11 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the client.\n"
+                    "description": "SSO integration name.\n"
                 },
                 "version": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "SSO integration version installed.\n"
                 }
             },
             "type": "object"
@@ -1178,6 +1275,7 @@
             "properties": {
                 "masterKey": {
                     "type": "string",
+                    "description": "Your master key for Windows Azure Mobile Services.\n",
                     "secret": true
                 }
             },
@@ -1189,7 +1287,8 @@
         "auth0:index/ClientAddonsZendesk:ClientAddonsZendesk": {
             "properties": {
                 "accountName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.\n"
                 }
             },
             "type": "object"
@@ -1197,7 +1296,8 @@
         "auth0:index/ClientAddonsZoom:ClientAddonsZoom": {
             "properties": {
                 "account": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.\n"
                 }
             },
             "type": "object"
@@ -1221,39 +1321,48 @@
             "properties": {
                 "algorithm": {
                     "type": "string",
+                    "description": "Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.\n",
                     "willReplaceOnChanges": true
                 },
                 "createdAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ISO 8601 formatted date the credential was created.\n"
                 },
                 "credentialType": {
                     "type": "string",
+                    "description": "Credential type. Supported types: `public_key`.\n",
                     "willReplaceOnChanges": true
                 },
                 "expiresAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.\n"
                 },
                 "id": {
                     "type": "string",
-                    "description": "The ID of this resource.\n"
+                    "description": "The ID of the client credential.\n"
                 },
                 "keyId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The key identifier of the credential, generated on creation.\n"
                 },
                 "name": {
                     "type": "string",
+                    "description": "Friendly name for a credential.\n",
                     "willReplaceOnChanges": true
                 },
                 "parseExpiryFromCert": {
                     "type": "boolean",
+                    "description": "Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.\n",
                     "willReplaceOnChanges": true
                 },
                 "pem": {
                     "type": "string",
+                    "description": "PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.\n",
                     "willReplaceOnChanges": true
                 },
                 "updatedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ISO 8601 formatted date the credential was updated.\n"
                 }
             },
             "type": "object",
@@ -1869,13 +1978,16 @@
         "auth0:index/ConnectionOptionsAttributeMap:ConnectionOptionsAttributeMap": {
             "properties": {
                 "attributes": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.\n"
                 },
                 "mappingMode": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Method used to map incoming claims. Possible values: `use_map`, `bind_all` or `basic_profile`.\n"
                 },
                 "userinfoScope": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.\n"
                 }
             },
             "type": "object",
@@ -1886,7 +1998,8 @@
         "auth0:index/ConnectionOptionsConnectionSettings:ConnectionOptionsConnectionSettings": {
             "properties": {
                 "pkce": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).\n"
                 }
             },
             "type": "object",
@@ -1912,20 +2025,25 @@
         "auth0:index/ConnectionOptionsGatewayAuthentication:ConnectionOptionsGatewayAuthentication": {
             "properties": {
                 "audience": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Audience claim for the HS256 token sent to `gateway_url`.\n"
                 },
                 "method": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Authentication method (default is `bearer` token).\n"
                 },
                 "secret": {
                     "type": "string",
+                    "description": "Secret used to sign the HS256 token sent to `gateway_url`.\n",
                     "secret": true
                 },
                 "secretBase64Encoded": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Specifies whether or not the secret is Base64-encoded.\n"
                 },
                 "subject": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Subject claim for the HS256 token sent to `gateway_url`.\n"
                 }
             },
             "type": "object"
@@ -1936,7 +2054,8 @@
                     "type": "string"
                 },
                 "clientId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The strategy's client ID.\n"
                 },
                 "clientProtocol": {
                     "type": "string"
@@ -1947,10 +2066,12 @@
         "auth0:index/ConnectionOptionsMfa:ConnectionOptionsMfa": {
             "properties": {
                 "active": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates whether multifactor authentication is enabled for this connection.\n"
                 },
                 "returnEnrollSettings": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates whether multifactor authentication enrollment settings will be returned.\n"
                 }
             },
             "type": "object"
@@ -1958,7 +2079,8 @@
         "auth0:index/ConnectionOptionsPasswordComplexityOptions:ConnectionOptionsPasswordComplexityOptions": {
             "properties": {
                 "minLength": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum number of characters allowed in passwords.\n"
                 }
             },
             "type": "object"
@@ -1969,10 +2091,12 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.\n"
                 },
                 "enable": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates whether the password dictionary check is enabled for this connection.\n"
                 }
             },
             "type": "object"
@@ -1980,7 +2104,8 @@
         "auth0:index/ConnectionOptionsPasswordHistory:ConnectionOptionsPasswordHistory": {
             "properties": {
                 "enable": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates whether the password dictionary check is enabled for this connection.\n"
                 },
                 "size": {
                     "type": "integer"
@@ -1991,7 +2116,8 @@
         "auth0:index/ConnectionOptionsPasswordNoPersonalInfo:ConnectionOptionsPasswordNoPersonalInfo": {
             "properties": {
                 "enable": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates whether the password dictionary check is enabled for this connection.\n"
                 }
             },
             "type": "object"
@@ -2014,10 +2140,12 @@
         "auth0:index/ConnectionOptionsTotp:ConnectionOptionsTotp": {
             "properties": {
                 "length": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Length of the one-time password.\n"
                 },
                 "timeStep": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Seconds between allowed generation of new passwords.\n"
                 }
             },
             "type": "object"
@@ -2025,7 +2153,8 @@
         "auth0:index/ConnectionOptionsValidation:ConnectionOptionsValidation": {
             "properties": {
                 "username": {
-                    "$ref": "#/types/auth0:index/ConnectionOptionsValidationUsername:ConnectionOptionsValidationUsername"
+                    "$ref": "#/types/auth0:index/ConnectionOptionsValidationUsername:ConnectionOptionsValidationUsername",
+                    "description": "Specifies the `min` and `max` values of username length.\n"
                 }
             },
             "type": "object"
@@ -2140,10 +2269,12 @@
         "auth0:index/EmailProviderSettingsHeaders:EmailProviderSettingsHeaders": {
             "properties": {
                 "xMcViewContentLink": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Disable or enable the default View Content Link for sensitive emails.\n"
                 },
                 "xSesConfigurationSet": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "SES Configuration set to include when sending emails.\n"
                 }
             },
             "type": "object"
@@ -2151,10 +2282,12 @@
         "auth0:index/EmailProviderSettingsMessage:EmailProviderSettingsMessage": {
             "properties": {
                 "configurationSetName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Setting for the `ses` email provider. The name of the configuration set to apply to the sent emails.\n"
                 },
                 "viewContentLink": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Setting for the `mandrill` email provider. Set to `true` to see the content of individual emails sent to users.\n"
                 }
             },
             "type": "object"
@@ -2223,22 +2356,28 @@
             "properties": {
                 "authToken": {
                     "type": "string",
+                    "description": "AuthToken for your Twilio account.\n",
                     "secret": true
                 },
                 "enrollmentMessage": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).\n"
                 },
                 "from": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Phone number to use as the sender.\n"
                 },
                 "messagingServiceSid": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Messaging service SID.\n"
                 },
                 "sid": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "SID for your Twilio account.\n"
                 },
                 "verificationMessage": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "This message will be sent whenever a user logs in after the enrollment. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).\n"
                 }
             },
             "type": "object"
@@ -2289,20 +2428,25 @@
         "auth0:index/GuardianPushAmazonSns:GuardianPushAmazonSns": {
             "properties": {
                 "awsAccessKeyId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Your AWS Access Key ID.\n"
                 },
                 "awsRegion": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Your AWS application's region.\n"
                 },
                 "awsSecretAccessKey": {
                     "type": "string",
+                    "description": "Your AWS Secret Access Key.\n",
                     "secret": true
                 },
                 "snsApnsPlatformApplicationArn": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Amazon Resource Name for your Apple Push Notification Service.\n"
                 },
                 "snsGcmPlatformApplicationArn": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Amazon Resource Name for your Firebase Cloud Messaging Service.\n"
                 }
             },
             "type": "object",
@@ -2317,13 +2461,16 @@
         "auth0:index/GuardianPushCustomApp:GuardianPushCustomApp": {
             "properties": {
                 "appName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Custom Application Name.\n"
                 },
                 "appleAppLink": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Apple App Store URL. Must be HTTPS or an empty string.\n"
                 },
                 "googleAppLink": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Google Store URL. Must be HTTPS or an empty string.\n"
                 }
             },
             "type": "object"
@@ -2331,17 +2478,21 @@
         "auth0:index/GuardianPushDirectApns:GuardianPushDirectApns": {
             "properties": {
                 "bundleId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Apple Push Notification service Bundle ID.\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicates whether Duo MFA is enabled.\n"
                 },
                 "p12": {
                     "type": "string",
+                    "description": "The base64 encoded certificate in P12 format.\n",
                     "secret": true
                 },
                 "sandbox": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Set to true to use the sandbox iOS app environment, otherwise set to false to use the production iOS app environment.\n"
                 }
             },
             "type": "object",
@@ -2365,6 +2516,7 @@
             "properties": {
                 "serverKey": {
                     "type": "string",
+                    "description": "The Firebase Cloud Messaging Server Key. For security purposes, we don’t retrieve your existing FCM server key to check for drift.\n",
                     "secret": true
                 }
             },
@@ -4053,8 +4205,7 @@
         "auth0:index/getClientAddonSalesforceApi:getClientAddonSalesforceApi": {
             "properties": {
                 "clientId": {
-                    "type": "string",
-                    "description": "The ID of the client. If not provided, `name` must be set.\n"
+                    "type": "string"
                 },
                 "communityName": {
                     "type": "string"
@@ -4082,8 +4233,7 @@
         "auth0:index/getClientAddonSalesforceSandboxApi:getClientAddonSalesforceSandboxApi": {
             "properties": {
                 "clientId": {
-                    "type": "string",
-                    "description": "The ID of the client. If not provided, `name` must be set.\n"
+                    "type": "string"
                 },
                 "communityName": {
                     "type": "string"
@@ -4236,8 +4386,7 @@
         "auth0:index/getClientAddonSapApi:getClientAddonSapApi": {
             "properties": {
                 "clientId": {
-                    "type": "string",
-                    "description": "The ID of the client. If not provided, `name` must be set.\n"
+                    "type": "string"
                 },
                 "nameIdentifierFormat": {
                     "type": "string"
@@ -4348,8 +4497,7 @@
         "auth0:index/getClientAddonSsoIntegration:getClientAddonSsoIntegration": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "description": "The name of the client. If not provided, `client_id` must be set.\n"
+                    "type": "string"
                 },
                 "version": {
                     "type": "string"
@@ -4795,8 +4943,7 @@
                     }
                 },
                 "name": {
-                    "type": "string",
-                    "description": "The name of the connection. If not provided, `connection_id` must be set.\n"
+                    "type": "string"
                 },
                 "nonPersistentAttrs": {
                     "type": "array",
@@ -5496,8 +5643,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "Friendly name for the resource server. Cannot include `\u003c` or `\u003e` characters.\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -5514,12 +5660,10 @@
         "auth0:index/getRolePermission:getRolePermission": {
             "properties": {
                 "description": {
-                    "type": "string",
-                    "description": "The description of the role.\n"
+                    "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "The name of the role. If not provided, `role_id` must be set.\n"
+                    "type": "string"
                 },
                 "resourceServerIdentifier": {
                     "type": "string"
@@ -5731,8 +5875,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).\n"
+                    "type": "string"
                 },
                 "resourceServerIdentifier": {
                     "type": "string"
@@ -5836,7 +5979,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the action.\n"
+                    "description": "Dependency name, e.g. `lodash`.\n"
                 },
                 "runtime": {
                     "type": "string",
@@ -5883,7 +6026,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the action.\n"
+                    "description": "Dependency name, e.g. `lodash`.\n"
                 },
                 "runtime": {
                     "type": "string",
@@ -5925,7 +6068,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the action.\n"
+                        "description": "Dependency name, e.g. `lodash`.\n"
                     },
                     "runtime": {
                         "type": "string",
@@ -6215,7 +6358,7 @@
                 },
                 "clientId": {
                     "type": "string",
-                    "description": "The ID of the client.\n"
+                    "description": "Consumer Key assigned by Salesforce to the Connected App.\n"
                 },
                 "clientMetadata": {
                     "type": "object",
@@ -6289,7 +6432,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the client.\n"
+                    "description": "SSO integration name.\n"
                 },
                 "nativeSocialLogin": {
                     "$ref": "#/types/auth0:index/ClientNativeSocialLogin:ClientNativeSocialLogin",
@@ -6480,7 +6623,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the client.\n"
+                    "description": "SSO integration name.\n"
                 },
                 "nativeSocialLogin": {
                     "$ref": "#/types/auth0:index/ClientNativeSocialLogin:ClientNativeSocialLogin",
@@ -6577,7 +6720,7 @@
                     },
                     "clientId": {
                         "type": "string",
-                        "description": "The ID of the client.\n"
+                        "description": "Consumer Key assigned by Salesforce to the Connected App.\n"
                     },
                     "clientMetadata": {
                         "type": "object",
@@ -6651,7 +6794,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the client.\n"
+                        "description": "SSO integration name.\n"
                     },
                     "nativeSocialLogin": {
                         "$ref": "#/types/auth0:index/ClientNativeSocialLogin:ClientNativeSocialLogin",
@@ -6881,7 +7024,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the connection.\n"
+                    "description": "The public name of the email or SMS Connection. In most cases this is the same name as the connection name.\n"
                 },
                 "options": {
                     "$ref": "#/types/auth0:index/ConnectionOptions:ConnectionOptions",
@@ -6928,7 +7071,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the connection.\n",
+                    "description": "The public name of the email or SMS Connection. In most cases this is the same name as the connection name.\n",
                     "willReplaceOnChanges": true
                 },
                 "options": {
@@ -6975,7 +7118,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the connection.\n",
+                        "description": "The public name of the email or SMS Connection. In most cases this is the same name as the connection name.\n",
                         "willReplaceOnChanges": true
                     },
                     "options": {
@@ -10111,12 +10254,10 @@
                 "description": "A collection of arguments for invoking getClient.\n",
                 "properties": {
                     "clientId": {
-                        "type": "string",
-                        "description": "The ID of the client. If not provided, `name` must be set.\n"
+                        "type": "string"
                     },
                     "name": {
-                        "type": "string",
-                        "description": "The name of the client. If not provided, `client_id` must be set.\n"
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -10379,8 +10520,7 @@
                         "description": "The ID of the connection. If not provided, `name` must be set.\n"
                     },
                     "name": {
-                        "type": "string",
-                        "description": "The name of the connection. If not provided, `connection_id` must be set.\n"
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -10742,8 +10882,7 @@
                 "description": "A collection of arguments for invoking getRole.\n",
                 "properties": {
                     "name": {
-                        "type": "string",
-                        "description": "The name of the role. If not provided, `role_id` must be set.\n"
+                        "type": "string"
                     },
                     "roleId": {
                         "type": "string",
