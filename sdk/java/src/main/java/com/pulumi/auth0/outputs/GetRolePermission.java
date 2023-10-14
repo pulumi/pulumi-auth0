@@ -9,31 +9,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRolePermission {
-    /**
-     * @return The description of the role.
-     * 
-     */
     private String description;
-    /**
-     * @return The name of the role. If not provided, `role_id` must be set.
-     * 
-     */
     private String name;
     private String resourceServerIdentifier;
     private String resourceServerName;
 
     private GetRolePermission() {}
-    /**
-     * @return The description of the role.
-     * 
-     */
     public String description() {
         return this.description;
     }
-    /**
-     * @return The name of the role. If not provided, `role_id` must be set.
-     * 
-     */
     public String name() {
         return this.name;
     }

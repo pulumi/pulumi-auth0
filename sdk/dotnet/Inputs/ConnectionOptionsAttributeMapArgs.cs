@@ -12,12 +12,21 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ConnectionOptionsAttributeMapArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+        /// </summary>
         [Input("attributes")]
         public Input<string>? Attributes { get; set; }
 
+        /// <summary>
+        /// Method used to map incoming claims. Possible values: `use_map`, `bind_all` or `basic_profile`.
+        /// </summary>
         [Input("mappingMode", required: true)]
         public Input<string> MappingMode { get; set; } = null!;
 
+        /// <summary>
+        /// This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
+        /// </summary>
         [Input("userinfoScope")]
         public Input<string>? UserinfoScope { get; set; }
 

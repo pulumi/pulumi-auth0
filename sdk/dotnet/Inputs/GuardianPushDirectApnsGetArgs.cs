@@ -12,14 +12,24 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class GuardianPushDirectApnsGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Apple Push Notification service Bundle ID.
+        /// </summary>
         [Input("bundleId", required: true)]
         public Input<string> BundleId { get; set; } = null!;
 
+        /// <summary>
+        /// Indicates whether Duo MFA is enabled.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("p12", required: true)]
         private Input<string>? _p12;
+
+        /// <summary>
+        /// The base64 encoded certificate in P12 format.
+        /// </summary>
         public Input<string>? P12
         {
             get => _p12;
@@ -30,6 +40,9 @@ namespace Pulumi.Auth0.Inputs
             }
         }
 
+        /// <summary>
+        /// Set to true to use the sandbox iOS app environment, otherwise set to false to use the production iOS app environment.
+        /// </summary>
         [Input("sandbox", required: true)]
         public Input<bool> Sandbox { get; set; } = null!;
 

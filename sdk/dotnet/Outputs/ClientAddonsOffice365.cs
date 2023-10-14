@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ClientAddonsOffice365
     {
+        /// <summary>
+        /// Optional Auth0 database connection for testing an already-configured Office 365 tenant.
+        /// </summary>
         public readonly string? Connection;
+        /// <summary>
+        /// Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+        /// </summary>
         public readonly string? Domain;
 
         [OutputConstructor]

@@ -9,18 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonSsoIntegration {
-    /**
-     * @return The name of the client. If not provided, `client_id` must be set.
-     * 
-     */
     private String name;
     private String version;
 
     private GetClientAddonSsoIntegration() {}
-    /**
-     * @return The name of the client. If not provided, `client_id` must be set.
-     * 
-     */
     public String name() {
         return this.name;
     }

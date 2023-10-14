@@ -15,9 +15,17 @@ public final class ClientAddonsSpringcmArgs extends com.pulumi.resources.Resourc
 
     public static final ClientAddonsSpringcmArgs Empty = new ClientAddonsSpringcmArgs();
 
+    /**
+     * SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
+     * 
+     */
     @Import(name="acsUrl")
     private @Nullable Output<String> acsUrl;
 
+    /**
+     * @return SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
+     * 
+     */
     public Optional<Output<String>> acsUrl() {
         return Optional.ofNullable(this.acsUrl);
     }
@@ -46,11 +54,23 @@ public final class ClientAddonsSpringcmArgs extends com.pulumi.resources.Resourc
             $ = new ClientAddonsSpringcmArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param acsUrl SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder acsUrl(@Nullable Output<String> acsUrl) {
             $.acsUrl = acsUrl;
             return this;
         }
 
+        /**
+         * @param acsUrl SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder acsUrl(String acsUrl) {
             return acsUrl(Output.of(acsUrl));
         }

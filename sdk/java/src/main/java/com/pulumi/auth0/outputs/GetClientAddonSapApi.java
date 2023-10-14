@@ -9,10 +9,6 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonSapApi {
-    /**
-     * @return The ID of the client. If not provided, `name` must be set.
-     * 
-     */
     private String clientId;
     private String nameIdentifierFormat;
     private String scope;
@@ -21,10 +17,6 @@ public final class GetClientAddonSapApi {
     private String usernameAttribute;
 
     private GetClientAddonSapApi() {}
-    /**
-     * @return The ID of the client. If not provided, `name` must be set.
-     * 
-     */
     public String clientId() {
         return this.clientId;
     }

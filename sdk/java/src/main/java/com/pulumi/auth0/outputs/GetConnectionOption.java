@@ -74,10 +74,6 @@ public final class GetConnectionOption {
     private String metadataUrl;
     private String metadataXml;
     private List<GetConnectionOptionMfa> mfas;
-    /**
-     * @return The name of the connection. If not provided, `connection_id` must be set.
-     * 
-     */
     private String name;
     private List<String> nonPersistentAttrs;
     private List<GetConnectionOptionPasswordComplexityOption> passwordComplexityOptions;
@@ -264,10 +260,6 @@ public final class GetConnectionOption {
     public List<GetConnectionOptionMfa> mfas() {
         return this.mfas;
     }
-    /**
-     * @return The name of the connection. If not provided, `connection_id` must be set.
-     * 
-     */
     public String name() {
         return this.name;
     }

@@ -16,37 +16,61 @@ public final class ClientAddonsSalesforceApiArgs extends com.pulumi.resources.Re
     public static final ClientAddonsSalesforceApiArgs Empty = new ClientAddonsSalesforceApiArgs();
 
     /**
-     * The ID of the client.
+     * Consumer Key assigned by Salesforce to the Connected App.
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return The ID of the client.
+     * @return Consumer Key assigned by Salesforce to the Connected App.
      * 
      */
     public Optional<Output<String>> clientId() {
         return Optional.ofNullable(this.clientId);
     }
 
+    /**
+     * Community name.
+     * 
+     */
     @Import(name="communityName")
     private @Nullable Output<String> communityName;
 
+    /**
+     * @return Community name.
+     * 
+     */
     public Optional<Output<String>> communityName() {
         return Optional.ofNullable(this.communityName);
     }
 
+    /**
+     * Community URL section.
+     * 
+     */
     @Import(name="communityUrlSection")
     private @Nullable Output<String> communityUrlSection;
 
+    /**
+     * @return Community URL section.
+     * 
+     */
     public Optional<Output<String>> communityUrlSection() {
         return Optional.ofNullable(this.communityUrlSection);
     }
 
+    /**
+     * AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * 
+     */
     @Import(name="principal")
     private @Nullable Output<String> principal;
 
+    /**
+     * @return AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * 
+     */
     public Optional<Output<String>> principal() {
         return Optional.ofNullable(this.principal);
     }
@@ -79,7 +103,7 @@ public final class ClientAddonsSalesforceApiArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param clientId The ID of the client.
+         * @param clientId Consumer Key assigned by Salesforce to the Connected App.
          * 
          * @return builder
          * 
@@ -90,7 +114,7 @@ public final class ClientAddonsSalesforceApiArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param clientId The ID of the client.
+         * @param clientId Consumer Key assigned by Salesforce to the Connected App.
          * 
          * @return builder
          * 
@@ -99,29 +123,65 @@ public final class ClientAddonsSalesforceApiArgs extends com.pulumi.resources.Re
             return clientId(Output.of(clientId));
         }
 
+        /**
+         * @param communityName Community name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder communityName(@Nullable Output<String> communityName) {
             $.communityName = communityName;
             return this;
         }
 
+        /**
+         * @param communityName Community name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder communityName(String communityName) {
             return communityName(Output.of(communityName));
         }
 
+        /**
+         * @param communityUrlSection Community URL section.
+         * 
+         * @return builder
+         * 
+         */
         public Builder communityUrlSection(@Nullable Output<String> communityUrlSection) {
             $.communityUrlSection = communityUrlSection;
             return this;
         }
 
+        /**
+         * @param communityUrlSection Community URL section.
+         * 
+         * @return builder
+         * 
+         */
         public Builder communityUrlSection(String communityUrlSection) {
             return communityUrlSection(Output.of(communityUrlSection));
         }
 
+        /**
+         * @param principal AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder principal(@Nullable Output<String> principal) {
             $.principal = principal;
             return this;
         }
 
+        /**
+         * @param principal AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder principal(String principal) {
             return principal(Output.of(principal));
         }

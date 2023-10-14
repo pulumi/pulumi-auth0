@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ResourceServerArgs', 'ResourceServer']
@@ -39,27 +39,56 @@ class ResourceServerArgs:
         :param pulumi.Input[int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
         """
-        pulumi.set(__self__, "identifier", identifier)
+        ResourceServerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            identifier=identifier,
+            allow_offline_access=allow_offline_access,
+            enforce_policies=enforce_policies,
+            name=name,
+            signing_alg=signing_alg,
+            signing_secret=signing_secret,
+            skip_consent_for_verifiable_first_party_clients=skip_consent_for_verifiable_first_party_clients,
+            token_dialect=token_dialect,
+            token_lifetime=token_lifetime,
+            token_lifetime_for_web=token_lifetime_for_web,
+            verification_location=verification_location,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             identifier: pulumi.Input[str],
+             allow_offline_access: Optional[pulumi.Input[bool]] = None,
+             enforce_policies: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             signing_alg: Optional[pulumi.Input[str]] = None,
+             signing_secret: Optional[pulumi.Input[str]] = None,
+             skip_consent_for_verifiable_first_party_clients: Optional[pulumi.Input[bool]] = None,
+             token_dialect: Optional[pulumi.Input[str]] = None,
+             token_lifetime: Optional[pulumi.Input[int]] = None,
+             token_lifetime_for_web: Optional[pulumi.Input[int]] = None,
+             verification_location: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("identifier", identifier)
         if allow_offline_access is not None:
-            pulumi.set(__self__, "allow_offline_access", allow_offline_access)
+            _setter("allow_offline_access", allow_offline_access)
         if enforce_policies is not None:
-            pulumi.set(__self__, "enforce_policies", enforce_policies)
+            _setter("enforce_policies", enforce_policies)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if signing_alg is not None:
-            pulumi.set(__self__, "signing_alg", signing_alg)
+            _setter("signing_alg", signing_alg)
         if signing_secret is not None:
-            pulumi.set(__self__, "signing_secret", signing_secret)
+            _setter("signing_secret", signing_secret)
         if skip_consent_for_verifiable_first_party_clients is not None:
-            pulumi.set(__self__, "skip_consent_for_verifiable_first_party_clients", skip_consent_for_verifiable_first_party_clients)
+            _setter("skip_consent_for_verifiable_first_party_clients", skip_consent_for_verifiable_first_party_clients)
         if token_dialect is not None:
-            pulumi.set(__self__, "token_dialect", token_dialect)
+            _setter("token_dialect", token_dialect)
         if token_lifetime is not None:
-            pulumi.set(__self__, "token_lifetime", token_lifetime)
+            _setter("token_lifetime", token_lifetime)
         if token_lifetime_for_web is not None:
-            pulumi.set(__self__, "token_lifetime_for_web", token_lifetime_for_web)
+            _setter("token_lifetime_for_web", token_lifetime_for_web)
         if verification_location is not None:
-            pulumi.set(__self__, "verification_location", verification_location)
+            _setter("verification_location", verification_location)
 
     @property
     @pulumi.getter
@@ -222,28 +251,57 @@ class _ResourceServerState:
         :param pulumi.Input[int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
         """
+        _ResourceServerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_offline_access=allow_offline_access,
+            enforce_policies=enforce_policies,
+            identifier=identifier,
+            name=name,
+            signing_alg=signing_alg,
+            signing_secret=signing_secret,
+            skip_consent_for_verifiable_first_party_clients=skip_consent_for_verifiable_first_party_clients,
+            token_dialect=token_dialect,
+            token_lifetime=token_lifetime,
+            token_lifetime_for_web=token_lifetime_for_web,
+            verification_location=verification_location,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_offline_access: Optional[pulumi.Input[bool]] = None,
+             enforce_policies: Optional[pulumi.Input[bool]] = None,
+             identifier: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             signing_alg: Optional[pulumi.Input[str]] = None,
+             signing_secret: Optional[pulumi.Input[str]] = None,
+             skip_consent_for_verifiable_first_party_clients: Optional[pulumi.Input[bool]] = None,
+             token_dialect: Optional[pulumi.Input[str]] = None,
+             token_lifetime: Optional[pulumi.Input[int]] = None,
+             token_lifetime_for_web: Optional[pulumi.Input[int]] = None,
+             verification_location: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allow_offline_access is not None:
-            pulumi.set(__self__, "allow_offline_access", allow_offline_access)
+            _setter("allow_offline_access", allow_offline_access)
         if enforce_policies is not None:
-            pulumi.set(__self__, "enforce_policies", enforce_policies)
+            _setter("enforce_policies", enforce_policies)
         if identifier is not None:
-            pulumi.set(__self__, "identifier", identifier)
+            _setter("identifier", identifier)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if signing_alg is not None:
-            pulumi.set(__self__, "signing_alg", signing_alg)
+            _setter("signing_alg", signing_alg)
         if signing_secret is not None:
-            pulumi.set(__self__, "signing_secret", signing_secret)
+            _setter("signing_secret", signing_secret)
         if skip_consent_for_verifiable_first_party_clients is not None:
-            pulumi.set(__self__, "skip_consent_for_verifiable_first_party_clients", skip_consent_for_verifiable_first_party_clients)
+            _setter("skip_consent_for_verifiable_first_party_clients", skip_consent_for_verifiable_first_party_clients)
         if token_dialect is not None:
-            pulumi.set(__self__, "token_dialect", token_dialect)
+            _setter("token_dialect", token_dialect)
         if token_lifetime is not None:
-            pulumi.set(__self__, "token_lifetime", token_lifetime)
+            _setter("token_lifetime", token_lifetime)
         if token_lifetime_for_web is not None:
-            pulumi.set(__self__, "token_lifetime_for_web", token_lifetime_for_web)
+            _setter("token_lifetime_for_web", token_lifetime_for_web)
         if verification_location is not None:
-            pulumi.set(__self__, "verification_location", verification_location)
+            _setter("verification_location", verification_location)
 
     @property
     @pulumi.getter(name="allowOfflineAccess")
@@ -475,6 +533,10 @@ class ResourceServer(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ResourceServerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

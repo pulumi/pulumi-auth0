@@ -17,89 +17,257 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddonsSamlp {
+    /**
+     * @return Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
+     * 
+     */
     private @Nullable String audience;
+    /**
+     * @return Class reference of the authentication context.
+     * 
+     */
     private @Nullable String authnContextClassRef;
+    /**
+     * @return Protocol binding used for SAML logout responses.
+     * 
+     */
     private @Nullable String binding;
+    /**
+     * @return Indicates whether a UPN claim should be created. Defaults to `true`.
+     * 
+     */
     private @Nullable Boolean createUpnClaim;
+    /**
+     * @return Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
+     * 
+     */
     private @Nullable String destination;
+    /**
+     * @return Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+     * 
+     */
     private @Nullable String digestAlgorithm;
+    /**
+     * @return Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+     * 
+     */
     private @Nullable Boolean includeAttributeNameFormat;
+    /**
+     * @return Issuer of the SAML Assertion.
+     * 
+     */
     private @Nullable String issuer;
+    /**
+     * @return AWS token lifetime in seconds.
+     * 
+     */
     private @Nullable Integer lifetimeInSeconds;
+    /**
+     * @return Configuration settings for logout.
+     * 
+     */
     private @Nullable ClientAddonsSamlpLogout logout;
+    /**
+     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
+     * 
+     */
     private @Nullable Boolean mapIdentities;
+    /**
+     * @return Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean mapUnknownClaimsAsIs;
+    /**
+     * @return Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
+     * 
+     */
     private @Nullable Map<String,Object> mappings;
+    /**
+     * @return Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * 
+     */
     private @Nullable String nameIdentifierFormat;
+    /**
+     * @return Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
+     * 
+     */
     private @Nullable List<String> nameIdentifierProbes;
+    /**
+     * @return Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+     * 
+     */
     private @Nullable Boolean passthroughClaimsWithNoMapping;
+    /**
+     * @return Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
+     * 
+     */
     private @Nullable String recipient;
+    /**
+     * @return Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
+     * 
+     */
     private @Nullable Boolean signResponse;
+    /**
+     * @return Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+     * 
+     */
     private @Nullable String signatureAlgorithm;
+    /**
+     * @return Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+     * 
+     */
     private @Nullable String signingCert;
+    /**
+     * @return Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+     * 
+     */
     private @Nullable Boolean typedAttributes;
 
     private ClientAddonsSamlp() {}
+    /**
+     * @return Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
+     * 
+     */
     public Optional<String> audience() {
         return Optional.ofNullable(this.audience);
     }
+    /**
+     * @return Class reference of the authentication context.
+     * 
+     */
     public Optional<String> authnContextClassRef() {
         return Optional.ofNullable(this.authnContextClassRef);
     }
+    /**
+     * @return Protocol binding used for SAML logout responses.
+     * 
+     */
     public Optional<String> binding() {
         return Optional.ofNullable(this.binding);
     }
+    /**
+     * @return Indicates whether a UPN claim should be created. Defaults to `true`.
+     * 
+     */
     public Optional<Boolean> createUpnClaim() {
         return Optional.ofNullable(this.createUpnClaim);
     }
+    /**
+     * @return Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
+     * 
+     */
     public Optional<String> destination() {
         return Optional.ofNullable(this.destination);
     }
+    /**
+     * @return Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+     * 
+     */
     public Optional<String> digestAlgorithm() {
         return Optional.ofNullable(this.digestAlgorithm);
     }
+    /**
+     * @return Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+     * 
+     */
     public Optional<Boolean> includeAttributeNameFormat() {
         return Optional.ofNullable(this.includeAttributeNameFormat);
     }
+    /**
+     * @return Issuer of the SAML Assertion.
+     * 
+     */
     public Optional<String> issuer() {
         return Optional.ofNullable(this.issuer);
     }
+    /**
+     * @return AWS token lifetime in seconds.
+     * 
+     */
     public Optional<Integer> lifetimeInSeconds() {
         return Optional.ofNullable(this.lifetimeInSeconds);
     }
+    /**
+     * @return Configuration settings for logout.
+     * 
+     */
     public Optional<ClientAddonsSamlpLogout> logout() {
         return Optional.ofNullable(this.logout);
     }
+    /**
+     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
+     * 
+     */
     public Optional<Boolean> mapIdentities() {
         return Optional.ofNullable(this.mapIdentities);
     }
+    /**
+     * @return Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> mapUnknownClaimsAsIs() {
         return Optional.ofNullable(this.mapUnknownClaimsAsIs);
     }
+    /**
+     * @return Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
+     * 
+     */
     public Map<String,Object> mappings() {
         return this.mappings == null ? Map.of() : this.mappings;
     }
+    /**
+     * @return Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * 
+     */
     public Optional<String> nameIdentifierFormat() {
         return Optional.ofNullable(this.nameIdentifierFormat);
     }
+    /**
+     * @return Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
+     * 
+     */
     public List<String> nameIdentifierProbes() {
         return this.nameIdentifierProbes == null ? List.of() : this.nameIdentifierProbes;
     }
+    /**
+     * @return Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+     * 
+     */
     public Optional<Boolean> passthroughClaimsWithNoMapping() {
         return Optional.ofNullable(this.passthroughClaimsWithNoMapping);
     }
+    /**
+     * @return Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
+     * 
+     */
     public Optional<String> recipient() {
         return Optional.ofNullable(this.recipient);
     }
+    /**
+     * @return Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
+     * 
+     */
     public Optional<Boolean> signResponse() {
         return Optional.ofNullable(this.signResponse);
     }
+    /**
+     * @return Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+     * 
+     */
     public Optional<String> signatureAlgorithm() {
         return Optional.ofNullable(this.signatureAlgorithm);
     }
+    /**
+     * @return Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+     * 
+     */
     public Optional<String> signingCert() {
         return Optional.ofNullable(this.signingCert);
     }
+    /**
+     * @return Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+     * 
+     */
     public Optional<Boolean> typedAttributes() {
         return Optional.ofNullable(this.typedAttributes);
     }

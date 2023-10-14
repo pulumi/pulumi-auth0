@@ -12,9 +12,15 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientAddonsSamlpLogoutGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The service provider (client application)'s Single Logout Service URL, where Auth0 will send logout requests and responses.
+        /// </summary>
         [Input("callback")]
         public Input<string>? Callback { get; set; }
 
+        /// <summary>
+        /// Controls whether Auth0 should notify service providers of session termination.
+        /// </summary>
         [Input("sloEnabled")]
         public Input<bool>? SloEnabled { get; set; }
 

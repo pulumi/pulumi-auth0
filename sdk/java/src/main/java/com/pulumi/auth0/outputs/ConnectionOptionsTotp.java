@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionOptionsTotp {
+    /**
+     * @return Length of the one-time password.
+     * 
+     */
     private @Nullable Integer length;
+    /**
+     * @return Seconds between allowed generation of new passwords.
+     * 
+     */
     private @Nullable Integer timeStep;
 
     private ConnectionOptionsTotp() {}
+    /**
+     * @return Length of the one-time password.
+     * 
+     */
     public Optional<Integer> length() {
         return Optional.ofNullable(this.length);
     }
+    /**
+     * @return Seconds between allowed generation of new passwords.
+     * 
+     */
     public Optional<Integer> timeStep() {
         return Optional.ofNullable(this.timeStep);
     }

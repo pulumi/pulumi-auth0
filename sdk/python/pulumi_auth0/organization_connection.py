@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['OrganizationConnectionArgs', 'OrganizationConnection']
@@ -23,10 +23,23 @@ class OrganizationConnectionArgs:
         :param pulumi.Input[str] organization_id: The ID of the organization to enable the connection for.
         :param pulumi.Input[bool] assign_membership_on_login: When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
         """
-        pulumi.set(__self__, "connection_id", connection_id)
-        pulumi.set(__self__, "organization_id", organization_id)
+        OrganizationConnectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_id=connection_id,
+            organization_id=organization_id,
+            assign_membership_on_login=assign_membership_on_login,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_id: pulumi.Input[str],
+             organization_id: pulumi.Input[str],
+             assign_membership_on_login: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("connection_id", connection_id)
+        _setter("organization_id", organization_id)
         if assign_membership_on_login is not None:
-            pulumi.set(__self__, "assign_membership_on_login", assign_membership_on_login)
+            _setter("assign_membership_on_login", assign_membership_on_login)
 
     @property
     @pulumi.getter(name="connectionId")
@@ -81,16 +94,33 @@ class _OrganizationConnectionState:
         :param pulumi.Input[str] organization_id: The ID of the organization to enable the connection for.
         :param pulumi.Input[str] strategy: The strategy of the enabled connection.
         """
+        _OrganizationConnectionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assign_membership_on_login=assign_membership_on_login,
+            connection_id=connection_id,
+            name=name,
+            organization_id=organization_id,
+            strategy=strategy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assign_membership_on_login: Optional[pulumi.Input[bool]] = None,
+             connection_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
+             strategy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if assign_membership_on_login is not None:
-            pulumi.set(__self__, "assign_membership_on_login", assign_membership_on_login)
+            _setter("assign_membership_on_login", assign_membership_on_login)
         if connection_id is not None:
-            pulumi.set(__self__, "connection_id", connection_id)
+            _setter("connection_id", connection_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if organization_id is not None:
-            pulumi.set(__self__, "organization_id", organization_id)
+            _setter("organization_id", organization_id)
         if strategy is not None:
-            pulumi.set(__self__, "strategy", strategy)
+            _setter("strategy", strategy)
 
     @property
     @pulumi.getter(name="assignMembershipOnLogin")
@@ -244,6 +274,10 @@ class OrganizationConnection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OrganizationConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

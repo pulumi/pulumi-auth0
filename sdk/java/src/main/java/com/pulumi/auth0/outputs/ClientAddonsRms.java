@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddonsRms {
+    /**
+     * @return Microsoft Dynamics CRM application URL.
+     * 
+     */
     private @Nullable String url;
 
     private ClientAddonsRms() {}
+    /**
+     * @return Microsoft Dynamics CRM application URL.
+     * 
+     */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }

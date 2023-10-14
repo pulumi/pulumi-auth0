@@ -16,16 +16,32 @@ public final class BrandingThemeFontsBodyTextArgs extends com.pulumi.resources.R
 
     public static final BrandingThemeFontsBodyTextArgs Empty = new BrandingThemeFontsBodyTextArgs();
 
+    /**
+     * Body text bold. Defaults to `false`.
+     * 
+     */
     @Import(name="bold")
     private @Nullable Output<Boolean> bold;
 
+    /**
+     * @return Body text bold. Defaults to `false`.
+     * 
+     */
     public Optional<Output<Boolean>> bold() {
         return Optional.ofNullable(this.bold);
     }
 
+    /**
+     * Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * 
+     */
     @Import(name="size")
     private @Nullable Output<Double> size;
 
+    /**
+     * @return Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * 
+     */
     public Optional<Output<Double>> size() {
         return Optional.ofNullable(this.size);
     }
@@ -55,20 +71,44 @@ public final class BrandingThemeFontsBodyTextArgs extends com.pulumi.resources.R
             $ = new BrandingThemeFontsBodyTextArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param bold Body text bold. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bold(@Nullable Output<Boolean> bold) {
             $.bold = bold;
             return this;
         }
 
+        /**
+         * @param bold Body text bold. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bold(Boolean bold) {
             return bold(Output.of(bold));
         }
 
+        /**
+         * @param size Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(@Nullable Output<Double> size) {
             $.size = size;
             return this;
         }
 
+        /**
+         * @param size Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(Double size) {
             return size(Output.of(size));
         }

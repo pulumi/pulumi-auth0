@@ -12,28 +12,52 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClientAddonsSalesforceSandboxApi {
     /**
-     * @return The ID of the client.
+     * @return Consumer Key assigned by Salesforce to the Connected App.
      * 
      */
     private @Nullable String clientId;
+    /**
+     * @return Community name.
+     * 
+     */
     private @Nullable String communityName;
+    /**
+     * @return Community URL section.
+     * 
+     */
     private @Nullable String communityUrlSection;
+    /**
+     * @return AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * 
+     */
     private @Nullable String principal;
 
     private ClientAddonsSalesforceSandboxApi() {}
     /**
-     * @return The ID of the client.
+     * @return Consumer Key assigned by Salesforce to the Connected App.
      * 
      */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }
+    /**
+     * @return Community name.
+     * 
+     */
     public Optional<String> communityName() {
         return Optional.ofNullable(this.communityName);
     }
+    /**
+     * @return Community URL section.
+     * 
+     */
     public Optional<String> communityUrlSection() {
         return Optional.ofNullable(this.communityUrlSection);
     }
+    /**
+     * @return AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * 
+     */
     public Optional<String> principal() {
         return Optional.ofNullable(this.principal);
     }

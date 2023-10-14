@@ -81,9 +81,6 @@ namespace Pulumi.Auth0
 
     public sealed class GetRoleArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the role. If not provided, `role_id` must be set.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -101,9 +98,6 @@ namespace Pulumi.Auth0
 
     public sealed class GetRoleInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the role. If not provided, `role_id` must be set.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

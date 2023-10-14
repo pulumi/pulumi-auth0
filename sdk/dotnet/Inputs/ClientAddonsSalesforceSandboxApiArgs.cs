@@ -16,7 +16,7 @@ namespace Pulumi.Auth0.Inputs
         private Input<string>? _clientId;
 
         /// <summary>
-        /// The ID of the client.
+        /// Consumer Key assigned by Salesforce to the Connected App.
         /// </summary>
         public Input<string>? ClientId
         {
@@ -28,14 +28,24 @@ namespace Pulumi.Auth0.Inputs
             }
         }
 
+        /// <summary>
+        /// Community name.
+        /// </summary>
         [Input("communityName")]
         public Input<string>? CommunityName { get; set; }
 
+        /// <summary>
+        /// Community URL section.
+        /// </summary>
         [Input("communityUrlSection")]
         public Input<string>? CommunityUrlSection { get; set; }
 
         [Input("principal")]
         private Input<string>? _principal;
+
+        /// <summary>
+        /// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        /// </summary>
         public Input<string>? Principal
         {
             get => _principal;

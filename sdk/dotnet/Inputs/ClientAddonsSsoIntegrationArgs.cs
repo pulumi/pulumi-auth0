@@ -13,11 +13,14 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ClientAddonsSsoIntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the client.
+        /// SSO integration name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// SSO integration version installed.
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

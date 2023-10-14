@@ -12,6 +12,9 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientAddonsEchosignGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+        /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 

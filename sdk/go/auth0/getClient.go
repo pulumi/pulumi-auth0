@@ -57,10 +57,8 @@ func LookupClient(ctx *pulumi.Context, args *LookupClientArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getClient.
 type LookupClientArgs struct {
-	// The ID of the client. If not provided, `name` must be set.
 	ClientId *string `pulumi:"clientId"`
-	// The name of the client. If not provided, `clientId` must be set.
-	Name *string `pulumi:"name"`
+	Name     *string `pulumi:"name"`
 }
 
 // A collection of values returned by getClient.
@@ -157,10 +155,8 @@ func LookupClientOutput(ctx *pulumi.Context, args LookupClientOutputArgs, opts .
 
 // A collection of arguments for invoking getClient.
 type LookupClientOutputArgs struct {
-	// The ID of the client. If not provided, `name` must be set.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// The name of the client. If not provided, `clientId` must be set.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name     pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupClientOutputArgs) ElementType() reflect.Type {

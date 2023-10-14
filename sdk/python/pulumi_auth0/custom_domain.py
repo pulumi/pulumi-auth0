@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,12 +27,27 @@ class CustomDomainArgs:
         :param pulumi.Input[str] custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
         :param pulumi.Input[str] tls_policy: TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
         """
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "type", type)
+        CustomDomainArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            type=type,
+            custom_client_ip_header=custom_client_ip_header,
+            tls_policy=tls_policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: pulumi.Input[str],
+             type: pulumi.Input[str],
+             custom_client_ip_header: Optional[pulumi.Input[str]] = None,
+             tls_policy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain", domain)
+        _setter("type", type)
         if custom_client_ip_header is not None:
-            pulumi.set(__self__, "custom_client_ip_header", custom_client_ip_header)
+            _setter("custom_client_ip_header", custom_client_ip_header)
         if tls_policy is not None:
-            pulumi.set(__self__, "tls_policy", tls_policy)
+            _setter("tls_policy", tls_policy)
 
     @property
     @pulumi.getter
@@ -105,22 +120,45 @@ class _CustomDomainState:
         :param pulumi.Input[str] type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         :param pulumi.Input[Sequence[pulumi.Input['CustomDomainVerificationArgs']]] verifications: Configuration settings for verification.
         """
+        _CustomDomainState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_client_ip_header=custom_client_ip_header,
+            domain=domain,
+            origin_domain_name=origin_domain_name,
+            primary=primary,
+            status=status,
+            tls_policy=tls_policy,
+            type=type,
+            verifications=verifications,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_client_ip_header: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             origin_domain_name: Optional[pulumi.Input[str]] = None,
+             primary: Optional[pulumi.Input[bool]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tls_policy: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             verifications: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainVerificationArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if custom_client_ip_header is not None:
-            pulumi.set(__self__, "custom_client_ip_header", custom_client_ip_header)
+            _setter("custom_client_ip_header", custom_client_ip_header)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if origin_domain_name is not None:
-            pulumi.set(__self__, "origin_domain_name", origin_domain_name)
+            _setter("origin_domain_name", origin_domain_name)
         if primary is not None:
-            pulumi.set(__self__, "primary", primary)
+            _setter("primary", primary)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tls_policy is not None:
-            pulumi.set(__self__, "tls_policy", tls_policy)
+            _setter("tls_policy", tls_policy)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if verifications is not None:
-            pulumi.set(__self__, "verifications", verifications)
+            _setter("verifications", verifications)
 
     @property
     @pulumi.getter(name="customClientIpHeader")
@@ -296,6 +334,10 @@ class CustomDomain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CustomDomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

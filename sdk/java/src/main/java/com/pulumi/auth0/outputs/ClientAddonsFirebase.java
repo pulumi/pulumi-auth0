@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddonsFirebase {
+    /**
+     * @return ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
+     * 
+     */
     private @Nullable String clientEmail;
+    /**
+     * @return AWS token lifetime in seconds.
+     * 
+     */
     private @Nullable Integer lifetimeInSeconds;
+    /**
+     * @return Private Key for signing the token (SDK v3+ tokens only).
+     * 
+     */
     private @Nullable String privateKey;
+    /**
+     * @return Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).
+     * 
+     */
     private @Nullable String privateKeyId;
+    /**
+     * @return Google Firebase Secret. (SDK v2 only).
+     * 
+     */
     private @Nullable String secret;
 
     private ClientAddonsFirebase() {}
+    /**
+     * @return ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
+     * 
+     */
     public Optional<String> clientEmail() {
         return Optional.ofNullable(this.clientEmail);
     }
+    /**
+     * @return AWS token lifetime in seconds.
+     * 
+     */
     public Optional<Integer> lifetimeInSeconds() {
         return Optional.ofNullable(this.lifetimeInSeconds);
     }
+    /**
+     * @return Private Key for signing the token (SDK v3+ tokens only).
+     * 
+     */
     public Optional<String> privateKey() {
         return Optional.ofNullable(this.privateKey);
     }
+    /**
+     * @return Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).
+     * 
+     */
     public Optional<String> privateKeyId() {
         return Optional.ofNullable(this.privateKeyId);
     }
+    /**
+     * @return Google Firebase Secret. (SDK v2 only).
+     * 
+     */
     public Optional<String> secret() {
         return Optional.ofNullable(this.secret);
     }

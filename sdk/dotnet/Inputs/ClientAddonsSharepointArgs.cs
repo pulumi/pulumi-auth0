@@ -14,12 +14,19 @@ namespace Pulumi.Auth0.Inputs
     {
         [Input("externalUrls")]
         private InputList<string>? _externalUrls;
+
+        /// <summary>
+        /// External SharePoint application URLs if exposed to the Internet.
+        /// </summary>
         public InputList<string> ExternalUrls
         {
             get => _externalUrls ?? (_externalUrls = new InputList<string>());
             set => _externalUrls = value;
         }
 
+        /// <summary>
+        /// Microsoft Dynamics CRM application URL.
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 

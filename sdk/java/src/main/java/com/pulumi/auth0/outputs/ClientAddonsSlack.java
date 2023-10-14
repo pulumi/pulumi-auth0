@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddonsSlack {
+    /**
+     * @return Slack team name.
+     * 
+     */
     private @Nullable String team;
 
     private ClientAddonsSlack() {}
+    /**
+     * @return Slack team name.
+     * 
+     */
     public Optional<String> team() {
         return Optional.ofNullable(this.team);
     }

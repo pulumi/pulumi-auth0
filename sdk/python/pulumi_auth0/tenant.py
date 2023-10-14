@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -51,38 +51,77 @@ class TenantArgs:
         :param pulumi.Input[str] support_email: Support email address for authenticating users.
         :param pulumi.Input[str] support_url: Support URL for authenticating users.
         """
+        TenantArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_organization_name_in_authentication_api=allow_organization_name_in_authentication_api,
+            allowed_logout_urls=allowed_logout_urls,
+            default_audience=default_audience,
+            default_directory=default_directory,
+            default_redirection_uri=default_redirection_uri,
+            enabled_locales=enabled_locales,
+            flags=flags,
+            friendly_name=friendly_name,
+            idle_session_lifetime=idle_session_lifetime,
+            picture_url=picture_url,
+            sandbox_version=sandbox_version,
+            session_cookie=session_cookie,
+            session_lifetime=session_lifetime,
+            sessions=sessions,
+            support_email=support_email,
+            support_url=support_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_organization_name_in_authentication_api: Optional[pulumi.Input[bool]] = None,
+             allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             default_audience: Optional[pulumi.Input[str]] = None,
+             default_directory: Optional[pulumi.Input[str]] = None,
+             default_redirection_uri: Optional[pulumi.Input[str]] = None,
+             enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             flags: Optional[pulumi.Input['TenantFlagsArgs']] = None,
+             friendly_name: Optional[pulumi.Input[str]] = None,
+             idle_session_lifetime: Optional[pulumi.Input[float]] = None,
+             picture_url: Optional[pulumi.Input[str]] = None,
+             sandbox_version: Optional[pulumi.Input[str]] = None,
+             session_cookie: Optional[pulumi.Input['TenantSessionCookieArgs']] = None,
+             session_lifetime: Optional[pulumi.Input[float]] = None,
+             sessions: Optional[pulumi.Input['TenantSessionsArgs']] = None,
+             support_email: Optional[pulumi.Input[str]] = None,
+             support_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allow_organization_name_in_authentication_api is not None:
-            pulumi.set(__self__, "allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
+            _setter("allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
         if allowed_logout_urls is not None:
-            pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
+            _setter("allowed_logout_urls", allowed_logout_urls)
         if default_audience is not None:
-            pulumi.set(__self__, "default_audience", default_audience)
+            _setter("default_audience", default_audience)
         if default_directory is not None:
-            pulumi.set(__self__, "default_directory", default_directory)
+            _setter("default_directory", default_directory)
         if default_redirection_uri is not None:
-            pulumi.set(__self__, "default_redirection_uri", default_redirection_uri)
+            _setter("default_redirection_uri", default_redirection_uri)
         if enabled_locales is not None:
-            pulumi.set(__self__, "enabled_locales", enabled_locales)
+            _setter("enabled_locales", enabled_locales)
         if flags is not None:
-            pulumi.set(__self__, "flags", flags)
+            _setter("flags", flags)
         if friendly_name is not None:
-            pulumi.set(__self__, "friendly_name", friendly_name)
+            _setter("friendly_name", friendly_name)
         if idle_session_lifetime is not None:
-            pulumi.set(__self__, "idle_session_lifetime", idle_session_lifetime)
+            _setter("idle_session_lifetime", idle_session_lifetime)
         if picture_url is not None:
-            pulumi.set(__self__, "picture_url", picture_url)
+            _setter("picture_url", picture_url)
         if sandbox_version is not None:
-            pulumi.set(__self__, "sandbox_version", sandbox_version)
+            _setter("sandbox_version", sandbox_version)
         if session_cookie is not None:
-            pulumi.set(__self__, "session_cookie", session_cookie)
+            _setter("session_cookie", session_cookie)
         if session_lifetime is not None:
-            pulumi.set(__self__, "session_lifetime", session_lifetime)
+            _setter("session_lifetime", session_lifetime)
         if sessions is not None:
-            pulumi.set(__self__, "sessions", sessions)
+            _setter("sessions", sessions)
         if support_email is not None:
-            pulumi.set(__self__, "support_email", support_email)
+            _setter("support_email", support_email)
         if support_url is not None:
-            pulumi.set(__self__, "support_url", support_url)
+            _setter("support_url", support_url)
 
     @property
     @pulumi.getter(name="allowOrganizationNameInAuthenticationApi")
@@ -315,38 +354,77 @@ class _TenantState:
         :param pulumi.Input[str] support_email: Support email address for authenticating users.
         :param pulumi.Input[str] support_url: Support URL for authenticating users.
         """
+        _TenantState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_organization_name_in_authentication_api=allow_organization_name_in_authentication_api,
+            allowed_logout_urls=allowed_logout_urls,
+            default_audience=default_audience,
+            default_directory=default_directory,
+            default_redirection_uri=default_redirection_uri,
+            enabled_locales=enabled_locales,
+            flags=flags,
+            friendly_name=friendly_name,
+            idle_session_lifetime=idle_session_lifetime,
+            picture_url=picture_url,
+            sandbox_version=sandbox_version,
+            session_cookie=session_cookie,
+            session_lifetime=session_lifetime,
+            sessions=sessions,
+            support_email=support_email,
+            support_url=support_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_organization_name_in_authentication_api: Optional[pulumi.Input[bool]] = None,
+             allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             default_audience: Optional[pulumi.Input[str]] = None,
+             default_directory: Optional[pulumi.Input[str]] = None,
+             default_redirection_uri: Optional[pulumi.Input[str]] = None,
+             enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             flags: Optional[pulumi.Input['TenantFlagsArgs']] = None,
+             friendly_name: Optional[pulumi.Input[str]] = None,
+             idle_session_lifetime: Optional[pulumi.Input[float]] = None,
+             picture_url: Optional[pulumi.Input[str]] = None,
+             sandbox_version: Optional[pulumi.Input[str]] = None,
+             session_cookie: Optional[pulumi.Input['TenantSessionCookieArgs']] = None,
+             session_lifetime: Optional[pulumi.Input[float]] = None,
+             sessions: Optional[pulumi.Input['TenantSessionsArgs']] = None,
+             support_email: Optional[pulumi.Input[str]] = None,
+             support_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allow_organization_name_in_authentication_api is not None:
-            pulumi.set(__self__, "allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
+            _setter("allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
         if allowed_logout_urls is not None:
-            pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
+            _setter("allowed_logout_urls", allowed_logout_urls)
         if default_audience is not None:
-            pulumi.set(__self__, "default_audience", default_audience)
+            _setter("default_audience", default_audience)
         if default_directory is not None:
-            pulumi.set(__self__, "default_directory", default_directory)
+            _setter("default_directory", default_directory)
         if default_redirection_uri is not None:
-            pulumi.set(__self__, "default_redirection_uri", default_redirection_uri)
+            _setter("default_redirection_uri", default_redirection_uri)
         if enabled_locales is not None:
-            pulumi.set(__self__, "enabled_locales", enabled_locales)
+            _setter("enabled_locales", enabled_locales)
         if flags is not None:
-            pulumi.set(__self__, "flags", flags)
+            _setter("flags", flags)
         if friendly_name is not None:
-            pulumi.set(__self__, "friendly_name", friendly_name)
+            _setter("friendly_name", friendly_name)
         if idle_session_lifetime is not None:
-            pulumi.set(__self__, "idle_session_lifetime", idle_session_lifetime)
+            _setter("idle_session_lifetime", idle_session_lifetime)
         if picture_url is not None:
-            pulumi.set(__self__, "picture_url", picture_url)
+            _setter("picture_url", picture_url)
         if sandbox_version is not None:
-            pulumi.set(__self__, "sandbox_version", sandbox_version)
+            _setter("sandbox_version", sandbox_version)
         if session_cookie is not None:
-            pulumi.set(__self__, "session_cookie", session_cookie)
+            _setter("session_cookie", session_cookie)
         if session_lifetime is not None:
-            pulumi.set(__self__, "session_lifetime", session_lifetime)
+            _setter("session_lifetime", session_lifetime)
         if sessions is not None:
-            pulumi.set(__self__, "sessions", sessions)
+            _setter("sessions", sessions)
         if support_email is not None:
-            pulumi.set(__self__, "support_email", support_email)
+            _setter("support_email", support_email)
         if support_url is not None:
-            pulumi.set(__self__, "support_url", support_url)
+            _setter("support_url", support_url)
 
     @property
     @pulumi.getter(name="allowOrganizationNameInAuthenticationApi")
@@ -690,6 +768,10 @@ class Tenant(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TenantArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -726,13 +808,28 @@ class Tenant(pulumi.CustomResource):
             __props__.__dict__["default_directory"] = default_directory
             __props__.__dict__["default_redirection_uri"] = default_redirection_uri
             __props__.__dict__["enabled_locales"] = enabled_locales
+            if flags is not None and not isinstance(flags, TenantFlagsArgs):
+                flags = flags or {}
+                def _setter(key, value):
+                    flags[key] = value
+                TenantFlagsArgs._configure(_setter, **flags)
             __props__.__dict__["flags"] = flags
             __props__.__dict__["friendly_name"] = friendly_name
             __props__.__dict__["idle_session_lifetime"] = idle_session_lifetime
             __props__.__dict__["picture_url"] = picture_url
             __props__.__dict__["sandbox_version"] = sandbox_version
+            if session_cookie is not None and not isinstance(session_cookie, TenantSessionCookieArgs):
+                session_cookie = session_cookie or {}
+                def _setter(key, value):
+                    session_cookie[key] = value
+                TenantSessionCookieArgs._configure(_setter, **session_cookie)
             __props__.__dict__["session_cookie"] = session_cookie
             __props__.__dict__["session_lifetime"] = session_lifetime
+            if sessions is not None and not isinstance(sessions, TenantSessionsArgs):
+                sessions = sessions or {}
+                def _setter(key, value):
+                    sessions[key] = value
+                TenantSessionsArgs._configure(_setter, **sessions)
             __props__.__dict__["sessions"] = sessions
             __props__.__dict__["support_email"] = support_email
             __props__.__dict__["support_url"] = support_url

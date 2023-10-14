@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,8 +23,19 @@ class OrganizationConnectionsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]] enabled_connections: Connections that are enabled for the organization.
         :param pulumi.Input[str] organization_id: ID of the organization on which to enable the connections.
         """
-        pulumi.set(__self__, "enabled_connections", enabled_connections)
-        pulumi.set(__self__, "organization_id", organization_id)
+        OrganizationConnectionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled_connections=enabled_connections,
+            organization_id=organization_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled_connections: pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]],
+             organization_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enabled_connections", enabled_connections)
+        _setter("organization_id", organization_id)
 
     @property
     @pulumi.getter(name="enabledConnections")
@@ -61,10 +72,21 @@ class _OrganizationConnectionsState:
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]] enabled_connections: Connections that are enabled for the organization.
         :param pulumi.Input[str] organization_id: ID of the organization on which to enable the connections.
         """
+        _OrganizationConnectionsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled_connections=enabled_connections,
+            organization_id=organization_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled_connections: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled_connections is not None:
-            pulumi.set(__self__, "enabled_connections", enabled_connections)
+            _setter("enabled_connections", enabled_connections)
         if organization_id is not None:
-            pulumi.set(__self__, "organization_id", organization_id)
+            _setter("organization_id", organization_id)
 
     @property
     @pulumi.getter(name="enabledConnections")
@@ -198,6 +220,10 @@ class OrganizationConnections(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OrganizationConnectionsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -14,6 +14,10 @@ namespace Pulumi.Auth0.Inputs
     {
         [Input("masterKey")]
         private Input<string>? _masterKey;
+
+        /// <summary>
+        /// Your master key for Windows Azure Mobile Services.
+        /// </summary>
         public Input<string>? MasterKey
         {
             get => _masterKey;

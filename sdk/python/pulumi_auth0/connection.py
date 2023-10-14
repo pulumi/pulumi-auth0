@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -30,26 +30,49 @@ class ConnectionArgs:
         :param pulumi.Input[str] display_name: Name used in login screen.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
-        :param pulumi.Input[str] name: Name of the connection.
+        :param pulumi.Input[str] name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
         """
-        pulumi.set(__self__, "strategy", strategy)
+        ConnectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            strategy=strategy,
+            display_name=display_name,
+            is_domain_connection=is_domain_connection,
+            metadata=metadata,
+            name=name,
+            options=options,
+            realms=realms,
+            show_as_button=show_as_button,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             strategy: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             is_domain_connection: Optional[pulumi.Input[bool]] = None,
+             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             options: Optional[pulumi.Input['ConnectionOptionsArgs']] = None,
+             realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             show_as_button: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("strategy", strategy)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if is_domain_connection is not None:
-            pulumi.set(__self__, "is_domain_connection", is_domain_connection)
+            _setter("is_domain_connection", is_domain_connection)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if options is not None:
-            pulumi.set(__self__, "options", options)
+            _setter("options", options)
         if realms is not None:
-            pulumi.set(__self__, "realms", realms)
+            _setter("realms", realms)
         if show_as_button is not None:
-            pulumi.set(__self__, "show_as_button", show_as_button)
+            _setter("show_as_button", show_as_button)
 
     @property
     @pulumi.getter
@@ -103,7 +126,7 @@ class ConnectionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the connection.
+        The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         """
         return pulumi.get(self, "name")
 
@@ -164,28 +187,51 @@ class _ConnectionState:
         :param pulumi.Input[str] display_name: Name used in login screen.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
-        :param pulumi.Input[str] name: Name of the connection.
+        :param pulumi.Input[str] name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
         :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider.
         """
+        _ConnectionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            is_domain_connection=is_domain_connection,
+            metadata=metadata,
+            name=name,
+            options=options,
+            realms=realms,
+            show_as_button=show_as_button,
+            strategy=strategy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             is_domain_connection: Optional[pulumi.Input[bool]] = None,
+             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             options: Optional[pulumi.Input['ConnectionOptionsArgs']] = None,
+             realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             show_as_button: Optional[pulumi.Input[bool]] = None,
+             strategy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if is_domain_connection is not None:
-            pulumi.set(__self__, "is_domain_connection", is_domain_connection)
+            _setter("is_domain_connection", is_domain_connection)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if options is not None:
-            pulumi.set(__self__, "options", options)
+            _setter("options", options)
         if realms is not None:
-            pulumi.set(__self__, "realms", realms)
+            _setter("realms", realms)
         if show_as_button is not None:
-            pulumi.set(__self__, "show_as_button", show_as_button)
+            _setter("show_as_button", show_as_button)
         if strategy is not None:
-            pulumi.set(__self__, "strategy", strategy)
+            _setter("strategy", strategy)
 
     @property
     @pulumi.getter(name="displayName")
@@ -227,7 +273,7 @@ class _ConnectionState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the connection.
+        The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         """
         return pulumi.get(self, "name")
 
@@ -594,7 +640,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Name used in login screen.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
-        :param pulumi.Input[str] name: Name of the connection.
+        :param pulumi.Input[str] name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
@@ -907,6 +953,10 @@ class Connection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -933,6 +983,11 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["is_domain_connection"] = is_domain_connection
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
+            if options is not None and not isinstance(options, ConnectionOptionsArgs):
+                options = options or {}
+                def _setter(key, value):
+                    options[key] = value
+                ConnectionOptionsArgs._configure(_setter, **options)
             __props__.__dict__["options"] = options
             __props__.__dict__["realms"] = realms
             __props__.__dict__["show_as_button"] = show_as_button
@@ -967,7 +1022,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Name used in login screen.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
-        :param pulumi.Input[str] name: Name of the connection.
+        :param pulumi.Input[str] name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
@@ -1015,7 +1070,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the connection.
+        The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         """
         return pulumi.get(self, "name")
 

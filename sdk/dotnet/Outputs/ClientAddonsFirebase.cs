@@ -13,10 +13,25 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ClientAddonsFirebase
     {
+        /// <summary>
+        /// ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
+        /// </summary>
         public readonly string? ClientEmail;
+        /// <summary>
+        /// AWS token lifetime in seconds.
+        /// </summary>
         public readonly int? LifetimeInSeconds;
+        /// <summary>
+        /// Private Key for signing the token (SDK v3+ tokens only).
+        /// </summary>
         public readonly string? PrivateKey;
+        /// <summary>
+        /// Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).
+        /// </summary>
         public readonly string? PrivateKeyId;
+        /// <summary>
+        /// Google Firebase Secret. (SDK v2 only).
+        /// </summary>
         public readonly string? Secret;
 
         [OutputConstructor]

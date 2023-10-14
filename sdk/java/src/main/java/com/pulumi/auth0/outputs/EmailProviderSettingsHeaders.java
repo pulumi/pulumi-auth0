@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EmailProviderSettingsHeaders {
+    /**
+     * @return Disable or enable the default View Content Link for sensitive emails.
+     * 
+     */
     private @Nullable String xMcViewContentLink;
+    /**
+     * @return SES Configuration set to include when sending emails.
+     * 
+     */
     private @Nullable String xSesConfigurationSet;
 
     private EmailProviderSettingsHeaders() {}
+    /**
+     * @return Disable or enable the default View Content Link for sensitive emails.
+     * 
+     */
     public Optional<String> xMcViewContentLink() {
         return Optional.ofNullable(this.xMcViewContentLink);
     }
+    /**
+     * @return SES Configuration set to include when sending emails.
+     * 
+     */
     public Optional<String> xSesConfigurationSet() {
         return Optional.ofNullable(this.xSesConfigurationSet);
     }

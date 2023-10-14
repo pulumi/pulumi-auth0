@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,8 +23,19 @@ class RolePermissionsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RolePermissionsPermissionArgs']]] permissions: List of API permissions granted to the role.
         :param pulumi.Input[str] role_id: ID of the role to associate the permission to.
         """
-        pulumi.set(__self__, "permissions", permissions)
-        pulumi.set(__self__, "role_id", role_id)
+        RolePermissionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permissions=permissions,
+            role_id=role_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permissions: pulumi.Input[Sequence[pulumi.Input['RolePermissionsPermissionArgs']]],
+             role_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permissions", permissions)
+        _setter("role_id", role_id)
 
     @property
     @pulumi.getter
@@ -61,10 +72,21 @@ class _RolePermissionsState:
         :param pulumi.Input[Sequence[pulumi.Input['RolePermissionsPermissionArgs']]] permissions: List of API permissions granted to the role.
         :param pulumi.Input[str] role_id: ID of the role to associate the permission to.
         """
+        _RolePermissionsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permissions=permissions,
+            role_id=role_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionsPermissionArgs']]]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
         if role_id is not None:
-            pulumi.set(__self__, "role_id", role_id)
+            _setter("role_id", role_id)
 
     @property
     @pulumi.getter
@@ -134,6 +156,10 @@ class RolePermissions(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RolePermissionsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

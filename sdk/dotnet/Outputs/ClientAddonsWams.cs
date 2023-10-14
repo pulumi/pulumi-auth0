@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ClientAddonsWams
     {
+        /// <summary>
+        /// Your master key for Windows Azure Mobile Services.
+        /// </summary>
         public readonly string? MasterKey;
 
         [OutputConstructor]

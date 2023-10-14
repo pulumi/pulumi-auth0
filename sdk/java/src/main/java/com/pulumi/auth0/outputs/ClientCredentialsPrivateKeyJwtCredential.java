@@ -12,53 +12,125 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientCredentialsPrivateKeyJwtCredential {
+    /**
+     * @return Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+     * 
+     */
     private @Nullable String algorithm;
+    /**
+     * @return The ISO 8601 formatted date the credential was created.
+     * 
+     */
     private @Nullable String createdAt;
+    /**
+     * @return Credential type. Supported types: `public_key`.
+     * 
+     */
     private String credentialType;
+    /**
+     * @return The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+     * 
+     */
     private @Nullable String expiresAt;
     /**
-     * @return The ID of this resource.
+     * @return The ID of the client credential.
      * 
      */
     private @Nullable String id;
+    /**
+     * @return The key identifier of the credential, generated on creation.
+     * 
+     */
     private @Nullable String keyId;
+    /**
+     * @return Friendly name for a credential.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+     * 
+     */
     private @Nullable Boolean parseExpiryFromCert;
+    /**
+     * @return PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+     * 
+     */
     private String pem;
+    /**
+     * @return The ISO 8601 formatted date the credential was updated.
+     * 
+     */
     private @Nullable String updatedAt;
 
     private ClientCredentialsPrivateKeyJwtCredential() {}
+    /**
+     * @return Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+     * 
+     */
     public Optional<String> algorithm() {
         return Optional.ofNullable(this.algorithm);
     }
+    /**
+     * @return The ISO 8601 formatted date the credential was created.
+     * 
+     */
     public Optional<String> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
+    /**
+     * @return Credential type. Supported types: `public_key`.
+     * 
+     */
     public String credentialType() {
         return this.credentialType;
     }
+    /**
+     * @return The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+     * 
+     */
     public Optional<String> expiresAt() {
         return Optional.ofNullable(this.expiresAt);
     }
     /**
-     * @return The ID of this resource.
+     * @return The ID of the client credential.
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return The key identifier of the credential, generated on creation.
+     * 
+     */
     public Optional<String> keyId() {
         return Optional.ofNullable(this.keyId);
     }
+    /**
+     * @return Friendly name for a credential.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+     * 
+     */
     public Optional<Boolean> parseExpiryFromCert() {
         return Optional.ofNullable(this.parseExpiryFromCert);
     }
+    /**
+     * @return PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+     * 
+     */
     public String pem() {
         return this.pem;
     }
+    /**
+     * @return The ISO 8601 formatted date the credential was updated.
+     * 
+     */
     public Optional<String> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }

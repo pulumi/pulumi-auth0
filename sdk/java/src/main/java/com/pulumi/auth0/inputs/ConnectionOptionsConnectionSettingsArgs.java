@@ -13,9 +13,17 @@ public final class ConnectionOptionsConnectionSettingsArgs extends com.pulumi.re
 
     public static final ConnectionOptionsConnectionSettingsArgs Empty = new ConnectionOptionsConnectionSettingsArgs();
 
+    /**
+     * PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+     * 
+     */
     @Import(name="pkce", required=true)
     private Output<String> pkce;
 
+    /**
+     * @return PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+     * 
+     */
     public Output<String> pkce() {
         return this.pkce;
     }
@@ -44,11 +52,23 @@ public final class ConnectionOptionsConnectionSettingsArgs extends com.pulumi.re
             $ = new ConnectionOptionsConnectionSettingsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param pkce PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+         * 
+         * @return builder
+         * 
+         */
         public Builder pkce(Output<String> pkce) {
             $.pkce = pkce;
             return this;
         }
 
+        /**
+         * @param pkce PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+         * 
+         * @return builder
+         * 
+         */
         public Builder pkce(String pkce) {
             return pkce(Output.of(pkce));
         }

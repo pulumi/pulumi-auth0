@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['OrganizationMemberRolesArgs', 'OrganizationMemberRoles']
@@ -23,9 +23,22 @@ class OrganizationMemberRolesArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The role ID(s) to assign to the organization member.
         :param pulumi.Input[str] user_id: The user ID of the organization member.
         """
-        pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "roles", roles)
-        pulumi.set(__self__, "user_id", user_id)
+        OrganizationMemberRolesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            organization_id=organization_id,
+            roles=roles,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             organization_id: pulumi.Input[str],
+             roles: pulumi.Input[Sequence[pulumi.Input[str]]],
+             user_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("organization_id", organization_id)
+        _setter("roles", roles)
+        _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -76,12 +89,25 @@ class _OrganizationMemberRolesState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The role ID(s) to assign to the organization member.
         :param pulumi.Input[str] user_id: The user ID of the organization member.
         """
+        _OrganizationMemberRolesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            organization_id=organization_id,
+            roles=roles,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             organization_id: Optional[pulumi.Input[str]] = None,
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if organization_id is not None:
-            pulumi.set(__self__, "organization_id", organization_id)
+            _setter("organization_id", organization_id)
         if roles is not None:
-            pulumi.set(__self__, "roles", roles)
+            _setter("roles", roles)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -223,6 +249,10 @@ class OrganizationMemberRoles(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OrganizationMemberRolesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

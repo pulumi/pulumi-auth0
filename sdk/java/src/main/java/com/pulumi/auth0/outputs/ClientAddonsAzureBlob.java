@@ -13,57 +13,161 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddonsAzureBlob {
+    /**
+     * @return Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+     * 
+     */
     private @Nullable String accountName;
+    /**
+     * @return Indicates if the issued token has permission to delete the blob.
+     * 
+     */
     private @Nullable Boolean blobDelete;
+    /**
+     * @return Entity to request a token for, such as `my-blob`. If blank the computed SAS will apply to the entire storage container.
+     * 
+     */
     private @Nullable String blobName;
+    /**
+     * @return Indicates if the issued token has permission to read the content, properties, metadata and block list. Use the blob as the source of a copy operation.
+     * 
+     */
     private @Nullable Boolean blobRead;
+    /**
+     * @return Indicates if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+     * 
+     */
     private @Nullable Boolean blobWrite;
+    /**
+     * @return Indicates if issued token has permission to delete any blob in the container.
+     * 
+     */
     private @Nullable Boolean containerDelete;
+    /**
+     * @return Indicates if the issued token has permission to list blobs in the container.
+     * 
+     */
     private @Nullable Boolean containerList;
+    /**
+     * @return Container to request a token for, such as `my-container`.
+     * 
+     */
     private @Nullable String containerName;
+    /**
+     * @return Indicates if the issued token has permission to read the content, properties, metadata or block list of any blob in the container. Use any blob in the container as the source of a copy operation.
+     * 
+     */
     private @Nullable Boolean containerRead;
+    /**
+     * @return Indicates that for any blob in the container if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+     * 
+     */
     private @Nullable Boolean containerWrite;
+    /**
+     * @return Expiration in minutes for the generated token (default of 5 minutes).
+     * 
+     */
     private @Nullable Integer expiration;
+    /**
+     * @return Shared access policy identifier defined in your storage account resource.
+     * 
+     */
     private @Nullable String signedIdentifier;
+    /**
+     * @return Access key associated with this storage account.
+     * 
+     */
     private @Nullable String storageAccessKey;
 
     private ClientAddonsAzureBlob() {}
+    /**
+     * @return Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+     * 
+     */
     public Optional<String> accountName() {
         return Optional.ofNullable(this.accountName);
     }
+    /**
+     * @return Indicates if the issued token has permission to delete the blob.
+     * 
+     */
     public Optional<Boolean> blobDelete() {
         return Optional.ofNullable(this.blobDelete);
     }
+    /**
+     * @return Entity to request a token for, such as `my-blob`. If blank the computed SAS will apply to the entire storage container.
+     * 
+     */
     public Optional<String> blobName() {
         return Optional.ofNullable(this.blobName);
     }
+    /**
+     * @return Indicates if the issued token has permission to read the content, properties, metadata and block list. Use the blob as the source of a copy operation.
+     * 
+     */
     public Optional<Boolean> blobRead() {
         return Optional.ofNullable(this.blobRead);
     }
+    /**
+     * @return Indicates if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+     * 
+     */
     public Optional<Boolean> blobWrite() {
         return Optional.ofNullable(this.blobWrite);
     }
+    /**
+     * @return Indicates if issued token has permission to delete any blob in the container.
+     * 
+     */
     public Optional<Boolean> containerDelete() {
         return Optional.ofNullable(this.containerDelete);
     }
+    /**
+     * @return Indicates if the issued token has permission to list blobs in the container.
+     * 
+     */
     public Optional<Boolean> containerList() {
         return Optional.ofNullable(this.containerList);
     }
+    /**
+     * @return Container to request a token for, such as `my-container`.
+     * 
+     */
     public Optional<String> containerName() {
         return Optional.ofNullable(this.containerName);
     }
+    /**
+     * @return Indicates if the issued token has permission to read the content, properties, metadata or block list of any blob in the container. Use any blob in the container as the source of a copy operation.
+     * 
+     */
     public Optional<Boolean> containerRead() {
         return Optional.ofNullable(this.containerRead);
     }
+    /**
+     * @return Indicates that for any blob in the container if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+     * 
+     */
     public Optional<Boolean> containerWrite() {
         return Optional.ofNullable(this.containerWrite);
     }
+    /**
+     * @return Expiration in minutes for the generated token (default of 5 minutes).
+     * 
+     */
     public Optional<Integer> expiration() {
         return Optional.ofNullable(this.expiration);
     }
+    /**
+     * @return Shared access policy identifier defined in your storage account resource.
+     * 
+     */
     public Optional<String> signedIdentifier() {
         return Optional.ofNullable(this.signedIdentifier);
     }
+    /**
+     * @return Access key associated with this storage account.
+     * 
+     */
     public Optional<String> storageAccessKey() {
         return Optional.ofNullable(this.storageAccessKey);
     }

@@ -9,9 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GuardianPushDirectFcm {
+    /**
+     * @return The Firebase Cloud Messaging Server Key. For security purposes, we don’t retrieve your existing FCM server key to check for drift.
+     * 
+     */
     private String serverKey;
 
     private GuardianPushDirectFcm() {}
+    /**
+     * @return The Firebase Cloud Messaging Server Key. For security purposes, we don’t retrieve your existing FCM server key to check for drift.
+     * 
+     */
     public String serverKey() {
         return this.serverKey;
     }

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,8 +23,19 @@ class UserPermissionsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['UserPermissionsPermissionArgs']]] permissions: List of API permissions granted to the user.
         :param pulumi.Input[str] user_id: ID of the user to associate the permission to.
         """
-        pulumi.set(__self__, "permissions", permissions)
-        pulumi.set(__self__, "user_id", user_id)
+        UserPermissionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permissions=permissions,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permissions: pulumi.Input[Sequence[pulumi.Input['UserPermissionsPermissionArgs']]],
+             user_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permissions", permissions)
+        _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -61,10 +72,21 @@ class _UserPermissionsState:
         :param pulumi.Input[Sequence[pulumi.Input['UserPermissionsPermissionArgs']]] permissions: List of API permissions granted to the user.
         :param pulumi.Input[str] user_id: ID of the user to associate the permission to.
         """
+        _UserPermissionsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permissions=permissions,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionsPermissionArgs']]]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -150,6 +172,10 @@ class UserPermissions(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserPermissionsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

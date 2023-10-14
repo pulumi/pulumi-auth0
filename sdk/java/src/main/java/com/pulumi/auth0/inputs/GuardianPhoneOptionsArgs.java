@@ -15,44 +15,92 @@ public final class GuardianPhoneOptionsArgs extends com.pulumi.resources.Resourc
 
     public static final GuardianPhoneOptionsArgs Empty = new GuardianPhoneOptionsArgs();
 
+    /**
+     * AuthToken for your Twilio account.
+     * 
+     */
     @Import(name="authToken")
     private @Nullable Output<String> authToken;
 
+    /**
+     * @return AuthToken for your Twilio account.
+     * 
+     */
     public Optional<Output<String>> authToken() {
         return Optional.ofNullable(this.authToken);
     }
 
+    /**
+     * This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+     * 
+     */
     @Import(name="enrollmentMessage")
     private @Nullable Output<String> enrollmentMessage;
 
+    /**
+     * @return This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+     * 
+     */
     public Optional<Output<String>> enrollmentMessage() {
         return Optional.ofNullable(this.enrollmentMessage);
     }
 
+    /**
+     * Phone number to use as the sender.
+     * 
+     */
     @Import(name="from")
     private @Nullable Output<String> from;
 
+    /**
+     * @return Phone number to use as the sender.
+     * 
+     */
     public Optional<Output<String>> from() {
         return Optional.ofNullable(this.from);
     }
 
+    /**
+     * Messaging service SID.
+     * 
+     */
     @Import(name="messagingServiceSid")
     private @Nullable Output<String> messagingServiceSid;
 
+    /**
+     * @return Messaging service SID.
+     * 
+     */
     public Optional<Output<String>> messagingServiceSid() {
         return Optional.ofNullable(this.messagingServiceSid);
     }
 
+    /**
+     * SID for your Twilio account.
+     * 
+     */
     @Import(name="sid")
     private @Nullable Output<String> sid;
 
+    /**
+     * @return SID for your Twilio account.
+     * 
+     */
     public Optional<Output<String>> sid() {
         return Optional.ofNullable(this.sid);
     }
 
+    /**
+     * This message will be sent whenever a user logs in after the enrollment. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+     * 
+     */
     @Import(name="verificationMessage")
     private @Nullable Output<String> verificationMessage;
 
+    /**
+     * @return This message will be sent whenever a user logs in after the enrollment. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+     * 
+     */
     public Optional<Output<String>> verificationMessage() {
         return Optional.ofNullable(this.verificationMessage);
     }
@@ -86,56 +134,128 @@ public final class GuardianPhoneOptionsArgs extends com.pulumi.resources.Resourc
             $ = new GuardianPhoneOptionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param authToken AuthToken for your Twilio account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authToken(@Nullable Output<String> authToken) {
             $.authToken = authToken;
             return this;
         }
 
+        /**
+         * @param authToken AuthToken for your Twilio account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authToken(String authToken) {
             return authToken(Output.of(authToken));
         }
 
+        /**
+         * @param enrollmentMessage This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+         * 
+         * @return builder
+         * 
+         */
         public Builder enrollmentMessage(@Nullable Output<String> enrollmentMessage) {
             $.enrollmentMessage = enrollmentMessage;
             return this;
         }
 
+        /**
+         * @param enrollmentMessage This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+         * 
+         * @return builder
+         * 
+         */
         public Builder enrollmentMessage(String enrollmentMessage) {
             return enrollmentMessage(Output.of(enrollmentMessage));
         }
 
+        /**
+         * @param from Phone number to use as the sender.
+         * 
+         * @return builder
+         * 
+         */
         public Builder from(@Nullable Output<String> from) {
             $.from = from;
             return this;
         }
 
+        /**
+         * @param from Phone number to use as the sender.
+         * 
+         * @return builder
+         * 
+         */
         public Builder from(String from) {
             return from(Output.of(from));
         }
 
+        /**
+         * @param messagingServiceSid Messaging service SID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder messagingServiceSid(@Nullable Output<String> messagingServiceSid) {
             $.messagingServiceSid = messagingServiceSid;
             return this;
         }
 
+        /**
+         * @param messagingServiceSid Messaging service SID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder messagingServiceSid(String messagingServiceSid) {
             return messagingServiceSid(Output.of(messagingServiceSid));
         }
 
+        /**
+         * @param sid SID for your Twilio account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sid(@Nullable Output<String> sid) {
             $.sid = sid;
             return this;
         }
 
+        /**
+         * @param sid SID for your Twilio account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sid(String sid) {
             return sid(Output.of(sid));
         }
 
+        /**
+         * @param verificationMessage This message will be sent whenever a user logs in after the enrollment. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+         * 
+         * @return builder
+         * 
+         */
         public Builder verificationMessage(@Nullable Output<String> verificationMessage) {
             $.verificationMessage = verificationMessage;
             return this;
         }
 
+        /**
+         * @param verificationMessage This message will be sent whenever a user logs in after the enrollment. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+         * 
+         * @return builder
+         * 
+         */
         public Builder verificationMessage(String verificationMessage) {
             return verificationMessage(Output.of(verificationMessage));
         }

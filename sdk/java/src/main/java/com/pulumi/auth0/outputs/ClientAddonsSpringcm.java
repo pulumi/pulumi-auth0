@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddonsSpringcm {
+    /**
+     * @return SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
+     * 
+     */
     private @Nullable String acsUrl;
 
     private ClientAddonsSpringcm() {}
+    /**
+     * @return SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
+     * 
+     */
     public Optional<String> acsUrl() {
         return Optional.ofNullable(this.acsUrl);
     }

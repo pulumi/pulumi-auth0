@@ -13,9 +13,17 @@ public final class GuardianPushDirectFcmArgs extends com.pulumi.resources.Resour
 
     public static final GuardianPushDirectFcmArgs Empty = new GuardianPushDirectFcmArgs();
 
+    /**
+     * The Firebase Cloud Messaging Server Key. For security purposes, we don’t retrieve your existing FCM server key to check for drift.
+     * 
+     */
     @Import(name="serverKey", required=true)
     private Output<String> serverKey;
 
+    /**
+     * @return The Firebase Cloud Messaging Server Key. For security purposes, we don’t retrieve your existing FCM server key to check for drift.
+     * 
+     */
     public Output<String> serverKey() {
         return this.serverKey;
     }
@@ -44,11 +52,23 @@ public final class GuardianPushDirectFcmArgs extends com.pulumi.resources.Resour
             $ = new GuardianPushDirectFcmArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param serverKey The Firebase Cloud Messaging Server Key. For security purposes, we don’t retrieve your existing FCM server key to check for drift.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverKey(Output<String> serverKey) {
             $.serverKey = serverKey;
             return this;
         }
 
+        /**
+         * @param serverKey The Firebase Cloud Messaging Server Key. For security purposes, we don’t retrieve your existing FCM server key to check for drift.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverKey(String serverKey) {
             return serverKey(Output.of(serverKey));
         }

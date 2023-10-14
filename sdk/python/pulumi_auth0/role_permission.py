@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['RolePermissionArgs', 'RolePermission']
@@ -23,9 +23,22 @@ class RolePermissionArgs:
         :param pulumi.Input[str] resource_server_identifier: Identifier of the resource server that the permission is associated with.
         :param pulumi.Input[str] role_id: ID of the role to associate the permission to.
         """
-        pulumi.set(__self__, "permission", permission)
-        pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
-        pulumi.set(__self__, "role_id", role_id)
+        RolePermissionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permission=permission,
+            resource_server_identifier=resource_server_identifier,
+            role_id=role_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permission: pulumi.Input[str],
+             resource_server_identifier: pulumi.Input[str],
+             role_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permission", permission)
+        _setter("resource_server_identifier", resource_server_identifier)
+        _setter("role_id", role_id)
 
     @property
     @pulumi.getter
@@ -80,16 +93,33 @@ class _RolePermissionState:
         :param pulumi.Input[str] resource_server_name: Name of the resource server that the permission is associated with.
         :param pulumi.Input[str] role_id: ID of the role to associate the permission to.
         """
+        _RolePermissionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            permission=permission,
+            resource_server_identifier=resource_server_identifier,
+            resource_server_name=resource_server_name,
+            role_id=role_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             permission: Optional[pulumi.Input[str]] = None,
+             resource_server_identifier: Optional[pulumi.Input[str]] = None,
+             resource_server_name: Optional[pulumi.Input[str]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if permission is not None:
-            pulumi.set(__self__, "permission", permission)
+            _setter("permission", permission)
         if resource_server_identifier is not None:
-            pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
+            _setter("resource_server_identifier", resource_server_identifier)
         if resource_server_name is not None:
-            pulumi.set(__self__, "resource_server_name", resource_server_name)
+            _setter("resource_server_name", resource_server_name)
         if role_id is not None:
-            pulumi.set(__self__, "role_id", role_id)
+            _setter("role_id", role_id)
 
     @property
     @pulumi.getter
@@ -197,6 +227,10 @@ class RolePermission(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RolePermissionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

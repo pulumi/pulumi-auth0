@@ -16,16 +16,32 @@ public final class ClientAddonsSamlpLogoutArgs extends com.pulumi.resources.Reso
 
     public static final ClientAddonsSamlpLogoutArgs Empty = new ClientAddonsSamlpLogoutArgs();
 
+    /**
+     * The service provider (client application)&#39;s Single Logout Service URL, where Auth0 will send logout requests and responses.
+     * 
+     */
     @Import(name="callback")
     private @Nullable Output<String> callback;
 
+    /**
+     * @return The service provider (client application)&#39;s Single Logout Service URL, where Auth0 will send logout requests and responses.
+     * 
+     */
     public Optional<Output<String>> callback() {
         return Optional.ofNullable(this.callback);
     }
 
+    /**
+     * Controls whether Auth0 should notify service providers of session termination.
+     * 
+     */
     @Import(name="sloEnabled")
     private @Nullable Output<Boolean> sloEnabled;
 
+    /**
+     * @return Controls whether Auth0 should notify service providers of session termination.
+     * 
+     */
     public Optional<Output<Boolean>> sloEnabled() {
         return Optional.ofNullable(this.sloEnabled);
     }
@@ -55,20 +71,44 @@ public final class ClientAddonsSamlpLogoutArgs extends com.pulumi.resources.Reso
             $ = new ClientAddonsSamlpLogoutArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param callback The service provider (client application)&#39;s Single Logout Service URL, where Auth0 will send logout requests and responses.
+         * 
+         * @return builder
+         * 
+         */
         public Builder callback(@Nullable Output<String> callback) {
             $.callback = callback;
             return this;
         }
 
+        /**
+         * @param callback The service provider (client application)&#39;s Single Logout Service URL, where Auth0 will send logout requests and responses.
+         * 
+         * @return builder
+         * 
+         */
         public Builder callback(String callback) {
             return callback(Output.of(callback));
         }
 
+        /**
+         * @param sloEnabled Controls whether Auth0 should notify service providers of session termination.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sloEnabled(@Nullable Output<Boolean> sloEnabled) {
             $.sloEnabled = sloEnabled;
             return this;
         }
 
+        /**
+         * @param sloEnabled Controls whether Auth0 should notify service providers of session termination.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sloEnabled(Boolean sloEnabled) {
             return sloEnabled(Output.of(sloEnabled));
         }

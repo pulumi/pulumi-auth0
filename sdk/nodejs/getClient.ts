@@ -37,13 +37,7 @@ export function getClient(args?: GetClientArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getClient.
  */
 export interface GetClientArgs {
-    /**
-     * The ID of the client. If not provided, `name` must be set.
-     */
     clientId?: string;
-    /**
-     * The name of the client. If not provided, `clientId` must be set.
-     */
     name?: string;
 }
 
@@ -226,12 +220,6 @@ export function getClientOutput(args?: GetClientOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getClient.
  */
 export interface GetClientOutputArgs {
-    /**
-     * The ID of the client. If not provided, `name` must be set.
-     */
     clientId?: pulumi.Input<string>;
-    /**
-     * The name of the client. If not provided, `clientId` must be set.
-     */
     name?: pulumi.Input<string>;
 }

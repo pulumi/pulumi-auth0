@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddonsAws {
+    /**
+     * @return AWS token lifetime in seconds.
+     * 
+     */
     private @Nullable Integer lifetimeInSeconds;
+    /**
+     * @return AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * 
+     */
     private @Nullable String principal;
+    /**
+     * @return AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.
+     * 
+     */
     private @Nullable String role;
 
     private ClientAddonsAws() {}
+    /**
+     * @return AWS token lifetime in seconds.
+     * 
+     */
     public Optional<Integer> lifetimeInSeconds() {
         return Optional.ofNullable(this.lifetimeInSeconds);
     }
+    /**
+     * @return AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * 
+     */
     public Optional<String> principal() {
         return Optional.ofNullable(this.principal);
     }
+    /**
+     * @return AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.
+     * 
+     */
     public Optional<String> role() {
         return Optional.ofNullable(this.role);
     }

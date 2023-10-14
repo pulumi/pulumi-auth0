@@ -348,7 +348,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Name of the connection.
+     * The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -425,7 +425,7 @@ export interface ConnectionState {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of the connection.
+     * The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -463,7 +463,7 @@ export interface ConnectionArgs {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of the connection.
+     * The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
      */
     name?: pulumi.Input<string>;
     /**

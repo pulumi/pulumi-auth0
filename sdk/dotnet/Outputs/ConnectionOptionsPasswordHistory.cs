@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ConnectionOptionsPasswordHistory
     {
+        /// <summary>
+        /// Indicates whether the password dictionary check is enabled for this connection.
+        /// </summary>
         public readonly bool? Enable;
         public readonly int? Size;
 

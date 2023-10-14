@@ -15,23 +15,47 @@ public final class GuardianPushCustomAppArgs extends com.pulumi.resources.Resour
 
     public static final GuardianPushCustomAppArgs Empty = new GuardianPushCustomAppArgs();
 
+    /**
+     * Custom Application Name.
+     * 
+     */
     @Import(name="appName")
     private @Nullable Output<String> appName;
 
+    /**
+     * @return Custom Application Name.
+     * 
+     */
     public Optional<Output<String>> appName() {
         return Optional.ofNullable(this.appName);
     }
 
+    /**
+     * Apple App Store URL. Must be HTTPS or an empty string.
+     * 
+     */
     @Import(name="appleAppLink")
     private @Nullable Output<String> appleAppLink;
 
+    /**
+     * @return Apple App Store URL. Must be HTTPS or an empty string.
+     * 
+     */
     public Optional<Output<String>> appleAppLink() {
         return Optional.ofNullable(this.appleAppLink);
     }
 
+    /**
+     * Google Store URL. Must be HTTPS or an empty string.
+     * 
+     */
     @Import(name="googleAppLink")
     private @Nullable Output<String> googleAppLink;
 
+    /**
+     * @return Google Store URL. Must be HTTPS or an empty string.
+     * 
+     */
     public Optional<Output<String>> googleAppLink() {
         return Optional.ofNullable(this.googleAppLink);
     }
@@ -62,29 +86,65 @@ public final class GuardianPushCustomAppArgs extends com.pulumi.resources.Resour
             $ = new GuardianPushCustomAppArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param appName Custom Application Name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder appName(@Nullable Output<String> appName) {
             $.appName = appName;
             return this;
         }
 
+        /**
+         * @param appName Custom Application Name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder appName(String appName) {
             return appName(Output.of(appName));
         }
 
+        /**
+         * @param appleAppLink Apple App Store URL. Must be HTTPS or an empty string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder appleAppLink(@Nullable Output<String> appleAppLink) {
             $.appleAppLink = appleAppLink;
             return this;
         }
 
+        /**
+         * @param appleAppLink Apple App Store URL. Must be HTTPS or an empty string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder appleAppLink(String appleAppLink) {
             return appleAppLink(Output.of(appleAppLink));
         }
 
+        /**
+         * @param googleAppLink Google Store URL. Must be HTTPS or an empty string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder googleAppLink(@Nullable Output<String> googleAppLink) {
             $.googleAppLink = googleAppLink;
             return this;
         }
 
+        /**
+         * @param googleAppLink Google Store URL. Must be HTTPS or an empty string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder googleAppLink(String googleAppLink) {
             return googleAppLink(Output.of(googleAppLink));
         }

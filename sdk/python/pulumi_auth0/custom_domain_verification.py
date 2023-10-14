@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CustomDomainVerificationInitArgs', 'CustomDomainVerification']
@@ -19,7 +19,16 @@ class CustomDomainVerificationInitArgs:
         The set of arguments for constructing a CustomDomainVerification resource.
         :param pulumi.Input[str] custom_domain_id: ID of the custom domain resource.
         """
-        pulumi.set(__self__, "custom_domain_id", custom_domain_id)
+        CustomDomainVerificationInitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_domain_id=custom_domain_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_domain_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("custom_domain_id", custom_domain_id)
 
     @property
     @pulumi.getter(name="customDomainId")
@@ -47,12 +56,25 @@ class _CustomDomainVerificationState:
         :param pulumi.Input[str] custom_domain_id: ID of the custom domain resource.
         :param pulumi.Input[str] origin_domain_name: The DNS name of the Auth0 origin server that handles traffic for the custom domain.
         """
+        _CustomDomainVerificationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cname_api_key=cname_api_key,
+            custom_domain_id=custom_domain_id,
+            origin_domain_name=origin_domain_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cname_api_key: Optional[pulumi.Input[str]] = None,
+             custom_domain_id: Optional[pulumi.Input[str]] = None,
+             origin_domain_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cname_api_key is not None:
-            pulumi.set(__self__, "cname_api_key", cname_api_key)
+            _setter("cname_api_key", cname_api_key)
         if custom_domain_id is not None:
-            pulumi.set(__self__, "custom_domain_id", custom_domain_id)
+            _setter("custom_domain_id", custom_domain_id)
         if origin_domain_name is not None:
-            pulumi.set(__self__, "origin_domain_name", origin_domain_name)
+            _setter("origin_domain_name", origin_domain_name)
 
     @property
     @pulumi.getter(name="cnameApiKey")
@@ -141,6 +163,10 @@ class CustomDomainVerification(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CustomDomainVerificationInitArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -12,9 +12,15 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientAddonsSentryGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// URL prefix only if running Sentry Community Edition, otherwise leave empty.
+        /// </summary>
         [Input("baseUrl")]
         public Input<string>? BaseUrl { get; set; }
 
+        /// <summary>
+        /// Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
+        /// </summary>
         [Input("orgSlug")]
         public Input<string>? OrgSlug { get; set; }
 

@@ -12,20 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClientAddonsSsoIntegration {
     /**
-     * @return Name of the client.
+     * @return SSO integration name.
      * 
      */
     private @Nullable String name;
+    /**
+     * @return SSO integration version installed.
+     * 
+     */
     private @Nullable String version;
 
     private ClientAddonsSsoIntegration() {}
     /**
-     * @return Name of the client.
+     * @return SSO integration name.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return SSO integration version installed.
+     * 
+     */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }

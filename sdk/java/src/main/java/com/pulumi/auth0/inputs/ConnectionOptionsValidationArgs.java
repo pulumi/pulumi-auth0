@@ -15,9 +15,17 @@ public final class ConnectionOptionsValidationArgs extends com.pulumi.resources.
 
     public static final ConnectionOptionsValidationArgs Empty = new ConnectionOptionsValidationArgs();
 
+    /**
+     * Specifies the `min` and `max` values of username length.
+     * 
+     */
     @Import(name="username")
     private @Nullable Output<ConnectionOptionsValidationUsernameArgs> username;
 
+    /**
+     * @return Specifies the `min` and `max` values of username length.
+     * 
+     */
     public Optional<Output<ConnectionOptionsValidationUsernameArgs>> username() {
         return Optional.ofNullable(this.username);
     }
@@ -46,11 +54,23 @@ public final class ConnectionOptionsValidationArgs extends com.pulumi.resources.
             $ = new ConnectionOptionsValidationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param username Specifies the `min` and `max` values of username length.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(@Nullable Output<ConnectionOptionsValidationUsernameArgs> username) {
             $.username = username;
             return this;
         }
 
+        /**
+         * @param username Specifies the `min` and `max` values of username length.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(ConnectionOptionsValidationUsernameArgs username) {
             return username(Output.of(username));
         }

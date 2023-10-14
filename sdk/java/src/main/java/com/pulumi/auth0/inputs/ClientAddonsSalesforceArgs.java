@@ -15,9 +15,17 @@ public final class ClientAddonsSalesforceArgs extends com.pulumi.resources.Resou
 
     public static final ClientAddonsSalesforceArgs Empty = new ClientAddonsSalesforceArgs();
 
+    /**
+     * Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
+     * 
+     */
     @Import(name="entityId")
     private @Nullable Output<String> entityId;
 
+    /**
+     * @return Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
+     * 
+     */
     public Optional<Output<String>> entityId() {
         return Optional.ofNullable(this.entityId);
     }
@@ -46,11 +54,23 @@ public final class ClientAddonsSalesforceArgs extends com.pulumi.resources.Resou
             $ = new ClientAddonsSalesforceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param entityId Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder entityId(@Nullable Output<String> entityId) {
             $.entityId = entityId;
             return this;
         }
 
+        /**
+         * @param entityId Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder entityId(String entityId) {
             return entityId(Output.of(entityId));
         }

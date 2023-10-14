@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -14,6 +14,7 @@ __all__ = [
     'GetPagesResult',
     'AwaitableGetPagesResult',
     'get_pages',
+    'get_pages_output',
 ]
 
 @pulumi.output_type
@@ -115,3 +116,20 @@ def get_pages(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPagesR
         guardian_mfas=pulumi.get(__ret__, 'guardian_mfas'),
         id=pulumi.get(__ret__, 'id'),
         logins=pulumi.get(__ret__, 'logins'))
+
+
+@_utilities.lift_output_func(get_pages)
+def get_pages_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPagesResult]:
+    """
+    Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_pages = auth0.get_pages()
+    ```
+    """
+    ...

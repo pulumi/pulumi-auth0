@@ -14,6 +14,10 @@ namespace Pulumi.Auth0.Inputs
     {
         [Input("serverKey", required: true)]
         private Input<string>? _serverKey;
+
+        /// <summary>
+        /// The Firebase Cloud Messaging Server Key. For security purposes, we don’t retrieve your existing FCM server key to check for drift.
+        /// </summary>
         public Input<string>? ServerKey
         {
             get => _serverKey;

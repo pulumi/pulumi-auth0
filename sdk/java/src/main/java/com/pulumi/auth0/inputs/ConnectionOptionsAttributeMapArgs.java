@@ -15,23 +15,47 @@ public final class ConnectionOptionsAttributeMapArgs extends com.pulumi.resource
 
     public static final ConnectionOptionsAttributeMapArgs Empty = new ConnectionOptionsAttributeMapArgs();
 
+    /**
+     * This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+     * 
+     */
     @Import(name="attributes")
     private @Nullable Output<String> attributes;
 
+    /**
+     * @return This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+     * 
+     */
     public Optional<Output<String>> attributes() {
         return Optional.ofNullable(this.attributes);
     }
 
+    /**
+     * Method used to map incoming claims. Possible values: `use_map`, `bind_all` or `basic_profile`.
+     * 
+     */
     @Import(name="mappingMode", required=true)
     private Output<String> mappingMode;
 
+    /**
+     * @return Method used to map incoming claims. Possible values: `use_map`, `bind_all` or `basic_profile`.
+     * 
+     */
     public Output<String> mappingMode() {
         return this.mappingMode;
     }
 
+    /**
+     * This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
+     * 
+     */
     @Import(name="userinfoScope")
     private @Nullable Output<String> userinfoScope;
 
+    /**
+     * @return This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
+     * 
+     */
     public Optional<Output<String>> userinfoScope() {
         return Optional.ofNullable(this.userinfoScope);
     }
@@ -62,29 +86,65 @@ public final class ConnectionOptionsAttributeMapArgs extends com.pulumi.resource
             $ = new ConnectionOptionsAttributeMapArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param attributes This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder attributes(@Nullable Output<String> attributes) {
             $.attributes = attributes;
             return this;
         }
 
+        /**
+         * @param attributes This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder attributes(String attributes) {
             return attributes(Output.of(attributes));
         }
 
+        /**
+         * @param mappingMode Method used to map incoming claims. Possible values: `use_map`, `bind_all` or `basic_profile`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mappingMode(Output<String> mappingMode) {
             $.mappingMode = mappingMode;
             return this;
         }
 
+        /**
+         * @param mappingMode Method used to map incoming claims. Possible values: `use_map`, `bind_all` or `basic_profile`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mappingMode(String mappingMode) {
             return mappingMode(Output.of(mappingMode));
         }
 
+        /**
+         * @param userinfoScope This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userinfoScope(@Nullable Output<String> userinfoScope) {
             $.userinfoScope = userinfoScope;
             return this;
         }
 
+        /**
+         * @param userinfoScope This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userinfoScope(String userinfoScope) {
             return userinfoScope(Output.of(userinfoScope));
         }

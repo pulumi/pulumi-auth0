@@ -12,14 +12,24 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientAddonsFirebaseGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
+        /// </summary>
         [Input("clientEmail")]
         public Input<string>? ClientEmail { get; set; }
 
+        /// <summary>
+        /// AWS token lifetime in seconds.
+        /// </summary>
         [Input("lifetimeInSeconds")]
         public Input<int>? LifetimeInSeconds { get; set; }
 
         [Input("privateKey")]
         private Input<string>? _privateKey;
+
+        /// <summary>
+        /// Private Key for signing the token (SDK v3+ tokens only).
+        /// </summary>
         public Input<string>? PrivateKey
         {
             get => _privateKey;
@@ -32,6 +42,10 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("privateKeyId")]
         private Input<string>? _privateKeyId;
+
+        /// <summary>
+        /// Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).
+        /// </summary>
         public Input<string>? PrivateKeyId
         {
             get => _privateKeyId;
@@ -44,6 +58,10 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("secret")]
         private Input<string>? _secret;
+
+        /// <summary>
+        /// Google Firebase Secret. (SDK v2 only).
+        /// </summary>
         public Input<string>? Secret
         {
             get => _secret;

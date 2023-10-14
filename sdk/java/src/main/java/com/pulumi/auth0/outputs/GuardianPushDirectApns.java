@@ -12,21 +12,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GuardianPushDirectApns {
+    /**
+     * @return The Apple Push Notification service Bundle ID.
+     * 
+     */
     private String bundleId;
+    /**
+     * @return Indicates whether Duo MFA is enabled.
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return The base64 encoded certificate in P12 format.
+     * 
+     */
     private String p12;
+    /**
+     * @return Set to true to use the sandbox iOS app environment, otherwise set to false to use the production iOS app environment.
+     * 
+     */
     private Boolean sandbox;
 
     private GuardianPushDirectApns() {}
+    /**
+     * @return The Apple Push Notification service Bundle ID.
+     * 
+     */
     public String bundleId() {
         return this.bundleId;
     }
+    /**
+     * @return Indicates whether Duo MFA is enabled.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return The base64 encoded certificate in P12 format.
+     * 
+     */
     public String p12() {
         return this.p12;
     }
+    /**
+     * @return Set to true to use the sandbox iOS app environment, otherwise set to false to use the production iOS app environment.
+     * 
+     */
     public Boolean sandbox() {
         return this.sandbox;
     }

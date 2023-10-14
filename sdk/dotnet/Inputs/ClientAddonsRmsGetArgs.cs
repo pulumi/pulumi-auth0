@@ -12,6 +12,9 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientAddonsRmsGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Microsoft Dynamics CRM application URL.
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 

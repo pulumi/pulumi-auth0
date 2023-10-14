@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -183,7 +183,6 @@ def get_connection(connection_id: Optional[str] = None,
 
 
     :param str connection_id: The ID of the connection. If not provided, `name` must be set.
-    :param str name: The name of the connection. If not provided, `connection_id` must be set.
     """
     __args__ = dict()
     __args__['connectionId'] = connection_id
@@ -224,6 +223,5 @@ def get_connection_output(connection_id: Optional[pulumi.Input[Optional[str]]] =
 
 
     :param str connection_id: The ID of the connection. If not provided, `name` must be set.
-    :param str name: The name of the connection. If not provided, `connection_id` must be set.
     """
     ...

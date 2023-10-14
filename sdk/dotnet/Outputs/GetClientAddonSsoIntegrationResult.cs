@@ -13,9 +13,6 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetClientAddonSsoIntegrationResult
     {
-        /// <summary>
-        /// The name of the client. If not provided, `client_id` must be set.
-        /// </summary>
         public readonly string Name;
         public readonly string Version;
 

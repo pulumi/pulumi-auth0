@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddonsAzureSb {
+    /**
+     * @return Entity you want to request a token for, such as `my-queue`.
+     * 
+     */
     private @Nullable String entityPath;
+    /**
+     * @return Expiration in minutes for the generated token (default of 5 minutes).
+     * 
+     */
     private @Nullable Integer expiration;
+    /**
+     * @return Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
+     * 
+     */
     private @Nullable String namespace;
+    /**
+     * @return Primary Key associated with your shared access policy.
+     * 
+     */
     private @Nullable String sasKey;
+    /**
+     * @return Your shared access policy name defined in your Service Bus entity.
+     * 
+     */
     private @Nullable String sasKeyName;
 
     private ClientAddonsAzureSb() {}
+    /**
+     * @return Entity you want to request a token for, such as `my-queue`.
+     * 
+     */
     public Optional<String> entityPath() {
         return Optional.ofNullable(this.entityPath);
     }
+    /**
+     * @return Expiration in minutes for the generated token (default of 5 minutes).
+     * 
+     */
     public Optional<Integer> expiration() {
         return Optional.ofNullable(this.expiration);
     }
+    /**
+     * @return Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
+     * 
+     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
+    /**
+     * @return Primary Key associated with your shared access policy.
+     * 
+     */
     public Optional<String> sasKey() {
         return Optional.ofNullable(this.sasKey);
     }
+    /**
+     * @return Your shared access policy name defined in your Service Bus entity.
+     * 
+     */
     public Optional<String> sasKeyName() {
         return Optional.ofNullable(this.sasKeyName);
     }

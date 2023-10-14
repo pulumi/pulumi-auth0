@@ -12,6 +12,9 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientAddonsSalesforceArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
+        /// </summary>
         [Input("entityId")]
         public Input<string>? EntityId { get; set; }
 

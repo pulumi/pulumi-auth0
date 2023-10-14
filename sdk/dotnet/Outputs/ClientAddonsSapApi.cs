@@ -14,13 +14,28 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ClientAddonsSapApi
     {
         /// <summary>
-        /// The ID of the client.
+        /// Consumer Key assigned by Salesforce to the Connected App.
         /// </summary>
         public readonly string? ClientId;
+        /// <summary>
+        /// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+        /// </summary>
         public readonly string? NameIdentifierFormat;
+        /// <summary>
+        /// Requested scope for SAP APIs.
+        /// </summary>
         public readonly string? Scope;
+        /// <summary>
+        /// Service account password to use to authenticate API calls to the token endpoint.
+        /// </summary>
         public readonly string? ServicePassword;
+        /// <summary>
+        /// The OAuth2 token endpoint URL of your SAP OData server.
+        /// </summary>
         public readonly string? TokenEndpointUrl;
+        /// <summary>
+        /// Name of the property in the user object that maps to a SAP username, for example `email`.
+        /// </summary>
         public readonly string? UsernameAttribute;
 
         [OutputConstructor]

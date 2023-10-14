@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionOptionsPasswordNoPersonalInfo {
+    /**
+     * @return Indicates whether the password dictionary check is enabled for this connection.
+     * 
+     */
     private @Nullable Boolean enable;
 
     private ConnectionOptionsPasswordNoPersonalInfo() {}
+    /**
+     * @return Indicates whether the password dictionary check is enabled for this connection.
+     * 
+     */
     public Optional<Boolean> enable() {
         return Optional.ofNullable(this.enable);
     }

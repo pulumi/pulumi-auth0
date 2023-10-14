@@ -14,6 +14,10 @@ namespace Pulumi.Auth0.Inputs
     {
         [Input("authToken")]
         private Input<string>? _authToken;
+
+        /// <summary>
+        /// AuthToken for your Twilio account.
+        /// </summary>
         public Input<string>? AuthToken
         {
             get => _authToken;
@@ -24,18 +28,33 @@ namespace Pulumi.Auth0.Inputs
             }
         }
 
+        /// <summary>
+        /// This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+        /// </summary>
         [Input("enrollmentMessage")]
         public Input<string>? EnrollmentMessage { get; set; }
 
+        /// <summary>
+        /// Phone number to use as the sender.
+        /// </summary>
         [Input("from")]
         public Input<string>? From { get; set; }
 
+        /// <summary>
+        /// Messaging service SID.
+        /// </summary>
         [Input("messagingServiceSid")]
         public Input<string>? MessagingServiceSid { get; set; }
 
+        /// <summary>
+        /// SID for your Twilio account.
+        /// </summary>
         [Input("sid")]
         public Input<string>? Sid { get; set; }
 
+        /// <summary>
+        /// This message will be sent whenever a user logs in after the enrollment. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+        /// </summary>
         [Input("verificationMessage")]
         public Input<string>? VerificationMessage { get; set; }
 

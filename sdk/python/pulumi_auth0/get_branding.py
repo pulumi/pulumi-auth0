@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -14,6 +14,7 @@ __all__ = [
     'GetBrandingResult',
     'AwaitableGetBrandingResult',
     'get_branding',
+    'get_branding_output',
 ]
 
 @pulumi.output_type
@@ -128,3 +129,20 @@ def get_branding(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBra
         id=pulumi.get(__ret__, 'id'),
         logo_url=pulumi.get(__ret__, 'logo_url'),
         universal_logins=pulumi.get(__ret__, 'universal_logins'))
+
+
+@_utilities.lift_output_func(get_branding)
+def get_branding_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBrandingResult]:
+    """
+    Use this data source to access information about the tenant's branding settings.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_branding = auth0.get_branding()
+    ```
+    """
+    ...

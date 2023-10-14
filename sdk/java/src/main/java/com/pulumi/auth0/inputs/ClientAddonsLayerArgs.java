@@ -16,37 +16,77 @@ public final class ClientAddonsLayerArgs extends com.pulumi.resources.ResourceAr
 
     public static final ClientAddonsLayerArgs Empty = new ClientAddonsLayerArgs();
 
+    /**
+     * Expiration in minutes for the generated token (default of 5 minutes).
+     * 
+     */
     @Import(name="expiration")
     private @Nullable Output<Integer> expiration;
 
+    /**
+     * @return Expiration in minutes for the generated token (default of 5 minutes).
+     * 
+     */
     public Optional<Output<Integer>> expiration() {
         return Optional.ofNullable(this.expiration);
     }
 
+    /**
+     * Authentication Key identifier used to sign the Layer token.
+     * 
+     */
     @Import(name="keyId", required=true)
     private Output<String> keyId;
 
+    /**
+     * @return Authentication Key identifier used to sign the Layer token.
+     * 
+     */
     public Output<String> keyId() {
         return this.keyId;
     }
 
+    /**
+     * AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * 
+     */
     @Import(name="principal")
     private @Nullable Output<String> principal;
 
+    /**
+     * @return AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * 
+     */
     public Optional<Output<String>> principal() {
         return Optional.ofNullable(this.principal);
     }
 
+    /**
+     * Private Key for signing the token (SDK v3+ tokens only).
+     * 
+     */
     @Import(name="privateKey", required=true)
     private Output<String> privateKey;
 
+    /**
+     * @return Private Key for signing the token (SDK v3+ tokens only).
+     * 
+     */
     public Output<String> privateKey() {
         return this.privateKey;
     }
 
+    /**
+     * Provider ID of your Layer account.
+     * 
+     */
     @Import(name="providerId", required=true)
     private Output<String> providerId;
 
+    /**
+     * @return Provider ID of your Layer account.
+     * 
+     */
     public Output<String> providerId() {
         return this.providerId;
     }
@@ -79,47 +119,107 @@ public final class ClientAddonsLayerArgs extends com.pulumi.resources.ResourceAr
             $ = new ClientAddonsLayerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param expiration Expiration in minutes for the generated token (default of 5 minutes).
+         * 
+         * @return builder
+         * 
+         */
         public Builder expiration(@Nullable Output<Integer> expiration) {
             $.expiration = expiration;
             return this;
         }
 
+        /**
+         * @param expiration Expiration in minutes for the generated token (default of 5 minutes).
+         * 
+         * @return builder
+         * 
+         */
         public Builder expiration(Integer expiration) {
             return expiration(Output.of(expiration));
         }
 
+        /**
+         * @param keyId Authentication Key identifier used to sign the Layer token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyId(Output<String> keyId) {
             $.keyId = keyId;
             return this;
         }
 
+        /**
+         * @param keyId Authentication Key identifier used to sign the Layer token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyId(String keyId) {
             return keyId(Output.of(keyId));
         }
 
+        /**
+         * @param principal AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder principal(@Nullable Output<String> principal) {
             $.principal = principal;
             return this;
         }
 
+        /**
+         * @param principal AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder principal(String principal) {
             return principal(Output.of(principal));
         }
 
+        /**
+         * @param privateKey Private Key for signing the token (SDK v3+ tokens only).
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateKey(Output<String> privateKey) {
             $.privateKey = privateKey;
             return this;
         }
 
+        /**
+         * @param privateKey Private Key for signing the token (SDK v3+ tokens only).
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateKey(String privateKey) {
             return privateKey(Output.of(privateKey));
         }
 
+        /**
+         * @param providerId Provider ID of your Layer account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder providerId(Output<String> providerId) {
             $.providerId = providerId;
             return this;
         }
 
+        /**
+         * @param providerId Provider ID of your Layer account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder providerId(String providerId) {
             return providerId(Output.of(providerId));
         }

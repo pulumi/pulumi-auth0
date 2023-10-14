@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GuardianPushDirectFcm
     {
+        /// <summary>
+        /// The Firebase Cloud Messaging Server Key. For security purposes, we don’t retrieve your existing FCM server key to check for drift.
+        /// </summary>
         public readonly string ServerKey;
 
         [OutputConstructor]
