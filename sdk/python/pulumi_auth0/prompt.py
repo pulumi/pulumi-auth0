@@ -35,7 +35,15 @@ class PromptArgs:
              identifier_first: Optional[pulumi.Input[bool]] = None,
              universal_login_experience: Optional[pulumi.Input[str]] = None,
              webauthn_platform_first_factor: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if identifier_first is None and 'identifierFirst' in kwargs:
+            identifier_first = kwargs['identifierFirst']
+        if universal_login_experience is None and 'universalLoginExperience' in kwargs:
+            universal_login_experience = kwargs['universalLoginExperience']
+        if webauthn_platform_first_factor is None and 'webauthnPlatformFirstFactor' in kwargs:
+            webauthn_platform_first_factor = kwargs['webauthnPlatformFirstFactor']
+
         if identifier_first is not None:
             _setter("identifier_first", identifier_first)
         if universal_login_experience is not None:
@@ -104,7 +112,15 @@ class _PromptState:
              identifier_first: Optional[pulumi.Input[bool]] = None,
              universal_login_experience: Optional[pulumi.Input[str]] = None,
              webauthn_platform_first_factor: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if identifier_first is None and 'identifierFirst' in kwargs:
+            identifier_first = kwargs['identifierFirst']
+        if universal_login_experience is None and 'universalLoginExperience' in kwargs:
+            universal_login_experience = kwargs['universalLoginExperience']
+        if webauthn_platform_first_factor is None and 'webauthnPlatformFirstFactor' in kwargs:
+            webauthn_platform_first_factor = kwargs['webauthnPlatformFirstFactor']
+
         if identifier_first is not None:
             _setter("identifier_first", identifier_first)
         if universal_login_experience is not None:

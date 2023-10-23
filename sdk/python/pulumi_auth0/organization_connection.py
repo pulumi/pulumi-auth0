@@ -32,10 +32,22 @@ class OrganizationConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_id: pulumi.Input[str],
-             organization_id: pulumi.Input[str],
+             connection_id: Optional[pulumi.Input[str]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
              assign_membership_on_login: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if connection_id is None:
+            raise TypeError("Missing 'connection_id' argument")
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if organization_id is None:
+            raise TypeError("Missing 'organization_id' argument")
+        if assign_membership_on_login is None and 'assignMembershipOnLogin' in kwargs:
+            assign_membership_on_login = kwargs['assignMembershipOnLogin']
+
         _setter("connection_id", connection_id)
         _setter("organization_id", organization_id)
         if assign_membership_on_login is not None:
@@ -110,7 +122,15 @@ class _OrganizationConnectionState:
              name: Optional[pulumi.Input[str]] = None,
              organization_id: Optional[pulumi.Input[str]] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if assign_membership_on_login is None and 'assignMembershipOnLogin' in kwargs:
+            assign_membership_on_login = kwargs['assignMembershipOnLogin']
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+
         if assign_membership_on_login is not None:
             _setter("assign_membership_on_login", assign_membership_on_login)
         if connection_id is not None:

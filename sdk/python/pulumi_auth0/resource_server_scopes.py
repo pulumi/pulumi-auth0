@@ -30,9 +30,17 @@ class ResourceServerScopesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_server_identifier: pulumi.Input[str],
-             scopes: pulumi.Input[Sequence[pulumi.Input['ResourceServerScopesScopeArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             resource_server_identifier: Optional[pulumi.Input[str]] = None,
+             scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerScopesScopeArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_server_identifier is None and 'resourceServerIdentifier' in kwargs:
+            resource_server_identifier = kwargs['resourceServerIdentifier']
+        if resource_server_identifier is None:
+            raise TypeError("Missing 'resource_server_identifier' argument")
+        if scopes is None:
+            raise TypeError("Missing 'scopes' argument")
+
         _setter("resource_server_identifier", resource_server_identifier)
         _setter("scopes", scopes)
 
@@ -77,7 +85,11 @@ class _ResourceServerScopesState:
              _setter: Callable[[Any, Any], None],
              resource_server_identifier: Optional[pulumi.Input[str]] = None,
              scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerScopesScopeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_server_identifier is None and 'resourceServerIdentifier' in kwargs:
+            resource_server_identifier = kwargs['resourceServerIdentifier']
+
         if resource_server_identifier is not None:
             _setter("resource_server_identifier", resource_server_identifier)
         if scopes is not None:

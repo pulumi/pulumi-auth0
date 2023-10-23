@@ -29,9 +29,17 @@ class OrganizationMembersArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             organization_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if organization_id is None:
+            raise TypeError("Missing 'organization_id' argument")
+
         _setter("members", members)
         _setter("organization_id", organization_id)
 
@@ -80,7 +88,11 @@ class _OrganizationMembersState:
              _setter: Callable[[Any, Any], None],
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              organization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+
         if members is not None:
             _setter("members", members)
         if organization_id is not None:

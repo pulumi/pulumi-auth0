@@ -32,10 +32,18 @@ class PromptCustomTextArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             body: pulumi.Input[str],
-             language: pulumi.Input[str],
-             prompt: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             body: Optional[pulumi.Input[str]] = None,
+             language: Optional[pulumi.Input[str]] = None,
+             prompt: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if body is None:
+            raise TypeError("Missing 'body' argument")
+        if language is None:
+            raise TypeError("Missing 'language' argument")
+        if prompt is None:
+            raise TypeError("Missing 'prompt' argument")
+
         _setter("body", body)
         _setter("language", language)
         _setter("prompt", prompt)
@@ -101,7 +109,9 @@ class _PromptCustomTextState:
              body: Optional[pulumi.Input[str]] = None,
              language: Optional[pulumi.Input[str]] = None,
              prompt: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if body is not None:
             _setter("body", body)
         if language is not None:

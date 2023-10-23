@@ -49,7 +49,7 @@ class ConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             strategy: pulumi.Input[str],
+             strategy: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              is_domain_connection: Optional[pulumi.Input[bool]] = None,
              metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -57,7 +57,17 @@ class ConnectionArgs:
              options: Optional[pulumi.Input['ConnectionOptionsArgs']] = None,
              realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              show_as_button: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if strategy is None:
+            raise TypeError("Missing 'strategy' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if is_domain_connection is None and 'isDomainConnection' in kwargs:
+            is_domain_connection = kwargs['isDomainConnection']
+        if show_as_button is None and 'showAsButton' in kwargs:
+            show_as_button = kwargs['showAsButton']
+
         _setter("strategy", strategy)
         if display_name is not None:
             _setter("display_name", display_name)
@@ -215,7 +225,15 @@ class _ConnectionState:
              realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              show_as_button: Optional[pulumi.Input[bool]] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if is_domain_connection is None and 'isDomainConnection' in kwargs:
+            is_domain_connection = kwargs['isDomainConnection']
+        if show_as_button is None and 'showAsButton' in kwargs:
+            show_as_button = kwargs['showAsButton']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if is_domain_connection is not None:

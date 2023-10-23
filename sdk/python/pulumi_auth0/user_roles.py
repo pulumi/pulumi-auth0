@@ -29,9 +29,17 @@ class UserRolesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             roles: pulumi.Input[Sequence[pulumi.Input[str]]],
-             user_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if roles is None:
+            raise TypeError("Missing 'roles' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+
         _setter("roles", roles)
         _setter("user_id", user_id)
 
@@ -80,7 +88,11 @@ class _UserRolesState:
              _setter: Callable[[Any, Any], None],
              roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if roles is not None:
             _setter("roles", roles)
         if user_id is not None:

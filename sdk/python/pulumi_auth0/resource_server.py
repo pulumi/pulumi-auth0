@@ -56,7 +56,7 @@ class ResourceServerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             identifier: pulumi.Input[str],
+             identifier: Optional[pulumi.Input[str]] = None,
              allow_offline_access: Optional[pulumi.Input[bool]] = None,
              enforce_policies: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -67,7 +67,29 @@ class ResourceServerArgs:
              token_lifetime: Optional[pulumi.Input[int]] = None,
              token_lifetime_for_web: Optional[pulumi.Input[int]] = None,
              verification_location: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if identifier is None:
+            raise TypeError("Missing 'identifier' argument")
+        if allow_offline_access is None and 'allowOfflineAccess' in kwargs:
+            allow_offline_access = kwargs['allowOfflineAccess']
+        if enforce_policies is None and 'enforcePolicies' in kwargs:
+            enforce_policies = kwargs['enforcePolicies']
+        if signing_alg is None and 'signingAlg' in kwargs:
+            signing_alg = kwargs['signingAlg']
+        if signing_secret is None and 'signingSecret' in kwargs:
+            signing_secret = kwargs['signingSecret']
+        if skip_consent_for_verifiable_first_party_clients is None and 'skipConsentForVerifiableFirstPartyClients' in kwargs:
+            skip_consent_for_verifiable_first_party_clients = kwargs['skipConsentForVerifiableFirstPartyClients']
+        if token_dialect is None and 'tokenDialect' in kwargs:
+            token_dialect = kwargs['tokenDialect']
+        if token_lifetime is None and 'tokenLifetime' in kwargs:
+            token_lifetime = kwargs['tokenLifetime']
+        if token_lifetime_for_web is None and 'tokenLifetimeForWeb' in kwargs:
+            token_lifetime_for_web = kwargs['tokenLifetimeForWeb']
+        if verification_location is None and 'verificationLocation' in kwargs:
+            verification_location = kwargs['verificationLocation']
+
         _setter("identifier", identifier)
         if allow_offline_access is not None:
             _setter("allow_offline_access", allow_offline_access)
@@ -279,7 +301,27 @@ class _ResourceServerState:
              token_lifetime: Optional[pulumi.Input[int]] = None,
              token_lifetime_for_web: Optional[pulumi.Input[int]] = None,
              verification_location: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_offline_access is None and 'allowOfflineAccess' in kwargs:
+            allow_offline_access = kwargs['allowOfflineAccess']
+        if enforce_policies is None and 'enforcePolicies' in kwargs:
+            enforce_policies = kwargs['enforcePolicies']
+        if signing_alg is None and 'signingAlg' in kwargs:
+            signing_alg = kwargs['signingAlg']
+        if signing_secret is None and 'signingSecret' in kwargs:
+            signing_secret = kwargs['signingSecret']
+        if skip_consent_for_verifiable_first_party_clients is None and 'skipConsentForVerifiableFirstPartyClients' in kwargs:
+            skip_consent_for_verifiable_first_party_clients = kwargs['skipConsentForVerifiableFirstPartyClients']
+        if token_dialect is None and 'tokenDialect' in kwargs:
+            token_dialect = kwargs['tokenDialect']
+        if token_lifetime is None and 'tokenLifetime' in kwargs:
+            token_lifetime = kwargs['tokenLifetime']
+        if token_lifetime_for_web is None and 'tokenLifetimeForWeb' in kwargs:
+            token_lifetime_for_web = kwargs['tokenLifetimeForWeb']
+        if verification_location is None and 'verificationLocation' in kwargs:
+            verification_location = kwargs['verificationLocation']
+
         if allow_offline_access is not None:
             _setter("allow_offline_access", allow_offline_access)
         if enforce_policies is not None:

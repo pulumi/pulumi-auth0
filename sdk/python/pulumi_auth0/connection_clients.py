@@ -29,9 +29,19 @@ class ConnectionClientsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_id: pulumi.Input[str],
-             enabled_clients: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             connection_id: Optional[pulumi.Input[str]] = None,
+             enabled_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if connection_id is None:
+            raise TypeError("Missing 'connection_id' argument")
+        if enabled_clients is None and 'enabledClients' in kwargs:
+            enabled_clients = kwargs['enabledClients']
+        if enabled_clients is None:
+            raise TypeError("Missing 'enabled_clients' argument")
+
         _setter("connection_id", connection_id)
         _setter("enabled_clients", enabled_clients)
 
@@ -88,7 +98,13 @@ class _ConnectionClientsState:
              enabled_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if enabled_clients is None and 'enabledClients' in kwargs:
+            enabled_clients = kwargs['enabledClients']
+
         if connection_id is not None:
             _setter("connection_id", connection_id)
         if enabled_clients is not None:

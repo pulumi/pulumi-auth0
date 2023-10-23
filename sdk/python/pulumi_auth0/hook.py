@@ -41,13 +41,21 @@ class HookArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             script: pulumi.Input[str],
-             trigger_id: pulumi.Input[str],
+             script: Optional[pulumi.Input[str]] = None,
+             trigger_id: Optional[pulumi.Input[str]] = None,
              dependencies: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if script is None:
+            raise TypeError("Missing 'script' argument")
+        if trigger_id is None and 'triggerId' in kwargs:
+            trigger_id = kwargs['triggerId']
+        if trigger_id is None:
+            raise TypeError("Missing 'trigger_id' argument")
+
         _setter("script", script)
         _setter("trigger_id", trigger_id)
         if dependencies is not None:
@@ -168,7 +176,11 @@ class _HookState:
              script: Optional[pulumi.Input[str]] = None,
              secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              trigger_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if trigger_id is None and 'triggerId' in kwargs:
+            trigger_id = kwargs['triggerId']
+
         if dependencies is not None:
             _setter("dependencies", dependencies)
         if enabled is not None:

@@ -31,9 +31,19 @@ class OrganizationConnectionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled_connections: pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]],
-             organization_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled_connections: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled_connections is None and 'enabledConnections' in kwargs:
+            enabled_connections = kwargs['enabledConnections']
+        if enabled_connections is None:
+            raise TypeError("Missing 'enabled_connections' argument")
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if organization_id is None:
+            raise TypeError("Missing 'organization_id' argument")
+
         _setter("enabled_connections", enabled_connections)
         _setter("organization_id", organization_id)
 
@@ -82,7 +92,13 @@ class _OrganizationConnectionsState:
              _setter: Callable[[Any, Any], None],
              enabled_connections: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]]] = None,
              organization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled_connections is None and 'enabledConnections' in kwargs:
+            enabled_connections = kwargs['enabledConnections']
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+
         if enabled_connections is not None:
             _setter("enabled_connections", enabled_connections)
         if organization_id is not None:

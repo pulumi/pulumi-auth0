@@ -31,9 +31,17 @@ class UserPermissionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             permissions: pulumi.Input[Sequence[pulumi.Input['UserPermissionsPermissionArgs']]],
-             user_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionsPermissionArgs']]]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+
         _setter("permissions", permissions)
         _setter("user_id", user_id)
 
@@ -82,7 +90,11 @@ class _UserPermissionsState:
              _setter: Callable[[Any, Any], None],
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionsPermissionArgs']]]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if permissions is not None:
             _setter("permissions", permissions)
         if user_id is not None:

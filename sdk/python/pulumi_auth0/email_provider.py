@@ -40,12 +40,20 @@ class EmailProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             credentials: pulumi.Input['EmailProviderCredentialsArgs'],
-             default_from_address: pulumi.Input[str],
+             credentials: Optional[pulumi.Input['EmailProviderCredentialsArgs']] = None,
+             default_from_address: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              settings: Optional[pulumi.Input['EmailProviderSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if credentials is None:
+            raise TypeError("Missing 'credentials' argument")
+        if default_from_address is None and 'defaultFromAddress' in kwargs:
+            default_from_address = kwargs['defaultFromAddress']
+        if default_from_address is None:
+            raise TypeError("Missing 'default_from_address' argument")
+
         _setter("credentials", credentials)
         _setter("default_from_address", default_from_address)
         if enabled is not None:
@@ -148,7 +156,11 @@ class _EmailProviderState:
              enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              settings: Optional[pulumi.Input['EmailProviderSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_from_address is None and 'defaultFromAddress' in kwargs:
+            default_from_address = kwargs['defaultFromAddress']
+
         if credentials is not None:
             _setter("credentials", credentials)
         if default_from_address is not None:

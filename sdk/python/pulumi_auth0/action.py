@@ -46,14 +46,22 @@ class ActionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             code: pulumi.Input[str],
-             supported_triggers: pulumi.Input['ActionSupportedTriggersArgs'],
+             code: Optional[pulumi.Input[str]] = None,
+             supported_triggers: Optional[pulumi.Input['ActionSupportedTriggersArgs']] = None,
              dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]]] = None,
              deploy: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              runtime: Optional[pulumi.Input[str]] = None,
              secrets: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if code is None:
+            raise TypeError("Missing 'code' argument")
+        if supported_triggers is None and 'supportedTriggers' in kwargs:
+            supported_triggers = kwargs['supportedTriggers']
+        if supported_triggers is None:
+            raise TypeError("Missing 'supported_triggers' argument")
+
         _setter("code", code)
         _setter("supported_triggers", supported_triggers)
         if dependencies is not None:
@@ -196,7 +204,13 @@ class _ActionState:
              secrets: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]] = None,
              supported_triggers: Optional[pulumi.Input['ActionSupportedTriggersArgs']] = None,
              version_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if supported_triggers is None and 'supportedTriggers' in kwargs:
+            supported_triggers = kwargs['supportedTriggers']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+
         if code is not None:
             _setter("code", code)
         if dependencies is not None:

@@ -52,7 +52,7 @@ class GuardianArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy: pulumi.Input[str],
+             policy: Optional[pulumi.Input[str]] = None,
              duo: Optional[pulumi.Input['GuardianDuoArgs']] = None,
              email: Optional[pulumi.Input[bool]] = None,
              otp: Optional[pulumi.Input[bool]] = None,
@@ -61,7 +61,17 @@ class GuardianArgs:
              recovery_code: Optional[pulumi.Input[bool]] = None,
              webauthn_platform: Optional[pulumi.Input['GuardianWebauthnPlatformArgs']] = None,
              webauthn_roaming: Optional[pulumi.Input['GuardianWebauthnRoamingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if recovery_code is None and 'recoveryCode' in kwargs:
+            recovery_code = kwargs['recoveryCode']
+        if webauthn_platform is None and 'webauthnPlatform' in kwargs:
+            webauthn_platform = kwargs['webauthnPlatform']
+        if webauthn_roaming is None and 'webauthnRoaming' in kwargs:
+            webauthn_roaming = kwargs['webauthnRoaming']
+
         _setter("policy", policy)
         if duo is not None:
             _setter("duo", duo)
@@ -237,7 +247,15 @@ class _GuardianState:
              recovery_code: Optional[pulumi.Input[bool]] = None,
              webauthn_platform: Optional[pulumi.Input['GuardianWebauthnPlatformArgs']] = None,
              webauthn_roaming: Optional[pulumi.Input['GuardianWebauthnRoamingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if recovery_code is None and 'recoveryCode' in kwargs:
+            recovery_code = kwargs['recoveryCode']
+        if webauthn_platform is None and 'webauthnPlatform' in kwargs:
+            webauthn_platform = kwargs['webauthnPlatform']
+        if webauthn_roaming is None and 'webauthnRoaming' in kwargs:
+            webauthn_roaming = kwargs['webauthnRoaming']
+
         if duo is not None:
             _setter("duo", duo)
         if email is not None:

@@ -4,8 +4,12 @@
 package auth0
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
@@ -25,4 +29,50 @@ type GetSigningKeysResult struct {
 	Id string `pulumi:"id"`
 	// All application signing keys.
 	SigningKeys []GetSigningKeysSigningKey `pulumi:"signingKeys"`
+}
+
+func GetSigningKeysOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetSigningKeysResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetSigningKeysResult, error) {
+		r, err := GetSigningKeys(ctx, opts...)
+		var s GetSigningKeysResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetSigningKeysResultOutput)
+}
+
+// A collection of values returned by getSigningKeys.
+type GetSigningKeysResultOutput struct{ *pulumi.OutputState }
+
+func (GetSigningKeysResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSigningKeysResult)(nil)).Elem()
+}
+
+func (o GetSigningKeysResultOutput) ToGetSigningKeysResultOutput() GetSigningKeysResultOutput {
+	return o
+}
+
+func (o GetSigningKeysResultOutput) ToGetSigningKeysResultOutputWithContext(ctx context.Context) GetSigningKeysResultOutput {
+	return o
+}
+
+func (o GetSigningKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSigningKeysResult] {
+	return pulumix.Output[GetSigningKeysResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSigningKeysResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSigningKeysResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// All application signing keys.
+func (o GetSigningKeysResultOutput) SigningKeys() GetSigningKeysSigningKeyArrayOutput {
+	return o.ApplyT(func(v GetSigningKeysResult) []GetSigningKeysSigningKey { return v.SigningKeys }).(GetSigningKeysSigningKeyArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSigningKeysResultOutput{})
 }

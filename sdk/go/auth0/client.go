@@ -36,7 +36,7 @@ import (
 //						Issuer:               pulumi.String("https://example.com"),
 //						MapIdentities:        pulumi.Bool(false),
 //						MapUnknownClaimsAsIs: pulumi.Bool(false),
-//						Mappings: pulumi.AnyMap{
+//						Mappings: pulumi.Map{
 //							"email": pulumi.Any("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"),
 //							"name":  pulumi.Any("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"),
 //						},
@@ -65,7 +65,7 @@ import (
 //				Callbacks: pulumi.StringArray{
 //					pulumi.String("https://example.com/callback"),
 //				},
-//				ClientMetadata: pulumi.AnyMap{
+//				ClientMetadata: pulumi.Map{
 //					"foo": pulumi.Any("zoo"),
 //				},
 //				CustomLoginPageOn: pulumi.Bool(true),

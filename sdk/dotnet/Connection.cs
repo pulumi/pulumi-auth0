@@ -353,7 +353,7 @@ namespace Pulumi.Auth0
     ///             DisableSignup = false,
     ///             From = "{{ application.name }} &lt;root@auth0.com&gt;",
     ///             Name = "email",
-    ///             NonPersistentAttrs = new[] {},
+    ///             NonPersistentAttrs = new() { },
     ///             SetUserRootAttributes = "on_each_login",
     ///             Subject = "Welcome to {{ application.name }}",
     ///             Syntax = "liquid",

@@ -37,11 +37,21 @@ class CustomDomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: pulumi.Input[str],
-             type: pulumi.Input[str],
+             domain: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              custom_client_ip_header: Optional[pulumi.Input[str]] = None,
              tls_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if custom_client_ip_header is None and 'customClientIpHeader' in kwargs:
+            custom_client_ip_header = kwargs['customClientIpHeader']
+        if tls_policy is None and 'tlsPolicy' in kwargs:
+            tls_policy = kwargs['tlsPolicy']
+
         _setter("domain", domain)
         _setter("type", type)
         if custom_client_ip_header is not None:
@@ -142,7 +152,15 @@ class _CustomDomainState:
              tls_policy: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              verifications: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainVerificationArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if custom_client_ip_header is None and 'customClientIpHeader' in kwargs:
+            custom_client_ip_header = kwargs['customClientIpHeader']
+        if origin_domain_name is None and 'originDomainName' in kwargs:
+            origin_domain_name = kwargs['originDomainName']
+        if tls_policy is None and 'tlsPolicy' in kwargs:
+            tls_policy = kwargs['tlsPolicy']
+
         if custom_client_ip_header is not None:
             _setter("custom_client_ip_header", custom_client_ip_header)
         if domain is not None:

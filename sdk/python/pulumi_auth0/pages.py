@@ -41,7 +41,13 @@ class PagesArgs:
              error: Optional[pulumi.Input['PagesErrorArgs']] = None,
              guardian_mfa: Optional[pulumi.Input['PagesGuardianMfaArgs']] = None,
              login: Optional[pulumi.Input['PagesLoginArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if change_password is None and 'changePassword' in kwargs:
+            change_password = kwargs['changePassword']
+        if guardian_mfa is None and 'guardianMfa' in kwargs:
+            guardian_mfa = kwargs['guardianMfa']
+
         if change_password is not None:
             _setter("change_password", change_password)
         if error is not None:
@@ -128,7 +134,13 @@ class _PagesState:
              error: Optional[pulumi.Input['PagesErrorArgs']] = None,
              guardian_mfa: Optional[pulumi.Input['PagesGuardianMfaArgs']] = None,
              login: Optional[pulumi.Input['PagesLoginArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if change_password is None and 'changePassword' in kwargs:
+            change_password = kwargs['changePassword']
+        if guardian_mfa is None and 'guardianMfa' in kwargs:
+            guardian_mfa = kwargs['guardianMfa']
+
         if change_password is not None:
             _setter("change_password", change_password)
         if error is not None:

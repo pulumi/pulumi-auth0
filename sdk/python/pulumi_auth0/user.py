@@ -74,7 +74,7 @@ class UserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_name: pulumi.Input[str],
+             connection_name: Optional[pulumi.Input[str]] = None,
              app_metadata: Optional[pulumi.Input[str]] = None,
              blocked: Optional[pulumi.Input[bool]] = None,
              email: Optional[pulumi.Input[str]] = None,
@@ -91,7 +91,31 @@ class UserArgs:
              user_metadata: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
              verify_email: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_name is None and 'connectionName' in kwargs:
+            connection_name = kwargs['connectionName']
+        if connection_name is None:
+            raise TypeError("Missing 'connection_name' argument")
+        if app_metadata is None and 'appMetadata' in kwargs:
+            app_metadata = kwargs['appMetadata']
+        if email_verified is None and 'emailVerified' in kwargs:
+            email_verified = kwargs['emailVerified']
+        if family_name is None and 'familyName' in kwargs:
+            family_name = kwargs['familyName']
+        if given_name is None and 'givenName' in kwargs:
+            given_name = kwargs['givenName']
+        if phone_number is None and 'phoneNumber' in kwargs:
+            phone_number = kwargs['phoneNumber']
+        if phone_verified is None and 'phoneVerified' in kwargs:
+            phone_verified = kwargs['phoneVerified']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_metadata is None and 'userMetadata' in kwargs:
+            user_metadata = kwargs['userMetadata']
+        if verify_email is None and 'verifyEmail' in kwargs:
+            verify_email = kwargs['verifyEmail']
+
         _setter("connection_name", connection_name)
         if app_metadata is not None:
             _setter("app_metadata", app_metadata)
@@ -411,7 +435,29 @@ class _UserState:
              user_metadata: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
              verify_email: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_metadata is None and 'appMetadata' in kwargs:
+            app_metadata = kwargs['appMetadata']
+        if connection_name is None and 'connectionName' in kwargs:
+            connection_name = kwargs['connectionName']
+        if email_verified is None and 'emailVerified' in kwargs:
+            email_verified = kwargs['emailVerified']
+        if family_name is None and 'familyName' in kwargs:
+            family_name = kwargs['familyName']
+        if given_name is None and 'givenName' in kwargs:
+            given_name = kwargs['givenName']
+        if phone_number is None and 'phoneNumber' in kwargs:
+            phone_number = kwargs['phoneNumber']
+        if phone_verified is None and 'phoneVerified' in kwargs:
+            phone_verified = kwargs['phoneVerified']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_metadata is None and 'userMetadata' in kwargs:
+            user_metadata = kwargs['userMetadata']
+        if verify_email is None and 'verifyEmail' in kwargs:
+            verify_email = kwargs['verifyEmail']
+
         if app_metadata is not None:
             _setter("app_metadata", app_metadata)
         if blocked is not None:

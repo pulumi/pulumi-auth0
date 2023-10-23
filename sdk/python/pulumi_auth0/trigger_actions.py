@@ -31,9 +31,15 @@ class TriggerActionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             actions: pulumi.Input[Sequence[pulumi.Input['TriggerActionsActionArgs']]],
-             trigger: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             actions: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerActionsActionArgs']]]] = None,
+             trigger: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if actions is None:
+            raise TypeError("Missing 'actions' argument")
+        if trigger is None:
+            raise TypeError("Missing 'trigger' argument")
+
         _setter("actions", actions)
         _setter("trigger", trigger)
 
@@ -82,7 +88,9 @@ class _TriggerActionsState:
              _setter: Callable[[Any, Any], None],
              actions: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerActionsActionArgs']]]] = None,
              trigger: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if actions is not None:
             _setter("actions", actions)
         if trigger is not None:

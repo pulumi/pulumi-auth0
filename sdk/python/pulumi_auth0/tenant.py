@@ -89,7 +89,37 @@ class TenantArgs:
              sessions: Optional[pulumi.Input['TenantSessionsArgs']] = None,
              support_email: Optional[pulumi.Input[str]] = None,
              support_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_organization_name_in_authentication_api is None and 'allowOrganizationNameInAuthenticationApi' in kwargs:
+            allow_organization_name_in_authentication_api = kwargs['allowOrganizationNameInAuthenticationApi']
+        if allowed_logout_urls is None and 'allowedLogoutUrls' in kwargs:
+            allowed_logout_urls = kwargs['allowedLogoutUrls']
+        if default_audience is None and 'defaultAudience' in kwargs:
+            default_audience = kwargs['defaultAudience']
+        if default_directory is None and 'defaultDirectory' in kwargs:
+            default_directory = kwargs['defaultDirectory']
+        if default_redirection_uri is None and 'defaultRedirectionUri' in kwargs:
+            default_redirection_uri = kwargs['defaultRedirectionUri']
+        if enabled_locales is None and 'enabledLocales' in kwargs:
+            enabled_locales = kwargs['enabledLocales']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+        if idle_session_lifetime is None and 'idleSessionLifetime' in kwargs:
+            idle_session_lifetime = kwargs['idleSessionLifetime']
+        if picture_url is None and 'pictureUrl' in kwargs:
+            picture_url = kwargs['pictureUrl']
+        if sandbox_version is None and 'sandboxVersion' in kwargs:
+            sandbox_version = kwargs['sandboxVersion']
+        if session_cookie is None and 'sessionCookie' in kwargs:
+            session_cookie = kwargs['sessionCookie']
+        if session_lifetime is None and 'sessionLifetime' in kwargs:
+            session_lifetime = kwargs['sessionLifetime']
+        if support_email is None and 'supportEmail' in kwargs:
+            support_email = kwargs['supportEmail']
+        if support_url is None and 'supportUrl' in kwargs:
+            support_url = kwargs['supportUrl']
+
         if allow_organization_name_in_authentication_api is not None:
             _setter("allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
         if allowed_logout_urls is not None:
@@ -392,7 +422,37 @@ class _TenantState:
              sessions: Optional[pulumi.Input['TenantSessionsArgs']] = None,
              support_email: Optional[pulumi.Input[str]] = None,
              support_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_organization_name_in_authentication_api is None and 'allowOrganizationNameInAuthenticationApi' in kwargs:
+            allow_organization_name_in_authentication_api = kwargs['allowOrganizationNameInAuthenticationApi']
+        if allowed_logout_urls is None and 'allowedLogoutUrls' in kwargs:
+            allowed_logout_urls = kwargs['allowedLogoutUrls']
+        if default_audience is None and 'defaultAudience' in kwargs:
+            default_audience = kwargs['defaultAudience']
+        if default_directory is None and 'defaultDirectory' in kwargs:
+            default_directory = kwargs['defaultDirectory']
+        if default_redirection_uri is None and 'defaultRedirectionUri' in kwargs:
+            default_redirection_uri = kwargs['defaultRedirectionUri']
+        if enabled_locales is None and 'enabledLocales' in kwargs:
+            enabled_locales = kwargs['enabledLocales']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+        if idle_session_lifetime is None and 'idleSessionLifetime' in kwargs:
+            idle_session_lifetime = kwargs['idleSessionLifetime']
+        if picture_url is None and 'pictureUrl' in kwargs:
+            picture_url = kwargs['pictureUrl']
+        if sandbox_version is None and 'sandboxVersion' in kwargs:
+            sandbox_version = kwargs['sandboxVersion']
+        if session_cookie is None and 'sessionCookie' in kwargs:
+            session_cookie = kwargs['sessionCookie']
+        if session_lifetime is None and 'sessionLifetime' in kwargs:
+            session_lifetime = kwargs['sessionLifetime']
+        if support_email is None and 'supportEmail' in kwargs:
+            support_email = kwargs['supportEmail']
+        if support_url is None and 'supportUrl' in kwargs:
+            support_url = kwargs['supportUrl']
+
         if allow_organization_name_in_authentication_api is not None:
             _setter("allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
         if allowed_logout_urls is not None:

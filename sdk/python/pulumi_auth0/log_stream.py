@@ -40,12 +40,18 @@ class LogStreamArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sink: pulumi.Input['LogStreamSinkArgs'],
-             type: pulumi.Input[str],
+             sink: Optional[pulumi.Input['LogStreamSinkArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
              filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sink is None:
+            raise TypeError("Missing 'sink' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("sink", sink)
         _setter("type", type)
         if filters is not None:
@@ -148,7 +154,9 @@ class _LogStreamState:
              sink: Optional[pulumi.Input['LogStreamSinkArgs']] = None,
              status: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if filters is not None:
             _setter("filters", filters)
         if name is not None:

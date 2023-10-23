@@ -29,9 +29,19 @@ class UserRoleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             role_id: pulumi.Input[str],
-             user_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             role_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+
         _setter("role_id", role_id)
         _setter("user_id", user_id)
 
@@ -88,7 +98,17 @@ class _UserRoleState:
              role_id: Optional[pulumi.Input[str]] = None,
              role_name: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if role_description is None and 'roleDescription' in kwargs:
+            role_description = kwargs['roleDescription']
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if role_name is None and 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if role_description is not None:
             _setter("role_description", role_description)
         if role_id is not None:

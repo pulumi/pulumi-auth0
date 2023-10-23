@@ -157,7 +157,63 @@ class ClientArgs:
              sso: Optional[pulumi.Input[bool]] = None,
              sso_disabled: Optional[pulumi.Input[bool]] = None,
              web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_clients is None and 'allowedClients' in kwargs:
+            allowed_clients = kwargs['allowedClients']
+        if allowed_logout_urls is None and 'allowedLogoutUrls' in kwargs:
+            allowed_logout_urls = kwargs['allowedLogoutUrls']
+        if allowed_origins is None and 'allowedOrigins' in kwargs:
+            allowed_origins = kwargs['allowedOrigins']
+        if app_type is None and 'appType' in kwargs:
+            app_type = kwargs['appType']
+        if client_aliases is None and 'clientAliases' in kwargs:
+            client_aliases = kwargs['clientAliases']
+        if client_metadata is None and 'clientMetadata' in kwargs:
+            client_metadata = kwargs['clientMetadata']
+        if cross_origin_auth is None and 'crossOriginAuth' in kwargs:
+            cross_origin_auth = kwargs['crossOriginAuth']
+        if cross_origin_loc is None and 'crossOriginLoc' in kwargs:
+            cross_origin_loc = kwargs['crossOriginLoc']
+        if custom_login_page is None and 'customLoginPage' in kwargs:
+            custom_login_page = kwargs['customLoginPage']
+        if custom_login_page_on is None and 'customLoginPageOn' in kwargs:
+            custom_login_page_on = kwargs['customLoginPageOn']
+        if encryption_key is None and 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if form_template is None and 'formTemplate' in kwargs:
+            form_template = kwargs['formTemplate']
+        if grant_types is None and 'grantTypes' in kwargs:
+            grant_types = kwargs['grantTypes']
+        if initiate_login_uri is None and 'initiateLoginUri' in kwargs:
+            initiate_login_uri = kwargs['initiateLoginUri']
+        if is_first_party is None and 'isFirstParty' in kwargs:
+            is_first_party = kwargs['isFirstParty']
+        if is_token_endpoint_ip_header_trusted is None and 'isTokenEndpointIpHeaderTrusted' in kwargs:
+            is_token_endpoint_ip_header_trusted = kwargs['isTokenEndpointIpHeaderTrusted']
+        if jwt_configuration is None and 'jwtConfiguration' in kwargs:
+            jwt_configuration = kwargs['jwtConfiguration']
+        if logo_uri is None and 'logoUri' in kwargs:
+            logo_uri = kwargs['logoUri']
+        if native_social_login is None and 'nativeSocialLogin' in kwargs:
+            native_social_login = kwargs['nativeSocialLogin']
+        if oidc_backchannel_logout_urls is None and 'oidcBackchannelLogoutUrls' in kwargs:
+            oidc_backchannel_logout_urls = kwargs['oidcBackchannelLogoutUrls']
+        if oidc_conformant is None and 'oidcConformant' in kwargs:
+            oidc_conformant = kwargs['oidcConformant']
+        if organization_require_behavior is None and 'organizationRequireBehavior' in kwargs:
+            organization_require_behavior = kwargs['organizationRequireBehavior']
+        if organization_usage is None and 'organizationUsage' in kwargs:
+            organization_usage = kwargs['organizationUsage']
+        if refresh_token is None and 'refreshToken' in kwargs:
+            refresh_token = kwargs['refreshToken']
+        if require_pushed_authorization_requests is None and 'requirePushedAuthorizationRequests' in kwargs:
+            require_pushed_authorization_requests = kwargs['requirePushedAuthorizationRequests']
+        if sso_disabled is None and 'ssoDisabled' in kwargs:
+            sso_disabled = kwargs['ssoDisabled']
+        if web_origins is None and 'webOrigins' in kwargs:
+            web_origins = kwargs['webOrigins']
+
         if addons is not None:
             _setter("addons", addons)
         if allowed_clients is not None:
@@ -776,7 +832,67 @@ class _ClientState:
              sso: Optional[pulumi.Input[bool]] = None,
              sso_disabled: Optional[pulumi.Input[bool]] = None,
              web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_clients is None and 'allowedClients' in kwargs:
+            allowed_clients = kwargs['allowedClients']
+        if allowed_logout_urls is None and 'allowedLogoutUrls' in kwargs:
+            allowed_logout_urls = kwargs['allowedLogoutUrls']
+        if allowed_origins is None and 'allowedOrigins' in kwargs:
+            allowed_origins = kwargs['allowedOrigins']
+        if app_type is None and 'appType' in kwargs:
+            app_type = kwargs['appType']
+        if client_aliases is None and 'clientAliases' in kwargs:
+            client_aliases = kwargs['clientAliases']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_metadata is None and 'clientMetadata' in kwargs:
+            client_metadata = kwargs['clientMetadata']
+        if cross_origin_auth is None and 'crossOriginAuth' in kwargs:
+            cross_origin_auth = kwargs['crossOriginAuth']
+        if cross_origin_loc is None and 'crossOriginLoc' in kwargs:
+            cross_origin_loc = kwargs['crossOriginLoc']
+        if custom_login_page is None and 'customLoginPage' in kwargs:
+            custom_login_page = kwargs['customLoginPage']
+        if custom_login_page_on is None and 'customLoginPageOn' in kwargs:
+            custom_login_page_on = kwargs['customLoginPageOn']
+        if encryption_key is None and 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if form_template is None and 'formTemplate' in kwargs:
+            form_template = kwargs['formTemplate']
+        if grant_types is None and 'grantTypes' in kwargs:
+            grant_types = kwargs['grantTypes']
+        if initiate_login_uri is None and 'initiateLoginUri' in kwargs:
+            initiate_login_uri = kwargs['initiateLoginUri']
+        if is_first_party is None and 'isFirstParty' in kwargs:
+            is_first_party = kwargs['isFirstParty']
+        if is_token_endpoint_ip_header_trusted is None and 'isTokenEndpointIpHeaderTrusted' in kwargs:
+            is_token_endpoint_ip_header_trusted = kwargs['isTokenEndpointIpHeaderTrusted']
+        if jwt_configuration is None and 'jwtConfiguration' in kwargs:
+            jwt_configuration = kwargs['jwtConfiguration']
+        if logo_uri is None and 'logoUri' in kwargs:
+            logo_uri = kwargs['logoUri']
+        if native_social_login is None and 'nativeSocialLogin' in kwargs:
+            native_social_login = kwargs['nativeSocialLogin']
+        if oidc_backchannel_logout_urls is None and 'oidcBackchannelLogoutUrls' in kwargs:
+            oidc_backchannel_logout_urls = kwargs['oidcBackchannelLogoutUrls']
+        if oidc_conformant is None and 'oidcConformant' in kwargs:
+            oidc_conformant = kwargs['oidcConformant']
+        if organization_require_behavior is None and 'organizationRequireBehavior' in kwargs:
+            organization_require_behavior = kwargs['organizationRequireBehavior']
+        if organization_usage is None and 'organizationUsage' in kwargs:
+            organization_usage = kwargs['organizationUsage']
+        if refresh_token is None and 'refreshToken' in kwargs:
+            refresh_token = kwargs['refreshToken']
+        if require_pushed_authorization_requests is None and 'requirePushedAuthorizationRequests' in kwargs:
+            require_pushed_authorization_requests = kwargs['requirePushedAuthorizationRequests']
+        if signing_keys is None and 'signingKeys' in kwargs:
+            signing_keys = kwargs['signingKeys']
+        if sso_disabled is None and 'ssoDisabled' in kwargs:
+            sso_disabled = kwargs['ssoDisabled']
+        if web_origins is None and 'webOrigins' in kwargs:
+            web_origins = kwargs['webOrigins']
+
         if addons is not None:
             _setter("addons", addons)
         if allowed_clients is not None:

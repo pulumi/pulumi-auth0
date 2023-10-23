@@ -38,13 +38,29 @@ class BrandingThemeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             borders: pulumi.Input['BrandingThemeBordersArgs'],
-             colors: pulumi.Input['BrandingThemeColorsArgs'],
-             fonts: pulumi.Input['BrandingThemeFontsArgs'],
-             page_background: pulumi.Input['BrandingThemePageBackgroundArgs'],
-             widget: pulumi.Input['BrandingThemeWidgetArgs'],
+             borders: Optional[pulumi.Input['BrandingThemeBordersArgs']] = None,
+             colors: Optional[pulumi.Input['BrandingThemeColorsArgs']] = None,
+             fonts: Optional[pulumi.Input['BrandingThemeFontsArgs']] = None,
+             page_background: Optional[pulumi.Input['BrandingThemePageBackgroundArgs']] = None,
+             widget: Optional[pulumi.Input['BrandingThemeWidgetArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if borders is None:
+            raise TypeError("Missing 'borders' argument")
+        if colors is None:
+            raise TypeError("Missing 'colors' argument")
+        if fonts is None:
+            raise TypeError("Missing 'fonts' argument")
+        if page_background is None and 'pageBackground' in kwargs:
+            page_background = kwargs['pageBackground']
+        if page_background is None:
+            raise TypeError("Missing 'page_background' argument")
+        if widget is None:
+            raise TypeError("Missing 'widget' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("borders", borders)
         _setter("colors", colors)
         _setter("fonts", fonts)
@@ -142,7 +158,13 @@ class _BrandingThemeState:
              fonts: Optional[pulumi.Input['BrandingThemeFontsArgs']] = None,
              page_background: Optional[pulumi.Input['BrandingThemePageBackgroundArgs']] = None,
              widget: Optional[pulumi.Input['BrandingThemeWidgetArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if page_background is None and 'pageBackground' in kwargs:
+            page_background = kwargs['pageBackground']
+
         if borders is not None:
             _setter("borders", borders)
         if colors is not None:

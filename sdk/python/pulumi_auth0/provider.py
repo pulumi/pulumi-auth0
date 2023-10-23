@@ -50,7 +50,15 @@ class ProviderArgs:
              client_secret: Optional[pulumi.Input[str]] = None,
              debug: Optional[pulumi.Input[bool]] = None,
              domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_token is None and 'apiToken' in kwargs:
+            api_token = kwargs['apiToken']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+
         if api_token is not None:
             _setter("api_token", api_token)
         if audience is not None:

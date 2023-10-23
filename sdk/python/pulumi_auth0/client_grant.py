@@ -32,10 +32,20 @@ class ClientGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             audience: pulumi.Input[str],
-             client_id: pulumi.Input[str],
-             scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             audience: Optional[pulumi.Input[str]] = None,
+             client_id: Optional[pulumi.Input[str]] = None,
+             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if audience is None:
+            raise TypeError("Missing 'audience' argument")
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if scopes is None:
+            raise TypeError("Missing 'scopes' argument")
+
         _setter("audience", audience)
         _setter("client_id", client_id)
         _setter("scopes", scopes)
@@ -101,7 +111,11 @@ class _ClientGrantState:
              audience: Optional[pulumi.Input[str]] = None,
              client_id: Optional[pulumi.Input[str]] = None,
              scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+
         if audience is not None:
             _setter("audience", audience)
         if client_id is not None:

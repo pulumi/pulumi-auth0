@@ -32,10 +32,22 @@ class UserPermissionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             permission: pulumi.Input[str],
-             resource_server_identifier: pulumi.Input[str],
-             user_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             permission: Optional[pulumi.Input[str]] = None,
+             resource_server_identifier: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if permission is None:
+            raise TypeError("Missing 'permission' argument")
+        if resource_server_identifier is None and 'resourceServerIdentifier' in kwargs:
+            resource_server_identifier = kwargs['resourceServerIdentifier']
+        if resource_server_identifier is None:
+            raise TypeError("Missing 'resource_server_identifier' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+
         _setter("permission", permission)
         _setter("resource_server_identifier", resource_server_identifier)
         _setter("user_id", user_id)
@@ -109,7 +121,15 @@ class _UserPermissionState:
              resource_server_identifier: Optional[pulumi.Input[str]] = None,
              resource_server_name: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_server_identifier is None and 'resourceServerIdentifier' in kwargs:
+            resource_server_identifier = kwargs['resourceServerIdentifier']
+        if resource_server_name is None and 'resourceServerName' in kwargs:
+            resource_server_name = kwargs['resourceServerName']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if description is not None:
             _setter("description", description)
         if permission is not None:

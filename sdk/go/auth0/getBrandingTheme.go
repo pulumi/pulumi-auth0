@@ -4,8 +4,12 @@
 package auth0
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access information about the tenant's branding theme settings.
@@ -54,4 +58,70 @@ type LookupBrandingThemeResult struct {
 	Id              string                           `pulumi:"id"`
 	PageBackgrounds []GetBrandingThemePageBackground `pulumi:"pageBackgrounds"`
 	Widgets         []GetBrandingThemeWidget         `pulumi:"widgets"`
+}
+
+func LookupBrandingThemeOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupBrandingThemeResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (LookupBrandingThemeResult, error) {
+		r, err := LookupBrandingTheme(ctx, opts...)
+		var s LookupBrandingThemeResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(LookupBrandingThemeResultOutput)
+}
+
+// A collection of values returned by getBrandingTheme.
+type LookupBrandingThemeResultOutput struct{ *pulumi.OutputState }
+
+func (LookupBrandingThemeResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBrandingThemeResult)(nil)).Elem()
+}
+
+func (o LookupBrandingThemeResultOutput) ToLookupBrandingThemeResultOutput() LookupBrandingThemeResultOutput {
+	return o
+}
+
+func (o LookupBrandingThemeResultOutput) ToLookupBrandingThemeResultOutputWithContext(ctx context.Context) LookupBrandingThemeResultOutput {
+	return o
+}
+
+func (o LookupBrandingThemeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBrandingThemeResult] {
+	return pulumix.Output[LookupBrandingThemeResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o LookupBrandingThemeResultOutput) Borders() GetBrandingThemeBorderArrayOutput {
+	return o.ApplyT(func(v LookupBrandingThemeResult) []GetBrandingThemeBorder { return v.Borders }).(GetBrandingThemeBorderArrayOutput)
+}
+
+func (o LookupBrandingThemeResultOutput) Colors() GetBrandingThemeColorArrayOutput {
+	return o.ApplyT(func(v LookupBrandingThemeResult) []GetBrandingThemeColor { return v.Colors }).(GetBrandingThemeColorArrayOutput)
+}
+
+// The display name for the branding theme.
+func (o LookupBrandingThemeResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBrandingThemeResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+func (o LookupBrandingThemeResultOutput) Fonts() GetBrandingThemeFontArrayOutput {
+	return o.ApplyT(func(v LookupBrandingThemeResult) []GetBrandingThemeFont { return v.Fonts }).(GetBrandingThemeFontArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupBrandingThemeResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBrandingThemeResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupBrandingThemeResultOutput) PageBackgrounds() GetBrandingThemePageBackgroundArrayOutput {
+	return o.ApplyT(func(v LookupBrandingThemeResult) []GetBrandingThemePageBackground { return v.PageBackgrounds }).(GetBrandingThemePageBackgroundArrayOutput)
+}
+
+func (o LookupBrandingThemeResultOutput) Widgets() GetBrandingThemeWidgetArrayOutput {
+	return o.ApplyT(func(v LookupBrandingThemeResult) []GetBrandingThemeWidget { return v.Widgets }).(GetBrandingThemeWidgetArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupBrandingThemeResultOutput{})
 }

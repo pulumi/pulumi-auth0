@@ -45,7 +45,15 @@ class BrandingArgs:
              font: Optional[pulumi.Input['BrandingFontArgs']] = None,
              logo_url: Optional[pulumi.Input[str]] = None,
              universal_login: Optional[pulumi.Input['BrandingUniversalLoginArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if favicon_url is None and 'faviconUrl' in kwargs:
+            favicon_url = kwargs['faviconUrl']
+        if logo_url is None and 'logoUrl' in kwargs:
+            logo_url = kwargs['logoUrl']
+        if universal_login is None and 'universalLogin' in kwargs:
+            universal_login = kwargs['universalLogin']
+
         if colors is not None:
             _setter("colors", colors)
         if favicon_url is not None:
@@ -150,7 +158,15 @@ class _BrandingState:
              font: Optional[pulumi.Input['BrandingFontArgs']] = None,
              logo_url: Optional[pulumi.Input[str]] = None,
              universal_login: Optional[pulumi.Input['BrandingUniversalLoginArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if favicon_url is None and 'faviconUrl' in kwargs:
+            favicon_url = kwargs['faviconUrl']
+        if logo_url is None and 'logoUrl' in kwargs:
+            logo_url = kwargs['logoUrl']
+        if universal_login is None and 'universalLogin' in kwargs:
+            universal_login = kwargs['universalLogin']
+
         if colors is not None:
             _setter("colors", colors)
         if favicon_url is not None:

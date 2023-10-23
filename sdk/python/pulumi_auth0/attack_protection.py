@@ -37,7 +37,15 @@ class AttackProtectionArgs:
              breached_password_detection: Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionArgs']] = None,
              brute_force_protection: Optional[pulumi.Input['AttackProtectionBruteForceProtectionArgs']] = None,
              suspicious_ip_throttling: Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if breached_password_detection is None and 'breachedPasswordDetection' in kwargs:
+            breached_password_detection = kwargs['breachedPasswordDetection']
+        if brute_force_protection is None and 'bruteForceProtection' in kwargs:
+            brute_force_protection = kwargs['bruteForceProtection']
+        if suspicious_ip_throttling is None and 'suspiciousIpThrottling' in kwargs:
+            suspicious_ip_throttling = kwargs['suspiciousIpThrottling']
+
         if breached_password_detection is not None:
             _setter("breached_password_detection", breached_password_detection)
         if brute_force_protection is not None:
@@ -106,7 +114,15 @@ class _AttackProtectionState:
              breached_password_detection: Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionArgs']] = None,
              brute_force_protection: Optional[pulumi.Input['AttackProtectionBruteForceProtectionArgs']] = None,
              suspicious_ip_throttling: Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if breached_password_detection is None and 'breachedPasswordDetection' in kwargs:
+            breached_password_detection = kwargs['breachedPasswordDetection']
+        if brute_force_protection is None and 'bruteForceProtection' in kwargs:
+            brute_force_protection = kwargs['bruteForceProtection']
+        if suspicious_ip_throttling is None and 'suspiciousIpThrottling' in kwargs:
+            suspicious_ip_throttling = kwargs['suspiciousIpThrottling']
+
         if breached_password_detection is not None:
             _setter("breached_password_detection", breached_password_detection)
         if brute_force_protection is not None:

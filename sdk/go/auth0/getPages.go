@@ -4,8 +4,12 @@
 package auth0
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
@@ -55,4 +59,65 @@ type LookupPagesResult struct {
 	Id string `pulumi:"id"`
 	// Configuration settings for customizing the Login page.
 	Logins []GetPagesLogin `pulumi:"logins"`
+}
+
+func LookupPagesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupPagesResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (LookupPagesResult, error) {
+		r, err := LookupPages(ctx, opts...)
+		var s LookupPagesResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(LookupPagesResultOutput)
+}
+
+// A collection of values returned by getPages.
+type LookupPagesResultOutput struct{ *pulumi.OutputState }
+
+func (LookupPagesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPagesResult)(nil)).Elem()
+}
+
+func (o LookupPagesResultOutput) ToLookupPagesResultOutput() LookupPagesResultOutput {
+	return o
+}
+
+func (o LookupPagesResultOutput) ToLookupPagesResultOutputWithContext(ctx context.Context) LookupPagesResultOutput {
+	return o
+}
+
+func (o LookupPagesResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPagesResult] {
+	return pulumix.Output[LookupPagesResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Configuration settings for customizing the Password Reset page.
+func (o LookupPagesResultOutput) ChangePasswords() GetPagesChangePasswordArrayOutput {
+	return o.ApplyT(func(v LookupPagesResult) []GetPagesChangePassword { return v.ChangePasswords }).(GetPagesChangePasswordArrayOutput)
+}
+
+// Configuration settings for the Error pages.
+func (o LookupPagesResultOutput) Errors() GetPagesErrorArrayOutput {
+	return o.ApplyT(func(v LookupPagesResult) []GetPagesError { return v.Errors }).(GetPagesErrorArrayOutput)
+}
+
+// Configuration settings for customizing the Guardian Multi-Factor Authentication page.
+func (o LookupPagesResultOutput) GuardianMfas() GetPagesGuardianMfaArrayOutput {
+	return o.ApplyT(func(v LookupPagesResult) []GetPagesGuardianMfa { return v.GuardianMfas }).(GetPagesGuardianMfaArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupPagesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPagesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Configuration settings for customizing the Login page.
+func (o LookupPagesResultOutput) Logins() GetPagesLoginArrayOutput {
+	return o.ApplyT(func(v LookupPagesResult) []GetPagesLogin { return v.Logins }).(GetPagesLoginArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupPagesResultOutput{})
 }

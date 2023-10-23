@@ -35,11 +35,15 @@ class RuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             script: pulumi.Input[str],
+             script: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              order: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if script is None:
+            raise TypeError("Missing 'script' argument")
+
         _setter("script", script)
         if enabled is not None:
             _setter("enabled", enabled)
@@ -125,7 +129,9 @@ class _RuleState:
              name: Optional[pulumi.Input[str]] = None,
              order: Optional[pulumi.Input[int]] = None,
              script: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
         if name is not None:
