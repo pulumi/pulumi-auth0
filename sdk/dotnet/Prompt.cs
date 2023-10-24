@@ -12,26 +12,6 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With this resource, you can manage your Auth0 prompts, including choosing the login experience version.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myPrompt = new Auth0.Prompt("myPrompt", new()
-    ///     {
-    ///         IdentifierFirst = false,
-    ///         UniversalLoginExperience = "new",
-    ///         WebauthnPlatformFirstFactor = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// As this is not a resource identifiable by an ID within the Auth0 Management API, prompts can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example

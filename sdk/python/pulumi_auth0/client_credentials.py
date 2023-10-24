@@ -40,11 +40,25 @@ class ClientCredentialsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             authentication_method: pulumi.Input[str],
-             client_id: pulumi.Input[str],
+             authentication_method: Optional[pulumi.Input[str]] = None,
+             client_id: Optional[pulumi.Input[str]] = None,
              client_secret: Optional[pulumi.Input[str]] = None,
              private_key_jwt: Optional[pulumi.Input['ClientCredentialsPrivateKeyJwtArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authentication_method is None and 'authenticationMethod' in kwargs:
+            authentication_method = kwargs['authenticationMethod']
+        if authentication_method is None:
+            raise TypeError("Missing 'authentication_method' argument")
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if private_key_jwt is None and 'privateKeyJwt' in kwargs:
+            private_key_jwt = kwargs['privateKeyJwt']
+
         _setter("authentication_method", authentication_method)
         _setter("client_id", client_id)
         if client_secret is not None:
@@ -135,7 +149,17 @@ class _ClientCredentialsState:
              client_id: Optional[pulumi.Input[str]] = None,
              client_secret: Optional[pulumi.Input[str]] = None,
              private_key_jwt: Optional[pulumi.Input['ClientCredentialsPrivateKeyJwtArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authentication_method is None and 'authenticationMethod' in kwargs:
+            authentication_method = kwargs['authenticationMethod']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if private_key_jwt is None and 'privateKeyJwt' in kwargs:
+            private_key_jwt = kwargs['privateKeyJwt']
+
         if authentication_method is not None:
             _setter("authentication_method", authentication_method)
         if client_id is not None:
@@ -213,52 +237,6 @@ class ClientCredentials(pulumi.CustomResource):
         > Refer to the client secret rotation guide
         for instructions on how to rotate client secrets with zero downtime.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_client = auth0.Client("myClient",
-            app_type="non_interactive",
-            jwt_configuration=auth0.ClientJwtConfigurationArgs(
-                alg="RS256",
-            ))
-        # Configuring client_secret_post as an authentication method.
-        test_client_credentials = auth0.ClientCredentials("testClientCredentials",
-            client_id=my_client.id,
-            authentication_method="client_secret_post")
-        # Configuring client_secret_basic as an authentication method.
-        test_index_client_credentials_client_credentials = auth0.ClientCredentials("testIndex/clientCredentialsClientCredentials",
-            client_id=my_client.id,
-            authentication_method="client_secret_basic")
-        # Configuring none as an authentication method.
-        test_auth0_index_client_credentials_client_credentials = auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials",
-            client_id=my_client.id,
-            authentication_method="none")
-        # Configuring private_key_jwt as an authentication method.
-        test_auth0_index_client_credentials_client_credentials1 = auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials1",
-            client_id=my_client.id,
-            authentication_method="private_key_jwt",
-            private_key_jwt=auth0.ClientCredentialsPrivateKeyJwtArgs(
-                credentials=[auth0.ClientCredentialsPrivateKeyJwtCredentialArgs(
-                    name="Testing Credentials 1",
-                    credential_type="public_key",
-                    algorithm="RS256",
-                    parse_expiry_from_cert=True,
-                    pem=\"\"\"-----BEGIN CERTIFICATE-----
-        MIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl
-        -----END CERTIFICATE-----
-        \"\"\",
-                )],
-            ))
-        # Configuring the client_secret.
-        test_auth0_index_client_credentials_client_credentials2 = auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials2",
-            client_id=my_client.id,
-            authentication_method="client_secret_basic",
-            client_secret="LUFqPx+sRLjbL7peYRPFmFu-bbvE7u7og4YUNe_C345=683341")
-        ```
-
         ## Import
 
         This resource can be imported by specifying the client ID. # Example
@@ -290,52 +268,6 @@ class ClientCredentials(pulumi.CustomResource):
 
         > Refer to the client secret rotation guide
         for instructions on how to rotate client secrets with zero downtime.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_client = auth0.Client("myClient",
-            app_type="non_interactive",
-            jwt_configuration=auth0.ClientJwtConfigurationArgs(
-                alg="RS256",
-            ))
-        # Configuring client_secret_post as an authentication method.
-        test_client_credentials = auth0.ClientCredentials("testClientCredentials",
-            client_id=my_client.id,
-            authentication_method="client_secret_post")
-        # Configuring client_secret_basic as an authentication method.
-        test_index_client_credentials_client_credentials = auth0.ClientCredentials("testIndex/clientCredentialsClientCredentials",
-            client_id=my_client.id,
-            authentication_method="client_secret_basic")
-        # Configuring none as an authentication method.
-        test_auth0_index_client_credentials_client_credentials = auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials",
-            client_id=my_client.id,
-            authentication_method="none")
-        # Configuring private_key_jwt as an authentication method.
-        test_auth0_index_client_credentials_client_credentials1 = auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials1",
-            client_id=my_client.id,
-            authentication_method="private_key_jwt",
-            private_key_jwt=auth0.ClientCredentialsPrivateKeyJwtArgs(
-                credentials=[auth0.ClientCredentialsPrivateKeyJwtCredentialArgs(
-                    name="Testing Credentials 1",
-                    credential_type="public_key",
-                    algorithm="RS256",
-                    parse_expiry_from_cert=True,
-                    pem=\"\"\"-----BEGIN CERTIFICATE-----
-        MIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl
-        -----END CERTIFICATE-----
-        \"\"\",
-                )],
-            ))
-        # Configuring the client_secret.
-        test_auth0_index_client_credentials_client_credentials2 = auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials2",
-            client_id=my_client.id,
-            authentication_method="client_secret_basic",
-            client_secret="LUFqPx+sRLjbL7peYRPFmFu-bbvE7u7og4YUNe_C345=683341")
-        ```
 
         ## Import
 
@@ -386,11 +318,7 @@ class ClientCredentials(pulumi.CustomResource):
                 raise TypeError("Missing required property 'client_id'")
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["client_secret"] = None if client_secret is None else pulumi.Output.secret(client_secret)
-            if private_key_jwt is not None and not isinstance(private_key_jwt, ClientCredentialsPrivateKeyJwtArgs):
-                private_key_jwt = private_key_jwt or {}
-                def _setter(key, value):
-                    private_key_jwt[key] = value
-                ClientCredentialsPrivateKeyJwtArgs._configure(_setter, **private_key_jwt)
+            private_key_jwt = _utilities.configure(private_key_jwt, ClientCredentialsPrivateKeyJwtArgs, True)
             __props__.__dict__["private_key_jwt"] = private_key_jwt
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientSecret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)

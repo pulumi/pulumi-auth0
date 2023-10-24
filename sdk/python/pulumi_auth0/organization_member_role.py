@@ -32,10 +32,24 @@ class OrganizationMemberRoleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             organization_id: pulumi.Input[str],
-             role_id: pulumi.Input[str],
-             user_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             organization_id: Optional[pulumi.Input[str]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if organization_id is None:
+            raise TypeError("Missing 'organization_id' argument")
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+
         _setter("organization_id", organization_id)
         _setter("role_id", role_id)
         _setter("user_id", user_id)
@@ -109,7 +123,19 @@ class _OrganizationMemberRoleState:
              role_id: Optional[pulumi.Input[str]] = None,
              role_name: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if role_description is None and 'roleDescription' in kwargs:
+            role_description = kwargs['roleDescription']
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if role_name is None and 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if organization_id is not None:
             _setter("organization_id", organization_id)
         if role_description is not None:
@@ -194,32 +220,6 @@ class OrganizationMemberRole(pulumi.CustomResource):
         """
         This resource is used to manage the roles assigned to an organization member.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        reader = auth0.Role("reader")
-        writer = auth0.Role("writer")
-        user = auth0.User("user",
-            connection_name="Username-Password-Authentication",
-            email="test-user@auth0.com",
-            password="MyPass123$")
-        my_org = auth0.Organization("myOrg", display_name="Some Org")
-        my_org_member = auth0.OrganizationMember("myOrgMember",
-            organization_id=my_org.id,
-            user_id=user.id)
-        role1 = auth0.OrganizationMemberRole("role1",
-            organization_id=my_org.id,
-            user_id=user.id,
-            role_id=reader.id)
-        role2 = auth0.OrganizationMemberRole("role2",
-            organization_id=my_org.id,
-            user_id=user.id,
-            role_id=writer.id)
-        ```
-
         ## Import
 
         This resource can be imported by specifying the organization ID, user ID and role ID separated by "::" (note the double colon) <organizationID>::<userID>::<roleID> # Example
@@ -242,32 +242,6 @@ class OrganizationMemberRole(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource is used to manage the roles assigned to an organization member.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        reader = auth0.Role("reader")
-        writer = auth0.Role("writer")
-        user = auth0.User("user",
-            connection_name="Username-Password-Authentication",
-            email="test-user@auth0.com",
-            password="MyPass123$")
-        my_org = auth0.Organization("myOrg", display_name="Some Org")
-        my_org_member = auth0.OrganizationMember("myOrgMember",
-            organization_id=my_org.id,
-            user_id=user.id)
-        role1 = auth0.OrganizationMemberRole("role1",
-            organization_id=my_org.id,
-            user_id=user.id,
-            role_id=reader.id)
-        role2 = auth0.OrganizationMemberRole("role2",
-            organization_id=my_org.id,
-            user_id=user.id,
-            role_id=writer.id)
-        ```
 
         ## Import
 

@@ -13,50 +13,12 @@ namespace Pulumi.Auth0
     {
         /// <summary>
         /// Use this data source to access information about the tenant's branding theme settings.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Auth0 = Pulumi.Auth0;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myBrandingTheme = Auth0.GetBrandingTheme.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBrandingThemeResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBrandingThemeResult>("auth0:index/getBrandingTheme:getBrandingTheme", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// Use this data source to access information about the tenant's branding theme settings.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Auth0 = Pulumi.Auth0;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myBrandingTheme = Auth0.GetBrandingTheme.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBrandingThemeResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBrandingThemeResult>("auth0:index/getBrandingTheme:getBrandingTheme", InvokeArgs.Empty, options.WithDefaults());

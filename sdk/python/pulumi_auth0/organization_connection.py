@@ -32,10 +32,22 @@ class OrganizationConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_id: pulumi.Input[str],
-             organization_id: pulumi.Input[str],
+             connection_id: Optional[pulumi.Input[str]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
              assign_membership_on_login: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if connection_id is None:
+            raise TypeError("Missing 'connection_id' argument")
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if organization_id is None:
+            raise TypeError("Missing 'organization_id' argument")
+        if assign_membership_on_login is None and 'assignMembershipOnLogin' in kwargs:
+            assign_membership_on_login = kwargs['assignMembershipOnLogin']
+
         _setter("connection_id", connection_id)
         _setter("organization_id", organization_id)
         if assign_membership_on_login is not None:
@@ -110,7 +122,15 @@ class _OrganizationConnectionState:
              name: Optional[pulumi.Input[str]] = None,
              organization_id: Optional[pulumi.Input[str]] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if assign_membership_on_login is None and 'assignMembershipOnLogin' in kwargs:
+            assign_membership_on_login = kwargs['assignMembershipOnLogin']
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+
         if assign_membership_on_login is not None:
             _setter("assign_membership_on_login", assign_membership_on_login)
         if connection_id is not None:
@@ -200,20 +220,6 @@ class OrganizationConnection(pulumi.CustomResource):
         resource in conjunction with the `OrganizationConnections` resource when managing enabled connections for the
         same organization id.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_connection = auth0.Connection("myConnection", strategy="auth0")
-        my_organization = auth0.Organization("myOrganization", display_name="My Organization")
-        my_org_conn = auth0.OrganizationConnection("myOrgConn",
-            organization_id=my_organization.id,
-            connection_id=my_connection.id,
-            assign_membership_on_login=True)
-        ```
-
         ## Import
 
         This resource can be imported by specifying the organization ID and connection ID separated by "::" (note the double colon) <organizationID>::<connectionID> # Example
@@ -241,20 +247,6 @@ class OrganizationConnection(pulumi.CustomResource):
         manages all the connections enabled for an organization. To avoid potential issues, it is recommended not to use this
         resource in conjunction with the `OrganizationConnections` resource when managing enabled connections for the
         same organization id.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_connection = auth0.Connection("myConnection", strategy="auth0")
-        my_organization = auth0.Organization("myOrganization", display_name="My Organization")
-        my_org_conn = auth0.OrganizationConnection("myOrgConn",
-            organization_id=my_organization.id,
-            connection_id=my_connection.id,
-            assign_membership_on_login=True)
-        ```
 
         ## Import
 

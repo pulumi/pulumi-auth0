@@ -14,38 +14,6 @@ namespace Pulumi.Auth0
     /// 
     /// !&gt; This resource is deprecated. Refer to the [guide on how to migrate from hooks to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-hooks-to-actions) and manage your actions using the `auth0.Action` resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myHook = new Auth0.Hook("myHook", new()
-    ///     {
-    ///         Dependencies = 
-    ///         {
-    ///             { "auth0", "2.30.0" },
-    ///         },
-    ///         Enabled = true,
-    ///         Script = @"    function (user, context, callback) {
-    ///       callback(null, { user });
-    ///     }
-    ///   
-    /// ",
-    ///         Secrets = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         TriggerId = "pre-user-registration",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the hook ID. # Example

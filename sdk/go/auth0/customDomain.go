@@ -15,33 +15,6 @@ import (
 
 // With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewCustomDomain(ctx, "myCustomDomain", &auth0.CustomDomainArgs{
-//				Domain: pulumi.String("auth.example.com"),
-//				Type:   pulumi.String("auth0_managed_certs"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Custom domains can be imported using their ID. # You can find existing custom domain IDs using the Auth0 Management API. https://auth0.com/docs/api/management/v2#!/Custom_Domains/get_custom_domains # Example

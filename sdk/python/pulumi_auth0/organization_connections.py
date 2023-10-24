@@ -31,9 +31,19 @@ class OrganizationConnectionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled_connections: pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]],
-             organization_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled_connections: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled_connections is None and 'enabledConnections' in kwargs:
+            enabled_connections = kwargs['enabledConnections']
+        if enabled_connections is None:
+            raise TypeError("Missing 'enabled_connections' argument")
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if organization_id is None:
+            raise TypeError("Missing 'organization_id' argument")
+
         _setter("enabled_connections", enabled_connections)
         _setter("organization_id", organization_id)
 
@@ -82,7 +92,13 @@ class _OrganizationConnectionsState:
              _setter: Callable[[Any, Any], None],
              enabled_connections: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]]] = None,
              organization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled_connections is None and 'enabledConnections' in kwargs:
+            enabled_connections = kwargs['enabledConnections']
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+
         if enabled_connections is not None:
             _setter("enabled_connections", enabled_connections)
         if organization_id is not None:
@@ -129,29 +145,6 @@ class OrganizationConnections(pulumi.CustomResource):
         resource in conjunction with the `OrganizationConnection` resource when managing connections for the same
         organization id.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_connection_1 = auth0.Connection("myConnection-1", strategy="auth0")
-        my_connection_2 = auth0.Connection("myConnection-2", strategy="auth0")
-        my_organization = auth0.Organization("myOrganization", display_name="My Organization")
-        one_to_many = auth0.OrganizationConnections("one-to-many",
-            organization_id=my_organization.id,
-            enabled_connections=[
-                auth0.OrganizationConnectionsEnabledConnectionArgs(
-                    connection_id=my_connection_1.id,
-                    assign_membership_on_login=True,
-                ),
-                auth0.OrganizationConnectionsEnabledConnectionArgs(
-                    connection_id=my_connection_2.id,
-                    assign_membership_on_login=True,
-                ),
-            ])
-        ```
-
         ## Import
 
         This resource can be imported by specifying the organization ID. # Example
@@ -178,29 +171,6 @@ class OrganizationConnections(pulumi.CustomResource):
         manages all the connections enabled for an organization. To avoid potential issues, it is recommended not to use this
         resource in conjunction with the `OrganizationConnection` resource when managing connections for the same
         organization id.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_connection_1 = auth0.Connection("myConnection-1", strategy="auth0")
-        my_connection_2 = auth0.Connection("myConnection-2", strategy="auth0")
-        my_organization = auth0.Organization("myOrganization", display_name="My Organization")
-        one_to_many = auth0.OrganizationConnections("one-to-many",
-            organization_id=my_organization.id,
-            enabled_connections=[
-                auth0.OrganizationConnectionsEnabledConnectionArgs(
-                    connection_id=my_connection_1.id,
-                    assign_membership_on_login=True,
-                ),
-                auth0.OrganizationConnectionsEnabledConnectionArgs(
-                    connection_id=my_connection_2.id,
-                    assign_membership_on_login=True,
-                ),
-            ])
-        ```
 
         ## Import
 

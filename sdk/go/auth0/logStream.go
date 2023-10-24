@@ -15,65 +15,6 @@ import (
 
 // With this resource, you can manage your Auth0 log streams.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewLogStream(ctx, "myWebhook", &auth0.LogStreamArgs{
-//				Filters: pulumi.StringMapArray{
-//					pulumi.StringMap{
-//						"name": pulumi.String("auth.login.fail"),
-//						"type": pulumi.String("category"),
-//					},
-//					pulumi.StringMap{
-//						"name": pulumi.String("auth.signup.fail"),
-//						"type": pulumi.String("category"),
-//					},
-//				},
-//				Sink: &auth0.LogStreamSinkArgs{
-//					HttpAuthorization: pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
-//					HttpContentFormat: pulumi.String("JSONOBJECT"),
-//					HttpContentType:   pulumi.String("application/json"),
-//					HttpCustomHeaders: pulumi.StringMapArray{
-//						pulumi.StringMap{
-//							"header": pulumi.String("foo"),
-//							"value":  pulumi.String("bar"),
-//						},
-//					},
-//					HttpEndpoint: pulumi.String("https://example.com/logs"),
-//				},
-//				Type: pulumi.String("http"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = auth0.NewLogStream(ctx, "exampleAws", &auth0.LogStreamArgs{
-//				Sink: &auth0.LogStreamSinkArgs{
-//					AwsAccountId: pulumi.String("my_account_id"),
-//					AwsRegion:    pulumi.String("us-east-2"),
-//				},
-//				Status: pulumi.String("active"),
-//				Type:   pulumi.String("eventbridge"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // This resource can be imported by specifying the log stream ID. # Example

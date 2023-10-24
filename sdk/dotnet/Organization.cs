@@ -18,33 +18,6 @@ namespace Pulumi.Auth0
     ///   - Build administration capabilities into their products, using Organizations
     ///     APIs, so that those businesses can manage their own organizations.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myOrganization = new Auth0.Organization("myOrganization", new()
-    ///     {
-    ///         Branding = new Auth0.Inputs.OrganizationBrandingArgs
-    ///         {
-    ///             Colors = 
-    ///             {
-    ///                 { "pageBackground", "#e1e1e1" },
-    ///                 { "primary", "#f2f2f2" },
-    ///             },
-    ///             LogoUrl = "https://example.com/assets/icons/icon.png",
-    ///         },
-    ///         DisplayName = "Auth0 Inc.",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the organization ID. # Example

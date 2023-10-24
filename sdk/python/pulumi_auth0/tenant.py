@@ -89,7 +89,37 @@ class TenantArgs:
              sessions: Optional[pulumi.Input['TenantSessionsArgs']] = None,
              support_email: Optional[pulumi.Input[str]] = None,
              support_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_organization_name_in_authentication_api is None and 'allowOrganizationNameInAuthenticationApi' in kwargs:
+            allow_organization_name_in_authentication_api = kwargs['allowOrganizationNameInAuthenticationApi']
+        if allowed_logout_urls is None and 'allowedLogoutUrls' in kwargs:
+            allowed_logout_urls = kwargs['allowedLogoutUrls']
+        if default_audience is None and 'defaultAudience' in kwargs:
+            default_audience = kwargs['defaultAudience']
+        if default_directory is None and 'defaultDirectory' in kwargs:
+            default_directory = kwargs['defaultDirectory']
+        if default_redirection_uri is None and 'defaultRedirectionUri' in kwargs:
+            default_redirection_uri = kwargs['defaultRedirectionUri']
+        if enabled_locales is None and 'enabledLocales' in kwargs:
+            enabled_locales = kwargs['enabledLocales']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+        if idle_session_lifetime is None and 'idleSessionLifetime' in kwargs:
+            idle_session_lifetime = kwargs['idleSessionLifetime']
+        if picture_url is None and 'pictureUrl' in kwargs:
+            picture_url = kwargs['pictureUrl']
+        if sandbox_version is None and 'sandboxVersion' in kwargs:
+            sandbox_version = kwargs['sandboxVersion']
+        if session_cookie is None and 'sessionCookie' in kwargs:
+            session_cookie = kwargs['sessionCookie']
+        if session_lifetime is None and 'sessionLifetime' in kwargs:
+            session_lifetime = kwargs['sessionLifetime']
+        if support_email is None and 'supportEmail' in kwargs:
+            support_email = kwargs['supportEmail']
+        if support_url is None and 'supportUrl' in kwargs:
+            support_url = kwargs['supportUrl']
+
         if allow_organization_name_in_authentication_api is not None:
             _setter("allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
         if allowed_logout_urls is not None:
@@ -392,7 +422,37 @@ class _TenantState:
              sessions: Optional[pulumi.Input['TenantSessionsArgs']] = None,
              support_email: Optional[pulumi.Input[str]] = None,
              support_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_organization_name_in_authentication_api is None and 'allowOrganizationNameInAuthenticationApi' in kwargs:
+            allow_organization_name_in_authentication_api = kwargs['allowOrganizationNameInAuthenticationApi']
+        if allowed_logout_urls is None and 'allowedLogoutUrls' in kwargs:
+            allowed_logout_urls = kwargs['allowedLogoutUrls']
+        if default_audience is None and 'defaultAudience' in kwargs:
+            default_audience = kwargs['defaultAudience']
+        if default_directory is None and 'defaultDirectory' in kwargs:
+            default_directory = kwargs['defaultDirectory']
+        if default_redirection_uri is None and 'defaultRedirectionUri' in kwargs:
+            default_redirection_uri = kwargs['defaultRedirectionUri']
+        if enabled_locales is None and 'enabledLocales' in kwargs:
+            enabled_locales = kwargs['enabledLocales']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+        if idle_session_lifetime is None and 'idleSessionLifetime' in kwargs:
+            idle_session_lifetime = kwargs['idleSessionLifetime']
+        if picture_url is None and 'pictureUrl' in kwargs:
+            picture_url = kwargs['pictureUrl']
+        if sandbox_version is None and 'sandboxVersion' in kwargs:
+            sandbox_version = kwargs['sandboxVersion']
+        if session_cookie is None and 'sessionCookie' in kwargs:
+            session_cookie = kwargs['sessionCookie']
+        if session_lifetime is None and 'sessionLifetime' in kwargs:
+            session_lifetime = kwargs['sessionLifetime']
+        if support_email is None and 'supportEmail' in kwargs:
+            support_email = kwargs['supportEmail']
+        if support_url is None and 'supportUrl' in kwargs:
+            support_url = kwargs['supportUrl']
+
         if allow_organization_name_in_authentication_api is not None:
             _setter("allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
         if allowed_logout_urls is not None:
@@ -647,38 +707,6 @@ class Tenant(pulumi.CustomResource):
         > Creating tenants through the Management API is not currently supported. Therefore, this resource can only
         manage an existing tenant created through the Auth0 dashboard.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_tenant = auth0.Tenant("myTenant",
-            allowed_logout_urls=["http://example.com/logout"],
-            default_redirection_uri="https://example.com/login",
-            enabled_locales=["en"],
-            flags=auth0.TenantFlagsArgs(
-                disable_clickjack_protection_headers=True,
-                disable_fields_map_fix=False,
-                disable_management_api_sms_obfuscation=False,
-                enable_public_signup_user_exists_error=True,
-                no_disclose_enterprise_connections=False,
-                use_scope_descriptions_for_consent=True,
-            ),
-            friendly_name="Tenant Name",
-            picture_url="http://example.com/logo.png",
-            sandbox_version="12",
-            session_cookie=auth0.TenantSessionCookieArgs(
-                mode="non-persistent",
-            ),
-            session_lifetime=8760,
-            sessions=auth0.TenantSessionsArgs(
-                oidc_logout_prompt_enabled=False,
-            ),
-            support_email="support@example.com",
-            support_url="http://example.com/support")
-        ```
-
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API, tenant can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
@@ -717,38 +745,6 @@ class Tenant(pulumi.CustomResource):
 
         > Creating tenants through the Management API is not currently supported. Therefore, this resource can only
         manage an existing tenant created through the Auth0 dashboard.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_tenant = auth0.Tenant("myTenant",
-            allowed_logout_urls=["http://example.com/logout"],
-            default_redirection_uri="https://example.com/login",
-            enabled_locales=["en"],
-            flags=auth0.TenantFlagsArgs(
-                disable_clickjack_protection_headers=True,
-                disable_fields_map_fix=False,
-                disable_management_api_sms_obfuscation=False,
-                enable_public_signup_user_exists_error=True,
-                no_disclose_enterprise_connections=False,
-                use_scope_descriptions_for_consent=True,
-            ),
-            friendly_name="Tenant Name",
-            picture_url="http://example.com/logo.png",
-            sandbox_version="12",
-            session_cookie=auth0.TenantSessionCookieArgs(
-                mode="non-persistent",
-            ),
-            session_lifetime=8760,
-            sessions=auth0.TenantSessionsArgs(
-                oidc_logout_prompt_enabled=False,
-            ),
-            support_email="support@example.com",
-            support_url="http://example.com/support")
-        ```
 
         ## Import
 
@@ -808,28 +804,16 @@ class Tenant(pulumi.CustomResource):
             __props__.__dict__["default_directory"] = default_directory
             __props__.__dict__["default_redirection_uri"] = default_redirection_uri
             __props__.__dict__["enabled_locales"] = enabled_locales
-            if flags is not None and not isinstance(flags, TenantFlagsArgs):
-                flags = flags or {}
-                def _setter(key, value):
-                    flags[key] = value
-                TenantFlagsArgs._configure(_setter, **flags)
+            flags = _utilities.configure(flags, TenantFlagsArgs, True)
             __props__.__dict__["flags"] = flags
             __props__.__dict__["friendly_name"] = friendly_name
             __props__.__dict__["idle_session_lifetime"] = idle_session_lifetime
             __props__.__dict__["picture_url"] = picture_url
             __props__.__dict__["sandbox_version"] = sandbox_version
-            if session_cookie is not None and not isinstance(session_cookie, TenantSessionCookieArgs):
-                session_cookie = session_cookie or {}
-                def _setter(key, value):
-                    session_cookie[key] = value
-                TenantSessionCookieArgs._configure(_setter, **session_cookie)
+            session_cookie = _utilities.configure(session_cookie, TenantSessionCookieArgs, True)
             __props__.__dict__["session_cookie"] = session_cookie
             __props__.__dict__["session_lifetime"] = session_lifetime
-            if sessions is not None and not isinstance(sessions, TenantSessionsArgs):
-                sessions = sessions or {}
-                def _setter(key, value):
-                    sessions[key] = value
-                TenantSessionsArgs._configure(_setter, **sessions)
+            sessions = _utilities.configure(sessions, TenantSessionsArgs, True)
             __props__.__dict__["sessions"] = sessions
             __props__.__dict__["support_email"] = support_email
             __props__.__dict__["support_url"] = support_url

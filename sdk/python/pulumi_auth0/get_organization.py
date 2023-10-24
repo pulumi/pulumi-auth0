@@ -132,16 +132,6 @@ def get_organization(name: Optional[str] = None,
     """
     Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_auth0 as auth0
-
-    some_organization_by_name = auth0.get_organization(name="my-org")
-    some_organization_by_id = auth0.get_organization(organization_id="org_abcdefghkijklmnopqrstuvwxyz0123456789")
-    ```
-
 
     :param str name: The name of the organization. If not provided, `organization_id` must be set. For performance, it is advised to use the `organization_id` as a lookup if possible.
     :param str organization_id: The ID of the organization. If not provided, `name` must be set.
@@ -169,16 +159,6 @@ def get_organization_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationResult]:
     """
     Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_auth0 as auth0
-
-    some_organization_by_name = auth0.get_organization(name="my-org")
-    some_organization_by_id = auth0.get_organization(organization_id="org_abcdefghkijklmnopqrstuvwxyz0123456789")
-    ```
 
 
     :param str name: The name of the organization. If not provided, `organization_id` must be set. For performance, it is advised to use the `organization_id` as a lookup if possible.

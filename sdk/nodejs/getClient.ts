@@ -8,20 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Data source to retrieve a specific Auth0 application client by `clientId` or `name`.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const some-client-by-name = auth0.getClient({
- *     name: "Name of my Application",
- * });
- * const some-client-by-id = auth0.getClient({
- *     clientId: "abcdefghkijklmnopqrstuvwxyz0123456789",
- * });
- * ```
  */
 export function getClient(args?: GetClientArgs, opts?: pulumi.InvokeOptions): Promise<GetClientResult> {
     args = args || {};
@@ -197,20 +183,6 @@ export interface GetClientResult {
 }
 /**
  * Data source to retrieve a specific Auth0 application client by `clientId` or `name`.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const some-client-by-name = auth0.getClient({
- *     name: "Name of my Application",
- * });
- * const some-client-by-id = auth0.getClient({
- *     clientId: "abcdefghkijklmnopqrstuvwxyz0123456789",
- * });
- * ```
  */
 export function getClientOutput(args?: GetClientOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClientResult> {
     return pulumi.output(args).apply((a: any) => getClient(a, opts))

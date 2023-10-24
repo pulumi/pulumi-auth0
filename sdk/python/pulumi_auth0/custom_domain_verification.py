@@ -26,8 +26,14 @@ class CustomDomainVerificationInitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             custom_domain_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             custom_domain_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if custom_domain_id is None and 'customDomainId' in kwargs:
+            custom_domain_id = kwargs['customDomainId']
+        if custom_domain_id is None:
+            raise TypeError("Missing 'custom_domain_id' argument")
+
         _setter("custom_domain_id", custom_domain_id)
 
     @property
@@ -68,7 +74,15 @@ class _CustomDomainVerificationState:
              cname_api_key: Optional[pulumi.Input[str]] = None,
              custom_domain_id: Optional[pulumi.Input[str]] = None,
              origin_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cname_api_key is None and 'cnameApiKey' in kwargs:
+            cname_api_key = kwargs['cnameApiKey']
+        if custom_domain_id is None and 'customDomainId' in kwargs:
+            custom_domain_id = kwargs['customDomainId']
+        if origin_domain_name is None and 'originDomainName' in kwargs:
+            origin_domain_name = kwargs['originDomainName']
+
         if cname_api_key is not None:
             _setter("cname_api_key", cname_api_key)
         if custom_domain_id is not None:

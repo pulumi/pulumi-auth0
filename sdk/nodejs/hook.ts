@@ -9,29 +9,6 @@ import * as utilities from "./utilities";
  *
  * !> This resource is deprecated. Refer to the [guide on how to migrate from hooks to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-hooks-to-actions) and manage your actions using the `auth0.Action` resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myHook = new auth0.Hook("myHook", {
- *     dependencies: {
- *         auth0: "2.30.0",
- *     },
- *     enabled: true,
- *     script: `    function (user, context, callback) {
- *       callback(null, { user });
- *     }
- *   
- * `,
- *     secrets: {
- *         foo: "bar",
- *     },
- *     triggerId: "pre-user-registration",
- * });
- * ```
- *
  * ## Import
  *
  * This resource can be imported by specifying the hook ID. # Example

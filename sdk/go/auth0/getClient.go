@@ -13,38 +13,6 @@ import (
 )
 
 // Data source to retrieve a specific Auth0 application client by `clientId` or `name`.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.LookupClient(ctx, &auth0.LookupClientArgs{
-//				Name: pulumi.StringRef("Name of my Application"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = auth0.LookupClient(ctx, &auth0.LookupClientArgs{
-//				ClientId: pulumi.StringRef("abcdefghkijklmnopqrstuvwxyz0123456789"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupClient(ctx *pulumi.Context, args *LookupClientArgs, opts ...pulumi.InvokeOption) (*LookupClientResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClientResult

@@ -8,15 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myPages = auth0.getPages({});
- * ```
  */
 export function getPages(opts?: pulumi.InvokeOptions): Promise<GetPagesResult> {
 
@@ -52,15 +43,6 @@ export interface GetPagesResult {
 }
 /**
  * Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myPages = auth0.getPages({});
- * ```
  */
 export function getPagesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPagesResult> {
     return pulumi.output(getPages(opts))

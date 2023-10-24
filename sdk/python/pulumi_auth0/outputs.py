@@ -226,9 +226,15 @@ class ActionDependency(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("name", name)
         _setter("version", version)
 
@@ -266,9 +272,15 @@ class ActionSecret(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("name", name)
         _setter("value", value)
 
@@ -306,9 +318,15 @@ class ActionSupportedTriggers(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("id", id)
         _setter("version", version)
 
@@ -374,12 +392,20 @@ class AttackProtectionBreachedPasswordDetection(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
+             enabled: Optional[bool] = None,
              admin_notification_frequencies: Optional[Sequence[str]] = None,
              method: Optional[str] = None,
              pre_user_registration: Optional['outputs.AttackProtectionBreachedPasswordDetectionPreUserRegistration'] = None,
              shields: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if admin_notification_frequencies is None and 'adminNotificationFrequencies' in kwargs:
+            admin_notification_frequencies = kwargs['adminNotificationFrequencies']
+        if pre_user_registration is None and 'preUserRegistration' in kwargs:
+            pre_user_registration = kwargs['preUserRegistration']
+
         _setter("enabled", enabled)
         if admin_notification_frequencies is not None:
             _setter("admin_notification_frequencies", admin_notification_frequencies)
@@ -446,7 +472,9 @@ class AttackProtectionBreachedPasswordDetectionPreUserRegistration(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              shields: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if shields is not None:
             _setter("shields", shields)
 
@@ -502,12 +530,18 @@ class AttackProtectionBruteForceProtection(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
+             enabled: Optional[bool] = None,
              allowlists: Optional[Sequence[str]] = None,
              max_attempts: Optional[int] = None,
              mode: Optional[str] = None,
              shields: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if max_attempts is None and 'maxAttempts' in kwargs:
+            max_attempts = kwargs['maxAttempts']
+
         _setter("enabled", enabled)
         if allowlists is not None:
             _setter("allowlists", allowlists)
@@ -604,12 +638,20 @@ class AttackProtectionSuspiciousIpThrottling(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
+             enabled: Optional[bool] = None,
              allowlists: Optional[Sequence[str]] = None,
              pre_login: Optional['outputs.AttackProtectionSuspiciousIpThrottlingPreLogin'] = None,
              pre_user_registration: Optional['outputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistration'] = None,
              shields: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if pre_login is None and 'preLogin' in kwargs:
+            pre_login = kwargs['preLogin']
+        if pre_user_registration is None and 'preUserRegistration' in kwargs:
+            pre_user_registration = kwargs['preUserRegistration']
+
         _setter("enabled", enabled)
         if allowlists is not None:
             _setter("allowlists", allowlists)
@@ -697,7 +739,11 @@ class AttackProtectionSuspiciousIpThrottlingPreLogin(dict):
              _setter: Callable[[Any, Any], None],
              max_attempts: Optional[int] = None,
              rate: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if max_attempts is None and 'maxAttempts' in kwargs:
+            max_attempts = kwargs['maxAttempts']
+
         if max_attempts is not None:
             _setter("max_attempts", max_attempts)
         if rate is not None:
@@ -756,7 +802,11 @@ class AttackProtectionSuspiciousIpThrottlingPreUserRegistration(dict):
              _setter: Callable[[Any, Any], None],
              max_attempts: Optional[int] = None,
              rate: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if max_attempts is None and 'maxAttempts' in kwargs:
+            max_attempts = kwargs['maxAttempts']
+
         if max_attempts is not None:
             _setter("max_attempts", max_attempts)
         if rate is not None:
@@ -815,7 +865,11 @@ class BrandingColors(dict):
              _setter: Callable[[Any, Any], None],
              page_background: Optional[str] = None,
              primary: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if page_background is None and 'pageBackground' in kwargs:
+            page_background = kwargs['pageBackground']
+
         if page_background is not None:
             _setter("page_background", page_background)
         if primary is not None:
@@ -853,7 +907,9 @@ class BrandingFont(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if url is not None:
             _setter("url", url)
 
@@ -946,7 +1002,27 @@ class BrandingThemeBorders(dict):
              show_widget_shadow: Optional[bool] = None,
              widget_border_weight: Optional[float] = None,
              widget_corner_radius: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if button_border_radius is None and 'buttonBorderRadius' in kwargs:
+            button_border_radius = kwargs['buttonBorderRadius']
+        if button_border_weight is None and 'buttonBorderWeight' in kwargs:
+            button_border_weight = kwargs['buttonBorderWeight']
+        if buttons_style is None and 'buttonsStyle' in kwargs:
+            buttons_style = kwargs['buttonsStyle']
+        if input_border_radius is None and 'inputBorderRadius' in kwargs:
+            input_border_radius = kwargs['inputBorderRadius']
+        if input_border_weight is None and 'inputBorderWeight' in kwargs:
+            input_border_weight = kwargs['inputBorderWeight']
+        if inputs_style is None and 'inputsStyle' in kwargs:
+            inputs_style = kwargs['inputsStyle']
+        if show_widget_shadow is None and 'showWidgetShadow' in kwargs:
+            show_widget_shadow = kwargs['showWidgetShadow']
+        if widget_border_weight is None and 'widgetBorderWeight' in kwargs:
+            widget_border_weight = kwargs['widgetBorderWeight']
+        if widget_corner_radius is None and 'widgetCornerRadius' in kwargs:
+            widget_corner_radius = kwargs['widgetCornerRadius']
+
         if button_border_radius is not None:
             _setter("button_border_radius", button_border_radius)
         if button_border_weight is not None:
@@ -1165,7 +1241,37 @@ class BrandingThemeColors(dict):
              success: Optional[str] = None,
              widget_background: Optional[str] = None,
              widget_border: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if base_focus_color is None and 'baseFocusColor' in kwargs:
+            base_focus_color = kwargs['baseFocusColor']
+        if base_hover_color is None and 'baseHoverColor' in kwargs:
+            base_hover_color = kwargs['baseHoverColor']
+        if body_text is None and 'bodyText' in kwargs:
+            body_text = kwargs['bodyText']
+        if input_background is None and 'inputBackground' in kwargs:
+            input_background = kwargs['inputBackground']
+        if input_border is None and 'inputBorder' in kwargs:
+            input_border = kwargs['inputBorder']
+        if input_filled_text is None and 'inputFilledText' in kwargs:
+            input_filled_text = kwargs['inputFilledText']
+        if input_labels_placeholders is None and 'inputLabelsPlaceholders' in kwargs:
+            input_labels_placeholders = kwargs['inputLabelsPlaceholders']
+        if links_focused_components is None and 'linksFocusedComponents' in kwargs:
+            links_focused_components = kwargs['linksFocusedComponents']
+        if primary_button is None and 'primaryButton' in kwargs:
+            primary_button = kwargs['primaryButton']
+        if primary_button_label is None and 'primaryButtonLabel' in kwargs:
+            primary_button_label = kwargs['primaryButtonLabel']
+        if secondary_button_border is None and 'secondaryButtonBorder' in kwargs:
+            secondary_button_border = kwargs['secondaryButtonBorder']
+        if secondary_button_label is None and 'secondaryButtonLabel' in kwargs:
+            secondary_button_label = kwargs['secondaryButtonLabel']
+        if widget_background is None and 'widgetBackground' in kwargs:
+            widget_background = kwargs['widgetBackground']
+        if widget_border is None and 'widgetBorder' in kwargs:
+            widget_border = kwargs['widgetBorder']
+
         if base_focus_color is not None:
             _setter("base_focus_color", base_focus_color)
         if base_hover_color is not None:
@@ -1413,16 +1519,42 @@ class BrandingThemeFonts(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             body_text: 'outputs.BrandingThemeFontsBodyText',
-             buttons_text: 'outputs.BrandingThemeFontsButtonsText',
-             input_labels: 'outputs.BrandingThemeFontsInputLabels',
-             links: 'outputs.BrandingThemeFontsLinks',
-             subtitle: 'outputs.BrandingThemeFontsSubtitle',
-             title: 'outputs.BrandingThemeFontsTitle',
+             body_text: Optional['outputs.BrandingThemeFontsBodyText'] = None,
+             buttons_text: Optional['outputs.BrandingThemeFontsButtonsText'] = None,
+             input_labels: Optional['outputs.BrandingThemeFontsInputLabels'] = None,
+             links: Optional['outputs.BrandingThemeFontsLinks'] = None,
+             subtitle: Optional['outputs.BrandingThemeFontsSubtitle'] = None,
+             title: Optional['outputs.BrandingThemeFontsTitle'] = None,
              font_url: Optional[str] = None,
              links_style: Optional[str] = None,
              reference_text_size: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if body_text is None and 'bodyText' in kwargs:
+            body_text = kwargs['bodyText']
+        if body_text is None:
+            raise TypeError("Missing 'body_text' argument")
+        if buttons_text is None and 'buttonsText' in kwargs:
+            buttons_text = kwargs['buttonsText']
+        if buttons_text is None:
+            raise TypeError("Missing 'buttons_text' argument")
+        if input_labels is None and 'inputLabels' in kwargs:
+            input_labels = kwargs['inputLabels']
+        if input_labels is None:
+            raise TypeError("Missing 'input_labels' argument")
+        if links is None:
+            raise TypeError("Missing 'links' argument")
+        if subtitle is None:
+            raise TypeError("Missing 'subtitle' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+        if font_url is None and 'fontUrl' in kwargs:
+            font_url = kwargs['fontUrl']
+        if links_style is None and 'linksStyle' in kwargs:
+            links_style = kwargs['linksStyle']
+        if reference_text_size is None and 'referenceTextSize' in kwargs:
+            reference_text_size = kwargs['referenceTextSize']
+
         _setter("body_text", body_text)
         _setter("buttons_text", buttons_text)
         _setter("input_labels", input_labels)
@@ -1528,7 +1660,9 @@ class BrandingThemeFontsBodyText(dict):
              _setter: Callable[[Any, Any], None],
              bold: Optional[bool] = None,
              size: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if bold is not None:
             _setter("bold", bold)
         if size is not None:
@@ -1570,7 +1704,9 @@ class BrandingThemeFontsButtonsText(dict):
              _setter: Callable[[Any, Any], None],
              bold: Optional[bool] = None,
              size: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if bold is not None:
             _setter("bold", bold)
         if size is not None:
@@ -1612,7 +1748,9 @@ class BrandingThemeFontsInputLabels(dict):
              _setter: Callable[[Any, Any], None],
              bold: Optional[bool] = None,
              size: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if bold is not None:
             _setter("bold", bold)
         if size is not None:
@@ -1654,7 +1792,9 @@ class BrandingThemeFontsLinks(dict):
              _setter: Callable[[Any, Any], None],
              bold: Optional[bool] = None,
              size: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if bold is not None:
             _setter("bold", bold)
         if size is not None:
@@ -1696,7 +1836,9 @@ class BrandingThemeFontsSubtitle(dict):
              _setter: Callable[[Any, Any], None],
              bold: Optional[bool] = None,
              size: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if bold is not None:
             _setter("bold", bold)
         if size is not None:
@@ -1738,7 +1880,9 @@ class BrandingThemeFontsTitle(dict):
              _setter: Callable[[Any, Any], None],
              bold: Optional[bool] = None,
              size: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if bold is not None:
             _setter("bold", bold)
         if size is not None:
@@ -1805,7 +1949,15 @@ class BrandingThemePageBackground(dict):
              background_color: Optional[str] = None,
              background_image_url: Optional[str] = None,
              page_layout: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if background_color is None and 'backgroundColor' in kwargs:
+            background_color = kwargs['backgroundColor']
+        if background_image_url is None and 'backgroundImageUrl' in kwargs:
+            background_image_url = kwargs['backgroundImageUrl']
+        if page_layout is None and 'pageLayout' in kwargs:
+            page_layout = kwargs['pageLayout']
+
         if background_color is not None:
             _setter("background_color", background_color)
         if background_image_url is not None:
@@ -1894,7 +2046,19 @@ class BrandingThemeWidget(dict):
              logo_position: Optional[str] = None,
              logo_url: Optional[str] = None,
              social_buttons_layout: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if header_text_alignment is None and 'headerTextAlignment' in kwargs:
+            header_text_alignment = kwargs['headerTextAlignment']
+        if logo_height is None and 'logoHeight' in kwargs:
+            logo_height = kwargs['logoHeight']
+        if logo_position is None and 'logoPosition' in kwargs:
+            logo_position = kwargs['logoPosition']
+        if logo_url is None and 'logoUrl' in kwargs:
+            logo_url = kwargs['logoUrl']
+        if social_buttons_layout is None and 'socialButtonsLayout' in kwargs:
+            social_buttons_layout = kwargs['socialButtonsLayout']
+
         if header_text_alignment is not None:
             _setter("header_text_alignment", header_text_alignment)
         if logo_height is not None:
@@ -1961,8 +2125,12 @@ class BrandingUniversalLogin(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             body: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             body: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if body is None:
+            raise TypeError("Missing 'body' argument")
+
         _setter("body", body)
 
     @property
@@ -2128,7 +2296,21 @@ class ClientAddons(dict):
              wsfed: Optional['outputs.ClientAddonsWsfed'] = None,
              zendesk: Optional['outputs.ClientAddonsZendesk'] = None,
              zoom: Optional['outputs.ClientAddonsZoom'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if azure_blob is None and 'azureBlob' in kwargs:
+            azure_blob = kwargs['azureBlob']
+        if azure_sb is None and 'azureSb' in kwargs:
+            azure_sb = kwargs['azureSb']
+        if salesforce_api is None and 'salesforceApi' in kwargs:
+            salesforce_api = kwargs['salesforceApi']
+        if salesforce_sandbox_api is None and 'salesforceSandboxApi' in kwargs:
+            salesforce_sandbox_api = kwargs['salesforceSandboxApi']
+        if sap_api is None and 'sapApi' in kwargs:
+            sap_api = kwargs['sapApi']
+        if sso_integration is None and 'ssoIntegration' in kwargs:
+            sso_integration = kwargs['ssoIntegration']
+
         if aws is not None:
             _setter("aws", aws)
         if azure_blob is not None:
@@ -2461,7 +2643,11 @@ class ClientAddonsAws(dict):
              lifetime_in_seconds: Optional[int] = None,
              principal: Optional[str] = None,
              role: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if lifetime_in_seconds is None and 'lifetimeInSeconds' in kwargs:
+            lifetime_in_seconds = kwargs['lifetimeInSeconds']
+
         if lifetime_in_seconds is not None:
             _setter("lifetime_in_seconds", lifetime_in_seconds)
         if principal is not None:
@@ -2596,7 +2782,33 @@ class ClientAddonsAzureBlob(dict):
              expiration: Optional[int] = None,
              signed_identifier: Optional[str] = None,
              storage_access_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account_name is None and 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if blob_delete is None and 'blobDelete' in kwargs:
+            blob_delete = kwargs['blobDelete']
+        if blob_name is None and 'blobName' in kwargs:
+            blob_name = kwargs['blobName']
+        if blob_read is None and 'blobRead' in kwargs:
+            blob_read = kwargs['blobRead']
+        if blob_write is None and 'blobWrite' in kwargs:
+            blob_write = kwargs['blobWrite']
+        if container_delete is None and 'containerDelete' in kwargs:
+            container_delete = kwargs['containerDelete']
+        if container_list is None and 'containerList' in kwargs:
+            container_list = kwargs['containerList']
+        if container_name is None and 'containerName' in kwargs:
+            container_name = kwargs['containerName']
+        if container_read is None and 'containerRead' in kwargs:
+            container_read = kwargs['containerRead']
+        if container_write is None and 'containerWrite' in kwargs:
+            container_write = kwargs['containerWrite']
+        if signed_identifier is None and 'signedIdentifier' in kwargs:
+            signed_identifier = kwargs['signedIdentifier']
+        if storage_access_key is None and 'storageAccessKey' in kwargs:
+            storage_access_key = kwargs['storageAccessKey']
+
         if account_name is not None:
             _setter("account_name", account_name)
         if blob_delete is not None:
@@ -2781,7 +2993,15 @@ class ClientAddonsAzureSb(dict):
              namespace: Optional[str] = None,
              sas_key: Optional[str] = None,
              sas_key_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_path is None and 'entityPath' in kwargs:
+            entity_path = kwargs['entityPath']
+        if sas_key is None and 'sasKey' in kwargs:
+            sas_key = kwargs['sasKey']
+        if sas_key_name is None and 'sasKeyName' in kwargs:
+            sas_key_name = kwargs['sasKeyName']
+
         if entity_path is not None:
             _setter("entity_path", entity_path)
         if expiration is not None:
@@ -2841,8 +3061,10 @@ class ClientAddonsBox(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -2852,8 +3074,10 @@ class ClientAddonsCloudbees(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -2863,8 +3087,10 @@ class ClientAddonsConcur(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -2874,8 +3100,10 @@ class ClientAddonsDropbox(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -2893,7 +3121,9 @@ class ClientAddonsEchosign(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              domain: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if domain is not None:
             _setter("domain", domain)
 
@@ -2921,7 +3151,9 @@ class ClientAddonsEgnyte(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              domain: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if domain is not None:
             _setter("domain", domain)
 
@@ -2988,7 +3220,17 @@ class ClientAddonsFirebase(dict):
              private_key: Optional[str] = None,
              private_key_id: Optional[str] = None,
              secret: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_email is None and 'clientEmail' in kwargs:
+            client_email = kwargs['clientEmail']
+        if lifetime_in_seconds is None and 'lifetimeInSeconds' in kwargs:
+            lifetime_in_seconds = kwargs['lifetimeInSeconds']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key_id is None and 'privateKeyId' in kwargs:
+            private_key_id = kwargs['privateKeyId']
+
         if client_email is not None:
             _setter("client_email", client_email)
         if lifetime_in_seconds is not None:
@@ -3088,12 +3330,26 @@ class ClientAddonsLayer(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key_id: str,
-             private_key: str,
-             provider_id: str,
+             key_id: Optional[str] = None,
+             private_key: Optional[str] = None,
+             provider_id: Optional[str] = None,
              expiration: Optional[int] = None,
              principal: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if key_id is None:
+            raise TypeError("Missing 'key_id' argument")
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key is None:
+            raise TypeError("Missing 'private_key' argument")
+        if provider_id is None and 'providerId' in kwargs:
+            provider_id = kwargs['providerId']
+        if provider_id is None:
+            raise TypeError("Missing 'provider_id' argument")
+
         _setter("key_id", key_id)
         _setter("private_key", private_key)
         _setter("provider_id", provider_id)
@@ -3158,7 +3414,9 @@ class ClientAddonsMscrm(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if url is not None:
             _setter("url", url)
 
@@ -3186,7 +3444,9 @@ class ClientAddonsNewrelic(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              account: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if account is not None:
             _setter("account", account)
 
@@ -3218,7 +3478,9 @@ class ClientAddonsOffice365(dict):
              _setter: Callable[[Any, Any], None],
              connection: Optional[str] = None,
              domain: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if connection is not None:
             _setter("connection", connection)
         if domain is not None:
@@ -3256,7 +3518,9 @@ class ClientAddonsRms(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if url is not None:
             _setter("url", url)
 
@@ -3301,7 +3565,11 @@ class ClientAddonsSalesforce(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              entity_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_id is None and 'entityId' in kwargs:
+            entity_id = kwargs['entityId']
+
         if entity_id is not None:
             _setter("entity_id", entity_id)
 
@@ -3362,7 +3630,15 @@ class ClientAddonsSalesforceApi(dict):
              community_name: Optional[str] = None,
              community_url_section: Optional[str] = None,
              principal: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if community_name is None and 'communityName' in kwargs:
+            community_name = kwargs['communityName']
+        if community_url_section is None and 'communityUrlSection' in kwargs:
+            community_url_section = kwargs['communityUrlSection']
+
         if client_id is not None:
             _setter("client_id", client_id)
         if community_name is not None:
@@ -3453,7 +3729,15 @@ class ClientAddonsSalesforceSandboxApi(dict):
              community_name: Optional[str] = None,
              community_url_section: Optional[str] = None,
              principal: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if community_name is None and 'communityName' in kwargs:
+            community_name = kwargs['communityName']
+        if community_url_section is None and 'communityUrlSection' in kwargs:
+            community_url_section = kwargs['communityUrlSection']
+
         if client_id is not None:
             _setter("client_id", client_id)
         if community_name is not None:
@@ -3634,7 +3918,37 @@ class ClientAddonsSamlp(dict):
              signature_algorithm: Optional[str] = None,
              signing_cert: Optional[str] = None,
              typed_attributes: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authn_context_class_ref is None and 'authnContextClassRef' in kwargs:
+            authn_context_class_ref = kwargs['authnContextClassRef']
+        if create_upn_claim is None and 'createUpnClaim' in kwargs:
+            create_upn_claim = kwargs['createUpnClaim']
+        if digest_algorithm is None and 'digestAlgorithm' in kwargs:
+            digest_algorithm = kwargs['digestAlgorithm']
+        if include_attribute_name_format is None and 'includeAttributeNameFormat' in kwargs:
+            include_attribute_name_format = kwargs['includeAttributeNameFormat']
+        if lifetime_in_seconds is None and 'lifetimeInSeconds' in kwargs:
+            lifetime_in_seconds = kwargs['lifetimeInSeconds']
+        if map_identities is None and 'mapIdentities' in kwargs:
+            map_identities = kwargs['mapIdentities']
+        if map_unknown_claims_as_is is None and 'mapUnknownClaimsAsIs' in kwargs:
+            map_unknown_claims_as_is = kwargs['mapUnknownClaimsAsIs']
+        if name_identifier_format is None and 'nameIdentifierFormat' in kwargs:
+            name_identifier_format = kwargs['nameIdentifierFormat']
+        if name_identifier_probes is None and 'nameIdentifierProbes' in kwargs:
+            name_identifier_probes = kwargs['nameIdentifierProbes']
+        if passthrough_claims_with_no_mapping is None and 'passthroughClaimsWithNoMapping' in kwargs:
+            passthrough_claims_with_no_mapping = kwargs['passthroughClaimsWithNoMapping']
+        if sign_response is None and 'signResponse' in kwargs:
+            sign_response = kwargs['signResponse']
+        if signature_algorithm is None and 'signatureAlgorithm' in kwargs:
+            signature_algorithm = kwargs['signatureAlgorithm']
+        if signing_cert is None and 'signingCert' in kwargs:
+            signing_cert = kwargs['signingCert']
+        if typed_attributes is None and 'typedAttributes' in kwargs:
+            typed_attributes = kwargs['typedAttributes']
+
         if audience is not None:
             _setter("audience", audience)
         if authn_context_class_ref is not None:
@@ -3883,7 +4197,11 @@ class ClientAddonsSamlpLogout(dict):
              _setter: Callable[[Any, Any], None],
              callback: Optional[str] = None,
              slo_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if slo_enabled is None and 'sloEnabled' in kwargs:
+            slo_enabled = kwargs['sloEnabled']
+
         if callback is not None:
             _setter("callback", callback)
         if slo_enabled is not None:
@@ -3966,7 +4284,19 @@ class ClientAddonsSapApi(dict):
              service_password: Optional[str] = None,
              token_endpoint_url: Optional[str] = None,
              username_attribute: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if name_identifier_format is None and 'nameIdentifierFormat' in kwargs:
+            name_identifier_format = kwargs['nameIdentifierFormat']
+        if service_password is None and 'servicePassword' in kwargs:
+            service_password = kwargs['servicePassword']
+        if token_endpoint_url is None and 'tokenEndpointUrl' in kwargs:
+            token_endpoint_url = kwargs['tokenEndpointUrl']
+        if username_attribute is None and 'usernameAttribute' in kwargs:
+            username_attribute = kwargs['usernameAttribute']
+
         if client_id is not None:
             _setter("client_id", client_id)
         if name_identifier_format is not None:
@@ -4067,7 +4397,13 @@ class ClientAddonsSentry(dict):
              _setter: Callable[[Any, Any], None],
              base_url: Optional[str] = None,
              org_slug: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if base_url is None and 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+        if org_slug is None and 'orgSlug' in kwargs:
+            org_slug = kwargs['orgSlug']
+
         if base_url is not None:
             _setter("base_url", base_url)
         if org_slug is not None:
@@ -4126,7 +4462,11 @@ class ClientAddonsSharepoint(dict):
              _setter: Callable[[Any, Any], None],
              external_urls: Optional[Sequence[str]] = None,
              url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if external_urls is None and 'externalUrls' in kwargs:
+            external_urls = kwargs['externalUrls']
+
         if external_urls is not None:
             _setter("external_urls", external_urls)
         if url is not None:
@@ -4164,7 +4504,9 @@ class ClientAddonsSlack(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              team: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if team is not None:
             _setter("team", team)
 
@@ -4209,7 +4551,11 @@ class ClientAddonsSpringcm(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              acs_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if acs_url is None and 'acsUrl' in kwargs:
+            acs_url = kwargs['acsUrl']
+
         if acs_url is not None:
             _setter("acs_url", acs_url)
 
@@ -4241,7 +4587,9 @@ class ClientAddonsSsoIntegration(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if version is not None:
@@ -4296,7 +4644,11 @@ class ClientAddonsWams(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              master_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if master_key is None and 'masterKey' in kwargs:
+            master_key = kwargs['masterKey']
+
         if master_key is not None:
             _setter("master_key", master_key)
 
@@ -4316,8 +4668,10 @@ class ClientAddonsWsfed(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -4352,7 +4706,11 @@ class ClientAddonsZendesk(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              account_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account_name is None and 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+
         if account_name is not None:
             _setter("account_name", account_name)
 
@@ -4380,7 +4738,9 @@ class ClientAddonsZoom(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              account: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if account is not None:
             _setter("account", account)
 
@@ -4407,8 +4767,12 @@ class ClientCredentialsPrivateKeyJwt(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             credentials: Sequence['outputs.ClientCredentialsPrivateKeyJwtCredential'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             credentials: Optional[Sequence['outputs.ClientCredentialsPrivateKeyJwtCredential']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if credentials is None:
+            raise TypeError("Missing 'credentials' argument")
+
         _setter("credentials", credentials)
 
     @property
@@ -4488,8 +4852,8 @@ class ClientCredentialsPrivateKeyJwtCredential(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             credential_type: str,
-             pem: str,
+             credential_type: Optional[str] = None,
+             pem: Optional[str] = None,
              algorithm: Optional[str] = None,
              created_at: Optional[str] = None,
              expires_at: Optional[str] = None,
@@ -4498,7 +4862,25 @@ class ClientCredentialsPrivateKeyJwtCredential(dict):
              name: Optional[str] = None,
              parse_expiry_from_cert: Optional[bool] = None,
              updated_at: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if credential_type is None and 'credentialType' in kwargs:
+            credential_type = kwargs['credentialType']
+        if credential_type is None:
+            raise TypeError("Missing 'credential_type' argument")
+        if pem is None:
+            raise TypeError("Missing 'pem' argument")
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if expires_at is None and 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if parse_expiry_from_cert is None and 'parseExpiryFromCert' in kwargs:
+            parse_expiry_from_cert = kwargs['parseExpiryFromCert']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         _setter("credential_type", credential_type)
         _setter("pem", pem)
         if algorithm is not None:
@@ -4645,7 +5027,13 @@ class ClientJwtConfiguration(dict):
              lifetime_in_seconds: Optional[int] = None,
              scopes: Optional[Mapping[str, str]] = None,
              secret_encoded: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if lifetime_in_seconds is None and 'lifetimeInSeconds' in kwargs:
+            lifetime_in_seconds = kwargs['lifetimeInSeconds']
+        if secret_encoded is None and 'secretEncoded' in kwargs:
+            secret_encoded = kwargs['secretEncoded']
+
         if alg is not None:
             _setter("alg", alg)
         if lifetime_in_seconds is not None:
@@ -4707,7 +5095,9 @@ class ClientMobile(dict):
              _setter: Callable[[Any, Any], None],
              android: Optional['outputs.ClientMobileAndroid'] = None,
              ios: Optional['outputs.ClientMobileIos'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if android is not None:
             _setter("android", android)
         if ios is not None:
@@ -4764,7 +5154,13 @@ class ClientMobileAndroid(dict):
              _setter: Callable[[Any, Any], None],
              app_package_name: Optional[str] = None,
              sha256_cert_fingerprints: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_package_name is None and 'appPackageName' in kwargs:
+            app_package_name = kwargs['appPackageName']
+        if sha256_cert_fingerprints is None and 'sha256CertFingerprints' in kwargs:
+            sha256_cert_fingerprints = kwargs['sha256CertFingerprints']
+
         if app_package_name is not None:
             _setter("app_package_name", app_package_name)
         if sha256_cert_fingerprints is not None:
@@ -4815,7 +5211,13 @@ class ClientMobileIos(dict):
              _setter: Callable[[Any, Any], None],
              app_bundle_identifier: Optional[str] = None,
              team_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_bundle_identifier is None and 'appBundleIdentifier' in kwargs:
+            app_bundle_identifier = kwargs['appBundleIdentifier']
+        if team_id is None and 'teamId' in kwargs:
+            team_id = kwargs['teamId']
+
         if app_bundle_identifier is not None:
             _setter("app_bundle_identifier", app_bundle_identifier)
         if team_id is not None:
@@ -4847,7 +5249,9 @@ class ClientNativeSocialLogin(dict):
              _setter: Callable[[Any, Any], None],
              apple: Optional['outputs.ClientNativeSocialLoginApple'] = None,
              facebook: Optional['outputs.ClientNativeSocialLoginFacebook'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if apple is not None:
             _setter("apple", apple)
         if facebook is not None:
@@ -4876,7 +5280,9 @@ class ClientNativeSocialLoginApple(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -4898,7 +5304,9 @@ class ClientNativeSocialLoginFacebook(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -4967,14 +5375,32 @@ class ClientRefreshToken(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expiration_type: str,
-             rotation_type: str,
+             expiration_type: Optional[str] = None,
+             rotation_type: Optional[str] = None,
              idle_token_lifetime: Optional[int] = None,
              infinite_idle_token_lifetime: Optional[bool] = None,
              infinite_token_lifetime: Optional[bool] = None,
              leeway: Optional[int] = None,
              token_lifetime: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expiration_type is None and 'expirationType' in kwargs:
+            expiration_type = kwargs['expirationType']
+        if expiration_type is None:
+            raise TypeError("Missing 'expiration_type' argument")
+        if rotation_type is None and 'rotationType' in kwargs:
+            rotation_type = kwargs['rotationType']
+        if rotation_type is None:
+            raise TypeError("Missing 'rotation_type' argument")
+        if idle_token_lifetime is None and 'idleTokenLifetime' in kwargs:
+            idle_token_lifetime = kwargs['idleTokenLifetime']
+        if infinite_idle_token_lifetime is None and 'infiniteIdleTokenLifetime' in kwargs:
+            infinite_idle_token_lifetime = kwargs['infiniteIdleTokenLifetime']
+        if infinite_token_lifetime is None and 'infiniteTokenLifetime' in kwargs:
+            infinite_token_lifetime = kwargs['infiniteTokenLifetime']
+        if token_lifetime is None and 'tokenLifetime' in kwargs:
+            token_lifetime = kwargs['tokenLifetime']
+
         _setter("expiration_type", expiration_type)
         _setter("rotation_type", rotation_type)
         if idle_token_lifetime is not None:
@@ -5579,7 +6005,157 @@ class ConnectionOptions(dict):
              validation: Optional['outputs.ConnectionOptionsValidation'] = None,
              waad_common_endpoint: Optional[bool] = None,
              waad_protocol: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if adfs_server is None and 'adfsServer' in kwargs:
+            adfs_server = kwargs['adfsServer']
+        if allowed_audiences is None and 'allowedAudiences' in kwargs:
+            allowed_audiences = kwargs['allowedAudiences']
+        if api_enable_users is None and 'apiEnableUsers' in kwargs:
+            api_enable_users = kwargs['apiEnableUsers']
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if attribute_map is None and 'attributeMap' in kwargs:
+            attribute_map = kwargs['attributeMap']
+        if auth_params is None and 'authParams' in kwargs:
+            auth_params = kwargs['authParams']
+        if authorization_endpoint is None and 'authorizationEndpoint' in kwargs:
+            authorization_endpoint = kwargs['authorizationEndpoint']
+        if brute_force_protection is None and 'bruteForceProtection' in kwargs:
+            brute_force_protection = kwargs['bruteForceProtection']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if community_base_url is None and 'communityBaseUrl' in kwargs:
+            community_base_url = kwargs['communityBaseUrl']
+        if connection_settings is None and 'connectionSettings' in kwargs:
+            connection_settings = kwargs['connectionSettings']
+        if custom_scripts is None and 'customScripts' in kwargs:
+            custom_scripts = kwargs['customScripts']
+        if decryption_key is None and 'decryptionKey' in kwargs:
+            decryption_key = kwargs['decryptionKey']
+        if digest_algorithm is None and 'digestAlgorithm' in kwargs:
+            digest_algorithm = kwargs['digestAlgorithm']
+        if disable_cache is None and 'disableCache' in kwargs:
+            disable_cache = kwargs['disableCache']
+        if disable_self_service_change_password is None and 'disableSelfServiceChangePassword' in kwargs:
+            disable_self_service_change_password = kwargs['disableSelfServiceChangePassword']
+        if disable_sign_out is None and 'disableSignOut' in kwargs:
+            disable_sign_out = kwargs['disableSignOut']
+        if disable_signup is None and 'disableSignup' in kwargs:
+            disable_signup = kwargs['disableSignup']
+        if discovery_url is None and 'discoveryUrl' in kwargs:
+            discovery_url = kwargs['discoveryUrl']
+        if domain_aliases is None and 'domainAliases' in kwargs:
+            domain_aliases = kwargs['domainAliases']
+        if enable_script_context is None and 'enableScriptContext' in kwargs:
+            enable_script_context = kwargs['enableScriptContext']
+        if enabled_database_customization is None and 'enabledDatabaseCustomization' in kwargs:
+            enabled_database_customization = kwargs['enabledDatabaseCustomization']
+        if entity_id is None and 'entityId' in kwargs:
+            entity_id = kwargs['entityId']
+        if fed_metadata_xml is None and 'fedMetadataXml' in kwargs:
+            fed_metadata_xml = kwargs['fedMetadataXml']
+        if fields_map is None and 'fieldsMap' in kwargs:
+            fields_map = kwargs['fieldsMap']
+        if forward_request_info is None and 'forwardRequestInfo' in kwargs:
+            forward_request_info = kwargs['forwardRequestInfo']
+        if from_ is None and 'from' in kwargs:
+            from_ = kwargs['from']
+        if gateway_authentication is None and 'gatewayAuthentication' in kwargs:
+            gateway_authentication = kwargs['gatewayAuthentication']
+        if gateway_url is None and 'gatewayUrl' in kwargs:
+            gateway_url = kwargs['gatewayUrl']
+        if icon_url is None and 'iconUrl' in kwargs:
+            icon_url = kwargs['iconUrl']
+        if identity_api is None and 'identityApi' in kwargs:
+            identity_api = kwargs['identityApi']
+        if idp_initiated is None and 'idpInitiated' in kwargs:
+            idp_initiated = kwargs['idpInitiated']
+        if import_mode is None and 'importMode' in kwargs:
+            import_mode = kwargs['importMode']
+        if jwks_uri is None and 'jwksUri' in kwargs:
+            jwks_uri = kwargs['jwksUri']
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if map_user_id_to_id is None and 'mapUserIdToId' in kwargs:
+            map_user_id_to_id = kwargs['mapUserIdToId']
+        if max_groups_to_retrieve is None and 'maxGroupsToRetrieve' in kwargs:
+            max_groups_to_retrieve = kwargs['maxGroupsToRetrieve']
+        if messaging_service_sid is None and 'messagingServiceSid' in kwargs:
+            messaging_service_sid = kwargs['messagingServiceSid']
+        if metadata_url is None and 'metadataUrl' in kwargs:
+            metadata_url = kwargs['metadataUrl']
+        if metadata_xml is None and 'metadataXml' in kwargs:
+            metadata_xml = kwargs['metadataXml']
+        if non_persistent_attrs is None and 'nonPersistentAttrs' in kwargs:
+            non_persistent_attrs = kwargs['nonPersistentAttrs']
+        if password_complexity_options is None and 'passwordComplexityOptions' in kwargs:
+            password_complexity_options = kwargs['passwordComplexityOptions']
+        if password_dictionary is None and 'passwordDictionary' in kwargs:
+            password_dictionary = kwargs['passwordDictionary']
+        if password_histories is None and 'passwordHistories' in kwargs:
+            password_histories = kwargs['passwordHistories']
+        if password_no_personal_info is None and 'passwordNoPersonalInfo' in kwargs:
+            password_no_personal_info = kwargs['passwordNoPersonalInfo']
+        if password_policy is None and 'passwordPolicy' in kwargs:
+            password_policy = kwargs['passwordPolicy']
+        if ping_federate_base_url is None and 'pingFederateBaseUrl' in kwargs:
+            ping_federate_base_url = kwargs['pingFederateBaseUrl']
+        if pkce_enabled is None and 'pkceEnabled' in kwargs:
+            pkce_enabled = kwargs['pkceEnabled']
+        if protocol_binding is None and 'protocolBinding' in kwargs:
+            protocol_binding = kwargs['protocolBinding']
+        if request_template is None and 'requestTemplate' in kwargs:
+            request_template = kwargs['requestTemplate']
+        if requires_username is None and 'requiresUsername' in kwargs:
+            requires_username = kwargs['requiresUsername']
+        if set_user_root_attributes is None and 'setUserRootAttributes' in kwargs:
+            set_user_root_attributes = kwargs['setUserRootAttributes']
+        if should_trust_email_verified_connection is None and 'shouldTrustEmailVerifiedConnection' in kwargs:
+            should_trust_email_verified_connection = kwargs['shouldTrustEmailVerifiedConnection']
+        if sign_in_endpoint is None and 'signInEndpoint' in kwargs:
+            sign_in_endpoint = kwargs['signInEndpoint']
+        if sign_out_endpoint is None and 'signOutEndpoint' in kwargs:
+            sign_out_endpoint = kwargs['signOutEndpoint']
+        if sign_saml_request is None and 'signSamlRequest' in kwargs:
+            sign_saml_request = kwargs['signSamlRequest']
+        if signature_algorithm is None and 'signatureAlgorithm' in kwargs:
+            signature_algorithm = kwargs['signatureAlgorithm']
+        if signing_cert is None and 'signingCert' in kwargs:
+            signing_cert = kwargs['signingCert']
+        if signing_key is None and 'signingKey' in kwargs:
+            signing_key = kwargs['signingKey']
+        if strategy_version is None and 'strategyVersion' in kwargs:
+            strategy_version = kwargs['strategyVersion']
+        if team_id is None and 'teamId' in kwargs:
+            team_id = kwargs['teamId']
+        if tenant_domain is None and 'tenantDomain' in kwargs:
+            tenant_domain = kwargs['tenantDomain']
+        if token_endpoint is None and 'tokenEndpoint' in kwargs:
+            token_endpoint = kwargs['tokenEndpoint']
+        if twilio_sid is None and 'twilioSid' in kwargs:
+            twilio_sid = kwargs['twilioSid']
+        if twilio_token is None and 'twilioToken' in kwargs:
+            twilio_token = kwargs['twilioToken']
+        if upstream_params is None and 'upstreamParams' in kwargs:
+            upstream_params = kwargs['upstreamParams']
+        if use_cert_auth is None and 'useCertAuth' in kwargs:
+            use_cert_auth = kwargs['useCertAuth']
+        if use_kerberos is None and 'useKerberos' in kwargs:
+            use_kerberos = kwargs['useKerberos']
+        if use_wsfed is None and 'useWsfed' in kwargs:
+            use_wsfed = kwargs['useWsfed']
+        if user_id_attribute is None and 'userIdAttribute' in kwargs:
+            user_id_attribute = kwargs['userIdAttribute']
+        if userinfo_endpoint is None and 'userinfoEndpoint' in kwargs:
+            userinfo_endpoint = kwargs['userinfoEndpoint']
+        if waad_common_endpoint is None and 'waadCommonEndpoint' in kwargs:
+            waad_common_endpoint = kwargs['waadCommonEndpoint']
+        if waad_protocol is None and 'waadProtocol' in kwargs:
+            waad_protocol = kwargs['waadProtocol']
+
         if adfs_server is not None:
             _setter("adfs_server", adfs_server)
         if allowed_audiences is not None:
@@ -6521,10 +7097,18 @@ class ConnectionOptionsAttributeMap(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mapping_mode: str,
+             mapping_mode: Optional[str] = None,
              attributes: Optional[str] = None,
              userinfo_scope: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if mapping_mode is None and 'mappingMode' in kwargs:
+            mapping_mode = kwargs['mappingMode']
+        if mapping_mode is None:
+            raise TypeError("Missing 'mapping_mode' argument")
+        if userinfo_scope is None and 'userinfoScope' in kwargs:
+            userinfo_scope = kwargs['userinfoScope']
+
         _setter("mapping_mode", mapping_mode)
         if attributes is not None:
             _setter("attributes", attributes)
@@ -6570,8 +7154,12 @@ class ConnectionOptionsConnectionSettings(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pkce: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             pkce: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pkce is None:
+            raise TypeError("Missing 'pkce' argument")
+
         _setter("pkce", pkce)
 
     @property
@@ -6596,9 +7184,15 @@ class ConnectionOptionsDecryptionKey(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert: str,
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cert: Optional[str] = None,
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cert is None:
+            raise TypeError("Missing 'cert' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("cert", cert)
         _setter("key", key)
 
@@ -6661,7 +7255,11 @@ class ConnectionOptionsGatewayAuthentication(dict):
              secret: Optional[str] = None,
              secret_base64_encoded: Optional[bool] = None,
              subject: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if secret_base64_encoded is None and 'secretBase64Encoded' in kwargs:
+            secret_base64_encoded = kwargs['secretBase64Encoded']
+
         if audience is not None:
             _setter("audience", audience)
         if method is not None:
@@ -6756,7 +7354,15 @@ class ConnectionOptionsIdpInitiated(dict):
              client_authorize_query: Optional[str] = None,
              client_id: Optional[str] = None,
              client_protocol: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_authorize_query is None and 'clientAuthorizeQuery' in kwargs:
+            client_authorize_query = kwargs['clientAuthorizeQuery']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_protocol is None and 'clientProtocol' in kwargs:
+            client_protocol = kwargs['clientProtocol']
+
         if client_authorize_query is not None:
             _setter("client_authorize_query", client_authorize_query)
         if client_id is not None:
@@ -6819,7 +7425,11 @@ class ConnectionOptionsMfa(dict):
              _setter: Callable[[Any, Any], None],
              active: Optional[bool] = None,
              return_enroll_settings: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if return_enroll_settings is None and 'returnEnrollSettings' in kwargs:
+            return_enroll_settings = kwargs['returnEnrollSettings']
+
         if active is not None:
             _setter("active", active)
         if return_enroll_settings is not None:
@@ -6874,7 +7484,11 @@ class ConnectionOptionsPasswordComplexityOptions(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              min_length: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if min_length is None and 'minLength' in kwargs:
+            min_length = kwargs['minLength']
+
         if min_length is not None:
             _setter("min_length", min_length)
 
@@ -6906,7 +7520,9 @@ class ConnectionOptionsPasswordDictionary(dict):
              _setter: Callable[[Any, Any], None],
              dictionaries: Optional[Sequence[str]] = None,
              enable: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if dictionaries is not None:
             _setter("dictionaries", dictionaries)
         if enable is not None:
@@ -6947,7 +7563,9 @@ class ConnectionOptionsPasswordHistory(dict):
              _setter: Callable[[Any, Any], None],
              enable: Optional[bool] = None,
              size: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enable is not None:
             _setter("enable", enable)
         if size is not None:
@@ -6982,7 +7600,9 @@ class ConnectionOptionsPasswordNoPersonalInfo(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              enable: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enable is not None:
             _setter("enable", enable)
 
@@ -7008,9 +7628,15 @@ class ConnectionOptionsSigningKey(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert: str,
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cert: Optional[str] = None,
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cert is None:
+            raise TypeError("Missing 'cert' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("cert", cert)
         _setter("key", key)
 
@@ -7061,7 +7687,11 @@ class ConnectionOptionsTotp(dict):
              _setter: Callable[[Any, Any], None],
              length: Optional[int] = None,
              time_step: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if time_step is None and 'timeStep' in kwargs:
+            time_step = kwargs['timeStep']
+
         if length is not None:
             _setter("length", length)
         if time_step is not None:
@@ -7099,7 +7729,9 @@ class ConnectionOptionsValidation(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              username: Optional['outputs.ConnectionOptionsValidationUsername'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if username is not None:
             _setter("username", username)
 
@@ -7127,7 +7759,9 @@ class ConnectionOptionsValidationUsername(dict):
              _setter: Callable[[Any, Any], None],
              max: Optional[int] = None,
              min: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if max is not None:
             _setter("max", max)
         if min is not None:
@@ -7156,7 +7790,9 @@ class CustomDomainVerification(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              methods: Optional[Sequence[Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if methods is not None:
             _setter("methods", methods)
 
@@ -7266,7 +7902,31 @@ class EmailProviderCredentials(dict):
              smtp_pass: Optional[str] = None,
              smtp_port: Optional[int] = None,
              smtp_user: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_key_id is None and 'accessKeyId' in kwargs:
+            access_key_id = kwargs['accessKeyId']
+        if api_key is None and 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if azure_cs_connection_string is None and 'azureCsConnectionString' in kwargs:
+            azure_cs_connection_string = kwargs['azureCsConnectionString']
+        if ms365_client_id is None and 'ms365ClientId' in kwargs:
+            ms365_client_id = kwargs['ms365ClientId']
+        if ms365_client_secret is None and 'ms365ClientSecret' in kwargs:
+            ms365_client_secret = kwargs['ms365ClientSecret']
+        if ms365_tenant_id is None and 'ms365TenantId' in kwargs:
+            ms365_tenant_id = kwargs['ms365TenantId']
+        if secret_access_key is None and 'secretAccessKey' in kwargs:
+            secret_access_key = kwargs['secretAccessKey']
+        if smtp_host is None and 'smtpHost' in kwargs:
+            smtp_host = kwargs['smtpHost']
+        if smtp_pass is None and 'smtpPass' in kwargs:
+            smtp_pass = kwargs['smtpPass']
+        if smtp_port is None and 'smtpPort' in kwargs:
+            smtp_port = kwargs['smtpPort']
+        if smtp_user is None and 'smtpUser' in kwargs:
+            smtp_user = kwargs['smtpUser']
+
         if access_key_id is not None:
             _setter("access_key_id", access_key_id)
         if api_key is not None:
@@ -7418,7 +8078,9 @@ class EmailProviderSettings(dict):
              _setter: Callable[[Any, Any], None],
              headers: Optional['outputs.EmailProviderSettingsHeaders'] = None,
              message: Optional['outputs.EmailProviderSettingsMessage'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if headers is not None:
             _setter("headers", headers)
         if message is not None:
@@ -7479,7 +8141,13 @@ class EmailProviderSettingsHeaders(dict):
              _setter: Callable[[Any, Any], None],
              x_mc_view_content_link: Optional[str] = None,
              x_ses_configuration_set: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if x_mc_view_content_link is None and 'xMcViewContentLink' in kwargs:
+            x_mc_view_content_link = kwargs['xMcViewContentLink']
+        if x_ses_configuration_set is None and 'xSesConfigurationSet' in kwargs:
+            x_ses_configuration_set = kwargs['xSesConfigurationSet']
+
         if x_mc_view_content_link is not None:
             _setter("x_mc_view_content_link", x_mc_view_content_link)
         if x_ses_configuration_set is not None:
@@ -7540,7 +8208,13 @@ class EmailProviderSettingsMessage(dict):
              _setter: Callable[[Any, Any], None],
              configuration_set_name: Optional[str] = None,
              view_content_link: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if configuration_set_name is None and 'configurationSetName' in kwargs:
+            configuration_set_name = kwargs['configurationSetName']
+        if view_content_link is None and 'viewContentLink' in kwargs:
+            view_content_link = kwargs['viewContentLink']
+
         if configuration_set_name is not None:
             _setter("configuration_set_name", configuration_set_name)
         if view_content_link is not None:
@@ -7605,11 +8279,19 @@ class GuardianDuo(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
+             enabled: Optional[bool] = None,
              hostname: Optional[str] = None,
              integration_key: Optional[str] = None,
              secret_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if integration_key is None and 'integrationKey' in kwargs:
+            integration_key = kwargs['integrationKey']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+
         _setter("enabled", enabled)
         if hostname is not None:
             _setter("hostname", hostname)
@@ -7691,11 +8373,17 @@ class GuardianPhone(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
+             enabled: Optional[bool] = None,
              message_types: Optional[Sequence[str]] = None,
              options: Optional['outputs.GuardianPhoneOptions'] = None,
              provider: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if message_types is None and 'messageTypes' in kwargs:
+            message_types = kwargs['messageTypes']
+
         _setter("enabled", enabled)
         if message_types is not None:
             _setter("message_types", message_types)
@@ -7797,7 +8485,19 @@ class GuardianPhoneOptions(dict):
              messaging_service_sid: Optional[str] = None,
              sid: Optional[str] = None,
              verification_message: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auth_token is None and 'authToken' in kwargs:
+            auth_token = kwargs['authToken']
+        if enrollment_message is None and 'enrollmentMessage' in kwargs:
+            enrollment_message = kwargs['enrollmentMessage']
+        if from_ is None and 'from' in kwargs:
+            from_ = kwargs['from']
+        if messaging_service_sid is None and 'messagingServiceSid' in kwargs:
+            messaging_service_sid = kwargs['messagingServiceSid']
+        if verification_message is None and 'verificationMessage' in kwargs:
+            verification_message = kwargs['verificationMessage']
+
         if auth_token is not None:
             _setter("auth_token", auth_token)
         if enrollment_message is not None:
@@ -7912,13 +8612,25 @@ class GuardianPush(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
+             enabled: Optional[bool] = None,
              amazon_sns: Optional['outputs.GuardianPushAmazonSns'] = None,
              custom_app: Optional['outputs.GuardianPushCustomApp'] = None,
              direct_apns: Optional['outputs.GuardianPushDirectApns'] = None,
              direct_fcm: Optional['outputs.GuardianPushDirectFcm'] = None,
              provider: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if amazon_sns is None and 'amazonSns' in kwargs:
+            amazon_sns = kwargs['amazonSns']
+        if custom_app is None and 'customApp' in kwargs:
+            custom_app = kwargs['customApp']
+        if direct_apns is None and 'directApns' in kwargs:
+            direct_apns = kwargs['directApns']
+        if direct_fcm is None and 'directFcm' in kwargs:
+            direct_fcm = kwargs['directFcm']
+
         _setter("enabled", enabled)
         if amazon_sns is not None:
             _setter("amazon_sns", amazon_sns)
@@ -8031,12 +8743,34 @@ class GuardianPushAmazonSns(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aws_access_key_id: str,
-             aws_region: str,
-             aws_secret_access_key: str,
-             sns_apns_platform_application_arn: str,
-             sns_gcm_platform_application_arn: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             aws_access_key_id: Optional[str] = None,
+             aws_region: Optional[str] = None,
+             aws_secret_access_key: Optional[str] = None,
+             sns_apns_platform_application_arn: Optional[str] = None,
+             sns_gcm_platform_application_arn: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if aws_access_key_id is None and 'awsAccessKeyId' in kwargs:
+            aws_access_key_id = kwargs['awsAccessKeyId']
+        if aws_access_key_id is None:
+            raise TypeError("Missing 'aws_access_key_id' argument")
+        if aws_region is None and 'awsRegion' in kwargs:
+            aws_region = kwargs['awsRegion']
+        if aws_region is None:
+            raise TypeError("Missing 'aws_region' argument")
+        if aws_secret_access_key is None and 'awsSecretAccessKey' in kwargs:
+            aws_secret_access_key = kwargs['awsSecretAccessKey']
+        if aws_secret_access_key is None:
+            raise TypeError("Missing 'aws_secret_access_key' argument")
+        if sns_apns_platform_application_arn is None and 'snsApnsPlatformApplicationArn' in kwargs:
+            sns_apns_platform_application_arn = kwargs['snsApnsPlatformApplicationArn']
+        if sns_apns_platform_application_arn is None:
+            raise TypeError("Missing 'sns_apns_platform_application_arn' argument")
+        if sns_gcm_platform_application_arn is None and 'snsGcmPlatformApplicationArn' in kwargs:
+            sns_gcm_platform_application_arn = kwargs['snsGcmPlatformApplicationArn']
+        if sns_gcm_platform_application_arn is None:
+            raise TypeError("Missing 'sns_gcm_platform_application_arn' argument")
+
         _setter("aws_access_key_id", aws_access_key_id)
         _setter("aws_region", aws_region)
         _setter("aws_secret_access_key", aws_secret_access_key)
@@ -8128,7 +8862,15 @@ class GuardianPushCustomApp(dict):
              app_name: Optional[str] = None,
              apple_app_link: Optional[str] = None,
              google_app_link: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_name is None and 'appName' in kwargs:
+            app_name = kwargs['appName']
+        if apple_app_link is None and 'appleAppLink' in kwargs:
+            apple_app_link = kwargs['appleAppLink']
+        if google_app_link is None and 'googleAppLink' in kwargs:
+            google_app_link = kwargs['googleAppLink']
+
         if app_name is not None:
             _setter("app_name", app_name)
         if apple_app_link is not None:
@@ -8201,11 +8943,21 @@ class GuardianPushDirectApns(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bundle_id: str,
-             p12: str,
-             sandbox: bool,
+             bundle_id: Optional[str] = None,
+             p12: Optional[str] = None,
+             sandbox: Optional[bool] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bundle_id is None and 'bundleId' in kwargs:
+            bundle_id = kwargs['bundleId']
+        if bundle_id is None:
+            raise TypeError("Missing 'bundle_id' argument")
+        if p12 is None:
+            raise TypeError("Missing 'p12' argument")
+        if sandbox is None:
+            raise TypeError("Missing 'sandbox' argument")
+
         _setter("bundle_id", bundle_id)
         _setter("p12", p12)
         _setter("sandbox", sandbox)
@@ -8276,8 +9028,14 @@ class GuardianPushDirectFcm(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             server_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if server_key is None and 'serverKey' in kwargs:
+            server_key = kwargs['serverKey']
+        if server_key is None:
+            raise TypeError("Missing 'server_key' argument")
+
         _setter("server_key", server_key)
 
     @property
@@ -8328,10 +9086,18 @@ class GuardianWebauthnPlatform(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
+             enabled: Optional[bool] = None,
              override_relying_party: Optional[bool] = None,
              relying_party_identifier: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if override_relying_party is None and 'overrideRelyingParty' in kwargs:
+            override_relying_party = kwargs['overrideRelyingParty']
+        if relying_party_identifier is None and 'relyingPartyIdentifier' in kwargs:
+            relying_party_identifier = kwargs['relyingPartyIdentifier']
+
         _setter("enabled", enabled)
         if override_relying_party is not None:
             _setter("override_relying_party", override_relying_party)
@@ -8407,11 +9173,21 @@ class GuardianWebauthnRoaming(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
+             enabled: Optional[bool] = None,
              override_relying_party: Optional[bool] = None,
              relying_party_identifier: Optional[str] = None,
              user_verification: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if override_relying_party is None and 'overrideRelyingParty' in kwargs:
+            override_relying_party = kwargs['overrideRelyingParty']
+        if relying_party_identifier is None and 'relyingPartyIdentifier' in kwargs:
+            relying_party_identifier = kwargs['relyingPartyIdentifier']
+        if user_verification is None and 'userVerification' in kwargs:
+            user_verification = kwargs['userVerification']
+
         _setter("enabled", enabled)
         if override_relying_party is not None:
             _setter("override_relying_party", override_relying_party)
@@ -8623,7 +9399,57 @@ class LogStreamSink(dict):
              splunk_secure: Optional[bool] = None,
              splunk_token: Optional[str] = None,
              sumo_source_address: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if aws_account_id is None and 'awsAccountId' in kwargs:
+            aws_account_id = kwargs['awsAccountId']
+        if aws_partner_event_source is None and 'awsPartnerEventSource' in kwargs:
+            aws_partner_event_source = kwargs['awsPartnerEventSource']
+        if aws_region is None and 'awsRegion' in kwargs:
+            aws_region = kwargs['awsRegion']
+        if azure_partner_topic is None and 'azurePartnerTopic' in kwargs:
+            azure_partner_topic = kwargs['azurePartnerTopic']
+        if azure_region is None and 'azureRegion' in kwargs:
+            azure_region = kwargs['azureRegion']
+        if azure_resource_group is None and 'azureResourceGroup' in kwargs:
+            azure_resource_group = kwargs['azureResourceGroup']
+        if azure_subscription_id is None and 'azureSubscriptionId' in kwargs:
+            azure_subscription_id = kwargs['azureSubscriptionId']
+        if datadog_api_key is None and 'datadogApiKey' in kwargs:
+            datadog_api_key = kwargs['datadogApiKey']
+        if datadog_region is None and 'datadogRegion' in kwargs:
+            datadog_region = kwargs['datadogRegion']
+        if http_authorization is None and 'httpAuthorization' in kwargs:
+            http_authorization = kwargs['httpAuthorization']
+        if http_content_format is None and 'httpContentFormat' in kwargs:
+            http_content_format = kwargs['httpContentFormat']
+        if http_content_type is None and 'httpContentType' in kwargs:
+            http_content_type = kwargs['httpContentType']
+        if http_custom_headers is None and 'httpCustomHeaders' in kwargs:
+            http_custom_headers = kwargs['httpCustomHeaders']
+        if http_endpoint is None and 'httpEndpoint' in kwargs:
+            http_endpoint = kwargs['httpEndpoint']
+        if mixpanel_project_id is None and 'mixpanelProjectId' in kwargs:
+            mixpanel_project_id = kwargs['mixpanelProjectId']
+        if mixpanel_region is None and 'mixpanelRegion' in kwargs:
+            mixpanel_region = kwargs['mixpanelRegion']
+        if mixpanel_service_account_password is None and 'mixpanelServiceAccountPassword' in kwargs:
+            mixpanel_service_account_password = kwargs['mixpanelServiceAccountPassword']
+        if mixpanel_service_account_username is None and 'mixpanelServiceAccountUsername' in kwargs:
+            mixpanel_service_account_username = kwargs['mixpanelServiceAccountUsername']
+        if segment_write_key is None and 'segmentWriteKey' in kwargs:
+            segment_write_key = kwargs['segmentWriteKey']
+        if splunk_domain is None and 'splunkDomain' in kwargs:
+            splunk_domain = kwargs['splunkDomain']
+        if splunk_port is None and 'splunkPort' in kwargs:
+            splunk_port = kwargs['splunkPort']
+        if splunk_secure is None and 'splunkSecure' in kwargs:
+            splunk_secure = kwargs['splunkSecure']
+        if splunk_token is None and 'splunkToken' in kwargs:
+            splunk_token = kwargs['splunkToken']
+        if sumo_source_address is None and 'sumoSourceAddress' in kwargs:
+            sumo_source_address = kwargs['sumoSourceAddress']
+
         if aws_account_id is not None:
             _setter("aws_account_id", aws_account_id)
         if aws_partner_event_source is not None:
@@ -8902,7 +9728,11 @@ class OrganizationBranding(dict):
              _setter: Callable[[Any, Any], None],
              colors: Optional[Mapping[str, str]] = None,
              logo_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if logo_url is None and 'logoUrl' in kwargs:
+            logo_url = kwargs['logoUrl']
+
         if colors is not None:
             _setter("colors", colors)
         if logo_url is not None:
@@ -8961,9 +9791,17 @@ class OrganizationConnectionsEnabledConnection(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_id: str,
+             connection_id: Optional[str] = None,
              assign_membership_on_login: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if connection_id is None:
+            raise TypeError("Missing 'connection_id' argument")
+        if assign_membership_on_login is None and 'assignMembershipOnLogin' in kwargs:
+            assign_membership_on_login = kwargs['assignMembershipOnLogin']
+
         _setter("connection_id", connection_id)
         if assign_membership_on_login is not None:
             _setter("assign_membership_on_login", assign_membership_on_login)
@@ -9002,9 +9840,15 @@ class PagesChangePassword(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             html: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[bool] = None,
+             html: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if html is None:
+            raise TypeError("Missing 'html' argument")
+
         _setter("enabled", enabled)
         _setter("html", html)
 
@@ -9062,10 +9906,16 @@ class PagesError(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             show_log_link: bool,
+             show_log_link: Optional[bool] = None,
              html: Optional[str] = None,
              url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if show_log_link is None and 'showLogLink' in kwargs:
+            show_log_link = kwargs['showLogLink']
+        if show_log_link is None:
+            raise TypeError("Missing 'show_log_link' argument")
+
         _setter("show_log_link", show_log_link)
         if html is not None:
             _setter("html", html)
@@ -9114,9 +9964,15 @@ class PagesGuardianMfa(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             html: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[bool] = None,
+             html: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if html is None:
+            raise TypeError("Missing 'html' argument")
+
         _setter("enabled", enabled)
         _setter("html", html)
 
@@ -9154,9 +10010,15 @@ class PagesLogin(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             html: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[bool] = None,
+             html: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if html is None:
+            raise TypeError("Missing 'html' argument")
+
         _setter("enabled", enabled)
         _setter("html", html)
 
@@ -9194,9 +10056,13 @@ class ResourceServerScopesScope(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if description is not None:
             _setter("description", description)
@@ -9260,11 +10126,21 @@ class RolePermissionsPermission(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             resource_server_identifier: str,
+             name: Optional[str] = None,
+             resource_server_identifier: Optional[str] = None,
              description: Optional[str] = None,
              resource_server_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if resource_server_identifier is None and 'resourceServerIdentifier' in kwargs:
+            resource_server_identifier = kwargs['resourceServerIdentifier']
+        if resource_server_identifier is None:
+            raise TypeError("Missing 'resource_server_identifier' argument")
+        if resource_server_name is None and 'resourceServerName' in kwargs:
+            resource_server_name = kwargs['resourceServerName']
+
         _setter("name", name)
         _setter("resource_server_identifier", resource_server_identifier)
         if description is not None:
@@ -9469,7 +10345,55 @@ class TenantFlags(dict):
              require_pushed_authorization_requests: Optional[bool] = None,
              revoke_refresh_token_grant: Optional[bool] = None,
              use_scope_descriptions_for_consent: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_legacy_delegation_grant_types is None and 'allowLegacyDelegationGrantTypes' in kwargs:
+            allow_legacy_delegation_grant_types = kwargs['allowLegacyDelegationGrantTypes']
+        if allow_legacy_ro_grant_types is None and 'allowLegacyRoGrantTypes' in kwargs:
+            allow_legacy_ro_grant_types = kwargs['allowLegacyRoGrantTypes']
+        if allow_legacy_tokeninfo_endpoint is None and 'allowLegacyTokeninfoEndpoint' in kwargs:
+            allow_legacy_tokeninfo_endpoint = kwargs['allowLegacyTokeninfoEndpoint']
+        if dashboard_insights_view is None and 'dashboardInsightsView' in kwargs:
+            dashboard_insights_view = kwargs['dashboardInsightsView']
+        if dashboard_log_streams_next is None and 'dashboardLogStreamsNext' in kwargs:
+            dashboard_log_streams_next = kwargs['dashboardLogStreamsNext']
+        if disable_clickjack_protection_headers is None and 'disableClickjackProtectionHeaders' in kwargs:
+            disable_clickjack_protection_headers = kwargs['disableClickjackProtectionHeaders']
+        if disable_fields_map_fix is None and 'disableFieldsMapFix' in kwargs:
+            disable_fields_map_fix = kwargs['disableFieldsMapFix']
+        if disable_management_api_sms_obfuscation is None and 'disableManagementApiSmsObfuscation' in kwargs:
+            disable_management_api_sms_obfuscation = kwargs['disableManagementApiSmsObfuscation']
+        if enable_adfs_waad_email_verification is None and 'enableAdfsWaadEmailVerification' in kwargs:
+            enable_adfs_waad_email_verification = kwargs['enableAdfsWaadEmailVerification']
+        if enable_apis_section is None and 'enableApisSection' in kwargs:
+            enable_apis_section = kwargs['enableApisSection']
+        if enable_client_connections is None and 'enableClientConnections' in kwargs:
+            enable_client_connections = kwargs['enableClientConnections']
+        if enable_custom_domain_in_emails is None and 'enableCustomDomainInEmails' in kwargs:
+            enable_custom_domain_in_emails = kwargs['enableCustomDomainInEmails']
+        if enable_dynamic_client_registration is None and 'enableDynamicClientRegistration' in kwargs:
+            enable_dynamic_client_registration = kwargs['enableDynamicClientRegistration']
+        if enable_idtoken_api2 is None and 'enableIdtokenApi2' in kwargs:
+            enable_idtoken_api2 = kwargs['enableIdtokenApi2']
+        if enable_legacy_logs_search_v2 is None and 'enableLegacyLogsSearchV2' in kwargs:
+            enable_legacy_logs_search_v2 = kwargs['enableLegacyLogsSearchV2']
+        if enable_legacy_profile is None and 'enableLegacyProfile' in kwargs:
+            enable_legacy_profile = kwargs['enableLegacyProfile']
+        if enable_pipeline2 is None and 'enablePipeline2' in kwargs:
+            enable_pipeline2 = kwargs['enablePipeline2']
+        if enable_public_signup_user_exists_error is None and 'enablePublicSignupUserExistsError' in kwargs:
+            enable_public_signup_user_exists_error = kwargs['enablePublicSignupUserExistsError']
+        if mfa_show_factor_list_on_enrollment is None and 'mfaShowFactorListOnEnrollment' in kwargs:
+            mfa_show_factor_list_on_enrollment = kwargs['mfaShowFactorListOnEnrollment']
+        if no_disclose_enterprise_connections is None and 'noDiscloseEnterpriseConnections' in kwargs:
+            no_disclose_enterprise_connections = kwargs['noDiscloseEnterpriseConnections']
+        if require_pushed_authorization_requests is None and 'requirePushedAuthorizationRequests' in kwargs:
+            require_pushed_authorization_requests = kwargs['requirePushedAuthorizationRequests']
+        if revoke_refresh_token_grant is None and 'revokeRefreshTokenGrant' in kwargs:
+            revoke_refresh_token_grant = kwargs['revokeRefreshTokenGrant']
+        if use_scope_descriptions_for_consent is None and 'useScopeDescriptionsForConsent' in kwargs:
+            use_scope_descriptions_for_consent = kwargs['useScopeDescriptionsForConsent']
+
         if allow_legacy_delegation_grant_types is not None:
             _setter("allow_legacy_delegation_grant_types", allow_legacy_delegation_grant_types)
         if allow_legacy_ro_grant_types is not None:
@@ -9717,7 +10641,9 @@ class TenantSessionCookie(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              mode: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if mode is not None:
             _setter("mode", mode)
 
@@ -9761,8 +10687,14 @@ class TenantSessions(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             oidc_logout_prompt_enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             oidc_logout_prompt_enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if oidc_logout_prompt_enabled is None and 'oidcLogoutPromptEnabled' in kwargs:
+            oidc_logout_prompt_enabled = kwargs['oidcLogoutPromptEnabled']
+        if oidc_logout_prompt_enabled is None:
+            raise TypeError("Missing 'oidc_logout_prompt_enabled' argument")
+
         _setter("oidc_logout_prompt_enabled", oidc_logout_prompt_enabled)
 
     @property
@@ -9808,9 +10740,17 @@ class TriggerActionsAction(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: str,
-             id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             display_name: Optional[str] = None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+
         _setter("display_name", display_name)
         _setter("id", id)
 
@@ -9873,11 +10813,21 @@ class UserPermissionsPermission(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             resource_server_identifier: str,
+             name: Optional[str] = None,
+             resource_server_identifier: Optional[str] = None,
              description: Optional[str] = None,
              resource_server_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if resource_server_identifier is None and 'resourceServerIdentifier' in kwargs:
+            resource_server_identifier = kwargs['resourceServerIdentifier']
+        if resource_server_identifier is None:
+            raise TypeError("Missing 'resource_server_identifier' argument")
+        if resource_server_name is None and 'resourceServerName' in kwargs:
+            resource_server_name = kwargs['resourceServerName']
+
         _setter("name", name)
         _setter("resource_server_identifier", resource_server_identifier)
         if description is not None:
@@ -9937,12 +10887,28 @@ class GetAttackProtectionBreachedPasswordDetectionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             admin_notification_frequencies: Sequence[str],
-             enabled: bool,
-             method: str,
-             pre_user_registrations: Sequence['outputs.GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationResult'],
-             shields: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             admin_notification_frequencies: Optional[Sequence[str]] = None,
+             enabled: Optional[bool] = None,
+             method: Optional[str] = None,
+             pre_user_registrations: Optional[Sequence['outputs.GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationResult']] = None,
+             shields: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_notification_frequencies is None and 'adminNotificationFrequencies' in kwargs:
+            admin_notification_frequencies = kwargs['adminNotificationFrequencies']
+        if admin_notification_frequencies is None:
+            raise TypeError("Missing 'admin_notification_frequencies' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if pre_user_registrations is None and 'preUserRegistrations' in kwargs:
+            pre_user_registrations = kwargs['preUserRegistrations']
+        if pre_user_registrations is None:
+            raise TypeError("Missing 'pre_user_registrations' argument")
+        if shields is None:
+            raise TypeError("Missing 'shields' argument")
+
         _setter("admin_notification_frequencies", admin_notification_frequencies)
         _setter("enabled", enabled)
         _setter("method", method)
@@ -9986,8 +10952,12 @@ class GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationResult(dict
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             shields: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             shields: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if shields is None:
+            raise TypeError("Missing 'shields' argument")
+
         _setter("shields", shields)
 
     @property
@@ -10015,12 +10985,26 @@ class GetAttackProtectionBruteForceProtectionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowlists: Sequence[str],
-             enabled: bool,
-             max_attempts: int,
-             mode: str,
-             shields: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allowlists: Optional[Sequence[str]] = None,
+             enabled: Optional[bool] = None,
+             max_attempts: Optional[int] = None,
+             mode: Optional[str] = None,
+             shields: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowlists is None:
+            raise TypeError("Missing 'allowlists' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if max_attempts is None and 'maxAttempts' in kwargs:
+            max_attempts = kwargs['maxAttempts']
+        if max_attempts is None:
+            raise TypeError("Missing 'max_attempts' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if shields is None:
+            raise TypeError("Missing 'shields' argument")
+
         _setter("allowlists", allowlists)
         _setter("enabled", enabled)
         _setter("max_attempts", max_attempts)
@@ -10072,12 +11056,28 @@ class GetAttackProtectionSuspiciousIpThrottlingResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowlists: Sequence[str],
-             enabled: bool,
-             pre_logins: Sequence['outputs.GetAttackProtectionSuspiciousIpThrottlingPreLoginResult'],
-             pre_user_registrations: Sequence['outputs.GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationResult'],
-             shields: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allowlists: Optional[Sequence[str]] = None,
+             enabled: Optional[bool] = None,
+             pre_logins: Optional[Sequence['outputs.GetAttackProtectionSuspiciousIpThrottlingPreLoginResult']] = None,
+             pre_user_registrations: Optional[Sequence['outputs.GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationResult']] = None,
+             shields: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowlists is None:
+            raise TypeError("Missing 'allowlists' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if pre_logins is None and 'preLogins' in kwargs:
+            pre_logins = kwargs['preLogins']
+        if pre_logins is None:
+            raise TypeError("Missing 'pre_logins' argument")
+        if pre_user_registrations is None and 'preUserRegistrations' in kwargs:
+            pre_user_registrations = kwargs['preUserRegistrations']
+        if pre_user_registrations is None:
+            raise TypeError("Missing 'pre_user_registrations' argument")
+        if shields is None:
+            raise TypeError("Missing 'shields' argument")
+
         _setter("allowlists", allowlists)
         _setter("enabled", enabled)
         _setter("pre_logins", pre_logins)
@@ -10123,9 +11123,17 @@ class GetAttackProtectionSuspiciousIpThrottlingPreLoginResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_attempts: int,
-             rate: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             max_attempts: Optional[int] = None,
+             rate: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if max_attempts is None and 'maxAttempts' in kwargs:
+            max_attempts = kwargs['maxAttempts']
+        if max_attempts is None:
+            raise TypeError("Missing 'max_attempts' argument")
+        if rate is None:
+            raise TypeError("Missing 'rate' argument")
+
         _setter("max_attempts", max_attempts)
         _setter("rate", rate)
 
@@ -10153,9 +11161,17 @@ class GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_attempts: int,
-             rate: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             max_attempts: Optional[int] = None,
+             rate: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if max_attempts is None and 'maxAttempts' in kwargs:
+            max_attempts = kwargs['maxAttempts']
+        if max_attempts is None:
+            raise TypeError("Missing 'max_attempts' argument")
+        if rate is None:
+            raise TypeError("Missing 'rate' argument")
+
         _setter("max_attempts", max_attempts)
         _setter("rate", rate)
 
@@ -10183,9 +11199,17 @@ class GetBrandingColorResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             page_background: str,
-             primary: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             page_background: Optional[str] = None,
+             primary: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if page_background is None and 'pageBackground' in kwargs:
+            page_background = kwargs['pageBackground']
+        if page_background is None:
+            raise TypeError("Missing 'page_background' argument")
+        if primary is None:
+            raise TypeError("Missing 'primary' argument")
+
         _setter("page_background", page_background)
         _setter("primary", primary)
 
@@ -10211,8 +11235,12 @@ class GetBrandingFontResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("url", url)
 
     @property
@@ -10248,16 +11276,54 @@ class GetBrandingThemeBorderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             button_border_radius: float,
-             button_border_weight: float,
-             buttons_style: str,
-             input_border_radius: float,
-             input_border_weight: float,
-             inputs_style: str,
-             show_widget_shadow: bool,
-             widget_border_weight: float,
-             widget_corner_radius: float,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             button_border_radius: Optional[float] = None,
+             button_border_weight: Optional[float] = None,
+             buttons_style: Optional[str] = None,
+             input_border_radius: Optional[float] = None,
+             input_border_weight: Optional[float] = None,
+             inputs_style: Optional[str] = None,
+             show_widget_shadow: Optional[bool] = None,
+             widget_border_weight: Optional[float] = None,
+             widget_corner_radius: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if button_border_radius is None and 'buttonBorderRadius' in kwargs:
+            button_border_radius = kwargs['buttonBorderRadius']
+        if button_border_radius is None:
+            raise TypeError("Missing 'button_border_radius' argument")
+        if button_border_weight is None and 'buttonBorderWeight' in kwargs:
+            button_border_weight = kwargs['buttonBorderWeight']
+        if button_border_weight is None:
+            raise TypeError("Missing 'button_border_weight' argument")
+        if buttons_style is None and 'buttonsStyle' in kwargs:
+            buttons_style = kwargs['buttonsStyle']
+        if buttons_style is None:
+            raise TypeError("Missing 'buttons_style' argument")
+        if input_border_radius is None and 'inputBorderRadius' in kwargs:
+            input_border_radius = kwargs['inputBorderRadius']
+        if input_border_radius is None:
+            raise TypeError("Missing 'input_border_radius' argument")
+        if input_border_weight is None and 'inputBorderWeight' in kwargs:
+            input_border_weight = kwargs['inputBorderWeight']
+        if input_border_weight is None:
+            raise TypeError("Missing 'input_border_weight' argument")
+        if inputs_style is None and 'inputsStyle' in kwargs:
+            inputs_style = kwargs['inputsStyle']
+        if inputs_style is None:
+            raise TypeError("Missing 'inputs_style' argument")
+        if show_widget_shadow is None and 'showWidgetShadow' in kwargs:
+            show_widget_shadow = kwargs['showWidgetShadow']
+        if show_widget_shadow is None:
+            raise TypeError("Missing 'show_widget_shadow' argument")
+        if widget_border_weight is None and 'widgetBorderWeight' in kwargs:
+            widget_border_weight = kwargs['widgetBorderWeight']
+        if widget_border_weight is None:
+            raise TypeError("Missing 'widget_border_weight' argument")
+        if widget_corner_radius is None and 'widgetCornerRadius' in kwargs:
+            widget_corner_radius = kwargs['widgetCornerRadius']
+        if widget_corner_radius is None:
+            raise TypeError("Missing 'widget_corner_radius' argument")
+
         _setter("button_border_radius", button_border_radius)
         _setter("button_border_weight", button_border_weight)
         _setter("buttons_style", buttons_style)
@@ -10359,25 +11425,91 @@ class GetBrandingThemeColorResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             base_focus_color: str,
-             base_hover_color: str,
-             body_text: str,
-             error: str,
-             header: str,
-             icons: str,
-             input_background: str,
-             input_border: str,
-             input_filled_text: str,
-             input_labels_placeholders: str,
-             links_focused_components: str,
-             primary_button: str,
-             primary_button_label: str,
-             secondary_button_border: str,
-             secondary_button_label: str,
-             success: str,
-             widget_background: str,
-             widget_border: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             base_focus_color: Optional[str] = None,
+             base_hover_color: Optional[str] = None,
+             body_text: Optional[str] = None,
+             error: Optional[str] = None,
+             header: Optional[str] = None,
+             icons: Optional[str] = None,
+             input_background: Optional[str] = None,
+             input_border: Optional[str] = None,
+             input_filled_text: Optional[str] = None,
+             input_labels_placeholders: Optional[str] = None,
+             links_focused_components: Optional[str] = None,
+             primary_button: Optional[str] = None,
+             primary_button_label: Optional[str] = None,
+             secondary_button_border: Optional[str] = None,
+             secondary_button_label: Optional[str] = None,
+             success: Optional[str] = None,
+             widget_background: Optional[str] = None,
+             widget_border: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if base_focus_color is None and 'baseFocusColor' in kwargs:
+            base_focus_color = kwargs['baseFocusColor']
+        if base_focus_color is None:
+            raise TypeError("Missing 'base_focus_color' argument")
+        if base_hover_color is None and 'baseHoverColor' in kwargs:
+            base_hover_color = kwargs['baseHoverColor']
+        if base_hover_color is None:
+            raise TypeError("Missing 'base_hover_color' argument")
+        if body_text is None and 'bodyText' in kwargs:
+            body_text = kwargs['bodyText']
+        if body_text is None:
+            raise TypeError("Missing 'body_text' argument")
+        if error is None:
+            raise TypeError("Missing 'error' argument")
+        if header is None:
+            raise TypeError("Missing 'header' argument")
+        if icons is None:
+            raise TypeError("Missing 'icons' argument")
+        if input_background is None and 'inputBackground' in kwargs:
+            input_background = kwargs['inputBackground']
+        if input_background is None:
+            raise TypeError("Missing 'input_background' argument")
+        if input_border is None and 'inputBorder' in kwargs:
+            input_border = kwargs['inputBorder']
+        if input_border is None:
+            raise TypeError("Missing 'input_border' argument")
+        if input_filled_text is None and 'inputFilledText' in kwargs:
+            input_filled_text = kwargs['inputFilledText']
+        if input_filled_text is None:
+            raise TypeError("Missing 'input_filled_text' argument")
+        if input_labels_placeholders is None and 'inputLabelsPlaceholders' in kwargs:
+            input_labels_placeholders = kwargs['inputLabelsPlaceholders']
+        if input_labels_placeholders is None:
+            raise TypeError("Missing 'input_labels_placeholders' argument")
+        if links_focused_components is None and 'linksFocusedComponents' in kwargs:
+            links_focused_components = kwargs['linksFocusedComponents']
+        if links_focused_components is None:
+            raise TypeError("Missing 'links_focused_components' argument")
+        if primary_button is None and 'primaryButton' in kwargs:
+            primary_button = kwargs['primaryButton']
+        if primary_button is None:
+            raise TypeError("Missing 'primary_button' argument")
+        if primary_button_label is None and 'primaryButtonLabel' in kwargs:
+            primary_button_label = kwargs['primaryButtonLabel']
+        if primary_button_label is None:
+            raise TypeError("Missing 'primary_button_label' argument")
+        if secondary_button_border is None and 'secondaryButtonBorder' in kwargs:
+            secondary_button_border = kwargs['secondaryButtonBorder']
+        if secondary_button_border is None:
+            raise TypeError("Missing 'secondary_button_border' argument")
+        if secondary_button_label is None and 'secondaryButtonLabel' in kwargs:
+            secondary_button_label = kwargs['secondaryButtonLabel']
+        if secondary_button_label is None:
+            raise TypeError("Missing 'secondary_button_label' argument")
+        if success is None:
+            raise TypeError("Missing 'success' argument")
+        if widget_background is None and 'widgetBackground' in kwargs:
+            widget_background = kwargs['widgetBackground']
+        if widget_background is None:
+            raise TypeError("Missing 'widget_background' argument")
+        if widget_border is None and 'widgetBorder' in kwargs:
+            widget_border = kwargs['widgetBorder']
+        if widget_border is None:
+            raise TypeError("Missing 'widget_border' argument")
+
         _setter("base_focus_color", base_focus_color)
         _setter("base_hover_color", base_hover_color)
         _setter("body_text", body_text)
@@ -10515,16 +11647,48 @@ class GetBrandingThemeFontResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             body_texts: Sequence['outputs.GetBrandingThemeFontBodyTextResult'],
-             buttons_texts: Sequence['outputs.GetBrandingThemeFontButtonsTextResult'],
-             font_url: str,
-             input_labels: Sequence['outputs.GetBrandingThemeFontInputLabelResult'],
-             links: Sequence['outputs.GetBrandingThemeFontLinkResult'],
-             links_style: str,
-             reference_text_size: float,
-             subtitles: Sequence['outputs.GetBrandingThemeFontSubtitleResult'],
-             titles: Sequence['outputs.GetBrandingThemeFontTitleResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             body_texts: Optional[Sequence['outputs.GetBrandingThemeFontBodyTextResult']] = None,
+             buttons_texts: Optional[Sequence['outputs.GetBrandingThemeFontButtonsTextResult']] = None,
+             font_url: Optional[str] = None,
+             input_labels: Optional[Sequence['outputs.GetBrandingThemeFontInputLabelResult']] = None,
+             links: Optional[Sequence['outputs.GetBrandingThemeFontLinkResult']] = None,
+             links_style: Optional[str] = None,
+             reference_text_size: Optional[float] = None,
+             subtitles: Optional[Sequence['outputs.GetBrandingThemeFontSubtitleResult']] = None,
+             titles: Optional[Sequence['outputs.GetBrandingThemeFontTitleResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if body_texts is None and 'bodyTexts' in kwargs:
+            body_texts = kwargs['bodyTexts']
+        if body_texts is None:
+            raise TypeError("Missing 'body_texts' argument")
+        if buttons_texts is None and 'buttonsTexts' in kwargs:
+            buttons_texts = kwargs['buttonsTexts']
+        if buttons_texts is None:
+            raise TypeError("Missing 'buttons_texts' argument")
+        if font_url is None and 'fontUrl' in kwargs:
+            font_url = kwargs['fontUrl']
+        if font_url is None:
+            raise TypeError("Missing 'font_url' argument")
+        if input_labels is None and 'inputLabels' in kwargs:
+            input_labels = kwargs['inputLabels']
+        if input_labels is None:
+            raise TypeError("Missing 'input_labels' argument")
+        if links is None:
+            raise TypeError("Missing 'links' argument")
+        if links_style is None and 'linksStyle' in kwargs:
+            links_style = kwargs['linksStyle']
+        if links_style is None:
+            raise TypeError("Missing 'links_style' argument")
+        if reference_text_size is None and 'referenceTextSize' in kwargs:
+            reference_text_size = kwargs['referenceTextSize']
+        if reference_text_size is None:
+            raise TypeError("Missing 'reference_text_size' argument")
+        if subtitles is None:
+            raise TypeError("Missing 'subtitles' argument")
+        if titles is None:
+            raise TypeError("Missing 'titles' argument")
+
         _setter("body_texts", body_texts)
         _setter("buttons_texts", buttons_texts)
         _setter("font_url", font_url)
@@ -10594,9 +11758,15 @@ class GetBrandingThemeFontBodyTextResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bold: bool,
-             size: float,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bold: Optional[bool] = None,
+             size: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bold is None:
+            raise TypeError("Missing 'bold' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+
         _setter("bold", bold)
         _setter("size", size)
 
@@ -10624,9 +11794,15 @@ class GetBrandingThemeFontButtonsTextResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bold: bool,
-             size: float,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bold: Optional[bool] = None,
+             size: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bold is None:
+            raise TypeError("Missing 'bold' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+
         _setter("bold", bold)
         _setter("size", size)
 
@@ -10654,9 +11830,15 @@ class GetBrandingThemeFontInputLabelResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bold: bool,
-             size: float,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bold: Optional[bool] = None,
+             size: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bold is None:
+            raise TypeError("Missing 'bold' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+
         _setter("bold", bold)
         _setter("size", size)
 
@@ -10684,9 +11866,15 @@ class GetBrandingThemeFontLinkResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bold: bool,
-             size: float,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bold: Optional[bool] = None,
+             size: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bold is None:
+            raise TypeError("Missing 'bold' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+
         _setter("bold", bold)
         _setter("size", size)
 
@@ -10714,9 +11902,15 @@ class GetBrandingThemeFontSubtitleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bold: bool,
-             size: float,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bold: Optional[bool] = None,
+             size: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bold is None:
+            raise TypeError("Missing 'bold' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+
         _setter("bold", bold)
         _setter("size", size)
 
@@ -10744,9 +11938,15 @@ class GetBrandingThemeFontTitleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bold: bool,
-             size: float,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bold: Optional[bool] = None,
+             size: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bold is None:
+            raise TypeError("Missing 'bold' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+
         _setter("bold", bold)
         _setter("size", size)
 
@@ -10776,10 +11976,24 @@ class GetBrandingThemePageBackgroundResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             background_color: str,
-             background_image_url: str,
-             page_layout: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             background_color: Optional[str] = None,
+             background_image_url: Optional[str] = None,
+             page_layout: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if background_color is None and 'backgroundColor' in kwargs:
+            background_color = kwargs['backgroundColor']
+        if background_color is None:
+            raise TypeError("Missing 'background_color' argument")
+        if background_image_url is None and 'backgroundImageUrl' in kwargs:
+            background_image_url = kwargs['backgroundImageUrl']
+        if background_image_url is None:
+            raise TypeError("Missing 'background_image_url' argument")
+        if page_layout is None and 'pageLayout' in kwargs:
+            page_layout = kwargs['pageLayout']
+        if page_layout is None:
+            raise TypeError("Missing 'page_layout' argument")
+
         _setter("background_color", background_color)
         _setter("background_image_url", background_image_url)
         _setter("page_layout", page_layout)
@@ -10819,12 +12033,34 @@ class GetBrandingThemeWidgetResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_text_alignment: str,
-             logo_height: float,
-             logo_position: str,
-             logo_url: str,
-             social_buttons_layout: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_text_alignment: Optional[str] = None,
+             logo_height: Optional[float] = None,
+             logo_position: Optional[str] = None,
+             logo_url: Optional[str] = None,
+             social_buttons_layout: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if header_text_alignment is None and 'headerTextAlignment' in kwargs:
+            header_text_alignment = kwargs['headerTextAlignment']
+        if header_text_alignment is None:
+            raise TypeError("Missing 'header_text_alignment' argument")
+        if logo_height is None and 'logoHeight' in kwargs:
+            logo_height = kwargs['logoHeight']
+        if logo_height is None:
+            raise TypeError("Missing 'logo_height' argument")
+        if logo_position is None and 'logoPosition' in kwargs:
+            logo_position = kwargs['logoPosition']
+        if logo_position is None:
+            raise TypeError("Missing 'logo_position' argument")
+        if logo_url is None and 'logoUrl' in kwargs:
+            logo_url = kwargs['logoUrl']
+        if logo_url is None:
+            raise TypeError("Missing 'logo_url' argument")
+        if social_buttons_layout is None and 'socialButtonsLayout' in kwargs:
+            social_buttons_layout = kwargs['socialButtonsLayout']
+        if social_buttons_layout is None:
+            raise TypeError("Missing 'social_buttons_layout' argument")
+
         _setter("header_text_alignment", header_text_alignment)
         _setter("logo_height", logo_height)
         _setter("logo_position", logo_position)
@@ -10868,8 +12104,12 @@ class GetBrandingUniversalLoginResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             body: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             body: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if body is None:
+            raise TypeError("Missing 'body' argument")
+
         _setter("body", body)
 
     @property
@@ -10945,36 +12185,108 @@ class GetClientAddonResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aws: Sequence['outputs.GetClientAddonAwResult'],
-             azure_blobs: Sequence['outputs.GetClientAddonAzureBlobResult'],
-             azure_sbs: Sequence['outputs.GetClientAddonAzureSbResult'],
-             boxes: Sequence['outputs.GetClientAddonBoxResult'],
-             cloudbees: Sequence['outputs.GetClientAddonCloudbeeResult'],
-             concurs: Sequence['outputs.GetClientAddonConcurResult'],
-             dropboxes: Sequence['outputs.GetClientAddonDropboxResult'],
-             echosigns: Sequence['outputs.GetClientAddonEchosignResult'],
-             egnytes: Sequence['outputs.GetClientAddonEgnyteResult'],
-             firebases: Sequence['outputs.GetClientAddonFirebaseResult'],
-             layers: Sequence['outputs.GetClientAddonLayerResult'],
-             mscrms: Sequence['outputs.GetClientAddonMscrmResult'],
-             newrelics: Sequence['outputs.GetClientAddonNewrelicResult'],
-             office365s: Sequence['outputs.GetClientAddonOffice365Result'],
-             rms: Sequence['outputs.GetClientAddonRmResult'],
-             salesforce_apis: Sequence['outputs.GetClientAddonSalesforceApiResult'],
-             salesforce_sandbox_apis: Sequence['outputs.GetClientAddonSalesforceSandboxApiResult'],
-             salesforces: Sequence['outputs.GetClientAddonSalesforceResult'],
-             samlps: Sequence['outputs.GetClientAddonSamlpResult'],
-             sap_apis: Sequence['outputs.GetClientAddonSapApiResult'],
-             sentries: Sequence['outputs.GetClientAddonSentryResult'],
-             sharepoints: Sequence['outputs.GetClientAddonSharepointResult'],
-             slacks: Sequence['outputs.GetClientAddonSlackResult'],
-             springcms: Sequence['outputs.GetClientAddonSpringcmResult'],
-             sso_integrations: Sequence['outputs.GetClientAddonSsoIntegrationResult'],
-             wams: Sequence['outputs.GetClientAddonWamResult'],
-             wsfeds: Sequence['outputs.GetClientAddonWsfedResult'],
-             zendesks: Sequence['outputs.GetClientAddonZendeskResult'],
-             zooms: Sequence['outputs.GetClientAddonZoomResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             aws: Optional[Sequence['outputs.GetClientAddonAwResult']] = None,
+             azure_blobs: Optional[Sequence['outputs.GetClientAddonAzureBlobResult']] = None,
+             azure_sbs: Optional[Sequence['outputs.GetClientAddonAzureSbResult']] = None,
+             boxes: Optional[Sequence['outputs.GetClientAddonBoxResult']] = None,
+             cloudbees: Optional[Sequence['outputs.GetClientAddonCloudbeeResult']] = None,
+             concurs: Optional[Sequence['outputs.GetClientAddonConcurResult']] = None,
+             dropboxes: Optional[Sequence['outputs.GetClientAddonDropboxResult']] = None,
+             echosigns: Optional[Sequence['outputs.GetClientAddonEchosignResult']] = None,
+             egnytes: Optional[Sequence['outputs.GetClientAddonEgnyteResult']] = None,
+             firebases: Optional[Sequence['outputs.GetClientAddonFirebaseResult']] = None,
+             layers: Optional[Sequence['outputs.GetClientAddonLayerResult']] = None,
+             mscrms: Optional[Sequence['outputs.GetClientAddonMscrmResult']] = None,
+             newrelics: Optional[Sequence['outputs.GetClientAddonNewrelicResult']] = None,
+             office365s: Optional[Sequence['outputs.GetClientAddonOffice365Result']] = None,
+             rms: Optional[Sequence['outputs.GetClientAddonRmResult']] = None,
+             salesforce_apis: Optional[Sequence['outputs.GetClientAddonSalesforceApiResult']] = None,
+             salesforce_sandbox_apis: Optional[Sequence['outputs.GetClientAddonSalesforceSandboxApiResult']] = None,
+             salesforces: Optional[Sequence['outputs.GetClientAddonSalesforceResult']] = None,
+             samlps: Optional[Sequence['outputs.GetClientAddonSamlpResult']] = None,
+             sap_apis: Optional[Sequence['outputs.GetClientAddonSapApiResult']] = None,
+             sentries: Optional[Sequence['outputs.GetClientAddonSentryResult']] = None,
+             sharepoints: Optional[Sequence['outputs.GetClientAddonSharepointResult']] = None,
+             slacks: Optional[Sequence['outputs.GetClientAddonSlackResult']] = None,
+             springcms: Optional[Sequence['outputs.GetClientAddonSpringcmResult']] = None,
+             sso_integrations: Optional[Sequence['outputs.GetClientAddonSsoIntegrationResult']] = None,
+             wams: Optional[Sequence['outputs.GetClientAddonWamResult']] = None,
+             wsfeds: Optional[Sequence['outputs.GetClientAddonWsfedResult']] = None,
+             zendesks: Optional[Sequence['outputs.GetClientAddonZendeskResult']] = None,
+             zooms: Optional[Sequence['outputs.GetClientAddonZoomResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if aws is None:
+            raise TypeError("Missing 'aws' argument")
+        if azure_blobs is None and 'azureBlobs' in kwargs:
+            azure_blobs = kwargs['azureBlobs']
+        if azure_blobs is None:
+            raise TypeError("Missing 'azure_blobs' argument")
+        if azure_sbs is None and 'azureSbs' in kwargs:
+            azure_sbs = kwargs['azureSbs']
+        if azure_sbs is None:
+            raise TypeError("Missing 'azure_sbs' argument")
+        if boxes is None:
+            raise TypeError("Missing 'boxes' argument")
+        if cloudbees is None:
+            raise TypeError("Missing 'cloudbees' argument")
+        if concurs is None:
+            raise TypeError("Missing 'concurs' argument")
+        if dropboxes is None:
+            raise TypeError("Missing 'dropboxes' argument")
+        if echosigns is None:
+            raise TypeError("Missing 'echosigns' argument")
+        if egnytes is None:
+            raise TypeError("Missing 'egnytes' argument")
+        if firebases is None:
+            raise TypeError("Missing 'firebases' argument")
+        if layers is None:
+            raise TypeError("Missing 'layers' argument")
+        if mscrms is None:
+            raise TypeError("Missing 'mscrms' argument")
+        if newrelics is None:
+            raise TypeError("Missing 'newrelics' argument")
+        if office365s is None:
+            raise TypeError("Missing 'office365s' argument")
+        if rms is None:
+            raise TypeError("Missing 'rms' argument")
+        if salesforce_apis is None and 'salesforceApis' in kwargs:
+            salesforce_apis = kwargs['salesforceApis']
+        if salesforce_apis is None:
+            raise TypeError("Missing 'salesforce_apis' argument")
+        if salesforce_sandbox_apis is None and 'salesforceSandboxApis' in kwargs:
+            salesforce_sandbox_apis = kwargs['salesforceSandboxApis']
+        if salesforce_sandbox_apis is None:
+            raise TypeError("Missing 'salesforce_sandbox_apis' argument")
+        if salesforces is None:
+            raise TypeError("Missing 'salesforces' argument")
+        if samlps is None:
+            raise TypeError("Missing 'samlps' argument")
+        if sap_apis is None and 'sapApis' in kwargs:
+            sap_apis = kwargs['sapApis']
+        if sap_apis is None:
+            raise TypeError("Missing 'sap_apis' argument")
+        if sentries is None:
+            raise TypeError("Missing 'sentries' argument")
+        if sharepoints is None:
+            raise TypeError("Missing 'sharepoints' argument")
+        if slacks is None:
+            raise TypeError("Missing 'slacks' argument")
+        if springcms is None:
+            raise TypeError("Missing 'springcms' argument")
+        if sso_integrations is None and 'ssoIntegrations' in kwargs:
+            sso_integrations = kwargs['ssoIntegrations']
+        if sso_integrations is None:
+            raise TypeError("Missing 'sso_integrations' argument")
+        if wams is None:
+            raise TypeError("Missing 'wams' argument")
+        if wsfeds is None:
+            raise TypeError("Missing 'wsfeds' argument")
+        if zendesks is None:
+            raise TypeError("Missing 'zendesks' argument")
+        if zooms is None:
+            raise TypeError("Missing 'zooms' argument")
+
         _setter("aws", aws)
         _setter("azure_blobs", azure_blobs)
         _setter("azure_sbs", azure_sbs)
@@ -11166,10 +12478,20 @@ class GetClientAddonAwResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lifetime_in_seconds: int,
-             principal: str,
-             role: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             lifetime_in_seconds: Optional[int] = None,
+             principal: Optional[str] = None,
+             role: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if lifetime_in_seconds is None and 'lifetimeInSeconds' in kwargs:
+            lifetime_in_seconds = kwargs['lifetimeInSeconds']
+        if lifetime_in_seconds is None:
+            raise TypeError("Missing 'lifetime_in_seconds' argument")
+        if principal is None:
+            raise TypeError("Missing 'principal' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("lifetime_in_seconds", lifetime_in_seconds)
         _setter("principal", principal)
         _setter("role", role)
@@ -11225,20 +12547,72 @@ class GetClientAddonAzureBlobResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: str,
-             blob_delete: bool,
-             blob_name: str,
-             blob_read: bool,
-             blob_write: bool,
-             container_delete: bool,
-             container_list: bool,
-             container_name: str,
-             container_read: bool,
-             container_write: bool,
-             expiration: int,
-             signed_identifier: str,
-             storage_access_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             account_name: Optional[str] = None,
+             blob_delete: Optional[bool] = None,
+             blob_name: Optional[str] = None,
+             blob_read: Optional[bool] = None,
+             blob_write: Optional[bool] = None,
+             container_delete: Optional[bool] = None,
+             container_list: Optional[bool] = None,
+             container_name: Optional[str] = None,
+             container_read: Optional[bool] = None,
+             container_write: Optional[bool] = None,
+             expiration: Optional[int] = None,
+             signed_identifier: Optional[str] = None,
+             storage_access_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account_name is None and 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if blob_delete is None and 'blobDelete' in kwargs:
+            blob_delete = kwargs['blobDelete']
+        if blob_delete is None:
+            raise TypeError("Missing 'blob_delete' argument")
+        if blob_name is None and 'blobName' in kwargs:
+            blob_name = kwargs['blobName']
+        if blob_name is None:
+            raise TypeError("Missing 'blob_name' argument")
+        if blob_read is None and 'blobRead' in kwargs:
+            blob_read = kwargs['blobRead']
+        if blob_read is None:
+            raise TypeError("Missing 'blob_read' argument")
+        if blob_write is None and 'blobWrite' in kwargs:
+            blob_write = kwargs['blobWrite']
+        if blob_write is None:
+            raise TypeError("Missing 'blob_write' argument")
+        if container_delete is None and 'containerDelete' in kwargs:
+            container_delete = kwargs['containerDelete']
+        if container_delete is None:
+            raise TypeError("Missing 'container_delete' argument")
+        if container_list is None and 'containerList' in kwargs:
+            container_list = kwargs['containerList']
+        if container_list is None:
+            raise TypeError("Missing 'container_list' argument")
+        if container_name is None and 'containerName' in kwargs:
+            container_name = kwargs['containerName']
+        if container_name is None:
+            raise TypeError("Missing 'container_name' argument")
+        if container_read is None and 'containerRead' in kwargs:
+            container_read = kwargs['containerRead']
+        if container_read is None:
+            raise TypeError("Missing 'container_read' argument")
+        if container_write is None and 'containerWrite' in kwargs:
+            container_write = kwargs['containerWrite']
+        if container_write is None:
+            raise TypeError("Missing 'container_write' argument")
+        if expiration is None:
+            raise TypeError("Missing 'expiration' argument")
+        if signed_identifier is None and 'signedIdentifier' in kwargs:
+            signed_identifier = kwargs['signedIdentifier']
+        if signed_identifier is None:
+            raise TypeError("Missing 'signed_identifier' argument")
+        if storage_access_key is None and 'storageAccessKey' in kwargs:
+            storage_access_key = kwargs['storageAccessKey']
+        if storage_access_key is None:
+            raise TypeError("Missing 'storage_access_key' argument")
+
         _setter("account_name", account_name)
         _setter("blob_delete", blob_delete)
         _setter("blob_name", blob_name)
@@ -11338,12 +12712,30 @@ class GetClientAddonAzureSbResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_path: str,
-             expiration: int,
-             namespace: str,
-             sas_key: str,
-             sas_key_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             entity_path: Optional[str] = None,
+             expiration: Optional[int] = None,
+             namespace: Optional[str] = None,
+             sas_key: Optional[str] = None,
+             sas_key_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_path is None and 'entityPath' in kwargs:
+            entity_path = kwargs['entityPath']
+        if entity_path is None:
+            raise TypeError("Missing 'entity_path' argument")
+        if expiration is None:
+            raise TypeError("Missing 'expiration' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if sas_key is None and 'sasKey' in kwargs:
+            sas_key = kwargs['sasKey']
+        if sas_key is None:
+            raise TypeError("Missing 'sas_key' argument")
+        if sas_key_name is None and 'sasKeyName' in kwargs:
+            sas_key_name = kwargs['sasKeyName']
+        if sas_key_name is None:
+            raise TypeError("Missing 'sas_key_name' argument")
+
         _setter("entity_path", entity_path)
         _setter("expiration", expiration)
         _setter("namespace", namespace)
@@ -11383,8 +12775,10 @@ class GetClientAddonBoxResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -11394,8 +12788,10 @@ class GetClientAddonCloudbeeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -11405,8 +12801,10 @@ class GetClientAddonConcurResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -11416,8 +12814,10 @@ class GetClientAddonDropboxResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -11431,8 +12831,12 @@ class GetClientAddonEchosignResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             domain: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+
         _setter("domain", domain)
 
     @property
@@ -11452,8 +12856,12 @@ class GetClientAddonEgnyteResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             domain: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+
         _setter("domain", domain)
 
     @property
@@ -11481,12 +12889,32 @@ class GetClientAddonFirebaseResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_email: str,
-             lifetime_in_seconds: int,
-             private_key: str,
-             private_key_id: str,
-             secret: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             client_email: Optional[str] = None,
+             lifetime_in_seconds: Optional[int] = None,
+             private_key: Optional[str] = None,
+             private_key_id: Optional[str] = None,
+             secret: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_email is None and 'clientEmail' in kwargs:
+            client_email = kwargs['clientEmail']
+        if client_email is None:
+            raise TypeError("Missing 'client_email' argument")
+        if lifetime_in_seconds is None and 'lifetimeInSeconds' in kwargs:
+            lifetime_in_seconds = kwargs['lifetimeInSeconds']
+        if lifetime_in_seconds is None:
+            raise TypeError("Missing 'lifetime_in_seconds' argument")
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key is None:
+            raise TypeError("Missing 'private_key' argument")
+        if private_key_id is None and 'privateKeyId' in kwargs:
+            private_key_id = kwargs['privateKeyId']
+        if private_key_id is None:
+            raise TypeError("Missing 'private_key_id' argument")
+        if secret is None:
+            raise TypeError("Missing 'secret' argument")
+
         _setter("client_email", client_email)
         _setter("lifetime_in_seconds", lifetime_in_seconds)
         _setter("private_key", private_key)
@@ -11538,12 +12966,30 @@ class GetClientAddonLayerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expiration: int,
-             key_id: str,
-             principal: str,
-             private_key: str,
-             provider_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             expiration: Optional[int] = None,
+             key_id: Optional[str] = None,
+             principal: Optional[str] = None,
+             private_key: Optional[str] = None,
+             provider_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expiration is None:
+            raise TypeError("Missing 'expiration' argument")
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if key_id is None:
+            raise TypeError("Missing 'key_id' argument")
+        if principal is None:
+            raise TypeError("Missing 'principal' argument")
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key is None:
+            raise TypeError("Missing 'private_key' argument")
+        if provider_id is None and 'providerId' in kwargs:
+            provider_id = kwargs['providerId']
+        if provider_id is None:
+            raise TypeError("Missing 'provider_id' argument")
+
         _setter("expiration", expiration)
         _setter("key_id", key_id)
         _setter("principal", principal)
@@ -11587,8 +13033,12 @@ class GetClientAddonMscrmResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("url", url)
 
     @property
@@ -11608,8 +13058,12 @@ class GetClientAddonNewrelicResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             account: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account is None:
+            raise TypeError("Missing 'account' argument")
+
         _setter("account", account)
 
     @property
@@ -11631,9 +13085,15 @@ class GetClientAddonOffice365Result(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection: str,
-             domain: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             connection: Optional[str] = None,
+             domain: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if connection is None:
+            raise TypeError("Missing 'connection' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+
         _setter("connection", connection)
         _setter("domain", domain)
 
@@ -11659,8 +13119,12 @@ class GetClientAddonRmResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("url", url)
 
     @property
@@ -11680,8 +13144,14 @@ class GetClientAddonSalesforceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             entity_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_id is None and 'entityId' in kwargs:
+            entity_id = kwargs['entityId']
+        if entity_id is None:
+            raise TypeError("Missing 'entity_id' argument")
+
         _setter("entity_id", entity_id)
 
     @property
@@ -11707,11 +13177,27 @@ class GetClientAddonSalesforceApiResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_id: str,
-             community_name: str,
-             community_url_section: str,
-             principal: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             client_id: Optional[str] = None,
+             community_name: Optional[str] = None,
+             community_url_section: Optional[str] = None,
+             principal: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if community_name is None and 'communityName' in kwargs:
+            community_name = kwargs['communityName']
+        if community_name is None:
+            raise TypeError("Missing 'community_name' argument")
+        if community_url_section is None and 'communityUrlSection' in kwargs:
+            community_url_section = kwargs['communityUrlSection']
+        if community_url_section is None:
+            raise TypeError("Missing 'community_url_section' argument")
+        if principal is None:
+            raise TypeError("Missing 'principal' argument")
+
         _setter("client_id", client_id)
         _setter("community_name", community_name)
         _setter("community_url_section", community_url_section)
@@ -11755,11 +13241,27 @@ class GetClientAddonSalesforceSandboxApiResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_id: str,
-             community_name: str,
-             community_url_section: str,
-             principal: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             client_id: Optional[str] = None,
+             community_name: Optional[str] = None,
+             community_url_section: Optional[str] = None,
+             principal: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if community_name is None and 'communityName' in kwargs:
+            community_name = kwargs['communityName']
+        if community_name is None:
+            raise TypeError("Missing 'community_name' argument")
+        if community_url_section is None and 'communityUrlSection' in kwargs:
+            community_url_section = kwargs['communityUrlSection']
+        if community_url_section is None:
+            raise TypeError("Missing 'community_url_section' argument")
+        if principal is None:
+            raise TypeError("Missing 'principal' argument")
+
         _setter("client_id", client_id)
         _setter("community_name", community_name)
         _setter("community_url_section", community_url_section)
@@ -11837,28 +13339,100 @@ class GetClientAddonSamlpResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             audience: str,
-             authn_context_class_ref: str,
-             binding: str,
-             create_upn_claim: bool,
-             destination: str,
-             digest_algorithm: str,
-             include_attribute_name_format: bool,
-             issuer: str,
-             lifetime_in_seconds: int,
-             logouts: Sequence['outputs.GetClientAddonSamlpLogoutResult'],
-             map_identities: bool,
-             map_unknown_claims_as_is: bool,
-             mappings: Mapping[str, Any],
-             name_identifier_format: str,
-             name_identifier_probes: Sequence[str],
-             passthrough_claims_with_no_mapping: bool,
-             recipient: str,
-             sign_response: bool,
-             signature_algorithm: str,
-             signing_cert: str,
-             typed_attributes: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             audience: Optional[str] = None,
+             authn_context_class_ref: Optional[str] = None,
+             binding: Optional[str] = None,
+             create_upn_claim: Optional[bool] = None,
+             destination: Optional[str] = None,
+             digest_algorithm: Optional[str] = None,
+             include_attribute_name_format: Optional[bool] = None,
+             issuer: Optional[str] = None,
+             lifetime_in_seconds: Optional[int] = None,
+             logouts: Optional[Sequence['outputs.GetClientAddonSamlpLogoutResult']] = None,
+             map_identities: Optional[bool] = None,
+             map_unknown_claims_as_is: Optional[bool] = None,
+             mappings: Optional[Mapping[str, Any]] = None,
+             name_identifier_format: Optional[str] = None,
+             name_identifier_probes: Optional[Sequence[str]] = None,
+             passthrough_claims_with_no_mapping: Optional[bool] = None,
+             recipient: Optional[str] = None,
+             sign_response: Optional[bool] = None,
+             signature_algorithm: Optional[str] = None,
+             signing_cert: Optional[str] = None,
+             typed_attributes: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if audience is None:
+            raise TypeError("Missing 'audience' argument")
+        if authn_context_class_ref is None and 'authnContextClassRef' in kwargs:
+            authn_context_class_ref = kwargs['authnContextClassRef']
+        if authn_context_class_ref is None:
+            raise TypeError("Missing 'authn_context_class_ref' argument")
+        if binding is None:
+            raise TypeError("Missing 'binding' argument")
+        if create_upn_claim is None and 'createUpnClaim' in kwargs:
+            create_upn_claim = kwargs['createUpnClaim']
+        if create_upn_claim is None:
+            raise TypeError("Missing 'create_upn_claim' argument")
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+        if digest_algorithm is None and 'digestAlgorithm' in kwargs:
+            digest_algorithm = kwargs['digestAlgorithm']
+        if digest_algorithm is None:
+            raise TypeError("Missing 'digest_algorithm' argument")
+        if include_attribute_name_format is None and 'includeAttributeNameFormat' in kwargs:
+            include_attribute_name_format = kwargs['includeAttributeNameFormat']
+        if include_attribute_name_format is None:
+            raise TypeError("Missing 'include_attribute_name_format' argument")
+        if issuer is None:
+            raise TypeError("Missing 'issuer' argument")
+        if lifetime_in_seconds is None and 'lifetimeInSeconds' in kwargs:
+            lifetime_in_seconds = kwargs['lifetimeInSeconds']
+        if lifetime_in_seconds is None:
+            raise TypeError("Missing 'lifetime_in_seconds' argument")
+        if logouts is None:
+            raise TypeError("Missing 'logouts' argument")
+        if map_identities is None and 'mapIdentities' in kwargs:
+            map_identities = kwargs['mapIdentities']
+        if map_identities is None:
+            raise TypeError("Missing 'map_identities' argument")
+        if map_unknown_claims_as_is is None and 'mapUnknownClaimsAsIs' in kwargs:
+            map_unknown_claims_as_is = kwargs['mapUnknownClaimsAsIs']
+        if map_unknown_claims_as_is is None:
+            raise TypeError("Missing 'map_unknown_claims_as_is' argument")
+        if mappings is None:
+            raise TypeError("Missing 'mappings' argument")
+        if name_identifier_format is None and 'nameIdentifierFormat' in kwargs:
+            name_identifier_format = kwargs['nameIdentifierFormat']
+        if name_identifier_format is None:
+            raise TypeError("Missing 'name_identifier_format' argument")
+        if name_identifier_probes is None and 'nameIdentifierProbes' in kwargs:
+            name_identifier_probes = kwargs['nameIdentifierProbes']
+        if name_identifier_probes is None:
+            raise TypeError("Missing 'name_identifier_probes' argument")
+        if passthrough_claims_with_no_mapping is None and 'passthroughClaimsWithNoMapping' in kwargs:
+            passthrough_claims_with_no_mapping = kwargs['passthroughClaimsWithNoMapping']
+        if passthrough_claims_with_no_mapping is None:
+            raise TypeError("Missing 'passthrough_claims_with_no_mapping' argument")
+        if recipient is None:
+            raise TypeError("Missing 'recipient' argument")
+        if sign_response is None and 'signResponse' in kwargs:
+            sign_response = kwargs['signResponse']
+        if sign_response is None:
+            raise TypeError("Missing 'sign_response' argument")
+        if signature_algorithm is None and 'signatureAlgorithm' in kwargs:
+            signature_algorithm = kwargs['signatureAlgorithm']
+        if signature_algorithm is None:
+            raise TypeError("Missing 'signature_algorithm' argument")
+        if signing_cert is None and 'signingCert' in kwargs:
+            signing_cert = kwargs['signingCert']
+        if signing_cert is None:
+            raise TypeError("Missing 'signing_cert' argument")
+        if typed_attributes is None and 'typedAttributes' in kwargs:
+            typed_attributes = kwargs['typedAttributes']
+        if typed_attributes is None:
+            raise TypeError("Missing 'typed_attributes' argument")
+
         _setter("audience", audience)
         _setter("authn_context_class_ref", authn_context_class_ref)
         _setter("binding", binding)
@@ -12000,9 +13574,17 @@ class GetClientAddonSamlpLogoutResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             callback: str,
-             slo_enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             callback: Optional[str] = None,
+             slo_enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if callback is None:
+            raise TypeError("Missing 'callback' argument")
+        if slo_enabled is None and 'sloEnabled' in kwargs:
+            slo_enabled = kwargs['sloEnabled']
+        if slo_enabled is None:
+            raise TypeError("Missing 'slo_enabled' argument")
+
         _setter("callback", callback)
         _setter("slo_enabled", slo_enabled)
 
@@ -12038,13 +13620,37 @@ class GetClientAddonSapApiResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_id: str,
-             name_identifier_format: str,
-             scope: str,
-             service_password: str,
-             token_endpoint_url: str,
-             username_attribute: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             client_id: Optional[str] = None,
+             name_identifier_format: Optional[str] = None,
+             scope: Optional[str] = None,
+             service_password: Optional[str] = None,
+             token_endpoint_url: Optional[str] = None,
+             username_attribute: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if name_identifier_format is None and 'nameIdentifierFormat' in kwargs:
+            name_identifier_format = kwargs['nameIdentifierFormat']
+        if name_identifier_format is None:
+            raise TypeError("Missing 'name_identifier_format' argument")
+        if scope is None:
+            raise TypeError("Missing 'scope' argument")
+        if service_password is None and 'servicePassword' in kwargs:
+            service_password = kwargs['servicePassword']
+        if service_password is None:
+            raise TypeError("Missing 'service_password' argument")
+        if token_endpoint_url is None and 'tokenEndpointUrl' in kwargs:
+            token_endpoint_url = kwargs['tokenEndpointUrl']
+        if token_endpoint_url is None:
+            raise TypeError("Missing 'token_endpoint_url' argument")
+        if username_attribute is None and 'usernameAttribute' in kwargs:
+            username_attribute = kwargs['usernameAttribute']
+        if username_attribute is None:
+            raise TypeError("Missing 'username_attribute' argument")
+
         _setter("client_id", client_id)
         _setter("name_identifier_format", name_identifier_format)
         _setter("scope", scope)
@@ -12096,9 +13702,19 @@ class GetClientAddonSentryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             base_url: str,
-             org_slug: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             base_url: Optional[str] = None,
+             org_slug: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if base_url is None and 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+        if base_url is None:
+            raise TypeError("Missing 'base_url' argument")
+        if org_slug is None and 'orgSlug' in kwargs:
+            org_slug = kwargs['orgSlug']
+        if org_slug is None:
+            raise TypeError("Missing 'org_slug' argument")
+
         _setter("base_url", base_url)
         _setter("org_slug", org_slug)
 
@@ -12126,9 +13742,17 @@ class GetClientAddonSharepointResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             external_urls: Sequence[str],
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             external_urls: Optional[Sequence[str]] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if external_urls is None and 'externalUrls' in kwargs:
+            external_urls = kwargs['externalUrls']
+        if external_urls is None:
+            raise TypeError("Missing 'external_urls' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("external_urls", external_urls)
         _setter("url", url)
 
@@ -12154,8 +13778,12 @@ class GetClientAddonSlackResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             team: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             team: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if team is None:
+            raise TypeError("Missing 'team' argument")
+
         _setter("team", team)
 
     @property
@@ -12175,8 +13803,14 @@ class GetClientAddonSpringcmResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acs_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             acs_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if acs_url is None and 'acsUrl' in kwargs:
+            acs_url = kwargs['acsUrl']
+        if acs_url is None:
+            raise TypeError("Missing 'acs_url' argument")
+
         _setter("acs_url", acs_url)
 
     @property
@@ -12198,9 +13832,15 @@ class GetClientAddonSsoIntegrationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("name", name)
         _setter("version", version)
 
@@ -12226,8 +13866,14 @@ class GetClientAddonWamResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             master_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             master_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if master_key is None and 'masterKey' in kwargs:
+            master_key = kwargs['masterKey']
+        if master_key is None:
+            raise TypeError("Missing 'master_key' argument")
+
         _setter("master_key", master_key)
 
     @property
@@ -12243,8 +13889,10 @@ class GetClientAddonWsfedResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.output_type
@@ -12258,8 +13906,14 @@ class GetClientAddonZendeskResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             account_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account_name is None and 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+
         _setter("account_name", account_name)
 
     @property
@@ -12279,8 +13933,12 @@ class GetClientAddonZoomResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             account: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account is None:
+            raise TypeError("Missing 'account' argument")
+
         _setter("account", account)
 
     @property
@@ -12306,11 +13964,25 @@ class GetClientJwtConfigurationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alg: str,
-             lifetime_in_seconds: int,
-             scopes: Mapping[str, str],
-             secret_encoded: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             alg: Optional[str] = None,
+             lifetime_in_seconds: Optional[int] = None,
+             scopes: Optional[Mapping[str, str]] = None,
+             secret_encoded: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alg is None:
+            raise TypeError("Missing 'alg' argument")
+        if lifetime_in_seconds is None and 'lifetimeInSeconds' in kwargs:
+            lifetime_in_seconds = kwargs['lifetimeInSeconds']
+        if lifetime_in_seconds is None:
+            raise TypeError("Missing 'lifetime_in_seconds' argument")
+        if scopes is None:
+            raise TypeError("Missing 'scopes' argument")
+        if secret_encoded is None and 'secretEncoded' in kwargs:
+            secret_encoded = kwargs['secretEncoded']
+        if secret_encoded is None:
+            raise TypeError("Missing 'secret_encoded' argument")
+
         _setter("alg", alg)
         _setter("lifetime_in_seconds", lifetime_in_seconds)
         _setter("scopes", scopes)
@@ -12350,9 +14022,15 @@ class GetClientMobileResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             androids: Sequence['outputs.GetClientMobileAndroidResult'],
-             ios: Sequence['outputs.GetClientMobileIoResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             androids: Optional[Sequence['outputs.GetClientMobileAndroidResult']] = None,
+             ios: Optional[Sequence['outputs.GetClientMobileIoResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if androids is None:
+            raise TypeError("Missing 'androids' argument")
+        if ios is None:
+            raise TypeError("Missing 'ios' argument")
+
         _setter("androids", androids)
         _setter("ios", ios)
 
@@ -12380,9 +14058,19 @@ class GetClientMobileAndroidResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_package_name: str,
-             sha256_cert_fingerprints: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             app_package_name: Optional[str] = None,
+             sha256_cert_fingerprints: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_package_name is None and 'appPackageName' in kwargs:
+            app_package_name = kwargs['appPackageName']
+        if app_package_name is None:
+            raise TypeError("Missing 'app_package_name' argument")
+        if sha256_cert_fingerprints is None and 'sha256CertFingerprints' in kwargs:
+            sha256_cert_fingerprints = kwargs['sha256CertFingerprints']
+        if sha256_cert_fingerprints is None:
+            raise TypeError("Missing 'sha256_cert_fingerprints' argument")
+
         _setter("app_package_name", app_package_name)
         _setter("sha256_cert_fingerprints", sha256_cert_fingerprints)
 
@@ -12410,9 +14098,19 @@ class GetClientMobileIoResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_bundle_identifier: str,
-             team_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             app_bundle_identifier: Optional[str] = None,
+             team_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_bundle_identifier is None and 'appBundleIdentifier' in kwargs:
+            app_bundle_identifier = kwargs['appBundleIdentifier']
+        if app_bundle_identifier is None:
+            raise TypeError("Missing 'app_bundle_identifier' argument")
+        if team_id is None and 'teamId' in kwargs:
+            team_id = kwargs['teamId']
+        if team_id is None:
+            raise TypeError("Missing 'team_id' argument")
+
         _setter("app_bundle_identifier", app_bundle_identifier)
         _setter("team_id", team_id)
 
@@ -12440,9 +14138,15 @@ class GetClientNativeSocialLoginResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             apples: Sequence['outputs.GetClientNativeSocialLoginAppleResult'],
-             facebooks: Sequence['outputs.GetClientNativeSocialLoginFacebookResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             apples: Optional[Sequence['outputs.GetClientNativeSocialLoginAppleResult']] = None,
+             facebooks: Optional[Sequence['outputs.GetClientNativeSocialLoginFacebookResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if apples is None:
+            raise TypeError("Missing 'apples' argument")
+        if facebooks is None:
+            raise TypeError("Missing 'facebooks' argument")
+
         _setter("apples", apples)
         _setter("facebooks", facebooks)
 
@@ -12468,8 +14172,12 @@ class GetClientNativeSocialLoginAppleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -12489,8 +14197,12 @@ class GetClientNativeSocialLoginFacebookResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+
         _setter("enabled", enabled)
 
     @property
@@ -12522,14 +14234,42 @@ class GetClientRefreshTokenResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expiration_type: str,
-             idle_token_lifetime: int,
-             infinite_idle_token_lifetime: bool,
-             infinite_token_lifetime: bool,
-             leeway: int,
-             rotation_type: str,
-             token_lifetime: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             expiration_type: Optional[str] = None,
+             idle_token_lifetime: Optional[int] = None,
+             infinite_idle_token_lifetime: Optional[bool] = None,
+             infinite_token_lifetime: Optional[bool] = None,
+             leeway: Optional[int] = None,
+             rotation_type: Optional[str] = None,
+             token_lifetime: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expiration_type is None and 'expirationType' in kwargs:
+            expiration_type = kwargs['expirationType']
+        if expiration_type is None:
+            raise TypeError("Missing 'expiration_type' argument")
+        if idle_token_lifetime is None and 'idleTokenLifetime' in kwargs:
+            idle_token_lifetime = kwargs['idleTokenLifetime']
+        if idle_token_lifetime is None:
+            raise TypeError("Missing 'idle_token_lifetime' argument")
+        if infinite_idle_token_lifetime is None and 'infiniteIdleTokenLifetime' in kwargs:
+            infinite_idle_token_lifetime = kwargs['infiniteIdleTokenLifetime']
+        if infinite_idle_token_lifetime is None:
+            raise TypeError("Missing 'infinite_idle_token_lifetime' argument")
+        if infinite_token_lifetime is None and 'infiniteTokenLifetime' in kwargs:
+            infinite_token_lifetime = kwargs['infiniteTokenLifetime']
+        if infinite_token_lifetime is None:
+            raise TypeError("Missing 'infinite_token_lifetime' argument")
+        if leeway is None:
+            raise TypeError("Missing 'leeway' argument")
+        if rotation_type is None and 'rotationType' in kwargs:
+            rotation_type = kwargs['rotationType']
+        if rotation_type is None:
+            raise TypeError("Missing 'rotation_type' argument")
+        if token_lifetime is None and 'tokenLifetime' in kwargs:
+            token_lifetime = kwargs['tokenLifetime']
+        if token_lifetime is None:
+            raise TypeError("Missing 'token_lifetime' argument")
+
         _setter("expiration_type", expiration_type)
         _setter("idle_token_lifetime", idle_token_lifetime)
         _setter("infinite_idle_token_lifetime", infinite_idle_token_lifetime)
@@ -12763,97 +14503,427 @@ class GetConnectionOptionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             adfs_server: str,
-             allowed_audiences: Sequence[str],
-             api_enable_users: bool,
-             app_id: str,
-             attribute_maps: Sequence['outputs.GetConnectionOptionAttributeMapResult'],
-             auth_params: Mapping[str, str],
-             authorization_endpoint: str,
-             brute_force_protection: bool,
-             client_id: str,
-             client_secret: str,
-             community_base_url: str,
-             configuration: Mapping[str, Any],
-             connection_settings: Sequence['outputs.GetConnectionOptionConnectionSettingResult'],
-             custom_scripts: Mapping[str, str],
-             debug: bool,
-             decryption_keys: Sequence['outputs.GetConnectionOptionDecryptionKeyResult'],
-             digest_algorithm: str,
-             disable_cache: bool,
-             disable_self_service_change_password: bool,
-             disable_sign_out: bool,
-             disable_signup: bool,
-             discovery_url: str,
-             domain: str,
-             domain_aliases: Sequence[str],
-             enable_script_context: bool,
-             enabled_database_customization: bool,
-             entity_id: str,
-             fed_metadata_xml: str,
-             fields_map: str,
-             forward_request_info: bool,
-             from_: str,
-             gateway_authentications: Sequence['outputs.GetConnectionOptionGatewayAuthenticationResult'],
-             gateway_url: str,
-             icon_url: str,
-             identity_api: str,
-             idp_initiateds: Sequence['outputs.GetConnectionOptionIdpInitiatedResult'],
-             import_mode: bool,
-             ips: Sequence[str],
-             issuer: str,
-             jwks_uri: str,
-             key_id: str,
-             map_user_id_to_id: bool,
-             max_groups_to_retrieve: str,
-             messaging_service_sid: str,
-             metadata_url: str,
-             metadata_xml: str,
-             mfas: Sequence['outputs.GetConnectionOptionMfaResult'],
-             name: str,
-             non_persistent_attrs: Sequence[str],
-             password_complexity_options: Sequence['outputs.GetConnectionOptionPasswordComplexityOptionResult'],
-             password_dictionaries: Sequence['outputs.GetConnectionOptionPasswordDictionaryResult'],
-             password_histories: Sequence['outputs.GetConnectionOptionPasswordHistoryResult'],
-             password_no_personal_infos: Sequence['outputs.GetConnectionOptionPasswordNoPersonalInfoResult'],
-             password_policy: str,
-             ping_federate_base_url: str,
-             pkce_enabled: bool,
-             protocol_binding: str,
-             provider: str,
-             request_template: str,
-             requires_username: bool,
-             scopes: Sequence[str],
-             scripts: Mapping[str, str],
-             set_user_root_attributes: str,
-             should_trust_email_verified_connection: str,
-             sign_in_endpoint: str,
-             sign_out_endpoint: str,
-             sign_saml_request: bool,
-             signature_algorithm: str,
-             signing_cert: str,
-             signing_keys: Sequence['outputs.GetConnectionOptionSigningKeyResult'],
-             strategy_version: int,
-             subject: str,
-             syntax: str,
-             team_id: str,
-             template: str,
-             tenant_domain: str,
-             token_endpoint: str,
-             totps: Sequence['outputs.GetConnectionOptionTotpResult'],
-             twilio_sid: str,
-             twilio_token: str,
-             type: str,
-             upstream_params: str,
-             use_cert_auth: bool,
-             use_kerberos: bool,
-             use_wsfed: bool,
-             user_id_attribute: str,
-             userinfo_endpoint: str,
-             validations: Sequence['outputs.GetConnectionOptionValidationResult'],
-             waad_common_endpoint: bool,
-             waad_protocol: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             adfs_server: Optional[str] = None,
+             allowed_audiences: Optional[Sequence[str]] = None,
+             api_enable_users: Optional[bool] = None,
+             app_id: Optional[str] = None,
+             attribute_maps: Optional[Sequence['outputs.GetConnectionOptionAttributeMapResult']] = None,
+             auth_params: Optional[Mapping[str, str]] = None,
+             authorization_endpoint: Optional[str] = None,
+             brute_force_protection: Optional[bool] = None,
+             client_id: Optional[str] = None,
+             client_secret: Optional[str] = None,
+             community_base_url: Optional[str] = None,
+             configuration: Optional[Mapping[str, Any]] = None,
+             connection_settings: Optional[Sequence['outputs.GetConnectionOptionConnectionSettingResult']] = None,
+             custom_scripts: Optional[Mapping[str, str]] = None,
+             debug: Optional[bool] = None,
+             decryption_keys: Optional[Sequence['outputs.GetConnectionOptionDecryptionKeyResult']] = None,
+             digest_algorithm: Optional[str] = None,
+             disable_cache: Optional[bool] = None,
+             disable_self_service_change_password: Optional[bool] = None,
+             disable_sign_out: Optional[bool] = None,
+             disable_signup: Optional[bool] = None,
+             discovery_url: Optional[str] = None,
+             domain: Optional[str] = None,
+             domain_aliases: Optional[Sequence[str]] = None,
+             enable_script_context: Optional[bool] = None,
+             enabled_database_customization: Optional[bool] = None,
+             entity_id: Optional[str] = None,
+             fed_metadata_xml: Optional[str] = None,
+             fields_map: Optional[str] = None,
+             forward_request_info: Optional[bool] = None,
+             from_: Optional[str] = None,
+             gateway_authentications: Optional[Sequence['outputs.GetConnectionOptionGatewayAuthenticationResult']] = None,
+             gateway_url: Optional[str] = None,
+             icon_url: Optional[str] = None,
+             identity_api: Optional[str] = None,
+             idp_initiateds: Optional[Sequence['outputs.GetConnectionOptionIdpInitiatedResult']] = None,
+             import_mode: Optional[bool] = None,
+             ips: Optional[Sequence[str]] = None,
+             issuer: Optional[str] = None,
+             jwks_uri: Optional[str] = None,
+             key_id: Optional[str] = None,
+             map_user_id_to_id: Optional[bool] = None,
+             max_groups_to_retrieve: Optional[str] = None,
+             messaging_service_sid: Optional[str] = None,
+             metadata_url: Optional[str] = None,
+             metadata_xml: Optional[str] = None,
+             mfas: Optional[Sequence['outputs.GetConnectionOptionMfaResult']] = None,
+             name: Optional[str] = None,
+             non_persistent_attrs: Optional[Sequence[str]] = None,
+             password_complexity_options: Optional[Sequence['outputs.GetConnectionOptionPasswordComplexityOptionResult']] = None,
+             password_dictionaries: Optional[Sequence['outputs.GetConnectionOptionPasswordDictionaryResult']] = None,
+             password_histories: Optional[Sequence['outputs.GetConnectionOptionPasswordHistoryResult']] = None,
+             password_no_personal_infos: Optional[Sequence['outputs.GetConnectionOptionPasswordNoPersonalInfoResult']] = None,
+             password_policy: Optional[str] = None,
+             ping_federate_base_url: Optional[str] = None,
+             pkce_enabled: Optional[bool] = None,
+             protocol_binding: Optional[str] = None,
+             provider: Optional[str] = None,
+             request_template: Optional[str] = None,
+             requires_username: Optional[bool] = None,
+             scopes: Optional[Sequence[str]] = None,
+             scripts: Optional[Mapping[str, str]] = None,
+             set_user_root_attributes: Optional[str] = None,
+             should_trust_email_verified_connection: Optional[str] = None,
+             sign_in_endpoint: Optional[str] = None,
+             sign_out_endpoint: Optional[str] = None,
+             sign_saml_request: Optional[bool] = None,
+             signature_algorithm: Optional[str] = None,
+             signing_cert: Optional[str] = None,
+             signing_keys: Optional[Sequence['outputs.GetConnectionOptionSigningKeyResult']] = None,
+             strategy_version: Optional[int] = None,
+             subject: Optional[str] = None,
+             syntax: Optional[str] = None,
+             team_id: Optional[str] = None,
+             template: Optional[str] = None,
+             tenant_domain: Optional[str] = None,
+             token_endpoint: Optional[str] = None,
+             totps: Optional[Sequence['outputs.GetConnectionOptionTotpResult']] = None,
+             twilio_sid: Optional[str] = None,
+             twilio_token: Optional[str] = None,
+             type: Optional[str] = None,
+             upstream_params: Optional[str] = None,
+             use_cert_auth: Optional[bool] = None,
+             use_kerberos: Optional[bool] = None,
+             use_wsfed: Optional[bool] = None,
+             user_id_attribute: Optional[str] = None,
+             userinfo_endpoint: Optional[str] = None,
+             validations: Optional[Sequence['outputs.GetConnectionOptionValidationResult']] = None,
+             waad_common_endpoint: Optional[bool] = None,
+             waad_protocol: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if adfs_server is None and 'adfsServer' in kwargs:
+            adfs_server = kwargs['adfsServer']
+        if adfs_server is None:
+            raise TypeError("Missing 'adfs_server' argument")
+        if allowed_audiences is None and 'allowedAudiences' in kwargs:
+            allowed_audiences = kwargs['allowedAudiences']
+        if allowed_audiences is None:
+            raise TypeError("Missing 'allowed_audiences' argument")
+        if api_enable_users is None and 'apiEnableUsers' in kwargs:
+            api_enable_users = kwargs['apiEnableUsers']
+        if api_enable_users is None:
+            raise TypeError("Missing 'api_enable_users' argument")
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if attribute_maps is None and 'attributeMaps' in kwargs:
+            attribute_maps = kwargs['attributeMaps']
+        if attribute_maps is None:
+            raise TypeError("Missing 'attribute_maps' argument")
+        if auth_params is None and 'authParams' in kwargs:
+            auth_params = kwargs['authParams']
+        if auth_params is None:
+            raise TypeError("Missing 'auth_params' argument")
+        if authorization_endpoint is None and 'authorizationEndpoint' in kwargs:
+            authorization_endpoint = kwargs['authorizationEndpoint']
+        if authorization_endpoint is None:
+            raise TypeError("Missing 'authorization_endpoint' argument")
+        if brute_force_protection is None and 'bruteForceProtection' in kwargs:
+            brute_force_protection = kwargs['bruteForceProtection']
+        if brute_force_protection is None:
+            raise TypeError("Missing 'brute_force_protection' argument")
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if client_secret is None:
+            raise TypeError("Missing 'client_secret' argument")
+        if community_base_url is None and 'communityBaseUrl' in kwargs:
+            community_base_url = kwargs['communityBaseUrl']
+        if community_base_url is None:
+            raise TypeError("Missing 'community_base_url' argument")
+        if configuration is None:
+            raise TypeError("Missing 'configuration' argument")
+        if connection_settings is None and 'connectionSettings' in kwargs:
+            connection_settings = kwargs['connectionSettings']
+        if connection_settings is None:
+            raise TypeError("Missing 'connection_settings' argument")
+        if custom_scripts is None and 'customScripts' in kwargs:
+            custom_scripts = kwargs['customScripts']
+        if custom_scripts is None:
+            raise TypeError("Missing 'custom_scripts' argument")
+        if debug is None:
+            raise TypeError("Missing 'debug' argument")
+        if decryption_keys is None and 'decryptionKeys' in kwargs:
+            decryption_keys = kwargs['decryptionKeys']
+        if decryption_keys is None:
+            raise TypeError("Missing 'decryption_keys' argument")
+        if digest_algorithm is None and 'digestAlgorithm' in kwargs:
+            digest_algorithm = kwargs['digestAlgorithm']
+        if digest_algorithm is None:
+            raise TypeError("Missing 'digest_algorithm' argument")
+        if disable_cache is None and 'disableCache' in kwargs:
+            disable_cache = kwargs['disableCache']
+        if disable_cache is None:
+            raise TypeError("Missing 'disable_cache' argument")
+        if disable_self_service_change_password is None and 'disableSelfServiceChangePassword' in kwargs:
+            disable_self_service_change_password = kwargs['disableSelfServiceChangePassword']
+        if disable_self_service_change_password is None:
+            raise TypeError("Missing 'disable_self_service_change_password' argument")
+        if disable_sign_out is None and 'disableSignOut' in kwargs:
+            disable_sign_out = kwargs['disableSignOut']
+        if disable_sign_out is None:
+            raise TypeError("Missing 'disable_sign_out' argument")
+        if disable_signup is None and 'disableSignup' in kwargs:
+            disable_signup = kwargs['disableSignup']
+        if disable_signup is None:
+            raise TypeError("Missing 'disable_signup' argument")
+        if discovery_url is None and 'discoveryUrl' in kwargs:
+            discovery_url = kwargs['discoveryUrl']
+        if discovery_url is None:
+            raise TypeError("Missing 'discovery_url' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if domain_aliases is None and 'domainAliases' in kwargs:
+            domain_aliases = kwargs['domainAliases']
+        if domain_aliases is None:
+            raise TypeError("Missing 'domain_aliases' argument")
+        if enable_script_context is None and 'enableScriptContext' in kwargs:
+            enable_script_context = kwargs['enableScriptContext']
+        if enable_script_context is None:
+            raise TypeError("Missing 'enable_script_context' argument")
+        if enabled_database_customization is None and 'enabledDatabaseCustomization' in kwargs:
+            enabled_database_customization = kwargs['enabledDatabaseCustomization']
+        if enabled_database_customization is None:
+            raise TypeError("Missing 'enabled_database_customization' argument")
+        if entity_id is None and 'entityId' in kwargs:
+            entity_id = kwargs['entityId']
+        if entity_id is None:
+            raise TypeError("Missing 'entity_id' argument")
+        if fed_metadata_xml is None and 'fedMetadataXml' in kwargs:
+            fed_metadata_xml = kwargs['fedMetadataXml']
+        if fed_metadata_xml is None:
+            raise TypeError("Missing 'fed_metadata_xml' argument")
+        if fields_map is None and 'fieldsMap' in kwargs:
+            fields_map = kwargs['fieldsMap']
+        if fields_map is None:
+            raise TypeError("Missing 'fields_map' argument")
+        if forward_request_info is None and 'forwardRequestInfo' in kwargs:
+            forward_request_info = kwargs['forwardRequestInfo']
+        if forward_request_info is None:
+            raise TypeError("Missing 'forward_request_info' argument")
+        if from_ is None and 'from' in kwargs:
+            from_ = kwargs['from']
+        if from_ is None:
+            raise TypeError("Missing 'from_' argument")
+        if gateway_authentications is None and 'gatewayAuthentications' in kwargs:
+            gateway_authentications = kwargs['gatewayAuthentications']
+        if gateway_authentications is None:
+            raise TypeError("Missing 'gateway_authentications' argument")
+        if gateway_url is None and 'gatewayUrl' in kwargs:
+            gateway_url = kwargs['gatewayUrl']
+        if gateway_url is None:
+            raise TypeError("Missing 'gateway_url' argument")
+        if icon_url is None and 'iconUrl' in kwargs:
+            icon_url = kwargs['iconUrl']
+        if icon_url is None:
+            raise TypeError("Missing 'icon_url' argument")
+        if identity_api is None and 'identityApi' in kwargs:
+            identity_api = kwargs['identityApi']
+        if identity_api is None:
+            raise TypeError("Missing 'identity_api' argument")
+        if idp_initiateds is None and 'idpInitiateds' in kwargs:
+            idp_initiateds = kwargs['idpInitiateds']
+        if idp_initiateds is None:
+            raise TypeError("Missing 'idp_initiateds' argument")
+        if import_mode is None and 'importMode' in kwargs:
+            import_mode = kwargs['importMode']
+        if import_mode is None:
+            raise TypeError("Missing 'import_mode' argument")
+        if ips is None:
+            raise TypeError("Missing 'ips' argument")
+        if issuer is None:
+            raise TypeError("Missing 'issuer' argument")
+        if jwks_uri is None and 'jwksUri' in kwargs:
+            jwks_uri = kwargs['jwksUri']
+        if jwks_uri is None:
+            raise TypeError("Missing 'jwks_uri' argument")
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if key_id is None:
+            raise TypeError("Missing 'key_id' argument")
+        if map_user_id_to_id is None and 'mapUserIdToId' in kwargs:
+            map_user_id_to_id = kwargs['mapUserIdToId']
+        if map_user_id_to_id is None:
+            raise TypeError("Missing 'map_user_id_to_id' argument")
+        if max_groups_to_retrieve is None and 'maxGroupsToRetrieve' in kwargs:
+            max_groups_to_retrieve = kwargs['maxGroupsToRetrieve']
+        if max_groups_to_retrieve is None:
+            raise TypeError("Missing 'max_groups_to_retrieve' argument")
+        if messaging_service_sid is None and 'messagingServiceSid' in kwargs:
+            messaging_service_sid = kwargs['messagingServiceSid']
+        if messaging_service_sid is None:
+            raise TypeError("Missing 'messaging_service_sid' argument")
+        if metadata_url is None and 'metadataUrl' in kwargs:
+            metadata_url = kwargs['metadataUrl']
+        if metadata_url is None:
+            raise TypeError("Missing 'metadata_url' argument")
+        if metadata_xml is None and 'metadataXml' in kwargs:
+            metadata_xml = kwargs['metadataXml']
+        if metadata_xml is None:
+            raise TypeError("Missing 'metadata_xml' argument")
+        if mfas is None:
+            raise TypeError("Missing 'mfas' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if non_persistent_attrs is None and 'nonPersistentAttrs' in kwargs:
+            non_persistent_attrs = kwargs['nonPersistentAttrs']
+        if non_persistent_attrs is None:
+            raise TypeError("Missing 'non_persistent_attrs' argument")
+        if password_complexity_options is None and 'passwordComplexityOptions' in kwargs:
+            password_complexity_options = kwargs['passwordComplexityOptions']
+        if password_complexity_options is None:
+            raise TypeError("Missing 'password_complexity_options' argument")
+        if password_dictionaries is None and 'passwordDictionaries' in kwargs:
+            password_dictionaries = kwargs['passwordDictionaries']
+        if password_dictionaries is None:
+            raise TypeError("Missing 'password_dictionaries' argument")
+        if password_histories is None and 'passwordHistories' in kwargs:
+            password_histories = kwargs['passwordHistories']
+        if password_histories is None:
+            raise TypeError("Missing 'password_histories' argument")
+        if password_no_personal_infos is None and 'passwordNoPersonalInfos' in kwargs:
+            password_no_personal_infos = kwargs['passwordNoPersonalInfos']
+        if password_no_personal_infos is None:
+            raise TypeError("Missing 'password_no_personal_infos' argument")
+        if password_policy is None and 'passwordPolicy' in kwargs:
+            password_policy = kwargs['passwordPolicy']
+        if password_policy is None:
+            raise TypeError("Missing 'password_policy' argument")
+        if ping_federate_base_url is None and 'pingFederateBaseUrl' in kwargs:
+            ping_federate_base_url = kwargs['pingFederateBaseUrl']
+        if ping_federate_base_url is None:
+            raise TypeError("Missing 'ping_federate_base_url' argument")
+        if pkce_enabled is None and 'pkceEnabled' in kwargs:
+            pkce_enabled = kwargs['pkceEnabled']
+        if pkce_enabled is None:
+            raise TypeError("Missing 'pkce_enabled' argument")
+        if protocol_binding is None and 'protocolBinding' in kwargs:
+            protocol_binding = kwargs['protocolBinding']
+        if protocol_binding is None:
+            raise TypeError("Missing 'protocol_binding' argument")
+        if provider is None:
+            raise TypeError("Missing 'provider' argument")
+        if request_template is None and 'requestTemplate' in kwargs:
+            request_template = kwargs['requestTemplate']
+        if request_template is None:
+            raise TypeError("Missing 'request_template' argument")
+        if requires_username is None and 'requiresUsername' in kwargs:
+            requires_username = kwargs['requiresUsername']
+        if requires_username is None:
+            raise TypeError("Missing 'requires_username' argument")
+        if scopes is None:
+            raise TypeError("Missing 'scopes' argument")
+        if scripts is None:
+            raise TypeError("Missing 'scripts' argument")
+        if set_user_root_attributes is None and 'setUserRootAttributes' in kwargs:
+            set_user_root_attributes = kwargs['setUserRootAttributes']
+        if set_user_root_attributes is None:
+            raise TypeError("Missing 'set_user_root_attributes' argument")
+        if should_trust_email_verified_connection is None and 'shouldTrustEmailVerifiedConnection' in kwargs:
+            should_trust_email_verified_connection = kwargs['shouldTrustEmailVerifiedConnection']
+        if should_trust_email_verified_connection is None:
+            raise TypeError("Missing 'should_trust_email_verified_connection' argument")
+        if sign_in_endpoint is None and 'signInEndpoint' in kwargs:
+            sign_in_endpoint = kwargs['signInEndpoint']
+        if sign_in_endpoint is None:
+            raise TypeError("Missing 'sign_in_endpoint' argument")
+        if sign_out_endpoint is None and 'signOutEndpoint' in kwargs:
+            sign_out_endpoint = kwargs['signOutEndpoint']
+        if sign_out_endpoint is None:
+            raise TypeError("Missing 'sign_out_endpoint' argument")
+        if sign_saml_request is None and 'signSamlRequest' in kwargs:
+            sign_saml_request = kwargs['signSamlRequest']
+        if sign_saml_request is None:
+            raise TypeError("Missing 'sign_saml_request' argument")
+        if signature_algorithm is None and 'signatureAlgorithm' in kwargs:
+            signature_algorithm = kwargs['signatureAlgorithm']
+        if signature_algorithm is None:
+            raise TypeError("Missing 'signature_algorithm' argument")
+        if signing_cert is None and 'signingCert' in kwargs:
+            signing_cert = kwargs['signingCert']
+        if signing_cert is None:
+            raise TypeError("Missing 'signing_cert' argument")
+        if signing_keys is None and 'signingKeys' in kwargs:
+            signing_keys = kwargs['signingKeys']
+        if signing_keys is None:
+            raise TypeError("Missing 'signing_keys' argument")
+        if strategy_version is None and 'strategyVersion' in kwargs:
+            strategy_version = kwargs['strategyVersion']
+        if strategy_version is None:
+            raise TypeError("Missing 'strategy_version' argument")
+        if subject is None:
+            raise TypeError("Missing 'subject' argument")
+        if syntax is None:
+            raise TypeError("Missing 'syntax' argument")
+        if team_id is None and 'teamId' in kwargs:
+            team_id = kwargs['teamId']
+        if team_id is None:
+            raise TypeError("Missing 'team_id' argument")
+        if template is None:
+            raise TypeError("Missing 'template' argument")
+        if tenant_domain is None and 'tenantDomain' in kwargs:
+            tenant_domain = kwargs['tenantDomain']
+        if tenant_domain is None:
+            raise TypeError("Missing 'tenant_domain' argument")
+        if token_endpoint is None and 'tokenEndpoint' in kwargs:
+            token_endpoint = kwargs['tokenEndpoint']
+        if token_endpoint is None:
+            raise TypeError("Missing 'token_endpoint' argument")
+        if totps is None:
+            raise TypeError("Missing 'totps' argument")
+        if twilio_sid is None and 'twilioSid' in kwargs:
+            twilio_sid = kwargs['twilioSid']
+        if twilio_sid is None:
+            raise TypeError("Missing 'twilio_sid' argument")
+        if twilio_token is None and 'twilioToken' in kwargs:
+            twilio_token = kwargs['twilioToken']
+        if twilio_token is None:
+            raise TypeError("Missing 'twilio_token' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if upstream_params is None and 'upstreamParams' in kwargs:
+            upstream_params = kwargs['upstreamParams']
+        if upstream_params is None:
+            raise TypeError("Missing 'upstream_params' argument")
+        if use_cert_auth is None and 'useCertAuth' in kwargs:
+            use_cert_auth = kwargs['useCertAuth']
+        if use_cert_auth is None:
+            raise TypeError("Missing 'use_cert_auth' argument")
+        if use_kerberos is None and 'useKerberos' in kwargs:
+            use_kerberos = kwargs['useKerberos']
+        if use_kerberos is None:
+            raise TypeError("Missing 'use_kerberos' argument")
+        if use_wsfed is None and 'useWsfed' in kwargs:
+            use_wsfed = kwargs['useWsfed']
+        if use_wsfed is None:
+            raise TypeError("Missing 'use_wsfed' argument")
+        if user_id_attribute is None and 'userIdAttribute' in kwargs:
+            user_id_attribute = kwargs['userIdAttribute']
+        if user_id_attribute is None:
+            raise TypeError("Missing 'user_id_attribute' argument")
+        if userinfo_endpoint is None and 'userinfoEndpoint' in kwargs:
+            userinfo_endpoint = kwargs['userinfoEndpoint']
+        if userinfo_endpoint is None:
+            raise TypeError("Missing 'userinfo_endpoint' argument")
+        if validations is None:
+            raise TypeError("Missing 'validations' argument")
+        if waad_common_endpoint is None and 'waadCommonEndpoint' in kwargs:
+            waad_common_endpoint = kwargs['waadCommonEndpoint']
+        if waad_common_endpoint is None:
+            raise TypeError("Missing 'waad_common_endpoint' argument")
+        if waad_protocol is None and 'waadProtocol' in kwargs:
+            waad_protocol = kwargs['waadProtocol']
+        if waad_protocol is None:
+            raise TypeError("Missing 'waad_protocol' argument")
+
         _setter("adfs_server", adfs_server)
         _setter("allowed_audiences", allowed_audiences)
         _setter("api_enable_users", api_enable_users)
@@ -13411,10 +15481,22 @@ class GetConnectionOptionAttributeMapResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attributes: str,
-             mapping_mode: str,
-             userinfo_scope: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             attributes: Optional[str] = None,
+             mapping_mode: Optional[str] = None,
+             userinfo_scope: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if attributes is None:
+            raise TypeError("Missing 'attributes' argument")
+        if mapping_mode is None and 'mappingMode' in kwargs:
+            mapping_mode = kwargs['mappingMode']
+        if mapping_mode is None:
+            raise TypeError("Missing 'mapping_mode' argument")
+        if userinfo_scope is None and 'userinfoScope' in kwargs:
+            userinfo_scope = kwargs['userinfoScope']
+        if userinfo_scope is None:
+            raise TypeError("Missing 'userinfo_scope' argument")
+
         _setter("attributes", attributes)
         _setter("mapping_mode", mapping_mode)
         _setter("userinfo_scope", userinfo_scope)
@@ -13446,8 +15528,12 @@ class GetConnectionOptionConnectionSettingResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pkce: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             pkce: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pkce is None:
+            raise TypeError("Missing 'pkce' argument")
+
         _setter("pkce", pkce)
 
     @property
@@ -13469,9 +15555,15 @@ class GetConnectionOptionDecryptionKeyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert: str,
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cert: Optional[str] = None,
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cert is None:
+            raise TypeError("Missing 'cert' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("cert", cert)
         _setter("key", key)
 
@@ -13505,12 +15597,26 @@ class GetConnectionOptionGatewayAuthenticationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             audience: str,
-             method: str,
-             secret: str,
-             secret_base64_encoded: bool,
-             subject: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             audience: Optional[str] = None,
+             method: Optional[str] = None,
+             secret: Optional[str] = None,
+             secret_base64_encoded: Optional[bool] = None,
+             subject: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if audience is None:
+            raise TypeError("Missing 'audience' argument")
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if secret is None:
+            raise TypeError("Missing 'secret' argument")
+        if secret_base64_encoded is None and 'secretBase64Encoded' in kwargs:
+            secret_base64_encoded = kwargs['secretBase64Encoded']
+        if secret_base64_encoded is None:
+            raise TypeError("Missing 'secret_base64_encoded' argument")
+        if subject is None:
+            raise TypeError("Missing 'subject' argument")
+
         _setter("audience", audience)
         _setter("method", method)
         _setter("secret", secret)
@@ -13558,10 +15664,24 @@ class GetConnectionOptionIdpInitiatedResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_authorize_query: str,
-             client_id: str,
-             client_protocol: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             client_authorize_query: Optional[str] = None,
+             client_id: Optional[str] = None,
+             client_protocol: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_authorize_query is None and 'clientAuthorizeQuery' in kwargs:
+            client_authorize_query = kwargs['clientAuthorizeQuery']
+        if client_authorize_query is None:
+            raise TypeError("Missing 'client_authorize_query' argument")
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_protocol is None and 'clientProtocol' in kwargs:
+            client_protocol = kwargs['clientProtocol']
+        if client_protocol is None:
+            raise TypeError("Missing 'client_protocol' argument")
+
         _setter("client_authorize_query", client_authorize_query)
         _setter("client_id", client_id)
         _setter("client_protocol", client_protocol)
@@ -13595,9 +15715,17 @@ class GetConnectionOptionMfaResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             active: bool,
-             return_enroll_settings: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             active: Optional[bool] = None,
+             return_enroll_settings: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if active is None:
+            raise TypeError("Missing 'active' argument")
+        if return_enroll_settings is None and 'returnEnrollSettings' in kwargs:
+            return_enroll_settings = kwargs['returnEnrollSettings']
+        if return_enroll_settings is None:
+            raise TypeError("Missing 'return_enroll_settings' argument")
+
         _setter("active", active)
         _setter("return_enroll_settings", return_enroll_settings)
 
@@ -13623,8 +15751,14 @@ class GetConnectionOptionPasswordComplexityOptionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             min_length: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             min_length: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if min_length is None and 'minLength' in kwargs:
+            min_length = kwargs['minLength']
+        if min_length is None:
+            raise TypeError("Missing 'min_length' argument")
+
         _setter("min_length", min_length)
 
     @property
@@ -13646,9 +15780,15 @@ class GetConnectionOptionPasswordDictionaryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dictionaries: Sequence[str],
-             enable: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             dictionaries: Optional[Sequence[str]] = None,
+             enable: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dictionaries is None:
+            raise TypeError("Missing 'dictionaries' argument")
+        if enable is None:
+            raise TypeError("Missing 'enable' argument")
+
         _setter("dictionaries", dictionaries)
         _setter("enable", enable)
 
@@ -13676,9 +15816,15 @@ class GetConnectionOptionPasswordHistoryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable: bool,
-             size: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enable: Optional[bool] = None,
+             size: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable is None:
+            raise TypeError("Missing 'enable' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+
         _setter("enable", enable)
         _setter("size", size)
 
@@ -13704,8 +15850,12 @@ class GetConnectionOptionPasswordNoPersonalInfoResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enable: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable is None:
+            raise TypeError("Missing 'enable' argument")
+
         _setter("enable", enable)
 
     @property
@@ -13727,9 +15877,15 @@ class GetConnectionOptionSigningKeyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert: str,
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cert: Optional[str] = None,
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cert is None:
+            raise TypeError("Missing 'cert' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("cert", cert)
         _setter("key", key)
 
@@ -13757,9 +15913,17 @@ class GetConnectionOptionTotpResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             length: int,
-             time_step: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             length: Optional[int] = None,
+             time_step: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if length is None:
+            raise TypeError("Missing 'length' argument")
+        if time_step is None and 'timeStep' in kwargs:
+            time_step = kwargs['timeStep']
+        if time_step is None:
+            raise TypeError("Missing 'time_step' argument")
+
         _setter("length", length)
         _setter("time_step", time_step)
 
@@ -13785,8 +15949,12 @@ class GetConnectionOptionValidationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             usernames: Sequence['outputs.GetConnectionOptionValidationUsernameResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             usernames: Optional[Sequence['outputs.GetConnectionOptionValidationUsernameResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if usernames is None:
+            raise TypeError("Missing 'usernames' argument")
+
         _setter("usernames", usernames)
 
     @property
@@ -13808,9 +15976,15 @@ class GetConnectionOptionValidationUsernameResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max: int,
-             min: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             max: Optional[int] = None,
+             min: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if max is None:
+            raise TypeError("Missing 'max' argument")
+        if min is None:
+            raise TypeError("Missing 'min' argument")
+
         _setter("max", max)
         _setter("min", min)
 
@@ -13836,8 +16010,12 @@ class GetCustomDomainVerificationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             methods: Sequence[Any],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             methods: Optional[Sequence[Any]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if methods is None:
+            raise TypeError("Missing 'methods' argument")
+
         _setter("methods", methods)
 
     @property
@@ -13859,9 +16037,17 @@ class GetOrganizationBrandingResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             colors: Mapping[str, str],
-             logo_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             colors: Optional[Mapping[str, str]] = None,
+             logo_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if colors is None:
+            raise TypeError("Missing 'colors' argument")
+        if logo_url is None and 'logoUrl' in kwargs:
+            logo_url = kwargs['logoUrl']
+        if logo_url is None:
+            raise TypeError("Missing 'logo_url' argument")
+
         _setter("colors", colors)
         _setter("logo_url", logo_url)
 
@@ -13889,9 +16075,19 @@ class GetOrganizationConnectionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             assign_membership_on_login: bool,
-             connection_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             assign_membership_on_login: Optional[bool] = None,
+             connection_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if assign_membership_on_login is None and 'assignMembershipOnLogin' in kwargs:
+            assign_membership_on_login = kwargs['assignMembershipOnLogin']
+        if assign_membership_on_login is None:
+            raise TypeError("Missing 'assign_membership_on_login' argument")
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if connection_id is None:
+            raise TypeError("Missing 'connection_id' argument")
+
         _setter("assign_membership_on_login", assign_membership_on_login)
         _setter("connection_id", connection_id)
 
@@ -13919,9 +16115,15 @@ class GetPagesChangePasswordResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             html: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[bool] = None,
+             html: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if html is None:
+            raise TypeError("Missing 'html' argument")
+
         _setter("enabled", enabled)
         _setter("html", html)
 
@@ -13951,10 +16153,20 @@ class GetPagesErrorResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             html: str,
-             show_log_link: bool,
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             html: Optional[str] = None,
+             show_log_link: Optional[bool] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if html is None:
+            raise TypeError("Missing 'html' argument")
+        if show_log_link is None and 'showLogLink' in kwargs:
+            show_log_link = kwargs['showLogLink']
+        if show_log_link is None:
+            raise TypeError("Missing 'show_log_link' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("html", html)
         _setter("show_log_link", show_log_link)
         _setter("url", url)
@@ -13988,9 +16200,15 @@ class GetPagesGuardianMfaResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             html: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[bool] = None,
+             html: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if html is None:
+            raise TypeError("Missing 'html' argument")
+
         _setter("enabled", enabled)
         _setter("html", html)
 
@@ -14018,9 +16236,15 @@ class GetPagesLoginResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             html: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enabled: Optional[bool] = None,
+             html: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if html is None:
+            raise TypeError("Missing 'html' argument")
+
         _setter("enabled", enabled)
         _setter("html", html)
 
@@ -14048,9 +16272,15 @@ class GetResourceServerScopeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             description: Optional[str] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("description", description)
         _setter("name", name)
 
@@ -14082,11 +16312,25 @@ class GetRolePermissionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             name: str,
-             resource_server_identifier: str,
-             resource_server_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             description: Optional[str] = None,
+             name: Optional[str] = None,
+             resource_server_identifier: Optional[str] = None,
+             resource_server_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if resource_server_identifier is None and 'resourceServerIdentifier' in kwargs:
+            resource_server_identifier = kwargs['resourceServerIdentifier']
+        if resource_server_identifier is None:
+            raise TypeError("Missing 'resource_server_identifier' argument")
+        if resource_server_name is None and 'resourceServerName' in kwargs:
+            resource_server_name = kwargs['resourceServerName']
+        if resource_server_name is None:
+            raise TypeError("Missing 'resource_server_name' argument")
+
         _setter("description", description)
         _setter("name", name)
         _setter("resource_server_identifier", resource_server_identifier)
@@ -14140,16 +16384,36 @@ class GetSigningKeysSigningKeyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert: str,
-             current: bool,
-             fingerprint: str,
-             kid: str,
-             next: bool,
-             pkcs7: str,
-             previous: bool,
-             revoked: bool,
-             thumbprint: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cert: Optional[str] = None,
+             current: Optional[bool] = None,
+             fingerprint: Optional[str] = None,
+             kid: Optional[str] = None,
+             next: Optional[bool] = None,
+             pkcs7: Optional[str] = None,
+             previous: Optional[bool] = None,
+             revoked: Optional[bool] = None,
+             thumbprint: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cert is None:
+            raise TypeError("Missing 'cert' argument")
+        if current is None:
+            raise TypeError("Missing 'current' argument")
+        if fingerprint is None:
+            raise TypeError("Missing 'fingerprint' argument")
+        if kid is None:
+            raise TypeError("Missing 'kid' argument")
+        if next is None:
+            raise TypeError("Missing 'next' argument")
+        if pkcs7 is None:
+            raise TypeError("Missing 'pkcs7' argument")
+        if previous is None:
+            raise TypeError("Missing 'previous' argument")
+        if revoked is None:
+            raise TypeError("Missing 'revoked' argument")
+        if thumbprint is None:
+            raise TypeError("Missing 'thumbprint' argument")
+
         _setter("cert", cert)
         _setter("current", current)
         _setter("fingerprint", fingerprint)
@@ -14261,30 +16525,124 @@ class GetTenantFlagResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allow_legacy_delegation_grant_types: bool,
-             allow_legacy_ro_grant_types: bool,
-             allow_legacy_tokeninfo_endpoint: bool,
-             dashboard_insights_view: bool,
-             dashboard_log_streams_next: bool,
-             disable_clickjack_protection_headers: bool,
-             disable_fields_map_fix: bool,
-             disable_management_api_sms_obfuscation: bool,
-             enable_adfs_waad_email_verification: bool,
-             enable_apis_section: bool,
-             enable_client_connections: bool,
-             enable_custom_domain_in_emails: bool,
-             enable_dynamic_client_registration: bool,
-             enable_idtoken_api2: bool,
-             enable_legacy_logs_search_v2: bool,
-             enable_legacy_profile: bool,
-             enable_pipeline2: bool,
-             enable_public_signup_user_exists_error: bool,
-             mfa_show_factor_list_on_enrollment: bool,
-             no_disclose_enterprise_connections: bool,
-             require_pushed_authorization_requests: bool,
-             revoke_refresh_token_grant: bool,
-             use_scope_descriptions_for_consent: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allow_legacy_delegation_grant_types: Optional[bool] = None,
+             allow_legacy_ro_grant_types: Optional[bool] = None,
+             allow_legacy_tokeninfo_endpoint: Optional[bool] = None,
+             dashboard_insights_view: Optional[bool] = None,
+             dashboard_log_streams_next: Optional[bool] = None,
+             disable_clickjack_protection_headers: Optional[bool] = None,
+             disable_fields_map_fix: Optional[bool] = None,
+             disable_management_api_sms_obfuscation: Optional[bool] = None,
+             enable_adfs_waad_email_verification: Optional[bool] = None,
+             enable_apis_section: Optional[bool] = None,
+             enable_client_connections: Optional[bool] = None,
+             enable_custom_domain_in_emails: Optional[bool] = None,
+             enable_dynamic_client_registration: Optional[bool] = None,
+             enable_idtoken_api2: Optional[bool] = None,
+             enable_legacy_logs_search_v2: Optional[bool] = None,
+             enable_legacy_profile: Optional[bool] = None,
+             enable_pipeline2: Optional[bool] = None,
+             enable_public_signup_user_exists_error: Optional[bool] = None,
+             mfa_show_factor_list_on_enrollment: Optional[bool] = None,
+             no_disclose_enterprise_connections: Optional[bool] = None,
+             require_pushed_authorization_requests: Optional[bool] = None,
+             revoke_refresh_token_grant: Optional[bool] = None,
+             use_scope_descriptions_for_consent: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_legacy_delegation_grant_types is None and 'allowLegacyDelegationGrantTypes' in kwargs:
+            allow_legacy_delegation_grant_types = kwargs['allowLegacyDelegationGrantTypes']
+        if allow_legacy_delegation_grant_types is None:
+            raise TypeError("Missing 'allow_legacy_delegation_grant_types' argument")
+        if allow_legacy_ro_grant_types is None and 'allowLegacyRoGrantTypes' in kwargs:
+            allow_legacy_ro_grant_types = kwargs['allowLegacyRoGrantTypes']
+        if allow_legacy_ro_grant_types is None:
+            raise TypeError("Missing 'allow_legacy_ro_grant_types' argument")
+        if allow_legacy_tokeninfo_endpoint is None and 'allowLegacyTokeninfoEndpoint' in kwargs:
+            allow_legacy_tokeninfo_endpoint = kwargs['allowLegacyTokeninfoEndpoint']
+        if allow_legacy_tokeninfo_endpoint is None:
+            raise TypeError("Missing 'allow_legacy_tokeninfo_endpoint' argument")
+        if dashboard_insights_view is None and 'dashboardInsightsView' in kwargs:
+            dashboard_insights_view = kwargs['dashboardInsightsView']
+        if dashboard_insights_view is None:
+            raise TypeError("Missing 'dashboard_insights_view' argument")
+        if dashboard_log_streams_next is None and 'dashboardLogStreamsNext' in kwargs:
+            dashboard_log_streams_next = kwargs['dashboardLogStreamsNext']
+        if dashboard_log_streams_next is None:
+            raise TypeError("Missing 'dashboard_log_streams_next' argument")
+        if disable_clickjack_protection_headers is None and 'disableClickjackProtectionHeaders' in kwargs:
+            disable_clickjack_protection_headers = kwargs['disableClickjackProtectionHeaders']
+        if disable_clickjack_protection_headers is None:
+            raise TypeError("Missing 'disable_clickjack_protection_headers' argument")
+        if disable_fields_map_fix is None and 'disableFieldsMapFix' in kwargs:
+            disable_fields_map_fix = kwargs['disableFieldsMapFix']
+        if disable_fields_map_fix is None:
+            raise TypeError("Missing 'disable_fields_map_fix' argument")
+        if disable_management_api_sms_obfuscation is None and 'disableManagementApiSmsObfuscation' in kwargs:
+            disable_management_api_sms_obfuscation = kwargs['disableManagementApiSmsObfuscation']
+        if disable_management_api_sms_obfuscation is None:
+            raise TypeError("Missing 'disable_management_api_sms_obfuscation' argument")
+        if enable_adfs_waad_email_verification is None and 'enableAdfsWaadEmailVerification' in kwargs:
+            enable_adfs_waad_email_verification = kwargs['enableAdfsWaadEmailVerification']
+        if enable_adfs_waad_email_verification is None:
+            raise TypeError("Missing 'enable_adfs_waad_email_verification' argument")
+        if enable_apis_section is None and 'enableApisSection' in kwargs:
+            enable_apis_section = kwargs['enableApisSection']
+        if enable_apis_section is None:
+            raise TypeError("Missing 'enable_apis_section' argument")
+        if enable_client_connections is None and 'enableClientConnections' in kwargs:
+            enable_client_connections = kwargs['enableClientConnections']
+        if enable_client_connections is None:
+            raise TypeError("Missing 'enable_client_connections' argument")
+        if enable_custom_domain_in_emails is None and 'enableCustomDomainInEmails' in kwargs:
+            enable_custom_domain_in_emails = kwargs['enableCustomDomainInEmails']
+        if enable_custom_domain_in_emails is None:
+            raise TypeError("Missing 'enable_custom_domain_in_emails' argument")
+        if enable_dynamic_client_registration is None and 'enableDynamicClientRegistration' in kwargs:
+            enable_dynamic_client_registration = kwargs['enableDynamicClientRegistration']
+        if enable_dynamic_client_registration is None:
+            raise TypeError("Missing 'enable_dynamic_client_registration' argument")
+        if enable_idtoken_api2 is None and 'enableIdtokenApi2' in kwargs:
+            enable_idtoken_api2 = kwargs['enableIdtokenApi2']
+        if enable_idtoken_api2 is None:
+            raise TypeError("Missing 'enable_idtoken_api2' argument")
+        if enable_legacy_logs_search_v2 is None and 'enableLegacyLogsSearchV2' in kwargs:
+            enable_legacy_logs_search_v2 = kwargs['enableLegacyLogsSearchV2']
+        if enable_legacy_logs_search_v2 is None:
+            raise TypeError("Missing 'enable_legacy_logs_search_v2' argument")
+        if enable_legacy_profile is None and 'enableLegacyProfile' in kwargs:
+            enable_legacy_profile = kwargs['enableLegacyProfile']
+        if enable_legacy_profile is None:
+            raise TypeError("Missing 'enable_legacy_profile' argument")
+        if enable_pipeline2 is None and 'enablePipeline2' in kwargs:
+            enable_pipeline2 = kwargs['enablePipeline2']
+        if enable_pipeline2 is None:
+            raise TypeError("Missing 'enable_pipeline2' argument")
+        if enable_public_signup_user_exists_error is None and 'enablePublicSignupUserExistsError' in kwargs:
+            enable_public_signup_user_exists_error = kwargs['enablePublicSignupUserExistsError']
+        if enable_public_signup_user_exists_error is None:
+            raise TypeError("Missing 'enable_public_signup_user_exists_error' argument")
+        if mfa_show_factor_list_on_enrollment is None and 'mfaShowFactorListOnEnrollment' in kwargs:
+            mfa_show_factor_list_on_enrollment = kwargs['mfaShowFactorListOnEnrollment']
+        if mfa_show_factor_list_on_enrollment is None:
+            raise TypeError("Missing 'mfa_show_factor_list_on_enrollment' argument")
+        if no_disclose_enterprise_connections is None and 'noDiscloseEnterpriseConnections' in kwargs:
+            no_disclose_enterprise_connections = kwargs['noDiscloseEnterpriseConnections']
+        if no_disclose_enterprise_connections is None:
+            raise TypeError("Missing 'no_disclose_enterprise_connections' argument")
+        if require_pushed_authorization_requests is None and 'requirePushedAuthorizationRequests' in kwargs:
+            require_pushed_authorization_requests = kwargs['requirePushedAuthorizationRequests']
+        if require_pushed_authorization_requests is None:
+            raise TypeError("Missing 'require_pushed_authorization_requests' argument")
+        if revoke_refresh_token_grant is None and 'revokeRefreshTokenGrant' in kwargs:
+            revoke_refresh_token_grant = kwargs['revokeRefreshTokenGrant']
+        if revoke_refresh_token_grant is None:
+            raise TypeError("Missing 'revoke_refresh_token_grant' argument")
+        if use_scope_descriptions_for_consent is None and 'useScopeDescriptionsForConsent' in kwargs:
+            use_scope_descriptions_for_consent = kwargs['useScopeDescriptionsForConsent']
+        if use_scope_descriptions_for_consent is None:
+            raise TypeError("Missing 'use_scope_descriptions_for_consent' argument")
+
         _setter("allow_legacy_delegation_grant_types", allow_legacy_delegation_grant_types)
         _setter("allow_legacy_ro_grant_types", allow_legacy_ro_grant_types)
         _setter("allow_legacy_tokeninfo_endpoint", allow_legacy_tokeninfo_endpoint)
@@ -14436,8 +16794,14 @@ class GetTenantSessionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             oidc_logout_prompt_enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             oidc_logout_prompt_enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if oidc_logout_prompt_enabled is None and 'oidcLogoutPromptEnabled' in kwargs:
+            oidc_logout_prompt_enabled = kwargs['oidcLogoutPromptEnabled']
+        if oidc_logout_prompt_enabled is None:
+            raise TypeError("Missing 'oidc_logout_prompt_enabled' argument")
+
         _setter("oidc_logout_prompt_enabled", oidc_logout_prompt_enabled)
 
     @property
@@ -14457,8 +16821,12 @@ class GetTenantSessionCookyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mode: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             mode: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+
         _setter("mode", mode)
 
     @property
@@ -14484,11 +16852,25 @@ class GetUserPermissionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             name: str,
-             resource_server_identifier: str,
-             resource_server_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             description: Optional[str] = None,
+             name: Optional[str] = None,
+             resource_server_identifier: Optional[str] = None,
+             resource_server_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if resource_server_identifier is None and 'resourceServerIdentifier' in kwargs:
+            resource_server_identifier = kwargs['resourceServerIdentifier']
+        if resource_server_identifier is None:
+            raise TypeError("Missing 'resource_server_identifier' argument")
+        if resource_server_name is None and 'resourceServerName' in kwargs:
+            resource_server_name = kwargs['resourceServerName']
+        if resource_server_name is None:
+            raise TypeError("Missing 'resource_server_name' argument")
+
         _setter("description", description)
         _setter("name", name)
         _setter("resource_server_identifier", resource_server_identifier)

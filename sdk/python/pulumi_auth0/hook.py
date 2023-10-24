@@ -41,13 +41,21 @@ class HookArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             script: pulumi.Input[str],
-             trigger_id: pulumi.Input[str],
+             script: Optional[pulumi.Input[str]] = None,
+             trigger_id: Optional[pulumi.Input[str]] = None,
              dependencies: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if script is None:
+            raise TypeError("Missing 'script' argument")
+        if trigger_id is None and 'triggerId' in kwargs:
+            trigger_id = kwargs['triggerId']
+        if trigger_id is None:
+            raise TypeError("Missing 'trigger_id' argument")
+
         _setter("script", script)
         _setter("trigger_id", trigger_id)
         if dependencies is not None:
@@ -168,7 +176,11 @@ class _HookState:
              script: Optional[pulumi.Input[str]] = None,
              secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              trigger_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if trigger_id is None and 'triggerId' in kwargs:
+            trigger_id = kwargs['triggerId']
+
         if dependencies is not None:
             _setter("dependencies", dependencies)
         if enabled is not None:
@@ -272,28 +284,6 @@ class Hook(pulumi.CustomResource):
 
         !> This resource is deprecated. Refer to the [guide on how to migrate from hooks to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-hooks-to-actions) and manage your actions using the `Action` resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_hook = auth0.Hook("myHook",
-            dependencies={
-                "auth0": "2.30.0",
-            },
-            enabled=True,
-            script=\"\"\"    function (user, context, callback) {
-              callback(null, { user });
-            }
-          
-        \"\"\",
-            secrets={
-                "foo": "bar",
-            },
-            trigger_id="pre-user-registration")
-        ```
-
         ## Import
 
         This resource can be imported by specifying the hook ID. # Example
@@ -321,28 +311,6 @@ class Hook(pulumi.CustomResource):
         Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code. Depending on the extensibility point, you can use hooks with Database Connections and/or Passwordless Connections.
 
         !> This resource is deprecated. Refer to the [guide on how to migrate from hooks to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-hooks-to-actions) and manage your actions using the `Action` resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_hook = auth0.Hook("myHook",
-            dependencies={
-                "auth0": "2.30.0",
-            },
-            enabled=True,
-            script=\"\"\"    function (user, context, callback) {
-              callback(null, { user });
-            }
-          
-        \"\"\",
-            secrets={
-                "foo": "bar",
-            },
-            trigger_id="pre-user-registration")
-        ```
 
         ## Import
 

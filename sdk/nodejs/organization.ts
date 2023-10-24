@@ -15,24 +15,6 @@ import * as utilities from "./utilities";
  *   - Build administration capabilities into their products, using Organizations
  *     APIs, so that those businesses can manage their own organizations.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myOrganization = new auth0.Organization("myOrganization", {
- *     branding: {
- *         colors: {
- *             pageBackground: "#e1e1e1",
- *             primary: "#f2f2f2",
- *         },
- *         logoUrl: "https://example.com/assets/icons/icon.png",
- *     },
- *     displayName: "Auth0 Inc.",
- * });
- * ```
- *
  * ## Import
  *
  * This resource can be imported by specifying the organization ID. # Example

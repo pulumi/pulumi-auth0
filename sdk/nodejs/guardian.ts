@@ -9,61 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myGuardian = new auth0.Guardian("myGuardian", {
- *     duo: {
- *         enabled: true,
- *         hostname: "api-hostname",
- *         integrationKey: "someKey",
- *         secretKey: "someSecret",
- *     },
- *     email: true,
- *     otp: true,
- *     phone: {
- *         enabled: true,
- *         messageTypes: [
- *             "sms",
- *             "voice",
- *         ],
- *         options: {
- *             enrollmentMessage: "{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
- *             verificationMessage: "{{code}} is your verification code for {{tenant.friendly_name}}.",
- *         },
- *         provider: "auth0",
- *     },
- *     policy: "all-applications",
- *     push: {
- *         amazonSns: {
- *             awsAccessKeyId: "test1",
- *             awsRegion: "us-west-1",
- *             awsSecretAccessKey: "secretKey",
- *             snsApnsPlatformApplicationArn: "test_arn",
- *             snsGcmPlatformApplicationArn: "test_arn",
- *         },
- *         customApp: {
- *             appName: "CustomApp",
- *             appleAppLink: "https://itunes.apple.com/us/app/my-app/id123121",
- *             googleAppLink: "https://play.google.com/store/apps/details?id=com.my.app",
- *         },
- *         enabled: true,
- *         provider: "sns",
- *     },
- *     recoveryCode: true,
- *     webauthnPlatform: {
- *         enabled: true,
- *     },
- *     webauthnRoaming: {
- *         enabled: true,
- *         userVerification: "required",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example

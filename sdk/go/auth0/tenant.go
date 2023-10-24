@@ -17,58 +17,6 @@ import (
 // > Creating tenants through the Management API is not currently supported. Therefore, this resource can only
 // manage an existing tenant created through the Auth0 dashboard.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewTenant(ctx, "myTenant", &auth0.TenantArgs{
-//				AllowedLogoutUrls: pulumi.StringArray{
-//					pulumi.String("http://example.com/logout"),
-//				},
-//				DefaultRedirectionUri: pulumi.String("https://example.com/login"),
-//				EnabledLocales: pulumi.StringArray{
-//					pulumi.String("en"),
-//				},
-//				Flags: &auth0.TenantFlagsArgs{
-//					DisableClickjackProtectionHeaders:  pulumi.Bool(true),
-//					DisableFieldsMapFix:                pulumi.Bool(false),
-//					DisableManagementApiSmsObfuscation: pulumi.Bool(false),
-//					EnablePublicSignupUserExistsError:  pulumi.Bool(true),
-//					NoDiscloseEnterpriseConnections:    pulumi.Bool(false),
-//					UseScopeDescriptionsForConsent:     pulumi.Bool(true),
-//				},
-//				FriendlyName:   pulumi.String("Tenant Name"),
-//				PictureUrl:     pulumi.String("http://example.com/logo.png"),
-//				SandboxVersion: pulumi.String("12"),
-//				SessionCookie: &auth0.TenantSessionCookieArgs{
-//					Mode: pulumi.String("non-persistent"),
-//				},
-//				SessionLifetime: pulumi.Float64(8760),
-//				Sessions: &auth0.TenantSessionsArgs{
-//					OidcLogoutPromptEnabled: pulumi.Bool(false),
-//				},
-//				SupportEmail: pulumi.String("support@example.com"),
-//				SupportUrl:   pulumi.String("http://example.com/support"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // As this is not a resource identifiable by an ID within the Auth0 Management API, tenant can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example

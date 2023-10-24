@@ -32,10 +32,22 @@ class OrganizationMemberRolesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             organization_id: pulumi.Input[str],
-             roles: pulumi.Input[Sequence[pulumi.Input[str]]],
-             user_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             organization_id: Optional[pulumi.Input[str]] = None,
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if organization_id is None:
+            raise TypeError("Missing 'organization_id' argument")
+        if roles is None:
+            raise TypeError("Missing 'roles' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+
         _setter("organization_id", organization_id)
         _setter("roles", roles)
         _setter("user_id", user_id)
@@ -101,7 +113,13 @@ class _OrganizationMemberRolesState:
              organization_id: Optional[pulumi.Input[str]] = None,
              roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if organization_id is not None:
             _setter("organization_id", organization_id)
         if roles is not None:
@@ -158,31 +176,6 @@ class OrganizationMemberRoles(pulumi.CustomResource):
         """
         This resource is used to manage the roles assigned to an organization member.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        reader = auth0.Role("reader")
-        writer = auth0.Role("writer")
-        user = auth0.User("user",
-            connection_name="Username-Password-Authentication",
-            email="test-user@auth0.com",
-            password="MyPass123$")
-        my_org = auth0.Organization("myOrg", display_name="Some Org")
-        my_org_member = auth0.OrganizationMember("myOrgMember",
-            organization_id=my_org.id,
-            user_id=user.id)
-        my_org_member_roles = auth0.OrganizationMemberRoles("myOrgMemberRoles",
-            organization_id=my_org.id,
-            user_id=user.id,
-            roles=[
-                reader.id,
-                writer.id,
-            ])
-        ```
-
         ## Import
 
         This resource can be imported by specifying the organization ID and user ID separated by "::" (note the double colon) <organizationID>::<userID> # Example
@@ -205,31 +198,6 @@ class OrganizationMemberRoles(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource is used to manage the roles assigned to an organization member.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        reader = auth0.Role("reader")
-        writer = auth0.Role("writer")
-        user = auth0.User("user",
-            connection_name="Username-Password-Authentication",
-            email="test-user@auth0.com",
-            password="MyPass123$")
-        my_org = auth0.Organization("myOrg", display_name="Some Org")
-        my_org_member = auth0.OrganizationMember("myOrgMember",
-            organization_id=my_org.id,
-            user_id=user.id)
-        my_org_member_roles = auth0.OrganizationMemberRoles("myOrgMemberRoles",
-            organization_id=my_org.id,
-            user_id=user.id,
-            roles=[
-                reader.id,
-                writer.id,
-            ])
-        ```
 
         ## Import
 

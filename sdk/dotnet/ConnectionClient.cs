@@ -17,34 +17,6 @@ namespace Pulumi.Auth0
     /// resource in conjunction with the `auth0.ConnectionClients` resource when managing enabled clients for the
     /// same connection id.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myConn = new Auth0.Connection("myConn", new()
-    ///     {
-    ///         Strategy = "auth0",
-    ///     });
-    /// 
-    ///     var myClient = new Auth0.Client("myClient");
-    /// 
-    ///     // One connection to one client association.
-    ///     // To prevent issues, avoid using this resource together with the `auth0_connection_clients` resource.
-    ///     var myConnClientAssoc = new Auth0.ConnectionClient("myConnClientAssoc", new()
-    ///     {
-    ///         ConnectionId = myConn.Id,
-    ///         ClientId = myClient.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the connection ID and client ID separated by "::" (note the double colon) &lt;connectionID&gt;::&lt;clientID&gt; # Example

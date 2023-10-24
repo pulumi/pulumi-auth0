@@ -11,25 +11,6 @@ import * as utilities from "./utilities";
  * all the members assigned to an organization. To avoid potential issues, it is recommended not to use this resource in
  * conjunction with the `auth0.OrganizationMembers` resource when managing members for the same organization id.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const user = new auth0.User("user", {
- *     email: "test-user@auth0.com",
- *     connectionName: "Username-Password-Authentication",
- *     emailVerified: true,
- *     password: "MyPass123$",
- * });
- * const myOrg = new auth0.Organization("myOrg", {displayName: "Admin"});
- * const myOrgMember = new auth0.OrganizationMember("myOrgMember", {
- *     organizationId: myOrg.id,
- *     userId: user.id,
- * });
- * ```
- *
  * ## Import
  *
  * This resource can be imported by specifying the organization ID and user ID separated by "::" (note the double colon) <organizationID>::<userID> # Example

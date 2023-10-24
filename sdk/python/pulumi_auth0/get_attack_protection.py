@@ -84,15 +84,6 @@ class AwaitableGetAttackProtectionResult(GetAttackProtectionResult):
 def get_attack_protection(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAttackProtectionResult:
     """
     Use this data source to access information about the tenant's attack protection settings.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_auth0 as auth0
-
-    my_protection = auth0.get_attack_protection()
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -109,14 +100,5 @@ def get_attack_protection(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
 def get_attack_protection_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAttackProtectionResult]:
     """
     Use this data source to access information about the tenant's attack protection settings.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_auth0 as auth0
-
-    my_protection = auth0.get_attack_protection()
-    ```
     """
     ...

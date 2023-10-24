@@ -4,35 +4,15 @@
 package auth0
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access information about the tenant's attack protection settings.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.LookupAttackProtection(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupAttackProtection(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupAttackProtectionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttackProtectionResult
@@ -53,4 +33,66 @@ type LookupAttackProtectionResult struct {
 	Id string `pulumi:"id"`
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
 	SuspiciousIpThrottlings []GetAttackProtectionSuspiciousIpThrottling `pulumi:"suspiciousIpThrottlings"`
+}
+
+func LookupAttackProtectionOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupAttackProtectionResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (LookupAttackProtectionResult, error) {
+		r, err := LookupAttackProtection(ctx, opts...)
+		var s LookupAttackProtectionResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(LookupAttackProtectionResultOutput)
+}
+
+// A collection of values returned by getAttackProtection.
+type LookupAttackProtectionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAttackProtectionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAttackProtectionResult)(nil)).Elem()
+}
+
+func (o LookupAttackProtectionResultOutput) ToLookupAttackProtectionResultOutput() LookupAttackProtectionResultOutput {
+	return o
+}
+
+func (o LookupAttackProtectionResultOutput) ToLookupAttackProtectionResultOutputWithContext(ctx context.Context) LookupAttackProtectionResultOutput {
+	return o
+}
+
+func (o LookupAttackProtectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAttackProtectionResult] {
+	return pulumix.Output[LookupAttackProtectionResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Breached password detection protects your applications from bad actors logging in with stolen credentials.
+func (o LookupAttackProtectionResultOutput) BreachedPasswordDetections() GetAttackProtectionBreachedPasswordDetectionArrayOutput {
+	return o.ApplyT(func(v LookupAttackProtectionResult) []GetAttackProtectionBreachedPasswordDetection {
+		return v.BreachedPasswordDetections
+	}).(GetAttackProtectionBreachedPasswordDetectionArrayOutput)
+}
+
+// Brute-force protection safeguards against a single IP address attacking a single user account.
+func (o LookupAttackProtectionResultOutput) BruteForceProtections() GetAttackProtectionBruteForceProtectionArrayOutput {
+	return o.ApplyT(func(v LookupAttackProtectionResult) []GetAttackProtectionBruteForceProtection {
+		return v.BruteForceProtections
+	}).(GetAttackProtectionBruteForceProtectionArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAttackProtectionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAttackProtectionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
+func (o LookupAttackProtectionResultOutput) SuspiciousIpThrottlings() GetAttackProtectionSuspiciousIpThrottlingArrayOutput {
+	return o.ApplyT(func(v LookupAttackProtectionResult) []GetAttackProtectionSuspiciousIpThrottling {
+		return v.SuspiciousIpThrottlings
+	}).(GetAttackProtectionSuspiciousIpThrottlingArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAttackProtectionResultOutput{})
 }

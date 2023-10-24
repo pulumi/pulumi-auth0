@@ -13,66 +13,12 @@ namespace Pulumi.Auth0
     {
         /// <summary>
         /// Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Auth0 = Pulumi.Auth0;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var some_resource_server_by_identifier = Auth0.GetResourceServer.Invoke(new()
-        ///     {
-        ///         Identifier = "https://my-api.com/v1",
-        ///     });
-        /// 
-        ///     var some_resource_server_by_id = Auth0.GetResourceServer.Invoke(new()
-        ///     {
-        ///         ResourceServerId = "abcdefghkijklmnopqrstuvwxyz0123456789",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetResourceServerResult> InvokeAsync(GetResourceServerArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceServerResult>("auth0:index/getResourceServer:getResourceServer", args ?? new GetResourceServerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Auth0 = Pulumi.Auth0;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var some_resource_server_by_identifier = Auth0.GetResourceServer.Invoke(new()
-        ///     {
-        ///         Identifier = "https://my-api.com/v1",
-        ///     });
-        /// 
-        ///     var some_resource_server_by_id = Auth0.GetResourceServer.Invoke(new()
-        ///     {
-        ///         ResourceServerId = "abcdefghkijklmnopqrstuvwxyz0123456789",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetResourceServerResult> Invoke(GetResourceServerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceServerResult>("auth0:index/getResourceServer:getResourceServer", args ?? new GetResourceServerInvokeArgs(), options.WithDefaults());

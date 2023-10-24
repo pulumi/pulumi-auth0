@@ -12,39 +12,6 @@ import * as utilities from "./utilities";
  * > Creating tenants through the Management API is not currently supported. Therefore, this resource can only
  * manage an existing tenant created through the Auth0 dashboard.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myTenant = new auth0.Tenant("myTenant", {
- *     allowedLogoutUrls: ["http://example.com/logout"],
- *     defaultRedirectionUri: "https://example.com/login",
- *     enabledLocales: ["en"],
- *     flags: {
- *         disableClickjackProtectionHeaders: true,
- *         disableFieldsMapFix: false,
- *         disableManagementApiSmsObfuscation: false,
- *         enablePublicSignupUserExistsError: true,
- *         noDiscloseEnterpriseConnections: false,
- *         useScopeDescriptionsForConsent: true,
- *     },
- *     friendlyName: "Tenant Name",
- *     pictureUrl: "http://example.com/logo.png",
- *     sandboxVersion: "12",
- *     sessionCookie: {
- *         mode: "non-persistent",
- *     },
- *     sessionLifetime: 8760,
- *     sessions: {
- *         oidcLogoutPromptEnabled: false,
- *     },
- *     supportEmail: "support@example.com",
- *     supportUrl: "http://example.com/support",
- * });
- * ```
- *
  * ## Import
  *
  * As this is not a resource identifiable by an ID within the Auth0 Management API, tenant can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example

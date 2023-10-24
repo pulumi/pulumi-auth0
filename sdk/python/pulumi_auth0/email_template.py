@@ -50,16 +50,38 @@ class EmailTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             body: pulumi.Input[str],
-             enabled: pulumi.Input[bool],
-             from_: pulumi.Input[str],
-             subject: pulumi.Input[str],
-             syntax: pulumi.Input[str],
-             template: pulumi.Input[str],
+             body: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             from_: Optional[pulumi.Input[str]] = None,
+             subject: Optional[pulumi.Input[str]] = None,
+             syntax: Optional[pulumi.Input[str]] = None,
+             template: Optional[pulumi.Input[str]] = None,
              include_email_in_redirect: Optional[pulumi.Input[bool]] = None,
              result_url: Optional[pulumi.Input[str]] = None,
              url_lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if body is None:
+            raise TypeError("Missing 'body' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if from_ is None and 'from' in kwargs:
+            from_ = kwargs['from']
+        if from_ is None:
+            raise TypeError("Missing 'from_' argument")
+        if subject is None:
+            raise TypeError("Missing 'subject' argument")
+        if syntax is None:
+            raise TypeError("Missing 'syntax' argument")
+        if template is None:
+            raise TypeError("Missing 'template' argument")
+        if include_email_in_redirect is None and 'includeEmailInRedirect' in kwargs:
+            include_email_in_redirect = kwargs['includeEmailInRedirect']
+        if result_url is None and 'resultUrl' in kwargs:
+            result_url = kwargs['resultUrl']
+        if url_lifetime_in_seconds is None and 'urlLifetimeInSeconds' in kwargs:
+            url_lifetime_in_seconds = kwargs['urlLifetimeInSeconds']
+
         _setter("body", body)
         _setter("enabled", enabled)
         _setter("from_", from_)
@@ -230,7 +252,17 @@ class _EmailTemplateState:
              syntax: Optional[pulumi.Input[str]] = None,
              template: Optional[pulumi.Input[str]] = None,
              url_lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if from_ is None and 'from' in kwargs:
+            from_ = kwargs['from']
+        if include_email_in_redirect is None and 'includeEmailInRedirect' in kwargs:
+            include_email_in_redirect = kwargs['includeEmailInRedirect']
+        if result_url is None and 'resultUrl' in kwargs:
+            result_url = kwargs['resultUrl']
+        if url_lifetime_in_seconds is None and 'urlLifetimeInSeconds' in kwargs:
+            url_lifetime_in_seconds = kwargs['urlLifetimeInSeconds']
+
         if body is not None:
             _setter("body", body)
         if enabled is not None:

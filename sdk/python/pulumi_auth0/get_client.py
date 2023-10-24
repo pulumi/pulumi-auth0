@@ -491,16 +491,6 @@ def get_client(client_id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClientResult:
     """
     Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_auth0 as auth0
-
-    some_client_by_name = auth0.get_client(name="Name of my Application")
-    some_client_by_id = auth0.get_client(client_id="abcdefghkijklmnopqrstuvwxyz0123456789")
-    ```
     """
     __args__ = dict()
     __args__['clientId'] = client_id
@@ -555,15 +545,5 @@ def get_client_output(client_id: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientResult]:
     """
     Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_auth0 as auth0
-
-    some_client_by_name = auth0.get_client(name="Name of my Application")
-    some_client_by_id = auth0.get_client(client_id="abcdefghkijklmnopqrstuvwxyz0123456789")
-    ```
     """
     ...

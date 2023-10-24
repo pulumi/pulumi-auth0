@@ -17,40 +17,6 @@ import (
 //
 // !> This resource is deprecated. Refer to the [guide on how to migrate from hooks to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-hooks-to-actions) and manage your actions using the `Action` resource.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewHook(ctx, "myHook", &auth0.HookArgs{
-//				Dependencies: pulumi.AnyMap{
-//					"auth0": pulumi.Any("2.30.0"),
-//				},
-//				Enabled: pulumi.Bool(true),
-//				Script:  pulumi.String("    function (user, context, callback) {\n      callback(null, { user });\n    }\n  \n"),
-//				Secrets: pulumi.AnyMap{
-//					"foo": pulumi.Any("bar"),
-//				},
-//				TriggerId: pulumi.String("pre-user-registration"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // This resource can be imported by specifying the hook ID. # Example
