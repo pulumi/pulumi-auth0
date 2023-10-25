@@ -12,6 +12,28 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With this resource, you can set up APIs that can be consumed from your authorized applications.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myResourceServer = new Auth0.ResourceServer("myResourceServer", new()
+    ///     {
+    ///         AllowOfflineAccess = true,
+    ///         Identifier = "https://api.example.com",
+    ///         SigningAlg = "RS256",
+    ///         SkipConsentForVerifiableFirstPartyClients = true,
+    ///         TokenLifetime = 8600,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Existing resource servers can be imported using their ID. # Example

@@ -132,6 +132,15 @@ class Role(pulumi.CustomResource):
         """
         With this resource, you can create and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on `ResourceServer`, then associated with roles and optionally, users using this resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_role = auth0.Role("myRole", description="Role Description...")
+        ```
+
         ## Import
 
         Existing roles can be imported using their ID. # Example
@@ -153,6 +162,15 @@ class Role(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can create and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on `ResourceServer`, then associated with roles and optionally, users using this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_role = auth0.Role("myRole", description="Role Description...")
+        ```
 
         ## Import
 

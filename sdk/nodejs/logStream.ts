@@ -9,6 +9,47 @@ import * as utilities from "./utilities";
 /**
  * With this resource, you can manage your Auth0 log streams.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // This is an example of an http log stream.
+ * const myWebhook = new auth0.LogStream("myWebhook", {
+ *     filters: [
+ *         {
+ *             name: "auth.login.fail",
+ *             type: "category",
+ *         },
+ *         {
+ *             name: "auth.signup.fail",
+ *             type: "category",
+ *         },
+ *     ],
+ *     sink: {
+ *         httpAuthorization: "AKIAXXXXXXXXXXXXXXXX",
+ *         httpContentFormat: "JSONOBJECT",
+ *         httpContentType: "application/json",
+ *         httpCustomHeaders: [{
+ *             header: "foo",
+ *             value: "bar",
+ *         }],
+ *         httpEndpoint: "https://example.com/logs",
+ *     },
+ *     type: "http",
+ * });
+ * // This is an example of an Amazon EventBridge log stream.
+ * const exampleAws = new auth0.LogStream("exampleAws", {
+ *     sink: {
+ *         awsAccountId: "my_account_id",
+ *         awsRegion: "us-east-2",
+ *     },
+ *     status: "active",
+ *     type: "eventbridge",
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by specifying the log stream ID. # Example

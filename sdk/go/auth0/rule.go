@@ -17,6 +17,33 @@ import (
 //
 // !> This resource is deprecated. Refer to the [guide on how to migrate from rules to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-rules-to-actions) and manage your actions using the `Action` resource.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewRule(ctx, "myRule", &auth0.RuleArgs{
+//				Enabled: pulumi.Bool(true),
+//				Script:  pulumi.String("    function (user, context, callback) {\n      callback(null, user, context);\n    }\n  \n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Existing rules can be imported using their ID. # Example

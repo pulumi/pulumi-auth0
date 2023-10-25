@@ -8,6 +8,20 @@ import * as utilities from "./utilities";
 
 /**
  * Data source to retrieve a specific Auth0 organization by `organizationId` or `name`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const some-organization-by-name = auth0.getOrganization({
+ *     name: "my-org",
+ * });
+ * const some-organization-by-id = auth0.getOrganization({
+ *     organizationId: "org_abcdefghkijklmnopqrstuvwxyz0123456789",
+ * });
+ * ```
  */
 export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
     args = args || {};
@@ -69,6 +83,20 @@ export interface GetOrganizationResult {
 }
 /**
  * Data source to retrieve a specific Auth0 organization by `organizationId` or `name`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const some-organization-by-name = auth0.getOrganization({
+ *     name: "my-org",
+ * });
+ * const some-organization-by-id = auth0.getOrganization({
+ *     organizationId: "org_abcdefghkijklmnopqrstuvwxyz0123456789",
+ * });
+ * ```
  */
 export function getOrganizationOutput(args?: GetOrganizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationResult> {
     return pulumi.output(args).apply((a: any) => getOrganization(a, opts))

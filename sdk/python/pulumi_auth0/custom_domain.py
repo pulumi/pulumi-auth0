@@ -288,6 +288,17 @@ class CustomDomain(pulumi.CustomResource):
         """
         With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_custom_domain = auth0.CustomDomain("myCustomDomain",
+            domain="auth.example.com",
+            type="auth0_managed_certs")
+        ```
+
         ## Import
 
         Custom domains can be imported using their ID. # You can find existing custom domain IDs using the Auth0 Management API. https://auth0.com/docs/api/management/v2#!/Custom_Domains/get_custom_domains # Example
@@ -311,6 +322,17 @@ class CustomDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_custom_domain = auth0.CustomDomain("myCustomDomain",
+            domain="auth.example.com",
+            type="auth0_managed_certs")
+        ```
 
         ## Import
 

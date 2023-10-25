@@ -8,6 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to access information about the tenant's branding theme settings.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const myBrandingTheme = auth0.getBrandingTheme({});
+ * ```
  */
 export function getBrandingTheme(opts?: pulumi.InvokeOptions): Promise<GetBrandingThemeResult> {
 
@@ -36,6 +45,15 @@ export interface GetBrandingThemeResult {
 }
 /**
  * Use this data source to access information about the tenant's branding theme settings.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const myBrandingTheme = auth0.getBrandingTheme({});
+ * ```
  */
 export function getBrandingThemeOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetBrandingThemeResult> {
     return pulumi.output(getBrandingTheme(opts))

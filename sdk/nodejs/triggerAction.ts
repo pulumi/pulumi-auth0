@@ -13,6 +13,29 @@ import * as utilities from "./utilities";
  * the action bindings to a trigger. To avoid potential issues, it is recommended not to use this resource in conjunction
  * with the `auth0.TriggerAction` resource when binding actions to the same trigger.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const loginAlert = new auth0.Action("loginAlert", {
+ *     code: `exports.onContinuePostLogin = async (event, api) => {
+ *   console.log("foo");
+ * };"
+ * `,
+ *     deploy: true,
+ *     supportedTriggers: {
+ *         id: "post-login",
+ *         version: "v3",
+ *     },
+ * });
+ * const postLoginAlertAction = new auth0.TriggerAction("postLoginAlertAction", {
+ *     trigger: "post-login",
+ *     actionId: loginAlert.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by specifying the trigger and action ID separated by "::" (note the double colon) <trigger>::<actionID> # Example

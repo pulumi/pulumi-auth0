@@ -243,6 +243,45 @@ class LogStream(pulumi.CustomResource):
         """
         With this resource, you can manage your Auth0 log streams.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # This is an example of an http log stream.
+        my_webhook = auth0.LogStream("myWebhook",
+            filters=[
+                {
+                    "name": "auth.login.fail",
+                    "type": "category",
+                },
+                {
+                    "name": "auth.signup.fail",
+                    "type": "category",
+                },
+            ],
+            sink=auth0.LogStreamSinkArgs(
+                http_authorization="AKIAXXXXXXXXXXXXXXXX",
+                http_content_format="JSONOBJECT",
+                http_content_type="application/json",
+                http_custom_headers=[{
+                    "header": "foo",
+                    "value": "bar",
+                }],
+                http_endpoint="https://example.com/logs",
+            ),
+            type="http")
+        # This is an example of an Amazon EventBridge log stream.
+        example_aws = auth0.LogStream("exampleAws",
+            sink=auth0.LogStreamSinkArgs(
+                aws_account_id="my_account_id",
+                aws_region="us-east-2",
+            ),
+            status="active",
+            type="eventbridge")
+        ```
+
         ## Import
 
         This resource can be imported by specifying the log stream ID. # Example
@@ -267,6 +306,45 @@ class LogStream(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can manage your Auth0 log streams.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # This is an example of an http log stream.
+        my_webhook = auth0.LogStream("myWebhook",
+            filters=[
+                {
+                    "name": "auth.login.fail",
+                    "type": "category",
+                },
+                {
+                    "name": "auth.signup.fail",
+                    "type": "category",
+                },
+            ],
+            sink=auth0.LogStreamSinkArgs(
+                http_authorization="AKIAXXXXXXXXXXXXXXXX",
+                http_content_format="JSONOBJECT",
+                http_content_type="application/json",
+                http_custom_headers=[{
+                    "header": "foo",
+                    "value": "bar",
+                }],
+                http_endpoint="https://example.com/logs",
+            ),
+            type="http")
+        # This is an example of an Amazon EventBridge log stream.
+        example_aws = auth0.LogStream("exampleAws",
+            sink=auth0.LogStreamSinkArgs(
+                aws_account_id="my_account_id",
+                aws_region="us-east-2",
+            ),
+            status="active",
+            type="eventbridge")
+        ```
 
         ## Import
 

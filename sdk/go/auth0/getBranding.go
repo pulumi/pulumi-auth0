@@ -13,6 +13,30 @@ import (
 )
 
 // Use this data source to access information about the tenant's branding settings.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.LookupBranding(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupBranding(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupBrandingResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBrandingResult

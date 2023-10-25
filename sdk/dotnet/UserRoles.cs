@@ -16,6 +16,42 @@ namespace Pulumi.Auth0
     /// role to a user. To avoid potential issues, it is recommended not to use this resource in conjunction with the
     /// `auth0.UserRole` resource when managing roles for the same user id.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Example:
+    ///     var admin = new Auth0.Role("admin", new()
+    ///     {
+    ///         Description = "Administrator",
+    ///     });
+    /// 
+    ///     var user = new Auth0.User("user", new()
+    ///     {
+    ///         ConnectionName = "Username-Password-Authentication",
+    ///         Username = "unique_username",
+    ///         Email = "test@test.com",
+    ///         Password = "passpass$12$12",
+    ///     });
+    /// 
+    ///     var userRoles = new Auth0.UserRoles("userRoles", new()
+    ///     {
+    ///         UserId = user.Id,
+    ///         Roles = new[]
+    ///         {
+    ///             admin.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported using the user ID. # Example

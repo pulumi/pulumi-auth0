@@ -13,12 +13,50 @@ namespace Pulumi.Auth0
     {
         /// <summary>
         /// Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPages = Auth0.GetPages.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPagesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPagesResult>("auth0:index/getPages:getPages", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPages = Auth0.GetPages.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPagesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPagesResult>("auth0:index/getPages:getPages", InvokeArgs.Empty, options.WithDefaults());

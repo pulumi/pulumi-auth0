@@ -369,6 +369,281 @@ class Connection(pulumi.CustomResource):
         creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
 
         ## Example Usage
+        ### Google OAuth2 Connection
+
+        > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        google_oauth2 = auth0.Connection("googleOauth2",
+            options=auth0.ConnectionOptionsArgs(
+                allowed_audiences=[
+                    "example.com",
+                    "api.example.com",
+                ],
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                scopes=[
+                    "email",
+                    "profile",
+                    "gmail",
+                    "youtube",
+                ],
+                set_user_root_attributes="on_each_login",
+            ),
+            strategy="google-oauth2")
+        ```
+        ### Facebook Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        facebook = auth0.Connection("facebook",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                scopes=[
+                    "public_profile",
+                    "email",
+                    "groups_access_member_info",
+                    "user_birthday",
+                ],
+                set_user_root_attributes="on_each_login",
+            ),
+            strategy="facebook")
+        ```
+        ### Apple Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        apple = auth0.Connection("apple",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret=\"\"\"-----BEGIN PRIVATE KEY-----
+        MIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA
+        -----END PRIVATE KEY-----
+        \"\"\",
+                key_id="<key-id>",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                scopes=[
+                    "email",
+                    "name",
+                ],
+                set_user_root_attributes="on_first_login",
+                team_id="<team-id>",
+            ),
+            strategy="apple")
+        ```
+        ### LinkedIn Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        linkedin = auth0.Connection("linkedin",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                scopes=[
+                    "basic_profile",
+                    "profile",
+                    "email",
+                ],
+                set_user_root_attributes="on_each_login",
+                strategy_version=2,
+            ),
+            strategy="linkedin")
+        ```
+        ### GitHub Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        github = auth0.Connection("github",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                scopes=[
+                    "email",
+                    "profile",
+                    "public_repo",
+                    "repo",
+                ],
+                set_user_root_attributes="on_each_login",
+            ),
+            strategy="github")
+        ```
+        ### SalesForce Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        salesforce = auth0.Connection("salesforce",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                community_base_url="https://salesforce.example.com",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                scopes=[
+                    "openid",
+                    "email",
+                ],
+                set_user_root_attributes="on_first_login",
+            ),
+            strategy="salesforce")
+        ```
+        ### OAuth2 Connection
+
+        Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        oauth2 = auth0.Connection("oauth2",
+            options=auth0.ConnectionOptionsArgs(
+                authorization_endpoint="https://auth.example.com/oauth2/authorize",
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                icon_url="https://auth.example.com/assets/logo.png",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                pkce_enabled=True,
+                scopes=[
+                    "basic_profile",
+                    "profile",
+                    "email",
+                ],
+                scripts={
+                    "fetchUserProfile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
+                  return callback(new Error("Whoops!"));
+                }
+              
+        \"\"\",
+                },
+                set_user_root_attributes="on_each_login",
+                token_endpoint="https://auth.example.com/oauth2/token",
+            ),
+            strategy="oauth2")
+        ```
+        ### SMS Connection
+
+        > To be able to see this in the management dashboard as well, the name of the connection must be set to "sms".
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        sms = auth0.Connection("sms",
+            is_domain_connection=False,
+            options=auth0.ConnectionOptionsArgs(
+                brute_force_protection=True,
+                disable_signup=False,
+                forward_request_info=True,
+                from_="+15555555555",
+                gateway_authentication=auth0.ConnectionOptionsGatewayAuthenticationArgs(
+                    audience="https://somewhere.com/sms-gateway",
+                    method="bearer",
+                    secret="4e2680bb74ec2ae24736476dd37ed6c2",
+                    secret_base64_encoded=False,
+                    subject="test.us.auth0.com:sms",
+                ),
+                gateway_url="https://somewhere.com/sms-gateway",
+                name="sms",
+                provider="sms_gateway",
+                syntax="md_with_macros",
+                template="@@password@@",
+                totp=auth0.ConnectionOptionsTotpArgs(
+                    length=6,
+                    time_step=300,
+                ),
+            ),
+            strategy="sms")
+        ```
+        ### Email Connection
+
+        > To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        passwordless_email = auth0.Connection("passwordlessEmail",
+            options=auth0.ConnectionOptionsArgs(
+                auth_params={
+                    "responseType": "code",
+                    "scope": "openid email profile offline_access",
+                },
+                brute_force_protection=True,
+                disable_signup=False,
+                from_="{{ application.name }} <root@auth0.com>",
+                name="email",
+                non_persistent_attrs=[],
+                set_user_root_attributes="on_each_login",
+                subject="Welcome to {{ application.name }}",
+                syntax="liquid",
+                template="<html>This is the body of the email</html>",
+                totp=auth0.ConnectionOptionsTotpArgs(
+                    length=6,
+                    time_step=300,
+                ),
+            ),
+            strategy="email")
+        ```
+        ### WindowsLive Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        windowslive = auth0.Connection("windowslive",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                scopes=[
+                    "signin",
+                    "graph_user",
+                ],
+                set_user_root_attributes="on_first_login",
+                strategy_version=2,
+            ),
+            strategy="windowslive")
+        ```
 
         ## Import
 
@@ -402,6 +677,281 @@ class Connection(pulumi.CustomResource):
         creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
 
         ## Example Usage
+        ### Google OAuth2 Connection
+
+        > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        google_oauth2 = auth0.Connection("googleOauth2",
+            options=auth0.ConnectionOptionsArgs(
+                allowed_audiences=[
+                    "example.com",
+                    "api.example.com",
+                ],
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                scopes=[
+                    "email",
+                    "profile",
+                    "gmail",
+                    "youtube",
+                ],
+                set_user_root_attributes="on_each_login",
+            ),
+            strategy="google-oauth2")
+        ```
+        ### Facebook Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        facebook = auth0.Connection("facebook",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                scopes=[
+                    "public_profile",
+                    "email",
+                    "groups_access_member_info",
+                    "user_birthday",
+                ],
+                set_user_root_attributes="on_each_login",
+            ),
+            strategy="facebook")
+        ```
+        ### Apple Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        apple = auth0.Connection("apple",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret=\"\"\"-----BEGIN PRIVATE KEY-----
+        MIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA
+        -----END PRIVATE KEY-----
+        \"\"\",
+                key_id="<key-id>",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                scopes=[
+                    "email",
+                    "name",
+                ],
+                set_user_root_attributes="on_first_login",
+                team_id="<team-id>",
+            ),
+            strategy="apple")
+        ```
+        ### LinkedIn Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        linkedin = auth0.Connection("linkedin",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                scopes=[
+                    "basic_profile",
+                    "profile",
+                    "email",
+                ],
+                set_user_root_attributes="on_each_login",
+                strategy_version=2,
+            ),
+            strategy="linkedin")
+        ```
+        ### GitHub Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        github = auth0.Connection("github",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                scopes=[
+                    "email",
+                    "profile",
+                    "public_repo",
+                    "repo",
+                ],
+                set_user_root_attributes="on_each_login",
+            ),
+            strategy="github")
+        ```
+        ### SalesForce Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        salesforce = auth0.Connection("salesforce",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                community_base_url="https://salesforce.example.com",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                scopes=[
+                    "openid",
+                    "email",
+                ],
+                set_user_root_attributes="on_first_login",
+            ),
+            strategy="salesforce")
+        ```
+        ### OAuth2 Connection
+
+        Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        oauth2 = auth0.Connection("oauth2",
+            options=auth0.ConnectionOptionsArgs(
+                authorization_endpoint="https://auth.example.com/oauth2/authorize",
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                icon_url="https://auth.example.com/assets/logo.png",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                pkce_enabled=True,
+                scopes=[
+                    "basic_profile",
+                    "profile",
+                    "email",
+                ],
+                scripts={
+                    "fetchUserProfile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
+                  return callback(new Error("Whoops!"));
+                }
+              
+        \"\"\",
+                },
+                set_user_root_attributes="on_each_login",
+                token_endpoint="https://auth.example.com/oauth2/token",
+            ),
+            strategy="oauth2")
+        ```
+        ### SMS Connection
+
+        > To be able to see this in the management dashboard as well, the name of the connection must be set to "sms".
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        sms = auth0.Connection("sms",
+            is_domain_connection=False,
+            options=auth0.ConnectionOptionsArgs(
+                brute_force_protection=True,
+                disable_signup=False,
+                forward_request_info=True,
+                from_="+15555555555",
+                gateway_authentication=auth0.ConnectionOptionsGatewayAuthenticationArgs(
+                    audience="https://somewhere.com/sms-gateway",
+                    method="bearer",
+                    secret="4e2680bb74ec2ae24736476dd37ed6c2",
+                    secret_base64_encoded=False,
+                    subject="test.us.auth0.com:sms",
+                ),
+                gateway_url="https://somewhere.com/sms-gateway",
+                name="sms",
+                provider="sms_gateway",
+                syntax="md_with_macros",
+                template="@@password@@",
+                totp=auth0.ConnectionOptionsTotpArgs(
+                    length=6,
+                    time_step=300,
+                ),
+            ),
+            strategy="sms")
+        ```
+        ### Email Connection
+
+        > To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        passwordless_email = auth0.Connection("passwordlessEmail",
+            options=auth0.ConnectionOptionsArgs(
+                auth_params={
+                    "responseType": "code",
+                    "scope": "openid email profile offline_access",
+                },
+                brute_force_protection=True,
+                disable_signup=False,
+                from_="{{ application.name }} <root@auth0.com>",
+                name="email",
+                non_persistent_attrs=[],
+                set_user_root_attributes="on_each_login",
+                subject="Welcome to {{ application.name }}",
+                syntax="liquid",
+                template="<html>This is the body of the email</html>",
+                totp=auth0.ConnectionOptionsTotpArgs(
+                    length=6,
+                    time_step=300,
+                ),
+            ),
+            strategy="email")
+        ```
+        ### WindowsLive Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        windowslive = auth0.Connection("windowslive",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                scopes=[
+                    "signin",
+                    "graph_user",
+                ],
+                set_user_root_attributes="on_first_login",
+                strategy_version=2,
+            ),
+            strategy="windowslive")
+        ```
 
         ## Import
 

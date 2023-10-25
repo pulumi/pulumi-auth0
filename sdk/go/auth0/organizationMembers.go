@@ -20,6 +20,58 @@ import (
 // resource in conjunction with the `OrganizationMember` resource when managing members for the same organization
 // id.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			user1, err := auth0.NewUser(ctx, "user1", &auth0.UserArgs{
+//				ConnectionName: pulumi.String("Username-Password-Authentication"),
+//				Email:          pulumi.String("myuser1@auth0.com"),
+//				Password:       pulumi.String("MyPass123$"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			user2, err := auth0.NewUser(ctx, "user2", &auth0.UserArgs{
+//				ConnectionName: pulumi.String("Username-Password-Authentication"),
+//				Email:          pulumi.String("myuser2@auth0.com"),
+//				Password:       pulumi.String("MyPass123$"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myOrg, err := auth0.NewOrganization(ctx, "myOrg", &auth0.OrganizationArgs{
+//				DisplayName: pulumi.String("Some Organization"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewOrganizationMembers(ctx, "myMembers", &auth0.OrganizationMembersArgs{
+//				OrganizationId: myOrg.ID(),
+//				Members: pulumi.StringArray{
+//					user1.ID(),
+//					user2.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by specifying the organization ID. # Example

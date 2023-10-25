@@ -12,6 +12,24 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With this resource, you can create and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on `auth0.ResourceServer`, then associated with roles and optionally, users using this resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myRole = new Auth0.Role("myRole", new()
+    ///     {
+    ///         Description = "Role Description...",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Existing roles can be imported using their ID. # Example

@@ -207,6 +207,16 @@ def get_resource_server(identifier: Optional[str] = None,
     """
     Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    some_resource_server_by_identifier = auth0.get_resource_server(identifier="https://my-api.com/v1")
+    some_resource_server_by_id = auth0.get_resource_server(resource_server_id="abcdefghkijklmnopqrstuvwxyz0123456789")
+    ```
+
 
     :param str identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
     :param str resource_server_id: The ID of the resource server. If not provided, `identifier` must be set.
@@ -240,6 +250,16 @@ def get_resource_server_output(identifier: Optional[pulumi.Input[Optional[str]]]
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourceServerResult]:
     """
     Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    some_resource_server_by_identifier = auth0.get_resource_server(identifier="https://my-api.com/v1")
+    some_resource_server_by_id = auth0.get_resource_server(resource_server_id="abcdefghkijklmnopqrstuvwxyz0123456789")
+    ```
 
 
     :param str identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.

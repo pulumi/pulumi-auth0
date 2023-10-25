@@ -17,6 +17,48 @@ namespace Pulumi.Auth0
     /// resource in conjunction with the `auth0.OrganizationMember` resource when managing members for the same organization
     /// id.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var user1 = new Auth0.User("user1", new()
+    ///     {
+    ///         ConnectionName = "Username-Password-Authentication",
+    ///         Email = "myuser1@auth0.com",
+    ///         Password = "MyPass123$",
+    ///     });
+    /// 
+    ///     var user2 = new Auth0.User("user2", new()
+    ///     {
+    ///         ConnectionName = "Username-Password-Authentication",
+    ///         Email = "myuser2@auth0.com",
+    ///         Password = "MyPass123$",
+    ///     });
+    /// 
+    ///     var myOrg = new Auth0.Organization("myOrg", new()
+    ///     {
+    ///         DisplayName = "Some Organization",
+    ///     });
+    /// 
+    ///     var myMembers = new Auth0.OrganizationMembers("myMembers", new()
+    ///     {
+    ///         OrganizationId = myOrg.Id,
+    ///         Members = new[]
+    ///         {
+    ///             user1.Id,
+    ///             user2.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the organization ID. # Example

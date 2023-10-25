@@ -96,6 +96,15 @@ class AwaitableGetPagesResult(GetPagesResult):
 def get_pages(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPagesResult:
     """
     Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_pages = auth0.get_pages()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -113,5 +122,14 @@ def get_pages(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPagesR
 def get_pages_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPagesResult]:
     """
     Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_pages = auth0.get_pages()
+    ```
     """
     ...

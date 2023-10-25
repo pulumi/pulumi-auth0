@@ -212,6 +212,32 @@ class Pages(pulumi.CustomResource):
         """
         With this resource you can manage custom HTML for the Login, Reset Password, Multi-Factor Authentication and Error pages.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_pages = auth0.Pages("myPages",
+            change_password=auth0.PagesChangePasswordArgs(
+                enabled=True,
+                html="<html><body>My Custom Reset Password Page</body></html>",
+            ),
+            error=auth0.PagesErrorArgs(
+                html="<html><body>My Custom Error Page</body></html>",
+                show_log_link=True,
+                url="https://example.com",
+            ),
+            guardian_mfa=auth0.PagesGuardianMfaArgs(
+                enabled=True,
+                html="<html><body>My Custom MFA Page</body></html>",
+            ),
+            login=auth0.PagesLoginArgs(
+                enabled=True,
+                html="<html><body>My Custom Login Page</body></html>",
+            ))
+        ```
+
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API, pages can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
@@ -235,6 +261,32 @@ class Pages(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource you can manage custom HTML for the Login, Reset Password, Multi-Factor Authentication and Error pages.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_pages = auth0.Pages("myPages",
+            change_password=auth0.PagesChangePasswordArgs(
+                enabled=True,
+                html="<html><body>My Custom Reset Password Page</body></html>",
+            ),
+            error=auth0.PagesErrorArgs(
+                html="<html><body>My Custom Error Page</body></html>",
+                show_log_link=True,
+                url="https://example.com",
+            ),
+            guardian_mfa=auth0.PagesGuardianMfaArgs(
+                enabled=True,
+                html="<html><body>My Custom MFA Page</body></html>",
+            ),
+            login=auth0.PagesLoginArgs(
+                enabled=True,
+                html="<html><body>My Custom Login Page</body></html>",
+            ))
+        ```
 
         ## Import
 

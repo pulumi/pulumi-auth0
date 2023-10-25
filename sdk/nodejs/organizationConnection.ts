@@ -12,6 +12,21 @@ import * as utilities from "./utilities";
  * resource in conjunction with the `auth0.OrganizationConnections` resource when managing enabled connections for the
  * same organization id.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const myConnection = new auth0.Connection("myConnection", {strategy: "auth0"});
+ * const myOrganization = new auth0.Organization("myOrganization", {displayName: "My Organization"});
+ * const myOrgConn = new auth0.OrganizationConnection("myOrgConn", {
+ *     organizationId: myOrganization.id,
+ *     connectionId: myConnection.id,
+ *     assignMembershipOnLogin: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by specifying the organization ID and connection ID separated by "::" (note the double colon) <organizationID>::<connectionID> # Example

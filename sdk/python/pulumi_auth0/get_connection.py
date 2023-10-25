@@ -171,6 +171,16 @@ def get_connection(connection_id: Optional[str] = None,
     """
     Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    some_connection_by_name = auth0.get_connection(name="Acceptance-Test-Connection-{{.testName}}")
+    some_connection_by_id = auth0.get_connection(connection_id="con_abcdefghkijklmnopqrstuvwxyz0123456789")
+    ```
+
 
     :param str connection_id: The ID of the connection. If not provided, `name` must be set.
     """
@@ -200,6 +210,16 @@ def get_connection_output(connection_id: Optional[pulumi.Input[Optional[str]]] =
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionResult]:
     """
     Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    some_connection_by_name = auth0.get_connection(name="Acceptance-Test-Connection-{{.testName}}")
+    some_connection_by_id = auth0.get_connection(connection_id="con_abcdefghkijklmnopqrstuvwxyz0123456789")
+    ```
 
 
     :param str connection_id: The ID of the connection. If not provided, `name` must be set.

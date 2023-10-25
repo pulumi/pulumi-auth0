@@ -14,6 +14,28 @@ import * as utilities from "./utilities";
  * resource in conjunction with the `auth0.ResourceServerScope` resource when managing scopes for the same resource
  * server id.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const myApi = new auth0.ResourceServer("myApi", {identifier: "https://api.example.com"});
+ * const myApiScopes = new auth0.ResourceServerScopes("myApiScopes", {
+ *     resourceServerIdentifier: myApi.identifier,
+ *     scopes: [
+ *         {
+ *             name: "create:appointments",
+ *             description: "Ability to create appointments",
+ *         },
+ *         {
+ *             name: "read:appointments",
+ *             description: "Ability to read appointments",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by specifying the resource server identifier. # Example

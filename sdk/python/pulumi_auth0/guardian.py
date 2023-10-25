@@ -402,6 +402,60 @@ class Guardian(pulumi.CustomResource):
         """
         Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_guardian = auth0.Guardian("myGuardian",
+            duo=auth0.GuardianDuoArgs(
+                enabled=True,
+                hostname="api-hostname",
+                integration_key="someKey",
+                secret_key="someSecret",
+            ),
+            email=True,
+            otp=True,
+            phone=auth0.GuardianPhoneArgs(
+                enabled=True,
+                message_types=[
+                    "sms",
+                    "voice",
+                ],
+                options=auth0.GuardianPhoneOptionsArgs(
+                    enrollment_message="{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
+                    verification_message="{{code}} is your verification code for {{tenant.friendly_name}}.",
+                ),
+                provider="auth0",
+            ),
+            policy="all-applications",
+            push=auth0.GuardianPushArgs(
+                amazon_sns=auth0.GuardianPushAmazonSnsArgs(
+                    aws_access_key_id="test1",
+                    aws_region="us-west-1",
+                    aws_secret_access_key="secretKey",
+                    sns_apns_platform_application_arn="test_arn",
+                    sns_gcm_platform_application_arn="test_arn",
+                ),
+                custom_app=auth0.GuardianPushCustomAppArgs(
+                    app_name="CustomApp",
+                    apple_app_link="https://itunes.apple.com/us/app/my-app/id123121",
+                    google_app_link="https://play.google.com/store/apps/details?id=com.my.app",
+                ),
+                enabled=True,
+                provider="sns",
+            ),
+            recovery_code=True,
+            webauthn_platform=auth0.GuardianWebauthnPlatformArgs(
+                enabled=True,
+            ),
+            webauthn_roaming=auth0.GuardianWebauthnRoamingArgs(
+                enabled=True,
+                user_verification="required",
+            ))
+        ```
+
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
@@ -430,6 +484,60 @@ class Guardian(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_guardian = auth0.Guardian("myGuardian",
+            duo=auth0.GuardianDuoArgs(
+                enabled=True,
+                hostname="api-hostname",
+                integration_key="someKey",
+                secret_key="someSecret",
+            ),
+            email=True,
+            otp=True,
+            phone=auth0.GuardianPhoneArgs(
+                enabled=True,
+                message_types=[
+                    "sms",
+                    "voice",
+                ],
+                options=auth0.GuardianPhoneOptionsArgs(
+                    enrollment_message="{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
+                    verification_message="{{code}} is your verification code for {{tenant.friendly_name}}.",
+                ),
+                provider="auth0",
+            ),
+            policy="all-applications",
+            push=auth0.GuardianPushArgs(
+                amazon_sns=auth0.GuardianPushAmazonSnsArgs(
+                    aws_access_key_id="test1",
+                    aws_region="us-west-1",
+                    aws_secret_access_key="secretKey",
+                    sns_apns_platform_application_arn="test_arn",
+                    sns_gcm_platform_application_arn="test_arn",
+                ),
+                custom_app=auth0.GuardianPushCustomAppArgs(
+                    app_name="CustomApp",
+                    apple_app_link="https://itunes.apple.com/us/app/my-app/id123121",
+                    google_app_link="https://play.google.com/store/apps/details?id=com.my.app",
+                ),
+                enabled=True,
+                provider="sns",
+            ),
+            recovery_code=True,
+            webauthn_platform=auth0.GuardianWebauthnPlatformArgs(
+                enabled=True,
+            ),
+            webauthn_roaming=auth0.GuardianWebauthnRoamingArgs(
+                enabled=True,
+                user_verification="required",
+            ))
+        ```
 
         ## Import
 

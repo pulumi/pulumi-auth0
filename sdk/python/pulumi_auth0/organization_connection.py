@@ -220,6 +220,20 @@ class OrganizationConnection(pulumi.CustomResource):
         resource in conjunction with the `OrganizationConnections` resource when managing enabled connections for the
         same organization id.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_connection = auth0.Connection("myConnection", strategy="auth0")
+        my_organization = auth0.Organization("myOrganization", display_name="My Organization")
+        my_org_conn = auth0.OrganizationConnection("myOrgConn",
+            organization_id=my_organization.id,
+            connection_id=my_connection.id,
+            assign_membership_on_login=True)
+        ```
+
         ## Import
 
         This resource can be imported by specifying the organization ID and connection ID separated by "::" (note the double colon) <organizationID>::<connectionID> # Example
@@ -247,6 +261,20 @@ class OrganizationConnection(pulumi.CustomResource):
         manages all the connections enabled for an organization. To avoid potential issues, it is recommended not to use this
         resource in conjunction with the `OrganizationConnections` resource when managing enabled connections for the
         same organization id.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_connection = auth0.Connection("myConnection", strategy="auth0")
+        my_organization = auth0.Organization("myOrganization", display_name="My Organization")
+        my_org_conn = auth0.OrganizationConnection("myOrgConn",
+            organization_id=my_organization.id,
+            connection_id=my_connection.id,
+            assign_membership_on_login=True)
+        ```
 
         ## Import
 

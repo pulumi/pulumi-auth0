@@ -12,6 +12,58 @@ import * as utilities from "./utilities";
  * > Refer to the client secret rotation guide
  * for instructions on how to rotate client secrets with zero downtime.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const myClient = new auth0.Client("myClient", {
+ *     appType: "non_interactive",
+ *     jwtConfiguration: {
+ *         alg: "RS256",
+ *     },
+ * });
+ * // Configuring client_secret_post as an authentication method.
+ * const testClientCredentials = new auth0.ClientCredentials("testClientCredentials", {
+ *     clientId: myClient.id,
+ *     authenticationMethod: "client_secret_post",
+ * });
+ * // Configuring client_secret_basic as an authentication method.
+ * const testIndex_clientCredentialsClientCredentials = new auth0.ClientCredentials("testIndex/clientCredentialsClientCredentials", {
+ *     clientId: myClient.id,
+ *     authenticationMethod: "client_secret_basic",
+ * });
+ * // Configuring none as an authentication method.
+ * const testAuth0Index_clientCredentialsClientCredentials = new auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials", {
+ *     clientId: myClient.id,
+ *     authenticationMethod: "none",
+ * });
+ * // Configuring private_key_jwt as an authentication method.
+ * const testAuth0Index_clientCredentialsClientCredentials1 = new auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials1", {
+ *     clientId: myClient.id,
+ *     authenticationMethod: "private_key_jwt",
+ *     privateKeyJwt: {
+ *         credentials: [{
+ *             name: "Testing Credentials 1",
+ *             credentialType: "public_key",
+ *             algorithm: "RS256",
+ *             parseExpiryFromCert: true,
+ *             pem: `-----BEGIN CERTIFICATE-----
+ * MIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl
+ * -----END CERTIFICATE-----
+ * `,
+ *         }],
+ *     },
+ * });
+ * // Configuring the client_secret.
+ * const testAuth0Index_clientCredentialsClientCredentials2 = new auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials2", {
+ *     clientId: myClient.id,
+ *     authenticationMethod: "client_secret_basic",
+ *     clientSecret: "LUFqPx+sRLjbL7peYRPFmFu-bbvE7u7og4YUNe_C345=683341",
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by specifying the client ID. # Example

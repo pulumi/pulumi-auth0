@@ -139,6 +139,29 @@ class OrganizationMembers(pulumi.CustomResource):
         resource in conjunction with the `OrganizationMember` resource when managing members for the same organization
         id.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        user1 = auth0.User("user1",
+            connection_name="Username-Password-Authentication",
+            email="myuser1@auth0.com",
+            password="MyPass123$")
+        user2 = auth0.User("user2",
+            connection_name="Username-Password-Authentication",
+            email="myuser2@auth0.com",
+            password="MyPass123$")
+        my_org = auth0.Organization("myOrg", display_name="Some Organization")
+        my_members = auth0.OrganizationMembers("myMembers",
+            organization_id=my_org.id,
+            members=[
+                user1.id,
+                user2.id,
+            ])
+        ```
+
         ## Import
 
         This resource can be imported by specifying the organization ID. # Example
@@ -165,6 +188,29 @@ class OrganizationMembers(pulumi.CustomResource):
         resource only appends a member to an organization. To avoid potential issues, it is recommended not to use this
         resource in conjunction with the `OrganizationMember` resource when managing members for the same organization
         id.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        user1 = auth0.User("user1",
+            connection_name="Username-Password-Authentication",
+            email="myuser1@auth0.com",
+            password="MyPass123$")
+        user2 = auth0.User("user2",
+            connection_name="Username-Password-Authentication",
+            email="myuser2@auth0.com",
+            password="MyPass123$")
+        my_org = auth0.Organization("myOrg", display_name="Some Organization")
+        my_members = auth0.OrganizationMembers("myMembers",
+            organization_id=my_org.id,
+            members=[
+                user1.id,
+                user2.id,
+            ])
+        ```
 
         ## Import
 

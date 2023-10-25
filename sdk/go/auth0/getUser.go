@@ -13,6 +13,32 @@ import (
 )
 
 // Data source to retrieve a specific Auth0 user by `userId`.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.LookupUser(ctx, &auth0.LookupUserArgs{
+//				UserId: "auth0|34fdr23fdsfdfsf",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserResult

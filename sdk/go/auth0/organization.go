@@ -20,6 +20,39 @@ import (
 //   - Build administration capabilities into their products, using Organizations
 //     APIs, so that those businesses can manage their own organizations.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewOrganization(ctx, "myOrganization", &auth0.OrganizationArgs{
+//				Branding: &auth0.OrganizationBrandingArgs{
+//					Colors: pulumi.StringMap{
+//						"pageBackground": pulumi.String("#e1e1e1"),
+//						"primary":        pulumi.String("#f2f2f2"),
+//					},
+//					LogoUrl: pulumi.String("https://example.com/assets/icons/icon.png"),
+//				},
+//				DisplayName: pulumi.String("Auth0 Inc."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by specifying the organization ID. # Example

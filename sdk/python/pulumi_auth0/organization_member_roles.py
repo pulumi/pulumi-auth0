@@ -176,6 +176,31 @@ class OrganizationMemberRoles(pulumi.CustomResource):
         """
         This resource is used to manage the roles assigned to an organization member.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        reader = auth0.Role("reader")
+        writer = auth0.Role("writer")
+        user = auth0.User("user",
+            connection_name="Username-Password-Authentication",
+            email="test-user@auth0.com",
+            password="MyPass123$")
+        my_org = auth0.Organization("myOrg", display_name="Some Org")
+        my_org_member = auth0.OrganizationMember("myOrgMember",
+            organization_id=my_org.id,
+            user_id=user.id)
+        my_org_member_roles = auth0.OrganizationMemberRoles("myOrgMemberRoles",
+            organization_id=my_org.id,
+            user_id=user.id,
+            roles=[
+                reader.id,
+                writer.id,
+            ])
+        ```
+
         ## Import
 
         This resource can be imported by specifying the organization ID and user ID separated by "::" (note the double colon) <organizationID>::<userID> # Example
@@ -198,6 +223,31 @@ class OrganizationMemberRoles(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource is used to manage the roles assigned to an organization member.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        reader = auth0.Role("reader")
+        writer = auth0.Role("writer")
+        user = auth0.User("user",
+            connection_name="Username-Password-Authentication",
+            email="test-user@auth0.com",
+            password="MyPass123$")
+        my_org = auth0.Organization("myOrg", display_name="Some Org")
+        my_org_member = auth0.OrganizationMember("myOrgMember",
+            organization_id=my_org.id,
+            user_id=user.id)
+        my_org_member_roles = auth0.OrganizationMemberRoles("myOrgMemberRoles",
+            organization_id=my_org.id,
+            user_id=user.id,
+            roles=[
+                reader.id,
+                writer.id,
+            ])
+        ```
 
         ## Import
 

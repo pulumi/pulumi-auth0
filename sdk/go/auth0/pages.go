@@ -14,6 +14,48 @@ import (
 
 // With this resource you can manage custom HTML for the Login, Reset Password, Multi-Factor Authentication and Error pages.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewPages(ctx, "myPages", &auth0.PagesArgs{
+//				ChangePassword: &auth0.PagesChangePasswordArgs{
+//					Enabled: pulumi.Bool(true),
+//					Html:    pulumi.String("<html><body>My Custom Reset Password Page</body></html>"),
+//				},
+//				Error: &auth0.PagesErrorArgs{
+//					Html:        pulumi.String("<html><body>My Custom Error Page</body></html>"),
+//					ShowLogLink: pulumi.Bool(true),
+//					Url:         pulumi.String("https://example.com"),
+//				},
+//				GuardianMfa: &auth0.PagesGuardianMfaArgs{
+//					Enabled: pulumi.Bool(true),
+//					Html:    pulumi.String("<html><body>My Custom MFA Page</body></html>"),
+//				},
+//				Login: &auth0.PagesLoginArgs{
+//					Enabled: pulumi.Bool(true),
+//					Html:    pulumi.String("<html><body>My Custom Login Page</body></html>"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // As this is not a resource identifiable by an ID within the Auth0 Management API, pages can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example

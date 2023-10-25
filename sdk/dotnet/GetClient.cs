@@ -13,12 +13,66 @@ namespace Pulumi.Auth0
     {
         /// <summary>
         /// Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var some_client_by_name = Auth0.GetClient.Invoke(new()
+        ///     {
+        ///         Name = "Name of my Application",
+        ///     });
+        /// 
+        ///     var some_client_by_id = Auth0.GetClient.Invoke(new()
+        ///     {
+        ///         ClientId = "abcdefghkijklmnopqrstuvwxyz0123456789",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClientResult> InvokeAsync(GetClientArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientResult>("auth0:index/getClient:getClient", args ?? new GetClientArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var some_client_by_name = Auth0.GetClient.Invoke(new()
+        ///     {
+        ///         Name = "Name of my Application",
+        ///     });
+        /// 
+        ///     var some_client_by_id = Auth0.GetClient.Invoke(new()
+        ///     {
+        ///         ClientId = "abcdefghkijklmnopqrstuvwxyz0123456789",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetClientResult> Invoke(GetClientInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClientResult>("auth0:index/getClient:getClient", args ?? new GetClientInvokeArgs(), options.WithDefaults());

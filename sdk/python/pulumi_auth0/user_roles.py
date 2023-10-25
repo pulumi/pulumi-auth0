@@ -138,6 +138,24 @@ class UserRoles(pulumi.CustomResource):
         role to a user. To avoid potential issues, it is recommended not to use this resource in conjunction with the
         `UserRole` resource when managing roles for the same user id.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # Example:
+        admin = auth0.Role("admin", description="Administrator")
+        user = auth0.User("user",
+            connection_name="Username-Password-Authentication",
+            username="unique_username",
+            email="test@test.com",
+            password="passpass$12$12")
+        user_roles = auth0.UserRoles("userRoles",
+            user_id=user.id,
+            roles=[admin.id])
+        ```
+
         ## Import
 
         This resource can be imported using the user ID. # Example
@@ -163,6 +181,24 @@ class UserRoles(pulumi.CustomResource):
         !> This resource manages all the roles assigned to a user. In contrast, the `UserRole` resource only appends a
         role to a user. To avoid potential issues, it is recommended not to use this resource in conjunction with the
         `UserRole` resource when managing roles for the same user id.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # Example:
+        admin = auth0.Role("admin", description="Administrator")
+        user = auth0.User("user",
+            connection_name="Username-Password-Authentication",
+            username="unique_username",
+            email="test@test.com",
+            password="passpass$12$12")
+        user_roles = auth0.UserRoles("userRoles",
+            user_id=user.id,
+            roles=[admin.id])
+        ```
 
         ## Import
 

@@ -177,6 +177,18 @@ class Prompt(pulumi.CustomResource):
         """
         With this resource, you can manage your Auth0 prompts, including choosing the login experience version.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_prompt = auth0.Prompt("myPrompt",
+            identifier_first=False,
+            universal_login_experience="new",
+            webauthn_platform_first_factor=True)
+        ```
+
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API, prompts can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
@@ -199,6 +211,18 @@ class Prompt(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can manage your Auth0 prompts, including choosing the login experience version.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_prompt = auth0.Prompt("myPrompt",
+            identifier_first=False,
+            universal_login_experience="new",
+            webauthn_platform_first_factor=True)
+        ```
 
         ## Import
 

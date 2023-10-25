@@ -11,6 +11,26 @@ import * as utilities from "./utilities";
  * to a user. To avoid potential issues, it is recommended not to use this resource in conjunction with the
  * `auth0.UserRoles` resource when managing roles for the same user id.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // Example:
+ * const admin = new auth0.Role("admin", {description: "Administrator"});
+ * const user = new auth0.User("user", {
+ *     connectionName: "Username-Password-Authentication",
+ *     username: "unique_username",
+ *     email: "test@test.com",
+ *     password: "passpass$12$12",
+ * });
+ * const userRoles = new auth0.UserRole("userRoles", {
+ *     userId: user.id,
+ *     roleId: admin.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by specifying the user ID and role ID separated by "::" (note the double colon) <userID>::<roleID> # Example

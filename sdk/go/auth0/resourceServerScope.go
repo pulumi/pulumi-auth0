@@ -19,6 +19,46 @@ import (
 // all the scopes assigned to a resource server. To avoid potential issues, it is recommended not to use this resource in
 // conjunction with the `ResourceServerScopes` resource when managing scopes for the same resource server id.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			resourceServer, err := auth0.NewResourceServer(ctx, "resourceServer", &auth0.ResourceServerArgs{
+//				Identifier: pulumi.String("https://api.example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewResourceServerScope(ctx, "readPosts", &auth0.ResourceServerScopeArgs{
+//				ResourceServerIdentifier: resourceServer.Identifier,
+//				Scope:                    pulumi.String("read:posts"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewResourceServerScope(ctx, "writePosts", &auth0.ResourceServerScopeArgs{
+//				ResourceServerIdentifier: resourceServer.Identifier,
+//				Scope:                    pulumi.String("write:posts"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by specifying the resource identifier and scope name separated by "::" (note the double colon) <resourceServerIdentifier>::<scope> # Example

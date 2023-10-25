@@ -16,6 +16,65 @@ namespace Pulumi.Auth0
     /// appends an action to the trigger binding. To avoid potential issues, it is recommended not to use this resource in
     /// conjunction with the `auth0.TriggerAction` resource when binding actions to the same trigger.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var actionFoo = new Auth0.Action("actionFoo", new()
+    ///     {
+    ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
+    ///   console.log(""foo"");
+    /// };""
+    /// ",
+    ///         Deploy = true,
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "post-login",
+    ///             Version = "v3",
+    ///         },
+    ///     });
+    /// 
+    ///     var actionBar = new Auth0.Action("actionBar", new()
+    ///     {
+    ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
+    ///   console.log(""bar"");
+    /// };""
+    /// ",
+    ///         Deploy = true,
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "post-login",
+    ///             Version = "v3",
+    ///         },
+    ///     });
+    /// 
+    ///     var loginFlow = new Auth0.TriggerActions("loginFlow", new()
+    ///     {
+    ///         Trigger = "post-login",
+    ///         Actions = new[]
+    ///         {
+    ///             new Auth0.Inputs.TriggerActionsActionArgs
+    ///             {
+    ///                 Id = actionFoo.Id,
+    ///                 DisplayName = actionFoo.Name,
+    ///             },
+    ///             new Auth0.Inputs.TriggerActionsActionArgs
+    ///             {
+    ///                 Id = actionBar.Id,
+    ///                 DisplayName = actionBar.Name,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported using the bindings trigger ID. # Example

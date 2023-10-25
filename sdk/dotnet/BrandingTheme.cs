@@ -12,6 +12,105 @@ namespace Pulumi.Auth0
     /// <summary>
     /// This resource allows you to manage branding themes for your Universal Login page within your Auth0 tenant.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // An example of a fully configured auth0_branding_theme.
+    ///     var myTheme = new Auth0.BrandingTheme("myTheme", new()
+    ///     {
+    ///         Borders = new Auth0.Inputs.BrandingThemeBordersArgs
+    ///         {
+    ///             ButtonBorderRadius = 1,
+    ///             ButtonBorderWeight = 1,
+    ///             ButtonsStyle = "pill",
+    ///             InputBorderRadius = 3,
+    ///             InputBorderWeight = 1,
+    ///             InputsStyle = "pill",
+    ///             ShowWidgetShadow = false,
+    ///             WidgetBorderWeight = 1,
+    ///             WidgetCornerRadius = 3,
+    ///         },
+    ///         Colors = new Auth0.Inputs.BrandingThemeColorsArgs
+    ///         {
+    ///             BodyText = "#FF00CC",
+    ///             Error = "#FF00CC",
+    ///             Header = "#FF00CC",
+    ///             Icons = "#FF00CC",
+    ///             InputBackground = "#FF00CC",
+    ///             InputBorder = "#FF00CC",
+    ///             InputFilledText = "#FF00CC",
+    ///             InputLabelsPlaceholders = "#FF00CC",
+    ///             LinksFocusedComponents = "#FF00CC",
+    ///             PrimaryButton = "#FF00CC",
+    ///             PrimaryButtonLabel = "#FF00CC",
+    ///             SecondaryButtonBorder = "#FF00CC",
+    ///             SecondaryButtonLabel = "#FF00CC",
+    ///             Success = "#FF00CC",
+    ///             WidgetBackground = "#FF00CC",
+    ///             WidgetBorder = "#FF00CC",
+    ///         },
+    ///         Fonts = new Auth0.Inputs.BrandingThemeFontsArgs
+    ///         {
+    ///             BodyText = new Auth0.Inputs.BrandingThemeFontsBodyTextArgs
+    ///             {
+    ///                 Bold = false,
+    ///                 Size = 100,
+    ///             },
+    ///             ButtonsText = new Auth0.Inputs.BrandingThemeFontsButtonsTextArgs
+    ///             {
+    ///                 Bold = false,
+    ///                 Size = 100,
+    ///             },
+    ///             FontUrl = "https://google.com/font.woff",
+    ///             InputLabels = new Auth0.Inputs.BrandingThemeFontsInputLabelsArgs
+    ///             {
+    ///                 Bold = false,
+    ///                 Size = 100,
+    ///             },
+    ///             Links = new Auth0.Inputs.BrandingThemeFontsLinksArgs
+    ///             {
+    ///                 Bold = false,
+    ///                 Size = 100,
+    ///             },
+    ///             LinksStyle = "normal",
+    ///             ReferenceTextSize = 12,
+    ///             Subtitle = new Auth0.Inputs.BrandingThemeFontsSubtitleArgs
+    ///             {
+    ///                 Bold = false,
+    ///                 Size = 100,
+    ///             },
+    ///             Title = new Auth0.Inputs.BrandingThemeFontsTitleArgs
+    ///             {
+    ///                 Bold = false,
+    ///                 Size = 100,
+    ///             },
+    ///         },
+    ///         PageBackground = new Auth0.Inputs.BrandingThemePageBackgroundArgs
+    ///         {
+    ///             BackgroundColor = "#000000",
+    ///             BackgroundImageUrl = "https://google.com/background.png",
+    ///             PageLayout = "center",
+    ///         },
+    ///         Widget = new Auth0.Inputs.BrandingThemeWidgetArgs
+    ///         {
+    ///             HeaderTextAlignment = "center",
+    ///             LogoHeight = 55,
+    ///             LogoPosition = "center",
+    ///             LogoUrl = "https://google.com/logo.png",
+    ///             SocialButtonsLayout = "top",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the Branding Theme ID. # Example

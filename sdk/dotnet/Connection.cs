@@ -16,6 +16,393 @@ namespace Pulumi.Auth0
     /// creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
     /// 
     /// ## Example Usage
+    /// ### Google OAuth2 Connection
+    /// 
+    /// &gt; Your Auth0 account may be pre-configured with a `google-oauth2` connection.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var googleOauth2 = new Auth0.Connection("googleOauth2", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             AllowedAudiences = new[]
+    ///             {
+    ///                 "example.com",
+    ///                 "api.example.com",
+    ///             },
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
+    ///             Scopes = new[]
+    ///             {
+    ///                 "email",
+    ///                 "profile",
+    ///                 "gmail",
+    ///                 "youtube",
+    ///             },
+    ///             SetUserRootAttributes = "on_each_login",
+    ///         },
+    ///         Strategy = "google-oauth2",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Facebook Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var facebook = new Auth0.Connection("facebook", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
+    ///             Scopes = new[]
+    ///             {
+    ///                 "public_profile",
+    ///                 "email",
+    ///                 "groups_access_member_info",
+    ///                 "user_birthday",
+    ///             },
+    ///             SetUserRootAttributes = "on_each_login",
+    ///         },
+    ///         Strategy = "facebook",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Apple Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var apple = new Auth0.Connection("apple", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = @"-----BEGIN PRIVATE KEY-----
+    /// MIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA
+    /// -----END PRIVATE KEY-----
+    /// ",
+    ///             KeyId = "&lt;key-id&gt;",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
+    ///             Scopes = new[]
+    ///             {
+    ///                 "email",
+    ///                 "name",
+    ///             },
+    ///             SetUserRootAttributes = "on_first_login",
+    ///             TeamId = "&lt;team-id&gt;",
+    ///         },
+    ///         Strategy = "apple",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### LinkedIn Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var linkedin = new Auth0.Connection("linkedin", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
+    ///             Scopes = new[]
+    ///             {
+    ///                 "basic_profile",
+    ///                 "profile",
+    ///                 "email",
+    ///             },
+    ///             SetUserRootAttributes = "on_each_login",
+    ///             StrategyVersion = 2,
+    ///         },
+    ///         Strategy = "linkedin",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### GitHub Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var github = new Auth0.Connection("github", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
+    ///             Scopes = new[]
+    ///             {
+    ///                 "email",
+    ///                 "profile",
+    ///                 "public_repo",
+    ///                 "repo",
+    ///             },
+    ///             SetUserRootAttributes = "on_each_login",
+    ///         },
+    ///         Strategy = "github",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### SalesForce Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var salesforce = new Auth0.Connection("salesforce", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             CommunityBaseUrl = "https://salesforce.example.com",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
+    ///             Scopes = new[]
+    ///             {
+    ///                 "openid",
+    ///                 "email",
+    ///             },
+    ///             SetUserRootAttributes = "on_first_login",
+    ///         },
+    ///         Strategy = "salesforce",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### OAuth2 Connection
+    /// 
+    /// Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var oauth2 = new Auth0.Connection("oauth2", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             AuthorizationEndpoint = "https://auth.example.com/oauth2/authorize",
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             IconUrl = "https://auth.example.com/assets/logo.png",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
+    ///             PkceEnabled = true,
+    ///             Scopes = new[]
+    ///             {
+    ///                 "basic_profile",
+    ///                 "profile",
+    ///                 "email",
+    ///             },
+    ///             Scripts = 
+    ///             {
+    ///                 { "fetchUserProfile", @"        function fetchUserProfile(accessToken, context, callback) {
+    ///           return callback(new Error(""Whoops!""));
+    ///         }
+    ///       
+    /// " },
+    ///             },
+    ///             SetUserRootAttributes = "on_each_login",
+    ///             TokenEndpoint = "https://auth.example.com/oauth2/token",
+    ///         },
+    ///         Strategy = "oauth2",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### SMS Connection
+    /// 
+    /// &gt; To be able to see this in the management dashboard as well, the name of the connection must be set to "sms".
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sms = new Auth0.Connection("sms", new()
+    ///     {
+    ///         IsDomainConnection = false,
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             BruteForceProtection = true,
+    ///             DisableSignup = false,
+    ///             ForwardRequestInfo = true,
+    ///             From = "+15555555555",
+    ///             GatewayAuthentication = new Auth0.Inputs.ConnectionOptionsGatewayAuthenticationArgs
+    ///             {
+    ///                 Audience = "https://somewhere.com/sms-gateway",
+    ///                 Method = "bearer",
+    ///                 Secret = "4e2680bb74ec2ae24736476dd37ed6c2",
+    ///                 SecretBase64Encoded = false,
+    ///                 Subject = "test.us.auth0.com:sms",
+    ///             },
+    ///             GatewayUrl = "https://somewhere.com/sms-gateway",
+    ///             Name = "sms",
+    ///             Provider = "sms_gateway",
+    ///             Syntax = "md_with_macros",
+    ///             Template = "@@password@@",
+    ///             Totp = new Auth0.Inputs.ConnectionOptionsTotpArgs
+    ///             {
+    ///                 Length = 6,
+    ///                 TimeStep = 300,
+    ///             },
+    ///         },
+    ///         Strategy = "sms",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Email Connection
+    /// 
+    /// &gt; To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var passwordlessEmail = new Auth0.Connection("passwordlessEmail", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             AuthParams = 
+    ///             {
+    ///                 { "responseType", "code" },
+    ///                 { "scope", "openid email profile offline_access" },
+    ///             },
+    ///             BruteForceProtection = true,
+    ///             DisableSignup = false,
+    ///             From = "{{ application.name }} &lt;root@auth0.com&gt;",
+    ///             Name = "email",
+    ///             NonPersistentAttrs = new() { },
+    ///             SetUserRootAttributes = "on_each_login",
+    ///             Subject = "Welcome to {{ application.name }}",
+    ///             Syntax = "liquid",
+    ///             Template = "&lt;html&gt;This is the body of the email&lt;/html&gt;",
+    ///             Totp = new Auth0.Inputs.ConnectionOptionsTotpArgs
+    ///             {
+    ///                 Length = 6,
+    ///                 TimeStep = 300,
+    ///             },
+    ///         },
+    ///         Strategy = "email",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### WindowsLive Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var windowslive = new Auth0.Connection("windowslive", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
+    ///             Scopes = new[]
+    ///             {
+    ///                 "signin",
+    ///                 "graph_user",
+    ///             },
+    ///             SetUserRootAttributes = "on_first_login",
+    ///             StrategyVersion = 2,
+    ///         },
+    ///         Strategy = "windowslive",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

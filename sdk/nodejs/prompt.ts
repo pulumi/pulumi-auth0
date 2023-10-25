@@ -7,6 +7,19 @@ import * as utilities from "./utilities";
 /**
  * With this resource, you can manage your Auth0 prompts, including choosing the login experience version.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const myPrompt = new auth0.Prompt("myPrompt", {
+ *     identifierFirst: false,
+ *     universalLoginExperience: "new",
+ *     webauthnPlatformFirstFactor: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * As this is not a resource identifiable by an ID within the Auth0 Management API, prompts can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example

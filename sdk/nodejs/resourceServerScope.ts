@@ -11,6 +11,23 @@ import * as utilities from "./utilities";
  * all the scopes assigned to a resource server. To avoid potential issues, it is recommended not to use this resource in
  * conjunction with the `auth0.ResourceServerScopes` resource when managing scopes for the same resource server id.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const resourceServer = new auth0.ResourceServer("resourceServer", {identifier: "https://api.example.com"});
+ * const readPosts = new auth0.ResourceServerScope("readPosts", {
+ *     resourceServerIdentifier: resourceServer.identifier,
+ *     scope: "read:posts",
+ * });
+ * const writePosts = new auth0.ResourceServerScope("writePosts", {
+ *     resourceServerIdentifier: resourceServer.identifier,
+ *     scope: "write:posts",
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by specifying the resource identifier and scope name separated by "::" (note the double colon) <resourceServerIdentifier>::<scope> # Example
