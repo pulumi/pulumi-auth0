@@ -251,6 +251,86 @@ class BrandingTheme(pulumi.CustomResource):
         """
         This resource allows you to manage branding themes for your Universal Login page within your Auth0 tenant.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # An example of a fully configured auth0_branding_theme.
+        my_theme = auth0.BrandingTheme("myTheme",
+            borders=auth0.BrandingThemeBordersArgs(
+                button_border_radius=1,
+                button_border_weight=1,
+                buttons_style="pill",
+                input_border_radius=3,
+                input_border_weight=1,
+                inputs_style="pill",
+                show_widget_shadow=False,
+                widget_border_weight=1,
+                widget_corner_radius=3,
+            ),
+            colors=auth0.BrandingThemeColorsArgs(
+                body_text="#FF00CC",
+                error="#FF00CC",
+                header="#FF00CC",
+                icons="#FF00CC",
+                input_background="#FF00CC",
+                input_border="#FF00CC",
+                input_filled_text="#FF00CC",
+                input_labels_placeholders="#FF00CC",
+                links_focused_components="#FF00CC",
+                primary_button="#FF00CC",
+                primary_button_label="#FF00CC",
+                secondary_button_border="#FF00CC",
+                secondary_button_label="#FF00CC",
+                success="#FF00CC",
+                widget_background="#FF00CC",
+                widget_border="#FF00CC",
+            ),
+            fonts=auth0.BrandingThemeFontsArgs(
+                body_text=auth0.BrandingThemeFontsBodyTextArgs(
+                    bold=False,
+                    size=100,
+                ),
+                buttons_text=auth0.BrandingThemeFontsButtonsTextArgs(
+                    bold=False,
+                    size=100,
+                ),
+                font_url="https://google.com/font.woff",
+                input_labels=auth0.BrandingThemeFontsInputLabelsArgs(
+                    bold=False,
+                    size=100,
+                ),
+                links=auth0.BrandingThemeFontsLinksArgs(
+                    bold=False,
+                    size=100,
+                ),
+                links_style="normal",
+                reference_text_size=12,
+                subtitle=auth0.BrandingThemeFontsSubtitleArgs(
+                    bold=False,
+                    size=100,
+                ),
+                title=auth0.BrandingThemeFontsTitleArgs(
+                    bold=False,
+                    size=100,
+                ),
+            ),
+            page_background=auth0.BrandingThemePageBackgroundArgs(
+                background_color="#000000",
+                background_image_url="https://google.com/background.png",
+                page_layout="center",
+            ),
+            widget=auth0.BrandingThemeWidgetArgs(
+                header_text_alignment="center",
+                logo_height=55,
+                logo_position="center",
+                logo_url="https://google.com/logo.png",
+                social_buttons_layout="top",
+            ))
+        ```
+
         ## Import
 
         This resource can be imported by specifying the Branding Theme ID. # Example
@@ -271,6 +351,86 @@ class BrandingTheme(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to manage branding themes for your Universal Login page within your Auth0 tenant.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # An example of a fully configured auth0_branding_theme.
+        my_theme = auth0.BrandingTheme("myTheme",
+            borders=auth0.BrandingThemeBordersArgs(
+                button_border_radius=1,
+                button_border_weight=1,
+                buttons_style="pill",
+                input_border_radius=3,
+                input_border_weight=1,
+                inputs_style="pill",
+                show_widget_shadow=False,
+                widget_border_weight=1,
+                widget_corner_radius=3,
+            ),
+            colors=auth0.BrandingThemeColorsArgs(
+                body_text="#FF00CC",
+                error="#FF00CC",
+                header="#FF00CC",
+                icons="#FF00CC",
+                input_background="#FF00CC",
+                input_border="#FF00CC",
+                input_filled_text="#FF00CC",
+                input_labels_placeholders="#FF00CC",
+                links_focused_components="#FF00CC",
+                primary_button="#FF00CC",
+                primary_button_label="#FF00CC",
+                secondary_button_border="#FF00CC",
+                secondary_button_label="#FF00CC",
+                success="#FF00CC",
+                widget_background="#FF00CC",
+                widget_border="#FF00CC",
+            ),
+            fonts=auth0.BrandingThemeFontsArgs(
+                body_text=auth0.BrandingThemeFontsBodyTextArgs(
+                    bold=False,
+                    size=100,
+                ),
+                buttons_text=auth0.BrandingThemeFontsButtonsTextArgs(
+                    bold=False,
+                    size=100,
+                ),
+                font_url="https://google.com/font.woff",
+                input_labels=auth0.BrandingThemeFontsInputLabelsArgs(
+                    bold=False,
+                    size=100,
+                ),
+                links=auth0.BrandingThemeFontsLinksArgs(
+                    bold=False,
+                    size=100,
+                ),
+                links_style="normal",
+                reference_text_size=12,
+                subtitle=auth0.BrandingThemeFontsSubtitleArgs(
+                    bold=False,
+                    size=100,
+                ),
+                title=auth0.BrandingThemeFontsTitleArgs(
+                    bold=False,
+                    size=100,
+                ),
+            ),
+            page_background=auth0.BrandingThemePageBackgroundArgs(
+                background_color="#000000",
+                background_image_url="https://google.com/background.png",
+                page_layout="center",
+            ),
+            widget=auth0.BrandingThemeWidgetArgs(
+                header_text_alignment="center",
+                logo_height=55,
+                logo_position="center",
+                logo_url="https://google.com/logo.png",
+                social_buttons_layout="top",
+            ))
+        ```
 
         ## Import
 

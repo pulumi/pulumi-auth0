@@ -130,6 +130,24 @@ class RuleConfig(pulumi.CustomResource):
         """
         With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_rule = auth0.Rule("myRule",
+            enabled=True,
+            script=\"\"\"    function (user, context, callback) {
+              callback(null, user, context);
+            }
+          
+        \"\"\")
+        my_rule_config = auth0.RuleConfig("myRuleConfig",
+            key="foo",
+            value="bar")
+        ```
+
         ## Import
 
         Existing rule configs can be imported using their key name. # Example
@@ -151,6 +169,24 @@ class RuleConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_rule = auth0.Rule("myRule",
+            enabled=True,
+            script=\"\"\"    function (user, context, callback) {
+              callback(null, user, context);
+            }
+          
+        \"\"\")
+        my_rule_config = auth0.RuleConfig("myRuleConfig",
+            key="foo",
+            value="bar")
+        ```
 
         ## Import
 

@@ -15,6 +15,71 @@ import (
 
 // This resource is used to manage the roles assigned to an organization member.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			reader, err := auth0.NewRole(ctx, "reader", nil)
+//			if err != nil {
+//				return err
+//			}
+//			writer, err := auth0.NewRole(ctx, "writer", nil)
+//			if err != nil {
+//				return err
+//			}
+//			user, err := auth0.NewUser(ctx, "user", &auth0.UserArgs{
+//				ConnectionName: pulumi.String("Username-Password-Authentication"),
+//				Email:          pulumi.String("test-user@auth0.com"),
+//				Password:       pulumi.String("MyPass123$"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myOrg, err := auth0.NewOrganization(ctx, "myOrg", &auth0.OrganizationArgs{
+//				DisplayName: pulumi.String("Some Org"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewOrganizationMember(ctx, "myOrgMember", &auth0.OrganizationMemberArgs{
+//				OrganizationId: myOrg.ID(),
+//				UserId:         user.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewOrganizationMemberRole(ctx, "role1", &auth0.OrganizationMemberRoleArgs{
+//				OrganizationId: myOrg.ID(),
+//				UserId:         user.ID(),
+//				RoleId:         reader.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewOrganizationMemberRole(ctx, "role2", &auth0.OrganizationMemberRoleArgs{
+//				OrganizationId: myOrg.ID(),
+//				UserId:         user.ID(),
+//				RoleId:         writer.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by specifying the organization ID, user ID and role ID separated by "::" (note the double colon) <organizationID>::<userID>::<roleID> # Example

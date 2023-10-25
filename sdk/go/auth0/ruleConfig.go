@@ -15,6 +15,40 @@ import (
 
 // With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewRule(ctx, "myRule", &auth0.RuleArgs{
+//				Enabled: pulumi.Bool(true),
+//				Script:  pulumi.String("    function (user, context, callback) {\n      callback(null, user, context);\n    }\n  \n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewRuleConfig(ctx, "myRuleConfig", &auth0.RuleConfigArgs{
+//				Key:   pulumi.String("foo"),
+//				Value: pulumi.String("bar"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Existing rule configs can be imported using their key name. # Example

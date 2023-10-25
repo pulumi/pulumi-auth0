@@ -7,6 +7,15 @@ import * as utilities from "./utilities";
 /**
  * With this resource, you can create and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on `auth0.ResourceServer`, then associated with roles and optionally, users using this resource.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const myRole = new auth0.Role("myRole", {description: "Role Description..."});
+ * ```
+ *
  * ## Import
  *
  * Existing roles can be imported using their ID. # Example

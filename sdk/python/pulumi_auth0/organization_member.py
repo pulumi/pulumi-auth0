@@ -142,6 +142,23 @@ class OrganizationMember(pulumi.CustomResource):
         all the members assigned to an organization. To avoid potential issues, it is recommended not to use this resource in
         conjunction with the `OrganizationMembers` resource when managing members for the same organization id.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        user = auth0.User("user",
+            email="test-user@auth0.com",
+            connection_name="Username-Password-Authentication",
+            email_verified=True,
+            password="MyPass123$")
+        my_org = auth0.Organization("myOrg", display_name="Admin")
+        my_org_member = auth0.OrganizationMember("myOrgMember",
+            organization_id=my_org.id,
+            user_id=user.id)
+        ```
+
         ## Import
 
         This resource can be imported by specifying the organization ID and user ID separated by "::" (note the double colon) <organizationID>::<userID> # Example
@@ -167,6 +184,23 @@ class OrganizationMember(pulumi.CustomResource):
         !> This resource appends a member to an organization. In contrast, the `OrganizationMembers` resource manages
         all the members assigned to an organization. To avoid potential issues, it is recommended not to use this resource in
         conjunction with the `OrganizationMembers` resource when managing members for the same organization id.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        user = auth0.User("user",
+            email="test-user@auth0.com",
+            connection_name="Username-Password-Authentication",
+            email_verified=True,
+            password="MyPass123$")
+        my_org = auth0.Organization("myOrg", display_name="Admin")
+        my_org_member = auth0.OrganizationMember("myOrgMember",
+            organization_id=my_org.id,
+            user_id=user.id)
+        ```
 
         ## Import
 

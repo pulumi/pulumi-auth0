@@ -12,6 +12,77 @@ namespace Pulumi.Auth0
     /// <summary>
     /// Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myGuardian = new Auth0.Guardian("myGuardian", new()
+    ///     {
+    ///         Duo = new Auth0.Inputs.GuardianDuoArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Hostname = "api-hostname",
+    ///             IntegrationKey = "someKey",
+    ///             SecretKey = "someSecret",
+    ///         },
+    ///         Email = true,
+    ///         Otp = true,
+    ///         Phone = new Auth0.Inputs.GuardianPhoneArgs
+    ///         {
+    ///             Enabled = true,
+    ///             MessageTypes = new[]
+    ///             {
+    ///                 "sms",
+    ///                 "voice",
+    ///             },
+    ///             Options = new Auth0.Inputs.GuardianPhoneOptionsArgs
+    ///             {
+    ///                 EnrollmentMessage = "{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
+    ///                 VerificationMessage = "{{code}} is your verification code for {{tenant.friendly_name}}.",
+    ///             },
+    ///             Provider = "auth0",
+    ///         },
+    ///         Policy = "all-applications",
+    ///         Push = new Auth0.Inputs.GuardianPushArgs
+    ///         {
+    ///             AmazonSns = new Auth0.Inputs.GuardianPushAmazonSnsArgs
+    ///             {
+    ///                 AwsAccessKeyId = "test1",
+    ///                 AwsRegion = "us-west-1",
+    ///                 AwsSecretAccessKey = "secretKey",
+    ///                 SnsApnsPlatformApplicationArn = "test_arn",
+    ///                 SnsGcmPlatformApplicationArn = "test_arn",
+    ///             },
+    ///             CustomApp = new Auth0.Inputs.GuardianPushCustomAppArgs
+    ///             {
+    ///                 AppName = "CustomApp",
+    ///                 AppleAppLink = "https://itunes.apple.com/us/app/my-app/id123121",
+    ///                 GoogleAppLink = "https://play.google.com/store/apps/details?id=com.my.app",
+    ///             },
+    ///             Enabled = true,
+    ///             Provider = "sns",
+    ///         },
+    ///         RecoveryCode = true,
+    ///         WebauthnPlatform = new Auth0.Inputs.GuardianWebauthnPlatformArgs
+    ///         {
+    ///             Enabled = true,
+    ///         },
+    ///         WebauthnRoaming = new Auth0.Inputs.GuardianWebauthnRoamingArgs
+    ///         {
+    ///             Enabled = true,
+    ///             UserVerification = "required",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example

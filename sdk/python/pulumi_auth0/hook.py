@@ -284,6 +284,28 @@ class Hook(pulumi.CustomResource):
 
         !> This resource is deprecated. Refer to the [guide on how to migrate from hooks to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-hooks-to-actions) and manage your actions using the `Action` resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_hook = auth0.Hook("myHook",
+            dependencies={
+                "auth0": "2.30.0",
+            },
+            enabled=True,
+            script=\"\"\"    function (user, context, callback) {
+              callback(null, { user });
+            }
+          
+        \"\"\",
+            secrets={
+                "foo": "bar",
+            },
+            trigger_id="pre-user-registration")
+        ```
+
         ## Import
 
         This resource can be imported by specifying the hook ID. # Example
@@ -311,6 +333,28 @@ class Hook(pulumi.CustomResource):
         Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code. Depending on the extensibility point, you can use hooks with Database Connections and/or Passwordless Connections.
 
         !> This resource is deprecated. Refer to the [guide on how to migrate from hooks to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-hooks-to-actions) and manage your actions using the `Action` resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_hook = auth0.Hook("myHook",
+            dependencies={
+                "auth0": "2.30.0",
+            },
+            enabled=True,
+            script=\"\"\"    function (user, context, callback) {
+              callback(null, { user });
+            }
+          
+        \"\"\",
+            secrets={
+                "foo": "bar",
+            },
+            trigger_id="pre-user-registration")
+        ```
 
         ## Import
 

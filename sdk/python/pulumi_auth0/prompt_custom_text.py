@@ -168,6 +168,41 @@ class PromptCustomText(pulumi.CustomResource):
         """
         With this resource, you can manage custom text on your Auth0 prompts. You can read more about custom texts [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_auth0 as auth0
+
+        example = auth0.PromptCustomText("example",
+            prompt="login",
+            language="en",
+            body=json.dumps({
+                "login": {
+                    "alertListTitle": "Alerts",
+                    "buttonText": "Continue",
+                    "description": "Login to",
+                    "editEmailText": "Edit",
+                    "emailPlaceholder": "Email address",
+                    "federatedConnectionButtonText": "Continue with ${connectionName}",
+                    "footerLinkText": "Sign up",
+                    "footerText": "Don't have an account?",
+                    "forgotPasswordText": "Forgot password?",
+                    "invitationDescription": "Log in to accept ${inviterName}'s invitation to join ${companyName} on ${clientName}.",
+                    "invitationTitle": "You've Been Invited!",
+                    "logoAltText": "${companyName}",
+                    "pageTitle": "Log in | ${clientName}",
+                    "passwordPlaceholder": "Password",
+                    "separatorText": "Or",
+                    "signupActionLinkText": "${footerLinkText}",
+                    "signupActionText": "${footerText}",
+                    "title": "Welcome",
+                    "usernamePlaceholder": "Username or email address",
+                },
+            }))
+        ```
+
         ## Import
 
         This resource can be imported by specifying the prompt and language separated by "::" (note the double colon) <prompt>::<language> # Example
@@ -190,6 +225,41 @@ class PromptCustomText(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can manage custom text on your Auth0 prompts. You can read more about custom texts [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_auth0 as auth0
+
+        example = auth0.PromptCustomText("example",
+            prompt="login",
+            language="en",
+            body=json.dumps({
+                "login": {
+                    "alertListTitle": "Alerts",
+                    "buttonText": "Continue",
+                    "description": "Login to",
+                    "editEmailText": "Edit",
+                    "emailPlaceholder": "Email address",
+                    "federatedConnectionButtonText": "Continue with ${connectionName}",
+                    "footerLinkText": "Sign up",
+                    "footerText": "Don't have an account?",
+                    "forgotPasswordText": "Forgot password?",
+                    "invitationDescription": "Log in to accept ${inviterName}'s invitation to join ${companyName} on ${clientName}.",
+                    "invitationTitle": "You've Been Invited!",
+                    "logoAltText": "${companyName}",
+                    "pageTitle": "Log in | ${clientName}",
+                    "passwordPlaceholder": "Password",
+                    "separatorText": "Or",
+                    "signupActionLinkText": "${footerLinkText}",
+                    "signupActionText": "${footerText}",
+                    "title": "Welcome",
+                    "usernamePlaceholder": "Username or email address",
+                },
+            }))
+        ```
 
         ## Import
 

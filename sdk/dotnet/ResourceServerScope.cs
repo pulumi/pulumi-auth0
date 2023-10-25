@@ -16,6 +16,36 @@ namespace Pulumi.Auth0
     /// all the scopes assigned to a resource server. To avoid potential issues, it is recommended not to use this resource in
     /// conjunction with the `auth0.ResourceServerScopes` resource when managing scopes for the same resource server id.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var resourceServer = new Auth0.ResourceServer("resourceServer", new()
+    ///     {
+    ///         Identifier = "https://api.example.com",
+    ///     });
+    /// 
+    ///     var readPosts = new Auth0.ResourceServerScope("readPosts", new()
+    ///     {
+    ///         ResourceServerIdentifier = resourceServer.Identifier,
+    ///         Scope = "read:posts",
+    ///     });
+    /// 
+    ///     var writePosts = new Auth0.ResourceServerScope("writePosts", new()
+    ///     {
+    ///         ResourceServerIdentifier = resourceServer.Identifier,
+    ///         Scope = "write:posts",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the resource identifier and scope name separated by "::" (note the double colon) &lt;resourceServerIdentifier&gt;::&lt;scope&gt; # Example

@@ -12,6 +12,44 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With this resource you can manage custom HTML for the Login, Reset Password, Multi-Factor Authentication and Error pages.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myPages = new Auth0.Pages("myPages", new()
+    ///     {
+    ///         ChangePassword = new Auth0.Inputs.PagesChangePasswordArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Html = "&lt;html&gt;&lt;body&gt;My Custom Reset Password Page&lt;/body&gt;&lt;/html&gt;",
+    ///         },
+    ///         Error = new Auth0.Inputs.PagesErrorArgs
+    ///         {
+    ///             Html = "&lt;html&gt;&lt;body&gt;My Custom Error Page&lt;/body&gt;&lt;/html&gt;",
+    ///             ShowLogLink = true,
+    ///             Url = "https://example.com",
+    ///         },
+    ///         GuardianMfa = new Auth0.Inputs.PagesGuardianMfaArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Html = "&lt;html&gt;&lt;body&gt;My Custom MFA Page&lt;/body&gt;&lt;/html&gt;",
+    ///         },
+    ///         Login = new Auth0.Inputs.PagesLoginArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Html = "&lt;html&gt;&lt;body&gt;My Custom Login Page&lt;/body&gt;&lt;/html&gt;",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As this is not a resource identifiable by an ID within the Auth0 Management API, pages can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example

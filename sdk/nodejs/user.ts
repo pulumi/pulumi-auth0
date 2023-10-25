@@ -7,6 +7,24 @@ import * as utilities from "./utilities";
 /**
  * With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const user = new auth0.User("user", {
+ *     connectionName: "Username-Password-Authentication",
+ *     email: "test@test.com",
+ *     emailVerified: true,
+ *     nickname: "some.nickname",
+ *     password: "passpass$12$12",
+ *     picture: "https://www.example.com/a-valid-picture-url.jpg",
+ *     userId: "12345",
+ *     username: "unique_username",
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported using the user ID. # Example

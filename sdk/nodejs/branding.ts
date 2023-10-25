@@ -9,6 +9,25 @@ import * as utilities from "./utilities";
 /**
  * This resource allows you to manage branding within your Auth0 tenant. Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user expectations.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ * import * as fs from "fs";
+ *
+ * const myBrand = new auth0.Branding("myBrand", {
+ *     logoUrl: "https://mycompany.org/logo.png",
+ *     colors: {
+ *         primary: "#0059d6",
+ *         pageBackground: "#000000",
+ *     },
+ *     universalLogin: {
+ *         body: fs.readFileSync("universal_login_body.html"),
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * As this is not a resource identifiable by an ID within the Auth0 Management API, branding can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example

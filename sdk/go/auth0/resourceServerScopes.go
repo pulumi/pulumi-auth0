@@ -20,6 +20,48 @@ import (
 // resource in conjunction with the `ResourceServerScope` resource when managing scopes for the same resource
 // server id.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myApi, err := auth0.NewResourceServer(ctx, "myApi", &auth0.ResourceServerArgs{
+//				Identifier: pulumi.String("https://api.example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewResourceServerScopes(ctx, "myApiScopes", &auth0.ResourceServerScopesArgs{
+//				ResourceServerIdentifier: myApi.Identifier,
+//				Scopes: auth0.ResourceServerScopesScopeArray{
+//					&auth0.ResourceServerScopesScopeArgs{
+//						Name:        pulumi.String("create:appointments"),
+//						Description: pulumi.String("Ability to create appointments"),
+//					},
+//					&auth0.ResourceServerScopesScopeArgs{
+//						Name:        pulumi.String("read:appointments"),
+//						Description: pulumi.String("Ability to read appointments"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by specifying the resource server identifier. # Example

@@ -175,6 +175,21 @@ class ResourceServerScope(pulumi.CustomResource):
         all the scopes assigned to a resource server. To avoid potential issues, it is recommended not to use this resource in
         conjunction with the `ResourceServerScopes` resource when managing scopes for the same resource server id.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        resource_server = auth0.ResourceServer("resourceServer", identifier="https://api.example.com")
+        read_posts = auth0.ResourceServerScope("readPosts",
+            resource_server_identifier=resource_server.identifier,
+            scope="read:posts")
+        write_posts = auth0.ResourceServerScope("writePosts",
+            resource_server_identifier=resource_server.identifier,
+            scope="write:posts")
+        ```
+
         ## Import
 
         This resource can be imported by specifying the resource identifier and scope name separated by "::" (note the double colon) <resourceServerIdentifier>::<scope> # Example
@@ -201,6 +216,21 @@ class ResourceServerScope(pulumi.CustomResource):
         !> This resource appends a scope to a resource server. In contrast, the `ResourceServerScopes` resource manages
         all the scopes assigned to a resource server. To avoid potential issues, it is recommended not to use this resource in
         conjunction with the `ResourceServerScopes` resource when managing scopes for the same resource server id.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        resource_server = auth0.ResourceServer("resourceServer", identifier="https://api.example.com")
+        read_posts = auth0.ResourceServerScope("readPosts",
+            resource_server_identifier=resource_server.identifier,
+            scope="read:posts")
+        write_posts = auth0.ResourceServerScope("writePosts",
+            resource_server_identifier=resource_server.identifier,
+            scope="write:posts")
+        ```
 
         ## Import
 

@@ -136,6 +136,46 @@ class TriggerActions(pulumi.CustomResource):
         appends an action to the trigger binding. To avoid potential issues, it is recommended not to use this resource in
         conjunction with the `TriggerAction` resource when binding actions to the same trigger.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        action_foo = auth0.Action("actionFoo",
+            code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
+          console.log("foo");
+        };"
+        \"\"\",
+            deploy=True,
+            supported_triggers=auth0.ActionSupportedTriggersArgs(
+                id="post-login",
+                version="v3",
+            ))
+        action_bar = auth0.Action("actionBar",
+            code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
+          console.log("bar");
+        };"
+        \"\"\",
+            deploy=True,
+            supported_triggers=auth0.ActionSupportedTriggersArgs(
+                id="post-login",
+                version="v3",
+            ))
+        login_flow = auth0.TriggerActions("loginFlow",
+            trigger="post-login",
+            actions=[
+                auth0.TriggerActionsActionArgs(
+                    id=action_foo.id,
+                    display_name=action_foo.name,
+                ),
+                auth0.TriggerActionsActionArgs(
+                    id=action_bar.id,
+                    display_name=action_bar.name,
+                ),
+            ])
+        ```
+
         ## Import
 
         This resource can be imported using the bindings trigger ID. # Example
@@ -161,6 +201,46 @@ class TriggerActions(pulumi.CustomResource):
         !> This resource manages all the action bindings to a trigger. In contrast, the `TriggerAction` resource only
         appends an action to the trigger binding. To avoid potential issues, it is recommended not to use this resource in
         conjunction with the `TriggerAction` resource when binding actions to the same trigger.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        action_foo = auth0.Action("actionFoo",
+            code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
+          console.log("foo");
+        };"
+        \"\"\",
+            deploy=True,
+            supported_triggers=auth0.ActionSupportedTriggersArgs(
+                id="post-login",
+                version="v3",
+            ))
+        action_bar = auth0.Action("actionBar",
+            code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
+          console.log("bar");
+        };"
+        \"\"\",
+            deploy=True,
+            supported_triggers=auth0.ActionSupportedTriggersArgs(
+                id="post-login",
+                version="v3",
+            ))
+        login_flow = auth0.TriggerActions("loginFlow",
+            trigger="post-login",
+            actions=[
+                auth0.TriggerActionsActionArgs(
+                    id=action_foo.id,
+                    display_name=action_foo.name,
+                ),
+                auth0.TriggerActionsActionArgs(
+                    id=action_bar.id,
+                    display_name=action_bar.name,
+                ),
+            ])
+        ```
 
         ## Import
 

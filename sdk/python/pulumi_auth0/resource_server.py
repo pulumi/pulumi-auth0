@@ -498,6 +498,20 @@ class ResourceServer(pulumi.CustomResource):
         """
         With this resource, you can set up APIs that can be consumed from your authorized applications.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_resource_server = auth0.ResourceServer("myResourceServer",
+            allow_offline_access=True,
+            identifier="https://api.example.com",
+            signing_alg="RS256",
+            skip_consent_for_verifiable_first_party_clients=True,
+            token_lifetime=8600)
+        ```
+
         ## Import
 
         Existing resource servers can be imported using their ID. # Example
@@ -528,6 +542,20 @@ class ResourceServer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can set up APIs that can be consumed from your authorized applications.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_resource_server = auth0.ResourceServer("myResourceServer",
+            allow_offline_access=True,
+            identifier="https://api.example.com",
+            signing_alg="RS256",
+            skip_consent_for_verifiable_first_party_clients=True,
+            token_lifetime=8600)
+        ```
 
         ## Import
 

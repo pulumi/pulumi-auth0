@@ -108,6 +108,15 @@ class AwaitableGetBrandingResult(GetBrandingResult):
 def get_branding(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBrandingResult:
     """
     Use this data source to access information about the tenant's branding settings.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_branding = auth0.get_branding()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -126,5 +135,14 @@ def get_branding(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBra
 def get_branding_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBrandingResult]:
     """
     Use this data source to access information about the tenant's branding settings.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_branding = auth0.get_branding()
+    ```
     """
     ...

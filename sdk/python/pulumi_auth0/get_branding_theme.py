@@ -105,6 +105,15 @@ class AwaitableGetBrandingThemeResult(GetBrandingThemeResult):
 def get_branding_theme(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBrandingThemeResult:
     """
     Use this data source to access information about the tenant's branding theme settings.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_branding_theme = auth0.get_branding_theme()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -124,5 +133,14 @@ def get_branding_theme(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitable
 def get_branding_theme_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBrandingThemeResult]:
     """
     Use this data source to access information about the tenant's branding theme settings.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_branding_theme = auth0.get_branding_theme()
+    ```
     """
     ...

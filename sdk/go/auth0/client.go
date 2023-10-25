@@ -14,6 +14,105 @@ import (
 
 // With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewClient(ctx, "myClient", &auth0.ClientArgs{
+//				Addons: &auth0.ClientAddonsArgs{
+//					Samlp: &auth0.ClientAddonsSamlpArgs{
+//						Audience:             pulumi.String("https://example.com/saml"),
+//						CreateUpnClaim:       pulumi.Bool(false),
+//						Issuer:               pulumi.String("https://example.com"),
+//						MapIdentities:        pulumi.Bool(false),
+//						MapUnknownClaimsAsIs: pulumi.Bool(false),
+//						Mappings: pulumi.Map{
+//							"email": pulumi.Any("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"),
+//							"name":  pulumi.Any("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"),
+//						},
+//						NameIdentifierFormat: pulumi.String("urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"),
+//						NameIdentifierProbes: pulumi.StringArray{
+//							pulumi.String("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"),
+//						},
+//						PassthroughClaimsWithNoMapping: pulumi.Bool(false),
+//						SigningCert: pulumi.String(`-----BEGIN PUBLIC KEY-----
+//
+// MIGf...bpP/t3
+// +JGNGIRMj1hF1rnb6QIDAQAB
+// -----END PUBLIC KEY-----
+//
+// `),
+//
+//					},
+//				},
+//				AllowedLogoutUrls: pulumi.StringArray{
+//					pulumi.String("https://example.com"),
+//				},
+//				AllowedOrigins: pulumi.StringArray{
+//					pulumi.String("https://example.com"),
+//				},
+//				AppType: pulumi.String("non_interactive"),
+//				Callbacks: pulumi.StringArray{
+//					pulumi.String("https://example.com/callback"),
+//				},
+//				ClientMetadata: pulumi.Map{
+//					"foo": pulumi.Any("zoo"),
+//				},
+//				CustomLoginPageOn: pulumi.Bool(true),
+//				Description:       pulumi.String("Test Applications Long Description"),
+//				GrantTypes: pulumi.StringArray{
+//					pulumi.String("authorization_code"),
+//					pulumi.String("http://auth0.com/oauth/grant-type/password-realm"),
+//					pulumi.String("implicit"),
+//					pulumi.String("password"),
+//					pulumi.String("refresh_token"),
+//				},
+//				IsFirstParty:                   pulumi.Bool(true),
+//				IsTokenEndpointIpHeaderTrusted: pulumi.Bool(true),
+//				JwtConfiguration: &auth0.ClientJwtConfigurationArgs{
+//					Alg:               pulumi.String("RS256"),
+//					LifetimeInSeconds: pulumi.Int(300),
+//					Scopes: pulumi.StringMap{
+//						"foo": pulumi.String("bar"),
+//					},
+//					SecretEncoded: pulumi.Bool(true),
+//				},
+//				Mobile: &auth0.ClientMobileArgs{
+//					Ios: &auth0.ClientMobileIosArgs{
+//						AppBundleIdentifier: pulumi.String("com.my.bundle.id"),
+//						TeamId:              pulumi.String("9JA89QQLNQ"),
+//					},
+//				},
+//				OidcConformant: pulumi.Bool(false),
+//				RefreshToken: &auth0.ClientRefreshTokenArgs{
+//					ExpirationType: pulumi.String("expiring"),
+//					Leeway:         pulumi.Int(0),
+//					RotationType:   pulumi.String("rotating"),
+//					TokenLifetime:  pulumi.Int(2592000),
+//				},
+//				WebOrigins: pulumi.StringArray{
+//					pulumi.String("https://example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by specifying the client ID. # Example

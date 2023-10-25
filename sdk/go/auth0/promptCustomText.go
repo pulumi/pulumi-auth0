@@ -15,6 +15,63 @@ import (
 
 // With this resource, you can manage custom text on your Auth0 prompts. You can read more about custom texts [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts).
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"login": map[string]interface{}{
+//					"alertListTitle":                "Alerts",
+//					"buttonText":                    "Continue",
+//					"description":                   "Login to",
+//					"editEmailText":                 "Edit",
+//					"emailPlaceholder":              "Email address",
+//					"federatedConnectionButtonText": "Continue with ${connectionName}",
+//					"footerLinkText":                "Sign up",
+//					"footerText":                    "Don't have an account?",
+//					"forgotPasswordText":            "Forgot password?",
+//					"invitationDescription":         "Log in to accept ${inviterName}'s invitation to join ${companyName} on ${clientName}.",
+//					"invitationTitle":               "You've Been Invited!",
+//					"logoAltText":                   "${companyName}",
+//					"pageTitle":                     "Log in | ${clientName}",
+//					"passwordPlaceholder":           "Password",
+//					"separatorText":                 "Or",
+//					"signupActionLinkText":          "${footerLinkText}",
+//					"signupActionText":              "${footerText}",
+//					"title":                         "Welcome",
+//					"usernamePlaceholder":           "Username or email address",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = auth0.NewPromptCustomText(ctx, "example", &auth0.PromptCustomTextArgs{
+//				Prompt:   pulumi.String("login"),
+//				Language: pulumi.String("en"),
+//				Body:     pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by specifying the prompt and language separated by "::" (note the double colon) <prompt>::<language> # Example

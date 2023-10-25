@@ -12,6 +12,82 @@ namespace Pulumi.Auth0
     /// <summary>
     /// Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myProtection = new Auth0.AttackProtection("myProtection", new()
+    ///     {
+    ///         BreachedPasswordDetection = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionArgs
+    ///         {
+    ///             AdminNotificationFrequencies = new[]
+    ///             {
+    ///                 "daily",
+    ///             },
+    ///             Enabled = true,
+    ///             Method = "standard",
+    ///             PreUserRegistration = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs
+    ///             {
+    ///                 Shields = new[]
+    ///                 {
+    ///                     "block",
+    ///                 },
+    ///             },
+    ///             Shields = new[]
+    ///             {
+    ///                 "admin_notification",
+    ///                 "block",
+    ///             },
+    ///         },
+    ///         BruteForceProtection = new Auth0.Inputs.AttackProtectionBruteForceProtectionArgs
+    ///         {
+    ///             Allowlists = new[]
+    ///             {
+    ///                 "127.0.0.1",
+    ///             },
+    ///             Enabled = true,
+    ///             MaxAttempts = 5,
+    ///             Mode = "count_per_identifier_and_ip",
+    ///             Shields = new[]
+    ///             {
+    ///                 "block",
+    ///                 "user_notification",
+    ///             },
+    ///         },
+    ///         SuspiciousIpThrottling = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingArgs
+    ///         {
+    ///             Allowlists = new[]
+    ///             {
+    ///                 "192.168.1.1",
+    ///             },
+    ///             Enabled = true,
+    ///             PreLogin = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreLoginArgs
+    ///             {
+    ///                 MaxAttempts = 100,
+    ///                 Rate = 864000,
+    ///             },
+    ///             PreUserRegistration = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs
+    ///             {
+    ///                 MaxAttempts = 50,
+    ///                 Rate = 1200,
+    ///             },
+    ///             Shields = new[]
+    ///             {
+    ///                 "admin_notification",
+    ///                 "block",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As this is not a resource identifiable by an ID within the Auth0 Management API, attack_protection can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example

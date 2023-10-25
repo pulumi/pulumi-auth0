@@ -20,6 +20,50 @@ import (
 // resource in conjunction with the `ConnectionClient` resource when managing enabled clients for the same
 // connection id.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myConn, err := auth0.NewConnection(ctx, "myConn", &auth0.ConnectionArgs{
+//				Strategy: pulumi.String("auth0"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myFirstClient, err := auth0.NewClient(ctx, "myFirstClient", nil)
+//			if err != nil {
+//				return err
+//			}
+//			mySecondClient, err := auth0.NewClient(ctx, "mySecondClient", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewConnectionClients(ctx, "myConnClientsAssoc", &auth0.ConnectionClientsArgs{
+//				ConnectionId: myConn.ID(),
+//				EnabledClients: pulumi.StringArray{
+//					myFirstClient.ID(),
+//					mySecondClient.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by specifying the Connection ID. # Example

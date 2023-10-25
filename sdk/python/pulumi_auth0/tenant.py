@@ -707,6 +707,38 @@ class Tenant(pulumi.CustomResource):
         > Creating tenants through the Management API is not currently supported. Therefore, this resource can only
         manage an existing tenant created through the Auth0 dashboard.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_tenant = auth0.Tenant("myTenant",
+            allowed_logout_urls=["http://example.com/logout"],
+            default_redirection_uri="https://example.com/login",
+            enabled_locales=["en"],
+            flags=auth0.TenantFlagsArgs(
+                disable_clickjack_protection_headers=True,
+                disable_fields_map_fix=False,
+                disable_management_api_sms_obfuscation=False,
+                enable_public_signup_user_exists_error=True,
+                no_disclose_enterprise_connections=False,
+                use_scope_descriptions_for_consent=True,
+            ),
+            friendly_name="Tenant Name",
+            picture_url="http://example.com/logo.png",
+            sandbox_version="12",
+            session_cookie=auth0.TenantSessionCookieArgs(
+                mode="non-persistent",
+            ),
+            session_lifetime=8760,
+            sessions=auth0.TenantSessionsArgs(
+                oidc_logout_prompt_enabled=False,
+            ),
+            support_email="support@example.com",
+            support_url="http://example.com/support")
+        ```
+
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API, tenant can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
@@ -745,6 +777,38 @@ class Tenant(pulumi.CustomResource):
 
         > Creating tenants through the Management API is not currently supported. Therefore, this resource can only
         manage an existing tenant created through the Auth0 dashboard.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_tenant = auth0.Tenant("myTenant",
+            allowed_logout_urls=["http://example.com/logout"],
+            default_redirection_uri="https://example.com/login",
+            enabled_locales=["en"],
+            flags=auth0.TenantFlagsArgs(
+                disable_clickjack_protection_headers=True,
+                disable_fields_map_fix=False,
+                disable_management_api_sms_obfuscation=False,
+                enable_public_signup_user_exists_error=True,
+                no_disclose_enterprise_connections=False,
+                use_scope_descriptions_for_consent=True,
+            ),
+            friendly_name="Tenant Name",
+            picture_url="http://example.com/logo.png",
+            sandbox_version="12",
+            session_cookie=auth0.TenantSessionCookieArgs(
+                mode="non-persistent",
+            ),
+            session_lifetime=8760,
+            sessions=auth0.TenantSessionsArgs(
+                oidc_logout_prompt_enabled=False,
+            ),
+            support_email="support@example.com",
+            support_url="http://example.com/support")
+        ```
 
         ## Import
 

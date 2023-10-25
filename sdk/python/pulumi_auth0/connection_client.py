@@ -179,6 +179,21 @@ class ConnectionClient(pulumi.CustomResource):
         resource in conjunction with the `ConnectionClients` resource when managing enabled clients for the
         same connection id.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_conn = auth0.Connection("myConn", strategy="auth0")
+        my_client = auth0.Client("myClient")
+        # One connection to one client association.
+        # To prevent issues, avoid using this resource together with the `auth0_connection_clients` resource.
+        my_conn_client_assoc = auth0.ConnectionClient("myConnClientAssoc",
+            connection_id=my_conn.id,
+            client_id=my_client.id)
+        ```
+
         ## Import
 
         This resource can be imported by specifying the connection ID and client ID separated by "::" (note the double colon) <connectionID>::<clientID> # Example
@@ -205,6 +220,21 @@ class ConnectionClient(pulumi.CustomResource):
         manages all the clients enabled for a connection. To avoid potential issues, it is recommended not to use this
         resource in conjunction with the `ConnectionClients` resource when managing enabled clients for the
         same connection id.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_conn = auth0.Connection("myConn", strategy="auth0")
+        my_client = auth0.Client("myClient")
+        # One connection to one client association.
+        # To prevent issues, avoid using this resource together with the `auth0_connection_clients` resource.
+        my_conn_client_assoc = auth0.ConnectionClient("myConnClientAssoc",
+            connection_id=my_conn.id,
+            client_id=my_client.id)
+        ```
 
         ## Import
 

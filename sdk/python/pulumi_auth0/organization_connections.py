@@ -145,6 +145,29 @@ class OrganizationConnections(pulumi.CustomResource):
         resource in conjunction with the `OrganizationConnection` resource when managing connections for the same
         organization id.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_connection_1 = auth0.Connection("myConnection-1", strategy="auth0")
+        my_connection_2 = auth0.Connection("myConnection-2", strategy="auth0")
+        my_organization = auth0.Organization("myOrganization", display_name="My Organization")
+        one_to_many = auth0.OrganizationConnections("one-to-many",
+            organization_id=my_organization.id,
+            enabled_connections=[
+                auth0.OrganizationConnectionsEnabledConnectionArgs(
+                    connection_id=my_connection_1.id,
+                    assign_membership_on_login=True,
+                ),
+                auth0.OrganizationConnectionsEnabledConnectionArgs(
+                    connection_id=my_connection_2.id,
+                    assign_membership_on_login=True,
+                ),
+            ])
+        ```
+
         ## Import
 
         This resource can be imported by specifying the organization ID. # Example
@@ -171,6 +194,29 @@ class OrganizationConnections(pulumi.CustomResource):
         manages all the connections enabled for an organization. To avoid potential issues, it is recommended not to use this
         resource in conjunction with the `OrganizationConnection` resource when managing connections for the same
         organization id.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_connection_1 = auth0.Connection("myConnection-1", strategy="auth0")
+        my_connection_2 = auth0.Connection("myConnection-2", strategy="auth0")
+        my_organization = auth0.Organization("myOrganization", display_name="My Organization")
+        one_to_many = auth0.OrganizationConnections("one-to-many",
+            organization_id=my_organization.id,
+            enabled_connections=[
+                auth0.OrganizationConnectionsEnabledConnectionArgs(
+                    connection_id=my_connection_1.id,
+                    assign_membership_on_login=True,
+                ),
+                auth0.OrganizationConnectionsEnabledConnectionArgs(
+                    connection_id=my_connection_2.id,
+                    assign_membership_on_login=True,
+                ),
+            ])
+        ```
 
         ## Import
 

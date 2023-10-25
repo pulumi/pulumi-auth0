@@ -8,6 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to access information about the tenant's attack protection settings.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const myProtection = auth0.getAttackProtection({});
+ * ```
  */
 export function getAttackProtection(opts?: pulumi.InvokeOptions): Promise<GetAttackProtectionResult> {
 
@@ -39,6 +48,15 @@ export interface GetAttackProtectionResult {
 }
 /**
  * Use this data source to access information about the tenant's attack protection settings.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const myProtection = auth0.getAttackProtection({});
+ * ```
  */
 export function getAttackProtectionOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAttackProtectionResult> {
     return pulumi.output(getAttackProtection(opts))

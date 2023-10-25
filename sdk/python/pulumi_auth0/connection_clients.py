@@ -179,6 +179,25 @@ class ConnectionClients(pulumi.CustomResource):
         resource in conjunction with the `ConnectionClient` resource when managing enabled clients for the same
         connection id.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_conn = auth0.Connection("myConn", strategy="auth0")
+        my_first_client = auth0.Client("myFirstClient")
+        my_second_client = auth0.Client("mySecondClient")
+        # One connection to many clients association.
+        # To prevent issues, avoid using this resource together with the `auth0_connection_client` resource.
+        my_conn_clients_assoc = auth0.ConnectionClients("myConnClientsAssoc",
+            connection_id=my_conn.id,
+            enabled_clients=[
+                my_first_client.id,
+                my_second_client.id,
+            ])
+        ```
+
         ## Import
 
         This resource can be imported by specifying the Connection ID. # Example
@@ -205,6 +224,25 @@ class ConnectionClients(pulumi.CustomResource):
         manages all the enabled clients for a connection. To avoid potential issues, it is recommended not to use this
         resource in conjunction with the `ConnectionClient` resource when managing enabled clients for the same
         connection id.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_conn = auth0.Connection("myConn", strategy="auth0")
+        my_first_client = auth0.Client("myFirstClient")
+        my_second_client = auth0.Client("mySecondClient")
+        # One connection to many clients association.
+        # To prevent issues, avoid using this resource together with the `auth0_connection_client` resource.
+        my_conn_clients_assoc = auth0.ConnectionClients("myConnClientsAssoc",
+            connection_id=my_conn.id,
+            enabled_clients=[
+                my_first_client.id,
+                my_second_client.id,
+            ])
+        ```
 
         ## Import
 

@@ -19,6 +19,434 @@ import (
 // creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
 //
 // ## Example Usage
+// ### Google OAuth2 Connection
+//
+// > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "googleOauth2", &auth0.ConnectionArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
+//					AllowedAudiences: pulumi.StringArray{
+//						pulumi.String("example.com"),
+//						pulumi.String("api.example.com"),
+//					},
+//					ClientId:     pulumi.String("<client-id>"),
+//					ClientSecret: pulumi.String("<client-secret>"),
+//					NonPersistentAttrs: pulumi.StringArray{
+//						pulumi.String("ethnicity"),
+//						pulumi.String("gender"),
+//					},
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("email"),
+//						pulumi.String("profile"),
+//						pulumi.String("gmail"),
+//						pulumi.String("youtube"),
+//					},
+//					SetUserRootAttributes: pulumi.String("on_each_login"),
+//				},
+//				Strategy: pulumi.String("google-oauth2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Facebook Connection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "facebook", &auth0.ConnectionArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
+//					ClientId:     pulumi.String("<client-id>"),
+//					ClientSecret: pulumi.String("<client-secret>"),
+//					NonPersistentAttrs: pulumi.StringArray{
+//						pulumi.String("ethnicity"),
+//						pulumi.String("gender"),
+//					},
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("public_profile"),
+//						pulumi.String("email"),
+//						pulumi.String("groups_access_member_info"),
+//						pulumi.String("user_birthday"),
+//					},
+//					SetUserRootAttributes: pulumi.String("on_each_login"),
+//				},
+//				Strategy: pulumi.String("facebook"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Apple Connection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "apple", &auth0.ConnectionArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
+//					ClientId:     pulumi.String("<client-id>"),
+//					ClientSecret: pulumi.String("-----BEGIN PRIVATE KEY-----\nMIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA\n-----END PRIVATE KEY-----\n"),
+//					KeyId:        pulumi.String("<key-id>"),
+//					NonPersistentAttrs: pulumi.StringArray{
+//						pulumi.String("ethnicity"),
+//						pulumi.String("gender"),
+//					},
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("email"),
+//						pulumi.String("name"),
+//					},
+//					SetUserRootAttributes: pulumi.String("on_first_login"),
+//					TeamId:                pulumi.String("<team-id>"),
+//				},
+//				Strategy: pulumi.String("apple"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### LinkedIn Connection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "linkedin", &auth0.ConnectionArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
+//					ClientId:     pulumi.String("<client-id>"),
+//					ClientSecret: pulumi.String("<client-secret>"),
+//					NonPersistentAttrs: pulumi.StringArray{
+//						pulumi.String("ethnicity"),
+//						pulumi.String("gender"),
+//					},
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("basic_profile"),
+//						pulumi.String("profile"),
+//						pulumi.String("email"),
+//					},
+//					SetUserRootAttributes: pulumi.String("on_each_login"),
+//					StrategyVersion:       pulumi.Int(2),
+//				},
+//				Strategy: pulumi.String("linkedin"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### GitHub Connection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "github", &auth0.ConnectionArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
+//					ClientId:     pulumi.String("<client-id>"),
+//					ClientSecret: pulumi.String("<client-secret>"),
+//					NonPersistentAttrs: pulumi.StringArray{
+//						pulumi.String("ethnicity"),
+//						pulumi.String("gender"),
+//					},
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("email"),
+//						pulumi.String("profile"),
+//						pulumi.String("public_repo"),
+//						pulumi.String("repo"),
+//					},
+//					SetUserRootAttributes: pulumi.String("on_each_login"),
+//				},
+//				Strategy: pulumi.String("github"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### SalesForce Connection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "salesforce", &auth0.ConnectionArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
+//					ClientId:         pulumi.String("<client-id>"),
+//					ClientSecret:     pulumi.String("<client-secret>"),
+//					CommunityBaseUrl: pulumi.String("https://salesforce.example.com"),
+//					NonPersistentAttrs: pulumi.StringArray{
+//						pulumi.String("ethnicity"),
+//						pulumi.String("gender"),
+//					},
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("openid"),
+//						pulumi.String("email"),
+//					},
+//					SetUserRootAttributes: pulumi.String("on_first_login"),
+//				},
+//				Strategy: pulumi.String("salesforce"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### OAuth2 Connection
+//
+// Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "oauth2", &auth0.ConnectionArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
+//					AuthorizationEndpoint: pulumi.String("https://auth.example.com/oauth2/authorize"),
+//					ClientId:              pulumi.String("<client-id>"),
+//					ClientSecret:          pulumi.String("<client-secret>"),
+//					IconUrl:               pulumi.String("https://auth.example.com/assets/logo.png"),
+//					NonPersistentAttrs: pulumi.StringArray{
+//						pulumi.String("ethnicity"),
+//						pulumi.String("gender"),
+//					},
+//					PkceEnabled: pulumi.Bool(true),
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("basic_profile"),
+//						pulumi.String("profile"),
+//						pulumi.String("email"),
+//					},
+//					Scripts: pulumi.StringMap{
+//						"fetchUserProfile": pulumi.String("        function fetchUserProfile(accessToken, context, callback) {\n          return callback(new Error(\"Whoops!\"));\n        }\n      \n"),
+//					},
+//					SetUserRootAttributes: pulumi.String("on_each_login"),
+//					TokenEndpoint:         pulumi.String("https://auth.example.com/oauth2/token"),
+//				},
+//				Strategy: pulumi.String("oauth2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### SMS Connection
+//
+// > To be able to see this in the management dashboard as well, the name of the connection must be set to "sms".
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "sms", &auth0.ConnectionArgs{
+//				IsDomainConnection: pulumi.Bool(false),
+//				Options: &auth0.ConnectionOptionsArgs{
+//					BruteForceProtection: pulumi.Bool(true),
+//					DisableSignup:        pulumi.Bool(false),
+//					ForwardRequestInfo:   pulumi.Bool(true),
+//					From:                 pulumi.String("+15555555555"),
+//					GatewayAuthentication: &auth0.ConnectionOptionsGatewayAuthenticationArgs{
+//						Audience:            pulumi.String("https://somewhere.com/sms-gateway"),
+//						Method:              pulumi.String("bearer"),
+//						Secret:              pulumi.String("4e2680bb74ec2ae24736476dd37ed6c2"),
+//						SecretBase64Encoded: pulumi.Bool(false),
+//						Subject:             pulumi.String("test.us.auth0.com:sms"),
+//					},
+//					GatewayUrl: pulumi.String("https://somewhere.com/sms-gateway"),
+//					Name:       pulumi.String("sms"),
+//					Provider:   pulumi.String("sms_gateway"),
+//					Syntax:     pulumi.String("md_with_macros"),
+//					Template:   pulumi.String("@@password@@"),
+//					Totp: &auth0.ConnectionOptionsTotpArgs{
+//						Length:   pulumi.Int(6),
+//						TimeStep: pulumi.Int(300),
+//					},
+//				},
+//				Strategy: pulumi.String("sms"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Email Connection
+//
+// > To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "passwordlessEmail", &auth0.ConnectionArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
+//					AuthParams: pulumi.StringMap{
+//						"responseType": pulumi.String("code"),
+//						"scope":        pulumi.String("openid email profile offline_access"),
+//					},
+//					BruteForceProtection:  pulumi.Bool(true),
+//					DisableSignup:         pulumi.Bool(false),
+//					From:                  pulumi.String("{{ application.name }} <root@auth0.com>"),
+//					Name:                  pulumi.String("email"),
+//					NonPersistentAttrs:    pulumi.StringArray{},
+//					SetUserRootAttributes: pulumi.String("on_each_login"),
+//					Subject:               pulumi.String("Welcome to {{ application.name }}"),
+//					Syntax:                pulumi.String("liquid"),
+//					Template:              pulumi.String("<html>This is the body of the email</html>"),
+//					Totp: &auth0.ConnectionOptionsTotpArgs{
+//						Length:   pulumi.Int(6),
+//						TimeStep: pulumi.Int(300),
+//					},
+//				},
+//				Strategy: pulumi.String("email"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### WindowsLive Connection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "windowslive", &auth0.ConnectionArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
+//					ClientId:     pulumi.String("<client-id>"),
+//					ClientSecret: pulumi.String("<client-secret>"),
+//					NonPersistentAttrs: pulumi.StringArray{
+//						pulumi.String("ethnicity"),
+//						pulumi.String("gender"),
+//					},
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("signin"),
+//						pulumi.String("graph_user"),
+//					},
+//					SetUserRootAttributes: pulumi.String("on_first_login"),
+//					StrategyVersion:       pulumi.Int(2),
+//				},
+//				Strategy: pulumi.String("windowslive"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

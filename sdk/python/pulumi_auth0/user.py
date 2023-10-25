@@ -724,6 +724,23 @@ class User(pulumi.CustomResource):
         """
         With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        user = auth0.User("user",
+            connection_name="Username-Password-Authentication",
+            email="test@test.com",
+            email_verified=True,
+            nickname="some.nickname",
+            password="passpass$12$12",
+            picture="https://www.example.com/a-valid-picture-url.jpg",
+            user_id="12345",
+            username="unique_username")
+        ```
+
         ## Import
 
         This resource can be imported using the user ID. # Example
@@ -760,6 +777,23 @@ class User(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        user = auth0.User("user",
+            connection_name="Username-Password-Authentication",
+            email="test@test.com",
+            email_verified=True,
+            nickname="some.nickname",
+            password="passpass$12$12",
+            picture="https://www.example.com/a-valid-picture-url.jpg",
+            user_id="12345",
+            username="unique_username")
+        ```
 
         ## Import
 

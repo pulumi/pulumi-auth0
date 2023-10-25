@@ -1429,6 +1429,77 @@ class Client(pulumi.CustomResource):
         """
         With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_client = auth0.Client("myClient",
+            addons=auth0.ClientAddonsArgs(
+                samlp=auth0.ClientAddonsSamlpArgs(
+                    audience="https://example.com/saml",
+                    create_upn_claim=False,
+                    issuer="https://example.com",
+                    map_identities=False,
+                    map_unknown_claims_as_is=False,
+                    mappings={
+                        "email": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+                        "name": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+                    },
+                    name_identifier_format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+                    name_identifier_probes=["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
+                    passthrough_claims_with_no_mapping=False,
+                    signing_cert=\"\"\"-----BEGIN PUBLIC KEY-----
+        MIGf...bpP/t3
+        +JGNGIRMj1hF1rnb6QIDAQAB
+        -----END PUBLIC KEY-----
+
+        \"\"\",
+                ),
+            ),
+            allowed_logout_urls=["https://example.com"],
+            allowed_origins=["https://example.com"],
+            app_type="non_interactive",
+            callbacks=["https://example.com/callback"],
+            client_metadata={
+                "foo": "zoo",
+            },
+            custom_login_page_on=True,
+            description="Test Applications Long Description",
+            grant_types=[
+                "authorization_code",
+                "http://auth0.com/oauth/grant-type/password-realm",
+                "implicit",
+                "password",
+                "refresh_token",
+            ],
+            is_first_party=True,
+            is_token_endpoint_ip_header_trusted=True,
+            jwt_configuration=auth0.ClientJwtConfigurationArgs(
+                alg="RS256",
+                lifetime_in_seconds=300,
+                scopes={
+                    "foo": "bar",
+                },
+                secret_encoded=True,
+            ),
+            mobile=auth0.ClientMobileArgs(
+                ios=auth0.ClientMobileIosArgs(
+                    app_bundle_identifier="com.my.bundle.id",
+                    team_id="9JA89QQLNQ",
+                ),
+            ),
+            oidc_conformant=False,
+            refresh_token=auth0.ClientRefreshTokenArgs(
+                expiration_type="expiring",
+                leeway=0,
+                rotation_type="rotating",
+                token_lifetime=2592000,
+            ),
+            web_origins=["https://example.com"])
+        ```
+
         ## Import
 
         This resource can be imported by specifying the client ID. # Example
@@ -1481,6 +1552,77 @@ class Client(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_client = auth0.Client("myClient",
+            addons=auth0.ClientAddonsArgs(
+                samlp=auth0.ClientAddonsSamlpArgs(
+                    audience="https://example.com/saml",
+                    create_upn_claim=False,
+                    issuer="https://example.com",
+                    map_identities=False,
+                    map_unknown_claims_as_is=False,
+                    mappings={
+                        "email": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+                        "name": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+                    },
+                    name_identifier_format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+                    name_identifier_probes=["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
+                    passthrough_claims_with_no_mapping=False,
+                    signing_cert=\"\"\"-----BEGIN PUBLIC KEY-----
+        MIGf...bpP/t3
+        +JGNGIRMj1hF1rnb6QIDAQAB
+        -----END PUBLIC KEY-----
+
+        \"\"\",
+                ),
+            ),
+            allowed_logout_urls=["https://example.com"],
+            allowed_origins=["https://example.com"],
+            app_type="non_interactive",
+            callbacks=["https://example.com/callback"],
+            client_metadata={
+                "foo": "zoo",
+            },
+            custom_login_page_on=True,
+            description="Test Applications Long Description",
+            grant_types=[
+                "authorization_code",
+                "http://auth0.com/oauth/grant-type/password-realm",
+                "implicit",
+                "password",
+                "refresh_token",
+            ],
+            is_first_party=True,
+            is_token_endpoint_ip_header_trusted=True,
+            jwt_configuration=auth0.ClientJwtConfigurationArgs(
+                alg="RS256",
+                lifetime_in_seconds=300,
+                scopes={
+                    "foo": "bar",
+                },
+                secret_encoded=True,
+            ),
+            mobile=auth0.ClientMobileArgs(
+                ios=auth0.ClientMobileIosArgs(
+                    app_bundle_identifier="com.my.bundle.id",
+                    team_id="9JA89QQLNQ",
+                ),
+            ),
+            oidc_conformant=False,
+            refresh_token=auth0.ClientRefreshTokenArgs(
+                expiration_type="expiring",
+                leeway=0,
+                rotation_type="rotating",
+                token_lifetime=2592000,
+            ),
+            web_origins=["https://example.com"])
+        ```
 
         ## Import
 

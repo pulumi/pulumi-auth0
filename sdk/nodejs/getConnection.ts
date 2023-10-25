@@ -8,6 +8,20 @@ import * as utilities from "./utilities";
 
 /**
  * Data source to retrieve a specific Auth0 connection by `connectionId` or `name`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const some-connection-by-name = auth0.getConnection({
+ *     name: "Acceptance-Test-Connection-{{.testName}}",
+ * });
+ * const some-connection-by-id = auth0.getConnection({
+ *     connectionId: "con_abcdefghkijklmnopqrstuvwxyz0123456789",
+ * });
+ * ```
  */
 export function getConnection(args?: GetConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionResult> {
     args = args || {};
@@ -81,6 +95,20 @@ export interface GetConnectionResult {
 }
 /**
  * Data source to retrieve a specific Auth0 connection by `connectionId` or `name`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const some-connection-by-name = auth0.getConnection({
+ *     name: "Acceptance-Test-Connection-{{.testName}}",
+ * });
+ * const some-connection-by-id = auth0.getConnection({
+ *     connectionId: "con_abcdefghkijklmnopqrstuvwxyz0123456789",
+ * });
+ * ```
  */
 export function getConnectionOutput(args?: GetConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionResult> {
     return pulumi.output(args).apply((a: any) => getConnection(a, opts))

@@ -15,6 +15,60 @@ import (
 
 // With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewEmailProvider(ctx, "amazonSesEmailProvider", &auth0.EmailProviderArgs{
+//				Credentials: &auth0.EmailProviderCredentialsArgs{
+//					AccessKeyId:     pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
+//					Region:          pulumi.String("us-east-1"),
+//					SecretAccessKey: pulumi.String("7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//				},
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
+//				Enabled:            pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewEmailProvider(ctx, "sendgridEmailProvider", &auth0.EmailProviderArgs{
+//				Credentials: &auth0.EmailProviderCredentialsArgs{
+//					ApiKey: pulumi.String("secretAPIKey"),
+//				},
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
+//				Enabled:            pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewEmailProvider(ctx, "smtpEmailProvider", &auth0.EmailProviderArgs{
+//				Credentials: &auth0.EmailProviderCredentialsArgs{
+//					Ms365ClientId:     pulumi.String("ms365_client_id"),
+//					Ms365ClientSecret: pulumi.String("ms365_client_secret"),
+//					Ms365TenantId:     pulumi.String("ms365_tenant_id"),
+//				},
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
+//				Enabled:            pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // As this is not a resource identifiable by an ID within the Auth0 Management API, email can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example

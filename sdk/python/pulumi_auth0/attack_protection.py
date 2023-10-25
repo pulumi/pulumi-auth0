@@ -179,6 +179,53 @@ class AttackProtection(pulumi.CustomResource):
         """
         Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_protection = auth0.AttackProtection("myProtection",
+            breached_password_detection=auth0.AttackProtectionBreachedPasswordDetectionArgs(
+                admin_notification_frequencies=["daily"],
+                enabled=True,
+                method="standard",
+                pre_user_registration=auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs(
+                    shields=["block"],
+                ),
+                shields=[
+                    "admin_notification",
+                    "block",
+                ],
+            ),
+            brute_force_protection=auth0.AttackProtectionBruteForceProtectionArgs(
+                allowlists=["127.0.0.1"],
+                enabled=True,
+                max_attempts=5,
+                mode="count_per_identifier_and_ip",
+                shields=[
+                    "block",
+                    "user_notification",
+                ],
+            ),
+            suspicious_ip_throttling=auth0.AttackProtectionSuspiciousIpThrottlingArgs(
+                allowlists=["192.168.1.1"],
+                enabled=True,
+                pre_login=auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs(
+                    max_attempts=100,
+                    rate=864000,
+                ),
+                pre_user_registration=auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs(
+                    max_attempts=50,
+                    rate=1200,
+                ),
+                shields=[
+                    "admin_notification",
+                    "block",
+                ],
+            ))
+        ```
+
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API, attack_protection can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
@@ -201,6 +248,53 @@ class AttackProtection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_protection = auth0.AttackProtection("myProtection",
+            breached_password_detection=auth0.AttackProtectionBreachedPasswordDetectionArgs(
+                admin_notification_frequencies=["daily"],
+                enabled=True,
+                method="standard",
+                pre_user_registration=auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs(
+                    shields=["block"],
+                ),
+                shields=[
+                    "admin_notification",
+                    "block",
+                ],
+            ),
+            brute_force_protection=auth0.AttackProtectionBruteForceProtectionArgs(
+                allowlists=["127.0.0.1"],
+                enabled=True,
+                max_attempts=5,
+                mode="count_per_identifier_and_ip",
+                shields=[
+                    "block",
+                    "user_notification",
+                ],
+            ),
+            suspicious_ip_throttling=auth0.AttackProtectionSuspiciousIpThrottlingArgs(
+                allowlists=["192.168.1.1"],
+                enabled=True,
+                pre_login=auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs(
+                    max_attempts=100,
+                    rate=864000,
+                ),
+                pre_user_registration=auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs(
+                    max_attempts=50,
+                    rate=1200,
+                ),
+                shields=[
+                    "admin_notification",
+                    "block",
+                ],
+            ))
+        ```
 
         ## Import
 

@@ -18,6 +18,39 @@ namespace Pulumi.Auth0
     /// the action bindings to a trigger. To avoid potential issues, it is recommended not to use this resource in conjunction
     /// with the `auth0.TriggerAction` resource when binding actions to the same trigger.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var loginAlert = new Auth0.Action("loginAlert", new()
+    ///     {
+    ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
+    ///   console.log(""foo"");
+    /// };""
+    /// ",
+    ///         Deploy = true,
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "post-login",
+    ///             Version = "v3",
+    ///         },
+    ///     });
+    /// 
+    ///     var postLoginAlertAction = new Auth0.TriggerAction("postLoginAlertAction", new()
+    ///     {
+    ///         Trigger = "post-login",
+    ///         ActionId = loginAlert.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the trigger and action ID separated by "::" (note the double colon) &lt;trigger&gt;::&lt;actionID&gt; # Example

@@ -214,6 +214,23 @@ class Organization(pulumi.CustomResource):
           - Build administration capabilities into their products, using Organizations
             APIs, so that those businesses can manage their own organizations.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_organization = auth0.Organization("myOrganization",
+            branding=auth0.OrganizationBrandingArgs(
+                colors={
+                    "pageBackground": "#e1e1e1",
+                    "primary": "#f2f2f2",
+                },
+                logo_url="https://example.com/assets/icons/icon.png",
+            ),
+            display_name="Auth0 Inc.")
+        ```
+
         ## Import
 
         This resource can be imported by specifying the organization ID. # Example
@@ -243,6 +260,23 @@ class Organization(pulumi.CustomResource):
           - Configure branded, federated login flows for each business.
           - Build administration capabilities into their products, using Organizations
             APIs, so that those businesses can manage their own organizations.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_organization = auth0.Organization("myOrganization",
+            branding=auth0.OrganizationBrandingArgs(
+                colors={
+                    "pageBackground": "#e1e1e1",
+                    "primary": "#f2f2f2",
+                },
+                logo_url="https://example.com/assets/icons/icon.png",
+            ),
+            display_name="Auth0 Inc.")
+        ```
 
         ## Import
 

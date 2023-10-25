@@ -15,6 +15,76 @@ import (
 
 // Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewGuardian(ctx, "myGuardian", &auth0.GuardianArgs{
+//				Duo: &auth0.GuardianDuoArgs{
+//					Enabled:        pulumi.Bool(true),
+//					Hostname:       pulumi.String("api-hostname"),
+//					IntegrationKey: pulumi.String("someKey"),
+//					SecretKey:      pulumi.String("someSecret"),
+//				},
+//				Email: pulumi.Bool(true),
+//				Otp:   pulumi.Bool(true),
+//				Phone: &auth0.GuardianPhoneArgs{
+//					Enabled: pulumi.Bool(true),
+//					MessageTypes: pulumi.StringArray{
+//						pulumi.String("sms"),
+//						pulumi.String("voice"),
+//					},
+//					Options: &auth0.GuardianPhoneOptionsArgs{
+//						EnrollmentMessage:   pulumi.String("{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment."),
+//						VerificationMessage: pulumi.String("{{code}} is your verification code for {{tenant.friendly_name}}."),
+//					},
+//					Provider: pulumi.String("auth0"),
+//				},
+//				Policy: pulumi.String("all-applications"),
+//				Push: &auth0.GuardianPushArgs{
+//					AmazonSns: &auth0.GuardianPushAmazonSnsArgs{
+//						AwsAccessKeyId:                pulumi.String("test1"),
+//						AwsRegion:                     pulumi.String("us-west-1"),
+//						AwsSecretAccessKey:            pulumi.String("secretKey"),
+//						SnsApnsPlatformApplicationArn: pulumi.String("test_arn"),
+//						SnsGcmPlatformApplicationArn:  pulumi.String("test_arn"),
+//					},
+//					CustomApp: &auth0.GuardianPushCustomAppArgs{
+//						AppName:       pulumi.String("CustomApp"),
+//						AppleAppLink:  pulumi.String("https://itunes.apple.com/us/app/my-app/id123121"),
+//						GoogleAppLink: pulumi.String("https://play.google.com/store/apps/details?id=com.my.app"),
+//					},
+//					Enabled:  pulumi.Bool(true),
+//					Provider: pulumi.String("sns"),
+//				},
+//				RecoveryCode: pulumi.Bool(true),
+//				WebauthnPlatform: &auth0.GuardianWebauthnPlatformArgs{
+//					Enabled: pulumi.Bool(true),
+//				},
+//				WebauthnRoaming: &auth0.GuardianWebauthnRoamingArgs{
+//					Enabled:          pulumi.Bool(true),
+//					UserVerification: pulumi.String("required"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example

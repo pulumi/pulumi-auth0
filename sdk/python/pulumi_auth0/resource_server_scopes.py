@@ -133,6 +133,27 @@ class ResourceServerScopes(pulumi.CustomResource):
         resource in conjunction with the `ResourceServerScope` resource when managing scopes for the same resource
         server id.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_api = auth0.ResourceServer("myApi", identifier="https://api.example.com")
+        my_api_scopes = auth0.ResourceServerScopes("myApiScopes",
+            resource_server_identifier=my_api.identifier,
+            scopes=[
+                auth0.ResourceServerScopesScopeArgs(
+                    name="create:appointments",
+                    description="Ability to create appointments",
+                ),
+                auth0.ResourceServerScopesScopeArgs(
+                    name="read:appointments",
+                    description="Ability to read appointments",
+                ),
+            ])
+        ```
+
         ## Import
 
         This resource can be imported by specifying the resource server identifier. # Example
@@ -158,6 +179,27 @@ class ResourceServerScopes(pulumi.CustomResource):
         resource only appends a scope to a resource server. To avoid potential issues, it is recommended not to use this
         resource in conjunction with the `ResourceServerScope` resource when managing scopes for the same resource
         server id.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_api = auth0.ResourceServer("myApi", identifier="https://api.example.com")
+        my_api_scopes = auth0.ResourceServerScopes("myApiScopes",
+            resource_server_identifier=my_api.identifier,
+            scopes=[
+                auth0.ResourceServerScopesScopeArgs(
+                    name="create:appointments",
+                    description="Ability to create appointments",
+                ),
+                auth0.ResourceServerScopesScopeArgs(
+                    name="read:appointments",
+                    description="Ability to read appointments",
+                ),
+            ])
+        ```
 
         ## Import
 

@@ -15,6 +15,81 @@ namespace Pulumi.Auth0
     /// &gt; Refer to the client secret rotation guide
     /// for instructions on how to rotate client secrets with zero downtime.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myClient = new Auth0.Client("myClient", new()
+    ///     {
+    ///         AppType = "non_interactive",
+    ///         JwtConfiguration = new Auth0.Inputs.ClientJwtConfigurationArgs
+    ///         {
+    ///             Alg = "RS256",
+    ///         },
+    ///     });
+    /// 
+    ///     // Configuring client_secret_post as an authentication method.
+    ///     var testClientCredentials = new Auth0.ClientCredentials("testClientCredentials", new()
+    ///     {
+    ///         ClientId = myClient.Id,
+    ///         AuthenticationMethod = "client_secret_post",
+    ///     });
+    /// 
+    ///     // Configuring client_secret_basic as an authentication method.
+    ///     var testIndex_clientCredentialsClientCredentials = new Auth0.ClientCredentials("testIndex/clientCredentialsClientCredentials", new()
+    ///     {
+    ///         ClientId = myClient.Id,
+    ///         AuthenticationMethod = "client_secret_basic",
+    ///     });
+    /// 
+    ///     // Configuring none as an authentication method.
+    ///     var testAuth0Index_clientCredentialsClientCredentials = new Auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials", new()
+    ///     {
+    ///         ClientId = myClient.Id,
+    ///         AuthenticationMethod = "none",
+    ///     });
+    /// 
+    ///     // Configuring private_key_jwt as an authentication method.
+    ///     var testAuth0Index_clientCredentialsClientCredentials1 = new Auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials1", new()
+    ///     {
+    ///         ClientId = myClient.Id,
+    ///         AuthenticationMethod = "private_key_jwt",
+    ///         PrivateKeyJwt = new Auth0.Inputs.ClientCredentialsPrivateKeyJwtArgs
+    ///         {
+    ///             Credentials = new[]
+    ///             {
+    ///                 new Auth0.Inputs.ClientCredentialsPrivateKeyJwtCredentialArgs
+    ///                 {
+    ///                     Name = "Testing Credentials 1",
+    ///                     CredentialType = "public_key",
+    ///                     Algorithm = "RS256",
+    ///                     ParseExpiryFromCert = true,
+    ///                     Pem = @"-----BEGIN CERTIFICATE-----
+    /// MIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl
+    /// -----END CERTIFICATE-----
+    /// ",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Configuring the client_secret.
+    ///     var testAuth0Index_clientCredentialsClientCredentials2 = new Auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials2", new()
+    ///     {
+    ///         ClientId = myClient.Id,
+    ///         AuthenticationMethod = "client_secret_basic",
+    ///         ClientSecret = "LUFqPx+sRLjbL7peYRPFmFu-bbvE7u7og4YUNe_C345=683341",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the client ID. # Example
