@@ -8,20 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Data source to retrieve a specific Auth0 resource server by `resourceServerId` or `identifier`.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const some-resource-server-by-identifier = auth0.getResourceServer({
- *     identifier: "https://my-api.com/v1",
- * });
- * const some-resource-server-by-id = auth0.getResourceServer({
- *     resourceServerId: "abcdefghkijklmnopqrstuvwxyz0123456789",
- * });
- * ```
  */
 export function getResourceServer(args?: GetResourceServerArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceServerResult> {
     args = args || {};
@@ -110,20 +96,6 @@ export interface GetResourceServerResult {
 }
 /**
  * Data source to retrieve a specific Auth0 resource server by `resourceServerId` or `identifier`.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const some-resource-server-by-identifier = auth0.getResourceServer({
- *     identifier: "https://my-api.com/v1",
- * });
- * const some-resource-server-by-id = auth0.getResourceServer({
- *     resourceServerId: "abcdefghkijklmnopqrstuvwxyz0123456789",
- * });
- * ```
  */
 export function getResourceServerOutput(args?: GetResourceServerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceServerResult> {
     return pulumi.output(args).apply((a: any) => getResourceServer(a, opts))

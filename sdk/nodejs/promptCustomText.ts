@@ -7,41 +7,6 @@ import * as utilities from "./utilities";
 /**
  * With this resource, you can manage custom text on your Auth0 prompts. You can read more about custom texts [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts).
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const example = new auth0.PromptCustomText("example", {
- *     prompt: "login",
- *     language: "en",
- *     body: JSON.stringify({
- *         login: {
- *             alertListTitle: "Alerts",
- *             buttonText: "Continue",
- *             description: "Login to",
- *             editEmailText: "Edit",
- *             emailPlaceholder: "Email address",
- *             federatedConnectionButtonText: "Continue with ${connectionName}",
- *             footerLinkText: "Sign up",
- *             footerText: "Don't have an account?",
- *             forgotPasswordText: "Forgot password?",
- *             invitationDescription: "Log in to accept ${inviterName}'s invitation to join ${companyName} on ${clientName}.",
- *             invitationTitle: "You've Been Invited!",
- *             logoAltText: "${companyName}",
- *             pageTitle: "Log in | ${clientName}",
- *             passwordPlaceholder: "Password",
- *             separatorText: "Or",
- *             signupActionLinkText: "${footerLinkText}",
- *             signupActionText: "${footerText}",
- *             title: "Welcome",
- *             usernamePlaceholder: "Username or email address",
- *         },
- *     }),
- * });
- * ```
- *
  * ## Import
  *
  * This resource can be imported by specifying the prompt and language separated by "::" (note the double colon) <prompt>::<language> # Example

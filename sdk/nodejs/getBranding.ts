@@ -8,15 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to access information about the tenant's branding settings.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myBranding = auth0.getBranding({});
- * ```
  */
 export function getBranding(opts?: pulumi.InvokeOptions): Promise<GetBrandingResult> {
 
@@ -56,15 +47,6 @@ export interface GetBrandingResult {
 }
 /**
  * Use this data source to access information about the tenant's branding settings.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myBranding = auth0.getBranding({});
- * ```
  */
 export function getBrandingOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetBrandingResult> {
     return pulumi.output(getBranding(opts))

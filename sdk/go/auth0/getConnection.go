@@ -13,38 +13,6 @@ import (
 )
 
 // Data source to retrieve a specific Auth0 connection by `connectionId` or `name`.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.LookupConnection(ctx, &auth0.LookupConnectionArgs{
-//				Name: pulumi.StringRef("Acceptance-Test-Connection-{{.testName}}"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = auth0.LookupConnection(ctx, &auth0.LookupConnectionArgs{
-//				ConnectionId: pulumi.StringRef("con_abcdefghkijklmnopqrstuvwxyz0123456789"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...pulumi.InvokeOption) (*LookupConnectionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionResult

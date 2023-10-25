@@ -14,29 +14,6 @@ namespace Pulumi.Auth0
     /// 
     /// !&gt; This resource is deprecated. Refer to the [guide on how to migrate from rules to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-rules-to-actions) and manage your actions using the `auth0.Action` resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myRule = new Auth0.Rule("myRule", new()
-    ///     {
-    ///         Enabled = true,
-    ///         Script = @"    function (user, context, callback) {
-    ///       callback(null, user, context);
-    ///     }
-    ///   
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Existing rules can be imported using their ID. # Example

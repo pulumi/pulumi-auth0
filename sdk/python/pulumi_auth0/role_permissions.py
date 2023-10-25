@@ -31,9 +31,17 @@ class RolePermissionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             permissions: pulumi.Input[Sequence[pulumi.Input['RolePermissionsPermissionArgs']]],
-             role_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionsPermissionArgs']]]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
+
         _setter("permissions", permissions)
         _setter("role_id", role_id)
 
@@ -82,7 +90,11 @@ class _RolePermissionsState:
              _setter: Callable[[Any, Any], None],
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionsPermissionArgs']]]] = None,
              role_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+
         if permissions is not None:
             _setter("permissions", permissions)
         if role_id is not None:

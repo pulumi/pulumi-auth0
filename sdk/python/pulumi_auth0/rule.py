@@ -35,11 +35,15 @@ class RuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             script: pulumi.Input[str],
+             script: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              order: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if script is None:
+            raise TypeError("Missing 'script' argument")
+
         _setter("script", script)
         if enabled is not None:
             _setter("enabled", enabled)
@@ -125,7 +129,9 @@ class _RuleState:
              name: Optional[pulumi.Input[str]] = None,
              order: Optional[pulumi.Input[int]] = None,
              script: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
         if name is not None:
@@ -199,21 +205,6 @@ class Rule(pulumi.CustomResource):
 
         !> This resource is deprecated. Refer to the [guide on how to migrate from rules to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-rules-to-actions) and manage your actions using the `Action` resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_rule = auth0.Rule("myRule",
-            enabled=True,
-            script=\"\"\"    function (user, context, callback) {
-              callback(null, user, context);
-            }
-          
-        \"\"\")
-        ```
-
         ## Import
 
         Existing rules can be imported using their ID. # Example
@@ -239,21 +230,6 @@ class Rule(pulumi.CustomResource):
         With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage rules. You can create global variable for use with rules by using the `RuleConfig` resource.
 
         !> This resource is deprecated. Refer to the [guide on how to migrate from rules to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-rules-to-actions) and manage your actions using the `Action` resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_rule = auth0.Rule("myRule",
-            enabled=True,
-            script=\"\"\"    function (user, context, callback) {
-              callback(null, user, context);
-            }
-          
-        \"\"\")
-        ```
 
         ## Import
 

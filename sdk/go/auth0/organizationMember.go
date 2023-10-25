@@ -19,48 +19,6 @@ import (
 // all the members assigned to an organization. To avoid potential issues, it is recommended not to use this resource in
 // conjunction with the `OrganizationMembers` resource when managing members for the same organization id.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			user, err := auth0.NewUser(ctx, "user", &auth0.UserArgs{
-//				Email:          pulumi.String("test-user@auth0.com"),
-//				ConnectionName: pulumi.String("Username-Password-Authentication"),
-//				EmailVerified:  pulumi.Bool(true),
-//				Password:       pulumi.String("MyPass123$"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myOrg, err := auth0.NewOrganization(ctx, "myOrg", &auth0.OrganizationArgs{
-//				DisplayName: pulumi.String("Admin"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = auth0.NewOrganizationMember(ctx, "myOrgMember", &auth0.OrganizationMemberArgs{
-//				OrganizationId: myOrg.ID(),
-//				UserId:         user.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // This resource can be imported by specifying the organization ID and user ID separated by "::" (note the double colon) <organizationID>::<userID> # Example

@@ -13,66 +13,12 @@ namespace Pulumi.Auth0
     {
         /// <summary>
         /// Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Auth0 = Pulumi.Auth0;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var some_connection_by_name = Auth0.GetConnection.Invoke(new()
-        ///     {
-        ///         Name = "Acceptance-Test-Connection-{{.testName}}",
-        ///     });
-        /// 
-        ///     var some_connection_by_id = Auth0.GetConnection.Invoke(new()
-        ///     {
-        ///         ConnectionId = "con_abcdefghkijklmnopqrstuvwxyz0123456789",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetConnectionResult> InvokeAsync(GetConnectionArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionResult>("auth0:index/getConnection:getConnection", args ?? new GetConnectionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Auth0 = Pulumi.Auth0;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var some_connection_by_name = Auth0.GetConnection.Invoke(new()
-        ///     {
-        ///         Name = "Acceptance-Test-Connection-{{.testName}}",
-        ///     });
-        /// 
-        ///     var some_connection_by_id = Auth0.GetConnection.Invoke(new()
-        ///     {
-        ///         ConnectionId = "con_abcdefghkijklmnopqrstuvwxyz0123456789",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetConnectionResult> Invoke(GetConnectionInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionResult>("auth0:index/getConnection:getConnection", args ?? new GetConnectionInvokeArgs(), options.WithDefaults());

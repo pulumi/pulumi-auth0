@@ -12,65 +12,6 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With this resource, you can manage your Auth0 log streams.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // This is an example of an http log stream.
-    ///     var myWebhook = new Auth0.LogStream("myWebhook", new()
-    ///     {
-    ///         Filters = new[]
-    ///         {
-    ///             
-    ///             {
-    ///                 { "name", "auth.login.fail" },
-    ///                 { "type", "category" },
-    ///             },
-    ///             
-    ///             {
-    ///                 { "name", "auth.signup.fail" },
-    ///                 { "type", "category" },
-    ///             },
-    ///         },
-    ///         Sink = new Auth0.Inputs.LogStreamSinkArgs
-    ///         {
-    ///             HttpAuthorization = "AKIAXXXXXXXXXXXXXXXX",
-    ///             HttpContentFormat = "JSONOBJECT",
-    ///             HttpContentType = "application/json",
-    ///             HttpCustomHeaders = new[]
-    ///             {
-    ///                 
-    ///                 {
-    ///                     { "header", "foo" },
-    ///                     { "value", "bar" },
-    ///                 },
-    ///             },
-    ///             HttpEndpoint = "https://example.com/logs",
-    ///         },
-    ///         Type = "http",
-    ///     });
-    /// 
-    ///     // This is an example of an Amazon EventBridge log stream.
-    ///     var exampleAws = new Auth0.LogStream("exampleAws", new()
-    ///     {
-    ///         Sink = new Auth0.Inputs.LogStreamSinkArgs
-    ///         {
-    ///             AwsAccountId = "my_account_id",
-    ///             AwsRegion = "us-east-2",
-    ///         },
-    ///         Status = "active",
-    ///         Type = "eventbridge",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the log stream ID. # Example

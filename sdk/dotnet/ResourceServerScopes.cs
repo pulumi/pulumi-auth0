@@ -17,42 +17,6 @@ namespace Pulumi.Auth0
     /// resource in conjunction with the `auth0.ResourceServerScope` resource when managing scopes for the same resource
     /// server id.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myApi = new Auth0.ResourceServer("myApi", new()
-    ///     {
-    ///         Identifier = "https://api.example.com",
-    ///     });
-    /// 
-    ///     var myApiScopes = new Auth0.ResourceServerScopes("myApiScopes", new()
-    ///     {
-    ///         ResourceServerIdentifier = myApi.Identifier,
-    ///         Scopes = new[]
-    ///         {
-    ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
-    ///             {
-    ///                 Name = "create:appointments",
-    ///                 Description = "Ability to create appointments",
-    ///             },
-    ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
-    ///             {
-    ///                 Name = "read:appointments",
-    ///                 Description = "Ability to read appointments",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the resource server identifier. # Example

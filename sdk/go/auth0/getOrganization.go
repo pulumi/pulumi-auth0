@@ -13,38 +13,6 @@ import (
 )
 
 // Data source to retrieve a specific Auth0 organization by `organizationId` or `name`.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.LookupOrganization(ctx, &auth0.LookupOrganizationArgs{
-//				Name: pulumi.StringRef("my-org"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = auth0.LookupOrganization(ctx, &auth0.LookupOrganizationArgs{
-//				OrganizationId: pulumi.StringRef("org_abcdefghkijklmnopqrstuvwxyz0123456789"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupOrganization(ctx *pulumi.Context, args *LookupOrganizationArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationResult

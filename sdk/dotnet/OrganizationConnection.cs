@@ -17,36 +17,6 @@ namespace Pulumi.Auth0
     /// resource in conjunction with the `auth0.OrganizationConnections` resource when managing enabled connections for the
     /// same organization id.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myConnection = new Auth0.Connection("myConnection", new()
-    ///     {
-    ///         Strategy = "auth0",
-    ///     });
-    /// 
-    ///     var myOrganization = new Auth0.Organization("myOrganization", new()
-    ///     {
-    ///         DisplayName = "My Organization",
-    ///     });
-    /// 
-    ///     var myOrgConn = new Auth0.OrganizationConnection("myOrgConn", new()
-    ///     {
-    ///         OrganizationId = myOrganization.Id,
-    ///         ConnectionId = myConnection.Id,
-    ///         AssignMembershipOnLogin = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the organization ID and connection ID separated by "::" (note the double colon) &lt;organizationID&gt;::&lt;connectionID&gt; # Example

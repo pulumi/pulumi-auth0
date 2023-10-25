@@ -4,8 +4,12 @@
 package auth0
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Data source to retrieve the custom domain configuration.
@@ -39,4 +43,85 @@ type LookupCustomDomainResult struct {
 	Type string `pulumi:"type"`
 	// Configuration settings for verification.
 	Verifications []GetCustomDomainVerificationType `pulumi:"verifications"`
+}
+
+func LookupCustomDomainOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupCustomDomainResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (LookupCustomDomainResult, error) {
+		r, err := LookupCustomDomain(ctx, opts...)
+		var s LookupCustomDomainResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(LookupCustomDomainResultOutput)
+}
+
+// A collection of values returned by getCustomDomain.
+type LookupCustomDomainResultOutput struct{ *pulumi.OutputState }
+
+func (LookupCustomDomainResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCustomDomainResult)(nil)).Elem()
+}
+
+func (o LookupCustomDomainResultOutput) ToLookupCustomDomainResultOutput() LookupCustomDomainResultOutput {
+	return o
+}
+
+func (o LookupCustomDomainResultOutput) ToLookupCustomDomainResultOutputWithContext(ctx context.Context) LookupCustomDomainResultOutput {
+	return o
+}
+
+func (o LookupCustomDomainResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomDomainResult] {
+	return pulumix.Output[LookupCustomDomainResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
+func (o LookupCustomDomainResultOutput) CustomClientIpHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.CustomClientIpHeader }).(pulumi.StringOutput)
+}
+
+// Name of the custom domain.
+func (o LookupCustomDomainResultOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupCustomDomainResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+func (o LookupCustomDomainResultOutput) OriginDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.OriginDomainName }).(pulumi.StringOutput)
+}
+
+// Indicates whether this is a primary domain.
+func (o LookupCustomDomainResultOutput) Primary() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupCustomDomainResult) bool { return v.Primary }).(pulumi.BoolOutput)
+}
+
+// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
+func (o LookupCustomDomainResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
+func (o LookupCustomDomainResultOutput) TlsPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.TlsPolicy }).(pulumi.StringOutput)
+}
+
+// Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
+func (o LookupCustomDomainResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Configuration settings for verification.
+func (o LookupCustomDomainResultOutput) Verifications() GetCustomDomainVerificationTypeArrayOutput {
+	return o.ApplyT(func(v LookupCustomDomainResult) []GetCustomDomainVerificationType { return v.Verifications }).(GetCustomDomainVerificationTypeArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupCustomDomainResultOutput{})
 }

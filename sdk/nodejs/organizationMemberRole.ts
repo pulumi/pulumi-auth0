@@ -7,36 +7,6 @@ import * as utilities from "./utilities";
 /**
  * This resource is used to manage the roles assigned to an organization member.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const reader = new auth0.Role("reader", {});
- * const writer = new auth0.Role("writer", {});
- * const user = new auth0.User("user", {
- *     connectionName: "Username-Password-Authentication",
- *     email: "test-user@auth0.com",
- *     password: "MyPass123$",
- * });
- * const myOrg = new auth0.Organization("myOrg", {displayName: "Some Org"});
- * const myOrgMember = new auth0.OrganizationMember("myOrgMember", {
- *     organizationId: myOrg.id,
- *     userId: user.id,
- * });
- * const role1 = new auth0.OrganizationMemberRole("role1", {
- *     organizationId: myOrg.id,
- *     userId: user.id,
- *     roleId: reader.id,
- * });
- * const role2 = new auth0.OrganizationMemberRole("role2", {
- *     organizationId: myOrg.id,
- *     userId: user.id,
- *     roleId: writer.id,
- * });
- * ```
- *
  * ## Import
  *
  * This resource can be imported by specifying the organization ID, user ID and role ID separated by "::" (note the double colon) <organizationID>::<userID>::<roleID> # Example

@@ -41,7 +41,11 @@ class OrganizationArgs:
              display_name: Optional[pulumi.Input[str]] = None,
              metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if branding is not None:
             _setter("branding", branding)
         if display_name is not None:
@@ -128,7 +132,11 @@ class _OrganizationState:
              display_name: Optional[pulumi.Input[str]] = None,
              metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if branding is not None:
             _setter("branding", branding)
         if display_name is not None:
@@ -206,23 +214,6 @@ class Organization(pulumi.CustomResource):
           - Build administration capabilities into their products, using Organizations
             APIs, so that those businesses can manage their own organizations.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_organization = auth0.Organization("myOrganization",
-            branding=auth0.OrganizationBrandingArgs(
-                colors={
-                    "pageBackground": "#e1e1e1",
-                    "primary": "#f2f2f2",
-                },
-                logo_url="https://example.com/assets/icons/icon.png",
-            ),
-            display_name="Auth0 Inc.")
-        ```
-
         ## Import
 
         This resource can be imported by specifying the organization ID. # Example
@@ -252,23 +243,6 @@ class Organization(pulumi.CustomResource):
           - Configure branded, federated login flows for each business.
           - Build administration capabilities into their products, using Organizations
             APIs, so that those businesses can manage their own organizations.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_organization = auth0.Organization("myOrganization",
-            branding=auth0.OrganizationBrandingArgs(
-                colors={
-                    "pageBackground": "#e1e1e1",
-                    "primary": "#f2f2f2",
-                },
-                logo_url="https://example.com/assets/icons/icon.png",
-            ),
-            display_name="Auth0 Inc.")
-        ```
 
         ## Import
 
@@ -310,11 +284,7 @@ class Organization(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationArgs.__new__(OrganizationArgs)
 
-            if branding is not None and not isinstance(branding, OrganizationBrandingArgs):
-                branding = branding or {}
-                def _setter(key, value):
-                    branding[key] = value
-                OrganizationBrandingArgs._configure(_setter, **branding)
+            branding = _utilities.configure(branding, OrganizationBrandingArgs, True)
             __props__.__dict__["branding"] = branding
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["metadata"] = metadata

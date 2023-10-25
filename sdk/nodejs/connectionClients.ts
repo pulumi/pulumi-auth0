@@ -12,26 +12,6 @@ import * as utilities from "./utilities";
  * resource in conjunction with the `auth0.ConnectionClient` resource when managing enabled clients for the same
  * connection id.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myConn = new auth0.Connection("myConn", {strategy: "auth0"});
- * const myFirstClient = new auth0.Client("myFirstClient", {});
- * const mySecondClient = new auth0.Client("mySecondClient", {});
- * // One connection to many clients association.
- * // To prevent issues, avoid using this resource together with the `auth0_connection_client` resource.
- * const myConnClientsAssoc = new auth0.ConnectionClients("myConnClientsAssoc", {
- *     connectionId: myConn.id,
- *     enabledClients: [
- *         myFirstClient.id,
- *         mySecondClient.id,
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * This resource can be imported by specifying the Connection ID. # Example

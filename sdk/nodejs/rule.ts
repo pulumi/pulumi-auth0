@@ -9,22 +9,6 @@ import * as utilities from "./utilities";
  *
  * !> This resource is deprecated. Refer to the [guide on how to migrate from rules to actions](https://auth0.com/docs/customize/actions/migrate/migrate-from-rules-to-actions) and manage your actions using the `auth0.Action` resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myRule = new auth0.Rule("myRule", {
- *     enabled: true,
- *     script: `    function (user, context, callback) {
- *       callback(null, user, context);
- *     }
- *   
- * `,
- * });
- * ```
- *
  * ## Import
  *
  * Existing rules can be imported using their ID. # Example

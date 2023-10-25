@@ -52,7 +52,7 @@ class GuardianArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy: pulumi.Input[str],
+             policy: Optional[pulumi.Input[str]] = None,
              duo: Optional[pulumi.Input['GuardianDuoArgs']] = None,
              email: Optional[pulumi.Input[bool]] = None,
              otp: Optional[pulumi.Input[bool]] = None,
@@ -61,7 +61,17 @@ class GuardianArgs:
              recovery_code: Optional[pulumi.Input[bool]] = None,
              webauthn_platform: Optional[pulumi.Input['GuardianWebauthnPlatformArgs']] = None,
              webauthn_roaming: Optional[pulumi.Input['GuardianWebauthnRoamingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if recovery_code is None and 'recoveryCode' in kwargs:
+            recovery_code = kwargs['recoveryCode']
+        if webauthn_platform is None and 'webauthnPlatform' in kwargs:
+            webauthn_platform = kwargs['webauthnPlatform']
+        if webauthn_roaming is None and 'webauthnRoaming' in kwargs:
+            webauthn_roaming = kwargs['webauthnRoaming']
+
         _setter("policy", policy)
         if duo is not None:
             _setter("duo", duo)
@@ -237,7 +247,15 @@ class _GuardianState:
              recovery_code: Optional[pulumi.Input[bool]] = None,
              webauthn_platform: Optional[pulumi.Input['GuardianWebauthnPlatformArgs']] = None,
              webauthn_roaming: Optional[pulumi.Input['GuardianWebauthnRoamingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if recovery_code is None and 'recoveryCode' in kwargs:
+            recovery_code = kwargs['recoveryCode']
+        if webauthn_platform is None and 'webauthnPlatform' in kwargs:
+            webauthn_platform = kwargs['webauthnPlatform']
+        if webauthn_roaming is None and 'webauthnRoaming' in kwargs:
+            webauthn_roaming = kwargs['webauthnRoaming']
+
         if duo is not None:
             _setter("duo", duo)
         if email is not None:
@@ -384,60 +402,6 @@ class Guardian(pulumi.CustomResource):
         """
         Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_guardian = auth0.Guardian("myGuardian",
-            duo=auth0.GuardianDuoArgs(
-                enabled=True,
-                hostname="api-hostname",
-                integration_key="someKey",
-                secret_key="someSecret",
-            ),
-            email=True,
-            otp=True,
-            phone=auth0.GuardianPhoneArgs(
-                enabled=True,
-                message_types=[
-                    "sms",
-                    "voice",
-                ],
-                options=auth0.GuardianPhoneOptionsArgs(
-                    enrollment_message="{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
-                    verification_message="{{code}} is your verification code for {{tenant.friendly_name}}.",
-                ),
-                provider="auth0",
-            ),
-            policy="all-applications",
-            push=auth0.GuardianPushArgs(
-                amazon_sns=auth0.GuardianPushAmazonSnsArgs(
-                    aws_access_key_id="test1",
-                    aws_region="us-west-1",
-                    aws_secret_access_key="secretKey",
-                    sns_apns_platform_application_arn="test_arn",
-                    sns_gcm_platform_application_arn="test_arn",
-                ),
-                custom_app=auth0.GuardianPushCustomAppArgs(
-                    app_name="CustomApp",
-                    apple_app_link="https://itunes.apple.com/us/app/my-app/id123121",
-                    google_app_link="https://play.google.com/store/apps/details?id=com.my.app",
-                ),
-                enabled=True,
-                provider="sns",
-            ),
-            recovery_code=True,
-            webauthn_platform=auth0.GuardianWebauthnPlatformArgs(
-                enabled=True,
-            ),
-            webauthn_roaming=auth0.GuardianWebauthnRoamingArgs(
-                enabled=True,
-                user_verification="required",
-            ))
-        ```
-
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
@@ -466,60 +430,6 @@ class Guardian(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_guardian = auth0.Guardian("myGuardian",
-            duo=auth0.GuardianDuoArgs(
-                enabled=True,
-                hostname="api-hostname",
-                integration_key="someKey",
-                secret_key="someSecret",
-            ),
-            email=True,
-            otp=True,
-            phone=auth0.GuardianPhoneArgs(
-                enabled=True,
-                message_types=[
-                    "sms",
-                    "voice",
-                ],
-                options=auth0.GuardianPhoneOptionsArgs(
-                    enrollment_message="{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
-                    verification_message="{{code}} is your verification code for {{tenant.friendly_name}}.",
-                ),
-                provider="auth0",
-            ),
-            policy="all-applications",
-            push=auth0.GuardianPushArgs(
-                amazon_sns=auth0.GuardianPushAmazonSnsArgs(
-                    aws_access_key_id="test1",
-                    aws_region="us-west-1",
-                    aws_secret_access_key="secretKey",
-                    sns_apns_platform_application_arn="test_arn",
-                    sns_gcm_platform_application_arn="test_arn",
-                ),
-                custom_app=auth0.GuardianPushCustomAppArgs(
-                    app_name="CustomApp",
-                    apple_app_link="https://itunes.apple.com/us/app/my-app/id123121",
-                    google_app_link="https://play.google.com/store/apps/details?id=com.my.app",
-                ),
-                enabled=True,
-                provider="sns",
-            ),
-            recovery_code=True,
-            webauthn_platform=auth0.GuardianWebauthnPlatformArgs(
-                enabled=True,
-            ),
-            webauthn_roaming=auth0.GuardianWebauthnRoamingArgs(
-                enabled=True,
-                user_verification="required",
-            ))
-        ```
 
         ## Import
 
@@ -566,41 +476,21 @@ class Guardian(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GuardianArgs.__new__(GuardianArgs)
 
-            if duo is not None and not isinstance(duo, GuardianDuoArgs):
-                duo = duo or {}
-                def _setter(key, value):
-                    duo[key] = value
-                GuardianDuoArgs._configure(_setter, **duo)
+            duo = _utilities.configure(duo, GuardianDuoArgs, True)
             __props__.__dict__["duo"] = duo
             __props__.__dict__["email"] = email
             __props__.__dict__["otp"] = otp
-            if phone is not None and not isinstance(phone, GuardianPhoneArgs):
-                phone = phone or {}
-                def _setter(key, value):
-                    phone[key] = value
-                GuardianPhoneArgs._configure(_setter, **phone)
+            phone = _utilities.configure(phone, GuardianPhoneArgs, True)
             __props__.__dict__["phone"] = phone
             if policy is None and not opts.urn:
                 raise TypeError("Missing required property 'policy'")
             __props__.__dict__["policy"] = policy
-            if push is not None and not isinstance(push, GuardianPushArgs):
-                push = push or {}
-                def _setter(key, value):
-                    push[key] = value
-                GuardianPushArgs._configure(_setter, **push)
+            push = _utilities.configure(push, GuardianPushArgs, True)
             __props__.__dict__["push"] = push
             __props__.__dict__["recovery_code"] = recovery_code
-            if webauthn_platform is not None and not isinstance(webauthn_platform, GuardianWebauthnPlatformArgs):
-                webauthn_platform = webauthn_platform or {}
-                def _setter(key, value):
-                    webauthn_platform[key] = value
-                GuardianWebauthnPlatformArgs._configure(_setter, **webauthn_platform)
+            webauthn_platform = _utilities.configure(webauthn_platform, GuardianWebauthnPlatformArgs, True)
             __props__.__dict__["webauthn_platform"] = webauthn_platform
-            if webauthn_roaming is not None and not isinstance(webauthn_roaming, GuardianWebauthnRoamingArgs):
-                webauthn_roaming = webauthn_roaming or {}
-                def _setter(key, value):
-                    webauthn_roaming[key] = value
-                GuardianWebauthnRoamingArgs._configure(_setter, **webauthn_roaming)
+            webauthn_roaming = _utilities.configure(webauthn_roaming, GuardianWebauthnRoamingArgs, True)
             __props__.__dict__["webauthn_roaming"] = webauthn_roaming
         super(Guardian, __self__).__init__(
             'auth0:index/guardian:Guardian',

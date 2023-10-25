@@ -9,54 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myProtection = new auth0.AttackProtection("myProtection", {
- *     breachedPasswordDetection: {
- *         adminNotificationFrequencies: ["daily"],
- *         enabled: true,
- *         method: "standard",
- *         preUserRegistration: {
- *             shields: ["block"],
- *         },
- *         shields: [
- *             "admin_notification",
- *             "block",
- *         ],
- *     },
- *     bruteForceProtection: {
- *         allowlists: ["127.0.0.1"],
- *         enabled: true,
- *         maxAttempts: 5,
- *         mode: "count_per_identifier_and_ip",
- *         shields: [
- *             "block",
- *             "user_notification",
- *         ],
- *     },
- *     suspiciousIpThrottling: {
- *         allowlists: ["192.168.1.1"],
- *         enabled: true,
- *         preLogin: {
- *             maxAttempts: 100,
- *             rate: 864000,
- *         },
- *         preUserRegistration: {
- *             maxAttempts: 50,
- *             rate: 1200,
- *         },
- *         shields: [
- *             "admin_notification",
- *             "block",
- *         ],
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * As this is not a resource identifiable by an ID within the Auth0 Management API, attack_protection can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example

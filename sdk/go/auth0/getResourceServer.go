@@ -13,38 +13,6 @@ import (
 )
 
 // Data source to retrieve a specific Auth0 resource server by `resourceServerId` or `identifier`.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.LookupResourceServer(ctx, &auth0.LookupResourceServerArgs{
-//				Identifier: pulumi.StringRef("https://my-api.com/v1"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = auth0.LookupResourceServer(ctx, &auth0.LookupResourceServerArgs{
-//				ResourceServerId: pulumi.StringRef("abcdefghkijklmnopqrstuvwxyz0123456789"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupResourceServer(ctx *pulumi.Context, args *LookupResourceServerArgs, opts ...pulumi.InvokeOption) (*LookupResourceServerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourceServerResult

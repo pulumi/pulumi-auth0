@@ -8,17 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Data source to retrieve a specific Auth0 user by `userId`.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myUser = auth0.getUser({
- *     userId: "auth0|34fdr23fdsfdfsf",
- * });
- * ```
  */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
 
@@ -125,17 +114,6 @@ export interface GetUserResult {
 }
 /**
  * Data source to retrieve a specific Auth0 user by `userId`.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myUser = auth0.getUser({
- *     userId: "auth0|34fdr23fdsfdfsf",
- * });
- * ```
  */
 export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
     return pulumi.output(args).apply((a: any) => getUser(a, opts))

@@ -74,7 +74,7 @@ class UserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_name: pulumi.Input[str],
+             connection_name: Optional[pulumi.Input[str]] = None,
              app_metadata: Optional[pulumi.Input[str]] = None,
              blocked: Optional[pulumi.Input[bool]] = None,
              email: Optional[pulumi.Input[str]] = None,
@@ -91,7 +91,31 @@ class UserArgs:
              user_metadata: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
              verify_email: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if connection_name is None and 'connectionName' in kwargs:
+            connection_name = kwargs['connectionName']
+        if connection_name is None:
+            raise TypeError("Missing 'connection_name' argument")
+        if app_metadata is None and 'appMetadata' in kwargs:
+            app_metadata = kwargs['appMetadata']
+        if email_verified is None and 'emailVerified' in kwargs:
+            email_verified = kwargs['emailVerified']
+        if family_name is None and 'familyName' in kwargs:
+            family_name = kwargs['familyName']
+        if given_name is None and 'givenName' in kwargs:
+            given_name = kwargs['givenName']
+        if phone_number is None and 'phoneNumber' in kwargs:
+            phone_number = kwargs['phoneNumber']
+        if phone_verified is None and 'phoneVerified' in kwargs:
+            phone_verified = kwargs['phoneVerified']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_metadata is None and 'userMetadata' in kwargs:
+            user_metadata = kwargs['userMetadata']
+        if verify_email is None and 'verifyEmail' in kwargs:
+            verify_email = kwargs['verifyEmail']
+
         _setter("connection_name", connection_name)
         if app_metadata is not None:
             _setter("app_metadata", app_metadata)
@@ -411,7 +435,29 @@ class _UserState:
              user_metadata: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
              verify_email: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_metadata is None and 'appMetadata' in kwargs:
+            app_metadata = kwargs['appMetadata']
+        if connection_name is None and 'connectionName' in kwargs:
+            connection_name = kwargs['connectionName']
+        if email_verified is None and 'emailVerified' in kwargs:
+            email_verified = kwargs['emailVerified']
+        if family_name is None and 'familyName' in kwargs:
+            family_name = kwargs['familyName']
+        if given_name is None and 'givenName' in kwargs:
+            given_name = kwargs['givenName']
+        if phone_number is None and 'phoneNumber' in kwargs:
+            phone_number = kwargs['phoneNumber']
+        if phone_verified is None and 'phoneVerified' in kwargs:
+            phone_verified = kwargs['phoneVerified']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_metadata is None and 'userMetadata' in kwargs:
+            user_metadata = kwargs['userMetadata']
+        if verify_email is None and 'verifyEmail' in kwargs:
+            verify_email = kwargs['verifyEmail']
+
         if app_metadata is not None:
             _setter("app_metadata", app_metadata)
         if blocked is not None:
@@ -678,23 +724,6 @@ class User(pulumi.CustomResource):
         """
         With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        user = auth0.User("user",
-            connection_name="Username-Password-Authentication",
-            email="test@test.com",
-            email_verified=True,
-            nickname="some.nickname",
-            password="passpass$12$12",
-            picture="https://www.example.com/a-valid-picture-url.jpg",
-            user_id="12345",
-            username="unique_username")
-        ```
-
         ## Import
 
         This resource can be imported using the user ID. # Example
@@ -731,23 +760,6 @@ class User(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        user = auth0.User("user",
-            connection_name="Username-Password-Authentication",
-            email="test@test.com",
-            email_verified=True,
-            nickname="some.nickname",
-            password="passpass$12$12",
-            picture="https://www.example.com/a-valid-picture-url.jpg",
-            user_id="12345",
-            username="unique_username")
-        ```
 
         ## Import
 
