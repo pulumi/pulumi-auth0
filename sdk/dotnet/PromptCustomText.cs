@@ -12,51 +12,6 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With this resource, you can manage custom text on your Auth0 prompts. You can read more about custom texts [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts).
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Auth0.PromptCustomText("example", new()
-    ///     {
-    ///         Prompt = "login",
-    ///         Language = "en",
-    ///         Body = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///         {
-    ///             ["login"] = new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 ["alertListTitle"] = "Alerts",
-    ///                 ["buttonText"] = "Continue",
-    ///                 ["description"] = "Login to",
-    ///                 ["editEmailText"] = "Edit",
-    ///                 ["emailPlaceholder"] = "Email address",
-    ///                 ["federatedConnectionButtonText"] = "Continue with ${connectionName}",
-    ///                 ["footerLinkText"] = "Sign up",
-    ///                 ["footerText"] = "Don't have an account?",
-    ///                 ["forgotPasswordText"] = "Forgot password?",
-    ///                 ["invitationDescription"] = "Log in to accept ${inviterName}'s invitation to join ${companyName} on ${clientName}.",
-    ///                 ["invitationTitle"] = "You've Been Invited!",
-    ///                 ["logoAltText"] = "${companyName}",
-    ///                 ["pageTitle"] = "Log in | ${clientName}",
-    ///                 ["passwordPlaceholder"] = "Password",
-    ///                 ["separatorText"] = "Or",
-    ///                 ["signupActionLinkText"] = "${footerLinkText}",
-    ///                 ["signupActionText"] = "${footerText}",
-    ///                 ["title"] = "Welcome",
-    ///                 ["usernamePlaceholder"] = "Username or email address",
-    ///             },
-    ///         }),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the prompt and language separated by "::" (note the double colon) &lt;prompt&gt;::&lt;language&gt; # Example

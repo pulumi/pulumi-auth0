@@ -20,46 +20,6 @@ import (
 // resource in conjunction with the `OrganizationConnections` resource when managing enabled connections for the
 // same organization id.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myConnection, err := auth0.NewConnection(ctx, "myConnection", &auth0.ConnectionArgs{
-//				Strategy: pulumi.String("auth0"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myOrganization, err := auth0.NewOrganization(ctx, "myOrganization", &auth0.OrganizationArgs{
-//				DisplayName: pulumi.String("My Organization"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = auth0.NewOrganizationConnection(ctx, "myOrgConn", &auth0.OrganizationConnectionArgs{
-//				OrganizationId:          myOrganization.ID(),
-//				ConnectionId:            myConnection.ID(),
-//				AssignMembershipOnLogin: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // This resource can be imported by specifying the organization ID and connection ID separated by "::" (note the double colon) <organizationID>::<connectionID> # Example

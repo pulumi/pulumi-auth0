@@ -14,34 +14,6 @@ import (
 
 // With this resource, you can manage your Auth0 prompts, including choosing the login experience version.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewPrompt(ctx, "myPrompt", &auth0.PromptArgs{
-//				IdentifierFirst:             pulumi.Bool(false),
-//				UniversalLoginExperience:    pulumi.String("new"),
-//				WebauthnPlatformFirstFactor: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // As this is not a resource identifiable by an ID within the Auth0 Management API, prompts can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example

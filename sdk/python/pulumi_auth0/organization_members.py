@@ -29,9 +29,17 @@ class OrganizationMembersArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             organization_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if organization_id is None:
+            raise TypeError("Missing 'organization_id' argument")
+
         _setter("members", members)
         _setter("organization_id", organization_id)
 
@@ -80,7 +88,11 @@ class _OrganizationMembersState:
              _setter: Callable[[Any, Any], None],
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              organization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+
         if members is not None:
             _setter("members", members)
         if organization_id is not None:
@@ -127,29 +139,6 @@ class OrganizationMembers(pulumi.CustomResource):
         resource in conjunction with the `OrganizationMember` resource when managing members for the same organization
         id.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        user1 = auth0.User("user1",
-            connection_name="Username-Password-Authentication",
-            email="myuser1@auth0.com",
-            password="MyPass123$")
-        user2 = auth0.User("user2",
-            connection_name="Username-Password-Authentication",
-            email="myuser2@auth0.com",
-            password="MyPass123$")
-        my_org = auth0.Organization("myOrg", display_name="Some Organization")
-        my_members = auth0.OrganizationMembers("myMembers",
-            organization_id=my_org.id,
-            members=[
-                user1.id,
-                user2.id,
-            ])
-        ```
-
         ## Import
 
         This resource can be imported by specifying the organization ID. # Example
@@ -176,29 +165,6 @@ class OrganizationMembers(pulumi.CustomResource):
         resource only appends a member to an organization. To avoid potential issues, it is recommended not to use this
         resource in conjunction with the `OrganizationMember` resource when managing members for the same organization
         id.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        user1 = auth0.User("user1",
-            connection_name="Username-Password-Authentication",
-            email="myuser1@auth0.com",
-            password="MyPass123$")
-        user2 = auth0.User("user2",
-            connection_name="Username-Password-Authentication",
-            email="myuser2@auth0.com",
-            password="MyPass123$")
-        my_org = auth0.Organization("myOrg", display_name="Some Organization")
-        my_members = auth0.OrganizationMembers("myMembers",
-            organization_id=my_org.id,
-            members=[
-                user1.id,
-                user2.id,
-            ])
-        ```
 
         ## Import
 

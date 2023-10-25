@@ -41,7 +41,13 @@ class PagesArgs:
              error: Optional[pulumi.Input['PagesErrorArgs']] = None,
              guardian_mfa: Optional[pulumi.Input['PagesGuardianMfaArgs']] = None,
              login: Optional[pulumi.Input['PagesLoginArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if change_password is None and 'changePassword' in kwargs:
+            change_password = kwargs['changePassword']
+        if guardian_mfa is None and 'guardianMfa' in kwargs:
+            guardian_mfa = kwargs['guardianMfa']
+
         if change_password is not None:
             _setter("change_password", change_password)
         if error is not None:
@@ -128,7 +134,13 @@ class _PagesState:
              error: Optional[pulumi.Input['PagesErrorArgs']] = None,
              guardian_mfa: Optional[pulumi.Input['PagesGuardianMfaArgs']] = None,
              login: Optional[pulumi.Input['PagesLoginArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if change_password is None and 'changePassword' in kwargs:
+            change_password = kwargs['changePassword']
+        if guardian_mfa is None and 'guardianMfa' in kwargs:
+            guardian_mfa = kwargs['guardianMfa']
+
         if change_password is not None:
             _setter("change_password", change_password)
         if error is not None:
@@ -200,32 +212,6 @@ class Pages(pulumi.CustomResource):
         """
         With this resource you can manage custom HTML for the Login, Reset Password, Multi-Factor Authentication and Error pages.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_pages = auth0.Pages("myPages",
-            change_password=auth0.PagesChangePasswordArgs(
-                enabled=True,
-                html="<html><body>My Custom Reset Password Page</body></html>",
-            ),
-            error=auth0.PagesErrorArgs(
-                html="<html><body>My Custom Error Page</body></html>",
-                show_log_link=True,
-                url="https://example.com",
-            ),
-            guardian_mfa=auth0.PagesGuardianMfaArgs(
-                enabled=True,
-                html="<html><body>My Custom MFA Page</body></html>",
-            ),
-            login=auth0.PagesLoginArgs(
-                enabled=True,
-                html="<html><body>My Custom Login Page</body></html>",
-            ))
-        ```
-
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API, pages can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
@@ -249,32 +235,6 @@ class Pages(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource you can manage custom HTML for the Login, Reset Password, Multi-Factor Authentication and Error pages.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_pages = auth0.Pages("myPages",
-            change_password=auth0.PagesChangePasswordArgs(
-                enabled=True,
-                html="<html><body>My Custom Reset Password Page</body></html>",
-            ),
-            error=auth0.PagesErrorArgs(
-                html="<html><body>My Custom Error Page</body></html>",
-                show_log_link=True,
-                url="https://example.com",
-            ),
-            guardian_mfa=auth0.PagesGuardianMfaArgs(
-                enabled=True,
-                html="<html><body>My Custom MFA Page</body></html>",
-            ),
-            login=auth0.PagesLoginArgs(
-                enabled=True,
-                html="<html><body>My Custom Login Page</body></html>",
-            ))
-        ```
 
         ## Import
 
@@ -316,29 +276,13 @@ class Pages(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PagesArgs.__new__(PagesArgs)
 
-            if change_password is not None and not isinstance(change_password, PagesChangePasswordArgs):
-                change_password = change_password or {}
-                def _setter(key, value):
-                    change_password[key] = value
-                PagesChangePasswordArgs._configure(_setter, **change_password)
+            change_password = _utilities.configure(change_password, PagesChangePasswordArgs, True)
             __props__.__dict__["change_password"] = change_password
-            if error is not None and not isinstance(error, PagesErrorArgs):
-                error = error or {}
-                def _setter(key, value):
-                    error[key] = value
-                PagesErrorArgs._configure(_setter, **error)
+            error = _utilities.configure(error, PagesErrorArgs, True)
             __props__.__dict__["error"] = error
-            if guardian_mfa is not None and not isinstance(guardian_mfa, PagesGuardianMfaArgs):
-                guardian_mfa = guardian_mfa or {}
-                def _setter(key, value):
-                    guardian_mfa[key] = value
-                PagesGuardianMfaArgs._configure(_setter, **guardian_mfa)
+            guardian_mfa = _utilities.configure(guardian_mfa, PagesGuardianMfaArgs, True)
             __props__.__dict__["guardian_mfa"] = guardian_mfa
-            if login is not None and not isinstance(login, PagesLoginArgs):
-                login = login or {}
-                def _setter(key, value):
-                    login[key] = value
-                PagesLoginArgs._configure(_setter, **login)
+            login = _utilities.configure(login, PagesLoginArgs, True)
             __props__.__dict__["login"] = login
         super(Pages, __self__).__init__(
             'auth0:index/pages:Pages',

@@ -8,20 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Data source to retrieve a specific Auth0 role by `roleId` or `name`.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const some-role-by-name = auth0.getRole({
- *     name: "my-role",
- * });
- * const some-role-by-id = auth0.getRole({
- *     roleId: "abcdefghkijklmnopqrstuvwxyz0123456789",
- * });
- * ```
  */
 export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
     args = args || {};
@@ -75,20 +61,6 @@ export interface GetRoleResult {
 }
 /**
  * Data source to retrieve a specific Auth0 role by `roleId` or `name`.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const some-role-by-name = auth0.getRole({
- *     name: "my-role",
- * });
- * const some-role-by-id = auth0.getRole({
- *     roleId: "abcdefghkijklmnopqrstuvwxyz0123456789",
- * });
- * ```
  */
 export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
     return pulumi.output(args).apply((a: any) => getRole(a, opts))

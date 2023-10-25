@@ -12,55 +12,6 @@ namespace Pulumi.Auth0
     /// <summary>
     /// This resource is used to manage the roles assigned to an organization member.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var reader = new Auth0.Role("reader");
-    /// 
-    ///     var writer = new Auth0.Role("writer");
-    /// 
-    ///     var user = new Auth0.User("user", new()
-    ///     {
-    ///         ConnectionName = "Username-Password-Authentication",
-    ///         Email = "test-user@auth0.com",
-    ///         Password = "MyPass123$",
-    ///     });
-    /// 
-    ///     var myOrg = new Auth0.Organization("myOrg", new()
-    ///     {
-    ///         DisplayName = "Some Org",
-    ///     });
-    /// 
-    ///     var myOrgMember = new Auth0.OrganizationMember("myOrgMember", new()
-    ///     {
-    ///         OrganizationId = myOrg.Id,
-    ///         UserId = user.Id,
-    ///     });
-    /// 
-    ///     var role1 = new Auth0.OrganizationMemberRole("role1", new()
-    ///     {
-    ///         OrganizationId = myOrg.Id,
-    ///         UserId = user.Id,
-    ///         RoleId = reader.Id,
-    ///     });
-    /// 
-    ///     var role2 = new Auth0.OrganizationMemberRole("role2", new()
-    ///     {
-    ///         OrganizationId = myOrg.Id,
-    ///         UserId = user.Id,
-    ///         RoleId = writer.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the organization ID, user ID and role ID separated by "::" (note the double colon) &lt;organizationID&gt;::&lt;userID&gt;::&lt;roleID&gt; # Example

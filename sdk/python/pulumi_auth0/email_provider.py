@@ -40,12 +40,20 @@ class EmailProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             credentials: pulumi.Input['EmailProviderCredentialsArgs'],
-             default_from_address: pulumi.Input[str],
+             credentials: Optional[pulumi.Input['EmailProviderCredentialsArgs']] = None,
+             default_from_address: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              settings: Optional[pulumi.Input['EmailProviderSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if credentials is None:
+            raise TypeError("Missing 'credentials' argument")
+        if default_from_address is None and 'defaultFromAddress' in kwargs:
+            default_from_address = kwargs['defaultFromAddress']
+        if default_from_address is None:
+            raise TypeError("Missing 'default_from_address' argument")
+
         _setter("credentials", credentials)
         _setter("default_from_address", default_from_address)
         if enabled is not None:
@@ -148,7 +156,11 @@ class _EmailProviderState:
              enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              settings: Optional[pulumi.Input['EmailProviderSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_from_address is None and 'defaultFromAddress' in kwargs:
+            default_from_address = kwargs['defaultFromAddress']
+
         if credentials is not None:
             _setter("credentials", credentials)
         if default_from_address is not None:
@@ -235,39 +247,6 @@ class EmailProvider(pulumi.CustomResource):
         """
         With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        # This is an example on how to set up the email provider with Amazon SES.
-        amazon_ses_email_provider = auth0.EmailProvider("amazonSesEmailProvider",
-            credentials=auth0.EmailProviderCredentialsArgs(
-                access_key_id="AKIAXXXXXXXXXXXXXXXX",
-                region="us-east-1",
-                secret_access_key="7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            ),
-            default_from_address="accounts@example.com",
-            enabled=True)
-        # This is an example on how to set up the email provider with Sendgrid.
-        sendgrid_email_provider = auth0.EmailProvider("sendgridEmailProvider",
-            credentials=auth0.EmailProviderCredentialsArgs(
-                api_key="secretAPIKey",
-            ),
-            default_from_address="accounts@example.com",
-            enabled=True)
-        # This is an example on how to set up the email provider with MS365.
-        smtp_email_provider = auth0.EmailProvider("smtpEmailProvider",
-            credentials=auth0.EmailProviderCredentialsArgs(
-                ms365_client_id="ms365_client_id",
-                ms365_client_secret="ms365_client_secret",
-                ms365_tenant_id="ms365_tenant_id",
-            ),
-            default_from_address="accounts@example.com",
-            enabled=True)
-        ```
-
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API, email can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
@@ -292,39 +271,6 @@ class EmailProvider(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        # This is an example on how to set up the email provider with Amazon SES.
-        amazon_ses_email_provider = auth0.EmailProvider("amazonSesEmailProvider",
-            credentials=auth0.EmailProviderCredentialsArgs(
-                access_key_id="AKIAXXXXXXXXXXXXXXXX",
-                region="us-east-1",
-                secret_access_key="7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            ),
-            default_from_address="accounts@example.com",
-            enabled=True)
-        # This is an example on how to set up the email provider with Sendgrid.
-        sendgrid_email_provider = auth0.EmailProvider("sendgridEmailProvider",
-            credentials=auth0.EmailProviderCredentialsArgs(
-                api_key="secretAPIKey",
-            ),
-            default_from_address="accounts@example.com",
-            enabled=True)
-        # This is an example on how to set up the email provider with MS365.
-        smtp_email_provider = auth0.EmailProvider("smtpEmailProvider",
-            credentials=auth0.EmailProviderCredentialsArgs(
-                ms365_client_id="ms365_client_id",
-                ms365_client_secret="ms365_client_secret",
-                ms365_tenant_id="ms365_tenant_id",
-            ),
-            default_from_address="accounts@example.com",
-            enabled=True)
-        ```
 
         ## Import
 
@@ -367,11 +313,7 @@ class EmailProvider(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EmailProviderArgs.__new__(EmailProviderArgs)
 
-            if credentials is not None and not isinstance(credentials, EmailProviderCredentialsArgs):
-                credentials = credentials or {}
-                def _setter(key, value):
-                    credentials[key] = value
-                EmailProviderCredentialsArgs._configure(_setter, **credentials)
+            credentials = _utilities.configure(credentials, EmailProviderCredentialsArgs, True)
             if credentials is None and not opts.urn:
                 raise TypeError("Missing required property 'credentials'")
             __props__.__dict__["credentials"] = credentials
@@ -380,11 +322,7 @@ class EmailProvider(pulumi.CustomResource):
             __props__.__dict__["default_from_address"] = default_from_address
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["name"] = name
-            if settings is not None and not isinstance(settings, EmailProviderSettingsArgs):
-                settings = settings or {}
-                def _setter(key, value):
-                    settings[key] = value
-                EmailProviderSettingsArgs._configure(_setter, **settings)
+            settings = _utilities.configure(settings, EmailProviderSettingsArgs, True)
             __props__.__dict__["settings"] = settings
         super(EmailProvider, __self__).__init__(
             'auth0:index/emailProvider:EmailProvider',

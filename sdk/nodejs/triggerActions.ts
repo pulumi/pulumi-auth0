@@ -13,49 +13,6 @@ import * as utilities from "./utilities";
  * appends an action to the trigger binding. To avoid potential issues, it is recommended not to use this resource in
  * conjunction with the `auth0.TriggerAction` resource when binding actions to the same trigger.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const actionFoo = new auth0.Action("actionFoo", {
- *     code: `exports.onContinuePostLogin = async (event, api) => {
- *   console.log("foo");
- * };"
- * `,
- *     deploy: true,
- *     supportedTriggers: {
- *         id: "post-login",
- *         version: "v3",
- *     },
- * });
- * const actionBar = new auth0.Action("actionBar", {
- *     code: `exports.onContinuePostLogin = async (event, api) => {
- *   console.log("bar");
- * };"
- * `,
- *     deploy: true,
- *     supportedTriggers: {
- *         id: "post-login",
- *         version: "v3",
- *     },
- * });
- * const loginFlow = new auth0.TriggerActions("loginFlow", {
- *     trigger: "post-login",
- *     actions: [
- *         {
- *             id: actionFoo.id,
- *             displayName: actionFoo.name,
- *         },
- *         {
- *             id: actionBar.id,
- *             displayName: actionBar.name,
- *         },
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * This resource can be imported using the bindings trigger ID. # Example

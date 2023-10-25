@@ -7,21 +7,6 @@ import * as utilities from "./utilities";
 /**
  * With this resource, you can set up APIs that can be consumed from your authorized applications.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
- *     allowOfflineAccess: true,
- *     identifier: "https://api.example.com",
- *     signingAlg: "RS256",
- *     skipConsentForVerifiableFirstPartyClients: true,
- *     tokenLifetime: 8600,
- * });
- * ```
- *
  * ## Import
  *
  * Existing resource servers can be imported using their ID. # Example

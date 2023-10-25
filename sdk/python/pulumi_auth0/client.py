@@ -157,7 +157,63 @@ class ClientArgs:
              sso: Optional[pulumi.Input[bool]] = None,
              sso_disabled: Optional[pulumi.Input[bool]] = None,
              web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowed_clients is None and 'allowedClients' in kwargs:
+            allowed_clients = kwargs['allowedClients']
+        if allowed_logout_urls is None and 'allowedLogoutUrls' in kwargs:
+            allowed_logout_urls = kwargs['allowedLogoutUrls']
+        if allowed_origins is None and 'allowedOrigins' in kwargs:
+            allowed_origins = kwargs['allowedOrigins']
+        if app_type is None and 'appType' in kwargs:
+            app_type = kwargs['appType']
+        if client_aliases is None and 'clientAliases' in kwargs:
+            client_aliases = kwargs['clientAliases']
+        if client_metadata is None and 'clientMetadata' in kwargs:
+            client_metadata = kwargs['clientMetadata']
+        if cross_origin_auth is None and 'crossOriginAuth' in kwargs:
+            cross_origin_auth = kwargs['crossOriginAuth']
+        if cross_origin_loc is None and 'crossOriginLoc' in kwargs:
+            cross_origin_loc = kwargs['crossOriginLoc']
+        if custom_login_page is None and 'customLoginPage' in kwargs:
+            custom_login_page = kwargs['customLoginPage']
+        if custom_login_page_on is None and 'customLoginPageOn' in kwargs:
+            custom_login_page_on = kwargs['customLoginPageOn']
+        if encryption_key is None and 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if form_template is None and 'formTemplate' in kwargs:
+            form_template = kwargs['formTemplate']
+        if grant_types is None and 'grantTypes' in kwargs:
+            grant_types = kwargs['grantTypes']
+        if initiate_login_uri is None and 'initiateLoginUri' in kwargs:
+            initiate_login_uri = kwargs['initiateLoginUri']
+        if is_first_party is None and 'isFirstParty' in kwargs:
+            is_first_party = kwargs['isFirstParty']
+        if is_token_endpoint_ip_header_trusted is None and 'isTokenEndpointIpHeaderTrusted' in kwargs:
+            is_token_endpoint_ip_header_trusted = kwargs['isTokenEndpointIpHeaderTrusted']
+        if jwt_configuration is None and 'jwtConfiguration' in kwargs:
+            jwt_configuration = kwargs['jwtConfiguration']
+        if logo_uri is None and 'logoUri' in kwargs:
+            logo_uri = kwargs['logoUri']
+        if native_social_login is None and 'nativeSocialLogin' in kwargs:
+            native_social_login = kwargs['nativeSocialLogin']
+        if oidc_backchannel_logout_urls is None and 'oidcBackchannelLogoutUrls' in kwargs:
+            oidc_backchannel_logout_urls = kwargs['oidcBackchannelLogoutUrls']
+        if oidc_conformant is None and 'oidcConformant' in kwargs:
+            oidc_conformant = kwargs['oidcConformant']
+        if organization_require_behavior is None and 'organizationRequireBehavior' in kwargs:
+            organization_require_behavior = kwargs['organizationRequireBehavior']
+        if organization_usage is None and 'organizationUsage' in kwargs:
+            organization_usage = kwargs['organizationUsage']
+        if refresh_token is None and 'refreshToken' in kwargs:
+            refresh_token = kwargs['refreshToken']
+        if require_pushed_authorization_requests is None and 'requirePushedAuthorizationRequests' in kwargs:
+            require_pushed_authorization_requests = kwargs['requirePushedAuthorizationRequests']
+        if sso_disabled is None and 'ssoDisabled' in kwargs:
+            sso_disabled = kwargs['ssoDisabled']
+        if web_origins is None and 'webOrigins' in kwargs:
+            web_origins = kwargs['webOrigins']
+
         if addons is not None:
             _setter("addons", addons)
         if allowed_clients is not None:
@@ -776,7 +832,67 @@ class _ClientState:
              sso: Optional[pulumi.Input[bool]] = None,
              sso_disabled: Optional[pulumi.Input[bool]] = None,
              web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowed_clients is None and 'allowedClients' in kwargs:
+            allowed_clients = kwargs['allowedClients']
+        if allowed_logout_urls is None and 'allowedLogoutUrls' in kwargs:
+            allowed_logout_urls = kwargs['allowedLogoutUrls']
+        if allowed_origins is None and 'allowedOrigins' in kwargs:
+            allowed_origins = kwargs['allowedOrigins']
+        if app_type is None and 'appType' in kwargs:
+            app_type = kwargs['appType']
+        if client_aliases is None and 'clientAliases' in kwargs:
+            client_aliases = kwargs['clientAliases']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_metadata is None and 'clientMetadata' in kwargs:
+            client_metadata = kwargs['clientMetadata']
+        if cross_origin_auth is None and 'crossOriginAuth' in kwargs:
+            cross_origin_auth = kwargs['crossOriginAuth']
+        if cross_origin_loc is None and 'crossOriginLoc' in kwargs:
+            cross_origin_loc = kwargs['crossOriginLoc']
+        if custom_login_page is None and 'customLoginPage' in kwargs:
+            custom_login_page = kwargs['customLoginPage']
+        if custom_login_page_on is None and 'customLoginPageOn' in kwargs:
+            custom_login_page_on = kwargs['customLoginPageOn']
+        if encryption_key is None and 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if form_template is None and 'formTemplate' in kwargs:
+            form_template = kwargs['formTemplate']
+        if grant_types is None and 'grantTypes' in kwargs:
+            grant_types = kwargs['grantTypes']
+        if initiate_login_uri is None and 'initiateLoginUri' in kwargs:
+            initiate_login_uri = kwargs['initiateLoginUri']
+        if is_first_party is None and 'isFirstParty' in kwargs:
+            is_first_party = kwargs['isFirstParty']
+        if is_token_endpoint_ip_header_trusted is None and 'isTokenEndpointIpHeaderTrusted' in kwargs:
+            is_token_endpoint_ip_header_trusted = kwargs['isTokenEndpointIpHeaderTrusted']
+        if jwt_configuration is None and 'jwtConfiguration' in kwargs:
+            jwt_configuration = kwargs['jwtConfiguration']
+        if logo_uri is None and 'logoUri' in kwargs:
+            logo_uri = kwargs['logoUri']
+        if native_social_login is None and 'nativeSocialLogin' in kwargs:
+            native_social_login = kwargs['nativeSocialLogin']
+        if oidc_backchannel_logout_urls is None and 'oidcBackchannelLogoutUrls' in kwargs:
+            oidc_backchannel_logout_urls = kwargs['oidcBackchannelLogoutUrls']
+        if oidc_conformant is None and 'oidcConformant' in kwargs:
+            oidc_conformant = kwargs['oidcConformant']
+        if organization_require_behavior is None and 'organizationRequireBehavior' in kwargs:
+            organization_require_behavior = kwargs['organizationRequireBehavior']
+        if organization_usage is None and 'organizationUsage' in kwargs:
+            organization_usage = kwargs['organizationUsage']
+        if refresh_token is None and 'refreshToken' in kwargs:
+            refresh_token = kwargs['refreshToken']
+        if require_pushed_authorization_requests is None and 'requirePushedAuthorizationRequests' in kwargs:
+            require_pushed_authorization_requests = kwargs['requirePushedAuthorizationRequests']
+        if signing_keys is None and 'signingKeys' in kwargs:
+            signing_keys = kwargs['signingKeys']
+        if sso_disabled is None and 'ssoDisabled' in kwargs:
+            sso_disabled = kwargs['ssoDisabled']
+        if web_origins is None and 'webOrigins' in kwargs:
+            web_origins = kwargs['webOrigins']
+
         if addons is not None:
             _setter("addons", addons)
         if allowed_clients is not None:
@@ -1313,77 +1429,6 @@ class Client(pulumi.CustomResource):
         """
         With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_client = auth0.Client("myClient",
-            addons=auth0.ClientAddonsArgs(
-                samlp=auth0.ClientAddonsSamlpArgs(
-                    audience="https://example.com/saml",
-                    create_upn_claim=False,
-                    issuer="https://example.com",
-                    map_identities=False,
-                    map_unknown_claims_as_is=False,
-                    mappings={
-                        "email": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
-                        "name": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-                    },
-                    name_identifier_format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
-                    name_identifier_probes=["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
-                    passthrough_claims_with_no_mapping=False,
-                    signing_cert=\"\"\"-----BEGIN PUBLIC KEY-----
-        MIGf...bpP/t3
-        +JGNGIRMj1hF1rnb6QIDAQAB
-        -----END PUBLIC KEY-----
-
-        \"\"\",
-                ),
-            ),
-            allowed_logout_urls=["https://example.com"],
-            allowed_origins=["https://example.com"],
-            app_type="non_interactive",
-            callbacks=["https://example.com/callback"],
-            client_metadata={
-                "foo": "zoo",
-            },
-            custom_login_page_on=True,
-            description="Test Applications Long Description",
-            grant_types=[
-                "authorization_code",
-                "http://auth0.com/oauth/grant-type/password-realm",
-                "implicit",
-                "password",
-                "refresh_token",
-            ],
-            is_first_party=True,
-            is_token_endpoint_ip_header_trusted=True,
-            jwt_configuration=auth0.ClientJwtConfigurationArgs(
-                alg="RS256",
-                lifetime_in_seconds=300,
-                scopes={
-                    "foo": "bar",
-                },
-                secret_encoded=True,
-            ),
-            mobile=auth0.ClientMobileArgs(
-                ios=auth0.ClientMobileIosArgs(
-                    app_bundle_identifier="com.my.bundle.id",
-                    team_id="9JA89QQLNQ",
-                ),
-            ),
-            oidc_conformant=False,
-            refresh_token=auth0.ClientRefreshTokenArgs(
-                expiration_type="expiring",
-                leeway=0,
-                rotation_type="rotating",
-                token_lifetime=2592000,
-            ),
-            web_origins=["https://example.com"])
-        ```
-
         ## Import
 
         This resource can be imported by specifying the client ID. # Example
@@ -1436,77 +1481,6 @@ class Client(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_client = auth0.Client("myClient",
-            addons=auth0.ClientAddonsArgs(
-                samlp=auth0.ClientAddonsSamlpArgs(
-                    audience="https://example.com/saml",
-                    create_upn_claim=False,
-                    issuer="https://example.com",
-                    map_identities=False,
-                    map_unknown_claims_as_is=False,
-                    mappings={
-                        "email": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
-                        "name": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-                    },
-                    name_identifier_format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
-                    name_identifier_probes=["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
-                    passthrough_claims_with_no_mapping=False,
-                    signing_cert=\"\"\"-----BEGIN PUBLIC KEY-----
-        MIGf...bpP/t3
-        +JGNGIRMj1hF1rnb6QIDAQAB
-        -----END PUBLIC KEY-----
-
-        \"\"\",
-                ),
-            ),
-            allowed_logout_urls=["https://example.com"],
-            allowed_origins=["https://example.com"],
-            app_type="non_interactive",
-            callbacks=["https://example.com/callback"],
-            client_metadata={
-                "foo": "zoo",
-            },
-            custom_login_page_on=True,
-            description="Test Applications Long Description",
-            grant_types=[
-                "authorization_code",
-                "http://auth0.com/oauth/grant-type/password-realm",
-                "implicit",
-                "password",
-                "refresh_token",
-            ],
-            is_first_party=True,
-            is_token_endpoint_ip_header_trusted=True,
-            jwt_configuration=auth0.ClientJwtConfigurationArgs(
-                alg="RS256",
-                lifetime_in_seconds=300,
-                scopes={
-                    "foo": "bar",
-                },
-                secret_encoded=True,
-            ),
-            mobile=auth0.ClientMobileArgs(
-                ios=auth0.ClientMobileIosArgs(
-                    app_bundle_identifier="com.my.bundle.id",
-                    team_id="9JA89QQLNQ",
-                ),
-            ),
-            oidc_conformant=False,
-            refresh_token=auth0.ClientRefreshTokenArgs(
-                expiration_type="expiring",
-                leeway=0,
-                rotation_type="rotating",
-                token_lifetime=2592000,
-            ),
-            web_origins=["https://example.com"])
-        ```
 
         ## Import
 
@@ -1577,11 +1551,7 @@ class Client(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClientArgs.__new__(ClientArgs)
 
-            if addons is not None and not isinstance(addons, ClientAddonsArgs):
-                addons = addons or {}
-                def _setter(key, value):
-                    addons[key] = value
-                ClientAddonsArgs._configure(_setter, **addons)
+            addons = _utilities.configure(addons, ClientAddonsArgs, True)
             __props__.__dict__["addons"] = addons
             __props__.__dict__["allowed_clients"] = allowed_clients
             __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
@@ -1603,35 +1573,19 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["initiate_login_uri"] = initiate_login_uri
             __props__.__dict__["is_first_party"] = is_first_party
             __props__.__dict__["is_token_endpoint_ip_header_trusted"] = is_token_endpoint_ip_header_trusted
-            if jwt_configuration is not None and not isinstance(jwt_configuration, ClientJwtConfigurationArgs):
-                jwt_configuration = jwt_configuration or {}
-                def _setter(key, value):
-                    jwt_configuration[key] = value
-                ClientJwtConfigurationArgs._configure(_setter, **jwt_configuration)
+            jwt_configuration = _utilities.configure(jwt_configuration, ClientJwtConfigurationArgs, True)
             __props__.__dict__["jwt_configuration"] = jwt_configuration
             __props__.__dict__["logo_uri"] = logo_uri
-            if mobile is not None and not isinstance(mobile, ClientMobileArgs):
-                mobile = mobile or {}
-                def _setter(key, value):
-                    mobile[key] = value
-                ClientMobileArgs._configure(_setter, **mobile)
+            mobile = _utilities.configure(mobile, ClientMobileArgs, True)
             __props__.__dict__["mobile"] = mobile
             __props__.__dict__["name"] = name
-            if native_social_login is not None and not isinstance(native_social_login, ClientNativeSocialLoginArgs):
-                native_social_login = native_social_login or {}
-                def _setter(key, value):
-                    native_social_login[key] = value
-                ClientNativeSocialLoginArgs._configure(_setter, **native_social_login)
+            native_social_login = _utilities.configure(native_social_login, ClientNativeSocialLoginArgs, True)
             __props__.__dict__["native_social_login"] = native_social_login
             __props__.__dict__["oidc_backchannel_logout_urls"] = oidc_backchannel_logout_urls
             __props__.__dict__["oidc_conformant"] = oidc_conformant
             __props__.__dict__["organization_require_behavior"] = organization_require_behavior
             __props__.__dict__["organization_usage"] = organization_usage
-            if refresh_token is not None and not isinstance(refresh_token, ClientRefreshTokenArgs):
-                refresh_token = refresh_token or {}
-                def _setter(key, value):
-                    refresh_token[key] = value
-                ClientRefreshTokenArgs._configure(_setter, **refresh_token)
+            refresh_token = _utilities.configure(refresh_token, ClientRefreshTokenArgs, True)
             __props__.__dict__["refresh_token"] = refresh_token
             __props__.__dict__["require_pushed_authorization_requests"] = require_pushed_authorization_requests
             __props__.__dict__["sso"] = sso

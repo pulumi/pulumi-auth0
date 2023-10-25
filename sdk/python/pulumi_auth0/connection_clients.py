@@ -29,9 +29,19 @@ class ConnectionClientsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_id: pulumi.Input[str],
-             enabled_clients: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             connection_id: Optional[pulumi.Input[str]] = None,
+             enabled_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if connection_id is None:
+            raise TypeError("Missing 'connection_id' argument")
+        if enabled_clients is None and 'enabledClients' in kwargs:
+            enabled_clients = kwargs['enabledClients']
+        if enabled_clients is None:
+            raise TypeError("Missing 'enabled_clients' argument")
+
         _setter("connection_id", connection_id)
         _setter("enabled_clients", enabled_clients)
 
@@ -88,7 +98,13 @@ class _ConnectionClientsState:
              enabled_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if enabled_clients is None and 'enabledClients' in kwargs:
+            enabled_clients = kwargs['enabledClients']
+
         if connection_id is not None:
             _setter("connection_id", connection_id)
         if enabled_clients is not None:
@@ -163,25 +179,6 @@ class ConnectionClients(pulumi.CustomResource):
         resource in conjunction with the `ConnectionClient` resource when managing enabled clients for the same
         connection id.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_conn = auth0.Connection("myConn", strategy="auth0")
-        my_first_client = auth0.Client("myFirstClient")
-        my_second_client = auth0.Client("mySecondClient")
-        # One connection to many clients association.
-        # To prevent issues, avoid using this resource together with the `auth0_connection_client` resource.
-        my_conn_clients_assoc = auth0.ConnectionClients("myConnClientsAssoc",
-            connection_id=my_conn.id,
-            enabled_clients=[
-                my_first_client.id,
-                my_second_client.id,
-            ])
-        ```
-
         ## Import
 
         This resource can be imported by specifying the Connection ID. # Example
@@ -208,25 +205,6 @@ class ConnectionClients(pulumi.CustomResource):
         manages all the enabled clients for a connection. To avoid potential issues, it is recommended not to use this
         resource in conjunction with the `ConnectionClient` resource when managing enabled clients for the same
         connection id.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_conn = auth0.Connection("myConn", strategy="auth0")
-        my_first_client = auth0.Client("myFirstClient")
-        my_second_client = auth0.Client("mySecondClient")
-        # One connection to many clients association.
-        # To prevent issues, avoid using this resource together with the `auth0_connection_client` resource.
-        my_conn_clients_assoc = auth0.ConnectionClients("myConnClientsAssoc",
-            connection_id=my_conn.id,
-            enabled_clients=[
-                my_first_client.id,
-                my_second_client.id,
-            ])
-        ```
 
         ## Import
 

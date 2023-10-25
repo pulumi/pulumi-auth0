@@ -38,13 +38,29 @@ class BrandingThemeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             borders: pulumi.Input['BrandingThemeBordersArgs'],
-             colors: pulumi.Input['BrandingThemeColorsArgs'],
-             fonts: pulumi.Input['BrandingThemeFontsArgs'],
-             page_background: pulumi.Input['BrandingThemePageBackgroundArgs'],
-             widget: pulumi.Input['BrandingThemeWidgetArgs'],
+             borders: Optional[pulumi.Input['BrandingThemeBordersArgs']] = None,
+             colors: Optional[pulumi.Input['BrandingThemeColorsArgs']] = None,
+             fonts: Optional[pulumi.Input['BrandingThemeFontsArgs']] = None,
+             page_background: Optional[pulumi.Input['BrandingThemePageBackgroundArgs']] = None,
+             widget: Optional[pulumi.Input['BrandingThemeWidgetArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if borders is None:
+            raise TypeError("Missing 'borders' argument")
+        if colors is None:
+            raise TypeError("Missing 'colors' argument")
+        if fonts is None:
+            raise TypeError("Missing 'fonts' argument")
+        if page_background is None and 'pageBackground' in kwargs:
+            page_background = kwargs['pageBackground']
+        if page_background is None:
+            raise TypeError("Missing 'page_background' argument")
+        if widget is None:
+            raise TypeError("Missing 'widget' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("borders", borders)
         _setter("colors", colors)
         _setter("fonts", fonts)
@@ -142,7 +158,13 @@ class _BrandingThemeState:
              fonts: Optional[pulumi.Input['BrandingThemeFontsArgs']] = None,
              page_background: Optional[pulumi.Input['BrandingThemePageBackgroundArgs']] = None,
              widget: Optional[pulumi.Input['BrandingThemeWidgetArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if page_background is None and 'pageBackground' in kwargs:
+            page_background = kwargs['pageBackground']
+
         if borders is not None:
             _setter("borders", borders)
         if colors is not None:
@@ -229,86 +251,6 @@ class BrandingTheme(pulumi.CustomResource):
         """
         This resource allows you to manage branding themes for your Universal Login page within your Auth0 tenant.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        # An example of a fully configured auth0_branding_theme.
-        my_theme = auth0.BrandingTheme("myTheme",
-            borders=auth0.BrandingThemeBordersArgs(
-                button_border_radius=1,
-                button_border_weight=1,
-                buttons_style="pill",
-                input_border_radius=3,
-                input_border_weight=1,
-                inputs_style="pill",
-                show_widget_shadow=False,
-                widget_border_weight=1,
-                widget_corner_radius=3,
-            ),
-            colors=auth0.BrandingThemeColorsArgs(
-                body_text="#FF00CC",
-                error="#FF00CC",
-                header="#FF00CC",
-                icons="#FF00CC",
-                input_background="#FF00CC",
-                input_border="#FF00CC",
-                input_filled_text="#FF00CC",
-                input_labels_placeholders="#FF00CC",
-                links_focused_components="#FF00CC",
-                primary_button="#FF00CC",
-                primary_button_label="#FF00CC",
-                secondary_button_border="#FF00CC",
-                secondary_button_label="#FF00CC",
-                success="#FF00CC",
-                widget_background="#FF00CC",
-                widget_border="#FF00CC",
-            ),
-            fonts=auth0.BrandingThemeFontsArgs(
-                body_text=auth0.BrandingThemeFontsBodyTextArgs(
-                    bold=False,
-                    size=100,
-                ),
-                buttons_text=auth0.BrandingThemeFontsButtonsTextArgs(
-                    bold=False,
-                    size=100,
-                ),
-                font_url="https://google.com/font.woff",
-                input_labels=auth0.BrandingThemeFontsInputLabelsArgs(
-                    bold=False,
-                    size=100,
-                ),
-                links=auth0.BrandingThemeFontsLinksArgs(
-                    bold=False,
-                    size=100,
-                ),
-                links_style="normal",
-                reference_text_size=12,
-                subtitle=auth0.BrandingThemeFontsSubtitleArgs(
-                    bold=False,
-                    size=100,
-                ),
-                title=auth0.BrandingThemeFontsTitleArgs(
-                    bold=False,
-                    size=100,
-                ),
-            ),
-            page_background=auth0.BrandingThemePageBackgroundArgs(
-                background_color="#000000",
-                background_image_url="https://google.com/background.png",
-                page_layout="center",
-            ),
-            widget=auth0.BrandingThemeWidgetArgs(
-                header_text_alignment="center",
-                logo_height=55,
-                logo_position="center",
-                logo_url="https://google.com/logo.png",
-                social_buttons_layout="top",
-            ))
-        ```
-
         ## Import
 
         This resource can be imported by specifying the Branding Theme ID. # Example
@@ -329,86 +271,6 @@ class BrandingTheme(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to manage branding themes for your Universal Login page within your Auth0 tenant.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        # An example of a fully configured auth0_branding_theme.
-        my_theme = auth0.BrandingTheme("myTheme",
-            borders=auth0.BrandingThemeBordersArgs(
-                button_border_radius=1,
-                button_border_weight=1,
-                buttons_style="pill",
-                input_border_radius=3,
-                input_border_weight=1,
-                inputs_style="pill",
-                show_widget_shadow=False,
-                widget_border_weight=1,
-                widget_corner_radius=3,
-            ),
-            colors=auth0.BrandingThemeColorsArgs(
-                body_text="#FF00CC",
-                error="#FF00CC",
-                header="#FF00CC",
-                icons="#FF00CC",
-                input_background="#FF00CC",
-                input_border="#FF00CC",
-                input_filled_text="#FF00CC",
-                input_labels_placeholders="#FF00CC",
-                links_focused_components="#FF00CC",
-                primary_button="#FF00CC",
-                primary_button_label="#FF00CC",
-                secondary_button_border="#FF00CC",
-                secondary_button_label="#FF00CC",
-                success="#FF00CC",
-                widget_background="#FF00CC",
-                widget_border="#FF00CC",
-            ),
-            fonts=auth0.BrandingThemeFontsArgs(
-                body_text=auth0.BrandingThemeFontsBodyTextArgs(
-                    bold=False,
-                    size=100,
-                ),
-                buttons_text=auth0.BrandingThemeFontsButtonsTextArgs(
-                    bold=False,
-                    size=100,
-                ),
-                font_url="https://google.com/font.woff",
-                input_labels=auth0.BrandingThemeFontsInputLabelsArgs(
-                    bold=False,
-                    size=100,
-                ),
-                links=auth0.BrandingThemeFontsLinksArgs(
-                    bold=False,
-                    size=100,
-                ),
-                links_style="normal",
-                reference_text_size=12,
-                subtitle=auth0.BrandingThemeFontsSubtitleArgs(
-                    bold=False,
-                    size=100,
-                ),
-                title=auth0.BrandingThemeFontsTitleArgs(
-                    bold=False,
-                    size=100,
-                ),
-            ),
-            page_background=auth0.BrandingThemePageBackgroundArgs(
-                background_color="#000000",
-                background_image_url="https://google.com/background.png",
-                page_layout="center",
-            ),
-            widget=auth0.BrandingThemeWidgetArgs(
-                header_text_alignment="center",
-                logo_height=55,
-                logo_position="center",
-                logo_url="https://google.com/logo.png",
-                social_buttons_layout="top",
-            ))
-        ```
 
         ## Import
 
@@ -452,44 +314,24 @@ class BrandingTheme(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BrandingThemeArgs.__new__(BrandingThemeArgs)
 
-            if borders is not None and not isinstance(borders, BrandingThemeBordersArgs):
-                borders = borders or {}
-                def _setter(key, value):
-                    borders[key] = value
-                BrandingThemeBordersArgs._configure(_setter, **borders)
+            borders = _utilities.configure(borders, BrandingThemeBordersArgs, True)
             if borders is None and not opts.urn:
                 raise TypeError("Missing required property 'borders'")
             __props__.__dict__["borders"] = borders
-            if colors is not None and not isinstance(colors, BrandingThemeColorsArgs):
-                colors = colors or {}
-                def _setter(key, value):
-                    colors[key] = value
-                BrandingThemeColorsArgs._configure(_setter, **colors)
+            colors = _utilities.configure(colors, BrandingThemeColorsArgs, True)
             if colors is None and not opts.urn:
                 raise TypeError("Missing required property 'colors'")
             __props__.__dict__["colors"] = colors
             __props__.__dict__["display_name"] = display_name
-            if fonts is not None and not isinstance(fonts, BrandingThemeFontsArgs):
-                fonts = fonts or {}
-                def _setter(key, value):
-                    fonts[key] = value
-                BrandingThemeFontsArgs._configure(_setter, **fonts)
+            fonts = _utilities.configure(fonts, BrandingThemeFontsArgs, True)
             if fonts is None and not opts.urn:
                 raise TypeError("Missing required property 'fonts'")
             __props__.__dict__["fonts"] = fonts
-            if page_background is not None and not isinstance(page_background, BrandingThemePageBackgroundArgs):
-                page_background = page_background or {}
-                def _setter(key, value):
-                    page_background[key] = value
-                BrandingThemePageBackgroundArgs._configure(_setter, **page_background)
+            page_background = _utilities.configure(page_background, BrandingThemePageBackgroundArgs, True)
             if page_background is None and not opts.urn:
                 raise TypeError("Missing required property 'page_background'")
             __props__.__dict__["page_background"] = page_background
-            if widget is not None and not isinstance(widget, BrandingThemeWidgetArgs):
-                widget = widget or {}
-                def _setter(key, value):
-                    widget[key] = value
-                BrandingThemeWidgetArgs._configure(_setter, **widget)
+            widget = _utilities.configure(widget, BrandingThemeWidgetArgs, True)
             if widget is None and not opts.urn:
                 raise TypeError("Missing required property 'widget'")
             __props__.__dict__["widget"] = widget

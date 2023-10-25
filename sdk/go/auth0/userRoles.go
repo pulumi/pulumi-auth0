@@ -19,50 +19,6 @@ import (
 // role to a user. To avoid potential issues, it is recommended not to use this resource in conjunction with the
 // `UserRole` resource when managing roles for the same user id.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := auth0.NewRole(ctx, "admin", &auth0.RoleArgs{
-//				Description: pulumi.String("Administrator"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			user, err := auth0.NewUser(ctx, "user", &auth0.UserArgs{
-//				ConnectionName: pulumi.String("Username-Password-Authentication"),
-//				Username:       pulumi.String("unique_username"),
-//				Email:          pulumi.String("test@test.com"),
-//				Password:       pulumi.String("passpass$12$12"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = auth0.NewUserRoles(ctx, "userRoles", &auth0.UserRolesArgs{
-//				UserId: user.ID(),
-//				Roles: pulumi.StringArray{
-//					admin.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // This resource can be imported using the user ID. # Example

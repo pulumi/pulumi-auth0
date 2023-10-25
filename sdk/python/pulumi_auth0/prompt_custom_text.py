@@ -32,10 +32,18 @@ class PromptCustomTextArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             body: pulumi.Input[str],
-             language: pulumi.Input[str],
-             prompt: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             body: Optional[pulumi.Input[str]] = None,
+             language: Optional[pulumi.Input[str]] = None,
+             prompt: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if body is None:
+            raise TypeError("Missing 'body' argument")
+        if language is None:
+            raise TypeError("Missing 'language' argument")
+        if prompt is None:
+            raise TypeError("Missing 'prompt' argument")
+
         _setter("body", body)
         _setter("language", language)
         _setter("prompt", prompt)
@@ -101,7 +109,9 @@ class _PromptCustomTextState:
              body: Optional[pulumi.Input[str]] = None,
              language: Optional[pulumi.Input[str]] = None,
              prompt: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if body is not None:
             _setter("body", body)
         if language is not None:
@@ -158,41 +168,6 @@ class PromptCustomText(pulumi.CustomResource):
         """
         With this resource, you can manage custom text on your Auth0 prompts. You can read more about custom texts [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_auth0 as auth0
-
-        example = auth0.PromptCustomText("example",
-            prompt="login",
-            language="en",
-            body=json.dumps({
-                "login": {
-                    "alertListTitle": "Alerts",
-                    "buttonText": "Continue",
-                    "description": "Login to",
-                    "editEmailText": "Edit",
-                    "emailPlaceholder": "Email address",
-                    "federatedConnectionButtonText": "Continue with ${connectionName}",
-                    "footerLinkText": "Sign up",
-                    "footerText": "Don't have an account?",
-                    "forgotPasswordText": "Forgot password?",
-                    "invitationDescription": "Log in to accept ${inviterName}'s invitation to join ${companyName} on ${clientName}.",
-                    "invitationTitle": "You've Been Invited!",
-                    "logoAltText": "${companyName}",
-                    "pageTitle": "Log in | ${clientName}",
-                    "passwordPlaceholder": "Password",
-                    "separatorText": "Or",
-                    "signupActionLinkText": "${footerLinkText}",
-                    "signupActionText": "${footerText}",
-                    "title": "Welcome",
-                    "usernamePlaceholder": "Username or email address",
-                },
-            }))
-        ```
-
         ## Import
 
         This resource can be imported by specifying the prompt and language separated by "::" (note the double colon) <prompt>::<language> # Example
@@ -215,41 +190,6 @@ class PromptCustomText(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can manage custom text on your Auth0 prompts. You can read more about custom texts [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_auth0 as auth0
-
-        example = auth0.PromptCustomText("example",
-            prompt="login",
-            language="en",
-            body=json.dumps({
-                "login": {
-                    "alertListTitle": "Alerts",
-                    "buttonText": "Continue",
-                    "description": "Login to",
-                    "editEmailText": "Edit",
-                    "emailPlaceholder": "Email address",
-                    "federatedConnectionButtonText": "Continue with ${connectionName}",
-                    "footerLinkText": "Sign up",
-                    "footerText": "Don't have an account?",
-                    "forgotPasswordText": "Forgot password?",
-                    "invitationDescription": "Log in to accept ${inviterName}'s invitation to join ${companyName} on ${clientName}.",
-                    "invitationTitle": "You've Been Invited!",
-                    "logoAltText": "${companyName}",
-                    "pageTitle": "Log in | ${clientName}",
-                    "passwordPlaceholder": "Password",
-                    "separatorText": "Or",
-                    "signupActionLinkText": "${footerLinkText}",
-                    "signupActionText": "${footerText}",
-                    "title": "Welcome",
-                    "usernamePlaceholder": "Username or email address",
-                },
-            }))
-        ```
 
         ## Import
 

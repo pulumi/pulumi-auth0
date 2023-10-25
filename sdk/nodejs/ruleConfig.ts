@@ -7,26 +7,6 @@ import * as utilities from "./utilities";
 /**
  * With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myRule = new auth0.Rule("myRule", {
- *     enabled: true,
- *     script: `    function (user, context, callback) {
- *       callback(null, user, context);
- *     }
- *   
- * `,
- * });
- * const myRuleConfig = new auth0.RuleConfig("myRuleConfig", {
- *     key: "foo",
- *     value: "bar",
- * });
- * ```
- *
  * ## Import
  *
  * Existing rule configs can be imported using their key name. # Example

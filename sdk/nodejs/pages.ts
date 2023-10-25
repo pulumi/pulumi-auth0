@@ -9,33 +9,6 @@ import * as utilities from "./utilities";
 /**
  * With this resource you can manage custom HTML for the Login, Reset Password, Multi-Factor Authentication and Error pages.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myPages = new auth0.Pages("myPages", {
- *     changePassword: {
- *         enabled: true,
- *         html: "<html><body>My Custom Reset Password Page</body></html>",
- *     },
- *     error: {
- *         html: "<html><body>My Custom Error Page</body></html>",
- *         showLogLink: true,
- *         url: "https://example.com",
- *     },
- *     guardianMfa: {
- *         enabled: true,
- *         html: "<html><body>My Custom MFA Page</body></html>",
- *     },
- *     login: {
- *         enabled: true,
- *         html: "<html><body>My Custom Login Page</body></html>",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * As this is not a resource identifiable by an ID within the Auth0 Management API, pages can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example

@@ -30,9 +30,17 @@ class ResourceServerScopesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_server_identifier: pulumi.Input[str],
-             scopes: pulumi.Input[Sequence[pulumi.Input['ResourceServerScopesScopeArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             resource_server_identifier: Optional[pulumi.Input[str]] = None,
+             scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerScopesScopeArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if resource_server_identifier is None and 'resourceServerIdentifier' in kwargs:
+            resource_server_identifier = kwargs['resourceServerIdentifier']
+        if resource_server_identifier is None:
+            raise TypeError("Missing 'resource_server_identifier' argument")
+        if scopes is None:
+            raise TypeError("Missing 'scopes' argument")
+
         _setter("resource_server_identifier", resource_server_identifier)
         _setter("scopes", scopes)
 
@@ -77,7 +85,11 @@ class _ResourceServerScopesState:
              _setter: Callable[[Any, Any], None],
              resource_server_identifier: Optional[pulumi.Input[str]] = None,
              scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerScopesScopeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if resource_server_identifier is None and 'resourceServerIdentifier' in kwargs:
+            resource_server_identifier = kwargs['resourceServerIdentifier']
+
         if resource_server_identifier is not None:
             _setter("resource_server_identifier", resource_server_identifier)
         if scopes is not None:
@@ -121,27 +133,6 @@ class ResourceServerScopes(pulumi.CustomResource):
         resource in conjunction with the `ResourceServerScope` resource when managing scopes for the same resource
         server id.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_api = auth0.ResourceServer("myApi", identifier="https://api.example.com")
-        my_api_scopes = auth0.ResourceServerScopes("myApiScopes",
-            resource_server_identifier=my_api.identifier,
-            scopes=[
-                auth0.ResourceServerScopesScopeArgs(
-                    name="create:appointments",
-                    description="Ability to create appointments",
-                ),
-                auth0.ResourceServerScopesScopeArgs(
-                    name="read:appointments",
-                    description="Ability to read appointments",
-                ),
-            ])
-        ```
-
         ## Import
 
         This resource can be imported by specifying the resource server identifier. # Example
@@ -167,27 +158,6 @@ class ResourceServerScopes(pulumi.CustomResource):
         resource only appends a scope to a resource server. To avoid potential issues, it is recommended not to use this
         resource in conjunction with the `ResourceServerScope` resource when managing scopes for the same resource
         server id.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_api = auth0.ResourceServer("myApi", identifier="https://api.example.com")
-        my_api_scopes = auth0.ResourceServerScopes("myApiScopes",
-            resource_server_identifier=my_api.identifier,
-            scopes=[
-                auth0.ResourceServerScopesScopeArgs(
-                    name="create:appointments",
-                    description="Ability to create appointments",
-                ),
-                auth0.ResourceServerScopesScopeArgs(
-                    name="read:appointments",
-                    description="Ability to read appointments",
-                ),
-            ])
-        ```
 
         ## Import
 

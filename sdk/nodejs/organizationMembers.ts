@@ -12,32 +12,6 @@ import * as utilities from "./utilities";
  * resource in conjunction with the `auth0.OrganizationMember` resource when managing members for the same organization
  * id.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const user1 = new auth0.User("user1", {
- *     connectionName: "Username-Password-Authentication",
- *     email: "myuser1@auth0.com",
- *     password: "MyPass123$",
- * });
- * const user2 = new auth0.User("user2", {
- *     connectionName: "Username-Password-Authentication",
- *     email: "myuser2@auth0.com",
- *     password: "MyPass123$",
- * });
- * const myOrg = new auth0.Organization("myOrg", {displayName: "Some Organization"});
- * const myMembers = new auth0.OrganizationMembers("myMembers", {
- *     organizationId: myOrg.id,
- *     members: [
- *         user1.id,
- *         user2.id,
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * This resource can be imported by specifying the organization ID. # Example

@@ -32,10 +32,20 @@ class TriggerActionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action_id: pulumi.Input[str],
-             trigger: pulumi.Input[str],
+             action_id: Optional[pulumi.Input[str]] = None,
+             trigger: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action_id is None and 'actionId' in kwargs:
+            action_id = kwargs['actionId']
+        if action_id is None:
+            raise TypeError("Missing 'action_id' argument")
+        if trigger is None:
+            raise TypeError("Missing 'trigger' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("action_id", action_id)
         _setter("trigger", trigger)
         if display_name is not None:
@@ -102,7 +112,13 @@ class _TriggerActionState:
              action_id: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              trigger: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action_id is None and 'actionId' in kwargs:
+            action_id = kwargs['actionId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if action_id is not None:
             _setter("action_id", action_id)
         if display_name is not None:
@@ -165,27 +181,6 @@ class TriggerAction(pulumi.CustomResource):
         the action bindings to a trigger. To avoid potential issues, it is recommended not to use this resource in conjunction
         with the `TriggerAction` resource when binding actions to the same trigger.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        login_alert = auth0.Action("loginAlert",
-            code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
-          console.log("foo");
-        };"
-        \"\"\",
-            deploy=True,
-            supported_triggers=auth0.ActionSupportedTriggersArgs(
-                id="post-login",
-                version="v3",
-            ))
-        post_login_alert_action = auth0.TriggerAction("postLoginAlertAction",
-            trigger="post-login",
-            action_id=login_alert.id)
-        ```
-
         ## Import
 
         This resource can be imported by specifying the trigger and action ID separated by "::" (note the double colon) <trigger>::<actionID> # Example
@@ -214,27 +209,6 @@ class TriggerAction(pulumi.CustomResource):
         !> This resource appends an action to the trigger binding. In contrast, the `TriggerActions` resource manages all
         the action bindings to a trigger. To avoid potential issues, it is recommended not to use this resource in conjunction
         with the `TriggerAction` resource when binding actions to the same trigger.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        login_alert = auth0.Action("loginAlert",
-            code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
-          console.log("foo");
-        };"
-        \"\"\",
-            deploy=True,
-            supported_triggers=auth0.ActionSupportedTriggersArgs(
-                id="post-login",
-                version="v3",
-            ))
-        post_login_alert_action = auth0.TriggerAction("postLoginAlertAction",
-            trigger="post-login",
-            action_id=login_alert.id)
-        ```
 
         ## Import
 

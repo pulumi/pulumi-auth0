@@ -278,15 +278,6 @@ def get_user(user_id: Optional[str] = None,
     """
     Data source to retrieve a specific Auth0 user by `user_id`.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_auth0 as auth0
-
-    my_user = auth0.get_user(user_id="auth0|34fdr23fdsfdfsf")
-    ```
-
 
     :param str user_id: ID of the user.
     """
@@ -323,15 +314,6 @@ def get_user_output(user_id: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
     """
     Data source to retrieve a specific Auth0 user by `user_id`.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_auth0 as auth0
-
-    my_user = auth0.get_user(user_id="auth0|34fdr23fdsfdfsf")
-    ```
 
 
     :param str user_id: ID of the user.

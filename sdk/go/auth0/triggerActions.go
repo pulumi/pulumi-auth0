@@ -19,64 +19,6 @@ import (
 // appends an action to the trigger binding. To avoid potential issues, it is recommended not to use this resource in
 // conjunction with the `TriggerAction` resource when binding actions to the same trigger.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			actionFoo, err := auth0.NewAction(ctx, "actionFoo", &auth0.ActionArgs{
-//				Code:   pulumi.String("exports.onContinuePostLogin = async (event, api) => {\n  console.log(\"foo\");\n};\"\n"),
-//				Deploy: pulumi.Bool(true),
-//				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
-//					Id:      pulumi.String("post-login"),
-//					Version: pulumi.String("v3"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			actionBar, err := auth0.NewAction(ctx, "actionBar", &auth0.ActionArgs{
-//				Code:   pulumi.String("exports.onContinuePostLogin = async (event, api) => {\n  console.log(\"bar\");\n};\"\n"),
-//				Deploy: pulumi.Bool(true),
-//				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
-//					Id:      pulumi.String("post-login"),
-//					Version: pulumi.String("v3"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = auth0.NewTriggerActions(ctx, "loginFlow", &auth0.TriggerActionsArgs{
-//				Trigger: pulumi.String("post-login"),
-//				Actions: auth0.TriggerActionsActionArray{
-//					&auth0.TriggerActionsActionArgs{
-//						Id:          actionFoo.ID(),
-//						DisplayName: actionFoo.Name,
-//					},
-//					&auth0.TriggerActionsActionArgs{
-//						Id:          actionBar.ID(),
-//						DisplayName: actionBar.Name,
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // This resource can be imported using the bindings trigger ID. # Example

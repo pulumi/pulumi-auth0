@@ -4,35 +4,15 @@
 package auth0
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access information about the tenant's branding settings.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.LookupBranding(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupBranding(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupBrandingResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBrandingResult
@@ -57,4 +37,70 @@ type LookupBrandingResult struct {
 	LogoUrl string `pulumi:"logoUrl"`
 	// Configuration settings for Universal Login.
 	UniversalLogins []GetBrandingUniversalLogin `pulumi:"universalLogins"`
+}
+
+func LookupBrandingOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupBrandingResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (LookupBrandingResult, error) {
+		r, err := LookupBranding(ctx, opts...)
+		var s LookupBrandingResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(LookupBrandingResultOutput)
+}
+
+// A collection of values returned by getBranding.
+type LookupBrandingResultOutput struct{ *pulumi.OutputState }
+
+func (LookupBrandingResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBrandingResult)(nil)).Elem()
+}
+
+func (o LookupBrandingResultOutput) ToLookupBrandingResultOutput() LookupBrandingResultOutput {
+	return o
+}
+
+func (o LookupBrandingResultOutput) ToLookupBrandingResultOutputWithContext(ctx context.Context) LookupBrandingResultOutput {
+	return o
+}
+
+func (o LookupBrandingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBrandingResult] {
+	return pulumix.Output[LookupBrandingResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Configuration settings for colors for branding.
+func (o LookupBrandingResultOutput) Colors() GetBrandingColorArrayOutput {
+	return o.ApplyT(func(v LookupBrandingResult) []GetBrandingColor { return v.Colors }).(GetBrandingColorArrayOutput)
+}
+
+// URL for the favicon.
+func (o LookupBrandingResultOutput) FaviconUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBrandingResult) string { return v.FaviconUrl }).(pulumi.StringOutput)
+}
+
+// Configuration settings to customize the font.
+func (o LookupBrandingResultOutput) Fonts() GetBrandingFontArrayOutput {
+	return o.ApplyT(func(v LookupBrandingResult) []GetBrandingFont { return v.Fonts }).(GetBrandingFontArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupBrandingResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBrandingResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// URL of logo for branding.
+func (o LookupBrandingResultOutput) LogoUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBrandingResult) string { return v.LogoUrl }).(pulumi.StringOutput)
+}
+
+// Configuration settings for Universal Login.
+func (o LookupBrandingResultOutput) UniversalLogins() GetBrandingUniversalLoginArrayOutput {
+	return o.ApplyT(func(v LookupBrandingResult) []GetBrandingUniversalLogin { return v.UniversalLogins }).(GetBrandingUniversalLoginArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupBrandingResultOutput{})
 }

@@ -45,7 +45,15 @@ class BrandingArgs:
              font: Optional[pulumi.Input['BrandingFontArgs']] = None,
              logo_url: Optional[pulumi.Input[str]] = None,
              universal_login: Optional[pulumi.Input['BrandingUniversalLoginArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if favicon_url is None and 'faviconUrl' in kwargs:
+            favicon_url = kwargs['faviconUrl']
+        if logo_url is None and 'logoUrl' in kwargs:
+            logo_url = kwargs['logoUrl']
+        if universal_login is None and 'universalLogin' in kwargs:
+            universal_login = kwargs['universalLogin']
+
         if colors is not None:
             _setter("colors", colors)
         if favicon_url is not None:
@@ -150,7 +158,15 @@ class _BrandingState:
              font: Optional[pulumi.Input['BrandingFontArgs']] = None,
              logo_url: Optional[pulumi.Input[str]] = None,
              universal_login: Optional[pulumi.Input['BrandingUniversalLoginArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if favicon_url is None and 'faviconUrl' in kwargs:
+            favicon_url = kwargs['faviconUrl']
+        if logo_url is None and 'logoUrl' in kwargs:
+            logo_url = kwargs['logoUrl']
+        if universal_login is None and 'universalLogin' in kwargs:
+            universal_login = kwargs['universalLogin']
+
         if colors is not None:
             _setter("colors", colors)
         if favicon_url is not None:
@@ -237,23 +253,6 @@ class Branding(pulumi.CustomResource):
         """
         This resource allows you to manage branding within your Auth0 tenant. Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user expectations.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_brand = auth0.Branding("myBrand",
-            logo_url="https://mycompany.org/logo.png",
-            colors=auth0.BrandingColorsArgs(
-                primary="#0059d6",
-                page_background="#000000",
-            ),
-            universal_login=auth0.BrandingUniversalLoginArgs(
-                body=(lambda path: open(path).read())("universal_login_body.html"),
-            ))
-        ```
-
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API, branding can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
@@ -278,23 +277,6 @@ class Branding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to manage branding within your Auth0 tenant. Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user expectations.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_brand = auth0.Branding("myBrand",
-            logo_url="https://mycompany.org/logo.png",
-            colors=auth0.BrandingColorsArgs(
-                primary="#0059d6",
-                page_background="#000000",
-            ),
-            universal_login=auth0.BrandingUniversalLoginArgs(
-                body=(lambda path: open(path).read())("universal_login_body.html"),
-            ))
-        ```
 
         ## Import
 
@@ -337,25 +319,13 @@ class Branding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BrandingArgs.__new__(BrandingArgs)
 
-            if colors is not None and not isinstance(colors, BrandingColorsArgs):
-                colors = colors or {}
-                def _setter(key, value):
-                    colors[key] = value
-                BrandingColorsArgs._configure(_setter, **colors)
+            colors = _utilities.configure(colors, BrandingColorsArgs, True)
             __props__.__dict__["colors"] = colors
             __props__.__dict__["favicon_url"] = favicon_url
-            if font is not None and not isinstance(font, BrandingFontArgs):
-                font = font or {}
-                def _setter(key, value):
-                    font[key] = value
-                BrandingFontArgs._configure(_setter, **font)
+            font = _utilities.configure(font, BrandingFontArgs, True)
             __props__.__dict__["font"] = font
             __props__.__dict__["logo_url"] = logo_url
-            if universal_login is not None and not isinstance(universal_login, BrandingUniversalLoginArgs):
-                universal_login = universal_login or {}
-                def _setter(key, value):
-                    universal_login[key] = value
-                BrandingUniversalLoginArgs._configure(_setter, **universal_login)
+            universal_login = _utilities.configure(universal_login, BrandingUniversalLoginArgs, True)
             __props__.__dict__["universal_login"] = universal_login
         super(Branding, __self__).__init__(
             'auth0:index/branding:Branding',

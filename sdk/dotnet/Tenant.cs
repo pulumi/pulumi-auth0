@@ -15,55 +15,6 @@ namespace Pulumi.Auth0
     /// &gt; Creating tenants through the Management API is not currently supported. Therefore, this resource can only
     /// manage an existing tenant created through the Auth0 dashboard.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myTenant = new Auth0.Tenant("myTenant", new()
-    ///     {
-    ///         AllowedLogoutUrls = new[]
-    ///         {
-    ///             "http://example.com/logout",
-    ///         },
-    ///         DefaultRedirectionUri = "https://example.com/login",
-    ///         EnabledLocales = new[]
-    ///         {
-    ///             "en",
-    ///         },
-    ///         Flags = new Auth0.Inputs.TenantFlagsArgs
-    ///         {
-    ///             DisableClickjackProtectionHeaders = true,
-    ///             DisableFieldsMapFix = false,
-    ///             DisableManagementApiSmsObfuscation = false,
-    ///             EnablePublicSignupUserExistsError = true,
-    ///             NoDiscloseEnterpriseConnections = false,
-    ///             UseScopeDescriptionsForConsent = true,
-    ///         },
-    ///         FriendlyName = "Tenant Name",
-    ///         PictureUrl = "http://example.com/logo.png",
-    ///         SandboxVersion = "12",
-    ///         SessionCookie = new Auth0.Inputs.TenantSessionCookieArgs
-    ///         {
-    ///             Mode = "non-persistent",
-    ///         },
-    ///         SessionLifetime = 8760,
-    ///         Sessions = new Auth0.Inputs.TenantSessionsArgs
-    ///         {
-    ///             OidcLogoutPromptEnabled = false,
-    ///         },
-    ///         SupportEmail = "support@example.com",
-    ///         SupportUrl = "http://example.com/support",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// As this is not a resource identifiable by an ID within the Auth0 Management API, tenant can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
