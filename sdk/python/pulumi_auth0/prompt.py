@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['PromptArgs', 'Prompt']
@@ -23,33 +23,12 @@ class PromptArgs:
         :param pulumi.Input[str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
         :param pulumi.Input[bool] webauthn_platform_first_factor: Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `Guardian` resource to set one up.
         """
-        PromptArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            identifier_first=identifier_first,
-            universal_login_experience=universal_login_experience,
-            webauthn_platform_first_factor=webauthn_platform_first_factor,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             identifier_first: Optional[pulumi.Input[bool]] = None,
-             universal_login_experience: Optional[pulumi.Input[str]] = None,
-             webauthn_platform_first_factor: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if identifier_first is None and 'identifierFirst' in kwargs:
-            identifier_first = kwargs['identifierFirst']
-        if universal_login_experience is None and 'universalLoginExperience' in kwargs:
-            universal_login_experience = kwargs['universalLoginExperience']
-        if webauthn_platform_first_factor is None and 'webauthnPlatformFirstFactor' in kwargs:
-            webauthn_platform_first_factor = kwargs['webauthnPlatformFirstFactor']
-
         if identifier_first is not None:
-            _setter("identifier_first", identifier_first)
+            pulumi.set(__self__, "identifier_first", identifier_first)
         if universal_login_experience is not None:
-            _setter("universal_login_experience", universal_login_experience)
+            pulumi.set(__self__, "universal_login_experience", universal_login_experience)
         if webauthn_platform_first_factor is not None:
-            _setter("webauthn_platform_first_factor", webauthn_platform_first_factor)
+            pulumi.set(__self__, "webauthn_platform_first_factor", webauthn_platform_first_factor)
 
     @property
     @pulumi.getter(name="identifierFirst")
@@ -100,33 +79,12 @@ class _PromptState:
         :param pulumi.Input[str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
         :param pulumi.Input[bool] webauthn_platform_first_factor: Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `Guardian` resource to set one up.
         """
-        _PromptState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            identifier_first=identifier_first,
-            universal_login_experience=universal_login_experience,
-            webauthn_platform_first_factor=webauthn_platform_first_factor,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             identifier_first: Optional[pulumi.Input[bool]] = None,
-             universal_login_experience: Optional[pulumi.Input[str]] = None,
-             webauthn_platform_first_factor: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if identifier_first is None and 'identifierFirst' in kwargs:
-            identifier_first = kwargs['identifierFirst']
-        if universal_login_experience is None and 'universalLoginExperience' in kwargs:
-            universal_login_experience = kwargs['universalLoginExperience']
-        if webauthn_platform_first_factor is None and 'webauthnPlatformFirstFactor' in kwargs:
-            webauthn_platform_first_factor = kwargs['webauthnPlatformFirstFactor']
-
         if identifier_first is not None:
-            _setter("identifier_first", identifier_first)
+            pulumi.set(__self__, "identifier_first", identifier_first)
         if universal_login_experience is not None:
-            _setter("universal_login_experience", universal_login_experience)
+            pulumi.set(__self__, "universal_login_experience", universal_login_experience)
         if webauthn_platform_first_factor is not None:
-            _setter("webauthn_platform_first_factor", webauthn_platform_first_factor)
+            pulumi.set(__self__, "webauthn_platform_first_factor", webauthn_platform_first_factor)
 
     @property
     @pulumi.getter(name="identifierFirst")
@@ -242,10 +200,6 @@ class Prompt(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PromptArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

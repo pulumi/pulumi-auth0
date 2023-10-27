@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['HookArgs', 'Hook']
@@ -29,43 +29,16 @@ class HookArgs:
         :param pulumi.Input[str] name: Name of this hook.
         :param pulumi.Input[Mapping[str, Any]] secrets: The secrets associated with the hook.
         """
-        HookArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            script=script,
-            trigger_id=trigger_id,
-            dependencies=dependencies,
-            enabled=enabled,
-            name=name,
-            secrets=secrets,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             script: Optional[pulumi.Input[str]] = None,
-             trigger_id: Optional[pulumi.Input[str]] = None,
-             dependencies: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if script is None:
-            raise TypeError("Missing 'script' argument")
-        if trigger_id is None and 'triggerId' in kwargs:
-            trigger_id = kwargs['triggerId']
-        if trigger_id is None:
-            raise TypeError("Missing 'trigger_id' argument")
-
-        _setter("script", script)
-        _setter("trigger_id", trigger_id)
+        pulumi.set(__self__, "script", script)
+        pulumi.set(__self__, "trigger_id", trigger_id)
         if dependencies is not None:
-            _setter("dependencies", dependencies)
+            pulumi.set(__self__, "dependencies", dependencies)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if secrets is not None:
-            _setter("secrets", secrets)
+            pulumi.set(__self__, "secrets", secrets)
 
     @property
     @pulumi.getter
@@ -158,41 +131,18 @@ class _HookState:
         :param pulumi.Input[Mapping[str, Any]] secrets: The secrets associated with the hook.
         :param pulumi.Input[str] trigger_id: Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
         """
-        _HookState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dependencies=dependencies,
-            enabled=enabled,
-            name=name,
-            script=script,
-            secrets=secrets,
-            trigger_id=trigger_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dependencies: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             script: Optional[pulumi.Input[str]] = None,
-             secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             trigger_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if trigger_id is None and 'triggerId' in kwargs:
-            trigger_id = kwargs['triggerId']
-
         if dependencies is not None:
-            _setter("dependencies", dependencies)
+            pulumi.set(__self__, "dependencies", dependencies)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if script is not None:
-            _setter("script", script)
+            pulumi.set(__self__, "script", script)
         if secrets is not None:
-            _setter("secrets", secrets)
+            pulumi.set(__self__, "secrets", secrets)
         if trigger_id is not None:
-            _setter("trigger_id", trigger_id)
+            pulumi.set(__self__, "trigger_id", trigger_id)
 
     @property
     @pulumi.getter
@@ -374,10 +324,6 @@ class Hook(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            HookArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

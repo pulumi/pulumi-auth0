@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,33 +25,12 @@ class AttackProtectionArgs:
         :param pulumi.Input['AttackProtectionBruteForceProtectionArgs'] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
         :param pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs'] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         """
-        AttackProtectionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            breached_password_detection=breached_password_detection,
-            brute_force_protection=brute_force_protection,
-            suspicious_ip_throttling=suspicious_ip_throttling,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             breached_password_detection: Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionArgs']] = None,
-             brute_force_protection: Optional[pulumi.Input['AttackProtectionBruteForceProtectionArgs']] = None,
-             suspicious_ip_throttling: Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if breached_password_detection is None and 'breachedPasswordDetection' in kwargs:
-            breached_password_detection = kwargs['breachedPasswordDetection']
-        if brute_force_protection is None and 'bruteForceProtection' in kwargs:
-            brute_force_protection = kwargs['bruteForceProtection']
-        if suspicious_ip_throttling is None and 'suspiciousIpThrottling' in kwargs:
-            suspicious_ip_throttling = kwargs['suspiciousIpThrottling']
-
         if breached_password_detection is not None:
-            _setter("breached_password_detection", breached_password_detection)
+            pulumi.set(__self__, "breached_password_detection", breached_password_detection)
         if brute_force_protection is not None:
-            _setter("brute_force_protection", brute_force_protection)
+            pulumi.set(__self__, "brute_force_protection", brute_force_protection)
         if suspicious_ip_throttling is not None:
-            _setter("suspicious_ip_throttling", suspicious_ip_throttling)
+            pulumi.set(__self__, "suspicious_ip_throttling", suspicious_ip_throttling)
 
     @property
     @pulumi.getter(name="breachedPasswordDetection")
@@ -102,33 +81,12 @@ class _AttackProtectionState:
         :param pulumi.Input['AttackProtectionBruteForceProtectionArgs'] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
         :param pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs'] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         """
-        _AttackProtectionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            breached_password_detection=breached_password_detection,
-            brute_force_protection=brute_force_protection,
-            suspicious_ip_throttling=suspicious_ip_throttling,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             breached_password_detection: Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionArgs']] = None,
-             brute_force_protection: Optional[pulumi.Input['AttackProtectionBruteForceProtectionArgs']] = None,
-             suspicious_ip_throttling: Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if breached_password_detection is None and 'breachedPasswordDetection' in kwargs:
-            breached_password_detection = kwargs['breachedPasswordDetection']
-        if brute_force_protection is None and 'bruteForceProtection' in kwargs:
-            brute_force_protection = kwargs['bruteForceProtection']
-        if suspicious_ip_throttling is None and 'suspiciousIpThrottling' in kwargs:
-            suspicious_ip_throttling = kwargs['suspiciousIpThrottling']
-
         if breached_password_detection is not None:
-            _setter("breached_password_detection", breached_password_detection)
+            pulumi.set(__self__, "breached_password_detection", breached_password_detection)
         if brute_force_protection is not None:
-            _setter("brute_force_protection", brute_force_protection)
+            pulumi.set(__self__, "brute_force_protection", brute_force_protection)
         if suspicious_ip_throttling is not None:
-            _setter("suspicious_ip_throttling", suspicious_ip_throttling)
+            pulumi.set(__self__, "suspicious_ip_throttling", suspicious_ip_throttling)
 
     @property
     @pulumi.getter(name="breachedPasswordDetection")
@@ -314,10 +272,6 @@ class AttackProtection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AttackProtectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -335,11 +289,8 @@ class AttackProtection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AttackProtectionArgs.__new__(AttackProtectionArgs)
 
-            breached_password_detection = _utilities.configure(breached_password_detection, AttackProtectionBreachedPasswordDetectionArgs, True)
             __props__.__dict__["breached_password_detection"] = breached_password_detection
-            brute_force_protection = _utilities.configure(brute_force_protection, AttackProtectionBruteForceProtectionArgs, True)
             __props__.__dict__["brute_force_protection"] = brute_force_protection
-            suspicious_ip_throttling = _utilities.configure(suspicious_ip_throttling, AttackProtectionSuspiciousIpThrottlingArgs, True)
             __props__.__dict__["suspicious_ip_throttling"] = suspicious_ip_throttling
         super(AttackProtection, __self__).__init__(
             'auth0:index/attackProtection:AttackProtection',

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,25 +23,8 @@ class TriggerActionsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TriggerActionsActionArgs']]] actions: The list of actions bound to this trigger.
         :param pulumi.Input[str] trigger: The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval` , `iga-certification` , `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
         """
-        TriggerActionsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            actions=actions,
-            trigger=trigger,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             actions: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerActionsActionArgs']]]] = None,
-             trigger: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if actions is None:
-            raise TypeError("Missing 'actions' argument")
-        if trigger is None:
-            raise TypeError("Missing 'trigger' argument")
-
-        _setter("actions", actions)
-        _setter("trigger", trigger)
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "trigger", trigger)
 
     @property
     @pulumi.getter
@@ -78,23 +61,10 @@ class _TriggerActionsState:
         :param pulumi.Input[Sequence[pulumi.Input['TriggerActionsActionArgs']]] actions: The list of actions bound to this trigger.
         :param pulumi.Input[str] trigger: The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval` , `iga-certification` , `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
         """
-        _TriggerActionsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            actions=actions,
-            trigger=trigger,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             actions: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerActionsActionArgs']]]] = None,
-             trigger: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if actions is not None:
-            _setter("actions", actions)
+            pulumi.set(__self__, "actions", actions)
         if trigger is not None:
-            _setter("trigger", trigger)
+            pulumi.set(__self__, "trigger", trigger)
 
     @property
     @pulumi.getter
@@ -260,10 +230,6 @@ class TriggerActions(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TriggerActionsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
