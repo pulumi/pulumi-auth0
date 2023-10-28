@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserPermissionArgs', 'UserPermission']
@@ -23,34 +23,9 @@ class UserPermissionArgs:
         :param pulumi.Input[str] resource_server_identifier: Identifier of the resource server that the permission is associated with.
         :param pulumi.Input[str] user_id: ID of the user to associate the permission to.
         """
-        UserPermissionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            permission=permission,
-            resource_server_identifier=resource_server_identifier,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             permission: Optional[pulumi.Input[str]] = None,
-             resource_server_identifier: Optional[pulumi.Input[str]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if permission is None:
-            raise TypeError("Missing 'permission' argument")
-        if resource_server_identifier is None and 'resourceServerIdentifier' in kwargs:
-            resource_server_identifier = kwargs['resourceServerIdentifier']
-        if resource_server_identifier is None:
-            raise TypeError("Missing 'resource_server_identifier' argument")
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-        if user_id is None:
-            raise TypeError("Missing 'user_id' argument")
-
-        _setter("permission", permission)
-        _setter("resource_server_identifier", resource_server_identifier)
-        _setter("user_id", user_id)
+        pulumi.set(__self__, "permission", permission)
+        pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
+        pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter
@@ -105,41 +80,16 @@ class _UserPermissionState:
         :param pulumi.Input[str] resource_server_name: Name of the resource server that the permission is associated with.
         :param pulumi.Input[str] user_id: ID of the user to associate the permission to.
         """
-        _UserPermissionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            permission=permission,
-            resource_server_identifier=resource_server_identifier,
-            resource_server_name=resource_server_name,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             permission: Optional[pulumi.Input[str]] = None,
-             resource_server_identifier: Optional[pulumi.Input[str]] = None,
-             resource_server_name: Optional[pulumi.Input[str]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if resource_server_identifier is None and 'resourceServerIdentifier' in kwargs:
-            resource_server_identifier = kwargs['resourceServerIdentifier']
-        if resource_server_name is None and 'resourceServerName' in kwargs:
-            resource_server_name = kwargs['resourceServerName']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if permission is not None:
-            _setter("permission", permission)
+            pulumi.set(__self__, "permission", permission)
         if resource_server_identifier is not None:
-            _setter("resource_server_identifier", resource_server_identifier)
+            pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
         if resource_server_name is not None:
-            _setter("resource_server_name", resource_server_name)
+            pulumi.set(__self__, "resource_server_name", resource_server_name)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter
@@ -263,10 +213,6 @@ class UserPermission(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UserPermissionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

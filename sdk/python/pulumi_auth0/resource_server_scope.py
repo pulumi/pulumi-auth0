@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ResourceServerScopeArgs', 'ResourceServerScope']
@@ -23,31 +23,10 @@ class ResourceServerScopeArgs:
         :param pulumi.Input[str] scope: Name of the scope (permission).
         :param pulumi.Input[str] description: Description of the scope (permission).
         """
-        ResourceServerScopeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            resource_server_identifier=resource_server_identifier,
-            scope=scope,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             resource_server_identifier: Optional[pulumi.Input[str]] = None,
-             scope: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if resource_server_identifier is None and 'resourceServerIdentifier' in kwargs:
-            resource_server_identifier = kwargs['resourceServerIdentifier']
-        if resource_server_identifier is None:
-            raise TypeError("Missing 'resource_server_identifier' argument")
-        if scope is None:
-            raise TypeError("Missing 'scope' argument")
-
-        _setter("resource_server_identifier", resource_server_identifier)
-        _setter("scope", scope)
+        pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
+        pulumi.set(__self__, "scope", scope)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter(name="resourceServerIdentifier")
@@ -98,29 +77,12 @@ class _ResourceServerScopeState:
         :param pulumi.Input[str] resource_server_identifier: Identifier of the resource server that the scope (permission) is associated with.
         :param pulumi.Input[str] scope: Name of the scope (permission).
         """
-        _ResourceServerScopeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            resource_server_identifier=resource_server_identifier,
-            scope=scope,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             resource_server_identifier: Optional[pulumi.Input[str]] = None,
-             scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if resource_server_identifier is None and 'resourceServerIdentifier' in kwargs:
-            resource_server_identifier = kwargs['resourceServerIdentifier']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if resource_server_identifier is not None:
-            _setter("resource_server_identifier", resource_server_identifier)
+            pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
         if scope is not None:
-            _setter("scope", scope)
+            pulumi.set(__self__, "scope", scope)
 
     @property
     @pulumi.getter
@@ -250,10 +212,6 @@ class ResourceServerScope(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ResourceServerScopeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ConnectionClientsArgs', 'ConnectionClients']
@@ -21,29 +21,8 @@ class ConnectionClientsArgs:
         :param pulumi.Input[str] connection_id: ID of the connection on which to enable the client.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled.
         """
-        ConnectionClientsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connection_id=connection_id,
-            enabled_clients=enabled_clients,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connection_id: Optional[pulumi.Input[str]] = None,
-             enabled_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connection_id is None and 'connectionId' in kwargs:
-            connection_id = kwargs['connectionId']
-        if connection_id is None:
-            raise TypeError("Missing 'connection_id' argument")
-        if enabled_clients is None and 'enabledClients' in kwargs:
-            enabled_clients = kwargs['enabledClients']
-        if enabled_clients is None:
-            raise TypeError("Missing 'enabled_clients' argument")
-
-        _setter("connection_id", connection_id)
-        _setter("enabled_clients", enabled_clients)
+        pulumi.set(__self__, "connection_id", connection_id)
+        pulumi.set(__self__, "enabled_clients", enabled_clients)
 
     @property
     @pulumi.getter(name="connectionId")
@@ -84,35 +63,14 @@ class _ConnectionClientsState:
         :param pulumi.Input[str] name: The name of the connection on which to enable the client.
         :param pulumi.Input[str] strategy: The strategy of the connection on which to enable the client.
         """
-        _ConnectionClientsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connection_id=connection_id,
-            enabled_clients=enabled_clients,
-            name=name,
-            strategy=strategy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connection_id: Optional[pulumi.Input[str]] = None,
-             enabled_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connection_id is None and 'connectionId' in kwargs:
-            connection_id = kwargs['connectionId']
-        if enabled_clients is None and 'enabledClients' in kwargs:
-            enabled_clients = kwargs['enabledClients']
-
         if connection_id is not None:
-            _setter("connection_id", connection_id)
+            pulumi.set(__self__, "connection_id", connection_id)
         if enabled_clients is not None:
-            _setter("enabled_clients", enabled_clients)
+            pulumi.set(__self__, "enabled_clients", enabled_clients)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if strategy is not None:
-            _setter("strategy", strategy)
+            pulumi.set(__self__, "strategy", strategy)
 
     @property
     @pulumi.getter(name="connectionId")
@@ -262,10 +220,6 @@ class ConnectionClients(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConnectionClientsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

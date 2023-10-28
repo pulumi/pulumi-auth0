@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['OrganizationMemberRoleArgs', 'OrganizationMemberRole']
@@ -23,36 +23,9 @@ class OrganizationMemberRoleArgs:
         :param pulumi.Input[str] role_id: The role ID to assign to the organization member.
         :param pulumi.Input[str] user_id: The user ID of the organization member.
         """
-        OrganizationMemberRoleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            organization_id=organization_id,
-            role_id=role_id,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             organization_id: Optional[pulumi.Input[str]] = None,
-             role_id: Optional[pulumi.Input[str]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if organization_id is None and 'organizationId' in kwargs:
-            organization_id = kwargs['organizationId']
-        if organization_id is None:
-            raise TypeError("Missing 'organization_id' argument")
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-        if role_id is None:
-            raise TypeError("Missing 'role_id' argument")
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-        if user_id is None:
-            raise TypeError("Missing 'user_id' argument")
-
-        _setter("organization_id", organization_id)
-        _setter("role_id", role_id)
-        _setter("user_id", user_id)
+        pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "role_id", role_id)
+        pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -107,45 +80,16 @@ class _OrganizationMemberRoleState:
         :param pulumi.Input[str] role_name: Name of the role.
         :param pulumi.Input[str] user_id: The user ID of the organization member.
         """
-        _OrganizationMemberRoleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            organization_id=organization_id,
-            role_description=role_description,
-            role_id=role_id,
-            role_name=role_name,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             organization_id: Optional[pulumi.Input[str]] = None,
-             role_description: Optional[pulumi.Input[str]] = None,
-             role_id: Optional[pulumi.Input[str]] = None,
-             role_name: Optional[pulumi.Input[str]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if organization_id is None and 'organizationId' in kwargs:
-            organization_id = kwargs['organizationId']
-        if role_description is None and 'roleDescription' in kwargs:
-            role_description = kwargs['roleDescription']
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-        if role_name is None and 'roleName' in kwargs:
-            role_name = kwargs['roleName']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-
         if organization_id is not None:
-            _setter("organization_id", organization_id)
+            pulumi.set(__self__, "organization_id", organization_id)
         if role_description is not None:
-            _setter("role_description", role_description)
+            pulumi.set(__self__, "role_description", role_description)
         if role_id is not None:
-            _setter("role_id", role_id)
+            pulumi.set(__self__, "role_id", role_id)
         if role_name is not None:
-            _setter("role_name", role_name)
+            pulumi.set(__self__, "role_name", role_name)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -313,10 +257,6 @@ class OrganizationMemberRole(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OrganizationMemberRoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

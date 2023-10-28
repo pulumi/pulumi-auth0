@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserArgs', 'User']
@@ -51,104 +51,39 @@ class UserArgs:
         :param pulumi.Input[str] username: Username of the user. Only valid if the connection requires a username.
         :param pulumi.Input[bool] verify_email: Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
         """
-        UserArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connection_name=connection_name,
-            app_metadata=app_metadata,
-            blocked=blocked,
-            email=email,
-            email_verified=email_verified,
-            family_name=family_name,
-            given_name=given_name,
-            name=name,
-            nickname=nickname,
-            password=password,
-            phone_number=phone_number,
-            phone_verified=phone_verified,
-            picture=picture,
-            user_id=user_id,
-            user_metadata=user_metadata,
-            username=username,
-            verify_email=verify_email,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connection_name: Optional[pulumi.Input[str]] = None,
-             app_metadata: Optional[pulumi.Input[str]] = None,
-             blocked: Optional[pulumi.Input[bool]] = None,
-             email: Optional[pulumi.Input[str]] = None,
-             email_verified: Optional[pulumi.Input[bool]] = None,
-             family_name: Optional[pulumi.Input[str]] = None,
-             given_name: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             nickname: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             phone_number: Optional[pulumi.Input[str]] = None,
-             phone_verified: Optional[pulumi.Input[bool]] = None,
-             picture: Optional[pulumi.Input[str]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             user_metadata: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             verify_email: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connection_name is None and 'connectionName' in kwargs:
-            connection_name = kwargs['connectionName']
-        if connection_name is None:
-            raise TypeError("Missing 'connection_name' argument")
-        if app_metadata is None and 'appMetadata' in kwargs:
-            app_metadata = kwargs['appMetadata']
-        if email_verified is None and 'emailVerified' in kwargs:
-            email_verified = kwargs['emailVerified']
-        if family_name is None and 'familyName' in kwargs:
-            family_name = kwargs['familyName']
-        if given_name is None and 'givenName' in kwargs:
-            given_name = kwargs['givenName']
-        if phone_number is None and 'phoneNumber' in kwargs:
-            phone_number = kwargs['phoneNumber']
-        if phone_verified is None and 'phoneVerified' in kwargs:
-            phone_verified = kwargs['phoneVerified']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-        if user_metadata is None and 'userMetadata' in kwargs:
-            user_metadata = kwargs['userMetadata']
-        if verify_email is None and 'verifyEmail' in kwargs:
-            verify_email = kwargs['verifyEmail']
-
-        _setter("connection_name", connection_name)
+        pulumi.set(__self__, "connection_name", connection_name)
         if app_metadata is not None:
-            _setter("app_metadata", app_metadata)
+            pulumi.set(__self__, "app_metadata", app_metadata)
         if blocked is not None:
-            _setter("blocked", blocked)
+            pulumi.set(__self__, "blocked", blocked)
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if email_verified is not None:
-            _setter("email_verified", email_verified)
+            pulumi.set(__self__, "email_verified", email_verified)
         if family_name is not None:
-            _setter("family_name", family_name)
+            pulumi.set(__self__, "family_name", family_name)
         if given_name is not None:
-            _setter("given_name", given_name)
+            pulumi.set(__self__, "given_name", given_name)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if nickname is not None:
-            _setter("nickname", nickname)
+            pulumi.set(__self__, "nickname", nickname)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if phone_number is not None:
-            _setter("phone_number", phone_number)
+            pulumi.set(__self__, "phone_number", phone_number)
         if phone_verified is not None:
-            _setter("phone_verified", phone_verified)
+            pulumi.set(__self__, "phone_verified", phone_verified)
         if picture is not None:
-            _setter("picture", picture)
+            pulumi.set(__self__, "picture", picture)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
         if user_metadata is not None:
-            _setter("user_metadata", user_metadata)
+            pulumi.set(__self__, "user_metadata", user_metadata)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
         if verify_email is not None:
-            _setter("verify_email", verify_email)
+            pulumi.set(__self__, "verify_email", verify_email)
 
     @property
     @pulumi.getter(name="connectionName")
@@ -395,103 +330,40 @@ class _UserState:
         :param pulumi.Input[str] username: Username of the user. Only valid if the connection requires a username.
         :param pulumi.Input[bool] verify_email: Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
         """
-        _UserState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_metadata=app_metadata,
-            blocked=blocked,
-            connection_name=connection_name,
-            email=email,
-            email_verified=email_verified,
-            family_name=family_name,
-            given_name=given_name,
-            name=name,
-            nickname=nickname,
-            password=password,
-            phone_number=phone_number,
-            phone_verified=phone_verified,
-            picture=picture,
-            user_id=user_id,
-            user_metadata=user_metadata,
-            username=username,
-            verify_email=verify_email,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_metadata: Optional[pulumi.Input[str]] = None,
-             blocked: Optional[pulumi.Input[bool]] = None,
-             connection_name: Optional[pulumi.Input[str]] = None,
-             email: Optional[pulumi.Input[str]] = None,
-             email_verified: Optional[pulumi.Input[bool]] = None,
-             family_name: Optional[pulumi.Input[str]] = None,
-             given_name: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             nickname: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             phone_number: Optional[pulumi.Input[str]] = None,
-             phone_verified: Optional[pulumi.Input[bool]] = None,
-             picture: Optional[pulumi.Input[str]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             user_metadata: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             verify_email: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_metadata is None and 'appMetadata' in kwargs:
-            app_metadata = kwargs['appMetadata']
-        if connection_name is None and 'connectionName' in kwargs:
-            connection_name = kwargs['connectionName']
-        if email_verified is None and 'emailVerified' in kwargs:
-            email_verified = kwargs['emailVerified']
-        if family_name is None and 'familyName' in kwargs:
-            family_name = kwargs['familyName']
-        if given_name is None and 'givenName' in kwargs:
-            given_name = kwargs['givenName']
-        if phone_number is None and 'phoneNumber' in kwargs:
-            phone_number = kwargs['phoneNumber']
-        if phone_verified is None and 'phoneVerified' in kwargs:
-            phone_verified = kwargs['phoneVerified']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-        if user_metadata is None and 'userMetadata' in kwargs:
-            user_metadata = kwargs['userMetadata']
-        if verify_email is None and 'verifyEmail' in kwargs:
-            verify_email = kwargs['verifyEmail']
-
         if app_metadata is not None:
-            _setter("app_metadata", app_metadata)
+            pulumi.set(__self__, "app_metadata", app_metadata)
         if blocked is not None:
-            _setter("blocked", blocked)
+            pulumi.set(__self__, "blocked", blocked)
         if connection_name is not None:
-            _setter("connection_name", connection_name)
+            pulumi.set(__self__, "connection_name", connection_name)
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if email_verified is not None:
-            _setter("email_verified", email_verified)
+            pulumi.set(__self__, "email_verified", email_verified)
         if family_name is not None:
-            _setter("family_name", family_name)
+            pulumi.set(__self__, "family_name", family_name)
         if given_name is not None:
-            _setter("given_name", given_name)
+            pulumi.set(__self__, "given_name", given_name)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if nickname is not None:
-            _setter("nickname", nickname)
+            pulumi.set(__self__, "nickname", nickname)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if phone_number is not None:
-            _setter("phone_number", phone_number)
+            pulumi.set(__self__, "phone_number", phone_number)
         if phone_verified is not None:
-            _setter("phone_verified", phone_verified)
+            pulumi.set(__self__, "phone_verified", phone_verified)
         if picture is not None:
-            _setter("picture", picture)
+            pulumi.set(__self__, "picture", picture)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
         if user_metadata is not None:
-            _setter("user_metadata", user_metadata)
+            pulumi.set(__self__, "user_metadata", user_metadata)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
         if verify_email is not None:
-            _setter("verify_email", verify_email)
+            pulumi.set(__self__, "verify_email", verify_email)
 
     @property
     @pulumi.getter(name="appMetadata")
@@ -813,10 +685,6 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

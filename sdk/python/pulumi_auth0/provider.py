@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -32,47 +32,20 @@ class ProviderArgs:
         :param pulumi.Input[bool] debug: Indicates whether to turn on debug mode.
         :param pulumi.Input[str] domain: Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
         """
-        ProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            api_token=api_token,
-            audience=audience,
-            client_id=client_id,
-            client_secret=client_secret,
-            debug=debug,
-            domain=domain,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             api_token: Optional[pulumi.Input[str]] = None,
-             audience: Optional[pulumi.Input[str]] = None,
-             client_id: Optional[pulumi.Input[str]] = None,
-             client_secret: Optional[pulumi.Input[str]] = None,
-             debug: Optional[pulumi.Input[bool]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if api_token is None and 'apiToken' in kwargs:
-            api_token = kwargs['apiToken']
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-        if client_secret is None and 'clientSecret' in kwargs:
-            client_secret = kwargs['clientSecret']
-
         if api_token is not None:
-            _setter("api_token", api_token)
+            pulumi.set(__self__, "api_token", api_token)
         if audience is not None:
-            _setter("audience", audience)
+            pulumi.set(__self__, "audience", audience)
         if client_id is not None:
-            _setter("client_id", client_id)
+            pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
-            _setter("client_secret", client_secret)
+            pulumi.set(__self__, "client_secret", client_secret)
         if debug is None:
             debug = _utilities.get_env_bool('AUTH0_DEBUG')
         if debug is not None:
-            _setter("debug", debug)
+            pulumi.set(__self__, "debug", debug)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
 
     @property
     @pulumi.getter(name="apiToken")
@@ -202,10 +175,6 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

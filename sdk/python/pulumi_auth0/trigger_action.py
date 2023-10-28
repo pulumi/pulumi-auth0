@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TriggerActionArgs', 'TriggerAction']
@@ -23,33 +23,10 @@ class TriggerActionArgs:
         :param pulumi.Input[str] trigger: The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
         :param pulumi.Input[str] display_name: The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
         """
-        TriggerActionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action_id=action_id,
-            trigger=trigger,
-            display_name=display_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action_id: Optional[pulumi.Input[str]] = None,
-             trigger: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action_id is None and 'actionId' in kwargs:
-            action_id = kwargs['actionId']
-        if action_id is None:
-            raise TypeError("Missing 'action_id' argument")
-        if trigger is None:
-            raise TypeError("Missing 'trigger' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
-        _setter("action_id", action_id)
-        _setter("trigger", trigger)
+        pulumi.set(__self__, "action_id", action_id)
+        pulumi.set(__self__, "trigger", trigger)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
 
     @property
     @pulumi.getter(name="actionId")
@@ -100,31 +77,12 @@ class _TriggerActionState:
         :param pulumi.Input[str] display_name: The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
         :param pulumi.Input[str] trigger: The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
         """
-        _TriggerActionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action_id=action_id,
-            display_name=display_name,
-            trigger=trigger,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action_id: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             trigger: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action_id is None and 'actionId' in kwargs:
-            action_id = kwargs['actionId']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
         if action_id is not None:
-            _setter("action_id", action_id)
+            pulumi.set(__self__, "action_id", action_id)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if trigger is not None:
-            _setter("trigger", trigger)
+            pulumi.set(__self__, "trigger", trigger)
 
     @property
     @pulumi.getter(name="actionId")
@@ -270,10 +228,6 @@ class TriggerAction(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TriggerActionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

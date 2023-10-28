@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,58 +37,23 @@ class GuardianArgs:
         :param pulumi.Input['GuardianWebauthnPlatformArgs'] webauthn_platform: Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
         :param pulumi.Input['GuardianWebauthnRoamingArgs'] webauthn_roaming: Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
         """
-        GuardianArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy=policy,
-            duo=duo,
-            email=email,
-            otp=otp,
-            phone=phone,
-            push=push,
-            recovery_code=recovery_code,
-            webauthn_platform=webauthn_platform,
-            webauthn_roaming=webauthn_roaming,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy: Optional[pulumi.Input[str]] = None,
-             duo: Optional[pulumi.Input['GuardianDuoArgs']] = None,
-             email: Optional[pulumi.Input[bool]] = None,
-             otp: Optional[pulumi.Input[bool]] = None,
-             phone: Optional[pulumi.Input['GuardianPhoneArgs']] = None,
-             push: Optional[pulumi.Input['GuardianPushArgs']] = None,
-             recovery_code: Optional[pulumi.Input[bool]] = None,
-             webauthn_platform: Optional[pulumi.Input['GuardianWebauthnPlatformArgs']] = None,
-             webauthn_roaming: Optional[pulumi.Input['GuardianWebauthnRoamingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy is None:
-            raise TypeError("Missing 'policy' argument")
-        if recovery_code is None and 'recoveryCode' in kwargs:
-            recovery_code = kwargs['recoveryCode']
-        if webauthn_platform is None and 'webauthnPlatform' in kwargs:
-            webauthn_platform = kwargs['webauthnPlatform']
-        if webauthn_roaming is None and 'webauthnRoaming' in kwargs:
-            webauthn_roaming = kwargs['webauthnRoaming']
-
-        _setter("policy", policy)
+        pulumi.set(__self__, "policy", policy)
         if duo is not None:
-            _setter("duo", duo)
+            pulumi.set(__self__, "duo", duo)
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if otp is not None:
-            _setter("otp", otp)
+            pulumi.set(__self__, "otp", otp)
         if phone is not None:
-            _setter("phone", phone)
+            pulumi.set(__self__, "phone", phone)
         if push is not None:
-            _setter("push", push)
+            pulumi.set(__self__, "push", push)
         if recovery_code is not None:
-            _setter("recovery_code", recovery_code)
+            pulumi.set(__self__, "recovery_code", recovery_code)
         if webauthn_platform is not None:
-            _setter("webauthn_platform", webauthn_platform)
+            pulumi.set(__self__, "webauthn_platform", webauthn_platform)
         if webauthn_roaming is not None:
-            _setter("webauthn_roaming", webauthn_roaming)
+            pulumi.set(__self__, "webauthn_roaming", webauthn_roaming)
 
     @property
     @pulumi.getter
@@ -223,57 +188,24 @@ class _GuardianState:
         :param pulumi.Input['GuardianWebauthnPlatformArgs'] webauthn_platform: Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
         :param pulumi.Input['GuardianWebauthnRoamingArgs'] webauthn_roaming: Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
         """
-        _GuardianState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            duo=duo,
-            email=email,
-            otp=otp,
-            phone=phone,
-            policy=policy,
-            push=push,
-            recovery_code=recovery_code,
-            webauthn_platform=webauthn_platform,
-            webauthn_roaming=webauthn_roaming,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             duo: Optional[pulumi.Input['GuardianDuoArgs']] = None,
-             email: Optional[pulumi.Input[bool]] = None,
-             otp: Optional[pulumi.Input[bool]] = None,
-             phone: Optional[pulumi.Input['GuardianPhoneArgs']] = None,
-             policy: Optional[pulumi.Input[str]] = None,
-             push: Optional[pulumi.Input['GuardianPushArgs']] = None,
-             recovery_code: Optional[pulumi.Input[bool]] = None,
-             webauthn_platform: Optional[pulumi.Input['GuardianWebauthnPlatformArgs']] = None,
-             webauthn_roaming: Optional[pulumi.Input['GuardianWebauthnRoamingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if recovery_code is None and 'recoveryCode' in kwargs:
-            recovery_code = kwargs['recoveryCode']
-        if webauthn_platform is None and 'webauthnPlatform' in kwargs:
-            webauthn_platform = kwargs['webauthnPlatform']
-        if webauthn_roaming is None and 'webauthnRoaming' in kwargs:
-            webauthn_roaming = kwargs['webauthnRoaming']
-
         if duo is not None:
-            _setter("duo", duo)
+            pulumi.set(__self__, "duo", duo)
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if otp is not None:
-            _setter("otp", otp)
+            pulumi.set(__self__, "otp", otp)
         if phone is not None:
-            _setter("phone", phone)
+            pulumi.set(__self__, "phone", phone)
         if policy is not None:
-            _setter("policy", policy)
+            pulumi.set(__self__, "policy", policy)
         if push is not None:
-            _setter("push", push)
+            pulumi.set(__self__, "push", push)
         if recovery_code is not None:
-            _setter("recovery_code", recovery_code)
+            pulumi.set(__self__, "recovery_code", recovery_code)
         if webauthn_platform is not None:
-            _setter("webauthn_platform", webauthn_platform)
+            pulumi.set(__self__, "webauthn_platform", webauthn_platform)
         if webauthn_roaming is not None:
-            _setter("webauthn_roaming", webauthn_roaming)
+            pulumi.set(__self__, "webauthn_roaming", webauthn_roaming)
 
     @property
     @pulumi.getter
@@ -557,10 +489,6 @@ class Guardian(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GuardianArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -584,21 +512,16 @@ class Guardian(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GuardianArgs.__new__(GuardianArgs)
 
-            duo = _utilities.configure(duo, GuardianDuoArgs, True)
             __props__.__dict__["duo"] = duo
             __props__.__dict__["email"] = email
             __props__.__dict__["otp"] = otp
-            phone = _utilities.configure(phone, GuardianPhoneArgs, True)
             __props__.__dict__["phone"] = phone
             if policy is None and not opts.urn:
                 raise TypeError("Missing required property 'policy'")
             __props__.__dict__["policy"] = policy
-            push = _utilities.configure(push, GuardianPushArgs, True)
             __props__.__dict__["push"] = push
             __props__.__dict__["recovery_code"] = recovery_code
-            webauthn_platform = _utilities.configure(webauthn_platform, GuardianWebauthnPlatformArgs, True)
             __props__.__dict__["webauthn_platform"] = webauthn_platform
-            webauthn_roaming = _utilities.configure(webauthn_roaming, GuardianWebauthnRoamingArgs, True)
             __props__.__dict__["webauthn_roaming"] = webauthn_roaming
         super(Guardian, __self__).__init__(
             'auth0:index/guardian:Guardian',

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -22,27 +22,8 @@ class ResourceServerScopesArgs:
         The set of arguments for constructing a ResourceServerScopes resource.
         :param pulumi.Input[str] resource_server_identifier: Identifier of the resource server that the scopes (permission) are associated with.
         """
-        ResourceServerScopesArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            resource_server_identifier=resource_server_identifier,
-            scopes=scopes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             resource_server_identifier: Optional[pulumi.Input[str]] = None,
-             scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerScopesScopeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if resource_server_identifier is None and 'resourceServerIdentifier' in kwargs:
-            resource_server_identifier = kwargs['resourceServerIdentifier']
-        if resource_server_identifier is None:
-            raise TypeError("Missing 'resource_server_identifier' argument")
-        if scopes is None:
-            raise TypeError("Missing 'scopes' argument")
-
-        _setter("resource_server_identifier", resource_server_identifier)
-        _setter("scopes", scopes)
+        pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
+        pulumi.set(__self__, "scopes", scopes)
 
     @property
     @pulumi.getter(name="resourceServerIdentifier")
@@ -75,25 +56,10 @@ class _ResourceServerScopesState:
         Input properties used for looking up and filtering ResourceServerScopes resources.
         :param pulumi.Input[str] resource_server_identifier: Identifier of the resource server that the scopes (permission) are associated with.
         """
-        _ResourceServerScopesState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            resource_server_identifier=resource_server_identifier,
-            scopes=scopes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             resource_server_identifier: Optional[pulumi.Input[str]] = None,
-             scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerScopesScopeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if resource_server_identifier is None and 'resourceServerIdentifier' in kwargs:
-            resource_server_identifier = kwargs['resourceServerIdentifier']
-
         if resource_server_identifier is not None:
-            _setter("resource_server_identifier", resource_server_identifier)
+            pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
         if scopes is not None:
-            _setter("scopes", scopes)
+            pulumi.set(__self__, "scopes", scopes)
 
     @property
     @pulumi.getter(name="resourceServerIdentifier")
@@ -219,10 +185,6 @@ class ResourceServerScopes(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ResourceServerScopesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

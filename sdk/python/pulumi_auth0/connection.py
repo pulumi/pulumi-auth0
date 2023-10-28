@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,54 +35,21 @@ class ConnectionArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
         """
-        ConnectionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            strategy=strategy,
-            display_name=display_name,
-            is_domain_connection=is_domain_connection,
-            metadata=metadata,
-            name=name,
-            options=options,
-            realms=realms,
-            show_as_button=show_as_button,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             strategy: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             is_domain_connection: Optional[pulumi.Input[bool]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             options: Optional[pulumi.Input['ConnectionOptionsArgs']] = None,
-             realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             show_as_button: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if strategy is None:
-            raise TypeError("Missing 'strategy' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if is_domain_connection is None and 'isDomainConnection' in kwargs:
-            is_domain_connection = kwargs['isDomainConnection']
-        if show_as_button is None and 'showAsButton' in kwargs:
-            show_as_button = kwargs['showAsButton']
-
-        _setter("strategy", strategy)
+        pulumi.set(__self__, "strategy", strategy)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if is_domain_connection is not None:
-            _setter("is_domain_connection", is_domain_connection)
+            pulumi.set(__self__, "is_domain_connection", is_domain_connection)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if options is not None:
-            _setter("options", options)
+            pulumi.set(__self__, "options", options)
         if realms is not None:
-            _setter("realms", realms)
+            pulumi.set(__self__, "realms", realms)
         if show_as_button is not None:
-            _setter("show_as_button", show_as_button)
+            pulumi.set(__self__, "show_as_button", show_as_button)
 
     @property
     @pulumi.getter
@@ -203,53 +170,22 @@ class _ConnectionState:
         :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
         :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider.
         """
-        _ConnectionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            is_domain_connection=is_domain_connection,
-            metadata=metadata,
-            name=name,
-            options=options,
-            realms=realms,
-            show_as_button=show_as_button,
-            strategy=strategy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             is_domain_connection: Optional[pulumi.Input[bool]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             options: Optional[pulumi.Input['ConnectionOptionsArgs']] = None,
-             realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             show_as_button: Optional[pulumi.Input[bool]] = None,
-             strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if is_domain_connection is None and 'isDomainConnection' in kwargs:
-            is_domain_connection = kwargs['isDomainConnection']
-        if show_as_button is None and 'showAsButton' in kwargs:
-            show_as_button = kwargs['showAsButton']
-
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if is_domain_connection is not None:
-            _setter("is_domain_connection", is_domain_connection)
+            pulumi.set(__self__, "is_domain_connection", is_domain_connection)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if options is not None:
-            _setter("options", options)
+            pulumi.set(__self__, "options", options)
         if realms is not None:
-            _setter("realms", realms)
+            pulumi.set(__self__, "realms", realms)
         if show_as_button is not None:
-            _setter("show_as_button", show_as_button)
+            pulumi.set(__self__, "show_as_button", show_as_button)
         if strategy is not None:
-            _setter("strategy", strategy)
+            pulumi.set(__self__, "strategy", strategy)
 
     @property
     @pulumi.getter(name="displayName")
@@ -971,10 +907,6 @@ class Connection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1001,7 +933,6 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["is_domain_connection"] = is_domain_connection
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
-            options = _utilities.configure(options, ConnectionOptionsArgs, True)
             __props__.__dict__["options"] = options
             __props__.__dict__["realms"] = realms
             __props__.__dict__["show_as_button"] = show_as_button
