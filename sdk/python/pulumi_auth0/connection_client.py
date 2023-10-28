@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ConnectionClientArgs', 'ConnectionClient']
@@ -21,29 +21,8 @@ class ConnectionClientArgs:
         :param pulumi.Input[str] client_id: ID of the client for which the connection is enabled.
         :param pulumi.Input[str] connection_id: ID of the connection on which to enable the client.
         """
-        ConnectionClientArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_id=client_id,
-            connection_id=connection_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_id: Optional[pulumi.Input[str]] = None,
-             connection_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-        if client_id is None:
-            raise TypeError("Missing 'client_id' argument")
-        if connection_id is None and 'connectionId' in kwargs:
-            connection_id = kwargs['connectionId']
-        if connection_id is None:
-            raise TypeError("Missing 'connection_id' argument")
-
-        _setter("client_id", client_id)
-        _setter("connection_id", connection_id)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "connection_id", connection_id)
 
     @property
     @pulumi.getter(name="clientId")
@@ -84,35 +63,14 @@ class _ConnectionClientState:
         :param pulumi.Input[str] name: The name of the connection on which to enable the client.
         :param pulumi.Input[str] strategy: The strategy of the connection on which to enable the client.
         """
-        _ConnectionClientState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_id=client_id,
-            connection_id=connection_id,
-            name=name,
-            strategy=strategy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_id: Optional[pulumi.Input[str]] = None,
-             connection_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-        if connection_id is None and 'connectionId' in kwargs:
-            connection_id = kwargs['connectionId']
-
         if client_id is not None:
-            _setter("client_id", client_id)
+            pulumi.set(__self__, "client_id", client_id)
         if connection_id is not None:
-            _setter("connection_id", connection_id)
+            pulumi.set(__self__, "connection_id", connection_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if strategy is not None:
-            _setter("strategy", strategy)
+            pulumi.set(__self__, "strategy", strategy)
 
     @property
     @pulumi.getter(name="clientId")
@@ -254,10 +212,6 @@ class ConnectionClient(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConnectionClientArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

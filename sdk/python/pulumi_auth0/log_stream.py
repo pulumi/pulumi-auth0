@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,37 +29,14 @@ class LogStreamArgs:
         :param pulumi.Input[str] name: Name of the log stream.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
         """
-        LogStreamArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            sink=sink,
-            type=type,
-            filters=filters,
-            name=name,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             sink: Optional[pulumi.Input['LogStreamSinkArgs']] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if sink is None:
-            raise TypeError("Missing 'sink' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("sink", sink)
-        _setter("type", type)
+        pulumi.set(__self__, "sink", sink)
+        pulumi.set(__self__, "type", type)
         if filters is not None:
-            _setter("filters", filters)
+            pulumi.set(__self__, "filters", filters)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -138,35 +115,16 @@ class _LogStreamState:
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
         :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         """
-        _LogStreamState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            filters=filters,
-            name=name,
-            sink=sink,
-            status=status,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             sink: Optional[pulumi.Input['LogStreamSinkArgs']] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if filters is not None:
-            _setter("filters", filters)
+            pulumi.set(__self__, "filters", filters)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if sink is not None:
-            _setter("sink", sink)
+            pulumi.set(__self__, "sink", sink)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -364,10 +322,6 @@ class LogStream(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            LogStreamArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -389,7 +343,6 @@ class LogStream(pulumi.CustomResource):
 
             __props__.__dict__["filters"] = filters
             __props__.__dict__["name"] = name
-            sink = _utilities.configure(sink, LogStreamSinkArgs, True)
             if sink is None and not opts.urn:
                 raise TypeError("Missing required property 'sink'")
             __props__.__dict__["sink"] = sink

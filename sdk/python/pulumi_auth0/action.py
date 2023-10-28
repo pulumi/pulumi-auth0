@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,47 +33,18 @@ class ActionArgs:
         :param pulumi.Input[str] runtime: The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
         :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action.
         """
-        ActionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            code=code,
-            supported_triggers=supported_triggers,
-            dependencies=dependencies,
-            deploy=deploy,
-            name=name,
-            runtime=runtime,
-            secrets=secrets,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             code: Optional[pulumi.Input[str]] = None,
-             supported_triggers: Optional[pulumi.Input['ActionSupportedTriggersArgs']] = None,
-             dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]]] = None,
-             deploy: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             runtime: Optional[pulumi.Input[str]] = None,
-             secrets: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if code is None:
-            raise TypeError("Missing 'code' argument")
-        if supported_triggers is None and 'supportedTriggers' in kwargs:
-            supported_triggers = kwargs['supportedTriggers']
-        if supported_triggers is None:
-            raise TypeError("Missing 'supported_triggers' argument")
-
-        _setter("code", code)
-        _setter("supported_triggers", supported_triggers)
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "supported_triggers", supported_triggers)
         if dependencies is not None:
-            _setter("dependencies", dependencies)
+            pulumi.set(__self__, "dependencies", dependencies)
         if deploy is not None:
-            _setter("deploy", deploy)
+            pulumi.set(__self__, "deploy", deploy)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if runtime is not None:
-            _setter("runtime", runtime)
+            pulumi.set(__self__, "runtime", runtime)
         if secrets is not None:
-            _setter("secrets", secrets)
+            pulumi.set(__self__, "secrets", secrets)
 
     @property
     @pulumi.getter
@@ -182,51 +153,22 @@ class _ActionState:
         :param pulumi.Input['ActionSupportedTriggersArgs'] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         :param pulumi.Input[str] version_id: Version ID of the action. This value is available if `deploy` is set to true.
         """
-        _ActionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            code=code,
-            dependencies=dependencies,
-            deploy=deploy,
-            name=name,
-            runtime=runtime,
-            secrets=secrets,
-            supported_triggers=supported_triggers,
-            version_id=version_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             code: Optional[pulumi.Input[str]] = None,
-             dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]]] = None,
-             deploy: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             runtime: Optional[pulumi.Input[str]] = None,
-             secrets: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]] = None,
-             supported_triggers: Optional[pulumi.Input['ActionSupportedTriggersArgs']] = None,
-             version_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if supported_triggers is None and 'supportedTriggers' in kwargs:
-            supported_triggers = kwargs['supportedTriggers']
-        if version_id is None and 'versionId' in kwargs:
-            version_id = kwargs['versionId']
-
         if code is not None:
-            _setter("code", code)
+            pulumi.set(__self__, "code", code)
         if dependencies is not None:
-            _setter("dependencies", dependencies)
+            pulumi.set(__self__, "dependencies", dependencies)
         if deploy is not None:
-            _setter("deploy", deploy)
+            pulumi.set(__self__, "deploy", deploy)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if runtime is not None:
-            _setter("runtime", runtime)
+            pulumi.set(__self__, "runtime", runtime)
         if secrets is not None:
-            _setter("secrets", secrets)
+            pulumi.set(__self__, "secrets", secrets)
         if supported_triggers is not None:
-            _setter("supported_triggers", supported_triggers)
+            pulumi.set(__self__, "supported_triggers", supported_triggers)
         if version_id is not None:
-            _setter("version_id", version_id)
+            pulumi.set(__self__, "version_id", version_id)
 
     @property
     @pulumi.getter
@@ -390,10 +332,6 @@ class Action(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ActionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -423,7 +361,6 @@ class Action(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["runtime"] = runtime
             __props__.__dict__["secrets"] = secrets
-            supported_triggers = _utilities.configure(supported_triggers, ActionSupportedTriggersArgs, True)
             if supported_triggers is None and not opts.urn:
                 raise TypeError("Missing required property 'supported_triggers'")
             __props__.__dict__["supported_triggers"] = supported_triggers

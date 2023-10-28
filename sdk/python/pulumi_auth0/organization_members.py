@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['OrganizationMembersArgs', 'OrganizationMembers']
@@ -21,27 +21,8 @@ class OrganizationMembersArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Add user ID(s) directly from the tenant to become members of the organization.
         :param pulumi.Input[str] organization_id: The ID of the organization to assign the members to.
         """
-        OrganizationMembersArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            members=members,
-            organization_id=organization_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             organization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if members is None:
-            raise TypeError("Missing 'members' argument")
-        if organization_id is None and 'organizationId' in kwargs:
-            organization_id = kwargs['organizationId']
-        if organization_id is None:
-            raise TypeError("Missing 'organization_id' argument")
-
-        _setter("members", members)
-        _setter("organization_id", organization_id)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "organization_id", organization_id)
 
     @property
     @pulumi.getter
@@ -78,25 +59,10 @@ class _OrganizationMembersState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Add user ID(s) directly from the tenant to become members of the organization.
         :param pulumi.Input[str] organization_id: The ID of the organization to assign the members to.
         """
-        _OrganizationMembersState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            members=members,
-            organization_id=organization_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             organization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if organization_id is None and 'organizationId' in kwargs:
-            organization_id = kwargs['organizationId']
-
         if members is not None:
-            _setter("members", members)
+            pulumi.set(__self__, "members", members)
         if organization_id is not None:
-            _setter("organization_id", organization_id)
+            pulumi.set(__self__, "organization_id", organization_id)
 
     @property
     @pulumi.getter
@@ -230,10 +196,6 @@ class OrganizationMembers(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OrganizationMembersArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

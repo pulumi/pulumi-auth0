@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['EmailTemplateArgs', 'EmailTemplate']
@@ -35,65 +35,18 @@ class EmailTemplateArgs:
         :param pulumi.Input[str] result_url: URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
         :param pulumi.Input[int] url_lifetime_in_seconds: Number of seconds during which the link within the email will be valid.
         """
-        EmailTemplateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            body=body,
-            enabled=enabled,
-            from_=from_,
-            subject=subject,
-            syntax=syntax,
-            template=template,
-            include_email_in_redirect=include_email_in_redirect,
-            result_url=result_url,
-            url_lifetime_in_seconds=url_lifetime_in_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             body: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             from_: Optional[pulumi.Input[str]] = None,
-             subject: Optional[pulumi.Input[str]] = None,
-             syntax: Optional[pulumi.Input[str]] = None,
-             template: Optional[pulumi.Input[str]] = None,
-             include_email_in_redirect: Optional[pulumi.Input[bool]] = None,
-             result_url: Optional[pulumi.Input[str]] = None,
-             url_lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if body is None:
-            raise TypeError("Missing 'body' argument")
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if from_ is None and 'from' in kwargs:
-            from_ = kwargs['from']
-        if from_ is None:
-            raise TypeError("Missing 'from_' argument")
-        if subject is None:
-            raise TypeError("Missing 'subject' argument")
-        if syntax is None:
-            raise TypeError("Missing 'syntax' argument")
-        if template is None:
-            raise TypeError("Missing 'template' argument")
-        if include_email_in_redirect is None and 'includeEmailInRedirect' in kwargs:
-            include_email_in_redirect = kwargs['includeEmailInRedirect']
-        if result_url is None and 'resultUrl' in kwargs:
-            result_url = kwargs['resultUrl']
-        if url_lifetime_in_seconds is None and 'urlLifetimeInSeconds' in kwargs:
-            url_lifetime_in_seconds = kwargs['urlLifetimeInSeconds']
-
-        _setter("body", body)
-        _setter("enabled", enabled)
-        _setter("from_", from_)
-        _setter("subject", subject)
-        _setter("syntax", syntax)
-        _setter("template", template)
+        pulumi.set(__self__, "body", body)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "from_", from_)
+        pulumi.set(__self__, "subject", subject)
+        pulumi.set(__self__, "syntax", syntax)
+        pulumi.set(__self__, "template", template)
         if include_email_in_redirect is not None:
-            _setter("include_email_in_redirect", include_email_in_redirect)
+            pulumi.set(__self__, "include_email_in_redirect", include_email_in_redirect)
         if result_url is not None:
-            _setter("result_url", result_url)
+            pulumi.set(__self__, "result_url", result_url)
         if url_lifetime_in_seconds is not None:
-            _setter("url_lifetime_in_seconds", url_lifetime_in_seconds)
+            pulumi.set(__self__, "url_lifetime_in_seconds", url_lifetime_in_seconds)
 
     @property
     @pulumi.getter
@@ -228,59 +181,24 @@ class _EmailTemplateState:
         :param pulumi.Input[str] template: Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
         :param pulumi.Input[int] url_lifetime_in_seconds: Number of seconds during which the link within the email will be valid.
         """
-        _EmailTemplateState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            body=body,
-            enabled=enabled,
-            from_=from_,
-            include_email_in_redirect=include_email_in_redirect,
-            result_url=result_url,
-            subject=subject,
-            syntax=syntax,
-            template=template,
-            url_lifetime_in_seconds=url_lifetime_in_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             body: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             from_: Optional[pulumi.Input[str]] = None,
-             include_email_in_redirect: Optional[pulumi.Input[bool]] = None,
-             result_url: Optional[pulumi.Input[str]] = None,
-             subject: Optional[pulumi.Input[str]] = None,
-             syntax: Optional[pulumi.Input[str]] = None,
-             template: Optional[pulumi.Input[str]] = None,
-             url_lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if from_ is None and 'from' in kwargs:
-            from_ = kwargs['from']
-        if include_email_in_redirect is None and 'includeEmailInRedirect' in kwargs:
-            include_email_in_redirect = kwargs['includeEmailInRedirect']
-        if result_url is None and 'resultUrl' in kwargs:
-            result_url = kwargs['resultUrl']
-        if url_lifetime_in_seconds is None and 'urlLifetimeInSeconds' in kwargs:
-            url_lifetime_in_seconds = kwargs['urlLifetimeInSeconds']
-
         if body is not None:
-            _setter("body", body)
+            pulumi.set(__self__, "body", body)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if from_ is not None:
-            _setter("from_", from_)
+            pulumi.set(__self__, "from_", from_)
         if include_email_in_redirect is not None:
-            _setter("include_email_in_redirect", include_email_in_redirect)
+            pulumi.set(__self__, "include_email_in_redirect", include_email_in_redirect)
         if result_url is not None:
-            _setter("result_url", result_url)
+            pulumi.set(__self__, "result_url", result_url)
         if subject is not None:
-            _setter("subject", subject)
+            pulumi.set(__self__, "subject", subject)
         if syntax is not None:
-            _setter("syntax", syntax)
+            pulumi.set(__self__, "syntax", syntax)
         if template is not None:
-            _setter("template", template)
+            pulumi.set(__self__, "template", template)
         if url_lifetime_in_seconds is not None:
-            _setter("url_lifetime_in_seconds", url_lifetime_in_seconds)
+            pulumi.set(__self__, "url_lifetime_in_seconds", url_lifetime_in_seconds)
 
     @property
     @pulumi.getter
@@ -456,10 +374,6 @@ class EmailTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EmailTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

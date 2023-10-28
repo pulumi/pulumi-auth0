@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserRolesArgs', 'UserRoles']
@@ -21,27 +21,8 @@ class UserRolesArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Set of IDs of roles assigned to the user.
         :param pulumi.Input[str] user_id: ID of the user.
         """
-        UserRolesArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            roles=roles,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if roles is None:
-            raise TypeError("Missing 'roles' argument")
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-        if user_id is None:
-            raise TypeError("Missing 'user_id' argument")
-
-        _setter("roles", roles)
-        _setter("user_id", user_id)
+        pulumi.set(__self__, "roles", roles)
+        pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter
@@ -78,25 +59,10 @@ class _UserRolesState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Set of IDs of roles assigned to the user.
         :param pulumi.Input[str] user_id: ID of the user.
         """
-        _UserRolesState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            roles=roles,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-
         if roles is not None:
-            _setter("roles", roles)
+            pulumi.set(__self__, "roles", roles)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter
@@ -218,10 +184,6 @@ class UserRoles(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UserRolesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

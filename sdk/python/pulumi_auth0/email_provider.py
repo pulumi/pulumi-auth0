@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,39 +29,14 @@ class EmailProviderArgs:
         :param pulumi.Input[str] name: Name of the email provider. Options include `azure_cs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
         :param pulumi.Input['EmailProviderSettingsArgs'] settings: Specific email provider settings.
         """
-        EmailProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            credentials=credentials,
-            default_from_address=default_from_address,
-            enabled=enabled,
-            name=name,
-            settings=settings,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             credentials: Optional[pulumi.Input['EmailProviderCredentialsArgs']] = None,
-             default_from_address: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             settings: Optional[pulumi.Input['EmailProviderSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if credentials is None:
-            raise TypeError("Missing 'credentials' argument")
-        if default_from_address is None and 'defaultFromAddress' in kwargs:
-            default_from_address = kwargs['defaultFromAddress']
-        if default_from_address is None:
-            raise TypeError("Missing 'default_from_address' argument")
-
-        _setter("credentials", credentials)
-        _setter("default_from_address", default_from_address)
+        pulumi.set(__self__, "credentials", credentials)
+        pulumi.set(__self__, "default_from_address", default_from_address)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if settings is not None:
-            _setter("settings", settings)
+            pulumi.set(__self__, "settings", settings)
 
     @property
     @pulumi.getter
@@ -140,37 +115,16 @@ class _EmailProviderState:
         :param pulumi.Input[str] name: Name of the email provider. Options include `azure_cs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
         :param pulumi.Input['EmailProviderSettingsArgs'] settings: Specific email provider settings.
         """
-        _EmailProviderState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            credentials=credentials,
-            default_from_address=default_from_address,
-            enabled=enabled,
-            name=name,
-            settings=settings,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             credentials: Optional[pulumi.Input['EmailProviderCredentialsArgs']] = None,
-             default_from_address: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             settings: Optional[pulumi.Input['EmailProviderSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if default_from_address is None and 'defaultFromAddress' in kwargs:
-            default_from_address = kwargs['defaultFromAddress']
-
         if credentials is not None:
-            _setter("credentials", credentials)
+            pulumi.set(__self__, "credentials", credentials)
         if default_from_address is not None:
-            _setter("default_from_address", default_from_address)
+            pulumi.set(__self__, "default_from_address", default_from_address)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if settings is not None:
-            _setter("settings", settings)
+            pulumi.set(__self__, "settings", settings)
 
     @property
     @pulumi.getter
@@ -356,10 +310,6 @@ class EmailProvider(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EmailProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -379,7 +329,6 @@ class EmailProvider(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EmailProviderArgs.__new__(EmailProviderArgs)
 
-            credentials = _utilities.configure(credentials, EmailProviderCredentialsArgs, True)
             if credentials is None and not opts.urn:
                 raise TypeError("Missing required property 'credentials'")
             __props__.__dict__["credentials"] = credentials
@@ -388,7 +337,6 @@ class EmailProvider(pulumi.CustomResource):
             __props__.__dict__["default_from_address"] = default_from_address
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["name"] = name
-            settings = _utilities.configure(settings, EmailProviderSettingsArgs, True)
             __props__.__dict__["settings"] = settings
         super(EmailProvider, __self__).__init__(
             'auth0:index/emailProvider:EmailProvider',

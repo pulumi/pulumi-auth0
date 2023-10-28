@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -26,48 +26,13 @@ class BrandingThemeArgs:
         The set of arguments for constructing a BrandingTheme resource.
         :param pulumi.Input[str] display_name: The display name for the branding theme.
         """
-        BrandingThemeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            borders=borders,
-            colors=colors,
-            fonts=fonts,
-            page_background=page_background,
-            widget=widget,
-            display_name=display_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             borders: Optional[pulumi.Input['BrandingThemeBordersArgs']] = None,
-             colors: Optional[pulumi.Input['BrandingThemeColorsArgs']] = None,
-             fonts: Optional[pulumi.Input['BrandingThemeFontsArgs']] = None,
-             page_background: Optional[pulumi.Input['BrandingThemePageBackgroundArgs']] = None,
-             widget: Optional[pulumi.Input['BrandingThemeWidgetArgs']] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if borders is None:
-            raise TypeError("Missing 'borders' argument")
-        if colors is None:
-            raise TypeError("Missing 'colors' argument")
-        if fonts is None:
-            raise TypeError("Missing 'fonts' argument")
-        if page_background is None and 'pageBackground' in kwargs:
-            page_background = kwargs['pageBackground']
-        if page_background is None:
-            raise TypeError("Missing 'page_background' argument")
-        if widget is None:
-            raise TypeError("Missing 'widget' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
-        _setter("borders", borders)
-        _setter("colors", colors)
-        _setter("fonts", fonts)
-        _setter("page_background", page_background)
-        _setter("widget", widget)
+        pulumi.set(__self__, "borders", borders)
+        pulumi.set(__self__, "colors", colors)
+        pulumi.set(__self__, "fonts", fonts)
+        pulumi.set(__self__, "page_background", page_background)
+        pulumi.set(__self__, "widget", widget)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
 
     @property
     @pulumi.getter
@@ -140,43 +105,18 @@ class _BrandingThemeState:
         Input properties used for looking up and filtering BrandingTheme resources.
         :param pulumi.Input[str] display_name: The display name for the branding theme.
         """
-        _BrandingThemeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            borders=borders,
-            colors=colors,
-            display_name=display_name,
-            fonts=fonts,
-            page_background=page_background,
-            widget=widget,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             borders: Optional[pulumi.Input['BrandingThemeBordersArgs']] = None,
-             colors: Optional[pulumi.Input['BrandingThemeColorsArgs']] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             fonts: Optional[pulumi.Input['BrandingThemeFontsArgs']] = None,
-             page_background: Optional[pulumi.Input['BrandingThemePageBackgroundArgs']] = None,
-             widget: Optional[pulumi.Input['BrandingThemeWidgetArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if page_background is None and 'pageBackground' in kwargs:
-            page_background = kwargs['pageBackground']
-
         if borders is not None:
-            _setter("borders", borders)
+            pulumi.set(__self__, "borders", borders)
         if colors is not None:
-            _setter("colors", colors)
+            pulumi.set(__self__, "colors", colors)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if fonts is not None:
-            _setter("fonts", fonts)
+            pulumi.set(__self__, "fonts", fonts)
         if page_background is not None:
-            _setter("page_background", page_background)
+            pulumi.set(__self__, "page_background", page_background)
         if widget is not None:
-            _setter("widget", widget)
+            pulumi.set(__self__, "widget", widget)
 
     @property
     @pulumi.getter
@@ -450,10 +390,6 @@ class BrandingTheme(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BrandingThemeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -474,24 +410,19 @@ class BrandingTheme(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BrandingThemeArgs.__new__(BrandingThemeArgs)
 
-            borders = _utilities.configure(borders, BrandingThemeBordersArgs, True)
             if borders is None and not opts.urn:
                 raise TypeError("Missing required property 'borders'")
             __props__.__dict__["borders"] = borders
-            colors = _utilities.configure(colors, BrandingThemeColorsArgs, True)
             if colors is None and not opts.urn:
                 raise TypeError("Missing required property 'colors'")
             __props__.__dict__["colors"] = colors
             __props__.__dict__["display_name"] = display_name
-            fonts = _utilities.configure(fonts, BrandingThemeFontsArgs, True)
             if fonts is None and not opts.urn:
                 raise TypeError("Missing required property 'fonts'")
             __props__.__dict__["fonts"] = fonts
-            page_background = _utilities.configure(page_background, BrandingThemePageBackgroundArgs, True)
             if page_background is None and not opts.urn:
                 raise TypeError("Missing required property 'page_background'")
             __props__.__dict__["page_background"] = page_background
-            widget = _utilities.configure(widget, BrandingThemeWidgetArgs, True)
             if widget is None and not opts.urn:
                 raise TypeError("Missing required property 'widget'")
             __props__.__dict__["widget"] = widget

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -85,203 +85,74 @@ class ClientArgs:
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
         """
-        ClientArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            addons=addons,
-            allowed_clients=allowed_clients,
-            allowed_logout_urls=allowed_logout_urls,
-            allowed_origins=allowed_origins,
-            app_type=app_type,
-            callbacks=callbacks,
-            client_aliases=client_aliases,
-            client_metadata=client_metadata,
-            cross_origin_auth=cross_origin_auth,
-            cross_origin_loc=cross_origin_loc,
-            custom_login_page=custom_login_page,
-            custom_login_page_on=custom_login_page_on,
-            description=description,
-            encryption_key=encryption_key,
-            form_template=form_template,
-            grant_types=grant_types,
-            initiate_login_uri=initiate_login_uri,
-            is_first_party=is_first_party,
-            is_token_endpoint_ip_header_trusted=is_token_endpoint_ip_header_trusted,
-            jwt_configuration=jwt_configuration,
-            logo_uri=logo_uri,
-            mobile=mobile,
-            name=name,
-            native_social_login=native_social_login,
-            oidc_backchannel_logout_urls=oidc_backchannel_logout_urls,
-            oidc_conformant=oidc_conformant,
-            organization_require_behavior=organization_require_behavior,
-            organization_usage=organization_usage,
-            refresh_token=refresh_token,
-            require_pushed_authorization_requests=require_pushed_authorization_requests,
-            sso=sso,
-            sso_disabled=sso_disabled,
-            web_origins=web_origins,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             addons: Optional[pulumi.Input['ClientAddonsArgs']] = None,
-             allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             app_type: Optional[pulumi.Input[str]] = None,
-             callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             cross_origin_auth: Optional[pulumi.Input[bool]] = None,
-             cross_origin_loc: Optional[pulumi.Input[str]] = None,
-             custom_login_page: Optional[pulumi.Input[str]] = None,
-             custom_login_page_on: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             form_template: Optional[pulumi.Input[str]] = None,
-             grant_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             initiate_login_uri: Optional[pulumi.Input[str]] = None,
-             is_first_party: Optional[pulumi.Input[bool]] = None,
-             is_token_endpoint_ip_header_trusted: Optional[pulumi.Input[bool]] = None,
-             jwt_configuration: Optional[pulumi.Input['ClientJwtConfigurationArgs']] = None,
-             logo_uri: Optional[pulumi.Input[str]] = None,
-             mobile: Optional[pulumi.Input['ClientMobileArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             native_social_login: Optional[pulumi.Input['ClientNativeSocialLoginArgs']] = None,
-             oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             oidc_conformant: Optional[pulumi.Input[bool]] = None,
-             organization_require_behavior: Optional[pulumi.Input[str]] = None,
-             organization_usage: Optional[pulumi.Input[str]] = None,
-             refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
-             require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
-             sso: Optional[pulumi.Input[bool]] = None,
-             sso_disabled: Optional[pulumi.Input[bool]] = None,
-             web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_clients is None and 'allowedClients' in kwargs:
-            allowed_clients = kwargs['allowedClients']
-        if allowed_logout_urls is None and 'allowedLogoutUrls' in kwargs:
-            allowed_logout_urls = kwargs['allowedLogoutUrls']
-        if allowed_origins is None and 'allowedOrigins' in kwargs:
-            allowed_origins = kwargs['allowedOrigins']
-        if app_type is None and 'appType' in kwargs:
-            app_type = kwargs['appType']
-        if client_aliases is None and 'clientAliases' in kwargs:
-            client_aliases = kwargs['clientAliases']
-        if client_metadata is None and 'clientMetadata' in kwargs:
-            client_metadata = kwargs['clientMetadata']
-        if cross_origin_auth is None and 'crossOriginAuth' in kwargs:
-            cross_origin_auth = kwargs['crossOriginAuth']
-        if cross_origin_loc is None and 'crossOriginLoc' in kwargs:
-            cross_origin_loc = kwargs['crossOriginLoc']
-        if custom_login_page is None and 'customLoginPage' in kwargs:
-            custom_login_page = kwargs['customLoginPage']
-        if custom_login_page_on is None and 'customLoginPageOn' in kwargs:
-            custom_login_page_on = kwargs['customLoginPageOn']
-        if encryption_key is None and 'encryptionKey' in kwargs:
-            encryption_key = kwargs['encryptionKey']
-        if form_template is None and 'formTemplate' in kwargs:
-            form_template = kwargs['formTemplate']
-        if grant_types is None and 'grantTypes' in kwargs:
-            grant_types = kwargs['grantTypes']
-        if initiate_login_uri is None and 'initiateLoginUri' in kwargs:
-            initiate_login_uri = kwargs['initiateLoginUri']
-        if is_first_party is None and 'isFirstParty' in kwargs:
-            is_first_party = kwargs['isFirstParty']
-        if is_token_endpoint_ip_header_trusted is None and 'isTokenEndpointIpHeaderTrusted' in kwargs:
-            is_token_endpoint_ip_header_trusted = kwargs['isTokenEndpointIpHeaderTrusted']
-        if jwt_configuration is None and 'jwtConfiguration' in kwargs:
-            jwt_configuration = kwargs['jwtConfiguration']
-        if logo_uri is None and 'logoUri' in kwargs:
-            logo_uri = kwargs['logoUri']
-        if native_social_login is None and 'nativeSocialLogin' in kwargs:
-            native_social_login = kwargs['nativeSocialLogin']
-        if oidc_backchannel_logout_urls is None and 'oidcBackchannelLogoutUrls' in kwargs:
-            oidc_backchannel_logout_urls = kwargs['oidcBackchannelLogoutUrls']
-        if oidc_conformant is None and 'oidcConformant' in kwargs:
-            oidc_conformant = kwargs['oidcConformant']
-        if organization_require_behavior is None and 'organizationRequireBehavior' in kwargs:
-            organization_require_behavior = kwargs['organizationRequireBehavior']
-        if organization_usage is None and 'organizationUsage' in kwargs:
-            organization_usage = kwargs['organizationUsage']
-        if refresh_token is None and 'refreshToken' in kwargs:
-            refresh_token = kwargs['refreshToken']
-        if require_pushed_authorization_requests is None and 'requirePushedAuthorizationRequests' in kwargs:
-            require_pushed_authorization_requests = kwargs['requirePushedAuthorizationRequests']
-        if sso_disabled is None and 'ssoDisabled' in kwargs:
-            sso_disabled = kwargs['ssoDisabled']
-        if web_origins is None and 'webOrigins' in kwargs:
-            web_origins = kwargs['webOrigins']
-
         if addons is not None:
-            _setter("addons", addons)
+            pulumi.set(__self__, "addons", addons)
         if allowed_clients is not None:
-            _setter("allowed_clients", allowed_clients)
+            pulumi.set(__self__, "allowed_clients", allowed_clients)
         if allowed_logout_urls is not None:
-            _setter("allowed_logout_urls", allowed_logout_urls)
+            pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
         if allowed_origins is not None:
-            _setter("allowed_origins", allowed_origins)
+            pulumi.set(__self__, "allowed_origins", allowed_origins)
         if app_type is not None:
-            _setter("app_type", app_type)
+            pulumi.set(__self__, "app_type", app_type)
         if callbacks is not None:
-            _setter("callbacks", callbacks)
+            pulumi.set(__self__, "callbacks", callbacks)
         if client_aliases is not None:
-            _setter("client_aliases", client_aliases)
+            pulumi.set(__self__, "client_aliases", client_aliases)
         if client_metadata is not None:
-            _setter("client_metadata", client_metadata)
+            pulumi.set(__self__, "client_metadata", client_metadata)
         if cross_origin_auth is not None:
-            _setter("cross_origin_auth", cross_origin_auth)
+            pulumi.set(__self__, "cross_origin_auth", cross_origin_auth)
         if cross_origin_loc is not None:
-            _setter("cross_origin_loc", cross_origin_loc)
+            pulumi.set(__self__, "cross_origin_loc", cross_origin_loc)
         if custom_login_page is not None:
-            _setter("custom_login_page", custom_login_page)
+            pulumi.set(__self__, "custom_login_page", custom_login_page)
         if custom_login_page_on is not None:
-            _setter("custom_login_page_on", custom_login_page_on)
+            pulumi.set(__self__, "custom_login_page_on", custom_login_page_on)
         if description is None:
             description = 'Managed by Pulumi'
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encryption_key is not None:
-            _setter("encryption_key", encryption_key)
+            pulumi.set(__self__, "encryption_key", encryption_key)
         if form_template is not None:
-            _setter("form_template", form_template)
+            pulumi.set(__self__, "form_template", form_template)
         if grant_types is not None:
-            _setter("grant_types", grant_types)
+            pulumi.set(__self__, "grant_types", grant_types)
         if initiate_login_uri is not None:
-            _setter("initiate_login_uri", initiate_login_uri)
+            pulumi.set(__self__, "initiate_login_uri", initiate_login_uri)
         if is_first_party is not None:
-            _setter("is_first_party", is_first_party)
+            pulumi.set(__self__, "is_first_party", is_first_party)
         if is_token_endpoint_ip_header_trusted is not None:
-            _setter("is_token_endpoint_ip_header_trusted", is_token_endpoint_ip_header_trusted)
+            pulumi.set(__self__, "is_token_endpoint_ip_header_trusted", is_token_endpoint_ip_header_trusted)
         if jwt_configuration is not None:
-            _setter("jwt_configuration", jwt_configuration)
+            pulumi.set(__self__, "jwt_configuration", jwt_configuration)
         if logo_uri is not None:
-            _setter("logo_uri", logo_uri)
+            pulumi.set(__self__, "logo_uri", logo_uri)
         if mobile is not None:
-            _setter("mobile", mobile)
+            pulumi.set(__self__, "mobile", mobile)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if native_social_login is not None:
-            _setter("native_social_login", native_social_login)
+            pulumi.set(__self__, "native_social_login", native_social_login)
         if oidc_backchannel_logout_urls is not None:
-            _setter("oidc_backchannel_logout_urls", oidc_backchannel_logout_urls)
+            pulumi.set(__self__, "oidc_backchannel_logout_urls", oidc_backchannel_logout_urls)
         if oidc_conformant is not None:
-            _setter("oidc_conformant", oidc_conformant)
+            pulumi.set(__self__, "oidc_conformant", oidc_conformant)
         if organization_require_behavior is not None:
-            _setter("organization_require_behavior", organization_require_behavior)
+            pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
         if organization_usage is not None:
-            _setter("organization_usage", organization_usage)
+            pulumi.set(__self__, "organization_usage", organization_usage)
         if refresh_token is not None:
-            _setter("refresh_token", refresh_token)
+            pulumi.set(__self__, "refresh_token", refresh_token)
         if require_pushed_authorization_requests is not None:
-            _setter("require_pushed_authorization_requests", require_pushed_authorization_requests)
+            pulumi.set(__self__, "require_pushed_authorization_requests", require_pushed_authorization_requests)
         if sso is not None:
-            _setter("sso", sso)
+            pulumi.set(__self__, "sso", sso)
         if sso_disabled is not None:
-            _setter("sso_disabled", sso_disabled)
+            pulumi.set(__self__, "sso_disabled", sso_disabled)
         if web_origins is not None:
-            _setter("web_origins", web_origins)
+            pulumi.set(__self__, "web_origins", web_origins)
 
     @property
     @pulumi.getter
@@ -756,215 +627,78 @@ class _ClientState:
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
         """
-        _ClientState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            addons=addons,
-            allowed_clients=allowed_clients,
-            allowed_logout_urls=allowed_logout_urls,
-            allowed_origins=allowed_origins,
-            app_type=app_type,
-            callbacks=callbacks,
-            client_aliases=client_aliases,
-            client_id=client_id,
-            client_metadata=client_metadata,
-            cross_origin_auth=cross_origin_auth,
-            cross_origin_loc=cross_origin_loc,
-            custom_login_page=custom_login_page,
-            custom_login_page_on=custom_login_page_on,
-            description=description,
-            encryption_key=encryption_key,
-            form_template=form_template,
-            grant_types=grant_types,
-            initiate_login_uri=initiate_login_uri,
-            is_first_party=is_first_party,
-            is_token_endpoint_ip_header_trusted=is_token_endpoint_ip_header_trusted,
-            jwt_configuration=jwt_configuration,
-            logo_uri=logo_uri,
-            mobile=mobile,
-            name=name,
-            native_social_login=native_social_login,
-            oidc_backchannel_logout_urls=oidc_backchannel_logout_urls,
-            oidc_conformant=oidc_conformant,
-            organization_require_behavior=organization_require_behavior,
-            organization_usage=organization_usage,
-            refresh_token=refresh_token,
-            require_pushed_authorization_requests=require_pushed_authorization_requests,
-            signing_keys=signing_keys,
-            sso=sso,
-            sso_disabled=sso_disabled,
-            web_origins=web_origins,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             addons: Optional[pulumi.Input['ClientAddonsArgs']] = None,
-             allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             app_type: Optional[pulumi.Input[str]] = None,
-             callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             client_id: Optional[pulumi.Input[str]] = None,
-             client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             cross_origin_auth: Optional[pulumi.Input[bool]] = None,
-             cross_origin_loc: Optional[pulumi.Input[str]] = None,
-             custom_login_page: Optional[pulumi.Input[str]] = None,
-             custom_login_page_on: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             form_template: Optional[pulumi.Input[str]] = None,
-             grant_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             initiate_login_uri: Optional[pulumi.Input[str]] = None,
-             is_first_party: Optional[pulumi.Input[bool]] = None,
-             is_token_endpoint_ip_header_trusted: Optional[pulumi.Input[bool]] = None,
-             jwt_configuration: Optional[pulumi.Input['ClientJwtConfigurationArgs']] = None,
-             logo_uri: Optional[pulumi.Input[str]] = None,
-             mobile: Optional[pulumi.Input['ClientMobileArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             native_social_login: Optional[pulumi.Input['ClientNativeSocialLoginArgs']] = None,
-             oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             oidc_conformant: Optional[pulumi.Input[bool]] = None,
-             organization_require_behavior: Optional[pulumi.Input[str]] = None,
-             organization_usage: Optional[pulumi.Input[str]] = None,
-             refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
-             require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
-             signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
-             sso: Optional[pulumi.Input[bool]] = None,
-             sso_disabled: Optional[pulumi.Input[bool]] = None,
-             web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_clients is None and 'allowedClients' in kwargs:
-            allowed_clients = kwargs['allowedClients']
-        if allowed_logout_urls is None and 'allowedLogoutUrls' in kwargs:
-            allowed_logout_urls = kwargs['allowedLogoutUrls']
-        if allowed_origins is None and 'allowedOrigins' in kwargs:
-            allowed_origins = kwargs['allowedOrigins']
-        if app_type is None and 'appType' in kwargs:
-            app_type = kwargs['appType']
-        if client_aliases is None and 'clientAliases' in kwargs:
-            client_aliases = kwargs['clientAliases']
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-        if client_metadata is None and 'clientMetadata' in kwargs:
-            client_metadata = kwargs['clientMetadata']
-        if cross_origin_auth is None and 'crossOriginAuth' in kwargs:
-            cross_origin_auth = kwargs['crossOriginAuth']
-        if cross_origin_loc is None and 'crossOriginLoc' in kwargs:
-            cross_origin_loc = kwargs['crossOriginLoc']
-        if custom_login_page is None and 'customLoginPage' in kwargs:
-            custom_login_page = kwargs['customLoginPage']
-        if custom_login_page_on is None and 'customLoginPageOn' in kwargs:
-            custom_login_page_on = kwargs['customLoginPageOn']
-        if encryption_key is None and 'encryptionKey' in kwargs:
-            encryption_key = kwargs['encryptionKey']
-        if form_template is None and 'formTemplate' in kwargs:
-            form_template = kwargs['formTemplate']
-        if grant_types is None and 'grantTypes' in kwargs:
-            grant_types = kwargs['grantTypes']
-        if initiate_login_uri is None and 'initiateLoginUri' in kwargs:
-            initiate_login_uri = kwargs['initiateLoginUri']
-        if is_first_party is None and 'isFirstParty' in kwargs:
-            is_first_party = kwargs['isFirstParty']
-        if is_token_endpoint_ip_header_trusted is None and 'isTokenEndpointIpHeaderTrusted' in kwargs:
-            is_token_endpoint_ip_header_trusted = kwargs['isTokenEndpointIpHeaderTrusted']
-        if jwt_configuration is None and 'jwtConfiguration' in kwargs:
-            jwt_configuration = kwargs['jwtConfiguration']
-        if logo_uri is None and 'logoUri' in kwargs:
-            logo_uri = kwargs['logoUri']
-        if native_social_login is None and 'nativeSocialLogin' in kwargs:
-            native_social_login = kwargs['nativeSocialLogin']
-        if oidc_backchannel_logout_urls is None and 'oidcBackchannelLogoutUrls' in kwargs:
-            oidc_backchannel_logout_urls = kwargs['oidcBackchannelLogoutUrls']
-        if oidc_conformant is None and 'oidcConformant' in kwargs:
-            oidc_conformant = kwargs['oidcConformant']
-        if organization_require_behavior is None and 'organizationRequireBehavior' in kwargs:
-            organization_require_behavior = kwargs['organizationRequireBehavior']
-        if organization_usage is None and 'organizationUsage' in kwargs:
-            organization_usage = kwargs['organizationUsage']
-        if refresh_token is None and 'refreshToken' in kwargs:
-            refresh_token = kwargs['refreshToken']
-        if require_pushed_authorization_requests is None and 'requirePushedAuthorizationRequests' in kwargs:
-            require_pushed_authorization_requests = kwargs['requirePushedAuthorizationRequests']
-        if signing_keys is None and 'signingKeys' in kwargs:
-            signing_keys = kwargs['signingKeys']
-        if sso_disabled is None and 'ssoDisabled' in kwargs:
-            sso_disabled = kwargs['ssoDisabled']
-        if web_origins is None and 'webOrigins' in kwargs:
-            web_origins = kwargs['webOrigins']
-
         if addons is not None:
-            _setter("addons", addons)
+            pulumi.set(__self__, "addons", addons)
         if allowed_clients is not None:
-            _setter("allowed_clients", allowed_clients)
+            pulumi.set(__self__, "allowed_clients", allowed_clients)
         if allowed_logout_urls is not None:
-            _setter("allowed_logout_urls", allowed_logout_urls)
+            pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
         if allowed_origins is not None:
-            _setter("allowed_origins", allowed_origins)
+            pulumi.set(__self__, "allowed_origins", allowed_origins)
         if app_type is not None:
-            _setter("app_type", app_type)
+            pulumi.set(__self__, "app_type", app_type)
         if callbacks is not None:
-            _setter("callbacks", callbacks)
+            pulumi.set(__self__, "callbacks", callbacks)
         if client_aliases is not None:
-            _setter("client_aliases", client_aliases)
+            pulumi.set(__self__, "client_aliases", client_aliases)
         if client_id is not None:
-            _setter("client_id", client_id)
+            pulumi.set(__self__, "client_id", client_id)
         if client_metadata is not None:
-            _setter("client_metadata", client_metadata)
+            pulumi.set(__self__, "client_metadata", client_metadata)
         if cross_origin_auth is not None:
-            _setter("cross_origin_auth", cross_origin_auth)
+            pulumi.set(__self__, "cross_origin_auth", cross_origin_auth)
         if cross_origin_loc is not None:
-            _setter("cross_origin_loc", cross_origin_loc)
+            pulumi.set(__self__, "cross_origin_loc", cross_origin_loc)
         if custom_login_page is not None:
-            _setter("custom_login_page", custom_login_page)
+            pulumi.set(__self__, "custom_login_page", custom_login_page)
         if custom_login_page_on is not None:
-            _setter("custom_login_page_on", custom_login_page_on)
+            pulumi.set(__self__, "custom_login_page_on", custom_login_page_on)
         if description is None:
             description = 'Managed by Pulumi'
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encryption_key is not None:
-            _setter("encryption_key", encryption_key)
+            pulumi.set(__self__, "encryption_key", encryption_key)
         if form_template is not None:
-            _setter("form_template", form_template)
+            pulumi.set(__self__, "form_template", form_template)
         if grant_types is not None:
-            _setter("grant_types", grant_types)
+            pulumi.set(__self__, "grant_types", grant_types)
         if initiate_login_uri is not None:
-            _setter("initiate_login_uri", initiate_login_uri)
+            pulumi.set(__self__, "initiate_login_uri", initiate_login_uri)
         if is_first_party is not None:
-            _setter("is_first_party", is_first_party)
+            pulumi.set(__self__, "is_first_party", is_first_party)
         if is_token_endpoint_ip_header_trusted is not None:
-            _setter("is_token_endpoint_ip_header_trusted", is_token_endpoint_ip_header_trusted)
+            pulumi.set(__self__, "is_token_endpoint_ip_header_trusted", is_token_endpoint_ip_header_trusted)
         if jwt_configuration is not None:
-            _setter("jwt_configuration", jwt_configuration)
+            pulumi.set(__self__, "jwt_configuration", jwt_configuration)
         if logo_uri is not None:
-            _setter("logo_uri", logo_uri)
+            pulumi.set(__self__, "logo_uri", logo_uri)
         if mobile is not None:
-            _setter("mobile", mobile)
+            pulumi.set(__self__, "mobile", mobile)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if native_social_login is not None:
-            _setter("native_social_login", native_social_login)
+            pulumi.set(__self__, "native_social_login", native_social_login)
         if oidc_backchannel_logout_urls is not None:
-            _setter("oidc_backchannel_logout_urls", oidc_backchannel_logout_urls)
+            pulumi.set(__self__, "oidc_backchannel_logout_urls", oidc_backchannel_logout_urls)
         if oidc_conformant is not None:
-            _setter("oidc_conformant", oidc_conformant)
+            pulumi.set(__self__, "oidc_conformant", oidc_conformant)
         if organization_require_behavior is not None:
-            _setter("organization_require_behavior", organization_require_behavior)
+            pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
         if organization_usage is not None:
-            _setter("organization_usage", organization_usage)
+            pulumi.set(__self__, "organization_usage", organization_usage)
         if refresh_token is not None:
-            _setter("refresh_token", refresh_token)
+            pulumi.set(__self__, "refresh_token", refresh_token)
         if require_pushed_authorization_requests is not None:
-            _setter("require_pushed_authorization_requests", require_pushed_authorization_requests)
+            pulumi.set(__self__, "require_pushed_authorization_requests", require_pushed_authorization_requests)
         if signing_keys is not None:
-            _setter("signing_keys", signing_keys)
+            pulumi.set(__self__, "signing_keys", signing_keys)
         if sso is not None:
-            _setter("sso", sso)
+            pulumi.set(__self__, "sso", sso)
         if sso_disabled is not None:
-            _setter("sso_disabled", sso_disabled)
+            pulumi.set(__self__, "sso_disabled", sso_disabled)
         if web_origins is not None:
-            _setter("web_origins", web_origins)
+            pulumi.set(__self__, "web_origins", web_origins)
 
     @property
     @pulumi.getter
@@ -1642,10 +1376,6 @@ class Client(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ClientArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1693,7 +1423,6 @@ class Client(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClientArgs.__new__(ClientArgs)
 
-            addons = _utilities.configure(addons, ClientAddonsArgs, True)
             __props__.__dict__["addons"] = addons
             __props__.__dict__["allowed_clients"] = allowed_clients
             __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
@@ -1715,19 +1444,15 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["initiate_login_uri"] = initiate_login_uri
             __props__.__dict__["is_first_party"] = is_first_party
             __props__.__dict__["is_token_endpoint_ip_header_trusted"] = is_token_endpoint_ip_header_trusted
-            jwt_configuration = _utilities.configure(jwt_configuration, ClientJwtConfigurationArgs, True)
             __props__.__dict__["jwt_configuration"] = jwt_configuration
             __props__.__dict__["logo_uri"] = logo_uri
-            mobile = _utilities.configure(mobile, ClientMobileArgs, True)
             __props__.__dict__["mobile"] = mobile
             __props__.__dict__["name"] = name
-            native_social_login = _utilities.configure(native_social_login, ClientNativeSocialLoginArgs, True)
             __props__.__dict__["native_social_login"] = native_social_login
             __props__.__dict__["oidc_backchannel_logout_urls"] = oidc_backchannel_logout_urls
             __props__.__dict__["oidc_conformant"] = oidc_conformant
             __props__.__dict__["organization_require_behavior"] = organization_require_behavior
             __props__.__dict__["organization_usage"] = organization_usage
-            refresh_token = _utilities.configure(refresh_token, ClientRefreshTokenArgs, True)
             __props__.__dict__["refresh_token"] = refresh_token
             __props__.__dict__["require_pushed_authorization_requests"] = require_pushed_authorization_requests
             __props__.__dict__["sso"] = sso
