@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access information about the tenant's attack protection settings.
@@ -83,12 +82,6 @@ func (o LookupAttackProtectionResultOutput) ToLookupAttackProtectionResultOutput
 
 func (o LookupAttackProtectionResultOutput) ToLookupAttackProtectionResultOutputWithContext(ctx context.Context) LookupAttackProtectionResultOutput {
 	return o
-}
-
-func (o LookupAttackProtectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAttackProtectionResult] {
-	return pulumix.Output[LookupAttackProtectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Breached password detection protects your applications from bad actors logging in with stolen credentials.

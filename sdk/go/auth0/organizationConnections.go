@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // With this resource, you can manage enabled connections on an organization.
@@ -183,12 +182,6 @@ func (i *OrganizationConnections) ToOrganizationConnectionsOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationConnectionsOutput)
 }
 
-func (i *OrganizationConnections) ToOutput(ctx context.Context) pulumix.Output[*OrganizationConnections] {
-	return pulumix.Output[*OrganizationConnections]{
-		OutputState: i.ToOrganizationConnectionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OrganizationConnectionsArrayInput is an input type that accepts OrganizationConnectionsArray and OrganizationConnectionsArrayOutput values.
 // You can construct a concrete instance of `OrganizationConnectionsArrayInput` via:
 //
@@ -212,12 +205,6 @@ func (i OrganizationConnectionsArray) ToOrganizationConnectionsArrayOutput() Org
 
 func (i OrganizationConnectionsArray) ToOrganizationConnectionsArrayOutputWithContext(ctx context.Context) OrganizationConnectionsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationConnectionsArrayOutput)
-}
-
-func (i OrganizationConnectionsArray) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationConnections] {
-	return pulumix.Output[[]*OrganizationConnections]{
-		OutputState: i.ToOrganizationConnectionsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OrganizationConnectionsMapInput is an input type that accepts OrganizationConnectionsMap and OrganizationConnectionsMapOutput values.
@@ -245,12 +232,6 @@ func (i OrganizationConnectionsMap) ToOrganizationConnectionsMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationConnectionsMapOutput)
 }
 
-func (i OrganizationConnectionsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationConnections] {
-	return pulumix.Output[map[string]*OrganizationConnections]{
-		OutputState: i.ToOrganizationConnectionsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationConnectionsOutput struct{ *pulumi.OutputState }
 
 func (OrganizationConnectionsOutput) ElementType() reflect.Type {
@@ -263,12 +244,6 @@ func (o OrganizationConnectionsOutput) ToOrganizationConnectionsOutput() Organiz
 
 func (o OrganizationConnectionsOutput) ToOrganizationConnectionsOutputWithContext(ctx context.Context) OrganizationConnectionsOutput {
 	return o
-}
-
-func (o OrganizationConnectionsOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationConnections] {
-	return pulumix.Output[*OrganizationConnections]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Connections that are enabled for the organization.
@@ -297,12 +272,6 @@ func (o OrganizationConnectionsArrayOutput) ToOrganizationConnectionsArrayOutput
 	return o
 }
 
-func (o OrganizationConnectionsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationConnections] {
-	return pulumix.Output[[]*OrganizationConnections]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrganizationConnectionsArrayOutput) Index(i pulumi.IntInput) OrganizationConnectionsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationConnections {
 		return vs[0].([]*OrganizationConnections)[vs[1].(int)]
@@ -321,12 +290,6 @@ func (o OrganizationConnectionsMapOutput) ToOrganizationConnectionsMapOutput() O
 
 func (o OrganizationConnectionsMapOutput) ToOrganizationConnectionsMapOutputWithContext(ctx context.Context) OrganizationConnectionsMapOutput {
 	return o
-}
-
-func (o OrganizationConnectionsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationConnections] {
-	return pulumix.Output[map[string]*OrganizationConnections]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationConnectionsMapOutput) MapIndex(k pulumi.StringInput) OrganizationConnectionsOutput {

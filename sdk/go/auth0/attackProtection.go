@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.
@@ -198,12 +197,6 @@ func (i *AttackProtection) ToAttackProtectionOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionOutput)
 }
 
-func (i *AttackProtection) ToOutput(ctx context.Context) pulumix.Output[*AttackProtection] {
-	return pulumix.Output[*AttackProtection]{
-		OutputState: i.ToAttackProtectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AttackProtectionArrayInput is an input type that accepts AttackProtectionArray and AttackProtectionArrayOutput values.
 // You can construct a concrete instance of `AttackProtectionArrayInput` via:
 //
@@ -227,12 +220,6 @@ func (i AttackProtectionArray) ToAttackProtectionArrayOutput() AttackProtectionA
 
 func (i AttackProtectionArray) ToAttackProtectionArrayOutputWithContext(ctx context.Context) AttackProtectionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionArrayOutput)
-}
-
-func (i AttackProtectionArray) ToOutput(ctx context.Context) pulumix.Output[[]*AttackProtection] {
-	return pulumix.Output[[]*AttackProtection]{
-		OutputState: i.ToAttackProtectionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AttackProtectionMapInput is an input type that accepts AttackProtectionMap and AttackProtectionMapOutput values.
@@ -260,12 +247,6 @@ func (i AttackProtectionMap) ToAttackProtectionMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionMapOutput)
 }
 
-func (i AttackProtectionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AttackProtection] {
-	return pulumix.Output[map[string]*AttackProtection]{
-		OutputState: i.ToAttackProtectionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AttackProtectionOutput struct{ *pulumi.OutputState }
 
 func (AttackProtectionOutput) ElementType() reflect.Type {
@@ -278,12 +259,6 @@ func (o AttackProtectionOutput) ToAttackProtectionOutput() AttackProtectionOutpu
 
 func (o AttackProtectionOutput) ToAttackProtectionOutputWithContext(ctx context.Context) AttackProtectionOutput {
 	return o
-}
-
-func (o AttackProtectionOutput) ToOutput(ctx context.Context) pulumix.Output[*AttackProtection] {
-	return pulumix.Output[*AttackProtection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Breached password detection protects your applications from bad actors logging in with stolen credentials.
@@ -319,12 +294,6 @@ func (o AttackProtectionArrayOutput) ToAttackProtectionArrayOutputWithContext(ct
 	return o
 }
 
-func (o AttackProtectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AttackProtection] {
-	return pulumix.Output[[]*AttackProtection]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AttackProtectionArrayOutput) Index(i pulumi.IntInput) AttackProtectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AttackProtection {
 		return vs[0].([]*AttackProtection)[vs[1].(int)]
@@ -343,12 +312,6 @@ func (o AttackProtectionMapOutput) ToAttackProtectionMapOutput() AttackProtectio
 
 func (o AttackProtectionMapOutput) ToAttackProtectionMapOutputWithContext(ctx context.Context) AttackProtectionMapOutput {
 	return o
-}
-
-func (o AttackProtectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AttackProtection] {
-	return pulumix.Output[map[string]*AttackProtection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AttackProtectionMapOutput) MapIndex(k pulumi.StringInput) AttackProtectionOutput {

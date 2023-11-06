@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
@@ -261,12 +260,6 @@ func (i *Guardian) ToGuardianOutputWithContext(ctx context.Context) GuardianOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GuardianOutput)
 }
 
-func (i *Guardian) ToOutput(ctx context.Context) pulumix.Output[*Guardian] {
-	return pulumix.Output[*Guardian]{
-		OutputState: i.ToGuardianOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GuardianArrayInput is an input type that accepts GuardianArray and GuardianArrayOutput values.
 // You can construct a concrete instance of `GuardianArrayInput` via:
 //
@@ -290,12 +283,6 @@ func (i GuardianArray) ToGuardianArrayOutput() GuardianArrayOutput {
 
 func (i GuardianArray) ToGuardianArrayOutputWithContext(ctx context.Context) GuardianArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GuardianArrayOutput)
-}
-
-func (i GuardianArray) ToOutput(ctx context.Context) pulumix.Output[[]*Guardian] {
-	return pulumix.Output[[]*Guardian]{
-		OutputState: i.ToGuardianArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GuardianMapInput is an input type that accepts GuardianMap and GuardianMapOutput values.
@@ -323,12 +310,6 @@ func (i GuardianMap) ToGuardianMapOutputWithContext(ctx context.Context) Guardia
 	return pulumi.ToOutputWithContext(ctx, i).(GuardianMapOutput)
 }
 
-func (i GuardianMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Guardian] {
-	return pulumix.Output[map[string]*Guardian]{
-		OutputState: i.ToGuardianMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuardianOutput struct{ *pulumi.OutputState }
 
 func (GuardianOutput) ElementType() reflect.Type {
@@ -341,12 +322,6 @@ func (o GuardianOutput) ToGuardianOutput() GuardianOutput {
 
 func (o GuardianOutput) ToGuardianOutputWithContext(ctx context.Context) GuardianOutput {
 	return o
-}
-
-func (o GuardianOutput) ToOutput(ctx context.Context) pulumix.Output[*Guardian] {
-	return pulumix.Output[*Guardian]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
@@ -408,12 +383,6 @@ func (o GuardianArrayOutput) ToGuardianArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o GuardianArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Guardian] {
-	return pulumix.Output[[]*Guardian]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GuardianArrayOutput) Index(i pulumi.IntInput) GuardianOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Guardian {
 		return vs[0].([]*Guardian)[vs[1].(int)]
@@ -432,12 +401,6 @@ func (o GuardianMapOutput) ToGuardianMapOutput() GuardianMapOutput {
 
 func (o GuardianMapOutput) ToGuardianMapOutputWithContext(ctx context.Context) GuardianMapOutput {
 	return o
-}
-
-func (o GuardianMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Guardian] {
-	return pulumix.Output[map[string]*Guardian]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuardianMapOutput) MapIndex(k pulumi.StringInput) GuardianOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource is used to manage members of an organization.
@@ -181,12 +180,6 @@ func (i *OrganizationMembers) ToOrganizationMembersOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationMembersOutput)
 }
 
-func (i *OrganizationMembers) ToOutput(ctx context.Context) pulumix.Output[*OrganizationMembers] {
-	return pulumix.Output[*OrganizationMembers]{
-		OutputState: i.ToOrganizationMembersOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OrganizationMembersArrayInput is an input type that accepts OrganizationMembersArray and OrganizationMembersArrayOutput values.
 // You can construct a concrete instance of `OrganizationMembersArrayInput` via:
 //
@@ -210,12 +203,6 @@ func (i OrganizationMembersArray) ToOrganizationMembersArrayOutput() Organizatio
 
 func (i OrganizationMembersArray) ToOrganizationMembersArrayOutputWithContext(ctx context.Context) OrganizationMembersArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationMembersArrayOutput)
-}
-
-func (i OrganizationMembersArray) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationMembers] {
-	return pulumix.Output[[]*OrganizationMembers]{
-		OutputState: i.ToOrganizationMembersArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OrganizationMembersMapInput is an input type that accepts OrganizationMembersMap and OrganizationMembersMapOutput values.
@@ -243,12 +230,6 @@ func (i OrganizationMembersMap) ToOrganizationMembersMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationMembersMapOutput)
 }
 
-func (i OrganizationMembersMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationMembers] {
-	return pulumix.Output[map[string]*OrganizationMembers]{
-		OutputState: i.ToOrganizationMembersMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationMembersOutput struct{ *pulumi.OutputState }
 
 func (OrganizationMembersOutput) ElementType() reflect.Type {
@@ -261,12 +242,6 @@ func (o OrganizationMembersOutput) ToOrganizationMembersOutput() OrganizationMem
 
 func (o OrganizationMembersOutput) ToOrganizationMembersOutputWithContext(ctx context.Context) OrganizationMembersOutput {
 	return o
-}
-
-func (o OrganizationMembersOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationMembers] {
-	return pulumix.Output[*OrganizationMembers]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Add user ID(s) directly from the tenant to become members of the organization.
@@ -293,12 +268,6 @@ func (o OrganizationMembersArrayOutput) ToOrganizationMembersArrayOutputWithCont
 	return o
 }
 
-func (o OrganizationMembersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationMembers] {
-	return pulumix.Output[[]*OrganizationMembers]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrganizationMembersArrayOutput) Index(i pulumi.IntInput) OrganizationMembersOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationMembers {
 		return vs[0].([]*OrganizationMembers)[vs[1].(int)]
@@ -317,12 +286,6 @@ func (o OrganizationMembersMapOutput) ToOrganizationMembersMapOutput() Organizat
 
 func (o OrganizationMembersMapOutput) ToOrganizationMembersMapOutputWithContext(ctx context.Context) OrganizationMembersMapOutput {
 	return o
-}
-
-func (o OrganizationMembersMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationMembers] {
-	return pulumix.Output[map[string]*OrganizationMembers]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationMembersMapOutput) MapIndex(k pulumi.StringInput) OrganizationMembersOutput {

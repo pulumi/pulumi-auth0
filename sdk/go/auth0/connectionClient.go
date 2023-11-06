@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // With this resource, you can enable a single client on a connection.
@@ -178,12 +177,6 @@ func (i *ConnectionClient) ToConnectionClientOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionClientOutput)
 }
 
-func (i *ConnectionClient) ToOutput(ctx context.Context) pulumix.Output[*ConnectionClient] {
-	return pulumix.Output[*ConnectionClient]{
-		OutputState: i.ToConnectionClientOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectionClientArrayInput is an input type that accepts ConnectionClientArray and ConnectionClientArrayOutput values.
 // You can construct a concrete instance of `ConnectionClientArrayInput` via:
 //
@@ -207,12 +200,6 @@ func (i ConnectionClientArray) ToConnectionClientArrayOutput() ConnectionClientA
 
 func (i ConnectionClientArray) ToConnectionClientArrayOutputWithContext(ctx context.Context) ConnectionClientArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionClientArrayOutput)
-}
-
-func (i ConnectionClientArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectionClient] {
-	return pulumix.Output[[]*ConnectionClient]{
-		OutputState: i.ToConnectionClientArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConnectionClientMapInput is an input type that accepts ConnectionClientMap and ConnectionClientMapOutput values.
@@ -240,12 +227,6 @@ func (i ConnectionClientMap) ToConnectionClientMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionClientMapOutput)
 }
 
-func (i ConnectionClientMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectionClient] {
-	return pulumix.Output[map[string]*ConnectionClient]{
-		OutputState: i.ToConnectionClientMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionClientOutput struct{ *pulumi.OutputState }
 
 func (ConnectionClientOutput) ElementType() reflect.Type {
@@ -258,12 +239,6 @@ func (o ConnectionClientOutput) ToConnectionClientOutput() ConnectionClientOutpu
 
 func (o ConnectionClientOutput) ToConnectionClientOutputWithContext(ctx context.Context) ConnectionClientOutput {
 	return o
-}
-
-func (o ConnectionClientOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionClient] {
-	return pulumix.Output[*ConnectionClient]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ID of the client for which the connection is enabled.
@@ -300,12 +275,6 @@ func (o ConnectionClientArrayOutput) ToConnectionClientArrayOutputWithContext(ct
 	return o
 }
 
-func (o ConnectionClientArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectionClient] {
-	return pulumix.Output[[]*ConnectionClient]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectionClientArrayOutput) Index(i pulumi.IntInput) ConnectionClientOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConnectionClient {
 		return vs[0].([]*ConnectionClient)[vs[1].(int)]
@@ -324,12 +293,6 @@ func (o ConnectionClientMapOutput) ToConnectionClientMapOutput() ConnectionClien
 
 func (o ConnectionClientMapOutput) ToConnectionClientMapOutputWithContext(ctx context.Context) ConnectionClientMapOutput {
 	return o
-}
-
-func (o ConnectionClientMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectionClient] {
-	return pulumix.Output[map[string]*ConnectionClient]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionClientMapOutput) MapIndex(k pulumi.StringInput) ConnectionClientOutput {
