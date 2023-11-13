@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
@@ -55,12 +54,6 @@ func (o GetSigningKeysResultOutput) ToGetSigningKeysResultOutput() GetSigningKey
 
 func (o GetSigningKeysResultOutput) ToGetSigningKeysResultOutputWithContext(ctx context.Context) GetSigningKeysResultOutput {
 	return o
-}
-
-func (o GetSigningKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSigningKeysResult] {
-	return pulumix.Output[GetSigningKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

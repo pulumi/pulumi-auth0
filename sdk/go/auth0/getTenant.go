@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access information about the tenant this provider is configured to access.
@@ -113,12 +112,6 @@ func (o LookupTenantResultOutput) ToLookupTenantResultOutput() LookupTenantResul
 
 func (o LookupTenantResultOutput) ToLookupTenantResultOutputWithContext(ctx context.Context) LookupTenantResultOutput {
 	return o
-}
-
-func (o LookupTenantResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTenantResult] {
-	return pulumix.Output[LookupTenantResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to accept an organization name instead of an ID on auth endpoints.

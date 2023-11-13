@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
@@ -208,12 +207,6 @@ func (i *EmailProvider) ToEmailProviderOutputWithContext(ctx context.Context) Em
 	return pulumi.ToOutputWithContext(ctx, i).(EmailProviderOutput)
 }
 
-func (i *EmailProvider) ToOutput(ctx context.Context) pulumix.Output[*EmailProvider] {
-	return pulumix.Output[*EmailProvider]{
-		OutputState: i.ToEmailProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EmailProviderArrayInput is an input type that accepts EmailProviderArray and EmailProviderArrayOutput values.
 // You can construct a concrete instance of `EmailProviderArrayInput` via:
 //
@@ -237,12 +230,6 @@ func (i EmailProviderArray) ToEmailProviderArrayOutput() EmailProviderArrayOutpu
 
 func (i EmailProviderArray) ToEmailProviderArrayOutputWithContext(ctx context.Context) EmailProviderArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EmailProviderArrayOutput)
-}
-
-func (i EmailProviderArray) ToOutput(ctx context.Context) pulumix.Output[[]*EmailProvider] {
-	return pulumix.Output[[]*EmailProvider]{
-		OutputState: i.ToEmailProviderArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EmailProviderMapInput is an input type that accepts EmailProviderMap and EmailProviderMapOutput values.
@@ -270,12 +257,6 @@ func (i EmailProviderMap) ToEmailProviderMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(EmailProviderMapOutput)
 }
 
-func (i EmailProviderMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EmailProvider] {
-	return pulumix.Output[map[string]*EmailProvider]{
-		OutputState: i.ToEmailProviderMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EmailProviderOutput struct{ *pulumi.OutputState }
 
 func (EmailProviderOutput) ElementType() reflect.Type {
@@ -288,12 +269,6 @@ func (o EmailProviderOutput) ToEmailProviderOutput() EmailProviderOutput {
 
 func (o EmailProviderOutput) ToEmailProviderOutputWithContext(ctx context.Context) EmailProviderOutput {
 	return o
-}
-
-func (o EmailProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailProvider] {
-	return pulumix.Output[*EmailProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration settings for the credentials for the email provider.
@@ -335,12 +310,6 @@ func (o EmailProviderArrayOutput) ToEmailProviderArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o EmailProviderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EmailProvider] {
-	return pulumix.Output[[]*EmailProvider]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EmailProviderArrayOutput) Index(i pulumi.IntInput) EmailProviderOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EmailProvider {
 		return vs[0].([]*EmailProvider)[vs[1].(int)]
@@ -359,12 +328,6 @@ func (o EmailProviderMapOutput) ToEmailProviderMapOutput() EmailProviderMapOutpu
 
 func (o EmailProviderMapOutput) ToEmailProviderMapOutputWithContext(ctx context.Context) EmailProviderMapOutput {
 	return o
-}
-
-func (o EmailProviderMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EmailProvider] {
-	return pulumix.Output[map[string]*EmailProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EmailProviderMapOutput) MapIndex(k pulumi.StringInput) EmailProviderOutput {

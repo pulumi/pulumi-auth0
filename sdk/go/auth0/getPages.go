@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
@@ -85,12 +84,6 @@ func (o LookupPagesResultOutput) ToLookupPagesResultOutput() LookupPagesResultOu
 
 func (o LookupPagesResultOutput) ToLookupPagesResultOutputWithContext(ctx context.Context) LookupPagesResultOutput {
 	return o
-}
-
-func (o LookupPagesResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPagesResult] {
-	return pulumix.Output[LookupPagesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration settings for customizing the Password Reset page.
