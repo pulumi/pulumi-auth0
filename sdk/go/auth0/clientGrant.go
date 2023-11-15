@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
@@ -137,12 +136,6 @@ func (i *ClientGrant) ToClientGrantOutputWithContext(ctx context.Context) Client
 	return pulumi.ToOutputWithContext(ctx, i).(ClientGrantOutput)
 }
 
-func (i *ClientGrant) ToOutput(ctx context.Context) pulumix.Output[*ClientGrant] {
-	return pulumix.Output[*ClientGrant]{
-		OutputState: i.ToClientGrantOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClientGrantArrayInput is an input type that accepts ClientGrantArray and ClientGrantArrayOutput values.
 // You can construct a concrete instance of `ClientGrantArrayInput` via:
 //
@@ -166,12 +159,6 @@ func (i ClientGrantArray) ToClientGrantArrayOutput() ClientGrantArrayOutput {
 
 func (i ClientGrantArray) ToClientGrantArrayOutputWithContext(ctx context.Context) ClientGrantArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClientGrantArrayOutput)
-}
-
-func (i ClientGrantArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClientGrant] {
-	return pulumix.Output[[]*ClientGrant]{
-		OutputState: i.ToClientGrantArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ClientGrantMapInput is an input type that accepts ClientGrantMap and ClientGrantMapOutput values.
@@ -199,12 +186,6 @@ func (i ClientGrantMap) ToClientGrantMapOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ClientGrantMapOutput)
 }
 
-func (i ClientGrantMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClientGrant] {
-	return pulumix.Output[map[string]*ClientGrant]{
-		OutputState: i.ToClientGrantMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClientGrantOutput struct{ *pulumi.OutputState }
 
 func (ClientGrantOutput) ElementType() reflect.Type {
@@ -217,12 +198,6 @@ func (o ClientGrantOutput) ToClientGrantOutput() ClientGrantOutput {
 
 func (o ClientGrantOutput) ToClientGrantOutputWithContext(ctx context.Context) ClientGrantOutput {
 	return o
-}
-
-func (o ClientGrantOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientGrant] {
-	return pulumix.Output[*ClientGrant]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Audience or API Identifier for this grant.
@@ -254,12 +229,6 @@ func (o ClientGrantArrayOutput) ToClientGrantArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ClientGrantArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClientGrant] {
-	return pulumix.Output[[]*ClientGrant]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClientGrantArrayOutput) Index(i pulumi.IntInput) ClientGrantOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClientGrant {
 		return vs[0].([]*ClientGrant)[vs[1].(int)]
@@ -278,12 +247,6 @@ func (o ClientGrantMapOutput) ToClientGrantMapOutput() ClientGrantMapOutput {
 
 func (o ClientGrantMapOutput) ToClientGrantMapOutputWithContext(ctx context.Context) ClientGrantMapOutput {
 	return o
-}
-
-func (o ClientGrantMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClientGrant] {
-	return pulumix.Output[map[string]*ClientGrant]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientGrantMapOutput) MapIndex(k pulumi.StringInput) ClientGrantOutput {

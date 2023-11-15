@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // With this resource, you can manage user permissions.
@@ -153,12 +152,6 @@ func (i *UserPermission) ToUserPermissionOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(UserPermissionOutput)
 }
 
-func (i *UserPermission) ToOutput(ctx context.Context) pulumix.Output[*UserPermission] {
-	return pulumix.Output[*UserPermission]{
-		OutputState: i.ToUserPermissionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserPermissionArrayInput is an input type that accepts UserPermissionArray and UserPermissionArrayOutput values.
 // You can construct a concrete instance of `UserPermissionArrayInput` via:
 //
@@ -182,12 +175,6 @@ func (i UserPermissionArray) ToUserPermissionArrayOutput() UserPermissionArrayOu
 
 func (i UserPermissionArray) ToUserPermissionArrayOutputWithContext(ctx context.Context) UserPermissionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserPermissionArrayOutput)
-}
-
-func (i UserPermissionArray) ToOutput(ctx context.Context) pulumix.Output[[]*UserPermission] {
-	return pulumix.Output[[]*UserPermission]{
-		OutputState: i.ToUserPermissionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // UserPermissionMapInput is an input type that accepts UserPermissionMap and UserPermissionMapOutput values.
@@ -215,12 +202,6 @@ func (i UserPermissionMap) ToUserPermissionMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(UserPermissionMapOutput)
 }
 
-func (i UserPermissionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserPermission] {
-	return pulumix.Output[map[string]*UserPermission]{
-		OutputState: i.ToUserPermissionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserPermissionOutput struct{ *pulumi.OutputState }
 
 func (UserPermissionOutput) ElementType() reflect.Type {
@@ -233,12 +214,6 @@ func (o UserPermissionOutput) ToUserPermissionOutput() UserPermissionOutput {
 
 func (o UserPermissionOutput) ToUserPermissionOutputWithContext(ctx context.Context) UserPermissionOutput {
 	return o
-}
-
-func (o UserPermissionOutput) ToOutput(ctx context.Context) pulumix.Output[*UserPermission] {
-	return pulumix.Output[*UserPermission]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the permission.
@@ -280,12 +255,6 @@ func (o UserPermissionArrayOutput) ToUserPermissionArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o UserPermissionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UserPermission] {
-	return pulumix.Output[[]*UserPermission]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UserPermissionArrayOutput) Index(i pulumi.IntInput) UserPermissionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UserPermission {
 		return vs[0].([]*UserPermission)[vs[1].(int)]
@@ -304,12 +273,6 @@ func (o UserPermissionMapOutput) ToUserPermissionMapOutput() UserPermissionMapOu
 
 func (o UserPermissionMapOutput) ToUserPermissionMapOutputWithContext(ctx context.Context) UserPermissionMapOutput {
 	return o
-}
-
-func (o UserPermissionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserPermission] {
-	return pulumix.Output[map[string]*UserPermission]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserPermissionMapOutput) MapIndex(k pulumi.StringInput) UserPermissionOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access information about the tenant's branding settings.
@@ -87,12 +86,6 @@ func (o LookupBrandingResultOutput) ToLookupBrandingResultOutput() LookupBrandin
 
 func (o LookupBrandingResultOutput) ToLookupBrandingResultOutputWithContext(ctx context.Context) LookupBrandingResultOutput {
 	return o
-}
-
-func (o LookupBrandingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBrandingResult] {
-	return pulumix.Output[LookupBrandingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration settings for colors for branding.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // With this resource, you can manage assigned roles for a user.
@@ -182,12 +181,6 @@ func (i *UserRole) ToUserRoleOutputWithContext(ctx context.Context) UserRoleOutp
 	return pulumi.ToOutputWithContext(ctx, i).(UserRoleOutput)
 }
 
-func (i *UserRole) ToOutput(ctx context.Context) pulumix.Output[*UserRole] {
-	return pulumix.Output[*UserRole]{
-		OutputState: i.ToUserRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserRoleArrayInput is an input type that accepts UserRoleArray and UserRoleArrayOutput values.
 // You can construct a concrete instance of `UserRoleArrayInput` via:
 //
@@ -211,12 +204,6 @@ func (i UserRoleArray) ToUserRoleArrayOutput() UserRoleArrayOutput {
 
 func (i UserRoleArray) ToUserRoleArrayOutputWithContext(ctx context.Context) UserRoleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserRoleArrayOutput)
-}
-
-func (i UserRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]*UserRole] {
-	return pulumix.Output[[]*UserRole]{
-		OutputState: i.ToUserRoleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // UserRoleMapInput is an input type that accepts UserRoleMap and UserRoleMapOutput values.
@@ -244,12 +231,6 @@ func (i UserRoleMap) ToUserRoleMapOutputWithContext(ctx context.Context) UserRol
 	return pulumi.ToOutputWithContext(ctx, i).(UserRoleMapOutput)
 }
 
-func (i UserRoleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserRole] {
-	return pulumix.Output[map[string]*UserRole]{
-		OutputState: i.ToUserRoleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserRoleOutput struct{ *pulumi.OutputState }
 
 func (UserRoleOutput) ElementType() reflect.Type {
@@ -262,12 +243,6 @@ func (o UserRoleOutput) ToUserRoleOutput() UserRoleOutput {
 
 func (o UserRoleOutput) ToUserRoleOutputWithContext(ctx context.Context) UserRoleOutput {
 	return o
-}
-
-func (o UserRoleOutput) ToOutput(ctx context.Context) pulumix.Output[*UserRole] {
-	return pulumix.Output[*UserRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the role.
@@ -304,12 +279,6 @@ func (o UserRoleArrayOutput) ToUserRoleArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o UserRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UserRole] {
-	return pulumix.Output[[]*UserRole]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UserRoleArrayOutput) Index(i pulumi.IntInput) UserRoleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UserRole {
 		return vs[0].([]*UserRole)[vs[1].(int)]
@@ -328,12 +297,6 @@ func (o UserRoleMapOutput) ToUserRoleMapOutput() UserRoleMapOutput {
 
 func (o UserRoleMapOutput) ToUserRoleMapOutputWithContext(ctx context.Context) UserRoleMapOutput {
 	return o
-}
-
-func (o UserRoleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserRole] {
-	return pulumix.Output[map[string]*UserRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserRoleMapOutput) MapIndex(k pulumi.StringInput) UserRoleOutput {

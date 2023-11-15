@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Data source to retrieve a specific Auth0 resource server by `resourceServerId` or `identifier`.
@@ -133,12 +132,6 @@ func (o LookupResourceServerResultOutput) ToLookupResourceServerResultOutput() L
 
 func (o LookupResourceServerResultOutput) ToLookupResourceServerResultOutputWithContext(ctx context.Context) LookupResourceServerResultOutput {
 	return o
-}
-
-func (o LookupResourceServerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupResourceServerResult] {
-	return pulumix.Output[LookupResourceServerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates whether refresh tokens can be issued for this resource server.

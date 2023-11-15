@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // With this resource, you can manage your Auth0 prompts, including choosing the login experience version.
@@ -155,12 +154,6 @@ func (i *Prompt) ToPromptOutputWithContext(ctx context.Context) PromptOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PromptOutput)
 }
 
-func (i *Prompt) ToOutput(ctx context.Context) pulumix.Output[*Prompt] {
-	return pulumix.Output[*Prompt]{
-		OutputState: i.ToPromptOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PromptArrayInput is an input type that accepts PromptArray and PromptArrayOutput values.
 // You can construct a concrete instance of `PromptArrayInput` via:
 //
@@ -184,12 +177,6 @@ func (i PromptArray) ToPromptArrayOutput() PromptArrayOutput {
 
 func (i PromptArray) ToPromptArrayOutputWithContext(ctx context.Context) PromptArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PromptArrayOutput)
-}
-
-func (i PromptArray) ToOutput(ctx context.Context) pulumix.Output[[]*Prompt] {
-	return pulumix.Output[[]*Prompt]{
-		OutputState: i.ToPromptArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PromptMapInput is an input type that accepts PromptMap and PromptMapOutput values.
@@ -217,12 +204,6 @@ func (i PromptMap) ToPromptMapOutputWithContext(ctx context.Context) PromptMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(PromptMapOutput)
 }
 
-func (i PromptMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Prompt] {
-	return pulumix.Output[map[string]*Prompt]{
-		OutputState: i.ToPromptMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PromptOutput struct{ *pulumi.OutputState }
 
 func (PromptOutput) ElementType() reflect.Type {
@@ -235,12 +216,6 @@ func (o PromptOutput) ToPromptOutput() PromptOutput {
 
 func (o PromptOutput) ToPromptOutputWithContext(ctx context.Context) PromptOutput {
 	return o
-}
-
-func (o PromptOutput) ToOutput(ctx context.Context) pulumix.Output[*Prompt] {
-	return pulumix.Output[*Prompt]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates whether the identifier first is used when using the new Universal Login experience.
@@ -272,12 +247,6 @@ func (o PromptArrayOutput) ToPromptArrayOutputWithContext(ctx context.Context) P
 	return o
 }
 
-func (o PromptArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Prompt] {
-	return pulumix.Output[[]*Prompt]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PromptArrayOutput) Index(i pulumi.IntInput) PromptOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Prompt {
 		return vs[0].([]*Prompt)[vs[1].(int)]
@@ -296,12 +265,6 @@ func (o PromptMapOutput) ToPromptMapOutput() PromptMapOutput {
 
 func (o PromptMapOutput) ToPromptMapOutputWithContext(ctx context.Context) PromptMapOutput {
 	return o
-}
-
-func (o PromptMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Prompt] {
-	return pulumix.Output[map[string]*Prompt]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PromptMapOutput) MapIndex(k pulumi.StringInput) PromptOutput {

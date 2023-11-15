@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // With this resource, you can manage role permissions (1-1).
@@ -143,12 +142,6 @@ func (i *RolePermission) ToRolePermissionOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(RolePermissionOutput)
 }
 
-func (i *RolePermission) ToOutput(ctx context.Context) pulumix.Output[*RolePermission] {
-	return pulumix.Output[*RolePermission]{
-		OutputState: i.ToRolePermissionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RolePermissionArrayInput is an input type that accepts RolePermissionArray and RolePermissionArrayOutput values.
 // You can construct a concrete instance of `RolePermissionArrayInput` via:
 //
@@ -172,12 +165,6 @@ func (i RolePermissionArray) ToRolePermissionArrayOutput() RolePermissionArrayOu
 
 func (i RolePermissionArray) ToRolePermissionArrayOutputWithContext(ctx context.Context) RolePermissionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RolePermissionArrayOutput)
-}
-
-func (i RolePermissionArray) ToOutput(ctx context.Context) pulumix.Output[[]*RolePermission] {
-	return pulumix.Output[[]*RolePermission]{
-		OutputState: i.ToRolePermissionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RolePermissionMapInput is an input type that accepts RolePermissionMap and RolePermissionMapOutput values.
@@ -205,12 +192,6 @@ func (i RolePermissionMap) ToRolePermissionMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(RolePermissionMapOutput)
 }
 
-func (i RolePermissionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RolePermission] {
-	return pulumix.Output[map[string]*RolePermission]{
-		OutputState: i.ToRolePermissionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RolePermissionOutput struct{ *pulumi.OutputState }
 
 func (RolePermissionOutput) ElementType() reflect.Type {
@@ -223,12 +204,6 @@ func (o RolePermissionOutput) ToRolePermissionOutput() RolePermissionOutput {
 
 func (o RolePermissionOutput) ToRolePermissionOutputWithContext(ctx context.Context) RolePermissionOutput {
 	return o
-}
-
-func (o RolePermissionOutput) ToOutput(ctx context.Context) pulumix.Output[*RolePermission] {
-	return pulumix.Output[*RolePermission]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the permission.
@@ -270,12 +245,6 @@ func (o RolePermissionArrayOutput) ToRolePermissionArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o RolePermissionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RolePermission] {
-	return pulumix.Output[[]*RolePermission]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RolePermissionArrayOutput) Index(i pulumi.IntInput) RolePermissionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RolePermission {
 		return vs[0].([]*RolePermission)[vs[1].(int)]
@@ -294,12 +263,6 @@ func (o RolePermissionMapOutput) ToRolePermissionMapOutput() RolePermissionMapOu
 
 func (o RolePermissionMapOutput) ToRolePermissionMapOutputWithContext(ctx context.Context) RolePermissionMapOutput {
 	return o
-}
-
-func (o RolePermissionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RolePermission] {
-	return pulumix.Output[map[string]*RolePermission]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RolePermissionMapOutput) MapIndex(k pulumi.StringInput) RolePermissionOutput {
