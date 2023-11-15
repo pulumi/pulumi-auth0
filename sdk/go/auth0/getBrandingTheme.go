@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access information about the tenant's branding theme settings.
@@ -84,12 +83,6 @@ func (o LookupBrandingThemeResultOutput) ToLookupBrandingThemeResultOutput() Loo
 
 func (o LookupBrandingThemeResultOutput) ToLookupBrandingThemeResultOutputWithContext(ctx context.Context) LookupBrandingThemeResultOutput {
 	return o
-}
-
-func (o LookupBrandingThemeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBrandingThemeResult] {
-	return pulumix.Output[LookupBrandingThemeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupBrandingThemeResultOutput) Borders() GetBrandingThemeBorderArrayOutput {
