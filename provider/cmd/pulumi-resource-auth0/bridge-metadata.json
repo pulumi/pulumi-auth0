@@ -2464,6 +2464,7 @@
             "auth0:index/getTenant:getTenant": {
                 "allowOrganizationNameInAuthenticationApi": "allow_organization_name_in_authentication_api",
                 "allowedLogoutUrls": "allowed_logout_urls",
+                "customizeMfaInPostloginAction": "customize_mfa_in_postlogin_action",
                 "defaultAudience": "default_audience",
                 "defaultDirectory": "default_directory",
                 "defaultRedirectionUri": "default_redirection_uri",
@@ -2597,6 +2598,7 @@
             "auth0:index/tenant:Tenant": {
                 "allowOrganizationNameInAuthenticationApi": "allow_organization_name_in_authentication_api",
                 "allowedLogoutUrls": "allowed_logout_urls",
+                "customizeMfaInPostloginAction": "customize_mfa_in_postlogin_action",
                 "defaultAudience": "default_audience",
                 "defaultDirectory": "default_directory",
                 "defaultRedirectionUri": "default_redirection_uri",
