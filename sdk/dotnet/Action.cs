@@ -56,7 +56,7 @@ namespace Pulumi.Auth0
         public Output<string> Runtime { get; private set; } = null!;
 
         /// <summary>
-        /// List of secrets that are included in an action or a version of an action.
+        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
         /// </summary>
         [Output("secrets")]
         public Output<ImmutableArray<Outputs.ActionSecret>> Secrets { get; private set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.Auth0
         private InputList<Inputs.ActionSecretArgs>? _secrets;
 
         /// <summary>
-        /// List of secrets that are included in an action or a version of an action.
+        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
         /// </summary>
         public InputList<Inputs.ActionSecretArgs> Secrets
         {
@@ -221,7 +221,7 @@ namespace Pulumi.Auth0
         private InputList<Inputs.ActionSecretGetArgs>? _secrets;
 
         /// <summary>
-        /// List of secrets that are included in an action or a version of an action.
+        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
         /// </summary>
         public InputList<Inputs.ActionSecretGetArgs> Secrets
         {

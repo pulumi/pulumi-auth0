@@ -19,7 +19,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? Attributes { get; set; }
 
         /// <summary>
-        /// Method used to map incoming claims. Possible values: `use_map`, `bind_all` or `basic_profile`.
+        /// Method used to map incoming claims. Possible values: `use_map` (Okta or OIDC), `bind_all` (OIDC) or `basic_profile` (Okta).
         /// </summary>
         [Input("mappingMode", required: true)]
         public Input<string> MappingMode { get; set; } = null!;

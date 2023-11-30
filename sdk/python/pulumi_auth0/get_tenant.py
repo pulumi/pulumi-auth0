@@ -22,13 +22,16 @@ class GetTenantResult:
     """
     A collection of values returned by getTenant.
     """
-    def __init__(__self__, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, default_audience=None, default_directory=None, default_redirection_uri=None, domain=None, enabled_locales=None, flags=None, friendly_name=None, id=None, idle_session_lifetime=None, management_api_identifier=None, picture_url=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, support_email=None, support_url=None):
+    def __init__(__self__, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, domain=None, enabled_locales=None, flags=None, friendly_name=None, id=None, idle_session_lifetime=None, management_api_identifier=None, picture_url=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, support_email=None, support_url=None):
         if allow_organization_name_in_authentication_api and not isinstance(allow_organization_name_in_authentication_api, bool):
             raise TypeError("Expected argument 'allow_organization_name_in_authentication_api' to be a bool")
         pulumi.set(__self__, "allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
         if allowed_logout_urls and not isinstance(allowed_logout_urls, list):
             raise TypeError("Expected argument 'allowed_logout_urls' to be a list")
         pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
+        if customize_mfa_in_postlogin_action and not isinstance(customize_mfa_in_postlogin_action, bool):
+            raise TypeError("Expected argument 'customize_mfa_in_postlogin_action' to be a bool")
+        pulumi.set(__self__, "customize_mfa_in_postlogin_action", customize_mfa_in_postlogin_action)
         if default_audience and not isinstance(default_audience, str):
             raise TypeError("Expected argument 'default_audience' to be a str")
         pulumi.set(__self__, "default_audience", default_audience)
@@ -96,6 +99,14 @@ class GetTenantResult:
         URLs that Auth0 may redirect to after logout.
         """
         return pulumi.get(self, "allowed_logout_urls")
+
+    @property
+    @pulumi.getter(name="customizeMfaInPostloginAction")
+    def customize_mfa_in_postlogin_action(self) -> bool:
+        """
+        Whether to enable flexible factors for MFA in the PostLogin action.
+        """
+        return pulumi.get(self, "customize_mfa_in_postlogin_action")
 
     @property
     @pulumi.getter(name="defaultAudience")
@@ -242,6 +253,7 @@ class AwaitableGetTenantResult(GetTenantResult):
         return GetTenantResult(
             allow_organization_name_in_authentication_api=self.allow_organization_name_in_authentication_api,
             allowed_logout_urls=self.allowed_logout_urls,
+            customize_mfa_in_postlogin_action=self.customize_mfa_in_postlogin_action,
             default_audience=self.default_audience,
             default_directory=self.default_directory,
             default_redirection_uri=self.default_redirection_uri,
@@ -281,6 +293,7 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
     return AwaitableGetTenantResult(
         allow_organization_name_in_authentication_api=pulumi.get(__ret__, 'allow_organization_name_in_authentication_api'),
         allowed_logout_urls=pulumi.get(__ret__, 'allowed_logout_urls'),
+        customize_mfa_in_postlogin_action=pulumi.get(__ret__, 'customize_mfa_in_postlogin_action'),
         default_audience=pulumi.get(__ret__, 'default_audience'),
         default_directory=pulumi.get(__ret__, 'default_directory'),
         default_redirection_uri=pulumi.get(__ret__, 'default_redirection_uri'),

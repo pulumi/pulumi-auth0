@@ -177,7 +177,7 @@ public final class GetClientResult {
      */
     private List<GetClientRefreshToken> refreshTokens;
     /**
-     * @return Makes the use of Pushed Authorization Requests mandatory for this client.
+     * @return Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      * 
      */
     private Boolean requirePushedAuthorizationRequests;
@@ -429,7 +429,7 @@ public final class GetClientResult {
         return this.refreshTokens;
     }
     /**
-     * @return Makes the use of Pushed Authorization Requests mandatory for this client.
+     * @return Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      * 
      */
     public Boolean requirePushedAuthorizationRequests() {

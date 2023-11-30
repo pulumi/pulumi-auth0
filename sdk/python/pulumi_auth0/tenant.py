@@ -18,6 +18,7 @@ class TenantArgs:
     def __init__(__self__, *,
                  allow_organization_name_in_authentication_api: Optional[pulumi.Input[bool]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 customize_mfa_in_postlogin_action: Optional[pulumi.Input[bool]] = None,
                  default_audience: Optional[pulumi.Input[str]] = None,
                  default_directory: Optional[pulumi.Input[str]] = None,
                  default_redirection_uri: Optional[pulumi.Input[str]] = None,
@@ -36,6 +37,7 @@ class TenantArgs:
         The set of arguments for constructing a Tenant resource.
         :param pulumi.Input[bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
@@ -55,6 +57,8 @@ class TenantArgs:
             pulumi.set(__self__, "allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
         if allowed_logout_urls is not None:
             pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
+        if customize_mfa_in_postlogin_action is not None:
+            pulumi.set(__self__, "customize_mfa_in_postlogin_action", customize_mfa_in_postlogin_action)
         if default_audience is not None:
             pulumi.set(__self__, "default_audience", default_audience)
         if default_directory is not None:
@@ -107,6 +111,18 @@ class TenantArgs:
     @allowed_logout_urls.setter
     def allowed_logout_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_logout_urls", value)
+
+    @property
+    @pulumi.getter(name="customizeMfaInPostloginAction")
+    def customize_mfa_in_postlogin_action(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable flexible factors for MFA in the PostLogin action.
+        """
+        return pulumi.get(self, "customize_mfa_in_postlogin_action")
+
+    @customize_mfa_in_postlogin_action.setter
+    def customize_mfa_in_postlogin_action(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "customize_mfa_in_postlogin_action", value)
 
     @property
     @pulumi.getter(name="defaultAudience")
@@ -282,6 +298,7 @@ class _TenantState:
     def __init__(__self__, *,
                  allow_organization_name_in_authentication_api: Optional[pulumi.Input[bool]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 customize_mfa_in_postlogin_action: Optional[pulumi.Input[bool]] = None,
                  default_audience: Optional[pulumi.Input[str]] = None,
                  default_directory: Optional[pulumi.Input[str]] = None,
                  default_redirection_uri: Optional[pulumi.Input[str]] = None,
@@ -300,6 +317,7 @@ class _TenantState:
         Input properties used for looking up and filtering Tenant resources.
         :param pulumi.Input[bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
@@ -319,6 +337,8 @@ class _TenantState:
             pulumi.set(__self__, "allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
         if allowed_logout_urls is not None:
             pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
+        if customize_mfa_in_postlogin_action is not None:
+            pulumi.set(__self__, "customize_mfa_in_postlogin_action", customize_mfa_in_postlogin_action)
         if default_audience is not None:
             pulumi.set(__self__, "default_audience", default_audience)
         if default_directory is not None:
@@ -371,6 +391,18 @@ class _TenantState:
     @allowed_logout_urls.setter
     def allowed_logout_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_logout_urls", value)
+
+    @property
+    @pulumi.getter(name="customizeMfaInPostloginAction")
+    def customize_mfa_in_postlogin_action(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable flexible factors for MFA in the PostLogin action.
+        """
+        return pulumi.get(self, "customize_mfa_in_postlogin_action")
+
+    @customize_mfa_in_postlogin_action.setter
+    def customize_mfa_in_postlogin_action(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "customize_mfa_in_postlogin_action", value)
 
     @property
     @pulumi.getter(name="defaultAudience")
@@ -548,6 +580,7 @@ class Tenant(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_organization_name_in_authentication_api: Optional[pulumi.Input[bool]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 customize_mfa_in_postlogin_action: Optional[pulumi.Input[bool]] = None,
                  default_audience: Optional[pulumi.Input[str]] = None,
                  default_directory: Optional[pulumi.Input[str]] = None,
                  default_redirection_uri: Optional[pulumi.Input[str]] = None,
@@ -613,6 +646,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
@@ -697,6 +731,7 @@ class Tenant(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_organization_name_in_authentication_api: Optional[pulumi.Input[bool]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 customize_mfa_in_postlogin_action: Optional[pulumi.Input[bool]] = None,
                  default_audience: Optional[pulumi.Input[str]] = None,
                  default_directory: Optional[pulumi.Input[str]] = None,
                  default_redirection_uri: Optional[pulumi.Input[str]] = None,
@@ -722,6 +757,7 @@ class Tenant(pulumi.CustomResource):
 
             __props__.__dict__["allow_organization_name_in_authentication_api"] = allow_organization_name_in_authentication_api
             __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
+            __props__.__dict__["customize_mfa_in_postlogin_action"] = customize_mfa_in_postlogin_action
             __props__.__dict__["default_audience"] = default_audience
             __props__.__dict__["default_directory"] = default_directory
             __props__.__dict__["default_redirection_uri"] = default_redirection_uri
@@ -748,6 +784,7 @@ class Tenant(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_organization_name_in_authentication_api: Optional[pulumi.Input[bool]] = None,
             allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            customize_mfa_in_postlogin_action: Optional[pulumi.Input[bool]] = None,
             default_audience: Optional[pulumi.Input[str]] = None,
             default_directory: Optional[pulumi.Input[str]] = None,
             default_redirection_uri: Optional[pulumi.Input[str]] = None,
@@ -771,6 +808,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
@@ -792,6 +830,7 @@ class Tenant(pulumi.CustomResource):
 
         __props__.__dict__["allow_organization_name_in_authentication_api"] = allow_organization_name_in_authentication_api
         __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
+        __props__.__dict__["customize_mfa_in_postlogin_action"] = customize_mfa_in_postlogin_action
         __props__.__dict__["default_audience"] = default_audience
         __props__.__dict__["default_directory"] = default_directory
         __props__.__dict__["default_redirection_uri"] = default_redirection_uri
@@ -823,6 +862,14 @@ class Tenant(pulumi.CustomResource):
         URLs that Auth0 may redirect to after logout.
         """
         return pulumi.get(self, "allowed_logout_urls")
+
+    @property
+    @pulumi.getter(name="customizeMfaInPostloginAction")
+    def customize_mfa_in_postlogin_action(self) -> pulumi.Output[bool]:
+        """
+        Whether to enable flexible factors for MFA in the PostLogin action.
+        """
+        return pulumi.get(self, "customize_mfa_in_postlogin_action")
 
     @property
     @pulumi.getter(name="defaultAudience")

@@ -19,6 +19,59 @@ import javax.annotation.Nullable;
 /**
  * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.auth0.EmailProvider;
+ * import com.pulumi.auth0.EmailProviderArgs;
+ * import com.pulumi.auth0.inputs.EmailProviderCredentialsArgs;
+ * import com.pulumi.auth0.EmailTemplate;
+ * import com.pulumi.auth0.EmailTemplateArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myEmailProvider = new EmailProvider(&#34;myEmailProvider&#34;, EmailProviderArgs.builder()        
+ *             .enabled(true)
+ *             .defaultFromAddress(&#34;accounts@example.com&#34;)
+ *             .credentials(EmailProviderCredentialsArgs.builder()
+ *                 .accessKeyId(&#34;AKIAXXXXXXXXXXXXXXXX&#34;)
+ *                 .secretAccessKey(&#34;7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
+ *                 .region(&#34;us-east-1&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var myEmailTemplate = new EmailTemplate(&#34;myEmailTemplate&#34;, EmailTemplateArgs.builder()        
+ *             .template(&#34;welcome_email&#34;)
+ *             .body(&#34;&lt;html&gt;&lt;body&gt;&lt;h1&gt;Welcome!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&#34;)
+ *             .from(&#34;welcome@example.com&#34;)
+ *             .resultUrl(&#34;https://example.com/welcome&#34;)
+ *             .subject(&#34;Welcome&#34;)
+ *             .syntax(&#34;liquid&#34;)
+ *             .urlLifetimeInSeconds(3600)
+ *             .enabled(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(myEmailProvider)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * This resource can be imported using the pre-defined template name. # These names are `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, and `user_invitation`. # The names `change_password`, and `password_reset` are also supported for legacy scenarios. # Example

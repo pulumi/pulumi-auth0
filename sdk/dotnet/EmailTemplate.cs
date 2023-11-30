@@ -12,6 +12,49 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myEmailProvider = new Auth0.EmailProvider("myEmailProvider", new()
+    ///     {
+    ///         Enabled = true,
+    ///         DefaultFromAddress = "accounts@example.com",
+    ///         Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs
+    ///         {
+    ///             AccessKeyId = "AKIAXXXXXXXXXXXXXXXX",
+    ///             SecretAccessKey = "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///             Region = "us-east-1",
+    ///         },
+    ///     });
+    /// 
+    ///     var myEmailTemplate = new Auth0.EmailTemplate("myEmailTemplate", new()
+    ///     {
+    ///         Template = "welcome_email",
+    ///         Body = "&lt;html&gt;&lt;body&gt;&lt;h1&gt;Welcome!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;",
+    ///         From = "welcome@example.com",
+    ///         ResultUrl = "https://example.com/welcome",
+    ///         Subject = "Welcome",
+    ///         Syntax = "liquid",
+    ///         UrlLifetimeInSeconds = 3600,
+    ///         Enabled = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             myEmailProvider,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported using the pre-defined template name. # These names are `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, and `user_invitation`. # The names `change_password`, and `password_reset` are also supported for legacy scenarios. # Example

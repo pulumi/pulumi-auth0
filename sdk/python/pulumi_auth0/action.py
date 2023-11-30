@@ -31,7 +31,7 @@ class ActionArgs:
         :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
         :param pulumi.Input[str] name: Dependency name, e.g. `lodash`.
         :param pulumi.Input[str] runtime: The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
-        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
         """
         pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "supported_triggers", supported_triggers)
@@ -122,7 +122,7 @@ class ActionArgs:
     @pulumi.getter
     def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]]:
         """
-        List of secrets that are included in an action or a version of an action.
+        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
         """
         return pulumi.get(self, "secrets")
 
@@ -149,7 +149,7 @@ class _ActionState:
         :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
         :param pulumi.Input[str] name: Dependency name, e.g. `lodash`.
         :param pulumi.Input[str] runtime: The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
-        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
         :param pulumi.Input['ActionSupportedTriggersArgs'] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         :param pulumi.Input[str] version_id: Version ID of the action. This value is available if `deploy` is set to true.
         """
@@ -234,7 +234,7 @@ class _ActionState:
     @pulumi.getter
     def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]]:
         """
-        List of secrets that are included in an action or a version of an action.
+        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
         """
         return pulumi.get(self, "secrets")
 
@@ -300,7 +300,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
         :param pulumi.Input[str] name: Dependency name, e.g. `lodash`.
         :param pulumi.Input[str] runtime: The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionSecretArgs']]]] secrets: List of secrets that are included in an action or a version of an action.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionSecretArgs']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
         :param pulumi.Input[pulumi.InputType['ActionSupportedTriggersArgs']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         """
         ...
@@ -395,7 +395,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
         :param pulumi.Input[str] name: Dependency name, e.g. `lodash`.
         :param pulumi.Input[str] runtime: The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionSecretArgs']]]] secrets: List of secrets that are included in an action or a version of an action.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionSecretArgs']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
         :param pulumi.Input[pulumi.InputType['ActionSupportedTriggersArgs']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         :param pulumi.Input[str] version_id: Version ID of the action. This value is available if `deploy` is set to true.
         """
@@ -457,7 +457,7 @@ class Action(pulumi.CustomResource):
     @pulumi.getter
     def secrets(self) -> pulumi.Output[Optional[Sequence['outputs.ActionSecret']]]:
         """
-        List of secrets that are included in an action or a version of an action.
+        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
         """
         return pulumi.get(self, "secrets")
 

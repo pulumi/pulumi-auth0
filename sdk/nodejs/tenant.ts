@@ -90,6 +90,10 @@ export class Tenant extends pulumi.CustomResource {
      */
     public readonly allowedLogoutUrls!: pulumi.Output<string[]>;
     /**
+     * Whether to enable flexible factors for MFA in the PostLogin action.
+     */
+    public readonly customizeMfaInPostloginAction!: pulumi.Output<boolean>;
+    /**
      * API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      */
     public readonly defaultAudience!: pulumi.Output<string>;
@@ -161,6 +165,7 @@ export class Tenant extends pulumi.CustomResource {
             const state = argsOrState as TenantState | undefined;
             resourceInputs["allowOrganizationNameInAuthenticationApi"] = state ? state.allowOrganizationNameInAuthenticationApi : undefined;
             resourceInputs["allowedLogoutUrls"] = state ? state.allowedLogoutUrls : undefined;
+            resourceInputs["customizeMfaInPostloginAction"] = state ? state.customizeMfaInPostloginAction : undefined;
             resourceInputs["defaultAudience"] = state ? state.defaultAudience : undefined;
             resourceInputs["defaultDirectory"] = state ? state.defaultDirectory : undefined;
             resourceInputs["defaultRedirectionUri"] = state ? state.defaultRedirectionUri : undefined;
@@ -179,6 +184,7 @@ export class Tenant extends pulumi.CustomResource {
             const args = argsOrState as TenantArgs | undefined;
             resourceInputs["allowOrganizationNameInAuthenticationApi"] = args ? args.allowOrganizationNameInAuthenticationApi : undefined;
             resourceInputs["allowedLogoutUrls"] = args ? args.allowedLogoutUrls : undefined;
+            resourceInputs["customizeMfaInPostloginAction"] = args ? args.customizeMfaInPostloginAction : undefined;
             resourceInputs["defaultAudience"] = args ? args.defaultAudience : undefined;
             resourceInputs["defaultDirectory"] = args ? args.defaultDirectory : undefined;
             resourceInputs["defaultRedirectionUri"] = args ? args.defaultRedirectionUri : undefined;
@@ -211,6 +217,10 @@ export interface TenantState {
      * URLs that Auth0 may redirect to after logout.
      */
     allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to enable flexible factors for MFA in the PostLogin action.
+     */
+    customizeMfaInPostloginAction?: pulumi.Input<boolean>;
     /**
      * API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      */
@@ -281,6 +291,10 @@ export interface TenantArgs {
      * URLs that Auth0 may redirect to after logout.
      */
     allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to enable flexible factors for MFA in the PostLogin action.
+     */
+    customizeMfaInPostloginAction?: pulumi.Input<boolean>;
     /**
      * API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      */

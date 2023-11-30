@@ -308,7 +308,7 @@ namespace Pulumi.Auth0
         public Output<Outputs.ClientRefreshToken> RefreshToken { get; private set; } = null!;
 
         /// <summary>
-        /// Makes the use of Pushed Authorization Requests mandatory for this client.
+        /// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         /// </summary>
         [Output("requirePushedAuthorizationRequests")]
         public Output<bool?> RequirePushedAuthorizationRequests { get; private set; } = null!;
@@ -616,7 +616,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.ClientRefreshTokenArgs>? RefreshToken { get; set; }
 
         /// <summary>
-        /// Makes the use of Pushed Authorization Requests mandatory for this client.
+        /// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         /// </summary>
         [Input("requirePushedAuthorizationRequests")]
         public Input<bool>? RequirePushedAuthorizationRequests { get; set; }
@@ -889,7 +889,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.ClientRefreshTokenGetArgs>? RefreshToken { get; set; }
 
         /// <summary>
-        /// Makes the use of Pushed Authorization Requests mandatory for this client.
+        /// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         /// </summary>
         [Input("requirePushedAuthorizationRequests")]
         public Input<bool>? RequirePushedAuthorizationRequests { get; set; }
