@@ -52,6 +52,21 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to enable flexible factors for MFA in the PostLogin action.
+     * 
+     */
+    @Import(name="customizeMfaInPostloginAction")
+    private @Nullable Output<Boolean> customizeMfaInPostloginAction;
+
+    /**
+     * @return Whether to enable flexible factors for MFA in the PostLogin action.
+     * 
+     */
+    public Optional<Output<Boolean>> customizeMfaInPostloginAction() {
+        return Optional.ofNullable(this.customizeMfaInPostloginAction);
+    }
+
+    /**
      * API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      * 
      */
@@ -266,6 +281,7 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
     private TenantState(TenantState $) {
         this.allowOrganizationNameInAuthenticationApi = $.allowOrganizationNameInAuthenticationApi;
         this.allowedLogoutUrls = $.allowedLogoutUrls;
+        this.customizeMfaInPostloginAction = $.customizeMfaInPostloginAction;
         this.defaultAudience = $.defaultAudience;
         this.defaultDirectory = $.defaultDirectory;
         this.defaultRedirectionUri = $.defaultRedirectionUri;
@@ -350,6 +366,27 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allowedLogoutUrls(String... allowedLogoutUrls) {
             return allowedLogoutUrls(List.of(allowedLogoutUrls));
+        }
+
+        /**
+         * @param customizeMfaInPostloginAction Whether to enable flexible factors for MFA in the PostLogin action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customizeMfaInPostloginAction(@Nullable Output<Boolean> customizeMfaInPostloginAction) {
+            $.customizeMfaInPostloginAction = customizeMfaInPostloginAction;
+            return this;
+        }
+
+        /**
+         * @param customizeMfaInPostloginAction Whether to enable flexible factors for MFA in the PostLogin action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customizeMfaInPostloginAction(Boolean customizeMfaInPostloginAction) {
+            return customizeMfaInPostloginAction(Output.of(customizeMfaInPostloginAction));
         }
 
         /**

@@ -26,6 +26,11 @@ public final class GetTenantResult {
      */
     private List<String> allowedLogoutUrls;
     /**
+     * @return Whether to enable flexible factors for MFA in the PostLogin action.
+     * 
+     */
+    private Boolean customizeMfaInPostloginAction;
+    /**
      * @return API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      * 
      */
@@ -125,6 +130,13 @@ public final class GetTenantResult {
      */
     public List<String> allowedLogoutUrls() {
         return this.allowedLogoutUrls;
+    }
+    /**
+     * @return Whether to enable flexible factors for MFA in the PostLogin action.
+     * 
+     */
+    public Boolean customizeMfaInPostloginAction() {
+        return this.customizeMfaInPostloginAction;
     }
     /**
      * @return API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -257,6 +269,7 @@ public final class GetTenantResult {
     public static final class Builder {
         private Boolean allowOrganizationNameInAuthenticationApi;
         private List<String> allowedLogoutUrls;
+        private Boolean customizeMfaInPostloginAction;
         private String defaultAudience;
         private String defaultDirectory;
         private String defaultRedirectionUri;
@@ -279,6 +292,7 @@ public final class GetTenantResult {
     	      Objects.requireNonNull(defaults);
     	      this.allowOrganizationNameInAuthenticationApi = defaults.allowOrganizationNameInAuthenticationApi;
     	      this.allowedLogoutUrls = defaults.allowedLogoutUrls;
+    	      this.customizeMfaInPostloginAction = defaults.customizeMfaInPostloginAction;
     	      this.defaultAudience = defaults.defaultAudience;
     	      this.defaultDirectory = defaults.defaultDirectory;
     	      this.defaultRedirectionUri = defaults.defaultRedirectionUri;
@@ -310,6 +324,11 @@ public final class GetTenantResult {
         }
         public Builder allowedLogoutUrls(String... allowedLogoutUrls) {
             return allowedLogoutUrls(List.of(allowedLogoutUrls));
+        }
+        @CustomType.Setter
+        public Builder customizeMfaInPostloginAction(Boolean customizeMfaInPostloginAction) {
+            this.customizeMfaInPostloginAction = Objects.requireNonNull(customizeMfaInPostloginAction);
+            return this;
         }
         @CustomType.Setter
         public Builder defaultAudience(String defaultAudience) {
@@ -412,6 +431,7 @@ public final class GetTenantResult {
             final var o = new GetTenantResult();
             o.allowOrganizationNameInAuthenticationApi = allowOrganizationNameInAuthenticationApi;
             o.allowedLogoutUrls = allowedLogoutUrls;
+            o.customizeMfaInPostloginAction = customizeMfaInPostloginAction;
             o.defaultAudience = defaultAudience;
             o.defaultDirectory = defaultDirectory;
             o.defaultRedirectionUri = defaultRedirectionUri;

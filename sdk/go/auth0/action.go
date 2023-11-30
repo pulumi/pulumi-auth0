@@ -38,7 +38,7 @@ type Action struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
-	// List of secrets that are included in an action or a version of an action.
+	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
 	Secrets ActionSecretArrayOutput `pulumi:"secrets"`
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggersOutput `pulumi:"supportedTriggers"`
@@ -92,7 +92,7 @@ type actionState struct {
 	Name *string `pulumi:"name"`
 	// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
 	Runtime *string `pulumi:"runtime"`
-	// List of secrets that are included in an action or a version of an action.
+	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
 	Secrets []ActionSecret `pulumi:"secrets"`
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers *ActionSupportedTriggers `pulumi:"supportedTriggers"`
@@ -111,7 +111,7 @@ type ActionState struct {
 	Name pulumi.StringPtrInput
 	// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
 	Runtime pulumi.StringPtrInput
-	// List of secrets that are included in an action or a version of an action.
+	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
 	Secrets ActionSecretArrayInput
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggersPtrInput
@@ -134,7 +134,7 @@ type actionArgs struct {
 	Name *string `pulumi:"name"`
 	// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
 	Runtime *string `pulumi:"runtime"`
-	// List of secrets that are included in an action or a version of an action.
+	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
 	Secrets []ActionSecret `pulumi:"secrets"`
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggers `pulumi:"supportedTriggers"`
@@ -152,7 +152,7 @@ type ActionArgs struct {
 	Name pulumi.StringPtrInput
 	// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
 	Runtime pulumi.StringPtrInput
-	// List of secrets that are included in an action or a version of an action.
+	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
 	Secrets ActionSecretArrayInput
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggersInput
@@ -270,7 +270,7 @@ func (o ActionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }
 
-// List of secrets that are included in an action or a version of an action.
+// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
 func (o ActionOutput) Secrets() ActionSecretArrayOutput {
 	return o.ApplyT(func(v *Action) ActionSecretArrayOutput { return v.Secrets }).(ActionSecretArrayOutput)
 }

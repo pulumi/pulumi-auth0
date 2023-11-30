@@ -551,14 +551,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.refreshToken;
     }
     /**
-     * Makes the use of Pushed Authorization Requests mandatory for this client.
+     * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      * 
      */
     @Export(name="requirePushedAuthorizationRequests", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> requirePushedAuthorizationRequests;
 
     /**
-     * @return Makes the use of Pushed Authorization Requests mandatory for this client.
+     * @return Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      * 
      */
     public Output<Optional<Boolean>> requirePushedAuthorizationRequests() {

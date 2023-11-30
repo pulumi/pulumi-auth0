@@ -112,7 +112,7 @@ public final class TenantFlags {
      */
     private @Nullable Boolean noDiscloseEnterpriseConnections;
     /**
-     * @return Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+     * @return Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
      * 
      */
     private @Nullable Boolean requirePushedAuthorizationRequests;
@@ -269,7 +269,7 @@ public final class TenantFlags {
         return Optional.ofNullable(this.noDiscloseEnterpriseConnections);
     }
     /**
-     * @return Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+     * @return Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
      * 
      */
     public Optional<Boolean> requirePushedAuthorizationRequests() {

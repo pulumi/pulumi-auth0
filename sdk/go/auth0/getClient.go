@@ -125,7 +125,7 @@ type LookupClientResult struct {
 	OrganizationUsage string `pulumi:"organizationUsage"`
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshTokens []GetClientRefreshToken `pulumi:"refreshTokens"`
-	// Makes the use of Pushed Authorization Requests mandatory for this client.
+	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests bool `pulumi:"requirePushedAuthorizationRequests"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 	SigningKeys []map[string]interface{} `pulumi:"signingKeys"`
@@ -336,7 +336,7 @@ func (o LookupClientResultOutput) RefreshTokens() GetClientRefreshTokenArrayOutp
 	return o.ApplyT(func(v LookupClientResult) []GetClientRefreshToken { return v.RefreshTokens }).(GetClientRefreshTokenArrayOutput)
 }
 
-// Makes the use of Pushed Authorization Requests mandatory for this client.
+// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 func (o LookupClientResultOutput) RequirePushedAuthorizationRequests() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClientResult) bool { return v.RequirePushedAuthorizationRequests }).(pulumi.BoolOutput)
 }

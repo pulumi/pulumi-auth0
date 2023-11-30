@@ -75,6 +75,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<string> AllowedLogoutUrls;
         /// <summary>
+        /// Whether to enable flexible factors for MFA in the PostLogin action.
+        /// </summary>
+        public readonly bool CustomizeMfaInPostloginAction;
+        /// <summary>
         /// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         /// </summary>
         public readonly string DefaultAudience;
@@ -149,6 +153,8 @@ namespace Pulumi.Auth0
 
             ImmutableArray<string> allowedLogoutUrls,
 
+            bool customizeMfaInPostloginAction,
+
             string defaultAudience,
 
             string defaultDirectory,
@@ -185,6 +191,7 @@ namespace Pulumi.Auth0
         {
             AllowOrganizationNameInAuthenticationApi = allowOrganizationNameInAuthenticationApi;
             AllowedLogoutUrls = allowedLogoutUrls;
+            CustomizeMfaInPostloginAction = customizeMfaInPostloginAction;
             DefaultAudience = defaultAudience;
             DefaultDirectory = defaultDirectory;
             DefaultRedirectionUri = defaultRedirectionUri;

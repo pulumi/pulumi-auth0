@@ -94,7 +94,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? NoDiscloseEnterpriseConnections;
         /// <summary>
-        /// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+        /// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
         /// </summary>
         public readonly bool? RequirePushedAuthorizationRequests;
         /// <summary>

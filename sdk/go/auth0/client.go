@@ -184,7 +184,7 @@ type Client struct {
 	OrganizationUsage pulumi.StringPtrOutput `pulumi:"organizationUsage"`
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshToken ClientRefreshTokenOutput `pulumi:"refreshToken"`
-	// Makes the use of Pushed Authorization Requests mandatory for this client.
+	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests pulumi.BoolPtrOutput `pulumi:"requirePushedAuthorizationRequests"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 	SigningKeys pulumi.MapArrayOutput `pulumi:"signingKeys"`
@@ -293,7 +293,7 @@ type clientState struct {
 	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshToken *ClientRefreshToken `pulumi:"refreshToken"`
-	// Makes the use of Pushed Authorization Requests mandatory for this client.
+	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests *bool `pulumi:"requirePushedAuthorizationRequests"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 	SigningKeys []map[string]interface{} `pulumi:"signingKeys"`
@@ -366,7 +366,7 @@ type ClientState struct {
 	OrganizationUsage pulumi.StringPtrInput
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshToken ClientRefreshTokenPtrInput
-	// Makes the use of Pushed Authorization Requests mandatory for this client.
+	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests pulumi.BoolPtrInput
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 	SigningKeys pulumi.MapArrayInput
@@ -441,7 +441,7 @@ type clientArgs struct {
 	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshToken *ClientRefreshToken `pulumi:"refreshToken"`
-	// Makes the use of Pushed Authorization Requests mandatory for this client.
+	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests *bool `pulumi:"requirePushedAuthorizationRequests"`
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso *bool `pulumi:"sso"`
@@ -511,7 +511,7 @@ type ClientArgs struct {
 	OrganizationUsage pulumi.StringPtrInput
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshToken ClientRefreshTokenPtrInput
-	// Makes the use of Pushed Authorization Requests mandatory for this client.
+	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests pulumi.BoolPtrInput
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso pulumi.BoolPtrInput
@@ -758,7 +758,7 @@ func (o ClientOutput) RefreshToken() ClientRefreshTokenOutput {
 	return o.ApplyT(func(v *Client) ClientRefreshTokenOutput { return v.RefreshToken }).(ClientRefreshTokenOutput)
 }
 
-// Makes the use of Pushed Authorization Requests mandatory for this client.
+// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 func (o ClientOutput) RequirePushedAuthorizationRequests() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.BoolPtrOutput { return v.RequirePushedAuthorizationRequests }).(pulumi.BoolPtrOutput)
 }

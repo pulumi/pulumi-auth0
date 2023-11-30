@@ -327,6 +327,32 @@ class EmailTemplate(pulumi.CustomResource):
         """
         With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_email_provider = auth0.EmailProvider("myEmailProvider",
+            enabled=True,
+            default_from_address="accounts@example.com",
+            credentials=auth0.EmailProviderCredentialsArgs(
+                access_key_id="AKIAXXXXXXXXXXXXXXXX",
+                secret_access_key="7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                region="us-east-1",
+            ))
+        my_email_template = auth0.EmailTemplate("myEmailTemplate",
+            template="welcome_email",
+            body="<html><body><h1>Welcome!</h1></body></html>",
+            from_="welcome@example.com",
+            result_url="https://example.com/welcome",
+            subject="Welcome",
+            syntax="liquid",
+            url_lifetime_in_seconds=3600,
+            enabled=True,
+            opts=pulumi.ResourceOptions(depends_on=[my_email_provider]))
+        ```
+
         ## Import
 
         This resource can be imported using the pre-defined template name. # These names are `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, and `user_invitation`. # The names `change_password`, and `password_reset` are also supported for legacy scenarios. # Example
@@ -355,6 +381,32 @@ class EmailTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_email_provider = auth0.EmailProvider("myEmailProvider",
+            enabled=True,
+            default_from_address="accounts@example.com",
+            credentials=auth0.EmailProviderCredentialsArgs(
+                access_key_id="AKIAXXXXXXXXXXXXXXXX",
+                secret_access_key="7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                region="us-east-1",
+            ))
+        my_email_template = auth0.EmailTemplate("myEmailTemplate",
+            template="welcome_email",
+            body="<html><body><h1>Welcome!</h1></body></html>",
+            from_="welcome@example.com",
+            result_url="https://example.com/welcome",
+            subject="Welcome",
+            syntax="liquid",
+            url_lifetime_in_seconds=3600,
+            enabled=True,
+            opts=pulumi.ResourceOptions(depends_on=[my_email_provider]))
+        ```
 
         ## Import
 

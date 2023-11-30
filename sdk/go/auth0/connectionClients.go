@@ -14,8 +14,8 @@ import (
 
 // With this resource, you can manage all of the enabled clients on a connection.
 //
-// !> This resource appends an enabled client to a connection. In contrast, the `ConnectionClient` resource
-// manages all the enabled clients for a connection. To avoid potential issues, it is recommended not to use this
+// !> This resource manages all the enabled clients for a connection. In contrast, the `ConnectionClient` resource
+// appends an enabled client to a connection. To avoid potential issues, it is recommended not to use this
 // resource in conjunction with the `ConnectionClient` resource when managing enabled clients for the same
 // connection id.
 //

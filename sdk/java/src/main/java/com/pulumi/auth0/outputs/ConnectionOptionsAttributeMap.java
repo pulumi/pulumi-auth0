@@ -17,7 +17,7 @@ public final class ConnectionOptionsAttributeMap {
      */
     private @Nullable String attributes;
     /**
-     * @return Method used to map incoming claims. Possible values: `use_map`, `bind_all` or `basic_profile`.
+     * @return Method used to map incoming claims. Possible values: `use_map` (Okta or OIDC), `bind_all` (OIDC) or `basic_profile` (Okta).
      * 
      */
     private String mappingMode;
@@ -36,7 +36,7 @@ public final class ConnectionOptionsAttributeMap {
         return Optional.ofNullable(this.attributes);
     }
     /**
-     * @return Method used to map incoming claims. Possible values: `use_map`, `bind_all` or `basic_profile`.
+     * @return Method used to map incoming claims. Possible values: `use_map` (Okta or OIDC), `bind_all` (OIDC) or `basic_profile` (Okta).
      * 
      */
     public String mappingMode() {

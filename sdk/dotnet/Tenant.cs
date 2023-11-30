@@ -88,6 +88,12 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> AllowedLogoutUrls { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable flexible factors for MFA in the PostLogin action.
+        /// </summary>
+        [Output("customizeMfaInPostloginAction")]
+        public Output<bool> CustomizeMfaInPostloginAction { get; private set; } = null!;
+
+        /// <summary>
         /// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         /// </summary>
         [Output("defaultAudience")]
@@ -236,6 +242,12 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
+        /// Whether to enable flexible factors for MFA in the PostLogin action.
+        /// </summary>
+        [Input("customizeMfaInPostloginAction")]
+        public Input<bool>? CustomizeMfaInPostloginAction { get; set; }
+
+        /// <summary>
         /// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         /// </summary>
         [Input("defaultAudience")]
@@ -350,6 +362,12 @@ namespace Pulumi.Auth0
             get => _allowedLogoutUrls ?? (_allowedLogoutUrls = new InputList<string>());
             set => _allowedLogoutUrls = value;
         }
+
+        /// <summary>
+        /// Whether to enable flexible factors for MFA in the PostLogin action.
+        /// </summary>
+        [Input("customizeMfaInPostloginAction")]
+        public Input<bool>? CustomizeMfaInPostloginAction { get; set; }
 
         /// <summary>
         /// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.

@@ -395,7 +395,7 @@ class GetClientResult:
     @pulumi.getter(name="requirePushedAuthorizationRequests")
     def require_pushed_authorization_requests(self) -> bool:
         """
-        Makes the use of Pushed Authorization Requests mandatory for this client.
+        Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         """
         return pulumi.get(self, "require_pushed_authorization_requests")
 

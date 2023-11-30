@@ -106,14 +106,14 @@ public class Action extends com.pulumi.resources.CustomResource {
         return this.runtime;
     }
     /**
-     * List of secrets that are included in an action or a version of an action.
+     * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
      * 
      */
     @Export(name="secrets", type=List.class, parameters={ActionSecret.class})
     private Output</* @Nullable */ List<ActionSecret>> secrets;
 
     /**
-     * @return List of secrets that are included in an action or a version of an action.
+     * @return List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
      * 
      */
     public Output<Optional<List<ActionSecret>>> secrets() {

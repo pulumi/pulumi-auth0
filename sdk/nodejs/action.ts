@@ -68,7 +68,7 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly runtime!: pulumi.Output<string>;
     /**
-     * List of secrets that are included in an action or a version of an action.
+     * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
      */
     public readonly secrets!: pulumi.Output<outputs.ActionSecret[] | undefined>;
     /**
@@ -148,7 +148,7 @@ export interface ActionState {
      */
     runtime?: pulumi.Input<string>;
     /**
-     * List of secrets that are included in an action or a version of an action.
+     * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
      */
     secrets?: pulumi.Input<pulumi.Input<inputs.ActionSecret>[]>;
     /**
@@ -186,7 +186,7 @@ export interface ActionArgs {
      */
     runtime?: pulumi.Input<string>;
     /**
-     * List of secrets that are included in an action or a version of an action.
+     * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
      */
     secrets?: pulumi.Input<pulumi.Input<inputs.ActionSecret>[]>;
     /**

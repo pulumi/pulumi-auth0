@@ -1478,7 +1478,7 @@ export interface ConnectionOptionsAttributeMap {
      */
     attributes?: string;
     /**
-     * Method used to map incoming claims. Possible values: `useMap`, `bindAll` or `basicProfile`.
+     * Method used to map incoming claims. Possible values: `useMap` (Okta or OIDC), `bindAll` (OIDC) or `basicProfile` (Okta).
      */
     mappingMode: string;
     /**
@@ -1489,7 +1489,7 @@ export interface ConnectionOptionsAttributeMap {
 
 export interface ConnectionOptionsConnectionSettings {
     /**
-     * PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+     * PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
      */
     pkce: string;
 }
@@ -2824,7 +2824,7 @@ export interface TenantFlags {
      */
     noDiscloseEnterpriseConnections: boolean;
     /**
-     * Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+     * Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
      */
     requirePushedAuthorizationRequests: boolean;
     /**
