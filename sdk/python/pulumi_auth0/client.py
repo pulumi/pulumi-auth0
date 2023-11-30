@@ -80,7 +80,7 @@ class ClientArgs:
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
-        :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client.
+        :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
@@ -506,7 +506,7 @@ class ClientArgs:
     @pulumi.getter(name="requirePushedAuthorizationRequests")
     def require_pushed_authorization_requests(self) -> Optional[pulumi.Input[bool]]:
         """
-        Makes the use of Pushed Authorization Requests mandatory for this client.
+        Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         """
         return pulumi.get(self, "require_pushed_authorization_requests")
 
@@ -621,7 +621,7 @@ class _ClientState:
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
-        :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client.
+        :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
@@ -1064,7 +1064,7 @@ class _ClientState:
     @pulumi.getter(name="requirePushedAuthorizationRequests")
     def require_pushed_authorization_requests(self) -> Optional[pulumi.Input[bool]]:
         """
-        Makes the use of Pushed Authorization Requests mandatory for this client.
+        Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         """
         return pulumi.get(self, "require_pushed_authorization_requests")
 
@@ -1273,7 +1273,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']] refresh_token: Configuration settings for the refresh tokens issued for this client.
-        :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client.
+        :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
@@ -1544,7 +1544,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']] refresh_token: Configuration settings for the refresh tokens issued for this client.
-        :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client.
+        :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
@@ -1835,7 +1835,7 @@ class Client(pulumi.CustomResource):
     @pulumi.getter(name="requirePushedAuthorizationRequests")
     def require_pushed_authorization_requests(self) -> pulumi.Output[Optional[bool]]:
         """
-        Makes the use of Pushed Authorization Requests mandatory for this client.
+        Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         """
         return pulumi.get(self, "require_pushed_authorization_requests")
 

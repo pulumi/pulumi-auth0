@@ -5415,7 +5415,7 @@ class ConnectionOptionsAttributeMap(dict):
                  attributes: Optional[str] = None,
                  userinfo_scope: Optional[str] = None):
         """
-        :param str mapping_mode: Method used to map incoming claims. Possible values: `use_map`, `bind_all` or `basic_profile`.
+        :param str mapping_mode: Method used to map incoming claims. Possible values: `use_map` (Okta or OIDC), `bind_all` (OIDC) or `basic_profile` (Okta).
         :param str attributes: This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
         :param str userinfo_scope: This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
         """
@@ -5429,7 +5429,7 @@ class ConnectionOptionsAttributeMap(dict):
     @pulumi.getter(name="mappingMode")
     def mapping_mode(self) -> str:
         """
-        Method used to map incoming claims. Possible values: `use_map`, `bind_all` or `basic_profile`.
+        Method used to map incoming claims. Possible values: `use_map` (Okta or OIDC), `bind_all` (OIDC) or `basic_profile` (Okta).
         """
         return pulumi.get(self, "mapping_mode")
 
@@ -5455,7 +5455,7 @@ class ConnectionOptionsConnectionSettings(dict):
     def __init__(__self__, *,
                  pkce: str):
         """
-        :param str pkce: PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+        :param str pkce: PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
         """
         pulumi.set(__self__, "pkce", pkce)
 
@@ -5463,7 +5463,7 @@ class ConnectionOptionsConnectionSettings(dict):
     @pulumi.getter
     def pkce(self) -> str:
         """
-        PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+        PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
         """
         return pulumi.get(self, "pkce")
 
@@ -7790,7 +7790,7 @@ class TenantFlags(dict):
         :param bool enable_public_signup_user_exists_error: Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
         :param bool mfa_show_factor_list_on_enrollment: Used to allow users to pick which factor to enroll with from the list of available MFA factors.
         :param bool no_disclose_enterprise_connections: Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
-        :param bool require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+        :param bool require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param bool revoke_refresh_token_grant: Delete underlying grant when a refresh token is revoked via the Authentication API.
         :param bool use_scope_descriptions_for_consent: Indicates whether to use scope descriptions for consent.
         """
@@ -8005,7 +8005,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="requirePushedAuthorizationRequests")
     def require_pushed_authorization_requests(self) -> Optional[bool]:
         """
-        Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+        Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
         """
         return pulumi.get(self, "require_pushed_authorization_requests")
 

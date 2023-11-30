@@ -38,6 +38,10 @@ export interface GetTenantResult {
      */
     readonly allowedLogoutUrls: string[];
     /**
+     * Whether to enable flexible factors for MFA in the PostLogin action.
+     */
+    readonly customizeMfaInPostloginAction: boolean;
+    /**
      * API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      */
     readonly defaultAudience: string;

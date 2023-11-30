@@ -52,6 +52,8 @@ type LookupTenantResult struct {
 	AllowOrganizationNameInAuthenticationApi bool `pulumi:"allowOrganizationNameInAuthenticationApi"`
 	// URLs that Auth0 may redirect to after logout.
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
+	// Whether to enable flexible factors for MFA in the PostLogin action.
+	CustomizeMfaInPostloginAction bool `pulumi:"customizeMfaInPostloginAction"`
 	// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
 	DefaultAudience string `pulumi:"defaultAudience"`
 	// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
@@ -122,6 +124,11 @@ func (o LookupTenantResultOutput) AllowOrganizationNameInAuthenticationApi() pul
 // URLs that Auth0 may redirect to after logout.
 func (o LookupTenantResultOutput) AllowedLogoutUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupTenantResult) []string { return v.AllowedLogoutUrls }).(pulumi.StringArrayOutput)
+}
+
+// Whether to enable flexible factors for MFA in the PostLogin action.
+func (o LookupTenantResultOutput) CustomizeMfaInPostloginAction() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTenantResult) bool { return v.CustomizeMfaInPostloginAction }).(pulumi.BoolOutput)
 }
 
 // API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.

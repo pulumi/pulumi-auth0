@@ -121,6 +121,20 @@ public class Tenant extends com.pulumi.resources.CustomResource {
         return this.allowedLogoutUrls;
     }
     /**
+     * Whether to enable flexible factors for MFA in the PostLogin action.
+     * 
+     */
+    @Export(name="customizeMfaInPostloginAction", type=Boolean.class, parameters={})
+    private Output<Boolean> customizeMfaInPostloginAction;
+
+    /**
+     * @return Whether to enable flexible factors for MFA in the PostLogin action.
+     * 
+     */
+    public Output<Boolean> customizeMfaInPostloginAction() {
+        return this.customizeMfaInPostloginAction;
+    }
+    /**
      * API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      * 
      */

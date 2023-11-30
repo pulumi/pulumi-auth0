@@ -238,7 +238,7 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly refreshToken!: pulumi.Output<outputs.ClientRefreshToken>;
     /**
-     * Makes the use of Pushed Authorization Requests mandatory for this client.
+     * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      */
     public readonly requirePushedAuthorizationRequests!: pulumi.Output<boolean | undefined>;
     /**
@@ -476,7 +476,7 @@ export interface ClientState {
      */
     refreshToken?: pulumi.Input<inputs.ClientRefreshToken>;
     /**
-     * Makes the use of Pushed Authorization Requests mandatory for this client.
+     * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      */
     requirePushedAuthorizationRequests?: pulumi.Input<boolean>;
     /**
@@ -618,7 +618,7 @@ export interface ClientArgs {
      */
     refreshToken?: pulumi.Input<inputs.ClientRefreshToken>;
     /**
-     * Makes the use of Pushed Authorization Requests mandatory for this client.
+     * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      */
     requirePushedAuthorizationRequests?: pulumi.Input<boolean>;
     /**

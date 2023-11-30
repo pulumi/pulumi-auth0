@@ -461,14 +461,14 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Makes the use of Pushed Authorization Requests mandatory for this client.
+     * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      * 
      */
     @Import(name="requirePushedAuthorizationRequests")
     private @Nullable Output<Boolean> requirePushedAuthorizationRequests;
 
     /**
-     * @return Makes the use of Pushed Authorization Requests mandatory for this client.
+     * @return Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      * 
      */
     public Optional<Output<Boolean>> requirePushedAuthorizationRequests() {
@@ -1256,7 +1256,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requirePushedAuthorizationRequests Makes the use of Pushed Authorization Requests mandatory for this client.
+         * @param requirePushedAuthorizationRequests Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
          * 
          * @return builder
          * 
@@ -1267,7 +1267,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requirePushedAuthorizationRequests Makes the use of Pushed Authorization Requests mandatory for this client.
+         * @param requirePushedAuthorizationRequests Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
          * 
          * @return builder
          * 

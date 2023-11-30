@@ -13590,7 +13590,7 @@ func (o ConnectionOptionsPtrOutput) WaadProtocol() pulumi.StringPtrOutput {
 type ConnectionOptionsAttributeMap struct {
 	// This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
 	Attributes *string `pulumi:"attributes"`
-	// Method used to map incoming claims. Possible values: `useMap`, `bindAll` or `basicProfile`.
+	// Method used to map incoming claims. Possible values: `useMap` (Okta or OIDC), `bindAll` (OIDC) or `basicProfile` (Okta).
 	MappingMode string `pulumi:"mappingMode"`
 	// This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
 	UserinfoScope *string `pulumi:"userinfoScope"`
@@ -13610,7 +13610,7 @@ type ConnectionOptionsAttributeMapInput interface {
 type ConnectionOptionsAttributeMapArgs struct {
 	// This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
 	Attributes pulumi.StringPtrInput `pulumi:"attributes"`
-	// Method used to map incoming claims. Possible values: `useMap`, `bindAll` or `basicProfile`.
+	// Method used to map incoming claims. Possible values: `useMap` (Okta or OIDC), `bindAll` (OIDC) or `basicProfile` (Okta).
 	MappingMode pulumi.StringInput `pulumi:"mappingMode"`
 	// This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
 	UserinfoScope pulumi.StringPtrInput `pulumi:"userinfoScope"`
@@ -13698,7 +13698,7 @@ func (o ConnectionOptionsAttributeMapOutput) Attributes() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ConnectionOptionsAttributeMap) *string { return v.Attributes }).(pulumi.StringPtrOutput)
 }
 
-// Method used to map incoming claims. Possible values: `useMap`, `bindAll` or `basicProfile`.
+// Method used to map incoming claims. Possible values: `useMap` (Okta or OIDC), `bindAll` (OIDC) or `basicProfile` (Okta).
 func (o ConnectionOptionsAttributeMapOutput) MappingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionOptionsAttributeMap) string { return v.MappingMode }).(pulumi.StringOutput)
 }
@@ -13742,7 +13742,7 @@ func (o ConnectionOptionsAttributeMapPtrOutput) Attributes() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Method used to map incoming claims. Possible values: `useMap`, `bindAll` or `basicProfile`.
+// Method used to map incoming claims. Possible values: `useMap` (Okta or OIDC), `bindAll` (OIDC) or `basicProfile` (Okta).
 func (o ConnectionOptionsAttributeMapPtrOutput) MappingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsAttributeMap) *string {
 		if v == nil {
@@ -13763,7 +13763,7 @@ func (o ConnectionOptionsAttributeMapPtrOutput) UserinfoScope() pulumi.StringPtr
 }
 
 type ConnectionOptionsConnectionSettings struct {
-	// PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+	// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
 	Pkce string `pulumi:"pkce"`
 }
 
@@ -13779,7 +13779,7 @@ type ConnectionOptionsConnectionSettingsInput interface {
 }
 
 type ConnectionOptionsConnectionSettingsArgs struct {
-	// PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+	// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
 	Pkce pulumi.StringInput `pulumi:"pkce"`
 }
 
@@ -13860,7 +13860,7 @@ func (o ConnectionOptionsConnectionSettingsOutput) ToConnectionOptionsConnection
 	}).(ConnectionOptionsConnectionSettingsPtrOutput)
 }
 
-// PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
 func (o ConnectionOptionsConnectionSettingsOutput) Pkce() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionOptionsConnectionSettings) string { return v.Pkce }).(pulumi.StringOutput)
 }
@@ -13889,7 +13889,7 @@ func (o ConnectionOptionsConnectionSettingsPtrOutput) Elem() ConnectionOptionsCo
 	}).(ConnectionOptionsConnectionSettingsOutput)
 }
 
-// PKCE configuration. Possible values: `auth0` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
 func (o ConnectionOptionsConnectionSettingsPtrOutput) Pkce() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsConnectionSettings) *string {
 		if v == nil {
@@ -20322,7 +20322,7 @@ type TenantFlags struct {
 	MfaShowFactorListOnEnrollment *bool `pulumi:"mfaShowFactorListOnEnrollment"`
 	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
 	NoDiscloseEnterpriseConnections *bool `pulumi:"noDiscloseEnterpriseConnections"`
-	// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+	// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests *bool `pulumi:"requirePushedAuthorizationRequests"`
 	// Delete underlying grant when a refresh token is revoked via the Authentication API.
 	RevokeRefreshTokenGrant *bool `pulumi:"revokeRefreshTokenGrant"`
@@ -20382,7 +20382,7 @@ type TenantFlagsArgs struct {
 	MfaShowFactorListOnEnrollment pulumi.BoolPtrInput `pulumi:"mfaShowFactorListOnEnrollment"`
 	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
 	NoDiscloseEnterpriseConnections pulumi.BoolPtrInput `pulumi:"noDiscloseEnterpriseConnections"`
-	// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+	// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests pulumi.BoolPtrInput `pulumi:"requirePushedAuthorizationRequests"`
 	// Delete underlying grant when a refresh token is revoked via the Authentication API.
 	RevokeRefreshTokenGrant pulumi.BoolPtrInput `pulumi:"revokeRefreshTokenGrant"`
@@ -20567,7 +20567,7 @@ func (o TenantFlagsOutput) NoDiscloseEnterpriseConnections() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v TenantFlags) *bool { return v.NoDiscloseEnterpriseConnections }).(pulumi.BoolPtrOutput)
 }
 
-// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
 func (o TenantFlagsOutput) RequirePushedAuthorizationRequests() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.RequirePushedAuthorizationRequests }).(pulumi.BoolPtrOutput)
 }
@@ -20806,7 +20806,7 @@ func (o TenantFlagsPtrOutput) NoDiscloseEnterpriseConnections() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
 func (o TenantFlagsPtrOutput) RequirePushedAuthorizationRequests() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
 		if v == nil {

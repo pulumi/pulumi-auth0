@@ -237,7 +237,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientRefreshTokenResult> RefreshTokens;
         /// <summary>
-        /// Makes the use of Pushed Authorization Requests mandatory for this client.
+        /// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         /// </summary>
         public readonly bool RequirePushedAuthorizationRequests;
         /// <summary>
