@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *         pageBackground: "#000000",
  *     },
  *     universalLogin: {
- *         body: fs.readFileSync("universal_login_body.html"),
+ *         body: fs.readFileSync("universal_login_body.html", "utf8"),
  *     },
  * });
  * ```
