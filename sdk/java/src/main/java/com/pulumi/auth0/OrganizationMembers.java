@@ -90,7 +90,7 @@ public class OrganizationMembers extends com.pulumi.resources.CustomResource {
      * Add user ID(s) directly from the tenant to become members of the organization.
      * 
      */
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     /**
@@ -104,7 +104,7 @@ public class OrganizationMembers extends com.pulumi.resources.CustomResource {
      * The ID of the organization to assign the members to.
      * 
      */
-    @Export(name="organizationId", type=String.class, parameters={})
+    @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**

@@ -25,8 +25,8 @@ public final class GetClientAddonCloudbee {
         }
 
         public GetClientAddonCloudbee build() {
-            final var o = new GetClientAddonCloudbee();
-            return o;
+            final var _resultValue = new GetClientAddonCloudbee();
+            return _resultValue;
         }
     }
 }

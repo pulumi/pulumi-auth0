@@ -57,10 +57,10 @@ public final class GetClientNativeSocialLogin {
             return facebooks(List.of(facebooks));
         }
         public GetClientNativeSocialLogin build() {
-            final var o = new GetClientNativeSocialLogin();
-            o.apples = apples;
-            o.facebooks = facebooks;
-            return o;
+            final var _resultValue = new GetClientNativeSocialLogin();
+            _resultValue.apples = apples;
+            _resultValue.facebooks = facebooks;
+            return _resultValue;
         }
     }
 }

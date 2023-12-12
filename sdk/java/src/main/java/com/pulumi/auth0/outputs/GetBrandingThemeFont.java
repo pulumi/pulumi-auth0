@@ -152,17 +152,17 @@ public final class GetBrandingThemeFont {
             return titles(List.of(titles));
         }
         public GetBrandingThemeFont build() {
-            final var o = new GetBrandingThemeFont();
-            o.bodyTexts = bodyTexts;
-            o.buttonsTexts = buttonsTexts;
-            o.fontUrl = fontUrl;
-            o.inputLabels = inputLabels;
-            o.links = links;
-            o.linksStyle = linksStyle;
-            o.referenceTextSize = referenceTextSize;
-            o.subtitles = subtitles;
-            o.titles = titles;
-            return o;
+            final var _resultValue = new GetBrandingThemeFont();
+            _resultValue.bodyTexts = bodyTexts;
+            _resultValue.buttonsTexts = buttonsTexts;
+            _resultValue.fontUrl = fontUrl;
+            _resultValue.inputLabels = inputLabels;
+            _resultValue.links = links;
+            _resultValue.linksStyle = linksStyle;
+            _resultValue.referenceTextSize = referenceTextSize;
+            _resultValue.subtitles = subtitles;
+            _resultValue.titles = titles;
+            return _resultValue;
         }
     }
 }

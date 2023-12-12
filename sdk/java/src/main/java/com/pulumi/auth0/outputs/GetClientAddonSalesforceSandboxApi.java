@@ -71,12 +71,12 @@ public final class GetClientAddonSalesforceSandboxApi {
             return this;
         }
         public GetClientAddonSalesforceSandboxApi build() {
-            final var o = new GetClientAddonSalesforceSandboxApi();
-            o.clientId = clientId;
-            o.communityName = communityName;
-            o.communityUrlSection = communityUrlSection;
-            o.principal = principal;
-            return o;
+            final var _resultValue = new GetClientAddonSalesforceSandboxApi();
+            _resultValue.clientId = clientId;
+            _resultValue.communityName = communityName;
+            _resultValue.communityUrlSection = communityUrlSection;
+            _resultValue.principal = principal;
+            return _resultValue;
         }
     }
 }

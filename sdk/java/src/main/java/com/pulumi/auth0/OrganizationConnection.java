@@ -82,7 +82,7 @@ public class OrganizationConnection extends com.pulumi.resources.CustomResource 
      * When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
      * 
      */
-    @Export(name="assignMembershipOnLogin", type=Boolean.class, parameters={})
+    @Export(name="assignMembershipOnLogin", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> assignMembershipOnLogin;
 
     /**
@@ -96,7 +96,7 @@ public class OrganizationConnection extends com.pulumi.resources.CustomResource 
      * The ID of the connection to enable for the organization.
      * 
      */
-    @Export(name="connectionId", type=String.class, parameters={})
+    @Export(name="connectionId", refs={String.class}, tree="[0]")
     private Output<String> connectionId;
 
     /**
@@ -110,7 +110,7 @@ public class OrganizationConnection extends com.pulumi.resources.CustomResource 
      * The name of the enabled connection.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -124,7 +124,7 @@ public class OrganizationConnection extends com.pulumi.resources.CustomResource 
      * The ID of the organization to enable the connection for.
      * 
      */
-    @Export(name="organizationId", type=String.class, parameters={})
+    @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
@@ -138,7 +138,7 @@ public class OrganizationConnection extends com.pulumi.resources.CustomResource 
      * The strategy of the enabled connection.
      * 
      */
-    @Export(name="strategy", type=String.class, parameters={})
+    @Export(name="strategy", refs={String.class}, tree="[0]")
     private Output<String> strategy;
 
     /**

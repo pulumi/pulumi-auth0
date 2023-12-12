@@ -608,37 +608,37 @@ public final class ClientAddons {
             return this;
         }
         public ClientAddons build() {
-            final var o = new ClientAddons();
-            o.aws = aws;
-            o.azureBlob = azureBlob;
-            o.azureSb = azureSb;
-            o.box = box;
-            o.cloudbees = cloudbees;
-            o.concur = concur;
-            o.dropbox = dropbox;
-            o.echosign = echosign;
-            o.egnyte = egnyte;
-            o.firebase = firebase;
-            o.layer = layer;
-            o.mscrm = mscrm;
-            o.newrelic = newrelic;
-            o.office365 = office365;
-            o.rms = rms;
-            o.salesforce = salesforce;
-            o.salesforceApi = salesforceApi;
-            o.salesforceSandboxApi = salesforceSandboxApi;
-            o.samlp = samlp;
-            o.sapApi = sapApi;
-            o.sentry = sentry;
-            o.sharepoint = sharepoint;
-            o.slack = slack;
-            o.springcm = springcm;
-            o.ssoIntegration = ssoIntegration;
-            o.wams = wams;
-            o.wsfed = wsfed;
-            o.zendesk = zendesk;
-            o.zoom = zoom;
-            return o;
+            final var _resultValue = new ClientAddons();
+            _resultValue.aws = aws;
+            _resultValue.azureBlob = azureBlob;
+            _resultValue.azureSb = azureSb;
+            _resultValue.box = box;
+            _resultValue.cloudbees = cloudbees;
+            _resultValue.concur = concur;
+            _resultValue.dropbox = dropbox;
+            _resultValue.echosign = echosign;
+            _resultValue.egnyte = egnyte;
+            _resultValue.firebase = firebase;
+            _resultValue.layer = layer;
+            _resultValue.mscrm = mscrm;
+            _resultValue.newrelic = newrelic;
+            _resultValue.office365 = office365;
+            _resultValue.rms = rms;
+            _resultValue.salesforce = salesforce;
+            _resultValue.salesforceApi = salesforceApi;
+            _resultValue.salesforceSandboxApi = salesforceSandboxApi;
+            _resultValue.samlp = samlp;
+            _resultValue.sapApi = sapApi;
+            _resultValue.sentry = sentry;
+            _resultValue.sharepoint = sharepoint;
+            _resultValue.slack = slack;
+            _resultValue.springcm = springcm;
+            _resultValue.ssoIntegration = ssoIntegration;
+            _resultValue.wams = wams;
+            _resultValue.wsfed = wsfed;
+            _resultValue.zendesk = zendesk;
+            _resultValue.zoom = zoom;
+            return _resultValue;
         }
     }
 }

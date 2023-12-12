@@ -49,10 +49,10 @@ public final class GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration 
             return this;
         }
         public GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration build() {
-            final var o = new GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration();
-            o.maxAttempts = maxAttempts;
-            o.rate = rate;
-            return o;
+            final var _resultValue = new GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration();
+            _resultValue.maxAttempts = maxAttempts;
+            _resultValue.rate = rate;
+            return _resultValue;
         }
     }
 }

@@ -83,13 +83,13 @@ public final class GetClientAddonFirebase {
             return this;
         }
         public GetClientAddonFirebase build() {
-            final var o = new GetClientAddonFirebase();
-            o.clientEmail = clientEmail;
-            o.lifetimeInSeconds = lifetimeInSeconds;
-            o.privateKey = privateKey;
-            o.privateKeyId = privateKeyId;
-            o.secret = secret;
-            return o;
+            final var _resultValue = new GetClientAddonFirebase();
+            _resultValue.clientEmail = clientEmail;
+            _resultValue.lifetimeInSeconds = lifetimeInSeconds;
+            _resultValue.privateKey = privateKey;
+            _resultValue.privateKeyId = privateKeyId;
+            _resultValue.secret = secret;
+            return _resultValue;
         }
     }
 }

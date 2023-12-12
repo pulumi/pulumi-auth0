@@ -50,10 +50,10 @@ public final class GetBrandingThemeFontButtonsText {
             return this;
         }
         public GetBrandingThemeFontButtonsText build() {
-            final var o = new GetBrandingThemeFontButtonsText();
-            o.bold = bold;
-            o.size = size;
-            return o;
+            final var _resultValue = new GetBrandingThemeFontButtonsText();
+            _resultValue.bold = bold;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

@@ -78,7 +78,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * Defines how to style the login pages.
      * 
      */
-    @Export(name="branding", type=OrganizationBranding.class, parameters={})
+    @Export(name="branding", refs={OrganizationBranding.class}, tree="[0]")
     private Output<OrganizationBranding> branding;
 
     /**
@@ -92,7 +92,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * Friendly name of this organization.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -106,7 +106,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * Metadata associated with the organization. Maximum of 10 metadata properties allowed.
      * 
      */
-    @Export(name="metadata", type=Map.class, parameters={String.class, String.class})
+    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
@@ -120,7 +120,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * The name of this organization.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

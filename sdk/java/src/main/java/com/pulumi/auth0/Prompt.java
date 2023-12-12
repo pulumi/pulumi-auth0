@@ -64,7 +64,7 @@ public class Prompt extends com.pulumi.resources.CustomResource {
      * Indicates whether the identifier first is used when using the new Universal Login experience.
      * 
      */
-    @Export(name="identifierFirst", type=Boolean.class, parameters={})
+    @Export(name="identifierFirst", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> identifierFirst;
 
     /**
@@ -78,7 +78,7 @@ public class Prompt extends com.pulumi.resources.CustomResource {
      * Which login experience to use. Options include `classic` and `new`.
      * 
      */
-    @Export(name="universalLoginExperience", type=String.class, parameters={})
+    @Export(name="universalLoginExperience", refs={String.class}, tree="[0]")
     private Output<String> universalLoginExperience;
 
     /**
@@ -92,7 +92,7 @@ public class Prompt extends com.pulumi.resources.CustomResource {
      * Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `auth0.Guardian` resource to set one up.
      * 
      */
-    @Export(name="webauthnPlatformFirstFactor", type=Boolean.class, parameters={})
+    @Export(name="webauthnPlatformFirstFactor", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> webauthnPlatformFirstFactor;
 
     /**

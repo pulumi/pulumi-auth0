@@ -67,10 +67,10 @@ public final class ClientAddonsSentry {
             return this;
         }
         public ClientAddonsSentry build() {
-            final var o = new ClientAddonsSentry();
-            o.baseUrl = baseUrl;
-            o.orgSlug = orgSlug;
-            return o;
+            final var _resultValue = new ClientAddonsSentry();
+            _resultValue.baseUrl = baseUrl;
+            _resultValue.orgSlug = orgSlug;
+            return _resultValue;
         }
     }
 }

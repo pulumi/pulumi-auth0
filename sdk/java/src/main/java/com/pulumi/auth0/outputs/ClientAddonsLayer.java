@@ -125,13 +125,13 @@ public final class ClientAddonsLayer {
             return this;
         }
         public ClientAddonsLayer build() {
-            final var o = new ClientAddonsLayer();
-            o.expiration = expiration;
-            o.keyId = keyId;
-            o.principal = principal;
-            o.privateKey = privateKey;
-            o.providerId = providerId;
-            return o;
+            final var _resultValue = new ClientAddonsLayer();
+            _resultValue.expiration = expiration;
+            _resultValue.keyId = keyId;
+            _resultValue.principal = principal;
+            _resultValue.privateKey = privateKey;
+            _resultValue.providerId = providerId;
+            return _resultValue;
         }
     }
 }

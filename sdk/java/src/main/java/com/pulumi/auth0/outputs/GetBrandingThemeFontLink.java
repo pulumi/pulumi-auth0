@@ -50,10 +50,10 @@ public final class GetBrandingThemeFontLink {
             return this;
         }
         public GetBrandingThemeFontLink build() {
-            final var o = new GetBrandingThemeFontLink();
-            o.bold = bold;
-            o.size = size;
-            return o;
+            final var _resultValue = new GetBrandingThemeFontLink();
+            _resultValue.bold = bold;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

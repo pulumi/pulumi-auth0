@@ -127,17 +127,17 @@ public final class GetSigningKeysSigningKey {
             return this;
         }
         public GetSigningKeysSigningKey build() {
-            final var o = new GetSigningKeysSigningKey();
-            o.cert = cert;
-            o.current = current;
-            o.fingerprint = fingerprint;
-            o.kid = kid;
-            o.next = next;
-            o.pkcs7 = pkcs7;
-            o.previous = previous;
-            o.revoked = revoked;
-            o.thumbprint = thumbprint;
-            return o;
+            final var _resultValue = new GetSigningKeysSigningKey();
+            _resultValue.cert = cert;
+            _resultValue.current = current;
+            _resultValue.fingerprint = fingerprint;
+            _resultValue.kid = kid;
+            _resultValue.next = next;
+            _resultValue.pkcs7 = pkcs7;
+            _resultValue.previous = previous;
+            _resultValue.revoked = revoked;
+            _resultValue.thumbprint = thumbprint;
+            return _resultValue;
         }
     }
 }

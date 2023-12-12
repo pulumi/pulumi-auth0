@@ -49,10 +49,10 @@ public final class GetResourceServerScope {
             return this;
         }
         public GetResourceServerScope build() {
-            final var o = new GetResourceServerScope();
-            o.description = description;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetResourceServerScope();
+            _resultValue.description = description;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

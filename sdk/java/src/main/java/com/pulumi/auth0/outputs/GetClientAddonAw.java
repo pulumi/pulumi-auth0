@@ -61,11 +61,11 @@ public final class GetClientAddonAw {
             return this;
         }
         public GetClientAddonAw build() {
-            final var o = new GetClientAddonAw();
-            o.lifetimeInSeconds = lifetimeInSeconds;
-            o.principal = principal;
-            o.role = role;
-            return o;
+            final var _resultValue = new GetClientAddonAw();
+            _resultValue.lifetimeInSeconds = lifetimeInSeconds;
+            _resultValue.principal = principal;
+            _resultValue.role = role;
+            return _resultValue;
         }
     }
 }

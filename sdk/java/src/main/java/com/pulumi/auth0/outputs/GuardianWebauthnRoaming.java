@@ -106,12 +106,12 @@ public final class GuardianWebauthnRoaming {
             return this;
         }
         public GuardianWebauthnRoaming build() {
-            final var o = new GuardianWebauthnRoaming();
-            o.enabled = enabled;
-            o.overrideRelyingParty = overrideRelyingParty;
-            o.relyingPartyIdentifier = relyingPartyIdentifier;
-            o.userVerification = userVerification;
-            return o;
+            final var _resultValue = new GuardianWebauthnRoaming();
+            _resultValue.enabled = enabled;
+            _resultValue.overrideRelyingParty = overrideRelyingParty;
+            _resultValue.relyingPartyIdentifier = relyingPartyIdentifier;
+            _resultValue.userVerification = userVerification;
+            return _resultValue;
         }
     }
 }

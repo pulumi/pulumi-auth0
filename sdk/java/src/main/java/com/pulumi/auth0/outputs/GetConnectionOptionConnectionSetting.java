@@ -38,9 +38,9 @@ public final class GetConnectionOptionConnectionSetting {
             return this;
         }
         public GetConnectionOptionConnectionSetting build() {
-            final var o = new GetConnectionOptionConnectionSetting();
-            o.pkce = pkce;
-            return o;
+            final var _resultValue = new GetConnectionOptionConnectionSetting();
+            _resultValue.pkce = pkce;
+            return _resultValue;
         }
     }
 }

@@ -204,17 +204,17 @@ public final class GetCustomDomainResult {
             return verifications(List.of(verifications));
         }
         public GetCustomDomainResult build() {
-            final var o = new GetCustomDomainResult();
-            o.customClientIpHeader = customClientIpHeader;
-            o.domain = domain;
-            o.id = id;
-            o.originDomainName = originDomainName;
-            o.primary = primary;
-            o.status = status;
-            o.tlsPolicy = tlsPolicy;
-            o.type = type;
-            o.verifications = verifications;
-            return o;
+            final var _resultValue = new GetCustomDomainResult();
+            _resultValue.customClientIpHeader = customClientIpHeader;
+            _resultValue.domain = domain;
+            _resultValue.id = id;
+            _resultValue.originDomainName = originDomainName;
+            _resultValue.primary = primary;
+            _resultValue.status = status;
+            _resultValue.tlsPolicy = tlsPolicy;
+            _resultValue.type = type;
+            _resultValue.verifications = verifications;
+            return _resultValue;
         }
     }
 }

@@ -105,12 +105,12 @@ public final class RolePermissionsPermission {
             return this;
         }
         public RolePermissionsPermission build() {
-            final var o = new RolePermissionsPermission();
-            o.description = description;
-            o.name = name;
-            o.resourceServerIdentifier = resourceServerIdentifier;
-            o.resourceServerName = resourceServerName;
-            return o;
+            final var _resultValue = new RolePermissionsPermission();
+            _resultValue.description = description;
+            _resultValue.name = name;
+            _resultValue.resourceServerIdentifier = resourceServerIdentifier;
+            _resultValue.resourceServerName = resourceServerName;
+            return _resultValue;
         }
     }
 }

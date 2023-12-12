@@ -38,9 +38,9 @@ public final class GetClientNativeSocialLoginFacebook {
             return this;
         }
         public GetClientNativeSocialLoginFacebook build() {
-            final var o = new GetClientNativeSocialLoginFacebook();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new GetClientNativeSocialLoginFacebook();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

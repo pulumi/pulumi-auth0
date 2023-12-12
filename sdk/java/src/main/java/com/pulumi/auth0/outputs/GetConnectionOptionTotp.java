@@ -49,10 +49,10 @@ public final class GetConnectionOptionTotp {
             return this;
         }
         public GetConnectionOptionTotp build() {
-            final var o = new GetConnectionOptionTotp();
-            o.length = length;
-            o.timeStep = timeStep;
-            return o;
+            final var _resultValue = new GetConnectionOptionTotp();
+            _resultValue.length = length;
+            _resultValue.timeStep = timeStep;
+            return _resultValue;
         }
     }
 }

@@ -86,11 +86,11 @@ public final class ConnectionOptionsAttributeMap {
             return this;
         }
         public ConnectionOptionsAttributeMap build() {
-            final var o = new ConnectionOptionsAttributeMap();
-            o.attributes = attributes;
-            o.mappingMode = mappingMode;
-            o.userinfoScope = userinfoScope;
-            return o;
+            final var _resultValue = new ConnectionOptionsAttributeMap();
+            _resultValue.attributes = attributes;
+            _resultValue.mappingMode = mappingMode;
+            _resultValue.userinfoScope = userinfoScope;
+            return _resultValue;
         }
     }
 }

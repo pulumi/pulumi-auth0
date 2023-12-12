@@ -38,9 +38,9 @@ public final class GetClientAddonSalesforce {
             return this;
         }
         public GetClientAddonSalesforce build() {
-            final var o = new GetClientAddonSalesforce();
-            o.entityId = entityId;
-            return o;
+            final var _resultValue = new GetClientAddonSalesforce();
+            _resultValue.entityId = entityId;
+            return _resultValue;
         }
     }
 }

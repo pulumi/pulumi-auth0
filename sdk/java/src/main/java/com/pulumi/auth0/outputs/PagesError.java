@@ -87,11 +87,11 @@ public final class PagesError {
             return this;
         }
         public PagesError build() {
-            final var o = new PagesError();
-            o.html = html;
-            o.showLogLink = showLogLink;
-            o.url = url;
-            return o;
+            final var _resultValue = new PagesError();
+            _resultValue.html = html;
+            _resultValue.showLogLink = showLogLink;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

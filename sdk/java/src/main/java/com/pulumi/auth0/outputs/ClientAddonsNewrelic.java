@@ -48,9 +48,9 @@ public final class ClientAddonsNewrelic {
             return this;
         }
         public ClientAddonsNewrelic build() {
-            final var o = new ClientAddonsNewrelic();
-            o.account = account;
-            return o;
+            final var _resultValue = new ClientAddonsNewrelic();
+            _resultValue.account = account;
+            return _resultValue;
         }
     }
 }

@@ -71,7 +71,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Indicates whether the rule is enabled.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -85,7 +85,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -99,7 +99,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Order in which the rule executes relative to other rules. Lower-valued rules execute first.
      * 
      */
-    @Export(name="order", type=Integer.class, parameters={})
+    @Export(name="order", refs={Integer.class}, tree="[0]")
     private Output<Integer> order;
 
     /**
@@ -113,7 +113,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Code to be executed when the rule runs.
      * 
      */
-    @Export(name="script", type=String.class, parameters={})
+    @Export(name="script", refs={String.class}, tree="[0]")
     private Output<String> script;
 
     /**

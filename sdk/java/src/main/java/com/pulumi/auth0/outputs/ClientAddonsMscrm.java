@@ -48,9 +48,9 @@ public final class ClientAddonsMscrm {
             return this;
         }
         public ClientAddonsMscrm build() {
-            final var o = new ClientAddonsMscrm();
-            o.url = url;
-            return o;
+            final var _resultValue = new ClientAddonsMscrm();
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

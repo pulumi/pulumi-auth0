@@ -68,10 +68,10 @@ public final class BrandingThemeFontsBodyText {
             return this;
         }
         public BrandingThemeFontsBodyText build() {
-            final var o = new BrandingThemeFontsBodyText();
-            o.bold = bold;
-            o.size = size;
-            return o;
+            final var _resultValue = new BrandingThemeFontsBodyText();
+            _resultValue.bold = bold;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

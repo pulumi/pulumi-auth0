@@ -38,9 +38,9 @@ public final class GetBrandingUniversalLogin {
             return this;
         }
         public GetBrandingUniversalLogin build() {
-            final var o = new GetBrandingUniversalLogin();
-            o.body = body;
-            return o;
+            final var _resultValue = new GetBrandingUniversalLogin();
+            _resultValue.body = body;
+            return _resultValue;
         }
     }
 }

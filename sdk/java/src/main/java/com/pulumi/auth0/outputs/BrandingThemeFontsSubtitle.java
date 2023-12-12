@@ -68,10 +68,10 @@ public final class BrandingThemeFontsSubtitle {
             return this;
         }
         public BrandingThemeFontsSubtitle build() {
-            final var o = new BrandingThemeFontsSubtitle();
-            o.bold = bold;
-            o.size = size;
-            return o;
+            final var _resultValue = new BrandingThemeFontsSubtitle();
+            _resultValue.bold = bold;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

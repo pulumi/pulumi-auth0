@@ -48,9 +48,9 @@ public final class TenantSessionCookie {
             return this;
         }
         public TenantSessionCookie build() {
-            final var o = new TenantSessionCookie();
-            o.mode = mode;
-            return o;
+            final var _resultValue = new TenantSessionCookie();
+            _resultValue.mode = mode;
+            return _resultValue;
         }
     }
 }

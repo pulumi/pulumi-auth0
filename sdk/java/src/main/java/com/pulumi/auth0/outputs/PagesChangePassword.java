@@ -66,10 +66,10 @@ public final class PagesChangePassword {
             return this;
         }
         public PagesChangePassword build() {
-            final var o = new PagesChangePassword();
-            o.enabled = enabled;
-            o.html = html;
-            return o;
+            final var _resultValue = new PagesChangePassword();
+            _resultValue.enabled = enabled;
+            _resultValue.html = html;
+            return _resultValue;
         }
     }
 }

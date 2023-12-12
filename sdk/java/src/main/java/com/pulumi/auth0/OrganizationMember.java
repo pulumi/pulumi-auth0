@@ -81,7 +81,7 @@ public class OrganizationMember extends com.pulumi.resources.CustomResource {
      * The ID of the organization to assign the member to.
      * 
      */
-    @Export(name="organizationId", type=String.class, parameters={})
+    @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
@@ -95,7 +95,7 @@ public class OrganizationMember extends com.pulumi.resources.CustomResource {
      * ID of the user to add as an organization member.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

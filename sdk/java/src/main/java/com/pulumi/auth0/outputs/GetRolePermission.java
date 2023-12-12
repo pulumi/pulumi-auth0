@@ -71,12 +71,12 @@ public final class GetRolePermission {
             return this;
         }
         public GetRolePermission build() {
-            final var o = new GetRolePermission();
-            o.description = description;
-            o.name = name;
-            o.resourceServerIdentifier = resourceServerIdentifier;
-            o.resourceServerName = resourceServerName;
-            return o;
+            final var _resultValue = new GetRolePermission();
+            _resultValue.description = description;
+            _resultValue.name = name;
+            _resultValue.resourceServerIdentifier = resourceServerIdentifier;
+            _resultValue.resourceServerName = resourceServerName;
+            return _resultValue;
         }
     }
 }

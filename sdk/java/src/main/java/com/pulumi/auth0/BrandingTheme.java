@@ -143,13 +143,13 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="auth0:index/brandingTheme:BrandingTheme")
 public class BrandingTheme extends com.pulumi.resources.CustomResource {
-    @Export(name="borders", type=BrandingThemeBorders.class, parameters={})
+    @Export(name="borders", refs={BrandingThemeBorders.class}, tree="[0]")
     private Output<BrandingThemeBorders> borders;
 
     public Output<BrandingThemeBorders> borders() {
         return this.borders;
     }
-    @Export(name="colors", type=BrandingThemeColors.class, parameters={})
+    @Export(name="colors", refs={BrandingThemeColors.class}, tree="[0]")
     private Output<BrandingThemeColors> colors;
 
     public Output<BrandingThemeColors> colors() {
@@ -159,7 +159,7 @@ public class BrandingTheme extends com.pulumi.resources.CustomResource {
      * The display name for the branding theme.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -169,19 +169,19 @@ public class BrandingTheme extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
     }
-    @Export(name="fonts", type=BrandingThemeFonts.class, parameters={})
+    @Export(name="fonts", refs={BrandingThemeFonts.class}, tree="[0]")
     private Output<BrandingThemeFonts> fonts;
 
     public Output<BrandingThemeFonts> fonts() {
         return this.fonts;
     }
-    @Export(name="pageBackground", type=BrandingThemePageBackground.class, parameters={})
+    @Export(name="pageBackground", refs={BrandingThemePageBackground.class}, tree="[0]")
     private Output<BrandingThemePageBackground> pageBackground;
 
     public Output<BrandingThemePageBackground> pageBackground() {
         return this.pageBackground;
     }
-    @Export(name="widget", type=BrandingThemeWidget.class, parameters={})
+    @Export(name="widget", refs={BrandingThemeWidget.class}, tree="[0]")
     private Output<BrandingThemeWidget> widget;
 
     public Output<BrandingThemeWidget> widget() {

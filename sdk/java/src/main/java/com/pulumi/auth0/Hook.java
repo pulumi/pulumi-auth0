@@ -77,7 +77,7 @@ public class Hook extends com.pulumi.resources.CustomResource {
      * Dependencies of this hook used by the WebTask server.
      * 
      */
-    @Export(name="dependencies", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="dependencies", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> dependencies;
 
     /**
@@ -91,7 +91,7 @@ public class Hook extends com.pulumi.resources.CustomResource {
      * Whether the hook is enabled, or disabled.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -105,7 +105,7 @@ public class Hook extends com.pulumi.resources.CustomResource {
      * Name of this hook.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -119,7 +119,7 @@ public class Hook extends com.pulumi.resources.CustomResource {
      * Code to be executed when this hook runs.
      * 
      */
-    @Export(name="script", type=String.class, parameters={})
+    @Export(name="script", refs={String.class}, tree="[0]")
     private Output<String> script;
 
     /**
@@ -133,7 +133,7 @@ public class Hook extends com.pulumi.resources.CustomResource {
      * The secrets associated with the hook.
      * 
      */
-    @Export(name="secrets", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="secrets", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> secrets;
 
     /**
@@ -147,7 +147,7 @@ public class Hook extends com.pulumi.resources.CustomResource {
      * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
      * 
      */
-    @Export(name="triggerId", type=String.class, parameters={})
+    @Export(name="triggerId", refs={String.class}, tree="[0]")
     private Output<String> triggerId;
 
     /**

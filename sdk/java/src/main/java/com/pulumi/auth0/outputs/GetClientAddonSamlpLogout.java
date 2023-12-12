@@ -50,10 +50,10 @@ public final class GetClientAddonSamlpLogout {
             return this;
         }
         public GetClientAddonSamlpLogout build() {
-            final var o = new GetClientAddonSamlpLogout();
-            o.callback = callback;
-            o.sloEnabled = sloEnabled;
-            return o;
+            final var _resultValue = new GetClientAddonSamlpLogout();
+            _resultValue.callback = callback;
+            _resultValue.sloEnabled = sloEnabled;
+            return _resultValue;
         }
     }
 }

@@ -50,10 +50,10 @@ public final class GetOrganizationBranding {
             return this;
         }
         public GetOrganizationBranding build() {
-            final var o = new GetOrganizationBranding();
-            o.colors = colors;
-            o.logoUrl = logoUrl;
-            return o;
+            final var _resultValue = new GetOrganizationBranding();
+            _resultValue.colors = colors;
+            _resultValue.logoUrl = logoUrl;
+            return _resultValue;
         }
     }
 }

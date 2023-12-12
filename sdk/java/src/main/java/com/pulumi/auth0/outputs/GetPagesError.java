@@ -61,11 +61,11 @@ public final class GetPagesError {
             return this;
         }
         public GetPagesError build() {
-            final var o = new GetPagesError();
-            o.html = html;
-            o.showLogLink = showLogLink;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetPagesError();
+            _resultValue.html = html;
+            _resultValue.showLogLink = showLogLink;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

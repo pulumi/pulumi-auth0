@@ -428,28 +428,28 @@ public final class GetTenantResult {
             return this;
         }
         public GetTenantResult build() {
-            final var o = new GetTenantResult();
-            o.allowOrganizationNameInAuthenticationApi = allowOrganizationNameInAuthenticationApi;
-            o.allowedLogoutUrls = allowedLogoutUrls;
-            o.customizeMfaInPostloginAction = customizeMfaInPostloginAction;
-            o.defaultAudience = defaultAudience;
-            o.defaultDirectory = defaultDirectory;
-            o.defaultRedirectionUri = defaultRedirectionUri;
-            o.domain = domain;
-            o.enabledLocales = enabledLocales;
-            o.flags = flags;
-            o.friendlyName = friendlyName;
-            o.id = id;
-            o.idleSessionLifetime = idleSessionLifetime;
-            o.managementApiIdentifier = managementApiIdentifier;
-            o.pictureUrl = pictureUrl;
-            o.sandboxVersion = sandboxVersion;
-            o.sessionCookies = sessionCookies;
-            o.sessionLifetime = sessionLifetime;
-            o.sessions = sessions;
-            o.supportEmail = supportEmail;
-            o.supportUrl = supportUrl;
-            return o;
+            final var _resultValue = new GetTenantResult();
+            _resultValue.allowOrganizationNameInAuthenticationApi = allowOrganizationNameInAuthenticationApi;
+            _resultValue.allowedLogoutUrls = allowedLogoutUrls;
+            _resultValue.customizeMfaInPostloginAction = customizeMfaInPostloginAction;
+            _resultValue.defaultAudience = defaultAudience;
+            _resultValue.defaultDirectory = defaultDirectory;
+            _resultValue.defaultRedirectionUri = defaultRedirectionUri;
+            _resultValue.domain = domain;
+            _resultValue.enabledLocales = enabledLocales;
+            _resultValue.flags = flags;
+            _resultValue.friendlyName = friendlyName;
+            _resultValue.id = id;
+            _resultValue.idleSessionLifetime = idleSessionLifetime;
+            _resultValue.managementApiIdentifier = managementApiIdentifier;
+            _resultValue.pictureUrl = pictureUrl;
+            _resultValue.sandboxVersion = sandboxVersion;
+            _resultValue.sessionCookies = sessionCookies;
+            _resultValue.sessionLifetime = sessionLifetime;
+            _resultValue.sessions = sessions;
+            _resultValue.supportEmail = supportEmail;
+            _resultValue.supportUrl = supportUrl;
+            return _resultValue;
         }
     }
 }

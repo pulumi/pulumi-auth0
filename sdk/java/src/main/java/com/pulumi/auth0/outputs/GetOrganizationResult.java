@@ -186,16 +186,16 @@ public final class GetOrganizationResult {
             return this;
         }
         public GetOrganizationResult build() {
-            final var o = new GetOrganizationResult();
-            o.brandings = brandings;
-            o.connections = connections;
-            o.displayName = displayName;
-            o.id = id;
-            o.members = members;
-            o.metadata = metadata;
-            o.name = name;
-            o.organizationId = organizationId;
-            return o;
+            final var _resultValue = new GetOrganizationResult();
+            _resultValue.brandings = brandings;
+            _resultValue.connections = connections;
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.members = members;
+            _resultValue.metadata = metadata;
+            _resultValue.name = name;
+            _resultValue.organizationId = organizationId;
+            return _resultValue;
         }
     }
 }

@@ -37,7 +37,7 @@ public class UserPermissions extends com.pulumi.resources.CustomResource {
      * List of API permissions granted to the user.
      * 
      */
-    @Export(name="permissions", type=List.class, parameters={UserPermissionsPermission.class})
+    @Export(name="permissions", refs={List.class,UserPermissionsPermission.class}, tree="[0,1]")
     private Output<List<UserPermissionsPermission>> permissions;
 
     /**
@@ -51,7 +51,7 @@ public class UserPermissions extends com.pulumi.resources.CustomResource {
      * ID of the user to associate the permission to.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

@@ -207,17 +207,17 @@ public final class BrandingThemeFonts {
             return this;
         }
         public BrandingThemeFonts build() {
-            final var o = new BrandingThemeFonts();
-            o.bodyText = bodyText;
-            o.buttonsText = buttonsText;
-            o.fontUrl = fontUrl;
-            o.inputLabels = inputLabels;
-            o.links = links;
-            o.linksStyle = linksStyle;
-            o.referenceTextSize = referenceTextSize;
-            o.subtitle = subtitle;
-            o.title = title;
-            return o;
+            final var _resultValue = new BrandingThemeFonts();
+            _resultValue.bodyText = bodyText;
+            _resultValue.buttonsText = buttonsText;
+            _resultValue.fontUrl = fontUrl;
+            _resultValue.inputLabels = inputLabels;
+            _resultValue.links = links;
+            _resultValue.linksStyle = linksStyle;
+            _resultValue.referenceTextSize = referenceTextSize;
+            _resultValue.subtitle = subtitle;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

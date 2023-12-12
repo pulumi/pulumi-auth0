@@ -25,8 +25,8 @@ public final class GetClientAddonWsfed {
         }
 
         public GetClientAddonWsfed build() {
-            final var o = new GetClientAddonWsfed();
-            return o;
+            final var _resultValue = new GetClientAddonWsfed();
+            return _resultValue;
         }
     }
 }

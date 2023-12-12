@@ -60,11 +60,11 @@ public final class GetConnectionOptionAttributeMap {
             return this;
         }
         public GetConnectionOptionAttributeMap build() {
-            final var o = new GetConnectionOptionAttributeMap();
-            o.attributes = attributes;
-            o.mappingMode = mappingMode;
-            o.userinfoScope = userinfoScope;
-            return o;
+            final var _resultValue = new GetConnectionOptionAttributeMap();
+            _resultValue.attributes = attributes;
+            _resultValue.mappingMode = mappingMode;
+            _resultValue.userinfoScope = userinfoScope;
+            return _resultValue;
         }
     }
 }

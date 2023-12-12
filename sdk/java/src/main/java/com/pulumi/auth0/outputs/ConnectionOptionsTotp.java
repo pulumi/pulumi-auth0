@@ -67,10 +67,10 @@ public final class ConnectionOptionsTotp {
             return this;
         }
         public ConnectionOptionsTotp build() {
-            final var o = new ConnectionOptionsTotp();
-            o.length = length;
-            o.timeStep = timeStep;
-            return o;
+            final var _resultValue = new ConnectionOptionsTotp();
+            _resultValue.length = length;
+            _resultValue.timeStep = timeStep;
+            return _resultValue;
         }
     }
 }

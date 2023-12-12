@@ -65,10 +65,10 @@ public final class ActionSupportedTriggers {
             return this;
         }
         public ActionSupportedTriggers build() {
-            final var o = new ActionSupportedTriggers();
-            o.id = id;
-            o.version = version;
-            return o;
+            final var _resultValue = new ActionSupportedTriggers();
+            _resultValue.id = id;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

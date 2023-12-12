@@ -220,18 +220,18 @@ public final class ClientCredentialsPrivateKeyJwtCredential {
             return this;
         }
         public ClientCredentialsPrivateKeyJwtCredential build() {
-            final var o = new ClientCredentialsPrivateKeyJwtCredential();
-            o.algorithm = algorithm;
-            o.createdAt = createdAt;
-            o.credentialType = credentialType;
-            o.expiresAt = expiresAt;
-            o.id = id;
-            o.keyId = keyId;
-            o.name = name;
-            o.parseExpiryFromCert = parseExpiryFromCert;
-            o.pem = pem;
-            o.updatedAt = updatedAt;
-            return o;
+            final var _resultValue = new ClientCredentialsPrivateKeyJwtCredential();
+            _resultValue.algorithm = algorithm;
+            _resultValue.createdAt = createdAt;
+            _resultValue.credentialType = credentialType;
+            _resultValue.expiresAt = expiresAt;
+            _resultValue.id = id;
+            _resultValue.keyId = keyId;
+            _resultValue.name = name;
+            _resultValue.parseExpiryFromCert = parseExpiryFromCert;
+            _resultValue.pem = pem;
+            _resultValue.updatedAt = updatedAt;
+            return _resultValue;
         }
     }
 }

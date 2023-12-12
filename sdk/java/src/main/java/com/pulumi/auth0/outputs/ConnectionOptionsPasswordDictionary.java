@@ -72,10 +72,10 @@ public final class ConnectionOptionsPasswordDictionary {
             return this;
         }
         public ConnectionOptionsPasswordDictionary build() {
-            final var o = new ConnectionOptionsPasswordDictionary();
-            o.dictionaries = dictionaries;
-            o.enable = enable;
-            return o;
+            final var _resultValue = new ConnectionOptionsPasswordDictionary();
+            _resultValue.dictionaries = dictionaries;
+            _resultValue.enable = enable;
+            return _resultValue;
         }
     }
 }

@@ -29,7 +29,7 @@ public class RolePermissions extends com.pulumi.resources.CustomResource {
      * List of API permissions granted to the role.
      * 
      */
-    @Export(name="permissions", type=List.class, parameters={RolePermissionsPermission.class})
+    @Export(name="permissions", refs={List.class,RolePermissionsPermission.class}, tree="[0,1]")
     private Output<List<RolePermissionsPermission>> permissions;
 
     /**
@@ -43,7 +43,7 @@ public class RolePermissions extends com.pulumi.resources.CustomResource {
      * ID of the role to associate the permission to.
      * 
      */
-    @Export(name="roleId", type=String.class, parameters={})
+    @Export(name="roleId", refs={String.class}, tree="[0]")
     private Output<String> roleId;
 
     /**

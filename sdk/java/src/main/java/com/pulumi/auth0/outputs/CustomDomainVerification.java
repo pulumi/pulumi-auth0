@@ -43,9 +43,9 @@ public final class CustomDomainVerification {
             return methods(List.of(methods));
         }
         public CustomDomainVerification build() {
-            final var o = new CustomDomainVerification();
-            o.methods = methods;
-            return o;
+            final var _resultValue = new CustomDomainVerification();
+            _resultValue.methods = methods;
+            return _resultValue;
         }
     }
 }

@@ -95,7 +95,7 @@ public class OrganizationMemberRole extends com.pulumi.resources.CustomResource 
      * The ID of the organization.
      * 
      */
-    @Export(name="organizationId", type=String.class, parameters={})
+    @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
@@ -109,7 +109,7 @@ public class OrganizationMemberRole extends com.pulumi.resources.CustomResource 
      * Description of the role.
      * 
      */
-    @Export(name="roleDescription", type=String.class, parameters={})
+    @Export(name="roleDescription", refs={String.class}, tree="[0]")
     private Output<String> roleDescription;
 
     /**
@@ -123,7 +123,7 @@ public class OrganizationMemberRole extends com.pulumi.resources.CustomResource 
      * The role ID to assign to the organization member.
      * 
      */
-    @Export(name="roleId", type=String.class, parameters={})
+    @Export(name="roleId", refs={String.class}, tree="[0]")
     private Output<String> roleId;
 
     /**
@@ -137,7 +137,7 @@ public class OrganizationMemberRole extends com.pulumi.resources.CustomResource 
      * Name of the role.
      * 
      */
-    @Export(name="roleName", type=String.class, parameters={})
+    @Export(name="roleName", refs={String.class}, tree="[0]")
     private Output<String> roleName;
 
     /**
@@ -151,7 +151,7 @@ public class OrganizationMemberRole extends com.pulumi.resources.CustomResource 
      * The user ID of the organization member.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

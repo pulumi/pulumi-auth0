@@ -139,13 +139,13 @@ public final class GetPagesResult {
             return logins(List.of(logins));
         }
         public GetPagesResult build() {
-            final var o = new GetPagesResult();
-            o.changePasswords = changePasswords;
-            o.errors = errors;
-            o.guardianMfas = guardianMfas;
-            o.id = id;
-            o.logins = logins;
-            return o;
+            final var _resultValue = new GetPagesResult();
+            _resultValue.changePasswords = changePasswords;
+            _resultValue.errors = errors;
+            _resultValue.guardianMfas = guardianMfas;
+            _resultValue.id = id;
+            _resultValue.logins = logins;
+            return _resultValue;
         }
     }
 }

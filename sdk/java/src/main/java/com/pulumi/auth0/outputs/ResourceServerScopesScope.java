@@ -67,10 +67,10 @@ public final class ResourceServerScopesScope {
             return this;
         }
         public ResourceServerScopesScope build() {
-            final var o = new ResourceServerScopesScope();
-            o.description = description;
-            o.name = name;
-            return o;
+            final var _resultValue = new ResourceServerScopesScope();
+            _resultValue.description = description;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

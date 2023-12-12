@@ -154,14 +154,14 @@ public final class GetBrandingResult {
             return universalLogins(List.of(universalLogins));
         }
         public GetBrandingResult build() {
-            final var o = new GetBrandingResult();
-            o.colors = colors;
-            o.faviconUrl = faviconUrl;
-            o.fonts = fonts;
-            o.id = id;
-            o.logoUrl = logoUrl;
-            o.universalLogins = universalLogins;
-            return o;
+            final var _resultValue = new GetBrandingResult();
+            _resultValue.colors = colors;
+            _resultValue.faviconUrl = faviconUrl;
+            _resultValue.fonts = fonts;
+            _resultValue.id = id;
+            _resultValue.logoUrl = logoUrl;
+            _resultValue.universalLogins = universalLogins;
+            return _resultValue;
         }
     }
 }

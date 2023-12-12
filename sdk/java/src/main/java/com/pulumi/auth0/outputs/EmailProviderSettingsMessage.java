@@ -68,10 +68,10 @@ public final class EmailProviderSettingsMessage {
             return this;
         }
         public EmailProviderSettingsMessage build() {
-            final var o = new EmailProviderSettingsMessage();
-            o.configurationSetName = configurationSetName;
-            o.viewContentLink = viewContentLink;
-            return o;
+            final var _resultValue = new EmailProviderSettingsMessage();
+            _resultValue.configurationSetName = configurationSetName;
+            _resultValue.viewContentLink = viewContentLink;
+            return _resultValue;
         }
     }
 }

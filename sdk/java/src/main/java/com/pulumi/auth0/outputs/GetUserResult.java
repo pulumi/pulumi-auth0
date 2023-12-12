@@ -416,28 +416,28 @@ public final class GetUserResult {
             return this;
         }
         public GetUserResult build() {
-            final var o = new GetUserResult();
-            o.appMetadata = appMetadata;
-            o.blocked = blocked;
-            o.connectionName = connectionName;
-            o.email = email;
-            o.emailVerified = emailVerified;
-            o.familyName = familyName;
-            o.givenName = givenName;
-            o.id = id;
-            o.name = name;
-            o.nickname = nickname;
-            o.password = password;
-            o.permissions = permissions;
-            o.phoneNumber = phoneNumber;
-            o.phoneVerified = phoneVerified;
-            o.picture = picture;
-            o.roles = roles;
-            o.userId = userId;
-            o.userMetadata = userMetadata;
-            o.username = username;
-            o.verifyEmail = verifyEmail;
-            return o;
+            final var _resultValue = new GetUserResult();
+            _resultValue.appMetadata = appMetadata;
+            _resultValue.blocked = blocked;
+            _resultValue.connectionName = connectionName;
+            _resultValue.email = email;
+            _resultValue.emailVerified = emailVerified;
+            _resultValue.familyName = familyName;
+            _resultValue.givenName = givenName;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.nickname = nickname;
+            _resultValue.password = password;
+            _resultValue.permissions = permissions;
+            _resultValue.phoneNumber = phoneNumber;
+            _resultValue.phoneVerified = phoneVerified;
+            _resultValue.picture = picture;
+            _resultValue.roles = roles;
+            _resultValue.userId = userId;
+            _resultValue.userMetadata = userMetadata;
+            _resultValue.username = username;
+            _resultValue.verifyEmail = verifyEmail;
+            return _resultValue;
         }
     }
 }

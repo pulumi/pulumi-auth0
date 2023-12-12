@@ -49,10 +49,10 @@ public final class GetConnectionOptionValidationUsername {
             return this;
         }
         public GetConnectionOptionValidationUsername build() {
-            final var o = new GetConnectionOptionValidationUsername();
-            o.max = max;
-            o.min = min;
-            return o;
+            final var _resultValue = new GetConnectionOptionValidationUsername();
+            _resultValue.max = max;
+            _resultValue.min = min;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class TriggerActionsAction {
             return this;
         }
         public TriggerActionsAction build() {
-            final var o = new TriggerActionsAction();
-            o.displayName = displayName;
-            o.id = id;
-            return o;
+            final var _resultValue = new TriggerActionsAction();
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

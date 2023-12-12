@@ -106,12 +106,12 @@ public final class GuardianPushDirectApns {
             return this;
         }
         public GuardianPushDirectApns build() {
-            final var o = new GuardianPushDirectApns();
-            o.bundleId = bundleId;
-            o.enabled = enabled;
-            o.p12 = p12;
-            o.sandbox = sandbox;
-            return o;
+            final var _resultValue = new GuardianPushDirectApns();
+            _resultValue.bundleId = bundleId;
+            _resultValue.enabled = enabled;
+            _resultValue.p12 = p12;
+            _resultValue.sandbox = sandbox;
+            return _resultValue;
         }
     }
 }

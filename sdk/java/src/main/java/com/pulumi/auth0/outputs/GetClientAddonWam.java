@@ -38,9 +38,9 @@ public final class GetClientAddonWam {
             return this;
         }
         public GetClientAddonWam build() {
-            final var o = new GetClientAddonWam();
-            o.masterKey = masterKey;
-            return o;
+            final var _resultValue = new GetClientAddonWam();
+            _resultValue.masterKey = masterKey;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class GetTenantSession {
             return this;
         }
         public GetTenantSession build() {
-            final var o = new GetTenantSession();
-            o.oidcLogoutPromptEnabled = oidcLogoutPromptEnabled;
-            return o;
+            final var _resultValue = new GetTenantSession();
+            _resultValue.oidcLogoutPromptEnabled = oidcLogoutPromptEnabled;
+            return _resultValue;
         }
     }
 }

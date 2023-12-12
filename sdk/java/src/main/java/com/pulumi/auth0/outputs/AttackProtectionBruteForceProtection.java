@@ -133,13 +133,13 @@ public final class AttackProtectionBruteForceProtection {
             return shields(List.of(shields));
         }
         public AttackProtectionBruteForceProtection build() {
-            final var o = new AttackProtectionBruteForceProtection();
-            o.allowlists = allowlists;
-            o.enabled = enabled;
-            o.maxAttempts = maxAttempts;
-            o.mode = mode;
-            o.shields = shields;
-            return o;
+            final var _resultValue = new AttackProtectionBruteForceProtection();
+            _resultValue.allowlists = allowlists;
+            _resultValue.enabled = enabled;
+            _resultValue.maxAttempts = maxAttempts;
+            _resultValue.mode = mode;
+            _resultValue.shields = shields;
+            return _resultValue;
         }
     }
 }

@@ -278,21 +278,21 @@ public final class ClientAddonsAzureBlob {
             return this;
         }
         public ClientAddonsAzureBlob build() {
-            final var o = new ClientAddonsAzureBlob();
-            o.accountName = accountName;
-            o.blobDelete = blobDelete;
-            o.blobName = blobName;
-            o.blobRead = blobRead;
-            o.blobWrite = blobWrite;
-            o.containerDelete = containerDelete;
-            o.containerList = containerList;
-            o.containerName = containerName;
-            o.containerRead = containerRead;
-            o.containerWrite = containerWrite;
-            o.expiration = expiration;
-            o.signedIdentifier = signedIdentifier;
-            o.storageAccessKey = storageAccessKey;
-            return o;
+            final var _resultValue = new ClientAddonsAzureBlob();
+            _resultValue.accountName = accountName;
+            _resultValue.blobDelete = blobDelete;
+            _resultValue.blobName = blobName;
+            _resultValue.blobRead = blobRead;
+            _resultValue.blobWrite = blobWrite;
+            _resultValue.containerDelete = containerDelete;
+            _resultValue.containerList = containerList;
+            _resultValue.containerName = containerName;
+            _resultValue.containerRead = containerRead;
+            _resultValue.containerWrite = containerWrite;
+            _resultValue.expiration = expiration;
+            _resultValue.signedIdentifier = signedIdentifier;
+            _resultValue.storageAccessKey = storageAccessKey;
+            return _resultValue;
         }
     }
 }

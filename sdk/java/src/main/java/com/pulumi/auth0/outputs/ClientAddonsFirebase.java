@@ -125,13 +125,13 @@ public final class ClientAddonsFirebase {
             return this;
         }
         public ClientAddonsFirebase build() {
-            final var o = new ClientAddonsFirebase();
-            o.clientEmail = clientEmail;
-            o.lifetimeInSeconds = lifetimeInSeconds;
-            o.privateKey = privateKey;
-            o.privateKeyId = privateKeyId;
-            o.secret = secret;
-            return o;
+            final var _resultValue = new ClientAddonsFirebase();
+            _resultValue.clientEmail = clientEmail;
+            _resultValue.lifetimeInSeconds = lifetimeInSeconds;
+            _resultValue.privateKey = privateKey;
+            _resultValue.privateKeyId = privateKeyId;
+            _resultValue.secret = secret;
+            return _resultValue;
         }
     }
 }

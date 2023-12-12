@@ -87,7 +87,7 @@ public class EmailTemplate extends com.pulumi.resources.CustomResource {
      * Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      * 
      */
-    @Export(name="body", type=String.class, parameters={})
+    @Export(name="body", refs={String.class}, tree="[0]")
     private Output<String> body;
 
     /**
@@ -101,7 +101,7 @@ public class EmailTemplate extends com.pulumi.resources.CustomResource {
      * Indicates whether the template is enabled.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -115,7 +115,7 @@ public class EmailTemplate extends com.pulumi.resources.CustomResource {
      * Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      * 
      */
-    @Export(name="from", type=String.class, parameters={})
+    @Export(name="from", refs={String.class}, tree="[0]")
     private Output<String> from;
 
     /**
@@ -129,7 +129,7 @@ public class EmailTemplate extends com.pulumi.resources.CustomResource {
      * Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
      * 
      */
-    @Export(name="includeEmailInRedirect", type=Boolean.class, parameters={})
+    @Export(name="includeEmailInRedirect", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> includeEmailInRedirect;
 
     /**
@@ -143,7 +143,7 @@ public class EmailTemplate extends com.pulumi.resources.CustomResource {
      * URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
      * 
      */
-    @Export(name="resultUrl", type=String.class, parameters={})
+    @Export(name="resultUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resultUrl;
 
     /**
@@ -157,7 +157,7 @@ public class EmailTemplate extends com.pulumi.resources.CustomResource {
      * Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      * 
      */
-    @Export(name="subject", type=String.class, parameters={})
+    @Export(name="subject", refs={String.class}, tree="[0]")
     private Output<String> subject;
 
     /**
@@ -171,7 +171,7 @@ public class EmailTemplate extends com.pulumi.resources.CustomResource {
      * Syntax of the template body. You can use either text or HTML with Liquid syntax.
      * 
      */
-    @Export(name="syntax", type=String.class, parameters={})
+    @Export(name="syntax", refs={String.class}, tree="[0]")
     private Output<String> syntax;
 
     /**
@@ -185,7 +185,7 @@ public class EmailTemplate extends com.pulumi.resources.CustomResource {
      * Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
      * 
      */
-    @Export(name="template", type=String.class, parameters={})
+    @Export(name="template", refs={String.class}, tree="[0]")
     private Output<String> template;
 
     /**
@@ -199,7 +199,7 @@ public class EmailTemplate extends com.pulumi.resources.CustomResource {
      * Number of seconds during which the link within the email will be valid.
      * 
      */
-    @Export(name="urlLifetimeInSeconds", type=Integer.class, parameters={})
+    @Export(name="urlLifetimeInSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> urlLifetimeInSeconds;
 
     /**

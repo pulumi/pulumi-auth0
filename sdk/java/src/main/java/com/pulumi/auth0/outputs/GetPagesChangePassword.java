@@ -50,10 +50,10 @@ public final class GetPagesChangePassword {
             return this;
         }
         public GetPagesChangePassword build() {
-            final var o = new GetPagesChangePassword();
-            o.enabled = enabled;
-            o.html = html;
-            return o;
+            final var _resultValue = new GetPagesChangePassword();
+            _resultValue.enabled = enabled;
+            _resultValue.html = html;
+            return _resultValue;
         }
     }
 }

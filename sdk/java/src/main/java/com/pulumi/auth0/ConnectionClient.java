@@ -76,7 +76,7 @@ public class ConnectionClient extends com.pulumi.resources.CustomResource {
      * ID of the client for which the connection is enabled.
      * 
      */
-    @Export(name="clientId", type=String.class, parameters={})
+    @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output<String> clientId;
 
     /**
@@ -90,7 +90,7 @@ public class ConnectionClient extends com.pulumi.resources.CustomResource {
      * ID of the connection on which to enable the client.
      * 
      */
-    @Export(name="connectionId", type=String.class, parameters={})
+    @Export(name="connectionId", refs={String.class}, tree="[0]")
     private Output<String> connectionId;
 
     /**
@@ -104,7 +104,7 @@ public class ConnectionClient extends com.pulumi.resources.CustomResource {
      * The name of the connection on which to enable the client.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -118,7 +118,7 @@ public class ConnectionClient extends com.pulumi.resources.CustomResource {
      * The strategy of the connection on which to enable the client.
      * 
      */
-    @Export(name="strategy", type=String.class, parameters={})
+    @Export(name="strategy", refs={String.class}, tree="[0]")
     private Output<String> strategy;
 
     /**

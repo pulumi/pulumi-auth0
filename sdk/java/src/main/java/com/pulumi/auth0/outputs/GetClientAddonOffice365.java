@@ -49,10 +49,10 @@ public final class GetClientAddonOffice365 {
             return this;
         }
         public GetClientAddonOffice365 build() {
-            final var o = new GetClientAddonOffice365();
-            o.connection = connection;
-            o.domain = domain;
-            return o;
+            final var _resultValue = new GetClientAddonOffice365();
+            _resultValue.connection = connection;
+            _resultValue.domain = domain;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class GetConnectionOptionPasswordNoPersonalInfo {
             return this;
         }
         public GetConnectionOptionPasswordNoPersonalInfo build() {
-            final var o = new GetConnectionOptionPasswordNoPersonalInfo();
-            o.enable = enable;
-            return o;
+            final var _resultValue = new GetConnectionOptionPasswordNoPersonalInfo();
+            _resultValue.enable = enable;
+            return _resultValue;
         }
     }
 }

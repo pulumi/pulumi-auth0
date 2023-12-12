@@ -65,10 +65,10 @@ public final class ActionSecret {
             return this;
         }
         public ActionSecret build() {
-            final var o = new ActionSecret();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new ActionSecret();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

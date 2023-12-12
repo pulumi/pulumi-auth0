@@ -90,7 +90,7 @@ public class EmailProvider extends com.pulumi.resources.CustomResource {
      * Configuration settings for the credentials for the email provider.
      * 
      */
-    @Export(name="credentials", type=EmailProviderCredentials.class, parameters={})
+    @Export(name="credentials", refs={EmailProviderCredentials.class}, tree="[0]")
     private Output<EmailProviderCredentials> credentials;
 
     /**
@@ -104,7 +104,7 @@ public class EmailProvider extends com.pulumi.resources.CustomResource {
      * Email address to use as the sender when no other &#34;from&#34; address is specified.
      * 
      */
-    @Export(name="defaultFromAddress", type=String.class, parameters={})
+    @Export(name="defaultFromAddress", refs={String.class}, tree="[0]")
     private Output<String> defaultFromAddress;
 
     /**
@@ -118,7 +118,7 @@ public class EmailProvider extends com.pulumi.resources.CustomResource {
      * Indicates whether the email provider is enabled.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -132,7 +132,7 @@ public class EmailProvider extends com.pulumi.resources.CustomResource {
      * Name of the email provider. Options include `azure_cs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -146,7 +146,7 @@ public class EmailProvider extends com.pulumi.resources.CustomResource {
      * Specific email provider settings.
      * 
      */
-    @Export(name="settings", type=EmailProviderSettings.class, parameters={})
+    @Export(name="settings", refs={EmailProviderSettings.class}, tree="[0]")
     private Output<EmailProviderSettings> settings;
 
     /**

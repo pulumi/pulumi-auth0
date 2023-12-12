@@ -105,12 +105,12 @@ public final class ClientAddonsSalesforceSandboxApi {
             return this;
         }
         public ClientAddonsSalesforceSandboxApi build() {
-            final var o = new ClientAddonsSalesforceSandboxApi();
-            o.clientId = clientId;
-            o.communityName = communityName;
-            o.communityUrlSection = communityUrlSection;
-            o.principal = principal;
-            return o;
+            final var _resultValue = new ClientAddonsSalesforceSandboxApi();
+            _resultValue.clientId = clientId;
+            _resultValue.communityName = communityName;
+            _resultValue.communityUrlSection = communityUrlSection;
+            _resultValue.principal = principal;
+            return _resultValue;
         }
     }
 }

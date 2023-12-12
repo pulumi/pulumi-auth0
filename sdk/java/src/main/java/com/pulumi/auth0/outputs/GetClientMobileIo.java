@@ -49,10 +49,10 @@ public final class GetClientMobileIo {
             return this;
         }
         public GetClientMobileIo build() {
-            final var o = new GetClientMobileIo();
-            o.appBundleIdentifier = appBundleIdentifier;
-            o.teamId = teamId;
-            return o;
+            final var _resultValue = new GetClientMobileIo();
+            _resultValue.appBundleIdentifier = appBundleIdentifier;
+            _resultValue.teamId = teamId;
+            return _resultValue;
         }
     }
 }

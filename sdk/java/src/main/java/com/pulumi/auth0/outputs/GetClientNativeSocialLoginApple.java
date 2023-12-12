@@ -38,9 +38,9 @@ public final class GetClientNativeSocialLoginApple {
             return this;
         }
         public GetClientNativeSocialLoginApple build() {
-            final var o = new GetClientNativeSocialLoginApple();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new GetClientNativeSocialLoginApple();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

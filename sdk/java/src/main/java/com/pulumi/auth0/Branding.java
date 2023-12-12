@@ -74,7 +74,7 @@ public class Branding extends com.pulumi.resources.CustomResource {
      * Configuration settings for colors for branding.
      * 
      */
-    @Export(name="colors", type=BrandingColors.class, parameters={})
+    @Export(name="colors", refs={BrandingColors.class}, tree="[0]")
     private Output<BrandingColors> colors;
 
     /**
@@ -88,7 +88,7 @@ public class Branding extends com.pulumi.resources.CustomResource {
      * URL for the favicon.
      * 
      */
-    @Export(name="faviconUrl", type=String.class, parameters={})
+    @Export(name="faviconUrl", refs={String.class}, tree="[0]")
     private Output<String> faviconUrl;
 
     /**
@@ -102,7 +102,7 @@ public class Branding extends com.pulumi.resources.CustomResource {
      * Configuration settings to customize the font.
      * 
      */
-    @Export(name="font", type=BrandingFont.class, parameters={})
+    @Export(name="font", refs={BrandingFont.class}, tree="[0]")
     private Output<BrandingFont> font;
 
     /**
@@ -116,7 +116,7 @@ public class Branding extends com.pulumi.resources.CustomResource {
      * URL of logo for branding.
      * 
      */
-    @Export(name="logoUrl", type=String.class, parameters={})
+    @Export(name="logoUrl", refs={String.class}, tree="[0]")
     private Output<String> logoUrl;
 
     /**
@@ -130,7 +130,7 @@ public class Branding extends com.pulumi.resources.CustomResource {
      * Configuration settings for Universal Login.
      * 
      */
-    @Export(name="universalLogin", type=BrandingUniversalLogin.class, parameters={})
+    @Export(name="universalLogin", refs={BrandingUniversalLogin.class}, tree="[0]")
     private Output</* @Nullable */ BrandingUniversalLogin> universalLogin;
 
     /**

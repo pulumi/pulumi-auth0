@@ -151,14 +151,14 @@ public final class GetRoleResult {
             return users(List.of(users));
         }
         public GetRoleResult build() {
-            final var o = new GetRoleResult();
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.permissions = permissions;
-            o.roleId = roleId;
-            o.users = users;
-            return o;
+            final var _resultValue = new GetRoleResult();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.permissions = permissions;
+            _resultValue.roleId = roleId;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

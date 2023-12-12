@@ -67,10 +67,10 @@ public final class ClientAddonsOffice365 {
             return this;
         }
         public ClientAddonsOffice365 build() {
-            final var o = new ClientAddonsOffice365();
-            o.connection = connection;
-            o.domain = domain;
-            return o;
+            final var _resultValue = new ClientAddonsOffice365();
+            _resultValue.connection = connection;
+            _resultValue.domain = domain;
+            return _resultValue;
         }
     }
 }

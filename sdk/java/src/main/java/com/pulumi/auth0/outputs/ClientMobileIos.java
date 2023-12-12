@@ -51,10 +51,10 @@ public final class ClientMobileIos {
             return this;
         }
         public ClientMobileIos build() {
-            final var o = new ClientMobileIos();
-            o.appBundleIdentifier = appBundleIdentifier;
-            o.teamId = teamId;
-            return o;
+            final var _resultValue = new ClientMobileIos();
+            _resultValue.appBundleIdentifier = appBundleIdentifier;
+            _resultValue.teamId = teamId;
+            return _resultValue;
         }
     }
 }

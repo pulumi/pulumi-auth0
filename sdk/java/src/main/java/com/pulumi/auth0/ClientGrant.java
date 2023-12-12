@@ -79,7 +79,7 @@ public class ClientGrant extends com.pulumi.resources.CustomResource {
      * Audience or API Identifier for this grant.
      * 
      */
-    @Export(name="audience", type=String.class, parameters={})
+    @Export(name="audience", refs={String.class}, tree="[0]")
     private Output<String> audience;
 
     /**
@@ -93,7 +93,7 @@ public class ClientGrant extends com.pulumi.resources.CustomResource {
      * ID of the client for this grant.
      * 
      */
-    @Export(name="clientId", type=String.class, parameters={})
+    @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output<String> clientId;
 
     /**
@@ -107,7 +107,7 @@ public class ClientGrant extends com.pulumi.resources.CustomResource {
      * Permissions (scopes) included in this grant.
      * 
      */
-    @Export(name="scopes", type=List.class, parameters={String.class})
+    @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> scopes;
 
     /**

@@ -70,10 +70,10 @@ public final class GetSigningKeysResult {
             return signingKeys(List.of(signingKeys));
         }
         public GetSigningKeysResult build() {
-            final var o = new GetSigningKeysResult();
-            o.id = id;
-            o.signingKeys = signingKeys;
-            return o;
+            final var _resultValue = new GetSigningKeysResult();
+            _resultValue.id = id;
+            _resultValue.signingKeys = signingKeys;
+            return _resultValue;
         }
     }
 }

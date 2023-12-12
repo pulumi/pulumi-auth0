@@ -40,9 +40,9 @@ public final class ClientNativeSocialLoginApple {
             return this;
         }
         public ClientNativeSocialLoginApple build() {
-            final var o = new ClientNativeSocialLoginApple();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClientNativeSocialLoginApple();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

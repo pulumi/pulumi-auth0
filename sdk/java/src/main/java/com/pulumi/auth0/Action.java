@@ -39,7 +39,7 @@ public class Action extends com.pulumi.resources.CustomResource {
      * The source code of the action.
      * 
      */
-    @Export(name="code", type=String.class, parameters={})
+    @Export(name="code", refs={String.class}, tree="[0]")
     private Output<String> code;
 
     /**
@@ -53,7 +53,7 @@ public class Action extends com.pulumi.resources.CustomResource {
      * List of third party npm modules, and their versions, that this action depends on.
      * 
      */
-    @Export(name="dependencies", type=List.class, parameters={ActionDependency.class})
+    @Export(name="dependencies", refs={List.class,ActionDependency.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ActionDependency>> dependencies;
 
     /**
@@ -67,7 +67,7 @@ public class Action extends com.pulumi.resources.CustomResource {
      * Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
      * 
      */
-    @Export(name="deploy", type=Boolean.class, parameters={})
+    @Export(name="deploy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deploy;
 
     /**
@@ -81,7 +81,7 @@ public class Action extends com.pulumi.resources.CustomResource {
      * Dependency name, e.g. `lodash`.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -95,7 +95,7 @@ public class Action extends com.pulumi.resources.CustomResource {
      * The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
      * 
      */
-    @Export(name="runtime", type=String.class, parameters={})
+    @Export(name="runtime", refs={String.class}, tree="[0]")
     private Output<String> runtime;
 
     /**
@@ -109,7 +109,7 @@ public class Action extends com.pulumi.resources.CustomResource {
      * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
      * 
      */
-    @Export(name="secrets", type=List.class, parameters={ActionSecret.class})
+    @Export(name="secrets", refs={List.class,ActionSecret.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ActionSecret>> secrets;
 
     /**
@@ -123,7 +123,7 @@ public class Action extends com.pulumi.resources.CustomResource {
      * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      * 
      */
-    @Export(name="supportedTriggers", type=ActionSupportedTriggers.class, parameters={})
+    @Export(name="supportedTriggers", refs={ActionSupportedTriggers.class}, tree="[0]")
     private Output<ActionSupportedTriggers> supportedTriggers;
 
     /**
@@ -137,7 +137,7 @@ public class Action extends com.pulumi.resources.CustomResource {
      * Version ID of the action. This value is available if `deploy` is set to true.
      * 
      */
-    @Export(name="versionId", type=String.class, parameters={})
+    @Export(name="versionId", refs={String.class}, tree="[0]")
     private Output<String> versionId;
 
     /**

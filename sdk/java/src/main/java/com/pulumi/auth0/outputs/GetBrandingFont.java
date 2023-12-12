@@ -38,9 +38,9 @@ public final class GetBrandingFont {
             return this;
         }
         public GetBrandingFont build() {
-            final var o = new GetBrandingFont();
-            o.url = url;
-            return o;
+            final var _resultValue = new GetBrandingFont();
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

@@ -141,15 +141,15 @@ public final class GetBrandingThemeResult {
             return widgets(List.of(widgets));
         }
         public GetBrandingThemeResult build() {
-            final var o = new GetBrandingThemeResult();
-            o.borders = borders;
-            o.colors = colors;
-            o.displayName = displayName;
-            o.fonts = fonts;
-            o.id = id;
-            o.pageBackgrounds = pageBackgrounds;
-            o.widgets = widgets;
-            return o;
+            final var _resultValue = new GetBrandingThemeResult();
+            _resultValue.borders = borders;
+            _resultValue.colors = colors;
+            _resultValue.displayName = displayName;
+            _resultValue.fonts = fonts;
+            _resultValue.id = id;
+            _resultValue.pageBackgrounds = pageBackgrounds;
+            _resultValue.widgets = widgets;
+            return _resultValue;
         }
     }
 }

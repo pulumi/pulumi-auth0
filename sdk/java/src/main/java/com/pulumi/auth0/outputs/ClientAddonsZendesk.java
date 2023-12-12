@@ -48,9 +48,9 @@ public final class ClientAddonsZendesk {
             return this;
         }
         public ClientAddonsZendesk build() {
-            final var o = new ClientAddonsZendesk();
-            o.accountName = accountName;
-            return o;
+            final var _resultValue = new ClientAddonsZendesk();
+            _resultValue.accountName = accountName;
+            return _resultValue;
         }
     }
 }

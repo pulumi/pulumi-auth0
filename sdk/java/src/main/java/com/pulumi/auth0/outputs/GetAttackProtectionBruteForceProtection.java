@@ -91,13 +91,13 @@ public final class GetAttackProtectionBruteForceProtection {
             return shields(List.of(shields));
         }
         public GetAttackProtectionBruteForceProtection build() {
-            final var o = new GetAttackProtectionBruteForceProtection();
-            o.allowlists = allowlists;
-            o.enabled = enabled;
-            o.maxAttempts = maxAttempts;
-            o.mode = mode;
-            o.shields = shields;
-            return o;
+            final var _resultValue = new GetAttackProtectionBruteForceProtection();
+            _resultValue.allowlists = allowlists;
+            _resultValue.enabled = enabled;
+            _resultValue.maxAttempts = maxAttempts;
+            _resultValue.mode = mode;
+            _resultValue.shields = shields;
+            return _resultValue;
         }
     }
 }

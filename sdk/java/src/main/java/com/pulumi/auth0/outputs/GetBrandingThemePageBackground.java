@@ -60,11 +60,11 @@ public final class GetBrandingThemePageBackground {
             return this;
         }
         public GetBrandingThemePageBackground build() {
-            final var o = new GetBrandingThemePageBackground();
-            o.backgroundColor = backgroundColor;
-            o.backgroundImageUrl = backgroundImageUrl;
-            o.pageLayout = pageLayout;
-            return o;
+            final var _resultValue = new GetBrandingThemePageBackground();
+            _resultValue.backgroundColor = backgroundColor;
+            _resultValue.backgroundImageUrl = backgroundImageUrl;
+            _resultValue.pageLayout = pageLayout;
+            return _resultValue;
         }
     }
 }

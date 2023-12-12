@@ -67,10 +67,10 @@ public final class ConnectionOptionsMfa {
             return this;
         }
         public ConnectionOptionsMfa build() {
-            final var o = new ConnectionOptionsMfa();
-            o.active = active;
-            o.returnEnrollSettings = returnEnrollSettings;
-            return o;
+            final var _resultValue = new ConnectionOptionsMfa();
+            _resultValue.active = active;
+            _resultValue.returnEnrollSettings = returnEnrollSettings;
+            return _resultValue;
         }
     }
 }

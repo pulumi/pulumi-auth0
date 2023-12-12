@@ -25,8 +25,8 @@ public final class GetClientAddonDropbox {
         }
 
         public GetClientAddonDropbox build() {
-            final var o = new GetClientAddonDropbox();
-            return o;
+            final var _resultValue = new GetClientAddonDropbox();
+            return _resultValue;
         }
     }
 }

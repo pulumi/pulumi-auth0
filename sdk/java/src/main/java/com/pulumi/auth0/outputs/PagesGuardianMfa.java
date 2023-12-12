@@ -66,10 +66,10 @@ public final class PagesGuardianMfa {
             return this;
         }
         public PagesGuardianMfa build() {
-            final var o = new PagesGuardianMfa();
-            o.enabled = enabled;
-            o.html = html;
-            return o;
+            final var _resultValue = new PagesGuardianMfa();
+            _resultValue.enabled = enabled;
+            _resultValue.html = html;
+            return _resultValue;
         }
     }
 }

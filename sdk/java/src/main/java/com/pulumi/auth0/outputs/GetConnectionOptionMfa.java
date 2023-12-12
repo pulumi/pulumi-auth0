@@ -49,10 +49,10 @@ public final class GetConnectionOptionMfa {
             return this;
         }
         public GetConnectionOptionMfa build() {
-            final var o = new GetConnectionOptionMfa();
-            o.active = active;
-            o.returnEnrollSettings = returnEnrollSettings;
-            return o;
+            final var _resultValue = new GetConnectionOptionMfa();
+            _resultValue.active = active;
+            _resultValue.returnEnrollSettings = returnEnrollSettings;
+            return _resultValue;
         }
     }
 }

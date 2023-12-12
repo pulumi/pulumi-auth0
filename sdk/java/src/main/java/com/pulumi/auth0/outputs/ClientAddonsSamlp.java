@@ -437,29 +437,29 @@ public final class ClientAddonsSamlp {
             return this;
         }
         public ClientAddonsSamlp build() {
-            final var o = new ClientAddonsSamlp();
-            o.audience = audience;
-            o.authnContextClassRef = authnContextClassRef;
-            o.binding = binding;
-            o.createUpnClaim = createUpnClaim;
-            o.destination = destination;
-            o.digestAlgorithm = digestAlgorithm;
-            o.includeAttributeNameFormat = includeAttributeNameFormat;
-            o.issuer = issuer;
-            o.lifetimeInSeconds = lifetimeInSeconds;
-            o.logout = logout;
-            o.mapIdentities = mapIdentities;
-            o.mapUnknownClaimsAsIs = mapUnknownClaimsAsIs;
-            o.mappings = mappings;
-            o.nameIdentifierFormat = nameIdentifierFormat;
-            o.nameIdentifierProbes = nameIdentifierProbes;
-            o.passthroughClaimsWithNoMapping = passthroughClaimsWithNoMapping;
-            o.recipient = recipient;
-            o.signResponse = signResponse;
-            o.signatureAlgorithm = signatureAlgorithm;
-            o.signingCert = signingCert;
-            o.typedAttributes = typedAttributes;
-            return o;
+            final var _resultValue = new ClientAddonsSamlp();
+            _resultValue.audience = audience;
+            _resultValue.authnContextClassRef = authnContextClassRef;
+            _resultValue.binding = binding;
+            _resultValue.createUpnClaim = createUpnClaim;
+            _resultValue.destination = destination;
+            _resultValue.digestAlgorithm = digestAlgorithm;
+            _resultValue.includeAttributeNameFormat = includeAttributeNameFormat;
+            _resultValue.issuer = issuer;
+            _resultValue.lifetimeInSeconds = lifetimeInSeconds;
+            _resultValue.logout = logout;
+            _resultValue.mapIdentities = mapIdentities;
+            _resultValue.mapUnknownClaimsAsIs = mapUnknownClaimsAsIs;
+            _resultValue.mappings = mappings;
+            _resultValue.nameIdentifierFormat = nameIdentifierFormat;
+            _resultValue.nameIdentifierProbes = nameIdentifierProbes;
+            _resultValue.passthroughClaimsWithNoMapping = passthroughClaimsWithNoMapping;
+            _resultValue.recipient = recipient;
+            _resultValue.signResponse = signResponse;
+            _resultValue.signatureAlgorithm = signatureAlgorithm;
+            _resultValue.signingCert = signingCert;
+            _resultValue.typedAttributes = typedAttributes;
+            return _resultValue;
         }
     }
 }

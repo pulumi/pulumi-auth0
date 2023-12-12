@@ -49,10 +49,10 @@ public final class GetClientAddonSsoIntegration {
             return this;
         }
         public GetClientAddonSsoIntegration build() {
-            final var o = new GetClientAddonSsoIntegration();
-            o.name = name;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetClientAddonSsoIntegration();
+            _resultValue.name = name;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

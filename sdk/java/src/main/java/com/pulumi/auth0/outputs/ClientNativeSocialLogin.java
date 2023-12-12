@@ -52,10 +52,10 @@ public final class ClientNativeSocialLogin {
             return this;
         }
         public ClientNativeSocialLogin build() {
-            final var o = new ClientNativeSocialLogin();
-            o.apple = apple;
-            o.facebook = facebook;
-            return o;
+            final var _resultValue = new ClientNativeSocialLogin();
+            _resultValue.apple = apple;
+            _resultValue.facebook = facebook;
+            return _resultValue;
         }
     }
 }

@@ -105,12 +105,12 @@ public final class UserPermissionsPermission {
             return this;
         }
         public UserPermissionsPermission build() {
-            final var o = new UserPermissionsPermission();
-            o.description = description;
-            o.name = name;
-            o.resourceServerIdentifier = resourceServerIdentifier;
-            o.resourceServerName = resourceServerName;
-            return o;
+            final var _resultValue = new UserPermissionsPermission();
+            _resultValue.description = description;
+            _resultValue.name = name;
+            _resultValue.resourceServerIdentifier = resourceServerIdentifier;
+            _resultValue.resourceServerName = resourceServerName;
+            return _resultValue;
         }
     }
 }

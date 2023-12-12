@@ -225,26 +225,26 @@ public final class GetBrandingThemeColor {
             return this;
         }
         public GetBrandingThemeColor build() {
-            final var o = new GetBrandingThemeColor();
-            o.baseFocusColor = baseFocusColor;
-            o.baseHoverColor = baseHoverColor;
-            o.bodyText = bodyText;
-            o.error = error;
-            o.header = header;
-            o.icons = icons;
-            o.inputBackground = inputBackground;
-            o.inputBorder = inputBorder;
-            o.inputFilledText = inputFilledText;
-            o.inputLabelsPlaceholders = inputLabelsPlaceholders;
-            o.linksFocusedComponents = linksFocusedComponents;
-            o.primaryButton = primaryButton;
-            o.primaryButtonLabel = primaryButtonLabel;
-            o.secondaryButtonBorder = secondaryButtonBorder;
-            o.secondaryButtonLabel = secondaryButtonLabel;
-            o.success = success;
-            o.widgetBackground = widgetBackground;
-            o.widgetBorder = widgetBorder;
-            return o;
+            final var _resultValue = new GetBrandingThemeColor();
+            _resultValue.baseFocusColor = baseFocusColor;
+            _resultValue.baseHoverColor = baseHoverColor;
+            _resultValue.bodyText = bodyText;
+            _resultValue.error = error;
+            _resultValue.header = header;
+            _resultValue.icons = icons;
+            _resultValue.inputBackground = inputBackground;
+            _resultValue.inputBorder = inputBorder;
+            _resultValue.inputFilledText = inputFilledText;
+            _resultValue.inputLabelsPlaceholders = inputLabelsPlaceholders;
+            _resultValue.linksFocusedComponents = linksFocusedComponents;
+            _resultValue.primaryButton = primaryButton;
+            _resultValue.primaryButtonLabel = primaryButtonLabel;
+            _resultValue.secondaryButtonBorder = secondaryButtonBorder;
+            _resultValue.secondaryButtonLabel = secondaryButtonLabel;
+            _resultValue.success = success;
+            _resultValue.widgetBackground = widgetBackground;
+            _resultValue.widgetBorder = widgetBorder;
+            return _resultValue;
         }
     }
 }

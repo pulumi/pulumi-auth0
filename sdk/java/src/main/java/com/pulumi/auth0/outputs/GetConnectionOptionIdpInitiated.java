@@ -60,11 +60,11 @@ public final class GetConnectionOptionIdpInitiated {
             return this;
         }
         public GetConnectionOptionIdpInitiated build() {
-            final var o = new GetConnectionOptionIdpInitiated();
-            o.clientAuthorizeQuery = clientAuthorizeQuery;
-            o.clientId = clientId;
-            o.clientProtocol = clientProtocol;
-            return o;
+            final var _resultValue = new GetConnectionOptionIdpInitiated();
+            _resultValue.clientAuthorizeQuery = clientAuthorizeQuery;
+            _resultValue.clientId = clientId;
+            _resultValue.clientProtocol = clientProtocol;
+            return _resultValue;
         }
     }
 }

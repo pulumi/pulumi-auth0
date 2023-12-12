@@ -96,7 +96,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * Whether to accept an organization name instead of an ID on auth endpoints.
      * 
      */
-    @Export(name="allowOrganizationNameInAuthenticationApi", type=Boolean.class, parameters={})
+    @Export(name="allowOrganizationNameInAuthenticationApi", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowOrganizationNameInAuthenticationApi;
 
     /**
@@ -110,7 +110,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * URLs that Auth0 may redirect to after logout.
      * 
      */
-    @Export(name="allowedLogoutUrls", type=List.class, parameters={String.class})
+    @Export(name="allowedLogoutUrls", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> allowedLogoutUrls;
 
     /**
@@ -124,7 +124,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * Whether to enable flexible factors for MFA in the PostLogin action.
      * 
      */
-    @Export(name="customizeMfaInPostloginAction", type=Boolean.class, parameters={})
+    @Export(name="customizeMfaInPostloginAction", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> customizeMfaInPostloginAction;
 
     /**
@@ -138,7 +138,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      * 
      */
-    @Export(name="defaultAudience", type=String.class, parameters={})
+    @Export(name="defaultAudience", refs={String.class}, tree="[0]")
     private Output<String> defaultAudience;
 
     /**
@@ -152,7 +152,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
      * 
      */
-    @Export(name="defaultDirectory", type=String.class, parameters={})
+    @Export(name="defaultDirectory", refs={String.class}, tree="[0]")
     private Output<String> defaultDirectory;
 
     /**
@@ -166,7 +166,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * The default absolute redirection URI. Must be HTTPS or an empty string.
      * 
      */
-    @Export(name="defaultRedirectionUri", type=String.class, parameters={})
+    @Export(name="defaultRedirectionUri", refs={String.class}, tree="[0]")
     private Output<String> defaultRedirectionUri;
 
     /**
@@ -180,7 +180,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      * 
      */
-    @Export(name="enabledLocales", type=List.class, parameters={String.class})
+    @Export(name="enabledLocales", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> enabledLocales;
 
     /**
@@ -194,7 +194,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * Configuration settings for tenant flags.
      * 
      */
-    @Export(name="flags", type=TenantFlags.class, parameters={})
+    @Export(name="flags", refs={TenantFlags.class}, tree="[0]")
     private Output<TenantFlags> flags;
 
     /**
@@ -208,7 +208,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * Friendly name for the tenant.
      * 
      */
-    @Export(name="friendlyName", type=String.class, parameters={})
+    @Export(name="friendlyName", refs={String.class}, tree="[0]")
     private Output<String> friendlyName;
 
     /**
@@ -222,7 +222,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * Number of hours during which a session can be inactive before the user must log in again.
      * 
      */
-    @Export(name="idleSessionLifetime", type=Double.class, parameters={})
+    @Export(name="idleSessionLifetime", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> idleSessionLifetime;
 
     /**
@@ -236,7 +236,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      * 
      */
-    @Export(name="pictureUrl", type=String.class, parameters={})
+    @Export(name="pictureUrl", refs={String.class}, tree="[0]")
     private Output<String> pictureUrl;
 
     /**
@@ -250,7 +250,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
      * 
      */
-    @Export(name="sandboxVersion", type=String.class, parameters={})
+    @Export(name="sandboxVersion", refs={String.class}, tree="[0]")
     private Output<String> sandboxVersion;
 
     /**
@@ -264,7 +264,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * Alters behavior of tenant&#39;s session cookie. Contains a single `mode` property.
      * 
      */
-    @Export(name="sessionCookie", type=TenantSessionCookie.class, parameters={})
+    @Export(name="sessionCookie", refs={TenantSessionCookie.class}, tree="[0]")
     private Output<TenantSessionCookie> sessionCookie;
 
     /**
@@ -278,7 +278,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * Number of hours during which a session will stay valid.
      * 
      */
-    @Export(name="sessionLifetime", type=Double.class, parameters={})
+    @Export(name="sessionLifetime", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> sessionLifetime;
 
     /**
@@ -292,7 +292,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * Sessions related settings for the tenant.
      * 
      */
-    @Export(name="sessions", type=TenantSessions.class, parameters={})
+    @Export(name="sessions", refs={TenantSessions.class}, tree="[0]")
     private Output<TenantSessions> sessions;
 
     /**
@@ -306,7 +306,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * Support email address for authenticating users.
      * 
      */
-    @Export(name="supportEmail", type=String.class, parameters={})
+    @Export(name="supportEmail", refs={String.class}, tree="[0]")
     private Output<String> supportEmail;
 
     /**
@@ -320,7 +320,7 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * Support URL for authenticating users.
      * 
      */
-    @Export(name="supportUrl", type=String.class, parameters={})
+    @Export(name="supportUrl", refs={String.class}, tree="[0]")
     private Output<String> supportUrl;
 
     /**

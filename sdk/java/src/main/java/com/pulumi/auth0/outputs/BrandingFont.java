@@ -48,9 +48,9 @@ public final class BrandingFont {
             return this;
         }
         public BrandingFont build() {
-            final var o = new BrandingFont();
-            o.url = url;
-            return o;
+            final var _resultValue = new BrandingFont();
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

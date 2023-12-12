@@ -50,10 +50,10 @@ public final class GetPagesGuardianMfa {
             return this;
         }
         public GetPagesGuardianMfa build() {
-            final var o = new GetPagesGuardianMfa();
-            o.enabled = enabled;
-            o.html = html;
-            return o;
+            final var _resultValue = new GetPagesGuardianMfa();
+            _resultValue.enabled = enabled;
+            _resultValue.html = html;
+            return _resultValue;
         }
     }
 }

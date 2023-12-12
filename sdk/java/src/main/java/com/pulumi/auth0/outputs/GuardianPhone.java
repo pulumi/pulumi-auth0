@@ -111,12 +111,12 @@ public final class GuardianPhone {
             return this;
         }
         public GuardianPhone build() {
-            final var o = new GuardianPhone();
-            o.enabled = enabled;
-            o.messageTypes = messageTypes;
-            o.options = options;
-            o.provider = provider;
-            return o;
+            final var _resultValue = new GuardianPhone();
+            _resultValue.enabled = enabled;
+            _resultValue.messageTypes = messageTypes;
+            _resultValue.options = options;
+            _resultValue.provider = provider;
+            return _resultValue;
         }
     }
 }

@@ -280,31 +280,31 @@ public final class GetTenantFlag {
             return this;
         }
         public GetTenantFlag build() {
-            final var o = new GetTenantFlag();
-            o.allowLegacyDelegationGrantTypes = allowLegacyDelegationGrantTypes;
-            o.allowLegacyRoGrantTypes = allowLegacyRoGrantTypes;
-            o.allowLegacyTokeninfoEndpoint = allowLegacyTokeninfoEndpoint;
-            o.dashboardInsightsView = dashboardInsightsView;
-            o.dashboardLogStreamsNext = dashboardLogStreamsNext;
-            o.disableClickjackProtectionHeaders = disableClickjackProtectionHeaders;
-            o.disableFieldsMapFix = disableFieldsMapFix;
-            o.disableManagementApiSmsObfuscation = disableManagementApiSmsObfuscation;
-            o.enableAdfsWaadEmailVerification = enableAdfsWaadEmailVerification;
-            o.enableApisSection = enableApisSection;
-            o.enableClientConnections = enableClientConnections;
-            o.enableCustomDomainInEmails = enableCustomDomainInEmails;
-            o.enableDynamicClientRegistration = enableDynamicClientRegistration;
-            o.enableIdtokenApi2 = enableIdtokenApi2;
-            o.enableLegacyLogsSearchV2 = enableLegacyLogsSearchV2;
-            o.enableLegacyProfile = enableLegacyProfile;
-            o.enablePipeline2 = enablePipeline2;
-            o.enablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
-            o.mfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
-            o.noDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
-            o.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
-            o.revokeRefreshTokenGrant = revokeRefreshTokenGrant;
-            o.useScopeDescriptionsForConsent = useScopeDescriptionsForConsent;
-            return o;
+            final var _resultValue = new GetTenantFlag();
+            _resultValue.allowLegacyDelegationGrantTypes = allowLegacyDelegationGrantTypes;
+            _resultValue.allowLegacyRoGrantTypes = allowLegacyRoGrantTypes;
+            _resultValue.allowLegacyTokeninfoEndpoint = allowLegacyTokeninfoEndpoint;
+            _resultValue.dashboardInsightsView = dashboardInsightsView;
+            _resultValue.dashboardLogStreamsNext = dashboardLogStreamsNext;
+            _resultValue.disableClickjackProtectionHeaders = disableClickjackProtectionHeaders;
+            _resultValue.disableFieldsMapFix = disableFieldsMapFix;
+            _resultValue.disableManagementApiSmsObfuscation = disableManagementApiSmsObfuscation;
+            _resultValue.enableAdfsWaadEmailVerification = enableAdfsWaadEmailVerification;
+            _resultValue.enableApisSection = enableApisSection;
+            _resultValue.enableClientConnections = enableClientConnections;
+            _resultValue.enableCustomDomainInEmails = enableCustomDomainInEmails;
+            _resultValue.enableDynamicClientRegistration = enableDynamicClientRegistration;
+            _resultValue.enableIdtokenApi2 = enableIdtokenApi2;
+            _resultValue.enableLegacyLogsSearchV2 = enableLegacyLogsSearchV2;
+            _resultValue.enableLegacyProfile = enableLegacyProfile;
+            _resultValue.enablePipeline2 = enablePipeline2;
+            _resultValue.enablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
+            _resultValue.mfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
+            _resultValue.noDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
+            _resultValue.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
+            _resultValue.revokeRefreshTokenGrant = revokeRefreshTokenGrant;
+            _resultValue.useScopeDescriptionsForConsent = useScopeDescriptionsForConsent;
+            return _resultValue;
         }
     }
 }

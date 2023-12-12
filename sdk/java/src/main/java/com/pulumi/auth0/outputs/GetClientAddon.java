@@ -462,37 +462,37 @@ public final class GetClientAddon {
             return zooms(List.of(zooms));
         }
         public GetClientAddon build() {
-            final var o = new GetClientAddon();
-            o.aws = aws;
-            o.azureBlobs = azureBlobs;
-            o.azureSbs = azureSbs;
-            o.boxes = boxes;
-            o.cloudbees = cloudbees;
-            o.concurs = concurs;
-            o.dropboxes = dropboxes;
-            o.echosigns = echosigns;
-            o.egnytes = egnytes;
-            o.firebases = firebases;
-            o.layers = layers;
-            o.mscrms = mscrms;
-            o.newrelics = newrelics;
-            o.office365s = office365s;
-            o.rms = rms;
-            o.salesforceApis = salesforceApis;
-            o.salesforceSandboxApis = salesforceSandboxApis;
-            o.salesforces = salesforces;
-            o.samlps = samlps;
-            o.sapApis = sapApis;
-            o.sentries = sentries;
-            o.sharepoints = sharepoints;
-            o.slacks = slacks;
-            o.springcms = springcms;
-            o.ssoIntegrations = ssoIntegrations;
-            o.wams = wams;
-            o.wsfeds = wsfeds;
-            o.zendesks = zendesks;
-            o.zooms = zooms;
-            return o;
+            final var _resultValue = new GetClientAddon();
+            _resultValue.aws = aws;
+            _resultValue.azureBlobs = azureBlobs;
+            _resultValue.azureSbs = azureSbs;
+            _resultValue.boxes = boxes;
+            _resultValue.cloudbees = cloudbees;
+            _resultValue.concurs = concurs;
+            _resultValue.dropboxes = dropboxes;
+            _resultValue.echosigns = echosigns;
+            _resultValue.egnytes = egnytes;
+            _resultValue.firebases = firebases;
+            _resultValue.layers = layers;
+            _resultValue.mscrms = mscrms;
+            _resultValue.newrelics = newrelics;
+            _resultValue.office365s = office365s;
+            _resultValue.rms = rms;
+            _resultValue.salesforceApis = salesforceApis;
+            _resultValue.salesforceSandboxApis = salesforceSandboxApis;
+            _resultValue.salesforces = salesforces;
+            _resultValue.samlps = samlps;
+            _resultValue.sapApis = sapApis;
+            _resultValue.sentries = sentries;
+            _resultValue.sharepoints = sharepoints;
+            _resultValue.slacks = slacks;
+            _resultValue.springcms = springcms;
+            _resultValue.ssoIntegrations = ssoIntegrations;
+            _resultValue.wams = wams;
+            _resultValue.wsfeds = wsfeds;
+            _resultValue.zendesks = zendesks;
+            _resultValue.zooms = zooms;
+            return _resultValue;
         }
     }
 }

@@ -106,15 +106,15 @@ public final class GetClientRefreshToken {
             return this;
         }
         public GetClientRefreshToken build() {
-            final var o = new GetClientRefreshToken();
-            o.expirationType = expirationType;
-            o.idleTokenLifetime = idleTokenLifetime;
-            o.infiniteIdleTokenLifetime = infiniteIdleTokenLifetime;
-            o.infiniteTokenLifetime = infiniteTokenLifetime;
-            o.leeway = leeway;
-            o.rotationType = rotationType;
-            o.tokenLifetime = tokenLifetime;
-            return o;
+            final var _resultValue = new GetClientRefreshToken();
+            _resultValue.expirationType = expirationType;
+            _resultValue.idleTokenLifetime = idleTokenLifetime;
+            _resultValue.infiniteIdleTokenLifetime = infiniteIdleTokenLifetime;
+            _resultValue.infiniteTokenLifetime = infiniteTokenLifetime;
+            _resultValue.leeway = leeway;
+            _resultValue.rotationType = rotationType;
+            _resultValue.tokenLifetime = tokenLifetime;
+            return _resultValue;
         }
     }
 }

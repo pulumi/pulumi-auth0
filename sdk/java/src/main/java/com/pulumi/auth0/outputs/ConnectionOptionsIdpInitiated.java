@@ -70,11 +70,11 @@ public final class ConnectionOptionsIdpInitiated {
             return this;
         }
         public ConnectionOptionsIdpInitiated build() {
-            final var o = new ConnectionOptionsIdpInitiated();
-            o.clientAuthorizeQuery = clientAuthorizeQuery;
-            o.clientId = clientId;
-            o.clientProtocol = clientProtocol;
-            return o;
+            final var _resultValue = new ConnectionOptionsIdpInitiated();
+            _resultValue.clientAuthorizeQuery = clientAuthorizeQuery;
+            _resultValue.clientId = clientId;
+            _resultValue.clientProtocol = clientProtocol;
+            return _resultValue;
         }
     }
 }

@@ -68,10 +68,10 @@ public final class ClientMobile {
             return this;
         }
         public ClientMobile build() {
-            final var o = new ClientMobile();
-            o.android = android;
-            o.ios = ios;
-            return o;
+            final var _resultValue = new ClientMobile();
+            _resultValue.android = android;
+            _resultValue.ios = ios;
+            return _resultValue;
         }
     }
 }

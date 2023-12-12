@@ -67,10 +67,10 @@ public final class EmailProviderSettingsHeaders {
             return this;
         }
         public EmailProviderSettingsHeaders build() {
-            final var o = new EmailProviderSettingsHeaders();
-            o.xMcViewContentLink = xMcViewContentLink;
-            o.xSesConfigurationSet = xSesConfigurationSet;
-            return o;
+            final var _resultValue = new EmailProviderSettingsHeaders();
+            _resultValue.xMcViewContentLink = xMcViewContentLink;
+            _resultValue.xSesConfigurationSet = xSesConfigurationSet;
+            return _resultValue;
         }
     }
 }

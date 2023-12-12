@@ -38,9 +38,9 @@ public final class GetClientAddonZoom {
             return this;
         }
         public GetClientAddonZoom build() {
-            final var o = new GetClientAddonZoom();
-            o.account = account;
-            return o;
+            final var _resultValue = new GetClientAddonZoom();
+            _resultValue.account = account;
+            return _resultValue;
         }
     }
 }

@@ -202,17 +202,17 @@ public final class BrandingThemeBorders {
             return this;
         }
         public BrandingThemeBorders build() {
-            final var o = new BrandingThemeBorders();
-            o.buttonBorderRadius = buttonBorderRadius;
-            o.buttonBorderWeight = buttonBorderWeight;
-            o.buttonsStyle = buttonsStyle;
-            o.inputBorderRadius = inputBorderRadius;
-            o.inputBorderWeight = inputBorderWeight;
-            o.inputsStyle = inputsStyle;
-            o.showWidgetShadow = showWidgetShadow;
-            o.widgetBorderWeight = widgetBorderWeight;
-            o.widgetCornerRadius = widgetCornerRadius;
-            return o;
+            final var _resultValue = new BrandingThemeBorders();
+            _resultValue.buttonBorderRadius = buttonBorderRadius;
+            _resultValue.buttonBorderWeight = buttonBorderWeight;
+            _resultValue.buttonsStyle = buttonsStyle;
+            _resultValue.inputBorderRadius = inputBorderRadius;
+            _resultValue.inputBorderWeight = inputBorderWeight;
+            _resultValue.inputsStyle = inputsStyle;
+            _resultValue.showWidgetShadow = showWidgetShadow;
+            _resultValue.widgetBorderWeight = widgetBorderWeight;
+            _resultValue.widgetCornerRadius = widgetCornerRadius;
+            return _resultValue;
         }
     }
 }
