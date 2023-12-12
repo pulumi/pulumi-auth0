@@ -38,9 +38,9 @@ public final class GetClientAddonEgnyte {
             return this;
         }
         public GetClientAddonEgnyte build() {
-            final var o = new GetClientAddonEgnyte();
-            o.domain = domain;
-            return o;
+            final var _resultValue = new GetClientAddonEgnyte();
+            _resultValue.domain = domain;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class GuardianPushDirectFcm {
             return this;
         }
         public GuardianPushDirectFcm build() {
-            final var o = new GuardianPushDirectFcm();
-            o.serverKey = serverKey;
-            return o;
+            final var _resultValue = new GuardianPushDirectFcm();
+            _resultValue.serverKey = serverKey;
+            return _resultValue;
         }
     }
 }

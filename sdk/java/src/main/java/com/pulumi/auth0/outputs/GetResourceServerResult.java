@@ -302,22 +302,22 @@ public final class GetResourceServerResult {
             return this;
         }
         public GetResourceServerResult build() {
-            final var o = new GetResourceServerResult();
-            o.allowOfflineAccess = allowOfflineAccess;
-            o.enforcePolicies = enforcePolicies;
-            o.id = id;
-            o.identifier = identifier;
-            o.name = name;
-            o.resourceServerId = resourceServerId;
-            o.scopes = scopes;
-            o.signingAlg = signingAlg;
-            o.signingSecret = signingSecret;
-            o.skipConsentForVerifiableFirstPartyClients = skipConsentForVerifiableFirstPartyClients;
-            o.tokenDialect = tokenDialect;
-            o.tokenLifetime = tokenLifetime;
-            o.tokenLifetimeForWeb = tokenLifetimeForWeb;
-            o.verificationLocation = verificationLocation;
-            return o;
+            final var _resultValue = new GetResourceServerResult();
+            _resultValue.allowOfflineAccess = allowOfflineAccess;
+            _resultValue.enforcePolicies = enforcePolicies;
+            _resultValue.id = id;
+            _resultValue.identifier = identifier;
+            _resultValue.name = name;
+            _resultValue.resourceServerId = resourceServerId;
+            _resultValue.scopes = scopes;
+            _resultValue.signingAlg = signingAlg;
+            _resultValue.signingSecret = signingSecret;
+            _resultValue.skipConsentForVerifiableFirstPartyClients = skipConsentForVerifiableFirstPartyClients;
+            _resultValue.tokenDialect = tokenDialect;
+            _resultValue.tokenLifetime = tokenLifetime;
+            _resultValue.tokenLifetimeForWeb = tokenLifetimeForWeb;
+            _resultValue.verificationLocation = verificationLocation;
+            return _resultValue;
         }
     }
 }

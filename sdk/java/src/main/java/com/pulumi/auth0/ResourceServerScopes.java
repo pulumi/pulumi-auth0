@@ -84,7 +84,7 @@ public class ResourceServerScopes extends com.pulumi.resources.CustomResource {
      * Identifier of the resource server that the scopes (permission) are associated with.
      * 
      */
-    @Export(name="resourceServerIdentifier", type=String.class, parameters={})
+    @Export(name="resourceServerIdentifier", refs={String.class}, tree="[0]")
     private Output<String> resourceServerIdentifier;
 
     /**
@@ -94,7 +94,7 @@ public class ResourceServerScopes extends com.pulumi.resources.CustomResource {
     public Output<String> resourceServerIdentifier() {
         return this.resourceServerIdentifier;
     }
-    @Export(name="scopes", type=List.class, parameters={ResourceServerScopesScope.class})
+    @Export(name="scopes", refs={List.class,ResourceServerScopesScope.class}, tree="[0,1]")
     private Output<List<ResourceServerScopesScope>> scopes;
 
     public Output<List<ResourceServerScopesScope>> scopes() {

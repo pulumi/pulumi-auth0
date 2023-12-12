@@ -103,7 +103,7 @@ public class AttackProtection extends com.pulumi.resources.CustomResource {
      * Breached password detection protects your applications from bad actors logging in with stolen credentials.
      * 
      */
-    @Export(name="breachedPasswordDetection", type=AttackProtectionBreachedPasswordDetection.class, parameters={})
+    @Export(name="breachedPasswordDetection", refs={AttackProtectionBreachedPasswordDetection.class}, tree="[0]")
     private Output<AttackProtectionBreachedPasswordDetection> breachedPasswordDetection;
 
     /**
@@ -117,7 +117,7 @@ public class AttackProtection extends com.pulumi.resources.CustomResource {
      * Brute-force protection safeguards against a single IP address attacking a single user account.
      * 
      */
-    @Export(name="bruteForceProtection", type=AttackProtectionBruteForceProtection.class, parameters={})
+    @Export(name="bruteForceProtection", refs={AttackProtectionBruteForceProtection.class}, tree="[0]")
     private Output<AttackProtectionBruteForceProtection> bruteForceProtection;
 
     /**
@@ -131,7 +131,7 @@ public class AttackProtection extends com.pulumi.resources.CustomResource {
      * Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
      * 
      */
-    @Export(name="suspiciousIpThrottling", type=AttackProtectionSuspiciousIpThrottling.class, parameters={})
+    @Export(name="suspiciousIpThrottling", refs={AttackProtectionSuspiciousIpThrottling.class}, tree="[0]")
     private Output<AttackProtectionSuspiciousIpThrottling> suspiciousIpThrottling;
 
     /**

@@ -51,10 +51,10 @@ public final class ConnectionOptionsValidationUsername {
             return this;
         }
         public ConnectionOptionsValidationUsername build() {
-            final var o = new ConnectionOptionsValidationUsername();
-            o.max = max;
-            o.min = min;
-            return o;
+            final var _resultValue = new ConnectionOptionsValidationUsername();
+            _resultValue.max = max;
+            _resultValue.min = min;
+            return _resultValue;
         }
     }
 }

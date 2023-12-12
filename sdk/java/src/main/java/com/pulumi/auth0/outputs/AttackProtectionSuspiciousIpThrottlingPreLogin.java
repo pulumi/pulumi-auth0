@@ -67,10 +67,10 @@ public final class AttackProtectionSuspiciousIpThrottlingPreLogin {
             return this;
         }
         public AttackProtectionSuspiciousIpThrottlingPreLogin build() {
-            final var o = new AttackProtectionSuspiciousIpThrottlingPreLogin();
-            o.maxAttempts = maxAttempts;
-            o.rate = rate;
-            return o;
+            final var _resultValue = new AttackProtectionSuspiciousIpThrottlingPreLogin();
+            _resultValue.maxAttempts = maxAttempts;
+            _resultValue.rate = rate;
+            return _resultValue;
         }
     }
 }

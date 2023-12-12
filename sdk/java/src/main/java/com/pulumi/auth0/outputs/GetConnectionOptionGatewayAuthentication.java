@@ -83,13 +83,13 @@ public final class GetConnectionOptionGatewayAuthentication {
             return this;
         }
         public GetConnectionOptionGatewayAuthentication build() {
-            final var o = new GetConnectionOptionGatewayAuthentication();
-            o.audience = audience;
-            o.method = method;
-            o.secret = secret;
-            o.secretBase64Encoded = secretBase64Encoded;
-            o.subject = subject;
-            return o;
+            final var _resultValue = new GetConnectionOptionGatewayAuthentication();
+            _resultValue.audience = audience;
+            _resultValue.method = method;
+            _resultValue.secret = secret;
+            _resultValue.secretBase64Encoded = secretBase64Encoded;
+            _resultValue.subject = subject;
+            return _resultValue;
         }
     }
 }

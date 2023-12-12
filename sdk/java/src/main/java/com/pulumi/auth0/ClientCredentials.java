@@ -115,7 +115,7 @@ public class ClientCredentials extends com.pulumi.resources.CustomResource {
      * Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT).
      * 
      */
-    @Export(name="authenticationMethod", type=String.class, parameters={})
+    @Export(name="authenticationMethod", refs={String.class}, tree="[0]")
     private Output<String> authenticationMethod;
 
     /**
@@ -129,7 +129,7 @@ public class ClientCredentials extends com.pulumi.resources.CustomResource {
      * The ID of the client for which to configure the authentication method.
      * 
      */
-    @Export(name="clientId", type=String.class, parameters={})
+    @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output<String> clientId;
 
     /**
@@ -146,7 +146,7 @@ public class ClientCredentials extends com.pulumi.resources.CustomResource {
      * authentication method.
      * 
      */
-    @Export(name="clientSecret", type=String.class, parameters={})
+    @Export(name="clientSecret", refs={String.class}, tree="[0]")
     private Output<String> clientSecret;
 
     /**
@@ -163,7 +163,7 @@ public class ClientCredentials extends com.pulumi.resources.CustomResource {
      * Defines `private_key_jwt` client authentication method.
      * 
      */
-    @Export(name="privateKeyJwt", type=ClientCredentialsPrivateKeyJwt.class, parameters={})
+    @Export(name="privateKeyJwt", refs={ClientCredentialsPrivateKeyJwt.class}, tree="[0]")
     private Output</* @Nullable */ ClientCredentialsPrivateKeyJwt> privateKeyJwt;
 
     /**

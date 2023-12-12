@@ -49,10 +49,10 @@ public final class GetConnectionOptionDecryptionKey {
             return this;
         }
         public GetConnectionOptionDecryptionKey build() {
-            final var o = new GetConnectionOptionDecryptionKey();
-            o.cert = cert;
-            o.key = key;
-            return o;
+            final var _resultValue = new GetConnectionOptionDecryptionKey();
+            _resultValue.cert = cert;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

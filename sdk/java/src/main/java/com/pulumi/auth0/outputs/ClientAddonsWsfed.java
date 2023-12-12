@@ -25,8 +25,8 @@ public final class ClientAddonsWsfed {
         }
 
         public ClientAddonsWsfed build() {
-            final var o = new ClientAddonsWsfed();
-            return o;
+            final var _resultValue = new ClientAddonsWsfed();
+            return _resultValue;
         }
     }
 }

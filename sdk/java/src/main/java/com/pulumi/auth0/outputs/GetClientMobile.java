@@ -57,10 +57,10 @@ public final class GetClientMobile {
             return ios(List.of(ios));
         }
         public GetClientMobile build() {
-            final var o = new GetClientMobile();
-            o.androids = androids;
-            o.ios = ios;
-            return o;
+            final var _resultValue = new GetClientMobile();
+            _resultValue.androids = androids;
+            _resultValue.ios = ios;
+            return _resultValue;
         }
     }
 }

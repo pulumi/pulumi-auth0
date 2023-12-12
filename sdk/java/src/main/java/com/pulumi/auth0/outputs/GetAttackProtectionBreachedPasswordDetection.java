@@ -94,13 +94,13 @@ public final class GetAttackProtectionBreachedPasswordDetection {
             return shields(List.of(shields));
         }
         public GetAttackProtectionBreachedPasswordDetection build() {
-            final var o = new GetAttackProtectionBreachedPasswordDetection();
-            o.adminNotificationFrequencies = adminNotificationFrequencies;
-            o.enabled = enabled;
-            o.method = method;
-            o.preUserRegistrations = preUserRegistrations;
-            o.shields = shields;
-            return o;
+            final var _resultValue = new GetAttackProtectionBreachedPasswordDetection();
+            _resultValue.adminNotificationFrequencies = adminNotificationFrequencies;
+            _resultValue.enabled = enabled;
+            _resultValue.method = method;
+            _resultValue.preUserRegistrations = preUserRegistrations;
+            _resultValue.shields = shields;
+            return _resultValue;
         }
     }
 }

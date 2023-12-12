@@ -38,9 +38,9 @@ public final class GetClientAddonNewrelic {
             return this;
         }
         public GetClientAddonNewrelic build() {
-            final var o = new GetClientAddonNewrelic();
-            o.account = account;
-            return o;
+            final var _resultValue = new GetClientAddonNewrelic();
+            _resultValue.account = account;
+            return _resultValue;
         }
     }
 }

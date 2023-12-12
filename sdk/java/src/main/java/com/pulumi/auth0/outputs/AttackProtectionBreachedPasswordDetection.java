@@ -133,13 +133,13 @@ public final class AttackProtectionBreachedPasswordDetection {
             return shields(List.of(shields));
         }
         public AttackProtectionBreachedPasswordDetection build() {
-            final var o = new AttackProtectionBreachedPasswordDetection();
-            o.adminNotificationFrequencies = adminNotificationFrequencies;
-            o.enabled = enabled;
-            o.method = method;
-            o.preUserRegistration = preUserRegistration;
-            o.shields = shields;
-            return o;
+            final var _resultValue = new AttackProtectionBreachedPasswordDetection();
+            _resultValue.adminNotificationFrequencies = adminNotificationFrequencies;
+            _resultValue.enabled = enabled;
+            _resultValue.method = method;
+            _resultValue.preUserRegistration = preUserRegistration;
+            _resultValue.shields = shields;
+            return _resultValue;
         }
     }
 }

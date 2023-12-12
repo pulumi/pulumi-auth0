@@ -38,9 +38,9 @@ public final class GetClientAddonSlack {
             return this;
         }
         public GetClientAddonSlack build() {
-            final var o = new GetClientAddonSlack();
-            o.team = team;
-            return o;
+            final var _resultValue = new GetClientAddonSlack();
+            _resultValue.team = team;
+            return _resultValue;
         }
     }
 }

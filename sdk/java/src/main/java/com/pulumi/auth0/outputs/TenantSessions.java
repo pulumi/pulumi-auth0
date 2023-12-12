@@ -46,9 +46,9 @@ public final class TenantSessions {
             return this;
         }
         public TenantSessions build() {
-            final var o = new TenantSessions();
-            o.oidcLogoutPromptEnabled = oidcLogoutPromptEnabled;
-            return o;
+            final var _resultValue = new TenantSessions();
+            _resultValue.oidcLogoutPromptEnabled = oidcLogoutPromptEnabled;
+            return _resultValue;
         }
     }
 }

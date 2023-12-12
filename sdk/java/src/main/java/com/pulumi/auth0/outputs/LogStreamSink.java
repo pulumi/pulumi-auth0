@@ -488,32 +488,32 @@ public final class LogStreamSink {
             return this;
         }
         public LogStreamSink build() {
-            final var o = new LogStreamSink();
-            o.awsAccountId = awsAccountId;
-            o.awsPartnerEventSource = awsPartnerEventSource;
-            o.awsRegion = awsRegion;
-            o.azurePartnerTopic = azurePartnerTopic;
-            o.azureRegion = azureRegion;
-            o.azureResourceGroup = azureResourceGroup;
-            o.azureSubscriptionId = azureSubscriptionId;
-            o.datadogApiKey = datadogApiKey;
-            o.datadogRegion = datadogRegion;
-            o.httpAuthorization = httpAuthorization;
-            o.httpContentFormat = httpContentFormat;
-            o.httpContentType = httpContentType;
-            o.httpCustomHeaders = httpCustomHeaders;
-            o.httpEndpoint = httpEndpoint;
-            o.mixpanelProjectId = mixpanelProjectId;
-            o.mixpanelRegion = mixpanelRegion;
-            o.mixpanelServiceAccountPassword = mixpanelServiceAccountPassword;
-            o.mixpanelServiceAccountUsername = mixpanelServiceAccountUsername;
-            o.segmentWriteKey = segmentWriteKey;
-            o.splunkDomain = splunkDomain;
-            o.splunkPort = splunkPort;
-            o.splunkSecure = splunkSecure;
-            o.splunkToken = splunkToken;
-            o.sumoSourceAddress = sumoSourceAddress;
-            return o;
+            final var _resultValue = new LogStreamSink();
+            _resultValue.awsAccountId = awsAccountId;
+            _resultValue.awsPartnerEventSource = awsPartnerEventSource;
+            _resultValue.awsRegion = awsRegion;
+            _resultValue.azurePartnerTopic = azurePartnerTopic;
+            _resultValue.azureRegion = azureRegion;
+            _resultValue.azureResourceGroup = azureResourceGroup;
+            _resultValue.azureSubscriptionId = azureSubscriptionId;
+            _resultValue.datadogApiKey = datadogApiKey;
+            _resultValue.datadogRegion = datadogRegion;
+            _resultValue.httpAuthorization = httpAuthorization;
+            _resultValue.httpContentFormat = httpContentFormat;
+            _resultValue.httpContentType = httpContentType;
+            _resultValue.httpCustomHeaders = httpCustomHeaders;
+            _resultValue.httpEndpoint = httpEndpoint;
+            _resultValue.mixpanelProjectId = mixpanelProjectId;
+            _resultValue.mixpanelRegion = mixpanelRegion;
+            _resultValue.mixpanelServiceAccountPassword = mixpanelServiceAccountPassword;
+            _resultValue.mixpanelServiceAccountUsername = mixpanelServiceAccountUsername;
+            _resultValue.segmentWriteKey = segmentWriteKey;
+            _resultValue.splunkDomain = splunkDomain;
+            _resultValue.splunkPort = splunkPort;
+            _resultValue.splunkSecure = splunkSecure;
+            _resultValue.splunkToken = splunkToken;
+            _resultValue.sumoSourceAddress = sumoSourceAddress;
+            return _resultValue;
         }
     }
 }

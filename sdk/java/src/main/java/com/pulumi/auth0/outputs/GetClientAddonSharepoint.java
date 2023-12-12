@@ -53,10 +53,10 @@ public final class GetClientAddonSharepoint {
             return this;
         }
         public GetClientAddonSharepoint build() {
-            final var o = new GetClientAddonSharepoint();
-            o.externalUrls = externalUrls;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetClientAddonSharepoint();
+            _resultValue.externalUrls = externalUrls;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

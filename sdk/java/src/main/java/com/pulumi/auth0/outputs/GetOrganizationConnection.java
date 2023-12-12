@@ -50,10 +50,10 @@ public final class GetOrganizationConnection {
             return this;
         }
         public GetOrganizationConnection build() {
-            final var o = new GetOrganizationConnection();
-            o.assignMembershipOnLogin = assignMembershipOnLogin;
-            o.connectionId = connectionId;
-            return o;
+            final var _resultValue = new GetOrganizationConnection();
+            _resultValue.assignMembershipOnLogin = assignMembershipOnLogin;
+            _resultValue.connectionId = connectionId;
+            return _resultValue;
         }
     }
 }

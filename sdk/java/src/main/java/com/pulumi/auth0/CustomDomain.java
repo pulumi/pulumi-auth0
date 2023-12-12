@@ -66,7 +66,7 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
      * The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
      * 
      */
-    @Export(name="customClientIpHeader", type=String.class, parameters={})
+    @Export(name="customClientIpHeader", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customClientIpHeader;
 
     /**
@@ -80,7 +80,7 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
      * Name of the custom domain.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -94,7 +94,7 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
      * Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      * 
      */
-    @Export(name="originDomainName", type=String.class, parameters={})
+    @Export(name="originDomainName", refs={String.class}, tree="[0]")
     private Output<String> originDomainName;
 
     /**
@@ -108,7 +108,7 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
      * Indicates whether this is a primary domain.
      * 
      */
-    @Export(name="primary", type=Boolean.class, parameters={})
+    @Export(name="primary", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> primary;
 
     /**
@@ -122,7 +122,7 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
      * Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -136,7 +136,7 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
      * TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
      * 
      */
-    @Export(name="tlsPolicy", type=String.class, parameters={})
+    @Export(name="tlsPolicy", refs={String.class}, tree="[0]")
     private Output<String> tlsPolicy;
 
     /**
@@ -150,7 +150,7 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
      * Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -164,7 +164,7 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
      * Configuration settings for verification.
      * 
      */
-    @Export(name="verifications", type=List.class, parameters={CustomDomainVerification.class})
+    @Export(name="verifications", refs={List.class,CustomDomainVerification.class}, tree="[0,1]")
     private Output<List<CustomDomainVerification>> verifications;
 
     /**

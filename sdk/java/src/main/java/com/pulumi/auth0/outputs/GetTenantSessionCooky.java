@@ -38,9 +38,9 @@ public final class GetTenantSessionCooky {
             return this;
         }
         public GetTenantSessionCooky build() {
-            final var o = new GetTenantSessionCooky();
-            o.mode = mode;
-            return o;
+            final var _resultValue = new GetTenantSessionCooky();
+            _resultValue.mode = mode;
+            return _resultValue;
         }
     }
 }

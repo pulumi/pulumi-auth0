@@ -68,10 +68,10 @@ public final class OrganizationConnectionsEnabledConnection {
             return this;
         }
         public OrganizationConnectionsEnabledConnection build() {
-            final var o = new OrganizationConnectionsEnabledConnection();
-            o.assignMembershipOnLogin = assignMembershipOnLogin;
-            o.connectionId = connectionId;
-            return o;
+            final var _resultValue = new OrganizationConnectionsEnabledConnection();
+            _resultValue.assignMembershipOnLogin = assignMembershipOnLogin;
+            _resultValue.connectionId = connectionId;
+            return _resultValue;
         }
     }
 }

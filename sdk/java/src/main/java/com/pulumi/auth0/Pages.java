@@ -84,7 +84,7 @@ public class Pages extends com.pulumi.resources.CustomResource {
      * Configuration settings for customizing the Password Reset page.
      * 
      */
-    @Export(name="changePassword", type=PagesChangePassword.class, parameters={})
+    @Export(name="changePassword", refs={PagesChangePassword.class}, tree="[0]")
     private Output<PagesChangePassword> changePassword;
 
     /**
@@ -98,7 +98,7 @@ public class Pages extends com.pulumi.resources.CustomResource {
      * Configuration settings for the Error pages.
      * 
      */
-    @Export(name="error", type=PagesError.class, parameters={})
+    @Export(name="error", refs={PagesError.class}, tree="[0]")
     private Output<PagesError> error;
 
     /**
@@ -112,7 +112,7 @@ public class Pages extends com.pulumi.resources.CustomResource {
      * Configuration settings for customizing the Guardian Multi-Factor Authentication page.
      * 
      */
-    @Export(name="guardianMfa", type=PagesGuardianMfa.class, parameters={})
+    @Export(name="guardianMfa", refs={PagesGuardianMfa.class}, tree="[0]")
     private Output<PagesGuardianMfa> guardianMfa;
 
     /**
@@ -126,7 +126,7 @@ public class Pages extends com.pulumi.resources.CustomResource {
      * Configuration settings for customizing the Login page.
      * 
      */
-    @Export(name="login", type=PagesLogin.class, parameters={})
+    @Export(name="login", refs={PagesLogin.class}, tree="[0]")
     private Output<PagesLogin> login;
 
     /**

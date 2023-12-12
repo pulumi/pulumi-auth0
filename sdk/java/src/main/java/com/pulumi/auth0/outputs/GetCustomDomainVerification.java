@@ -42,9 +42,9 @@ public final class GetCustomDomainVerification {
             return methods(List.of(methods));
         }
         public GetCustomDomainVerification build() {
-            final var o = new GetCustomDomainVerification();
-            o.methods = methods;
-            return o;
+            final var _resultValue = new GetCustomDomainVerification();
+            _resultValue.methods = methods;
+            return _resultValue;
         }
     }
 }

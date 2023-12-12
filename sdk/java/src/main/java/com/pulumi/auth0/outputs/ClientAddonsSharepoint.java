@@ -71,10 +71,10 @@ public final class ClientAddonsSharepoint {
             return this;
         }
         public ClientAddonsSharepoint build() {
-            final var o = new ClientAddonsSharepoint();
-            o.externalUrls = externalUrls;
-            o.url = url;
-            return o;
+            final var _resultValue = new ClientAddonsSharepoint();
+            _resultValue.externalUrls = externalUrls;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

@@ -40,9 +40,9 @@ public final class ClientNativeSocialLoginFacebook {
             return this;
         }
         public ClientNativeSocialLoginFacebook build() {
-            final var o = new ClientNativeSocialLoginFacebook();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClientNativeSocialLoginFacebook();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

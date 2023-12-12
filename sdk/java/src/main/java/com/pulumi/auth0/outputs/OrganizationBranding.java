@@ -68,10 +68,10 @@ public final class OrganizationBranding {
             return this;
         }
         public OrganizationBranding build() {
-            final var o = new OrganizationBranding();
-            o.colors = colors;
-            o.logoUrl = logoUrl;
-            return o;
+            final var _resultValue = new OrganizationBranding();
+            _resultValue.colors = colors;
+            _resultValue.logoUrl = logoUrl;
+            return _resultValue;
         }
     }
 }

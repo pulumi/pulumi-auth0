@@ -94,7 +94,7 @@ public class LogStream extends com.pulumi.resources.CustomResource {
      * Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
      * 
      */
-    @Export(name="filters", type=List.class, parameters={Map.class})
+    @Export(name="filters", refs={List.class,Map.class,String.class}, tree="[0,[1,2,2]]")
     private Output</* @Nullable */ List<Map<String,String>>> filters;
 
     /**
@@ -108,7 +108,7 @@ public class LogStream extends com.pulumi.resources.CustomResource {
      * Name of the log stream.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -122,7 +122,7 @@ public class LogStream extends com.pulumi.resources.CustomResource {
      * The sink configuration for the log stream.
      * 
      */
-    @Export(name="sink", type=LogStreamSink.class, parameters={})
+    @Export(name="sink", refs={LogStreamSink.class}, tree="[0]")
     private Output<LogStreamSink> sink;
 
     /**
@@ -136,7 +136,7 @@ public class LogStream extends com.pulumi.resources.CustomResource {
      * The current status of the log stream. Options are &#34;active&#34;, &#34;paused&#34;, &#34;suspended&#34;.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -150,7 +150,7 @@ public class LogStream extends com.pulumi.resources.CustomResource {
      * Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

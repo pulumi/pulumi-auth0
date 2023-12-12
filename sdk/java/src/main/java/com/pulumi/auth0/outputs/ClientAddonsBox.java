@@ -25,8 +25,8 @@ public final class ClientAddonsBox {
         }
 
         public ClientAddonsBox build() {
-            final var o = new ClientAddonsBox();
-            return o;
+            final var _resultValue = new ClientAddonsBox();
+            return _resultValue;
         }
     }
 }

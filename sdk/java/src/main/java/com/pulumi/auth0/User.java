@@ -71,7 +71,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Custom fields that store info about the user that impact the user&#39;s core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
      * 
      */
-    @Export(name="appMetadata", type=String.class, parameters={})
+    @Export(name="appMetadata", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> appMetadata;
 
     /**
@@ -85,7 +85,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Indicates whether the user is blocked or not.
      * 
      */
-    @Export(name="blocked", type=Boolean.class, parameters={})
+    @Export(name="blocked", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blocked;
 
     /**
@@ -99,7 +99,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Name of the connection from which the user information was sourced.
      * 
      */
-    @Export(name="connectionName", type=String.class, parameters={})
+    @Export(name="connectionName", refs={String.class}, tree="[0]")
     private Output<String> connectionName;
 
     /**
@@ -113,7 +113,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Email address of the user.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> email;
 
     /**
@@ -127,7 +127,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Indicates whether the email address has been verified.
      * 
      */
-    @Export(name="emailVerified", type=Boolean.class, parameters={})
+    @Export(name="emailVerified", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> emailVerified;
 
     /**
@@ -141,7 +141,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      * 
      */
-    @Export(name="familyName", type=String.class, parameters={})
+    @Export(name="familyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> familyName;
 
     /**
@@ -155,7 +155,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      * 
      */
-    @Export(name="givenName", type=String.class, parameters={})
+    @Export(name="givenName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> givenName;
 
     /**
@@ -169,7 +169,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -183,7 +183,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      * 
      */
-    @Export(name="nickname", type=String.class, parameters={})
+    @Export(name="nickname", refs={String.class}, tree="[0]")
     private Output<String> nickname;
 
     /**
@@ -197,7 +197,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Initial password for this user. Required for non-passwordless connections (SMS and email).
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -211,7 +211,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      * 
      */
-    @Export(name="phoneNumber", type=String.class, parameters={})
+    @Export(name="phoneNumber", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> phoneNumber;
 
     /**
@@ -225,7 +225,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Indicates whether the phone number has been verified.
      * 
      */
-    @Export(name="phoneVerified", type=Boolean.class, parameters={})
+    @Export(name="phoneVerified", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> phoneVerified;
 
     /**
@@ -239,7 +239,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      * 
      */
-    @Export(name="picture", type=String.class, parameters={})
+    @Export(name="picture", refs={String.class}, tree="[0]")
     private Output<String> picture;
 
     /**
@@ -253,7 +253,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * ID of the user.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**
@@ -267,7 +267,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Custom fields that store info about the user that does not impact a user&#39;s core functionality. Examples include work address, home address, and user preferences.
      * 
      */
-    @Export(name="userMetadata", type=String.class, parameters={})
+    @Export(name="userMetadata", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userMetadata;
 
     /**
@@ -281,7 +281,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Username of the user. Only valid if the connection requires a username.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 
     /**
@@ -295,7 +295,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
      * 
      */
-    @Export(name="verifyEmail", type=Boolean.class, parameters={})
+    @Export(name="verifyEmail", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> verifyEmail;
 
     /**

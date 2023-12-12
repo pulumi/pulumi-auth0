@@ -148,14 +148,14 @@ public final class GuardianPush {
             return this;
         }
         public GuardianPush build() {
-            final var o = new GuardianPush();
-            o.amazonSns = amazonSns;
-            o.customApp = customApp;
-            o.directApns = directApns;
-            o.directFcm = directFcm;
-            o.enabled = enabled;
-            o.provider = provider;
-            return o;
+            final var _resultValue = new GuardianPush();
+            _resultValue.amazonSns = amazonSns;
+            _resultValue.customApp = customApp;
+            _resultValue.directApns = directApns;
+            _resultValue.directFcm = directFcm;
+            _resultValue.enabled = enabled;
+            _resultValue.provider = provider;
+            return _resultValue;
         }
     }
 }

@@ -27,7 +27,7 @@ public class RolePermission extends com.pulumi.resources.CustomResource {
      * Description of the permission.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -41,7 +41,7 @@ public class RolePermission extends com.pulumi.resources.CustomResource {
      * Name of the permission.
      * 
      */
-    @Export(name="permission", type=String.class, parameters={})
+    @Export(name="permission", refs={String.class}, tree="[0]")
     private Output<String> permission;
 
     /**
@@ -55,7 +55,7 @@ public class RolePermission extends com.pulumi.resources.CustomResource {
      * Identifier of the resource server that the permission is associated with.
      * 
      */
-    @Export(name="resourceServerIdentifier", type=String.class, parameters={})
+    @Export(name="resourceServerIdentifier", refs={String.class}, tree="[0]")
     private Output<String> resourceServerIdentifier;
 
     /**
@@ -69,7 +69,7 @@ public class RolePermission extends com.pulumi.resources.CustomResource {
      * Name of the resource server that the permission is associated with.
      * 
      */
-    @Export(name="resourceServerName", type=String.class, parameters={})
+    @Export(name="resourceServerName", refs={String.class}, tree="[0]")
     private Output<String> resourceServerName;
 
     /**
@@ -83,7 +83,7 @@ public class RolePermission extends com.pulumi.resources.CustomResource {
      * ID of the role to associate the permission to.
      * 
      */
-    @Export(name="roleId", type=String.class, parameters={})
+    @Export(name="roleId", refs={String.class}, tree="[0]")
     private Output<String> roleId;
 
     /**

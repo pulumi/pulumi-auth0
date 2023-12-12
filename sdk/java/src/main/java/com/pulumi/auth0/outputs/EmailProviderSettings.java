@@ -68,10 +68,10 @@ public final class EmailProviderSettings {
             return this;
         }
         public EmailProviderSettings build() {
-            final var o = new EmailProviderSettings();
-            o.headers = headers;
-            o.message = message;
-            return o;
+            final var _resultValue = new EmailProviderSettings();
+            _resultValue.headers = headers;
+            _resultValue.message = message;
+            return _resultValue;
         }
     }
 }

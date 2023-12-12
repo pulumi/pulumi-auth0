@@ -82,7 +82,7 @@ public class UserRoles extends com.pulumi.resources.CustomResource {
      * Set of IDs of roles assigned to the user.
      * 
      */
-    @Export(name="roles", type=List.class, parameters={String.class})
+    @Export(name="roles", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> roles;
 
     /**
@@ -96,7 +96,7 @@ public class UserRoles extends com.pulumi.resources.CustomResource {
      * ID of the user.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

@@ -122,13 +122,13 @@ public final class GuardianPushAmazonSns {
             return this;
         }
         public GuardianPushAmazonSns build() {
-            final var o = new GuardianPushAmazonSns();
-            o.awsAccessKeyId = awsAccessKeyId;
-            o.awsRegion = awsRegion;
-            o.awsSecretAccessKey = awsSecretAccessKey;
-            o.snsApnsPlatformApplicationArn = snsApnsPlatformApplicationArn;
-            o.snsGcmPlatformApplicationArn = snsGcmPlatformApplicationArn;
-            return o;
+            final var _resultValue = new GuardianPushAmazonSns();
+            _resultValue.awsAccessKeyId = awsAccessKeyId;
+            _resultValue.awsRegion = awsRegion;
+            _resultValue.awsSecretAccessKey = awsSecretAccessKey;
+            _resultValue.snsApnsPlatformApplicationArn = snsApnsPlatformApplicationArn;
+            _resultValue.snsGcmPlatformApplicationArn = snsGcmPlatformApplicationArn;
+            return _resultValue;
         }
     }
 }

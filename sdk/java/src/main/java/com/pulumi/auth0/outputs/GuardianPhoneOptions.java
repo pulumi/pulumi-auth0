@@ -143,14 +143,14 @@ public final class GuardianPhoneOptions {
             return this;
         }
         public GuardianPhoneOptions build() {
-            final var o = new GuardianPhoneOptions();
-            o.authToken = authToken;
-            o.enrollmentMessage = enrollmentMessage;
-            o.from = from;
-            o.messagingServiceSid = messagingServiceSid;
-            o.sid = sid;
-            o.verificationMessage = verificationMessage;
-            return o;
+            final var _resultValue = new GuardianPhoneOptions();
+            _resultValue.authToken = authToken;
+            _resultValue.enrollmentMessage = enrollmentMessage;
+            _resultValue.from = from;
+            _resultValue.messagingServiceSid = messagingServiceSid;
+            _resultValue.sid = sid;
+            _resultValue.verificationMessage = verificationMessage;
+            return _resultValue;
         }
     }
 }

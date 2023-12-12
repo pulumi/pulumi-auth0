@@ -125,13 +125,13 @@ public final class BrandingThemeWidget {
             return this;
         }
         public BrandingThemeWidget build() {
-            final var o = new BrandingThemeWidget();
-            o.headerTextAlignment = headerTextAlignment;
-            o.logoHeight = logoHeight;
-            o.logoPosition = logoPosition;
-            o.logoUrl = logoUrl;
-            o.socialButtonsLayout = socialButtonsLayout;
-            return o;
+            final var _resultValue = new BrandingThemeWidget();
+            _resultValue.headerTextAlignment = headerTextAlignment;
+            _resultValue.logoHeight = logoHeight;
+            _resultValue.logoPosition = logoPosition;
+            _resultValue.logoUrl = logoUrl;
+            _resultValue.socialButtonsLayout = socialButtonsLayout;
+            return _resultValue;
         }
     }
 }

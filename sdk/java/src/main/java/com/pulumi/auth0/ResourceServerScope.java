@@ -78,7 +78,7 @@ public class ResourceServerScope extends com.pulumi.resources.CustomResource {
      * Description of the scope (permission).
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -92,7 +92,7 @@ public class ResourceServerScope extends com.pulumi.resources.CustomResource {
      * Identifier of the resource server that the scope (permission) is associated with.
      * 
      */
-    @Export(name="resourceServerIdentifier", type=String.class, parameters={})
+    @Export(name="resourceServerIdentifier", refs={String.class}, tree="[0]")
     private Output<String> resourceServerIdentifier;
 
     /**
@@ -106,7 +106,7 @@ public class ResourceServerScope extends com.pulumi.resources.CustomResource {
      * Name of the scope (permission).
      * 
      */
-    @Export(name="scope", type=String.class, parameters={})
+    @Export(name="scope", refs={String.class}, tree="[0]")
     private Output<String> scope;
 
     /**

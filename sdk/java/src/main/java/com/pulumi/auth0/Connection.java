@@ -512,7 +512,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Name used in login screen.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -526,7 +526,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Indicates whether the connection is domain level.
      * 
      */
-    @Export(name="isDomainConnection", type=Boolean.class, parameters={})
+    @Export(name="isDomainConnection", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isDomainConnection;
 
     /**
@@ -540,7 +540,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Metadata associated with the connection, in the form of a map of string values (max 255 chars).
      * 
      */
-    @Export(name="metadata", type=Map.class, parameters={String.class, String.class})
+    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
@@ -554,7 +554,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -568,7 +568,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Configuration settings for connection options.
      * 
      */
-    @Export(name="options", type=ConnectionOptions.class, parameters={})
+    @Export(name="options", refs={ConnectionOptions.class}, tree="[0]")
     private Output<ConnectionOptions> options;
 
     /**
@@ -582,7 +582,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
      * 
      */
-    @Export(name="realms", type=List.class, parameters={String.class})
+    @Export(name="realms", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> realms;
 
     /**
@@ -596,7 +596,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Display connection as a button. Only available on enterprise connections.
      * 
      */
-    @Export(name="showAsButton", type=Boolean.class, parameters={})
+    @Export(name="showAsButton", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> showAsButton;
 
     /**
@@ -610,7 +610,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Type of the connection, which indicates the identity provider.
      * 
      */
-    @Export(name="strategy", type=String.class, parameters={})
+    @Export(name="strategy", refs={String.class}, tree="[0]")
     private Output<String> strategy;
 
     /**

@@ -98,13 +98,13 @@ public final class GetAttackProtectionSuspiciousIpThrottling {
             return shields(List.of(shields));
         }
         public GetAttackProtectionSuspiciousIpThrottling build() {
-            final var o = new GetAttackProtectionSuspiciousIpThrottling();
-            o.allowlists = allowlists;
-            o.enabled = enabled;
-            o.preLogins = preLogins;
-            o.preUserRegistrations = preUserRegistrations;
-            o.shields = shields;
-            return o;
+            final var _resultValue = new GetAttackProtectionSuspiciousIpThrottling();
+            _resultValue.allowlists = allowlists;
+            _resultValue.enabled = enabled;
+            _resultValue.preLogins = preLogins;
+            _resultValue.preUserRegistrations = preUserRegistrations;
+            _resultValue.shields = shields;
+            return _resultValue;
         }
     }
 }

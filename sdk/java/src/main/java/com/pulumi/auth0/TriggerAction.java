@@ -84,7 +84,7 @@ public class TriggerAction extends com.pulumi.resources.CustomResource {
      * The ID of the action to bind to the trigger.
      * 
      */
-    @Export(name="actionId", type=String.class, parameters={})
+    @Export(name="actionId", refs={String.class}, tree="[0]")
     private Output<String> actionId;
 
     /**
@@ -98,7 +98,7 @@ public class TriggerAction extends com.pulumi.resources.CustomResource {
      * The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -112,7 +112,7 @@ public class TriggerAction extends com.pulumi.resources.CustomResource {
      * The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
      * 
      */
-    @Export(name="trigger", type=String.class, parameters={})
+    @Export(name="trigger", refs={String.class}, tree="[0]")
     private Output<String> trigger;
 
     /**

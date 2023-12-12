@@ -87,11 +87,11 @@ public final class GuardianWebauthnPlatform {
             return this;
         }
         public GuardianWebauthnPlatform build() {
-            final var o = new GuardianWebauthnPlatform();
-            o.enabled = enabled;
-            o.overrideRelyingParty = overrideRelyingParty;
-            o.relyingPartyIdentifier = relyingPartyIdentifier;
-            return o;
+            final var _resultValue = new GuardianWebauthnPlatform();
+            _resultValue.enabled = enabled;
+            _resultValue.overrideRelyingParty = overrideRelyingParty;
+            _resultValue.relyingPartyIdentifier = relyingPartyIdentifier;
+            return _resultValue;
         }
     }
 }

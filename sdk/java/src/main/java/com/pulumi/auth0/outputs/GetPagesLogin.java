@@ -50,10 +50,10 @@ public final class GetPagesLogin {
             return this;
         }
         public GetPagesLogin build() {
-            final var o = new GetPagesLogin();
-            o.enabled = enabled;
-            o.html = html;
-            return o;
+            final var _resultValue = new GetPagesLogin();
+            _resultValue.enabled = enabled;
+            _resultValue.html = html;
+            return _resultValue;
         }
     }
 }

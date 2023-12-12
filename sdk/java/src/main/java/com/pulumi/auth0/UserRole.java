@@ -81,7 +81,7 @@ public class UserRole extends com.pulumi.resources.CustomResource {
      * Description of the role.
      * 
      */
-    @Export(name="roleDescription", type=String.class, parameters={})
+    @Export(name="roleDescription", refs={String.class}, tree="[0]")
     private Output<String> roleDescription;
 
     /**
@@ -95,7 +95,7 @@ public class UserRole extends com.pulumi.resources.CustomResource {
      * ID of the role assigned to the user.
      * 
      */
-    @Export(name="roleId", type=String.class, parameters={})
+    @Export(name="roleId", refs={String.class}, tree="[0]")
     private Output<String> roleId;
 
     /**
@@ -109,7 +109,7 @@ public class UserRole extends com.pulumi.resources.CustomResource {
      * Name of the role.
      * 
      */
-    @Export(name="roleName", type=String.class, parameters={})
+    @Export(name="roleName", refs={String.class}, tree="[0]")
     private Output<String> roleName;
 
     /**
@@ -123,7 +123,7 @@ public class UserRole extends com.pulumi.resources.CustomResource {
      * ID of the user.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

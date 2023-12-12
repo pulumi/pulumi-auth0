@@ -48,9 +48,9 @@ public final class ClientAddonsEchosign {
             return this;
         }
         public ClientAddonsEchosign build() {
-            final var o = new ClientAddonsEchosign();
-            o.domain = domain;
-            return o;
+            final var _resultValue = new ClientAddonsEchosign();
+            _resultValue.domain = domain;
+            return _resultValue;
         }
     }
 }

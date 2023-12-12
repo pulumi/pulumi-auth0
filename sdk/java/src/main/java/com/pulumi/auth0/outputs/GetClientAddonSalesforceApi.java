@@ -71,12 +71,12 @@ public final class GetClientAddonSalesforceApi {
             return this;
         }
         public GetClientAddonSalesforceApi build() {
-            final var o = new GetClientAddonSalesforceApi();
-            o.clientId = clientId;
-            o.communityName = communityName;
-            o.communityUrlSection = communityUrlSection;
-            o.principal = principal;
-            return o;
+            final var _resultValue = new GetClientAddonSalesforceApi();
+            _resultValue.clientId = clientId;
+            _resultValue.communityName = communityName;
+            _resultValue.communityUrlSection = communityUrlSection;
+            _resultValue.principal = principal;
+            return _resultValue;
         }
     }
 }

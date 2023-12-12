@@ -50,10 +50,10 @@ public final class GetBrandingThemeFontInputLabel {
             return this;
         }
         public GetBrandingThemeFontInputLabel build() {
-            final var o = new GetBrandingThemeFontInputLabel();
-            o.bold = bold;
-            o.size = size;
-            return o;
+            final var _resultValue = new GetBrandingThemeFontInputLabel();
+            _resultValue.bold = bold;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

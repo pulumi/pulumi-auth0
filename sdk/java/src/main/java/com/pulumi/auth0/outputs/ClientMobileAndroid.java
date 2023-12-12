@@ -55,10 +55,10 @@ public final class ClientMobileAndroid {
             return sha256CertFingerprints(List.of(sha256CertFingerprints));
         }
         public ClientMobileAndroid build() {
-            final var o = new ClientMobileAndroid();
-            o.appPackageName = appPackageName;
-            o.sha256CertFingerprints = sha256CertFingerprints;
-            return o;
+            final var _resultValue = new ClientMobileAndroid();
+            _resultValue.appPackageName = appPackageName;
+            _resultValue.sha256CertFingerprints = sha256CertFingerprints;
+            return _resultValue;
         }
     }
 }

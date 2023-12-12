@@ -71,12 +71,12 @@ public final class GetUserPermission {
             return this;
         }
         public GetUserPermission build() {
-            final var o = new GetUserPermission();
-            o.description = description;
-            o.name = name;
-            o.resourceServerIdentifier = resourceServerIdentifier;
-            o.resourceServerName = resourceServerName;
-            return o;
+            final var _resultValue = new GetUserPermission();
+            _resultValue.description = description;
+            _resultValue.name = name;
+            _resultValue.resourceServerIdentifier = resourceServerIdentifier;
+            _resultValue.resourceServerName = resourceServerName;
+            return _resultValue;
         }
     }
 }

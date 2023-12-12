@@ -65,10 +65,10 @@ public final class ActionDependency {
             return this;
         }
         public ActionDependency build() {
-            final var o = new ActionDependency();
-            o.name = name;
-            o.version = version;
-            return o;
+            final var _resultValue = new ActionDependency();
+            _resultValue.name = name;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

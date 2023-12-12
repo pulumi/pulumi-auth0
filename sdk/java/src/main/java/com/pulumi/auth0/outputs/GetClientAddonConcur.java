@@ -25,8 +25,8 @@ public final class GetClientAddonConcur {
         }
 
         public GetClientAddonConcur build() {
-            final var o = new GetClientAddonConcur();
-            return o;
+            final var _resultValue = new GetClientAddonConcur();
+            return _resultValue;
         }
     }
 }

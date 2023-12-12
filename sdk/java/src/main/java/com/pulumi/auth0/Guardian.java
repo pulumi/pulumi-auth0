@@ -119,7 +119,7 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      * Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
      * 
      */
-    @Export(name="duo", type=GuardianDuo.class, parameters={})
+    @Export(name="duo", refs={GuardianDuo.class}, tree="[0]")
     private Output<GuardianDuo> duo;
 
     /**
@@ -133,7 +133,7 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      * Indicates whether email MFA is enabled.
      * 
      */
-    @Export(name="email", type=Boolean.class, parameters={})
+    @Export(name="email", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> email;
 
     /**
@@ -147,7 +147,7 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      * Indicates whether one time password MFA is enabled.
      * 
      */
-    @Export(name="otp", type=Boolean.class, parameters={})
+    @Export(name="otp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> otp;
 
     /**
@@ -161,7 +161,7 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      * Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
      * 
      */
-    @Export(name="phone", type=GuardianPhone.class, parameters={})
+    @Export(name="phone", refs={GuardianPhone.class}, tree="[0]")
     private Output<GuardianPhone> phone;
 
     /**
@@ -175,7 +175,7 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      * Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
      * 
      */
-    @Export(name="policy", type=String.class, parameters={})
+    @Export(name="policy", refs={String.class}, tree="[0]")
     private Output<String> policy;
 
     /**
@@ -189,7 +189,7 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      * Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
      * 
      */
-    @Export(name="push", type=GuardianPush.class, parameters={})
+    @Export(name="push", refs={GuardianPush.class}, tree="[0]")
     private Output<GuardianPush> push;
 
     /**
@@ -203,7 +203,7 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      * Indicates whether recovery code MFA is enabled.
      * 
      */
-    @Export(name="recoveryCode", type=Boolean.class, parameters={})
+    @Export(name="recoveryCode", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> recoveryCode;
 
     /**
@@ -217,7 +217,7 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      * Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
      * 
      */
-    @Export(name="webauthnPlatform", type=GuardianWebauthnPlatform.class, parameters={})
+    @Export(name="webauthnPlatform", refs={GuardianWebauthnPlatform.class}, tree="[0]")
     private Output<GuardianWebauthnPlatform> webauthnPlatform;
 
     /**
@@ -231,7 +231,7 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      * Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
      * 
      */
-    @Export(name="webauthnRoaming", type=GuardianWebauthnRoaming.class, parameters={})
+    @Export(name="webauthnRoaming", refs={GuardianWebauthnRoaming.class}, tree="[0]")
     private Output<GuardianWebauthnRoaming> webauthnRoaming;
 
     /**

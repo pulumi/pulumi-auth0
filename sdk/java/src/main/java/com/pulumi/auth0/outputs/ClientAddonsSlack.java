@@ -48,9 +48,9 @@ public final class ClientAddonsSlack {
             return this;
         }
         public ClientAddonsSlack build() {
-            final var o = new ClientAddonsSlack();
-            o.team = team;
-            return o;
+            final var _resultValue = new ClientAddonsSlack();
+            _resultValue.team = team;
+            return _resultValue;
         }
     }
 }

@@ -68,7 +68,7 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      * Indicates whether refresh tokens can be issued for this resource server.
      * 
      */
-    @Export(name="allowOfflineAccess", type=Boolean.class, parameters={})
+    @Export(name="allowOfflineAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowOfflineAccess;
 
     /**
@@ -82,7 +82,7 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      * If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
      * 
      */
-    @Export(name="enforcePolicies", type=Boolean.class, parameters={})
+    @Export(name="enforcePolicies", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enforcePolicies;
 
     /**
@@ -96,7 +96,7 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      * Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -110,7 +110,7 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      * Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -124,7 +124,7 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      * Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
      * 
      */
-    @Export(name="signingAlg", type=String.class, parameters={})
+    @Export(name="signingAlg", refs={String.class}, tree="[0]")
     private Output<String> signingAlg;
 
     /**
@@ -138,7 +138,7 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      * Secret used to sign tokens when using symmetric algorithms (HS256).
      * 
      */
-    @Export(name="signingSecret", type=String.class, parameters={})
+    @Export(name="signingSecret", refs={String.class}, tree="[0]")
     private Output<String> signingSecret;
 
     /**
@@ -152,7 +152,7 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      * Indicates whether to skip user consent for applications flagged as first party.
      * 
      */
-    @Export(name="skipConsentForVerifiableFirstPartyClients", type=Boolean.class, parameters={})
+    @Export(name="skipConsentForVerifiableFirstPartyClients", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> skipConsentForVerifiableFirstPartyClients;
 
     /**
@@ -166,7 +166,7 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      * Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz`. If this setting is set to `access_token_authz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforce_policies`) is enabled for this API.
      * 
      */
-    @Export(name="tokenDialect", type=String.class, parameters={})
+    @Export(name="tokenDialect", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tokenDialect;
 
     /**
@@ -180,7 +180,7 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      * Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      * 
      */
-    @Export(name="tokenLifetime", type=Integer.class, parameters={})
+    @Export(name="tokenLifetime", refs={Integer.class}, tree="[0]")
     private Output<Integer> tokenLifetime;
 
     /**
@@ -194,7 +194,7 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      * Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
      * 
      */
-    @Export(name="tokenLifetimeForWeb", type=Integer.class, parameters={})
+    @Export(name="tokenLifetimeForWeb", refs={Integer.class}, tree="[0]")
     private Output<Integer> tokenLifetimeForWeb;
 
     /**
@@ -208,7 +208,7 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      * URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      * 
      */
-    @Export(name="verificationLocation", type=String.class, parameters={})
+    @Export(name="verificationLocation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> verificationLocation;
 
     /**

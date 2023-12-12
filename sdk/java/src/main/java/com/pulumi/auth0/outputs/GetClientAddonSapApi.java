@@ -93,14 +93,14 @@ public final class GetClientAddonSapApi {
             return this;
         }
         public GetClientAddonSapApi build() {
-            final var o = new GetClientAddonSapApi();
-            o.clientId = clientId;
-            o.nameIdentifierFormat = nameIdentifierFormat;
-            o.scope = scope;
-            o.servicePassword = servicePassword;
-            o.tokenEndpointUrl = tokenEndpointUrl;
-            o.usernameAttribute = usernameAttribute;
-            return o;
+            final var _resultValue = new GetClientAddonSapApi();
+            _resultValue.clientId = clientId;
+            _resultValue.nameIdentifierFormat = nameIdentifierFormat;
+            _resultValue.scope = scope;
+            _resultValue.servicePassword = servicePassword;
+            _resultValue.tokenEndpointUrl = tokenEndpointUrl;
+            _resultValue.usernameAttribute = usernameAttribute;
+            return _resultValue;
         }
     }
 }

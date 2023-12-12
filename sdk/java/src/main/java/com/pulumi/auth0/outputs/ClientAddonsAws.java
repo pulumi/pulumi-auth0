@@ -87,11 +87,11 @@ public final class ClientAddonsAws {
             return this;
         }
         public ClientAddonsAws build() {
-            final var o = new ClientAddonsAws();
-            o.lifetimeInSeconds = lifetimeInSeconds;
-            o.principal = principal;
-            o.role = role;
-            return o;
+            final var _resultValue = new ClientAddonsAws();
+            _resultValue.lifetimeInSeconds = lifetimeInSeconds;
+            _resultValue.principal = principal;
+            _resultValue.role = role;
+            return _resultValue;
         }
     }
 }

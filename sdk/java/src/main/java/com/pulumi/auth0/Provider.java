@@ -29,7 +29,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * specified, `api_token` will be used over `client_id` + `client_secret` fields.
      * 
      */
-    @Export(name="apiToken", type=String.class, parameters={})
+    @Export(name="apiToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiToken;
 
     /**
@@ -46,7 +46,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
      * 
      */
-    @Export(name="audience", type=String.class, parameters={})
+    @Export(name="audience", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> audience;
 
     /**
@@ -60,7 +60,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
      * 
      */
-    @Export(name="clientId", type=String.class, parameters={})
+    @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientId;
 
     /**
@@ -74,7 +74,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
      * 
      */
-    @Export(name="clientSecret", type=String.class, parameters={})
+    @Export(name="clientSecret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientSecret;
 
     /**
@@ -88,7 +88,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> domain;
 
     /**

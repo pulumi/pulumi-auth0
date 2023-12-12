@@ -33,7 +33,7 @@ public class CustomDomainVerification extends com.pulumi.resources.CustomResourc
      * is `self_managed_certs` and Terraform originally managed the domain&#39;s verification.
      * 
      */
-    @Export(name="cnameApiKey", type=String.class, parameters={})
+    @Export(name="cnameApiKey", refs={String.class}, tree="[0]")
     private Output<String> cnameApiKey;
 
     /**
@@ -48,7 +48,7 @@ public class CustomDomainVerification extends com.pulumi.resources.CustomResourc
      * ID of the custom domain resource.
      * 
      */
-    @Export(name="customDomainId", type=String.class, parameters={})
+    @Export(name="customDomainId", refs={String.class}, tree="[0]")
     private Output<String> customDomainId;
 
     /**
@@ -62,7 +62,7 @@ public class CustomDomainVerification extends com.pulumi.resources.CustomResourc
      * The DNS name of the Auth0 origin server that handles traffic for the custom domain.
      * 
      */
-    @Export(name="originDomainName", type=String.class, parameters={})
+    @Export(name="originDomainName", refs={String.class}, tree="[0]")
     private Output<String> originDomainName;
 
     /**

@@ -25,8 +25,8 @@ public final class ClientAddonsCloudbees {
         }
 
         public ClientAddonsCloudbees build() {
-            final var o = new ClientAddonsCloudbees();
-            return o;
+            final var _resultValue = new ClientAddonsCloudbees();
+            return _resultValue;
         }
     }
 }

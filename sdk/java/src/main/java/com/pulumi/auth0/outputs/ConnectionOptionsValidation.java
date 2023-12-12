@@ -48,9 +48,9 @@ public final class ConnectionOptionsValidation {
             return this;
         }
         public ConnectionOptionsValidation build() {
-            final var o = new ConnectionOptionsValidation();
-            o.username = username;
-            return o;
+            final var _resultValue = new ConnectionOptionsValidation();
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

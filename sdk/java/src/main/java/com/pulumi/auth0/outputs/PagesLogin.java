@@ -66,10 +66,10 @@ public final class PagesLogin {
             return this;
         }
         public PagesLogin build() {
-            final var o = new PagesLogin();
-            o.enabled = enabled;
-            o.html = html;
-            return o;
+            final var _resultValue = new PagesLogin();
+            _resultValue.enabled = enabled;
+            _resultValue.html = html;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class ClientAddonsSalesforce {
             return this;
         }
         public ClientAddonsSalesforce build() {
-            final var o = new ClientAddonsSalesforce();
-            o.entityId = entityId;
-            return o;
+            final var _resultValue = new ClientAddonsSalesforce();
+            _resultValue.entityId = entityId;
+            return _resultValue;
         }
     }
 }

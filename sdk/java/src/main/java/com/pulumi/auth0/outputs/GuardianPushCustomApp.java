@@ -86,11 +86,11 @@ public final class GuardianPushCustomApp {
             return this;
         }
         public GuardianPushCustomApp build() {
-            final var o = new GuardianPushCustomApp();
-            o.appName = appName;
-            o.appleAppLink = appleAppLink;
-            o.googleAppLink = googleAppLink;
-            return o;
+            final var _resultValue = new GuardianPushCustomApp();
+            _resultValue.appName = appName;
+            _resultValue.appleAppLink = appleAppLink;
+            _resultValue.googleAppLink = googleAppLink;
+            return _resultValue;
         }
     }
 }

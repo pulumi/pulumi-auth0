@@ -38,9 +38,9 @@ public final class GetClientAddonRm {
             return this;
         }
         public GetClientAddonRm build() {
-            final var o = new GetClientAddonRm();
-            o.url = url;
-            return o;
+            final var _resultValue = new GetClientAddonRm();
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

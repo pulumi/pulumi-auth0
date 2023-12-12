@@ -38,9 +38,9 @@ public final class GetClientAddonSpringcm {
             return this;
         }
         public GetClientAddonSpringcm build() {
-            final var o = new GetClientAddonSpringcm();
-            o.acsUrl = acsUrl;
-            return o;
+            final var _resultValue = new GetClientAddonSpringcm();
+            _resultValue.acsUrl = acsUrl;
+            return _resultValue;
         }
     }
 }

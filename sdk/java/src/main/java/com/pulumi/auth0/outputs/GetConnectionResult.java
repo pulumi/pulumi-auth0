@@ -251,19 +251,19 @@ public final class GetConnectionResult {
             return this;
         }
         public GetConnectionResult build() {
-            final var o = new GetConnectionResult();
-            o.connectionId = connectionId;
-            o.displayName = displayName;
-            o.enabledClients = enabledClients;
-            o.id = id;
-            o.isDomainConnection = isDomainConnection;
-            o.metadata = metadata;
-            o.name = name;
-            o.options = options;
-            o.realms = realms;
-            o.showAsButton = showAsButton;
-            o.strategy = strategy;
-            return o;
+            final var _resultValue = new GetConnectionResult();
+            _resultValue.connectionId = connectionId;
+            _resultValue.displayName = displayName;
+            _resultValue.enabledClients = enabledClients;
+            _resultValue.id = id;
+            _resultValue.isDomainConnection = isDomainConnection;
+            _resultValue.metadata = metadata;
+            _resultValue.name = name;
+            _resultValue.options = options;
+            _resultValue.realms = realms;
+            _resultValue.showAsButton = showAsButton;
+            _resultValue.strategy = strategy;
+            return _resultValue;
         }
     }
 }

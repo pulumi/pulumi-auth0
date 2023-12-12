@@ -68,10 +68,10 @@ public final class BrandingThemeFontsLinks {
             return this;
         }
         public BrandingThemeFontsLinks build() {
-            final var o = new BrandingThemeFontsLinks();
-            o.bold = bold;
-            o.size = size;
-            return o;
+            final var _resultValue = new BrandingThemeFontsLinks();
+            _resultValue.bold = bold;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

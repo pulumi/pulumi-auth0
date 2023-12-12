@@ -50,9 +50,9 @@ public final class ClientCredentialsPrivateKeyJwt {
             return credentials(List.of(credentials));
         }
         public ClientCredentialsPrivateKeyJwt build() {
-            final var o = new ClientCredentialsPrivateKeyJwt();
-            o.credentials = credentials;
-            return o;
+            final var _resultValue = new ClientCredentialsPrivateKeyJwt();
+            _resultValue.credentials = credentials;
+            return _resultValue;
         }
     }
 }

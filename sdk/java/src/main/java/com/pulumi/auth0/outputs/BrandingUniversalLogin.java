@@ -46,9 +46,9 @@ public final class BrandingUniversalLogin {
             return this;
         }
         public BrandingUniversalLogin build() {
-            final var o = new BrandingUniversalLogin();
-            o.body = body;
-            return o;
+            final var _resultValue = new BrandingUniversalLogin();
+            _resultValue.body = body;
+            return _resultValue;
         }
     }
 }

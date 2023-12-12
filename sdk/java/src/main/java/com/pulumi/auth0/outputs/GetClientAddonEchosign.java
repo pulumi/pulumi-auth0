@@ -38,9 +38,9 @@ public final class GetClientAddonEchosign {
             return this;
         }
         public GetClientAddonEchosign build() {
-            final var o = new GetClientAddonEchosign();
-            o.domain = domain;
-            return o;
+            final var _resultValue = new GetClientAddonEchosign();
+            _resultValue.domain = domain;
+            return _resultValue;
         }
     }
 }

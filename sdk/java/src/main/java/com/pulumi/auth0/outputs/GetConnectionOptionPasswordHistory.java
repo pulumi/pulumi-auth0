@@ -50,10 +50,10 @@ public final class GetConnectionOptionPasswordHistory {
             return this;
         }
         public GetConnectionOptionPasswordHistory build() {
-            final var o = new GetConnectionOptionPasswordHistory();
-            o.enable = enable;
-            o.size = size;
-            return o;
+            final var _resultValue = new GetConnectionOptionPasswordHistory();
+            _resultValue.enable = enable;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

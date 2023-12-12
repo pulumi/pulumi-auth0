@@ -108,12 +108,12 @@ public final class ClientJwtConfiguration {
             return this;
         }
         public ClientJwtConfiguration build() {
-            final var o = new ClientJwtConfiguration();
-            o.alg = alg;
-            o.lifetimeInSeconds = lifetimeInSeconds;
-            o.scopes = scopes;
-            o.secretEncoded = secretEncoded;
-            return o;
+            final var _resultValue = new ClientJwtConfiguration();
+            _resultValue.alg = alg;
+            _resultValue.lifetimeInSeconds = lifetimeInSeconds;
+            _resultValue.scopes = scopes;
+            _resultValue.secretEncoded = secretEncoded;
+            return _resultValue;
         }
     }
 }

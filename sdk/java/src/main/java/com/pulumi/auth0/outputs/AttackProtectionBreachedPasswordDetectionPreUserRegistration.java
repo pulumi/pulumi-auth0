@@ -51,9 +51,9 @@ public final class AttackProtectionBreachedPasswordDetectionPreUserRegistration 
             return shields(List.of(shields));
         }
         public AttackProtectionBreachedPasswordDetectionPreUserRegistration build() {
-            final var o = new AttackProtectionBreachedPasswordDetectionPreUserRegistration();
-            o.shields = shields;
-            return o;
+            final var _resultValue = new AttackProtectionBreachedPasswordDetectionPreUserRegistration();
+            _resultValue.shields = shields;
+            return _resultValue;
         }
     }
 }

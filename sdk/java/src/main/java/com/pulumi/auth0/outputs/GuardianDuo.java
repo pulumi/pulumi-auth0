@@ -106,12 +106,12 @@ public final class GuardianDuo {
             return this;
         }
         public GuardianDuo build() {
-            final var o = new GuardianDuo();
-            o.enabled = enabled;
-            o.hostname = hostname;
-            o.integrationKey = integrationKey;
-            o.secretKey = secretKey;
-            return o;
+            final var _resultValue = new GuardianDuo();
+            _resultValue.enabled = enabled;
+            _resultValue.hostname = hostname;
+            _resultValue.integrationKey = integrationKey;
+            _resultValue.secretKey = secretKey;
+            return _resultValue;
         }
     }
 }

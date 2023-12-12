@@ -75,7 +75,7 @@ public class RuleConfig extends com.pulumi.resources.CustomResource {
      * Key for a rules configuration variable.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -89,7 +89,7 @@ public class RuleConfig extends com.pulumi.resources.CustomResource {
      * Value for a rules configuration variable.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**

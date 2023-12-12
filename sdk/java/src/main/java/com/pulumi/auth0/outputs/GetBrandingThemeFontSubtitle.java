@@ -50,10 +50,10 @@ public final class GetBrandingThemeFontSubtitle {
             return this;
         }
         public GetBrandingThemeFontSubtitle build() {
-            final var o = new GetBrandingThemeFontSubtitle();
-            o.bold = bold;
-            o.size = size;
-            return o;
+            final var _resultValue = new GetBrandingThemeFontSubtitle();
+            _resultValue.bold = bold;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

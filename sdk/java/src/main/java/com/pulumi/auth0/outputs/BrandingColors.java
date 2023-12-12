@@ -67,10 +67,10 @@ public final class BrandingColors {
             return this;
         }
         public BrandingColors build() {
-            final var o = new BrandingColors();
-            o.pageBackground = pageBackground;
-            o.primary = primary;
-            return o;
+            final var _resultValue = new BrandingColors();
+            _resultValue.pageBackground = pageBackground;
+            _resultValue.primary = primary;
+            return _resultValue;
         }
     }
 }

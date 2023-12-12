@@ -68,10 +68,10 @@ public final class BrandingThemeFontsInputLabels {
             return this;
         }
         public BrandingThemeFontsInputLabels build() {
-            final var o = new BrandingThemeFontsInputLabels();
-            o.bold = bold;
-            o.size = size;
-            return o;
+            final var _resultValue = new BrandingThemeFontsInputLabels();
+            _resultValue.bold = bold;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

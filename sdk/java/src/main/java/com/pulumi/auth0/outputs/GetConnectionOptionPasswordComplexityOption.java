@@ -38,9 +38,9 @@ public final class GetConnectionOptionPasswordComplexityOption {
             return this;
         }
         public GetConnectionOptionPasswordComplexityOption build() {
-            final var o = new GetConnectionOptionPasswordComplexityOption();
-            o.minLength = minLength;
-            return o;
+            final var _resultValue = new GetConnectionOptionPasswordComplexityOption();
+            _resultValue.minLength = minLength;
+            return _resultValue;
         }
     }
 }

@@ -143,14 +143,14 @@ public final class ClientAddonsSapApi {
             return this;
         }
         public ClientAddonsSapApi build() {
-            final var o = new ClientAddonsSapApi();
-            o.clientId = clientId;
-            o.nameIdentifierFormat = nameIdentifierFormat;
-            o.scope = scope;
-            o.servicePassword = servicePassword;
-            o.tokenEndpointUrl = tokenEndpointUrl;
-            o.usernameAttribute = usernameAttribute;
-            return o;
+            final var _resultValue = new ClientAddonsSapApi();
+            _resultValue.clientId = clientId;
+            _resultValue.nameIdentifierFormat = nameIdentifierFormat;
+            _resultValue.scope = scope;
+            _resultValue.servicePassword = servicePassword;
+            _resultValue.tokenEndpointUrl = tokenEndpointUrl;
+            _resultValue.usernameAttribute = usernameAttribute;
+            return _resultValue;
         }
     }
 }

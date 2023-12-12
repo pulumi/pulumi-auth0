@@ -277,21 +277,21 @@ public final class EmailProviderCredentials {
             return this;
         }
         public EmailProviderCredentials build() {
-            final var o = new EmailProviderCredentials();
-            o.accessKeyId = accessKeyId;
-            o.apiKey = apiKey;
-            o.azureCsConnectionString = azureCsConnectionString;
-            o.domain = domain;
-            o.ms365ClientId = ms365ClientId;
-            o.ms365ClientSecret = ms365ClientSecret;
-            o.ms365TenantId = ms365TenantId;
-            o.region = region;
-            o.secretAccessKey = secretAccessKey;
-            o.smtpHost = smtpHost;
-            o.smtpPass = smtpPass;
-            o.smtpPort = smtpPort;
-            o.smtpUser = smtpUser;
-            return o;
+            final var _resultValue = new EmailProviderCredentials();
+            _resultValue.accessKeyId = accessKeyId;
+            _resultValue.apiKey = apiKey;
+            _resultValue.azureCsConnectionString = azureCsConnectionString;
+            _resultValue.domain = domain;
+            _resultValue.ms365ClientId = ms365ClientId;
+            _resultValue.ms365ClientSecret = ms365ClientSecret;
+            _resultValue.ms365TenantId = ms365TenantId;
+            _resultValue.region = region;
+            _resultValue.secretAccessKey = secretAccessKey;
+            _resultValue.smtpHost = smtpHost;
+            _resultValue.smtpPass = smtpPass;
+            _resultValue.smtpPort = smtpPort;
+            _resultValue.smtpUser = smtpUser;
+            return _resultValue;
         }
     }
 }

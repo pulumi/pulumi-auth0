@@ -83,13 +83,13 @@ public final class GetClientAddonAzureSb {
             return this;
         }
         public GetClientAddonAzureSb build() {
-            final var o = new GetClientAddonAzureSb();
-            o.entityPath = entityPath;
-            o.expiration = expiration;
-            o.namespace = namespace;
-            o.sasKey = sasKey;
-            o.sasKeyName = sasKeyName;
-            return o;
+            final var _resultValue = new GetClientAddonAzureSb();
+            _resultValue.entityPath = entityPath;
+            _resultValue.expiration = expiration;
+            _resultValue.namespace = namespace;
+            _resultValue.sasKey = sasKey;
+            _resultValue.sasKeyName = sasKeyName;
+            return _resultValue;
         }
     }
 }

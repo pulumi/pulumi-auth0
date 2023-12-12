@@ -116,12 +116,12 @@ public final class GetAttackProtectionResult {
             return suspiciousIpThrottlings(List.of(suspiciousIpThrottlings));
         }
         public GetAttackProtectionResult build() {
-            final var o = new GetAttackProtectionResult();
-            o.breachedPasswordDetections = breachedPasswordDetections;
-            o.bruteForceProtections = bruteForceProtections;
-            o.id = id;
-            o.suspiciousIpThrottlings = suspiciousIpThrottlings;
-            return o;
+            final var _resultValue = new GetAttackProtectionResult();
+            _resultValue.breachedPasswordDetections = breachedPasswordDetections;
+            _resultValue.bruteForceProtections = bruteForceProtections;
+            _resultValue.id = id;
+            _resultValue.suspiciousIpThrottlings = suspiciousIpThrottlings;
+            return _resultValue;
         }
     }
 }

@@ -42,9 +42,9 @@ public final class GetConnectionOptionValidation {
             return usernames(List.of(usernames));
         }
         public GetConnectionOptionValidation build() {
-            final var o = new GetConnectionOptionValidation();
-            o.usernames = usernames;
-            return o;
+            final var _resultValue = new GetConnectionOptionValidation();
+            _resultValue.usernames = usernames;
+            return _resultValue;
         }
     }
 }

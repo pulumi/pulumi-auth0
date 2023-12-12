@@ -67,10 +67,10 @@ public final class ClientAddonsSsoIntegration {
             return this;
         }
         public ClientAddonsSsoIntegration build() {
-            final var o = new ClientAddonsSsoIntegration();
-            o.name = name;
-            o.version = version;
-            return o;
+            final var _resultValue = new ClientAddonsSsoIntegration();
+            _resultValue.name = name;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

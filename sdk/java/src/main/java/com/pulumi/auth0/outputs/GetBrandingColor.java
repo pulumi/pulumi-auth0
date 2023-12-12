@@ -49,10 +49,10 @@ public final class GetBrandingColor {
             return this;
         }
         public GetBrandingColor build() {
-            final var o = new GetBrandingColor();
-            o.pageBackground = pageBackground;
-            o.primary = primary;
-            return o;
+            final var _resultValue = new GetBrandingColor();
+            _resultValue.pageBackground = pageBackground;
+            _resultValue.primary = primary;
+            return _resultValue;
         }
     }
 }

@@ -94,7 +94,7 @@ public class OrganizationConnections extends com.pulumi.resources.CustomResource
      * Connections that are enabled for the organization.
      * 
      */
-    @Export(name="enabledConnections", type=List.class, parameters={OrganizationConnectionsEnabledConnection.class})
+    @Export(name="enabledConnections", refs={List.class,OrganizationConnectionsEnabledConnection.class}, tree="[0,1]")
     private Output<List<OrganizationConnectionsEnabledConnection>> enabledConnections;
 
     /**
@@ -108,7 +108,7 @@ public class OrganizationConnections extends com.pulumi.resources.CustomResource
      * ID of the organization on which to enable the connections.
      * 
      */
-    @Export(name="organizationId", type=String.class, parameters={})
+    @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**

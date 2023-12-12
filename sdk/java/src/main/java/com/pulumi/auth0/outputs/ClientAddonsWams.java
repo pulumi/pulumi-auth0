@@ -48,9 +48,9 @@ public final class ClientAddonsWams {
             return this;
         }
         public ClientAddonsWams build() {
-            final var o = new ClientAddonsWams();
-            o.masterKey = masterKey;
-            return o;
+            final var _resultValue = new ClientAddonsWams();
+            _resultValue.masterKey = masterKey;
+            return _resultValue;
         }
     }
 }

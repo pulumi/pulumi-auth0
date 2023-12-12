@@ -134,7 +134,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Addons enabled for this client and their associated configurations.
      * 
      */
-    @Export(name="addons", type=ClientAddons.class, parameters={})
+    @Export(name="addons", refs={ClientAddons.class}, tree="[0]")
     private Output</* @Nullable */ ClientAddons> addons;
 
     /**
@@ -148,7 +148,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
      * 
      */
-    @Export(name="allowedClients", type=List.class, parameters={String.class})
+    @Export(name="allowedClients", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedClients;
 
     /**
@@ -162,7 +162,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * URLs that Auth0 may redirect to after logout.
      * 
      */
-    @Export(name="allowedLogoutUrls", type=List.class, parameters={String.class})
+    @Export(name="allowedLogoutUrls", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedLogoutUrls;
 
     /**
@@ -176,7 +176,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
      * 
      */
-    @Export(name="allowedOrigins", type=List.class, parameters={String.class})
+    @Export(name="allowedOrigins", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedOrigins;
 
     /**
@@ -190,7 +190,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      * 
      */
-    @Export(name="appType", type=String.class, parameters={})
+    @Export(name="appType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> appType;
 
     /**
@@ -204,7 +204,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      * 
      */
-    @Export(name="callbacks", type=List.class, parameters={String.class})
+    @Export(name="callbacks", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> callbacks;
 
     /**
@@ -218,7 +218,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * List of audiences/realms for SAML protocol. Used by the wsfed addon.
      * 
      */
-    @Export(name="clientAliases", type=List.class, parameters={String.class})
+    @Export(name="clientAliases", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> clientAliases;
 
     /**
@@ -232,7 +232,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Consumer Key assigned by Salesforce to the Connected App.
      * 
      */
-    @Export(name="clientId", type=String.class, parameters={})
+    @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output<String> clientId;
 
     /**
@@ -246,7 +246,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;@ [Tab] [Space]`.
      * 
      */
-    @Export(name="clientMetadata", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="clientMetadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> clientMetadata;
 
     /**
@@ -260,7 +260,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      * 
      */
-    @Export(name="crossOriginAuth", type=Boolean.class, parameters={})
+    @Export(name="crossOriginAuth", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> crossOriginAuth;
 
     /**
@@ -274,7 +274,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
      * 
      */
-    @Export(name="crossOriginLoc", type=String.class, parameters={})
+    @Export(name="crossOriginLoc", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> crossOriginLoc;
 
     /**
@@ -288,7 +288,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * The content (HTML, CSS, JS) of the custom login page.
      * 
      */
-    @Export(name="customLoginPage", type=String.class, parameters={})
+    @Export(name="customLoginPage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customLoginPage;
 
     /**
@@ -302,7 +302,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Indicates whether a custom login page is to be used.
      * 
      */
-    @Export(name="customLoginPageOn", type=Boolean.class, parameters={})
+    @Export(name="customLoginPageOn", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> customLoginPageOn;
 
     /**
@@ -316,7 +316,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Description of the purpose of the client.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -330,7 +330,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Encryption used for WS-Fed responses with this client.
      * 
      */
-    @Export(name="encryptionKey", type=Map.class, parameters={String.class, String.class})
+    @Export(name="encryptionKey", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> encryptionKey;
 
     /**
@@ -344,7 +344,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * HTML form template to be used for WS-Federation.
      * 
      */
-    @Export(name="formTemplate", type=String.class, parameters={})
+    @Export(name="formTemplate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> formTemplate;
 
     /**
@@ -358,7 +358,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Types of grants that this client is authorized to use.
      * 
      */
-    @Export(name="grantTypes", type=List.class, parameters={String.class})
+    @Export(name="grantTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> grantTypes;
 
     /**
@@ -372,7 +372,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Initiate login URI. Must be HTTPS or an empty string.
      * 
      */
-    @Export(name="initiateLoginUri", type=String.class, parameters={})
+    @Export(name="initiateLoginUri", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> initiateLoginUri;
 
     /**
@@ -386,7 +386,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Indicates whether this client is a first-party client.
      * 
      */
-    @Export(name="isFirstParty", type=Boolean.class, parameters={})
+    @Export(name="isFirstParty", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isFirstParty;
 
     /**
@@ -400,7 +400,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
      * 
      */
-    @Export(name="isTokenEndpointIpHeaderTrusted", type=Boolean.class, parameters={})
+    @Export(name="isTokenEndpointIpHeaderTrusted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isTokenEndpointIpHeaderTrusted;
 
     /**
@@ -414,7 +414,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Configuration settings for the JWTs issued for this client.
      * 
      */
-    @Export(name="jwtConfiguration", type=ClientJwtConfiguration.class, parameters={})
+    @Export(name="jwtConfiguration", refs={ClientJwtConfiguration.class}, tree="[0]")
     private Output<ClientJwtConfiguration> jwtConfiguration;
 
     /**
@@ -428,7 +428,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
      * 
      */
-    @Export(name="logoUri", type=String.class, parameters={})
+    @Export(name="logoUri", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logoUri;
 
     /**
@@ -442,7 +442,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Additional configuration for native mobile apps.
      * 
      */
-    @Export(name="mobile", type=ClientMobile.class, parameters={})
+    @Export(name="mobile", refs={ClientMobile.class}, tree="[0]")
     private Output<ClientMobile> mobile;
 
     /**
@@ -456,7 +456,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * SSO integration name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -470,7 +470,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
      * 
      */
-    @Export(name="nativeSocialLogin", type=ClientNativeSocialLogin.class, parameters={})
+    @Export(name="nativeSocialLogin", refs={ClientNativeSocialLogin.class}, tree="[0]")
     private Output<ClientNativeSocialLogin> nativeSocialLogin;
 
     /**
@@ -484,7 +484,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      * 
      */
-    @Export(name="oidcBackchannelLogoutUrls", type=List.class, parameters={String.class})
+    @Export(name="oidcBackchannelLogoutUrls", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> oidcBackchannelLogoutUrls;
 
     /**
@@ -498,7 +498,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Indicates whether this client will conform to strict OIDC specifications.
      * 
      */
-    @Export(name="oidcConformant", type=Boolean.class, parameters={})
+    @Export(name="oidcConformant", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> oidcConformant;
 
     /**
@@ -512,7 +512,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
      * 
      */
-    @Export(name="organizationRequireBehavior", type=String.class, parameters={})
+    @Export(name="organizationRequireBehavior", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> organizationRequireBehavior;
 
     /**
@@ -526,7 +526,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
      * 
      */
-    @Export(name="organizationUsage", type=String.class, parameters={})
+    @Export(name="organizationUsage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> organizationUsage;
 
     /**
@@ -540,7 +540,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Configuration settings for the refresh tokens issued for this client.
      * 
      */
-    @Export(name="refreshToken", type=ClientRefreshToken.class, parameters={})
+    @Export(name="refreshToken", refs={ClientRefreshToken.class}, tree="[0]")
     private Output<ClientRefreshToken> refreshToken;
 
     /**
@@ -554,7 +554,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      * 
      */
-    @Export(name="requirePushedAuthorizationRequests", type=Boolean.class, parameters={})
+    @Export(name="requirePushedAuthorizationRequests", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> requirePushedAuthorizationRequests;
 
     /**
@@ -568,7 +568,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      * 
      */
-    @Export(name="signingKeys", type=List.class, parameters={Map.class})
+    @Export(name="signingKeys", refs={List.class,Map.class,String.class,Object.class}, tree="[0,[1,2,3]]")
     private Output<List<Map<String,Object>>> signingKeys;
 
     /**
@@ -582,7 +582,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      * 
      */
-    @Export(name="sso", type=Boolean.class, parameters={})
+    @Export(name="sso", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sso;
 
     /**
@@ -596,7 +596,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Indicates whether or not SSO is disabled.
      * 
      */
-    @Export(name="ssoDisabled", type=Boolean.class, parameters={})
+    @Export(name="ssoDisabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ssoDisabled;
 
     /**
@@ -610,7 +610,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * URLs that represent valid web origins for use with web message response mode.
      * 
      */
-    @Export(name="webOrigins", type=List.class, parameters={String.class})
+    @Export(name="webOrigins", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> webOrigins;
 
     /**
