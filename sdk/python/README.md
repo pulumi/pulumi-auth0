@@ -48,8 +48,9 @@ The following configuration points are available:
 
 - `auth0:apiToken` - (Optional) Your Auth0 [management api access
   token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be
-  sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` +
-  `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
+  sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `auth0:clientId` +
+  `auth0:clientSecret`. If both are specified, `auth0:apiToken` will be used over `auth0:clientId` +
+  `auth0:clientSecret` fields.
 - `auth0:audience` - (Optional) Your Auth0 audience when using a custom domain. It can also be sourced from
   the `AUTH0_AUDIENCE` environment variable.
 - `auth0:clientId` - (Optional) Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID`
