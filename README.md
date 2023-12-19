@@ -46,10 +46,19 @@ To use from .NET, install using `dotnet add package`:
 
 The following configuration points are available:
 
-- `auth0:domain` - (Required) Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
-- `auth0:client_id` - (Required) Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
-- `auth0:client_secret` - (Required) Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
-- `auth0:debug` - (Optional) Indicates whether or not to turn on debug mode.
+- `auth0:apiToken` - (Optional) Your Auth0 [management api access
+  token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be
+  sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` +
+  `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
+- `auth0:audience` - (Optional) Your Auth0 audience when using a custom domain. It can also be sourced from
+  the `AUTH0_AUDIENCE` environment variable.
+- `auth0:clientId` - (Optional) Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID`
+  environment variable.
+- `auth0:clientSecret` - (Optional) Your Auth0 client secret. It can also be sourced from the
+  `AUTH0_CLIENT_SECRET` environment variable.
+- `auth0:debug` - (Optional) Indicates whether to turn on debug mode.
+- `auth0:domain` - (Required) Your Auth0 domain name. It can also be sourced from the
+  `AUTH0_DOMAIN` environment variable.
 
 ## Reference
 
