@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -247,7 +248,9 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         public AttackProtectionBruteForceProtectionArgs build() {
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("AttackProtectionBruteForceProtectionArgs", "enabled");
+            }
             return $;
         }
     }

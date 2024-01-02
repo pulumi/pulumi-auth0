@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,21 +87,29 @@ public final class RolePermissionsPermission {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("RolePermissionsPermission", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder resourceServerIdentifier(String resourceServerIdentifier) {
-            this.resourceServerIdentifier = Objects.requireNonNull(resourceServerIdentifier);
+            if (resourceServerIdentifier == null) {
+              throw new MissingRequiredPropertyException("RolePermissionsPermission", "resourceServerIdentifier");
+            }
+            this.resourceServerIdentifier = resourceServerIdentifier;
             return this;
         }
         @CustomType.Setter
         public Builder resourceServerName(@Nullable String resourceServerName) {
+
             this.resourceServerName = resourceServerName;
             return this;
         }

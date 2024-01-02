@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -59,27 +60,42 @@ public final class GetClientAddonAzureSb {
 
         @CustomType.Setter
         public Builder entityPath(String entityPath) {
-            this.entityPath = Objects.requireNonNull(entityPath);
+            if (entityPath == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureSb", "entityPath");
+            }
+            this.entityPath = entityPath;
             return this;
         }
         @CustomType.Setter
         public Builder expiration(Integer expiration) {
-            this.expiration = Objects.requireNonNull(expiration);
+            if (expiration == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureSb", "expiration");
+            }
+            this.expiration = expiration;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureSb", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder sasKey(String sasKey) {
-            this.sasKey = Objects.requireNonNull(sasKey);
+            if (sasKey == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureSb", "sasKey");
+            }
+            this.sasKey = sasKey;
             return this;
         }
         @CustomType.Setter
         public Builder sasKeyName(String sasKeyName) {
-            this.sasKeyName = Objects.requireNonNull(sasKeyName);
+            if (sasKeyName == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureSb", "sasKeyName");
+            }
+            this.sasKeyName = sasKeyName;
             return this;
         }
         public GetClientAddonAzureSb build() {

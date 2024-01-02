@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GuardianPushDirectFcm {
 
         @CustomType.Setter
         public Builder serverKey(String serverKey) {
-            this.serverKey = Objects.requireNonNull(serverKey);
+            if (serverKey == null) {
+              throw new MissingRequiredPropertyException("GuardianPushDirectFcm", "serverKey");
+            }
+            this.serverKey = serverKey;
             return this;
         }
         public GuardianPushDirectFcm build() {

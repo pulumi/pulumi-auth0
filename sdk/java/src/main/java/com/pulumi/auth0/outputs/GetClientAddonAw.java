@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -47,17 +48,26 @@ public final class GetClientAddonAw {
 
         @CustomType.Setter
         public Builder lifetimeInSeconds(Integer lifetimeInSeconds) {
-            this.lifetimeInSeconds = Objects.requireNonNull(lifetimeInSeconds);
+            if (lifetimeInSeconds == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAw", "lifetimeInSeconds");
+            }
+            this.lifetimeInSeconds = lifetimeInSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder principal(String principal) {
-            this.principal = Objects.requireNonNull(principal);
+            if (principal == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAw", "principal");
+            }
+            this.principal = principal;
             return this;
         }
         @CustomType.Setter
         public Builder role(String role) {
-            this.role = Objects.requireNonNull(role);
+            if (role == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAw", "role");
+            }
+            this.role = role;
             return this;
         }
         public GetClientAddonAw build() {

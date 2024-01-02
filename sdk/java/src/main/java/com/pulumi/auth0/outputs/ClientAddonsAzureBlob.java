@@ -214,66 +214,79 @@ public final class ClientAddonsAzureBlob {
 
         @CustomType.Setter
         public Builder accountName(@Nullable String accountName) {
+
             this.accountName = accountName;
             return this;
         }
         @CustomType.Setter
         public Builder blobDelete(@Nullable Boolean blobDelete) {
+
             this.blobDelete = blobDelete;
             return this;
         }
         @CustomType.Setter
         public Builder blobName(@Nullable String blobName) {
+
             this.blobName = blobName;
             return this;
         }
         @CustomType.Setter
         public Builder blobRead(@Nullable Boolean blobRead) {
+
             this.blobRead = blobRead;
             return this;
         }
         @CustomType.Setter
         public Builder blobWrite(@Nullable Boolean blobWrite) {
+
             this.blobWrite = blobWrite;
             return this;
         }
         @CustomType.Setter
         public Builder containerDelete(@Nullable Boolean containerDelete) {
+
             this.containerDelete = containerDelete;
             return this;
         }
         @CustomType.Setter
         public Builder containerList(@Nullable Boolean containerList) {
+
             this.containerList = containerList;
             return this;
         }
         @CustomType.Setter
         public Builder containerName(@Nullable String containerName) {
+
             this.containerName = containerName;
             return this;
         }
         @CustomType.Setter
         public Builder containerRead(@Nullable Boolean containerRead) {
+
             this.containerRead = containerRead;
             return this;
         }
         @CustomType.Setter
         public Builder containerWrite(@Nullable Boolean containerWrite) {
+
             this.containerWrite = containerWrite;
             return this;
         }
         @CustomType.Setter
         public Builder expiration(@Nullable Integer expiration) {
+
             this.expiration = expiration;
             return this;
         }
         @CustomType.Setter
         public Builder signedIdentifier(@Nullable String signedIdentifier) {
+
             this.signedIdentifier = signedIdentifier;
             return this;
         }
         @CustomType.Setter
         public Builder storageAccessKey(@Nullable String storageAccessKey) {
+
             this.storageAccessKey = storageAccessKey;
             return this;
         }

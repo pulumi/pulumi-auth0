@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -101,27 +102,38 @@ public final class ClientAddonsLayer {
 
         @CustomType.Setter
         public Builder expiration(@Nullable Integer expiration) {
+
             this.expiration = expiration;
             return this;
         }
         @CustomType.Setter
         public Builder keyId(String keyId) {
-            this.keyId = Objects.requireNonNull(keyId);
+            if (keyId == null) {
+              throw new MissingRequiredPropertyException("ClientAddonsLayer", "keyId");
+            }
+            this.keyId = keyId;
             return this;
         }
         @CustomType.Setter
         public Builder principal(@Nullable String principal) {
+
             this.principal = principal;
             return this;
         }
         @CustomType.Setter
         public Builder privateKey(String privateKey) {
-            this.privateKey = Objects.requireNonNull(privateKey);
+            if (privateKey == null) {
+              throw new MissingRequiredPropertyException("ClientAddonsLayer", "privateKey");
+            }
+            this.privateKey = privateKey;
             return this;
         }
         @CustomType.Setter
         public Builder providerId(String providerId) {
-            this.providerId = Objects.requireNonNull(providerId);
+            if (providerId == null) {
+              throw new MissingRequiredPropertyException("ClientAddonsLayer", "providerId");
+            }
+            this.providerId = providerId;
             return this;
         }
         public ClientAddonsLayer build() {

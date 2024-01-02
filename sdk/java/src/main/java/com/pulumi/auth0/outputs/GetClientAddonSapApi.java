@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -64,32 +65,50 @@ public final class GetClientAddonSapApi {
 
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSapApi", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder nameIdentifierFormat(String nameIdentifierFormat) {
-            this.nameIdentifierFormat = Objects.requireNonNull(nameIdentifierFormat);
+            if (nameIdentifierFormat == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSapApi", "nameIdentifierFormat");
+            }
+            this.nameIdentifierFormat = nameIdentifierFormat;
             return this;
         }
         @CustomType.Setter
         public Builder scope(String scope) {
-            this.scope = Objects.requireNonNull(scope);
+            if (scope == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSapApi", "scope");
+            }
+            this.scope = scope;
             return this;
         }
         @CustomType.Setter
         public Builder servicePassword(String servicePassword) {
-            this.servicePassword = Objects.requireNonNull(servicePassword);
+            if (servicePassword == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSapApi", "servicePassword");
+            }
+            this.servicePassword = servicePassword;
             return this;
         }
         @CustomType.Setter
         public Builder tokenEndpointUrl(String tokenEndpointUrl) {
-            this.tokenEndpointUrl = Objects.requireNonNull(tokenEndpointUrl);
+            if (tokenEndpointUrl == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSapApi", "tokenEndpointUrl");
+            }
+            this.tokenEndpointUrl = tokenEndpointUrl;
             return this;
         }
         @CustomType.Setter
         public Builder usernameAttribute(String usernameAttribute) {
-            this.usernameAttribute = Objects.requireNonNull(usernameAttribute);
+            if (usernameAttribute == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSapApi", "usernameAttribute");
+            }
+            this.usernameAttribute = usernameAttribute;
             return this;
         }
         public GetClientAddonSapApi build() {

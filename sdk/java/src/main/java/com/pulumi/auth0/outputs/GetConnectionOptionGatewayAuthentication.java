@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -59,27 +60,42 @@ public final class GetConnectionOptionGatewayAuthentication {
 
         @CustomType.Setter
         public Builder audience(String audience) {
-            this.audience = Objects.requireNonNull(audience);
+            if (audience == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionGatewayAuthentication", "audience");
+            }
+            this.audience = audience;
             return this;
         }
         @CustomType.Setter
         public Builder method(String method) {
-            this.method = Objects.requireNonNull(method);
+            if (method == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionGatewayAuthentication", "method");
+            }
+            this.method = method;
             return this;
         }
         @CustomType.Setter
         public Builder secret(String secret) {
-            this.secret = Objects.requireNonNull(secret);
+            if (secret == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionGatewayAuthentication", "secret");
+            }
+            this.secret = secret;
             return this;
         }
         @CustomType.Setter
         public Builder secretBase64Encoded(Boolean secretBase64Encoded) {
-            this.secretBase64Encoded = Objects.requireNonNull(secretBase64Encoded);
+            if (secretBase64Encoded == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionGatewayAuthentication", "secretBase64Encoded");
+            }
+            this.secretBase64Encoded = secretBase64Encoded;
             return this;
         }
         @CustomType.Setter
         public Builder subject(String subject) {
-            this.subject = Objects.requireNonNull(subject);
+            if (subject == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionGatewayAuthentication", "subject");
+            }
+            this.subject = subject;
             return this;
         }
         public GetConnectionOptionGatewayAuthentication build() {

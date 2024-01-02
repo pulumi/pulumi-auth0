@@ -44,6 +44,7 @@ public final class ClientAddonsZendesk {
 
         @CustomType.Setter
         public Builder accountName(@Nullable String accountName) {
+
             this.accountName = accountName;
             return this;
         }

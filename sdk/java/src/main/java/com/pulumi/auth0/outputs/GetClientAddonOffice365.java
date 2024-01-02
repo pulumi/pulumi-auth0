@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetClientAddonOffice365 {
 
         @CustomType.Setter
         public Builder connection(String connection) {
-            this.connection = Objects.requireNonNull(connection);
+            if (connection == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonOffice365", "connection");
+            }
+            this.connection = connection;
             return this;
         }
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonOffice365", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         public GetClientAddonOffice365 build() {

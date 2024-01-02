@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class ConnectionOptionsConnectionSettingsArgs extends com.pulumi.re
         }
 
         public ConnectionOptionsConnectionSettingsArgs build() {
-            $.pkce = Objects.requireNonNull($.pkce, "expected parameter 'pkce' to be non-null");
+            if ($.pkce == null) {
+                throw new MissingRequiredPropertyException("ConnectionOptionsConnectionSettingsArgs", "pkce");
+            }
             return $;
         }
     }

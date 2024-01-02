@@ -101,26 +101,31 @@ public final class ClientAddonsFirebase {
 
         @CustomType.Setter
         public Builder clientEmail(@Nullable String clientEmail) {
+
             this.clientEmail = clientEmail;
             return this;
         }
         @CustomType.Setter
         public Builder lifetimeInSeconds(@Nullable Integer lifetimeInSeconds) {
+
             this.lifetimeInSeconds = lifetimeInSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder privateKey(@Nullable String privateKey) {
+
             this.privateKey = privateKey;
             return this;
         }
         @CustomType.Setter
         public Builder privateKeyId(@Nullable String privateKeyId) {
+
             this.privateKeyId = privateKeyId;
             return this;
         }
         @CustomType.Setter
         public Builder secret(@Nullable String secret) {
+
             this.secret = secret;
             return this;
         }

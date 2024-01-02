@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class ActionSupportedTriggersArgs extends com.pulumi.resources.Reso
         }
 
         public ActionSupportedTriggersArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("ActionSupportedTriggersArgs", "id");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("ActionSupportedTriggersArgs", "version");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.auth0;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -122,8 +123,12 @@ public final class UserRolesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UserRolesArgs build() {
-            $.roles = Objects.requireNonNull($.roles, "expected parameter 'roles' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
+            if ($.roles == null) {
+                throw new MissingRequiredPropertyException("UserRolesArgs", "roles");
+            }
+            if ($.userId == null) {
+                throw new MissingRequiredPropertyException("UserRolesArgs", "userId");
+            }
             return $;
         }
     }

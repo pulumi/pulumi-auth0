@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration 
 
         @CustomType.Setter
         public Builder maxAttempts(Integer maxAttempts) {
-            this.maxAttempts = Objects.requireNonNull(maxAttempts);
+            if (maxAttempts == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration", "maxAttempts");
+            }
+            this.maxAttempts = maxAttempts;
             return this;
         }
         @CustomType.Setter
         public Builder rate(Integer rate) {
-            this.rate = Objects.requireNonNull(rate);
+            if (rate == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration", "rate");
+            }
+            this.rate = rate;
             return this;
         }
         public GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration build() {

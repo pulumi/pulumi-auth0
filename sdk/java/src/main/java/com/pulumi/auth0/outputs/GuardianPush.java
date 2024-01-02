@@ -8,6 +8,7 @@ import com.pulumi.auth0.outputs.GuardianPushCustomApp;
 import com.pulumi.auth0.outputs.GuardianPushDirectApns;
 import com.pulumi.auth0.outputs.GuardianPushDirectFcm;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -119,31 +120,39 @@ public final class GuardianPush {
 
         @CustomType.Setter
         public Builder amazonSns(@Nullable GuardianPushAmazonSns amazonSns) {
+
             this.amazonSns = amazonSns;
             return this;
         }
         @CustomType.Setter
         public Builder customApp(@Nullable GuardianPushCustomApp customApp) {
+
             this.customApp = customApp;
             return this;
         }
         @CustomType.Setter
         public Builder directApns(@Nullable GuardianPushDirectApns directApns) {
+
             this.directApns = directApns;
             return this;
         }
         @CustomType.Setter
         public Builder directFcm(@Nullable GuardianPushDirectFcm directFcm) {
+
             this.directFcm = directFcm;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GuardianPush", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder provider(@Nullable String provider) {
+
             this.provider = provider;
             return this;
         }

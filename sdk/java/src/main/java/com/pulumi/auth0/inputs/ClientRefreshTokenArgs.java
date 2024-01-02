@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -300,8 +301,12 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         public ClientRefreshTokenArgs build() {
-            $.expirationType = Objects.requireNonNull($.expirationType, "expected parameter 'expirationType' to be non-null");
-            $.rotationType = Objects.requireNonNull($.rotationType, "expected parameter 'rotationType' to be non-null");
+            if ($.expirationType == null) {
+                throw new MissingRequiredPropertyException("ClientRefreshTokenArgs", "expirationType");
+            }
+            if ($.rotationType == null) {
+                throw new MissingRequiredPropertyException("ClientRefreshTokenArgs", "rotationType");
+            }
             return $;
         }
     }

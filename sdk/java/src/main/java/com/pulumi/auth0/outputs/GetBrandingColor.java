@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetBrandingColor {
 
         @CustomType.Setter
         public Builder pageBackground(String pageBackground) {
-            this.pageBackground = Objects.requireNonNull(pageBackground);
+            if (pageBackground == null) {
+              throw new MissingRequiredPropertyException("GetBrandingColor", "pageBackground");
+            }
+            this.pageBackground = pageBackground;
             return this;
         }
         @CustomType.Setter
         public Builder primary(String primary) {
-            this.primary = Objects.requireNonNull(primary);
+            if (primary == null) {
+              throw new MissingRequiredPropertyException("GetBrandingColor", "primary");
+            }
+            this.primary = primary;
             return this;
         }
         public GetBrandingColor build() {

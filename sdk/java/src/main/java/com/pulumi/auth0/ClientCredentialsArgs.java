@@ -6,6 +6,7 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.inputs.ClientCredentialsPrivateKeyJwtArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -200,8 +201,12 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ClientCredentialsArgs build() {
-            $.authenticationMethod = Objects.requireNonNull($.authenticationMethod, "expected parameter 'authenticationMethod' to be non-null");
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
+            if ($.authenticationMethod == null) {
+                throw new MissingRequiredPropertyException("ClientCredentialsArgs", "authenticationMethod");
+            }
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("ClientCredentialsArgs", "clientId");
+            }
             return $;
         }
     }

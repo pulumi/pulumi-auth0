@@ -33,6 +33,7 @@ import com.pulumi.auth0.outputs.GetClientAddonWsfed;
 import com.pulumi.auth0.outputs.GetClientAddonZendesk;
 import com.pulumi.auth0.outputs.GetClientAddonZoom;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -231,7 +232,10 @@ public final class GetClientAddon {
 
         @CustomType.Setter
         public Builder aws(List<GetClientAddonAw> aws) {
-            this.aws = Objects.requireNonNull(aws);
+            if (aws == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "aws");
+            }
+            this.aws = aws;
             return this;
         }
         public Builder aws(GetClientAddonAw... aws) {
@@ -239,7 +243,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder azureBlobs(List<GetClientAddonAzureBlob> azureBlobs) {
-            this.azureBlobs = Objects.requireNonNull(azureBlobs);
+            if (azureBlobs == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "azureBlobs");
+            }
+            this.azureBlobs = azureBlobs;
             return this;
         }
         public Builder azureBlobs(GetClientAddonAzureBlob... azureBlobs) {
@@ -247,7 +254,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder azureSbs(List<GetClientAddonAzureSb> azureSbs) {
-            this.azureSbs = Objects.requireNonNull(azureSbs);
+            if (azureSbs == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "azureSbs");
+            }
+            this.azureSbs = azureSbs;
             return this;
         }
         public Builder azureSbs(GetClientAddonAzureSb... azureSbs) {
@@ -255,7 +265,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder boxes(List<GetClientAddonBox> boxes) {
-            this.boxes = Objects.requireNonNull(boxes);
+            if (boxes == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "boxes");
+            }
+            this.boxes = boxes;
             return this;
         }
         public Builder boxes(GetClientAddonBox... boxes) {
@@ -263,7 +276,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder cloudbees(List<GetClientAddonCloudbee> cloudbees) {
-            this.cloudbees = Objects.requireNonNull(cloudbees);
+            if (cloudbees == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "cloudbees");
+            }
+            this.cloudbees = cloudbees;
             return this;
         }
         public Builder cloudbees(GetClientAddonCloudbee... cloudbees) {
@@ -271,7 +287,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder concurs(List<GetClientAddonConcur> concurs) {
-            this.concurs = Objects.requireNonNull(concurs);
+            if (concurs == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "concurs");
+            }
+            this.concurs = concurs;
             return this;
         }
         public Builder concurs(GetClientAddonConcur... concurs) {
@@ -279,7 +298,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder dropboxes(List<GetClientAddonDropbox> dropboxes) {
-            this.dropboxes = Objects.requireNonNull(dropboxes);
+            if (dropboxes == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "dropboxes");
+            }
+            this.dropboxes = dropboxes;
             return this;
         }
         public Builder dropboxes(GetClientAddonDropbox... dropboxes) {
@@ -287,7 +309,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder echosigns(List<GetClientAddonEchosign> echosigns) {
-            this.echosigns = Objects.requireNonNull(echosigns);
+            if (echosigns == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "echosigns");
+            }
+            this.echosigns = echosigns;
             return this;
         }
         public Builder echosigns(GetClientAddonEchosign... echosigns) {
@@ -295,7 +320,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder egnytes(List<GetClientAddonEgnyte> egnytes) {
-            this.egnytes = Objects.requireNonNull(egnytes);
+            if (egnytes == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "egnytes");
+            }
+            this.egnytes = egnytes;
             return this;
         }
         public Builder egnytes(GetClientAddonEgnyte... egnytes) {
@@ -303,7 +331,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder firebases(List<GetClientAddonFirebase> firebases) {
-            this.firebases = Objects.requireNonNull(firebases);
+            if (firebases == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "firebases");
+            }
+            this.firebases = firebases;
             return this;
         }
         public Builder firebases(GetClientAddonFirebase... firebases) {
@@ -311,7 +342,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder layers(List<GetClientAddonLayer> layers) {
-            this.layers = Objects.requireNonNull(layers);
+            if (layers == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "layers");
+            }
+            this.layers = layers;
             return this;
         }
         public Builder layers(GetClientAddonLayer... layers) {
@@ -319,7 +353,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder mscrms(List<GetClientAddonMscrm> mscrms) {
-            this.mscrms = Objects.requireNonNull(mscrms);
+            if (mscrms == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "mscrms");
+            }
+            this.mscrms = mscrms;
             return this;
         }
         public Builder mscrms(GetClientAddonMscrm... mscrms) {
@@ -327,7 +364,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder newrelics(List<GetClientAddonNewrelic> newrelics) {
-            this.newrelics = Objects.requireNonNull(newrelics);
+            if (newrelics == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "newrelics");
+            }
+            this.newrelics = newrelics;
             return this;
         }
         public Builder newrelics(GetClientAddonNewrelic... newrelics) {
@@ -335,7 +375,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder office365s(List<GetClientAddonOffice365> office365s) {
-            this.office365s = Objects.requireNonNull(office365s);
+            if (office365s == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "office365s");
+            }
+            this.office365s = office365s;
             return this;
         }
         public Builder office365s(GetClientAddonOffice365... office365s) {
@@ -343,7 +386,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder rms(List<GetClientAddonRm> rms) {
-            this.rms = Objects.requireNonNull(rms);
+            if (rms == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "rms");
+            }
+            this.rms = rms;
             return this;
         }
         public Builder rms(GetClientAddonRm... rms) {
@@ -351,7 +397,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder salesforceApis(List<GetClientAddonSalesforceApi> salesforceApis) {
-            this.salesforceApis = Objects.requireNonNull(salesforceApis);
+            if (salesforceApis == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "salesforceApis");
+            }
+            this.salesforceApis = salesforceApis;
             return this;
         }
         public Builder salesforceApis(GetClientAddonSalesforceApi... salesforceApis) {
@@ -359,7 +408,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder salesforceSandboxApis(List<GetClientAddonSalesforceSandboxApi> salesforceSandboxApis) {
-            this.salesforceSandboxApis = Objects.requireNonNull(salesforceSandboxApis);
+            if (salesforceSandboxApis == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "salesforceSandboxApis");
+            }
+            this.salesforceSandboxApis = salesforceSandboxApis;
             return this;
         }
         public Builder salesforceSandboxApis(GetClientAddonSalesforceSandboxApi... salesforceSandboxApis) {
@@ -367,7 +419,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder salesforces(List<GetClientAddonSalesforce> salesforces) {
-            this.salesforces = Objects.requireNonNull(salesforces);
+            if (salesforces == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "salesforces");
+            }
+            this.salesforces = salesforces;
             return this;
         }
         public Builder salesforces(GetClientAddonSalesforce... salesforces) {
@@ -375,7 +430,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder samlps(List<GetClientAddonSamlp> samlps) {
-            this.samlps = Objects.requireNonNull(samlps);
+            if (samlps == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "samlps");
+            }
+            this.samlps = samlps;
             return this;
         }
         public Builder samlps(GetClientAddonSamlp... samlps) {
@@ -383,7 +441,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder sapApis(List<GetClientAddonSapApi> sapApis) {
-            this.sapApis = Objects.requireNonNull(sapApis);
+            if (sapApis == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "sapApis");
+            }
+            this.sapApis = sapApis;
             return this;
         }
         public Builder sapApis(GetClientAddonSapApi... sapApis) {
@@ -391,7 +452,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder sentries(List<GetClientAddonSentry> sentries) {
-            this.sentries = Objects.requireNonNull(sentries);
+            if (sentries == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "sentries");
+            }
+            this.sentries = sentries;
             return this;
         }
         public Builder sentries(GetClientAddonSentry... sentries) {
@@ -399,7 +463,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder sharepoints(List<GetClientAddonSharepoint> sharepoints) {
-            this.sharepoints = Objects.requireNonNull(sharepoints);
+            if (sharepoints == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "sharepoints");
+            }
+            this.sharepoints = sharepoints;
             return this;
         }
         public Builder sharepoints(GetClientAddonSharepoint... sharepoints) {
@@ -407,7 +474,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder slacks(List<GetClientAddonSlack> slacks) {
-            this.slacks = Objects.requireNonNull(slacks);
+            if (slacks == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "slacks");
+            }
+            this.slacks = slacks;
             return this;
         }
         public Builder slacks(GetClientAddonSlack... slacks) {
@@ -415,7 +485,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder springcms(List<GetClientAddonSpringcm> springcms) {
-            this.springcms = Objects.requireNonNull(springcms);
+            if (springcms == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "springcms");
+            }
+            this.springcms = springcms;
             return this;
         }
         public Builder springcms(GetClientAddonSpringcm... springcms) {
@@ -423,7 +496,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder ssoIntegrations(List<GetClientAddonSsoIntegration> ssoIntegrations) {
-            this.ssoIntegrations = Objects.requireNonNull(ssoIntegrations);
+            if (ssoIntegrations == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "ssoIntegrations");
+            }
+            this.ssoIntegrations = ssoIntegrations;
             return this;
         }
         public Builder ssoIntegrations(GetClientAddonSsoIntegration... ssoIntegrations) {
@@ -431,7 +507,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder wams(List<GetClientAddonWam> wams) {
-            this.wams = Objects.requireNonNull(wams);
+            if (wams == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "wams");
+            }
+            this.wams = wams;
             return this;
         }
         public Builder wams(GetClientAddonWam... wams) {
@@ -439,7 +518,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder wsfeds(List<GetClientAddonWsfed> wsfeds) {
-            this.wsfeds = Objects.requireNonNull(wsfeds);
+            if (wsfeds == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "wsfeds");
+            }
+            this.wsfeds = wsfeds;
             return this;
         }
         public Builder wsfeds(GetClientAddonWsfed... wsfeds) {
@@ -447,7 +529,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder zendesks(List<GetClientAddonZendesk> zendesks) {
-            this.zendesks = Objects.requireNonNull(zendesks);
+            if (zendesks == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "zendesks");
+            }
+            this.zendesks = zendesks;
             return this;
         }
         public Builder zendesks(GetClientAddonZendesk... zendesks) {
@@ -455,7 +540,10 @@ public final class GetClientAddon {
         }
         @CustomType.Setter
         public Builder zooms(List<GetClientAddonZoom> zooms) {
-            this.zooms = Objects.requireNonNull(zooms);
+            if (zooms == null) {
+              throw new MissingRequiredPropertyException("GetClientAddon", "zooms");
+            }
+            this.zooms = zooms;
             return this;
         }
         public Builder zooms(GetClientAddonZoom... zooms) {

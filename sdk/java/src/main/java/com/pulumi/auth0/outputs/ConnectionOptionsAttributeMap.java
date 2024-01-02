@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -72,16 +73,21 @@ public final class ConnectionOptionsAttributeMap {
 
         @CustomType.Setter
         public Builder attributes(@Nullable String attributes) {
+
             this.attributes = attributes;
             return this;
         }
         @CustomType.Setter
         public Builder mappingMode(String mappingMode) {
-            this.mappingMode = Objects.requireNonNull(mappingMode);
+            if (mappingMode == null) {
+              throw new MissingRequiredPropertyException("ConnectionOptionsAttributeMap", "mappingMode");
+            }
+            this.mappingMode = mappingMode;
             return this;
         }
         @CustomType.Setter
         public Builder userinfoScope(@Nullable String userinfoScope) {
+
             this.userinfoScope = userinfoScope;
             return this;
         }

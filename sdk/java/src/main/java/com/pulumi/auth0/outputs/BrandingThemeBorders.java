@@ -158,46 +158,55 @@ public final class BrandingThemeBorders {
 
         @CustomType.Setter
         public Builder buttonBorderRadius(@Nullable Double buttonBorderRadius) {
+
             this.buttonBorderRadius = buttonBorderRadius;
             return this;
         }
         @CustomType.Setter
         public Builder buttonBorderWeight(@Nullable Double buttonBorderWeight) {
+
             this.buttonBorderWeight = buttonBorderWeight;
             return this;
         }
         @CustomType.Setter
         public Builder buttonsStyle(@Nullable String buttonsStyle) {
+
             this.buttonsStyle = buttonsStyle;
             return this;
         }
         @CustomType.Setter
         public Builder inputBorderRadius(@Nullable Double inputBorderRadius) {
+
             this.inputBorderRadius = inputBorderRadius;
             return this;
         }
         @CustomType.Setter
         public Builder inputBorderWeight(@Nullable Double inputBorderWeight) {
+
             this.inputBorderWeight = inputBorderWeight;
             return this;
         }
         @CustomType.Setter
         public Builder inputsStyle(@Nullable String inputsStyle) {
+
             this.inputsStyle = inputsStyle;
             return this;
         }
         @CustomType.Setter
         public Builder showWidgetShadow(@Nullable Boolean showWidgetShadow) {
+
             this.showWidgetShadow = showWidgetShadow;
             return this;
         }
         @CustomType.Setter
         public Builder widgetBorderWeight(@Nullable Double widgetBorderWeight) {
+
             this.widgetBorderWeight = widgetBorderWeight;
             return this;
         }
         @CustomType.Setter
         public Builder widgetCornerRadius(@Nullable Double widgetCornerRadius) {
+
             this.widgetCornerRadius = widgetCornerRadius;
             return this;
         }

@@ -58,11 +58,13 @@ public final class BrandingColors {
 
         @CustomType.Setter
         public Builder pageBackground(@Nullable String pageBackground) {
+
             this.pageBackground = pageBackground;
             return this;
         }
         @CustomType.Setter
         public Builder primary(@Nullable String primary) {
+
             this.primary = primary;
             return this;
         }

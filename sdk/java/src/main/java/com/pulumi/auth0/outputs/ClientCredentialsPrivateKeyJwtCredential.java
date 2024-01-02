@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -171,51 +172,65 @@ public final class ClientCredentialsPrivateKeyJwtCredential {
 
         @CustomType.Setter
         public Builder algorithm(@Nullable String algorithm) {
+
             this.algorithm = algorithm;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(@Nullable String createdAt) {
+
             this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder credentialType(String credentialType) {
-            this.credentialType = Objects.requireNonNull(credentialType);
+            if (credentialType == null) {
+              throw new MissingRequiredPropertyException("ClientCredentialsPrivateKeyJwtCredential", "credentialType");
+            }
+            this.credentialType = credentialType;
             return this;
         }
         @CustomType.Setter
         public Builder expiresAt(@Nullable String expiresAt) {
+
             this.expiresAt = expiresAt;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keyId(@Nullable String keyId) {
+
             this.keyId = keyId;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder parseExpiryFromCert(@Nullable Boolean parseExpiryFromCert) {
+
             this.parseExpiryFromCert = parseExpiryFromCert;
             return this;
         }
         @CustomType.Setter
         public Builder pem(String pem) {
-            this.pem = Objects.requireNonNull(pem);
+            if (pem == null) {
+              throw new MissingRequiredPropertyException("ClientCredentialsPrivateKeyJwtCredential", "pem");
+            }
+            this.pem = pem;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(@Nullable String updatedAt) {
+
             this.updatedAt = updatedAt;
             return this;
         }

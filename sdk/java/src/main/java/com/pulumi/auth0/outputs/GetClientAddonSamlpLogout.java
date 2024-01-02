@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetClientAddonSamlpLogout {
 
         @CustomType.Setter
         public Builder callback(String callback) {
-            this.callback = Objects.requireNonNull(callback);
+            if (callback == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlpLogout", "callback");
+            }
+            this.callback = callback;
             return this;
         }
         @CustomType.Setter
         public Builder sloEnabled(Boolean sloEnabled) {
-            this.sloEnabled = Objects.requireNonNull(sloEnabled);
+            if (sloEnabled == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlpLogout", "sloEnabled");
+            }
+            this.sloEnabled = sloEnabled;
             return this;
         }
         public GetClientAddonSamlpLogout build() {

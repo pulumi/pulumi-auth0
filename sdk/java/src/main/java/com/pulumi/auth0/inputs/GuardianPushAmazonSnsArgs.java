@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -222,11 +223,21 @@ public final class GuardianPushAmazonSnsArgs extends com.pulumi.resources.Resour
         }
 
         public GuardianPushAmazonSnsArgs build() {
-            $.awsAccessKeyId = Objects.requireNonNull($.awsAccessKeyId, "expected parameter 'awsAccessKeyId' to be non-null");
-            $.awsRegion = Objects.requireNonNull($.awsRegion, "expected parameter 'awsRegion' to be non-null");
-            $.awsSecretAccessKey = Objects.requireNonNull($.awsSecretAccessKey, "expected parameter 'awsSecretAccessKey' to be non-null");
-            $.snsApnsPlatformApplicationArn = Objects.requireNonNull($.snsApnsPlatformApplicationArn, "expected parameter 'snsApnsPlatformApplicationArn' to be non-null");
-            $.snsGcmPlatformApplicationArn = Objects.requireNonNull($.snsGcmPlatformApplicationArn, "expected parameter 'snsGcmPlatformApplicationArn' to be non-null");
+            if ($.awsAccessKeyId == null) {
+                throw new MissingRequiredPropertyException("GuardianPushAmazonSnsArgs", "awsAccessKeyId");
+            }
+            if ($.awsRegion == null) {
+                throw new MissingRequiredPropertyException("GuardianPushAmazonSnsArgs", "awsRegion");
+            }
+            if ($.awsSecretAccessKey == null) {
+                throw new MissingRequiredPropertyException("GuardianPushAmazonSnsArgs", "awsSecretAccessKey");
+            }
+            if ($.snsApnsPlatformApplicationArn == null) {
+                throw new MissingRequiredPropertyException("GuardianPushAmazonSnsArgs", "snsApnsPlatformApplicationArn");
+            }
+            if ($.snsGcmPlatformApplicationArn == null) {
+                throw new MissingRequiredPropertyException("GuardianPushAmazonSnsArgs", "snsGcmPlatformApplicationArn");
+            }
             return $;
         }
     }

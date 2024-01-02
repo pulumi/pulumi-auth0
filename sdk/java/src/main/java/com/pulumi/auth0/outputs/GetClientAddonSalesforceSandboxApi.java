@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -52,22 +53,34 @@ public final class GetClientAddonSalesforceSandboxApi {
 
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSalesforceSandboxApi", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder communityName(String communityName) {
-            this.communityName = Objects.requireNonNull(communityName);
+            if (communityName == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSalesforceSandboxApi", "communityName");
+            }
+            this.communityName = communityName;
             return this;
         }
         @CustomType.Setter
         public Builder communityUrlSection(String communityUrlSection) {
-            this.communityUrlSection = Objects.requireNonNull(communityUrlSection);
+            if (communityUrlSection == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSalesforceSandboxApi", "communityUrlSection");
+            }
+            this.communityUrlSection = communityUrlSection;
             return this;
         }
         @CustomType.Setter
         public Builder principal(String principal) {
-            this.principal = Objects.requireNonNull(principal);
+            if (principal == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSalesforceSandboxApi", "principal");
+            }
+            this.principal = principal;
             return this;
         }
         public GetClientAddonSalesforceSandboxApi build() {

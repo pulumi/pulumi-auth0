@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -225,9 +226,15 @@ public final class ClientAddonsLayerArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ClientAddonsLayerArgs build() {
-            $.keyId = Objects.requireNonNull($.keyId, "expected parameter 'keyId' to be non-null");
-            $.privateKey = Objects.requireNonNull($.privateKey, "expected parameter 'privateKey' to be non-null");
-            $.providerId = Objects.requireNonNull($.providerId, "expected parameter 'providerId' to be non-null");
+            if ($.keyId == null) {
+                throw new MissingRequiredPropertyException("ClientAddonsLayerArgs", "keyId");
+            }
+            if ($.privateKey == null) {
+                throw new MissingRequiredPropertyException("ClientAddonsLayerArgs", "privateKey");
+            }
+            if ($.providerId == null) {
+                throw new MissingRequiredPropertyException("ClientAddonsLayerArgs", "providerId");
+            }
             return $;
         }
     }

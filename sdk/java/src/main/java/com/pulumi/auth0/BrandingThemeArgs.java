@@ -10,6 +10,7 @@ import com.pulumi.auth0.inputs.BrandingThemePageBackgroundArgs;
 import com.pulumi.auth0.inputs.BrandingThemeWidgetArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -166,11 +167,21 @@ public final class BrandingThemeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BrandingThemeArgs build() {
-            $.borders = Objects.requireNonNull($.borders, "expected parameter 'borders' to be non-null");
-            $.colors = Objects.requireNonNull($.colors, "expected parameter 'colors' to be non-null");
-            $.fonts = Objects.requireNonNull($.fonts, "expected parameter 'fonts' to be non-null");
-            $.pageBackground = Objects.requireNonNull($.pageBackground, "expected parameter 'pageBackground' to be non-null");
-            $.widget = Objects.requireNonNull($.widget, "expected parameter 'widget' to be non-null");
+            if ($.borders == null) {
+                throw new MissingRequiredPropertyException("BrandingThemeArgs", "borders");
+            }
+            if ($.colors == null) {
+                throw new MissingRequiredPropertyException("BrandingThemeArgs", "colors");
+            }
+            if ($.fonts == null) {
+                throw new MissingRequiredPropertyException("BrandingThemeArgs", "fonts");
+            }
+            if ($.pageBackground == null) {
+                throw new MissingRequiredPropertyException("BrandingThemeArgs", "pageBackground");
+            }
+            if ($.widget == null) {
+                throw new MissingRequiredPropertyException("BrandingThemeArgs", "widget");
+            }
             return $;
         }
     }

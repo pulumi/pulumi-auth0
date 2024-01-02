@@ -282,91 +282,109 @@ public final class BrandingThemeColors {
 
         @CustomType.Setter
         public Builder baseFocusColor(@Nullable String baseFocusColor) {
+
             this.baseFocusColor = baseFocusColor;
             return this;
         }
         @CustomType.Setter
         public Builder baseHoverColor(@Nullable String baseHoverColor) {
+
             this.baseHoverColor = baseHoverColor;
             return this;
         }
         @CustomType.Setter
         public Builder bodyText(@Nullable String bodyText) {
+
             this.bodyText = bodyText;
             return this;
         }
         @CustomType.Setter
         public Builder error(@Nullable String error) {
+
             this.error = error;
             return this;
         }
         @CustomType.Setter
         public Builder header(@Nullable String header) {
+
             this.header = header;
             return this;
         }
         @CustomType.Setter
         public Builder icons(@Nullable String icons) {
+
             this.icons = icons;
             return this;
         }
         @CustomType.Setter
         public Builder inputBackground(@Nullable String inputBackground) {
+
             this.inputBackground = inputBackground;
             return this;
         }
         @CustomType.Setter
         public Builder inputBorder(@Nullable String inputBorder) {
+
             this.inputBorder = inputBorder;
             return this;
         }
         @CustomType.Setter
         public Builder inputFilledText(@Nullable String inputFilledText) {
+
             this.inputFilledText = inputFilledText;
             return this;
         }
         @CustomType.Setter
         public Builder inputLabelsPlaceholders(@Nullable String inputLabelsPlaceholders) {
+
             this.inputLabelsPlaceholders = inputLabelsPlaceholders;
             return this;
         }
         @CustomType.Setter
         public Builder linksFocusedComponents(@Nullable String linksFocusedComponents) {
+
             this.linksFocusedComponents = linksFocusedComponents;
             return this;
         }
         @CustomType.Setter
         public Builder primaryButton(@Nullable String primaryButton) {
+
             this.primaryButton = primaryButton;
             return this;
         }
         @CustomType.Setter
         public Builder primaryButtonLabel(@Nullable String primaryButtonLabel) {
+
             this.primaryButtonLabel = primaryButtonLabel;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryButtonBorder(@Nullable String secondaryButtonBorder) {
+
             this.secondaryButtonBorder = secondaryButtonBorder;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryButtonLabel(@Nullable String secondaryButtonLabel) {
+
             this.secondaryButtonLabel = secondaryButtonLabel;
             return this;
         }
         @CustomType.Setter
         public Builder success(@Nullable String success) {
+
             this.success = success;
             return this;
         }
         @CustomType.Setter
         public Builder widgetBackground(@Nullable String widgetBackground) {
+
             this.widgetBackground = widgetBackground;
             return this;
         }
         @CustomType.Setter
         public Builder widgetBorder(@Nullable String widgetBorder) {
+
             this.widgetBorder = widgetBorder;
             return this;
         }

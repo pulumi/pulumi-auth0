@@ -44,6 +44,7 @@ public final class ClientAddonsNewrelic {
 
         @CustomType.Setter
         public Builder account(@Nullable String account) {
+
             this.account = account;
             return this;
         }

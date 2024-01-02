@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -41,7 +42,10 @@ public final class GetClientAddonSharepoint {
 
         @CustomType.Setter
         public Builder externalUrls(List<String> externalUrls) {
-            this.externalUrls = Objects.requireNonNull(externalUrls);
+            if (externalUrls == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSharepoint", "externalUrls");
+            }
+            this.externalUrls = externalUrls;
             return this;
         }
         public Builder externalUrls(String... externalUrls) {
@@ -49,7 +53,10 @@ public final class GetClientAddonSharepoint {
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSharepoint", "url");
+            }
+            this.url = url;
             return this;
         }
         public GetClientAddonSharepoint build() {

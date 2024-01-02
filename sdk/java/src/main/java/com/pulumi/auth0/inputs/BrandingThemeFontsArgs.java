@@ -11,6 +11,7 @@ import com.pulumi.auth0.inputs.BrandingThemeFontsSubtitleArgs;
 import com.pulumi.auth0.inputs.BrandingThemeFontsTitleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -379,12 +380,24 @@ public final class BrandingThemeFontsArgs extends com.pulumi.resources.ResourceA
         }
 
         public BrandingThemeFontsArgs build() {
-            $.bodyText = Objects.requireNonNull($.bodyText, "expected parameter 'bodyText' to be non-null");
-            $.buttonsText = Objects.requireNonNull($.buttonsText, "expected parameter 'buttonsText' to be non-null");
-            $.inputLabels = Objects.requireNonNull($.inputLabels, "expected parameter 'inputLabels' to be non-null");
-            $.links = Objects.requireNonNull($.links, "expected parameter 'links' to be non-null");
-            $.subtitle = Objects.requireNonNull($.subtitle, "expected parameter 'subtitle' to be non-null");
-            $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
+            if ($.bodyText == null) {
+                throw new MissingRequiredPropertyException("BrandingThemeFontsArgs", "bodyText");
+            }
+            if ($.buttonsText == null) {
+                throw new MissingRequiredPropertyException("BrandingThemeFontsArgs", "buttonsText");
+            }
+            if ($.inputLabels == null) {
+                throw new MissingRequiredPropertyException("BrandingThemeFontsArgs", "inputLabels");
+            }
+            if ($.links == null) {
+                throw new MissingRequiredPropertyException("BrandingThemeFontsArgs", "links");
+            }
+            if ($.subtitle == null) {
+                throw new MissingRequiredPropertyException("BrandingThemeFontsArgs", "subtitle");
+            }
+            if ($.title == null) {
+                throw new MissingRequiredPropertyException("BrandingThemeFontsArgs", "title");
+            }
             return $;
         }
     }

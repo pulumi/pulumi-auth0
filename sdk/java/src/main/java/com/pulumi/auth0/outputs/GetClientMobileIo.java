@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetClientMobileIo {
 
         @CustomType.Setter
         public Builder appBundleIdentifier(String appBundleIdentifier) {
-            this.appBundleIdentifier = Objects.requireNonNull(appBundleIdentifier);
+            if (appBundleIdentifier == null) {
+              throw new MissingRequiredPropertyException("GetClientMobileIo", "appBundleIdentifier");
+            }
+            this.appBundleIdentifier = appBundleIdentifier;
             return this;
         }
         @CustomType.Setter
         public Builder teamId(String teamId) {
-            this.teamId = Objects.requireNonNull(teamId);
+            if (teamId == null) {
+              throw new MissingRequiredPropertyException("GetClientMobileIo", "teamId");
+            }
+            this.teamId = teamId;
             return this;
         }
         public GetClientMobileIo build() {

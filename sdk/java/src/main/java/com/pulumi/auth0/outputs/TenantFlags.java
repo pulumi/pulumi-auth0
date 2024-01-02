@@ -352,116 +352,139 @@ public final class TenantFlags {
 
         @CustomType.Setter
         public Builder allowLegacyDelegationGrantTypes(@Nullable Boolean allowLegacyDelegationGrantTypes) {
+
             this.allowLegacyDelegationGrantTypes = allowLegacyDelegationGrantTypes;
             return this;
         }
         @CustomType.Setter
         public Builder allowLegacyRoGrantTypes(@Nullable Boolean allowLegacyRoGrantTypes) {
+
             this.allowLegacyRoGrantTypes = allowLegacyRoGrantTypes;
             return this;
         }
         @CustomType.Setter
         public Builder allowLegacyTokeninfoEndpoint(@Nullable Boolean allowLegacyTokeninfoEndpoint) {
+
             this.allowLegacyTokeninfoEndpoint = allowLegacyTokeninfoEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder dashboardInsightsView(@Nullable Boolean dashboardInsightsView) {
+
             this.dashboardInsightsView = dashboardInsightsView;
             return this;
         }
         @CustomType.Setter
         public Builder dashboardLogStreamsNext(@Nullable Boolean dashboardLogStreamsNext) {
+
             this.dashboardLogStreamsNext = dashboardLogStreamsNext;
             return this;
         }
         @CustomType.Setter
         public Builder disableClickjackProtectionHeaders(@Nullable Boolean disableClickjackProtectionHeaders) {
+
             this.disableClickjackProtectionHeaders = disableClickjackProtectionHeaders;
             return this;
         }
         @CustomType.Setter
         public Builder disableFieldsMapFix(@Nullable Boolean disableFieldsMapFix) {
+
             this.disableFieldsMapFix = disableFieldsMapFix;
             return this;
         }
         @CustomType.Setter
         public Builder disableManagementApiSmsObfuscation(@Nullable Boolean disableManagementApiSmsObfuscation) {
+
             this.disableManagementApiSmsObfuscation = disableManagementApiSmsObfuscation;
             return this;
         }
         @CustomType.Setter
         public Builder enableAdfsWaadEmailVerification(@Nullable Boolean enableAdfsWaadEmailVerification) {
+
             this.enableAdfsWaadEmailVerification = enableAdfsWaadEmailVerification;
             return this;
         }
         @CustomType.Setter
         public Builder enableApisSection(@Nullable Boolean enableApisSection) {
+
             this.enableApisSection = enableApisSection;
             return this;
         }
         @CustomType.Setter
         public Builder enableClientConnections(@Nullable Boolean enableClientConnections) {
+
             this.enableClientConnections = enableClientConnections;
             return this;
         }
         @CustomType.Setter
         public Builder enableCustomDomainInEmails(@Nullable Boolean enableCustomDomainInEmails) {
+
             this.enableCustomDomainInEmails = enableCustomDomainInEmails;
             return this;
         }
         @CustomType.Setter
         public Builder enableDynamicClientRegistration(@Nullable Boolean enableDynamicClientRegistration) {
+
             this.enableDynamicClientRegistration = enableDynamicClientRegistration;
             return this;
         }
         @CustomType.Setter
         public Builder enableIdtokenApi2(@Nullable Boolean enableIdtokenApi2) {
+
             this.enableIdtokenApi2 = enableIdtokenApi2;
             return this;
         }
         @CustomType.Setter
         public Builder enableLegacyLogsSearchV2(@Nullable Boolean enableLegacyLogsSearchV2) {
+
             this.enableLegacyLogsSearchV2 = enableLegacyLogsSearchV2;
             return this;
         }
         @CustomType.Setter
         public Builder enableLegacyProfile(@Nullable Boolean enableLegacyProfile) {
+
             this.enableLegacyProfile = enableLegacyProfile;
             return this;
         }
         @CustomType.Setter
         public Builder enablePipeline2(@Nullable Boolean enablePipeline2) {
+
             this.enablePipeline2 = enablePipeline2;
             return this;
         }
         @CustomType.Setter
         public Builder enablePublicSignupUserExistsError(@Nullable Boolean enablePublicSignupUserExistsError) {
+
             this.enablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
             return this;
         }
         @CustomType.Setter
         public Builder mfaShowFactorListOnEnrollment(@Nullable Boolean mfaShowFactorListOnEnrollment) {
+
             this.mfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
             return this;
         }
         @CustomType.Setter
         public Builder noDiscloseEnterpriseConnections(@Nullable Boolean noDiscloseEnterpriseConnections) {
+
             this.noDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
             return this;
         }
         @CustomType.Setter
         public Builder requirePushedAuthorizationRequests(@Nullable Boolean requirePushedAuthorizationRequests) {
+
             this.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
             return this;
         }
         @CustomType.Setter
         public Builder revokeRefreshTokenGrant(@Nullable Boolean revokeRefreshTokenGrant) {
+
             this.revokeRefreshTokenGrant = revokeRefreshTokenGrant;
             return this;
         }
         @CustomType.Setter
         public Builder useScopeDescriptionsForConsent(@Nullable Boolean useScopeDescriptionsForConsent) {
+
             this.useScopeDescriptionsForConsent = useScopeDescriptionsForConsent;
             return this;
         }

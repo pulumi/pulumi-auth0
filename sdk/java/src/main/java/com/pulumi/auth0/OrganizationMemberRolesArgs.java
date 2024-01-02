@@ -5,6 +5,7 @@ package com.pulumi.auth0;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -159,9 +160,15 @@ public final class OrganizationMemberRolesArgs extends com.pulumi.resources.Reso
         }
 
         public OrganizationMemberRolesArgs build() {
-            $.organizationId = Objects.requireNonNull($.organizationId, "expected parameter 'organizationId' to be non-null");
-            $.roles = Objects.requireNonNull($.roles, "expected parameter 'roles' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
+            if ($.organizationId == null) {
+                throw new MissingRequiredPropertyException("OrganizationMemberRolesArgs", "organizationId");
+            }
+            if ($.roles == null) {
+                throw new MissingRequiredPropertyException("OrganizationMemberRolesArgs", "roles");
+            }
+            if ($.userId == null) {
+                throw new MissingRequiredPropertyException("OrganizationMemberRolesArgs", "userId");
+            }
             return $;
         }
     }

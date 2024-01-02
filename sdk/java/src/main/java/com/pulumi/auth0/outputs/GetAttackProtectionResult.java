@@ -7,6 +7,7 @@ import com.pulumi.auth0.outputs.GetAttackProtectionBreachedPasswordDetection;
 import com.pulumi.auth0.outputs.GetAttackProtectionBruteForceProtection;
 import com.pulumi.auth0.outputs.GetAttackProtectionSuspiciousIpThrottling;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -88,7 +89,10 @@ public final class GetAttackProtectionResult {
 
         @CustomType.Setter
         public Builder breachedPasswordDetections(List<GetAttackProtectionBreachedPasswordDetection> breachedPasswordDetections) {
-            this.breachedPasswordDetections = Objects.requireNonNull(breachedPasswordDetections);
+            if (breachedPasswordDetections == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionResult", "breachedPasswordDetections");
+            }
+            this.breachedPasswordDetections = breachedPasswordDetections;
             return this;
         }
         public Builder breachedPasswordDetections(GetAttackProtectionBreachedPasswordDetection... breachedPasswordDetections) {
@@ -96,7 +100,10 @@ public final class GetAttackProtectionResult {
         }
         @CustomType.Setter
         public Builder bruteForceProtections(List<GetAttackProtectionBruteForceProtection> bruteForceProtections) {
-            this.bruteForceProtections = Objects.requireNonNull(bruteForceProtections);
+            if (bruteForceProtections == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionResult", "bruteForceProtections");
+            }
+            this.bruteForceProtections = bruteForceProtections;
             return this;
         }
         public Builder bruteForceProtections(GetAttackProtectionBruteForceProtection... bruteForceProtections) {
@@ -104,12 +111,18 @@ public final class GetAttackProtectionResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder suspiciousIpThrottlings(List<GetAttackProtectionSuspiciousIpThrottling> suspiciousIpThrottlings) {
-            this.suspiciousIpThrottlings = Objects.requireNonNull(suspiciousIpThrottlings);
+            if (suspiciousIpThrottlings == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionResult", "suspiciousIpThrottlings");
+            }
+            this.suspiciousIpThrottlings = suspiciousIpThrottlings;
             return this;
         }
         public Builder suspiciousIpThrottlings(GetAttackProtectionSuspiciousIpThrottling... suspiciousIpThrottlings) {

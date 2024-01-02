@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -130,36 +131,47 @@ public final class ClientRefreshToken {
 
         @CustomType.Setter
         public Builder expirationType(String expirationType) {
-            this.expirationType = Objects.requireNonNull(expirationType);
+            if (expirationType == null) {
+              throw new MissingRequiredPropertyException("ClientRefreshToken", "expirationType");
+            }
+            this.expirationType = expirationType;
             return this;
         }
         @CustomType.Setter
         public Builder idleTokenLifetime(@Nullable Integer idleTokenLifetime) {
+
             this.idleTokenLifetime = idleTokenLifetime;
             return this;
         }
         @CustomType.Setter
         public Builder infiniteIdleTokenLifetime(@Nullable Boolean infiniteIdleTokenLifetime) {
+
             this.infiniteIdleTokenLifetime = infiniteIdleTokenLifetime;
             return this;
         }
         @CustomType.Setter
         public Builder infiniteTokenLifetime(@Nullable Boolean infiniteTokenLifetime) {
+
             this.infiniteTokenLifetime = infiniteTokenLifetime;
             return this;
         }
         @CustomType.Setter
         public Builder leeway(@Nullable Integer leeway) {
+
             this.leeway = leeway;
             return this;
         }
         @CustomType.Setter
         public Builder rotationType(String rotationType) {
-            this.rotationType = Objects.requireNonNull(rotationType);
+            if (rotationType == null) {
+              throw new MissingRequiredPropertyException("ClientRefreshToken", "rotationType");
+            }
+            this.rotationType = rotationType;
             return this;
         }
         @CustomType.Setter
         public Builder tokenLifetime(@Nullable Integer tokenLifetime) {
+
             this.tokenLifetime = tokenLifetime;
             return this;
         }

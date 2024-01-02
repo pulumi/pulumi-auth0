@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GuardianPhoneOptions;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -89,11 +90,15 @@ public final class GuardianPhone {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GuardianPhone", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder messageTypes(@Nullable List<String> messageTypes) {
+
             this.messageTypes = messageTypes;
             return this;
         }
@@ -102,11 +107,13 @@ public final class GuardianPhone {
         }
         @CustomType.Setter
         public Builder options(@Nullable GuardianPhoneOptions options) {
+
             this.options = options;
             return this;
         }
         @CustomType.Setter
         public Builder provider(@Nullable String provider) {
+
             this.provider = provider;
             return this;
         }

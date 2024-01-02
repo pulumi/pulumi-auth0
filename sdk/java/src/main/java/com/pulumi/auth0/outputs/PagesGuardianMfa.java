@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class PagesGuardianMfa {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("PagesGuardianMfa", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder html(String html) {
-            this.html = Objects.requireNonNull(html);
+            if (html == null) {
+              throw new MissingRequiredPropertyException("PagesGuardianMfa", "html");
+            }
+            this.html = html;
             return this;
         }
         public PagesGuardianMfa build() {

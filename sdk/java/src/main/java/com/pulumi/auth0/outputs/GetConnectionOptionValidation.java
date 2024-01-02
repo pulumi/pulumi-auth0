@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetConnectionOptionValidationUsername;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,7 +36,10 @@ public final class GetConnectionOptionValidation {
 
         @CustomType.Setter
         public Builder usernames(List<GetConnectionOptionValidationUsername> usernames) {
-            this.usernames = Objects.requireNonNull(usernames);
+            if (usernames == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionValidation", "usernames");
+            }
+            this.usernames = usernames;
             return this;
         }
         public Builder usernames(GetConnectionOptionValidationUsername... usernames) {

@@ -44,6 +44,7 @@ public final class ClientAddonsZoom {
 
         @CustomType.Setter
         public Builder account(@Nullable String account) {
+
             this.account = account;
             return this;
         }

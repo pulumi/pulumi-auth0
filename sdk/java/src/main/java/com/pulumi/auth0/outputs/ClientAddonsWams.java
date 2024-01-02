@@ -44,6 +44,7 @@ public final class ClientAddonsWams {
 
         @CustomType.Setter
         public Builder masterKey(@Nullable String masterKey) {
+
             this.masterKey = masterKey;
             return this;
         }

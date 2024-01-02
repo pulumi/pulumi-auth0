@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.ClientCredentialsPrivateKeyJwtCredential;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,7 +44,10 @@ public final class ClientCredentialsPrivateKeyJwt {
 
         @CustomType.Setter
         public Builder credentials(List<ClientCredentialsPrivateKeyJwtCredential> credentials) {
-            this.credentials = Objects.requireNonNull(credentials);
+            if (credentials == null) {
+              throw new MissingRequiredPropertyException("ClientCredentialsPrivateKeyJwt", "credentials");
+            }
+            this.credentials = credentials;
             return this;
         }
         public Builder credentials(ClientCredentialsPrivateKeyJwtCredential... credentials) {

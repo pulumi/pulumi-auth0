@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -59,27 +60,42 @@ public final class GetBrandingThemeWidget {
 
         @CustomType.Setter
         public Builder headerTextAlignment(String headerTextAlignment) {
-            this.headerTextAlignment = Objects.requireNonNull(headerTextAlignment);
+            if (headerTextAlignment == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeWidget", "headerTextAlignment");
+            }
+            this.headerTextAlignment = headerTextAlignment;
             return this;
         }
         @CustomType.Setter
         public Builder logoHeight(Double logoHeight) {
-            this.logoHeight = Objects.requireNonNull(logoHeight);
+            if (logoHeight == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeWidget", "logoHeight");
+            }
+            this.logoHeight = logoHeight;
             return this;
         }
         @CustomType.Setter
         public Builder logoPosition(String logoPosition) {
-            this.logoPosition = Objects.requireNonNull(logoPosition);
+            if (logoPosition == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeWidget", "logoPosition");
+            }
+            this.logoPosition = logoPosition;
             return this;
         }
         @CustomType.Setter
         public Builder logoUrl(String logoUrl) {
-            this.logoUrl = Objects.requireNonNull(logoUrl);
+            if (logoUrl == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeWidget", "logoUrl");
+            }
+            this.logoUrl = logoUrl;
             return this;
         }
         @CustomType.Setter
         public Builder socialButtonsLayout(String socialButtonsLayout) {
-            this.socialButtonsLayout = Objects.requireNonNull(socialButtonsLayout);
+            if (socialButtonsLayout == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeWidget", "socialButtonsLayout");
+            }
+            this.socialButtonsLayout = socialButtonsLayout;
             return this;
         }
         public GetBrandingThemeWidget build() {

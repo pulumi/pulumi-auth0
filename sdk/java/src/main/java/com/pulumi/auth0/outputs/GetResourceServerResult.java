@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetResourceServerScope;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -230,37 +231,54 @@ public final class GetResourceServerResult {
 
         @CustomType.Setter
         public Builder allowOfflineAccess(Boolean allowOfflineAccess) {
-            this.allowOfflineAccess = Objects.requireNonNull(allowOfflineAccess);
+            if (allowOfflineAccess == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "allowOfflineAccess");
+            }
+            this.allowOfflineAccess = allowOfflineAccess;
             return this;
         }
         @CustomType.Setter
         public Builder enforcePolicies(Boolean enforcePolicies) {
-            this.enforcePolicies = Objects.requireNonNull(enforcePolicies);
+            if (enforcePolicies == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "enforcePolicies");
+            }
+            this.enforcePolicies = enforcePolicies;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder identifier(@Nullable String identifier) {
+
             this.identifier = identifier;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder resourceServerId(@Nullable String resourceServerId) {
+
             this.resourceServerId = resourceServerId;
             return this;
         }
         @CustomType.Setter
         public Builder scopes(List<GetResourceServerScope> scopes) {
-            this.scopes = Objects.requireNonNull(scopes);
+            if (scopes == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "scopes");
+            }
+            this.scopes = scopes;
             return this;
         }
         public Builder scopes(GetResourceServerScope... scopes) {
@@ -268,37 +286,58 @@ public final class GetResourceServerResult {
         }
         @CustomType.Setter
         public Builder signingAlg(String signingAlg) {
-            this.signingAlg = Objects.requireNonNull(signingAlg);
+            if (signingAlg == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "signingAlg");
+            }
+            this.signingAlg = signingAlg;
             return this;
         }
         @CustomType.Setter
         public Builder signingSecret(String signingSecret) {
-            this.signingSecret = Objects.requireNonNull(signingSecret);
+            if (signingSecret == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "signingSecret");
+            }
+            this.signingSecret = signingSecret;
             return this;
         }
         @CustomType.Setter
         public Builder skipConsentForVerifiableFirstPartyClients(Boolean skipConsentForVerifiableFirstPartyClients) {
-            this.skipConsentForVerifiableFirstPartyClients = Objects.requireNonNull(skipConsentForVerifiableFirstPartyClients);
+            if (skipConsentForVerifiableFirstPartyClients == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "skipConsentForVerifiableFirstPartyClients");
+            }
+            this.skipConsentForVerifiableFirstPartyClients = skipConsentForVerifiableFirstPartyClients;
             return this;
         }
         @CustomType.Setter
         public Builder tokenDialect(String tokenDialect) {
-            this.tokenDialect = Objects.requireNonNull(tokenDialect);
+            if (tokenDialect == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "tokenDialect");
+            }
+            this.tokenDialect = tokenDialect;
             return this;
         }
         @CustomType.Setter
         public Builder tokenLifetime(Integer tokenLifetime) {
-            this.tokenLifetime = Objects.requireNonNull(tokenLifetime);
+            if (tokenLifetime == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "tokenLifetime");
+            }
+            this.tokenLifetime = tokenLifetime;
             return this;
         }
         @CustomType.Setter
         public Builder tokenLifetimeForWeb(Integer tokenLifetimeForWeb) {
-            this.tokenLifetimeForWeb = Objects.requireNonNull(tokenLifetimeForWeb);
+            if (tokenLifetimeForWeb == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "tokenLifetimeForWeb");
+            }
+            this.tokenLifetimeForWeb = tokenLifetimeForWeb;
             return this;
         }
         @CustomType.Setter
         public Builder verificationLocation(String verificationLocation) {
-            this.verificationLocation = Objects.requireNonNull(verificationLocation);
+            if (verificationLocation == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "verificationLocation");
+            }
+            this.verificationLocation = verificationLocation;
             return this;
         }
         public GetResourceServerResult build() {

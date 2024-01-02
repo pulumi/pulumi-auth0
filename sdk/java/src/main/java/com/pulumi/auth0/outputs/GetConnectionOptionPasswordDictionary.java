@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetConnectionOptionPasswordDictionary {
 
         @CustomType.Setter
         public Builder dictionaries(List<String> dictionaries) {
-            this.dictionaries = Objects.requireNonNull(dictionaries);
+            if (dictionaries == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionPasswordDictionary", "dictionaries");
+            }
+            this.dictionaries = dictionaries;
             return this;
         }
         public Builder dictionaries(String... dictionaries) {
@@ -50,7 +54,10 @@ public final class GetConnectionOptionPasswordDictionary {
         }
         @CustomType.Setter
         public Builder enable(Boolean enable) {
-            this.enable = Objects.requireNonNull(enable);
+            if (enable == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionPasswordDictionary", "enable");
+            }
+            this.enable = enable;
             return this;
         }
         public GetConnectionOptionPasswordDictionary build() {

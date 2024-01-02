@@ -36,6 +36,7 @@ public final class CustomDomainVerification {
 
         @CustomType.Setter
         public Builder methods(@Nullable List<Object> methods) {
+
             this.methods = methods;
             return this;
         }

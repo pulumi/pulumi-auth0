@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetClientAddonSamlpLogout;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -160,52 +161,82 @@ public final class GetClientAddonSamlp {
 
         @CustomType.Setter
         public Builder audience(String audience) {
-            this.audience = Objects.requireNonNull(audience);
+            if (audience == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "audience");
+            }
+            this.audience = audience;
             return this;
         }
         @CustomType.Setter
         public Builder authnContextClassRef(String authnContextClassRef) {
-            this.authnContextClassRef = Objects.requireNonNull(authnContextClassRef);
+            if (authnContextClassRef == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "authnContextClassRef");
+            }
+            this.authnContextClassRef = authnContextClassRef;
             return this;
         }
         @CustomType.Setter
         public Builder binding(String binding) {
-            this.binding = Objects.requireNonNull(binding);
+            if (binding == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "binding");
+            }
+            this.binding = binding;
             return this;
         }
         @CustomType.Setter
         public Builder createUpnClaim(Boolean createUpnClaim) {
-            this.createUpnClaim = Objects.requireNonNull(createUpnClaim);
+            if (createUpnClaim == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "createUpnClaim");
+            }
+            this.createUpnClaim = createUpnClaim;
             return this;
         }
         @CustomType.Setter
         public Builder destination(String destination) {
-            this.destination = Objects.requireNonNull(destination);
+            if (destination == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "destination");
+            }
+            this.destination = destination;
             return this;
         }
         @CustomType.Setter
         public Builder digestAlgorithm(String digestAlgorithm) {
-            this.digestAlgorithm = Objects.requireNonNull(digestAlgorithm);
+            if (digestAlgorithm == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "digestAlgorithm");
+            }
+            this.digestAlgorithm = digestAlgorithm;
             return this;
         }
         @CustomType.Setter
         public Builder includeAttributeNameFormat(Boolean includeAttributeNameFormat) {
-            this.includeAttributeNameFormat = Objects.requireNonNull(includeAttributeNameFormat);
+            if (includeAttributeNameFormat == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "includeAttributeNameFormat");
+            }
+            this.includeAttributeNameFormat = includeAttributeNameFormat;
             return this;
         }
         @CustomType.Setter
         public Builder issuer(String issuer) {
-            this.issuer = Objects.requireNonNull(issuer);
+            if (issuer == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "issuer");
+            }
+            this.issuer = issuer;
             return this;
         }
         @CustomType.Setter
         public Builder lifetimeInSeconds(Integer lifetimeInSeconds) {
-            this.lifetimeInSeconds = Objects.requireNonNull(lifetimeInSeconds);
+            if (lifetimeInSeconds == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "lifetimeInSeconds");
+            }
+            this.lifetimeInSeconds = lifetimeInSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder logouts(List<GetClientAddonSamlpLogout> logouts) {
-            this.logouts = Objects.requireNonNull(logouts);
+            if (logouts == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "logouts");
+            }
+            this.logouts = logouts;
             return this;
         }
         public Builder logouts(GetClientAddonSamlpLogout... logouts) {
@@ -213,27 +244,42 @@ public final class GetClientAddonSamlp {
         }
         @CustomType.Setter
         public Builder mapIdentities(Boolean mapIdentities) {
-            this.mapIdentities = Objects.requireNonNull(mapIdentities);
+            if (mapIdentities == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "mapIdentities");
+            }
+            this.mapIdentities = mapIdentities;
             return this;
         }
         @CustomType.Setter
         public Builder mapUnknownClaimsAsIs(Boolean mapUnknownClaimsAsIs) {
-            this.mapUnknownClaimsAsIs = Objects.requireNonNull(mapUnknownClaimsAsIs);
+            if (mapUnknownClaimsAsIs == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "mapUnknownClaimsAsIs");
+            }
+            this.mapUnknownClaimsAsIs = mapUnknownClaimsAsIs;
             return this;
         }
         @CustomType.Setter
         public Builder mappings(Map<String,Object> mappings) {
-            this.mappings = Objects.requireNonNull(mappings);
+            if (mappings == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "mappings");
+            }
+            this.mappings = mappings;
             return this;
         }
         @CustomType.Setter
         public Builder nameIdentifierFormat(String nameIdentifierFormat) {
-            this.nameIdentifierFormat = Objects.requireNonNull(nameIdentifierFormat);
+            if (nameIdentifierFormat == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "nameIdentifierFormat");
+            }
+            this.nameIdentifierFormat = nameIdentifierFormat;
             return this;
         }
         @CustomType.Setter
         public Builder nameIdentifierProbes(List<String> nameIdentifierProbes) {
-            this.nameIdentifierProbes = Objects.requireNonNull(nameIdentifierProbes);
+            if (nameIdentifierProbes == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "nameIdentifierProbes");
+            }
+            this.nameIdentifierProbes = nameIdentifierProbes;
             return this;
         }
         public Builder nameIdentifierProbes(String... nameIdentifierProbes) {
@@ -241,32 +287,50 @@ public final class GetClientAddonSamlp {
         }
         @CustomType.Setter
         public Builder passthroughClaimsWithNoMapping(Boolean passthroughClaimsWithNoMapping) {
-            this.passthroughClaimsWithNoMapping = Objects.requireNonNull(passthroughClaimsWithNoMapping);
+            if (passthroughClaimsWithNoMapping == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "passthroughClaimsWithNoMapping");
+            }
+            this.passthroughClaimsWithNoMapping = passthroughClaimsWithNoMapping;
             return this;
         }
         @CustomType.Setter
         public Builder recipient(String recipient) {
-            this.recipient = Objects.requireNonNull(recipient);
+            if (recipient == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "recipient");
+            }
+            this.recipient = recipient;
             return this;
         }
         @CustomType.Setter
         public Builder signResponse(Boolean signResponse) {
-            this.signResponse = Objects.requireNonNull(signResponse);
+            if (signResponse == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "signResponse");
+            }
+            this.signResponse = signResponse;
             return this;
         }
         @CustomType.Setter
         public Builder signatureAlgorithm(String signatureAlgorithm) {
-            this.signatureAlgorithm = Objects.requireNonNull(signatureAlgorithm);
+            if (signatureAlgorithm == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "signatureAlgorithm");
+            }
+            this.signatureAlgorithm = signatureAlgorithm;
             return this;
         }
         @CustomType.Setter
         public Builder signingCert(String signingCert) {
-            this.signingCert = Objects.requireNonNull(signingCert);
+            if (signingCert == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "signingCert");
+            }
+            this.signingCert = signingCert;
             return this;
         }
         @CustomType.Setter
         public Builder typedAttributes(Boolean typedAttributes) {
-            this.typedAttributes = Objects.requireNonNull(typedAttributes);
+            if (typedAttributes == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "typedAttributes");
+            }
+            this.typedAttributes = typedAttributes;
             return this;
         }
         public GetClientAddonSamlp build() {

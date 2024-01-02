@@ -5,6 +5,7 @@ package com.pulumi.auth0;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -189,7 +190,9 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RuleArgs build() {
-            $.script = Objects.requireNonNull($.script, "expected parameter 'script' to be non-null");
+            if ($.script == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "script");
+            }
             return $;
         }
     }

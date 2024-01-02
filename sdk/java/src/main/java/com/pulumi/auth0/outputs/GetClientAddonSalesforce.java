@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClientAddonSalesforce {
 
         @CustomType.Setter
         public Builder entityId(String entityId) {
-            this.entityId = Objects.requireNonNull(entityId);
+            if (entityId == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSalesforce", "entityId");
+            }
+            this.entityId = entityId;
             return this;
         }
         public GetClientAddonSalesforce build() {

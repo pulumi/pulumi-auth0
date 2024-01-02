@@ -7,6 +7,7 @@ import com.pulumi.auth0.inputs.EmailProviderCredentialsArgs;
 import com.pulumi.auth0.inputs.EmailProviderSettingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -227,8 +228,12 @@ public final class EmailProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EmailProviderArgs build() {
-            $.credentials = Objects.requireNonNull($.credentials, "expected parameter 'credentials' to be non-null");
-            $.defaultFromAddress = Objects.requireNonNull($.defaultFromAddress, "expected parameter 'defaultFromAddress' to be non-null");
+            if ($.credentials == null) {
+                throw new MissingRequiredPropertyException("EmailProviderArgs", "credentials");
+            }
+            if ($.defaultFromAddress == null) {
+                throw new MissingRequiredPropertyException("EmailProviderArgs", "defaultFromAddress");
+            }
             return $;
         }
     }

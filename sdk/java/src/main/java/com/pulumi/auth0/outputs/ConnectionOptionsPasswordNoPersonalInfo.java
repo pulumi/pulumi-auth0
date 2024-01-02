@@ -44,6 +44,7 @@ public final class ConnectionOptionsPasswordNoPersonalInfo {
 
         @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
+
             this.enable = enable;
             return this;
         }

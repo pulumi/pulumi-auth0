@@ -44,6 +44,7 @@ public final class AttackProtectionBreachedPasswordDetectionPreUserRegistration 
 
         @CustomType.Setter
         public Builder shields(@Nullable List<String> shields) {
+
             this.shields = shields;
             return this;
         }

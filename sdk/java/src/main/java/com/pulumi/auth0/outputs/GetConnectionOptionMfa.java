@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetConnectionOptionMfa {
 
         @CustomType.Setter
         public Builder active(Boolean active) {
-            this.active = Objects.requireNonNull(active);
+            if (active == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionMfa", "active");
+            }
+            this.active = active;
             return this;
         }
         @CustomType.Setter
         public Builder returnEnrollSettings(Boolean returnEnrollSettings) {
-            this.returnEnrollSettings = Objects.requireNonNull(returnEnrollSettings);
+            if (returnEnrollSettings == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionMfa", "returnEnrollSettings");
+            }
+            this.returnEnrollSettings = returnEnrollSettings;
             return this;
         }
         public GetConnectionOptionMfa build() {

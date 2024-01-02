@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class GetConnectionOptionIdpInitiated {
 
         @CustomType.Setter
         public Builder clientAuthorizeQuery(String clientAuthorizeQuery) {
-            this.clientAuthorizeQuery = Objects.requireNonNull(clientAuthorizeQuery);
+            if (clientAuthorizeQuery == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionIdpInitiated", "clientAuthorizeQuery");
+            }
+            this.clientAuthorizeQuery = clientAuthorizeQuery;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionIdpInitiated", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientProtocol(String clientProtocol) {
-            this.clientProtocol = Objects.requireNonNull(clientProtocol);
+            if (clientProtocol == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionIdpInitiated", "clientProtocol");
+            }
+            this.clientProtocol = clientProtocol;
             return this;
         }
         public GetConnectionOptionIdpInitiated build() {
