@@ -5,6 +5,7 @@ package com.pulumi.auth0;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class PromptCustomTextArgs extends com.pulumi.resources.ResourceArg
         }
 
         public PromptCustomTextArgs build() {
-            $.body = Objects.requireNonNull($.body, "expected parameter 'body' to be non-null");
-            $.language = Objects.requireNonNull($.language, "expected parameter 'language' to be non-null");
-            $.prompt = Objects.requireNonNull($.prompt, "expected parameter 'prompt' to be non-null");
+            if ($.body == null) {
+                throw new MissingRequiredPropertyException("PromptCustomTextArgs", "body");
+            }
+            if ($.language == null) {
+                throw new MissingRequiredPropertyException("PromptCustomTextArgs", "language");
+            }
+            if ($.prompt == null) {
+                throw new MissingRequiredPropertyException("PromptCustomTextArgs", "prompt");
+            }
             return $;
         }
     }

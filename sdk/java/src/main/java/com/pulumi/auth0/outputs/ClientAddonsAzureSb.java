@@ -101,26 +101,31 @@ public final class ClientAddonsAzureSb {
 
         @CustomType.Setter
         public Builder entityPath(@Nullable String entityPath) {
+
             this.entityPath = entityPath;
             return this;
         }
         @CustomType.Setter
         public Builder expiration(@Nullable Integer expiration) {
+
             this.expiration = expiration;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder sasKey(@Nullable String sasKey) {
+
             this.sasKey = sasKey;
             return this;
         }
         @CustomType.Setter
         public Builder sasKeyName(@Nullable String sasKeyName) {
+
             this.sasKeyName = sasKeyName;
             return this;
         }

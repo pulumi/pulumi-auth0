@@ -7,6 +7,7 @@ import com.pulumi.auth0.outputs.GetBrandingColor;
 import com.pulumi.auth0.outputs.GetBrandingFont;
 import com.pulumi.auth0.outputs.GetBrandingUniversalLogin;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -116,7 +117,10 @@ public final class GetBrandingResult {
 
         @CustomType.Setter
         public Builder colors(List<GetBrandingColor> colors) {
-            this.colors = Objects.requireNonNull(colors);
+            if (colors == null) {
+              throw new MissingRequiredPropertyException("GetBrandingResult", "colors");
+            }
+            this.colors = colors;
             return this;
         }
         public Builder colors(GetBrandingColor... colors) {
@@ -124,12 +128,18 @@ public final class GetBrandingResult {
         }
         @CustomType.Setter
         public Builder faviconUrl(String faviconUrl) {
-            this.faviconUrl = Objects.requireNonNull(faviconUrl);
+            if (faviconUrl == null) {
+              throw new MissingRequiredPropertyException("GetBrandingResult", "faviconUrl");
+            }
+            this.faviconUrl = faviconUrl;
             return this;
         }
         @CustomType.Setter
         public Builder fonts(List<GetBrandingFont> fonts) {
-            this.fonts = Objects.requireNonNull(fonts);
+            if (fonts == null) {
+              throw new MissingRequiredPropertyException("GetBrandingResult", "fonts");
+            }
+            this.fonts = fonts;
             return this;
         }
         public Builder fonts(GetBrandingFont... fonts) {
@@ -137,17 +147,26 @@ public final class GetBrandingResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBrandingResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder logoUrl(String logoUrl) {
-            this.logoUrl = Objects.requireNonNull(logoUrl);
+            if (logoUrl == null) {
+              throw new MissingRequiredPropertyException("GetBrandingResult", "logoUrl");
+            }
+            this.logoUrl = logoUrl;
             return this;
         }
         @CustomType.Setter
         public Builder universalLogins(List<GetBrandingUniversalLogin> universalLogins) {
-            this.universalLogins = Objects.requireNonNull(universalLogins);
+            if (universalLogins == null) {
+              throw new MissingRequiredPropertyException("GetBrandingResult", "universalLogins");
+            }
+            this.universalLogins = universalLogins;
             return this;
         }
         public Builder universalLogins(GetBrandingUniversalLogin... universalLogins) {

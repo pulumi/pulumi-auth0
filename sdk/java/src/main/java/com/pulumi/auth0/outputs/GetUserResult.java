@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetUserPermission;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -311,62 +312,98 @@ public final class GetUserResult {
 
         @CustomType.Setter
         public Builder appMetadata(String appMetadata) {
-            this.appMetadata = Objects.requireNonNull(appMetadata);
+            if (appMetadata == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "appMetadata");
+            }
+            this.appMetadata = appMetadata;
             return this;
         }
         @CustomType.Setter
         public Builder blocked(Boolean blocked) {
-            this.blocked = Objects.requireNonNull(blocked);
+            if (blocked == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "blocked");
+            }
+            this.blocked = blocked;
             return this;
         }
         @CustomType.Setter
         public Builder connectionName(String connectionName) {
-            this.connectionName = Objects.requireNonNull(connectionName);
+            if (connectionName == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "connectionName");
+            }
+            this.connectionName = connectionName;
             return this;
         }
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder emailVerified(Boolean emailVerified) {
-            this.emailVerified = Objects.requireNonNull(emailVerified);
+            if (emailVerified == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "emailVerified");
+            }
+            this.emailVerified = emailVerified;
             return this;
         }
         @CustomType.Setter
         public Builder familyName(String familyName) {
-            this.familyName = Objects.requireNonNull(familyName);
+            if (familyName == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "familyName");
+            }
+            this.familyName = familyName;
             return this;
         }
         @CustomType.Setter
         public Builder givenName(String givenName) {
-            this.givenName = Objects.requireNonNull(givenName);
+            if (givenName == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "givenName");
+            }
+            this.givenName = givenName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nickname(String nickname) {
-            this.nickname = Objects.requireNonNull(nickname);
+            if (nickname == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "nickname");
+            }
+            this.nickname = nickname;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder permissions(List<GetUserPermission> permissions) {
-            this.permissions = Objects.requireNonNull(permissions);
+            if (permissions == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "permissions");
+            }
+            this.permissions = permissions;
             return this;
         }
         public Builder permissions(GetUserPermission... permissions) {
@@ -374,22 +411,34 @@ public final class GetUserResult {
         }
         @CustomType.Setter
         public Builder phoneNumber(String phoneNumber) {
-            this.phoneNumber = Objects.requireNonNull(phoneNumber);
+            if (phoneNumber == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "phoneNumber");
+            }
+            this.phoneNumber = phoneNumber;
             return this;
         }
         @CustomType.Setter
         public Builder phoneVerified(Boolean phoneVerified) {
-            this.phoneVerified = Objects.requireNonNull(phoneVerified);
+            if (phoneVerified == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "phoneVerified");
+            }
+            this.phoneVerified = phoneVerified;
             return this;
         }
         @CustomType.Setter
         public Builder picture(String picture) {
-            this.picture = Objects.requireNonNull(picture);
+            if (picture == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "picture");
+            }
+            this.picture = picture;
             return this;
         }
         @CustomType.Setter
         public Builder roles(List<String> roles) {
-            this.roles = Objects.requireNonNull(roles);
+            if (roles == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "roles");
+            }
+            this.roles = roles;
             return this;
         }
         public Builder roles(String... roles) {
@@ -397,22 +446,34 @@ public final class GetUserResult {
         }
         @CustomType.Setter
         public Builder userId(String userId) {
-            this.userId = Objects.requireNonNull(userId);
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "userId");
+            }
+            this.userId = userId;
             return this;
         }
         @CustomType.Setter
         public Builder userMetadata(String userMetadata) {
-            this.userMetadata = Objects.requireNonNull(userMetadata);
+            if (userMetadata == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "userMetadata");
+            }
+            this.userMetadata = userMetadata;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "username");
+            }
+            this.username = username;
             return this;
         }
         @CustomType.Setter
         public Builder verifyEmail(Boolean verifyEmail) {
-            this.verifyEmail = Objects.requireNonNull(verifyEmail);
+            if (verifyEmail == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "verifyEmail");
+            }
+            this.verifyEmail = verifyEmail;
             return this;
         }
         public GetUserResult build() {

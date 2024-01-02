@@ -73,16 +73,19 @@ public final class ClientAddonsAws {
 
         @CustomType.Setter
         public Builder lifetimeInSeconds(@Nullable Integer lifetimeInSeconds) {
+
             this.lifetimeInSeconds = lifetimeInSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder principal(@Nullable String principal) {
+
             this.principal = principal;
             return this;
         }
         @CustomType.Setter
         public Builder role(@Nullable String role) {
+
             this.role = role;
             return this;
         }

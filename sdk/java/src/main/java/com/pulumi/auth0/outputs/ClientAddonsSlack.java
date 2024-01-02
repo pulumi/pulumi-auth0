@@ -44,6 +44,7 @@ public final class ClientAddonsSlack {
 
         @CustomType.Setter
         public Builder team(@Nullable String team) {
+
             this.team = team;
             return this;
         }

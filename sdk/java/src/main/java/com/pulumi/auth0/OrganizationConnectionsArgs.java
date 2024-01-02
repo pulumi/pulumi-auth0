@@ -6,6 +6,7 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.inputs.OrganizationConnectionsEnabledConnectionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -123,8 +124,12 @@ public final class OrganizationConnectionsArgs extends com.pulumi.resources.Reso
         }
 
         public OrganizationConnectionsArgs build() {
-            $.enabledConnections = Objects.requireNonNull($.enabledConnections, "expected parameter 'enabledConnections' to be non-null");
-            $.organizationId = Objects.requireNonNull($.organizationId, "expected parameter 'organizationId' to be non-null");
+            if ($.enabledConnections == null) {
+                throw new MissingRequiredPropertyException("OrganizationConnectionsArgs", "enabledConnections");
+            }
+            if ($.organizationId == null) {
+                throw new MissingRequiredPropertyException("OrganizationConnectionsArgs", "organizationId");
+            }
             return $;
         }
     }

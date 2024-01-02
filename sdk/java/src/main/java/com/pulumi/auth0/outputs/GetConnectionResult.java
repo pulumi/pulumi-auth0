@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetConnectionOption;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -188,17 +189,24 @@ public final class GetConnectionResult {
 
         @CustomType.Setter
         public Builder connectionId(@Nullable String connectionId) {
+
             this.connectionId = connectionId;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetConnectionResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder enabledClients(List<String> enabledClients) {
-            this.enabledClients = Objects.requireNonNull(enabledClients);
+            if (enabledClients == null) {
+              throw new MissingRequiredPropertyException("GetConnectionResult", "enabledClients");
+            }
+            this.enabledClients = enabledClients;
             return this;
         }
         public Builder enabledClients(String... enabledClients) {
@@ -206,27 +214,40 @@ public final class GetConnectionResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetConnectionResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isDomainConnection(Boolean isDomainConnection) {
-            this.isDomainConnection = Objects.requireNonNull(isDomainConnection);
+            if (isDomainConnection == null) {
+              throw new MissingRequiredPropertyException("GetConnectionResult", "isDomainConnection");
+            }
+            this.isDomainConnection = isDomainConnection;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(Map<String,String> metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetConnectionResult", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder options(List<GetConnectionOption> options) {
-            this.options = Objects.requireNonNull(options);
+            if (options == null) {
+              throw new MissingRequiredPropertyException("GetConnectionResult", "options");
+            }
+            this.options = options;
             return this;
         }
         public Builder options(GetConnectionOption... options) {
@@ -234,7 +255,10 @@ public final class GetConnectionResult {
         }
         @CustomType.Setter
         public Builder realms(List<String> realms) {
-            this.realms = Objects.requireNonNull(realms);
+            if (realms == null) {
+              throw new MissingRequiredPropertyException("GetConnectionResult", "realms");
+            }
+            this.realms = realms;
             return this;
         }
         public Builder realms(String... realms) {
@@ -242,12 +266,18 @@ public final class GetConnectionResult {
         }
         @CustomType.Setter
         public Builder showAsButton(Boolean showAsButton) {
-            this.showAsButton = Objects.requireNonNull(showAsButton);
+            if (showAsButton == null) {
+              throw new MissingRequiredPropertyException("GetConnectionResult", "showAsButton");
+            }
+            this.showAsButton = showAsButton;
             return this;
         }
         @CustomType.Setter
         public Builder strategy(String strategy) {
-            this.strategy = Objects.requireNonNull(strategy);
+            if (strategy == null) {
+              throw new MissingRequiredPropertyException("GetConnectionResult", "strategy");
+            }
+            this.strategy = strategy;
             return this;
         }
         public GetConnectionResult build() {

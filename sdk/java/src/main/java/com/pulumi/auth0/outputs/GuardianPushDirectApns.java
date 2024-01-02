@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -87,22 +88,32 @@ public final class GuardianPushDirectApns {
 
         @CustomType.Setter
         public Builder bundleId(String bundleId) {
-            this.bundleId = Objects.requireNonNull(bundleId);
+            if (bundleId == null) {
+              throw new MissingRequiredPropertyException("GuardianPushDirectApns", "bundleId");
+            }
+            this.bundleId = bundleId;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder p12(String p12) {
-            this.p12 = Objects.requireNonNull(p12);
+            if (p12 == null) {
+              throw new MissingRequiredPropertyException("GuardianPushDirectApns", "p12");
+            }
+            this.p12 = p12;
             return this;
         }
         @CustomType.Setter
         public Builder sandbox(Boolean sandbox) {
-            this.sandbox = Objects.requireNonNull(sandbox);
+            if (sandbox == null) {
+              throw new MissingRequiredPropertyException("GuardianPushDirectApns", "sandbox");
+            }
+            this.sandbox = sandbox;
             return this;
         }
         public GuardianPushDirectApns build() {

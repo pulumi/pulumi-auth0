@@ -58,11 +58,13 @@ public final class ClientAddonsSentry {
 
         @CustomType.Setter
         public Builder baseUrl(@Nullable String baseUrl) {
+
             this.baseUrl = baseUrl;
             return this;
         }
         @CustomType.Setter
         public Builder orgSlug(@Nullable String orgSlug) {
+
             this.orgSlug = orgSlug;
             return this;
         }

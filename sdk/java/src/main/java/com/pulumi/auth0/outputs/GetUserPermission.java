@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -52,22 +53,34 @@ public final class GetUserPermission {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetUserPermission", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetUserPermission", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder resourceServerIdentifier(String resourceServerIdentifier) {
-            this.resourceServerIdentifier = Objects.requireNonNull(resourceServerIdentifier);
+            if (resourceServerIdentifier == null) {
+              throw new MissingRequiredPropertyException("GetUserPermission", "resourceServerIdentifier");
+            }
+            this.resourceServerIdentifier = resourceServerIdentifier;
             return this;
         }
         @CustomType.Setter
         public Builder resourceServerName(String resourceServerName) {
-            this.resourceServerName = Objects.requireNonNull(resourceServerName);
+            if (resourceServerName == null) {
+              throw new MissingRequiredPropertyException("GetUserPermission", "resourceServerName");
+            }
+            this.resourceServerName = resourceServerName;
             return this;
         }
         public GetUserPermission build() {

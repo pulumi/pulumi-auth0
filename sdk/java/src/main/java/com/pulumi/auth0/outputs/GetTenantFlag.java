@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -166,117 +167,186 @@ public final class GetTenantFlag {
 
         @CustomType.Setter
         public Builder allowLegacyDelegationGrantTypes(Boolean allowLegacyDelegationGrantTypes) {
-            this.allowLegacyDelegationGrantTypes = Objects.requireNonNull(allowLegacyDelegationGrantTypes);
+            if (allowLegacyDelegationGrantTypes == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "allowLegacyDelegationGrantTypes");
+            }
+            this.allowLegacyDelegationGrantTypes = allowLegacyDelegationGrantTypes;
             return this;
         }
         @CustomType.Setter
         public Builder allowLegacyRoGrantTypes(Boolean allowLegacyRoGrantTypes) {
-            this.allowLegacyRoGrantTypes = Objects.requireNonNull(allowLegacyRoGrantTypes);
+            if (allowLegacyRoGrantTypes == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "allowLegacyRoGrantTypes");
+            }
+            this.allowLegacyRoGrantTypes = allowLegacyRoGrantTypes;
             return this;
         }
         @CustomType.Setter
         public Builder allowLegacyTokeninfoEndpoint(Boolean allowLegacyTokeninfoEndpoint) {
-            this.allowLegacyTokeninfoEndpoint = Objects.requireNonNull(allowLegacyTokeninfoEndpoint);
+            if (allowLegacyTokeninfoEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "allowLegacyTokeninfoEndpoint");
+            }
+            this.allowLegacyTokeninfoEndpoint = allowLegacyTokeninfoEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder dashboardInsightsView(Boolean dashboardInsightsView) {
-            this.dashboardInsightsView = Objects.requireNonNull(dashboardInsightsView);
+            if (dashboardInsightsView == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "dashboardInsightsView");
+            }
+            this.dashboardInsightsView = dashboardInsightsView;
             return this;
         }
         @CustomType.Setter
         public Builder dashboardLogStreamsNext(Boolean dashboardLogStreamsNext) {
-            this.dashboardLogStreamsNext = Objects.requireNonNull(dashboardLogStreamsNext);
+            if (dashboardLogStreamsNext == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "dashboardLogStreamsNext");
+            }
+            this.dashboardLogStreamsNext = dashboardLogStreamsNext;
             return this;
         }
         @CustomType.Setter
         public Builder disableClickjackProtectionHeaders(Boolean disableClickjackProtectionHeaders) {
-            this.disableClickjackProtectionHeaders = Objects.requireNonNull(disableClickjackProtectionHeaders);
+            if (disableClickjackProtectionHeaders == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "disableClickjackProtectionHeaders");
+            }
+            this.disableClickjackProtectionHeaders = disableClickjackProtectionHeaders;
             return this;
         }
         @CustomType.Setter
         public Builder disableFieldsMapFix(Boolean disableFieldsMapFix) {
-            this.disableFieldsMapFix = Objects.requireNonNull(disableFieldsMapFix);
+            if (disableFieldsMapFix == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "disableFieldsMapFix");
+            }
+            this.disableFieldsMapFix = disableFieldsMapFix;
             return this;
         }
         @CustomType.Setter
         public Builder disableManagementApiSmsObfuscation(Boolean disableManagementApiSmsObfuscation) {
-            this.disableManagementApiSmsObfuscation = Objects.requireNonNull(disableManagementApiSmsObfuscation);
+            if (disableManagementApiSmsObfuscation == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "disableManagementApiSmsObfuscation");
+            }
+            this.disableManagementApiSmsObfuscation = disableManagementApiSmsObfuscation;
             return this;
         }
         @CustomType.Setter
         public Builder enableAdfsWaadEmailVerification(Boolean enableAdfsWaadEmailVerification) {
-            this.enableAdfsWaadEmailVerification = Objects.requireNonNull(enableAdfsWaadEmailVerification);
+            if (enableAdfsWaadEmailVerification == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "enableAdfsWaadEmailVerification");
+            }
+            this.enableAdfsWaadEmailVerification = enableAdfsWaadEmailVerification;
             return this;
         }
         @CustomType.Setter
         public Builder enableApisSection(Boolean enableApisSection) {
-            this.enableApisSection = Objects.requireNonNull(enableApisSection);
+            if (enableApisSection == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "enableApisSection");
+            }
+            this.enableApisSection = enableApisSection;
             return this;
         }
         @CustomType.Setter
         public Builder enableClientConnections(Boolean enableClientConnections) {
-            this.enableClientConnections = Objects.requireNonNull(enableClientConnections);
+            if (enableClientConnections == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "enableClientConnections");
+            }
+            this.enableClientConnections = enableClientConnections;
             return this;
         }
         @CustomType.Setter
         public Builder enableCustomDomainInEmails(Boolean enableCustomDomainInEmails) {
-            this.enableCustomDomainInEmails = Objects.requireNonNull(enableCustomDomainInEmails);
+            if (enableCustomDomainInEmails == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "enableCustomDomainInEmails");
+            }
+            this.enableCustomDomainInEmails = enableCustomDomainInEmails;
             return this;
         }
         @CustomType.Setter
         public Builder enableDynamicClientRegistration(Boolean enableDynamicClientRegistration) {
-            this.enableDynamicClientRegistration = Objects.requireNonNull(enableDynamicClientRegistration);
+            if (enableDynamicClientRegistration == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "enableDynamicClientRegistration");
+            }
+            this.enableDynamicClientRegistration = enableDynamicClientRegistration;
             return this;
         }
         @CustomType.Setter
         public Builder enableIdtokenApi2(Boolean enableIdtokenApi2) {
-            this.enableIdtokenApi2 = Objects.requireNonNull(enableIdtokenApi2);
+            if (enableIdtokenApi2 == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "enableIdtokenApi2");
+            }
+            this.enableIdtokenApi2 = enableIdtokenApi2;
             return this;
         }
         @CustomType.Setter
         public Builder enableLegacyLogsSearchV2(Boolean enableLegacyLogsSearchV2) {
-            this.enableLegacyLogsSearchV2 = Objects.requireNonNull(enableLegacyLogsSearchV2);
+            if (enableLegacyLogsSearchV2 == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "enableLegacyLogsSearchV2");
+            }
+            this.enableLegacyLogsSearchV2 = enableLegacyLogsSearchV2;
             return this;
         }
         @CustomType.Setter
         public Builder enableLegacyProfile(Boolean enableLegacyProfile) {
-            this.enableLegacyProfile = Objects.requireNonNull(enableLegacyProfile);
+            if (enableLegacyProfile == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "enableLegacyProfile");
+            }
+            this.enableLegacyProfile = enableLegacyProfile;
             return this;
         }
         @CustomType.Setter
         public Builder enablePipeline2(Boolean enablePipeline2) {
-            this.enablePipeline2 = Objects.requireNonNull(enablePipeline2);
+            if (enablePipeline2 == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "enablePipeline2");
+            }
+            this.enablePipeline2 = enablePipeline2;
             return this;
         }
         @CustomType.Setter
         public Builder enablePublicSignupUserExistsError(Boolean enablePublicSignupUserExistsError) {
-            this.enablePublicSignupUserExistsError = Objects.requireNonNull(enablePublicSignupUserExistsError);
+            if (enablePublicSignupUserExistsError == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "enablePublicSignupUserExistsError");
+            }
+            this.enablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
             return this;
         }
         @CustomType.Setter
         public Builder mfaShowFactorListOnEnrollment(Boolean mfaShowFactorListOnEnrollment) {
-            this.mfaShowFactorListOnEnrollment = Objects.requireNonNull(mfaShowFactorListOnEnrollment);
+            if (mfaShowFactorListOnEnrollment == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "mfaShowFactorListOnEnrollment");
+            }
+            this.mfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
             return this;
         }
         @CustomType.Setter
         public Builder noDiscloseEnterpriseConnections(Boolean noDiscloseEnterpriseConnections) {
-            this.noDiscloseEnterpriseConnections = Objects.requireNonNull(noDiscloseEnterpriseConnections);
+            if (noDiscloseEnterpriseConnections == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "noDiscloseEnterpriseConnections");
+            }
+            this.noDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
             return this;
         }
         @CustomType.Setter
         public Builder requirePushedAuthorizationRequests(Boolean requirePushedAuthorizationRequests) {
-            this.requirePushedAuthorizationRequests = Objects.requireNonNull(requirePushedAuthorizationRequests);
+            if (requirePushedAuthorizationRequests == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "requirePushedAuthorizationRequests");
+            }
+            this.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
             return this;
         }
         @CustomType.Setter
         public Builder revokeRefreshTokenGrant(Boolean revokeRefreshTokenGrant) {
-            this.revokeRefreshTokenGrant = Objects.requireNonNull(revokeRefreshTokenGrant);
+            if (revokeRefreshTokenGrant == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "revokeRefreshTokenGrant");
+            }
+            this.revokeRefreshTokenGrant = revokeRefreshTokenGrant;
             return this;
         }
         @CustomType.Setter
         public Builder useScopeDescriptionsForConsent(Boolean useScopeDescriptionsForConsent) {
-            this.useScopeDescriptionsForConsent = Objects.requireNonNull(useScopeDescriptionsForConsent);
+            if (useScopeDescriptionsForConsent == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "useScopeDescriptionsForConsent");
+            }
+            this.useScopeDescriptionsForConsent = useScopeDescriptionsForConsent;
             return this;
         }
         public GetTenantFlag build() {

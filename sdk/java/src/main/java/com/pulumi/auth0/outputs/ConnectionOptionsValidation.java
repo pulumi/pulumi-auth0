@@ -44,6 +44,7 @@ public final class ConnectionOptionsValidation {
 
         @CustomType.Setter
         public Builder username(@Nullable ConnectionOptionsValidationUsername username) {
+
             this.username = username;
             return this;
         }

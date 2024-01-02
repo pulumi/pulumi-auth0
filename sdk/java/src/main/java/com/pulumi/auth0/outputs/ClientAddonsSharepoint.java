@@ -59,6 +59,7 @@ public final class ClientAddonsSharepoint {
 
         @CustomType.Setter
         public Builder externalUrls(@Nullable List<String> externalUrls) {
+
             this.externalUrls = externalUrls;
             return this;
         }
@@ -67,6 +68,7 @@ public final class ClientAddonsSharepoint {
         }
         @CustomType.Setter
         public Builder url(@Nullable String url) {
+
             this.url = url;
             return this;
         }

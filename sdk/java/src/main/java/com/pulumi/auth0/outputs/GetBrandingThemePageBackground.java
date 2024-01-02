@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class GetBrandingThemePageBackground {
 
         @CustomType.Setter
         public Builder backgroundColor(String backgroundColor) {
-            this.backgroundColor = Objects.requireNonNull(backgroundColor);
+            if (backgroundColor == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemePageBackground", "backgroundColor");
+            }
+            this.backgroundColor = backgroundColor;
             return this;
         }
         @CustomType.Setter
         public Builder backgroundImageUrl(String backgroundImageUrl) {
-            this.backgroundImageUrl = Objects.requireNonNull(backgroundImageUrl);
+            if (backgroundImageUrl == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemePageBackground", "backgroundImageUrl");
+            }
+            this.backgroundImageUrl = backgroundImageUrl;
             return this;
         }
         @CustomType.Setter
         public Builder pageLayout(String pageLayout) {
-            this.pageLayout = Objects.requireNonNull(pageLayout);
+            if (pageLayout == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemePageBackground", "pageLayout");
+            }
+            this.pageLayout = pageLayout;
             return this;
         }
         public GetBrandingThemePageBackground build() {

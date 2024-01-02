@@ -7,6 +7,7 @@ import com.pulumi.auth0.outputs.GetTenantFlag;
 import com.pulumi.auth0.outputs.GetTenantSession;
 import com.pulumi.auth0.outputs.GetTenantSessionCooky;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -314,12 +315,18 @@ public final class GetTenantResult {
 
         @CustomType.Setter
         public Builder allowOrganizationNameInAuthenticationApi(Boolean allowOrganizationNameInAuthenticationApi) {
-            this.allowOrganizationNameInAuthenticationApi = Objects.requireNonNull(allowOrganizationNameInAuthenticationApi);
+            if (allowOrganizationNameInAuthenticationApi == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "allowOrganizationNameInAuthenticationApi");
+            }
+            this.allowOrganizationNameInAuthenticationApi = allowOrganizationNameInAuthenticationApi;
             return this;
         }
         @CustomType.Setter
         public Builder allowedLogoutUrls(List<String> allowedLogoutUrls) {
-            this.allowedLogoutUrls = Objects.requireNonNull(allowedLogoutUrls);
+            if (allowedLogoutUrls == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "allowedLogoutUrls");
+            }
+            this.allowedLogoutUrls = allowedLogoutUrls;
             return this;
         }
         public Builder allowedLogoutUrls(String... allowedLogoutUrls) {
@@ -327,32 +334,50 @@ public final class GetTenantResult {
         }
         @CustomType.Setter
         public Builder customizeMfaInPostloginAction(Boolean customizeMfaInPostloginAction) {
-            this.customizeMfaInPostloginAction = Objects.requireNonNull(customizeMfaInPostloginAction);
+            if (customizeMfaInPostloginAction == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "customizeMfaInPostloginAction");
+            }
+            this.customizeMfaInPostloginAction = customizeMfaInPostloginAction;
             return this;
         }
         @CustomType.Setter
         public Builder defaultAudience(String defaultAudience) {
-            this.defaultAudience = Objects.requireNonNull(defaultAudience);
+            if (defaultAudience == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "defaultAudience");
+            }
+            this.defaultAudience = defaultAudience;
             return this;
         }
         @CustomType.Setter
         public Builder defaultDirectory(String defaultDirectory) {
-            this.defaultDirectory = Objects.requireNonNull(defaultDirectory);
+            if (defaultDirectory == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "defaultDirectory");
+            }
+            this.defaultDirectory = defaultDirectory;
             return this;
         }
         @CustomType.Setter
         public Builder defaultRedirectionUri(String defaultRedirectionUri) {
-            this.defaultRedirectionUri = Objects.requireNonNull(defaultRedirectionUri);
+            if (defaultRedirectionUri == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "defaultRedirectionUri");
+            }
+            this.defaultRedirectionUri = defaultRedirectionUri;
             return this;
         }
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder enabledLocales(List<String> enabledLocales) {
-            this.enabledLocales = Objects.requireNonNull(enabledLocales);
+            if (enabledLocales == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "enabledLocales");
+            }
+            this.enabledLocales = enabledLocales;
             return this;
         }
         public Builder enabledLocales(String... enabledLocales) {
@@ -360,7 +385,10 @@ public final class GetTenantResult {
         }
         @CustomType.Setter
         public Builder flags(List<GetTenantFlag> flags) {
-            this.flags = Objects.requireNonNull(flags);
+            if (flags == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "flags");
+            }
+            this.flags = flags;
             return this;
         }
         public Builder flags(GetTenantFlag... flags) {
@@ -368,37 +396,58 @@ public final class GetTenantResult {
         }
         @CustomType.Setter
         public Builder friendlyName(String friendlyName) {
-            this.friendlyName = Objects.requireNonNull(friendlyName);
+            if (friendlyName == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "friendlyName");
+            }
+            this.friendlyName = friendlyName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder idleSessionLifetime(Double idleSessionLifetime) {
-            this.idleSessionLifetime = Objects.requireNonNull(idleSessionLifetime);
+            if (idleSessionLifetime == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "idleSessionLifetime");
+            }
+            this.idleSessionLifetime = idleSessionLifetime;
             return this;
         }
         @CustomType.Setter
         public Builder managementApiIdentifier(String managementApiIdentifier) {
-            this.managementApiIdentifier = Objects.requireNonNull(managementApiIdentifier);
+            if (managementApiIdentifier == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "managementApiIdentifier");
+            }
+            this.managementApiIdentifier = managementApiIdentifier;
             return this;
         }
         @CustomType.Setter
         public Builder pictureUrl(String pictureUrl) {
-            this.pictureUrl = Objects.requireNonNull(pictureUrl);
+            if (pictureUrl == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "pictureUrl");
+            }
+            this.pictureUrl = pictureUrl;
             return this;
         }
         @CustomType.Setter
         public Builder sandboxVersion(String sandboxVersion) {
-            this.sandboxVersion = Objects.requireNonNull(sandboxVersion);
+            if (sandboxVersion == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "sandboxVersion");
+            }
+            this.sandboxVersion = sandboxVersion;
             return this;
         }
         @CustomType.Setter
         public Builder sessionCookies(List<GetTenantSessionCooky> sessionCookies) {
-            this.sessionCookies = Objects.requireNonNull(sessionCookies);
+            if (sessionCookies == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "sessionCookies");
+            }
+            this.sessionCookies = sessionCookies;
             return this;
         }
         public Builder sessionCookies(GetTenantSessionCooky... sessionCookies) {
@@ -406,12 +455,18 @@ public final class GetTenantResult {
         }
         @CustomType.Setter
         public Builder sessionLifetime(Double sessionLifetime) {
-            this.sessionLifetime = Objects.requireNonNull(sessionLifetime);
+            if (sessionLifetime == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "sessionLifetime");
+            }
+            this.sessionLifetime = sessionLifetime;
             return this;
         }
         @CustomType.Setter
         public Builder sessions(List<GetTenantSession> sessions) {
-            this.sessions = Objects.requireNonNull(sessions);
+            if (sessions == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "sessions");
+            }
+            this.sessions = sessions;
             return this;
         }
         public Builder sessions(GetTenantSession... sessions) {
@@ -419,12 +474,18 @@ public final class GetTenantResult {
         }
         @CustomType.Setter
         public Builder supportEmail(String supportEmail) {
-            this.supportEmail = Objects.requireNonNull(supportEmail);
+            if (supportEmail == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "supportEmail");
+            }
+            this.supportEmail = supportEmail;
             return this;
         }
         @CustomType.Setter
         public Builder supportUrl(String supportUrl) {
-            this.supportUrl = Objects.requireNonNull(supportUrl);
+            if (supportUrl == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "supportUrl");
+            }
+            this.supportUrl = supportUrl;
             return this;
         }
         public GetTenantResult build() {

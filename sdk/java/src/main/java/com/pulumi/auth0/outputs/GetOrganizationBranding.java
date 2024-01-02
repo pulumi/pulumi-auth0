@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetOrganizationBranding {
 
         @CustomType.Setter
         public Builder colors(Map<String,String> colors) {
-            this.colors = Objects.requireNonNull(colors);
+            if (colors == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationBranding", "colors");
+            }
+            this.colors = colors;
             return this;
         }
         @CustomType.Setter
         public Builder logoUrl(String logoUrl) {
-            this.logoUrl = Objects.requireNonNull(logoUrl);
+            if (logoUrl == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationBranding", "logoUrl");
+            }
+            this.logoUrl = logoUrl;
             return this;
         }
         public GetOrganizationBranding build() {

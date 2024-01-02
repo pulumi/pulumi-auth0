@@ -5,6 +5,7 @@ package com.pulumi.auth0;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -159,9 +160,15 @@ public final class ClientGrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClientGrantArgs build() {
-            $.audience = Objects.requireNonNull($.audience, "expected parameter 'audience' to be non-null");
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
-            $.scopes = Objects.requireNonNull($.scopes, "expected parameter 'scopes' to be non-null");
+            if ($.audience == null) {
+                throw new MissingRequiredPropertyException("ClientGrantArgs", "audience");
+            }
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("ClientGrantArgs", "clientId");
+            }
+            if ($.scopes == null) {
+                throw new MissingRequiredPropertyException("ClientGrantArgs", "scopes");
+            }
             return $;
         }
     }

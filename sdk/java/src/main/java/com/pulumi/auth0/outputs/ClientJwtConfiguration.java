@@ -89,21 +89,25 @@ public final class ClientJwtConfiguration {
 
         @CustomType.Setter
         public Builder alg(@Nullable String alg) {
+
             this.alg = alg;
             return this;
         }
         @CustomType.Setter
         public Builder lifetimeInSeconds(@Nullable Integer lifetimeInSeconds) {
+
             this.lifetimeInSeconds = lifetimeInSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder scopes(@Nullable Map<String,String> scopes) {
+
             this.scopes = scopes;
             return this;
         }
         @CustomType.Setter
         public Builder secretEncoded(@Nullable Boolean secretEncoded) {
+
             this.secretEncoded = secretEncoded;
             return this;
         }

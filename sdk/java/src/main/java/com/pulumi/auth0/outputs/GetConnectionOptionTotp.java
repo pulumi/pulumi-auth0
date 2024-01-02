@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetConnectionOptionTotp {
 
         @CustomType.Setter
         public Builder length(Integer length) {
-            this.length = Objects.requireNonNull(length);
+            if (length == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionTotp", "length");
+            }
+            this.length = length;
             return this;
         }
         @CustomType.Setter
         public Builder timeStep(Integer timeStep) {
-            this.timeStep = Objects.requireNonNull(timeStep);
+            if (timeStep == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionTotp", "timeStep");
+            }
+            this.timeStep = timeStep;
             return this;
         }
         public GetConnectionOptionTotp build() {

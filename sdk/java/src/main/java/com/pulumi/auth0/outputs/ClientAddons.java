@@ -464,146 +464,175 @@ public final class ClientAddons {
 
         @CustomType.Setter
         public Builder aws(@Nullable ClientAddonsAws aws) {
+
             this.aws = aws;
             return this;
         }
         @CustomType.Setter
         public Builder azureBlob(@Nullable ClientAddonsAzureBlob azureBlob) {
+
             this.azureBlob = azureBlob;
             return this;
         }
         @CustomType.Setter
         public Builder azureSb(@Nullable ClientAddonsAzureSb azureSb) {
+
             this.azureSb = azureSb;
             return this;
         }
         @CustomType.Setter
         public Builder box(@Nullable ClientAddonsBox box) {
+
             this.box = box;
             return this;
         }
         @CustomType.Setter
         public Builder cloudbees(@Nullable ClientAddonsCloudbees cloudbees) {
+
             this.cloudbees = cloudbees;
             return this;
         }
         @CustomType.Setter
         public Builder concur(@Nullable ClientAddonsConcur concur) {
+
             this.concur = concur;
             return this;
         }
         @CustomType.Setter
         public Builder dropbox(@Nullable ClientAddonsDropbox dropbox) {
+
             this.dropbox = dropbox;
             return this;
         }
         @CustomType.Setter
         public Builder echosign(@Nullable ClientAddonsEchosign echosign) {
+
             this.echosign = echosign;
             return this;
         }
         @CustomType.Setter
         public Builder egnyte(@Nullable ClientAddonsEgnyte egnyte) {
+
             this.egnyte = egnyte;
             return this;
         }
         @CustomType.Setter
         public Builder firebase(@Nullable ClientAddonsFirebase firebase) {
+
             this.firebase = firebase;
             return this;
         }
         @CustomType.Setter
         public Builder layer(@Nullable ClientAddonsLayer layer) {
+
             this.layer = layer;
             return this;
         }
         @CustomType.Setter
         public Builder mscrm(@Nullable ClientAddonsMscrm mscrm) {
+
             this.mscrm = mscrm;
             return this;
         }
         @CustomType.Setter
         public Builder newrelic(@Nullable ClientAddonsNewrelic newrelic) {
+
             this.newrelic = newrelic;
             return this;
         }
         @CustomType.Setter
         public Builder office365(@Nullable ClientAddonsOffice365 office365) {
+
             this.office365 = office365;
             return this;
         }
         @CustomType.Setter
         public Builder rms(@Nullable ClientAddonsRms rms) {
+
             this.rms = rms;
             return this;
         }
         @CustomType.Setter
         public Builder salesforce(@Nullable ClientAddonsSalesforce salesforce) {
+
             this.salesforce = salesforce;
             return this;
         }
         @CustomType.Setter
         public Builder salesforceApi(@Nullable ClientAddonsSalesforceApi salesforceApi) {
+
             this.salesforceApi = salesforceApi;
             return this;
         }
         @CustomType.Setter
         public Builder salesforceSandboxApi(@Nullable ClientAddonsSalesforceSandboxApi salesforceSandboxApi) {
+
             this.salesforceSandboxApi = salesforceSandboxApi;
             return this;
         }
         @CustomType.Setter
         public Builder samlp(@Nullable ClientAddonsSamlp samlp) {
+
             this.samlp = samlp;
             return this;
         }
         @CustomType.Setter
         public Builder sapApi(@Nullable ClientAddonsSapApi sapApi) {
+
             this.sapApi = sapApi;
             return this;
         }
         @CustomType.Setter
         public Builder sentry(@Nullable ClientAddonsSentry sentry) {
+
             this.sentry = sentry;
             return this;
         }
         @CustomType.Setter
         public Builder sharepoint(@Nullable ClientAddonsSharepoint sharepoint) {
+
             this.sharepoint = sharepoint;
             return this;
         }
         @CustomType.Setter
         public Builder slack(@Nullable ClientAddonsSlack slack) {
+
             this.slack = slack;
             return this;
         }
         @CustomType.Setter
         public Builder springcm(@Nullable ClientAddonsSpringcm springcm) {
+
             this.springcm = springcm;
             return this;
         }
         @CustomType.Setter
         public Builder ssoIntegration(@Nullable ClientAddonsSsoIntegration ssoIntegration) {
+
             this.ssoIntegration = ssoIntegration;
             return this;
         }
         @CustomType.Setter
         public Builder wams(@Nullable ClientAddonsWams wams) {
+
             this.wams = wams;
             return this;
         }
         @CustomType.Setter
         public Builder wsfed(@Nullable ClientAddonsWsfed wsfed) {
+
             this.wsfed = wsfed;
             return this;
         }
         @CustomType.Setter
         public Builder zendesk(@Nullable ClientAddonsZendesk zendesk) {
+
             this.zendesk = zendesk;
             return this;
         }
         @CustomType.Setter
         public Builder zoom(@Nullable ClientAddonsZoom zoom) {
+
             this.zoom = zoom;
             return this;
         }

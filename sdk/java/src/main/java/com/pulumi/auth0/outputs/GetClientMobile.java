@@ -6,6 +6,7 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.auth0.outputs.GetClientMobileAndroid;
 import com.pulumi.auth0.outputs.GetClientMobileIo;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetClientMobile {
 
         @CustomType.Setter
         public Builder androids(List<GetClientMobileAndroid> androids) {
-            this.androids = Objects.requireNonNull(androids);
+            if (androids == null) {
+              throw new MissingRequiredPropertyException("GetClientMobile", "androids");
+            }
+            this.androids = androids;
             return this;
         }
         public Builder androids(GetClientMobileAndroid... androids) {
@@ -50,7 +54,10 @@ public final class GetClientMobile {
         }
         @CustomType.Setter
         public Builder ios(List<GetClientMobileIo> ios) {
-            this.ios = Objects.requireNonNull(ios);
+            if (ios == null) {
+              throw new MissingRequiredPropertyException("GetClientMobile", "ios");
+            }
+            this.ios = ios;
             return this;
         }
         public Builder ios(GetClientMobileIo... ios) {

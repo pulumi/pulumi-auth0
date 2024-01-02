@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -188,9 +189,15 @@ public final class GuardianPushDirectApnsArgs extends com.pulumi.resources.Resou
         }
 
         public GuardianPushDirectApnsArgs build() {
-            $.bundleId = Objects.requireNonNull($.bundleId, "expected parameter 'bundleId' to be non-null");
-            $.p12 = Objects.requireNonNull($.p12, "expected parameter 'p12' to be non-null");
-            $.sandbox = Objects.requireNonNull($.sandbox, "expected parameter 'sandbox' to be non-null");
+            if ($.bundleId == null) {
+                throw new MissingRequiredPropertyException("GuardianPushDirectApnsArgs", "bundleId");
+            }
+            if ($.p12 == null) {
+                throw new MissingRequiredPropertyException("GuardianPushDirectApnsArgs", "p12");
+            }
+            if ($.sandbox == null) {
+                throw new MissingRequiredPropertyException("GuardianPushDirectApnsArgs", "sandbox");
+            }
             return $;
         }
     }

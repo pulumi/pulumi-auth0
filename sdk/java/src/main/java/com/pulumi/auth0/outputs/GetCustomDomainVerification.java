@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetCustomDomainVerification {
 
         @CustomType.Setter
         public Builder methods(List<Object> methods) {
-            this.methods = Objects.requireNonNull(methods);
+            if (methods == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainVerification", "methods");
+            }
+            this.methods = methods;
             return this;
         }
         public Builder methods(Object... methods) {

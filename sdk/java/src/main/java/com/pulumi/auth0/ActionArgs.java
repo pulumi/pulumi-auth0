@@ -8,6 +8,7 @@ import com.pulumi.auth0.inputs.ActionSecretArgs;
 import com.pulumi.auth0.inputs.ActionSupportedTriggersArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -323,8 +324,12 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ActionArgs build() {
-            $.code = Objects.requireNonNull($.code, "expected parameter 'code' to be non-null");
-            $.supportedTriggers = Objects.requireNonNull($.supportedTriggers, "expected parameter 'supportedTriggers' to be non-null");
+            if ($.code == null) {
+                throw new MissingRequiredPropertyException("ActionArgs", "code");
+            }
+            if ($.supportedTriggers == null) {
+                throw new MissingRequiredPropertyException("ActionArgs", "supportedTriggers");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class GetConnectionOptionAttributeMap {
 
         @CustomType.Setter
         public Builder attributes(String attributes) {
-            this.attributes = Objects.requireNonNull(attributes);
+            if (attributes == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionAttributeMap", "attributes");
+            }
+            this.attributes = attributes;
             return this;
         }
         @CustomType.Setter
         public Builder mappingMode(String mappingMode) {
-            this.mappingMode = Objects.requireNonNull(mappingMode);
+            if (mappingMode == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionAttributeMap", "mappingMode");
+            }
+            this.mappingMode = mappingMode;
             return this;
         }
         @CustomType.Setter
         public Builder userinfoScope(String userinfoScope) {
-            this.userinfoScope = Objects.requireNonNull(userinfoScope);
+            if (userinfoScope == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionAttributeMap", "userinfoScope");
+            }
+            this.userinfoScope = userinfoScope;
             return this;
         }
         public GetConnectionOptionAttributeMap build() {

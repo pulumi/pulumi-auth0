@@ -330,76 +330,91 @@ public final class ClientAddonsSamlp {
 
         @CustomType.Setter
         public Builder audience(@Nullable String audience) {
+
             this.audience = audience;
             return this;
         }
         @CustomType.Setter
         public Builder authnContextClassRef(@Nullable String authnContextClassRef) {
+
             this.authnContextClassRef = authnContextClassRef;
             return this;
         }
         @CustomType.Setter
         public Builder binding(@Nullable String binding) {
+
             this.binding = binding;
             return this;
         }
         @CustomType.Setter
         public Builder createUpnClaim(@Nullable Boolean createUpnClaim) {
+
             this.createUpnClaim = createUpnClaim;
             return this;
         }
         @CustomType.Setter
         public Builder destination(@Nullable String destination) {
+
             this.destination = destination;
             return this;
         }
         @CustomType.Setter
         public Builder digestAlgorithm(@Nullable String digestAlgorithm) {
+
             this.digestAlgorithm = digestAlgorithm;
             return this;
         }
         @CustomType.Setter
         public Builder includeAttributeNameFormat(@Nullable Boolean includeAttributeNameFormat) {
+
             this.includeAttributeNameFormat = includeAttributeNameFormat;
             return this;
         }
         @CustomType.Setter
         public Builder issuer(@Nullable String issuer) {
+
             this.issuer = issuer;
             return this;
         }
         @CustomType.Setter
         public Builder lifetimeInSeconds(@Nullable Integer lifetimeInSeconds) {
+
             this.lifetimeInSeconds = lifetimeInSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder logout(@Nullable ClientAddonsSamlpLogout logout) {
+
             this.logout = logout;
             return this;
         }
         @CustomType.Setter
         public Builder mapIdentities(@Nullable Boolean mapIdentities) {
+
             this.mapIdentities = mapIdentities;
             return this;
         }
         @CustomType.Setter
         public Builder mapUnknownClaimsAsIs(@Nullable Boolean mapUnknownClaimsAsIs) {
+
             this.mapUnknownClaimsAsIs = mapUnknownClaimsAsIs;
             return this;
         }
         @CustomType.Setter
         public Builder mappings(@Nullable Map<String,Object> mappings) {
+
             this.mappings = mappings;
             return this;
         }
         @CustomType.Setter
         public Builder nameIdentifierFormat(@Nullable String nameIdentifierFormat) {
+
             this.nameIdentifierFormat = nameIdentifierFormat;
             return this;
         }
         @CustomType.Setter
         public Builder nameIdentifierProbes(@Nullable List<String> nameIdentifierProbes) {
+
             this.nameIdentifierProbes = nameIdentifierProbes;
             return this;
         }
@@ -408,31 +423,37 @@ public final class ClientAddonsSamlp {
         }
         @CustomType.Setter
         public Builder passthroughClaimsWithNoMapping(@Nullable Boolean passthroughClaimsWithNoMapping) {
+
             this.passthroughClaimsWithNoMapping = passthroughClaimsWithNoMapping;
             return this;
         }
         @CustomType.Setter
         public Builder recipient(@Nullable String recipient) {
+
             this.recipient = recipient;
             return this;
         }
         @CustomType.Setter
         public Builder signResponse(@Nullable Boolean signResponse) {
+
             this.signResponse = signResponse;
             return this;
         }
         @CustomType.Setter
         public Builder signatureAlgorithm(@Nullable String signatureAlgorithm) {
+
             this.signatureAlgorithm = signatureAlgorithm;
             return this;
         }
         @CustomType.Setter
         public Builder signingCert(@Nullable String signingCert) {
+
             this.signingCert = signingCert;
             return this;
         }
         @CustomType.Setter
         public Builder typedAttributes(@Nullable Boolean typedAttributes) {
+
             this.typedAttributes = typedAttributes;
             return this;
         }

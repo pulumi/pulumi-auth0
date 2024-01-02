@@ -6,6 +6,7 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -97,8 +98,12 @@ public final class ResourceServerScopesArgs extends com.pulumi.resources.Resourc
         }
 
         public ResourceServerScopesArgs build() {
-            $.resourceServerIdentifier = Objects.requireNonNull($.resourceServerIdentifier, "expected parameter 'resourceServerIdentifier' to be non-null");
-            $.scopes = Objects.requireNonNull($.scopes, "expected parameter 'scopes' to be non-null");
+            if ($.resourceServerIdentifier == null) {
+                throw new MissingRequiredPropertyException("ResourceServerScopesArgs", "resourceServerIdentifier");
+            }
+            if ($.scopes == null) {
+                throw new MissingRequiredPropertyException("ResourceServerScopesArgs", "scopes");
+            }
             return $;
         }
     }

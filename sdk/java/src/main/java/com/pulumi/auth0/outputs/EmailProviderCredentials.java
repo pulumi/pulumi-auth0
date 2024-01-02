@@ -213,66 +213,79 @@ public final class EmailProviderCredentials {
 
         @CustomType.Setter
         public Builder accessKeyId(@Nullable String accessKeyId) {
+
             this.accessKeyId = accessKeyId;
             return this;
         }
         @CustomType.Setter
         public Builder apiKey(@Nullable String apiKey) {
+
             this.apiKey = apiKey;
             return this;
         }
         @CustomType.Setter
         public Builder azureCsConnectionString(@Nullable String azureCsConnectionString) {
+
             this.azureCsConnectionString = azureCsConnectionString;
             return this;
         }
         @CustomType.Setter
         public Builder domain(@Nullable String domain) {
+
             this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder ms365ClientId(@Nullable String ms365ClientId) {
+
             this.ms365ClientId = ms365ClientId;
             return this;
         }
         @CustomType.Setter
         public Builder ms365ClientSecret(@Nullable String ms365ClientSecret) {
+
             this.ms365ClientSecret = ms365ClientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder ms365TenantId(@Nullable String ms365TenantId) {
+
             this.ms365TenantId = ms365TenantId;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder secretAccessKey(@Nullable String secretAccessKey) {
+
             this.secretAccessKey = secretAccessKey;
             return this;
         }
         @CustomType.Setter
         public Builder smtpHost(@Nullable String smtpHost) {
+
             this.smtpHost = smtpHost;
             return this;
         }
         @CustomType.Setter
         public Builder smtpPass(@Nullable String smtpPass) {
+
             this.smtpPass = smtpPass;
             return this;
         }
         @CustomType.Setter
         public Builder smtpPort(@Nullable Integer smtpPort) {
+
             this.smtpPort = smtpPort;
             return this;
         }
         @CustomType.Setter
         public Builder smtpUser(@Nullable String smtpUser) {
+
             this.smtpUser = smtpUser;
             return this;
         }

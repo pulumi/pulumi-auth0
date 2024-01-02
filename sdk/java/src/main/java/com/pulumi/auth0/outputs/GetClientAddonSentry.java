@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetClientAddonSentry {
 
         @CustomType.Setter
         public Builder baseUrl(String baseUrl) {
-            this.baseUrl = Objects.requireNonNull(baseUrl);
+            if (baseUrl == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSentry", "baseUrl");
+            }
+            this.baseUrl = baseUrl;
             return this;
         }
         @CustomType.Setter
         public Builder orgSlug(String orgSlug) {
-            this.orgSlug = Objects.requireNonNull(orgSlug);
+            if (orgSlug == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSentry", "orgSlug");
+            }
+            this.orgSlug = orgSlug;
             return this;
         }
         public GetClientAddonSentry build() {

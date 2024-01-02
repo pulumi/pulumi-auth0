@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetCustomDomainVerification;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -157,47 +158,74 @@ public final class GetCustomDomainResult {
 
         @CustomType.Setter
         public Builder customClientIpHeader(String customClientIpHeader) {
-            this.customClientIpHeader = Objects.requireNonNull(customClientIpHeader);
+            if (customClientIpHeader == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainResult", "customClientIpHeader");
+            }
+            this.customClientIpHeader = customClientIpHeader;
             return this;
         }
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainResult", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder originDomainName(String originDomainName) {
-            this.originDomainName = Objects.requireNonNull(originDomainName);
+            if (originDomainName == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainResult", "originDomainName");
+            }
+            this.originDomainName = originDomainName;
             return this;
         }
         @CustomType.Setter
         public Builder primary(Boolean primary) {
-            this.primary = Objects.requireNonNull(primary);
+            if (primary == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainResult", "primary");
+            }
+            this.primary = primary;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tlsPolicy(String tlsPolicy) {
-            this.tlsPolicy = Objects.requireNonNull(tlsPolicy);
+            if (tlsPolicy == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainResult", "tlsPolicy");
+            }
+            this.tlsPolicy = tlsPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder verifications(List<GetCustomDomainVerification> verifications) {
-            this.verifications = Objects.requireNonNull(verifications);
+            if (verifications == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainResult", "verifications");
+            }
+            this.verifications = verifications;
             return this;
         }
         public Builder verifications(GetCustomDomainVerification... verifications) {

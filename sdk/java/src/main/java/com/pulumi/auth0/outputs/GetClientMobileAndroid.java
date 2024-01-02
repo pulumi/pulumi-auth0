@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetClientMobileAndroid {
 
         @CustomType.Setter
         public Builder appPackageName(String appPackageName) {
-            this.appPackageName = Objects.requireNonNull(appPackageName);
+            if (appPackageName == null) {
+              throw new MissingRequiredPropertyException("GetClientMobileAndroid", "appPackageName");
+            }
+            this.appPackageName = appPackageName;
             return this;
         }
         @CustomType.Setter
         public Builder sha256CertFingerprints(List<String> sha256CertFingerprints) {
-            this.sha256CertFingerprints = Objects.requireNonNull(sha256CertFingerprints);
+            if (sha256CertFingerprints == null) {
+              throw new MissingRequiredPropertyException("GetClientMobileAndroid", "sha256CertFingerprints");
+            }
+            this.sha256CertFingerprints = sha256CertFingerprints;
             return this;
         }
         public Builder sha256CertFingerprints(String... sha256CertFingerprints) {

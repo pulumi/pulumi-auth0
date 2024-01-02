@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -72,37 +73,58 @@ public final class GetClientRefreshToken {
 
         @CustomType.Setter
         public Builder expirationType(String expirationType) {
-            this.expirationType = Objects.requireNonNull(expirationType);
+            if (expirationType == null) {
+              throw new MissingRequiredPropertyException("GetClientRefreshToken", "expirationType");
+            }
+            this.expirationType = expirationType;
             return this;
         }
         @CustomType.Setter
         public Builder idleTokenLifetime(Integer idleTokenLifetime) {
-            this.idleTokenLifetime = Objects.requireNonNull(idleTokenLifetime);
+            if (idleTokenLifetime == null) {
+              throw new MissingRequiredPropertyException("GetClientRefreshToken", "idleTokenLifetime");
+            }
+            this.idleTokenLifetime = idleTokenLifetime;
             return this;
         }
         @CustomType.Setter
         public Builder infiniteIdleTokenLifetime(Boolean infiniteIdleTokenLifetime) {
-            this.infiniteIdleTokenLifetime = Objects.requireNonNull(infiniteIdleTokenLifetime);
+            if (infiniteIdleTokenLifetime == null) {
+              throw new MissingRequiredPropertyException("GetClientRefreshToken", "infiniteIdleTokenLifetime");
+            }
+            this.infiniteIdleTokenLifetime = infiniteIdleTokenLifetime;
             return this;
         }
         @CustomType.Setter
         public Builder infiniteTokenLifetime(Boolean infiniteTokenLifetime) {
-            this.infiniteTokenLifetime = Objects.requireNonNull(infiniteTokenLifetime);
+            if (infiniteTokenLifetime == null) {
+              throw new MissingRequiredPropertyException("GetClientRefreshToken", "infiniteTokenLifetime");
+            }
+            this.infiniteTokenLifetime = infiniteTokenLifetime;
             return this;
         }
         @CustomType.Setter
         public Builder leeway(Integer leeway) {
-            this.leeway = Objects.requireNonNull(leeway);
+            if (leeway == null) {
+              throw new MissingRequiredPropertyException("GetClientRefreshToken", "leeway");
+            }
+            this.leeway = leeway;
             return this;
         }
         @CustomType.Setter
         public Builder rotationType(String rotationType) {
-            this.rotationType = Objects.requireNonNull(rotationType);
+            if (rotationType == null) {
+              throw new MissingRequiredPropertyException("GetClientRefreshToken", "rotationType");
+            }
+            this.rotationType = rotationType;
             return this;
         }
         @CustomType.Setter
         public Builder tokenLifetime(Integer tokenLifetime) {
-            this.tokenLifetime = Objects.requireNonNull(tokenLifetime);
+            if (tokenLifetime == null) {
+              throw new MissingRequiredPropertyException("GetClientRefreshToken", "tokenLifetime");
+            }
+            this.tokenLifetime = tokenLifetime;
             return this;
         }
         public GetClientRefreshToken build() {

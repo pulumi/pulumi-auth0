@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -55,22 +56,34 @@ public final class GetClientJwtConfiguration {
 
         @CustomType.Setter
         public Builder alg(String alg) {
-            this.alg = Objects.requireNonNull(alg);
+            if (alg == null) {
+              throw new MissingRequiredPropertyException("GetClientJwtConfiguration", "alg");
+            }
+            this.alg = alg;
             return this;
         }
         @CustomType.Setter
         public Builder lifetimeInSeconds(Integer lifetimeInSeconds) {
-            this.lifetimeInSeconds = Objects.requireNonNull(lifetimeInSeconds);
+            if (lifetimeInSeconds == null) {
+              throw new MissingRequiredPropertyException("GetClientJwtConfiguration", "lifetimeInSeconds");
+            }
+            this.lifetimeInSeconds = lifetimeInSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder scopes(Map<String,String> scopes) {
-            this.scopes = Objects.requireNonNull(scopes);
+            if (scopes == null) {
+              throw new MissingRequiredPropertyException("GetClientJwtConfiguration", "scopes");
+            }
+            this.scopes = scopes;
             return this;
         }
         @CustomType.Setter
         public Builder secretEncoded(Boolean secretEncoded) {
-            this.secretEncoded = Objects.requireNonNull(secretEncoded);
+            if (secretEncoded == null) {
+              throw new MissingRequiredPropertyException("GetClientJwtConfiguration", "secretEncoded");
+            }
+            this.secretEncoded = secretEncoded;
             return this;
         }
         public GetClientJwtConfiguration build() {

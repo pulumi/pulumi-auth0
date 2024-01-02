@@ -6,6 +6,7 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.auth0.outputs.GetOrganizationBranding;
 import com.pulumi.auth0.outputs.GetOrganizationConnection;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -138,7 +139,10 @@ public final class GetOrganizationResult {
 
         @CustomType.Setter
         public Builder brandings(List<GetOrganizationBranding> brandings) {
-            this.brandings = Objects.requireNonNull(brandings);
+            if (brandings == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationResult", "brandings");
+            }
+            this.brandings = brandings;
             return this;
         }
         public Builder brandings(GetOrganizationBranding... brandings) {
@@ -146,7 +150,10 @@ public final class GetOrganizationResult {
         }
         @CustomType.Setter
         public Builder connections(List<GetOrganizationConnection> connections) {
-            this.connections = Objects.requireNonNull(connections);
+            if (connections == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationResult", "connections");
+            }
+            this.connections = connections;
             return this;
         }
         public Builder connections(GetOrganizationConnection... connections) {
@@ -154,17 +161,26 @@ public final class GetOrganizationResult {
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder members(List<String> members) {
-            this.members = Objects.requireNonNull(members);
+            if (members == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationResult", "members");
+            }
+            this.members = members;
             return this;
         }
         public Builder members(String... members) {
@@ -172,16 +188,21 @@ public final class GetOrganizationResult {
         }
         @CustomType.Setter
         public Builder metadata(Map<String,String> metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationResult", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder organizationId(@Nullable String organizationId) {
+
             this.organizationId = organizationId;
             return this;
         }

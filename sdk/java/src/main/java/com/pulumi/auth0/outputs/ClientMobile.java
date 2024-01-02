@@ -59,11 +59,13 @@ public final class ClientMobile {
 
         @CustomType.Setter
         public Builder android(@Nullable ClientMobileAndroid android) {
+
             this.android = android;
             return this;
         }
         @CustomType.Setter
         public Builder ios(@Nullable ClientMobileIos ios) {
+
             this.ios = ios;
             return this;
         }

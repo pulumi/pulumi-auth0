@@ -9,6 +9,7 @@ import com.pulumi.auth0.outputs.GetClientMobile;
 import com.pulumi.auth0.outputs.GetClientNativeSocialLogin;
 import com.pulumi.auth0.outputs.GetClientRefreshToken;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -563,7 +564,10 @@ public final class GetClientResult {
 
         @CustomType.Setter
         public Builder addons(List<GetClientAddon> addons) {
-            this.addons = Objects.requireNonNull(addons);
+            if (addons == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "addons");
+            }
+            this.addons = addons;
             return this;
         }
         public Builder addons(GetClientAddon... addons) {
@@ -571,7 +575,10 @@ public final class GetClientResult {
         }
         @CustomType.Setter
         public Builder allowedClients(List<String> allowedClients) {
-            this.allowedClients = Objects.requireNonNull(allowedClients);
+            if (allowedClients == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "allowedClients");
+            }
+            this.allowedClients = allowedClients;
             return this;
         }
         public Builder allowedClients(String... allowedClients) {
@@ -579,7 +586,10 @@ public final class GetClientResult {
         }
         @CustomType.Setter
         public Builder allowedLogoutUrls(List<String> allowedLogoutUrls) {
-            this.allowedLogoutUrls = Objects.requireNonNull(allowedLogoutUrls);
+            if (allowedLogoutUrls == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "allowedLogoutUrls");
+            }
+            this.allowedLogoutUrls = allowedLogoutUrls;
             return this;
         }
         public Builder allowedLogoutUrls(String... allowedLogoutUrls) {
@@ -587,7 +597,10 @@ public final class GetClientResult {
         }
         @CustomType.Setter
         public Builder allowedOrigins(List<String> allowedOrigins) {
-            this.allowedOrigins = Objects.requireNonNull(allowedOrigins);
+            if (allowedOrigins == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "allowedOrigins");
+            }
+            this.allowedOrigins = allowedOrigins;
             return this;
         }
         public Builder allowedOrigins(String... allowedOrigins) {
@@ -595,12 +608,18 @@ public final class GetClientResult {
         }
         @CustomType.Setter
         public Builder appType(String appType) {
-            this.appType = Objects.requireNonNull(appType);
+            if (appType == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "appType");
+            }
+            this.appType = appType;
             return this;
         }
         @CustomType.Setter
         public Builder callbacks(List<String> callbacks) {
-            this.callbacks = Objects.requireNonNull(callbacks);
+            if (callbacks == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "callbacks");
+            }
+            this.callbacks = callbacks;
             return this;
         }
         public Builder callbacks(String... callbacks) {
@@ -608,7 +627,10 @@ public final class GetClientResult {
         }
         @CustomType.Setter
         public Builder clientAliases(List<String> clientAliases) {
-            this.clientAliases = Objects.requireNonNull(clientAliases);
+            if (clientAliases == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "clientAliases");
+            }
+            this.clientAliases = clientAliases;
             return this;
         }
         public Builder clientAliases(String... clientAliases) {
@@ -616,57 +638,88 @@ public final class GetClientResult {
         }
         @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
+
             this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientMetadata(Map<String,Object> clientMetadata) {
-            this.clientMetadata = Objects.requireNonNull(clientMetadata);
+            if (clientMetadata == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "clientMetadata");
+            }
+            this.clientMetadata = clientMetadata;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecret(String clientSecret) {
-            this.clientSecret = Objects.requireNonNull(clientSecret);
+            if (clientSecret == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "clientSecret");
+            }
+            this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder crossOriginAuth(Boolean crossOriginAuth) {
-            this.crossOriginAuth = Objects.requireNonNull(crossOriginAuth);
+            if (crossOriginAuth == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "crossOriginAuth");
+            }
+            this.crossOriginAuth = crossOriginAuth;
             return this;
         }
         @CustomType.Setter
         public Builder crossOriginLoc(String crossOriginLoc) {
-            this.crossOriginLoc = Objects.requireNonNull(crossOriginLoc);
+            if (crossOriginLoc == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "crossOriginLoc");
+            }
+            this.crossOriginLoc = crossOriginLoc;
             return this;
         }
         @CustomType.Setter
         public Builder customLoginPage(String customLoginPage) {
-            this.customLoginPage = Objects.requireNonNull(customLoginPage);
+            if (customLoginPage == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "customLoginPage");
+            }
+            this.customLoginPage = customLoginPage;
             return this;
         }
         @CustomType.Setter
         public Builder customLoginPageOn(Boolean customLoginPageOn) {
-            this.customLoginPageOn = Objects.requireNonNull(customLoginPageOn);
+            if (customLoginPageOn == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "customLoginPageOn");
+            }
+            this.customLoginPageOn = customLoginPageOn;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder encryptionKey(Map<String,String> encryptionKey) {
-            this.encryptionKey = Objects.requireNonNull(encryptionKey);
+            if (encryptionKey == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "encryptionKey");
+            }
+            this.encryptionKey = encryptionKey;
             return this;
         }
         @CustomType.Setter
         public Builder formTemplate(String formTemplate) {
-            this.formTemplate = Objects.requireNonNull(formTemplate);
+            if (formTemplate == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "formTemplate");
+            }
+            this.formTemplate = formTemplate;
             return this;
         }
         @CustomType.Setter
         public Builder grantTypes(List<String> grantTypes) {
-            this.grantTypes = Objects.requireNonNull(grantTypes);
+            if (grantTypes == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "grantTypes");
+            }
+            this.grantTypes = grantTypes;
             return this;
         }
         public Builder grantTypes(String... grantTypes) {
@@ -674,27 +727,42 @@ public final class GetClientResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder initiateLoginUri(String initiateLoginUri) {
-            this.initiateLoginUri = Objects.requireNonNull(initiateLoginUri);
+            if (initiateLoginUri == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "initiateLoginUri");
+            }
+            this.initiateLoginUri = initiateLoginUri;
             return this;
         }
         @CustomType.Setter
         public Builder isFirstParty(Boolean isFirstParty) {
-            this.isFirstParty = Objects.requireNonNull(isFirstParty);
+            if (isFirstParty == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "isFirstParty");
+            }
+            this.isFirstParty = isFirstParty;
             return this;
         }
         @CustomType.Setter
         public Builder isTokenEndpointIpHeaderTrusted(Boolean isTokenEndpointIpHeaderTrusted) {
-            this.isTokenEndpointIpHeaderTrusted = Objects.requireNonNull(isTokenEndpointIpHeaderTrusted);
+            if (isTokenEndpointIpHeaderTrusted == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "isTokenEndpointIpHeaderTrusted");
+            }
+            this.isTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;
             return this;
         }
         @CustomType.Setter
         public Builder jwtConfigurations(List<GetClientJwtConfiguration> jwtConfigurations) {
-            this.jwtConfigurations = Objects.requireNonNull(jwtConfigurations);
+            if (jwtConfigurations == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "jwtConfigurations");
+            }
+            this.jwtConfigurations = jwtConfigurations;
             return this;
         }
         public Builder jwtConfigurations(GetClientJwtConfiguration... jwtConfigurations) {
@@ -702,12 +770,18 @@ public final class GetClientResult {
         }
         @CustomType.Setter
         public Builder logoUri(String logoUri) {
-            this.logoUri = Objects.requireNonNull(logoUri);
+            if (logoUri == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "logoUri");
+            }
+            this.logoUri = logoUri;
             return this;
         }
         @CustomType.Setter
         public Builder mobiles(List<GetClientMobile> mobiles) {
-            this.mobiles = Objects.requireNonNull(mobiles);
+            if (mobiles == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "mobiles");
+            }
+            this.mobiles = mobiles;
             return this;
         }
         public Builder mobiles(GetClientMobile... mobiles) {
@@ -715,12 +789,16 @@ public final class GetClientResult {
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nativeSocialLogins(List<GetClientNativeSocialLogin> nativeSocialLogins) {
-            this.nativeSocialLogins = Objects.requireNonNull(nativeSocialLogins);
+            if (nativeSocialLogins == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "nativeSocialLogins");
+            }
+            this.nativeSocialLogins = nativeSocialLogins;
             return this;
         }
         public Builder nativeSocialLogins(GetClientNativeSocialLogin... nativeSocialLogins) {
@@ -728,7 +806,10 @@ public final class GetClientResult {
         }
         @CustomType.Setter
         public Builder oidcBackchannelLogoutUrls(List<String> oidcBackchannelLogoutUrls) {
-            this.oidcBackchannelLogoutUrls = Objects.requireNonNull(oidcBackchannelLogoutUrls);
+            if (oidcBackchannelLogoutUrls == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "oidcBackchannelLogoutUrls");
+            }
+            this.oidcBackchannelLogoutUrls = oidcBackchannelLogoutUrls;
             return this;
         }
         public Builder oidcBackchannelLogoutUrls(String... oidcBackchannelLogoutUrls) {
@@ -736,22 +817,34 @@ public final class GetClientResult {
         }
         @CustomType.Setter
         public Builder oidcConformant(Boolean oidcConformant) {
-            this.oidcConformant = Objects.requireNonNull(oidcConformant);
+            if (oidcConformant == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "oidcConformant");
+            }
+            this.oidcConformant = oidcConformant;
             return this;
         }
         @CustomType.Setter
         public Builder organizationRequireBehavior(String organizationRequireBehavior) {
-            this.organizationRequireBehavior = Objects.requireNonNull(organizationRequireBehavior);
+            if (organizationRequireBehavior == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "organizationRequireBehavior");
+            }
+            this.organizationRequireBehavior = organizationRequireBehavior;
             return this;
         }
         @CustomType.Setter
         public Builder organizationUsage(String organizationUsage) {
-            this.organizationUsage = Objects.requireNonNull(organizationUsage);
+            if (organizationUsage == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "organizationUsage");
+            }
+            this.organizationUsage = organizationUsage;
             return this;
         }
         @CustomType.Setter
         public Builder refreshTokens(List<GetClientRefreshToken> refreshTokens) {
-            this.refreshTokens = Objects.requireNonNull(refreshTokens);
+            if (refreshTokens == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "refreshTokens");
+            }
+            this.refreshTokens = refreshTokens;
             return this;
         }
         public Builder refreshTokens(GetClientRefreshToken... refreshTokens) {
@@ -759,32 +852,50 @@ public final class GetClientResult {
         }
         @CustomType.Setter
         public Builder requirePushedAuthorizationRequests(Boolean requirePushedAuthorizationRequests) {
-            this.requirePushedAuthorizationRequests = Objects.requireNonNull(requirePushedAuthorizationRequests);
+            if (requirePushedAuthorizationRequests == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "requirePushedAuthorizationRequests");
+            }
+            this.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
             return this;
         }
         @CustomType.Setter
         public Builder signingKeys(List<Map<String,Object>> signingKeys) {
-            this.signingKeys = Objects.requireNonNull(signingKeys);
+            if (signingKeys == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "signingKeys");
+            }
+            this.signingKeys = signingKeys;
             return this;
         }
         @CustomType.Setter
         public Builder sso(Boolean sso) {
-            this.sso = Objects.requireNonNull(sso);
+            if (sso == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "sso");
+            }
+            this.sso = sso;
             return this;
         }
         @CustomType.Setter
         public Builder ssoDisabled(Boolean ssoDisabled) {
-            this.ssoDisabled = Objects.requireNonNull(ssoDisabled);
+            if (ssoDisabled == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "ssoDisabled");
+            }
+            this.ssoDisabled = ssoDisabled;
             return this;
         }
         @CustomType.Setter
         public Builder tokenEndpointAuthMethod(String tokenEndpointAuthMethod) {
-            this.tokenEndpointAuthMethod = Objects.requireNonNull(tokenEndpointAuthMethod);
+            if (tokenEndpointAuthMethod == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "tokenEndpointAuthMethod");
+            }
+            this.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
             return this;
         }
         @CustomType.Setter
         public Builder webOrigins(List<String> webOrigins) {
-            this.webOrigins = Objects.requireNonNull(webOrigins);
+            if (webOrigins == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "webOrigins");
+            }
+            this.webOrigins = webOrigins;
             return this;
         }
         public Builder webOrigins(String... webOrigins) {

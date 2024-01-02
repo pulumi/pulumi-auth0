@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -136,92 +137,146 @@ public final class GetBrandingThemeColor {
 
         @CustomType.Setter
         public Builder baseFocusColor(String baseFocusColor) {
-            this.baseFocusColor = Objects.requireNonNull(baseFocusColor);
+            if (baseFocusColor == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "baseFocusColor");
+            }
+            this.baseFocusColor = baseFocusColor;
             return this;
         }
         @CustomType.Setter
         public Builder baseHoverColor(String baseHoverColor) {
-            this.baseHoverColor = Objects.requireNonNull(baseHoverColor);
+            if (baseHoverColor == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "baseHoverColor");
+            }
+            this.baseHoverColor = baseHoverColor;
             return this;
         }
         @CustomType.Setter
         public Builder bodyText(String bodyText) {
-            this.bodyText = Objects.requireNonNull(bodyText);
+            if (bodyText == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "bodyText");
+            }
+            this.bodyText = bodyText;
             return this;
         }
         @CustomType.Setter
         public Builder error(String error) {
-            this.error = Objects.requireNonNull(error);
+            if (error == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "error");
+            }
+            this.error = error;
             return this;
         }
         @CustomType.Setter
         public Builder header(String header) {
-            this.header = Objects.requireNonNull(header);
+            if (header == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "header");
+            }
+            this.header = header;
             return this;
         }
         @CustomType.Setter
         public Builder icons(String icons) {
-            this.icons = Objects.requireNonNull(icons);
+            if (icons == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "icons");
+            }
+            this.icons = icons;
             return this;
         }
         @CustomType.Setter
         public Builder inputBackground(String inputBackground) {
-            this.inputBackground = Objects.requireNonNull(inputBackground);
+            if (inputBackground == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "inputBackground");
+            }
+            this.inputBackground = inputBackground;
             return this;
         }
         @CustomType.Setter
         public Builder inputBorder(String inputBorder) {
-            this.inputBorder = Objects.requireNonNull(inputBorder);
+            if (inputBorder == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "inputBorder");
+            }
+            this.inputBorder = inputBorder;
             return this;
         }
         @CustomType.Setter
         public Builder inputFilledText(String inputFilledText) {
-            this.inputFilledText = Objects.requireNonNull(inputFilledText);
+            if (inputFilledText == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "inputFilledText");
+            }
+            this.inputFilledText = inputFilledText;
             return this;
         }
         @CustomType.Setter
         public Builder inputLabelsPlaceholders(String inputLabelsPlaceholders) {
-            this.inputLabelsPlaceholders = Objects.requireNonNull(inputLabelsPlaceholders);
+            if (inputLabelsPlaceholders == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "inputLabelsPlaceholders");
+            }
+            this.inputLabelsPlaceholders = inputLabelsPlaceholders;
             return this;
         }
         @CustomType.Setter
         public Builder linksFocusedComponents(String linksFocusedComponents) {
-            this.linksFocusedComponents = Objects.requireNonNull(linksFocusedComponents);
+            if (linksFocusedComponents == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "linksFocusedComponents");
+            }
+            this.linksFocusedComponents = linksFocusedComponents;
             return this;
         }
         @CustomType.Setter
         public Builder primaryButton(String primaryButton) {
-            this.primaryButton = Objects.requireNonNull(primaryButton);
+            if (primaryButton == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "primaryButton");
+            }
+            this.primaryButton = primaryButton;
             return this;
         }
         @CustomType.Setter
         public Builder primaryButtonLabel(String primaryButtonLabel) {
-            this.primaryButtonLabel = Objects.requireNonNull(primaryButtonLabel);
+            if (primaryButtonLabel == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "primaryButtonLabel");
+            }
+            this.primaryButtonLabel = primaryButtonLabel;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryButtonBorder(String secondaryButtonBorder) {
-            this.secondaryButtonBorder = Objects.requireNonNull(secondaryButtonBorder);
+            if (secondaryButtonBorder == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "secondaryButtonBorder");
+            }
+            this.secondaryButtonBorder = secondaryButtonBorder;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryButtonLabel(String secondaryButtonLabel) {
-            this.secondaryButtonLabel = Objects.requireNonNull(secondaryButtonLabel);
+            if (secondaryButtonLabel == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "secondaryButtonLabel");
+            }
+            this.secondaryButtonLabel = secondaryButtonLabel;
             return this;
         }
         @CustomType.Setter
         public Builder success(String success) {
-            this.success = Objects.requireNonNull(success);
+            if (success == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "success");
+            }
+            this.success = success;
             return this;
         }
         @CustomType.Setter
         public Builder widgetBackground(String widgetBackground) {
-            this.widgetBackground = Objects.requireNonNull(widgetBackground);
+            if (widgetBackground == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "widgetBackground");
+            }
+            this.widgetBackground = widgetBackground;
             return this;
         }
         @CustomType.Setter
         public Builder widgetBorder(String widgetBorder) {
-            this.widgetBorder = Objects.requireNonNull(widgetBorder);
+            if (widgetBorder == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "widgetBorder");
+            }
+            this.widgetBorder = widgetBorder;
             return this;
         }
         public GetBrandingThemeColor build() {

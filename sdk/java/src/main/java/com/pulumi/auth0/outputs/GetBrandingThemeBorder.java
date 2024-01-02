@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -84,47 +85,74 @@ public final class GetBrandingThemeBorder {
 
         @CustomType.Setter
         public Builder buttonBorderRadius(Double buttonBorderRadius) {
-            this.buttonBorderRadius = Objects.requireNonNull(buttonBorderRadius);
+            if (buttonBorderRadius == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeBorder", "buttonBorderRadius");
+            }
+            this.buttonBorderRadius = buttonBorderRadius;
             return this;
         }
         @CustomType.Setter
         public Builder buttonBorderWeight(Double buttonBorderWeight) {
-            this.buttonBorderWeight = Objects.requireNonNull(buttonBorderWeight);
+            if (buttonBorderWeight == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeBorder", "buttonBorderWeight");
+            }
+            this.buttonBorderWeight = buttonBorderWeight;
             return this;
         }
         @CustomType.Setter
         public Builder buttonsStyle(String buttonsStyle) {
-            this.buttonsStyle = Objects.requireNonNull(buttonsStyle);
+            if (buttonsStyle == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeBorder", "buttonsStyle");
+            }
+            this.buttonsStyle = buttonsStyle;
             return this;
         }
         @CustomType.Setter
         public Builder inputBorderRadius(Double inputBorderRadius) {
-            this.inputBorderRadius = Objects.requireNonNull(inputBorderRadius);
+            if (inputBorderRadius == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeBorder", "inputBorderRadius");
+            }
+            this.inputBorderRadius = inputBorderRadius;
             return this;
         }
         @CustomType.Setter
         public Builder inputBorderWeight(Double inputBorderWeight) {
-            this.inputBorderWeight = Objects.requireNonNull(inputBorderWeight);
+            if (inputBorderWeight == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeBorder", "inputBorderWeight");
+            }
+            this.inputBorderWeight = inputBorderWeight;
             return this;
         }
         @CustomType.Setter
         public Builder inputsStyle(String inputsStyle) {
-            this.inputsStyle = Objects.requireNonNull(inputsStyle);
+            if (inputsStyle == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeBorder", "inputsStyle");
+            }
+            this.inputsStyle = inputsStyle;
             return this;
         }
         @CustomType.Setter
         public Builder showWidgetShadow(Boolean showWidgetShadow) {
-            this.showWidgetShadow = Objects.requireNonNull(showWidgetShadow);
+            if (showWidgetShadow == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeBorder", "showWidgetShadow");
+            }
+            this.showWidgetShadow = showWidgetShadow;
             return this;
         }
         @CustomType.Setter
         public Builder widgetBorderWeight(Double widgetBorderWeight) {
-            this.widgetBorderWeight = Objects.requireNonNull(widgetBorderWeight);
+            if (widgetBorderWeight == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeBorder", "widgetBorderWeight");
+            }
+            this.widgetBorderWeight = widgetBorderWeight;
             return this;
         }
         @CustomType.Setter
         public Builder widgetCornerRadius(Double widgetCornerRadius) {
-            this.widgetCornerRadius = Objects.requireNonNull(widgetCornerRadius);
+            if (widgetCornerRadius == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeBorder", "widgetCornerRadius");
+            }
+            this.widgetCornerRadius = widgetCornerRadius;
             return this;
         }
         public GetBrandingThemeBorder build() {

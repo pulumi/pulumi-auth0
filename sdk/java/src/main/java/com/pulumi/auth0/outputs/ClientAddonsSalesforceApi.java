@@ -86,21 +86,25 @@ public final class ClientAddonsSalesforceApi {
 
         @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
+
             this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder communityName(@Nullable String communityName) {
+
             this.communityName = communityName;
             return this;
         }
         @CustomType.Setter
         public Builder communityUrlSection(@Nullable String communityUrlSection) {
+
             this.communityUrlSection = communityUrlSection;
             return this;
         }
         @CustomType.Setter
         public Builder principal(@Nullable String principal) {
+
             this.principal = principal;
             return this;
         }

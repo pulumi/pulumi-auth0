@@ -44,6 +44,7 @@ public final class ClientAddonsSalesforce {
 
         @CustomType.Setter
         public Builder entityId(@Nullable String entityId) {
+
             this.entityId = entityId;
             return this;
         }

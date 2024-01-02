@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -83,47 +84,74 @@ public final class GetSigningKeysSigningKey {
 
         @CustomType.Setter
         public Builder cert(String cert) {
-            this.cert = Objects.requireNonNull(cert);
+            if (cert == null) {
+              throw new MissingRequiredPropertyException("GetSigningKeysSigningKey", "cert");
+            }
+            this.cert = cert;
             return this;
         }
         @CustomType.Setter
         public Builder current(Boolean current) {
-            this.current = Objects.requireNonNull(current);
+            if (current == null) {
+              throw new MissingRequiredPropertyException("GetSigningKeysSigningKey", "current");
+            }
+            this.current = current;
             return this;
         }
         @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
-            this.fingerprint = Objects.requireNonNull(fingerprint);
+            if (fingerprint == null) {
+              throw new MissingRequiredPropertyException("GetSigningKeysSigningKey", "fingerprint");
+            }
+            this.fingerprint = fingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder kid(String kid) {
-            this.kid = Objects.requireNonNull(kid);
+            if (kid == null) {
+              throw new MissingRequiredPropertyException("GetSigningKeysSigningKey", "kid");
+            }
+            this.kid = kid;
             return this;
         }
         @CustomType.Setter
         public Builder next(Boolean next) {
-            this.next = Objects.requireNonNull(next);
+            if (next == null) {
+              throw new MissingRequiredPropertyException("GetSigningKeysSigningKey", "next");
+            }
+            this.next = next;
             return this;
         }
         @CustomType.Setter
         public Builder pkcs7(String pkcs7) {
-            this.pkcs7 = Objects.requireNonNull(pkcs7);
+            if (pkcs7 == null) {
+              throw new MissingRequiredPropertyException("GetSigningKeysSigningKey", "pkcs7");
+            }
+            this.pkcs7 = pkcs7;
             return this;
         }
         @CustomType.Setter
         public Builder previous(Boolean previous) {
-            this.previous = Objects.requireNonNull(previous);
+            if (previous == null) {
+              throw new MissingRequiredPropertyException("GetSigningKeysSigningKey", "previous");
+            }
+            this.previous = previous;
             return this;
         }
         @CustomType.Setter
         public Builder revoked(Boolean revoked) {
-            this.revoked = Objects.requireNonNull(revoked);
+            if (revoked == null) {
+              throw new MissingRequiredPropertyException("GetSigningKeysSigningKey", "revoked");
+            }
+            this.revoked = revoked;
             return this;
         }
         @CustomType.Setter
         public Builder thumbprint(String thumbprint) {
-            this.thumbprint = Objects.requireNonNull(thumbprint);
+            if (thumbprint == null) {
+              throw new MissingRequiredPropertyException("GetSigningKeysSigningKey", "thumbprint");
+            }
+            this.thumbprint = thumbprint;
             return this;
         }
         public GetSigningKeysSigningKey build() {

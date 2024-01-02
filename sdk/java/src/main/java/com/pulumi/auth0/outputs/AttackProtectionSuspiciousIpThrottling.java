@@ -6,6 +6,7 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.auth0.outputs.AttackProtectionSuspiciousIpThrottlingPreLogin;
 import com.pulumi.auth0.outputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistration;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -104,6 +105,7 @@ public final class AttackProtectionSuspiciousIpThrottling {
 
         @CustomType.Setter
         public Builder allowlists(@Nullable List<String> allowlists) {
+
             this.allowlists = allowlists;
             return this;
         }
@@ -112,21 +114,27 @@ public final class AttackProtectionSuspiciousIpThrottling {
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("AttackProtectionSuspiciousIpThrottling", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder preLogin(@Nullable AttackProtectionSuspiciousIpThrottlingPreLogin preLogin) {
+
             this.preLogin = preLogin;
             return this;
         }
         @CustomType.Setter
         public Builder preUserRegistration(@Nullable AttackProtectionSuspiciousIpThrottlingPreUserRegistration preUserRegistration) {
+
             this.preUserRegistration = preUserRegistration;
             return this;
         }
         @CustomType.Setter
         public Builder shields(@Nullable List<String> shields) {
+
             this.shields = shields;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -108,67 +109,106 @@ public final class GetClientAddonAzureBlob {
 
         @CustomType.Setter
         public Builder accountName(String accountName) {
-            this.accountName = Objects.requireNonNull(accountName);
+            if (accountName == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureBlob", "accountName");
+            }
+            this.accountName = accountName;
             return this;
         }
         @CustomType.Setter
         public Builder blobDelete(Boolean blobDelete) {
-            this.blobDelete = Objects.requireNonNull(blobDelete);
+            if (blobDelete == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureBlob", "blobDelete");
+            }
+            this.blobDelete = blobDelete;
             return this;
         }
         @CustomType.Setter
         public Builder blobName(String blobName) {
-            this.blobName = Objects.requireNonNull(blobName);
+            if (blobName == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureBlob", "blobName");
+            }
+            this.blobName = blobName;
             return this;
         }
         @CustomType.Setter
         public Builder blobRead(Boolean blobRead) {
-            this.blobRead = Objects.requireNonNull(blobRead);
+            if (blobRead == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureBlob", "blobRead");
+            }
+            this.blobRead = blobRead;
             return this;
         }
         @CustomType.Setter
         public Builder blobWrite(Boolean blobWrite) {
-            this.blobWrite = Objects.requireNonNull(blobWrite);
+            if (blobWrite == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureBlob", "blobWrite");
+            }
+            this.blobWrite = blobWrite;
             return this;
         }
         @CustomType.Setter
         public Builder containerDelete(Boolean containerDelete) {
-            this.containerDelete = Objects.requireNonNull(containerDelete);
+            if (containerDelete == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureBlob", "containerDelete");
+            }
+            this.containerDelete = containerDelete;
             return this;
         }
         @CustomType.Setter
         public Builder containerList(Boolean containerList) {
-            this.containerList = Objects.requireNonNull(containerList);
+            if (containerList == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureBlob", "containerList");
+            }
+            this.containerList = containerList;
             return this;
         }
         @CustomType.Setter
         public Builder containerName(String containerName) {
-            this.containerName = Objects.requireNonNull(containerName);
+            if (containerName == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureBlob", "containerName");
+            }
+            this.containerName = containerName;
             return this;
         }
         @CustomType.Setter
         public Builder containerRead(Boolean containerRead) {
-            this.containerRead = Objects.requireNonNull(containerRead);
+            if (containerRead == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureBlob", "containerRead");
+            }
+            this.containerRead = containerRead;
             return this;
         }
         @CustomType.Setter
         public Builder containerWrite(Boolean containerWrite) {
-            this.containerWrite = Objects.requireNonNull(containerWrite);
+            if (containerWrite == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureBlob", "containerWrite");
+            }
+            this.containerWrite = containerWrite;
             return this;
         }
         @CustomType.Setter
         public Builder expiration(Integer expiration) {
-            this.expiration = Objects.requireNonNull(expiration);
+            if (expiration == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureBlob", "expiration");
+            }
+            this.expiration = expiration;
             return this;
         }
         @CustomType.Setter
         public Builder signedIdentifier(String signedIdentifier) {
-            this.signedIdentifier = Objects.requireNonNull(signedIdentifier);
+            if (signedIdentifier == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureBlob", "signedIdentifier");
+            }
+            this.signedIdentifier = signedIdentifier;
             return this;
         }
         @CustomType.Setter
         public Builder storageAccessKey(String storageAccessKey) {
-            this.storageAccessKey = Objects.requireNonNull(storageAccessKey);
+            if (storageAccessKey == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonAzureBlob", "storageAccessKey");
+            }
+            this.storageAccessKey = storageAccessKey;
             return this;
         }
         public GetClientAddonAzureBlob build() {

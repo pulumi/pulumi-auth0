@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.AttackProtectionBreachedPasswordDetectionPreUserRegistration;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -103,6 +104,7 @@ public final class AttackProtectionBreachedPasswordDetection {
 
         @CustomType.Setter
         public Builder adminNotificationFrequencies(@Nullable List<String> adminNotificationFrequencies) {
+
             this.adminNotificationFrequencies = adminNotificationFrequencies;
             return this;
         }
@@ -111,21 +113,27 @@ public final class AttackProtectionBreachedPasswordDetection {
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("AttackProtectionBreachedPasswordDetection", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder method(@Nullable String method) {
+
             this.method = method;
             return this;
         }
         @CustomType.Setter
         public Builder preUserRegistration(@Nullable AttackProtectionBreachedPasswordDetectionPreUserRegistration preUserRegistration) {
+
             this.preUserRegistration = preUserRegistration;
             return this;
         }
         @CustomType.Setter
         public Builder shields(@Nullable List<String> shields) {
+
             this.shields = shields;
             return this;
         }

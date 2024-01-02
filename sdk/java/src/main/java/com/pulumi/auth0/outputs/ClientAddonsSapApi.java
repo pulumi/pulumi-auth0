@@ -114,31 +114,37 @@ public final class ClientAddonsSapApi {
 
         @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
+
             this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder nameIdentifierFormat(@Nullable String nameIdentifierFormat) {
+
             this.nameIdentifierFormat = nameIdentifierFormat;
             return this;
         }
         @CustomType.Setter
         public Builder scope(@Nullable String scope) {
+
             this.scope = scope;
             return this;
         }
         @CustomType.Setter
         public Builder servicePassword(@Nullable String servicePassword) {
+
             this.servicePassword = servicePassword;
             return this;
         }
         @CustomType.Setter
         public Builder tokenEndpointUrl(@Nullable String tokenEndpointUrl) {
+
             this.tokenEndpointUrl = tokenEndpointUrl;
             return this;
         }
         @CustomType.Setter
         public Builder usernameAttribute(@Nullable String usernameAttribute) {
+
             this.usernameAttribute = usernameAttribute;
             return this;
         }

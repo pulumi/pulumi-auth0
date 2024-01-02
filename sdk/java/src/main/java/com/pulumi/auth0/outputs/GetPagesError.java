@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -47,17 +48,26 @@ public final class GetPagesError {
 
         @CustomType.Setter
         public Builder html(String html) {
-            this.html = Objects.requireNonNull(html);
+            if (html == null) {
+              throw new MissingRequiredPropertyException("GetPagesError", "html");
+            }
+            this.html = html;
             return this;
         }
         @CustomType.Setter
         public Builder showLogLink(Boolean showLogLink) {
-            this.showLogLink = Objects.requireNonNull(showLogLink);
+            if (showLogLink == null) {
+              throw new MissingRequiredPropertyException("GetPagesError", "showLogLink");
+            }
+            this.showLogLink = showLogLink;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetPagesError", "url");
+            }
+            this.url = url;
             return this;
         }
         public GetPagesError build() {

@@ -43,11 +43,13 @@ public final class ClientNativeSocialLogin {
 
         @CustomType.Setter
         public Builder apple(@Nullable ClientNativeSocialLoginApple apple) {
+
             this.apple = apple;
             return this;
         }
         @CustomType.Setter
         public Builder facebook(@Nullable ClientNativeSocialLoginFacebook facebook) {
+
             this.facebook = facebook;
             return this;
         }

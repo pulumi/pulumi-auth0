@@ -59,11 +59,13 @@ public final class EmailProviderSettings {
 
         @CustomType.Setter
         public Builder headers(@Nullable EmailProviderSettingsHeaders headers) {
+
             this.headers = headers;
             return this;
         }
         @CustomType.Setter
         public Builder message(@Nullable EmailProviderSettingsMessage message) {
+
             this.message = message;
             return this;
         }

@@ -58,11 +58,13 @@ public final class ConnectionOptionsTotp {
 
         @CustomType.Setter
         public Builder length(@Nullable Integer length) {
+
             this.length = length;
             return this;
         }
         @CustomType.Setter
         public Builder timeStep(@Nullable Integer timeStep) {
+
             this.timeStep = timeStep;
             return this;
         }
