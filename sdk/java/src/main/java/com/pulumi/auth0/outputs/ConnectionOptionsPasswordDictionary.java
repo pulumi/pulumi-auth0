@@ -60,6 +60,7 @@ public final class ConnectionOptionsPasswordDictionary {
 
         @CustomType.Setter
         public Builder dictionaries(@Nullable List<String> dictionaries) {
+
             this.dictionaries = dictionaries;
             return this;
         }
@@ -68,6 +69,7 @@ public final class ConnectionOptionsPasswordDictionary {
         }
         @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
+
             this.enable = enable;
             return this;
         }

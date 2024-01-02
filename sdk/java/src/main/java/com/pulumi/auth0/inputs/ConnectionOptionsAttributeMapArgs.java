@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class ConnectionOptionsAttributeMapArgs extends com.pulumi.resource
         }
 
         public ConnectionOptionsAttributeMapArgs build() {
-            $.mappingMode = Objects.requireNonNull($.mappingMode, "expected parameter 'mappingMode' to be non-null");
+            if ($.mappingMode == null) {
+                throw new MissingRequiredPropertyException("ConnectionOptionsAttributeMapArgs", "mappingMode");
+            }
             return $;
         }
     }

@@ -9,6 +9,7 @@ import com.pulumi.auth0.outputs.GetBrandingThemeFont;
 import com.pulumi.auth0.outputs.GetBrandingThemePageBackground;
 import com.pulumi.auth0.outputs.GetBrandingThemeWidget;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -92,7 +93,10 @@ public final class GetBrandingThemeResult {
 
         @CustomType.Setter
         public Builder borders(List<GetBrandingThemeBorder> borders) {
-            this.borders = Objects.requireNonNull(borders);
+            if (borders == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeResult", "borders");
+            }
+            this.borders = borders;
             return this;
         }
         public Builder borders(GetBrandingThemeBorder... borders) {
@@ -100,7 +104,10 @@ public final class GetBrandingThemeResult {
         }
         @CustomType.Setter
         public Builder colors(List<GetBrandingThemeColor> colors) {
-            this.colors = Objects.requireNonNull(colors);
+            if (colors == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeResult", "colors");
+            }
+            this.colors = colors;
             return this;
         }
         public Builder colors(GetBrandingThemeColor... colors) {
@@ -108,12 +115,18 @@ public final class GetBrandingThemeResult {
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder fonts(List<GetBrandingThemeFont> fonts) {
-            this.fonts = Objects.requireNonNull(fonts);
+            if (fonts == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeResult", "fonts");
+            }
+            this.fonts = fonts;
             return this;
         }
         public Builder fonts(GetBrandingThemeFont... fonts) {
@@ -121,12 +134,18 @@ public final class GetBrandingThemeResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder pageBackgrounds(List<GetBrandingThemePageBackground> pageBackgrounds) {
-            this.pageBackgrounds = Objects.requireNonNull(pageBackgrounds);
+            if (pageBackgrounds == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeResult", "pageBackgrounds");
+            }
+            this.pageBackgrounds = pageBackgrounds;
             return this;
         }
         public Builder pageBackgrounds(GetBrandingThemePageBackground... pageBackgrounds) {
@@ -134,7 +153,10 @@ public final class GetBrandingThemeResult {
         }
         @CustomType.Setter
         public Builder widgets(List<GetBrandingThemeWidget> widgets) {
-            this.widgets = Objects.requireNonNull(widgets);
+            if (widgets == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeResult", "widgets");
+            }
+            this.widgets = widgets;
             return this;
         }
         public Builder widgets(GetBrandingThemeWidget... widgets) {

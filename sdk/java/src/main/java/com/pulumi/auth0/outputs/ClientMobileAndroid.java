@@ -43,11 +43,13 @@ public final class ClientMobileAndroid {
 
         @CustomType.Setter
         public Builder appPackageName(@Nullable String appPackageName) {
+
             this.appPackageName = appPackageName;
             return this;
         }
         @CustomType.Setter
         public Builder sha256CertFingerprints(@Nullable List<String> sha256CertFingerprints) {
+
             this.sha256CertFingerprints = sha256CertFingerprints;
             return this;
         }

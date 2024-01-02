@@ -101,26 +101,31 @@ public final class BrandingThemeWidget {
 
         @CustomType.Setter
         public Builder headerTextAlignment(@Nullable String headerTextAlignment) {
+
             this.headerTextAlignment = headerTextAlignment;
             return this;
         }
         @CustomType.Setter
         public Builder logoHeight(@Nullable Double logoHeight) {
+
             this.logoHeight = logoHeight;
             return this;
         }
         @CustomType.Setter
         public Builder logoPosition(@Nullable String logoPosition) {
+
             this.logoPosition = logoPosition;
             return this;
         }
         @CustomType.Setter
         public Builder logoUrl(@Nullable String logoUrl) {
+
             this.logoUrl = logoUrl;
             return this;
         }
         @CustomType.Setter
         public Builder socialButtonsLayout(@Nullable String socialButtonsLayout) {
+
             this.socialButtonsLayout = socialButtonsLayout;
             return this;
         }

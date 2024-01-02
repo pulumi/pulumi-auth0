@@ -114,31 +114,37 @@ public final class GuardianPhoneOptions {
 
         @CustomType.Setter
         public Builder authToken(@Nullable String authToken) {
+
             this.authToken = authToken;
             return this;
         }
         @CustomType.Setter
         public Builder enrollmentMessage(@Nullable String enrollmentMessage) {
+
             this.enrollmentMessage = enrollmentMessage;
             return this;
         }
         @CustomType.Setter
         public Builder from(@Nullable String from) {
+
             this.from = from;
             return this;
         }
         @CustomType.Setter
         public Builder messagingServiceSid(@Nullable String messagingServiceSid) {
+
             this.messagingServiceSid = messagingServiceSid;
             return this;
         }
         @CustomType.Setter
         public Builder sid(@Nullable String sid) {
+
             this.sid = sid;
             return this;
         }
         @CustomType.Setter
         public Builder verificationMessage(@Nullable String verificationMessage) {
+
             this.verificationMessage = verificationMessage;
             return this;
         }

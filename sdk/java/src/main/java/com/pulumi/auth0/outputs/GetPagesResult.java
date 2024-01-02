@@ -8,6 +8,7 @@ import com.pulumi.auth0.outputs.GetPagesError;
 import com.pulumi.auth0.outputs.GetPagesGuardianMfa;
 import com.pulumi.auth0.outputs.GetPagesLogin;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -103,7 +104,10 @@ public final class GetPagesResult {
 
         @CustomType.Setter
         public Builder changePasswords(List<GetPagesChangePassword> changePasswords) {
-            this.changePasswords = Objects.requireNonNull(changePasswords);
+            if (changePasswords == null) {
+              throw new MissingRequiredPropertyException("GetPagesResult", "changePasswords");
+            }
+            this.changePasswords = changePasswords;
             return this;
         }
         public Builder changePasswords(GetPagesChangePassword... changePasswords) {
@@ -111,7 +115,10 @@ public final class GetPagesResult {
         }
         @CustomType.Setter
         public Builder errors(List<GetPagesError> errors) {
-            this.errors = Objects.requireNonNull(errors);
+            if (errors == null) {
+              throw new MissingRequiredPropertyException("GetPagesResult", "errors");
+            }
+            this.errors = errors;
             return this;
         }
         public Builder errors(GetPagesError... errors) {
@@ -119,7 +126,10 @@ public final class GetPagesResult {
         }
         @CustomType.Setter
         public Builder guardianMfas(List<GetPagesGuardianMfa> guardianMfas) {
-            this.guardianMfas = Objects.requireNonNull(guardianMfas);
+            if (guardianMfas == null) {
+              throw new MissingRequiredPropertyException("GetPagesResult", "guardianMfas");
+            }
+            this.guardianMfas = guardianMfas;
             return this;
         }
         public Builder guardianMfas(GetPagesGuardianMfa... guardianMfas) {
@@ -127,12 +137,18 @@ public final class GetPagesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPagesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder logins(List<GetPagesLogin> logins) {
-            this.logins = Objects.requireNonNull(logins);
+            if (logins == null) {
+              throw new MissingRequiredPropertyException("GetPagesResult", "logins");
+            }
+            this.logins = logins;
             return this;
         }
         public Builder logins(GetPagesLogin... logins) {

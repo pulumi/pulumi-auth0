@@ -1308,11 +1308,13 @@ public final class ConnectionOptions {
 
         @CustomType.Setter
         public Builder adfsServer(@Nullable String adfsServer) {
+
             this.adfsServer = adfsServer;
             return this;
         }
         @CustomType.Setter
         public Builder allowedAudiences(@Nullable List<String> allowedAudiences) {
+
             this.allowedAudiences = allowedAudiences;
             return this;
         }
@@ -1321,111 +1323,133 @@ public final class ConnectionOptions {
         }
         @CustomType.Setter
         public Builder apiEnableUsers(@Nullable Boolean apiEnableUsers) {
+
             this.apiEnableUsers = apiEnableUsers;
             return this;
         }
         @CustomType.Setter
         public Builder appId(@Nullable String appId) {
+
             this.appId = appId;
             return this;
         }
         @CustomType.Setter
         public Builder attributeMap(@Nullable ConnectionOptionsAttributeMap attributeMap) {
+
             this.attributeMap = attributeMap;
             return this;
         }
         @CustomType.Setter
         public Builder authParams(@Nullable Map<String,String> authParams) {
+
             this.authParams = authParams;
             return this;
         }
         @CustomType.Setter
         public Builder authorizationEndpoint(@Nullable String authorizationEndpoint) {
+
             this.authorizationEndpoint = authorizationEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder bruteForceProtection(@Nullable Boolean bruteForceProtection) {
+
             this.bruteForceProtection = bruteForceProtection;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
+
             this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecret(@Nullable String clientSecret) {
+
             this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder communityBaseUrl(@Nullable String communityBaseUrl) {
+
             this.communityBaseUrl = communityBaseUrl;
             return this;
         }
         @CustomType.Setter
         public Builder configuration(@Nullable Map<String,Object> configuration) {
+
             this.configuration = configuration;
             return this;
         }
         @CustomType.Setter
         public Builder connectionSettings(@Nullable ConnectionOptionsConnectionSettings connectionSettings) {
+
             this.connectionSettings = connectionSettings;
             return this;
         }
         @CustomType.Setter
         public Builder customScripts(@Nullable Map<String,String> customScripts) {
+
             this.customScripts = customScripts;
             return this;
         }
         @CustomType.Setter
         public Builder debug(@Nullable Boolean debug) {
+
             this.debug = debug;
             return this;
         }
         @CustomType.Setter
         public Builder decryptionKey(@Nullable ConnectionOptionsDecryptionKey decryptionKey) {
+
             this.decryptionKey = decryptionKey;
             return this;
         }
         @CustomType.Setter
         public Builder digestAlgorithm(@Nullable String digestAlgorithm) {
+
             this.digestAlgorithm = digestAlgorithm;
             return this;
         }
         @CustomType.Setter
         public Builder disableCache(@Nullable Boolean disableCache) {
+
             this.disableCache = disableCache;
             return this;
         }
         @CustomType.Setter
         public Builder disableSelfServiceChangePassword(@Nullable Boolean disableSelfServiceChangePassword) {
+
             this.disableSelfServiceChangePassword = disableSelfServiceChangePassword;
             return this;
         }
         @CustomType.Setter
         public Builder disableSignOut(@Nullable Boolean disableSignOut) {
+
             this.disableSignOut = disableSignOut;
             return this;
         }
         @CustomType.Setter
         public Builder disableSignup(@Nullable Boolean disableSignup) {
+
             this.disableSignup = disableSignup;
             return this;
         }
         @CustomType.Setter
         public Builder discoveryUrl(@Nullable String discoveryUrl) {
+
             this.discoveryUrl = discoveryUrl;
             return this;
         }
         @CustomType.Setter
         public Builder domain(@Nullable String domain) {
+
             this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder domainAliases(@Nullable List<String> domainAliases) {
+
             this.domainAliases = domainAliases;
             return this;
         }
@@ -1434,71 +1458,85 @@ public final class ConnectionOptions {
         }
         @CustomType.Setter
         public Builder enableScriptContext(@Nullable Boolean enableScriptContext) {
+
             this.enableScriptContext = enableScriptContext;
             return this;
         }
         @CustomType.Setter
         public Builder enabledDatabaseCustomization(@Nullable Boolean enabledDatabaseCustomization) {
+
             this.enabledDatabaseCustomization = enabledDatabaseCustomization;
             return this;
         }
         @CustomType.Setter
         public Builder entityId(@Nullable String entityId) {
+
             this.entityId = entityId;
             return this;
         }
         @CustomType.Setter
         public Builder fedMetadataXml(@Nullable String fedMetadataXml) {
+
             this.fedMetadataXml = fedMetadataXml;
             return this;
         }
         @CustomType.Setter
         public Builder fieldsMap(@Nullable String fieldsMap) {
+
             this.fieldsMap = fieldsMap;
             return this;
         }
         @CustomType.Setter
         public Builder forwardRequestInfo(@Nullable Boolean forwardRequestInfo) {
+
             this.forwardRequestInfo = forwardRequestInfo;
             return this;
         }
         @CustomType.Setter
         public Builder from(@Nullable String from) {
+
             this.from = from;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayAuthentication(@Nullable ConnectionOptionsGatewayAuthentication gatewayAuthentication) {
+
             this.gatewayAuthentication = gatewayAuthentication;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayUrl(@Nullable String gatewayUrl) {
+
             this.gatewayUrl = gatewayUrl;
             return this;
         }
         @CustomType.Setter
         public Builder iconUrl(@Nullable String iconUrl) {
+
             this.iconUrl = iconUrl;
             return this;
         }
         @CustomType.Setter
         public Builder identityApi(@Nullable String identityApi) {
+
             this.identityApi = identityApi;
             return this;
         }
         @CustomType.Setter
         public Builder idpInitiated(@Nullable ConnectionOptionsIdpInitiated idpInitiated) {
+
             this.idpInitiated = idpInitiated;
             return this;
         }
         @CustomType.Setter
         public Builder importMode(@Nullable Boolean importMode) {
+
             this.importMode = importMode;
             return this;
         }
         @CustomType.Setter
         public Builder ips(@Nullable List<String> ips) {
+
             this.ips = ips;
             return this;
         }
@@ -1507,56 +1545,67 @@ public final class ConnectionOptions {
         }
         @CustomType.Setter
         public Builder issuer(@Nullable String issuer) {
+
             this.issuer = issuer;
             return this;
         }
         @CustomType.Setter
         public Builder jwksUri(@Nullable String jwksUri) {
+
             this.jwksUri = jwksUri;
             return this;
         }
         @CustomType.Setter
         public Builder keyId(@Nullable String keyId) {
+
             this.keyId = keyId;
             return this;
         }
         @CustomType.Setter
         public Builder mapUserIdToId(@Nullable Boolean mapUserIdToId) {
+
             this.mapUserIdToId = mapUserIdToId;
             return this;
         }
         @CustomType.Setter
         public Builder maxGroupsToRetrieve(@Nullable String maxGroupsToRetrieve) {
+
             this.maxGroupsToRetrieve = maxGroupsToRetrieve;
             return this;
         }
         @CustomType.Setter
         public Builder messagingServiceSid(@Nullable String messagingServiceSid) {
+
             this.messagingServiceSid = messagingServiceSid;
             return this;
         }
         @CustomType.Setter
         public Builder metadataUrl(@Nullable String metadataUrl) {
+
             this.metadataUrl = metadataUrl;
             return this;
         }
         @CustomType.Setter
         public Builder metadataXml(@Nullable String metadataXml) {
+
             this.metadataXml = metadataXml;
             return this;
         }
         @CustomType.Setter
         public Builder mfa(@Nullable ConnectionOptionsMfa mfa) {
+
             this.mfa = mfa;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nonPersistentAttrs(@Nullable List<String> nonPersistentAttrs) {
+
             this.nonPersistentAttrs = nonPersistentAttrs;
             return this;
         }
@@ -1565,16 +1614,19 @@ public final class ConnectionOptions {
         }
         @CustomType.Setter
         public Builder passwordComplexityOptions(@Nullable ConnectionOptionsPasswordComplexityOptions passwordComplexityOptions) {
+
             this.passwordComplexityOptions = passwordComplexityOptions;
             return this;
         }
         @CustomType.Setter
         public Builder passwordDictionary(@Nullable ConnectionOptionsPasswordDictionary passwordDictionary) {
+
             this.passwordDictionary = passwordDictionary;
             return this;
         }
         @CustomType.Setter
         public Builder passwordHistories(@Nullable List<ConnectionOptionsPasswordHistory> passwordHistories) {
+
             this.passwordHistories = passwordHistories;
             return this;
         }
@@ -1583,46 +1635,55 @@ public final class ConnectionOptions {
         }
         @CustomType.Setter
         public Builder passwordNoPersonalInfo(@Nullable ConnectionOptionsPasswordNoPersonalInfo passwordNoPersonalInfo) {
+
             this.passwordNoPersonalInfo = passwordNoPersonalInfo;
             return this;
         }
         @CustomType.Setter
         public Builder passwordPolicy(@Nullable String passwordPolicy) {
+
             this.passwordPolicy = passwordPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder pingFederateBaseUrl(@Nullable String pingFederateBaseUrl) {
+
             this.pingFederateBaseUrl = pingFederateBaseUrl;
             return this;
         }
         @CustomType.Setter
         public Builder pkceEnabled(@Nullable Boolean pkceEnabled) {
+
             this.pkceEnabled = pkceEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder protocolBinding(@Nullable String protocolBinding) {
+
             this.protocolBinding = protocolBinding;
             return this;
         }
         @CustomType.Setter
         public Builder provider(@Nullable String provider) {
+
             this.provider = provider;
             return this;
         }
         @CustomType.Setter
         public Builder requestTemplate(@Nullable String requestTemplate) {
+
             this.requestTemplate = requestTemplate;
             return this;
         }
         @CustomType.Setter
         public Builder requiresUsername(@Nullable Boolean requiresUsername) {
+
             this.requiresUsername = requiresUsername;
             return this;
         }
         @CustomType.Setter
         public Builder scopes(@Nullable List<String> scopes) {
+
             this.scopes = scopes;
             return this;
         }
@@ -1631,146 +1692,175 @@ public final class ConnectionOptions {
         }
         @CustomType.Setter
         public Builder scripts(@Nullable Map<String,String> scripts) {
+
             this.scripts = scripts;
             return this;
         }
         @CustomType.Setter
         public Builder setUserRootAttributes(@Nullable String setUserRootAttributes) {
+
             this.setUserRootAttributes = setUserRootAttributes;
             return this;
         }
         @CustomType.Setter
         public Builder shouldTrustEmailVerifiedConnection(@Nullable String shouldTrustEmailVerifiedConnection) {
+
             this.shouldTrustEmailVerifiedConnection = shouldTrustEmailVerifiedConnection;
             return this;
         }
         @CustomType.Setter
         public Builder signInEndpoint(@Nullable String signInEndpoint) {
+
             this.signInEndpoint = signInEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder signOutEndpoint(@Nullable String signOutEndpoint) {
+
             this.signOutEndpoint = signOutEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder signSamlRequest(@Nullable Boolean signSamlRequest) {
+
             this.signSamlRequest = signSamlRequest;
             return this;
         }
         @CustomType.Setter
         public Builder signatureAlgorithm(@Nullable String signatureAlgorithm) {
+
             this.signatureAlgorithm = signatureAlgorithm;
             return this;
         }
         @CustomType.Setter
         public Builder signingCert(@Nullable String signingCert) {
+
             this.signingCert = signingCert;
             return this;
         }
         @CustomType.Setter
         public Builder signingKey(@Nullable ConnectionOptionsSigningKey signingKey) {
+
             this.signingKey = signingKey;
             return this;
         }
         @CustomType.Setter
         public Builder strategyVersion(@Nullable Integer strategyVersion) {
+
             this.strategyVersion = strategyVersion;
             return this;
         }
         @CustomType.Setter
         public Builder subject(@Nullable String subject) {
+
             this.subject = subject;
             return this;
         }
         @CustomType.Setter
         public Builder syntax(@Nullable String syntax) {
+
             this.syntax = syntax;
             return this;
         }
         @CustomType.Setter
         public Builder teamId(@Nullable String teamId) {
+
             this.teamId = teamId;
             return this;
         }
         @CustomType.Setter
         public Builder template(@Nullable String template) {
+
             this.template = template;
             return this;
         }
         @CustomType.Setter
         public Builder tenantDomain(@Nullable String tenantDomain) {
+
             this.tenantDomain = tenantDomain;
             return this;
         }
         @CustomType.Setter
         public Builder tokenEndpoint(@Nullable String tokenEndpoint) {
+
             this.tokenEndpoint = tokenEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder totp(@Nullable ConnectionOptionsTotp totp) {
+
             this.totp = totp;
             return this;
         }
         @CustomType.Setter
         public Builder twilioSid(@Nullable String twilioSid) {
+
             this.twilioSid = twilioSid;
             return this;
         }
         @CustomType.Setter
         public Builder twilioToken(@Nullable String twilioToken) {
+
             this.twilioToken = twilioToken;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder upstreamParams(@Nullable String upstreamParams) {
+
             this.upstreamParams = upstreamParams;
             return this;
         }
         @CustomType.Setter
         public Builder useCertAuth(@Nullable Boolean useCertAuth) {
+
             this.useCertAuth = useCertAuth;
             return this;
         }
         @CustomType.Setter
         public Builder useKerberos(@Nullable Boolean useKerberos) {
+
             this.useKerberos = useKerberos;
             return this;
         }
         @CustomType.Setter
         public Builder useWsfed(@Nullable Boolean useWsfed) {
+
             this.useWsfed = useWsfed;
             return this;
         }
         @CustomType.Setter
         public Builder userIdAttribute(@Nullable String userIdAttribute) {
+
             this.userIdAttribute = userIdAttribute;
             return this;
         }
         @CustomType.Setter
         public Builder userinfoEndpoint(@Nullable String userinfoEndpoint) {
+
             this.userinfoEndpoint = userinfoEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder validation(@Nullable ConnectionOptionsValidation validation) {
+
             this.validation = validation;
             return this;
         }
         @CustomType.Setter
         public Builder waadCommonEndpoint(@Nullable Boolean waadCommonEndpoint) {
+
             this.waadCommonEndpoint = waadCommonEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder waadProtocol(@Nullable String waadProtocol) {
+
             this.waadProtocol = waadProtocol;
             return this;
         }

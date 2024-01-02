@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClientAddonSpringcm {
 
         @CustomType.Setter
         public Builder acsUrl(String acsUrl) {
-            this.acsUrl = Objects.requireNonNull(acsUrl);
+            if (acsUrl == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSpringcm", "acsUrl");
+            }
+            this.acsUrl = acsUrl;
             return this;
         }
         public GetClientAddonSpringcm build() {

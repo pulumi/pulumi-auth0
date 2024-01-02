@@ -6,6 +6,7 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.inputs.UserPermissionsPermissionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -123,8 +124,12 @@ public final class UserPermissionsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public UserPermissionsArgs build() {
-            $.permissions = Objects.requireNonNull($.permissions, "expected parameter 'permissions' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
+            if ($.permissions == null) {
+                throw new MissingRequiredPropertyException("UserPermissionsArgs", "permissions");
+            }
+            if ($.userId == null) {
+                throw new MissingRequiredPropertyException("UserPermissionsArgs", "userId");
+            }
             return $;
         }
     }

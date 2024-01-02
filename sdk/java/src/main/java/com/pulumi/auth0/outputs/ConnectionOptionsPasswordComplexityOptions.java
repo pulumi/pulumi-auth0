@@ -44,6 +44,7 @@ public final class ConnectionOptionsPasswordComplexityOptions {
 
         @CustomType.Setter
         public Builder minLength(@Nullable Integer minLength) {
+
             this.minLength = minLength;
             return this;
         }

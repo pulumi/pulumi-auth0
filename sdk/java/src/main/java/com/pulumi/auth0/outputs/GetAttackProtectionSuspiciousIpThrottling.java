@@ -6,6 +6,7 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.auth0.outputs.GetAttackProtectionSuspiciousIpThrottlingPreLogin;
 import com.pulumi.auth0.outputs.GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -62,7 +63,10 @@ public final class GetAttackProtectionSuspiciousIpThrottling {
 
         @CustomType.Setter
         public Builder allowlists(List<String> allowlists) {
-            this.allowlists = Objects.requireNonNull(allowlists);
+            if (allowlists == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionSuspiciousIpThrottling", "allowlists");
+            }
+            this.allowlists = allowlists;
             return this;
         }
         public Builder allowlists(String... allowlists) {
@@ -70,12 +74,18 @@ public final class GetAttackProtectionSuspiciousIpThrottling {
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionSuspiciousIpThrottling", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder preLogins(List<GetAttackProtectionSuspiciousIpThrottlingPreLogin> preLogins) {
-            this.preLogins = Objects.requireNonNull(preLogins);
+            if (preLogins == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionSuspiciousIpThrottling", "preLogins");
+            }
+            this.preLogins = preLogins;
             return this;
         }
         public Builder preLogins(GetAttackProtectionSuspiciousIpThrottlingPreLogin... preLogins) {
@@ -83,7 +93,10 @@ public final class GetAttackProtectionSuspiciousIpThrottling {
         }
         @CustomType.Setter
         public Builder preUserRegistrations(List<GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration> preUserRegistrations) {
-            this.preUserRegistrations = Objects.requireNonNull(preUserRegistrations);
+            if (preUserRegistrations == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionSuspiciousIpThrottling", "preUserRegistrations");
+            }
+            this.preUserRegistrations = preUserRegistrations;
             return this;
         }
         public Builder preUserRegistrations(GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration... preUserRegistrations) {
@@ -91,7 +104,10 @@ public final class GetAttackProtectionSuspiciousIpThrottling {
         }
         @CustomType.Setter
         public Builder shields(List<String> shields) {
-            this.shields = Objects.requireNonNull(shields);
+            if (shields == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionSuspiciousIpThrottling", "shields");
+            }
+            this.shields = shields;
             return this;
         }
         public Builder shields(String... shields) {

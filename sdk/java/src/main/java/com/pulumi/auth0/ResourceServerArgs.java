@@ -5,6 +5,7 @@ package com.pulumi.auth0;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -448,7 +449,9 @@ public final class ResourceServerArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ResourceServerArgs build() {
-            $.identifier = Objects.requireNonNull($.identifier, "expected parameter 'identifier' to be non-null");
+            if ($.identifier == null) {
+                throw new MissingRequiredPropertyException("ResourceServerArgs", "identifier");
+            }
             return $;
         }
     }

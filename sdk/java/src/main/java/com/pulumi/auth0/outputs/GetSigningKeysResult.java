@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetSigningKeysSigningKey;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,12 +59,18 @@ public final class GetSigningKeysResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSigningKeysResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder signingKeys(List<GetSigningKeysSigningKey> signingKeys) {
-            this.signingKeys = Objects.requireNonNull(signingKeys);
+            if (signingKeys == null) {
+              throw new MissingRequiredPropertyException("GetSigningKeysResult", "signingKeys");
+            }
+            this.signingKeys = signingKeys;
             return this;
         }
         public Builder signingKeys(GetSigningKeysSigningKey... signingKeys) {

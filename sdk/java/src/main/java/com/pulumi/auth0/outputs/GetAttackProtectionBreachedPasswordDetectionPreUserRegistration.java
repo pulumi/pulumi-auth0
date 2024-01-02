@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetAttackProtectionBreachedPasswordDetectionPreUserRegistrati
 
         @CustomType.Setter
         public Builder shields(List<String> shields) {
-            this.shields = Objects.requireNonNull(shields);
+            if (shields == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionBreachedPasswordDetectionPreUserRegistration", "shields");
+            }
+            this.shields = shields;
             return this;
         }
         public Builder shields(String... shields) {

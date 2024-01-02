@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -410,8 +411,12 @@ public final class ClientCredentialsPrivateKeyJwtCredentialArgs extends com.pulu
         }
 
         public ClientCredentialsPrivateKeyJwtCredentialArgs build() {
-            $.credentialType = Objects.requireNonNull($.credentialType, "expected parameter 'credentialType' to be non-null");
-            $.pem = Objects.requireNonNull($.pem, "expected parameter 'pem' to be non-null");
+            if ($.credentialType == null) {
+                throw new MissingRequiredPropertyException("ClientCredentialsPrivateKeyJwtCredentialArgs", "credentialType");
+            }
+            if ($.pem == null) {
+                throw new MissingRequiredPropertyException("ClientCredentialsPrivateKeyJwtCredentialArgs", "pem");
+            }
             return $;
         }
     }

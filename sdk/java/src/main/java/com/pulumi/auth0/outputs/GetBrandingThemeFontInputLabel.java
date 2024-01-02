@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetBrandingThemeFontInputLabel {
 
         @CustomType.Setter
         public Builder bold(Boolean bold) {
-            this.bold = Objects.requireNonNull(bold);
+            if (bold == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeFontInputLabel", "bold");
+            }
+            this.bold = bold;
             return this;
         }
         @CustomType.Setter
         public Builder size(Double size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeFontInputLabel", "size");
+            }
+            this.size = size;
             return this;
         }
         public GetBrandingThemeFontInputLabel build() {

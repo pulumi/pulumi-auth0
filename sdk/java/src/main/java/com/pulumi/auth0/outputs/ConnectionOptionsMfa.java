@@ -58,11 +58,13 @@ public final class ConnectionOptionsMfa {
 
         @CustomType.Setter
         public Builder active(@Nullable Boolean active) {
+
             this.active = active;
             return this;
         }
         @CustomType.Setter
         public Builder returnEnrollSettings(@Nullable Boolean returnEnrollSettings) {
+
             this.returnEnrollSettings = returnEnrollSettings;
             return this;
         }

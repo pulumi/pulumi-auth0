@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class ActionDependencyArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ActionDependencyArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ActionDependencyArgs", "name");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("ActionDependencyArgs", "version");
+            }
             return $;
         }
     }

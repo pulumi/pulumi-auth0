@@ -58,11 +58,13 @@ public final class ClientAddonsOffice365 {
 
         @CustomType.Setter
         public Builder connection(@Nullable String connection) {
+
             this.connection = connection;
             return this;
         }
         @CustomType.Setter
         public Builder domain(@Nullable String domain) {
+
             this.domain = domain;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GuardianPushAmazonSns {
 
         @CustomType.Setter
         public Builder awsAccessKeyId(String awsAccessKeyId) {
-            this.awsAccessKeyId = Objects.requireNonNull(awsAccessKeyId);
+            if (awsAccessKeyId == null) {
+              throw new MissingRequiredPropertyException("GuardianPushAmazonSns", "awsAccessKeyId");
+            }
+            this.awsAccessKeyId = awsAccessKeyId;
             return this;
         }
         @CustomType.Setter
         public Builder awsRegion(String awsRegion) {
-            this.awsRegion = Objects.requireNonNull(awsRegion);
+            if (awsRegion == null) {
+              throw new MissingRequiredPropertyException("GuardianPushAmazonSns", "awsRegion");
+            }
+            this.awsRegion = awsRegion;
             return this;
         }
         @CustomType.Setter
         public Builder awsSecretAccessKey(String awsSecretAccessKey) {
-            this.awsSecretAccessKey = Objects.requireNonNull(awsSecretAccessKey);
+            if (awsSecretAccessKey == null) {
+              throw new MissingRequiredPropertyException("GuardianPushAmazonSns", "awsSecretAccessKey");
+            }
+            this.awsSecretAccessKey = awsSecretAccessKey;
             return this;
         }
         @CustomType.Setter
         public Builder snsApnsPlatformApplicationArn(String snsApnsPlatformApplicationArn) {
-            this.snsApnsPlatformApplicationArn = Objects.requireNonNull(snsApnsPlatformApplicationArn);
+            if (snsApnsPlatformApplicationArn == null) {
+              throw new MissingRequiredPropertyException("GuardianPushAmazonSns", "snsApnsPlatformApplicationArn");
+            }
+            this.snsApnsPlatformApplicationArn = snsApnsPlatformApplicationArn;
             return this;
         }
         @CustomType.Setter
         public Builder snsGcmPlatformApplicationArn(String snsGcmPlatformApplicationArn) {
-            this.snsGcmPlatformApplicationArn = Objects.requireNonNull(snsGcmPlatformApplicationArn);
+            if (snsGcmPlatformApplicationArn == null) {
+              throw new MissingRequiredPropertyException("GuardianPushAmazonSns", "snsGcmPlatformApplicationArn");
+            }
+            this.snsGcmPlatformApplicationArn = snsGcmPlatformApplicationArn;
             return this;
         }
         public GuardianPushAmazonSns build() {

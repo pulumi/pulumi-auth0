@@ -44,6 +44,7 @@ public final class ClientAddonsEgnyte {
 
         @CustomType.Setter
         public Builder domain(@Nullable String domain) {
+
             this.domain = domain;
             return this;
         }

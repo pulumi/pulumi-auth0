@@ -5,6 +5,7 @@ package com.pulumi.auth0;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class CustomDomainVerificationArgs extends com.pulumi.resources.Res
         }
 
         public CustomDomainVerificationArgs build() {
-            $.customDomainId = Objects.requireNonNull($.customDomainId, "expected parameter 'customDomainId' to be non-null");
+            if ($.customDomainId == null) {
+                throw new MissingRequiredPropertyException("CustomDomainVerificationArgs", "customDomainId");
+            }
             return $;
         }
     }

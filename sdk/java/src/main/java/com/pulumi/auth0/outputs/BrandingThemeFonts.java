@@ -10,6 +10,7 @@ import com.pulumi.auth0.outputs.BrandingThemeFontsLinks;
 import com.pulumi.auth0.outputs.BrandingThemeFontsSubtitle;
 import com.pulumi.auth0.outputs.BrandingThemeFontsTitle;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -163,47 +164,68 @@ public final class BrandingThemeFonts {
 
         @CustomType.Setter
         public Builder bodyText(BrandingThemeFontsBodyText bodyText) {
-            this.bodyText = Objects.requireNonNull(bodyText);
+            if (bodyText == null) {
+              throw new MissingRequiredPropertyException("BrandingThemeFonts", "bodyText");
+            }
+            this.bodyText = bodyText;
             return this;
         }
         @CustomType.Setter
         public Builder buttonsText(BrandingThemeFontsButtonsText buttonsText) {
-            this.buttonsText = Objects.requireNonNull(buttonsText);
+            if (buttonsText == null) {
+              throw new MissingRequiredPropertyException("BrandingThemeFonts", "buttonsText");
+            }
+            this.buttonsText = buttonsText;
             return this;
         }
         @CustomType.Setter
         public Builder fontUrl(@Nullable String fontUrl) {
+
             this.fontUrl = fontUrl;
             return this;
         }
         @CustomType.Setter
         public Builder inputLabels(BrandingThemeFontsInputLabels inputLabels) {
-            this.inputLabels = Objects.requireNonNull(inputLabels);
+            if (inputLabels == null) {
+              throw new MissingRequiredPropertyException("BrandingThemeFonts", "inputLabels");
+            }
+            this.inputLabels = inputLabels;
             return this;
         }
         @CustomType.Setter
         public Builder links(BrandingThemeFontsLinks links) {
-            this.links = Objects.requireNonNull(links);
+            if (links == null) {
+              throw new MissingRequiredPropertyException("BrandingThemeFonts", "links");
+            }
+            this.links = links;
             return this;
         }
         @CustomType.Setter
         public Builder linksStyle(@Nullable String linksStyle) {
+
             this.linksStyle = linksStyle;
             return this;
         }
         @CustomType.Setter
         public Builder referenceTextSize(@Nullable Double referenceTextSize) {
+
             this.referenceTextSize = referenceTextSize;
             return this;
         }
         @CustomType.Setter
         public Builder subtitle(BrandingThemeFontsSubtitle subtitle) {
-            this.subtitle = Objects.requireNonNull(subtitle);
+            if (subtitle == null) {
+              throw new MissingRequiredPropertyException("BrandingThemeFonts", "subtitle");
+            }
+            this.subtitle = subtitle;
             return this;
         }
         @CustomType.Setter
         public Builder title(BrandingThemeFontsTitle title) {
-            this.title = Objects.requireNonNull(title);
+            if (title == null) {
+              throw new MissingRequiredPropertyException("BrandingThemeFonts", "title");
+            }
+            this.title = title;
             return this;
         }
         public BrandingThemeFonts build() {

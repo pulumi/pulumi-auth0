@@ -42,11 +42,13 @@ public final class ClientMobileIos {
 
         @CustomType.Setter
         public Builder appBundleIdentifier(@Nullable String appBundleIdentifier) {
+
             this.appBundleIdentifier = appBundleIdentifier;
             return this;
         }
         @CustomType.Setter
         public Builder teamId(@Nullable String teamId) {
+
             this.teamId = teamId;
             return this;
         }

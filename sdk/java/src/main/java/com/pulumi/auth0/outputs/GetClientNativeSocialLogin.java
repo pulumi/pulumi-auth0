@@ -6,6 +6,7 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.auth0.outputs.GetClientNativeSocialLoginApple;
 import com.pulumi.auth0.outputs.GetClientNativeSocialLoginFacebook;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetClientNativeSocialLogin {
 
         @CustomType.Setter
         public Builder apples(List<GetClientNativeSocialLoginApple> apples) {
-            this.apples = Objects.requireNonNull(apples);
+            if (apples == null) {
+              throw new MissingRequiredPropertyException("GetClientNativeSocialLogin", "apples");
+            }
+            this.apples = apples;
             return this;
         }
         public Builder apples(GetClientNativeSocialLoginApple... apples) {
@@ -50,7 +54,10 @@ public final class GetClientNativeSocialLogin {
         }
         @CustomType.Setter
         public Builder facebooks(List<GetClientNativeSocialLoginFacebook> facebooks) {
-            this.facebooks = Objects.requireNonNull(facebooks);
+            if (facebooks == null) {
+              throw new MissingRequiredPropertyException("GetClientNativeSocialLogin", "facebooks");
+            }
+            this.facebooks = facebooks;
             return this;
         }
         public Builder facebooks(GetClientNativeSocialLoginFacebook... facebooks) {

@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -71,8 +72,12 @@ public final class ConnectionOptionsSigningKeyArgs extends com.pulumi.resources.
         }
 
         public ConnectionOptionsSigningKeyArgs build() {
-            $.cert = Objects.requireNonNull($.cert, "expected parameter 'cert' to be non-null");
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
+            if ($.cert == null) {
+                throw new MissingRequiredPropertyException("ConnectionOptionsSigningKeyArgs", "cert");
+            }
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("ConnectionOptionsSigningKeyArgs", "key");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class TenantSessionsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public TenantSessionsArgs build() {
-            $.oidcLogoutPromptEnabled = Objects.requireNonNull($.oidcLogoutPromptEnabled, "expected parameter 'oidcLogoutPromptEnabled' to be non-null");
+            if ($.oidcLogoutPromptEnabled == null) {
+                throw new MissingRequiredPropertyException("TenantSessionsArgs", "oidcLogoutPromptEnabled");
+            }
             return $;
         }
     }

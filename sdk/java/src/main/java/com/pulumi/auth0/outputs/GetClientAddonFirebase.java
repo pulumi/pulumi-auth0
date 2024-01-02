@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -59,27 +60,42 @@ public final class GetClientAddonFirebase {
 
         @CustomType.Setter
         public Builder clientEmail(String clientEmail) {
-            this.clientEmail = Objects.requireNonNull(clientEmail);
+            if (clientEmail == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonFirebase", "clientEmail");
+            }
+            this.clientEmail = clientEmail;
             return this;
         }
         @CustomType.Setter
         public Builder lifetimeInSeconds(Integer lifetimeInSeconds) {
-            this.lifetimeInSeconds = Objects.requireNonNull(lifetimeInSeconds);
+            if (lifetimeInSeconds == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonFirebase", "lifetimeInSeconds");
+            }
+            this.lifetimeInSeconds = lifetimeInSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder privateKey(String privateKey) {
-            this.privateKey = Objects.requireNonNull(privateKey);
+            if (privateKey == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonFirebase", "privateKey");
+            }
+            this.privateKey = privateKey;
             return this;
         }
         @CustomType.Setter
         public Builder privateKeyId(String privateKeyId) {
-            this.privateKeyId = Objects.requireNonNull(privateKeyId);
+            if (privateKeyId == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonFirebase", "privateKeyId");
+            }
+            this.privateKeyId = privateKeyId;
             return this;
         }
         @CustomType.Setter
         public Builder secret(String secret) {
-            this.secret = Objects.requireNonNull(secret);
+            if (secret == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonFirebase", "secret");
+            }
+            this.secret = secret;
             return this;
         }
         public GetClientAddonFirebase build() {

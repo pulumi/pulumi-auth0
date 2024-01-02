@@ -59,11 +59,13 @@ public final class BrandingThemeFontsButtonsText {
 
         @CustomType.Setter
         public Builder bold(@Nullable Boolean bold) {
+
             this.bold = bold;
             return this;
         }
         @CustomType.Setter
         public Builder size(@Nullable Double size) {
+
             this.size = size;
             return this;
         }

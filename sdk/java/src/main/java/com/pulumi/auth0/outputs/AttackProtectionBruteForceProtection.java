@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -103,6 +104,7 @@ public final class AttackProtectionBruteForceProtection {
 
         @CustomType.Setter
         public Builder allowlists(@Nullable List<String> allowlists) {
+
             this.allowlists = allowlists;
             return this;
         }
@@ -111,21 +113,27 @@ public final class AttackProtectionBruteForceProtection {
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("AttackProtectionBruteForceProtection", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder maxAttempts(@Nullable Integer maxAttempts) {
+
             this.maxAttempts = maxAttempts;
             return this;
         }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder shields(@Nullable List<String> shields) {
+
             this.shields = shields;
             return this;
         }

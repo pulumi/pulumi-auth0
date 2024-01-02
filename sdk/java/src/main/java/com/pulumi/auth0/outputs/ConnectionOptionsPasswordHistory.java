@@ -51,11 +51,13 @@ public final class ConnectionOptionsPasswordHistory {
 
         @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
+
             this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder size(@Nullable Integer size) {
+
             this.size = size;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetOrganizationConnection {
 
         @CustomType.Setter
         public Builder assignMembershipOnLogin(Boolean assignMembershipOnLogin) {
-            this.assignMembershipOnLogin = Objects.requireNonNull(assignMembershipOnLogin);
+            if (assignMembershipOnLogin == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationConnection", "assignMembershipOnLogin");
+            }
+            this.assignMembershipOnLogin = assignMembershipOnLogin;
             return this;
         }
         @CustomType.Setter
         public Builder connectionId(String connectionId) {
-            this.connectionId = Objects.requireNonNull(connectionId);
+            if (connectionId == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationConnection", "connectionId");
+            }
+            this.connectionId = connectionId;
             return this;
         }
         public GetOrganizationConnection build() {

@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetConnectionOptionDecryptionKey {
 
         @CustomType.Setter
         public Builder cert(String cert) {
-            this.cert = Objects.requireNonNull(cert);
+            if (cert == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionDecryptionKey", "cert");
+            }
+            this.cert = cert;
             return this;
         }
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionDecryptionKey", "key");
+            }
+            this.key = key;
             return this;
         }
         public GetConnectionOptionDecryptionKey build() {

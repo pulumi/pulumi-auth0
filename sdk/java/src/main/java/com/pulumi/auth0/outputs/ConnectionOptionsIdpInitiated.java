@@ -56,16 +56,19 @@ public final class ConnectionOptionsIdpInitiated {
 
         @CustomType.Setter
         public Builder clientAuthorizeQuery(@Nullable String clientAuthorizeQuery) {
+
             this.clientAuthorizeQuery = clientAuthorizeQuery;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
+
             this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientProtocol(@Nullable String clientProtocol) {
+
             this.clientProtocol = clientProtocol;
             return this;
         }

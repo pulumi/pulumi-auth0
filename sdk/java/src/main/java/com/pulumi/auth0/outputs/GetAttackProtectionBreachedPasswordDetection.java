@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetAttackProtectionBreachedPasswordDetectionPreUserRegistration;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -61,7 +62,10 @@ public final class GetAttackProtectionBreachedPasswordDetection {
 
         @CustomType.Setter
         public Builder adminNotificationFrequencies(List<String> adminNotificationFrequencies) {
-            this.adminNotificationFrequencies = Objects.requireNonNull(adminNotificationFrequencies);
+            if (adminNotificationFrequencies == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionBreachedPasswordDetection", "adminNotificationFrequencies");
+            }
+            this.adminNotificationFrequencies = adminNotificationFrequencies;
             return this;
         }
         public Builder adminNotificationFrequencies(String... adminNotificationFrequencies) {
@@ -69,17 +73,26 @@ public final class GetAttackProtectionBreachedPasswordDetection {
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionBreachedPasswordDetection", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder method(String method) {
-            this.method = Objects.requireNonNull(method);
+            if (method == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionBreachedPasswordDetection", "method");
+            }
+            this.method = method;
             return this;
         }
         @CustomType.Setter
         public Builder preUserRegistrations(List<GetAttackProtectionBreachedPasswordDetectionPreUserRegistration> preUserRegistrations) {
-            this.preUserRegistrations = Objects.requireNonNull(preUserRegistrations);
+            if (preUserRegistrations == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionBreachedPasswordDetection", "preUserRegistrations");
+            }
+            this.preUserRegistrations = preUserRegistrations;
             return this;
         }
         public Builder preUserRegistrations(GetAttackProtectionBreachedPasswordDetectionPreUserRegistration... preUserRegistrations) {
@@ -87,7 +100,10 @@ public final class GetAttackProtectionBreachedPasswordDetection {
         }
         @CustomType.Setter
         public Builder shields(List<String> shields) {
-            this.shields = Objects.requireNonNull(shields);
+            if (shields == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionBreachedPasswordDetection", "shields");
+            }
+            this.shields = shields;
             return this;
         }
         public Builder shields(String... shields) {

@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetConnectionOptionConnectionSetting {
 
         @CustomType.Setter
         public Builder pkce(String pkce) {
-            this.pkce = Objects.requireNonNull(pkce);
+            if (pkce == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionConnectionSetting", "pkce");
+            }
+            this.pkce = pkce;
             return this;
         }
         public GetConnectionOptionConnectionSetting build() {

@@ -6,6 +6,7 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.inputs.ConnectionOptionsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -349,7 +350,9 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ConnectionArgs build() {
-            $.strategy = Objects.requireNonNull($.strategy, "expected parameter 'strategy' to be non-null");
+            if ($.strategy == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "strategy");
+            }
             return $;
         }
     }

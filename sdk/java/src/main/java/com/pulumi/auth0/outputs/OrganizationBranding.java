@@ -59,11 +59,13 @@ public final class OrganizationBranding {
 
         @CustomType.Setter
         public Builder colors(@Nullable Map<String,String> colors) {
+
             this.colors = colors;
             return this;
         }
         @CustomType.Setter
         public Builder logoUrl(@Nullable String logoUrl) {
+
             this.logoUrl = logoUrl;
             return this;
         }

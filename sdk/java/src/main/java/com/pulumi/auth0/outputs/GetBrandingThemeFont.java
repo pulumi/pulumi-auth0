@@ -10,6 +10,7 @@ import com.pulumi.auth0.outputs.GetBrandingThemeFontLink;
 import com.pulumi.auth0.outputs.GetBrandingThemeFontSubtitle;
 import com.pulumi.auth0.outputs.GetBrandingThemeFontTitle;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
@@ -90,7 +91,10 @@ public final class GetBrandingThemeFont {
 
         @CustomType.Setter
         public Builder bodyTexts(List<GetBrandingThemeFontBodyText> bodyTexts) {
-            this.bodyTexts = Objects.requireNonNull(bodyTexts);
+            if (bodyTexts == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeFont", "bodyTexts");
+            }
+            this.bodyTexts = bodyTexts;
             return this;
         }
         public Builder bodyTexts(GetBrandingThemeFontBodyText... bodyTexts) {
@@ -98,7 +102,10 @@ public final class GetBrandingThemeFont {
         }
         @CustomType.Setter
         public Builder buttonsTexts(List<GetBrandingThemeFontButtonsText> buttonsTexts) {
-            this.buttonsTexts = Objects.requireNonNull(buttonsTexts);
+            if (buttonsTexts == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeFont", "buttonsTexts");
+            }
+            this.buttonsTexts = buttonsTexts;
             return this;
         }
         public Builder buttonsTexts(GetBrandingThemeFontButtonsText... buttonsTexts) {
@@ -106,12 +113,18 @@ public final class GetBrandingThemeFont {
         }
         @CustomType.Setter
         public Builder fontUrl(String fontUrl) {
-            this.fontUrl = Objects.requireNonNull(fontUrl);
+            if (fontUrl == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeFont", "fontUrl");
+            }
+            this.fontUrl = fontUrl;
             return this;
         }
         @CustomType.Setter
         public Builder inputLabels(List<GetBrandingThemeFontInputLabel> inputLabels) {
-            this.inputLabels = Objects.requireNonNull(inputLabels);
+            if (inputLabels == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeFont", "inputLabels");
+            }
+            this.inputLabels = inputLabels;
             return this;
         }
         public Builder inputLabels(GetBrandingThemeFontInputLabel... inputLabels) {
@@ -119,7 +132,10 @@ public final class GetBrandingThemeFont {
         }
         @CustomType.Setter
         public Builder links(List<GetBrandingThemeFontLink> links) {
-            this.links = Objects.requireNonNull(links);
+            if (links == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeFont", "links");
+            }
+            this.links = links;
             return this;
         }
         public Builder links(GetBrandingThemeFontLink... links) {
@@ -127,17 +143,26 @@ public final class GetBrandingThemeFont {
         }
         @CustomType.Setter
         public Builder linksStyle(String linksStyle) {
-            this.linksStyle = Objects.requireNonNull(linksStyle);
+            if (linksStyle == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeFont", "linksStyle");
+            }
+            this.linksStyle = linksStyle;
             return this;
         }
         @CustomType.Setter
         public Builder referenceTextSize(Double referenceTextSize) {
-            this.referenceTextSize = Objects.requireNonNull(referenceTextSize);
+            if (referenceTextSize == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeFont", "referenceTextSize");
+            }
+            this.referenceTextSize = referenceTextSize;
             return this;
         }
         @CustomType.Setter
         public Builder subtitles(List<GetBrandingThemeFontSubtitle> subtitles) {
-            this.subtitles = Objects.requireNonNull(subtitles);
+            if (subtitles == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeFont", "subtitles");
+            }
+            this.subtitles = subtitles;
             return this;
         }
         public Builder subtitles(GetBrandingThemeFontSubtitle... subtitles) {
@@ -145,7 +170,10 @@ public final class GetBrandingThemeFont {
         }
         @CustomType.Setter
         public Builder titles(List<GetBrandingThemeFontTitle> titles) {
-            this.titles = Objects.requireNonNull(titles);
+            if (titles == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeFont", "titles");
+            }
+            this.titles = titles;
             return this;
         }
         public Builder titles(GetBrandingThemeFontTitle... titles) {

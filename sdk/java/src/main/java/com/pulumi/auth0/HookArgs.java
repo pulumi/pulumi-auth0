@@ -5,6 +5,7 @@ package com.pulumi.auth0;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -264,8 +265,12 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HookArgs build() {
-            $.script = Objects.requireNonNull($.script, "expected parameter 'script' to be non-null");
-            $.triggerId = Objects.requireNonNull($.triggerId, "expected parameter 'triggerId' to be non-null");
+            if ($.script == null) {
+                throw new MissingRequiredPropertyException("HookArgs", "script");
+            }
+            if ($.triggerId == null) {
+                throw new MissingRequiredPropertyException("HookArgs", "triggerId");
+            }
             return $;
         }
     }

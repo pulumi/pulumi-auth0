@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class TenantSessions {
 
         @CustomType.Setter
         public Builder oidcLogoutPromptEnabled(Boolean oidcLogoutPromptEnabled) {
-            this.oidcLogoutPromptEnabled = Objects.requireNonNull(oidcLogoutPromptEnabled);
+            if (oidcLogoutPromptEnabled == null) {
+              throw new MissingRequiredPropertyException("TenantSessions", "oidcLogoutPromptEnabled");
+            }
+            this.oidcLogoutPromptEnabled = oidcLogoutPromptEnabled;
             return this;
         }
         public TenantSessions build() {

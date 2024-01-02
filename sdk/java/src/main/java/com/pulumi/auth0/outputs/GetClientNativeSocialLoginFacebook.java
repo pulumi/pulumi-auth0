@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClientNativeSocialLoginFacebook {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetClientNativeSocialLoginFacebook", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         public GetClientNativeSocialLoginFacebook build() {

@@ -72,16 +72,19 @@ public final class BrandingThemePageBackground {
 
         @CustomType.Setter
         public Builder backgroundColor(@Nullable String backgroundColor) {
+
             this.backgroundColor = backgroundColor;
             return this;
         }
         @CustomType.Setter
         public Builder backgroundImageUrl(@Nullable String backgroundImageUrl) {
+
             this.backgroundImageUrl = backgroundImageUrl;
             return this;
         }
         @CustomType.Setter
         public Builder pageLayout(@Nullable String pageLayout) {
+
             this.pageLayout = pageLayout;
             return this;
         }

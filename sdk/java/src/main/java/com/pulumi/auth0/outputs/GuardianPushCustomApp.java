@@ -72,16 +72,19 @@ public final class GuardianPushCustomApp {
 
         @CustomType.Setter
         public Builder appName(@Nullable String appName) {
+
             this.appName = appName;
             return this;
         }
         @CustomType.Setter
         public Builder appleAppLink(@Nullable String appleAppLink) {
+
             this.appleAppLink = appleAppLink;
             return this;
         }
         @CustomType.Setter
         public Builder googleAppLink(@Nullable String googleAppLink) {
+
             this.googleAppLink = googleAppLink;
             return this;
         }

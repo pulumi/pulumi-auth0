@@ -59,11 +59,13 @@ public final class ClientAddonsSamlpLogout {
 
         @CustomType.Setter
         public Builder callback(@Nullable String callback) {
+
             this.callback = callback;
             return this;
         }
         @CustomType.Setter
         public Builder sloEnabled(@Nullable Boolean sloEnabled) {
+
             this.sloEnabled = sloEnabled;
             return this;
         }

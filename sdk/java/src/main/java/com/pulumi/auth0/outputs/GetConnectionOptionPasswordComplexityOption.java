@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetConnectionOptionPasswordComplexityOption {
 
         @CustomType.Setter
         public Builder minLength(Integer minLength) {
-            this.minLength = Objects.requireNonNull(minLength);
+            if (minLength == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionPasswordComplexityOption", "minLength");
+            }
+            this.minLength = minLength;
             return this;
         }
         public GetConnectionOptionPasswordComplexityOption build() {

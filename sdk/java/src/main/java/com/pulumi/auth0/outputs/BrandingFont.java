@@ -44,6 +44,7 @@ public final class BrandingFont {
 
         @CustomType.Setter
         public Builder url(@Nullable String url) {
+
             this.url = url;
             return this;
         }

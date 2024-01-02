@@ -58,11 +58,13 @@ public final class AttackProtectionSuspiciousIpThrottlingPreUserRegistration {
 
         @CustomType.Setter
         public Builder maxAttempts(@Nullable Integer maxAttempts) {
+
             this.maxAttempts = maxAttempts;
             return this;
         }
         @CustomType.Setter
         public Builder rate(@Nullable Integer rate) {
+
             this.rate = rate;
             return this;
         }

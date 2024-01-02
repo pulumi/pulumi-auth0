@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClientAddonWam {
 
         @CustomType.Setter
         public Builder masterKey(String masterKey) {
-            this.masterKey = Objects.requireNonNull(masterKey);
+            if (masterKey == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonWam", "masterKey");
+            }
+            this.masterKey = masterKey;
             return this;
         }
         public GetClientAddonWam build() {

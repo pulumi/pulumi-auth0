@@ -5,6 +5,7 @@ package com.pulumi.auth0;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class ConnectionClientArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ConnectionClientArgs build() {
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
-            $.connectionId = Objects.requireNonNull($.connectionId, "expected parameter 'connectionId' to be non-null");
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("ConnectionClientArgs", "clientId");
+            }
+            if ($.connectionId == null) {
+                throw new MissingRequiredPropertyException("ConnectionClientArgs", "connectionId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClientAddonNewrelic {
 
         @CustomType.Setter
         public Builder account(String account) {
-            this.account = Objects.requireNonNull(account);
+            if (account == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonNewrelic", "account");
+            }
+            this.account = account;
             return this;
         }
         public GetClientAddonNewrelic build() {

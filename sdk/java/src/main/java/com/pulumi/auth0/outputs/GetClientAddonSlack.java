@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClientAddonSlack {
 
         @CustomType.Setter
         public Builder team(String team) {
-            this.team = Objects.requireNonNull(team);
+            if (team == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSlack", "team");
+            }
+            this.team = team;
             return this;
         }
         public GetClientAddonSlack build() {

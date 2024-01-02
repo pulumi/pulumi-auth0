@@ -59,11 +59,13 @@ public final class EmailProviderSettingsMessage {
 
         @CustomType.Setter
         public Builder configurationSetName(@Nullable String configurationSetName) {
+
             this.configurationSetName = configurationSetName;
             return this;
         }
         @CustomType.Setter
         public Builder viewContentLink(@Nullable Boolean viewContentLink) {
+
             this.viewContentLink = viewContentLink;
             return this;
         }

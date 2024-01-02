@@ -5,6 +5,7 @@ package com.pulumi.auth0;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -374,12 +375,24 @@ public final class EmailTemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EmailTemplateArgs build() {
-            $.body = Objects.requireNonNull($.body, "expected parameter 'body' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.from = Objects.requireNonNull($.from, "expected parameter 'from' to be non-null");
-            $.subject = Objects.requireNonNull($.subject, "expected parameter 'subject' to be non-null");
-            $.syntax = Objects.requireNonNull($.syntax, "expected parameter 'syntax' to be non-null");
-            $.template = Objects.requireNonNull($.template, "expected parameter 'template' to be non-null");
+            if ($.body == null) {
+                throw new MissingRequiredPropertyException("EmailTemplateArgs", "body");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("EmailTemplateArgs", "enabled");
+            }
+            if ($.from == null) {
+                throw new MissingRequiredPropertyException("EmailTemplateArgs", "from");
+            }
+            if ($.subject == null) {
+                throw new MissingRequiredPropertyException("EmailTemplateArgs", "subject");
+            }
+            if ($.syntax == null) {
+                throw new MissingRequiredPropertyException("EmailTemplateArgs", "syntax");
+            }
+            if ($.template == null) {
+                throw new MissingRequiredPropertyException("EmailTemplateArgs", "template");
+            }
             return $;
         }
     }

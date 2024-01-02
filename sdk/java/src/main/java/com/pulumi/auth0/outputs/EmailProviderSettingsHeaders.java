@@ -58,11 +58,13 @@ public final class EmailProviderSettingsHeaders {
 
         @CustomType.Setter
         public Builder xMcViewContentLink(@Nullable String xMcViewContentLink) {
+
             this.xMcViewContentLink = xMcViewContentLink;
             return this;
         }
         @CustomType.Setter
         public Builder xSesConfigurationSet(@Nullable String xSesConfigurationSet) {
+
             this.xSesConfigurationSet = xSesConfigurationSet;
             return this;
         }

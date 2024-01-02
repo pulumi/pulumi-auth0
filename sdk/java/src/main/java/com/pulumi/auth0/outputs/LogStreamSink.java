@@ -369,121 +369,145 @@ public final class LogStreamSink {
 
         @CustomType.Setter
         public Builder awsAccountId(@Nullable String awsAccountId) {
+
             this.awsAccountId = awsAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder awsPartnerEventSource(@Nullable String awsPartnerEventSource) {
+
             this.awsPartnerEventSource = awsPartnerEventSource;
             return this;
         }
         @CustomType.Setter
         public Builder awsRegion(@Nullable String awsRegion) {
+
             this.awsRegion = awsRegion;
             return this;
         }
         @CustomType.Setter
         public Builder azurePartnerTopic(@Nullable String azurePartnerTopic) {
+
             this.azurePartnerTopic = azurePartnerTopic;
             return this;
         }
         @CustomType.Setter
         public Builder azureRegion(@Nullable String azureRegion) {
+
             this.azureRegion = azureRegion;
             return this;
         }
         @CustomType.Setter
         public Builder azureResourceGroup(@Nullable String azureResourceGroup) {
+
             this.azureResourceGroup = azureResourceGroup;
             return this;
         }
         @CustomType.Setter
         public Builder azureSubscriptionId(@Nullable String azureSubscriptionId) {
+
             this.azureSubscriptionId = azureSubscriptionId;
             return this;
         }
         @CustomType.Setter
         public Builder datadogApiKey(@Nullable String datadogApiKey) {
+
             this.datadogApiKey = datadogApiKey;
             return this;
         }
         @CustomType.Setter
         public Builder datadogRegion(@Nullable String datadogRegion) {
+
             this.datadogRegion = datadogRegion;
             return this;
         }
         @CustomType.Setter
         public Builder httpAuthorization(@Nullable String httpAuthorization) {
+
             this.httpAuthorization = httpAuthorization;
             return this;
         }
         @CustomType.Setter
         public Builder httpContentFormat(@Nullable String httpContentFormat) {
+
             this.httpContentFormat = httpContentFormat;
             return this;
         }
         @CustomType.Setter
         public Builder httpContentType(@Nullable String httpContentType) {
+
             this.httpContentType = httpContentType;
             return this;
         }
         @CustomType.Setter
         public Builder httpCustomHeaders(@Nullable List<Map<String,String>> httpCustomHeaders) {
+
             this.httpCustomHeaders = httpCustomHeaders;
             return this;
         }
         @CustomType.Setter
         public Builder httpEndpoint(@Nullable String httpEndpoint) {
+
             this.httpEndpoint = httpEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder mixpanelProjectId(@Nullable String mixpanelProjectId) {
+
             this.mixpanelProjectId = mixpanelProjectId;
             return this;
         }
         @CustomType.Setter
         public Builder mixpanelRegion(@Nullable String mixpanelRegion) {
+
             this.mixpanelRegion = mixpanelRegion;
             return this;
         }
         @CustomType.Setter
         public Builder mixpanelServiceAccountPassword(@Nullable String mixpanelServiceAccountPassword) {
+
             this.mixpanelServiceAccountPassword = mixpanelServiceAccountPassword;
             return this;
         }
         @CustomType.Setter
         public Builder mixpanelServiceAccountUsername(@Nullable String mixpanelServiceAccountUsername) {
+
             this.mixpanelServiceAccountUsername = mixpanelServiceAccountUsername;
             return this;
         }
         @CustomType.Setter
         public Builder segmentWriteKey(@Nullable String segmentWriteKey) {
+
             this.segmentWriteKey = segmentWriteKey;
             return this;
         }
         @CustomType.Setter
         public Builder splunkDomain(@Nullable String splunkDomain) {
+
             this.splunkDomain = splunkDomain;
             return this;
         }
         @CustomType.Setter
         public Builder splunkPort(@Nullable String splunkPort) {
+
             this.splunkPort = splunkPort;
             return this;
         }
         @CustomType.Setter
         public Builder splunkSecure(@Nullable Boolean splunkSecure) {
+
             this.splunkSecure = splunkSecure;
             return this;
         }
         @CustomType.Setter
         public Builder splunkToken(@Nullable String splunkToken) {
+
             this.splunkToken = splunkToken;
             return this;
         }
         @CustomType.Setter
         public Builder sumoSourceAddress(@Nullable String sumoSourceAddress) {
+
             this.sumoSourceAddress = sumoSourceAddress;
             return this;
         }

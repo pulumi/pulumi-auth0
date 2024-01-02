@@ -6,6 +6,7 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.inputs.LogStreamSinkArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -237,8 +238,12 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LogStreamArgs build() {
-            $.sink = Objects.requireNonNull($.sink, "expected parameter 'sink' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.sink == null) {
+                throw new MissingRequiredPropertyException("LogStreamArgs", "sink");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("LogStreamArgs", "type");
+            }
             return $;
         }
     }

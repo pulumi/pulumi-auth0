@@ -6,6 +6,7 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.inputs.TriggerActionsActionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -123,8 +124,12 @@ public final class TriggerActionsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public TriggerActionsArgs build() {
-            $.actions = Objects.requireNonNull($.actions, "expected parameter 'actions' to be non-null");
-            $.trigger = Objects.requireNonNull($.trigger, "expected parameter 'trigger' to be non-null");
+            if ($.actions == null) {
+                throw new MissingRequiredPropertyException("TriggerActionsArgs", "actions");
+            }
+            if ($.trigger == null) {
+                throw new MissingRequiredPropertyException("TriggerActionsArgs", "trigger");
+            }
             return $;
         }
     }
