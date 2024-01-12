@@ -5747,7 +5747,7 @@ class ConnectionOptionsConnectionSettingsArgs:
     def __init__(__self__, *,
                  pkce: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] pkce: PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+        :param pulumi.Input[str] pkce: PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
         """
         pulumi.set(__self__, "pkce", pkce)
 
@@ -5755,7 +5755,7 @@ class ConnectionOptionsConnectionSettingsArgs:
     @pulumi.getter
     def pkce(self) -> pulumi.Input[str]:
         """
-        PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+        PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
         """
         return pulumi.get(self, "pkce")
 
