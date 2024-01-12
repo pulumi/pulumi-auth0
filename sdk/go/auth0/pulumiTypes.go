@@ -13763,7 +13763,7 @@ func (o ConnectionOptionsAttributeMapPtrOutput) UserinfoScope() pulumi.StringPtr
 }
 
 type ConnectionOptionsConnectionSettings struct {
-	// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+	// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
 	Pkce string `pulumi:"pkce"`
 }
 
@@ -13779,7 +13779,7 @@ type ConnectionOptionsConnectionSettingsInput interface {
 }
 
 type ConnectionOptionsConnectionSettingsArgs struct {
-	// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+	// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
 	Pkce pulumi.StringInput `pulumi:"pkce"`
 }
 
@@ -13860,7 +13860,7 @@ func (o ConnectionOptionsConnectionSettingsOutput) ToConnectionOptionsConnection
 	}).(ConnectionOptionsConnectionSettingsPtrOutput)
 }
 
-// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
 func (o ConnectionOptionsConnectionSettingsOutput) Pkce() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionOptionsConnectionSettings) string { return v.Pkce }).(pulumi.StringOutput)
 }
@@ -13889,7 +13889,7 @@ func (o ConnectionOptionsConnectionSettingsPtrOutput) Elem() ConnectionOptionsCo
 	}).(ConnectionOptionsConnectionSettingsOutput)
 }
 
-// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `s256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
 func (o ConnectionOptionsConnectionSettingsPtrOutput) Pkce() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsConnectionSettings) *string {
 		if v == nil {
