@@ -16,16 +16,19 @@ package auth0
 
 import (
 	"fmt"
-	// embed is used to store bridge-metadata.json in the compiled binary
-	_ "embed"
 	"path/filepath"
 
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
+
 	auth0Shim "github.com/auth0/terraform-provider-auth0/shim"
-	"github.com/pulumi/pulumi-auth0/provider/v3/pkg/version"
+
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+
+	"github.com/pulumi/pulumi-auth0/provider/v3/pkg/version"
 )
 
 // all of the token components used below.
