@@ -1,6 +1,8 @@
 module github.com/pulumi/pulumi-auth0/provider/v3
 
-go 1.21
+go 1.21.0
+
+toolchain go1.21.5
 
 replace (
 	github.com/auth0/terraform-provider-auth0 => ../upstream
@@ -10,6 +12,7 @@ replace (
 
 require (
 	github.com/auth0/terraform-provider-auth0 v0.50.2
+	github.com/pulumi/providertest v0.0.7
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.71.0
 	github.com/pulumi/pulumi/sdk/v3 v3.101.1
 )
