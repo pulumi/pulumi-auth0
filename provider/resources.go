@@ -15,8 +15,10 @@
 package auth0
 
 import (
+	"context"
+	"encoding/json"
 	"fmt"
-	"path/filepath"
+	"path"
 
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
@@ -26,7 +28,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
 	"github.com/pulumi/pulumi-auth0/provider/v3/pkg/version"
 )
@@ -38,13 +40,6 @@ const (
 	// modules:
 	mainMod = "index" // the y module
 )
-
-// makeResource manufactures a standard resource token given a module and resource name.  It
-// automatically uses the main package and names the file by simply lower casing the resource's
-// first character.
-func makeResource(mod string, res string) tokens.Type {
-	return tfbridge.MakeResource(mainPkg, mod, res)
-}
 
 var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
 
@@ -74,20 +69,17 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"auth0_client": {
-				Tok: makeResource(mainMod, "Client"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"description": {
-						Default: managedByPulumi,
-					},
+					"description": {Default: managedByPulumi},
 				},
 			},
 			"auth0_role": {
-				Tok: makeResource(mainMod, "Role"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"description": {
-						Default: managedByPulumi,
-					},
+					"description": {Default: managedByPulumi},
 				},
+			},
+			"auth0_connection": {
+				TransformFromState: connectionMigration,
 			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
@@ -109,7 +101,7 @@ func Provider() tfbridge.ProviderInfo {
 		})(),
 
 		Golang: &tfbridge.GolangInfo{
-			ImportBasePath: filepath.Join(
+			ImportBasePath: path.Join(
 				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
@@ -131,4 +123,55 @@ func Provider() tfbridge.ProviderInfo {
 	prov.SetAutonaming(255, "-")
 
 	return prov
+}
+
+// connectionMigration migrates options.fieldsMap from a map to a JSON encoded string.
+//
+// This migration handles the general case where options.fieldsMap is a simple
+// map[string]string by encoding the map to JSON.
+//
+// See https://github.com/pulumi/pulumi-auth0/issues/398 for why this is necessary.
+func connectionMigration(ctx context.Context, state resource.PropertyMap) (resource.PropertyMap, error) {
+	if state == nil {
+		return state, nil
+	}
+	const (
+		optionsKey  = "options"
+		fieldMapKey = "fieldsMap"
+	)
+	if !state[optionsKey].IsObject() {
+		return state, nil
+	}
+	options := state[optionsKey].ObjectValue()
+
+	fieldMap, ok := options[fieldMapKey]
+	if !ok || !fieldMap.IsObject() {
+		return state, nil
+	}
+
+	var fieldMapIsSecret bool
+	if fieldMap.IsSecret() {
+		fieldMapIsSecret = true
+		fieldMap = fieldMap.SecretValue().Element
+	}
+
+	if fieldMap.ContainsUnknowns() {
+		return state, nil
+	}
+
+	jsonValue, err := json.Marshal(fieldMap.Mappable())
+	if err != nil {
+		tfbridge.GetLogger(ctx).Warn(fmt.Sprintf("Unable to convert %s.%s into a string.", optionsKey, fieldMapKey))
+		return state, nil
+	}
+
+	newValue := resource.NewProperty(string(jsonValue))
+
+	if fieldMapIsSecret {
+		newValue = resource.MakeSecret(newValue)
+	}
+
+	options[fieldMapKey] = newValue
+
+	return state, nil
 }
