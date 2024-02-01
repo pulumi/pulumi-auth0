@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionOptionAttributeMap {
+    /**
+     * @return This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+     * 
+     */
     private String attributes;
+    /**
+     * @return Method used to map incoming claims. Possible values: `use_map` (Okta or OIDC), `bind_all` (OIDC) or `basic_profile` (Okta).
+     * 
+     */
     private String mappingMode;
+    /**
+     * @return This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
+     * 
+     */
     private String userinfoScope;
 
     private GetConnectionOptionAttributeMap() {}
+    /**
+     * @return This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+     * 
+     */
     public String attributes() {
         return this.attributes;
     }
+    /**
+     * @return Method used to map incoming claims. Possible values: `use_map` (Okta or OIDC), `bind_all` (OIDC) or `basic_profile` (Okta).
+     * 
+     */
     public String mappingMode() {
         return this.mappingMode;
     }
+    /**
+     * @return This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
+     * 
+     */
     public String userinfoScope() {
         return this.userinfoScope;
     }

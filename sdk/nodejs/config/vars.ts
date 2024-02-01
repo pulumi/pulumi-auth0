@@ -10,8 +10,8 @@ const __config = new pulumi.Config("auth0");
 /**
  * Your Auth0 [management api access
  * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
- * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
- * specified, `api_token` will be used over `client_id` + `client_secret` fields.
+ * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are
+ * specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
  */
 export declare const apiToken: string | undefined;
 Object.defineProperty(exports, "apiToken", {

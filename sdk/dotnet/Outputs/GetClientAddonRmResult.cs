@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetClientAddonRmResult
     {
+        /// <summary>
+        /// URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

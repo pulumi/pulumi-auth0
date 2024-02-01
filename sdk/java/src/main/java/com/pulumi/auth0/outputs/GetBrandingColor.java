@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBrandingColor {
+    /**
+     * @return Background color of login pages in hexadecimal.
+     * 
+     */
     private String pageBackground;
+    /**
+     * @return Primary button background color in hexadecimal.
+     * 
+     */
     private String primary;
 
     private GetBrandingColor() {}
+    /**
+     * @return Background color of login pages in hexadecimal.
+     * 
+     */
     public String pageBackground() {
         return this.pageBackground;
     }
+    /**
+     * @return Primary button background color in hexadecimal.
+     * 
+     */
     public String primary() {
         return this.primary;
     }

@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBrandingThemePageBackground {
+    /**
+     * @return Background color. Defaults to `#000000`.
+     * 
+     */
     private String backgroundColor;
+    /**
+     * @return Background image url. Defaults to an empty string.
+     * 
+     */
     private String backgroundImageUrl;
+    /**
+     * @return Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
+     * 
+     */
     private String pageLayout;
 
     private GetBrandingThemePageBackground() {}
+    /**
+     * @return Background color. Defaults to `#000000`.
+     * 
+     */
     public String backgroundColor() {
         return this.backgroundColor;
     }
+    /**
+     * @return Background image url. Defaults to an empty string.
+     * 
+     */
     public String backgroundImageUrl() {
         return this.backgroundImageUrl;
     }
+    /**
+     * @return Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
+     * 
+     */
     public String pageLayout() {
         return this.pageLayout;
     }

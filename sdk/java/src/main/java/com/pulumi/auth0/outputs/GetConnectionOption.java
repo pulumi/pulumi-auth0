@@ -28,365 +28,1085 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionOption {
+    /**
+     * @return ADFS URL where to fetch the metadata source.
+     * 
+     */
     private String adfsServer;
+    /**
+     * @return List of allowed audiences.
+     * 
+     */
     private List<String> allowedAudiences;
+    /**
+     * @return Enable API Access to users.
+     * 
+     */
     private Boolean apiEnableUsers;
+    /**
+     * @return App ID.
+     * 
+     */
     private String appId;
+    /**
+     * @return OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+     * 
+     */
     private List<GetConnectionOptionAttributeMap> attributeMaps;
+    /**
+     * @return Query string parameters to be included as part of the generated passwordless email link.
+     * 
+     */
     private Map<String,String> authParams;
+    /**
+     * @return Authorization endpoint.
+     * 
+     */
     private String authorizationEndpoint;
+    /**
+     * @return Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+     * 
+     */
     private Boolean bruteForceProtection;
+    /**
+     * @return The strategy&#39;s client ID.
+     * 
+     */
     private String clientId;
+    /**
+     * @return The strategy&#39;s client secret.
+     * 
+     */
     private String clientSecret;
+    /**
+     * @return Salesforce community base URL.
+     * 
+     */
     private String communityBaseUrl;
+    /**
+     * @return A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
+     * 
+     */
     private Map<String,Object> configuration;
+    /**
+     * @return Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+     * 
+     */
     private List<GetConnectionOptionConnectionSetting> connectionSettings;
+    /**
+     * @return A map of scripts used to integrate with a custom database.
+     * 
+     */
     private Map<String,String> customScripts;
+    /**
+     * @return When enabled, additional debug information will be generated.
+     * 
+     */
     private Boolean debug;
+    /**
+     * @return The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     * 
+     */
     private List<GetConnectionOptionDecryptionKey> decryptionKeys;
+    /**
+     * @return Sign Request Algorithm Digest.
+     * 
+     */
     private String digestAlgorithm;
+    /**
+     * @return Indicates whether to disable the cache or not.
+     * 
+     */
     private Boolean disableCache;
+    /**
+     * @return Indicates whether to remove the forgot password link within the New Universal Login.
+     * 
+     */
     private Boolean disableSelfServiceChangePassword;
+    /**
+     * @return When enabled, will disable sign out.
+     * 
+     */
     private Boolean disableSignOut;
+    /**
+     * @return Indicates whether to allow user sign-ups to your application.
+     * 
+     */
     private Boolean disableSignup;
+    /**
+     * @return OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+     * 
+     */
     private String discoveryUrl;
+    /**
+     * @return Domain name.
+     * 
+     */
     private String domain;
+    /**
+     * @return List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
+     * 
+     */
     private List<String> domainAliases;
+    /**
+     * @return Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+     * 
+     */
     private Boolean enableScriptContext;
+    /**
+     * @return Set to `true` to use a legacy user store.
+     * 
+     */
     private Boolean enabledDatabaseCustomization;
+    /**
+     * @return Custom Entity ID for the connection.
+     * 
+     */
     private String entityId;
+    /**
+     * @return Federation Metadata for the ADFS connection.
+     * 
+     */
     private String fedMetadataXml;
+    /**
+     * @return If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+     * 
+     */
     private String fieldsMap;
+    /**
+     * @return Specifies whether or not request info should be forwarded to sms gateway.
+     * 
+     */
     private Boolean forwardRequestInfo;
+    /**
+     * @return Address to use as the sender.
+     * 
+     */
     private String from;
+    /**
+     * @return Defines the parameters used to generate the auth token for the custom gateway.
+     * 
+     */
     private List<GetConnectionOptionGatewayAuthentication> gatewayAuthentications;
+    /**
+     * @return Defines a custom sms gateway to use instead of Twilio.
+     * 
+     */
     private String gatewayUrl;
+    /**
+     * @return Icon URL.
+     * 
+     */
     private String iconUrl;
+    /**
+     * @return Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
+     * 
+     */
     private String identityApi;
+    /**
+     * @return Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
+     * 
+     */
     private List<GetConnectionOptionIdpInitiated> idpInitiateds;
+    /**
+     * @return Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
+     * 
+     */
     private Boolean importMode;
+    /**
+     * @return A list of IPs.
+     * 
+     */
     private List<String> ips;
+    /**
+     * @return Issuer URL, e.g. `https://auth.example.com`.
+     * 
+     */
     private String issuer;
+    /**
+     * @return JWKS URI.
+     * 
+     */
     private String jwksUri;
+    /**
+     * @return Apple Key ID.
+     * 
+     */
     private String keyId;
+    /**
+     * @return By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+     * 
+     */
     private Boolean mapUserIdToId;
+    /**
+     * @return Maximum number of groups to retrieve.
+     * 
+     */
     private String maxGroupsToRetrieve;
+    /**
+     * @return SID for Copilot. Used when SMS Source is Copilot.
+     * 
+     */
     private String messagingServiceSid;
+    /**
+     * @return The URL of the SAML metadata document.
+     * 
+     */
     private String metadataUrl;
+    /**
+     * @return The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
+     * 
+     */
     private String metadataXml;
+    /**
+     * @return Configuration options for multifactor authentication.
+     * 
+     */
     private List<GetConnectionOptionMfa> mfas;
+    /**
+     * @return The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+     * 
+     */
     private String name;
+    /**
+     * @return If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
+     * 
+     */
     private List<String> nonPersistentAttrs;
+    /**
+     * @return Configuration settings for password complexity.
+     * 
+     */
     private List<GetConnectionOptionPasswordComplexityOption> passwordComplexityOptions;
+    /**
+     * @return Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
+     * 
+     */
     private List<GetConnectionOptionPasswordDictionary> passwordDictionaries;
+    /**
+     * @return Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
+     * 
+     */
     private List<GetConnectionOptionPasswordHistory> passwordHistories;
+    /**
+     * @return Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user&#39;s personal data, including user&#39;s `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user&#39;s `email`, or first part of the user&#39;s `email`.
+     * 
+     */
     private List<GetConnectionOptionPasswordNoPersonalInfo> passwordNoPersonalInfos;
+    /**
+     * @return Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
+     * 
+     */
     private String passwordPolicy;
+    /**
+     * @return Ping Federate Server URL.
+     * 
+     */
     private String pingFederateBaseUrl;
+    /**
+     * @return Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
+     * 
+     */
     private Boolean pkceEnabled;
+    /**
+     * @return The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
+     * 
+     */
     private String protocolBinding;
+    /**
+     * @return Defines the custom `sms_gateway` provider.
+     * 
+     */
     private String provider;
+    /**
+     * @return Template that formats the SAML request.
+     * 
+     */
     private String requestTemplate;
+    /**
+     * @return Indicates whether the user is required to provide a username in addition to an email address.
+     * 
+     */
     private Boolean requiresUsername;
+    /**
+     * @return Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
+     * 
+     */
     private List<String> scopes;
+    /**
+     * @return A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+     * 
+     */
     private Map<String,String> scripts;
+    /**
+     * @return Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
+     * 
+     */
     private String setUserRootAttributes;
+    /**
+     * @return Choose how Auth0 sets the email_verified field in the user profile.
+     * 
+     */
     private String shouldTrustEmailVerifiedConnection;
+    /**
+     * @return SAML single login URL for the connection.
+     * 
+     */
     private String signInEndpoint;
+    /**
+     * @return SAML single logout URL for the connection.
+     * 
+     */
     private String signOutEndpoint;
+    /**
+     * @return When enabled, the SAML authentication request will be signed.
+     * 
+     */
     private Boolean signSamlRequest;
+    /**
+     * @return Sign Request Algorithm.
+     * 
+     */
     private String signatureAlgorithm;
+    /**
+     * @return X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
+     * 
+     */
     private String signingCert;
+    /**
+     * @return The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     * 
+     */
     private List<GetConnectionOptionSigningKey> signingKeys;
+    /**
+     * @return Version 1 is deprecated, use version 2.
+     * 
+     */
     private Integer strategyVersion;
+    /**
+     * @return Subject line of the email.
+     * 
+     */
     private String subject;
+    /**
+     * @return Syntax of the template body.
+     * 
+     */
     private String syntax;
+    /**
+     * @return Apple Team ID.
+     * 
+     */
     private String teamId;
+    /**
+     * @return Body of the template.
+     * 
+     */
     private String template;
+    /**
+     * @return Tenant domain name.
+     * 
+     */
     private String tenantDomain;
+    /**
+     * @return Token endpoint.
+     * 
+     */
     private String tokenEndpoint;
+    /**
+     * @return Configuration options for one-time passwords.
+     * 
+     */
     private List<GetConnectionOptionTotp> totps;
+    /**
+     * @return SID for your Twilio account.
+     * 
+     */
     private String twilioSid;
+    /**
+     * @return AuthToken for your Twilio account.
+     * 
+     */
     private String twilioToken;
+    /**
+     * @return Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+     * 
+     */
     private String type;
+    /**
+     * @return You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
+     * 
+     */
     private String upstreamParams;
+    /**
+     * @return Indicates whether to use cert auth or not.
+     * 
+     */
     private Boolean useCertAuth;
+    /**
+     * @return Indicates whether to use Kerberos or not.
+     * 
+     */
     private Boolean useKerberos;
+    /**
+     * @return Whether to use WS-Fed.
+     * 
+     */
     private Boolean useWsfed;
+    /**
+     * @return Attribute in the SAML token that will be mapped to the user_id property in Auth0.
+     * 
+     */
     private String userIdAttribute;
+    /**
+     * @return User info endpoint.
+     * 
+     */
     private String userinfoEndpoint;
+    /**
+     * @return Validation of the minimum and maximum values allowed for a user to have as username.
+     * 
+     */
     private List<GetConnectionOptionValidation> validations;
+    /**
+     * @return Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you&#39;re using this for a multi-tenant application in Azure AD.
+     * 
+     */
     private Boolean waadCommonEndpoint;
+    /**
+     * @return Protocol to use.
+     * 
+     */
     private String waadProtocol;
 
     private GetConnectionOption() {}
+    /**
+     * @return ADFS URL where to fetch the metadata source.
+     * 
+     */
     public String adfsServer() {
         return this.adfsServer;
     }
+    /**
+     * @return List of allowed audiences.
+     * 
+     */
     public List<String> allowedAudiences() {
         return this.allowedAudiences;
     }
+    /**
+     * @return Enable API Access to users.
+     * 
+     */
     public Boolean apiEnableUsers() {
         return this.apiEnableUsers;
     }
+    /**
+     * @return App ID.
+     * 
+     */
     public String appId() {
         return this.appId;
     }
+    /**
+     * @return OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+     * 
+     */
     public List<GetConnectionOptionAttributeMap> attributeMaps() {
         return this.attributeMaps;
     }
+    /**
+     * @return Query string parameters to be included as part of the generated passwordless email link.
+     * 
+     */
     public Map<String,String> authParams() {
         return this.authParams;
     }
+    /**
+     * @return Authorization endpoint.
+     * 
+     */
     public String authorizationEndpoint() {
         return this.authorizationEndpoint;
     }
+    /**
+     * @return Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+     * 
+     */
     public Boolean bruteForceProtection() {
         return this.bruteForceProtection;
     }
+    /**
+     * @return The strategy&#39;s client ID.
+     * 
+     */
     public String clientId() {
         return this.clientId;
     }
+    /**
+     * @return The strategy&#39;s client secret.
+     * 
+     */
     public String clientSecret() {
         return this.clientSecret;
     }
+    /**
+     * @return Salesforce community base URL.
+     * 
+     */
     public String communityBaseUrl() {
         return this.communityBaseUrl;
     }
+    /**
+     * @return A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
+     * 
+     */
     public Map<String,Object> configuration() {
         return this.configuration;
     }
+    /**
+     * @return Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+     * 
+     */
     public List<GetConnectionOptionConnectionSetting> connectionSettings() {
         return this.connectionSettings;
     }
+    /**
+     * @return A map of scripts used to integrate with a custom database.
+     * 
+     */
     public Map<String,String> customScripts() {
         return this.customScripts;
     }
+    /**
+     * @return When enabled, additional debug information will be generated.
+     * 
+     */
     public Boolean debug() {
         return this.debug;
     }
+    /**
+     * @return The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     * 
+     */
     public List<GetConnectionOptionDecryptionKey> decryptionKeys() {
         return this.decryptionKeys;
     }
+    /**
+     * @return Sign Request Algorithm Digest.
+     * 
+     */
     public String digestAlgorithm() {
         return this.digestAlgorithm;
     }
+    /**
+     * @return Indicates whether to disable the cache or not.
+     * 
+     */
     public Boolean disableCache() {
         return this.disableCache;
     }
+    /**
+     * @return Indicates whether to remove the forgot password link within the New Universal Login.
+     * 
+     */
     public Boolean disableSelfServiceChangePassword() {
         return this.disableSelfServiceChangePassword;
     }
+    /**
+     * @return When enabled, will disable sign out.
+     * 
+     */
     public Boolean disableSignOut() {
         return this.disableSignOut;
     }
+    /**
+     * @return Indicates whether to allow user sign-ups to your application.
+     * 
+     */
     public Boolean disableSignup() {
         return this.disableSignup;
     }
+    /**
+     * @return OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+     * 
+     */
     public String discoveryUrl() {
         return this.discoveryUrl;
     }
+    /**
+     * @return Domain name.
+     * 
+     */
     public String domain() {
         return this.domain;
     }
+    /**
+     * @return List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
+     * 
+     */
     public List<String> domainAliases() {
         return this.domainAliases;
     }
+    /**
+     * @return Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+     * 
+     */
     public Boolean enableScriptContext() {
         return this.enableScriptContext;
     }
+    /**
+     * @return Set to `true` to use a legacy user store.
+     * 
+     */
     public Boolean enabledDatabaseCustomization() {
         return this.enabledDatabaseCustomization;
     }
+    /**
+     * @return Custom Entity ID for the connection.
+     * 
+     */
     public String entityId() {
         return this.entityId;
     }
+    /**
+     * @return Federation Metadata for the ADFS connection.
+     * 
+     */
     public String fedMetadataXml() {
         return this.fedMetadataXml;
     }
+    /**
+     * @return If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+     * 
+     */
     public String fieldsMap() {
         return this.fieldsMap;
     }
+    /**
+     * @return Specifies whether or not request info should be forwarded to sms gateway.
+     * 
+     */
     public Boolean forwardRequestInfo() {
         return this.forwardRequestInfo;
     }
+    /**
+     * @return Address to use as the sender.
+     * 
+     */
     public String from() {
         return this.from;
     }
+    /**
+     * @return Defines the parameters used to generate the auth token for the custom gateway.
+     * 
+     */
     public List<GetConnectionOptionGatewayAuthentication> gatewayAuthentications() {
         return this.gatewayAuthentications;
     }
+    /**
+     * @return Defines a custom sms gateway to use instead of Twilio.
+     * 
+     */
     public String gatewayUrl() {
         return this.gatewayUrl;
     }
+    /**
+     * @return Icon URL.
+     * 
+     */
     public String iconUrl() {
         return this.iconUrl;
     }
+    /**
+     * @return Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
+     * 
+     */
     public String identityApi() {
         return this.identityApi;
     }
+    /**
+     * @return Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
+     * 
+     */
     public List<GetConnectionOptionIdpInitiated> idpInitiateds() {
         return this.idpInitiateds;
     }
+    /**
+     * @return Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
+     * 
+     */
     public Boolean importMode() {
         return this.importMode;
     }
+    /**
+     * @return A list of IPs.
+     * 
+     */
     public List<String> ips() {
         return this.ips;
     }
+    /**
+     * @return Issuer URL, e.g. `https://auth.example.com`.
+     * 
+     */
     public String issuer() {
         return this.issuer;
     }
+    /**
+     * @return JWKS URI.
+     * 
+     */
     public String jwksUri() {
         return this.jwksUri;
     }
+    /**
+     * @return Apple Key ID.
+     * 
+     */
     public String keyId() {
         return this.keyId;
     }
+    /**
+     * @return By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+     * 
+     */
     public Boolean mapUserIdToId() {
         return this.mapUserIdToId;
     }
+    /**
+     * @return Maximum number of groups to retrieve.
+     * 
+     */
     public String maxGroupsToRetrieve() {
         return this.maxGroupsToRetrieve;
     }
+    /**
+     * @return SID for Copilot. Used when SMS Source is Copilot.
+     * 
+     */
     public String messagingServiceSid() {
         return this.messagingServiceSid;
     }
+    /**
+     * @return The URL of the SAML metadata document.
+     * 
+     */
     public String metadataUrl() {
         return this.metadataUrl;
     }
+    /**
+     * @return The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
+     * 
+     */
     public String metadataXml() {
         return this.metadataXml;
     }
+    /**
+     * @return Configuration options for multifactor authentication.
+     * 
+     */
     public List<GetConnectionOptionMfa> mfas() {
         return this.mfas;
     }
+    /**
+     * @return The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
+     * 
+     */
     public List<String> nonPersistentAttrs() {
         return this.nonPersistentAttrs;
     }
+    /**
+     * @return Configuration settings for password complexity.
+     * 
+     */
     public List<GetConnectionOptionPasswordComplexityOption> passwordComplexityOptions() {
         return this.passwordComplexityOptions;
     }
+    /**
+     * @return Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
+     * 
+     */
     public List<GetConnectionOptionPasswordDictionary> passwordDictionaries() {
         return this.passwordDictionaries;
     }
+    /**
+     * @return Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
+     * 
+     */
     public List<GetConnectionOptionPasswordHistory> passwordHistories() {
         return this.passwordHistories;
     }
+    /**
+     * @return Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user&#39;s personal data, including user&#39;s `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user&#39;s `email`, or first part of the user&#39;s `email`.
+     * 
+     */
     public List<GetConnectionOptionPasswordNoPersonalInfo> passwordNoPersonalInfos() {
         return this.passwordNoPersonalInfos;
     }
+    /**
+     * @return Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
+     * 
+     */
     public String passwordPolicy() {
         return this.passwordPolicy;
     }
+    /**
+     * @return Ping Federate Server URL.
+     * 
+     */
     public String pingFederateBaseUrl() {
         return this.pingFederateBaseUrl;
     }
+    /**
+     * @return Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
+     * 
+     */
     public Boolean pkceEnabled() {
         return this.pkceEnabled;
     }
+    /**
+     * @return The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
+     * 
+     */
     public String protocolBinding() {
         return this.protocolBinding;
     }
+    /**
+     * @return Defines the custom `sms_gateway` provider.
+     * 
+     */
     public String provider() {
         return this.provider;
     }
+    /**
+     * @return Template that formats the SAML request.
+     * 
+     */
     public String requestTemplate() {
         return this.requestTemplate;
     }
+    /**
+     * @return Indicates whether the user is required to provide a username in addition to an email address.
+     * 
+     */
     public Boolean requiresUsername() {
         return this.requiresUsername;
     }
+    /**
+     * @return Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
+     * 
+     */
     public List<String> scopes() {
         return this.scopes;
     }
+    /**
+     * @return A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+     * 
+     */
     public Map<String,String> scripts() {
         return this.scripts;
     }
+    /**
+     * @return Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
+     * 
+     */
     public String setUserRootAttributes() {
         return this.setUserRootAttributes;
     }
+    /**
+     * @return Choose how Auth0 sets the email_verified field in the user profile.
+     * 
+     */
     public String shouldTrustEmailVerifiedConnection() {
         return this.shouldTrustEmailVerifiedConnection;
     }
+    /**
+     * @return SAML single login URL for the connection.
+     * 
+     */
     public String signInEndpoint() {
         return this.signInEndpoint;
     }
+    /**
+     * @return SAML single logout URL for the connection.
+     * 
+     */
     public String signOutEndpoint() {
         return this.signOutEndpoint;
     }
+    /**
+     * @return When enabled, the SAML authentication request will be signed.
+     * 
+     */
     public Boolean signSamlRequest() {
         return this.signSamlRequest;
     }
+    /**
+     * @return Sign Request Algorithm.
+     * 
+     */
     public String signatureAlgorithm() {
         return this.signatureAlgorithm;
     }
+    /**
+     * @return X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
+     * 
+     */
     public String signingCert() {
         return this.signingCert;
     }
+    /**
+     * @return The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     * 
+     */
     public List<GetConnectionOptionSigningKey> signingKeys() {
         return this.signingKeys;
     }
+    /**
+     * @return Version 1 is deprecated, use version 2.
+     * 
+     */
     public Integer strategyVersion() {
         return this.strategyVersion;
     }
+    /**
+     * @return Subject line of the email.
+     * 
+     */
     public String subject() {
         return this.subject;
     }
+    /**
+     * @return Syntax of the template body.
+     * 
+     */
     public String syntax() {
         return this.syntax;
     }
+    /**
+     * @return Apple Team ID.
+     * 
+     */
     public String teamId() {
         return this.teamId;
     }
+    /**
+     * @return Body of the template.
+     * 
+     */
     public String template() {
         return this.template;
     }
+    /**
+     * @return Tenant domain name.
+     * 
+     */
     public String tenantDomain() {
         return this.tenantDomain;
     }
+    /**
+     * @return Token endpoint.
+     * 
+     */
     public String tokenEndpoint() {
         return this.tokenEndpoint;
     }
+    /**
+     * @return Configuration options for one-time passwords.
+     * 
+     */
     public List<GetConnectionOptionTotp> totps() {
         return this.totps;
     }
+    /**
+     * @return SID for your Twilio account.
+     * 
+     */
     public String twilioSid() {
         return this.twilioSid;
     }
+    /**
+     * @return AuthToken for your Twilio account.
+     * 
+     */
     public String twilioToken() {
         return this.twilioToken;
     }
+    /**
+     * @return Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
+     * 
+     */
     public String upstreamParams() {
         return this.upstreamParams;
     }
+    /**
+     * @return Indicates whether to use cert auth or not.
+     * 
+     */
     public Boolean useCertAuth() {
         return this.useCertAuth;
     }
+    /**
+     * @return Indicates whether to use Kerberos or not.
+     * 
+     */
     public Boolean useKerberos() {
         return this.useKerberos;
     }
+    /**
+     * @return Whether to use WS-Fed.
+     * 
+     */
     public Boolean useWsfed() {
         return this.useWsfed;
     }
+    /**
+     * @return Attribute in the SAML token that will be mapped to the user_id property in Auth0.
+     * 
+     */
     public String userIdAttribute() {
         return this.userIdAttribute;
     }
+    /**
+     * @return User info endpoint.
+     * 
+     */
     public String userinfoEndpoint() {
         return this.userinfoEndpoint;
     }
+    /**
+     * @return Validation of the minimum and maximum values allowed for a user to have as username.
+     * 
+     */
     public List<GetConnectionOptionValidation> validations() {
         return this.validations;
     }
+    /**
+     * @return Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you&#39;re using this for a multi-tenant application in Azure AD.
+     * 
+     */
     public Boolean waadCommonEndpoint() {
         return this.waadCommonEndpoint;
     }
+    /**
+     * @return Protocol to use.
+     * 
+     */
     public String waadProtocol() {
         return this.waadProtocol;
     }

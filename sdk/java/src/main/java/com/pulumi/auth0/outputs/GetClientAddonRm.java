@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonRm {
+    /**
+     * @return URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
+     * 
+     */
     private String url;
 
     private GetClientAddonRm() {}
+    /**
+     * @return URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
+     * 
+     */
     public String url() {
         return this.url;
     }

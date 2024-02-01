@@ -39,121 +39,353 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddon {
+    /**
+     * @return AWS Addon configuration.
+     * 
+     */
     private List<GetClientAddonAw> aws;
+    /**
+     * @return Azure Blob Storage Addon configuration.
+     * 
+     */
     private List<GetClientAddonAzureBlob> azureBlobs;
+    /**
+     * @return Azure Storage Bus Addon configuration.
+     * 
+     */
     private List<GetClientAddonAzureSb> azureSbs;
+    /**
+     * @return Box SSO indicator (no configuration settings needed for Box SSO).
+     * 
+     */
     private List<GetClientAddonBox> boxes;
+    /**
+     * @return CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+     * 
+     */
     private List<GetClientAddonCloudbee> cloudbees;
+    /**
+     * @return Concur SSO indicator (no configuration settings needed for Concur SSO).
+     * 
+     */
     private List<GetClientAddonConcur> concurs;
+    /**
+     * @return Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+     * 
+     */
     private List<GetClientAddonDropbox> dropboxes;
+    /**
+     * @return Adobe EchoSign SSO configuration.
+     * 
+     */
     private List<GetClientAddonEchosign> echosigns;
+    /**
+     * @return Egnyte SSO configuration.
+     * 
+     */
     private List<GetClientAddonEgnyte> egnytes;
+    /**
+     * @return Google Firebase addon configuration.
+     * 
+     */
     private List<GetClientAddonFirebase> firebases;
+    /**
+     * @return Layer addon configuration.
+     * 
+     */
     private List<GetClientAddonLayer> layers;
+    /**
+     * @return Microsoft Dynamics CRM SSO configuration.
+     * 
+     */
     private List<GetClientAddonMscrm> mscrms;
+    /**
+     * @return New Relic SSO configuration.
+     * 
+     */
     private List<GetClientAddonNewrelic> newrelics;
+    /**
+     * @return Microsoft Office 365 SSO configuration.
+     * 
+     */
     private List<GetClientAddonOffice365> office365s;
+    /**
+     * @return Active Directory Rights Management Service SSO configuration.
+     * 
+     */
     private List<GetClientAddonRm> rms;
+    /**
+     * @return Salesforce API addon configuration.
+     * 
+     */
     private List<GetClientAddonSalesforceApi> salesforceApis;
+    /**
+     * @return Salesforce Sandbox addon configuration.
+     * 
+     */
     private List<GetClientAddonSalesforceSandboxApi> salesforceSandboxApis;
+    /**
+     * @return Salesforce SSO configuration.
+     * 
+     */
     private List<GetClientAddonSalesforce> salesforces;
+    /**
+     * @return Configuration settings for a SAML add-on.
+     * 
+     */
     private List<GetClientAddonSamlp> samlps;
+    /**
+     * @return SAP API addon configuration.
+     * 
+     */
     private List<GetClientAddonSapApi> sapApis;
+    /**
+     * @return Sentry SSO configuration.
+     * 
+     */
     private List<GetClientAddonSentry> sentries;
+    /**
+     * @return SharePoint SSO configuration.
+     * 
+     */
     private List<GetClientAddonSharepoint> sharepoints;
+    /**
+     * @return Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+     * 
+     */
     private List<GetClientAddonSlack> slacks;
+    /**
+     * @return SpringCM SSO configuration.
+     * 
+     */
     private List<GetClientAddonSpringcm> springcms;
+    /**
+     * @return Generic SSO configuration.
+     * 
+     */
     private List<GetClientAddonSsoIntegration> ssoIntegrations;
+    /**
+     * @return Windows Azure Mobile Services addon configuration.
+     * 
+     */
     private List<GetClientAddonWam> wams;
+    /**
+     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+     * 
+     */
     private List<GetClientAddonWsfed> wsfeds;
+    /**
+     * @return Zendesk SSO configuration.
+     * 
+     */
     private List<GetClientAddonZendesk> zendesks;
+    /**
+     * @return Zoom SSO configuration.
+     * 
+     */
     private List<GetClientAddonZoom> zooms;
 
     private GetClientAddon() {}
+    /**
+     * @return AWS Addon configuration.
+     * 
+     */
     public List<GetClientAddonAw> aws() {
         return this.aws;
     }
+    /**
+     * @return Azure Blob Storage Addon configuration.
+     * 
+     */
     public List<GetClientAddonAzureBlob> azureBlobs() {
         return this.azureBlobs;
     }
+    /**
+     * @return Azure Storage Bus Addon configuration.
+     * 
+     */
     public List<GetClientAddonAzureSb> azureSbs() {
         return this.azureSbs;
     }
+    /**
+     * @return Box SSO indicator (no configuration settings needed for Box SSO).
+     * 
+     */
     public List<GetClientAddonBox> boxes() {
         return this.boxes;
     }
+    /**
+     * @return CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+     * 
+     */
     public List<GetClientAddonCloudbee> cloudbees() {
         return this.cloudbees;
     }
+    /**
+     * @return Concur SSO indicator (no configuration settings needed for Concur SSO).
+     * 
+     */
     public List<GetClientAddonConcur> concurs() {
         return this.concurs;
     }
+    /**
+     * @return Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+     * 
+     */
     public List<GetClientAddonDropbox> dropboxes() {
         return this.dropboxes;
     }
+    /**
+     * @return Adobe EchoSign SSO configuration.
+     * 
+     */
     public List<GetClientAddonEchosign> echosigns() {
         return this.echosigns;
     }
+    /**
+     * @return Egnyte SSO configuration.
+     * 
+     */
     public List<GetClientAddonEgnyte> egnytes() {
         return this.egnytes;
     }
+    /**
+     * @return Google Firebase addon configuration.
+     * 
+     */
     public List<GetClientAddonFirebase> firebases() {
         return this.firebases;
     }
+    /**
+     * @return Layer addon configuration.
+     * 
+     */
     public List<GetClientAddonLayer> layers() {
         return this.layers;
     }
+    /**
+     * @return Microsoft Dynamics CRM SSO configuration.
+     * 
+     */
     public List<GetClientAddonMscrm> mscrms() {
         return this.mscrms;
     }
+    /**
+     * @return New Relic SSO configuration.
+     * 
+     */
     public List<GetClientAddonNewrelic> newrelics() {
         return this.newrelics;
     }
+    /**
+     * @return Microsoft Office 365 SSO configuration.
+     * 
+     */
     public List<GetClientAddonOffice365> office365s() {
         return this.office365s;
     }
+    /**
+     * @return Active Directory Rights Management Service SSO configuration.
+     * 
+     */
     public List<GetClientAddonRm> rms() {
         return this.rms;
     }
+    /**
+     * @return Salesforce API addon configuration.
+     * 
+     */
     public List<GetClientAddonSalesforceApi> salesforceApis() {
         return this.salesforceApis;
     }
+    /**
+     * @return Salesforce Sandbox addon configuration.
+     * 
+     */
     public List<GetClientAddonSalesforceSandboxApi> salesforceSandboxApis() {
         return this.salesforceSandboxApis;
     }
+    /**
+     * @return Salesforce SSO configuration.
+     * 
+     */
     public List<GetClientAddonSalesforce> salesforces() {
         return this.salesforces;
     }
+    /**
+     * @return Configuration settings for a SAML add-on.
+     * 
+     */
     public List<GetClientAddonSamlp> samlps() {
         return this.samlps;
     }
+    /**
+     * @return SAP API addon configuration.
+     * 
+     */
     public List<GetClientAddonSapApi> sapApis() {
         return this.sapApis;
     }
+    /**
+     * @return Sentry SSO configuration.
+     * 
+     */
     public List<GetClientAddonSentry> sentries() {
         return this.sentries;
     }
+    /**
+     * @return SharePoint SSO configuration.
+     * 
+     */
     public List<GetClientAddonSharepoint> sharepoints() {
         return this.sharepoints;
     }
+    /**
+     * @return Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+     * 
+     */
     public List<GetClientAddonSlack> slacks() {
         return this.slacks;
     }
+    /**
+     * @return SpringCM SSO configuration.
+     * 
+     */
     public List<GetClientAddonSpringcm> springcms() {
         return this.springcms;
     }
+    /**
+     * @return Generic SSO configuration.
+     * 
+     */
     public List<GetClientAddonSsoIntegration> ssoIntegrations() {
         return this.ssoIntegrations;
     }
+    /**
+     * @return Windows Azure Mobile Services addon configuration.
+     * 
+     */
     public List<GetClientAddonWam> wams() {
         return this.wams;
     }
+    /**
+     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+     * 
+     */
     public List<GetClientAddonWsfed> wsfeds() {
         return this.wsfeds;
     }
+    /**
+     * @return Zendesk SSO configuration.
+     * 
+     */
     public List<GetClientAddonZendesk> zendesks() {
         return this.zendesks;
     }
+    /**
+     * @return Zoom SSO configuration.
+     * 
+     */
     public List<GetClientAddonZoom> zooms() {
         return this.zooms;
     }

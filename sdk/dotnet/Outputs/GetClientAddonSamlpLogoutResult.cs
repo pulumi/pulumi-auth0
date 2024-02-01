@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetClientAddonSamlpLogoutResult
     {
+        /// <summary>
+        /// The service provider (client application)'s Single Logout Service URL, where Auth0 will send logout requests and responses.
+        /// </summary>
         public readonly string Callback;
+        /// <summary>
+        /// Controls whether Auth0 should notify service providers of session termination.
+        /// </summary>
         public readonly bool SloEnabled;
 
         [OutputConstructor]

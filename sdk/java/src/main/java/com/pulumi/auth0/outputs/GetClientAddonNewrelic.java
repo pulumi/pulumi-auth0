@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonNewrelic {
+    /**
+     * @return Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+     * 
+     */
     private String account;
 
     private GetClientAddonNewrelic() {}
+    /**
+     * @return Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+     * 
+     */
     public String account() {
         return this.account;
     }

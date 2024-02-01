@@ -13,25 +13,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAttackProtectionBreachedPasswordDetection {
+    /**
+     * @return When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+     * 
+     */
     private List<String> adminNotificationFrequencies;
+    /**
+     * @return Whether breached password detection is active.
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return The subscription level for breached password detection methods. Use &#34;enhanced&#34; to enable Credential Guard. Possible values: `standard`, `enhanced`.
+     * 
+     */
     private String method;
+    /**
+     * @return Configuration options that apply before every user registration attempt. Only available on public tenants.
+     * 
+     */
     private List<GetAttackProtectionBreachedPasswordDetectionPreUserRegistration> preUserRegistrations;
+    /**
+     * @return Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+     * 
+     */
     private List<String> shields;
 
     private GetAttackProtectionBreachedPasswordDetection() {}
+    /**
+     * @return When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+     * 
+     */
     public List<String> adminNotificationFrequencies() {
         return this.adminNotificationFrequencies;
     }
+    /**
+     * @return Whether breached password detection is active.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return The subscription level for breached password detection methods. Use &#34;enhanced&#34; to enable Credential Guard. Possible values: `standard`, `enhanced`.
+     * 
+     */
     public String method() {
         return this.method;
     }
+    /**
+     * @return Configuration options that apply before every user registration attempt. Only available on public tenants.
+     * 
+     */
     public List<GetAttackProtectionBreachedPasswordDetectionPreUserRegistration> preUserRegistrations() {
         return this.preUserRegistrations;
     }
+    /**
+     * @return Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+     * 
+     */
     public List<String> shields() {
         return this.shields;
     }

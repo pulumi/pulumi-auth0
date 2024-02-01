@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetBrandingUniversalLoginResult
     {
+        /// <summary>
+        /// The html template for the New Universal Login Experience.
+        /// </summary>
         public readonly string Body;
 
         [OutputConstructor]

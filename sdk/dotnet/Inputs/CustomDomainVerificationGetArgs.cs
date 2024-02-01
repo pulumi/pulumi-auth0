@@ -14,6 +14,10 @@ namespace Pulumi.Auth0.Inputs
     {
         [Input("methods")]
         private InputList<object>? _methods;
+
+        /// <summary>
+        /// Verification methods for the domain.
+        /// </summary>
         public InputList<object> Methods
         {
             get => _methods ?? (_methods = new InputList<object>());

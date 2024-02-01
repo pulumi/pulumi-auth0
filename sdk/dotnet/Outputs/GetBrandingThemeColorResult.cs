@@ -13,23 +13,77 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetBrandingThemeColorResult
     {
+        /// <summary>
+        /// Base focus color. Defaults to `#635dff`.
+        /// </summary>
         public readonly string BaseFocusColor;
+        /// <summary>
+        /// Base hover color. Defaults to `#000000`.
+        /// </summary>
         public readonly string BaseHoverColor;
+        /// <summary>
+        /// Body text. Defaults to `#1e212a`.
+        /// </summary>
         public readonly string BodyText;
+        /// <summary>
+        /// Error. Defaults to `#d03c38`.
+        /// </summary>
         public readonly string Error;
+        /// <summary>
+        /// Header. Defaults to `#1e212a`.
+        /// </summary>
         public readonly string Header;
+        /// <summary>
+        /// Icons. Defaults to `#65676e`.
+        /// </summary>
         public readonly string Icons;
+        /// <summary>
+        /// Input background. Defaults to `#ffffff`.
+        /// </summary>
         public readonly string InputBackground;
+        /// <summary>
+        /// Input border. Defaults to `#c9cace`.
+        /// </summary>
         public readonly string InputBorder;
+        /// <summary>
+        /// Input filled text. Defaults to `#000000`.
+        /// </summary>
         public readonly string InputFilledText;
+        /// <summary>
+        /// Input labels &amp; placeholders. Defaults to `#65676e`.
+        /// </summary>
         public readonly string InputLabelsPlaceholders;
+        /// <summary>
+        /// Links &amp; focused components. Defaults to `#635dff`.
+        /// </summary>
         public readonly string LinksFocusedComponents;
+        /// <summary>
+        /// Primary button. Defaults to `#635dff`.
+        /// </summary>
         public readonly string PrimaryButton;
+        /// <summary>
+        /// Primary button label. Defaults to `#ffffff`.
+        /// </summary>
         public readonly string PrimaryButtonLabel;
+        /// <summary>
+        /// Secondary button border. Defaults to `#c9cace`.
+        /// </summary>
         public readonly string SecondaryButtonBorder;
+        /// <summary>
+        /// Secondary button label. Defaults to `#1e212a`.
+        /// </summary>
         public readonly string SecondaryButtonLabel;
+        /// <summary>
+        /// Success. Defaults to `#13a688`.
+        /// </summary>
         public readonly string Success;
+        /// <summary>
+        /// Widget background. Defaults to `#ffffff`.
+        /// </summary>
         public readonly string WidgetBackground;
+        /// <summary>
+        /// Widget border. Defaults to `#c9cace`.
+        /// </summary>
         public readonly string WidgetBorder;
 
         [OutputConstructor]

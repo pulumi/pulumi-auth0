@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetOrganizationBrandingResult
     {
+        /// <summary>
+        /// Color scheme used to customize the login pages.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Colors;
+        /// <summary>
+        /// URL of logo to display on login page.
+        /// </summary>
         public readonly string LogoUrl;
 
         [OutputConstructor]

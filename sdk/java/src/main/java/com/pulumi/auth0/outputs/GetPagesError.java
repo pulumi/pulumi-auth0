@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPagesError {
+    /**
+     * @return Customized content for the Error page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+     * 
+     */
     private String html;
+    /**
+     * @return Indicates whether to show the link to logs as part of the default error page.
+     * 
+     */
     private Boolean showLogLink;
+    /**
+     * @return URL to redirect to when an error occurs, instead of showing the default error page.
+     * 
+     */
     private String url;
 
     private GetPagesError() {}
+    /**
+     * @return Customized content for the Error page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+     * 
+     */
     public String html() {
         return this.html;
     }
+    /**
+     * @return Indicates whether to show the link to logs as part of the default error page.
+     * 
+     */
     public Boolean showLogLink() {
         return this.showLogLink;
     }
+    /**
+     * @return URL to redirect to when an error occurs, instead of showing the default error page.
+     * 
+     */
     public String url() {
         return this.url;
     }

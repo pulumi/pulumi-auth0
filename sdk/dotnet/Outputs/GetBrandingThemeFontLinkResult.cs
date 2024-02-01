@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetBrandingThemeFontLinkResult
     {
+        /// <summary>
+        /// Links bold. Defaults to `true`.
+        /// </summary>
         public readonly bool Bold;
+        /// <summary>
+        /// Links size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        /// </summary>
         public readonly double Size;
 
         [OutputConstructor]

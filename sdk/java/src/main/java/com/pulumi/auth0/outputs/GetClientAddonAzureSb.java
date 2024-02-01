@@ -11,25 +11,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonAzureSb {
+    /**
+     * @return Entity you want to request a token for, such as `my-queue`.
+     * 
+     */
     private String entityPath;
+    /**
+     * @return Optional expiration in minutes for the generated token. Defaults to 5 minutes.
+     * 
+     */
     private Integer expiration;
+    /**
+     * @return Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
+     * 
+     */
     private String namespace;
+    /**
+     * @return Primary Key associated with your shared access policy.
+     * 
+     */
     private String sasKey;
+    /**
+     * @return Your shared access policy name defined in your Service Bus entity.
+     * 
+     */
     private String sasKeyName;
 
     private GetClientAddonAzureSb() {}
+    /**
+     * @return Entity you want to request a token for, such as `my-queue`.
+     * 
+     */
     public String entityPath() {
         return this.entityPath;
     }
+    /**
+     * @return Optional expiration in minutes for the generated token. Defaults to 5 minutes.
+     * 
+     */
     public Integer expiration() {
         return this.expiration;
     }
+    /**
+     * @return Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
+     * 
+     */
     public String namespace() {
         return this.namespace;
     }
+    /**
+     * @return Primary Key associated with your shared access policy.
+     * 
+     */
     public String sasKey() {
         return this.sasKey;
     }
+    /**
+     * @return Your shared access policy name defined in your Service Bus entity.
+     * 
+     */
     public String sasKeyName() {
         return this.sasKeyName;
     }

@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationResult
     {
+        /// <summary>
+        /// Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+        /// </summary>
         public readonly ImmutableArray<string> Shields;
 
         [OutputConstructor]

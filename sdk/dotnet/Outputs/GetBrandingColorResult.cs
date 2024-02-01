@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetBrandingColorResult
     {
+        /// <summary>
+        /// Background color of login pages in hexadecimal.
+        /// </summary>
         public readonly string PageBackground;
+        /// <summary>
+        /// Primary button background color in hexadecimal.
+        /// </summary>
         public readonly string Primary;
 
         [OutputConstructor]

@@ -11,25 +11,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonLayer {
+    /**
+     * @return Optional expiration in minutes for the generated token. Defaults to 5 minutes.
+     * 
+     */
     private Integer expiration;
+    /**
+     * @return Authentication Key identifier used to sign the Layer token.
+     * 
+     */
     private String keyId;
+    /**
+     * @return Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
+     * 
+     */
     private String principal;
+    /**
+     * @return Private key for signing the Layer token.
+     * 
+     */
     private String privateKey;
+    /**
+     * @return Provider ID of your Layer account.
+     * 
+     */
     private String providerId;
 
     private GetClientAddonLayer() {}
+    /**
+     * @return Optional expiration in minutes for the generated token. Defaults to 5 minutes.
+     * 
+     */
     public Integer expiration() {
         return this.expiration;
     }
+    /**
+     * @return Authentication Key identifier used to sign the Layer token.
+     * 
+     */
     public String keyId() {
         return this.keyId;
     }
+    /**
+     * @return Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
+     * 
+     */
     public String principal() {
         return this.principal;
     }
+    /**
+     * @return Private key for signing the Layer token.
+     * 
+     */
     public String privateKey() {
         return this.privateKey;
     }
+    /**
+     * @return Provider ID of your Layer account.
+     * 
+     */
     public String providerId() {
         return this.providerId;
     }

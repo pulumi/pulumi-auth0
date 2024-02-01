@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBrandingUniversalLogin {
+    /**
+     * @return The html template for the New Universal Login Experience.
+     * 
+     */
     private String body;
 
     private GetBrandingUniversalLogin() {}
+    /**
+     * @return The html template for the New Universal Login Experience.
+     * 
+     */
     public String body() {
         return this.body;
     }

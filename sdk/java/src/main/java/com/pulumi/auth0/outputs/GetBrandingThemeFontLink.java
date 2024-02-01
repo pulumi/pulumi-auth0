@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBrandingThemeFontLink {
+    /**
+     * @return Links bold. Defaults to `true`.
+     * 
+     */
     private Boolean bold;
+    /**
+     * @return Links size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * 
+     */
     private Double size;
 
     private GetBrandingThemeFontLink() {}
+    /**
+     * @return Links bold. Defaults to `true`.
+     * 
+     */
     public Boolean bold() {
         return this.bold;
     }
+    /**
+     * @return Links size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * 
+     */
     public Double size() {
         return this.size;
     }

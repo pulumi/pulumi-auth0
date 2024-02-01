@@ -1604,6 +1604,9 @@ export interface ConnectionOptionsValidationUsername {
 }
 
 export interface CustomDomainVerification {
+    /**
+     * Verification methods for the domain.
+     */
     methods?: pulumi.Input<any[]>;
 }
 

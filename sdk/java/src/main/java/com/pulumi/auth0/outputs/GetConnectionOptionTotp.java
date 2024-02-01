@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionOptionTotp {
+    /**
+     * @return Length of the one-time password.
+     * 
+     */
     private Integer length;
+    /**
+     * @return Seconds between allowed generation of new passwords.
+     * 
+     */
     private Integer timeStep;
 
     private GetConnectionOptionTotp() {}
+    /**
+     * @return Length of the one-time password.
+     * 
+     */
     public Integer length() {
         return this.length;
     }
+    /**
+     * @return Seconds between allowed generation of new passwords.
+     * 
+     */
     public Integer timeStep() {
         return this.timeStep;
     }

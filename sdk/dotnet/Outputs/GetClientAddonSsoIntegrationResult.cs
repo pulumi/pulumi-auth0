@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetClientAddonSsoIntegrationResult
     {
+        /// <summary>
+        /// SSO integration name.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// SSO integration version installed.
+        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

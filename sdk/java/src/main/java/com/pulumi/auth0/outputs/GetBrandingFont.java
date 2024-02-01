@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBrandingFont {
+    /**
+     * @return URL for the custom font.
+     * 
+     */
     private String url;
 
     private GetBrandingFont() {}
+    /**
+     * @return URL for the custom font.
+     * 
+     */
     public String url() {
         return this.url;
     }
