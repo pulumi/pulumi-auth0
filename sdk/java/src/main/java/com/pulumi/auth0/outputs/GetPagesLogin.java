@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPagesLogin {
+    /**
+     * @return Indicates whether to use the custom Login page HTML (`true`) or the default Auth0 page (`false`).
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+     * 
+     */
     private String html;
 
     private GetPagesLogin() {}
+    /**
+     * @return Indicates whether to use the custom Login page HTML (`true`) or the default Auth0 page (`false`).
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+     * 
+     */
     public String html() {
         return this.html;
     }

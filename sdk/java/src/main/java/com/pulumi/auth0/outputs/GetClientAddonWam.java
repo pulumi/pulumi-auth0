@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonWam {
+    /**
+     * @return Your master key for Windows Azure Mobile Services.
+     * 
+     */
     private String masterKey;
 
     private GetClientAddonWam() {}
+    /**
+     * @return Your master key for Windows Azure Mobile Services.
+     * 
+     */
     public String masterKey() {
         return this.masterKey;
     }

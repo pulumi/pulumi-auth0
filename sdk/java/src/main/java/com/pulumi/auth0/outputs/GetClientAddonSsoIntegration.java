@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonSsoIntegration {
+    /**
+     * @return SSO integration name.
+     * 
+     */
     private String name;
+    /**
+     * @return SSO integration version installed.
+     * 
+     */
     private String version;
 
     private GetClientAddonSsoIntegration() {}
+    /**
+     * @return SSO integration name.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return SSO integration version installed.
+     * 
+     */
     public String version() {
         return this.version;
     }

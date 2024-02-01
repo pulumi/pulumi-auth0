@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationResult
     {
+        /// <summary>
+        /// The maximum number of sign up attempts allowed from a single IP address.
+        /// </summary>
         public readonly int MaxAttempts;
+        /// <summary>
+        /// Interval of time, given in milliseconds at which new sign up tokens will become available after they have been used by an IP address. Each sign up attempt will be added on the defined throttling rate.
+        /// </summary>
         public readonly int Rate;
 
         [OutputConstructor]

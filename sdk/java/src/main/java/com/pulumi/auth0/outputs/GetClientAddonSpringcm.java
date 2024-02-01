@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonSpringcm {
+    /**
+     * @return SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
+     * 
+     */
     private String acsUrl;
 
     private GetClientAddonSpringcm() {}
+    /**
+     * @return SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
+     * 
+     */
     public String acsUrl() {
         return this.acsUrl;
     }

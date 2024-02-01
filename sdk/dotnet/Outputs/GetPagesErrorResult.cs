@@ -13,8 +13,17 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetPagesErrorResult
     {
+        /// <summary>
+        /// Customized content for the Error page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        /// </summary>
         public readonly string Html;
+        /// <summary>
+        /// Indicates whether to show the link to logs as part of the default error page.
+        /// </summary>
         public readonly bool ShowLogLink;
+        /// <summary>
+        /// URL to redirect to when an error occurs, instead of showing the default error page.
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

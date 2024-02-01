@@ -10,97 +10,281 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTenantFlag {
+    /**
+     * @return Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+     * 
+     */
     private Boolean allowLegacyDelegationGrantTypes;
+    /**
+     * @return Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+     * 
+     */
     private Boolean allowLegacyRoGrantTypes;
+    /**
+     * @return If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+     * 
+     */
     private Boolean allowLegacyTokeninfoEndpoint;
+    /**
+     * @return Enables new insights activity page view.
+     * 
+     */
     private Boolean dashboardInsightsView;
+    /**
+     * @return Enables beta access to log streaming changes.
+     * 
+     */
     private Boolean dashboardLogStreamsNext;
+    /**
+     * @return Indicates whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+     * 
+     */
     private Boolean disableClickjackProtectionHeaders;
+    /**
+     * @return Disables SAML fields map fix for bad mappings with repeated attributes.
+     * 
+     */
     private Boolean disableFieldsMapFix;
+    /**
+     * @return If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+     * 
+     */
     private Boolean disableManagementApiSmsObfuscation;
+    /**
+     * @return If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+     * 
+     */
     private Boolean enableAdfsWaadEmailVerification;
+    /**
+     * @return Indicates whether the APIs section is enabled for the tenant.
+     * 
+     */
     private Boolean enableApisSection;
+    /**
+     * @return Indicates whether all current connections should be enabled when a new client is created.
+     * 
+     */
     private Boolean enableClientConnections;
+    /**
+     * @return Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
+     * 
+     */
     private Boolean enableCustomDomainInEmails;
+    /**
+     * @return Indicates whether the tenant allows dynamic client registration.
+     * 
+     */
     private Boolean enableDynamicClientRegistration;
+    /**
+     * @return Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
+     * 
+     */
     private Boolean enableIdtokenApi2;
+    /**
+     * @return Indicates whether to use the older v2 legacy logs search.
+     * 
+     */
     private Boolean enableLegacyLogsSearchV2;
+    /**
+     * @return Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+     * 
+     */
     private Boolean enableLegacyProfile;
+    /**
+     * @return Indicates whether advanced API Authorization scenarios are enabled.
+     * 
+     */
     private Boolean enablePipeline2;
+    /**
+     * @return Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+     * 
+     */
     private Boolean enablePublicSignupUserExistsError;
+    /**
+     * @return Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+     * 
+     */
     private Boolean mfaShowFactorListOnEnrollment;
+    /**
+     * @return Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+     * 
+     */
     private Boolean noDiscloseEnterpriseConnections;
+    /**
+     * @return Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+     * 
+     */
     private Boolean requirePushedAuthorizationRequests;
+    /**
+     * @return Delete underlying grant when a refresh token is revoked via the Authentication API.
+     * 
+     */
     private Boolean revokeRefreshTokenGrant;
+    /**
+     * @return Indicates whether to use scope descriptions for consent.
+     * 
+     */
     private Boolean useScopeDescriptionsForConsent;
 
     private GetTenantFlag() {}
+    /**
+     * @return Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+     * 
+     */
     public Boolean allowLegacyDelegationGrantTypes() {
         return this.allowLegacyDelegationGrantTypes;
     }
+    /**
+     * @return Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+     * 
+     */
     public Boolean allowLegacyRoGrantTypes() {
         return this.allowLegacyRoGrantTypes;
     }
+    /**
+     * @return If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+     * 
+     */
     public Boolean allowLegacyTokeninfoEndpoint() {
         return this.allowLegacyTokeninfoEndpoint;
     }
+    /**
+     * @return Enables new insights activity page view.
+     * 
+     */
     public Boolean dashboardInsightsView() {
         return this.dashboardInsightsView;
     }
+    /**
+     * @return Enables beta access to log streaming changes.
+     * 
+     */
     public Boolean dashboardLogStreamsNext() {
         return this.dashboardLogStreamsNext;
     }
+    /**
+     * @return Indicates whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+     * 
+     */
     public Boolean disableClickjackProtectionHeaders() {
         return this.disableClickjackProtectionHeaders;
     }
+    /**
+     * @return Disables SAML fields map fix for bad mappings with repeated attributes.
+     * 
+     */
     public Boolean disableFieldsMapFix() {
         return this.disableFieldsMapFix;
     }
+    /**
+     * @return If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+     * 
+     */
     public Boolean disableManagementApiSmsObfuscation() {
         return this.disableManagementApiSmsObfuscation;
     }
+    /**
+     * @return If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+     * 
+     */
     public Boolean enableAdfsWaadEmailVerification() {
         return this.enableAdfsWaadEmailVerification;
     }
+    /**
+     * @return Indicates whether the APIs section is enabled for the tenant.
+     * 
+     */
     public Boolean enableApisSection() {
         return this.enableApisSection;
     }
+    /**
+     * @return Indicates whether all current connections should be enabled when a new client is created.
+     * 
+     */
     public Boolean enableClientConnections() {
         return this.enableClientConnections;
     }
+    /**
+     * @return Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
+     * 
+     */
     public Boolean enableCustomDomainInEmails() {
         return this.enableCustomDomainInEmails;
     }
+    /**
+     * @return Indicates whether the tenant allows dynamic client registration.
+     * 
+     */
     public Boolean enableDynamicClientRegistration() {
         return this.enableDynamicClientRegistration;
     }
+    /**
+     * @return Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
+     * 
+     */
     public Boolean enableIdtokenApi2() {
         return this.enableIdtokenApi2;
     }
+    /**
+     * @return Indicates whether to use the older v2 legacy logs search.
+     * 
+     */
     public Boolean enableLegacyLogsSearchV2() {
         return this.enableLegacyLogsSearchV2;
     }
+    /**
+     * @return Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+     * 
+     */
     public Boolean enableLegacyProfile() {
         return this.enableLegacyProfile;
     }
+    /**
+     * @return Indicates whether advanced API Authorization scenarios are enabled.
+     * 
+     */
     public Boolean enablePipeline2() {
         return this.enablePipeline2;
     }
+    /**
+     * @return Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+     * 
+     */
     public Boolean enablePublicSignupUserExistsError() {
         return this.enablePublicSignupUserExistsError;
     }
+    /**
+     * @return Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+     * 
+     */
     public Boolean mfaShowFactorListOnEnrollment() {
         return this.mfaShowFactorListOnEnrollment;
     }
+    /**
+     * @return Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+     * 
+     */
     public Boolean noDiscloseEnterpriseConnections() {
         return this.noDiscloseEnterpriseConnections;
     }
+    /**
+     * @return Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+     * 
+     */
     public Boolean requirePushedAuthorizationRequests() {
         return this.requirePushedAuthorizationRequests;
     }
+    /**
+     * @return Delete underlying grant when a refresh token is revoked via the Authentication API.
+     * 
+     */
     public Boolean revokeRefreshTokenGrant() {
         return this.revokeRefreshTokenGrant;
     }
+    /**
+     * @return Indicates whether to use scope descriptions for consent.
+     * 
+     */
     public Boolean useScopeDescriptionsForConsent() {
         return this.useScopeDescriptionsForConsent;
     }

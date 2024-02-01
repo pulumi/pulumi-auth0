@@ -12,41 +12,113 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBrandingThemeBorder {
+    /**
+     * @return Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
+     * 
+     */
     private Double buttonBorderRadius;
+    /**
+     * @return Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
+     * 
+     */
     private Double buttonBorderWeight;
+    /**
+     * @return Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+     * 
+     */
     private String buttonsStyle;
+    /**
+     * @return Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
+     * 
+     */
     private Double inputBorderRadius;
+    /**
+     * @return Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
+     * 
+     */
     private Double inputBorderWeight;
+    /**
+     * @return Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+     * 
+     */
     private String inputsStyle;
+    /**
+     * @return Show widget shadow. Defaults to `true`.
+     * 
+     */
     private Boolean showWidgetShadow;
+    /**
+     * @return Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
+     * 
+     */
     private Double widgetBorderWeight;
+    /**
+     * @return Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
+     * 
+     */
     private Double widgetCornerRadius;
 
     private GetBrandingThemeBorder() {}
+    /**
+     * @return Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
+     * 
+     */
     public Double buttonBorderRadius() {
         return this.buttonBorderRadius;
     }
+    /**
+     * @return Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
+     * 
+     */
     public Double buttonBorderWeight() {
         return this.buttonBorderWeight;
     }
+    /**
+     * @return Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+     * 
+     */
     public String buttonsStyle() {
         return this.buttonsStyle;
     }
+    /**
+     * @return Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
+     * 
+     */
     public Double inputBorderRadius() {
         return this.inputBorderRadius;
     }
+    /**
+     * @return Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
+     * 
+     */
     public Double inputBorderWeight() {
         return this.inputBorderWeight;
     }
+    /**
+     * @return Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+     * 
+     */
     public String inputsStyle() {
         return this.inputsStyle;
     }
+    /**
+     * @return Show widget shadow. Defaults to `true`.
+     * 
+     */
     public Boolean showWidgetShadow() {
         return this.showWidgetShadow;
     }
+    /**
+     * @return Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
+     * 
+     */
     public Double widgetBorderWeight() {
         return this.widgetBorderWeight;
     }
+    /**
+     * @return Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
+     * 
+     */
     public Double widgetCornerRadius() {
         return this.widgetCornerRadius;
     }

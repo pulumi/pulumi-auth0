@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetClientAddonSharepointResult
     {
+        /// <summary>
+        /// External SharePoint application URLs if exposed to the Internet.
+        /// </summary>
         public readonly ImmutableArray<string> ExternalUrls;
+        /// <summary>
+        /// Internal SharePoint application URL.
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

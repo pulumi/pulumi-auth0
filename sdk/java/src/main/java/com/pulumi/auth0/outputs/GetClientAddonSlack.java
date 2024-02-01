@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonSlack {
+    /**
+     * @return Slack team name.
+     * 
+     */
     private String team;
 
     private GetClientAddonSlack() {}
+    /**
+     * @return Slack team name.
+     * 
+     */
     public String team() {
         return this.team;
     }

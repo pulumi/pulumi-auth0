@@ -18,41 +18,113 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBrandingThemeFont {
+    /**
+     * @return Body text.
+     * 
+     */
     private List<GetBrandingThemeFontBodyText> bodyTexts;
+    /**
+     * @return Buttons text.
+     * 
+     */
     private List<GetBrandingThemeFontButtonsText> buttonsTexts;
+    /**
+     * @return Font URL. Defaults to an empty string.
+     * 
+     */
     private String fontUrl;
+    /**
+     * @return Input labels.
+     * 
+     */
     private List<GetBrandingThemeFontInputLabel> inputLabels;
+    /**
+     * @return Links.
+     * 
+     */
     private List<GetBrandingThemeFontLink> links;
+    /**
+     * @return Links style. Defaults to `normal`.
+     * 
+     */
     private String linksStyle;
+    /**
+     * @return Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
+     * 
+     */
     private Double referenceTextSize;
+    /**
+     * @return Subtitle.
+     * 
+     */
     private List<GetBrandingThemeFontSubtitle> subtitles;
+    /**
+     * @return Title.
+     * 
+     */
     private List<GetBrandingThemeFontTitle> titles;
 
     private GetBrandingThemeFont() {}
+    /**
+     * @return Body text.
+     * 
+     */
     public List<GetBrandingThemeFontBodyText> bodyTexts() {
         return this.bodyTexts;
     }
+    /**
+     * @return Buttons text.
+     * 
+     */
     public List<GetBrandingThemeFontButtonsText> buttonsTexts() {
         return this.buttonsTexts;
     }
+    /**
+     * @return Font URL. Defaults to an empty string.
+     * 
+     */
     public String fontUrl() {
         return this.fontUrl;
     }
+    /**
+     * @return Input labels.
+     * 
+     */
     public List<GetBrandingThemeFontInputLabel> inputLabels() {
         return this.inputLabels;
     }
+    /**
+     * @return Links.
+     * 
+     */
     public List<GetBrandingThemeFontLink> links() {
         return this.links;
     }
+    /**
+     * @return Links style. Defaults to `normal`.
+     * 
+     */
     public String linksStyle() {
         return this.linksStyle;
     }
+    /**
+     * @return Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
+     * 
+     */
     public Double referenceTextSize() {
         return this.referenceTextSize;
     }
+    /**
+     * @return Subtitle.
+     * 
+     */
     public List<GetBrandingThemeFontSubtitle> subtitles() {
         return this.subtitles;
     }
+    /**
+     * @return Title.
+     * 
+     */
     public List<GetBrandingThemeFontTitle> titles() {
         return this.titles;
     }

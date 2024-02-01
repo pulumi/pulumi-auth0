@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetBrandingThemeFontButtonsTextResult
     {
+        /// <summary>
+        /// Buttons text bold. Defaults to `false`.
+        /// </summary>
         public readonly bool Bold;
+        /// <summary>
+        /// Buttons text size. Value needs to be between `0` and `150`. Defaults to `100.0`.
+        /// </summary>
         public readonly double Size;
 
         [OutputConstructor]

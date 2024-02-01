@@ -13,10 +13,25 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetConnectionOptionGatewayAuthenticationResult
     {
+        /// <summary>
+        /// Audience claim for the HS256 token sent to `gateway_url`.
+        /// </summary>
         public readonly string Audience;
+        /// <summary>
+        /// Authentication method (default is `bearer` token).
+        /// </summary>
         public readonly string Method;
+        /// <summary>
+        /// Secret used to sign the HS256 token sent to `gateway_url`.
+        /// </summary>
         public readonly string Secret;
+        /// <summary>
+        /// Specifies whether or not the secret is Base64-encoded.
+        /// </summary>
         public readonly bool SecretBase64Encoded;
+        /// <summary>
+        /// Subject claim for the HS256 token sent to `gateway_url`.
+        /// </summary>
         public readonly string Subject;
 
         [OutputConstructor]

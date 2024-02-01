@@ -14,25 +14,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAttackProtectionSuspiciousIpThrottling {
+    /**
+     * @return List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
+     * 
+     */
     private List<String> allowlists;
+    /**
+     * @return Whether suspicious IP throttling attack protections are active.
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return Configuration options that apply before every login attempt. Only available on public tenants.
+     * 
+     */
     private List<GetAttackProtectionSuspiciousIpThrottlingPreLogin> preLogins;
+    /**
+     * @return Configuration options that apply before every user registration attempt. Only available on public tenants.
+     * 
+     */
     private List<GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration> preUserRegistrations;
+    /**
+     * @return Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `admin_notification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
+     * 
+     */
     private List<String> shields;
 
     private GetAttackProtectionSuspiciousIpThrottling() {}
+    /**
+     * @return List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
+     * 
+     */
     public List<String> allowlists() {
         return this.allowlists;
     }
+    /**
+     * @return Whether suspicious IP throttling attack protections are active.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return Configuration options that apply before every login attempt. Only available on public tenants.
+     * 
+     */
     public List<GetAttackProtectionSuspiciousIpThrottlingPreLogin> preLogins() {
         return this.preLogins;
     }
+    /**
+     * @return Configuration options that apply before every user registration attempt. Only available on public tenants.
+     * 
+     */
     public List<GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration> preUserRegistrations() {
         return this.preUserRegistrations;
     }
+    /**
+     * @return Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `admin_notification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
+     * 
+     */
     public List<String> shields() {
         return this.shields;
     }

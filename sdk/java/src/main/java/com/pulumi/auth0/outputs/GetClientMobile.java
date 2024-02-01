@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientMobile {
+    /**
+     * @return Configuration settings for Android native apps.
+     * 
+     */
     private List<GetClientMobileAndroid> androids;
+    /**
+     * @return Configuration settings for i0S native apps.
+     * 
+     */
     private List<GetClientMobileIo> ios;
 
     private GetClientMobile() {}
+    /**
+     * @return Configuration settings for Android native apps.
+     * 
+     */
     public List<GetClientMobileAndroid> androids() {
         return this.androids;
     }
+    /**
+     * @return Configuration settings for i0S native apps.
+     * 
+     */
     public List<GetClientMobileIo> ios() {
         return this.ios;
     }

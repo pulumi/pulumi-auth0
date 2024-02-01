@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonZoom {
+    /**
+     * @return Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
+     * 
+     */
     private String account;
 
     private GetClientAddonZoom() {}
+    /**
+     * @return Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
+     * 
+     */
     public String account() {
         return this.account;
     }

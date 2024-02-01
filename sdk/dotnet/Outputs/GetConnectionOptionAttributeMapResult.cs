@@ -13,8 +13,17 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetConnectionOptionAttributeMapResult
     {
+        /// <summary>
+        /// This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+        /// </summary>
         public readonly string Attributes;
+        /// <summary>
+        /// Method used to map incoming claims. Possible values: `use_map` (Okta or OIDC), `bind_all` (OIDC) or `basic_profile` (Okta).
+        /// </summary>
         public readonly string MappingMode;
+        /// <summary>
+        /// This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
+        /// </summary>
         public readonly string UserinfoScope;
 
         [OutputConstructor]

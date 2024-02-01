@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonSalesforce {
+    /**
+     * @return Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
+     * 
+     */
     private String entityId;
 
     private GetClientAddonSalesforce() {}
+    /**
+     * @return Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
+     * 
+     */
     public String entityId() {
         return this.entityId;
     }

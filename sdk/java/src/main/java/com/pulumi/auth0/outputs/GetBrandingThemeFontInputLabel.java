@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBrandingThemeFontInputLabel {
+    /**
+     * @return Input labels bold. Defaults to `false`.
+     * 
+     */
     private Boolean bold;
+    /**
+     * @return Input labels size. Value needs to be between `0` and `150`. Defaults to `100.0`.
+     * 
+     */
     private Double size;
 
     private GetBrandingThemeFontInputLabel() {}
+    /**
+     * @return Input labels bold. Defaults to `false`.
+     * 
+     */
     public Boolean bold() {
         return this.bold;
     }
+    /**
+     * @return Input labels size. Value needs to be between `0` and `150`. Defaults to `100.0`.
+     * 
+     */
     public Double size() {
         return this.size;
     }

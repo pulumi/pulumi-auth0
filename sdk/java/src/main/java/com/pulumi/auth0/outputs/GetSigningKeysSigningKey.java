@@ -11,41 +11,113 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSigningKeysSigningKey {
+    /**
+     * @return The public certificate of the signing key.
+     * 
+     */
     private String cert;
+    /**
+     * @return True if the key is the the current key.
+     * 
+     */
     private Boolean current;
+    /**
+     * @return The cert fingerprint.
+     * 
+     */
     private String fingerprint;
+    /**
+     * @return The key ID of the signing key.
+     * 
+     */
     private String kid;
+    /**
+     * @return True if the key is the the next key.
+     * 
+     */
     private Boolean next;
+    /**
+     * @return The public certificate of the signing key in PKCS7 format.
+     * 
+     */
     private String pkcs7;
+    /**
+     * @return True if the key is the the previous key.
+     * 
+     */
     private Boolean previous;
+    /**
+     * @return True if the key is revoked.
+     * 
+     */
     private Boolean revoked;
+    /**
+     * @return The cert thumbprint.
+     * 
+     */
     private String thumbprint;
 
     private GetSigningKeysSigningKey() {}
+    /**
+     * @return The public certificate of the signing key.
+     * 
+     */
     public String cert() {
         return this.cert;
     }
+    /**
+     * @return True if the key is the the current key.
+     * 
+     */
     public Boolean current() {
         return this.current;
     }
+    /**
+     * @return The cert fingerprint.
+     * 
+     */
     public String fingerprint() {
         return this.fingerprint;
     }
+    /**
+     * @return The key ID of the signing key.
+     * 
+     */
     public String kid() {
         return this.kid;
     }
+    /**
+     * @return True if the key is the the next key.
+     * 
+     */
     public Boolean next() {
         return this.next;
     }
+    /**
+     * @return The public certificate of the signing key in PKCS7 format.
+     * 
+     */
     public String pkcs7() {
         return this.pkcs7;
     }
+    /**
+     * @return True if the key is the the previous key.
+     * 
+     */
     public Boolean previous() {
         return this.previous;
     }
+    /**
+     * @return True if the key is revoked.
+     * 
+     */
     public Boolean revoked() {
         return this.revoked;
     }
+    /**
+     * @return The cert thumbprint.
+     * 
+     */
     public String thumbprint() {
         return this.thumbprint;
     }

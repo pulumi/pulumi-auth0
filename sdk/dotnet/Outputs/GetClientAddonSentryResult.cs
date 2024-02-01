@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetClientAddonSentryResult
     {
+        /// <summary>
+        /// URL prefix only if running Sentry Community Edition, otherwise leave empty.
+        /// </summary>
         public readonly string BaseUrl;
+        /// <summary>
+        /// Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
+        /// </summary>
         public readonly string OrgSlug;
 
         [OutputConstructor]

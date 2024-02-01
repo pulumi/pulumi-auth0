@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetTenantSessionResult
     {
+        /// <summary>
+        /// When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
+        /// </summary>
         public readonly bool OidcLogoutPromptEnabled;
 
         [OutputConstructor]

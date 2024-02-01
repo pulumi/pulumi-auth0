@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionOptionPasswordComplexityOption {
+    /**
+     * @return Minimum number of characters allowed in passwords.
+     * 
+     */
     private Integer minLength;
 
     private GetConnectionOptionPasswordComplexityOption() {}
+    /**
+     * @return Minimum number of characters allowed in passwords.
+     * 
+     */
     public Integer minLength() {
         return this.minLength;
     }

@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionOptionValidation {
+    /**
+     * @return Specifies the `min` and `max` values of username length.
+     * 
+     */
     private List<GetConnectionOptionValidationUsername> usernames;
 
     private GetConnectionOptionValidation() {}
+    /**
+     * @return Specifies the `min` and `max` values of username length.
+     * 
+     */
     public List<GetConnectionOptionValidationUsername> usernames() {
         return this.usernames;
     }

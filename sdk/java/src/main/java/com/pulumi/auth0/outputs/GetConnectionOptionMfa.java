@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionOptionMfa {
+    /**
+     * @return Indicates whether multifactor authentication is enabled for this connection.
+     * 
+     */
     private Boolean active;
+    /**
+     * @return Indicates whether multifactor authentication enrollment settings will be returned.
+     * 
+     */
     private Boolean returnEnrollSettings;
 
     private GetConnectionOptionMfa() {}
+    /**
+     * @return Indicates whether multifactor authentication is enabled for this connection.
+     * 
+     */
     public Boolean active() {
         return this.active;
     }
+    /**
+     * @return Indicates whether multifactor authentication enrollment settings will be returned.
+     * 
+     */
     public Boolean returnEnrollSettings() {
         return this.returnEnrollSettings;
     }

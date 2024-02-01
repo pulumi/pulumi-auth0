@@ -1604,6 +1604,9 @@ export interface ConnectionOptionsValidationUsername {
 }
 
 export interface CustomDomainVerification {
+    /**
+     * Verification methods for the domain.
+     */
     methods: any[];
 }
 
@@ -1696,204 +1699,594 @@ export interface EmailProviderSettingsMessage {
 }
 
 export interface GetAttackProtectionBreachedPasswordDetection {
+    /**
+     * When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+     */
     adminNotificationFrequencies: string[];
+    /**
+     * Whether breached password detection is active.
+     */
     enabled: boolean;
+    /**
+     * The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
+     */
     method: string;
+    /**
+     * Configuration options that apply before every user registration attempt. Only available on public tenants.
+     */
     preUserRegistrations: outputs.GetAttackProtectionBreachedPasswordDetectionPreUserRegistration[];
+    /**
+     * Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+     */
     shields: string[];
 }
 
 export interface GetAttackProtectionBreachedPasswordDetectionPreUserRegistration {
+    /**
+     * Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
+     */
     shields: string[];
 }
 
 export interface GetAttackProtectionBruteForceProtection {
+    /**
+     * List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
+     */
     allowlists: string[];
+    /**
+     * Whether brute force attack protections are active.
+     */
     enabled: boolean;
+    /**
+     * Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+     */
     maxAttempts: number;
+    /**
+     * Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` (lockout an account from a given IP Address) or `countPerIdentifier` (lockout an account regardless of IP Address).
+     */
     mode: string;
+    /**
+     * Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `userNotification` (send an email to user when their account has been blocked).
+     */
     shields: string[];
 }
 
 export interface GetAttackProtectionSuspiciousIpThrottling {
+    /**
+     * List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
+     */
     allowlists: string[];
+    /**
+     * Whether suspicious IP throttling attack protections are active.
+     */
     enabled: boolean;
+    /**
+     * Configuration options that apply before every login attempt. Only available on public tenants.
+     */
     preLogins: outputs.GetAttackProtectionSuspiciousIpThrottlingPreLogin[];
+    /**
+     * Configuration options that apply before every user registration attempt. Only available on public tenants.
+     */
     preUserRegistrations: outputs.GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration[];
+    /**
+     * Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `adminNotification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
+     */
     shields: string[];
 }
 
 export interface GetAttackProtectionSuspiciousIpThrottlingPreLogin {
+    /**
+     * The maximum number of failed login attempts allowed from a single IP address.
+     */
     maxAttempts: number;
+    /**
+     * Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+     */
     rate: number;
 }
 
 export interface GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration {
+    /**
+     * The maximum number of sign up attempts allowed from a single IP address.
+     */
     maxAttempts: number;
+    /**
+     * Interval of time, given in milliseconds at which new sign up tokens will become available after they have been used by an IP address. Each sign up attempt will be added on the defined throttling rate.
+     */
     rate: number;
 }
 
 export interface GetBrandingColor {
+    /**
+     * Background color of login pages in hexadecimal.
+     */
     pageBackground: string;
+    /**
+     * Primary button background color in hexadecimal.
+     */
     primary: string;
 }
 
 export interface GetBrandingFont {
+    /**
+     * URL for the custom font.
+     */
     url: string;
 }
 
 export interface GetBrandingThemeBorder {
+    /**
+     * Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
+     */
     buttonBorderRadius: number;
+    /**
+     * Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
+     */
     buttonBorderWeight: number;
+    /**
+     * Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+     */
     buttonsStyle: string;
+    /**
+     * Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
+     */
     inputBorderRadius: number;
+    /**
+     * Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
+     */
     inputBorderWeight: number;
+    /**
+     * Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+     */
     inputsStyle: string;
+    /**
+     * Show widget shadow. Defaults to `true`.
+     */
     showWidgetShadow: boolean;
+    /**
+     * Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
+     */
     widgetBorderWeight: number;
+    /**
+     * Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
+     */
     widgetCornerRadius: number;
 }
 
 export interface GetBrandingThemeColor {
+    /**
+     * Base focus color. Defaults to `#635dff`.
+     */
     baseFocusColor: string;
+    /**
+     * Base hover color. Defaults to `#000000`.
+     */
     baseHoverColor: string;
+    /**
+     * Body text. Defaults to `#1e212a`.
+     */
     bodyText: string;
+    /**
+     * Error. Defaults to `#d03c38`.
+     */
     error: string;
+    /**
+     * Header. Defaults to `#1e212a`.
+     */
     header: string;
+    /**
+     * Icons. Defaults to `#65676e`.
+     */
     icons: string;
+    /**
+     * Input background. Defaults to `#ffffff`.
+     */
     inputBackground: string;
+    /**
+     * Input border. Defaults to `#c9cace`.
+     */
     inputBorder: string;
+    /**
+     * Input filled text. Defaults to `#000000`.
+     */
     inputFilledText: string;
+    /**
+     * Input labels & placeholders. Defaults to `#65676e`.
+     */
     inputLabelsPlaceholders: string;
+    /**
+     * Links & focused components. Defaults to `#635dff`.
+     */
     linksFocusedComponents: string;
+    /**
+     * Primary button. Defaults to `#635dff`.
+     */
     primaryButton: string;
+    /**
+     * Primary button label. Defaults to `#ffffff`.
+     */
     primaryButtonLabel: string;
+    /**
+     * Secondary button border. Defaults to `#c9cace`.
+     */
     secondaryButtonBorder: string;
+    /**
+     * Secondary button label. Defaults to `#1e212a`.
+     */
     secondaryButtonLabel: string;
+    /**
+     * Success. Defaults to `#13a688`.
+     */
     success: string;
+    /**
+     * Widget background. Defaults to `#ffffff`.
+     */
     widgetBackground: string;
+    /**
+     * Widget border. Defaults to `#c9cace`.
+     */
     widgetBorder: string;
 }
 
 export interface GetBrandingThemeFont {
+    /**
+     * Body text.
+     */
     bodyTexts: outputs.GetBrandingThemeFontBodyText[];
+    /**
+     * Buttons text.
+     */
     buttonsTexts: outputs.GetBrandingThemeFontButtonsText[];
+    /**
+     * Font URL. Defaults to an empty string.
+     */
     fontUrl: string;
+    /**
+     * Input labels.
+     */
     inputLabels: outputs.GetBrandingThemeFontInputLabel[];
+    /**
+     * Links.
+     */
     links: outputs.GetBrandingThemeFontLink[];
+    /**
+     * Links style. Defaults to `normal`.
+     */
     linksStyle: string;
+    /**
+     * Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
+     */
     referenceTextSize: number;
+    /**
+     * Subtitle.
+     */
     subtitles: outputs.GetBrandingThemeFontSubtitle[];
+    /**
+     * Title.
+     */
     titles: outputs.GetBrandingThemeFontTitle[];
 }
 
 export interface GetBrandingThemeFontBodyText {
+    /**
+     * Body text bold. Defaults to `false`.
+     */
     bold: boolean;
+    /**
+     * Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     */
     size: number;
 }
 
 export interface GetBrandingThemeFontButtonsText {
+    /**
+     * Buttons text bold. Defaults to `false`.
+     */
     bold: boolean;
+    /**
+     * Buttons text size. Value needs to be between `0` and `150`. Defaults to `100.0`.
+     */
     size: number;
 }
 
 export interface GetBrandingThemeFontInputLabel {
+    /**
+     * Input labels bold. Defaults to `false`.
+     */
     bold: boolean;
+    /**
+     * Input labels size. Value needs to be between `0` and `150`. Defaults to `100.0`.
+     */
     size: number;
 }
 
 export interface GetBrandingThemeFontLink {
+    /**
+     * Links bold. Defaults to `true`.
+     */
     bold: boolean;
+    /**
+     * Links size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     */
     size: number;
 }
 
 export interface GetBrandingThemeFontSubtitle {
+    /**
+     * Subtitle bold. Defaults to `false`.
+     */
     bold: boolean;
+    /**
+     * Subtitle size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     */
     size: number;
 }
 
 export interface GetBrandingThemeFontTitle {
+    /**
+     * Title bold. Defaults to `false`.
+     */
     bold: boolean;
+    /**
+     * Title size. Value needs to be between `75` and `150`. Defaults to `150.0`.
+     */
     size: number;
 }
 
 export interface GetBrandingThemePageBackground {
+    /**
+     * Background color. Defaults to `#000000`.
+     */
     backgroundColor: string;
+    /**
+     * Background image url. Defaults to an empty string.
+     */
     backgroundImageUrl: string;
+    /**
+     * Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
+     */
     pageLayout: string;
 }
 
 export interface GetBrandingThemeWidget {
+    /**
+     * Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
+     */
     headerTextAlignment: string;
+    /**
+     * Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
+     */
     logoHeight: number;
+    /**
+     * Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
+     */
     logoPosition: string;
+    /**
+     * Logo url. Defaults to an empty string.
+     */
     logoUrl: string;
+    /**
+     * Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
+     */
     socialButtonsLayout: string;
 }
 
 export interface GetBrandingUniversalLogin {
+    /**
+     * The html template for the New Universal Login Experience.
+     */
     body: string;
 }
 
 export interface GetClientAddon {
+    /**
+     * AWS Addon configuration.
+     */
     aws: outputs.GetClientAddonAw[];
+    /**
+     * Azure Blob Storage Addon configuration.
+     */
     azureBlobs: outputs.GetClientAddonAzureBlob[];
+    /**
+     * Azure Storage Bus Addon configuration.
+     */
     azureSbs: outputs.GetClientAddonAzureSb[];
+    /**
+     * Box SSO indicator (no configuration settings needed for Box SSO).
+     */
     boxes: outputs.GetClientAddonBox[];
+    /**
+     * CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+     */
     cloudbees: outputs.GetClientAddonCloudbee[];
+    /**
+     * Concur SSO indicator (no configuration settings needed for Concur SSO).
+     */
     concurs: outputs.GetClientAddonConcur[];
+    /**
+     * Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+     */
     dropboxes: outputs.GetClientAddonDropbox[];
+    /**
+     * Adobe EchoSign SSO configuration.
+     */
     echosigns: outputs.GetClientAddonEchosign[];
+    /**
+     * Egnyte SSO configuration.
+     */
     egnytes: outputs.GetClientAddonEgnyte[];
+    /**
+     * Google Firebase addon configuration.
+     */
     firebases: outputs.GetClientAddonFirebase[];
+    /**
+     * Layer addon configuration.
+     */
     layers: outputs.GetClientAddonLayer[];
+    /**
+     * Microsoft Dynamics CRM SSO configuration.
+     */
     mscrms: outputs.GetClientAddonMscrm[];
+    /**
+     * New Relic SSO configuration.
+     */
     newrelics: outputs.GetClientAddonNewrelic[];
+    /**
+     * Microsoft Office 365 SSO configuration.
+     */
     office365s: outputs.GetClientAddonOffice365[];
+    /**
+     * Active Directory Rights Management Service SSO configuration.
+     */
     rms: outputs.GetClientAddonRm[];
+    /**
+     * Salesforce API addon configuration.
+     */
     salesforceApis: outputs.GetClientAddonSalesforceApi[];
+    /**
+     * Salesforce Sandbox addon configuration.
+     */
     salesforceSandboxApis: outputs.GetClientAddonSalesforceSandboxApi[];
+    /**
+     * Salesforce SSO configuration.
+     */
     salesforces: outputs.GetClientAddonSalesforce[];
+    /**
+     * Configuration settings for a SAML add-on.
+     */
     samlps: outputs.GetClientAddonSamlp[];
+    /**
+     * SAP API addon configuration.
+     */
     sapApis: outputs.GetClientAddonSapApi[];
+    /**
+     * Sentry SSO configuration.
+     */
     sentries: outputs.GetClientAddonSentry[];
+    /**
+     * SharePoint SSO configuration.
+     */
     sharepoints: outputs.GetClientAddonSharepoint[];
+    /**
+     * Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+     */
     slacks: outputs.GetClientAddonSlack[];
+    /**
+     * SpringCM SSO configuration.
+     */
     springcms: outputs.GetClientAddonSpringcm[];
+    /**
+     * Generic SSO configuration.
+     */
     ssoIntegrations: outputs.GetClientAddonSsoIntegration[];
+    /**
+     * Windows Azure Mobile Services addon configuration.
+     */
     wams: outputs.GetClientAddonWam[];
+    /**
+     * WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `clientAliases` properties on the client.
+     */
     wsfeds: outputs.GetClientAddonWsfed[];
+    /**
+     * Zendesk SSO configuration.
+     */
     zendesks: outputs.GetClientAddonZendesk[];
+    /**
+     * Zoom SSO configuration.
+     */
     zooms: outputs.GetClientAddonZoom[];
 }
 
 export interface GetClientAddonAw {
+    /**
+     * AWS token lifetime in seconds.
+     */
     lifetimeInSeconds: number;
+    /**
+     * AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     */
     principal: string;
+    /**
+     * AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.
+     */
     role: string;
 }
 
 export interface GetClientAddonAzureBlob {
+    /**
+     * Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+     */
     accountName: string;
+    /**
+     * Indicates if the issued token has permission to delete the blob.
+     */
     blobDelete: boolean;
+    /**
+     * Entity to request a token for, such as `my-blob`. If blank the computed SAS will apply to the entire storage container.
+     */
     blobName: string;
+    /**
+     * Indicates if the issued token has permission to read the content, properties, metadata and block list. Use the blob as the source of a copy operation.
+     */
     blobRead: boolean;
+    /**
+     * Indicates if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+     */
     blobWrite: boolean;
+    /**
+     * Indicates if issued token has permission to delete any blob in the container.
+     */
     containerDelete: boolean;
+    /**
+     * Indicates if the issued token has permission to list blobs in the container.
+     */
     containerList: boolean;
+    /**
+     * Container to request a token for, such as `my-container`.
+     */
     containerName: string;
+    /**
+     * Indicates if the issued token has permission to read the content, properties, metadata or block list of any blob in the container. Use any blob in the container as the source of a copy operation.
+     */
     containerRead: boolean;
+    /**
+     * Indicates that for any blob in the container if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+     */
     containerWrite: boolean;
+    /**
+     * Expiration in minutes for the generated token (default of 5 minutes).
+     */
     expiration: number;
+    /**
+     * Shared access policy identifier defined in your storage account resource.
+     */
     signedIdentifier: string;
+    /**
+     * Access key associated with this storage account.
+     */
     storageAccessKey: string;
 }
 
 export interface GetClientAddonAzureSb {
+    /**
+     * Entity you want to request a token for, such as `my-queue`.
+     */
     entityPath: string;
+    /**
+     * Optional expiration in minutes for the generated token. Defaults to 5 minutes.
+     */
     expiration: number;
+    /**
+     * Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
+     */
     namespace: string;
+    /**
+     * Primary Key associated with your shared access policy.
+     */
     sasKey: string;
+    /**
+     * Your shared access policy name defined in your Service Bus entity.
+     */
     sasKeyName: string;
 }
 
@@ -1910,126 +2303,318 @@ export interface GetClientAddonDropbox {
 }
 
 export interface GetClientAddonEchosign {
+    /**
+     * Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     */
     domain: string;
 }
 
 export interface GetClientAddonEgnyte {
+    /**
+     * Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     */
     domain: string;
 }
 
 export interface GetClientAddonFirebase {
+    /**
+     * ID of the Service Account you have created (shown as `clientEmail` in the generated JSON file, SDK v3+ tokens only).
+     */
     clientEmail: string;
+    /**
+     * Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).
+     */
     lifetimeInSeconds: number;
+    /**
+     * Private Key for signing the token (SDK v3+ tokens only).
+     */
     privateKey: string;
+    /**
+     * Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).
+     */
     privateKeyId: string;
+    /**
+     * Google Firebase Secret. (SDK v2 only).
+     */
     secret: string;
 }
 
 export interface GetClientAddonLayer {
+    /**
+     * Optional expiration in minutes for the generated token. Defaults to 5 minutes.
+     */
     expiration: number;
+    /**
+     * Authentication Key identifier used to sign the Layer token.
+     */
     keyId: string;
+    /**
+     * Name of the property used as the unique user ID in Layer. If not specified `userId` is used.
+     */
     principal: string;
+    /**
+     * Private key for signing the Layer token.
+     */
     privateKey: string;
+    /**
+     * Provider ID of your Layer account.
+     */
     providerId: string;
 }
 
 export interface GetClientAddonMscrm {
+    /**
+     * Microsoft Dynamics CRM application URL.
+     */
     url: string;
 }
 
 export interface GetClientAddonNewrelic {
+    /**
+     * Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+     */
     account: string;
 }
 
 export interface GetClientAddonOffice365 {
+    /**
+     * Optional Auth0 database connection for testing an already-configured Office 365 tenant.
+     */
     connection: string;
+    /**
+     * Your Office 365 domain name, for example `acme-org.com`.
+     */
     domain: string;
 }
 
 export interface GetClientAddonRm {
+    /**
+     * URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
+     */
     url: string;
 }
 
 export interface GetClientAddonSalesforce {
+    /**
+     * Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
+     */
     entityId: string;
 }
 
 export interface GetClientAddonSalesforceApi {
+    /**
+     * Consumer Key assigned by Salesforce to the Connected App.
+     */
     clientId: string;
+    /**
+     * Community name.
+     */
     communityName: string;
+    /**
+     * Community URL section.
+     */
     communityUrlSection: string;
+    /**
+     * Name of the property in the user object that maps to a Salesforce username, for example `email`.
+     */
     principal: string;
 }
 
 export interface GetClientAddonSalesforceSandboxApi {
+    /**
+     * Consumer Key assigned by Salesforce to the Connected App.
+     */
     clientId: string;
+    /**
+     * Community name.
+     */
     communityName: string;
+    /**
+     * Community URL section.
+     */
     communityUrlSection: string;
+    /**
+     * Name of the property in the user object that maps to a Salesforce username, for example `email`.
+     */
     principal: string;
 }
 
 export interface GetClientAddonSamlp {
+    /**
+     * Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
+     */
     audience: string;
+    /**
+     * Class reference of the authentication context.
+     */
     authnContextClassRef: string;
+    /**
+     * Protocol binding used for SAML logout responses.
+     */
     binding: string;
+    /**
+     * Indicates whether a UPN claim should be created. Defaults to `true`.
+     */
     createUpnClaim: boolean;
+    /**
+     * Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
+     */
     destination: string;
+    /**
+     * Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+     */
     digestAlgorithm: string;
+    /**
+     * Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+     */
     includeAttributeNameFormat: boolean;
+    /**
+     * Issuer of the SAML Assertion.
+     */
     issuer: string;
+    /**
+     * Number of seconds during which the token is valid. Defaults to `3600` seconds.
+     */
     lifetimeInSeconds: number;
+    /**
+     * Configuration settings for logout.
+     */
     logouts: outputs.GetClientAddonSamlpLogout[];
+    /**
+     * Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+     */
     mapIdentities: boolean;
+    /**
+     * Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+     */
     mapUnknownClaimsAsIs: boolean;
+    /**
+     * Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
+     */
     mappings: {[key: string]: any};
+    /**
+     * Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     */
     nameIdentifierFormat: string;
+    /**
+     * Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
+     */
     nameIdentifierProbes: string[];
+    /**
+     * Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+     */
     passthroughClaimsWithNoMapping: boolean;
+    /**
+     * Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
+     */
     recipient: string;
+    /**
+     * Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
+     */
     signResponse: boolean;
+    /**
+     * Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+     */
     signatureAlgorithm: string;
+    /**
+     * Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+     */
     signingCert: string;
+    /**
+     * Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+     */
     typedAttributes: boolean;
 }
 
 export interface GetClientAddonSamlpLogout {
+    /**
+     * The service provider (client application)'s Single Logout Service URL, where Auth0 will send logout requests and responses.
+     */
     callback: string;
+    /**
+     * Controls whether Auth0 should notify service providers of session termination.
+     */
     sloEnabled: boolean;
 }
 
 export interface GetClientAddonSapApi {
+    /**
+     * If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute `clientId` must be set and equal the `clientId` form parameter of the access token request.
+     */
     clientId: string;
+    /**
+     * NameID element of the Subject which can be used to express the user's identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     */
     nameIdentifierFormat: string;
+    /**
+     * Requested scope for SAP APIs.
+     */
     scope: string;
+    /**
+     * Service account password to use to authenticate API calls to the token endpoint.
+     */
     servicePassword: string;
+    /**
+     * The OAuth2 token endpoint URL of your SAP OData server.
+     */
     tokenEndpointUrl: string;
+    /**
+     * Name of the property in the user object that maps to a SAP username, for example `email`.
+     */
     usernameAttribute: string;
 }
 
 export interface GetClientAddonSentry {
+    /**
+     * URL prefix only if running Sentry Community Edition, otherwise leave empty.
+     */
     baseUrl: string;
+    /**
+     * Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
+     */
     orgSlug: string;
 }
 
 export interface GetClientAddonSharepoint {
+    /**
+     * External SharePoint application URLs if exposed to the Internet.
+     */
     externalUrls: string[];
+    /**
+     * Internal SharePoint application URL.
+     */
     url: string;
 }
 
 export interface GetClientAddonSlack {
+    /**
+     * Slack team name.
+     */
     team: string;
 }
 
 export interface GetClientAddonSpringcm {
+    /**
+     * SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
+     */
     acsUrl: string;
 }
 
 export interface GetClientAddonSsoIntegration {
+    /**
+     * SSO integration name.
+     */
     name: string;
+    /**
+     * SSO integration version installed.
+     */
     version: string;
 }
 
 export interface GetClientAddonWam {
+    /**
+     * Your master key for Windows Azure Mobile Services.
+     */
     masterKey: string;
 }
 
@@ -2037,22 +2622,46 @@ export interface GetClientAddonWsfed {
 }
 
 export interface GetClientAddonZendesk {
+    /**
+     * Zendesk account name. Usually the first segment in your Zendesk URL, for example `https://acme-org.zendesk.com` would be `acme-org`.
+     */
     accountName: string;
 }
 
 export interface GetClientAddonZoom {
+    /**
+     * Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
+     */
     account: string;
 }
 
 export interface GetClientJwtConfiguration {
+    /**
+     * Algorithm used to sign JWTs.
+     */
     alg: string;
+    /**
+     * Number of seconds during which the JWT will be valid.
+     */
     lifetimeInSeconds: number;
+    /**
+     * Permissions (scopes) included in JWTs.
+     */
     scopes: {[key: string]: string};
+    /**
+     * Indicates whether the client secret is Base64-encoded.
+     */
     secretEncoded: boolean;
 }
 
 export interface GetClientMobile {
+    /**
+     * Configuration settings for Android native apps.
+     */
     androids: outputs.GetClientMobileAndroid[];
+    /**
+     * Configuration settings for i0S native apps.
+     */
     ios: outputs.GetClientMobileIo[];
 }
 
@@ -2080,115 +2689,418 @@ export interface GetClientNativeSocialLoginFacebook {
 }
 
 export interface GetClientRefreshToken {
+    /**
+     * Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+     */
     expirationType: string;
+    /**
+     * The time in seconds after which inactive refresh tokens will expire.
+     */
     idleTokenLifetime: number;
+    /**
+     * Whether inactive refresh tokens should remain valid indefinitely.
+     */
     infiniteIdleTokenLifetime: boolean;
+    /**
+     * Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
+     */
     infiniteTokenLifetime: boolean;
+    /**
+     * The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+     */
     leeway: number;
+    /**
+     * Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+     */
     rotationType: string;
+    /**
+     * The absolute lifetime of a refresh token in seconds.
+     */
     tokenLifetime: number;
 }
 
 export interface GetConnectionOption {
+    /**
+     * ADFS URL where to fetch the metadata source.
+     */
     adfsServer: string;
+    /**
+     * List of allowed audiences.
+     */
     allowedAudiences: string[];
+    /**
+     * Enable API Access to users.
+     */
     apiEnableUsers: boolean;
+    /**
+     * App ID.
+     */
     appId: string;
+    /**
+     * OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+     */
     attributeMaps: outputs.GetConnectionOptionAttributeMap[];
+    /**
+     * Query string parameters to be included as part of the generated passwordless email link.
+     */
     authParams: {[key: string]: string};
+    /**
+     * Authorization endpoint.
+     */
     authorizationEndpoint: string;
+    /**
+     * Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+     */
     bruteForceProtection: boolean;
+    /**
+     * The strategy's client ID.
+     */
     clientId: string;
+    /**
+     * The strategy's client secret.
+     */
     clientSecret: string;
+    /**
+     * Salesforce community base URL.
+     */
     communityBaseUrl: string;
+    /**
+     * A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
+     */
     configuration: {[key: string]: any};
+    /**
+     * Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+     */
     connectionSettings: outputs.GetConnectionOptionConnectionSetting[];
+    /**
+     * A map of scripts used to integrate with a custom database.
+     */
     customScripts: {[key: string]: string};
+    /**
+     * When enabled, additional debug information will be generated.
+     */
     debug: boolean;
+    /**
+     * The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     */
     decryptionKeys: outputs.GetConnectionOptionDecryptionKey[];
+    /**
+     * Sign Request Algorithm Digest.
+     */
     digestAlgorithm: string;
+    /**
+     * Indicates whether to disable the cache or not.
+     */
     disableCache: boolean;
+    /**
+     * Indicates whether to remove the forgot password link within the New Universal Login.
+     */
     disableSelfServiceChangePassword: boolean;
+    /**
+     * When enabled, will disable sign out.
+     */
     disableSignOut: boolean;
+    /**
+     * Indicates whether to allow user sign-ups to your application.
+     */
     disableSignup: boolean;
+    /**
+     * OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+     */
     discoveryUrl: string;
+    /**
+     * Domain name.
+     */
     domain: string;
+    /**
+     * List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
+     */
     domainAliases: string[];
+    /**
+     * Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+     */
     enableScriptContext: boolean;
+    /**
+     * Set to `true` to use a legacy user store.
+     */
     enabledDatabaseCustomization: boolean;
+    /**
+     * Custom Entity ID for the connection.
+     */
     entityId: string;
+    /**
+     * Federation Metadata for the ADFS connection.
+     */
     fedMetadataXml: string;
+    /**
+     * If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+     */
     fieldsMap: string;
+    /**
+     * Specifies whether or not request info should be forwarded to sms gateway.
+     */
     forwardRequestInfo: boolean;
+    /**
+     * Address to use as the sender.
+     */
     from: string;
+    /**
+     * Defines the parameters used to generate the auth token for the custom gateway.
+     */
     gatewayAuthentications: outputs.GetConnectionOptionGatewayAuthentication[];
+    /**
+     * Defines a custom sms gateway to use instead of Twilio.
+     */
     gatewayUrl: string;
+    /**
+     * Icon URL.
+     */
     iconUrl: string;
+    /**
+     * Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
+     */
     identityApi: string;
+    /**
+     * Configuration options for IDP Initiated Authentication. This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`.
+     */
     idpInitiateds: outputs.GetConnectionOptionIdpInitiated[];
+    /**
+     * Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
+     */
     importMode: boolean;
+    /**
+     * A list of IPs.
+     */
     ips: string[];
+    /**
+     * Issuer URL, e.g. `https://auth.example.com`.
+     */
     issuer: string;
+    /**
+     * JWKS URI.
+     */
     jwksUri: string;
+    /**
+     * Apple Key ID.
+     */
     keyId: string;
+    /**
+     * By default Auth0 maps `userId` to `email`. Enabling this setting changes the behavior to map `userId` to 'id' instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+     */
     mapUserIdToId: boolean;
+    /**
+     * Maximum number of groups to retrieve.
+     */
     maxGroupsToRetrieve: string;
+    /**
+     * SID for Copilot. Used when SMS Source is Copilot.
+     */
     messagingServiceSid: string;
+    /**
+     * The URL of the SAML metadata document.
+     */
     metadataUrl: string;
+    /**
+     * The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
+     */
     metadataXml: string;
+    /**
+     * Configuration options for multifactor authentication.
+     */
     mfas: outputs.GetConnectionOptionMfa[];
+    /**
+     * The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+     */
     name: string;
+    /**
+     * If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
+     */
     nonPersistentAttrs: string[];
+    /**
+     * Configuration settings for password complexity.
+     */
     passwordComplexityOptions: outputs.GetConnectionOptionPasswordComplexityOption[];
+    /**
+     * Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
+     */
     passwordDictionaries: outputs.GetConnectionOptionPasswordDictionary[];
+    /**
+     * Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
+     */
     passwordHistories: outputs.GetConnectionOptionPasswordHistory[];
+    /**
+     * Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
+     */
     passwordNoPersonalInfos: outputs.GetConnectionOptionPasswordNoPersonalInfo[];
+    /**
+     * Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
+     */
     passwordPolicy: string;
+    /**
+     * Ping Federate Server URL.
+     */
     pingFederateBaseUrl: string;
+    /**
+     * Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
+     */
     pkceEnabled: boolean;
+    /**
+     * The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
+     */
     protocolBinding: string;
+    /**
+     * Defines the custom `smsGateway` provider.
+     */
     provider: string;
+    /**
+     * Template that formats the SAML request.
+     */
     requestTemplate: string;
+    /**
+     * Indicates whether the user is required to provide a username in addition to an email address.
+     */
     requiresUsername: boolean;
+    /**
+     * Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basicProfile`, `extProfile`, `extNestedGroups`, etc.
+     */
     scopes: string[];
+    /**
+     * A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+     */
     scripts: {[key: string]: string};
+    /**
+     * Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`. Default value: `onEachLogin`.
+     */
     setUserRootAttributes: string;
+    /**
+     * Choose how Auth0 sets the emailVerified field in the user profile.
+     */
     shouldTrustEmailVerifiedConnection: string;
+    /**
+     * SAML single login URL for the connection.
+     */
     signInEndpoint: string;
+    /**
+     * SAML single logout URL for the connection.
+     */
     signOutEndpoint: string;
+    /**
+     * When enabled, the SAML authentication request will be signed.
+     */
     signSamlRequest: boolean;
+    /**
+     * Sign Request Algorithm.
+     */
     signatureAlgorithm: string;
+    /**
+     * X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
+     */
     signingCert: string;
+    /**
+     * The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     */
     signingKeys: outputs.GetConnectionOptionSigningKey[];
+    /**
+     * Version 1 is deprecated, use version 2.
+     */
     strategyVersion: number;
+    /**
+     * Subject line of the email.
+     */
     subject: string;
+    /**
+     * Syntax of the template body.
+     */
     syntax: string;
+    /**
+     * Apple Team ID.
+     */
     teamId: string;
+    /**
+     * Body of the template.
+     */
     template: string;
+    /**
+     * Tenant domain name.
+     */
     tenantDomain: string;
+    /**
+     * Token endpoint.
+     */
     tokenEndpoint: string;
+    /**
+     * Configuration options for one-time passwords.
+     */
     totps: outputs.GetConnectionOptionTotp[];
+    /**
+     * SID for your Twilio account.
+     */
     twilioSid: string;
+    /**
+     * AuthToken for your Twilio account.
+     */
     twilioToken: string;
+    /**
+     * Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+     */
     type: string;
+    /**
+     * You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
+     */
     upstreamParams: string;
+    /**
+     * Indicates whether to use cert auth or not.
+     */
     useCertAuth: boolean;
+    /**
+     * Indicates whether to use Kerberos or not.
+     */
     useKerberos: boolean;
+    /**
+     * Whether to use WS-Fed.
+     */
     useWsfed: boolean;
+    /**
+     * Attribute in the SAML token that will be mapped to the userId property in Auth0.
+     */
     userIdAttribute: string;
+    /**
+     * User info endpoint.
+     */
     userinfoEndpoint: string;
+    /**
+     * Validation of the minimum and maximum values allowed for a user to have as username.
+     */
     validations: outputs.GetConnectionOptionValidation[];
+    /**
+     * Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
+     */
     waadCommonEndpoint: boolean;
+    /**
+     * Protocol to use.
+     */
     waadProtocol: string;
 }
 
 export interface GetConnectionOptionAttributeMap {
+    /**
+     * This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+     */
     attributes: string;
+    /**
+     * Method used to map incoming claims. Possible values: `useMap` (Okta or OIDC), `bindAll` (OIDC) or `basicProfile` (Okta).
+     */
     mappingMode: string;
+    /**
+     * This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
+     */
     userinfoScope: string;
 }
 
 export interface GetConnectionOptionConnectionSetting {
+    /**
+     * PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+     */
     pkce: string;
 }
 
@@ -2198,10 +3110,25 @@ export interface GetConnectionOptionDecryptionKey {
 }
 
 export interface GetConnectionOptionGatewayAuthentication {
+    /**
+     * Audience claim for the HS256 token sent to `gatewayUrl`.
+     */
     audience: string;
+    /**
+     * Authentication method (default is `bearer` token).
+     */
     method: string;
+    /**
+     * Secret used to sign the HS256 token sent to `gatewayUrl`.
+     */
     secret: string;
+    /**
+     * Specifies whether or not the secret is Base64-encoded.
+     */
     secretBase64Encoded: boolean;
+    /**
+     * Subject claim for the HS256 token sent to `gatewayUrl`.
+     */
     subject: string;
 }
 
@@ -2212,16 +3139,31 @@ export interface GetConnectionOptionIdpInitiated {
 }
 
 export interface GetConnectionOptionMfa {
+    /**
+     * Indicates whether multifactor authentication is enabled for this connection.
+     */
     active: boolean;
+    /**
+     * Indicates whether multifactor authentication enrollment settings will be returned.
+     */
     returnEnrollSettings: boolean;
 }
 
 export interface GetConnectionOptionPasswordComplexityOption {
+    /**
+     * Minimum number of characters allowed in passwords.
+     */
     minLength: number;
 }
 
 export interface GetConnectionOptionPasswordDictionary {
+    /**
+     * Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+     */
     dictionaries: string[];
+    /**
+     * Indicates whether the password dictionary check is enabled for this connection.
+     */
     enable: boolean;
 }
 
@@ -2240,11 +3182,20 @@ export interface GetConnectionOptionSigningKey {
 }
 
 export interface GetConnectionOptionTotp {
+    /**
+     * Length of the one-time password.
+     */
     length: number;
+    /**
+     * Seconds between allowed generation of new passwords.
+     */
     timeStep: number;
 }
 
 export interface GetConnectionOptionValidation {
+    /**
+     * Specifies the `min` and `max` values of username length.
+     */
     usernames: outputs.GetConnectionOptionValidationUsername[];
 }
 
@@ -2254,102 +3205,276 @@ export interface GetConnectionOptionValidationUsername {
 }
 
 export interface GetCustomDomainVerification {
+    /**
+     * Verification methods for the domain.
+     */
     methods: any[];
 }
 
 export interface GetOrganizationBranding {
+    /**
+     * Color scheme used to customize the login pages.
+     */
     colors: {[key: string]: string};
+    /**
+     * URL of logo to display on login page.
+     */
     logoUrl: string;
 }
 
 export interface GetOrganizationConnection {
+    /**
+     * When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
+     */
     assignMembershipOnLogin: boolean;
+    /**
+     * The ID of the enabled connection on the organization.
+     */
     connectionId: string;
 }
 
 export interface GetPagesChangePassword {
+    /**
+     * Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
+     */
     enabled: boolean;
+    /**
+     * Customized content for the Reset Password page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+     */
     html: string;
 }
 
 export interface GetPagesError {
+    /**
+     * Customized content for the Error page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+     */
     html: string;
+    /**
+     * Indicates whether to show the link to logs as part of the default error page.
+     */
     showLogLink: boolean;
+    /**
+     * URL to redirect to when an error occurs, instead of showing the default error page.
+     */
     url: string;
 }
 
 export interface GetPagesGuardianMfa {
+    /**
+     * Indicates whether to use the custom Guardian MFA HTML (`true`) or the default Auth0 page (`false`).
+     */
     enabled: boolean;
+    /**
+     * Customized content for the Guardian MFA page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+     */
     html: string;
 }
 
 export interface GetPagesLogin {
+    /**
+     * Indicates whether to use the custom Login page HTML (`true`) or the default Auth0 page (`false`).
+     */
     enabled: boolean;
+    /**
+     * Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+     */
     html: string;
 }
 
 export interface GetResourceServerScope {
+    /**
+     * Description of the permission (scope).
+     */
     description: string;
+    /**
+     * Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+     */
     name: string;
 }
 
 export interface GetRolePermission {
+    /**
+     * Description of the permission.
+     */
     description: string;
+    /**
+     * Name of the permission (scope) configured on the resource server (API).
+     */
     name: string;
+    /**
+     * Unique identifier for the resource server (API).
+     */
     resourceServerIdentifier: string;
+    /**
+     * Name of resource server (API) that the permission is associated with.
+     */
     resourceServerName: string;
 }
 
 export interface GetSigningKeysSigningKey {
+    /**
+     * The public certificate of the signing key.
+     */
     cert: string;
+    /**
+     * True if the key is the the current key.
+     */
     current: boolean;
+    /**
+     * The cert fingerprint.
+     */
     fingerprint: string;
+    /**
+     * The key ID of the signing key.
+     */
     kid: string;
+    /**
+     * True if the key is the the next key.
+     */
     next: boolean;
+    /**
+     * The public certificate of the signing key in PKCS7 format.
+     */
     pkcs7: string;
+    /**
+     * True if the key is the the previous key.
+     */
     previous: boolean;
+    /**
+     * True if the key is revoked.
+     */
     revoked: boolean;
+    /**
+     * The cert thumbprint.
+     */
     thumbprint: string;
 }
 
 export interface GetTenantFlag {
+    /**
+     * Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+     */
     allowLegacyDelegationGrantTypes: boolean;
+    /**
+     * Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+     */
     allowLegacyRoGrantTypes: boolean;
+    /**
+     * If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+     */
     allowLegacyTokeninfoEndpoint: boolean;
+    /**
+     * Enables new insights activity page view.
+     */
     dashboardInsightsView: boolean;
+    /**
+     * Enables beta access to log streaming changes.
+     */
     dashboardLogStreamsNext: boolean;
+    /**
+     * Indicates whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+     */
     disableClickjackProtectionHeaders: boolean;
+    /**
+     * Disables SAML fields map fix for bad mappings with repeated attributes.
+     */
     disableFieldsMapFix: boolean;
+    /**
+     * If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+     */
     disableManagementApiSmsObfuscation: boolean;
+    /**
+     * If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+     */
     enableAdfsWaadEmailVerification: boolean;
+    /**
+     * Indicates whether the APIs section is enabled for the tenant.
+     */
     enableApisSection: boolean;
+    /**
+     * Indicates whether all current connections should be enabled when a new client is created.
+     */
     enableClientConnections: boolean;
+    /**
+     * Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
+     */
     enableCustomDomainInEmails: boolean;
+    /**
+     * Indicates whether the tenant allows dynamic client registration.
+     */
     enableDynamicClientRegistration: boolean;
+    /**
+     * Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
+     */
     enableIdtokenApi2: boolean;
+    /**
+     * Indicates whether to use the older v2 legacy logs search.
+     */
     enableLegacyLogsSearchV2: boolean;
+    /**
+     * Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+     */
     enableLegacyProfile: boolean;
+    /**
+     * Indicates whether advanced API Authorization scenarios are enabled.
+     */
     enablePipeline2: boolean;
+    /**
+     * Indicates whether the public sign up process shows a `userExists` error if the user already exists.
+     */
     enablePublicSignupUserExistsError: boolean;
+    /**
+     * Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+     */
     mfaShowFactorListOnEnrollment: boolean;
+    /**
+     * Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+     */
     noDiscloseEnterpriseConnections: boolean;
+    /**
+     * Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+     */
     requirePushedAuthorizationRequests: boolean;
+    /**
+     * Delete underlying grant when a refresh token is revoked via the Authentication API.
+     */
     revokeRefreshTokenGrant: boolean;
+    /**
+     * Indicates whether to use scope descriptions for consent.
+     */
     useScopeDescriptionsForConsent: boolean;
 }
 
 export interface GetTenantSession {
+    /**
+     * When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
+     */
     oidcLogoutPromptEnabled: boolean;
 }
 
 export interface GetTenantSessionCooky {
+    /**
+     * Behavior of tenant session cookie. Accepts either "persistent" or "non-persistent".
+     */
     mode: string;
 }
 
 export interface GetUserPermission {
+    /**
+     * Description of the permission.
+     */
     description: string;
+    /**
+     * Name of the permission.
+     */
     name: string;
+    /**
+     * Resource server identifier associated with the permission.
+     */
     resourceServerIdentifier: string;
+    /**
+     * Name of resource server that the permission is associated with.
+     */
     resourceServerName: string;
 }
 

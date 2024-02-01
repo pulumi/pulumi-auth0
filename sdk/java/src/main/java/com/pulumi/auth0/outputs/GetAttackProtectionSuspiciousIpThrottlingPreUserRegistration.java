@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration {
+    /**
+     * @return The maximum number of sign up attempts allowed from a single IP address.
+     * 
+     */
     private Integer maxAttempts;
+    /**
+     * @return Interval of time, given in milliseconds at which new sign up tokens will become available after they have been used by an IP address. Each sign up attempt will be added on the defined throttling rate.
+     * 
+     */
     private Integer rate;
 
     private GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration() {}
+    /**
+     * @return The maximum number of sign up attempts allowed from a single IP address.
+     * 
+     */
     public Integer maxAttempts() {
         return this.maxAttempts;
     }
+    /**
+     * @return Interval of time, given in milliseconds at which new sign up tokens will become available after they have been used by an IP address. Each sign up attempt will be added on the defined throttling rate.
+     * 
+     */
     public Integer rate() {
         return this.rate;
     }

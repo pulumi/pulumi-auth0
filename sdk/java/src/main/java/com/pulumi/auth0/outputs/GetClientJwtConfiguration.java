@@ -13,21 +13,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientJwtConfiguration {
+    /**
+     * @return Algorithm used to sign JWTs.
+     * 
+     */
     private String alg;
+    /**
+     * @return Number of seconds during which the JWT will be valid.
+     * 
+     */
     private Integer lifetimeInSeconds;
+    /**
+     * @return Permissions (scopes) included in JWTs.
+     * 
+     */
     private Map<String,String> scopes;
+    /**
+     * @return Indicates whether the client secret is Base64-encoded.
+     * 
+     */
     private Boolean secretEncoded;
 
     private GetClientJwtConfiguration() {}
+    /**
+     * @return Algorithm used to sign JWTs.
+     * 
+     */
     public String alg() {
         return this.alg;
     }
+    /**
+     * @return Number of seconds during which the JWT will be valid.
+     * 
+     */
     public Integer lifetimeInSeconds() {
         return this.lifetimeInSeconds;
     }
+    /**
+     * @return Permissions (scopes) included in JWTs.
+     * 
+     */
     public Map<String,String> scopes() {
         return this.scopes;
     }
+    /**
+     * @return Indicates whether the client secret is Base64-encoded.
+     * 
+     */
     public Boolean secretEncoded() {
         return this.secretEncoded;
     }

@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetClientMobileResult
     {
+        /// <summary>
+        /// Configuration settings for Android native apps.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClientMobileAndroidResult> Androids;
+        /// <summary>
+        /// Configuration settings for i0S native apps.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClientMobileIoResult> Ios;
 
         [OutputConstructor]

@@ -13,9 +13,21 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetRolePermissionResult
     {
+        /// <summary>
+        /// Description of the permission.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Name of the permission (scope) configured on the resource server (API).
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Unique identifier for the resource server (API).
+        /// </summary>
         public readonly string ResourceServerIdentifier;
+        /// <summary>
+        /// Name of resource server (API) that the permission is associated with.
+        /// </summary>
         public readonly string ResourceServerName;
 
         [OutputConstructor]
