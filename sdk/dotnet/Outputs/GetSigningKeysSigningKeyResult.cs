@@ -13,14 +13,41 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetSigningKeysSigningKeyResult
     {
+        /// <summary>
+        /// The public certificate of the signing key.
+        /// </summary>
         public readonly string Cert;
+        /// <summary>
+        /// True if the key is the the current key.
+        /// </summary>
         public readonly bool Current;
+        /// <summary>
+        /// The cert fingerprint.
+        /// </summary>
         public readonly string Fingerprint;
+        /// <summary>
+        /// The key ID of the signing key.
+        /// </summary>
         public readonly string Kid;
+        /// <summary>
+        /// True if the key is the the next key.
+        /// </summary>
         public readonly bool Next;
+        /// <summary>
+        /// The public certificate of the signing key in PKCS7 format.
+        /// </summary>
         public readonly string Pkcs7;
+        /// <summary>
+        /// True if the key is the the previous key.
+        /// </summary>
         public readonly bool Previous;
+        /// <summary>
+        /// True if the key is revoked.
+        /// </summary>
         public readonly bool Revoked;
+        /// <summary>
+        /// The cert thumbprint.
+        /// </summary>
         public readonly string Thumbprint;
 
         [OutputConstructor]

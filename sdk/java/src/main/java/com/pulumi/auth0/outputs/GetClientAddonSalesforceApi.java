@@ -10,21 +10,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonSalesforceApi {
+    /**
+     * @return Consumer Key assigned by Salesforce to the Connected App.
+     * 
+     */
     private String clientId;
+    /**
+     * @return Community name.
+     * 
+     */
     private String communityName;
+    /**
+     * @return Community URL section.
+     * 
+     */
     private String communityUrlSection;
+    /**
+     * @return Name of the property in the user object that maps to a Salesforce username, for example `email`.
+     * 
+     */
     private String principal;
 
     private GetClientAddonSalesforceApi() {}
+    /**
+     * @return Consumer Key assigned by Salesforce to the Connected App.
+     * 
+     */
     public String clientId() {
         return this.clientId;
     }
+    /**
+     * @return Community name.
+     * 
+     */
     public String communityName() {
         return this.communityName;
     }
+    /**
+     * @return Community URL section.
+     * 
+     */
     public String communityUrlSection() {
         return this.communityUrlSection;
     }
+    /**
+     * @return Name of the property in the user object that maps to a Salesforce username, for example `email`.
+     * 
+     */
     public String principal() {
         return this.principal;
     }

@@ -10,29 +10,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonSapApi {
+    /**
+     * @return If activated in the OAuth 2.0 client configuration (transaction ` SOAUTH2) the SAML attribute  `client_id`must be set and equal the`client_id` form parameter of the access token request.
+     * 
+     */
     private String clientId;
+    /**
+     * @return NameID element of the Subject which can be used to express the user&#39;s identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * 
+     */
     private String nameIdentifierFormat;
+    /**
+     * @return Requested scope for SAP APIs.
+     * 
+     */
     private String scope;
+    /**
+     * @return Service account password to use to authenticate API calls to the token endpoint.
+     * 
+     */
     private String servicePassword;
+    /**
+     * @return The OAuth2 token endpoint URL of your SAP OData server.
+     * 
+     */
     private String tokenEndpointUrl;
+    /**
+     * @return Name of the property in the user object that maps to a SAP username, for example `email`.
+     * 
+     */
     private String usernameAttribute;
 
     private GetClientAddonSapApi() {}
+    /**
+     * @return If activated in the OAuth 2.0 client configuration (transaction ` SOAUTH2) the SAML attribute  `client_id`must be set and equal the`client_id` form parameter of the access token request.
+     * 
+     */
     public String clientId() {
         return this.clientId;
     }
+    /**
+     * @return NameID element of the Subject which can be used to express the user&#39;s identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * 
+     */
     public String nameIdentifierFormat() {
         return this.nameIdentifierFormat;
     }
+    /**
+     * @return Requested scope for SAP APIs.
+     * 
+     */
     public String scope() {
         return this.scope;
     }
+    /**
+     * @return Service account password to use to authenticate API calls to the token endpoint.
+     * 
+     */
     public String servicePassword() {
         return this.servicePassword;
     }
+    /**
+     * @return The OAuth2 token endpoint URL of your SAP OData server.
+     * 
+     */
     public String tokenEndpointUrl() {
         return this.tokenEndpointUrl;
     }
+    /**
+     * @return Name of the property in the user object that maps to a SAP username, for example `email`.
+     * 
+     */
     public String usernameAttribute() {
         return this.usernameAttribute;
     }

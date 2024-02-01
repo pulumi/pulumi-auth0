@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonEgnyte {
+    /**
+     * @return Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * 
+     */
     private String domain;
 
     private GetClientAddonEgnyte() {}
+    /**
+     * @return Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * 
+     */
     public String domain() {
         return this.domain;
     }

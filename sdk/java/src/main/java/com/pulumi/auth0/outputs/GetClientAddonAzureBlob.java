@@ -12,57 +12,161 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonAzureBlob {
+    /**
+     * @return Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+     * 
+     */
     private String accountName;
+    /**
+     * @return Indicates if the issued token has permission to delete the blob.
+     * 
+     */
     private Boolean blobDelete;
+    /**
+     * @return Entity to request a token for, such as `my-blob`. If blank the computed SAS will apply to the entire storage container.
+     * 
+     */
     private String blobName;
+    /**
+     * @return Indicates if the issued token has permission to read the content, properties, metadata and block list. Use the blob as the source of a copy operation.
+     * 
+     */
     private Boolean blobRead;
+    /**
+     * @return Indicates if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+     * 
+     */
     private Boolean blobWrite;
+    /**
+     * @return Indicates if issued token has permission to delete any blob in the container.
+     * 
+     */
     private Boolean containerDelete;
+    /**
+     * @return Indicates if the issued token has permission to list blobs in the container.
+     * 
+     */
     private Boolean containerList;
+    /**
+     * @return Container to request a token for, such as `my-container`.
+     * 
+     */
     private String containerName;
+    /**
+     * @return Indicates if the issued token has permission to read the content, properties, metadata or block list of any blob in the container. Use any blob in the container as the source of a copy operation.
+     * 
+     */
     private Boolean containerRead;
+    /**
+     * @return Indicates that for any blob in the container if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+     * 
+     */
     private Boolean containerWrite;
+    /**
+     * @return Expiration in minutes for the generated token (default of 5 minutes).
+     * 
+     */
     private Integer expiration;
+    /**
+     * @return Shared access policy identifier defined in your storage account resource.
+     * 
+     */
     private String signedIdentifier;
+    /**
+     * @return Access key associated with this storage account.
+     * 
+     */
     private String storageAccessKey;
 
     private GetClientAddonAzureBlob() {}
+    /**
+     * @return Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+     * 
+     */
     public String accountName() {
         return this.accountName;
     }
+    /**
+     * @return Indicates if the issued token has permission to delete the blob.
+     * 
+     */
     public Boolean blobDelete() {
         return this.blobDelete;
     }
+    /**
+     * @return Entity to request a token for, such as `my-blob`. If blank the computed SAS will apply to the entire storage container.
+     * 
+     */
     public String blobName() {
         return this.blobName;
     }
+    /**
+     * @return Indicates if the issued token has permission to read the content, properties, metadata and block list. Use the blob as the source of a copy operation.
+     * 
+     */
     public Boolean blobRead() {
         return this.blobRead;
     }
+    /**
+     * @return Indicates if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+     * 
+     */
     public Boolean blobWrite() {
         return this.blobWrite;
     }
+    /**
+     * @return Indicates if issued token has permission to delete any blob in the container.
+     * 
+     */
     public Boolean containerDelete() {
         return this.containerDelete;
     }
+    /**
+     * @return Indicates if the issued token has permission to list blobs in the container.
+     * 
+     */
     public Boolean containerList() {
         return this.containerList;
     }
+    /**
+     * @return Container to request a token for, such as `my-container`.
+     * 
+     */
     public String containerName() {
         return this.containerName;
     }
+    /**
+     * @return Indicates if the issued token has permission to read the content, properties, metadata or block list of any blob in the container. Use any blob in the container as the source of a copy operation.
+     * 
+     */
     public Boolean containerRead() {
         return this.containerRead;
     }
+    /**
+     * @return Indicates that for any blob in the container if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+     * 
+     */
     public Boolean containerWrite() {
         return this.containerWrite;
     }
+    /**
+     * @return Expiration in minutes for the generated token (default of 5 minutes).
+     * 
+     */
     public Integer expiration() {
         return this.expiration;
     }
+    /**
+     * @return Shared access policy identifier defined in your storage account resource.
+     * 
+     */
     public String signedIdentifier() {
         return this.signedIdentifier;
     }
+    /**
+     * @return Access key associated with this storage account.
+     * 
+     */
     public String storageAccessKey() {
         return this.storageAccessKey;
     }

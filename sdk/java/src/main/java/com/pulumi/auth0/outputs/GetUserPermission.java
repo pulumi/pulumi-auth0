@@ -10,21 +10,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetUserPermission {
+    /**
+     * @return Description of the permission.
+     * 
+     */
     private String description;
+    /**
+     * @return Name of the permission.
+     * 
+     */
     private String name;
+    /**
+     * @return Resource server identifier associated with the permission.
+     * 
+     */
     private String resourceServerIdentifier;
+    /**
+     * @return Name of resource server that the permission is associated with.
+     * 
+     */
     private String resourceServerName;
 
     private GetUserPermission() {}
+    /**
+     * @return Description of the permission.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Name of the permission.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Resource server identifier associated with the permission.
+     * 
+     */
     public String resourceServerIdentifier() {
         return this.resourceServerIdentifier;
     }
+    /**
+     * @return Name of resource server that the permission is associated with.
+     * 
+     */
     public String resourceServerName() {
         return this.resourceServerName;
     }

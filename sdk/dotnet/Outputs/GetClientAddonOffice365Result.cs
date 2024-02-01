@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetClientAddonOffice365Result
     {
+        /// <summary>
+        /// Optional Auth0 database connection for testing an already-configured Office 365 tenant.
+        /// </summary>
         public readonly string Connection;
+        /// <summary>
+        /// Your Office 365 domain name, for example `acme-org.com`.
+        /// </summary>
         public readonly string Domain;
 
         [OutputConstructor]

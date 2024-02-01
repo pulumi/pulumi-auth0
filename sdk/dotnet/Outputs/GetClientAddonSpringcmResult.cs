@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetClientAddonSpringcmResult
     {
+        /// <summary>
+        /// SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
+        /// </summary>
         public readonly string AcsUrl;
 
         [OutputConstructor]

@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCustomDomainVerification {
+    /**
+     * @return Verification methods for the domain.
+     * 
+     */
     private List<Object> methods;
 
     private GetCustomDomainVerification() {}
+    /**
+     * @return Verification methods for the domain.
+     * 
+     */
     public List<Object> methods() {
         return this.methods;
     }

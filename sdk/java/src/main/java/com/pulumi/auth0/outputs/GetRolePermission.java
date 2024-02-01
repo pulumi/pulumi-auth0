@@ -10,21 +10,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRolePermission {
+    /**
+     * @return Description of the permission.
+     * 
+     */
     private String description;
+    /**
+     * @return Name of the permission (scope) configured on the resource server (API).
+     * 
+     */
     private String name;
+    /**
+     * @return Unique identifier for the resource server (API).
+     * 
+     */
     private String resourceServerIdentifier;
+    /**
+     * @return Name of resource server (API) that the permission is associated with.
+     * 
+     */
     private String resourceServerName;
 
     private GetRolePermission() {}
+    /**
+     * @return Description of the permission.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Name of the permission (scope) configured on the resource server (API).
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Unique identifier for the resource server (API).
+     * 
+     */
     public String resourceServerIdentifier() {
         return this.resourceServerIdentifier;
     }
+    /**
+     * @return Name of resource server (API) that the permission is associated with.
+     * 
+     */
     public String resourceServerName() {
         return this.resourceServerName;
     }

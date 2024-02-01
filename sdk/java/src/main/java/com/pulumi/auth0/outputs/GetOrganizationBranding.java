@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOrganizationBranding {
+    /**
+     * @return Color scheme used to customize the login pages.
+     * 
+     */
     private Map<String,String> colors;
+    /**
+     * @return URL of logo to display on login page.
+     * 
+     */
     private String logoUrl;
 
     private GetOrganizationBranding() {}
+    /**
+     * @return Color scheme used to customize the login pages.
+     * 
+     */
     public Map<String,String> colors() {
         return this.colors;
     }
+    /**
+     * @return URL of logo to display on login page.
+     * 
+     */
     public String logoUrl() {
         return this.logoUrl;
     }

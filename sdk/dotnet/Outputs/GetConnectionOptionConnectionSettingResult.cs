@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetConnectionOptionConnectionSettingResult
     {
+        /// <summary>
+        /// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+        /// </summary>
         public readonly string Pkce;
 
         [OutputConstructor]

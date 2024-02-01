@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonSentry {
+    /**
+     * @return URL prefix only if running Sentry Community Edition, otherwise leave empty.
+     * 
+     */
     private String baseUrl;
+    /**
+     * @return Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
+     * 
+     */
     private String orgSlug;
 
     private GetClientAddonSentry() {}
+    /**
+     * @return URL prefix only if running Sentry Community Edition, otherwise leave empty.
+     * 
+     */
     public String baseUrl() {
         return this.baseUrl;
     }
+    /**
+     * @return Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
+     * 
+     */
     public String orgSlug() {
         return this.orgSlug;
     }

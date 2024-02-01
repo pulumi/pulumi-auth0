@@ -13,8 +13,17 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetBrandingThemePageBackgroundResult
     {
+        /// <summary>
+        /// Background color. Defaults to `#000000`.
+        /// </summary>
         public readonly string BackgroundColor;
+        /// <summary>
+        /// Background image url. Defaults to an empty string.
+        /// </summary>
         public readonly string BackgroundImageUrl;
+        /// <summary>
+        /// Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
+        /// </summary>
         public readonly string PageLayout;
 
         [OutputConstructor]

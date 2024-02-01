@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class CustomDomainVerification
     {
+        /// <summary>
+        /// Verification methods for the domain.
+        /// </summary>
         public readonly ImmutableArray<object> Methods;
 
         [OutputConstructor]

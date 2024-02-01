@@ -13,11 +13,29 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetClientAddonSapApiResult
     {
+        /// <summary>
+        /// If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute `client_id` must be set and equal the `client_id` form parameter of the access token request.
+        /// </summary>
         public readonly string ClientId;
+        /// <summary>
+        /// NameID element of the Subject which can be used to express the user's identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+        /// </summary>
         public readonly string NameIdentifierFormat;
+        /// <summary>
+        /// Requested scope for SAP APIs.
+        /// </summary>
         public readonly string Scope;
+        /// <summary>
+        /// Service account password to use to authenticate API calls to the token endpoint.
+        /// </summary>
         public readonly string ServicePassword;
+        /// <summary>
+        /// The OAuth2 token endpoint URL of your SAP OData server.
+        /// </summary>
         public readonly string TokenEndpointUrl;
+        /// <summary>
+        /// Name of the property in the user object that maps to a SAP username, for example `email`.
+        /// </summary>
         public readonly string UsernameAttribute;
 
         [OutputConstructor]

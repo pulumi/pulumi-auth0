@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetResourceServerScopeResult
     {
+        /// <summary>
+        /// Description of the permission (scope).
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

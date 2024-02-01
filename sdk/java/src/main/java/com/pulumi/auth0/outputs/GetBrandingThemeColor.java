@@ -10,77 +10,221 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBrandingThemeColor {
+    /**
+     * @return Base focus color. Defaults to `#635dff`.
+     * 
+     */
     private String baseFocusColor;
+    /**
+     * @return Base hover color. Defaults to `#000000`.
+     * 
+     */
     private String baseHoverColor;
+    /**
+     * @return Body text. Defaults to `#1e212a`.
+     * 
+     */
     private String bodyText;
+    /**
+     * @return Error. Defaults to `#d03c38`.
+     * 
+     */
     private String error;
+    /**
+     * @return Header. Defaults to `#1e212a`.
+     * 
+     */
     private String header;
+    /**
+     * @return Icons. Defaults to `#65676e`.
+     * 
+     */
     private String icons;
+    /**
+     * @return Input background. Defaults to `#ffffff`.
+     * 
+     */
     private String inputBackground;
+    /**
+     * @return Input border. Defaults to `#c9cace`.
+     * 
+     */
     private String inputBorder;
+    /**
+     * @return Input filled text. Defaults to `#000000`.
+     * 
+     */
     private String inputFilledText;
+    /**
+     * @return Input labels &amp; placeholders. Defaults to `#65676e`.
+     * 
+     */
     private String inputLabelsPlaceholders;
+    /**
+     * @return Links &amp; focused components. Defaults to `#635dff`.
+     * 
+     */
     private String linksFocusedComponents;
+    /**
+     * @return Primary button. Defaults to `#635dff`.
+     * 
+     */
     private String primaryButton;
+    /**
+     * @return Primary button label. Defaults to `#ffffff`.
+     * 
+     */
     private String primaryButtonLabel;
+    /**
+     * @return Secondary button border. Defaults to `#c9cace`.
+     * 
+     */
     private String secondaryButtonBorder;
+    /**
+     * @return Secondary button label. Defaults to `#1e212a`.
+     * 
+     */
     private String secondaryButtonLabel;
+    /**
+     * @return Success. Defaults to `#13a688`.
+     * 
+     */
     private String success;
+    /**
+     * @return Widget background. Defaults to `#ffffff`.
+     * 
+     */
     private String widgetBackground;
+    /**
+     * @return Widget border. Defaults to `#c9cace`.
+     * 
+     */
     private String widgetBorder;
 
     private GetBrandingThemeColor() {}
+    /**
+     * @return Base focus color. Defaults to `#635dff`.
+     * 
+     */
     public String baseFocusColor() {
         return this.baseFocusColor;
     }
+    /**
+     * @return Base hover color. Defaults to `#000000`.
+     * 
+     */
     public String baseHoverColor() {
         return this.baseHoverColor;
     }
+    /**
+     * @return Body text. Defaults to `#1e212a`.
+     * 
+     */
     public String bodyText() {
         return this.bodyText;
     }
+    /**
+     * @return Error. Defaults to `#d03c38`.
+     * 
+     */
     public String error() {
         return this.error;
     }
+    /**
+     * @return Header. Defaults to `#1e212a`.
+     * 
+     */
     public String header() {
         return this.header;
     }
+    /**
+     * @return Icons. Defaults to `#65676e`.
+     * 
+     */
     public String icons() {
         return this.icons;
     }
+    /**
+     * @return Input background. Defaults to `#ffffff`.
+     * 
+     */
     public String inputBackground() {
         return this.inputBackground;
     }
+    /**
+     * @return Input border. Defaults to `#c9cace`.
+     * 
+     */
     public String inputBorder() {
         return this.inputBorder;
     }
+    /**
+     * @return Input filled text. Defaults to `#000000`.
+     * 
+     */
     public String inputFilledText() {
         return this.inputFilledText;
     }
+    /**
+     * @return Input labels &amp; placeholders. Defaults to `#65676e`.
+     * 
+     */
     public String inputLabelsPlaceholders() {
         return this.inputLabelsPlaceholders;
     }
+    /**
+     * @return Links &amp; focused components. Defaults to `#635dff`.
+     * 
+     */
     public String linksFocusedComponents() {
         return this.linksFocusedComponents;
     }
+    /**
+     * @return Primary button. Defaults to `#635dff`.
+     * 
+     */
     public String primaryButton() {
         return this.primaryButton;
     }
+    /**
+     * @return Primary button label. Defaults to `#ffffff`.
+     * 
+     */
     public String primaryButtonLabel() {
         return this.primaryButtonLabel;
     }
+    /**
+     * @return Secondary button border. Defaults to `#c9cace`.
+     * 
+     */
     public String secondaryButtonBorder() {
         return this.secondaryButtonBorder;
     }
+    /**
+     * @return Secondary button label. Defaults to `#1e212a`.
+     * 
+     */
     public String secondaryButtonLabel() {
         return this.secondaryButtonLabel;
     }
+    /**
+     * @return Success. Defaults to `#13a688`.
+     * 
+     */
     public String success() {
         return this.success;
     }
+    /**
+     * @return Widget background. Defaults to `#ffffff`.
+     * 
+     */
     public String widgetBackground() {
         return this.widgetBackground;
     }
+    /**
+     * @return Widget border. Defaults to `#c9cace`.
+     * 
+     */
     public String widgetBorder() {
         return this.widgetBorder;
     }

@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetClientAddonZoomResult
     {
+        /// <summary>
+        /// Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
+        /// </summary>
         public readonly string Account;
 
         [OutputConstructor]
