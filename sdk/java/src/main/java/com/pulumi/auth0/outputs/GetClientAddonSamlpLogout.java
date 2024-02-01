@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonSamlpLogout {
+    /**
+     * @return The service provider (client application)&#39;s Single Logout Service URL, where Auth0 will send logout requests and responses.
+     * 
+     */
     private String callback;
+    /**
+     * @return Controls whether Auth0 should notify service providers of session termination.
+     * 
+     */
     private Boolean sloEnabled;
 
     private GetClientAddonSamlpLogout() {}
+    /**
+     * @return The service provider (client application)&#39;s Single Logout Service URL, where Auth0 will send logout requests and responses.
+     * 
+     */
     public String callback() {
         return this.callback;
     }
+    /**
+     * @return Controls whether Auth0 should notify service providers of session termination.
+     * 
+     */
     public Boolean sloEnabled() {
         return this.sloEnabled;
     }

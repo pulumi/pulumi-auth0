@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBrandingThemeFontTitle {
+    /**
+     * @return Title bold. Defaults to `false`.
+     * 
+     */
     private Boolean bold;
+    /**
+     * @return Title size. Value needs to be between `75` and `150`. Defaults to `150.0`.
+     * 
+     */
     private Double size;
 
     private GetBrandingThemeFontTitle() {}
+    /**
+     * @return Title bold. Defaults to `false`.
+     * 
+     */
     public Boolean bold() {
         return this.bold;
     }
+    /**
+     * @return Title size. Value needs to be between `75` and `150`. Defaults to `150.0`.
+     * 
+     */
     public Double size() {
         return this.size;
     }

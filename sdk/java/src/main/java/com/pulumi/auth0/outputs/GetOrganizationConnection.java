@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOrganizationConnection {
+    /**
+     * @return When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
+     * 
+     */
     private Boolean assignMembershipOnLogin;
+    /**
+     * @return The ID of the enabled connection on the organization.
+     * 
+     */
     private String connectionId;
 
     private GetOrganizationConnection() {}
+    /**
+     * @return When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
+     * 
+     */
     public Boolean assignMembershipOnLogin() {
         return this.assignMembershipOnLogin;
     }
+    /**
+     * @return The ID of the enabled connection on the organization.
+     * 
+     */
     public String connectionId() {
         return this.connectionId;
     }

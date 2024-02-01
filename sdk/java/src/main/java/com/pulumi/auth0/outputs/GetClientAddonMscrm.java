@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonMscrm {
+    /**
+     * @return Microsoft Dynamics CRM application URL.
+     * 
+     */
     private String url;
 
     private GetClientAddonMscrm() {}
+    /**
+     * @return Microsoft Dynamics CRM application URL.
+     * 
+     */
     public String url() {
         return this.url;
     }

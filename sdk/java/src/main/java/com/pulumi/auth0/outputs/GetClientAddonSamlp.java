@@ -16,89 +16,257 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonSamlp {
+    /**
+     * @return Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
+     * 
+     */
     private String audience;
+    /**
+     * @return Class reference of the authentication context.
+     * 
+     */
     private String authnContextClassRef;
+    /**
+     * @return Protocol binding used for SAML logout responses.
+     * 
+     */
     private String binding;
+    /**
+     * @return Indicates whether a UPN claim should be created. Defaults to `true`.
+     * 
+     */
     private Boolean createUpnClaim;
+    /**
+     * @return Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
+     * 
+     */
     private String destination;
+    /**
+     * @return Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+     * 
+     */
     private String digestAlgorithm;
+    /**
+     * @return Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+     * 
+     */
     private Boolean includeAttributeNameFormat;
+    /**
+     * @return Issuer of the SAML Assertion.
+     * 
+     */
     private String issuer;
+    /**
+     * @return Number of seconds during which the token is valid. Defaults to `3600` seconds.
+     * 
+     */
     private Integer lifetimeInSeconds;
+    /**
+     * @return Configuration settings for logout.
+     * 
+     */
     private List<GetClientAddonSamlpLogout> logouts;
+    /**
+     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
+     * 
+     */
     private Boolean mapIdentities;
+    /**
+     * @return Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+     * 
+     */
     private Boolean mapUnknownClaimsAsIs;
+    /**
+     * @return Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
+     * 
+     */
     private Map<String,Object> mappings;
+    /**
+     * @return Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * 
+     */
     private String nameIdentifierFormat;
+    /**
+     * @return Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
+     * 
+     */
     private List<String> nameIdentifierProbes;
+    /**
+     * @return Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+     * 
+     */
     private Boolean passthroughClaimsWithNoMapping;
+    /**
+     * @return Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
+     * 
+     */
     private String recipient;
+    /**
+     * @return Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
+     * 
+     */
     private Boolean signResponse;
+    /**
+     * @return Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+     * 
+     */
     private String signatureAlgorithm;
+    /**
+     * @return Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+     * 
+     */
     private String signingCert;
+    /**
+     * @return Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+     * 
+     */
     private Boolean typedAttributes;
 
     private GetClientAddonSamlp() {}
+    /**
+     * @return Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
+     * 
+     */
     public String audience() {
         return this.audience;
     }
+    /**
+     * @return Class reference of the authentication context.
+     * 
+     */
     public String authnContextClassRef() {
         return this.authnContextClassRef;
     }
+    /**
+     * @return Protocol binding used for SAML logout responses.
+     * 
+     */
     public String binding() {
         return this.binding;
     }
+    /**
+     * @return Indicates whether a UPN claim should be created. Defaults to `true`.
+     * 
+     */
     public Boolean createUpnClaim() {
         return this.createUpnClaim;
     }
+    /**
+     * @return Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
+     * 
+     */
     public String destination() {
         return this.destination;
     }
+    /**
+     * @return Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+     * 
+     */
     public String digestAlgorithm() {
         return this.digestAlgorithm;
     }
+    /**
+     * @return Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+     * 
+     */
     public Boolean includeAttributeNameFormat() {
         return this.includeAttributeNameFormat;
     }
+    /**
+     * @return Issuer of the SAML Assertion.
+     * 
+     */
     public String issuer() {
         return this.issuer;
     }
+    /**
+     * @return Number of seconds during which the token is valid. Defaults to `3600` seconds.
+     * 
+     */
     public Integer lifetimeInSeconds() {
         return this.lifetimeInSeconds;
     }
+    /**
+     * @return Configuration settings for logout.
+     * 
+     */
     public List<GetClientAddonSamlpLogout> logouts() {
         return this.logouts;
     }
+    /**
+     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
+     * 
+     */
     public Boolean mapIdentities() {
         return this.mapIdentities;
     }
+    /**
+     * @return Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+     * 
+     */
     public Boolean mapUnknownClaimsAsIs() {
         return this.mapUnknownClaimsAsIs;
     }
+    /**
+     * @return Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
+     * 
+     */
     public Map<String,Object> mappings() {
         return this.mappings;
     }
+    /**
+     * @return Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * 
+     */
     public String nameIdentifierFormat() {
         return this.nameIdentifierFormat;
     }
+    /**
+     * @return Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
+     * 
+     */
     public List<String> nameIdentifierProbes() {
         return this.nameIdentifierProbes;
     }
+    /**
+     * @return Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+     * 
+     */
     public Boolean passthroughClaimsWithNoMapping() {
         return this.passthroughClaimsWithNoMapping;
     }
+    /**
+     * @return Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
+     * 
+     */
     public String recipient() {
         return this.recipient;
     }
+    /**
+     * @return Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
+     * 
+     */
     public Boolean signResponse() {
         return this.signResponse;
     }
+    /**
+     * @return Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+     * 
+     */
     public String signatureAlgorithm() {
         return this.signatureAlgorithm;
     }
+    /**
+     * @return Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+     * 
+     */
     public String signingCert() {
         return this.signingCert;
     }
+    /**
+     * @return Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+     * 
+     */
     public Boolean typedAttributes() {
         return this.typedAttributes;
     }

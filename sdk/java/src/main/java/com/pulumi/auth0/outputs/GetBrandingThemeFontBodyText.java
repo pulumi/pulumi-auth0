@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBrandingThemeFontBodyText {
+    /**
+     * @return Body text bold. Defaults to `false`.
+     * 
+     */
     private Boolean bold;
+    /**
+     * @return Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * 
+     */
     private Double size;
 
     private GetBrandingThemeFontBodyText() {}
+    /**
+     * @return Body text bold. Defaults to `false`.
+     * 
+     */
     public Boolean bold() {
         return this.bold;
     }
+    /**
+     * @return Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * 
+     */
     public Double size() {
         return this.size;
     }

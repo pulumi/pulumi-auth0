@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonOffice365 {
+    /**
+     * @return Optional Auth0 database connection for testing an already-configured Office 365 tenant.
+     * 
+     */
     private String connection;
+    /**
+     * @return Your Office 365 domain name, for example `acme-org.com`.
+     * 
+     */
     private String domain;
 
     private GetClientAddonOffice365() {}
+    /**
+     * @return Optional Auth0 database connection for testing an already-configured Office 365 tenant.
+     * 
+     */
     public String connection() {
         return this.connection;
     }
+    /**
+     * @return Your Office 365 domain name, for example `acme-org.com`.
+     * 
+     */
     public String domain() {
         return this.domain;
     }

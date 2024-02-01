@@ -11,25 +11,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonFirebase {
+    /**
+     * @return ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
+     * 
+     */
     private String clientEmail;
+    /**
+     * @return Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).
+     * 
+     */
     private Integer lifetimeInSeconds;
+    /**
+     * @return Private Key for signing the token (SDK v3+ tokens only).
+     * 
+     */
     private String privateKey;
+    /**
+     * @return Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).
+     * 
+     */
     private String privateKeyId;
+    /**
+     * @return Google Firebase Secret. (SDK v2 only).
+     * 
+     */
     private String secret;
 
     private GetClientAddonFirebase() {}
+    /**
+     * @return ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
+     * 
+     */
     public String clientEmail() {
         return this.clientEmail;
     }
+    /**
+     * @return Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).
+     * 
+     */
     public Integer lifetimeInSeconds() {
         return this.lifetimeInSeconds;
     }
+    /**
+     * @return Private Key for signing the token (SDK v3+ tokens only).
+     * 
+     */
     public String privateKey() {
         return this.privateKey;
     }
+    /**
+     * @return Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).
+     * 
+     */
     public String privateKeyId() {
         return this.privateKeyId;
     }
+    /**
+     * @return Google Firebase Secret. (SDK v2 only).
+     * 
+     */
     public String secret() {
         return this.secret;
     }

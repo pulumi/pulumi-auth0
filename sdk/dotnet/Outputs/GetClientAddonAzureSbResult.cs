@@ -13,10 +13,25 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetClientAddonAzureSbResult
     {
+        /// <summary>
+        /// Entity you want to request a token for, such as `my-queue`.
+        /// </summary>
         public readonly string EntityPath;
+        /// <summary>
+        /// Optional expiration in minutes for the generated token. Defaults to 5 minutes.
+        /// </summary>
         public readonly int Expiration;
+        /// <summary>
+        /// Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
+        /// </summary>
         public readonly string Namespace;
+        /// <summary>
+        /// Primary Key associated with your shared access policy.
+        /// </summary>
         public readonly string SasKey;
+        /// <summary>
+        /// Your shared access policy name defined in your Service Bus entity.
+        /// </summary>
         public readonly string SasKeyName;
 
         [OutputConstructor]

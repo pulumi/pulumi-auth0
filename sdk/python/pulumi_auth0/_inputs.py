@@ -6206,12 +6206,18 @@ class ConnectionOptionsValidationUsernameArgs:
 class CustomDomainVerificationArgs:
     def __init__(__self__, *,
                  methods: Optional[pulumi.Input[Sequence[Any]]] = None):
+        """
+        :param pulumi.Input[Sequence[Any]] methods: Verification methods for the domain.
+        """
         if methods is not None:
             pulumi.set(__self__, "methods", methods)
 
     @property
     @pulumi.getter
     def methods(self) -> Optional[pulumi.Input[Sequence[Any]]]:
+        """
+        Verification methods for the domain.
+        """
         return pulumi.get(self, "methods")
 
     @methods.setter

@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetBrandingThemeFontTitleResult
     {
+        /// <summary>
+        /// Title bold. Defaults to `false`.
+        /// </summary>
         public readonly bool Bold;
+        /// <summary>
+        /// Title size. Value needs to be between `75` and `150`. Defaults to `150.0`.
+        /// </summary>
         public readonly double Size;
 
         [OutputConstructor]

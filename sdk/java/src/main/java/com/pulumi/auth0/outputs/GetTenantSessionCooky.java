@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTenantSessionCooky {
+    /**
+     * @return Behavior of tenant session cookie. Accepts either &#34;persistent&#34; or &#34;non-persistent&#34;.
+     * 
+     */
     private String mode;
 
     private GetTenantSessionCooky() {}
+    /**
+     * @return Behavior of tenant session cookie. Accepts either &#34;persistent&#34; or &#34;non-persistent&#34;.
+     * 
+     */
     public String mode() {
         return this.mode;
     }

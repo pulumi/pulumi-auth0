@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAttackProtectionBreachedPasswordDetectionPreUserRegistration {
+    /**
+     * @return Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+     * 
+     */
     private List<String> shields;
 
     private GetAttackProtectionBreachedPasswordDetectionPreUserRegistration() {}
+    /**
+     * @return Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+     * 
+     */
     public List<String> shields() {
         return this.shields;
     }

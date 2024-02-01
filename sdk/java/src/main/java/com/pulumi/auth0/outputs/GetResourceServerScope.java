@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourceServerScope {
+    /**
+     * @return Description of the permission (scope).
+     * 
+     */
     private String description;
+    /**
+     * @return Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+     * 
+     */
     private String name;
 
     private GetResourceServerScope() {}
+    /**
+     * @return Description of the permission (scope).
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+     * 
+     */
     public String name() {
         return this.name;
     }

@@ -13,10 +13,25 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetClientAddonLayerResult
     {
+        /// <summary>
+        /// Optional expiration in minutes for the generated token. Defaults to 5 minutes.
+        /// </summary>
         public readonly int Expiration;
+        /// <summary>
+        /// Authentication Key identifier used to sign the Layer token.
+        /// </summary>
         public readonly string KeyId;
+        /// <summary>
+        /// Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
+        /// </summary>
         public readonly string Principal;
+        /// <summary>
+        /// Private key for signing the Layer token.
+        /// </summary>
         public readonly string PrivateKey;
+        /// <summary>
+        /// Provider ID of your Layer account.
+        /// </summary>
         public readonly string ProviderId;
 
         [OutputConstructor]

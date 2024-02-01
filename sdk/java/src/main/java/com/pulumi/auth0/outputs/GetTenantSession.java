@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTenantSession {
+    /**
+     * @return When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
+     * 
+     */
     private Boolean oidcLogoutPromptEnabled;
 
     private GetTenantSession() {}
+    /**
+     * @return When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
+     * 
+     */
     public Boolean oidcLogoutPromptEnabled() {
         return this.oidcLogoutPromptEnabled;
     }

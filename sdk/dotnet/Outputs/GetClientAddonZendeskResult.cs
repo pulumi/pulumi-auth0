@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetClientAddonZendeskResult
     {
+        /// <summary>
+        /// Zendesk account name. Usually the first segment in your Zendesk URL, for example `https://acme-org.zendesk.com` would be `acme-org`.
+        /// </summary>
         public readonly string AccountName;
 
         [OutputConstructor]

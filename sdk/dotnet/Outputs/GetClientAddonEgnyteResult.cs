@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetClientAddonEgnyteResult
     {
+        /// <summary>
+        /// Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+        /// </summary>
         public readonly string Domain;
 
         [OutputConstructor]

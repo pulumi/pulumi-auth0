@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetOrganizationConnectionResult
     {
+        /// <summary>
+        /// When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
+        /// </summary>
         public readonly bool AssignMembershipOnLogin;
+        /// <summary>
+        /// The ID of the enabled connection on the organization.
+        /// </summary>
         public readonly string ConnectionId;
 
         [OutputConstructor]

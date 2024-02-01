@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonAw {
+    /**
+     * @return AWS token lifetime in seconds.
+     * 
+     */
     private Integer lifetimeInSeconds;
+    /**
+     * @return AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * 
+     */
     private String principal;
+    /**
+     * @return AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.
+     * 
+     */
     private String role;
 
     private GetClientAddonAw() {}
+    /**
+     * @return AWS token lifetime in seconds.
+     * 
+     */
     public Integer lifetimeInSeconds() {
         return this.lifetimeInSeconds;
     }
+    /**
+     * @return AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * 
+     */
     public String principal() {
         return this.principal;
     }
+    /**
+     * @return AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.
+     * 
+     */
     public String role() {
         return this.role;
     }

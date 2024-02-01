@@ -11,25 +11,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBrandingThemeWidget {
+    /**
+     * @return Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
+     * 
+     */
     private String headerTextAlignment;
+    /**
+     * @return Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
+     * 
+     */
     private Double logoHeight;
+    /**
+     * @return Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
+     * 
+     */
     private String logoPosition;
+    /**
+     * @return Logo url. Defaults to an empty string.
+     * 
+     */
     private String logoUrl;
+    /**
+     * @return Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
+     * 
+     */
     private String socialButtonsLayout;
 
     private GetBrandingThemeWidget() {}
+    /**
+     * @return Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
+     * 
+     */
     public String headerTextAlignment() {
         return this.headerTextAlignment;
     }
+    /**
+     * @return Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
+     * 
+     */
     public Double logoHeight() {
         return this.logoHeight;
     }
+    /**
+     * @return Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
+     * 
+     */
     public String logoPosition() {
         return this.logoPosition;
     }
+    /**
+     * @return Logo url. Defaults to an empty string.
+     * 
+     */
     public String logoUrl() {
         return this.logoUrl;
     }
+    /**
+     * @return Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
+     * 
+     */
     public String socialButtonsLayout() {
         return this.socialButtonsLayout;
     }

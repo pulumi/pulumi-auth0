@@ -13,14 +13,41 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GetBrandingThemeFontResult
     {
+        /// <summary>
+        /// Body text.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBrandingThemeFontBodyTextResult> BodyTexts;
+        /// <summary>
+        /// Buttons text.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBrandingThemeFontButtonsTextResult> ButtonsTexts;
+        /// <summary>
+        /// Font URL. Defaults to an empty string.
+        /// </summary>
         public readonly string FontUrl;
+        /// <summary>
+        /// Input labels.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBrandingThemeFontInputLabelResult> InputLabels;
+        /// <summary>
+        /// Links.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBrandingThemeFontLinkResult> Links;
+        /// <summary>
+        /// Links style. Defaults to `normal`.
+        /// </summary>
         public readonly string LinksStyle;
+        /// <summary>
+        /// Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
+        /// </summary>
         public readonly double ReferenceTextSize;
+        /// <summary>
+        /// Subtitle.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBrandingThemeFontSubtitleResult> Subtitles;
+        /// <summary>
+        /// Title.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBrandingThemeFontTitleResult> Titles;
 
         [OutputConstructor]

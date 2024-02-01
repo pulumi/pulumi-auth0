@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientAddonSharepoint {
+    /**
+     * @return External SharePoint application URLs if exposed to the Internet.
+     * 
+     */
     private List<String> externalUrls;
+    /**
+     * @return Internal SharePoint application URL.
+     * 
+     */
     private String url;
 
     private GetClientAddonSharepoint() {}
+    /**
+     * @return External SharePoint application URLs if exposed to the Internet.
+     * 
+     */
     public List<String> externalUrls() {
         return this.externalUrls;
     }
+    /**
+     * @return Internal SharePoint application URL.
+     * 
+     */
     public String url() {
         return this.url;
     }
