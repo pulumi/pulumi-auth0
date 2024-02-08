@@ -65,10 +65,14 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying the organization ID. # Example
+    /// This resource can be imported by specifying the organization ID.
+    /// 
+    /// # 
+    /// 
+    ///  Example:
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/organizationConnections:OrganizationConnections my_org_conns "org_XXXXX"
+    /// $ pulumi import auth0:index/organizationConnections:OrganizationConnections my_org_conns "org_XXXXX"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/organizationConnections:OrganizationConnections")]

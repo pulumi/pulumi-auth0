@@ -108,10 +108,12 @@ class UserPermissions(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the user ID Example
+        This resource can be imported by specifying the user ID
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/userPermissions:UserPermissions all_user_permissions "auth0|111111111111111111111111"
+        $ pulumi import auth0:index/userPermissions:UserPermissions all_user_permissions "auth0|111111111111111111111111"
         ```
 
         :param str resource_name: The name of the resource.
@@ -134,10 +136,12 @@ class UserPermissions(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the user ID Example
+        This resource can be imported by specifying the user ID
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/userPermissions:UserPermissions all_user_permissions "auth0|111111111111111111111111"
+        $ pulumi import auth0:index/userPermissions:UserPermissions all_user_permissions "auth0|111111111111111111111111"
         ```
 
         :param str resource_name: The name of the resource.

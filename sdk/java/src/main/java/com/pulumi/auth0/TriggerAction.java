@@ -71,10 +71,18 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the trigger and action ID separated by &#34;::&#34; (note the double colon) &lt;trigger&gt;::&lt;actionID&gt; # Example
+ * This resource can be imported by specifying the
+ * 
+ *  trigger and action ID separated by &#34;::&#34; (note the double colon)
+ * 
+ *  &lt;trigger&gt;::&lt;actionID&gt;
+ * 
+ * # 
+ * 
+ *  Example:
  * 
  * ```sh
- *  $ pulumi import auth0:index/triggerAction:TriggerAction post_login_action &#34;post-login::28b5c8fa-d371-5734-acf6-d0cf80ead918&#34;
+ * $ pulumi import auth0:index/triggerAction:TriggerAction post_login_action &#34;post-login::28b5c8fa-d371-5734-acf6-d0cf80ead918&#34;
  * ```
  * 
  */

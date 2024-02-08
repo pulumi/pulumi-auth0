@@ -49,10 +49,18 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying the organization ID and connection ID separated by "::" (note the double colon) &lt;organizationID&gt;::&lt;connectionID&gt; # Example
+    /// This resource can be imported by specifying the
+    /// 
+    ///  organization ID and connection ID separated by "::" (note the double colon)
+    /// 
+    ///  &lt;organizationID&gt;::&lt;connectionID&gt;
+    /// 
+    /// # 
+    /// 
+    ///  Example:
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn "org_XXXXX::con_XXXXX"
+    /// $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn "org_XXXXX::con_XXXXX"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/organizationConnection:OrganizationConnection")]

@@ -30,10 +30,18 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported by specifying the resource identifier and scope name separated by "::" (note the double colon) <resourceServerIdentifier>::<scope> # Example
+ * This resource can be imported by specifying the
+ *
+ *  resource identifier and scope name separated by "::" (note the double colon)
+ *
+ *  <resourceServerIdentifier>::<scope>
+ *
+ * # 
+ *
+ *  Example:
  *
  * ```sh
- *  $ pulumi import auth0:index/resourceServerScope:ResourceServerScope scope "https://api.travel0.com/v1::read:posts"
+ * $ pulumi import auth0:index/resourceServerScope:ResourceServerScope scope "https://api.travel0.com/v1::read:posts"
  * ```
  */
 export class ResourceServerScope extends pulumi.CustomResource {

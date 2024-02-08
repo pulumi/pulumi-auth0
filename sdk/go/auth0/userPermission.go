@@ -20,12 +20,18 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by specifying the user ID, resource identifier and permission name separated by "::" (note the double colon) <userID>::<resourceServerIdentifier>::<permission> # Example
+// This resource can be imported by specifying the
+//
+//	user ID, resource identifier and permission name separated by "::" (note the double colon)
+//
+//	<userID>::<resourceServerIdentifier>::<permission>
+//
+// #
+//
+//	Example:
 //
 // ```sh
-//
-//	$ pulumi import auth0:index/userPermission:UserPermission permission "auth0|111111111111111111111111::https://api.travel0.com/v1::read:posts"
-//
+// $ pulumi import auth0:index/userPermission:UserPermission permission "auth0|111111111111111111111111::https://api.travel0.com/v1::read:posts"
 // ```
 type UserPermission struct {
 	pulumi.CustomResourceState

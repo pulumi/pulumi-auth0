@@ -62,10 +62,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Existing rule configs can be imported using their key name. # Example
+ * Existing rule configs can be imported using their key name.
+ * 
+ * # 
+ * 
+ *  Example:
  * 
  * ```sh
- *  $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config &#34;foo&#34;
+ * $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config &#34;foo&#34;
  * ```
  * 
  */

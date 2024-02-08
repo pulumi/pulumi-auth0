@@ -186,10 +186,18 @@ class OrganizationConnection(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the organization ID and connection ID separated by "::" (note the double colon) <organizationID>::<connectionID> # Example
+        This resource can be imported by specifying the
+
+         organization ID and connection ID separated by "::" (note the double colon)
+
+         <organizationID>::<connectionID>
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn "org_XXXXX::con_XXXXX"
+        $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn "org_XXXXX::con_XXXXX"
         ```
 
         :param str resource_name: The name of the resource.
@@ -228,10 +236,18 @@ class OrganizationConnection(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the organization ID and connection ID separated by "::" (note the double colon) <organizationID>::<connectionID> # Example
+        This resource can be imported by specifying the
+
+         organization ID and connection ID separated by "::" (note the double colon)
+
+         <organizationID>::<connectionID>
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn "org_XXXXX::con_XXXXX"
+        $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn "org_XXXXX::con_XXXXX"
         ```
 
         :param str resource_name: The name of the resource.

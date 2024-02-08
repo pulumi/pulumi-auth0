@@ -48,10 +48,14 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying the hook ID. # Example
+    /// This resource can be imported by specifying the hook ID.
+    /// 
+    /// # 
+    /// 
+    ///  Example:
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/hook:Hook my_hook "00001"
+    /// $ pulumi import auth0:index/hook:Hook my_hook "00001"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/hook:Hook")]

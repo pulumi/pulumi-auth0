@@ -169,10 +169,18 @@ class PromptCustomText(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the prompt and language separated by "::" (note the double colon) <prompt>::<language> # Example
+        This resource can be imported by specifying the
+
+         prompt and language separated by "::" (note the double colon)
+
+         <prompt>::<language>
+
+        # 
+
+         Example
 
         ```sh
-         $ pulumi import auth0:index/promptCustomText:PromptCustomText example "login::en"
+        $ pulumi import auth0:index/promptCustomText:PromptCustomText example "login::en"
         ```
 
         :param str resource_name: The name of the resource.
@@ -227,10 +235,18 @@ class PromptCustomText(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the prompt and language separated by "::" (note the double colon) <prompt>::<language> # Example
+        This resource can be imported by specifying the
+
+         prompt and language separated by "::" (note the double colon)
+
+         <prompt>::<language>
+
+        # 
+
+         Example
 
         ```sh
-         $ pulumi import auth0:index/promptCustomText:PromptCustomText example "login::en"
+        $ pulumi import auth0:index/promptCustomText:PromptCustomText example "login::en"
         ```
 
         :param str resource_name: The name of the resource.

@@ -285,13 +285,19 @@ class Action(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the action ID. # Example
+        This resource can be imported by specifying the action ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/action:Action my_action "12f4f21b-017a-319d-92e7-2291c1ca36c4"
+        $ pulumi import auth0:index/action:Action my_action "12f4f21b-017a-319d-92e7-2291c1ca36c4"
         ```
 
-         ~> For security reasons importing `secrets` is not allowed. Therefore, it is advised to import the action without secrets and adding them back after the action has been imported.
+         ~> For security reasons importing `secrets` is not allowed. Therefore, it is advised to import
+
+         the action without secrets and adding them back after the action has been imported.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -314,13 +320,19 @@ class Action(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the action ID. # Example
+        This resource can be imported by specifying the action ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/action:Action my_action "12f4f21b-017a-319d-92e7-2291c1ca36c4"
+        $ pulumi import auth0:index/action:Action my_action "12f4f21b-017a-319d-92e7-2291c1ca36c4"
         ```
 
-         ~> For security reasons importing `secrets` is not allowed. Therefore, it is advised to import the action without secrets and adding them back after the action has been imported.
+         ~> For security reasons importing `secrets` is not allowed. Therefore, it is advised to import
+
+         the action without secrets and adding them back after the action has been imported.
 
         :param str resource_name: The name of the resource.
         :param ActionArgs args: The arguments to use to populate this resource's properties.

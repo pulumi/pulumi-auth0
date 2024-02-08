@@ -71,10 +71,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the resource server identifier. # Example
+ * This resource can be imported by specifying the resource server identifier.
+ * 
+ * # 
+ * 
+ *  Example:
  * 
  * ```sh
- *  $ pulumi import auth0:index/resourceServerScopes:ResourceServerScopes my_api_scopes &#34;https://api.travel0.com/v1&#34;
+ * $ pulumi import auth0:index/resourceServerScopes:ResourceServerScopes my_api_scopes &#34;https://api.travel0.com/v1&#34;
  * ```
  * 
  */

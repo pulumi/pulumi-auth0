@@ -499,10 +499,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the connection ID. # Example
+ * This resource can be imported by specifying the connection ID.
+ * 
+ * # 
+ * 
+ *  Example:
  * 
  * ```sh
- *  $ pulumi import auth0:index/connection:Connection google &#34;con_a17f21fdb24d48a0&#34;
+ * $ pulumi import auth0:index/connection:Connection google &#34;con_a17f21fdb24d48a0&#34;
  * ```
  * 
  */

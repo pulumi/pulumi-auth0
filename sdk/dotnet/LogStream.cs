@@ -73,10 +73,14 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying the log stream ID. # Example
+    /// This resource can be imported by specifying the log stream ID.
+    /// 
+    /// # 
+    /// 
+    ///  Example:
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/logStream:LogStream example "lst_XXXXXXXXXXXXXXXX"
+    /// $ pulumi import auth0:index/logStream:LogStream example "lst_XXXXXXXXXXXXXXXX"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/logStream:LogStream")]

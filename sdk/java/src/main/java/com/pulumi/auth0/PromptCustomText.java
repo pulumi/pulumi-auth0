@@ -74,10 +74,18 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the prompt and language separated by &#34;::&#34; (note the double colon) &lt;prompt&gt;::&lt;language&gt; # Example
+ * This resource can be imported by specifying the
+ * 
+ *  prompt and language separated by &#34;::&#34; (note the double colon)
+ * 
+ *  &lt;prompt&gt;::&lt;language&gt;
+ * 
+ * # 
+ * 
+ *  Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/promptCustomText:PromptCustomText example &#34;login::en&#34;
+ * $ pulumi import auth0:index/promptCustomText:PromptCustomText example &#34;login::en&#34;
  * ```
  * 
  */

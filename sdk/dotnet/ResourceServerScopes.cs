@@ -55,10 +55,14 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying the resource server identifier. # Example
+    /// This resource can be imported by specifying the resource server identifier.
+    /// 
+    /// # 
+    /// 
+    ///  Example:
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/resourceServerScopes:ResourceServerScopes my_api_scopes "https://api.travel0.com/v1"
+    /// $ pulumi import auth0:index/resourceServerScopes:ResourceServerScopes my_api_scopes "https://api.travel0.com/v1"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/resourceServerScopes:ResourceServerScopes")]

@@ -82,10 +82,18 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the organization ID, user ID and role ID separated by &#34;::&#34; (note the double colon) &lt;organizationID&gt;::&lt;userID&gt;::&lt;roleID&gt; # Example
+ * This resource can be imported by specifying the
+ * 
+ *  organization ID, user ID and role ID separated by &#34;::&#34; (note the double colon)
+ * 
+ *  &lt;organizationID&gt;::&lt;userID&gt;::&lt;roleID&gt;
+ * 
+ * # 
+ * 
+ *  Example:
  * 
  * ```sh
- *  $ pulumi import auth0:index/organizationMemberRole:OrganizationMemberRole my_org_member_role &#34;org_XXXXX::auth0|XXXXX::role_XXXX&#34;
+ * $ pulumi import auth0:index/organizationMemberRole:OrganizationMemberRole my_org_member_role &#34;org_XXXXX::auth0|XXXXX::role_XXXX&#34;
  * ```
  * 
  */

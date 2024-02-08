@@ -49,12 +49,14 @@ import (
 //
 // ## Import
 //
-// This resource can be imported using the user ID. # Example
+// This resource can be imported using the user ID.
+//
+// #
+//
+//	Example:
 //
 // ```sh
-//
-//	$ pulumi import auth0:index/user:User user "auth0|111111111111111111111111"
-//
+// $ pulumi import auth0:index/user:User user "auth0|111111111111111111111111"
 // ```
 type User struct {
 	pulumi.CustomResourceState

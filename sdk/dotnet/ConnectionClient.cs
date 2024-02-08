@@ -47,10 +47,18 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying the connection ID and client ID separated by "::" (note the double colon) &lt;connectionID&gt;::&lt;clientID&gt; # Example
+    /// This resource can be imported by specifying the
+    /// 
+    ///  connection ID and client ID separated by "::" (note the double colon)
+    /// 
+    ///  &lt;connectionID&gt;::&lt;clientID&gt;
+    /// 
+    /// # 
+    /// 
+    ///  Example:
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/connectionClient:ConnectionClient my_conn_client_assoc "con_XXXXX::XXXXXXXX"
+    /// $ pulumi import auth0:index/connectionClient:ConnectionClient my_conn_client_assoc "con_XXXXX::XXXXXXXX"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/connectionClient:ConnectionClient")]

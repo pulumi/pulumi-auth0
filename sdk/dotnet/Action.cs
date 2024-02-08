@@ -14,13 +14,19 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying the action ID. # Example
+    /// This resource can be imported by specifying the action ID.
+    /// 
+    /// # 
+    /// 
+    ///  Example:
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/action:Action my_action "12f4f21b-017a-319d-92e7-2291c1ca36c4"
+    /// $ pulumi import auth0:index/action:Action my_action "12f4f21b-017a-319d-92e7-2291c1ca36c4"
     /// ```
     /// 
-    ///  ~&gt; For security reasons importing `secrets` is not allowed. Therefore, it is advised to import the action without secrets and adding them back after the action has been imported.
+    ///  ~&gt; For security reasons importing `secrets` is not allowed. Therefore, it is advised to import
+    /// 
+    ///  the action without secrets and adding them back after the action has been imported.
     /// </summary>
     [Auth0ResourceType("auth0:index/action:Action")]
     public partial class Action : global::Pulumi.CustomResource

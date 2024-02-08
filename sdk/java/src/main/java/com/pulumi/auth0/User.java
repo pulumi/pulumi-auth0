@@ -58,10 +58,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported using the user ID. # Example
+ * This resource can be imported using the user ID.
+ * 
+ * # 
+ * 
+ *  Example:
  * 
  * ```sh
- *  $ pulumi import auth0:index/user:User user &#34;auth0|111111111111111111111111&#34;
+ * $ pulumi import auth0:index/user:User user &#34;auth0|111111111111111111111111&#34;
  * ```
  * 
  */

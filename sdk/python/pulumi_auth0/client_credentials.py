@@ -231,13 +231,19 @@ class ClientCredentials(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the client ID. # Example
+        This resource can be imported by specifying the client ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/clientCredentials:ClientCredentials my_creds "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
+        $ pulumi import auth0:index/clientCredentials:ClientCredentials my_creds "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
         ```
 
-         ~> Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated. This is to be expected, because the pem file can't be checked for differences.
+         ~> Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated.
+
+         This is to be expected, because the pem file can't be checked for differences.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -309,13 +315,19 @@ class ClientCredentials(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the client ID. # Example
+        This resource can be imported by specifying the client ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/clientCredentials:ClientCredentials my_creds "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
+        $ pulumi import auth0:index/clientCredentials:ClientCredentials my_creds "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
         ```
 
-         ~> Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated. This is to be expected, because the pem file can't be checked for differences.
+         ~> Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated.
+
+         This is to be expected, because the pem file can't be checked for differences.
 
         :param str resource_name: The name of the resource.
         :param ClientCredentialsArgs args: The arguments to use to populate this resource's properties.

@@ -81,10 +81,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the log stream ID. # Example
+ * This resource can be imported by specifying the log stream ID.
+ * 
+ * # 
+ * 
+ *  Example:
  * 
  * ```sh
- *  $ pulumi import auth0:index/logStream:LogStream example &#34;lst_XXXXXXXXXXXXXXXX&#34;
+ * $ pulumi import auth0:index/logStream:LogStream example &#34;lst_XXXXXXXXXXXXXXXX&#34;
  * ```
  * 
  */

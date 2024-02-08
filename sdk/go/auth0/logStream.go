@@ -75,12 +75,14 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by specifying the log stream ID. # Example
+// This resource can be imported by specifying the log stream ID.
+//
+// #
+//
+//	Example:
 //
 // ```sh
-//
-//	$ pulumi import auth0:index/logStream:LogStream example "lst_XXXXXXXXXXXXXXXX"
-//
+// $ pulumi import auth0:index/logStream:LogStream example "lst_XXXXXXXXXXXXXXXX"
 // ```
 type LogStream struct {
 	pulumi.CustomResourceState
