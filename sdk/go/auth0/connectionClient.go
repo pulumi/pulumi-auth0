@@ -58,12 +58,18 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by specifying the connection ID and client ID separated by "::" (note the double colon) <connectionID>::<clientID> # Example
+// This resource can be imported by specifying the
+//
+//	connection ID and client ID separated by "::" (note the double colon)
+//
+//	<connectionID>::<clientID>
+//
+// #
+//
+//	Example:
 //
 // ```sh
-//
-//	$ pulumi import auth0:index/connectionClient:ConnectionClient my_conn_client_assoc "con_XXXXX::XXXXXXXX"
-//
+// $ pulumi import auth0:index/connectionClient:ConnectionClient my_conn_client_assoc "con_XXXXX::XXXXXXXX"
 // ```
 type ConnectionClient struct {
 	pulumi.CustomResourceState

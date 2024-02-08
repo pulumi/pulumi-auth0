@@ -121,10 +121,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the client ID. # Example
+ * This resource can be imported by specifying the client ID.
+ * 
+ * # 
+ * 
+ *  Example:
  * 
  * ```sh
- *  $ pulumi import auth0:index/client:Client my_client &#34;AaiyAPdpYdesoKnqjj8HJqRn4T5titww&#34;
+ * $ pulumi import auth0:index/client:Client my_client &#34;AaiyAPdpYdesoKnqjj8HJqRn4T5titww&#34;
  * ```
  * 
  */

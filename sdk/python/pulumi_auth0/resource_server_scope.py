@@ -154,10 +154,18 @@ class ResourceServerScope(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the resource identifier and scope name separated by "::" (note the double colon) <resourceServerIdentifier>::<scope> # Example
+        This resource can be imported by specifying the
+
+         resource identifier and scope name separated by "::" (note the double colon)
+
+         <resourceServerIdentifier>::<scope>
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/resourceServerScope:ResourceServerScope scope "https://api.travel0.com/v1::read:posts"
+        $ pulumi import auth0:index/resourceServerScope:ResourceServerScope scope "https://api.travel0.com/v1::read:posts"
         ```
 
         :param str resource_name: The name of the resource.
@@ -196,10 +204,18 @@ class ResourceServerScope(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the resource identifier and scope name separated by "::" (note the double colon) <resourceServerIdentifier>::<scope> # Example
+        This resource can be imported by specifying the
+
+         resource identifier and scope name separated by "::" (note the double colon)
+
+         <resourceServerIdentifier>::<scope>
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/resourceServerScope:ResourceServerScope scope "https://api.travel0.com/v1::read:posts"
+        $ pulumi import auth0:index/resourceServerScope:ResourceServerScope scope "https://api.travel0.com/v1::read:posts"
         ```
 
         :param str resource_name: The name of the resource.

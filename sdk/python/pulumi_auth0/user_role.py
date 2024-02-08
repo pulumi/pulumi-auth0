@@ -156,10 +156,18 @@ class UserRole(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the user ID and role ID separated by "::" (note the double colon) <userID>::<roleID> # Example
+        This resource can be imported by specifying the
+
+         user ID and role ID separated by "::" (note the double colon)
+
+         <userID>::<roleID>
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/userRole:UserRole user_role "auth0|111111111111111111111111::role_123"
+        $ pulumi import auth0:index/userRole:UserRole user_role "auth0|111111111111111111111111::role_123"
         ```
 
         :param str resource_name: The name of the resource.
@@ -200,10 +208,18 @@ class UserRole(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the user ID and role ID separated by "::" (note the double colon) <userID>::<roleID> # Example
+        This resource can be imported by specifying the
+
+         user ID and role ID separated by "::" (note the double colon)
+
+         <userID>::<roleID>
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/userRole:UserRole user_role "auth0|111111111111111111111111::role_123"
+        $ pulumi import auth0:index/userRole:UserRole user_role "auth0|111111111111111111111111::role_123"
         ```
 
         :param str resource_name: The name of the resource.

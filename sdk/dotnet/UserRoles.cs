@@ -54,10 +54,14 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using the user ID. # Example
+    /// This resource can be imported using the user ID.
+    /// 
+    /// # 
+    /// 
+    ///  Example:
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/userRoles:UserRoles user_roles "auth0|111111111111111111111111"
+    /// $ pulumi import auth0:index/userRoles:UserRoles user_roles "auth0|111111111111111111111111"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/userRoles:UserRoles")]

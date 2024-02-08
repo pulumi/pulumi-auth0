@@ -242,10 +242,14 @@ class LogStream(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the log stream ID. # Example
+        This resource can be imported by specifying the log stream ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/logStream:LogStream example "lst_XXXXXXXXXXXXXXXX"
+        $ pulumi import auth0:index/logStream:LogStream example "lst_XXXXXXXXXXXXXXXX"
         ```
 
         :param str resource_name: The name of the resource.
@@ -306,10 +310,14 @@ class LogStream(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the log stream ID. # Example
+        This resource can be imported by specifying the log stream ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/logStream:LogStream example "lst_XXXXXXXXXXXXXXXX"
+        $ pulumi import auth0:index/logStream:LogStream example "lst_XXXXXXXXXXXXXXXX"
         ```
 
         :param str resource_name: The name of the resource.

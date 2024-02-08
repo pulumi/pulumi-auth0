@@ -273,10 +273,14 @@ class BrandingTheme(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the Branding Theme ID. # Example
+        This resource can be imported by specifying the Branding Theme ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme "XXXXXXXXXXXXXXXXXXXX"
+        $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme "XXXXXXXXXXXXXXXXXXXX"
         ```
 
         :param str resource_name: The name of the resource.
@@ -374,10 +378,14 @@ class BrandingTheme(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the Branding Theme ID. # Example
+        This resource can be imported by specifying the Branding Theme ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme "XXXXXXXXXXXXXXXXXXXX"
+        $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme "XXXXXXXXXXXXXXXXXXXX"
         ```
 
         :param str resource_name: The name of the resource.

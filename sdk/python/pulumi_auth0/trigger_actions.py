@@ -148,10 +148,14 @@ class TriggerActions(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the bindings trigger ID. # Example
+        This resource can be imported using the bindings trigger ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/triggerActions:TriggerActions example "post-login"
+        $ pulumi import auth0:index/triggerActions:TriggerActions example "post-login"
         ```
 
         :param str resource_name: The name of the resource.
@@ -214,10 +218,14 @@ class TriggerActions(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the bindings trigger ID. # Example
+        This resource can be imported using the bindings trigger ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/triggerActions:TriggerActions example "post-login"
+        $ pulumi import auth0:index/triggerActions:TriggerActions example "post-login"
         ```
 
         :param str resource_name: The name of the resource.

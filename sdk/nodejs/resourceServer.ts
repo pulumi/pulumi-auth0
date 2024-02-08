@@ -24,10 +24,14 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Existing resource servers can be imported using their ID. # Example
+ * Existing resource servers can be imported using their ID.
+ *
+ * # 
+ *
+ *  Example:
  *
  * ```sh
- *  $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server "XXXXXXXXXXXXXXXXXXXXXXX"
+ * $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server "XXXXXXXXXXXXXXXXXXXXXXX"
  * ```
  */
 export class ResourceServer extends pulumi.CustomResource {

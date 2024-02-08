@@ -301,10 +301,14 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported by specifying the connection ID. # Example
+ * This resource can be imported by specifying the connection ID.
+ *
+ * # 
+ *
+ *  Example:
  *
  * ```sh
- *  $ pulumi import auth0:index/connection:Connection google "con_a17f21fdb24d48a0"
+ * $ pulumi import auth0:index/connection:Connection google "con_a17f21fdb24d48a0"
  * ```
  */
 export class Connection extends pulumi.CustomResource {

@@ -77,10 +77,20 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * As this is not a resource identifiable by an ID within the Auth0 Management API, email can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
+ * As this is not a resource identifiable by an ID within the Auth0 Management API,
+ * 
+ *  email can be imported using a random string.
+ * 
+ * # 
+ * 
+ *  We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
+ * 
+ * # 
+ * 
+ *  Example:
  * 
  * ```sh
- *  $ pulumi import auth0:index/emailProvider:EmailProvider my_email_provider &#34;b4213dc2-2eed-42c3-9516-c6131a9ce0b0&#34;
+ * $ pulumi import auth0:index/emailProvider:EmailProvider my_email_provider &#34;b4213dc2-2eed-42c3-9516-c6131a9ce0b0&#34;
  * ```
  * 
  */
