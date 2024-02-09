@@ -122,10 +122,14 @@ class ResourceServerScopes(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the resource server identifier. # Example
+        This resource can be imported by specifying the resource server identifier.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/resourceServerScopes:ResourceServerScopes my_api_scopes "https://api.travel0.com/v1"
+        $ pulumi import auth0:index/resourceServerScopes:ResourceServerScopes my_api_scopes "https://api.travel0.com/v1"
         ```
 
         :param str resource_name: The name of the resource.
@@ -169,10 +173,14 @@ class ResourceServerScopes(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the resource server identifier. # Example
+        This resource can be imported by specifying the resource server identifier.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/resourceServerScopes:ResourceServerScopes my_api_scopes "https://api.travel0.com/v1"
+        $ pulumi import auth0:index/resourceServerScopes:ResourceServerScopes my_api_scopes "https://api.travel0.com/v1"
         ```
 
         :param str resource_name: The name of the resource.

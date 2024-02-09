@@ -52,12 +52,14 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by specifying the hook ID. # Example
+// This resource can be imported by specifying the hook ID.
+//
+// #
+//
+//	Example:
 //
 // ```sh
-//
-//	$ pulumi import auth0:index/hook:Hook my_hook "00001"
-//
+// $ pulumi import auth0:index/hook:Hook my_hook "00001"
 // ```
 type Hook struct {
 	pulumi.CustomResourceState

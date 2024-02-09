@@ -27,10 +27,14 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Existing rules can be imported using their ID. # Example
+ * Existing rules can be imported using their ID.
+ *
+ * # 
+ *
+ *  Example:
  *
  * ```sh
- *  $ pulumi import auth0:index/rule:Rule my_rule "rul_XXXXXXXXXXXXX"
+ * $ pulumi import auth0:index/rule:Rule my_rule "rul_XXXXXXXXXXXXX"
  * ```
  */
 export class Rule extends pulumi.CustomResource {

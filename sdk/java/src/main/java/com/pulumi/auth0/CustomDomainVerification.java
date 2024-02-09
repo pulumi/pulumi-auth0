@@ -19,10 +19,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * You can import this resource using the custom domain ID. # Example
+ * You can import this resource using the custom domain ID.
+ * 
+ * # 
+ * 
+ *  Example:
  * 
  * ```sh
- *  $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification &#34;cd_XXXXXXXXXXXXXXXX&#34;
+ * $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification &#34;cd_XXXXXXXXXXXXXXXX&#34;
  * ```
  * 
  */

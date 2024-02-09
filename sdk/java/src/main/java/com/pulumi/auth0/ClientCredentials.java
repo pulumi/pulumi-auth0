@@ -100,13 +100,19 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the client ID. # Example
+ * This resource can be imported by specifying the client ID.
+ * 
+ * # 
+ * 
+ *  Example:
  * 
  * ```sh
- *  $ pulumi import auth0:index/clientCredentials:ClientCredentials my_creds &#34;AaiyAPdpYdesoKnqjj8HJqRn4T5titww&#34;
+ * $ pulumi import auth0:index/clientCredentials:ClientCredentials my_creds &#34;AaiyAPdpYdesoKnqjj8HJqRn4T5titww&#34;
  * ```
  * 
- *  ~&gt; Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated. This is to be expected, because the pem file can&#39;t be checked for differences.
+ *  ~&gt; Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated.
+ * 
+ *  This is to be expected, because the pem file can&#39;t be checked for differences.
  * 
  */
 @ResourceType(type="auth0:index/clientCredentials:ClientCredentials")

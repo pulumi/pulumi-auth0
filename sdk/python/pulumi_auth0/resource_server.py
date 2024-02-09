@@ -414,10 +414,14 @@ class ResourceServer(pulumi.CustomResource):
 
         ## Import
 
-        Existing resource servers can be imported using their ID. # Example
+        Existing resource servers can be imported using their ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server "XXXXXXXXXXXXXXXXXXXXXXX"
+        $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server "XXXXXXXXXXXXXXXXXXXXXXX"
         ```
 
         :param str resource_name: The name of the resource.
@@ -459,10 +463,14 @@ class ResourceServer(pulumi.CustomResource):
 
         ## Import
 
-        Existing resource servers can be imported using their ID. # Example
+        Existing resource servers can be imported using their ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server "XXXXXXXXXXXXXXXXXXXXXXX"
+        $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server "XXXXXXXXXXXXXXXXXXXXXXX"
         ```
 
         :param str resource_name: The name of the resource.

@@ -58,10 +58,14 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported using the bindings trigger ID. # Example
+ * This resource can be imported using the bindings trigger ID.
+ *
+ * # 
+ *
+ *  Example:
  *
  * ```sh
- *  $ pulumi import auth0:index/triggerActions:TriggerActions example "post-login"
+ * $ pulumi import auth0:index/triggerActions:TriggerActions example "post-login"
  * ```
  */
 export class TriggerActions extends pulumi.CustomResource {

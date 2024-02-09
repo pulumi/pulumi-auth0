@@ -58,10 +58,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Existing rules can be imported using their ID. # Example
+ * Existing rules can be imported using their ID.
+ * 
+ * # 
+ * 
+ *  Example:
  * 
  * ```sh
- *  $ pulumi import auth0:index/rule:Rule my_rule &#34;rul_XXXXXXXXXXXXX&#34;
+ * $ pulumi import auth0:index/rule:Rule my_rule &#34;rul_XXXXXXXXXXXXX&#34;
  * ```
  * 
  */

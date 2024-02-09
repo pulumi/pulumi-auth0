@@ -32,10 +32,18 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported by specifying the organization ID and user ID separated by "::" (note the double colon) <organizationID>::<userID> # Example
+ * This resource can be imported by specifying the
+ *
+ *  organization ID and user ID separated by "::" (note the double colon)
+ *
+ *  <organizationID>::<userID>
+ *
+ * # 
+ *
+ *  Example:
  *
  * ```sh
- *  $ pulumi import auth0:index/organizationMember:OrganizationMember my_org_member "org_XXXXX::auth0|XXXXX"
+ * $ pulumi import auth0:index/organizationMember:OrganizationMember my_org_member "org_XXXXX::auth0|XXXXX"
  * ```
  */
 export class OrganizationMember extends pulumi.CustomResource {

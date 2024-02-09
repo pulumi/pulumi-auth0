@@ -615,10 +615,14 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the user ID. # Example
+        This resource can be imported using the user ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/user:User user "auth0|111111111111111111111111"
+        $ pulumi import auth0:index/user:User user "auth0|111111111111111111111111"
         ```
 
         :param str resource_name: The name of the resource.
@@ -669,10 +673,14 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the user ID. # Example
+        This resource can be imported using the user ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/user:User user "auth0|111111111111111111111111"
+        $ pulumi import auth0:index/user:User user "auth0|111111111111111111111111"
         ```
 
         :param str resource_name: The name of the resource.

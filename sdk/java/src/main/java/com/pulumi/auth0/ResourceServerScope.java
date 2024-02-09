@@ -65,10 +65,18 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the resource identifier and scope name separated by &#34;::&#34; (note the double colon) &lt;resourceServerIdentifier&gt;::&lt;scope&gt; # Example
+ * This resource can be imported by specifying the
+ * 
+ *  resource identifier and scope name separated by &#34;::&#34; (note the double colon)
+ * 
+ *  &lt;resourceServerIdentifier&gt;::&lt;scope&gt;
+ * 
+ * # 
+ * 
+ *  Example:
  * 
  * ```sh
- *  $ pulumi import auth0:index/resourceServerScope:ResourceServerScope scope &#34;https://api.travel0.com/v1::read:posts&#34;
+ * $ pulumi import auth0:index/resourceServerScope:ResourceServerScope scope &#34;https://api.travel0.com/v1::read:posts&#34;
  * ```
  * 
  */

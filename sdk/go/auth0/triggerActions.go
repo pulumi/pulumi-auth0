@@ -78,12 +78,14 @@ import (
 //
 // ## Import
 //
-// This resource can be imported using the bindings trigger ID. # Example
+// This resource can be imported using the bindings trigger ID.
+//
+// #
+//
+//	Example:
 //
 // ```sh
-//
-//	$ pulumi import auth0:index/triggerActions:TriggerActions example "post-login"
-//
+// $ pulumi import auth0:index/triggerActions:TriggerActions example "post-login"
 // ```
 type TriggerActions struct {
 	pulumi.CustomResourceState
