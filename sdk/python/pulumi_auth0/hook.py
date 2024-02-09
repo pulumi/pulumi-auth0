@@ -258,10 +258,14 @@ class Hook(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the hook ID. # Example
+        This resource can be imported by specifying the hook ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/hook:Hook my_hook "00001"
+        $ pulumi import auth0:index/hook:Hook my_hook "00001"
         ```
 
         :param str resource_name: The name of the resource.
@@ -308,10 +312,14 @@ class Hook(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the hook ID. # Example
+        This resource can be imported by specifying the hook ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/hook:Hook my_hook "00001"
+        $ pulumi import auth0:index/hook:Hook my_hook "00001"
         ```
 
         :param str resource_name: The name of the resource.

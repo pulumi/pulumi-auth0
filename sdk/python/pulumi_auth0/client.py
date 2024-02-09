@@ -1236,10 +1236,14 @@ class Client(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the client ID. # Example
+        This resource can be imported by specifying the client ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/client:Client my_client "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
+        $ pulumi import auth0:index/client:Client my_client "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
         ```
 
         :param str resource_name: The name of the resource.
@@ -1360,10 +1364,14 @@ class Client(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the client ID. # Example
+        This resource can be imported by specifying the client ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/client:Client my_client "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
+        $ pulumi import auth0:index/client:Client my_client "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
         ```
 
         :param str resource_name: The name of the resource.

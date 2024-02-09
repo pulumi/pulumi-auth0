@@ -48,10 +48,18 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying the resource identifier and scope name separated by "::" (note the double colon) &lt;resourceServerIdentifier&gt;::&lt;scope&gt; # Example
+    /// This resource can be imported by specifying the
+    /// 
+    ///  resource identifier and scope name separated by "::" (note the double colon)
+    /// 
+    ///  &lt;resourceServerIdentifier&gt;::&lt;scope&gt;
+    /// 
+    /// # 
+    /// 
+    ///  Example:
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/resourceServerScope:ResourceServerScope scope "https://api.travel0.com/v1::read:posts"
+    /// $ pulumi import auth0:index/resourceServerScope:ResourceServerScope scope "https://api.travel0.com/v1::read:posts"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/resourceServerScope:ResourceServerScope")]

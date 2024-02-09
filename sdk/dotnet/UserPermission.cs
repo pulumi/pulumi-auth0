@@ -18,10 +18,18 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying the user ID, resource identifier and permission name separated by "::" (note the double colon) &lt;userID&gt;::&lt;resourceServerIdentifier&gt;::&lt;permission&gt; # Example
+    /// This resource can be imported by specifying the
+    /// 
+    ///  user ID, resource identifier and permission name separated by "::" (note the double colon)
+    /// 
+    ///  &lt;userID&gt;::&lt;resourceServerIdentifier&gt;::&lt;permission&gt;
+    /// 
+    /// # 
+    /// 
+    ///  Example:
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/userPermission:UserPermission permission "auth0|111111111111111111111111::https://api.travel0.com/v1::read:posts"
+    /// $ pulumi import auth0:index/userPermission:UserPermission permission "auth0|111111111111111111111111::https://api.travel0.com/v1::read:posts"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/userPermission:UserPermission")]

@@ -158,10 +158,14 @@ class ConnectionClients(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the Connection ID. # Example
+        This resource can be imported by specifying the Connection ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/connectionClients:ConnectionClients my_conn_clients_assoc "con_XXXXX"
+        $ pulumi import auth0:index/connectionClients:ConnectionClients my_conn_clients_assoc "con_XXXXX"
         ```
 
         :param str resource_name: The name of the resource.
@@ -204,10 +208,14 @@ class ConnectionClients(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the Connection ID. # Example
+        This resource can be imported by specifying the Connection ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/connectionClients:ConnectionClients my_conn_clients_assoc "con_XXXXX"
+        $ pulumi import auth0:index/connectionClients:ConnectionClients my_conn_clients_assoc "con_XXXXX"
         ```
 
         :param str resource_name: The name of the resource.

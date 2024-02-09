@@ -33,10 +33,14 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported using the user ID. # Example
+ * This resource can be imported using the user ID.
+ *
+ * # 
+ *
+ *  Example:
  *
  * ```sh
- *  $ pulumi import auth0:index/userRoles:UserRoles user_roles "auth0|111111111111111111111111"
+ * $ pulumi import auth0:index/userRoles:UserRoles user_roles "auth0|111111111111111111111111"
  * ```
  */
 export class UserRoles extends pulumi.CustomResource {

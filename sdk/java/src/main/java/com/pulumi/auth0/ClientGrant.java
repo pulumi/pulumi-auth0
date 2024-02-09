@@ -66,10 +66,16 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the client grant ID. You can find this within the Management Dashboard in Application -&gt; APIs -&gt; Expand the required API. # Example
+ * This resource can be imported by specifying the client grant ID.
+ * 
+ *  You can find this within the Management Dashboard in Application -&gt; APIs -&gt; Expand the required API.
+ * 
+ * # 
+ * 
+ *  Example:
  * 
  * ```sh
- *  $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant &#34;cgr_XXXXXXXXXXXXXXXX&#34;
+ * $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant &#34;cgr_XXXXXXXXXXXXXXXX&#34;
  * ```
  * 
  */

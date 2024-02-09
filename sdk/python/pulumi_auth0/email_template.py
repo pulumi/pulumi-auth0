@@ -355,10 +355,28 @@ class EmailTemplate(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the pre-defined template name. # These names are `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, and `user_invitation`. # The names `change_password`, and `password_reset` are also supported for legacy scenarios. # Example
+        This resource can be imported using the pre-defined template name.
+
+        # 
+
+         These names are `verify_email`, `verify_email_by_code`, `reset_email`,
+
+         `welcome_email`, `blocked_account`, `stolen_credentials`,
+
+         `enrollment_email`, `mfa_oob_code`, and `user_invitation`.
+
+        # 
+
+         The names `change_password`, and `password_reset` are also supported
+
+         for legacy scenarios.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template "welcome_email"
+        $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template "welcome_email"
         ```
 
         :param str resource_name: The name of the resource.
@@ -410,10 +428,28 @@ class EmailTemplate(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the pre-defined template name. # These names are `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, and `user_invitation`. # The names `change_password`, and `password_reset` are also supported for legacy scenarios. # Example
+        This resource can be imported using the pre-defined template name.
+
+        # 
+
+         These names are `verify_email`, `verify_email_by_code`, `reset_email`,
+
+         `welcome_email`, `blocked_account`, `stolen_credentials`,
+
+         `enrollment_email`, `mfa_oob_code`, and `user_invitation`.
+
+        # 
+
+         The names `change_password`, and `password_reset` are also supported
+
+         for legacy scenarios.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template "welcome_email"
+        $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template "welcome_email"
         ```
 
         :param str resource_name: The name of the resource.

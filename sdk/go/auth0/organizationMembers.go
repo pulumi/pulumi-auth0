@@ -73,12 +73,14 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by specifying the organization ID. # Example
+// This resource can be imported by specifying the organization ID.
+//
+// #
+//
+//	Example:
 //
 // ```sh
-//
-//	$ pulumi import auth0:index/organizationMembers:OrganizationMembers my_org_members "org_XXXXX"
-//
+// $ pulumi import auth0:index/organizationMembers:OrganizationMembers my_org_members "org_XXXXX"
 // ```
 type OrganizationMembers struct {
 	pulumi.CustomResourceState

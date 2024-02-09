@@ -186,10 +186,14 @@ class Rule(pulumi.CustomResource):
 
         ## Import
 
-        Existing rules can be imported using their ID. # Example
+        Existing rules can be imported using their ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/rule:Rule my_rule "rul_XXXXXXXXXXXXX"
+        $ pulumi import auth0:index/rule:Rule my_rule "rul_XXXXXXXXXXXXX"
         ```
 
         :param str resource_name: The name of the resource.
@@ -227,10 +231,14 @@ class Rule(pulumi.CustomResource):
 
         ## Import
 
-        Existing rules can be imported using their ID. # Example
+        Existing rules can be imported using their ID.
+
+        # 
+
+         Example:
 
         ```sh
-         $ pulumi import auth0:index/rule:Rule my_rule "rul_XXXXXXXXXXXXX"
+        $ pulumi import auth0:index/rule:Rule my_rule "rul_XXXXXXXXXXXXX"
         ```
 
         :param str resource_name: The name of the resource.
