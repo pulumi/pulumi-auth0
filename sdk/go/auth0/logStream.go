@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// This is an example of an http log stream.
 //			_, err := auth0.NewLogStream(ctx, "myWebhook", &auth0.LogStreamArgs{
 //				Filters: pulumi.StringMapArray{
 //					pulumi.StringMap{
@@ -56,6 +57,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// This is an example of an Amazon EventBridge log stream.
 //			_, err = auth0.NewLogStream(ctx, "exampleAws", &auth0.LogStreamArgs{
 //				Sink: &auth0.LogStreamSinkArgs{
 //					AwsAccountId: pulumi.String("my_account_id"),

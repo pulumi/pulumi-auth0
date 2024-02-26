@@ -40,6 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Configuring client_secret_post as an authentication method.
 //			_, err = auth0.NewClientCredentials(ctx, "testClientCredentials", &auth0.ClientCredentialsArgs{
 //				ClientId:             myClient.ID(),
 //				AuthenticationMethod: pulumi.String("client_secret_post"),
@@ -47,6 +48,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Configuring client_secret_basic as an authentication method.
 //			_, err = auth0.NewClientCredentials(ctx, "testIndex/clientCredentialsClientCredentials", &auth0.ClientCredentialsArgs{
 //				ClientId:             myClient.ID(),
 //				AuthenticationMethod: pulumi.String("client_secret_basic"),
@@ -54,6 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Configuring none as an authentication method.
 //			_, err = auth0.NewClientCredentials(ctx, "testAuth0Index/clientCredentialsClientCredentials", &auth0.ClientCredentialsArgs{
 //				ClientId:             myClient.ID(),
 //				AuthenticationMethod: pulumi.String("none"),
@@ -61,6 +64,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Configuring private_key_jwt as an authentication method.
 //			_, err = auth0.NewClientCredentials(ctx, "testAuth0Index/clientCredentialsClientCredentials1", &auth0.ClientCredentialsArgs{
 //				ClientId:             myClient.ID(),
 //				AuthenticationMethod: pulumi.String("private_key_jwt"),
@@ -79,6 +83,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Configuring the client_secret.
 //			_, err = auth0.NewClientCredentials(ctx, "testAuth0Index/clientCredentialsClientCredentials2", &auth0.ClientCredentialsArgs{
 //				ClientId:             myClient.ID(),
 //				AuthenticationMethod: pulumi.String("client_secret_basic"),
