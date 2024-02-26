@@ -32,6 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Example:
 //			admin, err := auth0.NewRole(ctx, "admin", &auth0.RoleArgs{
 //				Description: pulumi.String("Administrator"),
 //			})

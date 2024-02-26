@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// An example of a fully configured auth0_branding_theme.
 //			_, err := auth0.NewBrandingTheme(ctx, "myTheme", &auth0.BrandingThemeArgs{
 //				Borders: &auth0.BrandingThemeBordersArgs{
 //					ButtonBorderRadius: pulumi.Float64(1),
