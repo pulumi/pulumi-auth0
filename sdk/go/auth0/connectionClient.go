@@ -43,6 +43,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// One connection to one client association.
+//			// To prevent issues, avoid using this resource together with the `auth0_connection_clients` resource.
 //			_, err = auth0.NewConnectionClient(ctx, "myConnClientAssoc", &auth0.ConnectionClientArgs{
 //				ConnectionId: myConn.ID(),
 //				ClientId:     myClient.ID(),
