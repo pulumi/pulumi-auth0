@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// This is an example on how to set up the email provider with Amazon SES.
 //			_, err := auth0.NewEmailProvider(ctx, "amazonSesEmailProvider", &auth0.EmailProviderArgs{
 //				Credentials: &auth0.EmailProviderCredentialsArgs{
 //					AccessKeyId:     pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
@@ -40,6 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// This is an example on how to set up the email provider with Sendgrid.
 //			_, err = auth0.NewEmailProvider(ctx, "sendgridEmailProvider", &auth0.EmailProviderArgs{
 //				Credentials: &auth0.EmailProviderCredentialsArgs{
 //					ApiKey: pulumi.String("secretAPIKey"),
@@ -50,6 +52,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// This is an example on how to set up the email provider with MS365.
 //			_, err = auth0.NewEmailProvider(ctx, "smtpEmailProvider", &auth0.EmailProviderArgs{
 //				Credentials: &auth0.EmailProviderCredentialsArgs{
 //					Ms365ClientId:     pulumi.String("ms365_client_id"),
