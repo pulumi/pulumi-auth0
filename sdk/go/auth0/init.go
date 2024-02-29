@@ -75,6 +75,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Prompt{}
 	case "auth0:index/promptCustomText:PromptCustomText":
 		r = &PromptCustomText{}
+	case "auth0:index/promptPartials:PromptPartials":
+		r = &PromptPartials{}
 	case "auth0:index/resourceServer:ResourceServer":
 		r = &ResourceServer{}
 	case "auth0:index/resourceServerScope:ResourceServerScope":
@@ -271,6 +273,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/promptCustomText",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/promptPartials",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

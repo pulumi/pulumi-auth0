@@ -205,6 +205,11 @@ export type PromptCustomText = import("./promptCustomText").PromptCustomText;
 export const PromptCustomText: typeof import("./promptCustomText").PromptCustomText = null as any;
 utilities.lazyLoad(exports, ["PromptCustomText"], () => require("./promptCustomText"));
 
+export { PromptPartialsArgs, PromptPartialsState } from "./promptPartials";
+export type PromptPartials = import("./promptPartials").PromptPartials;
+export const PromptPartials: typeof import("./promptPartials").PromptPartials = null as any;
+utilities.lazyLoad(exports, ["PromptPartials"], () => require("./promptPartials"));
+
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
@@ -358,6 +363,8 @@ const _module = {
                 return new Prompt(name, <any>undefined, { urn })
             case "auth0:index/promptCustomText:PromptCustomText":
                 return new PromptCustomText(name, <any>undefined, { urn })
+            case "auth0:index/promptPartials:PromptPartials":
+                return new PromptPartials(name, <any>undefined, { urn })
             case "auth0:index/resourceServer:ResourceServer":
                 return new ResourceServer(name, <any>undefined, { urn })
             case "auth0:index/resourceServerScope:ResourceServerScope":
@@ -422,6 +429,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/organizationMembers", _mod
 pulumi.runtime.registerResourceModule("auth0", "index/pages", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/prompt", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptCustomText", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/promptPartials", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServer", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServerScope", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServerScopes", _module)

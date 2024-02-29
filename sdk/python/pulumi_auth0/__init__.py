@@ -45,6 +45,7 @@ from .organization_members import *
 from .pages import *
 from .prompt import *
 from .prompt_custom_text import *
+from .prompt_partials import *
 from .provider import *
 from .resource_server import *
 from .resource_server_scope import *
@@ -289,6 +290,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/promptCustomText:PromptCustomText": "PromptCustomText"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/promptPartials",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/promptPartials:PromptPartials": "PromptPartials"
   }
  },
  {

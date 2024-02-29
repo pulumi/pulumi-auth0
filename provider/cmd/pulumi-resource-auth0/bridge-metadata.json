@@ -630,6 +630,10 @@
                 "current": "auth0:index/promptCustomText:PromptCustomText",
                 "majorVersion": 3
             },
+            "auth0_prompt_partials": {
+                "current": "auth0:index/promptPartials:PromptPartials",
+                "majorVersion": 3
+            },
             "auth0_resource_server": {
                 "current": "auth0:index/resourceServer:ResourceServer",
                 "majorVersion": 3
