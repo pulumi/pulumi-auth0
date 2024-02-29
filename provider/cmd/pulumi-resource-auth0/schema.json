@@ -9049,6 +9049,109 @@
                 "type": "object"
             }
         },
+        "auth0:index/promptPartials:PromptPartials": {
+            "description": "With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myLoginPromptPartials = new auth0.PromptPartials(\"myLoginPromptPartials\", {\n    formContentEnd: \"\u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\",\n    formContentStart: \"\u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\",\n    formFooterEnd: \"\u003cdiv\u003eUpdated Footer End\u003c/div\u003e\",\n    formFooterStart: \"\u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\",\n    prompt: \"login\",\n    secondaryActionsEnd: \"\u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\",\n    secondaryActionsStart: \"\u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_login_prompt_partials = auth0.PromptPartials(\"myLoginPromptPartials\",\n    form_content_end=\"\u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\",\n    form_content_start=\"\u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\",\n    form_footer_end=\"\u003cdiv\u003eUpdated Footer End\u003c/div\u003e\",\n    form_footer_start=\"\u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\",\n    prompt=\"login\",\n    secondary_actions_end=\"\u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\",\n    secondary_actions_start=\"\u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myLoginPromptPartials = new Auth0.PromptPartials(\"myLoginPromptPartials\", new()\n    {\n        FormContentEnd = \"\u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\",\n        FormContentStart = \"\u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\",\n        FormFooterEnd = \"\u003cdiv\u003eUpdated Footer End\u003c/div\u003e\",\n        FormFooterStart = \"\u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\",\n        Prompt = \"login\",\n        SecondaryActionsEnd = \"\u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\",\n        SecondaryActionsStart = \"\u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewPromptPartials(ctx, \"myLoginPromptPartials\", \u0026auth0.PromptPartialsArgs{\n\t\t\tFormContentEnd:        pulumi.String(\"\u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\"),\n\t\t\tFormContentStart:      pulumi.String(\"\u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\"),\n\t\t\tFormFooterEnd:         pulumi.String(\"\u003cdiv\u003eUpdated Footer End\u003c/div\u003e\"),\n\t\t\tFormFooterStart:       pulumi.String(\"\u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\"),\n\t\t\tPrompt:                pulumi.String(\"login\"),\n\t\t\tSecondaryActionsEnd:   pulumi.String(\"\u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\"),\n\t\t\tSecondaryActionsStart: pulumi.String(\"\u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.PromptPartials;\nimport com.pulumi.auth0.PromptPartialsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myLoginPromptPartials = new PromptPartials(\"myLoginPromptPartials\", PromptPartialsArgs.builder()        \n            .formContentEnd(\"\u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\")\n            .formContentStart(\"\u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\")\n            .formFooterEnd(\"\u003cdiv\u003eUpdated Footer End\u003c/div\u003e\")\n            .formFooterStart(\"\u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\")\n            .prompt(\"login\")\n            .secondaryActionsEnd(\"\u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\")\n            .secondaryActionsStart(\"\u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myLoginPromptPartials:\n    type: auth0:PromptPartials\n    properties:\n      formContentEnd: \u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\n      formContentStart: \u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\n      formFooterEnd: \u003cdiv\u003eUpdated Footer End\u003c/div\u003e\n      formFooterStart: \u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\n      prompt: login\n      secondaryActionsEnd: \u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\n      secondaryActionsStart: \u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nThis resource can be imported using the prompt name.\n\n #\n\n Example:\n\n ```sh\n $ pulumi import auth0:index/promptPartials:PromptPartials my_login_prompt_partials \"login\"\n```\n\n ",
+            "properties": {
+                "formContentEnd": {
+                    "type": "string",
+                    "description": "Content that goes at the end of the form.\n"
+                },
+                "formContentStart": {
+                    "type": "string",
+                    "description": "Content that goes at the start of the form.\n"
+                },
+                "formFooterEnd": {
+                    "type": "string",
+                    "description": "Footer content for the end of the footer.\n"
+                },
+                "formFooterStart": {
+                    "type": "string",
+                    "description": "Footer content for the start of the footer.\n"
+                },
+                "prompt": {
+                    "type": "string",
+                    "description": "The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.\n"
+                },
+                "secondaryActionsEnd": {
+                    "type": "string",
+                    "description": "Actions that go at the end of secondary actions.\n"
+                },
+                "secondaryActionsStart": {
+                    "type": "string",
+                    "description": "Actions that go at the start of secondary actions.\n"
+                }
+            },
+            "required": [
+                "prompt"
+            ],
+            "inputProperties": {
+                "formContentEnd": {
+                    "type": "string",
+                    "description": "Content that goes at the end of the form.\n"
+                },
+                "formContentStart": {
+                    "type": "string",
+                    "description": "Content that goes at the start of the form.\n"
+                },
+                "formFooterEnd": {
+                    "type": "string",
+                    "description": "Footer content for the end of the footer.\n"
+                },
+                "formFooterStart": {
+                    "type": "string",
+                    "description": "Footer content for the start of the footer.\n"
+                },
+                "prompt": {
+                    "type": "string",
+                    "description": "The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.\n"
+                },
+                "secondaryActionsEnd": {
+                    "type": "string",
+                    "description": "Actions that go at the end of secondary actions.\n"
+                },
+                "secondaryActionsStart": {
+                    "type": "string",
+                    "description": "Actions that go at the start of secondary actions.\n"
+                }
+            },
+            "requiredInputs": [
+                "prompt"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PromptPartials resources.\n",
+                "properties": {
+                    "formContentEnd": {
+                        "type": "string",
+                        "description": "Content that goes at the end of the form.\n"
+                    },
+                    "formContentStart": {
+                        "type": "string",
+                        "description": "Content that goes at the start of the form.\n"
+                    },
+                    "formFooterEnd": {
+                        "type": "string",
+                        "description": "Footer content for the end of the footer.\n"
+                    },
+                    "formFooterStart": {
+                        "type": "string",
+                        "description": "Footer content for the start of the footer.\n"
+                    },
+                    "prompt": {
+                        "type": "string",
+                        "description": "The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.\n"
+                    },
+                    "secondaryActionsEnd": {
+                        "type": "string",
+                        "description": "Actions that go at the end of secondary actions.\n"
+                    },
+                    "secondaryActionsStart": {
+                        "type": "string",
+                        "description": "Actions that go at the start of secondary actions.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "auth0:index/resourceServer:ResourceServer": {
             "description": "With this resource, you can set up APIs that can be consumed from your authorized applications.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myResourceServer = new auth0.ResourceServer(\"myResourceServer\", {\n    allowOfflineAccess: true,\n    identifier: \"https://api.example.com\",\n    signingAlg: \"RS256\",\n    skipConsentForVerifiableFirstPartyClients: true,\n    tokenLifetime: 8600,\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_resource_server = auth0.ResourceServer(\"myResourceServer\",\n    allow_offline_access=True,\n    identifier=\"https://api.example.com\",\n    signing_alg=\"RS256\",\n    skip_consent_for_verifiable_first_party_clients=True,\n    token_lifetime=8600)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myResourceServer = new Auth0.ResourceServer(\"myResourceServer\", new()\n    {\n        AllowOfflineAccess = true,\n        Identifier = \"https://api.example.com\",\n        SigningAlg = \"RS256\",\n        SkipConsentForVerifiableFirstPartyClients = true,\n        TokenLifetime = 8600,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewResourceServer(ctx, \"myResourceServer\", \u0026auth0.ResourceServerArgs{\n\t\t\tAllowOfflineAccess: pulumi.Bool(true),\n\t\t\tIdentifier:         pulumi.String(\"https://api.example.com\"),\n\t\t\tSigningAlg:         pulumi.String(\"RS256\"),\n\t\t\tSkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),\n\t\t\tTokenLifetime: pulumi.Int(8600),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.ResourceServer;\nimport com.pulumi.auth0.ResourceServerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myResourceServer = new ResourceServer(\"myResourceServer\", ResourceServerArgs.builder()        \n            .allowOfflineAccess(true)\n            .identifier(\"https://api.example.com\")\n            .signingAlg(\"RS256\")\n            .skipConsentForVerifiableFirstPartyClients(true)\n            .tokenLifetime(8600)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myResourceServer:\n    type: auth0:ResourceServer\n    properties:\n      allowOfflineAccess: true\n      identifier: https://api.example.com\n      signingAlg: RS256\n      skipConsentForVerifiableFirstPartyClients: true\n      tokenLifetime: 8600\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nExisting resource servers can be imported using their ID.\n\n #\n\n Example:\n\n ```sh\n $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server \"XXXXXXXXXXXXXXXXXXXXXXX\"\n```\n\n ",
             "properties": {
