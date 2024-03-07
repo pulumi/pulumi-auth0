@@ -6,14 +6,14 @@ toolchain go1.21.5
 
 replace (
 	github.com/auth0/terraform-provider-auth0 => ../upstream
-	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240202163305-e2a20ae13ef9
+	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240229143312-4f60ee4e2975
 	github.com/hashicorp/terraform-plugin-test => github.com/hashicorp/terraform-plugin-test v1.3.0
 )
 
 require (
 	github.com/auth0/terraform-provider-auth0 v0.50.2
-	github.com/pulumi/providertest v0.0.10
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.76.0
+	github.com/pulumi/providertest v0.0.11
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.76.1-0.20240307193710-29d9870c5f99
 	github.com/pulumi/pulumi/sdk/v3 v3.107.0
 )
 
