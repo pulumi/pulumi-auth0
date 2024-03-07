@@ -14,10 +14,9 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,8 +37,7 @@ namespace Pulumi.Auth0
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetResourceServerResult> InvokeAsync(GetResourceServerArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceServerResult>("auth0:index/getResourceServer:getResourceServer", args ?? new GetResourceServerArgs(), options.WithDefaults());
@@ -47,10 +45,9 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,8 +68,7 @@ namespace Pulumi.Auth0
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetResourceServerResult> Invoke(GetResourceServerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceServerResult>("auth0:index/getResourceServer:getResourceServer", args ?? new GetResourceServerInvokeArgs(), options.WithDefaults());

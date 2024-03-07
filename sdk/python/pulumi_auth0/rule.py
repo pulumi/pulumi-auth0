@@ -171,6 +171,7 @@ class Rule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -183,6 +184,7 @@ class Rule(pulumi.CustomResource):
           
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -190,7 +192,7 @@ class Rule(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/rule:Rule my_rule "rul_XXXXXXXXXXXXX"
@@ -216,6 +218,7 @@ class Rule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -228,6 +231,7 @@ class Rule(pulumi.CustomResource):
           
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -235,7 +239,7 @@ class Rule(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/rule:Rule my_rule "rul_XXXXXXXXXXXXX"

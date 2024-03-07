@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -27,20 +28,21 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * As this is not a resource identifiable by an ID within the Auth0 Management API,
  *
- *  branding can be imported using a random string.
+ * branding can be imported using a random string.
  *
  * # 
  *
- *  We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
+ * We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
  *
  * # 
  *
- *  Example:
+ * Example:
  *
  * ```sh
  * $ pulumi import auth0:index/branding:Branding my_brand "22f4f21b-017a-319d-92e7-2291c1ca36c4"

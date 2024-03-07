@@ -598,6 +598,7 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -612,6 +613,7 @@ class User(pulumi.CustomResource):
             user_id="12345",
             username="unique_username")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -619,7 +621,7 @@ class User(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/user:User user "auth0|111111111111111111111111"
@@ -656,6 +658,7 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -670,6 +673,7 @@ class User(pulumi.CustomResource):
             user_id="12345",
             username="unique_username")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -677,7 +681,7 @@ class User(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/user:User user "auth0|111111111111111111111111"

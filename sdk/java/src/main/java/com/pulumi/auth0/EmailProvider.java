@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0&#39;s authentication workflows through the supported high-volume email service of your choice.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -74,20 +76,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * As this is not a resource identifiable by an ID within the Auth0 Management API,
  * 
- *  email can be imported using a random string.
+ * email can be imported using a random string.
  * 
  * # 
  * 
- *  We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
+ * We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/emailProvider:EmailProvider my_email_provider &#34;b4213dc2-2eed-42c3-9516-c6131a9ce0b0&#34;

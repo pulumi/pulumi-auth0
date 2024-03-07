@@ -172,6 +172,7 @@ class Pages(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -195,20 +196,21 @@ class Pages(pulumi.CustomResource):
                 html="<html><body>My Custom Login Page</body></html>",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API,
 
-         pages can be imported using a random string.
+        pages can be imported using a random string.
 
         # 
 
-         We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
+        We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/pages:Pages my_pages "22f4f21b-017a-319d-92e7-2291c1ca36c4"
@@ -232,6 +234,7 @@ class Pages(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -255,20 +258,21 @@ class Pages(pulumi.CustomResource):
                 html="<html><body>My Custom Login Page</body></html>",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API,
 
-         pages can be imported using a random string.
+        pages can be imported using a random string.
 
         # 
 
-         We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
+        We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/pages:Pages my_pages "22f4f21b-017a-319d-92e7-2291c1ca36c4"

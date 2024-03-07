@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -73,18 +74,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// This resource can be imported by specifying the
+// # This resource can be imported by specifying the
 //
-//	organization ID and user ID separated by "::" (note the double colon)
+// organization ID and user ID separated by "::" (note the double colon)
 //
-//	<organizationID>::<userID>
+// <organizationID>::<userID>
 //
 // #
 //
-//	Example:
+// Example:
 //
 // ```sh
 // $ pulumi import auth0:index/organizationMemberRoles:OrganizationMemberRoles my_org_member_roles "org_XXXXX::auth0|XXXXX"

@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -26,6 +27,7 @@ import * as utilities from "./utilities";
  *     value: "bar",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -33,7 +35,7 @@ import * as utilities from "./utilities";
  *
  * # 
  *
- *  Example:
+ * Example:
  *
  * ```sh
  * $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config "foo"

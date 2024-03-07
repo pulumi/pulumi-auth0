@@ -14,6 +14,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -56,18 +57,19 @@ namespace Pulumi.Auth0
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the
     /// 
-    ///  prompt and language separated by "::" (note the double colon)
+    /// prompt and language separated by "::" (note the double colon)
     /// 
-    ///  &lt;prompt&gt;::&lt;language&gt;
+    /// &lt;prompt&gt;::&lt;language&gt;
     /// 
     /// # 
     /// 
-    ///  Example
+    /// Example
     /// 
     /// ```sh
     /// $ pulumi import auth0:index/promptCustomText:PromptCustomText example "login::en"

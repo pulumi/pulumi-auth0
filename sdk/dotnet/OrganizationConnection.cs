@@ -19,6 +19,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -46,18 +47,19 @@ namespace Pulumi.Auth0
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the
     /// 
-    ///  organization ID and connection ID separated by "::" (note the double colon)
+    /// organization ID and connection ID separated by "::" (note the double colon)
     /// 
-    ///  &lt;organizationID&gt;::&lt;connectionID&gt;
+    /// &lt;organizationID&gt;::&lt;connectionID&gt;
     /// 
     /// # 
     /// 
-    ///  Example:
+    /// Example:
     /// 
     /// ```sh
     /// $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn "org_XXXXX::con_XXXXX"

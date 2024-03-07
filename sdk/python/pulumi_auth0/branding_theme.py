@@ -193,6 +193,7 @@ class BrandingTheme(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -270,6 +271,7 @@ class BrandingTheme(pulumi.CustomResource):
                 social_buttons_layout="top",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -277,7 +279,7 @@ class BrandingTheme(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme "XXXXXXXXXXXXXXXXXXXX"
@@ -298,6 +300,7 @@ class BrandingTheme(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -375,6 +378,7 @@ class BrandingTheme(pulumi.CustomResource):
                 social_buttons_layout="top",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -382,7 +386,7 @@ class BrandingTheme(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme "XXXXXXXXXXXXXXXXXXXX"

@@ -139,6 +139,7 @@ class ConnectionClient(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -151,18 +152,19 @@ class ConnectionClient(pulumi.CustomResource):
             connection_id=my_conn.id,
             client_id=my_client.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by specifying the
 
-         connection ID and client ID separated by "::" (note the double colon)
+        connection ID and client ID separated by "::" (note the double colon)
 
-         <connectionID>::<clientID>
+        <connectionID>::<clientID>
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/connectionClient:ConnectionClient my_conn_client_assoc "con_XXXXX::XXXXXXXX"
@@ -189,6 +191,7 @@ class ConnectionClient(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -201,18 +204,19 @@ class ConnectionClient(pulumi.CustomResource):
             connection_id=my_conn.id,
             client_id=my_client.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by specifying the
 
-         connection ID and client ID separated by "::" (note the double colon)
+        connection ID and client ID separated by "::" (note the double colon)
 
-         <connectionID>::<clientID>
+        <connectionID>::<clientID>
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/connectionClient:ConnectionClient my_conn_client_assoc "con_XXXXX::XXXXXXXX"

@@ -14,6 +14,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -57,18 +58,19 @@ namespace Pulumi.Auth0
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the
     /// 
-    ///  organization ID and user ID separated by "::" (note the double colon)
+    /// organization ID and user ID separated by "::" (note the double colon)
     /// 
-    ///  &lt;organizationID&gt;::&lt;userID&gt;
+    /// &lt;organizationID&gt;::&lt;userID&gt;
     /// 
     /// # 
     /// 
-    ///  Example:
+    /// Example:
     /// 
     /// ```sh
     /// $ pulumi import auth0:index/organizationMemberRoles:OrganizationMemberRoles my_org_member_roles "org_XXXXX::auth0|XXXXX"

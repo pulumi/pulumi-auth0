@@ -99,12 +99,14 @@ def get_pages(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPagesR
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_auth0 as auth0
 
     my_pages = auth0.get_pages()
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -125,11 +127,13 @@ def get_pages_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outp
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_auth0 as auth0
 
     my_pages = auth0.get_pages()
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

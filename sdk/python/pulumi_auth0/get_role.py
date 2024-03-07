@@ -113,6 +113,7 @@ def get_role(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_auth0 as auth0
@@ -120,6 +121,7 @@ def get_role(name: Optional[str] = None,
     some_role_by_name = auth0.get_role(name="my-role")
     some_role_by_id = auth0.get_role(role_id="abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str role_id: The ID of the role. If not provided, `name` must be set.
@@ -148,6 +150,7 @@ def get_role_output(name: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_auth0 as auth0
@@ -155,6 +158,7 @@ def get_role_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     some_role_by_name = auth0.get_role(name="my-role")
     some_role_by_id = auth0.get_role(role_id="abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str role_id: The ID of the role. If not provided, `name` must be set.

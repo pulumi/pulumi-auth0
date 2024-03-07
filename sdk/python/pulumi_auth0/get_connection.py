@@ -173,6 +173,7 @@ def get_connection(connection_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_auth0 as auth0
@@ -180,6 +181,7 @@ def get_connection(connection_id: Optional[str] = None,
     some_connection_by_name = auth0.get_connection(name="Acceptance-Test-Connection-{{.testName}}")
     some_connection_by_id = auth0.get_connection(connection_id="con_abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str connection_id: The ID of the connection. If not provided, `name` must be set.
@@ -213,6 +215,7 @@ def get_connection_output(connection_id: Optional[pulumi.Input[Optional[str]]] =
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_auth0 as auth0
@@ -220,6 +223,7 @@ def get_connection_output(connection_id: Optional[pulumi.Input[Optional[str]]] =
     some_connection_by_name = auth0.get_connection(name="Acceptance-Test-Connection-{{.testName}}")
     some_connection_by_id = auth0.get_connection(connection_id="con_abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str connection_id: The ID of the connection. If not provided, `name` must be set.

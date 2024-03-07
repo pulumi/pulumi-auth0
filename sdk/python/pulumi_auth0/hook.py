@@ -236,6 +236,7 @@ class Hook(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -255,6 +256,7 @@ class Hook(pulumi.CustomResource):
             },
             trigger_id="pre-user-registration")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -262,7 +264,7 @@ class Hook(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/hook:Hook my_hook "00001"
@@ -290,6 +292,7 @@ class Hook(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -309,6 +312,7 @@ class Hook(pulumi.CustomResource):
             },
             trigger_id="pre-user-registration")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -316,7 +320,7 @@ class Hook(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/hook:Hook my_hook "00001"

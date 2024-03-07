@@ -185,6 +185,7 @@ class ClientCredentials(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -228,6 +229,7 @@ class ClientCredentials(pulumi.CustomResource):
             authentication_method="client_secret_basic",
             client_secret="LUFqPx+sRLjbL7peYRPFmFu-bbvE7u7og4YUNe_C345=683341")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -235,15 +237,15 @@ class ClientCredentials(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/clientCredentials:ClientCredentials my_creds "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
         ```
 
-         ~> Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated.
+        ~> Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated.
 
-         This is to be expected, because the pem file can't be checked for differences.
+        This is to be expected, because the pem file can't be checked for differences.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -269,6 +271,7 @@ class ClientCredentials(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -312,6 +315,7 @@ class ClientCredentials(pulumi.CustomResource):
             authentication_method="client_secret_basic",
             client_secret="LUFqPx+sRLjbL7peYRPFmFu-bbvE7u7og4YUNe_C345=683341")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -319,15 +323,15 @@ class ClientCredentials(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/clientCredentials:ClientCredentials my_creds "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
         ```
 
-         ~> Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated.
+        ~> Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated.
 
-         This is to be expected, because the pem file can't be checked for differences.
+        This is to be expected, because the pem file can't be checked for differences.
 
         :param str resource_name: The name of the resource.
         :param ClientCredentialsArgs args: The arguments to use to populate this resource's properties.

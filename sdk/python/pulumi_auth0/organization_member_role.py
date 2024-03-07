@@ -166,6 +166,7 @@ class OrganizationMemberRole(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -189,18 +190,19 @@ class OrganizationMemberRole(pulumi.CustomResource):
             user_id=user.id,
             role_id=writer.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by specifying the
 
-         organization ID, user ID and role ID separated by "::" (note the double colon)
+        organization ID, user ID and role ID separated by "::" (note the double colon)
 
-         <organizationID>::<userID>::<roleID>
+        <organizationID>::<userID>::<roleID>
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/organizationMemberRole:OrganizationMemberRole my_org_member_role "org_XXXXX::auth0|XXXXX::role_XXXX"
@@ -223,6 +225,7 @@ class OrganizationMemberRole(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -246,18 +249,19 @@ class OrganizationMemberRole(pulumi.CustomResource):
             user_id=user.id,
             role_id=writer.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by specifying the
 
-         organization ID, user ID and role ID separated by "::" (note the double colon)
+        organization ID, user ID and role ID separated by "::" (note the double colon)
 
-         <organizationID>::<userID>::<roleID>
+        <organizationID>::<userID>::<roleID>
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/organizationMemberRole:OrganizationMemberRole my_org_member_role "org_XXXXX::auth0|XXXXX::role_XXXX"

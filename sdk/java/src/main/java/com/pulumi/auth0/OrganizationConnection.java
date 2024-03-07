@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * same organization id.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -66,18 +68,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * This resource can be imported by specifying the
  * 
- *  organization ID and connection ID separated by &#34;::&#34; (note the double colon)
+ * organization ID and connection ID separated by &#34;::&#34; (note the double colon)
  * 
- *  &lt;organizationID&gt;::&lt;connectionID&gt;
+ * &lt;organizationID&gt;::&lt;connectionID&gt;
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn &#34;org_XXXXX::con_XXXXX&#34;

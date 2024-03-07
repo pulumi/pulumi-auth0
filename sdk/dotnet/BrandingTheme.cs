@@ -14,6 +14,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -110,6 +111,7 @@ namespace Pulumi.Auth0
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -117,7 +119,7 @@ namespace Pulumi.Auth0
     /// 
     /// # 
     /// 
-    ///  Example:
+    /// Example:
     /// 
     /// ```sh
     /// $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme "XXXXXXXXXXXXXXXXXXXX"
