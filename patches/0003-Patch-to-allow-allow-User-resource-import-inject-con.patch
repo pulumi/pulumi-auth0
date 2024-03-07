@@ -1,0 +1,35 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Fabrice Baumann <fa.baumann@gmail.com>
+Date: Thu, 7 Mar 2024 16:31:48 -0500
+Subject: [PATCH 3/3] Patch to allow allow User resource import: inject
+ connection name attribute
+
+
+diff --git a/internal/auth0/user/flatten.go b/internal/auth0/user/flatten.go
+index 9efdaa08..765b8c57 100644
+--- a/internal/auth0/user/flatten.go
++++ b/internal/auth0/user/flatten.go
+@@ -21,6 +21,7 @@ func flattenUser(data *schema.ResourceData, user *management.User) (err error) {
+ 	result := multierror.Append(
+ 		data.Set("user_id", user.GetID()),
+ 		data.Set("username", user.GetUsername()),
++		data.Set("connection_name", user.GetConnection()),
+ 		data.Set("name", user.GetName()),
+ 		data.Set("family_name", user.GetFamilyName()),
+ 		data.Set("given_name", user.GetGivenName()),
+diff --git a/internal/auth0/user/resource.go b/internal/auth0/user/resource.go
+index bd9258ed..faddb005 100644
+--- a/internal/auth0/user/resource.go
++++ b/internal/auth0/user/resource.go
+@@ -175,6 +175,11 @@ func readUser(ctx context.Context, data *schema.ResourceData, meta interface{})
+ 		return diag.FromErr(internalError.HandleAPIError(data, err))
+ 	}
+ 
++	if len(user.Identities) == 1 {
++		userIdentity := user.Identities[0]
++		user.Connection = userIdentity.Connection
++	}
++
+ 	return diag.FromErr(flattenUser(data, user))
+ }
+ 
