@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
  *     connectionId: "con_abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConnection(args?: GetConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionResult> {
     args = args || {};
@@ -98,6 +100,7 @@ export interface GetConnectionResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -109,6 +112,7 @@ export interface GetConnectionResult {
  *     connectionId: "con_abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConnectionOutput(args?: GetConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionResult> {
     return pulumi.output(args).apply((a: any) => getConnection(a, opts))

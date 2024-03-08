@@ -21,6 +21,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -72,6 +73,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -79,7 +81,7 @@ import (
 //
 // #
 //
-//	Example:
+// Example:
 //
 // ```sh
 // $ pulumi import auth0:index/organizationConnections:OrganizationConnections my_org_conns "org_XXXXX"

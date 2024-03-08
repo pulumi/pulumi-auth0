@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -63,16 +64,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * This resource can be imported by specifying the client grant ID.
  * 
- *  You can find this within the Management Dashboard in Application -&gt; APIs -&gt; Expand the required API.
+ * You can find this within the Management Dashboard in Application -&gt; APIs -&gt; Expand the required API.
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant &#34;cgr_XXXXXXXXXXXXXXXX&#34;

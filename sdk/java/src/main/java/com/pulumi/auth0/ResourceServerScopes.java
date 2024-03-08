@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * server id.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -68,6 +70,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -75,7 +78,7 @@ import javax.annotation.Nullable;
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/resourceServerScopes:ResourceServerScopes my_api_scopes &#34;https://api.travel0.com/v1&#34;

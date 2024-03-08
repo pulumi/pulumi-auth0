@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     type: "auth0_managed_certs",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -27,13 +29,13 @@ import * as utilities from "./utilities";
  *
  * # 
  *
- *  You can find existing custom domain IDs using the Auth0 Management API.
+ * You can find existing custom domain IDs using the Auth0 Management API.
  *
- *  https://auth0.com/docs/api/management/v2#!/Custom_Domains/get_custom_domains
+ * https://auth0.com/docs/api/management/v2#!/Custom_Domains/get_custom_domains
  *
  * # 
  *
- *  Example:
+ * Example:
  *
  * ```sh
  * $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain "cd_XXXXXXXXXXXXXXXX"

@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -118,6 +120,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -125,7 +128,7 @@ import javax.annotation.Nullable;
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/client:Client my_client &#34;AaiyAPdpYdesoKnqjj8HJqRn4T5titww&#34;

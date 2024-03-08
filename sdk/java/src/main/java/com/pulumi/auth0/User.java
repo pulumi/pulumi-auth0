@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -55,6 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -62,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/user:User user &#34;auth0|111111111111111111111111&#34;

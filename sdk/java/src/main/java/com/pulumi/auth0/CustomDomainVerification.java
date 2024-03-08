@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification &#34;cd_XXXXXXXXXXXXXXXX&#34;

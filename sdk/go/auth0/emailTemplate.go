@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,6 +61,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -67,21 +69,21 @@ import (
 //
 // #
 //
-//	These names are `verify_email`, `verify_email_by_code`, `reset_email`,
+// These names are `verify_email`, `verify_email_by_code`, `reset_email`,
 //
-//	`welcome_email`, `blocked_account`, `stolen_credentials`,
+// `welcome_email`, `blocked_account`, `stolen_credentials`,
 //
-//	`enrollment_email`, `mfa_oob_code`, and `user_invitation`.
-//
-// #
-//
-//	The names `change_password`, and `password_reset` are also supported
-//
-//	for legacy scenarios.
+// `enrollment_email`, `mfa_oob_code`, and `user_invitation`.
 //
 // #
 //
-//	Example:
+// The names `change_password`, and `password_reset` are also supported
+//
+// for legacy scenarios.
+//
+// #
+//
+// Example:
 //
 // ```sh
 // $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template "welcome_email"

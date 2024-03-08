@@ -136,11 +136,11 @@ class ClientGrant(pulumi.CustomResource):
 
         This resource can be imported by specifying the client grant ID.
 
-         You can find this within the Management Dashboard in Application -> APIs -> Expand the required API.
+        You can find this within the Management Dashboard in Application -> APIs -> Expand the required API.
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant "cgr_XXXXXXXXXXXXXXXX"
@@ -165,11 +165,11 @@ class ClientGrant(pulumi.CustomResource):
 
         This resource can be imported by specifying the client grant ID.
 
-         You can find this within the Management Dashboard in Application -> APIs -> Expand the required API.
+        You can find this within the Management Dashboard in Application -> APIs -> Expand the required API.
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant "cgr_XXXXXXXXXXXXXXXX"

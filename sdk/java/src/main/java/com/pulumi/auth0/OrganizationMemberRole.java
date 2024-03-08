@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * This resource is used to manage the roles assigned to an organization member.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -79,18 +81,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * This resource can be imported by specifying the
  * 
- *  organization ID, user ID and role ID separated by &#34;::&#34; (note the double colon)
+ * organization ID, user ID and role ID separated by &#34;::&#34; (note the double colon)
  * 
- *  &lt;organizationID&gt;::&lt;userID&gt;::&lt;roleID&gt;
+ * &lt;organizationID&gt;::&lt;userID&gt;::&lt;roleID&gt;
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/organizationMemberRole:OrganizationMemberRole my_org_member_role &#34;org_XXXXX::auth0|XXXXX::role_XXXX&#34;

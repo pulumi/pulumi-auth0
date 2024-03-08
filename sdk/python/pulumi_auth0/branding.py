@@ -205,6 +205,7 @@ class Branding(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -219,20 +220,21 @@ class Branding(pulumi.CustomResource):
                 body=(lambda path: open(path).read())("universal_login_body.html"),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API,
 
-         branding can be imported using a random string.
+        branding can be imported using a random string.
 
         # 
 
-         We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
+        We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/branding:Branding my_brand "22f4f21b-017a-319d-92e7-2291c1ca36c4"
@@ -257,6 +259,7 @@ class Branding(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -271,20 +274,21 @@ class Branding(pulumi.CustomResource):
                 body=(lambda path: open(path).read())("universal_login_body.html"),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API,
 
-         branding can be imported using a random string.
+        branding can be imported using a random string.
 
         # 
 
-         We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
+        We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/branding:Branding my_brand "22f4f21b-017a-319d-92e7-2291c1ca36c4"

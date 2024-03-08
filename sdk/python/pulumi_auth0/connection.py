@@ -305,10 +305,12 @@ class Connection(pulumi.CustomResource):
         creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
 
         ## Example Usage
+
         ### Google OAuth2 Connection
 
         > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -335,8 +337,11 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="google-oauth2")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Facebook Connection
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -359,8 +364,11 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="facebook")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Apple Connection
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -386,8 +394,11 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="apple")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### LinkedIn Connection
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -410,8 +421,11 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="linkedin")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### GitHub Connection
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -434,8 +448,11 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="github")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### SalesForce Connection
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -457,10 +474,13 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="salesforce")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### OAuth2 Connection
 
         Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -493,10 +513,13 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="oauth2")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### SMS Connection
 
         > To be able to see this in the management dashboard as well, the name of the connection must be set to "sms".
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -527,10 +550,13 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="sms")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Email Connection
 
         > To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -557,8 +583,11 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="email")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### WindowsLive Connection
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -580,6 +609,7 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="windowslive")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -587,7 +617,7 @@ class Connection(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/connection:Connection google "con_a17f21fdb24d48a0"
@@ -617,10 +647,12 @@ class Connection(pulumi.CustomResource):
         creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
 
         ## Example Usage
+
         ### Google OAuth2 Connection
 
         > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -647,8 +679,11 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="google-oauth2")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Facebook Connection
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -671,8 +706,11 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="facebook")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Apple Connection
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -698,8 +736,11 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="apple")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### LinkedIn Connection
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -722,8 +763,11 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="linkedin")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### GitHub Connection
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -746,8 +790,11 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="github")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### SalesForce Connection
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -769,10 +816,13 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="salesforce")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### OAuth2 Connection
 
         Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -805,10 +855,13 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="oauth2")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### SMS Connection
 
         > To be able to see this in the management dashboard as well, the name of the connection must be set to "sms".
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -839,10 +892,13 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="sms")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Email Connection
 
         > To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -869,8 +925,11 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="email")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### WindowsLive Connection
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -892,6 +951,7 @@ class Connection(pulumi.CustomResource):
             ),
             strategy="windowslive")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -899,7 +959,7 @@ class Connection(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/connection:Connection google "con_a17f21fdb24d48a0"

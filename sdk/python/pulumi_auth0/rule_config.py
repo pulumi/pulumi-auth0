@@ -102,6 +102,7 @@ class RuleConfig(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -117,6 +118,7 @@ class RuleConfig(pulumi.CustomResource):
             key="foo",
             value="bar")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -124,7 +126,7 @@ class RuleConfig(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config "foo"
@@ -146,6 +148,7 @@ class RuleConfig(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -161,6 +164,7 @@ class RuleConfig(pulumi.CustomResource):
             key="foo",
             value="bar")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -168,7 +172,7 @@ class RuleConfig(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config "foo"

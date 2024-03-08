@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -35,6 +36,7 @@ import * as utilities from "./utilities";
  *     dependsOn: [myEmailProvider],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -42,21 +44,21 @@ import * as utilities from "./utilities";
  *
  * # 
  *
- *  These names are `verify_email`, `verify_email_by_code`, `reset_email`,
+ * These names are `verify_email`, `verify_email_by_code`, `reset_email`,
  *
- *  `welcome_email`, `blocked_account`, `stolen_credentials`,
+ * `welcome_email`, `blocked_account`, `stolen_credentials`,
  *
- *  `enrollment_email`, `mfa_oob_code`, and `user_invitation`.
- *
- * # 
- *
- *  The names `change_password`, and `password_reset` are also supported
- *
- *  for legacy scenarios.
+ * `enrollment_email`, `mfa_oob_code`, and `user_invitation`.
  *
  * # 
  *
- *  Example:
+ * The names `change_password`, and `password_reset` are also supported
+ *
+ * for legacy scenarios.
+ *
+ * # 
+ *
+ * Example:
  *
  * ```sh
  * $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template "welcome_email"

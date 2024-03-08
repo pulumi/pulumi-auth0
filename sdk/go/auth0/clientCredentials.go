@@ -19,6 +19,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -97,6 +98,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -104,15 +106,15 @@ import (
 //
 // #
 //
-//	Example:
+// Example:
 //
 // ```sh
 // $ pulumi import auth0:index/clientCredentials:ClientCredentials my_creds "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
 // ```
 //
-//	~> Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated.
+// ~> Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated.
 //
-//	This is to be expected, because the pem file can't be checked for differences.
+// This is to be expected, because the pem file can't be checked for differences.
 type ClientCredentials struct {
 	pulumi.CustomResourceState
 

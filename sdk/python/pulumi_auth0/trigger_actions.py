@@ -108,6 +108,7 @@ class TriggerActions(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -145,6 +146,7 @@ class TriggerActions(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -152,7 +154,7 @@ class TriggerActions(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/triggerActions:TriggerActions example "post-login"
@@ -178,6 +180,7 @@ class TriggerActions(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -215,6 +218,7 @@ class TriggerActions(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -222,7 +226,7 @@ class TriggerActions(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/triggerActions:TriggerActions example "post-login"

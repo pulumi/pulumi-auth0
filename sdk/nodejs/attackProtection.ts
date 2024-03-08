@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -56,20 +57,21 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * As this is not a resource identifiable by an ID within the Auth0 Management API,
  *
- *  attack_protection can be imported using a random string.
+ * attack_protection can be imported using a random string.
  *
  * # 
  *
- *  We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
+ * We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
  *
  * # 
  *
- *  Example:
+ * Example:
  *
  * ```sh
  * $ pulumi import auth0:index/attackProtection:AttackProtection my_protection "24940d4b-4bd4-44e7-894e-f92e4de36a40"

@@ -134,6 +134,7 @@ class PromptCustomText(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -166,18 +167,19 @@ class PromptCustomText(pulumi.CustomResource):
                 },
             }))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by specifying the
 
-         prompt and language separated by "::" (note the double colon)
+        prompt and language separated by "::" (note the double colon)
 
-         <prompt>::<language>
+        <prompt>::<language>
 
         # 
 
-         Example
+        Example
 
         ```sh
         $ pulumi import auth0:index/promptCustomText:PromptCustomText example "login::en"
@@ -200,6 +202,7 @@ class PromptCustomText(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -232,18 +235,19 @@ class PromptCustomText(pulumi.CustomResource):
                 },
             }))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by specifying the
 
-         prompt and language separated by "::" (note the double colon)
+        prompt and language separated by "::" (note the double colon)
 
-         <prompt>::<language>
+        <prompt>::<language>
 
         # 
 
-         Example
+        Example
 
         ```sh
         $ pulumi import auth0:index/promptCustomText:PromptCustomText example "login::en"

@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * With this resource, you can manage your Auth0 log streams.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -78,6 +80,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -85,7 +88,7 @@ import javax.annotation.Nullable;
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/logStream:LogStream example &#34;lst_XXXXXXXXXXXXXXXX&#34;

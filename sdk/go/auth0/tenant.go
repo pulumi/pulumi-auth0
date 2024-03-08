@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,20 +68,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // As this is not a resource identifiable by an ID within the Auth0 Management API,
 //
-//	tenant can be imported using a random string.
+// tenant can be imported using a random string.
 //
 // #
 //
-//	We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
+// We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
 //
 // #
 //
-//	Example:
+// Example:
 //
 // ```sh
 // $ pulumi import auth0:index/tenant:Tenant my_tenant "82f4f21b-017a-319d-92e7-2291c1ca36c4"

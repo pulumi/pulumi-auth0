@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -71,6 +73,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -78,21 +81,21 @@ import javax.annotation.Nullable;
  * 
  * # 
  * 
- *  These names are `verify_email`, `verify_email_by_code`, `reset_email`,
+ * These names are `verify_email`, `verify_email_by_code`, `reset_email`,
  * 
- *  `welcome_email`, `blocked_account`, `stolen_credentials`,
+ * `welcome_email`, `blocked_account`, `stolen_credentials`,
  * 
- *  `enrollment_email`, `mfa_oob_code`, and `user_invitation`.
- * 
- * # 
- * 
- *  The names `change_password`, and `password_reset` are also supported
- * 
- *  for legacy scenarios.
+ * `enrollment_email`, `mfa_oob_code`, and `user_invitation`.
  * 
  * # 
  * 
- *  Example:
+ * The names `change_password`, and `password_reset` are also supported
+ * 
+ * for legacy scenarios.
+ * 
+ * # 
+ * 
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template &#34;welcome_email&#34;

@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * conjunction with the `auth0.OrganizationMembers` resource when managing members for the same organization id.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -65,18 +67,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * This resource can be imported by specifying the
  * 
- *  organization ID and user ID separated by &#34;::&#34; (note the double colon)
+ * organization ID and user ID separated by &#34;::&#34; (note the double colon)
  * 
- *  &lt;organizationID&gt;::&lt;userID&gt;
+ * &lt;organizationID&gt;::&lt;userID&gt;
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/organizationMember:OrganizationMember my_org_member &#34;org_XXXXX::auth0|XXXXX&#34;

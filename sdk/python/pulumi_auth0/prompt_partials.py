@@ -268,6 +268,7 @@ class PromptPartials(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -281,6 +282,7 @@ class PromptPartials(pulumi.CustomResource):
             secondary_actions_end="<div>Updated Secondary Actions End</div>",
             secondary_actions_start="<div>Updated Secondary Actions Start</div>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -288,7 +290,7 @@ class PromptPartials(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/promptPartials:PromptPartials my_login_prompt_partials "login"
@@ -315,6 +317,7 @@ class PromptPartials(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -328,6 +331,7 @@ class PromptPartials(pulumi.CustomResource):
             secondary_actions_end="<div>Updated Secondary Actions End</div>",
             secondary_actions_start="<div>Updated Secondary Actions Start</div>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -335,7 +339,7 @@ class PromptPartials(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/promptPartials:PromptPartials my_login_prompt_partials "login"

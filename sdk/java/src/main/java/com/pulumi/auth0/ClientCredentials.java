@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * for instructions on how to rotate client secrets with zero downtime.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -97,6 +99,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -104,15 +107,15 @@ import javax.annotation.Nullable;
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/clientCredentials:ClientCredentials my_creds &#34;AaiyAPdpYdesoKnqjj8HJqRn4T5titww&#34;
  * ```
  * 
- *  ~&gt; Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated.
+ * ~&gt; Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated.
  * 
- *  This is to be expected, because the pem file can&#39;t be checked for differences.
+ * This is to be expected, because the pem file can&#39;t be checked for differences.
  * 
  */
 @ResourceType(type="auth0:index/clientCredentials:ClientCredentials")

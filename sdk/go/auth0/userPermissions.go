@@ -20,9 +20,9 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by specifying the user ID
+// # This resource can be imported by specifying the user ID
 //
-//	Example:
+// Example:
 //
 // ```sh
 // $ pulumi import auth0:index/userPermissions:UserPermissions all_user_permissions "auth0|111111111111111111111111"

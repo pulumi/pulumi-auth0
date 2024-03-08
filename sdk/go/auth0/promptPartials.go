@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -52,7 +54,7 @@ import (
 //
 // #
 //
-//	Example:
+// Example:
 //
 // ```sh
 // $ pulumi import auth0:index/promptPartials:PromptPartials my_login_prompt_partials "login"

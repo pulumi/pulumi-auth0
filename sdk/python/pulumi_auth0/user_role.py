@@ -138,6 +138,7 @@ class UserRole(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -153,18 +154,19 @@ class UserRole(pulumi.CustomResource):
             user_id=user.id,
             role_id=admin.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by specifying the
 
-         user ID and role ID separated by "::" (note the double colon)
+        user ID and role ID separated by "::" (note the double colon)
 
-         <userID>::<roleID>
+        <userID>::<roleID>
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/userRole:UserRole user_role "auth0|111111111111111111111111::role_123"
@@ -190,6 +192,7 @@ class UserRole(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -205,18 +208,19 @@ class UserRole(pulumi.CustomResource):
             user_id=user.id,
             role_id=admin.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by specifying the
 
-         user ID and role ID separated by "::" (note the double colon)
+        user ID and role ID separated by "::" (note the double colon)
 
-         <userID>::<roleID>
+        <userID>::<roleID>
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/userRole:UserRole user_role "auth0|111111111111111111111111::role_123"

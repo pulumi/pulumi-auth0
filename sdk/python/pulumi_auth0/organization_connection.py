@@ -172,6 +172,7 @@ class OrganizationConnection(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -183,18 +184,19 @@ class OrganizationConnection(pulumi.CustomResource):
             connection_id=my_connection.id,
             assign_membership_on_login=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by specifying the
 
-         organization ID and connection ID separated by "::" (note the double colon)
+        organization ID and connection ID separated by "::" (note the double colon)
 
-         <organizationID>::<connectionID>
+        <organizationID>::<connectionID>
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn "org_XXXXX::con_XXXXX"
@@ -222,6 +224,7 @@ class OrganizationConnection(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -233,18 +236,19 @@ class OrganizationConnection(pulumi.CustomResource):
             connection_id=my_connection.id,
             assign_membership_on_login=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by specifying the
 
-         organization ID and connection ID separated by "::" (note the double colon)
+        organization ID and connection ID separated by "::" (note the double colon)
 
-         <organizationID>::<connectionID>
+        <organizationID>::<connectionID>
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn "org_XXXXX::con_XXXXX"

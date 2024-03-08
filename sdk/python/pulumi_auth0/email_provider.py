@@ -203,6 +203,7 @@ class EmailProvider(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -233,20 +234,21 @@ class EmailProvider(pulumi.CustomResource):
             default_from_address="accounts@example.com",
             enabled=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API,
 
-         email can be imported using a random string.
+        email can be imported using a random string.
 
         # 
 
-         We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
+        We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/emailProvider:EmailProvider my_email_provider "b4213dc2-2eed-42c3-9516-c6131a9ce0b0"
@@ -271,6 +273,7 @@ class EmailProvider(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -301,20 +304,21 @@ class EmailProvider(pulumi.CustomResource):
             default_from_address="accounts@example.com",
             enabled=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API,
 
-         email can be imported using a random string.
+        email can be imported using a random string.
 
         # 
 
-         We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
+        We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/emailProvider:EmailProvider my_email_provider "b4213dc2-2eed-42c3-9516-c6131a9ce0b0"
