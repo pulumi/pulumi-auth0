@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * conjunction with the `auth0.TriggerAction` resource when binding actions to the same trigger.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -90,6 +92,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -97,7 +100,7 @@ import javax.annotation.Nullable;
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/triggerActions:TriggerActions example &#34;post-login&#34;

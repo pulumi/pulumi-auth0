@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -27,18 +28,19 @@ import * as utilities from "./utilities";
  *     scope: "write:posts",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * This resource can be imported by specifying the
  *
- *  resource identifier and scope name separated by "::" (note the double colon)
+ * resource identifier and scope name separated by "::" (note the double colon)
  *
- *  <resourceServerIdentifier>::<scope>
+ * <resourceServerIdentifier>::<scope>
  *
  * # 
  *
- *  Example:
+ * Example:
  *
  * ```sh
  * $ pulumi import auth0:index/resourceServerScope:ResourceServerScope scope "https://api.travel0.com/v1::read:posts"

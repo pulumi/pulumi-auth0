@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -103,20 +105,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * As this is not a resource identifiable by an ID within the Auth0 Management API,
  * 
- *  guardian can be imported using a random string.
+ * guardian can be imported using a random string.
  * 
  * # 
  * 
- *  We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
+ * We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/guardian:Guardian my_guardian &#34;24940d4b-4bd4-44e7-894e-f92e4de36a40&#34;

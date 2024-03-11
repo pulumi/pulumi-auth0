@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * manage an existing tenant created through the Auth0 dashboard.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -80,20 +82,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * As this is not a resource identifiable by an ID within the Auth0 Management API,
  * 
- *  tenant can be imported using a random string.
+ * tenant can be imported using a random string.
  * 
  * # 
  * 
- *  We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
+ * We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/tenant:Tenant my_tenant &#34;82f4f21b-017a-319d-92e7-2291c1ca36c4&#34;

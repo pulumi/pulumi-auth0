@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -63,6 +64,7 @@ import * as utilities from "./utilities";
  *     clientSecret: "LUFqPx+sRLjbL7peYRPFmFu-bbvE7u7og4YUNe_C345=683341",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -70,15 +72,15 @@ import * as utilities from "./utilities";
  *
  * # 
  *
- *  Example:
+ * Example:
  *
  * ```sh
  * $ pulumi import auth0:index/clientCredentials:ClientCredentials my_creds "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
  * ```
  *
- *  ~> Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated.
+ * ~> Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated.
  *
- *  This is to be expected, because the pem file can't be checked for differences.
+ * This is to be expected, because the pem file can't be checked for differences.
  */
 export class ClientCredentials extends pulumi.CustomResource {
     /**

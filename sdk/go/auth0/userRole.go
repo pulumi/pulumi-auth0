@@ -20,6 +20,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,18 +61,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// This resource can be imported by specifying the
+// # This resource can be imported by specifying the
 //
-//	user ID and role ID separated by "::" (note the double colon)
+// user ID and role ID separated by "::" (note the double colon)
 //
-//	<userID>::<roleID>
+// <userID>::<roleID>
 //
 // #
 //
-//	Example:
+// Example:
 //
 // ```sh
 // $ pulumi import auth0:index/userRole:UserRole user_role "auth0|111111111111111111111111::role_123"

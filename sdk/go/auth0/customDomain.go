@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -47,13 +49,13 @@ import (
 //
 // #
 //
-//	You can find existing custom domain IDs using the Auth0 Management API.
+// You can find existing custom domain IDs using the Auth0 Management API.
 //
-//	https://auth0.com/docs/api/management/v2#!/Custom_Domains/get_custom_domains
+// https://auth0.com/docs/api/management/v2#!/Custom_Domains/get_custom_domains
 //
 // #
 //
-//	Example:
+// Example:
 //
 // ```sh
 // $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain "cd_XXXXXXXXXXXXXXXX"

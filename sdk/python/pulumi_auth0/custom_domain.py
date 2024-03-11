@@ -234,6 +234,7 @@ class CustomDomain(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -242,6 +243,7 @@ class CustomDomain(pulumi.CustomResource):
             domain="auth.example.com",
             type="auth0_managed_certs")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -249,13 +251,13 @@ class CustomDomain(pulumi.CustomResource):
 
         # 
 
-         You can find existing custom domain IDs using the Auth0 Management API.
+        You can find existing custom domain IDs using the Auth0 Management API.
 
-         https://auth0.com/docs/api/management/v2#!/Custom_Domains/get_custom_domains
+        https://auth0.com/docs/api/management/v2#!/Custom_Domains/get_custom_domains
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain "cd_XXXXXXXXXXXXXXXX"
@@ -279,6 +281,7 @@ class CustomDomain(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -287,6 +290,7 @@ class CustomDomain(pulumi.CustomResource):
             domain="auth.example.com",
             type="auth0_managed_certs")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -294,13 +298,13 @@ class CustomDomain(pulumi.CustomResource):
 
         # 
 
-         You can find existing custom domain IDs using the Auth0 Management API.
+        You can find existing custom domain IDs using the Auth0 Management API.
 
-         https://auth0.com/docs/api/management/v2#!/Custom_Domains/get_custom_domains
+        https://auth0.com/docs/api/management/v2#!/Custom_Domains/get_custom_domains
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain "cd_XXXXXXXXXXXXXXXX"

@@ -11,12 +11,14 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myProtection = auth0.getAttackProtection({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAttackProtection(opts?: pulumi.InvokeOptions): Promise<GetAttackProtectionResult> {
 
@@ -51,12 +53,14 @@ export interface GetAttackProtectionResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myProtection = auth0.getAttackProtection({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAttackProtectionOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAttackProtectionResult> {
     return pulumi.output(getAttackProtection(opts))

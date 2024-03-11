@@ -101,6 +101,7 @@ class ResourceServerScopes(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -119,6 +120,7 @@ class ResourceServerScopes(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -126,7 +128,7 @@ class ResourceServerScopes(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/resourceServerScopes:ResourceServerScopes my_api_scopes "https://api.travel0.com/v1"
@@ -152,6 +154,7 @@ class ResourceServerScopes(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -170,6 +173,7 @@ class ResourceServerScopes(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -177,7 +181,7 @@ class ResourceServerScopes(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/resourceServerScopes:ResourceServerScopes my_api_scopes "https://api.travel0.com/v1"

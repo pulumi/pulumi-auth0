@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * This resource allows you to manage branding within your Auth0 tenant. Auth0 can be customized with a look and feel that aligns with your organization&#39;s brand requirements and user expectations.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -58,20 +60,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * As this is not a resource identifiable by an ID within the Auth0 Management API,
  * 
- *  branding can be imported using a random string.
+ * branding can be imported using a random string.
  * 
  * # 
  * 
- *  We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
+ * We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/branding:Branding my_brand &#34;22f4f21b-017a-319d-92e7-2291c1ca36c4&#34;

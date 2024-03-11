@@ -17,6 +17,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -89,6 +90,7 @@ namespace Pulumi.Auth0
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -96,15 +98,15 @@ namespace Pulumi.Auth0
     /// 
     /// # 
     /// 
-    ///  Example:
+    /// Example:
     /// 
     /// ```sh
     /// $ pulumi import auth0:index/clientCredentials:ClientCredentials my_creds "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
     /// ```
     /// 
-    ///  ~&gt; Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated.
+    /// ~&gt; Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated.
     /// 
-    ///  This is to be expected, because the pem file can't be checked for differences.
+    /// This is to be expected, because the pem file can't be checked for differences.
     /// </summary>
     [Auth0ResourceType("auth0:index/clientCredentials:ClientCredentials")]
     public partial class ClientCredentials : global::Pulumi.CustomResource

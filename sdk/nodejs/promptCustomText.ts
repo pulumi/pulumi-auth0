@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -41,18 +42,19 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * This resource can be imported by specifying the
  *
- *  prompt and language separated by "::" (note the double colon)
+ * prompt and language separated by "::" (note the double colon)
  *
- *  <prompt>::<language>
+ * <prompt>::<language>
  *
  * # 
  *
- *  Example
+ * Example
  *
  * ```sh
  * $ pulumi import auth0:index/promptCustomText:PromptCustomText example "login::en"

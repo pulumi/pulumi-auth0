@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -50,6 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -57,13 +60,13 @@ import javax.annotation.Nullable;
  * 
  * # 
  * 
- *  You can find existing custom domain IDs using the Auth0 Management API.
+ * You can find existing custom domain IDs using the Auth0 Management API.
  * 
- *  https://auth0.com/docs/api/management/v2#!/Custom_Domains/get_custom_domains
+ * https://auth0.com/docs/api/management/v2#!/Custom_Domains/get_custom_domains
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain &#34;cd_XXXXXXXXXXXXXXXX&#34;

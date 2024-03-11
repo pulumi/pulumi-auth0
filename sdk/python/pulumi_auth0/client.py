@@ -1165,6 +1165,7 @@ class Client(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -1233,6 +1234,7 @@ class Client(pulumi.CustomResource):
             ),
             web_origins=["https://example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1240,7 +1242,7 @@ class Client(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/client:Client my_client "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
@@ -1293,6 +1295,7 @@ class Client(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -1361,6 +1364,7 @@ class Client(pulumi.CustomResource):
             ),
             web_origins=["https://example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1368,7 +1372,7 @@ class Client(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/client:Client my_client "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"

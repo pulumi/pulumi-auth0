@@ -20,15 +20,15 @@ import (
 //
 // #
 //
-//	Example:
+// Example:
 //
 // ```sh
 // $ pulumi import auth0:index/action:Action my_action "12f4f21b-017a-319d-92e7-2291c1ca36c4"
 // ```
 //
-//	~> For security reasons importing `secrets` is not allowed. Therefore, it is advised to import
+// ~> For security reasons importing `secrets` is not allowed. Therefore, it is advised to import
 //
-//	the action without secrets and adding them back after the action has been imported.
+// the action without secrets and adding them back after the action has been imported.
 type Action struct {
 	pulumi.CustomResourceState
 

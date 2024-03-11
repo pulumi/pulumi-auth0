@@ -13,10 +13,12 @@ import * as utilities from "./utilities";
  * creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
  *
  * ## Example Usage
+ *
  * ### Google OAuth2 Connection
  *
  * > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -44,8 +46,11 @@ import * as utilities from "./utilities";
  *     strategy: "google-oauth2",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Facebook Connection
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -69,8 +74,11 @@ import * as utilities from "./utilities";
  *     strategy: "facebook",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Apple Connection
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -97,8 +105,11 @@ import * as utilities from "./utilities";
  *     strategy: "apple",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### LinkedIn Connection
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -122,8 +133,11 @@ import * as utilities from "./utilities";
  *     strategy: "linkedin",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### GitHub Connection
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -147,8 +161,11 @@ import * as utilities from "./utilities";
  *     strategy: "github",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### SalesForce Connection
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -171,10 +188,13 @@ import * as utilities from "./utilities";
  *     strategy: "salesforce",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### OAuth2 Connection
  *
  * Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -208,10 +228,13 @@ import * as utilities from "./utilities";
  *     strategy: "oauth2",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### SMS Connection
  *
  * > To be able to see this in the management dashboard as well, the name of the connection must be set to "sms".
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -243,10 +266,13 @@ import * as utilities from "./utilities";
  *     strategy: "sms",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Email Connection
  *
  * > To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -274,8 +300,11 @@ import * as utilities from "./utilities";
  *     strategy: "email",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### WindowsLive Connection
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -298,6 +327,7 @@ import * as utilities from "./utilities";
  *     strategy: "windowslive",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -305,7 +335,7 @@ import * as utilities from "./utilities";
  *
  * # 
  *
- *  Example:
+ * Example:
  *
  * ```sh
  * $ pulumi import auth0:index/connection:Connection google "con_a17f21fdb24d48a0"
