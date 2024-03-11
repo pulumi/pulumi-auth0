@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * conjunction with the `auth0.ResourceServerScopes` resource when managing scopes for the same resource server id.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -62,18 +64,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * This resource can be imported by specifying the
  * 
- *  resource identifier and scope name separated by &#34;::&#34; (note the double colon)
+ * resource identifier and scope name separated by &#34;::&#34; (note the double colon)
  * 
- *  &lt;resourceServerIdentifier&gt;::&lt;scope&gt;
+ * &lt;resourceServerIdentifier&gt;::&lt;scope&gt;
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/resourceServerScope:ResourceServerScope scope &#34;https://api.travel0.com/v1::read:posts&#34;

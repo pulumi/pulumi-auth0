@@ -20,6 +20,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,18 +58,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// This resource can be imported by specifying the
+// # This resource can be imported by specifying the
 //
-//	resource identifier and scope name separated by "::" (note the double colon)
+// resource identifier and scope name separated by "::" (note the double colon)
 //
-//	<resourceServerIdentifier>::<scope>
+// <resourceServerIdentifier>::<scope>
 //
 // #
 //
-//	Example:
+// Example:
 //
 // ```sh
 // $ pulumi import auth0:index/resourceServerScope:ResourceServerScope scope "https://api.travel0.com/v1::read:posts"

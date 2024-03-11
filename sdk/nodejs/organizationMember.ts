@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -29,18 +30,19 @@ import * as utilities from "./utilities";
  *     userId: user.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * This resource can be imported by specifying the
  *
- *  organization ID and user ID separated by "::" (note the double colon)
+ * organization ID and user ID separated by "::" (note the double colon)
  *
- *  <organizationID>::<userID>
+ * <organizationID>::<userID>
  *
  * # 
  *
- *  Example:
+ * Example:
  *
  * ```sh
  * $ pulumi import auth0:index/organizationMember:OrganizationMember my_org_member "org_XXXXX::auth0|XXXXX"

@@ -18,7 +18,7 @@ namespace Pulumi.Auth0
     /// 
     /// # 
     /// 
-    ///  Example:
+    /// Example:
     /// 
     /// ```sh
     /// $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification "cd_XXXXXXXXXXXXXXXX"

@@ -139,6 +139,7 @@ class ConnectionClients(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -155,6 +156,7 @@ class ConnectionClients(pulumi.CustomResource):
                 my_second_client.id,
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -162,7 +164,7 @@ class ConnectionClients(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/connectionClients:ConnectionClients my_conn_clients_assoc "con_XXXXX"
@@ -189,6 +191,7 @@ class ConnectionClients(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -205,6 +208,7 @@ class ConnectionClients(pulumi.CustomResource):
                 my_second_client.id,
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -212,7 +216,7 @@ class ConnectionClients(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/connectionClients:ConnectionClients my_conn_clients_assoc "con_XXXXX"

@@ -14,6 +14,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -30,6 +31,7 @@ namespace Pulumi.Auth0
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -37,13 +39,13 @@ namespace Pulumi.Auth0
     /// 
     /// # 
     /// 
-    ///  You can find existing custom domain IDs using the Auth0 Management API.
+    /// You can find existing custom domain IDs using the Auth0 Management API.
     /// 
-    ///  https://auth0.com/docs/api/management/v2#!/Custom_Domains/get_custom_domains
+    /// https://auth0.com/docs/api/management/v2#!/Custom_Domains/get_custom_domains
     /// 
     /// # 
     /// 
-    ///  Example:
+    /// Example:
     /// 
     /// ```sh
     /// $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain "cd_XXXXXXXXXXXXXXXX"

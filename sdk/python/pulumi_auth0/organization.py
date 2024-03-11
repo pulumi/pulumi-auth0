@@ -178,6 +178,7 @@ class Organization(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -192,6 +193,7 @@ class Organization(pulumi.CustomResource):
             ),
             display_name="Auth0 Inc.")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -199,7 +201,7 @@ class Organization(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/organization:Organization my_organization "org_XXXXXXXXXXXXXX"
@@ -229,6 +231,7 @@ class Organization(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -243,6 +246,7 @@ class Organization(pulumi.CustomResource):
             ),
             display_name="Auth0 Inc.")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -250,7 +254,7 @@ class Organization(pulumi.CustomResource):
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/organization:Organization my_organization "org_XXXXXXXXXXXXXX"

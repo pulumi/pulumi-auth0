@@ -41,6 +41,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s attack protection settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -66,6 +68,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAttackProtectionResult> getAttackProtection() {
@@ -75,6 +78,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s attack protection settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -100,6 +105,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAttackProtectionResult> getAttackProtectionPlain() {
@@ -109,6 +115,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s attack protection settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -134,6 +142,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAttackProtectionResult> getAttackProtection(InvokeArgs args) {
@@ -143,6 +152,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s attack protection settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -168,6 +179,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAttackProtectionResult> getAttackProtectionPlain(InvokeArgs args) {
@@ -177,6 +189,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s attack protection settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -202,6 +216,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAttackProtectionResult> getAttackProtection(InvokeArgs args, InvokeOptions options) {
@@ -211,6 +226,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s attack protection settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -236,6 +253,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAttackProtectionResult> getAttackProtectionPlain(InvokeArgs args, InvokeOptions options) {
@@ -245,6 +263,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s branding settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -270,6 +290,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBrandingResult> getBranding() {
@@ -279,6 +300,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s branding settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -304,6 +327,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBrandingResult> getBrandingPlain() {
@@ -313,6 +337,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s branding settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -338,6 +364,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBrandingResult> getBranding(InvokeArgs args) {
@@ -347,6 +374,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s branding settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -372,6 +401,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBrandingResult> getBrandingPlain(InvokeArgs args) {
@@ -381,6 +411,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s branding settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -406,6 +438,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBrandingResult> getBranding(InvokeArgs args, InvokeOptions options) {
@@ -415,6 +448,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s branding settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -440,6 +475,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBrandingResult> getBrandingPlain(InvokeArgs args, InvokeOptions options) {
@@ -449,6 +485,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s branding theme settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -474,6 +512,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBrandingThemeResult> getBrandingTheme() {
@@ -483,6 +522,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s branding theme settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -508,6 +549,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBrandingThemeResult> getBrandingThemePlain() {
@@ -517,6 +559,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s branding theme settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -542,6 +586,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBrandingThemeResult> getBrandingTheme(InvokeArgs args) {
@@ -551,6 +596,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s branding theme settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -576,6 +623,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBrandingThemeResult> getBrandingThemePlain(InvokeArgs args) {
@@ -585,6 +633,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s branding theme settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -610,6 +660,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBrandingThemeResult> getBrandingTheme(InvokeArgs args, InvokeOptions options) {
@@ -619,6 +670,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant&#39;s branding theme settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -644,6 +697,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBrandingThemeResult> getBrandingThemePlain(InvokeArgs args, InvokeOptions options) {
@@ -653,6 +707,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -685,6 +741,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClientResult> getClient() {
@@ -694,6 +751,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -726,6 +785,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClientResult> getClientPlain() {
@@ -735,6 +795,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -767,6 +829,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClientResult> getClient(GetClientArgs args) {
@@ -776,6 +839,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -808,6 +873,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClientResult> getClientPlain(GetClientPlainArgs args) {
@@ -817,6 +883,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -849,6 +917,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClientResult> getClient(GetClientArgs args, InvokeOptions options) {
@@ -858,6 +927,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -890,6 +961,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClientResult> getClientPlain(GetClientPlainArgs args, InvokeOptions options) {
@@ -899,6 +971,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -931,6 +1005,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConnectionResult> getConnection() {
@@ -940,6 +1015,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -972,6 +1049,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectionResult> getConnectionPlain() {
@@ -981,6 +1059,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1013,6 +1093,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConnectionResult> getConnection(GetConnectionArgs args) {
@@ -1022,6 +1103,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1054,6 +1137,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args) {
@@ -1063,6 +1147,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1095,6 +1181,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConnectionResult> getConnection(GetConnectionArgs args, InvokeOptions options) {
@@ -1104,6 +1191,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1136,6 +1225,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args, InvokeOptions options) {
@@ -1187,6 +1277,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1219,6 +1311,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationResult> getOrganization() {
@@ -1228,6 +1321,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1260,6 +1355,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain() {
@@ -1269,6 +1365,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1301,6 +1399,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args) {
@@ -1310,6 +1409,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1342,6 +1443,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args) {
@@ -1351,6 +1453,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1383,6 +1487,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args, InvokeOptions options) {
@@ -1392,6 +1497,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1424,6 +1531,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args, InvokeOptions options) {
@@ -1433,6 +1541,8 @@ public final class Auth0Functions {
      * Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1458,6 +1568,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPagesResult> getPages() {
@@ -1467,6 +1578,8 @@ public final class Auth0Functions {
      * Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1492,6 +1605,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPagesResult> getPagesPlain() {
@@ -1501,6 +1615,8 @@ public final class Auth0Functions {
      * Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1526,6 +1642,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPagesResult> getPages(InvokeArgs args) {
@@ -1535,6 +1652,8 @@ public final class Auth0Functions {
      * Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1560,6 +1679,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPagesResult> getPagesPlain(InvokeArgs args) {
@@ -1569,6 +1689,8 @@ public final class Auth0Functions {
      * Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1594,6 +1716,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPagesResult> getPages(InvokeArgs args, InvokeOptions options) {
@@ -1603,6 +1726,8 @@ public final class Auth0Functions {
      * Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1628,6 +1753,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPagesResult> getPagesPlain(InvokeArgs args, InvokeOptions options) {
@@ -1637,6 +1763,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1669,6 +1797,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceServerResult> getResourceServer() {
@@ -1678,6 +1807,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1710,6 +1841,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceServerResult> getResourceServerPlain() {
@@ -1719,6 +1851,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1751,6 +1885,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceServerResult> getResourceServer(GetResourceServerArgs args) {
@@ -1760,6 +1895,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1792,6 +1929,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceServerResult> getResourceServerPlain(GetResourceServerPlainArgs args) {
@@ -1801,6 +1939,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1833,6 +1973,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceServerResult> getResourceServer(GetResourceServerArgs args, InvokeOptions options) {
@@ -1842,6 +1983,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1874,6 +2017,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceServerResult> getResourceServerPlain(GetResourceServerPlainArgs args, InvokeOptions options) {
@@ -1883,6 +2027,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1915,6 +2061,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRoleResult> getRole() {
@@ -1924,6 +2071,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1956,6 +2105,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRoleResult> getRolePlain() {
@@ -1965,6 +2115,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1997,6 +2149,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRoleResult> getRole(GetRoleArgs args) {
@@ -2006,6 +2159,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2038,6 +2193,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRoleResult> getRolePlain(GetRolePlainArgs args) {
@@ -2047,6 +2203,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2079,6 +2237,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRoleResult> getRole(GetRoleArgs args, InvokeOptions options) {
@@ -2088,6 +2247,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2120,6 +2281,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRoleResult> getRolePlain(GetRolePlainArgs args, InvokeOptions options) {
@@ -2171,6 +2333,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant this provider is configured to access.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2196,6 +2360,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTenantResult> getTenant() {
@@ -2205,6 +2370,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant this provider is configured to access.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2230,6 +2397,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTenantResult> getTenantPlain() {
@@ -2239,6 +2407,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant this provider is configured to access.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2264,6 +2434,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTenantResult> getTenant(InvokeArgs args) {
@@ -2273,6 +2444,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant this provider is configured to access.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2298,6 +2471,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTenantResult> getTenantPlain(InvokeArgs args) {
@@ -2307,6 +2481,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant this provider is configured to access.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2332,6 +2508,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTenantResult> getTenant(InvokeArgs args, InvokeOptions options) {
@@ -2341,6 +2518,8 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant this provider is configured to access.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2366,6 +2545,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTenantResult> getTenantPlain(InvokeArgs args, InvokeOptions options) {
@@ -2375,6 +2555,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 user by `user_id`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2403,6 +2585,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args) {
@@ -2412,6 +2595,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 user by `user_id`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2440,6 +2625,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
@@ -2449,6 +2635,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 user by `user_id`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2477,6 +2665,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
@@ -2486,6 +2675,8 @@ public final class Auth0Functions {
      * Data source to retrieve a specific Auth0 user by `user_id`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2514,6 +2705,7 @@ public final class Auth0Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {

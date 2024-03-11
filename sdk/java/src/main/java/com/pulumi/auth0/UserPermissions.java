@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported by specifying the user ID
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/userPermissions:UserPermissions all_user_permissions &#34;auth0|111111111111111111111111&#34;

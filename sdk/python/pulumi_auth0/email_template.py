@@ -329,6 +329,7 @@ class EmailTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -352,6 +353,7 @@ class EmailTemplate(pulumi.CustomResource):
             enabled=True,
             opts=pulumi.ResourceOptions(depends_on=[my_email_provider]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -359,21 +361,21 @@ class EmailTemplate(pulumi.CustomResource):
 
         # 
 
-         These names are `verify_email`, `verify_email_by_code`, `reset_email`,
+        These names are `verify_email`, `verify_email_by_code`, `reset_email`,
 
-         `welcome_email`, `blocked_account`, `stolen_credentials`,
+        `welcome_email`, `blocked_account`, `stolen_credentials`,
 
-         `enrollment_email`, `mfa_oob_code`, and `user_invitation`.
-
-        # 
-
-         The names `change_password`, and `password_reset` are also supported
-
-         for legacy scenarios.
+        `enrollment_email`, `mfa_oob_code`, and `user_invitation`.
 
         # 
 
-         Example:
+        The names `change_password`, and `password_reset` are also supported
+
+        for legacy scenarios.
+
+        # 
+
+        Example:
 
         ```sh
         $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template "welcome_email"
@@ -402,6 +404,7 @@ class EmailTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -425,6 +428,7 @@ class EmailTemplate(pulumi.CustomResource):
             enabled=True,
             opts=pulumi.ResourceOptions(depends_on=[my_email_provider]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -432,21 +436,21 @@ class EmailTemplate(pulumi.CustomResource):
 
         # 
 
-         These names are `verify_email`, `verify_email_by_code`, `reset_email`,
+        These names are `verify_email`, `verify_email_by_code`, `reset_email`,
 
-         `welcome_email`, `blocked_account`, `stolen_credentials`,
+        `welcome_email`, `blocked_account`, `stolen_credentials`,
 
-         `enrollment_email`, `mfa_oob_code`, and `user_invitation`.
-
-        # 
-
-         The names `change_password`, and `password_reset` are also supported
-
-         for legacy scenarios.
+        `enrollment_email`, `mfa_oob_code`, and `user_invitation`.
 
         # 
 
-         Example:
+        The names `change_password`, and `password_reset` are also supported
+
+        for legacy scenarios.
+
+        # 
+
+        Example:
 
         ```sh
         $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template "welcome_email"

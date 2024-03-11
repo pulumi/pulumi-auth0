@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * With this resource, you can manage custom text on your Auth0 prompts. You can read more about custom texts [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -71,18 +73,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * This resource can be imported by specifying the
  * 
- *  prompt and language separated by &#34;::&#34; (note the double colon)
+ * prompt and language separated by &#34;::&#34; (note the double colon)
  * 
- *  &lt;prompt&gt;::&lt;language&gt;
+ * &lt;prompt&gt;::&lt;language&gt;
  * 
  * # 
  * 
- *  Example
+ * Example
  * 
  * ```sh
  * $ pulumi import auth0:index/promptCustomText:PromptCustomText example &#34;login::en&#34;

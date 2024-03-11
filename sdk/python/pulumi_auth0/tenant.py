@@ -604,6 +604,7 @@ class Tenant(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -633,20 +634,21 @@ class Tenant(pulumi.CustomResource):
             support_email="support@example.com",
             support_url="http://example.com/support")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API,
 
-         tenant can be imported using a random string.
+        tenant can be imported using a random string.
 
         # 
 
-         We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
+        We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/tenant:Tenant my_tenant "82f4f21b-017a-319d-92e7-2291c1ca36c4"
@@ -686,6 +688,7 @@ class Tenant(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -715,20 +718,21 @@ class Tenant(pulumi.CustomResource):
             support_email="support@example.com",
             support_url="http://example.com/support")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API,
 
-         tenant can be imported using a random string.
+        tenant can be imported using a random string.
 
         # 
 
-         We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
+        We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/tenant:Tenant my_tenant "82f4f21b-017a-319d-92e7-2291c1ca36c4"

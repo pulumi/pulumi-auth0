@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * With this resource, you can set up APIs that can be consumed from your authorized applications.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -52,6 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -59,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server &#34;XXXXXXXXXXXXXXXXXXXXXXX&#34;

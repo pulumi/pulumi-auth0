@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * same connection id.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -60,18 +62,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * This resource can be imported by specifying the
  * 
- *  connection ID and client ID separated by &#34;::&#34; (note the double colon)
+ * connection ID and client ID separated by &#34;::&#34; (note the double colon)
  * 
- *  &lt;connectionID&gt;::&lt;clientID&gt;
+ * &lt;connectionID&gt;::&lt;clientID&gt;
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/connectionClient:ConnectionClient my_conn_client_assoc &#34;con_XXXXX::XXXXXXXX&#34;

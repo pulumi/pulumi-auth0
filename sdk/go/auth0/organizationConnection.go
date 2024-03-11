@@ -21,6 +21,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,18 +59,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// This resource can be imported by specifying the
+// # This resource can be imported by specifying the
 //
-//	organization ID and connection ID separated by "::" (note the double colon)
+// organization ID and connection ID separated by "::" (note the double colon)
 //
-//	<organizationID>::<connectionID>
+// <organizationID>::<connectionID>
 //
 // #
 //
-//	Example:
+// Example:
 //
 // ```sh
 // $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn "org_XXXXX::con_XXXXX"

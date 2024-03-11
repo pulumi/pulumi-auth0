@@ -139,6 +139,7 @@ class ResourceServerScope(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -151,18 +152,19 @@ class ResourceServerScope(pulumi.CustomResource):
             resource_server_identifier=resource_server.identifier,
             scope="write:posts")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by specifying the
 
-         resource identifier and scope name separated by "::" (note the double colon)
+        resource identifier and scope name separated by "::" (note the double colon)
 
-         <resourceServerIdentifier>::<scope>
+        <resourceServerIdentifier>::<scope>
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/resourceServerScope:ResourceServerScope scope "https://api.travel0.com/v1::read:posts"
@@ -189,6 +191,7 @@ class ResourceServerScope(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -201,18 +204,19 @@ class ResourceServerScope(pulumi.CustomResource):
             resource_server_identifier=resource_server.identifier,
             scope="write:posts")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by specifying the
 
-         resource identifier and scope name separated by "::" (note the double colon)
+        resource identifier and scope name separated by "::" (note the double colon)
 
-         <resourceServerIdentifier>::<scope>
+        <resourceServerIdentifier>::<scope>
 
         # 
 
-         Example:
+        Example:
 
         ```sh
         $ pulumi import auth0:index/resourceServerScope:ResourceServerScope scope "https://api.travel0.com/v1::read:posts"

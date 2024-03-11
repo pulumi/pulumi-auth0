@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -27,18 +28,19 @@ import * as utilities from "./utilities";
  *     clientId: myClient.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * This resource can be imported by specifying the
  *
- *  connection ID and client ID separated by "::" (note the double colon)
+ * connection ID and client ID separated by "::" (note the double colon)
  *
- *  <connectionID>::<clientID>
+ * <connectionID>::<clientID>
  *
  * # 
  *
- *  Example:
+ * Example:
  *
  * ```sh
  * $ pulumi import auth0:index/connectionClient:ConnectionClient my_conn_client_assoc "con_XXXXX::XXXXXXXX"

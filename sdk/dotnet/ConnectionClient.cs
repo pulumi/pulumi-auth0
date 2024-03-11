@@ -19,6 +19,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -44,18 +45,19 @@ namespace Pulumi.Auth0
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the
     /// 
-    ///  connection ID and client ID separated by "::" (note the double colon)
+    /// connection ID and client ID separated by "::" (note the double colon)
     /// 
-    ///  &lt;connectionID&gt;::&lt;clientID&gt;
+    /// &lt;connectionID&gt;::&lt;clientID&gt;
     /// 
     /// # 
     /// 
-    ///  Example:
+    /// Example:
     /// 
     /// ```sh
     /// $ pulumi import auth0:index/connectionClient:ConnectionClient my_conn_client_assoc "con_XXXXX::XXXXXXXX"

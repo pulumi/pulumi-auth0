@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * This resource allows you to manage branding themes for your Universal Login page within your Auth0 tenant.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -131,6 +133,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -138,7 +141,7 @@ import javax.annotation.Nullable;
  * 
  * # 
  * 
- *  Example:
+ * Example:
  * 
  * ```sh
  * $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme &#34;XXXXXXXXXXXXXXXXXXXX&#34;

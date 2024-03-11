@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -70,18 +71,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// This resource can be imported by specifying the
+// # This resource can be imported by specifying the
 //
-//	prompt and language separated by "::" (note the double colon)
+// prompt and language separated by "::" (note the double colon)
 //
-//	<prompt>::<language>
+// <prompt>::<language>
 //
 // #
 //
-//	Example
+// # Example
 //
 // ```sh
 // $ pulumi import auth0:index/promptCustomText:PromptCustomText example "login::en"

@@ -9,12 +9,14 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myRole = new auth0.Role("myRole", {description: "Role Description..."});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -22,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * # 
  *
- *  Example:
+ * Example:
  *
  * ```sh
  * $ pulumi import auth0:index/role:Role my_role "XXXXXXXXXXXXXXXXXXXXXXX"

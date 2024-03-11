@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
  *     roleId: "abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
     args = args || {};
@@ -78,6 +80,7 @@ export interface GetRoleResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -89,6 +92,7 @@ export interface GetRoleResult {
  *     roleId: "abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
     return pulumi.output(args).apply((a: any) => getRole(a, opts))

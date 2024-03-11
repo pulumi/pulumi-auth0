@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -70,20 +71,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // As this is not a resource identifiable by an ID within the Auth0 Management API,
 //
-//	email can be imported using a random string.
+// email can be imported using a random string.
 //
 // #
 //
-//	We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
+// We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
 //
 // #
 //
-//	Example:
+// Example:
 //
 // ```sh
 // $ pulumi import auth0:index/emailProvider:EmailProvider my_email_provider "b4213dc2-2eed-42c3-9516-c6131a9ce0b0"

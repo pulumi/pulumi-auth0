@@ -18,10 +18,12 @@ import (
 // creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
 //
 // ## Example Usage
+//
 // ### Google OAuth2 Connection
 //
 // > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -64,8 +66,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Facebook Connection
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -104,8 +109,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Apple Connection
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -144,8 +152,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### LinkedIn Connection
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -184,8 +195,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### GitHub Connection
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -224,8 +238,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### SalesForce Connection
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -263,10 +280,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### OAuth2 Connection
 //
 // Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -311,10 +331,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### SMS Connection
 //
 // > To be able to see this in the management dashboard as well, the name of the connection must be set to "sms".
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -361,10 +384,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Email Connection
 //
 // > To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -407,8 +433,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### WindowsLive Connection
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -446,6 +475,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -453,7 +483,7 @@ import (
 //
 // #
 //
-//	Example:
+// Example:
 //
 // ```sh
 // $ pulumi import auth0:index/connection:Connection google "con_a17f21fdb24d48a0"
