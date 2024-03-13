@@ -13,7 +13,7 @@ replace (
 require (
 	github.com/auth0/terraform-provider-auth0 v0.50.2
 	github.com/pulumi/providertest v0.0.11
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.77.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.77.1-0.20240313202306-548e9053798d
 	github.com/pulumi/pulumi/sdk/v3 v3.108.1
 )
 
