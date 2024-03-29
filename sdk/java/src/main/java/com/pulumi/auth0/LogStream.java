@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // This is an example of an http log stream.
  *         var myWebhook = new LogStream(&#34;myWebhook&#34;, LogStreamArgs.builder()        
  *             .filters(            
  *                 Map.ofEntries(
@@ -68,6 +69,7 @@ import javax.annotation.Nullable;
  *             .type(&#34;http&#34;)
  *             .build());
  * 
+ *         // This is an example of an Amazon EventBridge log stream.
  *         var exampleAws = new LogStream(&#34;exampleAws&#34;, LogStreamArgs.builder()        
  *             .sink(LogStreamSinkArgs.builder()
  *                 .awsAccountId(&#34;my_account_id&#34;)
