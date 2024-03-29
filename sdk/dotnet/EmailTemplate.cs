@@ -47,9 +47,9 @@ namespace Pulumi.Auth0
     ///         Enabled = true,
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             myEmailProvider,
+    ///             myEmailProvider, 
     ///         },
     ///     });
     /// 

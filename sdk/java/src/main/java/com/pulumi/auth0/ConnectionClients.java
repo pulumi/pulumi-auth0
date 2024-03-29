@@ -57,6 +57,8 @@ import javax.annotation.Nullable;
  * 
  *         var mySecondClient = new Client(&#34;mySecondClient&#34;);
  * 
+ *         // One connection to many clients association.
+ *         // To prevent issues, avoid using this resource together with the `auth0_connection_client` resource.
  *         var myConnClientsAssoc = new ConnectionClients(&#34;myConnClientsAssoc&#34;, ConnectionClientsArgs.builder()        
  *             .connectionId(myConn.id())
  *             .enabledClients(            

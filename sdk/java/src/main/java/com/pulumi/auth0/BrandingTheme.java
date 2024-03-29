@@ -57,6 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // An example of a fully configured auth0_branding_theme.
  *         var myTheme = new BrandingTheme(&#34;myTheme&#34;, BrandingThemeArgs.builder()        
  *             .borders(BrandingThemeBordersArgs.builder()
  *                 .buttonBorderRadius(1)

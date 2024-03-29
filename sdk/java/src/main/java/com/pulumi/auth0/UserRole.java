@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Example:
  *         var admin = new Role(&#34;admin&#34;, RoleArgs.builder()        
  *             .description(&#34;Administrator&#34;)
  *             .build());

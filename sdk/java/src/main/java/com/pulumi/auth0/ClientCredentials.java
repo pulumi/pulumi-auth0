@@ -57,21 +57,25 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Configuring client_secret_post as an authentication method.
  *         var testClientCredentials = new ClientCredentials(&#34;testClientCredentials&#34;, ClientCredentialsArgs.builder()        
  *             .clientId(myClient.id())
  *             .authenticationMethod(&#34;client_secret_post&#34;)
  *             .build());
  * 
+ *         // Configuring client_secret_basic as an authentication method.
  *         var testIndex_clientCredentialsClientCredentials = new ClientCredentials(&#34;testIndex/clientCredentialsClientCredentials&#34;, ClientCredentialsArgs.builder()        
  *             .clientId(myClient.id())
  *             .authenticationMethod(&#34;client_secret_basic&#34;)
  *             .build());
  * 
+ *         // Configuring none as an authentication method.
  *         var testAuth0Index_clientCredentialsClientCredentials = new ClientCredentials(&#34;testAuth0Index/clientCredentialsClientCredentials&#34;, ClientCredentialsArgs.builder()        
  *             .clientId(myClient.id())
  *             .authenticationMethod(&#34;none&#34;)
  *             .build());
  * 
+ *         // Configuring private_key_jwt as an authentication method.
  *         var testAuth0Index_clientCredentialsClientCredentials1 = new ClientCredentials(&#34;testAuth0Index/clientCredentialsClientCredentials1&#34;, ClientCredentialsArgs.builder()        
  *             .clientId(myClient.id())
  *             .authenticationMethod(&#34;private_key_jwt&#34;)
@@ -90,6 +94,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Configuring the client_secret.
  *         var testAuth0Index_clientCredentialsClientCredentials2 = new ClientCredentials(&#34;testAuth0Index/clientCredentialsClientCredentials2&#34;, ClientCredentialsArgs.builder()        
  *             .clientId(myClient.id())
  *             .authenticationMethod(&#34;client_secret_basic&#34;)
