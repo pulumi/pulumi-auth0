@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // The following example grants a client the &#34;create:foo&#34; and &#34;create:bar&#34; permissions (scopes).
  *         var myClient = new Client(&#34;myClient&#34;);
  * 
  *         var myResourceServer = new ResourceServer(&#34;myResourceServer&#34;, ResourceServerArgs.builder()        

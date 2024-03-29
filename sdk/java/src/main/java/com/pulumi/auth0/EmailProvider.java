@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // This is an example on how to set up the email provider with Amazon SES.
  *         var amazonSesEmailProvider = new EmailProvider(&#34;amazonSesEmailProvider&#34;, EmailProviderArgs.builder()        
  *             .credentials(EmailProviderCredentialsArgs.builder()
  *                 .accessKeyId(&#34;AKIAXXXXXXXXXXXXXXXX&#34;)
@@ -55,6 +56,7 @@ import javax.annotation.Nullable;
  *             .enabled(true)
  *             .build());
  * 
+ *         // This is an example on how to set up the email provider with Sendgrid.
  *         var sendgridEmailProvider = new EmailProvider(&#34;sendgridEmailProvider&#34;, EmailProviderArgs.builder()        
  *             .credentials(EmailProviderCredentialsArgs.builder()
  *                 .apiKey(&#34;secretAPIKey&#34;)
@@ -63,6 +65,7 @@ import javax.annotation.Nullable;
  *             .enabled(true)
  *             .build());
  * 
+ *         // This is an example on how to set up the email provider with MS365.
  *         var smtpEmailProvider = new EmailProvider(&#34;smtpEmailProvider&#34;, EmailProviderArgs.builder()        
  *             .credentials(EmailProviderCredentialsArgs.builder()
  *                 .ms365ClientId(&#34;ms365_client_id&#34;)
