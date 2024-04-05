@@ -1,0 +1,44 @@
+Previewing update (dev)
+
+View Live: https://app.pulumi.com/pulumi/index_brandingthemewEGdn6xrwLkI/dev/previews/2f09056d-ae17-42cc-8a9a-f0cb05b45898
+
+@ Previewing update.....
+Loading policy packs...
+
+
+@ Previewing update.....
+ +  pulumi:pulumi:Stack index_brandingthemewEGdn6xrwLkI-dev create 
+ +  pulumi:pulumi:Stack index_brandingthemewEGdn6xrwLkI-dev create [31mError[0m: auth0:index/brandingTheme:BrandingTheme is not assignable from {colors: {pageBackground: string, primary: string}, displayName: string, faviconUrl: string, logoUrl: string, universalLogin: {body: string}}
+ +  pulumi:pulumi:Stack index_brandingthemewEGdn6xrwLkI-dev create Cannot assign '{colors: {pageBackground: string, primary: string}, displayName: string, faviconUrl: string, logoUrl: string, universalLogin: {body: string}}' to 'auth0:index/brandingTheme:BrandingTheme':
+ +  pulumi:pulumi:Stack index_brandingthemewEGdn6xrwLkI-dev create   borders: Missing required property 'borders'
+ +  pulumi:pulumi:Stack index_brandingthemewEGdn6xrwLkI-dev create   colors: Cannot assign '{pageBackground: string, primary: string}' to 'auth0:index/BrandingThemeColors:BrandingThemeColors':
+ +  pulumi:pulumi:Stack index_brandingthemewEGdn6xrwLkI-dev create     Existing properties are: widgetBackground, inputBackground, baseFocusColor, baseHoverColor, error and 13 others
+ +  pulumi:pulumi:Stack index_brandingthemewEGdn6xrwLkI-dev create     Existing properties are: error, header, icons, primaryButton, success and 13 others
+ +  pulumi:pulumi:Stack index_brandingthemewEGdn6xrwLkI-dev create   fonts: Missing required property 'fonts'
+ +  pulumi:pulumi:Stack index_brandingthemewEGdn6xrwLkI-dev create   pageBackground: Missing required property 'pageBackground'
+ +  pulumi:pulumi:Stack index_brandingthemewEGdn6xrwLkI-dev create   widget: Missing required property 'widget'
+ +  pulumi:pulumi:Stack index_brandingthemewEGdn6xrwLkI-dev create   Existing properties are: colors, fonts, borders, widget, displayName and 1 other
+ +  pulumi:pulumi:Stack index_brandingthemewEGdn6xrwLkI-dev create   Existing properties are: colors, borders, fonts, widget, displayName and 1 other
+ +  pulumi:pulumi:Stack index_brandingthemewEGdn6xrwLkI-dev create   Existing properties are: borders, colors, displayName, widget, fonts and 1 other
+ +  pulumi:pulumi:Stack index_brandingthemewEGdn6xrwLkI-dev create 12 messages
+Policies:
+    ✅ pulumi-internal-policies@v0.0.6
+
+Diagnostics:
+  pulumi:pulumi:Stack (index_brandingthemewEGdn6xrwLkI-dev):
+    [31mError[0m: auth0:index/brandingTheme:BrandingTheme is not assignable from {colors: {pageBackground: string, primary: string}, displayName: string, faviconUrl: string, logoUrl: string, universalLogin: {body: string}}
+    Cannot assign '{colors: {pageBackground: string, primary: string}, displayName: string, faviconUrl: string, logoUrl: string, universalLogin: {body: string}}' to 'auth0:index/brandingTheme:BrandingTheme':
+      borders: Missing required property 'borders'
+      colors: Cannot assign '{pageBackground: string, primary: string}' to 'auth0:index/BrandingThemeColors:BrandingThemeColors':
+        Existing properties are: widgetBackground, inputBackground, baseFocusColor, baseHoverColor, error and 13 others
+        Existing properties are: error, header, icons, primaryButton, success and 13 others
+      fonts: Missing required property 'fonts'
+      pageBackground: Missing required property 'pageBackground'
+      widget: Missing required property 'widget'
+      Existing properties are: colors, fonts, borders, widget, displayName and 1 other
+      Existing properties are: colors, borders, fonts, widget, displayName and 1 other
+      Existing properties are: borders, colors, displayName, widget, fonts and 1 other
+
+Resources:
+    + 1 to create
+

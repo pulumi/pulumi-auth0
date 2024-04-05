@@ -1,0 +1,33 @@
+name: index_triggeractionsEqpmre2QFnkF
+runtime: yaml
+description: A minimal valid Pulumi YAML program that sets up an Auth0 trigger with actions
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/e88d9df7-ddc4-482d-9281-71adbc7e12cc.zip
+resources:
+  myAction:
+    properties:
+      code: >
+        exports.onExecutePostLogin = async (event, api) => {
+
+          // Your custom code here
+          api.idToken.setCustomClaim("https://example.com/full_name", event.user.name);
+        };
+
+      dependencies:
+        - name: uuid
+          version: 8.3.0
+      name: my-action
+      runtime: node12
+      supportedTriggers:
+        - id: post-login
+          version: v1
+    type: auth0:Action
+  myTriggerBinding:
+    properties:
+      actions:
+        - displayName: My Custom Action
+          id: ${myAction.id}
+      trigger: post-login
+    type: auth0:TriggerBinding

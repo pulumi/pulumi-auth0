@@ -1,0 +1,29 @@
+Previewing update (dev)
+
+View Live: https://app.pulumi.com/pulumi/index_clientcredentials2NaRzZrNmkJH/dev/previews/83279463-02fe-465d-83de-353efa8548e5
+
+@ Previewing update....
+Loading policy packs...
+
+@ Previewing update....
+
+@ Previewing update....
+ +  pulumi:pulumi:Stack index_clientcredentials2NaRzZrNmkJH-dev create 
+ +  pulumi:pulumi:Stack index_clientcredentials2NaRzZrNmkJH-dev create [31mError[0m: auth0:index/client:Client is not assignable from {description: string, grantTypes: List<string>, isFirstParty: boolean, isTokenEndpointIpHeaderTrusted: boolean, jwtConfiguration: {alg: string, lifetimeInSeconds: number, secretEncoded: boolean}, name: string, scopes: List<string>, tokenEndpointAuthMethod: string}
+ +  pulumi:pulumi:Stack index_clientcredentials2NaRzZrNmkJH-dev create Cannot assign '{description: string, grantTypes: List<string>, isFirstParty: boolean, isTokenEndpointIpHeaderTrusted: boolean, jwtConfiguration: {alg: string, lifetimeInSeconds: number, secretEncoded: boolean}, name: string, scopes: List<string>, tokenEndpointAuthMethod: string}' to 'auth0:index/client:Client':
+ +  pulumi:pulumi:Stack index_clientcredentials2NaRzZrNmkJH-dev create   Existing properties are: sso, addons, name, appType, logoUri and 28 others
+ +  pulumi:pulumi:Stack index_clientcredentials2NaRzZrNmkJH-dev create   Existing properties are: isTokenEndpointIpHeaderTrusted, crossOriginAuth, clientAliases, clientMetadata, encryptionKey and 28 others
+ +  pulumi:pulumi:Stack index_clientcredentials2NaRzZrNmkJH-dev create 4 messages
+Policies:
+    ✅ pulumi-internal-policies@v0.0.6
+
+Diagnostics:
+  pulumi:pulumi:Stack (index_clientcredentials2NaRzZrNmkJH-dev):
+    [31mError[0m: auth0:index/client:Client is not assignable from {description: string, grantTypes: List<string>, isFirstParty: boolean, isTokenEndpointIpHeaderTrusted: boolean, jwtConfiguration: {alg: string, lifetimeInSeconds: number, secretEncoded: boolean}, name: string, scopes: List<string>, tokenEndpointAuthMethod: string}
+    Cannot assign '{description: string, grantTypes: List<string>, isFirstParty: boolean, isTokenEndpointIpHeaderTrusted: boolean, jwtConfiguration: {alg: string, lifetimeInSeconds: number, secretEncoded: boolean}, name: string, scopes: List<string>, tokenEndpointAuthMethod: string}' to 'auth0:index/client:Client':
+      Existing properties are: sso, addons, name, appType, logoUri and 28 others
+      Existing properties are: isTokenEndpointIpHeaderTrusted, crossOriginAuth, clientAliases, clientMetadata, encryptionKey and 28 others
+
+Resources:
+    + 1 to create
+

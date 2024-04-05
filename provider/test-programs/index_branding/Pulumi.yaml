@@ -1,0 +1,20 @@
+name: index_brandingALn2b7eFWMWH
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/b1e3d89d-f5b8-4639-9153-522b71c67f46.zip
+resources:
+  myBranding:
+    properties:
+      colors:
+        pageBackground: "#000000"
+        primary: "#eb5424"
+      faviconUrl: https://example.com/favicon.ico
+      font:
+        url: https://fonts.googleapis.com/css?family=Open+Sans
+      logoUrl: https://example.com/logo.png
+      universalLogin:
+        body: ".auth0-global-message {\n  display: none;\n} \n.auth0-lock.auth0-lock .auth0-lock-overlay {\n  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);\n}\n.auth0-lock.auth0-lock .auth0-lock-widget-container .auth0-lock-widget {\n  box-shadow: 0 0 40px 4px #ffffff;\n}\n.auth0-lock.auth0-lock .auth0-lock-social-button div {\n  background-color: #eb5424 !important;\n}\n"
+    type: auth0:Branding

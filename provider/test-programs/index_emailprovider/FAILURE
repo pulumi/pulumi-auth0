@@ -1,0 +1,27 @@
+Previewing update (dev)
+
+View Live: https://app.pulumi.com/pulumi/index_emailprovidermwexJlP84qLa/dev/previews/e26ad7d0-07a1-4399-aeac-816408478568
+
+@ Previewing update....
+Loading policy packs...
+
+@ Previewing update....
+
+@ Previewing update....
+ +  pulumi:pulumi:Stack index_emailprovidermwexJlP84qLa-dev create 
+ +  pulumi:pulumi:Stack index_emailprovidermwexJlP84qLa-dev create [31mError[0m: error resolving type of resource auth0EmailProvider: unable to find resource type "auth0:Email" in resource provider "auth0"
+ +  pulumi:pulumi:Stack index_emailprovidermwexJlP84qLa-dev create   on Pulumi.yaml line 21:
+ +  pulumi:pulumi:Stack index_emailprovidermwexJlP84qLa-dev create   21:     type: [1;4mauth0:Email[0m
+ +  pulumi:pulumi:Stack index_emailprovidermwexJlP84qLa-dev create 3 messages
+Policies:
+    ✅ pulumi-internal-policies@v0.0.6
+
+Diagnostics:
+  pulumi:pulumi:Stack (index_emailprovidermwexJlP84qLa-dev):
+    [31mError[0m: error resolving type of resource auth0EmailProvider: unable to find resource type "auth0:Email" in resource provider "auth0"
+      on Pulumi.yaml line 21:
+      21:     type: [1;4mauth0:Email[0m
+
+Resources:
+    + 1 to create
+

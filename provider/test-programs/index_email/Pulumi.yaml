@@ -1,0 +1,34 @@
+name: index_emailccaSPD2OCDcQ
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/5d8e9a31-49d3-46cf-bbb1-403fee865cc2.zip
+outputs:
+  emailCredentialsDomain: ${auth0Email.credentials.domain}
+  emailEnabled: ${auth0Email.enabled}
+  emailName: ${auth0Email.name}
+resources:
+  auth0Domain:
+    properties:
+      domain: example-domain.auth0.com
+    type: auth0:Domain
+  auth0Email:
+    properties:
+      credentials:
+        apiKey: super-secret-api-key
+        domain: ${auth0Domain.domain}
+        region: us
+        smtpHost: email-smtp.us-west-2.amazonaws.com
+        smtpPass: smtp-password
+        smtpPort: 587
+        smtpUser: smtp-user
+      defaultFromAddress: no-reply@example.com
+      enabled: true
+      name: example-email
+      settings:
+        headers: {}
+        message:
+          viewContentLink: true
+    type: auth0:Email

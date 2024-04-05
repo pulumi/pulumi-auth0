@@ -1,0 +1,33 @@
+name: index_clientcredentials2NaRzZrNmkJH
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/70dbd77e-fd22-46c3-a5f3-a4aa76993a66.zip
+resources:
+  myAuth0Client:
+    properties:
+      description: Managed by Pulumi
+      grantTypes:
+        - client_credentials
+      isFirstParty: false
+      isTokenEndpointIpHeaderTrusted: false
+      jwtConfiguration:
+        alg: RS256
+        lifetimeInSeconds: 36000
+        secretEncoded: false
+      name: my-test-client
+      scopes:
+        - read:messages
+        - write:messages
+      tokenEndpointAuthMethod: client_secret_post
+    type: auth0:Client
+  myAuth0ClientGrant:
+    properties:
+      audience: https://myapi.example.com/
+      clientId: ${myAuth0Client.clientId}
+      scopes:
+        - read:messages
+        - write:messages
+    type: auth0:ClientGrant

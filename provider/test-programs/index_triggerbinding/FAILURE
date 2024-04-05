@@ -1,0 +1,33 @@
+Previewing update (dev)
+
+View Live: https://app.pulumi.com/pulumi/index_triggerbindingp8pzNhNFoIKU/dev/previews/4e7991ab-e498-4d9f-96c5-4a423ada4051
+
+@ Previewing update.....
+Loading policy packs...
+
+@ Previewing update....
+
+@ Previewing update....
+ +  pulumi:pulumi:Stack index_triggerbindingp8pzNhNFoIKU-dev create 
+ +  pulumi:pulumi:Stack index_triggerbindingp8pzNhNFoIKU-dev create [31mError[0m: auth0:index/action:Action is not assignable from {code: string, dependencies: List<{name: string, version: string}>, deploy: boolean, name: string, runtime: string, supportedTriggers: List<{id: string, version: string}>}
+ +  pulumi:pulumi:Stack index_triggerbindingp8pzNhNFoIKU-dev create   on Pulumi.yaml line 22:
+ +  pulumi:pulumi:Stack index_triggerbindingp8pzNhNFoIKU-dev create   22:         [1;4m- id: post-login[0m
+ +  pulumi:pulumi:Stack index_triggerbindingp8pzNhNFoIKU-dev create   23: [1;4m          version: v1[0m
+ +  pulumi:pulumi:Stack index_triggerbindingp8pzNhNFoIKU-dev create Cannot assign '{code: string, dependencies: List<{name: string, version: string}>, deploy: boolean, name: string, runtime: string, supportedTriggers: List<{id: string, version: string}>}' to 'auth0:index/action:Action':
+ +  pulumi:pulumi:Stack index_triggerbindingp8pzNhNFoIKU-dev create   supportedTriggers: Cannot assign 'List<{id: string, version: string}>' to 'auth0:index/ActionSupportedTriggers:ActionSupportedTriggers'
+ +  pulumi:pulumi:Stack index_triggerbindingp8pzNhNFoIKU-dev create 6 messages
+Policies:
+    ✅ pulumi-internal-policies@v0.0.6
+
+Diagnostics:
+  pulumi:pulumi:Stack (index_triggerbindingp8pzNhNFoIKU-dev):
+    [31mError[0m: auth0:index/action:Action is not assignable from {code: string, dependencies: List<{name: string, version: string}>, deploy: boolean, name: string, runtime: string, supportedTriggers: List<{id: string, version: string}>}
+      on Pulumi.yaml line 22:
+      22:         [1;4m- id: post-login[0m
+      23: [1;4m          version: v1[0m
+    Cannot assign '{code: string, dependencies: List<{name: string, version: string}>, deploy: boolean, name: string, runtime: string, supportedTriggers: List<{id: string, version: string}>}' to 'auth0:index/action:Action':
+      supportedTriggers: Cannot assign 'List<{id: string, version: string}>' to 'auth0:index/ActionSupportedTriggers:ActionSupportedTriggers'
+
+Resources:
+    + 1 to create
+

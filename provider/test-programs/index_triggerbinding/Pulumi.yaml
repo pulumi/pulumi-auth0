@@ -1,0 +1,24 @@
+name: index_triggerbindingp8pzNhNFoIKU
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/6d7940a3-2891-490c-b9cd-1c0e1defbfd5.zip
+resources:
+  auth0Action:
+    properties:
+      code: |
+        exports.onExecutePostLogin = async (event, api) => {
+          // Your code goes here
+        };
+      dependencies:
+        - name: lodash
+          version: 4.17.21
+      deploy: true
+      name: my-action
+      runtime: node16
+      supportedTriggers:
+        - id: post-login
+          version: v1
+    type: auth0:Action

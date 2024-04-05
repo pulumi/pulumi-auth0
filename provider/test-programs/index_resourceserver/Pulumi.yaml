@@ -1,0 +1,25 @@
+name: index_resourceservert9HQHZPUsSTD
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/8aa90db1-ce1c-4999-aa2b-76d567267880.zip
+outputs:
+  resourceServerId: ${myResourceServer.id}
+resources:
+  myResourceServer:
+    properties:
+      allowOfflineAccess: false
+      enforcePolicies: true
+      identifier: https://api.myapp.com/
+      name: My Resource Server
+      scopes:
+        - description: Read messages
+          value: read:messages
+      signingAlg: RS256
+      skipConsentForVerifiableFirstPartyClients: true
+      tokenDialect: access_token
+      tokenLifetime: 86400
+      tokenLifetimeForWeb: 7200
+    type: auth0:ResourceServer

@@ -1,0 +1,13 @@
+name: index_role3ZP4bCB4nmxq
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/c55bf80a-8391-42ab-8b61-6c75436bbcd6.zip
+resources:
+  myAuth0Role:
+    properties:
+      description: Managed by Pulumi
+      name: Managed by Pulumi
+    type: auth0:Role

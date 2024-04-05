@@ -1,0 +1,32 @@
+name: index_clientAg6M3eZP2Lbq
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/c587ed25-7f7c-49aa-a30f-6232420bb7c9.zip
+resources:
+  myAuth0Client:
+    properties:
+      allowedLogoutUrls:
+        - https://myapp.com/logout
+      appType: regular_web
+      callbacks:
+        - https://myapp.com/callback
+      customLoginPageOn: false
+      description: This is my Auth0 client for demonstration purposes.
+      grantTypes:
+        - authorization_code
+        - refresh_token
+      isFirstParty: true
+      isTokenEndpointIpHeaderTrusted: false
+      jwtConfiguration:
+        alg: RS256
+        lifetimeInSeconds: 3600
+        secretEncoded: false
+      name: MyAuth0Client
+      oidcConformant: true
+      sso: false
+      webOrigins:
+        - https://myapp.com
+    type: auth0:Client

@@ -1,0 +1,17 @@
+name: index_logstreamcTXtuLKggsRk
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/ecb82b4d-a4b7-4887-b033-c8740759fc10.zip
+resources:
+  myLogStream:
+    properties:
+      name: my-log-stream
+      sink:
+        awsAccountId: "123456789012"
+        awsRegion: ${aws.config.region}
+      status: active
+      type: eventbridge
+    type: auth0:LogStream
