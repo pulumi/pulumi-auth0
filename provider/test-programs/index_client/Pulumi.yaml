@@ -24,7 +24,6 @@ resources:
         alg: RS256
         lifetimeInSeconds: 3600
         secretEncoded: false
-      name: MyAuth0Client
       oidcConformant: true
       sso: false
       webOrigins:

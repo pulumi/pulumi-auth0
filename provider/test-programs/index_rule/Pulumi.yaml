@@ -9,7 +9,7 @@ resources:
   myAuth0Rule:
     properties:
       enabled: true
-      name: my-test-rule
+
       order: 1
       script: |
         function(user, context, callback) {

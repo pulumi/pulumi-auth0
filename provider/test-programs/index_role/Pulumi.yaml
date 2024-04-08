@@ -9,5 +9,5 @@ resources:
   myAuth0Role:
     properties:
       description: Managed by Pulumi
-      name: Managed by Pulumi
+
     type: auth0:Role

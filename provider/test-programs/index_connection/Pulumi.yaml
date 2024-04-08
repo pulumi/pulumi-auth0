@@ -9,7 +9,6 @@ resources:
   myAuth0Connection:
     properties:
       isDomainConnection: false
-      name: my-connection
       options:
         bruteForceProtection: true
         disableSignup: true
