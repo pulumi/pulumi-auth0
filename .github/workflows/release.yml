@@ -24,7 +24,7 @@ env:
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
   PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
   PYPI_USERNAME: __token__
-  PYTHONVERSION: "3.11"
+  PYTHONVERSION: 3.11.8
   SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
   SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
   SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
@@ -53,6 +53,12 @@ jobs:
         cache-dependency-path: |
             sdk/go.sum
         go-version: 1.21.x
+    - name: Cache examples generation
+      uses: actions/cache@v4
+      with:
+        path: |
+          .pulumi/examples-cache
+        key: ${{ runner.os }}-${{ hashFiles('provider/go.sum') }}
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.11.0
       with:
@@ -161,6 +167,12 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v4
+    - name: Cache examples generation
+      uses: actions/cache@v4
+      with:
+        path: |
+          .pulumi/examples-cache
+        key: ${{ runner.os }}-${{ hashFiles('provider/go.sum') }}
     - name: Checkout Scripts Repo
       uses: actions/checkout@v4
       with:
@@ -218,9 +230,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         comment_tag: schemaCheck
         message: >+
-          ### Does the PR have any schema changes?
-
-
           ${{ env.SCHEMA_CHANGES }}
 
 
