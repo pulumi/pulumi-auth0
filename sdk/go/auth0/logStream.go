@@ -30,42 +30,44 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// This is an example of an http log stream.
-//			_, err := auth0.NewLogStream(ctx, "myWebhook", &auth0.LogStreamArgs{
+//			_, err := auth0.NewLogStream(ctx, "my_webhook", &auth0.LogStreamArgs{
+//				Name: pulumi.String("HTTP log stream"),
+//				Type: pulumi.String("http"),
 //				Filters: pulumi.StringMapArray{
 //					pulumi.StringMap{
-//						"name": pulumi.String("auth.login.fail"),
 //						"type": pulumi.String("category"),
+//						"name": pulumi.String("auth.login.fail"),
 //					},
 //					pulumi.StringMap{
-//						"name": pulumi.String("auth.signup.fail"),
 //						"type": pulumi.String("category"),
+//						"name": pulumi.String("auth.signup.fail"),
 //					},
 //				},
 //				Sink: &auth0.LogStreamSinkArgs{
-//					HttpAuthorization: pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
-//					HttpContentFormat: pulumi.String("JSONOBJECT"),
+//					HttpEndpoint:      pulumi.String("https://example.com/logs"),
 //					HttpContentType:   pulumi.String("application/json"),
+//					HttpContentFormat: pulumi.String("JSONOBJECT"),
+//					HttpAuthorization: pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
 //					HttpCustomHeaders: pulumi.StringMapArray{
 //						pulumi.StringMap{
 //							"header": pulumi.String("foo"),
 //							"value":  pulumi.String("bar"),
 //						},
 //					},
-//					HttpEndpoint: pulumi.String("https://example.com/logs"),
 //				},
-//				Type: pulumi.String("http"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// This is an example of an Amazon EventBridge log stream.
-//			_, err = auth0.NewLogStream(ctx, "exampleAws", &auth0.LogStreamArgs{
+//			_, err = auth0.NewLogStream(ctx, "example_aws", &auth0.LogStreamArgs{
+//				Name:   pulumi.String("AWS Eventbridge"),
+//				Type:   pulumi.String("eventbridge"),
+//				Status: pulumi.String("active"),
 //				Sink: &auth0.LogStreamSinkArgs{
 //					AwsAccountId: pulumi.String("my_account_id"),
 //					AwsRegion:    pulumi.String("us-east-2"),
 //				},
-//				Status: pulumi.String("active"),
-//				Type:   pulumi.String("eventbridge"),
 //			})
 //			if err != nil {
 //				return err

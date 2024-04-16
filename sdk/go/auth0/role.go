@@ -28,7 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewRole(ctx, "myRole", &auth0.RoleArgs{
+//			_, err := auth0.NewRole(ctx, "my_role", &auth0.RoleArgs{
+//				Name:        pulumi.String("My Role - (Managed by Terraform)"),
 //				Description: pulumi.String("Role Description..."),
 //			})
 //			if err != nil {

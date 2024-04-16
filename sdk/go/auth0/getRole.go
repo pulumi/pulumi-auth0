@@ -28,12 +28,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// An Auth0 Role loaded using its name.
 //			_, err := auth0.LookupRole(ctx, &auth0.LookupRoleArgs{
 //				Name: pulumi.StringRef("my-role"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// An Auth0 Role loaded using its ID.
 //			_, err = auth0.LookupRole(ctx, &auth0.LookupRoleArgs{
 //				RoleId: pulumi.StringRef("abcdefghkijklmnopqrstuvwxyz0123456789"),
 //			}, nil)

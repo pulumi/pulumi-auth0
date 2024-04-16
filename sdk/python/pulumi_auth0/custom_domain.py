@@ -239,7 +239,7 @@ class CustomDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_custom_domain = auth0.CustomDomain("myCustomDomain",
+        my_custom_domain = auth0.CustomDomain("my_custom_domain",
             domain="auth.example.com",
             type="auth0_managed_certs")
         ```
@@ -286,7 +286,7 @@ class CustomDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_custom_domain = auth0.CustomDomain("myCustomDomain",
+        my_custom_domain = auth0.CustomDomain("my_custom_domain",
             domain="auth.example.com",
             type="auth0_managed_certs")
         ```

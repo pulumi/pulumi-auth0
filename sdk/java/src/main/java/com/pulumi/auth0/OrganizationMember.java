@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var myOrg = new Organization(&#34;myOrg&#34;, OrganizationArgs.builder()        
+ *             .name(&#34;org-admin&#34;)
  *             .displayName(&#34;Admin&#34;)
  *             .build());
  * 

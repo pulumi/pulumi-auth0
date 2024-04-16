@@ -112,16 +112,18 @@ class OrganizationMembers(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        user1 = auth0.User("user1",
+        user1 = auth0.User("user_1",
             connection_name="Username-Password-Authentication",
             email="myuser1@auth0.com",
             password="MyPass123$")
-        user2 = auth0.User("user2",
+        user2 = auth0.User("user_2",
             connection_name="Username-Password-Authentication",
             email="myuser2@auth0.com",
             password="MyPass123$")
-        my_org = auth0.Organization("myOrg", display_name="Some Organization")
-        my_members = auth0.OrganizationMembers("myMembers",
+        my_org = auth0.Organization("my_org",
+            name="some-org",
+            display_name="Some Organization")
+        my_members = auth0.OrganizationMembers("my_members",
             organization_id=my_org.id,
             members=[
                 user1.id,
@@ -168,16 +170,18 @@ class OrganizationMembers(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        user1 = auth0.User("user1",
+        user1 = auth0.User("user_1",
             connection_name="Username-Password-Authentication",
             email="myuser1@auth0.com",
             password="MyPass123$")
-        user2 = auth0.User("user2",
+        user2 = auth0.User("user_2",
             connection_name="Username-Password-Authentication",
             email="myuser2@auth0.com",
             password="MyPass123$")
-        my_org = auth0.Organization("myOrg", display_name="Some Organization")
-        my_members = auth0.OrganizationMembers("myMembers",
+        my_org = auth0.Organization("my_org",
+            name="some-org",
+            display_name="Some Organization")
+        my_members = auth0.OrganizationMembers("my_members",
             organization_id=my_org.id,
             members=[
                 user1.id,

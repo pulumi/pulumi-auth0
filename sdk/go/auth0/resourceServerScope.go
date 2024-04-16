@@ -33,20 +33,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			resourceServer, err := auth0.NewResourceServer(ctx, "resourceServer", &auth0.ResourceServerArgs{
+//			resourceServer, err := auth0.NewResourceServer(ctx, "resource_server", &auth0.ResourceServerArgs{
+//				Name:       pulumi.String("Example Resource Server (Managed by Terraform)"),
 //				Identifier: pulumi.String("https://api.example.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = auth0.NewResourceServerScope(ctx, "readPosts", &auth0.ResourceServerScopeArgs{
+//			_, err = auth0.NewResourceServerScope(ctx, "read_posts", &auth0.ResourceServerScopeArgs{
 //				ResourceServerIdentifier: resourceServer.Identifier,
 //				Scope:                    pulumi.String("read:posts"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = auth0.NewResourceServerScope(ctx, "writePosts", &auth0.ResourceServerScopeArgs{
+//			_, err = auth0.NewResourceServerScope(ctx, "write_posts", &auth0.ResourceServerScopeArgs{
 //				ResourceServerIdentifier: resourceServer.Identifier,
 //				Scope:                    pulumi.String("write:posts"),
 //			})

@@ -52,10 +52,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myConnection = new Connection(&#34;myConnection&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;My Connection&#34;)
  *             .strategy(&#34;auth0&#34;)
  *             .build());
  * 
  *         var myOrganization = new Organization(&#34;myOrganization&#34;, OrganizationArgs.builder()        
+ *             .name(&#34;my-organization&#34;)
  *             .displayName(&#34;My Organization&#34;)
  *             .build());
  * 

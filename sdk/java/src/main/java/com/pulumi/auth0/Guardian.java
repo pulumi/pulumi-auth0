@@ -34,14 +34,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.auth0.Guardian;
  * import com.pulumi.auth0.GuardianArgs;
- * import com.pulumi.auth0.inputs.GuardianDuoArgs;
+ * import com.pulumi.auth0.inputs.GuardianWebauthnPlatformArgs;
+ * import com.pulumi.auth0.inputs.GuardianWebauthnRoamingArgs;
  * import com.pulumi.auth0.inputs.GuardianPhoneArgs;
  * import com.pulumi.auth0.inputs.GuardianPhoneOptionsArgs;
  * import com.pulumi.auth0.inputs.GuardianPushArgs;
  * import com.pulumi.auth0.inputs.GuardianPushAmazonSnsArgs;
  * import com.pulumi.auth0.inputs.GuardianPushCustomAppArgs;
- * import com.pulumi.auth0.inputs.GuardianWebauthnPlatformArgs;
- * import com.pulumi.auth0.inputs.GuardianWebauthnRoamingArgs;
+ * import com.pulumi.auth0.inputs.GuardianDuoArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -56,16 +56,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myGuardian = new Guardian(&#34;myGuardian&#34;, GuardianArgs.builder()        
- *             .duo(GuardianDuoArgs.builder()
- *                 .enabled(true)
- *                 .hostname(&#34;api-hostname&#34;)
- *                 .integrationKey(&#34;someKey&#34;)
- *                 .secretKey(&#34;someSecret&#34;)
- *                 .build())
+ *             .policy(&#34;all-applications&#34;)
  *             .email(true)
  *             .otp(true)
+ *             .recoveryCode(true)
+ *             .webauthnPlatform(GuardianWebauthnPlatformArgs.builder()
+ *                 .enabled(true)
+ *                 .build())
+ *             .webauthnRoaming(GuardianWebauthnRoamingArgs.builder()
+ *                 .enabled(true)
+ *                 .userVerification(&#34;required&#34;)
+ *                 .build())
  *             .phone(GuardianPhoneArgs.builder()
  *                 .enabled(true)
+ *                 .provider(&#34;auth0&#34;)
  *                 .messageTypes(                
  *                     &#34;sms&#34;,
  *                     &#34;voice&#34;)
@@ -73,10 +77,10 @@ import javax.annotation.Nullable;
  *                     .enrollmentMessage(&#34;{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.&#34;)
  *                     .verificationMessage(&#34;{{code}} is your verification code for {{tenant.friendly_name}}.&#34;)
  *                     .build())
- *                 .provider(&#34;auth0&#34;)
  *                 .build())
- *             .policy(&#34;all-applications&#34;)
  *             .push(GuardianPushArgs.builder()
+ *                 .enabled(true)
+ *                 .provider(&#34;sns&#34;)
  *                 .amazonSns(GuardianPushAmazonSnsArgs.builder()
  *                     .awsAccessKeyId(&#34;test1&#34;)
  *                     .awsRegion(&#34;us-west-1&#34;)
@@ -89,16 +93,12 @@ import javax.annotation.Nullable;
  *                     .appleAppLink(&#34;https://itunes.apple.com/us/app/my-app/id123121&#34;)
  *                     .googleAppLink(&#34;https://play.google.com/store/apps/details?id=com.my.app&#34;)
  *                     .build())
- *                 .enabled(true)
- *                 .provider(&#34;sns&#34;)
  *                 .build())
- *             .recoveryCode(true)
- *             .webauthnPlatform(GuardianWebauthnPlatformArgs.builder()
+ *             .duo(GuardianDuoArgs.builder()
  *                 .enabled(true)
- *                 .build())
- *             .webauthnRoaming(GuardianWebauthnRoamingArgs.builder()
- *                 .enabled(true)
- *                 .userVerification(&#34;required&#34;)
+ *                 .integrationKey(&#34;someKey&#34;)
+ *                 .secretKey(&#34;someSecret&#34;)
+ *                 .hostname(&#34;api-hostname&#34;)
  *                 .build())
  *             .build());
  * 

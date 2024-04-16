@@ -41,6 +41,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myRole = new Role(&#34;myRole&#34;, RoleArgs.builder()        
+ *             .name(&#34;My Role - (Managed by Terraform)&#34;)
  *             .description(&#34;Role Description...&#34;)
  *             .build());
  * 

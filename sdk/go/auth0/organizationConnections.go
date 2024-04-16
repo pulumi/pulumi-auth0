@@ -34,19 +34,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewConnection(ctx, "myConnection-1", &auth0.ConnectionArgs{
+//			_, err := auth0.NewConnection(ctx, "my_connection-1", &auth0.ConnectionArgs{
+//				Name:     pulumi.String("My Connection 1"),
 //				Strategy: pulumi.String("auth0"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = auth0.NewConnection(ctx, "myConnection-2", &auth0.ConnectionArgs{
+//			_, err = auth0.NewConnection(ctx, "my_connection-2", &auth0.ConnectionArgs{
+//				Name:     pulumi.String("My Connection 2"),
 //				Strategy: pulumi.String("auth0"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			myOrganization, err := auth0.NewOrganization(ctx, "myOrganization", &auth0.OrganizationArgs{
+//			myOrganization, err := auth0.NewOrganization(ctx, "my_organization", &auth0.OrganizationArgs{
+//				Name:        pulumi.String("my-organization"),
 //				DisplayName: pulumi.String("My Organization"),
 //			})
 //			if err != nil {

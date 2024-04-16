@@ -48,16 +48,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myHook = new Hook(&#34;myHook&#34;, HookArgs.builder()        
- *             .dependencies(Map.of(&#34;auth0&#34;, &#34;2.30.0&#34;))
- *             .enabled(true)
+ *             .name(&#34;My Pre User Registration Hook&#34;)
  *             .script(&#34;&#34;&#34;
  *     function (user, context, callback) {
  *       callback(null, { user });
  *     }
- *   
  *             &#34;&#34;&#34;)
- *             .secrets(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .triggerId(&#34;pre-user-registration&#34;)
+ *             .enabled(true)
+ *             .secrets(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .dependencies(Map.of(&#34;auth0&#34;, &#34;2.30.0&#34;))
  *             .build());
  * 
  *     }

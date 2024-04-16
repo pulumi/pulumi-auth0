@@ -178,7 +178,9 @@ def get_connection(connection_id: Optional[str] = None,
     import pulumi
     import pulumi_auth0 as auth0
 
+    # An Auth0 Connection loaded using its name.
     some_connection_by_name = auth0.get_connection(name="Acceptance-Test-Connection-{{.testName}}")
+    # An Auth0 Connection loaded using its ID.
     some_connection_by_id = auth0.get_connection(connection_id="con_abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
     <!--End PulumiCodeChooser -->
@@ -220,7 +222,9 @@ def get_connection_output(connection_id: Optional[pulumi.Input[Optional[str]]] =
     import pulumi
     import pulumi_auth0 as auth0
 
+    # An Auth0 Connection loaded using its name.
     some_connection_by_name = auth0.get_connection(name="Acceptance-Test-Connection-{{.testName}}")
+    # An Auth0 Connection loaded using its ID.
     some_connection_by_id = auth0.get_connection(connection_id="con_abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
     <!--End PulumiCodeChooser -->

@@ -29,12 +29,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.auth0.AttackProtection;
  * import com.pulumi.auth0.AttackProtectionArgs;
- * import com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionArgs;
- * import com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs;
- * import com.pulumi.auth0.inputs.AttackProtectionBruteForceProtectionArgs;
  * import com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingArgs;
  * import com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingPreLoginArgs;
  * import com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs;
+ * import com.pulumi.auth0.inputs.AttackProtectionBruteForceProtectionArgs;
+ * import com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionArgs;
+ * import com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,16 +49,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myProtection = new AttackProtection(&#34;myProtection&#34;, AttackProtectionArgs.builder()        
- *             .breachedPasswordDetection(AttackProtectionBreachedPasswordDetectionArgs.builder()
- *                 .adminNotificationFrequencies(&#34;daily&#34;)
+ *             .suspiciousIpThrottling(AttackProtectionSuspiciousIpThrottlingArgs.builder()
  *                 .enabled(true)
- *                 .method(&#34;standard&#34;)
- *                 .preUserRegistration(AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs.builder()
- *                     .shields(&#34;block&#34;)
- *                     .build())
  *                 .shields(                
  *                     &#34;admin_notification&#34;,
  *                     &#34;block&#34;)
+ *                 .allowlists(&#34;192.168.1.1&#34;)
+ *                 .preLogin(AttackProtectionSuspiciousIpThrottlingPreLoginArgs.builder()
+ *                     .maxAttempts(100)
+ *                     .rate(864000)
+ *                     .build())
+ *                 .preUserRegistration(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs.builder()
+ *                     .maxAttempts(50)
+ *                     .rate(1200)
+ *                     .build())
  *                 .build())
  *             .bruteForceProtection(AttackProtectionBruteForceProtectionArgs.builder()
  *                 .allowlists(&#34;127.0.0.1&#34;)
@@ -69,20 +73,16 @@ import javax.annotation.Nullable;
  *                     &#34;block&#34;,
  *                     &#34;user_notification&#34;)
  *                 .build())
- *             .suspiciousIpThrottling(AttackProtectionSuspiciousIpThrottlingArgs.builder()
- *                 .allowlists(&#34;192.168.1.1&#34;)
+ *             .breachedPasswordDetection(AttackProtectionBreachedPasswordDetectionArgs.builder()
+ *                 .adminNotificationFrequencies(&#34;daily&#34;)
  *                 .enabled(true)
- *                 .preLogin(AttackProtectionSuspiciousIpThrottlingPreLoginArgs.builder()
- *                     .maxAttempts(100)
- *                     .rate(864000)
- *                     .build())
- *                 .preUserRegistration(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs.builder()
- *                     .maxAttempts(50)
- *                     .rate(1200)
- *                     .build())
+ *                 .method(&#34;standard&#34;)
  *                 .shields(                
  *                     &#34;admin_notification&#34;,
  *                     &#34;block&#34;)
+ *                 .preUserRegistration(AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs.builder()
+ *                     .shields(&#34;block&#34;)
+ *                     .build())
  *                 .build())
  *             .build());
  * 

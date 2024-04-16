@@ -144,11 +144,13 @@ class ResourceServerScope(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        resource_server = auth0.ResourceServer("resourceServer", identifier="https://api.example.com")
-        read_posts = auth0.ResourceServerScope("readPosts",
+        resource_server = auth0.ResourceServer("resource_server",
+            name="Example Resource Server (Managed by Terraform)",
+            identifier="https://api.example.com")
+        read_posts = auth0.ResourceServerScope("read_posts",
             resource_server_identifier=resource_server.identifier,
             scope="read:posts")
-        write_posts = auth0.ResourceServerScope("writePosts",
+        write_posts = auth0.ResourceServerScope("write_posts",
             resource_server_identifier=resource_server.identifier,
             scope="write:posts")
         ```
@@ -196,11 +198,13 @@ class ResourceServerScope(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        resource_server = auth0.ResourceServer("resourceServer", identifier="https://api.example.com")
-        read_posts = auth0.ResourceServerScope("readPosts",
+        resource_server = auth0.ResourceServer("resource_server",
+            name="Example Resource Server (Managed by Terraform)",
+            identifier="https://api.example.com")
+        read_posts = auth0.ResourceServerScope("read_posts",
             resource_server_identifier=resource_server.identifier,
             scope="read:posts")
-        write_posts = auth0.ResourceServerScope("writePosts",
+        write_posts = auth0.ResourceServerScope("write_posts",
             resource_server_identifier=resource_server.identifier,
             scope="write:posts")
         ```

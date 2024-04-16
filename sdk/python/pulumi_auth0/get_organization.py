@@ -139,7 +139,9 @@ def get_organization(name: Optional[str] = None,
     import pulumi
     import pulumi_auth0 as auth0
 
+    # An Auth0 Organization loaded using its name.
     some_organization_by_name = auth0.get_organization(name="my-org")
+    # An Auth0 Organization loaded using its ID.
     some_organization_by_id = auth0.get_organization(organization_id="org_abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
     <!--End PulumiCodeChooser -->
@@ -179,7 +181,9 @@ def get_organization_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_auth0 as auth0
 
+    # An Auth0 Organization loaded using its name.
     some_organization_by_name = auth0.get_organization(name="my-org")
+    # An Auth0 Organization loaded using its ID.
     some_organization_by_id = auth0.get_organization(organization_id="org_abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
     <!--End PulumiCodeChooser -->

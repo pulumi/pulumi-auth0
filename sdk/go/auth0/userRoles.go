@@ -35,6 +35,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Example:
 //			admin, err := auth0.NewRole(ctx, "admin", &auth0.RoleArgs{
+//				Name:        pulumi.String("admin"),
 //				Description: pulumi.String("Administrator"),
 //			})
 //			if err != nil {
@@ -43,13 +44,14 @@ import (
 //			user, err := auth0.NewUser(ctx, "user", &auth0.UserArgs{
 //				ConnectionName: pulumi.String("Username-Password-Authentication"),
 //				Username:       pulumi.String("unique_username"),
+//				Name:           pulumi.String("Firstname Lastname"),
 //				Email:          pulumi.String("test@test.com"),
 //				Password:       pulumi.String("passpass$12$12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = auth0.NewUserRoles(ctx, "userRoles", &auth0.UserRolesArgs{
+//			_, err = auth0.NewUserRoles(ctx, "user_roles", &auth0.UserRolesArgs{
 //				UserId: user.ID(),
 //				Roles: pulumi.StringArray{
 //					admin.ID(),

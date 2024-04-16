@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 User loaded using its ID.
  * const myUser = auth0.getUser({
  *     userId: "auth0|34fdr23fdsfdfsf",
  * });
@@ -135,6 +136,7 @@ export interface GetUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 User loaded using its ID.
  * const myUser = auth0.getUser({
  *     userId: "auth0|34fdr23fdsfdfsf",
  * });

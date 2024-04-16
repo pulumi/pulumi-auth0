@@ -30,10 +30,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.auth0.Pages;
  * import com.pulumi.auth0.PagesArgs;
- * import com.pulumi.auth0.inputs.PagesChangePasswordArgs;
- * import com.pulumi.auth0.inputs.PagesErrorArgs;
- * import com.pulumi.auth0.inputs.PagesGuardianMfaArgs;
  * import com.pulumi.auth0.inputs.PagesLoginArgs;
+ * import com.pulumi.auth0.inputs.PagesChangePasswordArgs;
+ * import com.pulumi.auth0.inputs.PagesGuardianMfaArgs;
+ * import com.pulumi.auth0.inputs.PagesErrorArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -48,22 +48,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myPages = new Pages(&#34;myPages&#34;, PagesArgs.builder()        
+ *             .login(PagesLoginArgs.builder()
+ *                 .enabled(true)
+ *                 .html(&#34;&lt;html&gt;&lt;body&gt;My Custom Login Page&lt;/body&gt;&lt;/html&gt;&#34;)
+ *                 .build())
  *             .changePassword(PagesChangePasswordArgs.builder()
  *                 .enabled(true)
  *                 .html(&#34;&lt;html&gt;&lt;body&gt;My Custom Reset Password Page&lt;/body&gt;&lt;/html&gt;&#34;)
- *                 .build())
- *             .error(PagesErrorArgs.builder()
- *                 .html(&#34;&lt;html&gt;&lt;body&gt;My Custom Error Page&lt;/body&gt;&lt;/html&gt;&#34;)
- *                 .showLogLink(true)
- *                 .url(&#34;https://example.com&#34;)
  *                 .build())
  *             .guardianMfa(PagesGuardianMfaArgs.builder()
  *                 .enabled(true)
  *                 .html(&#34;&lt;html&gt;&lt;body&gt;My Custom MFA Page&lt;/body&gt;&lt;/html&gt;&#34;)
  *                 .build())
- *             .login(PagesLoginArgs.builder()
- *                 .enabled(true)
- *                 .html(&#34;&lt;html&gt;&lt;body&gt;My Custom Login Page&lt;/body&gt;&lt;/html&gt;&#34;)
+ *             .error(PagesErrorArgs.builder()
+ *                 .showLogLink(true)
+ *                 .html(&#34;&lt;html&gt;&lt;body&gt;My Custom Error Page&lt;/body&gt;&lt;/html&gt;&#34;)
+ *                 .url(&#34;https://example.com&#34;)
  *                 .build())
  *             .build());
  * 

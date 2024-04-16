@@ -16,9 +16,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 Connection loaded using its name.
  * const some-connection-by-name = auth0.getConnection({
  *     name: "Acceptance-Test-Connection-{{.testName}}",
  * });
+ * // An Auth0 Connection loaded using its ID.
  * const some-connection-by-id = auth0.getConnection({
  *     connectionId: "con_abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
@@ -105,9 +107,11 @@ export interface GetConnectionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 Connection loaded using its name.
  * const some-connection-by-name = auth0.getConnection({
  *     name: "Acceptance-Test-Connection-{{.testName}}",
  * });
+ * // An Auth0 Connection loaded using its ID.
  * const some-connection-by-id = auth0.getConnection({
  *     connectionId: "con_abcdefghkijklmnopqrstuvwxyz0123456789",
  * });

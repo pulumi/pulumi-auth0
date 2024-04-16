@@ -28,12 +28,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// An Auth0 Client loaded using its name.
 //			_, err := auth0.LookupClient(ctx, &auth0.LookupClientArgs{
 //				Name: pulumi.StringRef("Name of my Application"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// An Auth0 Client loaded using its ID.
 //			_, err = auth0.LookupClient(ctx, &auth0.LookupClientArgs{
 //				ClientId: pulumi.StringRef("abcdefghkijklmnopqrstuvwxyz0123456789"),
 //			}, nil)

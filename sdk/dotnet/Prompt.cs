@@ -23,10 +23,10 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myPrompt = new Auth0.Prompt("myPrompt", new()
+    ///     var myPrompt = new Auth0.Prompt("my_prompt", new()
     ///     {
-    ///         IdentifierFirst = false,
     ///         UniversalLoginExperience = "new",
+    ///         IdentifierFirst = false,
     ///         WebauthnPlatformFirstFactor = true,
     ///     });
     /// 

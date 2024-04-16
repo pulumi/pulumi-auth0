@@ -42,13 +42,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myLoginPromptPartials = new PromptPartials(&#34;myLoginPromptPartials&#34;, PromptPartialsArgs.builder()        
- *             .formContentEnd(&#34;&lt;div&gt;Updated Form Content End&lt;/div&gt;&#34;)
- *             .formContentStart(&#34;&lt;div&gt;Updated Form Content Start&lt;/div&gt;&#34;)
- *             .formFooterEnd(&#34;&lt;div&gt;Updated Footer End&lt;/div&gt;&#34;)
- *             .formFooterStart(&#34;&lt;div&gt;Updated Footer Start&lt;/div&gt;&#34;)
  *             .prompt(&#34;login&#34;)
- *             .secondaryActionsEnd(&#34;&lt;div&gt;Updated Secondary Actions End&lt;/div&gt;&#34;)
+ *             .formContentStart(&#34;&lt;div&gt;Updated Form Content Start&lt;/div&gt;&#34;)
+ *             .formContentEnd(&#34;&lt;div&gt;Updated Form Content End&lt;/div&gt;&#34;)
+ *             .formFooterStart(&#34;&lt;div&gt;Updated Footer Start&lt;/div&gt;&#34;)
+ *             .formFooterEnd(&#34;&lt;div&gt;Updated Footer End&lt;/div&gt;&#34;)
  *             .secondaryActionsStart(&#34;&lt;div&gt;Updated Secondary Actions Start&lt;/div&gt;&#34;)
+ *             .secondaryActionsEnd(&#34;&lt;div&gt;Updated Secondary Actions End&lt;/div&gt;&#34;)
  *             .build());
  * 
  *     }

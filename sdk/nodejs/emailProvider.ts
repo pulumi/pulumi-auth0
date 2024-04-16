@@ -9,44 +9,6 @@ import * as utilities from "./utilities";
 /**
  * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
  *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * // This is an example on how to set up the email provider with Amazon SES.
- * const amazonSesEmailProvider = new auth0.EmailProvider("amazonSesEmailProvider", {
- *     credentials: {
- *         accessKeyId: "AKIAXXXXXXXXXXXXXXXX",
- *         region: "us-east-1",
- *         secretAccessKey: "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
- *     },
- *     defaultFromAddress: "accounts@example.com",
- *     enabled: true,
- * });
- * // This is an example on how to set up the email provider with Sendgrid.
- * const sendgridEmailProvider = new auth0.EmailProvider("sendgridEmailProvider", {
- *     credentials: {
- *         apiKey: "secretAPIKey",
- *     },
- *     defaultFromAddress: "accounts@example.com",
- *     enabled: true,
- * });
- * // This is an example on how to set up the email provider with MS365.
- * const smtpEmailProvider = new auth0.EmailProvider("smtpEmailProvider", {
- *     credentials: {
- *         ms365ClientId: "ms365_client_id",
- *         ms365ClientSecret: "ms365_client_secret",
- *         ms365TenantId: "ms365_tenant_id",
- *     },
- *     defaultFromAddress: "accounts@example.com",
- *     enabled: true,
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
  * ## Import
  *
  * As this is not a resource identifiable by an ID within the Auth0 Management API,

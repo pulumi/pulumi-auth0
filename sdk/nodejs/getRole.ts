@@ -16,9 +16,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 Role loaded using its name.
  * const some-role-by-name = auth0.getRole({
  *     name: "my-role",
  * });
+ * // An Auth0 Role loaded using its ID.
  * const some-role-by-id = auth0.getRole({
  *     roleId: "abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
@@ -85,9 +87,11 @@ export interface GetRoleResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 Role loaded using its name.
  * const some-role-by-name = auth0.getRole({
  *     name: "my-role",
  * });
+ * // An Auth0 Role loaded using its ID.
  * const some-role-by-id = auth0.getRole({
  *     roleId: "abcdefghkijklmnopqrstuvwxyz0123456789",
  * });

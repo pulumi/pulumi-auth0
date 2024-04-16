@@ -20,7 +20,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const loginAlert = new auth0.Action("loginAlert", {
+ * const loginAlert = new auth0.Action("login_alert", {
+ *     name: "Alert after login",
  *     code: `exports.onContinuePostLogin = async (event, api) => {
  *   console.log("foo");
  * };"
@@ -31,7 +32,7 @@ import * as utilities from "./utilities";
  *         version: "v3",
  *     },
  * });
- * const postLoginAlertAction = new auth0.TriggerAction("postLoginAlertAction", {
+ * const postLoginAlertAction = new auth0.TriggerAction("post_login_alert_action", {
  *     trigger: "post-login",
  *     actionId: loginAlert.id,
  * });

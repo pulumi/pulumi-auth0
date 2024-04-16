@@ -23,55 +23,31 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myClient = new Auth0.Client("myClient", new()
+    ///     var myClient = new Auth0.Client("my_client", new()
     ///     {
-    ///         Addons = new Auth0.Inputs.ClientAddonsArgs
+    ///         Name = "Application - Acceptance Test",
+    ///         Description = "Test Applications Long Description",
+    ///         AppType = "non_interactive",
+    ///         CustomLoginPageOn = true,
+    ///         IsFirstParty = true,
+    ///         IsTokenEndpointIpHeaderTrusted = true,
+    ///         OidcConformant = false,
+    ///         Callbacks = new[]
     ///         {
-    ///             Samlp = new Auth0.Inputs.ClientAddonsSamlpArgs
-    ///             {
-    ///                 Audience = "https://example.com/saml",
-    ///                 CreateUpnClaim = false,
-    ///                 Issuer = "https://example.com",
-    ///                 MapIdentities = false,
-    ///                 MapUnknownClaimsAsIs = false,
-    ///                 Mappings = 
-    ///                 {
-    ///                     { "email", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress" },
-    ///                     { "name", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" },
-    ///                 },
-    ///                 NameIdentifierFormat = "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
-    ///                 NameIdentifierProbes = new[]
-    ///                 {
-    ///                     "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
-    ///                 },
-    ///                 PassthroughClaimsWithNoMapping = false,
-    ///                 SigningCert = @"-----BEGIN PUBLIC KEY-----
-    /// MIGf...bpP/t3
-    /// +JGNGIRMj1hF1rnb6QIDAQAB
-    /// -----END PUBLIC KEY-----
-    /// 
-    /// ",
-    ///             },
-    ///         },
-    ///         AllowedLogoutUrls = new[]
-    ///         {
-    ///             "https://example.com",
+    ///             "https://example.com/callback",
     ///         },
     ///         AllowedOrigins = new[]
     ///         {
     ///             "https://example.com",
     ///         },
-    ///         AppType = "non_interactive",
-    ///         Callbacks = new[]
+    ///         AllowedLogoutUrls = new[]
     ///         {
-    ///             "https://example.com/callback",
+    ///             "https://example.com",
     ///         },
-    ///         ClientMetadata = 
+    ///         WebOrigins = new[]
     ///         {
-    ///             { "foo", "zoo" },
+    ///             "https://example.com",
     ///         },
-    ///         CustomLoginPageOn = true,
-    ///         Description = "Test Applications Long Description",
     ///         GrantTypes = new[]
     ///         {
     ///             "authorization_code",
@@ -80,37 +56,61 @@ namespace Pulumi.Auth0
     ///             "password",
     ///             "refresh_token",
     ///         },
-    ///         IsFirstParty = true,
-    ///         IsTokenEndpointIpHeaderTrusted = true,
+    ///         ClientMetadata = 
+    ///         {
+    ///             { "foo", "zoo" },
+    ///         },
     ///         JwtConfiguration = new Auth0.Inputs.ClientJwtConfigurationArgs
     ///         {
-    ///             Alg = "RS256",
     ///             LifetimeInSeconds = 300,
+    ///             SecretEncoded = true,
+    ///             Alg = "RS256",
     ///             Scopes = 
     ///             {
     ///                 { "foo", "bar" },
     ///             },
-    ///             SecretEncoded = true,
+    ///         },
+    ///         RefreshToken = new Auth0.Inputs.ClientRefreshTokenArgs
+    ///         {
+    ///             Leeway = 0,
+    ///             TokenLifetime = 2592000,
+    ///             RotationType = "rotating",
+    ///             ExpirationType = "expiring",
     ///         },
     ///         Mobile = new Auth0.Inputs.ClientMobileArgs
     ///         {
     ///             Ios = new Auth0.Inputs.ClientMobileIosArgs
     ///             {
-    ///                 AppBundleIdentifier = "com.my.bundle.id",
     ///                 TeamId = "9JA89QQLNQ",
+    ///                 AppBundleIdentifier = "com.my.bundle.id",
     ///             },
     ///         },
-    ///         OidcConformant = false,
-    ///         RefreshToken = new Auth0.Inputs.ClientRefreshTokenArgs
+    ///         Addons = new Auth0.Inputs.ClientAddonsArgs
     ///         {
-    ///             ExpirationType = "expiring",
-    ///             Leeway = 0,
-    ///             RotationType = "rotating",
-    ///             TokenLifetime = 2592000,
-    ///         },
-    ///         WebOrigins = new[]
-    ///         {
-    ///             "https://example.com",
+    ///             Samlp = new Auth0.Inputs.ClientAddonsSamlpArgs
+    ///             {
+    ///                 Audience = "https://example.com/saml",
+    ///                 Issuer = "https://example.com",
+    ///                 Mappings = 
+    ///                 {
+    ///                     { "email", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress" },
+    ///                     { "name", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" },
+    ///                 },
+    ///                 CreateUpnClaim = false,
+    ///                 PassthroughClaimsWithNoMapping = false,
+    ///                 MapUnknownClaimsAsIs = false,
+    ///                 MapIdentities = false,
+    ///                 NameIdentifierFormat = "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+    ///                 NameIdentifierProbes = new[]
+    ///                 {
+    ///                     "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+    ///                 },
+    ///                 SigningCert = @"-----BEGIN PUBLIC KEY-----
+    /// MIGf...bpP/t3
+    /// +JGNGIRMj1hF1rnb6QIDAQAB
+    /// -----END PUBLIC KEY-----
+    /// ",
+    ///             },
     ///         },
     ///     });
     /// 

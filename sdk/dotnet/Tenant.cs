@@ -26,40 +26,40 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myTenant = new Auth0.Tenant("myTenant", new()
+    ///     var myTenant = new Auth0.Tenant("my_tenant", new()
     ///     {
+    ///         FriendlyName = "Tenant Name",
+    ///         PictureUrl = "http://example.com/logo.png",
+    ///         SupportEmail = "support@example.com",
+    ///         SupportUrl = "http://example.com/support",
     ///         AllowedLogoutUrls = new[]
     ///         {
     ///             "http://example.com/logout",
     ///         },
-    ///         DefaultRedirectionUri = "https://example.com/login",
+    ///         SessionLifetime = 8760,
+    ///         SandboxVersion = "12",
     ///         EnabledLocales = new[]
     ///         {
     ///             "en",
     ///         },
+    ///         DefaultRedirectionUri = "https://example.com/login",
     ///         Flags = new Auth0.Inputs.TenantFlagsArgs
     ///         {
     ///             DisableClickjackProtectionHeaders = true,
-    ///             DisableFieldsMapFix = false,
-    ///             DisableManagementApiSmsObfuscation = false,
     ///             EnablePublicSignupUserExistsError = true,
-    ///             NoDiscloseEnterpriseConnections = false,
     ///             UseScopeDescriptionsForConsent = true,
+    ///             NoDiscloseEnterpriseConnections = false,
+    ///             DisableManagementApiSmsObfuscation = false,
+    ///             DisableFieldsMapFix = false,
     ///         },
-    ///         FriendlyName = "Tenant Name",
-    ///         PictureUrl = "http://example.com/logo.png",
-    ///         SandboxVersion = "12",
     ///         SessionCookie = new Auth0.Inputs.TenantSessionCookieArgs
     ///         {
     ///             Mode = "non-persistent",
     ///         },
-    ///         SessionLifetime = 8760,
     ///         Sessions = new Auth0.Inputs.TenantSessionsArgs
     ///         {
     ///             OidcLogoutPromptEnabled = false,
     ///         },
-    ///         SupportEmail = "support@example.com",
-    ///         SupportUrl = "http://example.com/support",
     ///     });
     /// 
     /// });

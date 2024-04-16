@@ -1170,38 +1170,18 @@ class Client(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_client = auth0.Client("myClient",
-            addons=auth0.ClientAddonsArgs(
-                samlp=auth0.ClientAddonsSamlpArgs(
-                    audience="https://example.com/saml",
-                    create_upn_claim=False,
-                    issuer="https://example.com",
-                    map_identities=False,
-                    map_unknown_claims_as_is=False,
-                    mappings={
-                        "email": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
-                        "name": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-                    },
-                    name_identifier_format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
-                    name_identifier_probes=["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
-                    passthrough_claims_with_no_mapping=False,
-                    signing_cert=\"\"\"-----BEGIN PUBLIC KEY-----
-        MIGf...bpP/t3
-        +JGNGIRMj1hF1rnb6QIDAQAB
-        -----END PUBLIC KEY-----
-
-        \"\"\",
-                ),
-            ),
-            allowed_logout_urls=["https://example.com"],
-            allowed_origins=["https://example.com"],
-            app_type="non_interactive",
-            callbacks=["https://example.com/callback"],
-            client_metadata={
-                "foo": "zoo",
-            },
-            custom_login_page_on=True,
+        my_client = auth0.Client("my_client",
+            name="Application - Acceptance Test",
             description="Test Applications Long Description",
+            app_type="non_interactive",
+            custom_login_page_on=True,
+            is_first_party=True,
+            is_token_endpoint_ip_header_trusted=True,
+            oidc_conformant=False,
+            callbacks=["https://example.com/callback"],
+            allowed_origins=["https://example.com"],
+            allowed_logout_urls=["https://example.com"],
+            web_origins=["https://example.com"],
             grant_types=[
                 "authorization_code",
                 "http://auth0.com/oauth/grant-type/password-realm",
@@ -1209,30 +1189,50 @@ class Client(pulumi.CustomResource):
                 "password",
                 "refresh_token",
             ],
-            is_first_party=True,
-            is_token_endpoint_ip_header_trusted=True,
+            client_metadata={
+                "foo": "zoo",
+            },
             jwt_configuration=auth0.ClientJwtConfigurationArgs(
-                alg="RS256",
                 lifetime_in_seconds=300,
+                secret_encoded=True,
+                alg="RS256",
                 scopes={
                     "foo": "bar",
                 },
-                secret_encoded=True,
+            ),
+            refresh_token=auth0.ClientRefreshTokenArgs(
+                leeway=0,
+                token_lifetime=2592000,
+                rotation_type="rotating",
+                expiration_type="expiring",
             ),
             mobile=auth0.ClientMobileArgs(
                 ios=auth0.ClientMobileIosArgs(
-                    app_bundle_identifier="com.my.bundle.id",
                     team_id="9JA89QQLNQ",
+                    app_bundle_identifier="com.my.bundle.id",
                 ),
             ),
-            oidc_conformant=False,
-            refresh_token=auth0.ClientRefreshTokenArgs(
-                expiration_type="expiring",
-                leeway=0,
-                rotation_type="rotating",
-                token_lifetime=2592000,
-            ),
-            web_origins=["https://example.com"])
+            addons=auth0.ClientAddonsArgs(
+                samlp=auth0.ClientAddonsSamlpArgs(
+                    audience="https://example.com/saml",
+                    issuer="https://example.com",
+                    mappings={
+                        "email": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+                        "name": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+                    },
+                    create_upn_claim=False,
+                    passthrough_claims_with_no_mapping=False,
+                    map_unknown_claims_as_is=False,
+                    map_identities=False,
+                    name_identifier_format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+                    name_identifier_probes=["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
+                    signing_cert=\"\"\"-----BEGIN PUBLIC KEY-----
+        MIGf...bpP/t3
+        +JGNGIRMj1hF1rnb6QIDAQAB
+        -----END PUBLIC KEY-----
+        \"\"\",
+                ),
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -1300,38 +1300,18 @@ class Client(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_client = auth0.Client("myClient",
-            addons=auth0.ClientAddonsArgs(
-                samlp=auth0.ClientAddonsSamlpArgs(
-                    audience="https://example.com/saml",
-                    create_upn_claim=False,
-                    issuer="https://example.com",
-                    map_identities=False,
-                    map_unknown_claims_as_is=False,
-                    mappings={
-                        "email": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
-                        "name": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-                    },
-                    name_identifier_format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
-                    name_identifier_probes=["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
-                    passthrough_claims_with_no_mapping=False,
-                    signing_cert=\"\"\"-----BEGIN PUBLIC KEY-----
-        MIGf...bpP/t3
-        +JGNGIRMj1hF1rnb6QIDAQAB
-        -----END PUBLIC KEY-----
-
-        \"\"\",
-                ),
-            ),
-            allowed_logout_urls=["https://example.com"],
-            allowed_origins=["https://example.com"],
-            app_type="non_interactive",
-            callbacks=["https://example.com/callback"],
-            client_metadata={
-                "foo": "zoo",
-            },
-            custom_login_page_on=True,
+        my_client = auth0.Client("my_client",
+            name="Application - Acceptance Test",
             description="Test Applications Long Description",
+            app_type="non_interactive",
+            custom_login_page_on=True,
+            is_first_party=True,
+            is_token_endpoint_ip_header_trusted=True,
+            oidc_conformant=False,
+            callbacks=["https://example.com/callback"],
+            allowed_origins=["https://example.com"],
+            allowed_logout_urls=["https://example.com"],
+            web_origins=["https://example.com"],
             grant_types=[
                 "authorization_code",
                 "http://auth0.com/oauth/grant-type/password-realm",
@@ -1339,30 +1319,50 @@ class Client(pulumi.CustomResource):
                 "password",
                 "refresh_token",
             ],
-            is_first_party=True,
-            is_token_endpoint_ip_header_trusted=True,
+            client_metadata={
+                "foo": "zoo",
+            },
             jwt_configuration=auth0.ClientJwtConfigurationArgs(
-                alg="RS256",
                 lifetime_in_seconds=300,
+                secret_encoded=True,
+                alg="RS256",
                 scopes={
                     "foo": "bar",
                 },
-                secret_encoded=True,
+            ),
+            refresh_token=auth0.ClientRefreshTokenArgs(
+                leeway=0,
+                token_lifetime=2592000,
+                rotation_type="rotating",
+                expiration_type="expiring",
             ),
             mobile=auth0.ClientMobileArgs(
                 ios=auth0.ClientMobileIosArgs(
-                    app_bundle_identifier="com.my.bundle.id",
                     team_id="9JA89QQLNQ",
+                    app_bundle_identifier="com.my.bundle.id",
                 ),
             ),
-            oidc_conformant=False,
-            refresh_token=auth0.ClientRefreshTokenArgs(
-                expiration_type="expiring",
-                leeway=0,
-                rotation_type="rotating",
-                token_lifetime=2592000,
-            ),
-            web_origins=["https://example.com"])
+            addons=auth0.ClientAddonsArgs(
+                samlp=auth0.ClientAddonsSamlpArgs(
+                    audience="https://example.com/saml",
+                    issuer="https://example.com",
+                    mappings={
+                        "email": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+                        "name": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+                    },
+                    create_upn_claim=False,
+                    passthrough_claims_with_no_mapping=False,
+                    map_unknown_claims_as_is=False,
+                    map_identities=False,
+                    name_identifier_format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+                    name_identifier_probes=["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
+                    signing_cert=\"\"\"-----BEGIN PUBLIC KEY-----
+        MIGf...bpP/t3
+        +JGNGIRMj1hF1rnb6QIDAQAB
+        -----END PUBLIC KEY-----
+        \"\"\",
+                ),
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

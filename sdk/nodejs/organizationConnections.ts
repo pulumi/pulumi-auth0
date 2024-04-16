@@ -21,9 +21,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myConnection_1 = new auth0.Connection("myConnection-1", {strategy: "auth0"});
- * const myConnection_2 = new auth0.Connection("myConnection-2", {strategy: "auth0"});
- * const myOrganization = new auth0.Organization("myOrganization", {displayName: "My Organization"});
+ * const myConnection_1 = new auth0.Connection("my_connection-1", {
+ *     name: "My Connection 1",
+ *     strategy: "auth0",
+ * });
+ * const myConnection_2 = new auth0.Connection("my_connection-2", {
+ *     name: "My Connection 2",
+ *     strategy: "auth0",
+ * });
+ * const myOrganization = new auth0.Organization("my_organization", {
+ *     name: "my-organization",
+ *     displayName: "My Organization",
+ * });
  * const one_to_many = new auth0.OrganizationConnections("one-to-many", {
  *     organizationId: myOrganization.id,
  *     enabledConnections: [

@@ -23,15 +23,15 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myLoginPromptPartials = new Auth0.PromptPartials("myLoginPromptPartials", new()
+    ///     var myLoginPromptPartials = new Auth0.PromptPartials("my_login_prompt_partials", new()
     ///     {
-    ///         FormContentEnd = "&lt;div&gt;Updated Form Content End&lt;/div&gt;",
-    ///         FormContentStart = "&lt;div&gt;Updated Form Content Start&lt;/div&gt;",
-    ///         FormFooterEnd = "&lt;div&gt;Updated Footer End&lt;/div&gt;",
-    ///         FormFooterStart = "&lt;div&gt;Updated Footer Start&lt;/div&gt;",
     ///         Prompt = "login",
-    ///         SecondaryActionsEnd = "&lt;div&gt;Updated Secondary Actions End&lt;/div&gt;",
+    ///         FormContentStart = "&lt;div&gt;Updated Form Content Start&lt;/div&gt;",
+    ///         FormContentEnd = "&lt;div&gt;Updated Form Content End&lt;/div&gt;",
+    ///         FormFooterStart = "&lt;div&gt;Updated Footer Start&lt;/div&gt;",
+    ///         FormFooterEnd = "&lt;div&gt;Updated Footer End&lt;/div&gt;",
     ///         SecondaryActionsStart = "&lt;div&gt;Updated Secondary Actions Start&lt;/div&gt;",
+    ///         SecondaryActionsEnd = "&lt;div&gt;Updated Secondary Actions End&lt;/div&gt;",
     ///     });
     /// 
     /// });

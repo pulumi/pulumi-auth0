@@ -12,58 +12,6 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
     /// 
-    /// ## Example Usage
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // This is an example on how to set up the email provider with Amazon SES.
-    ///     var amazonSesEmailProvider = new Auth0.EmailProvider("amazonSesEmailProvider", new()
-    ///     {
-    ///         Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs
-    ///         {
-    ///             AccessKeyId = "AKIAXXXXXXXXXXXXXXXX",
-    ///             Region = "us-east-1",
-    ///             SecretAccessKey = "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///         },
-    ///         DefaultFromAddress = "accounts@example.com",
-    ///         Enabled = true,
-    ///     });
-    /// 
-    ///     // This is an example on how to set up the email provider with Sendgrid.
-    ///     var sendgridEmailProvider = new Auth0.EmailProvider("sendgridEmailProvider", new()
-    ///     {
-    ///         Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs
-    ///         {
-    ///             ApiKey = "secretAPIKey",
-    ///         },
-    ///         DefaultFromAddress = "accounts@example.com",
-    ///         Enabled = true,
-    ///     });
-    /// 
-    ///     // This is an example on how to set up the email provider with MS365.
-    ///     var smtpEmailProvider = new Auth0.EmailProvider("smtpEmailProvider", new()
-    ///     {
-    ///         Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs
-    ///         {
-    ///             Ms365ClientId = "ms365_client_id",
-    ///             Ms365ClientSecret = "ms365_client_secret",
-    ///             Ms365TenantId = "ms365_tenant_id",
-    ///         },
-    ///         DefaultFromAddress = "accounts@example.com",
-    ///         Enabled = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
     /// ## Import
     /// 
     /// As this is not a resource identifiable by an ID within the Auth0 Management API,

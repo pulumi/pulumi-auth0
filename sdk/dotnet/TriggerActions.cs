@@ -27,8 +27,9 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var actionFoo = new Auth0.Action("actionFoo", new()
+    ///     var actionFoo = new Auth0.Action("action_foo", new()
     ///     {
+    ///         Name = "Test Trigger Binding Foo",
     ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
     ///   console.log(""foo"");
     /// };""
@@ -41,8 +42,9 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
-    ///     var actionBar = new Auth0.Action("actionBar", new()
+    ///     var actionBar = new Auth0.Action("action_bar", new()
     ///     {
+    ///         Name = "Test Trigger Binding Bar",
     ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
     ///   console.log(""bar"");
     /// };""
@@ -55,7 +57,7 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
-    ///     var loginFlow = new Auth0.TriggerActions("loginFlow", new()
+    ///     var loginFlow = new Auth0.TriggerActions("login_flow", new()
     ///     {
     ///         Trigger = "post-login",
     ///         Actions = new[]

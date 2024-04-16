@@ -16,9 +16,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 Client loaded using its name.
  * const some-client-by-name = auth0.getClient({
  *     name: "Name of my Application",
  * });
+ * // An Auth0 Client loaded using its ID.
  * const some-client-by-id = auth0.getClient({
  *     clientId: "abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
@@ -207,9 +209,11 @@ export interface GetClientResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 Client loaded using its name.
  * const some-client-by-name = auth0.getClient({
  *     name: "Name of my Application",
  * });
+ * // An Auth0 Client loaded using its ID.
  * const some-client-by-id = auth0.getClient({
  *     clientId: "abcdefghkijklmnopqrstuvwxyz0123456789",
  * });

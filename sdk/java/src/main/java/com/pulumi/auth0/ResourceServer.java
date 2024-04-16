@@ -44,11 +44,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myResourceServer = new ResourceServer(&#34;myResourceServer&#34;, ResourceServerArgs.builder()        
- *             .allowOfflineAccess(true)
+ *             .name(&#34;Example Resource Server (Managed by Terraform)&#34;)
  *             .identifier(&#34;https://api.example.com&#34;)
  *             .signingAlg(&#34;RS256&#34;)
- *             .skipConsentForVerifiableFirstPartyClients(true)
+ *             .allowOfflineAccess(true)
  *             .tokenLifetime(8600)
+ *             .skipConsentForVerifiableFirstPartyClients(true)
  *             .build());
  * 
  *     }
