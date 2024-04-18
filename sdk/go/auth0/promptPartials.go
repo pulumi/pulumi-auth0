@@ -29,14 +29,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewPromptPartials(ctx, "myLoginPromptPartials", &auth0.PromptPartialsArgs{
-//				FormContentEnd:        pulumi.String("<div>Updated Form Content End</div>"),
-//				FormContentStart:      pulumi.String("<div>Updated Form Content Start</div>"),
-//				FormFooterEnd:         pulumi.String("<div>Updated Footer End</div>"),
-//				FormFooterStart:       pulumi.String("<div>Updated Footer Start</div>"),
+//			_, err := auth0.NewPromptPartials(ctx, "my_login_prompt_partials", &auth0.PromptPartialsArgs{
 //				Prompt:                pulumi.String("login"),
-//				SecondaryActionsEnd:   pulumi.String("<div>Updated Secondary Actions End</div>"),
+//				FormContentStart:      pulumi.String("<div>Updated Form Content Start</div>"),
+//				FormContentEnd:        pulumi.String("<div>Updated Form Content End</div>"),
+//				FormFooterStart:       pulumi.String("<div>Updated Footer Start</div>"),
+//				FormFooterEnd:         pulumi.String("<div>Updated Footer End</div>"),
 //				SecondaryActionsStart: pulumi.String("<div>Updated Secondary Actions Start</div>"),
+//				SecondaryActionsEnd:   pulumi.String("<div>Updated Secondary Actions End</div>"),
 //			})
 //			if err != nil {
 //				return err

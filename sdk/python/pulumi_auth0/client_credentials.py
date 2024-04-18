@@ -183,54 +183,6 @@ class ClientCredentials(pulumi.CustomResource):
         > Refer to the client secret rotation guide
         for instructions on how to rotate client secrets with zero downtime.
 
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_client = auth0.Client("myClient",
-            app_type="non_interactive",
-            jwt_configuration=auth0.ClientJwtConfigurationArgs(
-                alg="RS256",
-            ))
-        # Configuring client_secret_post as an authentication method.
-        test_client_credentials = auth0.ClientCredentials("testClientCredentials",
-            client_id=my_client.id,
-            authentication_method="client_secret_post")
-        # Configuring client_secret_basic as an authentication method.
-        test_index_client_credentials_client_credentials = auth0.ClientCredentials("testIndex/clientCredentialsClientCredentials",
-            client_id=my_client.id,
-            authentication_method="client_secret_basic")
-        # Configuring none as an authentication method.
-        test_auth0_index_client_credentials_client_credentials = auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials",
-            client_id=my_client.id,
-            authentication_method="none")
-        # Configuring private_key_jwt as an authentication method.
-        test_auth0_index_client_credentials_client_credentials1 = auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials1",
-            client_id=my_client.id,
-            authentication_method="private_key_jwt",
-            private_key_jwt=auth0.ClientCredentialsPrivateKeyJwtArgs(
-                credentials=[auth0.ClientCredentialsPrivateKeyJwtCredentialArgs(
-                    name="Testing Credentials 1",
-                    credential_type="public_key",
-                    algorithm="RS256",
-                    parse_expiry_from_cert=True,
-                    pem=\"\"\"-----BEGIN CERTIFICATE-----
-        MIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl
-        -----END CERTIFICATE-----
-        \"\"\",
-                )],
-            ))
-        # Configuring the client_secret.
-        test_auth0_index_client_credentials_client_credentials2 = auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials2",
-            client_id=my_client.id,
-            authentication_method="client_secret_basic",
-            client_secret="LUFqPx+sRLjbL7peYRPFmFu-bbvE7u7og4YUNe_C345=683341")
-        ```
-        <!--End PulumiCodeChooser -->
-
         ## Import
 
         This resource can be imported by specifying the client ID.
@@ -268,54 +220,6 @@ class ClientCredentials(pulumi.CustomResource):
 
         > Refer to the client secret rotation guide
         for instructions on how to rotate client secrets with zero downtime.
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_client = auth0.Client("myClient",
-            app_type="non_interactive",
-            jwt_configuration=auth0.ClientJwtConfigurationArgs(
-                alg="RS256",
-            ))
-        # Configuring client_secret_post as an authentication method.
-        test_client_credentials = auth0.ClientCredentials("testClientCredentials",
-            client_id=my_client.id,
-            authentication_method="client_secret_post")
-        # Configuring client_secret_basic as an authentication method.
-        test_index_client_credentials_client_credentials = auth0.ClientCredentials("testIndex/clientCredentialsClientCredentials",
-            client_id=my_client.id,
-            authentication_method="client_secret_basic")
-        # Configuring none as an authentication method.
-        test_auth0_index_client_credentials_client_credentials = auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials",
-            client_id=my_client.id,
-            authentication_method="none")
-        # Configuring private_key_jwt as an authentication method.
-        test_auth0_index_client_credentials_client_credentials1 = auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials1",
-            client_id=my_client.id,
-            authentication_method="private_key_jwt",
-            private_key_jwt=auth0.ClientCredentialsPrivateKeyJwtArgs(
-                credentials=[auth0.ClientCredentialsPrivateKeyJwtCredentialArgs(
-                    name="Testing Credentials 1",
-                    credential_type="public_key",
-                    algorithm="RS256",
-                    parse_expiry_from_cert=True,
-                    pem=\"\"\"-----BEGIN CERTIFICATE-----
-        MIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl
-        -----END CERTIFICATE-----
-        \"\"\",
-                )],
-            ))
-        # Configuring the client_secret.
-        test_auth0_index_client_credentials_client_credentials2 = auth0.ClientCredentials("testAuth0Index/clientCredentialsClientCredentials2",
-            client_id=my_client.id,
-            authentication_method="client_secret_basic",
-            client_secret="LUFqPx+sRLjbL7peYRPFmFu-bbvE7u7og4YUNe_C345=683341")
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

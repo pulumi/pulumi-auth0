@@ -139,17 +139,19 @@ class OrganizationMemberRoles(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        reader = auth0.Role("reader")
-        writer = auth0.Role("writer")
+        reader = auth0.Role("reader", name="Reader")
+        writer = auth0.Role("writer", name="Writer")
         user = auth0.User("user",
             connection_name="Username-Password-Authentication",
             email="test-user@auth0.com",
             password="MyPass123$")
-        my_org = auth0.Organization("myOrg", display_name="Some Org")
-        my_org_member = auth0.OrganizationMember("myOrgMember",
+        my_org = auth0.Organization("my_org",
+            name="some-org",
+            display_name="Some Org")
+        my_org_member = auth0.OrganizationMember("my_org_member",
             organization_id=my_org.id,
             user_id=user.id)
-        my_org_member_roles = auth0.OrganizationMemberRoles("myOrgMemberRoles",
+        my_org_member_roles = auth0.OrganizationMemberRoles("my_org_member_roles",
             organization_id=my_org.id,
             user_id=user.id,
             roles=[
@@ -197,17 +199,19 @@ class OrganizationMemberRoles(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        reader = auth0.Role("reader")
-        writer = auth0.Role("writer")
+        reader = auth0.Role("reader", name="Reader")
+        writer = auth0.Role("writer", name="Writer")
         user = auth0.User("user",
             connection_name="Username-Password-Authentication",
             email="test-user@auth0.com",
             password="MyPass123$")
-        my_org = auth0.Organization("myOrg", display_name="Some Org")
-        my_org_member = auth0.OrganizationMember("myOrgMember",
+        my_org = auth0.Organization("my_org",
+            name="some-org",
+            display_name="Some Org")
+        my_org_member = auth0.OrganizationMember("my_org_member",
             organization_id=my_org.id,
             user_id=user.id)
-        my_org_member_roles = auth0.OrganizationMemberRoles("myOrgMemberRoles",
+        my_org_member_roles = auth0.OrganizationMemberRoles("my_org_member_roles",
             organization_id=my_org.id,
             user_id=user.id,
             roles=[

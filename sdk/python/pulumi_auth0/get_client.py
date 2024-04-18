@@ -499,7 +499,9 @@ def get_client(client_id: Optional[str] = None,
     import pulumi
     import pulumi_auth0 as auth0
 
+    # An Auth0 Client loaded using its name.
     some_client_by_name = auth0.get_client(name="Name of my Application")
+    # An Auth0 Client loaded using its ID.
     some_client_by_id = auth0.get_client(client_id="abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
     <!--End PulumiCodeChooser -->
@@ -565,7 +567,9 @@ def get_client_output(client_id: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_auth0 as auth0
 
+    # An Auth0 Client loaded using its name.
     some_client_by_name = auth0.get_client(name="Name of my Application")
+    # An Auth0 Client loaded using its ID.
     some_client_by_id = auth0.get_client(client_id="abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
     <!--End PulumiCodeChooser -->

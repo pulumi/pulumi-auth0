@@ -144,13 +144,16 @@ class UserRole(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         # Example:
-        admin = auth0.Role("admin", description="Administrator")
+        admin = auth0.Role("admin",
+            name="admin",
+            description="Administrator")
         user = auth0.User("user",
             connection_name="Username-Password-Authentication",
             username="unique_username",
+            name="Firstname Lastname",
             email="test@test.com",
             password="passpass$12$12")
-        user_roles = auth0.UserRole("userRoles",
+        user_roles = auth0.UserRole("user_roles",
             user_id=user.id,
             role_id=admin.id)
         ```
@@ -198,13 +201,16 @@ class UserRole(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         # Example:
-        admin = auth0.Role("admin", description="Administrator")
+        admin = auth0.Role("admin",
+            name="admin",
+            description="Administrator")
         user = auth0.User("user",
             connection_name="Username-Password-Authentication",
             username="unique_username",
+            name="Firstname Lastname",
             email="test@test.com",
             password="passpass$12$12")
-        user_roles = auth0.UserRole("userRoles",
+        user_roles = auth0.UserRole("user_roles",
             user_id=user.id,
             role_id=admin.id)
         ```

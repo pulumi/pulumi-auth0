@@ -177,23 +177,23 @@ class Pages(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_pages = auth0.Pages("myPages",
+        my_pages = auth0.Pages("my_pages",
+            login=auth0.PagesLoginArgs(
+                enabled=True,
+                html="<html><body>My Custom Login Page</body></html>",
+            ),
             change_password=auth0.PagesChangePasswordArgs(
                 enabled=True,
                 html="<html><body>My Custom Reset Password Page</body></html>",
-            ),
-            error=auth0.PagesErrorArgs(
-                html="<html><body>My Custom Error Page</body></html>",
-                show_log_link=True,
-                url="https://example.com",
             ),
             guardian_mfa=auth0.PagesGuardianMfaArgs(
                 enabled=True,
                 html="<html><body>My Custom MFA Page</body></html>",
             ),
-            login=auth0.PagesLoginArgs(
-                enabled=True,
-                html="<html><body>My Custom Login Page</body></html>",
+            error=auth0.PagesErrorArgs(
+                show_log_link=True,
+                html="<html><body>My Custom Error Page</body></html>",
+                url="https://example.com",
             ))
         ```
         <!--End PulumiCodeChooser -->
@@ -239,23 +239,23 @@ class Pages(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_pages = auth0.Pages("myPages",
+        my_pages = auth0.Pages("my_pages",
+            login=auth0.PagesLoginArgs(
+                enabled=True,
+                html="<html><body>My Custom Login Page</body></html>",
+            ),
             change_password=auth0.PagesChangePasswordArgs(
                 enabled=True,
                 html="<html><body>My Custom Reset Password Page</body></html>",
-            ),
-            error=auth0.PagesErrorArgs(
-                html="<html><body>My Custom Error Page</body></html>",
-                show_log_link=True,
-                url="https://example.com",
             ),
             guardian_mfa=auth0.PagesGuardianMfaArgs(
                 enabled=True,
                 html="<html><body>My Custom MFA Page</body></html>",
             ),
-            login=auth0.PagesLoginArgs(
-                enabled=True,
-                html="<html><body>My Custom Login Page</body></html>",
+            error=auth0.PagesErrorArgs(
+                show_log_link=True,
+                html="<html><body>My Custom Error Page</body></html>",
+                url="https://example.com",
             ))
         ```
         <!--End PulumiCodeChooser -->

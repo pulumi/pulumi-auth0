@@ -23,13 +23,14 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myResourceServer = new Auth0.ResourceServer("myResourceServer", new()
+    ///     var myResourceServer = new Auth0.ResourceServer("my_resource_server", new()
     ///     {
-    ///         AllowOfflineAccess = true,
+    ///         Name = "Example Resource Server (Managed by Terraform)",
     ///         Identifier = "https://api.example.com",
     ///         SigningAlg = "RS256",
-    ///         SkipConsentForVerifiableFirstPartyClients = true,
+    ///         AllowOfflineAccess = true,
     ///         TokenLifetime = 8600,
+    ///         SkipConsentForVerifiableFirstPartyClients = true,
     ///     });
     /// 
     /// });

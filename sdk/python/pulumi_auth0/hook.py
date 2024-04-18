@@ -241,20 +241,20 @@ class Hook(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_hook = auth0.Hook("myHook",
-            dependencies={
-                "auth0": "2.30.0",
-            },
-            enabled=True,
+        my_hook = auth0.Hook("my_hook",
+            name="My Pre User Registration Hook",
             script=\"\"\"    function (user, context, callback) {
               callback(null, { user });
             }
-          
         \"\"\",
+            trigger_id="pre-user-registration",
+            enabled=True,
             secrets={
                 "foo": "bar",
             },
-            trigger_id="pre-user-registration")
+            dependencies={
+                "auth0": "2.30.0",
+            })
         ```
         <!--End PulumiCodeChooser -->
 
@@ -297,20 +297,20 @@ class Hook(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_hook = auth0.Hook("myHook",
-            dependencies={
-                "auth0": "2.30.0",
-            },
-            enabled=True,
+        my_hook = auth0.Hook("my_hook",
+            name="My Pre User Registration Hook",
             script=\"\"\"    function (user, context, callback) {
               callback(null, { user });
             }
-          
         \"\"\",
+            trigger_id="pre-user-registration",
+            enabled=True,
             secrets={
                 "foo": "bar",
             },
-            trigger_id="pre-user-registration")
+            dependencies={
+                "auth0": "2.30.0",
+            })
         ```
         <!--End PulumiCodeChooser -->
 

@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myApi = new ResourceServer(&#34;myApi&#34;, ResourceServerArgs.builder()        
+ *             .name(&#34;Example Resource Server (Managed by Terraform)&#34;)
  *             .identifier(&#34;https://api.example.com&#34;)
  *             .build());
  * 

@@ -14,14 +14,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myLoginPromptPartials = new auth0.PromptPartials("myLoginPromptPartials", {
- *     formContentEnd: "<div>Updated Form Content End</div>",
- *     formContentStart: "<div>Updated Form Content Start</div>",
- *     formFooterEnd: "<div>Updated Footer End</div>",
- *     formFooterStart: "<div>Updated Footer Start</div>",
+ * const myLoginPromptPartials = new auth0.PromptPartials("my_login_prompt_partials", {
  *     prompt: "login",
- *     secondaryActionsEnd: "<div>Updated Secondary Actions End</div>",
+ *     formContentStart: "<div>Updated Form Content Start</div>",
+ *     formContentEnd: "<div>Updated Form Content End</div>",
+ *     formFooterStart: "<div>Updated Footer Start</div>",
+ *     formFooterEnd: "<div>Updated Footer End</div>",
  *     secondaryActionsStart: "<div>Updated Secondary Actions Start</div>",
+ *     secondaryActionsEnd: "<div>Updated Secondary Actions End</div>",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

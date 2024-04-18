@@ -45,13 +45,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var user = new User(&#34;user&#34;, UserArgs.builder()        
  *             .connectionName(&#34;Username-Password-Authentication&#34;)
- *             .email(&#34;test@test.com&#34;)
- *             .emailVerified(true)
- *             .nickname(&#34;some.nickname&#34;)
- *             .password(&#34;passpass$12$12&#34;)
- *             .picture(&#34;https://www.example.com/a-valid-picture-url.jpg&#34;)
  *             .userId(&#34;12345&#34;)
  *             .username(&#34;unique_username&#34;)
+ *             .name(&#34;Firstname Lastname&#34;)
+ *             .nickname(&#34;some.nickname&#34;)
+ *             .email(&#34;test@test.com&#34;)
+ *             .emailVerified(true)
+ *             .password(&#34;passpass$12$12&#34;)
+ *             .picture(&#34;https://www.example.com/a-valid-picture-url.jpg&#34;)
  *             .build());
  * 
  *     }

@@ -14,12 +14,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
- *     allowOfflineAccess: true,
+ * const myResourceServer = new auth0.ResourceServer("my_resource_server", {
+ *     name: "Example Resource Server (Managed by Terraform)",
  *     identifier: "https://api.example.com",
  *     signingAlg: "RS256",
- *     skipConsentForVerifiableFirstPartyClients: true,
+ *     allowOfflineAccess: true,
  *     tokenLifetime: 8600,
+ *     skipConsentForVerifiableFirstPartyClients: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

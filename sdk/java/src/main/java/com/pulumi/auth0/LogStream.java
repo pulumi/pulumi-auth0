@@ -47,36 +47,38 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // This is an example of an http log stream.
  *         var myWebhook = new LogStream(&#34;myWebhook&#34;, LogStreamArgs.builder()        
+ *             .name(&#34;HTTP log stream&#34;)
+ *             .type(&#34;http&#34;)
  *             .filters(            
  *                 Map.ofEntries(
- *                     Map.entry(&#34;name&#34;, &#34;auth.login.fail&#34;),
- *                     Map.entry(&#34;type&#34;, &#34;category&#34;)
+ *                     Map.entry(&#34;type&#34;, &#34;category&#34;),
+ *                     Map.entry(&#34;name&#34;, &#34;auth.login.fail&#34;)
  *                 ),
  *                 Map.ofEntries(
- *                     Map.entry(&#34;name&#34;, &#34;auth.signup.fail&#34;),
- *                     Map.entry(&#34;type&#34;, &#34;category&#34;)
+ *                     Map.entry(&#34;type&#34;, &#34;category&#34;),
+ *                     Map.entry(&#34;name&#34;, &#34;auth.signup.fail&#34;)
  *                 ))
  *             .sink(LogStreamSinkArgs.builder()
- *                 .httpAuthorization(&#34;AKIAXXXXXXXXXXXXXXXX&#34;)
- *                 .httpContentFormat(&#34;JSONOBJECT&#34;)
+ *                 .httpEndpoint(&#34;https://example.com/logs&#34;)
  *                 .httpContentType(&#34;application/json&#34;)
+ *                 .httpContentFormat(&#34;JSONOBJECT&#34;)
+ *                 .httpAuthorization(&#34;AKIAXXXXXXXXXXXXXXXX&#34;)
  *                 .httpCustomHeaders(Map.ofEntries(
  *                     Map.entry(&#34;header&#34;, &#34;foo&#34;),
  *                     Map.entry(&#34;value&#34;, &#34;bar&#34;)
  *                 ))
- *                 .httpEndpoint(&#34;https://example.com/logs&#34;)
  *                 .build())
- *             .type(&#34;http&#34;)
  *             .build());
  * 
  *         // This is an example of an Amazon EventBridge log stream.
  *         var exampleAws = new LogStream(&#34;exampleAws&#34;, LogStreamArgs.builder()        
+ *             .name(&#34;AWS Eventbridge&#34;)
+ *             .type(&#34;eventbridge&#34;)
+ *             .status(&#34;active&#34;)
  *             .sink(LogStreamSinkArgs.builder()
  *                 .awsAccountId(&#34;my_account_id&#34;)
  *                 .awsRegion(&#34;us-east-2&#34;)
  *                 .build())
- *             .status(&#34;active&#34;)
- *             .type(&#34;eventbridge&#34;)
  *             .build());
  * 
  *     }

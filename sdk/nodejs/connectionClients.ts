@@ -19,12 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myConn = new auth0.Connection("myConn", {strategy: "auth0"});
- * const myFirstClient = new auth0.Client("myFirstClient", {});
- * const mySecondClient = new auth0.Client("mySecondClient", {});
+ * const myConn = new auth0.Connection("my_conn", {
+ *     name: "My-Auth0-Connection",
+ *     strategy: "auth0",
+ * });
+ * const myFirstClient = new auth0.Client("my_first_client", {name: "My-First-Auth0-Client"});
+ * const mySecondClient = new auth0.Client("my_second_client", {name: "My-Second-Auth0-Client"});
  * // One connection to many clients association.
  * // To prevent issues, avoid using this resource together with the `auth0_connection_client` resource.
- * const myConnClientsAssoc = new auth0.ConnectionClients("myConnClientsAssoc", {
+ * const myConnClientsAssoc = new auth0.ConnectionClients("my_conn_clients_assoc", {
  *     connectionId: myConn.id,
  *     enabledClients: [
  *         myFirstClient.id,

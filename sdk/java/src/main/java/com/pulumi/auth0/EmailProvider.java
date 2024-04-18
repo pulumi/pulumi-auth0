@@ -20,67 +20,6 @@ import javax.annotation.Nullable;
 /**
  * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0&#39;s authentication workflows through the supported high-volume email service of your choice.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.auth0.EmailProvider;
- * import com.pulumi.auth0.EmailProviderArgs;
- * import com.pulumi.auth0.inputs.EmailProviderCredentialsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // This is an example on how to set up the email provider with Amazon SES.
- *         var amazonSesEmailProvider = new EmailProvider(&#34;amazonSesEmailProvider&#34;, EmailProviderArgs.builder()        
- *             .credentials(EmailProviderCredentialsArgs.builder()
- *                 .accessKeyId(&#34;AKIAXXXXXXXXXXXXXXXX&#34;)
- *                 .region(&#34;us-east-1&#34;)
- *                 .secretAccessKey(&#34;7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
- *                 .build())
- *             .defaultFromAddress(&#34;accounts@example.com&#34;)
- *             .enabled(true)
- *             .build());
- * 
- *         // This is an example on how to set up the email provider with Sendgrid.
- *         var sendgridEmailProvider = new EmailProvider(&#34;sendgridEmailProvider&#34;, EmailProviderArgs.builder()        
- *             .credentials(EmailProviderCredentialsArgs.builder()
- *                 .apiKey(&#34;secretAPIKey&#34;)
- *                 .build())
- *             .defaultFromAddress(&#34;accounts@example.com&#34;)
- *             .enabled(true)
- *             .build());
- * 
- *         // This is an example on how to set up the email provider with MS365.
- *         var smtpEmailProvider = new EmailProvider(&#34;smtpEmailProvider&#34;, EmailProviderArgs.builder()        
- *             .credentials(EmailProviderCredentialsArgs.builder()
- *                 .ms365ClientId(&#34;ms365_client_id&#34;)
- *                 .ms365ClientSecret(&#34;ms365_client_secret&#34;)
- *                 .ms365TenantId(&#34;ms365_tenant_id&#34;)
- *                 .build())
- *             .defaultFromAddress(&#34;accounts@example.com&#34;)
- *             .enabled(true)
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * As this is not a resource identifiable by an ID within the Auth0 Management API,

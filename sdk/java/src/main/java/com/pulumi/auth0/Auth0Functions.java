@@ -730,10 +730,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Client loaded using its name.
      *         final var some-client-by-name = Auth0Functions.getClient(GetClientArgs.builder()
      *             .name(&#34;Name of my Application&#34;)
      *             .build());
      * 
+     *         // An Auth0 Client loaded using its ID.
      *         final var some-client-by-id = Auth0Functions.getClient(GetClientArgs.builder()
      *             .clientId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -774,10 +776,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Client loaded using its name.
      *         final var some-client-by-name = Auth0Functions.getClient(GetClientArgs.builder()
      *             .name(&#34;Name of my Application&#34;)
      *             .build());
      * 
+     *         // An Auth0 Client loaded using its ID.
      *         final var some-client-by-id = Auth0Functions.getClient(GetClientArgs.builder()
      *             .clientId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -818,10 +822,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Client loaded using its name.
      *         final var some-client-by-name = Auth0Functions.getClient(GetClientArgs.builder()
      *             .name(&#34;Name of my Application&#34;)
      *             .build());
      * 
+     *         // An Auth0 Client loaded using its ID.
      *         final var some-client-by-id = Auth0Functions.getClient(GetClientArgs.builder()
      *             .clientId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -862,10 +868,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Client loaded using its name.
      *         final var some-client-by-name = Auth0Functions.getClient(GetClientArgs.builder()
      *             .name(&#34;Name of my Application&#34;)
      *             .build());
      * 
+     *         // An Auth0 Client loaded using its ID.
      *         final var some-client-by-id = Auth0Functions.getClient(GetClientArgs.builder()
      *             .clientId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -906,10 +914,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Client loaded using its name.
      *         final var some-client-by-name = Auth0Functions.getClient(GetClientArgs.builder()
      *             .name(&#34;Name of my Application&#34;)
      *             .build());
      * 
+     *         // An Auth0 Client loaded using its ID.
      *         final var some-client-by-id = Auth0Functions.getClient(GetClientArgs.builder()
      *             .clientId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -950,10 +960,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Client loaded using its name.
      *         final var some-client-by-name = Auth0Functions.getClient(GetClientArgs.builder()
      *             .name(&#34;Name of my Application&#34;)
      *             .build());
      * 
+     *         // An Auth0 Client loaded using its ID.
      *         final var some-client-by-id = Auth0Functions.getClient(GetClientArgs.builder()
      *             .clientId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -994,10 +1006,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Connection loaded using its name.
      *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
      *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
      *             .build());
      * 
+     *         // An Auth0 Connection loaded using its ID.
      *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
      *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -1038,10 +1052,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Connection loaded using its name.
      *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
      *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
      *             .build());
      * 
+     *         // An Auth0 Connection loaded using its ID.
      *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
      *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -1082,10 +1098,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Connection loaded using its name.
      *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
      *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
      *             .build());
      * 
+     *         // An Auth0 Connection loaded using its ID.
      *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
      *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -1126,10 +1144,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Connection loaded using its name.
      *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
      *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
      *             .build());
      * 
+     *         // An Auth0 Connection loaded using its ID.
      *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
      *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -1170,10 +1190,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Connection loaded using its name.
      *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
      *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
      *             .build());
      * 
+     *         // An Auth0 Connection loaded using its ID.
      *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
      *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -1214,10 +1236,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Connection loaded using its name.
      *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
      *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
      *             .build());
      * 
+     *         // An Auth0 Connection loaded using its ID.
      *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
      *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -1300,10 +1324,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Organization loaded using its name.
      *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
      *             .name(&#34;my-org&#34;)
      *             .build());
      * 
+     *         // An Auth0 Organization loaded using its ID.
      *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
      *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -1344,10 +1370,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Organization loaded using its name.
      *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
      *             .name(&#34;my-org&#34;)
      *             .build());
      * 
+     *         // An Auth0 Organization loaded using its ID.
      *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
      *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -1388,10 +1416,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Organization loaded using its name.
      *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
      *             .name(&#34;my-org&#34;)
      *             .build());
      * 
+     *         // An Auth0 Organization loaded using its ID.
      *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
      *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -1432,10 +1462,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Organization loaded using its name.
      *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
      *             .name(&#34;my-org&#34;)
      *             .build());
      * 
+     *         // An Auth0 Organization loaded using its ID.
      *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
      *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -1476,10 +1508,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Organization loaded using its name.
      *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
      *             .name(&#34;my-org&#34;)
      *             .build());
      * 
+     *         // An Auth0 Organization loaded using its ID.
      *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
      *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -1520,10 +1554,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Organization loaded using its name.
      *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
      *             .name(&#34;my-org&#34;)
      *             .build());
      * 
+     *         // An Auth0 Organization loaded using its ID.
      *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
      *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -1786,10 +1822,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Resource Server loaded using its identifier.
      *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
      *             .identifier(&#34;https://my-api.com/v1&#34;)
      *             .build());
      * 
+     *         // An Auth0 Resource Server loaded using its ID.
      *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
      *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -1830,10 +1868,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Resource Server loaded using its identifier.
      *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
      *             .identifier(&#34;https://my-api.com/v1&#34;)
      *             .build());
      * 
+     *         // An Auth0 Resource Server loaded using its ID.
      *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
      *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -1874,10 +1914,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Resource Server loaded using its identifier.
      *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
      *             .identifier(&#34;https://my-api.com/v1&#34;)
      *             .build());
      * 
+     *         // An Auth0 Resource Server loaded using its ID.
      *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
      *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -1918,10 +1960,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Resource Server loaded using its identifier.
      *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
      *             .identifier(&#34;https://my-api.com/v1&#34;)
      *             .build());
      * 
+     *         // An Auth0 Resource Server loaded using its ID.
      *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
      *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -1962,10 +2006,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Resource Server loaded using its identifier.
      *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
      *             .identifier(&#34;https://my-api.com/v1&#34;)
      *             .build());
      * 
+     *         // An Auth0 Resource Server loaded using its ID.
      *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
      *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -2006,10 +2052,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Resource Server loaded using its identifier.
      *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
      *             .identifier(&#34;https://my-api.com/v1&#34;)
      *             .build());
      * 
+     *         // An Auth0 Resource Server loaded using its ID.
      *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
      *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -2050,10 +2098,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Role loaded using its name.
      *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
      *             .name(&#34;my-role&#34;)
      *             .build());
      * 
+     *         // An Auth0 Role loaded using its ID.
      *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
      *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -2094,10 +2144,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Role loaded using its name.
      *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
      *             .name(&#34;my-role&#34;)
      *             .build());
      * 
+     *         // An Auth0 Role loaded using its ID.
      *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
      *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -2138,10 +2190,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Role loaded using its name.
      *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
      *             .name(&#34;my-role&#34;)
      *             .build());
      * 
+     *         // An Auth0 Role loaded using its ID.
      *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
      *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -2182,10 +2236,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Role loaded using its name.
      *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
      *             .name(&#34;my-role&#34;)
      *             .build());
      * 
+     *         // An Auth0 Role loaded using its ID.
      *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
      *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -2226,10 +2282,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Role loaded using its name.
      *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
      *             .name(&#34;my-role&#34;)
      *             .build());
      * 
+     *         // An Auth0 Role loaded using its ID.
      *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
      *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -2270,10 +2328,12 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Role loaded using its name.
      *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
      *             .name(&#34;my-role&#34;)
      *             .build());
      * 
+     *         // An Auth0 Role loaded using its ID.
      *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
      *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
      *             .build());
@@ -2578,6 +2638,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 User loaded using its ID.
      *         final var myUser = Auth0Functions.getUser(GetUserArgs.builder()
      *             .userId(&#34;auth0|34fdr23fdsfdfsf&#34;)
      *             .build());
@@ -2618,6 +2679,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 User loaded using its ID.
      *         final var myUser = Auth0Functions.getUser(GetUserArgs.builder()
      *             .userId(&#34;auth0|34fdr23fdsfdfsf&#34;)
      *             .build());
@@ -2658,6 +2720,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 User loaded using its ID.
      *         final var myUser = Auth0Functions.getUser(GetUserArgs.builder()
      *             .userId(&#34;auth0|34fdr23fdsfdfsf&#34;)
      *             .build());
@@ -2698,6 +2761,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 User loaded using its ID.
      *         final var myUser = Auth0Functions.getUser(GetUserArgs.builder()
      *             .userId(&#34;auth0|34fdr23fdsfdfsf&#34;)
      *             .build());

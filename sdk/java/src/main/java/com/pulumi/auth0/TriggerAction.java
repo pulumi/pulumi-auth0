@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var loginAlert = new Action(&#34;loginAlert&#34;, ActionArgs.builder()        
+ *             .name(&#34;Alert after login&#34;)
  *             .code(&#34;&#34;&#34;
  * exports.onContinuePostLogin = async (event, api) =&gt; {
  *   console.log(&#34;foo&#34;);

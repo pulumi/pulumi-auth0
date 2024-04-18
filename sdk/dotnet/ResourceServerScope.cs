@@ -27,18 +27,19 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var resourceServer = new Auth0.ResourceServer("resourceServer", new()
+    ///     var resourceServer = new Auth0.ResourceServer("resource_server", new()
     ///     {
+    ///         Name = "Example Resource Server (Managed by Terraform)",
     ///         Identifier = "https://api.example.com",
     ///     });
     /// 
-    ///     var readPosts = new Auth0.ResourceServerScope("readPosts", new()
+    ///     var readPosts = new Auth0.ResourceServerScope("read_posts", new()
     ///     {
     ///         ResourceServerIdentifier = resourceServer.Identifier,
     ///         Scope = "read:posts",
     ///     });
     /// 
-    ///     var writePosts = new Auth0.ResourceServerScope("writePosts", new()
+    ///     var writePosts = new Auth0.ResourceServerScope("write_posts", new()
     ///     {
     ///         ResourceServerIdentifier = resourceServer.Identifier,
     ///         Scope = "write:posts",

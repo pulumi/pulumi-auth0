@@ -34,19 +34,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myConn, err := auth0.NewConnection(ctx, "myConn", &auth0.ConnectionArgs{
+//			myConn, err := auth0.NewConnection(ctx, "my_conn", &auth0.ConnectionArgs{
+//				Name:     pulumi.String("My-Auth0-Connection"),
 //				Strategy: pulumi.String("auth0"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			myClient, err := auth0.NewClient(ctx, "myClient", nil)
+//			myClient, err := auth0.NewClient(ctx, "my_client", &auth0.ClientArgs{
+//				Name: pulumi.String("My-Auth0-Client"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			// One connection to one client association.
 //			// To prevent issues, avoid using this resource together with the `auth0_connection_clients` resource.
-//			_, err = auth0.NewConnectionClient(ctx, "myConnClientAssoc", &auth0.ConnectionClientArgs{
+//			_, err = auth0.NewConnectionClient(ctx, "my_conn_client_assoc", &auth0.ConnectionClientArgs{
 //				ConnectionId: myConn.ID(),
 //				ClientId:     myClient.ID(),
 //			})

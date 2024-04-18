@@ -31,16 +31,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewHook(ctx, "myHook", &auth0.HookArgs{
-//				Dependencies: pulumi.Map{
-//					"auth0": pulumi.Any("2.30.0"),
-//				},
-//				Enabled: pulumi.Bool(true),
-//				Script:  pulumi.String("    function (user, context, callback) {\n      callback(null, { user });\n    }\n  \n"),
+//			_, err := auth0.NewHook(ctx, "my_hook", &auth0.HookArgs{
+//				Name:      pulumi.String("My Pre User Registration Hook"),
+//				Script:    pulumi.String("    function (user, context, callback) {\n      callback(null, { user });\n    }\n"),
+//				TriggerId: pulumi.String("pre-user-registration"),
+//				Enabled:   pulumi.Bool(true),
 //				Secrets: pulumi.Map{
 //					"foo": pulumi.Any("bar"),
 //				},
-//				TriggerId: pulumi.String("pre-user-registration"),
+//				Dependencies: pulumi.Map{
+//					"auth0": pulumi.Any("2.30.0"),
+//				},
 //			})
 //			if err != nil {
 //				return err

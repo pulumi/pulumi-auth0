@@ -53,14 +53,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myConnection_1 = new Connection(&#34;myConnection-1&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;My Connection 1&#34;)
  *             .strategy(&#34;auth0&#34;)
  *             .build());
  * 
  *         var myConnection_2 = new Connection(&#34;myConnection-2&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;My Connection 2&#34;)
  *             .strategy(&#34;auth0&#34;)
  *             .build());
  * 
  *         var myOrganization = new Organization(&#34;myOrganization&#34;, OrganizationArgs.builder()        
+ *             .name(&#34;my-organization&#34;)
  *             .displayName(&#34;My Organization&#34;)
  *             .build());
  * 

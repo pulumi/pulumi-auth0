@@ -214,7 +214,9 @@ def get_resource_server(identifier: Optional[str] = None,
     import pulumi
     import pulumi_auth0 as auth0
 
+    # An Auth0 Resource Server loaded using its identifier.
     some_resource_server_by_identifier = auth0.get_resource_server(identifier="https://my-api.com/v1")
+    # An Auth0 Resource Server loaded using its ID.
     some_resource_server_by_id = auth0.get_resource_server(resource_server_id="abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
     <!--End PulumiCodeChooser -->
@@ -260,7 +262,9 @@ def get_resource_server_output(identifier: Optional[pulumi.Input[Optional[str]]]
     import pulumi
     import pulumi_auth0 as auth0
 
+    # An Auth0 Resource Server loaded using its identifier.
     some_resource_server_by_identifier = auth0.get_resource_server(identifier="https://my-api.com/v1")
+    # An Auth0 Resource Server loaded using its ID.
     some_resource_server_by_id = auth0.get_resource_server(resource_server_id="abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
     <!--End PulumiCodeChooser -->

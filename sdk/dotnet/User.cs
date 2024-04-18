@@ -26,13 +26,14 @@ namespace Pulumi.Auth0
     ///     var user = new Auth0.User("user", new()
     ///     {
     ///         ConnectionName = "Username-Password-Authentication",
-    ///         Email = "test@test.com",
-    ///         EmailVerified = true,
-    ///         Nickname = "some.nickname",
-    ///         Password = "passpass$12$12",
-    ///         Picture = "https://www.example.com/a-valid-picture-url.jpg",
     ///         UserId = "12345",
     ///         Username = "unique_username",
+    ///         Name = "Firstname Lastname",
+    ///         Nickname = "some.nickname",
+    ///         Email = "test@test.com",
+    ///         EmailVerified = true,
+    ///         Password = "passpass$12$12",
+    ///         Picture = "https://www.example.com/a-valid-picture-url.jpg",
     ///     });
     /// 
     /// });

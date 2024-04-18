@@ -25,11 +25,13 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // An Auth0 Client loaded using its name.
         ///     var some_client_by_name = Auth0.GetClient.Invoke(new()
         ///     {
         ///         Name = "Name of my Application",
         ///     });
         /// 
+        ///     // An Auth0 Client loaded using its ID.
         ///     var some_client_by_id = Auth0.GetClient.Invoke(new()
         ///     {
         ///         ClientId = "abcdefghkijklmnopqrstuvwxyz0123456789",
@@ -56,11 +58,13 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // An Auth0 Client loaded using its name.
         ///     var some_client_by_name = Auth0.GetClient.Invoke(new()
         ///     {
         ///         Name = "Name of my Application",
         ///     });
         /// 
+        ///     // An Auth0 Client loaded using its ID.
         ///     var some_client_by_id = Auth0.GetClient.Invoke(new()
         ///     {
         ///         ClientId = "abcdefghkijklmnopqrstuvwxyz0123456789",

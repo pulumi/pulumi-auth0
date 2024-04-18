@@ -33,6 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.Connection;
  * import com.pulumi.auth0.ConnectionArgs;
  * import com.pulumi.auth0.Client;
+ * import com.pulumi.auth0.ClientArgs;
  * import com.pulumi.auth0.ConnectionClient;
  * import com.pulumi.auth0.ConnectionClientArgs;
  * import java.util.List;
@@ -49,10 +50,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myConn = new Connection(&#34;myConn&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;My-Auth0-Connection&#34;)
  *             .strategy(&#34;auth0&#34;)
  *             .build());
  * 
- *         var myClient = new Client(&#34;myClient&#34;);
+ *         var myClient = new Client(&#34;myClient&#34;, ClientArgs.builder()        
+ *             .name(&#34;My-Auth0-Client&#34;)
+ *             .build());
  * 
  *         // One connection to one client association.
  *         // To prevent issues, avoid using this resource together with the `auth0_connection_clients` resource.

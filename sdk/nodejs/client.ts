@@ -16,38 +16,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myClient = new auth0.Client("myClient", {
- *     addons: {
- *         samlp: {
- *             audience: "https://example.com/saml",
- *             createUpnClaim: false,
- *             issuer: "https://example.com",
- *             mapIdentities: false,
- *             mapUnknownClaimsAsIs: false,
- *             mappings: {
- *                 email: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
- *                 name: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
- *             },
- *             nameIdentifierFormat: "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
- *             nameIdentifierProbes: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
- *             passthroughClaimsWithNoMapping: false,
- *             signingCert: `-----BEGIN PUBLIC KEY-----
- * MIGf...bpP/t3
- * +JGNGIRMj1hF1rnb6QIDAQAB
- * -----END PUBLIC KEY-----
- *
- * `,
- *         },
- *     },
- *     allowedLogoutUrls: ["https://example.com"],
- *     allowedOrigins: ["https://example.com"],
- *     appType: "non_interactive",
- *     callbacks: ["https://example.com/callback"],
- *     clientMetadata: {
- *         foo: "zoo",
- *     },
- *     customLoginPageOn: true,
+ * const myClient = new auth0.Client("my_client", {
+ *     name: "Application - Acceptance Test",
  *     description: "Test Applications Long Description",
+ *     appType: "non_interactive",
+ *     customLoginPageOn: true,
+ *     isFirstParty: true,
+ *     isTokenEndpointIpHeaderTrusted: true,
+ *     oidcConformant: false,
+ *     callbacks: ["https://example.com/callback"],
+ *     allowedOrigins: ["https://example.com"],
+ *     allowedLogoutUrls: ["https://example.com"],
+ *     webOrigins: ["https://example.com"],
  *     grantTypes: [
  *         "authorization_code",
  *         "http://auth0.com/oauth/grant-type/password-realm",
@@ -55,30 +35,50 @@ import * as utilities from "./utilities";
  *         "password",
  *         "refresh_token",
  *     ],
- *     isFirstParty: true,
- *     isTokenEndpointIpHeaderTrusted: true,
+ *     clientMetadata: {
+ *         foo: "zoo",
+ *     },
  *     jwtConfiguration: {
- *         alg: "RS256",
  *         lifetimeInSeconds: 300,
+ *         secretEncoded: true,
+ *         alg: "RS256",
  *         scopes: {
  *             foo: "bar",
  *         },
- *         secretEncoded: true,
+ *     },
+ *     refreshToken: {
+ *         leeway: 0,
+ *         tokenLifetime: 2592000,
+ *         rotationType: "rotating",
+ *         expirationType: "expiring",
  *     },
  *     mobile: {
  *         ios: {
- *             appBundleIdentifier: "com.my.bundle.id",
  *             teamId: "9JA89QQLNQ",
+ *             appBundleIdentifier: "com.my.bundle.id",
  *         },
  *     },
- *     oidcConformant: false,
- *     refreshToken: {
- *         expirationType: "expiring",
- *         leeway: 0,
- *         rotationType: "rotating",
- *         tokenLifetime: 2592000,
+ *     addons: {
+ *         samlp: {
+ *             audience: "https://example.com/saml",
+ *             issuer: "https://example.com",
+ *             mappings: {
+ *                 email: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+ *                 name: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+ *             },
+ *             createUpnClaim: false,
+ *             passthroughClaimsWithNoMapping: false,
+ *             mapUnknownClaimsAsIs: false,
+ *             mapIdentities: false,
+ *             nameIdentifierFormat: "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+ *             nameIdentifierProbes: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
+ *             signingCert: `-----BEGIN PUBLIC KEY-----
+ * MIGf...bpP/t3
+ * +JGNGIRMj1hF1rnb6QIDAQAB
+ * -----END PUBLIC KEY-----
+ * `,
+ *         },
  *     },
- *     webOrigins: ["https://example.com"],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

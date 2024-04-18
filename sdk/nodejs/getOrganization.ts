@@ -16,9 +16,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 Organization loaded using its name.
  * const some-organization-by-name = auth0.getOrganization({
  *     name: "my-org",
  * });
+ * // An Auth0 Organization loaded using its ID.
  * const some-organization-by-id = auth0.getOrganization({
  *     organizationId: "org_abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
@@ -93,9 +95,11 @@ export interface GetOrganizationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 Organization loaded using its name.
  * const some-organization-by-name = auth0.getOrganization({
  *     name: "my-org",
  * });
+ * // An Auth0 Organization loaded using its ID.
  * const some-organization-by-id = auth0.getOrganization({
  *     organizationId: "org_abcdefghkijklmnopqrstuvwxyz0123456789",
  * });

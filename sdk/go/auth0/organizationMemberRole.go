@@ -29,11 +29,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			reader, err := auth0.NewRole(ctx, "reader", nil)
+//			reader, err := auth0.NewRole(ctx, "reader", &auth0.RoleArgs{
+//				Name: pulumi.String("Reader"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			writer, err := auth0.NewRole(ctx, "writer", nil)
+//			writer, err := auth0.NewRole(ctx, "writer", &auth0.RoleArgs{
+//				Name: pulumi.String("Writer"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -45,13 +49,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			myOrg, err := auth0.NewOrganization(ctx, "myOrg", &auth0.OrganizationArgs{
+//			myOrg, err := auth0.NewOrganization(ctx, "my_org", &auth0.OrganizationArgs{
+//				Name:        pulumi.String("some-org"),
 //				DisplayName: pulumi.String("Some Org"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = auth0.NewOrganizationMember(ctx, "myOrgMember", &auth0.OrganizationMemberArgs{
+//			_, err = auth0.NewOrganizationMember(ctx, "my_org_member", &auth0.OrganizationMemberArgs{
 //				OrganizationId: myOrg.ID(),
 //				UserId:         user.ID(),
 //			})

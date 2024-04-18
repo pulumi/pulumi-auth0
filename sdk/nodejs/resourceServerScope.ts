@@ -18,12 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const resourceServer = new auth0.ResourceServer("resourceServer", {identifier: "https://api.example.com"});
- * const readPosts = new auth0.ResourceServerScope("readPosts", {
+ * const resourceServer = new auth0.ResourceServer("resource_server", {
+ *     name: "Example Resource Server (Managed by Terraform)",
+ *     identifier: "https://api.example.com",
+ * });
+ * const readPosts = new auth0.ResourceServerScope("read_posts", {
  *     resourceServerIdentifier: resourceServer.identifier,
  *     scope: "read:posts",
  * });
- * const writePosts = new auth0.ResourceServerScope("writePosts", {
+ * const writePosts = new auth0.ResourceServerScope("write_posts", {
  *     resourceServerIdentifier: resourceServer.identifier,
  *     scope: "write:posts",
  * });

@@ -34,15 +34,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewOrganization(ctx, "myOrganization", &auth0.OrganizationArgs{
-//				Branding: &auth0.OrganizationBrandingArgs{
-//					Colors: pulumi.StringMap{
-//						"pageBackground": pulumi.String("#e1e1e1"),
-//						"primary":        pulumi.String("#f2f2f2"),
-//					},
-//					LogoUrl: pulumi.String("https://example.com/assets/icons/icon.png"),
-//				},
+//			_, err := auth0.NewOrganization(ctx, "my_organization", &auth0.OrganizationArgs{
+//				Name:        pulumi.String("auth0-inc"),
 //				DisplayName: pulumi.String("Auth0 Inc."),
+//				Branding: &auth0.OrganizationBrandingArgs{
+//					LogoUrl: pulumi.String("https://example.com/assets/icons/icon.png"),
+//					Colors: pulumi.StringMap{
+//						"primary":         pulumi.String("#f2f2f2"),
+//						"page_background": pulumi.String("#e1e1e1"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

@@ -34,13 +34,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myApi, err := auth0.NewResourceServer(ctx, "myApi", &auth0.ResourceServerArgs{
+//			myApi, err := auth0.NewResourceServer(ctx, "my_api", &auth0.ResourceServerArgs{
+//				Name:       pulumi.String("Example Resource Server (Managed by Terraform)"),
 //				Identifier: pulumi.String("https://api.example.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = auth0.NewResourceServerScopes(ctx, "myApiScopes", &auth0.ResourceServerScopesArgs{
+//			_, err = auth0.NewResourceServerScopes(ctx, "my_api_scopes", &auth0.ResourceServerScopesArgs{
 //				ResourceServerIdentifier: myApi.Identifier,
 //				Scopes: auth0.ResourceServerScopesScopeArray{
 //					&auth0.ResourceServerScopesScopeArgs{

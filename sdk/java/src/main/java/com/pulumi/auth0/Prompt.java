@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myPrompt = new Prompt(&#34;myPrompt&#34;, PromptArgs.builder()        
- *             .identifierFirst(false)
  *             .universalLoginExperience(&#34;new&#34;)
+ *             .identifierFirst(false)
  *             .webauthnPlatformFirstFactor(true)
  *             .build());
  * 

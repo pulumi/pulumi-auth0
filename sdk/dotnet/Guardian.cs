@@ -23,20 +23,25 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myGuardian = new Auth0.Guardian("myGuardian", new()
+    ///     var myGuardian = new Auth0.Guardian("my_guardian", new()
     ///     {
-    ///         Duo = new Auth0.Inputs.GuardianDuoArgs
-    ///         {
-    ///             Enabled = true,
-    ///             Hostname = "api-hostname",
-    ///             IntegrationKey = "someKey",
-    ///             SecretKey = "someSecret",
-    ///         },
+    ///         Policy = "all-applications",
     ///         Email = true,
     ///         Otp = true,
+    ///         RecoveryCode = true,
+    ///         WebauthnPlatform = new Auth0.Inputs.GuardianWebauthnPlatformArgs
+    ///         {
+    ///             Enabled = true,
+    ///         },
+    ///         WebauthnRoaming = new Auth0.Inputs.GuardianWebauthnRoamingArgs
+    ///         {
+    ///             Enabled = true,
+    ///             UserVerification = "required",
+    ///         },
     ///         Phone = new Auth0.Inputs.GuardianPhoneArgs
     ///         {
     ///             Enabled = true,
+    ///             Provider = "auth0",
     ///             MessageTypes = new[]
     ///             {
     ///                 "sms",
@@ -47,11 +52,11 @@ namespace Pulumi.Auth0
     ///                 EnrollmentMessage = "{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
     ///                 VerificationMessage = "{{code}} is your verification code for {{tenant.friendly_name}}.",
     ///             },
-    ///             Provider = "auth0",
     ///         },
-    ///         Policy = "all-applications",
     ///         Push = new Auth0.Inputs.GuardianPushArgs
     ///         {
+    ///             Enabled = true,
+    ///             Provider = "sns",
     ///             AmazonSns = new Auth0.Inputs.GuardianPushAmazonSnsArgs
     ///             {
     ///                 AwsAccessKeyId = "test1",
@@ -66,18 +71,13 @@ namespace Pulumi.Auth0
     ///                 AppleAppLink = "https://itunes.apple.com/us/app/my-app/id123121",
     ///                 GoogleAppLink = "https://play.google.com/store/apps/details?id=com.my.app",
     ///             },
-    ///             Enabled = true,
-    ///             Provider = "sns",
     ///         },
-    ///         RecoveryCode = true,
-    ///         WebauthnPlatform = new Auth0.Inputs.GuardianWebauthnPlatformArgs
+    ///         Duo = new Auth0.Inputs.GuardianDuoArgs
     ///         {
     ///             Enabled = true,
-    ///         },
-    ///         WebauthnRoaming = new Auth0.Inputs.GuardianWebauthnRoamingArgs
-    ///         {
-    ///             Enabled = true,
-    ///             UserVerification = "required",
+    ///             IntegrationKey = "someKey",
+    ///             SecretKey = "someSecret",
+    ///             Hostname = "api-hostname",
     ///         },
     ///     });
     /// 

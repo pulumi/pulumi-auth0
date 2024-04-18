@@ -25,6 +25,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // An Auth0 User loaded using its ID.
         ///     var myUser = Auth0.GetUser.Invoke(new()
         ///     {
         ///         UserId = "auth0|34fdr23fdsfdfsf",
@@ -51,6 +52,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // An Auth0 User loaded using its ID.
         ///     var myUser = Auth0.GetUser.Invoke(new()
         ///     {
         ///         UserId = "auth0|34fdr23fdsfdfsf",

@@ -28,12 +28,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// An Auth0 Resource Server loaded using its identifier.
 //			_, err := auth0.LookupResourceServer(ctx, &auth0.LookupResourceServerArgs{
 //				Identifier: pulumi.StringRef("https://my-api.com/v1"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// An Auth0 Resource Server loaded using its ID.
 //			_, err = auth0.LookupResourceServer(ctx, &auth0.LookupResourceServerArgs{
 //				ResourceServerId: pulumi.StringRef("abcdefghkijklmnopqrstuvwxyz0123456789"),
 //			}, nil)

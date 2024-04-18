@@ -51,14 +51,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myOrganization = new Organization(&#34;myOrganization&#34;, OrganizationArgs.builder()        
- *             .branding(OrganizationBrandingArgs.builder()
- *                 .colors(Map.ofEntries(
- *                     Map.entry(&#34;pageBackground&#34;, &#34;#e1e1e1&#34;),
- *                     Map.entry(&#34;primary&#34;, &#34;#f2f2f2&#34;)
- *                 ))
- *                 .logoUrl(&#34;https://example.com/assets/icons/icon.png&#34;)
- *                 .build())
+ *             .name(&#34;auth0-inc&#34;)
  *             .displayName(&#34;Auth0 Inc.&#34;)
+ *             .branding(OrganizationBrandingArgs.builder()
+ *                 .logoUrl(&#34;https://example.com/assets/icons/icon.png&#34;)
+ *                 .colors(Map.ofEntries(
+ *                     Map.entry(&#34;primary&#34;, &#34;#f2f2f2&#34;),
+ *                     Map.entry(&#34;page_background&#34;, &#34;#e1e1e1&#34;)
+ *                 ))
+ *                 .build())
  *             .build());
  * 
  *     }

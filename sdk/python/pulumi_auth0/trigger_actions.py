@@ -113,7 +113,8 @@ class TriggerActions(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        action_foo = auth0.Action("actionFoo",
+        action_foo = auth0.Action("action_foo",
+            name="Test Trigger Binding Foo",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
           console.log("foo");
         };"
@@ -123,7 +124,8 @@ class TriggerActions(pulumi.CustomResource):
                 id="post-login",
                 version="v3",
             ))
-        action_bar = auth0.Action("actionBar",
+        action_bar = auth0.Action("action_bar",
+            name="Test Trigger Binding Bar",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
           console.log("bar");
         };"
@@ -133,7 +135,7 @@ class TriggerActions(pulumi.CustomResource):
                 id="post-login",
                 version="v3",
             ))
-        login_flow = auth0.TriggerActions("loginFlow",
+        login_flow = auth0.TriggerActions("login_flow",
             trigger="post-login",
             actions=[
                 auth0.TriggerActionsActionArgs(
@@ -185,7 +187,8 @@ class TriggerActions(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        action_foo = auth0.Action("actionFoo",
+        action_foo = auth0.Action("action_foo",
+            name="Test Trigger Binding Foo",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
           console.log("foo");
         };"
@@ -195,7 +198,8 @@ class TriggerActions(pulumi.CustomResource):
                 id="post-login",
                 version="v3",
             ))
-        action_bar = auth0.Action("actionBar",
+        action_bar = auth0.Action("action_bar",
+            name="Test Trigger Binding Bar",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
           console.log("bar");
         };"
@@ -205,7 +209,7 @@ class TriggerActions(pulumi.CustomResource):
                 id="post-login",
                 version="v3",
             ))
-        login_flow = auth0.TriggerActions("loginFlow",
+        login_flow = auth0.TriggerActions("login_flow",
             trigger="post-login",
             actions=[
                 auth0.TriggerActionsActionArgs(

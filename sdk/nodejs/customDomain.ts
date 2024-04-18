@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myCustomDomain = new auth0.CustomDomain("myCustomDomain", {
+ * const myCustomDomain = new auth0.CustomDomain("my_custom_domain", {
  *     domain: "auth.example.com",
  *     type: "auth0_managed_certs",
  * });

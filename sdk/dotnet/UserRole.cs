@@ -30,6 +30,7 @@ namespace Pulumi.Auth0
     ///     // Example:
     ///     var admin = new Auth0.Role("admin", new()
     ///     {
+    ///         Name = "admin",
     ///         Description = "Administrator",
     ///     });
     /// 
@@ -37,11 +38,12 @@ namespace Pulumi.Auth0
     ///     {
     ///         ConnectionName = "Username-Password-Authentication",
     ///         Username = "unique_username",
+    ///         Name = "Firstname Lastname",
     ///         Email = "test@test.com",
     ///         Password = "passpass$12$12",
     ///     });
     /// 
-    ///     var userRoles = new Auth0.UserRole("userRoles", new()
+    ///     var userRoles = new Auth0.UserRole("user_roles", new()
     ///     {
     ///         UserId = user.Id,
     ///         RoleId = admin.Id,

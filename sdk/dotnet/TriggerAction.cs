@@ -29,8 +29,9 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var loginAlert = new Auth0.Action("loginAlert", new()
+    ///     var loginAlert = new Auth0.Action("login_alert", new()
     ///     {
+    ///         Name = "Alert after login",
     ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
     ///   console.log(""foo"");
     /// };""
@@ -43,7 +44,7 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
-    ///     var postLoginAlertAction = new Auth0.TriggerAction("postLoginAlertAction", new()
+    ///     var postLoginAlertAction = new Auth0.TriggerAction("post_login_alert_action", new()
     ///     {
     ///         Trigger = "post-login",
     ///         ActionId = loginAlert.Id,

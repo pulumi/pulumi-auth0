@@ -29,12 +29,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
-//				AllowOfflineAccess: pulumi.Bool(true),
+//			_, err := auth0.NewResourceServer(ctx, "my_resource_server", &auth0.ResourceServerArgs{
+//				Name:               pulumi.String("Example Resource Server (Managed by Terraform)"),
 //				Identifier:         pulumi.String("https://api.example.com"),
 //				SigningAlg:         pulumi.String("RS256"),
+//				AllowOfflineAccess: pulumi.Bool(true),
+//				TokenLifetime:      pulumi.Int(8600),
 //				SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),
-//				TokenLifetime: pulumi.Int(8600),
 //			})
 //			if err != nil {
 //				return err

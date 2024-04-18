@@ -23,8 +23,9 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myEmailProvider = new Auth0.EmailProvider("myEmailProvider", new()
+    ///     var myEmailProvider = new Auth0.EmailProvider("my_email_provider", new()
     ///     {
+    ///         Name = "ses",
     ///         Enabled = true,
     ///         DefaultFromAddress = "accounts@example.com",
     ///         Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs
@@ -35,7 +36,7 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
-    ///     var myEmailTemplate = new Auth0.EmailTemplate("myEmailTemplate", new()
+    ///     var myEmailTemplate = new Auth0.EmailTemplate("my_email_template", new()
     ///     {
     ///         Template = "welcome_email",
     ///         Body = "&lt;html&gt;&lt;body&gt;&lt;h1&gt;Welcome!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;",

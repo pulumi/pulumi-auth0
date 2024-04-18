@@ -113,7 +113,9 @@ class Role(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_role = auth0.Role("myRole", description="Role Description...")
+        my_role = auth0.Role("my_role",
+            name="My Role - (Managed by Terraform)",
+            description="Role Description...")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -150,7 +152,9 @@ class Role(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_role = auth0.Role("myRole", description="Role Description...")
+        my_role = auth0.Role("my_role",
+            name="My Role - (Managed by Terraform)",
+            description="Role Description...")
         ```
         <!--End PulumiCodeChooser -->
 

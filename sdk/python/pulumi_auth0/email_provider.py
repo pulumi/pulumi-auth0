@@ -201,41 +201,6 @@ class EmailProvider(pulumi.CustomResource):
         """
         With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
 
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        # This is an example on how to set up the email provider with Amazon SES.
-        amazon_ses_email_provider = auth0.EmailProvider("amazonSesEmailProvider",
-            credentials=auth0.EmailProviderCredentialsArgs(
-                access_key_id="AKIAXXXXXXXXXXXXXXXX",
-                region="us-east-1",
-                secret_access_key="7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            ),
-            default_from_address="accounts@example.com",
-            enabled=True)
-        # This is an example on how to set up the email provider with Sendgrid.
-        sendgrid_email_provider = auth0.EmailProvider("sendgridEmailProvider",
-            credentials=auth0.EmailProviderCredentialsArgs(
-                api_key="secretAPIKey",
-            ),
-            default_from_address="accounts@example.com",
-            enabled=True)
-        # This is an example on how to set up the email provider with MS365.
-        smtp_email_provider = auth0.EmailProvider("smtpEmailProvider",
-            credentials=auth0.EmailProviderCredentialsArgs(
-                ms365_client_id="ms365_client_id",
-                ms365_client_secret="ms365_client_secret",
-                ms365_tenant_id="ms365_tenant_id",
-            ),
-            default_from_address="accounts@example.com",
-            enabled=True)
-        ```
-        <!--End PulumiCodeChooser -->
-
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API,
@@ -270,41 +235,6 @@ class EmailProvider(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        # This is an example on how to set up the email provider with Amazon SES.
-        amazon_ses_email_provider = auth0.EmailProvider("amazonSesEmailProvider",
-            credentials=auth0.EmailProviderCredentialsArgs(
-                access_key_id="AKIAXXXXXXXXXXXXXXXX",
-                region="us-east-1",
-                secret_access_key="7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            ),
-            default_from_address="accounts@example.com",
-            enabled=True)
-        # This is an example on how to set up the email provider with Sendgrid.
-        sendgrid_email_provider = auth0.EmailProvider("sendgridEmailProvider",
-            credentials=auth0.EmailProviderCredentialsArgs(
-                api_key="secretAPIKey",
-            ),
-            default_from_address="accounts@example.com",
-            enabled=True)
-        # This is an example on how to set up the email provider with MS365.
-        smtp_email_provider = auth0.EmailProvider("smtpEmailProvider",
-            credentials=auth0.EmailProviderCredentialsArgs(
-                ms365_client_id="ms365_client_id",
-                ms365_client_secret="ms365_client_secret",
-                ms365_tenant_id="ms365_tenant_id",
-            ),
-            default_from_address="accounts@example.com",
-            enabled=True)
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

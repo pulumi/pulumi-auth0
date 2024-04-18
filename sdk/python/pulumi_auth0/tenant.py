@@ -609,30 +609,30 @@ class Tenant(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_tenant = auth0.Tenant("myTenant",
-            allowed_logout_urls=["http://example.com/logout"],
-            default_redirection_uri="https://example.com/login",
-            enabled_locales=["en"],
-            flags=auth0.TenantFlagsArgs(
-                disable_clickjack_protection_headers=True,
-                disable_fields_map_fix=False,
-                disable_management_api_sms_obfuscation=False,
-                enable_public_signup_user_exists_error=True,
-                no_disclose_enterprise_connections=False,
-                use_scope_descriptions_for_consent=True,
-            ),
+        my_tenant = auth0.Tenant("my_tenant",
             friendly_name="Tenant Name",
             picture_url="http://example.com/logo.png",
+            support_email="support@example.com",
+            support_url="http://example.com/support",
+            allowed_logout_urls=["http://example.com/logout"],
+            session_lifetime=8760,
             sandbox_version="12",
+            enabled_locales=["en"],
+            default_redirection_uri="https://example.com/login",
+            flags=auth0.TenantFlagsArgs(
+                disable_clickjack_protection_headers=True,
+                enable_public_signup_user_exists_error=True,
+                use_scope_descriptions_for_consent=True,
+                no_disclose_enterprise_connections=False,
+                disable_management_api_sms_obfuscation=False,
+                disable_fields_map_fix=False,
+            ),
             session_cookie=auth0.TenantSessionCookieArgs(
                 mode="non-persistent",
             ),
-            session_lifetime=8760,
             sessions=auth0.TenantSessionsArgs(
                 oidc_logout_prompt_enabled=False,
-            ),
-            support_email="support@example.com",
-            support_url="http://example.com/support")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -693,30 +693,30 @@ class Tenant(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_tenant = auth0.Tenant("myTenant",
-            allowed_logout_urls=["http://example.com/logout"],
-            default_redirection_uri="https://example.com/login",
-            enabled_locales=["en"],
-            flags=auth0.TenantFlagsArgs(
-                disable_clickjack_protection_headers=True,
-                disable_fields_map_fix=False,
-                disable_management_api_sms_obfuscation=False,
-                enable_public_signup_user_exists_error=True,
-                no_disclose_enterprise_connections=False,
-                use_scope_descriptions_for_consent=True,
-            ),
+        my_tenant = auth0.Tenant("my_tenant",
             friendly_name="Tenant Name",
             picture_url="http://example.com/logo.png",
+            support_email="support@example.com",
+            support_url="http://example.com/support",
+            allowed_logout_urls=["http://example.com/logout"],
+            session_lifetime=8760,
             sandbox_version="12",
+            enabled_locales=["en"],
+            default_redirection_uri="https://example.com/login",
+            flags=auth0.TenantFlagsArgs(
+                disable_clickjack_protection_headers=True,
+                enable_public_signup_user_exists_error=True,
+                use_scope_descriptions_for_consent=True,
+                no_disclose_enterprise_connections=False,
+                disable_management_api_sms_obfuscation=False,
+                disable_fields_map_fix=False,
+            ),
             session_cookie=auth0.TenantSessionCookieArgs(
                 mode="non-persistent",
             ),
-            session_lifetime=8760,
             sessions=auth0.TenantSessionsArgs(
                 oidc_logout_prompt_enabled=False,
-            ),
-            support_email="support@example.com",
-            support_url="http://example.com/support")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

@@ -25,11 +25,13 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // An Auth0 Role loaded using its name.
         ///     var some_role_by_name = Auth0.GetRole.Invoke(new()
         ///     {
         ///         Name = "my-role",
         ///     });
         /// 
+        ///     // An Auth0 Role loaded using its ID.
         ///     var some_role_by_id = Auth0.GetRole.Invoke(new()
         ///     {
         ///         RoleId = "abcdefghkijklmnopqrstuvwxyz0123456789",
@@ -56,11 +58,13 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // An Auth0 Role loaded using its name.
         ///     var some_role_by_name = Auth0.GetRole.Invoke(new()
         ///     {
         ///         Name = "my-role",
         ///     });
         /// 
+        ///     // An Auth0 Role loaded using its ID.
         ///     var some_role_by_id = Auth0.GetRole.Invoke(new()
         ///     {
         ///         RoleId = "abcdefghkijklmnopqrstuvwxyz0123456789",

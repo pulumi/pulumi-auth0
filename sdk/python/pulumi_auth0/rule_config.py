@@ -107,14 +107,14 @@ class RuleConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_rule = auth0.Rule("myRule",
-            enabled=True,
+        my_rule = auth0.Rule("my_rule",
+            name="empty-rule",
             script=\"\"\"    function (user, context, callback) {
               callback(null, user, context);
             }
-          
-        \"\"\")
-        my_rule_config = auth0.RuleConfig("myRuleConfig",
+        \"\"\",
+            enabled=True)
+        my_rule_config = auth0.RuleConfig("my_rule_config",
             key="foo",
             value="bar")
         ```
@@ -153,14 +153,14 @@ class RuleConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_rule = auth0.Rule("myRule",
-            enabled=True,
+        my_rule = auth0.Rule("my_rule",
+            name="empty-rule",
             script=\"\"\"    function (user, context, callback) {
               callback(null, user, context);
             }
-          
-        \"\"\")
-        my_rule_config = auth0.RuleConfig("myRuleConfig",
+        \"\"\",
+            enabled=True)
+        my_rule_config = auth0.RuleConfig("my_rule_config",
             key="foo",
             value="bar")
         ```

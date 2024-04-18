@@ -20,48 +20,6 @@ import javax.annotation.Nullable;
 /**
  * This resource allows you to manage branding within your Auth0 tenant. Auth0 can be customized with a look and feel that aligns with your organization&#39;s brand requirements and user expectations.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.auth0.Branding;
- * import com.pulumi.auth0.BrandingArgs;
- * import com.pulumi.auth0.inputs.BrandingColorsArgs;
- * import com.pulumi.auth0.inputs.BrandingUniversalLoginArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var myBrand = new Branding(&#34;myBrand&#34;, BrandingArgs.builder()        
- *             .logoUrl(&#34;https://mycompany.org/logo.png&#34;)
- *             .colors(BrandingColorsArgs.builder()
- *                 .primary(&#34;#0059d6&#34;)
- *                 .pageBackground(&#34;#000000&#34;)
- *                 .build())
- *             .universalLogin(BrandingUniversalLoginArgs.builder()
- *                 .body(Files.readString(Paths.get(&#34;universal_login_body.html&#34;)))
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * As this is not a resource identifiable by an ID within the Auth0 Management API,

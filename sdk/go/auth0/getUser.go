@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// An Auth0 User loaded using its ID.
 //			_, err := auth0.LookupUser(ctx, &auth0.LookupUserArgs{
 //				UserId: "auth0|34fdr23fdsfdfsf",
 //			}, nil)

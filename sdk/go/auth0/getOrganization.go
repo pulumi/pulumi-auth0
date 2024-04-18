@@ -28,12 +28,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// An Auth0 Organization loaded using its name.
 //			_, err := auth0.LookupOrganization(ctx, &auth0.LookupOrganizationArgs{
 //				Name: pulumi.StringRef("my-org"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// An Auth0 Organization loaded using its ID.
 //			_, err = auth0.LookupOrganization(ctx, &auth0.LookupOrganizationArgs{
 //				OrganizationId: pulumi.StringRef("org_abcdefghkijklmnopqrstuvwxyz0123456789"),
 //			}, nil)
