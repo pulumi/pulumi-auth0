@@ -16,6 +16,7 @@ import (
 )
 
 func TestAccClient(t *testing.T) {
+	t.Skip("Skipping test because of https://github.com/pulumi/pulumi-auth0/issues/504")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "client"),
@@ -25,6 +26,7 @@ func TestAccClient(t *testing.T) {
 }
 
 func TestAccResourceServer(t *testing.T) {
+	t.Skip("Skipping test because of https://github.com/pulumi/pulumi-auth0/issues/504")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "resource-server"),
