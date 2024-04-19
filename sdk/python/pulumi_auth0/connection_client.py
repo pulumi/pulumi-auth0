@@ -139,7 +139,6 @@ class ConnectionClient(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -154,7 +153,6 @@ class ConnectionClient(pulumi.CustomResource):
             connection_id=my_conn.id,
             client_id=my_client.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -193,7 +191,6 @@ class ConnectionClient(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -208,7 +205,6 @@ class ConnectionClient(pulumi.CustomResource):
             connection_id=my_conn.id,
             client_id=my_client.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

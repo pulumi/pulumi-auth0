@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -25,7 +24,6 @@ import * as utilities from "./utilities";
  *     clientId: "abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClient(args?: GetClientArgs, opts?: pulumi.InvokeOptions): Promise<GetClientResult> {
     args = args || {};
@@ -204,7 +202,6 @@ export interface GetClientResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -218,7 +215,6 @@ export interface GetClientResult {
  *     clientId: "abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClientOutput(args?: GetClientOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClientResult> {
     return pulumi.output(args).apply((a: any) => getClient(a, opts))

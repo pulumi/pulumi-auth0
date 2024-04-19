@@ -11,14 +11,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myBrandingTheme = auth0.getBrandingTheme({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBrandingTheme(opts?: pulumi.InvokeOptions): Promise<GetBrandingThemeResult> {
 
@@ -50,14 +48,12 @@ export interface GetBrandingThemeResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myBrandingTheme = auth0.getBrandingTheme({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBrandingThemeOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetBrandingThemeResult> {
     return pulumi.output(getBrandingTheme(opts))

@@ -236,7 +236,6 @@ class Hook(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -256,7 +255,6 @@ class Hook(pulumi.CustomResource):
                 "auth0": "2.30.0",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -292,7 +290,6 @@ class Hook(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -312,7 +309,6 @@ class Hook(pulumi.CustomResource):
                 "auth0": "2.30.0",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
