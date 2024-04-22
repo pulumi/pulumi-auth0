@@ -50,7 +50,7 @@ namespace Pulumi.Auth0
     ///     {
     ///         DependsOn =
     ///         {
-    ///             myEmailProvider, 
+    ///             myEmailProvider,
     ///         },
     ///     });
     /// 
