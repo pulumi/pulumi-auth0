@@ -292,7 +292,7 @@
             "properties": {
                 "maxAttempts": {
                     "type": "integer",
-                    "description": "Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.\n"
+                    "description": "The maximum number of failed login attempts allowed from a single IP address.\n"
                 },
                 "rate": {
                     "type": "integer",
@@ -313,11 +313,11 @@
             "properties": {
                 "maxAttempts": {
                     "type": "integer",
-                    "description": "Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.\n"
+                    "description": "The maximum number of sign up attempts allowed from a single IP address.\n"
                 },
                 "rate": {
                     "type": "integer",
-                    "description": "Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.\n"
+                    "description": "Interval of time, given in milliseconds at which new sign up tokens will become available after they have been used by an IP address. Each sign up attempt will be added on the defined throttling rate.\n"
                 }
             },
             "type": "object",
@@ -551,11 +551,11 @@
             "properties": {
                 "bold": {
                     "type": "boolean",
-                    "description": "Body text bold. Defaults to `false`.\n"
+                    "description": "Buttons text bold. Defaults to `false`.\n"
                 },
                 "size": {
                     "type": "number",
-                    "description": "Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.\n"
+                    "description": "Buttons text size. Value needs to be between `0` and `150`. Defaults to `100.0`.\n"
                 }
             },
             "type": "object"
@@ -564,11 +564,11 @@
             "properties": {
                 "bold": {
                     "type": "boolean",
-                    "description": "Body text bold. Defaults to `false`.\n"
+                    "description": "Input labels bold. Defaults to `false`.\n"
                 },
                 "size": {
                     "type": "number",
-                    "description": "Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.\n"
+                    "description": "Input labels size. Value needs to be between `0` and `150`. Defaults to `100.0`.\n"
                 }
             },
             "type": "object"
@@ -577,11 +577,11 @@
             "properties": {
                 "bold": {
                     "type": "boolean",
-                    "description": "Body text bold. Defaults to `false`.\n"
+                    "description": "Links bold. Defaults to `true`.\n"
                 },
                 "size": {
                     "type": "number",
-                    "description": "Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.\n"
+                    "description": "Links size. Value needs to be between `0` and `150`. Defaults to `87.5`.\n"
                 }
             },
             "type": "object"
@@ -590,11 +590,11 @@
             "properties": {
                 "bold": {
                     "type": "boolean",
-                    "description": "Body text bold. Defaults to `false`.\n"
+                    "description": "Subtitle bold. Defaults to `false`.\n"
                 },
                 "size": {
                     "type": "number",
-                    "description": "Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.\n"
+                    "description": "Subtitle size. Value needs to be between `0` and `150`. Defaults to `87.5`.\n"
                 }
             },
             "type": "object"
@@ -603,11 +603,11 @@
             "properties": {
                 "bold": {
                     "type": "boolean",
-                    "description": "Body text bold. Defaults to `false`.\n"
+                    "description": "Title bold. Defaults to `false`.\n"
                 },
                 "size": {
                     "type": "number",
-                    "description": "Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.\n"
+                    "description": "Title size. Value needs to be between `75` and `150`. Defaults to `150.0`.\n"
                 }
             },
             "type": "object"
@@ -870,7 +870,7 @@
                 },
                 "expiration": {
                     "type": "integer",
-                    "description": "Expiration in minutes for the generated token (default of 5 minutes).\n"
+                    "description": "Optional expiration in minutes for the generated token. Defaults to 5 minutes.\n"
                 },
                 "namespace": {
                     "type": "string",
@@ -913,7 +913,7 @@
             "properties": {
                 "domain": {
                     "type": "string",
-                    "description": "Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.\n"
+                    "description": "Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.\n"
                 }
             },
             "type": "object"
@@ -926,7 +926,7 @@
                 },
                 "lifetimeInSeconds": {
                     "type": "integer",
-                    "description": "AWS token lifetime in seconds.\n"
+                    "description": "Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).\n"
                 },
                 "privateKey": {
                     "type": "string",
@@ -950,7 +950,7 @@
             "properties": {
                 "expiration": {
                     "type": "integer",
-                    "description": "Expiration in minutes for the generated token (default of 5 minutes).\n"
+                    "description": "Optional expiration in minutes for the generated token. Defaults to 5 minutes.\n"
                 },
                 "keyId": {
                     "type": "string",
@@ -959,11 +959,11 @@
                 },
                 "principal": {
                     "type": "string",
-                    "description": "AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.\n"
+                    "description": "Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.\n"
                 },
                 "privateKey": {
                     "type": "string",
-                    "description": "Private Key for signing the token (SDK v3+ tokens only).\n",
+                    "description": "Private key for signing the Layer token.\n",
                     "secret": true
                 },
                 "providerId": {
@@ -1004,7 +1004,7 @@
                 },
                 "domain": {
                     "type": "string",
-                    "description": "Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.\n"
+                    "description": "Your Office 365 domain name, for example `acme-org.com`.\n"
                 }
             },
             "type": "object"
@@ -1013,7 +1013,7 @@
             "properties": {
                 "url": {
                     "type": "string",
-                    "description": "Microsoft Dynamics CRM application URL.\n"
+                    "description": "URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.\n"
                 }
             },
             "type": "object"
@@ -1044,7 +1044,7 @@
                 },
                 "principal": {
                     "type": "string",
-                    "description": "AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.\n",
+                    "description": "Name of the property in the user object that maps to a Salesforce username, for example `email`.\n",
                     "secret": true
                 }
             },
@@ -1067,7 +1067,7 @@
                 },
                 "principal": {
                     "type": "string",
-                    "description": "AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.\n",
+                    "description": "Name of the property in the user object that maps to a Salesforce username, for example `email`.\n",
                     "secret": true
                 }
             },
@@ -1109,7 +1109,7 @@
                 },
                 "lifetimeInSeconds": {
                     "type": "integer",
-                    "description": "AWS token lifetime in seconds.\n"
+                    "description": "Number of seconds during which the token is valid. Defaults to `3600` seconds.\n"
                 },
                 "logout": {
                     "$ref": "#/types/auth0:index/ClientAddonsSamlpLogout:ClientAddonsSamlpLogout",
@@ -1185,11 +1185,11 @@
             "properties": {
                 "clientId": {
                     "type": "string",
-                    "description": "Consumer Key assigned by Salesforce to the Connected App.\n"
+                    "description": "If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute`client*id`must be set and equal the`client*id` form parameter of the access token request.\n"
                 },
                 "nameIdentifierFormat": {
                     "type": "string",
-                    "description": "Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.\n"
+                    "description": "NameID element of the Subject which can be used to express the user's identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.\n"
                 },
                 "scope": {
                     "type": "string",
@@ -1235,7 +1235,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "Microsoft Dynamics CRM application URL.\n"
+                    "description": "Internal SharePoint application URL.\n"
                 }
             },
             "type": "object"
@@ -1288,7 +1288,7 @@
             "properties": {
                 "accountName": {
                     "type": "string",
-                    "description": "Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.\n"
+                    "description": "Zendesk account name. Usually the first segment in your Zendesk URL, for example `https://acme-org.zendesk.com` would be `acme-org`.\n"
                 }
             },
             "type": "object"
@@ -1297,7 +1297,7 @@
             "properties": {
                 "account": {
                     "type": "string",
-                    "description": "Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.\n"
+                    "description": "Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.\n"
                 }
             },
             "type": "object"
@@ -2054,8 +2054,7 @@
                     "type": "string"
                 },
                 "clientId": {
-                    "type": "string",
-                    "description": "The strategy's client ID.\n"
+                    "type": "string"
                 },
                 "clientProtocol": {
                     "type": "string"
@@ -2104,8 +2103,7 @@
         "auth0:index/ConnectionOptionsPasswordHistory:ConnectionOptionsPasswordHistory": {
             "properties": {
                 "enable": {
-                    "type": "boolean",
-                    "description": "Indicates whether the password dictionary check is enabled for this connection.\n"
+                    "type": "boolean"
                 },
                 "size": {
                     "type": "integer"
@@ -2116,8 +2114,7 @@
         "auth0:index/ConnectionOptionsPasswordNoPersonalInfo:ConnectionOptionsPasswordNoPersonalInfo": {
             "properties": {
                 "enable": {
-                    "type": "boolean",
-                    "description": "Indicates whether the password dictionary check is enabled for this connection.\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2484,7 +2481,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Indicates whether Duo MFA is enabled.\n"
+                    "description": "Indicates whether the Apple Push Notification service is enabled.\n"
                 },
                 "p12": {
                     "type": "string",
@@ -6354,7 +6351,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Dependency name, e.g. `lodash`.\n"
+                    "description": "The name of the action.\n"
                 },
                 "runtime": {
                     "type": "string",
@@ -6401,7 +6398,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Dependency name, e.g. `lodash`.\n"
+                    "description": "The name of the action.\n"
                 },
                 "runtime": {
                     "type": "string",
@@ -6443,7 +6440,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Dependency name, e.g. `lodash`.\n"
+                        "description": "The name of the action.\n"
                     },
                     "runtime": {
                         "type": "string",
@@ -6733,7 +6730,7 @@
                 },
                 "clientId": {
                     "type": "string",
-                    "description": "Consumer Key assigned by Salesforce to the Connected App.\n"
+                    "description": "The ID of the client.\n"
                 },
                 "clientMetadata": {
                     "type": "object",
@@ -6807,7 +6804,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "SSO integration name.\n"
+                    "description": "Name of the client.\n"
                 },
                 "nativeSocialLogin": {
                     "$ref": "#/types/auth0:index/ClientNativeSocialLogin:ClientNativeSocialLogin",
@@ -6998,7 +6995,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "SSO integration name.\n"
+                    "description": "Name of the client.\n"
                 },
                 "nativeSocialLogin": {
                     "$ref": "#/types/auth0:index/ClientNativeSocialLogin:ClientNativeSocialLogin",
@@ -7095,7 +7092,7 @@
                     },
                     "clientId": {
                         "type": "string",
-                        "description": "Consumer Key assigned by Salesforce to the Connected App.\n"
+                        "description": "The ID of the client.\n"
                     },
                     "clientMetadata": {
                         "type": "object",
@@ -7169,7 +7166,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "SSO integration name.\n"
+                        "description": "Name of the client.\n"
                     },
                     "nativeSocialLogin": {
                         "$ref": "#/types/auth0:index/ClientNativeSocialLogin:ClientNativeSocialLogin",
@@ -7399,7 +7396,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The public name of the email or SMS Connection. In most cases this is the same name as the connection name.\n"
+                    "description": "Name of the connection.\n"
                 },
                 "options": {
                     "$ref": "#/types/auth0:index/ConnectionOptions:ConnectionOptions",
@@ -7446,7 +7443,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The public name of the email or SMS Connection. In most cases this is the same name as the connection name.\n",
+                    "description": "Name of the connection.\n",
                     "willReplaceOnChanges": true
                 },
                 "options": {
@@ -7493,7 +7490,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The public name of the email or SMS Connection. In most cases this is the same name as the connection name.\n",
+                        "description": "Name of the connection.\n",
                         "willReplaceOnChanges": true
                     },
                     "options": {
@@ -7914,7 +7911,7 @@
             }
         },
         "auth0:index/emailTemplate:EmailTemplate": {
-            "description": "With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myEmailProvider = new auth0.EmailProvider(\"my_email_provider\", {\n    name: \"ses\",\n    enabled: true,\n    defaultFromAddress: \"accounts@example.com\",\n    credentials: {\n        accessKeyId: \"AKIAXXXXXXXXXXXXXXXX\",\n        secretAccessKey: \"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        region: \"us-east-1\",\n    },\n});\nconst myEmailTemplate = new auth0.EmailTemplate(\"my_email_template\", {\n    template: \"welcome_email\",\n    body: \"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\",\n    from: \"welcome@example.com\",\n    resultUrl: \"https://example.com/welcome\",\n    subject: \"Welcome\",\n    syntax: \"liquid\",\n    urlLifetimeInSeconds: 3600,\n    enabled: true,\n}, {\n    dependsOn: [myEmailProvider],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_email_provider = auth0.EmailProvider(\"my_email_provider\",\n    name=\"ses\",\n    enabled=True,\n    default_from_address=\"accounts@example.com\",\n    credentials=auth0.EmailProviderCredentialsArgs(\n        access_key_id=\"AKIAXXXXXXXXXXXXXXXX\",\n        secret_access_key=\"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        region=\"us-east-1\",\n    ))\nmy_email_template = auth0.EmailTemplate(\"my_email_template\",\n    template=\"welcome_email\",\n    body=\"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\",\n    from_=\"welcome@example.com\",\n    result_url=\"https://example.com/welcome\",\n    subject=\"Welcome\",\n    syntax=\"liquid\",\n    url_lifetime_in_seconds=3600,\n    enabled=True,\n    opts=pulumi.ResourceOptions(depends_on=[my_email_provider]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myEmailProvider = new Auth0.EmailProvider(\"my_email_provider\", new()\n    {\n        Name = \"ses\",\n        Enabled = true,\n        DefaultFromAddress = \"accounts@example.com\",\n        Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs\n        {\n            AccessKeyId = \"AKIAXXXXXXXXXXXXXXXX\",\n            SecretAccessKey = \"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n            Region = \"us-east-1\",\n        },\n    });\n\n    var myEmailTemplate = new Auth0.EmailTemplate(\"my_email_template\", new()\n    {\n        Template = \"welcome_email\",\n        Body = \"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\",\n        From = \"welcome@example.com\",\n        ResultUrl = \"https://example.com/welcome\",\n        Subject = \"Welcome\",\n        Syntax = \"liquid\",\n        UrlLifetimeInSeconds = 3600,\n        Enabled = true,\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            myEmailProvider, \n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyEmailProvider, err := auth0.NewEmailProvider(ctx, \"my_email_provider\", \u0026auth0.EmailProviderArgs{\n\t\t\tName:               pulumi.String(\"ses\"),\n\t\t\tEnabled:            pulumi.Bool(true),\n\t\t\tDefaultFromAddress: pulumi.String(\"accounts@example.com\"),\n\t\t\tCredentials: \u0026auth0.EmailProviderCredentialsArgs{\n\t\t\t\tAccessKeyId:     pulumi.String(\"AKIAXXXXXXXXXXXXXXXX\"),\n\t\t\t\tSecretAccessKey: pulumi.String(\"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\t\tRegion:          pulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewEmailTemplate(ctx, \"my_email_template\", \u0026auth0.EmailTemplateArgs{\n\t\t\tTemplate:             pulumi.String(\"welcome_email\"),\n\t\t\tBody:                 pulumi.String(\"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\"),\n\t\t\tFrom:                 pulumi.String(\"welcome@example.com\"),\n\t\t\tResultUrl:            pulumi.String(\"https://example.com/welcome\"),\n\t\t\tSubject:              pulumi.String(\"Welcome\"),\n\t\t\tSyntax:               pulumi.String(\"liquid\"),\n\t\t\tUrlLifetimeInSeconds: pulumi.Int(3600),\n\t\t\tEnabled:              pulumi.Bool(true),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tmyEmailProvider,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.EmailProvider;\nimport com.pulumi.auth0.EmailProviderArgs;\nimport com.pulumi.auth0.inputs.EmailProviderCredentialsArgs;\nimport com.pulumi.auth0.EmailTemplate;\nimport com.pulumi.auth0.EmailTemplateArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myEmailProvider = new EmailProvider(\"myEmailProvider\", EmailProviderArgs.builder()        \n            .name(\"ses\")\n            .enabled(true)\n            .defaultFromAddress(\"accounts@example.com\")\n            .credentials(EmailProviderCredentialsArgs.builder()\n                .accessKeyId(\"AKIAXXXXXXXXXXXXXXXX\")\n                .secretAccessKey(\"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n                .region(\"us-east-1\")\n                .build())\n            .build());\n\n        var myEmailTemplate = new EmailTemplate(\"myEmailTemplate\", EmailTemplateArgs.builder()        \n            .template(\"welcome_email\")\n            .body(\"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\")\n            .from(\"welcome@example.com\")\n            .resultUrl(\"https://example.com/welcome\")\n            .subject(\"Welcome\")\n            .syntax(\"liquid\")\n            .urlLifetimeInSeconds(3600)\n            .enabled(true)\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(myEmailProvider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myEmailProvider:\n    type: auth0:EmailProvider\n    name: my_email_provider\n    properties:\n      name: ses\n      enabled: true\n      defaultFromAddress: accounts@example.com\n      credentials:\n        accessKeyId: AKIAXXXXXXXXXXXXXXXX\n        secretAccessKey: 7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n        region: us-east-1\n  myEmailTemplate:\n    type: auth0:EmailTemplate\n    name: my_email_template\n    properties:\n      template: welcome_email\n      body: \u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\n      from: welcome@example.com\n      resultUrl: https://example.com/welcome\n      subject: Welcome\n      syntax: liquid\n      urlLifetimeInSeconds: 3600\n      enabled: true\n    options:\n      dependson:\n        - ${myEmailProvider}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the pre-defined template name.\n\n#\n\nThese names are `verify_email`, `verify_email_by_code`, `reset_email`,\n\n`welcome_email`, `blocked_account`, `stolen_credentials`,\n\n`enrollment_email`, `mfa_oob_code`, and `user_invitation`.\n\n#\n\nThe names `change_password`, and `password_reset` are also supported\n\nfor legacy scenarios.\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template \"welcome_email\"\n```\n\n",
+            "description": "With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myEmailProvider = new auth0.EmailProvider(\"my_email_provider\", {\n    name: \"ses\",\n    enabled: true,\n    defaultFromAddress: \"accounts@example.com\",\n    credentials: {\n        accessKeyId: \"AKIAXXXXXXXXXXXXXXXX\",\n        secretAccessKey: \"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        region: \"us-east-1\",\n    },\n});\nconst myEmailTemplate = new auth0.EmailTemplate(\"my_email_template\", {\n    template: \"welcome_email\",\n    body: \"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\",\n    from: \"welcome@example.com\",\n    resultUrl: \"https://example.com/welcome\",\n    subject: \"Welcome\",\n    syntax: \"liquid\",\n    urlLifetimeInSeconds: 3600,\n    enabled: true,\n}, {\n    dependsOn: [myEmailProvider],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_email_provider = auth0.EmailProvider(\"my_email_provider\",\n    name=\"ses\",\n    enabled=True,\n    default_from_address=\"accounts@example.com\",\n    credentials=auth0.EmailProviderCredentialsArgs(\n        access_key_id=\"AKIAXXXXXXXXXXXXXXXX\",\n        secret_access_key=\"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        region=\"us-east-1\",\n    ))\nmy_email_template = auth0.EmailTemplate(\"my_email_template\",\n    template=\"welcome_email\",\n    body=\"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\",\n    from_=\"welcome@example.com\",\n    result_url=\"https://example.com/welcome\",\n    subject=\"Welcome\",\n    syntax=\"liquid\",\n    url_lifetime_in_seconds=3600,\n    enabled=True,\n    opts=pulumi.ResourceOptions(depends_on=[my_email_provider]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myEmailProvider = new Auth0.EmailProvider(\"my_email_provider\", new()\n    {\n        Name = \"ses\",\n        Enabled = true,\n        DefaultFromAddress = \"accounts@example.com\",\n        Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs\n        {\n            AccessKeyId = \"AKIAXXXXXXXXXXXXXXXX\",\n            SecretAccessKey = \"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n            Region = \"us-east-1\",\n        },\n    });\n\n    var myEmailTemplate = new Auth0.EmailTemplate(\"my_email_template\", new()\n    {\n        Template = \"welcome_email\",\n        Body = \"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\",\n        From = \"welcome@example.com\",\n        ResultUrl = \"https://example.com/welcome\",\n        Subject = \"Welcome\",\n        Syntax = \"liquid\",\n        UrlLifetimeInSeconds = 3600,\n        Enabled = true,\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            myEmailProvider,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyEmailProvider, err := auth0.NewEmailProvider(ctx, \"my_email_provider\", \u0026auth0.EmailProviderArgs{\n\t\t\tName:               pulumi.String(\"ses\"),\n\t\t\tEnabled:            pulumi.Bool(true),\n\t\t\tDefaultFromAddress: pulumi.String(\"accounts@example.com\"),\n\t\t\tCredentials: \u0026auth0.EmailProviderCredentialsArgs{\n\t\t\t\tAccessKeyId:     pulumi.String(\"AKIAXXXXXXXXXXXXXXXX\"),\n\t\t\t\tSecretAccessKey: pulumi.String(\"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\t\tRegion:          pulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewEmailTemplate(ctx, \"my_email_template\", \u0026auth0.EmailTemplateArgs{\n\t\t\tTemplate:             pulumi.String(\"welcome_email\"),\n\t\t\tBody:                 pulumi.String(\"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\"),\n\t\t\tFrom:                 pulumi.String(\"welcome@example.com\"),\n\t\t\tResultUrl:            pulumi.String(\"https://example.com/welcome\"),\n\t\t\tSubject:              pulumi.String(\"Welcome\"),\n\t\t\tSyntax:               pulumi.String(\"liquid\"),\n\t\t\tUrlLifetimeInSeconds: pulumi.Int(3600),\n\t\t\tEnabled:              pulumi.Bool(true),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tmyEmailProvider,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.EmailProvider;\nimport com.pulumi.auth0.EmailProviderArgs;\nimport com.pulumi.auth0.inputs.EmailProviderCredentialsArgs;\nimport com.pulumi.auth0.EmailTemplate;\nimport com.pulumi.auth0.EmailTemplateArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myEmailProvider = new EmailProvider(\"myEmailProvider\", EmailProviderArgs.builder()        \n            .name(\"ses\")\n            .enabled(true)\n            .defaultFromAddress(\"accounts@example.com\")\n            .credentials(EmailProviderCredentialsArgs.builder()\n                .accessKeyId(\"AKIAXXXXXXXXXXXXXXXX\")\n                .secretAccessKey(\"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n                .region(\"us-east-1\")\n                .build())\n            .build());\n\n        var myEmailTemplate = new EmailTemplate(\"myEmailTemplate\", EmailTemplateArgs.builder()        \n            .template(\"welcome_email\")\n            .body(\"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\")\n            .from(\"welcome@example.com\")\n            .resultUrl(\"https://example.com/welcome\")\n            .subject(\"Welcome\")\n            .syntax(\"liquid\")\n            .urlLifetimeInSeconds(3600)\n            .enabled(true)\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(myEmailProvider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myEmailProvider:\n    type: auth0:EmailProvider\n    name: my_email_provider\n    properties:\n      name: ses\n      enabled: true\n      defaultFromAddress: accounts@example.com\n      credentials:\n        accessKeyId: AKIAXXXXXXXXXXXXXXXX\n        secretAccessKey: 7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n        region: us-east-1\n  myEmailTemplate:\n    type: auth0:EmailTemplate\n    name: my_email_template\n    properties:\n      template: welcome_email\n      body: \u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\n      from: welcome@example.com\n      resultUrl: https://example.com/welcome\n      subject: Welcome\n      syntax: liquid\n      urlLifetimeInSeconds: 3600\n      enabled: true\n    options:\n      dependson:\n        - ${myEmailProvider}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the pre-defined template name.\n\n#\n\nThese names are `verify_email`, `verify_email_by_code`, `reset_email`,\n\n`welcome_email`, `blocked_account`, `stolen_credentials`,\n\n`enrollment_email`, `mfa_oob_code`, and `user_invitation`.\n\n#\n\nThe names `change_password`, and `password_reset` are also supported\n\nfor legacy scenarios.\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template \"welcome_email\"\n```\n\n",
             "properties": {
                 "body": {
                     "type": "string",
@@ -10745,10 +10742,12 @@
                 "description": "A collection of arguments for invoking getClient.\n",
                 "properties": {
                     "clientId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The ID of the client. If not provided, `name` must be set.\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name of the client. If not provided, `client_id` must be set.\n"
                     }
                 },
                 "type": "object"
@@ -11011,7 +11010,8 @@
                         "description": "The ID of the connection. If not provided, `name` must be set.\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name of the connection. If not provided, `connection_id` must be set.\n"
                     }
                 },
                 "type": "object"
@@ -11373,7 +11373,8 @@
                 "description": "A collection of arguments for invoking getRole.\n",
                 "properties": {
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name of the role. If not provided, `role_id` must be set.\n"
                     },
                     "roleId": {
                         "type": "string",
