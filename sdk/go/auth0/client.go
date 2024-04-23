@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -106,7 +105,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -136,7 +134,7 @@ type Client struct {
 	Callbacks pulumi.StringArrayOutput `pulumi:"callbacks"`
 	// List of audiences/realms for SAML protocol. Used by the wsfed addon.
 	ClientAliases pulumi.StringArrayOutput `pulumi:"clientAliases"`
-	// Consumer Key assigned by Salesforce to the Connected App.
+	// The ID of the client.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata pulumi.MapOutput `pulumi:"clientMetadata"`
@@ -168,7 +166,7 @@ type Client struct {
 	LogoUri pulumi.StringPtrOutput `pulumi:"logoUri"`
 	// Additional configuration for native mobile apps.
 	Mobile ClientMobileOutput `pulumi:"mobile"`
-	// SSO integration name.
+	// Name of the client.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
 	NativeSocialLogin ClientNativeSocialLoginOutput `pulumi:"nativeSocialLogin"`
@@ -245,7 +243,7 @@ type clientState struct {
 	Callbacks []string `pulumi:"callbacks"`
 	// List of audiences/realms for SAML protocol. Used by the wsfed addon.
 	ClientAliases []string `pulumi:"clientAliases"`
-	// Consumer Key assigned by Salesforce to the Connected App.
+	// The ID of the client.
 	ClientId *string `pulumi:"clientId"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata map[string]interface{} `pulumi:"clientMetadata"`
@@ -277,7 +275,7 @@ type clientState struct {
 	LogoUri *string `pulumi:"logoUri"`
 	// Additional configuration for native mobile apps.
 	Mobile *ClientMobile `pulumi:"mobile"`
-	// SSO integration name.
+	// Name of the client.
 	Name *string `pulumi:"name"`
 	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
 	NativeSocialLogin *ClientNativeSocialLogin `pulumi:"nativeSocialLogin"`
@@ -318,7 +316,7 @@ type ClientState struct {
 	Callbacks pulumi.StringArrayInput
 	// List of audiences/realms for SAML protocol. Used by the wsfed addon.
 	ClientAliases pulumi.StringArrayInput
-	// Consumer Key assigned by Salesforce to the Connected App.
+	// The ID of the client.
 	ClientId pulumi.StringPtrInput
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata pulumi.MapInput
@@ -350,7 +348,7 @@ type ClientState struct {
 	LogoUri pulumi.StringPtrInput
 	// Additional configuration for native mobile apps.
 	Mobile ClientMobilePtrInput
-	// SSO integration name.
+	// Name of the client.
 	Name pulumi.StringPtrInput
 	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
 	NativeSocialLogin ClientNativeSocialLoginPtrInput
@@ -425,7 +423,7 @@ type clientArgs struct {
 	LogoUri *string `pulumi:"logoUri"`
 	// Additional configuration for native mobile apps.
 	Mobile *ClientMobile `pulumi:"mobile"`
-	// SSO integration name.
+	// Name of the client.
 	Name *string `pulumi:"name"`
 	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
 	NativeSocialLogin *ClientNativeSocialLogin `pulumi:"nativeSocialLogin"`
@@ -495,7 +493,7 @@ type ClientArgs struct {
 	LogoUri pulumi.StringPtrInput
 	// Additional configuration for native mobile apps.
 	Mobile ClientMobilePtrInput
-	// SSO integration name.
+	// Name of the client.
 	Name pulumi.StringPtrInput
 	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
 	NativeSocialLogin ClientNativeSocialLoginPtrInput
@@ -641,7 +639,7 @@ func (o ClientOutput) ClientAliases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.ClientAliases }).(pulumi.StringArrayOutput)
 }
 
-// Consumer Key assigned by Salesforce to the Connected App.
+// The ID of the client.
 func (o ClientOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }
@@ -721,7 +719,7 @@ func (o ClientOutput) Mobile() ClientMobileOutput {
 	return o.ApplyT(func(v *Client) ClientMobileOutput { return v.Mobile }).(ClientMobileOutput)
 }
 
-// SSO integration name.
+// Name of the client.
 func (o ClientOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -16,14 +16,14 @@ public final class ClientAddonsEgnyteArgs extends com.pulumi.resources.ResourceA
     public static final ClientAddonsEgnyteArgs Empty = new ClientAddonsEgnyteArgs();
 
     /**
-     * Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * @return Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.
      * 
      */
     public Optional<Output<String>> domain() {
@@ -55,7 +55,7 @@ public final class ClientAddonsEgnyteArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param domain Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+         * @param domain Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ClientAddonsEgnyteArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param domain Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+         * @param domain Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.
          * 
          * @return builder
          * 

@@ -33,14 +33,14 @@ public final class GuardianPushDirectApnsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Indicates whether Duo MFA is enabled.
+     * Indicates whether the Apple Push Notification service is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Indicates whether Duo MFA is enabled.
+     * @return Indicates whether the Apple Push Notification service is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -126,7 +126,7 @@ public final class GuardianPushDirectApnsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param enabled Indicates whether Duo MFA is enabled.
+         * @param enabled Indicates whether the Apple Push Notification service is enabled.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class GuardianPushDirectApnsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param enabled Indicates whether Duo MFA is enabled.
+         * @param enabled Indicates whether the Apple Push Notification service is enabled.
          * 
          * @return builder
          * 

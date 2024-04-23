@@ -209,7 +209,6 @@ def get_resource_server(identifier: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_auth0 as auth0
@@ -219,7 +218,6 @@ def get_resource_server(identifier: Optional[str] = None,
     # An Auth0 Resource Server loaded using its ID.
     some_resource_server_by_id = auth0.get_resource_server(resource_server_id="abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
@@ -257,7 +255,6 @@ def get_resource_server_output(identifier: Optional[pulumi.Input[Optional[str]]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_auth0 as auth0
@@ -267,7 +264,6 @@ def get_resource_server_output(identifier: Optional[pulumi.Input[Optional[str]]]
     # An Auth0 Resource Server loaded using its ID.
     some_resource_server_by_id = auth0.get_resource_server(resource_server_id="abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.

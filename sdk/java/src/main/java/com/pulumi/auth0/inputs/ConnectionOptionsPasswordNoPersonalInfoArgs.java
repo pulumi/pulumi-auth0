@@ -15,17 +15,9 @@ public final class ConnectionOptionsPasswordNoPersonalInfoArgs extends com.pulum
 
     public static final ConnectionOptionsPasswordNoPersonalInfoArgs Empty = new ConnectionOptionsPasswordNoPersonalInfoArgs();
 
-    /**
-     * Indicates whether the password dictionary check is enabled for this connection.
-     * 
-     */
     @Import(name="enable")
     private @Nullable Output<Boolean> enable;
 
-    /**
-     * @return Indicates whether the password dictionary check is enabled for this connection.
-     * 
-     */
     public Optional<Output<Boolean>> enable() {
         return Optional.ofNullable(this.enable);
     }
@@ -54,23 +46,11 @@ public final class ConnectionOptionsPasswordNoPersonalInfoArgs extends com.pulum
             $ = new ConnectionOptionsPasswordNoPersonalInfoArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param enable Indicates whether the password dictionary check is enabled for this connection.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enable(@Nullable Output<Boolean> enable) {
             $.enable = enable;
             return this;
         }
 
-        /**
-         * @param enable Indicates whether the password dictionary check is enabled for this connection.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enable(Boolean enable) {
             return enable(Output.of(enable));
         }

@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ClientAddonsLayer
     {
         /// <summary>
-        /// Expiration in minutes for the generated token (default of 5 minutes).
+        /// Optional expiration in minutes for the generated token. Defaults to 5 minutes.
         /// </summary>
         public readonly int? Expiration;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string KeyId;
         /// <summary>
-        /// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        /// Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
         /// </summary>
         public readonly string? Principal;
         /// <summary>
-        /// Private Key for signing the token (SDK v3+ tokens only).
+        /// Private key for signing the Layer token.
         /// </summary>
         public readonly string PrivateKey;
         /// <summary>

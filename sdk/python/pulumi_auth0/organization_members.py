@@ -107,7 +107,6 @@ class OrganizationMembers(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -130,7 +129,6 @@ class OrganizationMembers(pulumi.CustomResource):
                 user2.id,
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -165,7 +163,6 @@ class OrganizationMembers(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -188,7 +185,6 @@ class OrganizationMembers(pulumi.CustomResource):
                 user2.id,
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AttackProtectionSuspiciousIpThrottlingPreLogin {
     /**
-     * @return Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+     * @return The maximum number of failed login attempts allowed from a single IP address.
      * 
      */
     private @Nullable Integer maxAttempts;
@@ -24,7 +24,7 @@ public final class AttackProtectionSuspiciousIpThrottlingPreLogin {
 
     private AttackProtectionSuspiciousIpThrottlingPreLogin() {}
     /**
-     * @return Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+     * @return The maximum number of failed login attempts allowed from a single IP address.
      * 
      */
     public Optional<Integer> maxAttempts() {

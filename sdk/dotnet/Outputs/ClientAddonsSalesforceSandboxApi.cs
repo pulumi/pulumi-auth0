@@ -26,7 +26,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? CommunityUrlSection;
         /// <summary>
-        /// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        /// Name of the property in the user object that maps to a Salesforce username, for example `email`.
         /// </summary>
         public readonly string? Principal;
 

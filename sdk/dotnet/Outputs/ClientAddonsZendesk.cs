@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ClientAddonsZendesk
     {
         /// <summary>
-        /// Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+        /// Zendesk account name. Usually the first segment in your Zendesk URL, for example `https://acme-org.zendesk.com` would be `acme-org`.
         /// </summary>
         public readonly string? AccountName;
 

@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClientAddonsLayer {
     /**
-     * @return Expiration in minutes for the generated token (default of 5 minutes).
+     * @return Optional expiration in minutes for the generated token. Defaults to 5 minutes.
      * 
      */
     private @Nullable Integer expiration;
@@ -24,12 +24,12 @@ public final class ClientAddonsLayer {
      */
     private String keyId;
     /**
-     * @return AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * @return Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
      * 
      */
     private @Nullable String principal;
     /**
-     * @return Private Key for signing the token (SDK v3+ tokens only).
+     * @return Private key for signing the Layer token.
      * 
      */
     private String privateKey;
@@ -41,7 +41,7 @@ public final class ClientAddonsLayer {
 
     private ClientAddonsLayer() {}
     /**
-     * @return Expiration in minutes for the generated token (default of 5 minutes).
+     * @return Optional expiration in minutes for the generated token. Defaults to 5 minutes.
      * 
      */
     public Optional<Integer> expiration() {
@@ -55,14 +55,14 @@ public final class ClientAddonsLayer {
         return this.keyId;
     }
     /**
-     * @return AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * @return Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
      * 
      */
     public Optional<String> principal() {
         return Optional.ofNullable(this.principal);
     }
     /**
-     * @return Private Key for signing the token (SDK v3+ tokens only).
+     * @return Private key for signing the Layer token.
      * 
      */
     public String privateKey() {

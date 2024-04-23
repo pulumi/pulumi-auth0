@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ClientAddonsRms
     {
         /// <summary>
-        /// Microsoft Dynamics CRM application URL.
+        /// URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
         /// </summary>
         public readonly string? Url;
 

@@ -29,9 +29,17 @@ public final class GetConnectionPlainArgs extends com.pulumi.resources.InvokeArg
         return Optional.ofNullable(this.connectionId);
     }
 
+    /**
+     * The name of the connection. If not provided, `connection_id` must be set.
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return The name of the connection. If not provided, `connection_id` must be set.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -72,6 +80,12 @@ public final class GetConnectionPlainArgs extends com.pulumi.resources.InvokeArg
             return this;
         }
 
+        /**
+         * @param name The name of the connection. If not provided, `connection_id` must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;

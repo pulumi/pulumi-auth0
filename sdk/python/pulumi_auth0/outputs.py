@@ -591,7 +591,7 @@ class AttackProtectionSuspiciousIpThrottlingPreLogin(dict):
                  max_attempts: Optional[int] = None,
                  rate: Optional[int] = None):
         """
-        :param int max_attempts: Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+        :param int max_attempts: The maximum number of failed login attempts allowed from a single IP address.
         :param int rate: Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
         """
         if max_attempts is not None:
@@ -603,7 +603,7 @@ class AttackProtectionSuspiciousIpThrottlingPreLogin(dict):
     @pulumi.getter(name="maxAttempts")
     def max_attempts(self) -> Optional[int]:
         """
-        Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+        The maximum number of failed login attempts allowed from a single IP address.
         """
         return pulumi.get(self, "max_attempts")
 
@@ -639,8 +639,8 @@ class AttackProtectionSuspiciousIpThrottlingPreUserRegistration(dict):
                  max_attempts: Optional[int] = None,
                  rate: Optional[int] = None):
         """
-        :param int max_attempts: Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
-        :param int rate: Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+        :param int max_attempts: The maximum number of sign up attempts allowed from a single IP address.
+        :param int rate: Interval of time, given in milliseconds at which new sign up tokens will become available after they have been used by an IP address. Each sign up attempt will be added on the defined throttling rate.
         """
         if max_attempts is not None:
             pulumi.set(__self__, "max_attempts", max_attempts)
@@ -651,7 +651,7 @@ class AttackProtectionSuspiciousIpThrottlingPreUserRegistration(dict):
     @pulumi.getter(name="maxAttempts")
     def max_attempts(self) -> Optional[int]:
         """
-        Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+        The maximum number of sign up attempts allowed from a single IP address.
         """
         return pulumi.get(self, "max_attempts")
 
@@ -659,7 +659,7 @@ class AttackProtectionSuspiciousIpThrottlingPreUserRegistration(dict):
     @pulumi.getter
     def rate(self) -> Optional[int]:
         """
-        Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+        Interval of time, given in milliseconds at which new sign up tokens will become available after they have been used by an IP address. Each sign up attempt will be added on the defined throttling rate.
         """
         return pulumi.get(self, "rate")
 
@@ -1318,8 +1318,8 @@ class BrandingThemeFontsButtonsText(dict):
                  bold: Optional[bool] = None,
                  size: Optional[float] = None):
         """
-        :param bool bold: Body text bold. Defaults to `false`.
-        :param float size: Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        :param bool bold: Buttons text bold. Defaults to `false`.
+        :param float size: Buttons text size. Value needs to be between `0` and `150`. Defaults to `100.0`.
         """
         if bold is not None:
             pulumi.set(__self__, "bold", bold)
@@ -1330,7 +1330,7 @@ class BrandingThemeFontsButtonsText(dict):
     @pulumi.getter
     def bold(self) -> Optional[bool]:
         """
-        Body text bold. Defaults to `false`.
+        Buttons text bold. Defaults to `false`.
         """
         return pulumi.get(self, "bold")
 
@@ -1338,7 +1338,7 @@ class BrandingThemeFontsButtonsText(dict):
     @pulumi.getter
     def size(self) -> Optional[float]:
         """
-        Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        Buttons text size. Value needs to be between `0` and `150`. Defaults to `100.0`.
         """
         return pulumi.get(self, "size")
 
@@ -1349,8 +1349,8 @@ class BrandingThemeFontsInputLabels(dict):
                  bold: Optional[bool] = None,
                  size: Optional[float] = None):
         """
-        :param bool bold: Body text bold. Defaults to `false`.
-        :param float size: Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        :param bool bold: Input labels bold. Defaults to `false`.
+        :param float size: Input labels size. Value needs to be between `0` and `150`. Defaults to `100.0`.
         """
         if bold is not None:
             pulumi.set(__self__, "bold", bold)
@@ -1361,7 +1361,7 @@ class BrandingThemeFontsInputLabels(dict):
     @pulumi.getter
     def bold(self) -> Optional[bool]:
         """
-        Body text bold. Defaults to `false`.
+        Input labels bold. Defaults to `false`.
         """
         return pulumi.get(self, "bold")
 
@@ -1369,7 +1369,7 @@ class BrandingThemeFontsInputLabels(dict):
     @pulumi.getter
     def size(self) -> Optional[float]:
         """
-        Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        Input labels size. Value needs to be between `0` and `150`. Defaults to `100.0`.
         """
         return pulumi.get(self, "size")
 
@@ -1380,8 +1380,8 @@ class BrandingThemeFontsLinks(dict):
                  bold: Optional[bool] = None,
                  size: Optional[float] = None):
         """
-        :param bool bold: Body text bold. Defaults to `false`.
-        :param float size: Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        :param bool bold: Links bold. Defaults to `true`.
+        :param float size: Links size. Value needs to be between `0` and `150`. Defaults to `87.5`.
         """
         if bold is not None:
             pulumi.set(__self__, "bold", bold)
@@ -1392,7 +1392,7 @@ class BrandingThemeFontsLinks(dict):
     @pulumi.getter
     def bold(self) -> Optional[bool]:
         """
-        Body text bold. Defaults to `false`.
+        Links bold. Defaults to `true`.
         """
         return pulumi.get(self, "bold")
 
@@ -1400,7 +1400,7 @@ class BrandingThemeFontsLinks(dict):
     @pulumi.getter
     def size(self) -> Optional[float]:
         """
-        Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        Links size. Value needs to be between `0` and `150`. Defaults to `87.5`.
         """
         return pulumi.get(self, "size")
 
@@ -1411,8 +1411,8 @@ class BrandingThemeFontsSubtitle(dict):
                  bold: Optional[bool] = None,
                  size: Optional[float] = None):
         """
-        :param bool bold: Body text bold. Defaults to `false`.
-        :param float size: Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        :param bool bold: Subtitle bold. Defaults to `false`.
+        :param float size: Subtitle size. Value needs to be between `0` and `150`. Defaults to `87.5`.
         """
         if bold is not None:
             pulumi.set(__self__, "bold", bold)
@@ -1423,7 +1423,7 @@ class BrandingThemeFontsSubtitle(dict):
     @pulumi.getter
     def bold(self) -> Optional[bool]:
         """
-        Body text bold. Defaults to `false`.
+        Subtitle bold. Defaults to `false`.
         """
         return pulumi.get(self, "bold")
 
@@ -1431,7 +1431,7 @@ class BrandingThemeFontsSubtitle(dict):
     @pulumi.getter
     def size(self) -> Optional[float]:
         """
-        Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        Subtitle size. Value needs to be between `0` and `150`. Defaults to `87.5`.
         """
         return pulumi.get(self, "size")
 
@@ -1442,8 +1442,8 @@ class BrandingThemeFontsTitle(dict):
                  bold: Optional[bool] = None,
                  size: Optional[float] = None):
         """
-        :param bool bold: Body text bold. Defaults to `false`.
-        :param float size: Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        :param bool bold: Title bold. Defaults to `false`.
+        :param float size: Title size. Value needs to be between `75` and `150`. Defaults to `150.0`.
         """
         if bold is not None:
             pulumi.set(__self__, "bold", bold)
@@ -1454,7 +1454,7 @@ class BrandingThemeFontsTitle(dict):
     @pulumi.getter
     def bold(self) -> Optional[bool]:
         """
-        Body text bold. Defaults to `false`.
+        Title bold. Defaults to `false`.
         """
         return pulumi.get(self, "bold")
 
@@ -1462,7 +1462,7 @@ class BrandingThemeFontsTitle(dict):
     @pulumi.getter
     def size(self) -> Optional[float]:
         """
-        Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        Title size. Value needs to be between `75` and `150`. Defaults to `150.0`.
         """
         return pulumi.get(self, "size")
 
@@ -2316,7 +2316,7 @@ class ClientAddonsAzureSb(dict):
                  sas_key_name: Optional[str] = None):
         """
         :param str entity_path: Entity you want to request a token for, such as `my-queue`.
-        :param int expiration: Expiration in minutes for the generated token (default of 5 minutes).
+        :param int expiration: Optional expiration in minutes for the generated token. Defaults to 5 minutes.
         :param str namespace: Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
         :param str sas_key: Primary Key associated with your shared access policy.
         :param str sas_key_name: Your shared access policy name defined in your Service Bus entity.
@@ -2344,7 +2344,7 @@ class ClientAddonsAzureSb(dict):
     @pulumi.getter
     def expiration(self) -> Optional[int]:
         """
-        Expiration in minutes for the generated token (default of 5 minutes).
+        Optional expiration in minutes for the generated token. Defaults to 5 minutes.
         """
         return pulumi.get(self, "expiration")
 
@@ -2421,7 +2421,7 @@ class ClientAddonsEgnyte(dict):
     def __init__(__self__, *,
                  domain: Optional[str] = None):
         """
-        :param str domain: Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+        :param str domain: Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
@@ -2430,7 +2430,7 @@ class ClientAddonsEgnyte(dict):
     @pulumi.getter
     def domain(self) -> Optional[str]:
         """
-        Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+        Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.
         """
         return pulumi.get(self, "domain")
 
@@ -2468,7 +2468,7 @@ class ClientAddonsFirebase(dict):
                  secret: Optional[str] = None):
         """
         :param str client_email: ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
-        :param int lifetime_in_seconds: AWS token lifetime in seconds.
+        :param int lifetime_in_seconds: Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).
         :param str private_key: Private Key for signing the token (SDK v3+ tokens only).
         :param str private_key_id: Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).
         :param str secret: Google Firebase Secret. (SDK v2 only).
@@ -2496,7 +2496,7 @@ class ClientAddonsFirebase(dict):
     @pulumi.getter(name="lifetimeInSeconds")
     def lifetime_in_seconds(self) -> Optional[int]:
         """
-        AWS token lifetime in seconds.
+        Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).
         """
         return pulumi.get(self, "lifetime_in_seconds")
 
@@ -2556,10 +2556,10 @@ class ClientAddonsLayer(dict):
                  principal: Optional[str] = None):
         """
         :param str key_id: Authentication Key identifier used to sign the Layer token.
-        :param str private_key: Private Key for signing the token (SDK v3+ tokens only).
+        :param str private_key: Private key for signing the Layer token.
         :param str provider_id: Provider ID of your Layer account.
-        :param int expiration: Expiration in minutes for the generated token (default of 5 minutes).
-        :param str principal: AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        :param int expiration: Optional expiration in minutes for the generated token. Defaults to 5 minutes.
+        :param str principal: Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
         """
         pulumi.set(__self__, "key_id", key_id)
         pulumi.set(__self__, "private_key", private_key)
@@ -2581,7 +2581,7 @@ class ClientAddonsLayer(dict):
     @pulumi.getter(name="privateKey")
     def private_key(self) -> str:
         """
-        Private Key for signing the token (SDK v3+ tokens only).
+        Private key for signing the Layer token.
         """
         return pulumi.get(self, "private_key")
 
@@ -2597,7 +2597,7 @@ class ClientAddonsLayer(dict):
     @pulumi.getter
     def expiration(self) -> Optional[int]:
         """
-        Expiration in minutes for the generated token (default of 5 minutes).
+        Optional expiration in minutes for the generated token. Defaults to 5 minutes.
         """
         return pulumi.get(self, "expiration")
 
@@ -2605,7 +2605,7 @@ class ClientAddonsLayer(dict):
     @pulumi.getter
     def principal(self) -> Optional[str]:
         """
-        AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
         """
         return pulumi.get(self, "principal")
 
@@ -2655,7 +2655,7 @@ class ClientAddonsOffice365(dict):
                  domain: Optional[str] = None):
         """
         :param str connection: Optional Auth0 database connection for testing an already-configured Office 365 tenant.
-        :param str domain: Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+        :param str domain: Your Office 365 domain name, for example `acme-org.com`.
         """
         if connection is not None:
             pulumi.set(__self__, "connection", connection)
@@ -2674,7 +2674,7 @@ class ClientAddonsOffice365(dict):
     @pulumi.getter
     def domain(self) -> Optional[str]:
         """
-        Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+        Your Office 365 domain name, for example `acme-org.com`.
         """
         return pulumi.get(self, "domain")
 
@@ -2684,7 +2684,7 @@ class ClientAddonsRms(dict):
     def __init__(__self__, *,
                  url: Optional[str] = None):
         """
-        :param str url: Microsoft Dynamics CRM application URL.
+        :param str url: URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
         """
         if url is not None:
             pulumi.set(__self__, "url", url)
@@ -2693,7 +2693,7 @@ class ClientAddonsRms(dict):
     @pulumi.getter
     def url(self) -> Optional[str]:
         """
-        Microsoft Dynamics CRM application URL.
+        URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
         """
         return pulumi.get(self, "url")
 
@@ -2766,7 +2766,7 @@ class ClientAddonsSalesforceApi(dict):
         :param str client_id: Consumer Key assigned by Salesforce to the Connected App.
         :param str community_name: Community name.
         :param str community_url_section: Community URL section.
-        :param str principal: AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        :param str principal: Name of the property in the user object that maps to a Salesforce username, for example `email`.
         """
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
@@ -2805,7 +2805,7 @@ class ClientAddonsSalesforceApi(dict):
     @pulumi.getter
     def principal(self) -> Optional[str]:
         """
-        AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        Name of the property in the user object that maps to a Salesforce username, for example `email`.
         """
         return pulumi.get(self, "principal")
 
@@ -2842,7 +2842,7 @@ class ClientAddonsSalesforceSandboxApi(dict):
         :param str client_id: Consumer Key assigned by Salesforce to the Connected App.
         :param str community_name: Community name.
         :param str community_url_section: Community URL section.
-        :param str principal: AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        :param str principal: Name of the property in the user object that maps to a Salesforce username, for example `email`.
         """
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
@@ -2881,7 +2881,7 @@ class ClientAddonsSalesforceSandboxApi(dict):
     @pulumi.getter
     def principal(self) -> Optional[str]:
         """
-        AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        Name of the property in the user object that maps to a Salesforce username, for example `email`.
         """
         return pulumi.get(self, "principal")
 
@@ -2962,7 +2962,7 @@ class ClientAddonsSamlp(dict):
         :param str digest_algorithm: Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
         :param bool include_attribute_name_format: Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
         :param str issuer: Issuer of the SAML Assertion.
-        :param int lifetime_in_seconds: AWS token lifetime in seconds.
+        :param int lifetime_in_seconds: Number of seconds during which the token is valid. Defaults to `3600` seconds.
         :param 'ClientAddonsSamlpLogoutArgs' logout: Configuration settings for logout.
         :param bool map_identities: Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
         :param bool map_unknown_claims_as_is: Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
@@ -3087,7 +3087,7 @@ class ClientAddonsSamlp(dict):
     @pulumi.getter(name="lifetimeInSeconds")
     def lifetime_in_seconds(self) -> Optional[int]:
         """
-        AWS token lifetime in seconds.
+        Number of seconds during which the token is valid. Defaults to `3600` seconds.
         """
         return pulumi.get(self, "lifetime_in_seconds")
 
@@ -3271,8 +3271,8 @@ class ClientAddonsSapApi(dict):
                  token_endpoint_url: Optional[str] = None,
                  username_attribute: Optional[str] = None):
         """
-        :param str client_id: Consumer Key assigned by Salesforce to the Connected App.
-        :param str name_identifier_format: Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+        :param str client_id: If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute`client*id`must be set and equal the`client*id` form parameter of the access token request.
+        :param str name_identifier_format: NameID element of the Subject which can be used to express the user's identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
         :param str scope: Requested scope for SAP APIs.
         :param str service_password: Service account password to use to authenticate API calls to the token endpoint.
         :param str token_endpoint_url: The OAuth2 token endpoint URL of your SAP OData server.
@@ -3295,7 +3295,7 @@ class ClientAddonsSapApi(dict):
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
         """
-        Consumer Key assigned by Salesforce to the Connected App.
+        If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute`client*id`must be set and equal the`client*id` form parameter of the access token request.
         """
         return pulumi.get(self, "client_id")
 
@@ -3303,7 +3303,7 @@ class ClientAddonsSapApi(dict):
     @pulumi.getter(name="nameIdentifierFormat")
     def name_identifier_format(self) -> Optional[str]:
         """
-        Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+        NameID element of the Subject which can be used to express the user's identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
         """
         return pulumi.get(self, "name_identifier_format")
 
@@ -3414,7 +3414,7 @@ class ClientAddonsSharepoint(dict):
                  url: Optional[str] = None):
         """
         :param Sequence[str] external_urls: External SharePoint application URLs if exposed to the Internet.
-        :param str url: Microsoft Dynamics CRM application URL.
+        :param str url: Internal SharePoint application URL.
         """
         if external_urls is not None:
             pulumi.set(__self__, "external_urls", external_urls)
@@ -3433,7 +3433,7 @@ class ClientAddonsSharepoint(dict):
     @pulumi.getter
     def url(self) -> Optional[str]:
         """
-        Microsoft Dynamics CRM application URL.
+        Internal SharePoint application URL.
         """
         return pulumi.get(self, "url")
 
@@ -3588,7 +3588,7 @@ class ClientAddonsZendesk(dict):
     def __init__(__self__, *,
                  account_name: Optional[str] = None):
         """
-        :param str account_name: Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+        :param str account_name: Zendesk account name. Usually the first segment in your Zendesk URL, for example `https://acme-org.zendesk.com` would be `acme-org`.
         """
         if account_name is not None:
             pulumi.set(__self__, "account_name", account_name)
@@ -3597,7 +3597,7 @@ class ClientAddonsZendesk(dict):
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[str]:
         """
-        Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+        Zendesk account name. Usually the first segment in your Zendesk URL, for example `https://acme-org.zendesk.com` would be `acme-org`.
         """
         return pulumi.get(self, "account_name")
 
@@ -3607,7 +3607,7 @@ class ClientAddonsZoom(dict):
     def __init__(__self__, *,
                  account: Optional[str] = None):
         """
-        :param str account: Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+        :param str account: Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
         """
         if account is not None:
             pulumi.set(__self__, "account", account)
@@ -3616,7 +3616,7 @@ class ClientAddonsZoom(dict):
     @pulumi.getter
     def account(self) -> Optional[str]:
         """
-        Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+        Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
         """
         return pulumi.get(self, "account")
 
@@ -5598,9 +5598,6 @@ class ConnectionOptionsIdpInitiated(dict):
                  client_authorize_query: Optional[str] = None,
                  client_id: Optional[str] = None,
                  client_protocol: Optional[str] = None):
-        """
-        :param str client_id: The strategy's client ID.
-        """
         if client_authorize_query is not None:
             pulumi.set(__self__, "client_authorize_query", client_authorize_query)
         if client_id is not None:
@@ -5616,9 +5613,6 @@ class ConnectionOptionsIdpInitiated(dict):
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
-        """
-        The strategy's client ID.
-        """
         return pulumi.get(self, "client_id")
 
     @property
@@ -5747,9 +5741,6 @@ class ConnectionOptionsPasswordHistory(dict):
     def __init__(__self__, *,
                  enable: Optional[bool] = None,
                  size: Optional[int] = None):
-        """
-        :param bool enable: Indicates whether the password dictionary check is enabled for this connection.
-        """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if size is not None:
@@ -5758,9 +5749,6 @@ class ConnectionOptionsPasswordHistory(dict):
     @property
     @pulumi.getter
     def enable(self) -> Optional[bool]:
-        """
-        Indicates whether the password dictionary check is enabled for this connection.
-        """
         return pulumi.get(self, "enable")
 
     @property
@@ -5773,18 +5761,12 @@ class ConnectionOptionsPasswordHistory(dict):
 class ConnectionOptionsPasswordNoPersonalInfo(dict):
     def __init__(__self__, *,
                  enable: Optional[bool] = None):
-        """
-        :param bool enable: Indicates whether the password dictionary check is enabled for this connection.
-        """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
 
     @property
     @pulumi.getter
     def enable(self) -> Optional[bool]:
-        """
-        Indicates whether the password dictionary check is enabled for this connection.
-        """
         return pulumi.get(self, "enable")
 
 
@@ -6773,7 +6755,7 @@ class GuardianPushDirectApns(dict):
         :param str bundle_id: The Apple Push Notification service Bundle ID.
         :param str p12: The base64 encoded certificate in P12 format.
         :param bool sandbox: Set to true to use the sandbox iOS app environment, otherwise set to false to use the production iOS app environment.
-        :param bool enabled: Indicates whether Duo MFA is enabled.
+        :param bool enabled: Indicates whether the Apple Push Notification service is enabled.
         """
         pulumi.set(__self__, "bundle_id", bundle_id)
         pulumi.set(__self__, "p12", p12)
@@ -6809,7 +6791,7 @@ class GuardianPushDirectApns(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Indicates whether Duo MFA is enabled.
+        Indicates whether the Apple Push Notification service is enabled.
         """
         return pulumi.get(self, "enabled")
 

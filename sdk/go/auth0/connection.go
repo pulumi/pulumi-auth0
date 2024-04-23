@@ -21,7 +21,6 @@ import (
 //
 // ### Auth0 Connection
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -109,13 +108,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Google OAuth2 Connection
 //
 // > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -160,11 +157,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Google Apps
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -224,11 +219,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Facebook Connection
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -269,11 +262,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Apple Connection
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -314,11 +305,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### LinkedIn Connection
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -359,11 +348,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### GitHub Connection
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -404,11 +391,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### SalesForce Connection
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -448,13 +433,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### OAuth2 Connection
 //
 // Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -501,11 +484,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Active Directory (AD)
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -566,11 +547,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Azure AD Connection
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -637,13 +616,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Email Connection
 //
 // > To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -688,11 +665,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### SAML Connection
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -789,11 +764,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### WindowsLive Connection
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -833,11 +806,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### OIDC Connection
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -913,11 +884,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Okta Connection
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1000,7 +969,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -1022,7 +990,7 @@ type Connection struct {
 	IsDomainConnection pulumi.BoolOutput `pulumi:"isDomainConnection"`
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
-	// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+	// Name of the connection.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configuration settings for connection options.
 	Options ConnectionOptionsOutput `pulumi:"options"`
@@ -1073,7 +1041,7 @@ type connectionState struct {
 	IsDomainConnection *bool `pulumi:"isDomainConnection"`
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 	Metadata map[string]string `pulumi:"metadata"`
-	// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+	// Name of the connection.
 	Name *string `pulumi:"name"`
 	// Configuration settings for connection options.
 	Options *ConnectionOptions `pulumi:"options"`
@@ -1092,7 +1060,7 @@ type ConnectionState struct {
 	IsDomainConnection pulumi.BoolPtrInput
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 	Metadata pulumi.StringMapInput
-	// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+	// Name of the connection.
 	Name pulumi.StringPtrInput
 	// Configuration settings for connection options.
 	Options ConnectionOptionsPtrInput
@@ -1115,7 +1083,7 @@ type connectionArgs struct {
 	IsDomainConnection *bool `pulumi:"isDomainConnection"`
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 	Metadata map[string]string `pulumi:"metadata"`
-	// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+	// Name of the connection.
 	Name *string `pulumi:"name"`
 	// Configuration settings for connection options.
 	Options *ConnectionOptions `pulumi:"options"`
@@ -1135,7 +1103,7 @@ type ConnectionArgs struct {
 	IsDomainConnection pulumi.BoolPtrInput
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 	Metadata pulumi.StringMapInput
-	// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+	// Name of the connection.
 	Name pulumi.StringPtrInput
 	// Configuration settings for connection options.
 	Options ConnectionOptionsPtrInput
@@ -1249,7 +1217,7 @@ func (o ConnectionOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+// Name of the connection.
 func (o ConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

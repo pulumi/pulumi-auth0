@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? ClientEmail;
         /// <summary>
-        /// AWS token lifetime in seconds.
+        /// Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).
         /// </summary>
         public readonly int? LifetimeInSeconds;
         /// <summary>

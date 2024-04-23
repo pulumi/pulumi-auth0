@@ -14,11 +14,11 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ClientAddonsSapApi
     {
         /// <summary>
-        /// Consumer Key assigned by Salesforce to the Connected App.
+        /// If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute`client*id`must be set and equal the`client*id` form parameter of the access token request.
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
-        /// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+        /// NameID element of the Subject which can be used to express the user's identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
         /// </summary>
         public readonly string? NameIdentifierFormat;
         /// <summary>

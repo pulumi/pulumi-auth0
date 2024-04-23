@@ -598,7 +598,6 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -614,7 +613,6 @@ class User(pulumi.CustomResource):
             password="passpass$12$12",
             picture="https://www.example.com/a-valid-picture-url.jpg")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -659,7 +657,6 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -675,7 +672,6 @@ class User(pulumi.CustomResource):
             password="passpass$12$12",
             picture="https://www.example.com/a-valid-picture-url.jpg")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

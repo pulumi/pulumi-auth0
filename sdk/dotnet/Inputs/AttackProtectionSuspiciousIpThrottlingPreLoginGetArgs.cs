@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class AttackProtectionSuspiciousIpThrottlingPreLoginGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+        /// The maximum number of failed login attempts allowed from a single IP address.
         /// </summary>
         [Input("maxAttempts")]
         public Input<int>? MaxAttempts { get; set; }

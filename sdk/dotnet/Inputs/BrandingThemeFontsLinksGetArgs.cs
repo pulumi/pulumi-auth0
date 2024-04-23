@@ -13,13 +13,13 @@ namespace Pulumi.Auth0.Inputs
     public sealed class BrandingThemeFontsLinksGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Body text bold. Defaults to `false`.
+        /// Links bold. Defaults to `true`.
         /// </summary>
         [Input("bold")]
         public Input<bool>? Bold { get; set; }
 
         /// <summary>
-        /// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        /// Links size. Value needs to be between `0` and `150`. Defaults to `87.5`.
         /// </summary>
         [Input("size")]
         public Input<double>? Size { get; set; }

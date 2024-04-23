@@ -172,7 +172,6 @@ class OrganizationConnection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -188,7 +187,6 @@ class OrganizationConnection(pulumi.CustomResource):
             connection_id=my_connection.id,
             assign_membership_on_login=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -228,7 +226,6 @@ class OrganizationConnection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -244,7 +241,6 @@ class OrganizationConnection(pulumi.CustomResource):
             connection_id=my_connection.id,
             assign_membership_on_login=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -131,14 +131,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Consumer Key assigned by Salesforce to the Connected App.
+     * The ID of the client.
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return Consumer Key assigned by Salesforce to the Connected App.
+     * @return The ID of the client.
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -371,14 +371,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SSO integration name.
+     * Name of the client.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return SSO integration name.
+     * @return Name of the client.
      * 
      */
     public Optional<Output<String>> name() {
@@ -806,7 +806,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientId Consumer Key assigned by Salesforce to the Connected App.
+         * @param clientId The ID of the client.
          * 
          * @return builder
          * 
@@ -817,7 +817,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientId Consumer Key assigned by Salesforce to the Connected App.
+         * @param clientId The ID of the client.
          * 
          * @return builder
          * 
@@ -1152,7 +1152,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name SSO integration name.
+         * @param name Name of the client.
          * 
          * @return builder
          * 
@@ -1163,7 +1163,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name SSO integration name.
+         * @param name Name of the client.
          * 
          * @return builder
          * 

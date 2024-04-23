@@ -604,7 +604,6 @@ class Tenant(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -634,7 +633,6 @@ class Tenant(pulumi.CustomResource):
                 oidc_logout_prompt_enabled=False,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -688,7 +686,6 @@ class Tenant(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -718,7 +715,6 @@ class Tenant(pulumi.CustomResource):
                 oidc_logout_prompt_enabled=False,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
