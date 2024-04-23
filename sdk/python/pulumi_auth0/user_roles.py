@@ -106,7 +106,6 @@ class UserRoles(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -125,7 +124,6 @@ class UserRoles(pulumi.CustomResource):
             user_id=user.id,
             roles=[admin.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -159,7 +157,6 @@ class UserRoles(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -178,7 +175,6 @@ class UserRoles(pulumi.CustomResource):
             user_id=user.id,
             roles=[admin.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

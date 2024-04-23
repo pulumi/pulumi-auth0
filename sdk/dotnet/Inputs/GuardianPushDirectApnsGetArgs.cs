@@ -19,7 +19,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string> BundleId { get; set; } = null!;
 
         /// <summary>
-        /// Indicates whether Duo MFA is enabled.
+        /// Indicates whether the Apple Push Notification service is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

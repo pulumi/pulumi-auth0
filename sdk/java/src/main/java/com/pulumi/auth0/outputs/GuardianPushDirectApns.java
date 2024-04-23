@@ -19,7 +19,7 @@ public final class GuardianPushDirectApns {
      */
     private String bundleId;
     /**
-     * @return Indicates whether Duo MFA is enabled.
+     * @return Indicates whether the Apple Push Notification service is enabled.
      * 
      */
     private @Nullable Boolean enabled;
@@ -43,7 +43,7 @@ public final class GuardianPushDirectApns {
         return this.bundleId;
     }
     /**
-     * @return Indicates whether Duo MFA is enabled.
+     * @return Indicates whether the Apple Push Notification service is enabled.
      * 
      */
     public Optional<Boolean> enabled() {

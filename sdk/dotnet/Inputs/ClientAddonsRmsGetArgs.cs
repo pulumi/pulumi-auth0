@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ClientAddonsRmsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Microsoft Dynamics CRM application URL.
+        /// URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

@@ -30,7 +30,7 @@ class ConnectionArgs:
         :param pulumi.Input[str] display_name: Name used in login screen.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
-        :param pulumi.Input[str] name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
@@ -103,7 +103,7 @@ class ConnectionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        Name of the connection.
         """
         return pulumi.get(self, "name")
 
@@ -164,7 +164,7 @@ class _ConnectionState:
         :param pulumi.Input[str] display_name: Name used in login screen.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
-        :param pulumi.Input[str] name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
@@ -227,7 +227,7 @@ class _ConnectionState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        Name of the connection.
         """
         return pulumi.get(self, "name")
 
@@ -308,7 +308,6 @@ class Connection(pulumi.CustomResource):
 
         ### Auth0 Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -375,13 +374,11 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Google OAuth2 Connection
 
         > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -410,11 +407,9 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Google Apps
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -452,11 +447,9 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Facebook Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -481,11 +474,9 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Apple Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -512,11 +503,9 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### LinkedIn Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -541,11 +530,9 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### GitHub Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -570,11 +557,9 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### SalesForce Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -598,13 +583,11 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### OAuth2 Connection
 
         Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -638,11 +621,9 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Active Directory (AD)
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -681,11 +662,9 @@ class Connection(pulumi.CustomResource):
                 disable_cache=False,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Azure AD Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -730,13 +709,11 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Email Connection
 
         > To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -765,11 +742,9 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### SAML Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -846,11 +821,9 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### WindowsLive Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -874,11 +847,9 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### OIDC Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -930,11 +901,9 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Okta Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -988,7 +957,6 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1007,7 +975,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Name used in login screen.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
-        :param pulumi.Input[str] name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
@@ -1029,7 +997,6 @@ class Connection(pulumi.CustomResource):
 
         ### Auth0 Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1096,13 +1063,11 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Google OAuth2 Connection
 
         > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -1131,11 +1096,9 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Google Apps
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1173,11 +1136,9 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Facebook Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -1202,11 +1163,9 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Apple Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -1233,11 +1192,9 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### LinkedIn Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -1262,11 +1219,9 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### GitHub Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -1291,11 +1246,9 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### SalesForce Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -1319,13 +1272,11 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### OAuth2 Connection
 
         Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -1359,11 +1310,9 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Active Directory (AD)
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1402,11 +1351,9 @@ class Connection(pulumi.CustomResource):
                 disable_cache=False,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Azure AD Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1451,13 +1398,11 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Email Connection
 
         > To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -1486,11 +1431,9 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### SAML Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1567,11 +1510,9 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### WindowsLive Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -1595,11 +1536,9 @@ class Connection(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### OIDC Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1651,11 +1590,9 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Okta Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1709,7 +1646,6 @@ class Connection(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1793,7 +1729,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Name used in login screen.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
-        :param pulumi.Input[str] name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
@@ -1841,7 +1777,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        Name of the connection.
         """
         return pulumi.get(self, "name")
 

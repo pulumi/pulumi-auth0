@@ -116,7 +116,7 @@ export interface AttackProtectionSuspiciousIpThrottling {
 
 export interface AttackProtectionSuspiciousIpThrottlingPreLogin {
     /**
-     * Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+     * The maximum number of failed login attempts allowed from a single IP address.
      */
     maxAttempts: number;
     /**
@@ -127,11 +127,11 @@ export interface AttackProtectionSuspiciousIpThrottlingPreLogin {
 
 export interface AttackProtectionSuspiciousIpThrottlingPreUserRegistration {
     /**
-     * Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+     * The maximum number of sign up attempts allowed from a single IP address.
      */
     maxAttempts: number;
     /**
-     * Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+     * Interval of time, given in milliseconds at which new sign up tokens will become available after they have been used by an IP address. Each sign up attempt will be added on the defined throttling rate.
      */
     rate: number;
 }
@@ -320,55 +320,55 @@ export interface BrandingThemeFontsBodyText {
 
 export interface BrandingThemeFontsButtonsText {
     /**
-     * Body text bold. Defaults to `false`.
+     * Buttons text bold. Defaults to `false`.
      */
     bold?: boolean;
     /**
-     * Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * Buttons text size. Value needs to be between `0` and `150`. Defaults to `100.0`.
      */
     size?: number;
 }
 
 export interface BrandingThemeFontsInputLabels {
     /**
-     * Body text bold. Defaults to `false`.
+     * Input labels bold. Defaults to `false`.
      */
     bold?: boolean;
     /**
-     * Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * Input labels size. Value needs to be between `0` and `150`. Defaults to `100.0`.
      */
     size?: number;
 }
 
 export interface BrandingThemeFontsLinks {
     /**
-     * Body text bold. Defaults to `false`.
+     * Links bold. Defaults to `true`.
      */
     bold?: boolean;
     /**
-     * Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * Links size. Value needs to be between `0` and `150`. Defaults to `87.5`.
      */
     size?: number;
 }
 
 export interface BrandingThemeFontsSubtitle {
     /**
-     * Body text bold. Defaults to `false`.
+     * Subtitle bold. Defaults to `false`.
      */
     bold?: boolean;
     /**
-     * Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * Subtitle size. Value needs to be between `0` and `150`. Defaults to `87.5`.
      */
     size?: number;
 }
 
 export interface BrandingThemeFontsTitle {
     /**
-     * Body text bold. Defaults to `false`.
+     * Title bold. Defaults to `false`.
      */
     bold?: boolean;
     /**
-     * Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * Title size. Value needs to be between `75` and `150`. Defaults to `150.0`.
      */
     size?: number;
 }
@@ -613,7 +613,7 @@ export interface ClientAddonsAzureSb {
      */
     entityPath?: string;
     /**
-     * Expiration in minutes for the generated token (default of 5 minutes).
+     * Optional expiration in minutes for the generated token. Defaults to 5 minutes.
      */
     expiration?: number;
     /**
@@ -651,7 +651,7 @@ export interface ClientAddonsEchosign {
 
 export interface ClientAddonsEgnyte {
     /**
-     * Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.
      */
     domain?: string;
 }
@@ -662,7 +662,7 @@ export interface ClientAddonsFirebase {
      */
     clientEmail?: string;
     /**
-     * AWS token lifetime in seconds.
+     * Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).
      */
     lifetimeInSeconds?: number;
     /**
@@ -681,7 +681,7 @@ export interface ClientAddonsFirebase {
 
 export interface ClientAddonsLayer {
     /**
-     * Expiration in minutes for the generated token (default of 5 minutes).
+     * Optional expiration in minutes for the generated token. Defaults to 5 minutes.
      */
     expiration?: number;
     /**
@@ -689,11 +689,11 @@ export interface ClientAddonsLayer {
      */
     keyId: string;
     /**
-     * AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * Name of the property used as the unique user ID in Layer. If not specified `userId` is used.
      */
     principal?: string;
     /**
-     * Private Key for signing the token (SDK v3+ tokens only).
+     * Private key for signing the Layer token.
      */
     privateKey: string;
     /**
@@ -722,14 +722,14 @@ export interface ClientAddonsOffice365 {
      */
     connection?: string;
     /**
-     * Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * Your Office 365 domain name, for example `acme-org.com`.
      */
     domain?: string;
 }
 
 export interface ClientAddonsRms {
     /**
-     * Microsoft Dynamics CRM application URL.
+     * URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
      */
     url?: string;
 }
@@ -755,7 +755,7 @@ export interface ClientAddonsSalesforceApi {
      */
     communityUrlSection?: string;
     /**
-     * AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * Name of the property in the user object that maps to a Salesforce username, for example `email`.
      */
     principal?: string;
 }
@@ -774,7 +774,7 @@ export interface ClientAddonsSalesforceSandboxApi {
      */
     communityUrlSection?: string;
     /**
-     * AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * Name of the property in the user object that maps to a Salesforce username, for example `email`.
      */
     principal?: string;
 }
@@ -813,7 +813,7 @@ export interface ClientAddonsSamlp {
      */
     issuer?: string;
     /**
-     * AWS token lifetime in seconds.
+     * Number of seconds during which the token is valid. Defaults to `3600` seconds.
      */
     lifetimeInSeconds?: number;
     /**
@@ -879,11 +879,11 @@ export interface ClientAddonsSamlpLogout {
 
 export interface ClientAddonsSapApi {
     /**
-     * Consumer Key assigned by Salesforce to the Connected App.
+     * If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute`client*id`must be set and equal the`client*id` form parameter of the access token request.
      */
     clientId?: string;
     /**
-     * Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * NameID element of the Subject which can be used to express the user's identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
      */
     nameIdentifierFormat?: string;
     /**
@@ -921,7 +921,7 @@ export interface ClientAddonsSharepoint {
      */
     externalUrls?: string[];
     /**
-     * Microsoft Dynamics CRM application URL.
+     * Internal SharePoint application URL.
      */
     url?: string;
 }
@@ -963,14 +963,14 @@ export interface ClientAddonsWsfed {
 
 export interface ClientAddonsZendesk {
     /**
-     * Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+     * Zendesk account name. Usually the first segment in your Zendesk URL, for example `https://acme-org.zendesk.com` would be `acme-org`.
      */
     accountName?: string;
 }
 
 export interface ClientAddonsZoom {
     /**
-     * Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+     * Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
      */
     account?: string;
 }
@@ -1524,9 +1524,6 @@ export interface ConnectionOptionsGatewayAuthentication {
 
 export interface ConnectionOptionsIdpInitiated {
     clientAuthorizeQuery?: string;
-    /**
-     * The strategy's client ID.
-     */
     clientId?: string;
     clientProtocol?: string;
 }
@@ -1561,17 +1558,11 @@ export interface ConnectionOptionsPasswordDictionary {
 }
 
 export interface ConnectionOptionsPasswordHistory {
-    /**
-     * Indicates whether the password dictionary check is enabled for this connection.
-     */
     enable?: boolean;
     size?: number;
 }
 
 export interface ConnectionOptionsPasswordNoPersonalInfo {
-    /**
-     * Indicates whether the password dictionary check is enabled for this connection.
-     */
     enable?: boolean;
 }
 
@@ -3614,7 +3605,7 @@ export interface GuardianPushDirectApns {
      */
     bundleId: string;
     /**
-     * Indicates whether Duo MFA is enabled.
+     * Indicates whether the Apple Push Notification service is enabled.
      */
     enabled: boolean;
     /**

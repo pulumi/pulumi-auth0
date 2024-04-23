@@ -518,7 +518,7 @@ class AttackProtectionSuspiciousIpThrottlingPreLoginArgs:
                  max_attempts: Optional[pulumi.Input[int]] = None,
                  rate: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] max_attempts: Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+        :param pulumi.Input[int] max_attempts: The maximum number of failed login attempts allowed from a single IP address.
         :param pulumi.Input[int] rate: Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
         """
         if max_attempts is not None:
@@ -530,7 +530,7 @@ class AttackProtectionSuspiciousIpThrottlingPreLoginArgs:
     @pulumi.getter(name="maxAttempts")
     def max_attempts(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+        The maximum number of failed login attempts allowed from a single IP address.
         """
         return pulumi.get(self, "max_attempts")
 
@@ -557,8 +557,8 @@ class AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs:
                  max_attempts: Optional[pulumi.Input[int]] = None,
                  rate: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] max_attempts: Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
-        :param pulumi.Input[int] rate: Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+        :param pulumi.Input[int] max_attempts: The maximum number of sign up attempts allowed from a single IP address.
+        :param pulumi.Input[int] rate: Interval of time, given in milliseconds at which new sign up tokens will become available after they have been used by an IP address. Each sign up attempt will be added on the defined throttling rate.
         """
         if max_attempts is not None:
             pulumi.set(__self__, "max_attempts", max_attempts)
@@ -569,7 +569,7 @@ class AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs:
     @pulumi.getter(name="maxAttempts")
     def max_attempts(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+        The maximum number of sign up attempts allowed from a single IP address.
         """
         return pulumi.get(self, "max_attempts")
 
@@ -581,7 +581,7 @@ class AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs:
     @pulumi.getter
     def rate(self) -> Optional[pulumi.Input[int]]:
         """
-        Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+        Interval of time, given in milliseconds at which new sign up tokens will become available after they have been used by an IP address. Each sign up attempt will be added on the defined throttling rate.
         """
         return pulumi.get(self, "rate")
 
@@ -1288,8 +1288,8 @@ class BrandingThemeFontsButtonsTextArgs:
                  bold: Optional[pulumi.Input[bool]] = None,
                  size: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[bool] bold: Body text bold. Defaults to `false`.
-        :param pulumi.Input[float] size: Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        :param pulumi.Input[bool] bold: Buttons text bold. Defaults to `false`.
+        :param pulumi.Input[float] size: Buttons text size. Value needs to be between `0` and `150`. Defaults to `100.0`.
         """
         if bold is not None:
             pulumi.set(__self__, "bold", bold)
@@ -1300,7 +1300,7 @@ class BrandingThemeFontsButtonsTextArgs:
     @pulumi.getter
     def bold(self) -> Optional[pulumi.Input[bool]]:
         """
-        Body text bold. Defaults to `false`.
+        Buttons text bold. Defaults to `false`.
         """
         return pulumi.get(self, "bold")
 
@@ -1312,7 +1312,7 @@ class BrandingThemeFontsButtonsTextArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[float]]:
         """
-        Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        Buttons text size. Value needs to be between `0` and `150`. Defaults to `100.0`.
         """
         return pulumi.get(self, "size")
 
@@ -1327,8 +1327,8 @@ class BrandingThemeFontsInputLabelsArgs:
                  bold: Optional[pulumi.Input[bool]] = None,
                  size: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[bool] bold: Body text bold. Defaults to `false`.
-        :param pulumi.Input[float] size: Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        :param pulumi.Input[bool] bold: Input labels bold. Defaults to `false`.
+        :param pulumi.Input[float] size: Input labels size. Value needs to be between `0` and `150`. Defaults to `100.0`.
         """
         if bold is not None:
             pulumi.set(__self__, "bold", bold)
@@ -1339,7 +1339,7 @@ class BrandingThemeFontsInputLabelsArgs:
     @pulumi.getter
     def bold(self) -> Optional[pulumi.Input[bool]]:
         """
-        Body text bold. Defaults to `false`.
+        Input labels bold. Defaults to `false`.
         """
         return pulumi.get(self, "bold")
 
@@ -1351,7 +1351,7 @@ class BrandingThemeFontsInputLabelsArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[float]]:
         """
-        Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        Input labels size. Value needs to be between `0` and `150`. Defaults to `100.0`.
         """
         return pulumi.get(self, "size")
 
@@ -1366,8 +1366,8 @@ class BrandingThemeFontsLinksArgs:
                  bold: Optional[pulumi.Input[bool]] = None,
                  size: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[bool] bold: Body text bold. Defaults to `false`.
-        :param pulumi.Input[float] size: Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        :param pulumi.Input[bool] bold: Links bold. Defaults to `true`.
+        :param pulumi.Input[float] size: Links size. Value needs to be between `0` and `150`. Defaults to `87.5`.
         """
         if bold is not None:
             pulumi.set(__self__, "bold", bold)
@@ -1378,7 +1378,7 @@ class BrandingThemeFontsLinksArgs:
     @pulumi.getter
     def bold(self) -> Optional[pulumi.Input[bool]]:
         """
-        Body text bold. Defaults to `false`.
+        Links bold. Defaults to `true`.
         """
         return pulumi.get(self, "bold")
 
@@ -1390,7 +1390,7 @@ class BrandingThemeFontsLinksArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[float]]:
         """
-        Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        Links size. Value needs to be between `0` and `150`. Defaults to `87.5`.
         """
         return pulumi.get(self, "size")
 
@@ -1405,8 +1405,8 @@ class BrandingThemeFontsSubtitleArgs:
                  bold: Optional[pulumi.Input[bool]] = None,
                  size: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[bool] bold: Body text bold. Defaults to `false`.
-        :param pulumi.Input[float] size: Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        :param pulumi.Input[bool] bold: Subtitle bold. Defaults to `false`.
+        :param pulumi.Input[float] size: Subtitle size. Value needs to be between `0` and `150`. Defaults to `87.5`.
         """
         if bold is not None:
             pulumi.set(__self__, "bold", bold)
@@ -1417,7 +1417,7 @@ class BrandingThemeFontsSubtitleArgs:
     @pulumi.getter
     def bold(self) -> Optional[pulumi.Input[bool]]:
         """
-        Body text bold. Defaults to `false`.
+        Subtitle bold. Defaults to `false`.
         """
         return pulumi.get(self, "bold")
 
@@ -1429,7 +1429,7 @@ class BrandingThemeFontsSubtitleArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[float]]:
         """
-        Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        Subtitle size. Value needs to be between `0` and `150`. Defaults to `87.5`.
         """
         return pulumi.get(self, "size")
 
@@ -1444,8 +1444,8 @@ class BrandingThemeFontsTitleArgs:
                  bold: Optional[pulumi.Input[bool]] = None,
                  size: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[bool] bold: Body text bold. Defaults to `false`.
-        :param pulumi.Input[float] size: Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        :param pulumi.Input[bool] bold: Title bold. Defaults to `false`.
+        :param pulumi.Input[float] size: Title size. Value needs to be between `75` and `150`. Defaults to `150.0`.
         """
         if bold is not None:
             pulumi.set(__self__, "bold", bold)
@@ -1456,7 +1456,7 @@ class BrandingThemeFontsTitleArgs:
     @pulumi.getter
     def bold(self) -> Optional[pulumi.Input[bool]]:
         """
-        Body text bold. Defaults to `false`.
+        Title bold. Defaults to `false`.
         """
         return pulumi.get(self, "bold")
 
@@ -1468,7 +1468,7 @@ class BrandingThemeFontsTitleArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[float]]:
         """
-        Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        Title size. Value needs to be between `75` and `150`. Defaults to `150.0`.
         """
         return pulumi.get(self, "size")
 
@@ -2392,7 +2392,7 @@ class ClientAddonsAzureSbArgs:
                  sas_key_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] entity_path: Entity you want to request a token for, such as `my-queue`.
-        :param pulumi.Input[int] expiration: Expiration in minutes for the generated token (default of 5 minutes).
+        :param pulumi.Input[int] expiration: Optional expiration in minutes for the generated token. Defaults to 5 minutes.
         :param pulumi.Input[str] namespace: Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
         :param pulumi.Input[str] sas_key: Primary Key associated with your shared access policy.
         :param pulumi.Input[str] sas_key_name: Your shared access policy name defined in your Service Bus entity.
@@ -2424,7 +2424,7 @@ class ClientAddonsAzureSbArgs:
     @pulumi.getter
     def expiration(self) -> Optional[pulumi.Input[int]]:
         """
-        Expiration in minutes for the generated token (default of 5 minutes).
+        Optional expiration in minutes for the generated token. Defaults to 5 minutes.
         """
         return pulumi.get(self, "expiration")
 
@@ -2521,7 +2521,7 @@ class ClientAddonsEgnyteArgs:
     def __init__(__self__, *,
                  domain: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] domain: Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+        :param pulumi.Input[str] domain: Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
@@ -2530,7 +2530,7 @@ class ClientAddonsEgnyteArgs:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+        Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.
         """
         return pulumi.get(self, "domain")
 
@@ -2549,7 +2549,7 @@ class ClientAddonsFirebaseArgs:
                  secret: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] client_email: ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
-        :param pulumi.Input[int] lifetime_in_seconds: AWS token lifetime in seconds.
+        :param pulumi.Input[int] lifetime_in_seconds: Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).
         :param pulumi.Input[str] private_key: Private Key for signing the token (SDK v3+ tokens only).
         :param pulumi.Input[str] private_key_id: Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).
         :param pulumi.Input[str] secret: Google Firebase Secret. (SDK v2 only).
@@ -2581,7 +2581,7 @@ class ClientAddonsFirebaseArgs:
     @pulumi.getter(name="lifetimeInSeconds")
     def lifetime_in_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        AWS token lifetime in seconds.
+        Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).
         """
         return pulumi.get(self, "lifetime_in_seconds")
 
@@ -2636,10 +2636,10 @@ class ClientAddonsLayerArgs:
                  principal: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] key_id: Authentication Key identifier used to sign the Layer token.
-        :param pulumi.Input[str] private_key: Private Key for signing the token (SDK v3+ tokens only).
+        :param pulumi.Input[str] private_key: Private key for signing the Layer token.
         :param pulumi.Input[str] provider_id: Provider ID of your Layer account.
-        :param pulumi.Input[int] expiration: Expiration in minutes for the generated token (default of 5 minutes).
-        :param pulumi.Input[str] principal: AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        :param pulumi.Input[int] expiration: Optional expiration in minutes for the generated token. Defaults to 5 minutes.
+        :param pulumi.Input[str] principal: Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
         """
         pulumi.set(__self__, "key_id", key_id)
         pulumi.set(__self__, "private_key", private_key)
@@ -2665,7 +2665,7 @@ class ClientAddonsLayerArgs:
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Input[str]:
         """
-        Private Key for signing the token (SDK v3+ tokens only).
+        Private key for signing the Layer token.
         """
         return pulumi.get(self, "private_key")
 
@@ -2689,7 +2689,7 @@ class ClientAddonsLayerArgs:
     @pulumi.getter
     def expiration(self) -> Optional[pulumi.Input[int]]:
         """
-        Expiration in minutes for the generated token (default of 5 minutes).
+        Optional expiration in minutes for the generated token. Defaults to 5 minutes.
         """
         return pulumi.get(self, "expiration")
 
@@ -2701,7 +2701,7 @@ class ClientAddonsLayerArgs:
     @pulumi.getter
     def principal(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
         """
         return pulumi.get(self, "principal")
 
@@ -2763,7 +2763,7 @@ class ClientAddonsOffice365Args:
                  domain: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] connection: Optional Auth0 database connection for testing an already-configured Office 365 tenant.
-        :param pulumi.Input[str] domain: Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+        :param pulumi.Input[str] domain: Your Office 365 domain name, for example `acme-org.com`.
         """
         if connection is not None:
             pulumi.set(__self__, "connection", connection)
@@ -2786,7 +2786,7 @@ class ClientAddonsOffice365Args:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+        Your Office 365 domain name, for example `acme-org.com`.
         """
         return pulumi.get(self, "domain")
 
@@ -2800,7 +2800,7 @@ class ClientAddonsRmsArgs:
     def __init__(__self__, *,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] url: Microsoft Dynamics CRM application URL.
+        :param pulumi.Input[str] url: URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
         """
         if url is not None:
             pulumi.set(__self__, "url", url)
@@ -2809,7 +2809,7 @@ class ClientAddonsRmsArgs:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        Microsoft Dynamics CRM application URL.
+        URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
         """
         return pulumi.get(self, "url")
 
@@ -2852,7 +2852,7 @@ class ClientAddonsSalesforceApiArgs:
         :param pulumi.Input[str] client_id: Consumer Key assigned by Salesforce to the Connected App.
         :param pulumi.Input[str] community_name: Community name.
         :param pulumi.Input[str] community_url_section: Community URL section.
-        :param pulumi.Input[str] principal: AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        :param pulumi.Input[str] principal: Name of the property in the user object that maps to a Salesforce username, for example `email`.
         """
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
@@ -2903,7 +2903,7 @@ class ClientAddonsSalesforceApiArgs:
     @pulumi.getter
     def principal(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        Name of the property in the user object that maps to a Salesforce username, for example `email`.
         """
         return pulumi.get(self, "principal")
 
@@ -2923,7 +2923,7 @@ class ClientAddonsSalesforceSandboxApiArgs:
         :param pulumi.Input[str] client_id: Consumer Key assigned by Salesforce to the Connected App.
         :param pulumi.Input[str] community_name: Community name.
         :param pulumi.Input[str] community_url_section: Community URL section.
-        :param pulumi.Input[str] principal: AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        :param pulumi.Input[str] principal: Name of the property in the user object that maps to a Salesforce username, for example `email`.
         """
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
@@ -2974,7 +2974,7 @@ class ClientAddonsSalesforceSandboxApiArgs:
     @pulumi.getter
     def principal(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        Name of the property in the user object that maps to a Salesforce username, for example `email`.
         """
         return pulumi.get(self, "principal")
 
@@ -3016,7 +3016,7 @@ class ClientAddonsSamlpArgs:
         :param pulumi.Input[str] digest_algorithm: Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
         :param pulumi.Input[bool] include_attribute_name_format: Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
         :param pulumi.Input[str] issuer: Issuer of the SAML Assertion.
-        :param pulumi.Input[int] lifetime_in_seconds: AWS token lifetime in seconds.
+        :param pulumi.Input[int] lifetime_in_seconds: Number of seconds during which the token is valid. Defaults to `3600` seconds.
         :param pulumi.Input['ClientAddonsSamlpLogoutArgs'] logout: Configuration settings for logout.
         :param pulumi.Input[bool] map_identities: Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
         :param pulumi.Input[bool] map_unknown_claims_as_is: Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
@@ -3173,7 +3173,7 @@ class ClientAddonsSamlpArgs:
     @pulumi.getter(name="lifetimeInSeconds")
     def lifetime_in_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        AWS token lifetime in seconds.
+        Number of seconds during which the token is valid. Defaults to `3600` seconds.
         """
         return pulumi.get(self, "lifetime_in_seconds")
 
@@ -3375,8 +3375,8 @@ class ClientAddonsSapApiArgs:
                  token_endpoint_url: Optional[pulumi.Input[str]] = None,
                  username_attribute: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] client_id: Consumer Key assigned by Salesforce to the Connected App.
-        :param pulumi.Input[str] name_identifier_format: Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+        :param pulumi.Input[str] client_id: If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute`client*id`must be set and equal the`client*id` form parameter of the access token request.
+        :param pulumi.Input[str] name_identifier_format: NameID element of the Subject which can be used to express the user's identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
         :param pulumi.Input[str] scope: Requested scope for SAP APIs.
         :param pulumi.Input[str] service_password: Service account password to use to authenticate API calls to the token endpoint.
         :param pulumi.Input[str] token_endpoint_url: The OAuth2 token endpoint URL of your SAP OData server.
@@ -3399,7 +3399,7 @@ class ClientAddonsSapApiArgs:
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Consumer Key assigned by Salesforce to the Connected App.
+        If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute`client*id`must be set and equal the`client*id` form parameter of the access token request.
         """
         return pulumi.get(self, "client_id")
 
@@ -3411,7 +3411,7 @@ class ClientAddonsSapApiArgs:
     @pulumi.getter(name="nameIdentifierFormat")
     def name_identifier_format(self) -> Optional[pulumi.Input[str]]:
         """
-        Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+        NameID element of the Subject which can be used to express the user's identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
         """
         return pulumi.get(self, "name_identifier_format")
 
@@ -3514,7 +3514,7 @@ class ClientAddonsSharepointArgs:
                  url: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_urls: External SharePoint application URLs if exposed to the Internet.
-        :param pulumi.Input[str] url: Microsoft Dynamics CRM application URL.
+        :param pulumi.Input[str] url: Internal SharePoint application URL.
         """
         if external_urls is not None:
             pulumi.set(__self__, "external_urls", external_urls)
@@ -3537,7 +3537,7 @@ class ClientAddonsSharepointArgs:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        Microsoft Dynamics CRM application URL.
+        Internal SharePoint application URL.
         """
         return pulumi.get(self, "url")
 
@@ -3665,7 +3665,7 @@ class ClientAddonsZendeskArgs:
     def __init__(__self__, *,
                  account_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] account_name: Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+        :param pulumi.Input[str] account_name: Zendesk account name. Usually the first segment in your Zendesk URL, for example `https://acme-org.zendesk.com` would be `acme-org`.
         """
         if account_name is not None:
             pulumi.set(__self__, "account_name", account_name)
@@ -3674,7 +3674,7 @@ class ClientAddonsZendeskArgs:
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+        Zendesk account name. Usually the first segment in your Zendesk URL, for example `https://acme-org.zendesk.com` would be `acme-org`.
         """
         return pulumi.get(self, "account_name")
 
@@ -3688,7 +3688,7 @@ class ClientAddonsZoomArgs:
     def __init__(__self__, *,
                  account: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] account: Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+        :param pulumi.Input[str] account: Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
         """
         if account is not None:
             pulumi.set(__self__, "account", account)
@@ -3697,7 +3697,7 @@ class ClientAddonsZoomArgs:
     @pulumi.getter
     def account(self) -> Optional[pulumi.Input[str]]:
         """
-        Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+        Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
         """
         return pulumi.get(self, "account")
 
@@ -5884,9 +5884,6 @@ class ConnectionOptionsIdpInitiatedArgs:
                  client_authorize_query: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_protocol: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] client_id: The strategy's client ID.
-        """
         if client_authorize_query is not None:
             pulumi.set(__self__, "client_authorize_query", client_authorize_query)
         if client_id is not None:
@@ -5906,9 +5903,6 @@ class ConnectionOptionsIdpInitiatedArgs:
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The strategy's client ID.
-        """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
@@ -6031,9 +6025,6 @@ class ConnectionOptionsPasswordHistoryArgs:
     def __init__(__self__, *,
                  enable: Optional[pulumi.Input[bool]] = None,
                  size: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[bool] enable: Indicates whether the password dictionary check is enabled for this connection.
-        """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if size is not None:
@@ -6042,9 +6033,6 @@ class ConnectionOptionsPasswordHistoryArgs:
     @property
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether the password dictionary check is enabled for this connection.
-        """
         return pulumi.get(self, "enable")
 
     @enable.setter
@@ -6065,18 +6053,12 @@ class ConnectionOptionsPasswordHistoryArgs:
 class ConnectionOptionsPasswordNoPersonalInfoArgs:
     def __init__(__self__, *,
                  enable: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[bool] enable: Indicates whether the password dictionary check is enabled for this connection.
-        """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
 
     @property
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether the password dictionary check is enabled for this connection.
-        """
         return pulumi.get(self, "enable")
 
     @enable.setter
@@ -7050,7 +7032,7 @@ class GuardianPushDirectApnsArgs:
         :param pulumi.Input[str] bundle_id: The Apple Push Notification service Bundle ID.
         :param pulumi.Input[str] p12: The base64 encoded certificate in P12 format.
         :param pulumi.Input[bool] sandbox: Set to true to use the sandbox iOS app environment, otherwise set to false to use the production iOS app environment.
-        :param pulumi.Input[bool] enabled: Indicates whether Duo MFA is enabled.
+        :param pulumi.Input[bool] enabled: Indicates whether the Apple Push Notification service is enabled.
         """
         pulumi.set(__self__, "bundle_id", bundle_id)
         pulumi.set(__self__, "p12", p12)
@@ -7098,7 +7080,7 @@ class GuardianPushDirectApnsArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether Duo MFA is enabled.
+        Indicates whether the Apple Push Notification service is enabled.
         """
         return pulumi.get(self, "enabled")
 

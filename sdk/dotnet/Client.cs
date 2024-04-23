@@ -14,7 +14,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -116,7 +115,6 @@ namespace Pulumi.Auth0
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -176,7 +174,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> ClientAliases { get; private set; } = null!;
 
         /// <summary>
-        /// Consumer Key assigned by Salesforce to the Connected App.
+        /// The ID of the client.
         /// </summary>
         [Output("clientId")]
         public Output<string> ClientId { get; private set; } = null!;
@@ -272,7 +270,7 @@ namespace Pulumi.Auth0
         public Output<Outputs.ClientMobile> Mobile { get; private set; } = null!;
 
         /// <summary>
-        /// SSO integration name.
+        /// Name of the client.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -574,7 +572,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.ClientMobileArgs>? Mobile { get; set; }
 
         /// <summary>
-        /// SSO integration name.
+        /// Name of the client.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -733,7 +731,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Consumer Key assigned by Salesforce to the Connected App.
+        /// The ID of the client.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
@@ -847,7 +845,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.ClientMobileGetArgs>? Mobile { get; set; }
 
         /// <summary>
-        /// SSO integration name.
+        /// Name of the client.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

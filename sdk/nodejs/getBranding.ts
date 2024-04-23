@@ -11,14 +11,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myBranding = auth0.getBranding({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBranding(opts?: pulumi.InvokeOptions): Promise<GetBrandingResult> {
 
@@ -61,14 +59,12 @@ export interface GetBrandingResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myBranding = auth0.getBranding({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBrandingOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetBrandingResult> {
     return pulumi.output(getBranding(opts))

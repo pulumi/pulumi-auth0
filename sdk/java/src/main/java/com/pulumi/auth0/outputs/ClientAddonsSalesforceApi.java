@@ -27,7 +27,7 @@ public final class ClientAddonsSalesforceApi {
      */
     private @Nullable String communityUrlSection;
     /**
-     * @return AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * @return Name of the property in the user object that maps to a Salesforce username, for example `email`.
      * 
      */
     private @Nullable String principal;
@@ -55,7 +55,7 @@ public final class ClientAddonsSalesforceApi {
         return Optional.ofNullable(this.communityUrlSection);
     }
     /**
-     * @return AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * @return Name of the property in the user object that maps to a Salesforce username, for example `email`.
      * 
      */
     public Optional<String> principal() {

@@ -336,7 +336,6 @@ class Guardian(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -388,7 +387,6 @@ class Guardian(pulumi.CustomResource):
                 hostname="api-hostname",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -431,7 +429,6 @@ class Guardian(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -483,7 +480,6 @@ class Guardian(pulumi.CustomResource):
                 hostname="api-hostname",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

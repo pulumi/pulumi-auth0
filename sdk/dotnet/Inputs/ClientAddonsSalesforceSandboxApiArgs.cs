@@ -44,7 +44,7 @@ namespace Pulumi.Auth0.Inputs
         private Input<string>? _principal;
 
         /// <summary>
-        /// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        /// Name of the property in the user object that maps to a Salesforce username, for example `email`.
         /// </summary>
         public Input<string>? Principal
         {

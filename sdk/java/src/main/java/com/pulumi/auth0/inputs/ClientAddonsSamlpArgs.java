@@ -142,14 +142,14 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * AWS token lifetime in seconds.
+     * Number of seconds during which the token is valid. Defaults to `3600` seconds.
      * 
      */
     @Import(name="lifetimeInSeconds")
     private @Nullable Output<Integer> lifetimeInSeconds;
 
     /**
-     * @return AWS token lifetime in seconds.
+     * @return Number of seconds during which the token is valid. Defaults to `3600` seconds.
      * 
      */
     public Optional<Output<Integer>> lifetimeInSeconds() {
@@ -549,7 +549,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lifetimeInSeconds AWS token lifetime in seconds.
+         * @param lifetimeInSeconds Number of seconds during which the token is valid. Defaults to `3600` seconds.
          * 
          * @return builder
          * 
@@ -560,7 +560,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lifetimeInSeconds AWS token lifetime in seconds.
+         * @param lifetimeInSeconds Number of seconds during which the token is valid. Defaults to `3600` seconds.
          * 
          * @return builder
          * 

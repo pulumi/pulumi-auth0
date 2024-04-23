@@ -18,7 +18,7 @@ public final class ClientAddonsFirebase {
      */
     private @Nullable String clientEmail;
     /**
-     * @return AWS token lifetime in seconds.
+     * @return Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).
      * 
      */
     private @Nullable Integer lifetimeInSeconds;
@@ -47,7 +47,7 @@ public final class ClientAddonsFirebase {
         return Optional.ofNullable(this.clientEmail);
     }
     /**
-     * @return AWS token lifetime in seconds.
+     * @return Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).
      * 
      */
     public Optional<Integer> lifetimeInSeconds() {

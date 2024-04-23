@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ClientAddonsLayerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Expiration in minutes for the generated token (default of 5 minutes).
+        /// Optional expiration in minutes for the generated token. Defaults to 5 minutes.
         /// </summary>
         [Input("expiration")]
         public Input<int>? Expiration { get; set; }
@@ -35,7 +35,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        /// Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
         /// </summary>
         [Input("principal")]
         public Input<string>? Principal { get; set; }
@@ -44,7 +44,7 @@ namespace Pulumi.Auth0.Inputs
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// Private Key for signing the token (SDK v3+ tokens only).
+        /// Private key for signing the Layer token.
         /// </summary>
         public Input<string>? PrivateKey
         {

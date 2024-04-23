@@ -139,7 +139,6 @@ class ResourceServerScope(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -154,7 +153,6 @@ class ResourceServerScope(pulumi.CustomResource):
             resource_server_identifier=resource_server.identifier,
             scope="write:posts")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -193,7 +191,6 @@ class ResourceServerScope(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -208,7 +205,6 @@ class ResourceServerScope(pulumi.CustomResource):
             resource_server_identifier=resource_server.identifier,
             scope="write:posts")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -73,7 +73,7 @@ class ClientArgs:
         :param pulumi.Input['ClientJwtConfigurationArgs'] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         :param pulumi.Input['ClientMobileArgs'] mobile: Additional configuration for native mobile apps.
-        :param pulumi.Input[str] name: SSO integration name.
+        :param pulumi.Input[str] name: Name of the client.
         :param pulumi.Input['ClientNativeSocialLoginArgs'] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
@@ -422,7 +422,7 @@ class ClientArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        SSO integration name.
+        Name of the client.
         """
         return pulumi.get(self, "name")
 
@@ -598,7 +598,7 @@ class _ClientState:
         :param pulumi.Input[str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
-        :param pulumi.Input[str] client_id: Consumer Key assigned by Salesforce to the Connected App.
+        :param pulumi.Input[str] client_id: The ID of the client.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
@@ -614,7 +614,7 @@ class _ClientState:
         :param pulumi.Input['ClientJwtConfigurationArgs'] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         :param pulumi.Input['ClientMobileArgs'] mobile: Additional configuration for native mobile apps.
-        :param pulumi.Input[str] name: SSO integration name.
+        :param pulumi.Input[str] name: Name of the client.
         :param pulumi.Input['ClientNativeSocialLoginArgs'] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
@@ -788,7 +788,7 @@ class _ClientState:
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Consumer Key assigned by Salesforce to the Connected App.
+        The ID of the client.
         """
         return pulumi.get(self, "client_id")
 
@@ -980,7 +980,7 @@ class _ClientState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        SSO integration name.
+        Name of the client.
         """
         return pulumi.get(self, "name")
 
@@ -1165,7 +1165,6 @@ class Client(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -1234,7 +1233,6 @@ class Client(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1272,7 +1270,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         :param pulumi.Input[pulumi.InputType['ClientMobileArgs']] mobile: Additional configuration for native mobile apps.
-        :param pulumi.Input[str] name: SSO integration name.
+        :param pulumi.Input[str] name: Name of the client.
         :param pulumi.Input[pulumi.InputType['ClientNativeSocialLoginArgs']] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
@@ -1295,7 +1293,6 @@ class Client(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -1364,7 +1361,6 @@ class Client(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1533,7 +1529,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
-        :param pulumi.Input[str] client_id: Consumer Key assigned by Salesforce to the Connected App.
+        :param pulumi.Input[str] client_id: The ID of the client.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
@@ -1549,7 +1545,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         :param pulumi.Input[pulumi.InputType['ClientMobileArgs']] mobile: Additional configuration for native mobile apps.
-        :param pulumi.Input[str] name: SSO integration name.
+        :param pulumi.Input[str] name: Name of the client.
         :param pulumi.Input[pulumi.InputType['ClientNativeSocialLoginArgs']] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
@@ -1663,7 +1659,7 @@ class Client(pulumi.CustomResource):
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Output[str]:
         """
-        Consumer Key assigned by Salesforce to the Connected App.
+        The ID of the client.
         """
         return pulumi.get(self, "client_id")
 
@@ -1791,7 +1787,7 @@ class Client(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        SSO integration name.
+        Name of the client.
         """
         return pulumi.get(self, "name")
 

@@ -14,9 +14,17 @@ public final class GetRolePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetRolePlainArgs Empty = new GetRolePlainArgs();
 
+    /**
+     * The name of the role. If not provided, `role_id` must be set.
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return The name of the role. If not provided, `role_id` must be set.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -61,6 +69,12 @@ public final class GetRolePlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetRolePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The name of the role. If not provided, `role_id` must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;

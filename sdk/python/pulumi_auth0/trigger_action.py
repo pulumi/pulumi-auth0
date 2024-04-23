@@ -141,7 +141,6 @@ class TriggerAction(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -161,7 +160,6 @@ class TriggerAction(pulumi.CustomResource):
             trigger="post-login",
             action_id=login_alert.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -202,7 +200,6 @@ class TriggerAction(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -222,7 +219,6 @@ class TriggerAction(pulumi.CustomResource):
             trigger="post-login",
             action_id=login_alert.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

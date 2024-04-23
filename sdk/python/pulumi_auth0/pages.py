@@ -172,7 +172,6 @@ class Pages(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -196,7 +195,6 @@ class Pages(pulumi.CustomResource):
                 url="https://example.com",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -234,7 +232,6 @@ class Pages(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -258,7 +255,6 @@ class Pages(pulumi.CustomResource):
                 url="https://example.com",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

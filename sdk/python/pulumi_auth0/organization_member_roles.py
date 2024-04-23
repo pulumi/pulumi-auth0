@@ -134,7 +134,6 @@ class OrganizationMemberRoles(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -159,7 +158,6 @@ class OrganizationMemberRoles(pulumi.CustomResource):
                 writer.id,
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -194,7 +192,6 @@ class OrganizationMemberRoles(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -219,7 +216,6 @@ class OrganizationMemberRoles(pulumi.CustomResource):
                 writer.id,
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -32,14 +32,14 @@ public final class ClientAddonsAzureSbArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Expiration in minutes for the generated token (default of 5 minutes).
+     * Optional expiration in minutes for the generated token. Defaults to 5 minutes.
      * 
      */
     @Import(name="expiration")
     private @Nullable Output<Integer> expiration;
 
     /**
-     * @return Expiration in minutes for the generated token (default of 5 minutes).
+     * @return Optional expiration in minutes for the generated token. Defaults to 5 minutes.
      * 
      */
     public Optional<Output<Integer>> expiration() {
@@ -141,7 +141,7 @@ public final class ClientAddonsAzureSbArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param expiration Expiration in minutes for the generated token (default of 5 minutes).
+         * @param expiration Optional expiration in minutes for the generated token. Defaults to 5 minutes.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ClientAddonsAzureSbArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param expiration Expiration in minutes for the generated token (default of 5 minutes).
+         * @param expiration Optional expiration in minutes for the generated token. Defaults to 5 minutes.
          * 
          * @return builder
          * 

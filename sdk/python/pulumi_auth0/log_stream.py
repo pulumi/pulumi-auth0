@@ -203,7 +203,6 @@ class LogStream(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -242,7 +241,6 @@ class LogStream(pulumi.CustomResource):
                 aws_region="us-east-2",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -275,7 +273,6 @@ class LogStream(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -314,7 +311,6 @@ class LogStream(pulumi.CustomResource):
                 aws_region="us-east-2",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

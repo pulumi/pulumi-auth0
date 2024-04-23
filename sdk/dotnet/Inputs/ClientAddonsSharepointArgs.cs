@@ -25,7 +25,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Microsoft Dynamics CRM application URL.
+        /// Internal SharePoint application URL.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

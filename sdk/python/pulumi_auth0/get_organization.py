@@ -134,7 +134,6 @@ def get_organization(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_auth0 as auth0
@@ -144,7 +143,6 @@ def get_organization(name: Optional[str] = None,
     # An Auth0 Organization loaded using its ID.
     some_organization_by_id = auth0.get_organization(organization_id="org_abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the organization. If not provided, `organization_id` must be set. For performance, it is advised to use the `organization_id` as a lookup if possible.
@@ -176,7 +174,6 @@ def get_organization_output(name: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_auth0 as auth0
@@ -186,7 +183,6 @@ def get_organization_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     # An Auth0 Organization loaded using its ID.
     some_organization_by_id = auth0.get_organization(organization_id="org_abcdefghkijklmnopqrstuvwxyz0123456789")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the organization. If not provided, `organization_id` must be set. For performance, it is advised to use the `organization_id` as a lookup if possible.

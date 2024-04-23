@@ -16,14 +16,14 @@ public final class AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs
     public static final AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs Empty = new AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs();
 
     /**
-     * Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+     * The maximum number of sign up attempts allowed from a single IP address.
      * 
      */
     @Import(name="maxAttempts")
     private @Nullable Output<Integer> maxAttempts;
 
     /**
-     * @return Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+     * @return The maximum number of sign up attempts allowed from a single IP address.
      * 
      */
     public Optional<Output<Integer>> maxAttempts() {
@@ -31,14 +31,14 @@ public final class AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs
     }
 
     /**
-     * Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+     * Interval of time, given in milliseconds at which new sign up tokens will become available after they have been used by an IP address. Each sign up attempt will be added on the defined throttling rate.
      * 
      */
     @Import(name="rate")
     private @Nullable Output<Integer> rate;
 
     /**
-     * @return Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+     * @return Interval of time, given in milliseconds at which new sign up tokens will become available after they have been used by an IP address. Each sign up attempt will be added on the defined throttling rate.
      * 
      */
     public Optional<Output<Integer>> rate() {
@@ -71,7 +71,7 @@ public final class AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs
         }
 
         /**
-         * @param maxAttempts Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+         * @param maxAttempts The maximum number of sign up attempts allowed from a single IP address.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs
         }
 
         /**
-         * @param maxAttempts Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+         * @param maxAttempts The maximum number of sign up attempts allowed from a single IP address.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs
         }
 
         /**
-         * @param rate Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+         * @param rate Interval of time, given in milliseconds at which new sign up tokens will become available after they have been used by an IP address. Each sign up attempt will be added on the defined throttling rate.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs
         }
 
         /**
-         * @param rate Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+         * @param rate Interval of time, given in milliseconds at which new sign up tokens will become available after they have been used by an IP address. Each sign up attempt will be added on the defined throttling rate.
          * 
          * @return builder
          * 
