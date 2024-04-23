@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string BundleId;
         /// <summary>
-        /// Indicates whether Duo MFA is enabled.
+        /// Indicates whether the Apple Push Notification service is enabled.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

@@ -16,14 +16,14 @@ public final class ClientAddonsSapApiArgs extends com.pulumi.resources.ResourceA
     public static final ClientAddonsSapApiArgs Empty = new ClientAddonsSapApiArgs();
 
     /**
-     * Consumer Key assigned by Salesforce to the Connected App.
+     * If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute`client*id`must be set and equal the`client*id` form parameter of the access token request.
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return Consumer Key assigned by Salesforce to the Connected App.
+     * @return If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute`client*id`must be set and equal the`client*id` form parameter of the access token request.
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -31,14 +31,14 @@ public final class ClientAddonsSapApiArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * NameID element of the Subject which can be used to express the user&#39;s identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
      * 
      */
     @Import(name="nameIdentifierFormat")
     private @Nullable Output<String> nameIdentifierFormat;
 
     /**
-     * @return Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * @return NameID element of the Subject which can be used to express the user&#39;s identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
      * 
      */
     public Optional<Output<String>> nameIdentifierFormat() {
@@ -135,7 +135,7 @@ public final class ClientAddonsSapApiArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clientId Consumer Key assigned by Salesforce to the Connected App.
+         * @param clientId If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute`client*id`must be set and equal the`client*id` form parameter of the access token request.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ClientAddonsSapApiArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clientId Consumer Key assigned by Salesforce to the Connected App.
+         * @param clientId If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute`client*id`must be set and equal the`client*id` form parameter of the access token request.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ClientAddonsSapApiArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nameIdentifierFormat Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+         * @param nameIdentifierFormat NameID element of the Subject which can be used to express the user&#39;s identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ClientAddonsSapApiArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nameIdentifierFormat Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+         * @param nameIdentifierFormat NameID element of the Subject which can be used to express the user&#39;s identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
          * 
          * @return builder
          * 

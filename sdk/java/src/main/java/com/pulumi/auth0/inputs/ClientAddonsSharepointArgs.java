@@ -32,14 +32,14 @@ public final class ClientAddonsSharepointArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Microsoft Dynamics CRM application URL.
+     * Internal SharePoint application URL.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return Microsoft Dynamics CRM application URL.
+     * @return Internal SharePoint application URL.
      * 
      */
     public Optional<Output<String>> url() {
@@ -103,7 +103,7 @@ public final class ClientAddonsSharepointArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param url Microsoft Dynamics CRM application URL.
+         * @param url Internal SharePoint application URL.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ClientAddonsSharepointArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param url Microsoft Dynamics CRM application URL.
+         * @param url Internal SharePoint application URL.
          * 
          * @return builder
          * 

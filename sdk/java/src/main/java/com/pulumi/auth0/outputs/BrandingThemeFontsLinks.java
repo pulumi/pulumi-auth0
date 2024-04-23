@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BrandingThemeFontsLinks {
     /**
-     * @return Body text bold. Defaults to `false`.
+     * @return Links bold. Defaults to `true`.
      * 
      */
     private @Nullable Boolean bold;
     /**
-     * @return Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * @return Links size. Value needs to be between `0` and `150`. Defaults to `87.5`.
      * 
      */
     private @Nullable Double size;
 
     private BrandingThemeFontsLinks() {}
     /**
-     * @return Body text bold. Defaults to `false`.
+     * @return Links bold. Defaults to `true`.
      * 
      */
     public Optional<Boolean> bold() {
         return Optional.ofNullable(this.bold);
     }
     /**
-     * @return Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * @return Links size. Value needs to be between `0` and `150`. Defaults to `87.5`.
      * 
      */
     public Optional<Double> size() {

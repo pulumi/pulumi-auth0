@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.InvokeOption) (*LookupRoleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleResult
@@ -60,6 +58,7 @@ func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getRole.
 type LookupRoleArgs struct {
+	// The name of the role. If not provided, `roleId` must be set.
 	Name *string `pulumi:"name"`
 	// The ID of the role. If not provided, `name` must be set.
 	RoleId *string `pulumi:"roleId"`
@@ -96,6 +95,7 @@ func LookupRoleOutput(ctx *pulumi.Context, args LookupRoleOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getRole.
 type LookupRoleOutputArgs struct {
+	// The name of the role. If not provided, `roleId` must be set.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The ID of the role. If not provided, `name` must be set.
 	RoleId pulumi.StringPtrInput `pulumi:"roleId"`

@@ -65,14 +65,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+     * Name of the connection.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+     * @return Name of the connection.
      * 
      */
     public Optional<Output<String>> name() {
@@ -234,7 +234,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+         * @param name Name of the connection.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+         * @param name Name of the connection.
          * 
          * @return builder
          * 

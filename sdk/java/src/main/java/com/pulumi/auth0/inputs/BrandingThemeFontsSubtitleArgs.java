@@ -17,14 +17,14 @@ public final class BrandingThemeFontsSubtitleArgs extends com.pulumi.resources.R
     public static final BrandingThemeFontsSubtitleArgs Empty = new BrandingThemeFontsSubtitleArgs();
 
     /**
-     * Body text bold. Defaults to `false`.
+     * Subtitle bold. Defaults to `false`.
      * 
      */
     @Import(name="bold")
     private @Nullable Output<Boolean> bold;
 
     /**
-     * @return Body text bold. Defaults to `false`.
+     * @return Subtitle bold. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> bold() {
@@ -32,14 +32,14 @@ public final class BrandingThemeFontsSubtitleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * Subtitle size. Value needs to be between `0` and `150`. Defaults to `87.5`.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Double> size;
 
     /**
-     * @return Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * @return Subtitle size. Value needs to be between `0` and `150`. Defaults to `87.5`.
      * 
      */
     public Optional<Output<Double>> size() {
@@ -72,7 +72,7 @@ public final class BrandingThemeFontsSubtitleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param bold Body text bold. Defaults to `false`.
+         * @param bold Subtitle bold. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class BrandingThemeFontsSubtitleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param bold Body text bold. Defaults to `false`.
+         * @param bold Subtitle bold. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class BrandingThemeFontsSubtitleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param size Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+         * @param size Subtitle size. Value needs to be between `0` and `150`. Defaults to `87.5`.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class BrandingThemeFontsSubtitleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param size Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+         * @param size Subtitle size. Value needs to be between `0` and `150`. Defaults to `87.5`.
          * 
          * @return builder
          * 

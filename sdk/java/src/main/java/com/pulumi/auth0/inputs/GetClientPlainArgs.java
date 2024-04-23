@@ -14,16 +14,32 @@ public final class GetClientPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetClientPlainArgs Empty = new GetClientPlainArgs();
 
+    /**
+     * The ID of the client. If not provided, `name` must be set.
+     * 
+     */
     @Import(name="clientId")
     private @Nullable String clientId;
 
+    /**
+     * @return The ID of the client. If not provided, `name` must be set.
+     * 
+     */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }
 
+    /**
+     * The name of the client. If not provided, `client_id` must be set.
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return The name of the client. If not provided, `client_id` must be set.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -53,11 +69,23 @@ public final class GetClientPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetClientPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param clientId The ID of the client. If not provided, `name` must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(@Nullable String clientId) {
             $.clientId = clientId;
             return this;
         }
 
+        /**
+         * @param name The name of the client. If not provided, `client_id` must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;

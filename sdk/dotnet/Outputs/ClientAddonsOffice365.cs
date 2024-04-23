@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? Connection;
         /// <summary>
-        /// Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+        /// Your Office 365 domain name, for example `acme-org.com`.
         /// </summary>
         public readonly string? Domain;
 

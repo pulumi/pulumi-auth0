@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClientAddonsZoom {
     /**
-     * @return Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+     * @return Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
      * 
      */
     private @Nullable String account;
 
     private ClientAddonsZoom() {}
     /**
-     * @return Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+     * @return Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
      * 
      */
     public Optional<String> account() {

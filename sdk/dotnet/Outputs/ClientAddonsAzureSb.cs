@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? EntityPath;
         /// <summary>
-        /// Expiration in minutes for the generated token (default of 5 minutes).
+        /// Optional expiration in minutes for the generated token. Defaults to 5 minutes.
         /// </summary>
         public readonly int? Expiration;
         /// <summary>

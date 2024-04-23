@@ -31,14 +31,14 @@ public final class ClientAddonsOffice365Args extends com.pulumi.resources.Resour
     }
 
     /**
-     * Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * Your Office 365 domain name, for example `acme-org.com`.
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * @return Your Office 365 domain name, for example `acme-org.com`.
      * 
      */
     public Optional<Output<String>> domain() {
@@ -92,7 +92,7 @@ public final class ClientAddonsOffice365Args extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param domain Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+         * @param domain Your Office 365 domain name, for example `acme-org.com`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ClientAddonsOffice365Args extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param domain Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+         * @param domain Your Office 365 domain name, for example `acme-org.com`.
          * 
          * @return builder
          * 

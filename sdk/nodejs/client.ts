@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -81,7 +80,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -152,7 +150,7 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly clientAliases!: pulumi.Output<string[] | undefined>;
     /**
-     * Consumer Key assigned by Salesforce to the Connected App.
+     * The ID of the client.
      */
     public /*out*/ readonly clientId!: pulumi.Output<string>;
     /**
@@ -216,7 +214,7 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly mobile!: pulumi.Output<outputs.ClientMobile>;
     /**
-     * SSO integration name.
+     * Name of the client.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -390,7 +388,7 @@ export interface ClientState {
      */
     clientAliases?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Consumer Key assigned by Salesforce to the Connected App.
+     * The ID of the client.
      */
     clientId?: pulumi.Input<string>;
     /**
@@ -454,7 +452,7 @@ export interface ClientState {
      */
     mobile?: pulumi.Input<inputs.ClientMobile>;
     /**
-     * SSO integration name.
+     * Name of the client.
      */
     name?: pulumi.Input<string>;
     /**
@@ -596,7 +594,7 @@ export interface ClientArgs {
      */
     mobile?: pulumi.Input<inputs.ClientMobile>;
     /**
-     * SSO integration name.
+     * Name of the client.
      */
     name?: pulumi.Input<string>;
     /**

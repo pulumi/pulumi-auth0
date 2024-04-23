@@ -11,14 +11,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myPages = auth0.getPages({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPages(opts?: pulumi.InvokeOptions): Promise<GetPagesResult> {
 
@@ -57,14 +55,12 @@ export interface GetPagesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myPages = auth0.getPages({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPagesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPagesResult> {
     return pulumi.output(getPages(opts))

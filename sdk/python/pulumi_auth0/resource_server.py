@@ -400,7 +400,6 @@ class ResourceServer(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -413,7 +412,6 @@ class ResourceServer(pulumi.CustomResource):
             token_lifetime=8600,
             skip_consent_for_verifiable_first_party_clients=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -452,7 +450,6 @@ class ResourceServer(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -465,7 +462,6 @@ class ResourceServer(pulumi.CustomResource):
             token_lifetime=8600,
             skip_consent_for_verifiable_first_party_clients=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

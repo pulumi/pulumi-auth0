@@ -67,14 +67,14 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Dependency name, e.g. `lodash`.
+     * The name of the action.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Dependency name, e.g. `lodash`.
+     * @return The name of the action.
      * 
      */
     public Optional<Output<String>> name() {
@@ -230,7 +230,7 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Dependency name, e.g. `lodash`.
+         * @param name The name of the action.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Dependency name, e.g. `lodash`.
+         * @param name The name of the action.
          * 
          * @return builder
          * 

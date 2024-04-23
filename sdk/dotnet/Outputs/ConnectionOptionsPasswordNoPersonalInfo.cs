@@ -13,9 +13,6 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ConnectionOptionsPasswordNoPersonalInfo
     {
-        /// <summary>
-        /// Indicates whether the password dictionary check is enabled for this connection.
-        /// </summary>
         public readonly bool? Enable;
 
         [OutputConstructor]

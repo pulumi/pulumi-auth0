@@ -18,7 +18,7 @@ public final class ClientAddonsAzureSb {
      */
     private @Nullable String entityPath;
     /**
-     * @return Expiration in minutes for the generated token (default of 5 minutes).
+     * @return Optional expiration in minutes for the generated token. Defaults to 5 minutes.
      * 
      */
     private @Nullable Integer expiration;
@@ -47,7 +47,7 @@ public final class ClientAddonsAzureSb {
         return Optional.ofNullable(this.entityPath);
     }
     /**
-     * @return Expiration in minutes for the generated token (default of 5 minutes).
+     * @return Optional expiration in minutes for the generated token. Defaults to 5 minutes.
      * 
      */
     public Optional<Integer> expiration() {

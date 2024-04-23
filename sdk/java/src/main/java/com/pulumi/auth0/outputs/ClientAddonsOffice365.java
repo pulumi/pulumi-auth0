@@ -17,7 +17,7 @@ public final class ClientAddonsOffice365 {
      */
     private @Nullable String connection;
     /**
-     * @return Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * @return Your Office 365 domain name, for example `acme-org.com`.
      * 
      */
     private @Nullable String domain;
@@ -31,7 +31,7 @@ public final class ClientAddonsOffice365 {
         return Optional.ofNullable(this.connection);
     }
     /**
-     * @return Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * @return Your Office 365 domain name, for example `acme-org.com`.
      * 
      */
     public Optional<String> domain() {

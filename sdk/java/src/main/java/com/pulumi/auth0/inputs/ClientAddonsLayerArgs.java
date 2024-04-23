@@ -18,14 +18,14 @@ public final class ClientAddonsLayerArgs extends com.pulumi.resources.ResourceAr
     public static final ClientAddonsLayerArgs Empty = new ClientAddonsLayerArgs();
 
     /**
-     * Expiration in minutes for the generated token (default of 5 minutes).
+     * Optional expiration in minutes for the generated token. Defaults to 5 minutes.
      * 
      */
     @Import(name="expiration")
     private @Nullable Output<Integer> expiration;
 
     /**
-     * @return Expiration in minutes for the generated token (default of 5 minutes).
+     * @return Optional expiration in minutes for the generated token. Defaults to 5 minutes.
      * 
      */
     public Optional<Output<Integer>> expiration() {
@@ -48,14 +48,14 @@ public final class ClientAddonsLayerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
      * 
      */
     @Import(name="principal")
     private @Nullable Output<String> principal;
 
     /**
-     * @return AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * @return Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
      * 
      */
     public Optional<Output<String>> principal() {
@@ -63,14 +63,14 @@ public final class ClientAddonsLayerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Private Key for signing the token (SDK v3+ tokens only).
+     * Private key for signing the Layer token.
      * 
      */
     @Import(name="privateKey", required=true)
     private Output<String> privateKey;
 
     /**
-     * @return Private Key for signing the token (SDK v3+ tokens only).
+     * @return Private key for signing the Layer token.
      * 
      */
     public Output<String> privateKey() {
@@ -121,7 +121,7 @@ public final class ClientAddonsLayerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param expiration Expiration in minutes for the generated token (default of 5 minutes).
+         * @param expiration Optional expiration in minutes for the generated token. Defaults to 5 minutes.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ClientAddonsLayerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param expiration Expiration in minutes for the generated token (default of 5 minutes).
+         * @param expiration Optional expiration in minutes for the generated token. Defaults to 5 minutes.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ClientAddonsLayerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param principal AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+         * @param principal Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class ClientAddonsLayerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param principal AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+         * @param principal Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class ClientAddonsLayerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param privateKey Private Key for signing the token (SDK v3+ tokens only).
+         * @param privateKey Private key for signing the Layer token.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class ClientAddonsLayerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param privateKey Private Key for signing the token (SDK v3+ tokens only).
+         * @param privateKey Private key for signing the Layer token.
          * 
          * @return builder
          * 

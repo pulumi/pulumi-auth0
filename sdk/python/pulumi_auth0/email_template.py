@@ -329,7 +329,6 @@ class EmailTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -354,7 +353,6 @@ class EmailTemplate(pulumi.CustomResource):
             enabled=True,
             opts=pulumi.ResourceOptions(depends_on=[my_email_provider]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -405,7 +403,6 @@ class EmailTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -430,7 +427,6 @@ class EmailTemplate(pulumi.CustomResource):
             enabled=True,
             opts=pulumi.ResourceOptions(depends_on=[my_email_provider]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

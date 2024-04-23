@@ -17,14 +17,14 @@ public final class BrandingThemeFontsTitleArgs extends com.pulumi.resources.Reso
     public static final BrandingThemeFontsTitleArgs Empty = new BrandingThemeFontsTitleArgs();
 
     /**
-     * Body text bold. Defaults to `false`.
+     * Title bold. Defaults to `false`.
      * 
      */
     @Import(name="bold")
     private @Nullable Output<Boolean> bold;
 
     /**
-     * @return Body text bold. Defaults to `false`.
+     * @return Title bold. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> bold() {
@@ -32,14 +32,14 @@ public final class BrandingThemeFontsTitleArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * Title size. Value needs to be between `75` and `150`. Defaults to `150.0`.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Double> size;
 
     /**
-     * @return Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * @return Title size. Value needs to be between `75` and `150`. Defaults to `150.0`.
      * 
      */
     public Optional<Output<Double>> size() {
@@ -72,7 +72,7 @@ public final class BrandingThemeFontsTitleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param bold Body text bold. Defaults to `false`.
+         * @param bold Title bold. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class BrandingThemeFontsTitleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param bold Body text bold. Defaults to `false`.
+         * @param bold Title bold. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class BrandingThemeFontsTitleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param size Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+         * @param size Title size. Value needs to be between `75` and `150`. Defaults to `150.0`.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class BrandingThemeFontsTitleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param size Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+         * @param size Title size. Value needs to be between `75` and `150`. Defaults to `150.0`.
          * 
          * @return builder
          * 

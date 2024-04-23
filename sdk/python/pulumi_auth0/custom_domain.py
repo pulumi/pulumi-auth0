@@ -234,7 +234,6 @@ class CustomDomain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -243,7 +242,6 @@ class CustomDomain(pulumi.CustomResource):
             domain="auth.example.com",
             type="auth0_managed_certs")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -281,7 +279,6 @@ class CustomDomain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -290,7 +287,6 @@ class CustomDomain(pulumi.CustomResource):
             domain="auth.example.com",
             type="auth0_managed_certs")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

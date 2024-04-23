@@ -14,11 +14,11 @@ namespace Pulumi.Auth0.Outputs
     public sealed class BrandingThemeFontsButtonsText
     {
         /// <summary>
-        /// Body text bold. Defaults to `false`.
+        /// Buttons text bold. Defaults to `false`.
         /// </summary>
         public readonly bool? Bold;
         /// <summary>
-        /// Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        /// Buttons text size. Value needs to be between `0` and `150`. Defaults to `100.0`.
         /// </summary>
         public readonly double? Size;
 
