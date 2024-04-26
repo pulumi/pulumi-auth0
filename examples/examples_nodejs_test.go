@@ -16,7 +16,6 @@ import (
 )
 
 func TestAccClient(t *testing.T) {
-	t.Skip("Skipping test because of https://github.com/pulumi/pulumi-auth0/issues/504")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "client"),
@@ -26,7 +25,6 @@ func TestAccClient(t *testing.T) {
 }
 
 func TestAccResourceServer(t *testing.T) {
-	t.Skip("Skipping test because of https://github.com/pulumi/pulumi-auth0/issues/504")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "resource-server"),
@@ -42,7 +40,7 @@ func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 			"@pulumi/auth0",
 		},
 
-		// Temporary profilactic check until pulumi/pulumi#12981 is resolved.
+		// Temporary prophylactic check until pulumi/pulumi#12981 is resolved.
 		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
 			for _, e := range stack.Events {
 				eventsJSON, err := json.MarshalIndent(e, "", "  ")
