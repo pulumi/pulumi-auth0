@@ -1,8 +1,8 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Fabrice Baumann <fa.baumann@gmail.com>
 Date: Thu, 7 Mar 2024 16:31:48 -0500
-Subject: [PATCH 3/3] Patch to allow allow User resource import: inject
- connection name attribute
+Subject: [PATCH] Patch to allow allow User resource import: inject connection
+ name attribute
 
 
 diff --git a/internal/auth0/user/flatten.go b/internal/auth0/user/flatten.go

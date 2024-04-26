@@ -1,7 +1,7 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Thomas Kappler <tkappler@pulumi.com>
 Date: Fri, 29 Sep 2023 07:52:53 +0200
-Subject: [PATCH 2/3] Patch to avoid upstream ResourceServer panic: code moved
+Subject: [PATCH] Patch to avoid upstream ResourceServer panic: code moved
 
 
 diff --git a/internal/auth0/resourceserver/expand.go b/internal/auth0/resourceserver/expand.go
