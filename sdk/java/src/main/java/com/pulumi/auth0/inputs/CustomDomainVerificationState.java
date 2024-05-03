@@ -15,19 +15,9 @@ public final class CustomDomainVerificationState extends com.pulumi.resources.Re
 
     public static final CustomDomainVerificationState Empty = new CustomDomainVerificationState();
 
-    /**
-     * The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
-     * is `self_managed_certs` and Terraform originally managed the domain&#39;s verification.
-     * 
-     */
     @Import(name="cnameApiKey")
     private @Nullable Output<String> cnameApiKey;
 
-    /**
-     * @return The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
-     * is `self_managed_certs` and Terraform originally managed the domain&#39;s verification.
-     * 
-     */
     public Optional<Output<String>> cnameApiKey() {
         return Optional.ofNullable(this.cnameApiKey);
     }
@@ -88,25 +78,11 @@ public final class CustomDomainVerificationState extends com.pulumi.resources.Re
             $ = new CustomDomainVerificationState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param cnameApiKey The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
-         * is `self_managed_certs` and Terraform originally managed the domain&#39;s verification.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cnameApiKey(@Nullable Output<String> cnameApiKey) {
             $.cnameApiKey = cnameApiKey;
             return this;
         }
 
-        /**
-         * @param cnameApiKey The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
-         * is `self_managed_certs` and Terraform originally managed the domain&#39;s verification.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cnameApiKey(String cnameApiKey) {
             return cnameApiKey(Output.of(cnameApiKey));
         }
