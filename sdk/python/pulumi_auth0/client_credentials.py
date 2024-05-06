@@ -24,10 +24,6 @@ class ClientCredentialsArgs:
         The set of arguments for constructing a ClientCredentials resource.
         :param pulumi.Input[str] authentication_method: Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT).
         :param pulumi.Input[str] client_id: The ID of the client for which to configure the authentication method.
-        :param pulumi.Input[str] client_secret: Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-               To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-               will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-               authentication method.
         :param pulumi.Input['ClientCredentialsPrivateKeyJwtArgs'] private_key_jwt: Defines `private_key_jwt` client authentication method.
         """
         pulumi.set(__self__, "authentication_method", authentication_method)
@@ -64,12 +60,6 @@ class ClientCredentialsArgs:
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[pulumi.Input[str]]:
-        """
-        Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-        To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-        will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-        authentication method.
-        """
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
@@ -100,10 +90,6 @@ class _ClientCredentialsState:
         Input properties used for looking up and filtering ClientCredentials resources.
         :param pulumi.Input[str] authentication_method: Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT).
         :param pulumi.Input[str] client_id: The ID of the client for which to configure the authentication method.
-        :param pulumi.Input[str] client_secret: Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-               To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-               will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-               authentication method.
         :param pulumi.Input['ClientCredentialsPrivateKeyJwtArgs'] private_key_jwt: Defines `private_key_jwt` client authentication method.
         """
         if authentication_method is not None:
@@ -142,12 +128,6 @@ class _ClientCredentialsState:
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[pulumi.Input[str]]:
-        """
-        Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-        To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-        will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-        authentication method.
-        """
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
@@ -203,10 +183,6 @@ class ClientCredentials(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authentication_method: Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT).
         :param pulumi.Input[str] client_id: The ID of the client for which to configure the authentication method.
-        :param pulumi.Input[str] client_secret: Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-               To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-               will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-               authentication method.
         :param pulumi.Input[pulumi.InputType['ClientCredentialsPrivateKeyJwtArgs']] private_key_jwt: Defines `private_key_jwt` client authentication method.
         """
         ...
@@ -298,10 +274,6 @@ class ClientCredentials(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authentication_method: Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT).
         :param pulumi.Input[str] client_id: The ID of the client for which to configure the authentication method.
-        :param pulumi.Input[str] client_secret: Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-               To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-               will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-               authentication method.
         :param pulumi.Input[pulumi.InputType['ClientCredentialsPrivateKeyJwtArgs']] private_key_jwt: Defines `private_key_jwt` client authentication method.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -333,12 +305,6 @@ class ClientCredentials(pulumi.CustomResource):
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> pulumi.Output[str]:
-        """
-        Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-        To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-        will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-        authentication method.
-        """
         return pulumi.get(self, "client_secret")
 
     @property
