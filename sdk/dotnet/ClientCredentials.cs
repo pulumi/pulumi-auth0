@@ -46,12 +46,6 @@ namespace Pulumi.Auth0
         [Output("clientId")]
         public Output<string> ClientId { get; private set; } = null!;
 
-        /// <summary>
-        /// Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-        /// To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-        /// will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-        /// authentication method.
-        /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
 
@@ -125,13 +119,6 @@ namespace Pulumi.Auth0
 
         [Input("clientSecret")]
         private Input<string>? _clientSecret;
-
-        /// <summary>
-        /// Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-        /// To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-        /// will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-        /// authentication method.
-        /// </summary>
         public Input<string>? ClientSecret
         {
             get => _clientSecret;
@@ -170,13 +157,6 @@ namespace Pulumi.Auth0
 
         [Input("clientSecret")]
         private Input<string>? _clientSecret;
-
-        /// <summary>
-        /// Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-        /// To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-        /// will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-        /// authentication method.
-        /// </summary>
         public Input<string>? ClientSecret
         {
             get => _clientSecret;

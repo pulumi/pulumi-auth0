@@ -69,23 +69,9 @@ public class ClientCredentials extends com.pulumi.resources.CustomResource {
     public Output<String> clientId() {
         return this.clientId;
     }
-    /**
-     * Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-     * To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-     * will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-     * authentication method.
-     * 
-     */
     @Export(name="clientSecret", refs={String.class}, tree="[0]")
     private Output<String> clientSecret;
 
-    /**
-     * @return Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-     * To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-     * will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-     * authentication method.
-     * 
-     */
     public Output<String> clientSecret() {
         return this.clientSecret;
     }

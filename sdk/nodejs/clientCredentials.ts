@@ -64,12 +64,6 @@ export class ClientCredentials extends pulumi.CustomResource {
      * The ID of the client for which to configure the authentication method.
      */
     public readonly clientId!: pulumi.Output<string>;
-    /**
-     * Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-     * To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-     * will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-     * authentication method.
-     */
     public readonly clientSecret!: pulumi.Output<string>;
     /**
      * Defines `privateKeyJwt` client authentication method.
@@ -125,12 +119,6 @@ export interface ClientCredentialsState {
      * The ID of the client for which to configure the authentication method.
      */
     clientId?: pulumi.Input<string>;
-    /**
-     * Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-     * To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-     * will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-     * authentication method.
-     */
     clientSecret?: pulumi.Input<string>;
     /**
      * Defines `privateKeyJwt` client authentication method.
@@ -150,12 +138,6 @@ export interface ClientCredentialsArgs {
      * The ID of the client for which to configure the authentication method.
      */
     clientId: pulumi.Input<string>;
-    /**
-     * Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-     * To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-     * will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-     * authentication method.
-     */
     clientSecret?: pulumi.Input<string>;
     /**
      * Defines `privateKeyJwt` client authentication method.
