@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,19 +42,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myLoginPromptPartials = new PromptPartials(&#34;myLoginPromptPartials&#34;, PromptPartialsArgs.builder()        
- *             .prompt(&#34;login&#34;)
- *             .formContentStart(&#34;&lt;div&gt;Updated Form Content Start&lt;/div&gt;&#34;)
- *             .formContentEnd(&#34;&lt;div&gt;Updated Form Content End&lt;/div&gt;&#34;)
- *             .formFooterStart(&#34;&lt;div&gt;Updated Footer Start&lt;/div&gt;&#34;)
- *             .formFooterEnd(&#34;&lt;div&gt;Updated Footer End&lt;/div&gt;&#34;)
- *             .secondaryActionsStart(&#34;&lt;div&gt;Updated Secondary Actions Start&lt;/div&gt;&#34;)
- *             .secondaryActionsEnd(&#34;&lt;div&gt;Updated Secondary Actions End&lt;/div&gt;&#34;)
+ *         var myLoginPromptPartials = new PromptPartials("myLoginPromptPartials", PromptPartialsArgs.builder()        
+ *             .prompt("login")
+ *             .formContentStart("<div>Updated Form Content Start</div>")
+ *             .formContentEnd("<div>Updated Form Content End</div>")
+ *             .formFooterStart("<div>Updated Footer Start</div>")
+ *             .formFooterEnd("<div>Updated Footer End</div>")
+ *             .secondaryActionsStart("<div>Updated Secondary Actions Start</div>")
+ *             .secondaryActionsEnd("<div>Updated Secondary Actions End</div>")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

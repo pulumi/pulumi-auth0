@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,22 +48,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myHook = new Hook(&#34;myHook&#34;, HookArgs.builder()        
- *             .name(&#34;My Pre User Registration Hook&#34;)
- *             .script(&#34;&#34;&#34;
+ *         var myHook = new Hook("myHook", HookArgs.builder()        
+ *             .name("My Pre User Registration Hook")
+ *             .script("""
  *     function (user, context, callback) {
  *       callback(null, { user });
  *     }
- *             &#34;&#34;&#34;)
- *             .triggerId(&#34;pre-user-registration&#34;)
+ *             """)
+ *             .triggerId("pre-user-registration")
  *             .enabled(true)
- *             .secrets(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .dependencies(Map.of(&#34;auth0&#34;, &#34;2.30.0&#34;))
+ *             .secrets(Map.of("foo", "bar"))
+ *             .dependencies(Map.of("auth0", "2.30.0"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

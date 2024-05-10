@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,22 +51,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myConn = new Connection(&#34;myConn&#34;, ConnectionArgs.builder()        
- *             .name(&#34;My-Auth0-Connection&#34;)
- *             .strategy(&#34;auth0&#34;)
+ *         var myConn = new Connection("myConn", ConnectionArgs.builder()        
+ *             .name("My-Auth0-Connection")
+ *             .strategy("auth0")
  *             .build());
  * 
- *         var myFirstClient = new Client(&#34;myFirstClient&#34;, ClientArgs.builder()        
- *             .name(&#34;My-First-Auth0-Client&#34;)
+ *         var myFirstClient = new Client("myFirstClient", ClientArgs.builder()        
+ *             .name("My-First-Auth0-Client")
  *             .build());
  * 
- *         var mySecondClient = new Client(&#34;mySecondClient&#34;, ClientArgs.builder()        
- *             .name(&#34;My-Second-Auth0-Client&#34;)
+ *         var mySecondClient = new Client("mySecondClient", ClientArgs.builder()        
+ *             .name("My-Second-Auth0-Client")
  *             .build());
  * 
  *         // One connection to many clients association.
  *         // To prevent issues, avoid using this resource together with the `auth0_connection_client` resource.
- *         var myConnClientsAssoc = new ConnectionClients(&#34;myConnClientsAssoc&#34;, ConnectionClientsArgs.builder()        
+ *         var myConnClientsAssoc = new ConnectionClients("myConnClientsAssoc", ConnectionClientsArgs.builder()        
  *             .connectionId(myConn.id())
  *             .enabledClients(            
  *                 myFirstClient.id(),
@@ -74,7 +75,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

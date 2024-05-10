@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,25 +50,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myConn = new Connection(&#34;myConn&#34;, ConnectionArgs.builder()        
- *             .name(&#34;My-Auth0-Connection&#34;)
- *             .strategy(&#34;auth0&#34;)
+ *         var myConn = new Connection("myConn", ConnectionArgs.builder()        
+ *             .name("My-Auth0-Connection")
+ *             .strategy("auth0")
  *             .build());
  * 
- *         var myClient = new Client(&#34;myClient&#34;, ClientArgs.builder()        
- *             .name(&#34;My-Auth0-Client&#34;)
+ *         var myClient = new Client("myClient", ClientArgs.builder()        
+ *             .name("My-Auth0-Client")
  *             .build());
  * 
  *         // One connection to one client association.
  *         // To prevent issues, avoid using this resource together with the `auth0_connection_clients` resource.
- *         var myConnClientAssoc = new ConnectionClient(&#34;myConnClientAssoc&#34;, ConnectionClientArgs.builder()        
+ *         var myConnClientAssoc = new ConnectionClient("myConnClientAssoc", ConnectionClientArgs.builder()        
  *             .connectionId(myConn.id())
  *             .clientId(myClient.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,13 +49,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProtection = new AttackProtection(&#34;myProtection&#34;, AttackProtectionArgs.builder()        
+ *         var myProtection = new AttackProtection("myProtection", AttackProtectionArgs.builder()        
  *             .suspiciousIpThrottling(AttackProtectionSuspiciousIpThrottlingArgs.builder()
  *                 .enabled(true)
  *                 .shields(                
- *                     &#34;admin_notification&#34;,
- *                     &#34;block&#34;)
- *                 .allowlists(&#34;192.168.1.1&#34;)
+ *                     "admin_notification",
+ *                     "block")
+ *                 .allowlists("192.168.1.1")
  *                 .preLogin(AttackProtectionSuspiciousIpThrottlingPreLoginArgs.builder()
  *                     .maxAttempts(100)
  *                     .rate(864000)
@@ -65,30 +66,31 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .bruteForceProtection(AttackProtectionBruteForceProtectionArgs.builder()
- *                 .allowlists(&#34;127.0.0.1&#34;)
+ *                 .allowlists("127.0.0.1")
  *                 .enabled(true)
  *                 .maxAttempts(5)
- *                 .mode(&#34;count_per_identifier_and_ip&#34;)
+ *                 .mode("count_per_identifier_and_ip")
  *                 .shields(                
- *                     &#34;block&#34;,
- *                     &#34;user_notification&#34;)
+ *                     "block",
+ *                     "user_notification")
  *                 .build())
  *             .breachedPasswordDetection(AttackProtectionBreachedPasswordDetectionArgs.builder()
- *                 .adminNotificationFrequencies(&#34;daily&#34;)
+ *                 .adminNotificationFrequencies("daily")
  *                 .enabled(true)
- *                 .method(&#34;standard&#34;)
+ *                 .method("standard")
  *                 .shields(                
- *                     &#34;admin_notification&#34;,
- *                     &#34;block&#34;)
+ *                     "admin_notification",
+ *                     "block")
  *                 .preUserRegistration(AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs.builder()
- *                     .shields(&#34;block&#34;)
+ *                     .shields("block")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

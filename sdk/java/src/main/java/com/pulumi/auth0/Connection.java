@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ### Auth0 Connection
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,34 +60,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an Auth0 connection.
- *         var myConnection = new Connection(&#34;myConnection&#34;, ConnectionArgs.builder()        
- *             .name(&#34;Example-Connection&#34;)
+ *         var myConnection = new Connection("myConnection", ConnectionArgs.builder()        
+ *             .name("Example-Connection")
  *             .isDomainConnection(true)
- *             .strategy(&#34;auth0&#34;)
+ *             .strategy("auth0")
  *             .metadata(Map.ofEntries(
- *                 Map.entry(&#34;key1&#34;, &#34;foo&#34;),
- *                 Map.entry(&#34;key2&#34;, &#34;bar&#34;)
+ *                 Map.entry("key1", "foo"),
+ *                 Map.entry("key2", "bar")
  *             ))
  *             .options(ConnectionOptionsArgs.builder()
- *                 .passwordPolicy(&#34;excellent&#34;)
+ *                 .passwordPolicy("excellent")
  *                 .bruteForceProtection(true)
  *                 .enabledDatabaseCustomization(true)
  *                 .importMode(false)
  *                 .requiresUsername(true)
  *                 .disableSignup(false)
- *                 .customScripts(Map.of(&#34;get_user&#34;, &#34;&#34;&#34;
+ *                 .customScripts(Map.of("get_user", """
  *         function getByEmail(email, callback) {
- *           return callback(new Error(&#34;Whoops!&#34;));
+ *           return callback(new Error("Whoops!"));
  *         }
- *                 &#34;&#34;&#34;))
+ *                 """))
  *                 .configuration(Map.ofEntries(
- *                     Map.entry(&#34;foo&#34;, &#34;bar&#34;),
- *                     Map.entry(&#34;bar&#34;, &#34;baz&#34;)
+ *                     Map.entry("foo", "bar"),
+ *                     Map.entry("bar", "baz")
  *                 ))
  *                 .upstreamParams(serializeJson(
  *                     jsonObject(
- *                         jsonProperty(&#34;screen_name&#34;, jsonObject(
- *                             jsonProperty(&#34;alias&#34;, &#34;login_hint&#34;)
+ *                         jsonProperty("screen_name", jsonObject(
+ *                             jsonProperty("alias", "login_hint")
  *                         ))
  *                     )))
  *                 .passwordHistories(ConnectionOptionsPasswordHistoryArgs.builder()
@@ -99,9 +100,9 @@ import javax.annotation.Nullable;
  *                 .passwordDictionary(ConnectionOptionsPasswordDictionaryArgs.builder()
  *                     .enable(true)
  *                     .dictionaries(                    
- *                         &#34;password&#34;,
- *                         &#34;admin&#34;,
- *                         &#34;1234&#34;)
+ *                         "password",
+ *                         "admin",
+ *                         "1234")
  *                     .build())
  *                 .passwordComplexityOptions(ConnectionOptionsPasswordComplexityOptionsArgs.builder()
  *                     .minLength(12)
@@ -121,7 +122,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Google OAuth2 Connection
@@ -129,7 +131,8 @@ import javax.annotation.Nullable;
  * &gt; Your Auth0 account may be pre-configured with a `google-oauth2` connection.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -152,36 +155,38 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of a Google OAuth2 connection.
- *         var googleOauth2 = new Connection(&#34;googleOauth2&#34;, ConnectionArgs.builder()        
- *             .name(&#34;Google-OAuth2-Connection&#34;)
- *             .strategy(&#34;google-oauth2&#34;)
+ *         var googleOauth2 = new Connection("googleOauth2", ConnectionArgs.builder()        
+ *             .name("Google-OAuth2-Connection")
+ *             .strategy("google-oauth2")
  *             .options(ConnectionOptionsArgs.builder()
- *                 .clientId(&#34;&lt;client-id&gt;&#34;)
- *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
+ *                 .clientId("<client-id>")
+ *                 .clientSecret("<client-secret>")
  *                 .allowedAudiences(                
- *                     &#34;example.com&#34;,
- *                     &#34;api.example.com&#34;)
+ *                     "example.com",
+ *                     "api.example.com")
  *                 .scopes(                
- *                     &#34;email&#34;,
- *                     &#34;profile&#34;,
- *                     &#34;gmail&#34;,
- *                     &#34;youtube&#34;)
- *                 .setUserRootAttributes(&#34;on_each_login&#34;)
+ *                     "email",
+ *                     "profile",
+ *                     "gmail",
+ *                     "youtube")
+ *                 .setUserRootAttributes("on_each_login")
  *                 .nonPersistentAttrs(                
- *                     &#34;ethnicity&#34;,
- *                     &#34;gender&#34;)
+ *                     "ethnicity",
+ *                     "gender")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Google Apps
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -204,46 +209,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var googleApps = new Connection(&#34;googleApps&#34;, ConnectionArgs.builder()        
- *             .name(&#34;connection-google-apps&#34;)
+ *         var googleApps = new Connection("googleApps", ConnectionArgs.builder()        
+ *             .name("connection-google-apps")
  *             .isDomainConnection(false)
- *             .strategy(&#34;google-apps&#34;)
+ *             .strategy("google-apps")
  *             .showAsButton(false)
  *             .options(ConnectionOptionsArgs.builder()
- *                 .clientId(&#34;&#34;)
- *                 .clientSecret(&#34;&#34;)
- *                 .domain(&#34;example.com&#34;)
- *                 .tenantDomain(&#34;example.com&#34;)
+ *                 .clientId("")
+ *                 .clientSecret("")
+ *                 .domain("example.com")
+ *                 .tenantDomain("example.com")
  *                 .domainAliases(                
- *                     &#34;example.com&#34;,
- *                     &#34;api.example.com&#34;)
+ *                     "example.com",
+ *                     "api.example.com")
  *                 .apiEnableUsers(true)
  *                 .scopes(                
- *                     &#34;ext_profile&#34;,
- *                     &#34;ext_groups&#34;)
- *                 .iconUrl(&#34;https://example.com/assets/logo.png&#34;)
+ *                     "ext_profile",
+ *                     "ext_groups")
+ *                 .iconUrl("https://example.com/assets/logo.png")
  *                 .upstreamParams(serializeJson(
  *                     jsonObject(
- *                         jsonProperty(&#34;screen_name&#34;, jsonObject(
- *                             jsonProperty(&#34;alias&#34;, &#34;login_hint&#34;)
+ *                         jsonProperty("screen_name", jsonObject(
+ *                             jsonProperty("alias", "login_hint")
  *                         ))
  *                     )))
- *                 .setUserRootAttributes(&#34;on_each_login&#34;)
+ *                 .setUserRootAttributes("on_each_login")
  *                 .nonPersistentAttrs(                
- *                     &#34;ethnicity&#34;,
- *                     &#34;gender&#34;)
+ *                     "ethnicity",
+ *                     "gender")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Facebook Connection
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -266,33 +273,35 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of a Facebook connection.
- *         var facebook = new Connection(&#34;facebook&#34;, ConnectionArgs.builder()        
- *             .name(&#34;Facebook-Connection&#34;)
- *             .strategy(&#34;facebook&#34;)
+ *         var facebook = new Connection("facebook", ConnectionArgs.builder()        
+ *             .name("Facebook-Connection")
+ *             .strategy("facebook")
  *             .options(ConnectionOptionsArgs.builder()
- *                 .clientId(&#34;&lt;client-id&gt;&#34;)
- *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
+ *                 .clientId("<client-id>")
+ *                 .clientSecret("<client-secret>")
  *                 .scopes(                
- *                     &#34;public_profile&#34;,
- *                     &#34;email&#34;,
- *                     &#34;groups_access_member_info&#34;,
- *                     &#34;user_birthday&#34;)
- *                 .setUserRootAttributes(&#34;on_each_login&#34;)
+ *                     "public_profile",
+ *                     "email",
+ *                     "groups_access_member_info",
+ *                     "user_birthday")
+ *                 .setUserRootAttributes("on_each_login")
  *                 .nonPersistentAttrs(                
- *                     &#34;ethnicity&#34;,
- *                     &#34;gender&#34;)
+ *                     "ethnicity",
+ *                     "gender")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Apple Connection
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -315,36 +324,38 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an Apple connection.
- *         var apple = new Connection(&#34;apple&#34;, ConnectionArgs.builder()        
- *             .name(&#34;Apple-Connection&#34;)
- *             .strategy(&#34;apple&#34;)
+ *         var apple = new Connection("apple", ConnectionArgs.builder()        
+ *             .name("Apple-Connection")
+ *             .strategy("apple")
  *             .options(ConnectionOptionsArgs.builder()
- *                 .clientId(&#34;&lt;client-id&gt;&#34;)
- *                 .clientSecret(&#34;&#34;&#34;
+ *                 .clientId("<client-id>")
+ *                 .clientSecret("""
  * -----BEGIN PRIVATE KEY-----
  * MIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA
- * -----END PRIVATE KEY-----                &#34;&#34;&#34;)
- *                 .teamId(&#34;&lt;team-id&gt;&#34;)
- *                 .keyId(&#34;&lt;key-id&gt;&#34;)
+ * -----END PRIVATE KEY-----                """)
+ *                 .teamId("<team-id>")
+ *                 .keyId("<key-id>")
  *                 .scopes(                
- *                     &#34;email&#34;,
- *                     &#34;name&#34;)
- *                 .setUserRootAttributes(&#34;on_first_login&#34;)
+ *                     "email",
+ *                     "name")
+ *                 .setUserRootAttributes("on_first_login")
  *                 .nonPersistentAttrs(                
- *                     &#34;ethnicity&#34;,
- *                     &#34;gender&#34;)
+ *                     "ethnicity",
+ *                     "gender")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### LinkedIn Connection
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -367,33 +378,35 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an LinkedIn connection.
- *         var linkedin = new Connection(&#34;linkedin&#34;, ConnectionArgs.builder()        
- *             .name(&#34;Linkedin-Connection&#34;)
- *             .strategy(&#34;linkedin&#34;)
+ *         var linkedin = new Connection("linkedin", ConnectionArgs.builder()        
+ *             .name("Linkedin-Connection")
+ *             .strategy("linkedin")
  *             .options(ConnectionOptionsArgs.builder()
- *                 .clientId(&#34;&lt;client-id&gt;&#34;)
- *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
+ *                 .clientId("<client-id>")
+ *                 .clientSecret("<client-secret>")
  *                 .strategyVersion(2)
  *                 .scopes(                
- *                     &#34;basic_profile&#34;,
- *                     &#34;profile&#34;,
- *                     &#34;email&#34;)
- *                 .setUserRootAttributes(&#34;on_each_login&#34;)
+ *                     "basic_profile",
+ *                     "profile",
+ *                     "email")
+ *                 .setUserRootAttributes("on_each_login")
  *                 .nonPersistentAttrs(                
- *                     &#34;ethnicity&#34;,
- *                     &#34;gender&#34;)
+ *                     "ethnicity",
+ *                     "gender")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### GitHub Connection
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -416,33 +429,35 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an GitHub connection.
- *         var github = new Connection(&#34;github&#34;, ConnectionArgs.builder()        
- *             .name(&#34;GitHub-Connection&#34;)
- *             .strategy(&#34;github&#34;)
+ *         var github = new Connection("github", ConnectionArgs.builder()        
+ *             .name("GitHub-Connection")
+ *             .strategy("github")
  *             .options(ConnectionOptionsArgs.builder()
- *                 .clientId(&#34;&lt;client-id&gt;&#34;)
- *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
+ *                 .clientId("<client-id>")
+ *                 .clientSecret("<client-secret>")
  *                 .scopes(                
- *                     &#34;email&#34;,
- *                     &#34;profile&#34;,
- *                     &#34;public_repo&#34;,
- *                     &#34;repo&#34;)
- *                 .setUserRootAttributes(&#34;on_each_login&#34;)
+ *                     "email",
+ *                     "profile",
+ *                     "public_repo",
+ *                     "repo")
+ *                 .setUserRootAttributes("on_each_login")
  *                 .nonPersistentAttrs(                
- *                     &#34;ethnicity&#34;,
- *                     &#34;gender&#34;)
+ *                     "ethnicity",
+ *                     "gender")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### SalesForce Connection
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -465,26 +480,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an SalesForce connection.
- *         var salesforce = new Connection(&#34;salesforce&#34;, ConnectionArgs.builder()        
- *             .name(&#34;Salesforce-Connection&#34;)
- *             .strategy(&#34;salesforce&#34;)
+ *         var salesforce = new Connection("salesforce", ConnectionArgs.builder()        
+ *             .name("Salesforce-Connection")
+ *             .strategy("salesforce")
  *             .options(ConnectionOptionsArgs.builder()
- *                 .clientId(&#34;&lt;client-id&gt;&#34;)
- *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
- *                 .communityBaseUrl(&#34;https://salesforce.example.com&#34;)
+ *                 .clientId("<client-id>")
+ *                 .clientSecret("<client-secret>")
+ *                 .communityBaseUrl("https://salesforce.example.com")
  *                 .scopes(                
- *                     &#34;openid&#34;,
- *                     &#34;email&#34;)
- *                 .setUserRootAttributes(&#34;on_first_login&#34;)
+ *                     "openid",
+ *                     "email")
+ *                 .setUserRootAttributes("on_first_login")
  *                 .nonPersistentAttrs(                
- *                     &#34;ethnicity&#34;,
- *                     &#34;gender&#34;)
+ *                     "ethnicity",
+ *                     "gender")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### OAuth2 Connection
@@ -492,7 +508,8 @@ import javax.annotation.Nullable;
  * Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -515,41 +532,43 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an OAuth2 connection.
- *         var oauth2 = new Connection(&#34;oauth2&#34;, ConnectionArgs.builder()        
- *             .name(&#34;OAuth2-Connection&#34;)
- *             .strategy(&#34;oauth2&#34;)
+ *         var oauth2 = new Connection("oauth2", ConnectionArgs.builder()        
+ *             .name("OAuth2-Connection")
+ *             .strategy("oauth2")
  *             .options(ConnectionOptionsArgs.builder()
- *                 .clientId(&#34;&lt;client-id&gt;&#34;)
- *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
+ *                 .clientId("<client-id>")
+ *                 .clientSecret("<client-secret>")
  *                 .scopes(                
- *                     &#34;basic_profile&#34;,
- *                     &#34;profile&#34;,
- *                     &#34;email&#34;)
- *                 .tokenEndpoint(&#34;https://auth.example.com/oauth2/token&#34;)
- *                 .authorizationEndpoint(&#34;https://auth.example.com/oauth2/authorize&#34;)
+ *                     "basic_profile",
+ *                     "profile",
+ *                     "email")
+ *                 .tokenEndpoint("https://auth.example.com/oauth2/token")
+ *                 .authorizationEndpoint("https://auth.example.com/oauth2/authorize")
  *                 .pkceEnabled(true)
- *                 .iconUrl(&#34;https://auth.example.com/assets/logo.png&#34;)
- *                 .scripts(Map.of(&#34;fetchUserProfile&#34;, &#34;&#34;&#34;
+ *                 .iconUrl("https://auth.example.com/assets/logo.png")
+ *                 .scripts(Map.of("fetchUserProfile", """
  *         function fetchUserProfile(accessToken, context, callback) {
- *           return callback(new Error(&#34;Whoops!&#34;));
+ *           return callback(new Error("Whoops!"));
  *         }
- *                 &#34;&#34;&#34;))
- *                 .setUserRootAttributes(&#34;on_each_login&#34;)
+ *                 """))
+ *                 .setUserRootAttributes("on_each_login")
  *                 .nonPersistentAttrs(                
- *                     &#34;ethnicity&#34;,
- *                     &#34;gender&#34;)
+ *                     "ethnicity",
+ *                     "gender")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Active Directory (AD)
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -572,30 +591,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ad = new Connection(&#34;ad&#34;, ConnectionArgs.builder()        
- *             .name(&#34;connection-active-directory&#34;)
- *             .displayName(&#34;Active Directory Connection&#34;)
- *             .strategy(&#34;ad&#34;)
+ *         var ad = new Connection("ad", ConnectionArgs.builder()        
+ *             .name("connection-active-directory")
+ *             .displayName("Active Directory Connection")
+ *             .strategy("ad")
  *             .showAsButton(true)
  *             .options(ConnectionOptionsArgs.builder()
  *                 .disableSelfServiceChangePassword(true)
  *                 .bruteForceProtection(true)
- *                 .tenantDomain(&#34;example.com&#34;)
- *                 .iconUrl(&#34;https://example.com/assets/logo.png&#34;)
+ *                 .tenantDomain("example.com")
+ *                 .iconUrl("https://example.com/assets/logo.png")
  *                 .domainAliases(                
- *                     &#34;example.com&#34;,
- *                     &#34;api.example.com&#34;)
+ *                     "example.com",
+ *                     "api.example.com")
  *                 .ips(                
- *                     &#34;192.168.1.1&#34;,
- *                     &#34;192.168.1.2&#34;)
- *                 .setUserRootAttributes(&#34;on_each_login&#34;)
+ *                     "192.168.1.1",
+ *                     "192.168.1.2")
+ *                 .setUserRootAttributes("on_each_login")
  *                 .nonPersistentAttrs(                
- *                     &#34;ethnicity&#34;,
- *                     &#34;gender&#34;)
+ *                     "ethnicity",
+ *                     "gender")
  *                 .upstreamParams(serializeJson(
  *                     jsonObject(
- *                         jsonProperty(&#34;screen_name&#34;, jsonObject(
- *                             jsonProperty(&#34;alias&#34;, &#34;login_hint&#34;)
+ *                         jsonProperty("screen_name", jsonObject(
+ *                             jsonProperty("alias", "login_hint")
  *                         ))
  *                     )))
  *                 .useCertAuth(false)
@@ -606,13 +625,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Azure AD Connection
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -635,47 +656,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var azureAd = new Connection(&#34;azureAd&#34;, ConnectionArgs.builder()        
- *             .name(&#34;connection-azure-ad&#34;)
- *             .strategy(&#34;waad&#34;)
+ *         var azureAd = new Connection("azureAd", ConnectionArgs.builder()        
+ *             .name("connection-azure-ad")
+ *             .strategy("waad")
  *             .showAsButton(true)
  *             .options(ConnectionOptionsArgs.builder()
- *                 .identityApi(&#34;azure-active-directory-v1.0&#34;)
- *                 .clientId(&#34;123456&#34;)
- *                 .clientSecret(&#34;123456&#34;)
- *                 .appId(&#34;app-id-123&#34;)
- *                 .tenantDomain(&#34;example.onmicrosoft.com&#34;)
- *                 .domain(&#34;example.onmicrosoft.com&#34;)
+ *                 .identityApi("azure-active-directory-v1.0")
+ *                 .clientId("123456")
+ *                 .clientSecret("123456")
+ *                 .appId("app-id-123")
+ *                 .tenantDomain("example.onmicrosoft.com")
+ *                 .domain("example.onmicrosoft.com")
  *                 .domainAliases(                
- *                     &#34;example.com&#34;,
- *                     &#34;api.example.com&#34;)
- *                 .iconUrl(&#34;https://example.onmicrosoft.com/assets/logo.png&#34;)
+ *                     "example.com",
+ *                     "api.example.com")
+ *                 .iconUrl("https://example.onmicrosoft.com/assets/logo.png")
  *                 .useWsfed(false)
- *                 .waadProtocol(&#34;openid-connect&#34;)
+ *                 .waadProtocol("openid-connect")
  *                 .waadCommonEndpoint(false)
  *                 .maxGroupsToRetrieve(250)
  *                 .apiEnableUsers(true)
  *                 .scopes(                
- *                     &#34;basic_profile&#34;,
- *                     &#34;ext_groups&#34;,
- *                     &#34;ext_profile&#34;)
- *                 .setUserRootAttributes(&#34;on_each_login&#34;)
- *                 .shouldTrustEmailVerifiedConnection(&#34;never_set_emails_as_verified&#34;)
+ *                     "basic_profile",
+ *                     "ext_groups",
+ *                     "ext_profile")
+ *                 .setUserRootAttributes("on_each_login")
+ *                 .shouldTrustEmailVerifiedConnection("never_set_emails_as_verified")
  *                 .upstreamParams(serializeJson(
  *                     jsonObject(
- *                         jsonProperty(&#34;screen_name&#34;, jsonObject(
- *                             jsonProperty(&#34;alias&#34;, &#34;login_hint&#34;)
+ *                         jsonProperty("screen_name", jsonObject(
+ *                             jsonProperty("alias", "login_hint")
  *                         ))
  *                     )))
  *                 .nonPersistentAttrs(                
- *                     &#34;ethnicity&#34;,
- *                     &#34;gender&#34;)
+ *                     "ethnicity",
+ *                     "gender")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Email Connection
@@ -683,7 +705,8 @@ import javax.annotation.Nullable;
  * &gt; To be able to see this in the management dashboard as well, the name of the connection must be set to &#34;email&#34;.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -707,22 +730,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an Email connection.
- *         var passwordlessEmail = new Connection(&#34;passwordlessEmail&#34;, ConnectionArgs.builder()        
- *             .strategy(&#34;email&#34;)
- *             .name(&#34;email&#34;)
+ *         var passwordlessEmail = new Connection("passwordlessEmail", ConnectionArgs.builder()        
+ *             .strategy("email")
+ *             .name("email")
  *             .options(ConnectionOptionsArgs.builder()
- *                 .name(&#34;email&#34;)
- *                 .from(&#34;{{ application.name }} &lt;root@auth0.com&gt;&#34;)
- *                 .subject(&#34;Welcome to {{ application.name }}&#34;)
- *                 .syntax(&#34;liquid&#34;)
- *                 .template(&#34;&lt;html&gt;This is the body of the email&lt;/html&gt;&#34;)
+ *                 .name("email")
+ *                 .from("{{ application.name }} <root{@literal @}auth0.com>")
+ *                 .subject("Welcome to {{ application.name }}")
+ *                 .syntax("liquid")
+ *                 .template("<html>This is the body of the email</html>")
  *                 .disableSignup(false)
  *                 .bruteForceProtection(true)
- *                 .setUserRootAttributes(&#34;on_each_login&#34;)
+ *                 .setUserRootAttributes("on_each_login")
  *                 .nonPersistentAttrs()
  *                 .authParams(Map.ofEntries(
- *                     Map.entry(&#34;scope&#34;, &#34;openid email profile offline_access&#34;),
- *                     Map.entry(&#34;response_type&#34;, &#34;code&#34;)
+ *                     Map.entry("scope", "openid email profile offline_access"),
+ *                     Map.entry("response_type", "code")
  *                 ))
  *                 .totp(ConnectionOptionsTotpArgs.builder()
  *                     .timeStep(300)
@@ -733,13 +756,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### SAML Connection
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -766,92 +791,94 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of a SAML connection.
- *         var samlp = new Connection(&#34;samlp&#34;, ConnectionArgs.builder()        
- *             .name(&#34;SAML-Connection&#34;)
- *             .strategy(&#34;samlp&#34;)
+ *         var samlp = new Connection("samlp", ConnectionArgs.builder()        
+ *             .name("SAML-Connection")
+ *             .strategy("samlp")
  *             .options(ConnectionOptionsArgs.builder()
  *                 .debug(false)
- *                 .signingCert(&#34;&lt;signing-certificate&gt;&#34;)
- *                 .signInEndpoint(&#34;https://saml.provider/sign_in&#34;)
- *                 .signOutEndpoint(&#34;https://saml.provider/sign_out&#34;)
+ *                 .signingCert("<signing-certificate>")
+ *                 .signInEndpoint("https://saml.provider/sign_in")
+ *                 .signOutEndpoint("https://saml.provider/sign_out")
  *                 .disableSignOut(true)
- *                 .tenantDomain(&#34;example.com&#34;)
+ *                 .tenantDomain("example.com")
  *                 .domainAliases(                
- *                     &#34;example.com&#34;,
- *                     &#34;alias.example.com&#34;)
- *                 .protocolBinding(&#34;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&#34;)
- *                 .requestTemplate(&#34;&#34;&#34;
- * &lt;samlp:AuthnRequest xmlns:samlp=&#34;urn:oasis:names:tc:SAML:2.0:protocol&#34;
- * @@AssertServiceURLAndDestination@@
- *     ID=&#34;@@ID@@&#34;
- *     IssueInstant=&#34;@@IssueInstant@@&#34;
- *     ProtocolBinding=&#34;@@ProtocolBinding@@&#34; Version=&#34;2.0&#34;&gt;
- *     &lt;saml:Issuer xmlns:saml=&#34;urn:oasis:names:tc:SAML:2.0:assertion&#34;&gt;@@Issuer@@&lt;/saml:Issuer&gt;
- * &lt;/samlp:AuthnRequest&gt;                &#34;&#34;&#34;)
- *                 .userIdAttribute(&#34;https://saml.provider/imi/ns/identity-200810&#34;)
- *                 .signatureAlgorithm(&#34;rsa-sha256&#34;)
- *                 .digestAlgorithm(&#34;sha256&#34;)
- *                 .iconUrl(&#34;https://saml.provider/assets/logo.png&#34;)
- *                 .entityId(&#34;&lt;entity_id&gt;&#34;)
- *                 .metadataXml(&#34;&#34;&#34;
- *     &lt;?xml version=&#34;1.0&#34;?&gt;
- *     &lt;md:EntityDescriptor xmlns:md=&#34;urn:oasis:names:tc:SAML:2.0:metadata&#34; xmlns:ds=&#34;http://www.w3.org/2000/09/xmldsig#&#34; entityID=&#34;https://example.com&#34;&gt;
- *       &lt;md:IDPSSODescriptor protocolSupportEnumeration=&#34;urn:oasis:names:tc:SAML:2.0:protocol&#34;&gt;
- *         &lt;md:SingleLogoutService Binding=&#34;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect&#34; Location=&#34;https://saml.provider/sign_out&#34;/&gt;
- *         &lt;md:SingleSignOnService Binding=&#34;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect&#34; Location=&#34;https://saml.provider/sign_in&#34;/&gt;
- *       &lt;/md:IDPSSODescriptor&gt;
- *     &lt;/md:EntityDescriptor&gt;
- *                 &#34;&#34;&#34;)
- *                 .metadataUrl(&#34;https://saml.provider/imi/ns/FederationMetadata.xml&#34;)
+ *                     "example.com",
+ *                     "alias.example.com")
+ *                 .protocolBinding("urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST")
+ *                 .requestTemplate("""
+ * <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+ * {@literal @@}AssertServiceURLAndDestination{@literal @@}
+ *     ID="{@literal @@}ID{@literal @@}"
+ *     IssueInstant="{@literal @@}IssueInstant{@literal @@}"
+ *     ProtocolBinding="{@literal @@}ProtocolBinding{@literal @@}" Version="2.0">
+ *     <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">{@literal @@}Issuer{@literal @@}</saml:Issuer>
+ * </samlp:AuthnRequest>                """)
+ *                 .userIdAttribute("https://saml.provider/imi/ns/identity-200810")
+ *                 .signatureAlgorithm("rsa-sha256")
+ *                 .digestAlgorithm("sha256")
+ *                 .iconUrl("https://saml.provider/assets/logo.png")
+ *                 .entityId("<entity_id>")
+ *                 .metadataXml("""
+ *     <?xml version="1.0"?>
+ *     <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="https://example.com">
+ *       <md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+ *         <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.provider/sign_out"/>
+ *         <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.provider/sign_in"/>
+ *       </md:IDPSSODescriptor>
+ *     </md:EntityDescriptor>
+ *                 """)
+ *                 .metadataUrl("https://saml.provider/imi/ns/FederationMetadata.xml")
  *                 .fieldsMap(serializeJson(
  *                     jsonObject(
- *                         jsonProperty(&#34;name&#34;, jsonArray(
- *                             &#34;name&#34;, 
- *                             &#34;nameidentifier&#34;
+ *                         jsonProperty("name", jsonArray(
+ *                             "name", 
+ *                             "nameidentifier"
  *                         )),
- *                         jsonProperty(&#34;email&#34;, jsonArray(
- *                             &#34;emailaddress&#34;, 
- *                             &#34;nameidentifier&#34;
+ *                         jsonProperty("email", jsonArray(
+ *                             "emailaddress", 
+ *                             "nameidentifier"
  *                         )),
- *                         jsonProperty(&#34;family_name&#34;, &#34;surname&#34;)
+ *                         jsonProperty("family_name", "surname")
  *                     )))
  *                 .signingKey(ConnectionOptionsSigningKeyArgs.builder()
- *                     .key(&#34;&#34;&#34;
+ *                     .key("""
  * -----BEGIN PRIVATE KEY-----
  * ...{your private key here}...
- * -----END PRIVATE KEY-----                    &#34;&#34;&#34;)
- *                     .cert(&#34;&#34;&#34;
+ * -----END PRIVATE KEY-----                    """)
+ *                     .cert("""
  * -----BEGIN CERTIFICATE-----
  * ...{your public key cert here}...
- * -----END CERTIFICATE-----                    &#34;&#34;&#34;)
+ * -----END CERTIFICATE-----                    """)
  *                     .build())
  *                 .decryptionKey(ConnectionOptionsDecryptionKeyArgs.builder()
- *                     .key(&#34;&#34;&#34;
+ *                     .key("""
  * -----BEGIN PRIVATE KEY-----
  * ...{your private key here}...
- * -----END PRIVATE KEY-----                    &#34;&#34;&#34;)
- *                     .cert(&#34;&#34;&#34;
+ * -----END PRIVATE KEY-----                    """)
+ *                     .cert("""
  * -----BEGIN CERTIFICATE-----
  * ...{your public key cert here}...
- * -----END CERTIFICATE-----                    &#34;&#34;&#34;)
+ * -----END CERTIFICATE-----                    """)
  *                     .build())
  *                 .idpInitiated(ConnectionOptionsIdpInitiatedArgs.builder()
- *                     .clientId(&#34;client_id&#34;)
- *                     .clientProtocol(&#34;samlp&#34;)
- *                     .clientAuthorizeQuery(&#34;type=code&amp;timeout=30&#34;)
+ *                     .clientId("client_id")
+ *                     .clientProtocol("samlp")
+ *                     .clientAuthorizeQuery("type=code&timeout=30")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### WindowsLive Connection
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -874,32 +901,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of a WindowsLive connection.
- *         var windowslive = new Connection(&#34;windowslive&#34;, ConnectionArgs.builder()        
- *             .name(&#34;Windowslive-Connection&#34;)
- *             .strategy(&#34;windowslive&#34;)
+ *         var windowslive = new Connection("windowslive", ConnectionArgs.builder()        
+ *             .name("Windowslive-Connection")
+ *             .strategy("windowslive")
  *             .options(ConnectionOptionsArgs.builder()
- *                 .clientId(&#34;&lt;client-id&gt;&#34;)
- *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
+ *                 .clientId("<client-id>")
+ *                 .clientSecret("<client-secret>")
  *                 .strategyVersion(2)
  *                 .scopes(                
- *                     &#34;signin&#34;,
- *                     &#34;graph_user&#34;)
- *                 .setUserRootAttributes(&#34;on_first_login&#34;)
+ *                     "signin",
+ *                     "graph_user")
+ *                 .setUserRootAttributes("on_first_login")
  *                 .nonPersistentAttrs(                
- *                     &#34;ethnicity&#34;,
- *                     &#34;gender&#34;)
+ *                     "ethnicity",
+ *                     "gender")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### OIDC Connection
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -925,46 +954,46 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an OIDC connection.
- *         var oidc = new Connection(&#34;oidc&#34;, ConnectionArgs.builder()        
- *             .name(&#34;oidc-connection&#34;)
- *             .displayName(&#34;OIDC Connection&#34;)
- *             .strategy(&#34;oidc&#34;)
+ *         var oidc = new Connection("oidc", ConnectionArgs.builder()        
+ *             .name("oidc-connection")
+ *             .displayName("OIDC Connection")
+ *             .strategy("oidc")
  *             .showAsButton(false)
  *             .options(ConnectionOptionsArgs.builder()
- *                 .clientId(&#34;1234567&#34;)
- *                 .clientSecret(&#34;1234567&#34;)
- *                 .domainAliases(&#34;example.com&#34;)
- *                 .tenantDomain(&#34;&#34;)
- *                 .iconUrl(&#34;https://example.com/assets/logo.png&#34;)
- *                 .type(&#34;back_channel&#34;)
- *                 .issuer(&#34;https://www.paypalobjects.com&#34;)
- *                 .jwksUri(&#34;https://api.paypal.com/v1/oauth2/certs&#34;)
- *                 .discoveryUrl(&#34;https://www.paypalobjects.com/.well-known/openid-configuration&#34;)
- *                 .tokenEndpoint(&#34;https://api.paypal.com/v1/oauth2/token&#34;)
- *                 .userinfoEndpoint(&#34;https://api.paypal.com/v1/oauth2/token/userinfo&#34;)
- *                 .authorizationEndpoint(&#34;https://www.paypal.com/signin/authorize&#34;)
+ *                 .clientId("1234567")
+ *                 .clientSecret("1234567")
+ *                 .domainAliases("example.com")
+ *                 .tenantDomain("")
+ *                 .iconUrl("https://example.com/assets/logo.png")
+ *                 .type("back_channel")
+ *                 .issuer("https://www.paypalobjects.com")
+ *                 .jwksUri("https://api.paypal.com/v1/oauth2/certs")
+ *                 .discoveryUrl("https://www.paypalobjects.com/.well-known/openid-configuration")
+ *                 .tokenEndpoint("https://api.paypal.com/v1/oauth2/token")
+ *                 .userinfoEndpoint("https://api.paypal.com/v1/oauth2/token/userinfo")
+ *                 .authorizationEndpoint("https://www.paypal.com/signin/authorize")
  *                 .scopes(                
- *                     &#34;openid&#34;,
- *                     &#34;email&#34;)
- *                 .setUserRootAttributes(&#34;on_first_login&#34;)
+ *                     "openid",
+ *                     "email")
+ *                 .setUserRootAttributes("on_first_login")
  *                 .nonPersistentAttrs(                
- *                     &#34;ethnicity&#34;,
- *                     &#34;gender&#34;)
+ *                     "ethnicity",
+ *                     "gender")
  *                 .connectionSettings(ConnectionOptionsConnectionSettingsArgs.builder()
- *                     .pkce(&#34;auto&#34;)
+ *                     .pkce("auto")
  *                     .build())
  *                 .attributeMap(ConnectionOptionsAttributeMapArgs.builder()
- *                     .mappingMode(&#34;use_map&#34;)
- *                     .userinfoScope(&#34;openid email profile groups&#34;)
+ *                     .mappingMode("use_map")
+ *                     .userinfoScope("openid email profile groups")
  *                     .attributes(serializeJson(
  *                         jsonObject(
- *                             jsonProperty(&#34;name&#34;, &#34;${context.tokenset.name}&#34;),
- *                             jsonProperty(&#34;email&#34;, &#34;${context.tokenset.email}&#34;),
- *                             jsonProperty(&#34;email_verified&#34;, &#34;${context.tokenset.email_verified}&#34;),
- *                             jsonProperty(&#34;nickname&#34;, &#34;${context.tokenset.nickname}&#34;),
- *                             jsonProperty(&#34;picture&#34;, &#34;${context.tokenset.picture}&#34;),
- *                             jsonProperty(&#34;given_name&#34;, &#34;${context.tokenset.given_name}&#34;),
- *                             jsonProperty(&#34;family_name&#34;, &#34;${context.tokenset.family_name}&#34;)
+ *                             jsonProperty("name", "${context.tokenset.name}"),
+ *                             jsonProperty("email", "${context.tokenset.email}"),
+ *                             jsonProperty("email_verified", "${context.tokenset.email_verified}"),
+ *                             jsonProperty("nickname", "${context.tokenset.nickname}"),
+ *                             jsonProperty("picture", "${context.tokenset.picture}"),
+ *                             jsonProperty("given_name", "${context.tokenset.given_name}"),
+ *                             jsonProperty("family_name", "${context.tokenset.family_name}")
  *                         )))
  *                     .build())
  *                 .build())
@@ -972,13 +1001,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Okta Connection
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -1004,49 +1035,49 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an Okta Workforce connection.
- *         var okta = new Connection(&#34;okta&#34;, ConnectionArgs.builder()        
- *             .name(&#34;okta-connection&#34;)
- *             .displayName(&#34;Okta Workforce Connection&#34;)
- *             .strategy(&#34;okta&#34;)
+ *         var okta = new Connection("okta", ConnectionArgs.builder()        
+ *             .name("okta-connection")
+ *             .displayName("Okta Workforce Connection")
+ *             .strategy("okta")
  *             .showAsButton(false)
  *             .options(ConnectionOptionsArgs.builder()
- *                 .clientId(&#34;1234567&#34;)
- *                 .clientSecret(&#34;1234567&#34;)
- *                 .domain(&#34;example.okta.com&#34;)
- *                 .domainAliases(&#34;example.com&#34;)
- *                 .issuer(&#34;https://example.okta.com&#34;)
- *                 .jwksUri(&#34;https://example.okta.com/oauth2/v1/keys&#34;)
- *                 .tokenEndpoint(&#34;https://example.okta.com/oauth2/v1/token&#34;)
- *                 .userinfoEndpoint(&#34;https://example.okta.com/oauth2/v1/userinfo&#34;)
- *                 .authorizationEndpoint(&#34;https://example.okta.com/oauth2/v1/authorize&#34;)
+ *                 .clientId("1234567")
+ *                 .clientSecret("1234567")
+ *                 .domain("example.okta.com")
+ *                 .domainAliases("example.com")
+ *                 .issuer("https://example.okta.com")
+ *                 .jwksUri("https://example.okta.com/oauth2/v1/keys")
+ *                 .tokenEndpoint("https://example.okta.com/oauth2/v1/token")
+ *                 .userinfoEndpoint("https://example.okta.com/oauth2/v1/userinfo")
+ *                 .authorizationEndpoint("https://example.okta.com/oauth2/v1/authorize")
  *                 .scopes(                
- *                     &#34;openid&#34;,
- *                     &#34;email&#34;)
- *                 .setUserRootAttributes(&#34;on_first_login&#34;)
+ *                     "openid",
+ *                     "email")
+ *                 .setUserRootAttributes("on_first_login")
  *                 .nonPersistentAttrs(                
- *                     &#34;ethnicity&#34;,
- *                     &#34;gender&#34;)
+ *                     "ethnicity",
+ *                     "gender")
  *                 .upstreamParams(serializeJson(
  *                     jsonObject(
- *                         jsonProperty(&#34;screen_name&#34;, jsonObject(
- *                             jsonProperty(&#34;alias&#34;, &#34;login_hint&#34;)
+ *                         jsonProperty("screen_name", jsonObject(
+ *                             jsonProperty("alias", "login_hint")
  *                         ))
  *                     )))
  *                 .connectionSettings(ConnectionOptionsConnectionSettingsArgs.builder()
- *                     .pkce(&#34;auto&#34;)
+ *                     .pkce("auto")
  *                     .build())
  *                 .attributeMap(ConnectionOptionsAttributeMapArgs.builder()
- *                     .mappingMode(&#34;basic_profile&#34;)
- *                     .userinfoScope(&#34;openid email profile groups&#34;)
+ *                     .mappingMode("basic_profile")
+ *                     .userinfoScope("openid email profile groups")
  *                     .attributes(serializeJson(
  *                         jsonObject(
- *                             jsonProperty(&#34;name&#34;, &#34;${context.tokenset.name}&#34;),
- *                             jsonProperty(&#34;email&#34;, &#34;${context.tokenset.email}&#34;),
- *                             jsonProperty(&#34;email_verified&#34;, &#34;${context.tokenset.email_verified}&#34;),
- *                             jsonProperty(&#34;nickname&#34;, &#34;${context.tokenset.nickname}&#34;),
- *                             jsonProperty(&#34;picture&#34;, &#34;${context.tokenset.picture}&#34;),
- *                             jsonProperty(&#34;given_name&#34;, &#34;${context.tokenset.given_name}&#34;),
- *                             jsonProperty(&#34;family_name&#34;, &#34;${context.tokenset.family_name}&#34;)
+ *                             jsonProperty("name", "${context.tokenset.name}"),
+ *                             jsonProperty("email", "${context.tokenset.email}"),
+ *                             jsonProperty("email_verified", "${context.tokenset.email_verified}"),
+ *                             jsonProperty("nickname", "${context.tokenset.nickname}"),
+ *                             jsonProperty("picture", "${context.tokenset.picture}"),
+ *                             jsonProperty("given_name", "${context.tokenset.given_name}"),
+ *                             jsonProperty("family_name", "${context.tokenset.family_name}")
  *                         )))
  *                     .build())
  *                 .build())
@@ -1054,7 +1085,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

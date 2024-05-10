@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,24 +44,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myRule = new Rule(&#34;myRule&#34;, RuleArgs.builder()        
- *             .name(&#34;empty-rule&#34;)
- *             .script(&#34;&#34;&#34;
+ *         var myRule = new Rule("myRule", RuleArgs.builder()        
+ *             .name("empty-rule")
+ *             .script("""
  *     function (user, context, callback) {
  *       callback(null, user, context);
  *     }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .enabled(true)
  *             .build());
  * 
- *         var myRuleConfig = new RuleConfig(&#34;myRuleConfig&#34;, RuleConfigArgs.builder()        
- *             .key(&#34;foo&#34;)
- *             .value(&#34;bar&#34;)
+ *         var myRuleConfig = new RuleConfig("myRuleConfig", RuleConfigArgs.builder()        
+ *             .key("foo")
+ *             .value("bar")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

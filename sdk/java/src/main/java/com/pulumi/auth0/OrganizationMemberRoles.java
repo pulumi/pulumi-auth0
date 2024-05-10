@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,31 +50,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var reader = new Role(&#34;reader&#34;, RoleArgs.builder()        
- *             .name(&#34;Reader&#34;)
+ *         var reader = new Role("reader", RoleArgs.builder()        
+ *             .name("Reader")
  *             .build());
  * 
- *         var writer = new Role(&#34;writer&#34;, RoleArgs.builder()        
- *             .name(&#34;Writer&#34;)
+ *         var writer = new Role("writer", RoleArgs.builder()        
+ *             .name("Writer")
  *             .build());
  * 
- *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .connectionName(&#34;Username-Password-Authentication&#34;)
- *             .email(&#34;test-user@auth0.com&#34;)
- *             .password(&#34;MyPass123$&#34;)
+ *         var user = new User("user", UserArgs.builder()        
+ *             .connectionName("Username-Password-Authentication")
+ *             .email("test-user{@literal @}auth0.com")
+ *             .password("MyPass123$")
  *             .build());
  * 
- *         var myOrg = new Organization(&#34;myOrg&#34;, OrganizationArgs.builder()        
- *             .name(&#34;some-org&#34;)
- *             .displayName(&#34;Some Org&#34;)
+ *         var myOrg = new Organization("myOrg", OrganizationArgs.builder()        
+ *             .name("some-org")
+ *             .displayName("Some Org")
  *             .build());
  * 
- *         var myOrgMember = new OrganizationMember(&#34;myOrgMember&#34;, OrganizationMemberArgs.builder()        
+ *         var myOrgMember = new OrganizationMember("myOrgMember", OrganizationMemberArgs.builder()        
  *             .organizationId(myOrg.id())
  *             .userId(user.id())
  *             .build());
  * 
- *         var myOrgMemberRoles = new OrganizationMemberRoles(&#34;myOrgMemberRoles&#34;, OrganizationMemberRolesArgs.builder()        
+ *         var myOrgMemberRoles = new OrganizationMemberRoles("myOrgMemberRoles", OrganizationMemberRolesArgs.builder()        
  *             .organizationId(myOrg.id())
  *             .userId(user.id())
  *             .roles(            
@@ -83,7 +84,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
