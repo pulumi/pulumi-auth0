@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,30 +46,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // The following example grants a client the &#34;create:foo&#34; and &#34;create:bar&#34; permissions (scopes).
- *         var myClient = new Client(&#34;myClient&#34;, ClientArgs.builder()        
- *             .name(&#34;Example Application - Client Grant (Managed by Terraform)&#34;)
+ *         // The following example grants a client the "create:foo" and "create:bar" permissions (scopes).
+ *         var myClient = new Client("myClient", ClientArgs.builder()        
+ *             .name("Example Application - Client Grant (Managed by Terraform)")
  *             .build());
  * 
- *         var myResourceServer = new ResourceServer(&#34;myResourceServer&#34;, ResourceServerArgs.builder()        
- *             .name(&#34;Example Resource Server - Client Grant (Managed by Terraform)&#34;)
- *             .identifier(&#34;https://api.example.com/client-grant&#34;)
+ *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()        
+ *             .name("Example Resource Server - Client Grant (Managed by Terraform)")
+ *             .identifier("https://api.example.com/client-grant")
  *             .scopes(            
  *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
  *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
- *         var myClientGrant = new ClientGrant(&#34;myClientGrant&#34;, ClientGrantArgs.builder()        
+ *         var myClientGrant = new ClientGrant("myClientGrant", ClientGrantArgs.builder()        
  *             .clientId(myClient.id())
  *             .audience(myResourceServer.identifier())
  *             .scopes(            
- *                 &#34;create:foo&#34;,
- *                 &#34;create:bar&#34;)
+ *                 "create:foo",
+ *                 "create:bar")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

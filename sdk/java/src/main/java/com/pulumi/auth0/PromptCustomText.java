@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,38 +42,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new PromptCustomText(&#34;example&#34;, PromptCustomTextArgs.builder()        
- *             .prompt(&#34;login&#34;)
- *             .language(&#34;en&#34;)
+ *         var example = new PromptCustomText("example", PromptCustomTextArgs.builder()        
+ *             .prompt("login")
+ *             .language("en")
  *             .body(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;login&#34;, jsonObject(
- *                         jsonProperty(&#34;alertListTitle&#34;, &#34;Alerts&#34;),
- *                         jsonProperty(&#34;buttonText&#34;, &#34;Continue&#34;),
- *                         jsonProperty(&#34;description&#34;, &#34;Login to&#34;),
- *                         jsonProperty(&#34;editEmailText&#34;, &#34;Edit&#34;),
- *                         jsonProperty(&#34;emailPlaceholder&#34;, &#34;Email address&#34;),
- *                         jsonProperty(&#34;federatedConnectionButtonText&#34;, &#34;Continue with ${connectionName}&#34;),
- *                         jsonProperty(&#34;footerLinkText&#34;, &#34;Sign up&#34;),
- *                         jsonProperty(&#34;footerText&#34;, &#34;Don&#39;t have an account?&#34;),
- *                         jsonProperty(&#34;forgotPasswordText&#34;, &#34;Forgot password?&#34;),
- *                         jsonProperty(&#34;invitationDescription&#34;, &#34;Log in to accept ${inviterName}&#39;s invitation to join ${companyName} on ${clientName}.&#34;),
- *                         jsonProperty(&#34;invitationTitle&#34;, &#34;You&#39;ve Been Invited!&#34;),
- *                         jsonProperty(&#34;logoAltText&#34;, &#34;${companyName}&#34;),
- *                         jsonProperty(&#34;pageTitle&#34;, &#34;Log in | ${clientName}&#34;),
- *                         jsonProperty(&#34;passwordPlaceholder&#34;, &#34;Password&#34;),
- *                         jsonProperty(&#34;separatorText&#34;, &#34;Or&#34;),
- *                         jsonProperty(&#34;signupActionLinkText&#34;, &#34;${footerLinkText}&#34;),
- *                         jsonProperty(&#34;signupActionText&#34;, &#34;${footerText}&#34;),
- *                         jsonProperty(&#34;title&#34;, &#34;Welcome&#34;),
- *                         jsonProperty(&#34;usernamePlaceholder&#34;, &#34;Username or email address&#34;)
+ *                     jsonProperty("login", jsonObject(
+ *                         jsonProperty("alertListTitle", "Alerts"),
+ *                         jsonProperty("buttonText", "Continue"),
+ *                         jsonProperty("description", "Login to"),
+ *                         jsonProperty("editEmailText", "Edit"),
+ *                         jsonProperty("emailPlaceholder", "Email address"),
+ *                         jsonProperty("federatedConnectionButtonText", "Continue with ${connectionName}"),
+ *                         jsonProperty("footerLinkText", "Sign up"),
+ *                         jsonProperty("footerText", "Don't have an account?"),
+ *                         jsonProperty("forgotPasswordText", "Forgot password?"),
+ *                         jsonProperty("invitationDescription", "Log in to accept ${inviterName}'s invitation to join ${companyName} on ${clientName}."),
+ *                         jsonProperty("invitationTitle", "You've Been Invited!"),
+ *                         jsonProperty("logoAltText", "${companyName}"),
+ *                         jsonProperty("pageTitle", "Log in | ${clientName}"),
+ *                         jsonProperty("passwordPlaceholder", "Password"),
+ *                         jsonProperty("separatorText", "Or"),
+ *                         jsonProperty("signupActionLinkText", "${footerLinkText}"),
+ *                         jsonProperty("signupActionText", "${footerText}"),
+ *                         jsonProperty("title", "Welcome"),
+ *                         jsonProperty("usernamePlaceholder", "Username or email address")
  *                     ))
  *                 )))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

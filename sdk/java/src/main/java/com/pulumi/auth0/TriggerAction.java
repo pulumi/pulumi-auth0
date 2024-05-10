@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,28 +50,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loginAlert = new Action(&#34;loginAlert&#34;, ActionArgs.builder()        
- *             .name(&#34;Alert after login&#34;)
- *             .code(&#34;&#34;&#34;
- * exports.onContinuePostLogin = async (event, api) =&gt; {
- *   console.log(&#34;foo&#34;);
- * };&#34;
- *             &#34;&#34;&#34;)
+ *         var loginAlert = new Action("loginAlert", ActionArgs.builder()        
+ *             .name("Alert after login")
+ *             .code("""
+ * exports.onContinuePostLogin = async (event, api) => {
+ *   console.log("foo");
+ * };"
+ *             """)
  *             .deploy(true)
  *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
- *                 .id(&#34;post-login&#34;)
- *                 .version(&#34;v3&#34;)
+ *                 .id("post-login")
+ *                 .version("v3")
  *                 .build())
  *             .build());
  * 
- *         var postLoginAlertAction = new TriggerAction(&#34;postLoginAlertAction&#34;, TriggerActionArgs.builder()        
- *             .trigger(&#34;post-login&#34;)
+ *         var postLoginAlertAction = new TriggerAction("postLoginAlertAction", TriggerActionArgs.builder()        
+ *             .trigger("post-login")
  *             .actionId(loginAlert.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

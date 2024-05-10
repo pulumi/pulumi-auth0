@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,8 +56,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myGuardian = new Guardian(&#34;myGuardian&#34;, GuardianArgs.builder()        
- *             .policy(&#34;all-applications&#34;)
+ *         var myGuardian = new Guardian("myGuardian", GuardianArgs.builder()        
+ *             .policy("all-applications")
  *             .email(true)
  *             .otp(true)
  *             .recoveryCode(true)
@@ -65,46 +66,47 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .webauthnRoaming(GuardianWebauthnRoamingArgs.builder()
  *                 .enabled(true)
- *                 .userVerification(&#34;required&#34;)
+ *                 .userVerification("required")
  *                 .build())
  *             .phone(GuardianPhoneArgs.builder()
  *                 .enabled(true)
- *                 .provider(&#34;auth0&#34;)
+ *                 .provider("auth0")
  *                 .messageTypes(                
- *                     &#34;sms&#34;,
- *                     &#34;voice&#34;)
+ *                     "sms",
+ *                     "voice")
  *                 .options(GuardianPhoneOptionsArgs.builder()
- *                     .enrollmentMessage(&#34;{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.&#34;)
- *                     .verificationMessage(&#34;{{code}} is your verification code for {{tenant.friendly_name}}.&#34;)
+ *                     .enrollmentMessage("{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.")
+ *                     .verificationMessage("{{code}} is your verification code for {{tenant.friendly_name}}.")
  *                     .build())
  *                 .build())
  *             .push(GuardianPushArgs.builder()
  *                 .enabled(true)
- *                 .provider(&#34;sns&#34;)
+ *                 .provider("sns")
  *                 .amazonSns(GuardianPushAmazonSnsArgs.builder()
- *                     .awsAccessKeyId(&#34;test1&#34;)
- *                     .awsRegion(&#34;us-west-1&#34;)
- *                     .awsSecretAccessKey(&#34;secretKey&#34;)
- *                     .snsApnsPlatformApplicationArn(&#34;test_arn&#34;)
- *                     .snsGcmPlatformApplicationArn(&#34;test_arn&#34;)
+ *                     .awsAccessKeyId("test1")
+ *                     .awsRegion("us-west-1")
+ *                     .awsSecretAccessKey("secretKey")
+ *                     .snsApnsPlatformApplicationArn("test_arn")
+ *                     .snsGcmPlatformApplicationArn("test_arn")
  *                     .build())
  *                 .customApp(GuardianPushCustomAppArgs.builder()
- *                     .appName(&#34;CustomApp&#34;)
- *                     .appleAppLink(&#34;https://itunes.apple.com/us/app/my-app/id123121&#34;)
- *                     .googleAppLink(&#34;https://play.google.com/store/apps/details?id=com.my.app&#34;)
+ *                     .appName("CustomApp")
+ *                     .appleAppLink("https://itunes.apple.com/us/app/my-app/id123121")
+ *                     .googleAppLink("https://play.google.com/store/apps/details?id=com.my.app")
  *                     .build())
  *                 .build())
  *             .duo(GuardianDuoArgs.builder()
  *                 .enabled(true)
- *                 .integrationKey(&#34;someKey&#34;)
- *                 .secretKey(&#34;someSecret&#34;)
- *                 .hostname(&#34;api-hostname&#34;)
+ *                 .integrationKey("someKey")
+ *                 .secretKey("someSecret")
+ *                 .hostname("api-hostname")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
