@@ -7242,7 +7242,6 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.\nTo access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute\nwill contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an\nauthentication method.\n",
                     "secret": true
                 },
                 "privateKeyJwt": {
@@ -7267,7 +7266,6 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.\nTo access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute\nwill contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an\nauthentication method.\n",
                     "secret": true
                 },
                 "privateKeyJwt": {
@@ -7293,7 +7291,6 @@
                     },
                     "clientSecret": {
                         "type": "string",
-                        "description": "Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.\nTo access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute\nwill contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an\nauthentication method.\n",
                         "secret": true
                     },
                     "privateKeyJwt": {
@@ -7779,7 +7776,6 @@
             "properties": {
                 "cnameApiKey": {
                     "type": "string",
-                    "description": "The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain\nis `self_managed_certs` and Terraform originally managed the domain's verification.\n",
                     "secret": true
                 },
                 "customDomainId": {
@@ -7811,7 +7807,6 @@
                 "properties": {
                     "cnameApiKey": {
                         "type": "string",
-                        "description": "The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain\nis `self_managed_certs` and Terraform originally managed the domain's verification.\n",
                         "secret": true
                     },
                     "customDomainId": {
