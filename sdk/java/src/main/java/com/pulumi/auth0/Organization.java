@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myOrganization = new Organization("myOrganization", OrganizationArgs.builder()        
+ *         var myOrganization = new Organization("myOrganization", OrganizationArgs.builder()
  *             .name("auth0-inc")
  *             .displayName("Auth0 Inc.")
  *             .branding(OrganizationBrandingArgs.builder()

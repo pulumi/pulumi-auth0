@@ -50,18 +50,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myConn = new Connection("myConn", ConnectionArgs.builder()        
+ *         var myConn = new Connection("myConn", ConnectionArgs.builder()
  *             .name("My-Auth0-Connection")
  *             .strategy("auth0")
  *             .build());
  * 
- *         var myClient = new Client("myClient", ClientArgs.builder()        
+ *         var myClient = new Client("myClient", ClientArgs.builder()
  *             .name("My-Auth0-Client")
  *             .build());
  * 
  *         // One connection to one client association.
  *         // To prevent issues, avoid using this resource together with the `auth0_connection_clients` resource.
- *         var myConnClientAssoc = new ConnectionClient("myConnClientAssoc", ConnectionClientArgs.builder()        
+ *         var myConnClientAssoc = new ConnectionClient("myConnClientAssoc", ConnectionClientArgs.builder()
  *             .connectionId(myConn.id())
  *             .clientId(myClient.id())
  *             .build());

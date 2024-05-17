@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var loginAlert = new Action("loginAlert", ActionArgs.builder()        
+ *         var loginAlert = new Action("loginAlert", ActionArgs.builder()
  *             .name("Alert after login")
  *             .code("""
  * exports.onContinuePostLogin = async (event, api) => {
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var postLoginAlertAction = new TriggerAction("postLoginAlertAction", TriggerActionArgs.builder()        
+ *         var postLoginAlertAction = new TriggerAction("postLoginAlertAction", TriggerActionArgs.builder()
  *             .trigger("post-login")
  *             .actionId(loginAlert.id())
  *             .build());

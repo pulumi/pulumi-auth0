@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myCustomDomain = new CustomDomain("myCustomDomain", CustomDomainArgs.builder()        
+ *         var myCustomDomain = new CustomDomain("myCustomDomain", CustomDomainArgs.builder()
  *             .domain("auth.example.com")
  *             .type("auth0_managed_certs")
  *             .build());

@@ -52,17 +52,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myConnection = new Connection("myConnection", ConnectionArgs.builder()        
+ *         var myConnection = new Connection("myConnection", ConnectionArgs.builder()
  *             .name("My Connection")
  *             .strategy("auth0")
  *             .build());
  * 
- *         var myOrganization = new Organization("myOrganization", OrganizationArgs.builder()        
+ *         var myOrganization = new Organization("myOrganization", OrganizationArgs.builder()
  *             .name("my-organization")
  *             .displayName("My Organization")
  *             .build());
  * 
- *         var myOrgConn = new OrganizationConnection("myOrgConn", OrganizationConnectionArgs.builder()        
+ *         var myOrgConn = new OrganizationConnection("myOrgConn", OrganizationConnectionArgs.builder()
  *             .organizationId(myOrganization.id())
  *             .connectionId(myConnection.id())
  *             .assignMembershipOnLogin(true)
