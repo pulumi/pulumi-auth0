@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myClient = new Client("myClient", ClientArgs.builder()        
+ *         var myClient = new Client("myClient", ClientArgs.builder()
  *             .name("Application - Acceptance Test")
  *             .description("Test Applications Long Description")
  *             .appType("non_interactive")

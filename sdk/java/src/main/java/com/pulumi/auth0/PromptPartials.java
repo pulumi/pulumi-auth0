@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myLoginPromptPartials = new PromptPartials("myLoginPromptPartials", PromptPartialsArgs.builder()        
+ *         var myLoginPromptPartials = new PromptPartials("myLoginPromptPartials", PromptPartialsArgs.builder()
  *             .prompt("login")
  *             .formContentStart("<div>Updated Form Content Start</div>")
  *             .formContentEnd("<div>Updated Form Content End</div>")

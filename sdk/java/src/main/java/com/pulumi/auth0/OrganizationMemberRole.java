@@ -49,37 +49,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var reader = new Role("reader", RoleArgs.builder()        
+ *         var reader = new Role("reader", RoleArgs.builder()
  *             .name("Reader")
  *             .build());
  * 
- *         var writer = new Role("writer", RoleArgs.builder()        
+ *         var writer = new Role("writer", RoleArgs.builder()
  *             .name("Writer")
  *             .build());
  * 
- *         var user = new User("user", UserArgs.builder()        
+ *         var user = new User("user", UserArgs.builder()
  *             .connectionName("Username-Password-Authentication")
  *             .email("test-user{@literal @}auth0.com")
  *             .password("MyPass123$")
  *             .build());
  * 
- *         var myOrg = new Organization("myOrg", OrganizationArgs.builder()        
+ *         var myOrg = new Organization("myOrg", OrganizationArgs.builder()
  *             .name("some-org")
  *             .displayName("Some Org")
  *             .build());
  * 
- *         var myOrgMember = new OrganizationMember("myOrgMember", OrganizationMemberArgs.builder()        
+ *         var myOrgMember = new OrganizationMember("myOrgMember", OrganizationMemberArgs.builder()
  *             .organizationId(myOrg.id())
  *             .userId(user.id())
  *             .build());
  * 
- *         var role1 = new OrganizationMemberRole("role1", OrganizationMemberRoleArgs.builder()        
+ *         var role1 = new OrganizationMemberRole("role1", OrganizationMemberRoleArgs.builder()
  *             .organizationId(myOrg.id())
  *             .userId(user.id())
  *             .roleId(reader.id())
  *             .build());
  * 
- *         var role2 = new OrganizationMemberRole("role2", OrganizationMemberRoleArgs.builder()        
+ *         var role2 = new OrganizationMemberRole("role2", OrganizationMemberRoleArgs.builder()
  *             .organizationId(myOrg.id())
  *             .userId(user.id())
  *             .roleId(writer.id())
