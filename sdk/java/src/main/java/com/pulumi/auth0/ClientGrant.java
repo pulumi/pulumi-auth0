@@ -20,57 +20,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.auth0.Client;
- * import com.pulumi.auth0.ClientArgs;
- * import com.pulumi.auth0.ResourceServer;
- * import com.pulumi.auth0.ResourceServerArgs;
- * import com.pulumi.auth0.ClientGrant;
- * import com.pulumi.auth0.ClientGrantArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // The following example grants a client the "create:foo" and "create:bar" permissions (scopes).
- *         var myClient = new Client("myClient", ClientArgs.builder()        
- *             .name("Example Application - Client Grant (Managed by Terraform)")
- *             .build());
- * 
- *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()        
- *             .name("Example Resource Server - Client Grant (Managed by Terraform)")
- *             .identifier("https://api.example.com/client-grant")
- *             .scopes(            
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *             .build());
- * 
- *         var myClientGrant = new ClientGrant("myClientGrant", ClientGrantArgs.builder()        
- *             .clientId(myClient.id())
- *             .audience(myResourceServer.identifier())
- *             .scopes(            
- *                 "create:foo",
- *                 "create:bar")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -48,17 +48,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var resourceServer = new ResourceServer("resourceServer", ResourceServerArgs.builder()        
+ *         var resourceServer = new ResourceServer("resourceServer", ResourceServerArgs.builder()
  *             .name("Example Resource Server (Managed by Terraform)")
  *             .identifier("https://api.example.com")
  *             .build());
  * 
- *         var readPosts = new ResourceServerScope("readPosts", ResourceServerScopeArgs.builder()        
+ *         var readPosts = new ResourceServerScope("readPosts", ResourceServerScopeArgs.builder()
  *             .resourceServerIdentifier(resourceServer.identifier())
  *             .scope("read:posts")
  *             .build());
  * 
- *         var writePosts = new ResourceServerScope("writePosts", ResourceServerScopeArgs.builder()        
+ *         var writePosts = new ResourceServerScope("writePosts", ResourceServerScopeArgs.builder()
  *             .resourceServerIdentifier(resourceServer.identifier())
  *             .scope("write:posts")
  *             .build());

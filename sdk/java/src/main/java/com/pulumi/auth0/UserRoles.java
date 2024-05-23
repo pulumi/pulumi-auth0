@@ -51,12 +51,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Example:
- *         var admin = new Role("admin", RoleArgs.builder()        
+ *         var admin = new Role("admin", RoleArgs.builder()
  *             .name("admin")
  *             .description("Administrator")
  *             .build());
  * 
- *         var user = new User("user", UserArgs.builder()        
+ *         var user = new User("user", UserArgs.builder()
  *             .connectionName("Username-Password-Authentication")
  *             .username("unique_username")
  *             .name("Firstname Lastname")
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .password("passpass$12$12")
  *             .build());
  * 
- *         var userRoles = new UserRoles("userRoles", UserRolesArgs.builder()        
+ *         var userRoles = new UserRoles("userRoles", UserRolesArgs.builder()
  *             .userId(user.id())
  *             .roles(admin.id())
  *             .build());

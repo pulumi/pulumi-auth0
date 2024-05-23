@@ -49,19 +49,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var user = new User("user", UserArgs.builder()        
+ *         var user = new User("user", UserArgs.builder()
  *             .email("test-user{@literal @}auth0.com")
  *             .connectionName("Username-Password-Authentication")
  *             .emailVerified(true)
  *             .password("MyPass123$")
  *             .build());
  * 
- *         var myOrg = new Organization("myOrg", OrganizationArgs.builder()        
+ *         var myOrg = new Organization("myOrg", OrganizationArgs.builder()
  *             .name("org-admin")
  *             .displayName("Admin")
  *             .build());
  * 
- *         var myOrgMember = new OrganizationMember("myOrgMember", OrganizationMemberArgs.builder()        
+ *         var myOrgMember = new OrganizationMember("myOrgMember", OrganizationMemberArgs.builder()
  *             .organizationId(myOrg.id())
  *             .userId(user.id())
  *             .build());

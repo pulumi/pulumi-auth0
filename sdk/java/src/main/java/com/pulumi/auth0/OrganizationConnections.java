@@ -53,22 +53,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myConnection_1 = new Connection("myConnection-1", ConnectionArgs.builder()        
+ *         var myConnection_1 = new Connection("myConnection-1", ConnectionArgs.builder()
  *             .name("My Connection 1")
  *             .strategy("auth0")
  *             .build());
  * 
- *         var myConnection_2 = new Connection("myConnection-2", ConnectionArgs.builder()        
+ *         var myConnection_2 = new Connection("myConnection-2", ConnectionArgs.builder()
  *             .name("My Connection 2")
  *             .strategy("auth0")
  *             .build());
  * 
- *         var myOrganization = new Organization("myOrganization", OrganizationArgs.builder()        
+ *         var myOrganization = new Organization("myOrganization", OrganizationArgs.builder()
  *             .name("my-organization")
  *             .displayName("My Organization")
  *             .build());
  * 
- *         var one_to_many = new OrganizationConnections("one-to-many", OrganizationConnectionsArgs.builder()        
+ *         var one_to_many = new OrganizationConnections("one-to-many", OrganizationConnectionsArgs.builder()
  *             .organizationId(myOrganization.id())
  *             .enabledConnections(            
  *                 OrganizationConnectionsEnabledConnectionArgs.builder()

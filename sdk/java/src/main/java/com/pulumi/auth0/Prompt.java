@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myPrompt = new Prompt("myPrompt", PromptArgs.builder()        
+ *         var myPrompt = new Prompt("myPrompt", PromptArgs.builder()
  *             .universalLoginExperience("new")
  *             .identifierFirst(false)
  *             .webauthnPlatformFirstFactor(true)

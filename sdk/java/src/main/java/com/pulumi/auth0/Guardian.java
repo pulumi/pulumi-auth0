@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myGuardian = new Guardian("myGuardian", GuardianArgs.builder()        
+ *         var myGuardian = new Guardian("myGuardian", GuardianArgs.builder()
  *             .policy("all-applications")
  *             .email(true)
  *             .otp(true)

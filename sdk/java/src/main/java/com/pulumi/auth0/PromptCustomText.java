@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new PromptCustomText("example", PromptCustomTextArgs.builder()        
+ *         var example = new PromptCustomText("example", PromptCustomTextArgs.builder()
  *             .prompt("login")
  *             .language("en")
  *             .body(serializeJson(

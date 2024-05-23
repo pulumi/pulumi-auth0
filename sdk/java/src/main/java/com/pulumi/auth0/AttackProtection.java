@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProtection = new AttackProtection("myProtection", AttackProtectionArgs.builder()        
+ *         var myProtection = new AttackProtection("myProtection", AttackProtectionArgs.builder()
  *             .suspiciousIpThrottling(AttackProtectionSuspiciousIpThrottlingArgs.builder()
  *                 .enabled(true)
  *                 .shields(                
