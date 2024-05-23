@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myTenant = new Tenant("myTenant", TenantArgs.builder()        
+ *         var myTenant = new Tenant("myTenant", TenantArgs.builder()
  *             .friendlyName("Tenant Name")
  *             .pictureUrl("http://example.com/logo.png")
  *             .supportEmail("support{@literal @}example.com")

@@ -51,24 +51,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var user1 = new User("user1", UserArgs.builder()        
+ *         var user1 = new User("user1", UserArgs.builder()
  *             .connectionName("Username-Password-Authentication")
  *             .email("myuser1{@literal @}auth0.com")
  *             .password("MyPass123$")
  *             .build());
  * 
- *         var user2 = new User("user2", UserArgs.builder()        
+ *         var user2 = new User("user2", UserArgs.builder()
  *             .connectionName("Username-Password-Authentication")
  *             .email("myuser2{@literal @}auth0.com")
  *             .password("MyPass123$")
  *             .build());
  * 
- *         var myOrg = new Organization("myOrg", OrganizationArgs.builder()        
+ *         var myOrg = new Organization("myOrg", OrganizationArgs.builder()
  *             .name("some-org")
  *             .displayName("Some Organization")
  *             .build());
  * 
- *         var myMembers = new OrganizationMembers("myMembers", OrganizationMembersArgs.builder()        
+ *         var myMembers = new OrganizationMembers("myMembers", OrganizationMembersArgs.builder()
  *             .organizationId(myOrg.id())
  *             .members(            
  *                 user1.id(),

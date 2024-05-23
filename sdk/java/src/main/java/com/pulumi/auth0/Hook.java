@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myHook = new Hook("myHook", HookArgs.builder()        
+ *         var myHook = new Hook("myHook", HookArgs.builder()
  *             .name("My Pre User Registration Hook")
  *             .script("""
  *     function (user, context, callback) {

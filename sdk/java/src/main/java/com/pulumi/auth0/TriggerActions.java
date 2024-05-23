@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var actionFoo = new Action("actionFoo", ActionArgs.builder()        
+ *         var actionFoo = new Action("actionFoo", ActionArgs.builder()
  *             .name("Test Trigger Binding Foo")
  *             .code("""
  * exports.onContinuePostLogin = async (event, api) => {
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var actionBar = new Action("actionBar", ActionArgs.builder()        
+ *         var actionBar = new Action("actionBar", ActionArgs.builder()
  *             .name("Test Trigger Binding Bar")
  *             .code("""
  * exports.onContinuePostLogin = async (event, api) => {
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var loginFlow = new TriggerActions("loginFlow", TriggerActionsArgs.builder()        
+ *         var loginFlow = new TriggerActions("loginFlow", TriggerActionsArgs.builder()
  *             .trigger("post-login")
  *             .actions(            
  *                 TriggerActionsActionArgs.builder()

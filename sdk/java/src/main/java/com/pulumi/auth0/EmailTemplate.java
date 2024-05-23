@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myEmailProvider = new EmailProvider("myEmailProvider", EmailProviderArgs.builder()        
+ *         var myEmailProvider = new EmailProvider("myEmailProvider", EmailProviderArgs.builder()
  *             .name("ses")
  *             .enabled(true)
  *             .defaultFromAddress("accounts{@literal @}example.com")
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var myEmailTemplate = new EmailTemplate("myEmailTemplate", EmailTemplateArgs.builder()        
+ *         var myEmailTemplate = new EmailTemplate("myEmailTemplate", EmailTemplateArgs.builder()
  *             .template("welcome_email")
  *             .body("<html><body><h1>Welcome!</h1></body></html>")
  *             .from("welcome{@literal @}example.com")

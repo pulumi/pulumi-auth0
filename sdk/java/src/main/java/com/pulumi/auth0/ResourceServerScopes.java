@@ -51,12 +51,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myApi = new ResourceServer("myApi", ResourceServerArgs.builder()        
+ *         var myApi = new ResourceServer("myApi", ResourceServerArgs.builder()
  *             .name("Example Resource Server (Managed by Terraform)")
  *             .identifier("https://api.example.com")
  *             .build());
  * 
- *         var myApiScopes = new ResourceServerScopes("myApiScopes", ResourceServerScopesArgs.builder()        
+ *         var myApiScopes = new ResourceServerScopes("myApiScopes", ResourceServerScopesArgs.builder()
  *             .resourceServerIdentifier(myApi.identifier())
  *             .scopes(            
  *                 ResourceServerScopesScopeArgs.builder()
