@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myRule = new Rule("myRule", RuleArgs.builder()        
+ *         var myRule = new Rule("myRule", RuleArgs.builder()
  *             .name("empty-rule")
  *             .script("""
  *     function (user, context, callback) {
@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *             .enabled(true)
  *             .build());
  * 
- *         var myRuleConfig = new RuleConfig("myRuleConfig", RuleConfigArgs.builder()        
+ *         var myRuleConfig = new RuleConfig("myRuleConfig", RuleConfigArgs.builder()
  *             .key("foo")
  *             .value("bar")
  *             .build());

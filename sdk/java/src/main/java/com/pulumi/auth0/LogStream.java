@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an http log stream.
- *         var myWebhook = new LogStream("myWebhook", LogStreamArgs.builder()        
+ *         var myWebhook = new LogStream("myWebhook", LogStreamArgs.builder()
  *             .name("HTTP log stream")
  *             .type("http")
  *             .filters(            
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // This is an example of an Amazon EventBridge log stream.
- *         var exampleAws = new LogStream("exampleAws", LogStreamArgs.builder()        
+ *         var exampleAws = new LogStream("exampleAws", LogStreamArgs.builder()
  *             .name("AWS Eventbridge")
  *             .type("eventbridge")
  *             .status("active")

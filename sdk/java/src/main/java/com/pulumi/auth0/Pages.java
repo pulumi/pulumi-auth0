@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myPages = new Pages("myPages", PagesArgs.builder()        
+ *         var myPages = new Pages("myPages", PagesArgs.builder()
  *             .login(PagesLoginArgs.builder()
  *                 .enabled(true)
  *                 .html("<html><body>My Custom Login Page</body></html>")

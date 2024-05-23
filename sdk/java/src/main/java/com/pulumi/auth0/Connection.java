@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an Auth0 connection.
- *         var myConnection = new Connection("myConnection", ConnectionArgs.builder()        
+ *         var myConnection = new Connection("myConnection", ConnectionArgs.builder()
  *             .name("Example-Connection")
  *             .isDomainConnection(true)
  *             .strategy("auth0")
@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of a Google OAuth2 connection.
- *         var googleOauth2 = new Connection("googleOauth2", ConnectionArgs.builder()        
+ *         var googleOauth2 = new Connection("googleOauth2", ConnectionArgs.builder()
  *             .name("Google-OAuth2-Connection")
  *             .strategy("google-oauth2")
  *             .options(ConnectionOptionsArgs.builder()
@@ -209,7 +209,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var googleApps = new Connection("googleApps", ConnectionArgs.builder()        
+ *         var googleApps = new Connection("googleApps", ConnectionArgs.builder()
  *             .name("connection-google-apps")
  *             .isDomainConnection(false)
  *             .strategy("google-apps")
@@ -273,7 +273,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of a Facebook connection.
- *         var facebook = new Connection("facebook", ConnectionArgs.builder()        
+ *         var facebook = new Connection("facebook", ConnectionArgs.builder()
  *             .name("Facebook-Connection")
  *             .strategy("facebook")
  *             .options(ConnectionOptionsArgs.builder()
@@ -324,7 +324,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an Apple connection.
- *         var apple = new Connection("apple", ConnectionArgs.builder()        
+ *         var apple = new Connection("apple", ConnectionArgs.builder()
  *             .name("Apple-Connection")
  *             .strategy("apple")
  *             .options(ConnectionOptionsArgs.builder()
@@ -378,7 +378,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an LinkedIn connection.
- *         var linkedin = new Connection("linkedin", ConnectionArgs.builder()        
+ *         var linkedin = new Connection("linkedin", ConnectionArgs.builder()
  *             .name("Linkedin-Connection")
  *             .strategy("linkedin")
  *             .options(ConnectionOptionsArgs.builder()
@@ -429,7 +429,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an GitHub connection.
- *         var github = new Connection("github", ConnectionArgs.builder()        
+ *         var github = new Connection("github", ConnectionArgs.builder()
  *             .name("GitHub-Connection")
  *             .strategy("github")
  *             .options(ConnectionOptionsArgs.builder()
@@ -480,7 +480,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an SalesForce connection.
- *         var salesforce = new Connection("salesforce", ConnectionArgs.builder()        
+ *         var salesforce = new Connection("salesforce", ConnectionArgs.builder()
  *             .name("Salesforce-Connection")
  *             .strategy("salesforce")
  *             .options(ConnectionOptionsArgs.builder()
@@ -532,7 +532,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an OAuth2 connection.
- *         var oauth2 = new Connection("oauth2", ConnectionArgs.builder()        
+ *         var oauth2 = new Connection("oauth2", ConnectionArgs.builder()
  *             .name("OAuth2-Connection")
  *             .strategy("oauth2")
  *             .options(ConnectionOptionsArgs.builder()
@@ -591,7 +591,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ad = new Connection("ad", ConnectionArgs.builder()        
+ *         var ad = new Connection("ad", ConnectionArgs.builder()
  *             .name("connection-active-directory")
  *             .displayName("Active Directory Connection")
  *             .strategy("ad")
@@ -656,7 +656,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var azureAd = new Connection("azureAd", ConnectionArgs.builder()        
+ *         var azureAd = new Connection("azureAd", ConnectionArgs.builder()
  *             .name("connection-azure-ad")
  *             .strategy("waad")
  *             .showAsButton(true)
@@ -730,7 +730,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an Email connection.
- *         var passwordlessEmail = new Connection("passwordlessEmail", ConnectionArgs.builder()        
+ *         var passwordlessEmail = new Connection("passwordlessEmail", ConnectionArgs.builder()
  *             .strategy("email")
  *             .name("email")
  *             .options(ConnectionOptionsArgs.builder()
@@ -791,7 +791,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of a SAML connection.
- *         var samlp = new Connection("samlp", ConnectionArgs.builder()        
+ *         var samlp = new Connection("samlp", ConnectionArgs.builder()
  *             .name("SAML-Connection")
  *             .strategy("samlp")
  *             .options(ConnectionOptionsArgs.builder()
@@ -901,7 +901,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of a WindowsLive connection.
- *         var windowslive = new Connection("windowslive", ConnectionArgs.builder()        
+ *         var windowslive = new Connection("windowslive", ConnectionArgs.builder()
  *             .name("Windowslive-Connection")
  *             .strategy("windowslive")
  *             .options(ConnectionOptionsArgs.builder()
@@ -954,7 +954,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an OIDC connection.
- *         var oidc = new Connection("oidc", ConnectionArgs.builder()        
+ *         var oidc = new Connection("oidc", ConnectionArgs.builder()
  *             .name("oidc-connection")
  *             .displayName("OIDC Connection")
  *             .strategy("oidc")
@@ -1035,7 +1035,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an Okta Workforce connection.
- *         var okta = new Connection("okta", ConnectionArgs.builder()        
+ *         var okta = new Connection("okta", ConnectionArgs.builder()
  *             .name("okta-connection")
  *             .displayName("Okta Workforce Connection")
  *             .strategy("okta")

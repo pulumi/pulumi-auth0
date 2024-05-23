@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myRule = new Rule("myRule", RuleArgs.builder()        
+ *         var myRule = new Rule("myRule", RuleArgs.builder()
  *             .name("empty-rule")
  *             .script("""
  *     function (user, context, callback) {
