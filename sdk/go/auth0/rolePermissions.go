@@ -17,6 +17,18 @@ import (
 // !> This resource manages all the permissions assigned to a role. In contrast, the `RolePermission` resource only
 // appends a permission to a role. To avoid potential issues, it is recommended not to use this resource in conjunction
 // with the `RolePermission` resource when managing permissions for the same role id.
+//
+// ## Import
+//
+// # This resource can be imported by specifying the role ID
+//
+// #
+//
+// Example:
+//
+// ```sh
+// $ pulumi import auth0:index/rolePermissions:RolePermissions all_role_permissions "rol_XXXXXXXXXXXX"
+// ```
 type RolePermissions struct {
 	pulumi.CustomResourceState
 

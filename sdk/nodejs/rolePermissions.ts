@@ -12,6 +12,56 @@ import * as utilities from "./utilities";
  * !> This resource manages all the permissions assigned to a role. In contrast, the `auth0.RolePermission` resource only
  * appends a permission to a role. To avoid potential issues, it is recommended not to use this resource in conjunction
  * with the `auth0.RolePermission` resource when managing permissions for the same role id.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // Example:
+ * const resourceServer = new auth0.ResourceServer("resource_server", {
+ *     name: "test",
+ *     identifier: "test.example.com",
+ * });
+ * const resourceServerScopes = new auth0.ResourceServerScopes("resource_server_scopes", {
+ *     resourceServerIdentifier: resourceServer.identifier,
+ *     scopes: [
+ *         {
+ *             name: "store:create",
+ *         },
+ *         {
+ *             name: "store:read",
+ *         },
+ *         {
+ *             name: "store:update",
+ *         },
+ *         {
+ *             name: "store:delete",
+ *         },
+ *     ],
+ * });
+ * const myRole = new auth0.Role("my_role", {name: "My Role"});
+ * const myRolePerms = new auth0.RolePermissions("my_role_perms", {
+ *     permissions: resourceServer.identifier.apply(identifier => .map(entry => ({
+ *         name: entry.value.name,
+ *         resourceServerIdentifier: identifier,
+ *     }))),
+ *     roleId: myRole.id,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported by specifying the role ID
+ *
+ * # 
+ *
+ * Example:
+ *
+ * ```sh
+ * $ pulumi import auth0:index/rolePermissions:RolePermissions all_role_permissions "rol_XXXXXXXXXXXX"
+ * ```
  */
 export class RolePermissions extends pulumi.CustomResource {
     /**

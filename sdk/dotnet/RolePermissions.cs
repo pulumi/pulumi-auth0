@@ -15,6 +15,73 @@ namespace Pulumi.Auth0
     /// !&gt; This resource manages all the permissions assigned to a role. In contrast, the `auth0.RolePermission` resource only
     /// appends a permission to a role. To avoid potential issues, it is recommended not to use this resource in conjunction
     /// with the `auth0.RolePermission` resource when managing permissions for the same role id.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Example:
+    ///     var resourceServer = new Auth0.ResourceServer("resource_server", new()
+    ///     {
+    ///         Name = "test",
+    ///         Identifier = "test.example.com",
+    ///     });
+    /// 
+    ///     var resourceServerScopes = new Auth0.ResourceServerScopes("resource_server_scopes", new()
+    ///     {
+    ///         ResourceServerIdentifier = resourceServer.Identifier,
+    ///         Scopes = new[]
+    ///         {
+    ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
+    ///             {
+    ///                 Name = "store:create",
+    ///             },
+    ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
+    ///             {
+    ///                 Name = "store:read",
+    ///             },
+    ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
+    ///             {
+    ///                 Name = "store:update",
+    ///             },
+    ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
+    ///             {
+    ///                 Name = "store:delete",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var myRole = new Auth0.Role("my_role", new()
+    ///     {
+    ///         Name = "My Role",
+    ///     });
+    /// 
+    ///     var myRolePerms = new Auth0.RolePermissions("my_role_perms", new()
+    ///     {
+    ///         Permissions = resourceServer.Identifier.Apply(identifier =&gt; ),
+    ///         RoleId = myRole.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported by specifying the role ID
+    /// 
+    /// # 
+    /// 
+    /// Example:
+    /// 
+    /// ```sh
+    /// $ pulumi import auth0:index/rolePermissions:RolePermissions all_role_permissions "rol_XXXXXXXXXXXX"
+    /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/rolePermissions:RolePermissions")]
     public partial class RolePermissions : global::Pulumi.CustomResource

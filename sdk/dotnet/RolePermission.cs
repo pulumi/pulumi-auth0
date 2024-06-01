@@ -15,6 +15,22 @@ namespace Pulumi.Auth0
     /// !&gt; This resource appends a permission to a role. In contrast, the `auth0.RolePermissions` resource manages all the
     /// permissions assigned to a role. To avoid potential issues, it is recommended not to use this resource in conjunction
     /// with the `auth0.RolePermissions` resource when managing permissions for the same role id.
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported by specifying the
+    /// 
+    /// role ID, resource identifier, and permission name separated by "::" (note the double colon)
+    /// 
+    /// &lt;roleID&gt;::&lt;resourceServerIdentifier&gt;::&lt;permission&gt;
+    /// 
+    /// # 
+    /// 
+    /// Example:
+    /// 
+    /// ```sh
+    /// $ pulumi import auth0:index/rolePermission:RolePermission permission "rol_XXXXXXXXXXXXX::https://example.com::read:foo"
+    /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/rolePermission:RolePermission")]
     public partial class RolePermission : global::Pulumi.CustomResource
