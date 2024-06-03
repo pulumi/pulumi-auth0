@@ -106,6 +106,53 @@ class RolePermissions(pulumi.CustomResource):
         appends a permission to a role. To avoid potential issues, it is recommended not to use this resource in conjunction
         with the `RolePermission` resource when managing permissions for the same role id.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # Example:
+        resource_server = auth0.ResourceServer("resource_server",
+            name="test",
+            identifier="test.example.com")
+        resource_server_scopes = auth0.ResourceServerScopes("resource_server_scopes",
+            resource_server_identifier=resource_server.identifier,
+            scopes=[
+                auth0.ResourceServerScopesScopeArgs(
+                    name="store:create",
+                ),
+                auth0.ResourceServerScopesScopeArgs(
+                    name="store:read",
+                ),
+                auth0.ResourceServerScopesScopeArgs(
+                    name="store:update",
+                ),
+                auth0.ResourceServerScopesScopeArgs(
+                    name="store:delete",
+                ),
+            ])
+        my_role = auth0.Role("my_role", name="My Role")
+        my_role_perms = auth0.RolePermissions("my_role_perms",
+            permissions=resource_server.identifier.apply(lambda identifier: [{
+                "name": entry["value"],
+                "resourceServerIdentifier": identifier,
+            } for entry in resource_server_scopes.scopes.apply(lambda scopes: [{"key": k, "value": v} for k, v in scopes])]),
+            role_id=my_role.id)
+        ```
+
+        ## Import
+
+        This resource can be imported by specifying the role ID
+
+        # 
+
+        Example:
+
+        ```sh
+        $ pulumi import auth0:index/rolePermissions:RolePermissions all_role_permissions "rol_XXXXXXXXXXXX"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolePermissionsPermissionArgs']]]] permissions: List of API permissions granted to the role.
@@ -123,6 +170,53 @@ class RolePermissions(pulumi.CustomResource):
         !> This resource manages all the permissions assigned to a role. In contrast, the `RolePermission` resource only
         appends a permission to a role. To avoid potential issues, it is recommended not to use this resource in conjunction
         with the `RolePermission` resource when managing permissions for the same role id.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # Example:
+        resource_server = auth0.ResourceServer("resource_server",
+            name="test",
+            identifier="test.example.com")
+        resource_server_scopes = auth0.ResourceServerScopes("resource_server_scopes",
+            resource_server_identifier=resource_server.identifier,
+            scopes=[
+                auth0.ResourceServerScopesScopeArgs(
+                    name="store:create",
+                ),
+                auth0.ResourceServerScopesScopeArgs(
+                    name="store:read",
+                ),
+                auth0.ResourceServerScopesScopeArgs(
+                    name="store:update",
+                ),
+                auth0.ResourceServerScopesScopeArgs(
+                    name="store:delete",
+                ),
+            ])
+        my_role = auth0.Role("my_role", name="My Role")
+        my_role_perms = auth0.RolePermissions("my_role_perms",
+            permissions=resource_server.identifier.apply(lambda identifier: [{
+                "name": entry["value"],
+                "resourceServerIdentifier": identifier,
+            } for entry in resource_server_scopes.scopes.apply(lambda scopes: [{"key": k, "value": v} for k, v in scopes])]),
+            role_id=my_role.id)
+        ```
+
+        ## Import
+
+        This resource can be imported by specifying the role ID
+
+        # 
+
+        Example:
+
+        ```sh
+        $ pulumi import auth0:index/rolePermissions:RolePermissions all_role_permissions "rol_XXXXXXXXXXXX"
+        ```
 
         :param str resource_name: The name of the resource.
         :param RolePermissionsArgs args: The arguments to use to populate this resource's properties.
