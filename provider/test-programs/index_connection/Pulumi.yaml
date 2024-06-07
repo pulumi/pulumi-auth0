@@ -1,0 +1,19 @@
+name: index_connectionF2QkgXpEj3E4
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/7e2723b5-6ac7-4a9a-8060-ec245dc19754.zip
+resources:
+  myAuth0Connection:
+    properties:
+      isDomainConnection: false
+      options:
+        bruteForceProtection: true
+        disableSignup: true
+        importMode: false
+      realms:
+        - my-realm
+      strategy: auth0
+    type: auth0:Connection

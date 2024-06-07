@@ -11,3 +11,11 @@ plugins:
   - name: terraform
     version: "1.0.16"
     kind: converter
+actions:
+  preTest:
+    - name: make upstream
+      run: |
+        make upstream
+    - name: Run provider tests
+      run: |
+        cd provider && go test -v -json -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 . 2>&1 | tee /tmp/gotest.log | gotestfmt
