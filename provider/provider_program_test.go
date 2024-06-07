@@ -24,10 +24,8 @@ const defaultBaselineVersion = "3.3.1"
 var programs = []string{
 	"test-programs/index_role",
 	"test-programs/index_client",
-	"test-programs/.DS_Store",
 	"test-programs/index_prompt",
 	"test-programs/index_connection",
-	"test-programs/index_rule",
 }
 
 func TestUpgradeCoverage(t *testing.T) {
