@@ -139,24 +139,24 @@ class ConnectionClients(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_conn = auth0.Connection("myConn", strategy="auth0")
-        my_first_client = auth0.Client("myFirstClient")
-        my_second_client = auth0.Client("mySecondClient")
+        my_conn = auth0.Connection("my_conn",
+            name="My-Auth0-Connection",
+            strategy="auth0")
+        my_first_client = auth0.Client("my_first_client", name="My-First-Auth0-Client")
+        my_second_client = auth0.Client("my_second_client", name="My-Second-Auth0-Client")
         # One connection to many clients association.
         # To prevent issues, avoid using this resource together with the `auth0_connection_client` resource.
-        my_conn_clients_assoc = auth0.ConnectionClients("myConnClientsAssoc",
+        my_conn_clients_assoc = auth0.ConnectionClients("my_conn_clients_assoc",
             connection_id=my_conn.id,
             enabled_clients=[
                 my_first_client.id,
                 my_second_client.id,
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -191,24 +191,24 @@ class ConnectionClients(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_conn = auth0.Connection("myConn", strategy="auth0")
-        my_first_client = auth0.Client("myFirstClient")
-        my_second_client = auth0.Client("mySecondClient")
+        my_conn = auth0.Connection("my_conn",
+            name="My-Auth0-Connection",
+            strategy="auth0")
+        my_first_client = auth0.Client("my_first_client", name="My-First-Auth0-Client")
+        my_second_client = auth0.Client("my_second_client", name="My-Second-Auth0-Client")
         # One connection to many clients association.
         # To prevent issues, avoid using this resource together with the `auth0_connection_client` resource.
-        my_conn_clients_assoc = auth0.ConnectionClients("myConnClientsAssoc",
+        my_conn_clients_assoc = auth0.ConnectionClients("my_conn_clients_assoc",
             connection_id=my_conn.id,
             enabled_clients=[
                 my_first_client.id,
                 my_second_client.id,
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

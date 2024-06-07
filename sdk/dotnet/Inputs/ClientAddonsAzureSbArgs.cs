@@ -19,7 +19,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? EntityPath { get; set; }
 
         /// <summary>
-        /// Expiration in minutes for the generated token (default of 5 minutes).
+        /// Optional expiration in minutes for the generated token. Defaults to 5 minutes.
         /// </summary>
         [Input("expiration")]
         public Input<int>? Expiration { get; set; }

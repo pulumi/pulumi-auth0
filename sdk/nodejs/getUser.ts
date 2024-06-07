@@ -11,16 +11,15 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 User loaded using its ID.
  * const myUser = auth0.getUser({
  *     userId: "auth0|34fdr23fdsfdfsf",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
 
@@ -130,16 +129,15 @@ export interface GetUserResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 User loaded using its ID.
  * const myUser = auth0.getUser({
  *     userId: "auth0|34fdr23fdsfdfsf",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
     return pulumi.output(args).apply((a: any) => getUser(a, opts))

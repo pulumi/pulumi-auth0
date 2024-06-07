@@ -9,23 +9,22 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const user = new auth0.User("user", {
  *     connectionName: "Username-Password-Authentication",
- *     email: "test@test.com",
- *     emailVerified: true,
- *     nickname: "some.nickname",
- *     password: "passpass$12$12",
- *     picture: "https://www.example.com/a-valid-picture-url.jpg",
  *     userId: "12345",
  *     username: "unique_username",
+ *     name: "Firstname Lastname",
+ *     nickname: "some.nickname",
+ *     email: "test@test.com",
+ *     emailVerified: true,
+ *     password: "passpass$12$12",
+ *     picture: "https://www.example.com/a-valid-picture-url.jpg",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

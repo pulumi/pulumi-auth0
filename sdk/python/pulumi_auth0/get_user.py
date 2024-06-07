@@ -280,14 +280,13 @@ def get_user(user_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_auth0 as auth0
 
+    # An Auth0 User loaded using its ID.
     my_user = auth0.get_user(user_id="auth0|34fdr23fdsfdfsf")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str user_id: ID of the user.
@@ -328,14 +327,13 @@ def get_user_output(user_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_auth0 as auth0
 
+    # An Auth0 User loaded using its ID.
     my_user = auth0.get_user(user_id="auth0|34fdr23fdsfdfsf")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str user_id: ID of the user.

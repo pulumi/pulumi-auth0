@@ -46,7 +46,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? Issuer;
         /// <summary>
-        /// AWS token lifetime in seconds.
+        /// Number of seconds during which the token is valid. Defaults to `3600` seconds.
         /// </summary>
         public readonly int? LifetimeInSeconds;
         /// <summary>

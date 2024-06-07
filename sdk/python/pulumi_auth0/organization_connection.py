@@ -172,19 +172,21 @@ class OrganizationConnection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_connection = auth0.Connection("myConnection", strategy="auth0")
-        my_organization = auth0.Organization("myOrganization", display_name="My Organization")
-        my_org_conn = auth0.OrganizationConnection("myOrgConn",
+        my_connection = auth0.Connection("my_connection",
+            name="My Connection",
+            strategy="auth0")
+        my_organization = auth0.Organization("my_organization",
+            name="my-organization",
+            display_name="My Organization")
+        my_org_conn = auth0.OrganizationConnection("my_org_conn",
             organization_id=my_organization.id,
             connection_id=my_connection.id,
             assign_membership_on_login=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -224,19 +226,21 @@ class OrganizationConnection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_connection = auth0.Connection("myConnection", strategy="auth0")
-        my_organization = auth0.Organization("myOrganization", display_name="My Organization")
-        my_org_conn = auth0.OrganizationConnection("myOrgConn",
+        my_connection = auth0.Connection("my_connection",
+            name="My Connection",
+            strategy="auth0")
+        my_organization = auth0.Organization("my_organization",
+            name="my-organization",
+            display_name="My Organization")
+        my_org_conn = auth0.OrganizationConnection("my_org_conn",
             organization_id=my_organization.id,
             connection_id=my_connection.id,
             assign_membership_on_login=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

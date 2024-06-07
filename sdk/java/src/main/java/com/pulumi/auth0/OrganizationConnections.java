@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,19 +53,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myConnection_1 = new Connection(&#34;myConnection-1&#34;, ConnectionArgs.builder()        
- *             .strategy(&#34;auth0&#34;)
+ *         var myConnection_1 = new Connection("myConnection-1", ConnectionArgs.builder()
+ *             .name("My Connection 1")
+ *             .strategy("auth0")
  *             .build());
  * 
- *         var myConnection_2 = new Connection(&#34;myConnection-2&#34;, ConnectionArgs.builder()        
- *             .strategy(&#34;auth0&#34;)
+ *         var myConnection_2 = new Connection("myConnection-2", ConnectionArgs.builder()
+ *             .name("My Connection 2")
+ *             .strategy("auth0")
  *             .build());
  * 
- *         var myOrganization = new Organization(&#34;myOrganization&#34;, OrganizationArgs.builder()        
- *             .displayName(&#34;My Organization&#34;)
+ *         var myOrganization = new Organization("myOrganization", OrganizationArgs.builder()
+ *             .name("my-organization")
+ *             .displayName("My Organization")
  *             .build());
  * 
- *         var one_to_many = new OrganizationConnections(&#34;one-to-many&#34;, OrganizationConnectionsArgs.builder()        
+ *         var one_to_many = new OrganizationConnections("one-to-many", OrganizationConnectionsArgs.builder()
  *             .organizationId(myOrganization.id())
  *             .enabledConnections(            
  *                 OrganizationConnectionsEnabledConnectionArgs.builder()
@@ -79,7 +83,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -16,7 +16,6 @@ namespace Pulumi.Auth0
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -25,11 +24,13 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // An Auth0 Connection loaded using its name.
         ///     var some_connection_by_name = Auth0.GetConnection.Invoke(new()
         ///     {
         ///         Name = "Acceptance-Test-Connection-{{.testName}}",
         ///     });
         /// 
+        ///     // An Auth0 Connection loaded using its ID.
         ///     var some_connection_by_id = Auth0.GetConnection.Invoke(new()
         ///     {
         ///         ConnectionId = "con_abcdefghkijklmnopqrstuvwxyz0123456789",
@@ -37,7 +38,6 @@ namespace Pulumi.Auth0
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetConnectionResult> InvokeAsync(GetConnectionArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionResult>("auth0:index/getConnection:getConnection", args ?? new GetConnectionArgs(), options.WithDefaults());
@@ -47,7 +47,6 @@ namespace Pulumi.Auth0
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,11 +55,13 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // An Auth0 Connection loaded using its name.
         ///     var some_connection_by_name = Auth0.GetConnection.Invoke(new()
         ///     {
         ///         Name = "Acceptance-Test-Connection-{{.testName}}",
         ///     });
         /// 
+        ///     // An Auth0 Connection loaded using its ID.
         ///     var some_connection_by_id = Auth0.GetConnection.Invoke(new()
         ///     {
         ///         ConnectionId = "con_abcdefghkijklmnopqrstuvwxyz0123456789",
@@ -68,7 +69,6 @@ namespace Pulumi.Auth0
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetConnectionResult> Invoke(GetConnectionInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionResult>("auth0:index/getConnection:getConnection", args ?? new GetConnectionInvokeArgs(), options.WithDefaults());
@@ -83,6 +83,9 @@ namespace Pulumi.Auth0
         [Input("connectionId")]
         public string? ConnectionId { get; set; }
 
+        /// <summary>
+        /// The name of the connection. If not provided, `connection_id` must be set.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -100,6 +103,9 @@ namespace Pulumi.Auth0
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
 
+        /// <summary>
+        /// The name of the connection. If not provided, `connection_id` must be set.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

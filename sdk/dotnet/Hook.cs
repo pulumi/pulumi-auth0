@@ -16,7 +16,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -25,28 +24,27 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myHook = new Auth0.Hook("myHook", new()
+    ///     var myHook = new Auth0.Hook("my_hook", new()
     ///     {
-    ///         Dependencies = 
-    ///         {
-    ///             { "auth0", "2.30.0" },
-    ///         },
-    ///         Enabled = true,
+    ///         Name = "My Pre User Registration Hook",
     ///         Script = @"    function (user, context, callback) {
     ///       callback(null, { user });
     ///     }
-    ///   
     /// ",
+    ///         TriggerId = "pre-user-registration",
+    ///         Enabled = true,
     ///         Secrets = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///         TriggerId = "pre-user-registration",
+    ///         Dependencies = 
+    ///         {
+    ///             { "auth0", "2.30.0" },
+    ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

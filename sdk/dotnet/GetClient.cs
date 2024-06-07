@@ -16,7 +16,6 @@ namespace Pulumi.Auth0
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -25,11 +24,13 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // An Auth0 Client loaded using its name.
         ///     var some_client_by_name = Auth0.GetClient.Invoke(new()
         ///     {
         ///         Name = "Name of my Application",
         ///     });
         /// 
+        ///     // An Auth0 Client loaded using its ID.
         ///     var some_client_by_id = Auth0.GetClient.Invoke(new()
         ///     {
         ///         ClientId = "abcdefghkijklmnopqrstuvwxyz0123456789",
@@ -37,7 +38,6 @@ namespace Pulumi.Auth0
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetClientResult> InvokeAsync(GetClientArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientResult>("auth0:index/getClient:getClient", args ?? new GetClientArgs(), options.WithDefaults());
@@ -47,7 +47,6 @@ namespace Pulumi.Auth0
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,11 +55,13 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // An Auth0 Client loaded using its name.
         ///     var some_client_by_name = Auth0.GetClient.Invoke(new()
         ///     {
         ///         Name = "Name of my Application",
         ///     });
         /// 
+        ///     // An Auth0 Client loaded using its ID.
         ///     var some_client_by_id = Auth0.GetClient.Invoke(new()
         ///     {
         ///         ClientId = "abcdefghkijklmnopqrstuvwxyz0123456789",
@@ -68,7 +69,6 @@ namespace Pulumi.Auth0
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetClientResult> Invoke(GetClientInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClientResult>("auth0:index/getClient:getClient", args ?? new GetClientInvokeArgs(), options.WithDefaults());
@@ -77,9 +77,15 @@ namespace Pulumi.Auth0
 
     public sealed class GetClientArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the client. If not provided, `name` must be set.
+        /// </summary>
         [Input("clientId")]
         public string? ClientId { get; set; }
 
+        /// <summary>
+        /// The name of the client. If not provided, `client_id` must be set.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -91,9 +97,15 @@ namespace Pulumi.Auth0
 
     public sealed class GetClientInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the client. If not provided, `name` must be set.
+        /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
+        /// <summary>
+        /// The name of the client. If not provided, `client_id` must be set.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

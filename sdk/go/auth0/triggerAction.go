@@ -22,7 +22,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -35,7 +34,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			loginAlert, err := auth0.NewAction(ctx, "loginAlert", &auth0.ActionArgs{
+//			loginAlert, err := auth0.NewAction(ctx, "login_alert", &auth0.ActionArgs{
+//				Name:   pulumi.String("Alert after login"),
 //				Code:   pulumi.String("exports.onContinuePostLogin = async (event, api) => {\n  console.log(\"foo\");\n};\"\n"),
 //				Deploy: pulumi.Bool(true),
 //				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = auth0.NewTriggerAction(ctx, "postLoginAlertAction", &auth0.TriggerActionArgs{
+//			_, err = auth0.NewTriggerAction(ctx, "post_login_alert_action", &auth0.TriggerActionArgs{
 //				Trigger:  pulumi.String("post-login"),
 //				ActionId: loginAlert.ID(),
 //			})
@@ -58,7 +58,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -16,14 +16,14 @@ public final class ClientAddonsRmsArgs extends com.pulumi.resources.ResourceArgs
     public static final ClientAddonsRmsArgs Empty = new ClientAddonsRmsArgs();
 
     /**
-     * Microsoft Dynamics CRM application URL.
+     * URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return Microsoft Dynamics CRM application URL.
+     * @return URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
      * 
      */
     public Optional<Output<String>> url() {
@@ -55,7 +55,7 @@ public final class ClientAddonsRmsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param url Microsoft Dynamics CRM application URL.
+         * @param url URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ClientAddonsRmsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param url Microsoft Dynamics CRM application URL.
+         * @param url URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
          * 
          * @return builder
          * 

@@ -14,7 +14,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -23,34 +22,33 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myPages = new Auth0.Pages("myPages", new()
+    ///     var myPages = new Auth0.Pages("my_pages", new()
     ///     {
+    ///         Login = new Auth0.Inputs.PagesLoginArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Html = "&lt;html&gt;&lt;body&gt;My Custom Login Page&lt;/body&gt;&lt;/html&gt;",
+    ///         },
     ///         ChangePassword = new Auth0.Inputs.PagesChangePasswordArgs
     ///         {
     ///             Enabled = true,
     ///             Html = "&lt;html&gt;&lt;body&gt;My Custom Reset Password Page&lt;/body&gt;&lt;/html&gt;",
-    ///         },
-    ///         Error = new Auth0.Inputs.PagesErrorArgs
-    ///         {
-    ///             Html = "&lt;html&gt;&lt;body&gt;My Custom Error Page&lt;/body&gt;&lt;/html&gt;",
-    ///             ShowLogLink = true,
-    ///             Url = "https://example.com",
     ///         },
     ///         GuardianMfa = new Auth0.Inputs.PagesGuardianMfaArgs
     ///         {
     ///             Enabled = true,
     ///             Html = "&lt;html&gt;&lt;body&gt;My Custom MFA Page&lt;/body&gt;&lt;/html&gt;",
     ///         },
-    ///         Login = new Auth0.Inputs.PagesLoginArgs
+    ///         Error = new Auth0.Inputs.PagesErrorArgs
     ///         {
-    ///             Enabled = true,
-    ///             Html = "&lt;html&gt;&lt;body&gt;My Custom Login Page&lt;/body&gt;&lt;/html&gt;",
+    ///             ShowLogLink = true,
+    ///             Html = "&lt;html&gt;&lt;body&gt;My Custom Error Page&lt;/body&gt;&lt;/html&gt;",
+    ///             Url = "https://example.com",
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myApi = new auth0.ResourceServer("myApi", {identifier: "https://api.example.com"});
- * const myApiScopes = new auth0.ResourceServerScopes("myApiScopes", {
+ * const myApi = new auth0.ResourceServer("my_api", {
+ *     name: "Example Resource Server (Managed by Terraform)",
+ *     identifier: "https://api.example.com",
+ * });
+ * const myApiScopes = new auth0.ResourceServerScopes("my_api_scopes", {
  *     resourceServerIdentifier: myApi.identifier,
  *     scopes: [
  *         {
@@ -36,7 +38,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

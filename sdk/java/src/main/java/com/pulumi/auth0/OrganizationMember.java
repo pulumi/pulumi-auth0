@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,25 +49,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .email(&#34;test-user@auth0.com&#34;)
- *             .connectionName(&#34;Username-Password-Authentication&#34;)
+ *         var user = new User("user", UserArgs.builder()
+ *             .email("test-user{@literal @}auth0.com")
+ *             .connectionName("Username-Password-Authentication")
  *             .emailVerified(true)
- *             .password(&#34;MyPass123$&#34;)
+ *             .password("MyPass123$")
  *             .build());
  * 
- *         var myOrg = new Organization(&#34;myOrg&#34;, OrganizationArgs.builder()        
- *             .displayName(&#34;Admin&#34;)
+ *         var myOrg = new Organization("myOrg", OrganizationArgs.builder()
+ *             .name("org-admin")
+ *             .displayName("Admin")
  *             .build());
  * 
- *         var myOrgMember = new OrganizationMember(&#34;myOrgMember&#34;, OrganizationMemberArgs.builder()        
+ *         var myOrgMember = new OrganizationMember("myOrgMember", OrganizationMemberArgs.builder()
  *             .organizationId(myOrg.id())
  *             .userId(user.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

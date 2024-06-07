@@ -11,19 +11,19 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 Connection loaded using its name.
  * const some-connection-by-name = auth0.getConnection({
  *     name: "Acceptance-Test-Connection-{{.testName}}",
  * });
+ * // An Auth0 Connection loaded using its ID.
  * const some-connection-by-id = auth0.getConnection({
  *     connectionId: "con_abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getConnection(args?: GetConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionResult> {
     args = args || {};
@@ -43,6 +43,9 @@ export interface GetConnectionArgs {
      * The ID of the connection. If not provided, `name` must be set.
      */
     connectionId?: string;
+    /**
+     * The name of the connection. If not provided, `connectionId` must be set.
+     */
     name?: string;
 }
 
@@ -100,19 +103,19 @@ export interface GetConnectionResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 Connection loaded using its name.
  * const some-connection-by-name = auth0.getConnection({
  *     name: "Acceptance-Test-Connection-{{.testName}}",
  * });
+ * // An Auth0 Connection loaded using its ID.
  * const some-connection-by-id = auth0.getConnection({
  *     connectionId: "con_abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getConnectionOutput(args?: GetConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionResult> {
     return pulumi.output(args).apply((a: any) => getConnection(a, opts))
@@ -126,5 +129,8 @@ export interface GetConnectionOutputArgs {
      * The ID of the connection. If not provided, `name` must be set.
      */
     connectionId?: pulumi.Input<string>;
+    /**
+     * The name of the connection. If not provided, `connectionId` must be set.
+     */
     name?: pulumi.Input<string>;
 }

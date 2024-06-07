@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClientAddonsEgnyte {
     /**
-     * @return Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * @return Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.
      * 
      */
     private @Nullable String domain;
 
     private ClientAddonsEgnyte() {}
     /**
-     * @return Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+     * @return Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.
      * 
      */
     public Optional<String> domain() {

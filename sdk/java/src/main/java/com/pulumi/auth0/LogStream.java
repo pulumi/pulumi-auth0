@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,42 +47,45 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // This is an example of an http log stream.
- *         var myWebhook = new LogStream(&#34;myWebhook&#34;, LogStreamArgs.builder()        
+ *         var myWebhook = new LogStream("myWebhook", LogStreamArgs.builder()
+ *             .name("HTTP log stream")
+ *             .type("http")
  *             .filters(            
  *                 Map.ofEntries(
- *                     Map.entry(&#34;name&#34;, &#34;auth.login.fail&#34;),
- *                     Map.entry(&#34;type&#34;, &#34;category&#34;)
+ *                     Map.entry("type", "category"),
+ *                     Map.entry("name", "auth.login.fail")
  *                 ),
  *                 Map.ofEntries(
- *                     Map.entry(&#34;name&#34;, &#34;auth.signup.fail&#34;),
- *                     Map.entry(&#34;type&#34;, &#34;category&#34;)
+ *                     Map.entry("type", "category"),
+ *                     Map.entry("name", "auth.signup.fail")
  *                 ))
  *             .sink(LogStreamSinkArgs.builder()
- *                 .httpAuthorization(&#34;AKIAXXXXXXXXXXXXXXXX&#34;)
- *                 .httpContentFormat(&#34;JSONOBJECT&#34;)
- *                 .httpContentType(&#34;application/json&#34;)
+ *                 .httpEndpoint("https://example.com/logs")
+ *                 .httpContentType("application/json")
+ *                 .httpContentFormat("JSONOBJECT")
+ *                 .httpAuthorization("AKIAXXXXXXXXXXXXXXXX")
  *                 .httpCustomHeaders(Map.ofEntries(
- *                     Map.entry(&#34;header&#34;, &#34;foo&#34;),
- *                     Map.entry(&#34;value&#34;, &#34;bar&#34;)
+ *                     Map.entry("header", "foo"),
+ *                     Map.entry("value", "bar")
  *                 ))
- *                 .httpEndpoint(&#34;https://example.com/logs&#34;)
  *                 .build())
- *             .type(&#34;http&#34;)
  *             .build());
  * 
  *         // This is an example of an Amazon EventBridge log stream.
- *         var exampleAws = new LogStream(&#34;exampleAws&#34;, LogStreamArgs.builder()        
+ *         var exampleAws = new LogStream("exampleAws", LogStreamArgs.builder()
+ *             .name("AWS Eventbridge")
+ *             .type("eventbridge")
+ *             .status("active")
  *             .sink(LogStreamSinkArgs.builder()
- *                 .awsAccountId(&#34;my_account_id&#34;)
- *                 .awsRegion(&#34;us-east-2&#34;)
+ *                 .awsAccountId("my_account_id")
+ *                 .awsRegion("us-east-2")
  *                 .build())
- *             .status(&#34;active&#34;)
- *             .type(&#34;eventbridge&#34;)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

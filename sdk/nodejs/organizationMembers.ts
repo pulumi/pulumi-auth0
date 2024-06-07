@@ -14,23 +14,25 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const user1 = new auth0.User("user1", {
+ * const user1 = new auth0.User("user_1", {
  *     connectionName: "Username-Password-Authentication",
  *     email: "myuser1@auth0.com",
  *     password: "MyPass123$",
  * });
- * const user2 = new auth0.User("user2", {
+ * const user2 = new auth0.User("user_2", {
  *     connectionName: "Username-Password-Authentication",
  *     email: "myuser2@auth0.com",
  *     password: "MyPass123$",
  * });
- * const myOrg = new auth0.Organization("myOrg", {displayName: "Some Organization"});
- * const myMembers = new auth0.OrganizationMembers("myMembers", {
+ * const myOrg = new auth0.Organization("my_org", {
+ *     name: "some-org",
+ *     displayName: "Some Organization",
+ * });
+ * const myMembers = new auth0.OrganizationMembers("my_members", {
  *     organizationId: myOrg.id,
  *     members: [
  *         user1.id,
@@ -38,7 +40,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

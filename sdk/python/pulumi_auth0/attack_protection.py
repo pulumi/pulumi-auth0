@@ -139,23 +139,26 @@ class AttackProtection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_protection = auth0.AttackProtection("myProtection",
-            breached_password_detection=auth0.AttackProtectionBreachedPasswordDetectionArgs(
-                admin_notification_frequencies=["daily"],
+        my_protection = auth0.AttackProtection("my_protection",
+            suspicious_ip_throttling=auth0.AttackProtectionSuspiciousIpThrottlingArgs(
                 enabled=True,
-                method="standard",
-                pre_user_registration=auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs(
-                    shields=["block"],
-                ),
                 shields=[
                     "admin_notification",
                     "block",
                 ],
+                allowlists=["192.168.1.1"],
+                pre_login=auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs(
+                    max_attempts=100,
+                    rate=864000,
+                ),
+                pre_user_registration=auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs(
+                    max_attempts=50,
+                    rate=1200,
+                ),
             ),
             brute_force_protection=auth0.AttackProtectionBruteForceProtectionArgs(
                 allowlists=["127.0.0.1"],
@@ -167,24 +170,19 @@ class AttackProtection(pulumi.CustomResource):
                     "user_notification",
                 ],
             ),
-            suspicious_ip_throttling=auth0.AttackProtectionSuspiciousIpThrottlingArgs(
-                allowlists=["192.168.1.1"],
+            breached_password_detection=auth0.AttackProtectionBreachedPasswordDetectionArgs(
+                admin_notification_frequencies=["daily"],
                 enabled=True,
-                pre_login=auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs(
-                    max_attempts=100,
-                    rate=864000,
-                ),
-                pre_user_registration=auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs(
-                    max_attempts=50,
-                    rate=1200,
-                ),
+                method="standard",
                 shields=[
                     "admin_notification",
                     "block",
                 ],
+                pre_user_registration=auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs(
+                    shields=["block"],
+                ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -221,23 +219,26 @@ class AttackProtection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_protection = auth0.AttackProtection("myProtection",
-            breached_password_detection=auth0.AttackProtectionBreachedPasswordDetectionArgs(
-                admin_notification_frequencies=["daily"],
+        my_protection = auth0.AttackProtection("my_protection",
+            suspicious_ip_throttling=auth0.AttackProtectionSuspiciousIpThrottlingArgs(
                 enabled=True,
-                method="standard",
-                pre_user_registration=auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs(
-                    shields=["block"],
-                ),
                 shields=[
                     "admin_notification",
                     "block",
                 ],
+                allowlists=["192.168.1.1"],
+                pre_login=auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs(
+                    max_attempts=100,
+                    rate=864000,
+                ),
+                pre_user_registration=auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs(
+                    max_attempts=50,
+                    rate=1200,
+                ),
             ),
             brute_force_protection=auth0.AttackProtectionBruteForceProtectionArgs(
                 allowlists=["127.0.0.1"],
@@ -249,24 +250,19 @@ class AttackProtection(pulumi.CustomResource):
                     "user_notification",
                 ],
             ),
-            suspicious_ip_throttling=auth0.AttackProtectionSuspiciousIpThrottlingArgs(
-                allowlists=["192.168.1.1"],
+            breached_password_detection=auth0.AttackProtectionBreachedPasswordDetectionArgs(
+                admin_notification_frequencies=["daily"],
                 enabled=True,
-                pre_login=auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs(
-                    max_attempts=100,
-                    rate=864000,
-                ),
-                pre_user_registration=auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs(
-                    max_attempts=50,
-                    rate=1200,
-                ),
+                method="standard",
                 shields=[
                     "admin_notification",
                     "block",
                 ],
+                pre_user_registration=auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs(
+                    shields=["block"],
+                ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

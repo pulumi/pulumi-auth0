@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -28,9 +27,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewPrompt(ctx, "myPrompt", &auth0.PromptArgs{
-//				IdentifierFirst:             pulumi.Bool(false),
+//			_, err := auth0.NewPrompt(ctx, "my_prompt", &auth0.PromptArgs{
 //				UniversalLoginExperience:    pulumi.String("new"),
+//				IdentifierFirst:             pulumi.Bool(false),
 //				WebauthnPlatformFirstFactor: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

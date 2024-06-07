@@ -11,19 +11,19 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 Client loaded using its name.
  * const some-client-by-name = auth0.getClient({
  *     name: "Name of my Application",
  * });
+ * // An Auth0 Client loaded using its ID.
  * const some-client-by-id = auth0.getClient({
  *     clientId: "abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClient(args?: GetClientArgs, opts?: pulumi.InvokeOptions): Promise<GetClientResult> {
     args = args || {};
@@ -39,7 +39,13 @@ export function getClient(args?: GetClientArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getClient.
  */
 export interface GetClientArgs {
+    /**
+     * The ID of the client. If not provided, `name` must be set.
+     */
     clientId?: string;
+    /**
+     * The name of the client. If not provided, `clientId` must be set.
+     */
     name?: string;
 }
 
@@ -202,19 +208,19 @@ export interface GetClientResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 Client loaded using its name.
  * const some-client-by-name = auth0.getClient({
  *     name: "Name of my Application",
  * });
+ * // An Auth0 Client loaded using its ID.
  * const some-client-by-id = auth0.getClient({
  *     clientId: "abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClientOutput(args?: GetClientOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClientResult> {
     return pulumi.output(args).apply((a: any) => getClient(a, opts))
@@ -224,6 +230,12 @@ export function getClientOutput(args?: GetClientOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getClient.
  */
 export interface GetClientOutputArgs {
+    /**
+     * The ID of the client. If not provided, `name` must be set.
+     */
     clientId?: pulumi.Input<string>;
+    /**
+     * The name of the client. If not provided, `clientId` must be set.
+     */
     name?: pulumi.Input<string>;
 }

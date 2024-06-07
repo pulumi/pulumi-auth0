@@ -9,20 +9,22 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const reader = new auth0.Role("reader", {});
- * const writer = new auth0.Role("writer", {});
+ * const reader = new auth0.Role("reader", {name: "Reader"});
+ * const writer = new auth0.Role("writer", {name: "Writer"});
  * const user = new auth0.User("user", {
  *     connectionName: "Username-Password-Authentication",
  *     email: "test-user@auth0.com",
  *     password: "MyPass123$",
  * });
- * const myOrg = new auth0.Organization("myOrg", {displayName: "Some Org"});
- * const myOrgMember = new auth0.OrganizationMember("myOrgMember", {
+ * const myOrg = new auth0.Organization("my_org", {
+ *     name: "some-org",
+ *     displayName: "Some Org",
+ * });
+ * const myOrgMember = new auth0.OrganizationMember("my_org_member", {
  *     organizationId: myOrg.id,
  *     userId: user.id,
  * });
@@ -37,7 +39,6 @@ import * as utilities from "./utilities";
  *     roleId: writer.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

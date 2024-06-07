@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -28,12 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// An Auth0 Client loaded using its name.
 //			_, err := auth0.LookupClient(ctx, &auth0.LookupClientArgs{
 //				Name: pulumi.StringRef("Name of my Application"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// An Auth0 Client loaded using its ID.
 //			_, err = auth0.LookupClient(ctx, &auth0.LookupClientArgs{
 //				ClientId: pulumi.StringRef("abcdefghkijklmnopqrstuvwxyz0123456789"),
 //			}, nil)
@@ -45,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupClient(ctx *pulumi.Context, args *LookupClientArgs, opts ...pulumi.InvokeOption) (*LookupClientResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClientResult
@@ -58,8 +58,10 @@ func LookupClient(ctx *pulumi.Context, args *LookupClientArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getClient.
 type LookupClientArgs struct {
+	// The ID of the client. If not provided, `name` must be set.
 	ClientId *string `pulumi:"clientId"`
-	Name     *string `pulumi:"name"`
+	// The name of the client. If not provided, `clientId` must be set.
+	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getClient.
@@ -156,8 +158,10 @@ func LookupClientOutput(ctx *pulumi.Context, args LookupClientOutputArgs, opts .
 
 // A collection of arguments for invoking getClient.
 type LookupClientOutputArgs struct {
+	// The ID of the client. If not provided, `name` must be set.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	Name     pulumi.StringPtrInput `pulumi:"name"`
+	// The name of the client. If not provided, `clientId` must be set.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupClientOutputArgs) ElementType() reflect.Type {

@@ -336,22 +336,25 @@ class Guardian(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_guardian = auth0.Guardian("myGuardian",
-            duo=auth0.GuardianDuoArgs(
-                enabled=True,
-                hostname="api-hostname",
-                integration_key="someKey",
-                secret_key="someSecret",
-            ),
+        my_guardian = auth0.Guardian("my_guardian",
+            policy="all-applications",
             email=True,
             otp=True,
+            recovery_code=True,
+            webauthn_platform=auth0.GuardianWebauthnPlatformArgs(
+                enabled=True,
+            ),
+            webauthn_roaming=auth0.GuardianWebauthnRoamingArgs(
+                enabled=True,
+                user_verification="required",
+            ),
             phone=auth0.GuardianPhoneArgs(
                 enabled=True,
+                provider="auth0",
                 message_types=[
                     "sms",
                     "voice",
@@ -360,10 +363,10 @@ class Guardian(pulumi.CustomResource):
                     enrollment_message="{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
                     verification_message="{{code}} is your verification code for {{tenant.friendly_name}}.",
                 ),
-                provider="auth0",
             ),
-            policy="all-applications",
             push=auth0.GuardianPushArgs(
+                enabled=True,
+                provider="sns",
                 amazon_sns=auth0.GuardianPushAmazonSnsArgs(
                     aws_access_key_id="test1",
                     aws_region="us-west-1",
@@ -376,19 +379,14 @@ class Guardian(pulumi.CustomResource):
                     apple_app_link="https://itunes.apple.com/us/app/my-app/id123121",
                     google_app_link="https://play.google.com/store/apps/details?id=com.my.app",
                 ),
-                enabled=True,
-                provider="sns",
             ),
-            recovery_code=True,
-            webauthn_platform=auth0.GuardianWebauthnPlatformArgs(
+            duo=auth0.GuardianDuoArgs(
                 enabled=True,
-            ),
-            webauthn_roaming=auth0.GuardianWebauthnRoamingArgs(
-                enabled=True,
-                user_verification="required",
+                integration_key="someKey",
+                secret_key="someSecret",
+                hostname="api-hostname",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -431,22 +429,25 @@ class Guardian(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_guardian = auth0.Guardian("myGuardian",
-            duo=auth0.GuardianDuoArgs(
-                enabled=True,
-                hostname="api-hostname",
-                integration_key="someKey",
-                secret_key="someSecret",
-            ),
+        my_guardian = auth0.Guardian("my_guardian",
+            policy="all-applications",
             email=True,
             otp=True,
+            recovery_code=True,
+            webauthn_platform=auth0.GuardianWebauthnPlatformArgs(
+                enabled=True,
+            ),
+            webauthn_roaming=auth0.GuardianWebauthnRoamingArgs(
+                enabled=True,
+                user_verification="required",
+            ),
             phone=auth0.GuardianPhoneArgs(
                 enabled=True,
+                provider="auth0",
                 message_types=[
                     "sms",
                     "voice",
@@ -455,10 +456,10 @@ class Guardian(pulumi.CustomResource):
                     enrollment_message="{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
                     verification_message="{{code}} is your verification code for {{tenant.friendly_name}}.",
                 ),
-                provider="auth0",
             ),
-            policy="all-applications",
             push=auth0.GuardianPushArgs(
+                enabled=True,
+                provider="sns",
                 amazon_sns=auth0.GuardianPushAmazonSnsArgs(
                     aws_access_key_id="test1",
                     aws_region="us-west-1",
@@ -471,19 +472,14 @@ class Guardian(pulumi.CustomResource):
                     apple_app_link="https://itunes.apple.com/us/app/my-app/id123121",
                     google_app_link="https://play.google.com/store/apps/details?id=com.my.app",
                 ),
-                enabled=True,
-                provider="sns",
             ),
-            recovery_code=True,
-            webauthn_platform=auth0.GuardianWebauthnPlatformArgs(
+            duo=auth0.GuardianDuoArgs(
                 enabled=True,
-            ),
-            webauthn_roaming=auth0.GuardianWebauthnRoamingArgs(
-                enabled=True,
-                user_verification="required",
+                integration_key="someKey",
+                secret_key="someSecret",
+                hostname="api-hostname",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

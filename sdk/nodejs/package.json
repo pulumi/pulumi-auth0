@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/auth0",
-    "version": "${VERSION}",
+    "version": "3.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing auth0 cloud resources.",
     "keywords": [
         "pulumi",
@@ -22,6 +22,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "auth0"
+        "name": "auth0",
+        "version": "3.0.0-alpha.0+dev"
     }
 }

@@ -171,20 +171,18 @@ class Rule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_rule = auth0.Rule("myRule",
-            enabled=True,
+        my_rule = auth0.Rule("my_rule",
+            name="empty-rule",
             script=\"\"\"    function (user, context, callback) {
               callback(null, user, context);
             }
-          
-        \"\"\")
+        \"\"\",
+            enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -218,20 +216,18 @@ class Rule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_rule = auth0.Rule("myRule",
-            enabled=True,
+        my_rule = auth0.Rule("my_rule",
+            name="empty-rule",
             script=\"\"\"    function (user, context, callback) {
               callback(null, user, context);
             }
-          
-        \"\"\")
+        \"\"\",
+            enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

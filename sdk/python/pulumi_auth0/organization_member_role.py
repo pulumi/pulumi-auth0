@@ -166,19 +166,20 @@ class OrganizationMemberRole(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        reader = auth0.Role("reader")
-        writer = auth0.Role("writer")
+        reader = auth0.Role("reader", name="Reader")
+        writer = auth0.Role("writer", name="Writer")
         user = auth0.User("user",
             connection_name="Username-Password-Authentication",
             email="test-user@auth0.com",
             password="MyPass123$")
-        my_org = auth0.Organization("myOrg", display_name="Some Org")
-        my_org_member = auth0.OrganizationMember("myOrgMember",
+        my_org = auth0.Organization("my_org",
+            name="some-org",
+            display_name="Some Org")
+        my_org_member = auth0.OrganizationMember("my_org_member",
             organization_id=my_org.id,
             user_id=user.id)
         role1 = auth0.OrganizationMemberRole("role1",
@@ -190,7 +191,6 @@ class OrganizationMemberRole(pulumi.CustomResource):
             user_id=user.id,
             role_id=writer.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -225,19 +225,20 @@ class OrganizationMemberRole(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        reader = auth0.Role("reader")
-        writer = auth0.Role("writer")
+        reader = auth0.Role("reader", name="Reader")
+        writer = auth0.Role("writer", name="Writer")
         user = auth0.User("user",
             connection_name="Username-Password-Authentication",
             email="test-user@auth0.com",
             password="MyPass123$")
-        my_org = auth0.Organization("myOrg", display_name="Some Org")
-        my_org_member = auth0.OrganizationMember("myOrgMember",
+        my_org = auth0.Organization("my_org",
+            name="some-org",
+            display_name="Some Org")
+        my_org_member = auth0.OrganizationMember("my_org_member",
             organization_id=my_org.id,
             user_id=user.id)
         role1 = auth0.OrganizationMemberRole("role1",
@@ -249,7 +250,6 @@ class OrganizationMemberRole(pulumi.CustomResource):
             user_id=user.id,
             role_id=writer.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

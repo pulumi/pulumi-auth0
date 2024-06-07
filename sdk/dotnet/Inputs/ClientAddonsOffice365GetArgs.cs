@@ -19,7 +19,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? Connection { get; set; }
 
         /// <summary>
-        /// Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+        /// Your Office 365 domain name, for example `acme-org.com`.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }

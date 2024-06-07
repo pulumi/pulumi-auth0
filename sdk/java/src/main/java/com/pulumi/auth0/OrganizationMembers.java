@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,23 +51,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var user1 = new User(&#34;user1&#34;, UserArgs.builder()        
- *             .connectionName(&#34;Username-Password-Authentication&#34;)
- *             .email(&#34;myuser1@auth0.com&#34;)
- *             .password(&#34;MyPass123$&#34;)
+ *         var user1 = new User("user1", UserArgs.builder()
+ *             .connectionName("Username-Password-Authentication")
+ *             .email("myuser1{@literal @}auth0.com")
+ *             .password("MyPass123$")
  *             .build());
  * 
- *         var user2 = new User(&#34;user2&#34;, UserArgs.builder()        
- *             .connectionName(&#34;Username-Password-Authentication&#34;)
- *             .email(&#34;myuser2@auth0.com&#34;)
- *             .password(&#34;MyPass123$&#34;)
+ *         var user2 = new User("user2", UserArgs.builder()
+ *             .connectionName("Username-Password-Authentication")
+ *             .email("myuser2{@literal @}auth0.com")
+ *             .password("MyPass123$")
  *             .build());
  * 
- *         var myOrg = new Organization(&#34;myOrg&#34;, OrganizationArgs.builder()        
- *             .displayName(&#34;Some Organization&#34;)
+ *         var myOrg = new Organization("myOrg", OrganizationArgs.builder()
+ *             .name("some-org")
+ *             .displayName("Some Organization")
  *             .build());
  * 
- *         var myMembers = new OrganizationMembers(&#34;myMembers&#34;, OrganizationMembersArgs.builder()        
+ *         var myMembers = new OrganizationMembers("myMembers", OrganizationMembersArgs.builder()
  *             .organizationId(myOrg.id())
  *             .members(            
  *                 user1.id(),
@@ -75,7 +77,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -28,12 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// An Auth0 Connection loaded using its name.
 //			_, err := auth0.LookupConnection(ctx, &auth0.LookupConnectionArgs{
 //				Name: pulumi.StringRef("Acceptance-Test-Connection-{{.testName}}"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// An Auth0 Connection loaded using its ID.
 //			_, err = auth0.LookupConnection(ctx, &auth0.LookupConnectionArgs{
 //				ConnectionId: pulumi.StringRef("con_abcdefghkijklmnopqrstuvwxyz0123456789"),
 //			}, nil)
@@ -45,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...pulumi.InvokeOption) (*LookupConnectionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionResult
@@ -60,7 +60,8 @@ func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...p
 type LookupConnectionArgs struct {
 	// The ID of the connection. If not provided, `name` must be set.
 	ConnectionId *string `pulumi:"connectionId"`
-	Name         *string `pulumi:"name"`
+	// The name of the connection. If not provided, `connectionId` must be set.
+	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getConnection.
@@ -106,7 +107,8 @@ func LookupConnectionOutput(ctx *pulumi.Context, args LookupConnectionOutputArgs
 type LookupConnectionOutputArgs struct {
 	// The ID of the connection. If not provided, `name` must be set.
 	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
-	Name         pulumi.StringPtrInput `pulumi:"name"`
+	// The name of the connection. If not provided, `connectionId` must be set.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupConnectionOutputArgs) ElementType() reflect.Type {

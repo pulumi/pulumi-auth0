@@ -43,7 +43,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -67,7 +68,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -80,7 +82,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -104,7 +107,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -117,7 +121,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -141,7 +146,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -154,7 +160,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -178,7 +185,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -191,7 +199,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -215,7 +224,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -228,7 +238,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -252,7 +263,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -265,7 +277,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -289,7 +302,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -302,7 +316,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -326,7 +341,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -339,7 +355,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -363,7 +380,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -376,7 +394,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -400,7 +419,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -413,7 +433,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -437,7 +458,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -450,7 +472,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -474,7 +497,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -487,7 +511,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -511,7 +536,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -524,7 +550,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -548,7 +575,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -561,7 +589,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -585,7 +614,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -598,7 +628,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -622,7 +653,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -635,7 +667,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -659,7 +692,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -672,7 +706,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -696,7 +731,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -709,7 +745,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -730,17 +767,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Client loaded using its name.
      *         final var some-client-by-name = Auth0Functions.getClient(GetClientArgs.builder()
-     *             .name(&#34;Name of my Application&#34;)
+     *             .name("Name of my Application")
      *             .build());
      * 
+     *         // An Auth0 Client loaded using its ID.
      *         final var some-client-by-id = Auth0Functions.getClient(GetClientArgs.builder()
-     *             .clientId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .clientId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -753,7 +793,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -774,17 +815,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Client loaded using its name.
      *         final var some-client-by-name = Auth0Functions.getClient(GetClientArgs.builder()
-     *             .name(&#34;Name of my Application&#34;)
+     *             .name("Name of my Application")
      *             .build());
      * 
+     *         // An Auth0 Client loaded using its ID.
      *         final var some-client-by-id = Auth0Functions.getClient(GetClientArgs.builder()
-     *             .clientId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .clientId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -797,7 +841,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -818,17 +863,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Client loaded using its name.
      *         final var some-client-by-name = Auth0Functions.getClient(GetClientArgs.builder()
-     *             .name(&#34;Name of my Application&#34;)
+     *             .name("Name of my Application")
      *             .build());
      * 
+     *         // An Auth0 Client loaded using its ID.
      *         final var some-client-by-id = Auth0Functions.getClient(GetClientArgs.builder()
-     *             .clientId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .clientId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -841,7 +889,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -862,17 +911,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Client loaded using its name.
      *         final var some-client-by-name = Auth0Functions.getClient(GetClientArgs.builder()
-     *             .name(&#34;Name of my Application&#34;)
+     *             .name("Name of my Application")
      *             .build());
      * 
+     *         // An Auth0 Client loaded using its ID.
      *         final var some-client-by-id = Auth0Functions.getClient(GetClientArgs.builder()
-     *             .clientId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .clientId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -885,7 +937,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -906,17 +959,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Client loaded using its name.
      *         final var some-client-by-name = Auth0Functions.getClient(GetClientArgs.builder()
-     *             .name(&#34;Name of my Application&#34;)
+     *             .name("Name of my Application")
      *             .build());
      * 
+     *         // An Auth0 Client loaded using its ID.
      *         final var some-client-by-id = Auth0Functions.getClient(GetClientArgs.builder()
-     *             .clientId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .clientId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -929,7 +985,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -950,17 +1007,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Client loaded using its name.
      *         final var some-client-by-name = Auth0Functions.getClient(GetClientArgs.builder()
-     *             .name(&#34;Name of my Application&#34;)
+     *             .name("Name of my Application")
      *             .build());
      * 
+     *         // An Auth0 Client loaded using its ID.
      *         final var some-client-by-id = Auth0Functions.getClient(GetClientArgs.builder()
-     *             .clientId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .clientId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -973,7 +1033,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -994,17 +1055,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Connection loaded using its name.
      *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
-     *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
+     *             .name("Acceptance-Test-Connection-{{.testName}}")
      *             .build());
      * 
+     *         // An Auth0 Connection loaded using its ID.
      *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
-     *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .connectionId("con_abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1017,7 +1081,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1038,17 +1103,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Connection loaded using its name.
      *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
-     *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
+     *             .name("Acceptance-Test-Connection-{{.testName}}")
      *             .build());
      * 
+     *         // An Auth0 Connection loaded using its ID.
      *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
-     *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .connectionId("con_abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1061,7 +1129,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1082,17 +1151,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Connection loaded using its name.
      *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
-     *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
+     *             .name("Acceptance-Test-Connection-{{.testName}}")
      *             .build());
      * 
+     *         // An Auth0 Connection loaded using its ID.
      *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
-     *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .connectionId("con_abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1105,7 +1177,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1126,17 +1199,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Connection loaded using its name.
      *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
-     *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
+     *             .name("Acceptance-Test-Connection-{{.testName}}")
      *             .build());
      * 
+     *         // An Auth0 Connection loaded using its ID.
      *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
-     *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .connectionId("con_abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1149,7 +1225,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1170,17 +1247,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Connection loaded using its name.
      *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
-     *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
+     *             .name("Acceptance-Test-Connection-{{.testName}}")
      *             .build());
      * 
+     *         // An Auth0 Connection loaded using its ID.
      *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
-     *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .connectionId("con_abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1193,7 +1273,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1214,17 +1295,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Connection loaded using its name.
      *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
-     *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
+     *             .name("Acceptance-Test-Connection-{{.testName}}")
      *             .build());
      * 
+     *         // An Auth0 Connection loaded using its ID.
      *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
-     *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .connectionId("con_abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1279,7 +1363,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1300,17 +1385,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Organization loaded using its name.
      *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
-     *             .name(&#34;my-org&#34;)
+     *             .name("my-org")
      *             .build());
      * 
+     *         // An Auth0 Organization loaded using its ID.
      *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
-     *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .organizationId("org_abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1323,7 +1411,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1344,17 +1433,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Organization loaded using its name.
      *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
-     *             .name(&#34;my-org&#34;)
+     *             .name("my-org")
      *             .build());
      * 
+     *         // An Auth0 Organization loaded using its ID.
      *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
-     *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .organizationId("org_abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1367,7 +1459,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1388,17 +1481,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Organization loaded using its name.
      *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
-     *             .name(&#34;my-org&#34;)
+     *             .name("my-org")
      *             .build());
      * 
+     *         // An Auth0 Organization loaded using its ID.
      *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
-     *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .organizationId("org_abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1411,7 +1507,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1432,17 +1529,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Organization loaded using its name.
      *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
-     *             .name(&#34;my-org&#34;)
+     *             .name("my-org")
      *             .build());
      * 
+     *         // An Auth0 Organization loaded using its ID.
      *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
-     *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .organizationId("org_abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1455,7 +1555,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1476,17 +1577,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Organization loaded using its name.
      *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
-     *             .name(&#34;my-org&#34;)
+     *             .name("my-org")
      *             .build());
      * 
+     *         // An Auth0 Organization loaded using its ID.
      *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
-     *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .organizationId("org_abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1499,7 +1603,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1520,17 +1625,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Organization loaded using its name.
      *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
-     *             .name(&#34;my-org&#34;)
+     *             .name("my-org")
      *             .build());
      * 
+     *         // An Auth0 Organization loaded using its ID.
      *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
-     *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .organizationId("org_abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1543,7 +1651,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1567,7 +1676,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1580,7 +1690,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1604,7 +1715,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1617,7 +1729,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1641,7 +1754,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1654,7 +1768,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1678,7 +1793,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1691,7 +1807,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1715,7 +1832,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1728,7 +1846,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1752,7 +1871,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1765,7 +1885,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1786,17 +1907,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Resource Server loaded using its identifier.
      *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
-     *             .identifier(&#34;https://my-api.com/v1&#34;)
+     *             .identifier("https://my-api.com/v1")
      *             .build());
      * 
+     *         // An Auth0 Resource Server loaded using its ID.
      *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
-     *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .resourceServerId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1809,7 +1933,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1830,17 +1955,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Resource Server loaded using its identifier.
      *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
-     *             .identifier(&#34;https://my-api.com/v1&#34;)
+     *             .identifier("https://my-api.com/v1")
      *             .build());
      * 
+     *         // An Auth0 Resource Server loaded using its ID.
      *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
-     *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .resourceServerId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1853,7 +1981,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1874,17 +2003,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Resource Server loaded using its identifier.
      *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
-     *             .identifier(&#34;https://my-api.com/v1&#34;)
+     *             .identifier("https://my-api.com/v1")
      *             .build());
      * 
+     *         // An Auth0 Resource Server loaded using its ID.
      *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
-     *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .resourceServerId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1897,7 +2029,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1918,17 +2051,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Resource Server loaded using its identifier.
      *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
-     *             .identifier(&#34;https://my-api.com/v1&#34;)
+     *             .identifier("https://my-api.com/v1")
      *             .build());
      * 
+     *         // An Auth0 Resource Server loaded using its ID.
      *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
-     *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .resourceServerId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1941,7 +2077,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1962,17 +2099,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Resource Server loaded using its identifier.
      *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
-     *             .identifier(&#34;https://my-api.com/v1&#34;)
+     *             .identifier("https://my-api.com/v1")
      *             .build());
      * 
+     *         // An Auth0 Resource Server loaded using its ID.
      *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
-     *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .resourceServerId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1985,7 +2125,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2006,17 +2147,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Resource Server loaded using its identifier.
      *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
-     *             .identifier(&#34;https://my-api.com/v1&#34;)
+     *             .identifier("https://my-api.com/v1")
      *             .build());
      * 
+     *         // An Auth0 Resource Server loaded using its ID.
      *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
-     *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .resourceServerId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2029,7 +2173,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2050,17 +2195,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Role loaded using its name.
      *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
-     *             .name(&#34;my-role&#34;)
+     *             .name("my-role")
      *             .build());
      * 
+     *         // An Auth0 Role loaded using its ID.
      *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
-     *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .roleId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2073,7 +2221,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2094,17 +2243,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Role loaded using its name.
      *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
-     *             .name(&#34;my-role&#34;)
+     *             .name("my-role")
      *             .build());
      * 
+     *         // An Auth0 Role loaded using its ID.
      *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
-     *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .roleId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2117,7 +2269,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2138,17 +2291,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Role loaded using its name.
      *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
-     *             .name(&#34;my-role&#34;)
+     *             .name("my-role")
      *             .build());
      * 
+     *         // An Auth0 Role loaded using its ID.
      *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
-     *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .roleId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2161,7 +2317,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2182,17 +2339,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Role loaded using its name.
      *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
-     *             .name(&#34;my-role&#34;)
+     *             .name("my-role")
      *             .build());
      * 
+     *         // An Auth0 Role loaded using its ID.
      *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
-     *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .roleId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2205,7 +2365,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2226,17 +2387,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Role loaded using its name.
      *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
-     *             .name(&#34;my-role&#34;)
+     *             .name("my-role")
      *             .build());
      * 
+     *         // An Auth0 Role loaded using its ID.
      *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
-     *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .roleId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2249,7 +2413,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2270,17 +2435,20 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 Role loaded using its name.
      *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
-     *             .name(&#34;my-role&#34;)
+     *             .name("my-role")
      *             .build());
      * 
+     *         // An Auth0 Role loaded using its ID.
      *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
-     *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .roleId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2335,7 +2503,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2359,7 +2528,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2372,7 +2542,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2396,7 +2567,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2409,7 +2581,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2433,7 +2606,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2446,7 +2620,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2470,7 +2645,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2483,7 +2659,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2507,7 +2684,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2520,7 +2698,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2544,7 +2723,8 @@ public final class Auth0Functions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2557,7 +2737,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2578,13 +2759,15 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 User loaded using its ID.
      *         final var myUser = Auth0Functions.getUser(GetUserArgs.builder()
-     *             .userId(&#34;auth0|34fdr23fdsfdfsf&#34;)
+     *             .userId("auth0|34fdr23fdsfdfsf")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2597,7 +2780,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2618,13 +2802,15 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 User loaded using its ID.
      *         final var myUser = Auth0Functions.getUser(GetUserArgs.builder()
-     *             .userId(&#34;auth0|34fdr23fdsfdfsf&#34;)
+     *             .userId("auth0|34fdr23fdsfdfsf")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2637,7 +2823,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2658,13 +2845,15 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 User loaded using its ID.
      *         final var myUser = Auth0Functions.getUser(GetUserArgs.builder()
-     *             .userId(&#34;auth0|34fdr23fdsfdfsf&#34;)
+     *             .userId("auth0|34fdr23fdsfdfsf")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2677,7 +2866,8 @@ public final class Auth0Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2698,13 +2888,15 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // An Auth0 User loaded using its ID.
      *         final var myUser = Auth0Functions.getUser(GetUserArgs.builder()
-     *             .userId(&#34;auth0|34fdr23fdsfdfsf&#34;)
+     *             .userId("auth0|34fdr23fdsfdfsf")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

@@ -14,7 +14,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -23,14 +22,14 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myRole = new Auth0.Role("myRole", new()
+    ///     var myRole = new Auth0.Role("my_role", new()
     ///     {
+    ///         Name = "My Role - (Managed by Terraform)",
     ///         Description = "Role Description...",
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

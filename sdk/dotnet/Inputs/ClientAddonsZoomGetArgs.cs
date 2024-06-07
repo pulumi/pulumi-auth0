@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ClientAddonsZoomGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+        /// Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
         /// </summary>
         [Input("account")]
         public Input<string>? Account { get; set; }

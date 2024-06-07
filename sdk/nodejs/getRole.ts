@@ -11,19 +11,19 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 Role loaded using its name.
  * const some-role-by-name = auth0.getRole({
  *     name: "my-role",
  * });
+ * // An Auth0 Role loaded using its ID.
  * const some-role-by-id = auth0.getRole({
  *     roleId: "abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
     args = args || {};
@@ -39,6 +39,9 @@ export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getRole.
  */
 export interface GetRoleArgs {
+    /**
+     * The name of the role. If not provided, `roleId` must be set.
+     */
     name?: string;
     /**
      * The ID of the role. If not provided, `name` must be set.
@@ -80,19 +83,19 @@ export interface GetRoleResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An Auth0 Role loaded using its name.
  * const some-role-by-name = auth0.getRole({
  *     name: "my-role",
  * });
+ * // An Auth0 Role loaded using its ID.
  * const some-role-by-id = auth0.getRole({
  *     roleId: "abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
     return pulumi.output(args).apply((a: any) => getRole(a, opts))
@@ -102,6 +105,9 @@ export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getRole.
  */
 export interface GetRoleOutputArgs {
+    /**
+     * The name of the role. If not provided, `roleId` must be set.
+     */
     name?: pulumi.Input<string>;
     /**
      * The ID of the role. If not provided, `name` must be set.

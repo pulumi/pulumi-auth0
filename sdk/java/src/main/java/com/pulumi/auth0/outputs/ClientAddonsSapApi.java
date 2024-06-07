@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClientAddonsSapApi {
     /**
-     * @return Consumer Key assigned by Salesforce to the Connected App.
+     * @return If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute`client*id`must be set and equal the`client*id` form parameter of the access token request.
      * 
      */
     private @Nullable String clientId;
     /**
-     * @return Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * @return NameID element of the Subject which can be used to express the user&#39;s identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
      * 
      */
     private @Nullable String nameIdentifierFormat;
@@ -44,14 +44,14 @@ public final class ClientAddonsSapApi {
 
     private ClientAddonsSapApi() {}
     /**
-     * @return Consumer Key assigned by Salesforce to the Connected App.
+     * @return If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute`client*id`must be set and equal the`client*id` form parameter of the access token request.
      * 
      */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }
     /**
-     * @return Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * @return NameID element of the Subject which can be used to express the user&#39;s identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
      * 
      */
     public Optional<String> nameIdentifierFormat() {

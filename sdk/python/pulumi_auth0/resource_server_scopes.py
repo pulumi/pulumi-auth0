@@ -101,13 +101,14 @@ class ResourceServerScopes(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_api = auth0.ResourceServer("myApi", identifier="https://api.example.com")
-        my_api_scopes = auth0.ResourceServerScopes("myApiScopes",
+        my_api = auth0.ResourceServer("my_api",
+            name="Example Resource Server (Managed by Terraform)",
+            identifier="https://api.example.com")
+        my_api_scopes = auth0.ResourceServerScopes("my_api_scopes",
             resource_server_identifier=my_api.identifier,
             scopes=[
                 auth0.ResourceServerScopesScopeArgs(
@@ -120,7 +121,6 @@ class ResourceServerScopes(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -154,13 +154,14 @@ class ResourceServerScopes(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_api = auth0.ResourceServer("myApi", identifier="https://api.example.com")
-        my_api_scopes = auth0.ResourceServerScopes("myApiScopes",
+        my_api = auth0.ResourceServer("my_api",
+            name="Example Resource Server (Managed by Terraform)",
+            identifier="https://api.example.com")
+        my_api_scopes = auth0.ResourceServerScopes("my_api_scopes",
             resource_server_identifier=my_api.identifier,
             scopes=[
                 auth0.ResourceServerScopesScopeArgs(
@@ -173,7 +174,6 @@ class ResourceServerScopes(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

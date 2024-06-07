@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,15 +42,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myPrompt = new Prompt(&#34;myPrompt&#34;, PromptArgs.builder()        
+ *         var myPrompt = new Prompt("myPrompt", PromptArgs.builder()
+ *             .universalLoginExperience("new")
  *             .identifierFirst(false)
- *             .universalLoginExperience(&#34;new&#34;)
  *             .webauthnPlatformFirstFactor(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

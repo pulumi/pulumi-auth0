@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,26 +51,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myApi = new ResourceServer(&#34;myApi&#34;, ResourceServerArgs.builder()        
- *             .identifier(&#34;https://api.example.com&#34;)
+ *         var myApi = new ResourceServer("myApi", ResourceServerArgs.builder()
+ *             .name("Example Resource Server (Managed by Terraform)")
+ *             .identifier("https://api.example.com")
  *             .build());
  * 
- *         var myApiScopes = new ResourceServerScopes(&#34;myApiScopes&#34;, ResourceServerScopesArgs.builder()        
+ *         var myApiScopes = new ResourceServerScopes("myApiScopes", ResourceServerScopesArgs.builder()
  *             .resourceServerIdentifier(myApi.identifier())
  *             .scopes(            
  *                 ResourceServerScopesScopeArgs.builder()
- *                     .name(&#34;create:appointments&#34;)
- *                     .description(&#34;Ability to create appointments&#34;)
+ *                     .name("create:appointments")
+ *                     .description("Ability to create appointments")
  *                     .build(),
  *                 ResourceServerScopesScopeArgs.builder()
- *                     .name(&#34;read:appointments&#34;)
- *                     .description(&#34;Ability to read appointments&#34;)
+ *                     .name("read:appointments")
+ *                     .description("Ability to read appointments")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

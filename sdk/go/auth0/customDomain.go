@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -29,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewCustomDomain(ctx, "myCustomDomain", &auth0.CustomDomainArgs{
+//			_, err := auth0.NewCustomDomain(ctx, "my_custom_domain", &auth0.CustomDomainArgs{
 //				Domain: pulumi.String("auth.example.com"),
 //				Type:   pulumi.String("auth0_managed_certs"),
 //			})
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

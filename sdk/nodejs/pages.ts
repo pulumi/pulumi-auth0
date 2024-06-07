@@ -11,32 +11,30 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myPages = new auth0.Pages("myPages", {
+ * const myPages = new auth0.Pages("my_pages", {
+ *     login: {
+ *         enabled: true,
+ *         html: "<html><body>My Custom Login Page</body></html>",
+ *     },
  *     changePassword: {
  *         enabled: true,
  *         html: "<html><body>My Custom Reset Password Page</body></html>",
- *     },
- *     error: {
- *         html: "<html><body>My Custom Error Page</body></html>",
- *         showLogLink: true,
- *         url: "https://example.com",
  *     },
  *     guardianMfa: {
  *         enabled: true,
  *         html: "<html><body>My Custom MFA Page</body></html>",
  *     },
- *     login: {
- *         enabled: true,
- *         html: "<html><body>My Custom Login Page</body></html>",
+ *     error: {
+ *         showLogLink: true,
+ *         html: "<html><body>My Custom Error Page</body></html>",
+ *         url: "https://example.com",
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

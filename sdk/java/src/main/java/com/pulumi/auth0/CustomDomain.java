@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,14 +45,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myCustomDomain = new CustomDomain(&#34;myCustomDomain&#34;, CustomDomainArgs.builder()        
- *             .domain(&#34;auth.example.com&#34;)
- *             .type(&#34;auth0_managed_certs&#34;)
+ *         var myCustomDomain = new CustomDomain("myCustomDomain", CustomDomainArgs.builder()
+ *             .domain("auth.example.com")
+ *             .type("auth0_managed_certs")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

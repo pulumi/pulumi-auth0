@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,17 +44,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myResourceServer = new ResourceServer(&#34;myResourceServer&#34;, ResourceServerArgs.builder()        
+ *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
+ *             .name("Example Resource Server (Managed by Terraform)")
+ *             .identifier("https://api.example.com")
+ *             .signingAlg("RS256")
  *             .allowOfflineAccess(true)
- *             .identifier(&#34;https://api.example.com&#34;)
- *             .signingAlg(&#34;RS256&#34;)
- *             .skipConsentForVerifiableFirstPartyClients(true)
  *             .tokenLifetime(8600)
+ *             .skipConsentForVerifiableFirstPartyClients(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

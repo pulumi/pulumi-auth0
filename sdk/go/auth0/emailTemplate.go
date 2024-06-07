@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -29,7 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myEmailProvider, err := auth0.NewEmailProvider(ctx, "myEmailProvider", &auth0.EmailProviderArgs{
+//			myEmailProvider, err := auth0.NewEmailProvider(ctx, "my_email_provider", &auth0.EmailProviderArgs{
+//				Name:               pulumi.String("ses"),
 //				Enabled:            pulumi.Bool(true),
 //				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //				Credentials: &auth0.EmailProviderCredentialsArgs{
@@ -41,7 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = auth0.NewEmailTemplate(ctx, "myEmailTemplate", &auth0.EmailTemplateArgs{
+//			_, err = auth0.NewEmailTemplate(ctx, "my_email_template", &auth0.EmailTemplateArgs{
 //				Template:             pulumi.String("welcome_email"),
 //				Body:                 pulumi.String("<html><body><h1>Welcome!</h1></body></html>"),
 //				From:                 pulumi.String("welcome@example.com"),
@@ -61,7 +61,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

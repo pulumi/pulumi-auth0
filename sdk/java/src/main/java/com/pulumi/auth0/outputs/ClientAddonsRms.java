@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClientAddonsRms {
     /**
-     * @return Microsoft Dynamics CRM application URL.
+     * @return URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
      * 
      */
     private @Nullable String url;
 
     private ClientAddonsRms() {}
     /**
-     * @return Microsoft Dynamics CRM application URL.
+     * @return URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
      * 
      */
     public Optional<String> url() {

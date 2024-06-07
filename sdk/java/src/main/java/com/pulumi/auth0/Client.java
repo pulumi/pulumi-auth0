@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -37,12 +38,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.auth0.Client;
  * import com.pulumi.auth0.ClientArgs;
- * import com.pulumi.auth0.inputs.ClientAddonsArgs;
- * import com.pulumi.auth0.inputs.ClientAddonsSamlpArgs;
  * import com.pulumi.auth0.inputs.ClientJwtConfigurationArgs;
+ * import com.pulumi.auth0.inputs.ClientRefreshTokenArgs;
  * import com.pulumi.auth0.inputs.ClientMobileArgs;
  * import com.pulumi.auth0.inputs.ClientMobileIosArgs;
- * import com.pulumi.auth0.inputs.ClientRefreshTokenArgs;
+ * import com.pulumi.auth0.inputs.ClientAddonsArgs;
+ * import com.pulumi.auth0.inputs.ClientAddonsSamlpArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -56,70 +57,71 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myClient = new Client(&#34;myClient&#34;, ClientArgs.builder()        
+ *         var myClient = new Client("myClient", ClientArgs.builder()
+ *             .name("Application - Acceptance Test")
+ *             .description("Test Applications Long Description")
+ *             .appType("non_interactive")
+ *             .customLoginPageOn(true)
+ *             .isFirstParty(true)
+ *             .isTokenEndpointIpHeaderTrusted(true)
+ *             .oidcConformant(false)
+ *             .callbacks("https://example.com/callback")
+ *             .allowedOrigins("https://example.com")
+ *             .allowedLogoutUrls("https://example.com")
+ *             .webOrigins("https://example.com")
+ *             .grantTypes(            
+ *                 "authorization_code",
+ *                 "http://auth0.com/oauth/grant-type/password-realm",
+ *                 "implicit",
+ *                 "password",
+ *                 "refresh_token")
+ *             .clientMetadata(Map.of("foo", "zoo"))
+ *             .jwtConfiguration(ClientJwtConfigurationArgs.builder()
+ *                 .lifetimeInSeconds(300)
+ *                 .secretEncoded(true)
+ *                 .alg("RS256")
+ *                 .scopes(Map.of("foo", "bar"))
+ *                 .build())
+ *             .refreshToken(ClientRefreshTokenArgs.builder()
+ *                 .leeway(0)
+ *                 .tokenLifetime(2592000)
+ *                 .rotationType("rotating")
+ *                 .expirationType("expiring")
+ *                 .build())
+ *             .mobile(ClientMobileArgs.builder()
+ *                 .ios(ClientMobileIosArgs.builder()
+ *                     .teamId("9JA89QQLNQ")
+ *                     .appBundleIdentifier("com.my.bundle.id")
+ *                     .build())
+ *                 .build())
  *             .addons(ClientAddonsArgs.builder()
  *                 .samlp(ClientAddonsSamlpArgs.builder()
- *                     .audience(&#34;https://example.com/saml&#34;)
- *                     .createUpnClaim(false)
- *                     .issuer(&#34;https://example.com&#34;)
- *                     .mapIdentities(false)
- *                     .mapUnknownClaimsAsIs(false)
+ *                     .audience("https://example.com/saml")
+ *                     .issuer("https://example.com")
  *                     .mappings(Map.ofEntries(
- *                         Map.entry(&#34;email&#34;, &#34;http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress&#34;),
- *                         Map.entry(&#34;name&#34;, &#34;http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name&#34;)
+ *                         Map.entry("email", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"),
+ *                         Map.entry("name", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")
  *                     ))
- *                     .nameIdentifierFormat(&#34;urn:oasis:names:tc:SAML:2.0:nameid-format:persistent&#34;)
- *                     .nameIdentifierProbes(&#34;http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress&#34;)
+ *                     .createUpnClaim(false)
  *                     .passthroughClaimsWithNoMapping(false)
- *                     .signingCert(&#34;&#34;&#34;
+ *                     .mapUnknownClaimsAsIs(false)
+ *                     .mapIdentities(false)
+ *                     .nameIdentifierFormat("urn:oasis:names:tc:SAML:2.0:nameid-format:persistent")
+ *                     .nameIdentifierProbes("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")
+ *                     .signingCert("""
  * -----BEGIN PUBLIC KEY-----
  * MIGf...bpP/t3
  * +JGNGIRMj1hF1rnb6QIDAQAB
  * -----END PUBLIC KEY-----
- * 
- *                     &#34;&#34;&#34;)
+ *                     """)
  *                     .build())
  *                 .build())
- *             .allowedLogoutUrls(&#34;https://example.com&#34;)
- *             .allowedOrigins(&#34;https://example.com&#34;)
- *             .appType(&#34;non_interactive&#34;)
- *             .callbacks(&#34;https://example.com/callback&#34;)
- *             .clientMetadata(Map.of(&#34;foo&#34;, &#34;zoo&#34;))
- *             .customLoginPageOn(true)
- *             .description(&#34;Test Applications Long Description&#34;)
- *             .grantTypes(            
- *                 &#34;authorization_code&#34;,
- *                 &#34;http://auth0.com/oauth/grant-type/password-realm&#34;,
- *                 &#34;implicit&#34;,
- *                 &#34;password&#34;,
- *                 &#34;refresh_token&#34;)
- *             .isFirstParty(true)
- *             .isTokenEndpointIpHeaderTrusted(true)
- *             .jwtConfiguration(ClientJwtConfigurationArgs.builder()
- *                 .alg(&#34;RS256&#34;)
- *                 .lifetimeInSeconds(300)
- *                 .scopes(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *                 .secretEncoded(true)
- *                 .build())
- *             .mobile(ClientMobileArgs.builder()
- *                 .ios(ClientMobileIosArgs.builder()
- *                     .appBundleIdentifier(&#34;com.my.bundle.id&#34;)
- *                     .teamId(&#34;9JA89QQLNQ&#34;)
- *                     .build())
- *                 .build())
- *             .oidcConformant(false)
- *             .refreshToken(ClientRefreshTokenArgs.builder()
- *                 .expirationType(&#34;expiring&#34;)
- *                 .leeway(0)
- *                 .rotationType(&#34;rotating&#34;)
- *                 .tokenLifetime(2592000)
- *                 .build())
- *             .webOrigins(&#34;https://example.com&#34;)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -236,28 +238,28 @@ public class Client extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clientAliases);
     }
     /**
-     * Consumer Key assigned by Salesforce to the Connected App.
+     * The ID of the client.
      * 
      */
     @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output<String> clientId;
 
     /**
-     * @return Consumer Key assigned by Salesforce to the Connected App.
+     * @return The ID of the client.
      * 
      */
     public Output<String> clientId() {
         return this.clientId;
     }
     /**
-     * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;@ [Tab] [Space]`.
+     * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;{@literal @} [Tab] [Space]`.
      * 
      */
     @Export(name="clientMetadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> clientMetadata;
 
     /**
-     * @return Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;@ [Tab] [Space]`.
+     * @return Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;{@literal @} [Tab] [Space]`.
      * 
      */
     public Output<Optional<Map<String,Object>>> clientMetadata() {
@@ -460,14 +462,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.mobile;
     }
     /**
-     * SSO integration name.
+     * Name of the client.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return SSO integration name.
+     * @return Name of the client.
      * 
      */
     public Output<String> name() {

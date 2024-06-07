@@ -16,7 +16,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -25,19 +24,18 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myRule = new Auth0.Rule("myRule", new()
+    ///     var myRule = new Auth0.Rule("my_rule", new()
     ///     {
-    ///         Enabled = true,
+    ///         Name = "empty-rule",
     ///         Script = @"    function (user, context, callback) {
     ///       callback(null, user, context);
     ///     }
-    ///   
     /// ",
+    ///         Enabled = true,
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

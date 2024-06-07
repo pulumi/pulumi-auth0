@@ -32,14 +32,14 @@ public final class ClientAddonsFirebaseArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * AWS token lifetime in seconds.
+     * Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).
      * 
      */
     @Import(name="lifetimeInSeconds")
     private @Nullable Output<Integer> lifetimeInSeconds;
 
     /**
-     * @return AWS token lifetime in seconds.
+     * @return Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).
      * 
      */
     public Optional<Output<Integer>> lifetimeInSeconds() {
@@ -141,7 +141,7 @@ public final class ClientAddonsFirebaseArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param lifetimeInSeconds AWS token lifetime in seconds.
+         * @param lifetimeInSeconds Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ClientAddonsFirebaseArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param lifetimeInSeconds AWS token lifetime in seconds.
+         * @param lifetimeInSeconds Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).
          * 
          * @return builder
          * 

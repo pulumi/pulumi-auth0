@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,20 +51,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myOrganization = new Organization(&#34;myOrganization&#34;, OrganizationArgs.builder()        
+ *         var myOrganization = new Organization("myOrganization", OrganizationArgs.builder()
+ *             .name("auth0-inc")
+ *             .displayName("Auth0 Inc.")
  *             .branding(OrganizationBrandingArgs.builder()
+ *                 .logoUrl("https://example.com/assets/icons/icon.png")
  *                 .colors(Map.ofEntries(
- *                     Map.entry(&#34;pageBackground&#34;, &#34;#e1e1e1&#34;),
- *                     Map.entry(&#34;primary&#34;, &#34;#f2f2f2&#34;)
+ *                     Map.entry("primary", "#f2f2f2"),
+ *                     Map.entry("page_background", "#e1e1e1")
  *                 ))
- *                 .logoUrl(&#34;https://example.com/assets/icons/icon.png&#34;)
  *                 .build())
- *             .displayName(&#34;Auth0 Inc.&#34;)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

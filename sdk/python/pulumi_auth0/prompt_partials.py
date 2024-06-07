@@ -268,21 +268,19 @@ class PromptPartials(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_login_prompt_partials = auth0.PromptPartials("myLoginPromptPartials",
-            form_content_end="<div>Updated Form Content End</div>",
-            form_content_start="<div>Updated Form Content Start</div>",
-            form_footer_end="<div>Updated Footer End</div>",
-            form_footer_start="<div>Updated Footer Start</div>",
+        my_login_prompt_partials = auth0.PromptPartials("my_login_prompt_partials",
             prompt="login",
-            secondary_actions_end="<div>Updated Secondary Actions End</div>",
-            secondary_actions_start="<div>Updated Secondary Actions Start</div>")
+            form_content_start="<div>Updated Form Content Start</div>",
+            form_content_end="<div>Updated Form Content End</div>",
+            form_footer_start="<div>Updated Footer Start</div>",
+            form_footer_end="<div>Updated Footer End</div>",
+            secondary_actions_start="<div>Updated Secondary Actions Start</div>",
+            secondary_actions_end="<div>Updated Secondary Actions End</div>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -317,21 +315,19 @@ class PromptPartials(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_login_prompt_partials = auth0.PromptPartials("myLoginPromptPartials",
-            form_content_end="<div>Updated Form Content End</div>",
-            form_content_start="<div>Updated Form Content Start</div>",
-            form_footer_end="<div>Updated Footer End</div>",
-            form_footer_start="<div>Updated Footer Start</div>",
+        my_login_prompt_partials = auth0.PromptPartials("my_login_prompt_partials",
             prompt="login",
-            secondary_actions_end="<div>Updated Secondary Actions End</div>",
-            secondary_actions_start="<div>Updated Secondary Actions Start</div>")
+            form_content_start="<div>Updated Form Content Start</div>",
+            form_content_end="<div>Updated Form Content End</div>",
+            form_footer_start="<div>Updated Footer Start</div>",
+            form_footer_end="<div>Updated Footer End</div>",
+            secondary_actions_start="<div>Updated Secondary Actions Start</div>",
+            secondary_actions_end="<div>Updated Secondary Actions End</div>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

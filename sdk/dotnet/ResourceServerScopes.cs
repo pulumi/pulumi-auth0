@@ -19,7 +19,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -28,12 +27,13 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myApi = new Auth0.ResourceServer("myApi", new()
+    ///     var myApi = new Auth0.ResourceServer("my_api", new()
     ///     {
+    ///         Name = "Example Resource Server (Managed by Terraform)",
     ///         Identifier = "https://api.example.com",
     ///     });
     /// 
-    ///     var myApiScopes = new Auth0.ResourceServerScopes("myApiScopes", new()
+    ///     var myApiScopes = new Auth0.ResourceServerScopes("my_api_scopes", new()
     ///     {
     ///         ResourceServerIdentifier = myApi.Identifier,
     ///         Scopes = new[]
@@ -53,7 +53,6 @@ namespace Pulumi.Auth0
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

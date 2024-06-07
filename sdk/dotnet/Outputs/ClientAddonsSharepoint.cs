@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ExternalUrls;
         /// <summary>
-        /// Microsoft Dynamics CRM application URL.
+        /// Internal SharePoint application URL.
         /// </summary>
         public readonly string? Url;
 

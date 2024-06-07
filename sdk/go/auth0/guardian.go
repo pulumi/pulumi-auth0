@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -29,17 +28,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewGuardian(ctx, "myGuardian", &auth0.GuardianArgs{
-//				Duo: &auth0.GuardianDuoArgs{
-//					Enabled:        pulumi.Bool(true),
-//					Hostname:       pulumi.String("api-hostname"),
-//					IntegrationKey: pulumi.String("someKey"),
-//					SecretKey:      pulumi.String("someSecret"),
-//				},
-//				Email: pulumi.Bool(true),
-//				Otp:   pulumi.Bool(true),
-//				Phone: &auth0.GuardianPhoneArgs{
+//			_, err := auth0.NewGuardian(ctx, "my_guardian", &auth0.GuardianArgs{
+//				Policy:       pulumi.String("all-applications"),
+//				Email:        pulumi.Bool(true),
+//				Otp:          pulumi.Bool(true),
+//				RecoveryCode: pulumi.Bool(true),
+//				WebauthnPlatform: &auth0.GuardianWebauthnPlatformArgs{
 //					Enabled: pulumi.Bool(true),
+//				},
+//				WebauthnRoaming: &auth0.GuardianWebauthnRoamingArgs{
+//					Enabled:          pulumi.Bool(true),
+//					UserVerification: pulumi.String("required"),
+//				},
+//				Phone: &auth0.GuardianPhoneArgs{
+//					Enabled:  pulumi.Bool(true),
+//					Provider: pulumi.String("auth0"),
 //					MessageTypes: pulumi.StringArray{
 //						pulumi.String("sms"),
 //						pulumi.String("voice"),
@@ -48,10 +51,10 @@ import (
 //						EnrollmentMessage:   pulumi.String("{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment."),
 //						VerificationMessage: pulumi.String("{{code}} is your verification code for {{tenant.friendly_name}}."),
 //					},
-//					Provider: pulumi.String("auth0"),
 //				},
-//				Policy: pulumi.String("all-applications"),
 //				Push: &auth0.GuardianPushArgs{
+//					Enabled:  pulumi.Bool(true),
+//					Provider: pulumi.String("sns"),
 //					AmazonSns: &auth0.GuardianPushAmazonSnsArgs{
 //						AwsAccessKeyId:                pulumi.String("test1"),
 //						AwsRegion:                     pulumi.String("us-west-1"),
@@ -64,16 +67,12 @@ import (
 //						AppleAppLink:  pulumi.String("https://itunes.apple.com/us/app/my-app/id123121"),
 //						GoogleAppLink: pulumi.String("https://play.google.com/store/apps/details?id=com.my.app"),
 //					},
-//					Enabled:  pulumi.Bool(true),
-//					Provider: pulumi.String("sns"),
 //				},
-//				RecoveryCode: pulumi.Bool(true),
-//				WebauthnPlatform: &auth0.GuardianWebauthnPlatformArgs{
-//					Enabled: pulumi.Bool(true),
-//				},
-//				WebauthnRoaming: &auth0.GuardianWebauthnRoamingArgs{
-//					Enabled:          pulumi.Bool(true),
-//					UserVerification: pulumi.String("required"),
+//				Duo: &auth0.GuardianDuoArgs{
+//					Enabled:        pulumi.Bool(true),
+//					IntegrationKey: pulumi.String("someKey"),
+//					SecretKey:      pulumi.String("someSecret"),
+//					Hostname:       pulumi.String("api-hostname"),
 //				},
 //			})
 //			if err != nil {
@@ -84,7 +83,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

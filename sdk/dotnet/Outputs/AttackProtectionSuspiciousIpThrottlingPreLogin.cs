@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class AttackProtectionSuspiciousIpThrottlingPreLogin
     {
         /// <summary>
-        /// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+        /// The maximum number of failed login attempts allowed from a single IP address.
         /// </summary>
         public readonly int? MaxAttempts;
         /// <summary>

@@ -21,7 +21,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -34,23 +33,28 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myConn, err := auth0.NewConnection(ctx, "myConn", &auth0.ConnectionArgs{
+//			myConn, err := auth0.NewConnection(ctx, "my_conn", &auth0.ConnectionArgs{
+//				Name:     pulumi.String("My-Auth0-Connection"),
 //				Strategy: pulumi.String("auth0"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			myFirstClient, err := auth0.NewClient(ctx, "myFirstClient", nil)
+//			myFirstClient, err := auth0.NewClient(ctx, "my_first_client", &auth0.ClientArgs{
+//				Name: pulumi.String("My-First-Auth0-Client"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			mySecondClient, err := auth0.NewClient(ctx, "mySecondClient", nil)
+//			mySecondClient, err := auth0.NewClient(ctx, "my_second_client", &auth0.ClientArgs{
+//				Name: pulumi.String("My-Second-Auth0-Client"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			// One connection to many clients association.
 //			// To prevent issues, avoid using this resource together with the `auth0_connection_client` resource.
-//			_, err = auth0.NewConnectionClients(ctx, "myConnClientsAssoc", &auth0.ConnectionClientsArgs{
+//			_, err = auth0.NewConnectionClients(ctx, "my_conn_clients_assoc", &auth0.ConnectionClientsArgs{
 //				ConnectionId: myConn.ID(),
 //				EnabledClients: pulumi.StringArray{
 //					myFirstClient.ID(),
@@ -65,7 +69,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

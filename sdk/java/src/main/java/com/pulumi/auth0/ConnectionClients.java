@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -34,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.Connection;
  * import com.pulumi.auth0.ConnectionArgs;
  * import com.pulumi.auth0.Client;
+ * import com.pulumi.auth0.ClientArgs;
  * import com.pulumi.auth0.ConnectionClients;
  * import com.pulumi.auth0.ConnectionClientsArgs;
  * import java.util.List;
@@ -49,17 +51,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myConn = new Connection(&#34;myConn&#34;, ConnectionArgs.builder()        
- *             .strategy(&#34;auth0&#34;)
+ *         var myConn = new Connection("myConn", ConnectionArgs.builder()
+ *             .name("My-Auth0-Connection")
+ *             .strategy("auth0")
  *             .build());
  * 
- *         var myFirstClient = new Client(&#34;myFirstClient&#34;);
+ *         var myFirstClient = new Client("myFirstClient", ClientArgs.builder()
+ *             .name("My-First-Auth0-Client")
+ *             .build());
  * 
- *         var mySecondClient = new Client(&#34;mySecondClient&#34;);
+ *         var mySecondClient = new Client("mySecondClient", ClientArgs.builder()
+ *             .name("My-Second-Auth0-Client")
+ *             .build());
  * 
  *         // One connection to many clients association.
  *         // To prevent issues, avoid using this resource together with the `auth0_connection_client` resource.
- *         var myConnClientsAssoc = new ConnectionClients(&#34;myConnClientsAssoc&#34;, ConnectionClientsArgs.builder()        
+ *         var myConnClientsAssoc = new ConnectionClients("myConnClientsAssoc", ConnectionClientsArgs.builder()
  *             .connectionId(myConn.id())
  *             .enabledClients(            
  *                 myFirstClient.id(),
@@ -68,7 +75,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

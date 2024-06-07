@@ -16,14 +16,14 @@ public final class AttackProtectionSuspiciousIpThrottlingPreLoginArgs extends co
     public static final AttackProtectionSuspiciousIpThrottlingPreLoginArgs Empty = new AttackProtectionSuspiciousIpThrottlingPreLoginArgs();
 
     /**
-     * Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+     * The maximum number of failed login attempts allowed from a single IP address.
      * 
      */
     @Import(name="maxAttempts")
     private @Nullable Output<Integer> maxAttempts;
 
     /**
-     * @return Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+     * @return The maximum number of failed login attempts allowed from a single IP address.
      * 
      */
     public Optional<Output<Integer>> maxAttempts() {
@@ -71,7 +71,7 @@ public final class AttackProtectionSuspiciousIpThrottlingPreLoginArgs extends co
         }
 
         /**
-         * @param maxAttempts Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+         * @param maxAttempts The maximum number of failed login attempts allowed from a single IP address.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class AttackProtectionSuspiciousIpThrottlingPreLoginArgs extends co
         }
 
         /**
-         * @param maxAttempts Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+         * @param maxAttempts The maximum number of failed login attempts allowed from a single IP address.
          * 
          * @return builder
          * 

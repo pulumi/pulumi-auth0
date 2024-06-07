@@ -18,7 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -31,9 +30,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewRule(ctx, "myRule", &auth0.RuleArgs{
+//			_, err := auth0.NewRule(ctx, "my_rule", &auth0.RuleArgs{
+//				Name:    pulumi.String("empty-rule"),
+//				Script:  pulumi.String("    function (user, context, callback) {\n      callback(null, user, context);\n    }\n"),
 //				Enabled: pulumi.Bool(true),
-//				Script:  pulumi.String("    function (user, context, callback) {\n      callback(null, user, context);\n    }\n  \n"),
 //			})
 //			if err != nil {
 //				return err
@@ -43,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

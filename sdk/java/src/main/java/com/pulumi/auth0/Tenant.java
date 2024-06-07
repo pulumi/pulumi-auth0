@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,35 +54,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myTenant = new Tenant(&#34;myTenant&#34;, TenantArgs.builder()        
- *             .allowedLogoutUrls(&#34;http://example.com/logout&#34;)
- *             .defaultRedirectionUri(&#34;https://example.com/login&#34;)
- *             .enabledLocales(&#34;en&#34;)
+ *         var myTenant = new Tenant("myTenant", TenantArgs.builder()
+ *             .friendlyName("Tenant Name")
+ *             .pictureUrl("http://example.com/logo.png")
+ *             .supportEmail("support{@literal @}example.com")
+ *             .supportUrl("http://example.com/support")
+ *             .allowedLogoutUrls("http://example.com/logout")
+ *             .sessionLifetime(8760)
+ *             .sandboxVersion("12")
+ *             .enabledLocales("en")
+ *             .defaultRedirectionUri("https://example.com/login")
  *             .flags(TenantFlagsArgs.builder()
  *                 .disableClickjackProtectionHeaders(true)
- *                 .disableFieldsMapFix(false)
- *                 .disableManagementApiSmsObfuscation(false)
  *                 .enablePublicSignupUserExistsError(true)
- *                 .noDiscloseEnterpriseConnections(false)
  *                 .useScopeDescriptionsForConsent(true)
+ *                 .noDiscloseEnterpriseConnections(false)
+ *                 .disableManagementApiSmsObfuscation(false)
+ *                 .disableFieldsMapFix(false)
  *                 .build())
- *             .friendlyName(&#34;Tenant Name&#34;)
- *             .pictureUrl(&#34;http://example.com/logo.png&#34;)
- *             .sandboxVersion(&#34;12&#34;)
  *             .sessionCookie(TenantSessionCookieArgs.builder()
- *                 .mode(&#34;non-persistent&#34;)
+ *                 .mode("non-persistent")
  *                 .build())
- *             .sessionLifetime(8760)
  *             .sessions(TenantSessionsArgs.builder()
  *                 .oidcLogoutPromptEnabled(false)
  *                 .build())
- *             .supportEmail(&#34;support@example.com&#34;)
- *             .supportUrl(&#34;http://example.com/support&#34;)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

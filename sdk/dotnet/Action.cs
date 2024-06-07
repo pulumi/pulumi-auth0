@@ -50,7 +50,7 @@ namespace Pulumi.Auth0
         public Output<bool?> Deploy { get; private set; } = null!;
 
         /// <summary>
-        /// Dependency name, e.g. `lodash`.
+        /// The name of the action.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Auth0
         public Input<bool>? Deploy { get; set; }
 
         /// <summary>
-        /// Dependency name, e.g. `lodash`.
+        /// The name of the action.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -212,7 +212,7 @@ namespace Pulumi.Auth0
         public Input<bool>? Deploy { get; set; }
 
         /// <summary>
-        /// Dependency name, e.g. `lodash`.
+        /// The name of the action.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

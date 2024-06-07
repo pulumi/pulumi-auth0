@@ -66,7 +66,7 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly deploy!: pulumi.Output<boolean | undefined>;
     /**
-     * Dependency name, e.g. `lodash`.
+     * The name of the action.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -146,7 +146,7 @@ export interface ActionState {
      */
     deploy?: pulumi.Input<boolean>;
     /**
-     * Dependency name, e.g. `lodash`.
+     * The name of the action.
      */
     name?: pulumi.Input<string>;
     /**
@@ -184,7 +184,7 @@ export interface ActionArgs {
      */
     deploy?: pulumi.Input<boolean>;
     /**
-     * Dependency name, e.g. `lodash`.
+     * The name of the action.
      */
     name?: pulumi.Input<string>;
     /**

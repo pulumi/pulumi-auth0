@@ -139,20 +139,20 @@ class ConnectionClient(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_conn = auth0.Connection("myConn", strategy="auth0")
-        my_client = auth0.Client("myClient")
+        my_conn = auth0.Connection("my_conn",
+            name="My-Auth0-Connection",
+            strategy="auth0")
+        my_client = auth0.Client("my_client", name="My-Auth0-Client")
         # One connection to one client association.
         # To prevent issues, avoid using this resource together with the `auth0_connection_clients` resource.
-        my_conn_client_assoc = auth0.ConnectionClient("myConnClientAssoc",
+        my_conn_client_assoc = auth0.ConnectionClient("my_conn_client_assoc",
             connection_id=my_conn.id,
             client_id=my_client.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -191,20 +191,20 @@ class ConnectionClient(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_conn = auth0.Connection("myConn", strategy="auth0")
-        my_client = auth0.Client("myClient")
+        my_conn = auth0.Connection("my_conn",
+            name="My-Auth0-Connection",
+            strategy="auth0")
+        my_client = auth0.Client("my_client", name="My-Auth0-Client")
         # One connection to one client association.
         # To prevent issues, avoid using this resource together with the `auth0_connection_clients` resource.
-        my_conn_client_assoc = auth0.ConnectionClient("myConnClientAssoc",
+        my_conn_client_assoc = auth0.ConnectionClient("my_conn_client_assoc",
             connection_id=my_conn.id,
             client_id=my_client.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -11,23 +11,26 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myProtection = new auth0.AttackProtection("myProtection", {
- *     breachedPasswordDetection: {
- *         adminNotificationFrequencies: ["daily"],
+ * const myProtection = new auth0.AttackProtection("my_protection", {
+ *     suspiciousIpThrottling: {
  *         enabled: true,
- *         method: "standard",
- *         preUserRegistration: {
- *             shields: ["block"],
- *         },
  *         shields: [
  *             "admin_notification",
  *             "block",
  *         ],
+ *         allowlists: ["192.168.1.1"],
+ *         preLogin: {
+ *             maxAttempts: 100,
+ *             rate: 864000,
+ *         },
+ *         preUserRegistration: {
+ *             maxAttempts: 50,
+ *             rate: 1200,
+ *         },
  *     },
  *     bruteForceProtection: {
  *         allowlists: ["127.0.0.1"],
@@ -39,25 +42,20 @@ import * as utilities from "./utilities";
  *             "user_notification",
  *         ],
  *     },
- *     suspiciousIpThrottling: {
- *         allowlists: ["192.168.1.1"],
+ *     breachedPasswordDetection: {
+ *         adminNotificationFrequencies: ["daily"],
  *         enabled: true,
- *         preLogin: {
- *             maxAttempts: 100,
- *             rate: 864000,
- *         },
- *         preUserRegistration: {
- *             maxAttempts: 50,
- *             rate: 1200,
- *         },
+ *         method: "standard",
  *         shields: [
  *             "admin_notification",
  *             "block",
  *         ],
+ *         preUserRegistration: {
+ *             shields: ["block"],
+ *         },
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

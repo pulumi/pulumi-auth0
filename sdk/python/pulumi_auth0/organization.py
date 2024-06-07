@@ -178,22 +178,21 @@ class Organization(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_organization = auth0.Organization("myOrganization",
+        my_organization = auth0.Organization("my_organization",
+            name="auth0-inc",
+            display_name="Auth0 Inc.",
             branding=auth0.OrganizationBrandingArgs(
-                colors={
-                    "pageBackground": "#e1e1e1",
-                    "primary": "#f2f2f2",
-                },
                 logo_url="https://example.com/assets/icons/icon.png",
-            ),
-            display_name="Auth0 Inc.")
+                colors={
+                    "primary": "#f2f2f2",
+                    "page_background": "#e1e1e1",
+                },
+            ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -231,22 +230,21 @@ class Organization(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_organization = auth0.Organization("myOrganization",
+        my_organization = auth0.Organization("my_organization",
+            name="auth0-inc",
+            display_name="Auth0 Inc.",
             branding=auth0.OrganizationBrandingArgs(
-                colors={
-                    "pageBackground": "#e1e1e1",
-                    "primary": "#f2f2f2",
-                },
                 logo_url="https://example.com/assets/icons/icon.png",
-            ),
-            display_name="Auth0 Inc.")
+                colors={
+                    "primary": "#f2f2f2",
+                    "page_background": "#e1e1e1",
+                },
+            ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

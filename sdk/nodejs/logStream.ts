@@ -11,46 +11,46 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
  * // This is an example of an http log stream.
- * const myWebhook = new auth0.LogStream("myWebhook", {
+ * const myWebhook = new auth0.LogStream("my_webhook", {
+ *     name: "HTTP log stream",
+ *     type: "http",
  *     filters: [
  *         {
- *             name: "auth.login.fail",
  *             type: "category",
+ *             name: "auth.login.fail",
  *         },
  *         {
- *             name: "auth.signup.fail",
  *             type: "category",
+ *             name: "auth.signup.fail",
  *         },
  *     ],
  *     sink: {
- *         httpAuthorization: "AKIAXXXXXXXXXXXXXXXX",
- *         httpContentFormat: "JSONOBJECT",
+ *         httpEndpoint: "https://example.com/logs",
  *         httpContentType: "application/json",
+ *         httpContentFormat: "JSONOBJECT",
+ *         httpAuthorization: "AKIAXXXXXXXXXXXXXXXX",
  *         httpCustomHeaders: [{
  *             header: "foo",
  *             value: "bar",
  *         }],
- *         httpEndpoint: "https://example.com/logs",
  *     },
- *     type: "http",
  * });
  * // This is an example of an Amazon EventBridge log stream.
- * const exampleAws = new auth0.LogStream("exampleAws", {
+ * const exampleAws = new auth0.LogStream("example_aws", {
+ *     name: "AWS Eventbridge",
+ *     type: "eventbridge",
+ *     status: "active",
  *     sink: {
  *         awsAccountId: "my_account_id",
  *         awsRegion: "us-east-2",
  *     },
- *     status: "active",
- *     type: "eventbridge",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

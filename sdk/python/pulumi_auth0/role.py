@@ -108,14 +108,14 @@ class Role(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_role = auth0.Role("myRole", description="Role Description...")
+        my_role = auth0.Role("my_role",
+            name="My Role - (Managed by Terraform)",
+            description="Role Description...")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -145,14 +145,14 @@ class Role(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_role = auth0.Role("myRole", description="Role Description...")
+        my_role = auth0.Role("my_role",
+            name="My Role - (Managed by Terraform)",
+            description="Role Description...")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

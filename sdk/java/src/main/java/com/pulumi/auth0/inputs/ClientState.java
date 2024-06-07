@@ -131,14 +131,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Consumer Key assigned by Salesforce to the Connected App.
+     * The ID of the client.
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return Consumer Key assigned by Salesforce to the Connected App.
+     * @return The ID of the client.
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -146,14 +146,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;@ [Tab] [Space]`.
+     * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;{@literal @} [Tab] [Space]`.
      * 
      */
     @Import(name="clientMetadata")
     private @Nullable Output<Map<String,Object>> clientMetadata;
 
     /**
-     * @return Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;@ [Tab] [Space]`.
+     * @return Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;{@literal @} [Tab] [Space]`.
      * 
      */
     public Optional<Output<Map<String,Object>>> clientMetadata() {
@@ -371,14 +371,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SSO integration name.
+     * Name of the client.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return SSO integration name.
+     * @return Name of the client.
      * 
      */
     public Optional<Output<String>> name() {
@@ -806,7 +806,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientId Consumer Key assigned by Salesforce to the Connected App.
+         * @param clientId The ID of the client.
          * 
          * @return builder
          * 
@@ -817,7 +817,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientId Consumer Key assigned by Salesforce to the Connected App.
+         * @param clientId The ID of the client.
          * 
          * @return builder
          * 
@@ -827,7 +827,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientMetadata Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;@ [Tab] [Space]`.
+         * @param clientMetadata Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;{@literal @} [Tab] [Space]`.
          * 
          * @return builder
          * 
@@ -838,7 +838,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientMetadata Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;@ [Tab] [Space]`.
+         * @param clientMetadata Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;{@literal @} [Tab] [Space]`.
          * 
          * @return builder
          * 
@@ -1152,7 +1152,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name SSO integration name.
+         * @param name Name of the client.
          * 
          * @return builder
          * 
@@ -1163,7 +1163,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name SSO integration name.
+         * @param name Name of the client.
          * 
          * @return builder
          * 

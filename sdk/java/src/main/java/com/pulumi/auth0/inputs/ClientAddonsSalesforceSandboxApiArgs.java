@@ -61,14 +61,14 @@ public final class ClientAddonsSalesforceSandboxApiArgs extends com.pulumi.resou
     }
 
     /**
-     * AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * Name of the property in the user object that maps to a Salesforce username, for example `email`.
      * 
      */
     @Import(name="principal")
     private @Nullable Output<String> principal;
 
     /**
-     * @return AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+     * @return Name of the property in the user object that maps to a Salesforce username, for example `email`.
      * 
      */
     public Optional<Output<String>> principal() {
@@ -166,7 +166,7 @@ public final class ClientAddonsSalesforceSandboxApiArgs extends com.pulumi.resou
         }
 
         /**
-         * @param principal AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+         * @param principal Name of the property in the user object that maps to a Salesforce username, for example `email`.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ClientAddonsSalesforceSandboxApiArgs extends com.pulumi.resou
         }
 
         /**
-         * @param principal AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+         * @param principal Name of the property in the user object that maps to a Salesforce username, for example `email`.
          * 
          * @return builder
          * 

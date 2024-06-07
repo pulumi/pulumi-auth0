@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,23 +48,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myEmailProvider = new EmailProvider(&#34;myEmailProvider&#34;, EmailProviderArgs.builder()        
+ *         var myEmailProvider = new EmailProvider("myEmailProvider", EmailProviderArgs.builder()
+ *             .name("ses")
  *             .enabled(true)
- *             .defaultFromAddress(&#34;accounts@example.com&#34;)
+ *             .defaultFromAddress("accounts{@literal @}example.com")
  *             .credentials(EmailProviderCredentialsArgs.builder()
- *                 .accessKeyId(&#34;AKIAXXXXXXXXXXXXXXXX&#34;)
- *                 .secretAccessKey(&#34;7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
- *                 .region(&#34;us-east-1&#34;)
+ *                 .accessKeyId("AKIAXXXXXXXXXXXXXXXX")
+ *                 .secretAccessKey("7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *                 .region("us-east-1")
  *                 .build())
  *             .build());
  * 
- *         var myEmailTemplate = new EmailTemplate(&#34;myEmailTemplate&#34;, EmailTemplateArgs.builder()        
- *             .template(&#34;welcome_email&#34;)
- *             .body(&#34;&lt;html&gt;&lt;body&gt;&lt;h1&gt;Welcome!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&#34;)
- *             .from(&#34;welcome@example.com&#34;)
- *             .resultUrl(&#34;https://example.com/welcome&#34;)
- *             .subject(&#34;Welcome&#34;)
- *             .syntax(&#34;liquid&#34;)
+ *         var myEmailTemplate = new EmailTemplate("myEmailTemplate", EmailTemplateArgs.builder()
+ *             .template("welcome_email")
+ *             .body("<html><body><h1>Welcome!</h1></body></html>")
+ *             .from("welcome{@literal @}example.com")
+ *             .resultUrl("https://example.com/welcome")
+ *             .subject("Welcome")
+ *             .syntax("liquid")
  *             .urlLifetimeInSeconds(3600)
  *             .enabled(true)
  *             .build(), CustomResourceOptions.builder()
@@ -72,7 +74,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

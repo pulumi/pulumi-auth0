@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,23 +48,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var resourceServer = new ResourceServer(&#34;resourceServer&#34;, ResourceServerArgs.builder()        
- *             .identifier(&#34;https://api.example.com&#34;)
+ *         var resourceServer = new ResourceServer("resourceServer", ResourceServerArgs.builder()
+ *             .name("Example Resource Server (Managed by Terraform)")
+ *             .identifier("https://api.example.com")
  *             .build());
  * 
- *         var readPosts = new ResourceServerScope(&#34;readPosts&#34;, ResourceServerScopeArgs.builder()        
+ *         var readPosts = new ResourceServerScope("readPosts", ResourceServerScopeArgs.builder()
  *             .resourceServerIdentifier(resourceServer.identifier())
- *             .scope(&#34;read:posts&#34;)
+ *             .scope("read:posts")
  *             .build());
  * 
- *         var writePosts = new ResourceServerScope(&#34;writePosts&#34;, ResourceServerScopeArgs.builder()        
+ *         var writePosts = new ResourceServerScope("writePosts", ResourceServerScopeArgs.builder()
  *             .resourceServerIdentifier(resourceServer.identifier())
- *             .scope(&#34;write:posts&#34;)
+ *             .scope("write:posts")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

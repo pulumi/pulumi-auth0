@@ -18,7 +18,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -30,6 +29,7 @@ namespace Pulumi.Auth0
     ///     // Example:
     ///     var admin = new Auth0.Role("admin", new()
     ///     {
+    ///         Name = "admin",
     ///         Description = "Administrator",
     ///     });
     /// 
@@ -37,11 +37,12 @@ namespace Pulumi.Auth0
     ///     {
     ///         ConnectionName = "Username-Password-Authentication",
     ///         Username = "unique_username",
+    ///         Name = "Firstname Lastname",
     ///         Email = "test@test.com",
     ///         Password = "passpass$12$12",
     ///     });
     /// 
-    ///     var userRoles = new Auth0.UserRoles("userRoles", new()
+    ///     var userRoles = new Auth0.UserRoles("user_roles", new()
     ///     {
     ///         UserId = user.Id,
     ///         Roles = new[]
@@ -52,7 +53,6 @@ namespace Pulumi.Auth0
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

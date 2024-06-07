@@ -16,14 +16,14 @@ public final class ClientAddonsZoomArgs extends com.pulumi.resources.ResourceArg
     public static final ClientAddonsZoomArgs Empty = new ClientAddonsZoomArgs();
 
     /**
-     * Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+     * Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
      * 
      */
     @Import(name="account")
     private @Nullable Output<String> account;
 
     /**
-     * @return Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+     * @return Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
      * 
      */
     public Optional<Output<String>> account() {
@@ -55,7 +55,7 @@ public final class ClientAddonsZoomArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param account Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+         * @param account Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ClientAddonsZoomArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param account Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+         * @param account Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
          * 
          * @return builder
          * 

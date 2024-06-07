@@ -13,25 +13,27 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
  * // Example:
- * const admin = new auth0.Role("admin", {description: "Administrator"});
+ * const admin = new auth0.Role("admin", {
+ *     name: "admin",
+ *     description: "Administrator",
+ * });
  * const user = new auth0.User("user", {
  *     connectionName: "Username-Password-Authentication",
  *     username: "unique_username",
+ *     name: "Firstname Lastname",
  *     email: "test@test.com",
  *     password: "passpass$12$12",
  * });
- * const userRoles = new auth0.UserRole("userRoles", {
+ * const userRoles = new auth0.UserRole("user_roles", {
  *     userId: user.id,
  *     roleId: admin.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -14,7 +14,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -23,27 +22,29 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myProtection = new Auth0.AttackProtection("myProtection", new()
+    ///     var myProtection = new Auth0.AttackProtection("my_protection", new()
     ///     {
-    ///         BreachedPasswordDetection = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionArgs
+    ///         SuspiciousIpThrottling = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingArgs
     ///         {
-    ///             AdminNotificationFrequencies = new[]
-    ///             {
-    ///                 "daily",
-    ///             },
     ///             Enabled = true,
-    ///             Method = "standard",
-    ///             PreUserRegistration = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs
-    ///             {
-    ///                 Shields = new[]
-    ///                 {
-    ///                     "block",
-    ///                 },
-    ///             },
     ///             Shields = new[]
     ///             {
     ///                 "admin_notification",
     ///                 "block",
+    ///             },
+    ///             Allowlists = new[]
+    ///             {
+    ///                 "192.168.1.1",
+    ///             },
+    ///             PreLogin = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreLoginArgs
+    ///             {
+    ///                 MaxAttempts = 100,
+    ///                 Rate = 864000,
+    ///             },
+    ///             PreUserRegistration = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs
+    ///             {
+    ///                 MaxAttempts = 50,
+    ///                 Rate = 1200,
     ///             },
     ///         },
     ///         BruteForceProtection = new Auth0.Inputs.AttackProtectionBruteForceProtectionArgs
@@ -61,34 +62,31 @@ namespace Pulumi.Auth0
     ///                 "user_notification",
     ///             },
     ///         },
-    ///         SuspiciousIpThrottling = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingArgs
+    ///         BreachedPasswordDetection = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionArgs
     ///         {
-    ///             Allowlists = new[]
+    ///             AdminNotificationFrequencies = new[]
     ///             {
-    ///                 "192.168.1.1",
+    ///                 "daily",
     ///             },
     ///             Enabled = true,
-    ///             PreLogin = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreLoginArgs
-    ///             {
-    ///                 MaxAttempts = 100,
-    ///                 Rate = 864000,
-    ///             },
-    ///             PreUserRegistration = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs
-    ///             {
-    ///                 MaxAttempts = 50,
-    ///                 Rate = 1200,
-    ///             },
+    ///             Method = "standard",
     ///             Shields = new[]
     ///             {
     ///                 "admin_notification",
     ///                 "block",
+    ///             },
+    ///             PreUserRegistration = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs
+    ///             {
+    ///                 Shields = new[]
+    ///                 {
+    ///                     "block",
+    ///                 },
     ///             },
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

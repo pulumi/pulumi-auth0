@@ -109,14 +109,19 @@ class OrganizationConnections(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_connection_1 = auth0.Connection("myConnection-1", strategy="auth0")
-        my_connection_2 = auth0.Connection("myConnection-2", strategy="auth0")
-        my_organization = auth0.Organization("myOrganization", display_name="My Organization")
+        my_connection_1 = auth0.Connection("my_connection-1",
+            name="My Connection 1",
+            strategy="auth0")
+        my_connection_2 = auth0.Connection("my_connection-2",
+            name="My Connection 2",
+            strategy="auth0")
+        my_organization = auth0.Organization("my_organization",
+            name="my-organization",
+            display_name="My Organization")
         one_to_many = auth0.OrganizationConnections("one-to-many",
             organization_id=my_organization.id,
             enabled_connections=[
@@ -130,7 +135,6 @@ class OrganizationConnections(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -165,14 +169,19 @@ class OrganizationConnections(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_connection_1 = auth0.Connection("myConnection-1", strategy="auth0")
-        my_connection_2 = auth0.Connection("myConnection-2", strategy="auth0")
-        my_organization = auth0.Organization("myOrganization", display_name="My Organization")
+        my_connection_1 = auth0.Connection("my_connection-1",
+            name="My Connection 1",
+            strategy="auth0")
+        my_connection_2 = auth0.Connection("my_connection-2",
+            name="My Connection 2",
+            strategy="auth0")
+        my_organization = auth0.Organization("my_organization",
+            name="my-organization",
+            display_name="My Organization")
         one_to_many = auth0.OrganizationConnections("one-to-many",
             organization_id=my_organization.id,
             enabled_connections=[
@@ -186,7 +195,6 @@ class OrganizationConnections(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

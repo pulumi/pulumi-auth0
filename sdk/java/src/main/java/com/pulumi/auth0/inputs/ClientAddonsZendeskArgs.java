@@ -16,14 +16,14 @@ public final class ClientAddonsZendeskArgs extends com.pulumi.resources.Resource
     public static final ClientAddonsZendeskArgs Empty = new ClientAddonsZendeskArgs();
 
     /**
-     * Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+     * Zendesk account name. Usually the first segment in your Zendesk URL, for example `https://acme-org.zendesk.com` would be `acme-org`.
      * 
      */
     @Import(name="accountName")
     private @Nullable Output<String> accountName;
 
     /**
-     * @return Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+     * @return Zendesk account name. Usually the first segment in your Zendesk URL, for example `https://acme-org.zendesk.com` would be `acme-org`.
      * 
      */
     public Optional<Output<String>> accountName() {
@@ -55,7 +55,7 @@ public final class ClientAddonsZendeskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountName Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+         * @param accountName Zendesk account name. Usually the first segment in your Zendesk URL, for example `https://acme-org.zendesk.com` would be `acme-org`.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ClientAddonsZendeskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountName Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+         * @param accountName Zendesk account name. Usually the first segment in your Zendesk URL, for example `https://acme-org.zendesk.com` would be `acme-org`.
          * 
          * @return builder
          * 

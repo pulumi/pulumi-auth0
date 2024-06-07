@@ -30,7 +30,7 @@ class ConnectionArgs:
         :param pulumi.Input[str] display_name: Name used in login screen.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
-        :param pulumi.Input[str] name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
@@ -103,7 +103,7 @@ class ConnectionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        Name of the connection.
         """
         return pulumi.get(self, "name")
 
@@ -164,7 +164,7 @@ class _ConnectionState:
         :param pulumi.Input[str] display_name: Name used in login screen.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
-        :param pulumi.Input[str] name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
@@ -227,7 +227,7 @@ class _ConnectionState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        Name of the connection.
         """
         return pulumi.get(self, "name")
 
@@ -306,26 +306,93 @@ class Connection(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Auth0 Connection
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_auth0 as auth0
+
+        # This is an example of an Auth0 connection.
+        my_connection = auth0.Connection("my_connection",
+            name="Example-Connection",
+            is_domain_connection=True,
+            strategy="auth0",
+            metadata={
+                "key1": "foo",
+                "key2": "bar",
+            },
+            options=auth0.ConnectionOptionsArgs(
+                password_policy="excellent",
+                brute_force_protection=True,
+                enabled_database_customization=True,
+                import_mode=False,
+                requires_username=True,
+                disable_signup=False,
+                custom_scripts={
+                    "get_user": \"\"\"        function getByEmail(email, callback) {
+                  return callback(new Error("Whoops!"));
+                }
+        \"\"\",
+                },
+                configuration={
+                    "foo": "bar",
+                    "bar": "baz",
+                },
+                upstream_params=json.dumps({
+                    "screen_name": {
+                        "alias": "login_hint",
+                    },
+                }),
+                password_histories=[auth0.ConnectionOptionsPasswordHistoryArgs(
+                    enable=True,
+                    size=3,
+                )],
+                password_no_personal_info=auth0.ConnectionOptionsPasswordNoPersonalInfoArgs(
+                    enable=True,
+                ),
+                password_dictionary=auth0.ConnectionOptionsPasswordDictionaryArgs(
+                    enable=True,
+                    dictionaries=[
+                        "password",
+                        "admin",
+                        "1234",
+                    ],
+                ),
+                password_complexity_options=auth0.ConnectionOptionsPasswordComplexityOptionsArgs(
+                    min_length=12,
+                ),
+                validation=auth0.ConnectionOptionsValidationArgs(
+                    username=auth0.ConnectionOptionsValidationUsernameArgs(
+                        min=10,
+                        max=40,
+                    ),
+                ),
+                mfa=auth0.ConnectionOptionsMfaArgs(
+                    active=True,
+                    return_enroll_settings=True,
+                ),
+            ))
+        ```
+
         ### Google OAuth2 Connection
 
         > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        google_oauth2 = auth0.Connection("googleOauth2",
+        # This is an example of a Google OAuth2 connection.
+        google_oauth2 = auth0.Connection("google_oauth2",
+            name="Google-OAuth2-Connection",
+            strategy="google-oauth2",
             options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
                 allowed_audiences=[
                     "example.com",
                     "api.example.com",
-                ],
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                non_persistent_attrs=[
-                    "ethnicity",
-                    "gender",
                 ],
                 scopes=[
                     "email",
@@ -334,26 +401,66 @@ class Connection(pulumi.CustomResource):
                     "youtube",
                 ],
                 set_user_root_attributes="on_each_login",
-            ),
-            strategy="google-oauth2")
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ### Facebook Connection
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        facebook = auth0.Connection("facebook",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
                 non_persistent_attrs=[
                     "ethnicity",
                     "gender",
                 ],
+            ))
+        ```
+
+        ### Google Apps
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_auth0 as auth0
+
+        google_apps = auth0.Connection("google_apps",
+            name="connection-google-apps",
+            is_domain_connection=False,
+            strategy="google-apps",
+            show_as_button=False,
+            options=auth0.ConnectionOptionsArgs(
+                client_id="",
+                client_secret="",
+                domain="example.com",
+                tenant_domain="example.com",
+                domain_aliases=[
+                    "example.com",
+                    "api.example.com",
+                ],
+                api_enable_users=True,
+                scopes=[
+                    "ext_profile",
+                    "ext_groups",
+                ],
+                icon_url="https://example.com/assets/logo.png",
+                upstream_params=json.dumps({
+                    "screen_name": {
+                        "alias": "login_hint",
+                    },
+                }),
+                set_user_root_attributes="on_each_login",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+            ))
+        ```
+
+        ### Facebook Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # This is an example of a Facebook connection.
+        facebook = auth0.Connection("facebook",
+            name="Facebook-Connection",
+            strategy="facebook",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
                 scopes=[
                     "public_profile",
                     "email",
@@ -361,83 +468,82 @@ class Connection(pulumi.CustomResource):
                     "user_birthday",
                 ],
                 set_user_root_attributes="on_each_login",
-            ),
-            strategy="facebook")
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ### Apple Connection
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        apple = auth0.Connection("apple",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret=\"\"\"-----BEGIN PRIVATE KEY-----
-        MIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA
-        -----END PRIVATE KEY-----
-        \"\"\",
-                key_id="<key-id>",
                 non_persistent_attrs=[
                     "ethnicity",
                     "gender",
                 ],
+            ))
+        ```
+
+        ### Apple Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # This is an example of an Apple connection.
+        apple = auth0.Connection("apple",
+            name="Apple-Connection",
+            strategy="apple",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret=\"\"\"-----BEGIN PRIVATE KEY-----
+        MIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA
+        -----END PRIVATE KEY-----\"\"\",
+                team_id="<team-id>",
+                key_id="<key-id>",
                 scopes=[
                     "email",
                     "name",
                 ],
                 set_user_root_attributes="on_first_login",
-                team_id="<team-id>",
-            ),
-            strategy="apple")
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ### LinkedIn Connection
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        linkedin = auth0.Connection("linkedin",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
                 non_persistent_attrs=[
                     "ethnicity",
                     "gender",
                 ],
+            ))
+        ```
+
+        ### LinkedIn Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # This is an example of an LinkedIn connection.
+        linkedin = auth0.Connection("linkedin",
+            name="Linkedin-Connection",
+            strategy="linkedin",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                strategy_version=2,
                 scopes=[
                     "basic_profile",
                     "profile",
                     "email",
                 ],
                 set_user_root_attributes="on_each_login",
-                strategy_version=2,
-            ),
-            strategy="linkedin")
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ### GitHub Connection
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        github = auth0.Connection("github",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
                 non_persistent_attrs=[
                     "ethnicity",
                     "gender",
                 ],
+            ))
+        ```
+
+        ### GitHub Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # This is an example of an GitHub connection.
+        github = auth0.Connection("github",
+            name="GitHub-Connection",
+            strategy="github",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
                 scopes=[
                     "email",
                     "profile",
@@ -445,171 +551,412 @@ class Connection(pulumi.CustomResource):
                     "repo",
                 ],
                 set_user_root_attributes="on_each_login",
-            ),
-            strategy="github")
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ### SalesForce Connection
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        salesforce = auth0.Connection("salesforce",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                community_base_url="https://salesforce.example.com",
                 non_persistent_attrs=[
                     "ethnicity",
                     "gender",
                 ],
+            ))
+        ```
+
+        ### SalesForce Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # This is an example of an SalesForce connection.
+        salesforce = auth0.Connection("salesforce",
+            name="Salesforce-Connection",
+            strategy="salesforce",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                community_base_url="https://salesforce.example.com",
                 scopes=[
                     "openid",
                     "email",
                 ],
                 set_user_root_attributes="on_first_login",
-            ),
-            strategy="salesforce")
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+            ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### OAuth2 Connection
 
         Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
+        # This is an example of an OAuth2 connection.
         oauth2 = auth0.Connection("oauth2",
+            name="OAuth2-Connection",
+            strategy="oauth2",
             options=auth0.ConnectionOptionsArgs(
-                authorization_endpoint="https://auth.example.com/oauth2/authorize",
                 client_id="<client-id>",
                 client_secret="<client-secret>",
-                icon_url="https://auth.example.com/assets/logo.png",
-                non_persistent_attrs=[
-                    "ethnicity",
-                    "gender",
-                ],
-                pkce_enabled=True,
                 scopes=[
                     "basic_profile",
                     "profile",
                     "email",
                 ],
+                token_endpoint="https://auth.example.com/oauth2/token",
+                authorization_endpoint="https://auth.example.com/oauth2/authorize",
+                pkce_enabled=True,
+                icon_url="https://auth.example.com/assets/logo.png",
                 scripts={
                     "fetchUserProfile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
                   return callback(new Error("Whoops!"));
                 }
-              
         \"\"\",
                 },
                 set_user_root_attributes="on_each_login",
-                token_endpoint="https://auth.example.com/oauth2/token",
-            ),
-            strategy="oauth2")
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+            ))
         ```
-        <!--End PulumiCodeChooser -->
 
-        ### SMS Connection
+        ### Active Directory (AD)
 
-        > To be able to see this in the management dashboard as well, the name of the connection must be set to "sms".
-
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
+        import json
         import pulumi_auth0 as auth0
 
-        sms = auth0.Connection("sms",
-            is_domain_connection=False,
+        ad = auth0.Connection("ad",
+            name="connection-active-directory",
+            display_name="Active Directory Connection",
+            strategy="ad",
+            show_as_button=True,
             options=auth0.ConnectionOptionsArgs(
+                disable_self_service_change_password=True,
                 brute_force_protection=True,
-                disable_signup=False,
-                forward_request_info=True,
-                from_="+15555555555",
-                gateway_authentication=auth0.ConnectionOptionsGatewayAuthenticationArgs(
-                    audience="https://somewhere.com/sms-gateway",
-                    method="bearer",
-                    secret="4e2680bb74ec2ae24736476dd37ed6c2",
-                    secret_base64_encoded=False,
-                    subject="test.us.auth0.com:sms",
-                ),
-                gateway_url="https://somewhere.com/sms-gateway",
-                name="sms",
-                provider="sms_gateway",
-                syntax="md_with_macros",
-                template="@@password@@",
-                totp=auth0.ConnectionOptionsTotpArgs(
-                    length=6,
-                    time_step=300,
-                ),
-            ),
-            strategy="sms")
+                tenant_domain="example.com",
+                icon_url="https://example.com/assets/logo.png",
+                domain_aliases=[
+                    "example.com",
+                    "api.example.com",
+                ],
+                ips=[
+                    "192.168.1.1",
+                    "192.168.1.2",
+                ],
+                set_user_root_attributes="on_each_login",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                upstream_params=json.dumps({
+                    "screen_name": {
+                        "alias": "login_hint",
+                    },
+                }),
+                use_cert_auth=False,
+                use_kerberos=False,
+                disable_cache=False,
+            ))
         ```
-        <!--End PulumiCodeChooser -->
+
+        ### Azure AD Connection
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_auth0 as auth0
+
+        azure_ad = auth0.Connection("azure_ad",
+            name="connection-azure-ad",
+            strategy="waad",
+            show_as_button=True,
+            options=auth0.ConnectionOptionsArgs(
+                identity_api="azure-active-directory-v1.0",
+                client_id="123456",
+                client_secret="123456",
+                app_id="app-id-123",
+                tenant_domain="example.onmicrosoft.com",
+                domain="example.onmicrosoft.com",
+                domain_aliases=[
+                    "example.com",
+                    "api.example.com",
+                ],
+                icon_url="https://example.onmicrosoft.com/assets/logo.png",
+                use_wsfed=False,
+                waad_protocol="openid-connect",
+                waad_common_endpoint=False,
+                max_groups_to_retrieve="250",
+                api_enable_users=True,
+                scopes=[
+                    "basic_profile",
+                    "ext_groups",
+                    "ext_profile",
+                ],
+                set_user_root_attributes="on_each_login",
+                should_trust_email_verified_connection="never_set_emails_as_verified",
+                upstream_params=json.dumps({
+                    "screen_name": {
+                        "alias": "login_hint",
+                    },
+                }),
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+            ))
+        ```
 
         ### Email Connection
 
         > To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        passwordless_email = auth0.Connection("passwordlessEmail",
+        # This is an example of an Email connection.
+        passwordless_email = auth0.Connection("passwordless_email",
+            strategy="email",
+            name="email",
             options=auth0.ConnectionOptionsArgs(
-                auth_params={
-                    "responseType": "code",
-                    "scope": "openid email profile offline_access",
-                },
-                brute_force_protection=True,
-                disable_signup=False,
-                from_="{{ application.name }} <root@auth0.com>",
                 name="email",
-                non_persistent_attrs=[],
-                set_user_root_attributes="on_each_login",
+                from_="{{ application.name }} <root@auth0.com>",
                 subject="Welcome to {{ application.name }}",
                 syntax="liquid",
                 template="<html>This is the body of the email</html>",
+                disable_signup=False,
+                brute_force_protection=True,
+                set_user_root_attributes="on_each_login",
+                non_persistent_attrs=[],
+                auth_params={
+                    "scope": "openid email profile offline_access",
+                    "response_type": "code",
+                },
                 totp=auth0.ConnectionOptionsTotpArgs(
-                    length=6,
                     time_step=300,
+                    length=6,
                 ),
-            ),
-            strategy="email")
+            ))
         ```
-        <!--End PulumiCodeChooser -->
+
+        ### SAML Connection
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_auth0 as auth0
+
+        # This is an example of a SAML connection.
+        samlp = auth0.Connection("samlp",
+            name="SAML-Connection",
+            strategy="samlp",
+            options=auth0.ConnectionOptionsArgs(
+                debug=False,
+                signing_cert="<signing-certificate>",
+                sign_in_endpoint="https://saml.provider/sign_in",
+                sign_out_endpoint="https://saml.provider/sign_out",
+                disable_sign_out=True,
+                tenant_domain="example.com",
+                domain_aliases=[
+                    "example.com",
+                    "alias.example.com",
+                ],
+                protocol_binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST",
+                request_template=\"\"\"<samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+        @@AssertServiceURLAndDestination@@
+            ID="@@ID@@"
+            IssueInstant="@@IssueInstant@@"
+            ProtocolBinding="@@ProtocolBinding@@" Version="2.0">
+            <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">@@Issuer@@</saml:Issuer>
+        </samlp:AuthnRequest>\"\"\",
+                user_id_attribute="https://saml.provider/imi/ns/identity-200810",
+                signature_algorithm="rsa-sha256",
+                digest_algorithm="sha256",
+                icon_url="https://saml.provider/assets/logo.png",
+                entity_id="<entity_id>",
+                metadata_xml=\"\"\"    <?xml version="1.0"?>
+            <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="https://example.com">
+              <md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+                <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.provider/sign_out"/>
+                <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.provider/sign_in"/>
+              </md:IDPSSODescriptor>
+            </md:EntityDescriptor>
+        \"\"\",
+                metadata_url="https://saml.provider/imi/ns/FederationMetadata.xml",
+                fields_map=json.dumps({
+                    "name": [
+                        "name",
+                        "nameidentifier",
+                    ],
+                    "email": [
+                        "emailaddress",
+                        "nameidentifier",
+                    ],
+                    "family_name": "surname",
+                }),
+                signing_key=auth0.ConnectionOptionsSigningKeyArgs(
+                    key=\"\"\"-----BEGIN PRIVATE KEY-----
+        ...{your private key here}...
+        -----END PRIVATE KEY-----\"\"\",
+                    cert=\"\"\"-----BEGIN CERTIFICATE-----
+        ...{your public key cert here}...
+        -----END CERTIFICATE-----\"\"\",
+                ),
+                decryption_key=auth0.ConnectionOptionsDecryptionKeyArgs(
+                    key=\"\"\"-----BEGIN PRIVATE KEY-----
+        ...{your private key here}...
+        -----END PRIVATE KEY-----\"\"\",
+                    cert=\"\"\"-----BEGIN CERTIFICATE-----
+        ...{your public key cert here}...
+        -----END CERTIFICATE-----\"\"\",
+                ),
+                idp_initiated=auth0.ConnectionOptionsIdpInitiatedArgs(
+                    client_id="client_id",
+                    client_protocol="samlp",
+                    client_authorize_query="type=code&timeout=30",
+                ),
+            ))
+        ```
 
         ### WindowsLive Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
+        # This is an example of a WindowsLive connection.
         windowslive = auth0.Connection("windowslive",
+            name="Windowslive-Connection",
+            strategy="windowslive",
             options=auth0.ConnectionOptionsArgs(
                 client_id="<client-id>",
                 client_secret="<client-secret>",
-                non_persistent_attrs=[
-                    "ethnicity",
-                    "gender",
-                ],
+                strategy_version=2,
                 scopes=[
                     "signin",
                     "graph_user",
                 ],
                 set_user_root_attributes="on_first_login",
-                strategy_version=2,
-            ),
-            strategy="windowslive")
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+            ))
         ```
-        <!--End PulumiCodeChooser -->
+
+        ### OIDC Connection
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_auth0 as auth0
+
+        # This is an example of an OIDC connection.
+        oidc = auth0.Connection("oidc",
+            name="oidc-connection",
+            display_name="OIDC Connection",
+            strategy="oidc",
+            show_as_button=False,
+            options=auth0.ConnectionOptionsArgs(
+                client_id="1234567",
+                client_secret="1234567",
+                domain_aliases=["example.com"],
+                tenant_domain="",
+                icon_url="https://example.com/assets/logo.png",
+                type="back_channel",
+                issuer="https://www.paypalobjects.com",
+                jwks_uri="https://api.paypal.com/v1/oauth2/certs",
+                discovery_url="https://www.paypalobjects.com/.well-known/openid-configuration",
+                token_endpoint="https://api.paypal.com/v1/oauth2/token",
+                userinfo_endpoint="https://api.paypal.com/v1/oauth2/token/userinfo",
+                authorization_endpoint="https://www.paypal.com/signin/authorize",
+                scopes=[
+                    "openid",
+                    "email",
+                ],
+                set_user_root_attributes="on_first_login",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                connection_settings=auth0.ConnectionOptionsConnectionSettingsArgs(
+                    pkce="auto",
+                ),
+                attribute_map=auth0.ConnectionOptionsAttributeMapArgs(
+                    mapping_mode="use_map",
+                    userinfo_scope="openid email profile groups",
+                    attributes=json.dumps({
+                        "name": "${context.tokenset.name}",
+                        "email": "${context.tokenset.email}",
+                        "email_verified": "${context.tokenset.email_verified}",
+                        "nickname": "${context.tokenset.nickname}",
+                        "picture": "${context.tokenset.picture}",
+                        "given_name": "${context.tokenset.given_name}",
+                        "family_name": "${context.tokenset.family_name}",
+                    }),
+                ),
+            ))
+        ```
+
+        ### Okta Connection
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_auth0 as auth0
+
+        # This is an example of an Okta Workforce connection.
+        okta = auth0.Connection("okta",
+            name="okta-connection",
+            display_name="Okta Workforce Connection",
+            strategy="okta",
+            show_as_button=False,
+            options=auth0.ConnectionOptionsArgs(
+                client_id="1234567",
+                client_secret="1234567",
+                domain="example.okta.com",
+                domain_aliases=["example.com"],
+                issuer="https://example.okta.com",
+                jwks_uri="https://example.okta.com/oauth2/v1/keys",
+                token_endpoint="https://example.okta.com/oauth2/v1/token",
+                userinfo_endpoint="https://example.okta.com/oauth2/v1/userinfo",
+                authorization_endpoint="https://example.okta.com/oauth2/v1/authorize",
+                scopes=[
+                    "openid",
+                    "email",
+                ],
+                set_user_root_attributes="on_first_login",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                upstream_params=json.dumps({
+                    "screen_name": {
+                        "alias": "login_hint",
+                    },
+                }),
+                connection_settings=auth0.ConnectionOptionsConnectionSettingsArgs(
+                    pkce="auto",
+                ),
+                attribute_map=auth0.ConnectionOptionsAttributeMapArgs(
+                    mapping_mode="basic_profile",
+                    userinfo_scope="openid email profile groups",
+                    attributes=json.dumps({
+                        "name": "${context.tokenset.name}",
+                        "email": "${context.tokenset.email}",
+                        "email_verified": "${context.tokenset.email_verified}",
+                        "nickname": "${context.tokenset.nickname}",
+                        "picture": "${context.tokenset.picture}",
+                        "given_name": "${context.tokenset.given_name}",
+                        "family_name": "${context.tokenset.family_name}",
+                    }),
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -628,7 +975,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Name used in login screen.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
-        :param pulumi.Input[str] name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
@@ -648,26 +995,93 @@ class Connection(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Auth0 Connection
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_auth0 as auth0
+
+        # This is an example of an Auth0 connection.
+        my_connection = auth0.Connection("my_connection",
+            name="Example-Connection",
+            is_domain_connection=True,
+            strategy="auth0",
+            metadata={
+                "key1": "foo",
+                "key2": "bar",
+            },
+            options=auth0.ConnectionOptionsArgs(
+                password_policy="excellent",
+                brute_force_protection=True,
+                enabled_database_customization=True,
+                import_mode=False,
+                requires_username=True,
+                disable_signup=False,
+                custom_scripts={
+                    "get_user": \"\"\"        function getByEmail(email, callback) {
+                  return callback(new Error("Whoops!"));
+                }
+        \"\"\",
+                },
+                configuration={
+                    "foo": "bar",
+                    "bar": "baz",
+                },
+                upstream_params=json.dumps({
+                    "screen_name": {
+                        "alias": "login_hint",
+                    },
+                }),
+                password_histories=[auth0.ConnectionOptionsPasswordHistoryArgs(
+                    enable=True,
+                    size=3,
+                )],
+                password_no_personal_info=auth0.ConnectionOptionsPasswordNoPersonalInfoArgs(
+                    enable=True,
+                ),
+                password_dictionary=auth0.ConnectionOptionsPasswordDictionaryArgs(
+                    enable=True,
+                    dictionaries=[
+                        "password",
+                        "admin",
+                        "1234",
+                    ],
+                ),
+                password_complexity_options=auth0.ConnectionOptionsPasswordComplexityOptionsArgs(
+                    min_length=12,
+                ),
+                validation=auth0.ConnectionOptionsValidationArgs(
+                    username=auth0.ConnectionOptionsValidationUsernameArgs(
+                        min=10,
+                        max=40,
+                    ),
+                ),
+                mfa=auth0.ConnectionOptionsMfaArgs(
+                    active=True,
+                    return_enroll_settings=True,
+                ),
+            ))
+        ```
+
         ### Google OAuth2 Connection
 
         > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        google_oauth2 = auth0.Connection("googleOauth2",
+        # This is an example of a Google OAuth2 connection.
+        google_oauth2 = auth0.Connection("google_oauth2",
+            name="Google-OAuth2-Connection",
+            strategy="google-oauth2",
             options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
                 allowed_audiences=[
                     "example.com",
                     "api.example.com",
-                ],
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                non_persistent_attrs=[
-                    "ethnicity",
-                    "gender",
                 ],
                 scopes=[
                     "email",
@@ -676,26 +1090,66 @@ class Connection(pulumi.CustomResource):
                     "youtube",
                 ],
                 set_user_root_attributes="on_each_login",
-            ),
-            strategy="google-oauth2")
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ### Facebook Connection
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        facebook = auth0.Connection("facebook",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
                 non_persistent_attrs=[
                     "ethnicity",
                     "gender",
                 ],
+            ))
+        ```
+
+        ### Google Apps
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_auth0 as auth0
+
+        google_apps = auth0.Connection("google_apps",
+            name="connection-google-apps",
+            is_domain_connection=False,
+            strategy="google-apps",
+            show_as_button=False,
+            options=auth0.ConnectionOptionsArgs(
+                client_id="",
+                client_secret="",
+                domain="example.com",
+                tenant_domain="example.com",
+                domain_aliases=[
+                    "example.com",
+                    "api.example.com",
+                ],
+                api_enable_users=True,
+                scopes=[
+                    "ext_profile",
+                    "ext_groups",
+                ],
+                icon_url="https://example.com/assets/logo.png",
+                upstream_params=json.dumps({
+                    "screen_name": {
+                        "alias": "login_hint",
+                    },
+                }),
+                set_user_root_attributes="on_each_login",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+            ))
+        ```
+
+        ### Facebook Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # This is an example of a Facebook connection.
+        facebook = auth0.Connection("facebook",
+            name="Facebook-Connection",
+            strategy="facebook",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
                 scopes=[
                     "public_profile",
                     "email",
@@ -703,83 +1157,82 @@ class Connection(pulumi.CustomResource):
                     "user_birthday",
                 ],
                 set_user_root_attributes="on_each_login",
-            ),
-            strategy="facebook")
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ### Apple Connection
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        apple = auth0.Connection("apple",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret=\"\"\"-----BEGIN PRIVATE KEY-----
-        MIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA
-        -----END PRIVATE KEY-----
-        \"\"\",
-                key_id="<key-id>",
                 non_persistent_attrs=[
                     "ethnicity",
                     "gender",
                 ],
+            ))
+        ```
+
+        ### Apple Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # This is an example of an Apple connection.
+        apple = auth0.Connection("apple",
+            name="Apple-Connection",
+            strategy="apple",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret=\"\"\"-----BEGIN PRIVATE KEY-----
+        MIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA
+        -----END PRIVATE KEY-----\"\"\",
+                team_id="<team-id>",
+                key_id="<key-id>",
                 scopes=[
                     "email",
                     "name",
                 ],
                 set_user_root_attributes="on_first_login",
-                team_id="<team-id>",
-            ),
-            strategy="apple")
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ### LinkedIn Connection
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        linkedin = auth0.Connection("linkedin",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
                 non_persistent_attrs=[
                     "ethnicity",
                     "gender",
                 ],
+            ))
+        ```
+
+        ### LinkedIn Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # This is an example of an LinkedIn connection.
+        linkedin = auth0.Connection("linkedin",
+            name="Linkedin-Connection",
+            strategy="linkedin",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                strategy_version=2,
                 scopes=[
                     "basic_profile",
                     "profile",
                     "email",
                 ],
                 set_user_root_attributes="on_each_login",
-                strategy_version=2,
-            ),
-            strategy="linkedin")
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ### GitHub Connection
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        github = auth0.Connection("github",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
                 non_persistent_attrs=[
                     "ethnicity",
                     "gender",
                 ],
+            ))
+        ```
+
+        ### GitHub Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # This is an example of an GitHub connection.
+        github = auth0.Connection("github",
+            name="GitHub-Connection",
+            strategy="github",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
                 scopes=[
                     "email",
                     "profile",
@@ -787,171 +1240,412 @@ class Connection(pulumi.CustomResource):
                     "repo",
                 ],
                 set_user_root_attributes="on_each_login",
-            ),
-            strategy="github")
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ### SalesForce Connection
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        salesforce = auth0.Connection("salesforce",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                community_base_url="https://salesforce.example.com",
                 non_persistent_attrs=[
                     "ethnicity",
                     "gender",
                 ],
+            ))
+        ```
+
+        ### SalesForce Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # This is an example of an SalesForce connection.
+        salesforce = auth0.Connection("salesforce",
+            name="Salesforce-Connection",
+            strategy="salesforce",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                community_base_url="https://salesforce.example.com",
                 scopes=[
                     "openid",
                     "email",
                 ],
                 set_user_root_attributes="on_first_login",
-            ),
-            strategy="salesforce")
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+            ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### OAuth2 Connection
 
         Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
+        # This is an example of an OAuth2 connection.
         oauth2 = auth0.Connection("oauth2",
+            name="OAuth2-Connection",
+            strategy="oauth2",
             options=auth0.ConnectionOptionsArgs(
-                authorization_endpoint="https://auth.example.com/oauth2/authorize",
                 client_id="<client-id>",
                 client_secret="<client-secret>",
-                icon_url="https://auth.example.com/assets/logo.png",
-                non_persistent_attrs=[
-                    "ethnicity",
-                    "gender",
-                ],
-                pkce_enabled=True,
                 scopes=[
                     "basic_profile",
                     "profile",
                     "email",
                 ],
+                token_endpoint="https://auth.example.com/oauth2/token",
+                authorization_endpoint="https://auth.example.com/oauth2/authorize",
+                pkce_enabled=True,
+                icon_url="https://auth.example.com/assets/logo.png",
                 scripts={
                     "fetchUserProfile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
                   return callback(new Error("Whoops!"));
                 }
-              
         \"\"\",
                 },
                 set_user_root_attributes="on_each_login",
-                token_endpoint="https://auth.example.com/oauth2/token",
-            ),
-            strategy="oauth2")
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+            ))
         ```
-        <!--End PulumiCodeChooser -->
 
-        ### SMS Connection
+        ### Active Directory (AD)
 
-        > To be able to see this in the management dashboard as well, the name of the connection must be set to "sms".
-
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
+        import json
         import pulumi_auth0 as auth0
 
-        sms = auth0.Connection("sms",
-            is_domain_connection=False,
+        ad = auth0.Connection("ad",
+            name="connection-active-directory",
+            display_name="Active Directory Connection",
+            strategy="ad",
+            show_as_button=True,
             options=auth0.ConnectionOptionsArgs(
+                disable_self_service_change_password=True,
                 brute_force_protection=True,
-                disable_signup=False,
-                forward_request_info=True,
-                from_="+15555555555",
-                gateway_authentication=auth0.ConnectionOptionsGatewayAuthenticationArgs(
-                    audience="https://somewhere.com/sms-gateway",
-                    method="bearer",
-                    secret="4e2680bb74ec2ae24736476dd37ed6c2",
-                    secret_base64_encoded=False,
-                    subject="test.us.auth0.com:sms",
-                ),
-                gateway_url="https://somewhere.com/sms-gateway",
-                name="sms",
-                provider="sms_gateway",
-                syntax="md_with_macros",
-                template="@@password@@",
-                totp=auth0.ConnectionOptionsTotpArgs(
-                    length=6,
-                    time_step=300,
-                ),
-            ),
-            strategy="sms")
+                tenant_domain="example.com",
+                icon_url="https://example.com/assets/logo.png",
+                domain_aliases=[
+                    "example.com",
+                    "api.example.com",
+                ],
+                ips=[
+                    "192.168.1.1",
+                    "192.168.1.2",
+                ],
+                set_user_root_attributes="on_each_login",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                upstream_params=json.dumps({
+                    "screen_name": {
+                        "alias": "login_hint",
+                    },
+                }),
+                use_cert_auth=False,
+                use_kerberos=False,
+                disable_cache=False,
+            ))
         ```
-        <!--End PulumiCodeChooser -->
+
+        ### Azure AD Connection
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_auth0 as auth0
+
+        azure_ad = auth0.Connection("azure_ad",
+            name="connection-azure-ad",
+            strategy="waad",
+            show_as_button=True,
+            options=auth0.ConnectionOptionsArgs(
+                identity_api="azure-active-directory-v1.0",
+                client_id="123456",
+                client_secret="123456",
+                app_id="app-id-123",
+                tenant_domain="example.onmicrosoft.com",
+                domain="example.onmicrosoft.com",
+                domain_aliases=[
+                    "example.com",
+                    "api.example.com",
+                ],
+                icon_url="https://example.onmicrosoft.com/assets/logo.png",
+                use_wsfed=False,
+                waad_protocol="openid-connect",
+                waad_common_endpoint=False,
+                max_groups_to_retrieve="250",
+                api_enable_users=True,
+                scopes=[
+                    "basic_profile",
+                    "ext_groups",
+                    "ext_profile",
+                ],
+                set_user_root_attributes="on_each_login",
+                should_trust_email_verified_connection="never_set_emails_as_verified",
+                upstream_params=json.dumps({
+                    "screen_name": {
+                        "alias": "login_hint",
+                    },
+                }),
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+            ))
+        ```
 
         ### Email Connection
 
         > To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        passwordless_email = auth0.Connection("passwordlessEmail",
+        # This is an example of an Email connection.
+        passwordless_email = auth0.Connection("passwordless_email",
+            strategy="email",
+            name="email",
             options=auth0.ConnectionOptionsArgs(
-                auth_params={
-                    "responseType": "code",
-                    "scope": "openid email profile offline_access",
-                },
-                brute_force_protection=True,
-                disable_signup=False,
-                from_="{{ application.name }} <root@auth0.com>",
                 name="email",
-                non_persistent_attrs=[],
-                set_user_root_attributes="on_each_login",
+                from_="{{ application.name }} <root@auth0.com>",
                 subject="Welcome to {{ application.name }}",
                 syntax="liquid",
                 template="<html>This is the body of the email</html>",
+                disable_signup=False,
+                brute_force_protection=True,
+                set_user_root_attributes="on_each_login",
+                non_persistent_attrs=[],
+                auth_params={
+                    "scope": "openid email profile offline_access",
+                    "response_type": "code",
+                },
                 totp=auth0.ConnectionOptionsTotpArgs(
-                    length=6,
                     time_step=300,
+                    length=6,
                 ),
-            ),
-            strategy="email")
+            ))
         ```
-        <!--End PulumiCodeChooser -->
+
+        ### SAML Connection
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_auth0 as auth0
+
+        # This is an example of a SAML connection.
+        samlp = auth0.Connection("samlp",
+            name="SAML-Connection",
+            strategy="samlp",
+            options=auth0.ConnectionOptionsArgs(
+                debug=False,
+                signing_cert="<signing-certificate>",
+                sign_in_endpoint="https://saml.provider/sign_in",
+                sign_out_endpoint="https://saml.provider/sign_out",
+                disable_sign_out=True,
+                tenant_domain="example.com",
+                domain_aliases=[
+                    "example.com",
+                    "alias.example.com",
+                ],
+                protocol_binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST",
+                request_template=\"\"\"<samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+        @@AssertServiceURLAndDestination@@
+            ID="@@ID@@"
+            IssueInstant="@@IssueInstant@@"
+            ProtocolBinding="@@ProtocolBinding@@" Version="2.0">
+            <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">@@Issuer@@</saml:Issuer>
+        </samlp:AuthnRequest>\"\"\",
+                user_id_attribute="https://saml.provider/imi/ns/identity-200810",
+                signature_algorithm="rsa-sha256",
+                digest_algorithm="sha256",
+                icon_url="https://saml.provider/assets/logo.png",
+                entity_id="<entity_id>",
+                metadata_xml=\"\"\"    <?xml version="1.0"?>
+            <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="https://example.com">
+              <md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+                <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.provider/sign_out"/>
+                <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.provider/sign_in"/>
+              </md:IDPSSODescriptor>
+            </md:EntityDescriptor>
+        \"\"\",
+                metadata_url="https://saml.provider/imi/ns/FederationMetadata.xml",
+                fields_map=json.dumps({
+                    "name": [
+                        "name",
+                        "nameidentifier",
+                    ],
+                    "email": [
+                        "emailaddress",
+                        "nameidentifier",
+                    ],
+                    "family_name": "surname",
+                }),
+                signing_key=auth0.ConnectionOptionsSigningKeyArgs(
+                    key=\"\"\"-----BEGIN PRIVATE KEY-----
+        ...{your private key here}...
+        -----END PRIVATE KEY-----\"\"\",
+                    cert=\"\"\"-----BEGIN CERTIFICATE-----
+        ...{your public key cert here}...
+        -----END CERTIFICATE-----\"\"\",
+                ),
+                decryption_key=auth0.ConnectionOptionsDecryptionKeyArgs(
+                    key=\"\"\"-----BEGIN PRIVATE KEY-----
+        ...{your private key here}...
+        -----END PRIVATE KEY-----\"\"\",
+                    cert=\"\"\"-----BEGIN CERTIFICATE-----
+        ...{your public key cert here}...
+        -----END CERTIFICATE-----\"\"\",
+                ),
+                idp_initiated=auth0.ConnectionOptionsIdpInitiatedArgs(
+                    client_id="client_id",
+                    client_protocol="samlp",
+                    client_authorize_query="type=code&timeout=30",
+                ),
+            ))
+        ```
 
         ### WindowsLive Connection
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
+        # This is an example of a WindowsLive connection.
         windowslive = auth0.Connection("windowslive",
+            name="Windowslive-Connection",
+            strategy="windowslive",
             options=auth0.ConnectionOptionsArgs(
                 client_id="<client-id>",
                 client_secret="<client-secret>",
-                non_persistent_attrs=[
-                    "ethnicity",
-                    "gender",
-                ],
+                strategy_version=2,
                 scopes=[
                     "signin",
                     "graph_user",
                 ],
                 set_user_root_attributes="on_first_login",
-                strategy_version=2,
-            ),
-            strategy="windowslive")
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+            ))
         ```
-        <!--End PulumiCodeChooser -->
+
+        ### OIDC Connection
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_auth0 as auth0
+
+        # This is an example of an OIDC connection.
+        oidc = auth0.Connection("oidc",
+            name="oidc-connection",
+            display_name="OIDC Connection",
+            strategy="oidc",
+            show_as_button=False,
+            options=auth0.ConnectionOptionsArgs(
+                client_id="1234567",
+                client_secret="1234567",
+                domain_aliases=["example.com"],
+                tenant_domain="",
+                icon_url="https://example.com/assets/logo.png",
+                type="back_channel",
+                issuer="https://www.paypalobjects.com",
+                jwks_uri="https://api.paypal.com/v1/oauth2/certs",
+                discovery_url="https://www.paypalobjects.com/.well-known/openid-configuration",
+                token_endpoint="https://api.paypal.com/v1/oauth2/token",
+                userinfo_endpoint="https://api.paypal.com/v1/oauth2/token/userinfo",
+                authorization_endpoint="https://www.paypal.com/signin/authorize",
+                scopes=[
+                    "openid",
+                    "email",
+                ],
+                set_user_root_attributes="on_first_login",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                connection_settings=auth0.ConnectionOptionsConnectionSettingsArgs(
+                    pkce="auto",
+                ),
+                attribute_map=auth0.ConnectionOptionsAttributeMapArgs(
+                    mapping_mode="use_map",
+                    userinfo_scope="openid email profile groups",
+                    attributes=json.dumps({
+                        "name": "${context.tokenset.name}",
+                        "email": "${context.tokenset.email}",
+                        "email_verified": "${context.tokenset.email_verified}",
+                        "nickname": "${context.tokenset.nickname}",
+                        "picture": "${context.tokenset.picture}",
+                        "given_name": "${context.tokenset.given_name}",
+                        "family_name": "${context.tokenset.family_name}",
+                    }),
+                ),
+            ))
+        ```
+
+        ### Okta Connection
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_auth0 as auth0
+
+        # This is an example of an Okta Workforce connection.
+        okta = auth0.Connection("okta",
+            name="okta-connection",
+            display_name="Okta Workforce Connection",
+            strategy="okta",
+            show_as_button=False,
+            options=auth0.ConnectionOptionsArgs(
+                client_id="1234567",
+                client_secret="1234567",
+                domain="example.okta.com",
+                domain_aliases=["example.com"],
+                issuer="https://example.okta.com",
+                jwks_uri="https://example.okta.com/oauth2/v1/keys",
+                token_endpoint="https://example.okta.com/oauth2/v1/token",
+                userinfo_endpoint="https://example.okta.com/oauth2/v1/userinfo",
+                authorization_endpoint="https://example.okta.com/oauth2/v1/authorize",
+                scopes=[
+                    "openid",
+                    "email",
+                ],
+                set_user_root_attributes="on_first_login",
+                non_persistent_attrs=[
+                    "ethnicity",
+                    "gender",
+                ],
+                upstream_params=json.dumps({
+                    "screen_name": {
+                        "alias": "login_hint",
+                    },
+                }),
+                connection_settings=auth0.ConnectionOptionsConnectionSettingsArgs(
+                    pkce="auto",
+                ),
+                attribute_map=auth0.ConnectionOptionsAttributeMapArgs(
+                    mapping_mode="basic_profile",
+                    userinfo_scope="openid email profile groups",
+                    attributes=json.dumps({
+                        "name": "${context.tokenset.name}",
+                        "email": "${context.tokenset.email}",
+                        "email_verified": "${context.tokenset.email_verified}",
+                        "nickname": "${context.tokenset.nickname}",
+                        "picture": "${context.tokenset.picture}",
+                        "given_name": "${context.tokenset.given_name}",
+                        "family_name": "${context.tokenset.family_name}",
+                    }),
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -1035,7 +1729,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Name used in login screen.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
-        :param pulumi.Input[str] name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
@@ -1083,7 +1777,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        Name of the connection.
         """
         return pulumi.get(self, "name")
 

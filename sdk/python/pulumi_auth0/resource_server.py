@@ -400,19 +400,18 @@ class ResourceServer(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_resource_server = auth0.ResourceServer("myResourceServer",
-            allow_offline_access=True,
+        my_resource_server = auth0.ResourceServer("my_resource_server",
+            name="Example Resource Server (Managed by Terraform)",
             identifier="https://api.example.com",
             signing_alg="RS256",
-            skip_consent_for_verifiable_first_party_clients=True,
-            token_lifetime=8600)
+            allow_offline_access=True,
+            token_lifetime=8600,
+            skip_consent_for_verifiable_first_party_clients=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -451,19 +450,18 @@ class ResourceServer(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_resource_server = auth0.ResourceServer("myResourceServer",
-            allow_offline_access=True,
+        my_resource_server = auth0.ResourceServer("my_resource_server",
+            name="Example Resource Server (Managed by Terraform)",
             identifier="https://api.example.com",
             signing_alg="RS256",
-            skip_consent_for_verifiable_first_party_clients=True,
-            token_lifetime=8600)
+            allow_offline_access=True,
+            token_lifetime=8600,
+            skip_consent_for_verifiable_first_party_clients=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

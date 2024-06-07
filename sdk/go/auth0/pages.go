@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -28,23 +27,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewPages(ctx, "myPages", &auth0.PagesArgs{
+//			_, err := auth0.NewPages(ctx, "my_pages", &auth0.PagesArgs{
+//				Login: &auth0.PagesLoginArgs{
+//					Enabled: pulumi.Bool(true),
+//					Html:    pulumi.String("<html><body>My Custom Login Page</body></html>"),
+//				},
 //				ChangePassword: &auth0.PagesChangePasswordArgs{
 //					Enabled: pulumi.Bool(true),
 //					Html:    pulumi.String("<html><body>My Custom Reset Password Page</body></html>"),
-//				},
-//				Error: &auth0.PagesErrorArgs{
-//					Html:        pulumi.String("<html><body>My Custom Error Page</body></html>"),
-//					ShowLogLink: pulumi.Bool(true),
-//					Url:         pulumi.String("https://example.com"),
 //				},
 //				GuardianMfa: &auth0.PagesGuardianMfaArgs{
 //					Enabled: pulumi.Bool(true),
 //					Html:    pulumi.String("<html><body>My Custom MFA Page</body></html>"),
 //				},
-//				Login: &auth0.PagesLoginArgs{
-//					Enabled: pulumi.Bool(true),
-//					Html:    pulumi.String("<html><body>My Custom Login Page</body></html>"),
+//				Error: &auth0.PagesErrorArgs{
+//					ShowLogLink: pulumi.Bool(true),
+//					Html:        pulumi.String("<html><body>My Custom Error Page</body></html>"),
+//					Url:         pulumi.String("https://example.com"),
 //				},
 //			})
 //			if err != nil {
@@ -55,7 +54,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

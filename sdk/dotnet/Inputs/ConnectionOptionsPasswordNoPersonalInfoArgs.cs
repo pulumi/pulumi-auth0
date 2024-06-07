@@ -12,9 +12,6 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ConnectionOptionsPasswordNoPersonalInfoArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Indicates whether the password dictionary check is enabled for this connection.
-        /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 

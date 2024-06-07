@@ -20,6 +20,22 @@ import javax.annotation.Nullable;
  * permissions assigned to a role. To avoid potential issues, it is recommended not to use this resource in conjunction
  * with the `auth0.RolePermissions` resource when managing permissions for the same role id.
  * 
+ * ## Import
+ * 
+ * This resource can be imported by specifying the
+ * 
+ * role ID, resource identifier, and permission name separated by &#34;::&#34; (note the double colon)
+ * 
+ * &lt;roleID&gt;::&lt;resourceServerIdentifier&gt;::&lt;permission&gt;
+ * 
+ * # 
+ * 
+ * Example:
+ * 
+ * ```sh
+ * $ pulumi import auth0:index/rolePermission:RolePermission permission &#34;rol_XXXXXXXXXXXXX::https://example.com::read:foo&#34;
+ * ```
+ * 
  */
 @ResourceType(type="auth0:index/rolePermission:RolePermission")
 public class RolePermission extends com.pulumi.resources.CustomResource {

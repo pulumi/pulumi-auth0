@@ -17,11 +17,104 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
+    /// ### Auth0 Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // This is an example of an Auth0 connection.
+    ///     var myConnection = new Auth0.Connection("my_connection", new()
+    ///     {
+    ///         Name = "Example-Connection",
+    ///         IsDomainConnection = true,
+    ///         Strategy = "auth0",
+    ///         Metadata = 
+    ///         {
+    ///             { "key1", "foo" },
+    ///             { "key2", "bar" },
+    ///         },
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             PasswordPolicy = "excellent",
+    ///             BruteForceProtection = true,
+    ///             EnabledDatabaseCustomization = true,
+    ///             ImportMode = false,
+    ///             RequiresUsername = true,
+    ///             DisableSignup = false,
+    ///             CustomScripts = 
+    ///             {
+    ///                 { "get_user", @"        function getByEmail(email, callback) {
+    ///           return callback(new Error(""Whoops!""));
+    ///         }
+    /// " },
+    ///             },
+    ///             Configuration = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///                 { "bar", "baz" },
+    ///             },
+    ///             UpstreamParams = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["screen_name"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["alias"] = "login_hint",
+    ///                 },
+    ///             }),
+    ///             PasswordHistories = new[]
+    ///             {
+    ///                 new Auth0.Inputs.ConnectionOptionsPasswordHistoryArgs
+    ///                 {
+    ///                     Enable = true,
+    ///                     Size = 3,
+    ///                 },
+    ///             },
+    ///             PasswordNoPersonalInfo = new Auth0.Inputs.ConnectionOptionsPasswordNoPersonalInfoArgs
+    ///             {
+    ///                 Enable = true,
+    ///             },
+    ///             PasswordDictionary = new Auth0.Inputs.ConnectionOptionsPasswordDictionaryArgs
+    ///             {
+    ///                 Enable = true,
+    ///                 Dictionaries = new[]
+    ///                 {
+    ///                     "password",
+    ///                     "admin",
+    ///                     "1234",
+    ///                 },
+    ///             },
+    ///             PasswordComplexityOptions = new Auth0.Inputs.ConnectionOptionsPasswordComplexityOptionsArgs
+    ///             {
+    ///                 MinLength = 12,
+    ///             },
+    ///             Validation = new Auth0.Inputs.ConnectionOptionsValidationArgs
+    ///             {
+    ///                 Username = new Auth0.Inputs.ConnectionOptionsValidationUsernameArgs
+    ///                 {
+    ///                     Min = 10,
+    ///                     Max = 40,
+    ///                 },
+    ///             },
+    ///             Mfa = new Auth0.Inputs.ConnectionOptionsMfaArgs
+    ///             {
+    ///                 Active = true,
+    ///                 ReturnEnrollSettings = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Google OAuth2 Connection
     /// 
     /// &gt; Your Auth0 account may be pre-configured with a `google-oauth2` connection.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -30,21 +123,19 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var googleOauth2 = new Auth0.Connection("googleOauth2", new()
+    ///     // This is an example of a Google OAuth2 connection.
+    ///     var googleOauth2 = new Auth0.Connection("google_oauth2", new()
     ///     {
+    ///         Name = "Google-OAuth2-Connection",
+    ///         Strategy = "google-oauth2",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;client-secret&gt;",
     ///             AllowedAudiences = new[]
     ///             {
     ///                 "example.com",
     ///                 "api.example.com",
-    ///             },
-    ///             ClientId = "&lt;client-id&gt;",
-    ///             ClientSecret = "&lt;client-secret&gt;",
-    ///             NonPersistentAttrs = new[]
-    ///             {
-    ///                 "ethnicity",
-    ///                 "gender",
     ///             },
     ///             Scopes = new[]
     ///             {
@@ -54,17 +145,73 @@ namespace Pulumi.Auth0
     ///                 "youtube",
     ///             },
     ///             SetUserRootAttributes = "on_each_login",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
     ///         },
-    ///         Strategy = "google-oauth2",
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ### Google Apps
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var googleApps = new Auth0.Connection("google_apps", new()
+    ///     {
+    ///         Name = "connection-google-apps",
+    ///         IsDomainConnection = false,
+    ///         Strategy = "google-apps",
+    ///         ShowAsButton = false,
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             ClientId = "",
+    ///             ClientSecret = "",
+    ///             Domain = "example.com",
+    ///             TenantDomain = "example.com",
+    ///             DomainAliases = new[]
+    ///             {
+    ///                 "example.com",
+    ///                 "api.example.com",
+    ///             },
+    ///             ApiEnableUsers = true,
+    ///             Scopes = new[]
+    ///             {
+    ///                 "ext_profile",
+    ///                 "ext_groups",
+    ///             },
+    ///             IconUrl = "https://example.com/assets/logo.png",
+    ///             UpstreamParams = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["screen_name"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["alias"] = "login_hint",
+    ///                 },
+    ///             }),
+    ///             SetUserRootAttributes = "on_each_login",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ### Facebook Connection
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -73,17 +220,15 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // This is an example of a Facebook connection.
     ///     var facebook = new Auth0.Connection("facebook", new()
     ///     {
+    ///         Name = "Facebook-Connection",
+    ///         Strategy = "facebook",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
     ///             ClientSecret = "&lt;client-secret&gt;",
-    ///             NonPersistentAttrs = new[]
-    ///             {
-    ///                 "ethnicity",
-    ///                 "gender",
-    ///             },
     ///             Scopes = new[]
     ///             {
     ///                 "public_profile",
@@ -92,17 +237,19 @@ namespace Pulumi.Auth0
     ///                 "user_birthday",
     ///             },
     ///             SetUserRootAttributes = "on_each_login",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
     ///         },
-    ///         Strategy = "facebook",
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Apple Connection
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -111,39 +258,38 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // This is an example of an Apple connection.
     ///     var apple = new Auth0.Connection("apple", new()
     ///     {
+    ///         Name = "Apple-Connection",
+    ///         Strategy = "apple",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
     ///             ClientSecret = @"-----BEGIN PRIVATE KEY-----
     /// MIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA
-    /// -----END PRIVATE KEY-----
-    /// ",
+    /// -----END PRIVATE KEY-----",
+    ///             TeamId = "&lt;team-id&gt;",
     ///             KeyId = "&lt;key-id&gt;",
-    ///             NonPersistentAttrs = new[]
-    ///             {
-    ///                 "ethnicity",
-    ///                 "gender",
-    ///             },
     ///             Scopes = new[]
     ///             {
     ///                 "email",
     ///                 "name",
     ///             },
     ///             SetUserRootAttributes = "on_first_login",
-    ///             TeamId = "&lt;team-id&gt;",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
     ///         },
-    ///         Strategy = "apple",
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### LinkedIn Connection
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -152,17 +298,16 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // This is an example of an LinkedIn connection.
     ///     var linkedin = new Auth0.Connection("linkedin", new()
     ///     {
+    ///         Name = "Linkedin-Connection",
+    ///         Strategy = "linkedin",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
     ///             ClientSecret = "&lt;client-secret&gt;",
-    ///             NonPersistentAttrs = new[]
-    ///             {
-    ///                 "ethnicity",
-    ///                 "gender",
-    ///             },
+    ///             StrategyVersion = 2,
     ///             Scopes = new[]
     ///             {
     ///                 "basic_profile",
@@ -170,18 +315,19 @@ namespace Pulumi.Auth0
     ///                 "email",
     ///             },
     ///             SetUserRootAttributes = "on_each_login",
-    ///             StrategyVersion = 2,
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
     ///         },
-    ///         Strategy = "linkedin",
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### GitHub Connection
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -190,17 +336,15 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // This is an example of an GitHub connection.
     ///     var github = new Auth0.Connection("github", new()
     ///     {
+    ///         Name = "GitHub-Connection",
+    ///         Strategy = "github",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
     ///             ClientSecret = "&lt;client-secret&gt;",
-    ///             NonPersistentAttrs = new[]
-    ///             {
-    ///                 "ethnicity",
-    ///                 "gender",
-    ///             },
     ///             Scopes = new[]
     ///             {
     ///                 "email",
@@ -209,17 +353,19 @@ namespace Pulumi.Auth0
     ///                 "repo",
     ///             },
     ///             SetUserRootAttributes = "on_each_login",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
     ///         },
-    ///         Strategy = "github",
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### SalesForce Connection
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -228,37 +374,37 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // This is an example of an SalesForce connection.
     ///     var salesforce = new Auth0.Connection("salesforce", new()
     ///     {
+    ///         Name = "Salesforce-Connection",
+    ///         Strategy = "salesforce",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
     ///             ClientSecret = "&lt;client-secret&gt;",
     ///             CommunityBaseUrl = "https://salesforce.example.com",
-    ///             NonPersistentAttrs = new[]
-    ///             {
-    ///                 "ethnicity",
-    ///                 "gender",
-    ///             },
     ///             Scopes = new[]
     ///             {
     ///                 "openid",
     ///                 "email",
     ///             },
     ///             SetUserRootAttributes = "on_first_login",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
     ///         },
-    ///         Strategy = "salesforce",
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### OAuth2 Connection
     /// 
     /// Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -267,172 +413,481 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // This is an example of an OAuth2 connection.
     ///     var oauth2 = new Auth0.Connection("oauth2", new()
     ///     {
+    ///         Name = "OAuth2-Connection",
+    ///         Strategy = "oauth2",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
-    ///             AuthorizationEndpoint = "https://auth.example.com/oauth2/authorize",
     ///             ClientId = "&lt;client-id&gt;",
     ///             ClientSecret = "&lt;client-secret&gt;",
-    ///             IconUrl = "https://auth.example.com/assets/logo.png",
-    ///             NonPersistentAttrs = new[]
-    ///             {
-    ///                 "ethnicity",
-    ///                 "gender",
-    ///             },
-    ///             PkceEnabled = true,
     ///             Scopes = new[]
     ///             {
     ///                 "basic_profile",
     ///                 "profile",
     ///                 "email",
     ///             },
+    ///             TokenEndpoint = "https://auth.example.com/oauth2/token",
+    ///             AuthorizationEndpoint = "https://auth.example.com/oauth2/authorize",
+    ///             PkceEnabled = true,
+    ///             IconUrl = "https://auth.example.com/assets/logo.png",
     ///             Scripts = 
     ///             {
     ///                 { "fetchUserProfile", @"        function fetchUserProfile(accessToken, context, callback) {
     ///           return callback(new Error(""Whoops!""));
     ///         }
-    ///       
     /// " },
     ///             },
     ///             SetUserRootAttributes = "on_each_login",
-    ///             TokenEndpoint = "https://auth.example.com/oauth2/token",
-    ///         },
-    ///         Strategy = "oauth2",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
-    /// ### SMS Connection
-    /// 
-    /// &gt; To be able to see this in the management dashboard as well, the name of the connection must be set to "sms".
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var sms = new Auth0.Connection("sms", new()
-    ///     {
-    ///         IsDomainConnection = false,
-    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
-    ///         {
-    ///             BruteForceProtection = true,
-    ///             DisableSignup = false,
-    ///             ForwardRequestInfo = true,
-    ///             From = "+15555555555",
-    ///             GatewayAuthentication = new Auth0.Inputs.ConnectionOptionsGatewayAuthenticationArgs
-    ///             {
-    ///                 Audience = "https://somewhere.com/sms-gateway",
-    ///                 Method = "bearer",
-    ///                 Secret = "4e2680bb74ec2ae24736476dd37ed6c2",
-    ///                 SecretBase64Encoded = false,
-    ///                 Subject = "test.us.auth0.com:sms",
-    ///             },
-    ///             GatewayUrl = "https://somewhere.com/sms-gateway",
-    ///             Name = "sms",
-    ///             Provider = "sms_gateway",
-    ///             Syntax = "md_with_macros",
-    ///             Template = "@@password@@",
-    ///             Totp = new Auth0.Inputs.ConnectionOptionsTotpArgs
-    ///             {
-    ///                 Length = 6,
-    ///                 TimeStep = 300,
-    ///             },
-    ///         },
-    ///         Strategy = "sms",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
-    /// ### Email Connection
-    /// 
-    /// &gt; To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var passwordlessEmail = new Auth0.Connection("passwordlessEmail", new()
-    ///     {
-    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
-    ///         {
-    ///             AuthParams = 
-    ///             {
-    ///                 { "responseType", "code" },
-    ///                 { "scope", "openid email profile offline_access" },
-    ///             },
-    ///             BruteForceProtection = true,
-    ///             DisableSignup = false,
-    ///             From = "{{ application.name }} &lt;root@auth0.com&gt;",
-    ///             Name = "email",
-    ///             NonPersistentAttrs = new() { },
-    ///             SetUserRootAttributes = "on_each_login",
-    ///             Subject = "Welcome to {{ application.name }}",
-    ///             Syntax = "liquid",
-    ///             Template = "&lt;html&gt;This is the body of the email&lt;/html&gt;",
-    ///             Totp = new Auth0.Inputs.ConnectionOptionsTotpArgs
-    ///             {
-    ///                 Length = 6,
-    ///                 TimeStep = 300,
-    ///             },
-    ///         },
-    ///         Strategy = "email",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
-    /// ### WindowsLive Connection
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var windowslive = new Auth0.Connection("windowslive", new()
-    ///     {
-    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
-    ///         {
-    ///             ClientId = "&lt;client-id&gt;",
-    ///             ClientSecret = "&lt;client-secret&gt;",
     ///             NonPersistentAttrs = new[]
     ///             {
     ///                 "ethnicity",
     ///                 "gender",
     ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Active Directory (AD)
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ad = new Auth0.Connection("ad", new()
+    ///     {
+    ///         Name = "connection-active-directory",
+    ///         DisplayName = "Active Directory Connection",
+    ///         Strategy = "ad",
+    ///         ShowAsButton = true,
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             DisableSelfServiceChangePassword = true,
+    ///             BruteForceProtection = true,
+    ///             TenantDomain = "example.com",
+    ///             IconUrl = "https://example.com/assets/logo.png",
+    ///             DomainAliases = new[]
+    ///             {
+    ///                 "example.com",
+    ///                 "api.example.com",
+    ///             },
+    ///             Ips = new[]
+    ///             {
+    ///                 "192.168.1.1",
+    ///                 "192.168.1.2",
+    ///             },
+    ///             SetUserRootAttributes = "on_each_login",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
+    ///             UpstreamParams = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["screen_name"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["alias"] = "login_hint",
+    ///                 },
+    ///             }),
+    ///             UseCertAuth = false,
+    ///             UseKerberos = false,
+    ///             DisableCache = false,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Azure AD Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var azureAd = new Auth0.Connection("azure_ad", new()
+    ///     {
+    ///         Name = "connection-azure-ad",
+    ///         Strategy = "waad",
+    ///         ShowAsButton = true,
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             IdentityApi = "azure-active-directory-v1.0",
+    ///             ClientId = "123456",
+    ///             ClientSecret = "123456",
+    ///             AppId = "app-id-123",
+    ///             TenantDomain = "example.onmicrosoft.com",
+    ///             Domain = "example.onmicrosoft.com",
+    ///             DomainAliases = new[]
+    ///             {
+    ///                 "example.com",
+    ///                 "api.example.com",
+    ///             },
+    ///             IconUrl = "https://example.onmicrosoft.com/assets/logo.png",
+    ///             UseWsfed = false,
+    ///             WaadProtocol = "openid-connect",
+    ///             WaadCommonEndpoint = false,
+    ///             MaxGroupsToRetrieve = "250",
+    ///             ApiEnableUsers = true,
+    ///             Scopes = new[]
+    ///             {
+    ///                 "basic_profile",
+    ///                 "ext_groups",
+    ///                 "ext_profile",
+    ///             },
+    ///             SetUserRootAttributes = "on_each_login",
+    ///             ShouldTrustEmailVerifiedConnection = "never_set_emails_as_verified",
+    ///             UpstreamParams = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["screen_name"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["alias"] = "login_hint",
+    ///                 },
+    ///             }),
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Email Connection
+    /// 
+    /// &gt; To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // This is an example of an Email connection.
+    ///     var passwordlessEmail = new Auth0.Connection("passwordless_email", new()
+    ///     {
+    ///         Strategy = "email",
+    ///         Name = "email",
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             Name = "email",
+    ///             From = "{{ application.name }} &lt;root@auth0.com&gt;",
+    ///             Subject = "Welcome to {{ application.name }}",
+    ///             Syntax = "liquid",
+    ///             Template = "&lt;html&gt;This is the body of the email&lt;/html&gt;",
+    ///             DisableSignup = false,
+    ///             BruteForceProtection = true,
+    ///             SetUserRootAttributes = "on_each_login",
+    ///             NonPersistentAttrs = new() { },
+    ///             AuthParams = 
+    ///             {
+    ///                 { "scope", "openid email profile offline_access" },
+    ///                 { "response_type", "code" },
+    ///             },
+    ///             Totp = new Auth0.Inputs.ConnectionOptionsTotpArgs
+    ///             {
+    ///                 TimeStep = 300,
+    ///                 Length = 6,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### SAML Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // This is an example of a SAML connection.
+    ///     var samlp = new Auth0.Connection("samlp", new()
+    ///     {
+    ///         Name = "SAML-Connection",
+    ///         Strategy = "samlp",
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             Debug = false,
+    ///             SigningCert = "&lt;signing-certificate&gt;",
+    ///             SignInEndpoint = "https://saml.provider/sign_in",
+    ///             SignOutEndpoint = "https://saml.provider/sign_out",
+    ///             DisableSignOut = true,
+    ///             TenantDomain = "example.com",
+    ///             DomainAliases = new[]
+    ///             {
+    ///                 "example.com",
+    ///                 "alias.example.com",
+    ///             },
+    ///             ProtocolBinding = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST",
+    ///             RequestTemplate = @"&lt;samlp:AuthnRequest xmlns:samlp=""urn:oasis:names:tc:SAML:2.0:protocol""
+    /// @@AssertServiceURLAndDestination@@
+    ///     ID=""@@ID@@""
+    ///     IssueInstant=""@@IssueInstant@@""
+    ///     ProtocolBinding=""@@ProtocolBinding@@"" Version=""2.0""&gt;
+    ///     &lt;saml:Issuer xmlns:saml=""urn:oasis:names:tc:SAML:2.0:assertion""&gt;@@Issuer@@&lt;/saml:Issuer&gt;
+    /// &lt;/samlp:AuthnRequest&gt;",
+    ///             UserIdAttribute = "https://saml.provider/imi/ns/identity-200810",
+    ///             SignatureAlgorithm = "rsa-sha256",
+    ///             DigestAlgorithm = "sha256",
+    ///             IconUrl = "https://saml.provider/assets/logo.png",
+    ///             EntityId = "&lt;entity_id&gt;",
+    ///             MetadataXml = @"    &lt;?xml version=""1.0""?&gt;
+    ///     &lt;md:EntityDescriptor xmlns:md=""urn:oasis:names:tc:SAML:2.0:metadata"" xmlns:ds=""http://www.w3.org/2000/09/xmldsig#"" entityID=""https://example.com""&gt;
+    ///       &lt;md:IDPSSODescriptor protocolSupportEnumeration=""urn:oasis:names:tc:SAML:2.0:protocol""&gt;
+    ///         &lt;md:SingleLogoutService Binding=""urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"" Location=""https://saml.provider/sign_out""/&gt;
+    ///         &lt;md:SingleSignOnService Binding=""urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"" Location=""https://saml.provider/sign_in""/&gt;
+    ///       &lt;/md:IDPSSODescriptor&gt;
+    ///     &lt;/md:EntityDescriptor&gt;
+    /// ",
+    ///             MetadataUrl = "https://saml.provider/imi/ns/FederationMetadata.xml",
+    ///             FieldsMap = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["name"] = new[]
+    ///                 {
+    ///                     "name",
+    ///                     "nameidentifier",
+    ///                 },
+    ///                 ["email"] = new[]
+    ///                 {
+    ///                     "emailaddress",
+    ///                     "nameidentifier",
+    ///                 },
+    ///                 ["family_name"] = "surname",
+    ///             }),
+    ///             SigningKey = new Auth0.Inputs.ConnectionOptionsSigningKeyArgs
+    ///             {
+    ///                 Key = @"-----BEGIN PRIVATE KEY-----
+    /// ...{your private key here}...
+    /// -----END PRIVATE KEY-----",
+    ///                 Cert = @"-----BEGIN CERTIFICATE-----
+    /// ...{your public key cert here}...
+    /// -----END CERTIFICATE-----",
+    ///             },
+    ///             DecryptionKey = new Auth0.Inputs.ConnectionOptionsDecryptionKeyArgs
+    ///             {
+    ///                 Key = @"-----BEGIN PRIVATE KEY-----
+    /// ...{your private key here}...
+    /// -----END PRIVATE KEY-----",
+    ///                 Cert = @"-----BEGIN CERTIFICATE-----
+    /// ...{your public key cert here}...
+    /// -----END CERTIFICATE-----",
+    ///             },
+    ///             IdpInitiated = new Auth0.Inputs.ConnectionOptionsIdpInitiatedArgs
+    ///             {
+    ///                 ClientId = "client_id",
+    ///                 ClientProtocol = "samlp",
+    ///                 ClientAuthorizeQuery = "type=code&amp;timeout=30",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### WindowsLive Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // This is an example of a WindowsLive connection.
+    ///     var windowslive = new Auth0.Connection("windowslive", new()
+    ///     {
+    ///         Name = "Windowslive-Connection",
+    ///         Strategy = "windowslive",
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             StrategyVersion = 2,
     ///             Scopes = new[]
     ///             {
     ///                 "signin",
     ///                 "graph_user",
     ///             },
     ///             SetUserRootAttributes = "on_first_login",
-    ///             StrategyVersion = 2,
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
     ///         },
-    ///         Strategy = "windowslive",
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ### OIDC Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // This is an example of an OIDC connection.
+    ///     var oidc = new Auth0.Connection("oidc", new()
+    ///     {
+    ///         Name = "oidc-connection",
+    ///         DisplayName = "OIDC Connection",
+    ///         Strategy = "oidc",
+    ///         ShowAsButton = false,
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             ClientId = "1234567",
+    ///             ClientSecret = "1234567",
+    ///             DomainAliases = new[]
+    ///             {
+    ///                 "example.com",
+    ///             },
+    ///             TenantDomain = "",
+    ///             IconUrl = "https://example.com/assets/logo.png",
+    ///             Type = "back_channel",
+    ///             Issuer = "https://www.paypalobjects.com",
+    ///             JwksUri = "https://api.paypal.com/v1/oauth2/certs",
+    ///             DiscoveryUrl = "https://www.paypalobjects.com/.well-known/openid-configuration",
+    ///             TokenEndpoint = "https://api.paypal.com/v1/oauth2/token",
+    ///             UserinfoEndpoint = "https://api.paypal.com/v1/oauth2/token/userinfo",
+    ///             AuthorizationEndpoint = "https://www.paypal.com/signin/authorize",
+    ///             Scopes = new[]
+    ///             {
+    ///                 "openid",
+    ///                 "email",
+    ///             },
+    ///             SetUserRootAttributes = "on_first_login",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
+    ///             ConnectionSettings = new Auth0.Inputs.ConnectionOptionsConnectionSettingsArgs
+    ///             {
+    ///                 Pkce = "auto",
+    ///             },
+    ///             AttributeMap = new Auth0.Inputs.ConnectionOptionsAttributeMapArgs
+    ///             {
+    ///                 MappingMode = "use_map",
+    ///                 UserinfoScope = "openid email profile groups",
+    ///                 Attributes = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["name"] = "${context.tokenset.name}",
+    ///                     ["email"] = "${context.tokenset.email}",
+    ///                     ["email_verified"] = "${context.tokenset.email_verified}",
+    ///                     ["nickname"] = "${context.tokenset.nickname}",
+    ///                     ["picture"] = "${context.tokenset.picture}",
+    ///                     ["given_name"] = "${context.tokenset.given_name}",
+    ///                     ["family_name"] = "${context.tokenset.family_name}",
+    ///                 }),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Okta Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // This is an example of an Okta Workforce connection.
+    ///     var okta = new Auth0.Connection("okta", new()
+    ///     {
+    ///         Name = "okta-connection",
+    ///         DisplayName = "Okta Workforce Connection",
+    ///         Strategy = "okta",
+    ///         ShowAsButton = false,
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             ClientId = "1234567",
+    ///             ClientSecret = "1234567",
+    ///             Domain = "example.okta.com",
+    ///             DomainAliases = new[]
+    ///             {
+    ///                 "example.com",
+    ///             },
+    ///             Issuer = "https://example.okta.com",
+    ///             JwksUri = "https://example.okta.com/oauth2/v1/keys",
+    ///             TokenEndpoint = "https://example.okta.com/oauth2/v1/token",
+    ///             UserinfoEndpoint = "https://example.okta.com/oauth2/v1/userinfo",
+    ///             AuthorizationEndpoint = "https://example.okta.com/oauth2/v1/authorize",
+    ///             Scopes = new[]
+    ///             {
+    ///                 "openid",
+    ///                 "email",
+    ///             },
+    ///             SetUserRootAttributes = "on_first_login",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
+    ///             UpstreamParams = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["screen_name"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["alias"] = "login_hint",
+    ///                 },
+    ///             }),
+    ///             ConnectionSettings = new Auth0.Inputs.ConnectionOptionsConnectionSettingsArgs
+    ///             {
+    ///                 Pkce = "auto",
+    ///             },
+    ///             AttributeMap = new Auth0.Inputs.ConnectionOptionsAttributeMapArgs
+    ///             {
+    ///                 MappingMode = "basic_profile",
+    ///                 UserinfoScope = "openid email profile groups",
+    ///                 Attributes = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["name"] = "${context.tokenset.name}",
+    ///                     ["email"] = "${context.tokenset.email}",
+    ///                     ["email_verified"] = "${context.tokenset.email_verified}",
+    ///                     ["nickname"] = "${context.tokenset.nickname}",
+    ///                     ["picture"] = "${context.tokenset.picture}",
+    ///                     ["given_name"] = "${context.tokenset.given_name}",
+    ///                     ["family_name"] = "${context.tokenset.family_name}",
+    ///                 }),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -468,7 +923,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        /// Name of the connection.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -568,7 +1023,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        /// Name of the connection.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -636,7 +1091,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        /// Name of the connection.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

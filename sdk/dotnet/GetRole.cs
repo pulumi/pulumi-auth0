@@ -16,7 +16,6 @@ namespace Pulumi.Auth0
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -25,11 +24,13 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // An Auth0 Role loaded using its name.
         ///     var some_role_by_name = Auth0.GetRole.Invoke(new()
         ///     {
         ///         Name = "my-role",
         ///     });
         /// 
+        ///     // An Auth0 Role loaded using its ID.
         ///     var some_role_by_id = Auth0.GetRole.Invoke(new()
         ///     {
         ///         RoleId = "abcdefghkijklmnopqrstuvwxyz0123456789",
@@ -37,7 +38,6 @@ namespace Pulumi.Auth0
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRoleResult> InvokeAsync(GetRoleArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("auth0:index/getRole:getRole", args ?? new GetRoleArgs(), options.WithDefaults());
@@ -47,7 +47,6 @@ namespace Pulumi.Auth0
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,11 +55,13 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // An Auth0 Role loaded using its name.
         ///     var some_role_by_name = Auth0.GetRole.Invoke(new()
         ///     {
         ///         Name = "my-role",
         ///     });
         /// 
+        ///     // An Auth0 Role loaded using its ID.
         ///     var some_role_by_id = Auth0.GetRole.Invoke(new()
         ///     {
         ///         RoleId = "abcdefghkijklmnopqrstuvwxyz0123456789",
@@ -68,7 +69,6 @@ namespace Pulumi.Auth0
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRoleResult>("auth0:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
@@ -77,6 +77,9 @@ namespace Pulumi.Auth0
 
     public sealed class GetRoleArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the role. If not provided, `role_id` must be set.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -94,6 +97,9 @@ namespace Pulumi.Auth0
 
     public sealed class GetRoleInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the role. If not provided, `role_id` must be set.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

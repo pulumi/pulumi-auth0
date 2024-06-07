@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BrandingThemeFontsInputLabels {
     /**
-     * @return Body text bold. Defaults to `false`.
+     * @return Input labels bold. Defaults to `false`.
      * 
      */
     private @Nullable Boolean bold;
     /**
-     * @return Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * @return Input labels size. Value needs to be between `0` and `150`. Defaults to `100.0`.
      * 
      */
     private @Nullable Double size;
 
     private BrandingThemeFontsInputLabels() {}
     /**
-     * @return Body text bold. Defaults to `false`.
+     * @return Input labels bold. Defaults to `false`.
      * 
      */
     public Optional<Boolean> bold() {
         return Optional.ofNullable(this.bold);
     }
     /**
-     * @return Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+     * @return Input labels size. Value needs to be between `0` and `150`. Defaults to `100.0`.
      * 
      */
     public Optional<Double> size() {

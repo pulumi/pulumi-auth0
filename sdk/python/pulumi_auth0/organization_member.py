@@ -106,7 +106,6 @@ class OrganizationMember(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -116,12 +115,13 @@ class OrganizationMember(pulumi.CustomResource):
             connection_name="Username-Password-Authentication",
             email_verified=True,
             password="MyPass123$")
-        my_org = auth0.Organization("myOrg", display_name="Admin")
-        my_org_member = auth0.OrganizationMember("myOrgMember",
+        my_org = auth0.Organization("my_org",
+            name="org-admin",
+            display_name="Admin")
+        my_org_member = auth0.OrganizationMember("my_org_member",
             organization_id=my_org.id,
             user_id=user.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -159,7 +159,6 @@ class OrganizationMember(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
@@ -169,12 +168,13 @@ class OrganizationMember(pulumi.CustomResource):
             connection_name="Username-Password-Authentication",
             email_verified=True,
             password="MyPass123$")
-        my_org = auth0.Organization("myOrg", display_name="Admin")
-        my_org_member = auth0.OrganizationMember("myOrgMember",
+        my_org = auth0.Organization("my_org",
+            name="org-admin",
+            display_name="Admin")
+        my_org_member = auth0.OrganizationMember("my_org_member",
             organization_id=my_org.id,
             user_id=user.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -11,22 +11,25 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myGuardian = new auth0.Guardian("myGuardian", {
- *     duo: {
- *         enabled: true,
- *         hostname: "api-hostname",
- *         integrationKey: "someKey",
- *         secretKey: "someSecret",
- *     },
+ * const myGuardian = new auth0.Guardian("my_guardian", {
+ *     policy: "all-applications",
  *     email: true,
  *     otp: true,
+ *     recoveryCode: true,
+ *     webauthnPlatform: {
+ *         enabled: true,
+ *     },
+ *     webauthnRoaming: {
+ *         enabled: true,
+ *         userVerification: "required",
+ *     },
  *     phone: {
  *         enabled: true,
+ *         provider: "auth0",
  *         messageTypes: [
  *             "sms",
  *             "voice",
@@ -35,10 +38,10 @@ import * as utilities from "./utilities";
  *             enrollmentMessage: "{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
  *             verificationMessage: "{{code}} is your verification code for {{tenant.friendly_name}}.",
  *         },
- *         provider: "auth0",
  *     },
- *     policy: "all-applications",
  *     push: {
+ *         enabled: true,
+ *         provider: "sns",
  *         amazonSns: {
  *             awsAccessKeyId: "test1",
  *             awsRegion: "us-west-1",
@@ -51,20 +54,15 @@ import * as utilities from "./utilities";
  *             appleAppLink: "https://itunes.apple.com/us/app/my-app/id123121",
  *             googleAppLink: "https://play.google.com/store/apps/details?id=com.my.app",
  *         },
- *         enabled: true,
- *         provider: "sns",
  *     },
- *     recoveryCode: true,
- *     webauthnPlatform: {
+ *     duo: {
  *         enabled: true,
- *     },
- *     webauthnRoaming: {
- *         enabled: true,
- *         userVerification: "required",
+ *         integrationKey: "someKey",
+ *         secretKey: "someSecret",
+ *         hostname: "api-hostname",
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

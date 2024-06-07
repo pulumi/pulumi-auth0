@@ -329,12 +329,12 @@ class EmailTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_email_provider = auth0.EmailProvider("myEmailProvider",
+        my_email_provider = auth0.EmailProvider("my_email_provider",
+            name="ses",
             enabled=True,
             default_from_address="accounts@example.com",
             credentials=auth0.EmailProviderCredentialsArgs(
@@ -342,7 +342,7 @@ class EmailTemplate(pulumi.CustomResource):
                 secret_access_key="7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 region="us-east-1",
             ))
-        my_email_template = auth0.EmailTemplate("myEmailTemplate",
+        my_email_template = auth0.EmailTemplate("my_email_template",
             template="welcome_email",
             body="<html><body><h1>Welcome!</h1></body></html>",
             from_="welcome@example.com",
@@ -353,7 +353,6 @@ class EmailTemplate(pulumi.CustomResource):
             enabled=True,
             opts=pulumi.ResourceOptions(depends_on=[my_email_provider]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -404,12 +403,12 @@ class EmailTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_email_provider = auth0.EmailProvider("myEmailProvider",
+        my_email_provider = auth0.EmailProvider("my_email_provider",
+            name="ses",
             enabled=True,
             default_from_address="accounts@example.com",
             credentials=auth0.EmailProviderCredentialsArgs(
@@ -417,7 +416,7 @@ class EmailTemplate(pulumi.CustomResource):
                 secret_access_key="7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 region="us-east-1",
             ))
-        my_email_template = auth0.EmailTemplate("myEmailTemplate",
+        my_email_template = auth0.EmailTemplate("my_email_template",
             template="welcome_email",
             body="<html><body><h1>Welcome!</h1></body></html>",
             from_="welcome@example.com",
@@ -428,7 +427,6 @@ class EmailTemplate(pulumi.CustomResource):
             enabled=True,
             opts=pulumi.ResourceOptions(depends_on=[my_email_provider]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

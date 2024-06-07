@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,13 +41,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myRole = new Role(&#34;myRole&#34;, RoleArgs.builder()        
- *             .description(&#34;Role Description...&#34;)
+ *         var myRole = new Role("myRole", RoleArgs.builder()
+ *             .name("My Role - (Managed by Terraform)")
+ *             .description("Role Description...")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -24,13 +23,15 @@ import * as utilities from "./utilities";
  *     emailVerified: true,
  *     password: "MyPass123$",
  * });
- * const myOrg = new auth0.Organization("myOrg", {displayName: "Admin"});
- * const myOrgMember = new auth0.OrganizationMember("myOrgMember", {
+ * const myOrg = new auth0.Organization("my_org", {
+ *     name: "org-admin",
+ *     displayName: "Admin",
+ * });
+ * const myOrgMember = new auth0.OrganizationMember("my_org_member", {
  *     organizationId: myOrg.id,
  *     userId: user.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

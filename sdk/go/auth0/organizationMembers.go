@@ -21,7 +21,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -34,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			user1, err := auth0.NewUser(ctx, "user1", &auth0.UserArgs{
+//			user1, err := auth0.NewUser(ctx, "user_1", &auth0.UserArgs{
 //				ConnectionName: pulumi.String("Username-Password-Authentication"),
 //				Email:          pulumi.String("myuser1@auth0.com"),
 //				Password:       pulumi.String("MyPass123$"),
@@ -42,7 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			user2, err := auth0.NewUser(ctx, "user2", &auth0.UserArgs{
+//			user2, err := auth0.NewUser(ctx, "user_2", &auth0.UserArgs{
 //				ConnectionName: pulumi.String("Username-Password-Authentication"),
 //				Email:          pulumi.String("myuser2@auth0.com"),
 //				Password:       pulumi.String("MyPass123$"),
@@ -50,13 +49,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			myOrg, err := auth0.NewOrganization(ctx, "myOrg", &auth0.OrganizationArgs{
+//			myOrg, err := auth0.NewOrganization(ctx, "my_org", &auth0.OrganizationArgs{
+//				Name:        pulumi.String("some-org"),
 //				DisplayName: pulumi.String("Some Organization"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = auth0.NewOrganizationMembers(ctx, "myMembers", &auth0.OrganizationMembersArgs{
+//			_, err = auth0.NewOrganizationMembers(ctx, "my_members", &auth0.OrganizationMembersArgs{
 //				OrganizationId: myOrg.ID(),
 //				Members: pulumi.StringArray{
 //					user1.ID(),
@@ -71,7 +71,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

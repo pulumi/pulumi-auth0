@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -28,21 +27,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewAttackProtection(ctx, "myProtection", &auth0.AttackProtectionArgs{
-//				BreachedPasswordDetection: &auth0.AttackProtectionBreachedPasswordDetectionArgs{
-//					AdminNotificationFrequencies: pulumi.StringArray{
-//						pulumi.String("daily"),
-//					},
+//			_, err := auth0.NewAttackProtection(ctx, "my_protection", &auth0.AttackProtectionArgs{
+//				SuspiciousIpThrottling: &auth0.AttackProtectionSuspiciousIpThrottlingArgs{
 //					Enabled: pulumi.Bool(true),
-//					Method:  pulumi.String("standard"),
-//					PreUserRegistration: &auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{
-//						Shields: pulumi.StringArray{
-//							pulumi.String("block"),
-//						},
-//					},
 //					Shields: pulumi.StringArray{
 //						pulumi.String("admin_notification"),
 //						pulumi.String("block"),
+//					},
+//					Allowlists: pulumi.StringArray{
+//						pulumi.String("192.168.1.1"),
+//					},
+//					PreLogin: &auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs{
+//						MaxAttempts: pulumi.Int(100),
+//						Rate:        pulumi.Int(864000),
+//					},
+//					PreUserRegistration: &auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{
+//						MaxAttempts: pulumi.Int(50),
+//						Rate:        pulumi.Int(1200),
 //					},
 //				},
 //				BruteForceProtection: &auth0.AttackProtectionBruteForceProtectionArgs{
@@ -57,22 +58,20 @@ import (
 //						pulumi.String("user_notification"),
 //					},
 //				},
-//				SuspiciousIpThrottling: &auth0.AttackProtectionSuspiciousIpThrottlingArgs{
-//					Allowlists: pulumi.StringArray{
-//						pulumi.String("192.168.1.1"),
+//				BreachedPasswordDetection: &auth0.AttackProtectionBreachedPasswordDetectionArgs{
+//					AdminNotificationFrequencies: pulumi.StringArray{
+//						pulumi.String("daily"),
 //					},
 //					Enabled: pulumi.Bool(true),
-//					PreLogin: &auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs{
-//						MaxAttempts: pulumi.Int(100),
-//						Rate:        pulumi.Int(864000),
-//					},
-//					PreUserRegistration: &auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{
-//						MaxAttempts: pulumi.Int(50),
-//						Rate:        pulumi.Int(1200),
-//					},
+//					Method:  pulumi.String("standard"),
 //					Shields: pulumi.StringArray{
 //						pulumi.String("admin_notification"),
 //						pulumi.String("block"),
+//					},
+//					PreUserRegistration: &auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{
+//						Shields: pulumi.StringArray{
+//							pulumi.String("block"),
+//						},
 //					},
 //				},
 //			})
@@ -84,7 +83,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

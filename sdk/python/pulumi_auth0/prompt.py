@@ -137,17 +137,15 @@ class Prompt(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_prompt = auth0.Prompt("myPrompt",
-            identifier_first=False,
+        my_prompt = auth0.Prompt("my_prompt",
             universal_login_experience="new",
+            identifier_first=False,
             webauthn_platform_first_factor=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -184,17 +182,15 @@ class Prompt(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_prompt = auth0.Prompt("myPrompt",
-            identifier_first=False,
+        my_prompt = auth0.Prompt("my_prompt",
             universal_login_experience="new",
+            identifier_first=False,
             webauthn_platform_first_factor=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -31,13 +30,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewUser(ctx, "user", &auth0.UserArgs{
 //				ConnectionName: pulumi.String("Username-Password-Authentication"),
-//				Email:          pulumi.String("test@test.com"),
-//				EmailVerified:  pulumi.Bool(true),
-//				Nickname:       pulumi.String("some.nickname"),
-//				Password:       pulumi.String("passpass$12$12"),
-//				Picture:        pulumi.String("https://www.example.com/a-valid-picture-url.jpg"),
 //				UserId:         pulumi.String("12345"),
 //				Username:       pulumi.String("unique_username"),
+//				Name:           pulumi.String("Firstname Lastname"),
+//				Nickname:       pulumi.String("some.nickname"),
+//				Email:          pulumi.String("test@test.com"),
+//				EmailVerified:  pulumi.Bool(true),
+//				Password:       pulumi.String("passpass$12$12"),
+//				Picture:        pulumi.String("https://www.example.com/a-valid-picture-url.jpg"),
 //			})
 //			if err != nil {
 //				return err
@@ -47,7 +47,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

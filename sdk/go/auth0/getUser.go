@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -28,6 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// An Auth0 User loaded using its ID.
 //			_, err := auth0.LookupUser(ctx, &auth0.LookupUserArgs{
 //				UserId: "auth0|34fdr23fdsfdfsf",
 //			}, nil)
@@ -39,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserResult

@@ -58,7 +58,7 @@ public final class ClientAddonsSamlp {
      */
     private @Nullable String issuer;
     /**
-     * @return AWS token lifetime in seconds.
+     * @return Number of seconds during which the token is valid. Defaults to `3600` seconds.
      * 
      */
     private @Nullable Integer lifetimeInSeconds;
@@ -181,7 +181,7 @@ public final class ClientAddonsSamlp {
         return Optional.ofNullable(this.issuer);
     }
     /**
-     * @return AWS token lifetime in seconds.
+     * @return Number of seconds during which the token is valid. Defaults to `3600` seconds.
      * 
      */
     public Optional<Integer> lifetimeInSeconds() {

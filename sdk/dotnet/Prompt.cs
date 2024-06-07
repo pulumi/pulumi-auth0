@@ -14,7 +14,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -23,16 +22,15 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myPrompt = new Auth0.Prompt("myPrompt", new()
+    ///     var myPrompt = new Auth0.Prompt("my_prompt", new()
     ///     {
-    ///         IdentifierFirst = false,
     ///         UniversalLoginExperience = "new",
+    ///         IdentifierFirst = false,
     ///         WebauthnPlatformFirstFactor = true,
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

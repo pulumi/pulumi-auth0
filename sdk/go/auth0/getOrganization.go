@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -28,12 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// An Auth0 Organization loaded using its name.
 //			_, err := auth0.LookupOrganization(ctx, &auth0.LookupOrganizationArgs{
 //				Name: pulumi.StringRef("my-org"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// An Auth0 Organization loaded using its ID.
 //			_, err = auth0.LookupOrganization(ctx, &auth0.LookupOrganizationArgs{
 //				OrganizationId: pulumi.StringRef("org_abcdefghkijklmnopqrstuvwxyz0123456789"),
 //			}, nil)
@@ -45,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupOrganization(ctx *pulumi.Context, args *LookupOrganizationArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationResult

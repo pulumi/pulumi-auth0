@@ -9,12 +9,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myEmailProvider = new auth0.EmailProvider("myEmailProvider", {
+ * const myEmailProvider = new auth0.EmailProvider("my_email_provider", {
+ *     name: "ses",
  *     enabled: true,
  *     defaultFromAddress: "accounts@example.com",
  *     credentials: {
@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *         region: "us-east-1",
  *     },
  * });
- * const myEmailTemplate = new auth0.EmailTemplate("myEmailTemplate", {
+ * const myEmailTemplate = new auth0.EmailTemplate("my_email_template", {
  *     template: "welcome_email",
  *     body: "<html><body><h1>Welcome!</h1></body></html>",
  *     from: "welcome@example.com",
@@ -36,7 +36,6 @@ import * as utilities from "./utilities";
  *     dependsOn: [myEmailProvider],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

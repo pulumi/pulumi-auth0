@@ -19,7 +19,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -28,17 +27,19 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myConnection = new Auth0.Connection("myConnection", new()
+    ///     var myConnection = new Auth0.Connection("my_connection", new()
     ///     {
+    ///         Name = "My Connection",
     ///         Strategy = "auth0",
     ///     });
     /// 
-    ///     var myOrganization = new Auth0.Organization("myOrganization", new()
+    ///     var myOrganization = new Auth0.Organization("my_organization", new()
     ///     {
+    ///         Name = "my-organization",
     ///         DisplayName = "My Organization",
     ///     });
     /// 
-    ///     var myOrgConn = new Auth0.OrganizationConnection("myOrgConn", new()
+    ///     var myOrgConn = new Auth0.OrganizationConnection("my_org_conn", new()
     ///     {
     ///         OrganizationId = myOrganization.Id,
     ///         ConnectionId = myConnection.Id,
@@ -47,7 +48,6 @@ namespace Pulumi.Auth0
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

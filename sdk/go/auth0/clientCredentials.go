@@ -17,89 +17,6 @@ import (
 // > Refer to the client secret rotation guide
 // for instructions on how to rotate client secrets with zero downtime.
 //
-// ## Example Usage
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myClient, err := auth0.NewClient(ctx, "myClient", &auth0.ClientArgs{
-//				AppType: pulumi.String("non_interactive"),
-//				JwtConfiguration: &auth0.ClientJwtConfigurationArgs{
-//					Alg: pulumi.String("RS256"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Configuring client_secret_post as an authentication method.
-//			_, err = auth0.NewClientCredentials(ctx, "testClientCredentials", &auth0.ClientCredentialsArgs{
-//				ClientId:             myClient.ID(),
-//				AuthenticationMethod: pulumi.String("client_secret_post"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Configuring client_secret_basic as an authentication method.
-//			_, err = auth0.NewClientCredentials(ctx, "testIndex/clientCredentialsClientCredentials", &auth0.ClientCredentialsArgs{
-//				ClientId:             myClient.ID(),
-//				AuthenticationMethod: pulumi.String("client_secret_basic"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Configuring none as an authentication method.
-//			_, err = auth0.NewClientCredentials(ctx, "testAuth0Index/clientCredentialsClientCredentials", &auth0.ClientCredentialsArgs{
-//				ClientId:             myClient.ID(),
-//				AuthenticationMethod: pulumi.String("none"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Configuring private_key_jwt as an authentication method.
-//			_, err = auth0.NewClientCredentials(ctx, "testAuth0Index/clientCredentialsClientCredentials1", &auth0.ClientCredentialsArgs{
-//				ClientId:             myClient.ID(),
-//				AuthenticationMethod: pulumi.String("private_key_jwt"),
-//				PrivateKeyJwt: &auth0.ClientCredentialsPrivateKeyJwtArgs{
-//					Credentials: auth0.ClientCredentialsPrivateKeyJwtCredentialArray{
-//						&auth0.ClientCredentialsPrivateKeyJwtCredentialArgs{
-//							Name:                pulumi.String("Testing Credentials 1"),
-//							CredentialType:      pulumi.String("public_key"),
-//							Algorithm:           pulumi.String("RS256"),
-//							ParseExpiryFromCert: pulumi.Bool(true),
-//							Pem:                 pulumi.String("-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Configuring the client_secret.
-//			_, err = auth0.NewClientCredentials(ctx, "testAuth0Index/clientCredentialsClientCredentials2", &auth0.ClientCredentialsArgs{
-//				ClientId:             myClient.ID(),
-//				AuthenticationMethod: pulumi.String("client_secret_basic"),
-//				ClientSecret:         pulumi.String("LUFqPx+sRLjbL7peYRPFmFu-bbvE7u7og4YUNe_C345=683341"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
 // ## Import
 //
 // This resource can be imported by specifying the client ID.
@@ -121,11 +38,7 @@ type ClientCredentials struct {
 	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT).
 	AuthenticationMethod pulumi.StringOutput `pulumi:"authenticationMethod"`
 	// The ID of the client for which to configure the authentication method.
-	ClientId pulumi.StringOutput `pulumi:"clientId"`
-	// Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-	// To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-	// will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-	// authentication method.
+	ClientId     pulumi.StringOutput `pulumi:"clientId"`
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt ClientCredentialsPrivateKeyJwtPtrOutput `pulumi:"privateKeyJwt"`
@@ -177,11 +90,7 @@ type clientCredentialsState struct {
 	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT).
 	AuthenticationMethod *string `pulumi:"authenticationMethod"`
 	// The ID of the client for which to configure the authentication method.
-	ClientId *string `pulumi:"clientId"`
-	// Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-	// To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-	// will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-	// authentication method.
+	ClientId     *string `pulumi:"clientId"`
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt *ClientCredentialsPrivateKeyJwt `pulumi:"privateKeyJwt"`
@@ -191,11 +100,7 @@ type ClientCredentialsState struct {
 	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT).
 	AuthenticationMethod pulumi.StringPtrInput
 	// The ID of the client for which to configure the authentication method.
-	ClientId pulumi.StringPtrInput
-	// Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-	// To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-	// will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-	// authentication method.
+	ClientId     pulumi.StringPtrInput
 	ClientSecret pulumi.StringPtrInput
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt ClientCredentialsPrivateKeyJwtPtrInput
@@ -209,11 +114,7 @@ type clientCredentialsArgs struct {
 	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT).
 	AuthenticationMethod string `pulumi:"authenticationMethod"`
 	// The ID of the client for which to configure the authentication method.
-	ClientId string `pulumi:"clientId"`
-	// Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-	// To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-	// will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-	// authentication method.
+	ClientId     string  `pulumi:"clientId"`
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt *ClientCredentialsPrivateKeyJwt `pulumi:"privateKeyJwt"`
@@ -224,11 +125,7 @@ type ClientCredentialsArgs struct {
 	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT).
 	AuthenticationMethod pulumi.StringInput
 	// The ID of the client for which to configure the authentication method.
-	ClientId pulumi.StringInput
-	// Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-	// To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-	// will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-	// authentication method.
+	ClientId     pulumi.StringInput
 	ClientSecret pulumi.StringPtrInput
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt ClientCredentialsPrivateKeyJwtPtrInput
@@ -331,10 +228,6 @@ func (o ClientCredentialsOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientCredentials) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }
 
-// Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private.
-// To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute
-// will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an
-// authentication method.
 func (o ClientCredentialsOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientCredentials) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
 }

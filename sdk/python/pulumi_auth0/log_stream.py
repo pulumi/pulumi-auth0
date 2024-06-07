@@ -203,44 +203,44 @@ class LogStream(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
         # This is an example of an http log stream.
-        my_webhook = auth0.LogStream("myWebhook",
+        my_webhook = auth0.LogStream("my_webhook",
+            name="HTTP log stream",
+            type="http",
             filters=[
                 {
-                    "name": "auth.login.fail",
                     "type": "category",
+                    "name": "auth.login.fail",
                 },
                 {
-                    "name": "auth.signup.fail",
                     "type": "category",
+                    "name": "auth.signup.fail",
                 },
             ],
             sink=auth0.LogStreamSinkArgs(
-                http_authorization="AKIAXXXXXXXXXXXXXXXX",
-                http_content_format="JSONOBJECT",
+                http_endpoint="https://example.com/logs",
                 http_content_type="application/json",
+                http_content_format="JSONOBJECT",
+                http_authorization="AKIAXXXXXXXXXXXXXXXX",
                 http_custom_headers=[{
                     "header": "foo",
                     "value": "bar",
                 }],
-                http_endpoint="https://example.com/logs",
-            ),
-            type="http")
+            ))
         # This is an example of an Amazon EventBridge log stream.
-        example_aws = auth0.LogStream("exampleAws",
+        example_aws = auth0.LogStream("example_aws",
+            name="AWS Eventbridge",
+            type="eventbridge",
+            status="active",
             sink=auth0.LogStreamSinkArgs(
                 aws_account_id="my_account_id",
                 aws_region="us-east-2",
-            ),
-            status="active",
-            type="eventbridge")
+            ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -273,44 +273,44 @@ class LogStream(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
         # This is an example of an http log stream.
-        my_webhook = auth0.LogStream("myWebhook",
+        my_webhook = auth0.LogStream("my_webhook",
+            name="HTTP log stream",
+            type="http",
             filters=[
                 {
-                    "name": "auth.login.fail",
                     "type": "category",
+                    "name": "auth.login.fail",
                 },
                 {
-                    "name": "auth.signup.fail",
                     "type": "category",
+                    "name": "auth.signup.fail",
                 },
             ],
             sink=auth0.LogStreamSinkArgs(
-                http_authorization="AKIAXXXXXXXXXXXXXXXX",
-                http_content_format="JSONOBJECT",
+                http_endpoint="https://example.com/logs",
                 http_content_type="application/json",
+                http_content_format="JSONOBJECT",
+                http_authorization="AKIAXXXXXXXXXXXXXXXX",
                 http_custom_headers=[{
                     "header": "foo",
                     "value": "bar",
                 }],
-                http_endpoint="https://example.com/logs",
-            ),
-            type="http")
+            ))
         # This is an example of an Amazon EventBridge log stream.
-        example_aws = auth0.LogStream("exampleAws",
+        example_aws = auth0.LogStream("example_aws",
+            name="AWS Eventbridge",
+            type="eventbridge",
+            status="active",
             sink=auth0.LogStreamSinkArgs(
                 aws_account_id="my_account_id",
                 aws_region="us-east-2",
-            ),
-            status="active",
-            type="eventbridge")
+            ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

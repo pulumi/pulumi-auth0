@@ -40,7 +40,7 @@ func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 			"@pulumi/auth0",
 		},
 
-		// Temporary profilactic check until pulumi/pulumi#12981 is resolved.
+		// Temporary prophylactic check until pulumi/pulumi#12981 is resolved.
 		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
 			for _, e := range stack.Events {
 				eventsJSON, err := json.MarshalIndent(e, "", "  ")

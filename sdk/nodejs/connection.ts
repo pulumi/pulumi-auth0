@@ -14,26 +14,93 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * ### Google OAuth2 Connection
+ * ### Auth0 Connection
  *
- * > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
- *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const googleOauth2 = new auth0.Connection("googleOauth2", {
+ * // This is an example of an Auth0 connection.
+ * const myConnection = new auth0.Connection("my_connection", {
+ *     name: "Example-Connection",
+ *     isDomainConnection: true,
+ *     strategy: "auth0",
+ *     metadata: {
+ *         key1: "foo",
+ *         key2: "bar",
+ *     },
  *     options: {
+ *         passwordPolicy: "excellent",
+ *         bruteForceProtection: true,
+ *         enabledDatabaseCustomization: true,
+ *         importMode: false,
+ *         requiresUsername: true,
+ *         disableSignup: false,
+ *         customScripts: {
+ *             get_user: `        function getByEmail(email, callback) {
+ *           return callback(new Error("Whoops!"));
+ *         }
+ * `,
+ *         },
+ *         configuration: {
+ *             foo: "bar",
+ *             bar: "baz",
+ *         },
+ *         upstreamParams: JSON.stringify({
+ *             screen_name: {
+ *                 alias: "login_hint",
+ *             },
+ *         }),
+ *         passwordHistories: [{
+ *             enable: true,
+ *             size: 3,
+ *         }],
+ *         passwordNoPersonalInfo: {
+ *             enable: true,
+ *         },
+ *         passwordDictionary: {
+ *             enable: true,
+ *             dictionaries: [
+ *                 "password",
+ *                 "admin",
+ *                 "1234",
+ *             ],
+ *         },
+ *         passwordComplexityOptions: {
+ *             minLength: 12,
+ *         },
+ *         validation: {
+ *             username: {
+ *                 min: 10,
+ *                 max: 40,
+ *             },
+ *         },
+ *         mfa: {
+ *             active: true,
+ *             returnEnrollSettings: true,
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Google OAuth2 Connection
+ *
+ * > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // This is an example of a Google OAuth2 connection.
+ * const googleOauth2 = new auth0.Connection("google_oauth2", {
+ *     name: "Google-OAuth2-Connection",
+ *     strategy: "google-oauth2",
+ *     options: {
+ *         clientId: "<client-id>",
+ *         clientSecret: "<client-secret>",
  *         allowedAudiences: [
  *             "example.com",
  *             "api.example.com",
- *         ],
- *         clientId: "<client-id>",
- *         clientSecret: "<client-secret>",
- *         nonPersistentAttrs: [
- *             "ethnicity",
- *             "gender",
  *         ],
  *         scopes: [
  *             "email",
@@ -42,27 +109,67 @@ import * as utilities from "./utilities";
  *             "youtube",
  *         ],
  *         setUserRootAttributes: "on_each_login",
- *     },
- *     strategy: "google-oauth2",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
- * ### Facebook Connection
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const facebook = new auth0.Connection("facebook", {
- *     options: {
- *         clientId: "<client-id>",
- *         clientSecret: "<client-secret>",
  *         nonPersistentAttrs: [
  *             "ethnicity",
  *             "gender",
  *         ],
+ *     },
+ * });
+ * ```
+ *
+ * ### Google Apps
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const googleApps = new auth0.Connection("google_apps", {
+ *     name: "connection-google-apps",
+ *     isDomainConnection: false,
+ *     strategy: "google-apps",
+ *     showAsButton: false,
+ *     options: {
+ *         clientId: "",
+ *         clientSecret: "",
+ *         domain: "example.com",
+ *         tenantDomain: "example.com",
+ *         domainAliases: [
+ *             "example.com",
+ *             "api.example.com",
+ *         ],
+ *         apiEnableUsers: true,
+ *         scopes: [
+ *             "ext_profile",
+ *             "ext_groups",
+ *         ],
+ *         iconUrl: "https://example.com/assets/logo.png",
+ *         upstreamParams: JSON.stringify({
+ *             screen_name: {
+ *                 alias: "login_hint",
+ *             },
+ *         }),
+ *         setUserRootAttributes: "on_each_login",
+ *         nonPersistentAttrs: [
+ *             "ethnicity",
+ *             "gender",
+ *         ],
+ *     },
+ * });
+ * ```
+ *
+ * ### Facebook Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // This is an example of a Facebook connection.
+ * const facebook = new auth0.Connection("facebook", {
+ *     name: "Facebook-Connection",
+ *     strategy: "facebook",
+ *     options: {
+ *         clientId: "<client-id>",
+ *         clientSecret: "<client-secret>",
  *         scopes: [
  *             "public_profile",
  *             "email",
@@ -70,86 +177,85 @@ import * as utilities from "./utilities";
  *             "user_birthday",
  *         ],
  *         setUserRootAttributes: "on_each_login",
- *     },
- *     strategy: "facebook",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
- * ### Apple Connection
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const apple = new auth0.Connection("apple", {
- *     options: {
- *         clientId: "<client-id>",
- *         clientSecret: `-----BEGIN PRIVATE KEY-----
- * MIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA
- * -----END PRIVATE KEY-----
- * `,
- *         keyId: "<key-id>",
  *         nonPersistentAttrs: [
  *             "ethnicity",
  *             "gender",
  *         ],
+ *     },
+ * });
+ * ```
+ *
+ * ### Apple Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // This is an example of an Apple connection.
+ * const apple = new auth0.Connection("apple", {
+ *     name: "Apple-Connection",
+ *     strategy: "apple",
+ *     options: {
+ *         clientId: "<client-id>",
+ *         clientSecret: `-----BEGIN PRIVATE KEY-----
+ * MIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA
+ * -----END PRIVATE KEY-----`,
+ *         teamId: "<team-id>",
+ *         keyId: "<key-id>",
  *         scopes: [
  *             "email",
  *             "name",
  *         ],
  *         setUserRootAttributes: "on_first_login",
- *         teamId: "<team-id>",
- *     },
- *     strategy: "apple",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
- * ### LinkedIn Connection
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const linkedin = new auth0.Connection("linkedin", {
- *     options: {
- *         clientId: "<client-id>",
- *         clientSecret: "<client-secret>",
  *         nonPersistentAttrs: [
  *             "ethnicity",
  *             "gender",
  *         ],
+ *     },
+ * });
+ * ```
+ *
+ * ### LinkedIn Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // This is an example of an LinkedIn connection.
+ * const linkedin = new auth0.Connection("linkedin", {
+ *     name: "Linkedin-Connection",
+ *     strategy: "linkedin",
+ *     options: {
+ *         clientId: "<client-id>",
+ *         clientSecret: "<client-secret>",
+ *         strategyVersion: 2,
  *         scopes: [
  *             "basic_profile",
  *             "profile",
  *             "email",
  *         ],
  *         setUserRootAttributes: "on_each_login",
- *         strategyVersion: 2,
- *     },
- *     strategy: "linkedin",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
- * ### GitHub Connection
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const github = new auth0.Connection("github", {
- *     options: {
- *         clientId: "<client-id>",
- *         clientSecret: "<client-secret>",
  *         nonPersistentAttrs: [
  *             "ethnicity",
  *             "gender",
  *         ],
+ *     },
+ * });
+ * ```
+ *
+ * ### GitHub Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // This is an example of an GitHub connection.
+ * const github = new auth0.Connection("github", {
+ *     name: "GitHub-Connection",
+ *     strategy: "github",
+ *     options: {
+ *         clientId: "<client-id>",
+ *         clientSecret: "<client-secret>",
  *         scopes: [
  *             "email",
  *             "profile",
@@ -157,177 +263,417 @@ import * as utilities from "./utilities";
  *             "repo",
  *         ],
  *         setUserRootAttributes: "on_each_login",
- *     },
- *     strategy: "github",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
- * ### SalesForce Connection
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const salesforce = new auth0.Connection("salesforce", {
- *     options: {
- *         clientId: "<client-id>",
- *         clientSecret: "<client-secret>",
- *         communityBaseUrl: "https://salesforce.example.com",
  *         nonPersistentAttrs: [
  *             "ethnicity",
  *             "gender",
  *         ],
+ *     },
+ * });
+ * ```
+ *
+ * ### SalesForce Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // This is an example of an SalesForce connection.
+ * const salesforce = new auth0.Connection("salesforce", {
+ *     name: "Salesforce-Connection",
+ *     strategy: "salesforce",
+ *     options: {
+ *         clientId: "<client-id>",
+ *         clientSecret: "<client-secret>",
+ *         communityBaseUrl: "https://salesforce.example.com",
  *         scopes: [
  *             "openid",
  *             "email",
  *         ],
  *         setUserRootAttributes: "on_first_login",
+ *         nonPersistentAttrs: [
+ *             "ethnicity",
+ *             "gender",
+ *         ],
  *     },
- *     strategy: "salesforce",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### OAuth2 Connection
  *
  * Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // This is an example of an OAuth2 connection.
  * const oauth2 = new auth0.Connection("oauth2", {
+ *     name: "OAuth2-Connection",
+ *     strategy: "oauth2",
  *     options: {
- *         authorizationEndpoint: "https://auth.example.com/oauth2/authorize",
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
- *         iconUrl: "https://auth.example.com/assets/logo.png",
- *         nonPersistentAttrs: [
- *             "ethnicity",
- *             "gender",
- *         ],
- *         pkceEnabled: true,
  *         scopes: [
  *             "basic_profile",
  *             "profile",
  *             "email",
  *         ],
+ *         tokenEndpoint: "https://auth.example.com/oauth2/token",
+ *         authorizationEndpoint: "https://auth.example.com/oauth2/authorize",
+ *         pkceEnabled: true,
+ *         iconUrl: "https://auth.example.com/assets/logo.png",
  *         scripts: {
  *             fetchUserProfile: `        function fetchUserProfile(accessToken, context, callback) {
  *           return callback(new Error("Whoops!"));
  *         }
- *       
  * `,
  *         },
  *         setUserRootAttributes: "on_each_login",
- *         tokenEndpoint: "https://auth.example.com/oauth2/token",
+ *         nonPersistentAttrs: [
+ *             "ethnicity",
+ *             "gender",
+ *         ],
  *     },
- *     strategy: "oauth2",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * ### SMS Connection
+ * ### Active Directory (AD)
  *
- * > To be able to see this in the management dashboard as well, the name of the connection must be set to "sms".
- *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const sms = new auth0.Connection("sms", {
- *     isDomainConnection: false,
+ * const ad = new auth0.Connection("ad", {
+ *     name: "connection-active-directory",
+ *     displayName: "Active Directory Connection",
+ *     strategy: "ad",
+ *     showAsButton: true,
  *     options: {
+ *         disableSelfServiceChangePassword: true,
  *         bruteForceProtection: true,
- *         disableSignup: false,
- *         forwardRequestInfo: true,
- *         from: "+15555555555",
- *         gatewayAuthentication: {
- *             audience: "https://somewhere.com/sms-gateway",
- *             method: "bearer",
- *             secret: "4e2680bb74ec2ae24736476dd37ed6c2",
- *             secretBase64Encoded: false,
- *             subject: "test.us.auth0.com:sms",
- *         },
- *         gatewayUrl: "https://somewhere.com/sms-gateway",
- *         name: "sms",
- *         provider: "sms_gateway",
- *         syntax: "md_with_macros",
- *         template: "@@password@@",
- *         totp: {
- *             length: 6,
- *             timeStep: 300,
- *         },
+ *         tenantDomain: "example.com",
+ *         iconUrl: "https://example.com/assets/logo.png",
+ *         domainAliases: [
+ *             "example.com",
+ *             "api.example.com",
+ *         ],
+ *         ips: [
+ *             "192.168.1.1",
+ *             "192.168.1.2",
+ *         ],
+ *         setUserRootAttributes: "on_each_login",
+ *         nonPersistentAttrs: [
+ *             "ethnicity",
+ *             "gender",
+ *         ],
+ *         upstreamParams: JSON.stringify({
+ *             screen_name: {
+ *                 alias: "login_hint",
+ *             },
+ *         }),
+ *         useCertAuth: false,
+ *         useKerberos: false,
+ *         disableCache: false,
  *     },
- *     strategy: "sms",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
+ *
+ * ### Azure AD Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const azureAd = new auth0.Connection("azure_ad", {
+ *     name: "connection-azure-ad",
+ *     strategy: "waad",
+ *     showAsButton: true,
+ *     options: {
+ *         identityApi: "azure-active-directory-v1.0",
+ *         clientId: "123456",
+ *         clientSecret: "123456",
+ *         appId: "app-id-123",
+ *         tenantDomain: "example.onmicrosoft.com",
+ *         domain: "example.onmicrosoft.com",
+ *         domainAliases: [
+ *             "example.com",
+ *             "api.example.com",
+ *         ],
+ *         iconUrl: "https://example.onmicrosoft.com/assets/logo.png",
+ *         useWsfed: false,
+ *         waadProtocol: "openid-connect",
+ *         waadCommonEndpoint: false,
+ *         maxGroupsToRetrieve: "250",
+ *         apiEnableUsers: true,
+ *         scopes: [
+ *             "basic_profile",
+ *             "ext_groups",
+ *             "ext_profile",
+ *         ],
+ *         setUserRootAttributes: "on_each_login",
+ *         shouldTrustEmailVerifiedConnection: "never_set_emails_as_verified",
+ *         upstreamParams: JSON.stringify({
+ *             screen_name: {
+ *                 alias: "login_hint",
+ *             },
+ *         }),
+ *         nonPersistentAttrs: [
+ *             "ethnicity",
+ *             "gender",
+ *         ],
+ *     },
+ * });
+ * ```
  *
  * ### Email Connection
  *
  * > To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const passwordlessEmail = new auth0.Connection("passwordlessEmail", {
+ * // This is an example of an Email connection.
+ * const passwordlessEmail = new auth0.Connection("passwordless_email", {
+ *     strategy: "email",
+ *     name: "email",
  *     options: {
- *         authParams: {
- *             responseType: "code",
- *             scope: "openid email profile offline_access",
- *         },
- *         bruteForceProtection: true,
- *         disableSignup: false,
- *         from: "{{ application.name }} <root@auth0.com>",
  *         name: "email",
- *         nonPersistentAttrs: [],
- *         setUserRootAttributes: "on_each_login",
+ *         from: "{{ application.name }} <root@auth0.com>",
  *         subject: "Welcome to {{ application.name }}",
  *         syntax: "liquid",
  *         template: "<html>This is the body of the email</html>",
+ *         disableSignup: false,
+ *         bruteForceProtection: true,
+ *         setUserRootAttributes: "on_each_login",
+ *         nonPersistentAttrs: [],
+ *         authParams: {
+ *             scope: "openid email profile offline_access",
+ *             response_type: "code",
+ *         },
  *         totp: {
- *             length: 6,
  *             timeStep: 300,
+ *             length: 6,
  *         },
  *     },
- *     strategy: "email",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * ### WindowsLive Connection
+ * ### SAML Connection
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // This is an example of a SAML connection.
+ * const samlp = new auth0.Connection("samlp", {
+ *     name: "SAML-Connection",
+ *     strategy: "samlp",
+ *     options: {
+ *         debug: false,
+ *         signingCert: "<signing-certificate>",
+ *         signInEndpoint: "https://saml.provider/sign_in",
+ *         signOutEndpoint: "https://saml.provider/sign_out",
+ *         disableSignOut: true,
+ *         tenantDomain: "example.com",
+ *         domainAliases: [
+ *             "example.com",
+ *             "alias.example.com",
+ *         ],
+ *         protocolBinding: "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST",
+ *         requestTemplate: `<samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+ * @@AssertServiceURLAndDestination@@
+ *     ID="@@ID@@"
+ *     IssueInstant="@@IssueInstant@@"
+ *     ProtocolBinding="@@ProtocolBinding@@" Version="2.0">
+ *     <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">@@Issuer@@</saml:Issuer>
+ * </samlp:AuthnRequest>`,
+ *         userIdAttribute: "https://saml.provider/imi/ns/identity-200810",
+ *         signatureAlgorithm: "rsa-sha256",
+ *         digestAlgorithm: "sha256",
+ *         iconUrl: "https://saml.provider/assets/logo.png",
+ *         entityId: "<entity_id>",
+ *         metadataXml: `    <?xml version="1.0"?>
+ *     <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="https://example.com">
+ *       <md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+ *         <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.provider/sign_out"/>
+ *         <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.provider/sign_in"/>
+ *       </md:IDPSSODescriptor>
+ *     </md:EntityDescriptor>
+ * `,
+ *         metadataUrl: "https://saml.provider/imi/ns/FederationMetadata.xml",
+ *         fieldsMap: JSON.stringify({
+ *             name: [
+ *                 "name",
+ *                 "nameidentifier",
+ *             ],
+ *             email: [
+ *                 "emailaddress",
+ *                 "nameidentifier",
+ *             ],
+ *             family_name: "surname",
+ *         }),
+ *         signingKey: {
+ *             key: `-----BEGIN PRIVATE KEY-----
+ * ...{your private key here}...
+ * -----END PRIVATE KEY-----`,
+ *             cert: `-----BEGIN CERTIFICATE-----
+ * ...{your public key cert here}...
+ * -----END CERTIFICATE-----`,
+ *         },
+ *         decryptionKey: {
+ *             key: `-----BEGIN PRIVATE KEY-----
+ * ...{your private key here}...
+ * -----END PRIVATE KEY-----`,
+ *             cert: `-----BEGIN CERTIFICATE-----
+ * ...{your public key cert here}...
+ * -----END CERTIFICATE-----`,
+ *         },
+ *         idpInitiated: {
+ *             clientId: "client_id",
+ *             clientProtocol: "samlp",
+ *             clientAuthorizeQuery: "type=code&timeout=30",
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### WindowsLive Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // This is an example of a WindowsLive connection.
  * const windowslive = new auth0.Connection("windowslive", {
+ *     name: "Windowslive-Connection",
+ *     strategy: "windowslive",
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
- *         nonPersistentAttrs: [
- *             "ethnicity",
- *             "gender",
- *         ],
+ *         strategyVersion: 2,
  *         scopes: [
  *             "signin",
  *             "graph_user",
  *         ],
  *         setUserRootAttributes: "on_first_login",
- *         strategyVersion: 2,
+ *         nonPersistentAttrs: [
+ *             "ethnicity",
+ *             "gender",
+ *         ],
  *     },
- *     strategy: "windowslive",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
+ *
+ * ### OIDC Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // This is an example of an OIDC connection.
+ * const oidc = new auth0.Connection("oidc", {
+ *     name: "oidc-connection",
+ *     displayName: "OIDC Connection",
+ *     strategy: "oidc",
+ *     showAsButton: false,
+ *     options: {
+ *         clientId: "1234567",
+ *         clientSecret: "1234567",
+ *         domainAliases: ["example.com"],
+ *         tenantDomain: "",
+ *         iconUrl: "https://example.com/assets/logo.png",
+ *         type: "back_channel",
+ *         issuer: "https://www.paypalobjects.com",
+ *         jwksUri: "https://api.paypal.com/v1/oauth2/certs",
+ *         discoveryUrl: "https://www.paypalobjects.com/.well-known/openid-configuration",
+ *         tokenEndpoint: "https://api.paypal.com/v1/oauth2/token",
+ *         userinfoEndpoint: "https://api.paypal.com/v1/oauth2/token/userinfo",
+ *         authorizationEndpoint: "https://www.paypal.com/signin/authorize",
+ *         scopes: [
+ *             "openid",
+ *             "email",
+ *         ],
+ *         setUserRootAttributes: "on_first_login",
+ *         nonPersistentAttrs: [
+ *             "ethnicity",
+ *             "gender",
+ *         ],
+ *         connectionSettings: {
+ *             pkce: "auto",
+ *         },
+ *         attributeMap: {
+ *             mappingMode: "use_map",
+ *             userinfoScope: "openid email profile groups",
+ *             attributes: JSON.stringify({
+ *                 name: "${context.tokenset.name}",
+ *                 email: "${context.tokenset.email}",
+ *                 email_verified: "${context.tokenset.email_verified}",
+ *                 nickname: "${context.tokenset.nickname}",
+ *                 picture: "${context.tokenset.picture}",
+ *                 given_name: "${context.tokenset.given_name}",
+ *                 family_name: "${context.tokenset.family_name}",
+ *             }),
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Okta Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // This is an example of an Okta Workforce connection.
+ * const okta = new auth0.Connection("okta", {
+ *     name: "okta-connection",
+ *     displayName: "Okta Workforce Connection",
+ *     strategy: "okta",
+ *     showAsButton: false,
+ *     options: {
+ *         clientId: "1234567",
+ *         clientSecret: "1234567",
+ *         domain: "example.okta.com",
+ *         domainAliases: ["example.com"],
+ *         issuer: "https://example.okta.com",
+ *         jwksUri: "https://example.okta.com/oauth2/v1/keys",
+ *         tokenEndpoint: "https://example.okta.com/oauth2/v1/token",
+ *         userinfoEndpoint: "https://example.okta.com/oauth2/v1/userinfo",
+ *         authorizationEndpoint: "https://example.okta.com/oauth2/v1/authorize",
+ *         scopes: [
+ *             "openid",
+ *             "email",
+ *         ],
+ *         setUserRootAttributes: "on_first_login",
+ *         nonPersistentAttrs: [
+ *             "ethnicity",
+ *             "gender",
+ *         ],
+ *         upstreamParams: JSON.stringify({
+ *             screen_name: {
+ *                 alias: "login_hint",
+ *             },
+ *         }),
+ *         connectionSettings: {
+ *             pkce: "auto",
+ *         },
+ *         attributeMap: {
+ *             mappingMode: "basic_profile",
+ *             userinfoScope: "openid email profile groups",
+ *             attributes: JSON.stringify({
+ *                 name: "${context.tokenset.name}",
+ *                 email: "${context.tokenset.email}",
+ *                 email_verified: "${context.tokenset.email_verified}",
+ *                 nickname: "${context.tokenset.nickname}",
+ *                 picture: "${context.tokenset.picture}",
+ *                 given_name: "${context.tokenset.given_name}",
+ *                 family_name: "${context.tokenset.family_name}",
+ *             }),
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -382,7 +728,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+     * Name of the connection.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -459,7 +805,7 @@ export interface ConnectionState {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+     * Name of the connection.
      */
     name?: pulumi.Input<string>;
     /**
@@ -497,7 +843,7 @@ export interface ConnectionArgs {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+     * Name of the connection.
      */
     name?: pulumi.Input<string>;
     /**

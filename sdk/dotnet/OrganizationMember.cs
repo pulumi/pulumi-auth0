@@ -18,7 +18,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,12 +34,13 @@ namespace Pulumi.Auth0
     ///         Password = "MyPass123$",
     ///     });
     /// 
-    ///     var myOrg = new Auth0.Organization("myOrg", new()
+    ///     var myOrg = new Auth0.Organization("my_org", new()
     ///     {
+    ///         Name = "org-admin",
     ///         DisplayName = "Admin",
     ///     });
     /// 
-    ///     var myOrgMember = new Auth0.OrganizationMember("myOrgMember", new()
+    ///     var myOrgMember = new Auth0.OrganizationMember("my_org_member", new()
     ///     {
     ///         OrganizationId = myOrg.Id,
     ///         UserId = user.Id,
@@ -48,7 +48,6 @@ namespace Pulumi.Auth0
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

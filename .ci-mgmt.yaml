@@ -6,7 +6,11 @@ env:
   AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
 makeTemplate: bridged
 team: ecosystem
-
+pulumiConvert: 1
+plugins:
+  - name: terraform
+    version: "1.0.16"
+    kind: converter
 actions:
   preTest:
     - name: make upstream

@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,20 +44,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .connectionName(&#34;Username-Password-Authentication&#34;)
- *             .email(&#34;test@test.com&#34;)
+ *         var user = new User("user", UserArgs.builder()
+ *             .connectionName("Username-Password-Authentication")
+ *             .userId("12345")
+ *             .username("unique_username")
+ *             .name("Firstname Lastname")
+ *             .nickname("some.nickname")
+ *             .email("test{@literal @}test.com")
  *             .emailVerified(true)
- *             .nickname(&#34;some.nickname&#34;)
- *             .password(&#34;passpass$12$12&#34;)
- *             .picture(&#34;https://www.example.com/a-valid-picture-url.jpg&#34;)
- *             .userId(&#34;12345&#34;)
- *             .username(&#34;unique_username&#34;)
+ *             .password("passpass$12$12")
+ *             .picture("https://www.example.com/a-valid-picture-url.jpg")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

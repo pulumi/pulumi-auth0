@@ -17,23 +17,22 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myOrganization = new auth0.Organization("myOrganization", {
- *     branding: {
- *         colors: {
- *             pageBackground: "#e1e1e1",
- *             primary: "#f2f2f2",
- *         },
- *         logoUrl: "https://example.com/assets/icons/icon.png",
- *     },
+ * const myOrganization = new auth0.Organization("my_organization", {
+ *     name: "auth0-inc",
  *     displayName: "Auth0 Inc.",
+ *     branding: {
+ *         logoUrl: "https://example.com/assets/icons/icon.png",
+ *         colors: {
+ *             primary: "#f2f2f2",
+ *             page_background: "#e1e1e1",
+ *         },
+ *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -47,10 +47,6 @@ export class CustomDomainVerification extends pulumi.CustomResource {
         return obj['__pulumiType'] === CustomDomainVerification.__pulumiType;
     }
 
-    /**
-     * The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
-     * is `self_managed_certs` and Terraform originally managed the domain's verification.
-     */
     public /*out*/ readonly cnameApiKey!: pulumi.Output<string>;
     /**
      * ID of the custom domain resource.
@@ -97,10 +93,6 @@ export class CustomDomainVerification extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CustomDomainVerification resources.
  */
 export interface CustomDomainVerificationState {
-    /**
-     * The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
-     * is `self_managed_certs` and Terraform originally managed the domain's verification.
-     */
     cnameApiKey?: pulumi.Input<string>;
     /**
      * ID of the custom domain resource.

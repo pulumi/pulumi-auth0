@@ -18,7 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -31,34 +30,34 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewTenant(ctx, "myTenant", &auth0.TenantArgs{
+//			_, err := auth0.NewTenant(ctx, "my_tenant", &auth0.TenantArgs{
+//				FriendlyName: pulumi.String("Tenant Name"),
+//				PictureUrl:   pulumi.String("http://example.com/logo.png"),
+//				SupportEmail: pulumi.String("support@example.com"),
+//				SupportUrl:   pulumi.String("http://example.com/support"),
 //				AllowedLogoutUrls: pulumi.StringArray{
 //					pulumi.String("http://example.com/logout"),
 //				},
-//				DefaultRedirectionUri: pulumi.String("https://example.com/login"),
+//				SessionLifetime: pulumi.Float64(8760),
+//				SandboxVersion:  pulumi.String("12"),
 //				EnabledLocales: pulumi.StringArray{
 //					pulumi.String("en"),
 //				},
+//				DefaultRedirectionUri: pulumi.String("https://example.com/login"),
 //				Flags: &auth0.TenantFlagsArgs{
 //					DisableClickjackProtectionHeaders:  pulumi.Bool(true),
-//					DisableFieldsMapFix:                pulumi.Bool(false),
-//					DisableManagementApiSmsObfuscation: pulumi.Bool(false),
 //					EnablePublicSignupUserExistsError:  pulumi.Bool(true),
-//					NoDiscloseEnterpriseConnections:    pulumi.Bool(false),
 //					UseScopeDescriptionsForConsent:     pulumi.Bool(true),
+//					NoDiscloseEnterpriseConnections:    pulumi.Bool(false),
+//					DisableManagementApiSmsObfuscation: pulumi.Bool(false),
+//					DisableFieldsMapFix:                pulumi.Bool(false),
 //				},
-//				FriendlyName:   pulumi.String("Tenant Name"),
-//				PictureUrl:     pulumi.String("http://example.com/logo.png"),
-//				SandboxVersion: pulumi.String("12"),
 //				SessionCookie: &auth0.TenantSessionCookieArgs{
 //					Mode: pulumi.String("non-persistent"),
 //				},
-//				SessionLifetime: pulumi.Float64(8760),
 //				Sessions: &auth0.TenantSessionsArgs{
 //					OidcLogoutPromptEnabled: pulumi.Bool(false),
 //				},
-//				SupportEmail: pulumi.String("support@example.com"),
-//				SupportUrl:   pulumi.String("http://example.com/support"),
 //			})
 //			if err != nil {
 //				return err
@@ -68,7 +67,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

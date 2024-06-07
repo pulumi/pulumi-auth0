@@ -9,14 +9,15 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myRole = new auth0.Role("myRole", {description: "Role Description..."});
+ * const myRole = new auth0.Role("my_role", {
+ *     name: "My Role - (Managed by Terraform)",
+ *     description: "Role Description...",
+ * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

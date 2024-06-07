@@ -11,21 +11,19 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myRule = new auth0.Rule("myRule", {
- *     enabled: true,
+ * const myRule = new auth0.Rule("my_rule", {
+ *     name: "empty-rule",
  *     script: `    function (user, context, callback) {
  *       callback(null, user, context);
  *     }
- *   
  * `,
+ *     enabled: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

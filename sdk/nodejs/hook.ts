@@ -11,28 +11,26 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myHook = new auth0.Hook("myHook", {
- *     dependencies: {
- *         auth0: "2.30.0",
- *     },
- *     enabled: true,
+ * const myHook = new auth0.Hook("my_hook", {
+ *     name: "My Pre User Registration Hook",
  *     script: `    function (user, context, callback) {
  *       callback(null, { user });
  *     }
- *   
  * `,
+ *     triggerId: "pre-user-registration",
+ *     enabled: true,
  *     secrets: {
  *         foo: "bar",
  *     },
- *     triggerId: "pre-user-registration",
+ *     dependencies: {
+ *         auth0: "2.30.0",
+ *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

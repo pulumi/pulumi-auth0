@@ -18,7 +18,7 @@ public final class ClientAddonsSharepoint {
      */
     private @Nullable List<String> externalUrls;
     /**
-     * @return Microsoft Dynamics CRM application URL.
+     * @return Internal SharePoint application URL.
      * 
      */
     private @Nullable String url;
@@ -32,7 +32,7 @@ public final class ClientAddonsSharepoint {
         return this.externalUrls == null ? List.of() : this.externalUrls;
     }
     /**
-     * @return Microsoft Dynamics CRM application URL.
+     * @return Internal SharePoint application URL.
      * 
      */
     public Optional<String> url() {
