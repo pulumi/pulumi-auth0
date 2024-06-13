@@ -365,7 +365,7 @@ func TestConnectionMigration(t *testing.T) {
             },
             "response": {
                 "properties": {
-                    "__meta": "{\"schema_version\":\"2\"}",
+                    "metadata": null,
                     "displayName": "",
                     "id": "con_28GC8g8h3O4RUSSM",
                     "isDomainConnection": false,
@@ -446,7 +446,6 @@ func TestConnectionMigration(t *testing.T) {
                         "scripts": {},
                         "setUserRootAttributes": "on_each_login",
                         "shouldTrustEmailVerifiedConnection": "",
-                        "showAsButton": null,
                         "signInEndpoint": "",
                         "signOutEndpoint": "",
                         "signSamlRequest": false,
@@ -474,6 +473,7 @@ func TestConnectionMigration(t *testing.T) {
                         "waadCommonEndpoint": false,
                         "waadProtocol": ""
                     },
+                    "showAsButton": null,
                     "realms": [
                         "googleOauth2-b68d006"
                     ],
