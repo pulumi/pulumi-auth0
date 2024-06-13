@@ -48,9 +48,9 @@ var metadata []byte
 
 func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(auth0Shim.NewProvider(),
-		shimv2.WithPlanResourceChange(func(tfResourceType string) bool {
-			return tfResourceType == "auth0_connection"
-		})
+		shimv2.WithPlanResourceChange(func(_ string) bool {
+			return true
+		}),
 	)
 
 	prov := tfbridge.ProviderInfo{
