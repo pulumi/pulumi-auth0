@@ -402,7 +402,7 @@ func TestConnectionMigration(t *testing.T) {
                         "enabledDatabaseCustomization": false,
                         "entityId": "",
                         "fedMetadataXml": "",
-                        "fieldsMap": "",
+                        "fieldsMap": null,
                         "forwardRequestInfo": false,
                         "from": "",
                         "gatewayAuthentication": null,
@@ -438,14 +438,15 @@ func TestConnectionMigration(t *testing.T) {
                         "requestTemplate": "",
                         "requiresUsername": false,
                         "scopes": [
-                            "youtube",
+                            "email",
                             "gmail",
                             "profile",
-                            "email"
+                            "youtube"
                         ],
                         "scripts": {},
                         "setUserRootAttributes": "on_each_login",
                         "shouldTrustEmailVerifiedConnection": "",
+                        "showAsButton": null,
                         "signInEndpoint": "",
                         "signOutEndpoint": "",
                         "signSamlRequest": false,
