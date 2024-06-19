@@ -94,7 +94,7 @@ export interface GetResourceServerResult {
      */
     readonly skipConsentForVerifiableFirstPartyClients: boolean;
     /**
-     * Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz`. If this setting is set to `accessTokenAuthz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforcePolicies`) is enabled for this API.
+     * Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
      */
     readonly tokenDialect: string;
     /**

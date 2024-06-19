@@ -1991,13 +1991,21 @@ export interface OrganizationBranding {
 
 export interface OrganizationConnectionsEnabledConnection {
     /**
-     * When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+     * When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
      */
     assignMembershipOnLogin?: pulumi.Input<boolean>;
     /**
      * The ID of the connection to enable for the organization.
      */
     connectionId: pulumi.Input<string>;
+    /**
+     * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
+     */
+    isSignupEnabled?: pulumi.Input<boolean>;
+    /**
+     * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     */
+    showAsButton?: pulumi.Input<boolean>;
 }
 
 export interface PagesChangePassword {

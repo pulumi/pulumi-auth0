@@ -54,11 +54,15 @@ namespace Pulumi.Auth0
     ///             {
     ///                 ConnectionId = myConnection_1.Id,
     ///                 AssignMembershipOnLogin = true,
+    ///                 IsSignupEnabled = false,
+    ///                 ShowAsButton = true,
     ///             },
     ///             new Auth0.Inputs.OrganizationConnectionsEnabledConnectionArgs
     ///             {
     ///                 ConnectionId = myConnection_2.Id,
     ///                 AssignMembershipOnLogin = true,
+    ///                 IsSignupEnabled = false,
+    ///                 ShowAsButton = true,
     ///             },
     ///         },
     ///     });

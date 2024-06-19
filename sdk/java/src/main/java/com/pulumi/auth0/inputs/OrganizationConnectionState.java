@@ -17,14 +17,14 @@ public final class OrganizationConnectionState extends com.pulumi.resources.Reso
     public static final OrganizationConnectionState Empty = new OrganizationConnectionState();
 
     /**
-     * When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+     * When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
      * 
      */
     @Import(name="assignMembershipOnLogin")
     private @Nullable Output<Boolean> assignMembershipOnLogin;
 
     /**
-     * @return When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+     * @return When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
      * 
      */
     public Optional<Output<Boolean>> assignMembershipOnLogin() {
@@ -44,6 +44,21 @@ public final class OrganizationConnectionState extends com.pulumi.resources.Reso
      */
     public Optional<Output<String>> connectionId() {
         return Optional.ofNullable(this.connectionId);
+    }
+
+    /**
+     * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+     * 
+     */
+    @Import(name="isSignupEnabled")
+    private @Nullable Output<Boolean> isSignupEnabled;
+
+    /**
+     * @return Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> isSignupEnabled() {
+        return Optional.ofNullable(this.isSignupEnabled);
     }
 
     /**
@@ -77,6 +92,21 @@ public final class OrganizationConnectionState extends com.pulumi.resources.Reso
     }
 
     /**
+     * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * 
+     */
+    @Import(name="showAsButton")
+    private @Nullable Output<Boolean> showAsButton;
+
+    /**
+     * @return Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * 
+     */
+    public Optional<Output<Boolean>> showAsButton() {
+        return Optional.ofNullable(this.showAsButton);
+    }
+
+    /**
      * The strategy of the enabled connection.
      * 
      */
@@ -96,8 +126,10 @@ public final class OrganizationConnectionState extends com.pulumi.resources.Reso
     private OrganizationConnectionState(OrganizationConnectionState $) {
         this.assignMembershipOnLogin = $.assignMembershipOnLogin;
         this.connectionId = $.connectionId;
+        this.isSignupEnabled = $.isSignupEnabled;
         this.name = $.name;
         this.organizationId = $.organizationId;
+        this.showAsButton = $.showAsButton;
         this.strategy = $.strategy;
     }
 
@@ -120,7 +152,7 @@ public final class OrganizationConnectionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param assignMembershipOnLogin When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+         * @param assignMembershipOnLogin When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
          * 
          * @return builder
          * 
@@ -131,7 +163,7 @@ public final class OrganizationConnectionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param assignMembershipOnLogin When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+         * @param assignMembershipOnLogin When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
          * 
          * @return builder
          * 
@@ -159,6 +191,27 @@ public final class OrganizationConnectionState extends com.pulumi.resources.Reso
          */
         public Builder connectionId(String connectionId) {
             return connectionId(Output.of(connectionId));
+        }
+
+        /**
+         * @param isSignupEnabled Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSignupEnabled(@Nullable Output<Boolean> isSignupEnabled) {
+            $.isSignupEnabled = isSignupEnabled;
+            return this;
+        }
+
+        /**
+         * @param isSignupEnabled Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSignupEnabled(Boolean isSignupEnabled) {
+            return isSignupEnabled(Output.of(isSignupEnabled));
         }
 
         /**
@@ -201,6 +254,27 @@ public final class OrganizationConnectionState extends com.pulumi.resources.Reso
          */
         public Builder organizationId(String organizationId) {
             return organizationId(Output.of(organizationId));
+        }
+
+        /**
+         * @param showAsButton Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder showAsButton(@Nullable Output<Boolean> showAsButton) {
+            $.showAsButton = showAsButton;
+            return this;
+        }
+
+        /**
+         * @param showAsButton Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder showAsButton(Boolean showAsButton) {
+            return showAsButton(Output.of(showAsButton));
         }
 
         /**

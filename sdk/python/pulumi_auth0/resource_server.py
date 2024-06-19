@@ -34,7 +34,7 @@ class ResourceServerArgs:
         :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Indicates whether to skip user consent for applications flagged as first party.
-        :param pulumi.Input[str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz`. If this setting is set to `access_token_authz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforce_policies`) is enabled for this API.
+        :param pulumi.Input[str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         :param pulumi.Input[int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         :param pulumi.Input[int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
@@ -149,7 +149,7 @@ class ResourceServerArgs:
     @pulumi.getter(name="tokenDialect")
     def token_dialect(self) -> Optional[pulumi.Input[str]]:
         """
-        Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz`. If this setting is set to `access_token_authz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforce_policies`) is enabled for this API.
+        Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         """
         return pulumi.get(self, "token_dialect")
 
@@ -217,7 +217,7 @@ class _ResourceServerState:
         :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Indicates whether to skip user consent for applications flagged as first party.
-        :param pulumi.Input[str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz`. If this setting is set to `access_token_authz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforce_policies`) is enabled for this API.
+        :param pulumi.Input[str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         :param pulumi.Input[int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         :param pulumi.Input[int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
@@ -333,7 +333,7 @@ class _ResourceServerState:
     @pulumi.getter(name="tokenDialect")
     def token_dialect(self) -> Optional[pulumi.Input[str]]:
         """
-        Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz`. If this setting is set to `access_token_authz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforce_policies`) is enabled for this API.
+        Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         """
         return pulumi.get(self, "token_dialect")
 
@@ -434,7 +434,7 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Indicates whether to skip user consent for applications flagged as first party.
-        :param pulumi.Input[str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz`. If this setting is set to `access_token_authz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforce_policies`) is enabled for this API.
+        :param pulumi.Input[str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         :param pulumi.Input[int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         :param pulumi.Input[int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
@@ -558,7 +558,7 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Indicates whether to skip user consent for applications flagged as first party.
-        :param pulumi.Input[str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz`. If this setting is set to `access_token_authz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforce_policies`) is enabled for this API.
+        :param pulumi.Input[str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         :param pulumi.Input[int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         :param pulumi.Input[int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
@@ -638,9 +638,9 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tokenDialect")
-    def token_dialect(self) -> pulumi.Output[Optional[str]]:
+    def token_dialect(self) -> pulumi.Output[str]:
         """
-        Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz`. If this setting is set to `access_token_authz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforce_policies`) is enabled for this API.
+        Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         """
         return pulumi.get(self, "token_dialect")
 

@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OrganizationConnectionsEnabledConnection {
     /**
-     * @return When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+     * @return When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
      * 
      */
     private @Nullable Boolean assignMembershipOnLogin;
@@ -23,10 +23,20 @@ public final class OrganizationConnectionsEnabledConnection {
      * 
      */
     private String connectionId;
+    /**
+     * @return Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+     * 
+     */
+    private @Nullable Boolean isSignupEnabled;
+    /**
+     * @return Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * 
+     */
+    private @Nullable Boolean showAsButton;
 
     private OrganizationConnectionsEnabledConnection() {}
     /**
-     * @return When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+     * @return When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
      * 
      */
     public Optional<Boolean> assignMembershipOnLogin() {
@@ -38,6 +48,20 @@ public final class OrganizationConnectionsEnabledConnection {
      */
     public String connectionId() {
         return this.connectionId;
+    }
+    /**
+     * @return Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+     * 
+     */
+    public Optional<Boolean> isSignupEnabled() {
+        return Optional.ofNullable(this.isSignupEnabled);
+    }
+    /**
+     * @return Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * 
+     */
+    public Optional<Boolean> showAsButton() {
+        return Optional.ofNullable(this.showAsButton);
     }
 
     public static Builder builder() {
@@ -51,11 +75,15 @@ public final class OrganizationConnectionsEnabledConnection {
     public static final class Builder {
         private @Nullable Boolean assignMembershipOnLogin;
         private String connectionId;
+        private @Nullable Boolean isSignupEnabled;
+        private @Nullable Boolean showAsButton;
         public Builder() {}
         public Builder(OrganizationConnectionsEnabledConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.assignMembershipOnLogin = defaults.assignMembershipOnLogin;
     	      this.connectionId = defaults.connectionId;
+    	      this.isSignupEnabled = defaults.isSignupEnabled;
+    	      this.showAsButton = defaults.showAsButton;
         }
 
         @CustomType.Setter
@@ -72,10 +100,24 @@ public final class OrganizationConnectionsEnabledConnection {
             this.connectionId = connectionId;
             return this;
         }
+        @CustomType.Setter
+        public Builder isSignupEnabled(@Nullable Boolean isSignupEnabled) {
+
+            this.isSignupEnabled = isSignupEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder showAsButton(@Nullable Boolean showAsButton) {
+
+            this.showAsButton = showAsButton;
+            return this;
+        }
         public OrganizationConnectionsEnabledConnection build() {
             final var _resultValue = new OrganizationConnectionsEnabledConnection();
             _resultValue.assignMembershipOnLogin = assignMembershipOnLogin;
             _resultValue.connectionId = connectionId;
+            _resultValue.isSignupEnabled = isSignupEnabled;
+            _resultValue.showAsButton = showAsButton;
             return _resultValue;
         }
     }
