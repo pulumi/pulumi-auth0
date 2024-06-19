@@ -74,10 +74,14 @@ import javax.annotation.Nullable;
  *                 OrganizationConnectionsEnabledConnectionArgs.builder()
  *                     .connectionId(myConnection_1.id())
  *                     .assignMembershipOnLogin(true)
+ *                     .isSignupEnabled(false)
+ *                     .showAsButton(true)
  *                     .build(),
  *                 OrganizationConnectionsEnabledConnectionArgs.builder()
  *                     .connectionId(myConnection_2.id())
  *                     .assignMembershipOnLogin(true)
+ *                     .isSignupEnabled(false)
+ *                     .showAsButton(true)
  *                     .build())
  *             .build());
  * 

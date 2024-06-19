@@ -128,10 +128,14 @@ class OrganizationConnections(pulumi.CustomResource):
                 auth0.OrganizationConnectionsEnabledConnectionArgs(
                     connection_id=my_connection_1.id,
                     assign_membership_on_login=True,
+                    is_signup_enabled=False,
+                    show_as_button=True,
                 ),
                 auth0.OrganizationConnectionsEnabledConnectionArgs(
                     connection_id=my_connection_2.id,
                     assign_membership_on_login=True,
+                    is_signup_enabled=False,
+                    show_as_button=True,
                 ),
             ])
         ```
@@ -188,10 +192,14 @@ class OrganizationConnections(pulumi.CustomResource):
                 auth0.OrganizationConnectionsEnabledConnectionArgs(
                     connection_id=my_connection_1.id,
                     assign_membership_on_login=True,
+                    is_signup_enabled=False,
+                    show_as_button=True,
                 ),
                 auth0.OrganizationConnectionsEnabledConnectionArgs(
                     connection_id=my_connection_2.id,
                     assign_membership_on_login=True,
+                    is_signup_enabled=False,
+                    show_as_button=True,
                 ),
             ])
         ```

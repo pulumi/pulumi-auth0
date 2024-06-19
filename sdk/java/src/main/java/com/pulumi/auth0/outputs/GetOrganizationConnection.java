@@ -21,6 +21,16 @@ public final class GetOrganizationConnection {
      * 
      */
     private String connectionId;
+    /**
+     * @return Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+     * 
+     */
+    private Boolean isSignupEnabled;
+    /**
+     * @return Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * 
+     */
+    private Boolean showAsButton;
 
     private GetOrganizationConnection() {}
     /**
@@ -37,6 +47,20 @@ public final class GetOrganizationConnection {
     public String connectionId() {
         return this.connectionId;
     }
+    /**
+     * @return Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+     * 
+     */
+    public Boolean isSignupEnabled() {
+        return this.isSignupEnabled;
+    }
+    /**
+     * @return Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * 
+     */
+    public Boolean showAsButton() {
+        return this.showAsButton;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -49,11 +73,15 @@ public final class GetOrganizationConnection {
     public static final class Builder {
         private Boolean assignMembershipOnLogin;
         private String connectionId;
+        private Boolean isSignupEnabled;
+        private Boolean showAsButton;
         public Builder() {}
         public Builder(GetOrganizationConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.assignMembershipOnLogin = defaults.assignMembershipOnLogin;
     	      this.connectionId = defaults.connectionId;
+    	      this.isSignupEnabled = defaults.isSignupEnabled;
+    	      this.showAsButton = defaults.showAsButton;
         }
 
         @CustomType.Setter
@@ -72,10 +100,28 @@ public final class GetOrganizationConnection {
             this.connectionId = connectionId;
             return this;
         }
+        @CustomType.Setter
+        public Builder isSignupEnabled(Boolean isSignupEnabled) {
+            if (isSignupEnabled == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationConnection", "isSignupEnabled");
+            }
+            this.isSignupEnabled = isSignupEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder showAsButton(Boolean showAsButton) {
+            if (showAsButton == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationConnection", "showAsButton");
+            }
+            this.showAsButton = showAsButton;
+            return this;
+        }
         public GetOrganizationConnection build() {
             final var _resultValue = new GetOrganizationConnection();
             _resultValue.assignMembershipOnLogin = assignMembershipOnLogin;
             _resultValue.connectionId = connectionId;
+            _resultValue.isSignupEnabled = isSignupEnabled;
+            _resultValue.showAsButton = showAsButton;
             return _resultValue;
         }
     }

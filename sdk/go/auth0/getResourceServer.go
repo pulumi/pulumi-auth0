@@ -86,7 +86,7 @@ type LookupResourceServerResult struct {
 	SigningSecret string `pulumi:"signingSecret"`
 	// Indicates whether to skip user consent for applications flagged as first party.
 	SkipConsentForVerifiableFirstPartyClients bool `pulumi:"skipConsentForVerifiableFirstPartyClients"`
-	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz`. If this setting is set to `accessTokenAuthz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforcePolicies`) is enabled for this API.
+	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
 	TokenDialect string `pulumi:"tokenDialect"`
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime int `pulumi:"tokenLifetime"`
@@ -186,7 +186,7 @@ func (o LookupResourceServerResultOutput) SkipConsentForVerifiableFirstPartyClie
 	return o.ApplyT(func(v LookupResourceServerResult) bool { return v.SkipConsentForVerifiableFirstPartyClients }).(pulumi.BoolOutput)
 }
 
-// Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz`. If this setting is set to `accessTokenAuthz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforcePolicies`) is enabled for this API.
+// Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
 func (o LookupResourceServerResultOutput) TokenDialect() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourceServerResult) string { return v.TokenDialect }).(pulumi.StringOutput)
 }

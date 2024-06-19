@@ -38,10 +38,14 @@ import * as utilities from "./utilities";
  *         {
  *             connectionId: myConnection_1.id,
  *             assignMembershipOnLogin: true,
+ *             isSignupEnabled: false,
+ *             showAsButton: true,
  *         },
  *         {
  *             connectionId: myConnection_2.id,
  *             assignMembershipOnLogin: true,
+ *             isSignupEnabled: false,
+ *             showAsButton: true,
  *         },
  *     ],
  * });

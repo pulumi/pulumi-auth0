@@ -7669,14 +7669,22 @@ class OrganizationBrandingArgs:
 class OrganizationConnectionsEnabledConnectionArgs:
     def __init__(__self__, *,
                  connection_id: pulumi.Input[str],
-                 assign_membership_on_login: Optional[pulumi.Input[bool]] = None):
+                 assign_membership_on_login: Optional[pulumi.Input[bool]] = None,
+                 is_signup_enabled: Optional[pulumi.Input[bool]] = None,
+                 show_as_button: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] connection_id: The ID of the connection to enable for the organization.
-        :param pulumi.Input[bool] assign_membership_on_login: When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+        :param pulumi.Input[bool] assign_membership_on_login: When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
+        :param pulumi.Input[bool] is_signup_enabled: Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+        :param pulumi.Input[bool] show_as_button: Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
         """
         pulumi.set(__self__, "connection_id", connection_id)
         if assign_membership_on_login is not None:
             pulumi.set(__self__, "assign_membership_on_login", assign_membership_on_login)
+        if is_signup_enabled is not None:
+            pulumi.set(__self__, "is_signup_enabled", is_signup_enabled)
+        if show_as_button is not None:
+            pulumi.set(__self__, "show_as_button", show_as_button)
 
     @property
     @pulumi.getter(name="connectionId")
@@ -7694,13 +7702,37 @@ class OrganizationConnectionsEnabledConnectionArgs:
     @pulumi.getter(name="assignMembershipOnLogin")
     def assign_membership_on_login(self) -> Optional[pulumi.Input[bool]]:
         """
-        When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+        When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
         """
         return pulumi.get(self, "assign_membership_on_login")
 
     @assign_membership_on_login.setter
     def assign_membership_on_login(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "assign_membership_on_login", value)
+
+    @property
+    @pulumi.getter(name="isSignupEnabled")
+    def is_signup_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+        """
+        return pulumi.get(self, "is_signup_enabled")
+
+    @is_signup_enabled.setter
+    def is_signup_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_signup_enabled", value)
+
+    @property
+    @pulumi.getter(name="showAsButton")
+    def show_as_button(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+        """
+        return pulumi.get(self, "show_as_button")
+
+    @show_as_button.setter
+    def show_as_button(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "show_as_button", value)
 
 
 @pulumi.input_type

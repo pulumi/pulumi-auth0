@@ -60,10 +60,14 @@ import (
 //					&auth0.OrganizationConnectionsEnabledConnectionArgs{
 //						ConnectionId:            myConnection_1.ID(),
 //						AssignMembershipOnLogin: pulumi.Bool(true),
+//						IsSignupEnabled:         pulumi.Bool(false),
+//						ShowAsButton:            pulumi.Bool(true),
 //					},
 //					&auth0.OrganizationConnectionsEnabledConnectionArgs{
 //						ConnectionId:            myConnection_2.ID(),
 //						AssignMembershipOnLogin: pulumi.Bool(true),
+//						IsSignupEnabled:         pulumi.Bool(false),
+//						ShowAsButton:            pulumi.Bool(true),
 //					},
 //				},
 //			})

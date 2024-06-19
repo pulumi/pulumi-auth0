@@ -44,6 +44,8 @@ namespace Pulumi.Auth0
     ///         OrganizationId = myOrganization.Id,
     ///         ConnectionId = myConnection.Id,
     ///         AssignMembershipOnLogin = true,
+    ///         IsSignupEnabled = false,
+    ///         ShowAsButton = true,
     ///     });
     /// 
     /// });
@@ -69,7 +71,7 @@ namespace Pulumi.Auth0
     public partial class OrganizationConnection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+        /// When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
         /// </summary>
         [Output("assignMembershipOnLogin")]
         public Output<bool?> AssignMembershipOnLogin { get; private set; } = null!;
@@ -79,6 +81,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("connectionId")]
         public Output<string> ConnectionId { get; private set; } = null!;
+
+        /// <summary>
+        /// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+        /// </summary>
+        [Output("isSignupEnabled")]
+        public Output<bool?> IsSignupEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The name of the enabled connection.
@@ -91,6 +99,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
+
+        /// <summary>
+        /// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+        /// </summary>
+        [Output("showAsButton")]
+        public Output<bool?> ShowAsButton { get; private set; } = null!;
 
         /// <summary>
         /// The strategy of the enabled connection.
@@ -145,7 +159,7 @@ namespace Pulumi.Auth0
     public sealed class OrganizationConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+        /// When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
         /// </summary>
         [Input("assignMembershipOnLogin")]
         public Input<bool>? AssignMembershipOnLogin { get; set; }
@@ -157,10 +171,22 @@ namespace Pulumi.Auth0
         public Input<string> ConnectionId { get; set; } = null!;
 
         /// <summary>
+        /// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+        /// </summary>
+        [Input("isSignupEnabled")]
+        public Input<bool>? IsSignupEnabled { get; set; }
+
+        /// <summary>
         /// The ID of the organization to enable the connection for.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
+
+        /// <summary>
+        /// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+        /// </summary>
+        [Input("showAsButton")]
+        public Input<bool>? ShowAsButton { get; set; }
 
         public OrganizationConnectionArgs()
         {
@@ -171,7 +197,7 @@ namespace Pulumi.Auth0
     public sealed class OrganizationConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+        /// When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
         /// </summary>
         [Input("assignMembershipOnLogin")]
         public Input<bool>? AssignMembershipOnLogin { get; set; }
@@ -181,6 +207,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
+
+        /// <summary>
+        /// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+        /// </summary>
+        [Input("isSignupEnabled")]
+        public Input<bool>? IsSignupEnabled { get; set; }
 
         /// <summary>
         /// The name of the enabled connection.
@@ -193,6 +225,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
+
+        /// <summary>
+        /// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+        /// </summary>
+        [Input("showAsButton")]
+        public Input<bool>? ShowAsButton { get; set; }
 
         /// <summary>
         /// The strategy of the enabled connection.

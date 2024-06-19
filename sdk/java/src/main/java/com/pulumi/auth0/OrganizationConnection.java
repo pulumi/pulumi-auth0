@@ -66,6 +66,8 @@ import javax.annotation.Nullable;
  *             .organizationId(myOrganization.id())
  *             .connectionId(myConnection.id())
  *             .assignMembershipOnLogin(true)
+ *             .isSignupEnabled(false)
+ *             .showAsButton(true)
  *             .build());
  * 
  *     }
@@ -94,14 +96,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/organizationConnection:OrganizationConnection")
 public class OrganizationConnection extends com.pulumi.resources.CustomResource {
     /**
-     * When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+     * When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
      * 
      */
     @Export(name="assignMembershipOnLogin", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> assignMembershipOnLogin;
 
     /**
-     * @return When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+     * @return When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
      * 
      */
     public Output<Optional<Boolean>> assignMembershipOnLogin() {
@@ -120,6 +122,20 @@ public class OrganizationConnection extends com.pulumi.resources.CustomResource 
      */
     public Output<String> connectionId() {
         return this.connectionId;
+    }
+    /**
+     * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+     * 
+     */
+    @Export(name="isSignupEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isSignupEnabled;
+
+    /**
+     * @return Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+     * 
+     */
+    public Output<Optional<Boolean>> isSignupEnabled() {
+        return Codegen.optional(this.isSignupEnabled);
     }
     /**
      * The name of the enabled connection.
@@ -148,6 +164,20 @@ public class OrganizationConnection extends com.pulumi.resources.CustomResource 
      */
     public Output<String> organizationId() {
         return this.organizationId;
+    }
+    /**
+     * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * 
+     */
+    @Export(name="showAsButton", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> showAsButton;
+
+    /**
+     * @return Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * 
+     */
+    public Output<Optional<Boolean>> showAsButton() {
+        return Codegen.optional(this.showAsButton);
     }
     /**
      * The strategy of the enabled connection.

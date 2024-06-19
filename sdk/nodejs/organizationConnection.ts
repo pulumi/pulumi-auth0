@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  *     organizationId: myOrganization.id,
  *     connectionId: myConnection.id,
  *     assignMembershipOnLogin: true,
+ *     isSignupEnabled: false,
+ *     showAsButton: true,
  * });
  * ```
  *
@@ -78,13 +80,17 @@ export class OrganizationConnection extends pulumi.CustomResource {
     }
 
     /**
-     * When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+     * When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
      */
     public readonly assignMembershipOnLogin!: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the connection to enable for the organization.
      */
     public readonly connectionId!: pulumi.Output<string>;
+    /**
+     * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
+     */
+    public readonly isSignupEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the enabled connection.
      */
@@ -93,6 +99,10 @@ export class OrganizationConnection extends pulumi.CustomResource {
      * The ID of the organization to enable the connection for.
      */
     public readonly organizationId!: pulumi.Output<string>;
+    /**
+     * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     */
+    public readonly showAsButton!: pulumi.Output<boolean | undefined>;
     /**
      * The strategy of the enabled connection.
      */
@@ -113,8 +123,10 @@ export class OrganizationConnection extends pulumi.CustomResource {
             const state = argsOrState as OrganizationConnectionState | undefined;
             resourceInputs["assignMembershipOnLogin"] = state ? state.assignMembershipOnLogin : undefined;
             resourceInputs["connectionId"] = state ? state.connectionId : undefined;
+            resourceInputs["isSignupEnabled"] = state ? state.isSignupEnabled : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["organizationId"] = state ? state.organizationId : undefined;
+            resourceInputs["showAsButton"] = state ? state.showAsButton : undefined;
             resourceInputs["strategy"] = state ? state.strategy : undefined;
         } else {
             const args = argsOrState as OrganizationConnectionArgs | undefined;
@@ -126,7 +138,9 @@ export class OrganizationConnection extends pulumi.CustomResource {
             }
             resourceInputs["assignMembershipOnLogin"] = args ? args.assignMembershipOnLogin : undefined;
             resourceInputs["connectionId"] = args ? args.connectionId : undefined;
+            resourceInputs["isSignupEnabled"] = args ? args.isSignupEnabled : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["showAsButton"] = args ? args.showAsButton : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["strategy"] = undefined /*out*/;
         }
@@ -140,13 +154,17 @@ export class OrganizationConnection extends pulumi.CustomResource {
  */
 export interface OrganizationConnectionState {
     /**
-     * When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+     * When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
      */
     assignMembershipOnLogin?: pulumi.Input<boolean>;
     /**
      * The ID of the connection to enable for the organization.
      */
     connectionId?: pulumi.Input<string>;
+    /**
+     * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
+     */
+    isSignupEnabled?: pulumi.Input<boolean>;
     /**
      * The name of the enabled connection.
      */
@@ -155,6 +173,10 @@ export interface OrganizationConnectionState {
      * The ID of the organization to enable the connection for.
      */
     organizationId?: pulumi.Input<string>;
+    /**
+     * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     */
+    showAsButton?: pulumi.Input<boolean>;
     /**
      * The strategy of the enabled connection.
      */
@@ -166,7 +188,7 @@ export interface OrganizationConnectionState {
  */
 export interface OrganizationConnectionArgs {
     /**
-     * When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+     * When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
      */
     assignMembershipOnLogin?: pulumi.Input<boolean>;
     /**
@@ -174,7 +196,15 @@ export interface OrganizationConnectionArgs {
      */
     connectionId: pulumi.Input<string>;
     /**
+     * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
+     */
+    isSignupEnabled?: pulumi.Input<boolean>;
+    /**
      * The ID of the organization to enable the connection for.
      */
     organizationId: pulumi.Input<string>;
+    /**
+     * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     */
+    showAsButton?: pulumi.Input<boolean>;
 }

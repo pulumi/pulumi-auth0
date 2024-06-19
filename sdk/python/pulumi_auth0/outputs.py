@@ -7382,6 +7382,10 @@ class OrganizationConnectionsEnabledConnection(dict):
             suggest = "connection_id"
         elif key == "assignMembershipOnLogin":
             suggest = "assign_membership_on_login"
+        elif key == "isSignupEnabled":
+            suggest = "is_signup_enabled"
+        elif key == "showAsButton":
+            suggest = "show_as_button"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OrganizationConnectionsEnabledConnection. Access the value via the '{suggest}' property getter instead.")
@@ -7396,14 +7400,22 @@ class OrganizationConnectionsEnabledConnection(dict):
 
     def __init__(__self__, *,
                  connection_id: str,
-                 assign_membership_on_login: Optional[bool] = None):
+                 assign_membership_on_login: Optional[bool] = None,
+                 is_signup_enabled: Optional[bool] = None,
+                 show_as_button: Optional[bool] = None):
         """
         :param str connection_id: The ID of the connection to enable for the organization.
-        :param bool assign_membership_on_login: When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+        :param bool assign_membership_on_login: When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
+        :param bool is_signup_enabled: Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+        :param bool show_as_button: Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
         """
         pulumi.set(__self__, "connection_id", connection_id)
         if assign_membership_on_login is not None:
             pulumi.set(__self__, "assign_membership_on_login", assign_membership_on_login)
+        if is_signup_enabled is not None:
+            pulumi.set(__self__, "is_signup_enabled", is_signup_enabled)
+        if show_as_button is not None:
+            pulumi.set(__self__, "show_as_button", show_as_button)
 
     @property
     @pulumi.getter(name="connectionId")
@@ -7417,9 +7429,25 @@ class OrganizationConnectionsEnabledConnection(dict):
     @pulumi.getter(name="assignMembershipOnLogin")
     def assign_membership_on_login(self) -> Optional[bool]:
         """
-        When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+        When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
         """
         return pulumi.get(self, "assign_membership_on_login")
+
+    @property
+    @pulumi.getter(name="isSignupEnabled")
+    def is_signup_enabled(self) -> Optional[bool]:
+        """
+        Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+        """
+        return pulumi.get(self, "is_signup_enabled")
+
+    @property
+    @pulumi.getter(name="showAsButton")
+    def show_as_button(self) -> Optional[bool]:
+        """
+        Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+        """
+        return pulumi.get(self, "show_as_button")
 
 
 @pulumi.output_type
@@ -12344,13 +12372,19 @@ class GetOrganizationBrandingResult(dict):
 class GetOrganizationConnectionResult(dict):
     def __init__(__self__, *,
                  assign_membership_on_login: bool,
-                 connection_id: str):
+                 connection_id: str,
+                 is_signup_enabled: bool,
+                 show_as_button: bool):
         """
         :param bool assign_membership_on_login: When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
         :param str connection_id: The ID of the enabled connection on the organization.
+        :param bool is_signup_enabled: Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+        :param bool show_as_button: Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
         """
         pulumi.set(__self__, "assign_membership_on_login", assign_membership_on_login)
         pulumi.set(__self__, "connection_id", connection_id)
+        pulumi.set(__self__, "is_signup_enabled", is_signup_enabled)
+        pulumi.set(__self__, "show_as_button", show_as_button)
 
     @property
     @pulumi.getter(name="assignMembershipOnLogin")
@@ -12367,6 +12401,22 @@ class GetOrganizationConnectionResult(dict):
         The ID of the enabled connection on the organization.
         """
         return pulumi.get(self, "connection_id")
+
+    @property
+    @pulumi.getter(name="isSignupEnabled")
+    def is_signup_enabled(self) -> bool:
+        """
+        Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+        """
+        return pulumi.get(self, "is_signup_enabled")
+
+    @property
+    @pulumi.getter(name="showAsButton")
+    def show_as_button(self) -> bool:
+        """
+        Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+        """
+        return pulumi.get(self, "show_as_button")
 
 
 @pulumi.output_type

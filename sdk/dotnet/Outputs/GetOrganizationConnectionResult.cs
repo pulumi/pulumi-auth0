@@ -21,15 +21,29 @@ namespace Pulumi.Auth0.Outputs
         /// The ID of the enabled connection on the organization.
         /// </summary>
         public readonly string ConnectionId;
+        /// <summary>
+        /// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+        /// </summary>
+        public readonly bool IsSignupEnabled;
+        /// <summary>
+        /// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+        /// </summary>
+        public readonly bool ShowAsButton;
 
         [OutputConstructor]
         private GetOrganizationConnectionResult(
             bool assignMembershipOnLogin,
 
-            string connectionId)
+            string connectionId,
+
+            bool isSignupEnabled,
+
+            bool showAsButton)
         {
             AssignMembershipOnLogin = assignMembershipOnLogin;
             ConnectionId = connectionId;
+            IsSignupEnabled = isSignupEnabled;
+            ShowAsButton = showAsButton;
         }
     }
 }

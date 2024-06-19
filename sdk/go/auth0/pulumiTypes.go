@@ -19295,10 +19295,14 @@ func (o OrganizationBrandingPtrOutput) LogoUrl() pulumi.StringPtrOutput {
 }
 
 type OrganizationConnectionsEnabledConnection struct {
-	// When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+	// When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
 	AssignMembershipOnLogin *bool `pulumi:"assignMembershipOnLogin"`
 	// The ID of the connection to enable for the organization.
 	ConnectionId string `pulumi:"connectionId"`
+	// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
+	IsSignupEnabled *bool `pulumi:"isSignupEnabled"`
+	// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+	ShowAsButton *bool `pulumi:"showAsButton"`
 }
 
 // OrganizationConnectionsEnabledConnectionInput is an input type that accepts OrganizationConnectionsEnabledConnectionArgs and OrganizationConnectionsEnabledConnectionOutput values.
@@ -19313,10 +19317,14 @@ type OrganizationConnectionsEnabledConnectionInput interface {
 }
 
 type OrganizationConnectionsEnabledConnectionArgs struct {
-	// When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+	// When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
 	AssignMembershipOnLogin pulumi.BoolPtrInput `pulumi:"assignMembershipOnLogin"`
 	// The ID of the connection to enable for the organization.
 	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+	// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
+	IsSignupEnabled pulumi.BoolPtrInput `pulumi:"isSignupEnabled"`
+	// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+	ShowAsButton pulumi.BoolPtrInput `pulumi:"showAsButton"`
 }
 
 func (OrganizationConnectionsEnabledConnectionArgs) ElementType() reflect.Type {
@@ -19370,7 +19378,7 @@ func (o OrganizationConnectionsEnabledConnectionOutput) ToOrganizationConnection
 	return o
 }
 
-// When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+// When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
 func (o OrganizationConnectionsEnabledConnectionOutput) AssignMembershipOnLogin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OrganizationConnectionsEnabledConnection) *bool { return v.AssignMembershipOnLogin }).(pulumi.BoolPtrOutput)
 }
@@ -19378,6 +19386,16 @@ func (o OrganizationConnectionsEnabledConnectionOutput) AssignMembershipOnLogin(
 // The ID of the connection to enable for the organization.
 func (o OrganizationConnectionsEnabledConnectionOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v OrganizationConnectionsEnabledConnection) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
+func (o OrganizationConnectionsEnabledConnectionOutput) IsSignupEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OrganizationConnectionsEnabledConnection) *bool { return v.IsSignupEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+func (o OrganizationConnectionsEnabledConnectionOutput) ShowAsButton() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OrganizationConnectionsEnabledConnection) *bool { return v.ShowAsButton }).(pulumi.BoolPtrOutput)
 }
 
 type OrganizationConnectionsEnabledConnectionArrayOutput struct{ *pulumi.OutputState }
@@ -31028,6 +31046,10 @@ type GetOrganizationConnectionType struct {
 	AssignMembershipOnLogin bool `pulumi:"assignMembershipOnLogin"`
 	// The ID of the enabled connection on the organization.
 	ConnectionId string `pulumi:"connectionId"`
+	// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
+	IsSignupEnabled bool `pulumi:"isSignupEnabled"`
+	// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+	ShowAsButton bool `pulumi:"showAsButton"`
 }
 
 // GetOrganizationConnectionTypeInput is an input type that accepts GetOrganizationConnectionTypeArgs and GetOrganizationConnectionTypeOutput values.
@@ -31046,6 +31068,10 @@ type GetOrganizationConnectionTypeArgs struct {
 	AssignMembershipOnLogin pulumi.BoolInput `pulumi:"assignMembershipOnLogin"`
 	// The ID of the enabled connection on the organization.
 	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+	// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
+	IsSignupEnabled pulumi.BoolInput `pulumi:"isSignupEnabled"`
+	// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+	ShowAsButton pulumi.BoolInput `pulumi:"showAsButton"`
 }
 
 func (GetOrganizationConnectionTypeArgs) ElementType() reflect.Type {
@@ -31107,6 +31133,16 @@ func (o GetOrganizationConnectionTypeOutput) AssignMembershipOnLogin() pulumi.Bo
 // The ID of the enabled connection on the organization.
 func (o GetOrganizationConnectionTypeOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationConnectionType) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
+func (o GetOrganizationConnectionTypeOutput) IsSignupEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrganizationConnectionType) bool { return v.IsSignupEnabled }).(pulumi.BoolOutput)
+}
+
+// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+func (o GetOrganizationConnectionTypeOutput) ShowAsButton() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrganizationConnectionType) bool { return v.ShowAsButton }).(pulumi.BoolOutput)
 }
 
 type GetOrganizationConnectionTypeArrayOutput struct{ *pulumi.OutputState }
