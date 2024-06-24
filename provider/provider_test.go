@@ -365,7 +365,8 @@ func TestConnectionMigration(t *testing.T) {
             },
             "response": {
                 "properties": {
-                    "__meta": "{\"schema_version\":\"2\"}",
+                    "metadata": null,
+                    "showAsButton": null,
                     "displayName": "",
                     "id": "con_28GC8g8h3O4RUSSM",
                     "isDomainConnection": false,
@@ -402,7 +403,7 @@ func TestConnectionMigration(t *testing.T) {
                         "enabledDatabaseCustomization": false,
                         "entityId": "",
                         "fedMetadataXml": "",
-                        "fieldsMap": "",
+                        "fieldsMap": null,
                         "forwardRequestInfo": false,
                         "from": "",
                         "gatewayAuthentication": null,
@@ -438,10 +439,10 @@ func TestConnectionMigration(t *testing.T) {
                         "requestTemplate": "",
                         "requiresUsername": false,
                         "scopes": [
-                            "youtube",
+                            "email",
                             "gmail",
                             "profile",
-                            "email"
+                            "youtube"
                         ],
                         "scripts": {},
                         "setUserRootAttributes": "on_each_login",
