@@ -948,6 +948,7 @@ const prcGrpc = `[
     ]
 `
 
+// TODO: Remove non-prc test after enabling PRC by default.
 func TestConnectionMigration(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {
