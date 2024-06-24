@@ -351,7 +351,7 @@ class EmailTemplate(pulumi.CustomResource):
             syntax="liquid",
             url_lifetime_in_seconds=3600,
             enabled=True,
-            opts=pulumi.ResourceOptions(depends_on=[my_email_provider]))
+            opts = pulumi.ResourceOptions(depends_on=[my_email_provider]))
         ```
 
         ## Import
@@ -425,7 +425,7 @@ class EmailTemplate(pulumi.CustomResource):
             syntax="liquid",
             url_lifetime_in_seconds=3600,
             enabled=True,
-            opts=pulumi.ResourceOptions(depends_on=[my_email_provider]))
+            opts = pulumi.ResourceOptions(depends_on=[my_email_provider]))
         ```
 
         ## Import
