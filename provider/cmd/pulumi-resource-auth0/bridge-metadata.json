@@ -440,6 +440,15 @@
                     }
                 }
             },
+            "auth0_connection_scim_configuration": {
+                "current": "auth0:index/connectionScimConfiguration:ConnectionScimConfiguration",
+                "majorVersion": 3,
+                "fields": {
+                    "mapping": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "auth0_custom_domain": {
                 "current": "auth0:index/customDomain:CustomDomain",
                 "majorVersion": 3,
@@ -1127,6 +1136,18 @@
                         }
                     },
                     "realms": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_connection_scim_configuration": {
+                "current": "auth0:index/getConnectionScimConfiguration:getConnectionScimConfiguration",
+                "majorVersion": 3,
+                "fields": {
+                    "default_mapping": {
+                        "maxItemsOne": false
+                    },
+                    "mapping": {
                         "maxItemsOne": false
                     }
                 }

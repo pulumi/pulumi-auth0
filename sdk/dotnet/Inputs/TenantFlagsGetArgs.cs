@@ -121,6 +121,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? EnablePublicSignupUserExistsError { get; set; }
 
         /// <summary>
+        /// Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+        /// </summary>
+        [Input("enableSso")]
+        public Input<bool>? EnableSso { get; set; }
+
+        /// <summary>
         /// Used to allow users to pick which factor to enroll with from the list of available MFA factors.
         /// </summary>
         [Input("mfaShowFactorListOnEnrollment")]
@@ -133,7 +139,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? NoDiscloseEnterpriseConnections { get; set; }
 
         /// <summary>
-        /// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+        /// This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
         /// </summary>
         [Input("requirePushedAuthorizationRequests")]
         public Input<bool>? RequirePushedAuthorizationRequests { get; set; }

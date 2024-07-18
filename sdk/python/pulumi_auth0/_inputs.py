@@ -89,6 +89,7 @@ __all__ = [
     'ConnectionOptionsTotpArgs',
     'ConnectionOptionsValidationArgs',
     'ConnectionOptionsValidationUsernameArgs',
+    'ConnectionScimConfigurationMappingArgs',
     'CustomDomainVerificationArgs',
     'EmailProviderCredentialsArgs',
     'EmailProviderSettingsArgs',
@@ -118,6 +119,8 @@ __all__ = [
     'TenantSessionsArgs',
     'TriggerActionsActionArgs',
     'UserPermissionsPermissionArgs',
+    'GetConnectionScimConfigurationDefaultMappingArgs',
+    'GetConnectionScimConfigurationMappingArgs',
 ]
 
 @pulumi.input_type
@@ -6185,6 +6188,43 @@ class ConnectionOptionsValidationUsernameArgs:
 
 
 @pulumi.input_type
+class ConnectionScimConfigurationMappingArgs:
+    def __init__(__self__, *,
+                 auth0: pulumi.Input[str],
+                 scim: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] auth0: The field location in the Auth0 schema.
+        :param pulumi.Input[str] scim: The field location in the SCIM schema.
+        """
+        pulumi.set(__self__, "auth0", auth0)
+        pulumi.set(__self__, "scim", scim)
+
+    @property
+    @pulumi.getter
+    def auth0(self) -> pulumi.Input[str]:
+        """
+        The field location in the Auth0 schema.
+        """
+        return pulumi.get(self, "auth0")
+
+    @auth0.setter
+    def auth0(self, value: pulumi.Input[str]):
+        pulumi.set(self, "auth0", value)
+
+    @property
+    @pulumi.getter
+    def scim(self) -> pulumi.Input[str]:
+        """
+        The field location in the SCIM schema.
+        """
+        return pulumi.get(self, "scim")
+
+    @scim.setter
+    def scim(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scim", value)
+
+
+@pulumi.input_type
 class CustomDomainVerificationArgs:
     def __init__(__self__, *,
                  methods: Optional[pulumi.Input[Sequence[Any]]] = None):
@@ -8028,6 +8068,7 @@ class TenantFlagsArgs:
                  enable_legacy_profile: Optional[pulumi.Input[bool]] = None,
                  enable_pipeline2: Optional[pulumi.Input[bool]] = None,
                  enable_public_signup_user_exists_error: Optional[pulumi.Input[bool]] = None,
+                 enable_sso: Optional[pulumi.Input[bool]] = None,
                  mfa_show_factor_list_on_enrollment: Optional[pulumi.Input[bool]] = None,
                  no_disclose_enterprise_connections: Optional[pulumi.Input[bool]] = None,
                  require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
@@ -8052,9 +8093,10 @@ class TenantFlagsArgs:
         :param pulumi.Input[bool] enable_legacy_profile: Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
         :param pulumi.Input[bool] enable_pipeline2: Indicates whether advanced API Authorization scenarios are enabled.
         :param pulumi.Input[bool] enable_public_signup_user_exists_error: Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+        :param pulumi.Input[bool] enable_sso: Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
         :param pulumi.Input[bool] mfa_show_factor_list_on_enrollment: Used to allow users to pick which factor to enroll with from the list of available MFA factors.
         :param pulumi.Input[bool] no_disclose_enterprise_connections: Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
-        :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+        :param pulumi.Input[bool] require_pushed_authorization_requests: This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
         :param pulumi.Input[bool] revoke_refresh_token_grant: Delete underlying grant when a refresh token is revoked via the Authentication API.
         :param pulumi.Input[bool] use_scope_descriptions_for_consent: Indicates whether to use scope descriptions for consent.
         """
@@ -8094,10 +8136,15 @@ class TenantFlagsArgs:
             pulumi.set(__self__, "enable_pipeline2", enable_pipeline2)
         if enable_public_signup_user_exists_error is not None:
             pulumi.set(__self__, "enable_public_signup_user_exists_error", enable_public_signup_user_exists_error)
+        if enable_sso is not None:
+            pulumi.set(__self__, "enable_sso", enable_sso)
         if mfa_show_factor_list_on_enrollment is not None:
             pulumi.set(__self__, "mfa_show_factor_list_on_enrollment", mfa_show_factor_list_on_enrollment)
         if no_disclose_enterprise_connections is not None:
             pulumi.set(__self__, "no_disclose_enterprise_connections", no_disclose_enterprise_connections)
+        if require_pushed_authorization_requests is not None:
+            warnings.warn("""This Flag is not supported by the Auth0 Management API and will be removed in the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""require_pushed_authorization_requests is deprecated: This Flag is not supported by the Auth0 Management API and will be removed in the next major release.""")
         if require_pushed_authorization_requests is not None:
             pulumi.set(__self__, "require_pushed_authorization_requests", require_pushed_authorization_requests)
         if revoke_refresh_token_grant is not None:
@@ -8322,6 +8369,18 @@ class TenantFlagsArgs:
         pulumi.set(self, "enable_public_signup_user_exists_error", value)
 
     @property
+    @pulumi.getter(name="enableSso")
+    def enable_sso(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+        """
+        return pulumi.get(self, "enable_sso")
+
+    @enable_sso.setter
+    def enable_sso(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_sso", value)
+
+    @property
     @pulumi.getter(name="mfaShowFactorListOnEnrollment")
     def mfa_show_factor_list_on_enrollment(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -8347,9 +8406,10 @@ class TenantFlagsArgs:
 
     @property
     @pulumi.getter(name="requirePushedAuthorizationRequests")
+    @_utilities.deprecated("""This Flag is not supported by the Auth0 Management API and will be removed in the next major release.""")
     def require_pushed_authorization_requests(self) -> Optional[pulumi.Input[bool]]:
         """
-        Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+        This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
         """
         return pulumi.get(self, "require_pushed_authorization_requests")
 
@@ -8531,5 +8591,79 @@ class UserPermissionsPermissionArgs:
     @resource_server_name.setter
     def resource_server_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_server_name", value)
+
+
+@pulumi.input_type
+class GetConnectionScimConfigurationDefaultMappingArgs:
+    def __init__(__self__, *,
+                 auth0: str,
+                 scim: str):
+        """
+        :param str auth0: The field location in the Auth0 schema.
+        :param str scim: The field location in the SCIM schema.
+        """
+        pulumi.set(__self__, "auth0", auth0)
+        pulumi.set(__self__, "scim", scim)
+
+    @property
+    @pulumi.getter
+    def auth0(self) -> str:
+        """
+        The field location in the Auth0 schema.
+        """
+        return pulumi.get(self, "auth0")
+
+    @auth0.setter
+    def auth0(self, value: str):
+        pulumi.set(self, "auth0", value)
+
+    @property
+    @pulumi.getter
+    def scim(self) -> str:
+        """
+        The field location in the SCIM schema.
+        """
+        return pulumi.get(self, "scim")
+
+    @scim.setter
+    def scim(self, value: str):
+        pulumi.set(self, "scim", value)
+
+
+@pulumi.input_type
+class GetConnectionScimConfigurationMappingArgs:
+    def __init__(__self__, *,
+                 auth0: str,
+                 scim: str):
+        """
+        :param str auth0: The field location in the Auth0 schema.
+        :param str scim: The field location in the SCIM schema.
+        """
+        pulumi.set(__self__, "auth0", auth0)
+        pulumi.set(__self__, "scim", scim)
+
+    @property
+    @pulumi.getter
+    def auth0(self) -> str:
+        """
+        The field location in the Auth0 schema.
+        """
+        return pulumi.get(self, "auth0")
+
+    @auth0.setter
+    def auth0(self, value: str):
+        pulumi.set(self, "auth0", value)
+
+    @property
+    @pulumi.getter
+    def scim(self) -> str:
+        """
+        The field location in the SCIM schema.
+        """
+        return pulumi.get(self, "scim")
+
+    @scim.setter
+    def scim(self, value: str):
+        pulumi.set(self, "scim", value)
 
 

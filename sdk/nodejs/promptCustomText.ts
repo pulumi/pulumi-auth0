@@ -95,7 +95,7 @@ export class PromptCustomText extends pulumi.CustomResource {
      */
     public readonly language!: pulumi.Output<string>;
     /**
-     * The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.
+     * The term `prompt` is used to refer to a specific step in the login flow. Options include: `captcha`, `common`, `consent`, `custom-form`, `customized-consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-email-verification`, `login-id`, `login-password`, `login-passwordless`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `passkeys`, `phone-identifier-challenge`, `phone-identifier-enrollment`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.
      */
     public readonly prompt!: pulumi.Output<string>;
 
@@ -148,7 +148,7 @@ export interface PromptCustomTextState {
      */
     language?: pulumi.Input<string>;
     /**
-     * The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.
+     * The term `prompt` is used to refer to a specific step in the login flow. Options include: `captcha`, `common`, `consent`, `custom-form`, `customized-consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-email-verification`, `login-id`, `login-password`, `login-passwordless`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `passkeys`, `phone-identifier-challenge`, `phone-identifier-enrollment`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.
      */
     prompt?: pulumi.Input<string>;
 }
@@ -166,7 +166,7 @@ export interface PromptCustomTextArgs {
      */
     language: pulumi.Input<string>;
     /**
-     * The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.
+     * The term `prompt` is used to refer to a specific step in the login flow. Options include: `captcha`, `common`, `consent`, `custom-form`, `customized-consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-email-verification`, `login-id`, `login-password`, `login-passwordless`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `passkeys`, `phone-identifier-challenge`, `phone-identifier-enrollment`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.
      */
     prompt: pulumi.Input<string>;
 }

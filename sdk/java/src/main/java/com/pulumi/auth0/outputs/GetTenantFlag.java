@@ -101,6 +101,11 @@ public final class GetTenantFlag {
      */
     private Boolean enablePublicSignupUserExistsError;
     /**
+     * @return Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+     * 
+     */
+    private Boolean enableSso;
+    /**
      * @return Used to allow users to pick which factor to enroll with from the list of available MFA factors.
      * 
      */
@@ -111,7 +116,7 @@ public final class GetTenantFlag {
      */
     private Boolean noDiscloseEnterpriseConnections;
     /**
-     * @return Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+     * @return This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
      */
     private Boolean requirePushedAuthorizationRequests;
@@ -254,6 +259,13 @@ public final class GetTenantFlag {
         return this.enablePublicSignupUserExistsError;
     }
     /**
+     * @return Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+     * 
+     */
+    public Boolean enableSso() {
+        return this.enableSso;
+    }
+    /**
      * @return Used to allow users to pick which factor to enroll with from the list of available MFA factors.
      * 
      */
@@ -268,7 +280,7 @@ public final class GetTenantFlag {
         return this.noDiscloseEnterpriseConnections;
     }
     /**
-     * @return Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+     * @return This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
      */
     public Boolean requirePushedAuthorizationRequests() {
@@ -316,6 +328,7 @@ public final class GetTenantFlag {
         private Boolean enableLegacyProfile;
         private Boolean enablePipeline2;
         private Boolean enablePublicSignupUserExistsError;
+        private Boolean enableSso;
         private Boolean mfaShowFactorListOnEnrollment;
         private Boolean noDiscloseEnterpriseConnections;
         private Boolean requirePushedAuthorizationRequests;
@@ -342,6 +355,7 @@ public final class GetTenantFlag {
     	      this.enableLegacyProfile = defaults.enableLegacyProfile;
     	      this.enablePipeline2 = defaults.enablePipeline2;
     	      this.enablePublicSignupUserExistsError = defaults.enablePublicSignupUserExistsError;
+    	      this.enableSso = defaults.enableSso;
     	      this.mfaShowFactorListOnEnrollment = defaults.mfaShowFactorListOnEnrollment;
     	      this.noDiscloseEnterpriseConnections = defaults.noDiscloseEnterpriseConnections;
     	      this.requirePushedAuthorizationRequests = defaults.requirePushedAuthorizationRequests;
@@ -494,6 +508,14 @@ public final class GetTenantFlag {
             return this;
         }
         @CustomType.Setter
+        public Builder enableSso(Boolean enableSso) {
+            if (enableSso == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "enableSso");
+            }
+            this.enableSso = enableSso;
+            return this;
+        }
+        @CustomType.Setter
         public Builder mfaShowFactorListOnEnrollment(Boolean mfaShowFactorListOnEnrollment) {
             if (mfaShowFactorListOnEnrollment == null) {
               throw new MissingRequiredPropertyException("GetTenantFlag", "mfaShowFactorListOnEnrollment");
@@ -553,6 +575,7 @@ public final class GetTenantFlag {
             _resultValue.enableLegacyProfile = enableLegacyProfile;
             _resultValue.enablePipeline2 = enablePipeline2;
             _resultValue.enablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
+            _resultValue.enableSso = enableSso;
             _resultValue.mfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
             _resultValue.noDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
             _resultValue.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;

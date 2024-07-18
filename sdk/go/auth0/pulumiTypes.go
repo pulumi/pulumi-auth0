@@ -15694,6 +15694,112 @@ func (o ConnectionOptionsValidationUsernamePtrOutput) Min() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
+type ConnectionScimConfigurationMapping struct {
+	// The field location in the Auth0 schema.
+	Auth0 string `pulumi:"auth0"`
+	// The field location in the SCIM schema.
+	Scim string `pulumi:"scim"`
+}
+
+// ConnectionScimConfigurationMappingInput is an input type that accepts ConnectionScimConfigurationMappingArgs and ConnectionScimConfigurationMappingOutput values.
+// You can construct a concrete instance of `ConnectionScimConfigurationMappingInput` via:
+//
+//	ConnectionScimConfigurationMappingArgs{...}
+type ConnectionScimConfigurationMappingInput interface {
+	pulumi.Input
+
+	ToConnectionScimConfigurationMappingOutput() ConnectionScimConfigurationMappingOutput
+	ToConnectionScimConfigurationMappingOutputWithContext(context.Context) ConnectionScimConfigurationMappingOutput
+}
+
+type ConnectionScimConfigurationMappingArgs struct {
+	// The field location in the Auth0 schema.
+	Auth0 pulumi.StringInput `pulumi:"auth0"`
+	// The field location in the SCIM schema.
+	Scim pulumi.StringInput `pulumi:"scim"`
+}
+
+func (ConnectionScimConfigurationMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionScimConfigurationMapping)(nil)).Elem()
+}
+
+func (i ConnectionScimConfigurationMappingArgs) ToConnectionScimConfigurationMappingOutput() ConnectionScimConfigurationMappingOutput {
+	return i.ToConnectionScimConfigurationMappingOutputWithContext(context.Background())
+}
+
+func (i ConnectionScimConfigurationMappingArgs) ToConnectionScimConfigurationMappingOutputWithContext(ctx context.Context) ConnectionScimConfigurationMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionScimConfigurationMappingOutput)
+}
+
+// ConnectionScimConfigurationMappingArrayInput is an input type that accepts ConnectionScimConfigurationMappingArray and ConnectionScimConfigurationMappingArrayOutput values.
+// You can construct a concrete instance of `ConnectionScimConfigurationMappingArrayInput` via:
+//
+//	ConnectionScimConfigurationMappingArray{ ConnectionScimConfigurationMappingArgs{...} }
+type ConnectionScimConfigurationMappingArrayInput interface {
+	pulumi.Input
+
+	ToConnectionScimConfigurationMappingArrayOutput() ConnectionScimConfigurationMappingArrayOutput
+	ToConnectionScimConfigurationMappingArrayOutputWithContext(context.Context) ConnectionScimConfigurationMappingArrayOutput
+}
+
+type ConnectionScimConfigurationMappingArray []ConnectionScimConfigurationMappingInput
+
+func (ConnectionScimConfigurationMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionScimConfigurationMapping)(nil)).Elem()
+}
+
+func (i ConnectionScimConfigurationMappingArray) ToConnectionScimConfigurationMappingArrayOutput() ConnectionScimConfigurationMappingArrayOutput {
+	return i.ToConnectionScimConfigurationMappingArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionScimConfigurationMappingArray) ToConnectionScimConfigurationMappingArrayOutputWithContext(ctx context.Context) ConnectionScimConfigurationMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionScimConfigurationMappingArrayOutput)
+}
+
+type ConnectionScimConfigurationMappingOutput struct{ *pulumi.OutputState }
+
+func (ConnectionScimConfigurationMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionScimConfigurationMapping)(nil)).Elem()
+}
+
+func (o ConnectionScimConfigurationMappingOutput) ToConnectionScimConfigurationMappingOutput() ConnectionScimConfigurationMappingOutput {
+	return o
+}
+
+func (o ConnectionScimConfigurationMappingOutput) ToConnectionScimConfigurationMappingOutputWithContext(ctx context.Context) ConnectionScimConfigurationMappingOutput {
+	return o
+}
+
+// The field location in the Auth0 schema.
+func (o ConnectionScimConfigurationMappingOutput) Auth0() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionScimConfigurationMapping) string { return v.Auth0 }).(pulumi.StringOutput)
+}
+
+// The field location in the SCIM schema.
+func (o ConnectionScimConfigurationMappingOutput) Scim() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionScimConfigurationMapping) string { return v.Scim }).(pulumi.StringOutput)
+}
+
+type ConnectionScimConfigurationMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionScimConfigurationMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionScimConfigurationMapping)(nil)).Elem()
+}
+
+func (o ConnectionScimConfigurationMappingArrayOutput) ToConnectionScimConfigurationMappingArrayOutput() ConnectionScimConfigurationMappingArrayOutput {
+	return o
+}
+
+func (o ConnectionScimConfigurationMappingArrayOutput) ToConnectionScimConfigurationMappingArrayOutputWithContext(ctx context.Context) ConnectionScimConfigurationMappingArrayOutput {
+	return o
+}
+
+func (o ConnectionScimConfigurationMappingArrayOutput) Index(i pulumi.IntInput) ConnectionScimConfigurationMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionScimConfigurationMapping {
+		return vs[0].([]ConnectionScimConfigurationMapping)[vs[1].(int)]
+	}).(ConnectionScimConfigurationMappingOutput)
+}
+
 type CustomDomainVerificationType struct {
 	// Verification methods for the domain.
 	Methods []interface{} `pulumi:"methods"`
@@ -20328,11 +20434,15 @@ type TenantFlags struct {
 	EnablePipeline2 *bool `pulumi:"enablePipeline2"`
 	// Indicates whether the public sign up process shows a `userExists` error if the user already exists.
 	EnablePublicSignupUserExistsError *bool `pulumi:"enablePublicSignupUserExistsError"`
+	// Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+	EnableSso *bool `pulumi:"enableSso"`
 	// Used to allow users to pick which factor to enroll with from the list of available MFA factors.
 	MfaShowFactorListOnEnrollment *bool `pulumi:"mfaShowFactorListOnEnrollment"`
 	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
 	NoDiscloseEnterpriseConnections *bool `pulumi:"noDiscloseEnterpriseConnections"`
-	// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+	// This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+	//
+	// Deprecated: This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
 	RequirePushedAuthorizationRequests *bool `pulumi:"requirePushedAuthorizationRequests"`
 	// Delete underlying grant when a refresh token is revoked via the Authentication API.
 	RevokeRefreshTokenGrant *bool `pulumi:"revokeRefreshTokenGrant"`
@@ -20388,11 +20498,15 @@ type TenantFlagsArgs struct {
 	EnablePipeline2 pulumi.BoolPtrInput `pulumi:"enablePipeline2"`
 	// Indicates whether the public sign up process shows a `userExists` error if the user already exists.
 	EnablePublicSignupUserExistsError pulumi.BoolPtrInput `pulumi:"enablePublicSignupUserExistsError"`
+	// Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+	EnableSso pulumi.BoolPtrInput `pulumi:"enableSso"`
 	// Used to allow users to pick which factor to enroll with from the list of available MFA factors.
 	MfaShowFactorListOnEnrollment pulumi.BoolPtrInput `pulumi:"mfaShowFactorListOnEnrollment"`
 	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
 	NoDiscloseEnterpriseConnections pulumi.BoolPtrInput `pulumi:"noDiscloseEnterpriseConnections"`
-	// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+	// This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+	//
+	// Deprecated: This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
 	RequirePushedAuthorizationRequests pulumi.BoolPtrInput `pulumi:"requirePushedAuthorizationRequests"`
 	// Delete underlying grant when a refresh token is revoked via the Authentication API.
 	RevokeRefreshTokenGrant pulumi.BoolPtrInput `pulumi:"revokeRefreshTokenGrant"`
@@ -20567,6 +20681,11 @@ func (o TenantFlagsOutput) EnablePublicSignupUserExistsError() pulumi.BoolPtrOut
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnablePublicSignupUserExistsError }).(pulumi.BoolPtrOutput)
 }
 
+// Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+func (o TenantFlagsOutput) EnableSso() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableSso }).(pulumi.BoolPtrOutput)
+}
+
 // Used to allow users to pick which factor to enroll with from the list of available MFA factors.
 func (o TenantFlagsOutput) MfaShowFactorListOnEnrollment() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.MfaShowFactorListOnEnrollment }).(pulumi.BoolPtrOutput)
@@ -20577,7 +20696,9 @@ func (o TenantFlagsOutput) NoDiscloseEnterpriseConnections() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v TenantFlags) *bool { return v.NoDiscloseEnterpriseConnections }).(pulumi.BoolPtrOutput)
 }
 
-// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+// This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+//
+// Deprecated: This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
 func (o TenantFlagsOutput) RequirePushedAuthorizationRequests() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.RequirePushedAuthorizationRequests }).(pulumi.BoolPtrOutput)
 }
@@ -20796,6 +20917,16 @@ func (o TenantFlagsPtrOutput) EnablePublicSignupUserExistsError() pulumi.BoolPtr
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+func (o TenantFlagsPtrOutput) EnableSso() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSso
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Used to allow users to pick which factor to enroll with from the list of available MFA factors.
 func (o TenantFlagsPtrOutput) MfaShowFactorListOnEnrollment() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
@@ -20816,7 +20947,9 @@ func (o TenantFlagsPtrOutput) NoDiscloseEnterpriseConnections() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+// This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+//
+// Deprecated: This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
 func (o TenantFlagsPtrOutput) RequirePushedAuthorizationRequests() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
 		if v == nil {
@@ -30838,6 +30971,218 @@ func (o GetConnectionOptionValidationUsernameArrayOutput) Index(i pulumi.IntInpu
 	}).(GetConnectionOptionValidationUsernameOutput)
 }
 
+type GetConnectionScimConfigurationDefaultMapping struct {
+	// The field location in the Auth0 schema.
+	Auth0 string `pulumi:"auth0"`
+	// The field location in the SCIM schema.
+	Scim string `pulumi:"scim"`
+}
+
+// GetConnectionScimConfigurationDefaultMappingInput is an input type that accepts GetConnectionScimConfigurationDefaultMappingArgs and GetConnectionScimConfigurationDefaultMappingOutput values.
+// You can construct a concrete instance of `GetConnectionScimConfigurationDefaultMappingInput` via:
+//
+//	GetConnectionScimConfigurationDefaultMappingArgs{...}
+type GetConnectionScimConfigurationDefaultMappingInput interface {
+	pulumi.Input
+
+	ToGetConnectionScimConfigurationDefaultMappingOutput() GetConnectionScimConfigurationDefaultMappingOutput
+	ToGetConnectionScimConfigurationDefaultMappingOutputWithContext(context.Context) GetConnectionScimConfigurationDefaultMappingOutput
+}
+
+type GetConnectionScimConfigurationDefaultMappingArgs struct {
+	// The field location in the Auth0 schema.
+	Auth0 pulumi.StringInput `pulumi:"auth0"`
+	// The field location in the SCIM schema.
+	Scim pulumi.StringInput `pulumi:"scim"`
+}
+
+func (GetConnectionScimConfigurationDefaultMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionScimConfigurationDefaultMapping)(nil)).Elem()
+}
+
+func (i GetConnectionScimConfigurationDefaultMappingArgs) ToGetConnectionScimConfigurationDefaultMappingOutput() GetConnectionScimConfigurationDefaultMappingOutput {
+	return i.ToGetConnectionScimConfigurationDefaultMappingOutputWithContext(context.Background())
+}
+
+func (i GetConnectionScimConfigurationDefaultMappingArgs) ToGetConnectionScimConfigurationDefaultMappingOutputWithContext(ctx context.Context) GetConnectionScimConfigurationDefaultMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionScimConfigurationDefaultMappingOutput)
+}
+
+// GetConnectionScimConfigurationDefaultMappingArrayInput is an input type that accepts GetConnectionScimConfigurationDefaultMappingArray and GetConnectionScimConfigurationDefaultMappingArrayOutput values.
+// You can construct a concrete instance of `GetConnectionScimConfigurationDefaultMappingArrayInput` via:
+//
+//	GetConnectionScimConfigurationDefaultMappingArray{ GetConnectionScimConfigurationDefaultMappingArgs{...} }
+type GetConnectionScimConfigurationDefaultMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionScimConfigurationDefaultMappingArrayOutput() GetConnectionScimConfigurationDefaultMappingArrayOutput
+	ToGetConnectionScimConfigurationDefaultMappingArrayOutputWithContext(context.Context) GetConnectionScimConfigurationDefaultMappingArrayOutput
+}
+
+type GetConnectionScimConfigurationDefaultMappingArray []GetConnectionScimConfigurationDefaultMappingInput
+
+func (GetConnectionScimConfigurationDefaultMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionScimConfigurationDefaultMapping)(nil)).Elem()
+}
+
+func (i GetConnectionScimConfigurationDefaultMappingArray) ToGetConnectionScimConfigurationDefaultMappingArrayOutput() GetConnectionScimConfigurationDefaultMappingArrayOutput {
+	return i.ToGetConnectionScimConfigurationDefaultMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionScimConfigurationDefaultMappingArray) ToGetConnectionScimConfigurationDefaultMappingArrayOutputWithContext(ctx context.Context) GetConnectionScimConfigurationDefaultMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionScimConfigurationDefaultMappingArrayOutput)
+}
+
+type GetConnectionScimConfigurationDefaultMappingOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionScimConfigurationDefaultMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionScimConfigurationDefaultMapping)(nil)).Elem()
+}
+
+func (o GetConnectionScimConfigurationDefaultMappingOutput) ToGetConnectionScimConfigurationDefaultMappingOutput() GetConnectionScimConfigurationDefaultMappingOutput {
+	return o
+}
+
+func (o GetConnectionScimConfigurationDefaultMappingOutput) ToGetConnectionScimConfigurationDefaultMappingOutputWithContext(ctx context.Context) GetConnectionScimConfigurationDefaultMappingOutput {
+	return o
+}
+
+// The field location in the Auth0 schema.
+func (o GetConnectionScimConfigurationDefaultMappingOutput) Auth0() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionScimConfigurationDefaultMapping) string { return v.Auth0 }).(pulumi.StringOutput)
+}
+
+// The field location in the SCIM schema.
+func (o GetConnectionScimConfigurationDefaultMappingOutput) Scim() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionScimConfigurationDefaultMapping) string { return v.Scim }).(pulumi.StringOutput)
+}
+
+type GetConnectionScimConfigurationDefaultMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionScimConfigurationDefaultMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionScimConfigurationDefaultMapping)(nil)).Elem()
+}
+
+func (o GetConnectionScimConfigurationDefaultMappingArrayOutput) ToGetConnectionScimConfigurationDefaultMappingArrayOutput() GetConnectionScimConfigurationDefaultMappingArrayOutput {
+	return o
+}
+
+func (o GetConnectionScimConfigurationDefaultMappingArrayOutput) ToGetConnectionScimConfigurationDefaultMappingArrayOutputWithContext(ctx context.Context) GetConnectionScimConfigurationDefaultMappingArrayOutput {
+	return o
+}
+
+func (o GetConnectionScimConfigurationDefaultMappingArrayOutput) Index(i pulumi.IntInput) GetConnectionScimConfigurationDefaultMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionScimConfigurationDefaultMapping {
+		return vs[0].([]GetConnectionScimConfigurationDefaultMapping)[vs[1].(int)]
+	}).(GetConnectionScimConfigurationDefaultMappingOutput)
+}
+
+type GetConnectionScimConfigurationMapping struct {
+	// The field location in the Auth0 schema.
+	Auth0 string `pulumi:"auth0"`
+	// The field location in the SCIM schema.
+	Scim string `pulumi:"scim"`
+}
+
+// GetConnectionScimConfigurationMappingInput is an input type that accepts GetConnectionScimConfigurationMappingArgs and GetConnectionScimConfigurationMappingOutput values.
+// You can construct a concrete instance of `GetConnectionScimConfigurationMappingInput` via:
+//
+//	GetConnectionScimConfigurationMappingArgs{...}
+type GetConnectionScimConfigurationMappingInput interface {
+	pulumi.Input
+
+	ToGetConnectionScimConfigurationMappingOutput() GetConnectionScimConfigurationMappingOutput
+	ToGetConnectionScimConfigurationMappingOutputWithContext(context.Context) GetConnectionScimConfigurationMappingOutput
+}
+
+type GetConnectionScimConfigurationMappingArgs struct {
+	// The field location in the Auth0 schema.
+	Auth0 pulumi.StringInput `pulumi:"auth0"`
+	// The field location in the SCIM schema.
+	Scim pulumi.StringInput `pulumi:"scim"`
+}
+
+func (GetConnectionScimConfigurationMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionScimConfigurationMapping)(nil)).Elem()
+}
+
+func (i GetConnectionScimConfigurationMappingArgs) ToGetConnectionScimConfigurationMappingOutput() GetConnectionScimConfigurationMappingOutput {
+	return i.ToGetConnectionScimConfigurationMappingOutputWithContext(context.Background())
+}
+
+func (i GetConnectionScimConfigurationMappingArgs) ToGetConnectionScimConfigurationMappingOutputWithContext(ctx context.Context) GetConnectionScimConfigurationMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionScimConfigurationMappingOutput)
+}
+
+// GetConnectionScimConfigurationMappingArrayInput is an input type that accepts GetConnectionScimConfigurationMappingArray and GetConnectionScimConfigurationMappingArrayOutput values.
+// You can construct a concrete instance of `GetConnectionScimConfigurationMappingArrayInput` via:
+//
+//	GetConnectionScimConfigurationMappingArray{ GetConnectionScimConfigurationMappingArgs{...} }
+type GetConnectionScimConfigurationMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionScimConfigurationMappingArrayOutput() GetConnectionScimConfigurationMappingArrayOutput
+	ToGetConnectionScimConfigurationMappingArrayOutputWithContext(context.Context) GetConnectionScimConfigurationMappingArrayOutput
+}
+
+type GetConnectionScimConfigurationMappingArray []GetConnectionScimConfigurationMappingInput
+
+func (GetConnectionScimConfigurationMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionScimConfigurationMapping)(nil)).Elem()
+}
+
+func (i GetConnectionScimConfigurationMappingArray) ToGetConnectionScimConfigurationMappingArrayOutput() GetConnectionScimConfigurationMappingArrayOutput {
+	return i.ToGetConnectionScimConfigurationMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionScimConfigurationMappingArray) ToGetConnectionScimConfigurationMappingArrayOutputWithContext(ctx context.Context) GetConnectionScimConfigurationMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionScimConfigurationMappingArrayOutput)
+}
+
+type GetConnectionScimConfigurationMappingOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionScimConfigurationMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionScimConfigurationMapping)(nil)).Elem()
+}
+
+func (o GetConnectionScimConfigurationMappingOutput) ToGetConnectionScimConfigurationMappingOutput() GetConnectionScimConfigurationMappingOutput {
+	return o
+}
+
+func (o GetConnectionScimConfigurationMappingOutput) ToGetConnectionScimConfigurationMappingOutputWithContext(ctx context.Context) GetConnectionScimConfigurationMappingOutput {
+	return o
+}
+
+// The field location in the Auth0 schema.
+func (o GetConnectionScimConfigurationMappingOutput) Auth0() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionScimConfigurationMapping) string { return v.Auth0 }).(pulumi.StringOutput)
+}
+
+// The field location in the SCIM schema.
+func (o GetConnectionScimConfigurationMappingOutput) Scim() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionScimConfigurationMapping) string { return v.Scim }).(pulumi.StringOutput)
+}
+
+type GetConnectionScimConfigurationMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionScimConfigurationMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionScimConfigurationMapping)(nil)).Elem()
+}
+
+func (o GetConnectionScimConfigurationMappingArrayOutput) ToGetConnectionScimConfigurationMappingArrayOutput() GetConnectionScimConfigurationMappingArrayOutput {
+	return o
+}
+
+func (o GetConnectionScimConfigurationMappingArrayOutput) ToGetConnectionScimConfigurationMappingArrayOutputWithContext(ctx context.Context) GetConnectionScimConfigurationMappingArrayOutput {
+	return o
+}
+
+func (o GetConnectionScimConfigurationMappingArrayOutput) Index(i pulumi.IntInput) GetConnectionScimConfigurationMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionScimConfigurationMapping {
+		return vs[0].([]GetConnectionScimConfigurationMapping)[vs[1].(int)]
+	}).(GetConnectionScimConfigurationMappingOutput)
+}
+
 type GetCustomDomainVerificationType struct {
 	// Verification methods for the domain.
 	Methods []interface{} `pulumi:"methods"`
@@ -32034,11 +32379,13 @@ type GetTenantFlag struct {
 	EnablePipeline2 bool `pulumi:"enablePipeline2"`
 	// Indicates whether the public sign up process shows a `userExists` error if the user already exists.
 	EnablePublicSignupUserExistsError bool `pulumi:"enablePublicSignupUserExistsError"`
+	// Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+	EnableSso bool `pulumi:"enableSso"`
 	// Used to allow users to pick which factor to enroll with from the list of available MFA factors.
 	MfaShowFactorListOnEnrollment bool `pulumi:"mfaShowFactorListOnEnrollment"`
 	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
 	NoDiscloseEnterpriseConnections bool `pulumi:"noDiscloseEnterpriseConnections"`
-	// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+	// This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
 	RequirePushedAuthorizationRequests bool `pulumi:"requirePushedAuthorizationRequests"`
 	// Delete underlying grant when a refresh token is revoked via the Authentication API.
 	RevokeRefreshTokenGrant bool `pulumi:"revokeRefreshTokenGrant"`
@@ -32094,11 +32441,13 @@ type GetTenantFlagArgs struct {
 	EnablePipeline2 pulumi.BoolInput `pulumi:"enablePipeline2"`
 	// Indicates whether the public sign up process shows a `userExists` error if the user already exists.
 	EnablePublicSignupUserExistsError pulumi.BoolInput `pulumi:"enablePublicSignupUserExistsError"`
+	// Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+	EnableSso pulumi.BoolInput `pulumi:"enableSso"`
 	// Used to allow users to pick which factor to enroll with from the list of available MFA factors.
 	MfaShowFactorListOnEnrollment pulumi.BoolInput `pulumi:"mfaShowFactorListOnEnrollment"`
 	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
 	NoDiscloseEnterpriseConnections pulumi.BoolInput `pulumi:"noDiscloseEnterpriseConnections"`
-	// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+	// This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
 	RequirePushedAuthorizationRequests pulumi.BoolInput `pulumi:"requirePushedAuthorizationRequests"`
 	// Delete underlying grant when a refresh token is revoked via the Authentication API.
 	RevokeRefreshTokenGrant pulumi.BoolInput `pulumi:"revokeRefreshTokenGrant"`
@@ -32247,6 +32596,11 @@ func (o GetTenantFlagOutput) EnablePublicSignupUserExistsError() pulumi.BoolOutp
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnablePublicSignupUserExistsError }).(pulumi.BoolOutput)
 }
 
+// Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+func (o GetTenantFlagOutput) EnableSso() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableSso }).(pulumi.BoolOutput)
+}
+
 // Used to allow users to pick which factor to enroll with from the list of available MFA factors.
 func (o GetTenantFlagOutput) MfaShowFactorListOnEnrollment() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.MfaShowFactorListOnEnrollment }).(pulumi.BoolOutput)
@@ -32257,7 +32611,7 @@ func (o GetTenantFlagOutput) NoDiscloseEnterpriseConnections() pulumi.BoolOutput
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.NoDiscloseEnterpriseConnections }).(pulumi.BoolOutput)
 }
 
-// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+// This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
 func (o GetTenantFlagOutput) RequirePushedAuthorizationRequests() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.RequirePushedAuthorizationRequests }).(pulumi.BoolOutput)
 }
@@ -32769,6 +33123,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationPtrInput)(nil)).Elem(), ConnectionOptionsValidationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationUsernameInput)(nil)).Elem(), ConnectionOptionsValidationUsernameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationUsernamePtrInput)(nil)).Elem(), ConnectionOptionsValidationUsernameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionScimConfigurationMappingInput)(nil)).Elem(), ConnectionScimConfigurationMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionScimConfigurationMappingArrayInput)(nil)).Elem(), ConnectionScimConfigurationMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationTypeInput)(nil)).Elem(), CustomDomainVerificationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationTypeArrayInput)(nil)).Elem(), CustomDomainVerificationTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailProviderCredentialsInput)(nil)).Elem(), EmailProviderCredentialsArgs{})
@@ -32975,6 +33331,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationArrayInput)(nil)).Elem(), GetConnectionOptionValidationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationUsernameInput)(nil)).Elem(), GetConnectionOptionValidationUsernameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationUsernameArrayInput)(nil)).Elem(), GetConnectionOptionValidationUsernameArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationDefaultMappingInput)(nil)).Elem(), GetConnectionScimConfigurationDefaultMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationDefaultMappingArrayInput)(nil)).Elem(), GetConnectionScimConfigurationDefaultMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationMappingInput)(nil)).Elem(), GetConnectionScimConfigurationMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationMappingArrayInput)(nil)).Elem(), GetConnectionScimConfigurationMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeInput)(nil)).Elem(), GetCustomDomainVerificationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeArrayInput)(nil)).Elem(), GetCustomDomainVerificationTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBrandingInput)(nil)).Elem(), GetOrganizationBrandingArgs{})
@@ -33161,6 +33521,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionOptionsValidationPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsValidationUsernameOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsValidationUsernamePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionScimConfigurationMappingOutput{})
+	pulumi.RegisterOutputType(ConnectionScimConfigurationMappingArrayOutput{})
 	pulumi.RegisterOutputType(CustomDomainVerificationTypeOutput{})
 	pulumi.RegisterOutputType(CustomDomainVerificationTypeArrayOutput{})
 	pulumi.RegisterOutputType(EmailProviderCredentialsOutput{})
@@ -33367,6 +33729,10 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionOptionValidationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionValidationUsernameOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionValidationUsernameArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionScimConfigurationDefaultMappingOutput{})
+	pulumi.RegisterOutputType(GetConnectionScimConfigurationDefaultMappingArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionScimConfigurationMappingOutput{})
+	pulumi.RegisterOutputType(GetConnectionScimConfigurationMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBrandingOutput{})
