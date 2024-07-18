@@ -90,6 +90,7 @@ __all__ = [
     'ConnectionOptionsTotp',
     'ConnectionOptionsValidation',
     'ConnectionOptionsValidationUsername',
+    'ConnectionScimConfigurationMapping',
     'CustomDomainVerification',
     'EmailProviderCredentials',
     'EmailProviderSettings',
@@ -193,6 +194,8 @@ __all__ = [
     'GetConnectionOptionTotpResult',
     'GetConnectionOptionValidationResult',
     'GetConnectionOptionValidationUsernameResult',
+    'GetConnectionScimConfigurationDefaultMappingResult',
+    'GetConnectionScimConfigurationMappingResult',
     'GetCustomDomainVerificationResult',
     'GetOrganizationBrandingResult',
     'GetOrganizationConnectionResult',
@@ -5878,6 +5881,35 @@ class ConnectionOptionsValidationUsername(dict):
 
 
 @pulumi.output_type
+class ConnectionScimConfigurationMapping(dict):
+    def __init__(__self__, *,
+                 auth0: str,
+                 scim: str):
+        """
+        :param str auth0: The field location in the Auth0 schema.
+        :param str scim: The field location in the SCIM schema.
+        """
+        pulumi.set(__self__, "auth0", auth0)
+        pulumi.set(__self__, "scim", scim)
+
+    @property
+    @pulumi.getter
+    def auth0(self) -> str:
+        """
+        The field location in the Auth0 schema.
+        """
+        return pulumi.get(self, "auth0")
+
+    @property
+    @pulumi.getter
+    def scim(self) -> str:
+        """
+        The field location in the SCIM schema.
+        """
+        return pulumi.get(self, "scim")
+
+
+@pulumi.output_type
 class CustomDomainVerification(dict):
     def __init__(__self__, *,
                  methods: Optional[Sequence[Any]] = None):
@@ -7739,6 +7771,8 @@ class TenantFlags(dict):
             suggest = "enable_pipeline2"
         elif key == "enablePublicSignupUserExistsError":
             suggest = "enable_public_signup_user_exists_error"
+        elif key == "enableSso":
+            suggest = "enable_sso"
         elif key == "mfaShowFactorListOnEnrollment":
             suggest = "mfa_show_factor_list_on_enrollment"
         elif key == "noDiscloseEnterpriseConnections":
@@ -7780,6 +7814,7 @@ class TenantFlags(dict):
                  enable_legacy_profile: Optional[bool] = None,
                  enable_pipeline2: Optional[bool] = None,
                  enable_public_signup_user_exists_error: Optional[bool] = None,
+                 enable_sso: Optional[bool] = None,
                  mfa_show_factor_list_on_enrollment: Optional[bool] = None,
                  no_disclose_enterprise_connections: Optional[bool] = None,
                  require_pushed_authorization_requests: Optional[bool] = None,
@@ -7804,9 +7839,10 @@ class TenantFlags(dict):
         :param bool enable_legacy_profile: Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
         :param bool enable_pipeline2: Indicates whether advanced API Authorization scenarios are enabled.
         :param bool enable_public_signup_user_exists_error: Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+        :param bool enable_sso: Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
         :param bool mfa_show_factor_list_on_enrollment: Used to allow users to pick which factor to enroll with from the list of available MFA factors.
         :param bool no_disclose_enterprise_connections: Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
-        :param bool require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+        :param bool require_pushed_authorization_requests: This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
         :param bool revoke_refresh_token_grant: Delete underlying grant when a refresh token is revoked via the Authentication API.
         :param bool use_scope_descriptions_for_consent: Indicates whether to use scope descriptions for consent.
         """
@@ -7846,6 +7882,8 @@ class TenantFlags(dict):
             pulumi.set(__self__, "enable_pipeline2", enable_pipeline2)
         if enable_public_signup_user_exists_error is not None:
             pulumi.set(__self__, "enable_public_signup_user_exists_error", enable_public_signup_user_exists_error)
+        if enable_sso is not None:
+            pulumi.set(__self__, "enable_sso", enable_sso)
         if mfa_show_factor_list_on_enrollment is not None:
             pulumi.set(__self__, "mfa_show_factor_list_on_enrollment", mfa_show_factor_list_on_enrollment)
         if no_disclose_enterprise_connections is not None:
@@ -8002,6 +8040,14 @@ class TenantFlags(dict):
         return pulumi.get(self, "enable_public_signup_user_exists_error")
 
     @property
+    @pulumi.getter(name="enableSso")
+    def enable_sso(self) -> Optional[bool]:
+        """
+        Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+        """
+        return pulumi.get(self, "enable_sso")
+
+    @property
     @pulumi.getter(name="mfaShowFactorListOnEnrollment")
     def mfa_show_factor_list_on_enrollment(self) -> Optional[bool]:
         """
@@ -8019,9 +8065,10 @@ class TenantFlags(dict):
 
     @property
     @pulumi.getter(name="requirePushedAuthorizationRequests")
+    @_utilities.deprecated("""This Flag is not supported by the Auth0 Management API and will be removed in the next major release.""")
     def require_pushed_authorization_requests(self) -> Optional[bool]:
         """
-        Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+        This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
         """
         return pulumi.get(self, "require_pushed_authorization_requests")
 
@@ -12322,6 +12369,64 @@ class GetConnectionOptionValidationUsernameResult(dict):
 
 
 @pulumi.output_type
+class GetConnectionScimConfigurationDefaultMappingResult(dict):
+    def __init__(__self__, *,
+                 auth0: str,
+                 scim: str):
+        """
+        :param str auth0: The field location in the Auth0 schema.
+        :param str scim: The field location in the SCIM schema.
+        """
+        pulumi.set(__self__, "auth0", auth0)
+        pulumi.set(__self__, "scim", scim)
+
+    @property
+    @pulumi.getter
+    def auth0(self) -> str:
+        """
+        The field location in the Auth0 schema.
+        """
+        return pulumi.get(self, "auth0")
+
+    @property
+    @pulumi.getter
+    def scim(self) -> str:
+        """
+        The field location in the SCIM schema.
+        """
+        return pulumi.get(self, "scim")
+
+
+@pulumi.output_type
+class GetConnectionScimConfigurationMappingResult(dict):
+    def __init__(__self__, *,
+                 auth0: str,
+                 scim: str):
+        """
+        :param str auth0: The field location in the Auth0 schema.
+        :param str scim: The field location in the SCIM schema.
+        """
+        pulumi.set(__self__, "auth0", auth0)
+        pulumi.set(__self__, "scim", scim)
+
+    @property
+    @pulumi.getter
+    def auth0(self) -> str:
+        """
+        The field location in the Auth0 schema.
+        """
+        return pulumi.get(self, "auth0")
+
+    @property
+    @pulumi.getter
+    def scim(self) -> str:
+        """
+        The field location in the SCIM schema.
+        """
+        return pulumi.get(self, "scim")
+
+
+@pulumi.output_type
 class GetCustomDomainVerificationResult(dict):
     def __init__(__self__, *,
                  methods: Sequence[Any]):
@@ -12753,6 +12858,7 @@ class GetTenantFlagResult(dict):
                  enable_legacy_profile: bool,
                  enable_pipeline2: bool,
                  enable_public_signup_user_exists_error: bool,
+                 enable_sso: bool,
                  mfa_show_factor_list_on_enrollment: bool,
                  no_disclose_enterprise_connections: bool,
                  require_pushed_authorization_requests: bool,
@@ -12777,9 +12883,10 @@ class GetTenantFlagResult(dict):
         :param bool enable_legacy_profile: Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
         :param bool enable_pipeline2: Indicates whether advanced API Authorization scenarios are enabled.
         :param bool enable_public_signup_user_exists_error: Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+        :param bool enable_sso: Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
         :param bool mfa_show_factor_list_on_enrollment: Used to allow users to pick which factor to enroll with from the list of available MFA factors.
         :param bool no_disclose_enterprise_connections: Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
-        :param bool require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+        :param bool require_pushed_authorization_requests: This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
         :param bool revoke_refresh_token_grant: Delete underlying grant when a refresh token is revoked via the Authentication API.
         :param bool use_scope_descriptions_for_consent: Indicates whether to use scope descriptions for consent.
         """
@@ -12801,6 +12908,7 @@ class GetTenantFlagResult(dict):
         pulumi.set(__self__, "enable_legacy_profile", enable_legacy_profile)
         pulumi.set(__self__, "enable_pipeline2", enable_pipeline2)
         pulumi.set(__self__, "enable_public_signup_user_exists_error", enable_public_signup_user_exists_error)
+        pulumi.set(__self__, "enable_sso", enable_sso)
         pulumi.set(__self__, "mfa_show_factor_list_on_enrollment", mfa_show_factor_list_on_enrollment)
         pulumi.set(__self__, "no_disclose_enterprise_connections", no_disclose_enterprise_connections)
         pulumi.set(__self__, "require_pushed_authorization_requests", require_pushed_authorization_requests)
@@ -12952,6 +13060,14 @@ class GetTenantFlagResult(dict):
         return pulumi.get(self, "enable_public_signup_user_exists_error")
 
     @property
+    @pulumi.getter(name="enableSso")
+    def enable_sso(self) -> bool:
+        """
+        Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+        """
+        return pulumi.get(self, "enable_sso")
+
+    @property
     @pulumi.getter(name="mfaShowFactorListOnEnrollment")
     def mfa_show_factor_list_on_enrollment(self) -> bool:
         """
@@ -12971,7 +13087,7 @@ class GetTenantFlagResult(dict):
     @pulumi.getter(name="requirePushedAuthorizationRequests")
     def require_pushed_authorization_requests(self) -> bool:
         """
-        Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+        This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
         """
         return pulumi.get(self, "require_pushed_authorization_requests")
 

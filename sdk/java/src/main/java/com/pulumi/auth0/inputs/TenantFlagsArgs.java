@@ -286,6 +286,21 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+     * 
+     */
+    @Import(name="enableSso")
+    private @Nullable Output<Boolean> enableSso;
+
+    /**
+     * @return Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+     * 
+     */
+    public Optional<Output<Boolean>> enableSso() {
+        return Optional.ofNullable(this.enableSso);
+    }
+
+    /**
      * Used to allow users to pick which factor to enroll with from the list of available MFA factors.
      * 
      */
@@ -316,16 +331,24 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+     * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+     * 
+     * @deprecated
+     * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
      */
+    @Deprecated /* This Flag is not supported by the Auth0 Management API and will be removed in the next major release. */
     @Import(name="requirePushedAuthorizationRequests")
     private @Nullable Output<Boolean> requirePushedAuthorizationRequests;
 
     /**
-     * @return Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+     * @return This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+     * 
+     * @deprecated
+     * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
      */
+    @Deprecated /* This Flag is not supported by the Auth0 Management API and will be removed in the next major release. */
     public Optional<Output<Boolean>> requirePushedAuthorizationRequests() {
         return Optional.ofNullable(this.requirePushedAuthorizationRequests);
     }
@@ -381,6 +404,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         this.enableLegacyProfile = $.enableLegacyProfile;
         this.enablePipeline2 = $.enablePipeline2;
         this.enablePublicSignupUserExistsError = $.enablePublicSignupUserExistsError;
+        this.enableSso = $.enableSso;
         this.mfaShowFactorListOnEnrollment = $.mfaShowFactorListOnEnrollment;
         this.noDiscloseEnterpriseConnections = $.noDiscloseEnterpriseConnections;
         this.requirePushedAuthorizationRequests = $.requirePushedAuthorizationRequests;
@@ -785,6 +809,27 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param enableSso Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSso(@Nullable Output<Boolean> enableSso) {
+            $.enableSso = enableSso;
+            return this;
+        }
+
+        /**
+         * @param enableSso Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSso(Boolean enableSso) {
+            return enableSso(Output.of(enableSso));
+        }
+
+        /**
          * @param mfaShowFactorListOnEnrollment Used to allow users to pick which factor to enroll with from the list of available MFA factors.
          * 
          * @return builder
@@ -827,22 +872,30 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requirePushedAuthorizationRequests Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+         * @param requirePushedAuthorizationRequests This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+         * 
          */
+        @Deprecated /* This Flag is not supported by the Auth0 Management API and will be removed in the next major release. */
         public Builder requirePushedAuthorizationRequests(@Nullable Output<Boolean> requirePushedAuthorizationRequests) {
             $.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
             return this;
         }
 
         /**
-         * @param requirePushedAuthorizationRequests Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+         * @param requirePushedAuthorizationRequests This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+         * 
          */
+        @Deprecated /* This Flag is not supported by the Auth0 Management API and will be removed in the next major release. */
         public Builder requirePushedAuthorizationRequests(Boolean requirePushedAuthorizationRequests) {
             return requirePushedAuthorizationRequests(Output.of(requirePushedAuthorizationRequests));
         }

@@ -1594,6 +1594,17 @@ export interface ConnectionOptionsValidationUsername {
     min?: pulumi.Input<number>;
 }
 
+export interface ConnectionScimConfigurationMapping {
+    /**
+     * The field location in the Auth0 schema.
+     */
+    auth0: pulumi.Input<string>;
+    /**
+     * The field location in the SCIM schema.
+     */
+    scim: pulumi.Input<string>;
+}
+
 export interface CustomDomainVerification {
     /**
      * Verification methods for the domain.
@@ -1687,6 +1698,50 @@ export interface EmailProviderSettingsMessage {
      * Setting for the `mandrill` email provider. Set to `true` to see the content of individual emails sent to users.
      */
     viewContentLink?: pulumi.Input<boolean>;
+}
+
+export interface GetConnectionScimConfigurationDefaultMapping {
+    /**
+     * The field location in the Auth0 schema.
+     */
+    auth0?: string;
+    /**
+     * The field location in the SCIM schema.
+     */
+    scim?: string;
+}
+
+export interface GetConnectionScimConfigurationDefaultMappingArgs {
+    /**
+     * The field location in the Auth0 schema.
+     */
+    auth0?: pulumi.Input<string>;
+    /**
+     * The field location in the SCIM schema.
+     */
+    scim?: pulumi.Input<string>;
+}
+
+export interface GetConnectionScimConfigurationMapping {
+    /**
+     * The field location in the Auth0 schema.
+     */
+    auth0?: string;
+    /**
+     * The field location in the SCIM schema.
+     */
+    scim?: string;
+}
+
+export interface GetConnectionScimConfigurationMappingArgs {
+    /**
+     * The field location in the Auth0 schema.
+     */
+    auth0?: pulumi.Input<string>;
+    /**
+     * The field location in the SCIM schema.
+     */
+    scim?: pulumi.Input<string>;
 }
 
 export interface GuardianDuo {
@@ -2160,6 +2215,10 @@ export interface TenantFlags {
      */
     enablePublicSignupUserExistsError?: pulumi.Input<boolean>;
     /**
+     * Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+     */
+    enableSso?: pulumi.Input<boolean>;
+    /**
      * Used to allow users to pick which factor to enroll with from the list of available MFA factors.
      */
     mfaShowFactorListOnEnrollment?: pulumi.Input<boolean>;
@@ -2168,7 +2227,9 @@ export interface TenantFlags {
      */
     noDiscloseEnterpriseConnections?: pulumi.Input<boolean>;
     /**
-     * Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+     * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+     *
+     * @deprecated This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      */
     requirePushedAuthorizationRequests?: pulumi.Input<boolean>;
     /**
