@@ -2171,6 +2171,23 @@
             },
             "type": "object"
         },
+        "auth0:index/ConnectionScimConfigurationMapping:ConnectionScimConfigurationMapping": {
+            "properties": {
+                "auth0": {
+                    "type": "string",
+                    "description": "The field location in the Auth0 schema.\n"
+                },
+                "scim": {
+                    "type": "string",
+                    "description": "The field location in the SCIM schema.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "auth0",
+                "scim"
+            ]
+        },
         "auth0:index/CustomDomainVerification:CustomDomainVerification": {
             "properties": {
                 "methods": {
@@ -2952,6 +2969,10 @@
                     "type": "boolean",
                     "description": "Indicates whether the public sign up process shows a `user_exists` error if the user already exists.\n"
                 },
+                "enableSso": {
+                    "type": "boolean",
+                    "description": "Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.\n"
+                },
                 "mfaShowFactorListOnEnrollment": {
                     "type": "boolean",
                     "description": "Used to allow users to pick which factor to enroll with from the list of available MFA factors.\n"
@@ -2962,7 +2983,8 @@
                 },
                 "requirePushedAuthorizationRequests": {
                     "type": "boolean",
-                    "description": "Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.\n"
+                    "description": "This Flag is not supported by the Auth0 Management API and will be removed in the next major release.\n",
+                    "deprecationMessage": "This Flag is not supported by the Auth0 Management API and will be removed in the next major release."
                 },
                 "revokeRefreshTokenGrant": {
                     "type": "boolean",
@@ -2995,6 +3017,7 @@
                         "enableLegacyProfile",
                         "enablePipeline2",
                         "enablePublicSignupUserExistsError",
+                        "enableSso",
                         "mfaShowFactorListOnEnrollment",
                         "noDiscloseEnterpriseConnections",
                         "requirePushedAuthorizationRequests",
@@ -5817,6 +5840,50 @@
                 }
             }
         },
+        "auth0:index/getConnectionScimConfigurationDefaultMapping:getConnectionScimConfigurationDefaultMapping": {
+            "properties": {
+                "auth0": {
+                    "type": "string",
+                    "description": "The field location in the Auth0 schema.\n"
+                },
+                "scim": {
+                    "type": "string",
+                    "description": "The field location in the SCIM schema.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "auth0",
+                "scim"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionScimConfigurationMapping:getConnectionScimConfigurationMapping": {
+            "properties": {
+                "auth0": {
+                    "type": "string",
+                    "description": "The field location in the Auth0 schema.\n"
+                },
+                "scim": {
+                    "type": "string",
+                    "description": "The field location in the SCIM schema.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "auth0",
+                "scim"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getCustomDomainVerification:getCustomDomainVerification": {
             "properties": {
                 "methods": {
@@ -6172,6 +6239,10 @@
                     "type": "boolean",
                     "description": "Indicates whether the public sign up process shows a `user_exists` error if the user already exists.\n"
                 },
+                "enableSso": {
+                    "type": "boolean",
+                    "description": "Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.\n"
+                },
                 "mfaShowFactorListOnEnrollment": {
                     "type": "boolean",
                     "description": "Used to allow users to pick which factor to enroll with from the list of available MFA factors.\n"
@@ -6182,7 +6253,7 @@
                 },
                 "requirePushedAuthorizationRequests": {
                     "type": "boolean",
-                    "description": "Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.\n"
+                    "description": "This Flag is not supported by the Auth0 Management API and will be removed in the next major release.\n"
                 },
                 "revokeRefreshTokenGrant": {
                     "type": "boolean",
@@ -6213,6 +6284,7 @@
                 "enableLegacyProfile",
                 "enablePipeline2",
                 "enablePublicSignupUserExistsError",
+                "enableSso",
                 "mfaShowFactorListOnEnrollment",
                 "noDiscloseEnterpriseConnections",
                 "requirePushedAuthorizationRequests",
@@ -7677,6 +7749,101 @@
                 "type": "object"
             }
         },
+        "auth0:index/connectionScimConfiguration:ConnectionScimConfiguration": {
+            "description": "With this resource, you can configure [SCIM(System for Cross-domain Identity Management)](https://simplecloud.info/) support for `SAML` and `OpenID Connect` Enterprise connections.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myEnterpriseConnection = new auth0.Connection(\"my_enterprise_connection\", {\n    name: \"my-enterprise-connection\",\n    displayName: \"My Enterprise Connection\",\n    strategy: \"okta\",\n    options: {\n        clientId: \"1234567\",\n        clientSecret: \"1234567\",\n        issuer: \"https://example.okta.com\",\n        jwksUri: \"https://example.okta.com/oauth2/v1/keys\",\n        tokenEndpoint: \"https://example.okta.com/oauth2/v1/token\",\n        authorizationEndpoint: \"https://example.okta.com/oauth2/v1/authorize\",\n    },\n});\nconst myEnterpriseConnection2 = new auth0.Connection(\"my_enterprise_connection_2\", {\n    name: \"my-enterprise-connection-2\",\n    displayName: \"My Enterprise Connection 2\",\n    strategy: \"okta\",\n    options: {\n        clientId: \"1234567\",\n        clientSecret: \"1234567\",\n        issuer: \"https://example.okta.com\",\n        jwksUri: \"https://example.okta.com/oauth2/v1/keys\",\n        tokenEndpoint: \"https://example.okta.com/oauth2/v1/token\",\n        authorizationEndpoint: \"https://example.okta.com/oauth2/v1/authorize\",\n    },\n});\n// A resource for configuring an Auth0 Connection SCIM Configuration, using default values.\n// Only one can be specified for a connection.\nconst myConnScimConfigurationDefault = new auth0.ConnectionScimConfiguration(\"my_conn_scim_configuration_default\", {connectionId: myEnterpriseConnection.id});\n// A resource for configuring an Auth0 Connection SCIM Configuration, specifying `user_id_attribute` and `mapping`.\n// Only one can be specified for a connection.\nconst myConnScimConfiguration = new auth0.ConnectionScimConfiguration(\"my_conn_scim_configuration\", {\n    connectionId: myEnterpriseConnection2.id,\n    userIdAttribute: \"attribute1\",\n    mappings: [\n        {\n            auth0: \"auth0_attribute1\",\n            scim: \"sacim_attribute1\",\n        },\n        {\n            auth0: \"auth0_attribute2\",\n            scim: \"sacim_attribute2\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_enterprise_connection = auth0.Connection(\"my_enterprise_connection\",\n    name=\"my-enterprise-connection\",\n    display_name=\"My Enterprise Connection\",\n    strategy=\"okta\",\n    options=auth0.ConnectionOptionsArgs(\n        client_id=\"1234567\",\n        client_secret=\"1234567\",\n        issuer=\"https://example.okta.com\",\n        jwks_uri=\"https://example.okta.com/oauth2/v1/keys\",\n        token_endpoint=\"https://example.okta.com/oauth2/v1/token\",\n        authorization_endpoint=\"https://example.okta.com/oauth2/v1/authorize\",\n    ))\nmy_enterprise_connection2 = auth0.Connection(\"my_enterprise_connection_2\",\n    name=\"my-enterprise-connection-2\",\n    display_name=\"My Enterprise Connection 2\",\n    strategy=\"okta\",\n    options=auth0.ConnectionOptionsArgs(\n        client_id=\"1234567\",\n        client_secret=\"1234567\",\n        issuer=\"https://example.okta.com\",\n        jwks_uri=\"https://example.okta.com/oauth2/v1/keys\",\n        token_endpoint=\"https://example.okta.com/oauth2/v1/token\",\n        authorization_endpoint=\"https://example.okta.com/oauth2/v1/authorize\",\n    ))\n# A resource for configuring an Auth0 Connection SCIM Configuration, using default values.\n# Only one can be specified for a connection.\nmy_conn_scim_configuration_default = auth0.ConnectionScimConfiguration(\"my_conn_scim_configuration_default\", connection_id=my_enterprise_connection.id)\n# A resource for configuring an Auth0 Connection SCIM Configuration, specifying `user_id_attribute` and `mapping`.\n# Only one can be specified for a connection.\nmy_conn_scim_configuration = auth0.ConnectionScimConfiguration(\"my_conn_scim_configuration\",\n    connection_id=my_enterprise_connection2.id,\n    user_id_attribute=\"attribute1\",\n    mappings=[\n        auth0.ConnectionScimConfigurationMappingArgs(\n            auth0=\"auth0_attribute1\",\n            scim=\"sacim_attribute1\",\n        ),\n        auth0.ConnectionScimConfigurationMappingArgs(\n            auth0=\"auth0_attribute2\",\n            scim=\"sacim_attribute2\",\n        ),\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myEnterpriseConnection = new Auth0.Connection(\"my_enterprise_connection\", new()\n    {\n        Name = \"my-enterprise-connection\",\n        DisplayName = \"My Enterprise Connection\",\n        Strategy = \"okta\",\n        Options = new Auth0.Inputs.ConnectionOptionsArgs\n        {\n            ClientId = \"1234567\",\n            ClientSecret = \"1234567\",\n            Issuer = \"https://example.okta.com\",\n            JwksUri = \"https://example.okta.com/oauth2/v1/keys\",\n            TokenEndpoint = \"https://example.okta.com/oauth2/v1/token\",\n            AuthorizationEndpoint = \"https://example.okta.com/oauth2/v1/authorize\",\n        },\n    });\n\n    var myEnterpriseConnection2 = new Auth0.Connection(\"my_enterprise_connection_2\", new()\n    {\n        Name = \"my-enterprise-connection-2\",\n        DisplayName = \"My Enterprise Connection 2\",\n        Strategy = \"okta\",\n        Options = new Auth0.Inputs.ConnectionOptionsArgs\n        {\n            ClientId = \"1234567\",\n            ClientSecret = \"1234567\",\n            Issuer = \"https://example.okta.com\",\n            JwksUri = \"https://example.okta.com/oauth2/v1/keys\",\n            TokenEndpoint = \"https://example.okta.com/oauth2/v1/token\",\n            AuthorizationEndpoint = \"https://example.okta.com/oauth2/v1/authorize\",\n        },\n    });\n\n    // A resource for configuring an Auth0 Connection SCIM Configuration, using default values.\n    // Only one can be specified for a connection.\n    var myConnScimConfigurationDefault = new Auth0.ConnectionScimConfiguration(\"my_conn_scim_configuration_default\", new()\n    {\n        ConnectionId = myEnterpriseConnection.Id,\n    });\n\n    // A resource for configuring an Auth0 Connection SCIM Configuration, specifying `user_id_attribute` and `mapping`.\n    // Only one can be specified for a connection.\n    var myConnScimConfiguration = new Auth0.ConnectionScimConfiguration(\"my_conn_scim_configuration\", new()\n    {\n        ConnectionId = myEnterpriseConnection2.Id,\n        UserIdAttribute = \"attribute1\",\n        Mappings = new[]\n        {\n            new Auth0.Inputs.ConnectionScimConfigurationMappingArgs\n            {\n                Auth0 = \"auth0_attribute1\",\n                Scim = \"sacim_attribute1\",\n            },\n            new Auth0.Inputs.ConnectionScimConfigurationMappingArgs\n            {\n                Auth0 = \"auth0_attribute2\",\n                Scim = \"sacim_attribute2\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyEnterpriseConnection, err := auth0.NewConnection(ctx, \"my_enterprise_connection\", \u0026auth0.ConnectionArgs{\n\t\t\tName:        pulumi.String(\"my-enterprise-connection\"),\n\t\t\tDisplayName: pulumi.String(\"My Enterprise Connection\"),\n\t\t\tStrategy:    pulumi.String(\"okta\"),\n\t\t\tOptions: \u0026auth0.ConnectionOptionsArgs{\n\t\t\t\tClientId:              pulumi.String(\"1234567\"),\n\t\t\t\tClientSecret:          pulumi.String(\"1234567\"),\n\t\t\t\tIssuer:                pulumi.String(\"https://example.okta.com\"),\n\t\t\t\tJwksUri:               pulumi.String(\"https://example.okta.com/oauth2/v1/keys\"),\n\t\t\t\tTokenEndpoint:         pulumi.String(\"https://example.okta.com/oauth2/v1/token\"),\n\t\t\t\tAuthorizationEndpoint: pulumi.String(\"https://example.okta.com/oauth2/v1/authorize\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyEnterpriseConnection2, err := auth0.NewConnection(ctx, \"my_enterprise_connection_2\", \u0026auth0.ConnectionArgs{\n\t\t\tName:        pulumi.String(\"my-enterprise-connection-2\"),\n\t\t\tDisplayName: pulumi.String(\"My Enterprise Connection 2\"),\n\t\t\tStrategy:    pulumi.String(\"okta\"),\n\t\t\tOptions: \u0026auth0.ConnectionOptionsArgs{\n\t\t\t\tClientId:              pulumi.String(\"1234567\"),\n\t\t\t\tClientSecret:          pulumi.String(\"1234567\"),\n\t\t\t\tIssuer:                pulumi.String(\"https://example.okta.com\"),\n\t\t\t\tJwksUri:               pulumi.String(\"https://example.okta.com/oauth2/v1/keys\"),\n\t\t\t\tTokenEndpoint:         pulumi.String(\"https://example.okta.com/oauth2/v1/token\"),\n\t\t\t\tAuthorizationEndpoint: pulumi.String(\"https://example.okta.com/oauth2/v1/authorize\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// A resource for configuring an Auth0 Connection SCIM Configuration, using default values.\n\t\t// Only one can be specified for a connection.\n\t\t_, err = auth0.NewConnectionScimConfiguration(ctx, \"my_conn_scim_configuration_default\", \u0026auth0.ConnectionScimConfigurationArgs{\n\t\t\tConnectionId: myEnterpriseConnection.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// A resource for configuring an Auth0 Connection SCIM Configuration, specifying `user_id_attribute` and `mapping`.\n\t\t// Only one can be specified for a connection.\n\t\t_, err = auth0.NewConnectionScimConfiguration(ctx, \"my_conn_scim_configuration\", \u0026auth0.ConnectionScimConfigurationArgs{\n\t\t\tConnectionId:    myEnterpriseConnection2.ID(),\n\t\t\tUserIdAttribute: pulumi.String(\"attribute1\"),\n\t\t\tMappings: auth0.ConnectionScimConfigurationMappingArray{\n\t\t\t\t\u0026auth0.ConnectionScimConfigurationMappingArgs{\n\t\t\t\t\tAuth0: pulumi.String(\"auth0_attribute1\"),\n\t\t\t\t\tScim:  pulumi.String(\"sacim_attribute1\"),\n\t\t\t\t},\n\t\t\t\t\u0026auth0.ConnectionScimConfigurationMappingArgs{\n\t\t\t\t\tAuth0: pulumi.String(\"auth0_attribute2\"),\n\t\t\t\t\tScim:  pulumi.String(\"sacim_attribute2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Connection;\nimport com.pulumi.auth0.ConnectionArgs;\nimport com.pulumi.auth0.inputs.ConnectionOptionsArgs;\nimport com.pulumi.auth0.ConnectionScimConfiguration;\nimport com.pulumi.auth0.ConnectionScimConfigurationArgs;\nimport com.pulumi.auth0.inputs.ConnectionScimConfigurationMappingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myEnterpriseConnection = new Connection(\"myEnterpriseConnection\", ConnectionArgs.builder()\n            .name(\"my-enterprise-connection\")\n            .displayName(\"My Enterprise Connection\")\n            .strategy(\"okta\")\n            .options(ConnectionOptionsArgs.builder()\n                .clientId(\"1234567\")\n                .clientSecret(\"1234567\")\n                .issuer(\"https://example.okta.com\")\n                .jwksUri(\"https://example.okta.com/oauth2/v1/keys\")\n                .tokenEndpoint(\"https://example.okta.com/oauth2/v1/token\")\n                .authorizationEndpoint(\"https://example.okta.com/oauth2/v1/authorize\")\n                .build())\n            .build());\n\n        var myEnterpriseConnection2 = new Connection(\"myEnterpriseConnection2\", ConnectionArgs.builder()\n            .name(\"my-enterprise-connection-2\")\n            .displayName(\"My Enterprise Connection 2\")\n            .strategy(\"okta\")\n            .options(ConnectionOptionsArgs.builder()\n                .clientId(\"1234567\")\n                .clientSecret(\"1234567\")\n                .issuer(\"https://example.okta.com\")\n                .jwksUri(\"https://example.okta.com/oauth2/v1/keys\")\n                .tokenEndpoint(\"https://example.okta.com/oauth2/v1/token\")\n                .authorizationEndpoint(\"https://example.okta.com/oauth2/v1/authorize\")\n                .build())\n            .build());\n\n        // A resource for configuring an Auth0 Connection SCIM Configuration, using default values.\n        // Only one can be specified for a connection.\n        var myConnScimConfigurationDefault = new ConnectionScimConfiguration(\"myConnScimConfigurationDefault\", ConnectionScimConfigurationArgs.builder()\n            .connectionId(myEnterpriseConnection.id())\n            .build());\n\n        // A resource for configuring an Auth0 Connection SCIM Configuration, specifying `user_id_attribute` and `mapping`.\n        // Only one can be specified for a connection.\n        var myConnScimConfiguration = new ConnectionScimConfiguration(\"myConnScimConfiguration\", ConnectionScimConfigurationArgs.builder()\n            .connectionId(myEnterpriseConnection2.id())\n            .userIdAttribute(\"attribute1\")\n            .mappings(            \n                ConnectionScimConfigurationMappingArgs.builder()\n                    .auth0(\"auth0_attribute1\")\n                    .scim(\"sacim_attribute1\")\n                    .build(),\n                ConnectionScimConfigurationMappingArgs.builder()\n                    .auth0(\"auth0_attribute2\")\n                    .scim(\"sacim_attribute2\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myEnterpriseConnection:\n    type: auth0:Connection\n    name: my_enterprise_connection\n    properties:\n      name: my-enterprise-connection\n      displayName: My Enterprise Connection\n      strategy: okta\n      options:\n        clientId: '1234567'\n        clientSecret: '1234567'\n        issuer: https://example.okta.com\n        jwksUri: https://example.okta.com/oauth2/v1/keys\n        tokenEndpoint: https://example.okta.com/oauth2/v1/token\n        authorizationEndpoint: https://example.okta.com/oauth2/v1/authorize\n  myEnterpriseConnection2:\n    type: auth0:Connection\n    name: my_enterprise_connection_2\n    properties:\n      name: my-enterprise-connection-2\n      displayName: My Enterprise Connection 2\n      strategy: okta\n      options:\n        clientId: '1234567'\n        clientSecret: '1234567'\n        issuer: https://example.okta.com\n        jwksUri: https://example.okta.com/oauth2/v1/keys\n        tokenEndpoint: https://example.okta.com/oauth2/v1/token\n        authorizationEndpoint: https://example.okta.com/oauth2/v1/authorize\n  # A resource for configuring an Auth0 Connection SCIM Configuration, using default values.\n  # Only one can be specified for a connection.\n  myConnScimConfigurationDefault:\n    type: auth0:ConnectionScimConfiguration\n    name: my_conn_scim_configuration_default\n    properties:\n      connectionId: ${myEnterpriseConnection.id}\n  # A resource for configuring an Auth0 Connection SCIM Configuration, specifying `user_id_attribute` and `mapping`.\n  # Only one can be specified for a connection.\n  myConnScimConfiguration:\n    type: auth0:ConnectionScimConfiguration\n    name: my_conn_scim_configuration\n    properties:\n      connectionId: ${myEnterpriseConnection2.id}\n      userIdAttribute: attribute1\n      mappings:\n        - auth0: auth0_attribute1\n          scim: sacim_attribute1\n        - auth0: auth0_attribute2\n          scim: sacim_attribute2\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the connection ID \u003cconnectionID\u003e\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/connectionScimConfiguration:ConnectionScimConfiguration my_conn_scim_conf \"con_XXXXX\"\n```\n\n",
+            "properties": {
+                "connectionId": {
+                    "type": "string",
+                    "description": "ID of the connection for this SCIM configuration.\n"
+                },
+                "connectionName": {
+                    "type": "string",
+                    "description": "Name of the connection for this SCIM configuration.\n"
+                },
+                "mappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionScimConfigurationMapping:ConnectionScimConfigurationMapping"
+                    },
+                    "description": "Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.\n"
+                },
+                "strategy": {
+                    "type": "string",
+                    "description": "Schema of the connection for this SCIM configuration.\n"
+                },
+                "tenantName": {
+                    "type": "string",
+                    "description": "Name of the tenant for this SCIM configuration.\n"
+                },
+                "userIdAttribute": {
+                    "type": "string",
+                    "description": "User ID attribute for generation unique of user ids. If `user_id_attribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.\n"
+                }
+            },
+            "required": [
+                "connectionId",
+                "connectionName",
+                "mappings",
+                "strategy",
+                "tenantName",
+                "userIdAttribute"
+            ],
+            "inputProperties": {
+                "connectionId": {
+                    "type": "string",
+                    "description": "ID of the connection for this SCIM configuration.\n",
+                    "willReplaceOnChanges": true
+                },
+                "mappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionScimConfigurationMapping:ConnectionScimConfigurationMapping"
+                    },
+                    "description": "Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.\n"
+                },
+                "userIdAttribute": {
+                    "type": "string",
+                    "description": "User ID attribute for generation unique of user ids. If `user_id_attribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.\n"
+                }
+            },
+            "requiredInputs": [
+                "connectionId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConnectionScimConfiguration resources.\n",
+                "properties": {
+                    "connectionId": {
+                        "type": "string",
+                        "description": "ID of the connection for this SCIM configuration.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "connectionName": {
+                        "type": "string",
+                        "description": "Name of the connection for this SCIM configuration.\n"
+                    },
+                    "mappings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/auth0:index/ConnectionScimConfigurationMapping:ConnectionScimConfigurationMapping"
+                        },
+                        "description": "Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.\n"
+                    },
+                    "strategy": {
+                        "type": "string",
+                        "description": "Schema of the connection for this SCIM configuration.\n"
+                    },
+                    "tenantName": {
+                        "type": "string",
+                        "description": "Name of the tenant for this SCIM configuration.\n"
+                    },
+                    "userIdAttribute": {
+                        "type": "string",
+                        "description": "User ID attribute for generation unique of user ids. If `user_id_attribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "auth0:index/customDomain:CustomDomain": {
             "description": "With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myCustomDomain = new auth0.CustomDomain(\"my_custom_domain\", {\n    domain: \"auth.example.com\",\n    type: \"auth0_managed_certs\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_custom_domain = auth0.CustomDomain(\"my_custom_domain\",\n    domain=\"auth.example.com\",\n    type=\"auth0_managed_certs\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myCustomDomain = new Auth0.CustomDomain(\"my_custom_domain\", new()\n    {\n        Domain = \"auth.example.com\",\n        Type = \"auth0_managed_certs\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewCustomDomain(ctx, \"my_custom_domain\", \u0026auth0.CustomDomainArgs{\n\t\t\tDomain: pulumi.String(\"auth.example.com\"),\n\t\t\tType:   pulumi.String(\"auth0_managed_certs\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.CustomDomain;\nimport com.pulumi.auth0.CustomDomainArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myCustomDomain = new CustomDomain(\"myCustomDomain\", CustomDomainArgs.builder()\n            .domain(\"auth.example.com\")\n            .type(\"auth0_managed_certs\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myCustomDomain:\n    type: auth0:CustomDomain\n    name: my_custom_domain\n    properties:\n      domain: auth.example.com\n      type: auth0_managed_certs\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nCustom domains can be imported using their ID.\n\n#\n\nYou can find existing custom domain IDs using the Auth0 Management API.\n\nhttps://auth0.com/docs/api/management/v2#!/Custom_Domains/get_custom_domains\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain \"cd_XXXXXXXXXXXXXXXX\"\n```\n\n",
             "properties": {
@@ -9041,7 +9208,7 @@
                 },
                 "prompt": {
                     "type": "string",
-                    "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.\n"
+                    "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `captcha`, `common`, `consent`, `custom-form`, `customized-consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-email-verification`, `login-id`, `login-password`, `login-passwordless`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `passkeys`, `phone-identifier-challenge`, `phone-identifier-enrollment`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.\n"
                 }
             },
             "required": [
@@ -9060,7 +9227,7 @@
                 },
                 "prompt": {
                     "type": "string",
-                    "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.\n"
+                    "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `captcha`, `common`, `consent`, `custom-form`, `customized-consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-email-verification`, `login-id`, `login-password`, `login-passwordless`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `passkeys`, `phone-identifier-challenge`, `phone-identifier-enrollment`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.\n"
                 }
             },
             "requiredInputs": [
@@ -9081,7 +9248,7 @@
                     },
                     "prompt": {
                         "type": "string",
-                        "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.\n"
+                        "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `captcha`, `common`, `consent`, `custom-form`, `customized-consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-email-verification`, `login-id`, `login-password`, `login-passwordless`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `passkeys`, `phone-identifier-challenge`, `phone-identifier-enrollment`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.\n"
                     }
                 },
                 "type": "object"
@@ -11127,6 +11294,90 @@
                     "realms",
                     "showAsButton",
                     "strategy",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "auth0:index/getConnectionScimConfiguration:getConnectionScimConfiguration": {
+            "description": "Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myEnterpriseConnection = new auth0.Connection(\"my_enterprise_connection\", {\n    name: \"my-enterprise-connection\",\n    displayName: \"My Enterprise Connection\",\n    strategy: \"okta\",\n    options: {\n        clientId: \"1234567\",\n        clientSecret: \"1234567\",\n        issuer: \"https://example.okta.com\",\n        jwksUri: \"https://example.okta.com/oauth2/v1/keys\",\n        tokenEndpoint: \"https://example.okta.com/oauth2/v1/token\",\n        authorizationEndpoint: \"https://example.okta.com/oauth2/v1/authorize\",\n    },\n});\nconst myConnScimConfiguration = new auth0.ConnectionScimConfiguration(\"my_conn_scim_configuration\", {connectionId: myEnterpriseConnection.id});\n// A data source for an Auth0 Connection SCIM Configuration.\nconst myConnScimConfigurationData = auth0.getConnectionScimConfigurationOutput({\n    connectionId: myConnScimConfiguration.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_enterprise_connection = auth0.Connection(\"my_enterprise_connection\",\n    name=\"my-enterprise-connection\",\n    display_name=\"My Enterprise Connection\",\n    strategy=\"okta\",\n    options=auth0.ConnectionOptionsArgs(\n        client_id=\"1234567\",\n        client_secret=\"1234567\",\n        issuer=\"https://example.okta.com\",\n        jwks_uri=\"https://example.okta.com/oauth2/v1/keys\",\n        token_endpoint=\"https://example.okta.com/oauth2/v1/token\",\n        authorization_endpoint=\"https://example.okta.com/oauth2/v1/authorize\",\n    ))\nmy_conn_scim_configuration = auth0.ConnectionScimConfiguration(\"my_conn_scim_configuration\", connection_id=my_enterprise_connection.id)\n# A data source for an Auth0 Connection SCIM Configuration.\nmy_conn_scim_configuration_data = auth0.get_connection_scim_configuration_output(connection_id=my_conn_scim_configuration.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myEnterpriseConnection = new Auth0.Connection(\"my_enterprise_connection\", new()\n    {\n        Name = \"my-enterprise-connection\",\n        DisplayName = \"My Enterprise Connection\",\n        Strategy = \"okta\",\n        Options = new Auth0.Inputs.ConnectionOptionsArgs\n        {\n            ClientId = \"1234567\",\n            ClientSecret = \"1234567\",\n            Issuer = \"https://example.okta.com\",\n            JwksUri = \"https://example.okta.com/oauth2/v1/keys\",\n            TokenEndpoint = \"https://example.okta.com/oauth2/v1/token\",\n            AuthorizationEndpoint = \"https://example.okta.com/oauth2/v1/authorize\",\n        },\n    });\n\n    var myConnScimConfiguration = new Auth0.ConnectionScimConfiguration(\"my_conn_scim_configuration\", new()\n    {\n        ConnectionId = myEnterpriseConnection.Id,\n    });\n\n    // A data source for an Auth0 Connection SCIM Configuration.\n    var myConnScimConfigurationData = Auth0.GetConnectionScimConfiguration.Invoke(new()\n    {\n        ConnectionId = myConnScimConfiguration.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyEnterpriseConnection, err := auth0.NewConnection(ctx, \"my_enterprise_connection\", \u0026auth0.ConnectionArgs{\n\t\t\tName:        pulumi.String(\"my-enterprise-connection\"),\n\t\t\tDisplayName: pulumi.String(\"My Enterprise Connection\"),\n\t\t\tStrategy:    pulumi.String(\"okta\"),\n\t\t\tOptions: \u0026auth0.ConnectionOptionsArgs{\n\t\t\t\tClientId:              pulumi.String(\"1234567\"),\n\t\t\t\tClientSecret:          pulumi.String(\"1234567\"),\n\t\t\t\tIssuer:                pulumi.String(\"https://example.okta.com\"),\n\t\t\t\tJwksUri:               pulumi.String(\"https://example.okta.com/oauth2/v1/keys\"),\n\t\t\t\tTokenEndpoint:         pulumi.String(\"https://example.okta.com/oauth2/v1/token\"),\n\t\t\t\tAuthorizationEndpoint: pulumi.String(\"https://example.okta.com/oauth2/v1/authorize\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyConnScimConfiguration, err := auth0.NewConnectionScimConfiguration(ctx, \"my_conn_scim_configuration\", \u0026auth0.ConnectionScimConfigurationArgs{\n\t\t\tConnectionId: myEnterpriseConnection.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// A data source for an Auth0 Connection SCIM Configuration.\n\t\t_ = auth0.LookupConnectionScimConfigurationOutput(ctx, auth0.GetConnectionScimConfigurationOutputArgs{\n\t\t\tConnectionId: myConnScimConfiguration.ID(),\n\t\t}, nil)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Connection;\nimport com.pulumi.auth0.ConnectionArgs;\nimport com.pulumi.auth0.inputs.ConnectionOptionsArgs;\nimport com.pulumi.auth0.ConnectionScimConfiguration;\nimport com.pulumi.auth0.ConnectionScimConfigurationArgs;\nimport com.pulumi.auth0.Auth0Functions;\nimport com.pulumi.auth0.inputs.GetConnectionScimConfigurationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myEnterpriseConnection = new Connection(\"myEnterpriseConnection\", ConnectionArgs.builder()\n            .name(\"my-enterprise-connection\")\n            .displayName(\"My Enterprise Connection\")\n            .strategy(\"okta\")\n            .options(ConnectionOptionsArgs.builder()\n                .clientId(\"1234567\")\n                .clientSecret(\"1234567\")\n                .issuer(\"https://example.okta.com\")\n                .jwksUri(\"https://example.okta.com/oauth2/v1/keys\")\n                .tokenEndpoint(\"https://example.okta.com/oauth2/v1/token\")\n                .authorizationEndpoint(\"https://example.okta.com/oauth2/v1/authorize\")\n                .build())\n            .build());\n\n        var myConnScimConfiguration = new ConnectionScimConfiguration(\"myConnScimConfiguration\", ConnectionScimConfigurationArgs.builder()\n            .connectionId(myEnterpriseConnection.id())\n            .build());\n\n        // A data source for an Auth0 Connection SCIM Configuration.\n        final var myConnScimConfigurationData = Auth0Functions.getConnectionScimConfiguration(GetConnectionScimConfigurationArgs.builder()\n            .connectionId(myConnScimConfiguration.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myEnterpriseConnection:\n    type: auth0:Connection\n    name: my_enterprise_connection\n    properties:\n      name: my-enterprise-connection\n      displayName: My Enterprise Connection\n      strategy: okta\n      options:\n        clientId: '1234567'\n        clientSecret: '1234567'\n        issuer: https://example.okta.com\n        jwksUri: https://example.okta.com/oauth2/v1/keys\n        tokenEndpoint: https://example.okta.com/oauth2/v1/token\n        authorizationEndpoint: https://example.okta.com/oauth2/v1/authorize\n  myConnScimConfiguration:\n    type: auth0:ConnectionScimConfiguration\n    name: my_conn_scim_configuration\n    properties:\n      connectionId: ${myEnterpriseConnection.id}\nvariables:\n  # A data source for an Auth0 Connection SCIM Configuration.\n  myConnScimConfigurationData:\n    fn::invoke:\n      Function: auth0:getConnectionScimConfiguration\n      Arguments:\n        connectionId: ${myConnScimConfiguration.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getConnectionScimConfiguration.\n",
+                "properties": {
+                    "connectionId": {
+                        "type": "string",
+                        "description": "ID of the connection for this SCIM configuration.\n"
+                    },
+                    "defaultMappings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getConnectionScimConfigurationDefaultMapping:getConnectionScimConfigurationDefaultMapping"
+                        },
+                        "description": "Default mapping between Auth0 attributes and SCIM attributes for this connection type.\n"
+                    },
+                    "mappings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getConnectionScimConfigurationMapping:getConnectionScimConfigurationMapping"
+                        },
+                        "description": "Mapping between Auth0 attributes and SCIM attributes.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "connectionId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getConnectionScimConfiguration.\n",
+                "properties": {
+                    "connectionId": {
+                        "description": "ID of the connection for this SCIM configuration.\n",
+                        "type": "string"
+                    },
+                    "connectionName": {
+                        "description": "Name of the connection for this SCIM configuration.\n",
+                        "type": "string"
+                    },
+                    "defaultMappings": {
+                        "description": "Default mapping between Auth0 attributes and SCIM attributes for this connection type.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getConnectionScimConfigurationDefaultMapping:getConnectionScimConfigurationDefaultMapping"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "mappings": {
+                        "description": "Mapping between Auth0 attributes and SCIM attributes.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getConnectionScimConfigurationMapping:getConnectionScimConfigurationMapping"
+                        },
+                        "type": "array"
+                    },
+                    "strategy": {
+                        "description": "Schema of the connection for this SCIM configuration.\n",
+                        "type": "string"
+                    },
+                    "tenantName": {
+                        "description": "Name of the tenant for this SCIM configuration.\n",
+                        "type": "string"
+                    },
+                    "userIdAttribute": {
+                        "description": "User ID attribute for generation unique of user ids.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "connectionId",
+                    "connectionName",
+                    "defaultMappings",
+                    "mappings",
+                    "strategy",
+                    "tenantName",
+                    "userIdAttribute",
                     "id"
                 ],
                 "type": "object"
