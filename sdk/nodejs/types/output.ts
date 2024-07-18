@@ -1594,6 +1594,17 @@ export interface ConnectionOptionsValidationUsername {
     min?: number;
 }
 
+export interface ConnectionScimConfigurationMapping {
+    /**
+     * The field location in the Auth0 schema.
+     */
+    auth0: string;
+    /**
+     * The field location in the SCIM schema.
+     */
+    scim: string;
+}
+
 export interface CustomDomainVerification {
     /**
      * Verification methods for the domain.
@@ -3195,6 +3206,28 @@ export interface GetConnectionOptionValidationUsername {
     min: number;
 }
 
+export interface GetConnectionScimConfigurationDefaultMapping {
+    /**
+     * The field location in the Auth0 schema.
+     */
+    auth0: string;
+    /**
+     * The field location in the SCIM schema.
+     */
+    scim: string;
+}
+
+export interface GetConnectionScimConfigurationMapping {
+    /**
+     * The field location in the Auth0 schema.
+     */
+    auth0: string;
+    /**
+     * The field location in the SCIM schema.
+     */
+    scim: string;
+}
+
 export interface GetCustomDomainVerification {
     /**
      * Verification methods for the domain.
@@ -3423,6 +3456,10 @@ export interface GetTenantFlag {
      */
     enablePublicSignupUserExistsError: boolean;
     /**
+     * Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+     */
+    enableSso: boolean;
+    /**
      * Used to allow users to pick which factor to enroll with from the list of available MFA factors.
      */
     mfaShowFactorListOnEnrollment: boolean;
@@ -3431,7 +3468,7 @@ export interface GetTenantFlag {
      */
     noDiscloseEnterpriseConnections: boolean;
     /**
-     * Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+     * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      */
     requirePushedAuthorizationRequests: boolean;
     /**
@@ -3948,6 +3985,10 @@ export interface TenantFlags {
      */
     enablePublicSignupUserExistsError: boolean;
     /**
+     * Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+     */
+    enableSso: boolean;
+    /**
      * Used to allow users to pick which factor to enroll with from the list of available MFA factors.
      */
     mfaShowFactorListOnEnrollment: boolean;
@@ -3956,7 +3997,9 @@ export interface TenantFlags {
      */
     noDiscloseEnterpriseConnections: boolean;
     /**
-     * Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+     * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+     *
+     * @deprecated This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      */
     requirePushedAuthorizationRequests: boolean;
     /**

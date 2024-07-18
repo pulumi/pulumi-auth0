@@ -8,6 +8,8 @@ import com.pulumi.auth0.inputs.GetClientArgs;
 import com.pulumi.auth0.inputs.GetClientPlainArgs;
 import com.pulumi.auth0.inputs.GetConnectionArgs;
 import com.pulumi.auth0.inputs.GetConnectionPlainArgs;
+import com.pulumi.auth0.inputs.GetConnectionScimConfigurationArgs;
+import com.pulumi.auth0.inputs.GetConnectionScimConfigurationPlainArgs;
 import com.pulumi.auth0.inputs.GetOrganizationArgs;
 import com.pulumi.auth0.inputs.GetOrganizationPlainArgs;
 import com.pulumi.auth0.inputs.GetResourceServerArgs;
@@ -21,6 +23,7 @@ import com.pulumi.auth0.outputs.GetBrandingResult;
 import com.pulumi.auth0.outputs.GetBrandingThemeResult;
 import com.pulumi.auth0.outputs.GetClientResult;
 import com.pulumi.auth0.outputs.GetConnectionResult;
+import com.pulumi.auth0.outputs.GetConnectionScimConfigurationResult;
 import com.pulumi.auth0.outputs.GetCustomDomainResult;
 import com.pulumi.auth0.outputs.GetOrganizationResult;
 import com.pulumi.auth0.outputs.GetPagesResult;
@@ -1314,6 +1317,270 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Connection;
+     * import com.pulumi.auth0.ConnectionArgs;
+     * import com.pulumi.auth0.inputs.ConnectionOptionsArgs;
+     * import com.pulumi.auth0.ConnectionScimConfiguration;
+     * import com.pulumi.auth0.ConnectionScimConfigurationArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionScimConfigurationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myEnterpriseConnection = new Connection("myEnterpriseConnection", ConnectionArgs.builder()
+     *             .name("my-enterprise-connection")
+     *             .displayName("My Enterprise Connection")
+     *             .strategy("okta")
+     *             .options(ConnectionOptionsArgs.builder()
+     *                 .clientId("1234567")
+     *                 .clientSecret("1234567")
+     *                 .issuer("https://example.okta.com")
+     *                 .jwksUri("https://example.okta.com/oauth2/v1/keys")
+     *                 .tokenEndpoint("https://example.okta.com/oauth2/v1/token")
+     *                 .authorizationEndpoint("https://example.okta.com/oauth2/v1/authorize")
+     *                 .build())
+     *             .build());
+     * 
+     *         var myConnScimConfiguration = new ConnectionScimConfiguration("myConnScimConfiguration", ConnectionScimConfigurationArgs.builder()
+     *             .connectionId(myEnterpriseConnection.id())
+     *             .build());
+     * 
+     *         // A data source for an Auth0 Connection SCIM Configuration.
+     *         final var myConnScimConfigurationData = Auth0Functions.getConnectionScimConfiguration(GetConnectionScimConfigurationArgs.builder()
+     *             .connectionId(myConnScimConfiguration.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionScimConfigurationResult> getConnectionScimConfiguration(GetConnectionScimConfigurationArgs args) {
+        return getConnectionScimConfiguration(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Connection;
+     * import com.pulumi.auth0.ConnectionArgs;
+     * import com.pulumi.auth0.inputs.ConnectionOptionsArgs;
+     * import com.pulumi.auth0.ConnectionScimConfiguration;
+     * import com.pulumi.auth0.ConnectionScimConfigurationArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionScimConfigurationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myEnterpriseConnection = new Connection("myEnterpriseConnection", ConnectionArgs.builder()
+     *             .name("my-enterprise-connection")
+     *             .displayName("My Enterprise Connection")
+     *             .strategy("okta")
+     *             .options(ConnectionOptionsArgs.builder()
+     *                 .clientId("1234567")
+     *                 .clientSecret("1234567")
+     *                 .issuer("https://example.okta.com")
+     *                 .jwksUri("https://example.okta.com/oauth2/v1/keys")
+     *                 .tokenEndpoint("https://example.okta.com/oauth2/v1/token")
+     *                 .authorizationEndpoint("https://example.okta.com/oauth2/v1/authorize")
+     *                 .build())
+     *             .build());
+     * 
+     *         var myConnScimConfiguration = new ConnectionScimConfiguration("myConnScimConfiguration", ConnectionScimConfigurationArgs.builder()
+     *             .connectionId(myEnterpriseConnection.id())
+     *             .build());
+     * 
+     *         // A data source for an Auth0 Connection SCIM Configuration.
+     *         final var myConnScimConfigurationData = Auth0Functions.getConnectionScimConfiguration(GetConnectionScimConfigurationArgs.builder()
+     *             .connectionId(myConnScimConfiguration.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConnectionScimConfigurationResult> getConnectionScimConfigurationPlain(GetConnectionScimConfigurationPlainArgs args) {
+        return getConnectionScimConfigurationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Connection;
+     * import com.pulumi.auth0.ConnectionArgs;
+     * import com.pulumi.auth0.inputs.ConnectionOptionsArgs;
+     * import com.pulumi.auth0.ConnectionScimConfiguration;
+     * import com.pulumi.auth0.ConnectionScimConfigurationArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionScimConfigurationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myEnterpriseConnection = new Connection("myEnterpriseConnection", ConnectionArgs.builder()
+     *             .name("my-enterprise-connection")
+     *             .displayName("My Enterprise Connection")
+     *             .strategy("okta")
+     *             .options(ConnectionOptionsArgs.builder()
+     *                 .clientId("1234567")
+     *                 .clientSecret("1234567")
+     *                 .issuer("https://example.okta.com")
+     *                 .jwksUri("https://example.okta.com/oauth2/v1/keys")
+     *                 .tokenEndpoint("https://example.okta.com/oauth2/v1/token")
+     *                 .authorizationEndpoint("https://example.okta.com/oauth2/v1/authorize")
+     *                 .build())
+     *             .build());
+     * 
+     *         var myConnScimConfiguration = new ConnectionScimConfiguration("myConnScimConfiguration", ConnectionScimConfigurationArgs.builder()
+     *             .connectionId(myEnterpriseConnection.id())
+     *             .build());
+     * 
+     *         // A data source for an Auth0 Connection SCIM Configuration.
+     *         final var myConnScimConfigurationData = Auth0Functions.getConnectionScimConfiguration(GetConnectionScimConfigurationArgs.builder()
+     *             .connectionId(myConnScimConfiguration.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionScimConfigurationResult> getConnectionScimConfiguration(GetConnectionScimConfigurationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getConnectionScimConfiguration:getConnectionScimConfiguration", TypeShape.of(GetConnectionScimConfigurationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Connection;
+     * import com.pulumi.auth0.ConnectionArgs;
+     * import com.pulumi.auth0.inputs.ConnectionOptionsArgs;
+     * import com.pulumi.auth0.ConnectionScimConfiguration;
+     * import com.pulumi.auth0.ConnectionScimConfigurationArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionScimConfigurationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myEnterpriseConnection = new Connection("myEnterpriseConnection", ConnectionArgs.builder()
+     *             .name("my-enterprise-connection")
+     *             .displayName("My Enterprise Connection")
+     *             .strategy("okta")
+     *             .options(ConnectionOptionsArgs.builder()
+     *                 .clientId("1234567")
+     *                 .clientSecret("1234567")
+     *                 .issuer("https://example.okta.com")
+     *                 .jwksUri("https://example.okta.com/oauth2/v1/keys")
+     *                 .tokenEndpoint("https://example.okta.com/oauth2/v1/token")
+     *                 .authorizationEndpoint("https://example.okta.com/oauth2/v1/authorize")
+     *                 .build())
+     *             .build());
+     * 
+     *         var myConnScimConfiguration = new ConnectionScimConfiguration("myConnScimConfiguration", ConnectionScimConfigurationArgs.builder()
+     *             .connectionId(myEnterpriseConnection.id())
+     *             .build());
+     * 
+     *         // A data source for an Auth0 Connection SCIM Configuration.
+     *         final var myConnScimConfigurationData = Auth0Functions.getConnectionScimConfiguration(GetConnectionScimConfigurationArgs.builder()
+     *             .connectionId(myConnScimConfiguration.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConnectionScimConfigurationResult> getConnectionScimConfigurationPlain(GetConnectionScimConfigurationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getConnectionScimConfiguration:getConnectionScimConfiguration", TypeShape.of(GetConnectionScimConfigurationResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve the custom domain configuration.

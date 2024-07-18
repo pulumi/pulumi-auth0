@@ -102,6 +102,11 @@ public final class TenantFlags {
      */
     private @Nullable Boolean enablePublicSignupUserExistsError;
     /**
+     * @return Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+     * 
+     */
+    private @Nullable Boolean enableSso;
+    /**
      * @return Used to allow users to pick which factor to enroll with from the list of available MFA factors.
      * 
      */
@@ -112,9 +117,13 @@ public final class TenantFlags {
      */
     private @Nullable Boolean noDiscloseEnterpriseConnections;
     /**
-     * @return Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+     * @return This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+     * 
+     * @deprecated
+     * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
      */
+    @Deprecated /* This Flag is not supported by the Auth0 Management API and will be removed in the next major release. */
     private @Nullable Boolean requirePushedAuthorizationRequests;
     /**
      * @return Delete underlying grant when a refresh token is revoked via the Authentication API.
@@ -255,6 +264,13 @@ public final class TenantFlags {
         return Optional.ofNullable(this.enablePublicSignupUserExistsError);
     }
     /**
+     * @return Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+     * 
+     */
+    public Optional<Boolean> enableSso() {
+        return Optional.ofNullable(this.enableSso);
+    }
+    /**
      * @return Used to allow users to pick which factor to enroll with from the list of available MFA factors.
      * 
      */
@@ -269,9 +285,13 @@ public final class TenantFlags {
         return Optional.ofNullable(this.noDiscloseEnterpriseConnections);
     }
     /**
-     * @return Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant. This feature currently needs to be enabled on the tenant in order to make use of it.
+     * @return This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+     * 
+     * @deprecated
+     * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
      */
+    @Deprecated /* This Flag is not supported by the Auth0 Management API and will be removed in the next major release. */
     public Optional<Boolean> requirePushedAuthorizationRequests() {
         return Optional.ofNullable(this.requirePushedAuthorizationRequests);
     }
@@ -317,6 +337,7 @@ public final class TenantFlags {
         private @Nullable Boolean enableLegacyProfile;
         private @Nullable Boolean enablePipeline2;
         private @Nullable Boolean enablePublicSignupUserExistsError;
+        private @Nullable Boolean enableSso;
         private @Nullable Boolean mfaShowFactorListOnEnrollment;
         private @Nullable Boolean noDiscloseEnterpriseConnections;
         private @Nullable Boolean requirePushedAuthorizationRequests;
@@ -343,6 +364,7 @@ public final class TenantFlags {
     	      this.enableLegacyProfile = defaults.enableLegacyProfile;
     	      this.enablePipeline2 = defaults.enablePipeline2;
     	      this.enablePublicSignupUserExistsError = defaults.enablePublicSignupUserExistsError;
+    	      this.enableSso = defaults.enableSso;
     	      this.mfaShowFactorListOnEnrollment = defaults.mfaShowFactorListOnEnrollment;
     	      this.noDiscloseEnterpriseConnections = defaults.noDiscloseEnterpriseConnections;
     	      this.requirePushedAuthorizationRequests = defaults.requirePushedAuthorizationRequests;
@@ -459,6 +481,12 @@ public final class TenantFlags {
             return this;
         }
         @CustomType.Setter
+        public Builder enableSso(@Nullable Boolean enableSso) {
+
+            this.enableSso = enableSso;
+            return this;
+        }
+        @CustomType.Setter
         public Builder mfaShowFactorListOnEnrollment(@Nullable Boolean mfaShowFactorListOnEnrollment) {
 
             this.mfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
@@ -508,6 +536,7 @@ public final class TenantFlags {
             _resultValue.enableLegacyProfile = enableLegacyProfile;
             _resultValue.enablePipeline2 = enablePipeline2;
             _resultValue.enablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
+            _resultValue.enableSso = enableSso;
             _resultValue.mfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
             _resultValue.noDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
             _resultValue.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
