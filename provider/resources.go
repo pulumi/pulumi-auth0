@@ -121,6 +121,7 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+		EnableZeroDefaultSchemaVersion: true,
 	}
 
 	prov.MustComputeTokens(tks.SingleModule("auth0_", mainMod,
