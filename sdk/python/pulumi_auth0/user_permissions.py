@@ -96,7 +96,7 @@ class UserPermissions(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPermissionsPermissionArgs']]]]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict']]]]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -118,7 +118,7 @@ class UserPermissions(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPermissionsPermissionArgs']]]] permissions: List of API permissions granted to the user.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict']]]] permissions: List of API permissions granted to the user.
         :param pulumi.Input[str] user_id: ID of the user to associate the permission to.
         """
         ...
@@ -159,7 +159,7 @@ class UserPermissions(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPermissionsPermissionArgs']]]]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict']]]]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -186,7 +186,7 @@ class UserPermissions(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPermissionsPermissionArgs']]]]] = None,
+            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict']]]]] = None,
             user_id: Optional[pulumi.Input[str]] = None) -> 'UserPermissions':
         """
         Get an existing UserPermissions resource's state with the given name, id, and optional extra
@@ -195,7 +195,7 @@ class UserPermissions(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPermissionsPermissionArgs']]]] permissions: List of API permissions granted to the user.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict']]]] permissions: List of API permissions granted to the user.
         :param pulumi.Input[str] user_id: ID of the user to associate the permission to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

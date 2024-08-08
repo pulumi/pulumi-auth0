@@ -155,7 +155,7 @@ class ClientCredentials(pulumi.CustomResource):
                  authentication_method: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
-                 private_key_jwt: Optional[pulumi.Input[pulumi.InputType['ClientCredentialsPrivateKeyJwtArgs']]] = None,
+                 private_key_jwt: Optional[pulumi.Input[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']]] = None,
                  __props__=None):
         """
         With this resource, you can configure the method to use when making requests to any endpoint that requires this client to authenticate.
@@ -183,7 +183,7 @@ class ClientCredentials(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authentication_method: Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT).
         :param pulumi.Input[str] client_id: The ID of the client for which to configure the authentication method.
-        :param pulumi.Input[pulumi.InputType['ClientCredentialsPrivateKeyJwtArgs']] private_key_jwt: Defines `private_key_jwt` client authentication method.
+        :param pulumi.Input[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']] private_key_jwt: Defines `private_key_jwt` client authentication method.
         """
         ...
     @overload
@@ -231,7 +231,7 @@ class ClientCredentials(pulumi.CustomResource):
                  authentication_method: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
-                 private_key_jwt: Optional[pulumi.Input[pulumi.InputType['ClientCredentialsPrivateKeyJwtArgs']]] = None,
+                 private_key_jwt: Optional[pulumi.Input[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -264,7 +264,7 @@ class ClientCredentials(pulumi.CustomResource):
             authentication_method: Optional[pulumi.Input[str]] = None,
             client_id: Optional[pulumi.Input[str]] = None,
             client_secret: Optional[pulumi.Input[str]] = None,
-            private_key_jwt: Optional[pulumi.Input[pulumi.InputType['ClientCredentialsPrivateKeyJwtArgs']]] = None) -> 'ClientCredentials':
+            private_key_jwt: Optional[pulumi.Input[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']]] = None) -> 'ClientCredentials':
         """
         Get an existing ClientCredentials resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -274,7 +274,7 @@ class ClientCredentials(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authentication_method: Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT).
         :param pulumi.Input[str] client_id: The ID of the client for which to configure the authentication method.
-        :param pulumi.Input[pulumi.InputType['ClientCredentialsPrivateKeyJwtArgs']] private_key_jwt: Defines `private_key_jwt` client authentication method.
+        :param pulumi.Input[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']] private_key_jwt: Defines `private_key_jwt` client authentication method.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

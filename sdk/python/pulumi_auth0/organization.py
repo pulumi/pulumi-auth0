@@ -162,7 +162,7 @@ class Organization(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branding: Optional[pulumi.Input[pulumi.InputType['OrganizationBrandingArgs']]] = None,
+                 branding: Optional[pulumi.Input[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -185,13 +185,13 @@ class Organization(pulumi.CustomResource):
         my_organization = auth0.Organization("my_organization",
             name="auth0-inc",
             display_name="Auth0 Inc.",
-            branding=auth0.OrganizationBrandingArgs(
-                logo_url="https://example.com/assets/icons/icon.png",
-                colors={
+            branding={
+                "logo_url": "https://example.com/assets/icons/icon.png",
+                "colors": {
                     "primary": "#f2f2f2",
                     "page_background": "#e1e1e1",
                 },
-            ))
+            })
         ```
 
         ## Import
@@ -208,7 +208,7 @@ class Organization(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['OrganizationBrandingArgs']] branding: Defines how to style the login pages.
+        :param pulumi.Input[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']] branding: Defines how to style the login pages.
         :param pulumi.Input[str] display_name: Friendly name of this organization.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         :param pulumi.Input[str] name: The name of this organization.
@@ -237,13 +237,13 @@ class Organization(pulumi.CustomResource):
         my_organization = auth0.Organization("my_organization",
             name="auth0-inc",
             display_name="Auth0 Inc.",
-            branding=auth0.OrganizationBrandingArgs(
-                logo_url="https://example.com/assets/icons/icon.png",
-                colors={
+            branding={
+                "logo_url": "https://example.com/assets/icons/icon.png",
+                "colors": {
                     "primary": "#f2f2f2",
                     "page_background": "#e1e1e1",
                 },
-            ))
+            })
         ```
 
         ## Import
@@ -273,7 +273,7 @@ class Organization(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branding: Optional[pulumi.Input[pulumi.InputType['OrganizationBrandingArgs']]] = None,
+                 branding: Optional[pulumi.Input[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -300,7 +300,7 @@ class Organization(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            branding: Optional[pulumi.Input[pulumi.InputType['OrganizationBrandingArgs']]] = None,
+            branding: Optional[pulumi.Input[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'Organization':
@@ -311,7 +311,7 @@ class Organization(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['OrganizationBrandingArgs']] branding: Defines how to style the login pages.
+        :param pulumi.Input[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']] branding: Defines how to style the login pages.
         :param pulumi.Input[str] display_name: Friendly name of this organization.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         :param pulumi.Input[str] name: The name of this organization.

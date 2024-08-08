@@ -44,12 +44,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // Example:
  *         var admin = new Role("admin", RoleArgs.builder()
  *             .name("admin")
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .connectionName("Username-Password-Authentication")
  *             .username("unique_username")
  *             .name("Firstname Lastname")
- *             .email("test{@literal @}test.com")
+ *             .email("test}{@literal @}{@code test.com")
  *             .password("passpass$12$12")
  *             .build());
  * 
@@ -69,8 +69,8 @@ import javax.annotation.Nullable;
  *             .roles(admin.id())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -123,7 +123,7 @@ public class UserRoles extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public UserRoles(String name) {
+    public UserRoles(java.lang.String name) {
         this(name, UserRolesArgs.Empty);
     }
     /**
@@ -131,7 +131,7 @@ public class UserRoles extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public UserRoles(String name, UserRolesArgs args) {
+    public UserRoles(java.lang.String name, UserRolesArgs args) {
         this(name, args, null);
     }
     /**
@@ -140,15 +140,22 @@ public class UserRoles extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public UserRoles(String name, UserRolesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/userRoles:UserRoles", name, args == null ? UserRolesArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public UserRoles(java.lang.String name, UserRolesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/userRoles:UserRoles", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private UserRoles(String name, Output<String> id, @Nullable UserRolesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/userRoles:UserRoles", name, state, makeResourceOptions(options, id));
+    private UserRoles(java.lang.String name, Output<java.lang.String> id, @Nullable UserRolesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/userRoles:UserRoles", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static UserRolesArgs makeArgs(UserRolesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? UserRolesArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -164,7 +171,7 @@ public class UserRoles extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static UserRoles get(String name, Output<String> id, @Nullable UserRolesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static UserRoles get(java.lang.String name, Output<java.lang.String> id, @Nullable UserRolesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new UserRoles(name, id, state, options);
     }
 }

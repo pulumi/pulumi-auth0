@@ -143,7 +143,7 @@ public class PromptCustomText extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PromptCustomText(String name) {
+    public PromptCustomText(java.lang.String name) {
         this(name, PromptCustomTextArgs.Empty);
     }
     /**
@@ -151,7 +151,7 @@ public class PromptCustomText extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PromptCustomText(String name, PromptCustomTextArgs args) {
+    public PromptCustomText(java.lang.String name, PromptCustomTextArgs args) {
         this(name, args, null);
     }
     /**
@@ -160,15 +160,22 @@ public class PromptCustomText extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PromptCustomText(String name, PromptCustomTextArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/promptCustomText:PromptCustomText", name, args == null ? PromptCustomTextArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PromptCustomText(java.lang.String name, PromptCustomTextArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/promptCustomText:PromptCustomText", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PromptCustomText(String name, Output<String> id, @Nullable PromptCustomTextState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/promptCustomText:PromptCustomText", name, state, makeResourceOptions(options, id));
+    private PromptCustomText(java.lang.String name, Output<java.lang.String> id, @Nullable PromptCustomTextState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/promptCustomText:PromptCustomText", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PromptCustomTextArgs makeArgs(PromptCustomTextArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PromptCustomTextArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -184,7 +191,7 @@ public class PromptCustomText extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PromptCustomText get(String name, Output<String> id, @Nullable PromptCustomTextState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PromptCustomText get(java.lang.String name, Output<java.lang.String> id, @Nullable PromptCustomTextState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PromptCustomText(name, id, state, options);
     }
 }

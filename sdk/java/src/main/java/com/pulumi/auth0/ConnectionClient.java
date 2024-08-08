@@ -152,7 +152,7 @@ public class ConnectionClient extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConnectionClient(String name) {
+    public ConnectionClient(java.lang.String name) {
         this(name, ConnectionClientArgs.Empty);
     }
     /**
@@ -160,7 +160,7 @@ public class ConnectionClient extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConnectionClient(String name, ConnectionClientArgs args) {
+    public ConnectionClient(java.lang.String name, ConnectionClientArgs args) {
         this(name, args, null);
     }
     /**
@@ -169,15 +169,22 @@ public class ConnectionClient extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConnectionClient(String name, ConnectionClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/connectionClient:ConnectionClient", name, args == null ? ConnectionClientArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ConnectionClient(java.lang.String name, ConnectionClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/connectionClient:ConnectionClient", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConnectionClient(String name, Output<String> id, @Nullable ConnectionClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/connectionClient:ConnectionClient", name, state, makeResourceOptions(options, id));
+    private ConnectionClient(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectionClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/connectionClient:ConnectionClient", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ConnectionClientArgs makeArgs(ConnectionClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConnectionClientArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -193,7 +200,7 @@ public class ConnectionClient extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConnectionClient get(String name, Output<String> id, @Nullable ConnectionClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConnectionClient get(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectionClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConnectionClient(name, id, state, options);
     }
 }

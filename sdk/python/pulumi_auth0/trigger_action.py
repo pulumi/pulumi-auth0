@@ -152,10 +152,10 @@ class TriggerAction(pulumi.CustomResource):
         };"
         \"\"\",
             deploy=True,
-            supported_triggers=auth0.ActionSupportedTriggersArgs(
-                id="post-login",
-                version="v3",
-            ))
+            supported_triggers={
+                "id": "post-login",
+                "version": "v3",
+            })
         post_login_alert_action = auth0.TriggerAction("post_login_alert_action",
             trigger="post-login",
             action_id=login_alert.id)
@@ -211,10 +211,10 @@ class TriggerAction(pulumi.CustomResource):
         };"
         \"\"\",
             deploy=True,
-            supported_triggers=auth0.ActionSupportedTriggersArgs(
-                id="post-login",
-                version="v3",
-            ))
+            supported_triggers={
+                "id": "post-login",
+                "version": "v3",
+            })
         post_login_alert_action = auth0.TriggerAction("post_login_alert_action",
             trigger="post-login",
             action_id=login_alert.id)
