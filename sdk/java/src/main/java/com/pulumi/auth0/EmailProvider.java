@@ -116,7 +116,7 @@ public class EmailProvider extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EmailProvider(String name) {
+    public EmailProvider(java.lang.String name) {
         this(name, EmailProviderArgs.Empty);
     }
     /**
@@ -124,7 +124,7 @@ public class EmailProvider extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EmailProvider(String name, EmailProviderArgs args) {
+    public EmailProvider(java.lang.String name, EmailProviderArgs args) {
         this(name, args, null);
     }
     /**
@@ -133,15 +133,22 @@ public class EmailProvider extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EmailProvider(String name, EmailProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/emailProvider:EmailProvider", name, args == null ? EmailProviderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EmailProvider(java.lang.String name, EmailProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/emailProvider:EmailProvider", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EmailProvider(String name, Output<String> id, @Nullable EmailProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/emailProvider:EmailProvider", name, state, makeResourceOptions(options, id));
+    private EmailProvider(java.lang.String name, Output<java.lang.String> id, @Nullable EmailProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/emailProvider:EmailProvider", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EmailProviderArgs makeArgs(EmailProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EmailProviderArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -157,7 +164,7 @@ public class EmailProvider extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EmailProvider get(String name, Output<String> id, @Nullable EmailProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EmailProvider get(java.lang.String name, Output<java.lang.String> id, @Nullable EmailProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EmailProvider(name, id, state, options);
     }
 }

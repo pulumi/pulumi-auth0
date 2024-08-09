@@ -293,7 +293,7 @@ class Connection(pulumi.CustomResource):
                  is_domain_connection: Optional[pulumi.Input[bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']]] = None,
+                 options: Optional[pulumi.Input[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']]] = None,
                  realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  show_as_button: Optional[pulumi.Input[bool]] = None,
                  strategy: Optional[pulumi.Input[str]] = None,
@@ -322,57 +322,57 @@ class Connection(pulumi.CustomResource):
                 "key1": "foo",
                 "key2": "bar",
             },
-            options=auth0.ConnectionOptionsArgs(
-                password_policy="excellent",
-                brute_force_protection=True,
-                enabled_database_customization=True,
-                import_mode=False,
-                requires_username=True,
-                disable_signup=False,
-                custom_scripts={
+            options={
+                "password_policy": "excellent",
+                "brute_force_protection": True,
+                "enabled_database_customization": True,
+                "import_mode": False,
+                "requires_username": True,
+                "disable_signup": False,
+                "custom_scripts": {
                     "get_user": \"\"\"        function getByEmail(email, callback) {
                   return callback(new Error("Whoops!"));
                 }
         \"\"\",
                 },
-                configuration={
+                "configuration": {
                     "foo": "bar",
                     "bar": "baz",
                 },
-                upstream_params=json.dumps({
+                "upstream_params": json.dumps({
                     "screen_name": {
                         "alias": "login_hint",
                     },
                 }),
-                password_histories=[auth0.ConnectionOptionsPasswordHistoryArgs(
-                    enable=True,
-                    size=3,
-                )],
-                password_no_personal_info=auth0.ConnectionOptionsPasswordNoPersonalInfoArgs(
-                    enable=True,
-                ),
-                password_dictionary=auth0.ConnectionOptionsPasswordDictionaryArgs(
-                    enable=True,
-                    dictionaries=[
+                "password_histories": [{
+                    "enable": True,
+                    "size": 3,
+                }],
+                "password_no_personal_info": {
+                    "enable": True,
+                },
+                "password_dictionary": {
+                    "enable": True,
+                    "dictionaries": [
                         "password",
                         "admin",
                         "1234",
                     ],
-                ),
-                password_complexity_options=auth0.ConnectionOptionsPasswordComplexityOptionsArgs(
-                    min_length=12,
-                ),
-                validation=auth0.ConnectionOptionsValidationArgs(
-                    username=auth0.ConnectionOptionsValidationUsernameArgs(
-                        min=10,
-                        max=40,
-                    ),
-                ),
-                mfa=auth0.ConnectionOptionsMfaArgs(
-                    active=True,
-                    return_enroll_settings=True,
-                ),
-            ))
+                },
+                "password_complexity_options": {
+                    "min_length": 12,
+                },
+                "validation": {
+                    "username": {
+                        "min": 10,
+                        "max": 40,
+                    },
+                },
+                "mfa": {
+                    "active": True,
+                    "return_enroll_settings": True,
+                },
+            })
         ```
 
         ### Google OAuth2 Connection
@@ -387,25 +387,25 @@ class Connection(pulumi.CustomResource):
         google_oauth2 = auth0.Connection("google_oauth2",
             name="Google-OAuth2-Connection",
             strategy="google-oauth2",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                allowed_audiences=[
+            options={
+                "client_id": "<client-id>",
+                "client_secret": "<client-secret>",
+                "allowed_audiences": [
                     "example.com",
                     "api.example.com",
                 ],
-                scopes=[
+                "scopes": [
                     "email",
                     "profile",
                     "gmail",
                     "youtube",
                 ],
-                set_user_root_attributes="on_each_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_each_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### Google Apps
@@ -420,32 +420,32 @@ class Connection(pulumi.CustomResource):
             is_domain_connection=False,
             strategy="google-apps",
             show_as_button=False,
-            options=auth0.ConnectionOptionsArgs(
-                client_id="",
-                client_secret="",
-                domain="example.com",
-                tenant_domain="example.com",
-                domain_aliases=[
+            options={
+                "client_id": "",
+                "client_secret": "",
+                "domain": "example.com",
+                "tenant_domain": "example.com",
+                "domain_aliases": [
                     "example.com",
                     "api.example.com",
                 ],
-                api_enable_users=True,
-                scopes=[
+                "api_enable_users": True,
+                "scopes": [
                     "ext_profile",
                     "ext_groups",
                 ],
-                icon_url="https://example.com/assets/logo.png",
-                upstream_params=json.dumps({
+                "icon_url": "https://example.com/assets/logo.png",
+                "upstream_params": json.dumps({
                     "screen_name": {
                         "alias": "login_hint",
                     },
                 }),
-                set_user_root_attributes="on_each_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_each_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### Facebook Connection
@@ -458,21 +458,21 @@ class Connection(pulumi.CustomResource):
         facebook = auth0.Connection("facebook",
             name="Facebook-Connection",
             strategy="facebook",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                scopes=[
+            options={
+                "client_id": "<client-id>",
+                "client_secret": "<client-secret>",
+                "scopes": [
                     "public_profile",
                     "email",
                     "groups_access_member_info",
                     "user_birthday",
                 ],
-                set_user_root_attributes="on_each_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_each_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### Apple Connection
@@ -485,23 +485,23 @@ class Connection(pulumi.CustomResource):
         apple = auth0.Connection("apple",
             name="Apple-Connection",
             strategy="apple",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret=\"\"\"-----BEGIN PRIVATE KEY-----
+            options={
+                "client_id": "<client-id>",
+                "client_secret": \"\"\"-----BEGIN PRIVATE KEY-----
         MIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA
         -----END PRIVATE KEY-----\"\"\",
-                team_id="<team-id>",
-                key_id="<key-id>",
-                scopes=[
+                "team_id": "<team-id>",
+                "key_id": "<key-id>",
+                "scopes": [
                     "email",
                     "name",
                 ],
-                set_user_root_attributes="on_first_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_first_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### LinkedIn Connection
@@ -514,21 +514,21 @@ class Connection(pulumi.CustomResource):
         linkedin = auth0.Connection("linkedin",
             name="Linkedin-Connection",
             strategy="linkedin",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                strategy_version=2,
-                scopes=[
+            options={
+                "client_id": "<client-id>",
+                "client_secret": "<client-secret>",
+                "strategy_version": 2,
+                "scopes": [
                     "basic_profile",
                     "profile",
                     "email",
                 ],
-                set_user_root_attributes="on_each_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_each_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### GitHub Connection
@@ -541,21 +541,21 @@ class Connection(pulumi.CustomResource):
         github = auth0.Connection("github",
             name="GitHub-Connection",
             strategy="github",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                scopes=[
+            options={
+                "client_id": "<client-id>",
+                "client_secret": "<client-secret>",
+                "scopes": [
                     "email",
                     "profile",
                     "public_repo",
                     "repo",
                 ],
-                set_user_root_attributes="on_each_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_each_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### SalesForce Connection
@@ -568,20 +568,20 @@ class Connection(pulumi.CustomResource):
         salesforce = auth0.Connection("salesforce",
             name="Salesforce-Connection",
             strategy="salesforce",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                community_base_url="https://salesforce.example.com",
-                scopes=[
+            options={
+                "client_id": "<client-id>",
+                "client_secret": "<client-secret>",
+                "community_base_url": "https://salesforce.example.com",
+                "scopes": [
                     "openid",
                     "email",
                 ],
-                set_user_root_attributes="on_first_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_first_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### OAuth2 Connection
@@ -596,30 +596,30 @@ class Connection(pulumi.CustomResource):
         oauth2 = auth0.Connection("oauth2",
             name="OAuth2-Connection",
             strategy="oauth2",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                scopes=[
+            options={
+                "client_id": "<client-id>",
+                "client_secret": "<client-secret>",
+                "scopes": [
                     "basic_profile",
                     "profile",
                     "email",
                 ],
-                token_endpoint="https://auth.example.com/oauth2/token",
-                authorization_endpoint="https://auth.example.com/oauth2/authorize",
-                pkce_enabled=True,
-                icon_url="https://auth.example.com/assets/logo.png",
-                scripts={
-                    "fetchUserProfile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
+                "token_endpoint": "https://auth.example.com/oauth2/token",
+                "authorization_endpoint": "https://auth.example.com/oauth2/authorize",
+                "pkce_enabled": True,
+                "icon_url": "https://auth.example.com/assets/logo.png",
+                "scripts": {
+                    "fetch_user_profile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
                   return callback(new Error("Whoops!"));
                 }
         \"\"\",
                 },
-                set_user_root_attributes="on_each_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_each_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### Active Directory (AD)
@@ -634,33 +634,33 @@ class Connection(pulumi.CustomResource):
             display_name="Active Directory Connection",
             strategy="ad",
             show_as_button=True,
-            options=auth0.ConnectionOptionsArgs(
-                disable_self_service_change_password=True,
-                brute_force_protection=True,
-                tenant_domain="example.com",
-                icon_url="https://example.com/assets/logo.png",
-                domain_aliases=[
+            options={
+                "disable_self_service_change_password": True,
+                "brute_force_protection": True,
+                "tenant_domain": "example.com",
+                "icon_url": "https://example.com/assets/logo.png",
+                "domain_aliases": [
                     "example.com",
                     "api.example.com",
                 ],
-                ips=[
+                "ips": [
                     "192.168.1.1",
                     "192.168.1.2",
                 ],
-                set_user_root_attributes="on_each_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_each_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-                upstream_params=json.dumps({
+                "upstream_params": json.dumps({
                     "screen_name": {
                         "alias": "login_hint",
                     },
                 }),
-                use_cert_auth=False,
-                use_kerberos=False,
-                disable_cache=False,
-            ))
+                "use_cert_auth": False,
+                "use_kerberos": False,
+                "disable_cache": False,
+            })
         ```
 
         ### Azure AD Connection
@@ -674,40 +674,40 @@ class Connection(pulumi.CustomResource):
             name="connection-azure-ad",
             strategy="waad",
             show_as_button=True,
-            options=auth0.ConnectionOptionsArgs(
-                identity_api="azure-active-directory-v1.0",
-                client_id="123456",
-                client_secret="123456",
-                app_id="app-id-123",
-                tenant_domain="example.onmicrosoft.com",
-                domain="example.onmicrosoft.com",
-                domain_aliases=[
+            options={
+                "identity_api": "azure-active-directory-v1.0",
+                "client_id": "123456",
+                "client_secret": "123456",
+                "app_id": "app-id-123",
+                "tenant_domain": "example.onmicrosoft.com",
+                "domain": "example.onmicrosoft.com",
+                "domain_aliases": [
                     "example.com",
                     "api.example.com",
                 ],
-                icon_url="https://example.onmicrosoft.com/assets/logo.png",
-                use_wsfed=False,
-                waad_protocol="openid-connect",
-                waad_common_endpoint=False,
-                max_groups_to_retrieve="250",
-                api_enable_users=True,
-                scopes=[
+                "icon_url": "https://example.onmicrosoft.com/assets/logo.png",
+                "use_wsfed": False,
+                "waad_protocol": "openid-connect",
+                "waad_common_endpoint": False,
+                "max_groups_to_retrieve": "250",
+                "api_enable_users": True,
+                "scopes": [
                     "basic_profile",
                     "ext_groups",
                     "ext_profile",
                 ],
-                set_user_root_attributes="on_each_login",
-                should_trust_email_verified_connection="never_set_emails_as_verified",
-                upstream_params=json.dumps({
+                "set_user_root_attributes": "on_each_login",
+                "should_trust_email_verified_connection": "never_set_emails_as_verified",
+                "upstream_params": json.dumps({
                     "screen_name": {
                         "alias": "login_hint",
                     },
                 }),
-                non_persistent_attrs=[
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### Email Connection
@@ -722,25 +722,25 @@ class Connection(pulumi.CustomResource):
         passwordless_email = auth0.Connection("passwordless_email",
             strategy="email",
             name="email",
-            options=auth0.ConnectionOptionsArgs(
-                name="email",
-                from_="{{ application.name }} <root@auth0.com>",
-                subject="Welcome to {{ application.name }}",
-                syntax="liquid",
-                template="<html>This is the body of the email</html>",
-                disable_signup=False,
-                brute_force_protection=True,
-                set_user_root_attributes="on_each_login",
-                non_persistent_attrs=[],
-                auth_params={
+            options={
+                "name": "email",
+                "from_": "{{ application.name }} <root@auth0.com>",
+                "subject": "Welcome to {{ application.name }}",
+                "syntax": "liquid",
+                "template": "<html>This is the body of the email</html>",
+                "disable_signup": False,
+                "brute_force_protection": True,
+                "set_user_root_attributes": "on_each_login",
+                "non_persistent_attrs": [],
+                "auth_params": {
                     "scope": "openid email profile offline_access",
                     "response_type": "code",
                 },
-                totp=auth0.ConnectionOptionsTotpArgs(
-                    time_step=300,
-                    length=6,
-                ),
-            ))
+                "totp": {
+                    "time_step": 300,
+                    "length": 6,
+                },
+            })
         ```
 
         ### SAML Connection
@@ -754,31 +754,31 @@ class Connection(pulumi.CustomResource):
         samlp = auth0.Connection("samlp",
             name="SAML-Connection",
             strategy="samlp",
-            options=auth0.ConnectionOptionsArgs(
-                debug=False,
-                signing_cert="<signing-certificate>",
-                sign_in_endpoint="https://saml.provider/sign_in",
-                sign_out_endpoint="https://saml.provider/sign_out",
-                disable_sign_out=True,
-                tenant_domain="example.com",
-                domain_aliases=[
+            options={
+                "debug": False,
+                "signing_cert": "<signing-certificate>",
+                "sign_in_endpoint": "https://saml.provider/sign_in",
+                "sign_out_endpoint": "https://saml.provider/sign_out",
+                "disable_sign_out": True,
+                "tenant_domain": "example.com",
+                "domain_aliases": [
                     "example.com",
                     "alias.example.com",
                 ],
-                protocol_binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST",
-                request_template=\"\"\"<samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+                "protocol_binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST",
+                "request_template": \"\"\"<samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
         @@AssertServiceURLAndDestination@@
             ID="@@ID@@"
             IssueInstant="@@IssueInstant@@"
             ProtocolBinding="@@ProtocolBinding@@" Version="2.0">
             <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">@@Issuer@@</saml:Issuer>
         </samlp:AuthnRequest>\"\"\",
-                user_id_attribute="https://saml.provider/imi/ns/identity-200810",
-                signature_algorithm="rsa-sha256",
-                digest_algorithm="sha256",
-                icon_url="https://saml.provider/assets/logo.png",
-                entity_id="<entity_id>",
-                metadata_xml=\"\"\"    <?xml version="1.0"?>
+                "user_id_attribute": "https://saml.provider/imi/ns/identity-200810",
+                "signature_algorithm": "rsa-sha256",
+                "digest_algorithm": "sha256",
+                "icon_url": "https://saml.provider/assets/logo.png",
+                "entity_id": "<entity_id>",
+                "metadata_xml": \"\"\"    <?xml version="1.0"?>
             <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="https://example.com">
               <md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
                 <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.provider/sign_out"/>
@@ -786,8 +786,8 @@ class Connection(pulumi.CustomResource):
               </md:IDPSSODescriptor>
             </md:EntityDescriptor>
         \"\"\",
-                metadata_url="https://saml.provider/imi/ns/FederationMetadata.xml",
-                fields_map=json.dumps({
+                "metadata_url": "https://saml.provider/imi/ns/FederationMetadata.xml",
+                "fields_map": json.dumps({
                     "name": [
                         "name",
                         "nameidentifier",
@@ -798,28 +798,28 @@ class Connection(pulumi.CustomResource):
                     ],
                     "family_name": "surname",
                 }),
-                signing_key=auth0.ConnectionOptionsSigningKeyArgs(
-                    key=\"\"\"-----BEGIN PRIVATE KEY-----
+                "signing_key": {
+                    "key": \"\"\"-----BEGIN PRIVATE KEY-----
         ...{your private key here}...
         -----END PRIVATE KEY-----\"\"\",
-                    cert=\"\"\"-----BEGIN CERTIFICATE-----
+                    "cert": \"\"\"-----BEGIN CERTIFICATE-----
         ...{your public key cert here}...
         -----END CERTIFICATE-----\"\"\",
-                ),
-                decryption_key=auth0.ConnectionOptionsDecryptionKeyArgs(
-                    key=\"\"\"-----BEGIN PRIVATE KEY-----
+                },
+                "decryption_key": {
+                    "key": \"\"\"-----BEGIN PRIVATE KEY-----
         ...{your private key here}...
         -----END PRIVATE KEY-----\"\"\",
-                    cert=\"\"\"-----BEGIN CERTIFICATE-----
+                    "cert": \"\"\"-----BEGIN CERTIFICATE-----
         ...{your public key cert here}...
         -----END CERTIFICATE-----\"\"\",
-                ),
-                idp_initiated=auth0.ConnectionOptionsIdpInitiatedArgs(
-                    client_id="client_id",
-                    client_protocol="samlp",
-                    client_authorize_query="type=code&timeout=30",
-                ),
-            ))
+                },
+                "idp_initiated": {
+                    "client_id": "client_id",
+                    "client_protocol": "samlp",
+                    "client_authorize_query": "type=code&timeout=30",
+                },
+            })
         ```
 
         ### WindowsLive Connection
@@ -832,20 +832,20 @@ class Connection(pulumi.CustomResource):
         windowslive = auth0.Connection("windowslive",
             name="Windowslive-Connection",
             strategy="windowslive",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                strategy_version=2,
-                scopes=[
+            options={
+                "client_id": "<client-id>",
+                "client_secret": "<client-secret>",
+                "strategy_version": 2,
+                "scopes": [
                     "signin",
                     "graph_user",
                 ],
-                set_user_root_attributes="on_first_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_first_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### OIDC Connection
@@ -861,35 +861,35 @@ class Connection(pulumi.CustomResource):
             display_name="OIDC Connection",
             strategy="oidc",
             show_as_button=False,
-            options=auth0.ConnectionOptionsArgs(
-                client_id="1234567",
-                client_secret="1234567",
-                domain_aliases=["example.com"],
-                tenant_domain="",
-                icon_url="https://example.com/assets/logo.png",
-                type="back_channel",
-                issuer="https://www.paypalobjects.com",
-                jwks_uri="https://api.paypal.com/v1/oauth2/certs",
-                discovery_url="https://www.paypalobjects.com/.well-known/openid-configuration",
-                token_endpoint="https://api.paypal.com/v1/oauth2/token",
-                userinfo_endpoint="https://api.paypal.com/v1/oauth2/token/userinfo",
-                authorization_endpoint="https://www.paypal.com/signin/authorize",
-                scopes=[
+            options={
+                "client_id": "1234567",
+                "client_secret": "1234567",
+                "domain_aliases": ["example.com"],
+                "tenant_domain": "",
+                "icon_url": "https://example.com/assets/logo.png",
+                "type": "back_channel",
+                "issuer": "https://www.paypalobjects.com",
+                "jwks_uri": "https://api.paypal.com/v1/oauth2/certs",
+                "discovery_url": "https://www.paypalobjects.com/.well-known/openid-configuration",
+                "token_endpoint": "https://api.paypal.com/v1/oauth2/token",
+                "userinfo_endpoint": "https://api.paypal.com/v1/oauth2/token/userinfo",
+                "authorization_endpoint": "https://www.paypal.com/signin/authorize",
+                "scopes": [
                     "openid",
                     "email",
                 ],
-                set_user_root_attributes="on_first_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_first_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-                connection_settings=auth0.ConnectionOptionsConnectionSettingsArgs(
-                    pkce="auto",
-                ),
-                attribute_map=auth0.ConnectionOptionsAttributeMapArgs(
-                    mapping_mode="use_map",
-                    userinfo_scope="openid email profile groups",
-                    attributes=json.dumps({
+                "connection_settings": {
+                    "pkce": "auto",
+                },
+                "attribute_map": {
+                    "mapping_mode": "use_map",
+                    "userinfo_scope": "openid email profile groups",
+                    "attributes": json.dumps({
                         "name": "${context.tokenset.name}",
                         "email": "${context.tokenset.email}",
                         "email_verified": "${context.tokenset.email_verified}",
@@ -898,8 +898,8 @@ class Connection(pulumi.CustomResource):
                         "given_name": "${context.tokenset.given_name}",
                         "family_name": "${context.tokenset.family_name}",
                     }),
-                ),
-            ))
+                },
+            })
         ```
 
         ### Okta Connection
@@ -915,37 +915,37 @@ class Connection(pulumi.CustomResource):
             display_name="Okta Workforce Connection",
             strategy="okta",
             show_as_button=False,
-            options=auth0.ConnectionOptionsArgs(
-                client_id="1234567",
-                client_secret="1234567",
-                domain="example.okta.com",
-                domain_aliases=["example.com"],
-                issuer="https://example.okta.com",
-                jwks_uri="https://example.okta.com/oauth2/v1/keys",
-                token_endpoint="https://example.okta.com/oauth2/v1/token",
-                userinfo_endpoint="https://example.okta.com/oauth2/v1/userinfo",
-                authorization_endpoint="https://example.okta.com/oauth2/v1/authorize",
-                scopes=[
+            options={
+                "client_id": "1234567",
+                "client_secret": "1234567",
+                "domain": "example.okta.com",
+                "domain_aliases": ["example.com"],
+                "issuer": "https://example.okta.com",
+                "jwks_uri": "https://example.okta.com/oauth2/v1/keys",
+                "token_endpoint": "https://example.okta.com/oauth2/v1/token",
+                "userinfo_endpoint": "https://example.okta.com/oauth2/v1/userinfo",
+                "authorization_endpoint": "https://example.okta.com/oauth2/v1/authorize",
+                "scopes": [
                     "openid",
                     "email",
                 ],
-                set_user_root_attributes="on_first_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_first_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-                upstream_params=json.dumps({
+                "upstream_params": json.dumps({
                     "screen_name": {
                         "alias": "login_hint",
                     },
                 }),
-                connection_settings=auth0.ConnectionOptionsConnectionSettingsArgs(
-                    pkce="auto",
-                ),
-                attribute_map=auth0.ConnectionOptionsAttributeMapArgs(
-                    mapping_mode="basic_profile",
-                    userinfo_scope="openid email profile groups",
-                    attributes=json.dumps({
+                "connection_settings": {
+                    "pkce": "auto",
+                },
+                "attribute_map": {
+                    "mapping_mode": "basic_profile",
+                    "userinfo_scope": "openid email profile groups",
+                    "attributes": json.dumps({
                         "name": "${context.tokenset.name}",
                         "email": "${context.tokenset.email}",
                         "email_verified": "${context.tokenset.email_verified}",
@@ -954,8 +954,8 @@ class Connection(pulumi.CustomResource):
                         "given_name": "${context.tokenset.given_name}",
                         "family_name": "${context.tokenset.family_name}",
                     }),
-                ),
-            ))
+                },
+            })
         ```
 
         ## Import
@@ -976,7 +976,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         :param pulumi.Input[str] name: Name of the connection.
-        :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options.
+        :param pulumi.Input[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
         :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider.
@@ -1011,57 +1011,57 @@ class Connection(pulumi.CustomResource):
                 "key1": "foo",
                 "key2": "bar",
             },
-            options=auth0.ConnectionOptionsArgs(
-                password_policy="excellent",
-                brute_force_protection=True,
-                enabled_database_customization=True,
-                import_mode=False,
-                requires_username=True,
-                disable_signup=False,
-                custom_scripts={
+            options={
+                "password_policy": "excellent",
+                "brute_force_protection": True,
+                "enabled_database_customization": True,
+                "import_mode": False,
+                "requires_username": True,
+                "disable_signup": False,
+                "custom_scripts": {
                     "get_user": \"\"\"        function getByEmail(email, callback) {
                   return callback(new Error("Whoops!"));
                 }
         \"\"\",
                 },
-                configuration={
+                "configuration": {
                     "foo": "bar",
                     "bar": "baz",
                 },
-                upstream_params=json.dumps({
+                "upstream_params": json.dumps({
                     "screen_name": {
                         "alias": "login_hint",
                     },
                 }),
-                password_histories=[auth0.ConnectionOptionsPasswordHistoryArgs(
-                    enable=True,
-                    size=3,
-                )],
-                password_no_personal_info=auth0.ConnectionOptionsPasswordNoPersonalInfoArgs(
-                    enable=True,
-                ),
-                password_dictionary=auth0.ConnectionOptionsPasswordDictionaryArgs(
-                    enable=True,
-                    dictionaries=[
+                "password_histories": [{
+                    "enable": True,
+                    "size": 3,
+                }],
+                "password_no_personal_info": {
+                    "enable": True,
+                },
+                "password_dictionary": {
+                    "enable": True,
+                    "dictionaries": [
                         "password",
                         "admin",
                         "1234",
                     ],
-                ),
-                password_complexity_options=auth0.ConnectionOptionsPasswordComplexityOptionsArgs(
-                    min_length=12,
-                ),
-                validation=auth0.ConnectionOptionsValidationArgs(
-                    username=auth0.ConnectionOptionsValidationUsernameArgs(
-                        min=10,
-                        max=40,
-                    ),
-                ),
-                mfa=auth0.ConnectionOptionsMfaArgs(
-                    active=True,
-                    return_enroll_settings=True,
-                ),
-            ))
+                },
+                "password_complexity_options": {
+                    "min_length": 12,
+                },
+                "validation": {
+                    "username": {
+                        "min": 10,
+                        "max": 40,
+                    },
+                },
+                "mfa": {
+                    "active": True,
+                    "return_enroll_settings": True,
+                },
+            })
         ```
 
         ### Google OAuth2 Connection
@@ -1076,25 +1076,25 @@ class Connection(pulumi.CustomResource):
         google_oauth2 = auth0.Connection("google_oauth2",
             name="Google-OAuth2-Connection",
             strategy="google-oauth2",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                allowed_audiences=[
+            options={
+                "client_id": "<client-id>",
+                "client_secret": "<client-secret>",
+                "allowed_audiences": [
                     "example.com",
                     "api.example.com",
                 ],
-                scopes=[
+                "scopes": [
                     "email",
                     "profile",
                     "gmail",
                     "youtube",
                 ],
-                set_user_root_attributes="on_each_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_each_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### Google Apps
@@ -1109,32 +1109,32 @@ class Connection(pulumi.CustomResource):
             is_domain_connection=False,
             strategy="google-apps",
             show_as_button=False,
-            options=auth0.ConnectionOptionsArgs(
-                client_id="",
-                client_secret="",
-                domain="example.com",
-                tenant_domain="example.com",
-                domain_aliases=[
+            options={
+                "client_id": "",
+                "client_secret": "",
+                "domain": "example.com",
+                "tenant_domain": "example.com",
+                "domain_aliases": [
                     "example.com",
                     "api.example.com",
                 ],
-                api_enable_users=True,
-                scopes=[
+                "api_enable_users": True,
+                "scopes": [
                     "ext_profile",
                     "ext_groups",
                 ],
-                icon_url="https://example.com/assets/logo.png",
-                upstream_params=json.dumps({
+                "icon_url": "https://example.com/assets/logo.png",
+                "upstream_params": json.dumps({
                     "screen_name": {
                         "alias": "login_hint",
                     },
                 }),
-                set_user_root_attributes="on_each_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_each_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### Facebook Connection
@@ -1147,21 +1147,21 @@ class Connection(pulumi.CustomResource):
         facebook = auth0.Connection("facebook",
             name="Facebook-Connection",
             strategy="facebook",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                scopes=[
+            options={
+                "client_id": "<client-id>",
+                "client_secret": "<client-secret>",
+                "scopes": [
                     "public_profile",
                     "email",
                     "groups_access_member_info",
                     "user_birthday",
                 ],
-                set_user_root_attributes="on_each_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_each_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### Apple Connection
@@ -1174,23 +1174,23 @@ class Connection(pulumi.CustomResource):
         apple = auth0.Connection("apple",
             name="Apple-Connection",
             strategy="apple",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret=\"\"\"-----BEGIN PRIVATE KEY-----
+            options={
+                "client_id": "<client-id>",
+                "client_secret": \"\"\"-----BEGIN PRIVATE KEY-----
         MIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA
         -----END PRIVATE KEY-----\"\"\",
-                team_id="<team-id>",
-                key_id="<key-id>",
-                scopes=[
+                "team_id": "<team-id>",
+                "key_id": "<key-id>",
+                "scopes": [
                     "email",
                     "name",
                 ],
-                set_user_root_attributes="on_first_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_first_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### LinkedIn Connection
@@ -1203,21 +1203,21 @@ class Connection(pulumi.CustomResource):
         linkedin = auth0.Connection("linkedin",
             name="Linkedin-Connection",
             strategy="linkedin",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                strategy_version=2,
-                scopes=[
+            options={
+                "client_id": "<client-id>",
+                "client_secret": "<client-secret>",
+                "strategy_version": 2,
+                "scopes": [
                     "basic_profile",
                     "profile",
                     "email",
                 ],
-                set_user_root_attributes="on_each_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_each_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### GitHub Connection
@@ -1230,21 +1230,21 @@ class Connection(pulumi.CustomResource):
         github = auth0.Connection("github",
             name="GitHub-Connection",
             strategy="github",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                scopes=[
+            options={
+                "client_id": "<client-id>",
+                "client_secret": "<client-secret>",
+                "scopes": [
                     "email",
                     "profile",
                     "public_repo",
                     "repo",
                 ],
-                set_user_root_attributes="on_each_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_each_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### SalesForce Connection
@@ -1257,20 +1257,20 @@ class Connection(pulumi.CustomResource):
         salesforce = auth0.Connection("salesforce",
             name="Salesforce-Connection",
             strategy="salesforce",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                community_base_url="https://salesforce.example.com",
-                scopes=[
+            options={
+                "client_id": "<client-id>",
+                "client_secret": "<client-secret>",
+                "community_base_url": "https://salesforce.example.com",
+                "scopes": [
                     "openid",
                     "email",
                 ],
-                set_user_root_attributes="on_first_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_first_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### OAuth2 Connection
@@ -1285,30 +1285,30 @@ class Connection(pulumi.CustomResource):
         oauth2 = auth0.Connection("oauth2",
             name="OAuth2-Connection",
             strategy="oauth2",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                scopes=[
+            options={
+                "client_id": "<client-id>",
+                "client_secret": "<client-secret>",
+                "scopes": [
                     "basic_profile",
                     "profile",
                     "email",
                 ],
-                token_endpoint="https://auth.example.com/oauth2/token",
-                authorization_endpoint="https://auth.example.com/oauth2/authorize",
-                pkce_enabled=True,
-                icon_url="https://auth.example.com/assets/logo.png",
-                scripts={
-                    "fetchUserProfile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
+                "token_endpoint": "https://auth.example.com/oauth2/token",
+                "authorization_endpoint": "https://auth.example.com/oauth2/authorize",
+                "pkce_enabled": True,
+                "icon_url": "https://auth.example.com/assets/logo.png",
+                "scripts": {
+                    "fetch_user_profile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
                   return callback(new Error("Whoops!"));
                 }
         \"\"\",
                 },
-                set_user_root_attributes="on_each_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_each_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### Active Directory (AD)
@@ -1323,33 +1323,33 @@ class Connection(pulumi.CustomResource):
             display_name="Active Directory Connection",
             strategy="ad",
             show_as_button=True,
-            options=auth0.ConnectionOptionsArgs(
-                disable_self_service_change_password=True,
-                brute_force_protection=True,
-                tenant_domain="example.com",
-                icon_url="https://example.com/assets/logo.png",
-                domain_aliases=[
+            options={
+                "disable_self_service_change_password": True,
+                "brute_force_protection": True,
+                "tenant_domain": "example.com",
+                "icon_url": "https://example.com/assets/logo.png",
+                "domain_aliases": [
                     "example.com",
                     "api.example.com",
                 ],
-                ips=[
+                "ips": [
                     "192.168.1.1",
                     "192.168.1.2",
                 ],
-                set_user_root_attributes="on_each_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_each_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-                upstream_params=json.dumps({
+                "upstream_params": json.dumps({
                     "screen_name": {
                         "alias": "login_hint",
                     },
                 }),
-                use_cert_auth=False,
-                use_kerberos=False,
-                disable_cache=False,
-            ))
+                "use_cert_auth": False,
+                "use_kerberos": False,
+                "disable_cache": False,
+            })
         ```
 
         ### Azure AD Connection
@@ -1363,40 +1363,40 @@ class Connection(pulumi.CustomResource):
             name="connection-azure-ad",
             strategy="waad",
             show_as_button=True,
-            options=auth0.ConnectionOptionsArgs(
-                identity_api="azure-active-directory-v1.0",
-                client_id="123456",
-                client_secret="123456",
-                app_id="app-id-123",
-                tenant_domain="example.onmicrosoft.com",
-                domain="example.onmicrosoft.com",
-                domain_aliases=[
+            options={
+                "identity_api": "azure-active-directory-v1.0",
+                "client_id": "123456",
+                "client_secret": "123456",
+                "app_id": "app-id-123",
+                "tenant_domain": "example.onmicrosoft.com",
+                "domain": "example.onmicrosoft.com",
+                "domain_aliases": [
                     "example.com",
                     "api.example.com",
                 ],
-                icon_url="https://example.onmicrosoft.com/assets/logo.png",
-                use_wsfed=False,
-                waad_protocol="openid-connect",
-                waad_common_endpoint=False,
-                max_groups_to_retrieve="250",
-                api_enable_users=True,
-                scopes=[
+                "icon_url": "https://example.onmicrosoft.com/assets/logo.png",
+                "use_wsfed": False,
+                "waad_protocol": "openid-connect",
+                "waad_common_endpoint": False,
+                "max_groups_to_retrieve": "250",
+                "api_enable_users": True,
+                "scopes": [
                     "basic_profile",
                     "ext_groups",
                     "ext_profile",
                 ],
-                set_user_root_attributes="on_each_login",
-                should_trust_email_verified_connection="never_set_emails_as_verified",
-                upstream_params=json.dumps({
+                "set_user_root_attributes": "on_each_login",
+                "should_trust_email_verified_connection": "never_set_emails_as_verified",
+                "upstream_params": json.dumps({
                     "screen_name": {
                         "alias": "login_hint",
                     },
                 }),
-                non_persistent_attrs=[
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### Email Connection
@@ -1411,25 +1411,25 @@ class Connection(pulumi.CustomResource):
         passwordless_email = auth0.Connection("passwordless_email",
             strategy="email",
             name="email",
-            options=auth0.ConnectionOptionsArgs(
-                name="email",
-                from_="{{ application.name }} <root@auth0.com>",
-                subject="Welcome to {{ application.name }}",
-                syntax="liquid",
-                template="<html>This is the body of the email</html>",
-                disable_signup=False,
-                brute_force_protection=True,
-                set_user_root_attributes="on_each_login",
-                non_persistent_attrs=[],
-                auth_params={
+            options={
+                "name": "email",
+                "from_": "{{ application.name }} <root@auth0.com>",
+                "subject": "Welcome to {{ application.name }}",
+                "syntax": "liquid",
+                "template": "<html>This is the body of the email</html>",
+                "disable_signup": False,
+                "brute_force_protection": True,
+                "set_user_root_attributes": "on_each_login",
+                "non_persistent_attrs": [],
+                "auth_params": {
                     "scope": "openid email profile offline_access",
                     "response_type": "code",
                 },
-                totp=auth0.ConnectionOptionsTotpArgs(
-                    time_step=300,
-                    length=6,
-                ),
-            ))
+                "totp": {
+                    "time_step": 300,
+                    "length": 6,
+                },
+            })
         ```
 
         ### SAML Connection
@@ -1443,31 +1443,31 @@ class Connection(pulumi.CustomResource):
         samlp = auth0.Connection("samlp",
             name="SAML-Connection",
             strategy="samlp",
-            options=auth0.ConnectionOptionsArgs(
-                debug=False,
-                signing_cert="<signing-certificate>",
-                sign_in_endpoint="https://saml.provider/sign_in",
-                sign_out_endpoint="https://saml.provider/sign_out",
-                disable_sign_out=True,
-                tenant_domain="example.com",
-                domain_aliases=[
+            options={
+                "debug": False,
+                "signing_cert": "<signing-certificate>",
+                "sign_in_endpoint": "https://saml.provider/sign_in",
+                "sign_out_endpoint": "https://saml.provider/sign_out",
+                "disable_sign_out": True,
+                "tenant_domain": "example.com",
+                "domain_aliases": [
                     "example.com",
                     "alias.example.com",
                 ],
-                protocol_binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST",
-                request_template=\"\"\"<samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+                "protocol_binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST",
+                "request_template": \"\"\"<samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
         @@AssertServiceURLAndDestination@@
             ID="@@ID@@"
             IssueInstant="@@IssueInstant@@"
             ProtocolBinding="@@ProtocolBinding@@" Version="2.0">
             <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">@@Issuer@@</saml:Issuer>
         </samlp:AuthnRequest>\"\"\",
-                user_id_attribute="https://saml.provider/imi/ns/identity-200810",
-                signature_algorithm="rsa-sha256",
-                digest_algorithm="sha256",
-                icon_url="https://saml.provider/assets/logo.png",
-                entity_id="<entity_id>",
-                metadata_xml=\"\"\"    <?xml version="1.0"?>
+                "user_id_attribute": "https://saml.provider/imi/ns/identity-200810",
+                "signature_algorithm": "rsa-sha256",
+                "digest_algorithm": "sha256",
+                "icon_url": "https://saml.provider/assets/logo.png",
+                "entity_id": "<entity_id>",
+                "metadata_xml": \"\"\"    <?xml version="1.0"?>
             <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="https://example.com">
               <md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
                 <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.provider/sign_out"/>
@@ -1475,8 +1475,8 @@ class Connection(pulumi.CustomResource):
               </md:IDPSSODescriptor>
             </md:EntityDescriptor>
         \"\"\",
-                metadata_url="https://saml.provider/imi/ns/FederationMetadata.xml",
-                fields_map=json.dumps({
+                "metadata_url": "https://saml.provider/imi/ns/FederationMetadata.xml",
+                "fields_map": json.dumps({
                     "name": [
                         "name",
                         "nameidentifier",
@@ -1487,28 +1487,28 @@ class Connection(pulumi.CustomResource):
                     ],
                     "family_name": "surname",
                 }),
-                signing_key=auth0.ConnectionOptionsSigningKeyArgs(
-                    key=\"\"\"-----BEGIN PRIVATE KEY-----
+                "signing_key": {
+                    "key": \"\"\"-----BEGIN PRIVATE KEY-----
         ...{your private key here}...
         -----END PRIVATE KEY-----\"\"\",
-                    cert=\"\"\"-----BEGIN CERTIFICATE-----
+                    "cert": \"\"\"-----BEGIN CERTIFICATE-----
         ...{your public key cert here}...
         -----END CERTIFICATE-----\"\"\",
-                ),
-                decryption_key=auth0.ConnectionOptionsDecryptionKeyArgs(
-                    key=\"\"\"-----BEGIN PRIVATE KEY-----
+                },
+                "decryption_key": {
+                    "key": \"\"\"-----BEGIN PRIVATE KEY-----
         ...{your private key here}...
         -----END PRIVATE KEY-----\"\"\",
-                    cert=\"\"\"-----BEGIN CERTIFICATE-----
+                    "cert": \"\"\"-----BEGIN CERTIFICATE-----
         ...{your public key cert here}...
         -----END CERTIFICATE-----\"\"\",
-                ),
-                idp_initiated=auth0.ConnectionOptionsIdpInitiatedArgs(
-                    client_id="client_id",
-                    client_protocol="samlp",
-                    client_authorize_query="type=code&timeout=30",
-                ),
-            ))
+                },
+                "idp_initiated": {
+                    "client_id": "client_id",
+                    "client_protocol": "samlp",
+                    "client_authorize_query": "type=code&timeout=30",
+                },
+            })
         ```
 
         ### WindowsLive Connection
@@ -1521,20 +1521,20 @@ class Connection(pulumi.CustomResource):
         windowslive = auth0.Connection("windowslive",
             name="Windowslive-Connection",
             strategy="windowslive",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="<client-id>",
-                client_secret="<client-secret>",
-                strategy_version=2,
-                scopes=[
+            options={
+                "client_id": "<client-id>",
+                "client_secret": "<client-secret>",
+                "strategy_version": 2,
+                "scopes": [
                     "signin",
                     "graph_user",
                 ],
-                set_user_root_attributes="on_first_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_first_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-            ))
+            })
         ```
 
         ### OIDC Connection
@@ -1550,35 +1550,35 @@ class Connection(pulumi.CustomResource):
             display_name="OIDC Connection",
             strategy="oidc",
             show_as_button=False,
-            options=auth0.ConnectionOptionsArgs(
-                client_id="1234567",
-                client_secret="1234567",
-                domain_aliases=["example.com"],
-                tenant_domain="",
-                icon_url="https://example.com/assets/logo.png",
-                type="back_channel",
-                issuer="https://www.paypalobjects.com",
-                jwks_uri="https://api.paypal.com/v1/oauth2/certs",
-                discovery_url="https://www.paypalobjects.com/.well-known/openid-configuration",
-                token_endpoint="https://api.paypal.com/v1/oauth2/token",
-                userinfo_endpoint="https://api.paypal.com/v1/oauth2/token/userinfo",
-                authorization_endpoint="https://www.paypal.com/signin/authorize",
-                scopes=[
+            options={
+                "client_id": "1234567",
+                "client_secret": "1234567",
+                "domain_aliases": ["example.com"],
+                "tenant_domain": "",
+                "icon_url": "https://example.com/assets/logo.png",
+                "type": "back_channel",
+                "issuer": "https://www.paypalobjects.com",
+                "jwks_uri": "https://api.paypal.com/v1/oauth2/certs",
+                "discovery_url": "https://www.paypalobjects.com/.well-known/openid-configuration",
+                "token_endpoint": "https://api.paypal.com/v1/oauth2/token",
+                "userinfo_endpoint": "https://api.paypal.com/v1/oauth2/token/userinfo",
+                "authorization_endpoint": "https://www.paypal.com/signin/authorize",
+                "scopes": [
                     "openid",
                     "email",
                 ],
-                set_user_root_attributes="on_first_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_first_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-                connection_settings=auth0.ConnectionOptionsConnectionSettingsArgs(
-                    pkce="auto",
-                ),
-                attribute_map=auth0.ConnectionOptionsAttributeMapArgs(
-                    mapping_mode="use_map",
-                    userinfo_scope="openid email profile groups",
-                    attributes=json.dumps({
+                "connection_settings": {
+                    "pkce": "auto",
+                },
+                "attribute_map": {
+                    "mapping_mode": "use_map",
+                    "userinfo_scope": "openid email profile groups",
+                    "attributes": json.dumps({
                         "name": "${context.tokenset.name}",
                         "email": "${context.tokenset.email}",
                         "email_verified": "${context.tokenset.email_verified}",
@@ -1587,8 +1587,8 @@ class Connection(pulumi.CustomResource):
                         "given_name": "${context.tokenset.given_name}",
                         "family_name": "${context.tokenset.family_name}",
                     }),
-                ),
-            ))
+                },
+            })
         ```
 
         ### Okta Connection
@@ -1604,37 +1604,37 @@ class Connection(pulumi.CustomResource):
             display_name="Okta Workforce Connection",
             strategy="okta",
             show_as_button=False,
-            options=auth0.ConnectionOptionsArgs(
-                client_id="1234567",
-                client_secret="1234567",
-                domain="example.okta.com",
-                domain_aliases=["example.com"],
-                issuer="https://example.okta.com",
-                jwks_uri="https://example.okta.com/oauth2/v1/keys",
-                token_endpoint="https://example.okta.com/oauth2/v1/token",
-                userinfo_endpoint="https://example.okta.com/oauth2/v1/userinfo",
-                authorization_endpoint="https://example.okta.com/oauth2/v1/authorize",
-                scopes=[
+            options={
+                "client_id": "1234567",
+                "client_secret": "1234567",
+                "domain": "example.okta.com",
+                "domain_aliases": ["example.com"],
+                "issuer": "https://example.okta.com",
+                "jwks_uri": "https://example.okta.com/oauth2/v1/keys",
+                "token_endpoint": "https://example.okta.com/oauth2/v1/token",
+                "userinfo_endpoint": "https://example.okta.com/oauth2/v1/userinfo",
+                "authorization_endpoint": "https://example.okta.com/oauth2/v1/authorize",
+                "scopes": [
                     "openid",
                     "email",
                 ],
-                set_user_root_attributes="on_first_login",
-                non_persistent_attrs=[
+                "set_user_root_attributes": "on_first_login",
+                "non_persistent_attrs": [
                     "ethnicity",
                     "gender",
                 ],
-                upstream_params=json.dumps({
+                "upstream_params": json.dumps({
                     "screen_name": {
                         "alias": "login_hint",
                     },
                 }),
-                connection_settings=auth0.ConnectionOptionsConnectionSettingsArgs(
-                    pkce="auto",
-                ),
-                attribute_map=auth0.ConnectionOptionsAttributeMapArgs(
-                    mapping_mode="basic_profile",
-                    userinfo_scope="openid email profile groups",
-                    attributes=json.dumps({
+                "connection_settings": {
+                    "pkce": "auto",
+                },
+                "attribute_map": {
+                    "mapping_mode": "basic_profile",
+                    "userinfo_scope": "openid email profile groups",
+                    "attributes": json.dumps({
                         "name": "${context.tokenset.name}",
                         "email": "${context.tokenset.email}",
                         "email_verified": "${context.tokenset.email_verified}",
@@ -1643,8 +1643,8 @@ class Connection(pulumi.CustomResource):
                         "given_name": "${context.tokenset.given_name}",
                         "family_name": "${context.tokenset.family_name}",
                     }),
-                ),
-            ))
+                },
+            })
         ```
 
         ## Import
@@ -1678,7 +1678,7 @@ class Connection(pulumi.CustomResource):
                  is_domain_connection: Optional[pulumi.Input[bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']]] = None,
+                 options: Optional[pulumi.Input[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']]] = None,
                  realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  show_as_button: Optional[pulumi.Input[bool]] = None,
                  strategy: Optional[pulumi.Input[str]] = None,
@@ -1715,7 +1715,7 @@ class Connection(pulumi.CustomResource):
             is_domain_connection: Optional[pulumi.Input[bool]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            options: Optional[pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']]] = None,
+            options: Optional[pulumi.Input[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']]] = None,
             realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             show_as_button: Optional[pulumi.Input[bool]] = None,
             strategy: Optional[pulumi.Input[str]] = None) -> 'Connection':
@@ -1730,7 +1730,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         :param pulumi.Input[str] name: Name of the connection.
-        :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options.
+        :param pulumi.Input[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
         :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider.

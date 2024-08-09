@@ -114,7 +114,7 @@ public class RolePermission extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RolePermission(String name) {
+    public RolePermission(java.lang.String name) {
         this(name, RolePermissionArgs.Empty);
     }
     /**
@@ -122,7 +122,7 @@ public class RolePermission extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RolePermission(String name, RolePermissionArgs args) {
+    public RolePermission(java.lang.String name, RolePermissionArgs args) {
         this(name, args, null);
     }
     /**
@@ -131,15 +131,22 @@ public class RolePermission extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RolePermission(String name, RolePermissionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/rolePermission:RolePermission", name, args == null ? RolePermissionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RolePermission(java.lang.String name, RolePermissionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/rolePermission:RolePermission", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RolePermission(String name, Output<String> id, @Nullable RolePermissionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/rolePermission:RolePermission", name, state, makeResourceOptions(options, id));
+    private RolePermission(java.lang.String name, Output<java.lang.String> id, @Nullable RolePermissionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/rolePermission:RolePermission", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RolePermissionArgs makeArgs(RolePermissionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RolePermissionArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -155,7 +162,7 @@ public class RolePermission extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RolePermission get(String name, Output<String> id, @Nullable RolePermissionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RolePermission get(java.lang.String name, Output<java.lang.String> id, @Nullable RolePermissionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RolePermission(name, id, state, options);
     }
 }

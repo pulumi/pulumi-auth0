@@ -178,7 +178,7 @@ class ConnectionScimConfiguration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
-                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionScimConfigurationMappingArgs']]]]] = None,
+                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionScimConfigurationMappingArgs', 'ConnectionScimConfigurationMappingArgsDict']]]]] = None,
                  user_id_attribute: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -194,26 +194,26 @@ class ConnectionScimConfiguration(pulumi.CustomResource):
             name="my-enterprise-connection",
             display_name="My Enterprise Connection",
             strategy="okta",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="1234567",
-                client_secret="1234567",
-                issuer="https://example.okta.com",
-                jwks_uri="https://example.okta.com/oauth2/v1/keys",
-                token_endpoint="https://example.okta.com/oauth2/v1/token",
-                authorization_endpoint="https://example.okta.com/oauth2/v1/authorize",
-            ))
+            options={
+                "client_id": "1234567",
+                "client_secret": "1234567",
+                "issuer": "https://example.okta.com",
+                "jwks_uri": "https://example.okta.com/oauth2/v1/keys",
+                "token_endpoint": "https://example.okta.com/oauth2/v1/token",
+                "authorization_endpoint": "https://example.okta.com/oauth2/v1/authorize",
+            })
         my_enterprise_connection2 = auth0.Connection("my_enterprise_connection_2",
             name="my-enterprise-connection-2",
             display_name="My Enterprise Connection 2",
             strategy="okta",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="1234567",
-                client_secret="1234567",
-                issuer="https://example.okta.com",
-                jwks_uri="https://example.okta.com/oauth2/v1/keys",
-                token_endpoint="https://example.okta.com/oauth2/v1/token",
-                authorization_endpoint="https://example.okta.com/oauth2/v1/authorize",
-            ))
+            options={
+                "client_id": "1234567",
+                "client_secret": "1234567",
+                "issuer": "https://example.okta.com",
+                "jwks_uri": "https://example.okta.com/oauth2/v1/keys",
+                "token_endpoint": "https://example.okta.com/oauth2/v1/token",
+                "authorization_endpoint": "https://example.okta.com/oauth2/v1/authorize",
+            })
         # A resource for configuring an Auth0 Connection SCIM Configuration, using default values.
         # Only one can be specified for a connection.
         my_conn_scim_configuration_default = auth0.ConnectionScimConfiguration("my_conn_scim_configuration_default", connection_id=my_enterprise_connection.id)
@@ -223,14 +223,14 @@ class ConnectionScimConfiguration(pulumi.CustomResource):
             connection_id=my_enterprise_connection2.id,
             user_id_attribute="attribute1",
             mappings=[
-                auth0.ConnectionScimConfigurationMappingArgs(
-                    auth0="auth0_attribute1",
-                    scim="sacim_attribute1",
-                ),
-                auth0.ConnectionScimConfigurationMappingArgs(
-                    auth0="auth0_attribute2",
-                    scim="sacim_attribute2",
-                ),
+                {
+                    "auth0": "auth0_attribute1",
+                    "scim": "sacim_attribute1",
+                },
+                {
+                    "auth0": "auth0_attribute2",
+                    "scim": "sacim_attribute2",
+                },
             ])
         ```
 
@@ -249,7 +249,7 @@ class ConnectionScimConfiguration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_id: ID of the connection for this SCIM configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionScimConfigurationMappingArgs']]]] mappings: Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionScimConfigurationMappingArgs', 'ConnectionScimConfigurationMappingArgsDict']]]] mappings: Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
         :param pulumi.Input[str] user_id_attribute: User ID attribute for generation unique of user ids. If `user_id_attribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
         """
         ...
@@ -271,26 +271,26 @@ class ConnectionScimConfiguration(pulumi.CustomResource):
             name="my-enterprise-connection",
             display_name="My Enterprise Connection",
             strategy="okta",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="1234567",
-                client_secret="1234567",
-                issuer="https://example.okta.com",
-                jwks_uri="https://example.okta.com/oauth2/v1/keys",
-                token_endpoint="https://example.okta.com/oauth2/v1/token",
-                authorization_endpoint="https://example.okta.com/oauth2/v1/authorize",
-            ))
+            options={
+                "client_id": "1234567",
+                "client_secret": "1234567",
+                "issuer": "https://example.okta.com",
+                "jwks_uri": "https://example.okta.com/oauth2/v1/keys",
+                "token_endpoint": "https://example.okta.com/oauth2/v1/token",
+                "authorization_endpoint": "https://example.okta.com/oauth2/v1/authorize",
+            })
         my_enterprise_connection2 = auth0.Connection("my_enterprise_connection_2",
             name="my-enterprise-connection-2",
             display_name="My Enterprise Connection 2",
             strategy="okta",
-            options=auth0.ConnectionOptionsArgs(
-                client_id="1234567",
-                client_secret="1234567",
-                issuer="https://example.okta.com",
-                jwks_uri="https://example.okta.com/oauth2/v1/keys",
-                token_endpoint="https://example.okta.com/oauth2/v1/token",
-                authorization_endpoint="https://example.okta.com/oauth2/v1/authorize",
-            ))
+            options={
+                "client_id": "1234567",
+                "client_secret": "1234567",
+                "issuer": "https://example.okta.com",
+                "jwks_uri": "https://example.okta.com/oauth2/v1/keys",
+                "token_endpoint": "https://example.okta.com/oauth2/v1/token",
+                "authorization_endpoint": "https://example.okta.com/oauth2/v1/authorize",
+            })
         # A resource for configuring an Auth0 Connection SCIM Configuration, using default values.
         # Only one can be specified for a connection.
         my_conn_scim_configuration_default = auth0.ConnectionScimConfiguration("my_conn_scim_configuration_default", connection_id=my_enterprise_connection.id)
@@ -300,14 +300,14 @@ class ConnectionScimConfiguration(pulumi.CustomResource):
             connection_id=my_enterprise_connection2.id,
             user_id_attribute="attribute1",
             mappings=[
-                auth0.ConnectionScimConfigurationMappingArgs(
-                    auth0="auth0_attribute1",
-                    scim="sacim_attribute1",
-                ),
-                auth0.ConnectionScimConfigurationMappingArgs(
-                    auth0="auth0_attribute2",
-                    scim="sacim_attribute2",
-                ),
+                {
+                    "auth0": "auth0_attribute1",
+                    "scim": "sacim_attribute1",
+                },
+                {
+                    "auth0": "auth0_attribute2",
+                    "scim": "sacim_attribute2",
+                },
             ])
         ```
 
@@ -339,7 +339,7 @@ class ConnectionScimConfiguration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
-                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionScimConfigurationMappingArgs']]]]] = None,
+                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionScimConfigurationMappingArgs', 'ConnectionScimConfigurationMappingArgsDict']]]]] = None,
                  user_id_attribute: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -370,7 +370,7 @@ class ConnectionScimConfiguration(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             connection_id: Optional[pulumi.Input[str]] = None,
             connection_name: Optional[pulumi.Input[str]] = None,
-            mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionScimConfigurationMappingArgs']]]]] = None,
+            mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionScimConfigurationMappingArgs', 'ConnectionScimConfigurationMappingArgsDict']]]]] = None,
             strategy: Optional[pulumi.Input[str]] = None,
             tenant_name: Optional[pulumi.Input[str]] = None,
             user_id_attribute: Optional[pulumi.Input[str]] = None) -> 'ConnectionScimConfiguration':
@@ -383,7 +383,7 @@ class ConnectionScimConfiguration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_id: ID of the connection for this SCIM configuration.
         :param pulumi.Input[str] connection_name: Name of the connection for this SCIM configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionScimConfigurationMappingArgs']]]] mappings: Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionScimConfigurationMappingArgs', 'ConnectionScimConfigurationMappingArgsDict']]]] mappings: Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
         :param pulumi.Input[str] strategy: Schema of the connection for this SCIM configuration.
         :param pulumi.Input[str] tenant_name: Name of the tenant for this SCIM configuration.
         :param pulumi.Input[str] user_id_attribute: User ID attribute for generation unique of user ids. If `user_id_attribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.

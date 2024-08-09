@@ -261,7 +261,7 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Guardian(String name) {
+    public Guardian(java.lang.String name) {
         this(name, GuardianArgs.Empty);
     }
     /**
@@ -269,7 +269,7 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Guardian(String name, GuardianArgs args) {
+    public Guardian(java.lang.String name, GuardianArgs args) {
         this(name, args, null);
     }
     /**
@@ -278,15 +278,22 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Guardian(String name, GuardianArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/guardian:Guardian", name, args == null ? GuardianArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Guardian(java.lang.String name, GuardianArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/guardian:Guardian", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Guardian(String name, Output<String> id, @Nullable GuardianState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/guardian:Guardian", name, state, makeResourceOptions(options, id));
+    private Guardian(java.lang.String name, Output<java.lang.String> id, @Nullable GuardianState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/guardian:Guardian", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GuardianArgs makeArgs(GuardianArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GuardianArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -302,7 +309,7 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Guardian get(String name, Output<String> id, @Nullable GuardianState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Guardian get(java.lang.String name, Output<java.lang.String> id, @Nullable GuardianState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Guardian(name, id, state, options);
     }
 }

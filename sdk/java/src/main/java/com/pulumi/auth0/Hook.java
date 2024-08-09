@@ -171,7 +171,7 @@ public class Hook extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Hook(String name) {
+    public Hook(java.lang.String name) {
         this(name, HookArgs.Empty);
     }
     /**
@@ -179,7 +179,7 @@ public class Hook extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Hook(String name, HookArgs args) {
+    public Hook(java.lang.String name, HookArgs args) {
         this(name, args, null);
     }
     /**
@@ -188,15 +188,22 @@ public class Hook extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Hook(String name, HookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/hook:Hook", name, args == null ? HookArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Hook(java.lang.String name, HookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/hook:Hook", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Hook(String name, Output<String> id, @Nullable HookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/hook:Hook", name, state, makeResourceOptions(options, id));
+    private Hook(java.lang.String name, Output<java.lang.String> id, @Nullable HookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/hook:Hook", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HookArgs makeArgs(HookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HookArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -215,7 +222,7 @@ public class Hook extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Hook get(String name, Output<String> id, @Nullable HookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Hook get(java.lang.String name, Output<java.lang.String> id, @Nullable HookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Hook(name, id, state, options);
     }
 }

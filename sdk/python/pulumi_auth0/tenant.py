@@ -585,14 +585,14 @@ class Tenant(pulumi.CustomResource):
                  default_directory: Optional[pulumi.Input[str]] = None,
                  default_redirection_uri: Optional[pulumi.Input[str]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 flags: Optional[pulumi.Input[pulumi.InputType['TenantFlagsArgs']]] = None,
+                 flags: Optional[pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  idle_session_lifetime: Optional[pulumi.Input[float]] = None,
                  picture_url: Optional[pulumi.Input[str]] = None,
                  sandbox_version: Optional[pulumi.Input[str]] = None,
-                 session_cookie: Optional[pulumi.Input[pulumi.InputType['TenantSessionCookieArgs']]] = None,
+                 session_cookie: Optional[pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']]] = None,
                  session_lifetime: Optional[pulumi.Input[float]] = None,
-                 sessions: Optional[pulumi.Input[pulumi.InputType['TenantSessionsArgs']]] = None,
+                 sessions: Optional[pulumi.Input[Union['TenantSessionsArgs', 'TenantSessionsArgsDict']]] = None,
                  support_email: Optional[pulumi.Input[str]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -618,20 +618,20 @@ class Tenant(pulumi.CustomResource):
             sandbox_version="12",
             enabled_locales=["en"],
             default_redirection_uri="https://example.com/login",
-            flags=auth0.TenantFlagsArgs(
-                disable_clickjack_protection_headers=True,
-                enable_public_signup_user_exists_error=True,
-                use_scope_descriptions_for_consent=True,
-                no_disclose_enterprise_connections=False,
-                disable_management_api_sms_obfuscation=False,
-                disable_fields_map_fix=False,
-            ),
-            session_cookie=auth0.TenantSessionCookieArgs(
-                mode="non-persistent",
-            ),
-            sessions=auth0.TenantSessionsArgs(
-                oidc_logout_prompt_enabled=False,
-            ))
+            flags={
+                "disable_clickjack_protection_headers": True,
+                "enable_public_signup_user_exists_error": True,
+                "use_scope_descriptions_for_consent": True,
+                "no_disclose_enterprise_connections": False,
+                "disable_management_api_sms_obfuscation": False,
+                "disable_fields_map_fix": False,
+            },
+            session_cookie={
+                "mode": "non-persistent",
+            },
+            sessions={
+                "oidc_logout_prompt_enabled": False,
+            })
         ```
 
         ## Import
@@ -661,14 +661,14 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
-        :param pulumi.Input[pulumi.InputType['TenantFlagsArgs']] flags: Configuration settings for tenant flags.
+        :param pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']] flags: Configuration settings for tenant flags.
         :param pulumi.Input[str] friendly_name: Friendly name for the tenant.
         :param pulumi.Input[float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input[str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
-        :param pulumi.Input[pulumi.InputType['TenantSessionCookieArgs']] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
+        :param pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
         :param pulumi.Input[float] session_lifetime: Number of hours during which a session will stay valid.
-        :param pulumi.Input[pulumi.InputType['TenantSessionsArgs']] sessions: Sessions related settings for the tenant.
+        :param pulumi.Input[Union['TenantSessionsArgs', 'TenantSessionsArgsDict']] sessions: Sessions related settings for the tenant.
         :param pulumi.Input[str] support_email: Support email address for authenticating users.
         :param pulumi.Input[str] support_url: Support URL for authenticating users.
         """
@@ -700,20 +700,20 @@ class Tenant(pulumi.CustomResource):
             sandbox_version="12",
             enabled_locales=["en"],
             default_redirection_uri="https://example.com/login",
-            flags=auth0.TenantFlagsArgs(
-                disable_clickjack_protection_headers=True,
-                enable_public_signup_user_exists_error=True,
-                use_scope_descriptions_for_consent=True,
-                no_disclose_enterprise_connections=False,
-                disable_management_api_sms_obfuscation=False,
-                disable_fields_map_fix=False,
-            ),
-            session_cookie=auth0.TenantSessionCookieArgs(
-                mode="non-persistent",
-            ),
-            sessions=auth0.TenantSessionsArgs(
-                oidc_logout_prompt_enabled=False,
-            ))
+            flags={
+                "disable_clickjack_protection_headers": True,
+                "enable_public_signup_user_exists_error": True,
+                "use_scope_descriptions_for_consent": True,
+                "no_disclose_enterprise_connections": False,
+                "disable_management_api_sms_obfuscation": False,
+                "disable_fields_map_fix": False,
+            },
+            session_cookie={
+                "mode": "non-persistent",
+            },
+            sessions={
+                "oidc_logout_prompt_enabled": False,
+            })
         ```
 
         ## Import
@@ -756,14 +756,14 @@ class Tenant(pulumi.CustomResource):
                  default_directory: Optional[pulumi.Input[str]] = None,
                  default_redirection_uri: Optional[pulumi.Input[str]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 flags: Optional[pulumi.Input[pulumi.InputType['TenantFlagsArgs']]] = None,
+                 flags: Optional[pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  idle_session_lifetime: Optional[pulumi.Input[float]] = None,
                  picture_url: Optional[pulumi.Input[str]] = None,
                  sandbox_version: Optional[pulumi.Input[str]] = None,
-                 session_cookie: Optional[pulumi.Input[pulumi.InputType['TenantSessionCookieArgs']]] = None,
+                 session_cookie: Optional[pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']]] = None,
                  session_lifetime: Optional[pulumi.Input[float]] = None,
-                 sessions: Optional[pulumi.Input[pulumi.InputType['TenantSessionsArgs']]] = None,
+                 sessions: Optional[pulumi.Input[Union['TenantSessionsArgs', 'TenantSessionsArgsDict']]] = None,
                  support_email: Optional[pulumi.Input[str]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -809,14 +809,14 @@ class Tenant(pulumi.CustomResource):
             default_directory: Optional[pulumi.Input[str]] = None,
             default_redirection_uri: Optional[pulumi.Input[str]] = None,
             enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            flags: Optional[pulumi.Input[pulumi.InputType['TenantFlagsArgs']]] = None,
+            flags: Optional[pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
             idle_session_lifetime: Optional[pulumi.Input[float]] = None,
             picture_url: Optional[pulumi.Input[str]] = None,
             sandbox_version: Optional[pulumi.Input[str]] = None,
-            session_cookie: Optional[pulumi.Input[pulumi.InputType['TenantSessionCookieArgs']]] = None,
+            session_cookie: Optional[pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']]] = None,
             session_lifetime: Optional[pulumi.Input[float]] = None,
-            sessions: Optional[pulumi.Input[pulumi.InputType['TenantSessionsArgs']]] = None,
+            sessions: Optional[pulumi.Input[Union['TenantSessionsArgs', 'TenantSessionsArgsDict']]] = None,
             support_email: Optional[pulumi.Input[str]] = None,
             support_url: Optional[pulumi.Input[str]] = None) -> 'Tenant':
         """
@@ -833,14 +833,14 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
-        :param pulumi.Input[pulumi.InputType['TenantFlagsArgs']] flags: Configuration settings for tenant flags.
+        :param pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']] flags: Configuration settings for tenant flags.
         :param pulumi.Input[str] friendly_name: Friendly name for the tenant.
         :param pulumi.Input[float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input[str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
-        :param pulumi.Input[pulumi.InputType['TenantSessionCookieArgs']] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
+        :param pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
         :param pulumi.Input[float] session_lifetime: Number of hours during which a session will stay valid.
-        :param pulumi.Input[pulumi.InputType['TenantSessionsArgs']] sessions: Sessions related settings for the tenant.
+        :param pulumi.Input[Union['TenantSessionsArgs', 'TenantSessionsArgsDict']] sessions: Sessions related settings for the tenant.
         :param pulumi.Input[str] support_email: Support email address for authenticating users.
         :param pulumi.Input[str] support_url: Support URL for authenticating users.
         """

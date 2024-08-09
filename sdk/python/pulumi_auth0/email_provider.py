@@ -192,11 +192,11 @@ class EmailProvider(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: Optional[pulumi.Input[pulumi.InputType['EmailProviderCredentialsArgs']]] = None,
+                 credentials: Optional[pulumi.Input[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict']]] = None,
                  default_from_address: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 settings: Optional[pulumi.Input[pulumi.InputType['EmailProviderSettingsArgs']]] = None,
+                 settings: Optional[pulumi.Input[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict']]] = None,
                  __props__=None):
         """
         With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
@@ -221,11 +221,11 @@ class EmailProvider(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EmailProviderCredentialsArgs']] credentials: Configuration settings for the credentials for the email provider.
+        :param pulumi.Input[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict']] credentials: Configuration settings for the credentials for the email provider.
         :param pulumi.Input[str] default_from_address: Email address to use as the sender when no other "from" address is specified.
         :param pulumi.Input[bool] enabled: Indicates whether the email provider is enabled.
         :param pulumi.Input[str] name: Name of the email provider. Options include `azure_cs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
-        :param pulumi.Input[pulumi.InputType['EmailProviderSettingsArgs']] settings: Specific email provider settings.
+        :param pulumi.Input[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict']] settings: Specific email provider settings.
         """
         ...
     @overload
@@ -269,11 +269,11 @@ class EmailProvider(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: Optional[pulumi.Input[pulumi.InputType['EmailProviderCredentialsArgs']]] = None,
+                 credentials: Optional[pulumi.Input[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict']]] = None,
                  default_from_address: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 settings: Optional[pulumi.Input[pulumi.InputType['EmailProviderSettingsArgs']]] = None,
+                 settings: Optional[pulumi.Input[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -302,11 +302,11 @@ class EmailProvider(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            credentials: Optional[pulumi.Input[pulumi.InputType['EmailProviderCredentialsArgs']]] = None,
+            credentials: Optional[pulumi.Input[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict']]] = None,
             default_from_address: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            settings: Optional[pulumi.Input[pulumi.InputType['EmailProviderSettingsArgs']]] = None) -> 'EmailProvider':
+            settings: Optional[pulumi.Input[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict']]] = None) -> 'EmailProvider':
         """
         Get an existing EmailProvider resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -314,11 +314,11 @@ class EmailProvider(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EmailProviderCredentialsArgs']] credentials: Configuration settings for the credentials for the email provider.
+        :param pulumi.Input[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict']] credentials: Configuration settings for the credentials for the email provider.
         :param pulumi.Input[str] default_from_address: Email address to use as the sender when no other "from" address is specified.
         :param pulumi.Input[bool] enabled: Indicates whether the email provider is enabled.
         :param pulumi.Input[str] name: Name of the email provider. Options include `azure_cs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
-        :param pulumi.Input[pulumi.InputType['EmailProviderSettingsArgs']] settings: Specific email provider settings.
+        :param pulumi.Input[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict']] settings: Specific email provider settings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
