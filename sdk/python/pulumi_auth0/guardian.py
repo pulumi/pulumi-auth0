@@ -321,15 +321,15 @@ class Guardian(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 duo: Optional[pulumi.Input[pulumi.InputType['GuardianDuoArgs']]] = None,
+                 duo: Optional[pulumi.Input[Union['GuardianDuoArgs', 'GuardianDuoArgsDict']]] = None,
                  email: Optional[pulumi.Input[bool]] = None,
                  otp: Optional[pulumi.Input[bool]] = None,
-                 phone: Optional[pulumi.Input[pulumi.InputType['GuardianPhoneArgs']]] = None,
+                 phone: Optional[pulumi.Input[Union['GuardianPhoneArgs', 'GuardianPhoneArgsDict']]] = None,
                  policy: Optional[pulumi.Input[str]] = None,
-                 push: Optional[pulumi.Input[pulumi.InputType['GuardianPushArgs']]] = None,
+                 push: Optional[pulumi.Input[Union['GuardianPushArgs', 'GuardianPushArgsDict']]] = None,
                  recovery_code: Optional[pulumi.Input[bool]] = None,
-                 webauthn_platform: Optional[pulumi.Input[pulumi.InputType['GuardianWebauthnPlatformArgs']]] = None,
-                 webauthn_roaming: Optional[pulumi.Input[pulumi.InputType['GuardianWebauthnRoamingArgs']]] = None,
+                 webauthn_platform: Optional[pulumi.Input[Union['GuardianWebauthnPlatformArgs', 'GuardianWebauthnPlatformArgsDict']]] = None,
+                 webauthn_roaming: Optional[pulumi.Input[Union['GuardianWebauthnRoamingArgs', 'GuardianWebauthnRoamingArgsDict']]] = None,
                  __props__=None):
         """
         Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
@@ -345,47 +345,47 @@ class Guardian(pulumi.CustomResource):
             email=True,
             otp=True,
             recovery_code=True,
-            webauthn_platform=auth0.GuardianWebauthnPlatformArgs(
-                enabled=True,
-            ),
-            webauthn_roaming=auth0.GuardianWebauthnRoamingArgs(
-                enabled=True,
-                user_verification="required",
-            ),
-            phone=auth0.GuardianPhoneArgs(
-                enabled=True,
-                provider="auth0",
-                message_types=[
+            webauthn_platform={
+                "enabled": True,
+            },
+            webauthn_roaming={
+                "enabled": True,
+                "user_verification": "required",
+            },
+            phone={
+                "enabled": True,
+                "provider": "auth0",
+                "message_types": [
                     "sms",
                     "voice",
                 ],
-                options=auth0.GuardianPhoneOptionsArgs(
-                    enrollment_message="{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
-                    verification_message="{{code}} is your verification code for {{tenant.friendly_name}}.",
-                ),
-            ),
-            push=auth0.GuardianPushArgs(
-                enabled=True,
-                provider="sns",
-                amazon_sns=auth0.GuardianPushAmazonSnsArgs(
-                    aws_access_key_id="test1",
-                    aws_region="us-west-1",
-                    aws_secret_access_key="secretKey",
-                    sns_apns_platform_application_arn="test_arn",
-                    sns_gcm_platform_application_arn="test_arn",
-                ),
-                custom_app=auth0.GuardianPushCustomAppArgs(
-                    app_name="CustomApp",
-                    apple_app_link="https://itunes.apple.com/us/app/my-app/id123121",
-                    google_app_link="https://play.google.com/store/apps/details?id=com.my.app",
-                ),
-            ),
-            duo=auth0.GuardianDuoArgs(
-                enabled=True,
-                integration_key="someKey",
-                secret_key="someSecret",
-                hostname="api-hostname",
-            ))
+                "options": {
+                    "enrollment_message": "{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
+                    "verification_message": "{{code}} is your verification code for {{tenant.friendly_name}}.",
+                },
+            },
+            push={
+                "enabled": True,
+                "provider": "sns",
+                "amazon_sns": {
+                    "aws_access_key_id": "test1",
+                    "aws_region": "us-west-1",
+                    "aws_secret_access_key": "secretKey",
+                    "sns_apns_platform_application_arn": "test_arn",
+                    "sns_gcm_platform_application_arn": "test_arn",
+                },
+                "custom_app": {
+                    "app_name": "CustomApp",
+                    "apple_app_link": "https://itunes.apple.com/us/app/my-app/id123121",
+                    "google_app_link": "https://play.google.com/store/apps/details?id=com.my.app",
+                },
+            },
+            duo={
+                "enabled": True,
+                "integration_key": "someKey",
+                "secret_key": "someSecret",
+                "hostname": "api-hostname",
+            })
         ```
 
         ## Import
@@ -408,15 +408,15 @@ class Guardian(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GuardianDuoArgs']] duo: Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
+        :param pulumi.Input[Union['GuardianDuoArgs', 'GuardianDuoArgsDict']] duo: Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[bool] email: Indicates whether email MFA is enabled.
         :param pulumi.Input[bool] otp: Indicates whether one time password MFA is enabled.
-        :param pulumi.Input[pulumi.InputType['GuardianPhoneArgs']] phone: Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
+        :param pulumi.Input[Union['GuardianPhoneArgs', 'GuardianPhoneArgsDict']] phone: Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[str] policy: Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
-        :param pulumi.Input[pulumi.InputType['GuardianPushArgs']] push: Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
+        :param pulumi.Input[Union['GuardianPushArgs', 'GuardianPushArgsDict']] push: Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[bool] recovery_code: Indicates whether recovery code MFA is enabled.
-        :param pulumi.Input[pulumi.InputType['GuardianWebauthnPlatformArgs']] webauthn_platform: Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
-        :param pulumi.Input[pulumi.InputType['GuardianWebauthnRoamingArgs']] webauthn_roaming: Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
+        :param pulumi.Input[Union['GuardianWebauthnPlatformArgs', 'GuardianWebauthnPlatformArgsDict']] webauthn_platform: Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
+        :param pulumi.Input[Union['GuardianWebauthnRoamingArgs', 'GuardianWebauthnRoamingArgsDict']] webauthn_roaming: Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
         """
         ...
     @overload
@@ -438,47 +438,47 @@ class Guardian(pulumi.CustomResource):
             email=True,
             otp=True,
             recovery_code=True,
-            webauthn_platform=auth0.GuardianWebauthnPlatformArgs(
-                enabled=True,
-            ),
-            webauthn_roaming=auth0.GuardianWebauthnRoamingArgs(
-                enabled=True,
-                user_verification="required",
-            ),
-            phone=auth0.GuardianPhoneArgs(
-                enabled=True,
-                provider="auth0",
-                message_types=[
+            webauthn_platform={
+                "enabled": True,
+            },
+            webauthn_roaming={
+                "enabled": True,
+                "user_verification": "required",
+            },
+            phone={
+                "enabled": True,
+                "provider": "auth0",
+                "message_types": [
                     "sms",
                     "voice",
                 ],
-                options=auth0.GuardianPhoneOptionsArgs(
-                    enrollment_message="{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
-                    verification_message="{{code}} is your verification code for {{tenant.friendly_name}}.",
-                ),
-            ),
-            push=auth0.GuardianPushArgs(
-                enabled=True,
-                provider="sns",
-                amazon_sns=auth0.GuardianPushAmazonSnsArgs(
-                    aws_access_key_id="test1",
-                    aws_region="us-west-1",
-                    aws_secret_access_key="secretKey",
-                    sns_apns_platform_application_arn="test_arn",
-                    sns_gcm_platform_application_arn="test_arn",
-                ),
-                custom_app=auth0.GuardianPushCustomAppArgs(
-                    app_name="CustomApp",
-                    apple_app_link="https://itunes.apple.com/us/app/my-app/id123121",
-                    google_app_link="https://play.google.com/store/apps/details?id=com.my.app",
-                ),
-            ),
-            duo=auth0.GuardianDuoArgs(
-                enabled=True,
-                integration_key="someKey",
-                secret_key="someSecret",
-                hostname="api-hostname",
-            ))
+                "options": {
+                    "enrollment_message": "{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
+                    "verification_message": "{{code}} is your verification code for {{tenant.friendly_name}}.",
+                },
+            },
+            push={
+                "enabled": True,
+                "provider": "sns",
+                "amazon_sns": {
+                    "aws_access_key_id": "test1",
+                    "aws_region": "us-west-1",
+                    "aws_secret_access_key": "secretKey",
+                    "sns_apns_platform_application_arn": "test_arn",
+                    "sns_gcm_platform_application_arn": "test_arn",
+                },
+                "custom_app": {
+                    "app_name": "CustomApp",
+                    "apple_app_link": "https://itunes.apple.com/us/app/my-app/id123121",
+                    "google_app_link": "https://play.google.com/store/apps/details?id=com.my.app",
+                },
+            },
+            duo={
+                "enabled": True,
+                "integration_key": "someKey",
+                "secret_key": "someSecret",
+                "hostname": "api-hostname",
+            })
         ```
 
         ## Import
@@ -514,15 +514,15 @@ class Guardian(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 duo: Optional[pulumi.Input[pulumi.InputType['GuardianDuoArgs']]] = None,
+                 duo: Optional[pulumi.Input[Union['GuardianDuoArgs', 'GuardianDuoArgsDict']]] = None,
                  email: Optional[pulumi.Input[bool]] = None,
                  otp: Optional[pulumi.Input[bool]] = None,
-                 phone: Optional[pulumi.Input[pulumi.InputType['GuardianPhoneArgs']]] = None,
+                 phone: Optional[pulumi.Input[Union['GuardianPhoneArgs', 'GuardianPhoneArgsDict']]] = None,
                  policy: Optional[pulumi.Input[str]] = None,
-                 push: Optional[pulumi.Input[pulumi.InputType['GuardianPushArgs']]] = None,
+                 push: Optional[pulumi.Input[Union['GuardianPushArgs', 'GuardianPushArgsDict']]] = None,
                  recovery_code: Optional[pulumi.Input[bool]] = None,
-                 webauthn_platform: Optional[pulumi.Input[pulumi.InputType['GuardianWebauthnPlatformArgs']]] = None,
-                 webauthn_roaming: Optional[pulumi.Input[pulumi.InputType['GuardianWebauthnRoamingArgs']]] = None,
+                 webauthn_platform: Optional[pulumi.Input[Union['GuardianWebauthnPlatformArgs', 'GuardianWebauthnPlatformArgsDict']]] = None,
+                 webauthn_roaming: Optional[pulumi.Input[Union['GuardianWebauthnRoamingArgs', 'GuardianWebauthnRoamingArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -553,15 +553,15 @@ class Guardian(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            duo: Optional[pulumi.Input[pulumi.InputType['GuardianDuoArgs']]] = None,
+            duo: Optional[pulumi.Input[Union['GuardianDuoArgs', 'GuardianDuoArgsDict']]] = None,
             email: Optional[pulumi.Input[bool]] = None,
             otp: Optional[pulumi.Input[bool]] = None,
-            phone: Optional[pulumi.Input[pulumi.InputType['GuardianPhoneArgs']]] = None,
+            phone: Optional[pulumi.Input[Union['GuardianPhoneArgs', 'GuardianPhoneArgsDict']]] = None,
             policy: Optional[pulumi.Input[str]] = None,
-            push: Optional[pulumi.Input[pulumi.InputType['GuardianPushArgs']]] = None,
+            push: Optional[pulumi.Input[Union['GuardianPushArgs', 'GuardianPushArgsDict']]] = None,
             recovery_code: Optional[pulumi.Input[bool]] = None,
-            webauthn_platform: Optional[pulumi.Input[pulumi.InputType['GuardianWebauthnPlatformArgs']]] = None,
-            webauthn_roaming: Optional[pulumi.Input[pulumi.InputType['GuardianWebauthnRoamingArgs']]] = None) -> 'Guardian':
+            webauthn_platform: Optional[pulumi.Input[Union['GuardianWebauthnPlatformArgs', 'GuardianWebauthnPlatformArgsDict']]] = None,
+            webauthn_roaming: Optional[pulumi.Input[Union['GuardianWebauthnRoamingArgs', 'GuardianWebauthnRoamingArgsDict']]] = None) -> 'Guardian':
         """
         Get an existing Guardian resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -569,15 +569,15 @@ class Guardian(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GuardianDuoArgs']] duo: Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
+        :param pulumi.Input[Union['GuardianDuoArgs', 'GuardianDuoArgsDict']] duo: Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[bool] email: Indicates whether email MFA is enabled.
         :param pulumi.Input[bool] otp: Indicates whether one time password MFA is enabled.
-        :param pulumi.Input[pulumi.InputType['GuardianPhoneArgs']] phone: Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
+        :param pulumi.Input[Union['GuardianPhoneArgs', 'GuardianPhoneArgsDict']] phone: Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[str] policy: Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
-        :param pulumi.Input[pulumi.InputType['GuardianPushArgs']] push: Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
+        :param pulumi.Input[Union['GuardianPushArgs', 'GuardianPushArgsDict']] push: Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[bool] recovery_code: Indicates whether recovery code MFA is enabled.
-        :param pulumi.Input[pulumi.InputType['GuardianWebauthnPlatformArgs']] webauthn_platform: Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
-        :param pulumi.Input[pulumi.InputType['GuardianWebauthnRoamingArgs']] webauthn_roaming: Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
+        :param pulumi.Input[Union['GuardianWebauthnPlatformArgs', 'GuardianWebauthnPlatformArgsDict']] webauthn_platform: Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
+        :param pulumi.Input[Union['GuardianWebauthnRoamingArgs', 'GuardianWebauthnRoamingArgsDict']] webauthn_roaming: Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

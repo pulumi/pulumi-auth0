@@ -178,7 +178,7 @@ public class LogStream extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LogStream(String name) {
+    public LogStream(java.lang.String name) {
         this(name, LogStreamArgs.Empty);
     }
     /**
@@ -186,7 +186,7 @@ public class LogStream extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LogStream(String name, LogStreamArgs args) {
+    public LogStream(java.lang.String name, LogStreamArgs args) {
         this(name, args, null);
     }
     /**
@@ -195,15 +195,22 @@ public class LogStream extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LogStream(String name, LogStreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/logStream:LogStream", name, args == null ? LogStreamArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public LogStream(java.lang.String name, LogStreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/logStream:LogStream", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LogStream(String name, Output<String> id, @Nullable LogStreamState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/logStream:LogStream", name, state, makeResourceOptions(options, id));
+    private LogStream(java.lang.String name, Output<java.lang.String> id, @Nullable LogStreamState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/logStream:LogStream", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static LogStreamArgs makeArgs(LogStreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LogStreamArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -219,7 +226,7 @@ public class LogStream extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LogStream get(String name, Output<String> id, @Nullable LogStreamState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LogStream get(java.lang.String name, Output<java.lang.String> id, @Nullable LogStreamState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LogStream(name, id, state, options);
     }
 }

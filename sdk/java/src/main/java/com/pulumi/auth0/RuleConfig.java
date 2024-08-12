@@ -113,7 +113,7 @@ public class RuleConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RuleConfig(String name) {
+    public RuleConfig(java.lang.String name) {
         this(name, RuleConfigArgs.Empty);
     }
     /**
@@ -121,7 +121,7 @@ public class RuleConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RuleConfig(String name, RuleConfigArgs args) {
+    public RuleConfig(java.lang.String name, RuleConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -130,15 +130,22 @@ public class RuleConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RuleConfig(String name, RuleConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/ruleConfig:RuleConfig", name, args == null ? RuleConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RuleConfig(java.lang.String name, RuleConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/ruleConfig:RuleConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RuleConfig(String name, Output<String> id, @Nullable RuleConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/ruleConfig:RuleConfig", name, state, makeResourceOptions(options, id));
+    private RuleConfig(java.lang.String name, Output<java.lang.String> id, @Nullable RuleConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/ruleConfig:RuleConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RuleConfigArgs makeArgs(RuleConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RuleConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -157,7 +164,7 @@ public class RuleConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RuleConfig get(String name, Output<String> id, @Nullable RuleConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RuleConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable RuleConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RuleConfig(name, id, state, options);
     }
 }

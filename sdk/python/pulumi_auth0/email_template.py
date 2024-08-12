@@ -337,11 +337,11 @@ class EmailTemplate(pulumi.CustomResource):
             name="ses",
             enabled=True,
             default_from_address="accounts@example.com",
-            credentials=auth0.EmailProviderCredentialsArgs(
-                access_key_id="AKIAXXXXXXXXXXXXXXXX",
-                secret_access_key="7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                region="us-east-1",
-            ))
+            credentials={
+                "access_key_id": "AKIAXXXXXXXXXXXXXXXX",
+                "secret_access_key": "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "region": "us-east-1",
+            })
         my_email_template = auth0.EmailTemplate("my_email_template",
             template="welcome_email",
             body="<html><body><h1>Welcome!</h1></body></html>",
@@ -411,11 +411,11 @@ class EmailTemplate(pulumi.CustomResource):
             name="ses",
             enabled=True,
             default_from_address="accounts@example.com",
-            credentials=auth0.EmailProviderCredentialsArgs(
-                access_key_id="AKIAXXXXXXXXXXXXXXXX",
-                secret_access_key="7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                region="us-east-1",
-            ))
+            credentials={
+                "access_key_id": "AKIAXXXXXXXXXXXXXXXX",
+                "secret_access_key": "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "region": "us-east-1",
+            })
         my_email_template = auth0.EmailTemplate("my_email_template",
             template="welcome_email",
             body="<html><body><h1>Welcome!</h1></body></html>",

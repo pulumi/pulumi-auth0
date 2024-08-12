@@ -273,12 +273,12 @@ class Action(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code: Optional[pulumi.Input[str]] = None,
-                 dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionDependencyArgs']]]]] = None,
+                 dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]]] = None,
                  deploy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionSecretArgs']]]]] = None,
-                 supported_triggers: Optional[pulumi.Input[pulumi.InputType['ActionSupportedTriggersArgs']]] = None,
+                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
+                 supported_triggers: Optional[pulumi.Input[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']]] = None,
                  __props__=None):
         """
         Actions are secure, tenant-specific, versioned functions written in Node.js that execute at certain points during the Auth0 runtime. Actions are used to customize and extend Auth0's capabilities with custom logic.
@@ -302,12 +302,12 @@ class Action(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] code: The source code of the action.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionDependencyArgs']]]] dependencies: List of third party npm modules, and their versions, that this action depends on.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]] dependencies: List of third party npm modules, and their versions, that this action depends on.
         :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
         :param pulumi.Input[str] name: The name of the action.
         :param pulumi.Input[str] runtime: The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionSecretArgs']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
-        :param pulumi.Input[pulumi.InputType['ActionSupportedTriggersArgs']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+        :param pulumi.Input[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         """
         ...
     @overload
@@ -350,12 +350,12 @@ class Action(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code: Optional[pulumi.Input[str]] = None,
-                 dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionDependencyArgs']]]]] = None,
+                 dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]]] = None,
                  deploy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionSecretArgs']]]]] = None,
-                 supported_triggers: Optional[pulumi.Input[pulumi.InputType['ActionSupportedTriggersArgs']]] = None,
+                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
+                 supported_triggers: Optional[pulumi.Input[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -388,12 +388,12 @@ class Action(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             code: Optional[pulumi.Input[str]] = None,
-            dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionDependencyArgs']]]]] = None,
+            dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]]] = None,
             deploy: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             runtime: Optional[pulumi.Input[str]] = None,
-            secrets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionSecretArgs']]]]] = None,
-            supported_triggers: Optional[pulumi.Input[pulumi.InputType['ActionSupportedTriggersArgs']]] = None,
+            secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
+            supported_triggers: Optional[pulumi.Input[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']]] = None,
             version_id: Optional[pulumi.Input[str]] = None) -> 'Action':
         """
         Get an existing Action resource's state with the given name, id, and optional extra
@@ -403,12 +403,12 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] code: The source code of the action.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionDependencyArgs']]]] dependencies: List of third party npm modules, and their versions, that this action depends on.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]] dependencies: List of third party npm modules, and their versions, that this action depends on.
         :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
         :param pulumi.Input[str] name: The name of the action.
         :param pulumi.Input[str] runtime: The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionSecretArgs']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
-        :param pulumi.Input[pulumi.InputType['ActionSupportedTriggersArgs']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+        :param pulumi.Input[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         :param pulumi.Input[str] version_id: Version ID of the action. This value is available if `deploy` is set to true.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

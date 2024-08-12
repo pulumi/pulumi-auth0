@@ -44,12 +44,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var reader = new Role("reader", RoleArgs.builder()
  *             .name("Reader")
  *             .build());
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  *         var user = new User("user", UserArgs.builder()
  *             .connectionName("Username-Password-Authentication")
- *             .email("test-user{@literal @}auth0.com")
+ *             .email("test-user}{@literal @}{@code auth0.com")
  *             .password("MyPass123$")
  *             .build());
  * 
@@ -82,8 +82,8 @@ import javax.annotation.Nullable;
  *                 writer.id())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -154,7 +154,7 @@ public class OrganizationMemberRoles extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OrganizationMemberRoles(String name) {
+    public OrganizationMemberRoles(java.lang.String name) {
         this(name, OrganizationMemberRolesArgs.Empty);
     }
     /**
@@ -162,7 +162,7 @@ public class OrganizationMemberRoles extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OrganizationMemberRoles(String name, OrganizationMemberRolesArgs args) {
+    public OrganizationMemberRoles(java.lang.String name, OrganizationMemberRolesArgs args) {
         this(name, args, null);
     }
     /**
@@ -171,15 +171,22 @@ public class OrganizationMemberRoles extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OrganizationMemberRoles(String name, OrganizationMemberRolesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/organizationMemberRoles:OrganizationMemberRoles", name, args == null ? OrganizationMemberRolesArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public OrganizationMemberRoles(java.lang.String name, OrganizationMemberRolesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/organizationMemberRoles:OrganizationMemberRoles", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OrganizationMemberRoles(String name, Output<String> id, @Nullable OrganizationMemberRolesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/organizationMemberRoles:OrganizationMemberRoles", name, state, makeResourceOptions(options, id));
+    private OrganizationMemberRoles(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationMemberRolesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/organizationMemberRoles:OrganizationMemberRoles", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static OrganizationMemberRolesArgs makeArgs(OrganizationMemberRolesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OrganizationMemberRolesArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -195,7 +202,7 @@ public class OrganizationMemberRoles extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OrganizationMemberRoles get(String name, Output<String> id, @Nullable OrganizationMemberRolesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OrganizationMemberRoles get(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationMemberRolesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OrganizationMemberRoles(name, id, state, options);
     }
 }

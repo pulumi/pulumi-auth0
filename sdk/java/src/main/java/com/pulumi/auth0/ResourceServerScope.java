@@ -135,7 +135,7 @@ public class ResourceServerScope extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ResourceServerScope(String name) {
+    public ResourceServerScope(java.lang.String name) {
         this(name, ResourceServerScopeArgs.Empty);
     }
     /**
@@ -143,7 +143,7 @@ public class ResourceServerScope extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ResourceServerScope(String name, ResourceServerScopeArgs args) {
+    public ResourceServerScope(java.lang.String name, ResourceServerScopeArgs args) {
         this(name, args, null);
     }
     /**
@@ -152,15 +152,22 @@ public class ResourceServerScope extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ResourceServerScope(String name, ResourceServerScopeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/resourceServerScope:ResourceServerScope", name, args == null ? ResourceServerScopeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ResourceServerScope(java.lang.String name, ResourceServerScopeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/resourceServerScope:ResourceServerScope", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ResourceServerScope(String name, Output<String> id, @Nullable ResourceServerScopeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/resourceServerScope:ResourceServerScope", name, state, makeResourceOptions(options, id));
+    private ResourceServerScope(java.lang.String name, Output<java.lang.String> id, @Nullable ResourceServerScopeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/resourceServerScope:ResourceServerScope", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ResourceServerScopeArgs makeArgs(ResourceServerScopeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ResourceServerScopeArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -176,7 +183,7 @@ public class ResourceServerScope extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ResourceServerScope get(String name, Output<String> id, @Nullable ResourceServerScopeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ResourceServerScope get(java.lang.String name, Output<java.lang.String> id, @Nullable ResourceServerScopeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ResourceServerScope(name, id, state, options);
     }
 }

@@ -194,7 +194,7 @@ class LogStream(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 sink: Optional[pulumi.Input[pulumi.InputType['LogStreamSinkArgs']]] = None,
+                 sink: Optional[pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -221,25 +221,25 @@ class LogStream(pulumi.CustomResource):
                     "name": "auth.signup.fail",
                 },
             ],
-            sink=auth0.LogStreamSinkArgs(
-                http_endpoint="https://example.com/logs",
-                http_content_type="application/json",
-                http_content_format="JSONOBJECT",
-                http_authorization="AKIAXXXXXXXXXXXXXXXX",
-                http_custom_headers=[{
+            sink={
+                "http_endpoint": "https://example.com/logs",
+                "http_content_type": "application/json",
+                "http_content_format": "JSONOBJECT",
+                "http_authorization": "AKIAXXXXXXXXXXXXXXXX",
+                "http_custom_headers": [{
                     "header": "foo",
                     "value": "bar",
                 }],
-            ))
+            })
         # This is an example of an Amazon EventBridge log stream.
         example_aws = auth0.LogStream("example_aws",
             name="AWS Eventbridge",
             type="eventbridge",
             status="active",
-            sink=auth0.LogStreamSinkArgs(
-                aws_account_id="my_account_id",
-                aws_region="us-east-2",
-            ))
+            sink={
+                "aws_account_id": "my_account_id",
+                "aws_region": "us-east-2",
+            })
         ```
 
         ## Import
@@ -258,7 +258,7 @@ class LogStream(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
         :param pulumi.Input[str] name: Name of the log stream.
-        :param pulumi.Input[pulumi.InputType['LogStreamSinkArgs']] sink: The sink configuration for the log stream.
+        :param pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']] sink: The sink configuration for the log stream.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
         :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         """
@@ -291,25 +291,25 @@ class LogStream(pulumi.CustomResource):
                     "name": "auth.signup.fail",
                 },
             ],
-            sink=auth0.LogStreamSinkArgs(
-                http_endpoint="https://example.com/logs",
-                http_content_type="application/json",
-                http_content_format="JSONOBJECT",
-                http_authorization="AKIAXXXXXXXXXXXXXXXX",
-                http_custom_headers=[{
+            sink={
+                "http_endpoint": "https://example.com/logs",
+                "http_content_type": "application/json",
+                "http_content_format": "JSONOBJECT",
+                "http_authorization": "AKIAXXXXXXXXXXXXXXXX",
+                "http_custom_headers": [{
                     "header": "foo",
                     "value": "bar",
                 }],
-            ))
+            })
         # This is an example of an Amazon EventBridge log stream.
         example_aws = auth0.LogStream("example_aws",
             name="AWS Eventbridge",
             type="eventbridge",
             status="active",
-            sink=auth0.LogStreamSinkArgs(
-                aws_account_id="my_account_id",
-                aws_region="us-east-2",
-            ))
+            sink={
+                "aws_account_id": "my_account_id",
+                "aws_region": "us-east-2",
+            })
         ```
 
         ## Import
@@ -341,7 +341,7 @@ class LogStream(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 sink: Optional[pulumi.Input[pulumi.InputType['LogStreamSinkArgs']]] = None,
+                 sink: Optional[pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -374,7 +374,7 @@ class LogStream(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            sink: Optional[pulumi.Input[pulumi.InputType['LogStreamSinkArgs']]] = None,
+            sink: Optional[pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
             status: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'LogStream':
         """
@@ -386,7 +386,7 @@ class LogStream(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
         :param pulumi.Input[str] name: Name of the log stream.
-        :param pulumi.Input[pulumi.InputType['LogStreamSinkArgs']] sink: The sink configuration for the log stream.
+        :param pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']] sink: The sink configuration for the log stream.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
         :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         """

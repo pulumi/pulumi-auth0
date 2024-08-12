@@ -130,9 +130,9 @@ class AttackProtection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 breached_password_detection: Optional[pulumi.Input[pulumi.InputType['AttackProtectionBreachedPasswordDetectionArgs']]] = None,
-                 brute_force_protection: Optional[pulumi.Input[pulumi.InputType['AttackProtectionBruteForceProtectionArgs']]] = None,
-                 suspicious_ip_throttling: Optional[pulumi.Input[pulumi.InputType['AttackProtectionSuspiciousIpThrottlingArgs']]] = None,
+                 breached_password_detection: Optional[pulumi.Input[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict']]] = None,
+                 brute_force_protection: Optional[pulumi.Input[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict']]] = None,
+                 suspicious_ip_throttling: Optional[pulumi.Input[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict']]] = None,
                  __props__=None):
         """
         Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.
@@ -144,44 +144,44 @@ class AttackProtection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_protection = auth0.AttackProtection("my_protection",
-            suspicious_ip_throttling=auth0.AttackProtectionSuspiciousIpThrottlingArgs(
-                enabled=True,
-                shields=[
+            suspicious_ip_throttling={
+                "enabled": True,
+                "shields": [
                     "admin_notification",
                     "block",
                 ],
-                allowlists=["192.168.1.1"],
-                pre_login=auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs(
-                    max_attempts=100,
-                    rate=864000,
-                ),
-                pre_user_registration=auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs(
-                    max_attempts=50,
-                    rate=1200,
-                ),
-            ),
-            brute_force_protection=auth0.AttackProtectionBruteForceProtectionArgs(
-                allowlists=["127.0.0.1"],
-                enabled=True,
-                max_attempts=5,
-                mode="count_per_identifier_and_ip",
-                shields=[
+                "allowlists": ["192.168.1.1"],
+                "pre_login": {
+                    "max_attempts": 100,
+                    "rate": 864000,
+                },
+                "pre_user_registration": {
+                    "max_attempts": 50,
+                    "rate": 1200,
+                },
+            },
+            brute_force_protection={
+                "allowlists": ["127.0.0.1"],
+                "enabled": True,
+                "max_attempts": 5,
+                "mode": "count_per_identifier_and_ip",
+                "shields": [
                     "block",
                     "user_notification",
                 ],
-            ),
-            breached_password_detection=auth0.AttackProtectionBreachedPasswordDetectionArgs(
-                admin_notification_frequencies=["daily"],
-                enabled=True,
-                method="standard",
-                shields=[
+            },
+            breached_password_detection={
+                "admin_notification_frequencies": ["daily"],
+                "enabled": True,
+                "method": "standard",
+                "shields": [
                     "admin_notification",
                     "block",
                 ],
-                pre_user_registration=auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs(
-                    shields=["block"],
-                ),
-            ))
+                "pre_user_registration": {
+                    "shields": ["block"],
+                },
+            })
         ```
 
         ## Import
@@ -204,9 +204,9 @@ class AttackProtection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AttackProtectionBreachedPasswordDetectionArgs']] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
-        :param pulumi.Input[pulumi.InputType['AttackProtectionBruteForceProtectionArgs']] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
-        :param pulumi.Input[pulumi.InputType['AttackProtectionSuspiciousIpThrottlingArgs']] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
+        :param pulumi.Input[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict']] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
+        :param pulumi.Input[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict']] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
+        :param pulumi.Input[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict']] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         """
         ...
     @overload
@@ -224,44 +224,44 @@ class AttackProtection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_protection = auth0.AttackProtection("my_protection",
-            suspicious_ip_throttling=auth0.AttackProtectionSuspiciousIpThrottlingArgs(
-                enabled=True,
-                shields=[
+            suspicious_ip_throttling={
+                "enabled": True,
+                "shields": [
                     "admin_notification",
                     "block",
                 ],
-                allowlists=["192.168.1.1"],
-                pre_login=auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs(
-                    max_attempts=100,
-                    rate=864000,
-                ),
-                pre_user_registration=auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs(
-                    max_attempts=50,
-                    rate=1200,
-                ),
-            ),
-            brute_force_protection=auth0.AttackProtectionBruteForceProtectionArgs(
-                allowlists=["127.0.0.1"],
-                enabled=True,
-                max_attempts=5,
-                mode="count_per_identifier_and_ip",
-                shields=[
+                "allowlists": ["192.168.1.1"],
+                "pre_login": {
+                    "max_attempts": 100,
+                    "rate": 864000,
+                },
+                "pre_user_registration": {
+                    "max_attempts": 50,
+                    "rate": 1200,
+                },
+            },
+            brute_force_protection={
+                "allowlists": ["127.0.0.1"],
+                "enabled": True,
+                "max_attempts": 5,
+                "mode": "count_per_identifier_and_ip",
+                "shields": [
                     "block",
                     "user_notification",
                 ],
-            ),
-            breached_password_detection=auth0.AttackProtectionBreachedPasswordDetectionArgs(
-                admin_notification_frequencies=["daily"],
-                enabled=True,
-                method="standard",
-                shields=[
+            },
+            breached_password_detection={
+                "admin_notification_frequencies": ["daily"],
+                "enabled": True,
+                "method": "standard",
+                "shields": [
                     "admin_notification",
                     "block",
                 ],
-                pre_user_registration=auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs(
-                    shields=["block"],
-                ),
-            ))
+                "pre_user_registration": {
+                    "shields": ["block"],
+                },
+            })
         ```
 
         ## Import
@@ -297,9 +297,9 @@ class AttackProtection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 breached_password_detection: Optional[pulumi.Input[pulumi.InputType['AttackProtectionBreachedPasswordDetectionArgs']]] = None,
-                 brute_force_protection: Optional[pulumi.Input[pulumi.InputType['AttackProtectionBruteForceProtectionArgs']]] = None,
-                 suspicious_ip_throttling: Optional[pulumi.Input[pulumi.InputType['AttackProtectionSuspiciousIpThrottlingArgs']]] = None,
+                 breached_password_detection: Optional[pulumi.Input[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict']]] = None,
+                 brute_force_protection: Optional[pulumi.Input[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict']]] = None,
+                 suspicious_ip_throttling: Optional[pulumi.Input[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -322,9 +322,9 @@ class AttackProtection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            breached_password_detection: Optional[pulumi.Input[pulumi.InputType['AttackProtectionBreachedPasswordDetectionArgs']]] = None,
-            brute_force_protection: Optional[pulumi.Input[pulumi.InputType['AttackProtectionBruteForceProtectionArgs']]] = None,
-            suspicious_ip_throttling: Optional[pulumi.Input[pulumi.InputType['AttackProtectionSuspiciousIpThrottlingArgs']]] = None) -> 'AttackProtection':
+            breached_password_detection: Optional[pulumi.Input[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict']]] = None,
+            brute_force_protection: Optional[pulumi.Input[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict']]] = None,
+            suspicious_ip_throttling: Optional[pulumi.Input[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict']]] = None) -> 'AttackProtection':
         """
         Get an existing AttackProtection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -332,9 +332,9 @@ class AttackProtection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AttackProtectionBreachedPasswordDetectionArgs']] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
-        :param pulumi.Input[pulumi.InputType['AttackProtectionBruteForceProtectionArgs']] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
-        :param pulumi.Input[pulumi.InputType['AttackProtectionSuspiciousIpThrottlingArgs']] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
+        :param pulumi.Input[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict']] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
+        :param pulumi.Input[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict']] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
+        :param pulumi.Input[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict']] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

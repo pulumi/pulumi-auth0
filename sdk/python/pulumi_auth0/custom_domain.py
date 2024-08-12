@@ -363,7 +363,7 @@ class CustomDomain(pulumi.CustomResource):
             status: Optional[pulumi.Input[str]] = None,
             tls_policy: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            verifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainVerificationArgs']]]]] = None) -> 'CustomDomain':
+            verifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomDomainVerificationArgs', 'CustomDomainVerificationArgsDict']]]]] = None) -> 'CustomDomain':
         """
         Get an existing CustomDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -378,7 +378,7 @@ class CustomDomain(pulumi.CustomResource):
         :param pulumi.Input[str] status: Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
         :param pulumi.Input[str] tls_policy: TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
         :param pulumi.Input[str] type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainVerificationArgs']]]] verifications: Configuration settings for verification.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDomainVerificationArgs', 'CustomDomainVerificationArgsDict']]]] verifications: Configuration settings for verification.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

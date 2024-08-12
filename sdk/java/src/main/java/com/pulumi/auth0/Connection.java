@@ -723,20 +723,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // This is an example of an Email connection.
  *         var passwordlessEmail = new Connection("passwordlessEmail", ConnectionArgs.builder()
  *             .strategy("email")
  *             .name("email")
  *             .options(ConnectionOptionsArgs.builder()
  *                 .name("email")
- *                 .from("{{ application.name }} <root{@literal @}auth0.com>")
- *                 .subject("Welcome to {{ application.name }}")
+ *                 .from("}{{{@code  application.name }}}{@code  <root}{@literal @}{@code auth0.com>")
+ *                 .subject("Welcome to }{{{@code  application.name }}}{@code ")
  *                 .syntax("liquid")
  *                 .template("<html>This is the body of the email</html>")
  *                 .disableSignup(false)
@@ -754,8 +754,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -784,12 +784,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // This is an example of a SAML connection.
  *         var samlp = new Connection("samlp", ConnectionArgs.builder()
  *             .name("SAML-Connection")
@@ -807,11 +807,11 @@ import javax.annotation.Nullable;
  *                 .protocolBinding("urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST")
  *                 .requestTemplate("""
  * <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
- * {@literal @@}AssertServiceURLAndDestination{@literal @@}
- *     ID="{@literal @@}ID{@literal @@}"
- *     IssueInstant="{@literal @@}IssueInstant{@literal @@}"
- *     ProtocolBinding="{@literal @@}ProtocolBinding{@literal @@}" Version="2.0">
- *     <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">{@literal @@}Issuer{@literal @@}</saml:Issuer>
+ * }{@literal @@}{@code AssertServiceURLAndDestination}{@literal @@}{@code
+ *     ID="}{@literal @@}{@code ID}{@literal @@}{@code "
+ *     IssueInstant="}{@literal @@}{@code IssueInstant}{@literal @@}{@code "
+ *     ProtocolBinding="}{@literal @@}{@code ProtocolBinding}{@literal @@}{@code " Version="2.0">
+ *     <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">}{@literal @@}{@code Issuer}{@literal @@}{@code </saml:Issuer>
  * </samlp:AuthnRequest>                """)
  *                 .userIdAttribute("https://saml.provider/imi/ns/identity-200810")
  *                 .signatureAlgorithm("rsa-sha256")
@@ -843,21 +843,21 @@ import javax.annotation.Nullable;
  *                 .signingKey(ConnectionOptionsSigningKeyArgs.builder()
  *                     .key("""
  * -----BEGIN PRIVATE KEY-----
- * ...{your private key here}...
+ * ...}{{@code your private key here}}{@code ...
  * -----END PRIVATE KEY-----                    """)
  *                     .cert("""
  * -----BEGIN CERTIFICATE-----
- * ...{your public key cert here}...
+ * ...}{{@code your public key cert here}}{@code ...
  * -----END CERTIFICATE-----                    """)
  *                     .build())
  *                 .decryptionKey(ConnectionOptionsDecryptionKeyArgs.builder()
  *                     .key("""
  * -----BEGIN PRIVATE KEY-----
- * ...{your private key here}...
+ * ...}{{@code your private key here}}{@code ...
  * -----END PRIVATE KEY-----                    """)
  *                     .cert("""
  * -----BEGIN CERTIFICATE-----
- * ...{your public key cert here}...
+ * ...}{{@code your public key cert here}}{@code ...
  * -----END CERTIFICATE-----                    """)
  *                     .build())
  *                 .idpInitiated(ConnectionOptionsIdpInitiatedArgs.builder()
@@ -868,8 +868,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -1221,7 +1221,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Connection(String name) {
+    public Connection(java.lang.String name) {
         this(name, ConnectionArgs.Empty);
     }
     /**
@@ -1229,7 +1229,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Connection(String name, ConnectionArgs args) {
+    public Connection(java.lang.String name, ConnectionArgs args) {
         this(name, args, null);
     }
     /**
@@ -1238,15 +1238,22 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Connection(String name, ConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/connection:Connection", name, args == null ? ConnectionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Connection(java.lang.String name, ConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/connection:Connection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Connection(String name, Output<String> id, @Nullable ConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/connection:Connection", name, state, makeResourceOptions(options, id));
+    private Connection(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/connection:Connection", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ConnectionArgs makeArgs(ConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConnectionArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -1262,7 +1269,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Connection get(String name, Output<String> id, @Nullable ConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Connection get(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Connection(name, id, state, options);
     }
 }

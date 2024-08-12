@@ -89,7 +89,7 @@ class ResourceServerScopes(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  resource_server_identifier: Optional[pulumi.Input[str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopesScopeArgs']]]]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerScopesScopeArgs', 'ResourceServerScopesScopeArgsDict']]]]] = None,
                  __props__=None):
         """
         With this resource, you can manage scopes (permissions) associated with a resource server (API).
@@ -111,14 +111,14 @@ class ResourceServerScopes(pulumi.CustomResource):
         my_api_scopes = auth0.ResourceServerScopes("my_api_scopes",
             resource_server_identifier=my_api.identifier,
             scopes=[
-                auth0.ResourceServerScopesScopeArgs(
-                    name="create:appointments",
-                    description="Ability to create appointments",
-                ),
-                auth0.ResourceServerScopesScopeArgs(
-                    name="read:appointments",
-                    description="Ability to read appointments",
-                ),
+                {
+                    "name": "create:appointments",
+                    "description": "Ability to create appointments",
+                },
+                {
+                    "name": "read:appointments",
+                    "description": "Ability to read appointments",
+                },
             ])
         ```
 
@@ -164,14 +164,14 @@ class ResourceServerScopes(pulumi.CustomResource):
         my_api_scopes = auth0.ResourceServerScopes("my_api_scopes",
             resource_server_identifier=my_api.identifier,
             scopes=[
-                auth0.ResourceServerScopesScopeArgs(
-                    name="create:appointments",
-                    description="Ability to create appointments",
-                ),
-                auth0.ResourceServerScopesScopeArgs(
-                    name="read:appointments",
-                    description="Ability to read appointments",
-                ),
+                {
+                    "name": "create:appointments",
+                    "description": "Ability to create appointments",
+                },
+                {
+                    "name": "read:appointments",
+                    "description": "Ability to read appointments",
+                },
             ])
         ```
 
@@ -203,7 +203,7 @@ class ResourceServerScopes(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  resource_server_identifier: Optional[pulumi.Input[str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopesScopeArgs']]]]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerScopesScopeArgs', 'ResourceServerScopesScopeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -230,7 +230,7 @@ class ResourceServerScopes(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             resource_server_identifier: Optional[pulumi.Input[str]] = None,
-            scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopesScopeArgs']]]]] = None) -> 'ResourceServerScopes':
+            scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerScopesScopeArgs', 'ResourceServerScopesScopeArgsDict']]]]] = None) -> 'ResourceServerScopes':
         """
         Get an existing ResourceServerScopes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
