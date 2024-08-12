@@ -1126,7 +1126,7 @@ class Client(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons: Optional[pulumi.Input[pulumi.InputType['ClientAddonsArgs']]] = None,
+                 addons: Optional[pulumi.Input[Union['ClientAddonsArgs', 'ClientAddonsArgsDict']]] = None,
                  allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1145,16 +1145,16 @@ class Client(pulumi.CustomResource):
                  initiate_login_uri: Optional[pulumi.Input[str]] = None,
                  is_first_party: Optional[pulumi.Input[bool]] = None,
                  is_token_endpoint_ip_header_trusted: Optional[pulumi.Input[bool]] = None,
-                 jwt_configuration: Optional[pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']]] = None,
+                 jwt_configuration: Optional[pulumi.Input[Union['ClientJwtConfigurationArgs', 'ClientJwtConfigurationArgsDict']]] = None,
                  logo_uri: Optional[pulumi.Input[str]] = None,
-                 mobile: Optional[pulumi.Input[pulumi.InputType['ClientMobileArgs']]] = None,
+                 mobile: Optional[pulumi.Input[Union['ClientMobileArgs', 'ClientMobileArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 native_social_login: Optional[pulumi.Input[pulumi.InputType['ClientNativeSocialLoginArgs']]] = None,
+                 native_social_login: Optional[pulumi.Input[Union['ClientNativeSocialLoginArgs', 'ClientNativeSocialLoginArgsDict']]] = None,
                  oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
-                 refresh_token: Optional[pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']]] = None,
+                 refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
                  require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
@@ -1191,47 +1191,47 @@ class Client(pulumi.CustomResource):
             client_metadata={
                 "foo": "zoo",
             },
-            jwt_configuration=auth0.ClientJwtConfigurationArgs(
-                lifetime_in_seconds=300,
-                secret_encoded=True,
-                alg="RS256",
-                scopes={
+            jwt_configuration={
+                "lifetime_in_seconds": 300,
+                "secret_encoded": True,
+                "alg": "RS256",
+                "scopes": {
                     "foo": "bar",
                 },
-            ),
-            refresh_token=auth0.ClientRefreshTokenArgs(
-                leeway=0,
-                token_lifetime=2592000,
-                rotation_type="rotating",
-                expiration_type="expiring",
-            ),
-            mobile=auth0.ClientMobileArgs(
-                ios=auth0.ClientMobileIosArgs(
-                    team_id="9JA89QQLNQ",
-                    app_bundle_identifier="com.my.bundle.id",
-                ),
-            ),
-            addons=auth0.ClientAddonsArgs(
-                samlp=auth0.ClientAddonsSamlpArgs(
-                    audience="https://example.com/saml",
-                    issuer="https://example.com",
-                    mappings={
+            },
+            refresh_token={
+                "leeway": 0,
+                "token_lifetime": 2592000,
+                "rotation_type": "rotating",
+                "expiration_type": "expiring",
+            },
+            mobile={
+                "ios": {
+                    "team_id": "9JA89QQLNQ",
+                    "app_bundle_identifier": "com.my.bundle.id",
+                },
+            },
+            addons={
+                "samlp": {
+                    "audience": "https://example.com/saml",
+                    "issuer": "https://example.com",
+                    "mappings": {
                         "email": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
                         "name": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
                     },
-                    create_upn_claim=False,
-                    passthrough_claims_with_no_mapping=False,
-                    map_unknown_claims_as_is=False,
-                    map_identities=False,
-                    name_identifier_format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
-                    name_identifier_probes=["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
-                    signing_cert=\"\"\"-----BEGIN PUBLIC KEY-----
+                    "create_upn_claim": False,
+                    "passthrough_claims_with_no_mapping": False,
+                    "map_unknown_claims_as_is": False,
+                    "map_identities": False,
+                    "name_identifier_format": "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+                    "name_identifier_probes": ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
+                    "signing_cert": \"\"\"-----BEGIN PUBLIC KEY-----
         MIGf...bpP/t3
         +JGNGIRMj1hF1rnb6QIDAQAB
         -----END PUBLIC KEY-----
         \"\"\",
-                ),
-            ))
+                },
+            })
         ```
 
         ## Import
@@ -1248,7 +1248,7 @@ class Client(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClientAddonsArgs']] addons: Addons enabled for this client and their associated configurations.
+        :param pulumi.Input[Union['ClientAddonsArgs', 'ClientAddonsArgsDict']] addons: Addons enabled for this client and their associated configurations.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
@@ -1267,16 +1267,16 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
         :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
-        :param pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']] jwt_configuration: Configuration settings for the JWTs issued for this client.
+        :param pulumi.Input[Union['ClientJwtConfigurationArgs', 'ClientJwtConfigurationArgsDict']] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
-        :param pulumi.Input[pulumi.InputType['ClientMobileArgs']] mobile: Additional configuration for native mobile apps.
+        :param pulumi.Input[Union['ClientMobileArgs', 'ClientMobileArgsDict']] mobile: Additional configuration for native mobile apps.
         :param pulumi.Input[str] name: Name of the client.
-        :param pulumi.Input[pulumi.InputType['ClientNativeSocialLoginArgs']] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        :param pulumi.Input[Union['ClientNativeSocialLoginArgs', 'ClientNativeSocialLoginArgsDict']] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
-        :param pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']] refresh_token: Configuration settings for the refresh tokens issued for this client.
+        :param pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
@@ -1319,47 +1319,47 @@ class Client(pulumi.CustomResource):
             client_metadata={
                 "foo": "zoo",
             },
-            jwt_configuration=auth0.ClientJwtConfigurationArgs(
-                lifetime_in_seconds=300,
-                secret_encoded=True,
-                alg="RS256",
-                scopes={
+            jwt_configuration={
+                "lifetime_in_seconds": 300,
+                "secret_encoded": True,
+                "alg": "RS256",
+                "scopes": {
                     "foo": "bar",
                 },
-            ),
-            refresh_token=auth0.ClientRefreshTokenArgs(
-                leeway=0,
-                token_lifetime=2592000,
-                rotation_type="rotating",
-                expiration_type="expiring",
-            ),
-            mobile=auth0.ClientMobileArgs(
-                ios=auth0.ClientMobileIosArgs(
-                    team_id="9JA89QQLNQ",
-                    app_bundle_identifier="com.my.bundle.id",
-                ),
-            ),
-            addons=auth0.ClientAddonsArgs(
-                samlp=auth0.ClientAddonsSamlpArgs(
-                    audience="https://example.com/saml",
-                    issuer="https://example.com",
-                    mappings={
+            },
+            refresh_token={
+                "leeway": 0,
+                "token_lifetime": 2592000,
+                "rotation_type": "rotating",
+                "expiration_type": "expiring",
+            },
+            mobile={
+                "ios": {
+                    "team_id": "9JA89QQLNQ",
+                    "app_bundle_identifier": "com.my.bundle.id",
+                },
+            },
+            addons={
+                "samlp": {
+                    "audience": "https://example.com/saml",
+                    "issuer": "https://example.com",
+                    "mappings": {
                         "email": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
                         "name": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
                     },
-                    create_upn_claim=False,
-                    passthrough_claims_with_no_mapping=False,
-                    map_unknown_claims_as_is=False,
-                    map_identities=False,
-                    name_identifier_format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
-                    name_identifier_probes=["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
-                    signing_cert=\"\"\"-----BEGIN PUBLIC KEY-----
+                    "create_upn_claim": False,
+                    "passthrough_claims_with_no_mapping": False,
+                    "map_unknown_claims_as_is": False,
+                    "map_identities": False,
+                    "name_identifier_format": "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+                    "name_identifier_probes": ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
+                    "signing_cert": \"\"\"-----BEGIN PUBLIC KEY-----
         MIGf...bpP/t3
         +JGNGIRMj1hF1rnb6QIDAQAB
         -----END PUBLIC KEY-----
         \"\"\",
-                ),
-            ))
+                },
+            })
         ```
 
         ## Import
@@ -1389,7 +1389,7 @@ class Client(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons: Optional[pulumi.Input[pulumi.InputType['ClientAddonsArgs']]] = None,
+                 addons: Optional[pulumi.Input[Union['ClientAddonsArgs', 'ClientAddonsArgsDict']]] = None,
                  allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1408,16 +1408,16 @@ class Client(pulumi.CustomResource):
                  initiate_login_uri: Optional[pulumi.Input[str]] = None,
                  is_first_party: Optional[pulumi.Input[bool]] = None,
                  is_token_endpoint_ip_header_trusted: Optional[pulumi.Input[bool]] = None,
-                 jwt_configuration: Optional[pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']]] = None,
+                 jwt_configuration: Optional[pulumi.Input[Union['ClientJwtConfigurationArgs', 'ClientJwtConfigurationArgsDict']]] = None,
                  logo_uri: Optional[pulumi.Input[str]] = None,
-                 mobile: Optional[pulumi.Input[pulumi.InputType['ClientMobileArgs']]] = None,
+                 mobile: Optional[pulumi.Input[Union['ClientMobileArgs', 'ClientMobileArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 native_social_login: Optional[pulumi.Input[pulumi.InputType['ClientNativeSocialLoginArgs']]] = None,
+                 native_social_login: Optional[pulumi.Input[Union['ClientNativeSocialLoginArgs', 'ClientNativeSocialLoginArgsDict']]] = None,
                  oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
-                 refresh_token: Optional[pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']]] = None,
+                 refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
                  require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
@@ -1480,7 +1480,7 @@ class Client(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addons: Optional[pulumi.Input[pulumi.InputType['ClientAddonsArgs']]] = None,
+            addons: Optional[pulumi.Input[Union['ClientAddonsArgs', 'ClientAddonsArgsDict']]] = None,
             allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1500,16 +1500,16 @@ class Client(pulumi.CustomResource):
             initiate_login_uri: Optional[pulumi.Input[str]] = None,
             is_first_party: Optional[pulumi.Input[bool]] = None,
             is_token_endpoint_ip_header_trusted: Optional[pulumi.Input[bool]] = None,
-            jwt_configuration: Optional[pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']]] = None,
+            jwt_configuration: Optional[pulumi.Input[Union['ClientJwtConfigurationArgs', 'ClientJwtConfigurationArgsDict']]] = None,
             logo_uri: Optional[pulumi.Input[str]] = None,
-            mobile: Optional[pulumi.Input[pulumi.InputType['ClientMobileArgs']]] = None,
+            mobile: Optional[pulumi.Input[Union['ClientMobileArgs', 'ClientMobileArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            native_social_login: Optional[pulumi.Input[pulumi.InputType['ClientNativeSocialLoginArgs']]] = None,
+            native_social_login: Optional[pulumi.Input[Union['ClientNativeSocialLoginArgs', 'ClientNativeSocialLoginArgsDict']]] = None,
             oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             oidc_conformant: Optional[pulumi.Input[bool]] = None,
             organization_require_behavior: Optional[pulumi.Input[str]] = None,
             organization_usage: Optional[pulumi.Input[str]] = None,
-            refresh_token: Optional[pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']]] = None,
+            refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
             require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
             signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
             sso: Optional[pulumi.Input[bool]] = None,
@@ -1522,7 +1522,7 @@ class Client(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClientAddonsArgs']] addons: Addons enabled for this client and their associated configurations.
+        :param pulumi.Input[Union['ClientAddonsArgs', 'ClientAddonsArgsDict']] addons: Addons enabled for this client and their associated configurations.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
@@ -1542,16 +1542,16 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
         :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
-        :param pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']] jwt_configuration: Configuration settings for the JWTs issued for this client.
+        :param pulumi.Input[Union['ClientJwtConfigurationArgs', 'ClientJwtConfigurationArgsDict']] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
-        :param pulumi.Input[pulumi.InputType['ClientMobileArgs']] mobile: Additional configuration for native mobile apps.
+        :param pulumi.Input[Union['ClientMobileArgs', 'ClientMobileArgsDict']] mobile: Additional configuration for native mobile apps.
         :param pulumi.Input[str] name: Name of the client.
-        :param pulumi.Input[pulumi.InputType['ClientNativeSocialLoginArgs']] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        :param pulumi.Input[Union['ClientNativeSocialLoginArgs', 'ClientNativeSocialLoginArgsDict']] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
-        :param pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']] refresh_token: Configuration settings for the refresh tokens issued for this client.
+        :param pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).

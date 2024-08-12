@@ -207,7 +207,7 @@ public class ConnectionScimConfiguration extends com.pulumi.resources.CustomReso
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConnectionScimConfiguration(String name) {
+    public ConnectionScimConfiguration(java.lang.String name) {
         this(name, ConnectionScimConfigurationArgs.Empty);
     }
     /**
@@ -215,7 +215,7 @@ public class ConnectionScimConfiguration extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConnectionScimConfiguration(String name, ConnectionScimConfigurationArgs args) {
+    public ConnectionScimConfiguration(java.lang.String name, ConnectionScimConfigurationArgs args) {
         this(name, args, null);
     }
     /**
@@ -224,15 +224,22 @@ public class ConnectionScimConfiguration extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConnectionScimConfiguration(String name, ConnectionScimConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/connectionScimConfiguration:ConnectionScimConfiguration", name, args == null ? ConnectionScimConfigurationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ConnectionScimConfiguration(java.lang.String name, ConnectionScimConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/connectionScimConfiguration:ConnectionScimConfiguration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConnectionScimConfiguration(String name, Output<String> id, @Nullable ConnectionScimConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/connectionScimConfiguration:ConnectionScimConfiguration", name, state, makeResourceOptions(options, id));
+    private ConnectionScimConfiguration(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectionScimConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/connectionScimConfiguration:ConnectionScimConfiguration", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ConnectionScimConfigurationArgs makeArgs(ConnectionScimConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConnectionScimConfigurationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -248,7 +255,7 @@ public class ConnectionScimConfiguration extends com.pulumi.resources.CustomReso
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConnectionScimConfiguration get(String name, Output<String> id, @Nullable ConnectionScimConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConnectionScimConfiguration get(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectionScimConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConnectionScimConfiguration(name, id, state, options);
     }
 }

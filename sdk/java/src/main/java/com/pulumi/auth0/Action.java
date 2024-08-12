@@ -158,7 +158,7 @@ public class Action extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Action(String name) {
+    public Action(java.lang.String name) {
         this(name, ActionArgs.Empty);
     }
     /**
@@ -166,7 +166,7 @@ public class Action extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Action(String name, ActionArgs args) {
+    public Action(java.lang.String name, ActionArgs args) {
         this(name, args, null);
     }
     /**
@@ -175,15 +175,22 @@ public class Action extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Action(String name, ActionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/action:Action", name, args == null ? ActionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Action(java.lang.String name, ActionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/action:Action", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Action(String name, Output<String> id, @Nullable ActionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("auth0:index/action:Action", name, state, makeResourceOptions(options, id));
+    private Action(java.lang.String name, Output<java.lang.String> id, @Nullable ActionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("auth0:index/action:Action", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ActionArgs makeArgs(ActionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ActionArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -199,7 +206,7 @@ public class Action extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Action get(String name, Output<String> id, @Nullable ActionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Action get(java.lang.String name, Output<java.lang.String> id, @Nullable ActionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Action(name, id, state, options);
     }
 }
