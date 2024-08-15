@@ -11,7 +11,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -86,14 +85,14 @@ public class Hook extends com.pulumi.resources.CustomResource {
      * Dependencies of this hook used by the WebTask server.
      * 
      */
-    @Export(name="dependencies", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> dependencies;
+    @Export(name="dependencies", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> dependencies;
 
     /**
      * @return Dependencies of this hook used by the WebTask server.
      * 
      */
-    public Output<Optional<Map<String,Object>>> dependencies() {
+    public Output<Optional<Map<String,String>>> dependencies() {
         return Codegen.optional(this.dependencies);
     }
     /**
@@ -142,14 +141,14 @@ public class Hook extends com.pulumi.resources.CustomResource {
      * The secrets associated with the hook.
      * 
      */
-    @Export(name="secrets", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> secrets;
+    @Export(name="secrets", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> secrets;
 
     /**
      * @return The secrets associated with the hook.
      * 
      */
-    public Output<Optional<Map<String,Object>>> secrets() {
+    public Output<Optional<Map<String,String>>> secrets() {
         return Codegen.optional(this.secrets);
     }
     /**

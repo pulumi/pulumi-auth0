@@ -12,7 +12,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -135,13 +134,13 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="clientMetadata")
-    private @Nullable Output<Map<String,Object>> clientMetadata;
+    private @Nullable Output<Map<String,String>> clientMetadata;
 
     /**
      * @return Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;{@literal @} [Tab] [Space]`.
      * 
      */
-    public Optional<Output<Map<String,Object>>> clientMetadata() {
+    public Optional<Output<Map<String,String>>> clientMetadata() {
         return Optional.ofNullable(this.clientMetadata);
     }
 
@@ -779,7 +778,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder clientMetadata(@Nullable Output<Map<String,Object>> clientMetadata) {
+        public Builder clientMetadata(@Nullable Output<Map<String,String>> clientMetadata) {
             $.clientMetadata = clientMetadata;
             return this;
         }
@@ -790,7 +789,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder clientMetadata(Map<String,Object> clientMetadata) {
+        public Builder clientMetadata(Map<String,String> clientMetadata) {
             return clientMetadata(Output.of(clientMetadata));
         }
 

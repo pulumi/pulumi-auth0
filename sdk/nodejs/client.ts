@@ -156,7 +156,7 @@ export class Client extends pulumi.CustomResource {
     /**
      * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
      */
-    public readonly clientMetadata!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly clientMetadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      */
@@ -248,7 +248,7 @@ export class Client extends pulumi.CustomResource {
     /**
      * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      */
-    public /*out*/ readonly signingKeys!: pulumi.Output<{[key: string]: any}[]>;
+    public /*out*/ readonly signingKeys!: pulumi.Output<{[key: string]: string}[]>;
     /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      */
@@ -394,7 +394,7 @@ export interface ClientState {
     /**
      * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
      */
-    clientMetadata?: pulumi.Input<{[key: string]: any}>;
+    clientMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      */
@@ -486,7 +486,7 @@ export interface ClientState {
     /**
      * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      */
-    signingKeys?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+    signingKeys?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      */
@@ -536,7 +536,7 @@ export interface ClientArgs {
     /**
      * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
      */
-    clientMetadata?: pulumi.Input<{[key: string]: any}>;
+    clientMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      */

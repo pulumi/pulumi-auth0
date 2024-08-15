@@ -88,7 +88,7 @@ export interface GetClientResult {
     /**
      * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
      */
-    readonly clientMetadata: {[key: string]: any};
+    readonly clientMetadata: {[key: string]: string};
     readonly clientSecret: string;
     /**
      * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
@@ -185,7 +185,7 @@ export interface GetClientResult {
     /**
      * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      */
-    readonly signingKeys: {[key: string]: any}[];
+    readonly signingKeys: {[key: string]: string}[];
     /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      */

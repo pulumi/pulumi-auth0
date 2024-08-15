@@ -75,7 +75,7 @@ export class Hook extends pulumi.CustomResource {
     /**
      * Dependencies of this hook used by the WebTask server.
      */
-    public readonly dependencies!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly dependencies!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Whether the hook is enabled, or disabled.
      */
@@ -91,7 +91,7 @@ export class Hook extends pulumi.CustomResource {
     /**
      * The secrets associated with the hook.
      */
-    public readonly secrets!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly secrets!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
      */
@@ -145,7 +145,7 @@ export interface HookState {
     /**
      * Dependencies of this hook used by the WebTask server.
      */
-    dependencies?: pulumi.Input<{[key: string]: any}>;
+    dependencies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Whether the hook is enabled, or disabled.
      */
@@ -161,7 +161,7 @@ export interface HookState {
     /**
      * The secrets associated with the hook.
      */
-    secrets?: pulumi.Input<{[key: string]: any}>;
+    secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
      */
@@ -175,7 +175,7 @@ export interface HookArgs {
     /**
      * Dependencies of this hook used by the WebTask server.
      */
-    dependencies?: pulumi.Input<{[key: string]: any}>;
+    dependencies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Whether the hook is enabled, or disabled.
      */
@@ -191,7 +191,7 @@ export interface HookArgs {
     /**
      * The secrets associated with the hook.
      */
-    secrets?: pulumi.Input<{[key: string]: any}>;
+    secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
      */

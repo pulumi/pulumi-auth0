@@ -183,7 +183,7 @@ namespace Pulumi.Auth0
         /// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()&lt;&gt;@ [Tab] [Space]`.
         /// </summary>
         [Output("clientMetadata")]
-        public Output<ImmutableDictionary<string, object>?> ClientMetadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> ClientMetadata { get; private set; } = null!;
 
         /// <summary>
         /// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
@@ -321,7 +321,7 @@ namespace Pulumi.Auth0
         /// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         /// </summary>
         [Output("signingKeys")]
-        public Output<ImmutableArray<ImmutableDictionary<string, object>>> SigningKeys { get; private set; } = null!;
+        public Output<ImmutableArray<ImmutableDictionary<string, string>>> SigningKeys { get; private set; } = null!;
 
         /// <summary>
         /// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
@@ -464,14 +464,14 @@ namespace Pulumi.Auth0
         }
 
         [Input("clientMetadata")]
-        private InputMap<object>? _clientMetadata;
+        private InputMap<string>? _clientMetadata;
 
         /// <summary>
         /// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()&lt;&gt;@ [Tab] [Space]`.
         /// </summary>
-        public InputMap<object> ClientMetadata
+        public InputMap<string> ClientMetadata
         {
-            get => _clientMetadata ?? (_clientMetadata = new InputMap<object>());
+            get => _clientMetadata ?? (_clientMetadata = new InputMap<string>());
             set => _clientMetadata = value;
         }
 
@@ -737,14 +737,14 @@ namespace Pulumi.Auth0
         public Input<string>? ClientId { get; set; }
 
         [Input("clientMetadata")]
-        private InputMap<object>? _clientMetadata;
+        private InputMap<string>? _clientMetadata;
 
         /// <summary>
         /// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()&lt;&gt;@ [Tab] [Space]`.
         /// </summary>
-        public InputMap<object> ClientMetadata
+        public InputMap<string> ClientMetadata
         {
-            get => _clientMetadata ?? (_clientMetadata = new InputMap<object>());
+            get => _clientMetadata ?? (_clientMetadata = new InputMap<string>());
             set => _clientMetadata = value;
         }
 
@@ -899,17 +899,17 @@ namespace Pulumi.Auth0
         public Input<bool>? RequirePushedAuthorizationRequests { get; set; }
 
         [Input("signingKeys")]
-        private InputList<ImmutableDictionary<string, object>>? _signingKeys;
+        private InputList<ImmutableDictionary<string, string>>? _signingKeys;
 
         /// <summary>
         /// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         /// </summary>
-        public InputList<ImmutableDictionary<string, object>> SigningKeys
+        public InputList<ImmutableDictionary<string, string>> SigningKeys
         {
-            get => _signingKeys ?? (_signingKeys = new InputList<ImmutableDictionary<string, object>>());
+            get => _signingKeys ?? (_signingKeys = new InputList<ImmutableDictionary<string, string>>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableArray.Create<ImmutableDictionary<string, object>>());
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<ImmutableDictionary<string, string>>());
                 _signingKeys = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }

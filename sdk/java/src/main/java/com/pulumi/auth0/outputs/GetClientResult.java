@@ -11,7 +11,6 @@ import com.pulumi.auth0.outputs.GetClientRefreshToken;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -65,7 +64,7 @@ public final class GetClientResult {
      * @return Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;{@literal @} [Tab] [Space]`.
      * 
      */
-    private Map<String,Object> clientMetadata;
+    private Map<String,String> clientMetadata;
     private String clientSecret;
     /**
      * @return Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
@@ -186,7 +185,7 @@ public final class GetClientResult {
      * @return List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      * 
      */
-    private List<Map<String,Object>> signingKeys;
+    private List<Map<String,String>> signingKeys;
     /**
      * @return Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      * 
@@ -269,7 +268,7 @@ public final class GetClientResult {
      * @return Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;{@literal @} [Tab] [Space]`.
      * 
      */
-    public Map<String,Object> clientMetadata() {
+    public Map<String,String> clientMetadata() {
         return this.clientMetadata;
     }
     public String clientSecret() {
@@ -440,7 +439,7 @@ public final class GetClientResult {
      * @return List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      * 
      */
-    public List<Map<String,Object>> signingKeys() {
+    public List<Map<String,String>> signingKeys() {
         return this.signingKeys;
     }
     /**
@@ -489,7 +488,7 @@ public final class GetClientResult {
         private List<String> callbacks;
         private List<String> clientAliases;
         private @Nullable String clientId;
-        private Map<String,Object> clientMetadata;
+        private Map<String,String> clientMetadata;
         private String clientSecret;
         private Boolean crossOriginAuth;
         private String crossOriginLoc;
@@ -514,7 +513,7 @@ public final class GetClientResult {
         private String organizationUsage;
         private List<GetClientRefreshToken> refreshTokens;
         private Boolean requirePushedAuthorizationRequests;
-        private List<Map<String,Object>> signingKeys;
+        private List<Map<String,String>> signingKeys;
         private Boolean sso;
         private Boolean ssoDisabled;
         private String tokenEndpointAuthMethod;
@@ -643,7 +642,7 @@ public final class GetClientResult {
             return this;
         }
         @CustomType.Setter
-        public Builder clientMetadata(Map<String,Object> clientMetadata) {
+        public Builder clientMetadata(Map<String,String> clientMetadata) {
             if (clientMetadata == null) {
               throw new MissingRequiredPropertyException("GetClientResult", "clientMetadata");
             }
@@ -859,7 +858,7 @@ public final class GetClientResult {
             return this;
         }
         @CustomType.Setter
-        public Builder signingKeys(List<Map<String,Object>> signingKeys) {
+        public Builder signingKeys(List<Map<String,String>> signingKeys) {
             if (signingKeys == null) {
               throw new MissingRequiredPropertyException("GetClientResult", "signingKeys");
             }

@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -80,7 +79,7 @@ public final class GetClientAddonSamlp {
      * @return Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
      * 
      */
-    private Map<String,Object> mappings;
+    private Map<String,String> mappings;
     /**
      * @return Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
      * 
@@ -211,7 +210,7 @@ public final class GetClientAddonSamlp {
      * @return Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
      * 
      */
-    public Map<String,Object> mappings() {
+    public Map<String,String> mappings() {
         return this.mappings;
     }
     /**
@@ -292,7 +291,7 @@ public final class GetClientAddonSamlp {
         private List<GetClientAddonSamlpLogout> logouts;
         private Boolean mapIdentities;
         private Boolean mapUnknownClaimsAsIs;
-        private Map<String,Object> mappings;
+        private Map<String,String> mappings;
         private String nameIdentifierFormat;
         private List<String> nameIdentifierProbes;
         private Boolean passthroughClaimsWithNoMapping;
@@ -427,7 +426,7 @@ public final class GetClientAddonSamlp {
             return this;
         }
         @CustomType.Setter
-        public Builder mappings(Map<String,Object> mappings) {
+        public Builder mappings(Map<String,String> mappings) {
             if (mappings == null) {
               throw new MissingRequiredPropertyException("GetClientAddonSamlp", "mappings");
             }

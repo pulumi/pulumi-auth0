@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -24,13 +23,13 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="dependencies")
-    private @Nullable Output<Map<String,Object>> dependencies;
+    private @Nullable Output<Map<String,String>> dependencies;
 
     /**
      * @return Dependencies of this hook used by the WebTask server.
      * 
      */
-    public Optional<Output<Map<String,Object>>> dependencies() {
+    public Optional<Output<Map<String,String>>> dependencies() {
         return Optional.ofNullable(this.dependencies);
     }
 
@@ -84,13 +83,13 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="secrets")
-    private @Nullable Output<Map<String,Object>> secrets;
+    private @Nullable Output<Map<String,String>> secrets;
 
     /**
      * @return The secrets associated with the hook.
      * 
      */
-    public Optional<Output<Map<String,Object>>> secrets() {
+    public Optional<Output<Map<String,String>>> secrets() {
         return Optional.ofNullable(this.secrets);
     }
 
@@ -144,7 +143,7 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder dependencies(@Nullable Output<Map<String,Object>> dependencies) {
+        public Builder dependencies(@Nullable Output<Map<String,String>> dependencies) {
             $.dependencies = dependencies;
             return this;
         }
@@ -155,7 +154,7 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder dependencies(Map<String,Object> dependencies) {
+        public Builder dependencies(Map<String,String> dependencies) {
             return dependencies(Output.of(dependencies));
         }
 
@@ -228,7 +227,7 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder secrets(@Nullable Output<Map<String,Object>> secrets) {
+        public Builder secrets(@Nullable Output<Map<String,String>> secrets) {
             $.secrets = secrets;
             return this;
         }
@@ -239,7 +238,7 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder secrets(Map<String,Object> secrets) {
+        public Builder secrets(Map<String,String> secrets) {
             return secrets(Output.of(secrets));
         }
 

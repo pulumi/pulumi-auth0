@@ -83,8 +83,8 @@ type LookupClientResult struct {
 	// The ID of the client. If not provided, `name` must be set.
 	ClientId *string `pulumi:"clientId"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
-	ClientMetadata map[string]interface{} `pulumi:"clientMetadata"`
-	ClientSecret   string                 `pulumi:"clientSecret"`
+	ClientMetadata map[string]string `pulumi:"clientMetadata"`
+	ClientSecret   string            `pulumi:"clientSecret"`
 	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
 	CrossOriginAuth bool `pulumi:"crossOriginAuth"`
 	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
@@ -132,7 +132,7 @@ type LookupClientResult struct {
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests bool `pulumi:"requirePushedAuthorizationRequests"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
-	SigningKeys []map[string]interface{} `pulumi:"signingKeys"`
+	SigningKeys []map[string]string `pulumi:"signingKeys"`
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso bool `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
@@ -224,8 +224,8 @@ func (o LookupClientResultOutput) ClientId() pulumi.StringPtrOutput {
 }
 
 // Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
-func (o LookupClientResultOutput) ClientMetadata() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupClientResult) map[string]interface{} { return v.ClientMetadata }).(pulumi.MapOutput)
+func (o LookupClientResultOutput) ClientMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClientResult) map[string]string { return v.ClientMetadata }).(pulumi.StringMapOutput)
 }
 
 func (o LookupClientResultOutput) ClientSecret() pulumi.StringOutput {
@@ -348,8 +348,8 @@ func (o LookupClientResultOutput) RequirePushedAuthorizationRequests() pulumi.Bo
 }
 
 // List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
-func (o LookupClientResultOutput) SigningKeys() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v LookupClientResult) []map[string]interface{} { return v.SigningKeys }).(pulumi.MapArrayOutput)
+func (o LookupClientResultOutput) SigningKeys() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v LookupClientResult) []map[string]string { return v.SigningKeys }).(pulumi.StringMapArrayOutput)
 }
 
 // Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
