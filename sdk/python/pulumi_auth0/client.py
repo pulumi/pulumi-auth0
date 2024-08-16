@@ -23,7 +23,7 @@ class ClientArgs:
                  app_type: Optional[pulumi.Input[str]] = None,
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 client_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cross_origin_auth: Optional[pulumi.Input[bool]] = None,
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
@@ -58,7 +58,7 @@ class ClientArgs:
         :param pulumi.Input[str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
-        :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
@@ -240,14 +240,14 @@ class ClientArgs:
 
     @property
     @pulumi.getter(name="clientMetadata")
-    def client_metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def client_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         """
         return pulumi.get(self, "client_metadata")
 
     @client_metadata.setter
-    def client_metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def client_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "client_metadata", value)
 
     @property
@@ -562,7 +562,7 @@ class _ClientState:
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
-                 client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 client_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cross_origin_auth: Optional[pulumi.Input[bool]] = None,
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
@@ -585,7 +585,7 @@ class _ClientState:
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
                  require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
-                 signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+                 signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
                  web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -599,7 +599,7 @@ class _ClientState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[str] client_id: The ID of the client.
-        :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
@@ -622,7 +622,7 @@ class _ClientState:
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
@@ -798,14 +798,14 @@ class _ClientState:
 
     @property
     @pulumi.getter(name="clientMetadata")
-    def client_metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def client_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         """
         return pulumi.get(self, "client_metadata")
 
     @client_metadata.setter
-    def client_metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def client_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "client_metadata", value)
 
     @property
@@ -1074,14 +1074,14 @@ class _ClientState:
 
     @property
     @pulumi.getter(name="signingKeys")
-    def signing_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+    def signing_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
         """
         List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         """
         return pulumi.get(self, "signing_keys")
 
     @signing_keys.setter
-    def signing_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
+    def signing_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
         pulumi.set(self, "signing_keys", value)
 
     @property
@@ -1133,7 +1133,7 @@ class Client(pulumi.CustomResource):
                  app_type: Optional[pulumi.Input[str]] = None,
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 client_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cross_origin_auth: Optional[pulumi.Input[bool]] = None,
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
@@ -1255,7 +1255,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
-        :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
@@ -1396,7 +1396,7 @@ class Client(pulumi.CustomResource):
                  app_type: Optional[pulumi.Input[str]] = None,
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 client_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cross_origin_auth: Optional[pulumi.Input[bool]] = None,
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
@@ -1488,7 +1488,7 @@ class Client(pulumi.CustomResource):
             callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             client_id: Optional[pulumi.Input[str]] = None,
-            client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            client_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             cross_origin_auth: Optional[pulumi.Input[bool]] = None,
             cross_origin_loc: Optional[pulumi.Input[str]] = None,
             custom_login_page: Optional[pulumi.Input[str]] = None,
@@ -1511,7 +1511,7 @@ class Client(pulumi.CustomResource):
             organization_usage: Optional[pulumi.Input[str]] = None,
             refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
             require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
-            signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+            signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
             sso: Optional[pulumi.Input[bool]] = None,
             sso_disabled: Optional[pulumi.Input[bool]] = None,
             web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Client':
@@ -1530,7 +1530,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[str] client_id: The ID of the client.
-        :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
@@ -1553,7 +1553,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
@@ -1665,7 +1665,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientMetadata")
-    def client_metadata(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def client_metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         """
@@ -1849,7 +1849,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="signingKeys")
-    def signing_keys(self) -> pulumi.Output[Sequence[Mapping[str, Any]]]:
+    def signing_keys(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
         """
         List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         """

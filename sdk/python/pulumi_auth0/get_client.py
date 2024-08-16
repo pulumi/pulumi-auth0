@@ -204,7 +204,7 @@ class GetClientResult:
 
     @property
     @pulumi.getter(name="clientMetadata")
-    def client_metadata(self) -> Mapping[str, Any]:
+    def client_metadata(self) -> Mapping[str, str]:
         """
         Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         """
@@ -401,7 +401,7 @@ class GetClientResult:
 
     @property
     @pulumi.getter(name="signingKeys")
-    def signing_keys(self) -> Sequence[Mapping[str, Any]]:
+    def signing_keys(self) -> Sequence[Mapping[str, str]]:
         """
         List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         """

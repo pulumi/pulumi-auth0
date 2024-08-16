@@ -19,7 +19,6 @@ import com.pulumi.auth0.outputs.ConnectionOptionsValidation;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -88,7 +87,7 @@ public final class ConnectionOptions {
      * @return A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
      * 
      */
-    private @Nullable Map<String,Object> configuration;
+    private @Nullable Map<String,String> configuration;
     /**
      * @return Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
      * 
@@ -562,7 +561,7 @@ public final class ConnectionOptions {
      * @return A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
      * 
      */
-    public Map<String,Object> configuration() {
+    public Map<String,String> configuration() {
         return this.configuration == null ? Map.of() : this.configuration;
     }
     /**
@@ -1132,7 +1131,7 @@ public final class ConnectionOptions {
         private @Nullable String clientId;
         private @Nullable String clientSecret;
         private @Nullable String communityBaseUrl;
-        private @Nullable Map<String,Object> configuration;
+        private @Nullable Map<String,String> configuration;
         private @Nullable ConnectionOptionsConnectionSettings connectionSettings;
         private @Nullable Map<String,String> customScripts;
         private @Nullable Boolean debug;
@@ -1376,7 +1375,7 @@ public final class ConnectionOptions {
             return this;
         }
         @CustomType.Setter
-        public Builder configuration(@Nullable Map<String,Object> configuration) {
+        public Builder configuration(@Nullable Map<String,String> configuration) {
 
             this.configuration = configuration;
             return this;

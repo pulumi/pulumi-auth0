@@ -101,17 +101,17 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? CommunityBaseUrl { get; set; }
 
         [Input("configuration")]
-        private InputMap<object>? _configuration;
+        private InputMap<string>? _configuration;
 
         /// <summary>
         /// A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         /// </summary>
-        public InputMap<object> Configuration
+        public InputMap<string> Configuration
         {
-            get => _configuration ?? (_configuration = new InputMap<object>());
+            get => _configuration ?? (_configuration = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _configuration = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }

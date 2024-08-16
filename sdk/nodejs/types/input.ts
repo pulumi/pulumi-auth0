@@ -831,7 +831,7 @@ export interface ClientAddonsSamlp {
     /**
      * Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
      */
-    mappings?: pulumi.Input<{[key: string]: any}>;
+    mappings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
      */
@@ -1157,7 +1157,7 @@ export interface ConnectionOptions {
     /**
      * A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
      */
-    configuration?: pulumi.Input<{[key: string]: any}>;
+    configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
      */

@@ -7,7 +7,6 @@ import com.pulumi.auth0.outputs.ClientAddonsSamlpLogout;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -81,7 +80,7 @@ public final class ClientAddonsSamlp {
      * @return Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
      * 
      */
-    private @Nullable Map<String,Object> mappings;
+    private @Nullable Map<String,String> mappings;
     /**
      * @return Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
      * 
@@ -212,7 +211,7 @@ public final class ClientAddonsSamlp {
      * @return Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
      * 
      */
-    public Map<String,Object> mappings() {
+    public Map<String,String> mappings() {
         return this.mappings == null ? Map.of() : this.mappings;
     }
     /**
@@ -293,7 +292,7 @@ public final class ClientAddonsSamlp {
         private @Nullable ClientAddonsSamlpLogout logout;
         private @Nullable Boolean mapIdentities;
         private @Nullable Boolean mapUnknownClaimsAsIs;
-        private @Nullable Map<String,Object> mappings;
+        private @Nullable Map<String,String> mappings;
         private @Nullable String nameIdentifierFormat;
         private @Nullable List<String> nameIdentifierProbes;
         private @Nullable Boolean passthroughClaimsWithNoMapping;
@@ -401,7 +400,7 @@ public final class ClientAddonsSamlp {
             return this;
         }
         @CustomType.Setter
-        public Builder mappings(@Nullable Map<String,Object> mappings) {
+        public Builder mappings(@Nullable Map<String,String> mappings) {
 
             this.mappings = mappings;
             return this;

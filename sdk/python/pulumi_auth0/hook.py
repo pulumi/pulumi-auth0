@@ -16,18 +16,18 @@ class HookArgs:
     def __init__(__self__, *,
                  script: pulumi.Input[str],
                  trigger_id: pulumi.Input[str],
-                 dependencies: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 dependencies: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 secrets: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Hook resource.
         :param pulumi.Input[str] script: Code to be executed when this hook runs.
         :param pulumi.Input[str] trigger_id: Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
-        :param pulumi.Input[Mapping[str, Any]] dependencies: Dependencies of this hook used by the WebTask server.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dependencies: Dependencies of this hook used by the WebTask server.
         :param pulumi.Input[bool] enabled: Whether the hook is enabled, or disabled.
         :param pulumi.Input[str] name: Name of this hook.
-        :param pulumi.Input[Mapping[str, Any]] secrets: The secrets associated with the hook.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secrets: The secrets associated with the hook.
         """
         pulumi.set(__self__, "script", script)
         pulumi.set(__self__, "trigger_id", trigger_id)
@@ -66,14 +66,14 @@ class HookArgs:
 
     @property
     @pulumi.getter
-    def dependencies(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def dependencies(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Dependencies of this hook used by the WebTask server.
         """
         return pulumi.get(self, "dependencies")
 
     @dependencies.setter
-    def dependencies(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def dependencies(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "dependencies", value)
 
     @property
@@ -102,33 +102,33 @@ class HookArgs:
 
     @property
     @pulumi.getter
-    def secrets(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def secrets(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The secrets associated with the hook.
         """
         return pulumi.get(self, "secrets")
 
     @secrets.setter
-    def secrets(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def secrets(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "secrets", value)
 
 
 @pulumi.input_type
 class _HookState:
     def __init__(__self__, *,
-                 dependencies: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 dependencies: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  script: Optional[pulumi.Input[str]] = None,
-                 secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 secrets: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Hook resources.
-        :param pulumi.Input[Mapping[str, Any]] dependencies: Dependencies of this hook used by the WebTask server.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dependencies: Dependencies of this hook used by the WebTask server.
         :param pulumi.Input[bool] enabled: Whether the hook is enabled, or disabled.
         :param pulumi.Input[str] name: Name of this hook.
         :param pulumi.Input[str] script: Code to be executed when this hook runs.
-        :param pulumi.Input[Mapping[str, Any]] secrets: The secrets associated with the hook.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secrets: The secrets associated with the hook.
         :param pulumi.Input[str] trigger_id: Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
         """
         if dependencies is not None:
@@ -146,14 +146,14 @@ class _HookState:
 
     @property
     @pulumi.getter
-    def dependencies(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def dependencies(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Dependencies of this hook used by the WebTask server.
         """
         return pulumi.get(self, "dependencies")
 
     @dependencies.setter
-    def dependencies(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def dependencies(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "dependencies", value)
 
     @property
@@ -194,14 +194,14 @@ class _HookState:
 
     @property
     @pulumi.getter
-    def secrets(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def secrets(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The secrets associated with the hook.
         """
         return pulumi.get(self, "secrets")
 
     @secrets.setter
-    def secrets(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def secrets(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "secrets", value)
 
     @property
@@ -222,11 +222,11 @@ class Hook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dependencies: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 dependencies: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  script: Optional[pulumi.Input[str]] = None,
-                 secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 secrets: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -270,11 +270,11 @@ class Hook(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] dependencies: Dependencies of this hook used by the WebTask server.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dependencies: Dependencies of this hook used by the WebTask server.
         :param pulumi.Input[bool] enabled: Whether the hook is enabled, or disabled.
         :param pulumi.Input[str] name: Name of this hook.
         :param pulumi.Input[str] script: Code to be executed when this hook runs.
-        :param pulumi.Input[Mapping[str, Any]] secrets: The secrets associated with the hook.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secrets: The secrets associated with the hook.
         :param pulumi.Input[str] trigger_id: Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
         """
         ...
@@ -337,11 +337,11 @@ class Hook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dependencies: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 dependencies: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  script: Optional[pulumi.Input[str]] = None,
-                 secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 secrets: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -374,11 +374,11 @@ class Hook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dependencies: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            dependencies: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             script: Optional[pulumi.Input[str]] = None,
-            secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            secrets: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             trigger_id: Optional[pulumi.Input[str]] = None) -> 'Hook':
         """
         Get an existing Hook resource's state with the given name, id, and optional extra
@@ -387,11 +387,11 @@ class Hook(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] dependencies: Dependencies of this hook used by the WebTask server.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dependencies: Dependencies of this hook used by the WebTask server.
         :param pulumi.Input[bool] enabled: Whether the hook is enabled, or disabled.
         :param pulumi.Input[str] name: Name of this hook.
         :param pulumi.Input[str] script: Code to be executed when this hook runs.
-        :param pulumi.Input[Mapping[str, Any]] secrets: The secrets associated with the hook.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secrets: The secrets associated with the hook.
         :param pulumi.Input[str] trigger_id: Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -408,7 +408,7 @@ class Hook(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def dependencies(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def dependencies(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Dependencies of this hook used by the WebTask server.
         """
@@ -440,7 +440,7 @@ class Hook(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def secrets(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def secrets(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The secrets associated with the hook.
         """
