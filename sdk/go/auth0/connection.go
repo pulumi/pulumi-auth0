@@ -63,9 +63,9 @@ import (
 //					CustomScripts: pulumi.StringMap{
 //						"get_user": pulumi.String("        function getByEmail(email, callback) {\n          return callback(new Error(\"Whoops!\"));\n        }\n"),
 //					},
-//					Configuration: pulumi.Map{
-//						"foo": pulumi.Any("bar"),
-//						"bar": pulumi.Any("baz"),
+//					Configuration: pulumi.StringMap{
+//						"foo": pulumi.String("bar"),
+//						"bar": pulumi.String("baz"),
 //					},
 //					UpstreamParams: pulumi.String(json0),
 //					PasswordHistories: auth0.ConnectionOptionsPasswordHistoryArray{

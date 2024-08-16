@@ -2947,7 +2947,7 @@ class ClientAddonsSamlp(dict):
                  logout: Optional['outputs.ClientAddonsSamlpLogout'] = None,
                  map_identities: Optional[bool] = None,
                  map_unknown_claims_as_is: Optional[bool] = None,
-                 mappings: Optional[Mapping[str, Any]] = None,
+                 mappings: Optional[Mapping[str, str]] = None,
                  name_identifier_format: Optional[str] = None,
                  name_identifier_probes: Optional[Sequence[str]] = None,
                  passthrough_claims_with_no_mapping: Optional[bool] = None,
@@ -2969,7 +2969,7 @@ class ClientAddonsSamlp(dict):
         :param 'ClientAddonsSamlpLogoutArgs' logout: Configuration settings for logout.
         :param bool map_identities: Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
         :param bool map_unknown_claims_as_is: Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
-        :param Mapping[str, Any] mappings: Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
+        :param Mapping[str, str] mappings: Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
         :param str name_identifier_format: Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
         :param Sequence[str] name_identifier_probes: Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
         :param bool passthrough_claims_with_no_mapping: Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
@@ -3120,7 +3120,7 @@ class ClientAddonsSamlp(dict):
 
     @property
     @pulumi.getter
-    def mappings(self) -> Optional[Mapping[str, Any]]:
+    def mappings(self) -> Optional[Mapping[str, str]]:
         """
         Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
         """
@@ -4319,7 +4319,7 @@ class ConnectionOptions(dict):
                  client_id: Optional[str] = None,
                  client_secret: Optional[str] = None,
                  community_base_url: Optional[str] = None,
-                 configuration: Optional[Mapping[str, Any]] = None,
+                 configuration: Optional[Mapping[str, str]] = None,
                  connection_settings: Optional['outputs.ConnectionOptionsConnectionSettings'] = None,
                  custom_scripts: Optional[Mapping[str, str]] = None,
                  debug: Optional[bool] = None,
@@ -4410,7 +4410,7 @@ class ConnectionOptions(dict):
         :param str client_id: The strategy's client ID.
         :param str client_secret: The strategy's client secret.
         :param str community_base_url: Salesforce community base URL.
-        :param Mapping[str, Any] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
+        :param Mapping[str, str] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         :param 'ConnectionOptionsConnectionSettingsArgs' connection_settings: Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
         :param Mapping[str, str] custom_scripts: A map of scripts used to integrate with a custom database.
         :param bool debug: When enabled, additional debug information will be generated.
@@ -4761,7 +4761,7 @@ class ConnectionOptions(dict):
 
     @property
     @pulumi.getter
-    def configuration(self) -> Optional[Mapping[str, Any]]:
+    def configuration(self) -> Optional[Mapping[str, str]]:
         """
         A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         """
@@ -10261,7 +10261,7 @@ class GetClientAddonSamlpResult(dict):
                  logouts: Sequence['outputs.GetClientAddonSamlpLogoutResult'],
                  map_identities: bool,
                  map_unknown_claims_as_is: bool,
-                 mappings: Mapping[str, Any],
+                 mappings: Mapping[str, str],
                  name_identifier_format: str,
                  name_identifier_probes: Sequence[str],
                  passthrough_claims_with_no_mapping: bool,
@@ -10283,7 +10283,7 @@ class GetClientAddonSamlpResult(dict):
         :param Sequence['GetClientAddonSamlpLogoutArgs'] logouts: Configuration settings for logout.
         :param bool map_identities: Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
         :param bool map_unknown_claims_as_is: Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
-        :param Mapping[str, Any] mappings: Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
+        :param Mapping[str, str] mappings: Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
         :param str name_identifier_format: Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
         :param Sequence[str] name_identifier_probes: Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
         :param bool passthrough_claims_with_no_mapping: Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
@@ -10413,7 +10413,7 @@ class GetClientAddonSamlpResult(dict):
 
     @property
     @pulumi.getter
-    def mappings(self) -> Mapping[str, Any]:
+    def mappings(self) -> Mapping[str, str]:
         """
         Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
         """
@@ -11028,7 +11028,7 @@ class GetConnectionOptionResult(dict):
                  client_id: str,
                  client_secret: str,
                  community_base_url: str,
-                 configuration: Mapping[str, Any],
+                 configuration: Mapping[str, str],
                  connection_settings: Sequence['outputs.GetConnectionOptionConnectionSettingResult'],
                  custom_scripts: Mapping[str, str],
                  debug: bool,
@@ -11119,7 +11119,7 @@ class GetConnectionOptionResult(dict):
         :param str client_id: The strategy's client ID.
         :param str client_secret: The strategy's client secret.
         :param str community_base_url: Salesforce community base URL.
-        :param Mapping[str, Any] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
+        :param Mapping[str, str] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         :param Sequence['GetConnectionOptionConnectionSettingArgs'] connection_settings: Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
         :param Mapping[str, str] custom_scripts: A map of scripts used to integrate with a custom database.
         :param bool debug: When enabled, additional debug information will be generated.
@@ -11380,7 +11380,7 @@ class GetConnectionOptionResult(dict):
 
     @property
     @pulumi.getter
-    def configuration(self) -> Mapping[str, Any]:
+    def configuration(self) -> Mapping[str, str]:
         """
         A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         """

@@ -16,7 +16,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -255,14 +254,14 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;{@literal @} [Tab] [Space]`.
      * 
      */
-    @Export(name="clientMetadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> clientMetadata;
+    @Export(name="clientMetadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> clientMetadata;
 
     /**
      * @return Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;{@literal @} [Tab] [Space]`.
      * 
      */
-    public Output<Optional<Map<String,Object>>> clientMetadata() {
+    public Output<Optional<Map<String,String>>> clientMetadata() {
         return Codegen.optional(this.clientMetadata);
     }
     /**
@@ -577,14 +576,14 @@ public class Client extends com.pulumi.resources.CustomResource {
      * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      * 
      */
-    @Export(name="signingKeys", refs={List.class,Map.class,String.class,Object.class}, tree="[0,[1,2,3]]")
-    private Output<List<Map<String,Object>>> signingKeys;
+    @Export(name="signingKeys", refs={List.class,Map.class,String.class}, tree="[0,[1,2,2]]")
+    private Output<List<Map<String,String>>> signingKeys;
 
     /**
      * @return List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      * 
      */
-    public Output<List<Map<String,Object>>> signingKeys() {
+    public Output<List<Map<String,String>>> signingKeys() {
         return this.signingKeys;
     }
     /**

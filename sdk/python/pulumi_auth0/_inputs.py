@@ -3001,7 +3001,7 @@ class ClientAddonsSamlpArgs:
                  logout: Optional[pulumi.Input['ClientAddonsSamlpLogoutArgs']] = None,
                  map_identities: Optional[pulumi.Input[bool]] = None,
                  map_unknown_claims_as_is: Optional[pulumi.Input[bool]] = None,
-                 mappings: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 mappings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name_identifier_format: Optional[pulumi.Input[str]] = None,
                  name_identifier_probes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  passthrough_claims_with_no_mapping: Optional[pulumi.Input[bool]] = None,
@@ -3023,7 +3023,7 @@ class ClientAddonsSamlpArgs:
         :param pulumi.Input['ClientAddonsSamlpLogoutArgs'] logout: Configuration settings for logout.
         :param pulumi.Input[bool] map_identities: Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
         :param pulumi.Input[bool] map_unknown_claims_as_is: Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
-        :param pulumi.Input[Mapping[str, Any]] mappings: Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] mappings: Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
         :param pulumi.Input[str] name_identifier_format: Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_identifier_probes: Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
         :param pulumi.Input[bool] passthrough_claims_with_no_mapping: Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
@@ -3222,14 +3222,14 @@ class ClientAddonsSamlpArgs:
 
     @property
     @pulumi.getter
-    def mappings(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def mappings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
         """
         return pulumi.get(self, "mappings")
 
     @mappings.setter
-    def mappings(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def mappings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "mappings", value)
 
     @property
@@ -4258,7 +4258,7 @@ class ConnectionOptionsArgs:
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  community_base_url: Optional[pulumi.Input[str]] = None,
-                 configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  connection_settings: Optional[pulumi.Input['ConnectionOptionsConnectionSettingsArgs']] = None,
                  custom_scripts: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  debug: Optional[pulumi.Input[bool]] = None,
@@ -4349,7 +4349,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[str] client_id: The strategy's client ID.
         :param pulumi.Input[str] client_secret: The strategy's client secret.
         :param pulumi.Input[str] community_base_url: Salesforce community base URL.
-        :param pulumi.Input[Mapping[str, Any]] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         :param pulumi.Input['ConnectionOptionsConnectionSettingsArgs'] connection_settings: Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_scripts: A map of scripts used to integrate with a custom database.
         :param pulumi.Input[bool] debug: When enabled, additional debug information will be generated.
@@ -4744,14 +4744,14 @@ class ConnectionOptionsArgs:
 
     @property
     @pulumi.getter
-    def configuration(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
-    def configuration(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def configuration(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "configuration", value)
 
     @property

@@ -8,7 +8,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -206,13 +205,13 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
      * 
      */
     @Import(name="mappings")
-    private @Nullable Output<Map<String,Object>> mappings;
+    private @Nullable Output<Map<String,String>> mappings;
 
     /**
      * @return Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
      * 
      */
-    public Optional<Output<Map<String,Object>>> mappings() {
+    public Optional<Output<Map<String,String>>> mappings() {
         return Optional.ofNullable(this.mappings);
     }
 
@@ -638,7 +637,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder mappings(@Nullable Output<Map<String,Object>> mappings) {
+        public Builder mappings(@Nullable Output<Map<String,String>> mappings) {
             $.mappings = mappings;
             return this;
         }
@@ -649,7 +648,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder mappings(Map<String,Object> mappings) {
+        public Builder mappings(Map<String,String> mappings) {
             return mappings(Output.of(mappings));
         }
 

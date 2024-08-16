@@ -85,14 +85,14 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? MapUnknownClaimsAsIs { get; set; }
 
         [Input("mappings")]
-        private InputMap<object>? _mappings;
+        private InputMap<string>? _mappings;
 
         /// <summary>
         /// Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
         /// </summary>
-        public InputMap<object> Mappings
+        public InputMap<string> Mappings
         {
-            get => _mappings ?? (_mappings = new InputMap<object>());
+            get => _mappings ?? (_mappings = new InputMap<string>());
             set => _mappings = value;
         }
 

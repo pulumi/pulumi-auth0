@@ -154,7 +154,7 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()&lt;&gt;@ [Tab] [Space]`.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> ClientMetadata;
+        public readonly ImmutableDictionary<string, string> ClientMetadata;
         public readonly string ClientSecret;
         /// <summary>
         /// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
@@ -251,7 +251,7 @@ namespace Pulumi.Auth0
         /// <summary>
         /// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         /// </summary>
-        public readonly ImmutableArray<ImmutableDictionary<string, object>> SigningKeys;
+        public readonly ImmutableArray<ImmutableDictionary<string, string>> SigningKeys;
         /// <summary>
         /// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         /// </summary>
@@ -287,7 +287,7 @@ namespace Pulumi.Auth0
 
             string? clientId,
 
-            ImmutableDictionary<string, object> clientMetadata,
+            ImmutableDictionary<string, string> clientMetadata,
 
             string clientSecret,
 
@@ -337,7 +337,7 @@ namespace Pulumi.Auth0
 
             bool requirePushedAuthorizationRequests,
 
-            ImmutableArray<ImmutableDictionary<string, object>> signingKeys,
+            ImmutableArray<ImmutableDictionary<string, string>> signingKeys,
 
             bool sso,
 

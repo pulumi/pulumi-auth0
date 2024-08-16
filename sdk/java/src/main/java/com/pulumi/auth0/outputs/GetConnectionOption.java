@@ -20,7 +20,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -87,7 +86,7 @@ public final class GetConnectionOption {
      * @return A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
      * 
      */
-    private Map<String,Object> configuration;
+    private Map<String,String> configuration;
     /**
      * @return Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
      * 
@@ -561,7 +560,7 @@ public final class GetConnectionOption {
      * @return A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
      * 
      */
-    public Map<String,Object> configuration() {
+    public Map<String,String> configuration() {
         return this.configuration;
     }
     /**
@@ -1131,7 +1130,7 @@ public final class GetConnectionOption {
         private String clientId;
         private String clientSecret;
         private String communityBaseUrl;
-        private Map<String,Object> configuration;
+        private Map<String,String> configuration;
         private List<GetConnectionOptionConnectionSetting> connectionSettings;
         private Map<String,String> customScripts;
         private Boolean debug;
@@ -1400,7 +1399,7 @@ public final class GetConnectionOption {
             return this;
         }
         @CustomType.Setter
-        public Builder configuration(Map<String,Object> configuration) {
+        public Builder configuration(Map<String,String> configuration) {
             if (configuration == null) {
               throw new MissingRequiredPropertyException("GetConnectionOption", "configuration");
             }

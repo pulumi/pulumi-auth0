@@ -60,7 +60,7 @@ namespace Pulumi.Auth0.Outputs
         /// <summary>
         /// A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Configuration;
+        public readonly ImmutableDictionary<string, string> Configuration;
         /// <summary>
         /// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
         /// </summary>
@@ -398,7 +398,7 @@ namespace Pulumi.Auth0.Outputs
 
             string communityBaseUrl,
 
-            ImmutableDictionary<string, object> configuration,
+            ImmutableDictionary<string, string> configuration,
 
             ImmutableArray<Outputs.GetConnectionOptionConnectionSettingResult> connectionSettings,
 

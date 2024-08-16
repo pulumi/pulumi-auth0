@@ -64,7 +64,7 @@ namespace Pulumi.Auth0.Outputs
         /// <summary>
         /// Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Mappings;
+        public readonly ImmutableDictionary<string, string>? Mappings;
         /// <summary>
         /// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
         /// </summary>
@@ -124,7 +124,7 @@ namespace Pulumi.Auth0.Outputs
 
             bool? mapUnknownClaimsAsIs,
 
-            ImmutableDictionary<string, object>? mappings,
+            ImmutableDictionary<string, string>? mappings,
 
             string? nameIdentifierFormat,
 

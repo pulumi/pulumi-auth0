@@ -20,7 +20,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -203,13 +202,13 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
      * 
      */
     @Import(name="configuration")
-    private @Nullable Output<Map<String,Object>> configuration;
+    private @Nullable Output<Map<String,String>> configuration;
 
     /**
      * @return A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
      * 
      */
-    public Optional<Output<Map<String,Object>>> configuration() {
+    public Optional<Output<Map<String,String>>> configuration() {
         return Optional.ofNullable(this.configuration);
     }
 
@@ -1743,7 +1742,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder configuration(@Nullable Output<Map<String,Object>> configuration) {
+        public Builder configuration(@Nullable Output<Map<String,String>> configuration) {
             $.configuration = configuration;
             return this;
         }
@@ -1754,7 +1753,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder configuration(Map<String,Object> configuration) {
+        public Builder configuration(Map<String,String> configuration) {
             return configuration(Output.of(configuration));
         }
 

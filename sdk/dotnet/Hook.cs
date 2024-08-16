@@ -65,7 +65,7 @@ namespace Pulumi.Auth0
         /// Dependencies of this hook used by the WebTask server.
         /// </summary>
         [Output("dependencies")]
-        public Output<ImmutableDictionary<string, object>?> Dependencies { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Dependencies { get; private set; } = null!;
 
         /// <summary>
         /// Whether the hook is enabled, or disabled.
@@ -89,7 +89,7 @@ namespace Pulumi.Auth0
         /// The secrets associated with the hook.
         /// </summary>
         [Output("secrets")]
-        public Output<ImmutableDictionary<string, object>?> Secrets { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Secrets { get; private set; } = null!;
 
         /// <summary>
         /// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
@@ -148,14 +148,14 @@ namespace Pulumi.Auth0
     public sealed class HookArgs : global::Pulumi.ResourceArgs
     {
         [Input("dependencies")]
-        private InputMap<object>? _dependencies;
+        private InputMap<string>? _dependencies;
 
         /// <summary>
         /// Dependencies of this hook used by the WebTask server.
         /// </summary>
-        public InputMap<object> Dependencies
+        public InputMap<string> Dependencies
         {
-            get => _dependencies ?? (_dependencies = new InputMap<object>());
+            get => _dependencies ?? (_dependencies = new InputMap<string>());
             set => _dependencies = value;
         }
 
@@ -178,17 +178,17 @@ namespace Pulumi.Auth0
         public Input<string> Script { get; set; } = null!;
 
         [Input("secrets")]
-        private InputMap<object>? _secrets;
+        private InputMap<string>? _secrets;
 
         /// <summary>
         /// The secrets associated with the hook.
         /// </summary>
-        public InputMap<object> Secrets
+        public InputMap<string> Secrets
         {
-            get => _secrets ?? (_secrets = new InputMap<object>());
+            get => _secrets ?? (_secrets = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _secrets = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
@@ -208,14 +208,14 @@ namespace Pulumi.Auth0
     public sealed class HookState : global::Pulumi.ResourceArgs
     {
         [Input("dependencies")]
-        private InputMap<object>? _dependencies;
+        private InputMap<string>? _dependencies;
 
         /// <summary>
         /// Dependencies of this hook used by the WebTask server.
         /// </summary>
-        public InputMap<object> Dependencies
+        public InputMap<string> Dependencies
         {
-            get => _dependencies ?? (_dependencies = new InputMap<object>());
+            get => _dependencies ?? (_dependencies = new InputMap<string>());
             set => _dependencies = value;
         }
 
@@ -238,17 +238,17 @@ namespace Pulumi.Auth0
         public Input<string>? Script { get; set; }
 
         [Input("secrets")]
-        private InputMap<object>? _secrets;
+        private InputMap<string>? _secrets;
 
         /// <summary>
         /// The secrets associated with the hook.
         /// </summary>
-        public InputMap<object> Secrets
+        public InputMap<string> Secrets
         {
-            get => _secrets ?? (_secrets = new InputMap<object>());
+            get => _secrets ?? (_secrets = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _secrets = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }

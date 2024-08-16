@@ -35,11 +35,11 @@ import (
 //				Script:    pulumi.String("    function (user, context, callback) {\n      callback(null, { user });\n    }\n"),
 //				TriggerId: pulumi.String("pre-user-registration"),
 //				Enabled:   pulumi.Bool(true),
-//				Secrets: pulumi.Map{
-//					"foo": pulumi.Any("bar"),
+//				Secrets: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
 //				},
-//				Dependencies: pulumi.Map{
-//					"auth0": pulumi.Any("2.30.0"),
+//				Dependencies: pulumi.StringMap{
+//					"auth0": pulumi.String("2.30.0"),
 //				},
 //			})
 //			if err != nil {
@@ -66,7 +66,7 @@ type Hook struct {
 	pulumi.CustomResourceState
 
 	// Dependencies of this hook used by the WebTask server.
-	Dependencies pulumi.MapOutput `pulumi:"dependencies"`
+	Dependencies pulumi.StringMapOutput `pulumi:"dependencies"`
 	// Whether the hook is enabled, or disabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Name of this hook.
@@ -74,7 +74,7 @@ type Hook struct {
 	// Code to be executed when this hook runs.
 	Script pulumi.StringOutput `pulumi:"script"`
 	// The secrets associated with the hook.
-	Secrets pulumi.MapOutput `pulumi:"secrets"`
+	Secrets pulumi.StringMapOutput `pulumi:"secrets"`
 	// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
 	TriggerId pulumi.StringOutput `pulumi:"triggerId"`
 }
@@ -93,7 +93,7 @@ func NewHook(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'TriggerId'")
 	}
 	if args.Secrets != nil {
-		args.Secrets = pulumi.ToSecret(args.Secrets).(pulumi.MapInput)
+		args.Secrets = pulumi.ToSecret(args.Secrets).(pulumi.StringMapInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"secrets",
@@ -123,7 +123,7 @@ func GetHook(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Hook resources.
 type hookState struct {
 	// Dependencies of this hook used by the WebTask server.
-	Dependencies map[string]interface{} `pulumi:"dependencies"`
+	Dependencies map[string]string `pulumi:"dependencies"`
 	// Whether the hook is enabled, or disabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Name of this hook.
@@ -131,14 +131,14 @@ type hookState struct {
 	// Code to be executed when this hook runs.
 	Script *string `pulumi:"script"`
 	// The secrets associated with the hook.
-	Secrets map[string]interface{} `pulumi:"secrets"`
+	Secrets map[string]string `pulumi:"secrets"`
 	// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
 	TriggerId *string `pulumi:"triggerId"`
 }
 
 type HookState struct {
 	// Dependencies of this hook used by the WebTask server.
-	Dependencies pulumi.MapInput
+	Dependencies pulumi.StringMapInput
 	// Whether the hook is enabled, or disabled.
 	Enabled pulumi.BoolPtrInput
 	// Name of this hook.
@@ -146,7 +146,7 @@ type HookState struct {
 	// Code to be executed when this hook runs.
 	Script pulumi.StringPtrInput
 	// The secrets associated with the hook.
-	Secrets pulumi.MapInput
+	Secrets pulumi.StringMapInput
 	// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
 	TriggerId pulumi.StringPtrInput
 }
@@ -157,7 +157,7 @@ func (HookState) ElementType() reflect.Type {
 
 type hookArgs struct {
 	// Dependencies of this hook used by the WebTask server.
-	Dependencies map[string]interface{} `pulumi:"dependencies"`
+	Dependencies map[string]string `pulumi:"dependencies"`
 	// Whether the hook is enabled, or disabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Name of this hook.
@@ -165,7 +165,7 @@ type hookArgs struct {
 	// Code to be executed when this hook runs.
 	Script string `pulumi:"script"`
 	// The secrets associated with the hook.
-	Secrets map[string]interface{} `pulumi:"secrets"`
+	Secrets map[string]string `pulumi:"secrets"`
 	// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
 	TriggerId string `pulumi:"triggerId"`
 }
@@ -173,7 +173,7 @@ type hookArgs struct {
 // The set of arguments for constructing a Hook resource.
 type HookArgs struct {
 	// Dependencies of this hook used by the WebTask server.
-	Dependencies pulumi.MapInput
+	Dependencies pulumi.StringMapInput
 	// Whether the hook is enabled, or disabled.
 	Enabled pulumi.BoolPtrInput
 	// Name of this hook.
@@ -181,7 +181,7 @@ type HookArgs struct {
 	// Code to be executed when this hook runs.
 	Script pulumi.StringInput
 	// The secrets associated with the hook.
-	Secrets pulumi.MapInput
+	Secrets pulumi.StringMapInput
 	// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
 	TriggerId pulumi.StringInput
 }
@@ -274,8 +274,8 @@ func (o HookOutput) ToHookOutputWithContext(ctx context.Context) HookOutput {
 }
 
 // Dependencies of this hook used by the WebTask server.
-func (o HookOutput) Dependencies() pulumi.MapOutput {
-	return o.ApplyT(func(v *Hook) pulumi.MapOutput { return v.Dependencies }).(pulumi.MapOutput)
+func (o HookOutput) Dependencies() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Hook) pulumi.StringMapOutput { return v.Dependencies }).(pulumi.StringMapOutput)
 }
 
 // Whether the hook is enabled, or disabled.
@@ -294,8 +294,8 @@ func (o HookOutput) Script() pulumi.StringOutput {
 }
 
 // The secrets associated with the hook.
-func (o HookOutput) Secrets() pulumi.MapOutput {
-	return o.ApplyT(func(v *Hook) pulumi.MapOutput { return v.Secrets }).(pulumi.MapOutput)
+func (o HookOutput) Secrets() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Hook) pulumi.StringMapOutput { return v.Secrets }).(pulumi.StringMapOutput)
 }
 
 // Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.

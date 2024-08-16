@@ -7979,7 +7979,7 @@ type ClientAddonsSamlp struct {
 	// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
 	MapUnknownClaimsAsIs *bool `pulumi:"mapUnknownClaimsAsIs"`
 	// Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
-	Mappings map[string]interface{} `pulumi:"mappings"`
+	Mappings map[string]string `pulumi:"mappings"`
 	// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
 	NameIdentifierFormat *string `pulumi:"nameIdentifierFormat"`
 	// Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
@@ -8035,7 +8035,7 @@ type ClientAddonsSamlpArgs struct {
 	// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
 	MapUnknownClaimsAsIs pulumi.BoolPtrInput `pulumi:"mapUnknownClaimsAsIs"`
 	// Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
-	Mappings pulumi.MapInput `pulumi:"mappings"`
+	Mappings pulumi.StringMapInput `pulumi:"mappings"`
 	// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
 	NameIdentifierFormat pulumi.StringPtrInput `pulumi:"nameIdentifierFormat"`
 	// Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
@@ -8192,8 +8192,8 @@ func (o ClientAddonsSamlpOutput) MapUnknownClaimsAsIs() pulumi.BoolPtrOutput {
 }
 
 // Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
-func (o ClientAddonsSamlpOutput) Mappings() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) map[string]interface{} { return v.Mappings }).(pulumi.MapOutput)
+func (o ClientAddonsSamlpOutput) Mappings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ClientAddonsSamlp) map[string]string { return v.Mappings }).(pulumi.StringMapOutput)
 }
 
 // Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
@@ -8381,13 +8381,13 @@ func (o ClientAddonsSamlpPtrOutput) MapUnknownClaimsAsIs() pulumi.BoolPtrOutput 
 }
 
 // Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
-func (o ClientAddonsSamlpPtrOutput) Mappings() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientAddonsSamlp) map[string]interface{} {
+func (o ClientAddonsSamlpPtrOutput) Mappings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClientAddonsSamlp) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Mappings
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
@@ -11781,7 +11781,7 @@ type ConnectionOptions struct {
 	// Salesforce community base URL.
 	CommunityBaseUrl *string `pulumi:"communityBaseUrl"`
 	// A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
-	Configuration map[string]interface{} `pulumi:"configuration"`
+	Configuration map[string]string `pulumi:"configuration"`
 	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 	ConnectionSettings *ConnectionOptionsConnectionSettings `pulumi:"connectionSettings"`
 	// A map of scripts used to integrate with a custom database.
@@ -11975,7 +11975,7 @@ type ConnectionOptionsArgs struct {
 	// Salesforce community base URL.
 	CommunityBaseUrl pulumi.StringPtrInput `pulumi:"communityBaseUrl"`
 	// A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
-	Configuration pulumi.MapInput `pulumi:"configuration"`
+	Configuration pulumi.StringMapInput `pulumi:"configuration"`
 	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 	ConnectionSettings ConnectionOptionsConnectionSettingsPtrInput `pulumi:"connectionSettings"`
 	// A map of scripts used to integrate with a custom database.
@@ -12267,8 +12267,8 @@ func (o ConnectionOptionsOutput) CommunityBaseUrl() pulumi.StringPtrOutput {
 }
 
 // A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
-func (o ConnectionOptionsOutput) Configuration() pulumi.MapOutput {
-	return o.ApplyT(func(v ConnectionOptions) map[string]interface{} { return v.Configuration }).(pulumi.MapOutput)
+func (o ConnectionOptionsOutput) Configuration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.Configuration }).(pulumi.StringMapOutput)
 }
 
 // Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
@@ -12798,13 +12798,13 @@ func (o ConnectionOptionsPtrOutput) CommunityBaseUrl() pulumi.StringPtrOutput {
 }
 
 // A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
-func (o ConnectionOptionsPtrOutput) Configuration() pulumi.MapOutput {
-	return o.ApplyT(func(v *ConnectionOptions) map[string]interface{} {
+func (o ConnectionOptionsPtrOutput) Configuration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConnectionOptions) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Configuration
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
@@ -26351,7 +26351,7 @@ type GetClientAddonSamlp struct {
 	// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
 	MapUnknownClaimsAsIs bool `pulumi:"mapUnknownClaimsAsIs"`
 	// Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
-	Mappings map[string]interface{} `pulumi:"mappings"`
+	Mappings map[string]string `pulumi:"mappings"`
 	// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
 	NameIdentifierFormat string `pulumi:"nameIdentifierFormat"`
 	// Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
@@ -26407,7 +26407,7 @@ type GetClientAddonSamlpArgs struct {
 	// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
 	MapUnknownClaimsAsIs pulumi.BoolInput `pulumi:"mapUnknownClaimsAsIs"`
 	// Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
-	Mappings pulumi.MapInput `pulumi:"mappings"`
+	Mappings pulumi.StringMapInput `pulumi:"mappings"`
 	// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
 	NameIdentifierFormat pulumi.StringInput `pulumi:"nameIdentifierFormat"`
 	// Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
@@ -26538,8 +26538,8 @@ func (o GetClientAddonSamlpOutput) MapUnknownClaimsAsIs() pulumi.BoolOutput {
 }
 
 // Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
-func (o GetClientAddonSamlpOutput) Mappings() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClientAddonSamlp) map[string]interface{} { return v.Mappings }).(pulumi.MapOutput)
+func (o GetClientAddonSamlpOutput) Mappings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) map[string]string { return v.Mappings }).(pulumi.StringMapOutput)
 }
 
 // Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
@@ -28634,7 +28634,7 @@ type GetConnectionOption struct {
 	// Salesforce community base URL.
 	CommunityBaseUrl string `pulumi:"communityBaseUrl"`
 	// A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
-	Configuration map[string]interface{} `pulumi:"configuration"`
+	Configuration map[string]string `pulumi:"configuration"`
 	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 	ConnectionSettings []GetConnectionOptionConnectionSetting `pulumi:"connectionSettings"`
 	// A map of scripts used to integrate with a custom database.
@@ -28828,7 +28828,7 @@ type GetConnectionOptionArgs struct {
 	// Salesforce community base URL.
 	CommunityBaseUrl pulumi.StringInput `pulumi:"communityBaseUrl"`
 	// A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
-	Configuration pulumi.MapInput `pulumi:"configuration"`
+	Configuration pulumi.StringMapInput `pulumi:"configuration"`
 	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 	ConnectionSettings GetConnectionOptionConnectionSettingArrayInput `pulumi:"connectionSettings"`
 	// A map of scripts used to integrate with a custom database.
@@ -29094,8 +29094,8 @@ func (o GetConnectionOptionOutput) CommunityBaseUrl() pulumi.StringOutput {
 }
 
 // A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
-func (o GetConnectionOptionOutput) Configuration() pulumi.MapOutput {
-	return o.ApplyT(func(v GetConnectionOption) map[string]interface{} { return v.Configuration }).(pulumi.MapOutput)
+func (o GetConnectionOptionOutput) Configuration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetConnectionOption) map[string]string { return v.Configuration }).(pulumi.StringMapOutput)
 }
 
 // Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.

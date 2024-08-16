@@ -831,7 +831,7 @@ export interface ClientAddonsSamlp {
     /**
      * Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
      */
-    mappings?: {[key: string]: any};
+    mappings?: {[key: string]: string};
     /**
      * Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
      */
@@ -1157,7 +1157,7 @@ export interface ConnectionOptions {
     /**
      * A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
      */
-    configuration?: {[key: string]: any};
+    configuration?: {[key: string]: string};
     /**
      * Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
      */
@@ -2493,7 +2493,7 @@ export interface GetClientAddonSamlp {
     /**
      * Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
      */
-    mappings: {[key: string]: any};
+    mappings: {[key: string]: string};
     /**
      * Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
      */
@@ -2769,7 +2769,7 @@ export interface GetConnectionOption {
     /**
      * A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
      */
-    configuration: {[key: string]: any};
+    configuration: {[key: string]: string};
     /**
      * Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
      */
