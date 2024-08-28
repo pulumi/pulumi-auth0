@@ -16,6 +16,8 @@ import com.pulumi.auth0.inputs.GetResourceServerArgs;
 import com.pulumi.auth0.inputs.GetResourceServerPlainArgs;
 import com.pulumi.auth0.inputs.GetRoleArgs;
 import com.pulumi.auth0.inputs.GetRolePlainArgs;
+import com.pulumi.auth0.inputs.GetSelfServiceProfileArgs;
+import com.pulumi.auth0.inputs.GetSelfServiceProfilePlainArgs;
 import com.pulumi.auth0.inputs.GetUserArgs;
 import com.pulumi.auth0.inputs.GetUserPlainArgs;
 import com.pulumi.auth0.outputs.GetAttackProtectionResult;
@@ -29,6 +31,7 @@ import com.pulumi.auth0.outputs.GetOrganizationResult;
 import com.pulumi.auth0.outputs.GetPagesResult;
 import com.pulumi.auth0.outputs.GetResourceServerResult;
 import com.pulumi.auth0.outputs.GetRoleResult;
+import com.pulumi.auth0.outputs.GetSelfServiceProfileResult;
 import com.pulumi.auth0.outputs.GetSigningKeysResult;
 import com.pulumi.auth0.outputs.GetTenantResult;
 import com.pulumi.auth0.outputs.GetUserResult;
@@ -2721,6 +2724,178 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetRoleResult> getRolePlain(GetRolePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getRole:getRole", TypeShape.of(GetRoleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Self-Service Profile by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetSelfServiceProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Self-Service- Profile loaded using it's ID.
+     *         final var auth0SelfServiceProfile = Auth0Functions.getSelfServiceProfile(GetSelfServiceProfileArgs.builder()
+     *             .id("some-profile-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSelfServiceProfileResult> getSelfServiceProfile(GetSelfServiceProfileArgs args) {
+        return getSelfServiceProfile(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Self-Service Profile by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetSelfServiceProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Self-Service- Profile loaded using it's ID.
+     *         final var auth0SelfServiceProfile = Auth0Functions.getSelfServiceProfile(GetSelfServiceProfileArgs.builder()
+     *             .id("some-profile-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSelfServiceProfileResult> getSelfServiceProfilePlain(GetSelfServiceProfilePlainArgs args) {
+        return getSelfServiceProfilePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Self-Service Profile by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetSelfServiceProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Self-Service- Profile loaded using it's ID.
+     *         final var auth0SelfServiceProfile = Auth0Functions.getSelfServiceProfile(GetSelfServiceProfileArgs.builder()
+     *             .id("some-profile-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSelfServiceProfileResult> getSelfServiceProfile(GetSelfServiceProfileArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getSelfServiceProfile:getSelfServiceProfile", TypeShape.of(GetSelfServiceProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Self-Service Profile by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetSelfServiceProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Self-Service- Profile loaded using it's ID.
+     *         final var auth0SelfServiceProfile = Auth0Functions.getSelfServiceProfile(GetSelfServiceProfileArgs.builder()
+     *             .id("some-profile-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSelfServiceProfileResult> getSelfServiceProfilePlain(GetSelfServiceProfilePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getSelfServiceProfile:getSelfServiceProfile", TypeShape.of(GetSelfServiceProfileResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).

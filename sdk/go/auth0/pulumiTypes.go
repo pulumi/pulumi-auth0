@@ -11768,6 +11768,8 @@ type ConnectionOptions struct {
 	AppId *string `pulumi:"appId"`
 	// OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
 	AttributeMap *ConnectionOptionsAttributeMap `pulumi:"attributeMap"`
+	// Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+	Attributes []ConnectionOptionsAttribute `pulumi:"attributes"`
 	// Query string parameters to be included as part of the generated passwordless email link.
 	AuthParams map[string]string `pulumi:"authParams"`
 	// Authorization endpoint.
@@ -11870,6 +11872,8 @@ type ConnectionOptions struct {
 	PingFederateBaseUrl *string `pulumi:"pingFederateBaseUrl"`
 	// Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
 	PkceEnabled *bool `pulumi:"pkceEnabled"`
+	// Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+	Precedences []string `pulumi:"precedences"`
 	// The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
 	ProtocolBinding *string `pulumi:"protocolBinding"`
 	// Defines the custom `smsGateway` provider.
@@ -11962,6 +11966,8 @@ type ConnectionOptionsArgs struct {
 	AppId pulumi.StringPtrInput `pulumi:"appId"`
 	// OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
 	AttributeMap ConnectionOptionsAttributeMapPtrInput `pulumi:"attributeMap"`
+	// Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+	Attributes ConnectionOptionsAttributeArrayInput `pulumi:"attributes"`
 	// Query string parameters to be included as part of the generated passwordless email link.
 	AuthParams pulumi.StringMapInput `pulumi:"authParams"`
 	// Authorization endpoint.
@@ -12064,6 +12070,8 @@ type ConnectionOptionsArgs struct {
 	PingFederateBaseUrl pulumi.StringPtrInput `pulumi:"pingFederateBaseUrl"`
 	// Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
 	PkceEnabled pulumi.BoolPtrInput `pulumi:"pkceEnabled"`
+	// Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+	Precedences pulumi.StringArrayInput `pulumi:"precedences"`
 	// The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
 	ProtocolBinding pulumi.StringPtrInput `pulumi:"protocolBinding"`
 	// Defines the custom `smsGateway` provider.
@@ -12234,6 +12242,11 @@ func (o ConnectionOptionsOutput) AppId() pulumi.StringPtrOutput {
 // OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
 func (o ConnectionOptionsOutput) AttributeMap() ConnectionOptionsAttributeMapPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsAttributeMap { return v.AttributeMap }).(ConnectionOptionsAttributeMapPtrOutput)
+}
+
+// Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+func (o ConnectionOptionsOutput) Attributes() ConnectionOptionsAttributeArrayOutput {
+	return o.ApplyT(func(v ConnectionOptions) []ConnectionOptionsAttribute { return v.Attributes }).(ConnectionOptionsAttributeArrayOutput)
 }
 
 // Query string parameters to be included as part of the generated passwordless email link.
@@ -12493,6 +12506,11 @@ func (o ConnectionOptionsOutput) PkceEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.PkceEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+func (o ConnectionOptionsOutput) Precedences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionOptions) []string { return v.Precedences }).(pulumi.StringArrayOutput)
+}
+
 // The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
 func (o ConnectionOptionsOutput) ProtocolBinding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.ProtocolBinding }).(pulumi.StringPtrOutput)
@@ -12735,6 +12753,16 @@ func (o ConnectionOptionsPtrOutput) AttributeMap() ConnectionOptionsAttributeMap
 		}
 		return v.AttributeMap
 	}).(ConnectionOptionsAttributeMapPtrOutput)
+}
+
+// Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+func (o ConnectionOptionsPtrOutput) Attributes() ConnectionOptionsAttributeArrayOutput {
+	return o.ApplyT(func(v *ConnectionOptions) []ConnectionOptionsAttribute {
+		if v == nil {
+			return nil
+		}
+		return v.Attributes
+	}).(ConnectionOptionsAttributeArrayOutput)
 }
 
 // Query string parameters to be included as part of the generated passwordless email link.
@@ -13247,6 +13275,16 @@ func (o ConnectionOptionsPtrOutput) PkceEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+func (o ConnectionOptionsPtrOutput) Precedences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectionOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Precedences
+	}).(pulumi.StringArrayOutput)
+}
+
 // The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
 func (o ConnectionOptionsPtrOutput) ProtocolBinding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
@@ -13587,6 +13625,540 @@ func (o ConnectionOptionsPtrOutput) WaadProtocol() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionOptionsAttribute struct {
+	// Connection Options for Email Attribute
+	Emails []ConnectionOptionsAttributeEmail `pulumi:"emails"`
+	// Connection Options for Phone Number Attribute
+	PhoneNumbers []ConnectionOptionsAttributePhoneNumber `pulumi:"phoneNumbers"`
+	// Connection Options for User Name Attribute
+	Usernames []ConnectionOptionsAttributeUsername `pulumi:"usernames"`
+}
+
+// ConnectionOptionsAttributeInput is an input type that accepts ConnectionOptionsAttributeArgs and ConnectionOptionsAttributeOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeInput` via:
+//
+//	ConnectionOptionsAttributeArgs{...}
+type ConnectionOptionsAttributeInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeOutput() ConnectionOptionsAttributeOutput
+	ToConnectionOptionsAttributeOutputWithContext(context.Context) ConnectionOptionsAttributeOutput
+}
+
+type ConnectionOptionsAttributeArgs struct {
+	// Connection Options for Email Attribute
+	Emails ConnectionOptionsAttributeEmailArrayInput `pulumi:"emails"`
+	// Connection Options for Phone Number Attribute
+	PhoneNumbers ConnectionOptionsAttributePhoneNumberArrayInput `pulumi:"phoneNumbers"`
+	// Connection Options for User Name Attribute
+	Usernames ConnectionOptionsAttributeUsernameArrayInput `pulumi:"usernames"`
+}
+
+func (ConnectionOptionsAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttribute)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeArgs) ToConnectionOptionsAttributeOutput() ConnectionOptionsAttributeOutput {
+	return i.ToConnectionOptionsAttributeOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeArgs) ToConnectionOptionsAttributeOutputWithContext(ctx context.Context) ConnectionOptionsAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeOutput)
+}
+
+// ConnectionOptionsAttributeArrayInput is an input type that accepts ConnectionOptionsAttributeArray and ConnectionOptionsAttributeArrayOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeArrayInput` via:
+//
+//	ConnectionOptionsAttributeArray{ ConnectionOptionsAttributeArgs{...} }
+type ConnectionOptionsAttributeArrayInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeArrayOutput() ConnectionOptionsAttributeArrayOutput
+	ToConnectionOptionsAttributeArrayOutputWithContext(context.Context) ConnectionOptionsAttributeArrayOutput
+}
+
+type ConnectionOptionsAttributeArray []ConnectionOptionsAttributeInput
+
+func (ConnectionOptionsAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttribute)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeArray) ToConnectionOptionsAttributeArrayOutput() ConnectionOptionsAttributeArrayOutput {
+	return i.ToConnectionOptionsAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeArray) ToConnectionOptionsAttributeArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeArrayOutput)
+}
+
+type ConnectionOptionsAttributeOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttribute)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeOutput) ToConnectionOptionsAttributeOutput() ConnectionOptionsAttributeOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeOutput) ToConnectionOptionsAttributeOutputWithContext(ctx context.Context) ConnectionOptionsAttributeOutput {
+	return o
+}
+
+// Connection Options for Email Attribute
+func (o ConnectionOptionsAttributeOutput) Emails() ConnectionOptionsAttributeEmailArrayOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttribute) []ConnectionOptionsAttributeEmail { return v.Emails }).(ConnectionOptionsAttributeEmailArrayOutput)
+}
+
+// Connection Options for Phone Number Attribute
+func (o ConnectionOptionsAttributeOutput) PhoneNumbers() ConnectionOptionsAttributePhoneNumberArrayOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttribute) []ConnectionOptionsAttributePhoneNumber { return v.PhoneNumbers }).(ConnectionOptionsAttributePhoneNumberArrayOutput)
+}
+
+// Connection Options for User Name Attribute
+func (o ConnectionOptionsAttributeOutput) Usernames() ConnectionOptionsAttributeUsernameArrayOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttribute) []ConnectionOptionsAttributeUsername { return v.Usernames }).(ConnectionOptionsAttributeUsernameArrayOutput)
+}
+
+type ConnectionOptionsAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttribute)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeArrayOutput) ToConnectionOptionsAttributeArrayOutput() ConnectionOptionsAttributeArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeArrayOutput) ToConnectionOptionsAttributeArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeArrayOutput) Index(i pulumi.IntInput) ConnectionOptionsAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsAttribute {
+		return vs[0].([]ConnectionOptionsAttribute)[vs[1].(int)]
+	}).(ConnectionOptionsAttributeOutput)
+}
+
+type ConnectionOptionsAttributeEmail struct {
+	// Connection Options Email Attribute Identifier
+	Identifiers []ConnectionOptionsAttributeEmailIdentifier `pulumi:"identifiers"`
+	// Defines whether Profile is required
+	ProfileRequired *bool `pulumi:"profileRequired"`
+	// Defines signup settings for Email attribute
+	Signups []ConnectionOptionsAttributeEmailSignup `pulumi:"signups"`
+}
+
+// ConnectionOptionsAttributeEmailInput is an input type that accepts ConnectionOptionsAttributeEmailArgs and ConnectionOptionsAttributeEmailOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeEmailInput` via:
+//
+//	ConnectionOptionsAttributeEmailArgs{...}
+type ConnectionOptionsAttributeEmailInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeEmailOutput() ConnectionOptionsAttributeEmailOutput
+	ToConnectionOptionsAttributeEmailOutputWithContext(context.Context) ConnectionOptionsAttributeEmailOutput
+}
+
+type ConnectionOptionsAttributeEmailArgs struct {
+	// Connection Options Email Attribute Identifier
+	Identifiers ConnectionOptionsAttributeEmailIdentifierArrayInput `pulumi:"identifiers"`
+	// Defines whether Profile is required
+	ProfileRequired pulumi.BoolPtrInput `pulumi:"profileRequired"`
+	// Defines signup settings for Email attribute
+	Signups ConnectionOptionsAttributeEmailSignupArrayInput `pulumi:"signups"`
+}
+
+func (ConnectionOptionsAttributeEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeEmail)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeEmailArgs) ToConnectionOptionsAttributeEmailOutput() ConnectionOptionsAttributeEmailOutput {
+	return i.ToConnectionOptionsAttributeEmailOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeEmailArgs) ToConnectionOptionsAttributeEmailOutputWithContext(ctx context.Context) ConnectionOptionsAttributeEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeEmailOutput)
+}
+
+// ConnectionOptionsAttributeEmailArrayInput is an input type that accepts ConnectionOptionsAttributeEmailArray and ConnectionOptionsAttributeEmailArrayOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeEmailArrayInput` via:
+//
+//	ConnectionOptionsAttributeEmailArray{ ConnectionOptionsAttributeEmailArgs{...} }
+type ConnectionOptionsAttributeEmailArrayInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeEmailArrayOutput() ConnectionOptionsAttributeEmailArrayOutput
+	ToConnectionOptionsAttributeEmailArrayOutputWithContext(context.Context) ConnectionOptionsAttributeEmailArrayOutput
+}
+
+type ConnectionOptionsAttributeEmailArray []ConnectionOptionsAttributeEmailInput
+
+func (ConnectionOptionsAttributeEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeEmail)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeEmailArray) ToConnectionOptionsAttributeEmailArrayOutput() ConnectionOptionsAttributeEmailArrayOutput {
+	return i.ToConnectionOptionsAttributeEmailArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeEmailArray) ToConnectionOptionsAttributeEmailArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeEmailArrayOutput)
+}
+
+type ConnectionOptionsAttributeEmailOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeEmail)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeEmailOutput) ToConnectionOptionsAttributeEmailOutput() ConnectionOptionsAttributeEmailOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeEmailOutput) ToConnectionOptionsAttributeEmailOutputWithContext(ctx context.Context) ConnectionOptionsAttributeEmailOutput {
+	return o
+}
+
+// Connection Options Email Attribute Identifier
+func (o ConnectionOptionsAttributeEmailOutput) Identifiers() ConnectionOptionsAttributeEmailIdentifierArrayOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeEmail) []ConnectionOptionsAttributeEmailIdentifier {
+		return v.Identifiers
+	}).(ConnectionOptionsAttributeEmailIdentifierArrayOutput)
+}
+
+// Defines whether Profile is required
+func (o ConnectionOptionsAttributeEmailOutput) ProfileRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeEmail) *bool { return v.ProfileRequired }).(pulumi.BoolPtrOutput)
+}
+
+// Defines signup settings for Email attribute
+func (o ConnectionOptionsAttributeEmailOutput) Signups() ConnectionOptionsAttributeEmailSignupArrayOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeEmail) []ConnectionOptionsAttributeEmailSignup { return v.Signups }).(ConnectionOptionsAttributeEmailSignupArrayOutput)
+}
+
+type ConnectionOptionsAttributeEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeEmail)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeEmailArrayOutput) ToConnectionOptionsAttributeEmailArrayOutput() ConnectionOptionsAttributeEmailArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeEmailArrayOutput) ToConnectionOptionsAttributeEmailArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeEmailArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeEmailArrayOutput) Index(i pulumi.IntInput) ConnectionOptionsAttributeEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsAttributeEmail {
+		return vs[0].([]ConnectionOptionsAttributeEmail)[vs[1].(int)]
+	}).(ConnectionOptionsAttributeEmailOutput)
+}
+
+type ConnectionOptionsAttributeEmailIdentifier struct {
+	// Defines whether email attribute is active as an identifier
+	Active *bool `pulumi:"active"`
+}
+
+// ConnectionOptionsAttributeEmailIdentifierInput is an input type that accepts ConnectionOptionsAttributeEmailIdentifierArgs and ConnectionOptionsAttributeEmailIdentifierOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeEmailIdentifierInput` via:
+//
+//	ConnectionOptionsAttributeEmailIdentifierArgs{...}
+type ConnectionOptionsAttributeEmailIdentifierInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeEmailIdentifierOutput() ConnectionOptionsAttributeEmailIdentifierOutput
+	ToConnectionOptionsAttributeEmailIdentifierOutputWithContext(context.Context) ConnectionOptionsAttributeEmailIdentifierOutput
+}
+
+type ConnectionOptionsAttributeEmailIdentifierArgs struct {
+	// Defines whether email attribute is active as an identifier
+	Active pulumi.BoolPtrInput `pulumi:"active"`
+}
+
+func (ConnectionOptionsAttributeEmailIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeEmailIdentifier)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeEmailIdentifierArgs) ToConnectionOptionsAttributeEmailIdentifierOutput() ConnectionOptionsAttributeEmailIdentifierOutput {
+	return i.ToConnectionOptionsAttributeEmailIdentifierOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeEmailIdentifierArgs) ToConnectionOptionsAttributeEmailIdentifierOutputWithContext(ctx context.Context) ConnectionOptionsAttributeEmailIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeEmailIdentifierOutput)
+}
+
+// ConnectionOptionsAttributeEmailIdentifierArrayInput is an input type that accepts ConnectionOptionsAttributeEmailIdentifierArray and ConnectionOptionsAttributeEmailIdentifierArrayOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeEmailIdentifierArrayInput` via:
+//
+//	ConnectionOptionsAttributeEmailIdentifierArray{ ConnectionOptionsAttributeEmailIdentifierArgs{...} }
+type ConnectionOptionsAttributeEmailIdentifierArrayInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeEmailIdentifierArrayOutput() ConnectionOptionsAttributeEmailIdentifierArrayOutput
+	ToConnectionOptionsAttributeEmailIdentifierArrayOutputWithContext(context.Context) ConnectionOptionsAttributeEmailIdentifierArrayOutput
+}
+
+type ConnectionOptionsAttributeEmailIdentifierArray []ConnectionOptionsAttributeEmailIdentifierInput
+
+func (ConnectionOptionsAttributeEmailIdentifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeEmailIdentifier)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeEmailIdentifierArray) ToConnectionOptionsAttributeEmailIdentifierArrayOutput() ConnectionOptionsAttributeEmailIdentifierArrayOutput {
+	return i.ToConnectionOptionsAttributeEmailIdentifierArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeEmailIdentifierArray) ToConnectionOptionsAttributeEmailIdentifierArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeEmailIdentifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeEmailIdentifierArrayOutput)
+}
+
+type ConnectionOptionsAttributeEmailIdentifierOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeEmailIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeEmailIdentifier)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeEmailIdentifierOutput) ToConnectionOptionsAttributeEmailIdentifierOutput() ConnectionOptionsAttributeEmailIdentifierOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeEmailIdentifierOutput) ToConnectionOptionsAttributeEmailIdentifierOutputWithContext(ctx context.Context) ConnectionOptionsAttributeEmailIdentifierOutput {
+	return o
+}
+
+// Defines whether email attribute is active as an identifier
+func (o ConnectionOptionsAttributeEmailIdentifierOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeEmailIdentifier) *bool { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionOptionsAttributeEmailIdentifierArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeEmailIdentifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeEmailIdentifier)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeEmailIdentifierArrayOutput) ToConnectionOptionsAttributeEmailIdentifierArrayOutput() ConnectionOptionsAttributeEmailIdentifierArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeEmailIdentifierArrayOutput) ToConnectionOptionsAttributeEmailIdentifierArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeEmailIdentifierArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeEmailIdentifierArrayOutput) Index(i pulumi.IntInput) ConnectionOptionsAttributeEmailIdentifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsAttributeEmailIdentifier {
+		return vs[0].([]ConnectionOptionsAttributeEmailIdentifier)[vs[1].(int)]
+	}).(ConnectionOptionsAttributeEmailIdentifierOutput)
+}
+
+type ConnectionOptionsAttributeEmailSignup struct {
+	// Defines signup status for Email Attribute
+	Status *string `pulumi:"status"`
+	// Defines settings for Verification under Email attribute
+	Verifications []ConnectionOptionsAttributeEmailSignupVerification `pulumi:"verifications"`
+}
+
+// ConnectionOptionsAttributeEmailSignupInput is an input type that accepts ConnectionOptionsAttributeEmailSignupArgs and ConnectionOptionsAttributeEmailSignupOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeEmailSignupInput` via:
+//
+//	ConnectionOptionsAttributeEmailSignupArgs{...}
+type ConnectionOptionsAttributeEmailSignupInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeEmailSignupOutput() ConnectionOptionsAttributeEmailSignupOutput
+	ToConnectionOptionsAttributeEmailSignupOutputWithContext(context.Context) ConnectionOptionsAttributeEmailSignupOutput
+}
+
+type ConnectionOptionsAttributeEmailSignupArgs struct {
+	// Defines signup status for Email Attribute
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Defines settings for Verification under Email attribute
+	Verifications ConnectionOptionsAttributeEmailSignupVerificationArrayInput `pulumi:"verifications"`
+}
+
+func (ConnectionOptionsAttributeEmailSignupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeEmailSignup)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeEmailSignupArgs) ToConnectionOptionsAttributeEmailSignupOutput() ConnectionOptionsAttributeEmailSignupOutput {
+	return i.ToConnectionOptionsAttributeEmailSignupOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeEmailSignupArgs) ToConnectionOptionsAttributeEmailSignupOutputWithContext(ctx context.Context) ConnectionOptionsAttributeEmailSignupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeEmailSignupOutput)
+}
+
+// ConnectionOptionsAttributeEmailSignupArrayInput is an input type that accepts ConnectionOptionsAttributeEmailSignupArray and ConnectionOptionsAttributeEmailSignupArrayOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeEmailSignupArrayInput` via:
+//
+//	ConnectionOptionsAttributeEmailSignupArray{ ConnectionOptionsAttributeEmailSignupArgs{...} }
+type ConnectionOptionsAttributeEmailSignupArrayInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeEmailSignupArrayOutput() ConnectionOptionsAttributeEmailSignupArrayOutput
+	ToConnectionOptionsAttributeEmailSignupArrayOutputWithContext(context.Context) ConnectionOptionsAttributeEmailSignupArrayOutput
+}
+
+type ConnectionOptionsAttributeEmailSignupArray []ConnectionOptionsAttributeEmailSignupInput
+
+func (ConnectionOptionsAttributeEmailSignupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeEmailSignup)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeEmailSignupArray) ToConnectionOptionsAttributeEmailSignupArrayOutput() ConnectionOptionsAttributeEmailSignupArrayOutput {
+	return i.ToConnectionOptionsAttributeEmailSignupArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeEmailSignupArray) ToConnectionOptionsAttributeEmailSignupArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeEmailSignupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeEmailSignupArrayOutput)
+}
+
+type ConnectionOptionsAttributeEmailSignupOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeEmailSignupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeEmailSignup)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeEmailSignupOutput) ToConnectionOptionsAttributeEmailSignupOutput() ConnectionOptionsAttributeEmailSignupOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeEmailSignupOutput) ToConnectionOptionsAttributeEmailSignupOutputWithContext(ctx context.Context) ConnectionOptionsAttributeEmailSignupOutput {
+	return o
+}
+
+// Defines signup status for Email Attribute
+func (o ConnectionOptionsAttributeEmailSignupOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeEmailSignup) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Defines settings for Verification under Email attribute
+func (o ConnectionOptionsAttributeEmailSignupOutput) Verifications() ConnectionOptionsAttributeEmailSignupVerificationArrayOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeEmailSignup) []ConnectionOptionsAttributeEmailSignupVerification {
+		return v.Verifications
+	}).(ConnectionOptionsAttributeEmailSignupVerificationArrayOutput)
+}
+
+type ConnectionOptionsAttributeEmailSignupArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeEmailSignupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeEmailSignup)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeEmailSignupArrayOutput) ToConnectionOptionsAttributeEmailSignupArrayOutput() ConnectionOptionsAttributeEmailSignupArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeEmailSignupArrayOutput) ToConnectionOptionsAttributeEmailSignupArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeEmailSignupArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeEmailSignupArrayOutput) Index(i pulumi.IntInput) ConnectionOptionsAttributeEmailSignupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsAttributeEmailSignup {
+		return vs[0].([]ConnectionOptionsAttributeEmailSignup)[vs[1].(int)]
+	}).(ConnectionOptionsAttributeEmailSignupOutput)
+}
+
+type ConnectionOptionsAttributeEmailSignupVerification struct {
+	// Defines verification settings for signup attribute
+	Active *bool `pulumi:"active"`
+}
+
+// ConnectionOptionsAttributeEmailSignupVerificationInput is an input type that accepts ConnectionOptionsAttributeEmailSignupVerificationArgs and ConnectionOptionsAttributeEmailSignupVerificationOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeEmailSignupVerificationInput` via:
+//
+//	ConnectionOptionsAttributeEmailSignupVerificationArgs{...}
+type ConnectionOptionsAttributeEmailSignupVerificationInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeEmailSignupVerificationOutput() ConnectionOptionsAttributeEmailSignupVerificationOutput
+	ToConnectionOptionsAttributeEmailSignupVerificationOutputWithContext(context.Context) ConnectionOptionsAttributeEmailSignupVerificationOutput
+}
+
+type ConnectionOptionsAttributeEmailSignupVerificationArgs struct {
+	// Defines verification settings for signup attribute
+	Active pulumi.BoolPtrInput `pulumi:"active"`
+}
+
+func (ConnectionOptionsAttributeEmailSignupVerificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeEmailSignupVerification)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeEmailSignupVerificationArgs) ToConnectionOptionsAttributeEmailSignupVerificationOutput() ConnectionOptionsAttributeEmailSignupVerificationOutput {
+	return i.ToConnectionOptionsAttributeEmailSignupVerificationOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeEmailSignupVerificationArgs) ToConnectionOptionsAttributeEmailSignupVerificationOutputWithContext(ctx context.Context) ConnectionOptionsAttributeEmailSignupVerificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeEmailSignupVerificationOutput)
+}
+
+// ConnectionOptionsAttributeEmailSignupVerificationArrayInput is an input type that accepts ConnectionOptionsAttributeEmailSignupVerificationArray and ConnectionOptionsAttributeEmailSignupVerificationArrayOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeEmailSignupVerificationArrayInput` via:
+//
+//	ConnectionOptionsAttributeEmailSignupVerificationArray{ ConnectionOptionsAttributeEmailSignupVerificationArgs{...} }
+type ConnectionOptionsAttributeEmailSignupVerificationArrayInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeEmailSignupVerificationArrayOutput() ConnectionOptionsAttributeEmailSignupVerificationArrayOutput
+	ToConnectionOptionsAttributeEmailSignupVerificationArrayOutputWithContext(context.Context) ConnectionOptionsAttributeEmailSignupVerificationArrayOutput
+}
+
+type ConnectionOptionsAttributeEmailSignupVerificationArray []ConnectionOptionsAttributeEmailSignupVerificationInput
+
+func (ConnectionOptionsAttributeEmailSignupVerificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeEmailSignupVerification)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeEmailSignupVerificationArray) ToConnectionOptionsAttributeEmailSignupVerificationArrayOutput() ConnectionOptionsAttributeEmailSignupVerificationArrayOutput {
+	return i.ToConnectionOptionsAttributeEmailSignupVerificationArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeEmailSignupVerificationArray) ToConnectionOptionsAttributeEmailSignupVerificationArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeEmailSignupVerificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeEmailSignupVerificationArrayOutput)
+}
+
+type ConnectionOptionsAttributeEmailSignupVerificationOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeEmailSignupVerificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeEmailSignupVerification)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeEmailSignupVerificationOutput) ToConnectionOptionsAttributeEmailSignupVerificationOutput() ConnectionOptionsAttributeEmailSignupVerificationOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeEmailSignupVerificationOutput) ToConnectionOptionsAttributeEmailSignupVerificationOutputWithContext(ctx context.Context) ConnectionOptionsAttributeEmailSignupVerificationOutput {
+	return o
+}
+
+// Defines verification settings for signup attribute
+func (o ConnectionOptionsAttributeEmailSignupVerificationOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeEmailSignupVerification) *bool { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionOptionsAttributeEmailSignupVerificationArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeEmailSignupVerificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeEmailSignupVerification)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeEmailSignupVerificationArrayOutput) ToConnectionOptionsAttributeEmailSignupVerificationArrayOutput() ConnectionOptionsAttributeEmailSignupVerificationArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeEmailSignupVerificationArrayOutput) ToConnectionOptionsAttributeEmailSignupVerificationArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeEmailSignupVerificationArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeEmailSignupVerificationArrayOutput) Index(i pulumi.IntInput) ConnectionOptionsAttributeEmailSignupVerificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsAttributeEmailSignupVerification {
+		return vs[0].([]ConnectionOptionsAttributeEmailSignupVerification)[vs[1].(int)]
+	}).(ConnectionOptionsAttributeEmailSignupVerificationOutput)
+}
+
 type ConnectionOptionsAttributeMap struct {
 	// This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
 	Attributes *string `pulumi:"attributes"`
@@ -13760,6 +14332,974 @@ func (o ConnectionOptionsAttributeMapPtrOutput) UserinfoScope() pulumi.StringPtr
 		}
 		return v.UserinfoScope
 	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionOptionsAttributePhoneNumber struct {
+	// Connection Options Phone Number Attribute Identifier
+	Identifiers []ConnectionOptionsAttributePhoneNumberIdentifier `pulumi:"identifiers"`
+	// Defines whether Profile is required
+	ProfileRequired *bool `pulumi:"profileRequired"`
+	// Defines signup settings for Phone Number attribute
+	Signups []ConnectionOptionsAttributePhoneNumberSignup `pulumi:"signups"`
+}
+
+// ConnectionOptionsAttributePhoneNumberInput is an input type that accepts ConnectionOptionsAttributePhoneNumberArgs and ConnectionOptionsAttributePhoneNumberOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributePhoneNumberInput` via:
+//
+//	ConnectionOptionsAttributePhoneNumberArgs{...}
+type ConnectionOptionsAttributePhoneNumberInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributePhoneNumberOutput() ConnectionOptionsAttributePhoneNumberOutput
+	ToConnectionOptionsAttributePhoneNumberOutputWithContext(context.Context) ConnectionOptionsAttributePhoneNumberOutput
+}
+
+type ConnectionOptionsAttributePhoneNumberArgs struct {
+	// Connection Options Phone Number Attribute Identifier
+	Identifiers ConnectionOptionsAttributePhoneNumberIdentifierArrayInput `pulumi:"identifiers"`
+	// Defines whether Profile is required
+	ProfileRequired pulumi.BoolPtrInput `pulumi:"profileRequired"`
+	// Defines signup settings for Phone Number attribute
+	Signups ConnectionOptionsAttributePhoneNumberSignupArrayInput `pulumi:"signups"`
+}
+
+func (ConnectionOptionsAttributePhoneNumberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributePhoneNumber)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributePhoneNumberArgs) ToConnectionOptionsAttributePhoneNumberOutput() ConnectionOptionsAttributePhoneNumberOutput {
+	return i.ToConnectionOptionsAttributePhoneNumberOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributePhoneNumberArgs) ToConnectionOptionsAttributePhoneNumberOutputWithContext(ctx context.Context) ConnectionOptionsAttributePhoneNumberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributePhoneNumberOutput)
+}
+
+// ConnectionOptionsAttributePhoneNumberArrayInput is an input type that accepts ConnectionOptionsAttributePhoneNumberArray and ConnectionOptionsAttributePhoneNumberArrayOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributePhoneNumberArrayInput` via:
+//
+//	ConnectionOptionsAttributePhoneNumberArray{ ConnectionOptionsAttributePhoneNumberArgs{...} }
+type ConnectionOptionsAttributePhoneNumberArrayInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributePhoneNumberArrayOutput() ConnectionOptionsAttributePhoneNumberArrayOutput
+	ToConnectionOptionsAttributePhoneNumberArrayOutputWithContext(context.Context) ConnectionOptionsAttributePhoneNumberArrayOutput
+}
+
+type ConnectionOptionsAttributePhoneNumberArray []ConnectionOptionsAttributePhoneNumberInput
+
+func (ConnectionOptionsAttributePhoneNumberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributePhoneNumber)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributePhoneNumberArray) ToConnectionOptionsAttributePhoneNumberArrayOutput() ConnectionOptionsAttributePhoneNumberArrayOutput {
+	return i.ToConnectionOptionsAttributePhoneNumberArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributePhoneNumberArray) ToConnectionOptionsAttributePhoneNumberArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributePhoneNumberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributePhoneNumberArrayOutput)
+}
+
+type ConnectionOptionsAttributePhoneNumberOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributePhoneNumberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributePhoneNumber)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributePhoneNumberOutput) ToConnectionOptionsAttributePhoneNumberOutput() ConnectionOptionsAttributePhoneNumberOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributePhoneNumberOutput) ToConnectionOptionsAttributePhoneNumberOutputWithContext(ctx context.Context) ConnectionOptionsAttributePhoneNumberOutput {
+	return o
+}
+
+// Connection Options Phone Number Attribute Identifier
+func (o ConnectionOptionsAttributePhoneNumberOutput) Identifiers() ConnectionOptionsAttributePhoneNumberIdentifierArrayOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributePhoneNumber) []ConnectionOptionsAttributePhoneNumberIdentifier {
+		return v.Identifiers
+	}).(ConnectionOptionsAttributePhoneNumberIdentifierArrayOutput)
+}
+
+// Defines whether Profile is required
+func (o ConnectionOptionsAttributePhoneNumberOutput) ProfileRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributePhoneNumber) *bool { return v.ProfileRequired }).(pulumi.BoolPtrOutput)
+}
+
+// Defines signup settings for Phone Number attribute
+func (o ConnectionOptionsAttributePhoneNumberOutput) Signups() ConnectionOptionsAttributePhoneNumberSignupArrayOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributePhoneNumber) []ConnectionOptionsAttributePhoneNumberSignup {
+		return v.Signups
+	}).(ConnectionOptionsAttributePhoneNumberSignupArrayOutput)
+}
+
+type ConnectionOptionsAttributePhoneNumberArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributePhoneNumberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributePhoneNumber)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributePhoneNumberArrayOutput) ToConnectionOptionsAttributePhoneNumberArrayOutput() ConnectionOptionsAttributePhoneNumberArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributePhoneNumberArrayOutput) ToConnectionOptionsAttributePhoneNumberArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributePhoneNumberArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributePhoneNumberArrayOutput) Index(i pulumi.IntInput) ConnectionOptionsAttributePhoneNumberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsAttributePhoneNumber {
+		return vs[0].([]ConnectionOptionsAttributePhoneNumber)[vs[1].(int)]
+	}).(ConnectionOptionsAttributePhoneNumberOutput)
+}
+
+type ConnectionOptionsAttributePhoneNumberIdentifier struct {
+	// Defines whether Phone Number attribute is active as an identifier
+	Active *bool `pulumi:"active"`
+}
+
+// ConnectionOptionsAttributePhoneNumberIdentifierInput is an input type that accepts ConnectionOptionsAttributePhoneNumberIdentifierArgs and ConnectionOptionsAttributePhoneNumberIdentifierOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributePhoneNumberIdentifierInput` via:
+//
+//	ConnectionOptionsAttributePhoneNumberIdentifierArgs{...}
+type ConnectionOptionsAttributePhoneNumberIdentifierInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributePhoneNumberIdentifierOutput() ConnectionOptionsAttributePhoneNumberIdentifierOutput
+	ToConnectionOptionsAttributePhoneNumberIdentifierOutputWithContext(context.Context) ConnectionOptionsAttributePhoneNumberIdentifierOutput
+}
+
+type ConnectionOptionsAttributePhoneNumberIdentifierArgs struct {
+	// Defines whether Phone Number attribute is active as an identifier
+	Active pulumi.BoolPtrInput `pulumi:"active"`
+}
+
+func (ConnectionOptionsAttributePhoneNumberIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributePhoneNumberIdentifier)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributePhoneNumberIdentifierArgs) ToConnectionOptionsAttributePhoneNumberIdentifierOutput() ConnectionOptionsAttributePhoneNumberIdentifierOutput {
+	return i.ToConnectionOptionsAttributePhoneNumberIdentifierOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributePhoneNumberIdentifierArgs) ToConnectionOptionsAttributePhoneNumberIdentifierOutputWithContext(ctx context.Context) ConnectionOptionsAttributePhoneNumberIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributePhoneNumberIdentifierOutput)
+}
+
+// ConnectionOptionsAttributePhoneNumberIdentifierArrayInput is an input type that accepts ConnectionOptionsAttributePhoneNumberIdentifierArray and ConnectionOptionsAttributePhoneNumberIdentifierArrayOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributePhoneNumberIdentifierArrayInput` via:
+//
+//	ConnectionOptionsAttributePhoneNumberIdentifierArray{ ConnectionOptionsAttributePhoneNumberIdentifierArgs{...} }
+type ConnectionOptionsAttributePhoneNumberIdentifierArrayInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributePhoneNumberIdentifierArrayOutput() ConnectionOptionsAttributePhoneNumberIdentifierArrayOutput
+	ToConnectionOptionsAttributePhoneNumberIdentifierArrayOutputWithContext(context.Context) ConnectionOptionsAttributePhoneNumberIdentifierArrayOutput
+}
+
+type ConnectionOptionsAttributePhoneNumberIdentifierArray []ConnectionOptionsAttributePhoneNumberIdentifierInput
+
+func (ConnectionOptionsAttributePhoneNumberIdentifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributePhoneNumberIdentifier)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributePhoneNumberIdentifierArray) ToConnectionOptionsAttributePhoneNumberIdentifierArrayOutput() ConnectionOptionsAttributePhoneNumberIdentifierArrayOutput {
+	return i.ToConnectionOptionsAttributePhoneNumberIdentifierArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributePhoneNumberIdentifierArray) ToConnectionOptionsAttributePhoneNumberIdentifierArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributePhoneNumberIdentifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributePhoneNumberIdentifierArrayOutput)
+}
+
+type ConnectionOptionsAttributePhoneNumberIdentifierOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributePhoneNumberIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributePhoneNumberIdentifier)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributePhoneNumberIdentifierOutput) ToConnectionOptionsAttributePhoneNumberIdentifierOutput() ConnectionOptionsAttributePhoneNumberIdentifierOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributePhoneNumberIdentifierOutput) ToConnectionOptionsAttributePhoneNumberIdentifierOutputWithContext(ctx context.Context) ConnectionOptionsAttributePhoneNumberIdentifierOutput {
+	return o
+}
+
+// Defines whether Phone Number attribute is active as an identifier
+func (o ConnectionOptionsAttributePhoneNumberIdentifierOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributePhoneNumberIdentifier) *bool { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionOptionsAttributePhoneNumberIdentifierArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributePhoneNumberIdentifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributePhoneNumberIdentifier)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributePhoneNumberIdentifierArrayOutput) ToConnectionOptionsAttributePhoneNumberIdentifierArrayOutput() ConnectionOptionsAttributePhoneNumberIdentifierArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributePhoneNumberIdentifierArrayOutput) ToConnectionOptionsAttributePhoneNumberIdentifierArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributePhoneNumberIdentifierArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributePhoneNumberIdentifierArrayOutput) Index(i pulumi.IntInput) ConnectionOptionsAttributePhoneNumberIdentifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsAttributePhoneNumberIdentifier {
+		return vs[0].([]ConnectionOptionsAttributePhoneNumberIdentifier)[vs[1].(int)]
+	}).(ConnectionOptionsAttributePhoneNumberIdentifierOutput)
+}
+
+type ConnectionOptionsAttributePhoneNumberSignup struct {
+	// Defines status of signup for Phone Number attribute
+	Status *string `pulumi:"status"`
+	// Defines verification settings for Phone Number attribute
+	Verifications []ConnectionOptionsAttributePhoneNumberSignupVerification `pulumi:"verifications"`
+}
+
+// ConnectionOptionsAttributePhoneNumberSignupInput is an input type that accepts ConnectionOptionsAttributePhoneNumberSignupArgs and ConnectionOptionsAttributePhoneNumberSignupOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributePhoneNumberSignupInput` via:
+//
+//	ConnectionOptionsAttributePhoneNumberSignupArgs{...}
+type ConnectionOptionsAttributePhoneNumberSignupInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributePhoneNumberSignupOutput() ConnectionOptionsAttributePhoneNumberSignupOutput
+	ToConnectionOptionsAttributePhoneNumberSignupOutputWithContext(context.Context) ConnectionOptionsAttributePhoneNumberSignupOutput
+}
+
+type ConnectionOptionsAttributePhoneNumberSignupArgs struct {
+	// Defines status of signup for Phone Number attribute
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Defines verification settings for Phone Number attribute
+	Verifications ConnectionOptionsAttributePhoneNumberSignupVerificationArrayInput `pulumi:"verifications"`
+}
+
+func (ConnectionOptionsAttributePhoneNumberSignupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributePhoneNumberSignup)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributePhoneNumberSignupArgs) ToConnectionOptionsAttributePhoneNumberSignupOutput() ConnectionOptionsAttributePhoneNumberSignupOutput {
+	return i.ToConnectionOptionsAttributePhoneNumberSignupOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributePhoneNumberSignupArgs) ToConnectionOptionsAttributePhoneNumberSignupOutputWithContext(ctx context.Context) ConnectionOptionsAttributePhoneNumberSignupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributePhoneNumberSignupOutput)
+}
+
+// ConnectionOptionsAttributePhoneNumberSignupArrayInput is an input type that accepts ConnectionOptionsAttributePhoneNumberSignupArray and ConnectionOptionsAttributePhoneNumberSignupArrayOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributePhoneNumberSignupArrayInput` via:
+//
+//	ConnectionOptionsAttributePhoneNumberSignupArray{ ConnectionOptionsAttributePhoneNumberSignupArgs{...} }
+type ConnectionOptionsAttributePhoneNumberSignupArrayInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributePhoneNumberSignupArrayOutput() ConnectionOptionsAttributePhoneNumberSignupArrayOutput
+	ToConnectionOptionsAttributePhoneNumberSignupArrayOutputWithContext(context.Context) ConnectionOptionsAttributePhoneNumberSignupArrayOutput
+}
+
+type ConnectionOptionsAttributePhoneNumberSignupArray []ConnectionOptionsAttributePhoneNumberSignupInput
+
+func (ConnectionOptionsAttributePhoneNumberSignupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributePhoneNumberSignup)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributePhoneNumberSignupArray) ToConnectionOptionsAttributePhoneNumberSignupArrayOutput() ConnectionOptionsAttributePhoneNumberSignupArrayOutput {
+	return i.ToConnectionOptionsAttributePhoneNumberSignupArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributePhoneNumberSignupArray) ToConnectionOptionsAttributePhoneNumberSignupArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributePhoneNumberSignupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributePhoneNumberSignupArrayOutput)
+}
+
+type ConnectionOptionsAttributePhoneNumberSignupOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributePhoneNumberSignupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributePhoneNumberSignup)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributePhoneNumberSignupOutput) ToConnectionOptionsAttributePhoneNumberSignupOutput() ConnectionOptionsAttributePhoneNumberSignupOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributePhoneNumberSignupOutput) ToConnectionOptionsAttributePhoneNumberSignupOutputWithContext(ctx context.Context) ConnectionOptionsAttributePhoneNumberSignupOutput {
+	return o
+}
+
+// Defines status of signup for Phone Number attribute
+func (o ConnectionOptionsAttributePhoneNumberSignupOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributePhoneNumberSignup) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Defines verification settings for Phone Number attribute
+func (o ConnectionOptionsAttributePhoneNumberSignupOutput) Verifications() ConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributePhoneNumberSignup) []ConnectionOptionsAttributePhoneNumberSignupVerification {
+		return v.Verifications
+	}).(ConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput)
+}
+
+type ConnectionOptionsAttributePhoneNumberSignupArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributePhoneNumberSignupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributePhoneNumberSignup)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributePhoneNumberSignupArrayOutput) ToConnectionOptionsAttributePhoneNumberSignupArrayOutput() ConnectionOptionsAttributePhoneNumberSignupArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributePhoneNumberSignupArrayOutput) ToConnectionOptionsAttributePhoneNumberSignupArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributePhoneNumberSignupArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributePhoneNumberSignupArrayOutput) Index(i pulumi.IntInput) ConnectionOptionsAttributePhoneNumberSignupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsAttributePhoneNumberSignup {
+		return vs[0].([]ConnectionOptionsAttributePhoneNumberSignup)[vs[1].(int)]
+	}).(ConnectionOptionsAttributePhoneNumberSignupOutput)
+}
+
+type ConnectionOptionsAttributePhoneNumberSignupVerification struct {
+	// Defines verification settings for Phone Number attribute
+	Active *bool `pulumi:"active"`
+}
+
+// ConnectionOptionsAttributePhoneNumberSignupVerificationInput is an input type that accepts ConnectionOptionsAttributePhoneNumberSignupVerificationArgs and ConnectionOptionsAttributePhoneNumberSignupVerificationOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributePhoneNumberSignupVerificationInput` via:
+//
+//	ConnectionOptionsAttributePhoneNumberSignupVerificationArgs{...}
+type ConnectionOptionsAttributePhoneNumberSignupVerificationInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributePhoneNumberSignupVerificationOutput() ConnectionOptionsAttributePhoneNumberSignupVerificationOutput
+	ToConnectionOptionsAttributePhoneNumberSignupVerificationOutputWithContext(context.Context) ConnectionOptionsAttributePhoneNumberSignupVerificationOutput
+}
+
+type ConnectionOptionsAttributePhoneNumberSignupVerificationArgs struct {
+	// Defines verification settings for Phone Number attribute
+	Active pulumi.BoolPtrInput `pulumi:"active"`
+}
+
+func (ConnectionOptionsAttributePhoneNumberSignupVerificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributePhoneNumberSignupVerification)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributePhoneNumberSignupVerificationArgs) ToConnectionOptionsAttributePhoneNumberSignupVerificationOutput() ConnectionOptionsAttributePhoneNumberSignupVerificationOutput {
+	return i.ToConnectionOptionsAttributePhoneNumberSignupVerificationOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributePhoneNumberSignupVerificationArgs) ToConnectionOptionsAttributePhoneNumberSignupVerificationOutputWithContext(ctx context.Context) ConnectionOptionsAttributePhoneNumberSignupVerificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributePhoneNumberSignupVerificationOutput)
+}
+
+// ConnectionOptionsAttributePhoneNumberSignupVerificationArrayInput is an input type that accepts ConnectionOptionsAttributePhoneNumberSignupVerificationArray and ConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributePhoneNumberSignupVerificationArrayInput` via:
+//
+//	ConnectionOptionsAttributePhoneNumberSignupVerificationArray{ ConnectionOptionsAttributePhoneNumberSignupVerificationArgs{...} }
+type ConnectionOptionsAttributePhoneNumberSignupVerificationArrayInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput() ConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput
+	ToConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutputWithContext(context.Context) ConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput
+}
+
+type ConnectionOptionsAttributePhoneNumberSignupVerificationArray []ConnectionOptionsAttributePhoneNumberSignupVerificationInput
+
+func (ConnectionOptionsAttributePhoneNumberSignupVerificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributePhoneNumberSignupVerification)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributePhoneNumberSignupVerificationArray) ToConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput() ConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput {
+	return i.ToConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributePhoneNumberSignupVerificationArray) ToConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput)
+}
+
+type ConnectionOptionsAttributePhoneNumberSignupVerificationOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributePhoneNumberSignupVerificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributePhoneNumberSignupVerification)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributePhoneNumberSignupVerificationOutput) ToConnectionOptionsAttributePhoneNumberSignupVerificationOutput() ConnectionOptionsAttributePhoneNumberSignupVerificationOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributePhoneNumberSignupVerificationOutput) ToConnectionOptionsAttributePhoneNumberSignupVerificationOutputWithContext(ctx context.Context) ConnectionOptionsAttributePhoneNumberSignupVerificationOutput {
+	return o
+}
+
+// Defines verification settings for Phone Number attribute
+func (o ConnectionOptionsAttributePhoneNumberSignupVerificationOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributePhoneNumberSignupVerification) *bool { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributePhoneNumberSignupVerification)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput) ToConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput() ConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput) ToConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput) Index(i pulumi.IntInput) ConnectionOptionsAttributePhoneNumberSignupVerificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsAttributePhoneNumberSignupVerification {
+		return vs[0].([]ConnectionOptionsAttributePhoneNumberSignupVerification)[vs[1].(int)]
+	}).(ConnectionOptionsAttributePhoneNumberSignupVerificationOutput)
+}
+
+type ConnectionOptionsAttributeUsername struct {
+	// Connection options for User Name Attribute Identifier
+	Identifiers []ConnectionOptionsAttributeUsernameIdentifier `pulumi:"identifiers"`
+	// Defines whether Profile is required
+	ProfileRequired *bool `pulumi:"profileRequired"`
+	// Defines signup settings for User Name attribute
+	Signups []ConnectionOptionsAttributeUsernameSignup `pulumi:"signups"`
+	// Defines validation settings for User Name attribute
+	Validations []ConnectionOptionsAttributeUsernameValidation `pulumi:"validations"`
+}
+
+// ConnectionOptionsAttributeUsernameInput is an input type that accepts ConnectionOptionsAttributeUsernameArgs and ConnectionOptionsAttributeUsernameOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeUsernameInput` via:
+//
+//	ConnectionOptionsAttributeUsernameArgs{...}
+type ConnectionOptionsAttributeUsernameInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeUsernameOutput() ConnectionOptionsAttributeUsernameOutput
+	ToConnectionOptionsAttributeUsernameOutputWithContext(context.Context) ConnectionOptionsAttributeUsernameOutput
+}
+
+type ConnectionOptionsAttributeUsernameArgs struct {
+	// Connection options for User Name Attribute Identifier
+	Identifiers ConnectionOptionsAttributeUsernameIdentifierArrayInput `pulumi:"identifiers"`
+	// Defines whether Profile is required
+	ProfileRequired pulumi.BoolPtrInput `pulumi:"profileRequired"`
+	// Defines signup settings for User Name attribute
+	Signups ConnectionOptionsAttributeUsernameSignupArrayInput `pulumi:"signups"`
+	// Defines validation settings for User Name attribute
+	Validations ConnectionOptionsAttributeUsernameValidationArrayInput `pulumi:"validations"`
+}
+
+func (ConnectionOptionsAttributeUsernameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeUsername)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeUsernameArgs) ToConnectionOptionsAttributeUsernameOutput() ConnectionOptionsAttributeUsernameOutput {
+	return i.ToConnectionOptionsAttributeUsernameOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeUsernameArgs) ToConnectionOptionsAttributeUsernameOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeUsernameOutput)
+}
+
+// ConnectionOptionsAttributeUsernameArrayInput is an input type that accepts ConnectionOptionsAttributeUsernameArray and ConnectionOptionsAttributeUsernameArrayOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeUsernameArrayInput` via:
+//
+//	ConnectionOptionsAttributeUsernameArray{ ConnectionOptionsAttributeUsernameArgs{...} }
+type ConnectionOptionsAttributeUsernameArrayInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeUsernameArrayOutput() ConnectionOptionsAttributeUsernameArrayOutput
+	ToConnectionOptionsAttributeUsernameArrayOutputWithContext(context.Context) ConnectionOptionsAttributeUsernameArrayOutput
+}
+
+type ConnectionOptionsAttributeUsernameArray []ConnectionOptionsAttributeUsernameInput
+
+func (ConnectionOptionsAttributeUsernameArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeUsername)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeUsernameArray) ToConnectionOptionsAttributeUsernameArrayOutput() ConnectionOptionsAttributeUsernameArrayOutput {
+	return i.ToConnectionOptionsAttributeUsernameArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeUsernameArray) ToConnectionOptionsAttributeUsernameArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeUsernameArrayOutput)
+}
+
+type ConnectionOptionsAttributeUsernameOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeUsernameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeUsername)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeUsernameOutput) ToConnectionOptionsAttributeUsernameOutput() ConnectionOptionsAttributeUsernameOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeUsernameOutput) ToConnectionOptionsAttributeUsernameOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameOutput {
+	return o
+}
+
+// Connection options for User Name Attribute Identifier
+func (o ConnectionOptionsAttributeUsernameOutput) Identifiers() ConnectionOptionsAttributeUsernameIdentifierArrayOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeUsername) []ConnectionOptionsAttributeUsernameIdentifier {
+		return v.Identifiers
+	}).(ConnectionOptionsAttributeUsernameIdentifierArrayOutput)
+}
+
+// Defines whether Profile is required
+func (o ConnectionOptionsAttributeUsernameOutput) ProfileRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeUsername) *bool { return v.ProfileRequired }).(pulumi.BoolPtrOutput)
+}
+
+// Defines signup settings for User Name attribute
+func (o ConnectionOptionsAttributeUsernameOutput) Signups() ConnectionOptionsAttributeUsernameSignupArrayOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeUsername) []ConnectionOptionsAttributeUsernameSignup {
+		return v.Signups
+	}).(ConnectionOptionsAttributeUsernameSignupArrayOutput)
+}
+
+// Defines validation settings for User Name attribute
+func (o ConnectionOptionsAttributeUsernameOutput) Validations() ConnectionOptionsAttributeUsernameValidationArrayOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeUsername) []ConnectionOptionsAttributeUsernameValidation {
+		return v.Validations
+	}).(ConnectionOptionsAttributeUsernameValidationArrayOutput)
+}
+
+type ConnectionOptionsAttributeUsernameArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeUsernameArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeUsername)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeUsernameArrayOutput) ToConnectionOptionsAttributeUsernameArrayOutput() ConnectionOptionsAttributeUsernameArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeUsernameArrayOutput) ToConnectionOptionsAttributeUsernameArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeUsernameArrayOutput) Index(i pulumi.IntInput) ConnectionOptionsAttributeUsernameOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsAttributeUsername {
+		return vs[0].([]ConnectionOptionsAttributeUsername)[vs[1].(int)]
+	}).(ConnectionOptionsAttributeUsernameOutput)
+}
+
+type ConnectionOptionsAttributeUsernameIdentifier struct {
+	// Defines whether UserName attribute is active as an identifier
+	Active *bool `pulumi:"active"`
+}
+
+// ConnectionOptionsAttributeUsernameIdentifierInput is an input type that accepts ConnectionOptionsAttributeUsernameIdentifierArgs and ConnectionOptionsAttributeUsernameIdentifierOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeUsernameIdentifierInput` via:
+//
+//	ConnectionOptionsAttributeUsernameIdentifierArgs{...}
+type ConnectionOptionsAttributeUsernameIdentifierInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeUsernameIdentifierOutput() ConnectionOptionsAttributeUsernameIdentifierOutput
+	ToConnectionOptionsAttributeUsernameIdentifierOutputWithContext(context.Context) ConnectionOptionsAttributeUsernameIdentifierOutput
+}
+
+type ConnectionOptionsAttributeUsernameIdentifierArgs struct {
+	// Defines whether UserName attribute is active as an identifier
+	Active pulumi.BoolPtrInput `pulumi:"active"`
+}
+
+func (ConnectionOptionsAttributeUsernameIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeUsernameIdentifier)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeUsernameIdentifierArgs) ToConnectionOptionsAttributeUsernameIdentifierOutput() ConnectionOptionsAttributeUsernameIdentifierOutput {
+	return i.ToConnectionOptionsAttributeUsernameIdentifierOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeUsernameIdentifierArgs) ToConnectionOptionsAttributeUsernameIdentifierOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeUsernameIdentifierOutput)
+}
+
+// ConnectionOptionsAttributeUsernameIdentifierArrayInput is an input type that accepts ConnectionOptionsAttributeUsernameIdentifierArray and ConnectionOptionsAttributeUsernameIdentifierArrayOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeUsernameIdentifierArrayInput` via:
+//
+//	ConnectionOptionsAttributeUsernameIdentifierArray{ ConnectionOptionsAttributeUsernameIdentifierArgs{...} }
+type ConnectionOptionsAttributeUsernameIdentifierArrayInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeUsernameIdentifierArrayOutput() ConnectionOptionsAttributeUsernameIdentifierArrayOutput
+	ToConnectionOptionsAttributeUsernameIdentifierArrayOutputWithContext(context.Context) ConnectionOptionsAttributeUsernameIdentifierArrayOutput
+}
+
+type ConnectionOptionsAttributeUsernameIdentifierArray []ConnectionOptionsAttributeUsernameIdentifierInput
+
+func (ConnectionOptionsAttributeUsernameIdentifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeUsernameIdentifier)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeUsernameIdentifierArray) ToConnectionOptionsAttributeUsernameIdentifierArrayOutput() ConnectionOptionsAttributeUsernameIdentifierArrayOutput {
+	return i.ToConnectionOptionsAttributeUsernameIdentifierArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeUsernameIdentifierArray) ToConnectionOptionsAttributeUsernameIdentifierArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameIdentifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeUsernameIdentifierArrayOutput)
+}
+
+type ConnectionOptionsAttributeUsernameIdentifierOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeUsernameIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeUsernameIdentifier)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeUsernameIdentifierOutput) ToConnectionOptionsAttributeUsernameIdentifierOutput() ConnectionOptionsAttributeUsernameIdentifierOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeUsernameIdentifierOutput) ToConnectionOptionsAttributeUsernameIdentifierOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameIdentifierOutput {
+	return o
+}
+
+// Defines whether UserName attribute is active as an identifier
+func (o ConnectionOptionsAttributeUsernameIdentifierOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeUsernameIdentifier) *bool { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionOptionsAttributeUsernameIdentifierArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeUsernameIdentifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeUsernameIdentifier)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeUsernameIdentifierArrayOutput) ToConnectionOptionsAttributeUsernameIdentifierArrayOutput() ConnectionOptionsAttributeUsernameIdentifierArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeUsernameIdentifierArrayOutput) ToConnectionOptionsAttributeUsernameIdentifierArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameIdentifierArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeUsernameIdentifierArrayOutput) Index(i pulumi.IntInput) ConnectionOptionsAttributeUsernameIdentifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsAttributeUsernameIdentifier {
+		return vs[0].([]ConnectionOptionsAttributeUsernameIdentifier)[vs[1].(int)]
+	}).(ConnectionOptionsAttributeUsernameIdentifierOutput)
+}
+
+type ConnectionOptionsAttributeUsernameSignup struct {
+	// Defines whether User Name attribute is active as an identifier
+	Status *string `pulumi:"status"`
+}
+
+// ConnectionOptionsAttributeUsernameSignupInput is an input type that accepts ConnectionOptionsAttributeUsernameSignupArgs and ConnectionOptionsAttributeUsernameSignupOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeUsernameSignupInput` via:
+//
+//	ConnectionOptionsAttributeUsernameSignupArgs{...}
+type ConnectionOptionsAttributeUsernameSignupInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeUsernameSignupOutput() ConnectionOptionsAttributeUsernameSignupOutput
+	ToConnectionOptionsAttributeUsernameSignupOutputWithContext(context.Context) ConnectionOptionsAttributeUsernameSignupOutput
+}
+
+type ConnectionOptionsAttributeUsernameSignupArgs struct {
+	// Defines whether User Name attribute is active as an identifier
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (ConnectionOptionsAttributeUsernameSignupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeUsernameSignup)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeUsernameSignupArgs) ToConnectionOptionsAttributeUsernameSignupOutput() ConnectionOptionsAttributeUsernameSignupOutput {
+	return i.ToConnectionOptionsAttributeUsernameSignupOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeUsernameSignupArgs) ToConnectionOptionsAttributeUsernameSignupOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameSignupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeUsernameSignupOutput)
+}
+
+// ConnectionOptionsAttributeUsernameSignupArrayInput is an input type that accepts ConnectionOptionsAttributeUsernameSignupArray and ConnectionOptionsAttributeUsernameSignupArrayOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeUsernameSignupArrayInput` via:
+//
+//	ConnectionOptionsAttributeUsernameSignupArray{ ConnectionOptionsAttributeUsernameSignupArgs{...} }
+type ConnectionOptionsAttributeUsernameSignupArrayInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeUsernameSignupArrayOutput() ConnectionOptionsAttributeUsernameSignupArrayOutput
+	ToConnectionOptionsAttributeUsernameSignupArrayOutputWithContext(context.Context) ConnectionOptionsAttributeUsernameSignupArrayOutput
+}
+
+type ConnectionOptionsAttributeUsernameSignupArray []ConnectionOptionsAttributeUsernameSignupInput
+
+func (ConnectionOptionsAttributeUsernameSignupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeUsernameSignup)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeUsernameSignupArray) ToConnectionOptionsAttributeUsernameSignupArrayOutput() ConnectionOptionsAttributeUsernameSignupArrayOutput {
+	return i.ToConnectionOptionsAttributeUsernameSignupArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeUsernameSignupArray) ToConnectionOptionsAttributeUsernameSignupArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameSignupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeUsernameSignupArrayOutput)
+}
+
+type ConnectionOptionsAttributeUsernameSignupOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeUsernameSignupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeUsernameSignup)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeUsernameSignupOutput) ToConnectionOptionsAttributeUsernameSignupOutput() ConnectionOptionsAttributeUsernameSignupOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeUsernameSignupOutput) ToConnectionOptionsAttributeUsernameSignupOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameSignupOutput {
+	return o
+}
+
+// Defines whether User Name attribute is active as an identifier
+func (o ConnectionOptionsAttributeUsernameSignupOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeUsernameSignup) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionOptionsAttributeUsernameSignupArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeUsernameSignupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeUsernameSignup)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeUsernameSignupArrayOutput) ToConnectionOptionsAttributeUsernameSignupArrayOutput() ConnectionOptionsAttributeUsernameSignupArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeUsernameSignupArrayOutput) ToConnectionOptionsAttributeUsernameSignupArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameSignupArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeUsernameSignupArrayOutput) Index(i pulumi.IntInput) ConnectionOptionsAttributeUsernameSignupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsAttributeUsernameSignup {
+		return vs[0].([]ConnectionOptionsAttributeUsernameSignup)[vs[1].(int)]
+	}).(ConnectionOptionsAttributeUsernameSignupOutput)
+}
+
+type ConnectionOptionsAttributeUsernameValidation struct {
+	// Defines allowed types for for UserName attribute
+	AllowedTypes []ConnectionOptionsAttributeUsernameValidationAllowedType `pulumi:"allowedTypes"`
+	// Defines Max Length for User Name attribute
+	MaxLength *int `pulumi:"maxLength"`
+	// Defines Min Length for User Name attribute
+	MinLength *int `pulumi:"minLength"`
+}
+
+// ConnectionOptionsAttributeUsernameValidationInput is an input type that accepts ConnectionOptionsAttributeUsernameValidationArgs and ConnectionOptionsAttributeUsernameValidationOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeUsernameValidationInput` via:
+//
+//	ConnectionOptionsAttributeUsernameValidationArgs{...}
+type ConnectionOptionsAttributeUsernameValidationInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeUsernameValidationOutput() ConnectionOptionsAttributeUsernameValidationOutput
+	ToConnectionOptionsAttributeUsernameValidationOutputWithContext(context.Context) ConnectionOptionsAttributeUsernameValidationOutput
+}
+
+type ConnectionOptionsAttributeUsernameValidationArgs struct {
+	// Defines allowed types for for UserName attribute
+	AllowedTypes ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayInput `pulumi:"allowedTypes"`
+	// Defines Max Length for User Name attribute
+	MaxLength pulumi.IntPtrInput `pulumi:"maxLength"`
+	// Defines Min Length for User Name attribute
+	MinLength pulumi.IntPtrInput `pulumi:"minLength"`
+}
+
+func (ConnectionOptionsAttributeUsernameValidationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeUsernameValidation)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeUsernameValidationArgs) ToConnectionOptionsAttributeUsernameValidationOutput() ConnectionOptionsAttributeUsernameValidationOutput {
+	return i.ToConnectionOptionsAttributeUsernameValidationOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeUsernameValidationArgs) ToConnectionOptionsAttributeUsernameValidationOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameValidationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeUsernameValidationOutput)
+}
+
+// ConnectionOptionsAttributeUsernameValidationArrayInput is an input type that accepts ConnectionOptionsAttributeUsernameValidationArray and ConnectionOptionsAttributeUsernameValidationArrayOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeUsernameValidationArrayInput` via:
+//
+//	ConnectionOptionsAttributeUsernameValidationArray{ ConnectionOptionsAttributeUsernameValidationArgs{...} }
+type ConnectionOptionsAttributeUsernameValidationArrayInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeUsernameValidationArrayOutput() ConnectionOptionsAttributeUsernameValidationArrayOutput
+	ToConnectionOptionsAttributeUsernameValidationArrayOutputWithContext(context.Context) ConnectionOptionsAttributeUsernameValidationArrayOutput
+}
+
+type ConnectionOptionsAttributeUsernameValidationArray []ConnectionOptionsAttributeUsernameValidationInput
+
+func (ConnectionOptionsAttributeUsernameValidationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeUsernameValidation)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeUsernameValidationArray) ToConnectionOptionsAttributeUsernameValidationArrayOutput() ConnectionOptionsAttributeUsernameValidationArrayOutput {
+	return i.ToConnectionOptionsAttributeUsernameValidationArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeUsernameValidationArray) ToConnectionOptionsAttributeUsernameValidationArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameValidationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeUsernameValidationArrayOutput)
+}
+
+type ConnectionOptionsAttributeUsernameValidationOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeUsernameValidationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeUsernameValidation)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeUsernameValidationOutput) ToConnectionOptionsAttributeUsernameValidationOutput() ConnectionOptionsAttributeUsernameValidationOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeUsernameValidationOutput) ToConnectionOptionsAttributeUsernameValidationOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameValidationOutput {
+	return o
+}
+
+// Defines allowed types for for UserName attribute
+func (o ConnectionOptionsAttributeUsernameValidationOutput) AllowedTypes() ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeUsernameValidation) []ConnectionOptionsAttributeUsernameValidationAllowedType {
+		return v.AllowedTypes
+	}).(ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput)
+}
+
+// Defines Max Length for User Name attribute
+func (o ConnectionOptionsAttributeUsernameValidationOutput) MaxLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeUsernameValidation) *int { return v.MaxLength }).(pulumi.IntPtrOutput)
+}
+
+// Defines Min Length for User Name attribute
+func (o ConnectionOptionsAttributeUsernameValidationOutput) MinLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeUsernameValidation) *int { return v.MinLength }).(pulumi.IntPtrOutput)
+}
+
+type ConnectionOptionsAttributeUsernameValidationArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeUsernameValidationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeUsernameValidation)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeUsernameValidationArrayOutput) ToConnectionOptionsAttributeUsernameValidationArrayOutput() ConnectionOptionsAttributeUsernameValidationArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeUsernameValidationArrayOutput) ToConnectionOptionsAttributeUsernameValidationArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameValidationArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeUsernameValidationArrayOutput) Index(i pulumi.IntInput) ConnectionOptionsAttributeUsernameValidationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsAttributeUsernameValidation {
+		return vs[0].([]ConnectionOptionsAttributeUsernameValidation)[vs[1].(int)]
+	}).(ConnectionOptionsAttributeUsernameValidationOutput)
+}
+
+type ConnectionOptionsAttributeUsernameValidationAllowedType struct {
+	// One of the allowed types for UserName signup attribute
+	Email *bool `pulumi:"email"`
+	// One of the allowed types for UserName signup attribute
+	PhoneNumber *bool `pulumi:"phoneNumber"`
+}
+
+// ConnectionOptionsAttributeUsernameValidationAllowedTypeInput is an input type that accepts ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs and ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeUsernameValidationAllowedTypeInput` via:
+//
+//	ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs{...}
+type ConnectionOptionsAttributeUsernameValidationAllowedTypeInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeUsernameValidationAllowedTypeOutput() ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput
+	ToConnectionOptionsAttributeUsernameValidationAllowedTypeOutputWithContext(context.Context) ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput
+}
+
+type ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs struct {
+	// One of the allowed types for UserName signup attribute
+	Email pulumi.BoolPtrInput `pulumi:"email"`
+	// One of the allowed types for UserName signup attribute
+	PhoneNumber pulumi.BoolPtrInput `pulumi:"phoneNumber"`
+}
+
+func (ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeUsernameValidationAllowedType)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs) ToConnectionOptionsAttributeUsernameValidationAllowedTypeOutput() ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput {
+	return i.ToConnectionOptionsAttributeUsernameValidationAllowedTypeOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs) ToConnectionOptionsAttributeUsernameValidationAllowedTypeOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput)
+}
+
+// ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayInput is an input type that accepts ConnectionOptionsAttributeUsernameValidationAllowedTypeArray and ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayInput` via:
+//
+//	ConnectionOptionsAttributeUsernameValidationAllowedTypeArray{ ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs{...} }
+type ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput() ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput
+	ToConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutputWithContext(context.Context) ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput
+}
+
+type ConnectionOptionsAttributeUsernameValidationAllowedTypeArray []ConnectionOptionsAttributeUsernameValidationAllowedTypeInput
+
+func (ConnectionOptionsAttributeUsernameValidationAllowedTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeUsernameValidationAllowedType)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAttributeUsernameValidationAllowedTypeArray) ToConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput() ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput {
+	return i.ToConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAttributeUsernameValidationAllowedTypeArray) ToConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput)
+}
+
+type ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAttributeUsernameValidationAllowedType)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput) ToConnectionOptionsAttributeUsernameValidationAllowedTypeOutput() ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput) ToConnectionOptionsAttributeUsernameValidationAllowedTypeOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput {
+	return o
+}
+
+// One of the allowed types for UserName signup attribute
+func (o ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput) Email() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeUsernameValidationAllowedType) *bool { return v.Email }).(pulumi.BoolPtrOutput)
+}
+
+// One of the allowed types for UserName signup attribute
+func (o ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput) PhoneNumber() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeUsernameValidationAllowedType) *bool { return v.PhoneNumber }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAttributeUsernameValidationAllowedType)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput) ToConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput() ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput) ToConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutputWithContext(ctx context.Context) ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput) Index(i pulumi.IntInput) ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsAttributeUsernameValidationAllowedType {
+		return vs[0].([]ConnectionOptionsAttributeUsernameValidationAllowedType)[vs[1].(int)]
+	}).(ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput)
 }
 
 type ConnectionOptionsConnectionSettings struct {
@@ -20395,6 +21935,414 @@ func (o RolePermissionsPermissionArrayOutput) Index(i pulumi.IntInput) RolePermi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RolePermissionsPermission {
 		return vs[0].([]RolePermissionsPermission)[vs[1].(int)]
 	}).(RolePermissionsPermissionOutput)
+}
+
+type SelfServiceProfileBranding struct {
+	// Configuration settings for colors for branding.
+	Colors *SelfServiceProfileBrandingColors `pulumi:"colors"`
+	// URL of logo to display on login page.
+	LogoUrl *string `pulumi:"logoUrl"`
+}
+
+// SelfServiceProfileBrandingInput is an input type that accepts SelfServiceProfileBrandingArgs and SelfServiceProfileBrandingOutput values.
+// You can construct a concrete instance of `SelfServiceProfileBrandingInput` via:
+//
+//	SelfServiceProfileBrandingArgs{...}
+type SelfServiceProfileBrandingInput interface {
+	pulumi.Input
+
+	ToSelfServiceProfileBrandingOutput() SelfServiceProfileBrandingOutput
+	ToSelfServiceProfileBrandingOutputWithContext(context.Context) SelfServiceProfileBrandingOutput
+}
+
+type SelfServiceProfileBrandingArgs struct {
+	// Configuration settings for colors for branding.
+	Colors SelfServiceProfileBrandingColorsPtrInput `pulumi:"colors"`
+	// URL of logo to display on login page.
+	LogoUrl pulumi.StringPtrInput `pulumi:"logoUrl"`
+}
+
+func (SelfServiceProfileBrandingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelfServiceProfileBranding)(nil)).Elem()
+}
+
+func (i SelfServiceProfileBrandingArgs) ToSelfServiceProfileBrandingOutput() SelfServiceProfileBrandingOutput {
+	return i.ToSelfServiceProfileBrandingOutputWithContext(context.Background())
+}
+
+func (i SelfServiceProfileBrandingArgs) ToSelfServiceProfileBrandingOutputWithContext(ctx context.Context) SelfServiceProfileBrandingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelfServiceProfileBrandingOutput)
+}
+
+func (i SelfServiceProfileBrandingArgs) ToSelfServiceProfileBrandingPtrOutput() SelfServiceProfileBrandingPtrOutput {
+	return i.ToSelfServiceProfileBrandingPtrOutputWithContext(context.Background())
+}
+
+func (i SelfServiceProfileBrandingArgs) ToSelfServiceProfileBrandingPtrOutputWithContext(ctx context.Context) SelfServiceProfileBrandingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelfServiceProfileBrandingOutput).ToSelfServiceProfileBrandingPtrOutputWithContext(ctx)
+}
+
+// SelfServiceProfileBrandingPtrInput is an input type that accepts SelfServiceProfileBrandingArgs, SelfServiceProfileBrandingPtr and SelfServiceProfileBrandingPtrOutput values.
+// You can construct a concrete instance of `SelfServiceProfileBrandingPtrInput` via:
+//
+//	        SelfServiceProfileBrandingArgs{...}
+//
+//	or:
+//
+//	        nil
+type SelfServiceProfileBrandingPtrInput interface {
+	pulumi.Input
+
+	ToSelfServiceProfileBrandingPtrOutput() SelfServiceProfileBrandingPtrOutput
+	ToSelfServiceProfileBrandingPtrOutputWithContext(context.Context) SelfServiceProfileBrandingPtrOutput
+}
+
+type selfServiceProfileBrandingPtrType SelfServiceProfileBrandingArgs
+
+func SelfServiceProfileBrandingPtr(v *SelfServiceProfileBrandingArgs) SelfServiceProfileBrandingPtrInput {
+	return (*selfServiceProfileBrandingPtrType)(v)
+}
+
+func (*selfServiceProfileBrandingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SelfServiceProfileBranding)(nil)).Elem()
+}
+
+func (i *selfServiceProfileBrandingPtrType) ToSelfServiceProfileBrandingPtrOutput() SelfServiceProfileBrandingPtrOutput {
+	return i.ToSelfServiceProfileBrandingPtrOutputWithContext(context.Background())
+}
+
+func (i *selfServiceProfileBrandingPtrType) ToSelfServiceProfileBrandingPtrOutputWithContext(ctx context.Context) SelfServiceProfileBrandingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelfServiceProfileBrandingPtrOutput)
+}
+
+type SelfServiceProfileBrandingOutput struct{ *pulumi.OutputState }
+
+func (SelfServiceProfileBrandingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelfServiceProfileBranding)(nil)).Elem()
+}
+
+func (o SelfServiceProfileBrandingOutput) ToSelfServiceProfileBrandingOutput() SelfServiceProfileBrandingOutput {
+	return o
+}
+
+func (o SelfServiceProfileBrandingOutput) ToSelfServiceProfileBrandingOutputWithContext(ctx context.Context) SelfServiceProfileBrandingOutput {
+	return o
+}
+
+func (o SelfServiceProfileBrandingOutput) ToSelfServiceProfileBrandingPtrOutput() SelfServiceProfileBrandingPtrOutput {
+	return o.ToSelfServiceProfileBrandingPtrOutputWithContext(context.Background())
+}
+
+func (o SelfServiceProfileBrandingOutput) ToSelfServiceProfileBrandingPtrOutputWithContext(ctx context.Context) SelfServiceProfileBrandingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SelfServiceProfileBranding) *SelfServiceProfileBranding {
+		return &v
+	}).(SelfServiceProfileBrandingPtrOutput)
+}
+
+// Configuration settings for colors for branding.
+func (o SelfServiceProfileBrandingOutput) Colors() SelfServiceProfileBrandingColorsPtrOutput {
+	return o.ApplyT(func(v SelfServiceProfileBranding) *SelfServiceProfileBrandingColors { return v.Colors }).(SelfServiceProfileBrandingColorsPtrOutput)
+}
+
+// URL of logo to display on login page.
+func (o SelfServiceProfileBrandingOutput) LogoUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SelfServiceProfileBranding) *string { return v.LogoUrl }).(pulumi.StringPtrOutput)
+}
+
+type SelfServiceProfileBrandingPtrOutput struct{ *pulumi.OutputState }
+
+func (SelfServiceProfileBrandingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SelfServiceProfileBranding)(nil)).Elem()
+}
+
+func (o SelfServiceProfileBrandingPtrOutput) ToSelfServiceProfileBrandingPtrOutput() SelfServiceProfileBrandingPtrOutput {
+	return o
+}
+
+func (o SelfServiceProfileBrandingPtrOutput) ToSelfServiceProfileBrandingPtrOutputWithContext(ctx context.Context) SelfServiceProfileBrandingPtrOutput {
+	return o
+}
+
+func (o SelfServiceProfileBrandingPtrOutput) Elem() SelfServiceProfileBrandingOutput {
+	return o.ApplyT(func(v *SelfServiceProfileBranding) SelfServiceProfileBranding {
+		if v != nil {
+			return *v
+		}
+		var ret SelfServiceProfileBranding
+		return ret
+	}).(SelfServiceProfileBrandingOutput)
+}
+
+// Configuration settings for colors for branding.
+func (o SelfServiceProfileBrandingPtrOutput) Colors() SelfServiceProfileBrandingColorsPtrOutput {
+	return o.ApplyT(func(v *SelfServiceProfileBranding) *SelfServiceProfileBrandingColors {
+		if v == nil {
+			return nil
+		}
+		return v.Colors
+	}).(SelfServiceProfileBrandingColorsPtrOutput)
+}
+
+// URL of logo to display on login page.
+func (o SelfServiceProfileBrandingPtrOutput) LogoUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SelfServiceProfileBranding) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogoUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type SelfServiceProfileBrandingColors struct {
+	// Primary button background color in hexadecimal.
+	Primary *string `pulumi:"primary"`
+}
+
+// SelfServiceProfileBrandingColorsInput is an input type that accepts SelfServiceProfileBrandingColorsArgs and SelfServiceProfileBrandingColorsOutput values.
+// You can construct a concrete instance of `SelfServiceProfileBrandingColorsInput` via:
+//
+//	SelfServiceProfileBrandingColorsArgs{...}
+type SelfServiceProfileBrandingColorsInput interface {
+	pulumi.Input
+
+	ToSelfServiceProfileBrandingColorsOutput() SelfServiceProfileBrandingColorsOutput
+	ToSelfServiceProfileBrandingColorsOutputWithContext(context.Context) SelfServiceProfileBrandingColorsOutput
+}
+
+type SelfServiceProfileBrandingColorsArgs struct {
+	// Primary button background color in hexadecimal.
+	Primary pulumi.StringPtrInput `pulumi:"primary"`
+}
+
+func (SelfServiceProfileBrandingColorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelfServiceProfileBrandingColors)(nil)).Elem()
+}
+
+func (i SelfServiceProfileBrandingColorsArgs) ToSelfServiceProfileBrandingColorsOutput() SelfServiceProfileBrandingColorsOutput {
+	return i.ToSelfServiceProfileBrandingColorsOutputWithContext(context.Background())
+}
+
+func (i SelfServiceProfileBrandingColorsArgs) ToSelfServiceProfileBrandingColorsOutputWithContext(ctx context.Context) SelfServiceProfileBrandingColorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelfServiceProfileBrandingColorsOutput)
+}
+
+func (i SelfServiceProfileBrandingColorsArgs) ToSelfServiceProfileBrandingColorsPtrOutput() SelfServiceProfileBrandingColorsPtrOutput {
+	return i.ToSelfServiceProfileBrandingColorsPtrOutputWithContext(context.Background())
+}
+
+func (i SelfServiceProfileBrandingColorsArgs) ToSelfServiceProfileBrandingColorsPtrOutputWithContext(ctx context.Context) SelfServiceProfileBrandingColorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelfServiceProfileBrandingColorsOutput).ToSelfServiceProfileBrandingColorsPtrOutputWithContext(ctx)
+}
+
+// SelfServiceProfileBrandingColorsPtrInput is an input type that accepts SelfServiceProfileBrandingColorsArgs, SelfServiceProfileBrandingColorsPtr and SelfServiceProfileBrandingColorsPtrOutput values.
+// You can construct a concrete instance of `SelfServiceProfileBrandingColorsPtrInput` via:
+//
+//	        SelfServiceProfileBrandingColorsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SelfServiceProfileBrandingColorsPtrInput interface {
+	pulumi.Input
+
+	ToSelfServiceProfileBrandingColorsPtrOutput() SelfServiceProfileBrandingColorsPtrOutput
+	ToSelfServiceProfileBrandingColorsPtrOutputWithContext(context.Context) SelfServiceProfileBrandingColorsPtrOutput
+}
+
+type selfServiceProfileBrandingColorsPtrType SelfServiceProfileBrandingColorsArgs
+
+func SelfServiceProfileBrandingColorsPtr(v *SelfServiceProfileBrandingColorsArgs) SelfServiceProfileBrandingColorsPtrInput {
+	return (*selfServiceProfileBrandingColorsPtrType)(v)
+}
+
+func (*selfServiceProfileBrandingColorsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SelfServiceProfileBrandingColors)(nil)).Elem()
+}
+
+func (i *selfServiceProfileBrandingColorsPtrType) ToSelfServiceProfileBrandingColorsPtrOutput() SelfServiceProfileBrandingColorsPtrOutput {
+	return i.ToSelfServiceProfileBrandingColorsPtrOutputWithContext(context.Background())
+}
+
+func (i *selfServiceProfileBrandingColorsPtrType) ToSelfServiceProfileBrandingColorsPtrOutputWithContext(ctx context.Context) SelfServiceProfileBrandingColorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelfServiceProfileBrandingColorsPtrOutput)
+}
+
+type SelfServiceProfileBrandingColorsOutput struct{ *pulumi.OutputState }
+
+func (SelfServiceProfileBrandingColorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelfServiceProfileBrandingColors)(nil)).Elem()
+}
+
+func (o SelfServiceProfileBrandingColorsOutput) ToSelfServiceProfileBrandingColorsOutput() SelfServiceProfileBrandingColorsOutput {
+	return o
+}
+
+func (o SelfServiceProfileBrandingColorsOutput) ToSelfServiceProfileBrandingColorsOutputWithContext(ctx context.Context) SelfServiceProfileBrandingColorsOutput {
+	return o
+}
+
+func (o SelfServiceProfileBrandingColorsOutput) ToSelfServiceProfileBrandingColorsPtrOutput() SelfServiceProfileBrandingColorsPtrOutput {
+	return o.ToSelfServiceProfileBrandingColorsPtrOutputWithContext(context.Background())
+}
+
+func (o SelfServiceProfileBrandingColorsOutput) ToSelfServiceProfileBrandingColorsPtrOutputWithContext(ctx context.Context) SelfServiceProfileBrandingColorsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SelfServiceProfileBrandingColors) *SelfServiceProfileBrandingColors {
+		return &v
+	}).(SelfServiceProfileBrandingColorsPtrOutput)
+}
+
+// Primary button background color in hexadecimal.
+func (o SelfServiceProfileBrandingColorsOutput) Primary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SelfServiceProfileBrandingColors) *string { return v.Primary }).(pulumi.StringPtrOutput)
+}
+
+type SelfServiceProfileBrandingColorsPtrOutput struct{ *pulumi.OutputState }
+
+func (SelfServiceProfileBrandingColorsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SelfServiceProfileBrandingColors)(nil)).Elem()
+}
+
+func (o SelfServiceProfileBrandingColorsPtrOutput) ToSelfServiceProfileBrandingColorsPtrOutput() SelfServiceProfileBrandingColorsPtrOutput {
+	return o
+}
+
+func (o SelfServiceProfileBrandingColorsPtrOutput) ToSelfServiceProfileBrandingColorsPtrOutputWithContext(ctx context.Context) SelfServiceProfileBrandingColorsPtrOutput {
+	return o
+}
+
+func (o SelfServiceProfileBrandingColorsPtrOutput) Elem() SelfServiceProfileBrandingColorsOutput {
+	return o.ApplyT(func(v *SelfServiceProfileBrandingColors) SelfServiceProfileBrandingColors {
+		if v != nil {
+			return *v
+		}
+		var ret SelfServiceProfileBrandingColors
+		return ret
+	}).(SelfServiceProfileBrandingColorsOutput)
+}
+
+// Primary button background color in hexadecimal.
+func (o SelfServiceProfileBrandingColorsPtrOutput) Primary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SelfServiceProfileBrandingColors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Primary
+	}).(pulumi.StringPtrOutput)
+}
+
+type SelfServiceProfileUserAttribute struct {
+	// A human readable description of the attribute.
+	Description string `pulumi:"description"`
+	// Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+	IsOptional bool `pulumi:"isOptional"`
+	// Attribute’s name on Auth0 side
+	Name string `pulumi:"name"`
+}
+
+// SelfServiceProfileUserAttributeInput is an input type that accepts SelfServiceProfileUserAttributeArgs and SelfServiceProfileUserAttributeOutput values.
+// You can construct a concrete instance of `SelfServiceProfileUserAttributeInput` via:
+//
+//	SelfServiceProfileUserAttributeArgs{...}
+type SelfServiceProfileUserAttributeInput interface {
+	pulumi.Input
+
+	ToSelfServiceProfileUserAttributeOutput() SelfServiceProfileUserAttributeOutput
+	ToSelfServiceProfileUserAttributeOutputWithContext(context.Context) SelfServiceProfileUserAttributeOutput
+}
+
+type SelfServiceProfileUserAttributeArgs struct {
+	// A human readable description of the attribute.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+	IsOptional pulumi.BoolInput `pulumi:"isOptional"`
+	// Attribute’s name on Auth0 side
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (SelfServiceProfileUserAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelfServiceProfileUserAttribute)(nil)).Elem()
+}
+
+func (i SelfServiceProfileUserAttributeArgs) ToSelfServiceProfileUserAttributeOutput() SelfServiceProfileUserAttributeOutput {
+	return i.ToSelfServiceProfileUserAttributeOutputWithContext(context.Background())
+}
+
+func (i SelfServiceProfileUserAttributeArgs) ToSelfServiceProfileUserAttributeOutputWithContext(ctx context.Context) SelfServiceProfileUserAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelfServiceProfileUserAttributeOutput)
+}
+
+// SelfServiceProfileUserAttributeArrayInput is an input type that accepts SelfServiceProfileUserAttributeArray and SelfServiceProfileUserAttributeArrayOutput values.
+// You can construct a concrete instance of `SelfServiceProfileUserAttributeArrayInput` via:
+//
+//	SelfServiceProfileUserAttributeArray{ SelfServiceProfileUserAttributeArgs{...} }
+type SelfServiceProfileUserAttributeArrayInput interface {
+	pulumi.Input
+
+	ToSelfServiceProfileUserAttributeArrayOutput() SelfServiceProfileUserAttributeArrayOutput
+	ToSelfServiceProfileUserAttributeArrayOutputWithContext(context.Context) SelfServiceProfileUserAttributeArrayOutput
+}
+
+type SelfServiceProfileUserAttributeArray []SelfServiceProfileUserAttributeInput
+
+func (SelfServiceProfileUserAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SelfServiceProfileUserAttribute)(nil)).Elem()
+}
+
+func (i SelfServiceProfileUserAttributeArray) ToSelfServiceProfileUserAttributeArrayOutput() SelfServiceProfileUserAttributeArrayOutput {
+	return i.ToSelfServiceProfileUserAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i SelfServiceProfileUserAttributeArray) ToSelfServiceProfileUserAttributeArrayOutputWithContext(ctx context.Context) SelfServiceProfileUserAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelfServiceProfileUserAttributeArrayOutput)
+}
+
+type SelfServiceProfileUserAttributeOutput struct{ *pulumi.OutputState }
+
+func (SelfServiceProfileUserAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelfServiceProfileUserAttribute)(nil)).Elem()
+}
+
+func (o SelfServiceProfileUserAttributeOutput) ToSelfServiceProfileUserAttributeOutput() SelfServiceProfileUserAttributeOutput {
+	return o
+}
+
+func (o SelfServiceProfileUserAttributeOutput) ToSelfServiceProfileUserAttributeOutputWithContext(ctx context.Context) SelfServiceProfileUserAttributeOutput {
+	return o
+}
+
+// A human readable description of the attribute.
+func (o SelfServiceProfileUserAttributeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfServiceProfileUserAttribute) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+func (o SelfServiceProfileUserAttributeOutput) IsOptional() pulumi.BoolOutput {
+	return o.ApplyT(func(v SelfServiceProfileUserAttribute) bool { return v.IsOptional }).(pulumi.BoolOutput)
+}
+
+// Attribute’s name on Auth0 side
+func (o SelfServiceProfileUserAttributeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfServiceProfileUserAttribute) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type SelfServiceProfileUserAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (SelfServiceProfileUserAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SelfServiceProfileUserAttribute)(nil)).Elem()
+}
+
+func (o SelfServiceProfileUserAttributeArrayOutput) ToSelfServiceProfileUserAttributeArrayOutput() SelfServiceProfileUserAttributeArrayOutput {
+	return o
+}
+
+func (o SelfServiceProfileUserAttributeArrayOutput) ToSelfServiceProfileUserAttributeArrayOutputWithContext(ctx context.Context) SelfServiceProfileUserAttributeArrayOutput {
+	return o
+}
+
+func (o SelfServiceProfileUserAttributeArrayOutput) Index(i pulumi.IntInput) SelfServiceProfileUserAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SelfServiceProfileUserAttribute {
+		return vs[0].([]SelfServiceProfileUserAttribute)[vs[1].(int)]
+	}).(SelfServiceProfileUserAttributeOutput)
 }
 
 type TenantFlags struct {
@@ -28621,6 +30569,8 @@ type GetConnectionOption struct {
 	AppId string `pulumi:"appId"`
 	// OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
 	AttributeMaps []GetConnectionOptionAttributeMap `pulumi:"attributeMaps"`
+	// Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+	Attributes []GetConnectionOptionAttribute `pulumi:"attributes"`
 	// Query string parameters to be included as part of the generated passwordless email link.
 	AuthParams map[string]string `pulumi:"authParams"`
 	// Authorization endpoint.
@@ -28723,6 +30673,8 @@ type GetConnectionOption struct {
 	PingFederateBaseUrl string `pulumi:"pingFederateBaseUrl"`
 	// Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
 	PkceEnabled bool `pulumi:"pkceEnabled"`
+	// Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+	Precedences []string `pulumi:"precedences"`
 	// The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
 	ProtocolBinding string `pulumi:"protocolBinding"`
 	// Defines the custom `smsGateway` provider.
@@ -28815,6 +30767,8 @@ type GetConnectionOptionArgs struct {
 	AppId pulumi.StringInput `pulumi:"appId"`
 	// OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
 	AttributeMaps GetConnectionOptionAttributeMapArrayInput `pulumi:"attributeMaps"`
+	// Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+	Attributes GetConnectionOptionAttributeArrayInput `pulumi:"attributes"`
 	// Query string parameters to be included as part of the generated passwordless email link.
 	AuthParams pulumi.StringMapInput `pulumi:"authParams"`
 	// Authorization endpoint.
@@ -28917,6 +30871,8 @@ type GetConnectionOptionArgs struct {
 	PingFederateBaseUrl pulumi.StringInput `pulumi:"pingFederateBaseUrl"`
 	// Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
 	PkceEnabled pulumi.BoolInput `pulumi:"pkceEnabled"`
+	// Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+	Precedences pulumi.StringArrayInput `pulumi:"precedences"`
 	// The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
 	ProtocolBinding pulumi.StringInput `pulumi:"protocolBinding"`
 	// Defines the custom `smsGateway` provider.
@@ -29061,6 +31017,11 @@ func (o GetConnectionOptionOutput) AppId() pulumi.StringOutput {
 // OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
 func (o GetConnectionOptionOutput) AttributeMaps() GetConnectionOptionAttributeMapArrayOutput {
 	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionAttributeMap { return v.AttributeMaps }).(GetConnectionOptionAttributeMapArrayOutput)
+}
+
+// Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+func (o GetConnectionOptionOutput) Attributes() GetConnectionOptionAttributeArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionAttribute { return v.Attributes }).(GetConnectionOptionAttributeArrayOutput)
 }
 
 // Query string parameters to be included as part of the generated passwordless email link.
@@ -29324,6 +31285,11 @@ func (o GetConnectionOptionOutput) PkceEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionOption) bool { return v.PkceEnabled }).(pulumi.BoolOutput)
 }
 
+// Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+func (o GetConnectionOptionOutput) Precedences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []string { return v.Precedences }).(pulumi.StringArrayOutput)
+}
+
 // The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
 func (o GetConnectionOptionOutput) ProtocolBinding() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.ProtocolBinding }).(pulumi.StringOutput)
@@ -29514,6 +31480,540 @@ func (o GetConnectionOptionArrayOutput) Index(i pulumi.IntInput) GetConnectionOp
 	}).(GetConnectionOptionOutput)
 }
 
+type GetConnectionOptionAttribute struct {
+	// Connection Options for Email Attribute
+	Emails []GetConnectionOptionAttributeEmail `pulumi:"emails"`
+	// Connection Options for Phone Number Attribute
+	PhoneNumbers []GetConnectionOptionAttributePhoneNumber `pulumi:"phoneNumbers"`
+	// Connection Options for User Name Attribute
+	Usernames []GetConnectionOptionAttributeUsername `pulumi:"usernames"`
+}
+
+// GetConnectionOptionAttributeInput is an input type that accepts GetConnectionOptionAttributeArgs and GetConnectionOptionAttributeOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeInput` via:
+//
+//	GetConnectionOptionAttributeArgs{...}
+type GetConnectionOptionAttributeInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeOutput() GetConnectionOptionAttributeOutput
+	ToGetConnectionOptionAttributeOutputWithContext(context.Context) GetConnectionOptionAttributeOutput
+}
+
+type GetConnectionOptionAttributeArgs struct {
+	// Connection Options for Email Attribute
+	Emails GetConnectionOptionAttributeEmailArrayInput `pulumi:"emails"`
+	// Connection Options for Phone Number Attribute
+	PhoneNumbers GetConnectionOptionAttributePhoneNumberArrayInput `pulumi:"phoneNumbers"`
+	// Connection Options for User Name Attribute
+	Usernames GetConnectionOptionAttributeUsernameArrayInput `pulumi:"usernames"`
+}
+
+func (GetConnectionOptionAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttribute)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeArgs) ToGetConnectionOptionAttributeOutput() GetConnectionOptionAttributeOutput {
+	return i.ToGetConnectionOptionAttributeOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeArgs) ToGetConnectionOptionAttributeOutputWithContext(ctx context.Context) GetConnectionOptionAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeOutput)
+}
+
+// GetConnectionOptionAttributeArrayInput is an input type that accepts GetConnectionOptionAttributeArray and GetConnectionOptionAttributeArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeArrayInput` via:
+//
+//	GetConnectionOptionAttributeArray{ GetConnectionOptionAttributeArgs{...} }
+type GetConnectionOptionAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeArrayOutput() GetConnectionOptionAttributeArrayOutput
+	ToGetConnectionOptionAttributeArrayOutputWithContext(context.Context) GetConnectionOptionAttributeArrayOutput
+}
+
+type GetConnectionOptionAttributeArray []GetConnectionOptionAttributeInput
+
+func (GetConnectionOptionAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttribute)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeArray) ToGetConnectionOptionAttributeArrayOutput() GetConnectionOptionAttributeArrayOutput {
+	return i.ToGetConnectionOptionAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeArray) ToGetConnectionOptionAttributeArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeArrayOutput)
+}
+
+type GetConnectionOptionAttributeOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttribute)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeOutput) ToGetConnectionOptionAttributeOutput() GetConnectionOptionAttributeOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeOutput) ToGetConnectionOptionAttributeOutputWithContext(ctx context.Context) GetConnectionOptionAttributeOutput {
+	return o
+}
+
+// Connection Options for Email Attribute
+func (o GetConnectionOptionAttributeOutput) Emails() GetConnectionOptionAttributeEmailArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttribute) []GetConnectionOptionAttributeEmail { return v.Emails }).(GetConnectionOptionAttributeEmailArrayOutput)
+}
+
+// Connection Options for Phone Number Attribute
+func (o GetConnectionOptionAttributeOutput) PhoneNumbers() GetConnectionOptionAttributePhoneNumberArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttribute) []GetConnectionOptionAttributePhoneNumber { return v.PhoneNumbers }).(GetConnectionOptionAttributePhoneNumberArrayOutput)
+}
+
+// Connection Options for User Name Attribute
+func (o GetConnectionOptionAttributeOutput) Usernames() GetConnectionOptionAttributeUsernameArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttribute) []GetConnectionOptionAttributeUsername { return v.Usernames }).(GetConnectionOptionAttributeUsernameArrayOutput)
+}
+
+type GetConnectionOptionAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttribute)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeArrayOutput) ToGetConnectionOptionAttributeArrayOutput() GetConnectionOptionAttributeArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeArrayOutput) ToGetConnectionOptionAttributeArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttribute {
+		return vs[0].([]GetConnectionOptionAttribute)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeOutput)
+}
+
+type GetConnectionOptionAttributeEmail struct {
+	// Connection Options Email Attribute Identifier
+	Identifiers []GetConnectionOptionAttributeEmailIdentifier `pulumi:"identifiers"`
+	// Defines whether Profile is required
+	ProfileRequired bool `pulumi:"profileRequired"`
+	// Defines signup settings for Email attribute
+	Signups []GetConnectionOptionAttributeEmailSignup `pulumi:"signups"`
+}
+
+// GetConnectionOptionAttributeEmailInput is an input type that accepts GetConnectionOptionAttributeEmailArgs and GetConnectionOptionAttributeEmailOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeEmailInput` via:
+//
+//	GetConnectionOptionAttributeEmailArgs{...}
+type GetConnectionOptionAttributeEmailInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeEmailOutput() GetConnectionOptionAttributeEmailOutput
+	ToGetConnectionOptionAttributeEmailOutputWithContext(context.Context) GetConnectionOptionAttributeEmailOutput
+}
+
+type GetConnectionOptionAttributeEmailArgs struct {
+	// Connection Options Email Attribute Identifier
+	Identifiers GetConnectionOptionAttributeEmailIdentifierArrayInput `pulumi:"identifiers"`
+	// Defines whether Profile is required
+	ProfileRequired pulumi.BoolInput `pulumi:"profileRequired"`
+	// Defines signup settings for Email attribute
+	Signups GetConnectionOptionAttributeEmailSignupArrayInput `pulumi:"signups"`
+}
+
+func (GetConnectionOptionAttributeEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeEmail)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeEmailArgs) ToGetConnectionOptionAttributeEmailOutput() GetConnectionOptionAttributeEmailOutput {
+	return i.ToGetConnectionOptionAttributeEmailOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeEmailArgs) ToGetConnectionOptionAttributeEmailOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeEmailOutput)
+}
+
+// GetConnectionOptionAttributeEmailArrayInput is an input type that accepts GetConnectionOptionAttributeEmailArray and GetConnectionOptionAttributeEmailArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeEmailArrayInput` via:
+//
+//	GetConnectionOptionAttributeEmailArray{ GetConnectionOptionAttributeEmailArgs{...} }
+type GetConnectionOptionAttributeEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeEmailArrayOutput() GetConnectionOptionAttributeEmailArrayOutput
+	ToGetConnectionOptionAttributeEmailArrayOutputWithContext(context.Context) GetConnectionOptionAttributeEmailArrayOutput
+}
+
+type GetConnectionOptionAttributeEmailArray []GetConnectionOptionAttributeEmailInput
+
+func (GetConnectionOptionAttributeEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeEmail)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeEmailArray) ToGetConnectionOptionAttributeEmailArrayOutput() GetConnectionOptionAttributeEmailArrayOutput {
+	return i.ToGetConnectionOptionAttributeEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeEmailArray) ToGetConnectionOptionAttributeEmailArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeEmailArrayOutput)
+}
+
+type GetConnectionOptionAttributeEmailOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeEmail)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeEmailOutput) ToGetConnectionOptionAttributeEmailOutput() GetConnectionOptionAttributeEmailOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailOutput) ToGetConnectionOptionAttributeEmailOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailOutput {
+	return o
+}
+
+// Connection Options Email Attribute Identifier
+func (o GetConnectionOptionAttributeEmailOutput) Identifiers() GetConnectionOptionAttributeEmailIdentifierArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmail) []GetConnectionOptionAttributeEmailIdentifier {
+		return v.Identifiers
+	}).(GetConnectionOptionAttributeEmailIdentifierArrayOutput)
+}
+
+// Defines whether Profile is required
+func (o GetConnectionOptionAttributeEmailOutput) ProfileRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmail) bool { return v.ProfileRequired }).(pulumi.BoolOutput)
+}
+
+// Defines signup settings for Email attribute
+func (o GetConnectionOptionAttributeEmailOutput) Signups() GetConnectionOptionAttributeEmailSignupArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmail) []GetConnectionOptionAttributeEmailSignup { return v.Signups }).(GetConnectionOptionAttributeEmailSignupArrayOutput)
+}
+
+type GetConnectionOptionAttributeEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeEmail)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeEmailArrayOutput) ToGetConnectionOptionAttributeEmailArrayOutput() GetConnectionOptionAttributeEmailArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailArrayOutput) ToGetConnectionOptionAttributeEmailArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeEmail {
+		return vs[0].([]GetConnectionOptionAttributeEmail)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeEmailOutput)
+}
+
+type GetConnectionOptionAttributeEmailIdentifier struct {
+	// Defines whether email attribute is active as an identifier
+	Active bool `pulumi:"active"`
+}
+
+// GetConnectionOptionAttributeEmailIdentifierInput is an input type that accepts GetConnectionOptionAttributeEmailIdentifierArgs and GetConnectionOptionAttributeEmailIdentifierOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeEmailIdentifierInput` via:
+//
+//	GetConnectionOptionAttributeEmailIdentifierArgs{...}
+type GetConnectionOptionAttributeEmailIdentifierInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeEmailIdentifierOutput() GetConnectionOptionAttributeEmailIdentifierOutput
+	ToGetConnectionOptionAttributeEmailIdentifierOutputWithContext(context.Context) GetConnectionOptionAttributeEmailIdentifierOutput
+}
+
+type GetConnectionOptionAttributeEmailIdentifierArgs struct {
+	// Defines whether email attribute is active as an identifier
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetConnectionOptionAttributeEmailIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeEmailIdentifier)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeEmailIdentifierArgs) ToGetConnectionOptionAttributeEmailIdentifierOutput() GetConnectionOptionAttributeEmailIdentifierOutput {
+	return i.ToGetConnectionOptionAttributeEmailIdentifierOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeEmailIdentifierArgs) ToGetConnectionOptionAttributeEmailIdentifierOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeEmailIdentifierOutput)
+}
+
+// GetConnectionOptionAttributeEmailIdentifierArrayInput is an input type that accepts GetConnectionOptionAttributeEmailIdentifierArray and GetConnectionOptionAttributeEmailIdentifierArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeEmailIdentifierArrayInput` via:
+//
+//	GetConnectionOptionAttributeEmailIdentifierArray{ GetConnectionOptionAttributeEmailIdentifierArgs{...} }
+type GetConnectionOptionAttributeEmailIdentifierArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeEmailIdentifierArrayOutput() GetConnectionOptionAttributeEmailIdentifierArrayOutput
+	ToGetConnectionOptionAttributeEmailIdentifierArrayOutputWithContext(context.Context) GetConnectionOptionAttributeEmailIdentifierArrayOutput
+}
+
+type GetConnectionOptionAttributeEmailIdentifierArray []GetConnectionOptionAttributeEmailIdentifierInput
+
+func (GetConnectionOptionAttributeEmailIdentifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeEmailIdentifier)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeEmailIdentifierArray) ToGetConnectionOptionAttributeEmailIdentifierArrayOutput() GetConnectionOptionAttributeEmailIdentifierArrayOutput {
+	return i.ToGetConnectionOptionAttributeEmailIdentifierArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeEmailIdentifierArray) ToGetConnectionOptionAttributeEmailIdentifierArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailIdentifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeEmailIdentifierArrayOutput)
+}
+
+type GetConnectionOptionAttributeEmailIdentifierOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeEmailIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeEmailIdentifier)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeEmailIdentifierOutput) ToGetConnectionOptionAttributeEmailIdentifierOutput() GetConnectionOptionAttributeEmailIdentifierOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailIdentifierOutput) ToGetConnectionOptionAttributeEmailIdentifierOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailIdentifierOutput {
+	return o
+}
+
+// Defines whether email attribute is active as an identifier
+func (o GetConnectionOptionAttributeEmailIdentifierOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmailIdentifier) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionAttributeEmailIdentifierArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeEmailIdentifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeEmailIdentifier)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeEmailIdentifierArrayOutput) ToGetConnectionOptionAttributeEmailIdentifierArrayOutput() GetConnectionOptionAttributeEmailIdentifierArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailIdentifierArrayOutput) ToGetConnectionOptionAttributeEmailIdentifierArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailIdentifierArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailIdentifierArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeEmailIdentifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeEmailIdentifier {
+		return vs[0].([]GetConnectionOptionAttributeEmailIdentifier)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeEmailIdentifierOutput)
+}
+
+type GetConnectionOptionAttributeEmailSignup struct {
+	// Defines signup status for Email Attribute
+	Status string `pulumi:"status"`
+	// Defines settings for Verification under Email attribute
+	Verifications []GetConnectionOptionAttributeEmailSignupVerification `pulumi:"verifications"`
+}
+
+// GetConnectionOptionAttributeEmailSignupInput is an input type that accepts GetConnectionOptionAttributeEmailSignupArgs and GetConnectionOptionAttributeEmailSignupOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeEmailSignupInput` via:
+//
+//	GetConnectionOptionAttributeEmailSignupArgs{...}
+type GetConnectionOptionAttributeEmailSignupInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeEmailSignupOutput() GetConnectionOptionAttributeEmailSignupOutput
+	ToGetConnectionOptionAttributeEmailSignupOutputWithContext(context.Context) GetConnectionOptionAttributeEmailSignupOutput
+}
+
+type GetConnectionOptionAttributeEmailSignupArgs struct {
+	// Defines signup status for Email Attribute
+	Status pulumi.StringInput `pulumi:"status"`
+	// Defines settings for Verification under Email attribute
+	Verifications GetConnectionOptionAttributeEmailSignupVerificationArrayInput `pulumi:"verifications"`
+}
+
+func (GetConnectionOptionAttributeEmailSignupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeEmailSignup)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeEmailSignupArgs) ToGetConnectionOptionAttributeEmailSignupOutput() GetConnectionOptionAttributeEmailSignupOutput {
+	return i.ToGetConnectionOptionAttributeEmailSignupOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeEmailSignupArgs) ToGetConnectionOptionAttributeEmailSignupOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailSignupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeEmailSignupOutput)
+}
+
+// GetConnectionOptionAttributeEmailSignupArrayInput is an input type that accepts GetConnectionOptionAttributeEmailSignupArray and GetConnectionOptionAttributeEmailSignupArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeEmailSignupArrayInput` via:
+//
+//	GetConnectionOptionAttributeEmailSignupArray{ GetConnectionOptionAttributeEmailSignupArgs{...} }
+type GetConnectionOptionAttributeEmailSignupArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeEmailSignupArrayOutput() GetConnectionOptionAttributeEmailSignupArrayOutput
+	ToGetConnectionOptionAttributeEmailSignupArrayOutputWithContext(context.Context) GetConnectionOptionAttributeEmailSignupArrayOutput
+}
+
+type GetConnectionOptionAttributeEmailSignupArray []GetConnectionOptionAttributeEmailSignupInput
+
+func (GetConnectionOptionAttributeEmailSignupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeEmailSignup)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeEmailSignupArray) ToGetConnectionOptionAttributeEmailSignupArrayOutput() GetConnectionOptionAttributeEmailSignupArrayOutput {
+	return i.ToGetConnectionOptionAttributeEmailSignupArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeEmailSignupArray) ToGetConnectionOptionAttributeEmailSignupArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailSignupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeEmailSignupArrayOutput)
+}
+
+type GetConnectionOptionAttributeEmailSignupOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeEmailSignupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeEmailSignup)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeEmailSignupOutput) ToGetConnectionOptionAttributeEmailSignupOutput() GetConnectionOptionAttributeEmailSignupOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailSignupOutput) ToGetConnectionOptionAttributeEmailSignupOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailSignupOutput {
+	return o
+}
+
+// Defines signup status for Email Attribute
+func (o GetConnectionOptionAttributeEmailSignupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmailSignup) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Defines settings for Verification under Email attribute
+func (o GetConnectionOptionAttributeEmailSignupOutput) Verifications() GetConnectionOptionAttributeEmailSignupVerificationArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmailSignup) []GetConnectionOptionAttributeEmailSignupVerification {
+		return v.Verifications
+	}).(GetConnectionOptionAttributeEmailSignupVerificationArrayOutput)
+}
+
+type GetConnectionOptionAttributeEmailSignupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeEmailSignupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeEmailSignup)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeEmailSignupArrayOutput) ToGetConnectionOptionAttributeEmailSignupArrayOutput() GetConnectionOptionAttributeEmailSignupArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailSignupArrayOutput) ToGetConnectionOptionAttributeEmailSignupArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailSignupArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailSignupArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeEmailSignupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeEmailSignup {
+		return vs[0].([]GetConnectionOptionAttributeEmailSignup)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeEmailSignupOutput)
+}
+
+type GetConnectionOptionAttributeEmailSignupVerification struct {
+	// Defines verification settings for signup attribute
+	Active bool `pulumi:"active"`
+}
+
+// GetConnectionOptionAttributeEmailSignupVerificationInput is an input type that accepts GetConnectionOptionAttributeEmailSignupVerificationArgs and GetConnectionOptionAttributeEmailSignupVerificationOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeEmailSignupVerificationInput` via:
+//
+//	GetConnectionOptionAttributeEmailSignupVerificationArgs{...}
+type GetConnectionOptionAttributeEmailSignupVerificationInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeEmailSignupVerificationOutput() GetConnectionOptionAttributeEmailSignupVerificationOutput
+	ToGetConnectionOptionAttributeEmailSignupVerificationOutputWithContext(context.Context) GetConnectionOptionAttributeEmailSignupVerificationOutput
+}
+
+type GetConnectionOptionAttributeEmailSignupVerificationArgs struct {
+	// Defines verification settings for signup attribute
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetConnectionOptionAttributeEmailSignupVerificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeEmailSignupVerification)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeEmailSignupVerificationArgs) ToGetConnectionOptionAttributeEmailSignupVerificationOutput() GetConnectionOptionAttributeEmailSignupVerificationOutput {
+	return i.ToGetConnectionOptionAttributeEmailSignupVerificationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeEmailSignupVerificationArgs) ToGetConnectionOptionAttributeEmailSignupVerificationOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailSignupVerificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeEmailSignupVerificationOutput)
+}
+
+// GetConnectionOptionAttributeEmailSignupVerificationArrayInput is an input type that accepts GetConnectionOptionAttributeEmailSignupVerificationArray and GetConnectionOptionAttributeEmailSignupVerificationArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeEmailSignupVerificationArrayInput` via:
+//
+//	GetConnectionOptionAttributeEmailSignupVerificationArray{ GetConnectionOptionAttributeEmailSignupVerificationArgs{...} }
+type GetConnectionOptionAttributeEmailSignupVerificationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeEmailSignupVerificationArrayOutput() GetConnectionOptionAttributeEmailSignupVerificationArrayOutput
+	ToGetConnectionOptionAttributeEmailSignupVerificationArrayOutputWithContext(context.Context) GetConnectionOptionAttributeEmailSignupVerificationArrayOutput
+}
+
+type GetConnectionOptionAttributeEmailSignupVerificationArray []GetConnectionOptionAttributeEmailSignupVerificationInput
+
+func (GetConnectionOptionAttributeEmailSignupVerificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeEmailSignupVerification)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeEmailSignupVerificationArray) ToGetConnectionOptionAttributeEmailSignupVerificationArrayOutput() GetConnectionOptionAttributeEmailSignupVerificationArrayOutput {
+	return i.ToGetConnectionOptionAttributeEmailSignupVerificationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeEmailSignupVerificationArray) ToGetConnectionOptionAttributeEmailSignupVerificationArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailSignupVerificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeEmailSignupVerificationArrayOutput)
+}
+
+type GetConnectionOptionAttributeEmailSignupVerificationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeEmailSignupVerificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeEmailSignupVerification)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeEmailSignupVerificationOutput) ToGetConnectionOptionAttributeEmailSignupVerificationOutput() GetConnectionOptionAttributeEmailSignupVerificationOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailSignupVerificationOutput) ToGetConnectionOptionAttributeEmailSignupVerificationOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailSignupVerificationOutput {
+	return o
+}
+
+// Defines verification settings for signup attribute
+func (o GetConnectionOptionAttributeEmailSignupVerificationOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmailSignupVerification) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionAttributeEmailSignupVerificationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeEmailSignupVerificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeEmailSignupVerification)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeEmailSignupVerificationArrayOutput) ToGetConnectionOptionAttributeEmailSignupVerificationArrayOutput() GetConnectionOptionAttributeEmailSignupVerificationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailSignupVerificationArrayOutput) ToGetConnectionOptionAttributeEmailSignupVerificationArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailSignupVerificationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailSignupVerificationArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeEmailSignupVerificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeEmailSignupVerification {
+		return vs[0].([]GetConnectionOptionAttributeEmailSignupVerification)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeEmailSignupVerificationOutput)
+}
+
 type GetConnectionOptionAttributeMap struct {
 	// This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
 	Attributes string `pulumi:"attributes"`
@@ -29627,6 +32127,974 @@ func (o GetConnectionOptionAttributeMapArrayOutput) Index(i pulumi.IntInput) Get
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeMap {
 		return vs[0].([]GetConnectionOptionAttributeMap)[vs[1].(int)]
 	}).(GetConnectionOptionAttributeMapOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumber struct {
+	// Connection Options Phone Number Attribute Identifier
+	Identifiers []GetConnectionOptionAttributePhoneNumberIdentifier `pulumi:"identifiers"`
+	// Defines whether Profile is required
+	ProfileRequired bool `pulumi:"profileRequired"`
+	// Defines signup settings for Phone Number attribute
+	Signups []GetConnectionOptionAttributePhoneNumberSignup `pulumi:"signups"`
+}
+
+// GetConnectionOptionAttributePhoneNumberInput is an input type that accepts GetConnectionOptionAttributePhoneNumberArgs and GetConnectionOptionAttributePhoneNumberOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributePhoneNumberInput` via:
+//
+//	GetConnectionOptionAttributePhoneNumberArgs{...}
+type GetConnectionOptionAttributePhoneNumberInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributePhoneNumberOutput() GetConnectionOptionAttributePhoneNumberOutput
+	ToGetConnectionOptionAttributePhoneNumberOutputWithContext(context.Context) GetConnectionOptionAttributePhoneNumberOutput
+}
+
+type GetConnectionOptionAttributePhoneNumberArgs struct {
+	// Connection Options Phone Number Attribute Identifier
+	Identifiers GetConnectionOptionAttributePhoneNumberIdentifierArrayInput `pulumi:"identifiers"`
+	// Defines whether Profile is required
+	ProfileRequired pulumi.BoolInput `pulumi:"profileRequired"`
+	// Defines signup settings for Phone Number attribute
+	Signups GetConnectionOptionAttributePhoneNumberSignupArrayInput `pulumi:"signups"`
+}
+
+func (GetConnectionOptionAttributePhoneNumberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributePhoneNumber)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributePhoneNumberArgs) ToGetConnectionOptionAttributePhoneNumberOutput() GetConnectionOptionAttributePhoneNumberOutput {
+	return i.ToGetConnectionOptionAttributePhoneNumberOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributePhoneNumberArgs) ToGetConnectionOptionAttributePhoneNumberOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributePhoneNumberOutput)
+}
+
+// GetConnectionOptionAttributePhoneNumberArrayInput is an input type that accepts GetConnectionOptionAttributePhoneNumberArray and GetConnectionOptionAttributePhoneNumberArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributePhoneNumberArrayInput` via:
+//
+//	GetConnectionOptionAttributePhoneNumberArray{ GetConnectionOptionAttributePhoneNumberArgs{...} }
+type GetConnectionOptionAttributePhoneNumberArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributePhoneNumberArrayOutput() GetConnectionOptionAttributePhoneNumberArrayOutput
+	ToGetConnectionOptionAttributePhoneNumberArrayOutputWithContext(context.Context) GetConnectionOptionAttributePhoneNumberArrayOutput
+}
+
+type GetConnectionOptionAttributePhoneNumberArray []GetConnectionOptionAttributePhoneNumberInput
+
+func (GetConnectionOptionAttributePhoneNumberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributePhoneNumber)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributePhoneNumberArray) ToGetConnectionOptionAttributePhoneNumberArrayOutput() GetConnectionOptionAttributePhoneNumberArrayOutput {
+	return i.ToGetConnectionOptionAttributePhoneNumberArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributePhoneNumberArray) ToGetConnectionOptionAttributePhoneNumberArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributePhoneNumberArrayOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributePhoneNumberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributePhoneNumber)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributePhoneNumberOutput) ToGetConnectionOptionAttributePhoneNumberOutput() GetConnectionOptionAttributePhoneNumberOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberOutput) ToGetConnectionOptionAttributePhoneNumberOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberOutput {
+	return o
+}
+
+// Connection Options Phone Number Attribute Identifier
+func (o GetConnectionOptionAttributePhoneNumberOutput) Identifiers() GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributePhoneNumber) []GetConnectionOptionAttributePhoneNumberIdentifier {
+		return v.Identifiers
+	}).(GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput)
+}
+
+// Defines whether Profile is required
+func (o GetConnectionOptionAttributePhoneNumberOutput) ProfileRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributePhoneNumber) bool { return v.ProfileRequired }).(pulumi.BoolOutput)
+}
+
+// Defines signup settings for Phone Number attribute
+func (o GetConnectionOptionAttributePhoneNumberOutput) Signups() GetConnectionOptionAttributePhoneNumberSignupArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributePhoneNumber) []GetConnectionOptionAttributePhoneNumberSignup {
+		return v.Signups
+	}).(GetConnectionOptionAttributePhoneNumberSignupArrayOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributePhoneNumberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributePhoneNumber)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributePhoneNumberArrayOutput) ToGetConnectionOptionAttributePhoneNumberArrayOutput() GetConnectionOptionAttributePhoneNumberArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberArrayOutput) ToGetConnectionOptionAttributePhoneNumberArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributePhoneNumberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributePhoneNumber {
+		return vs[0].([]GetConnectionOptionAttributePhoneNumber)[vs[1].(int)]
+	}).(GetConnectionOptionAttributePhoneNumberOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberIdentifier struct {
+	// Defines whether Phone Number attribute is active as an identifier
+	Active bool `pulumi:"active"`
+}
+
+// GetConnectionOptionAttributePhoneNumberIdentifierInput is an input type that accepts GetConnectionOptionAttributePhoneNumberIdentifierArgs and GetConnectionOptionAttributePhoneNumberIdentifierOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributePhoneNumberIdentifierInput` via:
+//
+//	GetConnectionOptionAttributePhoneNumberIdentifierArgs{...}
+type GetConnectionOptionAttributePhoneNumberIdentifierInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributePhoneNumberIdentifierOutput() GetConnectionOptionAttributePhoneNumberIdentifierOutput
+	ToGetConnectionOptionAttributePhoneNumberIdentifierOutputWithContext(context.Context) GetConnectionOptionAttributePhoneNumberIdentifierOutput
+}
+
+type GetConnectionOptionAttributePhoneNumberIdentifierArgs struct {
+	// Defines whether Phone Number attribute is active as an identifier
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetConnectionOptionAttributePhoneNumberIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberIdentifier)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributePhoneNumberIdentifierArgs) ToGetConnectionOptionAttributePhoneNumberIdentifierOutput() GetConnectionOptionAttributePhoneNumberIdentifierOutput {
+	return i.ToGetConnectionOptionAttributePhoneNumberIdentifierOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributePhoneNumberIdentifierArgs) ToGetConnectionOptionAttributePhoneNumberIdentifierOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributePhoneNumberIdentifierOutput)
+}
+
+// GetConnectionOptionAttributePhoneNumberIdentifierArrayInput is an input type that accepts GetConnectionOptionAttributePhoneNumberIdentifierArray and GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributePhoneNumberIdentifierArrayInput` via:
+//
+//	GetConnectionOptionAttributePhoneNumberIdentifierArray{ GetConnectionOptionAttributePhoneNumberIdentifierArgs{...} }
+type GetConnectionOptionAttributePhoneNumberIdentifierArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributePhoneNumberIdentifierArrayOutput() GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput
+	ToGetConnectionOptionAttributePhoneNumberIdentifierArrayOutputWithContext(context.Context) GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput
+}
+
+type GetConnectionOptionAttributePhoneNumberIdentifierArray []GetConnectionOptionAttributePhoneNumberIdentifierInput
+
+func (GetConnectionOptionAttributePhoneNumberIdentifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributePhoneNumberIdentifier)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributePhoneNumberIdentifierArray) ToGetConnectionOptionAttributePhoneNumberIdentifierArrayOutput() GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput {
+	return i.ToGetConnectionOptionAttributePhoneNumberIdentifierArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributePhoneNumberIdentifierArray) ToGetConnectionOptionAttributePhoneNumberIdentifierArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberIdentifierOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributePhoneNumberIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberIdentifier)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributePhoneNumberIdentifierOutput) ToGetConnectionOptionAttributePhoneNumberIdentifierOutput() GetConnectionOptionAttributePhoneNumberIdentifierOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberIdentifierOutput) ToGetConnectionOptionAttributePhoneNumberIdentifierOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberIdentifierOutput {
+	return o
+}
+
+// Defines whether Phone Number attribute is active as an identifier
+func (o GetConnectionOptionAttributePhoneNumberIdentifierOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributePhoneNumberIdentifier) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributePhoneNumberIdentifier)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput) ToGetConnectionOptionAttributePhoneNumberIdentifierArrayOutput() GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput) ToGetConnectionOptionAttributePhoneNumberIdentifierArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributePhoneNumberIdentifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributePhoneNumberIdentifier {
+		return vs[0].([]GetConnectionOptionAttributePhoneNumberIdentifier)[vs[1].(int)]
+	}).(GetConnectionOptionAttributePhoneNumberIdentifierOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberSignup struct {
+	// Defines status of signup for Phone Number attribute
+	Status string `pulumi:"status"`
+	// Defines verification settings for Phone Number attribute
+	Verifications []GetConnectionOptionAttributePhoneNumberSignupVerification `pulumi:"verifications"`
+}
+
+// GetConnectionOptionAttributePhoneNumberSignupInput is an input type that accepts GetConnectionOptionAttributePhoneNumberSignupArgs and GetConnectionOptionAttributePhoneNumberSignupOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributePhoneNumberSignupInput` via:
+//
+//	GetConnectionOptionAttributePhoneNumberSignupArgs{...}
+type GetConnectionOptionAttributePhoneNumberSignupInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributePhoneNumberSignupOutput() GetConnectionOptionAttributePhoneNumberSignupOutput
+	ToGetConnectionOptionAttributePhoneNumberSignupOutputWithContext(context.Context) GetConnectionOptionAttributePhoneNumberSignupOutput
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupArgs struct {
+	// Defines status of signup for Phone Number attribute
+	Status pulumi.StringInput `pulumi:"status"`
+	// Defines verification settings for Phone Number attribute
+	Verifications GetConnectionOptionAttributePhoneNumberSignupVerificationArrayInput `pulumi:"verifications"`
+}
+
+func (GetConnectionOptionAttributePhoneNumberSignupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberSignup)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributePhoneNumberSignupArgs) ToGetConnectionOptionAttributePhoneNumberSignupOutput() GetConnectionOptionAttributePhoneNumberSignupOutput {
+	return i.ToGetConnectionOptionAttributePhoneNumberSignupOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributePhoneNumberSignupArgs) ToGetConnectionOptionAttributePhoneNumberSignupOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberSignupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributePhoneNumberSignupOutput)
+}
+
+// GetConnectionOptionAttributePhoneNumberSignupArrayInput is an input type that accepts GetConnectionOptionAttributePhoneNumberSignupArray and GetConnectionOptionAttributePhoneNumberSignupArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributePhoneNumberSignupArrayInput` via:
+//
+//	GetConnectionOptionAttributePhoneNumberSignupArray{ GetConnectionOptionAttributePhoneNumberSignupArgs{...} }
+type GetConnectionOptionAttributePhoneNumberSignupArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributePhoneNumberSignupArrayOutput() GetConnectionOptionAttributePhoneNumberSignupArrayOutput
+	ToGetConnectionOptionAttributePhoneNumberSignupArrayOutputWithContext(context.Context) GetConnectionOptionAttributePhoneNumberSignupArrayOutput
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupArray []GetConnectionOptionAttributePhoneNumberSignupInput
+
+func (GetConnectionOptionAttributePhoneNumberSignupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributePhoneNumberSignup)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributePhoneNumberSignupArray) ToGetConnectionOptionAttributePhoneNumberSignupArrayOutput() GetConnectionOptionAttributePhoneNumberSignupArrayOutput {
+	return i.ToGetConnectionOptionAttributePhoneNumberSignupArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributePhoneNumberSignupArray) ToGetConnectionOptionAttributePhoneNumberSignupArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberSignupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributePhoneNumberSignupArrayOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributePhoneNumberSignupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberSignup)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupOutput) ToGetConnectionOptionAttributePhoneNumberSignupOutput() GetConnectionOptionAttributePhoneNumberSignupOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupOutput) ToGetConnectionOptionAttributePhoneNumberSignupOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberSignupOutput {
+	return o
+}
+
+// Defines status of signup for Phone Number attribute
+func (o GetConnectionOptionAttributePhoneNumberSignupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributePhoneNumberSignup) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Defines verification settings for Phone Number attribute
+func (o GetConnectionOptionAttributePhoneNumberSignupOutput) Verifications() GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributePhoneNumberSignup) []GetConnectionOptionAttributePhoneNumberSignupVerification {
+		return v.Verifications
+	}).(GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributePhoneNumberSignupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributePhoneNumberSignup)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupArrayOutput) ToGetConnectionOptionAttributePhoneNumberSignupArrayOutput() GetConnectionOptionAttributePhoneNumberSignupArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupArrayOutput) ToGetConnectionOptionAttributePhoneNumberSignupArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberSignupArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributePhoneNumberSignupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributePhoneNumberSignup {
+		return vs[0].([]GetConnectionOptionAttributePhoneNumberSignup)[vs[1].(int)]
+	}).(GetConnectionOptionAttributePhoneNumberSignupOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupVerification struct {
+	// Defines verification settings for Phone Number attribute
+	Active bool `pulumi:"active"`
+}
+
+// GetConnectionOptionAttributePhoneNumberSignupVerificationInput is an input type that accepts GetConnectionOptionAttributePhoneNumberSignupVerificationArgs and GetConnectionOptionAttributePhoneNumberSignupVerificationOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributePhoneNumberSignupVerificationInput` via:
+//
+//	GetConnectionOptionAttributePhoneNumberSignupVerificationArgs{...}
+type GetConnectionOptionAttributePhoneNumberSignupVerificationInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributePhoneNumberSignupVerificationOutput() GetConnectionOptionAttributePhoneNumberSignupVerificationOutput
+	ToGetConnectionOptionAttributePhoneNumberSignupVerificationOutputWithContext(context.Context) GetConnectionOptionAttributePhoneNumberSignupVerificationOutput
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupVerificationArgs struct {
+	// Defines verification settings for Phone Number attribute
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetConnectionOptionAttributePhoneNumberSignupVerificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberSignupVerification)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributePhoneNumberSignupVerificationArgs) ToGetConnectionOptionAttributePhoneNumberSignupVerificationOutput() GetConnectionOptionAttributePhoneNumberSignupVerificationOutput {
+	return i.ToGetConnectionOptionAttributePhoneNumberSignupVerificationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributePhoneNumberSignupVerificationArgs) ToGetConnectionOptionAttributePhoneNumberSignupVerificationOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberSignupVerificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributePhoneNumberSignupVerificationOutput)
+}
+
+// GetConnectionOptionAttributePhoneNumberSignupVerificationArrayInput is an input type that accepts GetConnectionOptionAttributePhoneNumberSignupVerificationArray and GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributePhoneNumberSignupVerificationArrayInput` via:
+//
+//	GetConnectionOptionAttributePhoneNumberSignupVerificationArray{ GetConnectionOptionAttributePhoneNumberSignupVerificationArgs{...} }
+type GetConnectionOptionAttributePhoneNumberSignupVerificationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput() GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput
+	ToGetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutputWithContext(context.Context) GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupVerificationArray []GetConnectionOptionAttributePhoneNumberSignupVerificationInput
+
+func (GetConnectionOptionAttributePhoneNumberSignupVerificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributePhoneNumberSignupVerification)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributePhoneNumberSignupVerificationArray) ToGetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput() GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput {
+	return i.ToGetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributePhoneNumberSignupVerificationArray) ToGetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupVerificationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributePhoneNumberSignupVerificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberSignupVerification)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupVerificationOutput) ToGetConnectionOptionAttributePhoneNumberSignupVerificationOutput() GetConnectionOptionAttributePhoneNumberSignupVerificationOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupVerificationOutput) ToGetConnectionOptionAttributePhoneNumberSignupVerificationOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberSignupVerificationOutput {
+	return o
+}
+
+// Defines verification settings for Phone Number attribute
+func (o GetConnectionOptionAttributePhoneNumberSignupVerificationOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributePhoneNumberSignupVerification) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributePhoneNumberSignupVerification)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput) ToGetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput() GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput) ToGetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributePhoneNumberSignupVerificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributePhoneNumberSignupVerification {
+		return vs[0].([]GetConnectionOptionAttributePhoneNumberSignupVerification)[vs[1].(int)]
+	}).(GetConnectionOptionAttributePhoneNumberSignupVerificationOutput)
+}
+
+type GetConnectionOptionAttributeUsername struct {
+	// Connection options for User Name Attribute Identifier
+	Identifiers []GetConnectionOptionAttributeUsernameIdentifier `pulumi:"identifiers"`
+	// Defines whether Profile is required
+	ProfileRequired bool `pulumi:"profileRequired"`
+	// Defines signup settings for User Name attribute
+	Signups []GetConnectionOptionAttributeUsernameSignup `pulumi:"signups"`
+	// Defines validation settings for User Name attribute
+	Validations []GetConnectionOptionAttributeUsernameValidation `pulumi:"validations"`
+}
+
+// GetConnectionOptionAttributeUsernameInput is an input type that accepts GetConnectionOptionAttributeUsernameArgs and GetConnectionOptionAttributeUsernameOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeUsernameInput` via:
+//
+//	GetConnectionOptionAttributeUsernameArgs{...}
+type GetConnectionOptionAttributeUsernameInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeUsernameOutput() GetConnectionOptionAttributeUsernameOutput
+	ToGetConnectionOptionAttributeUsernameOutputWithContext(context.Context) GetConnectionOptionAttributeUsernameOutput
+}
+
+type GetConnectionOptionAttributeUsernameArgs struct {
+	// Connection options for User Name Attribute Identifier
+	Identifiers GetConnectionOptionAttributeUsernameIdentifierArrayInput `pulumi:"identifiers"`
+	// Defines whether Profile is required
+	ProfileRequired pulumi.BoolInput `pulumi:"profileRequired"`
+	// Defines signup settings for User Name attribute
+	Signups GetConnectionOptionAttributeUsernameSignupArrayInput `pulumi:"signups"`
+	// Defines validation settings for User Name attribute
+	Validations GetConnectionOptionAttributeUsernameValidationArrayInput `pulumi:"validations"`
+}
+
+func (GetConnectionOptionAttributeUsernameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeUsername)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeUsernameArgs) ToGetConnectionOptionAttributeUsernameOutput() GetConnectionOptionAttributeUsernameOutput {
+	return i.ToGetConnectionOptionAttributeUsernameOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeUsernameArgs) ToGetConnectionOptionAttributeUsernameOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeUsernameOutput)
+}
+
+// GetConnectionOptionAttributeUsernameArrayInput is an input type that accepts GetConnectionOptionAttributeUsernameArray and GetConnectionOptionAttributeUsernameArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeUsernameArrayInput` via:
+//
+//	GetConnectionOptionAttributeUsernameArray{ GetConnectionOptionAttributeUsernameArgs{...} }
+type GetConnectionOptionAttributeUsernameArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeUsernameArrayOutput() GetConnectionOptionAttributeUsernameArrayOutput
+	ToGetConnectionOptionAttributeUsernameArrayOutputWithContext(context.Context) GetConnectionOptionAttributeUsernameArrayOutput
+}
+
+type GetConnectionOptionAttributeUsernameArray []GetConnectionOptionAttributeUsernameInput
+
+func (GetConnectionOptionAttributeUsernameArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeUsername)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeUsernameArray) ToGetConnectionOptionAttributeUsernameArrayOutput() GetConnectionOptionAttributeUsernameArrayOutput {
+	return i.ToGetConnectionOptionAttributeUsernameArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeUsernameArray) ToGetConnectionOptionAttributeUsernameArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeUsernameArrayOutput)
+}
+
+type GetConnectionOptionAttributeUsernameOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeUsernameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeUsername)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeUsernameOutput) ToGetConnectionOptionAttributeUsernameOutput() GetConnectionOptionAttributeUsernameOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameOutput) ToGetConnectionOptionAttributeUsernameOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameOutput {
+	return o
+}
+
+// Connection options for User Name Attribute Identifier
+func (o GetConnectionOptionAttributeUsernameOutput) Identifiers() GetConnectionOptionAttributeUsernameIdentifierArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeUsername) []GetConnectionOptionAttributeUsernameIdentifier {
+		return v.Identifiers
+	}).(GetConnectionOptionAttributeUsernameIdentifierArrayOutput)
+}
+
+// Defines whether Profile is required
+func (o GetConnectionOptionAttributeUsernameOutput) ProfileRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeUsername) bool { return v.ProfileRequired }).(pulumi.BoolOutput)
+}
+
+// Defines signup settings for User Name attribute
+func (o GetConnectionOptionAttributeUsernameOutput) Signups() GetConnectionOptionAttributeUsernameSignupArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeUsername) []GetConnectionOptionAttributeUsernameSignup {
+		return v.Signups
+	}).(GetConnectionOptionAttributeUsernameSignupArrayOutput)
+}
+
+// Defines validation settings for User Name attribute
+func (o GetConnectionOptionAttributeUsernameOutput) Validations() GetConnectionOptionAttributeUsernameValidationArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeUsername) []GetConnectionOptionAttributeUsernameValidation {
+		return v.Validations
+	}).(GetConnectionOptionAttributeUsernameValidationArrayOutput)
+}
+
+type GetConnectionOptionAttributeUsernameArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeUsernameArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeUsername)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeUsernameArrayOutput) ToGetConnectionOptionAttributeUsernameArrayOutput() GetConnectionOptionAttributeUsernameArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameArrayOutput) ToGetConnectionOptionAttributeUsernameArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeUsernameOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeUsername {
+		return vs[0].([]GetConnectionOptionAttributeUsername)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeUsernameOutput)
+}
+
+type GetConnectionOptionAttributeUsernameIdentifier struct {
+	// Defines whether UserName attribute is active as an identifier
+	Active bool `pulumi:"active"`
+}
+
+// GetConnectionOptionAttributeUsernameIdentifierInput is an input type that accepts GetConnectionOptionAttributeUsernameIdentifierArgs and GetConnectionOptionAttributeUsernameIdentifierOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeUsernameIdentifierInput` via:
+//
+//	GetConnectionOptionAttributeUsernameIdentifierArgs{...}
+type GetConnectionOptionAttributeUsernameIdentifierInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeUsernameIdentifierOutput() GetConnectionOptionAttributeUsernameIdentifierOutput
+	ToGetConnectionOptionAttributeUsernameIdentifierOutputWithContext(context.Context) GetConnectionOptionAttributeUsernameIdentifierOutput
+}
+
+type GetConnectionOptionAttributeUsernameIdentifierArgs struct {
+	// Defines whether UserName attribute is active as an identifier
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetConnectionOptionAttributeUsernameIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeUsernameIdentifier)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeUsernameIdentifierArgs) ToGetConnectionOptionAttributeUsernameIdentifierOutput() GetConnectionOptionAttributeUsernameIdentifierOutput {
+	return i.ToGetConnectionOptionAttributeUsernameIdentifierOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeUsernameIdentifierArgs) ToGetConnectionOptionAttributeUsernameIdentifierOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeUsernameIdentifierOutput)
+}
+
+// GetConnectionOptionAttributeUsernameIdentifierArrayInput is an input type that accepts GetConnectionOptionAttributeUsernameIdentifierArray and GetConnectionOptionAttributeUsernameIdentifierArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeUsernameIdentifierArrayInput` via:
+//
+//	GetConnectionOptionAttributeUsernameIdentifierArray{ GetConnectionOptionAttributeUsernameIdentifierArgs{...} }
+type GetConnectionOptionAttributeUsernameIdentifierArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeUsernameIdentifierArrayOutput() GetConnectionOptionAttributeUsernameIdentifierArrayOutput
+	ToGetConnectionOptionAttributeUsernameIdentifierArrayOutputWithContext(context.Context) GetConnectionOptionAttributeUsernameIdentifierArrayOutput
+}
+
+type GetConnectionOptionAttributeUsernameIdentifierArray []GetConnectionOptionAttributeUsernameIdentifierInput
+
+func (GetConnectionOptionAttributeUsernameIdentifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeUsernameIdentifier)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeUsernameIdentifierArray) ToGetConnectionOptionAttributeUsernameIdentifierArrayOutput() GetConnectionOptionAttributeUsernameIdentifierArrayOutput {
+	return i.ToGetConnectionOptionAttributeUsernameIdentifierArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeUsernameIdentifierArray) ToGetConnectionOptionAttributeUsernameIdentifierArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameIdentifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeUsernameIdentifierArrayOutput)
+}
+
+type GetConnectionOptionAttributeUsernameIdentifierOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeUsernameIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeUsernameIdentifier)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeUsernameIdentifierOutput) ToGetConnectionOptionAttributeUsernameIdentifierOutput() GetConnectionOptionAttributeUsernameIdentifierOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameIdentifierOutput) ToGetConnectionOptionAttributeUsernameIdentifierOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameIdentifierOutput {
+	return o
+}
+
+// Defines whether UserName attribute is active as an identifier
+func (o GetConnectionOptionAttributeUsernameIdentifierOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeUsernameIdentifier) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionAttributeUsernameIdentifierArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeUsernameIdentifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeUsernameIdentifier)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeUsernameIdentifierArrayOutput) ToGetConnectionOptionAttributeUsernameIdentifierArrayOutput() GetConnectionOptionAttributeUsernameIdentifierArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameIdentifierArrayOutput) ToGetConnectionOptionAttributeUsernameIdentifierArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameIdentifierArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameIdentifierArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeUsernameIdentifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeUsernameIdentifier {
+		return vs[0].([]GetConnectionOptionAttributeUsernameIdentifier)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeUsernameIdentifierOutput)
+}
+
+type GetConnectionOptionAttributeUsernameSignup struct {
+	// Defines whether User Name attribute is active as an identifier
+	Status string `pulumi:"status"`
+}
+
+// GetConnectionOptionAttributeUsernameSignupInput is an input type that accepts GetConnectionOptionAttributeUsernameSignupArgs and GetConnectionOptionAttributeUsernameSignupOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeUsernameSignupInput` via:
+//
+//	GetConnectionOptionAttributeUsernameSignupArgs{...}
+type GetConnectionOptionAttributeUsernameSignupInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeUsernameSignupOutput() GetConnectionOptionAttributeUsernameSignupOutput
+	ToGetConnectionOptionAttributeUsernameSignupOutputWithContext(context.Context) GetConnectionOptionAttributeUsernameSignupOutput
+}
+
+type GetConnectionOptionAttributeUsernameSignupArgs struct {
+	// Defines whether User Name attribute is active as an identifier
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetConnectionOptionAttributeUsernameSignupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeUsernameSignup)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeUsernameSignupArgs) ToGetConnectionOptionAttributeUsernameSignupOutput() GetConnectionOptionAttributeUsernameSignupOutput {
+	return i.ToGetConnectionOptionAttributeUsernameSignupOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeUsernameSignupArgs) ToGetConnectionOptionAttributeUsernameSignupOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameSignupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeUsernameSignupOutput)
+}
+
+// GetConnectionOptionAttributeUsernameSignupArrayInput is an input type that accepts GetConnectionOptionAttributeUsernameSignupArray and GetConnectionOptionAttributeUsernameSignupArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeUsernameSignupArrayInput` via:
+//
+//	GetConnectionOptionAttributeUsernameSignupArray{ GetConnectionOptionAttributeUsernameSignupArgs{...} }
+type GetConnectionOptionAttributeUsernameSignupArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeUsernameSignupArrayOutput() GetConnectionOptionAttributeUsernameSignupArrayOutput
+	ToGetConnectionOptionAttributeUsernameSignupArrayOutputWithContext(context.Context) GetConnectionOptionAttributeUsernameSignupArrayOutput
+}
+
+type GetConnectionOptionAttributeUsernameSignupArray []GetConnectionOptionAttributeUsernameSignupInput
+
+func (GetConnectionOptionAttributeUsernameSignupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeUsernameSignup)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeUsernameSignupArray) ToGetConnectionOptionAttributeUsernameSignupArrayOutput() GetConnectionOptionAttributeUsernameSignupArrayOutput {
+	return i.ToGetConnectionOptionAttributeUsernameSignupArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeUsernameSignupArray) ToGetConnectionOptionAttributeUsernameSignupArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameSignupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeUsernameSignupArrayOutput)
+}
+
+type GetConnectionOptionAttributeUsernameSignupOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeUsernameSignupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeUsernameSignup)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeUsernameSignupOutput) ToGetConnectionOptionAttributeUsernameSignupOutput() GetConnectionOptionAttributeUsernameSignupOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameSignupOutput) ToGetConnectionOptionAttributeUsernameSignupOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameSignupOutput {
+	return o
+}
+
+// Defines whether User Name attribute is active as an identifier
+func (o GetConnectionOptionAttributeUsernameSignupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeUsernameSignup) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionAttributeUsernameSignupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeUsernameSignupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeUsernameSignup)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeUsernameSignupArrayOutput) ToGetConnectionOptionAttributeUsernameSignupArrayOutput() GetConnectionOptionAttributeUsernameSignupArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameSignupArrayOutput) ToGetConnectionOptionAttributeUsernameSignupArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameSignupArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameSignupArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeUsernameSignupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeUsernameSignup {
+		return vs[0].([]GetConnectionOptionAttributeUsernameSignup)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeUsernameSignupOutput)
+}
+
+type GetConnectionOptionAttributeUsernameValidation struct {
+	// Defines allowed types for for UserName attribute
+	AllowedTypes []GetConnectionOptionAttributeUsernameValidationAllowedType `pulumi:"allowedTypes"`
+	// Defines Max Length for User Name attribute
+	MaxLength int `pulumi:"maxLength"`
+	// Defines Min Length for User Name attribute
+	MinLength int `pulumi:"minLength"`
+}
+
+// GetConnectionOptionAttributeUsernameValidationInput is an input type that accepts GetConnectionOptionAttributeUsernameValidationArgs and GetConnectionOptionAttributeUsernameValidationOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeUsernameValidationInput` via:
+//
+//	GetConnectionOptionAttributeUsernameValidationArgs{...}
+type GetConnectionOptionAttributeUsernameValidationInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeUsernameValidationOutput() GetConnectionOptionAttributeUsernameValidationOutput
+	ToGetConnectionOptionAttributeUsernameValidationOutputWithContext(context.Context) GetConnectionOptionAttributeUsernameValidationOutput
+}
+
+type GetConnectionOptionAttributeUsernameValidationArgs struct {
+	// Defines allowed types for for UserName attribute
+	AllowedTypes GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayInput `pulumi:"allowedTypes"`
+	// Defines Max Length for User Name attribute
+	MaxLength pulumi.IntInput `pulumi:"maxLength"`
+	// Defines Min Length for User Name attribute
+	MinLength pulumi.IntInput `pulumi:"minLength"`
+}
+
+func (GetConnectionOptionAttributeUsernameValidationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidation)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeUsernameValidationArgs) ToGetConnectionOptionAttributeUsernameValidationOutput() GetConnectionOptionAttributeUsernameValidationOutput {
+	return i.ToGetConnectionOptionAttributeUsernameValidationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeUsernameValidationArgs) ToGetConnectionOptionAttributeUsernameValidationOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameValidationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeUsernameValidationOutput)
+}
+
+// GetConnectionOptionAttributeUsernameValidationArrayInput is an input type that accepts GetConnectionOptionAttributeUsernameValidationArray and GetConnectionOptionAttributeUsernameValidationArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeUsernameValidationArrayInput` via:
+//
+//	GetConnectionOptionAttributeUsernameValidationArray{ GetConnectionOptionAttributeUsernameValidationArgs{...} }
+type GetConnectionOptionAttributeUsernameValidationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeUsernameValidationArrayOutput() GetConnectionOptionAttributeUsernameValidationArrayOutput
+	ToGetConnectionOptionAttributeUsernameValidationArrayOutputWithContext(context.Context) GetConnectionOptionAttributeUsernameValidationArrayOutput
+}
+
+type GetConnectionOptionAttributeUsernameValidationArray []GetConnectionOptionAttributeUsernameValidationInput
+
+func (GetConnectionOptionAttributeUsernameValidationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeUsernameValidation)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeUsernameValidationArray) ToGetConnectionOptionAttributeUsernameValidationArrayOutput() GetConnectionOptionAttributeUsernameValidationArrayOutput {
+	return i.ToGetConnectionOptionAttributeUsernameValidationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeUsernameValidationArray) ToGetConnectionOptionAttributeUsernameValidationArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameValidationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeUsernameValidationArrayOutput)
+}
+
+type GetConnectionOptionAttributeUsernameValidationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeUsernameValidationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidation)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationOutput) ToGetConnectionOptionAttributeUsernameValidationOutput() GetConnectionOptionAttributeUsernameValidationOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationOutput) ToGetConnectionOptionAttributeUsernameValidationOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameValidationOutput {
+	return o
+}
+
+// Defines allowed types for for UserName attribute
+func (o GetConnectionOptionAttributeUsernameValidationOutput) AllowedTypes() GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeUsernameValidation) []GetConnectionOptionAttributeUsernameValidationAllowedType {
+		return v.AllowedTypes
+	}).(GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput)
+}
+
+// Defines Max Length for User Name attribute
+func (o GetConnectionOptionAttributeUsernameValidationOutput) MaxLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeUsernameValidation) int { return v.MaxLength }).(pulumi.IntOutput)
+}
+
+// Defines Min Length for User Name attribute
+func (o GetConnectionOptionAttributeUsernameValidationOutput) MinLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeUsernameValidation) int { return v.MinLength }).(pulumi.IntOutput)
+}
+
+type GetConnectionOptionAttributeUsernameValidationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeUsernameValidationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeUsernameValidation)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationArrayOutput) ToGetConnectionOptionAttributeUsernameValidationArrayOutput() GetConnectionOptionAttributeUsernameValidationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationArrayOutput) ToGetConnectionOptionAttributeUsernameValidationArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameValidationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeUsernameValidationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeUsernameValidation {
+		return vs[0].([]GetConnectionOptionAttributeUsernameValidation)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeUsernameValidationOutput)
+}
+
+type GetConnectionOptionAttributeUsernameValidationAllowedType struct {
+	// One of the allowed types for UserName signup attribute
+	Email bool `pulumi:"email"`
+	// One of the allowed types for UserName signup attribute
+	PhoneNumber bool `pulumi:"phoneNumber"`
+}
+
+// GetConnectionOptionAttributeUsernameValidationAllowedTypeInput is an input type that accepts GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs and GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeUsernameValidationAllowedTypeInput` via:
+//
+//	GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs{...}
+type GetConnectionOptionAttributeUsernameValidationAllowedTypeInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeUsernameValidationAllowedTypeOutput() GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput
+	ToGetConnectionOptionAttributeUsernameValidationAllowedTypeOutputWithContext(context.Context) GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput
+}
+
+type GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs struct {
+	// One of the allowed types for UserName signup attribute
+	Email pulumi.BoolInput `pulumi:"email"`
+	// One of the allowed types for UserName signup attribute
+	PhoneNumber pulumi.BoolInput `pulumi:"phoneNumber"`
+}
+
+func (GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidationAllowedType)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs) ToGetConnectionOptionAttributeUsernameValidationAllowedTypeOutput() GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput {
+	return i.ToGetConnectionOptionAttributeUsernameValidationAllowedTypeOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs) ToGetConnectionOptionAttributeUsernameValidationAllowedTypeOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput)
+}
+
+// GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayInput is an input type that accepts GetConnectionOptionAttributeUsernameValidationAllowedTypeArray and GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayInput` via:
+//
+//	GetConnectionOptionAttributeUsernameValidationAllowedTypeArray{ GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs{...} }
+type GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput() GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput
+	ToGetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutputWithContext(context.Context) GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput
+}
+
+type GetConnectionOptionAttributeUsernameValidationAllowedTypeArray []GetConnectionOptionAttributeUsernameValidationAllowedTypeInput
+
+func (GetConnectionOptionAttributeUsernameValidationAllowedTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeUsernameValidationAllowedType)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeUsernameValidationAllowedTypeArray) ToGetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput() GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput {
+	return i.ToGetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeUsernameValidationAllowedTypeArray) ToGetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput)
+}
+
+type GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidationAllowedType)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput) ToGetConnectionOptionAttributeUsernameValidationAllowedTypeOutput() GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput) ToGetConnectionOptionAttributeUsernameValidationAllowedTypeOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput {
+	return o
+}
+
+// One of the allowed types for UserName signup attribute
+func (o GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput) Email() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeUsernameValidationAllowedType) bool { return v.Email }).(pulumi.BoolOutput)
+}
+
+// One of the allowed types for UserName signup attribute
+func (o GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput) PhoneNumber() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeUsernameValidationAllowedType) bool { return v.PhoneNumber }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeUsernameValidationAllowedType)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput) ToGetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput() GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput) ToGetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeUsernameValidationAllowedType {
+		return vs[0].([]GetConnectionOptionAttributeUsernameValidationAllowedType)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput)
 }
 
 type GetConnectionOptionConnectionSetting struct {
@@ -32173,6 +35641,324 @@ func (o GetRolePermissionTypeArrayOutput) Index(i pulumi.IntInput) GetRolePermis
 	}).(GetRolePermissionTypeOutput)
 }
 
+type GetSelfServiceProfileBranding struct {
+	// Configuration settings for colors for branding.
+	Colors []GetSelfServiceProfileBrandingColor `pulumi:"colors"`
+	// URL of logo to display on login page.
+	LogoUrl string `pulumi:"logoUrl"`
+}
+
+// GetSelfServiceProfileBrandingInput is an input type that accepts GetSelfServiceProfileBrandingArgs and GetSelfServiceProfileBrandingOutput values.
+// You can construct a concrete instance of `GetSelfServiceProfileBrandingInput` via:
+//
+//	GetSelfServiceProfileBrandingArgs{...}
+type GetSelfServiceProfileBrandingInput interface {
+	pulumi.Input
+
+	ToGetSelfServiceProfileBrandingOutput() GetSelfServiceProfileBrandingOutput
+	ToGetSelfServiceProfileBrandingOutputWithContext(context.Context) GetSelfServiceProfileBrandingOutput
+}
+
+type GetSelfServiceProfileBrandingArgs struct {
+	// Configuration settings for colors for branding.
+	Colors GetSelfServiceProfileBrandingColorArrayInput `pulumi:"colors"`
+	// URL of logo to display on login page.
+	LogoUrl pulumi.StringInput `pulumi:"logoUrl"`
+}
+
+func (GetSelfServiceProfileBrandingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSelfServiceProfileBranding)(nil)).Elem()
+}
+
+func (i GetSelfServiceProfileBrandingArgs) ToGetSelfServiceProfileBrandingOutput() GetSelfServiceProfileBrandingOutput {
+	return i.ToGetSelfServiceProfileBrandingOutputWithContext(context.Background())
+}
+
+func (i GetSelfServiceProfileBrandingArgs) ToGetSelfServiceProfileBrandingOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileBrandingOutput)
+}
+
+// GetSelfServiceProfileBrandingArrayInput is an input type that accepts GetSelfServiceProfileBrandingArray and GetSelfServiceProfileBrandingArrayOutput values.
+// You can construct a concrete instance of `GetSelfServiceProfileBrandingArrayInput` via:
+//
+//	GetSelfServiceProfileBrandingArray{ GetSelfServiceProfileBrandingArgs{...} }
+type GetSelfServiceProfileBrandingArrayInput interface {
+	pulumi.Input
+
+	ToGetSelfServiceProfileBrandingArrayOutput() GetSelfServiceProfileBrandingArrayOutput
+	ToGetSelfServiceProfileBrandingArrayOutputWithContext(context.Context) GetSelfServiceProfileBrandingArrayOutput
+}
+
+type GetSelfServiceProfileBrandingArray []GetSelfServiceProfileBrandingInput
+
+func (GetSelfServiceProfileBrandingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSelfServiceProfileBranding)(nil)).Elem()
+}
+
+func (i GetSelfServiceProfileBrandingArray) ToGetSelfServiceProfileBrandingArrayOutput() GetSelfServiceProfileBrandingArrayOutput {
+	return i.ToGetSelfServiceProfileBrandingArrayOutputWithContext(context.Background())
+}
+
+func (i GetSelfServiceProfileBrandingArray) ToGetSelfServiceProfileBrandingArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileBrandingArrayOutput)
+}
+
+type GetSelfServiceProfileBrandingOutput struct{ *pulumi.OutputState }
+
+func (GetSelfServiceProfileBrandingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSelfServiceProfileBranding)(nil)).Elem()
+}
+
+func (o GetSelfServiceProfileBrandingOutput) ToGetSelfServiceProfileBrandingOutput() GetSelfServiceProfileBrandingOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileBrandingOutput) ToGetSelfServiceProfileBrandingOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingOutput {
+	return o
+}
+
+// Configuration settings for colors for branding.
+func (o GetSelfServiceProfileBrandingOutput) Colors() GetSelfServiceProfileBrandingColorArrayOutput {
+	return o.ApplyT(func(v GetSelfServiceProfileBranding) []GetSelfServiceProfileBrandingColor { return v.Colors }).(GetSelfServiceProfileBrandingColorArrayOutput)
+}
+
+// URL of logo to display on login page.
+func (o GetSelfServiceProfileBrandingOutput) LogoUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSelfServiceProfileBranding) string { return v.LogoUrl }).(pulumi.StringOutput)
+}
+
+type GetSelfServiceProfileBrandingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSelfServiceProfileBrandingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSelfServiceProfileBranding)(nil)).Elem()
+}
+
+func (o GetSelfServiceProfileBrandingArrayOutput) ToGetSelfServiceProfileBrandingArrayOutput() GetSelfServiceProfileBrandingArrayOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileBrandingArrayOutput) ToGetSelfServiceProfileBrandingArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingArrayOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileBrandingArrayOutput) Index(i pulumi.IntInput) GetSelfServiceProfileBrandingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSelfServiceProfileBranding {
+		return vs[0].([]GetSelfServiceProfileBranding)[vs[1].(int)]
+	}).(GetSelfServiceProfileBrandingOutput)
+}
+
+type GetSelfServiceProfileBrandingColor struct {
+	// Primary button background color in hexadecimal.
+	Primary string `pulumi:"primary"`
+}
+
+// GetSelfServiceProfileBrandingColorInput is an input type that accepts GetSelfServiceProfileBrandingColorArgs and GetSelfServiceProfileBrandingColorOutput values.
+// You can construct a concrete instance of `GetSelfServiceProfileBrandingColorInput` via:
+//
+//	GetSelfServiceProfileBrandingColorArgs{...}
+type GetSelfServiceProfileBrandingColorInput interface {
+	pulumi.Input
+
+	ToGetSelfServiceProfileBrandingColorOutput() GetSelfServiceProfileBrandingColorOutput
+	ToGetSelfServiceProfileBrandingColorOutputWithContext(context.Context) GetSelfServiceProfileBrandingColorOutput
+}
+
+type GetSelfServiceProfileBrandingColorArgs struct {
+	// Primary button background color in hexadecimal.
+	Primary pulumi.StringInput `pulumi:"primary"`
+}
+
+func (GetSelfServiceProfileBrandingColorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSelfServiceProfileBrandingColor)(nil)).Elem()
+}
+
+func (i GetSelfServiceProfileBrandingColorArgs) ToGetSelfServiceProfileBrandingColorOutput() GetSelfServiceProfileBrandingColorOutput {
+	return i.ToGetSelfServiceProfileBrandingColorOutputWithContext(context.Background())
+}
+
+func (i GetSelfServiceProfileBrandingColorArgs) ToGetSelfServiceProfileBrandingColorOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingColorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileBrandingColorOutput)
+}
+
+// GetSelfServiceProfileBrandingColorArrayInput is an input type that accepts GetSelfServiceProfileBrandingColorArray and GetSelfServiceProfileBrandingColorArrayOutput values.
+// You can construct a concrete instance of `GetSelfServiceProfileBrandingColorArrayInput` via:
+//
+//	GetSelfServiceProfileBrandingColorArray{ GetSelfServiceProfileBrandingColorArgs{...} }
+type GetSelfServiceProfileBrandingColorArrayInput interface {
+	pulumi.Input
+
+	ToGetSelfServiceProfileBrandingColorArrayOutput() GetSelfServiceProfileBrandingColorArrayOutput
+	ToGetSelfServiceProfileBrandingColorArrayOutputWithContext(context.Context) GetSelfServiceProfileBrandingColorArrayOutput
+}
+
+type GetSelfServiceProfileBrandingColorArray []GetSelfServiceProfileBrandingColorInput
+
+func (GetSelfServiceProfileBrandingColorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSelfServiceProfileBrandingColor)(nil)).Elem()
+}
+
+func (i GetSelfServiceProfileBrandingColorArray) ToGetSelfServiceProfileBrandingColorArrayOutput() GetSelfServiceProfileBrandingColorArrayOutput {
+	return i.ToGetSelfServiceProfileBrandingColorArrayOutputWithContext(context.Background())
+}
+
+func (i GetSelfServiceProfileBrandingColorArray) ToGetSelfServiceProfileBrandingColorArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingColorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileBrandingColorArrayOutput)
+}
+
+type GetSelfServiceProfileBrandingColorOutput struct{ *pulumi.OutputState }
+
+func (GetSelfServiceProfileBrandingColorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSelfServiceProfileBrandingColor)(nil)).Elem()
+}
+
+func (o GetSelfServiceProfileBrandingColorOutput) ToGetSelfServiceProfileBrandingColorOutput() GetSelfServiceProfileBrandingColorOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileBrandingColorOutput) ToGetSelfServiceProfileBrandingColorOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingColorOutput {
+	return o
+}
+
+// Primary button background color in hexadecimal.
+func (o GetSelfServiceProfileBrandingColorOutput) Primary() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSelfServiceProfileBrandingColor) string { return v.Primary }).(pulumi.StringOutput)
+}
+
+type GetSelfServiceProfileBrandingColorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSelfServiceProfileBrandingColorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSelfServiceProfileBrandingColor)(nil)).Elem()
+}
+
+func (o GetSelfServiceProfileBrandingColorArrayOutput) ToGetSelfServiceProfileBrandingColorArrayOutput() GetSelfServiceProfileBrandingColorArrayOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileBrandingColorArrayOutput) ToGetSelfServiceProfileBrandingColorArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingColorArrayOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileBrandingColorArrayOutput) Index(i pulumi.IntInput) GetSelfServiceProfileBrandingColorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSelfServiceProfileBrandingColor {
+		return vs[0].([]GetSelfServiceProfileBrandingColor)[vs[1].(int)]
+	}).(GetSelfServiceProfileBrandingColorOutput)
+}
+
+type GetSelfServiceProfileUserAttribute struct {
+	// A human readable description of the attribute.
+	Description string `pulumi:"description"`
+	// Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+	IsOptional bool `pulumi:"isOptional"`
+	// Attribute’s name on Auth0 side
+	Name string `pulumi:"name"`
+}
+
+// GetSelfServiceProfileUserAttributeInput is an input type that accepts GetSelfServiceProfileUserAttributeArgs and GetSelfServiceProfileUserAttributeOutput values.
+// You can construct a concrete instance of `GetSelfServiceProfileUserAttributeInput` via:
+//
+//	GetSelfServiceProfileUserAttributeArgs{...}
+type GetSelfServiceProfileUserAttributeInput interface {
+	pulumi.Input
+
+	ToGetSelfServiceProfileUserAttributeOutput() GetSelfServiceProfileUserAttributeOutput
+	ToGetSelfServiceProfileUserAttributeOutputWithContext(context.Context) GetSelfServiceProfileUserAttributeOutput
+}
+
+type GetSelfServiceProfileUserAttributeArgs struct {
+	// A human readable description of the attribute.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+	IsOptional pulumi.BoolInput `pulumi:"isOptional"`
+	// Attribute’s name on Auth0 side
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetSelfServiceProfileUserAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSelfServiceProfileUserAttribute)(nil)).Elem()
+}
+
+func (i GetSelfServiceProfileUserAttributeArgs) ToGetSelfServiceProfileUserAttributeOutput() GetSelfServiceProfileUserAttributeOutput {
+	return i.ToGetSelfServiceProfileUserAttributeOutputWithContext(context.Background())
+}
+
+func (i GetSelfServiceProfileUserAttributeArgs) ToGetSelfServiceProfileUserAttributeOutputWithContext(ctx context.Context) GetSelfServiceProfileUserAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileUserAttributeOutput)
+}
+
+// GetSelfServiceProfileUserAttributeArrayInput is an input type that accepts GetSelfServiceProfileUserAttributeArray and GetSelfServiceProfileUserAttributeArrayOutput values.
+// You can construct a concrete instance of `GetSelfServiceProfileUserAttributeArrayInput` via:
+//
+//	GetSelfServiceProfileUserAttributeArray{ GetSelfServiceProfileUserAttributeArgs{...} }
+type GetSelfServiceProfileUserAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGetSelfServiceProfileUserAttributeArrayOutput() GetSelfServiceProfileUserAttributeArrayOutput
+	ToGetSelfServiceProfileUserAttributeArrayOutputWithContext(context.Context) GetSelfServiceProfileUserAttributeArrayOutput
+}
+
+type GetSelfServiceProfileUserAttributeArray []GetSelfServiceProfileUserAttributeInput
+
+func (GetSelfServiceProfileUserAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSelfServiceProfileUserAttribute)(nil)).Elem()
+}
+
+func (i GetSelfServiceProfileUserAttributeArray) ToGetSelfServiceProfileUserAttributeArrayOutput() GetSelfServiceProfileUserAttributeArrayOutput {
+	return i.ToGetSelfServiceProfileUserAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GetSelfServiceProfileUserAttributeArray) ToGetSelfServiceProfileUserAttributeArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileUserAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileUserAttributeArrayOutput)
+}
+
+type GetSelfServiceProfileUserAttributeOutput struct{ *pulumi.OutputState }
+
+func (GetSelfServiceProfileUserAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSelfServiceProfileUserAttribute)(nil)).Elem()
+}
+
+func (o GetSelfServiceProfileUserAttributeOutput) ToGetSelfServiceProfileUserAttributeOutput() GetSelfServiceProfileUserAttributeOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileUserAttributeOutput) ToGetSelfServiceProfileUserAttributeOutputWithContext(ctx context.Context) GetSelfServiceProfileUserAttributeOutput {
+	return o
+}
+
+// A human readable description of the attribute.
+func (o GetSelfServiceProfileUserAttributeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSelfServiceProfileUserAttribute) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+func (o GetSelfServiceProfileUserAttributeOutput) IsOptional() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSelfServiceProfileUserAttribute) bool { return v.IsOptional }).(pulumi.BoolOutput)
+}
+
+// Attribute’s name on Auth0 side
+func (o GetSelfServiceProfileUserAttributeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSelfServiceProfileUserAttribute) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetSelfServiceProfileUserAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSelfServiceProfileUserAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSelfServiceProfileUserAttribute)(nil)).Elem()
+}
+
+func (o GetSelfServiceProfileUserAttributeArrayOutput) ToGetSelfServiceProfileUserAttributeArrayOutput() GetSelfServiceProfileUserAttributeArrayOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileUserAttributeArrayOutput) ToGetSelfServiceProfileUserAttributeArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileUserAttributeArrayOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileUserAttributeArrayOutput) Index(i pulumi.IntInput) GetSelfServiceProfileUserAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSelfServiceProfileUserAttribute {
+		return vs[0].([]GetSelfServiceProfileUserAttribute)[vs[1].(int)]
+	}).(GetSelfServiceProfileUserAttributeOutput)
+}
+
 type GetSigningKeysSigningKey struct {
 	// The public certificate of the signing key.
 	Cert string `pulumi:"cert"`
@@ -33095,8 +36881,36 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientRefreshTokenPtrInput)(nil)).Elem(), ClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsInput)(nil)).Elem(), ConnectionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPtrInput)(nil)).Elem(), ConnectionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeInput)(nil)).Elem(), ConnectionOptionsAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeArrayInput)(nil)).Elem(), ConnectionOptionsAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeEmailInput)(nil)).Elem(), ConnectionOptionsAttributeEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeEmailArrayInput)(nil)).Elem(), ConnectionOptionsAttributeEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeEmailIdentifierInput)(nil)).Elem(), ConnectionOptionsAttributeEmailIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeEmailIdentifierArrayInput)(nil)).Elem(), ConnectionOptionsAttributeEmailIdentifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeEmailSignupInput)(nil)).Elem(), ConnectionOptionsAttributeEmailSignupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeEmailSignupArrayInput)(nil)).Elem(), ConnectionOptionsAttributeEmailSignupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeEmailSignupVerificationInput)(nil)).Elem(), ConnectionOptionsAttributeEmailSignupVerificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeEmailSignupVerificationArrayInput)(nil)).Elem(), ConnectionOptionsAttributeEmailSignupVerificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeMapInput)(nil)).Elem(), ConnectionOptionsAttributeMapArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeMapPtrInput)(nil)).Elem(), ConnectionOptionsAttributeMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributePhoneNumberInput)(nil)).Elem(), ConnectionOptionsAttributePhoneNumberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributePhoneNumberArrayInput)(nil)).Elem(), ConnectionOptionsAttributePhoneNumberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributePhoneNumberIdentifierInput)(nil)).Elem(), ConnectionOptionsAttributePhoneNumberIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributePhoneNumberIdentifierArrayInput)(nil)).Elem(), ConnectionOptionsAttributePhoneNumberIdentifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributePhoneNumberSignupInput)(nil)).Elem(), ConnectionOptionsAttributePhoneNumberSignupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributePhoneNumberSignupArrayInput)(nil)).Elem(), ConnectionOptionsAttributePhoneNumberSignupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributePhoneNumberSignupVerificationInput)(nil)).Elem(), ConnectionOptionsAttributePhoneNumberSignupVerificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributePhoneNumberSignupVerificationArrayInput)(nil)).Elem(), ConnectionOptionsAttributePhoneNumberSignupVerificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeUsernameInput)(nil)).Elem(), ConnectionOptionsAttributeUsernameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeUsernameArrayInput)(nil)).Elem(), ConnectionOptionsAttributeUsernameArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeUsernameIdentifierInput)(nil)).Elem(), ConnectionOptionsAttributeUsernameIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeUsernameIdentifierArrayInput)(nil)).Elem(), ConnectionOptionsAttributeUsernameIdentifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeUsernameSignupInput)(nil)).Elem(), ConnectionOptionsAttributeUsernameSignupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeUsernameSignupArrayInput)(nil)).Elem(), ConnectionOptionsAttributeUsernameSignupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeUsernameValidationInput)(nil)).Elem(), ConnectionOptionsAttributeUsernameValidationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeUsernameValidationArrayInput)(nil)).Elem(), ConnectionOptionsAttributeUsernameValidationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeUsernameValidationAllowedTypeInput)(nil)).Elem(), ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayInput)(nil)).Elem(), ConnectionOptionsAttributeUsernameValidationAllowedTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsConnectionSettingsInput)(nil)).Elem(), ConnectionOptionsConnectionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsConnectionSettingsPtrInput)(nil)).Elem(), ConnectionOptionsConnectionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsDecryptionKeyInput)(nil)).Elem(), ConnectionOptionsDecryptionKeyArgs{})
@@ -33173,6 +36987,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopesScopeArrayInput)(nil)).Elem(), ResourceServerScopesScopeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionsPermissionInput)(nil)).Elem(), RolePermissionsPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionsPermissionArrayInput)(nil)).Elem(), RolePermissionsPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SelfServiceProfileBrandingInput)(nil)).Elem(), SelfServiceProfileBrandingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SelfServiceProfileBrandingPtrInput)(nil)).Elem(), SelfServiceProfileBrandingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SelfServiceProfileBrandingColorsInput)(nil)).Elem(), SelfServiceProfileBrandingColorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SelfServiceProfileBrandingColorsPtrInput)(nil)).Elem(), SelfServiceProfileBrandingColorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SelfServiceProfileUserAttributeInput)(nil)).Elem(), SelfServiceProfileUserAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SelfServiceProfileUserAttributeArrayInput)(nil)).Elem(), SelfServiceProfileUserAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantFlagsInput)(nil)).Elem(), TenantFlagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantFlagsPtrInput)(nil)).Elem(), TenantFlagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantSessionCookieInput)(nil)).Elem(), TenantSessionCookieArgs{})
@@ -33303,8 +37123,36 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientRefreshTokenArrayInput)(nil)).Elem(), GetClientRefreshTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionInput)(nil)).Elem(), GetConnectionOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionArrayInput)(nil)).Elem(), GetConnectionOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeInput)(nil)).Elem(), GetConnectionOptionAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeArrayInput)(nil)).Elem(), GetConnectionOptionAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeEmailInput)(nil)).Elem(), GetConnectionOptionAttributeEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeEmailArrayInput)(nil)).Elem(), GetConnectionOptionAttributeEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeEmailIdentifierInput)(nil)).Elem(), GetConnectionOptionAttributeEmailIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeEmailIdentifierArrayInput)(nil)).Elem(), GetConnectionOptionAttributeEmailIdentifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeEmailSignupInput)(nil)).Elem(), GetConnectionOptionAttributeEmailSignupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeEmailSignupArrayInput)(nil)).Elem(), GetConnectionOptionAttributeEmailSignupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeEmailSignupVerificationInput)(nil)).Elem(), GetConnectionOptionAttributeEmailSignupVerificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeEmailSignupVerificationArrayInput)(nil)).Elem(), GetConnectionOptionAttributeEmailSignupVerificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeMapInput)(nil)).Elem(), GetConnectionOptionAttributeMapArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeMapArrayInput)(nil)).Elem(), GetConnectionOptionAttributeMapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberInput)(nil)).Elem(), GetConnectionOptionAttributePhoneNumberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberArrayInput)(nil)).Elem(), GetConnectionOptionAttributePhoneNumberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberIdentifierInput)(nil)).Elem(), GetConnectionOptionAttributePhoneNumberIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberIdentifierArrayInput)(nil)).Elem(), GetConnectionOptionAttributePhoneNumberIdentifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberSignupInput)(nil)).Elem(), GetConnectionOptionAttributePhoneNumberSignupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberSignupArrayInput)(nil)).Elem(), GetConnectionOptionAttributePhoneNumberSignupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberSignupVerificationInput)(nil)).Elem(), GetConnectionOptionAttributePhoneNumberSignupVerificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberSignupVerificationArrayInput)(nil)).Elem(), GetConnectionOptionAttributePhoneNumberSignupVerificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameArrayInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameIdentifierInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameIdentifierArrayInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameIdentifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameSignupInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameSignupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameSignupArrayInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameSignupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidationInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameValidationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidationArrayInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameValidationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidationAllowedTypeInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameValidationAllowedTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionConnectionSettingInput)(nil)).Elem(), GetConnectionOptionConnectionSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionConnectionSettingArrayInput)(nil)).Elem(), GetConnectionOptionConnectionSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionDecryptionKeyInput)(nil)).Elem(), GetConnectionOptionDecryptionKeyArgs{})
@@ -33353,6 +37201,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeTypeArrayInput)(nil)).Elem(), GetResourceServerScopeTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionTypeInput)(nil)).Elem(), GetRolePermissionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionTypeArrayInput)(nil)).Elem(), GetRolePermissionTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileBrandingInput)(nil)).Elem(), GetSelfServiceProfileBrandingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileBrandingArrayInput)(nil)).Elem(), GetSelfServiceProfileBrandingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileBrandingColorInput)(nil)).Elem(), GetSelfServiceProfileBrandingColorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileBrandingColorArrayInput)(nil)).Elem(), GetSelfServiceProfileBrandingColorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileUserAttributeInput)(nil)).Elem(), GetSelfServiceProfileUserAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileUserAttributeArrayInput)(nil)).Elem(), GetSelfServiceProfileUserAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSigningKeysSigningKeyInput)(nil)).Elem(), GetSigningKeysSigningKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSigningKeysSigningKeyArrayInput)(nil)).Elem(), GetSigningKeysSigningKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantFlagInput)(nil)).Elem(), GetTenantFlagArgs{})
@@ -33493,8 +37347,36 @@ func init() {
 	pulumi.RegisterOutputType(ClientRefreshTokenPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeEmailOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeEmailArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeEmailIdentifierOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeEmailIdentifierArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeEmailSignupOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeEmailSignupArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeEmailSignupVerificationOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeEmailSignupVerificationArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsAttributeMapOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsAttributeMapPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributePhoneNumberOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributePhoneNumberArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributePhoneNumberIdentifierOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributePhoneNumberIdentifierArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributePhoneNumberSignupOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributePhoneNumberSignupArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributePhoneNumberSignupVerificationOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributePhoneNumberSignupVerificationArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeUsernameOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeUsernameArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeUsernameIdentifierOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeUsernameIdentifierArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeUsernameSignupOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeUsernameSignupArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeUsernameValidationOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeUsernameValidationArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsConnectionSettingsOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsConnectionSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsDecryptionKeyOutput{})
@@ -33571,6 +37453,12 @@ func init() {
 	pulumi.RegisterOutputType(ResourceServerScopesScopeArrayOutput{})
 	pulumi.RegisterOutputType(RolePermissionsPermissionOutput{})
 	pulumi.RegisterOutputType(RolePermissionsPermissionArrayOutput{})
+	pulumi.RegisterOutputType(SelfServiceProfileBrandingOutput{})
+	pulumi.RegisterOutputType(SelfServiceProfileBrandingPtrOutput{})
+	pulumi.RegisterOutputType(SelfServiceProfileBrandingColorsOutput{})
+	pulumi.RegisterOutputType(SelfServiceProfileBrandingColorsPtrOutput{})
+	pulumi.RegisterOutputType(SelfServiceProfileUserAttributeOutput{})
+	pulumi.RegisterOutputType(SelfServiceProfileUserAttributeArrayOutput{})
 	pulumi.RegisterOutputType(TenantFlagsOutput{})
 	pulumi.RegisterOutputType(TenantFlagsPtrOutput{})
 	pulumi.RegisterOutputType(TenantSessionCookieOutput{})
@@ -33701,8 +37589,36 @@ func init() {
 	pulumi.RegisterOutputType(GetClientRefreshTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeEmailOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeEmailIdentifierOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeEmailIdentifierArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeEmailSignupOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeEmailSignupArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeEmailSignupVerificationOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeEmailSignupVerificationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAttributeMapOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAttributeMapArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributePhoneNumberOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributePhoneNumberArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributePhoneNumberIdentifierOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributePhoneNumberSignupOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributePhoneNumberSignupArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributePhoneNumberSignupVerificationOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameIdentifierOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameIdentifierArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameSignupOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameSignupArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameValidationOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameValidationArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionConnectionSettingOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionConnectionSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionDecryptionKeyOutput{})
@@ -33751,6 +37667,12 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceServerScopeTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetRolePermissionTypeOutput{})
 	pulumi.RegisterOutputType(GetRolePermissionTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetSelfServiceProfileBrandingOutput{})
+	pulumi.RegisterOutputType(GetSelfServiceProfileBrandingArrayOutput{})
+	pulumi.RegisterOutputType(GetSelfServiceProfileBrandingColorOutput{})
+	pulumi.RegisterOutputType(GetSelfServiceProfileBrandingColorArrayOutput{})
+	pulumi.RegisterOutputType(GetSelfServiceProfileUserAttributeOutput{})
+	pulumi.RegisterOutputType(GetSelfServiceProfileUserAttributeArrayOutput{})
 	pulumi.RegisterOutputType(GetSigningKeysSigningKeyOutput{})
 	pulumi.RegisterOutputType(GetSigningKeysSigningKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantFlagOutput{})

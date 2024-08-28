@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.ConnectionOptionsAttributeArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsAttributeMapArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsConnectionSettingsArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsDecryptionKeyArgs;
@@ -105,6 +106,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<ConnectionOptionsAttributeMapArgs>> attributeMap() {
         return Optional.ofNullable(this.attributeMap);
+    }
+
+    /**
+     * Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+     * 
+     */
+    @Import(name="attributes")
+    private @Nullable Output<List<ConnectionOptionsAttributeArgs>> attributes;
+
+    /**
+     * @return Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+     * 
+     */
+    public Optional<Output<List<ConnectionOptionsAttributeArgs>>> attributes() {
+        return Optional.ofNullable(this.attributes);
     }
 
     /**
@@ -873,6 +889,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+     * 
+     */
+    @Import(name="precedences")
+    private @Nullable Output<List<String>> precedences;
+
+    /**
+     * @return Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+     * 
+     */
+    public Optional<Output<List<String>>> precedences() {
+        return Optional.ofNullable(this.precedences);
+    }
+
+    /**
      * The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
      * 
      */
@@ -1390,6 +1421,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.apiEnableUsers = $.apiEnableUsers;
         this.appId = $.appId;
         this.attributeMap = $.attributeMap;
+        this.attributes = $.attributes;
         this.authParams = $.authParams;
         this.authorizationEndpoint = $.authorizationEndpoint;
         this.bruteForceProtection = $.bruteForceProtection;
@@ -1441,6 +1473,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.passwordPolicy = $.passwordPolicy;
         this.pingFederateBaseUrl = $.pingFederateBaseUrl;
         this.pkceEnabled = $.pkceEnabled;
+        this.precedences = $.precedences;
         this.protocolBinding = $.protocolBinding;
         this.provider = $.provider;
         this.requestTemplate = $.requestTemplate;
@@ -1608,6 +1641,37 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder attributeMap(ConnectionOptionsAttributeMapArgs attributeMap) {
             return attributeMap(Output.of(attributeMap));
+        }
+
+        /**
+         * @param attributes Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attributes(@Nullable Output<List<ConnectionOptionsAttributeArgs>> attributes) {
+            $.attributes = attributes;
+            return this;
+        }
+
+        /**
+         * @param attributes Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attributes(List<ConnectionOptionsAttributeArgs> attributes) {
+            return attributes(Output.of(attributes));
+        }
+
+        /**
+         * @param attributes Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attributes(ConnectionOptionsAttributeArgs... attributes) {
+            return attributes(List.of(attributes));
         }
 
         /**
@@ -2719,6 +2783,37 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder pkceEnabled(Boolean pkceEnabled) {
             return pkceEnabled(Output.of(pkceEnabled));
+        }
+
+        /**
+         * @param precedences Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder precedences(@Nullable Output<List<String>> precedences) {
+            $.precedences = precedences;
+            return this;
+        }
+
+        /**
+         * @param precedences Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder precedences(List<String> precedences) {
+            return precedences(Output.of(precedences));
+        }
+
+        /**
+         * @param precedences Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+         * 
+         * @return builder
+         * 
+         */
+        public Builder precedences(String... precedences) {
+            return precedences(List.of(precedences));
         }
 
         /**

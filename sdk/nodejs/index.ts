@@ -135,6 +135,11 @@ export const getRole: typeof import("./getRole").getRole = null as any;
 export const getRoleOutput: typeof import("./getRole").getRoleOutput = null as any;
 utilities.lazyLoad(exports, ["getRole","getRoleOutput"], () => require("./getRole"));
 
+export { GetSelfServiceProfileArgs, GetSelfServiceProfileResult, GetSelfServiceProfileOutputArgs } from "./getSelfServiceProfile";
+export const getSelfServiceProfile: typeof import("./getSelfServiceProfile").getSelfServiceProfile = null as any;
+export const getSelfServiceProfileOutput: typeof import("./getSelfServiceProfile").getSelfServiceProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getSelfServiceProfile","getSelfServiceProfileOutput"], () => require("./getSelfServiceProfile"));
+
 export { GetSigningKeysResult } from "./getSigningKeys";
 export const getSigningKeys: typeof import("./getSigningKeys").getSigningKeys = null as any;
 export const getSigningKeysOutput: typeof import("./getSigningKeys").getSigningKeysOutput = null as any;
@@ -265,6 +270,11 @@ export type RuleConfig = import("./ruleConfig").RuleConfig;
 export const RuleConfig: typeof import("./ruleConfig").RuleConfig = null as any;
 utilities.lazyLoad(exports, ["RuleConfig"], () => require("./ruleConfig"));
 
+export { SelfServiceProfileArgs, SelfServiceProfileState } from "./selfServiceProfile";
+export type SelfServiceProfile = import("./selfServiceProfile").SelfServiceProfile;
+export const SelfServiceProfile: typeof import("./selfServiceProfile").SelfServiceProfile = null as any;
+utilities.lazyLoad(exports, ["SelfServiceProfile"], () => require("./selfServiceProfile"));
+
 export { TenantArgs, TenantState } from "./tenant";
 export type Tenant = import("./tenant").Tenant;
 export const Tenant: typeof import("./tenant").Tenant = null as any;
@@ -393,6 +403,8 @@ const _module = {
                 return new Rule(name, <any>undefined, { urn })
             case "auth0:index/ruleConfig:RuleConfig":
                 return new RuleConfig(name, <any>undefined, { urn })
+            case "auth0:index/selfServiceProfile:SelfServiceProfile":
+                return new SelfServiceProfile(name, <any>undefined, { urn })
             case "auth0:index/tenant:Tenant":
                 return new Tenant(name, <any>undefined, { urn })
             case "auth0:index/triggerAction:TriggerAction":
@@ -451,6 +463,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/rolePermission", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/rolePermissions", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/rule", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/ruleConfig", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/selfServiceProfile", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/tenant", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/triggerAction", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/triggerActions", _module)
