@@ -372,6 +372,8 @@ func TestConnectionMigration(t *testing.T) {
                     "isDomainConnection": false,
                     "name": "googleOauth2-b68d006",
                     "options": {
+                        "attributes": [],
+                        "precedences": [],
                         "adfsServer": "",
                         "allowedAudiences": [
                             "api.example.com",
