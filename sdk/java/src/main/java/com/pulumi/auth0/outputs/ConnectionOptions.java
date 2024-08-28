@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.ConnectionOptionsAttribute;
 import com.pulumi.auth0.outputs.ConnectionOptionsAttributeMap;
 import com.pulumi.auth0.outputs.ConnectionOptionsConnectionSettings;
 import com.pulumi.auth0.outputs.ConnectionOptionsDecryptionKey;
@@ -53,6 +54,11 @@ public final class ConnectionOptions {
      * 
      */
     private @Nullable ConnectionOptionsAttributeMap attributeMap;
+    /**
+     * @return Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+     * 
+     */
+    private @Nullable List<ConnectionOptionsAttribute> attributes;
     /**
      * @return Query string parameters to be included as part of the generated passwordless email link.
      * 
@@ -309,6 +315,11 @@ public final class ConnectionOptions {
      */
     private @Nullable Boolean pkceEnabled;
     /**
+     * @return Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+     * 
+     */
+    private @Nullable List<String> precedences;
+    /**
      * @return The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
      * 
      */
@@ -514,6 +525,13 @@ public final class ConnectionOptions {
      */
     public Optional<ConnectionOptionsAttributeMap> attributeMap() {
         return Optional.ofNullable(this.attributeMap);
+    }
+    /**
+     * @return Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+     * 
+     */
+    public List<ConnectionOptionsAttribute> attributes() {
+        return this.attributes == null ? List.of() : this.attributes;
     }
     /**
      * @return Query string parameters to be included as part of the generated passwordless email link.
@@ -873,6 +891,13 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.pkceEnabled);
     }
     /**
+     * @return Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+     * 
+     */
+    public List<String> precedences() {
+        return this.precedences == null ? List.of() : this.precedences;
+    }
+    /**
      * @return The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
      * 
      */
@@ -1125,6 +1150,7 @@ public final class ConnectionOptions {
         private @Nullable Boolean apiEnableUsers;
         private @Nullable String appId;
         private @Nullable ConnectionOptionsAttributeMap attributeMap;
+        private @Nullable List<ConnectionOptionsAttribute> attributes;
         private @Nullable Map<String,String> authParams;
         private @Nullable String authorizationEndpoint;
         private @Nullable Boolean bruteForceProtection;
@@ -1176,6 +1202,7 @@ public final class ConnectionOptions {
         private @Nullable String passwordPolicy;
         private @Nullable String pingFederateBaseUrl;
         private @Nullable Boolean pkceEnabled;
+        private @Nullable List<String> precedences;
         private @Nullable String protocolBinding;
         private @Nullable String provider;
         private @Nullable String requestTemplate;
@@ -1218,6 +1245,7 @@ public final class ConnectionOptions {
     	      this.apiEnableUsers = defaults.apiEnableUsers;
     	      this.appId = defaults.appId;
     	      this.attributeMap = defaults.attributeMap;
+    	      this.attributes = defaults.attributes;
     	      this.authParams = defaults.authParams;
     	      this.authorizationEndpoint = defaults.authorizationEndpoint;
     	      this.bruteForceProtection = defaults.bruteForceProtection;
@@ -1269,6 +1297,7 @@ public final class ConnectionOptions {
     	      this.passwordPolicy = defaults.passwordPolicy;
     	      this.pingFederateBaseUrl = defaults.pingFederateBaseUrl;
     	      this.pkceEnabled = defaults.pkceEnabled;
+    	      this.precedences = defaults.precedences;
     	      this.protocolBinding = defaults.protocolBinding;
     	      this.provider = defaults.provider;
     	      this.requestTemplate = defaults.requestTemplate;
@@ -1337,6 +1366,15 @@ public final class ConnectionOptions {
 
             this.attributeMap = attributeMap;
             return this;
+        }
+        @CustomType.Setter
+        public Builder attributes(@Nullable List<ConnectionOptionsAttribute> attributes) {
+
+            this.attributes = attributes;
+            return this;
+        }
+        public Builder attributes(ConnectionOptionsAttribute... attributes) {
+            return attributes(List.of(attributes));
         }
         @CustomType.Setter
         public Builder authParams(@Nullable Map<String,String> authParams) {
@@ -1657,6 +1695,15 @@ public final class ConnectionOptions {
             return this;
         }
         @CustomType.Setter
+        public Builder precedences(@Nullable List<String> precedences) {
+
+            this.precedences = precedences;
+            return this;
+        }
+        public Builder precedences(String... precedences) {
+            return precedences(List.of(precedences));
+        }
+        @CustomType.Setter
         public Builder protocolBinding(@Nullable String protocolBinding) {
 
             this.protocolBinding = protocolBinding;
@@ -1870,6 +1917,7 @@ public final class ConnectionOptions {
             _resultValue.apiEnableUsers = apiEnableUsers;
             _resultValue.appId = appId;
             _resultValue.attributeMap = attributeMap;
+            _resultValue.attributes = attributes;
             _resultValue.authParams = authParams;
             _resultValue.authorizationEndpoint = authorizationEndpoint;
             _resultValue.bruteForceProtection = bruteForceProtection;
@@ -1921,6 +1969,7 @@ public final class ConnectionOptions {
             _resultValue.passwordPolicy = passwordPolicy;
             _resultValue.pingFederateBaseUrl = pingFederateBaseUrl;
             _resultValue.pkceEnabled = pkceEnabled;
+            _resultValue.precedences = precedences;
             _resultValue.protocolBinding = protocolBinding;
             _resultValue.provider = provider;
             _resultValue.requestTemplate = requestTemplate;

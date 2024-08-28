@@ -1577,6 +1577,13 @@
                     "$ref": "#/types/auth0:index/ConnectionOptionsAttributeMap:ConnectionOptionsAttributeMap",
                     "description": "OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.\n"
                 },
+                "attributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionOptionsAttribute:ConnectionOptionsAttribute"
+                    },
+                    "description": "Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order\n"
+                },
                 "authParams": {
                     "type": "object",
                     "additionalProperties": {
@@ -1804,6 +1811,13 @@
                     "type": "boolean",
                     "description": "Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.\n"
                 },
+                "precedences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order\n"
+                },
                 "protocolBinding": {
                     "type": "string",
                     "description": "The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.\n"
@@ -1979,6 +1993,89 @@
                 }
             }
         },
+        "auth0:index/ConnectionOptionsAttribute:ConnectionOptionsAttribute": {
+            "properties": {
+                "emails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionOptionsAttributeEmail:ConnectionOptionsAttributeEmail"
+                    },
+                    "description": "Connection Options for Email Attribute\n"
+                },
+                "phoneNumbers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionOptionsAttributePhoneNumber:ConnectionOptionsAttributePhoneNumber"
+                    },
+                    "description": "Connection Options for Phone Number Attribute\n"
+                },
+                "usernames": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionOptionsAttributeUsername:ConnectionOptionsAttributeUsername"
+                    },
+                    "description": "Connection Options for User Name Attribute\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ConnectionOptionsAttributeEmail:ConnectionOptionsAttributeEmail": {
+            "properties": {
+                "identifiers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionOptionsAttributeEmailIdentifier:ConnectionOptionsAttributeEmailIdentifier"
+                    },
+                    "description": "Connection Options Email Attribute Identifier\n"
+                },
+                "profileRequired": {
+                    "type": "boolean",
+                    "description": "Defines whether Profile is required\n"
+                },
+                "signups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionOptionsAttributeEmailSignup:ConnectionOptionsAttributeEmailSignup"
+                    },
+                    "description": "Defines signup settings for Email attribute\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ConnectionOptionsAttributeEmailIdentifier:ConnectionOptionsAttributeEmailIdentifier": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Defines whether email attribute is active as an identifier\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ConnectionOptionsAttributeEmailSignup:ConnectionOptionsAttributeEmailSignup": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "Defines signup status for Email Attribute\n"
+                },
+                "verifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionOptionsAttributeEmailSignupVerification:ConnectionOptionsAttributeEmailSignupVerification"
+                    },
+                    "description": "Defines settings for Verification under Email attribute\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ConnectionOptionsAttributeEmailSignupVerification:ConnectionOptionsAttributeEmailSignupVerification": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Defines verification settings for signup attribute\n"
+                }
+            },
+            "type": "object"
+        },
         "auth0:index/ConnectionOptionsAttributeMap:ConnectionOptionsAttributeMap": {
             "properties": {
                 "attributes": {
@@ -1998,6 +2095,168 @@
             "required": [
                 "mappingMode"
             ]
+        },
+        "auth0:index/ConnectionOptionsAttributePhoneNumber:ConnectionOptionsAttributePhoneNumber": {
+            "properties": {
+                "identifiers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionOptionsAttributePhoneNumberIdentifier:ConnectionOptionsAttributePhoneNumberIdentifier"
+                    },
+                    "description": "Connection Options Phone Number Attribute Identifier\n"
+                },
+                "profileRequired": {
+                    "type": "boolean",
+                    "description": "Defines whether Profile is required\n"
+                },
+                "signups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionOptionsAttributePhoneNumberSignup:ConnectionOptionsAttributePhoneNumberSignup"
+                    },
+                    "description": "Defines signup settings for Phone Number attribute\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ConnectionOptionsAttributePhoneNumberIdentifier:ConnectionOptionsAttributePhoneNumberIdentifier": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Defines whether Phone Number attribute is active as an identifier\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ConnectionOptionsAttributePhoneNumberSignup:ConnectionOptionsAttributePhoneNumberSignup": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "Defines status of signup for Phone Number attribute\n"
+                },
+                "verifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionOptionsAttributePhoneNumberSignupVerification:ConnectionOptionsAttributePhoneNumberSignupVerification"
+                    },
+                    "description": "Defines verification settings for Phone Number attribute\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ConnectionOptionsAttributePhoneNumberSignupVerification:ConnectionOptionsAttributePhoneNumberSignupVerification": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Defines verification settings for Phone Number attribute\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ConnectionOptionsAttributeUsername:ConnectionOptionsAttributeUsername": {
+            "properties": {
+                "identifiers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionOptionsAttributeUsernameIdentifier:ConnectionOptionsAttributeUsernameIdentifier"
+                    },
+                    "description": "Connection options for User Name Attribute Identifier\n"
+                },
+                "profileRequired": {
+                    "type": "boolean",
+                    "description": "Defines whether Profile is required\n"
+                },
+                "signups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionOptionsAttributeUsernameSignup:ConnectionOptionsAttributeUsernameSignup"
+                    },
+                    "description": "Defines signup settings for User Name attribute\n"
+                },
+                "validations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionOptionsAttributeUsernameValidation:ConnectionOptionsAttributeUsernameValidation"
+                    },
+                    "description": "Defines validation settings for User Name attribute\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "validations"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ConnectionOptionsAttributeUsernameIdentifier:ConnectionOptionsAttributeUsernameIdentifier": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Defines whether UserName attribute is active as an identifier\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ConnectionOptionsAttributeUsernameSignup:ConnectionOptionsAttributeUsernameSignup": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "Defines whether User Name attribute is active as an identifier\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ConnectionOptionsAttributeUsernameValidation:ConnectionOptionsAttributeUsernameValidation": {
+            "properties": {
+                "allowedTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionOptionsAttributeUsernameValidationAllowedType:ConnectionOptionsAttributeUsernameValidationAllowedType"
+                    },
+                    "description": "Defines allowed types for for UserName attribute\n"
+                },
+                "maxLength": {
+                    "type": "integer",
+                    "description": "Defines Max Length for User Name attribute\n"
+                },
+                "minLength": {
+                    "type": "integer",
+                    "description": "Defines Min Length for User Name attribute\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "allowedTypes",
+                        "maxLength",
+                        "minLength"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ConnectionOptionsAttributeUsernameValidationAllowedType:ConnectionOptionsAttributeUsernameValidationAllowedType": {
+            "properties": {
+                "email": {
+                    "type": "boolean",
+                    "description": "One of the allowed types for UserName signup attribute\n"
+                },
+                "phoneNumber": {
+                    "type": "boolean",
+                    "description": "One of the allowed types for UserName signup attribute\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "email",
+                        "phoneNumber"
+                    ]
+                }
+            }
         },
         "auth0:index/ConnectionOptionsConnectionSettings:ConnectionOptionsConnectionSettings": {
             "properties": {
@@ -2894,6 +3153,64 @@
                     ]
                 }
             }
+        },
+        "auth0:index/SelfServiceProfileBranding:SelfServiceProfileBranding": {
+            "properties": {
+                "colors": {
+                    "$ref": "#/types/auth0:index/SelfServiceProfileBrandingColors:SelfServiceProfileBrandingColors",
+                    "description": "Configuration settings for colors for branding.\n"
+                },
+                "logoUrl": {
+                    "type": "string",
+                    "description": "URL of logo to display on login page.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "colors"
+                    ]
+                }
+            }
+        },
+        "auth0:index/SelfServiceProfileBrandingColors:SelfServiceProfileBrandingColors": {
+            "properties": {
+                "primary": {
+                    "type": "string",
+                    "description": "Primary button background color in hexadecimal.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "primary"
+                    ]
+                }
+            }
+        },
+        "auth0:index/SelfServiceProfileUserAttribute:SelfServiceProfileUserAttribute": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "A human readable description of the attribute.\n"
+                },
+                "isOptional": {
+                    "type": "boolean",
+                    "description": "Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Attribute’s name on Auth0 side\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "isOptional",
+                "name"
+            ]
         },
         "auth0:index/TenantFlags:TenantFlags": {
             "properties": {
@@ -5033,6 +5350,13 @@
                     },
                     "description": "OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.\n"
                 },
+                "attributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionAttribute:getConnectionOptionAttribute"
+                    },
+                    "description": "Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order\n"
+                },
                 "authParams": {
                     "type": "object",
                     "additionalProperties": {
@@ -5282,6 +5606,13 @@
                     "type": "boolean",
                     "description": "Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.\n"
                 },
+                "precedences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order\n"
+                },
                 "protocolBinding": {
                     "type": "string",
                     "description": "The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.\n"
@@ -5441,6 +5772,7 @@
                 "apiEnableUsers",
                 "appId",
                 "attributeMaps",
+                "attributes",
                 "authParams",
                 "authorizationEndpoint",
                 "bruteForceProtection",
@@ -5492,6 +5824,7 @@
                 "passwordPolicy",
                 "pingFederateBaseUrl",
                 "pkceEnabled",
+                "precedences",
                 "protocolBinding",
                 "provider",
                 "requestTemplate",
@@ -5533,6 +5866,134 @@
                 }
             }
         },
+        "auth0:index/getConnectionOptionAttribute:getConnectionOptionAttribute": {
+            "properties": {
+                "emails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionAttributeEmail:getConnectionOptionAttributeEmail"
+                    },
+                    "description": "Connection Options for Email Attribute\n"
+                },
+                "phoneNumbers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionAttributePhoneNumber:getConnectionOptionAttributePhoneNumber"
+                    },
+                    "description": "Connection Options for Phone Number Attribute\n"
+                },
+                "usernames": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionAttributeUsername:getConnectionOptionAttributeUsername"
+                    },
+                    "description": "Connection Options for User Name Attribute\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "emails",
+                "phoneNumbers",
+                "usernames"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionAttributeEmail:getConnectionOptionAttributeEmail": {
+            "properties": {
+                "identifiers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionAttributeEmailIdentifier:getConnectionOptionAttributeEmailIdentifier"
+                    },
+                    "description": "Connection Options Email Attribute Identifier\n"
+                },
+                "profileRequired": {
+                    "type": "boolean",
+                    "description": "Defines whether Profile is required\n"
+                },
+                "signups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionAttributeEmailSignup:getConnectionOptionAttributeEmailSignup"
+                    },
+                    "description": "Defines signup settings for Email attribute\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "identifiers",
+                "profileRequired",
+                "signups"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionAttributeEmailIdentifier:getConnectionOptionAttributeEmailIdentifier": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Defines whether email attribute is active as an identifier\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionAttributeEmailSignup:getConnectionOptionAttributeEmailSignup": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "Defines signup status for Email Attribute\n"
+                },
+                "verifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionAttributeEmailSignupVerification:getConnectionOptionAttributeEmailSignupVerification"
+                    },
+                    "description": "Defines settings for Verification under Email attribute\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "status",
+                "verifications"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionAttributeEmailSignupVerification:getConnectionOptionAttributeEmailSignupVerification": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Defines verification settings for signup attribute\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getConnectionOptionAttributeMap:getConnectionOptionAttributeMap": {
             "properties": {
                 "attributes": {
@@ -5553,6 +6014,225 @@
                 "attributes",
                 "mappingMode",
                 "userinfoScope"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionAttributePhoneNumber:getConnectionOptionAttributePhoneNumber": {
+            "properties": {
+                "identifiers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionAttributePhoneNumberIdentifier:getConnectionOptionAttributePhoneNumberIdentifier"
+                    },
+                    "description": "Connection Options Phone Number Attribute Identifier\n"
+                },
+                "profileRequired": {
+                    "type": "boolean",
+                    "description": "Defines whether Profile is required\n"
+                },
+                "signups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionAttributePhoneNumberSignup:getConnectionOptionAttributePhoneNumberSignup"
+                    },
+                    "description": "Defines signup settings for Phone Number attribute\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "identifiers",
+                "profileRequired",
+                "signups"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionAttributePhoneNumberIdentifier:getConnectionOptionAttributePhoneNumberIdentifier": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Defines whether Phone Number attribute is active as an identifier\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionAttributePhoneNumberSignup:getConnectionOptionAttributePhoneNumberSignup": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "Defines status of signup for Phone Number attribute\n"
+                },
+                "verifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionAttributePhoneNumberSignupVerification:getConnectionOptionAttributePhoneNumberSignupVerification"
+                    },
+                    "description": "Defines verification settings for Phone Number attribute\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "status",
+                "verifications"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionAttributePhoneNumberSignupVerification:getConnectionOptionAttributePhoneNumberSignupVerification": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Defines verification settings for Phone Number attribute\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionAttributeUsername:getConnectionOptionAttributeUsername": {
+            "properties": {
+                "identifiers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionAttributeUsernameIdentifier:getConnectionOptionAttributeUsernameIdentifier"
+                    },
+                    "description": "Connection options for User Name Attribute Identifier\n"
+                },
+                "profileRequired": {
+                    "type": "boolean",
+                    "description": "Defines whether Profile is required\n"
+                },
+                "signups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionAttributeUsernameSignup:getConnectionOptionAttributeUsernameSignup"
+                    },
+                    "description": "Defines signup settings for User Name attribute\n"
+                },
+                "validations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionAttributeUsernameValidation:getConnectionOptionAttributeUsernameValidation"
+                    },
+                    "description": "Defines validation settings for User Name attribute\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "identifiers",
+                "profileRequired",
+                "signups",
+                "validations"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionAttributeUsernameIdentifier:getConnectionOptionAttributeUsernameIdentifier": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Defines whether UserName attribute is active as an identifier\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionAttributeUsernameSignup:getConnectionOptionAttributeUsernameSignup": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "Defines whether User Name attribute is active as an identifier\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionAttributeUsernameValidation:getConnectionOptionAttributeUsernameValidation": {
+            "properties": {
+                "allowedTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionAttributeUsernameValidationAllowedType:getConnectionOptionAttributeUsernameValidationAllowedType"
+                    },
+                    "description": "Defines allowed types for for UserName attribute\n"
+                },
+                "maxLength": {
+                    "type": "integer",
+                    "description": "Defines Max Length for User Name attribute\n"
+                },
+                "minLength": {
+                    "type": "integer",
+                    "description": "Defines Min Length for User Name attribute\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "allowedTypes",
+                "maxLength",
+                "minLength"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionAttributeUsernameValidationAllowedType:getConnectionOptionAttributeUsernameValidationAllowedType": {
+            "properties": {
+                "email": {
+                    "type": "boolean",
+                    "description": "One of the allowed types for UserName signup attribute\n"
+                },
+                "phoneNumber": {
+                    "type": "boolean",
+                    "description": "One of the allowed types for UserName signup attribute\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email",
+                "phoneNumber"
             ],
             "language": {
                 "nodejs": {
@@ -6101,6 +6781,75 @@
                 "name",
                 "resourceServerIdentifier",
                 "resourceServerName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getSelfServiceProfileBranding:getSelfServiceProfileBranding": {
+            "properties": {
+                "colors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getSelfServiceProfileBrandingColor:getSelfServiceProfileBrandingColor"
+                    },
+                    "description": "Configuration settings for colors for branding.\n"
+                },
+                "logoUrl": {
+                    "type": "string",
+                    "description": "URL of logo to display on login page.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "colors",
+                "logoUrl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getSelfServiceProfileBrandingColor:getSelfServiceProfileBrandingColor": {
+            "properties": {
+                "primary": {
+                    "type": "string",
+                    "description": "Primary button background color in hexadecimal.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "primary"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getSelfServiceProfileUserAttribute:getSelfServiceProfileUserAttribute": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "A human readable description of the attribute.\n"
+                },
+                "isOptional": {
+                    "type": "boolean",
+                    "description": "Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Attribute’s name on Auth0 side\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "isOptional",
+                "name"
             ],
             "language": {
                 "nodejs": {
@@ -9935,6 +10684,73 @@
                 "type": "object"
             }
         },
+        "auth0:index/selfServiceProfile:SelfServiceProfile": {
+            "description": "With this resource, you can create and manage Self-Service Profile for a tenant.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst mySelfServiceProfile = new auth0.SelfServiceProfile(\"my_self_service_profile\", {\n    userAttributes: [{\n        name: \"sample-name\",\n        description: \"sample-description\",\n        isOptional: true,\n    }],\n    branding: {\n        logoUrl: \"https://mycompany.org/v2/logo.png\",\n        colors: {\n            primary: \"#0059d6\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_self_service_profile = auth0.SelfServiceProfile(\"my_self_service_profile\",\n    user_attributes=[{\n        \"name\": \"sample-name\",\n        \"description\": \"sample-description\",\n        \"is_optional\": True,\n    }],\n    branding={\n        \"logo_url\": \"https://mycompany.org/v2/logo.png\",\n        \"colors\": {\n            \"primary\": \"#0059d6\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mySelfServiceProfile = new Auth0.SelfServiceProfile(\"my_self_service_profile\", new()\n    {\n        UserAttributes = new[]\n        {\n            new Auth0.Inputs.SelfServiceProfileUserAttributeArgs\n            {\n                Name = \"sample-name\",\n                Description = \"sample-description\",\n                IsOptional = true,\n            },\n        },\n        Branding = new Auth0.Inputs.SelfServiceProfileBrandingArgs\n        {\n            LogoUrl = \"https://mycompany.org/v2/logo.png\",\n            Colors = new Auth0.Inputs.SelfServiceProfileBrandingColorsArgs\n            {\n                Primary = \"#0059d6\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewSelfServiceProfile(ctx, \"my_self_service_profile\", \u0026auth0.SelfServiceProfileArgs{\n\t\t\tUserAttributes: auth0.SelfServiceProfileUserAttributeArray{\n\t\t\t\t\u0026auth0.SelfServiceProfileUserAttributeArgs{\n\t\t\t\t\tName:        pulumi.String(\"sample-name\"),\n\t\t\t\t\tDescription: pulumi.String(\"sample-description\"),\n\t\t\t\t\tIsOptional:  pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBranding: \u0026auth0.SelfServiceProfileBrandingArgs{\n\t\t\t\tLogoUrl: pulumi.String(\"https://mycompany.org/v2/logo.png\"),\n\t\t\t\tColors: \u0026auth0.SelfServiceProfileBrandingColorsArgs{\n\t\t\t\t\tPrimary: pulumi.String(\"#0059d6\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.SelfServiceProfile;\nimport com.pulumi.auth0.SelfServiceProfileArgs;\nimport com.pulumi.auth0.inputs.SelfServiceProfileUserAttributeArgs;\nimport com.pulumi.auth0.inputs.SelfServiceProfileBrandingArgs;\nimport com.pulumi.auth0.inputs.SelfServiceProfileBrandingColorsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mySelfServiceProfile = new SelfServiceProfile(\"mySelfServiceProfile\", SelfServiceProfileArgs.builder()\n            .userAttributes(SelfServiceProfileUserAttributeArgs.builder()\n                .name(\"sample-name\")\n                .description(\"sample-description\")\n                .isOptional(true)\n                .build())\n            .branding(SelfServiceProfileBrandingArgs.builder()\n                .logoUrl(\"https://mycompany.org/v2/logo.png\")\n                .colors(SelfServiceProfileBrandingColorsArgs.builder()\n                    .primary(\"#0059d6\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mySelfServiceProfile:\n    type: auth0:SelfServiceProfile\n    name: my_self_service_profile\n    properties:\n      userAttributes:\n        - name: sample-name\n          description: sample-description\n          isOptional: true\n      branding:\n        logoUrl: https://mycompany.org/v2/logo.png\n        colors:\n          primary: '#0059d6'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the id\n\nExample:\n\n```sh\n$ pulumi import auth0:index/selfServiceProfile:SelfServiceProfile id \"ssp_32oi5unksja93124\"\n```\n\n",
+            "properties": {
+                "branding": {
+                    "$ref": "#/types/auth0:index/SelfServiceProfileBranding:SelfServiceProfileBranding",
+                    "description": "Field can be used to customize the look and feel of the wizard.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The ISO 8601 formatted date the profile was created.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The ISO 8601 formatted date the profile was updated.\n"
+                },
+                "userAttributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/SelfServiceProfileUserAttribute:SelfServiceProfileUserAttribute"
+                    },
+                    "description": "This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.\n"
+                }
+            },
+            "required": [
+                "branding",
+                "createdAt",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "branding": {
+                    "$ref": "#/types/auth0:index/SelfServiceProfileBranding:SelfServiceProfileBranding",
+                    "description": "Field can be used to customize the look and feel of the wizard.\n"
+                },
+                "userAttributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/SelfServiceProfileUserAttribute:SelfServiceProfileUserAttribute"
+                    },
+                    "description": "This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SelfServiceProfile resources.\n",
+                "properties": {
+                    "branding": {
+                        "$ref": "#/types/auth0:index/SelfServiceProfileBranding:SelfServiceProfileBranding",
+                        "description": "Field can be used to customize the look and feel of the wizard.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The ISO 8601 formatted date the profile was created.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The ISO 8601 formatted date the profile was updated.\n"
+                    },
+                    "userAttributes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/auth0:index/SelfServiceProfileUserAttribute:SelfServiceProfileUserAttribute"
+                        },
+                        "description": "This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "auth0:index/tenant:Tenant": {
             "description": "With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error pages, and configuring default tenant behaviors.\n\n\u003e Creating tenants through the Management API is not currently supported. Therefore, this resource can only\nmanage an existing tenant created through the Auth0 dashboard.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myTenant = new auth0.Tenant(\"my_tenant\", {\n    friendlyName: \"Tenant Name\",\n    pictureUrl: \"http://example.com/logo.png\",\n    supportEmail: \"support@example.com\",\n    supportUrl: \"http://example.com/support\",\n    allowedLogoutUrls: [\"http://example.com/logout\"],\n    sessionLifetime: 8760,\n    sandboxVersion: \"12\",\n    enabledLocales: [\"en\"],\n    defaultRedirectionUri: \"https://example.com/login\",\n    flags: {\n        disableClickjackProtectionHeaders: true,\n        enablePublicSignupUserExistsError: true,\n        useScopeDescriptionsForConsent: true,\n        noDiscloseEnterpriseConnections: false,\n        disableManagementApiSmsObfuscation: false,\n        disableFieldsMapFix: false,\n    },\n    sessionCookie: {\n        mode: \"non-persistent\",\n    },\n    sessions: {\n        oidcLogoutPromptEnabled: false,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_tenant = auth0.Tenant(\"my_tenant\",\n    friendly_name=\"Tenant Name\",\n    picture_url=\"http://example.com/logo.png\",\n    support_email=\"support@example.com\",\n    support_url=\"http://example.com/support\",\n    allowed_logout_urls=[\"http://example.com/logout\"],\n    session_lifetime=8760,\n    sandbox_version=\"12\",\n    enabled_locales=[\"en\"],\n    default_redirection_uri=\"https://example.com/login\",\n    flags={\n        \"disable_clickjack_protection_headers\": True,\n        \"enable_public_signup_user_exists_error\": True,\n        \"use_scope_descriptions_for_consent\": True,\n        \"no_disclose_enterprise_connections\": False,\n        \"disable_management_api_sms_obfuscation\": False,\n        \"disable_fields_map_fix\": False,\n    },\n    session_cookie={\n        \"mode\": \"non-persistent\",\n    },\n    sessions={\n        \"oidc_logout_prompt_enabled\": False,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myTenant = new Auth0.Tenant(\"my_tenant\", new()\n    {\n        FriendlyName = \"Tenant Name\",\n        PictureUrl = \"http://example.com/logo.png\",\n        SupportEmail = \"support@example.com\",\n        SupportUrl = \"http://example.com/support\",\n        AllowedLogoutUrls = new[]\n        {\n            \"http://example.com/logout\",\n        },\n        SessionLifetime = 8760,\n        SandboxVersion = \"12\",\n        EnabledLocales = new[]\n        {\n            \"en\",\n        },\n        DefaultRedirectionUri = \"https://example.com/login\",\n        Flags = new Auth0.Inputs.TenantFlagsArgs\n        {\n            DisableClickjackProtectionHeaders = true,\n            EnablePublicSignupUserExistsError = true,\n            UseScopeDescriptionsForConsent = true,\n            NoDiscloseEnterpriseConnections = false,\n            DisableManagementApiSmsObfuscation = false,\n            DisableFieldsMapFix = false,\n        },\n        SessionCookie = new Auth0.Inputs.TenantSessionCookieArgs\n        {\n            Mode = \"non-persistent\",\n        },\n        Sessions = new Auth0.Inputs.TenantSessionsArgs\n        {\n            OidcLogoutPromptEnabled = false,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewTenant(ctx, \"my_tenant\", \u0026auth0.TenantArgs{\n\t\t\tFriendlyName: pulumi.String(\"Tenant Name\"),\n\t\t\tPictureUrl:   pulumi.String(\"http://example.com/logo.png\"),\n\t\t\tSupportEmail: pulumi.String(\"support@example.com\"),\n\t\t\tSupportUrl:   pulumi.String(\"http://example.com/support\"),\n\t\t\tAllowedLogoutUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"http://example.com/logout\"),\n\t\t\t},\n\t\t\tSessionLifetime: pulumi.Float64(8760),\n\t\t\tSandboxVersion:  pulumi.String(\"12\"),\n\t\t\tEnabledLocales: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"en\"),\n\t\t\t},\n\t\t\tDefaultRedirectionUri: pulumi.String(\"https://example.com/login\"),\n\t\t\tFlags: \u0026auth0.TenantFlagsArgs{\n\t\t\t\tDisableClickjackProtectionHeaders:  pulumi.Bool(true),\n\t\t\t\tEnablePublicSignupUserExistsError:  pulumi.Bool(true),\n\t\t\t\tUseScopeDescriptionsForConsent:     pulumi.Bool(true),\n\t\t\t\tNoDiscloseEnterpriseConnections:    pulumi.Bool(false),\n\t\t\t\tDisableManagementApiSmsObfuscation: pulumi.Bool(false),\n\t\t\t\tDisableFieldsMapFix:                pulumi.Bool(false),\n\t\t\t},\n\t\t\tSessionCookie: \u0026auth0.TenantSessionCookieArgs{\n\t\t\t\tMode: pulumi.String(\"non-persistent\"),\n\t\t\t},\n\t\t\tSessions: \u0026auth0.TenantSessionsArgs{\n\t\t\t\tOidcLogoutPromptEnabled: pulumi.Bool(false),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Tenant;\nimport com.pulumi.auth0.TenantArgs;\nimport com.pulumi.auth0.inputs.TenantFlagsArgs;\nimport com.pulumi.auth0.inputs.TenantSessionCookieArgs;\nimport com.pulumi.auth0.inputs.TenantSessionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myTenant = new Tenant(\"myTenant\", TenantArgs.builder()\n            .friendlyName(\"Tenant Name\")\n            .pictureUrl(\"http://example.com/logo.png\")\n            .supportEmail(\"support@example.com\")\n            .supportUrl(\"http://example.com/support\")\n            .allowedLogoutUrls(\"http://example.com/logout\")\n            .sessionLifetime(8760)\n            .sandboxVersion(\"12\")\n            .enabledLocales(\"en\")\n            .defaultRedirectionUri(\"https://example.com/login\")\n            .flags(TenantFlagsArgs.builder()\n                .disableClickjackProtectionHeaders(true)\n                .enablePublicSignupUserExistsError(true)\n                .useScopeDescriptionsForConsent(true)\n                .noDiscloseEnterpriseConnections(false)\n                .disableManagementApiSmsObfuscation(false)\n                .disableFieldsMapFix(false)\n                .build())\n            .sessionCookie(TenantSessionCookieArgs.builder()\n                .mode(\"non-persistent\")\n                .build())\n            .sessions(TenantSessionsArgs.builder()\n                .oidcLogoutPromptEnabled(false)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myTenant:\n    type: auth0:Tenant\n    name: my_tenant\n    properties:\n      friendlyName: Tenant Name\n      pictureUrl: http://example.com/logo.png\n      supportEmail: support@example.com\n      supportUrl: http://example.com/support\n      allowedLogoutUrls:\n        - http://example.com/logout\n      sessionLifetime: 8760\n      sandboxVersion: '12'\n      enabledLocales:\n        - en\n      defaultRedirectionUri: https://example.com/login\n      flags:\n        disableClickjackProtectionHeaders: true\n        enablePublicSignupUserExistsError: true\n        useScopeDescriptionsForConsent: true\n        noDiscloseEnterpriseConnections: false\n        disableManagementApiSmsObfuscation: false\n        disableFieldsMapFix: false\n      sessionCookie:\n        mode: non-persistent\n      sessions:\n        oidcLogoutPromptEnabled: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAs this is not a resource identifiable by an ID within the Auth0 Management API,\n\ntenant can be imported using a random string.\n\n#\n\nWe recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/tenant:Tenant my_tenant \"82f4f21b-017a-319d-92e7-2291c1ca36c4\"\n```\n\n",
             "properties": {
@@ -11715,6 +12531,61 @@
                     "permissions",
                     "users",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "auth0:index/getSelfServiceProfile:getSelfServiceProfile": {
+            "description": "Data source to retrieve a specific Auth0 Self-Service Profile by `id`\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// An Auth0 Self-Service- Profile loaded using it's ID.\nconst auth0SelfServiceProfile = auth0.getSelfServiceProfile({\n    id: \"some-profile-id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# An Auth0 Self-Service- Profile loaded using it's ID.\nauth0_self_service_profile = auth0.get_self_service_profile(id=\"some-profile-id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // An Auth0 Self-Service- Profile loaded using it's ID.\n    var auth0SelfServiceProfile = Auth0.GetSelfServiceProfile.Invoke(new()\n    {\n        Id = \"some-profile-id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// An Auth0 Self-Service- Profile loaded using it's ID.\n\t\t_, err := auth0.LookupSelfServiceProfile(ctx, \u0026auth0.LookupSelfServiceProfileArgs{\n\t\t\tId: \"some-profile-id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Auth0Functions;\nimport com.pulumi.auth0.inputs.GetSelfServiceProfileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // An Auth0 Self-Service- Profile loaded using it's ID.\n        final var auth0SelfServiceProfile = Auth0Functions.getSelfServiceProfile(GetSelfServiceProfileArgs.builder()\n            .id(\"some-profile-id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  # An Auth0 Self-Service- Profile loaded using it's ID.\n  auth0SelfServiceProfile:\n    fn::invoke:\n      Function: auth0:getSelfServiceProfile\n      Arguments:\n        id: some-profile-id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSelfServiceProfile.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The id of the Self Service Profile\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSelfServiceProfile.\n",
+                "properties": {
+                    "brandings": {
+                        "description": "Field can be used to customize the look and feel of the wizard.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getSelfServiceProfileBranding:getSelfServiceProfileBranding"
+                        },
+                        "type": "array"
+                    },
+                    "createdAt": {
+                        "description": "The ISO 8601 formatted date the profile was created.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The id of the Self Service Profile\n",
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "description": "The ISO 8601 formatted date the profile was updated.\n",
+                        "type": "string"
+                    },
+                    "userAttributes": {
+                        "description": "This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getSelfServiceProfileUserAttribute:getSelfServiceProfileUserAttribute"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "brandings",
+                    "createdAt",
+                    "id",
+                    "updatedAt",
+                    "userAttributes"
                 ],
                 "type": "object"
             }

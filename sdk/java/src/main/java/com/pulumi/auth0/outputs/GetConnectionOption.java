@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetConnectionOptionAttribute;
 import com.pulumi.auth0.outputs.GetConnectionOptionAttributeMap;
 import com.pulumi.auth0.outputs.GetConnectionOptionConnectionSetting;
 import com.pulumi.auth0.outputs.GetConnectionOptionDecryptionKey;
@@ -52,6 +53,11 @@ public final class GetConnectionOption {
      * 
      */
     private List<GetConnectionOptionAttributeMap> attributeMaps;
+    /**
+     * @return Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+     * 
+     */
+    private List<GetConnectionOptionAttribute> attributes;
     /**
      * @return Query string parameters to be included as part of the generated passwordless email link.
      * 
@@ -308,6 +314,11 @@ public final class GetConnectionOption {
      */
     private Boolean pkceEnabled;
     /**
+     * @return Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+     * 
+     */
+    private List<String> precedences;
+    /**
      * @return The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
      * 
      */
@@ -513,6 +524,13 @@ public final class GetConnectionOption {
      */
     public List<GetConnectionOptionAttributeMap> attributeMaps() {
         return this.attributeMaps;
+    }
+    /**
+     * @return Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+     * 
+     */
+    public List<GetConnectionOptionAttribute> attributes() {
+        return this.attributes;
     }
     /**
      * @return Query string parameters to be included as part of the generated passwordless email link.
@@ -872,6 +890,13 @@ public final class GetConnectionOption {
         return this.pkceEnabled;
     }
     /**
+     * @return Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+     * 
+     */
+    public List<String> precedences() {
+        return this.precedences;
+    }
+    /**
      * @return The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
      * 
      */
@@ -1124,6 +1149,7 @@ public final class GetConnectionOption {
         private Boolean apiEnableUsers;
         private String appId;
         private List<GetConnectionOptionAttributeMap> attributeMaps;
+        private List<GetConnectionOptionAttribute> attributes;
         private Map<String,String> authParams;
         private String authorizationEndpoint;
         private Boolean bruteForceProtection;
@@ -1175,6 +1201,7 @@ public final class GetConnectionOption {
         private String passwordPolicy;
         private String pingFederateBaseUrl;
         private Boolean pkceEnabled;
+        private List<String> precedences;
         private String protocolBinding;
         private String provider;
         private String requestTemplate;
@@ -1217,6 +1244,7 @@ public final class GetConnectionOption {
     	      this.apiEnableUsers = defaults.apiEnableUsers;
     	      this.appId = defaults.appId;
     	      this.attributeMaps = defaults.attributeMaps;
+    	      this.attributes = defaults.attributes;
     	      this.authParams = defaults.authParams;
     	      this.authorizationEndpoint = defaults.authorizationEndpoint;
     	      this.bruteForceProtection = defaults.bruteForceProtection;
@@ -1268,6 +1296,7 @@ public final class GetConnectionOption {
     	      this.passwordPolicy = defaults.passwordPolicy;
     	      this.pingFederateBaseUrl = defaults.pingFederateBaseUrl;
     	      this.pkceEnabled = defaults.pkceEnabled;
+    	      this.precedences = defaults.precedences;
     	      this.protocolBinding = defaults.protocolBinding;
     	      this.provider = defaults.provider;
     	      this.requestTemplate = defaults.requestTemplate;
@@ -1349,6 +1378,17 @@ public final class GetConnectionOption {
         }
         public Builder attributeMaps(GetConnectionOptionAttributeMap... attributeMaps) {
             return attributeMaps(List.of(attributeMaps));
+        }
+        @CustomType.Setter
+        public Builder attributes(List<GetConnectionOptionAttribute> attributes) {
+            if (attributes == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "attributes");
+            }
+            this.attributes = attributes;
+            return this;
+        }
+        public Builder attributes(GetConnectionOptionAttribute... attributes) {
+            return attributes(List.of(attributes));
         }
         @CustomType.Setter
         public Builder authParams(Map<String,String> authParams) {
@@ -1795,6 +1835,17 @@ public final class GetConnectionOption {
             return this;
         }
         @CustomType.Setter
+        public Builder precedences(List<String> precedences) {
+            if (precedences == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "precedences");
+            }
+            this.precedences = precedences;
+            return this;
+        }
+        public Builder precedences(String... precedences) {
+            return precedences(List.of(precedences));
+        }
+        @CustomType.Setter
         public Builder protocolBinding(String protocolBinding) {
             if (protocolBinding == null) {
               throw new MissingRequiredPropertyException("GetConnectionOption", "protocolBinding");
@@ -2085,6 +2136,7 @@ public final class GetConnectionOption {
             _resultValue.apiEnableUsers = apiEnableUsers;
             _resultValue.appId = appId;
             _resultValue.attributeMaps = attributeMaps;
+            _resultValue.attributes = attributes;
             _resultValue.authParams = authParams;
             _resultValue.authorizationEndpoint = authorizationEndpoint;
             _resultValue.bruteForceProtection = bruteForceProtection;
@@ -2136,6 +2188,7 @@ public final class GetConnectionOption {
             _resultValue.passwordPolicy = passwordPolicy;
             _resultValue.pingFederateBaseUrl = pingFederateBaseUrl;
             _resultValue.pkceEnabled = pkceEnabled;
+            _resultValue.precedences = precedences;
             _resultValue.protocolBinding = protocolBinding;
             _resultValue.provider = provider;
             _resultValue.requestTemplate = requestTemplate;

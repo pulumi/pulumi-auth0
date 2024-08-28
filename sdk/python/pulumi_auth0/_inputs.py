@@ -75,7 +75,21 @@ __all__ = [
     'ClientNativeSocialLoginFacebookArgs',
     'ClientRefreshTokenArgs',
     'ConnectionOptionsArgs',
+    'ConnectionOptionsAttributeArgs',
+    'ConnectionOptionsAttributeEmailArgs',
+    'ConnectionOptionsAttributeEmailIdentifierArgs',
+    'ConnectionOptionsAttributeEmailSignupArgs',
+    'ConnectionOptionsAttributeEmailSignupVerificationArgs',
     'ConnectionOptionsAttributeMapArgs',
+    'ConnectionOptionsAttributePhoneNumberArgs',
+    'ConnectionOptionsAttributePhoneNumberIdentifierArgs',
+    'ConnectionOptionsAttributePhoneNumberSignupArgs',
+    'ConnectionOptionsAttributePhoneNumberSignupVerificationArgs',
+    'ConnectionOptionsAttributeUsernameArgs',
+    'ConnectionOptionsAttributeUsernameIdentifierArgs',
+    'ConnectionOptionsAttributeUsernameSignupArgs',
+    'ConnectionOptionsAttributeUsernameValidationArgs',
+    'ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs',
     'ConnectionOptionsConnectionSettingsArgs',
     'ConnectionOptionsDecryptionKeyArgs',
     'ConnectionOptionsGatewayAuthenticationArgs',
@@ -114,6 +128,9 @@ __all__ = [
     'PagesLoginArgs',
     'ResourceServerScopesScopeArgs',
     'RolePermissionsPermissionArgs',
+    'SelfServiceProfileBrandingArgs',
+    'SelfServiceProfileBrandingColorsArgs',
+    'SelfServiceProfileUserAttributeArgs',
     'TenantFlagsArgs',
     'TenantSessionCookieArgs',
     'TenantSessionsArgs',
@@ -4252,6 +4269,7 @@ class ConnectionOptionsArgs:
                  api_enable_users: Optional[pulumi.Input[bool]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  attribute_map: Optional[pulumi.Input['ConnectionOptionsAttributeMapArgs']] = None,
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeArgs']]]] = None,
                  auth_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  authorization_endpoint: Optional[pulumi.Input[str]] = None,
                  brute_force_protection: Optional[pulumi.Input[bool]] = None,
@@ -4303,6 +4321,7 @@ class ConnectionOptionsArgs:
                  password_policy: Optional[pulumi.Input[str]] = None,
                  ping_federate_base_url: Optional[pulumi.Input[str]] = None,
                  pkce_enabled: Optional[pulumi.Input[bool]] = None,
+                 precedences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  protocol_binding: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
                  request_template: Optional[pulumi.Input[str]] = None,
@@ -4343,6 +4362,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[bool] api_enable_users: Enable API Access to users.
         :param pulumi.Input[str] app_id: App ID.
         :param pulumi.Input['ConnectionOptionsAttributeMapArgs'] attribute_map: OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeArgs']]] attributes: Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] auth_params: Query string parameters to be included as part of the generated passwordless email link.
         :param pulumi.Input[str] authorization_endpoint: Authorization endpoint.
         :param pulumi.Input[bool] brute_force_protection: Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
@@ -4394,6 +4414,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[str] password_policy: Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
         :param pulumi.Input[str] ping_federate_base_url: Ping Federate Server URL.
         :param pulumi.Input[bool] pkce_enabled: Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] precedences: Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
         :param pulumi.Input[str] protocol_binding: The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
         :param pulumi.Input[str] provider: Defines the custom `sms_gateway` provider.
         :param pulumi.Input[str] request_template: Template that formats the SAML request.
@@ -4439,6 +4460,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "app_id", app_id)
         if attribute_map is not None:
             pulumi.set(__self__, "attribute_map", attribute_map)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
         if auth_params is not None:
             pulumi.set(__self__, "auth_params", auth_params)
         if authorization_endpoint is not None:
@@ -4541,6 +4564,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "ping_federate_base_url", ping_federate_base_url)
         if pkce_enabled is not None:
             pulumi.set(__self__, "pkce_enabled", pkce_enabled)
+        if precedences is not None:
+            pulumi.set(__self__, "precedences", precedences)
         if protocol_binding is not None:
             pulumi.set(__self__, "protocol_binding", protocol_binding)
         if provider is not None:
@@ -4669,6 +4694,18 @@ class ConnectionOptionsArgs:
     @attribute_map.setter
     def attribute_map(self, value: Optional[pulumi.Input['ConnectionOptionsAttributeMapArgs']]):
         pulumi.set(self, "attribute_map", value)
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeArgs']]]]:
+        """
+        Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+        """
+        return pulumi.get(self, "attributes")
+
+    @attributes.setter
+    def attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeArgs']]]]):
+        pulumi.set(self, "attributes", value)
 
     @property
     @pulumi.getter(name="authParams")
@@ -5283,6 +5320,18 @@ class ConnectionOptionsArgs:
         pulumi.set(self, "pkce_enabled", value)
 
     @property
+    @pulumi.getter
+    def precedences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+        """
+        return pulumi.get(self, "precedences")
+
+    @precedences.setter
+    def precedences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "precedences", value)
+
+    @property
     @pulumi.getter(name="protocolBinding")
     def protocol_binding(self) -> Optional[pulumi.Input[str]]:
         """
@@ -5692,6 +5741,201 @@ class ConnectionOptionsArgs:
 
 
 @pulumi.input_type
+class ConnectionOptionsAttributeArgs:
+    def __init__(__self__, *,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailArgs']]]] = None,
+                 phone_numbers: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberArgs']]]] = None,
+                 usernames: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailArgs']]] emails: Connection Options for Email Attribute
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberArgs']]] phone_numbers: Connection Options for Phone Number Attribute
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameArgs']]] usernames: Connection Options for User Name Attribute
+        """
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if phone_numbers is not None:
+            pulumi.set(__self__, "phone_numbers", phone_numbers)
+        if usernames is not None:
+            pulumi.set(__self__, "usernames", usernames)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailArgs']]]]:
+        """
+        Connection Options for Email Attribute
+        """
+        return pulumi.get(self, "emails")
+
+    @emails.setter
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailArgs']]]]):
+        pulumi.set(self, "emails", value)
+
+    @property
+    @pulumi.getter(name="phoneNumbers")
+    def phone_numbers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberArgs']]]]:
+        """
+        Connection Options for Phone Number Attribute
+        """
+        return pulumi.get(self, "phone_numbers")
+
+    @phone_numbers.setter
+    def phone_numbers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberArgs']]]]):
+        pulumi.set(self, "phone_numbers", value)
+
+    @property
+    @pulumi.getter
+    def usernames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameArgs']]]]:
+        """
+        Connection Options for User Name Attribute
+        """
+        return pulumi.get(self, "usernames")
+
+    @usernames.setter
+    def usernames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameArgs']]]]):
+        pulumi.set(self, "usernames", value)
+
+
+@pulumi.input_type
+class ConnectionOptionsAttributeEmailArgs:
+    def __init__(__self__, *,
+                 identifiers: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailIdentifierArgs']]]] = None,
+                 profile_required: Optional[pulumi.Input[bool]] = None,
+                 signups: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailIdentifierArgs']]] identifiers: Connection Options Email Attribute Identifier
+        :param pulumi.Input[bool] profile_required: Defines whether Profile is required
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupArgs']]] signups: Defines signup settings for Email attribute
+        """
+        if identifiers is not None:
+            pulumi.set(__self__, "identifiers", identifiers)
+        if profile_required is not None:
+            pulumi.set(__self__, "profile_required", profile_required)
+        if signups is not None:
+            pulumi.set(__self__, "signups", signups)
+
+    @property
+    @pulumi.getter
+    def identifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailIdentifierArgs']]]]:
+        """
+        Connection Options Email Attribute Identifier
+        """
+        return pulumi.get(self, "identifiers")
+
+    @identifiers.setter
+    def identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailIdentifierArgs']]]]):
+        pulumi.set(self, "identifiers", value)
+
+    @property
+    @pulumi.getter(name="profileRequired")
+    def profile_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether Profile is required
+        """
+        return pulumi.get(self, "profile_required")
+
+    @profile_required.setter
+    def profile_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "profile_required", value)
+
+    @property
+    @pulumi.getter
+    def signups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupArgs']]]]:
+        """
+        Defines signup settings for Email attribute
+        """
+        return pulumi.get(self, "signups")
+
+    @signups.setter
+    def signups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupArgs']]]]):
+        pulumi.set(self, "signups", value)
+
+
+@pulumi.input_type
+class ConnectionOptionsAttributeEmailIdentifierArgs:
+    def __init__(__self__, *,
+                 active: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] active: Defines whether email attribute is active as an identifier
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether email attribute is active as an identifier
+        """
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "active", value)
+
+
+@pulumi.input_type
+class ConnectionOptionsAttributeEmailSignupArgs:
+    def __init__(__self__, *,
+                 status: Optional[pulumi.Input[str]] = None,
+                 verifications: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupVerificationArgs']]]] = None):
+        """
+        :param pulumi.Input[str] status: Defines signup status for Email Attribute
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupVerificationArgs']]] verifications: Defines settings for Verification under Email attribute
+        """
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if verifications is not None:
+            pulumi.set(__self__, "verifications", verifications)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines signup status for Email Attribute
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def verifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupVerificationArgs']]]]:
+        """
+        Defines settings for Verification under Email attribute
+        """
+        return pulumi.get(self, "verifications")
+
+    @verifications.setter
+    def verifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupVerificationArgs']]]]):
+        pulumi.set(self, "verifications", value)
+
+
+@pulumi.input_type
+class ConnectionOptionsAttributeEmailSignupVerificationArgs:
+    def __init__(__self__, *,
+                 active: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] active: Defines verification settings for signup attribute
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines verification settings for signup attribute
+        """
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "active", value)
+
+
+@pulumi.input_type
 class ConnectionOptionsAttributeMapArgs:
     def __init__(__self__, *,
                  mapping_mode: pulumi.Input[str],
@@ -5743,6 +5987,357 @@ class ConnectionOptionsAttributeMapArgs:
     @userinfo_scope.setter
     def userinfo_scope(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "userinfo_scope", value)
+
+
+@pulumi.input_type
+class ConnectionOptionsAttributePhoneNumberArgs:
+    def __init__(__self__, *,
+                 identifiers: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberIdentifierArgs']]]] = None,
+                 profile_required: Optional[pulumi.Input[bool]] = None,
+                 signups: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberSignupArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberIdentifierArgs']]] identifiers: Connection Options Phone Number Attribute Identifier
+        :param pulumi.Input[bool] profile_required: Defines whether Profile is required
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberSignupArgs']]] signups: Defines signup settings for Phone Number attribute
+        """
+        if identifiers is not None:
+            pulumi.set(__self__, "identifiers", identifiers)
+        if profile_required is not None:
+            pulumi.set(__self__, "profile_required", profile_required)
+        if signups is not None:
+            pulumi.set(__self__, "signups", signups)
+
+    @property
+    @pulumi.getter
+    def identifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberIdentifierArgs']]]]:
+        """
+        Connection Options Phone Number Attribute Identifier
+        """
+        return pulumi.get(self, "identifiers")
+
+    @identifiers.setter
+    def identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberIdentifierArgs']]]]):
+        pulumi.set(self, "identifiers", value)
+
+    @property
+    @pulumi.getter(name="profileRequired")
+    def profile_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether Profile is required
+        """
+        return pulumi.get(self, "profile_required")
+
+    @profile_required.setter
+    def profile_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "profile_required", value)
+
+    @property
+    @pulumi.getter
+    def signups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberSignupArgs']]]]:
+        """
+        Defines signup settings for Phone Number attribute
+        """
+        return pulumi.get(self, "signups")
+
+    @signups.setter
+    def signups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberSignupArgs']]]]):
+        pulumi.set(self, "signups", value)
+
+
+@pulumi.input_type
+class ConnectionOptionsAttributePhoneNumberIdentifierArgs:
+    def __init__(__self__, *,
+                 active: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] active: Defines whether Phone Number attribute is active as an identifier
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether Phone Number attribute is active as an identifier
+        """
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "active", value)
+
+
+@pulumi.input_type
+class ConnectionOptionsAttributePhoneNumberSignupArgs:
+    def __init__(__self__, *,
+                 status: Optional[pulumi.Input[str]] = None,
+                 verifications: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberSignupVerificationArgs']]]] = None):
+        """
+        :param pulumi.Input[str] status: Defines status of signup for Phone Number attribute
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberSignupVerificationArgs']]] verifications: Defines verification settings for Phone Number attribute
+        """
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if verifications is not None:
+            pulumi.set(__self__, "verifications", verifications)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines status of signup for Phone Number attribute
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def verifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberSignupVerificationArgs']]]]:
+        """
+        Defines verification settings for Phone Number attribute
+        """
+        return pulumi.get(self, "verifications")
+
+    @verifications.setter
+    def verifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberSignupVerificationArgs']]]]):
+        pulumi.set(self, "verifications", value)
+
+
+@pulumi.input_type
+class ConnectionOptionsAttributePhoneNumberSignupVerificationArgs:
+    def __init__(__self__, *,
+                 active: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] active: Defines verification settings for Phone Number attribute
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines verification settings for Phone Number attribute
+        """
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "active", value)
+
+
+@pulumi.input_type
+class ConnectionOptionsAttributeUsernameArgs:
+    def __init__(__self__, *,
+                 identifiers: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameIdentifierArgs']]]] = None,
+                 profile_required: Optional[pulumi.Input[bool]] = None,
+                 signups: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameSignupArgs']]]] = None,
+                 validations: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameValidationArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameIdentifierArgs']]] identifiers: Connection options for User Name Attribute Identifier
+        :param pulumi.Input[bool] profile_required: Defines whether Profile is required
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameSignupArgs']]] signups: Defines signup settings for User Name attribute
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameValidationArgs']]] validations: Defines validation settings for User Name attribute
+        """
+        if identifiers is not None:
+            pulumi.set(__self__, "identifiers", identifiers)
+        if profile_required is not None:
+            pulumi.set(__self__, "profile_required", profile_required)
+        if signups is not None:
+            pulumi.set(__self__, "signups", signups)
+        if validations is not None:
+            pulumi.set(__self__, "validations", validations)
+
+    @property
+    @pulumi.getter
+    def identifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameIdentifierArgs']]]]:
+        """
+        Connection options for User Name Attribute Identifier
+        """
+        return pulumi.get(self, "identifiers")
+
+    @identifiers.setter
+    def identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameIdentifierArgs']]]]):
+        pulumi.set(self, "identifiers", value)
+
+    @property
+    @pulumi.getter(name="profileRequired")
+    def profile_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether Profile is required
+        """
+        return pulumi.get(self, "profile_required")
+
+    @profile_required.setter
+    def profile_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "profile_required", value)
+
+    @property
+    @pulumi.getter
+    def signups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameSignupArgs']]]]:
+        """
+        Defines signup settings for User Name attribute
+        """
+        return pulumi.get(self, "signups")
+
+    @signups.setter
+    def signups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameSignupArgs']]]]):
+        pulumi.set(self, "signups", value)
+
+    @property
+    @pulumi.getter
+    def validations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameValidationArgs']]]]:
+        """
+        Defines validation settings for User Name attribute
+        """
+        return pulumi.get(self, "validations")
+
+    @validations.setter
+    def validations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameValidationArgs']]]]):
+        pulumi.set(self, "validations", value)
+
+
+@pulumi.input_type
+class ConnectionOptionsAttributeUsernameIdentifierArgs:
+    def __init__(__self__, *,
+                 active: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] active: Defines whether UserName attribute is active as an identifier
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether UserName attribute is active as an identifier
+        """
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "active", value)
+
+
+@pulumi.input_type
+class ConnectionOptionsAttributeUsernameSignupArgs:
+    def __init__(__self__, *,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] status: Defines whether User Name attribute is active as an identifier
+        """
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines whether User Name attribute is active as an identifier
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
+class ConnectionOptionsAttributeUsernameValidationArgs:
+    def __init__(__self__, *,
+                 allowed_types: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs']]]] = None,
+                 max_length: Optional[pulumi.Input[int]] = None,
+                 min_length: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs']]] allowed_types: Defines allowed types for for UserName attribute
+        :param pulumi.Input[int] max_length: Defines Max Length for User Name attribute
+        :param pulumi.Input[int] min_length: Defines Min Length for User Name attribute
+        """
+        if allowed_types is not None:
+            pulumi.set(__self__, "allowed_types", allowed_types)
+        if max_length is not None:
+            pulumi.set(__self__, "max_length", max_length)
+        if min_length is not None:
+            pulumi.set(__self__, "min_length", min_length)
+
+    @property
+    @pulumi.getter(name="allowedTypes")
+    def allowed_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs']]]]:
+        """
+        Defines allowed types for for UserName attribute
+        """
+        return pulumi.get(self, "allowed_types")
+
+    @allowed_types.setter
+    def allowed_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs']]]]):
+        pulumi.set(self, "allowed_types", value)
+
+    @property
+    @pulumi.getter(name="maxLength")
+    def max_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines Max Length for User Name attribute
+        """
+        return pulumi.get(self, "max_length")
+
+    @max_length.setter
+    def max_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_length", value)
+
+    @property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines Min Length for User Name attribute
+        """
+        return pulumi.get(self, "min_length")
+
+    @min_length.setter
+    def min_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_length", value)
+
+
+@pulumi.input_type
+class ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs:
+    def __init__(__self__, *,
+                 email: Optional[pulumi.Input[bool]] = None,
+                 phone_number: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] email: One of the allowed types for UserName signup attribute
+        :param pulumi.Input[bool] phone_number: One of the allowed types for UserName signup attribute
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if phone_number is not None:
+            pulumi.set(__self__, "phone_number", phone_number)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[bool]]:
+        """
+        One of the allowed types for UserName signup attribute
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> Optional[pulumi.Input[bool]]:
+        """
+        One of the allowed types for UserName signup attribute
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "phone_number", value)
 
 
 @pulumi.input_type
@@ -8045,6 +8640,120 @@ class RolePermissionsPermissionArgs:
     @resource_server_name.setter
     def resource_server_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_server_name", value)
+
+
+@pulumi.input_type
+class SelfServiceProfileBrandingArgs:
+    def __init__(__self__, *,
+                 colors: Optional[pulumi.Input['SelfServiceProfileBrandingColorsArgs']] = None,
+                 logo_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['SelfServiceProfileBrandingColorsArgs'] colors: Configuration settings for colors for branding.
+        :param pulumi.Input[str] logo_url: URL of logo to display on login page.
+        """
+        if colors is not None:
+            pulumi.set(__self__, "colors", colors)
+        if logo_url is not None:
+            pulumi.set(__self__, "logo_url", logo_url)
+
+    @property
+    @pulumi.getter
+    def colors(self) -> Optional[pulumi.Input['SelfServiceProfileBrandingColorsArgs']]:
+        """
+        Configuration settings for colors for branding.
+        """
+        return pulumi.get(self, "colors")
+
+    @colors.setter
+    def colors(self, value: Optional[pulumi.Input['SelfServiceProfileBrandingColorsArgs']]):
+        pulumi.set(self, "colors", value)
+
+    @property
+    @pulumi.getter(name="logoUrl")
+    def logo_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of logo to display on login page.
+        """
+        return pulumi.get(self, "logo_url")
+
+    @logo_url.setter
+    def logo_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logo_url", value)
+
+
+@pulumi.input_type
+class SelfServiceProfileBrandingColorsArgs:
+    def __init__(__self__, *,
+                 primary: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] primary: Primary button background color in hexadecimal.
+        """
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+
+    @property
+    @pulumi.getter
+    def primary(self) -> Optional[pulumi.Input[str]]:
+        """
+        Primary button background color in hexadecimal.
+        """
+        return pulumi.get(self, "primary")
+
+    @primary.setter
+    def primary(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary", value)
+
+
+@pulumi.input_type
+class SelfServiceProfileUserAttributeArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[str],
+                 is_optional: pulumi.Input[bool],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] description: A human readable description of the attribute.
+        :param pulumi.Input[bool] is_optional: Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+        :param pulumi.Input[str] name: Attribute’s name on Auth0 side
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "is_optional", is_optional)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[str]:
+        """
+        A human readable description of the attribute.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="isOptional")
+    def is_optional(self) -> pulumi.Input[bool]:
+        """
+        Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+        """
+        return pulumi.get(self, "is_optional")
+
+    @is_optional.setter
+    def is_optional(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "is_optional", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Attribute’s name on Auth0 side
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type

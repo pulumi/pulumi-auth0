@@ -48,6 +48,18 @@ namespace Pulumi.Auth0.Inputs
         [Input("attributeMap")]
         public Input<Inputs.ConnectionOptionsAttributeMapArgs>? AttributeMap { get; set; }
 
+        [Input("attributes")]
+        private InputList<Inputs.ConnectionOptionsAttributeArgs>? _attributes;
+
+        /// <summary>
+        /// Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+        /// </summary>
+        public InputList<Inputs.ConnectionOptionsAttributeArgs> Attributes
+        {
+            get => _attributes ?? (_attributes = new InputList<Inputs.ConnectionOptionsAttributeArgs>());
+            set => _attributes = value;
+        }
+
         [Input("authParams")]
         private InputMap<string>? _authParams;
 
@@ -409,6 +421,18 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("pkceEnabled")]
         public Input<bool>? PkceEnabled { get; set; }
+
+        [Input("precedences")]
+        private InputList<string>? _precedences;
+
+        /// <summary>
+        /// Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+        /// </summary>
+        public InputList<string> Precedences
+        {
+            get => _precedences ?? (_precedences = new InputList<string>());
+            set => _precedences = value;
+        }
 
         /// <summary>
         /// The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.

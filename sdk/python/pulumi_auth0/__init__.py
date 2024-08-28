@@ -31,6 +31,7 @@ from .get_organization import *
 from .get_pages import *
 from .get_resource_server import *
 from .get_role import *
+from .get_self_service_profile import *
 from .get_signing_keys import *
 from .get_tenant import *
 from .get_user import *
@@ -57,6 +58,7 @@ from .role_permission import *
 from .role_permissions import *
 from .rule import *
 from .rule_config import *
+from .self_service_profile import *
 from .tenant import *
 from .trigger_action import *
 from .trigger_actions import *
@@ -372,6 +374,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/ruleConfig:RuleConfig": "RuleConfig"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/selfServiceProfile",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/selfServiceProfile:SelfServiceProfile": "SelfServiceProfile"
   }
  },
  {

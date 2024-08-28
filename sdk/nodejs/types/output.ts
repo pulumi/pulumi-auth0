@@ -1131,6 +1131,10 @@ export interface ConnectionOptions {
      */
     attributeMap: outputs.ConnectionOptionsAttributeMap;
     /**
+     * Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+     */
+    attributes?: outputs.ConnectionOptionsAttribute[];
+    /**
      * Query string parameters to be included as part of the generated passwordless email link.
      */
     authParams?: {[key: string]: string};
@@ -1335,6 +1339,10 @@ export interface ConnectionOptions {
      */
     pkceEnabled?: boolean;
     /**
+     * Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+     */
+    precedences?: string[];
+    /**
      * The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
      */
     protocolBinding?: string;
@@ -1472,6 +1480,61 @@ export interface ConnectionOptions {
     waadProtocol?: string;
 }
 
+export interface ConnectionOptionsAttribute {
+    /**
+     * Connection Options for Email Attribute
+     */
+    emails?: outputs.ConnectionOptionsAttributeEmail[];
+    /**
+     * Connection Options for Phone Number Attribute
+     */
+    phoneNumbers?: outputs.ConnectionOptionsAttributePhoneNumber[];
+    /**
+     * Connection Options for User Name Attribute
+     */
+    usernames?: outputs.ConnectionOptionsAttributeUsername[];
+}
+
+export interface ConnectionOptionsAttributeEmail {
+    /**
+     * Connection Options Email Attribute Identifier
+     */
+    identifiers?: outputs.ConnectionOptionsAttributeEmailIdentifier[];
+    /**
+     * Defines whether Profile is required
+     */
+    profileRequired?: boolean;
+    /**
+     * Defines signup settings for Email attribute
+     */
+    signups?: outputs.ConnectionOptionsAttributeEmailSignup[];
+}
+
+export interface ConnectionOptionsAttributeEmailIdentifier {
+    /**
+     * Defines whether email attribute is active as an identifier
+     */
+    active?: boolean;
+}
+
+export interface ConnectionOptionsAttributeEmailSignup {
+    /**
+     * Defines signup status for Email Attribute
+     */
+    status?: string;
+    /**
+     * Defines settings for Verification under Email attribute
+     */
+    verifications?: outputs.ConnectionOptionsAttributeEmailSignupVerification[];
+}
+
+export interface ConnectionOptionsAttributeEmailSignupVerification {
+    /**
+     * Defines verification settings for signup attribute
+     */
+    active?: boolean;
+}
+
 export interface ConnectionOptionsAttributeMap {
     /**
      * This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
@@ -1485,6 +1548,105 @@ export interface ConnectionOptionsAttributeMap {
      * This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
      */
     userinfoScope?: string;
+}
+
+export interface ConnectionOptionsAttributePhoneNumber {
+    /**
+     * Connection Options Phone Number Attribute Identifier
+     */
+    identifiers?: outputs.ConnectionOptionsAttributePhoneNumberIdentifier[];
+    /**
+     * Defines whether Profile is required
+     */
+    profileRequired?: boolean;
+    /**
+     * Defines signup settings for Phone Number attribute
+     */
+    signups?: outputs.ConnectionOptionsAttributePhoneNumberSignup[];
+}
+
+export interface ConnectionOptionsAttributePhoneNumberIdentifier {
+    /**
+     * Defines whether Phone Number attribute is active as an identifier
+     */
+    active?: boolean;
+}
+
+export interface ConnectionOptionsAttributePhoneNumberSignup {
+    /**
+     * Defines status of signup for Phone Number attribute
+     */
+    status?: string;
+    /**
+     * Defines verification settings for Phone Number attribute
+     */
+    verifications?: outputs.ConnectionOptionsAttributePhoneNumberSignupVerification[];
+}
+
+export interface ConnectionOptionsAttributePhoneNumberSignupVerification {
+    /**
+     * Defines verification settings for Phone Number attribute
+     */
+    active?: boolean;
+}
+
+export interface ConnectionOptionsAttributeUsername {
+    /**
+     * Connection options for User Name Attribute Identifier
+     */
+    identifiers?: outputs.ConnectionOptionsAttributeUsernameIdentifier[];
+    /**
+     * Defines whether Profile is required
+     */
+    profileRequired?: boolean;
+    /**
+     * Defines signup settings for User Name attribute
+     */
+    signups?: outputs.ConnectionOptionsAttributeUsernameSignup[];
+    /**
+     * Defines validation settings for User Name attribute
+     */
+    validations: outputs.ConnectionOptionsAttributeUsernameValidation[];
+}
+
+export interface ConnectionOptionsAttributeUsernameIdentifier {
+    /**
+     * Defines whether UserName attribute is active as an identifier
+     */
+    active?: boolean;
+}
+
+export interface ConnectionOptionsAttributeUsernameSignup {
+    /**
+     * Defines whether User Name attribute is active as an identifier
+     */
+    status?: string;
+}
+
+export interface ConnectionOptionsAttributeUsernameValidation {
+    /**
+     * Defines allowed types for for UserName attribute
+     */
+    allowedTypes: outputs.ConnectionOptionsAttributeUsernameValidationAllowedType[];
+    /**
+     * Defines Max Length for User Name attribute
+     */
+    maxLength: number;
+    /**
+     * Defines Min Length for User Name attribute
+     */
+    minLength: number;
+}
+
+export interface ConnectionOptionsAttributeUsernameValidationAllowedType {
+    /**
+     * One of the allowed types for UserName signup attribute
+     */
+    email: boolean;
+    /**
+     * One of the allowed types for UserName signup attribute
+     */
+    phoneNumber: boolean;
 }
 
 export interface ConnectionOptionsConnectionSettings {
@@ -2743,6 +2905,10 @@ export interface GetConnectionOption {
      */
     attributeMaps: outputs.GetConnectionOptionAttributeMap[];
     /**
+     * Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+     */
+    attributes: outputs.GetConnectionOptionAttribute[];
+    /**
      * Query string parameters to be included as part of the generated passwordless email link.
      */
     authParams: {[key: string]: string};
@@ -2947,6 +3113,10 @@ export interface GetConnectionOption {
      */
     pkceEnabled: boolean;
     /**
+     * Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+     */
+    precedences: string[];
+    /**
      * The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
      */
     protocolBinding: string;
@@ -3084,6 +3254,61 @@ export interface GetConnectionOption {
     waadProtocol: string;
 }
 
+export interface GetConnectionOptionAttribute {
+    /**
+     * Connection Options for Email Attribute
+     */
+    emails: outputs.GetConnectionOptionAttributeEmail[];
+    /**
+     * Connection Options for Phone Number Attribute
+     */
+    phoneNumbers: outputs.GetConnectionOptionAttributePhoneNumber[];
+    /**
+     * Connection Options for User Name Attribute
+     */
+    usernames: outputs.GetConnectionOptionAttributeUsername[];
+}
+
+export interface GetConnectionOptionAttributeEmail {
+    /**
+     * Connection Options Email Attribute Identifier
+     */
+    identifiers: outputs.GetConnectionOptionAttributeEmailIdentifier[];
+    /**
+     * Defines whether Profile is required
+     */
+    profileRequired: boolean;
+    /**
+     * Defines signup settings for Email attribute
+     */
+    signups: outputs.GetConnectionOptionAttributeEmailSignup[];
+}
+
+export interface GetConnectionOptionAttributeEmailIdentifier {
+    /**
+     * Defines whether email attribute is active as an identifier
+     */
+    active: boolean;
+}
+
+export interface GetConnectionOptionAttributeEmailSignup {
+    /**
+     * Defines signup status for Email Attribute
+     */
+    status: string;
+    /**
+     * Defines settings for Verification under Email attribute
+     */
+    verifications: outputs.GetConnectionOptionAttributeEmailSignupVerification[];
+}
+
+export interface GetConnectionOptionAttributeEmailSignupVerification {
+    /**
+     * Defines verification settings for signup attribute
+     */
+    active: boolean;
+}
+
 export interface GetConnectionOptionAttributeMap {
     /**
      * This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
@@ -3097,6 +3322,105 @@ export interface GetConnectionOptionAttributeMap {
      * This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
      */
     userinfoScope: string;
+}
+
+export interface GetConnectionOptionAttributePhoneNumber {
+    /**
+     * Connection Options Phone Number Attribute Identifier
+     */
+    identifiers: outputs.GetConnectionOptionAttributePhoneNumberIdentifier[];
+    /**
+     * Defines whether Profile is required
+     */
+    profileRequired: boolean;
+    /**
+     * Defines signup settings for Phone Number attribute
+     */
+    signups: outputs.GetConnectionOptionAttributePhoneNumberSignup[];
+}
+
+export interface GetConnectionOptionAttributePhoneNumberIdentifier {
+    /**
+     * Defines whether Phone Number attribute is active as an identifier
+     */
+    active: boolean;
+}
+
+export interface GetConnectionOptionAttributePhoneNumberSignup {
+    /**
+     * Defines status of signup for Phone Number attribute
+     */
+    status: string;
+    /**
+     * Defines verification settings for Phone Number attribute
+     */
+    verifications: outputs.GetConnectionOptionAttributePhoneNumberSignupVerification[];
+}
+
+export interface GetConnectionOptionAttributePhoneNumberSignupVerification {
+    /**
+     * Defines verification settings for Phone Number attribute
+     */
+    active: boolean;
+}
+
+export interface GetConnectionOptionAttributeUsername {
+    /**
+     * Connection options for User Name Attribute Identifier
+     */
+    identifiers: outputs.GetConnectionOptionAttributeUsernameIdentifier[];
+    /**
+     * Defines whether Profile is required
+     */
+    profileRequired: boolean;
+    /**
+     * Defines signup settings for User Name attribute
+     */
+    signups: outputs.GetConnectionOptionAttributeUsernameSignup[];
+    /**
+     * Defines validation settings for User Name attribute
+     */
+    validations: outputs.GetConnectionOptionAttributeUsernameValidation[];
+}
+
+export interface GetConnectionOptionAttributeUsernameIdentifier {
+    /**
+     * Defines whether UserName attribute is active as an identifier
+     */
+    active: boolean;
+}
+
+export interface GetConnectionOptionAttributeUsernameSignup {
+    /**
+     * Defines whether User Name attribute is active as an identifier
+     */
+    status: string;
+}
+
+export interface GetConnectionOptionAttributeUsernameValidation {
+    /**
+     * Defines allowed types for for UserName attribute
+     */
+    allowedTypes: outputs.GetConnectionOptionAttributeUsernameValidationAllowedType[];
+    /**
+     * Defines Max Length for User Name attribute
+     */
+    maxLength: number;
+    /**
+     * Defines Min Length for User Name attribute
+     */
+    minLength: number;
+}
+
+export interface GetConnectionOptionAttributeUsernameValidationAllowedType {
+    /**
+     * One of the allowed types for UserName signup attribute
+     */
+    email: boolean;
+    /**
+     * One of the allowed types for UserName signup attribute
+     */
+    phoneNumber: boolean;
 }
 
 export interface GetConnectionOptionConnectionSetting {
@@ -3341,6 +3665,39 @@ export interface GetRolePermission {
      * Name of resource server (API) that the permission is associated with.
      */
     resourceServerName: string;
+}
+
+export interface GetSelfServiceProfileBranding {
+    /**
+     * Configuration settings for colors for branding.
+     */
+    colors: outputs.GetSelfServiceProfileBrandingColor[];
+    /**
+     * URL of logo to display on login page.
+     */
+    logoUrl: string;
+}
+
+export interface GetSelfServiceProfileBrandingColor {
+    /**
+     * Primary button background color in hexadecimal.
+     */
+    primary: string;
+}
+
+export interface GetSelfServiceProfileUserAttribute {
+    /**
+     * A human readable description of the attribute.
+     */
+    description: string;
+    /**
+     * Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+     */
+    isOptional: boolean;
+    /**
+     * Attribute’s name on Auth0 side
+     */
+    name: string;
 }
 
 export interface GetSigningKeysSigningKey {
@@ -3909,6 +4266,39 @@ export interface RolePermissionsPermission {
      * Name of resource server that the permission is associated with.
      */
     resourceServerName: string;
+}
+
+export interface SelfServiceProfileBranding {
+    /**
+     * Configuration settings for colors for branding.
+     */
+    colors: outputs.SelfServiceProfileBrandingColors;
+    /**
+     * URL of logo to display on login page.
+     */
+    logoUrl?: string;
+}
+
+export interface SelfServiceProfileBrandingColors {
+    /**
+     * Primary button background color in hexadecimal.
+     */
+    primary: string;
+}
+
+export interface SelfServiceProfileUserAttribute {
+    /**
+     * A human readable description of the attribute.
+     */
+    description: string;
+    /**
+     * Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+     */
+    isOptional: boolean;
+    /**
+     * Attribute’s name on Auth0 side
+     */
+    name: string;
 }
 
 export interface TenantFlags {

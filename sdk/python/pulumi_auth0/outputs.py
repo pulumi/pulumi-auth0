@@ -76,7 +76,21 @@ __all__ = [
     'ClientNativeSocialLoginFacebook',
     'ClientRefreshToken',
     'ConnectionOptions',
+    'ConnectionOptionsAttribute',
+    'ConnectionOptionsAttributeEmail',
+    'ConnectionOptionsAttributeEmailIdentifier',
+    'ConnectionOptionsAttributeEmailSignup',
+    'ConnectionOptionsAttributeEmailSignupVerification',
     'ConnectionOptionsAttributeMap',
+    'ConnectionOptionsAttributePhoneNumber',
+    'ConnectionOptionsAttributePhoneNumberIdentifier',
+    'ConnectionOptionsAttributePhoneNumberSignup',
+    'ConnectionOptionsAttributePhoneNumberSignupVerification',
+    'ConnectionOptionsAttributeUsername',
+    'ConnectionOptionsAttributeUsernameIdentifier',
+    'ConnectionOptionsAttributeUsernameSignup',
+    'ConnectionOptionsAttributeUsernameValidation',
+    'ConnectionOptionsAttributeUsernameValidationAllowedType',
     'ConnectionOptionsConnectionSettings',
     'ConnectionOptionsDecryptionKey',
     'ConnectionOptionsGatewayAuthentication',
@@ -115,6 +129,9 @@ __all__ = [
     'PagesLogin',
     'ResourceServerScopesScope',
     'RolePermissionsPermission',
+    'SelfServiceProfileBranding',
+    'SelfServiceProfileBrandingColors',
+    'SelfServiceProfileUserAttribute',
     'TenantFlags',
     'TenantSessionCookie',
     'TenantSessions',
@@ -180,7 +197,21 @@ __all__ = [
     'GetClientNativeSocialLoginFacebookResult',
     'GetClientRefreshTokenResult',
     'GetConnectionOptionResult',
+    'GetConnectionOptionAttributeResult',
+    'GetConnectionOptionAttributeEmailResult',
+    'GetConnectionOptionAttributeEmailIdentifierResult',
+    'GetConnectionOptionAttributeEmailSignupResult',
+    'GetConnectionOptionAttributeEmailSignupVerificationResult',
     'GetConnectionOptionAttributeMapResult',
+    'GetConnectionOptionAttributePhoneNumberResult',
+    'GetConnectionOptionAttributePhoneNumberIdentifierResult',
+    'GetConnectionOptionAttributePhoneNumberSignupResult',
+    'GetConnectionOptionAttributePhoneNumberSignupVerificationResult',
+    'GetConnectionOptionAttributeUsernameResult',
+    'GetConnectionOptionAttributeUsernameIdentifierResult',
+    'GetConnectionOptionAttributeUsernameSignupResult',
+    'GetConnectionOptionAttributeUsernameValidationResult',
+    'GetConnectionOptionAttributeUsernameValidationAllowedTypeResult',
     'GetConnectionOptionConnectionSettingResult',
     'GetConnectionOptionDecryptionKeyResult',
     'GetConnectionOptionGatewayAuthenticationResult',
@@ -205,6 +236,9 @@ __all__ = [
     'GetPagesLoginResult',
     'GetResourceServerScopeResult',
     'GetRolePermissionResult',
+    'GetSelfServiceProfileBrandingResult',
+    'GetSelfServiceProfileBrandingColorResult',
+    'GetSelfServiceProfileUserAttributeResult',
     'GetSigningKeysSigningKeyResult',
     'GetTenantFlagResult',
     'GetTenantSessionResult',
@@ -4313,6 +4347,7 @@ class ConnectionOptions(dict):
                  api_enable_users: Optional[bool] = None,
                  app_id: Optional[str] = None,
                  attribute_map: Optional['outputs.ConnectionOptionsAttributeMap'] = None,
+                 attributes: Optional[Sequence['outputs.ConnectionOptionsAttribute']] = None,
                  auth_params: Optional[Mapping[str, str]] = None,
                  authorization_endpoint: Optional[str] = None,
                  brute_force_protection: Optional[bool] = None,
@@ -4364,6 +4399,7 @@ class ConnectionOptions(dict):
                  password_policy: Optional[str] = None,
                  ping_federate_base_url: Optional[str] = None,
                  pkce_enabled: Optional[bool] = None,
+                 precedences: Optional[Sequence[str]] = None,
                  protocol_binding: Optional[str] = None,
                  provider: Optional[str] = None,
                  request_template: Optional[str] = None,
@@ -4404,6 +4440,7 @@ class ConnectionOptions(dict):
         :param bool api_enable_users: Enable API Access to users.
         :param str app_id: App ID.
         :param 'ConnectionOptionsAttributeMapArgs' attribute_map: OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+        :param Sequence['ConnectionOptionsAttributeArgs'] attributes: Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
         :param Mapping[str, str] auth_params: Query string parameters to be included as part of the generated passwordless email link.
         :param str authorization_endpoint: Authorization endpoint.
         :param bool brute_force_protection: Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
@@ -4455,6 +4492,7 @@ class ConnectionOptions(dict):
         :param str password_policy: Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
         :param str ping_federate_base_url: Ping Federate Server URL.
         :param bool pkce_enabled: Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
+        :param Sequence[str] precedences: Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
         :param str protocol_binding: The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
         :param str provider: Defines the custom `sms_gateway` provider.
         :param str request_template: Template that formats the SAML request.
@@ -4500,6 +4538,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "app_id", app_id)
         if attribute_map is not None:
             pulumi.set(__self__, "attribute_map", attribute_map)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
         if auth_params is not None:
             pulumi.set(__self__, "auth_params", auth_params)
         if authorization_endpoint is not None:
@@ -4602,6 +4642,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "ping_federate_base_url", ping_federate_base_url)
         if pkce_enabled is not None:
             pulumi.set(__self__, "pkce_enabled", pkce_enabled)
+        if precedences is not None:
+            pulumi.set(__self__, "precedences", precedences)
         if protocol_binding is not None:
             pulumi.set(__self__, "protocol_binding", protocol_binding)
         if provider is not None:
@@ -4710,6 +4752,14 @@ class ConnectionOptions(dict):
         OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
         """
         return pulumi.get(self, "attribute_map")
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Optional[Sequence['outputs.ConnectionOptionsAttribute']]:
+        """
+        Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+        """
+        return pulumi.get(self, "attributes")
 
     @property
     @pulumi.getter(name="authParams")
@@ -5120,6 +5170,14 @@ class ConnectionOptions(dict):
         return pulumi.get(self, "pkce_enabled")
 
     @property
+    @pulumi.getter
+    def precedences(self) -> Optional[Sequence[str]]:
+        """
+        Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+        """
+        return pulumi.get(self, "precedences")
+
+    @property
     @pulumi.getter(name="protocolBinding")
     def protocol_binding(self) -> Optional[str]:
         """
@@ -5393,6 +5451,195 @@ class ConnectionOptions(dict):
 
 
 @pulumi.output_type
+class ConnectionOptionsAttribute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "phoneNumbers":
+            suggest = "phone_numbers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsAttribute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionOptionsAttribute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionOptionsAttribute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 emails: Optional[Sequence['outputs.ConnectionOptionsAttributeEmail']] = None,
+                 phone_numbers: Optional[Sequence['outputs.ConnectionOptionsAttributePhoneNumber']] = None,
+                 usernames: Optional[Sequence['outputs.ConnectionOptionsAttributeUsername']] = None):
+        """
+        :param Sequence['ConnectionOptionsAttributeEmailArgs'] emails: Connection Options for Email Attribute
+        :param Sequence['ConnectionOptionsAttributePhoneNumberArgs'] phone_numbers: Connection Options for Phone Number Attribute
+        :param Sequence['ConnectionOptionsAttributeUsernameArgs'] usernames: Connection Options for User Name Attribute
+        """
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if phone_numbers is not None:
+            pulumi.set(__self__, "phone_numbers", phone_numbers)
+        if usernames is not None:
+            pulumi.set(__self__, "usernames", usernames)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence['outputs.ConnectionOptionsAttributeEmail']]:
+        """
+        Connection Options for Email Attribute
+        """
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter(name="phoneNumbers")
+    def phone_numbers(self) -> Optional[Sequence['outputs.ConnectionOptionsAttributePhoneNumber']]:
+        """
+        Connection Options for Phone Number Attribute
+        """
+        return pulumi.get(self, "phone_numbers")
+
+    @property
+    @pulumi.getter
+    def usernames(self) -> Optional[Sequence['outputs.ConnectionOptionsAttributeUsername']]:
+        """
+        Connection Options for User Name Attribute
+        """
+        return pulumi.get(self, "usernames")
+
+
+@pulumi.output_type
+class ConnectionOptionsAttributeEmail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "profileRequired":
+            suggest = "profile_required"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsAttributeEmail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionOptionsAttributeEmail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionOptionsAttributeEmail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identifiers: Optional[Sequence['outputs.ConnectionOptionsAttributeEmailIdentifier']] = None,
+                 profile_required: Optional[bool] = None,
+                 signups: Optional[Sequence['outputs.ConnectionOptionsAttributeEmailSignup']] = None):
+        """
+        :param Sequence['ConnectionOptionsAttributeEmailIdentifierArgs'] identifiers: Connection Options Email Attribute Identifier
+        :param bool profile_required: Defines whether Profile is required
+        :param Sequence['ConnectionOptionsAttributeEmailSignupArgs'] signups: Defines signup settings for Email attribute
+        """
+        if identifiers is not None:
+            pulumi.set(__self__, "identifiers", identifiers)
+        if profile_required is not None:
+            pulumi.set(__self__, "profile_required", profile_required)
+        if signups is not None:
+            pulumi.set(__self__, "signups", signups)
+
+    @property
+    @pulumi.getter
+    def identifiers(self) -> Optional[Sequence['outputs.ConnectionOptionsAttributeEmailIdentifier']]:
+        """
+        Connection Options Email Attribute Identifier
+        """
+        return pulumi.get(self, "identifiers")
+
+    @property
+    @pulumi.getter(name="profileRequired")
+    def profile_required(self) -> Optional[bool]:
+        """
+        Defines whether Profile is required
+        """
+        return pulumi.get(self, "profile_required")
+
+    @property
+    @pulumi.getter
+    def signups(self) -> Optional[Sequence['outputs.ConnectionOptionsAttributeEmailSignup']]:
+        """
+        Defines signup settings for Email attribute
+        """
+        return pulumi.get(self, "signups")
+
+
+@pulumi.output_type
+class ConnectionOptionsAttributeEmailIdentifier(dict):
+    def __init__(__self__, *,
+                 active: Optional[bool] = None):
+        """
+        :param bool active: Defines whether email attribute is active as an identifier
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[bool]:
+        """
+        Defines whether email attribute is active as an identifier
+        """
+        return pulumi.get(self, "active")
+
+
+@pulumi.output_type
+class ConnectionOptionsAttributeEmailSignup(dict):
+    def __init__(__self__, *,
+                 status: Optional[str] = None,
+                 verifications: Optional[Sequence['outputs.ConnectionOptionsAttributeEmailSignupVerification']] = None):
+        """
+        :param str status: Defines signup status for Email Attribute
+        :param Sequence['ConnectionOptionsAttributeEmailSignupVerificationArgs'] verifications: Defines settings for Verification under Email attribute
+        """
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if verifications is not None:
+            pulumi.set(__self__, "verifications", verifications)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Defines signup status for Email Attribute
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def verifications(self) -> Optional[Sequence['outputs.ConnectionOptionsAttributeEmailSignupVerification']]:
+        """
+        Defines settings for Verification under Email attribute
+        """
+        return pulumi.get(self, "verifications")
+
+
+@pulumi.output_type
+class ConnectionOptionsAttributeEmailSignupVerification(dict):
+    def __init__(__self__, *,
+                 active: Optional[bool] = None):
+        """
+        :param bool active: Defines verification settings for signup attribute
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[bool]:
+        """
+        Defines verification settings for signup attribute
+        """
+        return pulumi.get(self, "active")
+
+
+@pulumi.output_type
 class ConnectionOptionsAttributeMap(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5451,6 +5698,357 @@ class ConnectionOptionsAttributeMap(dict):
         This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
         """
         return pulumi.get(self, "userinfo_scope")
+
+
+@pulumi.output_type
+class ConnectionOptionsAttributePhoneNumber(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "profileRequired":
+            suggest = "profile_required"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsAttributePhoneNumber. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionOptionsAttributePhoneNumber.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionOptionsAttributePhoneNumber.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identifiers: Optional[Sequence['outputs.ConnectionOptionsAttributePhoneNumberIdentifier']] = None,
+                 profile_required: Optional[bool] = None,
+                 signups: Optional[Sequence['outputs.ConnectionOptionsAttributePhoneNumberSignup']] = None):
+        """
+        :param Sequence['ConnectionOptionsAttributePhoneNumberIdentifierArgs'] identifiers: Connection Options Phone Number Attribute Identifier
+        :param bool profile_required: Defines whether Profile is required
+        :param Sequence['ConnectionOptionsAttributePhoneNumberSignupArgs'] signups: Defines signup settings for Phone Number attribute
+        """
+        if identifiers is not None:
+            pulumi.set(__self__, "identifiers", identifiers)
+        if profile_required is not None:
+            pulumi.set(__self__, "profile_required", profile_required)
+        if signups is not None:
+            pulumi.set(__self__, "signups", signups)
+
+    @property
+    @pulumi.getter
+    def identifiers(self) -> Optional[Sequence['outputs.ConnectionOptionsAttributePhoneNumberIdentifier']]:
+        """
+        Connection Options Phone Number Attribute Identifier
+        """
+        return pulumi.get(self, "identifiers")
+
+    @property
+    @pulumi.getter(name="profileRequired")
+    def profile_required(self) -> Optional[bool]:
+        """
+        Defines whether Profile is required
+        """
+        return pulumi.get(self, "profile_required")
+
+    @property
+    @pulumi.getter
+    def signups(self) -> Optional[Sequence['outputs.ConnectionOptionsAttributePhoneNumberSignup']]:
+        """
+        Defines signup settings for Phone Number attribute
+        """
+        return pulumi.get(self, "signups")
+
+
+@pulumi.output_type
+class ConnectionOptionsAttributePhoneNumberIdentifier(dict):
+    def __init__(__self__, *,
+                 active: Optional[bool] = None):
+        """
+        :param bool active: Defines whether Phone Number attribute is active as an identifier
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[bool]:
+        """
+        Defines whether Phone Number attribute is active as an identifier
+        """
+        return pulumi.get(self, "active")
+
+
+@pulumi.output_type
+class ConnectionOptionsAttributePhoneNumberSignup(dict):
+    def __init__(__self__, *,
+                 status: Optional[str] = None,
+                 verifications: Optional[Sequence['outputs.ConnectionOptionsAttributePhoneNumberSignupVerification']] = None):
+        """
+        :param str status: Defines status of signup for Phone Number attribute
+        :param Sequence['ConnectionOptionsAttributePhoneNumberSignupVerificationArgs'] verifications: Defines verification settings for Phone Number attribute
+        """
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if verifications is not None:
+            pulumi.set(__self__, "verifications", verifications)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Defines status of signup for Phone Number attribute
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def verifications(self) -> Optional[Sequence['outputs.ConnectionOptionsAttributePhoneNumberSignupVerification']]:
+        """
+        Defines verification settings for Phone Number attribute
+        """
+        return pulumi.get(self, "verifications")
+
+
+@pulumi.output_type
+class ConnectionOptionsAttributePhoneNumberSignupVerification(dict):
+    def __init__(__self__, *,
+                 active: Optional[bool] = None):
+        """
+        :param bool active: Defines verification settings for Phone Number attribute
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[bool]:
+        """
+        Defines verification settings for Phone Number attribute
+        """
+        return pulumi.get(self, "active")
+
+
+@pulumi.output_type
+class ConnectionOptionsAttributeUsername(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "profileRequired":
+            suggest = "profile_required"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsAttributeUsername. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionOptionsAttributeUsername.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionOptionsAttributeUsername.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identifiers: Optional[Sequence['outputs.ConnectionOptionsAttributeUsernameIdentifier']] = None,
+                 profile_required: Optional[bool] = None,
+                 signups: Optional[Sequence['outputs.ConnectionOptionsAttributeUsernameSignup']] = None,
+                 validations: Optional[Sequence['outputs.ConnectionOptionsAttributeUsernameValidation']] = None):
+        """
+        :param Sequence['ConnectionOptionsAttributeUsernameIdentifierArgs'] identifiers: Connection options for User Name Attribute Identifier
+        :param bool profile_required: Defines whether Profile is required
+        :param Sequence['ConnectionOptionsAttributeUsernameSignupArgs'] signups: Defines signup settings for User Name attribute
+        :param Sequence['ConnectionOptionsAttributeUsernameValidationArgs'] validations: Defines validation settings for User Name attribute
+        """
+        if identifiers is not None:
+            pulumi.set(__self__, "identifiers", identifiers)
+        if profile_required is not None:
+            pulumi.set(__self__, "profile_required", profile_required)
+        if signups is not None:
+            pulumi.set(__self__, "signups", signups)
+        if validations is not None:
+            pulumi.set(__self__, "validations", validations)
+
+    @property
+    @pulumi.getter
+    def identifiers(self) -> Optional[Sequence['outputs.ConnectionOptionsAttributeUsernameIdentifier']]:
+        """
+        Connection options for User Name Attribute Identifier
+        """
+        return pulumi.get(self, "identifiers")
+
+    @property
+    @pulumi.getter(name="profileRequired")
+    def profile_required(self) -> Optional[bool]:
+        """
+        Defines whether Profile is required
+        """
+        return pulumi.get(self, "profile_required")
+
+    @property
+    @pulumi.getter
+    def signups(self) -> Optional[Sequence['outputs.ConnectionOptionsAttributeUsernameSignup']]:
+        """
+        Defines signup settings for User Name attribute
+        """
+        return pulumi.get(self, "signups")
+
+    @property
+    @pulumi.getter
+    def validations(self) -> Optional[Sequence['outputs.ConnectionOptionsAttributeUsernameValidation']]:
+        """
+        Defines validation settings for User Name attribute
+        """
+        return pulumi.get(self, "validations")
+
+
+@pulumi.output_type
+class ConnectionOptionsAttributeUsernameIdentifier(dict):
+    def __init__(__self__, *,
+                 active: Optional[bool] = None):
+        """
+        :param bool active: Defines whether UserName attribute is active as an identifier
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[bool]:
+        """
+        Defines whether UserName attribute is active as an identifier
+        """
+        return pulumi.get(self, "active")
+
+
+@pulumi.output_type
+class ConnectionOptionsAttributeUsernameSignup(dict):
+    def __init__(__self__, *,
+                 status: Optional[str] = None):
+        """
+        :param str status: Defines whether User Name attribute is active as an identifier
+        """
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Defines whether User Name attribute is active as an identifier
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class ConnectionOptionsAttributeUsernameValidation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedTypes":
+            suggest = "allowed_types"
+        elif key == "maxLength":
+            suggest = "max_length"
+        elif key == "minLength":
+            suggest = "min_length"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsAttributeUsernameValidation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionOptionsAttributeUsernameValidation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionOptionsAttributeUsernameValidation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_types: Optional[Sequence['outputs.ConnectionOptionsAttributeUsernameValidationAllowedType']] = None,
+                 max_length: Optional[int] = None,
+                 min_length: Optional[int] = None):
+        """
+        :param Sequence['ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs'] allowed_types: Defines allowed types for for UserName attribute
+        :param int max_length: Defines Max Length for User Name attribute
+        :param int min_length: Defines Min Length for User Name attribute
+        """
+        if allowed_types is not None:
+            pulumi.set(__self__, "allowed_types", allowed_types)
+        if max_length is not None:
+            pulumi.set(__self__, "max_length", max_length)
+        if min_length is not None:
+            pulumi.set(__self__, "min_length", min_length)
+
+    @property
+    @pulumi.getter(name="allowedTypes")
+    def allowed_types(self) -> Optional[Sequence['outputs.ConnectionOptionsAttributeUsernameValidationAllowedType']]:
+        """
+        Defines allowed types for for UserName attribute
+        """
+        return pulumi.get(self, "allowed_types")
+
+    @property
+    @pulumi.getter(name="maxLength")
+    def max_length(self) -> Optional[int]:
+        """
+        Defines Max Length for User Name attribute
+        """
+        return pulumi.get(self, "max_length")
+
+    @property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> Optional[int]:
+        """
+        Defines Min Length for User Name attribute
+        """
+        return pulumi.get(self, "min_length")
+
+
+@pulumi.output_type
+class ConnectionOptionsAttributeUsernameValidationAllowedType(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "phoneNumber":
+            suggest = "phone_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsAttributeUsernameValidationAllowedType. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionOptionsAttributeUsernameValidationAllowedType.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionOptionsAttributeUsernameValidationAllowedType.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email: Optional[bool] = None,
+                 phone_number: Optional[bool] = None):
+        """
+        :param bool email: One of the allowed types for UserName signup attribute
+        :param bool phone_number: One of the allowed types for UserName signup attribute
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if phone_number is not None:
+            pulumi.set(__self__, "phone_number", phone_number)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[bool]:
+        """
+        One of the allowed types for UserName signup attribute
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> Optional[bool]:
+        """
+        One of the allowed types for UserName signup attribute
+        """
+        return pulumi.get(self, "phone_number")
 
 
 @pulumi.output_type
@@ -7728,6 +8326,130 @@ class RolePermissionsPermission(dict):
         Name of resource server that the permission is associated with.
         """
         return pulumi.get(self, "resource_server_name")
+
+
+@pulumi.output_type
+class SelfServiceProfileBranding(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logoUrl":
+            suggest = "logo_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SelfServiceProfileBranding. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SelfServiceProfileBranding.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SelfServiceProfileBranding.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 colors: Optional['outputs.SelfServiceProfileBrandingColors'] = None,
+                 logo_url: Optional[str] = None):
+        """
+        :param 'SelfServiceProfileBrandingColorsArgs' colors: Configuration settings for colors for branding.
+        :param str logo_url: URL of logo to display on login page.
+        """
+        if colors is not None:
+            pulumi.set(__self__, "colors", colors)
+        if logo_url is not None:
+            pulumi.set(__self__, "logo_url", logo_url)
+
+    @property
+    @pulumi.getter
+    def colors(self) -> Optional['outputs.SelfServiceProfileBrandingColors']:
+        """
+        Configuration settings for colors for branding.
+        """
+        return pulumi.get(self, "colors")
+
+    @property
+    @pulumi.getter(name="logoUrl")
+    def logo_url(self) -> Optional[str]:
+        """
+        URL of logo to display on login page.
+        """
+        return pulumi.get(self, "logo_url")
+
+
+@pulumi.output_type
+class SelfServiceProfileBrandingColors(dict):
+    def __init__(__self__, *,
+                 primary: Optional[str] = None):
+        """
+        :param str primary: Primary button background color in hexadecimal.
+        """
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+
+    @property
+    @pulumi.getter
+    def primary(self) -> Optional[str]:
+        """
+        Primary button background color in hexadecimal.
+        """
+        return pulumi.get(self, "primary")
+
+
+@pulumi.output_type
+class SelfServiceProfileUserAttribute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isOptional":
+            suggest = "is_optional"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SelfServiceProfileUserAttribute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SelfServiceProfileUserAttribute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SelfServiceProfileUserAttribute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: str,
+                 is_optional: bool,
+                 name: str):
+        """
+        :param str description: A human readable description of the attribute.
+        :param bool is_optional: Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+        :param str name: Attribute’s name on Auth0 side
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "is_optional", is_optional)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A human readable description of the attribute.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="isOptional")
+    def is_optional(self) -> bool:
+        """
+        Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+        """
+        return pulumi.get(self, "is_optional")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Attribute’s name on Auth0 side
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -11022,6 +11744,7 @@ class GetConnectionOptionResult(dict):
                  api_enable_users: bool,
                  app_id: str,
                  attribute_maps: Sequence['outputs.GetConnectionOptionAttributeMapResult'],
+                 attributes: Sequence['outputs.GetConnectionOptionAttributeResult'],
                  auth_params: Mapping[str, str],
                  authorization_endpoint: str,
                  brute_force_protection: bool,
@@ -11073,6 +11796,7 @@ class GetConnectionOptionResult(dict):
                  password_policy: str,
                  ping_federate_base_url: str,
                  pkce_enabled: bool,
+                 precedences: Sequence[str],
                  protocol_binding: str,
                  provider: str,
                  request_template: str,
@@ -11113,6 +11837,7 @@ class GetConnectionOptionResult(dict):
         :param bool api_enable_users: Enable API Access to users.
         :param str app_id: App ID.
         :param Sequence['GetConnectionOptionAttributeMapArgs'] attribute_maps: OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+        :param Sequence['GetConnectionOptionAttributeArgs'] attributes: Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
         :param Mapping[str, str] auth_params: Query string parameters to be included as part of the generated passwordless email link.
         :param str authorization_endpoint: Authorization endpoint.
         :param bool brute_force_protection: Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
@@ -11164,6 +11889,7 @@ class GetConnectionOptionResult(dict):
         :param str password_policy: Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
         :param str ping_federate_base_url: Ping Federate Server URL.
         :param bool pkce_enabled: Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
+        :param Sequence[str] precedences: Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
         :param str protocol_binding: The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
         :param str provider: Defines the custom `sms_gateway` provider.
         :param str request_template: Template that formats the SAML request.
@@ -11204,6 +11930,7 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "api_enable_users", api_enable_users)
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "attribute_maps", attribute_maps)
+        pulumi.set(__self__, "attributes", attributes)
         pulumi.set(__self__, "auth_params", auth_params)
         pulumi.set(__self__, "authorization_endpoint", authorization_endpoint)
         pulumi.set(__self__, "brute_force_protection", brute_force_protection)
@@ -11255,6 +11982,7 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "password_policy", password_policy)
         pulumi.set(__self__, "ping_federate_base_url", ping_federate_base_url)
         pulumi.set(__self__, "pkce_enabled", pkce_enabled)
+        pulumi.set(__self__, "precedences", precedences)
         pulumi.set(__self__, "protocol_binding", protocol_binding)
         pulumi.set(__self__, "provider", provider)
         pulumi.set(__self__, "request_template", request_template)
@@ -11329,6 +12057,14 @@ class GetConnectionOptionResult(dict):
         OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
         """
         return pulumi.get(self, "attribute_maps")
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Sequence['outputs.GetConnectionOptionAttributeResult']:
+        """
+        Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+        """
+        return pulumi.get(self, "attributes")
 
     @property
     @pulumi.getter(name="authParams")
@@ -11739,6 +12475,14 @@ class GetConnectionOptionResult(dict):
         return pulumi.get(self, "pkce_enabled")
 
     @property
+    @pulumi.getter
+    def precedences(self) -> Sequence[str]:
+        """
+        Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+        """
+        return pulumi.get(self, "precedences")
+
+    @property
     @pulumi.getter(name="protocolBinding")
     def protocol_binding(self) -> str:
         """
@@ -12012,6 +12756,151 @@ class GetConnectionOptionResult(dict):
 
 
 @pulumi.output_type
+class GetConnectionOptionAttributeResult(dict):
+    def __init__(__self__, *,
+                 emails: Sequence['outputs.GetConnectionOptionAttributeEmailResult'],
+                 phone_numbers: Sequence['outputs.GetConnectionOptionAttributePhoneNumberResult'],
+                 usernames: Sequence['outputs.GetConnectionOptionAttributeUsernameResult']):
+        """
+        :param Sequence['GetConnectionOptionAttributeEmailArgs'] emails: Connection Options for Email Attribute
+        :param Sequence['GetConnectionOptionAttributePhoneNumberArgs'] phone_numbers: Connection Options for Phone Number Attribute
+        :param Sequence['GetConnectionOptionAttributeUsernameArgs'] usernames: Connection Options for User Name Attribute
+        """
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "phone_numbers", phone_numbers)
+        pulumi.set(__self__, "usernames", usernames)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Sequence['outputs.GetConnectionOptionAttributeEmailResult']:
+        """
+        Connection Options for Email Attribute
+        """
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter(name="phoneNumbers")
+    def phone_numbers(self) -> Sequence['outputs.GetConnectionOptionAttributePhoneNumberResult']:
+        """
+        Connection Options for Phone Number Attribute
+        """
+        return pulumi.get(self, "phone_numbers")
+
+    @property
+    @pulumi.getter
+    def usernames(self) -> Sequence['outputs.GetConnectionOptionAttributeUsernameResult']:
+        """
+        Connection Options for User Name Attribute
+        """
+        return pulumi.get(self, "usernames")
+
+
+@pulumi.output_type
+class GetConnectionOptionAttributeEmailResult(dict):
+    def __init__(__self__, *,
+                 identifiers: Sequence['outputs.GetConnectionOptionAttributeEmailIdentifierResult'],
+                 profile_required: bool,
+                 signups: Sequence['outputs.GetConnectionOptionAttributeEmailSignupResult']):
+        """
+        :param Sequence['GetConnectionOptionAttributeEmailIdentifierArgs'] identifiers: Connection Options Email Attribute Identifier
+        :param bool profile_required: Defines whether Profile is required
+        :param Sequence['GetConnectionOptionAttributeEmailSignupArgs'] signups: Defines signup settings for Email attribute
+        """
+        pulumi.set(__self__, "identifiers", identifiers)
+        pulumi.set(__self__, "profile_required", profile_required)
+        pulumi.set(__self__, "signups", signups)
+
+    @property
+    @pulumi.getter
+    def identifiers(self) -> Sequence['outputs.GetConnectionOptionAttributeEmailIdentifierResult']:
+        """
+        Connection Options Email Attribute Identifier
+        """
+        return pulumi.get(self, "identifiers")
+
+    @property
+    @pulumi.getter(name="profileRequired")
+    def profile_required(self) -> bool:
+        """
+        Defines whether Profile is required
+        """
+        return pulumi.get(self, "profile_required")
+
+    @property
+    @pulumi.getter
+    def signups(self) -> Sequence['outputs.GetConnectionOptionAttributeEmailSignupResult']:
+        """
+        Defines signup settings for Email attribute
+        """
+        return pulumi.get(self, "signups")
+
+
+@pulumi.output_type
+class GetConnectionOptionAttributeEmailIdentifierResult(dict):
+    def __init__(__self__, *,
+                 active: bool):
+        """
+        :param bool active: Defines whether email attribute is active as an identifier
+        """
+        pulumi.set(__self__, "active", active)
+
+    @property
+    @pulumi.getter
+    def active(self) -> bool:
+        """
+        Defines whether email attribute is active as an identifier
+        """
+        return pulumi.get(self, "active")
+
+
+@pulumi.output_type
+class GetConnectionOptionAttributeEmailSignupResult(dict):
+    def __init__(__self__, *,
+                 status: str,
+                 verifications: Sequence['outputs.GetConnectionOptionAttributeEmailSignupVerificationResult']):
+        """
+        :param str status: Defines signup status for Email Attribute
+        :param Sequence['GetConnectionOptionAttributeEmailSignupVerificationArgs'] verifications: Defines settings for Verification under Email attribute
+        """
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "verifications", verifications)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Defines signup status for Email Attribute
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def verifications(self) -> Sequence['outputs.GetConnectionOptionAttributeEmailSignupVerificationResult']:
+        """
+        Defines settings for Verification under Email attribute
+        """
+        return pulumi.get(self, "verifications")
+
+
+@pulumi.output_type
+class GetConnectionOptionAttributeEmailSignupVerificationResult(dict):
+    def __init__(__self__, *,
+                 active: bool):
+        """
+        :param bool active: Defines verification settings for signup attribute
+        """
+        pulumi.set(__self__, "active", active)
+
+    @property
+    @pulumi.getter
+    def active(self) -> bool:
+        """
+        Defines verification settings for signup attribute
+        """
+        return pulumi.get(self, "active")
+
+
+@pulumi.output_type
 class GetConnectionOptionAttributeMapResult(dict):
     def __init__(__self__, *,
                  attributes: str,
@@ -12049,6 +12938,267 @@ class GetConnectionOptionAttributeMapResult(dict):
         This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
         """
         return pulumi.get(self, "userinfo_scope")
+
+
+@pulumi.output_type
+class GetConnectionOptionAttributePhoneNumberResult(dict):
+    def __init__(__self__, *,
+                 identifiers: Sequence['outputs.GetConnectionOptionAttributePhoneNumberIdentifierResult'],
+                 profile_required: bool,
+                 signups: Sequence['outputs.GetConnectionOptionAttributePhoneNumberSignupResult']):
+        """
+        :param Sequence['GetConnectionOptionAttributePhoneNumberIdentifierArgs'] identifiers: Connection Options Phone Number Attribute Identifier
+        :param bool profile_required: Defines whether Profile is required
+        :param Sequence['GetConnectionOptionAttributePhoneNumberSignupArgs'] signups: Defines signup settings for Phone Number attribute
+        """
+        pulumi.set(__self__, "identifiers", identifiers)
+        pulumi.set(__self__, "profile_required", profile_required)
+        pulumi.set(__self__, "signups", signups)
+
+    @property
+    @pulumi.getter
+    def identifiers(self) -> Sequence['outputs.GetConnectionOptionAttributePhoneNumberIdentifierResult']:
+        """
+        Connection Options Phone Number Attribute Identifier
+        """
+        return pulumi.get(self, "identifiers")
+
+    @property
+    @pulumi.getter(name="profileRequired")
+    def profile_required(self) -> bool:
+        """
+        Defines whether Profile is required
+        """
+        return pulumi.get(self, "profile_required")
+
+    @property
+    @pulumi.getter
+    def signups(self) -> Sequence['outputs.GetConnectionOptionAttributePhoneNumberSignupResult']:
+        """
+        Defines signup settings for Phone Number attribute
+        """
+        return pulumi.get(self, "signups")
+
+
+@pulumi.output_type
+class GetConnectionOptionAttributePhoneNumberIdentifierResult(dict):
+    def __init__(__self__, *,
+                 active: bool):
+        """
+        :param bool active: Defines whether Phone Number attribute is active as an identifier
+        """
+        pulumi.set(__self__, "active", active)
+
+    @property
+    @pulumi.getter
+    def active(self) -> bool:
+        """
+        Defines whether Phone Number attribute is active as an identifier
+        """
+        return pulumi.get(self, "active")
+
+
+@pulumi.output_type
+class GetConnectionOptionAttributePhoneNumberSignupResult(dict):
+    def __init__(__self__, *,
+                 status: str,
+                 verifications: Sequence['outputs.GetConnectionOptionAttributePhoneNumberSignupVerificationResult']):
+        """
+        :param str status: Defines status of signup for Phone Number attribute
+        :param Sequence['GetConnectionOptionAttributePhoneNumberSignupVerificationArgs'] verifications: Defines verification settings for Phone Number attribute
+        """
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "verifications", verifications)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Defines status of signup for Phone Number attribute
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def verifications(self) -> Sequence['outputs.GetConnectionOptionAttributePhoneNumberSignupVerificationResult']:
+        """
+        Defines verification settings for Phone Number attribute
+        """
+        return pulumi.get(self, "verifications")
+
+
+@pulumi.output_type
+class GetConnectionOptionAttributePhoneNumberSignupVerificationResult(dict):
+    def __init__(__self__, *,
+                 active: bool):
+        """
+        :param bool active: Defines verification settings for Phone Number attribute
+        """
+        pulumi.set(__self__, "active", active)
+
+    @property
+    @pulumi.getter
+    def active(self) -> bool:
+        """
+        Defines verification settings for Phone Number attribute
+        """
+        return pulumi.get(self, "active")
+
+
+@pulumi.output_type
+class GetConnectionOptionAttributeUsernameResult(dict):
+    def __init__(__self__, *,
+                 identifiers: Sequence['outputs.GetConnectionOptionAttributeUsernameIdentifierResult'],
+                 profile_required: bool,
+                 signups: Sequence['outputs.GetConnectionOptionAttributeUsernameSignupResult'],
+                 validations: Sequence['outputs.GetConnectionOptionAttributeUsernameValidationResult']):
+        """
+        :param Sequence['GetConnectionOptionAttributeUsernameIdentifierArgs'] identifiers: Connection options for User Name Attribute Identifier
+        :param bool profile_required: Defines whether Profile is required
+        :param Sequence['GetConnectionOptionAttributeUsernameSignupArgs'] signups: Defines signup settings for User Name attribute
+        :param Sequence['GetConnectionOptionAttributeUsernameValidationArgs'] validations: Defines validation settings for User Name attribute
+        """
+        pulumi.set(__self__, "identifiers", identifiers)
+        pulumi.set(__self__, "profile_required", profile_required)
+        pulumi.set(__self__, "signups", signups)
+        pulumi.set(__self__, "validations", validations)
+
+    @property
+    @pulumi.getter
+    def identifiers(self) -> Sequence['outputs.GetConnectionOptionAttributeUsernameIdentifierResult']:
+        """
+        Connection options for User Name Attribute Identifier
+        """
+        return pulumi.get(self, "identifiers")
+
+    @property
+    @pulumi.getter(name="profileRequired")
+    def profile_required(self) -> bool:
+        """
+        Defines whether Profile is required
+        """
+        return pulumi.get(self, "profile_required")
+
+    @property
+    @pulumi.getter
+    def signups(self) -> Sequence['outputs.GetConnectionOptionAttributeUsernameSignupResult']:
+        """
+        Defines signup settings for User Name attribute
+        """
+        return pulumi.get(self, "signups")
+
+    @property
+    @pulumi.getter
+    def validations(self) -> Sequence['outputs.GetConnectionOptionAttributeUsernameValidationResult']:
+        """
+        Defines validation settings for User Name attribute
+        """
+        return pulumi.get(self, "validations")
+
+
+@pulumi.output_type
+class GetConnectionOptionAttributeUsernameIdentifierResult(dict):
+    def __init__(__self__, *,
+                 active: bool):
+        """
+        :param bool active: Defines whether UserName attribute is active as an identifier
+        """
+        pulumi.set(__self__, "active", active)
+
+    @property
+    @pulumi.getter
+    def active(self) -> bool:
+        """
+        Defines whether UserName attribute is active as an identifier
+        """
+        return pulumi.get(self, "active")
+
+
+@pulumi.output_type
+class GetConnectionOptionAttributeUsernameSignupResult(dict):
+    def __init__(__self__, *,
+                 status: str):
+        """
+        :param str status: Defines whether User Name attribute is active as an identifier
+        """
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Defines whether User Name attribute is active as an identifier
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetConnectionOptionAttributeUsernameValidationResult(dict):
+    def __init__(__self__, *,
+                 allowed_types: Sequence['outputs.GetConnectionOptionAttributeUsernameValidationAllowedTypeResult'],
+                 max_length: int,
+                 min_length: int):
+        """
+        :param Sequence['GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs'] allowed_types: Defines allowed types for for UserName attribute
+        :param int max_length: Defines Max Length for User Name attribute
+        :param int min_length: Defines Min Length for User Name attribute
+        """
+        pulumi.set(__self__, "allowed_types", allowed_types)
+        pulumi.set(__self__, "max_length", max_length)
+        pulumi.set(__self__, "min_length", min_length)
+
+    @property
+    @pulumi.getter(name="allowedTypes")
+    def allowed_types(self) -> Sequence['outputs.GetConnectionOptionAttributeUsernameValidationAllowedTypeResult']:
+        """
+        Defines allowed types for for UserName attribute
+        """
+        return pulumi.get(self, "allowed_types")
+
+    @property
+    @pulumi.getter(name="maxLength")
+    def max_length(self) -> int:
+        """
+        Defines Max Length for User Name attribute
+        """
+        return pulumi.get(self, "max_length")
+
+    @property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> int:
+        """
+        Defines Min Length for User Name attribute
+        """
+        return pulumi.get(self, "min_length")
+
+
+@pulumi.output_type
+class GetConnectionOptionAttributeUsernameValidationAllowedTypeResult(dict):
+    def __init__(__self__, *,
+                 email: bool,
+                 phone_number: bool):
+        """
+        :param bool email: One of the allowed types for UserName signup attribute
+        :param bool phone_number: One of the allowed types for UserName signup attribute
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "phone_number", phone_number)
+
+    @property
+    @pulumi.getter
+    def email(self) -> bool:
+        """
+        One of the allowed types for UserName signup attribute
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> bool:
+        """
+        One of the allowed types for UserName signup attribute
+        """
+        return pulumi.get(self, "phone_number")
 
 
 @pulumi.output_type
@@ -12729,6 +13879,93 @@ class GetRolePermissionResult(dict):
         Name of resource server (API) that the permission is associated with.
         """
         return pulumi.get(self, "resource_server_name")
+
+
+@pulumi.output_type
+class GetSelfServiceProfileBrandingResult(dict):
+    def __init__(__self__, *,
+                 colors: Sequence['outputs.GetSelfServiceProfileBrandingColorResult'],
+                 logo_url: str):
+        """
+        :param Sequence['GetSelfServiceProfileBrandingColorArgs'] colors: Configuration settings for colors for branding.
+        :param str logo_url: URL of logo to display on login page.
+        """
+        pulumi.set(__self__, "colors", colors)
+        pulumi.set(__self__, "logo_url", logo_url)
+
+    @property
+    @pulumi.getter
+    def colors(self) -> Sequence['outputs.GetSelfServiceProfileBrandingColorResult']:
+        """
+        Configuration settings for colors for branding.
+        """
+        return pulumi.get(self, "colors")
+
+    @property
+    @pulumi.getter(name="logoUrl")
+    def logo_url(self) -> str:
+        """
+        URL of logo to display on login page.
+        """
+        return pulumi.get(self, "logo_url")
+
+
+@pulumi.output_type
+class GetSelfServiceProfileBrandingColorResult(dict):
+    def __init__(__self__, *,
+                 primary: str):
+        """
+        :param str primary: Primary button background color in hexadecimal.
+        """
+        pulumi.set(__self__, "primary", primary)
+
+    @property
+    @pulumi.getter
+    def primary(self) -> str:
+        """
+        Primary button background color in hexadecimal.
+        """
+        return pulumi.get(self, "primary")
+
+
+@pulumi.output_type
+class GetSelfServiceProfileUserAttributeResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 is_optional: bool,
+                 name: str):
+        """
+        :param str description: A human readable description of the attribute.
+        :param bool is_optional: Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+        :param str name: Attribute’s name on Auth0 side
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "is_optional", is_optional)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A human readable description of the attribute.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="isOptional")
+    def is_optional(self) -> bool:
+        """
+        Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+        """
+        return pulumi.get(self, "is_optional")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Attribute’s name on Auth0 side
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

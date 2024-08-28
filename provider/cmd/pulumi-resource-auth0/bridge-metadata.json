@@ -357,6 +357,76 @@
                                 "attribute_map": {
                                     "maxItemsOne": true
                                 },
+                                "attributes": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "email": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "identifier": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "signup": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "verification": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "phone_number": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "identifier": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "signup": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "verification": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "username": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "identifier": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "signup": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "validation": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "allowed_types": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "connection_settings": {
                                     "maxItemsOne": true
                                 },
@@ -399,6 +469,9 @@
                                 },
                                 "password_no_personal_info": {
                                     "maxItemsOne": true
+                                },
+                                "precedence": {
+                                    "maxItemsOne": false
                                 },
                                 "scopes": {
                                     "maxItemsOne": false
@@ -684,6 +757,25 @@
             "auth0_rule_config": {
                 "current": "auth0:index/ruleConfig:RuleConfig",
                 "majorVersion": 3
+            },
+            "auth0_self_service_profile": {
+                "current": "auth0:index/selfServiceProfile:SelfServiceProfile",
+                "majorVersion": 3,
+                "fields": {
+                    "branding": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "colors": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "user_attributes": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "auth0_tenant": {
                 "current": "auth0:index/tenant:Tenant",
@@ -1070,6 +1162,76 @@
                                 "attribute_map": {
                                     "maxItemsOne": false
                                 },
+                                "attributes": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "email": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "identifier": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "signup": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "verification": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "phone_number": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "identifier": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "signup": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "verification": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "username": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "identifier": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "signup": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "validation": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "allowed_types": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "connection_settings": {
                                     "maxItemsOne": false
                                 },
@@ -1111,6 +1273,9 @@
                                     "maxItemsOne": false
                                 },
                                 "password_no_personal_info": {
+                                    "maxItemsOne": false
+                                },
+                                "precedence": {
                                     "maxItemsOne": false
                                 },
                                 "scopes": {
@@ -1218,6 +1383,25 @@
                         "maxItemsOne": false
                     },
                     "users": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_self_service_profile": {
+                "current": "auth0:index/getSelfServiceProfile:getSelfServiceProfile",
+                "majorVersion": 3,
+                "fields": {
+                    "branding": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "colors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "user_attributes": {
                         "maxItemsOne": false
                     }
                 }

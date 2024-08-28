@@ -34,6 +34,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionOptionAttributeMapResult> AttributeMaps;
         /// <summary>
+        /// Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectionOptionAttributeResult> Attributes;
+        /// <summary>
         /// Query string parameters to be included as part of the generated passwordless email link.
         /// </summary>
         public readonly ImmutableDictionary<string, string> AuthParams;
@@ -238,6 +242,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool PkceEnabled;
         /// <summary>
+        /// Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+        /// </summary>
+        public readonly ImmutableArray<string> Precedences;
+        /// <summary>
         /// The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
         /// </summary>
         public readonly string ProtocolBinding;
@@ -386,6 +394,8 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<Outputs.GetConnectionOptionAttributeMapResult> attributeMaps,
 
+            ImmutableArray<Outputs.GetConnectionOptionAttributeResult> attributes,
+
             ImmutableDictionary<string, string> authParams,
 
             string authorizationEndpoint,
@@ -488,6 +498,8 @@ namespace Pulumi.Auth0.Outputs
 
             bool pkceEnabled,
 
+            ImmutableArray<string> precedences,
+
             string protocolBinding,
 
             string provider,
@@ -561,6 +573,7 @@ namespace Pulumi.Auth0.Outputs
             ApiEnableUsers = apiEnableUsers;
             AppId = appId;
             AttributeMaps = attributeMaps;
+            Attributes = attributes;
             AuthParams = authParams;
             AuthorizationEndpoint = authorizationEndpoint;
             BruteForceProtection = bruteForceProtection;
@@ -612,6 +625,7 @@ namespace Pulumi.Auth0.Outputs
             PasswordPolicy = passwordPolicy;
             PingFederateBaseUrl = pingFederateBaseUrl;
             PkceEnabled = pkceEnabled;
+            Precedences = precedences;
             ProtocolBinding = protocolBinding;
             Provider = provider;
             RequestTemplate = requestTemplate;
