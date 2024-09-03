@@ -12,11 +12,11 @@ namespace Pulumi.Auth0
     /// <summary>
     /// The Organizations feature represents a broad update to the Auth0 platform that allows our business-to-business (B2B) customers to better manage their partners and customers, and to customize the ways that end-users access their applications. Auth0 customers can use Organizations to:
     /// 
-    ///   - Represent their business customers and partners in Auth0 and manage their
-    ///     membership.
-    ///   - Configure branded, federated login flows for each business.
-    ///   - Build administration capabilities into their products, using Organizations
-    ///     APIs, so that those businesses can manage their own organizations.
+    /// - Represent their business customers and partners in Auth0 and manage their
+    ///   membership.
+    /// - Configure branded, federated login flows for each business.
+    /// - Build administration capabilities into their products, using Organizations
+    ///   APIs, so that those businesses can manage their own organizations.
     /// 
     /// ## Example Usage
     /// 
