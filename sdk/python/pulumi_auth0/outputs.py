@@ -67,6 +67,7 @@ __all__ = [
     'ClientAddonsZoom',
     'ClientCredentialsPrivateKeyJwt',
     'ClientCredentialsPrivateKeyJwtCredential',
+    'ClientDefaultOrganization',
     'ClientJwtConfiguration',
     'ClientMobile',
     'ClientMobileAndroid',
@@ -127,6 +128,9 @@ __all__ = [
     'PagesError',
     'PagesGuardianMfa',
     'PagesLogin',
+    'PromptScreenPartialInsertionPoints',
+    'PromptScreenPartialsScreenPartial',
+    'PromptScreenPartialsScreenPartialInsertionPoints',
     'ResourceServerScopesScope',
     'RolePermissionsPermission',
     'SelfServiceProfileBranding',
@@ -188,6 +192,7 @@ __all__ = [
     'GetClientAddonWsfedResult',
     'GetClientAddonZendeskResult',
     'GetClientAddonZoomResult',
+    'GetClientDefaultOrganizationResult',
     'GetClientJwtConfigurationResult',
     'GetClientMobileResult',
     'GetClientMobileAndroidResult',
@@ -234,6 +239,8 @@ __all__ = [
     'GetPagesErrorResult',
     'GetPagesGuardianMfaResult',
     'GetPagesLoginResult',
+    'GetPromptScreenPartialsScreenPartialResult',
+    'GetPromptScreenPartialsScreenPartialInsertionPointResult',
     'GetResourceServerScopeResult',
     'GetRolePermissionResult',
     'GetSelfServiceProfileBrandingResult',
@@ -3826,6 +3833,66 @@ class ClientCredentialsPrivateKeyJwtCredential(dict):
         The ISO 8601 formatted date the credential was updated.
         """
         return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class ClientDefaultOrganization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "organizationId":
+            suggest = "organization_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientDefaultOrganization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientDefaultOrganization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientDefaultOrganization.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disable: Optional[bool] = None,
+                 flows: Optional[Sequence[str]] = None,
+                 organization_id: Optional[str] = None):
+        """
+        :param bool disable: If set, the `default_organization` will be removed.
+        :param Sequence[str] flows: Definition of the flow that needs to be configured. Eg. client_credentials
+        :param str organization_id: The unique identifier of the organization
+        """
+        if disable is not None:
+            pulumi.set(__self__, "disable", disable)
+        if flows is not None:
+            pulumi.set(__self__, "flows", flows)
+        if organization_id is not None:
+            pulumi.set(__self__, "organization_id", organization_id)
+
+    @property
+    @pulumi.getter
+    def disable(self) -> Optional[bool]:
+        """
+        If set, the `default_organization` will be removed.
+        """
+        return pulumi.get(self, "disable")
+
+    @property
+    @pulumi.getter
+    def flows(self) -> Optional[Sequence[str]]:
+        """
+        Definition of the flow that needs to be configured. Eg. client_credentials
+        """
+        return pulumi.get(self, "flows")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> Optional[str]:
+        """
+        The unique identifier of the organization
+        """
+        return pulumi.get(self, "organization_id")
 
 
 @pulumi.output_type
@@ -8227,6 +8294,262 @@ class PagesLogin(dict):
 
 
 @pulumi.output_type
+class PromptScreenPartialInsertionPoints(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "formContentEnd":
+            suggest = "form_content_end"
+        elif key == "formContentStart":
+            suggest = "form_content_start"
+        elif key == "formFooterEnd":
+            suggest = "form_footer_end"
+        elif key == "formFooterStart":
+            suggest = "form_footer_start"
+        elif key == "secondaryActionsEnd":
+            suggest = "secondary_actions_end"
+        elif key == "secondaryActionsStart":
+            suggest = "secondary_actions_start"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PromptScreenPartialInsertionPoints. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PromptScreenPartialInsertionPoints.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PromptScreenPartialInsertionPoints.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 form_content_end: Optional[str] = None,
+                 form_content_start: Optional[str] = None,
+                 form_footer_end: Optional[str] = None,
+                 form_footer_start: Optional[str] = None,
+                 secondary_actions_end: Optional[str] = None,
+                 secondary_actions_start: Optional[str] = None):
+        """
+        :param str form_content_end: Content that goes at the end of the form.
+        :param str form_content_start: Content that goes at the start of the form.
+        :param str form_footer_end: Footer content for the end of the footer.
+        :param str form_footer_start: Footer content for the start of the footer.
+        :param str secondary_actions_end: Actions that go at the end of secondary actions.
+        :param str secondary_actions_start: Actions that go at the start of secondary actions.
+        """
+        if form_content_end is not None:
+            pulumi.set(__self__, "form_content_end", form_content_end)
+        if form_content_start is not None:
+            pulumi.set(__self__, "form_content_start", form_content_start)
+        if form_footer_end is not None:
+            pulumi.set(__self__, "form_footer_end", form_footer_end)
+        if form_footer_start is not None:
+            pulumi.set(__self__, "form_footer_start", form_footer_start)
+        if secondary_actions_end is not None:
+            pulumi.set(__self__, "secondary_actions_end", secondary_actions_end)
+        if secondary_actions_start is not None:
+            pulumi.set(__self__, "secondary_actions_start", secondary_actions_start)
+
+    @property
+    @pulumi.getter(name="formContentEnd")
+    def form_content_end(self) -> Optional[str]:
+        """
+        Content that goes at the end of the form.
+        """
+        return pulumi.get(self, "form_content_end")
+
+    @property
+    @pulumi.getter(name="formContentStart")
+    def form_content_start(self) -> Optional[str]:
+        """
+        Content that goes at the start of the form.
+        """
+        return pulumi.get(self, "form_content_start")
+
+    @property
+    @pulumi.getter(name="formFooterEnd")
+    def form_footer_end(self) -> Optional[str]:
+        """
+        Footer content for the end of the footer.
+        """
+        return pulumi.get(self, "form_footer_end")
+
+    @property
+    @pulumi.getter(name="formFooterStart")
+    def form_footer_start(self) -> Optional[str]:
+        """
+        Footer content for the start of the footer.
+        """
+        return pulumi.get(self, "form_footer_start")
+
+    @property
+    @pulumi.getter(name="secondaryActionsEnd")
+    def secondary_actions_end(self) -> Optional[str]:
+        """
+        Actions that go at the end of secondary actions.
+        """
+        return pulumi.get(self, "secondary_actions_end")
+
+    @property
+    @pulumi.getter(name="secondaryActionsStart")
+    def secondary_actions_start(self) -> Optional[str]:
+        """
+        Actions that go at the start of secondary actions.
+        """
+        return pulumi.get(self, "secondary_actions_start")
+
+
+@pulumi.output_type
+class PromptScreenPartialsScreenPartial(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "insertionPoints":
+            suggest = "insertion_points"
+        elif key == "screenName":
+            suggest = "screen_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PromptScreenPartialsScreenPartial. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PromptScreenPartialsScreenPartial.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PromptScreenPartialsScreenPartial.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 insertion_points: 'outputs.PromptScreenPartialsScreenPartialInsertionPoints',
+                 screen_name: str):
+        """
+        :param str screen_name: The name of the screen associated with the partials
+        """
+        pulumi.set(__self__, "insertion_points", insertion_points)
+        pulumi.set(__self__, "screen_name", screen_name)
+
+    @property
+    @pulumi.getter(name="insertionPoints")
+    def insertion_points(self) -> 'outputs.PromptScreenPartialsScreenPartialInsertionPoints':
+        return pulumi.get(self, "insertion_points")
+
+    @property
+    @pulumi.getter(name="screenName")
+    def screen_name(self) -> str:
+        """
+        The name of the screen associated with the partials
+        """
+        return pulumi.get(self, "screen_name")
+
+
+@pulumi.output_type
+class PromptScreenPartialsScreenPartialInsertionPoints(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "formContentEnd":
+            suggest = "form_content_end"
+        elif key == "formContentStart":
+            suggest = "form_content_start"
+        elif key == "formFooterEnd":
+            suggest = "form_footer_end"
+        elif key == "formFooterStart":
+            suggest = "form_footer_start"
+        elif key == "secondaryActionsEnd":
+            suggest = "secondary_actions_end"
+        elif key == "secondaryActionsStart":
+            suggest = "secondary_actions_start"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PromptScreenPartialsScreenPartialInsertionPoints. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PromptScreenPartialsScreenPartialInsertionPoints.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PromptScreenPartialsScreenPartialInsertionPoints.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 form_content_end: Optional[str] = None,
+                 form_content_start: Optional[str] = None,
+                 form_footer_end: Optional[str] = None,
+                 form_footer_start: Optional[str] = None,
+                 secondary_actions_end: Optional[str] = None,
+                 secondary_actions_start: Optional[str] = None):
+        """
+        :param str form_content_end: Content that goes at the end of the form.
+        :param str form_content_start: Content that goes at the start of the form.
+        :param str form_footer_end: Footer content for the end of the footer.
+        :param str form_footer_start: Footer content for the start of the footer.
+        :param str secondary_actions_end: Actions that go at the end of secondary actions.
+        :param str secondary_actions_start: Actions that go at the start of secondary actions.
+        """
+        if form_content_end is not None:
+            pulumi.set(__self__, "form_content_end", form_content_end)
+        if form_content_start is not None:
+            pulumi.set(__self__, "form_content_start", form_content_start)
+        if form_footer_end is not None:
+            pulumi.set(__self__, "form_footer_end", form_footer_end)
+        if form_footer_start is not None:
+            pulumi.set(__self__, "form_footer_start", form_footer_start)
+        if secondary_actions_end is not None:
+            pulumi.set(__self__, "secondary_actions_end", secondary_actions_end)
+        if secondary_actions_start is not None:
+            pulumi.set(__self__, "secondary_actions_start", secondary_actions_start)
+
+    @property
+    @pulumi.getter(name="formContentEnd")
+    def form_content_end(self) -> Optional[str]:
+        """
+        Content that goes at the end of the form.
+        """
+        return pulumi.get(self, "form_content_end")
+
+    @property
+    @pulumi.getter(name="formContentStart")
+    def form_content_start(self) -> Optional[str]:
+        """
+        Content that goes at the start of the form.
+        """
+        return pulumi.get(self, "form_content_start")
+
+    @property
+    @pulumi.getter(name="formFooterEnd")
+    def form_footer_end(self) -> Optional[str]:
+        """
+        Footer content for the end of the footer.
+        """
+        return pulumi.get(self, "form_footer_end")
+
+    @property
+    @pulumi.getter(name="formFooterStart")
+    def form_footer_start(self) -> Optional[str]:
+        """
+        Footer content for the start of the footer.
+        """
+        return pulumi.get(self, "form_footer_start")
+
+    @property
+    @pulumi.getter(name="secondaryActionsEnd")
+    def secondary_actions_end(self) -> Optional[str]:
+        """
+        Actions that go at the end of secondary actions.
+        """
+        return pulumi.get(self, "secondary_actions_end")
+
+    @property
+    @pulumi.getter(name="secondaryActionsStart")
+    def secondary_actions_start(self) -> Optional[str]:
+        """
+        Actions that go at the start of secondary actions.
+        """
+        return pulumi.get(self, "secondary_actions_start")
+
+
+@pulumi.output_type
 class ResourceServerScopesScope(dict):
     def __init__(__self__, *,
                  name: str,
@@ -11492,6 +11815,46 @@ class GetClientAddonZoomResult(dict):
 
 
 @pulumi.output_type
+class GetClientDefaultOrganizationResult(dict):
+    def __init__(__self__, *,
+                 disable: bool,
+                 flows: Sequence[str],
+                 organization_id: str):
+        """
+        :param bool disable: If set, the `default_organization` will be removed.
+        :param Sequence[str] flows: Definition of the flow that needs to be configured. Eg. client_credentials
+        :param str organization_id: The unique identifier of the organization
+        """
+        pulumi.set(__self__, "disable", disable)
+        pulumi.set(__self__, "flows", flows)
+        pulumi.set(__self__, "organization_id", organization_id)
+
+    @property
+    @pulumi.getter
+    def disable(self) -> bool:
+        """
+        If set, the `default_organization` will be removed.
+        """
+        return pulumi.get(self, "disable")
+
+    @property
+    @pulumi.getter
+    def flows(self) -> Sequence[str]:
+        """
+        Definition of the flow that needs to be configured. Eg. client_credentials
+        """
+        return pulumi.get(self, "flows")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> str:
+        """
+        The unique identifier of the organization
+        """
+        return pulumi.get(self, "organization_id")
+
+
+@pulumi.output_type
 class GetClientJwtConfigurationResult(dict):
     def __init__(__self__, *,
                  alg: str,
@@ -13799,6 +14162,104 @@ class GetPagesLoginResult(dict):
         Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
         """
         return pulumi.get(self, "html")
+
+
+@pulumi.output_type
+class GetPromptScreenPartialsScreenPartialResult(dict):
+    def __init__(__self__, *,
+                 insertion_points: Sequence['outputs.GetPromptScreenPartialsScreenPartialInsertionPointResult'],
+                 screen_name: str):
+        """
+        :param str screen_name: The name of the screen associated with the partials
+        """
+        pulumi.set(__self__, "insertion_points", insertion_points)
+        pulumi.set(__self__, "screen_name", screen_name)
+
+    @property
+    @pulumi.getter(name="insertionPoints")
+    def insertion_points(self) -> Sequence['outputs.GetPromptScreenPartialsScreenPartialInsertionPointResult']:
+        return pulumi.get(self, "insertion_points")
+
+    @property
+    @pulumi.getter(name="screenName")
+    def screen_name(self) -> str:
+        """
+        The name of the screen associated with the partials
+        """
+        return pulumi.get(self, "screen_name")
+
+
+@pulumi.output_type
+class GetPromptScreenPartialsScreenPartialInsertionPointResult(dict):
+    def __init__(__self__, *,
+                 form_content_end: str,
+                 form_content_start: str,
+                 form_footer_end: str,
+                 form_footer_start: str,
+                 secondary_actions_end: str,
+                 secondary_actions_start: str):
+        """
+        :param str form_content_end: Content that goes at the end of the form.
+        :param str form_content_start: Content that goes at the start of the form.
+        :param str form_footer_end: Footer content for the end of the footer.
+        :param str form_footer_start: Footer content for the start of the footer.
+        :param str secondary_actions_end: Actions that go at the end of secondary actions.
+        :param str secondary_actions_start: Actions that go at the start of secondary actions.
+        """
+        pulumi.set(__self__, "form_content_end", form_content_end)
+        pulumi.set(__self__, "form_content_start", form_content_start)
+        pulumi.set(__self__, "form_footer_end", form_footer_end)
+        pulumi.set(__self__, "form_footer_start", form_footer_start)
+        pulumi.set(__self__, "secondary_actions_end", secondary_actions_end)
+        pulumi.set(__self__, "secondary_actions_start", secondary_actions_start)
+
+    @property
+    @pulumi.getter(name="formContentEnd")
+    def form_content_end(self) -> str:
+        """
+        Content that goes at the end of the form.
+        """
+        return pulumi.get(self, "form_content_end")
+
+    @property
+    @pulumi.getter(name="formContentStart")
+    def form_content_start(self) -> str:
+        """
+        Content that goes at the start of the form.
+        """
+        return pulumi.get(self, "form_content_start")
+
+    @property
+    @pulumi.getter(name="formFooterEnd")
+    def form_footer_end(self) -> str:
+        """
+        Footer content for the end of the footer.
+        """
+        return pulumi.get(self, "form_footer_end")
+
+    @property
+    @pulumi.getter(name="formFooterStart")
+    def form_footer_start(self) -> str:
+        """
+        Footer content for the start of the footer.
+        """
+        return pulumi.get(self, "form_footer_start")
+
+    @property
+    @pulumi.getter(name="secondaryActionsEnd")
+    def secondary_actions_end(self) -> str:
+        """
+        Actions that go at the end of secondary actions.
+        """
+        return pulumi.get(self, "secondary_actions_end")
+
+    @property
+    @pulumi.getter(name="secondaryActionsStart")
+    def secondary_actions_start(self) -> str:
+        """
+        Actions that go at the start of secondary actions.
+        """
+        return pulumi.get(self, "secondary_actions_start")
 
 
 @pulumi.output_type

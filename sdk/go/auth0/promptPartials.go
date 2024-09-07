@@ -14,6 +14,9 @@ import (
 
 // With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).
 //
+// !> **Deprecated:** `PromptPartials` has been deprecated. Please use `PromptScreenPartials` for managing multiple
+// prompt screens or `PromptScreenPartial` for managing a single prompt screen.
+//
 // ## Example Usage
 //
 // ```go
@@ -61,18 +64,32 @@ type PromptPartials struct {
 	pulumi.CustomResourceState
 
 	// Content that goes at the end of the form.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormContentEnd pulumi.StringPtrOutput `pulumi:"formContentEnd"`
 	// Content that goes at the start of the form.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormContentStart pulumi.StringPtrOutput `pulumi:"formContentStart"`
 	// Footer content for the end of the footer.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormFooterEnd pulumi.StringPtrOutput `pulumi:"formFooterEnd"`
 	// Footer content for the start of the footer.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormFooterStart pulumi.StringPtrOutput `pulumi:"formFooterStart"`
-	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	Prompt pulumi.StringOutput `pulumi:"prompt"`
 	// Actions that go at the end of secondary actions.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	SecondaryActionsEnd pulumi.StringPtrOutput `pulumi:"secondaryActionsEnd"`
 	// Actions that go at the start of secondary actions.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	SecondaryActionsStart pulumi.StringPtrOutput `pulumi:"secondaryActionsStart"`
 }
 
@@ -110,35 +127,63 @@ func GetPromptPartials(ctx *pulumi.Context,
 // Input properties used for looking up and filtering PromptPartials resources.
 type promptPartialsState struct {
 	// Content that goes at the end of the form.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormContentEnd *string `pulumi:"formContentEnd"`
 	// Content that goes at the start of the form.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormContentStart *string `pulumi:"formContentStart"`
 	// Footer content for the end of the footer.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormFooterEnd *string `pulumi:"formFooterEnd"`
 	// Footer content for the start of the footer.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormFooterStart *string `pulumi:"formFooterStart"`
-	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	Prompt *string `pulumi:"prompt"`
 	// Actions that go at the end of secondary actions.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	SecondaryActionsEnd *string `pulumi:"secondaryActionsEnd"`
 	// Actions that go at the start of secondary actions.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	SecondaryActionsStart *string `pulumi:"secondaryActionsStart"`
 }
 
 type PromptPartialsState struct {
 	// Content that goes at the end of the form.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormContentEnd pulumi.StringPtrInput
 	// Content that goes at the start of the form.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormContentStart pulumi.StringPtrInput
 	// Footer content for the end of the footer.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormFooterEnd pulumi.StringPtrInput
 	// Footer content for the start of the footer.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormFooterStart pulumi.StringPtrInput
-	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	Prompt pulumi.StringPtrInput
 	// Actions that go at the end of secondary actions.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	SecondaryActionsEnd pulumi.StringPtrInput
 	// Actions that go at the start of secondary actions.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	SecondaryActionsStart pulumi.StringPtrInput
 }
 
@@ -148,36 +193,64 @@ func (PromptPartialsState) ElementType() reflect.Type {
 
 type promptPartialsArgs struct {
 	// Content that goes at the end of the form.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormContentEnd *string `pulumi:"formContentEnd"`
 	// Content that goes at the start of the form.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormContentStart *string `pulumi:"formContentStart"`
 	// Footer content for the end of the footer.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormFooterEnd *string `pulumi:"formFooterEnd"`
 	// Footer content for the start of the footer.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormFooterStart *string `pulumi:"formFooterStart"`
-	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	Prompt string `pulumi:"prompt"`
 	// Actions that go at the end of secondary actions.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	SecondaryActionsEnd *string `pulumi:"secondaryActionsEnd"`
 	// Actions that go at the start of secondary actions.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	SecondaryActionsStart *string `pulumi:"secondaryActionsStart"`
 }
 
 // The set of arguments for constructing a PromptPartials resource.
 type PromptPartialsArgs struct {
 	// Content that goes at the end of the form.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormContentEnd pulumi.StringPtrInput
 	// Content that goes at the start of the form.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormContentStart pulumi.StringPtrInput
 	// Footer content for the end of the footer.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormFooterEnd pulumi.StringPtrInput
 	// Footer content for the start of the footer.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	FormFooterStart pulumi.StringPtrInput
-	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	Prompt pulumi.StringInput
 	// Actions that go at the end of secondary actions.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	SecondaryActionsEnd pulumi.StringPtrInput
 	// Actions that go at the start of secondary actions.
+	//
+	// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 	SecondaryActionsStart pulumi.StringPtrInput
 }
 
@@ -269,36 +342,50 @@ func (o PromptPartialsOutput) ToPromptPartialsOutputWithContext(ctx context.Cont
 }
 
 // Content that goes at the end of the form.
+//
+// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 func (o PromptPartialsOutput) FormContentEnd() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PromptPartials) pulumi.StringPtrOutput { return v.FormContentEnd }).(pulumi.StringPtrOutput)
 }
 
 // Content that goes at the start of the form.
+//
+// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 func (o PromptPartialsOutput) FormContentStart() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PromptPartials) pulumi.StringPtrOutput { return v.FormContentStart }).(pulumi.StringPtrOutput)
 }
 
 // Footer content for the end of the footer.
+//
+// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 func (o PromptPartialsOutput) FormFooterEnd() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PromptPartials) pulumi.StringPtrOutput { return v.FormFooterEnd }).(pulumi.StringPtrOutput)
 }
 
 // Footer content for the start of the footer.
+//
+// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 func (o PromptPartialsOutput) FormFooterStart() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PromptPartials) pulumi.StringPtrOutput { return v.FormFooterStart }).(pulumi.StringPtrOutput)
 }
 
-// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+//
+// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 func (o PromptPartialsOutput) Prompt() pulumi.StringOutput {
 	return o.ApplyT(func(v *PromptPartials) pulumi.StringOutput { return v.Prompt }).(pulumi.StringOutput)
 }
 
 // Actions that go at the end of secondary actions.
+//
+// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 func (o PromptPartialsOutput) SecondaryActionsEnd() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PromptPartials) pulumi.StringPtrOutput { return v.SecondaryActionsEnd }).(pulumi.StringPtrOutput)
 }
 
 // Actions that go at the start of secondary actions.
+//
+// Deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.
 func (o PromptPartialsOutput) SecondaryActionsStart() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PromptPartials) pulumi.StringPtrOutput { return v.SecondaryActionsStart }).(pulumi.StringPtrOutput)
 }

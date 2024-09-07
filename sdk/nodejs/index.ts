@@ -125,6 +125,11 @@ export const getPages: typeof import("./getPages").getPages = null as any;
 export const getPagesOutput: typeof import("./getPages").getPagesOutput = null as any;
 utilities.lazyLoad(exports, ["getPages","getPagesOutput"], () => require("./getPages"));
 
+export { GetPromptScreenPartialsArgs, GetPromptScreenPartialsResult, GetPromptScreenPartialsOutputArgs } from "./getPromptScreenPartials";
+export const getPromptScreenPartials: typeof import("./getPromptScreenPartials").getPromptScreenPartials = null as any;
+export const getPromptScreenPartialsOutput: typeof import("./getPromptScreenPartials").getPromptScreenPartialsOutput = null as any;
+utilities.lazyLoad(exports, ["getPromptScreenPartials","getPromptScreenPartialsOutput"], () => require("./getPromptScreenPartials"));
+
 export { GetResourceServerArgs, GetResourceServerResult, GetResourceServerOutputArgs } from "./getResourceServer";
 export const getResourceServer: typeof import("./getResourceServer").getResourceServer = null as any;
 export const getResourceServerOutput: typeof import("./getResourceServer").getResourceServerOutput = null as any;
@@ -224,6 +229,16 @@ export { PromptPartialsArgs, PromptPartialsState } from "./promptPartials";
 export type PromptPartials = import("./promptPartials").PromptPartials;
 export const PromptPartials: typeof import("./promptPartials").PromptPartials = null as any;
 utilities.lazyLoad(exports, ["PromptPartials"], () => require("./promptPartials"));
+
+export { PromptScreenPartialArgs, PromptScreenPartialState } from "./promptScreenPartial";
+export type PromptScreenPartial = import("./promptScreenPartial").PromptScreenPartial;
+export const PromptScreenPartial: typeof import("./promptScreenPartial").PromptScreenPartial = null as any;
+utilities.lazyLoad(exports, ["PromptScreenPartial"], () => require("./promptScreenPartial"));
+
+export { PromptScreenPartialsArgs, PromptScreenPartialsState } from "./promptScreenPartials";
+export type PromptScreenPartials = import("./promptScreenPartials").PromptScreenPartials;
+export const PromptScreenPartials: typeof import("./promptScreenPartials").PromptScreenPartials = null as any;
+utilities.lazyLoad(exports, ["PromptScreenPartials"], () => require("./promptScreenPartials"));
 
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
@@ -387,6 +402,10 @@ const _module = {
                 return new PromptCustomText(name, <any>undefined, { urn })
             case "auth0:index/promptPartials:PromptPartials":
                 return new PromptPartials(name, <any>undefined, { urn })
+            case "auth0:index/promptScreenPartial:PromptScreenPartial":
+                return new PromptScreenPartial(name, <any>undefined, { urn })
+            case "auth0:index/promptScreenPartials:PromptScreenPartials":
+                return new PromptScreenPartials(name, <any>undefined, { urn })
             case "auth0:index/resourceServer:ResourceServer":
                 return new ResourceServer(name, <any>undefined, { urn })
             case "auth0:index/resourceServerScope:ResourceServerScope":
@@ -455,6 +474,8 @@ pulumi.runtime.registerResourceModule("auth0", "index/pages", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/prompt", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptCustomText", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptPartials", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/promptScreenPartial", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/promptScreenPartials", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServer", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServerScope", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServerScopes", _module)

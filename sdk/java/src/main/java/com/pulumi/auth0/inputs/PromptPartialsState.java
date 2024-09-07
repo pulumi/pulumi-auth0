@@ -18,14 +18,22 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
     /**
      * Content that goes at the end of the form.
      * 
+     * @deprecated
+     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * 
      */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
     @Import(name="formContentEnd")
     private @Nullable Output<String> formContentEnd;
 
     /**
      * @return Content that goes at the end of the form.
      * 
+     * @deprecated
+     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * 
      */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
     public Optional<Output<String>> formContentEnd() {
         return Optional.ofNullable(this.formContentEnd);
     }
@@ -33,14 +41,22 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
     /**
      * Content that goes at the start of the form.
      * 
+     * @deprecated
+     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * 
      */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
     @Import(name="formContentStart")
     private @Nullable Output<String> formContentStart;
 
     /**
      * @return Content that goes at the start of the form.
      * 
+     * @deprecated
+     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * 
      */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
     public Optional<Output<String>> formContentStart() {
         return Optional.ofNullable(this.formContentStart);
     }
@@ -48,14 +64,22 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
     /**
      * Footer content for the end of the footer.
      * 
+     * @deprecated
+     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * 
      */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
     @Import(name="formFooterEnd")
     private @Nullable Output<String> formFooterEnd;
 
     /**
      * @return Footer content for the end of the footer.
      * 
+     * @deprecated
+     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * 
      */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
     public Optional<Output<String>> formFooterEnd() {
         return Optional.ofNullable(this.formFooterEnd);
     }
@@ -63,29 +87,45 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
     /**
      * Footer content for the start of the footer.
      * 
+     * @deprecated
+     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * 
      */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
     @Import(name="formFooterStart")
     private @Nullable Output<String> formFooterStart;
 
     /**
      * @return Footer content for the start of the footer.
      * 
+     * @deprecated
+     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * 
      */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
     public Optional<Output<String>> formFooterStart() {
         return Optional.ofNullable(this.formFooterStart);
     }
 
     /**
-     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+     * 
+     * @deprecated
+     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      * 
      */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
     @Import(name="prompt")
     private @Nullable Output<String> prompt;
 
     /**
-     * @return The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+     * @return The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+     * 
+     * @deprecated
+     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      * 
      */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
     public Optional<Output<String>> prompt() {
         return Optional.ofNullable(this.prompt);
     }
@@ -93,14 +133,22 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
     /**
      * Actions that go at the end of secondary actions.
      * 
+     * @deprecated
+     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * 
      */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
     @Import(name="secondaryActionsEnd")
     private @Nullable Output<String> secondaryActionsEnd;
 
     /**
      * @return Actions that go at the end of secondary actions.
      * 
+     * @deprecated
+     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * 
      */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
     public Optional<Output<String>> secondaryActionsEnd() {
         return Optional.ofNullable(this.secondaryActionsEnd);
     }
@@ -108,14 +156,22 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
     /**
      * Actions that go at the start of secondary actions.
      * 
+     * @deprecated
+     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * 
      */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
     @Import(name="secondaryActionsStart")
     private @Nullable Output<String> secondaryActionsStart;
 
     /**
      * @return Actions that go at the start of secondary actions.
      * 
+     * @deprecated
+     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * 
      */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
     public Optional<Output<String>> secondaryActionsStart() {
         return Optional.ofNullable(this.secondaryActionsStart);
     }
@@ -155,7 +211,11 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+         * 
          */
+        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
         public Builder formContentEnd(@Nullable Output<String> formContentEnd) {
             $.formContentEnd = formContentEnd;
             return this;
@@ -166,7 +226,11 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+         * 
          */
+        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
         public Builder formContentEnd(String formContentEnd) {
             return formContentEnd(Output.of(formContentEnd));
         }
@@ -176,7 +240,11 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+         * 
          */
+        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
         public Builder formContentStart(@Nullable Output<String> formContentStart) {
             $.formContentStart = formContentStart;
             return this;
@@ -187,7 +255,11 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+         * 
          */
+        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
         public Builder formContentStart(String formContentStart) {
             return formContentStart(Output.of(formContentStart));
         }
@@ -197,7 +269,11 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+         * 
          */
+        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
         public Builder formFooterEnd(@Nullable Output<String> formFooterEnd) {
             $.formFooterEnd = formFooterEnd;
             return this;
@@ -208,7 +284,11 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+         * 
          */
+        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
         public Builder formFooterEnd(String formFooterEnd) {
             return formFooterEnd(Output.of(formFooterEnd));
         }
@@ -218,7 +298,11 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+         * 
          */
+        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
         public Builder formFooterStart(@Nullable Output<String> formFooterStart) {
             $.formFooterStart = formFooterStart;
             return this;
@@ -229,28 +313,40 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+         * 
          */
+        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
         public Builder formFooterStart(String formFooterStart) {
             return formFooterStart(Output.of(formFooterStart));
         }
 
         /**
-         * @param prompt The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+         * @param prompt The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+         * 
          */
+        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
         public Builder prompt(@Nullable Output<String> prompt) {
             $.prompt = prompt;
             return this;
         }
 
         /**
-         * @param prompt The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+         * @param prompt The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+         * 
          */
+        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
         public Builder prompt(String prompt) {
             return prompt(Output.of(prompt));
         }
@@ -260,7 +356,11 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+         * 
          */
+        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
         public Builder secondaryActionsEnd(@Nullable Output<String> secondaryActionsEnd) {
             $.secondaryActionsEnd = secondaryActionsEnd;
             return this;
@@ -271,7 +371,11 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+         * 
          */
+        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
         public Builder secondaryActionsEnd(String secondaryActionsEnd) {
             return secondaryActionsEnd(Output.of(secondaryActionsEnd));
         }
@@ -281,7 +385,11 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+         * 
          */
+        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
         public Builder secondaryActionsStart(@Nullable Output<String> secondaryActionsStart) {
             $.secondaryActionsStart = secondaryActionsStart;
             return this;
@@ -292,7 +400,11 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+         * 
          */
+        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
         public Builder secondaryActionsStart(String secondaryActionsStart) {
             return secondaryActionsStart(Output.of(secondaryActionsStart));
         }

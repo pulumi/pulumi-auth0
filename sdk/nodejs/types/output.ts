@@ -1025,6 +1025,21 @@ export interface ClientCredentialsPrivateKeyJwtCredential {
     updatedAt: string;
 }
 
+export interface ClientDefaultOrganization {
+    /**
+     * If set, the `defaultOrganization` will be removed.
+     */
+    disable?: boolean;
+    /**
+     * Definition of the flow that needs to be configured. Eg. client_credentials
+     */
+    flows?: string[];
+    /**
+     * The unique identifier of the organization
+     */
+    organizationId?: string;
+}
+
 export interface ClientJwtConfiguration {
     /**
      * Algorithm used to sign JWTs.
@@ -2799,6 +2814,21 @@ export interface GetClientAddonZoom {
     account: string;
 }
 
+export interface GetClientDefaultOrganization {
+    /**
+     * If set, the `defaultOrganization` will be removed.
+     */
+    disable: boolean;
+    /**
+     * Definition of the flow that needs to be configured. Eg. client_credentials
+     */
+    flows: string[];
+    /**
+     * The unique identifier of the organization
+     */
+    organizationId: string;
+}
+
 export interface GetClientJwtConfiguration {
     /**
      * Algorithm used to sign JWTs.
@@ -3637,6 +3667,41 @@ export interface GetPagesLogin {
     html: string;
 }
 
+export interface GetPromptScreenPartialsScreenPartial {
+    insertionPoints: outputs.GetPromptScreenPartialsScreenPartialInsertionPoint[];
+    /**
+     * The name of the screen associated with the partials
+     */
+    screenName: string;
+}
+
+export interface GetPromptScreenPartialsScreenPartialInsertionPoint {
+    /**
+     * Content that goes at the end of the form.
+     */
+    formContentEnd: string;
+    /**
+     * Content that goes at the start of the form.
+     */
+    formContentStart: string;
+    /**
+     * Footer content for the end of the footer.
+     */
+    formFooterEnd: string;
+    /**
+     * Footer content for the start of the footer.
+     */
+    formFooterStart: string;
+    /**
+     * Actions that go at the end of secondary actions.
+     */
+    secondaryActionsEnd: string;
+    /**
+     * Actions that go at the start of secondary actions.
+     */
+    secondaryActionsStart: string;
+}
+
 export interface GetResourceServerScope {
     /**
      * Description of the permission (scope).
@@ -4236,6 +4301,68 @@ export interface PagesLogin {
      * Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
      */
     html: string;
+}
+
+export interface PromptScreenPartialInsertionPoints {
+    /**
+     * Content that goes at the end of the form.
+     */
+    formContentEnd?: string;
+    /**
+     * Content that goes at the start of the form.
+     */
+    formContentStart?: string;
+    /**
+     * Footer content for the end of the footer.
+     */
+    formFooterEnd?: string;
+    /**
+     * Footer content for the start of the footer.
+     */
+    formFooterStart?: string;
+    /**
+     * Actions that go at the end of secondary actions.
+     */
+    secondaryActionsEnd?: string;
+    /**
+     * Actions that go at the start of secondary actions.
+     */
+    secondaryActionsStart?: string;
+}
+
+export interface PromptScreenPartialsScreenPartial {
+    insertionPoints: outputs.PromptScreenPartialsScreenPartialInsertionPoints;
+    /**
+     * The name of the screen associated with the partials
+     */
+    screenName: string;
+}
+
+export interface PromptScreenPartialsScreenPartialInsertionPoints {
+    /**
+     * Content that goes at the end of the form.
+     */
+    formContentEnd?: string;
+    /**
+     * Content that goes at the start of the form.
+     */
+    formContentStart?: string;
+    /**
+     * Footer content for the end of the footer.
+     */
+    formFooterEnd?: string;
+    /**
+     * Footer content for the start of the footer.
+     */
+    formFooterStart?: string;
+    /**
+     * Actions that go at the end of secondary actions.
+     */
+    secondaryActionsEnd?: string;
+    /**
+     * Actions that go at the start of secondary actions.
+     */
+    secondaryActionsStart?: string;
 }
 
 export interface ResourceServerScopesScope {

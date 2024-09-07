@@ -93,6 +93,8 @@ type LookupClientResult struct {
 	CustomLoginPage string `pulumi:"customLoginPage"`
 	// Indicates whether a custom login page is to be used.
 	CustomLoginPageOn bool `pulumi:"customLoginPageOn"`
+	// Configure and associate an organization with the Client
+	DefaultOrganizations []GetClientDefaultOrganization `pulumi:"defaultOrganizations"`
 	// Description of the purpose of the client.
 	Description string `pulumi:"description"`
 	// Encryption used for WS-Fed responses with this client.
@@ -250,6 +252,11 @@ func (o LookupClientResultOutput) CustomLoginPage() pulumi.StringOutput {
 // Indicates whether a custom login page is to be used.
 func (o LookupClientResultOutput) CustomLoginPageOn() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClientResult) bool { return v.CustomLoginPageOn }).(pulumi.BoolOutput)
+}
+
+// Configure and associate an organization with the Client
+func (o LookupClientResultOutput) DefaultOrganizations() GetClientDefaultOrganizationArrayOutput {
+	return o.ApplyT(func(v LookupClientResult) []GetClientDefaultOrganization { return v.DefaultOrganizations }).(GetClientDefaultOrganizationArrayOutput)
 }
 
 // Description of the purpose of the client.

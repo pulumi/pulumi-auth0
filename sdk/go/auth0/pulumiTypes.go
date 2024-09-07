@@ -10446,6 +10446,181 @@ func (o ClientCredentialsPrivateKeyJwtCredentialArrayOutput) Index(i pulumi.IntI
 	}).(ClientCredentialsPrivateKeyJwtCredentialOutput)
 }
 
+type ClientDefaultOrganization struct {
+	// If set, the `defaultOrganization` will be removed.
+	Disable *bool `pulumi:"disable"`
+	// Definition of the flow that needs to be configured. Eg. client_credentials
+	Flows []string `pulumi:"flows"`
+	// The unique identifier of the organization
+	OrganizationId *string `pulumi:"organizationId"`
+}
+
+// ClientDefaultOrganizationInput is an input type that accepts ClientDefaultOrganizationArgs and ClientDefaultOrganizationOutput values.
+// You can construct a concrete instance of `ClientDefaultOrganizationInput` via:
+//
+//	ClientDefaultOrganizationArgs{...}
+type ClientDefaultOrganizationInput interface {
+	pulumi.Input
+
+	ToClientDefaultOrganizationOutput() ClientDefaultOrganizationOutput
+	ToClientDefaultOrganizationOutputWithContext(context.Context) ClientDefaultOrganizationOutput
+}
+
+type ClientDefaultOrganizationArgs struct {
+	// If set, the `defaultOrganization` will be removed.
+	Disable pulumi.BoolPtrInput `pulumi:"disable"`
+	// Definition of the flow that needs to be configured. Eg. client_credentials
+	Flows pulumi.StringArrayInput `pulumi:"flows"`
+	// The unique identifier of the organization
+	OrganizationId pulumi.StringPtrInput `pulumi:"organizationId"`
+}
+
+func (ClientDefaultOrganizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientDefaultOrganization)(nil)).Elem()
+}
+
+func (i ClientDefaultOrganizationArgs) ToClientDefaultOrganizationOutput() ClientDefaultOrganizationOutput {
+	return i.ToClientDefaultOrganizationOutputWithContext(context.Background())
+}
+
+func (i ClientDefaultOrganizationArgs) ToClientDefaultOrganizationOutputWithContext(ctx context.Context) ClientDefaultOrganizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientDefaultOrganizationOutput)
+}
+
+func (i ClientDefaultOrganizationArgs) ToClientDefaultOrganizationPtrOutput() ClientDefaultOrganizationPtrOutput {
+	return i.ToClientDefaultOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (i ClientDefaultOrganizationArgs) ToClientDefaultOrganizationPtrOutputWithContext(ctx context.Context) ClientDefaultOrganizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientDefaultOrganizationOutput).ToClientDefaultOrganizationPtrOutputWithContext(ctx)
+}
+
+// ClientDefaultOrganizationPtrInput is an input type that accepts ClientDefaultOrganizationArgs, ClientDefaultOrganizationPtr and ClientDefaultOrganizationPtrOutput values.
+// You can construct a concrete instance of `ClientDefaultOrganizationPtrInput` via:
+//
+//	        ClientDefaultOrganizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientDefaultOrganizationPtrInput interface {
+	pulumi.Input
+
+	ToClientDefaultOrganizationPtrOutput() ClientDefaultOrganizationPtrOutput
+	ToClientDefaultOrganizationPtrOutputWithContext(context.Context) ClientDefaultOrganizationPtrOutput
+}
+
+type clientDefaultOrganizationPtrType ClientDefaultOrganizationArgs
+
+func ClientDefaultOrganizationPtr(v *ClientDefaultOrganizationArgs) ClientDefaultOrganizationPtrInput {
+	return (*clientDefaultOrganizationPtrType)(v)
+}
+
+func (*clientDefaultOrganizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientDefaultOrganization)(nil)).Elem()
+}
+
+func (i *clientDefaultOrganizationPtrType) ToClientDefaultOrganizationPtrOutput() ClientDefaultOrganizationPtrOutput {
+	return i.ToClientDefaultOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (i *clientDefaultOrganizationPtrType) ToClientDefaultOrganizationPtrOutputWithContext(ctx context.Context) ClientDefaultOrganizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientDefaultOrganizationPtrOutput)
+}
+
+type ClientDefaultOrganizationOutput struct{ *pulumi.OutputState }
+
+func (ClientDefaultOrganizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientDefaultOrganization)(nil)).Elem()
+}
+
+func (o ClientDefaultOrganizationOutput) ToClientDefaultOrganizationOutput() ClientDefaultOrganizationOutput {
+	return o
+}
+
+func (o ClientDefaultOrganizationOutput) ToClientDefaultOrganizationOutputWithContext(ctx context.Context) ClientDefaultOrganizationOutput {
+	return o
+}
+
+func (o ClientDefaultOrganizationOutput) ToClientDefaultOrganizationPtrOutput() ClientDefaultOrganizationPtrOutput {
+	return o.ToClientDefaultOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (o ClientDefaultOrganizationOutput) ToClientDefaultOrganizationPtrOutputWithContext(ctx context.Context) ClientDefaultOrganizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientDefaultOrganization) *ClientDefaultOrganization {
+		return &v
+	}).(ClientDefaultOrganizationPtrOutput)
+}
+
+// If set, the `defaultOrganization` will be removed.
+func (o ClientDefaultOrganizationOutput) Disable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientDefaultOrganization) *bool { return v.Disable }).(pulumi.BoolPtrOutput)
+}
+
+// Definition of the flow that needs to be configured. Eg. client_credentials
+func (o ClientDefaultOrganizationOutput) Flows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientDefaultOrganization) []string { return v.Flows }).(pulumi.StringArrayOutput)
+}
+
+// The unique identifier of the organization
+func (o ClientDefaultOrganizationOutput) OrganizationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientDefaultOrganization) *string { return v.OrganizationId }).(pulumi.StringPtrOutput)
+}
+
+type ClientDefaultOrganizationPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientDefaultOrganizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientDefaultOrganization)(nil)).Elem()
+}
+
+func (o ClientDefaultOrganizationPtrOutput) ToClientDefaultOrganizationPtrOutput() ClientDefaultOrganizationPtrOutput {
+	return o
+}
+
+func (o ClientDefaultOrganizationPtrOutput) ToClientDefaultOrganizationPtrOutputWithContext(ctx context.Context) ClientDefaultOrganizationPtrOutput {
+	return o
+}
+
+func (o ClientDefaultOrganizationPtrOutput) Elem() ClientDefaultOrganizationOutput {
+	return o.ApplyT(func(v *ClientDefaultOrganization) ClientDefaultOrganization {
+		if v != nil {
+			return *v
+		}
+		var ret ClientDefaultOrganization
+		return ret
+	}).(ClientDefaultOrganizationOutput)
+}
+
+// If set, the `defaultOrganization` will be removed.
+func (o ClientDefaultOrganizationPtrOutput) Disable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientDefaultOrganization) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Definition of the flow that needs to be configured. Eg. client_credentials
+func (o ClientDefaultOrganizationPtrOutput) Flows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientDefaultOrganization) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Flows
+	}).(pulumi.StringArrayOutput)
+}
+
+// The unique identifier of the organization
+func (o ClientDefaultOrganizationPtrOutput) OrganizationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientDefaultOrganization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationId
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClientJwtConfiguration struct {
 	// Algorithm used to sign JWTs.
 	Alg *string `pulumi:"alg"`
@@ -21707,6 +21882,440 @@ func (o PagesLoginPtrOutput) Html() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type PromptScreenPartialInsertionPoints struct {
+	// Content that goes at the end of the form.
+	FormContentEnd *string `pulumi:"formContentEnd"`
+	// Content that goes at the start of the form.
+	FormContentStart *string `pulumi:"formContentStart"`
+	// Footer content for the end of the footer.
+	FormFooterEnd *string `pulumi:"formFooterEnd"`
+	// Footer content for the start of the footer.
+	FormFooterStart *string `pulumi:"formFooterStart"`
+	// Actions that go at the end of secondary actions.
+	SecondaryActionsEnd *string `pulumi:"secondaryActionsEnd"`
+	// Actions that go at the start of secondary actions.
+	SecondaryActionsStart *string `pulumi:"secondaryActionsStart"`
+}
+
+// PromptScreenPartialInsertionPointsInput is an input type that accepts PromptScreenPartialInsertionPointsArgs and PromptScreenPartialInsertionPointsOutput values.
+// You can construct a concrete instance of `PromptScreenPartialInsertionPointsInput` via:
+//
+//	PromptScreenPartialInsertionPointsArgs{...}
+type PromptScreenPartialInsertionPointsInput interface {
+	pulumi.Input
+
+	ToPromptScreenPartialInsertionPointsOutput() PromptScreenPartialInsertionPointsOutput
+	ToPromptScreenPartialInsertionPointsOutputWithContext(context.Context) PromptScreenPartialInsertionPointsOutput
+}
+
+type PromptScreenPartialInsertionPointsArgs struct {
+	// Content that goes at the end of the form.
+	FormContentEnd pulumi.StringPtrInput `pulumi:"formContentEnd"`
+	// Content that goes at the start of the form.
+	FormContentStart pulumi.StringPtrInput `pulumi:"formContentStart"`
+	// Footer content for the end of the footer.
+	FormFooterEnd pulumi.StringPtrInput `pulumi:"formFooterEnd"`
+	// Footer content for the start of the footer.
+	FormFooterStart pulumi.StringPtrInput `pulumi:"formFooterStart"`
+	// Actions that go at the end of secondary actions.
+	SecondaryActionsEnd pulumi.StringPtrInput `pulumi:"secondaryActionsEnd"`
+	// Actions that go at the start of secondary actions.
+	SecondaryActionsStart pulumi.StringPtrInput `pulumi:"secondaryActionsStart"`
+}
+
+func (PromptScreenPartialInsertionPointsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PromptScreenPartialInsertionPoints)(nil)).Elem()
+}
+
+func (i PromptScreenPartialInsertionPointsArgs) ToPromptScreenPartialInsertionPointsOutput() PromptScreenPartialInsertionPointsOutput {
+	return i.ToPromptScreenPartialInsertionPointsOutputWithContext(context.Background())
+}
+
+func (i PromptScreenPartialInsertionPointsArgs) ToPromptScreenPartialInsertionPointsOutputWithContext(ctx context.Context) PromptScreenPartialInsertionPointsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PromptScreenPartialInsertionPointsOutput)
+}
+
+func (i PromptScreenPartialInsertionPointsArgs) ToPromptScreenPartialInsertionPointsPtrOutput() PromptScreenPartialInsertionPointsPtrOutput {
+	return i.ToPromptScreenPartialInsertionPointsPtrOutputWithContext(context.Background())
+}
+
+func (i PromptScreenPartialInsertionPointsArgs) ToPromptScreenPartialInsertionPointsPtrOutputWithContext(ctx context.Context) PromptScreenPartialInsertionPointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PromptScreenPartialInsertionPointsOutput).ToPromptScreenPartialInsertionPointsPtrOutputWithContext(ctx)
+}
+
+// PromptScreenPartialInsertionPointsPtrInput is an input type that accepts PromptScreenPartialInsertionPointsArgs, PromptScreenPartialInsertionPointsPtr and PromptScreenPartialInsertionPointsPtrOutput values.
+// You can construct a concrete instance of `PromptScreenPartialInsertionPointsPtrInput` via:
+//
+//	        PromptScreenPartialInsertionPointsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PromptScreenPartialInsertionPointsPtrInput interface {
+	pulumi.Input
+
+	ToPromptScreenPartialInsertionPointsPtrOutput() PromptScreenPartialInsertionPointsPtrOutput
+	ToPromptScreenPartialInsertionPointsPtrOutputWithContext(context.Context) PromptScreenPartialInsertionPointsPtrOutput
+}
+
+type promptScreenPartialInsertionPointsPtrType PromptScreenPartialInsertionPointsArgs
+
+func PromptScreenPartialInsertionPointsPtr(v *PromptScreenPartialInsertionPointsArgs) PromptScreenPartialInsertionPointsPtrInput {
+	return (*promptScreenPartialInsertionPointsPtrType)(v)
+}
+
+func (*promptScreenPartialInsertionPointsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PromptScreenPartialInsertionPoints)(nil)).Elem()
+}
+
+func (i *promptScreenPartialInsertionPointsPtrType) ToPromptScreenPartialInsertionPointsPtrOutput() PromptScreenPartialInsertionPointsPtrOutput {
+	return i.ToPromptScreenPartialInsertionPointsPtrOutputWithContext(context.Background())
+}
+
+func (i *promptScreenPartialInsertionPointsPtrType) ToPromptScreenPartialInsertionPointsPtrOutputWithContext(ctx context.Context) PromptScreenPartialInsertionPointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PromptScreenPartialInsertionPointsPtrOutput)
+}
+
+type PromptScreenPartialInsertionPointsOutput struct{ *pulumi.OutputState }
+
+func (PromptScreenPartialInsertionPointsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PromptScreenPartialInsertionPoints)(nil)).Elem()
+}
+
+func (o PromptScreenPartialInsertionPointsOutput) ToPromptScreenPartialInsertionPointsOutput() PromptScreenPartialInsertionPointsOutput {
+	return o
+}
+
+func (o PromptScreenPartialInsertionPointsOutput) ToPromptScreenPartialInsertionPointsOutputWithContext(ctx context.Context) PromptScreenPartialInsertionPointsOutput {
+	return o
+}
+
+func (o PromptScreenPartialInsertionPointsOutput) ToPromptScreenPartialInsertionPointsPtrOutput() PromptScreenPartialInsertionPointsPtrOutput {
+	return o.ToPromptScreenPartialInsertionPointsPtrOutputWithContext(context.Background())
+}
+
+func (o PromptScreenPartialInsertionPointsOutput) ToPromptScreenPartialInsertionPointsPtrOutputWithContext(ctx context.Context) PromptScreenPartialInsertionPointsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PromptScreenPartialInsertionPoints) *PromptScreenPartialInsertionPoints {
+		return &v
+	}).(PromptScreenPartialInsertionPointsPtrOutput)
+}
+
+// Content that goes at the end of the form.
+func (o PromptScreenPartialInsertionPointsOutput) FormContentEnd() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromptScreenPartialInsertionPoints) *string { return v.FormContentEnd }).(pulumi.StringPtrOutput)
+}
+
+// Content that goes at the start of the form.
+func (o PromptScreenPartialInsertionPointsOutput) FormContentStart() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromptScreenPartialInsertionPoints) *string { return v.FormContentStart }).(pulumi.StringPtrOutput)
+}
+
+// Footer content for the end of the footer.
+func (o PromptScreenPartialInsertionPointsOutput) FormFooterEnd() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromptScreenPartialInsertionPoints) *string { return v.FormFooterEnd }).(pulumi.StringPtrOutput)
+}
+
+// Footer content for the start of the footer.
+func (o PromptScreenPartialInsertionPointsOutput) FormFooterStart() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromptScreenPartialInsertionPoints) *string { return v.FormFooterStart }).(pulumi.StringPtrOutput)
+}
+
+// Actions that go at the end of secondary actions.
+func (o PromptScreenPartialInsertionPointsOutput) SecondaryActionsEnd() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromptScreenPartialInsertionPoints) *string { return v.SecondaryActionsEnd }).(pulumi.StringPtrOutput)
+}
+
+// Actions that go at the start of secondary actions.
+func (o PromptScreenPartialInsertionPointsOutput) SecondaryActionsStart() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromptScreenPartialInsertionPoints) *string { return v.SecondaryActionsStart }).(pulumi.StringPtrOutput)
+}
+
+type PromptScreenPartialInsertionPointsPtrOutput struct{ *pulumi.OutputState }
+
+func (PromptScreenPartialInsertionPointsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PromptScreenPartialInsertionPoints)(nil)).Elem()
+}
+
+func (o PromptScreenPartialInsertionPointsPtrOutput) ToPromptScreenPartialInsertionPointsPtrOutput() PromptScreenPartialInsertionPointsPtrOutput {
+	return o
+}
+
+func (o PromptScreenPartialInsertionPointsPtrOutput) ToPromptScreenPartialInsertionPointsPtrOutputWithContext(ctx context.Context) PromptScreenPartialInsertionPointsPtrOutput {
+	return o
+}
+
+func (o PromptScreenPartialInsertionPointsPtrOutput) Elem() PromptScreenPartialInsertionPointsOutput {
+	return o.ApplyT(func(v *PromptScreenPartialInsertionPoints) PromptScreenPartialInsertionPoints {
+		if v != nil {
+			return *v
+		}
+		var ret PromptScreenPartialInsertionPoints
+		return ret
+	}).(PromptScreenPartialInsertionPointsOutput)
+}
+
+// Content that goes at the end of the form.
+func (o PromptScreenPartialInsertionPointsPtrOutput) FormContentEnd() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PromptScreenPartialInsertionPoints) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FormContentEnd
+	}).(pulumi.StringPtrOutput)
+}
+
+// Content that goes at the start of the form.
+func (o PromptScreenPartialInsertionPointsPtrOutput) FormContentStart() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PromptScreenPartialInsertionPoints) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FormContentStart
+	}).(pulumi.StringPtrOutput)
+}
+
+// Footer content for the end of the footer.
+func (o PromptScreenPartialInsertionPointsPtrOutput) FormFooterEnd() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PromptScreenPartialInsertionPoints) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FormFooterEnd
+	}).(pulumi.StringPtrOutput)
+}
+
+// Footer content for the start of the footer.
+func (o PromptScreenPartialInsertionPointsPtrOutput) FormFooterStart() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PromptScreenPartialInsertionPoints) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FormFooterStart
+	}).(pulumi.StringPtrOutput)
+}
+
+// Actions that go at the end of secondary actions.
+func (o PromptScreenPartialInsertionPointsPtrOutput) SecondaryActionsEnd() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PromptScreenPartialInsertionPoints) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryActionsEnd
+	}).(pulumi.StringPtrOutput)
+}
+
+// Actions that go at the start of secondary actions.
+func (o PromptScreenPartialInsertionPointsPtrOutput) SecondaryActionsStart() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PromptScreenPartialInsertionPoints) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryActionsStart
+	}).(pulumi.StringPtrOutput)
+}
+
+type PromptScreenPartialsScreenPartial struct {
+	InsertionPoints PromptScreenPartialsScreenPartialInsertionPoints `pulumi:"insertionPoints"`
+	// The name of the screen associated with the partials
+	ScreenName string `pulumi:"screenName"`
+}
+
+// PromptScreenPartialsScreenPartialInput is an input type that accepts PromptScreenPartialsScreenPartialArgs and PromptScreenPartialsScreenPartialOutput values.
+// You can construct a concrete instance of `PromptScreenPartialsScreenPartialInput` via:
+//
+//	PromptScreenPartialsScreenPartialArgs{...}
+type PromptScreenPartialsScreenPartialInput interface {
+	pulumi.Input
+
+	ToPromptScreenPartialsScreenPartialOutput() PromptScreenPartialsScreenPartialOutput
+	ToPromptScreenPartialsScreenPartialOutputWithContext(context.Context) PromptScreenPartialsScreenPartialOutput
+}
+
+type PromptScreenPartialsScreenPartialArgs struct {
+	InsertionPoints PromptScreenPartialsScreenPartialInsertionPointsInput `pulumi:"insertionPoints"`
+	// The name of the screen associated with the partials
+	ScreenName pulumi.StringInput `pulumi:"screenName"`
+}
+
+func (PromptScreenPartialsScreenPartialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PromptScreenPartialsScreenPartial)(nil)).Elem()
+}
+
+func (i PromptScreenPartialsScreenPartialArgs) ToPromptScreenPartialsScreenPartialOutput() PromptScreenPartialsScreenPartialOutput {
+	return i.ToPromptScreenPartialsScreenPartialOutputWithContext(context.Background())
+}
+
+func (i PromptScreenPartialsScreenPartialArgs) ToPromptScreenPartialsScreenPartialOutputWithContext(ctx context.Context) PromptScreenPartialsScreenPartialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PromptScreenPartialsScreenPartialOutput)
+}
+
+// PromptScreenPartialsScreenPartialArrayInput is an input type that accepts PromptScreenPartialsScreenPartialArray and PromptScreenPartialsScreenPartialArrayOutput values.
+// You can construct a concrete instance of `PromptScreenPartialsScreenPartialArrayInput` via:
+//
+//	PromptScreenPartialsScreenPartialArray{ PromptScreenPartialsScreenPartialArgs{...} }
+type PromptScreenPartialsScreenPartialArrayInput interface {
+	pulumi.Input
+
+	ToPromptScreenPartialsScreenPartialArrayOutput() PromptScreenPartialsScreenPartialArrayOutput
+	ToPromptScreenPartialsScreenPartialArrayOutputWithContext(context.Context) PromptScreenPartialsScreenPartialArrayOutput
+}
+
+type PromptScreenPartialsScreenPartialArray []PromptScreenPartialsScreenPartialInput
+
+func (PromptScreenPartialsScreenPartialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PromptScreenPartialsScreenPartial)(nil)).Elem()
+}
+
+func (i PromptScreenPartialsScreenPartialArray) ToPromptScreenPartialsScreenPartialArrayOutput() PromptScreenPartialsScreenPartialArrayOutput {
+	return i.ToPromptScreenPartialsScreenPartialArrayOutputWithContext(context.Background())
+}
+
+func (i PromptScreenPartialsScreenPartialArray) ToPromptScreenPartialsScreenPartialArrayOutputWithContext(ctx context.Context) PromptScreenPartialsScreenPartialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PromptScreenPartialsScreenPartialArrayOutput)
+}
+
+type PromptScreenPartialsScreenPartialOutput struct{ *pulumi.OutputState }
+
+func (PromptScreenPartialsScreenPartialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PromptScreenPartialsScreenPartial)(nil)).Elem()
+}
+
+func (o PromptScreenPartialsScreenPartialOutput) ToPromptScreenPartialsScreenPartialOutput() PromptScreenPartialsScreenPartialOutput {
+	return o
+}
+
+func (o PromptScreenPartialsScreenPartialOutput) ToPromptScreenPartialsScreenPartialOutputWithContext(ctx context.Context) PromptScreenPartialsScreenPartialOutput {
+	return o
+}
+
+func (o PromptScreenPartialsScreenPartialOutput) InsertionPoints() PromptScreenPartialsScreenPartialInsertionPointsOutput {
+	return o.ApplyT(func(v PromptScreenPartialsScreenPartial) PromptScreenPartialsScreenPartialInsertionPoints {
+		return v.InsertionPoints
+	}).(PromptScreenPartialsScreenPartialInsertionPointsOutput)
+}
+
+// The name of the screen associated with the partials
+func (o PromptScreenPartialsScreenPartialOutput) ScreenName() pulumi.StringOutput {
+	return o.ApplyT(func(v PromptScreenPartialsScreenPartial) string { return v.ScreenName }).(pulumi.StringOutput)
+}
+
+type PromptScreenPartialsScreenPartialArrayOutput struct{ *pulumi.OutputState }
+
+func (PromptScreenPartialsScreenPartialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PromptScreenPartialsScreenPartial)(nil)).Elem()
+}
+
+func (o PromptScreenPartialsScreenPartialArrayOutput) ToPromptScreenPartialsScreenPartialArrayOutput() PromptScreenPartialsScreenPartialArrayOutput {
+	return o
+}
+
+func (o PromptScreenPartialsScreenPartialArrayOutput) ToPromptScreenPartialsScreenPartialArrayOutputWithContext(ctx context.Context) PromptScreenPartialsScreenPartialArrayOutput {
+	return o
+}
+
+func (o PromptScreenPartialsScreenPartialArrayOutput) Index(i pulumi.IntInput) PromptScreenPartialsScreenPartialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PromptScreenPartialsScreenPartial {
+		return vs[0].([]PromptScreenPartialsScreenPartial)[vs[1].(int)]
+	}).(PromptScreenPartialsScreenPartialOutput)
+}
+
+type PromptScreenPartialsScreenPartialInsertionPoints struct {
+	// Content that goes at the end of the form.
+	FormContentEnd *string `pulumi:"formContentEnd"`
+	// Content that goes at the start of the form.
+	FormContentStart *string `pulumi:"formContentStart"`
+	// Footer content for the end of the footer.
+	FormFooterEnd *string `pulumi:"formFooterEnd"`
+	// Footer content for the start of the footer.
+	FormFooterStart *string `pulumi:"formFooterStart"`
+	// Actions that go at the end of secondary actions.
+	SecondaryActionsEnd *string `pulumi:"secondaryActionsEnd"`
+	// Actions that go at the start of secondary actions.
+	SecondaryActionsStart *string `pulumi:"secondaryActionsStart"`
+}
+
+// PromptScreenPartialsScreenPartialInsertionPointsInput is an input type that accepts PromptScreenPartialsScreenPartialInsertionPointsArgs and PromptScreenPartialsScreenPartialInsertionPointsOutput values.
+// You can construct a concrete instance of `PromptScreenPartialsScreenPartialInsertionPointsInput` via:
+//
+//	PromptScreenPartialsScreenPartialInsertionPointsArgs{...}
+type PromptScreenPartialsScreenPartialInsertionPointsInput interface {
+	pulumi.Input
+
+	ToPromptScreenPartialsScreenPartialInsertionPointsOutput() PromptScreenPartialsScreenPartialInsertionPointsOutput
+	ToPromptScreenPartialsScreenPartialInsertionPointsOutputWithContext(context.Context) PromptScreenPartialsScreenPartialInsertionPointsOutput
+}
+
+type PromptScreenPartialsScreenPartialInsertionPointsArgs struct {
+	// Content that goes at the end of the form.
+	FormContentEnd pulumi.StringPtrInput `pulumi:"formContentEnd"`
+	// Content that goes at the start of the form.
+	FormContentStart pulumi.StringPtrInput `pulumi:"formContentStart"`
+	// Footer content for the end of the footer.
+	FormFooterEnd pulumi.StringPtrInput `pulumi:"formFooterEnd"`
+	// Footer content for the start of the footer.
+	FormFooterStart pulumi.StringPtrInput `pulumi:"formFooterStart"`
+	// Actions that go at the end of secondary actions.
+	SecondaryActionsEnd pulumi.StringPtrInput `pulumi:"secondaryActionsEnd"`
+	// Actions that go at the start of secondary actions.
+	SecondaryActionsStart pulumi.StringPtrInput `pulumi:"secondaryActionsStart"`
+}
+
+func (PromptScreenPartialsScreenPartialInsertionPointsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PromptScreenPartialsScreenPartialInsertionPoints)(nil)).Elem()
+}
+
+func (i PromptScreenPartialsScreenPartialInsertionPointsArgs) ToPromptScreenPartialsScreenPartialInsertionPointsOutput() PromptScreenPartialsScreenPartialInsertionPointsOutput {
+	return i.ToPromptScreenPartialsScreenPartialInsertionPointsOutputWithContext(context.Background())
+}
+
+func (i PromptScreenPartialsScreenPartialInsertionPointsArgs) ToPromptScreenPartialsScreenPartialInsertionPointsOutputWithContext(ctx context.Context) PromptScreenPartialsScreenPartialInsertionPointsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PromptScreenPartialsScreenPartialInsertionPointsOutput)
+}
+
+type PromptScreenPartialsScreenPartialInsertionPointsOutput struct{ *pulumi.OutputState }
+
+func (PromptScreenPartialsScreenPartialInsertionPointsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PromptScreenPartialsScreenPartialInsertionPoints)(nil)).Elem()
+}
+
+func (o PromptScreenPartialsScreenPartialInsertionPointsOutput) ToPromptScreenPartialsScreenPartialInsertionPointsOutput() PromptScreenPartialsScreenPartialInsertionPointsOutput {
+	return o
+}
+
+func (o PromptScreenPartialsScreenPartialInsertionPointsOutput) ToPromptScreenPartialsScreenPartialInsertionPointsOutputWithContext(ctx context.Context) PromptScreenPartialsScreenPartialInsertionPointsOutput {
+	return o
+}
+
+// Content that goes at the end of the form.
+func (o PromptScreenPartialsScreenPartialInsertionPointsOutput) FormContentEnd() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromptScreenPartialsScreenPartialInsertionPoints) *string { return v.FormContentEnd }).(pulumi.StringPtrOutput)
+}
+
+// Content that goes at the start of the form.
+func (o PromptScreenPartialsScreenPartialInsertionPointsOutput) FormContentStart() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromptScreenPartialsScreenPartialInsertionPoints) *string { return v.FormContentStart }).(pulumi.StringPtrOutput)
+}
+
+// Footer content for the end of the footer.
+func (o PromptScreenPartialsScreenPartialInsertionPointsOutput) FormFooterEnd() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromptScreenPartialsScreenPartialInsertionPoints) *string { return v.FormFooterEnd }).(pulumi.StringPtrOutput)
+}
+
+// Footer content for the start of the footer.
+func (o PromptScreenPartialsScreenPartialInsertionPointsOutput) FormFooterStart() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromptScreenPartialsScreenPartialInsertionPoints) *string { return v.FormFooterStart }).(pulumi.StringPtrOutput)
+}
+
+// Actions that go at the end of secondary actions.
+func (o PromptScreenPartialsScreenPartialInsertionPointsOutput) SecondaryActionsEnd() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromptScreenPartialsScreenPartialInsertionPoints) *string { return v.SecondaryActionsEnd }).(pulumi.StringPtrOutput)
+}
+
+// Actions that go at the start of secondary actions.
+func (o PromptScreenPartialsScreenPartialInsertionPointsOutput) SecondaryActionsStart() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromptScreenPartialsScreenPartialInsertionPoints) *string { return v.SecondaryActionsStart }).(pulumi.StringPtrOutput)
+}
+
 type ResourceServerScopesScope struct {
 	// User-friendly description of the scope (permission).
 	Description *string `pulumi:"description"`
@@ -29689,6 +30298,121 @@ func (o GetClientAddonZoomArrayOutput) Index(i pulumi.IntInput) GetClientAddonZo
 	}).(GetClientAddonZoomOutput)
 }
 
+type GetClientDefaultOrganization struct {
+	// If set, the `defaultOrganization` will be removed.
+	Disable bool `pulumi:"disable"`
+	// Definition of the flow that needs to be configured. Eg. client_credentials
+	Flows []string `pulumi:"flows"`
+	// The unique identifier of the organization
+	OrganizationId string `pulumi:"organizationId"`
+}
+
+// GetClientDefaultOrganizationInput is an input type that accepts GetClientDefaultOrganizationArgs and GetClientDefaultOrganizationOutput values.
+// You can construct a concrete instance of `GetClientDefaultOrganizationInput` via:
+//
+//	GetClientDefaultOrganizationArgs{...}
+type GetClientDefaultOrganizationInput interface {
+	pulumi.Input
+
+	ToGetClientDefaultOrganizationOutput() GetClientDefaultOrganizationOutput
+	ToGetClientDefaultOrganizationOutputWithContext(context.Context) GetClientDefaultOrganizationOutput
+}
+
+type GetClientDefaultOrganizationArgs struct {
+	// If set, the `defaultOrganization` will be removed.
+	Disable pulumi.BoolInput `pulumi:"disable"`
+	// Definition of the flow that needs to be configured. Eg. client_credentials
+	Flows pulumi.StringArrayInput `pulumi:"flows"`
+	// The unique identifier of the organization
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+}
+
+func (GetClientDefaultOrganizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientDefaultOrganization)(nil)).Elem()
+}
+
+func (i GetClientDefaultOrganizationArgs) ToGetClientDefaultOrganizationOutput() GetClientDefaultOrganizationOutput {
+	return i.ToGetClientDefaultOrganizationOutputWithContext(context.Background())
+}
+
+func (i GetClientDefaultOrganizationArgs) ToGetClientDefaultOrganizationOutputWithContext(ctx context.Context) GetClientDefaultOrganizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientDefaultOrganizationOutput)
+}
+
+// GetClientDefaultOrganizationArrayInput is an input type that accepts GetClientDefaultOrganizationArray and GetClientDefaultOrganizationArrayOutput values.
+// You can construct a concrete instance of `GetClientDefaultOrganizationArrayInput` via:
+//
+//	GetClientDefaultOrganizationArray{ GetClientDefaultOrganizationArgs{...} }
+type GetClientDefaultOrganizationArrayInput interface {
+	pulumi.Input
+
+	ToGetClientDefaultOrganizationArrayOutput() GetClientDefaultOrganizationArrayOutput
+	ToGetClientDefaultOrganizationArrayOutputWithContext(context.Context) GetClientDefaultOrganizationArrayOutput
+}
+
+type GetClientDefaultOrganizationArray []GetClientDefaultOrganizationInput
+
+func (GetClientDefaultOrganizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientDefaultOrganization)(nil)).Elem()
+}
+
+func (i GetClientDefaultOrganizationArray) ToGetClientDefaultOrganizationArrayOutput() GetClientDefaultOrganizationArrayOutput {
+	return i.ToGetClientDefaultOrganizationArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientDefaultOrganizationArray) ToGetClientDefaultOrganizationArrayOutputWithContext(ctx context.Context) GetClientDefaultOrganizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientDefaultOrganizationArrayOutput)
+}
+
+type GetClientDefaultOrganizationOutput struct{ *pulumi.OutputState }
+
+func (GetClientDefaultOrganizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientDefaultOrganization)(nil)).Elem()
+}
+
+func (o GetClientDefaultOrganizationOutput) ToGetClientDefaultOrganizationOutput() GetClientDefaultOrganizationOutput {
+	return o
+}
+
+func (o GetClientDefaultOrganizationOutput) ToGetClientDefaultOrganizationOutputWithContext(ctx context.Context) GetClientDefaultOrganizationOutput {
+	return o
+}
+
+// If set, the `defaultOrganization` will be removed.
+func (o GetClientDefaultOrganizationOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientDefaultOrganization) bool { return v.Disable }).(pulumi.BoolOutput)
+}
+
+// Definition of the flow that needs to be configured. Eg. client_credentials
+func (o GetClientDefaultOrganizationOutput) Flows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientDefaultOrganization) []string { return v.Flows }).(pulumi.StringArrayOutput)
+}
+
+// The unique identifier of the organization
+func (o GetClientDefaultOrganizationOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientDefaultOrganization) string { return v.OrganizationId }).(pulumi.StringOutput)
+}
+
+type GetClientDefaultOrganizationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientDefaultOrganizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientDefaultOrganization)(nil)).Elem()
+}
+
+func (o GetClientDefaultOrganizationArrayOutput) ToGetClientDefaultOrganizationArrayOutput() GetClientDefaultOrganizationArrayOutput {
+	return o
+}
+
+func (o GetClientDefaultOrganizationArrayOutput) ToGetClientDefaultOrganizationArrayOutputWithContext(ctx context.Context) GetClientDefaultOrganizationArrayOutput {
+	return o
+}
+
+func (o GetClientDefaultOrganizationArrayOutput) Index(i pulumi.IntInput) GetClientDefaultOrganizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientDefaultOrganization {
+		return vs[0].([]GetClientDefaultOrganization)[vs[1].(int)]
+	}).(GetClientDefaultOrganizationOutput)
+}
+
 type GetClientJwtConfiguration struct {
 	// Algorithm used to sign JWTs.
 	Alg string `pulumi:"alg"`
@@ -35411,6 +36135,253 @@ func (o GetPagesLoginArrayOutput) Index(i pulumi.IntInput) GetPagesLoginOutput {
 	}).(GetPagesLoginOutput)
 }
 
+type GetPromptScreenPartialsScreenPartial struct {
+	InsertionPoints []GetPromptScreenPartialsScreenPartialInsertionPoint `pulumi:"insertionPoints"`
+	// The name of the screen associated with the partials
+	ScreenName string `pulumi:"screenName"`
+}
+
+// GetPromptScreenPartialsScreenPartialInput is an input type that accepts GetPromptScreenPartialsScreenPartialArgs and GetPromptScreenPartialsScreenPartialOutput values.
+// You can construct a concrete instance of `GetPromptScreenPartialsScreenPartialInput` via:
+//
+//	GetPromptScreenPartialsScreenPartialArgs{...}
+type GetPromptScreenPartialsScreenPartialInput interface {
+	pulumi.Input
+
+	ToGetPromptScreenPartialsScreenPartialOutput() GetPromptScreenPartialsScreenPartialOutput
+	ToGetPromptScreenPartialsScreenPartialOutputWithContext(context.Context) GetPromptScreenPartialsScreenPartialOutput
+}
+
+type GetPromptScreenPartialsScreenPartialArgs struct {
+	InsertionPoints GetPromptScreenPartialsScreenPartialInsertionPointArrayInput `pulumi:"insertionPoints"`
+	// The name of the screen associated with the partials
+	ScreenName pulumi.StringInput `pulumi:"screenName"`
+}
+
+func (GetPromptScreenPartialsScreenPartialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPromptScreenPartialsScreenPartial)(nil)).Elem()
+}
+
+func (i GetPromptScreenPartialsScreenPartialArgs) ToGetPromptScreenPartialsScreenPartialOutput() GetPromptScreenPartialsScreenPartialOutput {
+	return i.ToGetPromptScreenPartialsScreenPartialOutputWithContext(context.Background())
+}
+
+func (i GetPromptScreenPartialsScreenPartialArgs) ToGetPromptScreenPartialsScreenPartialOutputWithContext(ctx context.Context) GetPromptScreenPartialsScreenPartialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPromptScreenPartialsScreenPartialOutput)
+}
+
+// GetPromptScreenPartialsScreenPartialArrayInput is an input type that accepts GetPromptScreenPartialsScreenPartialArray and GetPromptScreenPartialsScreenPartialArrayOutput values.
+// You can construct a concrete instance of `GetPromptScreenPartialsScreenPartialArrayInput` via:
+//
+//	GetPromptScreenPartialsScreenPartialArray{ GetPromptScreenPartialsScreenPartialArgs{...} }
+type GetPromptScreenPartialsScreenPartialArrayInput interface {
+	pulumi.Input
+
+	ToGetPromptScreenPartialsScreenPartialArrayOutput() GetPromptScreenPartialsScreenPartialArrayOutput
+	ToGetPromptScreenPartialsScreenPartialArrayOutputWithContext(context.Context) GetPromptScreenPartialsScreenPartialArrayOutput
+}
+
+type GetPromptScreenPartialsScreenPartialArray []GetPromptScreenPartialsScreenPartialInput
+
+func (GetPromptScreenPartialsScreenPartialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPromptScreenPartialsScreenPartial)(nil)).Elem()
+}
+
+func (i GetPromptScreenPartialsScreenPartialArray) ToGetPromptScreenPartialsScreenPartialArrayOutput() GetPromptScreenPartialsScreenPartialArrayOutput {
+	return i.ToGetPromptScreenPartialsScreenPartialArrayOutputWithContext(context.Background())
+}
+
+func (i GetPromptScreenPartialsScreenPartialArray) ToGetPromptScreenPartialsScreenPartialArrayOutputWithContext(ctx context.Context) GetPromptScreenPartialsScreenPartialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPromptScreenPartialsScreenPartialArrayOutput)
+}
+
+type GetPromptScreenPartialsScreenPartialOutput struct{ *pulumi.OutputState }
+
+func (GetPromptScreenPartialsScreenPartialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPromptScreenPartialsScreenPartial)(nil)).Elem()
+}
+
+func (o GetPromptScreenPartialsScreenPartialOutput) ToGetPromptScreenPartialsScreenPartialOutput() GetPromptScreenPartialsScreenPartialOutput {
+	return o
+}
+
+func (o GetPromptScreenPartialsScreenPartialOutput) ToGetPromptScreenPartialsScreenPartialOutputWithContext(ctx context.Context) GetPromptScreenPartialsScreenPartialOutput {
+	return o
+}
+
+func (o GetPromptScreenPartialsScreenPartialOutput) InsertionPoints() GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput {
+	return o.ApplyT(func(v GetPromptScreenPartialsScreenPartial) []GetPromptScreenPartialsScreenPartialInsertionPoint {
+		return v.InsertionPoints
+	}).(GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput)
+}
+
+// The name of the screen associated with the partials
+func (o GetPromptScreenPartialsScreenPartialOutput) ScreenName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPromptScreenPartialsScreenPartial) string { return v.ScreenName }).(pulumi.StringOutput)
+}
+
+type GetPromptScreenPartialsScreenPartialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPromptScreenPartialsScreenPartialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPromptScreenPartialsScreenPartial)(nil)).Elem()
+}
+
+func (o GetPromptScreenPartialsScreenPartialArrayOutput) ToGetPromptScreenPartialsScreenPartialArrayOutput() GetPromptScreenPartialsScreenPartialArrayOutput {
+	return o
+}
+
+func (o GetPromptScreenPartialsScreenPartialArrayOutput) ToGetPromptScreenPartialsScreenPartialArrayOutputWithContext(ctx context.Context) GetPromptScreenPartialsScreenPartialArrayOutput {
+	return o
+}
+
+func (o GetPromptScreenPartialsScreenPartialArrayOutput) Index(i pulumi.IntInput) GetPromptScreenPartialsScreenPartialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPromptScreenPartialsScreenPartial {
+		return vs[0].([]GetPromptScreenPartialsScreenPartial)[vs[1].(int)]
+	}).(GetPromptScreenPartialsScreenPartialOutput)
+}
+
+type GetPromptScreenPartialsScreenPartialInsertionPoint struct {
+	// Content that goes at the end of the form.
+	FormContentEnd string `pulumi:"formContentEnd"`
+	// Content that goes at the start of the form.
+	FormContentStart string `pulumi:"formContentStart"`
+	// Footer content for the end of the footer.
+	FormFooterEnd string `pulumi:"formFooterEnd"`
+	// Footer content for the start of the footer.
+	FormFooterStart string `pulumi:"formFooterStart"`
+	// Actions that go at the end of secondary actions.
+	SecondaryActionsEnd string `pulumi:"secondaryActionsEnd"`
+	// Actions that go at the start of secondary actions.
+	SecondaryActionsStart string `pulumi:"secondaryActionsStart"`
+}
+
+// GetPromptScreenPartialsScreenPartialInsertionPointInput is an input type that accepts GetPromptScreenPartialsScreenPartialInsertionPointArgs and GetPromptScreenPartialsScreenPartialInsertionPointOutput values.
+// You can construct a concrete instance of `GetPromptScreenPartialsScreenPartialInsertionPointInput` via:
+//
+//	GetPromptScreenPartialsScreenPartialInsertionPointArgs{...}
+type GetPromptScreenPartialsScreenPartialInsertionPointInput interface {
+	pulumi.Input
+
+	ToGetPromptScreenPartialsScreenPartialInsertionPointOutput() GetPromptScreenPartialsScreenPartialInsertionPointOutput
+	ToGetPromptScreenPartialsScreenPartialInsertionPointOutputWithContext(context.Context) GetPromptScreenPartialsScreenPartialInsertionPointOutput
+}
+
+type GetPromptScreenPartialsScreenPartialInsertionPointArgs struct {
+	// Content that goes at the end of the form.
+	FormContentEnd pulumi.StringInput `pulumi:"formContentEnd"`
+	// Content that goes at the start of the form.
+	FormContentStart pulumi.StringInput `pulumi:"formContentStart"`
+	// Footer content for the end of the footer.
+	FormFooterEnd pulumi.StringInput `pulumi:"formFooterEnd"`
+	// Footer content for the start of the footer.
+	FormFooterStart pulumi.StringInput `pulumi:"formFooterStart"`
+	// Actions that go at the end of secondary actions.
+	SecondaryActionsEnd pulumi.StringInput `pulumi:"secondaryActionsEnd"`
+	// Actions that go at the start of secondary actions.
+	SecondaryActionsStart pulumi.StringInput `pulumi:"secondaryActionsStart"`
+}
+
+func (GetPromptScreenPartialsScreenPartialInsertionPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPromptScreenPartialsScreenPartialInsertionPoint)(nil)).Elem()
+}
+
+func (i GetPromptScreenPartialsScreenPartialInsertionPointArgs) ToGetPromptScreenPartialsScreenPartialInsertionPointOutput() GetPromptScreenPartialsScreenPartialInsertionPointOutput {
+	return i.ToGetPromptScreenPartialsScreenPartialInsertionPointOutputWithContext(context.Background())
+}
+
+func (i GetPromptScreenPartialsScreenPartialInsertionPointArgs) ToGetPromptScreenPartialsScreenPartialInsertionPointOutputWithContext(ctx context.Context) GetPromptScreenPartialsScreenPartialInsertionPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPromptScreenPartialsScreenPartialInsertionPointOutput)
+}
+
+// GetPromptScreenPartialsScreenPartialInsertionPointArrayInput is an input type that accepts GetPromptScreenPartialsScreenPartialInsertionPointArray and GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput values.
+// You can construct a concrete instance of `GetPromptScreenPartialsScreenPartialInsertionPointArrayInput` via:
+//
+//	GetPromptScreenPartialsScreenPartialInsertionPointArray{ GetPromptScreenPartialsScreenPartialInsertionPointArgs{...} }
+type GetPromptScreenPartialsScreenPartialInsertionPointArrayInput interface {
+	pulumi.Input
+
+	ToGetPromptScreenPartialsScreenPartialInsertionPointArrayOutput() GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput
+	ToGetPromptScreenPartialsScreenPartialInsertionPointArrayOutputWithContext(context.Context) GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput
+}
+
+type GetPromptScreenPartialsScreenPartialInsertionPointArray []GetPromptScreenPartialsScreenPartialInsertionPointInput
+
+func (GetPromptScreenPartialsScreenPartialInsertionPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPromptScreenPartialsScreenPartialInsertionPoint)(nil)).Elem()
+}
+
+func (i GetPromptScreenPartialsScreenPartialInsertionPointArray) ToGetPromptScreenPartialsScreenPartialInsertionPointArrayOutput() GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput {
+	return i.ToGetPromptScreenPartialsScreenPartialInsertionPointArrayOutputWithContext(context.Background())
+}
+
+func (i GetPromptScreenPartialsScreenPartialInsertionPointArray) ToGetPromptScreenPartialsScreenPartialInsertionPointArrayOutputWithContext(ctx context.Context) GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput)
+}
+
+type GetPromptScreenPartialsScreenPartialInsertionPointOutput struct{ *pulumi.OutputState }
+
+func (GetPromptScreenPartialsScreenPartialInsertionPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPromptScreenPartialsScreenPartialInsertionPoint)(nil)).Elem()
+}
+
+func (o GetPromptScreenPartialsScreenPartialInsertionPointOutput) ToGetPromptScreenPartialsScreenPartialInsertionPointOutput() GetPromptScreenPartialsScreenPartialInsertionPointOutput {
+	return o
+}
+
+func (o GetPromptScreenPartialsScreenPartialInsertionPointOutput) ToGetPromptScreenPartialsScreenPartialInsertionPointOutputWithContext(ctx context.Context) GetPromptScreenPartialsScreenPartialInsertionPointOutput {
+	return o
+}
+
+// Content that goes at the end of the form.
+func (o GetPromptScreenPartialsScreenPartialInsertionPointOutput) FormContentEnd() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPromptScreenPartialsScreenPartialInsertionPoint) string { return v.FormContentEnd }).(pulumi.StringOutput)
+}
+
+// Content that goes at the start of the form.
+func (o GetPromptScreenPartialsScreenPartialInsertionPointOutput) FormContentStart() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPromptScreenPartialsScreenPartialInsertionPoint) string { return v.FormContentStart }).(pulumi.StringOutput)
+}
+
+// Footer content for the end of the footer.
+func (o GetPromptScreenPartialsScreenPartialInsertionPointOutput) FormFooterEnd() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPromptScreenPartialsScreenPartialInsertionPoint) string { return v.FormFooterEnd }).(pulumi.StringOutput)
+}
+
+// Footer content for the start of the footer.
+func (o GetPromptScreenPartialsScreenPartialInsertionPointOutput) FormFooterStart() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPromptScreenPartialsScreenPartialInsertionPoint) string { return v.FormFooterStart }).(pulumi.StringOutput)
+}
+
+// Actions that go at the end of secondary actions.
+func (o GetPromptScreenPartialsScreenPartialInsertionPointOutput) SecondaryActionsEnd() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPromptScreenPartialsScreenPartialInsertionPoint) string { return v.SecondaryActionsEnd }).(pulumi.StringOutput)
+}
+
+// Actions that go at the start of secondary actions.
+func (o GetPromptScreenPartialsScreenPartialInsertionPointOutput) SecondaryActionsStart() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPromptScreenPartialsScreenPartialInsertionPoint) string { return v.SecondaryActionsStart }).(pulumi.StringOutput)
+}
+
+type GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPromptScreenPartialsScreenPartialInsertionPoint)(nil)).Elem()
+}
+
+func (o GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput) ToGetPromptScreenPartialsScreenPartialInsertionPointArrayOutput() GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput {
+	return o
+}
+
+func (o GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput) ToGetPromptScreenPartialsScreenPartialInsertionPointArrayOutputWithContext(ctx context.Context) GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput {
+	return o
+}
+
+func (o GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput) Index(i pulumi.IntInput) GetPromptScreenPartialsScreenPartialInsertionPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPromptScreenPartialsScreenPartialInsertionPoint {
+		return vs[0].([]GetPromptScreenPartialsScreenPartialInsertionPoint)[vs[1].(int)]
+	}).(GetPromptScreenPartialsScreenPartialInsertionPointOutput)
+}
+
 type GetResourceServerScopeType struct {
 	// Description of the permission (scope).
 	Description string `pulumi:"description"`
@@ -36863,6 +37834,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsPrivateKeyJwtPtrInput)(nil)).Elem(), ClientCredentialsPrivateKeyJwtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsPrivateKeyJwtCredentialInput)(nil)).Elem(), ClientCredentialsPrivateKeyJwtCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsPrivateKeyJwtCredentialArrayInput)(nil)).Elem(), ClientCredentialsPrivateKeyJwtCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientDefaultOrganizationInput)(nil)).Elem(), ClientDefaultOrganizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientDefaultOrganizationPtrInput)(nil)).Elem(), ClientDefaultOrganizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientJwtConfigurationInput)(nil)).Elem(), ClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientJwtConfigurationPtrInput)(nil)).Elem(), ClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientMobileInput)(nil)).Elem(), ClientMobileArgs{})
@@ -36983,6 +37956,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesGuardianMfaPtrInput)(nil)).Elem(), PagesGuardianMfaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesLoginInput)(nil)).Elem(), PagesLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesLoginPtrInput)(nil)).Elem(), PagesLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenPartialInsertionPointsInput)(nil)).Elem(), PromptScreenPartialInsertionPointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenPartialInsertionPointsPtrInput)(nil)).Elem(), PromptScreenPartialInsertionPointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenPartialsScreenPartialInput)(nil)).Elem(), PromptScreenPartialsScreenPartialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenPartialsScreenPartialArrayInput)(nil)).Elem(), PromptScreenPartialsScreenPartialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenPartialsScreenPartialInsertionPointsInput)(nil)).Elem(), PromptScreenPartialsScreenPartialInsertionPointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopesScopeInput)(nil)).Elem(), ResourceServerScopesScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopesScopeArrayInput)(nil)).Elem(), ResourceServerScopesScopeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionsPermissionInput)(nil)).Elem(), RolePermissionsPermissionArgs{})
@@ -37105,6 +38083,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonZendeskArrayInput)(nil)).Elem(), GetClientAddonZendeskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonZoomInput)(nil)).Elem(), GetClientAddonZoomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonZoomArrayInput)(nil)).Elem(), GetClientAddonZoomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientDefaultOrganizationInput)(nil)).Elem(), GetClientDefaultOrganizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientDefaultOrganizationArrayInput)(nil)).Elem(), GetClientDefaultOrganizationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientJwtConfigurationInput)(nil)).Elem(), GetClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientJwtConfigurationArrayInput)(nil)).Elem(), GetClientJwtConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientMobileInput)(nil)).Elem(), GetClientMobileArgs{})
@@ -37197,6 +38177,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesGuardianMfaArrayInput)(nil)).Elem(), GetPagesGuardianMfaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesLoginInput)(nil)).Elem(), GetPagesLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesLoginArrayInput)(nil)).Elem(), GetPagesLoginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenPartialsScreenPartialInput)(nil)).Elem(), GetPromptScreenPartialsScreenPartialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenPartialsScreenPartialArrayInput)(nil)).Elem(), GetPromptScreenPartialsScreenPartialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenPartialsScreenPartialInsertionPointInput)(nil)).Elem(), GetPromptScreenPartialsScreenPartialInsertionPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenPartialsScreenPartialInsertionPointArrayInput)(nil)).Elem(), GetPromptScreenPartialsScreenPartialInsertionPointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeTypeInput)(nil)).Elem(), GetResourceServerScopeTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeTypeArrayInput)(nil)).Elem(), GetResourceServerScopeTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionTypeInput)(nil)).Elem(), GetRolePermissionTypeArgs{})
@@ -37329,6 +38313,8 @@ func init() {
 	pulumi.RegisterOutputType(ClientCredentialsPrivateKeyJwtPtrOutput{})
 	pulumi.RegisterOutputType(ClientCredentialsPrivateKeyJwtCredentialOutput{})
 	pulumi.RegisterOutputType(ClientCredentialsPrivateKeyJwtCredentialArrayOutput{})
+	pulumi.RegisterOutputType(ClientDefaultOrganizationOutput{})
+	pulumi.RegisterOutputType(ClientDefaultOrganizationPtrOutput{})
 	pulumi.RegisterOutputType(ClientJwtConfigurationOutput{})
 	pulumi.RegisterOutputType(ClientJwtConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ClientMobileOutput{})
@@ -37449,6 +38435,11 @@ func init() {
 	pulumi.RegisterOutputType(PagesGuardianMfaPtrOutput{})
 	pulumi.RegisterOutputType(PagesLoginOutput{})
 	pulumi.RegisterOutputType(PagesLoginPtrOutput{})
+	pulumi.RegisterOutputType(PromptScreenPartialInsertionPointsOutput{})
+	pulumi.RegisterOutputType(PromptScreenPartialInsertionPointsPtrOutput{})
+	pulumi.RegisterOutputType(PromptScreenPartialsScreenPartialOutput{})
+	pulumi.RegisterOutputType(PromptScreenPartialsScreenPartialArrayOutput{})
+	pulumi.RegisterOutputType(PromptScreenPartialsScreenPartialInsertionPointsOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopesScopeOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopesScopeArrayOutput{})
 	pulumi.RegisterOutputType(RolePermissionsPermissionOutput{})
@@ -37571,6 +38562,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClientAddonZendeskArrayOutput{})
 	pulumi.RegisterOutputType(GetClientAddonZoomOutput{})
 	pulumi.RegisterOutputType(GetClientAddonZoomArrayOutput{})
+	pulumi.RegisterOutputType(GetClientDefaultOrganizationOutput{})
+	pulumi.RegisterOutputType(GetClientDefaultOrganizationArrayOutput{})
 	pulumi.RegisterOutputType(GetClientJwtConfigurationOutput{})
 	pulumi.RegisterOutputType(GetClientJwtConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetClientMobileOutput{})
@@ -37663,6 +38656,10 @@ func init() {
 	pulumi.RegisterOutputType(GetPagesGuardianMfaArrayOutput{})
 	pulumi.RegisterOutputType(GetPagesLoginOutput{})
 	pulumi.RegisterOutputType(GetPagesLoginArrayOutput{})
+	pulumi.RegisterOutputType(GetPromptScreenPartialsScreenPartialOutput{})
+	pulumi.RegisterOutputType(GetPromptScreenPartialsScreenPartialArrayOutput{})
+	pulumi.RegisterOutputType(GetPromptScreenPartialsScreenPartialInsertionPointOutput{})
+	pulumi.RegisterOutputType(GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceServerScopeTypeOutput{})
 	pulumi.RegisterOutputType(GetResourceServerScopeTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetRolePermissionTypeOutput{})

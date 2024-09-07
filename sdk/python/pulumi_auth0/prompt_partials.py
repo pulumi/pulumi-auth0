@@ -23,7 +23,7 @@ class PromptPartialsArgs:
                  secondary_actions_start: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PromptPartials resource.
-        :param pulumi.Input[str] prompt: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+        :param pulumi.Input[str] prompt: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
         :param pulumi.Input[str] form_content_end: Content that goes at the end of the form.
         :param pulumi.Input[str] form_content_start: Content that goes at the start of the form.
         :param pulumi.Input[str] form_footer_end: Footer content for the end of the footer.
@@ -31,25 +31,47 @@ class PromptPartialsArgs:
         :param pulumi.Input[str] secondary_actions_end: Actions that go at the end of secondary actions.
         :param pulumi.Input[str] secondary_actions_start: Actions that go at the start of secondary actions.
         """
+        if prompt is not None:
+            warnings.warn("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""", DeprecationWarning)
+            pulumi.log.warn("""prompt is deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
         pulumi.set(__self__, "prompt", prompt)
+        if form_content_end is not None:
+            warnings.warn("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""", DeprecationWarning)
+            pulumi.log.warn("""form_content_end is deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
         if form_content_end is not None:
             pulumi.set(__self__, "form_content_end", form_content_end)
         if form_content_start is not None:
+            warnings.warn("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""", DeprecationWarning)
+            pulumi.log.warn("""form_content_start is deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
+        if form_content_start is not None:
             pulumi.set(__self__, "form_content_start", form_content_start)
+        if form_footer_end is not None:
+            warnings.warn("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""", DeprecationWarning)
+            pulumi.log.warn("""form_footer_end is deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
         if form_footer_end is not None:
             pulumi.set(__self__, "form_footer_end", form_footer_end)
         if form_footer_start is not None:
+            warnings.warn("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""", DeprecationWarning)
+            pulumi.log.warn("""form_footer_start is deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
+        if form_footer_start is not None:
             pulumi.set(__self__, "form_footer_start", form_footer_start)
         if secondary_actions_end is not None:
+            warnings.warn("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""", DeprecationWarning)
+            pulumi.log.warn("""secondary_actions_end is deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
+        if secondary_actions_end is not None:
             pulumi.set(__self__, "secondary_actions_end", secondary_actions_end)
+        if secondary_actions_start is not None:
+            warnings.warn("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""", DeprecationWarning)
+            pulumi.log.warn("""secondary_actions_start is deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
         if secondary_actions_start is not None:
             pulumi.set(__self__, "secondary_actions_start", secondary_actions_start)
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def prompt(self) -> pulumi.Input[str]:
         """
-        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
         """
         return pulumi.get(self, "prompt")
 
@@ -59,6 +81,7 @@ class PromptPartialsArgs:
 
     @property
     @pulumi.getter(name="formContentEnd")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def form_content_end(self) -> Optional[pulumi.Input[str]]:
         """
         Content that goes at the end of the form.
@@ -71,6 +94,7 @@ class PromptPartialsArgs:
 
     @property
     @pulumi.getter(name="formContentStart")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def form_content_start(self) -> Optional[pulumi.Input[str]]:
         """
         Content that goes at the start of the form.
@@ -83,6 +107,7 @@ class PromptPartialsArgs:
 
     @property
     @pulumi.getter(name="formFooterEnd")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def form_footer_end(self) -> Optional[pulumi.Input[str]]:
         """
         Footer content for the end of the footer.
@@ -95,6 +120,7 @@ class PromptPartialsArgs:
 
     @property
     @pulumi.getter(name="formFooterStart")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def form_footer_start(self) -> Optional[pulumi.Input[str]]:
         """
         Footer content for the start of the footer.
@@ -107,6 +133,7 @@ class PromptPartialsArgs:
 
     @property
     @pulumi.getter(name="secondaryActionsEnd")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def secondary_actions_end(self) -> Optional[pulumi.Input[str]]:
         """
         Actions that go at the end of secondary actions.
@@ -119,6 +146,7 @@ class PromptPartialsArgs:
 
     @property
     @pulumi.getter(name="secondaryActionsStart")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def secondary_actions_start(self) -> Optional[pulumi.Input[str]]:
         """
         Actions that go at the start of secondary actions.
@@ -146,27 +174,49 @@ class _PromptPartialsState:
         :param pulumi.Input[str] form_content_start: Content that goes at the start of the form.
         :param pulumi.Input[str] form_footer_end: Footer content for the end of the footer.
         :param pulumi.Input[str] form_footer_start: Footer content for the start of the footer.
-        :param pulumi.Input[str] prompt: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+        :param pulumi.Input[str] prompt: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
         :param pulumi.Input[str] secondary_actions_end: Actions that go at the end of secondary actions.
         :param pulumi.Input[str] secondary_actions_start: Actions that go at the start of secondary actions.
         """
         if form_content_end is not None:
+            warnings.warn("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""", DeprecationWarning)
+            pulumi.log.warn("""form_content_end is deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
+        if form_content_end is not None:
             pulumi.set(__self__, "form_content_end", form_content_end)
+        if form_content_start is not None:
+            warnings.warn("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""", DeprecationWarning)
+            pulumi.log.warn("""form_content_start is deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
         if form_content_start is not None:
             pulumi.set(__self__, "form_content_start", form_content_start)
         if form_footer_end is not None:
+            warnings.warn("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""", DeprecationWarning)
+            pulumi.log.warn("""form_footer_end is deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
+        if form_footer_end is not None:
             pulumi.set(__self__, "form_footer_end", form_footer_end)
+        if form_footer_start is not None:
+            warnings.warn("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""", DeprecationWarning)
+            pulumi.log.warn("""form_footer_start is deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
         if form_footer_start is not None:
             pulumi.set(__self__, "form_footer_start", form_footer_start)
         if prompt is not None:
+            warnings.warn("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""", DeprecationWarning)
+            pulumi.log.warn("""prompt is deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
+        if prompt is not None:
             pulumi.set(__self__, "prompt", prompt)
         if secondary_actions_end is not None:
+            warnings.warn("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""", DeprecationWarning)
+            pulumi.log.warn("""secondary_actions_end is deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
+        if secondary_actions_end is not None:
             pulumi.set(__self__, "secondary_actions_end", secondary_actions_end)
+        if secondary_actions_start is not None:
+            warnings.warn("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""", DeprecationWarning)
+            pulumi.log.warn("""secondary_actions_start is deprecated: This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
         if secondary_actions_start is not None:
             pulumi.set(__self__, "secondary_actions_start", secondary_actions_start)
 
     @property
     @pulumi.getter(name="formContentEnd")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def form_content_end(self) -> Optional[pulumi.Input[str]]:
         """
         Content that goes at the end of the form.
@@ -179,6 +229,7 @@ class _PromptPartialsState:
 
     @property
     @pulumi.getter(name="formContentStart")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def form_content_start(self) -> Optional[pulumi.Input[str]]:
         """
         Content that goes at the start of the form.
@@ -191,6 +242,7 @@ class _PromptPartialsState:
 
     @property
     @pulumi.getter(name="formFooterEnd")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def form_footer_end(self) -> Optional[pulumi.Input[str]]:
         """
         Footer content for the end of the footer.
@@ -203,6 +255,7 @@ class _PromptPartialsState:
 
     @property
     @pulumi.getter(name="formFooterStart")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def form_footer_start(self) -> Optional[pulumi.Input[str]]:
         """
         Footer content for the start of the footer.
@@ -215,9 +268,10 @@ class _PromptPartialsState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def prompt(self) -> Optional[pulumi.Input[str]]:
         """
-        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
         """
         return pulumi.get(self, "prompt")
 
@@ -227,6 +281,7 @@ class _PromptPartialsState:
 
     @property
     @pulumi.getter(name="secondaryActionsEnd")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def secondary_actions_end(self) -> Optional[pulumi.Input[str]]:
         """
         Actions that go at the end of secondary actions.
@@ -239,6 +294,7 @@ class _PromptPartialsState:
 
     @property
     @pulumi.getter(name="secondaryActionsStart")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def secondary_actions_start(self) -> Optional[pulumi.Input[str]]:
         """
         Actions that go at the start of secondary actions.
@@ -265,6 +321,9 @@ class PromptPartials(pulumi.CustomResource):
                  __props__=None):
         """
         With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).
+
+        !> **Deprecated:** `PromptPartials` has been deprecated. Please use `PromptScreenPartials` for managing multiple
+        prompt screens or `PromptScreenPartial` for managing a single prompt screen.
 
         ## Example Usage
 
@@ -300,7 +359,7 @@ class PromptPartials(pulumi.CustomResource):
         :param pulumi.Input[str] form_content_start: Content that goes at the start of the form.
         :param pulumi.Input[str] form_footer_end: Footer content for the end of the footer.
         :param pulumi.Input[str] form_footer_start: Footer content for the start of the footer.
-        :param pulumi.Input[str] prompt: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+        :param pulumi.Input[str] prompt: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
         :param pulumi.Input[str] secondary_actions_end: Actions that go at the end of secondary actions.
         :param pulumi.Input[str] secondary_actions_start: Actions that go at the start of secondary actions.
         """
@@ -312,6 +371,9 @@ class PromptPartials(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).
+
+        !> **Deprecated:** `PromptPartials` has been deprecated. Please use `PromptScreenPartials` for managing multiple
+        prompt screens or `PromptScreenPartial` for managing a single prompt screen.
 
         ## Example Usage
 
@@ -409,7 +471,7 @@ class PromptPartials(pulumi.CustomResource):
         :param pulumi.Input[str] form_content_start: Content that goes at the start of the form.
         :param pulumi.Input[str] form_footer_end: Footer content for the end of the footer.
         :param pulumi.Input[str] form_footer_start: Footer content for the start of the footer.
-        :param pulumi.Input[str] prompt: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+        :param pulumi.Input[str] prompt: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
         :param pulumi.Input[str] secondary_actions_end: Actions that go at the end of secondary actions.
         :param pulumi.Input[str] secondary_actions_start: Actions that go at the start of secondary actions.
         """
@@ -428,6 +490,7 @@ class PromptPartials(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="formContentEnd")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def form_content_end(self) -> pulumi.Output[Optional[str]]:
         """
         Content that goes at the end of the form.
@@ -436,6 +499,7 @@ class PromptPartials(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="formContentStart")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def form_content_start(self) -> pulumi.Output[Optional[str]]:
         """
         Content that goes at the start of the form.
@@ -444,6 +508,7 @@ class PromptPartials(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="formFooterEnd")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def form_footer_end(self) -> pulumi.Output[Optional[str]]:
         """
         Footer content for the end of the footer.
@@ -452,6 +517,7 @@ class PromptPartials(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="formFooterStart")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def form_footer_start(self) -> pulumi.Output[Optional[str]]:
         """
         Footer content for the start of the footer.
@@ -460,14 +526,16 @@ class PromptPartials(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def prompt(self) -> pulumi.Output[str]:
         """
-        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
         """
         return pulumi.get(self, "prompt")
 
     @property
     @pulumi.getter(name="secondaryActionsEnd")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def secondary_actions_end(self) -> pulumi.Output[Optional[str]]:
         """
         Actions that go at the end of secondary actions.
@@ -476,6 +544,7 @@ class PromptPartials(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secondaryActionsStart")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def secondary_actions_start(self) -> pulumi.Output[Optional[str]]:
         """
         Actions that go at the start of secondary actions.

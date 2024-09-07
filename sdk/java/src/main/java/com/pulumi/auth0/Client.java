@@ -7,6 +7,7 @@ import com.pulumi.auth0.ClientArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.ClientState;
 import com.pulumi.auth0.outputs.ClientAddons;
+import com.pulumi.auth0.outputs.ClientDefaultOrganization;
 import com.pulumi.auth0.outputs.ClientJwtConfiguration;
 import com.pulumi.auth0.outputs.ClientMobile;
 import com.pulumi.auth0.outputs.ClientNativeSocialLogin;
@@ -319,6 +320,20 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> customLoginPageOn() {
         return this.customLoginPageOn;
+    }
+    /**
+     * Configure and associate an organization with the Client
+     * 
+     */
+    @Export(name="defaultOrganization", refs={ClientDefaultOrganization.class}, tree="[0]")
+    private Output<ClientDefaultOrganization> defaultOrganization;
+
+    /**
+     * @return Configure and associate an organization with the Client
+     * 
+     */
+    public Output<ClientDefaultOrganization> defaultOrganization() {
+        return this.defaultOrganization;
     }
     /**
      * Description of the purpose of the client.

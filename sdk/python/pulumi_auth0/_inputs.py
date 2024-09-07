@@ -66,6 +66,7 @@ __all__ = [
     'ClientAddonsZoomArgs',
     'ClientCredentialsPrivateKeyJwtArgs',
     'ClientCredentialsPrivateKeyJwtCredentialArgs',
+    'ClientDefaultOrganizationArgs',
     'ClientJwtConfigurationArgs',
     'ClientMobileArgs',
     'ClientMobileAndroidArgs',
@@ -126,6 +127,9 @@ __all__ = [
     'PagesErrorArgs',
     'PagesGuardianMfaArgs',
     'PagesLoginArgs',
+    'PromptScreenPartialInsertionPointsArgs',
+    'PromptScreenPartialsScreenPartialArgs',
+    'PromptScreenPartialsScreenPartialInsertionPointsArgs',
     'ResourceServerScopesScopeArgs',
     'RolePermissionsPermissionArgs',
     'SelfServiceProfileBrandingArgs',
@@ -138,6 +142,8 @@ __all__ = [
     'UserPermissionsPermissionArgs',
     'GetConnectionScimConfigurationDefaultMappingArgs',
     'GetConnectionScimConfigurationMappingArgs',
+    'GetPromptScreenPartialsScreenPartialArgs',
+    'GetPromptScreenPartialsScreenPartialInsertionPointArgs',
 ]
 
 @pulumi.input_type
@@ -3911,6 +3917,61 @@ class ClientCredentialsPrivateKeyJwtCredentialArgs:
     @updated_at.setter
     def updated_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "updated_at", value)
+
+
+@pulumi.input_type
+class ClientDefaultOrganizationArgs:
+    def __init__(__self__, *,
+                 disable: Optional[pulumi.Input[bool]] = None,
+                 flows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] disable: If set, the `default_organization` will be removed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] flows: Definition of the flow that needs to be configured. Eg. client_credentials
+        :param pulumi.Input[str] organization_id: The unique identifier of the organization
+        """
+        if disable is not None:
+            pulumi.set(__self__, "disable", disable)
+        if flows is not None:
+            pulumi.set(__self__, "flows", flows)
+        if organization_id is not None:
+            pulumi.set(__self__, "organization_id", organization_id)
+
+    @property
+    @pulumi.getter
+    def disable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the `default_organization` will be removed.
+        """
+        return pulumi.get(self, "disable")
+
+    @disable.setter
+    def disable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable", value)
+
+    @property
+    @pulumi.getter
+    def flows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Definition of the flow that needs to be configured. Eg. client_credentials
+        """
+        return pulumi.get(self, "flows")
+
+    @flows.setter
+    def flows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "flows", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier of the organization
+        """
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_id", value)
 
 
 @pulumi.input_type
@@ -8536,6 +8597,245 @@ class PagesLoginArgs:
 
 
 @pulumi.input_type
+class PromptScreenPartialInsertionPointsArgs:
+    def __init__(__self__, *,
+                 form_content_end: Optional[pulumi.Input[str]] = None,
+                 form_content_start: Optional[pulumi.Input[str]] = None,
+                 form_footer_end: Optional[pulumi.Input[str]] = None,
+                 form_footer_start: Optional[pulumi.Input[str]] = None,
+                 secondary_actions_end: Optional[pulumi.Input[str]] = None,
+                 secondary_actions_start: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] form_content_end: Content that goes at the end of the form.
+        :param pulumi.Input[str] form_content_start: Content that goes at the start of the form.
+        :param pulumi.Input[str] form_footer_end: Footer content for the end of the footer.
+        :param pulumi.Input[str] form_footer_start: Footer content for the start of the footer.
+        :param pulumi.Input[str] secondary_actions_end: Actions that go at the end of secondary actions.
+        :param pulumi.Input[str] secondary_actions_start: Actions that go at the start of secondary actions.
+        """
+        if form_content_end is not None:
+            pulumi.set(__self__, "form_content_end", form_content_end)
+        if form_content_start is not None:
+            pulumi.set(__self__, "form_content_start", form_content_start)
+        if form_footer_end is not None:
+            pulumi.set(__self__, "form_footer_end", form_footer_end)
+        if form_footer_start is not None:
+            pulumi.set(__self__, "form_footer_start", form_footer_start)
+        if secondary_actions_end is not None:
+            pulumi.set(__self__, "secondary_actions_end", secondary_actions_end)
+        if secondary_actions_start is not None:
+            pulumi.set(__self__, "secondary_actions_start", secondary_actions_start)
+
+    @property
+    @pulumi.getter(name="formContentEnd")
+    def form_content_end(self) -> Optional[pulumi.Input[str]]:
+        """
+        Content that goes at the end of the form.
+        """
+        return pulumi.get(self, "form_content_end")
+
+    @form_content_end.setter
+    def form_content_end(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "form_content_end", value)
+
+    @property
+    @pulumi.getter(name="formContentStart")
+    def form_content_start(self) -> Optional[pulumi.Input[str]]:
+        """
+        Content that goes at the start of the form.
+        """
+        return pulumi.get(self, "form_content_start")
+
+    @form_content_start.setter
+    def form_content_start(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "form_content_start", value)
+
+    @property
+    @pulumi.getter(name="formFooterEnd")
+    def form_footer_end(self) -> Optional[pulumi.Input[str]]:
+        """
+        Footer content for the end of the footer.
+        """
+        return pulumi.get(self, "form_footer_end")
+
+    @form_footer_end.setter
+    def form_footer_end(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "form_footer_end", value)
+
+    @property
+    @pulumi.getter(name="formFooterStart")
+    def form_footer_start(self) -> Optional[pulumi.Input[str]]:
+        """
+        Footer content for the start of the footer.
+        """
+        return pulumi.get(self, "form_footer_start")
+
+    @form_footer_start.setter
+    def form_footer_start(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "form_footer_start", value)
+
+    @property
+    @pulumi.getter(name="secondaryActionsEnd")
+    def secondary_actions_end(self) -> Optional[pulumi.Input[str]]:
+        """
+        Actions that go at the end of secondary actions.
+        """
+        return pulumi.get(self, "secondary_actions_end")
+
+    @secondary_actions_end.setter
+    def secondary_actions_end(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_actions_end", value)
+
+    @property
+    @pulumi.getter(name="secondaryActionsStart")
+    def secondary_actions_start(self) -> Optional[pulumi.Input[str]]:
+        """
+        Actions that go at the start of secondary actions.
+        """
+        return pulumi.get(self, "secondary_actions_start")
+
+    @secondary_actions_start.setter
+    def secondary_actions_start(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_actions_start", value)
+
+
+@pulumi.input_type
+class PromptScreenPartialsScreenPartialArgs:
+    def __init__(__self__, *,
+                 insertion_points: pulumi.Input['PromptScreenPartialsScreenPartialInsertionPointsArgs'],
+                 screen_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] screen_name: The name of the screen associated with the partials
+        """
+        pulumi.set(__self__, "insertion_points", insertion_points)
+        pulumi.set(__self__, "screen_name", screen_name)
+
+    @property
+    @pulumi.getter(name="insertionPoints")
+    def insertion_points(self) -> pulumi.Input['PromptScreenPartialsScreenPartialInsertionPointsArgs']:
+        return pulumi.get(self, "insertion_points")
+
+    @insertion_points.setter
+    def insertion_points(self, value: pulumi.Input['PromptScreenPartialsScreenPartialInsertionPointsArgs']):
+        pulumi.set(self, "insertion_points", value)
+
+    @property
+    @pulumi.getter(name="screenName")
+    def screen_name(self) -> pulumi.Input[str]:
+        """
+        The name of the screen associated with the partials
+        """
+        return pulumi.get(self, "screen_name")
+
+    @screen_name.setter
+    def screen_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "screen_name", value)
+
+
+@pulumi.input_type
+class PromptScreenPartialsScreenPartialInsertionPointsArgs:
+    def __init__(__self__, *,
+                 form_content_end: Optional[pulumi.Input[str]] = None,
+                 form_content_start: Optional[pulumi.Input[str]] = None,
+                 form_footer_end: Optional[pulumi.Input[str]] = None,
+                 form_footer_start: Optional[pulumi.Input[str]] = None,
+                 secondary_actions_end: Optional[pulumi.Input[str]] = None,
+                 secondary_actions_start: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] form_content_end: Content that goes at the end of the form.
+        :param pulumi.Input[str] form_content_start: Content that goes at the start of the form.
+        :param pulumi.Input[str] form_footer_end: Footer content for the end of the footer.
+        :param pulumi.Input[str] form_footer_start: Footer content for the start of the footer.
+        :param pulumi.Input[str] secondary_actions_end: Actions that go at the end of secondary actions.
+        :param pulumi.Input[str] secondary_actions_start: Actions that go at the start of secondary actions.
+        """
+        if form_content_end is not None:
+            pulumi.set(__self__, "form_content_end", form_content_end)
+        if form_content_start is not None:
+            pulumi.set(__self__, "form_content_start", form_content_start)
+        if form_footer_end is not None:
+            pulumi.set(__self__, "form_footer_end", form_footer_end)
+        if form_footer_start is not None:
+            pulumi.set(__self__, "form_footer_start", form_footer_start)
+        if secondary_actions_end is not None:
+            pulumi.set(__self__, "secondary_actions_end", secondary_actions_end)
+        if secondary_actions_start is not None:
+            pulumi.set(__self__, "secondary_actions_start", secondary_actions_start)
+
+    @property
+    @pulumi.getter(name="formContentEnd")
+    def form_content_end(self) -> Optional[pulumi.Input[str]]:
+        """
+        Content that goes at the end of the form.
+        """
+        return pulumi.get(self, "form_content_end")
+
+    @form_content_end.setter
+    def form_content_end(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "form_content_end", value)
+
+    @property
+    @pulumi.getter(name="formContentStart")
+    def form_content_start(self) -> Optional[pulumi.Input[str]]:
+        """
+        Content that goes at the start of the form.
+        """
+        return pulumi.get(self, "form_content_start")
+
+    @form_content_start.setter
+    def form_content_start(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "form_content_start", value)
+
+    @property
+    @pulumi.getter(name="formFooterEnd")
+    def form_footer_end(self) -> Optional[pulumi.Input[str]]:
+        """
+        Footer content for the end of the footer.
+        """
+        return pulumi.get(self, "form_footer_end")
+
+    @form_footer_end.setter
+    def form_footer_end(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "form_footer_end", value)
+
+    @property
+    @pulumi.getter(name="formFooterStart")
+    def form_footer_start(self) -> Optional[pulumi.Input[str]]:
+        """
+        Footer content for the start of the footer.
+        """
+        return pulumi.get(self, "form_footer_start")
+
+    @form_footer_start.setter
+    def form_footer_start(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "form_footer_start", value)
+
+    @property
+    @pulumi.getter(name="secondaryActionsEnd")
+    def secondary_actions_end(self) -> Optional[pulumi.Input[str]]:
+        """
+        Actions that go at the end of secondary actions.
+        """
+        return pulumi.get(self, "secondary_actions_end")
+
+    @secondary_actions_end.setter
+    def secondary_actions_end(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_actions_end", value)
+
+    @property
+    @pulumi.getter(name="secondaryActionsStart")
+    def secondary_actions_start(self) -> Optional[pulumi.Input[str]]:
+        """
+        Actions that go at the start of secondary actions.
+        """
+        return pulumi.get(self, "secondary_actions_start")
+
+    @secondary_actions_start.setter
+    def secondary_actions_start(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_actions_start", value)
+
+
+@pulumi.input_type
 class ResourceServerScopesScopeArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
@@ -9374,5 +9674,135 @@ class GetConnectionScimConfigurationMappingArgs:
     @scim.setter
     def scim(self, value: str):
         pulumi.set(self, "scim", value)
+
+
+@pulumi.input_type
+class GetPromptScreenPartialsScreenPartialArgs:
+    def __init__(__self__, *,
+                 insertion_points: Sequence['GetPromptScreenPartialsScreenPartialInsertionPointArgs'],
+                 screen_name: str):
+        """
+        :param str screen_name: The name of the screen associated with the partials
+        """
+        pulumi.set(__self__, "insertion_points", insertion_points)
+        pulumi.set(__self__, "screen_name", screen_name)
+
+    @property
+    @pulumi.getter(name="insertionPoints")
+    def insertion_points(self) -> Sequence['GetPromptScreenPartialsScreenPartialInsertionPointArgs']:
+        return pulumi.get(self, "insertion_points")
+
+    @insertion_points.setter
+    def insertion_points(self, value: Sequence['GetPromptScreenPartialsScreenPartialInsertionPointArgs']):
+        pulumi.set(self, "insertion_points", value)
+
+    @property
+    @pulumi.getter(name="screenName")
+    def screen_name(self) -> str:
+        """
+        The name of the screen associated with the partials
+        """
+        return pulumi.get(self, "screen_name")
+
+    @screen_name.setter
+    def screen_name(self, value: str):
+        pulumi.set(self, "screen_name", value)
+
+
+@pulumi.input_type
+class GetPromptScreenPartialsScreenPartialInsertionPointArgs:
+    def __init__(__self__, *,
+                 form_content_end: str,
+                 form_content_start: str,
+                 form_footer_end: str,
+                 form_footer_start: str,
+                 secondary_actions_end: str,
+                 secondary_actions_start: str):
+        """
+        :param str form_content_end: Content that goes at the end of the form.
+        :param str form_content_start: Content that goes at the start of the form.
+        :param str form_footer_end: Footer content for the end of the footer.
+        :param str form_footer_start: Footer content for the start of the footer.
+        :param str secondary_actions_end: Actions that go at the end of secondary actions.
+        :param str secondary_actions_start: Actions that go at the start of secondary actions.
+        """
+        pulumi.set(__self__, "form_content_end", form_content_end)
+        pulumi.set(__self__, "form_content_start", form_content_start)
+        pulumi.set(__self__, "form_footer_end", form_footer_end)
+        pulumi.set(__self__, "form_footer_start", form_footer_start)
+        pulumi.set(__self__, "secondary_actions_end", secondary_actions_end)
+        pulumi.set(__self__, "secondary_actions_start", secondary_actions_start)
+
+    @property
+    @pulumi.getter(name="formContentEnd")
+    def form_content_end(self) -> str:
+        """
+        Content that goes at the end of the form.
+        """
+        return pulumi.get(self, "form_content_end")
+
+    @form_content_end.setter
+    def form_content_end(self, value: str):
+        pulumi.set(self, "form_content_end", value)
+
+    @property
+    @pulumi.getter(name="formContentStart")
+    def form_content_start(self) -> str:
+        """
+        Content that goes at the start of the form.
+        """
+        return pulumi.get(self, "form_content_start")
+
+    @form_content_start.setter
+    def form_content_start(self, value: str):
+        pulumi.set(self, "form_content_start", value)
+
+    @property
+    @pulumi.getter(name="formFooterEnd")
+    def form_footer_end(self) -> str:
+        """
+        Footer content for the end of the footer.
+        """
+        return pulumi.get(self, "form_footer_end")
+
+    @form_footer_end.setter
+    def form_footer_end(self, value: str):
+        pulumi.set(self, "form_footer_end", value)
+
+    @property
+    @pulumi.getter(name="formFooterStart")
+    def form_footer_start(self) -> str:
+        """
+        Footer content for the start of the footer.
+        """
+        return pulumi.get(self, "form_footer_start")
+
+    @form_footer_start.setter
+    def form_footer_start(self, value: str):
+        pulumi.set(self, "form_footer_start", value)
+
+    @property
+    @pulumi.getter(name="secondaryActionsEnd")
+    def secondary_actions_end(self) -> str:
+        """
+        Actions that go at the end of secondary actions.
+        """
+        return pulumi.get(self, "secondary_actions_end")
+
+    @secondary_actions_end.setter
+    def secondary_actions_end(self, value: str):
+        pulumi.set(self, "secondary_actions_end", value)
+
+    @property
+    @pulumi.getter(name="secondaryActionsStart")
+    def secondary_actions_start(self) -> str:
+        """
+        Actions that go at the start of secondary actions.
+        """
+        return pulumi.get(self, "secondary_actions_start")
+
+    @secondary_actions_start.setter
+    def secondary_actions_start(self, value: str):
+        pulumi.set(self, "secondary_actions_start", value)
 
 

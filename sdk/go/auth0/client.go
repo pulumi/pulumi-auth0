@@ -146,6 +146,8 @@ type Client struct {
 	CustomLoginPage pulumi.StringPtrOutput `pulumi:"customLoginPage"`
 	// Indicates whether a custom login page is to be used.
 	CustomLoginPageOn pulumi.BoolOutput `pulumi:"customLoginPageOn"`
+	// Configure and associate an organization with the Client
+	DefaultOrganization ClientDefaultOrganizationOutput `pulumi:"defaultOrganization"`
 	// Description of the purpose of the client.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Encryption used for WS-Fed responses with this client.
@@ -255,6 +257,8 @@ type clientState struct {
 	CustomLoginPage *string `pulumi:"customLoginPage"`
 	// Indicates whether a custom login page is to be used.
 	CustomLoginPageOn *bool `pulumi:"customLoginPageOn"`
+	// Configure and associate an organization with the Client
+	DefaultOrganization *ClientDefaultOrganization `pulumi:"defaultOrganization"`
 	// Description of the purpose of the client.
 	Description *string `pulumi:"description"`
 	// Encryption used for WS-Fed responses with this client.
@@ -328,6 +332,8 @@ type ClientState struct {
 	CustomLoginPage pulumi.StringPtrInput
 	// Indicates whether a custom login page is to be used.
 	CustomLoginPageOn pulumi.BoolPtrInput
+	// Configure and associate an organization with the Client
+	DefaultOrganization ClientDefaultOrganizationPtrInput
 	// Description of the purpose of the client.
 	Description pulumi.StringPtrInput
 	// Encryption used for WS-Fed responses with this client.
@@ -403,6 +409,8 @@ type clientArgs struct {
 	CustomLoginPage *string `pulumi:"customLoginPage"`
 	// Indicates whether a custom login page is to be used.
 	CustomLoginPageOn *bool `pulumi:"customLoginPageOn"`
+	// Configure and associate an organization with the Client
+	DefaultOrganization *ClientDefaultOrganization `pulumi:"defaultOrganization"`
 	// Description of the purpose of the client.
 	Description *string `pulumi:"description"`
 	// Encryption used for WS-Fed responses with this client.
@@ -473,6 +481,8 @@ type ClientArgs struct {
 	CustomLoginPage pulumi.StringPtrInput
 	// Indicates whether a custom login page is to be used.
 	CustomLoginPageOn pulumi.BoolPtrInput
+	// Configure and associate an organization with the Client
+	DefaultOrganization ClientDefaultOrganizationPtrInput
 	// Description of the purpose of the client.
 	Description pulumi.StringPtrInput
 	// Encryption used for WS-Fed responses with this client.
@@ -667,6 +677,11 @@ func (o ClientOutput) CustomLoginPage() pulumi.StringPtrOutput {
 // Indicates whether a custom login page is to be used.
 func (o ClientOutput) CustomLoginPageOn() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Client) pulumi.BoolOutput { return v.CustomLoginPageOn }).(pulumi.BoolOutput)
+}
+
+// Configure and associate an organization with the Client
+func (o ClientOutput) DefaultOrganization() ClientDefaultOrganizationOutput {
+	return o.ApplyT(func(v *Client) ClientDefaultOrganizationOutput { return v.DefaultOrganization }).(ClientDefaultOrganizationOutput)
 }
 
 // Description of the purpose of the client.

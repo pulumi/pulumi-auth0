@@ -210,6 +210,12 @@ namespace Pulumi.Auth0
         public Output<bool> CustomLoginPageOn { get; private set; } = null!;
 
         /// <summary>
+        /// Configure and associate an organization with the Client
+        /// </summary>
+        [Output("defaultOrganization")]
+        public Output<Outputs.ClientDefaultOrganization> DefaultOrganization { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the purpose of the client.
         /// </summary>
         [Output("description")]
@@ -500,6 +506,12 @@ namespace Pulumi.Auth0
         public Input<bool>? CustomLoginPageOn { get; set; }
 
         /// <summary>
+        /// Configure and associate an organization with the Client
+        /// </summary>
+        [Input("defaultOrganization")]
+        public Input<Inputs.ClientDefaultOrganizationArgs>? DefaultOrganization { get; set; }
+
+        /// <summary>
         /// Description of the purpose of the client.
         /// </summary>
         [Input("description")]
@@ -771,6 +783,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("customLoginPageOn")]
         public Input<bool>? CustomLoginPageOn { get; set; }
+
+        /// <summary>
+        /// Configure and associate an organization with the Client
+        /// </summary>
+        [Input("defaultOrganization")]
+        public Input<Inputs.ClientDefaultOrganizationGetArgs>? DefaultOrganization { get; set; }
 
         /// <summary>
         /// Description of the purpose of the client.
