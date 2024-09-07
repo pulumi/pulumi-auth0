@@ -265,6 +265,16 @@
                     "client_aliases": {
                         "maxItemsOne": false
                     },
+                    "default_organization": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "flows": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "grant_types": {
                         "maxItemsOne": false
                     },
@@ -716,6 +726,31 @@
                 "current": "auth0:index/promptPartials:PromptPartials",
                 "majorVersion": 3
             },
+            "auth0_prompt_screen_partial": {
+                "current": "auth0:index/promptScreenPartial:PromptScreenPartial",
+                "majorVersion": 3,
+                "fields": {
+                    "insertion_points": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "auth0_prompt_screen_partials": {
+                "current": "auth0:index/promptScreenPartials:PromptScreenPartials",
+                "majorVersion": 3,
+                "fields": {
+                    "screen_partials": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "insertion_points": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "auth0_resource_server": {
                 "current": "auth0:index/resourceServer:ResourceServer",
                 "majorVersion": 3
@@ -1092,6 +1127,16 @@
                     "client_aliases": {
                         "maxItemsOne": false
                     },
+                    "default_organization": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "flows": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "grant_types": {
                         "maxItemsOne": false
                     },
@@ -1363,6 +1408,22 @@
                     },
                     "login": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_prompt_screen_partials": {
+                "current": "auth0:index/getPromptScreenPartials:getPromptScreenPartials",
+                "majorVersion": 3,
+                "fields": {
+                    "screen_partials": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "insertion_points": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
