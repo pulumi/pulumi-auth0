@@ -12,6 +12,9 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).
     /// 
+    /// !&gt; **Deprecated:** `auth0.PromptPartials` has been deprecated. Please use `auth0.PromptScreenPartials` for managing multiple
+    /// prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -76,7 +79,7 @@ namespace Pulumi.Auth0
         public Output<string?> FormFooterStart { get; private set; } = null!;
 
         /// <summary>
-        /// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+        /// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
         /// </summary>
         [Output("prompt")]
         public Output<string> Prompt { get; private set; } = null!;
@@ -164,7 +167,7 @@ namespace Pulumi.Auth0
         public Input<string>? FormFooterStart { get; set; }
 
         /// <summary>
-        /// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+        /// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
         /// </summary>
         [Input("prompt", required: true)]
         public Input<string> Prompt { get; set; } = null!;
@@ -214,7 +217,7 @@ namespace Pulumi.Auth0
         public Input<string>? FormFooterStart { get; set; }
 
         /// <summary>
-        /// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+        /// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
         /// </summary>
         [Input("prompt")]
         public Input<string>? Prompt { get; set; }

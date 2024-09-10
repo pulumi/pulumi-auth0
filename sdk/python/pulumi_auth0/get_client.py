@@ -22,7 +22,7 @@ class GetClientResult:
     """
     A collection of values returned by getClient.
     """
-    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_aliases=None, client_id=None, client_metadata=None, client_secret=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_pushed_authorization_requests=None, signing_keys=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, web_origins=None):
+    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_aliases=None, client_id=None, client_metadata=None, client_secret=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_pushed_authorization_requests=None, signing_keys=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
@@ -65,6 +65,9 @@ class GetClientResult:
         if custom_login_page_on and not isinstance(custom_login_page_on, bool):
             raise TypeError("Expected argument 'custom_login_page_on' to be a bool")
         pulumi.set(__self__, "custom_login_page_on", custom_login_page_on)
+        if default_organizations and not isinstance(default_organizations, list):
+            raise TypeError("Expected argument 'default_organizations' to be a list")
+        pulumi.set(__self__, "default_organizations", default_organizations)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -246,6 +249,14 @@ class GetClientResult:
         Indicates whether a custom login page is to be used.
         """
         return pulumi.get(self, "custom_login_page_on")
+
+    @property
+    @pulumi.getter(name="defaultOrganizations")
+    def default_organizations(self) -> Sequence['outputs.GetClientDefaultOrganizationResult']:
+        """
+        Configure and associate an organization with the Client
+        """
+        return pulumi.get(self, "default_organizations")
 
     @property
     @pulumi.getter
@@ -460,6 +471,7 @@ class AwaitableGetClientResult(GetClientResult):
             cross_origin_loc=self.cross_origin_loc,
             custom_login_page=self.custom_login_page,
             custom_login_page_on=self.custom_login_page_on,
+            default_organizations=self.default_organizations,
             description=self.description,
             encryption_key=self.encryption_key,
             form_template=self.form_template,
@@ -529,6 +541,7 @@ def get_client(client_id: Optional[str] = None,
         cross_origin_loc=pulumi.get(__ret__, 'cross_origin_loc'),
         custom_login_page=pulumi.get(__ret__, 'custom_login_page'),
         custom_login_page_on=pulumi.get(__ret__, 'custom_login_page_on'),
+        default_organizations=pulumi.get(__ret__, 'default_organizations'),
         description=pulumi.get(__ret__, 'description'),
         encryption_key=pulumi.get(__ret__, 'encryption_key'),
         form_template=pulumi.get(__ret__, 'form_template'),

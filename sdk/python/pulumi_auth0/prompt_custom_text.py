@@ -20,7 +20,7 @@ class PromptCustomTextArgs:
         """
         The set of arguments for constructing a PromptCustomText resource.
         :param pulumi.Input[str] body: JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values).
-        :param pulumi.Input[str] language: Language of the custom text. Options include: `ar`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `eu-ES`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
+        :param pulumi.Input[str] language: Language of the custom text. Options include: `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `ms`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sq`, `sr`, `sv`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zh-CN`, `zh-HK`, `zh-TW`.
         :param pulumi.Input[str] prompt: The term `prompt` is used to refer to a specific step in the login flow. Options include: `captcha`, `common`, `consent`, `custom-form`, `customized-consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-email-verification`, `login-id`, `login-password`, `login-passwordless`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `passkeys`, `phone-identifier-challenge`, `phone-identifier-enrollment`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.
         """
         pulumi.set(__self__, "body", body)
@@ -43,7 +43,7 @@ class PromptCustomTextArgs:
     @pulumi.getter
     def language(self) -> pulumi.Input[str]:
         """
-        Language of the custom text. Options include: `ar`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `eu-ES`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
+        Language of the custom text. Options include: `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `ms`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sq`, `sr`, `sv`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zh-CN`, `zh-HK`, `zh-TW`.
         """
         return pulumi.get(self, "language")
 
@@ -73,7 +73,7 @@ class _PromptCustomTextState:
         """
         Input properties used for looking up and filtering PromptCustomText resources.
         :param pulumi.Input[str] body: JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values).
-        :param pulumi.Input[str] language: Language of the custom text. Options include: `ar`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `eu-ES`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
+        :param pulumi.Input[str] language: Language of the custom text. Options include: `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `ms`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sq`, `sr`, `sv`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zh-CN`, `zh-HK`, `zh-TW`.
         :param pulumi.Input[str] prompt: The term `prompt` is used to refer to a specific step in the login flow. Options include: `captcha`, `common`, `consent`, `custom-form`, `customized-consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-email-verification`, `login-id`, `login-password`, `login-passwordless`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `passkeys`, `phone-identifier-challenge`, `phone-identifier-enrollment`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.
         """
         if body is not None:
@@ -99,7 +99,7 @@ class _PromptCustomTextState:
     @pulumi.getter
     def language(self) -> Optional[pulumi.Input[str]]:
         """
-        Language of the custom text. Options include: `ar`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `eu-ES`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
+        Language of the custom text. Options include: `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `ms`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sq`, `sr`, `sv`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zh-CN`, `zh-HK`, `zh-TW`.
         """
         return pulumi.get(self, "language")
 
@@ -186,7 +186,7 @@ class PromptCustomText(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] body: JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values).
-        :param pulumi.Input[str] language: Language of the custom text. Options include: `ar`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `eu-ES`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
+        :param pulumi.Input[str] language: Language of the custom text. Options include: `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `ms`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sq`, `sr`, `sv`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zh-CN`, `zh-HK`, `zh-TW`.
         :param pulumi.Input[str] prompt: The term `prompt` is used to refer to a specific step in the login flow. Options include: `captcha`, `common`, `consent`, `custom-form`, `customized-consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-email-verification`, `login-id`, `login-password`, `login-passwordless`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `passkeys`, `phone-identifier-challenge`, `phone-identifier-enrollment`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.
         """
         ...
@@ -306,7 +306,7 @@ class PromptCustomText(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] body: JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values).
-        :param pulumi.Input[str] language: Language of the custom text. Options include: `ar`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `eu-ES`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
+        :param pulumi.Input[str] language: Language of the custom text. Options include: `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `ms`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sq`, `sr`, `sv`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zh-CN`, `zh-HK`, `zh-TW`.
         :param pulumi.Input[str] prompt: The term `prompt` is used to refer to a specific step in the login flow. Options include: `captcha`, `common`, `consent`, `custom-form`, `customized-consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-email-verification`, `login-id`, `login-password`, `login-passwordless`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `passkeys`, `phone-identifier-challenge`, `phone-identifier-enrollment`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -330,7 +330,7 @@ class PromptCustomText(pulumi.CustomResource):
     @pulumi.getter
     def language(self) -> pulumi.Output[str]:
         """
-        Language of the custom text. Options include: `ar`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `eu-ES`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
+        Language of the custom text. Options include: `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `ms`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sq`, `sr`, `sv`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zh-CN`, `zh-HK`, `zh-TW`.
         """
         return pulumi.get(self, "language")
 

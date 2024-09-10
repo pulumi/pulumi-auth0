@@ -107,6 +107,10 @@ export interface GetClientResult {
      */
     readonly customLoginPageOn: boolean;
     /**
+     * Configure and associate an organization with the Client
+     */
+    readonly defaultOrganizations: outputs.GetClientDefaultOrganization[];
+    /**
      * Description of the purpose of the client.
      */
     readonly description: string;

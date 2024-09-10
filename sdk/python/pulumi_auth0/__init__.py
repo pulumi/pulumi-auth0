@@ -29,6 +29,7 @@ from .get_connection_scim_configuration import *
 from .get_custom_domain import *
 from .get_organization import *
 from .get_pages import *
+from .get_prompt_screen_partials import *
 from .get_resource_server import *
 from .get_role import *
 from .get_self_service_profile import *
@@ -49,6 +50,8 @@ from .pages import *
 from .prompt import *
 from .prompt_custom_text import *
 from .prompt_partials import *
+from .prompt_screen_partial import *
+from .prompt_screen_partials import *
 from .provider import *
 from .resource_server import *
 from .resource_server_scope import *
@@ -310,6 +313,22 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/promptPartials:PromptPartials": "PromptPartials"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/promptScreenPartial",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/promptScreenPartial:PromptScreenPartial": "PromptScreenPartial"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/promptScreenPartials",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/promptScreenPartials:PromptScreenPartials": "PromptScreenPartials"
   }
  },
  {

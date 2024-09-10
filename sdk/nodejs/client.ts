@@ -174,6 +174,10 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly customLoginPageOn!: pulumi.Output<boolean>;
     /**
+     * Configure and associate an organization with the Client
+     */
+    public readonly defaultOrganization!: pulumi.Output<outputs.ClientDefaultOrganization>;
+    /**
      * Description of the purpose of the client.
      */
     public readonly description!: pulumi.Output<string>;
@@ -288,6 +292,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["crossOriginLoc"] = state ? state.crossOriginLoc : undefined;
             resourceInputs["customLoginPage"] = state ? state.customLoginPage : undefined;
             resourceInputs["customLoginPageOn"] = state ? state.customLoginPageOn : undefined;
+            resourceInputs["defaultOrganization"] = state ? state.defaultOrganization : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             resourceInputs["formTemplate"] = state ? state.formTemplate : undefined;
@@ -324,6 +329,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["crossOriginLoc"] = args ? args.crossOriginLoc : undefined;
             resourceInputs["customLoginPage"] = args ? args.customLoginPage : undefined;
             resourceInputs["customLoginPageOn"] = args ? args.customLoginPageOn : undefined;
+            resourceInputs["defaultOrganization"] = args ? args.defaultOrganization : undefined;
             resourceInputs["description"] = (args ? args.description : undefined) ?? "Managed by Pulumi";
             resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             resourceInputs["formTemplate"] = args ? args.formTemplate : undefined;
@@ -411,6 +417,10 @@ export interface ClientState {
      * Indicates whether a custom login page is to be used.
      */
     customLoginPageOn?: pulumi.Input<boolean>;
+    /**
+     * Configure and associate an organization with the Client
+     */
+    defaultOrganization?: pulumi.Input<inputs.ClientDefaultOrganization>;
     /**
      * Description of the purpose of the client.
      */
@@ -553,6 +563,10 @@ export interface ClientArgs {
      * Indicates whether a custom login page is to be used.
      */
     customLoginPageOn?: pulumi.Input<boolean>;
+    /**
+     * Configure and associate an organization with the Client
+     */
+    defaultOrganization?: pulumi.Input<inputs.ClientDefaultOrganization>;
     /**
      * Description of the purpose of the client.
      */

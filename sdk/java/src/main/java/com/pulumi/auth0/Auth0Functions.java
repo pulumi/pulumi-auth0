@@ -12,6 +12,8 @@ import com.pulumi.auth0.inputs.GetConnectionScimConfigurationArgs;
 import com.pulumi.auth0.inputs.GetConnectionScimConfigurationPlainArgs;
 import com.pulumi.auth0.inputs.GetOrganizationArgs;
 import com.pulumi.auth0.inputs.GetOrganizationPlainArgs;
+import com.pulumi.auth0.inputs.GetPromptScreenPartialsArgs;
+import com.pulumi.auth0.inputs.GetPromptScreenPartialsPlainArgs;
 import com.pulumi.auth0.inputs.GetResourceServerArgs;
 import com.pulumi.auth0.inputs.GetResourceServerPlainArgs;
 import com.pulumi.auth0.inputs.GetRoleArgs;
@@ -29,6 +31,7 @@ import com.pulumi.auth0.outputs.GetConnectionScimConfigurationResult;
 import com.pulumi.auth0.outputs.GetCustomDomainResult;
 import com.pulumi.auth0.outputs.GetOrganizationResult;
 import com.pulumi.auth0.outputs.GetPagesResult;
+import com.pulumi.auth0.outputs.GetPromptScreenPartialsResult;
 import com.pulumi.auth0.outputs.GetResourceServerResult;
 import com.pulumi.auth0.outputs.GetRoleResult;
 import com.pulumi.auth0.outputs.GetSelfServiceProfileResult;
@@ -2148,6 +2151,174 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetPagesResult> getPagesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getPages:getPages", TypeShape.of(GetPagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetPromptScreenPartialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var promptScreenPartials = Auth0Functions.getPromptScreenPartials(GetPromptScreenPartialsArgs.builder()
+     *             .promptType("prompt-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPromptScreenPartialsResult> getPromptScreenPartials(GetPromptScreenPartialsArgs args) {
+        return getPromptScreenPartials(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetPromptScreenPartialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var promptScreenPartials = Auth0Functions.getPromptScreenPartials(GetPromptScreenPartialsArgs.builder()
+     *             .promptType("prompt-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPromptScreenPartialsResult> getPromptScreenPartialsPlain(GetPromptScreenPartialsPlainArgs args) {
+        return getPromptScreenPartialsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetPromptScreenPartialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var promptScreenPartials = Auth0Functions.getPromptScreenPartials(GetPromptScreenPartialsArgs.builder()
+     *             .promptType("prompt-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPromptScreenPartialsResult> getPromptScreenPartials(GetPromptScreenPartialsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getPromptScreenPartials:getPromptScreenPartials", TypeShape.of(GetPromptScreenPartialsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetPromptScreenPartialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var promptScreenPartials = Auth0Functions.getPromptScreenPartials(GetPromptScreenPartialsArgs.builder()
+     *             .promptType("prompt-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPromptScreenPartialsResult> getPromptScreenPartialsPlain(GetPromptScreenPartialsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getPromptScreenPartials:getPromptScreenPartials", TypeShape.of(GetPromptScreenPartialsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.

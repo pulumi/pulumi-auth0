@@ -173,6 +173,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool CustomLoginPageOn;
         /// <summary>
+        /// Configure and associate an organization with the Client
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientDefaultOrganizationResult> DefaultOrganizations;
+        /// <summary>
         /// Description of the purpose of the client.
         /// </summary>
         public readonly string Description;
@@ -299,6 +303,8 @@ namespace Pulumi.Auth0
 
             bool customLoginPageOn,
 
+            ImmutableArray<Outputs.GetClientDefaultOrganizationResult> defaultOrganizations,
+
             string description,
 
             ImmutableDictionary<string, string> encryptionKey,
@@ -361,6 +367,7 @@ namespace Pulumi.Auth0
             CrossOriginLoc = crossOriginLoc;
             CustomLoginPage = customLoginPage;
             CustomLoginPageOn = customLoginPageOn;
+            DefaultOrganizations = defaultOrganizations;
             Description = description;
             EncryptionKey = encryptionKey;
             FormTemplate = formTemplate;

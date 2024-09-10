@@ -1388,6 +1388,26 @@
                 }
             }
         },
+        "auth0:index/ClientDefaultOrganization:ClientDefaultOrganization": {
+            "properties": {
+                "disable": {
+                    "type": "boolean",
+                    "description": "If set, the `default_organization` will be removed.\n"
+                },
+                "flows": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Definition of the flow that needs to be configured. Eg. client_credentials\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "The unique identifier of the organization\n"
+                }
+            },
+            "type": "object"
+        },
         "auth0:index/ClientJwtConfiguration:ClientJwtConfiguration": {
             "properties": {
                 "alg": {
@@ -3102,6 +3122,80 @@
                 "enabled",
                 "html"
             ]
+        },
+        "auth0:index/PromptScreenPartialInsertionPoints:PromptScreenPartialInsertionPoints": {
+            "properties": {
+                "formContentEnd": {
+                    "type": "string",
+                    "description": "Content that goes at the end of the form.\n"
+                },
+                "formContentStart": {
+                    "type": "string",
+                    "description": "Content that goes at the start of the form.\n"
+                },
+                "formFooterEnd": {
+                    "type": "string",
+                    "description": "Footer content for the end of the footer.\n"
+                },
+                "formFooterStart": {
+                    "type": "string",
+                    "description": "Footer content for the start of the footer.\n"
+                },
+                "secondaryActionsEnd": {
+                    "type": "string",
+                    "description": "Actions that go at the end of secondary actions.\n"
+                },
+                "secondaryActionsStart": {
+                    "type": "string",
+                    "description": "Actions that go at the start of secondary actions.\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/PromptScreenPartialsScreenPartial:PromptScreenPartialsScreenPartial": {
+            "properties": {
+                "insertionPoints": {
+                    "$ref": "#/types/auth0:index/PromptScreenPartialsScreenPartialInsertionPoints:PromptScreenPartialsScreenPartialInsertionPoints"
+                },
+                "screenName": {
+                    "type": "string",
+                    "description": "The name of the screen associated with the partials\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "insertionPoints",
+                "screenName"
+            ]
+        },
+        "auth0:index/PromptScreenPartialsScreenPartialInsertionPoints:PromptScreenPartialsScreenPartialInsertionPoints": {
+            "properties": {
+                "formContentEnd": {
+                    "type": "string",
+                    "description": "Content that goes at the end of the form.\n"
+                },
+                "formContentStart": {
+                    "type": "string",
+                    "description": "Content that goes at the start of the form.\n"
+                },
+                "formFooterEnd": {
+                    "type": "string",
+                    "description": "Footer content for the end of the footer.\n"
+                },
+                "formFooterStart": {
+                    "type": "string",
+                    "description": "Footer content for the start of the footer.\n"
+                },
+                "secondaryActionsEnd": {
+                    "type": "string",
+                    "description": "Actions that go at the end of secondary actions.\n"
+                },
+                "secondaryActionsStart": {
+                    "type": "string",
+                    "description": "Actions that go at the start of secondary actions.\n"
+                }
+            },
+            "type": "object"
         },
         "auth0:index/ResourceServerScopesScope:ResourceServerScopesScope": {
             "properties": {
@@ -5111,6 +5205,36 @@
                 }
             }
         },
+        "auth0:index/getClientDefaultOrganization:getClientDefaultOrganization": {
+            "properties": {
+                "disable": {
+                    "type": "boolean",
+                    "description": "If set, the `default_organization` will be removed.\n"
+                },
+                "flows": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Definition of the flow that needs to be configured. Eg. client_credentials\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "The unique identifier of the organization\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "disable",
+                "flows",
+                "organizationId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getClientJwtConfiguration:getClientJwtConfiguration": {
             "properties": {
                 "alg": {
@@ -6734,6 +6858,72 @@
                 }
             }
         },
+        "auth0:index/getPromptScreenPartialsScreenPartial:getPromptScreenPartialsScreenPartial": {
+            "properties": {
+                "insertionPoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getPromptScreenPartialsScreenPartialInsertionPoint:getPromptScreenPartialsScreenPartialInsertionPoint"
+                    }
+                },
+                "screenName": {
+                    "type": "string",
+                    "description": "The name of the screen associated with the partials\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "insertionPoints",
+                "screenName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getPromptScreenPartialsScreenPartialInsertionPoint:getPromptScreenPartialsScreenPartialInsertionPoint": {
+            "properties": {
+                "formContentEnd": {
+                    "type": "string",
+                    "description": "Content that goes at the end of the form.\n"
+                },
+                "formContentStart": {
+                    "type": "string",
+                    "description": "Content that goes at the start of the form.\n"
+                },
+                "formFooterEnd": {
+                    "type": "string",
+                    "description": "Footer content for the end of the footer.\n"
+                },
+                "formFooterStart": {
+                    "type": "string",
+                    "description": "Footer content for the start of the footer.\n"
+                },
+                "secondaryActionsEnd": {
+                    "type": "string",
+                    "description": "Actions that go at the end of secondary actions.\n"
+                },
+                "secondaryActionsStart": {
+                    "type": "string",
+                    "description": "Actions that go at the start of secondary actions.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "formContentEnd",
+                "formContentStart",
+                "formFooterEnd",
+                "formFooterStart",
+                "secondaryActionsEnd",
+                "secondaryActionsStart"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getResourceServerScope:getResourceServerScope": {
             "properties": {
                 "description": {
@@ -7598,6 +7788,10 @@
                     "type": "boolean",
                     "description": "Indicates whether a custom login page is to be used.\n"
                 },
+                "defaultOrganization": {
+                    "$ref": "#/types/auth0:index/ClientDefaultOrganization:ClientDefaultOrganization",
+                    "description": "Configure and associate an organization with the Client\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "Description of the purpose of the client.\n",
@@ -7710,6 +7904,7 @@
             "required": [
                 "clientId",
                 "customLoginPageOn",
+                "defaultOrganization",
                 "description",
                 "grantTypes",
                 "isFirstParty",
@@ -7788,6 +7983,10 @@
                 "customLoginPageOn": {
                     "type": "boolean",
                     "description": "Indicates whether a custom login page is to be used.\n"
+                },
+                "defaultOrganization": {
+                    "$ref": "#/types/auth0:index/ClientDefaultOrganization:ClientDefaultOrganization",
+                    "description": "Configure and associate an organization with the Client\n"
                 },
                 "description": {
                     "type": "string",
@@ -7959,6 +8158,10 @@
                     "customLoginPageOn": {
                         "type": "boolean",
                         "description": "Indicates whether a custom login page is to be used.\n"
+                    },
+                    "defaultOrganization": {
+                        "$ref": "#/types/auth0:index/ClientDefaultOrganization:ClientDefaultOrganization",
+                        "description": "Configure and associate an organization with the Client\n"
                     },
                     "description": {
                         "type": "string",
@@ -9953,7 +10156,7 @@
                 },
                 "language": {
                     "type": "string",
-                    "description": "Language of the custom text. Options include: `ar`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `eu-ES`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.\n"
+                    "description": "Language of the custom text. Options include: `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `ms`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sq`, `sr`, `sv`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zh-CN`, `zh-HK`, `zh-TW`.\n"
                 },
                 "prompt": {
                     "type": "string",
@@ -9972,7 +10175,7 @@
                 },
                 "language": {
                     "type": "string",
-                    "description": "Language of the custom text. Options include: `ar`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `eu-ES`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.\n"
+                    "description": "Language of the custom text. Options include: `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `ms`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sq`, `sr`, `sv`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zh-CN`, `zh-HK`, `zh-TW`.\n"
                 },
                 "prompt": {
                     "type": "string",
@@ -9993,7 +10196,7 @@
                     },
                     "language": {
                         "type": "string",
-                        "description": "Language of the custom text. Options include: `ar`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `eu-ES`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.\n"
+                        "description": "Language of the custom text. Options include: `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `ms`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sq`, `sr`, `sv`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zh-CN`, `zh-HK`, `zh-TW`.\n"
                     },
                     "prompt": {
                         "type": "string",
@@ -10004,35 +10207,42 @@
             }
         },
         "auth0:index/promptPartials:PromptPartials": {
-            "description": "With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myLoginPromptPartials = new auth0.PromptPartials(\"my_login_prompt_partials\", {\n    prompt: \"login\",\n    formContentStart: \"\u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\",\n    formContentEnd: \"\u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\",\n    formFooterStart: \"\u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\",\n    formFooterEnd: \"\u003cdiv\u003eUpdated Footer End\u003c/div\u003e\",\n    secondaryActionsStart: \"\u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\",\n    secondaryActionsEnd: \"\u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_login_prompt_partials = auth0.PromptPartials(\"my_login_prompt_partials\",\n    prompt=\"login\",\n    form_content_start=\"\u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\",\n    form_content_end=\"\u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\",\n    form_footer_start=\"\u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\",\n    form_footer_end=\"\u003cdiv\u003eUpdated Footer End\u003c/div\u003e\",\n    secondary_actions_start=\"\u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\",\n    secondary_actions_end=\"\u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myLoginPromptPartials = new Auth0.PromptPartials(\"my_login_prompt_partials\", new()\n    {\n        Prompt = \"login\",\n        FormContentStart = \"\u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\",\n        FormContentEnd = \"\u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\",\n        FormFooterStart = \"\u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\",\n        FormFooterEnd = \"\u003cdiv\u003eUpdated Footer End\u003c/div\u003e\",\n        SecondaryActionsStart = \"\u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\",\n        SecondaryActionsEnd = \"\u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewPromptPartials(ctx, \"my_login_prompt_partials\", \u0026auth0.PromptPartialsArgs{\n\t\t\tPrompt:                pulumi.String(\"login\"),\n\t\t\tFormContentStart:      pulumi.String(\"\u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\"),\n\t\t\tFormContentEnd:        pulumi.String(\"\u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\"),\n\t\t\tFormFooterStart:       pulumi.String(\"\u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\"),\n\t\t\tFormFooterEnd:         pulumi.String(\"\u003cdiv\u003eUpdated Footer End\u003c/div\u003e\"),\n\t\t\tSecondaryActionsStart: pulumi.String(\"\u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\"),\n\t\t\tSecondaryActionsEnd:   pulumi.String(\"\u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.PromptPartials;\nimport com.pulumi.auth0.PromptPartialsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myLoginPromptPartials = new PromptPartials(\"myLoginPromptPartials\", PromptPartialsArgs.builder()\n            .prompt(\"login\")\n            .formContentStart(\"\u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\")\n            .formContentEnd(\"\u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\")\n            .formFooterStart(\"\u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\")\n            .formFooterEnd(\"\u003cdiv\u003eUpdated Footer End\u003c/div\u003e\")\n            .secondaryActionsStart(\"\u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\")\n            .secondaryActionsEnd(\"\u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myLoginPromptPartials:\n    type: auth0:PromptPartials\n    name: my_login_prompt_partials\n    properties:\n      prompt: login\n      formContentStart: \u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\n      formContentEnd: \u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\n      formFooterStart: \u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\n      formFooterEnd: \u003cdiv\u003eUpdated Footer End\u003c/div\u003e\n      secondaryActionsStart: \u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\n      secondaryActionsEnd: \u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the prompt name.\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/promptPartials:PromptPartials my_login_prompt_partials \"login\"\n```\n\n",
+            "description": "With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).\n\n!\u003e **Deprecated:** `auth0.PromptPartials` has been deprecated. Please use `auth0.PromptScreenPartials` for managing multiple\nprompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myLoginPromptPartials = new auth0.PromptPartials(\"my_login_prompt_partials\", {\n    prompt: \"login\",\n    formContentStart: \"\u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\",\n    formContentEnd: \"\u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\",\n    formFooterStart: \"\u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\",\n    formFooterEnd: \"\u003cdiv\u003eUpdated Footer End\u003c/div\u003e\",\n    secondaryActionsStart: \"\u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\",\n    secondaryActionsEnd: \"\u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_login_prompt_partials = auth0.PromptPartials(\"my_login_prompt_partials\",\n    prompt=\"login\",\n    form_content_start=\"\u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\",\n    form_content_end=\"\u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\",\n    form_footer_start=\"\u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\",\n    form_footer_end=\"\u003cdiv\u003eUpdated Footer End\u003c/div\u003e\",\n    secondary_actions_start=\"\u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\",\n    secondary_actions_end=\"\u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myLoginPromptPartials = new Auth0.PromptPartials(\"my_login_prompt_partials\", new()\n    {\n        Prompt = \"login\",\n        FormContentStart = \"\u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\",\n        FormContentEnd = \"\u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\",\n        FormFooterStart = \"\u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\",\n        FormFooterEnd = \"\u003cdiv\u003eUpdated Footer End\u003c/div\u003e\",\n        SecondaryActionsStart = \"\u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\",\n        SecondaryActionsEnd = \"\u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewPromptPartials(ctx, \"my_login_prompt_partials\", \u0026auth0.PromptPartialsArgs{\n\t\t\tPrompt:                pulumi.String(\"login\"),\n\t\t\tFormContentStart:      pulumi.String(\"\u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\"),\n\t\t\tFormContentEnd:        pulumi.String(\"\u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\"),\n\t\t\tFormFooterStart:       pulumi.String(\"\u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\"),\n\t\t\tFormFooterEnd:         pulumi.String(\"\u003cdiv\u003eUpdated Footer End\u003c/div\u003e\"),\n\t\t\tSecondaryActionsStart: pulumi.String(\"\u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\"),\n\t\t\tSecondaryActionsEnd:   pulumi.String(\"\u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.PromptPartials;\nimport com.pulumi.auth0.PromptPartialsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myLoginPromptPartials = new PromptPartials(\"myLoginPromptPartials\", PromptPartialsArgs.builder()\n            .prompt(\"login\")\n            .formContentStart(\"\u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\")\n            .formContentEnd(\"\u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\")\n            .formFooterStart(\"\u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\")\n            .formFooterEnd(\"\u003cdiv\u003eUpdated Footer End\u003c/div\u003e\")\n            .secondaryActionsStart(\"\u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\")\n            .secondaryActionsEnd(\"\u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myLoginPromptPartials:\n    type: auth0:PromptPartials\n    name: my_login_prompt_partials\n    properties:\n      prompt: login\n      formContentStart: \u003cdiv\u003eUpdated Form Content Start\u003c/div\u003e\n      formContentEnd: \u003cdiv\u003eUpdated Form Content End\u003c/div\u003e\n      formFooterStart: \u003cdiv\u003eUpdated Footer Start\u003c/div\u003e\n      formFooterEnd: \u003cdiv\u003eUpdated Footer End\u003c/div\u003e\n      secondaryActionsStart: \u003cdiv\u003eUpdated Secondary Actions Start\u003c/div\u003e\n      secondaryActionsEnd: \u003cdiv\u003eUpdated Secondary Actions End\u003c/div\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the prompt name.\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/promptPartials:PromptPartials my_login_prompt_partials \"login\"\n```\n\n",
             "properties": {
                 "formContentEnd": {
                     "type": "string",
-                    "description": "Content that goes at the end of the form.\n"
+                    "description": "Content that goes at the end of the form.\n",
+                    "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                 },
                 "formContentStart": {
                     "type": "string",
-                    "description": "Content that goes at the start of the form.\n"
+                    "description": "Content that goes at the start of the form.\n",
+                    "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                 },
                 "formFooterEnd": {
                     "type": "string",
-                    "description": "Footer content for the end of the footer.\n"
+                    "description": "Footer content for the end of the footer.\n",
+                    "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                 },
                 "formFooterStart": {
                     "type": "string",
-                    "description": "Footer content for the start of the footer.\n"
+                    "description": "Footer content for the start of the footer.\n",
+                    "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                 },
                 "prompt": {
                     "type": "string",
-                    "description": "The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.\n"
+                    "description": "The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.\n",
+                    "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                 },
                 "secondaryActionsEnd": {
                     "type": "string",
-                    "description": "Actions that go at the end of secondary actions.\n"
+                    "description": "Actions that go at the end of secondary actions.\n",
+                    "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                 },
                 "secondaryActionsStart": {
                     "type": "string",
-                    "description": "Actions that go at the start of secondary actions.\n"
+                    "description": "Actions that go at the start of secondary actions.\n",
+                    "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                 }
             },
             "required": [
@@ -10041,31 +10251,38 @@
             "inputProperties": {
                 "formContentEnd": {
                     "type": "string",
-                    "description": "Content that goes at the end of the form.\n"
+                    "description": "Content that goes at the end of the form.\n",
+                    "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                 },
                 "formContentStart": {
                     "type": "string",
-                    "description": "Content that goes at the start of the form.\n"
+                    "description": "Content that goes at the start of the form.\n",
+                    "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                 },
                 "formFooterEnd": {
                     "type": "string",
-                    "description": "Footer content for the end of the footer.\n"
+                    "description": "Footer content for the end of the footer.\n",
+                    "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                 },
                 "formFooterStart": {
                     "type": "string",
-                    "description": "Footer content for the start of the footer.\n"
+                    "description": "Footer content for the start of the footer.\n",
+                    "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                 },
                 "prompt": {
                     "type": "string",
-                    "description": "The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.\n"
+                    "description": "The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.\n",
+                    "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                 },
                 "secondaryActionsEnd": {
                     "type": "string",
-                    "description": "Actions that go at the end of secondary actions.\n"
+                    "description": "Actions that go at the end of secondary actions.\n",
+                    "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                 },
                 "secondaryActionsStart": {
                     "type": "string",
-                    "description": "Actions that go at the start of secondary actions.\n"
+                    "description": "Actions that go at the start of secondary actions.\n",
+                    "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                 }
             },
             "requiredInputs": [
@@ -10076,31 +10293,144 @@
                 "properties": {
                     "formContentEnd": {
                         "type": "string",
-                        "description": "Content that goes at the end of the form.\n"
+                        "description": "Content that goes at the end of the form.\n",
+                        "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                     },
                     "formContentStart": {
                         "type": "string",
-                        "description": "Content that goes at the start of the form.\n"
+                        "description": "Content that goes at the start of the form.\n",
+                        "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                     },
                     "formFooterEnd": {
                         "type": "string",
-                        "description": "Footer content for the end of the footer.\n"
+                        "description": "Footer content for the end of the footer.\n",
+                        "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                     },
                     "formFooterStart": {
                         "type": "string",
-                        "description": "Footer content for the start of the footer.\n"
+                        "description": "Footer content for the start of the footer.\n",
+                        "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                     },
                     "prompt": {
                         "type": "string",
-                        "description": "The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.\n"
+                        "description": "The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.\n",
+                        "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                     },
                     "secondaryActionsEnd": {
                         "type": "string",
-                        "description": "Actions that go at the end of secondary actions.\n"
+                        "description": "Actions that go at the end of secondary actions.\n",
+                        "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
                     },
                     "secondaryActionsStart": {
                         "type": "string",
-                        "description": "Actions that go at the start of secondary actions.\n"
+                        "description": "Actions that go at the start of secondary actions.\n",
+                        "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/promptScreenPartial:PromptScreenPartial": {
+            "description": "With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).\n\n!\u003e This resource appends a specific prompt screen to the list of prompt screens displayed to the user during the authentication flow.\n In contrast, the `auth0.PromptScreenPartials` resource manages the complete set of prompt screens that are displayed during the\n authentication flow. To avoid potential issues, it is recommended not to use this resource in conjunction with the\n `auth0.PromptScreenPartials` resource when managing prompt screens for the same prompt.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst login = new auth0.PromptScreenPartial(\"login\", {\n    promptType: \"login\",\n    screenName: \"login\",\n    insertionPoints: {\n        formContentStart: \"\u003cdiv\u003eForm Content Start\u003c/div\u003e\",\n        formContentEnd: \"\u003cdiv\u003eForm Content End\u003c/div\u003e\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nlogin = auth0.PromptScreenPartial(\"login\",\n    prompt_type=\"login\",\n    screen_name=\"login\",\n    insertion_points={\n        \"form_content_start\": \"\u003cdiv\u003eForm Content Start\u003c/div\u003e\",\n        \"form_content_end\": \"\u003cdiv\u003eForm Content End\u003c/div\u003e\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var login = new Auth0.PromptScreenPartial(\"login\", new()\n    {\n        PromptType = \"login\",\n        ScreenName = \"login\",\n        InsertionPoints = new Auth0.Inputs.PromptScreenPartialInsertionPointsArgs\n        {\n            FormContentStart = \"\u003cdiv\u003eForm Content Start\u003c/div\u003e\",\n            FormContentEnd = \"\u003cdiv\u003eForm Content End\u003c/div\u003e\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewPromptScreenPartial(ctx, \"login\", \u0026auth0.PromptScreenPartialArgs{\n\t\t\tPromptType: pulumi.String(\"login\"),\n\t\t\tScreenName: pulumi.String(\"login\"),\n\t\t\tInsertionPoints: \u0026auth0.PromptScreenPartialInsertionPointsArgs{\n\t\t\t\tFormContentStart: pulumi.String(\"\u003cdiv\u003eForm Content Start\u003c/div\u003e\"),\n\t\t\t\tFormContentEnd:   pulumi.String(\"\u003cdiv\u003eForm Content End\u003c/div\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.PromptScreenPartial;\nimport com.pulumi.auth0.PromptScreenPartialArgs;\nimport com.pulumi.auth0.inputs.PromptScreenPartialInsertionPointsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var login = new PromptScreenPartial(\"login\", PromptScreenPartialArgs.builder()\n            .promptType(\"login\")\n            .screenName(\"login\")\n            .insertionPoints(PromptScreenPartialInsertionPointsArgs.builder()\n                .formContentStart(\"\u003cdiv\u003eForm Content Start\u003c/div\u003e\")\n                .formContentEnd(\"\u003cdiv\u003eForm Content End\u003c/div\u003e\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  login:\n    type: auth0:PromptScreenPartial\n    properties:\n      promptType: login\n      screenName: login\n      insertionPoints:\n        formContentStart: \u003cdiv\u003eForm Content Start\u003c/div\u003e\n        formContentEnd: \u003cdiv\u003eForm Content End\u003c/div\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the prompt name and screen_name.\n\n#\n\nAs this is not a resource identifiable by an ID within the Auth0 Management API,\n\nlogin can be imported using the prompt name and screen name using the format:\n\nprompt_name:screen_name\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/promptScreenPartial:PromptScreenPartial login \"login:login\"\n```\n\n",
+            "properties": {
+                "insertionPoints": {
+                    "$ref": "#/types/auth0:index/PromptScreenPartialInsertionPoints:PromptScreenPartialInsertionPoints",
+                    "description": "The insertion points for the partials.\n"
+                },
+                "promptType": {
+                    "type": "string",
+                    "description": "The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.\n"
+                },
+                "screenName": {
+                    "type": "string",
+                    "description": "The name of the screen associated with the partials\n"
+                }
+            },
+            "required": [
+                "promptType",
+                "screenName"
+            ],
+            "inputProperties": {
+                "insertionPoints": {
+                    "$ref": "#/types/auth0:index/PromptScreenPartialInsertionPoints:PromptScreenPartialInsertionPoints",
+                    "description": "The insertion points for the partials.\n"
+                },
+                "promptType": {
+                    "type": "string",
+                    "description": "The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.\n"
+                },
+                "screenName": {
+                    "type": "string",
+                    "description": "The name of the screen associated with the partials\n"
+                }
+            },
+            "requiredInputs": [
+                "promptType",
+                "screenName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PromptScreenPartial resources.\n",
+                "properties": {
+                    "insertionPoints": {
+                        "$ref": "#/types/auth0:index/PromptScreenPartialInsertionPoints:PromptScreenPartialInsertionPoints",
+                        "description": "The insertion points for the partials.\n"
+                    },
+                    "promptType": {
+                        "type": "string",
+                        "description": "The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.\n"
+                    },
+                    "screenName": {
+                        "type": "string",
+                        "description": "The name of the screen associated with the partials\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/promptScreenPartials:PromptScreenPartials": {
+            "description": "With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).\n\n!\u003e This resource manages the entire set of prompt screens enabled for a prompt. In contrast, the `auth0.PromptScreenPartial`\nresource appends a specific prompt screen to the list of prompt screens displayed to the user during the authentication flow.\n To avoid potential issues, it is recommended not to use this resource in conjunction with the `auth0.PromptScreenPartial`\n resource when managing prompt screens for the same prompt.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst promptScreenPartials = new auth0.PromptScreenPartials(\"prompt_screen_partials\", {\n    promptType: \"login-passwordless\",\n    screenPartials: [\n        {\n            screenName: \"login-passwordless-email-code\",\n            insertionPoints: {\n                formContentStart: \"\u003cdiv\u003eForm Content Start\u003c/div\u003e\",\n                formContentEnd: \"\u003cdiv\u003eForm Content End\u003c/div\u003e\",\n            },\n        },\n        {\n            screenName: \"login-passwordless-sms-otp\",\n            insertionPoints: {\n                formContentStart: \"\u003cdiv\u003eForm Content Start\u003c/div\u003e\",\n                formContentEnd: \"\u003cdiv\u003eForm Content End\u003c/div\u003e\",\n            },\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nprompt_screen_partials = auth0.PromptScreenPartials(\"prompt_screen_partials\",\n    prompt_type=\"login-passwordless\",\n    screen_partials=[\n        {\n            \"screen_name\": \"login-passwordless-email-code\",\n            \"insertion_points\": {\n                \"form_content_start\": \"\u003cdiv\u003eForm Content Start\u003c/div\u003e\",\n                \"form_content_end\": \"\u003cdiv\u003eForm Content End\u003c/div\u003e\",\n            },\n        },\n        {\n            \"screen_name\": \"login-passwordless-sms-otp\",\n            \"insertion_points\": {\n                \"form_content_start\": \"\u003cdiv\u003eForm Content Start\u003c/div\u003e\",\n                \"form_content_end\": \"\u003cdiv\u003eForm Content End\u003c/div\u003e\",\n            },\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var promptScreenPartials = new Auth0.PromptScreenPartials(\"prompt_screen_partials\", new()\n    {\n        PromptType = \"login-passwordless\",\n        ScreenPartials = new[]\n        {\n            new Auth0.Inputs.PromptScreenPartialsScreenPartialArgs\n            {\n                ScreenName = \"login-passwordless-email-code\",\n                InsertionPoints = new Auth0.Inputs.PromptScreenPartialsScreenPartialInsertionPointsArgs\n                {\n                    FormContentStart = \"\u003cdiv\u003eForm Content Start\u003c/div\u003e\",\n                    FormContentEnd = \"\u003cdiv\u003eForm Content End\u003c/div\u003e\",\n                },\n            },\n            new Auth0.Inputs.PromptScreenPartialsScreenPartialArgs\n            {\n                ScreenName = \"login-passwordless-sms-otp\",\n                InsertionPoints = new Auth0.Inputs.PromptScreenPartialsScreenPartialInsertionPointsArgs\n                {\n                    FormContentStart = \"\u003cdiv\u003eForm Content Start\u003c/div\u003e\",\n                    FormContentEnd = \"\u003cdiv\u003eForm Content End\u003c/div\u003e\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewPromptScreenPartials(ctx, \"prompt_screen_partials\", \u0026auth0.PromptScreenPartialsArgs{\n\t\t\tPromptType: pulumi.String(\"login-passwordless\"),\n\t\t\tScreenPartials: auth0.PromptScreenPartialsScreenPartialArray{\n\t\t\t\t\u0026auth0.PromptScreenPartialsScreenPartialArgs{\n\t\t\t\t\tScreenName: pulumi.String(\"login-passwordless-email-code\"),\n\t\t\t\t\tInsertionPoints: \u0026auth0.PromptScreenPartialsScreenPartialInsertionPointsArgs{\n\t\t\t\t\t\tFormContentStart: pulumi.String(\"\u003cdiv\u003eForm Content Start\u003c/div\u003e\"),\n\t\t\t\t\t\tFormContentEnd:   pulumi.String(\"\u003cdiv\u003eForm Content End\u003c/div\u003e\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026auth0.PromptScreenPartialsScreenPartialArgs{\n\t\t\t\t\tScreenName: pulumi.String(\"login-passwordless-sms-otp\"),\n\t\t\t\t\tInsertionPoints: \u0026auth0.PromptScreenPartialsScreenPartialInsertionPointsArgs{\n\t\t\t\t\t\tFormContentStart: pulumi.String(\"\u003cdiv\u003eForm Content Start\u003c/div\u003e\"),\n\t\t\t\t\t\tFormContentEnd:   pulumi.String(\"\u003cdiv\u003eForm Content End\u003c/div\u003e\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.PromptScreenPartials;\nimport com.pulumi.auth0.PromptScreenPartialsArgs;\nimport com.pulumi.auth0.inputs.PromptScreenPartialsScreenPartialArgs;\nimport com.pulumi.auth0.inputs.PromptScreenPartialsScreenPartialInsertionPointsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var promptScreenPartials = new PromptScreenPartials(\"promptScreenPartials\", PromptScreenPartialsArgs.builder()\n            .promptType(\"login-passwordless\")\n            .screenPartials(            \n                PromptScreenPartialsScreenPartialArgs.builder()\n                    .screenName(\"login-passwordless-email-code\")\n                    .insertionPoints(PromptScreenPartialsScreenPartialInsertionPointsArgs.builder()\n                        .formContentStart(\"\u003cdiv\u003eForm Content Start\u003c/div\u003e\")\n                        .formContentEnd(\"\u003cdiv\u003eForm Content End\u003c/div\u003e\")\n                        .build())\n                    .build(),\n                PromptScreenPartialsScreenPartialArgs.builder()\n                    .screenName(\"login-passwordless-sms-otp\")\n                    .insertionPoints(PromptScreenPartialsScreenPartialInsertionPointsArgs.builder()\n                        .formContentStart(\"\u003cdiv\u003eForm Content Start\u003c/div\u003e\")\n                        .formContentEnd(\"\u003cdiv\u003eForm Content End\u003c/div\u003e\")\n                        .build())\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  promptScreenPartials:\n    type: auth0:PromptScreenPartials\n    name: prompt_screen_partials\n    properties:\n      promptType: login-passwordless\n      screenPartials:\n        - screenName: login-passwordless-email-code\n          insertionPoints:\n            formContentStart: \u003cdiv\u003eForm Content Start\u003c/div\u003e\n            formContentEnd: \u003cdiv\u003eForm Content End\u003c/div\u003e\n        - screenName: login-passwordless-sms-otp\n          insertionPoints:\n            formContentStart: \u003cdiv\u003eForm Content Start\u003c/div\u003e\n            formContentEnd: \u003cdiv\u003eForm Content End\u003c/div\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the prompt name.\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/promptScreenPartials:PromptScreenPartials prompt_screen_partials \"login-passwordless\"\n```\n\n",
+            "properties": {
+                "promptType": {
+                    "type": "string",
+                    "description": "The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.\n"
+                },
+                "screenPartials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/PromptScreenPartialsScreenPartial:PromptScreenPartialsScreenPartial"
+                    }
+                }
+            },
+            "required": [
+                "promptType"
+            ],
+            "inputProperties": {
+                "promptType": {
+                    "type": "string",
+                    "description": "The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.\n"
+                },
+                "screenPartials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/PromptScreenPartialsScreenPartial:PromptScreenPartialsScreenPartial"
+                    }
+                }
+            },
+            "requiredInputs": [
+                "promptType"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PromptScreenPartials resources.\n",
+                "properties": {
+                    "promptType": {
+                        "type": "string",
+                        "description": "The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.\n"
+                    },
+                    "screenPartials": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/auth0:index/PromptScreenPartialsScreenPartial:PromptScreenPartialsScreenPartial"
+                        }
                     }
                 },
                 "type": "object"
@@ -11857,6 +12187,13 @@
                         "description": "Indicates whether a custom login page is to be used.\n",
                         "type": "boolean"
                     },
+                    "defaultOrganizations": {
+                        "description": "Configure and associate an organization with the Client\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getClientDefaultOrganization:getClientDefaultOrganization"
+                        },
+                        "type": "array"
+                    },
                     "description": {
                         "description": "Description of the purpose of the client.\n",
                         "type": "string"
@@ -11998,6 +12335,7 @@
                     "crossOriginLoc",
                     "customLoginPage",
                     "customLoginPageOn",
+                    "defaultOrganizations",
                     "description",
                     "encryptionKey",
                     "formTemplate",
@@ -12375,6 +12713,55 @@
                     "errors",
                     "guardianMfas",
                     "logins",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "auth0:index/getPromptScreenPartials:getPromptScreenPartials": {
+            "description": "Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst promptScreenPartials = auth0.getPromptScreenPartials({\n    promptType: \"prompt-name\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nprompt_screen_partials = auth0.get_prompt_screen_partials(prompt_type=\"prompt-name\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var promptScreenPartials = Auth0.GetPromptScreenPartials.Invoke(new()\n    {\n        PromptType = \"prompt-name\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.LookupPromptScreenPartials(ctx, \u0026auth0.LookupPromptScreenPartialsArgs{\n\t\t\tPromptType: \"prompt-name\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Auth0Functions;\nimport com.pulumi.auth0.inputs.GetPromptScreenPartialsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var promptScreenPartials = Auth0Functions.getPromptScreenPartials(GetPromptScreenPartialsArgs.builder()\n            .promptType(\"prompt-name\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  promptScreenPartials:\n    fn::invoke:\n      Function: auth0:getPromptScreenPartials\n      Arguments:\n        promptType: prompt-name\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPromptScreenPartials.\n",
+                "properties": {
+                    "promptType": {
+                        "type": "string",
+                        "description": "The type of prompt to customize.\n"
+                    },
+                    "screenPartials": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getPromptScreenPartialsScreenPartial:getPromptScreenPartialsScreenPartial"
+                        },
+                        "description": "The screen partials associated with the prompt type.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "promptType"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPromptScreenPartials.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "promptType": {
+                        "description": "The type of prompt to customize.\n",
+                        "type": "string"
+                    },
+                    "screenPartials": {
+                        "description": "The screen partials associated with the prompt type.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getPromptScreenPartialsScreenPartial:getPromptScreenPartialsScreenPartial"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "promptType",
+                    "screenPartials",
                     "id"
                 ],
                 "type": "object"

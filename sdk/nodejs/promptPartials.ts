@@ -7,6 +7,9 @@ import * as utilities from "./utilities";
 /**
  * With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).
  *
+ * !> **Deprecated:** `auth0.PromptPartials` has been deprecated. Please use `auth0.PromptScreenPartials` for managing multiple
+ * prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -66,30 +69,44 @@ export class PromptPartials extends pulumi.CustomResource {
 
     /**
      * Content that goes at the end of the form.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     public readonly formContentEnd!: pulumi.Output<string | undefined>;
     /**
      * Content that goes at the start of the form.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     public readonly formContentStart!: pulumi.Output<string | undefined>;
     /**
      * Footer content for the end of the footer.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     public readonly formFooterEnd!: pulumi.Output<string | undefined>;
     /**
      * Footer content for the start of the footer.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     public readonly formFooterStart!: pulumi.Output<string | undefined>;
     /**
-     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     public readonly prompt!: pulumi.Output<string>;
     /**
      * Actions that go at the end of secondary actions.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     public readonly secondaryActionsEnd!: pulumi.Output<string | undefined>;
     /**
      * Actions that go at the start of secondary actions.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     public readonly secondaryActionsStart!: pulumi.Output<string | undefined>;
 
@@ -137,30 +154,44 @@ export class PromptPartials extends pulumi.CustomResource {
 export interface PromptPartialsState {
     /**
      * Content that goes at the end of the form.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     formContentEnd?: pulumi.Input<string>;
     /**
      * Content that goes at the start of the form.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     formContentStart?: pulumi.Input<string>;
     /**
      * Footer content for the end of the footer.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     formFooterEnd?: pulumi.Input<string>;
     /**
      * Footer content for the start of the footer.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     formFooterStart?: pulumi.Input<string>;
     /**
-     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     prompt?: pulumi.Input<string>;
     /**
      * Actions that go at the end of secondary actions.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     secondaryActionsEnd?: pulumi.Input<string>;
     /**
      * Actions that go at the start of secondary actions.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     secondaryActionsStart?: pulumi.Input<string>;
 }
@@ -171,30 +202,44 @@ export interface PromptPartialsState {
 export interface PromptPartialsArgs {
     /**
      * Content that goes at the end of the form.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     formContentEnd?: pulumi.Input<string>;
     /**
      * Content that goes at the start of the form.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     formContentStart?: pulumi.Input<string>;
     /**
      * Footer content for the end of the footer.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     formFooterEnd?: pulumi.Input<string>;
     /**
      * Footer content for the start of the footer.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     formFooterStart?: pulumi.Input<string>;
     /**
-     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`.
+     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     prompt: pulumi.Input<string>;
     /**
      * Actions that go at the end of secondary actions.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     secondaryActionsEnd?: pulumi.Input<string>;
     /**
      * Actions that go at the start of secondary actions.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
     secondaryActionsStart?: pulumi.Input<string>;
 }

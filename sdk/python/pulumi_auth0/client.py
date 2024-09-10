@@ -28,6 +28,7 @@ class ClientArgs:
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
                  custom_login_page_on: Optional[pulumi.Input[bool]] = None,
+                 default_organization: Optional[pulumi.Input['ClientDefaultOrganizationArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  form_template: Optional[pulumi.Input[str]] = None,
@@ -63,6 +64,7 @@ class ClientArgs:
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
         :param pulumi.Input[bool] custom_login_page_on: Indicates whether a custom login page is to be used.
+        :param pulumi.Input['ClientDefaultOrganizationArgs'] default_organization: Configure and associate an organization with the Client
         :param pulumi.Input[str] description: Description of the purpose of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Encryption used for WS-Fed responses with this client.
         :param pulumi.Input[str] form_template: HTML form template to be used for WS-Federation.
@@ -109,6 +111,8 @@ class ClientArgs:
             pulumi.set(__self__, "custom_login_page", custom_login_page)
         if custom_login_page_on is not None:
             pulumi.set(__self__, "custom_login_page_on", custom_login_page_on)
+        if default_organization is not None:
+            pulumi.set(__self__, "default_organization", default_organization)
         if description is None:
             description = 'Managed by Pulumi'
         if description is not None:
@@ -297,6 +301,18 @@ class ClientArgs:
     @custom_login_page_on.setter
     def custom_login_page_on(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "custom_login_page_on", value)
+
+    @property
+    @pulumi.getter(name="defaultOrganization")
+    def default_organization(self) -> Optional[pulumi.Input['ClientDefaultOrganizationArgs']]:
+        """
+        Configure and associate an organization with the Client
+        """
+        return pulumi.get(self, "default_organization")
+
+    @default_organization.setter
+    def default_organization(self, value: Optional[pulumi.Input['ClientDefaultOrganizationArgs']]):
+        pulumi.set(self, "default_organization", value)
 
     @property
     @pulumi.getter
@@ -567,6 +583,7 @@ class _ClientState:
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
                  custom_login_page_on: Optional[pulumi.Input[bool]] = None,
+                 default_organization: Optional[pulumi.Input['ClientDefaultOrganizationArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  form_template: Optional[pulumi.Input[str]] = None,
@@ -604,6 +621,7 @@ class _ClientState:
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
         :param pulumi.Input[bool] custom_login_page_on: Indicates whether a custom login page is to be used.
+        :param pulumi.Input['ClientDefaultOrganizationArgs'] default_organization: Configure and associate an organization with the Client
         :param pulumi.Input[str] description: Description of the purpose of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Encryption used for WS-Fed responses with this client.
         :param pulumi.Input[str] form_template: HTML form template to be used for WS-Federation.
@@ -653,6 +671,8 @@ class _ClientState:
             pulumi.set(__self__, "custom_login_page", custom_login_page)
         if custom_login_page_on is not None:
             pulumi.set(__self__, "custom_login_page_on", custom_login_page_on)
+        if default_organization is not None:
+            pulumi.set(__self__, "default_organization", default_organization)
         if description is None:
             description = 'Managed by Pulumi'
         if description is not None:
@@ -855,6 +875,18 @@ class _ClientState:
     @custom_login_page_on.setter
     def custom_login_page_on(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "custom_login_page_on", value)
+
+    @property
+    @pulumi.getter(name="defaultOrganization")
+    def default_organization(self) -> Optional[pulumi.Input['ClientDefaultOrganizationArgs']]:
+        """
+        Configure and associate an organization with the Client
+        """
+        return pulumi.get(self, "default_organization")
+
+    @default_organization.setter
+    def default_organization(self, value: Optional[pulumi.Input['ClientDefaultOrganizationArgs']]):
+        pulumi.set(self, "default_organization", value)
 
     @property
     @pulumi.getter
@@ -1138,6 +1170,7 @@ class Client(pulumi.CustomResource):
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
                  custom_login_page_on: Optional[pulumi.Input[bool]] = None,
+                 default_organization: Optional[pulumi.Input[Union['ClientDefaultOrganizationArgs', 'ClientDefaultOrganizationArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  form_template: Optional[pulumi.Input[str]] = None,
@@ -1260,6 +1293,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
         :param pulumi.Input[bool] custom_login_page_on: Indicates whether a custom login page is to be used.
+        :param pulumi.Input[Union['ClientDefaultOrganizationArgs', 'ClientDefaultOrganizationArgsDict']] default_organization: Configure and associate an organization with the Client
         :param pulumi.Input[str] description: Description of the purpose of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Encryption used for WS-Fed responses with this client.
         :param pulumi.Input[str] form_template: HTML form template to be used for WS-Federation.
@@ -1401,6 +1435,7 @@ class Client(pulumi.CustomResource):
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
                  custom_login_page_on: Optional[pulumi.Input[bool]] = None,
+                 default_organization: Optional[pulumi.Input[Union['ClientDefaultOrganizationArgs', 'ClientDefaultOrganizationArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  form_template: Optional[pulumi.Input[str]] = None,
@@ -1443,6 +1478,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["cross_origin_loc"] = cross_origin_loc
             __props__.__dict__["custom_login_page"] = custom_login_page
             __props__.__dict__["custom_login_page_on"] = custom_login_page_on
+            __props__.__dict__["default_organization"] = default_organization
             if description is None:
                 description = 'Managed by Pulumi'
             __props__.__dict__["description"] = description
@@ -1493,6 +1529,7 @@ class Client(pulumi.CustomResource):
             cross_origin_loc: Optional[pulumi.Input[str]] = None,
             custom_login_page: Optional[pulumi.Input[str]] = None,
             custom_login_page_on: Optional[pulumi.Input[bool]] = None,
+            default_organization: Optional[pulumi.Input[Union['ClientDefaultOrganizationArgs', 'ClientDefaultOrganizationArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             form_template: Optional[pulumi.Input[str]] = None,
@@ -1535,6 +1572,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
         :param pulumi.Input[bool] custom_login_page_on: Indicates whether a custom login page is to be used.
+        :param pulumi.Input[Union['ClientDefaultOrganizationArgs', 'ClientDefaultOrganizationArgsDict']] default_organization: Configure and associate an organization with the Client
         :param pulumi.Input[str] description: Description of the purpose of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Encryption used for WS-Fed responses with this client.
         :param pulumi.Input[str] form_template: HTML form template to be used for WS-Federation.
@@ -1575,6 +1613,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["cross_origin_loc"] = cross_origin_loc
         __props__.__dict__["custom_login_page"] = custom_login_page
         __props__.__dict__["custom_login_page_on"] = custom_login_page_on
+        __props__.__dict__["default_organization"] = default_organization
         __props__.__dict__["description"] = description
         __props__.__dict__["encryption_key"] = encryption_key
         __props__.__dict__["form_template"] = form_template
@@ -1702,6 +1741,14 @@ class Client(pulumi.CustomResource):
         Indicates whether a custom login page is to be used.
         """
         return pulumi.get(self, "custom_login_page_on")
+
+    @property
+    @pulumi.getter(name="defaultOrganization")
+    def default_organization(self) -> pulumi.Output['outputs.ClientDefaultOrganization']:
+        """
+        Configure and associate an organization with the Client
+        """
+        return pulumi.get(self, "default_organization")
 
     @property
     @pulumi.getter

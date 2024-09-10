@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetClientAddon;
+import com.pulumi.auth0.outputs.GetClientDefaultOrganization;
 import com.pulumi.auth0.outputs.GetClientJwtConfiguration;
 import com.pulumi.auth0.outputs.GetClientMobile;
 import com.pulumi.auth0.outputs.GetClientNativeSocialLogin;
@@ -86,6 +87,11 @@ public final class GetClientResult {
      * 
      */
     private Boolean customLoginPageOn;
+    /**
+     * @return Configure and associate an organization with the Client
+     * 
+     */
+    private List<GetClientDefaultOrganization> defaultOrganizations;
     /**
      * @return Description of the purpose of the client.
      * 
@@ -303,6 +309,13 @@ public final class GetClientResult {
         return this.customLoginPageOn;
     }
     /**
+     * @return Configure and associate an organization with the Client
+     * 
+     */
+    public List<GetClientDefaultOrganization> defaultOrganizations() {
+        return this.defaultOrganizations;
+    }
+    /**
      * @return Description of the purpose of the client.
      * 
      */
@@ -494,6 +507,7 @@ public final class GetClientResult {
         private String crossOriginLoc;
         private String customLoginPage;
         private Boolean customLoginPageOn;
+        private List<GetClientDefaultOrganization> defaultOrganizations;
         private String description;
         private Map<String,String> encryptionKey;
         private String formTemplate;
@@ -535,6 +549,7 @@ public final class GetClientResult {
     	      this.crossOriginLoc = defaults.crossOriginLoc;
     	      this.customLoginPage = defaults.customLoginPage;
     	      this.customLoginPageOn = defaults.customLoginPageOn;
+    	      this.defaultOrganizations = defaults.defaultOrganizations;
     	      this.description = defaults.description;
     	      this.encryptionKey = defaults.encryptionKey;
     	      this.formTemplate = defaults.formTemplate;
@@ -688,6 +703,17 @@ public final class GetClientResult {
             }
             this.customLoginPageOn = customLoginPageOn;
             return this;
+        }
+        @CustomType.Setter
+        public Builder defaultOrganizations(List<GetClientDefaultOrganization> defaultOrganizations) {
+            if (defaultOrganizations == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "defaultOrganizations");
+            }
+            this.defaultOrganizations = defaultOrganizations;
+            return this;
+        }
+        public Builder defaultOrganizations(GetClientDefaultOrganization... defaultOrganizations) {
+            return defaultOrganizations(List.of(defaultOrganizations));
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -916,6 +942,7 @@ public final class GetClientResult {
             _resultValue.crossOriginLoc = crossOriginLoc;
             _resultValue.customLoginPage = customLoginPage;
             _resultValue.customLoginPageOn = customLoginPageOn;
+            _resultValue.defaultOrganizations = defaultOrganizations;
             _resultValue.description = description;
             _resultValue.encryptionKey = encryptionKey;
             _resultValue.formTemplate = formTemplate;

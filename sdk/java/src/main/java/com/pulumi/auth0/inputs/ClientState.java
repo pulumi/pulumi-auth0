@@ -4,6 +4,7 @@
 package com.pulumi.auth0.inputs;
 
 import com.pulumi.auth0.inputs.ClientAddonsArgs;
+import com.pulumi.auth0.inputs.ClientDefaultOrganizationArgs;
 import com.pulumi.auth0.inputs.ClientJwtConfigurationArgs;
 import com.pulumi.auth0.inputs.ClientMobileArgs;
 import com.pulumi.auth0.inputs.ClientNativeSocialLoginArgs;
@@ -217,6 +218,21 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> customLoginPageOn() {
         return Optional.ofNullable(this.customLoginPageOn);
+    }
+
+    /**
+     * Configure and associate an organization with the Client
+     * 
+     */
+    @Import(name="defaultOrganization")
+    private @Nullable Output<ClientDefaultOrganizationArgs> defaultOrganization;
+
+    /**
+     * @return Configure and associate an organization with the Client
+     * 
+     */
+    public Optional<Output<ClientDefaultOrganizationArgs>> defaultOrganization() {
+        return Optional.ofNullable(this.defaultOrganization);
     }
 
     /**
@@ -565,6 +581,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         this.crossOriginLoc = $.crossOriginLoc;
         this.customLoginPage = $.customLoginPage;
         this.customLoginPageOn = $.customLoginPageOn;
+        this.defaultOrganization = $.defaultOrganization;
         this.description = $.description;
         this.encryptionKey = $.encryptionKey;
         this.formTemplate = $.formTemplate;
@@ -928,6 +945,27 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder customLoginPageOn(Boolean customLoginPageOn) {
             return customLoginPageOn(Output.of(customLoginPageOn));
+        }
+
+        /**
+         * @param defaultOrganization Configure and associate an organization with the Client
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultOrganization(@Nullable Output<ClientDefaultOrganizationArgs> defaultOrganization) {
+            $.defaultOrganization = defaultOrganization;
+            return this;
+        }
+
+        /**
+         * @param defaultOrganization Configure and associate an organization with the Client
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultOrganization(ClientDefaultOrganizationArgs defaultOrganization) {
+            return defaultOrganization(Output.of(defaultOrganization));
         }
 
         /**

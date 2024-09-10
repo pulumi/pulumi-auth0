@@ -1025,6 +1025,21 @@ export interface ClientCredentialsPrivateKeyJwtCredential {
     updatedAt?: pulumi.Input<string>;
 }
 
+export interface ClientDefaultOrganization {
+    /**
+     * If set, the `defaultOrganization` will be removed.
+     */
+    disable?: pulumi.Input<boolean>;
+    /**
+     * Definition of the flow that needs to be configured. Eg. client_credentials
+     */
+    flows?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The unique identifier of the organization
+     */
+    organizationId?: pulumi.Input<string>;
+}
+
 export interface ClientJwtConfiguration {
     /**
      * Algorithm used to sign JWTs.
@@ -1906,6 +1921,76 @@ export interface GetConnectionScimConfigurationMappingArgs {
     scim?: pulumi.Input<string>;
 }
 
+export interface GetPromptScreenPartialsScreenPartial {
+    insertionPoints?: inputs.GetPromptScreenPartialsScreenPartialInsertionPoint[];
+    /**
+     * The name of the screen associated with the partials
+     */
+    screenName?: string;
+}
+
+export interface GetPromptScreenPartialsScreenPartialArgs {
+    insertionPoints?: pulumi.Input<pulumi.Input<inputs.GetPromptScreenPartialsScreenPartialInsertionPointArgs>[]>;
+    /**
+     * The name of the screen associated with the partials
+     */
+    screenName?: pulumi.Input<string>;
+}
+
+export interface GetPromptScreenPartialsScreenPartialInsertionPoint {
+    /**
+     * Content that goes at the end of the form.
+     */
+    formContentEnd?: string;
+    /**
+     * Content that goes at the start of the form.
+     */
+    formContentStart?: string;
+    /**
+     * Footer content for the end of the footer.
+     */
+    formFooterEnd?: string;
+    /**
+     * Footer content for the start of the footer.
+     */
+    formFooterStart?: string;
+    /**
+     * Actions that go at the end of secondary actions.
+     */
+    secondaryActionsEnd?: string;
+    /**
+     * Actions that go at the start of secondary actions.
+     */
+    secondaryActionsStart?: string;
+}
+
+export interface GetPromptScreenPartialsScreenPartialInsertionPointArgs {
+    /**
+     * Content that goes at the end of the form.
+     */
+    formContentEnd?: pulumi.Input<string>;
+    /**
+     * Content that goes at the start of the form.
+     */
+    formContentStart?: pulumi.Input<string>;
+    /**
+     * Footer content for the end of the footer.
+     */
+    formFooterEnd?: pulumi.Input<string>;
+    /**
+     * Footer content for the start of the footer.
+     */
+    formFooterStart?: pulumi.Input<string>;
+    /**
+     * Actions that go at the end of secondary actions.
+     */
+    secondaryActionsEnd?: pulumi.Input<string>;
+    /**
+     * Actions that go at the start of secondary actions.
+     */
+    secondaryActionsStart?: pulumi.Input<string>;
+}
+
 export interface GuardianDuo {
     /**
      * Indicates whether Duo MFA is enabled.
@@ -2271,6 +2356,68 @@ export interface PagesLogin {
      * Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
      */
     html: pulumi.Input<string>;
+}
+
+export interface PromptScreenPartialInsertionPoints {
+    /**
+     * Content that goes at the end of the form.
+     */
+    formContentEnd?: pulumi.Input<string>;
+    /**
+     * Content that goes at the start of the form.
+     */
+    formContentStart?: pulumi.Input<string>;
+    /**
+     * Footer content for the end of the footer.
+     */
+    formFooterEnd?: pulumi.Input<string>;
+    /**
+     * Footer content for the start of the footer.
+     */
+    formFooterStart?: pulumi.Input<string>;
+    /**
+     * Actions that go at the end of secondary actions.
+     */
+    secondaryActionsEnd?: pulumi.Input<string>;
+    /**
+     * Actions that go at the start of secondary actions.
+     */
+    secondaryActionsStart?: pulumi.Input<string>;
+}
+
+export interface PromptScreenPartialsScreenPartial {
+    insertionPoints: pulumi.Input<inputs.PromptScreenPartialsScreenPartialInsertionPoints>;
+    /**
+     * The name of the screen associated with the partials
+     */
+    screenName: pulumi.Input<string>;
+}
+
+export interface PromptScreenPartialsScreenPartialInsertionPoints {
+    /**
+     * Content that goes at the end of the form.
+     */
+    formContentEnd?: pulumi.Input<string>;
+    /**
+     * Content that goes at the start of the form.
+     */
+    formContentStart?: pulumi.Input<string>;
+    /**
+     * Footer content for the end of the footer.
+     */
+    formFooterEnd?: pulumi.Input<string>;
+    /**
+     * Footer content for the start of the footer.
+     */
+    formFooterStart?: pulumi.Input<string>;
+    /**
+     * Actions that go at the end of secondary actions.
+     */
+    secondaryActionsEnd?: pulumi.Input<string>;
+    /**
+     * Actions that go at the start of secondary actions.
+     */
+    secondaryActionsStart?: pulumi.Input<string>;
 }
 
 export interface ResourceServerScopesScope {
