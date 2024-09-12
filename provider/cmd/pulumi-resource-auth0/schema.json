@@ -1406,7 +1406,16 @@
                     "description": "The unique identifier of the organization\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "disable",
+                        "flows",
+                        "organizationId"
+                    ]
+                }
+            }
         },
         "auth0:index/ClientJwtConfiguration:ClientJwtConfiguration": {
             "properties": {
