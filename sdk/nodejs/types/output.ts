@@ -1029,15 +1029,15 @@ export interface ClientDefaultOrganization {
     /**
      * If set, the `defaultOrganization` will be removed.
      */
-    disable?: boolean;
+    disable: boolean;
     /**
      * Definition of the flow that needs to be configured. Eg. client_credentials
      */
-    flows?: string[];
+    flows: string[];
     /**
      * The unique identifier of the organization
      */
-    organizationId?: string;
+    organizationId: string;
 }
 
 export interface ClientJwtConfiguration {
