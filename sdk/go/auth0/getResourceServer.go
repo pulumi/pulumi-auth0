@@ -98,14 +98,20 @@ type LookupResourceServerResult struct {
 
 func LookupResourceServerOutput(ctx *pulumi.Context, args LookupResourceServerOutputArgs, opts ...pulumi.InvokeOption) LookupResourceServerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupResourceServerResult, error) {
+		ApplyT(func(v interface{}) (LookupResourceServerResultOutput, error) {
 			args := v.(LookupResourceServerArgs)
-			r, err := LookupResourceServer(ctx, &args, opts...)
-			var s LookupResourceServerResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupResourceServerResult
+			secret, err := ctx.InvokePackageRaw("auth0:index/getResourceServer:getResourceServer", args, &rv, "", opts...)
+			if err != nil {
+				return LookupResourceServerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupResourceServerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupResourceServerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupResourceServerResultOutput)
 }
 

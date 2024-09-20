@@ -100,14 +100,20 @@ type LookupConnectionScimConfigurationResult struct {
 
 func LookupConnectionScimConfigurationOutput(ctx *pulumi.Context, args LookupConnectionScimConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionScimConfigurationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConnectionScimConfigurationResult, error) {
+		ApplyT(func(v interface{}) (LookupConnectionScimConfigurationResultOutput, error) {
 			args := v.(LookupConnectionScimConfigurationArgs)
-			r, err := LookupConnectionScimConfiguration(ctx, &args, opts...)
-			var s LookupConnectionScimConfigurationResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupConnectionScimConfigurationResult
+			secret, err := ctx.InvokePackageRaw("auth0:index/getConnectionScimConfiguration:getConnectionScimConfiguration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConnectionScimConfigurationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConnectionScimConfigurationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConnectionScimConfigurationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConnectionScimConfigurationResultOutput)
 }
 

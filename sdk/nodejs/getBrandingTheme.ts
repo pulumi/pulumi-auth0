@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getBrandingTheme(opts?: pulumi.InvokeOptions): Promise<GetBrandingThemeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getBrandingTheme:getBrandingTheme", {
     }, opts);
@@ -56,5 +55,7 @@ export interface GetBrandingThemeResult {
  * ```
  */
 export function getBrandingThemeOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetBrandingThemeResult> {
-    return pulumi.output(getBrandingTheme(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("auth0:index/getBrandingTheme:getBrandingTheme", {
+    }, opts);
 }

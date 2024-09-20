@@ -71,14 +71,20 @@ type LookupSelfServiceProfileResult struct {
 
 func LookupSelfServiceProfileOutput(ctx *pulumi.Context, args LookupSelfServiceProfileOutputArgs, opts ...pulumi.InvokeOption) LookupSelfServiceProfileResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSelfServiceProfileResult, error) {
+		ApplyT(func(v interface{}) (LookupSelfServiceProfileResultOutput, error) {
 			args := v.(LookupSelfServiceProfileArgs)
-			r, err := LookupSelfServiceProfile(ctx, &args, opts...)
-			var s LookupSelfServiceProfileResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupSelfServiceProfileResult
+			secret, err := ctx.InvokePackageRaw("auth0:index/getSelfServiceProfile:getSelfServiceProfile", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSelfServiceProfileResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSelfServiceProfileResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSelfServiceProfileResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSelfServiceProfileResultOutput)
 }
 

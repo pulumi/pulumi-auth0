@@ -68,14 +68,20 @@ type LookupPromptScreenPartialsResult struct {
 
 func LookupPromptScreenPartialsOutput(ctx *pulumi.Context, args LookupPromptScreenPartialsOutputArgs, opts ...pulumi.InvokeOption) LookupPromptScreenPartialsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPromptScreenPartialsResult, error) {
+		ApplyT(func(v interface{}) (LookupPromptScreenPartialsResultOutput, error) {
 			args := v.(LookupPromptScreenPartialsArgs)
-			r, err := LookupPromptScreenPartials(ctx, &args, opts...)
-			var s LookupPromptScreenPartialsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPromptScreenPartialsResult
+			secret, err := ctx.InvokePackageRaw("auth0:index/getPromptScreenPartials:getPromptScreenPartials", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPromptScreenPartialsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPromptScreenPartialsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPromptScreenPartialsResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPromptScreenPartialsResultOutput)
 }
 

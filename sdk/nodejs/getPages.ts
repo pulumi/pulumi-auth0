@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getPages(opts?: pulumi.InvokeOptions): Promise<GetPagesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getPages:getPages", {
     }, opts);
@@ -63,5 +62,7 @@ export interface GetPagesResult {
  * ```
  */
 export function getPagesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPagesResult> {
-    return pulumi.output(getPages(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("auth0:index/getPages:getPages", {
+    }, opts);
 }
