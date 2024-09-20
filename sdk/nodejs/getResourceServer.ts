@@ -27,7 +27,6 @@ import * as utilities from "./utilities";
  */
 export function getResourceServer(args?: GetResourceServerArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceServerResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getResourceServer:getResourceServer", {
         "identifier": args.identifier,
@@ -130,7 +129,12 @@ export interface GetResourceServerResult {
  * ```
  */
 export function getResourceServerOutput(args?: GetResourceServerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceServerResult> {
-    return pulumi.output(args).apply((a: any) => getResourceServer(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("auth0:index/getResourceServer:getResourceServer", {
+        "identifier": args.identifier,
+        "resourceServerId": args.resourceServerId,
+    }, opts);
 }
 
 /**

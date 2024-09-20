@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getTenant(opts?: pulumi.InvokeOptions): Promise<GetTenantResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getTenant:getTenant", {
     }, opts);
@@ -123,5 +122,7 @@ export interface GetTenantResult {
  * ```
  */
 export function getTenantOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetTenantResult> {
-    return pulumi.output(getTenant(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("auth0:index/getTenant:getTenant", {
+    }, opts);
 }

@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAttackProtection(opts?: pulumi.InvokeOptions): Promise<GetAttackProtectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getAttackProtection:getAttackProtection", {
     }, opts);
@@ -59,5 +58,7 @@ export interface GetAttackProtectionResult {
  * ```
  */
 export function getAttackProtectionOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAttackProtectionResult> {
-    return pulumi.output(getAttackProtection(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("auth0:index/getAttackProtection:getAttackProtection", {
+    }, opts);
 }

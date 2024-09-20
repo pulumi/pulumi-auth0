@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
  */
 export function getSigningKeys(opts?: pulumi.InvokeOptions): Promise<GetSigningKeysResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getSigningKeys:getSigningKeys", {
     }, opts);
@@ -33,5 +32,7 @@ export interface GetSigningKeysResult {
  * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
  */
 export function getSigningKeysOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetSigningKeysResult> {
-    return pulumi.output(getSigningKeys(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("auth0:index/getSigningKeys:getSigningKeys", {
+    }, opts);
 }

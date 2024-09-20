@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * Data source to retrieve the custom domain configuration.
  */
 export function getCustomDomain(opts?: pulumi.InvokeOptions): Promise<GetCustomDomainResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getCustomDomain:getCustomDomain", {
     }, opts);
@@ -61,5 +60,7 @@ export interface GetCustomDomainResult {
  * Data source to retrieve the custom domain configuration.
  */
 export function getCustomDomainOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomDomainResult> {
-    return pulumi.output(getCustomDomain(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("auth0:index/getCustomDomain:getCustomDomain", {
+    }, opts);
 }

@@ -36,7 +36,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getConnectionScimConfiguration(args: GetConnectionScimConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionScimConfigurationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getConnectionScimConfiguration:getConnectionScimConfiguration", {
         "connectionId": args.connectionId,
@@ -130,7 +129,12 @@ export interface GetConnectionScimConfigurationResult {
  * ```
  */
 export function getConnectionScimConfigurationOutput(args: GetConnectionScimConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionScimConfigurationResult> {
-    return pulumi.output(args).apply((a: any) => getConnectionScimConfiguration(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("auth0:index/getConnectionScimConfiguration:getConnectionScimConfiguration", {
+        "connectionId": args.connectionId,
+        "defaultMappings": args.defaultMappings,
+        "mappings": args.mappings,
+    }, opts);
 }
 
 /**

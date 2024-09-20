@@ -60,13 +60,19 @@ type LookupBrandingThemeResult struct {
 }
 
 func LookupBrandingThemeOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupBrandingThemeResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupBrandingThemeResult, error) {
-		r, err := LookupBrandingTheme(ctx, opts...)
-		var s LookupBrandingThemeResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (LookupBrandingThemeResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv LookupBrandingThemeResult
+		secret, err := ctx.InvokePackageRaw("auth0:index/getBrandingTheme:getBrandingTheme", nil, &rv, "", opts...)
+		if err != nil {
+			return LookupBrandingThemeResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(LookupBrandingThemeResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(LookupBrandingThemeResultOutput), nil
+		}
+		return output, nil
 	}).(LookupBrandingThemeResultOutput)
 }
 

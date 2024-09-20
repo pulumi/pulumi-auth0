@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getSelfServiceProfile(args: GetSelfServiceProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetSelfServiceProfileResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getSelfServiceProfile:getSelfServiceProfile", {
         "id": args.id,
@@ -80,7 +79,10 @@ export interface GetSelfServiceProfileResult {
  * ```
  */
 export function getSelfServiceProfileOutput(args: GetSelfServiceProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSelfServiceProfileResult> {
-    return pulumi.output(args).apply((a: any) => getSelfServiceProfile(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("auth0:index/getSelfServiceProfile:getSelfServiceProfile", {
+        "id": args.id,
+    }, opts);
 }
 
 /**

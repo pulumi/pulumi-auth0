@@ -27,7 +27,6 @@ import * as utilities from "./utilities";
  */
 export function getClient(args?: GetClientArgs, opts?: pulumi.InvokeOptions): Promise<GetClientResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getClient:getClient", {
         "clientId": args.clientId,
@@ -227,7 +226,12 @@ export interface GetClientResult {
  * ```
  */
 export function getClientOutput(args?: GetClientOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClientResult> {
-    return pulumi.output(args).apply((a: any) => getClient(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("auth0:index/getClient:getClient", {
+        "clientId": args.clientId,
+        "name": args.name,
+    }, opts);
 }
 
 /**
