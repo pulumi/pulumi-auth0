@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getPromptScreenPartials(args: GetPromptScreenPartialsArgs, opts?: pulumi.InvokeOptions): Promise<GetPromptScreenPartialsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getPromptScreenPartials:getPromptScreenPartials", {
         "promptType": args.promptType,
@@ -75,7 +74,11 @@ export interface GetPromptScreenPartialsResult {
  * ```
  */
 export function getPromptScreenPartialsOutput(args: GetPromptScreenPartialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPromptScreenPartialsResult> {
-    return pulumi.output(args).apply((a: any) => getPromptScreenPartials(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("auth0:index/getPromptScreenPartials:getPromptScreenPartials", {
+        "promptType": args.promptType,
+        "screenPartials": args.screenPartials,
+    }, opts);
 }
 
 /**

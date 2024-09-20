@@ -27,7 +27,6 @@ import * as utilities from "./utilities";
  */
 export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getRole:getRole", {
         "name": args.name,
@@ -98,7 +97,12 @@ export interface GetRoleResult {
  * ```
  */
 export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
-    return pulumi.output(args).apply((a: any) => getRole(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("auth0:index/getRole:getRole", {
+        "name": args.name,
+        "roleId": args.roleId,
+    }, opts);
 }
 
 /**

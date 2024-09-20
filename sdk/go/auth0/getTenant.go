@@ -91,13 +91,19 @@ type LookupTenantResult struct {
 }
 
 func LookupTenantOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupTenantResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupTenantResult, error) {
-		r, err := LookupTenant(ctx, opts...)
-		var s LookupTenantResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (LookupTenantResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv LookupTenantResult
+		secret, err := ctx.InvokePackageRaw("auth0:index/getTenant:getTenant", nil, &rv, "", opts...)
+		if err != nil {
+			return LookupTenantResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(LookupTenantResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(LookupTenantResultOutput), nil
+		}
+		return output, nil
 	}).(LookupTenantResultOutput)
 }
 
