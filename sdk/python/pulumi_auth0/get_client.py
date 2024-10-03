@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -566,9 +571,6 @@ def get_client(client_id: Optional[str] = None,
         sso_disabled=pulumi.get(__ret__, 'sso_disabled'),
         token_endpoint_auth_method=pulumi.get(__ret__, 'token_endpoint_auth_method'),
         web_origins=pulumi.get(__ret__, 'web_origins'))
-
-
-@_utilities.lift_output_func(get_client)
 def get_client_output(client_id: Optional[pulumi.Input[Optional[str]]] = None,
                       name: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientResult]:
@@ -591,4 +593,48 @@ def get_client_output(client_id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str client_id: The ID of the client. If not provided, `name` must be set.
     :param str name: The name of the client. If not provided, `client_id` must be set.
     """
-    ...
+    __args__ = dict()
+    __args__['clientId'] = client_id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('auth0:index/getClient:getClient', __args__, opts=opts, typ=GetClientResult)
+    return __ret__.apply(lambda __response__: GetClientResult(
+        addons=pulumi.get(__response__, 'addons'),
+        allowed_clients=pulumi.get(__response__, 'allowed_clients'),
+        allowed_logout_urls=pulumi.get(__response__, 'allowed_logout_urls'),
+        allowed_origins=pulumi.get(__response__, 'allowed_origins'),
+        app_type=pulumi.get(__response__, 'app_type'),
+        callbacks=pulumi.get(__response__, 'callbacks'),
+        client_aliases=pulumi.get(__response__, 'client_aliases'),
+        client_id=pulumi.get(__response__, 'client_id'),
+        client_metadata=pulumi.get(__response__, 'client_metadata'),
+        client_secret=pulumi.get(__response__, 'client_secret'),
+        cross_origin_auth=pulumi.get(__response__, 'cross_origin_auth'),
+        cross_origin_loc=pulumi.get(__response__, 'cross_origin_loc'),
+        custom_login_page=pulumi.get(__response__, 'custom_login_page'),
+        custom_login_page_on=pulumi.get(__response__, 'custom_login_page_on'),
+        default_organizations=pulumi.get(__response__, 'default_organizations'),
+        description=pulumi.get(__response__, 'description'),
+        encryption_key=pulumi.get(__response__, 'encryption_key'),
+        form_template=pulumi.get(__response__, 'form_template'),
+        grant_types=pulumi.get(__response__, 'grant_types'),
+        id=pulumi.get(__response__, 'id'),
+        initiate_login_uri=pulumi.get(__response__, 'initiate_login_uri'),
+        is_first_party=pulumi.get(__response__, 'is_first_party'),
+        is_token_endpoint_ip_header_trusted=pulumi.get(__response__, 'is_token_endpoint_ip_header_trusted'),
+        jwt_configurations=pulumi.get(__response__, 'jwt_configurations'),
+        logo_uri=pulumi.get(__response__, 'logo_uri'),
+        mobiles=pulumi.get(__response__, 'mobiles'),
+        name=pulumi.get(__response__, 'name'),
+        native_social_logins=pulumi.get(__response__, 'native_social_logins'),
+        oidc_backchannel_logout_urls=pulumi.get(__response__, 'oidc_backchannel_logout_urls'),
+        oidc_conformant=pulumi.get(__response__, 'oidc_conformant'),
+        organization_require_behavior=pulumi.get(__response__, 'organization_require_behavior'),
+        organization_usage=pulumi.get(__response__, 'organization_usage'),
+        refresh_tokens=pulumi.get(__response__, 'refresh_tokens'),
+        require_pushed_authorization_requests=pulumi.get(__response__, 'require_pushed_authorization_requests'),
+        signing_keys=pulumi.get(__response__, 'signing_keys'),
+        sso=pulumi.get(__response__, 'sso'),
+        sso_disabled=pulumi.get(__response__, 'sso_disabled'),
+        token_endpoint_auth_method=pulumi.get(__response__, 'token_endpoint_auth_method'),
+        web_origins=pulumi.get(__response__, 'web_origins')))
