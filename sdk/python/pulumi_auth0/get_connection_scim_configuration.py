@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -181,9 +186,6 @@ def get_connection_scim_configuration(connection_id: Optional[str] = None,
         strategy=pulumi.get(__ret__, 'strategy'),
         tenant_name=pulumi.get(__ret__, 'tenant_name'),
         user_id_attribute=pulumi.get(__ret__, 'user_id_attribute'))
-
-
-@_utilities.lift_output_func(get_connection_scim_configuration)
 def get_connection_scim_configuration_output(connection_id: Optional[pulumi.Input[str]] = None,
                                              default_mappings: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectionScimConfigurationDefaultMappingArgs', 'GetConnectionScimConfigurationDefaultMappingArgsDict']]]]] = None,
                                              mappings: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectionScimConfigurationMappingArgs', 'GetConnectionScimConfigurationMappingArgsDict']]]]] = None,
@@ -219,4 +221,18 @@ def get_connection_scim_configuration_output(connection_id: Optional[pulumi.Inpu
     :param Sequence[Union['GetConnectionScimConfigurationDefaultMappingArgs', 'GetConnectionScimConfigurationDefaultMappingArgsDict']] default_mappings: Default mapping between Auth0 attributes and SCIM attributes for this connection type.
     :param Sequence[Union['GetConnectionScimConfigurationMappingArgs', 'GetConnectionScimConfigurationMappingArgsDict']] mappings: Mapping between Auth0 attributes and SCIM attributes.
     """
-    ...
+    __args__ = dict()
+    __args__['connectionId'] = connection_id
+    __args__['defaultMappings'] = default_mappings
+    __args__['mappings'] = mappings
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('auth0:index/getConnectionScimConfiguration:getConnectionScimConfiguration', __args__, opts=opts, typ=GetConnectionScimConfigurationResult)
+    return __ret__.apply(lambda __response__: GetConnectionScimConfigurationResult(
+        connection_id=pulumi.get(__response__, 'connection_id'),
+        connection_name=pulumi.get(__response__, 'connection_name'),
+        default_mappings=pulumi.get(__response__, 'default_mappings'),
+        id=pulumi.get(__response__, 'id'),
+        mappings=pulumi.get(__response__, 'mappings'),
+        strategy=pulumi.get(__response__, 'strategy'),
+        tenant_name=pulumi.get(__response__, 'tenant_name'),
+        user_id_attribute=pulumi.get(__response__, 'user_id_attribute')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -116,9 +121,6 @@ def get_pages(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPagesR
         guardian_mfas=pulumi.get(__ret__, 'guardian_mfas'),
         id=pulumi.get(__ret__, 'id'),
         logins=pulumi.get(__ret__, 'logins'))
-
-
-@_utilities.lift_output_func(get_pages)
 def get_pages_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPagesResult]:
     """
     Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
@@ -132,4 +134,12 @@ def get_pages_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outp
     my_pages = auth0.get_pages()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('auth0:index/getPages:getPages', __args__, opts=opts, typ=GetPagesResult)
+    return __ret__.apply(lambda __response__: GetPagesResult(
+        change_passwords=pulumi.get(__response__, 'change_passwords'),
+        errors=pulumi.get(__response__, 'errors'),
+        guardian_mfas=pulumi.get(__response__, 'guardian_mfas'),
+        id=pulumi.get(__response__, 'id'),
+        logins=pulumi.get(__response__, 'logins')))
