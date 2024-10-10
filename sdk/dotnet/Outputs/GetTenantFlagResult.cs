@@ -98,6 +98,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool NoDiscloseEnterpriseConnections;
         /// <summary>
+        /// Remove `alg` from jwks(JSON Web Key Sets).
+        /// </summary>
+        public readonly bool RemoveAlgFromJwks;
+        /// <summary>
         /// This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
         /// </summary>
         public readonly bool RequirePushedAuthorizationRequests;
@@ -154,6 +158,8 @@ namespace Pulumi.Auth0.Outputs
 
             bool noDiscloseEnterpriseConnections,
 
+            bool removeAlgFromJwks,
+
             bool requirePushedAuthorizationRequests,
 
             bool revokeRefreshTokenGrant,
@@ -181,6 +187,7 @@ namespace Pulumi.Auth0.Outputs
             EnableSso = enableSso;
             MfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
             NoDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
+            RemoveAlgFromJwks = removeAlgFromJwks;
             RequirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
             RevokeRefreshTokenGrant = revokeRefreshTokenGrant;
             UseScopeDescriptionsForConsent = useScopeDescriptionsForConsent;

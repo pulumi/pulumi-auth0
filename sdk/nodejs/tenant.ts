@@ -92,6 +92,10 @@ export class Tenant extends pulumi.CustomResource {
     }
 
     /**
+     * List of supported ACR values.
+     */
+    public readonly acrValuesSupporteds!: pulumi.Output<string[]>;
+    /**
      * Whether to accept an organization name instead of an ID on auth endpoints.
      */
     public readonly allowOrganizationNameInAuthenticationApi!: pulumi.Output<boolean>;
@@ -116,6 +120,10 @@ export class Tenant extends pulumi.CustomResource {
      */
     public readonly defaultRedirectionUri!: pulumi.Output<string>;
     /**
+     * Disable list of supported ACR values.
+     */
+    public readonly disableAcrValuesSupported!: pulumi.Output<boolean>;
+    /**
      * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      */
     public readonly enabledLocales!: pulumi.Output<string[]>;
@@ -132,9 +140,17 @@ export class Tenant extends pulumi.CustomResource {
      */
     public readonly idleSessionLifetime!: pulumi.Output<number | undefined>;
     /**
+     * Configuration for mTLS.
+     */
+    public readonly mtls!: pulumi.Output<outputs.TenantMtls>;
+    /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
     public readonly pictureUrl!: pulumi.Output<string>;
+    /**
+     * Enable pushed authorization requests.
+     */
+    public readonly pushedAuthorizationRequestsSupported!: pulumi.Output<boolean>;
     /**
      * Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
      */
@@ -173,17 +189,21 @@ export class Tenant extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TenantState | undefined;
+            resourceInputs["acrValuesSupporteds"] = state ? state.acrValuesSupporteds : undefined;
             resourceInputs["allowOrganizationNameInAuthenticationApi"] = state ? state.allowOrganizationNameInAuthenticationApi : undefined;
             resourceInputs["allowedLogoutUrls"] = state ? state.allowedLogoutUrls : undefined;
             resourceInputs["customizeMfaInPostloginAction"] = state ? state.customizeMfaInPostloginAction : undefined;
             resourceInputs["defaultAudience"] = state ? state.defaultAudience : undefined;
             resourceInputs["defaultDirectory"] = state ? state.defaultDirectory : undefined;
             resourceInputs["defaultRedirectionUri"] = state ? state.defaultRedirectionUri : undefined;
+            resourceInputs["disableAcrValuesSupported"] = state ? state.disableAcrValuesSupported : undefined;
             resourceInputs["enabledLocales"] = state ? state.enabledLocales : undefined;
             resourceInputs["flags"] = state ? state.flags : undefined;
             resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
             resourceInputs["idleSessionLifetime"] = state ? state.idleSessionLifetime : undefined;
+            resourceInputs["mtls"] = state ? state.mtls : undefined;
             resourceInputs["pictureUrl"] = state ? state.pictureUrl : undefined;
+            resourceInputs["pushedAuthorizationRequestsSupported"] = state ? state.pushedAuthorizationRequestsSupported : undefined;
             resourceInputs["sandboxVersion"] = state ? state.sandboxVersion : undefined;
             resourceInputs["sessionCookie"] = state ? state.sessionCookie : undefined;
             resourceInputs["sessionLifetime"] = state ? state.sessionLifetime : undefined;
@@ -192,17 +212,21 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["supportUrl"] = state ? state.supportUrl : undefined;
         } else {
             const args = argsOrState as TenantArgs | undefined;
+            resourceInputs["acrValuesSupporteds"] = args ? args.acrValuesSupporteds : undefined;
             resourceInputs["allowOrganizationNameInAuthenticationApi"] = args ? args.allowOrganizationNameInAuthenticationApi : undefined;
             resourceInputs["allowedLogoutUrls"] = args ? args.allowedLogoutUrls : undefined;
             resourceInputs["customizeMfaInPostloginAction"] = args ? args.customizeMfaInPostloginAction : undefined;
             resourceInputs["defaultAudience"] = args ? args.defaultAudience : undefined;
             resourceInputs["defaultDirectory"] = args ? args.defaultDirectory : undefined;
             resourceInputs["defaultRedirectionUri"] = args ? args.defaultRedirectionUri : undefined;
+            resourceInputs["disableAcrValuesSupported"] = args ? args.disableAcrValuesSupported : undefined;
             resourceInputs["enabledLocales"] = args ? args.enabledLocales : undefined;
             resourceInputs["flags"] = args ? args.flags : undefined;
             resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
             resourceInputs["idleSessionLifetime"] = args ? args.idleSessionLifetime : undefined;
+            resourceInputs["mtls"] = args ? args.mtls : undefined;
             resourceInputs["pictureUrl"] = args ? args.pictureUrl : undefined;
+            resourceInputs["pushedAuthorizationRequestsSupported"] = args ? args.pushedAuthorizationRequestsSupported : undefined;
             resourceInputs["sandboxVersion"] = args ? args.sandboxVersion : undefined;
             resourceInputs["sessionCookie"] = args ? args.sessionCookie : undefined;
             resourceInputs["sessionLifetime"] = args ? args.sessionLifetime : undefined;
@@ -219,6 +243,10 @@ export class Tenant extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Tenant resources.
  */
 export interface TenantState {
+    /**
+     * List of supported ACR values.
+     */
+    acrValuesSupporteds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to accept an organization name instead of an ID on auth endpoints.
      */
@@ -244,6 +272,10 @@ export interface TenantState {
      */
     defaultRedirectionUri?: pulumi.Input<string>;
     /**
+     * Disable list of supported ACR values.
+     */
+    disableAcrValuesSupported?: pulumi.Input<boolean>;
+    /**
      * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      */
     enabledLocales?: pulumi.Input<pulumi.Input<string>[]>;
@@ -260,9 +292,17 @@ export interface TenantState {
      */
     idleSessionLifetime?: pulumi.Input<number>;
     /**
+     * Configuration for mTLS.
+     */
+    mtls?: pulumi.Input<inputs.TenantMtls>;
+    /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
     pictureUrl?: pulumi.Input<string>;
+    /**
+     * Enable pushed authorization requests.
+     */
+    pushedAuthorizationRequestsSupported?: pulumi.Input<boolean>;
     /**
      * Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
      */
@@ -294,6 +334,10 @@ export interface TenantState {
  */
 export interface TenantArgs {
     /**
+     * List of supported ACR values.
+     */
+    acrValuesSupporteds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Whether to accept an organization name instead of an ID on auth endpoints.
      */
     allowOrganizationNameInAuthenticationApi?: pulumi.Input<boolean>;
@@ -318,6 +362,10 @@ export interface TenantArgs {
      */
     defaultRedirectionUri?: pulumi.Input<string>;
     /**
+     * Disable list of supported ACR values.
+     */
+    disableAcrValuesSupported?: pulumi.Input<boolean>;
+    /**
      * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      */
     enabledLocales?: pulumi.Input<pulumi.Input<string>[]>;
@@ -334,9 +382,17 @@ export interface TenantArgs {
      */
     idleSessionLifetime?: pulumi.Input<number>;
     /**
+     * Configuration for mTLS.
+     */
+    mtls?: pulumi.Input<inputs.TenantMtls>;
+    /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
     pictureUrl?: pulumi.Input<string>;
+    /**
+     * Enable pushed authorization requests.
+     */
+    pushedAuthorizationRequestsSupported?: pulumi.Input<boolean>;
     /**
      * Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
      */

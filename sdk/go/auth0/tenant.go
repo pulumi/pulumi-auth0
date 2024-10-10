@@ -88,6 +88,8 @@ import (
 type Tenant struct {
 	pulumi.CustomResourceState
 
+	// List of supported ACR values.
+	AcrValuesSupporteds pulumi.StringArrayOutput `pulumi:"acrValuesSupporteds"`
 	// Whether to accept an organization name instead of an ID on auth endpoints.
 	AllowOrganizationNameInAuthenticationApi pulumi.BoolOutput `pulumi:"allowOrganizationNameInAuthenticationApi"`
 	// URLs that Auth0 may redirect to after logout.
@@ -100,6 +102,8 @@ type Tenant struct {
 	DefaultDirectory pulumi.StringOutput `pulumi:"defaultDirectory"`
 	// The default absolute redirection URI. Must be HTTPS or an empty string.
 	DefaultRedirectionUri pulumi.StringOutput `pulumi:"defaultRedirectionUri"`
+	// Disable list of supported ACR values.
+	DisableAcrValuesSupported pulumi.BoolOutput `pulumi:"disableAcrValuesSupported"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales pulumi.StringArrayOutput `pulumi:"enabledLocales"`
 	// Configuration settings for tenant flags.
@@ -108,8 +112,12 @@ type Tenant struct {
 	FriendlyName pulumi.StringOutput `pulumi:"friendlyName"`
 	// Number of hours during which a session can be inactive before the user must log in again.
 	IdleSessionLifetime pulumi.Float64PtrOutput `pulumi:"idleSessionLifetime"`
+	// Configuration for mTLS.
+	Mtls TenantMtlsOutput `pulumi:"mtls"`
 	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl pulumi.StringOutput `pulumi:"pictureUrl"`
+	// Enable pushed authorization requests.
+	PushedAuthorizationRequestsSupported pulumi.BoolOutput `pulumi:"pushedAuthorizationRequestsSupported"`
 	// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion pulumi.StringOutput `pulumi:"sandboxVersion"`
 	// Alters behavior of tenant's session cookie. Contains a single `mode` property.
@@ -154,6 +162,8 @@ func GetTenant(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Tenant resources.
 type tenantState struct {
+	// List of supported ACR values.
+	AcrValuesSupporteds []string `pulumi:"acrValuesSupporteds"`
 	// Whether to accept an organization name instead of an ID on auth endpoints.
 	AllowOrganizationNameInAuthenticationApi *bool `pulumi:"allowOrganizationNameInAuthenticationApi"`
 	// URLs that Auth0 may redirect to after logout.
@@ -166,6 +176,8 @@ type tenantState struct {
 	DefaultDirectory *string `pulumi:"defaultDirectory"`
 	// The default absolute redirection URI. Must be HTTPS or an empty string.
 	DefaultRedirectionUri *string `pulumi:"defaultRedirectionUri"`
+	// Disable list of supported ACR values.
+	DisableAcrValuesSupported *bool `pulumi:"disableAcrValuesSupported"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales []string `pulumi:"enabledLocales"`
 	// Configuration settings for tenant flags.
@@ -174,8 +186,12 @@ type tenantState struct {
 	FriendlyName *string `pulumi:"friendlyName"`
 	// Number of hours during which a session can be inactive before the user must log in again.
 	IdleSessionLifetime *float64 `pulumi:"idleSessionLifetime"`
+	// Configuration for mTLS.
+	Mtls *TenantMtls `pulumi:"mtls"`
 	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl *string `pulumi:"pictureUrl"`
+	// Enable pushed authorization requests.
+	PushedAuthorizationRequestsSupported *bool `pulumi:"pushedAuthorizationRequestsSupported"`
 	// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion *string `pulumi:"sandboxVersion"`
 	// Alters behavior of tenant's session cookie. Contains a single `mode` property.
@@ -191,6 +207,8 @@ type tenantState struct {
 }
 
 type TenantState struct {
+	// List of supported ACR values.
+	AcrValuesSupporteds pulumi.StringArrayInput
 	// Whether to accept an organization name instead of an ID on auth endpoints.
 	AllowOrganizationNameInAuthenticationApi pulumi.BoolPtrInput
 	// URLs that Auth0 may redirect to after logout.
@@ -203,6 +221,8 @@ type TenantState struct {
 	DefaultDirectory pulumi.StringPtrInput
 	// The default absolute redirection URI. Must be HTTPS or an empty string.
 	DefaultRedirectionUri pulumi.StringPtrInput
+	// Disable list of supported ACR values.
+	DisableAcrValuesSupported pulumi.BoolPtrInput
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales pulumi.StringArrayInput
 	// Configuration settings for tenant flags.
@@ -211,8 +231,12 @@ type TenantState struct {
 	FriendlyName pulumi.StringPtrInput
 	// Number of hours during which a session can be inactive before the user must log in again.
 	IdleSessionLifetime pulumi.Float64PtrInput
+	// Configuration for mTLS.
+	Mtls TenantMtlsPtrInput
 	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl pulumi.StringPtrInput
+	// Enable pushed authorization requests.
+	PushedAuthorizationRequestsSupported pulumi.BoolPtrInput
 	// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion pulumi.StringPtrInput
 	// Alters behavior of tenant's session cookie. Contains a single `mode` property.
@@ -232,6 +256,8 @@ func (TenantState) ElementType() reflect.Type {
 }
 
 type tenantArgs struct {
+	// List of supported ACR values.
+	AcrValuesSupporteds []string `pulumi:"acrValuesSupporteds"`
 	// Whether to accept an organization name instead of an ID on auth endpoints.
 	AllowOrganizationNameInAuthenticationApi *bool `pulumi:"allowOrganizationNameInAuthenticationApi"`
 	// URLs that Auth0 may redirect to after logout.
@@ -244,6 +270,8 @@ type tenantArgs struct {
 	DefaultDirectory *string `pulumi:"defaultDirectory"`
 	// The default absolute redirection URI. Must be HTTPS or an empty string.
 	DefaultRedirectionUri *string `pulumi:"defaultRedirectionUri"`
+	// Disable list of supported ACR values.
+	DisableAcrValuesSupported *bool `pulumi:"disableAcrValuesSupported"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales []string `pulumi:"enabledLocales"`
 	// Configuration settings for tenant flags.
@@ -252,8 +280,12 @@ type tenantArgs struct {
 	FriendlyName *string `pulumi:"friendlyName"`
 	// Number of hours during which a session can be inactive before the user must log in again.
 	IdleSessionLifetime *float64 `pulumi:"idleSessionLifetime"`
+	// Configuration for mTLS.
+	Mtls *TenantMtls `pulumi:"mtls"`
 	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl *string `pulumi:"pictureUrl"`
+	// Enable pushed authorization requests.
+	PushedAuthorizationRequestsSupported *bool `pulumi:"pushedAuthorizationRequestsSupported"`
 	// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion *string `pulumi:"sandboxVersion"`
 	// Alters behavior of tenant's session cookie. Contains a single `mode` property.
@@ -270,6 +302,8 @@ type tenantArgs struct {
 
 // The set of arguments for constructing a Tenant resource.
 type TenantArgs struct {
+	// List of supported ACR values.
+	AcrValuesSupporteds pulumi.StringArrayInput
 	// Whether to accept an organization name instead of an ID on auth endpoints.
 	AllowOrganizationNameInAuthenticationApi pulumi.BoolPtrInput
 	// URLs that Auth0 may redirect to after logout.
@@ -282,6 +316,8 @@ type TenantArgs struct {
 	DefaultDirectory pulumi.StringPtrInput
 	// The default absolute redirection URI. Must be HTTPS or an empty string.
 	DefaultRedirectionUri pulumi.StringPtrInput
+	// Disable list of supported ACR values.
+	DisableAcrValuesSupported pulumi.BoolPtrInput
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales pulumi.StringArrayInput
 	// Configuration settings for tenant flags.
@@ -290,8 +326,12 @@ type TenantArgs struct {
 	FriendlyName pulumi.StringPtrInput
 	// Number of hours during which a session can be inactive before the user must log in again.
 	IdleSessionLifetime pulumi.Float64PtrInput
+	// Configuration for mTLS.
+	Mtls TenantMtlsPtrInput
 	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl pulumi.StringPtrInput
+	// Enable pushed authorization requests.
+	PushedAuthorizationRequestsSupported pulumi.BoolPtrInput
 	// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion pulumi.StringPtrInput
 	// Alters behavior of tenant's session cookie. Contains a single `mode` property.
@@ -393,6 +433,11 @@ func (o TenantOutput) ToTenantOutputWithContext(ctx context.Context) TenantOutpu
 	return o
 }
 
+// List of supported ACR values.
+func (o TenantOutput) AcrValuesSupporteds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.StringArrayOutput { return v.AcrValuesSupporteds }).(pulumi.StringArrayOutput)
+}
+
 // Whether to accept an organization name instead of an ID on auth endpoints.
 func (o TenantOutput) AllowOrganizationNameInAuthenticationApi() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.BoolOutput { return v.AllowOrganizationNameInAuthenticationApi }).(pulumi.BoolOutput)
@@ -423,6 +468,11 @@ func (o TenantOutput) DefaultRedirectionUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.DefaultRedirectionUri }).(pulumi.StringOutput)
 }
 
+// Disable list of supported ACR values.
+func (o TenantOutput) DisableAcrValuesSupported() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.BoolOutput { return v.DisableAcrValuesSupported }).(pulumi.BoolOutput)
+}
+
 // Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 func (o TenantOutput) EnabledLocales() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringArrayOutput { return v.EnabledLocales }).(pulumi.StringArrayOutput)
@@ -443,9 +493,19 @@ func (o TenantOutput) IdleSessionLifetime() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.Float64PtrOutput { return v.IdleSessionLifetime }).(pulumi.Float64PtrOutput)
 }
 
+// Configuration for mTLS.
+func (o TenantOutput) Mtls() TenantMtlsOutput {
+	return o.ApplyT(func(v *Tenant) TenantMtlsOutput { return v.Mtls }).(TenantMtlsOutput)
+}
+
 // URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 func (o TenantOutput) PictureUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.PictureUrl }).(pulumi.StringOutput)
+}
+
+// Enable pushed authorization requests.
+func (o TenantOutput) PushedAuthorizationRequestsSupported() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.BoolOutput { return v.PushedAuthorizationRequestsSupported }).(pulumi.BoolOutput)
 }
 
 // Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.

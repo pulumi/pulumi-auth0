@@ -56,6 +56,10 @@ export interface GetOrganizationResult {
      * Defines how to style the login pages.
      */
     readonly brandings: outputs.GetOrganizationBranding[];
+    /**
+     * Client Grant ID(s) that are associated to the organization.
+     */
+    readonly clientGrants: string[];
     readonly connections: outputs.GetOrganizationConnection[];
     /**
      * Friendly name of this organization.

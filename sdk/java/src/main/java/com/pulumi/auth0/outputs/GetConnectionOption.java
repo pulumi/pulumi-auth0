@@ -464,7 +464,7 @@ public final class GetConnectionOption {
      */
     private Boolean useWsfed;
     /**
-     * @return Attribute in the SAML token that will be mapped to the user_id property in Auth0.
+     * @return Attribute in the token that will be mapped to the user_id property in Auth0.
      * 
      */
     private String userIdAttribute;
@@ -1100,7 +1100,7 @@ public final class GetConnectionOption {
         return this.useWsfed;
     }
     /**
-     * @return Attribute in the SAML token that will be mapped to the user_id property in Auth0.
+     * @return Attribute in the token that will be mapped to the user_id property in Auth0.
      * 
      */
     public String userIdAttribute() {

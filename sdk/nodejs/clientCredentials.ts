@@ -57,7 +57,7 @@ export class ClientCredentials extends pulumi.CustomResource {
     }
 
     /**
-     * Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT).
+     * Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
      */
     public readonly authenticationMethod!: pulumi.Output<string>;
     /**
@@ -69,6 +69,18 @@ export class ClientCredentials extends pulumi.CustomResource {
      * Defines `privateKeyJwt` client authentication method.
      */
     public readonly privateKeyJwt!: pulumi.Output<outputs.ClientCredentialsPrivateKeyJwt | undefined>;
+    /**
+     * Defines `tlsClientAuth` client authentication method.
+     */
+    public readonly selfSignedTlsClientAuth!: pulumi.Output<outputs.ClientCredentialsSelfSignedTlsClientAuth | undefined>;
+    /**
+     * Configuration for JWT-secured Authorization Requests(JAR).
+     */
+    public readonly signedRequestObject!: pulumi.Output<outputs.ClientCredentialsSignedRequestObject | undefined>;
+    /**
+     * Defines `tlsClientAuth` client authentication method.
+     */
+    public readonly tlsClientAuth!: pulumi.Output<outputs.ClientCredentialsTlsClientAuth | undefined>;
 
     /**
      * Create a ClientCredentials resource with the given unique name, arguments, and options.
@@ -87,11 +99,11 @@ export class ClientCredentials extends pulumi.CustomResource {
             resourceInputs["clientId"] = state ? state.clientId : undefined;
             resourceInputs["clientSecret"] = state ? state.clientSecret : undefined;
             resourceInputs["privateKeyJwt"] = state ? state.privateKeyJwt : undefined;
+            resourceInputs["selfSignedTlsClientAuth"] = state ? state.selfSignedTlsClientAuth : undefined;
+            resourceInputs["signedRequestObject"] = state ? state.signedRequestObject : undefined;
+            resourceInputs["tlsClientAuth"] = state ? state.tlsClientAuth : undefined;
         } else {
             const args = argsOrState as ClientCredentialsArgs | undefined;
-            if ((!args || args.authenticationMethod === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'authenticationMethod'");
-            }
             if ((!args || args.clientId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clientId'");
             }
@@ -99,6 +111,9 @@ export class ClientCredentials extends pulumi.CustomResource {
             resourceInputs["clientId"] = args ? args.clientId : undefined;
             resourceInputs["clientSecret"] = args?.clientSecret ? pulumi.secret(args.clientSecret) : undefined;
             resourceInputs["privateKeyJwt"] = args ? args.privateKeyJwt : undefined;
+            resourceInputs["selfSignedTlsClientAuth"] = args ? args.selfSignedTlsClientAuth : undefined;
+            resourceInputs["signedRequestObject"] = args ? args.signedRequestObject : undefined;
+            resourceInputs["tlsClientAuth"] = args ? args.tlsClientAuth : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["clientSecret"] };
@@ -112,7 +127,7 @@ export class ClientCredentials extends pulumi.CustomResource {
  */
 export interface ClientCredentialsState {
     /**
-     * Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT).
+     * Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
      */
     authenticationMethod?: pulumi.Input<string>;
     /**
@@ -124,6 +139,18 @@ export interface ClientCredentialsState {
      * Defines `privateKeyJwt` client authentication method.
      */
     privateKeyJwt?: pulumi.Input<inputs.ClientCredentialsPrivateKeyJwt>;
+    /**
+     * Defines `tlsClientAuth` client authentication method.
+     */
+    selfSignedTlsClientAuth?: pulumi.Input<inputs.ClientCredentialsSelfSignedTlsClientAuth>;
+    /**
+     * Configuration for JWT-secured Authorization Requests(JAR).
+     */
+    signedRequestObject?: pulumi.Input<inputs.ClientCredentialsSignedRequestObject>;
+    /**
+     * Defines `tlsClientAuth` client authentication method.
+     */
+    tlsClientAuth?: pulumi.Input<inputs.ClientCredentialsTlsClientAuth>;
 }
 
 /**
@@ -131,9 +158,9 @@ export interface ClientCredentialsState {
  */
 export interface ClientCredentialsArgs {
     /**
-     * Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT).
+     * Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
      */
-    authenticationMethod: pulumi.Input<string>;
+    authenticationMethod?: pulumi.Input<string>;
     /**
      * The ID of the client for which to configure the authentication method.
      */
@@ -143,4 +170,16 @@ export interface ClientCredentialsArgs {
      * Defines `privateKeyJwt` client authentication method.
      */
     privateKeyJwt?: pulumi.Input<inputs.ClientCredentialsPrivateKeyJwt>;
+    /**
+     * Defines `tlsClientAuth` client authentication method.
+     */
+    selfSignedTlsClientAuth?: pulumi.Input<inputs.ClientCredentialsSelfSignedTlsClientAuth>;
+    /**
+     * Configuration for JWT-secured Authorization Requests(JAR).
+     */
+    signedRequestObject?: pulumi.Input<inputs.ClientCredentialsSignedRequestObject>;
+    /**
+     * Defines `tlsClientAuth` client authentication method.
+     */
+    tlsClientAuth?: pulumi.Input<inputs.ClientCredentialsTlsClientAuth>;
 }

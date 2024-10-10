@@ -67,8 +67,10 @@ type LookupOrganizationArgs struct {
 // A collection of values returned by getOrganization.
 type LookupOrganizationResult struct {
 	// Defines how to style the login pages.
-	Brandings   []GetOrganizationBranding       `pulumi:"brandings"`
-	Connections []GetOrganizationConnectionType `pulumi:"connections"`
+	Brandings []GetOrganizationBranding `pulumi:"brandings"`
+	// Client Grant ID(s) that are associated to the organization.
+	ClientGrants []string                        `pulumi:"clientGrants"`
+	Connections  []GetOrganizationConnectionType `pulumi:"connections"`
 	// Friendly name of this organization.
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
@@ -132,6 +134,11 @@ func (o LookupOrganizationResultOutput) ToLookupOrganizationResultOutputWithCont
 // Defines how to style the login pages.
 func (o LookupOrganizationResultOutput) Brandings() GetOrganizationBrandingArrayOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) []GetOrganizationBranding { return v.Brandings }).(GetOrganizationBrandingArrayOutput)
+}
+
+// Client Grant ID(s) that are associated to the organization.
+func (o LookupOrganizationResultOutput) ClientGrants() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) []string { return v.ClientGrants }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupOrganizationResultOutput) Connections() GetOrganizationConnectionTypeArrayOutput {

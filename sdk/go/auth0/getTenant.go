@@ -48,6 +48,8 @@ func LookupTenant(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupTena
 
 // A collection of values returned by getTenant.
 type LookupTenantResult struct {
+	// List of supported ACR values.
+	AcrValuesSupporteds []string `pulumi:"acrValuesSupporteds"`
 	// Whether to accept an organization name instead of an ID on auth endpoints.
 	AllowOrganizationNameInAuthenticationApi bool `pulumi:"allowOrganizationNameInAuthenticationApi"`
 	// URLs that Auth0 may redirect to after logout.
@@ -60,6 +62,8 @@ type LookupTenantResult struct {
 	DefaultDirectory string `pulumi:"defaultDirectory"`
 	// The default absolute redirection URI. Must be HTTPS or an empty string.
 	DefaultRedirectionUri string `pulumi:"defaultRedirectionUri"`
+	// Disable list of supported ACR values.
+	DisableAcrValuesSupported bool `pulumi:"disableAcrValuesSupported"`
 	// Your Auth0 domain name.
 	Domain string `pulumi:"domain"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
@@ -74,8 +78,12 @@ type LookupTenantResult struct {
 	IdleSessionLifetime float64 `pulumi:"idleSessionLifetime"`
 	// The identifier value of the built-in Management API resource server, which can be used as an audience when configuring client grants.
 	ManagementApiIdentifier string `pulumi:"managementApiIdentifier"`
+	// Configuration for mTLS.
+	Mtls []GetTenantMtl `pulumi:"mtls"`
 	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl string `pulumi:"pictureUrl"`
+	// Enable pushed authorization requests.
+	PushedAuthorizationRequestsSupported bool `pulumi:"pushedAuthorizationRequestsSupported"`
 	// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion string `pulumi:"sandboxVersion"`
 	// Alters behavior of tenant's session cookie. Contains a single `mode` property.
@@ -122,6 +130,11 @@ func (o LookupTenantResultOutput) ToLookupTenantResultOutputWithContext(ctx cont
 	return o
 }
 
+// List of supported ACR values.
+func (o LookupTenantResultOutput) AcrValuesSupporteds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupTenantResult) []string { return v.AcrValuesSupporteds }).(pulumi.StringArrayOutput)
+}
+
 // Whether to accept an organization name instead of an ID on auth endpoints.
 func (o LookupTenantResultOutput) AllowOrganizationNameInAuthenticationApi() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupTenantResult) bool { return v.AllowOrganizationNameInAuthenticationApi }).(pulumi.BoolOutput)
@@ -150,6 +163,11 @@ func (o LookupTenantResultOutput) DefaultDirectory() pulumi.StringOutput {
 // The default absolute redirection URI. Must be HTTPS or an empty string.
 func (o LookupTenantResultOutput) DefaultRedirectionUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTenantResult) string { return v.DefaultRedirectionUri }).(pulumi.StringOutput)
+}
+
+// Disable list of supported ACR values.
+func (o LookupTenantResultOutput) DisableAcrValuesSupported() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTenantResult) bool { return v.DisableAcrValuesSupported }).(pulumi.BoolOutput)
 }
 
 // Your Auth0 domain name.
@@ -187,9 +205,19 @@ func (o LookupTenantResultOutput) ManagementApiIdentifier() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupTenantResult) string { return v.ManagementApiIdentifier }).(pulumi.StringOutput)
 }
 
+// Configuration for mTLS.
+func (o LookupTenantResultOutput) Mtls() GetTenantMtlArrayOutput {
+	return o.ApplyT(func(v LookupTenantResult) []GetTenantMtl { return v.Mtls }).(GetTenantMtlArrayOutput)
+}
+
 // URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 func (o LookupTenantResultOutput) PictureUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTenantResult) string { return v.PictureUrl }).(pulumi.StringOutput)
+}
+
+// Enable pushed authorization requests.
+func (o LookupTenantResultOutput) PushedAuthorizationRequestsSupported() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTenantResult) bool { return v.PushedAuthorizationRequestsSupported }).(pulumi.BoolOutput)
 }
 
 // Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.

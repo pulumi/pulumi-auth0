@@ -331,6 +331,21 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Remove `alg` from jwks(JSON Web Key Sets).
+     * 
+     */
+    @Import(name="removeAlgFromJwks")
+    private @Nullable Output<Boolean> removeAlgFromJwks;
+
+    /**
+     * @return Remove `alg` from jwks(JSON Web Key Sets).
+     * 
+     */
+    public Optional<Output<Boolean>> removeAlgFromJwks() {
+        return Optional.ofNullable(this.removeAlgFromJwks);
+    }
+
+    /**
      * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
      * @deprecated
@@ -407,6 +422,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         this.enableSso = $.enableSso;
         this.mfaShowFactorListOnEnrollment = $.mfaShowFactorListOnEnrollment;
         this.noDiscloseEnterpriseConnections = $.noDiscloseEnterpriseConnections;
+        this.removeAlgFromJwks = $.removeAlgFromJwks;
         this.requirePushedAuthorizationRequests = $.requirePushedAuthorizationRequests;
         this.revokeRefreshTokenGrant = $.revokeRefreshTokenGrant;
         this.useScopeDescriptionsForConsent = $.useScopeDescriptionsForConsent;
@@ -869,6 +885,27 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder noDiscloseEnterpriseConnections(Boolean noDiscloseEnterpriseConnections) {
             return noDiscloseEnterpriseConnections(Output.of(noDiscloseEnterpriseConnections));
+        }
+
+        /**
+         * @param removeAlgFromJwks Remove `alg` from jwks(JSON Web Key Sets).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder removeAlgFromJwks(@Nullable Output<Boolean> removeAlgFromJwks) {
+            $.removeAlgFromJwks = removeAlgFromJwks;
+            return this;
+        }
+
+        /**
+         * @param removeAlgFromJwks Remove `alg` from jwks(JSON Web Key Sets).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder removeAlgFromJwks(Boolean removeAlgFromJwks) {
+            return removeAlgFromJwks(Output.of(removeAlgFromJwks));
         }
 
         /**

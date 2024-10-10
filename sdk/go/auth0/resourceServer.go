@@ -35,6 +35,27 @@ import (
 //				AllowOfflineAccess: pulumi.Bool(true),
 //				TokenLifetime:      pulumi.Int(8600),
 //				SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),
+//				ConsentPolicy: pulumi.String("transactional-authorization-with-mfa"),
+//				TokenEncryption: &auth0.ResourceServerTokenEncryptionArgs{
+//					Format: pulumi.String("compact-nested-jwe"),
+//					EncryptionKey: &auth0.ResourceServerTokenEncryptionEncryptionKeyArgs{
+//						Name:      pulumi.String("keyname"),
+//						Algorithm: pulumi.String("RSA-OAEP-256"),
+//						Pem:       pulumi.String("-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n"),
+//					},
+//				},
+//				AuthorizationDetails: auth0.ResourceServerAuthorizationDetailArray{
+//					&auth0.ResourceServerAuthorizationDetailArgs{
+//						Type: pulumi.String("payment"),
+//					},
+//					&auth0.ResourceServerAuthorizationDetailArgs{
+//						Type: pulumi.String("non-payment"),
+//					},
+//				},
+//				ProofOfPossession: &auth0.ResourceServerProofOfPossessionArgs{
+//					Mechanism: pulumi.String("mtls"),
+//					Required:  pulumi.Bool(true),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -61,13 +82,19 @@ type ResourceServer struct {
 
 	// Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess pulumi.BoolPtrOutput `pulumi:"allowOfflineAccess"`
+	// Authorization details for this resource server.
+	AuthorizationDetails ResourceServerAuthorizationDetailArrayOutput `pulumi:"authorizationDetails"`
+	// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+	ConsentPolicy pulumi.StringOutput `pulumi:"consentPolicy"`
 	// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
 	EnforcePolicies pulumi.BoolOutput `pulumi:"enforcePolicies"`
 	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+	// Configuration settings for proof-of-possession for this resource server.
+	ProofOfPossession ResourceServerProofOfPossessionOutput `pulumi:"proofOfPossession"`
+	// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
 	SigningAlg pulumi.StringOutput `pulumi:"signingAlg"`
 	// Secret used to sign tokens when using symmetric algorithms (HS256).
 	SigningSecret pulumi.StringOutput `pulumi:"signingSecret"`
@@ -75,6 +102,8 @@ type ResourceServer struct {
 	SkipConsentForVerifiableFirstPartyClients pulumi.BoolOutput `pulumi:"skipConsentForVerifiableFirstPartyClients"`
 	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
 	TokenDialect pulumi.StringOutput `pulumi:"tokenDialect"`
+	// Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+	TokenEncryption ResourceServerTokenEncryptionOutput `pulumi:"tokenEncryption"`
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime pulumi.IntOutput `pulumi:"tokenLifetime"`
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
@@ -118,13 +147,19 @@ func GetResourceServer(ctx *pulumi.Context,
 type resourceServerState struct {
 	// Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess *bool `pulumi:"allowOfflineAccess"`
+	// Authorization details for this resource server.
+	AuthorizationDetails []ResourceServerAuthorizationDetail `pulumi:"authorizationDetails"`
+	// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+	ConsentPolicy *string `pulumi:"consentPolicy"`
 	// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
 	EnforcePolicies *bool `pulumi:"enforcePolicies"`
 	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
 	Identifier *string `pulumi:"identifier"`
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name *string `pulumi:"name"`
-	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+	// Configuration settings for proof-of-possession for this resource server.
+	ProofOfPossession *ResourceServerProofOfPossession `pulumi:"proofOfPossession"`
+	// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
 	SigningAlg *string `pulumi:"signingAlg"`
 	// Secret used to sign tokens when using symmetric algorithms (HS256).
 	SigningSecret *string `pulumi:"signingSecret"`
@@ -132,6 +167,8 @@ type resourceServerState struct {
 	SkipConsentForVerifiableFirstPartyClients *bool `pulumi:"skipConsentForVerifiableFirstPartyClients"`
 	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
 	TokenDialect *string `pulumi:"tokenDialect"`
+	// Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+	TokenEncryption *ResourceServerTokenEncryption `pulumi:"tokenEncryption"`
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime *int `pulumi:"tokenLifetime"`
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
@@ -143,13 +180,19 @@ type resourceServerState struct {
 type ResourceServerState struct {
 	// Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess pulumi.BoolPtrInput
+	// Authorization details for this resource server.
+	AuthorizationDetails ResourceServerAuthorizationDetailArrayInput
+	// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+	ConsentPolicy pulumi.StringPtrInput
 	// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
 	EnforcePolicies pulumi.BoolPtrInput
 	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
 	Identifier pulumi.StringPtrInput
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name pulumi.StringPtrInput
-	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+	// Configuration settings for proof-of-possession for this resource server.
+	ProofOfPossession ResourceServerProofOfPossessionPtrInput
+	// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
 	SigningAlg pulumi.StringPtrInput
 	// Secret used to sign tokens when using symmetric algorithms (HS256).
 	SigningSecret pulumi.StringPtrInput
@@ -157,6 +200,8 @@ type ResourceServerState struct {
 	SkipConsentForVerifiableFirstPartyClients pulumi.BoolPtrInput
 	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
 	TokenDialect pulumi.StringPtrInput
+	// Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+	TokenEncryption ResourceServerTokenEncryptionPtrInput
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime pulumi.IntPtrInput
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
@@ -172,13 +217,19 @@ func (ResourceServerState) ElementType() reflect.Type {
 type resourceServerArgs struct {
 	// Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess *bool `pulumi:"allowOfflineAccess"`
+	// Authorization details for this resource server.
+	AuthorizationDetails []ResourceServerAuthorizationDetail `pulumi:"authorizationDetails"`
+	// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+	ConsentPolicy *string `pulumi:"consentPolicy"`
 	// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
 	EnforcePolicies *bool `pulumi:"enforcePolicies"`
 	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
 	Identifier string `pulumi:"identifier"`
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name *string `pulumi:"name"`
-	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+	// Configuration settings for proof-of-possession for this resource server.
+	ProofOfPossession *ResourceServerProofOfPossession `pulumi:"proofOfPossession"`
+	// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
 	SigningAlg *string `pulumi:"signingAlg"`
 	// Secret used to sign tokens when using symmetric algorithms (HS256).
 	SigningSecret *string `pulumi:"signingSecret"`
@@ -186,6 +237,8 @@ type resourceServerArgs struct {
 	SkipConsentForVerifiableFirstPartyClients *bool `pulumi:"skipConsentForVerifiableFirstPartyClients"`
 	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
 	TokenDialect *string `pulumi:"tokenDialect"`
+	// Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+	TokenEncryption *ResourceServerTokenEncryption `pulumi:"tokenEncryption"`
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime *int `pulumi:"tokenLifetime"`
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
@@ -198,13 +251,19 @@ type resourceServerArgs struct {
 type ResourceServerArgs struct {
 	// Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess pulumi.BoolPtrInput
+	// Authorization details for this resource server.
+	AuthorizationDetails ResourceServerAuthorizationDetailArrayInput
+	// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+	ConsentPolicy pulumi.StringPtrInput
 	// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
 	EnforcePolicies pulumi.BoolPtrInput
 	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
 	Identifier pulumi.StringInput
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name pulumi.StringPtrInput
-	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+	// Configuration settings for proof-of-possession for this resource server.
+	ProofOfPossession ResourceServerProofOfPossessionPtrInput
+	// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
 	SigningAlg pulumi.StringPtrInput
 	// Secret used to sign tokens when using symmetric algorithms (HS256).
 	SigningSecret pulumi.StringPtrInput
@@ -212,6 +271,8 @@ type ResourceServerArgs struct {
 	SkipConsentForVerifiableFirstPartyClients pulumi.BoolPtrInput
 	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
 	TokenDialect pulumi.StringPtrInput
+	// Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+	TokenEncryption ResourceServerTokenEncryptionPtrInput
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime pulumi.IntPtrInput
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
@@ -312,6 +373,16 @@ func (o ResourceServerOutput) AllowOfflineAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.BoolPtrOutput { return v.AllowOfflineAccess }).(pulumi.BoolPtrOutput)
 }
 
+// Authorization details for this resource server.
+func (o ResourceServerOutput) AuthorizationDetails() ResourceServerAuthorizationDetailArrayOutput {
+	return o.ApplyT(func(v *ResourceServer) ResourceServerAuthorizationDetailArrayOutput { return v.AuthorizationDetails }).(ResourceServerAuthorizationDetailArrayOutput)
+}
+
+// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+func (o ResourceServerOutput) ConsentPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.StringOutput { return v.ConsentPolicy }).(pulumi.StringOutput)
+}
+
 // If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
 func (o ResourceServerOutput) EnforcePolicies() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.BoolOutput { return v.EnforcePolicies }).(pulumi.BoolOutput)
@@ -327,7 +398,12 @@ func (o ResourceServerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+// Configuration settings for proof-of-possession for this resource server.
+func (o ResourceServerOutput) ProofOfPossession() ResourceServerProofOfPossessionOutput {
+	return o.ApplyT(func(v *ResourceServer) ResourceServerProofOfPossessionOutput { return v.ProofOfPossession }).(ResourceServerProofOfPossessionOutput)
+}
+
+// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
 func (o ResourceServerOutput) SigningAlg() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.StringOutput { return v.SigningAlg }).(pulumi.StringOutput)
 }
@@ -345,6 +421,11 @@ func (o ResourceServerOutput) SkipConsentForVerifiableFirstPartyClients() pulumi
 // Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
 func (o ResourceServerOutput) TokenDialect() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.StringOutput { return v.TokenDialect }).(pulumi.StringOutput)
+}
+
+// Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+func (o ResourceServerOutput) TokenEncryption() ResourceServerTokenEncryptionOutput {
+	return o.ApplyT(func(v *ResourceServer) ResourceServerTokenEncryptionOutput { return v.TokenEncryption }).(ResourceServerTokenEncryptionOutput)
 }
 
 // Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.

@@ -22,10 +22,16 @@ class GetResourceServerResult:
     """
     A collection of values returned by getResourceServer.
     """
-    def __init__(__self__, allow_offline_access=None, enforce_policies=None, id=None, identifier=None, name=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, token_dialect=None, token_lifetime=None, token_lifetime_for_web=None, verification_location=None):
+    def __init__(__self__, allow_offline_access=None, authorization_details=None, consent_policy=None, enforce_policies=None, id=None, identifier=None, name=None, proof_of_possessions=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, token_dialect=None, token_encryptions=None, token_lifetime=None, token_lifetime_for_web=None, verification_location=None):
         if allow_offline_access and not isinstance(allow_offline_access, bool):
             raise TypeError("Expected argument 'allow_offline_access' to be a bool")
         pulumi.set(__self__, "allow_offline_access", allow_offline_access)
+        if authorization_details and not isinstance(authorization_details, list):
+            raise TypeError("Expected argument 'authorization_details' to be a list")
+        pulumi.set(__self__, "authorization_details", authorization_details)
+        if consent_policy and not isinstance(consent_policy, str):
+            raise TypeError("Expected argument 'consent_policy' to be a str")
+        pulumi.set(__self__, "consent_policy", consent_policy)
         if enforce_policies and not isinstance(enforce_policies, bool):
             raise TypeError("Expected argument 'enforce_policies' to be a bool")
         pulumi.set(__self__, "enforce_policies", enforce_policies)
@@ -38,6 +44,9 @@ class GetResourceServerResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if proof_of_possessions and not isinstance(proof_of_possessions, list):
+            raise TypeError("Expected argument 'proof_of_possessions' to be a list")
+        pulumi.set(__self__, "proof_of_possessions", proof_of_possessions)
         if resource_server_id and not isinstance(resource_server_id, str):
             raise TypeError("Expected argument 'resource_server_id' to be a str")
         pulumi.set(__self__, "resource_server_id", resource_server_id)
@@ -56,6 +65,9 @@ class GetResourceServerResult:
         if token_dialect and not isinstance(token_dialect, str):
             raise TypeError("Expected argument 'token_dialect' to be a str")
         pulumi.set(__self__, "token_dialect", token_dialect)
+        if token_encryptions and not isinstance(token_encryptions, list):
+            raise TypeError("Expected argument 'token_encryptions' to be a list")
+        pulumi.set(__self__, "token_encryptions", token_encryptions)
         if token_lifetime and not isinstance(token_lifetime, int):
             raise TypeError("Expected argument 'token_lifetime' to be a int")
         pulumi.set(__self__, "token_lifetime", token_lifetime)
@@ -73,6 +85,22 @@ class GetResourceServerResult:
         Indicates whether refresh tokens can be issued for this resource server.
         """
         return pulumi.get(self, "allow_offline_access")
+
+    @property
+    @pulumi.getter(name="authorizationDetails")
+    def authorization_details(self) -> Sequence['outputs.GetResourceServerAuthorizationDetailResult']:
+        """
+        Authorization details for this resource server.
+        """
+        return pulumi.get(self, "authorization_details")
+
+    @property
+    @pulumi.getter(name="consentPolicy")
+    def consent_policy(self) -> str:
+        """
+        Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+        """
+        return pulumi.get(self, "consent_policy")
 
     @property
     @pulumi.getter(name="enforcePolicies")
@@ -107,6 +135,14 @@ class GetResourceServerResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="proofOfPossessions")
+    def proof_of_possessions(self) -> Sequence['outputs.GetResourceServerProofOfPossessionResult']:
+        """
+        Configuration settings for proof-of-possession for this resource server.
+        """
+        return pulumi.get(self, "proof_of_possessions")
+
+    @property
     @pulumi.getter(name="resourceServerId")
     def resource_server_id(self) -> Optional[str]:
         """
@@ -126,7 +162,7 @@ class GetResourceServerResult:
     @pulumi.getter(name="signingAlg")
     def signing_alg(self) -> str:
         """
-        Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+        Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         """
         return pulumi.get(self, "signing_alg")
 
@@ -153,6 +189,14 @@ class GetResourceServerResult:
         Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         """
         return pulumi.get(self, "token_dialect")
+
+    @property
+    @pulumi.getter(name="tokenEncryptions")
+    def token_encryptions(self) -> Sequence['outputs.GetResourceServerTokenEncryptionResult']:
+        """
+        Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+        """
+        return pulumi.get(self, "token_encryptions")
 
     @property
     @pulumi.getter(name="tokenLifetime")
@@ -186,16 +230,20 @@ class AwaitableGetResourceServerResult(GetResourceServerResult):
             yield self
         return GetResourceServerResult(
             allow_offline_access=self.allow_offline_access,
+            authorization_details=self.authorization_details,
+            consent_policy=self.consent_policy,
             enforce_policies=self.enforce_policies,
             id=self.id,
             identifier=self.identifier,
             name=self.name,
+            proof_of_possessions=self.proof_of_possessions,
             resource_server_id=self.resource_server_id,
             scopes=self.scopes,
             signing_alg=self.signing_alg,
             signing_secret=self.signing_secret,
             skip_consent_for_verifiable_first_party_clients=self.skip_consent_for_verifiable_first_party_clients,
             token_dialect=self.token_dialect,
+            token_encryptions=self.token_encryptions,
             token_lifetime=self.token_lifetime,
             token_lifetime_for_web=self.token_lifetime_for_web,
             verification_location=self.verification_location)
@@ -231,16 +279,20 @@ def get_resource_server(identifier: Optional[str] = None,
 
     return AwaitableGetResourceServerResult(
         allow_offline_access=pulumi.get(__ret__, 'allow_offline_access'),
+        authorization_details=pulumi.get(__ret__, 'authorization_details'),
+        consent_policy=pulumi.get(__ret__, 'consent_policy'),
         enforce_policies=pulumi.get(__ret__, 'enforce_policies'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         name=pulumi.get(__ret__, 'name'),
+        proof_of_possessions=pulumi.get(__ret__, 'proof_of_possessions'),
         resource_server_id=pulumi.get(__ret__, 'resource_server_id'),
         scopes=pulumi.get(__ret__, 'scopes'),
         signing_alg=pulumi.get(__ret__, 'signing_alg'),
         signing_secret=pulumi.get(__ret__, 'signing_secret'),
         skip_consent_for_verifiable_first_party_clients=pulumi.get(__ret__, 'skip_consent_for_verifiable_first_party_clients'),
         token_dialect=pulumi.get(__ret__, 'token_dialect'),
+        token_encryptions=pulumi.get(__ret__, 'token_encryptions'),
         token_lifetime=pulumi.get(__ret__, 'token_lifetime'),
         token_lifetime_for_web=pulumi.get(__ret__, 'token_lifetime_for_web'),
         verification_location=pulumi.get(__ret__, 'verification_location'))

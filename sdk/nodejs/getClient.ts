@@ -81,6 +81,10 @@ export interface GetClientResult {
      */
     readonly clientAliases: string[];
     /**
+     * Defines client authentication methods.
+     */
+    readonly clientAuthenticationMethods: outputs.GetClientClientAuthenticationMethod[];
+    /**
      * The ID of the client. If not provided, `name` must be set.
      */
     readonly clientId?: string;
@@ -89,6 +93,10 @@ export interface GetClientResult {
      */
     readonly clientMetadata: {[key: string]: string};
     readonly clientSecret: string;
+    /**
+     * Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
+     */
+    readonly complianceLevel: string;
     /**
      * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      */
@@ -182,9 +190,17 @@ export interface GetClientResult {
      */
     readonly refreshTokens: outputs.GetClientRefreshToken[];
     /**
+     * Makes the use of Proof-of-Possession mandatory for this client.
+     */
+    readonly requireProofOfPossession: boolean;
+    /**
      * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      */
     readonly requirePushedAuthorizationRequests: boolean;
+    /**
+     * Configuration for JWT-secured Authorization Requests(JAR).
+     */
+    readonly signedRequestObjects: outputs.GetClientSignedRequestObject[];
     /**
      * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      */
@@ -198,7 +214,7 @@ export interface GetClientResult {
      */
     readonly ssoDisabled: boolean;
     /**
-     * The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic). Managing a client's authentication method can be done via the `auth0.ClientCredentials` resource.
+     * The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic), Managing a client's authentication method can be done via the `auth0.ClientCredentials` resource.
      */
     readonly tokenEndpointAuthMethod: string;
     /**

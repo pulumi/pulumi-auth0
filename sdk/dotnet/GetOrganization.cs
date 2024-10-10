@@ -123,6 +123,10 @@ namespace Pulumi.Auth0
         /// Defines how to style the login pages.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetOrganizationBrandingResult> Brandings;
+        /// <summary>
+        /// Client Grant ID(s) that are associated to the organization.
+        /// </summary>
+        public readonly ImmutableArray<string> ClientGrants;
         public readonly ImmutableArray<Outputs.GetOrganizationConnectionResult> Connections;
         /// <summary>
         /// Friendly name of this organization.
@@ -153,6 +157,8 @@ namespace Pulumi.Auth0
         private GetOrganizationResult(
             ImmutableArray<Outputs.GetOrganizationBrandingResult> brandings,
 
+            ImmutableArray<string> clientGrants,
+
             ImmutableArray<Outputs.GetOrganizationConnectionResult> connections,
 
             string displayName,
@@ -168,6 +174,7 @@ namespace Pulumi.Auth0
             string? organizationId)
         {
             Brandings = brandings;
+            ClientGrants = clientGrants;
             Connections = connections;
             DisplayName = displayName;
             Id = id;

@@ -139,6 +139,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? NoDiscloseEnterpriseConnections { get; set; }
 
         /// <summary>
+        /// Remove `alg` from jwks(JSON Web Key Sets).
+        /// </summary>
+        [Input("removeAlgFromJwks")]
+        public Input<bool>? RemoveAlgFromJwks { get; set; }
+
+        /// <summary>
         /// This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
         /// </summary>
         [Input("requirePushedAuthorizationRequests")]

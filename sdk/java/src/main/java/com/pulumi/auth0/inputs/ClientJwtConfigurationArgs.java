@@ -19,14 +19,14 @@ public final class ClientJwtConfigurationArgs extends com.pulumi.resources.Resou
     public static final ClientJwtConfigurationArgs Empty = new ClientJwtConfigurationArgs();
 
     /**
-     * Algorithm used to sign JWTs.
+     * Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
      * 
      */
     @Import(name="alg")
     private @Nullable Output<String> alg;
 
     /**
-     * @return Algorithm used to sign JWTs.
+     * @return Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
      * 
      */
     public Optional<Output<String>> alg() {
@@ -106,7 +106,7 @@ public final class ClientJwtConfigurationArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param alg Algorithm used to sign JWTs.
+         * @param alg Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ClientJwtConfigurationArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param alg Algorithm used to sign JWTs.
+         * @param alg Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
          * 
          * @return builder
          * 

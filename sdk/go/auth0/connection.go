@@ -56,6 +56,7 @@ import (
 //				Options: &auth0.ConnectionOptionsArgs{
 //					PasswordPolicy:               pulumi.String("excellent"),
 //					BruteForceProtection:         pulumi.Bool(true),
+//					StrategyVersion:              pulumi.Int(2),
 //					EnabledDatabaseCustomization: pulumi.Bool(true),
 //					ImportMode:                   pulumi.Bool(false),
 //					RequiresUsername:             pulumi.Bool(true),
@@ -455,8 +456,9 @@ import (
 //				Name:     pulumi.String("OAuth2-Connection"),
 //				Strategy: pulumi.String("oauth2"),
 //				Options: &auth0.ConnectionOptionsArgs{
-//					ClientId:     pulumi.String("<client-id>"),
-//					ClientSecret: pulumi.String("<client-secret>"),
+//					ClientId:        pulumi.String("<client-id>"),
+//					ClientSecret:    pulumi.String("<client-secret>"),
+//					StrategyVersion: pulumi.Int(2),
 //					Scopes: pulumi.StringArray{
 //						pulumi.String("basic_profile"),
 //						pulumi.String("profile"),
@@ -519,6 +521,7 @@ import (
 //					DisableSelfServiceChangePassword: pulumi.Bool(true),
 //					BruteForceProtection:             pulumi.Bool(true),
 //					TenantDomain:                     pulumi.String("example.com"),
+//					StrategyVersion:                  pulumi.Int(2),
 //					IconUrl:                          pulumi.String("https://example.com/assets/logo.png"),
 //					DomainAliases: pulumi.StringArray{
 //						pulumi.String("example.com"),
@@ -578,12 +581,14 @@ import (
 //				Strategy:     pulumi.String("waad"),
 //				ShowAsButton: pulumi.Bool(true),
 //				Options: &auth0.ConnectionOptionsArgs{
-//					IdentityApi:  pulumi.String("azure-active-directory-v1.0"),
-//					ClientId:     pulumi.String("123456"),
-//					ClientSecret: pulumi.String("123456"),
-//					AppId:        pulumi.String("app-id-123"),
-//					TenantDomain: pulumi.String("example.onmicrosoft.com"),
-//					Domain:       pulumi.String("example.onmicrosoft.com"),
+//					IdentityApi:     pulumi.String("azure-active-directory-v1.0"),
+//					ClientId:        pulumi.String("123456"),
+//					ClientSecret:    pulumi.String("123456"),
+//					StrategyVersion: pulumi.Int(2),
+//					UserIdAttribute: pulumi.String("userName"),
+//					AppId:           pulumi.String("app-id-123"),
+//					TenantDomain:    pulumi.String("example.onmicrosoft.com"),
+//					Domain:          pulumi.String("example.onmicrosoft.com"),
 //					DomainAliases: pulumi.StringArray{
 //						pulumi.String("example.com"),
 //						pulumi.String("api.example.com"),
@@ -707,6 +712,7 @@ import (
 //					SignInEndpoint:  pulumi.String("https://saml.provider/sign_in"),
 //					SignOutEndpoint: pulumi.String("https://saml.provider/sign_out"),
 //					DisableSignOut:  pulumi.Bool(true),
+//					StrategyVersion: pulumi.Int(2),
 //					TenantDomain:    pulumi.String("example.com"),
 //					DomainAliases: pulumi.StringArray{
 //						pulumi.String("example.com"),
@@ -985,7 +991,7 @@ type Connection struct {
 	pulumi.CustomResourceState
 
 	// Name used in login screen.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolOutput `pulumi:"isDomainConnection"`
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
@@ -1203,8 +1209,8 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 }
 
 // Name used in login screen.
-func (o ConnectionOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+func (o ConnectionOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // Indicates whether the connection is domain level.

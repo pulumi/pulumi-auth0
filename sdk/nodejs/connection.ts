@@ -32,6 +32,7 @@ import * as utilities from "./utilities";
  *     options: {
  *         passwordPolicy: "excellent",
  *         bruteForceProtection: true,
+ *         strategyVersion: 2,
  *         enabledDatabaseCustomization: true,
  *         importMode: false,
  *         requiresUsername: true,
@@ -313,6 +314,7 @@ import * as utilities from "./utilities";
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
+ *         strategyVersion: 2,
  *         scopes: [
  *             "basic_profile",
  *             "profile",
@@ -352,6 +354,7 @@ import * as utilities from "./utilities";
  *         disableSelfServiceChangePassword: true,
  *         bruteForceProtection: true,
  *         tenantDomain: "example.com",
+ *         strategyVersion: 2,
  *         iconUrl: "https://example.com/assets/logo.png",
  *         domainAliases: [
  *             "example.com",
@@ -392,6 +395,8 @@ import * as utilities from "./utilities";
  *         identityApi: "azure-active-directory-v1.0",
  *         clientId: "123456",
  *         clientSecret: "123456",
+ *         strategyVersion: 2,
+ *         userIdAttribute: "userName",
  *         appId: "app-id-123",
  *         tenantDomain: "example.onmicrosoft.com",
  *         domain: "example.onmicrosoft.com",
@@ -475,6 +480,7 @@ import * as utilities from "./utilities";
  *         signInEndpoint: "https://saml.provider/sign_in",
  *         signOutEndpoint: "https://saml.provider/sign_out",
  *         disableSignOut: true,
+ *         strategyVersion: 2,
  *         tenantDomain: "example.com",
  *         domainAliases: [
  *             "example.com",
@@ -718,7 +724,7 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Name used in login screen.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    public readonly displayName!: pulumi.Output<string>;
     /**
      * Indicates whether the connection is domain level.
      */

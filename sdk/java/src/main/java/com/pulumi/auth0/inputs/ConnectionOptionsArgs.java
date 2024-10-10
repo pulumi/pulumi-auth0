@@ -1339,14 +1339,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Attribute in the SAML token that will be mapped to the user_id property in Auth0.
+     * Attribute in the token that will be mapped to the user_id property in Auth0.
      * 
      */
     @Import(name="userIdAttribute")
     private @Nullable Output<String> userIdAttribute;
 
     /**
-     * @return Attribute in the SAML token that will be mapped to the user_id property in Auth0.
+     * @return Attribute in the token that will be mapped to the user_id property in Auth0.
      * 
      */
     public Optional<Output<String>> userIdAttribute() {
@@ -3436,7 +3436,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userIdAttribute Attribute in the SAML token that will be mapped to the user_id property in Auth0.
+         * @param userIdAttribute Attribute in the token that will be mapped to the user_id property in Auth0.
          * 
          * @return builder
          * 
@@ -3447,7 +3447,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userIdAttribute Attribute in the SAML token that will be mapped to the user_id property in Auth0.
+         * @param userIdAttribute Attribute in the token that will be mapped to the user_id property in Auth0.
          * 
          * @return builder
          * 

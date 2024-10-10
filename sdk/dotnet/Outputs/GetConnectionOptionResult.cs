@@ -362,7 +362,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool UseWsfed;
         /// <summary>
-        /// Attribute in the SAML token that will be mapped to the user_id property in Auth0.
+        /// Attribute in the token that will be mapped to the user_id property in Auth0.
         /// </summary>
         public readonly string UserIdAttribute;
         /// <summary>

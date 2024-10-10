@@ -124,6 +124,14 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool AllowOfflineAccess;
         /// <summary>
+        /// Authorization details for this resource server.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetResourceServerAuthorizationDetailResult> AuthorizationDetails;
+        /// <summary>
+        /// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+        /// </summary>
+        public readonly string ConsentPolicy;
+        /// <summary>
         /// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         /// </summary>
         public readonly bool EnforcePolicies;
@@ -140,6 +148,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Configuration settings for proof-of-possession for this resource server.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetResourceServerProofOfPossessionResult> ProofOfPossessions;
+        /// <summary>
         /// The ID of the resource server. If not provided, `identifier` must be set.
         /// </summary>
         public readonly string? ResourceServerId;
@@ -148,7 +160,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetResourceServerScopeResult> Scopes;
         /// <summary>
-        /// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+        /// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         /// </summary>
         public readonly string SigningAlg;
         /// <summary>
@@ -163,6 +175,10 @@ namespace Pulumi.Auth0
         /// Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         /// </summary>
         public readonly string TokenDialect;
+        /// <summary>
+        /// Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetResourceServerTokenEncryptionResult> TokenEncryptions;
         /// <summary>
         /// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         /// </summary>
@@ -180,6 +196,10 @@ namespace Pulumi.Auth0
         private GetResourceServerResult(
             bool allowOfflineAccess,
 
+            ImmutableArray<Outputs.GetResourceServerAuthorizationDetailResult> authorizationDetails,
+
+            string consentPolicy,
+
             bool enforcePolicies,
 
             string id,
@@ -187,6 +207,8 @@ namespace Pulumi.Auth0
             string? identifier,
 
             string name,
+
+            ImmutableArray<Outputs.GetResourceServerProofOfPossessionResult> proofOfPossessions,
 
             string? resourceServerId,
 
@@ -200,6 +222,8 @@ namespace Pulumi.Auth0
 
             string tokenDialect,
 
+            ImmutableArray<Outputs.GetResourceServerTokenEncryptionResult> tokenEncryptions,
+
             int tokenLifetime,
 
             int tokenLifetimeForWeb,
@@ -207,16 +231,20 @@ namespace Pulumi.Auth0
             string verificationLocation)
         {
             AllowOfflineAccess = allowOfflineAccess;
+            AuthorizationDetails = authorizationDetails;
+            ConsentPolicy = consentPolicy;
             EnforcePolicies = enforcePolicies;
             Id = id;
             Identifier = identifier;
             Name = name;
+            ProofOfPossessions = proofOfPossessions;
             ResourceServerId = resourceServerId;
             Scopes = scopes;
             SigningAlg = signingAlg;
             SigningSecret = signingSecret;
             SkipConsentForVerifiableFirstPartyClients = skipConsentForVerifiableFirstPartyClients;
             TokenDialect = tokenDialect;
+            TokenEncryptions = tokenEncryptions;
             TokenLifetime = tokenLifetime;
             TokenLifetimeForWeb = tokenLifetimeForWeb;
             VerificationLocation = verificationLocation;

@@ -30,10 +30,14 @@ import (
 type ClientGrant struct {
 	pulumi.CustomResourceState
 
+	// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+	AllowAnyOrganization pulumi.BoolPtrOutput `pulumi:"allowAnyOrganization"`
 	// Audience or API Identifier for this grant.
 	Audience pulumi.StringOutput `pulumi:"audience"`
 	// ID of the client for this grant.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
+	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+	OrganizationUsage pulumi.StringPtrOutput `pulumi:"organizationUsage"`
 	// Permissions (scopes) included in this grant.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 }
@@ -77,19 +81,27 @@ func GetClientGrant(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClientGrant resources.
 type clientGrantState struct {
+	// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+	AllowAnyOrganization *bool `pulumi:"allowAnyOrganization"`
 	// Audience or API Identifier for this grant.
 	Audience *string `pulumi:"audience"`
 	// ID of the client for this grant.
 	ClientId *string `pulumi:"clientId"`
+	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// Permissions (scopes) included in this grant.
 	Scopes []string `pulumi:"scopes"`
 }
 
 type ClientGrantState struct {
+	// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+	AllowAnyOrganization pulumi.BoolPtrInput
 	// Audience or API Identifier for this grant.
 	Audience pulumi.StringPtrInput
 	// ID of the client for this grant.
 	ClientId pulumi.StringPtrInput
+	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+	OrganizationUsage pulumi.StringPtrInput
 	// Permissions (scopes) included in this grant.
 	Scopes pulumi.StringArrayInput
 }
@@ -99,20 +111,28 @@ func (ClientGrantState) ElementType() reflect.Type {
 }
 
 type clientGrantArgs struct {
+	// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+	AllowAnyOrganization *bool `pulumi:"allowAnyOrganization"`
 	// Audience or API Identifier for this grant.
 	Audience string `pulumi:"audience"`
 	// ID of the client for this grant.
 	ClientId string `pulumi:"clientId"`
+	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// Permissions (scopes) included in this grant.
 	Scopes []string `pulumi:"scopes"`
 }
 
 // The set of arguments for constructing a ClientGrant resource.
 type ClientGrantArgs struct {
+	// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+	AllowAnyOrganization pulumi.BoolPtrInput
 	// Audience or API Identifier for this grant.
 	Audience pulumi.StringInput
 	// ID of the client for this grant.
 	ClientId pulumi.StringInput
+	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+	OrganizationUsage pulumi.StringPtrInput
 	// Permissions (scopes) included in this grant.
 	Scopes pulumi.StringArrayInput
 }
@@ -204,6 +224,11 @@ func (o ClientGrantOutput) ToClientGrantOutputWithContext(ctx context.Context) C
 	return o
 }
 
+// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+func (o ClientGrantOutput) AllowAnyOrganization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientGrant) pulumi.BoolPtrOutput { return v.AllowAnyOrganization }).(pulumi.BoolPtrOutput)
+}
+
 // Audience or API Identifier for this grant.
 func (o ClientGrantOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientGrant) pulumi.StringOutput { return v.Audience }).(pulumi.StringOutput)
@@ -212,6 +237,11 @@ func (o ClientGrantOutput) Audience() pulumi.StringOutput {
 // ID of the client for this grant.
 func (o ClientGrantOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientGrant) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+func (o ClientGrantOutput) OrganizationUsage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientGrant) pulumi.StringPtrOutput { return v.OrganizationUsage }).(pulumi.StringPtrOutput)
 }
 
 // Permissions (scopes) included in this grant.

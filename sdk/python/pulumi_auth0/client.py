@@ -24,6 +24,7 @@ class ClientArgs:
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 compliance_level: Optional[pulumi.Input[str]] = None,
                  cross_origin_auth: Optional[pulumi.Input[bool]] = None,
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
@@ -46,6 +47,7 @@ class ClientArgs:
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
+                 require_proof_of_possession: Optional[pulumi.Input[bool]] = None,
                  require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
@@ -60,6 +62,7 @@ class ClientArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        :param pulumi.Input[str] compliance_level: Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
         :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
@@ -82,6 +85,7 @@ class ClientArgs:
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
+        :param pulumi.Input[bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
@@ -103,6 +107,8 @@ class ClientArgs:
             pulumi.set(__self__, "client_aliases", client_aliases)
         if client_metadata is not None:
             pulumi.set(__self__, "client_metadata", client_metadata)
+        if compliance_level is not None:
+            pulumi.set(__self__, "compliance_level", compliance_level)
         if cross_origin_auth is not None:
             pulumi.set(__self__, "cross_origin_auth", cross_origin_auth)
         if cross_origin_loc is not None:
@@ -149,6 +155,8 @@ class ClientArgs:
             pulumi.set(__self__, "organization_usage", organization_usage)
         if refresh_token is not None:
             pulumi.set(__self__, "refresh_token", refresh_token)
+        if require_proof_of_possession is not None:
+            pulumi.set(__self__, "require_proof_of_possession", require_proof_of_possession)
         if require_pushed_authorization_requests is not None:
             pulumi.set(__self__, "require_pushed_authorization_requests", require_pushed_authorization_requests)
         if sso is not None:
@@ -253,6 +261,18 @@ class ClientArgs:
     @client_metadata.setter
     def client_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "client_metadata", value)
+
+    @property
+    @pulumi.getter(name="complianceLevel")
+    def compliance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+        """
+        return pulumi.get(self, "compliance_level")
+
+    @compliance_level.setter
+    def compliance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compliance_level", value)
 
     @property
     @pulumi.getter(name="crossOriginAuth")
@@ -519,6 +539,18 @@ class ClientArgs:
         pulumi.set(self, "refresh_token", value)
 
     @property
+    @pulumi.getter(name="requireProofOfPossession")
+    def require_proof_of_possession(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Makes the use of Proof-of-Possession mandatory for this client.
+        """
+        return pulumi.get(self, "require_proof_of_possession")
+
+    @require_proof_of_possession.setter
+    def require_proof_of_possession(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_proof_of_possession", value)
+
+    @property
     @pulumi.getter(name="requirePushedAuthorizationRequests")
     def require_pushed_authorization_requests(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -579,6 +611,7 @@ class _ClientState:
                  client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 compliance_level: Optional[pulumi.Input[str]] = None,
                  cross_origin_auth: Optional[pulumi.Input[bool]] = None,
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
@@ -601,6 +634,7 @@ class _ClientState:
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
+                 require_proof_of_possession: Optional[pulumi.Input[bool]] = None,
                  require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
                  signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
@@ -617,6 +651,7 @@ class _ClientState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[str] client_id: The ID of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        :param pulumi.Input[str] compliance_level: Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
         :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
@@ -639,6 +674,7 @@ class _ClientState:
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
+        :param pulumi.Input[bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
@@ -663,6 +699,8 @@ class _ClientState:
             pulumi.set(__self__, "client_id", client_id)
         if client_metadata is not None:
             pulumi.set(__self__, "client_metadata", client_metadata)
+        if compliance_level is not None:
+            pulumi.set(__self__, "compliance_level", compliance_level)
         if cross_origin_auth is not None:
             pulumi.set(__self__, "cross_origin_auth", cross_origin_auth)
         if cross_origin_loc is not None:
@@ -709,6 +747,8 @@ class _ClientState:
             pulumi.set(__self__, "organization_usage", organization_usage)
         if refresh_token is not None:
             pulumi.set(__self__, "refresh_token", refresh_token)
+        if require_proof_of_possession is not None:
+            pulumi.set(__self__, "require_proof_of_possession", require_proof_of_possession)
         if require_pushed_authorization_requests is not None:
             pulumi.set(__self__, "require_pushed_authorization_requests", require_pushed_authorization_requests)
         if signing_keys is not None:
@@ -829,6 +869,18 @@ class _ClientState:
         pulumi.set(self, "client_metadata", value)
 
     @property
+    @pulumi.getter(name="complianceLevel")
+    def compliance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+        """
+        return pulumi.get(self, "compliance_level")
+
+    @compliance_level.setter
+    def compliance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compliance_level", value)
+
+    @property
     @pulumi.getter(name="crossOriginAuth")
     def cross_origin_auth(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1093,6 +1145,18 @@ class _ClientState:
         pulumi.set(self, "refresh_token", value)
 
     @property
+    @pulumi.getter(name="requireProofOfPossession")
+    def require_proof_of_possession(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Makes the use of Proof-of-Possession mandatory for this client.
+        """
+        return pulumi.get(self, "require_proof_of_possession")
+
+    @require_proof_of_possession.setter
+    def require_proof_of_possession(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_proof_of_possession", value)
+
+    @property
     @pulumi.getter(name="requirePushedAuthorizationRequests")
     def require_pushed_authorization_requests(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1166,6 +1230,7 @@ class Client(pulumi.CustomResource):
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 compliance_level: Optional[pulumi.Input[str]] = None,
                  cross_origin_auth: Optional[pulumi.Input[bool]] = None,
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
@@ -1188,6 +1253,7 @@ class Client(pulumi.CustomResource):
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
+                 require_proof_of_possession: Optional[pulumi.Input[bool]] = None,
                  require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
@@ -1206,6 +1272,7 @@ class Client(pulumi.CustomResource):
             name="Application - Acceptance Test",
             description="Test Applications Long Description",
             app_type="non_interactive",
+            compliance_level="none",
             custom_login_page_on=True,
             is_first_party=True,
             is_token_endpoint_ip_header_trusted=True,
@@ -1214,6 +1281,7 @@ class Client(pulumi.CustomResource):
             allowed_origins=["https://example.com"],
             allowed_logout_urls=["https://example.com"],
             web_origins=["https://example.com"],
+            require_proof_of_possession=False,
             grant_types=[
                 "authorization_code",
                 "http://auth0.com/oauth/grant-type/password-realm",
@@ -1289,6 +1357,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        :param pulumi.Input[str] compliance_level: Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
         :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
@@ -1311,6 +1380,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']] refresh_token: Configuration settings for the refresh tokens issued for this client.
+        :param pulumi.Input[bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
@@ -1335,6 +1405,7 @@ class Client(pulumi.CustomResource):
             name="Application - Acceptance Test",
             description="Test Applications Long Description",
             app_type="non_interactive",
+            compliance_level="none",
             custom_login_page_on=True,
             is_first_party=True,
             is_token_endpoint_ip_header_trusted=True,
@@ -1343,6 +1414,7 @@ class Client(pulumi.CustomResource):
             allowed_origins=["https://example.com"],
             allowed_logout_urls=["https://example.com"],
             web_origins=["https://example.com"],
+            require_proof_of_possession=False,
             grant_types=[
                 "authorization_code",
                 "http://auth0.com/oauth/grant-type/password-realm",
@@ -1431,6 +1503,7 @@ class Client(pulumi.CustomResource):
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 compliance_level: Optional[pulumi.Input[str]] = None,
                  cross_origin_auth: Optional[pulumi.Input[bool]] = None,
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
@@ -1453,6 +1526,7 @@ class Client(pulumi.CustomResource):
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
+                 require_proof_of_possession: Optional[pulumi.Input[bool]] = None,
                  require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
@@ -1474,6 +1548,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["callbacks"] = callbacks
             __props__.__dict__["client_aliases"] = client_aliases
             __props__.__dict__["client_metadata"] = client_metadata
+            __props__.__dict__["compliance_level"] = compliance_level
             __props__.__dict__["cross_origin_auth"] = cross_origin_auth
             __props__.__dict__["cross_origin_loc"] = cross_origin_loc
             __props__.__dict__["custom_login_page"] = custom_login_page
@@ -1498,6 +1573,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["organization_require_behavior"] = organization_require_behavior
             __props__.__dict__["organization_usage"] = organization_usage
             __props__.__dict__["refresh_token"] = refresh_token
+            __props__.__dict__["require_proof_of_possession"] = require_proof_of_possession
             __props__.__dict__["require_pushed_authorization_requests"] = require_pushed_authorization_requests
             __props__.__dict__["sso"] = sso
             __props__.__dict__["sso_disabled"] = sso_disabled
@@ -1525,6 +1601,7 @@ class Client(pulumi.CustomResource):
             client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             client_id: Optional[pulumi.Input[str]] = None,
             client_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            compliance_level: Optional[pulumi.Input[str]] = None,
             cross_origin_auth: Optional[pulumi.Input[bool]] = None,
             cross_origin_loc: Optional[pulumi.Input[str]] = None,
             custom_login_page: Optional[pulumi.Input[str]] = None,
@@ -1547,6 +1624,7 @@ class Client(pulumi.CustomResource):
             organization_require_behavior: Optional[pulumi.Input[str]] = None,
             organization_usage: Optional[pulumi.Input[str]] = None,
             refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
+            require_proof_of_possession: Optional[pulumi.Input[bool]] = None,
             require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
             signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
             sso: Optional[pulumi.Input[bool]] = None,
@@ -1568,6 +1646,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[str] client_id: The ID of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        :param pulumi.Input[str] compliance_level: Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
         :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
@@ -1590,6 +1669,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']] refresh_token: Configuration settings for the refresh tokens issued for this client.
+        :param pulumi.Input[bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
@@ -1609,6 +1689,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["client_aliases"] = client_aliases
         __props__.__dict__["client_id"] = client_id
         __props__.__dict__["client_metadata"] = client_metadata
+        __props__.__dict__["compliance_level"] = compliance_level
         __props__.__dict__["cross_origin_auth"] = cross_origin_auth
         __props__.__dict__["cross_origin_loc"] = cross_origin_loc
         __props__.__dict__["custom_login_page"] = custom_login_page
@@ -1631,6 +1712,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["organization_require_behavior"] = organization_require_behavior
         __props__.__dict__["organization_usage"] = organization_usage
         __props__.__dict__["refresh_token"] = refresh_token
+        __props__.__dict__["require_proof_of_possession"] = require_proof_of_possession
         __props__.__dict__["require_pushed_authorization_requests"] = require_pushed_authorization_requests
         __props__.__dict__["signing_keys"] = signing_keys
         __props__.__dict__["sso"] = sso
@@ -1709,6 +1791,14 @@ class Client(pulumi.CustomResource):
         Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         """
         return pulumi.get(self, "client_metadata")
+
+    @property
+    @pulumi.getter(name="complianceLevel")
+    def compliance_level(self) -> pulumi.Output[Optional[str]]:
+        """
+        Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+        """
+        return pulumi.get(self, "compliance_level")
 
     @property
     @pulumi.getter(name="crossOriginAuth")
@@ -1885,6 +1975,14 @@ class Client(pulumi.CustomResource):
         Configuration settings for the refresh tokens issued for this client.
         """
         return pulumi.get(self, "refresh_token")
+
+    @property
+    @pulumi.getter(name="requireProofOfPossession")
+    def require_proof_of_possession(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Makes the use of Proof-of-Possession mandatory for this client.
+        """
+        return pulumi.get(self, "require_proof_of_possession")
 
     @property
     @pulumi.getter(name="requirePushedAuthorizationRequests")

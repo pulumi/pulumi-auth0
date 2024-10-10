@@ -116,6 +116,11 @@ public final class GetTenantFlag {
      */
     private Boolean noDiscloseEnterpriseConnections;
     /**
+     * @return Remove `alg` from jwks(JSON Web Key Sets).
+     * 
+     */
+    private Boolean removeAlgFromJwks;
+    /**
      * @return This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
      */
@@ -280,6 +285,13 @@ public final class GetTenantFlag {
         return this.noDiscloseEnterpriseConnections;
     }
     /**
+     * @return Remove `alg` from jwks(JSON Web Key Sets).
+     * 
+     */
+    public Boolean removeAlgFromJwks() {
+        return this.removeAlgFromJwks;
+    }
+    /**
      * @return This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
      */
@@ -331,6 +343,7 @@ public final class GetTenantFlag {
         private Boolean enableSso;
         private Boolean mfaShowFactorListOnEnrollment;
         private Boolean noDiscloseEnterpriseConnections;
+        private Boolean removeAlgFromJwks;
         private Boolean requirePushedAuthorizationRequests;
         private Boolean revokeRefreshTokenGrant;
         private Boolean useScopeDescriptionsForConsent;
@@ -358,6 +371,7 @@ public final class GetTenantFlag {
     	      this.enableSso = defaults.enableSso;
     	      this.mfaShowFactorListOnEnrollment = defaults.mfaShowFactorListOnEnrollment;
     	      this.noDiscloseEnterpriseConnections = defaults.noDiscloseEnterpriseConnections;
+    	      this.removeAlgFromJwks = defaults.removeAlgFromJwks;
     	      this.requirePushedAuthorizationRequests = defaults.requirePushedAuthorizationRequests;
     	      this.revokeRefreshTokenGrant = defaults.revokeRefreshTokenGrant;
     	      this.useScopeDescriptionsForConsent = defaults.useScopeDescriptionsForConsent;
@@ -532,6 +546,14 @@ public final class GetTenantFlag {
             return this;
         }
         @CustomType.Setter
+        public Builder removeAlgFromJwks(Boolean removeAlgFromJwks) {
+            if (removeAlgFromJwks == null) {
+              throw new MissingRequiredPropertyException("GetTenantFlag", "removeAlgFromJwks");
+            }
+            this.removeAlgFromJwks = removeAlgFromJwks;
+            return this;
+        }
+        @CustomType.Setter
         public Builder requirePushedAuthorizationRequests(Boolean requirePushedAuthorizationRequests) {
             if (requirePushedAuthorizationRequests == null) {
               throw new MissingRequiredPropertyException("GetTenantFlag", "requirePushedAuthorizationRequests");
@@ -578,6 +600,7 @@ public final class GetTenantFlag {
             _resultValue.enableSso = enableSso;
             _resultValue.mfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
             _resultValue.noDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
+            _resultValue.removeAlgFromJwks = removeAlgFromJwks;
             _resultValue.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
             _resultValue.revokeRefreshTokenGrant = revokeRefreshTokenGrant;
             _resultValue.useScopeDescriptionsForConsent = useScopeDescriptionsForConsent;

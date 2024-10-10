@@ -10,8 +10,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -40,6 +42,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/clientGrant:ClientGrant")
 public class ClientGrant extends com.pulumi.resources.CustomResource {
     /**
+     * If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+     * 
+     */
+    @Export(name="allowAnyOrganization", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> allowAnyOrganization;
+
+    /**
+     * @return If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+     * 
+     */
+    public Output<Optional<Boolean>> allowAnyOrganization() {
+        return Codegen.optional(this.allowAnyOrganization);
+    }
+    /**
      * Audience or API Identifier for this grant.
      * 
      */
@@ -66,6 +82,20 @@ public class ClientGrant extends com.pulumi.resources.CustomResource {
      */
     public Output<String> clientId() {
         return this.clientId;
+    }
+    /**
+     * Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+     * 
+     */
+    @Export(name="organizationUsage", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> organizationUsage;
+
+    /**
+     * @return Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+     * 
+     */
+    public Output<Optional<String>> organizationUsage() {
+        return Codegen.optional(this.organizationUsage);
     }
     /**
      * Permissions (scopes) included in this grant.

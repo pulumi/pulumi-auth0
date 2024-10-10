@@ -3,7 +3,10 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetResourceServerAuthorizationDetail;
+import com.pulumi.auth0.outputs.GetResourceServerProofOfPossession;
 import com.pulumi.auth0.outputs.GetResourceServerScope;
+import com.pulumi.auth0.outputs.GetResourceServerTokenEncryption;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -21,6 +24,16 @@ public final class GetResourceServerResult {
      * 
      */
     private Boolean allowOfflineAccess;
+    /**
+     * @return Authorization details for this resource server.
+     * 
+     */
+    private List<GetResourceServerAuthorizationDetail> authorizationDetails;
+    /**
+     * @return Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+     * 
+     */
+    private String consentPolicy;
     /**
      * @return If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
      * 
@@ -42,6 +55,11 @@ public final class GetResourceServerResult {
      */
     private String name;
     /**
+     * @return Configuration settings for proof-of-possession for this resource server.
+     * 
+     */
+    private List<GetResourceServerProofOfPossession> proofOfPossessions;
+    /**
      * @return The ID of the resource server. If not provided, `identifier` must be set.
      * 
      */
@@ -52,7 +70,7 @@ public final class GetResourceServerResult {
      */
     private List<GetResourceServerScope> scopes;
     /**
-     * @return Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+     * @return Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
      * 
      */
     private String signingAlg;
@@ -71,6 +89,11 @@ public final class GetResourceServerResult {
      * 
      */
     private String tokenDialect;
+    /**
+     * @return Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+     * 
+     */
+    private List<GetResourceServerTokenEncryption> tokenEncryptions;
     /**
      * @return Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      * 
@@ -94,6 +117,20 @@ public final class GetResourceServerResult {
      */
     public Boolean allowOfflineAccess() {
         return this.allowOfflineAccess;
+    }
+    /**
+     * @return Authorization details for this resource server.
+     * 
+     */
+    public List<GetResourceServerAuthorizationDetail> authorizationDetails() {
+        return this.authorizationDetails;
+    }
+    /**
+     * @return Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+     * 
+     */
+    public String consentPolicy() {
+        return this.consentPolicy;
     }
     /**
      * @return If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
@@ -124,6 +161,13 @@ public final class GetResourceServerResult {
         return this.name;
     }
     /**
+     * @return Configuration settings for proof-of-possession for this resource server.
+     * 
+     */
+    public List<GetResourceServerProofOfPossession> proofOfPossessions() {
+        return this.proofOfPossessions;
+    }
+    /**
      * @return The ID of the resource server. If not provided, `identifier` must be set.
      * 
      */
@@ -138,7 +182,7 @@ public final class GetResourceServerResult {
         return this.scopes;
     }
     /**
-     * @return Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+     * @return Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
      * 
      */
     public String signingAlg() {
@@ -164,6 +208,13 @@ public final class GetResourceServerResult {
      */
     public String tokenDialect() {
         return this.tokenDialect;
+    }
+    /**
+     * @return Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+     * 
+     */
+    public List<GetResourceServerTokenEncryption> tokenEncryptions() {
+        return this.tokenEncryptions;
     }
     /**
      * @return Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
@@ -197,16 +248,20 @@ public final class GetResourceServerResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean allowOfflineAccess;
+        private List<GetResourceServerAuthorizationDetail> authorizationDetails;
+        private String consentPolicy;
         private Boolean enforcePolicies;
         private String id;
         private @Nullable String identifier;
         private String name;
+        private List<GetResourceServerProofOfPossession> proofOfPossessions;
         private @Nullable String resourceServerId;
         private List<GetResourceServerScope> scopes;
         private String signingAlg;
         private String signingSecret;
         private Boolean skipConsentForVerifiableFirstPartyClients;
         private String tokenDialect;
+        private List<GetResourceServerTokenEncryption> tokenEncryptions;
         private Integer tokenLifetime;
         private Integer tokenLifetimeForWeb;
         private String verificationLocation;
@@ -214,16 +269,20 @@ public final class GetResourceServerResult {
         public Builder(GetResourceServerResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowOfflineAccess = defaults.allowOfflineAccess;
+    	      this.authorizationDetails = defaults.authorizationDetails;
+    	      this.consentPolicy = defaults.consentPolicy;
     	      this.enforcePolicies = defaults.enforcePolicies;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
+    	      this.proofOfPossessions = defaults.proofOfPossessions;
     	      this.resourceServerId = defaults.resourceServerId;
     	      this.scopes = defaults.scopes;
     	      this.signingAlg = defaults.signingAlg;
     	      this.signingSecret = defaults.signingSecret;
     	      this.skipConsentForVerifiableFirstPartyClients = defaults.skipConsentForVerifiableFirstPartyClients;
     	      this.tokenDialect = defaults.tokenDialect;
+    	      this.tokenEncryptions = defaults.tokenEncryptions;
     	      this.tokenLifetime = defaults.tokenLifetime;
     	      this.tokenLifetimeForWeb = defaults.tokenLifetimeForWeb;
     	      this.verificationLocation = defaults.verificationLocation;
@@ -235,6 +294,25 @@ public final class GetResourceServerResult {
               throw new MissingRequiredPropertyException("GetResourceServerResult", "allowOfflineAccess");
             }
             this.allowOfflineAccess = allowOfflineAccess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authorizationDetails(List<GetResourceServerAuthorizationDetail> authorizationDetails) {
+            if (authorizationDetails == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "authorizationDetails");
+            }
+            this.authorizationDetails = authorizationDetails;
+            return this;
+        }
+        public Builder authorizationDetails(GetResourceServerAuthorizationDetail... authorizationDetails) {
+            return authorizationDetails(List.of(authorizationDetails));
+        }
+        @CustomType.Setter
+        public Builder consentPolicy(String consentPolicy) {
+            if (consentPolicy == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "consentPolicy");
+            }
+            this.consentPolicy = consentPolicy;
             return this;
         }
         @CustomType.Setter
@@ -266,6 +344,17 @@ public final class GetResourceServerResult {
             }
             this.name = name;
             return this;
+        }
+        @CustomType.Setter
+        public Builder proofOfPossessions(List<GetResourceServerProofOfPossession> proofOfPossessions) {
+            if (proofOfPossessions == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "proofOfPossessions");
+            }
+            this.proofOfPossessions = proofOfPossessions;
+            return this;
+        }
+        public Builder proofOfPossessions(GetResourceServerProofOfPossession... proofOfPossessions) {
+            return proofOfPossessions(List.of(proofOfPossessions));
         }
         @CustomType.Setter
         public Builder resourceServerId(@Nullable String resourceServerId) {
@@ -317,6 +406,17 @@ public final class GetResourceServerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tokenEncryptions(List<GetResourceServerTokenEncryption> tokenEncryptions) {
+            if (tokenEncryptions == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "tokenEncryptions");
+            }
+            this.tokenEncryptions = tokenEncryptions;
+            return this;
+        }
+        public Builder tokenEncryptions(GetResourceServerTokenEncryption... tokenEncryptions) {
+            return tokenEncryptions(List.of(tokenEncryptions));
+        }
+        @CustomType.Setter
         public Builder tokenLifetime(Integer tokenLifetime) {
             if (tokenLifetime == null) {
               throw new MissingRequiredPropertyException("GetResourceServerResult", "tokenLifetime");
@@ -343,16 +443,20 @@ public final class GetResourceServerResult {
         public GetResourceServerResult build() {
             final var _resultValue = new GetResourceServerResult();
             _resultValue.allowOfflineAccess = allowOfflineAccess;
+            _resultValue.authorizationDetails = authorizationDetails;
+            _resultValue.consentPolicy = consentPolicy;
             _resultValue.enforcePolicies = enforcePolicies;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.name = name;
+            _resultValue.proofOfPossessions = proofOfPossessions;
             _resultValue.resourceServerId = resourceServerId;
             _resultValue.scopes = scopes;
             _resultValue.signingAlg = signingAlg;
             _resultValue.signingSecret = signingSecret;
             _resultValue.skipConsentForVerifiableFirstPartyClients = skipConsentForVerifiableFirstPartyClients;
             _resultValue.tokenDialect = tokenDialect;
+            _resultValue.tokenEncryptions = tokenEncryptions;
             _resultValue.tokenLifetime = tokenLifetime;
             _resultValue.tokenLifetimeForWeb = tokenLifetimeForWeb;
             _resultValue.verificationLocation = verificationLocation;

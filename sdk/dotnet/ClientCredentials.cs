@@ -35,7 +35,7 @@ namespace Pulumi.Auth0
     public partial class ClientCredentials : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT).
+        /// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
         /// </summary>
         [Output("authenticationMethod")]
         public Output<string> AuthenticationMethod { get; private set; } = null!;
@@ -54,6 +54,24 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("privateKeyJwt")]
         public Output<Outputs.ClientCredentialsPrivateKeyJwt?> PrivateKeyJwt { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines `tls_client_auth` client authentication method.
+        /// </summary>
+        [Output("selfSignedTlsClientAuth")]
+        public Output<Outputs.ClientCredentialsSelfSignedTlsClientAuth?> SelfSignedTlsClientAuth { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for JWT-secured Authorization Requests(JAR).
+        /// </summary>
+        [Output("signedRequestObject")]
+        public Output<Outputs.ClientCredentialsSignedRequestObject?> SignedRequestObject { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines `tls_client_auth` client authentication method.
+        /// </summary>
+        [Output("tlsClientAuth")]
+        public Output<Outputs.ClientCredentialsTlsClientAuth?> TlsClientAuth { get; private set; } = null!;
 
 
         /// <summary>
@@ -106,10 +124,10 @@ namespace Pulumi.Auth0
     public sealed class ClientCredentialsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT).
+        /// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
         /// </summary>
-        [Input("authenticationMethod", required: true)]
-        public Input<string> AuthenticationMethod { get; set; } = null!;
+        [Input("authenticationMethod")]
+        public Input<string>? AuthenticationMethod { get; set; }
 
         /// <summary>
         /// The ID of the client for which to configure the authentication method.
@@ -135,6 +153,24 @@ namespace Pulumi.Auth0
         [Input("privateKeyJwt")]
         public Input<Inputs.ClientCredentialsPrivateKeyJwtArgs>? PrivateKeyJwt { get; set; }
 
+        /// <summary>
+        /// Defines `tls_client_auth` client authentication method.
+        /// </summary>
+        [Input("selfSignedTlsClientAuth")]
+        public Input<Inputs.ClientCredentialsSelfSignedTlsClientAuthArgs>? SelfSignedTlsClientAuth { get; set; }
+
+        /// <summary>
+        /// Configuration for JWT-secured Authorization Requests(JAR).
+        /// </summary>
+        [Input("signedRequestObject")]
+        public Input<Inputs.ClientCredentialsSignedRequestObjectArgs>? SignedRequestObject { get; set; }
+
+        /// <summary>
+        /// Defines `tls_client_auth` client authentication method.
+        /// </summary>
+        [Input("tlsClientAuth")]
+        public Input<Inputs.ClientCredentialsTlsClientAuthArgs>? TlsClientAuth { get; set; }
+
         public ClientCredentialsArgs()
         {
         }
@@ -144,7 +180,7 @@ namespace Pulumi.Auth0
     public sealed class ClientCredentialsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT).
+        /// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
         /// </summary>
         [Input("authenticationMethod")]
         public Input<string>? AuthenticationMethod { get; set; }
@@ -172,6 +208,24 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("privateKeyJwt")]
         public Input<Inputs.ClientCredentialsPrivateKeyJwtGetArgs>? PrivateKeyJwt { get; set; }
+
+        /// <summary>
+        /// Defines `tls_client_auth` client authentication method.
+        /// </summary>
+        [Input("selfSignedTlsClientAuth")]
+        public Input<Inputs.ClientCredentialsSelfSignedTlsClientAuthGetArgs>? SelfSignedTlsClientAuth { get; set; }
+
+        /// <summary>
+        /// Configuration for JWT-secured Authorization Requests(JAR).
+        /// </summary>
+        [Input("signedRequestObject")]
+        public Input<Inputs.ClientCredentialsSignedRequestObjectGetArgs>? SignedRequestObject { get; set; }
+
+        /// <summary>
+        /// Defines `tls_client_auth` client authentication method.
+        /// </summary>
+        [Input("tlsClientAuth")]
+        public Input<Inputs.ClientCredentialsTlsClientAuthGetArgs>? TlsClientAuth { get; set; }
 
         public ClientCredentialsState()
         {

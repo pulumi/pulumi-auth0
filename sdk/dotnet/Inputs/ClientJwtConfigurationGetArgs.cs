@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ClientJwtConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Algorithm used to sign JWTs.
+        /// Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
         /// </summary>
         [Input("alg")]
         public Input<string>? Alg { get; set; }

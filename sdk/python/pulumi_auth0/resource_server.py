@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ResourceServerArgs', 'ResourceServer']
 
@@ -16,12 +18,16 @@ class ResourceServerArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[str],
                  allow_offline_access: Optional[pulumi.Input[bool]] = None,
+                 authorization_details: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]] = None,
+                 consent_policy: Optional[pulumi.Input[str]] = None,
                  enforce_policies: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 proof_of_possession: Optional[pulumi.Input['ResourceServerProofOfPossessionArgs']] = None,
                  signing_alg: Optional[pulumi.Input[str]] = None,
                  signing_secret: Optional[pulumi.Input[str]] = None,
                  skip_consent_for_verifiable_first_party_clients: Optional[pulumi.Input[bool]] = None,
                  token_dialect: Optional[pulumi.Input[str]] = None,
+                 token_encryption: Optional[pulumi.Input['ResourceServerTokenEncryptionArgs']] = None,
                  token_lifetime: Optional[pulumi.Input[int]] = None,
                  token_lifetime_for_web: Optional[pulumi.Input[int]] = None,
                  verification_location: Optional[pulumi.Input[str]] = None):
@@ -29,12 +35,16 @@ class ResourceServerArgs:
         The set of arguments for constructing a ResourceServer resource.
         :param pulumi.Input[str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
         :param pulumi.Input[bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
+        :param pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]] authorization_details: Authorization details for this resource server.
+        :param pulumi.Input[str] consent_policy: Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
         :param pulumi.Input[bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         :param pulumi.Input[str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
-        :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+        :param pulumi.Input['ResourceServerProofOfPossessionArgs'] proof_of_possession: Configuration settings for proof-of-possession for this resource server.
+        :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         :param pulumi.Input[str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Indicates whether to skip user consent for applications flagged as first party.
         :param pulumi.Input[str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
+        :param pulumi.Input['ResourceServerTokenEncryptionArgs'] token_encryption: Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
         :param pulumi.Input[int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         :param pulumi.Input[int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
@@ -42,10 +52,16 @@ class ResourceServerArgs:
         pulumi.set(__self__, "identifier", identifier)
         if allow_offline_access is not None:
             pulumi.set(__self__, "allow_offline_access", allow_offline_access)
+        if authorization_details is not None:
+            pulumi.set(__self__, "authorization_details", authorization_details)
+        if consent_policy is not None:
+            pulumi.set(__self__, "consent_policy", consent_policy)
         if enforce_policies is not None:
             pulumi.set(__self__, "enforce_policies", enforce_policies)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if proof_of_possession is not None:
+            pulumi.set(__self__, "proof_of_possession", proof_of_possession)
         if signing_alg is not None:
             pulumi.set(__self__, "signing_alg", signing_alg)
         if signing_secret is not None:
@@ -54,6 +70,8 @@ class ResourceServerArgs:
             pulumi.set(__self__, "skip_consent_for_verifiable_first_party_clients", skip_consent_for_verifiable_first_party_clients)
         if token_dialect is not None:
             pulumi.set(__self__, "token_dialect", token_dialect)
+        if token_encryption is not None:
+            pulumi.set(__self__, "token_encryption", token_encryption)
         if token_lifetime is not None:
             pulumi.set(__self__, "token_lifetime", token_lifetime)
         if token_lifetime_for_web is not None:
@@ -86,6 +104,30 @@ class ResourceServerArgs:
         pulumi.set(self, "allow_offline_access", value)
 
     @property
+    @pulumi.getter(name="authorizationDetails")
+    def authorization_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]]:
+        """
+        Authorization details for this resource server.
+        """
+        return pulumi.get(self, "authorization_details")
+
+    @authorization_details.setter
+    def authorization_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]]):
+        pulumi.set(self, "authorization_details", value)
+
+    @property
+    @pulumi.getter(name="consentPolicy")
+    def consent_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+        """
+        return pulumi.get(self, "consent_policy")
+
+    @consent_policy.setter
+    def consent_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consent_policy", value)
+
+    @property
     @pulumi.getter(name="enforcePolicies")
     def enforce_policies(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -110,10 +152,22 @@ class ResourceServerArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="proofOfPossession")
+    def proof_of_possession(self) -> Optional[pulumi.Input['ResourceServerProofOfPossessionArgs']]:
+        """
+        Configuration settings for proof-of-possession for this resource server.
+        """
+        return pulumi.get(self, "proof_of_possession")
+
+    @proof_of_possession.setter
+    def proof_of_possession(self, value: Optional[pulumi.Input['ResourceServerProofOfPossessionArgs']]):
+        pulumi.set(self, "proof_of_possession", value)
+
+    @property
     @pulumi.getter(name="signingAlg")
     def signing_alg(self) -> Optional[pulumi.Input[str]]:
         """
-        Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+        Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         """
         return pulumi.get(self, "signing_alg")
 
@@ -156,6 +210,18 @@ class ResourceServerArgs:
     @token_dialect.setter
     def token_dialect(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "token_dialect", value)
+
+    @property
+    @pulumi.getter(name="tokenEncryption")
+    def token_encryption(self) -> Optional[pulumi.Input['ResourceServerTokenEncryptionArgs']]:
+        """
+        Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+        """
+        return pulumi.get(self, "token_encryption")
+
+    @token_encryption.setter
+    def token_encryption(self, value: Optional[pulumi.Input['ResourceServerTokenEncryptionArgs']]):
+        pulumi.set(self, "token_encryption", value)
 
     @property
     @pulumi.getter(name="tokenLifetime")
@@ -198,38 +264,52 @@ class ResourceServerArgs:
 class _ResourceServerState:
     def __init__(__self__, *,
                  allow_offline_access: Optional[pulumi.Input[bool]] = None,
+                 authorization_details: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]] = None,
+                 consent_policy: Optional[pulumi.Input[str]] = None,
                  enforce_policies: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 proof_of_possession: Optional[pulumi.Input['ResourceServerProofOfPossessionArgs']] = None,
                  signing_alg: Optional[pulumi.Input[str]] = None,
                  signing_secret: Optional[pulumi.Input[str]] = None,
                  skip_consent_for_verifiable_first_party_clients: Optional[pulumi.Input[bool]] = None,
                  token_dialect: Optional[pulumi.Input[str]] = None,
+                 token_encryption: Optional[pulumi.Input['ResourceServerTokenEncryptionArgs']] = None,
                  token_lifetime: Optional[pulumi.Input[int]] = None,
                  token_lifetime_for_web: Optional[pulumi.Input[int]] = None,
                  verification_location: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ResourceServer resources.
         :param pulumi.Input[bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
+        :param pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]] authorization_details: Authorization details for this resource server.
+        :param pulumi.Input[str] consent_policy: Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
         :param pulumi.Input[bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         :param pulumi.Input[str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
         :param pulumi.Input[str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
-        :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+        :param pulumi.Input['ResourceServerProofOfPossessionArgs'] proof_of_possession: Configuration settings for proof-of-possession for this resource server.
+        :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         :param pulumi.Input[str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Indicates whether to skip user consent for applications flagged as first party.
         :param pulumi.Input[str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
+        :param pulumi.Input['ResourceServerTokenEncryptionArgs'] token_encryption: Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
         :param pulumi.Input[int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         :param pulumi.Input[int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
         """
         if allow_offline_access is not None:
             pulumi.set(__self__, "allow_offline_access", allow_offline_access)
+        if authorization_details is not None:
+            pulumi.set(__self__, "authorization_details", authorization_details)
+        if consent_policy is not None:
+            pulumi.set(__self__, "consent_policy", consent_policy)
         if enforce_policies is not None:
             pulumi.set(__self__, "enforce_policies", enforce_policies)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if proof_of_possession is not None:
+            pulumi.set(__self__, "proof_of_possession", proof_of_possession)
         if signing_alg is not None:
             pulumi.set(__self__, "signing_alg", signing_alg)
         if signing_secret is not None:
@@ -238,6 +318,8 @@ class _ResourceServerState:
             pulumi.set(__self__, "skip_consent_for_verifiable_first_party_clients", skip_consent_for_verifiable_first_party_clients)
         if token_dialect is not None:
             pulumi.set(__self__, "token_dialect", token_dialect)
+        if token_encryption is not None:
+            pulumi.set(__self__, "token_encryption", token_encryption)
         if token_lifetime is not None:
             pulumi.set(__self__, "token_lifetime", token_lifetime)
         if token_lifetime_for_web is not None:
@@ -256,6 +338,30 @@ class _ResourceServerState:
     @allow_offline_access.setter
     def allow_offline_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_offline_access", value)
+
+    @property
+    @pulumi.getter(name="authorizationDetails")
+    def authorization_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]]:
+        """
+        Authorization details for this resource server.
+        """
+        return pulumi.get(self, "authorization_details")
+
+    @authorization_details.setter
+    def authorization_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]]):
+        pulumi.set(self, "authorization_details", value)
+
+    @property
+    @pulumi.getter(name="consentPolicy")
+    def consent_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+        """
+        return pulumi.get(self, "consent_policy")
+
+    @consent_policy.setter
+    def consent_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consent_policy", value)
 
     @property
     @pulumi.getter(name="enforcePolicies")
@@ -294,10 +400,22 @@ class _ResourceServerState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="proofOfPossession")
+    def proof_of_possession(self) -> Optional[pulumi.Input['ResourceServerProofOfPossessionArgs']]:
+        """
+        Configuration settings for proof-of-possession for this resource server.
+        """
+        return pulumi.get(self, "proof_of_possession")
+
+    @proof_of_possession.setter
+    def proof_of_possession(self, value: Optional[pulumi.Input['ResourceServerProofOfPossessionArgs']]):
+        pulumi.set(self, "proof_of_possession", value)
+
+    @property
     @pulumi.getter(name="signingAlg")
     def signing_alg(self) -> Optional[pulumi.Input[str]]:
         """
-        Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+        Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         """
         return pulumi.get(self, "signing_alg")
 
@@ -340,6 +458,18 @@ class _ResourceServerState:
     @token_dialect.setter
     def token_dialect(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "token_dialect", value)
+
+    @property
+    @pulumi.getter(name="tokenEncryption")
+    def token_encryption(self) -> Optional[pulumi.Input['ResourceServerTokenEncryptionArgs']]:
+        """
+        Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+        """
+        return pulumi.get(self, "token_encryption")
+
+    @token_encryption.setter
+    def token_encryption(self, value: Optional[pulumi.Input['ResourceServerTokenEncryptionArgs']]):
+        pulumi.set(self, "token_encryption", value)
 
     @property
     @pulumi.getter(name="tokenLifetime")
@@ -384,13 +514,17 @@ class ResourceServer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_offline_access: Optional[pulumi.Input[bool]] = None,
+                 authorization_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]]] = None,
+                 consent_policy: Optional[pulumi.Input[str]] = None,
                  enforce_policies: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 proof_of_possession: Optional[pulumi.Input[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict']]] = None,
                  signing_alg: Optional[pulumi.Input[str]] = None,
                  signing_secret: Optional[pulumi.Input[str]] = None,
                  skip_consent_for_verifiable_first_party_clients: Optional[pulumi.Input[bool]] = None,
                  token_dialect: Optional[pulumi.Input[str]] = None,
+                 token_encryption: Optional[pulumi.Input[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict']]] = None,
                  token_lifetime: Optional[pulumi.Input[int]] = None,
                  token_lifetime_for_web: Optional[pulumi.Input[int]] = None,
                  verification_location: Optional[pulumi.Input[str]] = None,
@@ -410,7 +544,31 @@ class ResourceServer(pulumi.CustomResource):
             signing_alg="RS256",
             allow_offline_access=True,
             token_lifetime=8600,
-            skip_consent_for_verifiable_first_party_clients=True)
+            skip_consent_for_verifiable_first_party_clients=True,
+            consent_policy="transactional-authorization-with-mfa",
+            token_encryption={
+                "format": "compact-nested-jwe",
+                "encryption_key": {
+                    "name": "keyname",
+                    "algorithm": "RSA-OAEP-256",
+                    "pem": \"\"\"-----BEGIN CERTIFICATE-----
+        MIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl
+        -----END CERTIFICATE-----
+        \"\"\",
+                },
+            },
+            authorization_details=[
+                {
+                    "type": "payment",
+                },
+                {
+                    "type": "non-payment",
+                },
+            ],
+            proof_of_possession={
+                "mechanism": "mtls",
+                "required": True,
+            })
         ```
 
         ## Import
@@ -428,13 +586,17 @@ class ResourceServer(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]] authorization_details: Authorization details for this resource server.
+        :param pulumi.Input[str] consent_policy: Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
         :param pulumi.Input[bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         :param pulumi.Input[str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
         :param pulumi.Input[str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
-        :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+        :param pulumi.Input[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict']] proof_of_possession: Configuration settings for proof-of-possession for this resource server.
+        :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         :param pulumi.Input[str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Indicates whether to skip user consent for applications flagged as first party.
         :param pulumi.Input[str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
+        :param pulumi.Input[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict']] token_encryption: Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
         :param pulumi.Input[int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         :param pulumi.Input[int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
@@ -460,7 +622,31 @@ class ResourceServer(pulumi.CustomResource):
             signing_alg="RS256",
             allow_offline_access=True,
             token_lifetime=8600,
-            skip_consent_for_verifiable_first_party_clients=True)
+            skip_consent_for_verifiable_first_party_clients=True,
+            consent_policy="transactional-authorization-with-mfa",
+            token_encryption={
+                "format": "compact-nested-jwe",
+                "encryption_key": {
+                    "name": "keyname",
+                    "algorithm": "RSA-OAEP-256",
+                    "pem": \"\"\"-----BEGIN CERTIFICATE-----
+        MIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl
+        -----END CERTIFICATE-----
+        \"\"\",
+                },
+            },
+            authorization_details=[
+                {
+                    "type": "payment",
+                },
+                {
+                    "type": "non-payment",
+                },
+            ],
+            proof_of_possession={
+                "mechanism": "mtls",
+                "required": True,
+            })
         ```
 
         ## Import
@@ -491,13 +677,17 @@ class ResourceServer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_offline_access: Optional[pulumi.Input[bool]] = None,
+                 authorization_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]]] = None,
+                 consent_policy: Optional[pulumi.Input[str]] = None,
                  enforce_policies: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 proof_of_possession: Optional[pulumi.Input[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict']]] = None,
                  signing_alg: Optional[pulumi.Input[str]] = None,
                  signing_secret: Optional[pulumi.Input[str]] = None,
                  skip_consent_for_verifiable_first_party_clients: Optional[pulumi.Input[bool]] = None,
                  token_dialect: Optional[pulumi.Input[str]] = None,
+                 token_encryption: Optional[pulumi.Input[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict']]] = None,
                  token_lifetime: Optional[pulumi.Input[int]] = None,
                  token_lifetime_for_web: Optional[pulumi.Input[int]] = None,
                  verification_location: Optional[pulumi.Input[str]] = None,
@@ -511,15 +701,19 @@ class ResourceServer(pulumi.CustomResource):
             __props__ = ResourceServerArgs.__new__(ResourceServerArgs)
 
             __props__.__dict__["allow_offline_access"] = allow_offline_access
+            __props__.__dict__["authorization_details"] = authorization_details
+            __props__.__dict__["consent_policy"] = consent_policy
             __props__.__dict__["enforce_policies"] = enforce_policies
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["name"] = name
+            __props__.__dict__["proof_of_possession"] = proof_of_possession
             __props__.__dict__["signing_alg"] = signing_alg
             __props__.__dict__["signing_secret"] = signing_secret
             __props__.__dict__["skip_consent_for_verifiable_first_party_clients"] = skip_consent_for_verifiable_first_party_clients
             __props__.__dict__["token_dialect"] = token_dialect
+            __props__.__dict__["token_encryption"] = token_encryption
             __props__.__dict__["token_lifetime"] = token_lifetime
             __props__.__dict__["token_lifetime_for_web"] = token_lifetime_for_web
             __props__.__dict__["verification_location"] = verification_location
@@ -534,13 +728,17 @@ class ResourceServer(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_offline_access: Optional[pulumi.Input[bool]] = None,
+            authorization_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]]] = None,
+            consent_policy: Optional[pulumi.Input[str]] = None,
             enforce_policies: Optional[pulumi.Input[bool]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            proof_of_possession: Optional[pulumi.Input[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict']]] = None,
             signing_alg: Optional[pulumi.Input[str]] = None,
             signing_secret: Optional[pulumi.Input[str]] = None,
             skip_consent_for_verifiable_first_party_clients: Optional[pulumi.Input[bool]] = None,
             token_dialect: Optional[pulumi.Input[str]] = None,
+            token_encryption: Optional[pulumi.Input[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict']]] = None,
             token_lifetime: Optional[pulumi.Input[int]] = None,
             token_lifetime_for_web: Optional[pulumi.Input[int]] = None,
             verification_location: Optional[pulumi.Input[str]] = None) -> 'ResourceServer':
@@ -552,13 +750,17 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]] authorization_details: Authorization details for this resource server.
+        :param pulumi.Input[str] consent_policy: Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
         :param pulumi.Input[bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         :param pulumi.Input[str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
         :param pulumi.Input[str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
-        :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+        :param pulumi.Input[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict']] proof_of_possession: Configuration settings for proof-of-possession for this resource server.
+        :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         :param pulumi.Input[str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Indicates whether to skip user consent for applications flagged as first party.
         :param pulumi.Input[str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
+        :param pulumi.Input[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict']] token_encryption: Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
         :param pulumi.Input[int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         :param pulumi.Input[int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
@@ -568,13 +770,17 @@ class ResourceServer(pulumi.CustomResource):
         __props__ = _ResourceServerState.__new__(_ResourceServerState)
 
         __props__.__dict__["allow_offline_access"] = allow_offline_access
+        __props__.__dict__["authorization_details"] = authorization_details
+        __props__.__dict__["consent_policy"] = consent_policy
         __props__.__dict__["enforce_policies"] = enforce_policies
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["name"] = name
+        __props__.__dict__["proof_of_possession"] = proof_of_possession
         __props__.__dict__["signing_alg"] = signing_alg
         __props__.__dict__["signing_secret"] = signing_secret
         __props__.__dict__["skip_consent_for_verifiable_first_party_clients"] = skip_consent_for_verifiable_first_party_clients
         __props__.__dict__["token_dialect"] = token_dialect
+        __props__.__dict__["token_encryption"] = token_encryption
         __props__.__dict__["token_lifetime"] = token_lifetime
         __props__.__dict__["token_lifetime_for_web"] = token_lifetime_for_web
         __props__.__dict__["verification_location"] = verification_location
@@ -587,6 +793,22 @@ class ResourceServer(pulumi.CustomResource):
         Indicates whether refresh tokens can be issued for this resource server.
         """
         return pulumi.get(self, "allow_offline_access")
+
+    @property
+    @pulumi.getter(name="authorizationDetails")
+    def authorization_details(self) -> pulumi.Output[Sequence['outputs.ResourceServerAuthorizationDetail']]:
+        """
+        Authorization details for this resource server.
+        """
+        return pulumi.get(self, "authorization_details")
+
+    @property
+    @pulumi.getter(name="consentPolicy")
+    def consent_policy(self) -> pulumi.Output[str]:
+        """
+        Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+        """
+        return pulumi.get(self, "consent_policy")
 
     @property
     @pulumi.getter(name="enforcePolicies")
@@ -613,10 +835,18 @@ class ResourceServer(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="proofOfPossession")
+    def proof_of_possession(self) -> pulumi.Output['outputs.ResourceServerProofOfPossession']:
+        """
+        Configuration settings for proof-of-possession for this resource server.
+        """
+        return pulumi.get(self, "proof_of_possession")
+
+    @property
     @pulumi.getter(name="signingAlg")
     def signing_alg(self) -> pulumi.Output[str]:
         """
-        Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+        Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         """
         return pulumi.get(self, "signing_alg")
 
@@ -643,6 +873,14 @@ class ResourceServer(pulumi.CustomResource):
         Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         """
         return pulumi.get(self, "token_dialect")
+
+    @property
+    @pulumi.getter(name="tokenEncryption")
+    def token_encryption(self) -> pulumi.Output['outputs.ResourceServerTokenEncryption']:
+        """
+        Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+        """
+        return pulumi.get(self, "token_encryption")
 
     @property
     @pulumi.getter(name="tokenLifetime")

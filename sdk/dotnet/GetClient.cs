@@ -148,6 +148,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<string> ClientAliases;
         /// <summary>
+        /// Defines client authentication methods.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientClientAuthenticationMethodResult> ClientAuthenticationMethods;
+        /// <summary>
         /// The ID of the client. If not provided, `name` must be set.
         /// </summary>
         public readonly string? ClientId;
@@ -156,6 +160,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableDictionary<string, string> ClientMetadata;
         public readonly string ClientSecret;
+        /// <summary>
+        /// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+        /// </summary>
+        public readonly string ComplianceLevel;
         /// <summary>
         /// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         /// </summary>
@@ -249,9 +257,17 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientRefreshTokenResult> RefreshTokens;
         /// <summary>
+        /// Makes the use of Proof-of-Possession mandatory for this client.
+        /// </summary>
+        public readonly bool RequireProofOfPossession;
+        /// <summary>
         /// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         /// </summary>
         public readonly bool RequirePushedAuthorizationRequests;
+        /// <summary>
+        /// Configuration for JWT-secured Authorization Requests(JAR).
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientSignedRequestObjectResult> SignedRequestObjects;
         /// <summary>
         /// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         /// </summary>
@@ -265,7 +281,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool SsoDisabled;
         /// <summary>
-        /// The authentication method for the token endpoint. Results include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic). Managing a client's authentication method can be done via the `auth0.ClientCredentials` resource.
+        /// The authentication method for the token endpoint. Results include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic), Managing a client's authentication method can be done via the `auth0.ClientCredentials` resource.
         /// </summary>
         public readonly string TokenEndpointAuthMethod;
         /// <summary>
@@ -289,11 +305,15 @@ namespace Pulumi.Auth0
 
             ImmutableArray<string> clientAliases,
 
+            ImmutableArray<Outputs.GetClientClientAuthenticationMethodResult> clientAuthenticationMethods,
+
             string? clientId,
 
             ImmutableDictionary<string, string> clientMetadata,
 
             string clientSecret,
+
+            string complianceLevel,
 
             bool crossOriginAuth,
 
@@ -341,7 +361,11 @@ namespace Pulumi.Auth0
 
             ImmutableArray<Outputs.GetClientRefreshTokenResult> refreshTokens,
 
+            bool requireProofOfPossession,
+
             bool requirePushedAuthorizationRequests,
+
+            ImmutableArray<Outputs.GetClientSignedRequestObjectResult> signedRequestObjects,
 
             ImmutableArray<ImmutableDictionary<string, string>> signingKeys,
 
@@ -360,9 +384,11 @@ namespace Pulumi.Auth0
             AppType = appType;
             Callbacks = callbacks;
             ClientAliases = clientAliases;
+            ClientAuthenticationMethods = clientAuthenticationMethods;
             ClientId = clientId;
             ClientMetadata = clientMetadata;
             ClientSecret = clientSecret;
+            ComplianceLevel = complianceLevel;
             CrossOriginAuth = crossOriginAuth;
             CrossOriginLoc = crossOriginLoc;
             CustomLoginPage = customLoginPage;
@@ -386,7 +412,9 @@ namespace Pulumi.Auth0
             OrganizationRequireBehavior = organizationRequireBehavior;
             OrganizationUsage = organizationUsage;
             RefreshTokens = refreshTokens;
+            RequireProofOfPossession = requireProofOfPossession;
             RequirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
+            SignedRequestObjects = signedRequestObjects;
             SigningKeys = signingKeys;
             Sso = sso;
             SsoDisabled = ssoDisabled;

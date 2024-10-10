@@ -31,6 +31,7 @@ import (
 //				Name:                           pulumi.String("Application - Acceptance Test"),
 //				Description:                    pulumi.String("Test Applications Long Description"),
 //				AppType:                        pulumi.String("non_interactive"),
+//				ComplianceLevel:                pulumi.String("none"),
 //				CustomLoginPageOn:              pulumi.Bool(true),
 //				IsFirstParty:                   pulumi.Bool(true),
 //				IsTokenEndpointIpHeaderTrusted: pulumi.Bool(true),
@@ -47,6 +48,7 @@ import (
 //				WebOrigins: pulumi.StringArray{
 //					pulumi.String("https://example.com"),
 //				},
+//				RequireProofOfPossession: pulumi.Bool(false),
 //				GrantTypes: pulumi.StringArray{
 //					pulumi.String("authorization_code"),
 //					pulumi.String("http://auth0.com/oauth/grant-type/password-realm"),
@@ -138,6 +140,8 @@ type Client struct {
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata pulumi.StringMapOutput `pulumi:"clientMetadata"`
+	// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
+	ComplianceLevel pulumi.StringPtrOutput `pulumi:"complianceLevel"`
 	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
 	CrossOriginAuth pulumi.BoolPtrOutput `pulumi:"crossOriginAuth"`
 	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
@@ -182,6 +186,8 @@ type Client struct {
 	OrganizationUsage pulumi.StringPtrOutput `pulumi:"organizationUsage"`
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshToken ClientRefreshTokenOutput `pulumi:"refreshToken"`
+	// Makes the use of Proof-of-Possession mandatory for this client.
+	RequireProofOfPossession pulumi.BoolPtrOutput `pulumi:"requireProofOfPossession"`
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests pulumi.BoolPtrOutput `pulumi:"requirePushedAuthorizationRequests"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
@@ -249,6 +255,8 @@ type clientState struct {
 	ClientId *string `pulumi:"clientId"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata map[string]string `pulumi:"clientMetadata"`
+	// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
+	ComplianceLevel *string `pulumi:"complianceLevel"`
 	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
 	CrossOriginAuth *bool `pulumi:"crossOriginAuth"`
 	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
@@ -293,6 +301,8 @@ type clientState struct {
 	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshToken *ClientRefreshToken `pulumi:"refreshToken"`
+	// Makes the use of Proof-of-Possession mandatory for this client.
+	RequireProofOfPossession *bool `pulumi:"requireProofOfPossession"`
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests *bool `pulumi:"requirePushedAuthorizationRequests"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
@@ -324,6 +334,8 @@ type ClientState struct {
 	ClientId pulumi.StringPtrInput
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata pulumi.StringMapInput
+	// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
+	ComplianceLevel pulumi.StringPtrInput
 	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
 	CrossOriginAuth pulumi.BoolPtrInput
 	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
@@ -368,6 +380,8 @@ type ClientState struct {
 	OrganizationUsage pulumi.StringPtrInput
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshToken ClientRefreshTokenPtrInput
+	// Makes the use of Proof-of-Possession mandatory for this client.
+	RequireProofOfPossession pulumi.BoolPtrInput
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests pulumi.BoolPtrInput
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
@@ -401,6 +415,8 @@ type clientArgs struct {
 	ClientAliases []string `pulumi:"clientAliases"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata map[string]string `pulumi:"clientMetadata"`
+	// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
+	ComplianceLevel *string `pulumi:"complianceLevel"`
 	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
 	CrossOriginAuth *bool `pulumi:"crossOriginAuth"`
 	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
@@ -445,6 +461,8 @@ type clientArgs struct {
 	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshToken *ClientRefreshToken `pulumi:"refreshToken"`
+	// Makes the use of Proof-of-Possession mandatory for this client.
+	RequireProofOfPossession *bool `pulumi:"requireProofOfPossession"`
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests *bool `pulumi:"requirePushedAuthorizationRequests"`
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
@@ -473,6 +491,8 @@ type ClientArgs struct {
 	ClientAliases pulumi.StringArrayInput
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata pulumi.StringMapInput
+	// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
+	ComplianceLevel pulumi.StringPtrInput
 	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
 	CrossOriginAuth pulumi.BoolPtrInput
 	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
@@ -517,6 +537,8 @@ type ClientArgs struct {
 	OrganizationUsage pulumi.StringPtrInput
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshToken ClientRefreshTokenPtrInput
+	// Makes the use of Proof-of-Possession mandatory for this client.
+	RequireProofOfPossession pulumi.BoolPtrInput
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests pulumi.BoolPtrInput
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
@@ -659,6 +681,11 @@ func (o ClientOutput) ClientMetadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringMapOutput { return v.ClientMetadata }).(pulumi.StringMapOutput)
 }
 
+// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
+func (o ClientOutput) ComplianceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.ComplianceLevel }).(pulumi.StringPtrOutput)
+}
+
 // Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
 func (o ClientOutput) CrossOriginAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.BoolPtrOutput { return v.CrossOriginAuth }).(pulumi.BoolPtrOutput)
@@ -767,6 +794,11 @@ func (o ClientOutput) OrganizationUsage() pulumi.StringPtrOutput {
 // Configuration settings for the refresh tokens issued for this client.
 func (o ClientOutput) RefreshToken() ClientRefreshTokenOutput {
 	return o.ApplyT(func(v *Client) ClientRefreshTokenOutput { return v.RefreshToken }).(ClientRefreshTokenOutput)
+}
+
+// Makes the use of Proof-of-Possession mandatory for this client.
+func (o ClientOutput) RequireProofOfPossession() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Client) pulumi.BoolPtrOutput { return v.RequireProofOfPossession }).(pulumi.BoolPtrOutput)
 }
 
 // Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.

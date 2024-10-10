@@ -61,6 +61,7 @@ import javax.annotation.Nullable;
  *             .name("Application - Acceptance Test")
  *             .description("Test Applications Long Description")
  *             .appType("non_interactive")
+ *             .complianceLevel("none")
  *             .customLoginPageOn(true)
  *             .isFirstParty(true)
  *             .isTokenEndpointIpHeaderTrusted(true)
@@ -69,6 +70,7 @@ import javax.annotation.Nullable;
  *             .allowedOrigins("https://example.com")
  *             .allowedLogoutUrls("https://example.com")
  *             .webOrigins("https://example.com")
+ *             .requireProofOfPossession(false)
  *             .grantTypes(            
  *                 "authorization_code",
  *                 "http://auth0.com/oauth/grant-type/password-realm",
@@ -264,6 +266,20 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> clientMetadata() {
         return Codegen.optional(this.clientMetadata);
+    }
+    /**
+     * Defines the compliance level for this client, which may restrict it&#39;s capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+     * 
+     */
+    @Export(name="complianceLevel", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> complianceLevel;
+
+    /**
+     * @return Defines the compliance level for this client, which may restrict it&#39;s capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+     * 
+     */
+    public Output<Optional<String>> complianceLevel() {
+        return Codegen.optional(this.complianceLevel);
     }
     /**
      * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
@@ -572,6 +588,20 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     public Output<ClientRefreshToken> refreshToken() {
         return this.refreshToken;
+    }
+    /**
+     * Makes the use of Proof-of-Possession mandatory for this client.
+     * 
+     */
+    @Export(name="requireProofOfPossession", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> requireProofOfPossession;
+
+    /**
+     * @return Makes the use of Proof-of-Possession mandatory for this client.
+     * 
+     */
+    public Output<Optional<Boolean>> requireProofOfPossession() {
+        return Codegen.optional(this.requireProofOfPossession);
     }
     /**
      * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.

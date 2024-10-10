@@ -21,6 +21,11 @@ public final class GetOrganizationResult {
      * 
      */
     private List<GetOrganizationBranding> brandings;
+    /**
+     * @return Client Grant ID(s) that are associated to the organization.
+     * 
+     */
+    private List<String> clientGrants;
     private List<GetOrganizationConnection> connections;
     /**
      * @return Friendly name of this organization.
@@ -60,6 +65,13 @@ public final class GetOrganizationResult {
      */
     public List<GetOrganizationBranding> brandings() {
         return this.brandings;
+    }
+    /**
+     * @return Client Grant ID(s) that are associated to the organization.
+     * 
+     */
+    public List<String> clientGrants() {
+        return this.clientGrants;
     }
     public List<GetOrganizationConnection> connections() {
         return this.connections;
@@ -117,6 +129,7 @@ public final class GetOrganizationResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetOrganizationBranding> brandings;
+        private List<String> clientGrants;
         private List<GetOrganizationConnection> connections;
         private String displayName;
         private String id;
@@ -128,6 +141,7 @@ public final class GetOrganizationResult {
         public Builder(GetOrganizationResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.brandings = defaults.brandings;
+    	      this.clientGrants = defaults.clientGrants;
     	      this.connections = defaults.connections;
     	      this.displayName = defaults.displayName;
     	      this.id = defaults.id;
@@ -147,6 +161,17 @@ public final class GetOrganizationResult {
         }
         public Builder brandings(GetOrganizationBranding... brandings) {
             return brandings(List.of(brandings));
+        }
+        @CustomType.Setter
+        public Builder clientGrants(List<String> clientGrants) {
+            if (clientGrants == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationResult", "clientGrants");
+            }
+            this.clientGrants = clientGrants;
+            return this;
+        }
+        public Builder clientGrants(String... clientGrants) {
+            return clientGrants(List.of(clientGrants));
         }
         @CustomType.Setter
         public Builder connections(List<GetOrganizationConnection> connections) {
@@ -209,6 +234,7 @@ public final class GetOrganizationResult {
         public GetOrganizationResult build() {
             final var _resultValue = new GetOrganizationResult();
             _resultValue.brandings = brandings;
+            _resultValue.clientGrants = clientGrants;
             _resultValue.connections = connections;
             _resultValue.displayName = displayName;
             _resultValue.id = id;

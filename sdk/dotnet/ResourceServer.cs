@@ -30,6 +30,36 @@ namespace Pulumi.Auth0
     ///         AllowOfflineAccess = true,
     ///         TokenLifetime = 8600,
     ///         SkipConsentForVerifiableFirstPartyClients = true,
+    ///         ConsentPolicy = "transactional-authorization-with-mfa",
+    ///         TokenEncryption = new Auth0.Inputs.ResourceServerTokenEncryptionArgs
+    ///         {
+    ///             Format = "compact-nested-jwe",
+    ///             EncryptionKey = new Auth0.Inputs.ResourceServerTokenEncryptionEncryptionKeyArgs
+    ///             {
+    ///                 Name = "keyname",
+    ///                 Algorithm = "RSA-OAEP-256",
+    ///                 Pem = @"-----BEGIN CERTIFICATE-----
+    /// MIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl
+    /// -----END CERTIFICATE-----
+    /// ",
+    ///             },
+    ///         },
+    ///         AuthorizationDetails = new[]
+    ///         {
+    ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
+    ///             {
+    ///                 Type = "payment",
+    ///             },
+    ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
+    ///             {
+    ///                 Type = "non-payment",
+    ///             },
+    ///         },
+    ///         ProofOfPossession = new Auth0.Inputs.ResourceServerProofOfPossessionArgs
+    ///         {
+    ///             Mechanism = "mtls",
+    ///             Required = true,
+    ///         },
     ///     });
     /// 
     /// });
@@ -57,6 +87,18 @@ namespace Pulumi.Auth0
         public Output<bool?> AllowOfflineAccess { get; private set; } = null!;
 
         /// <summary>
+        /// Authorization details for this resource server.
+        /// </summary>
+        [Output("authorizationDetails")]
+        public Output<ImmutableArray<Outputs.ResourceServerAuthorizationDetail>> AuthorizationDetails { get; private set; } = null!;
+
+        /// <summary>
+        /// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+        /// </summary>
+        [Output("consentPolicy")]
+        public Output<string> ConsentPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         /// </summary>
         [Output("enforcePolicies")]
@@ -75,7 +117,13 @@ namespace Pulumi.Auth0
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+        /// Configuration settings for proof-of-possession for this resource server.
+        /// </summary>
+        [Output("proofOfPossession")]
+        public Output<Outputs.ResourceServerProofOfPossession> ProofOfPossession { get; private set; } = null!;
+
+        /// <summary>
+        /// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         /// </summary>
         [Output("signingAlg")]
         public Output<string> SigningAlg { get; private set; } = null!;
@@ -97,6 +145,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("tokenDialect")]
         public Output<string> TokenDialect { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+        /// </summary>
+        [Output("tokenEncryption")]
+        public Output<Outputs.ResourceServerTokenEncryption> TokenEncryption { get; private set; } = null!;
 
         /// <summary>
         /// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
@@ -168,6 +222,24 @@ namespace Pulumi.Auth0
         [Input("allowOfflineAccess")]
         public Input<bool>? AllowOfflineAccess { get; set; }
 
+        [Input("authorizationDetails")]
+        private InputList<Inputs.ResourceServerAuthorizationDetailArgs>? _authorizationDetails;
+
+        /// <summary>
+        /// Authorization details for this resource server.
+        /// </summary>
+        public InputList<Inputs.ResourceServerAuthorizationDetailArgs> AuthorizationDetails
+        {
+            get => _authorizationDetails ?? (_authorizationDetails = new InputList<Inputs.ResourceServerAuthorizationDetailArgs>());
+            set => _authorizationDetails = value;
+        }
+
+        /// <summary>
+        /// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+        /// </summary>
+        [Input("consentPolicy")]
+        public Input<string>? ConsentPolicy { get; set; }
+
         /// <summary>
         /// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         /// </summary>
@@ -187,7 +259,13 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+        /// Configuration settings for proof-of-possession for this resource server.
+        /// </summary>
+        [Input("proofOfPossession")]
+        public Input<Inputs.ResourceServerProofOfPossessionArgs>? ProofOfPossession { get; set; }
+
+        /// <summary>
+        /// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         /// </summary>
         [Input("signingAlg")]
         public Input<string>? SigningAlg { get; set; }
@@ -209,6 +287,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("tokenDialect")]
         public Input<string>? TokenDialect { get; set; }
+
+        /// <summary>
+        /// Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+        /// </summary>
+        [Input("tokenEncryption")]
+        public Input<Inputs.ResourceServerTokenEncryptionArgs>? TokenEncryption { get; set; }
 
         /// <summary>
         /// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
@@ -242,6 +326,24 @@ namespace Pulumi.Auth0
         [Input("allowOfflineAccess")]
         public Input<bool>? AllowOfflineAccess { get; set; }
 
+        [Input("authorizationDetails")]
+        private InputList<Inputs.ResourceServerAuthorizationDetailGetArgs>? _authorizationDetails;
+
+        /// <summary>
+        /// Authorization details for this resource server.
+        /// </summary>
+        public InputList<Inputs.ResourceServerAuthorizationDetailGetArgs> AuthorizationDetails
+        {
+            get => _authorizationDetails ?? (_authorizationDetails = new InputList<Inputs.ResourceServerAuthorizationDetailGetArgs>());
+            set => _authorizationDetails = value;
+        }
+
+        /// <summary>
+        /// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+        /// </summary>
+        [Input("consentPolicy")]
+        public Input<string>? ConsentPolicy { get; set; }
+
         /// <summary>
         /// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         /// </summary>
@@ -261,7 +363,13 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+        /// Configuration settings for proof-of-possession for this resource server.
+        /// </summary>
+        [Input("proofOfPossession")]
+        public Input<Inputs.ResourceServerProofOfPossessionGetArgs>? ProofOfPossession { get; set; }
+
+        /// <summary>
+        /// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         /// </summary>
         [Input("signingAlg")]
         public Input<string>? SigningAlg { get; set; }
@@ -283,6 +391,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("tokenDialect")]
         public Input<string>? TokenDialect { get; set; }
+
+        /// <summary>
+        /// Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+        /// </summary>
+        [Input("tokenEncryption")]
+        public Input<Inputs.ResourceServerTokenEncryptionGetArgs>? TokenEncryption { get; set; }
 
         /// <summary>
         /// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.

@@ -4,6 +4,9 @@
 package com.pulumi.auth0;
 
 import com.pulumi.auth0.inputs.ClientCredentialsPrivateKeyJwtArgs;
+import com.pulumi.auth0.inputs.ClientCredentialsSelfSignedTlsClientAuthArgs;
+import com.pulumi.auth0.inputs.ClientCredentialsSignedRequestObjectArgs;
+import com.pulumi.auth0.inputs.ClientCredentialsTlsClientAuthArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -18,18 +21,18 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
     public static final ClientCredentialsArgs Empty = new ClientCredentialsArgs();
 
     /**
-     * Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT).
+     * Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
      * 
      */
-    @Import(name="authenticationMethod", required=true)
-    private Output<String> authenticationMethod;
+    @Import(name="authenticationMethod")
+    private @Nullable Output<String> authenticationMethod;
 
     /**
-     * @return Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT).
+     * @return Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
      * 
      */
-    public Output<String> authenticationMethod() {
-        return this.authenticationMethod;
+    public Optional<Output<String>> authenticationMethod() {
+        return Optional.ofNullable(this.authenticationMethod);
     }
 
     /**
@@ -69,6 +72,51 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.privateKeyJwt);
     }
 
+    /**
+     * Defines `tls_client_auth` client authentication method.
+     * 
+     */
+    @Import(name="selfSignedTlsClientAuth")
+    private @Nullable Output<ClientCredentialsSelfSignedTlsClientAuthArgs> selfSignedTlsClientAuth;
+
+    /**
+     * @return Defines `tls_client_auth` client authentication method.
+     * 
+     */
+    public Optional<Output<ClientCredentialsSelfSignedTlsClientAuthArgs>> selfSignedTlsClientAuth() {
+        return Optional.ofNullable(this.selfSignedTlsClientAuth);
+    }
+
+    /**
+     * Configuration for JWT-secured Authorization Requests(JAR).
+     * 
+     */
+    @Import(name="signedRequestObject")
+    private @Nullable Output<ClientCredentialsSignedRequestObjectArgs> signedRequestObject;
+
+    /**
+     * @return Configuration for JWT-secured Authorization Requests(JAR).
+     * 
+     */
+    public Optional<Output<ClientCredentialsSignedRequestObjectArgs>> signedRequestObject() {
+        return Optional.ofNullable(this.signedRequestObject);
+    }
+
+    /**
+     * Defines `tls_client_auth` client authentication method.
+     * 
+     */
+    @Import(name="tlsClientAuth")
+    private @Nullable Output<ClientCredentialsTlsClientAuthArgs> tlsClientAuth;
+
+    /**
+     * @return Defines `tls_client_auth` client authentication method.
+     * 
+     */
+    public Optional<Output<ClientCredentialsTlsClientAuthArgs>> tlsClientAuth() {
+        return Optional.ofNullable(this.tlsClientAuth);
+    }
+
     private ClientCredentialsArgs() {}
 
     private ClientCredentialsArgs(ClientCredentialsArgs $) {
@@ -76,6 +124,9 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
         this.privateKeyJwt = $.privateKeyJwt;
+        this.selfSignedTlsClientAuth = $.selfSignedTlsClientAuth;
+        this.signedRequestObject = $.signedRequestObject;
+        this.tlsClientAuth = $.tlsClientAuth;
     }
 
     public static Builder builder() {
@@ -97,18 +148,18 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param authenticationMethod Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT).
+         * @param authenticationMethod Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
          * 
          * @return builder
          * 
          */
-        public Builder authenticationMethod(Output<String> authenticationMethod) {
+        public Builder authenticationMethod(@Nullable Output<String> authenticationMethod) {
             $.authenticationMethod = authenticationMethod;
             return this;
         }
 
         /**
-         * @param authenticationMethod Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT).
+         * @param authenticationMethod Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
          * 
          * @return builder
          * 
@@ -168,10 +219,70 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
             return privateKeyJwt(Output.of(privateKeyJwt));
         }
 
+        /**
+         * @param selfSignedTlsClientAuth Defines `tls_client_auth` client authentication method.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selfSignedTlsClientAuth(@Nullable Output<ClientCredentialsSelfSignedTlsClientAuthArgs> selfSignedTlsClientAuth) {
+            $.selfSignedTlsClientAuth = selfSignedTlsClientAuth;
+            return this;
+        }
+
+        /**
+         * @param selfSignedTlsClientAuth Defines `tls_client_auth` client authentication method.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selfSignedTlsClientAuth(ClientCredentialsSelfSignedTlsClientAuthArgs selfSignedTlsClientAuth) {
+            return selfSignedTlsClientAuth(Output.of(selfSignedTlsClientAuth));
+        }
+
+        /**
+         * @param signedRequestObject Configuration for JWT-secured Authorization Requests(JAR).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signedRequestObject(@Nullable Output<ClientCredentialsSignedRequestObjectArgs> signedRequestObject) {
+            $.signedRequestObject = signedRequestObject;
+            return this;
+        }
+
+        /**
+         * @param signedRequestObject Configuration for JWT-secured Authorization Requests(JAR).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signedRequestObject(ClientCredentialsSignedRequestObjectArgs signedRequestObject) {
+            return signedRequestObject(Output.of(signedRequestObject));
+        }
+
+        /**
+         * @param tlsClientAuth Defines `tls_client_auth` client authentication method.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsClientAuth(@Nullable Output<ClientCredentialsTlsClientAuthArgs> tlsClientAuth) {
+            $.tlsClientAuth = tlsClientAuth;
+            return this;
+        }
+
+        /**
+         * @param tlsClientAuth Defines `tls_client_auth` client authentication method.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsClientAuth(ClientCredentialsTlsClientAuthArgs tlsClientAuth) {
+            return tlsClientAuth(Output.of(tlsClientAuth));
+        }
+
         public ClientCredentialsArgs build() {
-            if ($.authenticationMethod == null) {
-                throw new MissingRequiredPropertyException("ClientCredentialsArgs", "authenticationMethod");
-            }
             if ($.clientId == null) {
                 throw new MissingRequiredPropertyException("ClientCredentialsArgs", "clientId");
             }

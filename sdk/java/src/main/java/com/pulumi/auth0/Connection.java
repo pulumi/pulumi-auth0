@@ -71,6 +71,7 @@ import javax.annotation.Nullable;
  *             .options(ConnectionOptionsArgs.builder()
  *                 .passwordPolicy("excellent")
  *                 .bruteForceProtection(true)
+ *                 .strategyVersion(2)
  *                 .enabledDatabaseCustomization(true)
  *                 .importMode(false)
  *                 .requiresUsername(true)
@@ -538,6 +539,7 @@ import javax.annotation.Nullable;
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId("<client-id>")
  *                 .clientSecret("<client-secret>")
+ *                 .strategyVersion(2)
  *                 .scopes(                
  *                     "basic_profile",
  *                     "profile",
@@ -600,6 +602,7 @@ import javax.annotation.Nullable;
  *                 .disableSelfServiceChangePassword(true)
  *                 .bruteForceProtection(true)
  *                 .tenantDomain("example.com")
+ *                 .strategyVersion(2)
  *                 .iconUrl("https://example.com/assets/logo.png")
  *                 .domainAliases(                
  *                     "example.com",
@@ -664,6 +667,8 @@ import javax.annotation.Nullable;
  *                 .identityApi("azure-active-directory-v1.0")
  *                 .clientId("123456")
  *                 .clientSecret("123456")
+ *                 .strategyVersion(2)
+ *                 .userIdAttribute("userName")
  *                 .appId("app-id-123")
  *                 .tenantDomain("example.onmicrosoft.com")
  *                 .domain("example.onmicrosoft.com")
@@ -800,6 +805,7 @@ import javax.annotation.Nullable;
  *                 .signInEndpoint("https://saml.provider/sign_in")
  *                 .signOutEndpoint("https://saml.provider/sign_out")
  *                 .disableSignOut(true)
+ *                 .strategyVersion(2)
  *                 .tenantDomain("example.com")
  *                 .domainAliases(                
  *                     "example.com",
@@ -1109,14 +1115,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> displayName;
+    private Output<String> displayName;
 
     /**
      * @return Name used in login screen.
      * 
      */
-    public Output<Optional<String>> displayName() {
-        return Codegen.optional(this.displayName);
+    public Output<String> displayName() {
+        return this.displayName;
     }
     /**
      * Indicates whether the connection is domain level.

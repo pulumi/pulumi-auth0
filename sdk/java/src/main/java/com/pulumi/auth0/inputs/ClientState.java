@@ -161,6 +161,21 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines the compliance level for this client, which may restrict it&#39;s capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+     * 
+     */
+    @Import(name="complianceLevel")
+    private @Nullable Output<String> complianceLevel;
+
+    /**
+     * @return Defines the compliance level for this client, which may restrict it&#39;s capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+     * 
+     */
+    public Optional<Output<String>> complianceLevel() {
+        return Optional.ofNullable(this.complianceLevel);
+    }
+
+    /**
      * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      * 
      */
@@ -491,6 +506,21 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Makes the use of Proof-of-Possession mandatory for this client.
+     * 
+     */
+    @Import(name="requireProofOfPossession")
+    private @Nullable Output<Boolean> requireProofOfPossession;
+
+    /**
+     * @return Makes the use of Proof-of-Possession mandatory for this client.
+     * 
+     */
+    public Optional<Output<Boolean>> requireProofOfPossession() {
+        return Optional.ofNullable(this.requireProofOfPossession);
+    }
+
+    /**
      * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      * 
      */
@@ -577,6 +607,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         this.clientAliases = $.clientAliases;
         this.clientId = $.clientId;
         this.clientMetadata = $.clientMetadata;
+        this.complianceLevel = $.complianceLevel;
         this.crossOriginAuth = $.crossOriginAuth;
         this.crossOriginLoc = $.crossOriginLoc;
         this.customLoginPage = $.customLoginPage;
@@ -599,6 +630,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         this.organizationRequireBehavior = $.organizationRequireBehavior;
         this.organizationUsage = $.organizationUsage;
         this.refreshToken = $.refreshToken;
+        this.requireProofOfPossession = $.requireProofOfPossession;
         this.requirePushedAuthorizationRequests = $.requirePushedAuthorizationRequests;
         this.signingKeys = $.signingKeys;
         this.sso = $.sso;
@@ -861,6 +893,27 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clientMetadata(Map<String,String> clientMetadata) {
             return clientMetadata(Output.of(clientMetadata));
+        }
+
+        /**
+         * @param complianceLevel Defines the compliance level for this client, which may restrict it&#39;s capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder complianceLevel(@Nullable Output<String> complianceLevel) {
+            $.complianceLevel = complianceLevel;
+            return this;
+        }
+
+        /**
+         * @param complianceLevel Defines the compliance level for this client, which may restrict it&#39;s capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder complianceLevel(String complianceLevel) {
+            return complianceLevel(Output.of(complianceLevel));
         }
 
         /**
@@ -1343,6 +1396,27 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder refreshToken(ClientRefreshTokenArgs refreshToken) {
             return refreshToken(Output.of(refreshToken));
+        }
+
+        /**
+         * @param requireProofOfPossession Makes the use of Proof-of-Possession mandatory for this client.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requireProofOfPossession(@Nullable Output<Boolean> requireProofOfPossession) {
+            $.requireProofOfPossession = requireProofOfPossession;
+            return this;
+        }
+
+        /**
+         * @param requireProofOfPossession Makes the use of Proof-of-Possession mandatory for this client.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requireProofOfPossession(Boolean requireProofOfPossession) {
+            return requireProofOfPossession(Output.of(requireProofOfPossession));
         }
 
         /**

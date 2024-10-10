@@ -30,6 +30,12 @@ namespace Pulumi.Auth0
     public partial class ClientGrant : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+        /// </summary>
+        [Output("allowAnyOrganization")]
+        public Output<bool?> AllowAnyOrganization { get; private set; } = null!;
+
+        /// <summary>
         /// Audience or API Identifier for this grant.
         /// </summary>
         [Output("audience")]
@@ -40,6 +46,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("clientId")]
         public Output<string> ClientId { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+        /// </summary>
+        [Output("organizationUsage")]
+        public Output<string?> OrganizationUsage { get; private set; } = null!;
 
         /// <summary>
         /// Permissions (scopes) included in this grant.
@@ -94,6 +106,12 @@ namespace Pulumi.Auth0
     public sealed class ClientGrantArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+        /// </summary>
+        [Input("allowAnyOrganization")]
+        public Input<bool>? AllowAnyOrganization { get; set; }
+
+        /// <summary>
         /// Audience or API Identifier for this grant.
         /// </summary>
         [Input("audience", required: true)]
@@ -104,6 +122,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
+
+        /// <summary>
+        /// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+        /// </summary>
+        [Input("organizationUsage")]
+        public Input<string>? OrganizationUsage { get; set; }
 
         [Input("scopes", required: true)]
         private InputList<string>? _scopes;
@@ -126,6 +150,12 @@ namespace Pulumi.Auth0
     public sealed class ClientGrantState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+        /// </summary>
+        [Input("allowAnyOrganization")]
+        public Input<bool>? AllowAnyOrganization { get; set; }
+
+        /// <summary>
         /// Audience or API Identifier for this grant.
         /// </summary>
         [Input("audience")]
@@ -136,6 +166,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
+
+        /// <summary>
+        /// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+        /// </summary>
+        [Input("organizationUsage")]
+        public Input<string>? OrganizationUsage { get; set; }
 
         [Input("scopes")]
         private InputList<string>? _scopes;

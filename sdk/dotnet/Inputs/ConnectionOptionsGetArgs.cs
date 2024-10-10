@@ -631,7 +631,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? UseWsfed { get; set; }
 
         /// <summary>
-        /// Attribute in the SAML token that will be mapped to the user_id property in Auth0.
+        /// Attribute in the token that will be mapped to the user_id property in Auth0.
         /// </summary>
         [Input("userIdAttribute")]
         public Input<string>? UserIdAttribute { get; set; }

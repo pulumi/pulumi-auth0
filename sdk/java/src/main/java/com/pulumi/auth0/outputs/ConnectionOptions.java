@@ -465,7 +465,7 @@ public final class ConnectionOptions {
      */
     private @Nullable Boolean useWsfed;
     /**
-     * @return Attribute in the SAML token that will be mapped to the user_id property in Auth0.
+     * @return Attribute in the token that will be mapped to the user_id property in Auth0.
      * 
      */
     private @Nullable String userIdAttribute;
@@ -1101,7 +1101,7 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.useWsfed);
     }
     /**
-     * @return Attribute in the SAML token that will be mapped to the user_id property in Auth0.
+     * @return Attribute in the token that will be mapped to the user_id property in Auth0.
      * 
      */
     public Optional<String> userIdAttribute() {
