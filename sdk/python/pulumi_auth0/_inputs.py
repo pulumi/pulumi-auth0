@@ -4,147 +4,301 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'ActionDependencyArgs',
+    'ActionDependencyArgsDict',
     'ActionSecretArgs',
+    'ActionSecretArgsDict',
     'ActionSupportedTriggersArgs',
+    'ActionSupportedTriggersArgsDict',
     'AttackProtectionBreachedPasswordDetectionArgs',
+    'AttackProtectionBreachedPasswordDetectionArgsDict',
     'AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs',
+    'AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgsDict',
     'AttackProtectionBruteForceProtectionArgs',
+    'AttackProtectionBruteForceProtectionArgsDict',
     'AttackProtectionSuspiciousIpThrottlingArgs',
+    'AttackProtectionSuspiciousIpThrottlingArgsDict',
     'AttackProtectionSuspiciousIpThrottlingPreLoginArgs',
+    'AttackProtectionSuspiciousIpThrottlingPreLoginArgsDict',
     'AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs',
+    'AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgsDict',
     'BrandingColorsArgs',
+    'BrandingColorsArgsDict',
     'BrandingFontArgs',
+    'BrandingFontArgsDict',
     'BrandingThemeBordersArgs',
+    'BrandingThemeBordersArgsDict',
     'BrandingThemeColorsArgs',
+    'BrandingThemeColorsArgsDict',
     'BrandingThemeFontsArgs',
+    'BrandingThemeFontsArgsDict',
     'BrandingThemeFontsBodyTextArgs',
+    'BrandingThemeFontsBodyTextArgsDict',
     'BrandingThemeFontsButtonsTextArgs',
+    'BrandingThemeFontsButtonsTextArgsDict',
     'BrandingThemeFontsInputLabelsArgs',
+    'BrandingThemeFontsInputLabelsArgsDict',
     'BrandingThemeFontsLinksArgs',
+    'BrandingThemeFontsLinksArgsDict',
     'BrandingThemeFontsSubtitleArgs',
+    'BrandingThemeFontsSubtitleArgsDict',
     'BrandingThemeFontsTitleArgs',
+    'BrandingThemeFontsTitleArgsDict',
     'BrandingThemePageBackgroundArgs',
+    'BrandingThemePageBackgroundArgsDict',
     'BrandingThemeWidgetArgs',
+    'BrandingThemeWidgetArgsDict',
     'BrandingUniversalLoginArgs',
+    'BrandingUniversalLoginArgsDict',
     'ClientAddonsArgs',
+    'ClientAddonsArgsDict',
     'ClientAddonsAwsArgs',
+    'ClientAddonsAwsArgsDict',
     'ClientAddonsAzureBlobArgs',
+    'ClientAddonsAzureBlobArgsDict',
     'ClientAddonsAzureSbArgs',
+    'ClientAddonsAzureSbArgsDict',
     'ClientAddonsBoxArgs',
+    'ClientAddonsBoxArgsDict',
     'ClientAddonsCloudbeesArgs',
+    'ClientAddonsCloudbeesArgsDict',
     'ClientAddonsConcurArgs',
+    'ClientAddonsConcurArgsDict',
     'ClientAddonsDropboxArgs',
+    'ClientAddonsDropboxArgsDict',
     'ClientAddonsEchosignArgs',
+    'ClientAddonsEchosignArgsDict',
     'ClientAddonsEgnyteArgs',
+    'ClientAddonsEgnyteArgsDict',
     'ClientAddonsFirebaseArgs',
+    'ClientAddonsFirebaseArgsDict',
     'ClientAddonsLayerArgs',
+    'ClientAddonsLayerArgsDict',
     'ClientAddonsMscrmArgs',
+    'ClientAddonsMscrmArgsDict',
     'ClientAddonsNewrelicArgs',
+    'ClientAddonsNewrelicArgsDict',
     'ClientAddonsOffice365Args',
+    'ClientAddonsOffice365ArgsDict',
     'ClientAddonsRmsArgs',
+    'ClientAddonsRmsArgsDict',
     'ClientAddonsSalesforceArgs',
+    'ClientAddonsSalesforceArgsDict',
     'ClientAddonsSalesforceApiArgs',
+    'ClientAddonsSalesforceApiArgsDict',
     'ClientAddonsSalesforceSandboxApiArgs',
+    'ClientAddonsSalesforceSandboxApiArgsDict',
     'ClientAddonsSamlpArgs',
+    'ClientAddonsSamlpArgsDict',
     'ClientAddonsSamlpLogoutArgs',
+    'ClientAddonsSamlpLogoutArgsDict',
     'ClientAddonsSapApiArgs',
+    'ClientAddonsSapApiArgsDict',
     'ClientAddonsSentryArgs',
+    'ClientAddonsSentryArgsDict',
     'ClientAddonsSharepointArgs',
+    'ClientAddonsSharepointArgsDict',
     'ClientAddonsSlackArgs',
+    'ClientAddonsSlackArgsDict',
     'ClientAddonsSpringcmArgs',
+    'ClientAddonsSpringcmArgsDict',
     'ClientAddonsSsoIntegrationArgs',
+    'ClientAddonsSsoIntegrationArgsDict',
     'ClientAddonsWamsArgs',
+    'ClientAddonsWamsArgsDict',
     'ClientAddonsWsfedArgs',
+    'ClientAddonsWsfedArgsDict',
     'ClientAddonsZendeskArgs',
+    'ClientAddonsZendeskArgsDict',
     'ClientAddonsZoomArgs',
+    'ClientAddonsZoomArgsDict',
     'ClientCredentialsPrivateKeyJwtArgs',
+    'ClientCredentialsPrivateKeyJwtArgsDict',
     'ClientCredentialsPrivateKeyJwtCredentialArgs',
+    'ClientCredentialsPrivateKeyJwtCredentialArgsDict',
     'ClientDefaultOrganizationArgs',
+    'ClientDefaultOrganizationArgsDict',
     'ClientJwtConfigurationArgs',
+    'ClientJwtConfigurationArgsDict',
     'ClientMobileArgs',
+    'ClientMobileArgsDict',
     'ClientMobileAndroidArgs',
+    'ClientMobileAndroidArgsDict',
     'ClientMobileIosArgs',
+    'ClientMobileIosArgsDict',
     'ClientNativeSocialLoginArgs',
+    'ClientNativeSocialLoginArgsDict',
     'ClientNativeSocialLoginAppleArgs',
+    'ClientNativeSocialLoginAppleArgsDict',
     'ClientNativeSocialLoginFacebookArgs',
+    'ClientNativeSocialLoginFacebookArgsDict',
     'ClientRefreshTokenArgs',
+    'ClientRefreshTokenArgsDict',
     'ConnectionOptionsArgs',
+    'ConnectionOptionsArgsDict',
     'ConnectionOptionsAttributeArgs',
+    'ConnectionOptionsAttributeArgsDict',
     'ConnectionOptionsAttributeEmailArgs',
+    'ConnectionOptionsAttributeEmailArgsDict',
     'ConnectionOptionsAttributeEmailIdentifierArgs',
+    'ConnectionOptionsAttributeEmailIdentifierArgsDict',
     'ConnectionOptionsAttributeEmailSignupArgs',
+    'ConnectionOptionsAttributeEmailSignupArgsDict',
     'ConnectionOptionsAttributeEmailSignupVerificationArgs',
+    'ConnectionOptionsAttributeEmailSignupVerificationArgsDict',
     'ConnectionOptionsAttributeMapArgs',
+    'ConnectionOptionsAttributeMapArgsDict',
     'ConnectionOptionsAttributePhoneNumberArgs',
+    'ConnectionOptionsAttributePhoneNumberArgsDict',
     'ConnectionOptionsAttributePhoneNumberIdentifierArgs',
+    'ConnectionOptionsAttributePhoneNumberIdentifierArgsDict',
     'ConnectionOptionsAttributePhoneNumberSignupArgs',
+    'ConnectionOptionsAttributePhoneNumberSignupArgsDict',
     'ConnectionOptionsAttributePhoneNumberSignupVerificationArgs',
+    'ConnectionOptionsAttributePhoneNumberSignupVerificationArgsDict',
     'ConnectionOptionsAttributeUsernameArgs',
+    'ConnectionOptionsAttributeUsernameArgsDict',
     'ConnectionOptionsAttributeUsernameIdentifierArgs',
+    'ConnectionOptionsAttributeUsernameIdentifierArgsDict',
     'ConnectionOptionsAttributeUsernameSignupArgs',
+    'ConnectionOptionsAttributeUsernameSignupArgsDict',
     'ConnectionOptionsAttributeUsernameValidationArgs',
+    'ConnectionOptionsAttributeUsernameValidationArgsDict',
     'ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs',
+    'ConnectionOptionsAttributeUsernameValidationAllowedTypeArgsDict',
     'ConnectionOptionsConnectionSettingsArgs',
+    'ConnectionOptionsConnectionSettingsArgsDict',
     'ConnectionOptionsDecryptionKeyArgs',
+    'ConnectionOptionsDecryptionKeyArgsDict',
     'ConnectionOptionsGatewayAuthenticationArgs',
+    'ConnectionOptionsGatewayAuthenticationArgsDict',
     'ConnectionOptionsIdpInitiatedArgs',
+    'ConnectionOptionsIdpInitiatedArgsDict',
     'ConnectionOptionsMfaArgs',
+    'ConnectionOptionsMfaArgsDict',
     'ConnectionOptionsPasswordComplexityOptionsArgs',
+    'ConnectionOptionsPasswordComplexityOptionsArgsDict',
     'ConnectionOptionsPasswordDictionaryArgs',
+    'ConnectionOptionsPasswordDictionaryArgsDict',
     'ConnectionOptionsPasswordHistoryArgs',
+    'ConnectionOptionsPasswordHistoryArgsDict',
     'ConnectionOptionsPasswordNoPersonalInfoArgs',
+    'ConnectionOptionsPasswordNoPersonalInfoArgsDict',
     'ConnectionOptionsSigningKeyArgs',
+    'ConnectionOptionsSigningKeyArgsDict',
     'ConnectionOptionsTotpArgs',
+    'ConnectionOptionsTotpArgsDict',
     'ConnectionOptionsValidationArgs',
+    'ConnectionOptionsValidationArgsDict',
     'ConnectionOptionsValidationUsernameArgs',
+    'ConnectionOptionsValidationUsernameArgsDict',
     'ConnectionScimConfigurationMappingArgs',
+    'ConnectionScimConfigurationMappingArgsDict',
     'CustomDomainVerificationArgs',
+    'CustomDomainVerificationArgsDict',
     'EmailProviderCredentialsArgs',
+    'EmailProviderCredentialsArgsDict',
     'EmailProviderSettingsArgs',
+    'EmailProviderSettingsArgsDict',
     'EmailProviderSettingsHeadersArgs',
+    'EmailProviderSettingsHeadersArgsDict',
     'EmailProviderSettingsMessageArgs',
+    'EmailProviderSettingsMessageArgsDict',
     'GuardianDuoArgs',
+    'GuardianDuoArgsDict',
     'GuardianPhoneArgs',
+    'GuardianPhoneArgsDict',
     'GuardianPhoneOptionsArgs',
+    'GuardianPhoneOptionsArgsDict',
     'GuardianPushArgs',
+    'GuardianPushArgsDict',
     'GuardianPushAmazonSnsArgs',
+    'GuardianPushAmazonSnsArgsDict',
     'GuardianPushCustomAppArgs',
+    'GuardianPushCustomAppArgsDict',
     'GuardianPushDirectApnsArgs',
+    'GuardianPushDirectApnsArgsDict',
     'GuardianPushDirectFcmArgs',
+    'GuardianPushDirectFcmArgsDict',
     'GuardianWebauthnPlatformArgs',
+    'GuardianWebauthnPlatformArgsDict',
     'GuardianWebauthnRoamingArgs',
+    'GuardianWebauthnRoamingArgsDict',
     'LogStreamSinkArgs',
+    'LogStreamSinkArgsDict',
     'OrganizationBrandingArgs',
+    'OrganizationBrandingArgsDict',
     'OrganizationConnectionsEnabledConnectionArgs',
+    'OrganizationConnectionsEnabledConnectionArgsDict',
     'PagesChangePasswordArgs',
+    'PagesChangePasswordArgsDict',
     'PagesErrorArgs',
+    'PagesErrorArgsDict',
     'PagesGuardianMfaArgs',
+    'PagesGuardianMfaArgsDict',
     'PagesLoginArgs',
+    'PagesLoginArgsDict',
     'PromptScreenPartialInsertionPointsArgs',
+    'PromptScreenPartialInsertionPointsArgsDict',
     'PromptScreenPartialsScreenPartialArgs',
+    'PromptScreenPartialsScreenPartialArgsDict',
     'PromptScreenPartialsScreenPartialInsertionPointsArgs',
+    'PromptScreenPartialsScreenPartialInsertionPointsArgsDict',
     'ResourceServerScopesScopeArgs',
+    'ResourceServerScopesScopeArgsDict',
     'RolePermissionsPermissionArgs',
+    'RolePermissionsPermissionArgsDict',
     'SelfServiceProfileBrandingArgs',
+    'SelfServiceProfileBrandingArgsDict',
     'SelfServiceProfileBrandingColorsArgs',
+    'SelfServiceProfileBrandingColorsArgsDict',
     'SelfServiceProfileUserAttributeArgs',
+    'SelfServiceProfileUserAttributeArgsDict',
     'TenantFlagsArgs',
+    'TenantFlagsArgsDict',
     'TenantSessionCookieArgs',
+    'TenantSessionCookieArgsDict',
     'TenantSessionsArgs',
+    'TenantSessionsArgsDict',
     'TriggerActionsActionArgs',
+    'TriggerActionsActionArgsDict',
     'UserPermissionsPermissionArgs',
+    'UserPermissionsPermissionArgsDict',
     'GetConnectionScimConfigurationDefaultMappingArgs',
+    'GetConnectionScimConfigurationDefaultMappingArgsDict',
     'GetConnectionScimConfigurationMappingArgs',
+    'GetConnectionScimConfigurationMappingArgsDict',
     'GetPromptScreenPartialsScreenPartialArgs',
+    'GetPromptScreenPartialsScreenPartialArgsDict',
     'GetPromptScreenPartialsScreenPartialInsertionPointArgs',
+    'GetPromptScreenPartialsScreenPartialInsertionPointArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ActionDependencyArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Dependency name, e.g. `lodash`.
+        """
+        version: pulumi.Input[str]
+        """
+        Dependency version, e.g. `latest` or `4.17.21`.
+        """
+elif False:
+    ActionDependencyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionDependencyArgs:
@@ -183,6 +337,19 @@ class ActionDependencyArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class ActionSecretArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Secret name.
+        """
+        value: pulumi.Input[str]
+        """
+        Secret value.
+        """
+elif False:
+    ActionSecretArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ActionSecretArgs:
     def __init__(__self__, *,
@@ -220,6 +387,19 @@ class ActionSecretArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ActionSupportedTriggersArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The trigger ID.
+        """
+        version: pulumi.Input[str]
+        """
+        The trigger version. This regulates which `runtime` versions are supported.
+        """
+elif False:
+    ActionSupportedTriggersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ActionSupportedTriggersArgs:
     def __init__(__self__, *,
@@ -256,6 +436,31 @@ class ActionSupportedTriggersArgs:
     def version(self, value: pulumi.Input[str]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class AttackProtectionBreachedPasswordDetectionArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether breached password detection is active.
+        """
+        admin_notification_frequencies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+        """
+        method: NotRequired[pulumi.Input[str]]
+        """
+        The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
+        """
+        pre_user_registration: NotRequired[pulumi.Input['AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgsDict']]
+        """
+        Configuration options that apply before every user registration attempt. Only available on public tenants.
+        """
+        shields: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+        """
+elif False:
+    AttackProtectionBreachedPasswordDetectionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AttackProtectionBreachedPasswordDetectionArgs:
@@ -343,6 +548,15 @@ class AttackProtectionBreachedPasswordDetectionArgs:
         pulumi.set(self, "shields", value)
 
 
+if not MYPY:
+    class AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgsDict(TypedDict):
+        shields: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+        """
+elif False:
+    AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs:
     def __init__(__self__, *,
@@ -365,6 +579,31 @@ class AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs:
     def shields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "shields", value)
 
+
+if not MYPY:
+    class AttackProtectionBruteForceProtectionArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether brute force attack protections are active.
+        """
+        allowlists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
+        """
+        max_attempts: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` (lockout an account from a given IP Address) or `count_per_identifier` (lockout an account regardless of IP Address).
+        """
+        shields: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
+        """
+elif False:
+    AttackProtectionBruteForceProtectionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AttackProtectionBruteForceProtectionArgs:
@@ -452,6 +691,31 @@ class AttackProtectionBruteForceProtectionArgs:
         pulumi.set(self, "shields", value)
 
 
+if not MYPY:
+    class AttackProtectionSuspiciousIpThrottlingArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether suspicious IP throttling attack protections are active.
+        """
+        allowlists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
+        """
+        pre_login: NotRequired[pulumi.Input['AttackProtectionSuspiciousIpThrottlingPreLoginArgsDict']]
+        """
+        Configuration options that apply before every login attempt. Only available on public tenants.
+        """
+        pre_user_registration: NotRequired[pulumi.Input['AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgsDict']]
+        """
+        Configuration options that apply before every user registration attempt. Only available on public tenants.
+        """
+        shields: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `admin_notification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
+        """
+elif False:
+    AttackProtectionSuspiciousIpThrottlingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AttackProtectionSuspiciousIpThrottlingArgs:
     def __init__(__self__, *,
@@ -538,6 +802,19 @@ class AttackProtectionSuspiciousIpThrottlingArgs:
         pulumi.set(self, "shields", value)
 
 
+if not MYPY:
+    class AttackProtectionSuspiciousIpThrottlingPreLoginArgsDict(TypedDict):
+        max_attempts: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of failed login attempts allowed from a single IP address.
+        """
+        rate: NotRequired[pulumi.Input[int]]
+        """
+        Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
+        """
+elif False:
+    AttackProtectionSuspiciousIpThrottlingPreLoginArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AttackProtectionSuspiciousIpThrottlingPreLoginArgs:
     def __init__(__self__, *,
@@ -576,6 +853,19 @@ class AttackProtectionSuspiciousIpThrottlingPreLoginArgs:
     def rate(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "rate", value)
 
+
+if not MYPY:
+    class AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgsDict(TypedDict):
+        max_attempts: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of sign up attempts allowed from a single IP address.
+        """
+        rate: NotRequired[pulumi.Input[int]]
+        """
+        Interval of time, given in milliseconds at which new sign up tokens will become available after they have been used by an IP address. Each sign up attempt will be added on the defined throttling rate.
+        """
+elif False:
+    AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs:
@@ -616,6 +906,19 @@ class AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs:
         pulumi.set(self, "rate", value)
 
 
+if not MYPY:
+    class BrandingColorsArgsDict(TypedDict):
+        page_background: NotRequired[pulumi.Input[str]]
+        """
+        Background color of login pages in hexadecimal.
+        """
+        primary: NotRequired[pulumi.Input[str]]
+        """
+        Primary button background color in hexadecimal.
+        """
+elif False:
+    BrandingColorsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BrandingColorsArgs:
     def __init__(__self__, *,
@@ -655,6 +958,15 @@ class BrandingColorsArgs:
         pulumi.set(self, "primary", value)
 
 
+if not MYPY:
+    class BrandingFontArgsDict(TypedDict):
+        url: NotRequired[pulumi.Input[str]]
+        """
+        URL for the custom font.
+        """
+elif False:
+    BrandingFontArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BrandingFontArgs:
     def __init__(__self__, *,
@@ -677,6 +989,47 @@ class BrandingFontArgs:
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
 
+
+if not MYPY:
+    class BrandingThemeBordersArgsDict(TypedDict):
+        button_border_radius: NotRequired[pulumi.Input[float]]
+        """
+        Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
+        """
+        button_border_weight: NotRequired[pulumi.Input[float]]
+        """
+        Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
+        """
+        buttons_style: NotRequired[pulumi.Input[str]]
+        """
+        Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+        """
+        input_border_radius: NotRequired[pulumi.Input[float]]
+        """
+        Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
+        """
+        input_border_weight: NotRequired[pulumi.Input[float]]
+        """
+        Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
+        """
+        inputs_style: NotRequired[pulumi.Input[str]]
+        """
+        Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+        """
+        show_widget_shadow: NotRequired[pulumi.Input[bool]]
+        """
+        Show widget shadow. Defaults to `true`.
+        """
+        widget_border_weight: NotRequired[pulumi.Input[float]]
+        """
+        Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
+        """
+        widget_corner_radius: NotRequired[pulumi.Input[float]]
+        """
+        Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
+        """
+elif False:
+    BrandingThemeBordersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BrandingThemeBordersArgs:
@@ -828,6 +1181,83 @@ class BrandingThemeBordersArgs:
     def widget_corner_radius(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "widget_corner_radius", value)
 
+
+if not MYPY:
+    class BrandingThemeColorsArgsDict(TypedDict):
+        base_focus_color: NotRequired[pulumi.Input[str]]
+        """
+        Base focus color. Defaults to `#635dff`.
+        """
+        base_hover_color: NotRequired[pulumi.Input[str]]
+        """
+        Base hover color. Defaults to `#000000`.
+        """
+        body_text: NotRequired[pulumi.Input[str]]
+        """
+        Body text. Defaults to `#1e212a`.
+        """
+        error: NotRequired[pulumi.Input[str]]
+        """
+        Error. Defaults to `#d03c38`.
+        """
+        header: NotRequired[pulumi.Input[str]]
+        """
+        Header. Defaults to `#1e212a`.
+        """
+        icons: NotRequired[pulumi.Input[str]]
+        """
+        Icons. Defaults to `#65676e`.
+        """
+        input_background: NotRequired[pulumi.Input[str]]
+        """
+        Input background. Defaults to `#ffffff`.
+        """
+        input_border: NotRequired[pulumi.Input[str]]
+        """
+        Input border. Defaults to `#c9cace`.
+        """
+        input_filled_text: NotRequired[pulumi.Input[str]]
+        """
+        Input filled text. Defaults to `#000000`.
+        """
+        input_labels_placeholders: NotRequired[pulumi.Input[str]]
+        """
+        Input labels & placeholders. Defaults to `#65676e`.
+        """
+        links_focused_components: NotRequired[pulumi.Input[str]]
+        """
+        Links & focused components. Defaults to `#635dff`.
+        """
+        primary_button: NotRequired[pulumi.Input[str]]
+        """
+        Primary button. Defaults to `#635dff`.
+        """
+        primary_button_label: NotRequired[pulumi.Input[str]]
+        """
+        Primary button label. Defaults to `#ffffff`.
+        """
+        secondary_button_border: NotRequired[pulumi.Input[str]]
+        """
+        Secondary button border. Defaults to `#c9cace`.
+        """
+        secondary_button_label: NotRequired[pulumi.Input[str]]
+        """
+        Secondary button label. Defaults to `#1e212a`.
+        """
+        success: NotRequired[pulumi.Input[str]]
+        """
+        Success. Defaults to `#13a688`.
+        """
+        widget_background: NotRequired[pulumi.Input[str]]
+        """
+        Widget background. Defaults to `#ffffff`.
+        """
+        widget_border: NotRequired[pulumi.Input[str]]
+        """
+        Widget border. Defaults to `#c9cace`.
+        """
+elif False:
+    BrandingThemeColorsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BrandingThemeColorsArgs:
@@ -1124,6 +1554,47 @@ class BrandingThemeColorsArgs:
         pulumi.set(self, "widget_border", value)
 
 
+if not MYPY:
+    class BrandingThemeFontsArgsDict(TypedDict):
+        body_text: pulumi.Input['BrandingThemeFontsBodyTextArgsDict']
+        """
+        Body text.
+        """
+        buttons_text: pulumi.Input['BrandingThemeFontsButtonsTextArgsDict']
+        """
+        Buttons text.
+        """
+        input_labels: pulumi.Input['BrandingThemeFontsInputLabelsArgsDict']
+        """
+        Input labels.
+        """
+        links: pulumi.Input['BrandingThemeFontsLinksArgsDict']
+        """
+        Links.
+        """
+        subtitle: pulumi.Input['BrandingThemeFontsSubtitleArgsDict']
+        """
+        Subtitle.
+        """
+        title: pulumi.Input['BrandingThemeFontsTitleArgsDict']
+        """
+        Title.
+        """
+        font_url: NotRequired[pulumi.Input[str]]
+        """
+        Font URL. Defaults to an empty string.
+        """
+        links_style: NotRequired[pulumi.Input[str]]
+        """
+        Links style. Defaults to `normal`.
+        """
+        reference_text_size: NotRequired[pulumi.Input[float]]
+        """
+        Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
+        """
+elif False:
+    BrandingThemeFontsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BrandingThemeFontsArgs:
     def __init__(__self__, *,
@@ -1269,6 +1740,19 @@ class BrandingThemeFontsArgs:
         pulumi.set(self, "reference_text_size", value)
 
 
+if not MYPY:
+    class BrandingThemeFontsBodyTextArgsDict(TypedDict):
+        bold: NotRequired[pulumi.Input[bool]]
+        """
+        Body text bold. Defaults to `false`.
+        """
+        size: NotRequired[pulumi.Input[float]]
+        """
+        Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        """
+elif False:
+    BrandingThemeFontsBodyTextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BrandingThemeFontsBodyTextArgs:
     def __init__(__self__, *,
@@ -1307,6 +1791,19 @@ class BrandingThemeFontsBodyTextArgs:
     def size(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "size", value)
 
+
+if not MYPY:
+    class BrandingThemeFontsButtonsTextArgsDict(TypedDict):
+        bold: NotRequired[pulumi.Input[bool]]
+        """
+        Buttons text bold. Defaults to `false`.
+        """
+        size: NotRequired[pulumi.Input[float]]
+        """
+        Buttons text size. Value needs to be between `0` and `150`. Defaults to `100.0`.
+        """
+elif False:
+    BrandingThemeFontsButtonsTextArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BrandingThemeFontsButtonsTextArgs:
@@ -1347,6 +1844,19 @@ class BrandingThemeFontsButtonsTextArgs:
         pulumi.set(self, "size", value)
 
 
+if not MYPY:
+    class BrandingThemeFontsInputLabelsArgsDict(TypedDict):
+        bold: NotRequired[pulumi.Input[bool]]
+        """
+        Input labels bold. Defaults to `false`.
+        """
+        size: NotRequired[pulumi.Input[float]]
+        """
+        Input labels size. Value needs to be between `0` and `150`. Defaults to `100.0`.
+        """
+elif False:
+    BrandingThemeFontsInputLabelsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BrandingThemeFontsInputLabelsArgs:
     def __init__(__self__, *,
@@ -1385,6 +1895,19 @@ class BrandingThemeFontsInputLabelsArgs:
     def size(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "size", value)
 
+
+if not MYPY:
+    class BrandingThemeFontsLinksArgsDict(TypedDict):
+        bold: NotRequired[pulumi.Input[bool]]
+        """
+        Links bold. Defaults to `true`.
+        """
+        size: NotRequired[pulumi.Input[float]]
+        """
+        Links size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        """
+elif False:
+    BrandingThemeFontsLinksArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BrandingThemeFontsLinksArgs:
@@ -1425,6 +1948,19 @@ class BrandingThemeFontsLinksArgs:
         pulumi.set(self, "size", value)
 
 
+if not MYPY:
+    class BrandingThemeFontsSubtitleArgsDict(TypedDict):
+        bold: NotRequired[pulumi.Input[bool]]
+        """
+        Subtitle bold. Defaults to `false`.
+        """
+        size: NotRequired[pulumi.Input[float]]
+        """
+        Subtitle size. Value needs to be between `0` and `150`. Defaults to `87.5`.
+        """
+elif False:
+    BrandingThemeFontsSubtitleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BrandingThemeFontsSubtitleArgs:
     def __init__(__self__, *,
@@ -1464,6 +2000,19 @@ class BrandingThemeFontsSubtitleArgs:
         pulumi.set(self, "size", value)
 
 
+if not MYPY:
+    class BrandingThemeFontsTitleArgsDict(TypedDict):
+        bold: NotRequired[pulumi.Input[bool]]
+        """
+        Title bold. Defaults to `false`.
+        """
+        size: NotRequired[pulumi.Input[float]]
+        """
+        Title size. Value needs to be between `75` and `150`. Defaults to `150.0`.
+        """
+elif False:
+    BrandingThemeFontsTitleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BrandingThemeFontsTitleArgs:
     def __init__(__self__, *,
@@ -1502,6 +2051,23 @@ class BrandingThemeFontsTitleArgs:
     def size(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "size", value)
 
+
+if not MYPY:
+    class BrandingThemePageBackgroundArgsDict(TypedDict):
+        background_color: NotRequired[pulumi.Input[str]]
+        """
+        Background color. Defaults to `#000000`.
+        """
+        background_image_url: NotRequired[pulumi.Input[str]]
+        """
+        Background image url. Defaults to an empty string.
+        """
+        page_layout: NotRequired[pulumi.Input[str]]
+        """
+        Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
+        """
+elif False:
+    BrandingThemePageBackgroundArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BrandingThemePageBackgroundArgs:
@@ -1557,6 +2123,31 @@ class BrandingThemePageBackgroundArgs:
     def page_layout(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "page_layout", value)
 
+
+if not MYPY:
+    class BrandingThemeWidgetArgsDict(TypedDict):
+        header_text_alignment: NotRequired[pulumi.Input[str]]
+        """
+        Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
+        """
+        logo_height: NotRequired[pulumi.Input[float]]
+        """
+        Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
+        """
+        logo_position: NotRequired[pulumi.Input[str]]
+        """
+        Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
+        """
+        logo_url: NotRequired[pulumi.Input[str]]
+        """
+        Logo url. Defaults to an empty string.
+        """
+        social_buttons_layout: NotRequired[pulumi.Input[str]]
+        """
+        Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
+        """
+elif False:
+    BrandingThemeWidgetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BrandingThemeWidgetArgs:
@@ -1645,6 +2236,15 @@ class BrandingThemeWidgetArgs:
         pulumi.set(self, "social_buttons_layout", value)
 
 
+if not MYPY:
+    class BrandingUniversalLoginArgsDict(TypedDict):
+        body: pulumi.Input[str]
+        """
+        The html template for the New Universal Login Experience.
+        """
+elif False:
+    BrandingUniversalLoginArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BrandingUniversalLoginArgs:
     def __init__(__self__, *,
@@ -1666,6 +2266,127 @@ class BrandingUniversalLoginArgs:
     def body(self, value: pulumi.Input[str]):
         pulumi.set(self, "body", value)
 
+
+if not MYPY:
+    class ClientAddonsArgsDict(TypedDict):
+        aws: NotRequired[pulumi.Input['ClientAddonsAwsArgsDict']]
+        """
+        AWS Addon configuration.
+        """
+        azure_blob: NotRequired[pulumi.Input['ClientAddonsAzureBlobArgsDict']]
+        """
+        Azure Blob Storage Addon configuration.
+        """
+        azure_sb: NotRequired[pulumi.Input['ClientAddonsAzureSbArgsDict']]
+        """
+        Azure Storage Bus Addon configuration.
+        """
+        box: NotRequired[pulumi.Input['ClientAddonsBoxArgsDict']]
+        """
+        Box SSO indicator (no configuration settings needed for Box SSO).
+        """
+        cloudbees: NotRequired[pulumi.Input['ClientAddonsCloudbeesArgsDict']]
+        """
+        CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
+        """
+        concur: NotRequired[pulumi.Input['ClientAddonsConcurArgsDict']]
+        """
+        Concur SSO indicator (no configuration settings needed for Concur SSO).
+        """
+        dropbox: NotRequired[pulumi.Input['ClientAddonsDropboxArgsDict']]
+        """
+        Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
+        """
+        echosign: NotRequired[pulumi.Input['ClientAddonsEchosignArgsDict']]
+        """
+        Adobe EchoSign SSO configuration.
+        """
+        egnyte: NotRequired[pulumi.Input['ClientAddonsEgnyteArgsDict']]
+        """
+        Egnyte SSO configuration.
+        """
+        firebase: NotRequired[pulumi.Input['ClientAddonsFirebaseArgsDict']]
+        """
+        Google Firebase addon configuration.
+        """
+        layer: NotRequired[pulumi.Input['ClientAddonsLayerArgsDict']]
+        """
+        Layer addon configuration.
+        """
+        mscrm: NotRequired[pulumi.Input['ClientAddonsMscrmArgsDict']]
+        """
+        Microsoft Dynamics CRM SSO configuration.
+        """
+        newrelic: NotRequired[pulumi.Input['ClientAddonsNewrelicArgsDict']]
+        """
+        New Relic SSO configuration.
+        """
+        office365: NotRequired[pulumi.Input['ClientAddonsOffice365ArgsDict']]
+        """
+        Microsoft Office 365 SSO configuration.
+        """
+        rms: NotRequired[pulumi.Input['ClientAddonsRmsArgsDict']]
+        """
+        Active Directory Rights Management Service SSO configuration.
+        """
+        salesforce: NotRequired[pulumi.Input['ClientAddonsSalesforceArgsDict']]
+        """
+        Salesforce SSO configuration.
+        """
+        salesforce_api: NotRequired[pulumi.Input['ClientAddonsSalesforceApiArgsDict']]
+        """
+        Salesforce API addon configuration.
+        """
+        salesforce_sandbox_api: NotRequired[pulumi.Input['ClientAddonsSalesforceSandboxApiArgsDict']]
+        """
+        Salesforce Sandbox addon configuration.
+        """
+        samlp: NotRequired[pulumi.Input['ClientAddonsSamlpArgsDict']]
+        """
+        Configuration settings for a SAML add-on.
+        """
+        sap_api: NotRequired[pulumi.Input['ClientAddonsSapApiArgsDict']]
+        """
+        SAP API addon configuration.
+        """
+        sentry: NotRequired[pulumi.Input['ClientAddonsSentryArgsDict']]
+        """
+        Sentry SSO configuration.
+        """
+        sharepoint: NotRequired[pulumi.Input['ClientAddonsSharepointArgsDict']]
+        """
+        SharePoint SSO configuration.
+        """
+        slack: NotRequired[pulumi.Input['ClientAddonsSlackArgsDict']]
+        """
+        Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
+        """
+        springcm: NotRequired[pulumi.Input['ClientAddonsSpringcmArgsDict']]
+        """
+        SpringCM SSO configuration.
+        """
+        sso_integration: NotRequired[pulumi.Input['ClientAddonsSsoIntegrationArgsDict']]
+        """
+        Generic SSO configuration.
+        """
+        wams: NotRequired[pulumi.Input['ClientAddonsWamsArgsDict']]
+        """
+        Windows Azure Mobile Services addon configuration.
+        """
+        wsfed: NotRequired[pulumi.Input['ClientAddonsWsfedArgsDict']]
+        """
+        WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+        """
+        zendesk: NotRequired[pulumi.Input['ClientAddonsZendeskArgsDict']]
+        """
+        Zendesk SSO configuration.
+        """
+        zoom: NotRequired[pulumi.Input['ClientAddonsZoomArgsDict']]
+        """
+        Zoom SSO configuration.
+        """
+elif False:
+    ClientAddonsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClientAddonsArgs:
@@ -2138,6 +2859,23 @@ class ClientAddonsArgs:
         pulumi.set(self, "zoom", value)
 
 
+if not MYPY:
+    class ClientAddonsAwsArgsDict(TypedDict):
+        lifetime_in_seconds: NotRequired[pulumi.Input[int]]
+        """
+        AWS token lifetime in seconds.
+        """
+        principal: NotRequired[pulumi.Input[str]]
+        """
+        AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
+        """
+        role: NotRequired[pulumi.Input[str]]
+        """
+        AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.
+        """
+elif False:
+    ClientAddonsAwsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsAwsArgs:
     def __init__(__self__, *,
@@ -2192,6 +2930,63 @@ class ClientAddonsAwsArgs:
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
 
+
+if not MYPY:
+    class ClientAddonsAzureBlobArgsDict(TypedDict):
+        account_name: NotRequired[pulumi.Input[str]]
+        """
+        Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
+        """
+        blob_delete: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if the issued token has permission to delete the blob.
+        """
+        blob_name: NotRequired[pulumi.Input[str]]
+        """
+        Entity to request a token for, such as `my-blob`. If blank the computed SAS will apply to the entire storage container.
+        """
+        blob_read: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if the issued token has permission to read the content, properties, metadata and block list. Use the blob as the source of a copy operation.
+        """
+        blob_write: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+        """
+        container_delete: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if issued token has permission to delete any blob in the container.
+        """
+        container_list: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if the issued token has permission to list blobs in the container.
+        """
+        container_name: NotRequired[pulumi.Input[str]]
+        """
+        Container to request a token for, such as `my-container`.
+        """
+        container_read: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if the issued token has permission to read the content, properties, metadata or block list of any blob in the container. Use any blob in the container as the source of a copy operation.
+        """
+        container_write: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates that for any blob in the container if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
+        """
+        expiration: NotRequired[pulumi.Input[int]]
+        """
+        Expiration in minutes for the generated token (default of 5 minutes).
+        """
+        signed_identifier: NotRequired[pulumi.Input[str]]
+        """
+        Shared access policy identifier defined in your storage account resource.
+        """
+        storage_access_key: NotRequired[pulumi.Input[str]]
+        """
+        Access key associated with this storage account.
+        """
+elif False:
+    ClientAddonsAzureBlobArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClientAddonsAzureBlobArgs:
@@ -2408,6 +3203,31 @@ class ClientAddonsAzureBlobArgs:
         pulumi.set(self, "storage_access_key", value)
 
 
+if not MYPY:
+    class ClientAddonsAzureSbArgsDict(TypedDict):
+        entity_path: NotRequired[pulumi.Input[str]]
+        """
+        Entity you want to request a token for, such as `my-queue`.
+        """
+        expiration: NotRequired[pulumi.Input[int]]
+        """
+        Optional expiration in minutes for the generated token. Defaults to 5 minutes.
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
+        """
+        sas_key: NotRequired[pulumi.Input[str]]
+        """
+        Primary Key associated with your shared access policy.
+        """
+        sas_key_name: NotRequired[pulumi.Input[str]]
+        """
+        Your shared access policy name defined in your Service Bus entity.
+        """
+elif False:
+    ClientAddonsAzureSbArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsAzureSbArgs:
     def __init__(__self__, *,
@@ -2495,11 +3315,23 @@ class ClientAddonsAzureSbArgs:
         pulumi.set(self, "sas_key_name", value)
 
 
+if not MYPY:
+    class ClientAddonsBoxArgsDict(TypedDict):
+        pass
+elif False:
+    ClientAddonsBoxArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsBoxArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class ClientAddonsCloudbeesArgsDict(TypedDict):
+        pass
+elif False:
+    ClientAddonsCloudbeesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClientAddonsCloudbeesArgs:
@@ -2507,17 +3339,38 @@ class ClientAddonsCloudbeesArgs:
         pass
 
 
+if not MYPY:
+    class ClientAddonsConcurArgsDict(TypedDict):
+        pass
+elif False:
+    ClientAddonsConcurArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsConcurArgs:
     def __init__(__self__):
         pass
 
 
+if not MYPY:
+    class ClientAddonsDropboxArgsDict(TypedDict):
+        pass
+elif False:
+    ClientAddonsDropboxArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsDropboxArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class ClientAddonsEchosignArgsDict(TypedDict):
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+        """
+elif False:
+    ClientAddonsEchosignArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClientAddonsEchosignArgs:
@@ -2542,6 +3395,15 @@ class ClientAddonsEchosignArgs:
         pulumi.set(self, "domain", value)
 
 
+if not MYPY:
+    class ClientAddonsEgnyteArgsDict(TypedDict):
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.
+        """
+elif False:
+    ClientAddonsEgnyteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsEgnyteArgs:
     def __init__(__self__, *,
@@ -2564,6 +3426,31 @@ class ClientAddonsEgnyteArgs:
     def domain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "domain", value)
 
+
+if not MYPY:
+    class ClientAddonsFirebaseArgsDict(TypedDict):
+        client_email: NotRequired[pulumi.Input[str]]
+        """
+        ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
+        """
+        lifetime_in_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).
+        """
+        private_key: NotRequired[pulumi.Input[str]]
+        """
+        Private Key for signing the token (SDK v3+ tokens only).
+        """
+        private_key_id: NotRequired[pulumi.Input[str]]
+        """
+        Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).
+        """
+        secret: NotRequired[pulumi.Input[str]]
+        """
+        Google Firebase Secret. (SDK v2 only).
+        """
+elif False:
+    ClientAddonsFirebaseArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClientAddonsFirebaseArgs:
@@ -2652,6 +3539,31 @@ class ClientAddonsFirebaseArgs:
         pulumi.set(self, "secret", value)
 
 
+if not MYPY:
+    class ClientAddonsLayerArgsDict(TypedDict):
+        key_id: pulumi.Input[str]
+        """
+        Authentication Key identifier used to sign the Layer token.
+        """
+        private_key: pulumi.Input[str]
+        """
+        Private key for signing the Layer token.
+        """
+        provider_id: pulumi.Input[str]
+        """
+        Provider ID of your Layer account.
+        """
+        expiration: NotRequired[pulumi.Input[int]]
+        """
+        Optional expiration in minutes for the generated token. Defaults to 5 minutes.
+        """
+        principal: NotRequired[pulumi.Input[str]]
+        """
+        Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
+        """
+elif False:
+    ClientAddonsLayerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsLayerArgs:
     def __init__(__self__, *,
@@ -2736,6 +3648,15 @@ class ClientAddonsLayerArgs:
         pulumi.set(self, "principal", value)
 
 
+if not MYPY:
+    class ClientAddonsMscrmArgsDict(TypedDict):
+        url: NotRequired[pulumi.Input[str]]
+        """
+        Microsoft Dynamics CRM application URL.
+        """
+elif False:
+    ClientAddonsMscrmArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsMscrmArgs:
     def __init__(__self__, *,
@@ -2759,6 +3680,15 @@ class ClientAddonsMscrmArgs:
         pulumi.set(self, "url", value)
 
 
+if not MYPY:
+    class ClientAddonsNewrelicArgsDict(TypedDict):
+        account: NotRequired[pulumi.Input[str]]
+        """
+        Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
+        """
+elif False:
+    ClientAddonsNewrelicArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsNewrelicArgs:
     def __init__(__self__, *,
@@ -2781,6 +3711,19 @@ class ClientAddonsNewrelicArgs:
     def account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account", value)
 
+
+if not MYPY:
+    class ClientAddonsOffice365ArgsDict(TypedDict):
+        connection: NotRequired[pulumi.Input[str]]
+        """
+        Optional Auth0 database connection for testing an already-configured Office 365 tenant.
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        Your Office 365 domain name, for example `acme-org.com`.
+        """
+elif False:
+    ClientAddonsOffice365ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClientAddonsOffice365Args:
@@ -2821,6 +3764,15 @@ class ClientAddonsOffice365Args:
         pulumi.set(self, "domain", value)
 
 
+if not MYPY:
+    class ClientAddonsRmsArgsDict(TypedDict):
+        url: NotRequired[pulumi.Input[str]]
+        """
+        URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
+        """
+elif False:
+    ClientAddonsRmsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsRmsArgs:
     def __init__(__self__, *,
@@ -2844,6 +3796,15 @@ class ClientAddonsRmsArgs:
         pulumi.set(self, "url", value)
 
 
+if not MYPY:
+    class ClientAddonsSalesforceArgsDict(TypedDict):
+        entity_id: NotRequired[pulumi.Input[str]]
+        """
+        Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
+        """
+elif False:
+    ClientAddonsSalesforceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsSalesforceArgs:
     def __init__(__self__, *,
@@ -2866,6 +3827,27 @@ class ClientAddonsSalesforceArgs:
     def entity_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "entity_id", value)
 
+
+if not MYPY:
+    class ClientAddonsSalesforceApiArgsDict(TypedDict):
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        Consumer Key assigned by Salesforce to the Connected App.
+        """
+        community_name: NotRequired[pulumi.Input[str]]
+        """
+        Community name.
+        """
+        community_url_section: NotRequired[pulumi.Input[str]]
+        """
+        Community URL section.
+        """
+        principal: NotRequired[pulumi.Input[str]]
+        """
+        Name of the property in the user object that maps to a Salesforce username, for example `email`.
+        """
+elif False:
+    ClientAddonsSalesforceApiArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClientAddonsSalesforceApiArgs:
@@ -2938,6 +3920,27 @@ class ClientAddonsSalesforceApiArgs:
         pulumi.set(self, "principal", value)
 
 
+if not MYPY:
+    class ClientAddonsSalesforceSandboxApiArgsDict(TypedDict):
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        Consumer Key assigned by Salesforce to the Connected App.
+        """
+        community_name: NotRequired[pulumi.Input[str]]
+        """
+        Community name.
+        """
+        community_url_section: NotRequired[pulumi.Input[str]]
+        """
+        Community URL section.
+        """
+        principal: NotRequired[pulumi.Input[str]]
+        """
+        Name of the property in the user object that maps to a Salesforce username, for example `email`.
+        """
+elif False:
+    ClientAddonsSalesforceSandboxApiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsSalesforceSandboxApiArgs:
     def __init__(__self__, *,
@@ -3008,6 +4011,95 @@ class ClientAddonsSalesforceSandboxApiArgs:
     def principal(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "principal", value)
 
+
+if not MYPY:
+    class ClientAddonsSamlpArgsDict(TypedDict):
+        audience: NotRequired[pulumi.Input[str]]
+        """
+        Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
+        """
+        authn_context_class_ref: NotRequired[pulumi.Input[str]]
+        """
+        Class reference of the authentication context.
+        """
+        binding: NotRequired[pulumi.Input[str]]
+        """
+        Protocol binding used for SAML logout responses.
+        """
+        create_upn_claim: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether a UPN claim should be created. Defaults to `true`.
+        """
+        destination: NotRequired[pulumi.Input[str]]
+        """
+        Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
+        """
+        digest_algorithm: NotRequired[pulumi.Input[str]]
+        """
+        Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+        """
+        include_attribute_name_format: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+        """
+        issuer: NotRequired[pulumi.Input[str]]
+        """
+        Issuer of the SAML Assertion.
+        """
+        lifetime_in_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds during which the token is valid. Defaults to `3600` seconds.
+        """
+        logout: NotRequired[pulumi.Input['ClientAddonsSamlpLogoutArgsDict']]
+        """
+        Configuration settings for logout.
+        """
+        map_identities: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
+        """
+        map_unknown_claims_as_is: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+        """
+        mappings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
+        """
+        name_identifier_format: NotRequired[pulumi.Input[str]]
+        """
+        Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+        """
+        name_identifier_probes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
+        """
+        passthrough_claims_with_no_mapping: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+        """
+        recipient: NotRequired[pulumi.Input[str]]
+        """
+        Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
+        """
+        sign_response: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
+        """
+        signature_algorithm: NotRequired[pulumi.Input[str]]
+        """
+        Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+        """
+        signing_cert: NotRequired[pulumi.Input[str]]
+        """
+        Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\\nMIGf...bpP/t3\\n+JGNGIRMj1hF1rnb6QIDAQAB\\n-----END PUBLIC KEY-----\\n`.
+        """
+        typed_attributes: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+        """
+elif False:
+    ClientAddonsSamlpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClientAddonsSamlpArgs:
@@ -3352,6 +4444,19 @@ class ClientAddonsSamlpArgs:
         pulumi.set(self, "typed_attributes", value)
 
 
+if not MYPY:
+    class ClientAddonsSamlpLogoutArgsDict(TypedDict):
+        callback: NotRequired[pulumi.Input[str]]
+        """
+        The service provider (client application)'s Single Logout Service URL, where Auth0 will send logout requests and responses.
+        """
+        slo_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Controls whether Auth0 should notify service providers of session termination.
+        """
+elif False:
+    ClientAddonsSamlpLogoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsSamlpLogoutArgs:
     def __init__(__self__, *,
@@ -3390,6 +4495,35 @@ class ClientAddonsSamlpLogoutArgs:
     def slo_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "slo_enabled", value)
 
+
+if not MYPY:
+    class ClientAddonsSapApiArgsDict(TypedDict):
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute`client*id`must be set and equal the`client*id` form parameter of the access token request.
+        """
+        name_identifier_format: NotRequired[pulumi.Input[str]]
+        """
+        NameID element of the Subject which can be used to express the user's identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+        """
+        scope: NotRequired[pulumi.Input[str]]
+        """
+        Requested scope for SAP APIs.
+        """
+        service_password: NotRequired[pulumi.Input[str]]
+        """
+        Service account password to use to authenticate API calls to the token endpoint.
+        """
+        token_endpoint_url: NotRequired[pulumi.Input[str]]
+        """
+        The OAuth2 token endpoint URL of your SAP OData server.
+        """
+        username_attribute: NotRequired[pulumi.Input[str]]
+        """
+        Name of the property in the user object that maps to a SAP username, for example `email`.
+        """
+elif False:
+    ClientAddonsSapApiArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClientAddonsSapApiArgs:
@@ -3494,6 +4628,19 @@ class ClientAddonsSapApiArgs:
         pulumi.set(self, "username_attribute", value)
 
 
+if not MYPY:
+    class ClientAddonsSentryArgsDict(TypedDict):
+        base_url: NotRequired[pulumi.Input[str]]
+        """
+        URL prefix only if running Sentry Community Edition, otherwise leave empty.
+        """
+        org_slug: NotRequired[pulumi.Input[str]]
+        """
+        Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
+        """
+elif False:
+    ClientAddonsSentryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsSentryArgs:
     def __init__(__self__, *,
@@ -3532,6 +4679,19 @@ class ClientAddonsSentryArgs:
     def org_slug(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "org_slug", value)
 
+
+if not MYPY:
+    class ClientAddonsSharepointArgsDict(TypedDict):
+        external_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        External SharePoint application URLs if exposed to the Internet.
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        Internal SharePoint application URL.
+        """
+elif False:
+    ClientAddonsSharepointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClientAddonsSharepointArgs:
@@ -3572,6 +4732,15 @@ class ClientAddonsSharepointArgs:
         pulumi.set(self, "url", value)
 
 
+if not MYPY:
+    class ClientAddonsSlackArgsDict(TypedDict):
+        team: NotRequired[pulumi.Input[str]]
+        """
+        Slack team name.
+        """
+elif False:
+    ClientAddonsSlackArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsSlackArgs:
     def __init__(__self__, *,
@@ -3595,6 +4764,15 @@ class ClientAddonsSlackArgs:
         pulumi.set(self, "team", value)
 
 
+if not MYPY:
+    class ClientAddonsSpringcmArgsDict(TypedDict):
+        acs_url: NotRequired[pulumi.Input[str]]
+        """
+        SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
+        """
+elif False:
+    ClientAddonsSpringcmArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsSpringcmArgs:
     def __init__(__self__, *,
@@ -3617,6 +4795,19 @@ class ClientAddonsSpringcmArgs:
     def acs_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "acs_url", value)
 
+
+if not MYPY:
+    class ClientAddonsSsoIntegrationArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        SSO integration name.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        SSO integration version installed.
+        """
+elif False:
+    ClientAddonsSsoIntegrationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClientAddonsSsoIntegrationArgs:
@@ -3657,6 +4848,15 @@ class ClientAddonsSsoIntegrationArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class ClientAddonsWamsArgsDict(TypedDict):
+        master_key: NotRequired[pulumi.Input[str]]
+        """
+        Your master key for Windows Azure Mobile Services.
+        """
+elif False:
+    ClientAddonsWamsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsWamsArgs:
     def __init__(__self__, *,
@@ -3680,11 +4880,26 @@ class ClientAddonsWamsArgs:
         pulumi.set(self, "master_key", value)
 
 
+if not MYPY:
+    class ClientAddonsWsfedArgsDict(TypedDict):
+        pass
+elif False:
+    ClientAddonsWsfedArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsWsfedArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class ClientAddonsZendeskArgsDict(TypedDict):
+        account_name: NotRequired[pulumi.Input[str]]
+        """
+        Zendesk account name. Usually the first segment in your Zendesk URL, for example `https://acme-org.zendesk.com` would be `acme-org`.
+        """
+elif False:
+    ClientAddonsZendeskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClientAddonsZendeskArgs:
@@ -3709,6 +4924,15 @@ class ClientAddonsZendeskArgs:
         pulumi.set(self, "account_name", value)
 
 
+if not MYPY:
+    class ClientAddonsZoomArgsDict(TypedDict):
+        account: NotRequired[pulumi.Input[str]]
+        """
+        Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
+        """
+elif False:
+    ClientAddonsZoomArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientAddonsZoomArgs:
     def __init__(__self__, *,
@@ -3732,6 +4956,15 @@ class ClientAddonsZoomArgs:
         pulumi.set(self, "account", value)
 
 
+if not MYPY:
+    class ClientCredentialsPrivateKeyJwtArgsDict(TypedDict):
+        credentials: pulumi.Input[Sequence[pulumi.Input['ClientCredentialsPrivateKeyJwtCredentialArgsDict']]]
+        """
+        Client credentials available for use when Private Key JWT is in use as the client authentication method. A maximum of 2 client credentials can be set.
+        """
+elif False:
+    ClientCredentialsPrivateKeyJwtArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientCredentialsPrivateKeyJwtArgs:
     def __init__(__self__, *,
@@ -3753,6 +4986,51 @@ class ClientCredentialsPrivateKeyJwtArgs:
     def credentials(self, value: pulumi.Input[Sequence[pulumi.Input['ClientCredentialsPrivateKeyJwtCredentialArgs']]]):
         pulumi.set(self, "credentials", value)
 
+
+if not MYPY:
+    class ClientCredentialsPrivateKeyJwtCredentialArgsDict(TypedDict):
+        credential_type: pulumi.Input[str]
+        """
+        Credential type. Supported types: `public_key`.
+        """
+        pem: pulumi.Input[str]
+        """
+        PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+        """
+        algorithm: NotRequired[pulumi.Input[str]]
+        """
+        Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+        """
+        created_at: NotRequired[pulumi.Input[str]]
+        """
+        The ISO 8601 formatted date the credential was created.
+        """
+        expires_at: NotRequired[pulumi.Input[str]]
+        """
+        The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the client credential.
+        """
+        key_id: NotRequired[pulumi.Input[str]]
+        """
+        The key identifier of the credential, generated on creation.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Friendly name for a credential.
+        """
+        parse_expiry_from_cert: NotRequired[pulumi.Input[bool]]
+        """
+        Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+        """
+        updated_at: NotRequired[pulumi.Input[str]]
+        """
+        The ISO 8601 formatted date the credential was updated.
+        """
+elif False:
+    ClientCredentialsPrivateKeyJwtCredentialArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClientCredentialsPrivateKeyJwtCredentialArgs:
@@ -3919,6 +5197,23 @@ class ClientCredentialsPrivateKeyJwtCredentialArgs:
         pulumi.set(self, "updated_at", value)
 
 
+if not MYPY:
+    class ClientDefaultOrganizationArgsDict(TypedDict):
+        disable: NotRequired[pulumi.Input[bool]]
+        """
+        If set, the `default_organization` will be removed.
+        """
+        flows: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Definition of the flow that needs to be configured. Eg. client_credentials
+        """
+        organization_id: NotRequired[pulumi.Input[str]]
+        """
+        The unique identifier of the organization
+        """
+elif False:
+    ClientDefaultOrganizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientDefaultOrganizationArgs:
     def __init__(__self__, *,
@@ -3973,6 +5268,27 @@ class ClientDefaultOrganizationArgs:
     def organization_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "organization_id", value)
 
+
+if not MYPY:
+    class ClientJwtConfigurationArgsDict(TypedDict):
+        alg: NotRequired[pulumi.Input[str]]
+        """
+        Algorithm used to sign JWTs.
+        """
+        lifetime_in_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds during which the JWT will be valid.
+        """
+        scopes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Permissions (scopes) included in JWTs.
+        """
+        secret_encoded: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether the client secret is Base64-encoded.
+        """
+elif False:
+    ClientJwtConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClientJwtConfigurationArgs:
@@ -4045,6 +5361,19 @@ class ClientJwtConfigurationArgs:
         pulumi.set(self, "secret_encoded", value)
 
 
+if not MYPY:
+    class ClientMobileArgsDict(TypedDict):
+        android: NotRequired[pulumi.Input['ClientMobileAndroidArgsDict']]
+        """
+        Configuration settings for Android native apps.
+        """
+        ios: NotRequired[pulumi.Input['ClientMobileIosArgsDict']]
+        """
+        Configuration settings for i0S native apps.
+        """
+elif False:
+    ClientMobileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientMobileArgs:
     def __init__(__self__, *,
@@ -4084,6 +5413,13 @@ class ClientMobileArgs:
         pulumi.set(self, "ios", value)
 
 
+if not MYPY:
+    class ClientMobileAndroidArgsDict(TypedDict):
+        app_package_name: NotRequired[pulumi.Input[str]]
+        sha256_cert_fingerprints: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    ClientMobileAndroidArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientMobileAndroidArgs:
     def __init__(__self__, *,
@@ -4112,6 +5448,13 @@ class ClientMobileAndroidArgs:
     def sha256_cert_fingerprints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "sha256_cert_fingerprints", value)
 
+
+if not MYPY:
+    class ClientMobileIosArgsDict(TypedDict):
+        app_bundle_identifier: NotRequired[pulumi.Input[str]]
+        team_id: NotRequired[pulumi.Input[str]]
+elif False:
+    ClientMobileIosArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClientMobileIosArgs:
@@ -4142,6 +5485,13 @@ class ClientMobileIosArgs:
         pulumi.set(self, "team_id", value)
 
 
+if not MYPY:
+    class ClientNativeSocialLoginArgsDict(TypedDict):
+        apple: NotRequired[pulumi.Input['ClientNativeSocialLoginAppleArgsDict']]
+        facebook: NotRequired[pulumi.Input['ClientNativeSocialLoginFacebookArgsDict']]
+elif False:
+    ClientNativeSocialLoginArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientNativeSocialLoginArgs:
     def __init__(__self__, *,
@@ -4171,6 +5521,12 @@ class ClientNativeSocialLoginArgs:
         pulumi.set(self, "facebook", value)
 
 
+if not MYPY:
+    class ClientNativeSocialLoginAppleArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+elif False:
+    ClientNativeSocialLoginAppleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientNativeSocialLoginAppleArgs:
     def __init__(__self__, *,
@@ -4188,6 +5544,12 @@ class ClientNativeSocialLoginAppleArgs:
         pulumi.set(self, "enabled", value)
 
 
+if not MYPY:
+    class ClientNativeSocialLoginFacebookArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+elif False:
+    ClientNativeSocialLoginFacebookArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientNativeSocialLoginFacebookArgs:
     def __init__(__self__, *,
@@ -4204,6 +5566,39 @@ class ClientNativeSocialLoginFacebookArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class ClientRefreshTokenArgsDict(TypedDict):
+        expiration_type: pulumi.Input[str]
+        """
+        Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+        """
+        rotation_type: pulumi.Input[str]
+        """
+        Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+        """
+        idle_token_lifetime: NotRequired[pulumi.Input[int]]
+        """
+        The time in seconds after which inactive refresh tokens will expire.
+        """
+        infinite_idle_token_lifetime: NotRequired[pulumi.Input[bool]]
+        """
+        Whether inactive refresh tokens should remain valid indefinitely.
+        """
+        infinite_token_lifetime: NotRequired[pulumi.Input[bool]]
+        """
+        Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+        """
+        leeway: NotRequired[pulumi.Input[int]]
+        """
+        The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+        """
+        token_lifetime: NotRequired[pulumi.Input[int]]
+        """
+        The absolute lifetime of a refresh token in seconds.
+        """
+elif False:
+    ClientRefreshTokenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClientRefreshTokenArgs:
@@ -4321,6 +5716,379 @@ class ClientRefreshTokenArgs:
     def token_lifetime(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "token_lifetime", value)
 
+
+if not MYPY:
+    class ConnectionOptionsArgsDict(TypedDict):
+        adfs_server: NotRequired[pulumi.Input[str]]
+        """
+        ADFS URL where to fetch the metadata source.
+        """
+        allowed_audiences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of allowed audiences.
+        """
+        api_enable_users: NotRequired[pulumi.Input[bool]]
+        """
+        Enable API Access to users.
+        """
+        app_id: NotRequired[pulumi.Input[str]]
+        """
+        App ID.
+        """
+        attribute_map: NotRequired[pulumi.Input['ConnectionOptionsAttributeMapArgsDict']]
+        """
+        OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+        """
+        attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeArgsDict']]]]
+        """
+        Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+        """
+        auth_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Query string parameters to be included as part of the generated passwordless email link.
+        """
+        authorization_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        Authorization endpoint.
+        """
+        brute_force_protection: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+        """
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        The strategy's client ID.
+        """
+        client_secret: NotRequired[pulumi.Input[str]]
+        """
+        The strategy's client secret.
+        """
+        community_base_url: NotRequired[pulumi.Input[str]]
+        """
+        Salesforce community base URL.
+        """
+        configuration: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
+        """
+        connection_settings: NotRequired[pulumi.Input['ConnectionOptionsConnectionSettingsArgsDict']]
+        """
+        Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+        """
+        custom_scripts: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A map of scripts used to integrate with a custom database.
+        """
+        debug: NotRequired[pulumi.Input[bool]]
+        """
+        When enabled, additional debug information will be generated.
+        """
+        decryption_key: NotRequired[pulumi.Input['ConnectionOptionsDecryptionKeyArgsDict']]
+        """
+        The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+        """
+        digest_algorithm: NotRequired[pulumi.Input[str]]
+        """
+        Sign Request Algorithm Digest.
+        """
+        disable_cache: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether to disable the cache or not.
+        """
+        disable_self_service_change_password: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether to remove the forgot password link within the New Universal Login.
+        """
+        disable_sign_out: NotRequired[pulumi.Input[bool]]
+        """
+        When enabled, will disable sign out.
+        """
+        disable_signup: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether to allow user sign-ups to your application.
+        """
+        discovery_url: NotRequired[pulumi.Input[str]]
+        """
+        OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        Domain name.
+        """
+        domain_aliases: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
+        """
+        enable_script_context: NotRequired[pulumi.Input[bool]]
+        """
+        Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+        """
+        enabled_database_customization: NotRequired[pulumi.Input[bool]]
+        """
+        Set to `true` to use a legacy user store.
+        """
+        entity_id: NotRequired[pulumi.Input[str]]
+        """
+        Custom Entity ID for the connection.
+        """
+        fed_metadata_xml: NotRequired[pulumi.Input[str]]
+        """
+        Federation Metadata for the ADFS connection.
+        """
+        fields_map: NotRequired[pulumi.Input[str]]
+        """
+        If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+        """
+        forward_request_info: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether or not request info should be forwarded to sms gateway.
+        """
+        from_: NotRequired[pulumi.Input[str]]
+        """
+        Address to use as the sender.
+        """
+        gateway_authentication: NotRequired[pulumi.Input['ConnectionOptionsGatewayAuthenticationArgsDict']]
+        """
+        Defines the parameters used to generate the auth token for the custom gateway.
+        """
+        gateway_url: NotRequired[pulumi.Input[str]]
+        """
+        Defines a custom sms gateway to use instead of Twilio.
+        """
+        icon_url: NotRequired[pulumi.Input[str]]
+        """
+        Icon URL.
+        """
+        identity_api: NotRequired[pulumi.Input[str]]
+        """
+        Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
+        """
+        idp_initiated: NotRequired[pulumi.Input['ConnectionOptionsIdpInitiatedArgsDict']]
+        """
+        Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
+        """
+        import_mode: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
+        """
+        ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IPs.
+        """
+        issuer: NotRequired[pulumi.Input[str]]
+        """
+        Issuer URL, e.g. `https://auth.example.com`.
+        """
+        jwks_uri: NotRequired[pulumi.Input[str]]
+        """
+        JWKS URI.
+        """
+        key_id: NotRequired[pulumi.Input[str]]
+        """
+        Apple Key ID.
+        """
+        map_user_id_to_id: NotRequired[pulumi.Input[bool]]
+        """
+        By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to 'id' instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+        """
+        max_groups_to_retrieve: NotRequired[pulumi.Input[str]]
+        """
+        Maximum number of groups to retrieve.
+        """
+        messaging_service_sid: NotRequired[pulumi.Input[str]]
+        """
+        SID for Copilot. Used when SMS Source is Copilot.
+        """
+        metadata_url: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the SAML metadata document.
+        """
+        metadata_xml: NotRequired[pulumi.Input[str]]
+        """
+        The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
+        """
+        mfa: NotRequired[pulumi.Input['ConnectionOptionsMfaArgsDict']]
+        """
+        Configuration options for multifactor authentication.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        """
+        non_persistent_attrs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
+        """
+        password_complexity_options: NotRequired[pulumi.Input['ConnectionOptionsPasswordComplexityOptionsArgsDict']]
+        """
+        Configuration settings for password complexity.
+        """
+        password_dictionary: NotRequired[pulumi.Input['ConnectionOptionsPasswordDictionaryArgsDict']]
+        """
+        Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
+        """
+        password_histories: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsPasswordHistoryArgsDict']]]]
+        """
+        Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
+        """
+        password_no_personal_info: NotRequired[pulumi.Input['ConnectionOptionsPasswordNoPersonalInfoArgsDict']]
+        """
+        Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
+        """
+        password_policy: NotRequired[pulumi.Input[str]]
+        """
+        Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
+        """
+        ping_federate_base_url: NotRequired[pulumi.Input[str]]
+        """
+        Ping Federate Server URL.
+        """
+        pkce_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
+        """
+        precedences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
+        """
+        protocol_binding: NotRequired[pulumi.Input[str]]
+        """
+        The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
+        """
+        provider: NotRequired[pulumi.Input[str]]
+        """
+        Defines the custom `sms_gateway` provider.
+        """
+        request_template: NotRequired[pulumi.Input[str]]
+        """
+        Template that formats the SAML request.
+        """
+        requires_username: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether the user is required to provide a username in addition to an email address.
+        """
+        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
+        """
+        scripts: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+        """
+        set_user_root_attributes: NotRequired[pulumi.Input[str]]
+        """
+        Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
+        """
+        should_trust_email_verified_connection: NotRequired[pulumi.Input[str]]
+        """
+        Choose how Auth0 sets the email_verified field in the user profile.
+        """
+        sign_in_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        SAML single login URL for the connection.
+        """
+        sign_out_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        SAML single logout URL for the connection.
+        """
+        sign_saml_request: NotRequired[pulumi.Input[bool]]
+        """
+        When enabled, the SAML authentication request will be signed.
+        """
+        signature_algorithm: NotRequired[pulumi.Input[str]]
+        """
+        Sign Request Algorithm.
+        """
+        signing_cert: NotRequired[pulumi.Input[str]]
+        """
+        X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
+        """
+        signing_key: NotRequired[pulumi.Input['ConnectionOptionsSigningKeyArgsDict']]
+        """
+        The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+        """
+        strategy_version: NotRequired[pulumi.Input[int]]
+        """
+        Version 1 is deprecated, use version 2.
+        """
+        subject: NotRequired[pulumi.Input[str]]
+        """
+        Subject line of the email.
+        """
+        syntax: NotRequired[pulumi.Input[str]]
+        """
+        Syntax of the template body.
+        """
+        team_id: NotRequired[pulumi.Input[str]]
+        """
+        Apple Team ID.
+        """
+        template: NotRequired[pulumi.Input[str]]
+        """
+        Body of the template.
+        """
+        tenant_domain: NotRequired[pulumi.Input[str]]
+        """
+        Tenant domain name.
+        """
+        token_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        Token endpoint.
+        """
+        totp: NotRequired[pulumi.Input['ConnectionOptionsTotpArgsDict']]
+        """
+        Configuration options for one-time passwords.
+        """
+        twilio_sid: NotRequired[pulumi.Input[str]]
+        """
+        SID for your Twilio account.
+        """
+        twilio_token: NotRequired[pulumi.Input[str]]
+        """
+        AuthToken for your Twilio account.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+        """
+        upstream_params: NotRequired[pulumi.Input[str]]
+        """
+        You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
+        """
+        use_cert_auth: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether to use cert auth or not.
+        """
+        use_kerberos: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether to use Kerberos or not.
+        """
+        use_wsfed: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to use WS-Fed.
+        """
+        user_id_attribute: NotRequired[pulumi.Input[str]]
+        """
+        Attribute in the SAML token that will be mapped to the user_id property in Auth0.
+        """
+        userinfo_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        User info endpoint.
+        """
+        validation: NotRequired[pulumi.Input['ConnectionOptionsValidationArgsDict']]
+        """
+        Validation of the minimum and maximum values allowed for a user to have as username.
+        """
+        waad_common_endpoint: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
+        """
+        waad_protocol: NotRequired[pulumi.Input[str]]
+        """
+        Protocol to use.
+        """
+elif False:
+    ConnectionOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsArgs:
@@ -5801,6 +7569,23 @@ class ConnectionOptionsArgs:
         pulumi.set(self, "waad_protocol", value)
 
 
+if not MYPY:
+    class ConnectionOptionsAttributeArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailArgsDict']]]]
+        """
+        Connection Options for Email Attribute
+        """
+        phone_numbers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberArgsDict']]]]
+        """
+        Connection Options for Phone Number Attribute
+        """
+        usernames: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameArgsDict']]]]
+        """
+        Connection Options for User Name Attribute
+        """
+elif False:
+    ConnectionOptionsAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionOptionsAttributeArgs:
     def __init__(__self__, *,
@@ -5855,6 +7640,23 @@ class ConnectionOptionsAttributeArgs:
     def usernames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameArgs']]]]):
         pulumi.set(self, "usernames", value)
 
+
+if not MYPY:
+    class ConnectionOptionsAttributeEmailArgsDict(TypedDict):
+        identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailIdentifierArgsDict']]]]
+        """
+        Connection Options Email Attribute Identifier
+        """
+        profile_required: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether Profile is required
+        """
+        signups: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupArgsDict']]]]
+        """
+        Defines signup settings for Email attribute
+        """
+elif False:
+    ConnectionOptionsAttributeEmailArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsAttributeEmailArgs:
@@ -5911,6 +7713,15 @@ class ConnectionOptionsAttributeEmailArgs:
         pulumi.set(self, "signups", value)
 
 
+if not MYPY:
+    class ConnectionOptionsAttributeEmailIdentifierArgsDict(TypedDict):
+        active: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether email attribute is active as an identifier
+        """
+elif False:
+    ConnectionOptionsAttributeEmailIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionOptionsAttributeEmailIdentifierArgs:
     def __init__(__self__, *,
@@ -5933,6 +7744,19 @@ class ConnectionOptionsAttributeEmailIdentifierArgs:
     def active(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "active", value)
 
+
+if not MYPY:
+    class ConnectionOptionsAttributeEmailSignupArgsDict(TypedDict):
+        status: NotRequired[pulumi.Input[str]]
+        """
+        Defines signup status for Email Attribute
+        """
+        verifications: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupVerificationArgsDict']]]]
+        """
+        Defines settings for Verification under Email attribute
+        """
+elif False:
+    ConnectionOptionsAttributeEmailSignupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsAttributeEmailSignupArgs:
@@ -5973,6 +7797,15 @@ class ConnectionOptionsAttributeEmailSignupArgs:
         pulumi.set(self, "verifications", value)
 
 
+if not MYPY:
+    class ConnectionOptionsAttributeEmailSignupVerificationArgsDict(TypedDict):
+        active: NotRequired[pulumi.Input[bool]]
+        """
+        Defines verification settings for signup attribute
+        """
+elif False:
+    ConnectionOptionsAttributeEmailSignupVerificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionOptionsAttributeEmailSignupVerificationArgs:
     def __init__(__self__, *,
@@ -5995,6 +7828,23 @@ class ConnectionOptionsAttributeEmailSignupVerificationArgs:
     def active(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "active", value)
 
+
+if not MYPY:
+    class ConnectionOptionsAttributeMapArgsDict(TypedDict):
+        mapping_mode: pulumi.Input[str]
+        """
+        Method used to map incoming claims. Possible values: `use_map` (Okta or OIDC), `bind_all` (OIDC) or `basic_profile` (Okta).
+        """
+        attributes: NotRequired[pulumi.Input[str]]
+        """
+        This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+        """
+        userinfo_scope: NotRequired[pulumi.Input[str]]
+        """
+        This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
+        """
+elif False:
+    ConnectionOptionsAttributeMapArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsAttributeMapArgs:
@@ -6049,6 +7899,23 @@ class ConnectionOptionsAttributeMapArgs:
     def userinfo_scope(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "userinfo_scope", value)
 
+
+if not MYPY:
+    class ConnectionOptionsAttributePhoneNumberArgsDict(TypedDict):
+        identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberIdentifierArgsDict']]]]
+        """
+        Connection Options Phone Number Attribute Identifier
+        """
+        profile_required: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether Profile is required
+        """
+        signups: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberSignupArgsDict']]]]
+        """
+        Defines signup settings for Phone Number attribute
+        """
+elif False:
+    ConnectionOptionsAttributePhoneNumberArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsAttributePhoneNumberArgs:
@@ -6105,6 +7972,15 @@ class ConnectionOptionsAttributePhoneNumberArgs:
         pulumi.set(self, "signups", value)
 
 
+if not MYPY:
+    class ConnectionOptionsAttributePhoneNumberIdentifierArgsDict(TypedDict):
+        active: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether Phone Number attribute is active as an identifier
+        """
+elif False:
+    ConnectionOptionsAttributePhoneNumberIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionOptionsAttributePhoneNumberIdentifierArgs:
     def __init__(__self__, *,
@@ -6127,6 +8003,19 @@ class ConnectionOptionsAttributePhoneNumberIdentifierArgs:
     def active(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "active", value)
 
+
+if not MYPY:
+    class ConnectionOptionsAttributePhoneNumberSignupArgsDict(TypedDict):
+        status: NotRequired[pulumi.Input[str]]
+        """
+        Defines status of signup for Phone Number attribute
+        """
+        verifications: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberSignupVerificationArgsDict']]]]
+        """
+        Defines verification settings for Phone Number attribute
+        """
+elif False:
+    ConnectionOptionsAttributePhoneNumberSignupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsAttributePhoneNumberSignupArgs:
@@ -6167,6 +8056,15 @@ class ConnectionOptionsAttributePhoneNumberSignupArgs:
         pulumi.set(self, "verifications", value)
 
 
+if not MYPY:
+    class ConnectionOptionsAttributePhoneNumberSignupVerificationArgsDict(TypedDict):
+        active: NotRequired[pulumi.Input[bool]]
+        """
+        Defines verification settings for Phone Number attribute
+        """
+elif False:
+    ConnectionOptionsAttributePhoneNumberSignupVerificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionOptionsAttributePhoneNumberSignupVerificationArgs:
     def __init__(__self__, *,
@@ -6189,6 +8087,27 @@ class ConnectionOptionsAttributePhoneNumberSignupVerificationArgs:
     def active(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "active", value)
 
+
+if not MYPY:
+    class ConnectionOptionsAttributeUsernameArgsDict(TypedDict):
+        identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameIdentifierArgsDict']]]]
+        """
+        Connection options for User Name Attribute Identifier
+        """
+        profile_required: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether Profile is required
+        """
+        signups: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameSignupArgsDict']]]]
+        """
+        Defines signup settings for User Name attribute
+        """
+        validations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameValidationArgsDict']]]]
+        """
+        Defines validation settings for User Name attribute
+        """
+elif False:
+    ConnectionOptionsAttributeUsernameArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsAttributeUsernameArgs:
@@ -6261,6 +8180,15 @@ class ConnectionOptionsAttributeUsernameArgs:
         pulumi.set(self, "validations", value)
 
 
+if not MYPY:
+    class ConnectionOptionsAttributeUsernameIdentifierArgsDict(TypedDict):
+        active: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether UserName attribute is active as an identifier
+        """
+elif False:
+    ConnectionOptionsAttributeUsernameIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionOptionsAttributeUsernameIdentifierArgs:
     def __init__(__self__, *,
@@ -6284,6 +8212,15 @@ class ConnectionOptionsAttributeUsernameIdentifierArgs:
         pulumi.set(self, "active", value)
 
 
+if not MYPY:
+    class ConnectionOptionsAttributeUsernameSignupArgsDict(TypedDict):
+        status: NotRequired[pulumi.Input[str]]
+        """
+        Defines whether User Name attribute is active as an identifier
+        """
+elif False:
+    ConnectionOptionsAttributeUsernameSignupArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionOptionsAttributeUsernameSignupArgs:
     def __init__(__self__, *,
@@ -6306,6 +8243,23 @@ class ConnectionOptionsAttributeUsernameSignupArgs:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class ConnectionOptionsAttributeUsernameValidationArgsDict(TypedDict):
+        allowed_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameValidationAllowedTypeArgsDict']]]]
+        """
+        Defines allowed types for for UserName attribute
+        """
+        max_length: NotRequired[pulumi.Input[int]]
+        """
+        Defines Max Length for User Name attribute
+        """
+        min_length: NotRequired[pulumi.Input[int]]
+        """
+        Defines Min Length for User Name attribute
+        """
+elif False:
+    ConnectionOptionsAttributeUsernameValidationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsAttributeUsernameValidationArgs:
@@ -6362,6 +8316,19 @@ class ConnectionOptionsAttributeUsernameValidationArgs:
         pulumi.set(self, "min_length", value)
 
 
+if not MYPY:
+    class ConnectionOptionsAttributeUsernameValidationAllowedTypeArgsDict(TypedDict):
+        email: NotRequired[pulumi.Input[bool]]
+        """
+        One of the allowed types for UserName signup attribute
+        """
+        phone_number: NotRequired[pulumi.Input[bool]]
+        """
+        One of the allowed types for UserName signup attribute
+        """
+elif False:
+    ConnectionOptionsAttributeUsernameValidationAllowedTypeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs:
     def __init__(__self__, *,
@@ -6401,6 +8368,15 @@ class ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs:
         pulumi.set(self, "phone_number", value)
 
 
+if not MYPY:
+    class ConnectionOptionsConnectionSettingsArgsDict(TypedDict):
+        pkce: pulumi.Input[str]
+        """
+        PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+        """
+elif False:
+    ConnectionOptionsConnectionSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionOptionsConnectionSettingsArgs:
     def __init__(__self__, *,
@@ -6422,6 +8398,13 @@ class ConnectionOptionsConnectionSettingsArgs:
     def pkce(self, value: pulumi.Input[str]):
         pulumi.set(self, "pkce", value)
 
+
+if not MYPY:
+    class ConnectionOptionsDecryptionKeyArgsDict(TypedDict):
+        cert: pulumi.Input[str]
+        key: pulumi.Input[str]
+elif False:
+    ConnectionOptionsDecryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsDecryptionKeyArgs:
@@ -6449,6 +8432,31 @@ class ConnectionOptionsDecryptionKeyArgs:
     def key(self, value: pulumi.Input[str]):
         pulumi.set(self, "key", value)
 
+
+if not MYPY:
+    class ConnectionOptionsGatewayAuthenticationArgsDict(TypedDict):
+        audience: NotRequired[pulumi.Input[str]]
+        """
+        Audience claim for the HS256 token sent to `gateway_url`.
+        """
+        method: NotRequired[pulumi.Input[str]]
+        """
+        Authentication method (default is `bearer` token).
+        """
+        secret: NotRequired[pulumi.Input[str]]
+        """
+        Secret used to sign the HS256 token sent to `gateway_url`.
+        """
+        secret_base64_encoded: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether or not the secret is Base64-encoded.
+        """
+        subject: NotRequired[pulumi.Input[str]]
+        """
+        Subject claim for the HS256 token sent to `gateway_url`.
+        """
+elif False:
+    ConnectionOptionsGatewayAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsGatewayAuthenticationArgs:
@@ -6537,6 +8545,14 @@ class ConnectionOptionsGatewayAuthenticationArgs:
         pulumi.set(self, "subject", value)
 
 
+if not MYPY:
+    class ConnectionOptionsIdpInitiatedArgsDict(TypedDict):
+        client_authorize_query: NotRequired[pulumi.Input[str]]
+        client_id: NotRequired[pulumi.Input[str]]
+        client_protocol: NotRequired[pulumi.Input[str]]
+elif False:
+    ConnectionOptionsIdpInitiatedArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionOptionsIdpInitiatedArgs:
     def __init__(__self__, *,
@@ -6578,6 +8594,19 @@ class ConnectionOptionsIdpInitiatedArgs:
         pulumi.set(self, "client_protocol", value)
 
 
+if not MYPY:
+    class ConnectionOptionsMfaArgsDict(TypedDict):
+        active: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether multifactor authentication is enabled for this connection.
+        """
+        return_enroll_settings: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether multifactor authentication enrollment settings will be returned.
+        """
+elif False:
+    ConnectionOptionsMfaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionOptionsMfaArgs:
     def __init__(__self__, *,
@@ -6617,6 +8646,15 @@ class ConnectionOptionsMfaArgs:
         pulumi.set(self, "return_enroll_settings", value)
 
 
+if not MYPY:
+    class ConnectionOptionsPasswordComplexityOptionsArgsDict(TypedDict):
+        min_length: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of characters allowed in passwords.
+        """
+elif False:
+    ConnectionOptionsPasswordComplexityOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionOptionsPasswordComplexityOptionsArgs:
     def __init__(__self__, *,
@@ -6639,6 +8677,19 @@ class ConnectionOptionsPasswordComplexityOptionsArgs:
     def min_length(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_length", value)
 
+
+if not MYPY:
+    class ConnectionOptionsPasswordDictionaryArgsDict(TypedDict):
+        dictionaries: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+        """
+        enable: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether the password dictionary check is enabled for this connection.
+        """
+elif False:
+    ConnectionOptionsPasswordDictionaryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsPasswordDictionaryArgs:
@@ -6679,6 +8730,13 @@ class ConnectionOptionsPasswordDictionaryArgs:
         pulumi.set(self, "enable", value)
 
 
+if not MYPY:
+    class ConnectionOptionsPasswordHistoryArgsDict(TypedDict):
+        enable: NotRequired[pulumi.Input[bool]]
+        size: NotRequired[pulumi.Input[int]]
+elif False:
+    ConnectionOptionsPasswordHistoryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionOptionsPasswordHistoryArgs:
     def __init__(__self__, *,
@@ -6708,6 +8766,12 @@ class ConnectionOptionsPasswordHistoryArgs:
         pulumi.set(self, "size", value)
 
 
+if not MYPY:
+    class ConnectionOptionsPasswordNoPersonalInfoArgsDict(TypedDict):
+        enable: NotRequired[pulumi.Input[bool]]
+elif False:
+    ConnectionOptionsPasswordNoPersonalInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionOptionsPasswordNoPersonalInfoArgs:
     def __init__(__self__, *,
@@ -6724,6 +8788,13 @@ class ConnectionOptionsPasswordNoPersonalInfoArgs:
     def enable(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable", value)
 
+
+if not MYPY:
+    class ConnectionOptionsSigningKeyArgsDict(TypedDict):
+        cert: pulumi.Input[str]
+        key: pulumi.Input[str]
+elif False:
+    ConnectionOptionsSigningKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsSigningKeyArgs:
@@ -6751,6 +8822,19 @@ class ConnectionOptionsSigningKeyArgs:
     def key(self, value: pulumi.Input[str]):
         pulumi.set(self, "key", value)
 
+
+if not MYPY:
+    class ConnectionOptionsTotpArgsDict(TypedDict):
+        length: NotRequired[pulumi.Input[int]]
+        """
+        Length of the one-time password.
+        """
+        time_step: NotRequired[pulumi.Input[int]]
+        """
+        Seconds between allowed generation of new passwords.
+        """
+elif False:
+    ConnectionOptionsTotpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsTotpArgs:
@@ -6791,6 +8875,15 @@ class ConnectionOptionsTotpArgs:
         pulumi.set(self, "time_step", value)
 
 
+if not MYPY:
+    class ConnectionOptionsValidationArgsDict(TypedDict):
+        username: NotRequired[pulumi.Input['ConnectionOptionsValidationUsernameArgsDict']]
+        """
+        Specifies the `min` and `max` values of username length.
+        """
+elif False:
+    ConnectionOptionsValidationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionOptionsValidationArgs:
     def __init__(__self__, *,
@@ -6813,6 +8906,13 @@ class ConnectionOptionsValidationArgs:
     def username(self, value: Optional[pulumi.Input['ConnectionOptionsValidationUsernameArgs']]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class ConnectionOptionsValidationUsernameArgsDict(TypedDict):
+        max: NotRequired[pulumi.Input[int]]
+        min: NotRequired[pulumi.Input[int]]
+elif False:
+    ConnectionOptionsValidationUsernameArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsValidationUsernameArgs:
@@ -6842,6 +8942,19 @@ class ConnectionOptionsValidationUsernameArgs:
     def min(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min", value)
 
+
+if not MYPY:
+    class ConnectionScimConfigurationMappingArgsDict(TypedDict):
+        auth0: pulumi.Input[str]
+        """
+        The field location in the Auth0 schema.
+        """
+        scim: pulumi.Input[str]
+        """
+        The field location in the SCIM schema.
+        """
+elif False:
+    ConnectionScimConfigurationMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionScimConfigurationMappingArgs:
@@ -6880,6 +8993,15 @@ class ConnectionScimConfigurationMappingArgs:
         pulumi.set(self, "scim", value)
 
 
+if not MYPY:
+    class CustomDomainVerificationArgsDict(TypedDict):
+        methods: NotRequired[pulumi.Input[Sequence[Any]]]
+        """
+        Verification methods for the domain.
+        """
+elif False:
+    CustomDomainVerificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CustomDomainVerificationArgs:
     def __init__(__self__, *,
@@ -6902,6 +9024,63 @@ class CustomDomainVerificationArgs:
     def methods(self, value: Optional[pulumi.Input[Sequence[Any]]]):
         pulumi.set(self, "methods", value)
 
+
+if not MYPY:
+    class EmailProviderCredentialsArgsDict(TypedDict):
+        access_key_id: NotRequired[pulumi.Input[str]]
+        """
+        AWS Access Key ID. Used only for AWS.
+        """
+        api_key: NotRequired[pulumi.Input[str]]
+        """
+        API Key for your email service. Will always be encrypted in our database.
+        """
+        azure_cs_connection_string: NotRequired[pulumi.Input[str]]
+        """
+        Azure Communication Services Connection String.
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        Domain name.
+        """
+        ms365_client_id: NotRequired[pulumi.Input[str]]
+        """
+        Microsoft 365 Client ID.
+        """
+        ms365_client_secret: NotRequired[pulumi.Input[str]]
+        """
+        Microsoft 365 Client Secret.
+        """
+        ms365_tenant_id: NotRequired[pulumi.Input[str]]
+        """
+        Microsoft 365 Tenant ID.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Default region. Used only for AWS, Mailgun, and SparkPost.
+        """
+        secret_access_key: NotRequired[pulumi.Input[str]]
+        """
+        AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
+        """
+        smtp_host: NotRequired[pulumi.Input[str]]
+        """
+        Hostname or IP address of your SMTP server. Used only for SMTP.
+        """
+        smtp_pass: NotRequired[pulumi.Input[str]]
+        """
+        SMTP password. Used only for SMTP.
+        """
+        smtp_port: NotRequired[pulumi.Input[int]]
+        """
+        Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
+        """
+        smtp_user: NotRequired[pulumi.Input[str]]
+        """
+        SMTP username. Used only for SMTP.
+        """
+elif False:
+    EmailProviderCredentialsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EmailProviderCredentialsArgs:
@@ -7118,6 +9297,19 @@ class EmailProviderCredentialsArgs:
         pulumi.set(self, "smtp_user", value)
 
 
+if not MYPY:
+    class EmailProviderSettingsArgsDict(TypedDict):
+        headers: NotRequired[pulumi.Input['EmailProviderSettingsHeadersArgsDict']]
+        """
+        Headers settings for the `smtp` email provider.
+        """
+        message: NotRequired[pulumi.Input['EmailProviderSettingsMessageArgsDict']]
+        """
+        Message settings for the `mandrill` or `ses` email provider.
+        """
+elif False:
+    EmailProviderSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EmailProviderSettingsArgs:
     def __init__(__self__, *,
@@ -7156,6 +9348,19 @@ class EmailProviderSettingsArgs:
     def message(self, value: Optional[pulumi.Input['EmailProviderSettingsMessageArgs']]):
         pulumi.set(self, "message", value)
 
+
+if not MYPY:
+    class EmailProviderSettingsHeadersArgsDict(TypedDict):
+        x_mc_view_content_link: NotRequired[pulumi.Input[str]]
+        """
+        Disable or enable the default View Content Link for sensitive emails.
+        """
+        x_ses_configuration_set: NotRequired[pulumi.Input[str]]
+        """
+        SES Configuration set to include when sending emails.
+        """
+elif False:
+    EmailProviderSettingsHeadersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EmailProviderSettingsHeadersArgs:
@@ -7196,6 +9401,19 @@ class EmailProviderSettingsHeadersArgs:
         pulumi.set(self, "x_ses_configuration_set", value)
 
 
+if not MYPY:
+    class EmailProviderSettingsMessageArgsDict(TypedDict):
+        configuration_set_name: NotRequired[pulumi.Input[str]]
+        """
+        Setting for the `ses` email provider. The name of the configuration set to apply to the sent emails.
+        """
+        view_content_link: NotRequired[pulumi.Input[bool]]
+        """
+        Setting for the `mandrill` email provider. Set to `true` to see the content of individual emails sent to users.
+        """
+elif False:
+    EmailProviderSettingsMessageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EmailProviderSettingsMessageArgs:
     def __init__(__self__, *,
@@ -7234,6 +9452,27 @@ class EmailProviderSettingsMessageArgs:
     def view_content_link(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "view_content_link", value)
 
+
+if not MYPY:
+    class GuardianDuoArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Indicates whether Duo MFA is enabled.
+        """
+        hostname: NotRequired[pulumi.Input[str]]
+        """
+        Duo API Hostname, see the Duo documentation for more details on Duo setup.
+        """
+        integration_key: NotRequired[pulumi.Input[str]]
+        """
+        Duo client ID, see the Duo documentation for more details on Duo setup.
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        Duo client secret, see the Duo documentation for more details on Duo setup.
+        """
+elif False:
+    GuardianDuoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuardianDuoArgs:
@@ -7305,6 +9544,27 @@ class GuardianDuoArgs:
         pulumi.set(self, "secret_key", value)
 
 
+if not MYPY:
+    class GuardianPhoneArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Indicates whether Phone MFA is enabled.
+        """
+        message_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
+        """
+        options: NotRequired[pulumi.Input['GuardianPhoneOptionsArgsDict']]
+        """
+        Options for the various providers.
+        """
+        provider: NotRequired[pulumi.Input[str]]
+        """
+        Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
+        """
+elif False:
+    GuardianPhoneArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuardianPhoneArgs:
     def __init__(__self__, *,
@@ -7374,6 +9634,35 @@ class GuardianPhoneArgs:
     def provider(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provider", value)
 
+
+if not MYPY:
+    class GuardianPhoneOptionsArgsDict(TypedDict):
+        auth_token: NotRequired[pulumi.Input[str]]
+        """
+        AuthToken for your Twilio account.
+        """
+        enrollment_message: NotRequired[pulumi.Input[str]]
+        """
+        This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+        """
+        from_: NotRequired[pulumi.Input[str]]
+        """
+        Phone number to use as the sender.
+        """
+        messaging_service_sid: NotRequired[pulumi.Input[str]]
+        """
+        Messaging service SID.
+        """
+        sid: NotRequired[pulumi.Input[str]]
+        """
+        SID for your Twilio account.
+        """
+        verification_message: NotRequired[pulumi.Input[str]]
+        """
+        This message will be sent whenever a user logs in after the enrollment. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
+        """
+elif False:
+    GuardianPhoneOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuardianPhoneOptionsArgs:
@@ -7478,6 +9767,35 @@ class GuardianPhoneOptionsArgs:
         pulumi.set(self, "verification_message", value)
 
 
+if not MYPY:
+    class GuardianPushArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Indicates whether Push MFA is enabled.
+        """
+        amazon_sns: NotRequired[pulumi.Input['GuardianPushAmazonSnsArgsDict']]
+        """
+        Configuration for Amazon SNS.
+        """
+        custom_app: NotRequired[pulumi.Input['GuardianPushCustomAppArgsDict']]
+        """
+        Configuration for the Guardian Custom App.
+        """
+        direct_apns: NotRequired[pulumi.Input['GuardianPushDirectApnsArgsDict']]
+        """
+        Configuration for the Apple Push Notification service (APNs) settings.
+        """
+        direct_fcm: NotRequired[pulumi.Input['GuardianPushDirectFcmArgsDict']]
+        """
+        Configuration for Firebase Cloud Messaging (FCM) settings.
+        """
+        provider: NotRequired[pulumi.Input[str]]
+        """
+        Provider to use, one of `direct`, `guardian`, `sns`.
+        """
+elif False:
+    GuardianPushArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuardianPushArgs:
     def __init__(__self__, *,
@@ -7580,6 +9898,31 @@ class GuardianPushArgs:
         pulumi.set(self, "provider", value)
 
 
+if not MYPY:
+    class GuardianPushAmazonSnsArgsDict(TypedDict):
+        aws_access_key_id: pulumi.Input[str]
+        """
+        Your AWS Access Key ID.
+        """
+        aws_region: pulumi.Input[str]
+        """
+        Your AWS application's region.
+        """
+        aws_secret_access_key: pulumi.Input[str]
+        """
+        Your AWS Secret Access Key.
+        """
+        sns_apns_platform_application_arn: pulumi.Input[str]
+        """
+        The Amazon Resource Name for your Apple Push Notification Service.
+        """
+        sns_gcm_platform_application_arn: pulumi.Input[str]
+        """
+        The Amazon Resource Name for your Firebase Cloud Messaging Service.
+        """
+elif False:
+    GuardianPushAmazonSnsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuardianPushAmazonSnsArgs:
     def __init__(__self__, *,
@@ -7662,6 +10005,23 @@ class GuardianPushAmazonSnsArgs:
         pulumi.set(self, "sns_gcm_platform_application_arn", value)
 
 
+if not MYPY:
+    class GuardianPushCustomAppArgsDict(TypedDict):
+        app_name: NotRequired[pulumi.Input[str]]
+        """
+        Custom Application Name.
+        """
+        apple_app_link: NotRequired[pulumi.Input[str]]
+        """
+        Apple App Store URL. Must be HTTPS or an empty string.
+        """
+        google_app_link: NotRequired[pulumi.Input[str]]
+        """
+        Google Store URL. Must be HTTPS or an empty string.
+        """
+elif False:
+    GuardianPushCustomAppArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuardianPushCustomAppArgs:
     def __init__(__self__, *,
@@ -7716,6 +10076,27 @@ class GuardianPushCustomAppArgs:
     def google_app_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "google_app_link", value)
 
+
+if not MYPY:
+    class GuardianPushDirectApnsArgsDict(TypedDict):
+        bundle_id: pulumi.Input[str]
+        """
+        The Apple Push Notification service Bundle ID.
+        """
+        p12: pulumi.Input[str]
+        """
+        The base64 encoded certificate in P12 format.
+        """
+        sandbox: pulumi.Input[bool]
+        """
+        Set to true to use the sandbox iOS app environment, otherwise set to false to use the production iOS app environment.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether the Apple Push Notification service is enabled.
+        """
+elif False:
+    GuardianPushDirectApnsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuardianPushDirectApnsArgs:
@@ -7785,6 +10166,15 @@ class GuardianPushDirectApnsArgs:
         pulumi.set(self, "enabled", value)
 
 
+if not MYPY:
+    class GuardianPushDirectFcmArgsDict(TypedDict):
+        server_key: pulumi.Input[str]
+        """
+        The Firebase Cloud Messaging Server Key. For security purposes, we don’t retrieve your existing FCM server key to check for drift.
+        """
+elif False:
+    GuardianPushDirectFcmArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuardianPushDirectFcmArgs:
     def __init__(__self__, *,
@@ -7806,6 +10196,23 @@ class GuardianPushDirectFcmArgs:
     def server_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "server_key", value)
 
+
+if not MYPY:
+    class GuardianWebauthnPlatformArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Indicates whether WebAuthn with FIDO Device Biometrics MFA is enabled.
+        """
+        override_relying_party: NotRequired[pulumi.Input[bool]]
+        """
+        The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
+        """
+        relying_party_identifier: NotRequired[pulumi.Input[str]]
+        """
+        The Relying Party should be a suffix of the custom domain.
+        """
+elif False:
+    GuardianWebauthnPlatformArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuardianWebauthnPlatformArgs:
@@ -7860,6 +10267,27 @@ class GuardianWebauthnPlatformArgs:
     def relying_party_identifier(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "relying_party_identifier", value)
 
+
+if not MYPY:
+    class GuardianWebauthnRoamingArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Indicates whether WebAuthn with FIDO Security Keys MFA is enabled.
+        """
+        override_relying_party: NotRequired[pulumi.Input[bool]]
+        """
+        The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
+        """
+        relying_party_identifier: NotRequired[pulumi.Input[str]]
+        """
+        The Relying Party should be a suffix of the custom domain.
+        """
+        user_verification: NotRequired[pulumi.Input[str]]
+        """
+        User verification, one of `discouraged`, `preferred` or `required`.
+        """
+elif False:
+    GuardianWebauthnRoamingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuardianWebauthnRoamingArgs:
@@ -7930,6 +10358,107 @@ class GuardianWebauthnRoamingArgs:
     def user_verification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_verification", value)
 
+
+if not MYPY:
+    class LogStreamSinkArgsDict(TypedDict):
+        aws_account_id: NotRequired[pulumi.Input[str]]
+        """
+        The AWS Account ID.
+        """
+        aws_partner_event_source: NotRequired[pulumi.Input[str]]
+        """
+        Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS, so this should be an output attribute.
+        """
+        aws_region: NotRequired[pulumi.Input[str]]
+        """
+        The region in which the EventBridge event source will be created. Possible values: `ap-east-1`, `ap-northeast-1`, `ap-northeast-2`, `ap-northeast-3`, `ap-south-1`, `ap-southeast-1`, `ap-southeast-2`, `ca-central-1`, `cn-north-1`, `cn-northwest-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `me-south-1`, `sa-east-1`, `us-gov-east-1`, `us-gov-west-1`, `us-east-1`, `us-east-2`, `us-west-1`, `us-west-2`.
+        """
+        azure_partner_topic: NotRequired[pulumi.Input[str]]
+        """
+        Name of the Partner Topic to be used with Azure. Generally should not be specified.
+        """
+        azure_region: NotRequired[pulumi.Input[str]]
+        """
+        The Azure region code. Possible values: `australiacentral`, `australiaeast`, `australiasoutheast`, `brazilsouth`, `canadacentral`, `canadaeast`, `centralindia`, `centralus`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `germanywestcentral`, `japaneast`, `japanwest`, `koreacentral`, `koreasouth`, `northcentralus`, `northeurope`, `norwayeast`, `southafricanorth`, `southcentralus`, `southeastasia`, `southindia`, `switzerlandnorth`, `uaenorth`, `uksouth`, `ukwest`, `westcentralus`, `westeurope`, `westindia`, `westus`, `westus2`.
+        """
+        azure_resource_group: NotRequired[pulumi.Input[str]]
+        """
+        The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription.
+        """
+        azure_subscription_id: NotRequired[pulumi.Input[str]]
+        """
+        The unique alphanumeric string that identifies your Azure subscription.
+        """
+        datadog_api_key: NotRequired[pulumi.Input[str]]
+        """
+        The Datadog API key.
+        """
+        datadog_region: NotRequired[pulumi.Input[str]]
+        """
+        The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
+        """
+        http_authorization: NotRequired[pulumi.Input[str]]
+        """
+        Sent in the HTTP "Authorization" header with each request.
+        """
+        http_content_format: NotRequired[pulumi.Input[str]]
+        """
+        The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
+        """
+        http_content_type: NotRequired[pulumi.Input[str]]
+        """
+        The "Content-Type" header to send over HTTP. Common value is "application/json".
+        """
+        http_custom_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]
+        """
+        Additional HTTP headers to be included as part of the HTTP request.
+        """
+        http_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        The HTTP endpoint to send streaming logs.
+        """
+        mixpanel_project_id: NotRequired[pulumi.Input[str]]
+        """
+        The Mixpanel project ID, found on the Project Settings page.
+        """
+        mixpanel_region: NotRequired[pulumi.Input[str]]
+        """
+        The Mixpanel region. Options are ["us", "eu"]. EU is required for customers with EU data residency requirements.
+        """
+        mixpanel_service_account_password: NotRequired[pulumi.Input[str]]
+        """
+        The Mixpanel Service Account password.
+        """
+        mixpanel_service_account_username: NotRequired[pulumi.Input[str]]
+        """
+        The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+        """
+        segment_write_key: NotRequired[pulumi.Input[str]]
+        """
+        The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
+        """
+        splunk_domain: NotRequired[pulumi.Input[str]]
+        """
+        The Splunk domain name.
+        """
+        splunk_port: NotRequired[pulumi.Input[str]]
+        """
+        The Splunk port.
+        """
+        splunk_secure: NotRequired[pulumi.Input[bool]]
+        """
+        This toggle should be turned off when using self-signed certificates.
+        """
+        splunk_token: NotRequired[pulumi.Input[str]]
+        """
+        The Splunk access token.
+        """
+        sumo_source_address: NotRequired[pulumi.Input[str]]
+        """
+        Generated URL for your defined HTTP source in Sumo Logic for collecting streaming data from Auth0.
+        """
+elif False:
+    LogStreamSinkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogStreamSinkArgs:
@@ -8322,6 +10851,19 @@ class LogStreamSinkArgs:
         pulumi.set(self, "sumo_source_address", value)
 
 
+if not MYPY:
+    class OrganizationBrandingArgsDict(TypedDict):
+        colors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Color scheme used to customize the login pages.
+        """
+        logo_url: NotRequired[pulumi.Input[str]]
+        """
+        URL of logo to display on login page.
+        """
+elif False:
+    OrganizationBrandingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OrganizationBrandingArgs:
     def __init__(__self__, *,
@@ -8360,6 +10902,27 @@ class OrganizationBrandingArgs:
     def logo_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "logo_url", value)
 
+
+if not MYPY:
+    class OrganizationConnectionsEnabledConnectionArgsDict(TypedDict):
+        connection_id: pulumi.Input[str]
+        """
+        The ID of the connection to enable for the organization.
+        """
+        assign_membership_on_login: NotRequired[pulumi.Input[bool]]
+        """
+        When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
+        """
+        is_signup_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+        """
+        show_as_button: NotRequired[pulumi.Input[bool]]
+        """
+        Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+        """
+elif False:
+    OrganizationConnectionsEnabledConnectionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrganizationConnectionsEnabledConnectionArgs:
@@ -8431,6 +10994,19 @@ class OrganizationConnectionsEnabledConnectionArgs:
         pulumi.set(self, "show_as_button", value)
 
 
+if not MYPY:
+    class PagesChangePasswordArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
+        """
+        html: pulumi.Input[str]
+        """
+        Customized content for the Reset Password page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+elif False:
+    PagesChangePasswordArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PagesChangePasswordArgs:
     def __init__(__self__, *,
@@ -8467,6 +11043,23 @@ class PagesChangePasswordArgs:
     def html(self, value: pulumi.Input[str]):
         pulumi.set(self, "html", value)
 
+
+if not MYPY:
+    class PagesErrorArgsDict(TypedDict):
+        show_log_link: pulumi.Input[bool]
+        """
+        Indicates whether to show the link to logs as part of the default error page.
+        """
+        html: NotRequired[pulumi.Input[str]]
+        """
+        Customized content for the Error page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        URL to redirect to when an error occurs, instead of showing the default error page.
+        """
+elif False:
+    PagesErrorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PagesErrorArgs:
@@ -8522,6 +11115,19 @@ class PagesErrorArgs:
         pulumi.set(self, "url", value)
 
 
+if not MYPY:
+    class PagesGuardianMfaArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Indicates whether to use the custom Guardian MFA HTML (`true`) or the default Auth0 page (`false`).
+        """
+        html: pulumi.Input[str]
+        """
+        Customized content for the Guardian MFA page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+elif False:
+    PagesGuardianMfaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PagesGuardianMfaArgs:
     def __init__(__self__, *,
@@ -8559,6 +11165,19 @@ class PagesGuardianMfaArgs:
         pulumi.set(self, "html", value)
 
 
+if not MYPY:
+    class PagesLoginArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Indicates whether to use the custom Login page HTML (`true`) or the default Auth0 page (`false`).
+        """
+        html: pulumi.Input[str]
+        """
+        Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+elif False:
+    PagesLoginArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PagesLoginArgs:
     def __init__(__self__, *,
@@ -8595,6 +11214,35 @@ class PagesLoginArgs:
     def html(self, value: pulumi.Input[str]):
         pulumi.set(self, "html", value)
 
+
+if not MYPY:
+    class PromptScreenPartialInsertionPointsArgsDict(TypedDict):
+        form_content_end: NotRequired[pulumi.Input[str]]
+        """
+        Content that goes at the end of the form.
+        """
+        form_content_start: NotRequired[pulumi.Input[str]]
+        """
+        Content that goes at the start of the form.
+        """
+        form_footer_end: NotRequired[pulumi.Input[str]]
+        """
+        Footer content for the end of the footer.
+        """
+        form_footer_start: NotRequired[pulumi.Input[str]]
+        """
+        Footer content for the start of the footer.
+        """
+        secondary_actions_end: NotRequired[pulumi.Input[str]]
+        """
+        Actions that go at the end of secondary actions.
+        """
+        secondary_actions_start: NotRequired[pulumi.Input[str]]
+        """
+        Actions that go at the start of secondary actions.
+        """
+elif False:
+    PromptScreenPartialInsertionPointsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PromptScreenPartialInsertionPointsArgs:
@@ -8699,6 +11347,16 @@ class PromptScreenPartialInsertionPointsArgs:
         pulumi.set(self, "secondary_actions_start", value)
 
 
+if not MYPY:
+    class PromptScreenPartialsScreenPartialArgsDict(TypedDict):
+        insertion_points: pulumi.Input['PromptScreenPartialsScreenPartialInsertionPointsArgsDict']
+        screen_name: pulumi.Input[str]
+        """
+        The name of the screen associated with the partials
+        """
+elif False:
+    PromptScreenPartialsScreenPartialArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PromptScreenPartialsScreenPartialArgs:
     def __init__(__self__, *,
@@ -8731,6 +11389,35 @@ class PromptScreenPartialsScreenPartialArgs:
     def screen_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "screen_name", value)
 
+
+if not MYPY:
+    class PromptScreenPartialsScreenPartialInsertionPointsArgsDict(TypedDict):
+        form_content_end: NotRequired[pulumi.Input[str]]
+        """
+        Content that goes at the end of the form.
+        """
+        form_content_start: NotRequired[pulumi.Input[str]]
+        """
+        Content that goes at the start of the form.
+        """
+        form_footer_end: NotRequired[pulumi.Input[str]]
+        """
+        Footer content for the end of the footer.
+        """
+        form_footer_start: NotRequired[pulumi.Input[str]]
+        """
+        Footer content for the start of the footer.
+        """
+        secondary_actions_end: NotRequired[pulumi.Input[str]]
+        """
+        Actions that go at the end of secondary actions.
+        """
+        secondary_actions_start: NotRequired[pulumi.Input[str]]
+        """
+        Actions that go at the start of secondary actions.
+        """
+elif False:
+    PromptScreenPartialsScreenPartialInsertionPointsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PromptScreenPartialsScreenPartialInsertionPointsArgs:
@@ -8835,6 +11522,19 @@ class PromptScreenPartialsScreenPartialInsertionPointsArgs:
         pulumi.set(self, "secondary_actions_start", value)
 
 
+if not MYPY:
+    class ResourceServerScopesScopeArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the scope (permission). Examples include `read:appointments` or `delete:appointments`.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        User-friendly description of the scope (permission).
+        """
+elif False:
+    ResourceServerScopesScopeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ResourceServerScopesScopeArgs:
     def __init__(__self__, *,
@@ -8872,6 +11572,27 @@ class ResourceServerScopesScopeArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class RolePermissionsPermissionArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of permission.
+        """
+        resource_server_identifier: pulumi.Input[str]
+        """
+        Resource server identifier associated with the permission.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the permission.
+        """
+        resource_server_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of resource server that the permission is associated with.
+        """
+elif False:
+    RolePermissionsPermissionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RolePermissionsPermissionArgs:
@@ -8942,6 +11663,19 @@ class RolePermissionsPermissionArgs:
         pulumi.set(self, "resource_server_name", value)
 
 
+if not MYPY:
+    class SelfServiceProfileBrandingArgsDict(TypedDict):
+        colors: NotRequired[pulumi.Input['SelfServiceProfileBrandingColorsArgsDict']]
+        """
+        Configuration settings for colors for branding.
+        """
+        logo_url: NotRequired[pulumi.Input[str]]
+        """
+        URL of logo to display on login page.
+        """
+elif False:
+    SelfServiceProfileBrandingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SelfServiceProfileBrandingArgs:
     def __init__(__self__, *,
@@ -8981,6 +11715,15 @@ class SelfServiceProfileBrandingArgs:
         pulumi.set(self, "logo_url", value)
 
 
+if not MYPY:
+    class SelfServiceProfileBrandingColorsArgsDict(TypedDict):
+        primary: NotRequired[pulumi.Input[str]]
+        """
+        Primary button background color in hexadecimal.
+        """
+elif False:
+    SelfServiceProfileBrandingColorsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SelfServiceProfileBrandingColorsArgs:
     def __init__(__self__, *,
@@ -9003,6 +11746,23 @@ class SelfServiceProfileBrandingColorsArgs:
     def primary(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "primary", value)
 
+
+if not MYPY:
+    class SelfServiceProfileUserAttributeArgsDict(TypedDict):
+        description: pulumi.Input[str]
+        """
+        A human readable description of the attribute.
+        """
+        is_optional: pulumi.Input[bool]
+        """
+        Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+        """
+        name: pulumi.Input[str]
+        """
+        Attribute’s name on Auth0 side
+        """
+elif False:
+    SelfServiceProfileUserAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SelfServiceProfileUserAttributeArgs:
@@ -9055,6 +11815,107 @@ class SelfServiceProfileUserAttributeArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class TenantFlagsArgsDict(TypedDict):
+        allow_legacy_delegation_grant_types: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+        """
+        allow_legacy_ro_grant_types: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+        """
+        allow_legacy_tokeninfo_endpoint: NotRequired[pulumi.Input[bool]]
+        """
+        If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+        """
+        dashboard_insights_view: NotRequired[pulumi.Input[bool]]
+        """
+        Enables new insights activity page view.
+        """
+        dashboard_log_streams_next: NotRequired[pulumi.Input[bool]]
+        """
+        Enables beta access to log streaming changes.
+        """
+        disable_clickjack_protection_headers: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+        """
+        disable_fields_map_fix: NotRequired[pulumi.Input[bool]]
+        """
+        Disables SAML fields map fix for bad mappings with repeated attributes.
+        """
+        disable_management_api_sms_obfuscation: NotRequired[pulumi.Input[bool]]
+        """
+        If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+        """
+        enable_adfs_waad_email_verification: NotRequired[pulumi.Input[bool]]
+        """
+        If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+        """
+        enable_apis_section: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether the APIs section is enabled for the tenant.
+        """
+        enable_client_connections: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether all current connections should be enabled when a new client is created.
+        """
+        enable_custom_domain_in_emails: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
+        """
+        enable_dynamic_client_registration: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether the tenant allows dynamic client registration.
+        """
+        enable_idtoken_api2: NotRequired[pulumi.Input[bool]]
+        """
+        Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
+        """
+        enable_legacy_logs_search_v2: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether to use the older v2 legacy logs search.
+        """
+        enable_legacy_profile: NotRequired[pulumi.Input[bool]]
+        """
+        Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+        """
+        enable_pipeline2: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether advanced API Authorization scenarios are enabled.
+        """
+        enable_public_signup_user_exists_error: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+        """
+        enable_sso: NotRequired[pulumi.Input[bool]]
+        """
+        Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+        """
+        mfa_show_factor_list_on_enrollment: NotRequired[pulumi.Input[bool]]
+        """
+        Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+        """
+        no_disclose_enterprise_connections: NotRequired[pulumi.Input[bool]]
+        """
+        Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+        """
+        require_pushed_authorization_requests: NotRequired[pulumi.Input[bool]]
+        """
+        This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+        """
+        revoke_refresh_token_grant: NotRequired[pulumi.Input[bool]]
+        """
+        Delete underlying grant when a refresh token is revoked via the Authentication API.
+        """
+        use_scope_descriptions_for_consent: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether to use scope descriptions for consent.
+        """
+elif False:
+    TenantFlagsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TenantFlagsArgs:
@@ -9451,6 +12312,15 @@ class TenantFlagsArgs:
         pulumi.set(self, "use_scope_descriptions_for_consent", value)
 
 
+if not MYPY:
+    class TenantSessionCookieArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Behavior of tenant session cookie. Accepts either "persistent" or "non-persistent".
+        """
+elif False:
+    TenantSessionCookieArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TenantSessionCookieArgs:
     def __init__(__self__, *,
@@ -9474,6 +12344,15 @@ class TenantSessionCookieArgs:
         pulumi.set(self, "mode", value)
 
 
+if not MYPY:
+    class TenantSessionsArgsDict(TypedDict):
+        oidc_logout_prompt_enabled: pulumi.Input[bool]
+        """
+        When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
+        """
+elif False:
+    TenantSessionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TenantSessionsArgs:
     def __init__(__self__, *,
@@ -9495,6 +12374,19 @@ class TenantSessionsArgs:
     def oidc_logout_prompt_enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "oidc_logout_prompt_enabled", value)
 
+
+if not MYPY:
+    class TriggerActionsActionArgsDict(TypedDict):
+        display_name: pulumi.Input[str]
+        """
+        The display name of the action within the flow.
+        """
+        id: pulumi.Input[str]
+        """
+        Action ID.
+        """
+elif False:
+    TriggerActionsActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TriggerActionsActionArgs:
@@ -9532,6 +12424,27 @@ class TriggerActionsActionArgs:
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class UserPermissionsPermissionArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of permission.
+        """
+        resource_server_identifier: pulumi.Input[str]
+        """
+        Resource server identifier associated with the permission.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the permission.
+        """
+        resource_server_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of resource server that the permission is associated with.
+        """
+elif False:
+    UserPermissionsPermissionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class UserPermissionsPermissionArgs:
@@ -9602,6 +12515,19 @@ class UserPermissionsPermissionArgs:
         pulumi.set(self, "resource_server_name", value)
 
 
+if not MYPY:
+    class GetConnectionScimConfigurationDefaultMappingArgsDict(TypedDict):
+        auth0: str
+        """
+        The field location in the Auth0 schema.
+        """
+        scim: str
+        """
+        The field location in the SCIM schema.
+        """
+elif False:
+    GetConnectionScimConfigurationDefaultMappingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetConnectionScimConfigurationDefaultMappingArgs:
     def __init__(__self__, *,
@@ -9638,6 +12564,19 @@ class GetConnectionScimConfigurationDefaultMappingArgs:
     def scim(self, value: str):
         pulumi.set(self, "scim", value)
 
+
+if not MYPY:
+    class GetConnectionScimConfigurationMappingArgsDict(TypedDict):
+        auth0: str
+        """
+        The field location in the Auth0 schema.
+        """
+        scim: str
+        """
+        The field location in the SCIM schema.
+        """
+elif False:
+    GetConnectionScimConfigurationMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetConnectionScimConfigurationMappingArgs:
@@ -9676,6 +12615,16 @@ class GetConnectionScimConfigurationMappingArgs:
         pulumi.set(self, "scim", value)
 
 
+if not MYPY:
+    class GetPromptScreenPartialsScreenPartialArgsDict(TypedDict):
+        insertion_points: Sequence['GetPromptScreenPartialsScreenPartialInsertionPointArgsDict']
+        screen_name: str
+        """
+        The name of the screen associated with the partials
+        """
+elif False:
+    GetPromptScreenPartialsScreenPartialArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetPromptScreenPartialsScreenPartialArgs:
     def __init__(__self__, *,
@@ -9708,6 +12657,35 @@ class GetPromptScreenPartialsScreenPartialArgs:
     def screen_name(self, value: str):
         pulumi.set(self, "screen_name", value)
 
+
+if not MYPY:
+    class GetPromptScreenPartialsScreenPartialInsertionPointArgsDict(TypedDict):
+        form_content_end: str
+        """
+        Content that goes at the end of the form.
+        """
+        form_content_start: str
+        """
+        Content that goes at the start of the form.
+        """
+        form_footer_end: str
+        """
+        Footer content for the end of the footer.
+        """
+        form_footer_start: str
+        """
+        Footer content for the start of the footer.
+        """
+        secondary_actions_end: str
+        """
+        Actions that go at the end of secondary actions.
+        """
+        secondary_actions_start: str
+        """
+        Actions that go at the start of secondary actions.
+        """
+elif False:
+    GetPromptScreenPartialsScreenPartialInsertionPointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetPromptScreenPartialsScreenPartialInsertionPointArgs:

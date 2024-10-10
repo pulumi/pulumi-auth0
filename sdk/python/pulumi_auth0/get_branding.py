@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -129,9 +134,6 @@ def get_branding(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBra
         id=pulumi.get(__ret__, 'id'),
         logo_url=pulumi.get(__ret__, 'logo_url'),
         universal_logins=pulumi.get(__ret__, 'universal_logins'))
-
-
-@_utilities.lift_output_func(get_branding)
 def get_branding_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBrandingResult]:
     """
     Use this data source to access information about the tenant's branding settings.
@@ -145,4 +147,13 @@ def get_branding_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.O
     my_branding = auth0.get_branding()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('auth0:index/getBranding:getBranding', __args__, opts=opts, typ=GetBrandingResult)
+    return __ret__.apply(lambda __response__: GetBrandingResult(
+        colors=pulumi.get(__response__, 'colors'),
+        favicon_url=pulumi.get(__response__, 'favicon_url'),
+        fonts=pulumi.get(__response__, 'fonts'),
+        id=pulumi.get(__response__, 'id'),
+        logo_url=pulumi.get(__response__, 'logo_url'),
+        universal_logins=pulumi.get(__response__, 'universal_logins')))
