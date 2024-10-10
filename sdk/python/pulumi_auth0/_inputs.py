@@ -66,6 +66,12 @@ __all__ = [
     'ClientAddonsZoomArgs',
     'ClientCredentialsPrivateKeyJwtArgs',
     'ClientCredentialsPrivateKeyJwtCredentialArgs',
+    'ClientCredentialsSelfSignedTlsClientAuthArgs',
+    'ClientCredentialsSelfSignedTlsClientAuthCredentialArgs',
+    'ClientCredentialsSignedRequestObjectArgs',
+    'ClientCredentialsSignedRequestObjectCredentialArgs',
+    'ClientCredentialsTlsClientAuthArgs',
+    'ClientCredentialsTlsClientAuthCredentialArgs',
     'ClientDefaultOrganizationArgs',
     'ClientJwtConfigurationArgs',
     'ClientMobileArgs',
@@ -110,6 +116,10 @@ __all__ = [
     'EmailProviderSettingsArgs',
     'EmailProviderSettingsHeadersArgs',
     'EmailProviderSettingsMessageArgs',
+    'EncryptionKeyManagerCustomerProvidedRootKeyArgs',
+    'EncryptionKeyManagerEncryptionKeyArgs',
+    'FormLanguageArgs',
+    'FormMessageArgs',
     'GuardianDuoArgs',
     'GuardianPhoneArgs',
     'GuardianPhoneOptionsArgs',
@@ -130,12 +140,17 @@ __all__ = [
     'PromptScreenPartialInsertionPointsArgs',
     'PromptScreenPartialsScreenPartialArgs',
     'PromptScreenPartialsScreenPartialInsertionPointsArgs',
+    'ResourceServerAuthorizationDetailArgs',
+    'ResourceServerProofOfPossessionArgs',
     'ResourceServerScopesScopeArgs',
+    'ResourceServerTokenEncryptionArgs',
+    'ResourceServerTokenEncryptionEncryptionKeyArgs',
     'RolePermissionsPermissionArgs',
     'SelfServiceProfileBrandingArgs',
     'SelfServiceProfileBrandingColorsArgs',
     'SelfServiceProfileUserAttributeArgs',
     'TenantFlagsArgs',
+    'TenantMtlsArgs',
     'TenantSessionCookieArgs',
     'TenantSessionsArgs',
     'TriggerActionsActionArgs',
@@ -3920,6 +3935,505 @@ class ClientCredentialsPrivateKeyJwtCredentialArgs:
 
 
 @pulumi.input_type
+class ClientCredentialsSelfSignedTlsClientAuthArgs:
+    def __init__(__self__, *,
+                 credentials: pulumi.Input[Sequence[pulumi.Input['ClientCredentialsSelfSignedTlsClientAuthCredentialArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ClientCredentialsSelfSignedTlsClientAuthCredentialArgs']]] credentials: Credentials that will be enabled on the client for mTLS authentication utilizing self-signed certificates.
+        """
+        pulumi.set(__self__, "credentials", credentials)
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> pulumi.Input[Sequence[pulumi.Input['ClientCredentialsSelfSignedTlsClientAuthCredentialArgs']]]:
+        """
+        Credentials that will be enabled on the client for mTLS authentication utilizing self-signed certificates.
+        """
+        return pulumi.get(self, "credentials")
+
+    @credentials.setter
+    def credentials(self, value: pulumi.Input[Sequence[pulumi.Input['ClientCredentialsSelfSignedTlsClientAuthCredentialArgs']]]):
+        pulumi.set(self, "credentials", value)
+
+
+@pulumi.input_type
+class ClientCredentialsSelfSignedTlsClientAuthCredentialArgs:
+    def __init__(__self__, *,
+                 pem: pulumi.Input[str],
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 credential_type: Optional[pulumi.Input[str]] = None,
+                 expires_at: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 thumbprint_sha256: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] pem: PEM-formatted X509 certificate. Must be JSON escaped.
+        :param pulumi.Input[str] created_at: The ISO 8601 formatted date the credential was created.
+        :param pulumi.Input[str] credential_type: Credential type. Supported types: `x509_cert`.
+        :param pulumi.Input[str] expires_at: The ISO 8601 formatted date representing the expiration of the credential.
+        :param pulumi.Input[str] id: The ID of the client credential.
+        :param pulumi.Input[str] name: Friendly name for a credential.
+        :param pulumi.Input[str] thumbprint_sha256: The X509 certificate's SHA256 thumbprint.
+        :param pulumi.Input[str] updated_at: The ISO 8601 formatted date the credential was updated.
+        """
+        pulumi.set(__self__, "pem", pem)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if credential_type is not None:
+            pulumi.set(__self__, "credential_type", credential_type)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if thumbprint_sha256 is not None:
+            pulumi.set(__self__, "thumbprint_sha256", thumbprint_sha256)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter
+    def pem(self) -> pulumi.Input[str]:
+        """
+        PEM-formatted X509 certificate. Must be JSON escaped.
+        """
+        return pulumi.get(self, "pem")
+
+    @pem.setter
+    def pem(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pem", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ISO 8601 formatted date the credential was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="credentialType")
+    def credential_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Credential type. Supported types: `x509_cert`.
+        """
+        return pulumi.get(self, "credential_type")
+
+    @credential_type.setter
+    def credential_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "credential_type", value)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ISO 8601 formatted date representing the expiration of the credential.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_at", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the client credential.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Friendly name for a credential.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="thumbprintSha256")
+    def thumbprint_sha256(self) -> Optional[pulumi.Input[str]]:
+        """
+        The X509 certificate's SHA256 thumbprint.
+        """
+        return pulumi.get(self, "thumbprint_sha256")
+
+    @thumbprint_sha256.setter
+    def thumbprint_sha256(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "thumbprint_sha256", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ISO 8601 formatted date the credential was updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
+
+@pulumi.input_type
+class ClientCredentialsSignedRequestObjectArgs:
+    def __init__(__self__, *,
+                 credentials: pulumi.Input[Sequence[pulumi.Input['ClientCredentialsSignedRequestObjectCredentialArgs']]],
+                 required: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ClientCredentialsSignedRequestObjectCredentialArgs']]] credentials: Client credentials for use with JWT-secured authorization requests.
+        :param pulumi.Input[bool] required: Require JWT-secured authorization requests.
+        """
+        pulumi.set(__self__, "credentials", credentials)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> pulumi.Input[Sequence[pulumi.Input['ClientCredentialsSignedRequestObjectCredentialArgs']]]:
+        """
+        Client credentials for use with JWT-secured authorization requests.
+        """
+        return pulumi.get(self, "credentials")
+
+    @credentials.setter
+    def credentials(self, value: pulumi.Input[Sequence[pulumi.Input['ClientCredentialsSignedRequestObjectCredentialArgs']]]):
+        pulumi.set(self, "credentials", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Require JWT-secured authorization requests.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+
+@pulumi.input_type
+class ClientCredentialsSignedRequestObjectCredentialArgs:
+    def __init__(__self__, *,
+                 credential_type: pulumi.Input[str],
+                 pem: pulumi.Input[str],
+                 algorithm: Optional[pulumi.Input[str]] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 expires_at: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parse_expiry_from_cert: Optional[pulumi.Input[bool]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] credential_type: Credential type. Supported types: `public_key`.
+        :param pulumi.Input[str] pem: PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+        :param pulumi.Input[str] algorithm: Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+        :param pulumi.Input[str] created_at: The ISO 8601 formatted date the credential was created.
+        :param pulumi.Input[str] expires_at: The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+        :param pulumi.Input[str] id: The ID of the client credential.
+        :param pulumi.Input[str] key_id: The key identifier of the credential, generated on creation.
+        :param pulumi.Input[str] name: Friendly name for a credential.
+        :param pulumi.Input[bool] parse_expiry_from_cert: Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+        :param pulumi.Input[str] updated_at: The ISO 8601 formatted date the credential was updated.
+        """
+        pulumi.set(__self__, "credential_type", credential_type)
+        pulumi.set(__self__, "pem", pem)
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parse_expiry_from_cert is not None:
+            pulumi.set(__self__, "parse_expiry_from_cert", parse_expiry_from_cert)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="credentialType")
+    def credential_type(self) -> pulumi.Input[str]:
+        """
+        Credential type. Supported types: `public_key`.
+        """
+        return pulumi.get(self, "credential_type")
+
+    @credential_type.setter
+    def credential_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "credential_type", value)
+
+    @property
+    @pulumi.getter
+    def pem(self) -> pulumi.Input[str]:
+        """
+        PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+        """
+        return pulumi.get(self, "pem")
+
+    @pem.setter
+    def pem(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pem", value)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ISO 8601 formatted date the credential was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_at", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the client credential.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key identifier of the credential, generated on creation.
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Friendly name for a credential.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="parseExpiryFromCert")
+    def parse_expiry_from_cert(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+        """
+        return pulumi.get(self, "parse_expiry_from_cert")
+
+    @parse_expiry_from_cert.setter
+    def parse_expiry_from_cert(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "parse_expiry_from_cert", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ISO 8601 formatted date the credential was updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
+
+@pulumi.input_type
+class ClientCredentialsTlsClientAuthArgs:
+    def __init__(__self__, *,
+                 credentials: pulumi.Input[Sequence[pulumi.Input['ClientCredentialsTlsClientAuthCredentialArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ClientCredentialsTlsClientAuthCredentialArgs']]] credentials: Credentials that will be enabled on the client for CA-based mTLS authentication.
+        """
+        pulumi.set(__self__, "credentials", credentials)
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> pulumi.Input[Sequence[pulumi.Input['ClientCredentialsTlsClientAuthCredentialArgs']]]:
+        """
+        Credentials that will be enabled on the client for CA-based mTLS authentication.
+        """
+        return pulumi.get(self, "credentials")
+
+    @credentials.setter
+    def credentials(self, value: pulumi.Input[Sequence[pulumi.Input['ClientCredentialsTlsClientAuthCredentialArgs']]]):
+        pulumi.set(self, "credentials", value)
+
+
+@pulumi.input_type
+class ClientCredentialsTlsClientAuthCredentialArgs:
+    def __init__(__self__, *,
+                 credential_type: pulumi.Input[str],
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 pem: Optional[pulumi.Input[str]] = None,
+                 subject_dn: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] credential_type: Credential type. Supported types: `cert_subject_dn`.
+        :param pulumi.Input[str] created_at: The ISO 8601 formatted date the credential was created.
+        :param pulumi.Input[str] id: The ID of the client credential.
+        :param pulumi.Input[str] name: Friendly name for a credential.
+        :param pulumi.Input[str] pem: PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subject_dn` property.
+        :param pulumi.Input[str] subject_dn: Subject Distinguished Name. Mutually exlusive with `pem` property.
+        :param pulumi.Input[str] updated_at: The ISO 8601 formatted date the credential was updated.
+        """
+        pulumi.set(__self__, "credential_type", credential_type)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if pem is not None:
+            pulumi.set(__self__, "pem", pem)
+        if subject_dn is not None:
+            pulumi.set(__self__, "subject_dn", subject_dn)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="credentialType")
+    def credential_type(self) -> pulumi.Input[str]:
+        """
+        Credential type. Supported types: `cert_subject_dn`.
+        """
+        return pulumi.get(self, "credential_type")
+
+    @credential_type.setter
+    def credential_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "credential_type", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ISO 8601 formatted date the credential was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the client credential.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Friendly name for a credential.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def pem(self) -> Optional[pulumi.Input[str]]:
+        """
+        PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subject_dn` property.
+        """
+        return pulumi.get(self, "pem")
+
+    @pem.setter
+    def pem(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pem", value)
+
+    @property
+    @pulumi.getter(name="subjectDn")
+    def subject_dn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Subject Distinguished Name. Mutually exlusive with `pem` property.
+        """
+        return pulumi.get(self, "subject_dn")
+
+    @subject_dn.setter
+    def subject_dn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subject_dn", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ISO 8601 formatted date the credential was updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
+
+@pulumi.input_type
 class ClientDefaultOrganizationArgs:
     def __init__(__self__, *,
                  disable: Optional[pulumi.Input[bool]] = None,
@@ -3982,7 +4496,7 @@ class ClientJwtConfigurationArgs:
                  scopes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  secret_encoded: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] alg: Algorithm used to sign JWTs.
+        :param pulumi.Input[str] alg: Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
         :param pulumi.Input[int] lifetime_in_seconds: Number of seconds during which the JWT will be valid.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] scopes: Permissions (scopes) included in JWTs.
         :param pulumi.Input[bool] secret_encoded: Indicates whether the client secret is Base64-encoded.
@@ -4000,7 +4514,7 @@ class ClientJwtConfigurationArgs:
     @pulumi.getter
     def alg(self) -> Optional[pulumi.Input[str]]:
         """
-        Algorithm used to sign JWTs.
+        Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
         """
         return pulumi.get(self, "alg")
 
@@ -4505,7 +5019,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[bool] use_cert_auth: Indicates whether to use cert auth or not.
         :param pulumi.Input[bool] use_kerberos: Indicates whether to use Kerberos or not.
         :param pulumi.Input[bool] use_wsfed: Whether to use WS-Fed.
-        :param pulumi.Input[str] user_id_attribute: Attribute in the SAML token that will be mapped to the user_id property in Auth0.
+        :param pulumi.Input[str] user_id_attribute: Attribute in the token that will be mapped to the user_id property in Auth0.
         :param pulumi.Input[str] userinfo_endpoint: User info endpoint.
         :param pulumi.Input['ConnectionOptionsValidationArgs'] validation: Validation of the minimum and maximum values allowed for a user to have as username.
         :param pulumi.Input[bool] waad_common_endpoint: Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
@@ -5744,7 +6258,7 @@ class ConnectionOptionsArgs:
     @pulumi.getter(name="userIdAttribute")
     def user_id_attribute(self) -> Optional[pulumi.Input[str]]:
         """
-        Attribute in the SAML token that will be mapped to the user_id property in Auth0.
+        Attribute in the token that will be mapped to the user_id property in Auth0.
         """
         return pulumi.get(self, "user_id_attribute")
 
@@ -7233,6 +7747,337 @@ class EmailProviderSettingsMessageArgs:
     @view_content_link.setter
     def view_content_link(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "view_content_link", value)
+
+
+@pulumi.input_type
+class EncryptionKeyManagerCustomerProvidedRootKeyArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 parent_key_id: Optional[pulumi.Input[str]] = None,
+                 public_wrapping_key: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None,
+                 wrapped_key: Optional[pulumi.Input[str]] = None,
+                 wrapping_algorithm: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] created_at: The ISO 8601 formatted date the customer provided root key was created.
+        :param pulumi.Input[str] key_id: The key ID of the customer provided root key.
+        :param pulumi.Input[str] parent_key_id: The key ID of the parent wrapping key.
+        :param pulumi.Input[str] public_wrapping_key: The public wrapping key in PEM format.
+        :param pulumi.Input[str] state: The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+        :param pulumi.Input[str] type: The type of the customer provided root key. Should be `customer-provided-root-key`.
+        :param pulumi.Input[str] updated_at: The ISO 8601 formatted date the customer provided root key was updated.
+        :param pulumi.Input[str] wrapped_key: The base64-encoded customer provided root key, wrapped using the `public_wrapping_key`. This can be removed after the wrapped key has been applied.
+        :param pulumi.Input[str] wrapping_algorithm: The algorithm that should be used to wrap the customer provided root key. Should be `CKM_RSA_AES_KEY_WRAP`.
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+        if parent_key_id is not None:
+            pulumi.set(__self__, "parent_key_id", parent_key_id)
+        if public_wrapping_key is not None:
+            pulumi.set(__self__, "public_wrapping_key", public_wrapping_key)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if wrapped_key is not None:
+            pulumi.set(__self__, "wrapped_key", wrapped_key)
+        if wrapping_algorithm is not None:
+            pulumi.set(__self__, "wrapping_algorithm", wrapping_algorithm)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ISO 8601 formatted date the customer provided root key was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key ID of the customer provided root key.
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter(name="parentKeyId")
+    def parent_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key ID of the parent wrapping key.
+        """
+        return pulumi.get(self, "parent_key_id")
+
+    @parent_key_id.setter
+    def parent_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_key_id", value)
+
+    @property
+    @pulumi.getter(name="publicWrappingKey")
+    def public_wrapping_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public wrapping key in PEM format.
+        """
+        return pulumi.get(self, "public_wrapping_key")
+
+    @public_wrapping_key.setter
+    def public_wrapping_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_wrapping_key", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the customer provided root key. Should be `customer-provided-root-key`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ISO 8601 formatted date the customer provided root key was updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
+    @pulumi.getter(name="wrappedKey")
+    def wrapped_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base64-encoded customer provided root key, wrapped using the `public_wrapping_key`. This can be removed after the wrapped key has been applied.
+        """
+        return pulumi.get(self, "wrapped_key")
+
+    @wrapped_key.setter
+    def wrapped_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "wrapped_key", value)
+
+    @property
+    @pulumi.getter(name="wrappingAlgorithm")
+    def wrapping_algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        The algorithm that should be used to wrap the customer provided root key. Should be `CKM_RSA_AES_KEY_WRAP`.
+        """
+        return pulumi.get(self, "wrapping_algorithm")
+
+    @wrapping_algorithm.setter
+    def wrapping_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "wrapping_algorithm", value)
+
+
+@pulumi.input_type
+class EncryptionKeyManagerEncryptionKeyArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 parent_key_id: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] created_at: The ISO 8601 formatted date the encryption key was created.
+        :param pulumi.Input[str] key_id: The key ID of the encryption key.
+        :param pulumi.Input[str] parent_key_id: The key ID of the parent wrapping key.
+        :param pulumi.Input[str] state: The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+        :param pulumi.Input[str] type: The type of the encryption key. One of `customer-provided-root-key`, `environment-root-key`, or `tenant-master-key`.
+        :param pulumi.Input[str] updated_at: The ISO 8601 formatted date the encryption key was updated.
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+        if parent_key_id is not None:
+            pulumi.set(__self__, "parent_key_id", parent_key_id)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ISO 8601 formatted date the encryption key was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key ID of the encryption key.
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter(name="parentKeyId")
+    def parent_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key ID of the parent wrapping key.
+        """
+        return pulumi.get(self, "parent_key_id")
+
+    @parent_key_id.setter
+    def parent_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_key_id", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the encryption key. One of `customer-provided-root-key`, `environment-root-key`, or `tenant-master-key`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ISO 8601 formatted date the encryption key was updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
+
+@pulumi.input_type
+class FormLanguageArgs:
+    def __init__(__self__, *,
+                 primary: pulumi.Input[str],
+                 default: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] primary: Primary language for the form.
+        :param pulumi.Input[str] default: Default language for the form.
+        """
+        pulumi.set(__self__, "primary", primary)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+
+    @property
+    @pulumi.getter
+    def primary(self) -> pulumi.Input[str]:
+        """
+        Primary language for the form.
+        """
+        return pulumi.get(self, "primary")
+
+    @primary.setter
+    def primary(self, value: pulumi.Input[str]):
+        pulumi.set(self, "primary", value)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default language for the form.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default", value)
+
+
+@pulumi.input_type
+class FormMessageArgs:
+    def __init__(__self__, *,
+                 custom: Optional[pulumi.Input[str]] = None,
+                 errors: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] custom: Custom message for the form. (JSON encoded)
+        :param pulumi.Input[str] errors: Error message for the form. (JSON encoded)
+        """
+        if custom is not None:
+            pulumi.set(__self__, "custom", custom)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+
+    @property
+    @pulumi.getter
+    def custom(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom message for the form. (JSON encoded)
+        """
+        return pulumi.get(self, "custom")
+
+    @custom.setter
+    def custom(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom", value)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Optional[pulumi.Input[str]]:
+        """
+        Error message for the form. (JSON encoded)
+        """
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "errors", value)
 
 
 @pulumi.input_type
@@ -8836,6 +9681,100 @@ class PromptScreenPartialsScreenPartialInsertionPointsArgs:
 
 
 @pulumi.input_type
+class ResourceServerAuthorizationDetailArgs:
+    def __init__(__self__, *,
+                 disable: Optional[pulumi.Input[bool]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] disable: Disable authorization details.
+        :param pulumi.Input[str] type: Type of authorization details.
+        """
+        if disable is not None:
+            pulumi.set(__self__, "disable", disable)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def disable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable authorization details.
+        """
+        return pulumi.get(self, "disable")
+
+    @disable.setter
+    def disable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of authorization details.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ResourceServerProofOfPossessionArgs:
+    def __init__(__self__, *,
+                 disable: Optional[pulumi.Input[bool]] = None,
+                 mechanism: Optional[pulumi.Input[str]] = None,
+                 required: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] disable: Disable proof-of-possession.
+        :param pulumi.Input[str] mechanism: Mechanism used for proof-of-possession. Only `mtls` is supported.
+        :param pulumi.Input[bool] required: Indicates whether proof-of-possession is required with this resource server.
+        """
+        if disable is not None:
+            pulumi.set(__self__, "disable", disable)
+        if mechanism is not None:
+            pulumi.set(__self__, "mechanism", mechanism)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+
+    @property
+    @pulumi.getter
+    def disable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable proof-of-possession.
+        """
+        return pulumi.get(self, "disable")
+
+    @disable.setter
+    def disable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable", value)
+
+    @property
+    @pulumi.getter
+    def mechanism(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mechanism used for proof-of-possession. Only `mtls` is supported.
+        """
+        return pulumi.get(self, "mechanism")
+
+    @mechanism.setter
+    def mechanism(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mechanism", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether proof-of-possession is required with this resource server.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+
+@pulumi.input_type
 class ResourceServerScopesScopeArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
@@ -8871,6 +9810,130 @@ class ResourceServerScopesScopeArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class ResourceServerTokenEncryptionArgs:
+    def __init__(__self__, *,
+                 disable: Optional[pulumi.Input[bool]] = None,
+                 encryption_key: Optional[pulumi.Input['ResourceServerTokenEncryptionEncryptionKeyArgs']] = None,
+                 format: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] disable: Disable token encryption.
+        :param pulumi.Input['ResourceServerTokenEncryptionEncryptionKeyArgs'] encryption_key: Authorization details for this resource server.
+        :param pulumi.Input[str] format: Format of the token encryption. Only `compact-nested-jwe` is supported.
+        """
+        if disable is not None:
+            pulumi.set(__self__, "disable", disable)
+        if encryption_key is not None:
+            pulumi.set(__self__, "encryption_key", encryption_key)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+
+    @property
+    @pulumi.getter
+    def disable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable token encryption.
+        """
+        return pulumi.get(self, "disable")
+
+    @disable.setter
+    def disable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable", value)
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> Optional[pulumi.Input['ResourceServerTokenEncryptionEncryptionKeyArgs']]:
+        """
+        Authorization details for this resource server.
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @encryption_key.setter
+    def encryption_key(self, value: Optional[pulumi.Input['ResourceServerTokenEncryptionEncryptionKeyArgs']]):
+        pulumi.set(self, "encryption_key", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        Format of the token encryption. Only `compact-nested-jwe` is supported.
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
+
+
+@pulumi.input_type
+class ResourceServerTokenEncryptionEncryptionKeyArgs:
+    def __init__(__self__, *,
+                 algorithm: pulumi.Input[str],
+                 pem: pulumi.Input[str],
+                 kid: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] algorithm: Algorithm used to encrypt the token.
+        :param pulumi.Input[str] pem: PEM-formatted public key. Must be JSON escaped.
+        :param pulumi.Input[str] kid: Key ID.
+        :param pulumi.Input[str] name: Name of the encryption key.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "pem", pem)
+        if kid is not None:
+            pulumi.set(__self__, "kid", kid)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> pulumi.Input[str]:
+        """
+        Algorithm used to encrypt the token.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: pulumi.Input[str]):
+        pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter
+    def pem(self) -> pulumi.Input[str]:
+        """
+        PEM-formatted public key. Must be JSON escaped.
+        """
+        return pulumi.get(self, "pem")
+
+    @pem.setter
+    def pem(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pem", value)
+
+    @property
+    @pulumi.getter
+    def kid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Key ID.
+        """
+        return pulumi.get(self, "kid")
+
+    @kid.setter
+    def kid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kid", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the encryption key.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -9080,6 +10143,7 @@ class TenantFlagsArgs:
                  enable_sso: Optional[pulumi.Input[bool]] = None,
                  mfa_show_factor_list_on_enrollment: Optional[pulumi.Input[bool]] = None,
                  no_disclose_enterprise_connections: Optional[pulumi.Input[bool]] = None,
+                 remove_alg_from_jwks: Optional[pulumi.Input[bool]] = None,
                  require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
                  revoke_refresh_token_grant: Optional[pulumi.Input[bool]] = None,
                  use_scope_descriptions_for_consent: Optional[pulumi.Input[bool]] = None):
@@ -9105,6 +10169,7 @@ class TenantFlagsArgs:
         :param pulumi.Input[bool] enable_sso: Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
         :param pulumi.Input[bool] mfa_show_factor_list_on_enrollment: Used to allow users to pick which factor to enroll with from the list of available MFA factors.
         :param pulumi.Input[bool] no_disclose_enterprise_connections: Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+        :param pulumi.Input[bool] remove_alg_from_jwks: Remove `alg` from jwks(JSON Web Key Sets).
         :param pulumi.Input[bool] require_pushed_authorization_requests: This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
         :param pulumi.Input[bool] revoke_refresh_token_grant: Delete underlying grant when a refresh token is revoked via the Authentication API.
         :param pulumi.Input[bool] use_scope_descriptions_for_consent: Indicates whether to use scope descriptions for consent.
@@ -9151,6 +10216,8 @@ class TenantFlagsArgs:
             pulumi.set(__self__, "mfa_show_factor_list_on_enrollment", mfa_show_factor_list_on_enrollment)
         if no_disclose_enterprise_connections is not None:
             pulumi.set(__self__, "no_disclose_enterprise_connections", no_disclose_enterprise_connections)
+        if remove_alg_from_jwks is not None:
+            pulumi.set(__self__, "remove_alg_from_jwks", remove_alg_from_jwks)
         if require_pushed_authorization_requests is not None:
             warnings.warn("""This Flag is not supported by the Auth0 Management API and will be removed in the next major release.""", DeprecationWarning)
             pulumi.log.warn("""require_pushed_authorization_requests is deprecated: This Flag is not supported by the Auth0 Management API and will be removed in the next major release.""")
@@ -9414,6 +10481,18 @@ class TenantFlagsArgs:
         pulumi.set(self, "no_disclose_enterprise_connections", value)
 
     @property
+    @pulumi.getter(name="removeAlgFromJwks")
+    def remove_alg_from_jwks(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Remove `alg` from jwks(JSON Web Key Sets).
+        """
+        return pulumi.get(self, "remove_alg_from_jwks")
+
+    @remove_alg_from_jwks.setter
+    def remove_alg_from_jwks(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "remove_alg_from_jwks", value)
+
+    @property
     @pulumi.getter(name="requirePushedAuthorizationRequests")
     @_utilities.deprecated("""This Flag is not supported by the Auth0 Management API and will be removed in the next major release.""")
     def require_pushed_authorization_requests(self) -> Optional[pulumi.Input[bool]]:
@@ -9449,6 +10528,45 @@ class TenantFlagsArgs:
     @use_scope_descriptions_for_consent.setter
     def use_scope_descriptions_for_consent(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_scope_descriptions_for_consent", value)
+
+
+@pulumi.input_type
+class TenantMtlsArgs:
+    def __init__(__self__, *,
+                 disable: Optional[pulumi.Input[bool]] = None,
+                 enable_endpoint_aliases: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] disable: Disable mTLS settings.
+        :param pulumi.Input[bool] enable_endpoint_aliases: Enable mTLS endpoint aliases.
+        """
+        if disable is not None:
+            pulumi.set(__self__, "disable", disable)
+        if enable_endpoint_aliases is not None:
+            pulumi.set(__self__, "enable_endpoint_aliases", enable_endpoint_aliases)
+
+    @property
+    @pulumi.getter
+    def disable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable mTLS settings.
+        """
+        return pulumi.get(self, "disable")
+
+    @disable.setter
+    def disable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable", value)
+
+    @property
+    @pulumi.getter(name="enableEndpointAliases")
+    def enable_endpoint_aliases(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable mTLS endpoint aliases.
+        """
+        return pulumi.get(self, "enable_endpoint_aliases")
+
+    @enable_endpoint_aliases.setter
+    def enable_endpoint_aliases(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_endpoint_aliases", value)
 
 
 @pulumi.input_type

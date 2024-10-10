@@ -325,6 +325,7 @@ class Connection(pulumi.CustomResource):
             options={
                 "password_policy": "excellent",
                 "brute_force_protection": True,
+                "strategy_version": 2,
                 "enabled_database_customization": True,
                 "import_mode": False,
                 "requires_username": True,
@@ -599,6 +600,7 @@ class Connection(pulumi.CustomResource):
             options={
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
+                "strategy_version": 2,
                 "scopes": [
                     "basic_profile",
                     "profile",
@@ -638,6 +640,7 @@ class Connection(pulumi.CustomResource):
                 "disable_self_service_change_password": True,
                 "brute_force_protection": True,
                 "tenant_domain": "example.com",
+                "strategy_version": 2,
                 "icon_url": "https://example.com/assets/logo.png",
                 "domain_aliases": [
                     "example.com",
@@ -678,6 +681,8 @@ class Connection(pulumi.CustomResource):
                 "identity_api": "azure-active-directory-v1.0",
                 "client_id": "123456",
                 "client_secret": "123456",
+                "strategy_version": 2,
+                "user_id_attribute": "userName",
                 "app_id": "app-id-123",
                 "tenant_domain": "example.onmicrosoft.com",
                 "domain": "example.onmicrosoft.com",
@@ -760,6 +765,7 @@ class Connection(pulumi.CustomResource):
                 "sign_in_endpoint": "https://saml.provider/sign_in",
                 "sign_out_endpoint": "https://saml.provider/sign_out",
                 "disable_sign_out": True,
+                "strategy_version": 2,
                 "tenant_domain": "example.com",
                 "domain_aliases": [
                     "example.com",
@@ -1014,6 +1020,7 @@ class Connection(pulumi.CustomResource):
             options={
                 "password_policy": "excellent",
                 "brute_force_protection": True,
+                "strategy_version": 2,
                 "enabled_database_customization": True,
                 "import_mode": False,
                 "requires_username": True,
@@ -1288,6 +1295,7 @@ class Connection(pulumi.CustomResource):
             options={
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
+                "strategy_version": 2,
                 "scopes": [
                     "basic_profile",
                     "profile",
@@ -1327,6 +1335,7 @@ class Connection(pulumi.CustomResource):
                 "disable_self_service_change_password": True,
                 "brute_force_protection": True,
                 "tenant_domain": "example.com",
+                "strategy_version": 2,
                 "icon_url": "https://example.com/assets/logo.png",
                 "domain_aliases": [
                     "example.com",
@@ -1367,6 +1376,8 @@ class Connection(pulumi.CustomResource):
                 "identity_api": "azure-active-directory-v1.0",
                 "client_id": "123456",
                 "client_secret": "123456",
+                "strategy_version": 2,
+                "user_id_attribute": "userName",
                 "app_id": "app-id-123",
                 "tenant_domain": "example.onmicrosoft.com",
                 "domain": "example.onmicrosoft.com",
@@ -1449,6 +1460,7 @@ class Connection(pulumi.CustomResource):
                 "sign_in_endpoint": "https://saml.provider/sign_in",
                 "sign_out_endpoint": "https://saml.provider/sign_out",
                 "disable_sign_out": True,
+                "strategy_version": 2,
                 "tenant_domain": "example.com",
                 "domain_aliases": [
                     "example.com",
@@ -1751,7 +1763,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> pulumi.Output[Optional[str]]:
+    def display_name(self) -> pulumi.Output[str]:
         """
         Name used in login screen.
         """

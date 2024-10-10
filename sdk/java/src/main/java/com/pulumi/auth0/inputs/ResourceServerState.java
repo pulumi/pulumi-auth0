@@ -3,11 +3,15 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
+import com.pulumi.auth0.inputs.ResourceServerProofOfPossessionArgs;
+import com.pulumi.auth0.inputs.ResourceServerTokenEncryptionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,6 +34,36 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<Boolean>> allowOfflineAccess() {
         return Optional.ofNullable(this.allowOfflineAccess);
+    }
+
+    /**
+     * Authorization details for this resource server.
+     * 
+     */
+    @Import(name="authorizationDetails")
+    private @Nullable Output<List<ResourceServerAuthorizationDetailArgs>> authorizationDetails;
+
+    /**
+     * @return Authorization details for this resource server.
+     * 
+     */
+    public Optional<Output<List<ResourceServerAuthorizationDetailArgs>>> authorizationDetails() {
+        return Optional.ofNullable(this.authorizationDetails);
+    }
+
+    /**
+     * Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+     * 
+     */
+    @Import(name="consentPolicy")
+    private @Nullable Output<String> consentPolicy;
+
+    /**
+     * @return Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+     * 
+     */
+    public Optional<Output<String>> consentPolicy() {
+        return Optional.ofNullable(this.consentPolicy);
     }
 
     /**
@@ -78,14 +112,29 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+     * Configuration settings for proof-of-possession for this resource server.
+     * 
+     */
+    @Import(name="proofOfPossession")
+    private @Nullable Output<ResourceServerProofOfPossessionArgs> proofOfPossession;
+
+    /**
+     * @return Configuration settings for proof-of-possession for this resource server.
+     * 
+     */
+    public Optional<Output<ResourceServerProofOfPossessionArgs>> proofOfPossession() {
+        return Optional.ofNullable(this.proofOfPossession);
+    }
+
+    /**
+     * Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
      * 
      */
     @Import(name="signingAlg")
     private @Nullable Output<String> signingAlg;
 
     /**
-     * @return Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+     * @return Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
      * 
      */
     public Optional<Output<String>> signingAlg() {
@@ -138,6 +187,21 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+     * 
+     */
+    @Import(name="tokenEncryption")
+    private @Nullable Output<ResourceServerTokenEncryptionArgs> tokenEncryption;
+
+    /**
+     * @return Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+     * 
+     */
+    public Optional<Output<ResourceServerTokenEncryptionArgs>> tokenEncryption() {
+        return Optional.ofNullable(this.tokenEncryption);
+    }
+
+    /**
      * Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      * 
      */
@@ -186,13 +250,17 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
 
     private ResourceServerState(ResourceServerState $) {
         this.allowOfflineAccess = $.allowOfflineAccess;
+        this.authorizationDetails = $.authorizationDetails;
+        this.consentPolicy = $.consentPolicy;
         this.enforcePolicies = $.enforcePolicies;
         this.identifier = $.identifier;
         this.name = $.name;
+        this.proofOfPossession = $.proofOfPossession;
         this.signingAlg = $.signingAlg;
         this.signingSecret = $.signingSecret;
         this.skipConsentForVerifiableFirstPartyClients = $.skipConsentForVerifiableFirstPartyClients;
         this.tokenDialect = $.tokenDialect;
+        this.tokenEncryption = $.tokenEncryption;
         this.tokenLifetime = $.tokenLifetime;
         this.tokenLifetimeForWeb = $.tokenLifetimeForWeb;
         this.verificationLocation = $.verificationLocation;
@@ -235,6 +303,58 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
          */
         public Builder allowOfflineAccess(Boolean allowOfflineAccess) {
             return allowOfflineAccess(Output.of(allowOfflineAccess));
+        }
+
+        /**
+         * @param authorizationDetails Authorization details for this resource server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizationDetails(@Nullable Output<List<ResourceServerAuthorizationDetailArgs>> authorizationDetails) {
+            $.authorizationDetails = authorizationDetails;
+            return this;
+        }
+
+        /**
+         * @param authorizationDetails Authorization details for this resource server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizationDetails(List<ResourceServerAuthorizationDetailArgs> authorizationDetails) {
+            return authorizationDetails(Output.of(authorizationDetails));
+        }
+
+        /**
+         * @param authorizationDetails Authorization details for this resource server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizationDetails(ResourceServerAuthorizationDetailArgs... authorizationDetails) {
+            return authorizationDetails(List.of(authorizationDetails));
+        }
+
+        /**
+         * @param consentPolicy Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consentPolicy(@Nullable Output<String> consentPolicy) {
+            $.consentPolicy = consentPolicy;
+            return this;
+        }
+
+        /**
+         * @param consentPolicy Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consentPolicy(String consentPolicy) {
+            return consentPolicy(Output.of(consentPolicy));
         }
 
         /**
@@ -301,7 +421,28 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param signingAlg Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+         * @param proofOfPossession Configuration settings for proof-of-possession for this resource server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proofOfPossession(@Nullable Output<ResourceServerProofOfPossessionArgs> proofOfPossession) {
+            $.proofOfPossession = proofOfPossession;
+            return this;
+        }
+
+        /**
+         * @param proofOfPossession Configuration settings for proof-of-possession for this resource server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proofOfPossession(ResourceServerProofOfPossessionArgs proofOfPossession) {
+            return proofOfPossession(Output.of(proofOfPossession));
+        }
+
+        /**
+         * @param signingAlg Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
          * 
          * @return builder
          * 
@@ -312,7 +453,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param signingAlg Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+         * @param signingAlg Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
          * 
          * @return builder
          * 
@@ -382,6 +523,27 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
          */
         public Builder tokenDialect(String tokenDialect) {
             return tokenDialect(Output.of(tokenDialect));
+        }
+
+        /**
+         * @param tokenEncryption Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenEncryption(@Nullable Output<ResourceServerTokenEncryptionArgs> tokenEncryption) {
+            $.tokenEncryption = tokenEncryption;
+            return this;
+        }
+
+        /**
+         * @param tokenEncryption Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenEncryption(ResourceServerTokenEncryptionArgs tokenEncryption) {
+            return tokenEncryption(Output.of(tokenEncryption));
         }
 
         /**

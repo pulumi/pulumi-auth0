@@ -22,10 +22,13 @@ class GetOrganizationResult:
     """
     A collection of values returned by getOrganization.
     """
-    def __init__(__self__, brandings=None, connections=None, display_name=None, id=None, members=None, metadata=None, name=None, organization_id=None):
+    def __init__(__self__, brandings=None, client_grants=None, connections=None, display_name=None, id=None, members=None, metadata=None, name=None, organization_id=None):
         if brandings and not isinstance(brandings, list):
             raise TypeError("Expected argument 'brandings' to be a list")
         pulumi.set(__self__, "brandings", brandings)
+        if client_grants and not isinstance(client_grants, list):
+            raise TypeError("Expected argument 'client_grants' to be a list")
+        pulumi.set(__self__, "client_grants", client_grants)
         if connections and not isinstance(connections, list):
             raise TypeError("Expected argument 'connections' to be a list")
         pulumi.set(__self__, "connections", connections)
@@ -55,6 +58,14 @@ class GetOrganizationResult:
         Defines how to style the login pages.
         """
         return pulumi.get(self, "brandings")
+
+    @property
+    @pulumi.getter(name="clientGrants")
+    def client_grants(self) -> Sequence[str]:
+        """
+        Client Grant ID(s) that are associated to the organization.
+        """
+        return pulumi.get(self, "client_grants")
 
     @property
     @pulumi.getter
@@ -117,6 +128,7 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             yield self
         return GetOrganizationResult(
             brandings=self.brandings,
+            client_grants=self.client_grants,
             connections=self.connections,
             display_name=self.display_name,
             id=self.id,
@@ -156,6 +168,7 @@ def get_organization(name: Optional[str] = None,
 
     return AwaitableGetOrganizationResult(
         brandings=pulumi.get(__ret__, 'brandings'),
+        client_grants=pulumi.get(__ret__, 'client_grants'),
         connections=pulumi.get(__ret__, 'connections'),
         display_name=pulumi.get(__ret__, 'display_name'),
         id=pulumi.get(__ret__, 'id'),

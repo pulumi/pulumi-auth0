@@ -20,6 +20,10 @@ from .custom_domain import *
 from .custom_domain_verification import *
 from .email_provider import *
 from .email_template import *
+from .encryption_key_manager import *
+from .flow import *
+from .flow_vault_connection import *
+from .form import *
 from .get_attack_protection import *
 from .get_branding import *
 from .get_branding_theme import *
@@ -27,6 +31,9 @@ from .get_client import *
 from .get_connection import *
 from .get_connection_scim_configuration import *
 from .get_custom_domain import *
+from .get_flow import *
+from .get_flow_vault_connection import *
+from .get_form import *
 from .get_organization import *
 from .get_pages import *
 from .get_prompt_screen_partials import *
@@ -40,6 +47,7 @@ from .guardian import *
 from .hook import *
 from .log_stream import *
 from .organization import *
+from .organization_client_grant import *
 from .organization_connection import *
 from .organization_connections import *
 from .organization_member import *
@@ -205,6 +213,38 @@ _utilities.register(
  },
  {
   "pkg": "auth0",
+  "mod": "index/encryptionKeyManager",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/encryptionKeyManager:EncryptionKeyManager": "EncryptionKeyManager"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/flow",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/flow:Flow": "Flow"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/flowVaultConnection",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/flowVaultConnection:FlowVaultConnection": "FlowVaultConnection"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/form",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/form:Form": "Form"
+  }
+ },
+ {
+  "pkg": "auth0",
   "mod": "index/guardian",
   "fqn": "pulumi_auth0",
   "classes": {
@@ -233,6 +273,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/organization:Organization": "Organization"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/organizationClientGrant",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/organizationClientGrant:OrganizationClientGrant": "OrganizationClientGrant"
   }
  },
  {

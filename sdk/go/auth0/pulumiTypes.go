@@ -10446,6 +10446,931 @@ func (o ClientCredentialsPrivateKeyJwtCredentialArrayOutput) Index(i pulumi.IntI
 	}).(ClientCredentialsPrivateKeyJwtCredentialOutput)
 }
 
+type ClientCredentialsSelfSignedTlsClientAuth struct {
+	// Credentials that will be enabled on the client for mTLS authentication utilizing self-signed certificates.
+	Credentials []ClientCredentialsSelfSignedTlsClientAuthCredential `pulumi:"credentials"`
+}
+
+// ClientCredentialsSelfSignedTlsClientAuthInput is an input type that accepts ClientCredentialsSelfSignedTlsClientAuthArgs and ClientCredentialsSelfSignedTlsClientAuthOutput values.
+// You can construct a concrete instance of `ClientCredentialsSelfSignedTlsClientAuthInput` via:
+//
+//	ClientCredentialsSelfSignedTlsClientAuthArgs{...}
+type ClientCredentialsSelfSignedTlsClientAuthInput interface {
+	pulumi.Input
+
+	ToClientCredentialsSelfSignedTlsClientAuthOutput() ClientCredentialsSelfSignedTlsClientAuthOutput
+	ToClientCredentialsSelfSignedTlsClientAuthOutputWithContext(context.Context) ClientCredentialsSelfSignedTlsClientAuthOutput
+}
+
+type ClientCredentialsSelfSignedTlsClientAuthArgs struct {
+	// Credentials that will be enabled on the client for mTLS authentication utilizing self-signed certificates.
+	Credentials ClientCredentialsSelfSignedTlsClientAuthCredentialArrayInput `pulumi:"credentials"`
+}
+
+func (ClientCredentialsSelfSignedTlsClientAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCredentialsSelfSignedTlsClientAuth)(nil)).Elem()
+}
+
+func (i ClientCredentialsSelfSignedTlsClientAuthArgs) ToClientCredentialsSelfSignedTlsClientAuthOutput() ClientCredentialsSelfSignedTlsClientAuthOutput {
+	return i.ToClientCredentialsSelfSignedTlsClientAuthOutputWithContext(context.Background())
+}
+
+func (i ClientCredentialsSelfSignedTlsClientAuthArgs) ToClientCredentialsSelfSignedTlsClientAuthOutputWithContext(ctx context.Context) ClientCredentialsSelfSignedTlsClientAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsSelfSignedTlsClientAuthOutput)
+}
+
+func (i ClientCredentialsSelfSignedTlsClientAuthArgs) ToClientCredentialsSelfSignedTlsClientAuthPtrOutput() ClientCredentialsSelfSignedTlsClientAuthPtrOutput {
+	return i.ToClientCredentialsSelfSignedTlsClientAuthPtrOutputWithContext(context.Background())
+}
+
+func (i ClientCredentialsSelfSignedTlsClientAuthArgs) ToClientCredentialsSelfSignedTlsClientAuthPtrOutputWithContext(ctx context.Context) ClientCredentialsSelfSignedTlsClientAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsSelfSignedTlsClientAuthOutput).ToClientCredentialsSelfSignedTlsClientAuthPtrOutputWithContext(ctx)
+}
+
+// ClientCredentialsSelfSignedTlsClientAuthPtrInput is an input type that accepts ClientCredentialsSelfSignedTlsClientAuthArgs, ClientCredentialsSelfSignedTlsClientAuthPtr and ClientCredentialsSelfSignedTlsClientAuthPtrOutput values.
+// You can construct a concrete instance of `ClientCredentialsSelfSignedTlsClientAuthPtrInput` via:
+//
+//	        ClientCredentialsSelfSignedTlsClientAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientCredentialsSelfSignedTlsClientAuthPtrInput interface {
+	pulumi.Input
+
+	ToClientCredentialsSelfSignedTlsClientAuthPtrOutput() ClientCredentialsSelfSignedTlsClientAuthPtrOutput
+	ToClientCredentialsSelfSignedTlsClientAuthPtrOutputWithContext(context.Context) ClientCredentialsSelfSignedTlsClientAuthPtrOutput
+}
+
+type clientCredentialsSelfSignedTlsClientAuthPtrType ClientCredentialsSelfSignedTlsClientAuthArgs
+
+func ClientCredentialsSelfSignedTlsClientAuthPtr(v *ClientCredentialsSelfSignedTlsClientAuthArgs) ClientCredentialsSelfSignedTlsClientAuthPtrInput {
+	return (*clientCredentialsSelfSignedTlsClientAuthPtrType)(v)
+}
+
+func (*clientCredentialsSelfSignedTlsClientAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCredentialsSelfSignedTlsClientAuth)(nil)).Elem()
+}
+
+func (i *clientCredentialsSelfSignedTlsClientAuthPtrType) ToClientCredentialsSelfSignedTlsClientAuthPtrOutput() ClientCredentialsSelfSignedTlsClientAuthPtrOutput {
+	return i.ToClientCredentialsSelfSignedTlsClientAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *clientCredentialsSelfSignedTlsClientAuthPtrType) ToClientCredentialsSelfSignedTlsClientAuthPtrOutputWithContext(ctx context.Context) ClientCredentialsSelfSignedTlsClientAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsSelfSignedTlsClientAuthPtrOutput)
+}
+
+type ClientCredentialsSelfSignedTlsClientAuthOutput struct{ *pulumi.OutputState }
+
+func (ClientCredentialsSelfSignedTlsClientAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCredentialsSelfSignedTlsClientAuth)(nil)).Elem()
+}
+
+func (o ClientCredentialsSelfSignedTlsClientAuthOutput) ToClientCredentialsSelfSignedTlsClientAuthOutput() ClientCredentialsSelfSignedTlsClientAuthOutput {
+	return o
+}
+
+func (o ClientCredentialsSelfSignedTlsClientAuthOutput) ToClientCredentialsSelfSignedTlsClientAuthOutputWithContext(ctx context.Context) ClientCredentialsSelfSignedTlsClientAuthOutput {
+	return o
+}
+
+func (o ClientCredentialsSelfSignedTlsClientAuthOutput) ToClientCredentialsSelfSignedTlsClientAuthPtrOutput() ClientCredentialsSelfSignedTlsClientAuthPtrOutput {
+	return o.ToClientCredentialsSelfSignedTlsClientAuthPtrOutputWithContext(context.Background())
+}
+
+func (o ClientCredentialsSelfSignedTlsClientAuthOutput) ToClientCredentialsSelfSignedTlsClientAuthPtrOutputWithContext(ctx context.Context) ClientCredentialsSelfSignedTlsClientAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientCredentialsSelfSignedTlsClientAuth) *ClientCredentialsSelfSignedTlsClientAuth {
+		return &v
+	}).(ClientCredentialsSelfSignedTlsClientAuthPtrOutput)
+}
+
+// Credentials that will be enabled on the client for mTLS authentication utilizing self-signed certificates.
+func (o ClientCredentialsSelfSignedTlsClientAuthOutput) Credentials() ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput {
+	return o.ApplyT(func(v ClientCredentialsSelfSignedTlsClientAuth) []ClientCredentialsSelfSignedTlsClientAuthCredential {
+		return v.Credentials
+	}).(ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput)
+}
+
+type ClientCredentialsSelfSignedTlsClientAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientCredentialsSelfSignedTlsClientAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCredentialsSelfSignedTlsClientAuth)(nil)).Elem()
+}
+
+func (o ClientCredentialsSelfSignedTlsClientAuthPtrOutput) ToClientCredentialsSelfSignedTlsClientAuthPtrOutput() ClientCredentialsSelfSignedTlsClientAuthPtrOutput {
+	return o
+}
+
+func (o ClientCredentialsSelfSignedTlsClientAuthPtrOutput) ToClientCredentialsSelfSignedTlsClientAuthPtrOutputWithContext(ctx context.Context) ClientCredentialsSelfSignedTlsClientAuthPtrOutput {
+	return o
+}
+
+func (o ClientCredentialsSelfSignedTlsClientAuthPtrOutput) Elem() ClientCredentialsSelfSignedTlsClientAuthOutput {
+	return o.ApplyT(func(v *ClientCredentialsSelfSignedTlsClientAuth) ClientCredentialsSelfSignedTlsClientAuth {
+		if v != nil {
+			return *v
+		}
+		var ret ClientCredentialsSelfSignedTlsClientAuth
+		return ret
+	}).(ClientCredentialsSelfSignedTlsClientAuthOutput)
+}
+
+// Credentials that will be enabled on the client for mTLS authentication utilizing self-signed certificates.
+func (o ClientCredentialsSelfSignedTlsClientAuthPtrOutput) Credentials() ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput {
+	return o.ApplyT(func(v *ClientCredentialsSelfSignedTlsClientAuth) []ClientCredentialsSelfSignedTlsClientAuthCredential {
+		if v == nil {
+			return nil
+		}
+		return v.Credentials
+	}).(ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput)
+}
+
+type ClientCredentialsSelfSignedTlsClientAuthCredential struct {
+	// The ISO 8601 formatted date the credential was created.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Credential type. Supported types: `x509Cert`.
+	CredentialType *string `pulumi:"credentialType"`
+	// The ISO 8601 formatted date representing the expiration of the credential.
+	ExpiresAt *string `pulumi:"expiresAt"`
+	// The ID of the client credential.
+	Id *string `pulumi:"id"`
+	// Friendly name for a credential.
+	Name *string `pulumi:"name"`
+	// PEM-formatted X509 certificate. Must be JSON escaped.
+	Pem string `pulumi:"pem"`
+	// The X509 certificate's SHA256 thumbprint.
+	ThumbprintSha256 *string `pulumi:"thumbprintSha256"`
+	// The ISO 8601 formatted date the credential was updated.
+	UpdatedAt *string `pulumi:"updatedAt"`
+}
+
+// ClientCredentialsSelfSignedTlsClientAuthCredentialInput is an input type that accepts ClientCredentialsSelfSignedTlsClientAuthCredentialArgs and ClientCredentialsSelfSignedTlsClientAuthCredentialOutput values.
+// You can construct a concrete instance of `ClientCredentialsSelfSignedTlsClientAuthCredentialInput` via:
+//
+//	ClientCredentialsSelfSignedTlsClientAuthCredentialArgs{...}
+type ClientCredentialsSelfSignedTlsClientAuthCredentialInput interface {
+	pulumi.Input
+
+	ToClientCredentialsSelfSignedTlsClientAuthCredentialOutput() ClientCredentialsSelfSignedTlsClientAuthCredentialOutput
+	ToClientCredentialsSelfSignedTlsClientAuthCredentialOutputWithContext(context.Context) ClientCredentialsSelfSignedTlsClientAuthCredentialOutput
+}
+
+type ClientCredentialsSelfSignedTlsClientAuthCredentialArgs struct {
+	// The ISO 8601 formatted date the credential was created.
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Credential type. Supported types: `x509Cert`.
+	CredentialType pulumi.StringPtrInput `pulumi:"credentialType"`
+	// The ISO 8601 formatted date representing the expiration of the credential.
+	ExpiresAt pulumi.StringPtrInput `pulumi:"expiresAt"`
+	// The ID of the client credential.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Friendly name for a credential.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// PEM-formatted X509 certificate. Must be JSON escaped.
+	Pem pulumi.StringInput `pulumi:"pem"`
+	// The X509 certificate's SHA256 thumbprint.
+	ThumbprintSha256 pulumi.StringPtrInput `pulumi:"thumbprintSha256"`
+	// The ISO 8601 formatted date the credential was updated.
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+}
+
+func (ClientCredentialsSelfSignedTlsClientAuthCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCredentialsSelfSignedTlsClientAuthCredential)(nil)).Elem()
+}
+
+func (i ClientCredentialsSelfSignedTlsClientAuthCredentialArgs) ToClientCredentialsSelfSignedTlsClientAuthCredentialOutput() ClientCredentialsSelfSignedTlsClientAuthCredentialOutput {
+	return i.ToClientCredentialsSelfSignedTlsClientAuthCredentialOutputWithContext(context.Background())
+}
+
+func (i ClientCredentialsSelfSignedTlsClientAuthCredentialArgs) ToClientCredentialsSelfSignedTlsClientAuthCredentialOutputWithContext(ctx context.Context) ClientCredentialsSelfSignedTlsClientAuthCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsSelfSignedTlsClientAuthCredentialOutput)
+}
+
+// ClientCredentialsSelfSignedTlsClientAuthCredentialArrayInput is an input type that accepts ClientCredentialsSelfSignedTlsClientAuthCredentialArray and ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput values.
+// You can construct a concrete instance of `ClientCredentialsSelfSignedTlsClientAuthCredentialArrayInput` via:
+//
+//	ClientCredentialsSelfSignedTlsClientAuthCredentialArray{ ClientCredentialsSelfSignedTlsClientAuthCredentialArgs{...} }
+type ClientCredentialsSelfSignedTlsClientAuthCredentialArrayInput interface {
+	pulumi.Input
+
+	ToClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput() ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput
+	ToClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutputWithContext(context.Context) ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput
+}
+
+type ClientCredentialsSelfSignedTlsClientAuthCredentialArray []ClientCredentialsSelfSignedTlsClientAuthCredentialInput
+
+func (ClientCredentialsSelfSignedTlsClientAuthCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientCredentialsSelfSignedTlsClientAuthCredential)(nil)).Elem()
+}
+
+func (i ClientCredentialsSelfSignedTlsClientAuthCredentialArray) ToClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput() ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput {
+	return i.ToClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i ClientCredentialsSelfSignedTlsClientAuthCredentialArray) ToClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutputWithContext(ctx context.Context) ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput)
+}
+
+type ClientCredentialsSelfSignedTlsClientAuthCredentialOutput struct{ *pulumi.OutputState }
+
+func (ClientCredentialsSelfSignedTlsClientAuthCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCredentialsSelfSignedTlsClientAuthCredential)(nil)).Elem()
+}
+
+func (o ClientCredentialsSelfSignedTlsClientAuthCredentialOutput) ToClientCredentialsSelfSignedTlsClientAuthCredentialOutput() ClientCredentialsSelfSignedTlsClientAuthCredentialOutput {
+	return o
+}
+
+func (o ClientCredentialsSelfSignedTlsClientAuthCredentialOutput) ToClientCredentialsSelfSignedTlsClientAuthCredentialOutputWithContext(ctx context.Context) ClientCredentialsSelfSignedTlsClientAuthCredentialOutput {
+	return o
+}
+
+// The ISO 8601 formatted date the credential was created.
+func (o ClientCredentialsSelfSignedTlsClientAuthCredentialOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsSelfSignedTlsClientAuthCredential) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Credential type. Supported types: `x509Cert`.
+func (o ClientCredentialsSelfSignedTlsClientAuthCredentialOutput) CredentialType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsSelfSignedTlsClientAuthCredential) *string { return v.CredentialType }).(pulumi.StringPtrOutput)
+}
+
+// The ISO 8601 formatted date representing the expiration of the credential.
+func (o ClientCredentialsSelfSignedTlsClientAuthCredentialOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsSelfSignedTlsClientAuthCredential) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the client credential.
+func (o ClientCredentialsSelfSignedTlsClientAuthCredentialOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsSelfSignedTlsClientAuthCredential) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Friendly name for a credential.
+func (o ClientCredentialsSelfSignedTlsClientAuthCredentialOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsSelfSignedTlsClientAuthCredential) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// PEM-formatted X509 certificate. Must be JSON escaped.
+func (o ClientCredentialsSelfSignedTlsClientAuthCredentialOutput) Pem() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientCredentialsSelfSignedTlsClientAuthCredential) string { return v.Pem }).(pulumi.StringOutput)
+}
+
+// The X509 certificate's SHA256 thumbprint.
+func (o ClientCredentialsSelfSignedTlsClientAuthCredentialOutput) ThumbprintSha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsSelfSignedTlsClientAuthCredential) *string { return v.ThumbprintSha256 }).(pulumi.StringPtrOutput)
+}
+
+// The ISO 8601 formatted date the credential was updated.
+func (o ClientCredentialsSelfSignedTlsClientAuthCredentialOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsSelfSignedTlsClientAuthCredential) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+type ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientCredentialsSelfSignedTlsClientAuthCredential)(nil)).Elem()
+}
+
+func (o ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput) ToClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput() ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput {
+	return o
+}
+
+func (o ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput) ToClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutputWithContext(ctx context.Context) ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput {
+	return o
+}
+
+func (o ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput) Index(i pulumi.IntInput) ClientCredentialsSelfSignedTlsClientAuthCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClientCredentialsSelfSignedTlsClientAuthCredential {
+		return vs[0].([]ClientCredentialsSelfSignedTlsClientAuthCredential)[vs[1].(int)]
+	}).(ClientCredentialsSelfSignedTlsClientAuthCredentialOutput)
+}
+
+type ClientCredentialsSignedRequestObject struct {
+	// Client credentials for use with JWT-secured authorization requests.
+	Credentials []ClientCredentialsSignedRequestObjectCredential `pulumi:"credentials"`
+	// Require JWT-secured authorization requests.
+	Required *bool `pulumi:"required"`
+}
+
+// ClientCredentialsSignedRequestObjectInput is an input type that accepts ClientCredentialsSignedRequestObjectArgs and ClientCredentialsSignedRequestObjectOutput values.
+// You can construct a concrete instance of `ClientCredentialsSignedRequestObjectInput` via:
+//
+//	ClientCredentialsSignedRequestObjectArgs{...}
+type ClientCredentialsSignedRequestObjectInput interface {
+	pulumi.Input
+
+	ToClientCredentialsSignedRequestObjectOutput() ClientCredentialsSignedRequestObjectOutput
+	ToClientCredentialsSignedRequestObjectOutputWithContext(context.Context) ClientCredentialsSignedRequestObjectOutput
+}
+
+type ClientCredentialsSignedRequestObjectArgs struct {
+	// Client credentials for use with JWT-secured authorization requests.
+	Credentials ClientCredentialsSignedRequestObjectCredentialArrayInput `pulumi:"credentials"`
+	// Require JWT-secured authorization requests.
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+}
+
+func (ClientCredentialsSignedRequestObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCredentialsSignedRequestObject)(nil)).Elem()
+}
+
+func (i ClientCredentialsSignedRequestObjectArgs) ToClientCredentialsSignedRequestObjectOutput() ClientCredentialsSignedRequestObjectOutput {
+	return i.ToClientCredentialsSignedRequestObjectOutputWithContext(context.Background())
+}
+
+func (i ClientCredentialsSignedRequestObjectArgs) ToClientCredentialsSignedRequestObjectOutputWithContext(ctx context.Context) ClientCredentialsSignedRequestObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsSignedRequestObjectOutput)
+}
+
+func (i ClientCredentialsSignedRequestObjectArgs) ToClientCredentialsSignedRequestObjectPtrOutput() ClientCredentialsSignedRequestObjectPtrOutput {
+	return i.ToClientCredentialsSignedRequestObjectPtrOutputWithContext(context.Background())
+}
+
+func (i ClientCredentialsSignedRequestObjectArgs) ToClientCredentialsSignedRequestObjectPtrOutputWithContext(ctx context.Context) ClientCredentialsSignedRequestObjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsSignedRequestObjectOutput).ToClientCredentialsSignedRequestObjectPtrOutputWithContext(ctx)
+}
+
+// ClientCredentialsSignedRequestObjectPtrInput is an input type that accepts ClientCredentialsSignedRequestObjectArgs, ClientCredentialsSignedRequestObjectPtr and ClientCredentialsSignedRequestObjectPtrOutput values.
+// You can construct a concrete instance of `ClientCredentialsSignedRequestObjectPtrInput` via:
+//
+//	        ClientCredentialsSignedRequestObjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientCredentialsSignedRequestObjectPtrInput interface {
+	pulumi.Input
+
+	ToClientCredentialsSignedRequestObjectPtrOutput() ClientCredentialsSignedRequestObjectPtrOutput
+	ToClientCredentialsSignedRequestObjectPtrOutputWithContext(context.Context) ClientCredentialsSignedRequestObjectPtrOutput
+}
+
+type clientCredentialsSignedRequestObjectPtrType ClientCredentialsSignedRequestObjectArgs
+
+func ClientCredentialsSignedRequestObjectPtr(v *ClientCredentialsSignedRequestObjectArgs) ClientCredentialsSignedRequestObjectPtrInput {
+	return (*clientCredentialsSignedRequestObjectPtrType)(v)
+}
+
+func (*clientCredentialsSignedRequestObjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCredentialsSignedRequestObject)(nil)).Elem()
+}
+
+func (i *clientCredentialsSignedRequestObjectPtrType) ToClientCredentialsSignedRequestObjectPtrOutput() ClientCredentialsSignedRequestObjectPtrOutput {
+	return i.ToClientCredentialsSignedRequestObjectPtrOutputWithContext(context.Background())
+}
+
+func (i *clientCredentialsSignedRequestObjectPtrType) ToClientCredentialsSignedRequestObjectPtrOutputWithContext(ctx context.Context) ClientCredentialsSignedRequestObjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsSignedRequestObjectPtrOutput)
+}
+
+type ClientCredentialsSignedRequestObjectOutput struct{ *pulumi.OutputState }
+
+func (ClientCredentialsSignedRequestObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCredentialsSignedRequestObject)(nil)).Elem()
+}
+
+func (o ClientCredentialsSignedRequestObjectOutput) ToClientCredentialsSignedRequestObjectOutput() ClientCredentialsSignedRequestObjectOutput {
+	return o
+}
+
+func (o ClientCredentialsSignedRequestObjectOutput) ToClientCredentialsSignedRequestObjectOutputWithContext(ctx context.Context) ClientCredentialsSignedRequestObjectOutput {
+	return o
+}
+
+func (o ClientCredentialsSignedRequestObjectOutput) ToClientCredentialsSignedRequestObjectPtrOutput() ClientCredentialsSignedRequestObjectPtrOutput {
+	return o.ToClientCredentialsSignedRequestObjectPtrOutputWithContext(context.Background())
+}
+
+func (o ClientCredentialsSignedRequestObjectOutput) ToClientCredentialsSignedRequestObjectPtrOutputWithContext(ctx context.Context) ClientCredentialsSignedRequestObjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientCredentialsSignedRequestObject) *ClientCredentialsSignedRequestObject {
+		return &v
+	}).(ClientCredentialsSignedRequestObjectPtrOutput)
+}
+
+// Client credentials for use with JWT-secured authorization requests.
+func (o ClientCredentialsSignedRequestObjectOutput) Credentials() ClientCredentialsSignedRequestObjectCredentialArrayOutput {
+	return o.ApplyT(func(v ClientCredentialsSignedRequestObject) []ClientCredentialsSignedRequestObjectCredential {
+		return v.Credentials
+	}).(ClientCredentialsSignedRequestObjectCredentialArrayOutput)
+}
+
+// Require JWT-secured authorization requests.
+func (o ClientCredentialsSignedRequestObjectOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsSignedRequestObject) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+type ClientCredentialsSignedRequestObjectPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientCredentialsSignedRequestObjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCredentialsSignedRequestObject)(nil)).Elem()
+}
+
+func (o ClientCredentialsSignedRequestObjectPtrOutput) ToClientCredentialsSignedRequestObjectPtrOutput() ClientCredentialsSignedRequestObjectPtrOutput {
+	return o
+}
+
+func (o ClientCredentialsSignedRequestObjectPtrOutput) ToClientCredentialsSignedRequestObjectPtrOutputWithContext(ctx context.Context) ClientCredentialsSignedRequestObjectPtrOutput {
+	return o
+}
+
+func (o ClientCredentialsSignedRequestObjectPtrOutput) Elem() ClientCredentialsSignedRequestObjectOutput {
+	return o.ApplyT(func(v *ClientCredentialsSignedRequestObject) ClientCredentialsSignedRequestObject {
+		if v != nil {
+			return *v
+		}
+		var ret ClientCredentialsSignedRequestObject
+		return ret
+	}).(ClientCredentialsSignedRequestObjectOutput)
+}
+
+// Client credentials for use with JWT-secured authorization requests.
+func (o ClientCredentialsSignedRequestObjectPtrOutput) Credentials() ClientCredentialsSignedRequestObjectCredentialArrayOutput {
+	return o.ApplyT(func(v *ClientCredentialsSignedRequestObject) []ClientCredentialsSignedRequestObjectCredential {
+		if v == nil {
+			return nil
+		}
+		return v.Credentials
+	}).(ClientCredentialsSignedRequestObjectCredentialArrayOutput)
+}
+
+// Require JWT-secured authorization requests.
+func (o ClientCredentialsSignedRequestObjectPtrOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientCredentialsSignedRequestObject) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Required
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClientCredentialsSignedRequestObjectCredential struct {
+	// Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+	Algorithm *string `pulumi:"algorithm"`
+	// The ISO 8601 formatted date the credential was created.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Credential type. Supported types: `publicKey`.
+	CredentialType string `pulumi:"credentialType"`
+	// The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+	ExpiresAt *string `pulumi:"expiresAt"`
+	// The ID of the client credential.
+	Id *string `pulumi:"id"`
+	// The key identifier of the credential, generated on creation.
+	KeyId *string `pulumi:"keyId"`
+	// Friendly name for a credential.
+	Name *string `pulumi:"name"`
+	// Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
+	ParseExpiryFromCert *bool `pulumi:"parseExpiryFromCert"`
+	// PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+	Pem string `pulumi:"pem"`
+	// The ISO 8601 formatted date the credential was updated.
+	UpdatedAt *string `pulumi:"updatedAt"`
+}
+
+// ClientCredentialsSignedRequestObjectCredentialInput is an input type that accepts ClientCredentialsSignedRequestObjectCredentialArgs and ClientCredentialsSignedRequestObjectCredentialOutput values.
+// You can construct a concrete instance of `ClientCredentialsSignedRequestObjectCredentialInput` via:
+//
+//	ClientCredentialsSignedRequestObjectCredentialArgs{...}
+type ClientCredentialsSignedRequestObjectCredentialInput interface {
+	pulumi.Input
+
+	ToClientCredentialsSignedRequestObjectCredentialOutput() ClientCredentialsSignedRequestObjectCredentialOutput
+	ToClientCredentialsSignedRequestObjectCredentialOutputWithContext(context.Context) ClientCredentialsSignedRequestObjectCredentialOutput
+}
+
+type ClientCredentialsSignedRequestObjectCredentialArgs struct {
+	// Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
+	// The ISO 8601 formatted date the credential was created.
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Credential type. Supported types: `publicKey`.
+	CredentialType pulumi.StringInput `pulumi:"credentialType"`
+	// The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+	ExpiresAt pulumi.StringPtrInput `pulumi:"expiresAt"`
+	// The ID of the client credential.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The key identifier of the credential, generated on creation.
+	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
+	// Friendly name for a credential.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
+	ParseExpiryFromCert pulumi.BoolPtrInput `pulumi:"parseExpiryFromCert"`
+	// PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+	Pem pulumi.StringInput `pulumi:"pem"`
+	// The ISO 8601 formatted date the credential was updated.
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+}
+
+func (ClientCredentialsSignedRequestObjectCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCredentialsSignedRequestObjectCredential)(nil)).Elem()
+}
+
+func (i ClientCredentialsSignedRequestObjectCredentialArgs) ToClientCredentialsSignedRequestObjectCredentialOutput() ClientCredentialsSignedRequestObjectCredentialOutput {
+	return i.ToClientCredentialsSignedRequestObjectCredentialOutputWithContext(context.Background())
+}
+
+func (i ClientCredentialsSignedRequestObjectCredentialArgs) ToClientCredentialsSignedRequestObjectCredentialOutputWithContext(ctx context.Context) ClientCredentialsSignedRequestObjectCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsSignedRequestObjectCredentialOutput)
+}
+
+// ClientCredentialsSignedRequestObjectCredentialArrayInput is an input type that accepts ClientCredentialsSignedRequestObjectCredentialArray and ClientCredentialsSignedRequestObjectCredentialArrayOutput values.
+// You can construct a concrete instance of `ClientCredentialsSignedRequestObjectCredentialArrayInput` via:
+//
+//	ClientCredentialsSignedRequestObjectCredentialArray{ ClientCredentialsSignedRequestObjectCredentialArgs{...} }
+type ClientCredentialsSignedRequestObjectCredentialArrayInput interface {
+	pulumi.Input
+
+	ToClientCredentialsSignedRequestObjectCredentialArrayOutput() ClientCredentialsSignedRequestObjectCredentialArrayOutput
+	ToClientCredentialsSignedRequestObjectCredentialArrayOutputWithContext(context.Context) ClientCredentialsSignedRequestObjectCredentialArrayOutput
+}
+
+type ClientCredentialsSignedRequestObjectCredentialArray []ClientCredentialsSignedRequestObjectCredentialInput
+
+func (ClientCredentialsSignedRequestObjectCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientCredentialsSignedRequestObjectCredential)(nil)).Elem()
+}
+
+func (i ClientCredentialsSignedRequestObjectCredentialArray) ToClientCredentialsSignedRequestObjectCredentialArrayOutput() ClientCredentialsSignedRequestObjectCredentialArrayOutput {
+	return i.ToClientCredentialsSignedRequestObjectCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i ClientCredentialsSignedRequestObjectCredentialArray) ToClientCredentialsSignedRequestObjectCredentialArrayOutputWithContext(ctx context.Context) ClientCredentialsSignedRequestObjectCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsSignedRequestObjectCredentialArrayOutput)
+}
+
+type ClientCredentialsSignedRequestObjectCredentialOutput struct{ *pulumi.OutputState }
+
+func (ClientCredentialsSignedRequestObjectCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCredentialsSignedRequestObjectCredential)(nil)).Elem()
+}
+
+func (o ClientCredentialsSignedRequestObjectCredentialOutput) ToClientCredentialsSignedRequestObjectCredentialOutput() ClientCredentialsSignedRequestObjectCredentialOutput {
+	return o
+}
+
+func (o ClientCredentialsSignedRequestObjectCredentialOutput) ToClientCredentialsSignedRequestObjectCredentialOutputWithContext(ctx context.Context) ClientCredentialsSignedRequestObjectCredentialOutput {
+	return o
+}
+
+// Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+func (o ClientCredentialsSignedRequestObjectCredentialOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsSignedRequestObjectCredential) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+}
+
+// The ISO 8601 formatted date the credential was created.
+func (o ClientCredentialsSignedRequestObjectCredentialOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsSignedRequestObjectCredential) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Credential type. Supported types: `publicKey`.
+func (o ClientCredentialsSignedRequestObjectCredentialOutput) CredentialType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientCredentialsSignedRequestObjectCredential) string { return v.CredentialType }).(pulumi.StringOutput)
+}
+
+// The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+func (o ClientCredentialsSignedRequestObjectCredentialOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsSignedRequestObjectCredential) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the client credential.
+func (o ClientCredentialsSignedRequestObjectCredentialOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsSignedRequestObjectCredential) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The key identifier of the credential, generated on creation.
+func (o ClientCredentialsSignedRequestObjectCredentialOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsSignedRequestObjectCredential) *string { return v.KeyId }).(pulumi.StringPtrOutput)
+}
+
+// Friendly name for a credential.
+func (o ClientCredentialsSignedRequestObjectCredentialOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsSignedRequestObjectCredential) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
+func (o ClientCredentialsSignedRequestObjectCredentialOutput) ParseExpiryFromCert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsSignedRequestObjectCredential) *bool { return v.ParseExpiryFromCert }).(pulumi.BoolPtrOutput)
+}
+
+// PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+func (o ClientCredentialsSignedRequestObjectCredentialOutput) Pem() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientCredentialsSignedRequestObjectCredential) string { return v.Pem }).(pulumi.StringOutput)
+}
+
+// The ISO 8601 formatted date the credential was updated.
+func (o ClientCredentialsSignedRequestObjectCredentialOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsSignedRequestObjectCredential) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+type ClientCredentialsSignedRequestObjectCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (ClientCredentialsSignedRequestObjectCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientCredentialsSignedRequestObjectCredential)(nil)).Elem()
+}
+
+func (o ClientCredentialsSignedRequestObjectCredentialArrayOutput) ToClientCredentialsSignedRequestObjectCredentialArrayOutput() ClientCredentialsSignedRequestObjectCredentialArrayOutput {
+	return o
+}
+
+func (o ClientCredentialsSignedRequestObjectCredentialArrayOutput) ToClientCredentialsSignedRequestObjectCredentialArrayOutputWithContext(ctx context.Context) ClientCredentialsSignedRequestObjectCredentialArrayOutput {
+	return o
+}
+
+func (o ClientCredentialsSignedRequestObjectCredentialArrayOutput) Index(i pulumi.IntInput) ClientCredentialsSignedRequestObjectCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClientCredentialsSignedRequestObjectCredential {
+		return vs[0].([]ClientCredentialsSignedRequestObjectCredential)[vs[1].(int)]
+	}).(ClientCredentialsSignedRequestObjectCredentialOutput)
+}
+
+type ClientCredentialsTlsClientAuth struct {
+	// Credentials that will be enabled on the client for CA-based mTLS authentication.
+	Credentials []ClientCredentialsTlsClientAuthCredential `pulumi:"credentials"`
+}
+
+// ClientCredentialsTlsClientAuthInput is an input type that accepts ClientCredentialsTlsClientAuthArgs and ClientCredentialsTlsClientAuthOutput values.
+// You can construct a concrete instance of `ClientCredentialsTlsClientAuthInput` via:
+//
+//	ClientCredentialsTlsClientAuthArgs{...}
+type ClientCredentialsTlsClientAuthInput interface {
+	pulumi.Input
+
+	ToClientCredentialsTlsClientAuthOutput() ClientCredentialsTlsClientAuthOutput
+	ToClientCredentialsTlsClientAuthOutputWithContext(context.Context) ClientCredentialsTlsClientAuthOutput
+}
+
+type ClientCredentialsTlsClientAuthArgs struct {
+	// Credentials that will be enabled on the client for CA-based mTLS authentication.
+	Credentials ClientCredentialsTlsClientAuthCredentialArrayInput `pulumi:"credentials"`
+}
+
+func (ClientCredentialsTlsClientAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCredentialsTlsClientAuth)(nil)).Elem()
+}
+
+func (i ClientCredentialsTlsClientAuthArgs) ToClientCredentialsTlsClientAuthOutput() ClientCredentialsTlsClientAuthOutput {
+	return i.ToClientCredentialsTlsClientAuthOutputWithContext(context.Background())
+}
+
+func (i ClientCredentialsTlsClientAuthArgs) ToClientCredentialsTlsClientAuthOutputWithContext(ctx context.Context) ClientCredentialsTlsClientAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsTlsClientAuthOutput)
+}
+
+func (i ClientCredentialsTlsClientAuthArgs) ToClientCredentialsTlsClientAuthPtrOutput() ClientCredentialsTlsClientAuthPtrOutput {
+	return i.ToClientCredentialsTlsClientAuthPtrOutputWithContext(context.Background())
+}
+
+func (i ClientCredentialsTlsClientAuthArgs) ToClientCredentialsTlsClientAuthPtrOutputWithContext(ctx context.Context) ClientCredentialsTlsClientAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsTlsClientAuthOutput).ToClientCredentialsTlsClientAuthPtrOutputWithContext(ctx)
+}
+
+// ClientCredentialsTlsClientAuthPtrInput is an input type that accepts ClientCredentialsTlsClientAuthArgs, ClientCredentialsTlsClientAuthPtr and ClientCredentialsTlsClientAuthPtrOutput values.
+// You can construct a concrete instance of `ClientCredentialsTlsClientAuthPtrInput` via:
+//
+//	        ClientCredentialsTlsClientAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientCredentialsTlsClientAuthPtrInput interface {
+	pulumi.Input
+
+	ToClientCredentialsTlsClientAuthPtrOutput() ClientCredentialsTlsClientAuthPtrOutput
+	ToClientCredentialsTlsClientAuthPtrOutputWithContext(context.Context) ClientCredentialsTlsClientAuthPtrOutput
+}
+
+type clientCredentialsTlsClientAuthPtrType ClientCredentialsTlsClientAuthArgs
+
+func ClientCredentialsTlsClientAuthPtr(v *ClientCredentialsTlsClientAuthArgs) ClientCredentialsTlsClientAuthPtrInput {
+	return (*clientCredentialsTlsClientAuthPtrType)(v)
+}
+
+func (*clientCredentialsTlsClientAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCredentialsTlsClientAuth)(nil)).Elem()
+}
+
+func (i *clientCredentialsTlsClientAuthPtrType) ToClientCredentialsTlsClientAuthPtrOutput() ClientCredentialsTlsClientAuthPtrOutput {
+	return i.ToClientCredentialsTlsClientAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *clientCredentialsTlsClientAuthPtrType) ToClientCredentialsTlsClientAuthPtrOutputWithContext(ctx context.Context) ClientCredentialsTlsClientAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsTlsClientAuthPtrOutput)
+}
+
+type ClientCredentialsTlsClientAuthOutput struct{ *pulumi.OutputState }
+
+func (ClientCredentialsTlsClientAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCredentialsTlsClientAuth)(nil)).Elem()
+}
+
+func (o ClientCredentialsTlsClientAuthOutput) ToClientCredentialsTlsClientAuthOutput() ClientCredentialsTlsClientAuthOutput {
+	return o
+}
+
+func (o ClientCredentialsTlsClientAuthOutput) ToClientCredentialsTlsClientAuthOutputWithContext(ctx context.Context) ClientCredentialsTlsClientAuthOutput {
+	return o
+}
+
+func (o ClientCredentialsTlsClientAuthOutput) ToClientCredentialsTlsClientAuthPtrOutput() ClientCredentialsTlsClientAuthPtrOutput {
+	return o.ToClientCredentialsTlsClientAuthPtrOutputWithContext(context.Background())
+}
+
+func (o ClientCredentialsTlsClientAuthOutput) ToClientCredentialsTlsClientAuthPtrOutputWithContext(ctx context.Context) ClientCredentialsTlsClientAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientCredentialsTlsClientAuth) *ClientCredentialsTlsClientAuth {
+		return &v
+	}).(ClientCredentialsTlsClientAuthPtrOutput)
+}
+
+// Credentials that will be enabled on the client for CA-based mTLS authentication.
+func (o ClientCredentialsTlsClientAuthOutput) Credentials() ClientCredentialsTlsClientAuthCredentialArrayOutput {
+	return o.ApplyT(func(v ClientCredentialsTlsClientAuth) []ClientCredentialsTlsClientAuthCredential {
+		return v.Credentials
+	}).(ClientCredentialsTlsClientAuthCredentialArrayOutput)
+}
+
+type ClientCredentialsTlsClientAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientCredentialsTlsClientAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCredentialsTlsClientAuth)(nil)).Elem()
+}
+
+func (o ClientCredentialsTlsClientAuthPtrOutput) ToClientCredentialsTlsClientAuthPtrOutput() ClientCredentialsTlsClientAuthPtrOutput {
+	return o
+}
+
+func (o ClientCredentialsTlsClientAuthPtrOutput) ToClientCredentialsTlsClientAuthPtrOutputWithContext(ctx context.Context) ClientCredentialsTlsClientAuthPtrOutput {
+	return o
+}
+
+func (o ClientCredentialsTlsClientAuthPtrOutput) Elem() ClientCredentialsTlsClientAuthOutput {
+	return o.ApplyT(func(v *ClientCredentialsTlsClientAuth) ClientCredentialsTlsClientAuth {
+		if v != nil {
+			return *v
+		}
+		var ret ClientCredentialsTlsClientAuth
+		return ret
+	}).(ClientCredentialsTlsClientAuthOutput)
+}
+
+// Credentials that will be enabled on the client for CA-based mTLS authentication.
+func (o ClientCredentialsTlsClientAuthPtrOutput) Credentials() ClientCredentialsTlsClientAuthCredentialArrayOutput {
+	return o.ApplyT(func(v *ClientCredentialsTlsClientAuth) []ClientCredentialsTlsClientAuthCredential {
+		if v == nil {
+			return nil
+		}
+		return v.Credentials
+	}).(ClientCredentialsTlsClientAuthCredentialArrayOutput)
+}
+
+type ClientCredentialsTlsClientAuthCredential struct {
+	// The ISO 8601 formatted date the credential was created.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Credential type. Supported types: `certSubjectDn`.
+	CredentialType string `pulumi:"credentialType"`
+	// The ID of the client credential.
+	Id *string `pulumi:"id"`
+	// Friendly name for a credential.
+	Name *string `pulumi:"name"`
+	// PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subjectDn` property.
+	Pem *string `pulumi:"pem"`
+	// Subject Distinguished Name. Mutually exlusive with `pem` property.
+	SubjectDn *string `pulumi:"subjectDn"`
+	// The ISO 8601 formatted date the credential was updated.
+	UpdatedAt *string `pulumi:"updatedAt"`
+}
+
+// ClientCredentialsTlsClientAuthCredentialInput is an input type that accepts ClientCredentialsTlsClientAuthCredentialArgs and ClientCredentialsTlsClientAuthCredentialOutput values.
+// You can construct a concrete instance of `ClientCredentialsTlsClientAuthCredentialInput` via:
+//
+//	ClientCredentialsTlsClientAuthCredentialArgs{...}
+type ClientCredentialsTlsClientAuthCredentialInput interface {
+	pulumi.Input
+
+	ToClientCredentialsTlsClientAuthCredentialOutput() ClientCredentialsTlsClientAuthCredentialOutput
+	ToClientCredentialsTlsClientAuthCredentialOutputWithContext(context.Context) ClientCredentialsTlsClientAuthCredentialOutput
+}
+
+type ClientCredentialsTlsClientAuthCredentialArgs struct {
+	// The ISO 8601 formatted date the credential was created.
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Credential type. Supported types: `certSubjectDn`.
+	CredentialType pulumi.StringInput `pulumi:"credentialType"`
+	// The ID of the client credential.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Friendly name for a credential.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subjectDn` property.
+	Pem pulumi.StringPtrInput `pulumi:"pem"`
+	// Subject Distinguished Name. Mutually exlusive with `pem` property.
+	SubjectDn pulumi.StringPtrInput `pulumi:"subjectDn"`
+	// The ISO 8601 formatted date the credential was updated.
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+}
+
+func (ClientCredentialsTlsClientAuthCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCredentialsTlsClientAuthCredential)(nil)).Elem()
+}
+
+func (i ClientCredentialsTlsClientAuthCredentialArgs) ToClientCredentialsTlsClientAuthCredentialOutput() ClientCredentialsTlsClientAuthCredentialOutput {
+	return i.ToClientCredentialsTlsClientAuthCredentialOutputWithContext(context.Background())
+}
+
+func (i ClientCredentialsTlsClientAuthCredentialArgs) ToClientCredentialsTlsClientAuthCredentialOutputWithContext(ctx context.Context) ClientCredentialsTlsClientAuthCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsTlsClientAuthCredentialOutput)
+}
+
+// ClientCredentialsTlsClientAuthCredentialArrayInput is an input type that accepts ClientCredentialsTlsClientAuthCredentialArray and ClientCredentialsTlsClientAuthCredentialArrayOutput values.
+// You can construct a concrete instance of `ClientCredentialsTlsClientAuthCredentialArrayInput` via:
+//
+//	ClientCredentialsTlsClientAuthCredentialArray{ ClientCredentialsTlsClientAuthCredentialArgs{...} }
+type ClientCredentialsTlsClientAuthCredentialArrayInput interface {
+	pulumi.Input
+
+	ToClientCredentialsTlsClientAuthCredentialArrayOutput() ClientCredentialsTlsClientAuthCredentialArrayOutput
+	ToClientCredentialsTlsClientAuthCredentialArrayOutputWithContext(context.Context) ClientCredentialsTlsClientAuthCredentialArrayOutput
+}
+
+type ClientCredentialsTlsClientAuthCredentialArray []ClientCredentialsTlsClientAuthCredentialInput
+
+func (ClientCredentialsTlsClientAuthCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientCredentialsTlsClientAuthCredential)(nil)).Elem()
+}
+
+func (i ClientCredentialsTlsClientAuthCredentialArray) ToClientCredentialsTlsClientAuthCredentialArrayOutput() ClientCredentialsTlsClientAuthCredentialArrayOutput {
+	return i.ToClientCredentialsTlsClientAuthCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i ClientCredentialsTlsClientAuthCredentialArray) ToClientCredentialsTlsClientAuthCredentialArrayOutputWithContext(ctx context.Context) ClientCredentialsTlsClientAuthCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsTlsClientAuthCredentialArrayOutput)
+}
+
+type ClientCredentialsTlsClientAuthCredentialOutput struct{ *pulumi.OutputState }
+
+func (ClientCredentialsTlsClientAuthCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCredentialsTlsClientAuthCredential)(nil)).Elem()
+}
+
+func (o ClientCredentialsTlsClientAuthCredentialOutput) ToClientCredentialsTlsClientAuthCredentialOutput() ClientCredentialsTlsClientAuthCredentialOutput {
+	return o
+}
+
+func (o ClientCredentialsTlsClientAuthCredentialOutput) ToClientCredentialsTlsClientAuthCredentialOutputWithContext(ctx context.Context) ClientCredentialsTlsClientAuthCredentialOutput {
+	return o
+}
+
+// The ISO 8601 formatted date the credential was created.
+func (o ClientCredentialsTlsClientAuthCredentialOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsTlsClientAuthCredential) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Credential type. Supported types: `certSubjectDn`.
+func (o ClientCredentialsTlsClientAuthCredentialOutput) CredentialType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientCredentialsTlsClientAuthCredential) string { return v.CredentialType }).(pulumi.StringOutput)
+}
+
+// The ID of the client credential.
+func (o ClientCredentialsTlsClientAuthCredentialOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsTlsClientAuthCredential) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Friendly name for a credential.
+func (o ClientCredentialsTlsClientAuthCredentialOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsTlsClientAuthCredential) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subjectDn` property.
+func (o ClientCredentialsTlsClientAuthCredentialOutput) Pem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsTlsClientAuthCredential) *string { return v.Pem }).(pulumi.StringPtrOutput)
+}
+
+// Subject Distinguished Name. Mutually exlusive with `pem` property.
+func (o ClientCredentialsTlsClientAuthCredentialOutput) SubjectDn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsTlsClientAuthCredential) *string { return v.SubjectDn }).(pulumi.StringPtrOutput)
+}
+
+// The ISO 8601 formatted date the credential was updated.
+func (o ClientCredentialsTlsClientAuthCredentialOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsTlsClientAuthCredential) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+type ClientCredentialsTlsClientAuthCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (ClientCredentialsTlsClientAuthCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientCredentialsTlsClientAuthCredential)(nil)).Elem()
+}
+
+func (o ClientCredentialsTlsClientAuthCredentialArrayOutput) ToClientCredentialsTlsClientAuthCredentialArrayOutput() ClientCredentialsTlsClientAuthCredentialArrayOutput {
+	return o
+}
+
+func (o ClientCredentialsTlsClientAuthCredentialArrayOutput) ToClientCredentialsTlsClientAuthCredentialArrayOutputWithContext(ctx context.Context) ClientCredentialsTlsClientAuthCredentialArrayOutput {
+	return o
+}
+
+func (o ClientCredentialsTlsClientAuthCredentialArrayOutput) Index(i pulumi.IntInput) ClientCredentialsTlsClientAuthCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClientCredentialsTlsClientAuthCredential {
+		return vs[0].([]ClientCredentialsTlsClientAuthCredential)[vs[1].(int)]
+	}).(ClientCredentialsTlsClientAuthCredentialOutput)
+}
+
 type ClientDefaultOrganization struct {
 	// If set, the `defaultOrganization` will be removed.
 	Disable *bool `pulumi:"disable"`
@@ -10622,7 +11547,7 @@ func (o ClientDefaultOrganizationPtrOutput) OrganizationId() pulumi.StringPtrOut
 }
 
 type ClientJwtConfiguration struct {
-	// Algorithm used to sign JWTs.
+	// Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
 	Alg *string `pulumi:"alg"`
 	// Number of seconds during which the JWT will be valid.
 	LifetimeInSeconds *int `pulumi:"lifetimeInSeconds"`
@@ -10644,7 +11569,7 @@ type ClientJwtConfigurationInput interface {
 }
 
 type ClientJwtConfigurationArgs struct {
-	// Algorithm used to sign JWTs.
+	// Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
 	Alg pulumi.StringPtrInput `pulumi:"alg"`
 	// Number of seconds during which the JWT will be valid.
 	LifetimeInSeconds pulumi.IntPtrInput `pulumi:"lifetimeInSeconds"`
@@ -10731,7 +11656,7 @@ func (o ClientJwtConfigurationOutput) ToClientJwtConfigurationPtrOutputWithConte
 	}).(ClientJwtConfigurationPtrOutput)
 }
 
-// Algorithm used to sign JWTs.
+// Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
 func (o ClientJwtConfigurationOutput) Alg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientJwtConfiguration) *string { return v.Alg }).(pulumi.StringPtrOutput)
 }
@@ -10775,7 +11700,7 @@ func (o ClientJwtConfigurationPtrOutput) Elem() ClientJwtConfigurationOutput {
 	}).(ClientJwtConfigurationOutput)
 }
 
-// Algorithm used to sign JWTs.
+// Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
 func (o ClientJwtConfigurationPtrOutput) Alg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientJwtConfiguration) *string {
 		if v == nil {
@@ -12107,7 +13032,7 @@ type ConnectionOptions struct {
 	UseKerberos *bool `pulumi:"useKerberos"`
 	// Whether to use WS-Fed.
 	UseWsfed *bool `pulumi:"useWsfed"`
-	// Attribute in the SAML token that will be mapped to the userId property in Auth0.
+	// Attribute in the token that will be mapped to the userId property in Auth0.
 	UserIdAttribute *string `pulumi:"userIdAttribute"`
 	// User info endpoint.
 	UserinfoEndpoint *string `pulumi:"userinfoEndpoint"`
@@ -12305,7 +13230,7 @@ type ConnectionOptionsArgs struct {
 	UseKerberos pulumi.BoolPtrInput `pulumi:"useKerberos"`
 	// Whether to use WS-Fed.
 	UseWsfed pulumi.BoolPtrInput `pulumi:"useWsfed"`
-	// Attribute in the SAML token that will be mapped to the userId property in Auth0.
+	// Attribute in the token that will be mapped to the userId property in Auth0.
 	UserIdAttribute pulumi.StringPtrInput `pulumi:"userIdAttribute"`
 	// User info endpoint.
 	UserinfoEndpoint pulumi.StringPtrInput `pulumi:"userinfoEndpoint"`
@@ -12831,7 +13756,7 @@ func (o ConnectionOptionsOutput) UseWsfed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.UseWsfed }).(pulumi.BoolPtrOutput)
 }
 
-// Attribute in the SAML token that will be mapped to the userId property in Auth0.
+// Attribute in the token that will be mapped to the userId property in Auth0.
 func (o ConnectionOptionsOutput) UserIdAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.UserIdAttribute }).(pulumi.StringPtrOutput)
 }
@@ -13750,7 +14675,7 @@ func (o ConnectionOptionsPtrOutput) UseWsfed() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Attribute in the SAML token that will be mapped to the userId property in Auth0.
+// Attribute in the token that will be mapped to the userId property in Auth0.
 func (o ConnectionOptionsPtrOutput) UserIdAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -18445,6 +19370,649 @@ func (o EmailProviderSettingsMessagePtrOutput) ViewContentLink() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
+type EncryptionKeyManagerCustomerProvidedRootKey struct {
+	// The ISO 8601 formatted date the customer provided root key was created.
+	CreatedAt *string `pulumi:"createdAt"`
+	// The key ID of the customer provided root key.
+	KeyId *string `pulumi:"keyId"`
+	// The key ID of the parent wrapping key.
+	ParentKeyId *string `pulumi:"parentKeyId"`
+	// The public wrapping key in PEM format.
+	PublicWrappingKey *string `pulumi:"publicWrappingKey"`
+	// The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+	State *string `pulumi:"state"`
+	// The type of the customer provided root key. Should be `customer-provided-root-key`.
+	Type *string `pulumi:"type"`
+	// The ISO 8601 formatted date the customer provided root key was updated.
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// The base64-encoded customer provided root key, wrapped using the `publicWrappingKey`. This can be removed after the wrapped key has been applied.
+	WrappedKey *string `pulumi:"wrappedKey"`
+	// The algorithm that should be used to wrap the customer provided root key. Should be `CKM_RSA_AES_KEY_WRAP`.
+	WrappingAlgorithm *string `pulumi:"wrappingAlgorithm"`
+}
+
+// EncryptionKeyManagerCustomerProvidedRootKeyInput is an input type that accepts EncryptionKeyManagerCustomerProvidedRootKeyArgs and EncryptionKeyManagerCustomerProvidedRootKeyOutput values.
+// You can construct a concrete instance of `EncryptionKeyManagerCustomerProvidedRootKeyInput` via:
+//
+//	EncryptionKeyManagerCustomerProvidedRootKeyArgs{...}
+type EncryptionKeyManagerCustomerProvidedRootKeyInput interface {
+	pulumi.Input
+
+	ToEncryptionKeyManagerCustomerProvidedRootKeyOutput() EncryptionKeyManagerCustomerProvidedRootKeyOutput
+	ToEncryptionKeyManagerCustomerProvidedRootKeyOutputWithContext(context.Context) EncryptionKeyManagerCustomerProvidedRootKeyOutput
+}
+
+type EncryptionKeyManagerCustomerProvidedRootKeyArgs struct {
+	// The ISO 8601 formatted date the customer provided root key was created.
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// The key ID of the customer provided root key.
+	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
+	// The key ID of the parent wrapping key.
+	ParentKeyId pulumi.StringPtrInput `pulumi:"parentKeyId"`
+	// The public wrapping key in PEM format.
+	PublicWrappingKey pulumi.StringPtrInput `pulumi:"publicWrappingKey"`
+	// The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// The type of the customer provided root key. Should be `customer-provided-root-key`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The ISO 8601 formatted date the customer provided root key was updated.
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+	// The base64-encoded customer provided root key, wrapped using the `publicWrappingKey`. This can be removed after the wrapped key has been applied.
+	WrappedKey pulumi.StringPtrInput `pulumi:"wrappedKey"`
+	// The algorithm that should be used to wrap the customer provided root key. Should be `CKM_RSA_AES_KEY_WRAP`.
+	WrappingAlgorithm pulumi.StringPtrInput `pulumi:"wrappingAlgorithm"`
+}
+
+func (EncryptionKeyManagerCustomerProvidedRootKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionKeyManagerCustomerProvidedRootKey)(nil)).Elem()
+}
+
+func (i EncryptionKeyManagerCustomerProvidedRootKeyArgs) ToEncryptionKeyManagerCustomerProvidedRootKeyOutput() EncryptionKeyManagerCustomerProvidedRootKeyOutput {
+	return i.ToEncryptionKeyManagerCustomerProvidedRootKeyOutputWithContext(context.Background())
+}
+
+func (i EncryptionKeyManagerCustomerProvidedRootKeyArgs) ToEncryptionKeyManagerCustomerProvidedRootKeyOutputWithContext(ctx context.Context) EncryptionKeyManagerCustomerProvidedRootKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionKeyManagerCustomerProvidedRootKeyOutput)
+}
+
+func (i EncryptionKeyManagerCustomerProvidedRootKeyArgs) ToEncryptionKeyManagerCustomerProvidedRootKeyPtrOutput() EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput {
+	return i.ToEncryptionKeyManagerCustomerProvidedRootKeyPtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionKeyManagerCustomerProvidedRootKeyArgs) ToEncryptionKeyManagerCustomerProvidedRootKeyPtrOutputWithContext(ctx context.Context) EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionKeyManagerCustomerProvidedRootKeyOutput).ToEncryptionKeyManagerCustomerProvidedRootKeyPtrOutputWithContext(ctx)
+}
+
+// EncryptionKeyManagerCustomerProvidedRootKeyPtrInput is an input type that accepts EncryptionKeyManagerCustomerProvidedRootKeyArgs, EncryptionKeyManagerCustomerProvidedRootKeyPtr and EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput values.
+// You can construct a concrete instance of `EncryptionKeyManagerCustomerProvidedRootKeyPtrInput` via:
+//
+//	        EncryptionKeyManagerCustomerProvidedRootKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type EncryptionKeyManagerCustomerProvidedRootKeyPtrInput interface {
+	pulumi.Input
+
+	ToEncryptionKeyManagerCustomerProvidedRootKeyPtrOutput() EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput
+	ToEncryptionKeyManagerCustomerProvidedRootKeyPtrOutputWithContext(context.Context) EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput
+}
+
+type encryptionKeyManagerCustomerProvidedRootKeyPtrType EncryptionKeyManagerCustomerProvidedRootKeyArgs
+
+func EncryptionKeyManagerCustomerProvidedRootKeyPtr(v *EncryptionKeyManagerCustomerProvidedRootKeyArgs) EncryptionKeyManagerCustomerProvidedRootKeyPtrInput {
+	return (*encryptionKeyManagerCustomerProvidedRootKeyPtrType)(v)
+}
+
+func (*encryptionKeyManagerCustomerProvidedRootKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionKeyManagerCustomerProvidedRootKey)(nil)).Elem()
+}
+
+func (i *encryptionKeyManagerCustomerProvidedRootKeyPtrType) ToEncryptionKeyManagerCustomerProvidedRootKeyPtrOutput() EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput {
+	return i.ToEncryptionKeyManagerCustomerProvidedRootKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionKeyManagerCustomerProvidedRootKeyPtrType) ToEncryptionKeyManagerCustomerProvidedRootKeyPtrOutputWithContext(ctx context.Context) EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput)
+}
+
+type EncryptionKeyManagerCustomerProvidedRootKeyOutput struct{ *pulumi.OutputState }
+
+func (EncryptionKeyManagerCustomerProvidedRootKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionKeyManagerCustomerProvidedRootKey)(nil)).Elem()
+}
+
+func (o EncryptionKeyManagerCustomerProvidedRootKeyOutput) ToEncryptionKeyManagerCustomerProvidedRootKeyOutput() EncryptionKeyManagerCustomerProvidedRootKeyOutput {
+	return o
+}
+
+func (o EncryptionKeyManagerCustomerProvidedRootKeyOutput) ToEncryptionKeyManagerCustomerProvidedRootKeyOutputWithContext(ctx context.Context) EncryptionKeyManagerCustomerProvidedRootKeyOutput {
+	return o
+}
+
+func (o EncryptionKeyManagerCustomerProvidedRootKeyOutput) ToEncryptionKeyManagerCustomerProvidedRootKeyPtrOutput() EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput {
+	return o.ToEncryptionKeyManagerCustomerProvidedRootKeyPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionKeyManagerCustomerProvidedRootKeyOutput) ToEncryptionKeyManagerCustomerProvidedRootKeyPtrOutputWithContext(ctx context.Context) EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionKeyManagerCustomerProvidedRootKey) *EncryptionKeyManagerCustomerProvidedRootKey {
+		return &v
+	}).(EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput)
+}
+
+// The ISO 8601 formatted date the customer provided root key was created.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionKeyManagerCustomerProvidedRootKey) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The key ID of the customer provided root key.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionKeyManagerCustomerProvidedRootKey) *string { return v.KeyId }).(pulumi.StringPtrOutput)
+}
+
+// The key ID of the parent wrapping key.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyOutput) ParentKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionKeyManagerCustomerProvidedRootKey) *string { return v.ParentKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The public wrapping key in PEM format.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyOutput) PublicWrappingKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionKeyManagerCustomerProvidedRootKey) *string { return v.PublicWrappingKey }).(pulumi.StringPtrOutput)
+}
+
+// The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionKeyManagerCustomerProvidedRootKey) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// The type of the customer provided root key. Should be `customer-provided-root-key`.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionKeyManagerCustomerProvidedRootKey) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The ISO 8601 formatted date the customer provided root key was updated.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionKeyManagerCustomerProvidedRootKey) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The base64-encoded customer provided root key, wrapped using the `publicWrappingKey`. This can be removed after the wrapped key has been applied.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyOutput) WrappedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionKeyManagerCustomerProvidedRootKey) *string { return v.WrappedKey }).(pulumi.StringPtrOutput)
+}
+
+// The algorithm that should be used to wrap the customer provided root key. Should be `CKM_RSA_AES_KEY_WRAP`.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyOutput) WrappingAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionKeyManagerCustomerProvidedRootKey) *string { return v.WrappingAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionKeyManagerCustomerProvidedRootKey)(nil)).Elem()
+}
+
+func (o EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput) ToEncryptionKeyManagerCustomerProvidedRootKeyPtrOutput() EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput {
+	return o
+}
+
+func (o EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput) ToEncryptionKeyManagerCustomerProvidedRootKeyPtrOutputWithContext(ctx context.Context) EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput {
+	return o
+}
+
+func (o EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput) Elem() EncryptionKeyManagerCustomerProvidedRootKeyOutput {
+	return o.ApplyT(func(v *EncryptionKeyManagerCustomerProvidedRootKey) EncryptionKeyManagerCustomerProvidedRootKey {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionKeyManagerCustomerProvidedRootKey
+		return ret
+	}).(EncryptionKeyManagerCustomerProvidedRootKeyOutput)
+}
+
+// The ISO 8601 formatted date the customer provided root key was created.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionKeyManagerCustomerProvidedRootKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The key ID of the customer provided root key.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionKeyManagerCustomerProvidedRootKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The key ID of the parent wrapping key.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput) ParentKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionKeyManagerCustomerProvidedRootKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ParentKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The public wrapping key in PEM format.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput) PublicWrappingKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionKeyManagerCustomerProvidedRootKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicWrappingKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionKeyManagerCustomerProvidedRootKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the customer provided root key. Should be `customer-provided-root-key`.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionKeyManagerCustomerProvidedRootKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ISO 8601 formatted date the customer provided root key was updated.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionKeyManagerCustomerProvidedRootKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The base64-encoded customer provided root key, wrapped using the `publicWrappingKey`. This can be removed after the wrapped key has been applied.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput) WrappedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionKeyManagerCustomerProvidedRootKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WrappedKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The algorithm that should be used to wrap the customer provided root key. Should be `CKM_RSA_AES_KEY_WRAP`.
+func (o EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput) WrappingAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionKeyManagerCustomerProvidedRootKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WrappingAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+type EncryptionKeyManagerEncryptionKey struct {
+	// The ISO 8601 formatted date the encryption key was created.
+	CreatedAt *string `pulumi:"createdAt"`
+	// The key ID of the encryption key.
+	KeyId *string `pulumi:"keyId"`
+	// The key ID of the parent wrapping key.
+	ParentKeyId *string `pulumi:"parentKeyId"`
+	// The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+	State *string `pulumi:"state"`
+	// The type of the encryption key. One of `customer-provided-root-key`, `environment-root-key`, or `tenant-master-key`.
+	Type *string `pulumi:"type"`
+	// The ISO 8601 formatted date the encryption key was updated.
+	UpdatedAt *string `pulumi:"updatedAt"`
+}
+
+// EncryptionKeyManagerEncryptionKeyInput is an input type that accepts EncryptionKeyManagerEncryptionKeyArgs and EncryptionKeyManagerEncryptionKeyOutput values.
+// You can construct a concrete instance of `EncryptionKeyManagerEncryptionKeyInput` via:
+//
+//	EncryptionKeyManagerEncryptionKeyArgs{...}
+type EncryptionKeyManagerEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToEncryptionKeyManagerEncryptionKeyOutput() EncryptionKeyManagerEncryptionKeyOutput
+	ToEncryptionKeyManagerEncryptionKeyOutputWithContext(context.Context) EncryptionKeyManagerEncryptionKeyOutput
+}
+
+type EncryptionKeyManagerEncryptionKeyArgs struct {
+	// The ISO 8601 formatted date the encryption key was created.
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// The key ID of the encryption key.
+	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
+	// The key ID of the parent wrapping key.
+	ParentKeyId pulumi.StringPtrInput `pulumi:"parentKeyId"`
+	// The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// The type of the encryption key. One of `customer-provided-root-key`, `environment-root-key`, or `tenant-master-key`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The ISO 8601 formatted date the encryption key was updated.
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+}
+
+func (EncryptionKeyManagerEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionKeyManagerEncryptionKey)(nil)).Elem()
+}
+
+func (i EncryptionKeyManagerEncryptionKeyArgs) ToEncryptionKeyManagerEncryptionKeyOutput() EncryptionKeyManagerEncryptionKeyOutput {
+	return i.ToEncryptionKeyManagerEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i EncryptionKeyManagerEncryptionKeyArgs) ToEncryptionKeyManagerEncryptionKeyOutputWithContext(ctx context.Context) EncryptionKeyManagerEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionKeyManagerEncryptionKeyOutput)
+}
+
+// EncryptionKeyManagerEncryptionKeyArrayInput is an input type that accepts EncryptionKeyManagerEncryptionKeyArray and EncryptionKeyManagerEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `EncryptionKeyManagerEncryptionKeyArrayInput` via:
+//
+//	EncryptionKeyManagerEncryptionKeyArray{ EncryptionKeyManagerEncryptionKeyArgs{...} }
+type EncryptionKeyManagerEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToEncryptionKeyManagerEncryptionKeyArrayOutput() EncryptionKeyManagerEncryptionKeyArrayOutput
+	ToEncryptionKeyManagerEncryptionKeyArrayOutputWithContext(context.Context) EncryptionKeyManagerEncryptionKeyArrayOutput
+}
+
+type EncryptionKeyManagerEncryptionKeyArray []EncryptionKeyManagerEncryptionKeyInput
+
+func (EncryptionKeyManagerEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EncryptionKeyManagerEncryptionKey)(nil)).Elem()
+}
+
+func (i EncryptionKeyManagerEncryptionKeyArray) ToEncryptionKeyManagerEncryptionKeyArrayOutput() EncryptionKeyManagerEncryptionKeyArrayOutput {
+	return i.ToEncryptionKeyManagerEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i EncryptionKeyManagerEncryptionKeyArray) ToEncryptionKeyManagerEncryptionKeyArrayOutputWithContext(ctx context.Context) EncryptionKeyManagerEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionKeyManagerEncryptionKeyArrayOutput)
+}
+
+type EncryptionKeyManagerEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (EncryptionKeyManagerEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionKeyManagerEncryptionKey)(nil)).Elem()
+}
+
+func (o EncryptionKeyManagerEncryptionKeyOutput) ToEncryptionKeyManagerEncryptionKeyOutput() EncryptionKeyManagerEncryptionKeyOutput {
+	return o
+}
+
+func (o EncryptionKeyManagerEncryptionKeyOutput) ToEncryptionKeyManagerEncryptionKeyOutputWithContext(ctx context.Context) EncryptionKeyManagerEncryptionKeyOutput {
+	return o
+}
+
+// The ISO 8601 formatted date the encryption key was created.
+func (o EncryptionKeyManagerEncryptionKeyOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionKeyManagerEncryptionKey) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The key ID of the encryption key.
+func (o EncryptionKeyManagerEncryptionKeyOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionKeyManagerEncryptionKey) *string { return v.KeyId }).(pulumi.StringPtrOutput)
+}
+
+// The key ID of the parent wrapping key.
+func (o EncryptionKeyManagerEncryptionKeyOutput) ParentKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionKeyManagerEncryptionKey) *string { return v.ParentKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+func (o EncryptionKeyManagerEncryptionKeyOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionKeyManagerEncryptionKey) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// The type of the encryption key. One of `customer-provided-root-key`, `environment-root-key`, or `tenant-master-key`.
+func (o EncryptionKeyManagerEncryptionKeyOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionKeyManagerEncryptionKey) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The ISO 8601 formatted date the encryption key was updated.
+func (o EncryptionKeyManagerEncryptionKeyOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionKeyManagerEncryptionKey) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionKeyManagerEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (EncryptionKeyManagerEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EncryptionKeyManagerEncryptionKey)(nil)).Elem()
+}
+
+func (o EncryptionKeyManagerEncryptionKeyArrayOutput) ToEncryptionKeyManagerEncryptionKeyArrayOutput() EncryptionKeyManagerEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o EncryptionKeyManagerEncryptionKeyArrayOutput) ToEncryptionKeyManagerEncryptionKeyArrayOutputWithContext(ctx context.Context) EncryptionKeyManagerEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o EncryptionKeyManagerEncryptionKeyArrayOutput) Index(i pulumi.IntInput) EncryptionKeyManagerEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EncryptionKeyManagerEncryptionKey {
+		return vs[0].([]EncryptionKeyManagerEncryptionKey)[vs[1].(int)]
+	}).(EncryptionKeyManagerEncryptionKeyOutput)
+}
+
+type FormLanguage struct {
+	// Default language for the form.
+	Default *string `pulumi:"default"`
+	// Primary language for the form.
+	Primary string `pulumi:"primary"`
+}
+
+// FormLanguageInput is an input type that accepts FormLanguageArgs and FormLanguageOutput values.
+// You can construct a concrete instance of `FormLanguageInput` via:
+//
+//	FormLanguageArgs{...}
+type FormLanguageInput interface {
+	pulumi.Input
+
+	ToFormLanguageOutput() FormLanguageOutput
+	ToFormLanguageOutputWithContext(context.Context) FormLanguageOutput
+}
+
+type FormLanguageArgs struct {
+	// Default language for the form.
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// Primary language for the form.
+	Primary pulumi.StringInput `pulumi:"primary"`
+}
+
+func (FormLanguageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FormLanguage)(nil)).Elem()
+}
+
+func (i FormLanguageArgs) ToFormLanguageOutput() FormLanguageOutput {
+	return i.ToFormLanguageOutputWithContext(context.Background())
+}
+
+func (i FormLanguageArgs) ToFormLanguageOutputWithContext(ctx context.Context) FormLanguageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FormLanguageOutput)
+}
+
+// FormLanguageArrayInput is an input type that accepts FormLanguageArray and FormLanguageArrayOutput values.
+// You can construct a concrete instance of `FormLanguageArrayInput` via:
+//
+//	FormLanguageArray{ FormLanguageArgs{...} }
+type FormLanguageArrayInput interface {
+	pulumi.Input
+
+	ToFormLanguageArrayOutput() FormLanguageArrayOutput
+	ToFormLanguageArrayOutputWithContext(context.Context) FormLanguageArrayOutput
+}
+
+type FormLanguageArray []FormLanguageInput
+
+func (FormLanguageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FormLanguage)(nil)).Elem()
+}
+
+func (i FormLanguageArray) ToFormLanguageArrayOutput() FormLanguageArrayOutput {
+	return i.ToFormLanguageArrayOutputWithContext(context.Background())
+}
+
+func (i FormLanguageArray) ToFormLanguageArrayOutputWithContext(ctx context.Context) FormLanguageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FormLanguageArrayOutput)
+}
+
+type FormLanguageOutput struct{ *pulumi.OutputState }
+
+func (FormLanguageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FormLanguage)(nil)).Elem()
+}
+
+func (o FormLanguageOutput) ToFormLanguageOutput() FormLanguageOutput {
+	return o
+}
+
+func (o FormLanguageOutput) ToFormLanguageOutputWithContext(ctx context.Context) FormLanguageOutput {
+	return o
+}
+
+// Default language for the form.
+func (o FormLanguageOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FormLanguage) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+// Primary language for the form.
+func (o FormLanguageOutput) Primary() pulumi.StringOutput {
+	return o.ApplyT(func(v FormLanguage) string { return v.Primary }).(pulumi.StringOutput)
+}
+
+type FormLanguageArrayOutput struct{ *pulumi.OutputState }
+
+func (FormLanguageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FormLanguage)(nil)).Elem()
+}
+
+func (o FormLanguageArrayOutput) ToFormLanguageArrayOutput() FormLanguageArrayOutput {
+	return o
+}
+
+func (o FormLanguageArrayOutput) ToFormLanguageArrayOutputWithContext(ctx context.Context) FormLanguageArrayOutput {
+	return o
+}
+
+func (o FormLanguageArrayOutput) Index(i pulumi.IntInput) FormLanguageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FormLanguage {
+		return vs[0].([]FormLanguage)[vs[1].(int)]
+	}).(FormLanguageOutput)
+}
+
+type FormMessage struct {
+	// Custom message for the form. (JSON encoded)
+	Custom *string `pulumi:"custom"`
+	// Error message for the form. (JSON encoded)
+	Errors *string `pulumi:"errors"`
+}
+
+// FormMessageInput is an input type that accepts FormMessageArgs and FormMessageOutput values.
+// You can construct a concrete instance of `FormMessageInput` via:
+//
+//	FormMessageArgs{...}
+type FormMessageInput interface {
+	pulumi.Input
+
+	ToFormMessageOutput() FormMessageOutput
+	ToFormMessageOutputWithContext(context.Context) FormMessageOutput
+}
+
+type FormMessageArgs struct {
+	// Custom message for the form. (JSON encoded)
+	Custom pulumi.StringPtrInput `pulumi:"custom"`
+	// Error message for the form. (JSON encoded)
+	Errors pulumi.StringPtrInput `pulumi:"errors"`
+}
+
+func (FormMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FormMessage)(nil)).Elem()
+}
+
+func (i FormMessageArgs) ToFormMessageOutput() FormMessageOutput {
+	return i.ToFormMessageOutputWithContext(context.Background())
+}
+
+func (i FormMessageArgs) ToFormMessageOutputWithContext(ctx context.Context) FormMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FormMessageOutput)
+}
+
+// FormMessageArrayInput is an input type that accepts FormMessageArray and FormMessageArrayOutput values.
+// You can construct a concrete instance of `FormMessageArrayInput` via:
+//
+//	FormMessageArray{ FormMessageArgs{...} }
+type FormMessageArrayInput interface {
+	pulumi.Input
+
+	ToFormMessageArrayOutput() FormMessageArrayOutput
+	ToFormMessageArrayOutputWithContext(context.Context) FormMessageArrayOutput
+}
+
+type FormMessageArray []FormMessageInput
+
+func (FormMessageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FormMessage)(nil)).Elem()
+}
+
+func (i FormMessageArray) ToFormMessageArrayOutput() FormMessageArrayOutput {
+	return i.ToFormMessageArrayOutputWithContext(context.Background())
+}
+
+func (i FormMessageArray) ToFormMessageArrayOutputWithContext(ctx context.Context) FormMessageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FormMessageArrayOutput)
+}
+
+type FormMessageOutput struct{ *pulumi.OutputState }
+
+func (FormMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FormMessage)(nil)).Elem()
+}
+
+func (o FormMessageOutput) ToFormMessageOutput() FormMessageOutput {
+	return o
+}
+
+func (o FormMessageOutput) ToFormMessageOutputWithContext(ctx context.Context) FormMessageOutput {
+	return o
+}
+
+// Custom message for the form. (JSON encoded)
+func (o FormMessageOutput) Custom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FormMessage) *string { return v.Custom }).(pulumi.StringPtrOutput)
+}
+
+// Error message for the form. (JSON encoded)
+func (o FormMessageOutput) Errors() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FormMessage) *string { return v.Errors }).(pulumi.StringPtrOutput)
+}
+
+type FormMessageArrayOutput struct{ *pulumi.OutputState }
+
+func (FormMessageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FormMessage)(nil)).Elem()
+}
+
+func (o FormMessageArrayOutput) ToFormMessageArrayOutput() FormMessageArrayOutput {
+	return o
+}
+
+func (o FormMessageArrayOutput) ToFormMessageArrayOutputWithContext(ctx context.Context) FormMessageArrayOutput {
+	return o
+}
+
+func (o FormMessageArrayOutput) Index(i pulumi.IntInput) FormMessageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FormMessage {
+		return vs[0].([]FormMessage)[vs[1].(int)]
+	}).(FormMessageOutput)
+}
+
 type GuardianDuo struct {
 	// Indicates whether Duo MFA is enabled.
 	Enabled bool `pulumi:"enabled"`
@@ -22316,6 +23884,287 @@ func (o PromptScreenPartialsScreenPartialInsertionPointsOutput) SecondaryActions
 	return o.ApplyT(func(v PromptScreenPartialsScreenPartialInsertionPoints) *string { return v.SecondaryActionsStart }).(pulumi.StringPtrOutput)
 }
 
+type ResourceServerAuthorizationDetail struct {
+	// Disable authorization details.
+	Disable *bool `pulumi:"disable"`
+	// Type of authorization details.
+	Type *string `pulumi:"type"`
+}
+
+// ResourceServerAuthorizationDetailInput is an input type that accepts ResourceServerAuthorizationDetailArgs and ResourceServerAuthorizationDetailOutput values.
+// You can construct a concrete instance of `ResourceServerAuthorizationDetailInput` via:
+//
+//	ResourceServerAuthorizationDetailArgs{...}
+type ResourceServerAuthorizationDetailInput interface {
+	pulumi.Input
+
+	ToResourceServerAuthorizationDetailOutput() ResourceServerAuthorizationDetailOutput
+	ToResourceServerAuthorizationDetailOutputWithContext(context.Context) ResourceServerAuthorizationDetailOutput
+}
+
+type ResourceServerAuthorizationDetailArgs struct {
+	// Disable authorization details.
+	Disable pulumi.BoolPtrInput `pulumi:"disable"`
+	// Type of authorization details.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ResourceServerAuthorizationDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerAuthorizationDetail)(nil)).Elem()
+}
+
+func (i ResourceServerAuthorizationDetailArgs) ToResourceServerAuthorizationDetailOutput() ResourceServerAuthorizationDetailOutput {
+	return i.ToResourceServerAuthorizationDetailOutputWithContext(context.Background())
+}
+
+func (i ResourceServerAuthorizationDetailArgs) ToResourceServerAuthorizationDetailOutputWithContext(ctx context.Context) ResourceServerAuthorizationDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerAuthorizationDetailOutput)
+}
+
+// ResourceServerAuthorizationDetailArrayInput is an input type that accepts ResourceServerAuthorizationDetailArray and ResourceServerAuthorizationDetailArrayOutput values.
+// You can construct a concrete instance of `ResourceServerAuthorizationDetailArrayInput` via:
+//
+//	ResourceServerAuthorizationDetailArray{ ResourceServerAuthorizationDetailArgs{...} }
+type ResourceServerAuthorizationDetailArrayInput interface {
+	pulumi.Input
+
+	ToResourceServerAuthorizationDetailArrayOutput() ResourceServerAuthorizationDetailArrayOutput
+	ToResourceServerAuthorizationDetailArrayOutputWithContext(context.Context) ResourceServerAuthorizationDetailArrayOutput
+}
+
+type ResourceServerAuthorizationDetailArray []ResourceServerAuthorizationDetailInput
+
+func (ResourceServerAuthorizationDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceServerAuthorizationDetail)(nil)).Elem()
+}
+
+func (i ResourceServerAuthorizationDetailArray) ToResourceServerAuthorizationDetailArrayOutput() ResourceServerAuthorizationDetailArrayOutput {
+	return i.ToResourceServerAuthorizationDetailArrayOutputWithContext(context.Background())
+}
+
+func (i ResourceServerAuthorizationDetailArray) ToResourceServerAuthorizationDetailArrayOutputWithContext(ctx context.Context) ResourceServerAuthorizationDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerAuthorizationDetailArrayOutput)
+}
+
+type ResourceServerAuthorizationDetailOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerAuthorizationDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerAuthorizationDetail)(nil)).Elem()
+}
+
+func (o ResourceServerAuthorizationDetailOutput) ToResourceServerAuthorizationDetailOutput() ResourceServerAuthorizationDetailOutput {
+	return o
+}
+
+func (o ResourceServerAuthorizationDetailOutput) ToResourceServerAuthorizationDetailOutputWithContext(ctx context.Context) ResourceServerAuthorizationDetailOutput {
+	return o
+}
+
+// Disable authorization details.
+func (o ResourceServerAuthorizationDetailOutput) Disable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceServerAuthorizationDetail) *bool { return v.Disable }).(pulumi.BoolPtrOutput)
+}
+
+// Type of authorization details.
+func (o ResourceServerAuthorizationDetailOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceServerAuthorizationDetail) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ResourceServerAuthorizationDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerAuthorizationDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceServerAuthorizationDetail)(nil)).Elem()
+}
+
+func (o ResourceServerAuthorizationDetailArrayOutput) ToResourceServerAuthorizationDetailArrayOutput() ResourceServerAuthorizationDetailArrayOutput {
+	return o
+}
+
+func (o ResourceServerAuthorizationDetailArrayOutput) ToResourceServerAuthorizationDetailArrayOutputWithContext(ctx context.Context) ResourceServerAuthorizationDetailArrayOutput {
+	return o
+}
+
+func (o ResourceServerAuthorizationDetailArrayOutput) Index(i pulumi.IntInput) ResourceServerAuthorizationDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceServerAuthorizationDetail {
+		return vs[0].([]ResourceServerAuthorizationDetail)[vs[1].(int)]
+	}).(ResourceServerAuthorizationDetailOutput)
+}
+
+type ResourceServerProofOfPossession struct {
+	// Disable proof-of-possession.
+	Disable *bool `pulumi:"disable"`
+	// Mechanism used for proof-of-possession. Only `mtls` is supported.
+	Mechanism *string `pulumi:"mechanism"`
+	// Indicates whether proof-of-possession is required with this resource server.
+	Required *bool `pulumi:"required"`
+}
+
+// ResourceServerProofOfPossessionInput is an input type that accepts ResourceServerProofOfPossessionArgs and ResourceServerProofOfPossessionOutput values.
+// You can construct a concrete instance of `ResourceServerProofOfPossessionInput` via:
+//
+//	ResourceServerProofOfPossessionArgs{...}
+type ResourceServerProofOfPossessionInput interface {
+	pulumi.Input
+
+	ToResourceServerProofOfPossessionOutput() ResourceServerProofOfPossessionOutput
+	ToResourceServerProofOfPossessionOutputWithContext(context.Context) ResourceServerProofOfPossessionOutput
+}
+
+type ResourceServerProofOfPossessionArgs struct {
+	// Disable proof-of-possession.
+	Disable pulumi.BoolPtrInput `pulumi:"disable"`
+	// Mechanism used for proof-of-possession. Only `mtls` is supported.
+	Mechanism pulumi.StringPtrInput `pulumi:"mechanism"`
+	// Indicates whether proof-of-possession is required with this resource server.
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+}
+
+func (ResourceServerProofOfPossessionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerProofOfPossession)(nil)).Elem()
+}
+
+func (i ResourceServerProofOfPossessionArgs) ToResourceServerProofOfPossessionOutput() ResourceServerProofOfPossessionOutput {
+	return i.ToResourceServerProofOfPossessionOutputWithContext(context.Background())
+}
+
+func (i ResourceServerProofOfPossessionArgs) ToResourceServerProofOfPossessionOutputWithContext(ctx context.Context) ResourceServerProofOfPossessionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerProofOfPossessionOutput)
+}
+
+func (i ResourceServerProofOfPossessionArgs) ToResourceServerProofOfPossessionPtrOutput() ResourceServerProofOfPossessionPtrOutput {
+	return i.ToResourceServerProofOfPossessionPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceServerProofOfPossessionArgs) ToResourceServerProofOfPossessionPtrOutputWithContext(ctx context.Context) ResourceServerProofOfPossessionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerProofOfPossessionOutput).ToResourceServerProofOfPossessionPtrOutputWithContext(ctx)
+}
+
+// ResourceServerProofOfPossessionPtrInput is an input type that accepts ResourceServerProofOfPossessionArgs, ResourceServerProofOfPossessionPtr and ResourceServerProofOfPossessionPtrOutput values.
+// You can construct a concrete instance of `ResourceServerProofOfPossessionPtrInput` via:
+//
+//	        ResourceServerProofOfPossessionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceServerProofOfPossessionPtrInput interface {
+	pulumi.Input
+
+	ToResourceServerProofOfPossessionPtrOutput() ResourceServerProofOfPossessionPtrOutput
+	ToResourceServerProofOfPossessionPtrOutputWithContext(context.Context) ResourceServerProofOfPossessionPtrOutput
+}
+
+type resourceServerProofOfPossessionPtrType ResourceServerProofOfPossessionArgs
+
+func ResourceServerProofOfPossessionPtr(v *ResourceServerProofOfPossessionArgs) ResourceServerProofOfPossessionPtrInput {
+	return (*resourceServerProofOfPossessionPtrType)(v)
+}
+
+func (*resourceServerProofOfPossessionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceServerProofOfPossession)(nil)).Elem()
+}
+
+func (i *resourceServerProofOfPossessionPtrType) ToResourceServerProofOfPossessionPtrOutput() ResourceServerProofOfPossessionPtrOutput {
+	return i.ToResourceServerProofOfPossessionPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceServerProofOfPossessionPtrType) ToResourceServerProofOfPossessionPtrOutputWithContext(ctx context.Context) ResourceServerProofOfPossessionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerProofOfPossessionPtrOutput)
+}
+
+type ResourceServerProofOfPossessionOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerProofOfPossessionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerProofOfPossession)(nil)).Elem()
+}
+
+func (o ResourceServerProofOfPossessionOutput) ToResourceServerProofOfPossessionOutput() ResourceServerProofOfPossessionOutput {
+	return o
+}
+
+func (o ResourceServerProofOfPossessionOutput) ToResourceServerProofOfPossessionOutputWithContext(ctx context.Context) ResourceServerProofOfPossessionOutput {
+	return o
+}
+
+func (o ResourceServerProofOfPossessionOutput) ToResourceServerProofOfPossessionPtrOutput() ResourceServerProofOfPossessionPtrOutput {
+	return o.ToResourceServerProofOfPossessionPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceServerProofOfPossessionOutput) ToResourceServerProofOfPossessionPtrOutputWithContext(ctx context.Context) ResourceServerProofOfPossessionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceServerProofOfPossession) *ResourceServerProofOfPossession {
+		return &v
+	}).(ResourceServerProofOfPossessionPtrOutput)
+}
+
+// Disable proof-of-possession.
+func (o ResourceServerProofOfPossessionOutput) Disable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceServerProofOfPossession) *bool { return v.Disable }).(pulumi.BoolPtrOutput)
+}
+
+// Mechanism used for proof-of-possession. Only `mtls` is supported.
+func (o ResourceServerProofOfPossessionOutput) Mechanism() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceServerProofOfPossession) *string { return v.Mechanism }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether proof-of-possession is required with this resource server.
+func (o ResourceServerProofOfPossessionOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceServerProofOfPossession) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+type ResourceServerProofOfPossessionPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerProofOfPossessionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceServerProofOfPossession)(nil)).Elem()
+}
+
+func (o ResourceServerProofOfPossessionPtrOutput) ToResourceServerProofOfPossessionPtrOutput() ResourceServerProofOfPossessionPtrOutput {
+	return o
+}
+
+func (o ResourceServerProofOfPossessionPtrOutput) ToResourceServerProofOfPossessionPtrOutputWithContext(ctx context.Context) ResourceServerProofOfPossessionPtrOutput {
+	return o
+}
+
+func (o ResourceServerProofOfPossessionPtrOutput) Elem() ResourceServerProofOfPossessionOutput {
+	return o.ApplyT(func(v *ResourceServerProofOfPossession) ResourceServerProofOfPossession {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceServerProofOfPossession
+		return ret
+	}).(ResourceServerProofOfPossessionOutput)
+}
+
+// Disable proof-of-possession.
+func (o ResourceServerProofOfPossessionPtrOutput) Disable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceServerProofOfPossession) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Mechanism used for proof-of-possession. Only `mtls` is supported.
+func (o ResourceServerProofOfPossessionPtrOutput) Mechanism() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceServerProofOfPossession) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mechanism
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether proof-of-possession is required with this resource server.
+func (o ResourceServerProofOfPossessionPtrOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceServerProofOfPossession) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Required
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ResourceServerScopesScope struct {
 	// User-friendly description of the scope (permission).
 	Description *string `pulumi:"description"`
@@ -22420,6 +24269,377 @@ func (o ResourceServerScopesScopeArrayOutput) Index(i pulumi.IntInput) ResourceS
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceServerScopesScope {
 		return vs[0].([]ResourceServerScopesScope)[vs[1].(int)]
 	}).(ResourceServerScopesScopeOutput)
+}
+
+type ResourceServerTokenEncryption struct {
+	// Disable token encryption.
+	Disable *bool `pulumi:"disable"`
+	// Authorization details for this resource server.
+	EncryptionKey *ResourceServerTokenEncryptionEncryptionKey `pulumi:"encryptionKey"`
+	// Format of the token encryption. Only `compact-nested-jwe` is supported.
+	Format *string `pulumi:"format"`
+}
+
+// ResourceServerTokenEncryptionInput is an input type that accepts ResourceServerTokenEncryptionArgs and ResourceServerTokenEncryptionOutput values.
+// You can construct a concrete instance of `ResourceServerTokenEncryptionInput` via:
+//
+//	ResourceServerTokenEncryptionArgs{...}
+type ResourceServerTokenEncryptionInput interface {
+	pulumi.Input
+
+	ToResourceServerTokenEncryptionOutput() ResourceServerTokenEncryptionOutput
+	ToResourceServerTokenEncryptionOutputWithContext(context.Context) ResourceServerTokenEncryptionOutput
+}
+
+type ResourceServerTokenEncryptionArgs struct {
+	// Disable token encryption.
+	Disable pulumi.BoolPtrInput `pulumi:"disable"`
+	// Authorization details for this resource server.
+	EncryptionKey ResourceServerTokenEncryptionEncryptionKeyPtrInput `pulumi:"encryptionKey"`
+	// Format of the token encryption. Only `compact-nested-jwe` is supported.
+	Format pulumi.StringPtrInput `pulumi:"format"`
+}
+
+func (ResourceServerTokenEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerTokenEncryption)(nil)).Elem()
+}
+
+func (i ResourceServerTokenEncryptionArgs) ToResourceServerTokenEncryptionOutput() ResourceServerTokenEncryptionOutput {
+	return i.ToResourceServerTokenEncryptionOutputWithContext(context.Background())
+}
+
+func (i ResourceServerTokenEncryptionArgs) ToResourceServerTokenEncryptionOutputWithContext(ctx context.Context) ResourceServerTokenEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerTokenEncryptionOutput)
+}
+
+func (i ResourceServerTokenEncryptionArgs) ToResourceServerTokenEncryptionPtrOutput() ResourceServerTokenEncryptionPtrOutput {
+	return i.ToResourceServerTokenEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceServerTokenEncryptionArgs) ToResourceServerTokenEncryptionPtrOutputWithContext(ctx context.Context) ResourceServerTokenEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerTokenEncryptionOutput).ToResourceServerTokenEncryptionPtrOutputWithContext(ctx)
+}
+
+// ResourceServerTokenEncryptionPtrInput is an input type that accepts ResourceServerTokenEncryptionArgs, ResourceServerTokenEncryptionPtr and ResourceServerTokenEncryptionPtrOutput values.
+// You can construct a concrete instance of `ResourceServerTokenEncryptionPtrInput` via:
+//
+//	        ResourceServerTokenEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceServerTokenEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToResourceServerTokenEncryptionPtrOutput() ResourceServerTokenEncryptionPtrOutput
+	ToResourceServerTokenEncryptionPtrOutputWithContext(context.Context) ResourceServerTokenEncryptionPtrOutput
+}
+
+type resourceServerTokenEncryptionPtrType ResourceServerTokenEncryptionArgs
+
+func ResourceServerTokenEncryptionPtr(v *ResourceServerTokenEncryptionArgs) ResourceServerTokenEncryptionPtrInput {
+	return (*resourceServerTokenEncryptionPtrType)(v)
+}
+
+func (*resourceServerTokenEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceServerTokenEncryption)(nil)).Elem()
+}
+
+func (i *resourceServerTokenEncryptionPtrType) ToResourceServerTokenEncryptionPtrOutput() ResourceServerTokenEncryptionPtrOutput {
+	return i.ToResourceServerTokenEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceServerTokenEncryptionPtrType) ToResourceServerTokenEncryptionPtrOutputWithContext(ctx context.Context) ResourceServerTokenEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerTokenEncryptionPtrOutput)
+}
+
+type ResourceServerTokenEncryptionOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerTokenEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerTokenEncryption)(nil)).Elem()
+}
+
+func (o ResourceServerTokenEncryptionOutput) ToResourceServerTokenEncryptionOutput() ResourceServerTokenEncryptionOutput {
+	return o
+}
+
+func (o ResourceServerTokenEncryptionOutput) ToResourceServerTokenEncryptionOutputWithContext(ctx context.Context) ResourceServerTokenEncryptionOutput {
+	return o
+}
+
+func (o ResourceServerTokenEncryptionOutput) ToResourceServerTokenEncryptionPtrOutput() ResourceServerTokenEncryptionPtrOutput {
+	return o.ToResourceServerTokenEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceServerTokenEncryptionOutput) ToResourceServerTokenEncryptionPtrOutputWithContext(ctx context.Context) ResourceServerTokenEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceServerTokenEncryption) *ResourceServerTokenEncryption {
+		return &v
+	}).(ResourceServerTokenEncryptionPtrOutput)
+}
+
+// Disable token encryption.
+func (o ResourceServerTokenEncryptionOutput) Disable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceServerTokenEncryption) *bool { return v.Disable }).(pulumi.BoolPtrOutput)
+}
+
+// Authorization details for this resource server.
+func (o ResourceServerTokenEncryptionOutput) EncryptionKey() ResourceServerTokenEncryptionEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v ResourceServerTokenEncryption) *ResourceServerTokenEncryptionEncryptionKey {
+		return v.EncryptionKey
+	}).(ResourceServerTokenEncryptionEncryptionKeyPtrOutput)
+}
+
+// Format of the token encryption. Only `compact-nested-jwe` is supported.
+func (o ResourceServerTokenEncryptionOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceServerTokenEncryption) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+type ResourceServerTokenEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerTokenEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceServerTokenEncryption)(nil)).Elem()
+}
+
+func (o ResourceServerTokenEncryptionPtrOutput) ToResourceServerTokenEncryptionPtrOutput() ResourceServerTokenEncryptionPtrOutput {
+	return o
+}
+
+func (o ResourceServerTokenEncryptionPtrOutput) ToResourceServerTokenEncryptionPtrOutputWithContext(ctx context.Context) ResourceServerTokenEncryptionPtrOutput {
+	return o
+}
+
+func (o ResourceServerTokenEncryptionPtrOutput) Elem() ResourceServerTokenEncryptionOutput {
+	return o.ApplyT(func(v *ResourceServerTokenEncryption) ResourceServerTokenEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceServerTokenEncryption
+		return ret
+	}).(ResourceServerTokenEncryptionOutput)
+}
+
+// Disable token encryption.
+func (o ResourceServerTokenEncryptionPtrOutput) Disable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceServerTokenEncryption) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Authorization details for this resource server.
+func (o ResourceServerTokenEncryptionPtrOutput) EncryptionKey() ResourceServerTokenEncryptionEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v *ResourceServerTokenEncryption) *ResourceServerTokenEncryptionEncryptionKey {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionKey
+	}).(ResourceServerTokenEncryptionEncryptionKeyPtrOutput)
+}
+
+// Format of the token encryption. Only `compact-nested-jwe` is supported.
+func (o ResourceServerTokenEncryptionPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceServerTokenEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Format
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourceServerTokenEncryptionEncryptionKey struct {
+	// Algorithm used to encrypt the token.
+	Algorithm string `pulumi:"algorithm"`
+	// Key ID.
+	Kid *string `pulumi:"kid"`
+	// Name of the encryption key.
+	Name *string `pulumi:"name"`
+	// PEM-formatted public key. Must be JSON escaped.
+	Pem string `pulumi:"pem"`
+}
+
+// ResourceServerTokenEncryptionEncryptionKeyInput is an input type that accepts ResourceServerTokenEncryptionEncryptionKeyArgs and ResourceServerTokenEncryptionEncryptionKeyOutput values.
+// You can construct a concrete instance of `ResourceServerTokenEncryptionEncryptionKeyInput` via:
+//
+//	ResourceServerTokenEncryptionEncryptionKeyArgs{...}
+type ResourceServerTokenEncryptionEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToResourceServerTokenEncryptionEncryptionKeyOutput() ResourceServerTokenEncryptionEncryptionKeyOutput
+	ToResourceServerTokenEncryptionEncryptionKeyOutputWithContext(context.Context) ResourceServerTokenEncryptionEncryptionKeyOutput
+}
+
+type ResourceServerTokenEncryptionEncryptionKeyArgs struct {
+	// Algorithm used to encrypt the token.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// Key ID.
+	Kid pulumi.StringPtrInput `pulumi:"kid"`
+	// Name of the encryption key.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// PEM-formatted public key. Must be JSON escaped.
+	Pem pulumi.StringInput `pulumi:"pem"`
+}
+
+func (ResourceServerTokenEncryptionEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerTokenEncryptionEncryptionKey)(nil)).Elem()
+}
+
+func (i ResourceServerTokenEncryptionEncryptionKeyArgs) ToResourceServerTokenEncryptionEncryptionKeyOutput() ResourceServerTokenEncryptionEncryptionKeyOutput {
+	return i.ToResourceServerTokenEncryptionEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i ResourceServerTokenEncryptionEncryptionKeyArgs) ToResourceServerTokenEncryptionEncryptionKeyOutputWithContext(ctx context.Context) ResourceServerTokenEncryptionEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerTokenEncryptionEncryptionKeyOutput)
+}
+
+func (i ResourceServerTokenEncryptionEncryptionKeyArgs) ToResourceServerTokenEncryptionEncryptionKeyPtrOutput() ResourceServerTokenEncryptionEncryptionKeyPtrOutput {
+	return i.ToResourceServerTokenEncryptionEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceServerTokenEncryptionEncryptionKeyArgs) ToResourceServerTokenEncryptionEncryptionKeyPtrOutputWithContext(ctx context.Context) ResourceServerTokenEncryptionEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerTokenEncryptionEncryptionKeyOutput).ToResourceServerTokenEncryptionEncryptionKeyPtrOutputWithContext(ctx)
+}
+
+// ResourceServerTokenEncryptionEncryptionKeyPtrInput is an input type that accepts ResourceServerTokenEncryptionEncryptionKeyArgs, ResourceServerTokenEncryptionEncryptionKeyPtr and ResourceServerTokenEncryptionEncryptionKeyPtrOutput values.
+// You can construct a concrete instance of `ResourceServerTokenEncryptionEncryptionKeyPtrInput` via:
+//
+//	        ResourceServerTokenEncryptionEncryptionKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceServerTokenEncryptionEncryptionKeyPtrInput interface {
+	pulumi.Input
+
+	ToResourceServerTokenEncryptionEncryptionKeyPtrOutput() ResourceServerTokenEncryptionEncryptionKeyPtrOutput
+	ToResourceServerTokenEncryptionEncryptionKeyPtrOutputWithContext(context.Context) ResourceServerTokenEncryptionEncryptionKeyPtrOutput
+}
+
+type resourceServerTokenEncryptionEncryptionKeyPtrType ResourceServerTokenEncryptionEncryptionKeyArgs
+
+func ResourceServerTokenEncryptionEncryptionKeyPtr(v *ResourceServerTokenEncryptionEncryptionKeyArgs) ResourceServerTokenEncryptionEncryptionKeyPtrInput {
+	return (*resourceServerTokenEncryptionEncryptionKeyPtrType)(v)
+}
+
+func (*resourceServerTokenEncryptionEncryptionKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceServerTokenEncryptionEncryptionKey)(nil)).Elem()
+}
+
+func (i *resourceServerTokenEncryptionEncryptionKeyPtrType) ToResourceServerTokenEncryptionEncryptionKeyPtrOutput() ResourceServerTokenEncryptionEncryptionKeyPtrOutput {
+	return i.ToResourceServerTokenEncryptionEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceServerTokenEncryptionEncryptionKeyPtrType) ToResourceServerTokenEncryptionEncryptionKeyPtrOutputWithContext(ctx context.Context) ResourceServerTokenEncryptionEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerTokenEncryptionEncryptionKeyPtrOutput)
+}
+
+type ResourceServerTokenEncryptionEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerTokenEncryptionEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerTokenEncryptionEncryptionKey)(nil)).Elem()
+}
+
+func (o ResourceServerTokenEncryptionEncryptionKeyOutput) ToResourceServerTokenEncryptionEncryptionKeyOutput() ResourceServerTokenEncryptionEncryptionKeyOutput {
+	return o
+}
+
+func (o ResourceServerTokenEncryptionEncryptionKeyOutput) ToResourceServerTokenEncryptionEncryptionKeyOutputWithContext(ctx context.Context) ResourceServerTokenEncryptionEncryptionKeyOutput {
+	return o
+}
+
+func (o ResourceServerTokenEncryptionEncryptionKeyOutput) ToResourceServerTokenEncryptionEncryptionKeyPtrOutput() ResourceServerTokenEncryptionEncryptionKeyPtrOutput {
+	return o.ToResourceServerTokenEncryptionEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceServerTokenEncryptionEncryptionKeyOutput) ToResourceServerTokenEncryptionEncryptionKeyPtrOutputWithContext(ctx context.Context) ResourceServerTokenEncryptionEncryptionKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceServerTokenEncryptionEncryptionKey) *ResourceServerTokenEncryptionEncryptionKey {
+		return &v
+	}).(ResourceServerTokenEncryptionEncryptionKeyPtrOutput)
+}
+
+// Algorithm used to encrypt the token.
+func (o ResourceServerTokenEncryptionEncryptionKeyOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceServerTokenEncryptionEncryptionKey) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// Key ID.
+func (o ResourceServerTokenEncryptionEncryptionKeyOutput) Kid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceServerTokenEncryptionEncryptionKey) *string { return v.Kid }).(pulumi.StringPtrOutput)
+}
+
+// Name of the encryption key.
+func (o ResourceServerTokenEncryptionEncryptionKeyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceServerTokenEncryptionEncryptionKey) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// PEM-formatted public key. Must be JSON escaped.
+func (o ResourceServerTokenEncryptionEncryptionKeyOutput) Pem() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceServerTokenEncryptionEncryptionKey) string { return v.Pem }).(pulumi.StringOutput)
+}
+
+type ResourceServerTokenEncryptionEncryptionKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerTokenEncryptionEncryptionKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceServerTokenEncryptionEncryptionKey)(nil)).Elem()
+}
+
+func (o ResourceServerTokenEncryptionEncryptionKeyPtrOutput) ToResourceServerTokenEncryptionEncryptionKeyPtrOutput() ResourceServerTokenEncryptionEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o ResourceServerTokenEncryptionEncryptionKeyPtrOutput) ToResourceServerTokenEncryptionEncryptionKeyPtrOutputWithContext(ctx context.Context) ResourceServerTokenEncryptionEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o ResourceServerTokenEncryptionEncryptionKeyPtrOutput) Elem() ResourceServerTokenEncryptionEncryptionKeyOutput {
+	return o.ApplyT(func(v *ResourceServerTokenEncryptionEncryptionKey) ResourceServerTokenEncryptionEncryptionKey {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceServerTokenEncryptionEncryptionKey
+		return ret
+	}).(ResourceServerTokenEncryptionEncryptionKeyOutput)
+}
+
+// Algorithm used to encrypt the token.
+func (o ResourceServerTokenEncryptionEncryptionKeyPtrOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceServerTokenEncryptionEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Algorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Key ID.
+func (o ResourceServerTokenEncryptionEncryptionKeyPtrOutput) Kid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceServerTokenEncryptionEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the encryption key.
+func (o ResourceServerTokenEncryptionEncryptionKeyPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceServerTokenEncryptionEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// PEM-formatted public key. Must be JSON escaped.
+func (o ResourceServerTokenEncryptionEncryptionKeyPtrOutput) Pem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceServerTokenEncryptionEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Pem
+	}).(pulumi.StringPtrOutput)
 }
 
 type RolePermissionsPermission struct {
@@ -22997,6 +25217,8 @@ type TenantFlags struct {
 	MfaShowFactorListOnEnrollment *bool `pulumi:"mfaShowFactorListOnEnrollment"`
 	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
 	NoDiscloseEnterpriseConnections *bool `pulumi:"noDiscloseEnterpriseConnections"`
+	// Remove `alg` from jwks(JSON Web Key Sets).
+	RemoveAlgFromJwks *bool `pulumi:"removeAlgFromJwks"`
 	// This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
 	//
 	// Deprecated: This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
@@ -23061,6 +25283,8 @@ type TenantFlagsArgs struct {
 	MfaShowFactorListOnEnrollment pulumi.BoolPtrInput `pulumi:"mfaShowFactorListOnEnrollment"`
 	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
 	NoDiscloseEnterpriseConnections pulumi.BoolPtrInput `pulumi:"noDiscloseEnterpriseConnections"`
+	// Remove `alg` from jwks(JSON Web Key Sets).
+	RemoveAlgFromJwks pulumi.BoolPtrInput `pulumi:"removeAlgFromJwks"`
 	// This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
 	//
 	// Deprecated: This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
@@ -23251,6 +25475,11 @@ func (o TenantFlagsOutput) MfaShowFactorListOnEnrollment() pulumi.BoolPtrOutput 
 // Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
 func (o TenantFlagsOutput) NoDiscloseEnterpriseConnections() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.NoDiscloseEnterpriseConnections }).(pulumi.BoolPtrOutput)
+}
+
+// Remove `alg` from jwks(JSON Web Key Sets).
+func (o TenantFlagsOutput) RemoveAlgFromJwks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantFlags) *bool { return v.RemoveAlgFromJwks }).(pulumi.BoolPtrOutput)
 }
 
 // This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
@@ -23504,6 +25733,16 @@ func (o TenantFlagsPtrOutput) NoDiscloseEnterpriseConnections() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Remove `alg` from jwks(JSON Web Key Sets).
+func (o TenantFlagsPtrOutput) RemoveAlgFromJwks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RemoveAlgFromJwks
+	}).(pulumi.BoolPtrOutput)
+}
+
 // This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
 //
 // Deprecated: This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
@@ -23533,6 +25772,162 @@ func (o TenantFlagsPtrOutput) UseScopeDescriptionsForConsent() pulumi.BoolPtrOut
 			return nil
 		}
 		return v.UseScopeDescriptionsForConsent
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TenantMtls struct {
+	// Disable mTLS settings.
+	Disable *bool `pulumi:"disable"`
+	// Enable mTLS endpoint aliases.
+	EnableEndpointAliases *bool `pulumi:"enableEndpointAliases"`
+}
+
+// TenantMtlsInput is an input type that accepts TenantMtlsArgs and TenantMtlsOutput values.
+// You can construct a concrete instance of `TenantMtlsInput` via:
+//
+//	TenantMtlsArgs{...}
+type TenantMtlsInput interface {
+	pulumi.Input
+
+	ToTenantMtlsOutput() TenantMtlsOutput
+	ToTenantMtlsOutputWithContext(context.Context) TenantMtlsOutput
+}
+
+type TenantMtlsArgs struct {
+	// Disable mTLS settings.
+	Disable pulumi.BoolPtrInput `pulumi:"disable"`
+	// Enable mTLS endpoint aliases.
+	EnableEndpointAliases pulumi.BoolPtrInput `pulumi:"enableEndpointAliases"`
+}
+
+func (TenantMtlsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantMtls)(nil)).Elem()
+}
+
+func (i TenantMtlsArgs) ToTenantMtlsOutput() TenantMtlsOutput {
+	return i.ToTenantMtlsOutputWithContext(context.Background())
+}
+
+func (i TenantMtlsArgs) ToTenantMtlsOutputWithContext(ctx context.Context) TenantMtlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantMtlsOutput)
+}
+
+func (i TenantMtlsArgs) ToTenantMtlsPtrOutput() TenantMtlsPtrOutput {
+	return i.ToTenantMtlsPtrOutputWithContext(context.Background())
+}
+
+func (i TenantMtlsArgs) ToTenantMtlsPtrOutputWithContext(ctx context.Context) TenantMtlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantMtlsOutput).ToTenantMtlsPtrOutputWithContext(ctx)
+}
+
+// TenantMtlsPtrInput is an input type that accepts TenantMtlsArgs, TenantMtlsPtr and TenantMtlsPtrOutput values.
+// You can construct a concrete instance of `TenantMtlsPtrInput` via:
+//
+//	        TenantMtlsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TenantMtlsPtrInput interface {
+	pulumi.Input
+
+	ToTenantMtlsPtrOutput() TenantMtlsPtrOutput
+	ToTenantMtlsPtrOutputWithContext(context.Context) TenantMtlsPtrOutput
+}
+
+type tenantMtlsPtrType TenantMtlsArgs
+
+func TenantMtlsPtr(v *TenantMtlsArgs) TenantMtlsPtrInput {
+	return (*tenantMtlsPtrType)(v)
+}
+
+func (*tenantMtlsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantMtls)(nil)).Elem()
+}
+
+func (i *tenantMtlsPtrType) ToTenantMtlsPtrOutput() TenantMtlsPtrOutput {
+	return i.ToTenantMtlsPtrOutputWithContext(context.Background())
+}
+
+func (i *tenantMtlsPtrType) ToTenantMtlsPtrOutputWithContext(ctx context.Context) TenantMtlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantMtlsPtrOutput)
+}
+
+type TenantMtlsOutput struct{ *pulumi.OutputState }
+
+func (TenantMtlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantMtls)(nil)).Elem()
+}
+
+func (o TenantMtlsOutput) ToTenantMtlsOutput() TenantMtlsOutput {
+	return o
+}
+
+func (o TenantMtlsOutput) ToTenantMtlsOutputWithContext(ctx context.Context) TenantMtlsOutput {
+	return o
+}
+
+func (o TenantMtlsOutput) ToTenantMtlsPtrOutput() TenantMtlsPtrOutput {
+	return o.ToTenantMtlsPtrOutputWithContext(context.Background())
+}
+
+func (o TenantMtlsOutput) ToTenantMtlsPtrOutputWithContext(ctx context.Context) TenantMtlsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantMtls) *TenantMtls {
+		return &v
+	}).(TenantMtlsPtrOutput)
+}
+
+// Disable mTLS settings.
+func (o TenantMtlsOutput) Disable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantMtls) *bool { return v.Disable }).(pulumi.BoolPtrOutput)
+}
+
+// Enable mTLS endpoint aliases.
+func (o TenantMtlsOutput) EnableEndpointAliases() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantMtls) *bool { return v.EnableEndpointAliases }).(pulumi.BoolPtrOutput)
+}
+
+type TenantMtlsPtrOutput struct{ *pulumi.OutputState }
+
+func (TenantMtlsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantMtls)(nil)).Elem()
+}
+
+func (o TenantMtlsPtrOutput) ToTenantMtlsPtrOutput() TenantMtlsPtrOutput {
+	return o
+}
+
+func (o TenantMtlsPtrOutput) ToTenantMtlsPtrOutputWithContext(ctx context.Context) TenantMtlsPtrOutput {
+	return o
+}
+
+func (o TenantMtlsPtrOutput) Elem() TenantMtlsOutput {
+	return o.ApplyT(func(v *TenantMtls) TenantMtls {
+		if v != nil {
+			return *v
+		}
+		var ret TenantMtls
+		return ret
+	}).(TenantMtlsOutput)
+}
+
+// Disable mTLS settings.
+func (o TenantMtlsPtrOutput) Disable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantMtls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable mTLS endpoint aliases.
+func (o TenantMtlsPtrOutput) EnableEndpointAliases() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantMtls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableEndpointAliases
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -30298,6 +32693,865 @@ func (o GetClientAddonZoomArrayOutput) Index(i pulumi.IntInput) GetClientAddonZo
 	}).(GetClientAddonZoomOutput)
 }
 
+type GetClientClientAuthenticationMethod struct {
+	// If this is defined, the client is enabled to use the Private Key JWT authentication method.
+	PrivateKeyJwts []GetClientClientAuthenticationMethodPrivateKeyJwt `pulumi:"privateKeyJwts"`
+	// If this is defined, the client is enabled to use the mTLS authentication method utilizing a self-signed certificate.
+	SelfSignedTlsClientAuths []GetClientClientAuthenticationMethodSelfSignedTlsClientAuth `pulumi:"selfSignedTlsClientAuths"`
+	// If this is defined, the client is enabled to use the CA-based mTLS authentication method.
+	TlsClientAuths []GetClientClientAuthenticationMethodTlsClientAuth `pulumi:"tlsClientAuths"`
+}
+
+// GetClientClientAuthenticationMethodInput is an input type that accepts GetClientClientAuthenticationMethodArgs and GetClientClientAuthenticationMethodOutput values.
+// You can construct a concrete instance of `GetClientClientAuthenticationMethodInput` via:
+//
+//	GetClientClientAuthenticationMethodArgs{...}
+type GetClientClientAuthenticationMethodInput interface {
+	pulumi.Input
+
+	ToGetClientClientAuthenticationMethodOutput() GetClientClientAuthenticationMethodOutput
+	ToGetClientClientAuthenticationMethodOutputWithContext(context.Context) GetClientClientAuthenticationMethodOutput
+}
+
+type GetClientClientAuthenticationMethodArgs struct {
+	// If this is defined, the client is enabled to use the Private Key JWT authentication method.
+	PrivateKeyJwts GetClientClientAuthenticationMethodPrivateKeyJwtArrayInput `pulumi:"privateKeyJwts"`
+	// If this is defined, the client is enabled to use the mTLS authentication method utilizing a self-signed certificate.
+	SelfSignedTlsClientAuths GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayInput `pulumi:"selfSignedTlsClientAuths"`
+	// If this is defined, the client is enabled to use the CA-based mTLS authentication method.
+	TlsClientAuths GetClientClientAuthenticationMethodTlsClientAuthArrayInput `pulumi:"tlsClientAuths"`
+}
+
+func (GetClientClientAuthenticationMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientClientAuthenticationMethod)(nil)).Elem()
+}
+
+func (i GetClientClientAuthenticationMethodArgs) ToGetClientClientAuthenticationMethodOutput() GetClientClientAuthenticationMethodOutput {
+	return i.ToGetClientClientAuthenticationMethodOutputWithContext(context.Background())
+}
+
+func (i GetClientClientAuthenticationMethodArgs) ToGetClientClientAuthenticationMethodOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientClientAuthenticationMethodOutput)
+}
+
+// GetClientClientAuthenticationMethodArrayInput is an input type that accepts GetClientClientAuthenticationMethodArray and GetClientClientAuthenticationMethodArrayOutput values.
+// You can construct a concrete instance of `GetClientClientAuthenticationMethodArrayInput` via:
+//
+//	GetClientClientAuthenticationMethodArray{ GetClientClientAuthenticationMethodArgs{...} }
+type GetClientClientAuthenticationMethodArrayInput interface {
+	pulumi.Input
+
+	ToGetClientClientAuthenticationMethodArrayOutput() GetClientClientAuthenticationMethodArrayOutput
+	ToGetClientClientAuthenticationMethodArrayOutputWithContext(context.Context) GetClientClientAuthenticationMethodArrayOutput
+}
+
+type GetClientClientAuthenticationMethodArray []GetClientClientAuthenticationMethodInput
+
+func (GetClientClientAuthenticationMethodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientClientAuthenticationMethod)(nil)).Elem()
+}
+
+func (i GetClientClientAuthenticationMethodArray) ToGetClientClientAuthenticationMethodArrayOutput() GetClientClientAuthenticationMethodArrayOutput {
+	return i.ToGetClientClientAuthenticationMethodArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientClientAuthenticationMethodArray) ToGetClientClientAuthenticationMethodArrayOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientClientAuthenticationMethodArrayOutput)
+}
+
+type GetClientClientAuthenticationMethodOutput struct{ *pulumi.OutputState }
+
+func (GetClientClientAuthenticationMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientClientAuthenticationMethod)(nil)).Elem()
+}
+
+func (o GetClientClientAuthenticationMethodOutput) ToGetClientClientAuthenticationMethodOutput() GetClientClientAuthenticationMethodOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodOutput) ToGetClientClientAuthenticationMethodOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodOutput {
+	return o
+}
+
+// If this is defined, the client is enabled to use the Private Key JWT authentication method.
+func (o GetClientClientAuthenticationMethodOutput) PrivateKeyJwts() GetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethod) []GetClientClientAuthenticationMethodPrivateKeyJwt {
+		return v.PrivateKeyJwts
+	}).(GetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput)
+}
+
+// If this is defined, the client is enabled to use the mTLS authentication method utilizing a self-signed certificate.
+func (o GetClientClientAuthenticationMethodOutput) SelfSignedTlsClientAuths() GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethod) []GetClientClientAuthenticationMethodSelfSignedTlsClientAuth {
+		return v.SelfSignedTlsClientAuths
+	}).(GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput)
+}
+
+// If this is defined, the client is enabled to use the CA-based mTLS authentication method.
+func (o GetClientClientAuthenticationMethodOutput) TlsClientAuths() GetClientClientAuthenticationMethodTlsClientAuthArrayOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethod) []GetClientClientAuthenticationMethodTlsClientAuth {
+		return v.TlsClientAuths
+	}).(GetClientClientAuthenticationMethodTlsClientAuthArrayOutput)
+}
+
+type GetClientClientAuthenticationMethodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientClientAuthenticationMethodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientClientAuthenticationMethod)(nil)).Elem()
+}
+
+func (o GetClientClientAuthenticationMethodArrayOutput) ToGetClientClientAuthenticationMethodArrayOutput() GetClientClientAuthenticationMethodArrayOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodArrayOutput) ToGetClientClientAuthenticationMethodArrayOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodArrayOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodArrayOutput) Index(i pulumi.IntInput) GetClientClientAuthenticationMethodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientClientAuthenticationMethod {
+		return vs[0].([]GetClientClientAuthenticationMethod)[vs[1].(int)]
+	}).(GetClientClientAuthenticationMethodOutput)
+}
+
+type GetClientClientAuthenticationMethodPrivateKeyJwt struct {
+	// Credentials that will be enabled on the client for Private Key JWT authentication.
+	Credentials []GetClientClientAuthenticationMethodPrivateKeyJwtCredential `pulumi:"credentials"`
+}
+
+// GetClientClientAuthenticationMethodPrivateKeyJwtInput is an input type that accepts GetClientClientAuthenticationMethodPrivateKeyJwtArgs and GetClientClientAuthenticationMethodPrivateKeyJwtOutput values.
+// You can construct a concrete instance of `GetClientClientAuthenticationMethodPrivateKeyJwtInput` via:
+//
+//	GetClientClientAuthenticationMethodPrivateKeyJwtArgs{...}
+type GetClientClientAuthenticationMethodPrivateKeyJwtInput interface {
+	pulumi.Input
+
+	ToGetClientClientAuthenticationMethodPrivateKeyJwtOutput() GetClientClientAuthenticationMethodPrivateKeyJwtOutput
+	ToGetClientClientAuthenticationMethodPrivateKeyJwtOutputWithContext(context.Context) GetClientClientAuthenticationMethodPrivateKeyJwtOutput
+}
+
+type GetClientClientAuthenticationMethodPrivateKeyJwtArgs struct {
+	// Credentials that will be enabled on the client for Private Key JWT authentication.
+	Credentials GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayInput `pulumi:"credentials"`
+}
+
+func (GetClientClientAuthenticationMethodPrivateKeyJwtArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientClientAuthenticationMethodPrivateKeyJwt)(nil)).Elem()
+}
+
+func (i GetClientClientAuthenticationMethodPrivateKeyJwtArgs) ToGetClientClientAuthenticationMethodPrivateKeyJwtOutput() GetClientClientAuthenticationMethodPrivateKeyJwtOutput {
+	return i.ToGetClientClientAuthenticationMethodPrivateKeyJwtOutputWithContext(context.Background())
+}
+
+func (i GetClientClientAuthenticationMethodPrivateKeyJwtArgs) ToGetClientClientAuthenticationMethodPrivateKeyJwtOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodPrivateKeyJwtOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientClientAuthenticationMethodPrivateKeyJwtOutput)
+}
+
+// GetClientClientAuthenticationMethodPrivateKeyJwtArrayInput is an input type that accepts GetClientClientAuthenticationMethodPrivateKeyJwtArray and GetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput values.
+// You can construct a concrete instance of `GetClientClientAuthenticationMethodPrivateKeyJwtArrayInput` via:
+//
+//	GetClientClientAuthenticationMethodPrivateKeyJwtArray{ GetClientClientAuthenticationMethodPrivateKeyJwtArgs{...} }
+type GetClientClientAuthenticationMethodPrivateKeyJwtArrayInput interface {
+	pulumi.Input
+
+	ToGetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput() GetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput
+	ToGetClientClientAuthenticationMethodPrivateKeyJwtArrayOutputWithContext(context.Context) GetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput
+}
+
+type GetClientClientAuthenticationMethodPrivateKeyJwtArray []GetClientClientAuthenticationMethodPrivateKeyJwtInput
+
+func (GetClientClientAuthenticationMethodPrivateKeyJwtArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientClientAuthenticationMethodPrivateKeyJwt)(nil)).Elem()
+}
+
+func (i GetClientClientAuthenticationMethodPrivateKeyJwtArray) ToGetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput() GetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput {
+	return i.ToGetClientClientAuthenticationMethodPrivateKeyJwtArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientClientAuthenticationMethodPrivateKeyJwtArray) ToGetClientClientAuthenticationMethodPrivateKeyJwtArrayOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput)
+}
+
+type GetClientClientAuthenticationMethodPrivateKeyJwtOutput struct{ *pulumi.OutputState }
+
+func (GetClientClientAuthenticationMethodPrivateKeyJwtOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientClientAuthenticationMethodPrivateKeyJwt)(nil)).Elem()
+}
+
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtOutput) ToGetClientClientAuthenticationMethodPrivateKeyJwtOutput() GetClientClientAuthenticationMethodPrivateKeyJwtOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtOutput) ToGetClientClientAuthenticationMethodPrivateKeyJwtOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodPrivateKeyJwtOutput {
+	return o
+}
+
+// Credentials that will be enabled on the client for Private Key JWT authentication.
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtOutput) Credentials() GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodPrivateKeyJwt) []GetClientClientAuthenticationMethodPrivateKeyJwtCredential {
+		return v.Credentials
+	}).(GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput)
+}
+
+type GetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientClientAuthenticationMethodPrivateKeyJwt)(nil)).Elem()
+}
+
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput) ToGetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput() GetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput) ToGetClientClientAuthenticationMethodPrivateKeyJwtArrayOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput) Index(i pulumi.IntInput) GetClientClientAuthenticationMethodPrivateKeyJwtOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientClientAuthenticationMethodPrivateKeyJwt {
+		return vs[0].([]GetClientClientAuthenticationMethodPrivateKeyJwt)[vs[1].(int)]
+	}).(GetClientClientAuthenticationMethodPrivateKeyJwtOutput)
+}
+
+type GetClientClientAuthenticationMethodPrivateKeyJwtCredential struct {
+	// Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+	Algorithm string `pulumi:"algorithm"`
+	// The ISO 8601 formatted date the credential was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Credential type. Supported types: `publicKey`.
+	CredentialType string `pulumi:"credentialType"`
+	// The ISO 8601 formatted date representing the expiration of the credential.
+	ExpiresAt string `pulumi:"expiresAt"`
+	// The ID of the client credential.
+	Id string `pulumi:"id"`
+	// The key identifier of the credential, generated on creation.
+	KeyId string `pulumi:"keyId"`
+	// Friendly name for a credential.
+	Name string `pulumi:"name"`
+	// The ISO 8601 formatted date the credential was updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetClientClientAuthenticationMethodPrivateKeyJwtCredentialInput is an input type that accepts GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArgs and GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput values.
+// You can construct a concrete instance of `GetClientClientAuthenticationMethodPrivateKeyJwtCredentialInput` via:
+//
+//	GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArgs{...}
+type GetClientClientAuthenticationMethodPrivateKeyJwtCredentialInput interface {
+	pulumi.Input
+
+	ToGetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput() GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput
+	ToGetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutputWithContext(context.Context) GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput
+}
+
+type GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArgs struct {
+	// Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The ISO 8601 formatted date the credential was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Credential type. Supported types: `publicKey`.
+	CredentialType pulumi.StringInput `pulumi:"credentialType"`
+	// The ISO 8601 formatted date representing the expiration of the credential.
+	ExpiresAt pulumi.StringInput `pulumi:"expiresAt"`
+	// The ID of the client credential.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The key identifier of the credential, generated on creation.
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+	// Friendly name for a credential.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ISO 8601 formatted date the credential was updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientClientAuthenticationMethodPrivateKeyJwtCredential)(nil)).Elem()
+}
+
+func (i GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArgs) ToGetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput() GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput {
+	return i.ToGetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutputWithContext(context.Background())
+}
+
+func (i GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArgs) ToGetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput)
+}
+
+// GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayInput is an input type that accepts GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArray and GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput values.
+// You can construct a concrete instance of `GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayInput` via:
+//
+//	GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArray{ GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArgs{...} }
+type GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput() GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput
+	ToGetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutputWithContext(context.Context) GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput
+}
+
+type GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArray []GetClientClientAuthenticationMethodPrivateKeyJwtCredentialInput
+
+func (GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientClientAuthenticationMethodPrivateKeyJwtCredential)(nil)).Elem()
+}
+
+func (i GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArray) ToGetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput() GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput {
+	return i.ToGetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArray) ToGetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput)
+}
+
+type GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientClientAuthenticationMethodPrivateKeyJwtCredential)(nil)).Elem()
+}
+
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput) ToGetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput() GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput) ToGetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput {
+	return o
+}
+
+// Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodPrivateKeyJwtCredential) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The ISO 8601 formatted date the credential was created.
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodPrivateKeyJwtCredential) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Credential type. Supported types: `publicKey`.
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput) CredentialType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodPrivateKeyJwtCredential) string { return v.CredentialType }).(pulumi.StringOutput)
+}
+
+// The ISO 8601 formatted date representing the expiration of the credential.
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodPrivateKeyJwtCredential) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+// The ID of the client credential.
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodPrivateKeyJwtCredential) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The key identifier of the credential, generated on creation.
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodPrivateKeyJwtCredential) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+// Friendly name for a credential.
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodPrivateKeyJwtCredential) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ISO 8601 formatted date the credential was updated.
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodPrivateKeyJwtCredential) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientClientAuthenticationMethodPrivateKeyJwtCredential)(nil)).Elem()
+}
+
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput) ToGetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput() GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput) ToGetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput) Index(i pulumi.IntInput) GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientClientAuthenticationMethodPrivateKeyJwtCredential {
+		return vs[0].([]GetClientClientAuthenticationMethodPrivateKeyJwtCredential)[vs[1].(int)]
+	}).(GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput)
+}
+
+type GetClientClientAuthenticationMethodSelfSignedTlsClientAuth struct {
+	// Credentials that will be enabled on the client for mTLS authentication utilizing self-signed certificates.
+	Credentials []GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredential `pulumi:"credentials"`
+}
+
+// GetClientClientAuthenticationMethodSelfSignedTlsClientAuthInput is an input type that accepts GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArgs and GetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput values.
+// You can construct a concrete instance of `GetClientClientAuthenticationMethodSelfSignedTlsClientAuthInput` via:
+//
+//	GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArgs{...}
+type GetClientClientAuthenticationMethodSelfSignedTlsClientAuthInput interface {
+	pulumi.Input
+
+	ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput() GetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput
+	ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutputWithContext(context.Context) GetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput
+}
+
+type GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArgs struct {
+	// Credentials that will be enabled on the client for mTLS authentication utilizing self-signed certificates.
+	Credentials GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayInput `pulumi:"credentials"`
+}
+
+func (GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientClientAuthenticationMethodSelfSignedTlsClientAuth)(nil)).Elem()
+}
+
+func (i GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArgs) ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput() GetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput {
+	return i.ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutputWithContext(context.Background())
+}
+
+func (i GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArgs) ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput)
+}
+
+// GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayInput is an input type that accepts GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArray and GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput values.
+// You can construct a concrete instance of `GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayInput` via:
+//
+//	GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArray{ GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArgs{...} }
+type GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayInput interface {
+	pulumi.Input
+
+	ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput() GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput
+	ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutputWithContext(context.Context) GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput
+}
+
+type GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArray []GetClientClientAuthenticationMethodSelfSignedTlsClientAuthInput
+
+func (GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientClientAuthenticationMethodSelfSignedTlsClientAuth)(nil)).Elem()
+}
+
+func (i GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArray) ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput() GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput {
+	return i.ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArray) ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput)
+}
+
+type GetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput struct{ *pulumi.OutputState }
+
+func (GetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientClientAuthenticationMethodSelfSignedTlsClientAuth)(nil)).Elem()
+}
+
+func (o GetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput) ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput() GetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput) ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput {
+	return o
+}
+
+// Credentials that will be enabled on the client for mTLS authentication utilizing self-signed certificates.
+func (o GetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput) Credentials() GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodSelfSignedTlsClientAuth) []GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredential {
+		return v.Credentials
+	}).(GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput)
+}
+
+type GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientClientAuthenticationMethodSelfSignedTlsClientAuth)(nil)).Elem()
+}
+
+func (o GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput) ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput() GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput) ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput) Index(i pulumi.IntInput) GetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientClientAuthenticationMethodSelfSignedTlsClientAuth {
+		return vs[0].([]GetClientClientAuthenticationMethodSelfSignedTlsClientAuth)[vs[1].(int)]
+	}).(GetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput)
+}
+
+type GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredential struct {
+	// The ISO 8601 formatted date the credential was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Credential type. Supported types: `x509Cert`.
+	CredentialType string `pulumi:"credentialType"`
+	// The ID of the client credential.
+	Id string `pulumi:"id"`
+	// Friendly name for a credential.
+	Name string `pulumi:"name"`
+	// The ISO 8601 formatted date the credential was updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialInput is an input type that accepts GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArgs and GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput values.
+// You can construct a concrete instance of `GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialInput` via:
+//
+//	GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArgs{...}
+type GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialInput interface {
+	pulumi.Input
+
+	ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput() GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput
+	ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutputWithContext(context.Context) GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput
+}
+
+type GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArgs struct {
+	// The ISO 8601 formatted date the credential was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Credential type. Supported types: `x509Cert`.
+	CredentialType pulumi.StringInput `pulumi:"credentialType"`
+	// The ID of the client credential.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Friendly name for a credential.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ISO 8601 formatted date the credential was updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredential)(nil)).Elem()
+}
+
+func (i GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArgs) ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput() GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput {
+	return i.ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutputWithContext(context.Background())
+}
+
+func (i GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArgs) ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput)
+}
+
+// GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayInput is an input type that accepts GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArray and GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput values.
+// You can construct a concrete instance of `GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayInput` via:
+//
+//	GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArray{ GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArgs{...} }
+type GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput() GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput
+	ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutputWithContext(context.Context) GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput
+}
+
+type GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArray []GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialInput
+
+func (GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredential)(nil)).Elem()
+}
+
+func (i GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArray) ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput() GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput {
+	return i.ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArray) ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput)
+}
+
+type GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredential)(nil)).Elem()
+}
+
+func (o GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput) ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput() GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput) ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput {
+	return o
+}
+
+// The ISO 8601 formatted date the credential was created.
+func (o GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredential) string {
+		return v.CreatedAt
+	}).(pulumi.StringOutput)
+}
+
+// Credential type. Supported types: `x509Cert`.
+func (o GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput) CredentialType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredential) string {
+		return v.CredentialType
+	}).(pulumi.StringOutput)
+}
+
+// The ID of the client credential.
+func (o GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredential) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Friendly name for a credential.
+func (o GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredential) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ISO 8601 formatted date the credential was updated.
+func (o GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredential) string {
+		return v.UpdatedAt
+	}).(pulumi.StringOutput)
+}
+
+type GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredential)(nil)).Elem()
+}
+
+func (o GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput) ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput() GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput) ToGetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput) Index(i pulumi.IntInput) GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredential {
+		return vs[0].([]GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredential)[vs[1].(int)]
+	}).(GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput)
+}
+
+type GetClientClientAuthenticationMethodTlsClientAuth struct {
+	// Credentials that will be enabled on the client for CA-based mTLS authentication.
+	Credentials []GetClientClientAuthenticationMethodTlsClientAuthCredential `pulumi:"credentials"`
+}
+
+// GetClientClientAuthenticationMethodTlsClientAuthInput is an input type that accepts GetClientClientAuthenticationMethodTlsClientAuthArgs and GetClientClientAuthenticationMethodTlsClientAuthOutput values.
+// You can construct a concrete instance of `GetClientClientAuthenticationMethodTlsClientAuthInput` via:
+//
+//	GetClientClientAuthenticationMethodTlsClientAuthArgs{...}
+type GetClientClientAuthenticationMethodTlsClientAuthInput interface {
+	pulumi.Input
+
+	ToGetClientClientAuthenticationMethodTlsClientAuthOutput() GetClientClientAuthenticationMethodTlsClientAuthOutput
+	ToGetClientClientAuthenticationMethodTlsClientAuthOutputWithContext(context.Context) GetClientClientAuthenticationMethodTlsClientAuthOutput
+}
+
+type GetClientClientAuthenticationMethodTlsClientAuthArgs struct {
+	// Credentials that will be enabled on the client for CA-based mTLS authentication.
+	Credentials GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayInput `pulumi:"credentials"`
+}
+
+func (GetClientClientAuthenticationMethodTlsClientAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientClientAuthenticationMethodTlsClientAuth)(nil)).Elem()
+}
+
+func (i GetClientClientAuthenticationMethodTlsClientAuthArgs) ToGetClientClientAuthenticationMethodTlsClientAuthOutput() GetClientClientAuthenticationMethodTlsClientAuthOutput {
+	return i.ToGetClientClientAuthenticationMethodTlsClientAuthOutputWithContext(context.Background())
+}
+
+func (i GetClientClientAuthenticationMethodTlsClientAuthArgs) ToGetClientClientAuthenticationMethodTlsClientAuthOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodTlsClientAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientClientAuthenticationMethodTlsClientAuthOutput)
+}
+
+// GetClientClientAuthenticationMethodTlsClientAuthArrayInput is an input type that accepts GetClientClientAuthenticationMethodTlsClientAuthArray and GetClientClientAuthenticationMethodTlsClientAuthArrayOutput values.
+// You can construct a concrete instance of `GetClientClientAuthenticationMethodTlsClientAuthArrayInput` via:
+//
+//	GetClientClientAuthenticationMethodTlsClientAuthArray{ GetClientClientAuthenticationMethodTlsClientAuthArgs{...} }
+type GetClientClientAuthenticationMethodTlsClientAuthArrayInput interface {
+	pulumi.Input
+
+	ToGetClientClientAuthenticationMethodTlsClientAuthArrayOutput() GetClientClientAuthenticationMethodTlsClientAuthArrayOutput
+	ToGetClientClientAuthenticationMethodTlsClientAuthArrayOutputWithContext(context.Context) GetClientClientAuthenticationMethodTlsClientAuthArrayOutput
+}
+
+type GetClientClientAuthenticationMethodTlsClientAuthArray []GetClientClientAuthenticationMethodTlsClientAuthInput
+
+func (GetClientClientAuthenticationMethodTlsClientAuthArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientClientAuthenticationMethodTlsClientAuth)(nil)).Elem()
+}
+
+func (i GetClientClientAuthenticationMethodTlsClientAuthArray) ToGetClientClientAuthenticationMethodTlsClientAuthArrayOutput() GetClientClientAuthenticationMethodTlsClientAuthArrayOutput {
+	return i.ToGetClientClientAuthenticationMethodTlsClientAuthArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientClientAuthenticationMethodTlsClientAuthArray) ToGetClientClientAuthenticationMethodTlsClientAuthArrayOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodTlsClientAuthArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientClientAuthenticationMethodTlsClientAuthArrayOutput)
+}
+
+type GetClientClientAuthenticationMethodTlsClientAuthOutput struct{ *pulumi.OutputState }
+
+func (GetClientClientAuthenticationMethodTlsClientAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientClientAuthenticationMethodTlsClientAuth)(nil)).Elem()
+}
+
+func (o GetClientClientAuthenticationMethodTlsClientAuthOutput) ToGetClientClientAuthenticationMethodTlsClientAuthOutput() GetClientClientAuthenticationMethodTlsClientAuthOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodTlsClientAuthOutput) ToGetClientClientAuthenticationMethodTlsClientAuthOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodTlsClientAuthOutput {
+	return o
+}
+
+// Credentials that will be enabled on the client for CA-based mTLS authentication.
+func (o GetClientClientAuthenticationMethodTlsClientAuthOutput) Credentials() GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodTlsClientAuth) []GetClientClientAuthenticationMethodTlsClientAuthCredential {
+		return v.Credentials
+	}).(GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput)
+}
+
+type GetClientClientAuthenticationMethodTlsClientAuthArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientClientAuthenticationMethodTlsClientAuthArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientClientAuthenticationMethodTlsClientAuth)(nil)).Elem()
+}
+
+func (o GetClientClientAuthenticationMethodTlsClientAuthArrayOutput) ToGetClientClientAuthenticationMethodTlsClientAuthArrayOutput() GetClientClientAuthenticationMethodTlsClientAuthArrayOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodTlsClientAuthArrayOutput) ToGetClientClientAuthenticationMethodTlsClientAuthArrayOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodTlsClientAuthArrayOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodTlsClientAuthArrayOutput) Index(i pulumi.IntInput) GetClientClientAuthenticationMethodTlsClientAuthOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientClientAuthenticationMethodTlsClientAuth {
+		return vs[0].([]GetClientClientAuthenticationMethodTlsClientAuth)[vs[1].(int)]
+	}).(GetClientClientAuthenticationMethodTlsClientAuthOutput)
+}
+
+type GetClientClientAuthenticationMethodTlsClientAuthCredential struct {
+	// The ISO 8601 formatted date the credential was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Credential type. Supported types: `certSubjectDn`.
+	CredentialType string `pulumi:"credentialType"`
+	// The ID of the client credential.
+	Id string `pulumi:"id"`
+	// Friendly name for a credential.
+	Name string `pulumi:"name"`
+	// Subject Distinguished Name. Mutually exlusive with `pem` property.
+	SubjectDn string `pulumi:"subjectDn"`
+	// The ISO 8601 formatted date the credential was updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetClientClientAuthenticationMethodTlsClientAuthCredentialInput is an input type that accepts GetClientClientAuthenticationMethodTlsClientAuthCredentialArgs and GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput values.
+// You can construct a concrete instance of `GetClientClientAuthenticationMethodTlsClientAuthCredentialInput` via:
+//
+//	GetClientClientAuthenticationMethodTlsClientAuthCredentialArgs{...}
+type GetClientClientAuthenticationMethodTlsClientAuthCredentialInput interface {
+	pulumi.Input
+
+	ToGetClientClientAuthenticationMethodTlsClientAuthCredentialOutput() GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput
+	ToGetClientClientAuthenticationMethodTlsClientAuthCredentialOutputWithContext(context.Context) GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput
+}
+
+type GetClientClientAuthenticationMethodTlsClientAuthCredentialArgs struct {
+	// The ISO 8601 formatted date the credential was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Credential type. Supported types: `certSubjectDn`.
+	CredentialType pulumi.StringInput `pulumi:"credentialType"`
+	// The ID of the client credential.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Friendly name for a credential.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Subject Distinguished Name. Mutually exlusive with `pem` property.
+	SubjectDn pulumi.StringInput `pulumi:"subjectDn"`
+	// The ISO 8601 formatted date the credential was updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetClientClientAuthenticationMethodTlsClientAuthCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientClientAuthenticationMethodTlsClientAuthCredential)(nil)).Elem()
+}
+
+func (i GetClientClientAuthenticationMethodTlsClientAuthCredentialArgs) ToGetClientClientAuthenticationMethodTlsClientAuthCredentialOutput() GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput {
+	return i.ToGetClientClientAuthenticationMethodTlsClientAuthCredentialOutputWithContext(context.Background())
+}
+
+func (i GetClientClientAuthenticationMethodTlsClientAuthCredentialArgs) ToGetClientClientAuthenticationMethodTlsClientAuthCredentialOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput)
+}
+
+// GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayInput is an input type that accepts GetClientClientAuthenticationMethodTlsClientAuthCredentialArray and GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput values.
+// You can construct a concrete instance of `GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayInput` via:
+//
+//	GetClientClientAuthenticationMethodTlsClientAuthCredentialArray{ GetClientClientAuthenticationMethodTlsClientAuthCredentialArgs{...} }
+type GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput() GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput
+	ToGetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutputWithContext(context.Context) GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput
+}
+
+type GetClientClientAuthenticationMethodTlsClientAuthCredentialArray []GetClientClientAuthenticationMethodTlsClientAuthCredentialInput
+
+func (GetClientClientAuthenticationMethodTlsClientAuthCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientClientAuthenticationMethodTlsClientAuthCredential)(nil)).Elem()
+}
+
+func (i GetClientClientAuthenticationMethodTlsClientAuthCredentialArray) ToGetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput() GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput {
+	return i.ToGetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientClientAuthenticationMethodTlsClientAuthCredentialArray) ToGetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput)
+}
+
+type GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientClientAuthenticationMethodTlsClientAuthCredential)(nil)).Elem()
+}
+
+func (o GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput) ToGetClientClientAuthenticationMethodTlsClientAuthCredentialOutput() GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput) ToGetClientClientAuthenticationMethodTlsClientAuthCredentialOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput {
+	return o
+}
+
+// The ISO 8601 formatted date the credential was created.
+func (o GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodTlsClientAuthCredential) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Credential type. Supported types: `certSubjectDn`.
+func (o GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput) CredentialType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodTlsClientAuthCredential) string { return v.CredentialType }).(pulumi.StringOutput)
+}
+
+// The ID of the client credential.
+func (o GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodTlsClientAuthCredential) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Friendly name for a credential.
+func (o GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodTlsClientAuthCredential) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Subject Distinguished Name. Mutually exlusive with `pem` property.
+func (o GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput) SubjectDn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodTlsClientAuthCredential) string { return v.SubjectDn }).(pulumi.StringOutput)
+}
+
+// The ISO 8601 formatted date the credential was updated.
+func (o GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientClientAuthenticationMethodTlsClientAuthCredential) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientClientAuthenticationMethodTlsClientAuthCredential)(nil)).Elem()
+}
+
+func (o GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput) ToGetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput() GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput) ToGetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutputWithContext(ctx context.Context) GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput {
+	return o
+}
+
+func (o GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput) Index(i pulumi.IntInput) GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientClientAuthenticationMethodTlsClientAuthCredential {
+		return vs[0].([]GetClientClientAuthenticationMethodTlsClientAuthCredential)[vs[1].(int)]
+	}).(GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput)
+}
+
 type GetClientDefaultOrganization struct {
 	// If set, the `defaultOrganization` will be removed.
 	Disable bool `pulumi:"disable"`
@@ -30414,7 +33668,7 @@ func (o GetClientDefaultOrganizationArrayOutput) Index(i pulumi.IntInput) GetCli
 }
 
 type GetClientJwtConfiguration struct {
-	// Algorithm used to sign JWTs.
+	// Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
 	Alg string `pulumi:"alg"`
 	// Number of seconds during which the JWT will be valid.
 	LifetimeInSeconds int `pulumi:"lifetimeInSeconds"`
@@ -30436,7 +33690,7 @@ type GetClientJwtConfigurationInput interface {
 }
 
 type GetClientJwtConfigurationArgs struct {
-	// Algorithm used to sign JWTs.
+	// Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
 	Alg pulumi.StringInput `pulumi:"alg"`
 	// Number of seconds during which the JWT will be valid.
 	LifetimeInSeconds pulumi.IntInput `pulumi:"lifetimeInSeconds"`
@@ -30497,7 +33751,7 @@ func (o GetClientJwtConfigurationOutput) ToGetClientJwtConfigurationOutputWithCo
 	return o
 }
 
-// Algorithm used to sign JWTs.
+// Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
 func (o GetClientJwtConfigurationOutput) Alg() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientJwtConfiguration) string { return v.Alg }).(pulumi.StringOutput)
 }
@@ -31282,6 +34536,272 @@ func (o GetClientRefreshTokenArrayOutput) Index(i pulumi.IntInput) GetClientRefr
 	}).(GetClientRefreshTokenOutput)
 }
 
+type GetClientSignedRequestObject struct {
+	// Credentials that will be enabled on the client for JWT-secured authorization requests.
+	Credentials []GetClientSignedRequestObjectCredential `pulumi:"credentials"`
+	// Require JWT-secured authorization requests.
+	Required bool `pulumi:"required"`
+}
+
+// GetClientSignedRequestObjectInput is an input type that accepts GetClientSignedRequestObjectArgs and GetClientSignedRequestObjectOutput values.
+// You can construct a concrete instance of `GetClientSignedRequestObjectInput` via:
+//
+//	GetClientSignedRequestObjectArgs{...}
+type GetClientSignedRequestObjectInput interface {
+	pulumi.Input
+
+	ToGetClientSignedRequestObjectOutput() GetClientSignedRequestObjectOutput
+	ToGetClientSignedRequestObjectOutputWithContext(context.Context) GetClientSignedRequestObjectOutput
+}
+
+type GetClientSignedRequestObjectArgs struct {
+	// Credentials that will be enabled on the client for JWT-secured authorization requests.
+	Credentials GetClientSignedRequestObjectCredentialArrayInput `pulumi:"credentials"`
+	// Require JWT-secured authorization requests.
+	Required pulumi.BoolInput `pulumi:"required"`
+}
+
+func (GetClientSignedRequestObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientSignedRequestObject)(nil)).Elem()
+}
+
+func (i GetClientSignedRequestObjectArgs) ToGetClientSignedRequestObjectOutput() GetClientSignedRequestObjectOutput {
+	return i.ToGetClientSignedRequestObjectOutputWithContext(context.Background())
+}
+
+func (i GetClientSignedRequestObjectArgs) ToGetClientSignedRequestObjectOutputWithContext(ctx context.Context) GetClientSignedRequestObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientSignedRequestObjectOutput)
+}
+
+// GetClientSignedRequestObjectArrayInput is an input type that accepts GetClientSignedRequestObjectArray and GetClientSignedRequestObjectArrayOutput values.
+// You can construct a concrete instance of `GetClientSignedRequestObjectArrayInput` via:
+//
+//	GetClientSignedRequestObjectArray{ GetClientSignedRequestObjectArgs{...} }
+type GetClientSignedRequestObjectArrayInput interface {
+	pulumi.Input
+
+	ToGetClientSignedRequestObjectArrayOutput() GetClientSignedRequestObjectArrayOutput
+	ToGetClientSignedRequestObjectArrayOutputWithContext(context.Context) GetClientSignedRequestObjectArrayOutput
+}
+
+type GetClientSignedRequestObjectArray []GetClientSignedRequestObjectInput
+
+func (GetClientSignedRequestObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientSignedRequestObject)(nil)).Elem()
+}
+
+func (i GetClientSignedRequestObjectArray) ToGetClientSignedRequestObjectArrayOutput() GetClientSignedRequestObjectArrayOutput {
+	return i.ToGetClientSignedRequestObjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientSignedRequestObjectArray) ToGetClientSignedRequestObjectArrayOutputWithContext(ctx context.Context) GetClientSignedRequestObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientSignedRequestObjectArrayOutput)
+}
+
+type GetClientSignedRequestObjectOutput struct{ *pulumi.OutputState }
+
+func (GetClientSignedRequestObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientSignedRequestObject)(nil)).Elem()
+}
+
+func (o GetClientSignedRequestObjectOutput) ToGetClientSignedRequestObjectOutput() GetClientSignedRequestObjectOutput {
+	return o
+}
+
+func (o GetClientSignedRequestObjectOutput) ToGetClientSignedRequestObjectOutputWithContext(ctx context.Context) GetClientSignedRequestObjectOutput {
+	return o
+}
+
+// Credentials that will be enabled on the client for JWT-secured authorization requests.
+func (o GetClientSignedRequestObjectOutput) Credentials() GetClientSignedRequestObjectCredentialArrayOutput {
+	return o.ApplyT(func(v GetClientSignedRequestObject) []GetClientSignedRequestObjectCredential { return v.Credentials }).(GetClientSignedRequestObjectCredentialArrayOutput)
+}
+
+// Require JWT-secured authorization requests.
+func (o GetClientSignedRequestObjectOutput) Required() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientSignedRequestObject) bool { return v.Required }).(pulumi.BoolOutput)
+}
+
+type GetClientSignedRequestObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientSignedRequestObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientSignedRequestObject)(nil)).Elem()
+}
+
+func (o GetClientSignedRequestObjectArrayOutput) ToGetClientSignedRequestObjectArrayOutput() GetClientSignedRequestObjectArrayOutput {
+	return o
+}
+
+func (o GetClientSignedRequestObjectArrayOutput) ToGetClientSignedRequestObjectArrayOutputWithContext(ctx context.Context) GetClientSignedRequestObjectArrayOutput {
+	return o
+}
+
+func (o GetClientSignedRequestObjectArrayOutput) Index(i pulumi.IntInput) GetClientSignedRequestObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientSignedRequestObject {
+		return vs[0].([]GetClientSignedRequestObject)[vs[1].(int)]
+	}).(GetClientSignedRequestObjectOutput)
+}
+
+type GetClientSignedRequestObjectCredential struct {
+	// Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+	Algorithm string `pulumi:"algorithm"`
+	// The ISO 8601 formatted date the credential was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Credential type. Supported types: `publicKey`.
+	CredentialType string `pulumi:"credentialType"`
+	// The ISO 8601 formatted date representing the expiration of the credential.
+	ExpiresAt string `pulumi:"expiresAt"`
+	// The ID of the client credential.
+	Id string `pulumi:"id"`
+	// The key identifier of the credential, generated on creation.
+	KeyId string `pulumi:"keyId"`
+	// Friendly name for a credential.
+	Name string `pulumi:"name"`
+	// The ISO 8601 formatted date the credential was updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetClientSignedRequestObjectCredentialInput is an input type that accepts GetClientSignedRequestObjectCredentialArgs and GetClientSignedRequestObjectCredentialOutput values.
+// You can construct a concrete instance of `GetClientSignedRequestObjectCredentialInput` via:
+//
+//	GetClientSignedRequestObjectCredentialArgs{...}
+type GetClientSignedRequestObjectCredentialInput interface {
+	pulumi.Input
+
+	ToGetClientSignedRequestObjectCredentialOutput() GetClientSignedRequestObjectCredentialOutput
+	ToGetClientSignedRequestObjectCredentialOutputWithContext(context.Context) GetClientSignedRequestObjectCredentialOutput
+}
+
+type GetClientSignedRequestObjectCredentialArgs struct {
+	// Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The ISO 8601 formatted date the credential was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Credential type. Supported types: `publicKey`.
+	CredentialType pulumi.StringInput `pulumi:"credentialType"`
+	// The ISO 8601 formatted date representing the expiration of the credential.
+	ExpiresAt pulumi.StringInput `pulumi:"expiresAt"`
+	// The ID of the client credential.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The key identifier of the credential, generated on creation.
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+	// Friendly name for a credential.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ISO 8601 formatted date the credential was updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetClientSignedRequestObjectCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientSignedRequestObjectCredential)(nil)).Elem()
+}
+
+func (i GetClientSignedRequestObjectCredentialArgs) ToGetClientSignedRequestObjectCredentialOutput() GetClientSignedRequestObjectCredentialOutput {
+	return i.ToGetClientSignedRequestObjectCredentialOutputWithContext(context.Background())
+}
+
+func (i GetClientSignedRequestObjectCredentialArgs) ToGetClientSignedRequestObjectCredentialOutputWithContext(ctx context.Context) GetClientSignedRequestObjectCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientSignedRequestObjectCredentialOutput)
+}
+
+// GetClientSignedRequestObjectCredentialArrayInput is an input type that accepts GetClientSignedRequestObjectCredentialArray and GetClientSignedRequestObjectCredentialArrayOutput values.
+// You can construct a concrete instance of `GetClientSignedRequestObjectCredentialArrayInput` via:
+//
+//	GetClientSignedRequestObjectCredentialArray{ GetClientSignedRequestObjectCredentialArgs{...} }
+type GetClientSignedRequestObjectCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetClientSignedRequestObjectCredentialArrayOutput() GetClientSignedRequestObjectCredentialArrayOutput
+	ToGetClientSignedRequestObjectCredentialArrayOutputWithContext(context.Context) GetClientSignedRequestObjectCredentialArrayOutput
+}
+
+type GetClientSignedRequestObjectCredentialArray []GetClientSignedRequestObjectCredentialInput
+
+func (GetClientSignedRequestObjectCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientSignedRequestObjectCredential)(nil)).Elem()
+}
+
+func (i GetClientSignedRequestObjectCredentialArray) ToGetClientSignedRequestObjectCredentialArrayOutput() GetClientSignedRequestObjectCredentialArrayOutput {
+	return i.ToGetClientSignedRequestObjectCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientSignedRequestObjectCredentialArray) ToGetClientSignedRequestObjectCredentialArrayOutputWithContext(ctx context.Context) GetClientSignedRequestObjectCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientSignedRequestObjectCredentialArrayOutput)
+}
+
+type GetClientSignedRequestObjectCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetClientSignedRequestObjectCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientSignedRequestObjectCredential)(nil)).Elem()
+}
+
+func (o GetClientSignedRequestObjectCredentialOutput) ToGetClientSignedRequestObjectCredentialOutput() GetClientSignedRequestObjectCredentialOutput {
+	return o
+}
+
+func (o GetClientSignedRequestObjectCredentialOutput) ToGetClientSignedRequestObjectCredentialOutputWithContext(ctx context.Context) GetClientSignedRequestObjectCredentialOutput {
+	return o
+}
+
+// Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+func (o GetClientSignedRequestObjectCredentialOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientSignedRequestObjectCredential) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The ISO 8601 formatted date the credential was created.
+func (o GetClientSignedRequestObjectCredentialOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientSignedRequestObjectCredential) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Credential type. Supported types: `publicKey`.
+func (o GetClientSignedRequestObjectCredentialOutput) CredentialType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientSignedRequestObjectCredential) string { return v.CredentialType }).(pulumi.StringOutput)
+}
+
+// The ISO 8601 formatted date representing the expiration of the credential.
+func (o GetClientSignedRequestObjectCredentialOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientSignedRequestObjectCredential) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+// The ID of the client credential.
+func (o GetClientSignedRequestObjectCredentialOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientSignedRequestObjectCredential) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The key identifier of the credential, generated on creation.
+func (o GetClientSignedRequestObjectCredentialOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientSignedRequestObjectCredential) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+// Friendly name for a credential.
+func (o GetClientSignedRequestObjectCredentialOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientSignedRequestObjectCredential) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ISO 8601 formatted date the credential was updated.
+func (o GetClientSignedRequestObjectCredentialOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientSignedRequestObjectCredential) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetClientSignedRequestObjectCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientSignedRequestObjectCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientSignedRequestObjectCredential)(nil)).Elem()
+}
+
+func (o GetClientSignedRequestObjectCredentialArrayOutput) ToGetClientSignedRequestObjectCredentialArrayOutput() GetClientSignedRequestObjectCredentialArrayOutput {
+	return o
+}
+
+func (o GetClientSignedRequestObjectCredentialArrayOutput) ToGetClientSignedRequestObjectCredentialArrayOutputWithContext(ctx context.Context) GetClientSignedRequestObjectCredentialArrayOutput {
+	return o
+}
+
+func (o GetClientSignedRequestObjectCredentialArrayOutput) Index(i pulumi.IntInput) GetClientSignedRequestObjectCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientSignedRequestObjectCredential {
+		return vs[0].([]GetClientSignedRequestObjectCredential)[vs[1].(int)]
+	}).(GetClientSignedRequestObjectCredentialOutput)
+}
+
 type GetConnectionOption struct {
 	// ADFS URL where to fetch the metadata source.
 	AdfsServer string `pulumi:"adfsServer"`
@@ -31457,7 +34977,7 @@ type GetConnectionOption struct {
 	UseKerberos bool `pulumi:"useKerberos"`
 	// Whether to use WS-Fed.
 	UseWsfed bool `pulumi:"useWsfed"`
-	// Attribute in the SAML token that will be mapped to the userId property in Auth0.
+	// Attribute in the token that will be mapped to the userId property in Auth0.
 	UserIdAttribute string `pulumi:"userIdAttribute"`
 	// User info endpoint.
 	UserinfoEndpoint string `pulumi:"userinfoEndpoint"`
@@ -31655,7 +35175,7 @@ type GetConnectionOptionArgs struct {
 	UseKerberos pulumi.BoolInput `pulumi:"useKerberos"`
 	// Whether to use WS-Fed.
 	UseWsfed pulumi.BoolInput `pulumi:"useWsfed"`
-	// Attribute in the SAML token that will be mapped to the userId property in Auth0.
+	// Attribute in the token that will be mapped to the userId property in Auth0.
 	UserIdAttribute pulumi.StringInput `pulumi:"userIdAttribute"`
 	// User info endpoint.
 	UserinfoEndpoint pulumi.StringInput `pulumi:"userinfoEndpoint"`
@@ -32159,7 +35679,7 @@ func (o GetConnectionOptionOutput) UseWsfed() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionOption) bool { return v.UseWsfed }).(pulumi.BoolOutput)
 }
 
-// Attribute in the SAML token that will be mapped to the userId property in Auth0.
+// Attribute in the token that will be mapped to the userId property in Auth0.
 func (o GetConnectionOptionOutput) UserIdAttribute() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.UserIdAttribute }).(pulumi.StringOutput)
 }
@@ -35472,6 +38992,218 @@ func (o GetCustomDomainVerificationTypeArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetCustomDomainVerificationTypeOutput)
 }
 
+type GetFormLanguage struct {
+	// Default language for the form.
+	Default string `pulumi:"default"`
+	// Primary language for the form.
+	Primary string `pulumi:"primary"`
+}
+
+// GetFormLanguageInput is an input type that accepts GetFormLanguageArgs and GetFormLanguageOutput values.
+// You can construct a concrete instance of `GetFormLanguageInput` via:
+//
+//	GetFormLanguageArgs{...}
+type GetFormLanguageInput interface {
+	pulumi.Input
+
+	ToGetFormLanguageOutput() GetFormLanguageOutput
+	ToGetFormLanguageOutputWithContext(context.Context) GetFormLanguageOutput
+}
+
+type GetFormLanguageArgs struct {
+	// Default language for the form.
+	Default pulumi.StringInput `pulumi:"default"`
+	// Primary language for the form.
+	Primary pulumi.StringInput `pulumi:"primary"`
+}
+
+func (GetFormLanguageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFormLanguage)(nil)).Elem()
+}
+
+func (i GetFormLanguageArgs) ToGetFormLanguageOutput() GetFormLanguageOutput {
+	return i.ToGetFormLanguageOutputWithContext(context.Background())
+}
+
+func (i GetFormLanguageArgs) ToGetFormLanguageOutputWithContext(ctx context.Context) GetFormLanguageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFormLanguageOutput)
+}
+
+// GetFormLanguageArrayInput is an input type that accepts GetFormLanguageArray and GetFormLanguageArrayOutput values.
+// You can construct a concrete instance of `GetFormLanguageArrayInput` via:
+//
+//	GetFormLanguageArray{ GetFormLanguageArgs{...} }
+type GetFormLanguageArrayInput interface {
+	pulumi.Input
+
+	ToGetFormLanguageArrayOutput() GetFormLanguageArrayOutput
+	ToGetFormLanguageArrayOutputWithContext(context.Context) GetFormLanguageArrayOutput
+}
+
+type GetFormLanguageArray []GetFormLanguageInput
+
+func (GetFormLanguageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFormLanguage)(nil)).Elem()
+}
+
+func (i GetFormLanguageArray) ToGetFormLanguageArrayOutput() GetFormLanguageArrayOutput {
+	return i.ToGetFormLanguageArrayOutputWithContext(context.Background())
+}
+
+func (i GetFormLanguageArray) ToGetFormLanguageArrayOutputWithContext(ctx context.Context) GetFormLanguageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFormLanguageArrayOutput)
+}
+
+type GetFormLanguageOutput struct{ *pulumi.OutputState }
+
+func (GetFormLanguageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFormLanguage)(nil)).Elem()
+}
+
+func (o GetFormLanguageOutput) ToGetFormLanguageOutput() GetFormLanguageOutput {
+	return o
+}
+
+func (o GetFormLanguageOutput) ToGetFormLanguageOutputWithContext(ctx context.Context) GetFormLanguageOutput {
+	return o
+}
+
+// Default language for the form.
+func (o GetFormLanguageOutput) Default() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFormLanguage) string { return v.Default }).(pulumi.StringOutput)
+}
+
+// Primary language for the form.
+func (o GetFormLanguageOutput) Primary() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFormLanguage) string { return v.Primary }).(pulumi.StringOutput)
+}
+
+type GetFormLanguageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFormLanguageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFormLanguage)(nil)).Elem()
+}
+
+func (o GetFormLanguageArrayOutput) ToGetFormLanguageArrayOutput() GetFormLanguageArrayOutput {
+	return o
+}
+
+func (o GetFormLanguageArrayOutput) ToGetFormLanguageArrayOutputWithContext(ctx context.Context) GetFormLanguageArrayOutput {
+	return o
+}
+
+func (o GetFormLanguageArrayOutput) Index(i pulumi.IntInput) GetFormLanguageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFormLanguage {
+		return vs[0].([]GetFormLanguage)[vs[1].(int)]
+	}).(GetFormLanguageOutput)
+}
+
+type GetFormMessage struct {
+	// Custom message for the form. (JSON encoded)
+	Custom string `pulumi:"custom"`
+	// Error message for the form. (JSON encoded)
+	Errors string `pulumi:"errors"`
+}
+
+// GetFormMessageInput is an input type that accepts GetFormMessageArgs and GetFormMessageOutput values.
+// You can construct a concrete instance of `GetFormMessageInput` via:
+//
+//	GetFormMessageArgs{...}
+type GetFormMessageInput interface {
+	pulumi.Input
+
+	ToGetFormMessageOutput() GetFormMessageOutput
+	ToGetFormMessageOutputWithContext(context.Context) GetFormMessageOutput
+}
+
+type GetFormMessageArgs struct {
+	// Custom message for the form. (JSON encoded)
+	Custom pulumi.StringInput `pulumi:"custom"`
+	// Error message for the form. (JSON encoded)
+	Errors pulumi.StringInput `pulumi:"errors"`
+}
+
+func (GetFormMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFormMessage)(nil)).Elem()
+}
+
+func (i GetFormMessageArgs) ToGetFormMessageOutput() GetFormMessageOutput {
+	return i.ToGetFormMessageOutputWithContext(context.Background())
+}
+
+func (i GetFormMessageArgs) ToGetFormMessageOutputWithContext(ctx context.Context) GetFormMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFormMessageOutput)
+}
+
+// GetFormMessageArrayInput is an input type that accepts GetFormMessageArray and GetFormMessageArrayOutput values.
+// You can construct a concrete instance of `GetFormMessageArrayInput` via:
+//
+//	GetFormMessageArray{ GetFormMessageArgs{...} }
+type GetFormMessageArrayInput interface {
+	pulumi.Input
+
+	ToGetFormMessageArrayOutput() GetFormMessageArrayOutput
+	ToGetFormMessageArrayOutputWithContext(context.Context) GetFormMessageArrayOutput
+}
+
+type GetFormMessageArray []GetFormMessageInput
+
+func (GetFormMessageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFormMessage)(nil)).Elem()
+}
+
+func (i GetFormMessageArray) ToGetFormMessageArrayOutput() GetFormMessageArrayOutput {
+	return i.ToGetFormMessageArrayOutputWithContext(context.Background())
+}
+
+func (i GetFormMessageArray) ToGetFormMessageArrayOutputWithContext(ctx context.Context) GetFormMessageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFormMessageArrayOutput)
+}
+
+type GetFormMessageOutput struct{ *pulumi.OutputState }
+
+func (GetFormMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFormMessage)(nil)).Elem()
+}
+
+func (o GetFormMessageOutput) ToGetFormMessageOutput() GetFormMessageOutput {
+	return o
+}
+
+func (o GetFormMessageOutput) ToGetFormMessageOutputWithContext(ctx context.Context) GetFormMessageOutput {
+	return o
+}
+
+// Custom message for the form. (JSON encoded)
+func (o GetFormMessageOutput) Custom() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFormMessage) string { return v.Custom }).(pulumi.StringOutput)
+}
+
+// Error message for the form. (JSON encoded)
+func (o GetFormMessageOutput) Errors() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFormMessage) string { return v.Errors }).(pulumi.StringOutput)
+}
+
+type GetFormMessageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFormMessageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFormMessage)(nil)).Elem()
+}
+
+func (o GetFormMessageArrayOutput) ToGetFormMessageArrayOutput() GetFormMessageArrayOutput {
+	return o
+}
+
+func (o GetFormMessageArrayOutput) ToGetFormMessageArrayOutputWithContext(ctx context.Context) GetFormMessageArrayOutput {
+	return o
+}
+
+func (o GetFormMessageArrayOutput) Index(i pulumi.IntInput) GetFormMessageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFormMessage {
+		return vs[0].([]GetFormMessage)[vs[1].(int)]
+	}).(GetFormMessageOutput)
+}
+
 type GetOrganizationBranding struct {
 	// Color scheme used to customize the login pages.
 	Colors map[string]string `pulumi:"colors"`
@@ -36382,6 +40114,227 @@ func (o GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput) Index(i p
 	}).(GetPromptScreenPartialsScreenPartialInsertionPointOutput)
 }
 
+type GetResourceServerAuthorizationDetail struct {
+	// Disable authorization details.
+	Disable bool `pulumi:"disable"`
+	// Type of authorization details.
+	Type string `pulumi:"type"`
+}
+
+// GetResourceServerAuthorizationDetailInput is an input type that accepts GetResourceServerAuthorizationDetailArgs and GetResourceServerAuthorizationDetailOutput values.
+// You can construct a concrete instance of `GetResourceServerAuthorizationDetailInput` via:
+//
+//	GetResourceServerAuthorizationDetailArgs{...}
+type GetResourceServerAuthorizationDetailInput interface {
+	pulumi.Input
+
+	ToGetResourceServerAuthorizationDetailOutput() GetResourceServerAuthorizationDetailOutput
+	ToGetResourceServerAuthorizationDetailOutputWithContext(context.Context) GetResourceServerAuthorizationDetailOutput
+}
+
+type GetResourceServerAuthorizationDetailArgs struct {
+	// Disable authorization details.
+	Disable pulumi.BoolInput `pulumi:"disable"`
+	// Type of authorization details.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetResourceServerAuthorizationDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerAuthorizationDetail)(nil)).Elem()
+}
+
+func (i GetResourceServerAuthorizationDetailArgs) ToGetResourceServerAuthorizationDetailOutput() GetResourceServerAuthorizationDetailOutput {
+	return i.ToGetResourceServerAuthorizationDetailOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerAuthorizationDetailArgs) ToGetResourceServerAuthorizationDetailOutputWithContext(ctx context.Context) GetResourceServerAuthorizationDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerAuthorizationDetailOutput)
+}
+
+// GetResourceServerAuthorizationDetailArrayInput is an input type that accepts GetResourceServerAuthorizationDetailArray and GetResourceServerAuthorizationDetailArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerAuthorizationDetailArrayInput` via:
+//
+//	GetResourceServerAuthorizationDetailArray{ GetResourceServerAuthorizationDetailArgs{...} }
+type GetResourceServerAuthorizationDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerAuthorizationDetailArrayOutput() GetResourceServerAuthorizationDetailArrayOutput
+	ToGetResourceServerAuthorizationDetailArrayOutputWithContext(context.Context) GetResourceServerAuthorizationDetailArrayOutput
+}
+
+type GetResourceServerAuthorizationDetailArray []GetResourceServerAuthorizationDetailInput
+
+func (GetResourceServerAuthorizationDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerAuthorizationDetail)(nil)).Elem()
+}
+
+func (i GetResourceServerAuthorizationDetailArray) ToGetResourceServerAuthorizationDetailArrayOutput() GetResourceServerAuthorizationDetailArrayOutput {
+	return i.ToGetResourceServerAuthorizationDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerAuthorizationDetailArray) ToGetResourceServerAuthorizationDetailArrayOutputWithContext(ctx context.Context) GetResourceServerAuthorizationDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerAuthorizationDetailArrayOutput)
+}
+
+type GetResourceServerAuthorizationDetailOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerAuthorizationDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerAuthorizationDetail)(nil)).Elem()
+}
+
+func (o GetResourceServerAuthorizationDetailOutput) ToGetResourceServerAuthorizationDetailOutput() GetResourceServerAuthorizationDetailOutput {
+	return o
+}
+
+func (o GetResourceServerAuthorizationDetailOutput) ToGetResourceServerAuthorizationDetailOutputWithContext(ctx context.Context) GetResourceServerAuthorizationDetailOutput {
+	return o
+}
+
+// Disable authorization details.
+func (o GetResourceServerAuthorizationDetailOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetResourceServerAuthorizationDetail) bool { return v.Disable }).(pulumi.BoolOutput)
+}
+
+// Type of authorization details.
+func (o GetResourceServerAuthorizationDetailOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerAuthorizationDetail) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetResourceServerAuthorizationDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerAuthorizationDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerAuthorizationDetail)(nil)).Elem()
+}
+
+func (o GetResourceServerAuthorizationDetailArrayOutput) ToGetResourceServerAuthorizationDetailArrayOutput() GetResourceServerAuthorizationDetailArrayOutput {
+	return o
+}
+
+func (o GetResourceServerAuthorizationDetailArrayOutput) ToGetResourceServerAuthorizationDetailArrayOutputWithContext(ctx context.Context) GetResourceServerAuthorizationDetailArrayOutput {
+	return o
+}
+
+func (o GetResourceServerAuthorizationDetailArrayOutput) Index(i pulumi.IntInput) GetResourceServerAuthorizationDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerAuthorizationDetail {
+		return vs[0].([]GetResourceServerAuthorizationDetail)[vs[1].(int)]
+	}).(GetResourceServerAuthorizationDetailOutput)
+}
+
+type GetResourceServerProofOfPossession struct {
+	// Disable proof-of-possession.
+	Disable bool `pulumi:"disable"`
+	// Mechanism used for proof-of-possession. Only `mtls` is supported.
+	Mechanism string `pulumi:"mechanism"`
+	// Indicates whether proof-of-possession is required with this resource server.
+	Required bool `pulumi:"required"`
+}
+
+// GetResourceServerProofOfPossessionInput is an input type that accepts GetResourceServerProofOfPossessionArgs and GetResourceServerProofOfPossessionOutput values.
+// You can construct a concrete instance of `GetResourceServerProofOfPossessionInput` via:
+//
+//	GetResourceServerProofOfPossessionArgs{...}
+type GetResourceServerProofOfPossessionInput interface {
+	pulumi.Input
+
+	ToGetResourceServerProofOfPossessionOutput() GetResourceServerProofOfPossessionOutput
+	ToGetResourceServerProofOfPossessionOutputWithContext(context.Context) GetResourceServerProofOfPossessionOutput
+}
+
+type GetResourceServerProofOfPossessionArgs struct {
+	// Disable proof-of-possession.
+	Disable pulumi.BoolInput `pulumi:"disable"`
+	// Mechanism used for proof-of-possession. Only `mtls` is supported.
+	Mechanism pulumi.StringInput `pulumi:"mechanism"`
+	// Indicates whether proof-of-possession is required with this resource server.
+	Required pulumi.BoolInput `pulumi:"required"`
+}
+
+func (GetResourceServerProofOfPossessionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerProofOfPossession)(nil)).Elem()
+}
+
+func (i GetResourceServerProofOfPossessionArgs) ToGetResourceServerProofOfPossessionOutput() GetResourceServerProofOfPossessionOutput {
+	return i.ToGetResourceServerProofOfPossessionOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerProofOfPossessionArgs) ToGetResourceServerProofOfPossessionOutputWithContext(ctx context.Context) GetResourceServerProofOfPossessionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerProofOfPossessionOutput)
+}
+
+// GetResourceServerProofOfPossessionArrayInput is an input type that accepts GetResourceServerProofOfPossessionArray and GetResourceServerProofOfPossessionArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerProofOfPossessionArrayInput` via:
+//
+//	GetResourceServerProofOfPossessionArray{ GetResourceServerProofOfPossessionArgs{...} }
+type GetResourceServerProofOfPossessionArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerProofOfPossessionArrayOutput() GetResourceServerProofOfPossessionArrayOutput
+	ToGetResourceServerProofOfPossessionArrayOutputWithContext(context.Context) GetResourceServerProofOfPossessionArrayOutput
+}
+
+type GetResourceServerProofOfPossessionArray []GetResourceServerProofOfPossessionInput
+
+func (GetResourceServerProofOfPossessionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerProofOfPossession)(nil)).Elem()
+}
+
+func (i GetResourceServerProofOfPossessionArray) ToGetResourceServerProofOfPossessionArrayOutput() GetResourceServerProofOfPossessionArrayOutput {
+	return i.ToGetResourceServerProofOfPossessionArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerProofOfPossessionArray) ToGetResourceServerProofOfPossessionArrayOutputWithContext(ctx context.Context) GetResourceServerProofOfPossessionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerProofOfPossessionArrayOutput)
+}
+
+type GetResourceServerProofOfPossessionOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerProofOfPossessionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerProofOfPossession)(nil)).Elem()
+}
+
+func (o GetResourceServerProofOfPossessionOutput) ToGetResourceServerProofOfPossessionOutput() GetResourceServerProofOfPossessionOutput {
+	return o
+}
+
+func (o GetResourceServerProofOfPossessionOutput) ToGetResourceServerProofOfPossessionOutputWithContext(ctx context.Context) GetResourceServerProofOfPossessionOutput {
+	return o
+}
+
+// Disable proof-of-possession.
+func (o GetResourceServerProofOfPossessionOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetResourceServerProofOfPossession) bool { return v.Disable }).(pulumi.BoolOutput)
+}
+
+// Mechanism used for proof-of-possession. Only `mtls` is supported.
+func (o GetResourceServerProofOfPossessionOutput) Mechanism() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerProofOfPossession) string { return v.Mechanism }).(pulumi.StringOutput)
+}
+
+// Indicates whether proof-of-possession is required with this resource server.
+func (o GetResourceServerProofOfPossessionOutput) Required() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetResourceServerProofOfPossession) bool { return v.Required }).(pulumi.BoolOutput)
+}
+
+type GetResourceServerProofOfPossessionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerProofOfPossessionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerProofOfPossession)(nil)).Elem()
+}
+
+func (o GetResourceServerProofOfPossessionArrayOutput) ToGetResourceServerProofOfPossessionArrayOutput() GetResourceServerProofOfPossessionArrayOutput {
+	return o
+}
+
+func (o GetResourceServerProofOfPossessionArrayOutput) ToGetResourceServerProofOfPossessionArrayOutputWithContext(ctx context.Context) GetResourceServerProofOfPossessionArrayOutput {
+	return o
+}
+
+func (o GetResourceServerProofOfPossessionArrayOutput) Index(i pulumi.IntInput) GetResourceServerProofOfPossessionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerProofOfPossession {
+		return vs[0].([]GetResourceServerProofOfPossession)[vs[1].(int)]
+	}).(GetResourceServerProofOfPossessionOutput)
+}
+
 type GetResourceServerScopeType struct {
 	// Description of the permission (scope).
 	Description string `pulumi:"description"`
@@ -36486,6 +40439,247 @@ func (o GetResourceServerScopeTypeArrayOutput) Index(i pulumi.IntInput) GetResou
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerScopeType {
 		return vs[0].([]GetResourceServerScopeType)[vs[1].(int)]
 	}).(GetResourceServerScopeTypeOutput)
+}
+
+type GetResourceServerTokenEncryption struct {
+	// Disable token encryption.
+	Disable bool `pulumi:"disable"`
+	// Authorization details for this resource server.
+	EncryptionKeys []GetResourceServerTokenEncryptionEncryptionKey `pulumi:"encryptionKeys"`
+	// Format of the token encryption. Only `compact-nested-jwe` is supported.
+	Format string `pulumi:"format"`
+}
+
+// GetResourceServerTokenEncryptionInput is an input type that accepts GetResourceServerTokenEncryptionArgs and GetResourceServerTokenEncryptionOutput values.
+// You can construct a concrete instance of `GetResourceServerTokenEncryptionInput` via:
+//
+//	GetResourceServerTokenEncryptionArgs{...}
+type GetResourceServerTokenEncryptionInput interface {
+	pulumi.Input
+
+	ToGetResourceServerTokenEncryptionOutput() GetResourceServerTokenEncryptionOutput
+	ToGetResourceServerTokenEncryptionOutputWithContext(context.Context) GetResourceServerTokenEncryptionOutput
+}
+
+type GetResourceServerTokenEncryptionArgs struct {
+	// Disable token encryption.
+	Disable pulumi.BoolInput `pulumi:"disable"`
+	// Authorization details for this resource server.
+	EncryptionKeys GetResourceServerTokenEncryptionEncryptionKeyArrayInput `pulumi:"encryptionKeys"`
+	// Format of the token encryption. Only `compact-nested-jwe` is supported.
+	Format pulumi.StringInput `pulumi:"format"`
+}
+
+func (GetResourceServerTokenEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerTokenEncryption)(nil)).Elem()
+}
+
+func (i GetResourceServerTokenEncryptionArgs) ToGetResourceServerTokenEncryptionOutput() GetResourceServerTokenEncryptionOutput {
+	return i.ToGetResourceServerTokenEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerTokenEncryptionArgs) ToGetResourceServerTokenEncryptionOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerTokenEncryptionOutput)
+}
+
+// GetResourceServerTokenEncryptionArrayInput is an input type that accepts GetResourceServerTokenEncryptionArray and GetResourceServerTokenEncryptionArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerTokenEncryptionArrayInput` via:
+//
+//	GetResourceServerTokenEncryptionArray{ GetResourceServerTokenEncryptionArgs{...} }
+type GetResourceServerTokenEncryptionArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerTokenEncryptionArrayOutput() GetResourceServerTokenEncryptionArrayOutput
+	ToGetResourceServerTokenEncryptionArrayOutputWithContext(context.Context) GetResourceServerTokenEncryptionArrayOutput
+}
+
+type GetResourceServerTokenEncryptionArray []GetResourceServerTokenEncryptionInput
+
+func (GetResourceServerTokenEncryptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerTokenEncryption)(nil)).Elem()
+}
+
+func (i GetResourceServerTokenEncryptionArray) ToGetResourceServerTokenEncryptionArrayOutput() GetResourceServerTokenEncryptionArrayOutput {
+	return i.ToGetResourceServerTokenEncryptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerTokenEncryptionArray) ToGetResourceServerTokenEncryptionArrayOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerTokenEncryptionArrayOutput)
+}
+
+type GetResourceServerTokenEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerTokenEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerTokenEncryption)(nil)).Elem()
+}
+
+func (o GetResourceServerTokenEncryptionOutput) ToGetResourceServerTokenEncryptionOutput() GetResourceServerTokenEncryptionOutput {
+	return o
+}
+
+func (o GetResourceServerTokenEncryptionOutput) ToGetResourceServerTokenEncryptionOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionOutput {
+	return o
+}
+
+// Disable token encryption.
+func (o GetResourceServerTokenEncryptionOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetResourceServerTokenEncryption) bool { return v.Disable }).(pulumi.BoolOutput)
+}
+
+// Authorization details for this resource server.
+func (o GetResourceServerTokenEncryptionOutput) EncryptionKeys() GetResourceServerTokenEncryptionEncryptionKeyArrayOutput {
+	return o.ApplyT(func(v GetResourceServerTokenEncryption) []GetResourceServerTokenEncryptionEncryptionKey {
+		return v.EncryptionKeys
+	}).(GetResourceServerTokenEncryptionEncryptionKeyArrayOutput)
+}
+
+// Format of the token encryption. Only `compact-nested-jwe` is supported.
+func (o GetResourceServerTokenEncryptionOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerTokenEncryption) string { return v.Format }).(pulumi.StringOutput)
+}
+
+type GetResourceServerTokenEncryptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerTokenEncryptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerTokenEncryption)(nil)).Elem()
+}
+
+func (o GetResourceServerTokenEncryptionArrayOutput) ToGetResourceServerTokenEncryptionArrayOutput() GetResourceServerTokenEncryptionArrayOutput {
+	return o
+}
+
+func (o GetResourceServerTokenEncryptionArrayOutput) ToGetResourceServerTokenEncryptionArrayOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionArrayOutput {
+	return o
+}
+
+func (o GetResourceServerTokenEncryptionArrayOutput) Index(i pulumi.IntInput) GetResourceServerTokenEncryptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerTokenEncryption {
+		return vs[0].([]GetResourceServerTokenEncryption)[vs[1].(int)]
+	}).(GetResourceServerTokenEncryptionOutput)
+}
+
+type GetResourceServerTokenEncryptionEncryptionKey struct {
+	// Algorithm used to encrypt the token.
+	Algorithm string `pulumi:"algorithm"`
+	// Key ID.
+	Kid string `pulumi:"kid"`
+	// Name of the encryption key.
+	Name string `pulumi:"name"`
+	// PEM-formatted public key. Must be JSON escaped.
+	Pem string `pulumi:"pem"`
+}
+
+// GetResourceServerTokenEncryptionEncryptionKeyInput is an input type that accepts GetResourceServerTokenEncryptionEncryptionKeyArgs and GetResourceServerTokenEncryptionEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetResourceServerTokenEncryptionEncryptionKeyInput` via:
+//
+//	GetResourceServerTokenEncryptionEncryptionKeyArgs{...}
+type GetResourceServerTokenEncryptionEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetResourceServerTokenEncryptionEncryptionKeyOutput() GetResourceServerTokenEncryptionEncryptionKeyOutput
+	ToGetResourceServerTokenEncryptionEncryptionKeyOutputWithContext(context.Context) GetResourceServerTokenEncryptionEncryptionKeyOutput
+}
+
+type GetResourceServerTokenEncryptionEncryptionKeyArgs struct {
+	// Algorithm used to encrypt the token.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// Key ID.
+	Kid pulumi.StringInput `pulumi:"kid"`
+	// Name of the encryption key.
+	Name pulumi.StringInput `pulumi:"name"`
+	// PEM-formatted public key. Must be JSON escaped.
+	Pem pulumi.StringInput `pulumi:"pem"`
+}
+
+func (GetResourceServerTokenEncryptionEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerTokenEncryptionEncryptionKey)(nil)).Elem()
+}
+
+func (i GetResourceServerTokenEncryptionEncryptionKeyArgs) ToGetResourceServerTokenEncryptionEncryptionKeyOutput() GetResourceServerTokenEncryptionEncryptionKeyOutput {
+	return i.ToGetResourceServerTokenEncryptionEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerTokenEncryptionEncryptionKeyArgs) ToGetResourceServerTokenEncryptionEncryptionKeyOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerTokenEncryptionEncryptionKeyOutput)
+}
+
+// GetResourceServerTokenEncryptionEncryptionKeyArrayInput is an input type that accepts GetResourceServerTokenEncryptionEncryptionKeyArray and GetResourceServerTokenEncryptionEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerTokenEncryptionEncryptionKeyArrayInput` via:
+//
+//	GetResourceServerTokenEncryptionEncryptionKeyArray{ GetResourceServerTokenEncryptionEncryptionKeyArgs{...} }
+type GetResourceServerTokenEncryptionEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutput() GetResourceServerTokenEncryptionEncryptionKeyArrayOutput
+	ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutputWithContext(context.Context) GetResourceServerTokenEncryptionEncryptionKeyArrayOutput
+}
+
+type GetResourceServerTokenEncryptionEncryptionKeyArray []GetResourceServerTokenEncryptionEncryptionKeyInput
+
+func (GetResourceServerTokenEncryptionEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerTokenEncryptionEncryptionKey)(nil)).Elem()
+}
+
+func (i GetResourceServerTokenEncryptionEncryptionKeyArray) ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutput() GetResourceServerTokenEncryptionEncryptionKeyArrayOutput {
+	return i.ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerTokenEncryptionEncryptionKeyArray) ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerTokenEncryptionEncryptionKeyArrayOutput)
+}
+
+type GetResourceServerTokenEncryptionEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerTokenEncryptionEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerTokenEncryptionEncryptionKey)(nil)).Elem()
+}
+
+func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) ToGetResourceServerTokenEncryptionEncryptionKeyOutput() GetResourceServerTokenEncryptionEncryptionKeyOutput {
+	return o
+}
+
+func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) ToGetResourceServerTokenEncryptionEncryptionKeyOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionEncryptionKeyOutput {
+	return o
+}
+
+// Algorithm used to encrypt the token.
+func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerTokenEncryptionEncryptionKey) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// Key ID.
+func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) Kid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerTokenEncryptionEncryptionKey) string { return v.Kid }).(pulumi.StringOutput)
+}
+
+// Name of the encryption key.
+func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerTokenEncryptionEncryptionKey) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// PEM-formatted public key. Must be JSON escaped.
+func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) Pem() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerTokenEncryptionEncryptionKey) string { return v.Pem }).(pulumi.StringOutput)
+}
+
+type GetResourceServerTokenEncryptionEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerTokenEncryptionEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerTokenEncryptionEncryptionKey)(nil)).Elem()
+}
+
+func (o GetResourceServerTokenEncryptionEncryptionKeyArrayOutput) ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutput() GetResourceServerTokenEncryptionEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetResourceServerTokenEncryptionEncryptionKeyArrayOutput) ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetResourceServerTokenEncryptionEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetResourceServerTokenEncryptionEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerTokenEncryptionEncryptionKey {
+		return vs[0].([]GetResourceServerTokenEncryptionEncryptionKey)[vs[1].(int)]
+	}).(GetResourceServerTokenEncryptionEncryptionKeyOutput)
 }
 
 type GetRolePermissionType struct {
@@ -37142,6 +41336,8 @@ type GetTenantFlag struct {
 	MfaShowFactorListOnEnrollment bool `pulumi:"mfaShowFactorListOnEnrollment"`
 	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
 	NoDiscloseEnterpriseConnections bool `pulumi:"noDiscloseEnterpriseConnections"`
+	// Remove `alg` from jwks(JSON Web Key Sets).
+	RemoveAlgFromJwks bool `pulumi:"removeAlgFromJwks"`
 	// This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
 	RequirePushedAuthorizationRequests bool `pulumi:"requirePushedAuthorizationRequests"`
 	// Delete underlying grant when a refresh token is revoked via the Authentication API.
@@ -37204,6 +41400,8 @@ type GetTenantFlagArgs struct {
 	MfaShowFactorListOnEnrollment pulumi.BoolInput `pulumi:"mfaShowFactorListOnEnrollment"`
 	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
 	NoDiscloseEnterpriseConnections pulumi.BoolInput `pulumi:"noDiscloseEnterpriseConnections"`
+	// Remove `alg` from jwks(JSON Web Key Sets).
+	RemoveAlgFromJwks pulumi.BoolInput `pulumi:"removeAlgFromJwks"`
 	// This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
 	RequirePushedAuthorizationRequests pulumi.BoolInput `pulumi:"requirePushedAuthorizationRequests"`
 	// Delete underlying grant when a refresh token is revoked via the Authentication API.
@@ -37368,6 +41566,11 @@ func (o GetTenantFlagOutput) NoDiscloseEnterpriseConnections() pulumi.BoolOutput
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.NoDiscloseEnterpriseConnections }).(pulumi.BoolOutput)
 }
 
+// Remove `alg` from jwks(JSON Web Key Sets).
+func (o GetTenantFlagOutput) RemoveAlgFromJwks() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.RemoveAlgFromJwks }).(pulumi.BoolOutput)
+}
+
 // This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
 func (o GetTenantFlagOutput) RequirePushedAuthorizationRequests() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.RequirePushedAuthorizationRequests }).(pulumi.BoolOutput)
@@ -37401,6 +41604,112 @@ func (o GetTenantFlagArrayOutput) Index(i pulumi.IntInput) GetTenantFlagOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantFlag {
 		return vs[0].([]GetTenantFlag)[vs[1].(int)]
 	}).(GetTenantFlagOutput)
+}
+
+type GetTenantMtl struct {
+	// Disable mTLS settings.
+	Disable bool `pulumi:"disable"`
+	// Enable mTLS endpoint aliases.
+	EnableEndpointAliases bool `pulumi:"enableEndpointAliases"`
+}
+
+// GetTenantMtlInput is an input type that accepts GetTenantMtlArgs and GetTenantMtlOutput values.
+// You can construct a concrete instance of `GetTenantMtlInput` via:
+//
+//	GetTenantMtlArgs{...}
+type GetTenantMtlInput interface {
+	pulumi.Input
+
+	ToGetTenantMtlOutput() GetTenantMtlOutput
+	ToGetTenantMtlOutputWithContext(context.Context) GetTenantMtlOutput
+}
+
+type GetTenantMtlArgs struct {
+	// Disable mTLS settings.
+	Disable pulumi.BoolInput `pulumi:"disable"`
+	// Enable mTLS endpoint aliases.
+	EnableEndpointAliases pulumi.BoolInput `pulumi:"enableEndpointAliases"`
+}
+
+func (GetTenantMtlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantMtl)(nil)).Elem()
+}
+
+func (i GetTenantMtlArgs) ToGetTenantMtlOutput() GetTenantMtlOutput {
+	return i.ToGetTenantMtlOutputWithContext(context.Background())
+}
+
+func (i GetTenantMtlArgs) ToGetTenantMtlOutputWithContext(ctx context.Context) GetTenantMtlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantMtlOutput)
+}
+
+// GetTenantMtlArrayInput is an input type that accepts GetTenantMtlArray and GetTenantMtlArrayOutput values.
+// You can construct a concrete instance of `GetTenantMtlArrayInput` via:
+//
+//	GetTenantMtlArray{ GetTenantMtlArgs{...} }
+type GetTenantMtlArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantMtlArrayOutput() GetTenantMtlArrayOutput
+	ToGetTenantMtlArrayOutputWithContext(context.Context) GetTenantMtlArrayOutput
+}
+
+type GetTenantMtlArray []GetTenantMtlInput
+
+func (GetTenantMtlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantMtl)(nil)).Elem()
+}
+
+func (i GetTenantMtlArray) ToGetTenantMtlArrayOutput() GetTenantMtlArrayOutput {
+	return i.ToGetTenantMtlArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantMtlArray) ToGetTenantMtlArrayOutputWithContext(ctx context.Context) GetTenantMtlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantMtlArrayOutput)
+}
+
+type GetTenantMtlOutput struct{ *pulumi.OutputState }
+
+func (GetTenantMtlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantMtl)(nil)).Elem()
+}
+
+func (o GetTenantMtlOutput) ToGetTenantMtlOutput() GetTenantMtlOutput {
+	return o
+}
+
+func (o GetTenantMtlOutput) ToGetTenantMtlOutputWithContext(ctx context.Context) GetTenantMtlOutput {
+	return o
+}
+
+// Disable mTLS settings.
+func (o GetTenantMtlOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantMtl) bool { return v.Disable }).(pulumi.BoolOutput)
+}
+
+// Enable mTLS endpoint aliases.
+func (o GetTenantMtlOutput) EnableEndpointAliases() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantMtl) bool { return v.EnableEndpointAliases }).(pulumi.BoolOutput)
+}
+
+type GetTenantMtlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantMtlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantMtl)(nil)).Elem()
+}
+
+func (o GetTenantMtlArrayOutput) ToGetTenantMtlArrayOutput() GetTenantMtlArrayOutput {
+	return o
+}
+
+func (o GetTenantMtlArrayOutput) ToGetTenantMtlArrayOutputWithContext(ctx context.Context) GetTenantMtlArrayOutput {
+	return o
+}
+
+func (o GetTenantMtlArrayOutput) Index(i pulumi.IntInput) GetTenantMtlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantMtl {
+		return vs[0].([]GetTenantMtl)[vs[1].(int)]
+	}).(GetTenantMtlOutput)
 }
 
 type GetTenantSession struct {
@@ -37834,6 +42143,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsPrivateKeyJwtPtrInput)(nil)).Elem(), ClientCredentialsPrivateKeyJwtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsPrivateKeyJwtCredentialInput)(nil)).Elem(), ClientCredentialsPrivateKeyJwtCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsPrivateKeyJwtCredentialArrayInput)(nil)).Elem(), ClientCredentialsPrivateKeyJwtCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsSelfSignedTlsClientAuthInput)(nil)).Elem(), ClientCredentialsSelfSignedTlsClientAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsSelfSignedTlsClientAuthPtrInput)(nil)).Elem(), ClientCredentialsSelfSignedTlsClientAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsSelfSignedTlsClientAuthCredentialInput)(nil)).Elem(), ClientCredentialsSelfSignedTlsClientAuthCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsSelfSignedTlsClientAuthCredentialArrayInput)(nil)).Elem(), ClientCredentialsSelfSignedTlsClientAuthCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsSignedRequestObjectInput)(nil)).Elem(), ClientCredentialsSignedRequestObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsSignedRequestObjectPtrInput)(nil)).Elem(), ClientCredentialsSignedRequestObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsSignedRequestObjectCredentialInput)(nil)).Elem(), ClientCredentialsSignedRequestObjectCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsSignedRequestObjectCredentialArrayInput)(nil)).Elem(), ClientCredentialsSignedRequestObjectCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsTlsClientAuthInput)(nil)).Elem(), ClientCredentialsTlsClientAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsTlsClientAuthPtrInput)(nil)).Elem(), ClientCredentialsTlsClientAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsTlsClientAuthCredentialInput)(nil)).Elem(), ClientCredentialsTlsClientAuthCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsTlsClientAuthCredentialArrayInput)(nil)).Elem(), ClientCredentialsTlsClientAuthCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientDefaultOrganizationInput)(nil)).Elem(), ClientDefaultOrganizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientDefaultOrganizationPtrInput)(nil)).Elem(), ClientDefaultOrganizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientJwtConfigurationInput)(nil)).Elem(), ClientJwtConfigurationArgs{})
@@ -37922,6 +42243,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailProviderSettingsHeadersPtrInput)(nil)).Elem(), EmailProviderSettingsHeadersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailProviderSettingsMessageInput)(nil)).Elem(), EmailProviderSettingsMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailProviderSettingsMessagePtrInput)(nil)).Elem(), EmailProviderSettingsMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionKeyManagerCustomerProvidedRootKeyInput)(nil)).Elem(), EncryptionKeyManagerCustomerProvidedRootKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionKeyManagerCustomerProvidedRootKeyPtrInput)(nil)).Elem(), EncryptionKeyManagerCustomerProvidedRootKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionKeyManagerEncryptionKeyInput)(nil)).Elem(), EncryptionKeyManagerEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionKeyManagerEncryptionKeyArrayInput)(nil)).Elem(), EncryptionKeyManagerEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FormLanguageInput)(nil)).Elem(), FormLanguageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FormLanguageArrayInput)(nil)).Elem(), FormLanguageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FormMessageInput)(nil)).Elem(), FormMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FormMessageArrayInput)(nil)).Elem(), FormMessageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianDuoInput)(nil)).Elem(), GuardianDuoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianDuoPtrInput)(nil)).Elem(), GuardianDuoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPhoneInput)(nil)).Elem(), GuardianPhoneArgs{})
@@ -37961,8 +42290,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenPartialsScreenPartialInput)(nil)).Elem(), PromptScreenPartialsScreenPartialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenPartialsScreenPartialArrayInput)(nil)).Elem(), PromptScreenPartialsScreenPartialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenPartialsScreenPartialInsertionPointsInput)(nil)).Elem(), PromptScreenPartialsScreenPartialInsertionPointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerAuthorizationDetailInput)(nil)).Elem(), ResourceServerAuthorizationDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerAuthorizationDetailArrayInput)(nil)).Elem(), ResourceServerAuthorizationDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerProofOfPossessionInput)(nil)).Elem(), ResourceServerProofOfPossessionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerProofOfPossessionPtrInput)(nil)).Elem(), ResourceServerProofOfPossessionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopesScopeInput)(nil)).Elem(), ResourceServerScopesScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopesScopeArrayInput)(nil)).Elem(), ResourceServerScopesScopeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerTokenEncryptionInput)(nil)).Elem(), ResourceServerTokenEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerTokenEncryptionPtrInput)(nil)).Elem(), ResourceServerTokenEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerTokenEncryptionEncryptionKeyInput)(nil)).Elem(), ResourceServerTokenEncryptionEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerTokenEncryptionEncryptionKeyPtrInput)(nil)).Elem(), ResourceServerTokenEncryptionEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionsPermissionInput)(nil)).Elem(), RolePermissionsPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionsPermissionArrayInput)(nil)).Elem(), RolePermissionsPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SelfServiceProfileBrandingInput)(nil)).Elem(), SelfServiceProfileBrandingArgs{})
@@ -37973,6 +42310,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SelfServiceProfileUserAttributeArrayInput)(nil)).Elem(), SelfServiceProfileUserAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantFlagsInput)(nil)).Elem(), TenantFlagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantFlagsPtrInput)(nil)).Elem(), TenantFlagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantMtlsInput)(nil)).Elem(), TenantMtlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantMtlsPtrInput)(nil)).Elem(), TenantMtlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantSessionCookieInput)(nil)).Elem(), TenantSessionCookieArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantSessionCookiePtrInput)(nil)).Elem(), TenantSessionCookieArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantSessionsInput)(nil)).Elem(), TenantSessionsArgs{})
@@ -38083,6 +42422,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonZendeskArrayInput)(nil)).Elem(), GetClientAddonZendeskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonZoomInput)(nil)).Elem(), GetClientAddonZoomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonZoomArrayInput)(nil)).Elem(), GetClientAddonZoomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientClientAuthenticationMethodInput)(nil)).Elem(), GetClientClientAuthenticationMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientClientAuthenticationMethodArrayInput)(nil)).Elem(), GetClientClientAuthenticationMethodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientClientAuthenticationMethodPrivateKeyJwtInput)(nil)).Elem(), GetClientClientAuthenticationMethodPrivateKeyJwtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientClientAuthenticationMethodPrivateKeyJwtArrayInput)(nil)).Elem(), GetClientClientAuthenticationMethodPrivateKeyJwtArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientClientAuthenticationMethodPrivateKeyJwtCredentialInput)(nil)).Elem(), GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayInput)(nil)).Elem(), GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientClientAuthenticationMethodSelfSignedTlsClientAuthInput)(nil)).Elem(), GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayInput)(nil)).Elem(), GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialInput)(nil)).Elem(), GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayInput)(nil)).Elem(), GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientClientAuthenticationMethodTlsClientAuthInput)(nil)).Elem(), GetClientClientAuthenticationMethodTlsClientAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientClientAuthenticationMethodTlsClientAuthArrayInput)(nil)).Elem(), GetClientClientAuthenticationMethodTlsClientAuthArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientClientAuthenticationMethodTlsClientAuthCredentialInput)(nil)).Elem(), GetClientClientAuthenticationMethodTlsClientAuthCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayInput)(nil)).Elem(), GetClientClientAuthenticationMethodTlsClientAuthCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientDefaultOrganizationInput)(nil)).Elem(), GetClientDefaultOrganizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientDefaultOrganizationArrayInput)(nil)).Elem(), GetClientDefaultOrganizationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientJwtConfigurationInput)(nil)).Elem(), GetClientJwtConfigurationArgs{})
@@ -38101,6 +42454,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginFacebookArrayInput)(nil)).Elem(), GetClientNativeSocialLoginFacebookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientRefreshTokenInput)(nil)).Elem(), GetClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientRefreshTokenArrayInput)(nil)).Elem(), GetClientRefreshTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectInput)(nil)).Elem(), GetClientSignedRequestObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectArrayInput)(nil)).Elem(), GetClientSignedRequestObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectCredentialInput)(nil)).Elem(), GetClientSignedRequestObjectCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectCredentialArrayInput)(nil)).Elem(), GetClientSignedRequestObjectCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionInput)(nil)).Elem(), GetConnectionOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionArrayInput)(nil)).Elem(), GetConnectionOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeInput)(nil)).Elem(), GetConnectionOptionAttributeArgs{})
@@ -38165,6 +42522,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationMappingArrayInput)(nil)).Elem(), GetConnectionScimConfigurationMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeInput)(nil)).Elem(), GetCustomDomainVerificationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeArrayInput)(nil)).Elem(), GetCustomDomainVerificationTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFormLanguageInput)(nil)).Elem(), GetFormLanguageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFormLanguageArrayInput)(nil)).Elem(), GetFormLanguageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFormMessageInput)(nil)).Elem(), GetFormMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFormMessageArrayInput)(nil)).Elem(), GetFormMessageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBrandingInput)(nil)).Elem(), GetOrganizationBrandingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBrandingArrayInput)(nil)).Elem(), GetOrganizationBrandingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationConnectionTypeInput)(nil)).Elem(), GetOrganizationConnectionTypeArgs{})
@@ -38181,8 +42542,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenPartialsScreenPartialArrayInput)(nil)).Elem(), GetPromptScreenPartialsScreenPartialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenPartialsScreenPartialInsertionPointInput)(nil)).Elem(), GetPromptScreenPartialsScreenPartialInsertionPointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenPartialsScreenPartialInsertionPointArrayInput)(nil)).Elem(), GetPromptScreenPartialsScreenPartialInsertionPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAuthorizationDetailInput)(nil)).Elem(), GetResourceServerAuthorizationDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAuthorizationDetailArrayInput)(nil)).Elem(), GetResourceServerAuthorizationDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerProofOfPossessionInput)(nil)).Elem(), GetResourceServerProofOfPossessionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerProofOfPossessionArrayInput)(nil)).Elem(), GetResourceServerProofOfPossessionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeTypeInput)(nil)).Elem(), GetResourceServerScopeTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeTypeArrayInput)(nil)).Elem(), GetResourceServerScopeTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerTokenEncryptionInput)(nil)).Elem(), GetResourceServerTokenEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerTokenEncryptionArrayInput)(nil)).Elem(), GetResourceServerTokenEncryptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerTokenEncryptionEncryptionKeyInput)(nil)).Elem(), GetResourceServerTokenEncryptionEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerTokenEncryptionEncryptionKeyArrayInput)(nil)).Elem(), GetResourceServerTokenEncryptionEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionTypeInput)(nil)).Elem(), GetRolePermissionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionTypeArrayInput)(nil)).Elem(), GetRolePermissionTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileBrandingInput)(nil)).Elem(), GetSelfServiceProfileBrandingArgs{})
@@ -38195,6 +42564,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSigningKeysSigningKeyArrayInput)(nil)).Elem(), GetSigningKeysSigningKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantFlagInput)(nil)).Elem(), GetTenantFlagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantFlagArrayInput)(nil)).Elem(), GetTenantFlagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantMtlInput)(nil)).Elem(), GetTenantMtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantMtlArrayInput)(nil)).Elem(), GetTenantMtlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionInput)(nil)).Elem(), GetTenantSessionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionArrayInput)(nil)).Elem(), GetTenantSessionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionCookyInput)(nil)).Elem(), GetTenantSessionCookyArgs{})
@@ -38313,6 +42684,18 @@ func init() {
 	pulumi.RegisterOutputType(ClientCredentialsPrivateKeyJwtPtrOutput{})
 	pulumi.RegisterOutputType(ClientCredentialsPrivateKeyJwtCredentialOutput{})
 	pulumi.RegisterOutputType(ClientCredentialsPrivateKeyJwtCredentialArrayOutput{})
+	pulumi.RegisterOutputType(ClientCredentialsSelfSignedTlsClientAuthOutput{})
+	pulumi.RegisterOutputType(ClientCredentialsSelfSignedTlsClientAuthPtrOutput{})
+	pulumi.RegisterOutputType(ClientCredentialsSelfSignedTlsClientAuthCredentialOutput{})
+	pulumi.RegisterOutputType(ClientCredentialsSelfSignedTlsClientAuthCredentialArrayOutput{})
+	pulumi.RegisterOutputType(ClientCredentialsSignedRequestObjectOutput{})
+	pulumi.RegisterOutputType(ClientCredentialsSignedRequestObjectPtrOutput{})
+	pulumi.RegisterOutputType(ClientCredentialsSignedRequestObjectCredentialOutput{})
+	pulumi.RegisterOutputType(ClientCredentialsSignedRequestObjectCredentialArrayOutput{})
+	pulumi.RegisterOutputType(ClientCredentialsTlsClientAuthOutput{})
+	pulumi.RegisterOutputType(ClientCredentialsTlsClientAuthPtrOutput{})
+	pulumi.RegisterOutputType(ClientCredentialsTlsClientAuthCredentialOutput{})
+	pulumi.RegisterOutputType(ClientCredentialsTlsClientAuthCredentialArrayOutput{})
 	pulumi.RegisterOutputType(ClientDefaultOrganizationOutput{})
 	pulumi.RegisterOutputType(ClientDefaultOrganizationPtrOutput{})
 	pulumi.RegisterOutputType(ClientJwtConfigurationOutput{})
@@ -38401,6 +42784,14 @@ func init() {
 	pulumi.RegisterOutputType(EmailProviderSettingsHeadersPtrOutput{})
 	pulumi.RegisterOutputType(EmailProviderSettingsMessageOutput{})
 	pulumi.RegisterOutputType(EmailProviderSettingsMessagePtrOutput{})
+	pulumi.RegisterOutputType(EncryptionKeyManagerCustomerProvidedRootKeyOutput{})
+	pulumi.RegisterOutputType(EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionKeyManagerEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(EncryptionKeyManagerEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(FormLanguageOutput{})
+	pulumi.RegisterOutputType(FormLanguageArrayOutput{})
+	pulumi.RegisterOutputType(FormMessageOutput{})
+	pulumi.RegisterOutputType(FormMessageArrayOutput{})
 	pulumi.RegisterOutputType(GuardianDuoOutput{})
 	pulumi.RegisterOutputType(GuardianDuoPtrOutput{})
 	pulumi.RegisterOutputType(GuardianPhoneOutput{})
@@ -38440,8 +42831,16 @@ func init() {
 	pulumi.RegisterOutputType(PromptScreenPartialsScreenPartialOutput{})
 	pulumi.RegisterOutputType(PromptScreenPartialsScreenPartialArrayOutput{})
 	pulumi.RegisterOutputType(PromptScreenPartialsScreenPartialInsertionPointsOutput{})
+	pulumi.RegisterOutputType(ResourceServerAuthorizationDetailOutput{})
+	pulumi.RegisterOutputType(ResourceServerAuthorizationDetailArrayOutput{})
+	pulumi.RegisterOutputType(ResourceServerProofOfPossessionOutput{})
+	pulumi.RegisterOutputType(ResourceServerProofOfPossessionPtrOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopesScopeOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopesScopeArrayOutput{})
+	pulumi.RegisterOutputType(ResourceServerTokenEncryptionOutput{})
+	pulumi.RegisterOutputType(ResourceServerTokenEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(ResourceServerTokenEncryptionEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(ResourceServerTokenEncryptionEncryptionKeyPtrOutput{})
 	pulumi.RegisterOutputType(RolePermissionsPermissionOutput{})
 	pulumi.RegisterOutputType(RolePermissionsPermissionArrayOutput{})
 	pulumi.RegisterOutputType(SelfServiceProfileBrandingOutput{})
@@ -38452,6 +42851,8 @@ func init() {
 	pulumi.RegisterOutputType(SelfServiceProfileUserAttributeArrayOutput{})
 	pulumi.RegisterOutputType(TenantFlagsOutput{})
 	pulumi.RegisterOutputType(TenantFlagsPtrOutput{})
+	pulumi.RegisterOutputType(TenantMtlsOutput{})
+	pulumi.RegisterOutputType(TenantMtlsPtrOutput{})
 	pulumi.RegisterOutputType(TenantSessionCookieOutput{})
 	pulumi.RegisterOutputType(TenantSessionCookiePtrOutput{})
 	pulumi.RegisterOutputType(TenantSessionsOutput{})
@@ -38562,6 +42963,20 @@ func init() {
 	pulumi.RegisterOutputType(GetClientAddonZendeskArrayOutput{})
 	pulumi.RegisterOutputType(GetClientAddonZoomOutput{})
 	pulumi.RegisterOutputType(GetClientAddonZoomArrayOutput{})
+	pulumi.RegisterOutputType(GetClientClientAuthenticationMethodOutput{})
+	pulumi.RegisterOutputType(GetClientClientAuthenticationMethodArrayOutput{})
+	pulumi.RegisterOutputType(GetClientClientAuthenticationMethodPrivateKeyJwtOutput{})
+	pulumi.RegisterOutputType(GetClientClientAuthenticationMethodPrivateKeyJwtArrayOutput{})
+	pulumi.RegisterOutputType(GetClientClientAuthenticationMethodPrivateKeyJwtCredentialOutput{})
+	pulumi.RegisterOutputType(GetClientClientAuthenticationMethodPrivateKeyJwtCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetClientClientAuthenticationMethodSelfSignedTlsClientAuthOutput{})
+	pulumi.RegisterOutputType(GetClientClientAuthenticationMethodSelfSignedTlsClientAuthArrayOutput{})
+	pulumi.RegisterOutputType(GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialOutput{})
+	pulumi.RegisterOutputType(GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetClientClientAuthenticationMethodTlsClientAuthOutput{})
+	pulumi.RegisterOutputType(GetClientClientAuthenticationMethodTlsClientAuthArrayOutput{})
+	pulumi.RegisterOutputType(GetClientClientAuthenticationMethodTlsClientAuthCredentialOutput{})
+	pulumi.RegisterOutputType(GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetClientDefaultOrganizationOutput{})
 	pulumi.RegisterOutputType(GetClientDefaultOrganizationArrayOutput{})
 	pulumi.RegisterOutputType(GetClientJwtConfigurationOutput{})
@@ -38580,6 +42995,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClientNativeSocialLoginFacebookArrayOutput{})
 	pulumi.RegisterOutputType(GetClientRefreshTokenOutput{})
 	pulumi.RegisterOutputType(GetClientRefreshTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetClientSignedRequestObjectOutput{})
+	pulumi.RegisterOutputType(GetClientSignedRequestObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetClientSignedRequestObjectCredentialOutput{})
+	pulumi.RegisterOutputType(GetClientSignedRequestObjectCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAttributeOutput{})
@@ -38644,6 +43063,10 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionScimConfigurationMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetFormLanguageOutput{})
+	pulumi.RegisterOutputType(GetFormLanguageArrayOutput{})
+	pulumi.RegisterOutputType(GetFormMessageOutput{})
+	pulumi.RegisterOutputType(GetFormMessageArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBrandingOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBrandingArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationConnectionTypeOutput{})
@@ -38660,8 +43083,16 @@ func init() {
 	pulumi.RegisterOutputType(GetPromptScreenPartialsScreenPartialArrayOutput{})
 	pulumi.RegisterOutputType(GetPromptScreenPartialsScreenPartialInsertionPointOutput{})
 	pulumi.RegisterOutputType(GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerAuthorizationDetailOutput{})
+	pulumi.RegisterOutputType(GetResourceServerAuthorizationDetailArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerProofOfPossessionOutput{})
+	pulumi.RegisterOutputType(GetResourceServerProofOfPossessionArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceServerScopeTypeOutput{})
 	pulumi.RegisterOutputType(GetResourceServerScopeTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerTokenEncryptionOutput{})
+	pulumi.RegisterOutputType(GetResourceServerTokenEncryptionArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerTokenEncryptionEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetResourceServerTokenEncryptionEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetRolePermissionTypeOutput{})
 	pulumi.RegisterOutputType(GetRolePermissionTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetSelfServiceProfileBrandingOutput{})
@@ -38674,6 +43105,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSigningKeysSigningKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantFlagOutput{})
 	pulumi.RegisterOutputType(GetTenantFlagArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantMtlOutput{})
+	pulumi.RegisterOutputType(GetTenantMtlArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantSessionOutput{})
 	pulumi.RegisterOutputType(GetTenantSessionArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantSessionCookyOutput{})

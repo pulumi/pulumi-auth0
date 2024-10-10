@@ -80,11 +80,15 @@ type LookupClientResult struct {
 	Callbacks []string `pulumi:"callbacks"`
 	// List of audiences/realms for SAML protocol. Used by the wsfed addon.
 	ClientAliases []string `pulumi:"clientAliases"`
+	// Defines client authentication methods.
+	ClientAuthenticationMethods []GetClientClientAuthenticationMethod `pulumi:"clientAuthenticationMethods"`
 	// The ID of the client. If not provided, `name` must be set.
 	ClientId *string `pulumi:"clientId"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata map[string]string `pulumi:"clientMetadata"`
 	ClientSecret   string            `pulumi:"clientSecret"`
+	// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
+	ComplianceLevel string `pulumi:"complianceLevel"`
 	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
 	CrossOriginAuth bool `pulumi:"crossOriginAuth"`
 	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
@@ -131,15 +135,19 @@ type LookupClientResult struct {
 	OrganizationUsage string `pulumi:"organizationUsage"`
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshTokens []GetClientRefreshToken `pulumi:"refreshTokens"`
+	// Makes the use of Proof-of-Possession mandatory for this client.
+	RequireProofOfPossession bool `pulumi:"requireProofOfPossession"`
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests bool `pulumi:"requirePushedAuthorizationRequests"`
+	// Configuration for JWT-secured Authorization Requests(JAR).
+	SignedRequestObjects []GetClientSignedRequestObject `pulumi:"signedRequestObjects"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 	SigningKeys []map[string]string `pulumi:"signingKeys"`
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso bool `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
 	SsoDisabled bool `pulumi:"ssoDisabled"`
-	// The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic). Managing a client's authentication method can be done via the `ClientCredentials` resource.
+	// The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic), Managing a client's authentication method can be done via the `ClientCredentials` resource.
 	TokenEndpointAuthMethod string `pulumi:"tokenEndpointAuthMethod"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins []string `pulumi:"webOrigins"`
@@ -226,6 +234,11 @@ func (o LookupClientResultOutput) ClientAliases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupClientResult) []string { return v.ClientAliases }).(pulumi.StringArrayOutput)
 }
 
+// Defines client authentication methods.
+func (o LookupClientResultOutput) ClientAuthenticationMethods() GetClientClientAuthenticationMethodArrayOutput {
+	return o.ApplyT(func(v LookupClientResult) []GetClientClientAuthenticationMethod { return v.ClientAuthenticationMethods }).(GetClientClientAuthenticationMethodArrayOutput)
+}
+
 // The ID of the client. If not provided, `name` must be set.
 func (o LookupClientResultOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupClientResult) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -238,6 +251,11 @@ func (o LookupClientResultOutput) ClientMetadata() pulumi.StringMapOutput {
 
 func (o LookupClientResultOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
+func (o LookupClientResultOutput) ComplianceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClientResult) string { return v.ComplianceLevel }).(pulumi.StringOutput)
 }
 
 // Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
@@ -355,9 +373,19 @@ func (o LookupClientResultOutput) RefreshTokens() GetClientRefreshTokenArrayOutp
 	return o.ApplyT(func(v LookupClientResult) []GetClientRefreshToken { return v.RefreshTokens }).(GetClientRefreshTokenArrayOutput)
 }
 
+// Makes the use of Proof-of-Possession mandatory for this client.
+func (o LookupClientResultOutput) RequireProofOfPossession() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClientResult) bool { return v.RequireProofOfPossession }).(pulumi.BoolOutput)
+}
+
 // Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 func (o LookupClientResultOutput) RequirePushedAuthorizationRequests() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClientResult) bool { return v.RequirePushedAuthorizationRequests }).(pulumi.BoolOutput)
+}
+
+// Configuration for JWT-secured Authorization Requests(JAR).
+func (o LookupClientResultOutput) SignedRequestObjects() GetClientSignedRequestObjectArrayOutput {
+	return o.ApplyT(func(v LookupClientResult) []GetClientSignedRequestObject { return v.SignedRequestObjects }).(GetClientSignedRequestObjectArrayOutput)
 }
 
 // List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
@@ -375,7 +403,7 @@ func (o LookupClientResultOutput) SsoDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClientResult) bool { return v.SsoDisabled }).(pulumi.BoolOutput)
 }
 
-// The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic). Managing a client's authentication method can be done via the `ClientCredentials` resource.
+// The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic), Managing a client's authentication method can be done via the `ClientCredentials` resource.
 func (o LookupClientResultOutput) TokenEndpointAuthMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.TokenEndpointAuthMethod }).(pulumi.StringOutput)
 }

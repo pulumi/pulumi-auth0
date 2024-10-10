@@ -7,6 +7,7 @@ import com.pulumi.auth0.TenantArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.TenantState;
 import com.pulumi.auth0.outputs.TenantFlags;
+import com.pulumi.auth0.outputs.TenantMtls;
 import com.pulumi.auth0.outputs.TenantSessionCookie;
 import com.pulumi.auth0.outputs.TenantSessions;
 import com.pulumi.core.Output;
@@ -108,6 +109,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/tenant:Tenant")
 public class Tenant extends com.pulumi.resources.CustomResource {
     /**
+     * List of supported ACR values.
+     * 
+     */
+    @Export(name="acrValuesSupporteds", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> acrValuesSupporteds;
+
+    /**
+     * @return List of supported ACR values.
+     * 
+     */
+    public Output<List<String>> acrValuesSupporteds() {
+        return this.acrValuesSupporteds;
+    }
+    /**
      * Whether to accept an organization name instead of an ID on auth endpoints.
      * 
      */
@@ -192,6 +207,20 @@ public class Tenant extends com.pulumi.resources.CustomResource {
         return this.defaultRedirectionUri;
     }
     /**
+     * Disable list of supported ACR values.
+     * 
+     */
+    @Export(name="disableAcrValuesSupported", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> disableAcrValuesSupported;
+
+    /**
+     * @return Disable list of supported ACR values.
+     * 
+     */
+    public Output<Boolean> disableAcrValuesSupported() {
+        return this.disableAcrValuesSupported;
+    }
+    /**
      * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      * 
      */
@@ -248,6 +277,20 @@ public class Tenant extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.idleSessionLifetime);
     }
     /**
+     * Configuration for mTLS.
+     * 
+     */
+    @Export(name="mtls", refs={TenantMtls.class}, tree="[0]")
+    private Output<TenantMtls> mtls;
+
+    /**
+     * @return Configuration for mTLS.
+     * 
+     */
+    public Output<TenantMtls> mtls() {
+        return this.mtls;
+    }
+    /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      * 
      */
@@ -260,6 +303,20 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      */
     public Output<String> pictureUrl() {
         return this.pictureUrl;
+    }
+    /**
+     * Enable pushed authorization requests.
+     * 
+     */
+    @Export(name="pushedAuthorizationRequestsSupported", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> pushedAuthorizationRequestsSupported;
+
+    /**
+     * @return Enable pushed authorization requests.
+     * 
+     */
+    public Output<Boolean> pushedAuthorizationRequestsSupported() {
+        return this.pushedAuthorizationRequestsSupported;
     }
     /**
      * Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.

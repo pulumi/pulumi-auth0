@@ -80,6 +80,26 @@ export type EmailTemplate = import("./emailTemplate").EmailTemplate;
 export const EmailTemplate: typeof import("./emailTemplate").EmailTemplate = null as any;
 utilities.lazyLoad(exports, ["EmailTemplate"], () => require("./emailTemplate"));
 
+export { EncryptionKeyManagerArgs, EncryptionKeyManagerState } from "./encryptionKeyManager";
+export type EncryptionKeyManager = import("./encryptionKeyManager").EncryptionKeyManager;
+export const EncryptionKeyManager: typeof import("./encryptionKeyManager").EncryptionKeyManager = null as any;
+utilities.lazyLoad(exports, ["EncryptionKeyManager"], () => require("./encryptionKeyManager"));
+
+export { FlowArgs, FlowState } from "./flow";
+export type Flow = import("./flow").Flow;
+export const Flow: typeof import("./flow").Flow = null as any;
+utilities.lazyLoad(exports, ["Flow"], () => require("./flow"));
+
+export { FlowVaultConnectionArgs, FlowVaultConnectionState } from "./flowVaultConnection";
+export type FlowVaultConnection = import("./flowVaultConnection").FlowVaultConnection;
+export const FlowVaultConnection: typeof import("./flowVaultConnection").FlowVaultConnection = null as any;
+utilities.lazyLoad(exports, ["FlowVaultConnection"], () => require("./flowVaultConnection"));
+
+export { FormArgs, FormState } from "./form";
+export type Form = import("./form").Form;
+export const Form: typeof import("./form").Form = null as any;
+utilities.lazyLoad(exports, ["Form"], () => require("./form"));
+
 export { GetAttackProtectionResult } from "./getAttackProtection";
 export const getAttackProtection: typeof import("./getAttackProtection").getAttackProtection = null as any;
 export const getAttackProtectionOutput: typeof import("./getAttackProtection").getAttackProtectionOutput = null as any;
@@ -114,6 +134,21 @@ export { GetCustomDomainResult } from "./getCustomDomain";
 export const getCustomDomain: typeof import("./getCustomDomain").getCustomDomain = null as any;
 export const getCustomDomainOutput: typeof import("./getCustomDomain").getCustomDomainOutput = null as any;
 utilities.lazyLoad(exports, ["getCustomDomain","getCustomDomainOutput"], () => require("./getCustomDomain"));
+
+export { GetFlowArgs, GetFlowResult, GetFlowOutputArgs } from "./getFlow";
+export const getFlow: typeof import("./getFlow").getFlow = null as any;
+export const getFlowOutput: typeof import("./getFlow").getFlowOutput = null as any;
+utilities.lazyLoad(exports, ["getFlow","getFlowOutput"], () => require("./getFlow"));
+
+export { GetFlowVaultConnectionArgs, GetFlowVaultConnectionResult, GetFlowVaultConnectionOutputArgs } from "./getFlowVaultConnection";
+export const getFlowVaultConnection: typeof import("./getFlowVaultConnection").getFlowVaultConnection = null as any;
+export const getFlowVaultConnectionOutput: typeof import("./getFlowVaultConnection").getFlowVaultConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getFlowVaultConnection","getFlowVaultConnectionOutput"], () => require("./getFlowVaultConnection"));
+
+export { GetFormArgs, GetFormResult, GetFormOutputArgs } from "./getForm";
+export const getForm: typeof import("./getForm").getForm = null as any;
+export const getFormOutput: typeof import("./getForm").getFormOutput = null as any;
+utilities.lazyLoad(exports, ["getForm","getFormOutput"], () => require("./getForm"));
 
 export { GetOrganizationArgs, GetOrganizationResult, GetOrganizationOutputArgs } from "./getOrganization";
 export const getOrganization: typeof import("./getOrganization").getOrganization = null as any;
@@ -179,6 +214,11 @@ export { OrganizationArgs, OrganizationState } from "./organization";
 export type Organization = import("./organization").Organization;
 export const Organization: typeof import("./organization").Organization = null as any;
 utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
+
+export { OrganizationClientGrantArgs, OrganizationClientGrantState } from "./organizationClientGrant";
+export type OrganizationClientGrant = import("./organizationClientGrant").OrganizationClientGrant;
+export const OrganizationClientGrant: typeof import("./organizationClientGrant").OrganizationClientGrant = null as any;
+utilities.lazyLoad(exports, ["OrganizationClientGrant"], () => require("./organizationClientGrant"));
 
 export { OrganizationConnectionArgs, OrganizationConnectionState } from "./organizationConnection";
 export type OrganizationConnection = import("./organizationConnection").OrganizationConnection;
@@ -374,6 +414,14 @@ const _module = {
                 return new EmailProvider(name, <any>undefined, { urn })
             case "auth0:index/emailTemplate:EmailTemplate":
                 return new EmailTemplate(name, <any>undefined, { urn })
+            case "auth0:index/encryptionKeyManager:EncryptionKeyManager":
+                return new EncryptionKeyManager(name, <any>undefined, { urn })
+            case "auth0:index/flow:Flow":
+                return new Flow(name, <any>undefined, { urn })
+            case "auth0:index/flowVaultConnection:FlowVaultConnection":
+                return new FlowVaultConnection(name, <any>undefined, { urn })
+            case "auth0:index/form:Form":
+                return new Form(name, <any>undefined, { urn })
             case "auth0:index/guardian:Guardian":
                 return new Guardian(name, <any>undefined, { urn })
             case "auth0:index/hook:Hook":
@@ -382,6 +430,8 @@ const _module = {
                 return new LogStream(name, <any>undefined, { urn })
             case "auth0:index/organization:Organization":
                 return new Organization(name, <any>undefined, { urn })
+            case "auth0:index/organizationClientGrant:OrganizationClientGrant":
+                return new OrganizationClientGrant(name, <any>undefined, { urn })
             case "auth0:index/organizationConnection:OrganizationConnection":
                 return new OrganizationConnection(name, <any>undefined, { urn })
             case "auth0:index/organizationConnections:OrganizationConnections":
@@ -460,10 +510,15 @@ pulumi.runtime.registerResourceModule("auth0", "index/customDomain", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/customDomainVerification", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/emailProvider", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/emailTemplate", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/encryptionKeyManager", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/flow", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/flowVaultConnection", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/form", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/guardian", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/hook", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/logStream", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organization", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/organizationClientGrant", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationConnection", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationConnections", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationMember", _module)

@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ClientJwtConfiguration
     {
         /// <summary>
-        /// Algorithm used to sign JWTs.
+        /// Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
         /// </summary>
         public readonly string? Alg;
         /// <summary>
