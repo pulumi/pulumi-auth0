@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -99,9 +104,6 @@ def get_prompt_screen_partials(prompt_type: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         prompt_type=pulumi.get(__ret__, 'prompt_type'),
         screen_partials=pulumi.get(__ret__, 'screen_partials'))
-
-
-@_utilities.lift_output_func(get_prompt_screen_partials)
 def get_prompt_screen_partials_output(prompt_type: Optional[pulumi.Input[str]] = None,
                                       screen_partials: Optional[pulumi.Input[Optional[Sequence[Union['GetPromptScreenPartialsScreenPartialArgs', 'GetPromptScreenPartialsScreenPartialArgsDict']]]]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPromptScreenPartialsResult]:
@@ -121,4 +123,12 @@ def get_prompt_screen_partials_output(prompt_type: Optional[pulumi.Input[str]] =
     :param str prompt_type: The type of prompt to customize.
     :param Sequence[Union['GetPromptScreenPartialsScreenPartialArgs', 'GetPromptScreenPartialsScreenPartialArgsDict']] screen_partials: The screen partials associated with the prompt type.
     """
-    ...
+    __args__ = dict()
+    __args__['promptType'] = prompt_type
+    __args__['screenPartials'] = screen_partials
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('auth0:index/getPromptScreenPartials:getPromptScreenPartials', __args__, opts=opts, typ=GetPromptScreenPartialsResult)
+    return __ret__.apply(lambda __response__: GetPromptScreenPartialsResult(
+        id=pulumi.get(__response__, 'id'),
+        prompt_type=pulumi.get(__response__, 'prompt_type'),
+        screen_partials=pulumi.get(__response__, 'screen_partials')))

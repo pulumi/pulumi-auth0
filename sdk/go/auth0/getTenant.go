@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.LookupTenant(ctx, nil, nil)
+//			_, err := auth0.LookupTenant(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
