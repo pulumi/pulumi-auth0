@@ -117,6 +117,11 @@ public final class TenantFlags {
      */
     private @Nullable Boolean noDiscloseEnterpriseConnections;
     /**
+     * @return Remove `alg` from jwks(JSON Web Key Sets).
+     * 
+     */
+    private @Nullable Boolean removeAlgFromJwks;
+    /**
      * @return This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
      * @deprecated
@@ -285,6 +290,13 @@ public final class TenantFlags {
         return Optional.ofNullable(this.noDiscloseEnterpriseConnections);
     }
     /**
+     * @return Remove `alg` from jwks(JSON Web Key Sets).
+     * 
+     */
+    public Optional<Boolean> removeAlgFromJwks() {
+        return Optional.ofNullable(this.removeAlgFromJwks);
+    }
+    /**
      * @return This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
      * @deprecated
@@ -340,6 +352,7 @@ public final class TenantFlags {
         private @Nullable Boolean enableSso;
         private @Nullable Boolean mfaShowFactorListOnEnrollment;
         private @Nullable Boolean noDiscloseEnterpriseConnections;
+        private @Nullable Boolean removeAlgFromJwks;
         private @Nullable Boolean requirePushedAuthorizationRequests;
         private @Nullable Boolean revokeRefreshTokenGrant;
         private @Nullable Boolean useScopeDescriptionsForConsent;
@@ -367,6 +380,7 @@ public final class TenantFlags {
     	      this.enableSso = defaults.enableSso;
     	      this.mfaShowFactorListOnEnrollment = defaults.mfaShowFactorListOnEnrollment;
     	      this.noDiscloseEnterpriseConnections = defaults.noDiscloseEnterpriseConnections;
+    	      this.removeAlgFromJwks = defaults.removeAlgFromJwks;
     	      this.requirePushedAuthorizationRequests = defaults.requirePushedAuthorizationRequests;
     	      this.revokeRefreshTokenGrant = defaults.revokeRefreshTokenGrant;
     	      this.useScopeDescriptionsForConsent = defaults.useScopeDescriptionsForConsent;
@@ -499,6 +513,12 @@ public final class TenantFlags {
             return this;
         }
         @CustomType.Setter
+        public Builder removeAlgFromJwks(@Nullable Boolean removeAlgFromJwks) {
+
+            this.removeAlgFromJwks = removeAlgFromJwks;
+            return this;
+        }
+        @CustomType.Setter
         public Builder requirePushedAuthorizationRequests(@Nullable Boolean requirePushedAuthorizationRequests) {
 
             this.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
@@ -539,6 +559,7 @@ public final class TenantFlags {
             _resultValue.enableSso = enableSso;
             _resultValue.mfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
             _resultValue.noDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
+            _resultValue.removeAlgFromJwks = removeAlgFromJwks;
             _resultValue.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
             _resultValue.revokeRefreshTokenGrant = revokeRefreshTokenGrant;
             _resultValue.useScopeDescriptionsForConsent = useScopeDescriptionsForConsent;

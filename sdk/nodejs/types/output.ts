@@ -1025,6 +1025,140 @@ export interface ClientCredentialsPrivateKeyJwtCredential {
     updatedAt: string;
 }
 
+export interface ClientCredentialsSelfSignedTlsClientAuth {
+    /**
+     * Credentials that will be enabled on the client for mTLS authentication utilizing self-signed certificates.
+     */
+    credentials: outputs.ClientCredentialsSelfSignedTlsClientAuthCredential[];
+}
+
+export interface ClientCredentialsSelfSignedTlsClientAuthCredential {
+    /**
+     * The ISO 8601 formatted date the credential was created.
+     */
+    createdAt: string;
+    /**
+     * Credential type. Supported types: `x509Cert`.
+     */
+    credentialType?: string;
+    /**
+     * The ISO 8601 formatted date representing the expiration of the credential.
+     */
+    expiresAt: string;
+    /**
+     * The ID of the client credential.
+     */
+    id: string;
+    /**
+     * Friendly name for a credential.
+     */
+    name?: string;
+    /**
+     * PEM-formatted X509 certificate. Must be JSON escaped.
+     */
+    pem: string;
+    /**
+     * The X509 certificate's SHA256 thumbprint.
+     */
+    thumbprintSha256: string;
+    /**
+     * The ISO 8601 formatted date the credential was updated.
+     */
+    updatedAt: string;
+}
+
+export interface ClientCredentialsSignedRequestObject {
+    /**
+     * Client credentials for use with JWT-secured authorization requests.
+     */
+    credentials: outputs.ClientCredentialsSignedRequestObjectCredential[];
+    /**
+     * Require JWT-secured authorization requests.
+     */
+    required: boolean;
+}
+
+export interface ClientCredentialsSignedRequestObjectCredential {
+    /**
+     * Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+     */
+    algorithm?: string;
+    /**
+     * The ISO 8601 formatted date the credential was created.
+     */
+    createdAt: string;
+    /**
+     * Credential type. Supported types: `publicKey`.
+     */
+    credentialType: string;
+    /**
+     * The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+     */
+    expiresAt: string;
+    /**
+     * The ID of the client credential.
+     */
+    id: string;
+    /**
+     * The key identifier of the credential, generated on creation.
+     */
+    keyId: string;
+    /**
+     * Friendly name for a credential.
+     */
+    name?: string;
+    /**
+     * Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
+     */
+    parseExpiryFromCert?: boolean;
+    /**
+     * PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+     */
+    pem: string;
+    /**
+     * The ISO 8601 formatted date the credential was updated.
+     */
+    updatedAt: string;
+}
+
+export interface ClientCredentialsTlsClientAuth {
+    /**
+     * Credentials that will be enabled on the client for CA-based mTLS authentication.
+     */
+    credentials: outputs.ClientCredentialsTlsClientAuthCredential[];
+}
+
+export interface ClientCredentialsTlsClientAuthCredential {
+    /**
+     * The ISO 8601 formatted date the credential was created.
+     */
+    createdAt: string;
+    /**
+     * Credential type. Supported types: `certSubjectDn`.
+     */
+    credentialType: string;
+    /**
+     * The ID of the client credential.
+     */
+    id: string;
+    /**
+     * Friendly name for a credential.
+     */
+    name?: string;
+    /**
+     * PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subjectDn` property.
+     */
+    pem?: string;
+    /**
+     * Subject Distinguished Name. Mutually exlusive with `pem` property.
+     */
+    subjectDn: string;
+    /**
+     * The ISO 8601 formatted date the credential was updated.
+     */
+    updatedAt: string;
+}
+
 export interface ClientDefaultOrganization {
     /**
      * If set, the `defaultOrganization` will be removed.
@@ -1042,7 +1176,7 @@ export interface ClientDefaultOrganization {
 
 export interface ClientJwtConfiguration {
     /**
-     * Algorithm used to sign JWTs.
+     * Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
      */
     alg?: string;
     /**
@@ -1474,7 +1608,7 @@ export interface ConnectionOptions {
      */
     useWsfed?: boolean;
     /**
-     * Attribute in the SAML token that will be mapped to the userId property in Auth0.
+     * Attribute in the token that will be mapped to the userId property in Auth0.
      */
     userIdAttribute?: string;
     /**
@@ -1875,6 +2009,94 @@ export interface EmailProviderSettingsMessage {
      * Setting for the `mandrill` email provider. Set to `true` to see the content of individual emails sent to users.
      */
     viewContentLink?: boolean;
+}
+
+export interface EncryptionKeyManagerCustomerProvidedRootKey {
+    /**
+     * The ISO 8601 formatted date the customer provided root key was created.
+     */
+    createdAt: string;
+    /**
+     * The key ID of the customer provided root key.
+     */
+    keyId: string;
+    /**
+     * The key ID of the parent wrapping key.
+     */
+    parentKeyId: string;
+    /**
+     * The public wrapping key in PEM format.
+     */
+    publicWrappingKey: string;
+    /**
+     * The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+     */
+    state: string;
+    /**
+     * The type of the customer provided root key. Should be `customer-provided-root-key`.
+     */
+    type: string;
+    /**
+     * The ISO 8601 formatted date the customer provided root key was updated.
+     */
+    updatedAt: string;
+    /**
+     * The base64-encoded customer provided root key, wrapped using the `publicWrappingKey`. This can be removed after the wrapped key has been applied.
+     */
+    wrappedKey?: string;
+    /**
+     * The algorithm that should be used to wrap the customer provided root key. Should be `CKM_RSA_AES_KEY_WRAP`.
+     */
+    wrappingAlgorithm: string;
+}
+
+export interface EncryptionKeyManagerEncryptionKey {
+    /**
+     * The ISO 8601 formatted date the encryption key was created.
+     */
+    createdAt: string;
+    /**
+     * The key ID of the encryption key.
+     */
+    keyId: string;
+    /**
+     * The key ID of the parent wrapping key.
+     */
+    parentKeyId: string;
+    /**
+     * The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+     */
+    state: string;
+    /**
+     * The type of the encryption key. One of `customer-provided-root-key`, `environment-root-key`, or `tenant-master-key`.
+     */
+    type: string;
+    /**
+     * The ISO 8601 formatted date the encryption key was updated.
+     */
+    updatedAt: string;
+}
+
+export interface FormLanguage {
+    /**
+     * Default language for the form.
+     */
+    default?: string;
+    /**
+     * Primary language for the form.
+     */
+    primary: string;
+}
+
+export interface FormMessage {
+    /**
+     * Custom message for the form. (JSON encoded)
+     */
+    custom?: string;
+    /**
+     * Error message for the form. (JSON encoded)
+     */
+    errors?: string;
 }
 
 export interface GetAttackProtectionBreachedPasswordDetection {
@@ -2814,6 +3036,127 @@ export interface GetClientAddonZoom {
     account: string;
 }
 
+export interface GetClientClientAuthenticationMethod {
+    /**
+     * If this is defined, the client is enabled to use the Private Key JWT authentication method.
+     */
+    privateKeyJwts: outputs.GetClientClientAuthenticationMethodPrivateKeyJwt[];
+    /**
+     * If this is defined, the client is enabled to use the mTLS authentication method utilizing a self-signed certificate.
+     */
+    selfSignedTlsClientAuths: outputs.GetClientClientAuthenticationMethodSelfSignedTlsClientAuth[];
+    /**
+     * If this is defined, the client is enabled to use the CA-based mTLS authentication method.
+     */
+    tlsClientAuths: outputs.GetClientClientAuthenticationMethodTlsClientAuth[];
+}
+
+export interface GetClientClientAuthenticationMethodPrivateKeyJwt {
+    /**
+     * Credentials that will be enabled on the client for Private Key JWT authentication.
+     */
+    credentials: outputs.GetClientClientAuthenticationMethodPrivateKeyJwtCredential[];
+}
+
+export interface GetClientClientAuthenticationMethodPrivateKeyJwtCredential {
+    /**
+     * Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+     */
+    algorithm: string;
+    /**
+     * The ISO 8601 formatted date the credential was created.
+     */
+    createdAt: string;
+    /**
+     * Credential type. Supported types: `publicKey`.
+     */
+    credentialType: string;
+    /**
+     * The ISO 8601 formatted date representing the expiration of the credential.
+     */
+    expiresAt: string;
+    /**
+     * The ID of the client credential.
+     */
+    id: string;
+    /**
+     * The key identifier of the credential, generated on creation.
+     */
+    keyId: string;
+    /**
+     * Friendly name for a credential.
+     */
+    name: string;
+    /**
+     * The ISO 8601 formatted date the credential was updated.
+     */
+    updatedAt: string;
+}
+
+export interface GetClientClientAuthenticationMethodSelfSignedTlsClientAuth {
+    /**
+     * Credentials that will be enabled on the client for mTLS authentication utilizing self-signed certificates.
+     */
+    credentials: outputs.GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredential[];
+}
+
+export interface GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCredential {
+    /**
+     * The ISO 8601 formatted date the credential was created.
+     */
+    createdAt: string;
+    /**
+     * Credential type. Supported types: `x509Cert`.
+     */
+    credentialType: string;
+    /**
+     * The ID of the client credential.
+     */
+    id: string;
+    /**
+     * Friendly name for a credential.
+     */
+    name: string;
+    /**
+     * The ISO 8601 formatted date the credential was updated.
+     */
+    updatedAt: string;
+}
+
+export interface GetClientClientAuthenticationMethodTlsClientAuth {
+    /**
+     * Credentials that will be enabled on the client for CA-based mTLS authentication.
+     */
+    credentials: outputs.GetClientClientAuthenticationMethodTlsClientAuthCredential[];
+}
+
+export interface GetClientClientAuthenticationMethodTlsClientAuthCredential {
+    /**
+     * The ISO 8601 formatted date the credential was created.
+     */
+    createdAt: string;
+    /**
+     * Credential type. Supported types: `certSubjectDn`.
+     */
+    credentialType: string;
+    /**
+     * The ID of the client credential.
+     */
+    id: string;
+    /**
+     * Friendly name for a credential.
+     */
+    name: string;
+    /**
+     * Subject Distinguished Name. Mutually exlusive with `pem` property.
+     */
+    subjectDn: string;
+    /**
+     * The ISO 8601 formatted date the credential was updated.
+     */
+    updatedAt: string;
+}
+
 export interface GetClientDefaultOrganization {
     /**
      * If set, the `defaultOrganization` will be removed.
@@ -2831,7 +3174,7 @@ export interface GetClientDefaultOrganization {
 
 export interface GetClientJwtConfiguration {
     /**
-     * Algorithm used to sign JWTs.
+     * Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
      */
     alg: string;
     /**
@@ -2911,6 +3254,52 @@ export interface GetClientRefreshToken {
      * The absolute lifetime of a refresh token in seconds.
      */
     tokenLifetime: number;
+}
+
+export interface GetClientSignedRequestObject {
+    /**
+     * Credentials that will be enabled on the client for JWT-secured authorization requests.
+     */
+    credentials: outputs.GetClientSignedRequestObjectCredential[];
+    /**
+     * Require JWT-secured authorization requests.
+     */
+    required: boolean;
+}
+
+export interface GetClientSignedRequestObjectCredential {
+    /**
+     * Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+     */
+    algorithm: string;
+    /**
+     * The ISO 8601 formatted date the credential was created.
+     */
+    createdAt: string;
+    /**
+     * Credential type. Supported types: `publicKey`.
+     */
+    credentialType: string;
+    /**
+     * The ISO 8601 formatted date representing the expiration of the credential.
+     */
+    expiresAt: string;
+    /**
+     * The ID of the client credential.
+     */
+    id: string;
+    /**
+     * The key identifier of the credential, generated on creation.
+     */
+    keyId: string;
+    /**
+     * Friendly name for a credential.
+     */
+    name: string;
+    /**
+     * The ISO 8601 formatted date the credential was updated.
+     */
+    updatedAt: string;
 }
 
 export interface GetConnectionOption {
@@ -3263,7 +3652,7 @@ export interface GetConnectionOption {
      */
     useWsfed: boolean;
     /**
-     * Attribute in the SAML token that will be mapped to the userId property in Auth0.
+     * Attribute in the token that will be mapped to the userId property in Auth0.
      */
     userIdAttribute: string;
     /**
@@ -3589,6 +3978,28 @@ export interface GetCustomDomainVerification {
     methods: any[];
 }
 
+export interface GetFormLanguage {
+    /**
+     * Default language for the form.
+     */
+    default: string;
+    /**
+     * Primary language for the form.
+     */
+    primary: string;
+}
+
+export interface GetFormMessage {
+    /**
+     * Custom message for the form. (JSON encoded)
+     */
+    custom: string;
+    /**
+     * Error message for the form. (JSON encoded)
+     */
+    errors: string;
+}
+
 export interface GetOrganizationBranding {
     /**
      * Color scheme used to customize the login pages.
@@ -3702,6 +4113,32 @@ export interface GetPromptScreenPartialsScreenPartialInsertionPoint {
     secondaryActionsStart: string;
 }
 
+export interface GetResourceServerAuthorizationDetail {
+    /**
+     * Disable authorization details.
+     */
+    disable: boolean;
+    /**
+     * Type of authorization details.
+     */
+    type: string;
+}
+
+export interface GetResourceServerProofOfPossession {
+    /**
+     * Disable proof-of-possession.
+     */
+    disable: boolean;
+    /**
+     * Mechanism used for proof-of-possession. Only `mtls` is supported.
+     */
+    mechanism: string;
+    /**
+     * Indicates whether proof-of-possession is required with this resource server.
+     */
+    required: boolean;
+}
+
 export interface GetResourceServerScope {
     /**
      * Description of the permission (scope).
@@ -3711,6 +4148,40 @@ export interface GetResourceServerScope {
      * Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
      */
     name: string;
+}
+
+export interface GetResourceServerTokenEncryption {
+    /**
+     * Disable token encryption.
+     */
+    disable: boolean;
+    /**
+     * Authorization details for this resource server.
+     */
+    encryptionKeys: outputs.GetResourceServerTokenEncryptionEncryptionKey[];
+    /**
+     * Format of the token encryption. Only `compact-nested-jwe` is supported.
+     */
+    format: string;
+}
+
+export interface GetResourceServerTokenEncryptionEncryptionKey {
+    /**
+     * Algorithm used to encrypt the token.
+     */
+    algorithm: string;
+    /**
+     * Key ID.
+     */
+    kid: string;
+    /**
+     * Name of the encryption key.
+     */
+    name: string;
+    /**
+     * PEM-formatted public key. Must be JSON escaped.
+     */
+    pem: string;
 }
 
 export interface GetRolePermission {
@@ -3890,6 +4361,10 @@ export interface GetTenantFlag {
      */
     noDiscloseEnterpriseConnections: boolean;
     /**
+     * Remove `alg` from jwks(JSON Web Key Sets).
+     */
+    removeAlgFromJwks: boolean;
+    /**
      * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      */
     requirePushedAuthorizationRequests: boolean;
@@ -3901,6 +4376,17 @@ export interface GetTenantFlag {
      * Indicates whether to use scope descriptions for consent.
      */
     useScopeDescriptionsForConsent: boolean;
+}
+
+export interface GetTenantMtl {
+    /**
+     * Disable mTLS settings.
+     */
+    disable: boolean;
+    /**
+     * Enable mTLS endpoint aliases.
+     */
+    enableEndpointAliases: boolean;
 }
 
 export interface GetTenantSession {
@@ -4365,6 +4851,32 @@ export interface PromptScreenPartialsScreenPartialInsertionPoints {
     secondaryActionsStart?: string;
 }
 
+export interface ResourceServerAuthorizationDetail {
+    /**
+     * Disable authorization details.
+     */
+    disable?: boolean;
+    /**
+     * Type of authorization details.
+     */
+    type?: string;
+}
+
+export interface ResourceServerProofOfPossession {
+    /**
+     * Disable proof-of-possession.
+     */
+    disable?: boolean;
+    /**
+     * Mechanism used for proof-of-possession. Only `mtls` is supported.
+     */
+    mechanism: string;
+    /**
+     * Indicates whether proof-of-possession is required with this resource server.
+     */
+    required: boolean;
+}
+
 export interface ResourceServerScopesScope {
     /**
      * User-friendly description of the scope (permission).
@@ -4374,6 +4886,40 @@ export interface ResourceServerScopesScope {
      * Name of the scope (permission). Examples include `read:appointments` or `delete:appointments`.
      */
     name: string;
+}
+
+export interface ResourceServerTokenEncryption {
+    /**
+     * Disable token encryption.
+     */
+    disable?: boolean;
+    /**
+     * Authorization details for this resource server.
+     */
+    encryptionKey: outputs.ResourceServerTokenEncryptionEncryptionKey;
+    /**
+     * Format of the token encryption. Only `compact-nested-jwe` is supported.
+     */
+    format: string;
+}
+
+export interface ResourceServerTokenEncryptionEncryptionKey {
+    /**
+     * Algorithm used to encrypt the token.
+     */
+    algorithm: string;
+    /**
+     * Key ID.
+     */
+    kid: string;
+    /**
+     * Name of the encryption key.
+     */
+    name: string;
+    /**
+     * PEM-formatted public key. Must be JSON escaped.
+     */
+    pem: string;
 }
 
 export interface RolePermissionsPermission {
@@ -4514,6 +5060,10 @@ export interface TenantFlags {
      */
     noDiscloseEnterpriseConnections: boolean;
     /**
+     * Remove `alg` from jwks(JSON Web Key Sets).
+     */
+    removeAlgFromJwks: boolean;
+    /**
      * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      *
      * @deprecated This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
@@ -4527,6 +5077,17 @@ export interface TenantFlags {
      * Indicates whether to use scope descriptions for consent.
      */
     useScopeDescriptionsForConsent: boolean;
+}
+
+export interface TenantMtls {
+    /**
+     * Disable mTLS settings.
+     */
+    disable?: boolean;
+    /**
+     * Enable mTLS endpoint aliases.
+     */
+    enableEndpointAliases?: boolean;
 }
 
 export interface TenantSessionCookie {

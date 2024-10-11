@@ -86,6 +86,12 @@ namespace Pulumi.Auth0
     public partial class Tenant : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// List of supported ACR values.
+        /// </summary>
+        [Output("acrValuesSupporteds")]
+        public Output<ImmutableArray<string>> AcrValuesSupporteds { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to accept an organization name instead of an ID on auth endpoints.
         /// </summary>
         [Output("allowOrganizationNameInAuthenticationApi")]
@@ -122,6 +128,12 @@ namespace Pulumi.Auth0
         public Output<string> DefaultRedirectionUri { get; private set; } = null!;
 
         /// <summary>
+        /// Disable list of supported ACR values.
+        /// </summary>
+        [Output("disableAcrValuesSupported")]
+        public Output<bool> DisableAcrValuesSupported { get; private set; } = null!;
+
+        /// <summary>
         /// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         /// </summary>
         [Output("enabledLocales")]
@@ -146,10 +158,22 @@ namespace Pulumi.Auth0
         public Output<double?> IdleSessionLifetime { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for mTLS.
+        /// </summary>
+        [Output("mtls")]
+        public Output<Outputs.TenantMtls> Mtls { get; private set; } = null!;
+
+        /// <summary>
         /// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         /// </summary>
         [Output("pictureUrl")]
         public Output<string> PictureUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable pushed authorization requests.
+        /// </summary>
+        [Output("pushedAuthorizationRequestsSupported")]
+        public Output<bool> PushedAuthorizationRequestsSupported { get; private set; } = null!;
 
         /// <summary>
         /// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
@@ -233,6 +257,18 @@ namespace Pulumi.Auth0
 
     public sealed class TenantArgs : global::Pulumi.ResourceArgs
     {
+        [Input("acrValuesSupporteds")]
+        private InputList<string>? _acrValuesSupporteds;
+
+        /// <summary>
+        /// List of supported ACR values.
+        /// </summary>
+        public InputList<string> AcrValuesSupporteds
+        {
+            get => _acrValuesSupporteds ?? (_acrValuesSupporteds = new InputList<string>());
+            set => _acrValuesSupporteds = value;
+        }
+
         /// <summary>
         /// Whether to accept an organization name instead of an ID on auth endpoints.
         /// </summary>
@@ -275,6 +311,12 @@ namespace Pulumi.Auth0
         [Input("defaultRedirectionUri")]
         public Input<string>? DefaultRedirectionUri { get; set; }
 
+        /// <summary>
+        /// Disable list of supported ACR values.
+        /// </summary>
+        [Input("disableAcrValuesSupported")]
+        public Input<bool>? DisableAcrValuesSupported { get; set; }
+
         [Input("enabledLocales")]
         private InputList<string>? _enabledLocales;
 
@@ -306,10 +348,22 @@ namespace Pulumi.Auth0
         public Input<double>? IdleSessionLifetime { get; set; }
 
         /// <summary>
+        /// Configuration for mTLS.
+        /// </summary>
+        [Input("mtls")]
+        public Input<Inputs.TenantMtlsArgs>? Mtls { get; set; }
+
+        /// <summary>
         /// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         /// </summary>
         [Input("pictureUrl")]
         public Input<string>? PictureUrl { get; set; }
+
+        /// <summary>
+        /// Enable pushed authorization requests.
+        /// </summary>
+        [Input("pushedAuthorizationRequestsSupported")]
+        public Input<bool>? PushedAuthorizationRequestsSupported { get; set; }
 
         /// <summary>
         /// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
@@ -355,6 +409,18 @@ namespace Pulumi.Auth0
 
     public sealed class TenantState : global::Pulumi.ResourceArgs
     {
+        [Input("acrValuesSupporteds")]
+        private InputList<string>? _acrValuesSupporteds;
+
+        /// <summary>
+        /// List of supported ACR values.
+        /// </summary>
+        public InputList<string> AcrValuesSupporteds
+        {
+            get => _acrValuesSupporteds ?? (_acrValuesSupporteds = new InputList<string>());
+            set => _acrValuesSupporteds = value;
+        }
+
         /// <summary>
         /// Whether to accept an organization name instead of an ID on auth endpoints.
         /// </summary>
@@ -397,6 +463,12 @@ namespace Pulumi.Auth0
         [Input("defaultRedirectionUri")]
         public Input<string>? DefaultRedirectionUri { get; set; }
 
+        /// <summary>
+        /// Disable list of supported ACR values.
+        /// </summary>
+        [Input("disableAcrValuesSupported")]
+        public Input<bool>? DisableAcrValuesSupported { get; set; }
+
         [Input("enabledLocales")]
         private InputList<string>? _enabledLocales;
 
@@ -428,10 +500,22 @@ namespace Pulumi.Auth0
         public Input<double>? IdleSessionLifetime { get; set; }
 
         /// <summary>
+        /// Configuration for mTLS.
+        /// </summary>
+        [Input("mtls")]
+        public Input<Inputs.TenantMtlsGetArgs>? Mtls { get; set; }
+
+        /// <summary>
         /// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         /// </summary>
         [Input("pictureUrl")]
         public Input<string>? PictureUrl { get; set; }
+
+        /// <summary>
+        /// Enable pushed authorization requests.
+        /// </summary>
+        [Input("pushedAuthorizationRequestsSupported")]
+        public Input<bool>? PushedAuthorizationRequestsSupported { get; set; }
 
         /// <summary>
         /// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.

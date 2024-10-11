@@ -29,6 +29,10 @@ export function getTenant(opts?: pulumi.InvokeOptions): Promise<GetTenantResult>
  */
 export interface GetTenantResult {
     /**
+     * List of supported ACR values.
+     */
+    readonly acrValuesSupporteds: string[];
+    /**
      * Whether to accept an organization name instead of an ID on auth endpoints.
      */
     readonly allowOrganizationNameInAuthenticationApi: boolean;
@@ -52,6 +56,10 @@ export interface GetTenantResult {
      * The default absolute redirection URI. Must be HTTPS or an empty string.
      */
     readonly defaultRedirectionUri: string;
+    /**
+     * Disable list of supported ACR values.
+     */
+    readonly disableAcrValuesSupported: boolean;
     /**
      * Your Auth0 domain name.
      */
@@ -81,9 +89,17 @@ export interface GetTenantResult {
      */
     readonly managementApiIdentifier: string;
     /**
+     * Configuration for mTLS.
+     */
+    readonly mtls: outputs.GetTenantMtl[];
+    /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
     readonly pictureUrl: string;
+    /**
+     * Enable pushed authorization requests.
+     */
+    readonly pushedAuthorizationRequestsSupported: boolean;
     /**
      * Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
      */

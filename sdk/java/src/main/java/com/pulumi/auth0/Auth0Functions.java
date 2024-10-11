@@ -10,6 +10,12 @@ import com.pulumi.auth0.inputs.GetConnectionArgs;
 import com.pulumi.auth0.inputs.GetConnectionPlainArgs;
 import com.pulumi.auth0.inputs.GetConnectionScimConfigurationArgs;
 import com.pulumi.auth0.inputs.GetConnectionScimConfigurationPlainArgs;
+import com.pulumi.auth0.inputs.GetFlowArgs;
+import com.pulumi.auth0.inputs.GetFlowPlainArgs;
+import com.pulumi.auth0.inputs.GetFlowVaultConnectionArgs;
+import com.pulumi.auth0.inputs.GetFlowVaultConnectionPlainArgs;
+import com.pulumi.auth0.inputs.GetFormArgs;
+import com.pulumi.auth0.inputs.GetFormPlainArgs;
 import com.pulumi.auth0.inputs.GetOrganizationArgs;
 import com.pulumi.auth0.inputs.GetOrganizationPlainArgs;
 import com.pulumi.auth0.inputs.GetPromptScreenPartialsArgs;
@@ -29,6 +35,9 @@ import com.pulumi.auth0.outputs.GetClientResult;
 import com.pulumi.auth0.outputs.GetConnectionResult;
 import com.pulumi.auth0.outputs.GetConnectionScimConfigurationResult;
 import com.pulumi.auth0.outputs.GetCustomDomainResult;
+import com.pulumi.auth0.outputs.GetFlowResult;
+import com.pulumi.auth0.outputs.GetFlowVaultConnectionResult;
+import com.pulumi.auth0.outputs.GetFormResult;
 import com.pulumi.auth0.outputs.GetOrganizationResult;
 import com.pulumi.auth0.outputs.GetPagesResult;
 import com.pulumi.auth0.outputs.GetPromptScreenPartialsResult;
@@ -1629,6 +1638,522 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetCustomDomainResult> getCustomDomainPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getCustomDomain:getCustomDomain", TypeShape.of(GetCustomDomainResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Flow by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetFlowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 flow loaded using its ID.
+     *         final var myFlowData = Auth0Functions.getFlow(GetFlowArgs.builder()
+     *             .id("af_5CTYdsXHLoLXD7ZVwvFHew")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFlowResult> getFlow(GetFlowArgs args) {
+        return getFlow(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Flow by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetFlowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 flow loaded using its ID.
+     *         final var myFlowData = Auth0Functions.getFlow(GetFlowArgs.builder()
+     *             .id("af_5CTYdsXHLoLXD7ZVwvFHew")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetFlowResult> getFlowPlain(GetFlowPlainArgs args) {
+        return getFlowPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Flow by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetFlowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 flow loaded using its ID.
+     *         final var myFlowData = Auth0Functions.getFlow(GetFlowArgs.builder()
+     *             .id("af_5CTYdsXHLoLXD7ZVwvFHew")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFlowResult> getFlow(GetFlowArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getFlow:getFlow", TypeShape.of(GetFlowResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Flow by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetFlowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 flow loaded using its ID.
+     *         final var myFlowData = Auth0Functions.getFlow(GetFlowArgs.builder()
+     *             .id("af_5CTYdsXHLoLXD7ZVwvFHew")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetFlowResult> getFlowPlain(GetFlowPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getFlow:getFlow", TypeShape.of(GetFlowResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Flow Vault Connection by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetFlowVaultConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 flow vault connection loaded using its ID.
+     *         final var dataConnection = Auth0Functions.getFlowVaultConnection(GetFlowVaultConnectionArgs.builder()
+     *             .id("ac_9m2uqjHsqs19riN9N6sZQ7")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFlowVaultConnectionResult> getFlowVaultConnection(GetFlowVaultConnectionArgs args) {
+        return getFlowVaultConnection(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Flow Vault Connection by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetFlowVaultConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 flow vault connection loaded using its ID.
+     *         final var dataConnection = Auth0Functions.getFlowVaultConnection(GetFlowVaultConnectionArgs.builder()
+     *             .id("ac_9m2uqjHsqs19riN9N6sZQ7")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetFlowVaultConnectionResult> getFlowVaultConnectionPlain(GetFlowVaultConnectionPlainArgs args) {
+        return getFlowVaultConnectionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Flow Vault Connection by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetFlowVaultConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 flow vault connection loaded using its ID.
+     *         final var dataConnection = Auth0Functions.getFlowVaultConnection(GetFlowVaultConnectionArgs.builder()
+     *             .id("ac_9m2uqjHsqs19riN9N6sZQ7")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFlowVaultConnectionResult> getFlowVaultConnection(GetFlowVaultConnectionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getFlowVaultConnection:getFlowVaultConnection", TypeShape.of(GetFlowVaultConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Flow Vault Connection by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetFlowVaultConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 flow vault connection loaded using its ID.
+     *         final var dataConnection = Auth0Functions.getFlowVaultConnection(GetFlowVaultConnectionArgs.builder()
+     *             .id("ac_9m2uqjHsqs19riN9N6sZQ7")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetFlowVaultConnectionResult> getFlowVaultConnectionPlain(GetFlowVaultConnectionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getFlowVaultConnection:getFlowVaultConnection", TypeShape.of(GetFlowVaultConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Form by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetFlowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 form loaded using its ID.
+     *         final var myFormData = Auth0Functions.getFlow(GetFlowArgs.builder()
+     *             .id("ap_31LxRJphZF1Kqzf2zBgmgA")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFormResult> getForm(GetFormArgs args) {
+        return getForm(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Form by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetFlowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 form loaded using its ID.
+     *         final var myFormData = Auth0Functions.getFlow(GetFlowArgs.builder()
+     *             .id("ap_31LxRJphZF1Kqzf2zBgmgA")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetFormResult> getFormPlain(GetFormPlainArgs args) {
+        return getFormPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Form by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetFlowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 form loaded using its ID.
+     *         final var myFormData = Auth0Functions.getFlow(GetFlowArgs.builder()
+     *             .id("ap_31LxRJphZF1Kqzf2zBgmgA")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFormResult> getForm(GetFormArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getForm:getForm", TypeShape.of(GetFormResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Form by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetFlowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 form loaded using its ID.
+     *         final var myFormData = Auth0Functions.getFlow(GetFlowArgs.builder()
+     *             .id("ap_31LxRJphZF1Kqzf2zBgmgA")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetFormResult> getFormPlain(GetFormPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getForm:getForm", TypeShape.of(GetFormResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.

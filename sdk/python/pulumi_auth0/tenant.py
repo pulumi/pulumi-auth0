@@ -21,17 +21,21 @@ __all__ = ['TenantArgs', 'Tenant']
 @pulumi.input_type
 class TenantArgs:
     def __init__(__self__, *,
+                 acr_values_supporteds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allow_organization_name_in_authentication_api: Optional[pulumi.Input[bool]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  customize_mfa_in_postlogin_action: Optional[pulumi.Input[bool]] = None,
                  default_audience: Optional[pulumi.Input[str]] = None,
                  default_directory: Optional[pulumi.Input[str]] = None,
                  default_redirection_uri: Optional[pulumi.Input[str]] = None,
+                 disable_acr_values_supported: Optional[pulumi.Input[bool]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  flags: Optional[pulumi.Input['TenantFlagsArgs']] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  idle_session_lifetime: Optional[pulumi.Input[float]] = None,
+                 mtls: Optional[pulumi.Input['TenantMtlsArgs']] = None,
                  picture_url: Optional[pulumi.Input[str]] = None,
+                 pushed_authorization_requests_supported: Optional[pulumi.Input[bool]] = None,
                  sandbox_version: Optional[pulumi.Input[str]] = None,
                  session_cookie: Optional[pulumi.Input['TenantSessionCookieArgs']] = None,
                  session_lifetime: Optional[pulumi.Input[float]] = None,
@@ -40,17 +44,21 @@ class TenantArgs:
                  support_url: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Tenant resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] acr_values_supporteds: List of supported ACR values.
         :param pulumi.Input[bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
+        :param pulumi.Input[bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input['TenantFlagsArgs'] flags: Configuration settings for tenant flags.
         :param pulumi.Input[str] friendly_name: Friendly name for the tenant.
         :param pulumi.Input[float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
+        :param pulumi.Input['TenantMtlsArgs'] mtls: Configuration for mTLS.
         :param pulumi.Input[str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+        :param pulumi.Input[bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
         :param pulumi.Input[str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
         :param pulumi.Input['TenantSessionCookieArgs'] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
         :param pulumi.Input[float] session_lifetime: Number of hours during which a session will stay valid.
@@ -58,6 +66,8 @@ class TenantArgs:
         :param pulumi.Input[str] support_email: Support email address for authenticating users.
         :param pulumi.Input[str] support_url: Support URL for authenticating users.
         """
+        if acr_values_supporteds is not None:
+            pulumi.set(__self__, "acr_values_supporteds", acr_values_supporteds)
         if allow_organization_name_in_authentication_api is not None:
             pulumi.set(__self__, "allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
         if allowed_logout_urls is not None:
@@ -70,6 +80,8 @@ class TenantArgs:
             pulumi.set(__self__, "default_directory", default_directory)
         if default_redirection_uri is not None:
             pulumi.set(__self__, "default_redirection_uri", default_redirection_uri)
+        if disable_acr_values_supported is not None:
+            pulumi.set(__self__, "disable_acr_values_supported", disable_acr_values_supported)
         if enabled_locales is not None:
             pulumi.set(__self__, "enabled_locales", enabled_locales)
         if flags is not None:
@@ -78,8 +90,12 @@ class TenantArgs:
             pulumi.set(__self__, "friendly_name", friendly_name)
         if idle_session_lifetime is not None:
             pulumi.set(__self__, "idle_session_lifetime", idle_session_lifetime)
+        if mtls is not None:
+            pulumi.set(__self__, "mtls", mtls)
         if picture_url is not None:
             pulumi.set(__self__, "picture_url", picture_url)
+        if pushed_authorization_requests_supported is not None:
+            pulumi.set(__self__, "pushed_authorization_requests_supported", pushed_authorization_requests_supported)
         if sandbox_version is not None:
             pulumi.set(__self__, "sandbox_version", sandbox_version)
         if session_cookie is not None:
@@ -92,6 +108,18 @@ class TenantArgs:
             pulumi.set(__self__, "support_email", support_email)
         if support_url is not None:
             pulumi.set(__self__, "support_url", support_url)
+
+    @property
+    @pulumi.getter(name="acrValuesSupporteds")
+    def acr_values_supporteds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of supported ACR values.
+        """
+        return pulumi.get(self, "acr_values_supporteds")
+
+    @acr_values_supporteds.setter
+    def acr_values_supporteds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "acr_values_supporteds", value)
 
     @property
     @pulumi.getter(name="allowOrganizationNameInAuthenticationApi")
@@ -166,6 +194,18 @@ class TenantArgs:
         pulumi.set(self, "default_redirection_uri", value)
 
     @property
+    @pulumi.getter(name="disableAcrValuesSupported")
+    def disable_acr_values_supported(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable list of supported ACR values.
+        """
+        return pulumi.get(self, "disable_acr_values_supported")
+
+    @disable_acr_values_supported.setter
+    def disable_acr_values_supported(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_acr_values_supported", value)
+
+    @property
     @pulumi.getter(name="enabledLocales")
     def enabled_locales(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -214,6 +254,18 @@ class TenantArgs:
         pulumi.set(self, "idle_session_lifetime", value)
 
     @property
+    @pulumi.getter
+    def mtls(self) -> Optional[pulumi.Input['TenantMtlsArgs']]:
+        """
+        Configuration for mTLS.
+        """
+        return pulumi.get(self, "mtls")
+
+    @mtls.setter
+    def mtls(self, value: Optional[pulumi.Input['TenantMtlsArgs']]):
+        pulumi.set(self, "mtls", value)
+
+    @property
     @pulumi.getter(name="pictureUrl")
     def picture_url(self) -> Optional[pulumi.Input[str]]:
         """
@@ -224,6 +276,18 @@ class TenantArgs:
     @picture_url.setter
     def picture_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "picture_url", value)
+
+    @property
+    @pulumi.getter(name="pushedAuthorizationRequestsSupported")
+    def pushed_authorization_requests_supported(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable pushed authorization requests.
+        """
+        return pulumi.get(self, "pushed_authorization_requests_supported")
+
+    @pushed_authorization_requests_supported.setter
+    def pushed_authorization_requests_supported(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pushed_authorization_requests_supported", value)
 
     @property
     @pulumi.getter(name="sandboxVersion")
@@ -301,17 +365,21 @@ class TenantArgs:
 @pulumi.input_type
 class _TenantState:
     def __init__(__self__, *,
+                 acr_values_supporteds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allow_organization_name_in_authentication_api: Optional[pulumi.Input[bool]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  customize_mfa_in_postlogin_action: Optional[pulumi.Input[bool]] = None,
                  default_audience: Optional[pulumi.Input[str]] = None,
                  default_directory: Optional[pulumi.Input[str]] = None,
                  default_redirection_uri: Optional[pulumi.Input[str]] = None,
+                 disable_acr_values_supported: Optional[pulumi.Input[bool]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  flags: Optional[pulumi.Input['TenantFlagsArgs']] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  idle_session_lifetime: Optional[pulumi.Input[float]] = None,
+                 mtls: Optional[pulumi.Input['TenantMtlsArgs']] = None,
                  picture_url: Optional[pulumi.Input[str]] = None,
+                 pushed_authorization_requests_supported: Optional[pulumi.Input[bool]] = None,
                  sandbox_version: Optional[pulumi.Input[str]] = None,
                  session_cookie: Optional[pulumi.Input['TenantSessionCookieArgs']] = None,
                  session_lifetime: Optional[pulumi.Input[float]] = None,
@@ -320,17 +388,21 @@ class _TenantState:
                  support_url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Tenant resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] acr_values_supporteds: List of supported ACR values.
         :param pulumi.Input[bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
+        :param pulumi.Input[bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input['TenantFlagsArgs'] flags: Configuration settings for tenant flags.
         :param pulumi.Input[str] friendly_name: Friendly name for the tenant.
         :param pulumi.Input[float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
+        :param pulumi.Input['TenantMtlsArgs'] mtls: Configuration for mTLS.
         :param pulumi.Input[str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+        :param pulumi.Input[bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
         :param pulumi.Input[str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
         :param pulumi.Input['TenantSessionCookieArgs'] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
         :param pulumi.Input[float] session_lifetime: Number of hours during which a session will stay valid.
@@ -338,6 +410,8 @@ class _TenantState:
         :param pulumi.Input[str] support_email: Support email address for authenticating users.
         :param pulumi.Input[str] support_url: Support URL for authenticating users.
         """
+        if acr_values_supporteds is not None:
+            pulumi.set(__self__, "acr_values_supporteds", acr_values_supporteds)
         if allow_organization_name_in_authentication_api is not None:
             pulumi.set(__self__, "allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
         if allowed_logout_urls is not None:
@@ -350,6 +424,8 @@ class _TenantState:
             pulumi.set(__self__, "default_directory", default_directory)
         if default_redirection_uri is not None:
             pulumi.set(__self__, "default_redirection_uri", default_redirection_uri)
+        if disable_acr_values_supported is not None:
+            pulumi.set(__self__, "disable_acr_values_supported", disable_acr_values_supported)
         if enabled_locales is not None:
             pulumi.set(__self__, "enabled_locales", enabled_locales)
         if flags is not None:
@@ -358,8 +434,12 @@ class _TenantState:
             pulumi.set(__self__, "friendly_name", friendly_name)
         if idle_session_lifetime is not None:
             pulumi.set(__self__, "idle_session_lifetime", idle_session_lifetime)
+        if mtls is not None:
+            pulumi.set(__self__, "mtls", mtls)
         if picture_url is not None:
             pulumi.set(__self__, "picture_url", picture_url)
+        if pushed_authorization_requests_supported is not None:
+            pulumi.set(__self__, "pushed_authorization_requests_supported", pushed_authorization_requests_supported)
         if sandbox_version is not None:
             pulumi.set(__self__, "sandbox_version", sandbox_version)
         if session_cookie is not None:
@@ -372,6 +452,18 @@ class _TenantState:
             pulumi.set(__self__, "support_email", support_email)
         if support_url is not None:
             pulumi.set(__self__, "support_url", support_url)
+
+    @property
+    @pulumi.getter(name="acrValuesSupporteds")
+    def acr_values_supporteds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of supported ACR values.
+        """
+        return pulumi.get(self, "acr_values_supporteds")
+
+    @acr_values_supporteds.setter
+    def acr_values_supporteds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "acr_values_supporteds", value)
 
     @property
     @pulumi.getter(name="allowOrganizationNameInAuthenticationApi")
@@ -446,6 +538,18 @@ class _TenantState:
         pulumi.set(self, "default_redirection_uri", value)
 
     @property
+    @pulumi.getter(name="disableAcrValuesSupported")
+    def disable_acr_values_supported(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable list of supported ACR values.
+        """
+        return pulumi.get(self, "disable_acr_values_supported")
+
+    @disable_acr_values_supported.setter
+    def disable_acr_values_supported(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_acr_values_supported", value)
+
+    @property
     @pulumi.getter(name="enabledLocales")
     def enabled_locales(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -494,6 +598,18 @@ class _TenantState:
         pulumi.set(self, "idle_session_lifetime", value)
 
     @property
+    @pulumi.getter
+    def mtls(self) -> Optional[pulumi.Input['TenantMtlsArgs']]:
+        """
+        Configuration for mTLS.
+        """
+        return pulumi.get(self, "mtls")
+
+    @mtls.setter
+    def mtls(self, value: Optional[pulumi.Input['TenantMtlsArgs']]):
+        pulumi.set(self, "mtls", value)
+
+    @property
     @pulumi.getter(name="pictureUrl")
     def picture_url(self) -> Optional[pulumi.Input[str]]:
         """
@@ -504,6 +620,18 @@ class _TenantState:
     @picture_url.setter
     def picture_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "picture_url", value)
+
+    @property
+    @pulumi.getter(name="pushedAuthorizationRequestsSupported")
+    def pushed_authorization_requests_supported(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable pushed authorization requests.
+        """
+        return pulumi.get(self, "pushed_authorization_requests_supported")
+
+    @pushed_authorization_requests_supported.setter
+    def pushed_authorization_requests_supported(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pushed_authorization_requests_supported", value)
 
     @property
     @pulumi.getter(name="sandboxVersion")
@@ -583,17 +711,21 @@ class Tenant(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acr_values_supporteds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allow_organization_name_in_authentication_api: Optional[pulumi.Input[bool]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  customize_mfa_in_postlogin_action: Optional[pulumi.Input[bool]] = None,
                  default_audience: Optional[pulumi.Input[str]] = None,
                  default_directory: Optional[pulumi.Input[str]] = None,
                  default_redirection_uri: Optional[pulumi.Input[str]] = None,
+                 disable_acr_values_supported: Optional[pulumi.Input[bool]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  flags: Optional[pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  idle_session_lifetime: Optional[pulumi.Input[float]] = None,
+                 mtls: Optional[pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']]] = None,
                  picture_url: Optional[pulumi.Input[str]] = None,
+                 pushed_authorization_requests_supported: Optional[pulumi.Input[bool]] = None,
                  sandbox_version: Optional[pulumi.Input[str]] = None,
                  session_cookie: Optional[pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']]] = None,
                  session_lifetime: Optional[pulumi.Input[float]] = None,
@@ -659,17 +791,21 @@ class Tenant(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] acr_values_supporteds: List of supported ACR values.
         :param pulumi.Input[bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
+        :param pulumi.Input[bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']] flags: Configuration settings for tenant flags.
         :param pulumi.Input[str] friendly_name: Friendly name for the tenant.
         :param pulumi.Input[float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
+        :param pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']] mtls: Configuration for mTLS.
         :param pulumi.Input[str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+        :param pulumi.Input[bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
         :param pulumi.Input[str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
         :param pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
         :param pulumi.Input[float] session_lifetime: Number of hours during which a session will stay valid.
@@ -754,17 +890,21 @@ class Tenant(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acr_values_supporteds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allow_organization_name_in_authentication_api: Optional[pulumi.Input[bool]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  customize_mfa_in_postlogin_action: Optional[pulumi.Input[bool]] = None,
                  default_audience: Optional[pulumi.Input[str]] = None,
                  default_directory: Optional[pulumi.Input[str]] = None,
                  default_redirection_uri: Optional[pulumi.Input[str]] = None,
+                 disable_acr_values_supported: Optional[pulumi.Input[bool]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  flags: Optional[pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  idle_session_lifetime: Optional[pulumi.Input[float]] = None,
+                 mtls: Optional[pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']]] = None,
                  picture_url: Optional[pulumi.Input[str]] = None,
+                 pushed_authorization_requests_supported: Optional[pulumi.Input[bool]] = None,
                  sandbox_version: Optional[pulumi.Input[str]] = None,
                  session_cookie: Optional[pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']]] = None,
                  session_lifetime: Optional[pulumi.Input[float]] = None,
@@ -780,17 +920,21 @@ class Tenant(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TenantArgs.__new__(TenantArgs)
 
+            __props__.__dict__["acr_values_supporteds"] = acr_values_supporteds
             __props__.__dict__["allow_organization_name_in_authentication_api"] = allow_organization_name_in_authentication_api
             __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
             __props__.__dict__["customize_mfa_in_postlogin_action"] = customize_mfa_in_postlogin_action
             __props__.__dict__["default_audience"] = default_audience
             __props__.__dict__["default_directory"] = default_directory
             __props__.__dict__["default_redirection_uri"] = default_redirection_uri
+            __props__.__dict__["disable_acr_values_supported"] = disable_acr_values_supported
             __props__.__dict__["enabled_locales"] = enabled_locales
             __props__.__dict__["flags"] = flags
             __props__.__dict__["friendly_name"] = friendly_name
             __props__.__dict__["idle_session_lifetime"] = idle_session_lifetime
+            __props__.__dict__["mtls"] = mtls
             __props__.__dict__["picture_url"] = picture_url
+            __props__.__dict__["pushed_authorization_requests_supported"] = pushed_authorization_requests_supported
             __props__.__dict__["sandbox_version"] = sandbox_version
             __props__.__dict__["session_cookie"] = session_cookie
             __props__.__dict__["session_lifetime"] = session_lifetime
@@ -807,17 +951,21 @@ class Tenant(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            acr_values_supporteds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             allow_organization_name_in_authentication_api: Optional[pulumi.Input[bool]] = None,
             allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             customize_mfa_in_postlogin_action: Optional[pulumi.Input[bool]] = None,
             default_audience: Optional[pulumi.Input[str]] = None,
             default_directory: Optional[pulumi.Input[str]] = None,
             default_redirection_uri: Optional[pulumi.Input[str]] = None,
+            disable_acr_values_supported: Optional[pulumi.Input[bool]] = None,
             enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             flags: Optional[pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
             idle_session_lifetime: Optional[pulumi.Input[float]] = None,
+            mtls: Optional[pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']]] = None,
             picture_url: Optional[pulumi.Input[str]] = None,
+            pushed_authorization_requests_supported: Optional[pulumi.Input[bool]] = None,
             sandbox_version: Optional[pulumi.Input[str]] = None,
             session_cookie: Optional[pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']]] = None,
             session_lifetime: Optional[pulumi.Input[float]] = None,
@@ -831,17 +979,21 @@ class Tenant(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] acr_values_supporteds: List of supported ACR values.
         :param pulumi.Input[bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
+        :param pulumi.Input[bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']] flags: Configuration settings for tenant flags.
         :param pulumi.Input[str] friendly_name: Friendly name for the tenant.
         :param pulumi.Input[float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
+        :param pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']] mtls: Configuration for mTLS.
         :param pulumi.Input[str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+        :param pulumi.Input[bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
         :param pulumi.Input[str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
         :param pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
         :param pulumi.Input[float] session_lifetime: Number of hours during which a session will stay valid.
@@ -853,17 +1005,21 @@ class Tenant(pulumi.CustomResource):
 
         __props__ = _TenantState.__new__(_TenantState)
 
+        __props__.__dict__["acr_values_supporteds"] = acr_values_supporteds
         __props__.__dict__["allow_organization_name_in_authentication_api"] = allow_organization_name_in_authentication_api
         __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
         __props__.__dict__["customize_mfa_in_postlogin_action"] = customize_mfa_in_postlogin_action
         __props__.__dict__["default_audience"] = default_audience
         __props__.__dict__["default_directory"] = default_directory
         __props__.__dict__["default_redirection_uri"] = default_redirection_uri
+        __props__.__dict__["disable_acr_values_supported"] = disable_acr_values_supported
         __props__.__dict__["enabled_locales"] = enabled_locales
         __props__.__dict__["flags"] = flags
         __props__.__dict__["friendly_name"] = friendly_name
         __props__.__dict__["idle_session_lifetime"] = idle_session_lifetime
+        __props__.__dict__["mtls"] = mtls
         __props__.__dict__["picture_url"] = picture_url
+        __props__.__dict__["pushed_authorization_requests_supported"] = pushed_authorization_requests_supported
         __props__.__dict__["sandbox_version"] = sandbox_version
         __props__.__dict__["session_cookie"] = session_cookie
         __props__.__dict__["session_lifetime"] = session_lifetime
@@ -871,6 +1027,14 @@ class Tenant(pulumi.CustomResource):
         __props__.__dict__["support_email"] = support_email
         __props__.__dict__["support_url"] = support_url
         return Tenant(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="acrValuesSupporteds")
+    def acr_values_supporteds(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of supported ACR values.
+        """
+        return pulumi.get(self, "acr_values_supporteds")
 
     @property
     @pulumi.getter(name="allowOrganizationNameInAuthenticationApi")
@@ -921,6 +1085,14 @@ class Tenant(pulumi.CustomResource):
         return pulumi.get(self, "default_redirection_uri")
 
     @property
+    @pulumi.getter(name="disableAcrValuesSupported")
+    def disable_acr_values_supported(self) -> pulumi.Output[bool]:
+        """
+        Disable list of supported ACR values.
+        """
+        return pulumi.get(self, "disable_acr_values_supported")
+
+    @property
     @pulumi.getter(name="enabledLocales")
     def enabled_locales(self) -> pulumi.Output[Sequence[str]]:
         """
@@ -953,12 +1125,28 @@ class Tenant(pulumi.CustomResource):
         return pulumi.get(self, "idle_session_lifetime")
 
     @property
+    @pulumi.getter
+    def mtls(self) -> pulumi.Output['outputs.TenantMtls']:
+        """
+        Configuration for mTLS.
+        """
+        return pulumi.get(self, "mtls")
+
+    @property
     @pulumi.getter(name="pictureUrl")
     def picture_url(self) -> pulumi.Output[str]:
         """
         URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         """
         return pulumi.get(self, "picture_url")
+
+    @property
+    @pulumi.getter(name="pushedAuthorizationRequestsSupported")
+    def pushed_authorization_requests_supported(self) -> pulumi.Output[bool]:
+        """
+        Enable pushed authorization requests.
+        """
+        return pulumi.get(self, "pushed_authorization_requests_supported")
 
     @property
     @pulumi.getter(name="sandboxVersion")

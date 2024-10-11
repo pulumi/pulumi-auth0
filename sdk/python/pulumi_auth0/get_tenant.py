@@ -27,7 +27,10 @@ class GetTenantResult:
     """
     A collection of values returned by getTenant.
     """
-    def __init__(__self__, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, domain=None, enabled_locales=None, flags=None, friendly_name=None, id=None, idle_session_lifetime=None, management_api_identifier=None, picture_url=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, support_email=None, support_url=None):
+    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, disable_acr_values_supported=None, domain=None, enabled_locales=None, flags=None, friendly_name=None, id=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, picture_url=None, pushed_authorization_requests_supported=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, support_email=None, support_url=None):
+        if acr_values_supporteds and not isinstance(acr_values_supporteds, list):
+            raise TypeError("Expected argument 'acr_values_supporteds' to be a list")
+        pulumi.set(__self__, "acr_values_supporteds", acr_values_supporteds)
         if allow_organization_name_in_authentication_api and not isinstance(allow_organization_name_in_authentication_api, bool):
             raise TypeError("Expected argument 'allow_organization_name_in_authentication_api' to be a bool")
         pulumi.set(__self__, "allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
@@ -46,6 +49,9 @@ class GetTenantResult:
         if default_redirection_uri and not isinstance(default_redirection_uri, str):
             raise TypeError("Expected argument 'default_redirection_uri' to be a str")
         pulumi.set(__self__, "default_redirection_uri", default_redirection_uri)
+        if disable_acr_values_supported and not isinstance(disable_acr_values_supported, bool):
+            raise TypeError("Expected argument 'disable_acr_values_supported' to be a bool")
+        pulumi.set(__self__, "disable_acr_values_supported", disable_acr_values_supported)
         if domain and not isinstance(domain, str):
             raise TypeError("Expected argument 'domain' to be a str")
         pulumi.set(__self__, "domain", domain)
@@ -67,9 +73,15 @@ class GetTenantResult:
         if management_api_identifier and not isinstance(management_api_identifier, str):
             raise TypeError("Expected argument 'management_api_identifier' to be a str")
         pulumi.set(__self__, "management_api_identifier", management_api_identifier)
+        if mtls and not isinstance(mtls, list):
+            raise TypeError("Expected argument 'mtls' to be a list")
+        pulumi.set(__self__, "mtls", mtls)
         if picture_url and not isinstance(picture_url, str):
             raise TypeError("Expected argument 'picture_url' to be a str")
         pulumi.set(__self__, "picture_url", picture_url)
+        if pushed_authorization_requests_supported and not isinstance(pushed_authorization_requests_supported, bool):
+            raise TypeError("Expected argument 'pushed_authorization_requests_supported' to be a bool")
+        pulumi.set(__self__, "pushed_authorization_requests_supported", pushed_authorization_requests_supported)
         if sandbox_version and not isinstance(sandbox_version, str):
             raise TypeError("Expected argument 'sandbox_version' to be a str")
         pulumi.set(__self__, "sandbox_version", sandbox_version)
@@ -88,6 +100,14 @@ class GetTenantResult:
         if support_url and not isinstance(support_url, str):
             raise TypeError("Expected argument 'support_url' to be a str")
         pulumi.set(__self__, "support_url", support_url)
+
+    @property
+    @pulumi.getter(name="acrValuesSupporteds")
+    def acr_values_supporteds(self) -> Sequence[str]:
+        """
+        List of supported ACR values.
+        """
+        return pulumi.get(self, "acr_values_supporteds")
 
     @property
     @pulumi.getter(name="allowOrganizationNameInAuthenticationApi")
@@ -136,6 +156,14 @@ class GetTenantResult:
         The default absolute redirection URI. Must be HTTPS or an empty string.
         """
         return pulumi.get(self, "default_redirection_uri")
+
+    @property
+    @pulumi.getter(name="disableAcrValuesSupported")
+    def disable_acr_values_supported(self) -> bool:
+        """
+        Disable list of supported ACR values.
+        """
+        return pulumi.get(self, "disable_acr_values_supported")
 
     @property
     @pulumi.getter
@@ -194,12 +222,28 @@ class GetTenantResult:
         return pulumi.get(self, "management_api_identifier")
 
     @property
+    @pulumi.getter
+    def mtls(self) -> Sequence['outputs.GetTenantMtlResult']:
+        """
+        Configuration for mTLS.
+        """
+        return pulumi.get(self, "mtls")
+
+    @property
     @pulumi.getter(name="pictureUrl")
     def picture_url(self) -> str:
         """
         URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         """
         return pulumi.get(self, "picture_url")
+
+    @property
+    @pulumi.getter(name="pushedAuthorizationRequestsSupported")
+    def pushed_authorization_requests_supported(self) -> bool:
+        """
+        Enable pushed authorization requests.
+        """
+        return pulumi.get(self, "pushed_authorization_requests_supported")
 
     @property
     @pulumi.getter(name="sandboxVersion")
@@ -256,12 +300,14 @@ class AwaitableGetTenantResult(GetTenantResult):
         if False:
             yield self
         return GetTenantResult(
+            acr_values_supporteds=self.acr_values_supporteds,
             allow_organization_name_in_authentication_api=self.allow_organization_name_in_authentication_api,
             allowed_logout_urls=self.allowed_logout_urls,
             customize_mfa_in_postlogin_action=self.customize_mfa_in_postlogin_action,
             default_audience=self.default_audience,
             default_directory=self.default_directory,
             default_redirection_uri=self.default_redirection_uri,
+            disable_acr_values_supported=self.disable_acr_values_supported,
             domain=self.domain,
             enabled_locales=self.enabled_locales,
             flags=self.flags,
@@ -269,7 +315,9 @@ class AwaitableGetTenantResult(GetTenantResult):
             id=self.id,
             idle_session_lifetime=self.idle_session_lifetime,
             management_api_identifier=self.management_api_identifier,
+            mtls=self.mtls,
             picture_url=self.picture_url,
+            pushed_authorization_requests_supported=self.pushed_authorization_requests_supported,
             sandbox_version=self.sandbox_version,
             session_cookies=self.session_cookies,
             session_lifetime=self.session_lifetime,
@@ -296,12 +344,14 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
     __ret__ = pulumi.runtime.invoke('auth0:index/getTenant:getTenant', __args__, opts=opts, typ=GetTenantResult).value
 
     return AwaitableGetTenantResult(
+        acr_values_supporteds=pulumi.get(__ret__, 'acr_values_supporteds'),
         allow_organization_name_in_authentication_api=pulumi.get(__ret__, 'allow_organization_name_in_authentication_api'),
         allowed_logout_urls=pulumi.get(__ret__, 'allowed_logout_urls'),
         customize_mfa_in_postlogin_action=pulumi.get(__ret__, 'customize_mfa_in_postlogin_action'),
         default_audience=pulumi.get(__ret__, 'default_audience'),
         default_directory=pulumi.get(__ret__, 'default_directory'),
         default_redirection_uri=pulumi.get(__ret__, 'default_redirection_uri'),
+        disable_acr_values_supported=pulumi.get(__ret__, 'disable_acr_values_supported'),
         domain=pulumi.get(__ret__, 'domain'),
         enabled_locales=pulumi.get(__ret__, 'enabled_locales'),
         flags=pulumi.get(__ret__, 'flags'),
@@ -309,7 +359,9 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
         id=pulumi.get(__ret__, 'id'),
         idle_session_lifetime=pulumi.get(__ret__, 'idle_session_lifetime'),
         management_api_identifier=pulumi.get(__ret__, 'management_api_identifier'),
+        mtls=pulumi.get(__ret__, 'mtls'),
         picture_url=pulumi.get(__ret__, 'picture_url'),
+        pushed_authorization_requests_supported=pulumi.get(__ret__, 'pushed_authorization_requests_supported'),
         sandbox_version=pulumi.get(__ret__, 'sandbox_version'),
         session_cookies=pulumi.get(__ret__, 'session_cookies'),
         session_lifetime=pulumi.get(__ret__, 'session_lifetime'),
@@ -333,12 +385,14 @@ def get_tenant_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Out
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getTenant:getTenant', __args__, opts=opts, typ=GetTenantResult)
     return __ret__.apply(lambda __response__: GetTenantResult(
+        acr_values_supporteds=pulumi.get(__response__, 'acr_values_supporteds'),
         allow_organization_name_in_authentication_api=pulumi.get(__response__, 'allow_organization_name_in_authentication_api'),
         allowed_logout_urls=pulumi.get(__response__, 'allowed_logout_urls'),
         customize_mfa_in_postlogin_action=pulumi.get(__response__, 'customize_mfa_in_postlogin_action'),
         default_audience=pulumi.get(__response__, 'default_audience'),
         default_directory=pulumi.get(__response__, 'default_directory'),
         default_redirection_uri=pulumi.get(__response__, 'default_redirection_uri'),
+        disable_acr_values_supported=pulumi.get(__response__, 'disable_acr_values_supported'),
         domain=pulumi.get(__response__, 'domain'),
         enabled_locales=pulumi.get(__response__, 'enabled_locales'),
         flags=pulumi.get(__response__, 'flags'),
@@ -346,7 +400,9 @@ def get_tenant_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Out
         id=pulumi.get(__response__, 'id'),
         idle_session_lifetime=pulumi.get(__response__, 'idle_session_lifetime'),
         management_api_identifier=pulumi.get(__response__, 'management_api_identifier'),
+        mtls=pulumi.get(__response__, 'mtls'),
         picture_url=pulumi.get(__response__, 'picture_url'),
+        pushed_authorization_requests_supported=pulumi.get(__response__, 'pushed_authorization_requests_supported'),
         sandbox_version=pulumi.get(__response__, 'sandbox_version'),
         session_cookies=pulumi.get(__response__, 'session_cookies'),
         session_lifetime=pulumi.get(__response__, 'session_lifetime'),

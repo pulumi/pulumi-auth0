@@ -7,6 +7,9 @@ import com.pulumi.auth0.ClientCredentialsArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.ClientCredentialsState;
 import com.pulumi.auth0.outputs.ClientCredentialsPrivateKeyJwt;
+import com.pulumi.auth0.outputs.ClientCredentialsSelfSignedTlsClientAuth;
+import com.pulumi.auth0.outputs.ClientCredentialsSignedRequestObject;
+import com.pulumi.auth0.outputs.ClientCredentialsTlsClientAuth;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -42,14 +45,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/clientCredentials:ClientCredentials")
 public class ClientCredentials extends com.pulumi.resources.CustomResource {
     /**
-     * Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT).
+     * Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
      * 
      */
     @Export(name="authenticationMethod", refs={String.class}, tree="[0]")
     private Output<String> authenticationMethod;
 
     /**
-     * @return Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT).
+     * @return Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
      * 
      */
     public Output<String> authenticationMethod() {
@@ -88,6 +91,48 @@ public class ClientCredentials extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ClientCredentialsPrivateKeyJwt>> privateKeyJwt() {
         return Codegen.optional(this.privateKeyJwt);
+    }
+    /**
+     * Defines `tls_client_auth` client authentication method.
+     * 
+     */
+    @Export(name="selfSignedTlsClientAuth", refs={ClientCredentialsSelfSignedTlsClientAuth.class}, tree="[0]")
+    private Output</* @Nullable */ ClientCredentialsSelfSignedTlsClientAuth> selfSignedTlsClientAuth;
+
+    /**
+     * @return Defines `tls_client_auth` client authentication method.
+     * 
+     */
+    public Output<Optional<ClientCredentialsSelfSignedTlsClientAuth>> selfSignedTlsClientAuth() {
+        return Codegen.optional(this.selfSignedTlsClientAuth);
+    }
+    /**
+     * Configuration for JWT-secured Authorization Requests(JAR).
+     * 
+     */
+    @Export(name="signedRequestObject", refs={ClientCredentialsSignedRequestObject.class}, tree="[0]")
+    private Output</* @Nullable */ ClientCredentialsSignedRequestObject> signedRequestObject;
+
+    /**
+     * @return Configuration for JWT-secured Authorization Requests(JAR).
+     * 
+     */
+    public Output<Optional<ClientCredentialsSignedRequestObject>> signedRequestObject() {
+        return Codegen.optional(this.signedRequestObject);
+    }
+    /**
+     * Defines `tls_client_auth` client authentication method.
+     * 
+     */
+    @Export(name="tlsClientAuth", refs={ClientCredentialsTlsClientAuth.class}, tree="[0]")
+    private Output</* @Nullable */ ClientCredentialsTlsClientAuth> tlsClientAuth;
+
+    /**
+     * @return Defines `tls_client_auth` client authentication method.
+     * 
+     */
+    public Output<Optional<ClientCredentialsTlsClientAuth>> tlsClientAuth() {
+        return Codegen.optional(this.tlsClientAuth);
     }
 
     /**

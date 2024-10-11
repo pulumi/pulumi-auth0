@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetClientJwtConfiguration {
     /**
-     * @return Algorithm used to sign JWTs.
+     * @return Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
      * 
      */
     private String alg;
@@ -36,7 +36,7 @@ public final class GetClientJwtConfiguration {
 
     private GetClientJwtConfiguration() {}
     /**
-     * @return Algorithm used to sign JWTs.
+     * @return Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
      * 
      */
     public String alg() {

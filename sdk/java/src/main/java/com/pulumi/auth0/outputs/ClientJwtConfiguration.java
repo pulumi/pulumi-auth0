@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClientJwtConfiguration {
     /**
-     * @return Algorithm used to sign JWTs.
+     * @return Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
      * 
      */
     private @Nullable String alg;
@@ -37,7 +37,7 @@ public final class ClientJwtConfiguration {
 
     private ClientJwtConfiguration() {}
     /**
-     * @return Algorithm used to sign JWTs.
+     * @return Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
      * 
      */
     public Optional<String> alg() {

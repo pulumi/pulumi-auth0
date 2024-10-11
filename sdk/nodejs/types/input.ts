@@ -1025,6 +1025,140 @@ export interface ClientCredentialsPrivateKeyJwtCredential {
     updatedAt?: pulumi.Input<string>;
 }
 
+export interface ClientCredentialsSelfSignedTlsClientAuth {
+    /**
+     * Credentials that will be enabled on the client for mTLS authentication utilizing self-signed certificates.
+     */
+    credentials: pulumi.Input<pulumi.Input<inputs.ClientCredentialsSelfSignedTlsClientAuthCredential>[]>;
+}
+
+export interface ClientCredentialsSelfSignedTlsClientAuthCredential {
+    /**
+     * The ISO 8601 formatted date the credential was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Credential type. Supported types: `x509Cert`.
+     */
+    credentialType?: pulumi.Input<string>;
+    /**
+     * The ISO 8601 formatted date representing the expiration of the credential.
+     */
+    expiresAt?: pulumi.Input<string>;
+    /**
+     * The ID of the client credential.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Friendly name for a credential.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * PEM-formatted X509 certificate. Must be JSON escaped.
+     */
+    pem: pulumi.Input<string>;
+    /**
+     * The X509 certificate's SHA256 thumbprint.
+     */
+    thumbprintSha256?: pulumi.Input<string>;
+    /**
+     * The ISO 8601 formatted date the credential was updated.
+     */
+    updatedAt?: pulumi.Input<string>;
+}
+
+export interface ClientCredentialsSignedRequestObject {
+    /**
+     * Client credentials for use with JWT-secured authorization requests.
+     */
+    credentials: pulumi.Input<pulumi.Input<inputs.ClientCredentialsSignedRequestObjectCredential>[]>;
+    /**
+     * Require JWT-secured authorization requests.
+     */
+    required?: pulumi.Input<boolean>;
+}
+
+export interface ClientCredentialsSignedRequestObjectCredential {
+    /**
+     * Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+     */
+    algorithm?: pulumi.Input<string>;
+    /**
+     * The ISO 8601 formatted date the credential was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Credential type. Supported types: `publicKey`.
+     */
+    credentialType: pulumi.Input<string>;
+    /**
+     * The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+     */
+    expiresAt?: pulumi.Input<string>;
+    /**
+     * The ID of the client credential.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The key identifier of the credential, generated on creation.
+     */
+    keyId?: pulumi.Input<string>;
+    /**
+     * Friendly name for a credential.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
+     */
+    parseExpiryFromCert?: pulumi.Input<boolean>;
+    /**
+     * PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+     */
+    pem: pulumi.Input<string>;
+    /**
+     * The ISO 8601 formatted date the credential was updated.
+     */
+    updatedAt?: pulumi.Input<string>;
+}
+
+export interface ClientCredentialsTlsClientAuth {
+    /**
+     * Credentials that will be enabled on the client for CA-based mTLS authentication.
+     */
+    credentials: pulumi.Input<pulumi.Input<inputs.ClientCredentialsTlsClientAuthCredential>[]>;
+}
+
+export interface ClientCredentialsTlsClientAuthCredential {
+    /**
+     * The ISO 8601 formatted date the credential was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Credential type. Supported types: `certSubjectDn`.
+     */
+    credentialType: pulumi.Input<string>;
+    /**
+     * The ID of the client credential.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Friendly name for a credential.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subjectDn` property.
+     */
+    pem?: pulumi.Input<string>;
+    /**
+     * Subject Distinguished Name. Mutually exlusive with `pem` property.
+     */
+    subjectDn?: pulumi.Input<string>;
+    /**
+     * The ISO 8601 formatted date the credential was updated.
+     */
+    updatedAt?: pulumi.Input<string>;
+}
+
 export interface ClientDefaultOrganization {
     /**
      * If set, the `defaultOrganization` will be removed.
@@ -1042,7 +1176,7 @@ export interface ClientDefaultOrganization {
 
 export interface ClientJwtConfiguration {
     /**
-     * Algorithm used to sign JWTs.
+     * Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
      */
     alg?: pulumi.Input<string>;
     /**
@@ -1474,7 +1608,7 @@ export interface ConnectionOptions {
      */
     useWsfed?: pulumi.Input<boolean>;
     /**
-     * Attribute in the SAML token that will be mapped to the userId property in Auth0.
+     * Attribute in the token that will be mapped to the userId property in Auth0.
      */
     userIdAttribute?: pulumi.Input<string>;
     /**
@@ -1875,6 +2009,94 @@ export interface EmailProviderSettingsMessage {
      * Setting for the `mandrill` email provider. Set to `true` to see the content of individual emails sent to users.
      */
     viewContentLink?: pulumi.Input<boolean>;
+}
+
+export interface EncryptionKeyManagerCustomerProvidedRootKey {
+    /**
+     * The ISO 8601 formatted date the customer provided root key was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * The key ID of the customer provided root key.
+     */
+    keyId?: pulumi.Input<string>;
+    /**
+     * The key ID of the parent wrapping key.
+     */
+    parentKeyId?: pulumi.Input<string>;
+    /**
+     * The public wrapping key in PEM format.
+     */
+    publicWrappingKey?: pulumi.Input<string>;
+    /**
+     * The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * The type of the customer provided root key. Should be `customer-provided-root-key`.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * The ISO 8601 formatted date the customer provided root key was updated.
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * The base64-encoded customer provided root key, wrapped using the `publicWrappingKey`. This can be removed after the wrapped key has been applied.
+     */
+    wrappedKey?: pulumi.Input<string>;
+    /**
+     * The algorithm that should be used to wrap the customer provided root key. Should be `CKM_RSA_AES_KEY_WRAP`.
+     */
+    wrappingAlgorithm?: pulumi.Input<string>;
+}
+
+export interface EncryptionKeyManagerEncryptionKey {
+    /**
+     * The ISO 8601 formatted date the encryption key was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * The key ID of the encryption key.
+     */
+    keyId?: pulumi.Input<string>;
+    /**
+     * The key ID of the parent wrapping key.
+     */
+    parentKeyId?: pulumi.Input<string>;
+    /**
+     * The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * The type of the encryption key. One of `customer-provided-root-key`, `environment-root-key`, or `tenant-master-key`.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * The ISO 8601 formatted date the encryption key was updated.
+     */
+    updatedAt?: pulumi.Input<string>;
+}
+
+export interface FormLanguage {
+    /**
+     * Default language for the form.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * Primary language for the form.
+     */
+    primary: pulumi.Input<string>;
+}
+
+export interface FormMessage {
+    /**
+     * Custom message for the form. (JSON encoded)
+     */
+    custom?: pulumi.Input<string>;
+    /**
+     * Error message for the form. (JSON encoded)
+     */
+    errors?: pulumi.Input<string>;
 }
 
 export interface GetConnectionScimConfigurationDefaultMapping {
@@ -2420,6 +2642,32 @@ export interface PromptScreenPartialsScreenPartialInsertionPoints {
     secondaryActionsStart?: pulumi.Input<string>;
 }
 
+export interface ResourceServerAuthorizationDetail {
+    /**
+     * Disable authorization details.
+     */
+    disable?: pulumi.Input<boolean>;
+    /**
+     * Type of authorization details.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface ResourceServerProofOfPossession {
+    /**
+     * Disable proof-of-possession.
+     */
+    disable?: pulumi.Input<boolean>;
+    /**
+     * Mechanism used for proof-of-possession. Only `mtls` is supported.
+     */
+    mechanism?: pulumi.Input<string>;
+    /**
+     * Indicates whether proof-of-possession is required with this resource server.
+     */
+    required?: pulumi.Input<boolean>;
+}
+
 export interface ResourceServerScopesScope {
     /**
      * User-friendly description of the scope (permission).
@@ -2429,6 +2677,40 @@ export interface ResourceServerScopesScope {
      * Name of the scope (permission). Examples include `read:appointments` or `delete:appointments`.
      */
     name: pulumi.Input<string>;
+}
+
+export interface ResourceServerTokenEncryption {
+    /**
+     * Disable token encryption.
+     */
+    disable?: pulumi.Input<boolean>;
+    /**
+     * Authorization details for this resource server.
+     */
+    encryptionKey?: pulumi.Input<inputs.ResourceServerTokenEncryptionEncryptionKey>;
+    /**
+     * Format of the token encryption. Only `compact-nested-jwe` is supported.
+     */
+    format?: pulumi.Input<string>;
+}
+
+export interface ResourceServerTokenEncryptionEncryptionKey {
+    /**
+     * Algorithm used to encrypt the token.
+     */
+    algorithm: pulumi.Input<string>;
+    /**
+     * Key ID.
+     */
+    kid?: pulumi.Input<string>;
+    /**
+     * Name of the encryption key.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * PEM-formatted public key. Must be JSON escaped.
+     */
+    pem: pulumi.Input<string>;
 }
 
 export interface RolePermissionsPermission {
@@ -2569,6 +2851,10 @@ export interface TenantFlags {
      */
     noDiscloseEnterpriseConnections?: pulumi.Input<boolean>;
     /**
+     * Remove `alg` from jwks(JSON Web Key Sets).
+     */
+    removeAlgFromJwks?: pulumi.Input<boolean>;
+    /**
      * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      *
      * @deprecated This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
@@ -2582,6 +2868,17 @@ export interface TenantFlags {
      * Indicates whether to use scope descriptions for consent.
      */
     useScopeDescriptionsForConsent?: pulumi.Input<boolean>;
+}
+
+export interface TenantMtls {
+    /**
+     * Disable mTLS settings.
+     */
+    disable?: pulumi.Input<boolean>;
+    /**
+     * Enable mTLS endpoint aliases.
+     */
+    enableEndpointAliases?: pulumi.Input<boolean>;
 }
 
 export interface TenantSessionCookie {

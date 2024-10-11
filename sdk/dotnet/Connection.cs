@@ -43,6 +43,7 @@ namespace Pulumi.Auth0
     ///         {
     ///             PasswordPolicy = "excellent",
     ///             BruteForceProtection = true,
+    ///             StrategyVersion = 2,
     ///             EnabledDatabaseCustomization = true,
     ///             ImportMode = false,
     ///             RequiresUsername = true,
@@ -422,6 +423,7 @@ namespace Pulumi.Auth0
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
     ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             StrategyVersion = 2,
     ///             Scopes = new[]
     ///             {
     ///                 "basic_profile",
@@ -473,6 +475,7 @@ namespace Pulumi.Auth0
     ///             DisableSelfServiceChangePassword = true,
     ///             BruteForceProtection = true,
     ///             TenantDomain = "example.com",
+    ///             StrategyVersion = 2,
     ///             IconUrl = "https://example.com/assets/logo.png",
     ///             DomainAliases = new[]
     ///             {
@@ -527,6 +530,8 @@ namespace Pulumi.Auth0
     ///             IdentityApi = "azure-active-directory-v1.0",
     ///             ClientId = "123456",
     ///             ClientSecret = "123456",
+    ///             StrategyVersion = 2,
+    ///             UserIdAttribute = "userName",
     ///             AppId = "app-id-123",
     ///             TenantDomain = "example.onmicrosoft.com",
     ///             Domain = "example.onmicrosoft.com",
@@ -634,6 +639,7 @@ namespace Pulumi.Auth0
     ///             SignInEndpoint = "https://saml.provider/sign_in",
     ///             SignOutEndpoint = "https://saml.provider/sign_out",
     ///             DisableSignOut = true,
+    ///             StrategyVersion = 2,
     ///             TenantDomain = "example.com",
     ///             DomainAliases = new[]
     ///             {
@@ -908,7 +914,7 @@ namespace Pulumi.Auth0
         /// Name used in login screen.
         /// </summary>
         [Output("displayName")]
-        public Output<string?> DisplayName { get; private set; } = null!;
+        public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether the connection is domain level.

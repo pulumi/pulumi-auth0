@@ -35,13 +35,19 @@ import (
 type ClientCredentials struct {
 	pulumi.CustomResourceState
 
-	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT).
+	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
 	AuthenticationMethod pulumi.StringOutput `pulumi:"authenticationMethod"`
 	// The ID of the client for which to configure the authentication method.
 	ClientId     pulumi.StringOutput `pulumi:"clientId"`
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt ClientCredentialsPrivateKeyJwtPtrOutput `pulumi:"privateKeyJwt"`
+	// Defines `tlsClientAuth` client authentication method.
+	SelfSignedTlsClientAuth ClientCredentialsSelfSignedTlsClientAuthPtrOutput `pulumi:"selfSignedTlsClientAuth"`
+	// Configuration for JWT-secured Authorization Requests(JAR).
+	SignedRequestObject ClientCredentialsSignedRequestObjectPtrOutput `pulumi:"signedRequestObject"`
+	// Defines `tlsClientAuth` client authentication method.
+	TlsClientAuth ClientCredentialsTlsClientAuthPtrOutput `pulumi:"tlsClientAuth"`
 }
 
 // NewClientCredentials registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +57,6 @@ func NewClientCredentials(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AuthenticationMethod == nil {
-		return nil, errors.New("invalid value for required argument 'AuthenticationMethod'")
-	}
 	if args.ClientId == nil {
 		return nil, errors.New("invalid value for required argument 'ClientId'")
 	}
@@ -87,23 +90,35 @@ func GetClientCredentials(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClientCredentials resources.
 type clientCredentialsState struct {
-	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT).
+	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
 	AuthenticationMethod *string `pulumi:"authenticationMethod"`
 	// The ID of the client for which to configure the authentication method.
 	ClientId     *string `pulumi:"clientId"`
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt *ClientCredentialsPrivateKeyJwt `pulumi:"privateKeyJwt"`
+	// Defines `tlsClientAuth` client authentication method.
+	SelfSignedTlsClientAuth *ClientCredentialsSelfSignedTlsClientAuth `pulumi:"selfSignedTlsClientAuth"`
+	// Configuration for JWT-secured Authorization Requests(JAR).
+	SignedRequestObject *ClientCredentialsSignedRequestObject `pulumi:"signedRequestObject"`
+	// Defines `tlsClientAuth` client authentication method.
+	TlsClientAuth *ClientCredentialsTlsClientAuth `pulumi:"tlsClientAuth"`
 }
 
 type ClientCredentialsState struct {
-	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT).
+	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
 	AuthenticationMethod pulumi.StringPtrInput
 	// The ID of the client for which to configure the authentication method.
 	ClientId     pulumi.StringPtrInput
 	ClientSecret pulumi.StringPtrInput
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt ClientCredentialsPrivateKeyJwtPtrInput
+	// Defines `tlsClientAuth` client authentication method.
+	SelfSignedTlsClientAuth ClientCredentialsSelfSignedTlsClientAuthPtrInput
+	// Configuration for JWT-secured Authorization Requests(JAR).
+	SignedRequestObject ClientCredentialsSignedRequestObjectPtrInput
+	// Defines `tlsClientAuth` client authentication method.
+	TlsClientAuth ClientCredentialsTlsClientAuthPtrInput
 }
 
 func (ClientCredentialsState) ElementType() reflect.Type {
@@ -111,24 +126,36 @@ func (ClientCredentialsState) ElementType() reflect.Type {
 }
 
 type clientCredentialsArgs struct {
-	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT).
-	AuthenticationMethod string `pulumi:"authenticationMethod"`
+	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
+	AuthenticationMethod *string `pulumi:"authenticationMethod"`
 	// The ID of the client for which to configure the authentication method.
 	ClientId     string  `pulumi:"clientId"`
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt *ClientCredentialsPrivateKeyJwt `pulumi:"privateKeyJwt"`
+	// Defines `tlsClientAuth` client authentication method.
+	SelfSignedTlsClientAuth *ClientCredentialsSelfSignedTlsClientAuth `pulumi:"selfSignedTlsClientAuth"`
+	// Configuration for JWT-secured Authorization Requests(JAR).
+	SignedRequestObject *ClientCredentialsSignedRequestObject `pulumi:"signedRequestObject"`
+	// Defines `tlsClientAuth` client authentication method.
+	TlsClientAuth *ClientCredentialsTlsClientAuth `pulumi:"tlsClientAuth"`
 }
 
 // The set of arguments for constructing a ClientCredentials resource.
 type ClientCredentialsArgs struct {
-	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT).
-	AuthenticationMethod pulumi.StringInput
+	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
+	AuthenticationMethod pulumi.StringPtrInput
 	// The ID of the client for which to configure the authentication method.
 	ClientId     pulumi.StringInput
 	ClientSecret pulumi.StringPtrInput
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt ClientCredentialsPrivateKeyJwtPtrInput
+	// Defines `tlsClientAuth` client authentication method.
+	SelfSignedTlsClientAuth ClientCredentialsSelfSignedTlsClientAuthPtrInput
+	// Configuration for JWT-secured Authorization Requests(JAR).
+	SignedRequestObject ClientCredentialsSignedRequestObjectPtrInput
+	// Defines `tlsClientAuth` client authentication method.
+	TlsClientAuth ClientCredentialsTlsClientAuthPtrInput
 }
 
 func (ClientCredentialsArgs) ElementType() reflect.Type {
@@ -218,7 +245,7 @@ func (o ClientCredentialsOutput) ToClientCredentialsOutputWithContext(ctx contex
 	return o
 }
 
-// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT).
+// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
 func (o ClientCredentialsOutput) AuthenticationMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientCredentials) pulumi.StringOutput { return v.AuthenticationMethod }).(pulumi.StringOutput)
 }
@@ -235,6 +262,23 @@ func (o ClientCredentialsOutput) ClientSecret() pulumi.StringOutput {
 // Defines `privateKeyJwt` client authentication method.
 func (o ClientCredentialsOutput) PrivateKeyJwt() ClientCredentialsPrivateKeyJwtPtrOutput {
 	return o.ApplyT(func(v *ClientCredentials) ClientCredentialsPrivateKeyJwtPtrOutput { return v.PrivateKeyJwt }).(ClientCredentialsPrivateKeyJwtPtrOutput)
+}
+
+// Defines `tlsClientAuth` client authentication method.
+func (o ClientCredentialsOutput) SelfSignedTlsClientAuth() ClientCredentialsSelfSignedTlsClientAuthPtrOutput {
+	return o.ApplyT(func(v *ClientCredentials) ClientCredentialsSelfSignedTlsClientAuthPtrOutput {
+		return v.SelfSignedTlsClientAuth
+	}).(ClientCredentialsSelfSignedTlsClientAuthPtrOutput)
+}
+
+// Configuration for JWT-secured Authorization Requests(JAR).
+func (o ClientCredentialsOutput) SignedRequestObject() ClientCredentialsSignedRequestObjectPtrOutput {
+	return o.ApplyT(func(v *ClientCredentials) ClientCredentialsSignedRequestObjectPtrOutput { return v.SignedRequestObject }).(ClientCredentialsSignedRequestObjectPtrOutput)
+}
+
+// Defines `tlsClientAuth` client authentication method.
+func (o ClientCredentialsOutput) TlsClientAuth() ClientCredentialsTlsClientAuthPtrOutput {
+	return o.ApplyT(func(v *ClientCredentials) ClientCredentialsTlsClientAuthPtrOutput { return v.TlsClientAuth }).(ClientCredentialsTlsClientAuthPtrOutput)
 }
 
 type ClientCredentialsArrayOutput struct{ *pulumi.OutputState }

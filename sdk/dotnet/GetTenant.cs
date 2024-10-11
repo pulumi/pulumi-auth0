@@ -59,6 +59,10 @@ namespace Pulumi.Auth0
     public sealed class GetTenantResult
     {
         /// <summary>
+        /// List of supported ACR values.
+        /// </summary>
+        public readonly ImmutableArray<string> AcrValuesSupporteds;
+        /// <summary>
         /// Whether to accept an organization name instead of an ID on auth endpoints.
         /// </summary>
         public readonly bool AllowOrganizationNameInAuthenticationApi;
@@ -82,6 +86,10 @@ namespace Pulumi.Auth0
         /// The default absolute redirection URI. Must be HTTPS or an empty string.
         /// </summary>
         public readonly string DefaultRedirectionUri;
+        /// <summary>
+        /// Disable list of supported ACR values.
+        /// </summary>
+        public readonly bool DisableAcrValuesSupported;
         /// <summary>
         /// Your Auth0 domain name.
         /// </summary>
@@ -111,9 +119,17 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string ManagementApiIdentifier;
         /// <summary>
+        /// Configuration for mTLS.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTenantMtlResult> Mtls;
+        /// <summary>
         /// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         /// </summary>
         public readonly string PictureUrl;
+        /// <summary>
+        /// Enable pushed authorization requests.
+        /// </summary>
+        public readonly bool PushedAuthorizationRequestsSupported;
         /// <summary>
         /// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
         /// </summary>
@@ -141,6 +157,8 @@ namespace Pulumi.Auth0
 
         [OutputConstructor]
         private GetTenantResult(
+            ImmutableArray<string> acrValuesSupporteds,
+
             bool allowOrganizationNameInAuthenticationApi,
 
             ImmutableArray<string> allowedLogoutUrls,
@@ -152,6 +170,8 @@ namespace Pulumi.Auth0
             string defaultDirectory,
 
             string defaultRedirectionUri,
+
+            bool disableAcrValuesSupported,
 
             string domain,
 
@@ -167,7 +187,11 @@ namespace Pulumi.Auth0
 
             string managementApiIdentifier,
 
+            ImmutableArray<Outputs.GetTenantMtlResult> mtls,
+
             string pictureUrl,
+
+            bool pushedAuthorizationRequestsSupported,
 
             string sandboxVersion,
 
@@ -181,12 +205,14 @@ namespace Pulumi.Auth0
 
             string supportUrl)
         {
+            AcrValuesSupporteds = acrValuesSupporteds;
             AllowOrganizationNameInAuthenticationApi = allowOrganizationNameInAuthenticationApi;
             AllowedLogoutUrls = allowedLogoutUrls;
             CustomizeMfaInPostloginAction = customizeMfaInPostloginAction;
             DefaultAudience = defaultAudience;
             DefaultDirectory = defaultDirectory;
             DefaultRedirectionUri = defaultRedirectionUri;
+            DisableAcrValuesSupported = disableAcrValuesSupported;
             Domain = domain;
             EnabledLocales = enabledLocales;
             Flags = flags;
@@ -194,7 +220,9 @@ namespace Pulumi.Auth0
             Id = id;
             IdleSessionLifetime = idleSessionLifetime;
             ManagementApiIdentifier = managementApiIdentifier;
+            Mtls = mtls;
             PictureUrl = pictureUrl;
+            PushedAuthorizationRequestsSupported = pushedAuthorizationRequestsSupported;
             SandboxVersion = sandboxVersion;
             SessionCookies = sessionCookies;
             SessionLifetime = sessionLifetime;

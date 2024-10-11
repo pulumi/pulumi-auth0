@@ -4,11 +4,13 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetClientAddon;
+import com.pulumi.auth0.outputs.GetClientClientAuthenticationMethod;
 import com.pulumi.auth0.outputs.GetClientDefaultOrganization;
 import com.pulumi.auth0.outputs.GetClientJwtConfiguration;
 import com.pulumi.auth0.outputs.GetClientMobile;
 import com.pulumi.auth0.outputs.GetClientNativeSocialLogin;
 import com.pulumi.auth0.outputs.GetClientRefreshToken;
+import com.pulumi.auth0.outputs.GetClientSignedRequestObject;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -57,6 +59,11 @@ public final class GetClientResult {
      */
     private List<String> clientAliases;
     /**
+     * @return Defines client authentication methods.
+     * 
+     */
+    private List<GetClientClientAuthenticationMethod> clientAuthenticationMethods;
+    /**
      * @return The ID of the client. If not provided, `name` must be set.
      * 
      */
@@ -67,6 +74,11 @@ public final class GetClientResult {
      */
     private Map<String,String> clientMetadata;
     private String clientSecret;
+    /**
+     * @return Defines the compliance level for this client, which may restrict it&#39;s capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+     * 
+     */
+    private String complianceLevel;
     /**
      * @return Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      * 
@@ -183,10 +195,20 @@ public final class GetClientResult {
      */
     private List<GetClientRefreshToken> refreshTokens;
     /**
+     * @return Makes the use of Proof-of-Possession mandatory for this client.
+     * 
+     */
+    private Boolean requireProofOfPossession;
+    /**
      * @return Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      * 
      */
     private Boolean requirePushedAuthorizationRequests;
+    /**
+     * @return Configuration for JWT-secured Authorization Requests(JAR).
+     * 
+     */
+    private List<GetClientSignedRequestObject> signedRequestObjects;
     /**
      * @return List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      * 
@@ -203,7 +225,7 @@ public final class GetClientResult {
      */
     private Boolean ssoDisabled;
     /**
-     * @return The authentication method for the token endpoint. Results include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic). Managing a client&#39;s authentication method can be done via the `auth0.ClientCredentials` resource.
+     * @return The authentication method for the token endpoint. Results include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic), Managing a client&#39;s authentication method can be done via the `auth0.ClientCredentials` resource.
      * 
      */
     private String tokenEndpointAuthMethod;
@@ -264,6 +286,13 @@ public final class GetClientResult {
         return this.clientAliases;
     }
     /**
+     * @return Defines client authentication methods.
+     * 
+     */
+    public List<GetClientClientAuthenticationMethod> clientAuthenticationMethods() {
+        return this.clientAuthenticationMethods;
+    }
+    /**
      * @return The ID of the client. If not provided, `name` must be set.
      * 
      */
@@ -279,6 +308,13 @@ public final class GetClientResult {
     }
     public String clientSecret() {
         return this.clientSecret;
+    }
+    /**
+     * @return Defines the compliance level for this client, which may restrict it&#39;s capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+     * 
+     */
+    public String complianceLevel() {
+        return this.complianceLevel;
     }
     /**
      * @return Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
@@ -442,11 +478,25 @@ public final class GetClientResult {
         return this.refreshTokens;
     }
     /**
+     * @return Makes the use of Proof-of-Possession mandatory for this client.
+     * 
+     */
+    public Boolean requireProofOfPossession() {
+        return this.requireProofOfPossession;
+    }
+    /**
      * @return Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      * 
      */
     public Boolean requirePushedAuthorizationRequests() {
         return this.requirePushedAuthorizationRequests;
+    }
+    /**
+     * @return Configuration for JWT-secured Authorization Requests(JAR).
+     * 
+     */
+    public List<GetClientSignedRequestObject> signedRequestObjects() {
+        return this.signedRequestObjects;
     }
     /**
      * @return List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
@@ -470,7 +520,7 @@ public final class GetClientResult {
         return this.ssoDisabled;
     }
     /**
-     * @return The authentication method for the token endpoint. Results include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic). Managing a client&#39;s authentication method can be done via the `auth0.ClientCredentials` resource.
+     * @return The authentication method for the token endpoint. Results include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic), Managing a client&#39;s authentication method can be done via the `auth0.ClientCredentials` resource.
      * 
      */
     public String tokenEndpointAuthMethod() {
@@ -500,9 +550,11 @@ public final class GetClientResult {
         private String appType;
         private List<String> callbacks;
         private List<String> clientAliases;
+        private List<GetClientClientAuthenticationMethod> clientAuthenticationMethods;
         private @Nullable String clientId;
         private Map<String,String> clientMetadata;
         private String clientSecret;
+        private String complianceLevel;
         private Boolean crossOriginAuth;
         private String crossOriginLoc;
         private String customLoginPage;
@@ -526,7 +578,9 @@ public final class GetClientResult {
         private String organizationRequireBehavior;
         private String organizationUsage;
         private List<GetClientRefreshToken> refreshTokens;
+        private Boolean requireProofOfPossession;
         private Boolean requirePushedAuthorizationRequests;
+        private List<GetClientSignedRequestObject> signedRequestObjects;
         private List<Map<String,String>> signingKeys;
         private Boolean sso;
         private Boolean ssoDisabled;
@@ -542,9 +596,11 @@ public final class GetClientResult {
     	      this.appType = defaults.appType;
     	      this.callbacks = defaults.callbacks;
     	      this.clientAliases = defaults.clientAliases;
+    	      this.clientAuthenticationMethods = defaults.clientAuthenticationMethods;
     	      this.clientId = defaults.clientId;
     	      this.clientMetadata = defaults.clientMetadata;
     	      this.clientSecret = defaults.clientSecret;
+    	      this.complianceLevel = defaults.complianceLevel;
     	      this.crossOriginAuth = defaults.crossOriginAuth;
     	      this.crossOriginLoc = defaults.crossOriginLoc;
     	      this.customLoginPage = defaults.customLoginPage;
@@ -568,7 +624,9 @@ public final class GetClientResult {
     	      this.organizationRequireBehavior = defaults.organizationRequireBehavior;
     	      this.organizationUsage = defaults.organizationUsage;
     	      this.refreshTokens = defaults.refreshTokens;
+    	      this.requireProofOfPossession = defaults.requireProofOfPossession;
     	      this.requirePushedAuthorizationRequests = defaults.requirePushedAuthorizationRequests;
+    	      this.signedRequestObjects = defaults.signedRequestObjects;
     	      this.signingKeys = defaults.signingKeys;
     	      this.sso = defaults.sso;
     	      this.ssoDisabled = defaults.ssoDisabled;
@@ -651,6 +709,17 @@ public final class GetClientResult {
             return clientAliases(List.of(clientAliases));
         }
         @CustomType.Setter
+        public Builder clientAuthenticationMethods(List<GetClientClientAuthenticationMethod> clientAuthenticationMethods) {
+            if (clientAuthenticationMethods == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "clientAuthenticationMethods");
+            }
+            this.clientAuthenticationMethods = clientAuthenticationMethods;
+            return this;
+        }
+        public Builder clientAuthenticationMethods(GetClientClientAuthenticationMethod... clientAuthenticationMethods) {
+            return clientAuthenticationMethods(List.of(clientAuthenticationMethods));
+        }
+        @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
 
             this.clientId = clientId;
@@ -670,6 +739,14 @@ public final class GetClientResult {
               throw new MissingRequiredPropertyException("GetClientResult", "clientSecret");
             }
             this.clientSecret = clientSecret;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder complianceLevel(String complianceLevel) {
+            if (complianceLevel == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "complianceLevel");
+            }
+            this.complianceLevel = complianceLevel;
             return this;
         }
         @CustomType.Setter
@@ -876,12 +953,31 @@ public final class GetClientResult {
             return refreshTokens(List.of(refreshTokens));
         }
         @CustomType.Setter
+        public Builder requireProofOfPossession(Boolean requireProofOfPossession) {
+            if (requireProofOfPossession == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "requireProofOfPossession");
+            }
+            this.requireProofOfPossession = requireProofOfPossession;
+            return this;
+        }
+        @CustomType.Setter
         public Builder requirePushedAuthorizationRequests(Boolean requirePushedAuthorizationRequests) {
             if (requirePushedAuthorizationRequests == null) {
               throw new MissingRequiredPropertyException("GetClientResult", "requirePushedAuthorizationRequests");
             }
             this.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
             return this;
+        }
+        @CustomType.Setter
+        public Builder signedRequestObjects(List<GetClientSignedRequestObject> signedRequestObjects) {
+            if (signedRequestObjects == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "signedRequestObjects");
+            }
+            this.signedRequestObjects = signedRequestObjects;
+            return this;
+        }
+        public Builder signedRequestObjects(GetClientSignedRequestObject... signedRequestObjects) {
+            return signedRequestObjects(List.of(signedRequestObjects));
         }
         @CustomType.Setter
         public Builder signingKeys(List<Map<String,String>> signingKeys) {
@@ -935,9 +1031,11 @@ public final class GetClientResult {
             _resultValue.appType = appType;
             _resultValue.callbacks = callbacks;
             _resultValue.clientAliases = clientAliases;
+            _resultValue.clientAuthenticationMethods = clientAuthenticationMethods;
             _resultValue.clientId = clientId;
             _resultValue.clientMetadata = clientMetadata;
             _resultValue.clientSecret = clientSecret;
+            _resultValue.complianceLevel = complianceLevel;
             _resultValue.crossOriginAuth = crossOriginAuth;
             _resultValue.crossOriginLoc = crossOriginLoc;
             _resultValue.customLoginPage = customLoginPage;
@@ -961,7 +1059,9 @@ public final class GetClientResult {
             _resultValue.organizationRequireBehavior = organizationRequireBehavior;
             _resultValue.organizationUsage = organizationUsage;
             _resultValue.refreshTokens = refreshTokens;
+            _resultValue.requireProofOfPossession = requireProofOfPossession;
             _resultValue.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
+            _resultValue.signedRequestObjects = signedRequestObjects;
             _resultValue.signingKeys = signingKeys;
             _resultValue.sso = sso;
             _resultValue.ssoDisabled = ssoDisabled;

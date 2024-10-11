@@ -5,10 +5,10 @@ Subject: [PATCH] Patch to avoid upstream ResourceServer panic: code moved
 
 
 diff --git a/internal/auth0/resourceserver/expand.go b/internal/auth0/resourceserver/expand.go
-index be0a7002..8d4b7c8f 100644
+index a25fb8f0..469b5a4f 100644
 --- a/internal/auth0/resourceserver/expand.go
 +++ b/internal/auth0/resourceserver/expand.go
-@@ -55,5 +55,6 @@ func resourceServerIsAuth0ManagementAPI(state cty.Value) bool {
+@@ -239,5 +239,6 @@ func resourceServerIsAuth0ManagementAPI(state cty.Value) bool {
  		return false
  	}
  
