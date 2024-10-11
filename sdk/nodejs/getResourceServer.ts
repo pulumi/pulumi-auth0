@@ -57,6 +57,14 @@ export interface GetResourceServerResult {
      */
     readonly allowOfflineAccess: boolean;
     /**
+     * Authorization details for this resource server.
+     */
+    readonly authorizationDetails: outputs.GetResourceServerAuthorizationDetail[];
+    /**
+     * Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+     */
+    readonly consentPolicy: string;
+    /**
      * If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
      */
     readonly enforcePolicies: boolean;
@@ -73,6 +81,10 @@ export interface GetResourceServerResult {
      */
     readonly name: string;
     /**
+     * Configuration settings for proof-of-possession for this resource server.
+     */
+    readonly proofOfPossessions: outputs.GetResourceServerProofOfPossession[];
+    /**
      * The ID of the resource server. If not provided, `identifier` must be set.
      */
     readonly resourceServerId?: string;
@@ -81,7 +93,7 @@ export interface GetResourceServerResult {
      */
     readonly scopes: outputs.GetResourceServerScope[];
     /**
-     * Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+     * Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
      */
     readonly signingAlg: string;
     /**
@@ -96,6 +108,10 @@ export interface GetResourceServerResult {
      * Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
      */
     readonly tokenDialect: string;
+    /**
+     * Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+     */
+    readonly tokenEncryptions: outputs.GetResourceServerTokenEncryption[];
     /**
      * Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      */

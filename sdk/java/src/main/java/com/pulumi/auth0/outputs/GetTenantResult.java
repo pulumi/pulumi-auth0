@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetTenantFlag;
+import com.pulumi.auth0.outputs.GetTenantMtl;
 import com.pulumi.auth0.outputs.GetTenantSession;
 import com.pulumi.auth0.outputs.GetTenantSessionCooky;
 import com.pulumi.core.annotations.CustomType;
@@ -16,6 +17,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTenantResult {
+    /**
+     * @return List of supported ACR values.
+     * 
+     */
+    private List<String> acrValuesSupporteds;
     /**
      * @return Whether to accept an organization name instead of an ID on auth endpoints.
      * 
@@ -46,6 +52,11 @@ public final class GetTenantResult {
      * 
      */
     private String defaultRedirectionUri;
+    /**
+     * @return Disable list of supported ACR values.
+     * 
+     */
+    private Boolean disableAcrValuesSupported;
     /**
      * @return Your Auth0 domain name.
      * 
@@ -82,10 +93,20 @@ public final class GetTenantResult {
      */
     private String managementApiIdentifier;
     /**
+     * @return Configuration for mTLS.
+     * 
+     */
+    private List<GetTenantMtl> mtls;
+    /**
      * @return URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      * 
      */
     private String pictureUrl;
+    /**
+     * @return Enable pushed authorization requests.
+     * 
+     */
+    private Boolean pushedAuthorizationRequestsSupported;
     /**
      * @return Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
      * 
@@ -118,6 +139,13 @@ public final class GetTenantResult {
     private String supportUrl;
 
     private GetTenantResult() {}
+    /**
+     * @return List of supported ACR values.
+     * 
+     */
+    public List<String> acrValuesSupporteds() {
+        return this.acrValuesSupporteds;
+    }
     /**
      * @return Whether to accept an organization name instead of an ID on auth endpoints.
      * 
@@ -159,6 +187,13 @@ public final class GetTenantResult {
      */
     public String defaultRedirectionUri() {
         return this.defaultRedirectionUri;
+    }
+    /**
+     * @return Disable list of supported ACR values.
+     * 
+     */
+    public Boolean disableAcrValuesSupported() {
+        return this.disableAcrValuesSupported;
     }
     /**
      * @return Your Auth0 domain name.
@@ -210,11 +245,25 @@ public final class GetTenantResult {
         return this.managementApiIdentifier;
     }
     /**
+     * @return Configuration for mTLS.
+     * 
+     */
+    public List<GetTenantMtl> mtls() {
+        return this.mtls;
+    }
+    /**
      * @return URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      * 
      */
     public String pictureUrl() {
         return this.pictureUrl;
+    }
+    /**
+     * @return Enable pushed authorization requests.
+     * 
+     */
+    public Boolean pushedAuthorizationRequestsSupported() {
+        return this.pushedAuthorizationRequestsSupported;
     }
     /**
      * @return Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
@@ -268,12 +317,14 @@ public final class GetTenantResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> acrValuesSupporteds;
         private Boolean allowOrganizationNameInAuthenticationApi;
         private List<String> allowedLogoutUrls;
         private Boolean customizeMfaInPostloginAction;
         private String defaultAudience;
         private String defaultDirectory;
         private String defaultRedirectionUri;
+        private Boolean disableAcrValuesSupported;
         private String domain;
         private List<String> enabledLocales;
         private List<GetTenantFlag> flags;
@@ -281,7 +332,9 @@ public final class GetTenantResult {
         private String id;
         private Double idleSessionLifetime;
         private String managementApiIdentifier;
+        private List<GetTenantMtl> mtls;
         private String pictureUrl;
+        private Boolean pushedAuthorizationRequestsSupported;
         private String sandboxVersion;
         private List<GetTenantSessionCooky> sessionCookies;
         private Double sessionLifetime;
@@ -291,12 +344,14 @@ public final class GetTenantResult {
         public Builder() {}
         public Builder(GetTenantResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.acrValuesSupporteds = defaults.acrValuesSupporteds;
     	      this.allowOrganizationNameInAuthenticationApi = defaults.allowOrganizationNameInAuthenticationApi;
     	      this.allowedLogoutUrls = defaults.allowedLogoutUrls;
     	      this.customizeMfaInPostloginAction = defaults.customizeMfaInPostloginAction;
     	      this.defaultAudience = defaults.defaultAudience;
     	      this.defaultDirectory = defaults.defaultDirectory;
     	      this.defaultRedirectionUri = defaults.defaultRedirectionUri;
+    	      this.disableAcrValuesSupported = defaults.disableAcrValuesSupported;
     	      this.domain = defaults.domain;
     	      this.enabledLocales = defaults.enabledLocales;
     	      this.flags = defaults.flags;
@@ -304,7 +359,9 @@ public final class GetTenantResult {
     	      this.id = defaults.id;
     	      this.idleSessionLifetime = defaults.idleSessionLifetime;
     	      this.managementApiIdentifier = defaults.managementApiIdentifier;
+    	      this.mtls = defaults.mtls;
     	      this.pictureUrl = defaults.pictureUrl;
+    	      this.pushedAuthorizationRequestsSupported = defaults.pushedAuthorizationRequestsSupported;
     	      this.sandboxVersion = defaults.sandboxVersion;
     	      this.sessionCookies = defaults.sessionCookies;
     	      this.sessionLifetime = defaults.sessionLifetime;
@@ -313,6 +370,17 @@ public final class GetTenantResult {
     	      this.supportUrl = defaults.supportUrl;
         }
 
+        @CustomType.Setter
+        public Builder acrValuesSupporteds(List<String> acrValuesSupporteds) {
+            if (acrValuesSupporteds == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "acrValuesSupporteds");
+            }
+            this.acrValuesSupporteds = acrValuesSupporteds;
+            return this;
+        }
+        public Builder acrValuesSupporteds(String... acrValuesSupporteds) {
+            return acrValuesSupporteds(List.of(acrValuesSupporteds));
+        }
         @CustomType.Setter
         public Builder allowOrganizationNameInAuthenticationApi(Boolean allowOrganizationNameInAuthenticationApi) {
             if (allowOrganizationNameInAuthenticationApi == null) {
@@ -362,6 +430,14 @@ public final class GetTenantResult {
               throw new MissingRequiredPropertyException("GetTenantResult", "defaultRedirectionUri");
             }
             this.defaultRedirectionUri = defaultRedirectionUri;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disableAcrValuesSupported(Boolean disableAcrValuesSupported) {
+            if (disableAcrValuesSupported == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "disableAcrValuesSupported");
+            }
+            this.disableAcrValuesSupported = disableAcrValuesSupported;
             return this;
         }
         @CustomType.Setter
@@ -427,11 +503,30 @@ public final class GetTenantResult {
             return this;
         }
         @CustomType.Setter
+        public Builder mtls(List<GetTenantMtl> mtls) {
+            if (mtls == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "mtls");
+            }
+            this.mtls = mtls;
+            return this;
+        }
+        public Builder mtls(GetTenantMtl... mtls) {
+            return mtls(List.of(mtls));
+        }
+        @CustomType.Setter
         public Builder pictureUrl(String pictureUrl) {
             if (pictureUrl == null) {
               throw new MissingRequiredPropertyException("GetTenantResult", "pictureUrl");
             }
             this.pictureUrl = pictureUrl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pushedAuthorizationRequestsSupported(Boolean pushedAuthorizationRequestsSupported) {
+            if (pushedAuthorizationRequestsSupported == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "pushedAuthorizationRequestsSupported");
+            }
+            this.pushedAuthorizationRequestsSupported = pushedAuthorizationRequestsSupported;
             return this;
         }
         @CustomType.Setter
@@ -490,12 +585,14 @@ public final class GetTenantResult {
         }
         public GetTenantResult build() {
             final var _resultValue = new GetTenantResult();
+            _resultValue.acrValuesSupporteds = acrValuesSupporteds;
             _resultValue.allowOrganizationNameInAuthenticationApi = allowOrganizationNameInAuthenticationApi;
             _resultValue.allowedLogoutUrls = allowedLogoutUrls;
             _resultValue.customizeMfaInPostloginAction = customizeMfaInPostloginAction;
             _resultValue.defaultAudience = defaultAudience;
             _resultValue.defaultDirectory = defaultDirectory;
             _resultValue.defaultRedirectionUri = defaultRedirectionUri;
+            _resultValue.disableAcrValuesSupported = disableAcrValuesSupported;
             _resultValue.domain = domain;
             _resultValue.enabledLocales = enabledLocales;
             _resultValue.flags = flags;
@@ -503,7 +600,9 @@ public final class GetTenantResult {
             _resultValue.id = id;
             _resultValue.idleSessionLifetime = idleSessionLifetime;
             _resultValue.managementApiIdentifier = managementApiIdentifier;
+            _resultValue.mtls = mtls;
             _resultValue.pictureUrl = pictureUrl;
+            _resultValue.pushedAuthorizationRequestsSupported = pushedAuthorizationRequestsSupported;
             _resultValue.sandboxVersion = sandboxVersion;
             _resultValue.sessionCookies = sessionCookies;
             _resultValue.sessionLifetime = sessionLifetime;

@@ -21,16 +21,24 @@ class ClientGrantArgs:
     def __init__(__self__, *,
                  audience: pulumi.Input[str],
                  client_id: pulumi.Input[str],
-                 scopes: pulumi.Input[Sequence[pulumi.Input[str]]]):
+                 scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 allow_any_organization: Optional[pulumi.Input[bool]] = None,
+                 organization_usage: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ClientGrant resource.
         :param pulumi.Input[str] audience: Audience or API Identifier for this grant.
         :param pulumi.Input[str] client_id: ID of the client for this grant.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Permissions (scopes) included in this grant.
+        :param pulumi.Input[bool] allow_any_organization: If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+        :param pulumi.Input[str] organization_usage: Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
         """
         pulumi.set(__self__, "audience", audience)
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "scopes", scopes)
+        if allow_any_organization is not None:
+            pulumi.set(__self__, "allow_any_organization", allow_any_organization)
+        if organization_usage is not None:
+            pulumi.set(__self__, "organization_usage", organization_usage)
 
     @property
     @pulumi.getter
@@ -68,25 +76,69 @@ class ClientGrantArgs:
     def scopes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "scopes", value)
 
+    @property
+    @pulumi.getter(name="allowAnyOrganization")
+    def allow_any_organization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+        """
+        return pulumi.get(self, "allow_any_organization")
+
+    @allow_any_organization.setter
+    def allow_any_organization(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_any_organization", value)
+
+    @property
+    @pulumi.getter(name="organizationUsage")
+    def organization_usage(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+        """
+        return pulumi.get(self, "organization_usage")
+
+    @organization_usage.setter
+    def organization_usage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_usage", value)
+
 
 @pulumi.input_type
 class _ClientGrantState:
     def __init__(__self__, *,
+                 allow_any_organization: Optional[pulumi.Input[bool]] = None,
                  audience: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 organization_usage: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ClientGrant resources.
+        :param pulumi.Input[bool] allow_any_organization: If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
         :param pulumi.Input[str] audience: Audience or API Identifier for this grant.
         :param pulumi.Input[str] client_id: ID of the client for this grant.
+        :param pulumi.Input[str] organization_usage: Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Permissions (scopes) included in this grant.
         """
+        if allow_any_organization is not None:
+            pulumi.set(__self__, "allow_any_organization", allow_any_organization)
         if audience is not None:
             pulumi.set(__self__, "audience", audience)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if organization_usage is not None:
+            pulumi.set(__self__, "organization_usage", organization_usage)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter(name="allowAnyOrganization")
+    def allow_any_organization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+        """
+        return pulumi.get(self, "allow_any_organization")
+
+    @allow_any_organization.setter
+    def allow_any_organization(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_any_organization", value)
 
     @property
     @pulumi.getter
@@ -113,6 +165,18 @@ class _ClientGrantState:
         pulumi.set(self, "client_id", value)
 
     @property
+    @pulumi.getter(name="organizationUsage")
+    def organization_usage(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+        """
+        return pulumi.get(self, "organization_usage")
+
+    @organization_usage.setter
+    def organization_usage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_usage", value)
+
+    @property
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -130,8 +194,10 @@ class ClientGrant(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_any_organization: Optional[pulumi.Input[bool]] = None,
                  audience: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 organization_usage: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -153,8 +219,10 @@ class ClientGrant(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_any_organization: If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
         :param pulumi.Input[str] audience: Audience or API Identifier for this grant.
         :param pulumi.Input[str] client_id: ID of the client for this grant.
+        :param pulumi.Input[str] organization_usage: Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Permissions (scopes) included in this grant.
         """
         ...
@@ -195,8 +263,10 @@ class ClientGrant(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_any_organization: Optional[pulumi.Input[bool]] = None,
                  audience: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 organization_usage: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -207,12 +277,14 @@ class ClientGrant(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClientGrantArgs.__new__(ClientGrantArgs)
 
+            __props__.__dict__["allow_any_organization"] = allow_any_organization
             if audience is None and not opts.urn:
                 raise TypeError("Missing required property 'audience'")
             __props__.__dict__["audience"] = audience
             if client_id is None and not opts.urn:
                 raise TypeError("Missing required property 'client_id'")
             __props__.__dict__["client_id"] = client_id
+            __props__.__dict__["organization_usage"] = organization_usage
             if scopes is None and not opts.urn:
                 raise TypeError("Missing required property 'scopes'")
             __props__.__dict__["scopes"] = scopes
@@ -226,8 +298,10 @@ class ClientGrant(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allow_any_organization: Optional[pulumi.Input[bool]] = None,
             audience: Optional[pulumi.Input[str]] = None,
             client_id: Optional[pulumi.Input[str]] = None,
+            organization_usage: Optional[pulumi.Input[str]] = None,
             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ClientGrant':
         """
         Get an existing ClientGrant resource's state with the given name, id, and optional extra
@@ -236,18 +310,30 @@ class ClientGrant(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_any_organization: If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
         :param pulumi.Input[str] audience: Audience or API Identifier for this grant.
         :param pulumi.Input[str] client_id: ID of the client for this grant.
+        :param pulumi.Input[str] organization_usage: Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Permissions (scopes) included in this grant.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ClientGrantState.__new__(_ClientGrantState)
 
+        __props__.__dict__["allow_any_organization"] = allow_any_organization
         __props__.__dict__["audience"] = audience
         __props__.__dict__["client_id"] = client_id
+        __props__.__dict__["organization_usage"] = organization_usage
         __props__.__dict__["scopes"] = scopes
         return ClientGrant(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allowAnyOrganization")
+    def allow_any_organization(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+        """
+        return pulumi.get(self, "allow_any_organization")
 
     @property
     @pulumi.getter
@@ -264,6 +350,14 @@ class ClientGrant(pulumi.CustomResource):
         ID of the client for this grant.
         """
         return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="organizationUsage")
+    def organization_usage(self) -> pulumi.Output[Optional[str]]:
+        """
+        Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+        """
+        return pulumi.get(self, "organization_usage")
 
     @property
     @pulumi.getter

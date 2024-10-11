@@ -27,6 +27,7 @@ namespace Pulumi.Auth0
     ///         Name = "Application - Acceptance Test",
     ///         Description = "Test Applications Long Description",
     ///         AppType = "non_interactive",
+    ///         ComplianceLevel = "none",
     ///         CustomLoginPageOn = true,
     ///         IsFirstParty = true,
     ///         IsTokenEndpointIpHeaderTrusted = true,
@@ -47,6 +48,7 @@ namespace Pulumi.Auth0
     ///         {
     ///             "https://example.com",
     ///         },
+    ///         RequireProofOfPossession = false,
     ///         GrantTypes = new[]
     ///         {
     ///             "authorization_code",
@@ -186,6 +188,12 @@ namespace Pulumi.Auth0
         public Output<ImmutableDictionary<string, string>?> ClientMetadata { get; private set; } = null!;
 
         /// <summary>
+        /// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+        /// </summary>
+        [Output("complianceLevel")]
+        public Output<string?> ComplianceLevel { get; private set; } = null!;
+
+        /// <summary>
         /// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         /// </summary>
         [Output("crossOriginAuth")]
@@ -316,6 +324,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("refreshToken")]
         public Output<Outputs.ClientRefreshToken> RefreshToken { get; private set; } = null!;
+
+        /// <summary>
+        /// Makes the use of Proof-of-Possession mandatory for this client.
+        /// </summary>
+        [Output("requireProofOfPossession")]
+        public Output<bool?> RequireProofOfPossession { get; private set; } = null!;
 
         /// <summary>
         /// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
@@ -482,6 +496,12 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
+        /// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+        /// </summary>
+        [Input("complianceLevel")]
+        public Input<string>? ComplianceLevel { get; set; }
+
+        /// <summary>
         /// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
         /// </summary>
         [Input("crossOriginAuth")]
@@ -632,6 +652,12 @@ namespace Pulumi.Auth0
         public Input<Inputs.ClientRefreshTokenArgs>? RefreshToken { get; set; }
 
         /// <summary>
+        /// Makes the use of Proof-of-Possession mandatory for this client.
+        /// </summary>
+        [Input("requireProofOfPossession")]
+        public Input<bool>? RequireProofOfPossession { get; set; }
+
+        /// <summary>
         /// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         /// </summary>
         [Input("requirePushedAuthorizationRequests")]
@@ -759,6 +785,12 @@ namespace Pulumi.Auth0
             get => _clientMetadata ?? (_clientMetadata = new InputMap<string>());
             set => _clientMetadata = value;
         }
+
+        /// <summary>
+        /// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+        /// </summary>
+        [Input("complianceLevel")]
+        public Input<string>? ComplianceLevel { get; set; }
 
         /// <summary>
         /// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
@@ -909,6 +941,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("refreshToken")]
         public Input<Inputs.ClientRefreshTokenGetArgs>? RefreshToken { get; set; }
+
+        /// <summary>
+        /// Makes the use of Proof-of-Possession mandatory for this client.
+        /// </summary>
+        [Input("requireProofOfPossession")]
+        public Input<bool>? RequireProofOfPossession { get; set; }
 
         /// <summary>
         /// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.

@@ -51,6 +51,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EmailProvider{}
 	case "auth0:index/emailTemplate:EmailTemplate":
 		r = &EmailTemplate{}
+	case "auth0:index/encryptionKeyManager:EncryptionKeyManager":
+		r = &EncryptionKeyManager{}
+	case "auth0:index/flow:Flow":
+		r = &Flow{}
+	case "auth0:index/flowVaultConnection:FlowVaultConnection":
+		r = &FlowVaultConnection{}
+	case "auth0:index/form:Form":
+		r = &Form{}
 	case "auth0:index/guardian:Guardian":
 		r = &Guardian{}
 	case "auth0:index/hook:Hook":
@@ -59,6 +67,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LogStream{}
 	case "auth0:index/organization:Organization":
 		r = &Organization{}
+	case "auth0:index/organizationClientGrant:OrganizationClientGrant":
+		r = &OrganizationClientGrant{}
 	case "auth0:index/organizationConnection:OrganizationConnection":
 		r = &OrganizationConnection{}
 	case "auth0:index/organizationConnections:OrganizationConnections":
@@ -225,6 +235,26 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"auth0",
+		"index/encryptionKeyManager",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/flow",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/flowVaultConnection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/form",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
 		"index/guardian",
 		&module{version},
 	)
@@ -241,6 +271,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/organization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/organizationClientGrant",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

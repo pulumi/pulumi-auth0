@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
 
     public static final ClientGrantState Empty = new ClientGrantState();
+
+    /**
+     * If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+     * 
+     */
+    @Import(name="allowAnyOrganization")
+    private @Nullable Output<Boolean> allowAnyOrganization;
+
+    /**
+     * @return If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+     * 
+     */
+    public Optional<Output<Boolean>> allowAnyOrganization() {
+        return Optional.ofNullable(this.allowAnyOrganization);
+    }
 
     /**
      * Audience or API Identifier for this grant.
@@ -47,6 +63,21 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+     * 
+     */
+    @Import(name="organizationUsage")
+    private @Nullable Output<String> organizationUsage;
+
+    /**
+     * @return Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+     * 
+     */
+    public Optional<Output<String>> organizationUsage() {
+        return Optional.ofNullable(this.organizationUsage);
+    }
+
+    /**
      * Permissions (scopes) included in this grant.
      * 
      */
@@ -64,8 +95,10 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
     private ClientGrantState() {}
 
     private ClientGrantState(ClientGrantState $) {
+        this.allowAnyOrganization = $.allowAnyOrganization;
         this.audience = $.audience;
         this.clientId = $.clientId;
+        this.organizationUsage = $.organizationUsage;
         this.scopes = $.scopes;
     }
 
@@ -85,6 +118,27 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ClientGrantState defaults) {
             $ = new ClientGrantState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowAnyOrganization If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowAnyOrganization(@Nullable Output<Boolean> allowAnyOrganization) {
+            $.allowAnyOrganization = allowAnyOrganization;
+            return this;
+        }
+
+        /**
+         * @param allowAnyOrganization If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowAnyOrganization(Boolean allowAnyOrganization) {
+            return allowAnyOrganization(Output.of(allowAnyOrganization));
         }
 
         /**
@@ -127,6 +181,27 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
+        }
+
+        /**
+         * @param organizationUsage Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationUsage(@Nullable Output<String> organizationUsage) {
+            $.organizationUsage = organizationUsage;
+            return this;
+        }
+
+        /**
+         * @param organizationUsage Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationUsage(String organizationUsage) {
+            return organizationUsage(Output.of(organizationUsage));
         }
 
         /**

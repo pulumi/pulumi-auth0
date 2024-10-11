@@ -6,6 +6,9 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.ResourceServerArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.ResourceServerState;
+import com.pulumi.auth0.outputs.ResourceServerAuthorizationDetail;
+import com.pulumi.auth0.outputs.ResourceServerProofOfPossession;
+import com.pulumi.auth0.outputs.ResourceServerTokenEncryption;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -13,6 +16,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -31,6 +35,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.auth0.ResourceServer;
  * import com.pulumi.auth0.ResourceServerArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerTokenEncryptionArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerTokenEncryptionEncryptionKeyArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerProofOfPossessionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,6 +59,30 @@ import javax.annotation.Nullable;
  *             .allowOfflineAccess(true)
  *             .tokenLifetime(8600)
  *             .skipConsentForVerifiableFirstPartyClients(true)
+ *             .consentPolicy("transactional-authorization-with-mfa")
+ *             .tokenEncryption(ResourceServerTokenEncryptionArgs.builder()
+ *                 .format("compact-nested-jwe")
+ *                 .encryptionKey(ResourceServerTokenEncryptionEncryptionKeyArgs.builder()
+ *                     .name("keyname")
+ *                     .algorithm("RSA-OAEP-256")
+ *                     .pem("""
+ * -----BEGIN CERTIFICATE-----
+ * MIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl
+ * -----END CERTIFICATE-----
+ *                     """)
+ *                     .build())
+ *                 .build())
+ *             .authorizationDetails(            
+ *                 ResourceServerAuthorizationDetailArgs.builder()
+ *                     .type("payment")
+ *                     .build(),
+ *                 ResourceServerAuthorizationDetailArgs.builder()
+ *                     .type("non-payment")
+ *                     .build())
+ *             .proofOfPossession(ResourceServerProofOfPossessionArgs.builder()
+ *                 .mechanism("mtls")
+ *                 .required(true)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -87,6 +119,34 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> allowOfflineAccess() {
         return Codegen.optional(this.allowOfflineAccess);
+    }
+    /**
+     * Authorization details for this resource server.
+     * 
+     */
+    @Export(name="authorizationDetails", refs={List.class,ResourceServerAuthorizationDetail.class}, tree="[0,1]")
+    private Output<List<ResourceServerAuthorizationDetail>> authorizationDetails;
+
+    /**
+     * @return Authorization details for this resource server.
+     * 
+     */
+    public Output<List<ResourceServerAuthorizationDetail>> authorizationDetails() {
+        return this.authorizationDetails;
+    }
+    /**
+     * Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+     * 
+     */
+    @Export(name="consentPolicy", refs={String.class}, tree="[0]")
+    private Output<String> consentPolicy;
+
+    /**
+     * @return Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+     * 
+     */
+    public Output<String> consentPolicy() {
+        return this.consentPolicy;
     }
     /**
      * If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
@@ -131,14 +191,28 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+     * Configuration settings for proof-of-possession for this resource server.
+     * 
+     */
+    @Export(name="proofOfPossession", refs={ResourceServerProofOfPossession.class}, tree="[0]")
+    private Output<ResourceServerProofOfPossession> proofOfPossession;
+
+    /**
+     * @return Configuration settings for proof-of-possession for this resource server.
+     * 
+     */
+    public Output<ResourceServerProofOfPossession> proofOfPossession() {
+        return this.proofOfPossession;
+    }
+    /**
+     * Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
      * 
      */
     @Export(name="signingAlg", refs={String.class}, tree="[0]")
     private Output<String> signingAlg;
 
     /**
-     * @return Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+     * @return Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
      * 
      */
     public Output<String> signingAlg() {
@@ -185,6 +259,20 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      */
     public Output<String> tokenDialect() {
         return this.tokenDialect;
+    }
+    /**
+     * Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+     * 
+     */
+    @Export(name="tokenEncryption", refs={ResourceServerTokenEncryption.class}, tree="[0]")
+    private Output<ResourceServerTokenEncryption> tokenEncryption;
+
+    /**
+     * @return Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
+     * 
+     */
+    public Output<ResourceServerTokenEncryption> tokenEncryption() {
+        return this.tokenEncryption;
     }
     /**
      * Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.

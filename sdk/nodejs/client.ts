@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  *     name: "Application - Acceptance Test",
  *     description: "Test Applications Long Description",
  *     appType: "non_interactive",
+ *     complianceLevel: "none",
  *     customLoginPageOn: true,
  *     isFirstParty: true,
  *     isTokenEndpointIpHeaderTrusted: true,
@@ -27,6 +28,7 @@ import * as utilities from "./utilities";
  *     allowedOrigins: ["https://example.com"],
  *     allowedLogoutUrls: ["https://example.com"],
  *     webOrigins: ["https://example.com"],
+ *     requireProofOfPossession: false,
  *     grantTypes: [
  *         "authorization_code",
  *         "http://auth0.com/oauth/grant-type/password-realm",
@@ -158,6 +160,10 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly clientMetadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
+     */
+    public readonly complianceLevel!: pulumi.Output<string | undefined>;
+    /**
      * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      */
     public readonly crossOriginAuth!: pulumi.Output<boolean | undefined>;
@@ -246,6 +252,10 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly refreshToken!: pulumi.Output<outputs.ClientRefreshToken>;
     /**
+     * Makes the use of Proof-of-Possession mandatory for this client.
+     */
+    public readonly requireProofOfPossession!: pulumi.Output<boolean | undefined>;
+    /**
      * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      */
     public readonly requirePushedAuthorizationRequests!: pulumi.Output<boolean | undefined>;
@@ -288,6 +298,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["clientAliases"] = state ? state.clientAliases : undefined;
             resourceInputs["clientId"] = state ? state.clientId : undefined;
             resourceInputs["clientMetadata"] = state ? state.clientMetadata : undefined;
+            resourceInputs["complianceLevel"] = state ? state.complianceLevel : undefined;
             resourceInputs["crossOriginAuth"] = state ? state.crossOriginAuth : undefined;
             resourceInputs["crossOriginLoc"] = state ? state.crossOriginLoc : undefined;
             resourceInputs["customLoginPage"] = state ? state.customLoginPage : undefined;
@@ -310,6 +321,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["organizationRequireBehavior"] = state ? state.organizationRequireBehavior : undefined;
             resourceInputs["organizationUsage"] = state ? state.organizationUsage : undefined;
             resourceInputs["refreshToken"] = state ? state.refreshToken : undefined;
+            resourceInputs["requireProofOfPossession"] = state ? state.requireProofOfPossession : undefined;
             resourceInputs["requirePushedAuthorizationRequests"] = state ? state.requirePushedAuthorizationRequests : undefined;
             resourceInputs["signingKeys"] = state ? state.signingKeys : undefined;
             resourceInputs["sso"] = state ? state.sso : undefined;
@@ -325,6 +337,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["callbacks"] = args ? args.callbacks : undefined;
             resourceInputs["clientAliases"] = args ? args.clientAliases : undefined;
             resourceInputs["clientMetadata"] = args ? args.clientMetadata : undefined;
+            resourceInputs["complianceLevel"] = args ? args.complianceLevel : undefined;
             resourceInputs["crossOriginAuth"] = args ? args.crossOriginAuth : undefined;
             resourceInputs["crossOriginLoc"] = args ? args.crossOriginLoc : undefined;
             resourceInputs["customLoginPage"] = args ? args.customLoginPage : undefined;
@@ -347,6 +360,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["organizationRequireBehavior"] = args ? args.organizationRequireBehavior : undefined;
             resourceInputs["organizationUsage"] = args ? args.organizationUsage : undefined;
             resourceInputs["refreshToken"] = args ? args.refreshToken : undefined;
+            resourceInputs["requireProofOfPossession"] = args ? args.requireProofOfPossession : undefined;
             resourceInputs["requirePushedAuthorizationRequests"] = args ? args.requirePushedAuthorizationRequests : undefined;
             resourceInputs["sso"] = args ? args.sso : undefined;
             resourceInputs["ssoDisabled"] = args ? args.ssoDisabled : undefined;
@@ -401,6 +415,10 @@ export interface ClientState {
      * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
      */
     clientMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
+     */
+    complianceLevel?: pulumi.Input<string>;
     /**
      * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      */
@@ -489,6 +507,10 @@ export interface ClientState {
      * Configuration settings for the refresh tokens issued for this client.
      */
     refreshToken?: pulumi.Input<inputs.ClientRefreshToken>;
+    /**
+     * Makes the use of Proof-of-Possession mandatory for this client.
+     */
+    requireProofOfPossession?: pulumi.Input<boolean>;
     /**
      * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      */
@@ -548,6 +570,10 @@ export interface ClientArgs {
      */
     clientMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
+     */
+    complianceLevel?: pulumi.Input<string>;
+    /**
      * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      */
     crossOriginAuth?: pulumi.Input<boolean>;
@@ -635,6 +661,10 @@ export interface ClientArgs {
      * Configuration settings for the refresh tokens issued for this client.
      */
     refreshToken?: pulumi.Input<inputs.ClientRefreshToken>;
+    /**
+     * Makes the use of Proof-of-Possession mandatory for this client.
+     */
+    requireProofOfPossession?: pulumi.Input<boolean>;
     /**
      * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      */

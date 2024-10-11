@@ -4,6 +4,7 @@
 package com.pulumi.auth0.inputs;
 
 import com.pulumi.auth0.inputs.TenantFlagsArgs;
+import com.pulumi.auth0.inputs.TenantMtlsArgs;
 import com.pulumi.auth0.inputs.TenantSessionCookieArgs;
 import com.pulumi.auth0.inputs.TenantSessionsArgs;
 import com.pulumi.core.Output;
@@ -20,6 +21,21 @@ import javax.annotation.Nullable;
 public final class TenantState extends com.pulumi.resources.ResourceArgs {
 
     public static final TenantState Empty = new TenantState();
+
+    /**
+     * List of supported ACR values.
+     * 
+     */
+    @Import(name="acrValuesSupporteds")
+    private @Nullable Output<List<String>> acrValuesSupporteds;
+
+    /**
+     * @return List of supported ACR values.
+     * 
+     */
+    public Optional<Output<List<String>>> acrValuesSupporteds() {
+        return Optional.ofNullable(this.acrValuesSupporteds);
+    }
 
     /**
      * Whether to accept an organization name instead of an ID on auth endpoints.
@@ -112,6 +128,21 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Disable list of supported ACR values.
+     * 
+     */
+    @Import(name="disableAcrValuesSupported")
+    private @Nullable Output<Boolean> disableAcrValuesSupported;
+
+    /**
+     * @return Disable list of supported ACR values.
+     * 
+     */
+    public Optional<Output<Boolean>> disableAcrValuesSupported() {
+        return Optional.ofNullable(this.disableAcrValuesSupported);
+    }
+
+    /**
      * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      * 
      */
@@ -172,6 +203,21 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for mTLS.
+     * 
+     */
+    @Import(name="mtls")
+    private @Nullable Output<TenantMtlsArgs> mtls;
+
+    /**
+     * @return Configuration for mTLS.
+     * 
+     */
+    public Optional<Output<TenantMtlsArgs>> mtls() {
+        return Optional.ofNullable(this.mtls);
+    }
+
+    /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      * 
      */
@@ -184,6 +230,21 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> pictureUrl() {
         return Optional.ofNullable(this.pictureUrl);
+    }
+
+    /**
+     * Enable pushed authorization requests.
+     * 
+     */
+    @Import(name="pushedAuthorizationRequestsSupported")
+    private @Nullable Output<Boolean> pushedAuthorizationRequestsSupported;
+
+    /**
+     * @return Enable pushed authorization requests.
+     * 
+     */
+    public Optional<Output<Boolean>> pushedAuthorizationRequestsSupported() {
+        return Optional.ofNullable(this.pushedAuthorizationRequestsSupported);
     }
 
     /**
@@ -279,17 +340,21 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
     private TenantState() {}
 
     private TenantState(TenantState $) {
+        this.acrValuesSupporteds = $.acrValuesSupporteds;
         this.allowOrganizationNameInAuthenticationApi = $.allowOrganizationNameInAuthenticationApi;
         this.allowedLogoutUrls = $.allowedLogoutUrls;
         this.customizeMfaInPostloginAction = $.customizeMfaInPostloginAction;
         this.defaultAudience = $.defaultAudience;
         this.defaultDirectory = $.defaultDirectory;
         this.defaultRedirectionUri = $.defaultRedirectionUri;
+        this.disableAcrValuesSupported = $.disableAcrValuesSupported;
         this.enabledLocales = $.enabledLocales;
         this.flags = $.flags;
         this.friendlyName = $.friendlyName;
         this.idleSessionLifetime = $.idleSessionLifetime;
+        this.mtls = $.mtls;
         this.pictureUrl = $.pictureUrl;
+        this.pushedAuthorizationRequestsSupported = $.pushedAuthorizationRequestsSupported;
         this.sandboxVersion = $.sandboxVersion;
         this.sessionCookie = $.sessionCookie;
         this.sessionLifetime = $.sessionLifetime;
@@ -314,6 +379,37 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(TenantState defaults) {
             $ = new TenantState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param acrValuesSupporteds List of supported ACR values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acrValuesSupporteds(@Nullable Output<List<String>> acrValuesSupporteds) {
+            $.acrValuesSupporteds = acrValuesSupporteds;
+            return this;
+        }
+
+        /**
+         * @param acrValuesSupporteds List of supported ACR values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acrValuesSupporteds(List<String> acrValuesSupporteds) {
+            return acrValuesSupporteds(Output.of(acrValuesSupporteds));
+        }
+
+        /**
+         * @param acrValuesSupporteds List of supported ACR values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acrValuesSupporteds(String... acrValuesSupporteds) {
+            return acrValuesSupporteds(List.of(acrValuesSupporteds));
         }
 
         /**
@@ -453,6 +549,27 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param disableAcrValuesSupported Disable list of supported ACR values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableAcrValuesSupported(@Nullable Output<Boolean> disableAcrValuesSupported) {
+            $.disableAcrValuesSupported = disableAcrValuesSupported;
+            return this;
+        }
+
+        /**
+         * @param disableAcrValuesSupported Disable list of supported ACR values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableAcrValuesSupported(Boolean disableAcrValuesSupported) {
+            return disableAcrValuesSupported(Output.of(disableAcrValuesSupported));
+        }
+
+        /**
          * @param enabledLocales Supported locales for the user interface. The first locale in the list will be used to set the default locale.
          * 
          * @return builder
@@ -547,6 +664,27 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param mtls Configuration for mTLS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mtls(@Nullable Output<TenantMtlsArgs> mtls) {
+            $.mtls = mtls;
+            return this;
+        }
+
+        /**
+         * @param mtls Configuration for mTLS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mtls(TenantMtlsArgs mtls) {
+            return mtls(Output.of(mtls));
+        }
+
+        /**
          * @param pictureUrl URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
          * 
          * @return builder
@@ -565,6 +703,27 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pictureUrl(String pictureUrl) {
             return pictureUrl(Output.of(pictureUrl));
+        }
+
+        /**
+         * @param pushedAuthorizationRequestsSupported Enable pushed authorization requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pushedAuthorizationRequestsSupported(@Nullable Output<Boolean> pushedAuthorizationRequestsSupported) {
+            $.pushedAuthorizationRequestsSupported = pushedAuthorizationRequestsSupported;
+            return this;
+        }
+
+        /**
+         * @param pushedAuthorizationRequestsSupported Enable pushed authorization requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pushedAuthorizationRequestsSupported(Boolean pushedAuthorizationRequestsSupported) {
+            return pushedAuthorizationRequestsSupported(Output.of(pushedAuthorizationRequestsSupported));
         }
 
         /**
