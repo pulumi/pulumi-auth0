@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -205,9 +210,6 @@ def get_connection(connection_id: Optional[str] = None,
         realms=pulumi.get(__ret__, 'realms'),
         show_as_button=pulumi.get(__ret__, 'show_as_button'),
         strategy=pulumi.get(__ret__, 'strategy'))
-
-
-@_utilities.lift_output_func(get_connection)
 def get_connection_output(connection_id: Optional[pulumi.Input[Optional[str]]] = None,
                           name: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionResult]:
@@ -230,4 +232,20 @@ def get_connection_output(connection_id: Optional[pulumi.Input[Optional[str]]] =
     :param str connection_id: The ID of the connection. If not provided, `name` must be set.
     :param str name: The name of the connection. If not provided, `connection_id` must be set.
     """
-    ...
+    __args__ = dict()
+    __args__['connectionId'] = connection_id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('auth0:index/getConnection:getConnection', __args__, opts=opts, typ=GetConnectionResult)
+    return __ret__.apply(lambda __response__: GetConnectionResult(
+        connection_id=pulumi.get(__response__, 'connection_id'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        enabled_clients=pulumi.get(__response__, 'enabled_clients'),
+        id=pulumi.get(__response__, 'id'),
+        is_domain_connection=pulumi.get(__response__, 'is_domain_connection'),
+        metadata=pulumi.get(__response__, 'metadata'),
+        name=pulumi.get(__response__, 'name'),
+        options=pulumi.get(__response__, 'options'),
+        realms=pulumi.get(__response__, 'realms'),
+        show_as_button=pulumi.get(__response__, 'show_as_button'),
+        strategy=pulumi.get(__response__, 'strategy')))

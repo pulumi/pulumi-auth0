@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -244,9 +249,6 @@ def get_resource_server(identifier: Optional[str] = None,
         token_lifetime=pulumi.get(__ret__, 'token_lifetime'),
         token_lifetime_for_web=pulumi.get(__ret__, 'token_lifetime_for_web'),
         verification_location=pulumi.get(__ret__, 'verification_location'))
-
-
-@_utilities.lift_output_func(get_resource_server)
 def get_resource_server_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
                                resource_server_id: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourceServerResult]:
@@ -269,4 +271,23 @@ def get_resource_server_output(identifier: Optional[pulumi.Input[Optional[str]]]
     :param str identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
     :param str resource_server_id: The ID of the resource server. If not provided, `identifier` must be set.
     """
-    ...
+    __args__ = dict()
+    __args__['identifier'] = identifier
+    __args__['resourceServerId'] = resource_server_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('auth0:index/getResourceServer:getResourceServer', __args__, opts=opts, typ=GetResourceServerResult)
+    return __ret__.apply(lambda __response__: GetResourceServerResult(
+        allow_offline_access=pulumi.get(__response__, 'allow_offline_access'),
+        enforce_policies=pulumi.get(__response__, 'enforce_policies'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        name=pulumi.get(__response__, 'name'),
+        resource_server_id=pulumi.get(__response__, 'resource_server_id'),
+        scopes=pulumi.get(__response__, 'scopes'),
+        signing_alg=pulumi.get(__response__, 'signing_alg'),
+        signing_secret=pulumi.get(__response__, 'signing_secret'),
+        skip_consent_for_verifiable_first_party_clients=pulumi.get(__response__, 'skip_consent_for_verifiable_first_party_clients'),
+        token_dialect=pulumi.get(__response__, 'token_dialect'),
+        token_lifetime=pulumi.get(__response__, 'token_lifetime'),
+        token_lifetime_for_web=pulumi.get(__response__, 'token_lifetime_for_web'),
+        verification_location=pulumi.get(__response__, 'verification_location')))

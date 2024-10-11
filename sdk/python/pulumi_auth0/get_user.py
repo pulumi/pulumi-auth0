@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -317,9 +322,6 @@ def get_user(user_id: Optional[str] = None,
         user_metadata=pulumi.get(__ret__, 'user_metadata'),
         username=pulumi.get(__ret__, 'username'),
         verify_email=pulumi.get(__ret__, 'verify_email'))
-
-
-@_utilities.lift_output_func(get_user)
 def get_user_output(user_id: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
     """
@@ -338,4 +340,28 @@ def get_user_output(user_id: Optional[pulumi.Input[str]] = None,
 
     :param str user_id: ID of the user.
     """
-    ...
+    __args__ = dict()
+    __args__['userId'] = user_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('auth0:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
+    return __ret__.apply(lambda __response__: GetUserResult(
+        app_metadata=pulumi.get(__response__, 'app_metadata'),
+        blocked=pulumi.get(__response__, 'blocked'),
+        connection_name=pulumi.get(__response__, 'connection_name'),
+        email=pulumi.get(__response__, 'email'),
+        email_verified=pulumi.get(__response__, 'email_verified'),
+        family_name=pulumi.get(__response__, 'family_name'),
+        given_name=pulumi.get(__response__, 'given_name'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        nickname=pulumi.get(__response__, 'nickname'),
+        password=pulumi.get(__response__, 'password'),
+        permissions=pulumi.get(__response__, 'permissions'),
+        phone_number=pulumi.get(__response__, 'phone_number'),
+        phone_verified=pulumi.get(__response__, 'phone_verified'),
+        picture=pulumi.get(__response__, 'picture'),
+        roles=pulumi.get(__response__, 'roles'),
+        user_id=pulumi.get(__response__, 'user_id'),
+        user_metadata=pulumi.get(__response__, 'user_metadata'),
+        username=pulumi.get(__response__, 'username'),
+        verify_email=pulumi.get(__response__, 'verify_email')))

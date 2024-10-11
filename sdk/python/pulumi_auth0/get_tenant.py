@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -311,9 +316,6 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
         sessions=pulumi.get(__ret__, 'sessions'),
         support_email=pulumi.get(__ret__, 'support_email'),
         support_url=pulumi.get(__ret__, 'support_url'))
-
-
-@_utilities.lift_output_func(get_tenant)
 def get_tenant_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTenantResult]:
     """
     Use this data source to access information about the tenant this provider is configured to access.
@@ -327,4 +329,27 @@ def get_tenant_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Out
     my_tenant = auth0.get_tenant()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('auth0:index/getTenant:getTenant', __args__, opts=opts, typ=GetTenantResult)
+    return __ret__.apply(lambda __response__: GetTenantResult(
+        allow_organization_name_in_authentication_api=pulumi.get(__response__, 'allow_organization_name_in_authentication_api'),
+        allowed_logout_urls=pulumi.get(__response__, 'allowed_logout_urls'),
+        customize_mfa_in_postlogin_action=pulumi.get(__response__, 'customize_mfa_in_postlogin_action'),
+        default_audience=pulumi.get(__response__, 'default_audience'),
+        default_directory=pulumi.get(__response__, 'default_directory'),
+        default_redirection_uri=pulumi.get(__response__, 'default_redirection_uri'),
+        domain=pulumi.get(__response__, 'domain'),
+        enabled_locales=pulumi.get(__response__, 'enabled_locales'),
+        flags=pulumi.get(__response__, 'flags'),
+        friendly_name=pulumi.get(__response__, 'friendly_name'),
+        id=pulumi.get(__response__, 'id'),
+        idle_session_lifetime=pulumi.get(__response__, 'idle_session_lifetime'),
+        management_api_identifier=pulumi.get(__response__, 'management_api_identifier'),
+        picture_url=pulumi.get(__response__, 'picture_url'),
+        sandbox_version=pulumi.get(__response__, 'sandbox_version'),
+        session_cookies=pulumi.get(__response__, 'session_cookies'),
+        session_lifetime=pulumi.get(__response__, 'session_lifetime'),
+        sessions=pulumi.get(__response__, 'sessions'),
+        support_email=pulumi.get(__response__, 'support_email'),
+        support_url=pulumi.get(__response__, 'support_url')))
