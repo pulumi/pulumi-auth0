@@ -668,7 +668,7 @@ import javax.annotation.Nullable;
  *                 .clientId("123456")
  *                 .clientSecret("123456")
  *                 .strategyVersion(2)
- *                 .userIdAttribute("userName")
+ *                 .userIdAttribute("oid")
  *                 .appId("app-id-123")
  *                 .tenantDomain("example.onmicrosoft.com")
  *                 .domain("example.onmicrosoft.com")

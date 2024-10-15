@@ -531,7 +531,7 @@ namespace Pulumi.Auth0
     ///             ClientId = "123456",
     ///             ClientSecret = "123456",
     ///             StrategyVersion = 2,
-    ///             UserIdAttribute = "userName",
+    ///             UserIdAttribute = "oid",
     ///             AppId = "app-id-123",
     ///             TenantDomain = "example.onmicrosoft.com",
     ///             Domain = "example.onmicrosoft.com",

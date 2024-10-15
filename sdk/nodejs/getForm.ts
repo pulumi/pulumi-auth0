@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * // An Auth0 form loaded using its ID.
- * const myFormData = auth0.getFlow({
+ * const myFormData = auth0.getForm({
  *     id: "ap_31LxRJphZF1Kqzf2zBgmgA",
  * });
  * ```
@@ -89,7 +89,7 @@ export interface GetFormResult {
  * import * as auth0 from "@pulumi/auth0";
  *
  * // An Auth0 form loaded using its ID.
- * const myFormData = auth0.getFlow({
+ * const myFormData = auth0.getForm({
  *     id: "ap_31LxRJphZF1Kqzf2zBgmgA",
  * });
  * ```

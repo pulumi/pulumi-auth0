@@ -585,7 +585,7 @@ import (
 //					ClientId:        pulumi.String("123456"),
 //					ClientSecret:    pulumi.String("123456"),
 //					StrategyVersion: pulumi.Int(2),
-//					UserIdAttribute: pulumi.String("userName"),
+//					UserIdAttribute: pulumi.String("oid"),
 //					AppId:           pulumi.String("app-id-123"),
 //					TenantDomain:    pulumi.String("example.onmicrosoft.com"),
 //					Domain:          pulumi.String("example.onmicrosoft.com"),
