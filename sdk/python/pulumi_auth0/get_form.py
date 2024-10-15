@@ -158,7 +158,7 @@ def get_form(id: Optional[str] = None,
     import pulumi_auth0 as auth0
 
     # An Auth0 form loaded using its ID.
-    my_form_data = auth0.get_flow(id="ap_31LxRJphZF1Kqzf2zBgmgA")
+    my_form_data = auth0.get_form(id="ap_31LxRJphZF1Kqzf2zBgmgA")
     ```
 
 
@@ -191,7 +191,7 @@ def get_form_output(id: Optional[pulumi.Input[str]] = None,
     import pulumi_auth0 as auth0
 
     # An Auth0 form loaded using its ID.
-    my_form_data = auth0.get_flow(id="ap_31LxRJphZF1Kqzf2zBgmgA")
+    my_form_data = auth0.get_form(id="ap_31LxRJphZF1Kqzf2zBgmgA")
     ```
 
 

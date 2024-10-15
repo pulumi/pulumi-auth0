@@ -1997,7 +1997,7 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import com.pulumi.auth0.inputs.GetFlowArgs;
+     * import com.pulumi.auth0.inputs.GetFormArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2012,7 +2012,7 @@ public final class Auth0Functions {
      * 
      *     public static void stack(Context ctx) {
      *         // An Auth0 form loaded using its ID.
-     *         final var myFormData = Auth0Functions.getFlow(GetFlowArgs.builder()
+     *         final var myFormData = Auth0Functions.getForm(GetFormArgs.builder()
      *             .id("ap_31LxRJphZF1Kqzf2zBgmgA")
      *             .build());
      * 
@@ -2040,7 +2040,7 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import com.pulumi.auth0.inputs.GetFlowArgs;
+     * import com.pulumi.auth0.inputs.GetFormArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2055,7 +2055,7 @@ public final class Auth0Functions {
      * 
      *     public static void stack(Context ctx) {
      *         // An Auth0 form loaded using its ID.
-     *         final var myFormData = Auth0Functions.getFlow(GetFlowArgs.builder()
+     *         final var myFormData = Auth0Functions.getForm(GetFormArgs.builder()
      *             .id("ap_31LxRJphZF1Kqzf2zBgmgA")
      *             .build());
      * 
@@ -2083,7 +2083,7 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import com.pulumi.auth0.inputs.GetFlowArgs;
+     * import com.pulumi.auth0.inputs.GetFormArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2098,7 +2098,7 @@ public final class Auth0Functions {
      * 
      *     public static void stack(Context ctx) {
      *         // An Auth0 form loaded using its ID.
-     *         final var myFormData = Auth0Functions.getFlow(GetFlowArgs.builder()
+     *         final var myFormData = Auth0Functions.getForm(GetFormArgs.builder()
      *             .id("ap_31LxRJphZF1Kqzf2zBgmgA")
      *             .build());
      * 
@@ -2126,7 +2126,7 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import com.pulumi.auth0.inputs.GetFlowArgs;
+     * import com.pulumi.auth0.inputs.GetFormArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2141,7 +2141,7 @@ public final class Auth0Functions {
      * 
      *     public static void stack(Context ctx) {
      *         // An Auth0 form loaded using its ID.
-     *         final var myFormData = Auth0Functions.getFlow(GetFlowArgs.builder()
+     *         final var myFormData = Auth0Functions.getForm(GetFormArgs.builder()
      *             .id("ap_31LxRJphZF1Kqzf2zBgmgA")
      *             .build());
      * 
