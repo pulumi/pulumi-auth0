@@ -616,7 +616,7 @@ class Connection(pulumi.CustomResource):
                 "pkce_enabled": True,
                 "icon_url": "https://auth.example.com/assets/logo.png",
                 "scripts": {
-                    "fetch_user_profile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
+                    "fetchUserProfile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
                   return callback(new Error("Whoops!"));
                 }
         \"\"\",
@@ -1311,7 +1311,7 @@ class Connection(pulumi.CustomResource):
                 "pkce_enabled": True,
                 "icon_url": "https://auth.example.com/assets/logo.png",
                 "scripts": {
-                    "fetch_user_profile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
+                    "fetchUserProfile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
                   return callback(new Error("Whoops!"));
                 }
         \"\"\",
