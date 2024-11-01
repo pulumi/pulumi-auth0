@@ -84,7 +84,7 @@ namespace Pulumi.Auth0
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
+        /// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`.
         /// </summary>
         [Output("trigger")]
         public Output<string> Trigger { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.Auth0
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
+        /// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`.
         /// </summary>
         [Input("trigger", required: true)]
         public Input<string> Trigger { get; set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.Auth0
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `iga-approval`, `iga-certification`, `iga-fulfillment-assignment`, `iga-fulfillment-execution`.
+        /// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`.
         /// </summary>
         [Input("trigger")]
         public Input<string>? Trigger { get; set; }

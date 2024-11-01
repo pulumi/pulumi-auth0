@@ -14,6 +14,104 @@ import (
 
 // With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// This is an example on how to set up the email provider with Amazon SES.
+//			_, err := auth0.NewEmailProvider(ctx, "amazon_ses_email_provider", &auth0.EmailProviderArgs{
+//				Name:               pulumi.String("ses"),
+//				Enabled:            pulumi.Bool(true),
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
+//				Credentials: &auth0.EmailProviderCredentialsArgs{
+//					AccessKeyId:     pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
+//					SecretAccessKey: pulumi.String("7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//					Region:          pulumi.String("us-east-1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// This is an example on how to set up the email provider with SMTP.
+//			_, err = auth0.NewEmailProvider(ctx, "smtp_email_provider", &auth0.EmailProviderArgs{
+//				Name:               pulumi.String("smtp"),
+//				Enabled:            pulumi.Bool(true),
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
+//				Credentials: &auth0.EmailProviderCredentialsArgs{
+//					SmtpHost: pulumi.String("your.smtp.host.com"),
+//					SmtpPort: pulumi.Int(583),
+//					SmtpUser: pulumi.String("SMTP Username"),
+//					SmtpPass: pulumi.String("SMTP Password"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// This is an example on how to set up the email provider with Sendgrid.
+//			_, err = auth0.NewEmailProvider(ctx, "sendgrid_email_provider", &auth0.EmailProviderArgs{
+//				Name:               pulumi.String("sendgrid"),
+//				Enabled:            pulumi.Bool(true),
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
+//				Credentials: &auth0.EmailProviderCredentialsArgs{
+//					ApiKey: pulumi.String("secretAPIKey"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// This is an example on how to set up the email provider with Azure CS.
+//			_, err = auth0.NewEmailProvider(ctx, "azure_cs_email_provider", &auth0.EmailProviderArgs{
+//				Name:               pulumi.String("azure_cs"),
+//				Enabled:            pulumi.Bool(true),
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
+//				Credentials: &auth0.EmailProviderCredentialsArgs{
+//					AzureCsConnectionString: pulumi.String("azure_cs_connection_string"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// This is an example on how to set up the email provider with MS365.
+//			_, err = auth0.NewEmailProvider(ctx, "ms365_email_provider", &auth0.EmailProviderArgs{
+//				Name:               pulumi.String("ms365"),
+//				Enabled:            pulumi.Bool(true),
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
+//				Credentials: &auth0.EmailProviderCredentialsArgs{
+//					Ms365TenantId:     pulumi.String("ms365_tenant_id"),
+//					Ms365ClientId:     pulumi.String("ms365_client_id"),
+//					Ms365ClientSecret: pulumi.String("ms365_client_secret"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// This is an example on how to set up the email provider with a custom action.
+//			// Make sure a corresponding action exists with custom-email-provider as supported triggers
+//			_, err = auth0.NewEmailProvider(ctx, "custom_email_provider", &auth0.EmailProviderArgs{
+//				Name:               pulumi.String("custom"),
+//				Enabled:            pulumi.Bool(true),
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
+//				Credentials:        &auth0.EmailProviderCredentialsArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // As this is not a resource identifiable by an ID within the Auth0 Management API,
@@ -40,7 +138,7 @@ type EmailProvider struct {
 	DefaultFromAddress pulumi.StringOutput `pulumi:"defaultFromAddress"`
 	// Indicates whether the email provider is enabled.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// Name of the email provider. Options include `azureCs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+	// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specific email provider settings.
 	Settings EmailProviderSettingsOutput `pulumi:"settings"`
@@ -88,7 +186,7 @@ type emailProviderState struct {
 	DefaultFromAddress *string `pulumi:"defaultFromAddress"`
 	// Indicates whether the email provider is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// Name of the email provider. Options include `azureCs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+	// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
 	Name *string `pulumi:"name"`
 	// Specific email provider settings.
 	Settings *EmailProviderSettings `pulumi:"settings"`
@@ -101,7 +199,7 @@ type EmailProviderState struct {
 	DefaultFromAddress pulumi.StringPtrInput
 	// Indicates whether the email provider is enabled.
 	Enabled pulumi.BoolPtrInput
-	// Name of the email provider. Options include `azureCs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+	// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
 	Name pulumi.StringPtrInput
 	// Specific email provider settings.
 	Settings EmailProviderSettingsPtrInput
@@ -118,7 +216,7 @@ type emailProviderArgs struct {
 	DefaultFromAddress string `pulumi:"defaultFromAddress"`
 	// Indicates whether the email provider is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// Name of the email provider. Options include `azureCs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+	// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
 	Name *string `pulumi:"name"`
 	// Specific email provider settings.
 	Settings *EmailProviderSettings `pulumi:"settings"`
@@ -132,7 +230,7 @@ type EmailProviderArgs struct {
 	DefaultFromAddress pulumi.StringInput
 	// Indicates whether the email provider is enabled.
 	Enabled pulumi.BoolPtrInput
-	// Name of the email provider. Options include `azureCs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+	// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
 	Name pulumi.StringPtrInput
 	// Specific email provider settings.
 	Settings EmailProviderSettingsPtrInput
@@ -240,7 +338,7 @@ func (o EmailProviderOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EmailProvider) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the email provider. Options include `azureCs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
 func (o EmailProviderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailProvider) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

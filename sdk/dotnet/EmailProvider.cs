@@ -12,6 +12,96 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // This is an example on how to set up the email provider with Amazon SES.
+    ///     var amazonSesEmailProvider = new Auth0.EmailProvider("amazon_ses_email_provider", new()
+    ///     {
+    ///         Name = "ses",
+    ///         Enabled = true,
+    ///         DefaultFromAddress = "accounts@example.com",
+    ///         Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs
+    ///         {
+    ///             AccessKeyId = "AKIAXXXXXXXXXXXXXXXX",
+    ///             SecretAccessKey = "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///             Region = "us-east-1",
+    ///         },
+    ///     });
+    /// 
+    ///     // This is an example on how to set up the email provider with SMTP.
+    ///     var smtpEmailProvider = new Auth0.EmailProvider("smtp_email_provider", new()
+    ///     {
+    ///         Name = "smtp",
+    ///         Enabled = true,
+    ///         DefaultFromAddress = "accounts@example.com",
+    ///         Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs
+    ///         {
+    ///             SmtpHost = "your.smtp.host.com",
+    ///             SmtpPort = 583,
+    ///             SmtpUser = "SMTP Username",
+    ///             SmtpPass = "SMTP Password",
+    ///         },
+    ///     });
+    /// 
+    ///     // This is an example on how to set up the email provider with Sendgrid.
+    ///     var sendgridEmailProvider = new Auth0.EmailProvider("sendgrid_email_provider", new()
+    ///     {
+    ///         Name = "sendgrid",
+    ///         Enabled = true,
+    ///         DefaultFromAddress = "accounts@example.com",
+    ///         Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs
+    ///         {
+    ///             ApiKey = "secretAPIKey",
+    ///         },
+    ///     });
+    /// 
+    ///     // This is an example on how to set up the email provider with Azure CS.
+    ///     var azureCsEmailProvider = new Auth0.EmailProvider("azure_cs_email_provider", new()
+    ///     {
+    ///         Name = "azure_cs",
+    ///         Enabled = true,
+    ///         DefaultFromAddress = "accounts@example.com",
+    ///         Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs
+    ///         {
+    ///             AzureCsConnectionString = "azure_cs_connection_string",
+    ///         },
+    ///     });
+    /// 
+    ///     // This is an example on how to set up the email provider with MS365.
+    ///     var ms365EmailProvider = new Auth0.EmailProvider("ms365_email_provider", new()
+    ///     {
+    ///         Name = "ms365",
+    ///         Enabled = true,
+    ///         DefaultFromAddress = "accounts@example.com",
+    ///         Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs
+    ///         {
+    ///             Ms365TenantId = "ms365_tenant_id",
+    ///             Ms365ClientId = "ms365_client_id",
+    ///             Ms365ClientSecret = "ms365_client_secret",
+    ///         },
+    ///     });
+    /// 
+    ///     // This is an example on how to set up the email provider with a custom action.
+    ///     // Make sure a corresponding action exists with custom-email-provider as supported triggers
+    ///     var customEmailProvider = new Auth0.EmailProvider("custom_email_provider", new()
+    ///     {
+    ///         Name = "custom",
+    ///         Enabled = true,
+    ///         DefaultFromAddress = "accounts@example.com",
+    ///         Credentials = null,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As this is not a resource identifiable by an ID within the Auth0 Management API,
@@ -52,7 +142,7 @@ namespace Pulumi.Auth0
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the email provider. Options include `azure_cs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+        /// Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -128,7 +218,7 @@ namespace Pulumi.Auth0
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Name of the email provider. Options include `azure_cs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+        /// Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -166,7 +256,7 @@ namespace Pulumi.Auth0
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Name of the email provider. Options include `azure_cs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+        /// Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
