@@ -64,14 +64,14 @@ public final class EmailProviderState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the email provider. Options include `azure_cs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+     * Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the email provider. Options include `azure_cs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+     * @return Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -185,7 +185,7 @@ public final class EmailProviderState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the email provider. Options include `azure_cs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+         * @param name Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class EmailProviderState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the email provider. Options include `azure_cs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+         * @param name Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
          * 
          * @return builder
          * 

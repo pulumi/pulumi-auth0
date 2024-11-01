@@ -9,6 +9,74 @@ import * as utilities from "./utilities";
 /**
  * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // This is an example on how to set up the email provider with Amazon SES.
+ * const amazonSesEmailProvider = new auth0.EmailProvider("amazon_ses_email_provider", {
+ *     name: "ses",
+ *     enabled: true,
+ *     defaultFromAddress: "accounts@example.com",
+ *     credentials: {
+ *         accessKeyId: "AKIAXXXXXXXXXXXXXXXX",
+ *         secretAccessKey: "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *         region: "us-east-1",
+ *     },
+ * });
+ * // This is an example on how to set up the email provider with SMTP.
+ * const smtpEmailProvider = new auth0.EmailProvider("smtp_email_provider", {
+ *     name: "smtp",
+ *     enabled: true,
+ *     defaultFromAddress: "accounts@example.com",
+ *     credentials: {
+ *         smtpHost: "your.smtp.host.com",
+ *         smtpPort: 583,
+ *         smtpUser: "SMTP Username",
+ *         smtpPass: "SMTP Password",
+ *     },
+ * });
+ * // This is an example on how to set up the email provider with Sendgrid.
+ * const sendgridEmailProvider = new auth0.EmailProvider("sendgrid_email_provider", {
+ *     name: "sendgrid",
+ *     enabled: true,
+ *     defaultFromAddress: "accounts@example.com",
+ *     credentials: {
+ *         apiKey: "secretAPIKey",
+ *     },
+ * });
+ * // This is an example on how to set up the email provider with Azure CS.
+ * const azureCsEmailProvider = new auth0.EmailProvider("azure_cs_email_provider", {
+ *     name: "azure_cs",
+ *     enabled: true,
+ *     defaultFromAddress: "accounts@example.com",
+ *     credentials: {
+ *         azureCsConnectionString: "azure_cs_connection_string",
+ *     },
+ * });
+ * // This is an example on how to set up the email provider with MS365.
+ * const ms365EmailProvider = new auth0.EmailProvider("ms365_email_provider", {
+ *     name: "ms365",
+ *     enabled: true,
+ *     defaultFromAddress: "accounts@example.com",
+ *     credentials: {
+ *         ms365TenantId: "ms365_tenant_id",
+ *         ms365ClientId: "ms365_client_id",
+ *         ms365ClientSecret: "ms365_client_secret",
+ *     },
+ * });
+ * // This is an example on how to set up the email provider with a custom action.
+ * // Make sure a corresponding action exists with custom-email-provider as supported triggers
+ * const customEmailProvider = new auth0.EmailProvider("custom_email_provider", {
+ *     name: "custom",
+ *     enabled: true,
+ *     defaultFromAddress: "accounts@example.com",
+ *     credentials: {},
+ * });
+ * ```
+ *
  * ## Import
  *
  * As this is not a resource identifiable by an ID within the Auth0 Management API,
@@ -68,7 +136,7 @@ export class EmailProvider extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Name of the email provider. Options include `azureCs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+     * Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -130,7 +198,7 @@ export interface EmailProviderState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Name of the email provider. Options include `azureCs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+     * Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      */
     name?: pulumi.Input<string>;
     /**
@@ -156,7 +224,7 @@ export interface EmailProviderArgs {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Name of the email provider. Options include `azureCs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+     * Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      */
     name?: pulumi.Input<string>;
     /**

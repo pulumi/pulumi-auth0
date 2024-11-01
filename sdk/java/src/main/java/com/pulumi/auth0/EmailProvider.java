@@ -20,6 +20,104 @@ import javax.annotation.Nullable;
 /**
  * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0&#39;s authentication workflows through the supported high-volume email service of your choice.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.auth0.EmailProvider;
+ * import com.pulumi.auth0.EmailProviderArgs;
+ * import com.pulumi.auth0.inputs.EmailProviderCredentialsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         // This is an example on how to set up the email provider with Amazon SES.
+ *         var amazonSesEmailProvider = new EmailProvider("amazonSesEmailProvider", EmailProviderArgs.builder()
+ *             .name("ses")
+ *             .enabled(true)
+ *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
+ *             .credentials(EmailProviderCredentialsArgs.builder()
+ *                 .accessKeyId("AKIAXXXXXXXXXXXXXXXX")
+ *                 .secretAccessKey("7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *                 .region("us-east-1")
+ *                 .build())
+ *             .build());
+ * 
+ *         // This is an example on how to set up the email provider with SMTP.
+ *         var smtpEmailProvider = new EmailProvider("smtpEmailProvider", EmailProviderArgs.builder()
+ *             .name("smtp")
+ *             .enabled(true)
+ *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
+ *             .credentials(EmailProviderCredentialsArgs.builder()
+ *                 .smtpHost("your.smtp.host.com")
+ *                 .smtpPort(583)
+ *                 .smtpUser("SMTP Username")
+ *                 .smtpPass("SMTP Password")
+ *                 .build())
+ *             .build());
+ * 
+ *         // This is an example on how to set up the email provider with Sendgrid.
+ *         var sendgridEmailProvider = new EmailProvider("sendgridEmailProvider", EmailProviderArgs.builder()
+ *             .name("sendgrid")
+ *             .enabled(true)
+ *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
+ *             .credentials(EmailProviderCredentialsArgs.builder()
+ *                 .apiKey("secretAPIKey")
+ *                 .build())
+ *             .build());
+ * 
+ *         // This is an example on how to set up the email provider with Azure CS.
+ *         var azureCsEmailProvider = new EmailProvider("azureCsEmailProvider", EmailProviderArgs.builder()
+ *             .name("azure_cs")
+ *             .enabled(true)
+ *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
+ *             .credentials(EmailProviderCredentialsArgs.builder()
+ *                 .azureCsConnectionString("azure_cs_connection_string")
+ *                 .build())
+ *             .build());
+ * 
+ *         // This is an example on how to set up the email provider with MS365.
+ *         var ms365EmailProvider = new EmailProvider("ms365EmailProvider", EmailProviderArgs.builder()
+ *             .name("ms365")
+ *             .enabled(true)
+ *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
+ *             .credentials(EmailProviderCredentialsArgs.builder()
+ *                 .ms365TenantId("ms365_tenant_id")
+ *                 .ms365ClientId("ms365_client_id")
+ *                 .ms365ClientSecret("ms365_client_secret")
+ *                 .build())
+ *             .build());
+ * 
+ *         // This is an example on how to set up the email provider with a custom action.
+ *         // Make sure a corresponding action exists with custom-email-provider as supported triggers
+ *         var customEmailProvider = new EmailProvider("customEmailProvider", EmailProviderArgs.builder()
+ *             .name("custom")
+ *             .enabled(true)
+ *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
+ *             .credentials()
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * As this is not a resource identifiable by an ID within the Auth0 Management API,
@@ -84,14 +182,14 @@ public class EmailProvider extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enabled);
     }
     /**
-     * Name of the email provider. Options include `azure_cs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+     * Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the email provider. Options include `azure_cs`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+     * @return Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      * 
      */
     public Output<String> name() {
