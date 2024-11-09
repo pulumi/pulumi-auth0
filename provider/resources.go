@@ -47,8 +47,7 @@ var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
 var metadata []byte
 
 func Provider() tfbridge.ProviderInfo {
-	p := shimv2.NewProvider(auth0Shim.NewProvider(),
-		shimv2.WithPlanResourceChange(func(string) bool { return true }))
+	p := shimv2.NewProvider(auth0Shim.NewProvider())
 
 	prov := tfbridge.ProviderInfo{
 		P:                p,
