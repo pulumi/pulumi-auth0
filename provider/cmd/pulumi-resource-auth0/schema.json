@@ -1,5 +1,6 @@
 {
     "name": "auth0",
+    "displayName": "Auth0",
     "description": "A Pulumi package for creating and managing auth0 cloud resources.",
     "keywords": [
         "pulumi",
