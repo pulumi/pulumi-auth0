@@ -52,6 +52,7 @@ func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
 		P:                p,
 		Name:             "auth0",
+		DisplayName:      "Auth0",
 		Description:      "A Pulumi package for creating and managing auth0 cloud resources.",
 		Keywords:         []string{"pulumi", "auth0"},
 		License:          "Apache-2.0",
