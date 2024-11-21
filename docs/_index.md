@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The auth0 provider is available as a package in all Pulumi languages:
+The Auth0 provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/auth0`](https://www.npmjs.com/package/@pulumi/auth0)
 * Python: [`pulumi-auth0`](https://pypi.org/project/pulumi-auth0/)
