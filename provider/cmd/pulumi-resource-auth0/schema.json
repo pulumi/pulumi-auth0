@@ -1754,6 +1754,44 @@
             },
             "type": "object"
         },
+        "auth0:index/ClientOidcLogout:ClientOidcLogout": {
+            "properties": {
+                "backchannelLogoutInitiators": {
+                    "$ref": "#/types/auth0:index/ClientOidcLogoutBackchannelLogoutInitiators:ClientOidcLogoutBackchannelLogoutInitiators",
+                    "description": "Configure OIDC logout initiators for the Client\n"
+                },
+                "backchannelLogoutUrls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "backchannelLogoutUrls"
+            ]
+        },
+        "auth0:index/ClientOidcLogoutBackchannelLogoutInitiators:ClientOidcLogoutBackchannelLogoutInitiators": {
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "description": "Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel*logout*selected_initiators set, `all` enables all current and future initiators.\n"
+                },
+                "selectedInitiators": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Contains the list of initiators to be enabled for the given client.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mode"
+            ]
+        },
         "auth0:index/ClientRefreshToken:ClientRefreshToken": {
             "properties": {
                 "expirationType": {
@@ -6099,6 +6137,59 @@
                 }
             }
         },
+        "auth0:index/getClientOidcLogout:getClientOidcLogout": {
+            "properties": {
+                "backchannelLogoutInitiators": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getClientOidcLogoutBackchannelLogoutInitiator:getClientOidcLogoutBackchannelLogoutInitiator"
+                    },
+                    "description": "Configure OIDC logout initiators for the Client\n"
+                },
+                "backchannelLogoutUrls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "backchannelLogoutInitiators",
+                "backchannelLogoutUrls"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getClientOidcLogoutBackchannelLogoutInitiator:getClientOidcLogoutBackchannelLogoutInitiator": {
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "description": "Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel_logout_selected_initiators set, `all` enables all current and future initiators.\n"
+                },
+                "selectedInitiators": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Contains the list of initiators to be enabled for the given client.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mode",
+                "selectedInitiators"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getClientRefreshToken:getClientRefreshToken": {
             "properties": {
                 "expirationType": {
@@ -6216,6 +6307,168 @@
                 "keyId",
                 "name",
                 "updatedAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getClientsClient:getClientsClient": {
+            "properties": {
+                "allowedClients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.\n"
+                },
+                "allowedLogoutUrls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "URLs that Auth0 may redirect to after logout.\n"
+                },
+                "allowedOrigins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.\n"
+                },
+                "appType": {
+                    "type": "string",
+                    "description": "Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.\n"
+                },
+                "callbacks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.\n"
+                },
+                "clientId": {
+                    "type": "string",
+                    "description": "The ID of the client. If not provided, `name` must be set.\n"
+                },
+                "clientMetadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?\"/\\()\u003c\u003e@ [Tab] [Space]`.\n"
+                },
+                "clientSecret": {
+                    "type": "string",
+                    "secret": true
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the purpose of the client.\n"
+                },
+                "grantTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Types of grants that this client is authorized to use.\n"
+                },
+                "isFirstParty": {
+                    "type": "boolean",
+                    "description": "Indicates whether this client is a first-party client.\n"
+                },
+                "isTokenEndpointIpHeaderTrusted": {
+                    "type": "boolean",
+                    "description": "Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the client. If not provided, `client_id` must be set.\n"
+                },
+                "oidcLogouts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getClientsClientOidcLogout:getClientsClientOidcLogout"
+                    },
+                    "description": "Configure OIDC logout for the Client\n"
+                },
+                "webOrigins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "URLs that represent valid web origins for use with web message response mode.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "allowedClients",
+                "allowedLogoutUrls",
+                "allowedOrigins",
+                "appType",
+                "callbacks",
+                "clientMetadata",
+                "clientSecret",
+                "description",
+                "grantTypes",
+                "isFirstParty",
+                "isTokenEndpointIpHeaderTrusted",
+                "oidcLogouts",
+                "webOrigins"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getClientsClientOidcLogout:getClientsClientOidcLogout": {
+            "properties": {
+                "backchannelLogoutInitiators": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getClientsClientOidcLogoutBackchannelLogoutInitiator:getClientsClientOidcLogoutBackchannelLogoutInitiator"
+                    },
+                    "description": "Configure OIDC logout initiators for the Client\n"
+                },
+                "backchannelLogoutUrls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "backchannelLogoutInitiators",
+                "backchannelLogoutUrls"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getClientsClientOidcLogoutBackchannelLogoutInitiator:getClientsClientOidcLogoutBackchannelLogoutInitiator": {
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "description": "Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel_logout_selected_initiators set, `all` enables all current and future initiators.\n"
+                },
+                "selectedInitiators": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Contains the list of initiators to be enabled for the given client.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mode",
+                "selectedInitiators"
             ],
             "language": {
                 "nodejs": {
@@ -8815,11 +9068,16 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.\n"
+                    "description": "Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.\n",
+                    "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs."
                 },
                 "oidcConformant": {
                     "type": "boolean",
                     "description": "Indicates whether this client will conform to strict OIDC specifications.\n"
+                },
+                "oidcLogout": {
+                    "$ref": "#/types/auth0:index/ClientOidcLogout:ClientOidcLogout",
+                    "description": "Configure OIDC logout for the Client\n"
                 },
                 "organizationRequireBehavior": {
                     "type": "string",
@@ -9019,11 +9277,16 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.\n"
+                    "description": "Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.\n",
+                    "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs."
                 },
                 "oidcConformant": {
                     "type": "boolean",
                     "description": "Indicates whether this client will conform to strict OIDC specifications.\n"
+                },
+                "oidcLogout": {
+                    "$ref": "#/types/auth0:index/ClientOidcLogout:ClientOidcLogout",
+                    "description": "Configure OIDC logout for the Client\n"
                 },
                 "organizationRequireBehavior": {
                     "type": "string",
@@ -9202,11 +9465,16 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.\n"
+                        "description": "Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.\n",
+                        "deprecationMessage": "This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs."
                     },
                     "oidcConformant": {
                         "type": "boolean",
                         "description": "Indicates whether this client will conform to strict OIDC specifications.\n"
+                    },
+                    "oidcLogout": {
+                        "$ref": "#/types/auth0:index/ClientOidcLogout:ClientOidcLogout",
+                        "description": "Configure OIDC logout for the Client\n"
                     },
                     "organizationRequireBehavior": {
                         "type": "string",
@@ -10439,7 +10707,7 @@
             }
         },
         "auth0:index/form:Form": {
-            "description": "With this resource, you can create and manage Forms for a tenant.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Example:\nconst myForm = new auth0.Form(\"my_form\", {\n    name: \"My KYC Form\",\n    start: JSON.stringify({\n        coordinates: {\n            x: 0,\n            y: 0,\n        },\n        next_node: \"step_ggeX\",\n    }),\n    nodes: JSON.stringify([{\n        alias: \"New step\",\n        config: {\n            components: [\n                {\n                    category: \"FIELD\",\n                    config: {\n                        max_length: 50,\n                        min_length: 1,\n                        multiline: false,\n                    },\n                    id: \"full_name\",\n                    label: \"Your Name\",\n                    required: true,\n                    sensitive: false,\n                    type: \"TEXT\",\n                },\n                {\n                    category: \"BLOCK\",\n                    config: {\n                        text: \"Continue\",\n                    },\n                    id: \"next_button_3FbA\",\n                    type: \"NEXT_BUTTON\",\n                },\n            ],\n            next_node: \"$ending\",\n        },\n        coordinates: {\n            x: 500,\n            y: 0,\n        },\n        id: \"step_ggeX\",\n        type: \"STEP\",\n    }]),\n    ending: JSON.stringify({\n        after_submit: {\n            flow_id: \"\u003cmy_flow_id\u003e\",\n        },\n        coordinates: {\n            x: 1250,\n            y: 0,\n        },\n        resume_flow: true,\n    }),\n    style: JSON.stringify({\n        css: `h1 {\n  color: white;\n  text-align: center;\n}`,\n    }),\n    translations: JSON.stringify({\n        es: {\n            components: {\n                rich_text_uctu: {\n                    config: {\n                        content: \"\u003ch2\u003eHelp us verify your personal information\u003c/h2\u003e\u003cp\u003eWe want to learn more about you so that we can validate and protect your account...\u003c/p\u003e\",\n                    },\n                },\n            },\n            messages: {\n                custom: {},\n                errors: {\n                    ERR_ACCEPTANCE_REQUIRED: \"Por favor, marca este campo para continuar.\",\n                },\n            },\n        },\n    }),\n    languages: [{\n        \"default\": \"en\",\n        primary: \"en\",\n    }],\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_auth0 as auth0\n\n# Example:\nmy_form = auth0.Form(\"my_form\",\n    name=\"My KYC Form\",\n    start=json.dumps({\n        \"coordinates\": {\n            \"x\": 0,\n            \"y\": 0,\n        },\n        \"next_node\": \"step_ggeX\",\n    }),\n    nodes=json.dumps([{\n        \"alias\": \"New step\",\n        \"config\": {\n            \"components\": [\n                {\n                    \"category\": \"FIELD\",\n                    \"config\": {\n                        \"max_length\": 50,\n                        \"min_length\": 1,\n                        \"multiline\": False,\n                    },\n                    \"id\": \"full_name\",\n                    \"label\": \"Your Name\",\n                    \"required\": True,\n                    \"sensitive\": False,\n                    \"type\": \"TEXT\",\n                },\n                {\n                    \"category\": \"BLOCK\",\n                    \"config\": {\n                        \"text\": \"Continue\",\n                    },\n                    \"id\": \"next_button_3FbA\",\n                    \"type\": \"NEXT_BUTTON\",\n                },\n            ],\n            \"next_node\": \"$ending\",\n        },\n        \"coordinates\": {\n            \"x\": 500,\n            \"y\": 0,\n        },\n        \"id\": \"step_ggeX\",\n        \"type\": \"STEP\",\n    }]),\n    ending=json.dumps({\n        \"after_submit\": {\n            \"flow_id\": \"\u003cmy_flow_id\u003e\",\n        },\n        \"coordinates\": {\n            \"x\": 1250,\n            \"y\": 0,\n        },\n        \"resume_flow\": True,\n    }),\n    style=json.dumps({\n        \"css\": \"\"\"h1 {\n  color: white;\n  text-align: center;\n}\"\"\",\n    }),\n    translations=json.dumps({\n        \"es\": {\n            \"components\": {\n                \"rich_text_uctu\": {\n                    \"config\": {\n                        \"content\": \"\u003ch2\u003eHelp us verify your personal information\u003c/h2\u003e\u003cp\u003eWe want to learn more about you so that we can validate and protect your account...\u003c/p\u003e\",\n                    },\n                },\n            },\n            \"messages\": {\n                \"custom\": {},\n                \"errors\": {\n                    \"ERR_ACCEPTANCE_REQUIRED\": \"Por favor, marca este campo para continuar.\",\n                },\n            },\n        },\n    }),\n    languages=[{\n        \"default\": \"en\",\n        \"primary\": \"en\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Example:\n    var myForm = new Auth0.Form(\"my_form\", new()\n    {\n        Name = \"My KYC Form\",\n        Start = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n        {\n            [\"coordinates\"] = new Dictionary\u003cstring, object?\u003e\n            {\n                [\"x\"] = 0,\n                [\"y\"] = 0,\n            },\n            [\"next_node\"] = \"step_ggeX\",\n        }),\n        Nodes = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"alias\"] = \"New step\",\n                [\"config\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"components\"] = new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            [\"category\"] = \"FIELD\",\n                            [\"config\"] = new Dictionary\u003cstring, object?\u003e\n                            {\n                                [\"max_length\"] = 50,\n                                [\"min_length\"] = 1,\n                                [\"multiline\"] = false,\n                            },\n                            [\"id\"] = \"full_name\",\n                            [\"label\"] = \"Your Name\",\n                            [\"required\"] = true,\n                            [\"sensitive\"] = false,\n                            [\"type\"] = \"TEXT\",\n                        },\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            [\"category\"] = \"BLOCK\",\n                            [\"config\"] = new Dictionary\u003cstring, object?\u003e\n                            {\n                                [\"text\"] = \"Continue\",\n                            },\n                            [\"id\"] = \"next_button_3FbA\",\n                            [\"type\"] = \"NEXT_BUTTON\",\n                        },\n                    },\n                    [\"next_node\"] = \"$ending\",\n                },\n                [\"coordinates\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"x\"] = 500,\n                    [\"y\"] = 0,\n                },\n                [\"id\"] = \"step_ggeX\",\n                [\"type\"] = \"STEP\",\n            },\n        }),\n        Ending = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n        {\n            [\"after_submit\"] = new Dictionary\u003cstring, object?\u003e\n            {\n                [\"flow_id\"] = \"\u003cmy_flow_id\u003e\",\n            },\n            [\"coordinates\"] = new Dictionary\u003cstring, object?\u003e\n            {\n                [\"x\"] = 1250,\n                [\"y\"] = 0,\n            },\n            [\"resume_flow\"] = true,\n        }),\n        Style = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n        {\n            [\"css\"] = @\"h1 {\n  color: white;\n  text-align: center;\n}\",\n        }),\n        Translations = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n        {\n            [\"es\"] = new Dictionary\u003cstring, object?\u003e\n            {\n                [\"components\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"rich_text_uctu\"] = new Dictionary\u003cstring, object?\u003e\n                    {\n                        [\"config\"] = new Dictionary\u003cstring, object?\u003e\n                        {\n                            [\"content\"] = \"\u003ch2\u003eHelp us verify your personal information\u003c/h2\u003e\u003cp\u003eWe want to learn more about you so that we can validate and protect your account...\u003c/p\u003e\",\n                        },\n                    },\n                },\n                [\"messages\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"custom\"] = new Dictionary\u003cstring, object?\u003e\n                    {\n                    },\n                    [\"errors\"] = new Dictionary\u003cstring, object?\u003e\n                    {\n                        [\"ERR_ACCEPTANCE_REQUIRED\"] = \"Por favor, marca este campo para continuar.\",\n                    },\n                },\n            },\n        }),\n        Languages = new[]\n        {\n            new Auth0.Inputs.FormLanguageArgs\n            {\n                Default = \"en\",\n                Primary = \"en\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"coordinates\": map[string]interface{}{\n\t\t\t\t\"x\": 0,\n\t\t\t\t\"y\": 0,\n\t\t\t},\n\t\t\t\"next_node\": \"step_ggeX\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\ttmpJSON1, err := json.Marshal([]map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"alias\": \"New step\",\n\t\t\t\t\"config\": map[string]interface{}{\n\t\t\t\t\t\"components\": []interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"category\": \"FIELD\",\n\t\t\t\t\t\t\t\"config\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\"max_length\": 50,\n\t\t\t\t\t\t\t\t\"min_length\": 1,\n\t\t\t\t\t\t\t\t\"multiline\":  false,\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"id\":        \"full_name\",\n\t\t\t\t\t\t\t\"label\":     \"Your Name\",\n\t\t\t\t\t\t\t\"required\":  true,\n\t\t\t\t\t\t\t\"sensitive\": false,\n\t\t\t\t\t\t\t\"type\":      \"TEXT\",\n\t\t\t\t\t\t},\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"category\": \"BLOCK\",\n\t\t\t\t\t\t\t\"config\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\"text\": \"Continue\",\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"id\":   \"next_button_3FbA\",\n\t\t\t\t\t\t\t\"type\": \"NEXT_BUTTON\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\t\"next_node\": \"$ending\",\n\t\t\t\t},\n\t\t\t\t\"coordinates\": map[string]interface{}{\n\t\t\t\t\t\"x\": 500,\n\t\t\t\t\t\"y\": 0,\n\t\t\t\t},\n\t\t\t\t\"id\":   \"step_ggeX\",\n\t\t\t\t\"type\": \"STEP\",\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson1 := string(tmpJSON1)\n\t\ttmpJSON2, err := json.Marshal(map[string]interface{}{\n\t\t\t\"after_submit\": map[string]interface{}{\n\t\t\t\t\"flow_id\": \"\u003cmy_flow_id\u003e\",\n\t\t\t},\n\t\t\t\"coordinates\": map[string]interface{}{\n\t\t\t\t\"x\": 1250,\n\t\t\t\t\"y\": 0,\n\t\t\t},\n\t\t\t\"resume_flow\": true,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson2 := string(tmpJSON2)\n\t\ttmpJSON3, err := json.Marshal(map[string]interface{}{\n\t\t\t\"css\": \"h1 {\\n  color: white;\\n  text-align: center;\\n}\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson3 := string(tmpJSON3)\n\t\ttmpJSON4, err := json.Marshal(map[string]interface{}{\n\t\t\t\"es\": map[string]interface{}{\n\t\t\t\t\"components\": map[string]interface{}{\n\t\t\t\t\t\"rich_text_uctu\": map[string]interface{}{\n\t\t\t\t\t\t\"config\": map[string]interface{}{\n\t\t\t\t\t\t\t\"content\": \"\u003ch2\u003eHelp us verify your personal information\u003c/h2\u003e\u003cp\u003eWe want to learn more about you so that we can validate and protect your account...\u003c/p\u003e\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\"messages\": map[string]interface{}{\n\t\t\t\t\t\"custom\": map[string]interface{}{},\n\t\t\t\t\t\"errors\": map[string]interface{}{\n\t\t\t\t\t\t\"ERR_ACCEPTANCE_REQUIRED\": \"Por favor, marca este campo para continuar.\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson4 := string(tmpJSON4)\n\t\t// Example:\n\t\t_, err = auth0.NewForm(ctx, \"my_form\", \u0026auth0.FormArgs{\n\t\t\tName:         pulumi.String(\"My KYC Form\"),\n\t\t\tStart:        pulumi.String(json0),\n\t\t\tNodes:        pulumi.String(json1),\n\t\t\tEnding:       pulumi.String(json2),\n\t\t\tStyle:        pulumi.String(json3),\n\t\t\tTranslations: pulumi.String(json4),\n\t\t\tLanguages: auth0.FormLanguageArray{\n\t\t\t\t\u0026auth0.FormLanguageArgs{\n\t\t\t\t\tDefault: pulumi.String(\"en\"),\n\t\t\t\t\tPrimary: pulumi.String(\"en\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Form;\nimport com.pulumi.auth0.FormArgs;\nimport com.pulumi.auth0.inputs.FormLanguageArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Example:\n        var myForm = new Form(\"myForm\", FormArgs.builder()\n            .name(\"My KYC Form\")\n            .start(serializeJson(\n                jsonObject(\n                    jsonProperty(\"coordinates\", jsonObject(\n                        jsonProperty(\"x\", 0),\n                        jsonProperty(\"y\", 0)\n                    )),\n                    jsonProperty(\"next_node\", \"step_ggeX\")\n                )))\n            .nodes(serializeJson(\n                jsonArray(jsonObject(\n                    jsonProperty(\"alias\", \"New step\"),\n                    jsonProperty(\"config\", jsonObject(\n                        jsonProperty(\"components\", jsonArray(\n                            jsonObject(\n                                jsonProperty(\"category\", \"FIELD\"),\n                                jsonProperty(\"config\", jsonObject(\n                                    jsonProperty(\"max_length\", 50),\n                                    jsonProperty(\"min_length\", 1),\n                                    jsonProperty(\"multiline\", false)\n                                )),\n                                jsonProperty(\"id\", \"full_name\"),\n                                jsonProperty(\"label\", \"Your Name\"),\n                                jsonProperty(\"required\", true),\n                                jsonProperty(\"sensitive\", false),\n                                jsonProperty(\"type\", \"TEXT\")\n                            ), \n                            jsonObject(\n                                jsonProperty(\"category\", \"BLOCK\"),\n                                jsonProperty(\"config\", jsonObject(\n                                    jsonProperty(\"text\", \"Continue\")\n                                )),\n                                jsonProperty(\"id\", \"next_button_3FbA\"),\n                                jsonProperty(\"type\", \"NEXT_BUTTON\")\n                            )\n                        )),\n                        jsonProperty(\"next_node\", \"$ending\")\n                    )),\n                    jsonProperty(\"coordinates\", jsonObject(\n                        jsonProperty(\"x\", 500),\n                        jsonProperty(\"y\", 0)\n                    )),\n                    jsonProperty(\"id\", \"step_ggeX\"),\n                    jsonProperty(\"type\", \"STEP\")\n                ))))\n            .ending(serializeJson(\n                jsonObject(\n                    jsonProperty(\"after_submit\", jsonObject(\n                        jsonProperty(\"flow_id\", \"\u003cmy_flow_id\u003e\")\n                    )),\n                    jsonProperty(\"coordinates\", jsonObject(\n                        jsonProperty(\"x\", 1250),\n                        jsonProperty(\"y\", 0)\n                    )),\n                    jsonProperty(\"resume_flow\", true)\n                )))\n            .style(serializeJson(\n                jsonObject(\n                    jsonProperty(\"css\", \"\"\"\nh1 {\n  color: white;\n  text-align: center;\n}                    \"\"\")\n                )))\n            .translations(serializeJson(\n                jsonObject(\n                    jsonProperty(\"es\", jsonObject(\n                        jsonProperty(\"components\", jsonObject(\n                            jsonProperty(\"rich_text_uctu\", jsonObject(\n                                jsonProperty(\"config\", jsonObject(\n                                    jsonProperty(\"content\", \"\u003ch2\u003eHelp us verify your personal information\u003c/h2\u003e\u003cp\u003eWe want to learn more about you so that we can validate and protect your account...\u003c/p\u003e\")\n                                ))\n                            ))\n                        )),\n                        jsonProperty(\"messages\", jsonObject(\n                            jsonProperty(\"custom\", jsonObject(\n\n                            )),\n                            jsonProperty(\"errors\", jsonObject(\n                                jsonProperty(\"ERR_ACCEPTANCE_REQUIRED\", \"Por favor, marca este campo para continuar.\")\n                            ))\n                        ))\n                    ))\n                )))\n            .languages(FormLanguageArgs.builder()\n                .default_(\"en\")\n                .primary(\"en\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Example:\n  myForm:\n    type: auth0:Form\n    name: my_form\n    properties:\n      name: My KYC Form\n      start:\n        fn::toJSON:\n          coordinates:\n            x: 0\n            y: 0\n          next_node: step_ggeX\n      nodes:\n        fn::toJSON:\n          - alias: New step\n            config:\n              components:\n                - category: FIELD\n                  config:\n                    max_length: 50\n                    min_length: 1\n                    multiline: false\n                  id: full_name\n                  label: Your Name\n                  required: true\n                  sensitive: false\n                  type: TEXT\n                - category: BLOCK\n                  config:\n                    text: Continue\n                  id: next_button_3FbA\n                  type: NEXT_BUTTON\n              next_node: $ending\n            coordinates:\n              x: 500\n              y: 0\n            id: step_ggeX\n            type: STEP\n      ending:\n        fn::toJSON:\n          after_submit:\n            flow_id: \u003cmy_flow_id\u003e\n          coordinates:\n            x: 1250\n            y: 0\n          resume_flow: true\n      style:\n        fn::toJSON:\n          css: |-\n            h1 {\n              color: white;\n              text-align: center;\n            }\n      translations:\n        fn::toJSON:\n          es:\n            components:\n              rich_text_uctu:\n                config:\n                  content: \u003ch2\u003eHelp us verify your personal information\u003c/h2\u003e\u003cp\u003eWe want to learn more about you so that we can validate and protect your account...\u003c/p\u003e\n            messages:\n              custom: {}\n              errors:\n                ERR_ACCEPTANCE_REQUIRED: Por favor, marca este campo para continuar.\n      languages:\n        - default: en\n          primary: en\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the form ID.\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/form:Form my_form \"ap_ojkKbiPMG6J5E5VCKdeCzK\"\n```\n\n",
+            "description": "With this resource, you can create and manage Forms for a tenant.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Example:\nconst myForm = new auth0.Form(\"my_form\", {\n    name: \"My KYC Form\",\n    start: JSON.stringify({\n        coordinates: {\n            x: 0,\n            y: 0,\n        },\n        next_node: \"step_ggeX\",\n    }),\n    nodes: JSON.stringify([{\n        alias: \"New step\",\n        config: {\n            components: [\n                {\n                    category: \"FIELD\",\n                    config: {\n                        max_length: 50,\n                        min_length: 1,\n                        multiline: false,\n                    },\n                    id: \"full_name\",\n                    label: \"Your Name\",\n                    required: true,\n                    sensitive: false,\n                    type: \"TEXT\",\n                },\n                {\n                    category: \"BLOCK\",\n                    config: {\n                        text: \"Continue\",\n                    },\n                    id: \"next_button_3FbA\",\n                    type: \"NEXT_BUTTON\",\n                },\n            ],\n            next_node: \"$ending\",\n        },\n        coordinates: {\n            x: 500,\n            y: 0,\n        },\n        id: \"step_ggeX\",\n        type: \"STEP\",\n    }]),\n    ending: JSON.stringify({\n        after_submit: {\n            flow_id: \"\u003cmy_flow_id\u003e\",\n        },\n        coordinates: {\n            x: 1250,\n            y: 0,\n        },\n        resume_flow: true,\n    }),\n    style: JSON.stringify({\n        css: `h1 {\n  color: white;\n  text-align: center;\n}`,\n    }),\n    translations: JSON.stringify({\n        es: {\n            components: {\n                rich_text_uctu: {\n                    config: {\n                        content: \"\u003ch2\u003eHelp us verify your personal information\u003c/h2\u003e\u003cp\u003eWe want to learn more about you so that we can validate and protect your account...\u003c/p\u003e\",\n                    },\n                },\n            },\n            messages: {\n                custom: {},\n                errors: {\n                    ERR_ACCEPTANCE_REQUIRED: \"Por favor, marca este campo para continuar.\",\n                },\n            },\n        },\n    }),\n    messages: [{\n        errors: JSON.stringify({\n            ERR_REQUIRED_PROPERTY: \"This field is required for user kyc.\",\n        }),\n    }],\n    languages: [{\n        \"default\": \"en\",\n        primary: \"en\",\n    }],\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_auth0 as auth0\n\n# Example:\nmy_form = auth0.Form(\"my_form\",\n    name=\"My KYC Form\",\n    start=json.dumps({\n        \"coordinates\": {\n            \"x\": 0,\n            \"y\": 0,\n        },\n        \"next_node\": \"step_ggeX\",\n    }),\n    nodes=json.dumps([{\n        \"alias\": \"New step\",\n        \"config\": {\n            \"components\": [\n                {\n                    \"category\": \"FIELD\",\n                    \"config\": {\n                        \"max_length\": 50,\n                        \"min_length\": 1,\n                        \"multiline\": False,\n                    },\n                    \"id\": \"full_name\",\n                    \"label\": \"Your Name\",\n                    \"required\": True,\n                    \"sensitive\": False,\n                    \"type\": \"TEXT\",\n                },\n                {\n                    \"category\": \"BLOCK\",\n                    \"config\": {\n                        \"text\": \"Continue\",\n                    },\n                    \"id\": \"next_button_3FbA\",\n                    \"type\": \"NEXT_BUTTON\",\n                },\n            ],\n            \"next_node\": \"$ending\",\n        },\n        \"coordinates\": {\n            \"x\": 500,\n            \"y\": 0,\n        },\n        \"id\": \"step_ggeX\",\n        \"type\": \"STEP\",\n    }]),\n    ending=json.dumps({\n        \"after_submit\": {\n            \"flow_id\": \"\u003cmy_flow_id\u003e\",\n        },\n        \"coordinates\": {\n            \"x\": 1250,\n            \"y\": 0,\n        },\n        \"resume_flow\": True,\n    }),\n    style=json.dumps({\n        \"css\": \"\"\"h1 {\n  color: white;\n  text-align: center;\n}\"\"\",\n    }),\n    translations=json.dumps({\n        \"es\": {\n            \"components\": {\n                \"rich_text_uctu\": {\n                    \"config\": {\n                        \"content\": \"\u003ch2\u003eHelp us verify your personal information\u003c/h2\u003e\u003cp\u003eWe want to learn more about you so that we can validate and protect your account...\u003c/p\u003e\",\n                    },\n                },\n            },\n            \"messages\": {\n                \"custom\": {},\n                \"errors\": {\n                    \"ERR_ACCEPTANCE_REQUIRED\": \"Por favor, marca este campo para continuar.\",\n                },\n            },\n        },\n    }),\n    messages=[{\n        \"errors\": json.dumps({\n            \"ERR_REQUIRED_PROPERTY\": \"This field is required for user kyc.\",\n        }),\n    }],\n    languages=[{\n        \"default\": \"en\",\n        \"primary\": \"en\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Example:\n    var myForm = new Auth0.Form(\"my_form\", new()\n    {\n        Name = \"My KYC Form\",\n        Start = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n        {\n            [\"coordinates\"] = new Dictionary\u003cstring, object?\u003e\n            {\n                [\"x\"] = 0,\n                [\"y\"] = 0,\n            },\n            [\"next_node\"] = \"step_ggeX\",\n        }),\n        Nodes = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"alias\"] = \"New step\",\n                [\"config\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"components\"] = new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            [\"category\"] = \"FIELD\",\n                            [\"config\"] = new Dictionary\u003cstring, object?\u003e\n                            {\n                                [\"max_length\"] = 50,\n                                [\"min_length\"] = 1,\n                                [\"multiline\"] = false,\n                            },\n                            [\"id\"] = \"full_name\",\n                            [\"label\"] = \"Your Name\",\n                            [\"required\"] = true,\n                            [\"sensitive\"] = false,\n                            [\"type\"] = \"TEXT\",\n                        },\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            [\"category\"] = \"BLOCK\",\n                            [\"config\"] = new Dictionary\u003cstring, object?\u003e\n                            {\n                                [\"text\"] = \"Continue\",\n                            },\n                            [\"id\"] = \"next_button_3FbA\",\n                            [\"type\"] = \"NEXT_BUTTON\",\n                        },\n                    },\n                    [\"next_node\"] = \"$ending\",\n                },\n                [\"coordinates\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"x\"] = 500,\n                    [\"y\"] = 0,\n                },\n                [\"id\"] = \"step_ggeX\",\n                [\"type\"] = \"STEP\",\n            },\n        }),\n        Ending = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n        {\n            [\"after_submit\"] = new Dictionary\u003cstring, object?\u003e\n            {\n                [\"flow_id\"] = \"\u003cmy_flow_id\u003e\",\n            },\n            [\"coordinates\"] = new Dictionary\u003cstring, object?\u003e\n            {\n                [\"x\"] = 1250,\n                [\"y\"] = 0,\n            },\n            [\"resume_flow\"] = true,\n        }),\n        Style = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n        {\n            [\"css\"] = @\"h1 {\n  color: white;\n  text-align: center;\n}\",\n        }),\n        Translations = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n        {\n            [\"es\"] = new Dictionary\u003cstring, object?\u003e\n            {\n                [\"components\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"rich_text_uctu\"] = new Dictionary\u003cstring, object?\u003e\n                    {\n                        [\"config\"] = new Dictionary\u003cstring, object?\u003e\n                        {\n                            [\"content\"] = \"\u003ch2\u003eHelp us verify your personal information\u003c/h2\u003e\u003cp\u003eWe want to learn more about you so that we can validate and protect your account...\u003c/p\u003e\",\n                        },\n                    },\n                },\n                [\"messages\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"custom\"] = new Dictionary\u003cstring, object?\u003e\n                    {\n                    },\n                    [\"errors\"] = new Dictionary\u003cstring, object?\u003e\n                    {\n                        [\"ERR_ACCEPTANCE_REQUIRED\"] = \"Por favor, marca este campo para continuar.\",\n                    },\n                },\n            },\n        }),\n        Messages = new[]\n        {\n            new Auth0.Inputs.FormMessageArgs\n            {\n                Errors = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"ERR_REQUIRED_PROPERTY\"] = \"This field is required for user kyc.\",\n                }),\n            },\n        },\n        Languages = new[]\n        {\n            new Auth0.Inputs.FormLanguageArgs\n            {\n                Default = \"en\",\n                Primary = \"en\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"coordinates\": map[string]interface{}{\n\t\t\t\t\"x\": 0,\n\t\t\t\t\"y\": 0,\n\t\t\t},\n\t\t\t\"next_node\": \"step_ggeX\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\ttmpJSON1, err := json.Marshal([]map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"alias\": \"New step\",\n\t\t\t\t\"config\": map[string]interface{}{\n\t\t\t\t\t\"components\": []interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"category\": \"FIELD\",\n\t\t\t\t\t\t\t\"config\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\"max_length\": 50,\n\t\t\t\t\t\t\t\t\"min_length\": 1,\n\t\t\t\t\t\t\t\t\"multiline\":  false,\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"id\":        \"full_name\",\n\t\t\t\t\t\t\t\"label\":     \"Your Name\",\n\t\t\t\t\t\t\t\"required\":  true,\n\t\t\t\t\t\t\t\"sensitive\": false,\n\t\t\t\t\t\t\t\"type\":      \"TEXT\",\n\t\t\t\t\t\t},\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"category\": \"BLOCK\",\n\t\t\t\t\t\t\t\"config\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\"text\": \"Continue\",\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"id\":   \"next_button_3FbA\",\n\t\t\t\t\t\t\t\"type\": \"NEXT_BUTTON\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\t\"next_node\": \"$ending\",\n\t\t\t\t},\n\t\t\t\t\"coordinates\": map[string]interface{}{\n\t\t\t\t\t\"x\": 500,\n\t\t\t\t\t\"y\": 0,\n\t\t\t\t},\n\t\t\t\t\"id\":   \"step_ggeX\",\n\t\t\t\t\"type\": \"STEP\",\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson1 := string(tmpJSON1)\n\t\ttmpJSON2, err := json.Marshal(map[string]interface{}{\n\t\t\t\"after_submit\": map[string]interface{}{\n\t\t\t\t\"flow_id\": \"\u003cmy_flow_id\u003e\",\n\t\t\t},\n\t\t\t\"coordinates\": map[string]interface{}{\n\t\t\t\t\"x\": 1250,\n\t\t\t\t\"y\": 0,\n\t\t\t},\n\t\t\t\"resume_flow\": true,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson2 := string(tmpJSON2)\n\t\ttmpJSON3, err := json.Marshal(map[string]interface{}{\n\t\t\t\"css\": \"h1 {\\n  color: white;\\n  text-align: center;\\n}\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson3 := string(tmpJSON3)\n\t\ttmpJSON4, err := json.Marshal(map[string]interface{}{\n\t\t\t\"es\": map[string]interface{}{\n\t\t\t\t\"components\": map[string]interface{}{\n\t\t\t\t\t\"rich_text_uctu\": map[string]interface{}{\n\t\t\t\t\t\t\"config\": map[string]interface{}{\n\t\t\t\t\t\t\t\"content\": \"\u003ch2\u003eHelp us verify your personal information\u003c/h2\u003e\u003cp\u003eWe want to learn more about you so that we can validate and protect your account...\u003c/p\u003e\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\"messages\": map[string]interface{}{\n\t\t\t\t\t\"custom\": map[string]interface{}{},\n\t\t\t\t\t\"errors\": map[string]interface{}{\n\t\t\t\t\t\t\"ERR_ACCEPTANCE_REQUIRED\": \"Por favor, marca este campo para continuar.\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson4 := string(tmpJSON4)\n\t\ttmpJSON5, err := json.Marshal(map[string]interface{}{\n\t\t\t\"ERR_REQUIRED_PROPERTY\": \"This field is required for user kyc.\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson5 := string(tmpJSON5)\n\t\t// Example:\n\t\t_, err = auth0.NewForm(ctx, \"my_form\", \u0026auth0.FormArgs{\n\t\t\tName:         pulumi.String(\"My KYC Form\"),\n\t\t\tStart:        pulumi.String(json0),\n\t\t\tNodes:        pulumi.String(json1),\n\t\t\tEnding:       pulumi.String(json2),\n\t\t\tStyle:        pulumi.String(json3),\n\t\t\tTranslations: pulumi.String(json4),\n\t\t\tMessages: auth0.FormMessageArray{\n\t\t\t\t\u0026auth0.FormMessageArgs{\n\t\t\t\t\tErrors: pulumi.String(json5),\n\t\t\t\t},\n\t\t\t},\n\t\t\tLanguages: auth0.FormLanguageArray{\n\t\t\t\t\u0026auth0.FormLanguageArgs{\n\t\t\t\t\tDefault: pulumi.String(\"en\"),\n\t\t\t\t\tPrimary: pulumi.String(\"en\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Form;\nimport com.pulumi.auth0.FormArgs;\nimport com.pulumi.auth0.inputs.FormMessageArgs;\nimport com.pulumi.auth0.inputs.FormLanguageArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Example:\n        var myForm = new Form(\"myForm\", FormArgs.builder()\n            .name(\"My KYC Form\")\n            .start(serializeJson(\n                jsonObject(\n                    jsonProperty(\"coordinates\", jsonObject(\n                        jsonProperty(\"x\", 0),\n                        jsonProperty(\"y\", 0)\n                    )),\n                    jsonProperty(\"next_node\", \"step_ggeX\")\n                )))\n            .nodes(serializeJson(\n                jsonArray(jsonObject(\n                    jsonProperty(\"alias\", \"New step\"),\n                    jsonProperty(\"config\", jsonObject(\n                        jsonProperty(\"components\", jsonArray(\n                            jsonObject(\n                                jsonProperty(\"category\", \"FIELD\"),\n                                jsonProperty(\"config\", jsonObject(\n                                    jsonProperty(\"max_length\", 50),\n                                    jsonProperty(\"min_length\", 1),\n                                    jsonProperty(\"multiline\", false)\n                                )),\n                                jsonProperty(\"id\", \"full_name\"),\n                                jsonProperty(\"label\", \"Your Name\"),\n                                jsonProperty(\"required\", true),\n                                jsonProperty(\"sensitive\", false),\n                                jsonProperty(\"type\", \"TEXT\")\n                            ), \n                            jsonObject(\n                                jsonProperty(\"category\", \"BLOCK\"),\n                                jsonProperty(\"config\", jsonObject(\n                                    jsonProperty(\"text\", \"Continue\")\n                                )),\n                                jsonProperty(\"id\", \"next_button_3FbA\"),\n                                jsonProperty(\"type\", \"NEXT_BUTTON\")\n                            )\n                        )),\n                        jsonProperty(\"next_node\", \"$ending\")\n                    )),\n                    jsonProperty(\"coordinates\", jsonObject(\n                        jsonProperty(\"x\", 500),\n                        jsonProperty(\"y\", 0)\n                    )),\n                    jsonProperty(\"id\", \"step_ggeX\"),\n                    jsonProperty(\"type\", \"STEP\")\n                ))))\n            .ending(serializeJson(\n                jsonObject(\n                    jsonProperty(\"after_submit\", jsonObject(\n                        jsonProperty(\"flow_id\", \"\u003cmy_flow_id\u003e\")\n                    )),\n                    jsonProperty(\"coordinates\", jsonObject(\n                        jsonProperty(\"x\", 1250),\n                        jsonProperty(\"y\", 0)\n                    )),\n                    jsonProperty(\"resume_flow\", true)\n                )))\n            .style(serializeJson(\n                jsonObject(\n                    jsonProperty(\"css\", \"\"\"\nh1 {\n  color: white;\n  text-align: center;\n}                    \"\"\")\n                )))\n            .translations(serializeJson(\n                jsonObject(\n                    jsonProperty(\"es\", jsonObject(\n                        jsonProperty(\"components\", jsonObject(\n                            jsonProperty(\"rich_text_uctu\", jsonObject(\n                                jsonProperty(\"config\", jsonObject(\n                                    jsonProperty(\"content\", \"\u003ch2\u003eHelp us verify your personal information\u003c/h2\u003e\u003cp\u003eWe want to learn more about you so that we can validate and protect your account...\u003c/p\u003e\")\n                                ))\n                            ))\n                        )),\n                        jsonProperty(\"messages\", jsonObject(\n                            jsonProperty(\"custom\", jsonObject(\n\n                            )),\n                            jsonProperty(\"errors\", jsonObject(\n                                jsonProperty(\"ERR_ACCEPTANCE_REQUIRED\", \"Por favor, marca este campo para continuar.\")\n                            ))\n                        ))\n                    ))\n                )))\n            .messages(FormMessageArgs.builder()\n                .errors(serializeJson(\n                    jsonObject(\n                        jsonProperty(\"ERR_REQUIRED_PROPERTY\", \"This field is required for user kyc.\")\n                    )))\n                .build())\n            .languages(FormLanguageArgs.builder()\n                .default_(\"en\")\n                .primary(\"en\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Example:\n  myForm:\n    type: auth0:Form\n    name: my_form\n    properties:\n      name: My KYC Form\n      start:\n        fn::toJSON:\n          coordinates:\n            x: 0\n            y: 0\n          next_node: step_ggeX\n      nodes:\n        fn::toJSON:\n          - alias: New step\n            config:\n              components:\n                - category: FIELD\n                  config:\n                    max_length: 50\n                    min_length: 1\n                    multiline: false\n                  id: full_name\n                  label: Your Name\n                  required: true\n                  sensitive: false\n                  type: TEXT\n                - category: BLOCK\n                  config:\n                    text: Continue\n                  id: next_button_3FbA\n                  type: NEXT_BUTTON\n              next_node: $ending\n            coordinates:\n              x: 500\n              y: 0\n            id: step_ggeX\n            type: STEP\n      ending:\n        fn::toJSON:\n          after_submit:\n            flow_id: \u003cmy_flow_id\u003e\n          coordinates:\n            x: 1250\n            y: 0\n          resume_flow: true\n      style:\n        fn::toJSON:\n          css: |-\n            h1 {\n              color: white;\n              text-align: center;\n            }\n      translations:\n        fn::toJSON:\n          es:\n            components:\n              rich_text_uctu:\n                config:\n                  content: \u003ch2\u003eHelp us verify your personal information\u003c/h2\u003e\u003cp\u003eWe want to learn more about you so that we can validate and protect your account...\u003c/p\u003e\n            messages:\n              custom: {}\n              errors:\n                ERR_ACCEPTANCE_REQUIRED: Por favor, marca este campo para continuar.\n      messages:\n        - errors:\n            fn::toJSON:\n              ERR_REQUIRED_PROPERTY: This field is required for user kyc.\n      languages:\n        - default: en\n          primary: en\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the form ID.\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/form:Form my_form \"ap_ojkKbiPMG6J5E5VCKdeCzK\"\n```\n\n",
             "properties": {
                 "ending": {
                     "type": "string",
@@ -10996,7 +11264,7 @@
             }
         },
         "auth0:index/organizationClientGrant:OrganizationClientGrant": {
-            "description": "With this resource, you can manage a client grant associated with an organization.\n",
+            "description": "With this resource, you can manage a client grant associated with an organization.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Create an Organization\nconst myOrganization = new auth0.Organization(\"my_organization\", {\n    name: \"test-org-acceptance-testing\",\n    displayName: \"Test Org Acceptance Testing\",\n});\n// Create a Resource Server\nconst newResourceServer = new auth0.ResourceServer(\"new_resource_server\", {\n    name: \"Example API\",\n    identifier: \"https://api.travel00123.com/\",\n});\n// Create a Client by referencing the newly created organisation or by reference an existing one.\nconst myTestClient = new auth0.Client(\"my_test_client\", {\n    name: \"test_client\",\n    organizationUsage: \"allow\",\n    defaultOrganization: {\n        organizationId: myOrganization.id,\n        flows: [\"client_credentials\"],\n    },\n}, {\n    dependsOn: [\n        myOrganization,\n        newResourceServer,\n    ],\n});\n// Create a client grant which is associated with the client and resource server.\nconst myClientGrant = new auth0.ClientGrant(\"my_client_grant\", {\n    clientId: myTestClient.id,\n    audience: newResourceServer.identifier,\n    scopes: [\n        \"create:organization_client_grants\",\n        \"create:resource\",\n    ],\n    allowAnyOrganization: true,\n    organizationUsage: \"allow\",\n}, {\n    dependsOn: [\n        newResourceServer,\n        myTestClient,\n    ],\n});\n// Create the organization and client grant association\nconst associateOrgClientGrant = new auth0.OrganizationClientGrant(\"associate_org_client_grant\", {\n    organizationId: myOrganization.id,\n    grantId: myClientGrant.id,\n}, {\n    dependsOn: [myClientGrant],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Create an Organization\nmy_organization = auth0.Organization(\"my_organization\",\n    name=\"test-org-acceptance-testing\",\n    display_name=\"Test Org Acceptance Testing\")\n# Create a Resource Server\nnew_resource_server = auth0.ResourceServer(\"new_resource_server\",\n    name=\"Example API\",\n    identifier=\"https://api.travel00123.com/\")\n# Create a Client by referencing the newly created organisation or by reference an existing one.\nmy_test_client = auth0.Client(\"my_test_client\",\n    name=\"test_client\",\n    organization_usage=\"allow\",\n    default_organization={\n        \"organization_id\": my_organization.id,\n        \"flows\": [\"client_credentials\"],\n    },\n    opts = pulumi.ResourceOptions(depends_on=[\n            my_organization,\n            new_resource_server,\n        ]))\n# Create a client grant which is associated with the client and resource server.\nmy_client_grant = auth0.ClientGrant(\"my_client_grant\",\n    client_id=my_test_client.id,\n    audience=new_resource_server.identifier,\n    scopes=[\n        \"create:organization_client_grants\",\n        \"create:resource\",\n    ],\n    allow_any_organization=True,\n    organization_usage=\"allow\",\n    opts = pulumi.ResourceOptions(depends_on=[\n            new_resource_server,\n            my_test_client,\n        ]))\n# Create the organization and client grant association\nassociate_org_client_grant = auth0.OrganizationClientGrant(\"associate_org_client_grant\",\n    organization_id=my_organization.id,\n    grant_id=my_client_grant.id,\n    opts = pulumi.ResourceOptions(depends_on=[my_client_grant]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create an Organization\n    var myOrganization = new Auth0.Organization(\"my_organization\", new()\n    {\n        Name = \"test-org-acceptance-testing\",\n        DisplayName = \"Test Org Acceptance Testing\",\n    });\n\n    // Create a Resource Server\n    var newResourceServer = new Auth0.ResourceServer(\"new_resource_server\", new()\n    {\n        Name = \"Example API\",\n        Identifier = \"https://api.travel00123.com/\",\n    });\n\n    // Create a Client by referencing the newly created organisation or by reference an existing one.\n    var myTestClient = new Auth0.Client(\"my_test_client\", new()\n    {\n        Name = \"test_client\",\n        OrganizationUsage = \"allow\",\n        DefaultOrganization = new Auth0.Inputs.ClientDefaultOrganizationArgs\n        {\n            OrganizationId = myOrganization.Id,\n            Flows = new[]\n            {\n                \"client_credentials\",\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            myOrganization,\n            newResourceServer,\n        },\n    });\n\n    // Create a client grant which is associated with the client and resource server.\n    var myClientGrant = new Auth0.ClientGrant(\"my_client_grant\", new()\n    {\n        ClientId = myTestClient.Id,\n        Audience = newResourceServer.Identifier,\n        Scopes = new[]\n        {\n            \"create:organization_client_grants\",\n            \"create:resource\",\n        },\n        AllowAnyOrganization = true,\n        OrganizationUsage = \"allow\",\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            newResourceServer,\n            myTestClient,\n        },\n    });\n\n    // Create the organization and client grant association\n    var associateOrgClientGrant = new Auth0.OrganizationClientGrant(\"associate_org_client_grant\", new()\n    {\n        OrganizationId = myOrganization.Id,\n        GrantId = myClientGrant.Id,\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            myClientGrant,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create an Organization\n\t\tmyOrganization, err := auth0.NewOrganization(ctx, \"my_organization\", \u0026auth0.OrganizationArgs{\n\t\t\tName:        pulumi.String(\"test-org-acceptance-testing\"),\n\t\t\tDisplayName: pulumi.String(\"Test Org Acceptance Testing\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Create a Resource Server\n\t\tnewResourceServer, err := auth0.NewResourceServer(ctx, \"new_resource_server\", \u0026auth0.ResourceServerArgs{\n\t\t\tName:       pulumi.String(\"Example API\"),\n\t\t\tIdentifier: pulumi.String(\"https://api.travel00123.com/\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Create a Client by referencing the newly created organisation or by reference an existing one.\n\t\tmyTestClient, err := auth0.NewClient(ctx, \"my_test_client\", \u0026auth0.ClientArgs{\n\t\t\tName:              pulumi.String(\"test_client\"),\n\t\t\tOrganizationUsage: pulumi.String(\"allow\"),\n\t\t\tDefaultOrganization: \u0026auth0.ClientDefaultOrganizationArgs{\n\t\t\t\tOrganizationId: myOrganization.ID(),\n\t\t\t\tFlows: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"client_credentials\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tmyOrganization,\n\t\t\tnewResourceServer,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Create a client grant which is associated with the client and resource server.\n\t\tmyClientGrant, err := auth0.NewClientGrant(ctx, \"my_client_grant\", \u0026auth0.ClientGrantArgs{\n\t\t\tClientId: myTestClient.ID(),\n\t\t\tAudience: newResourceServer.Identifier,\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"create:organization_client_grants\"),\n\t\t\t\tpulumi.String(\"create:resource\"),\n\t\t\t},\n\t\t\tAllowAnyOrganization: pulumi.Bool(true),\n\t\t\tOrganizationUsage:    pulumi.String(\"allow\"),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tnewResourceServer,\n\t\t\tmyTestClient,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Create the organization and client grant association\n\t\t_, err = auth0.NewOrganizationClientGrant(ctx, \"associate_org_client_grant\", \u0026auth0.OrganizationClientGrantArgs{\n\t\t\tOrganizationId: myOrganization.ID(),\n\t\t\tGrantId:        myClientGrant.ID(),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tmyClientGrant,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Organization;\nimport com.pulumi.auth0.OrganizationArgs;\nimport com.pulumi.auth0.ResourceServer;\nimport com.pulumi.auth0.ResourceServerArgs;\nimport com.pulumi.auth0.Client;\nimport com.pulumi.auth0.ClientArgs;\nimport com.pulumi.auth0.inputs.ClientDefaultOrganizationArgs;\nimport com.pulumi.auth0.ClientGrant;\nimport com.pulumi.auth0.ClientGrantArgs;\nimport com.pulumi.auth0.OrganizationClientGrant;\nimport com.pulumi.auth0.OrganizationClientGrantArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create an Organization\n        var myOrganization = new Organization(\"myOrganization\", OrganizationArgs.builder()\n            .name(\"test-org-acceptance-testing\")\n            .displayName(\"Test Org Acceptance Testing\")\n            .build());\n\n        // Create a Resource Server\n        var newResourceServer = new ResourceServer(\"newResourceServer\", ResourceServerArgs.builder()\n            .name(\"Example API\")\n            .identifier(\"https://api.travel00123.com/\")\n            .build());\n\n        // Create a Client by referencing the newly created organisation or by reference an existing one.\n        var myTestClient = new Client(\"myTestClient\", ClientArgs.builder()\n            .name(\"test_client\")\n            .organizationUsage(\"allow\")\n            .defaultOrganization(ClientDefaultOrganizationArgs.builder()\n                .organizationId(myOrganization.id())\n                .flows(\"client_credentials\")\n                .build())\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(                \n                    myOrganization,\n                    newResourceServer)\n                .build());\n\n        // Create a client grant which is associated with the client and resource server.\n        var myClientGrant = new ClientGrant(\"myClientGrant\", ClientGrantArgs.builder()\n            .clientId(myTestClient.id())\n            .audience(newResourceServer.identifier())\n            .scopes(            \n                \"create:organization_client_grants\",\n                \"create:resource\")\n            .allowAnyOrganization(true)\n            .organizationUsage(\"allow\")\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(                \n                    newResourceServer,\n                    myTestClient)\n                .build());\n\n        // Create the organization and client grant association\n        var associateOrgClientGrant = new OrganizationClientGrant(\"associateOrgClientGrant\", OrganizationClientGrantArgs.builder()\n            .organizationId(myOrganization.id())\n            .grantId(myClientGrant.id())\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(myClientGrant)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create an Organization\n  myOrganization:\n    type: auth0:Organization\n    name: my_organization\n    properties:\n      name: test-org-acceptance-testing\n      displayName: Test Org Acceptance Testing\n  # Create a Resource Server\n  newResourceServer:\n    type: auth0:ResourceServer\n    name: new_resource_server\n    properties:\n      name: Example API\n      identifier: https://api.travel00123.com/\n  # Create a Client by referencing the newly created organisation or by reference an existing one.\n  myTestClient:\n    type: auth0:Client\n    name: my_test_client\n    properties:\n      name: test_client\n      organizationUsage: allow\n      defaultOrganization:\n        organizationId: ${myOrganization.id}\n        flows:\n          - client_credentials\n    options:\n      dependson:\n        - ${myOrganization}\n        - ${newResourceServer}\n  # Create a client grant which is associated with the client and resource server.\n  myClientGrant:\n    type: auth0:ClientGrant\n    name: my_client_grant\n    properties:\n      clientId: ${myTestClient.id}\n      audience: ${newResourceServer.identifier}\n      scopes:\n        - create:organization_client_grants\n        - create:resource\n      allowAnyOrganization: true\n      organizationUsage: allow\n    options:\n      dependson:\n        - ${newResourceServer}\n        - ${myTestClient}\n  # Create the organization and client grant association\n  associateOrgClientGrant:\n    type: auth0:OrganizationClientGrant\n    name: associate_org_client_grant\n    properties:\n      organizationId: ${myOrganization.id}\n      grantId: ${myClientGrant.id}\n    options:\n      dependson:\n        - ${myClientGrant}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the\n\norganization ID and client grant ID separated by \"::\" (note the double colon)\n\n\u003corganizationID\u003e::\u003cclientGrantID\u003e\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/organizationClientGrant:OrganizationClientGrant my_org_client_grant \"org_XXXXX::cgr_XXXXX\"\n```\n\n",
             "properties": {
                 "grantId": {
                     "type": "string",
@@ -12511,6 +12779,13 @@
         "auth0:index/selfServiceProfile:SelfServiceProfile": {
             "description": "With this resource, you can create and manage Self-Service Profile for a tenant.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst mySelfServiceProfile = new auth0.SelfServiceProfile(\"my_self_service_profile\", {\n    userAttributes: [{\n        name: \"sample-name\",\n        description: \"sample-description\",\n        isOptional: true,\n    }],\n    branding: {\n        logoUrl: \"https://mycompany.org/v2/logo.png\",\n        colors: {\n            primary: \"#0059d6\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_self_service_profile = auth0.SelfServiceProfile(\"my_self_service_profile\",\n    user_attributes=[{\n        \"name\": \"sample-name\",\n        \"description\": \"sample-description\",\n        \"is_optional\": True,\n    }],\n    branding={\n        \"logo_url\": \"https://mycompany.org/v2/logo.png\",\n        \"colors\": {\n            \"primary\": \"#0059d6\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mySelfServiceProfile = new Auth0.SelfServiceProfile(\"my_self_service_profile\", new()\n    {\n        UserAttributes = new[]\n        {\n            new Auth0.Inputs.SelfServiceProfileUserAttributeArgs\n            {\n                Name = \"sample-name\",\n                Description = \"sample-description\",\n                IsOptional = true,\n            },\n        },\n        Branding = new Auth0.Inputs.SelfServiceProfileBrandingArgs\n        {\n            LogoUrl = \"https://mycompany.org/v2/logo.png\",\n            Colors = new Auth0.Inputs.SelfServiceProfileBrandingColorsArgs\n            {\n                Primary = \"#0059d6\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewSelfServiceProfile(ctx, \"my_self_service_profile\", \u0026auth0.SelfServiceProfileArgs{\n\t\t\tUserAttributes: auth0.SelfServiceProfileUserAttributeArray{\n\t\t\t\t\u0026auth0.SelfServiceProfileUserAttributeArgs{\n\t\t\t\t\tName:        pulumi.String(\"sample-name\"),\n\t\t\t\t\tDescription: pulumi.String(\"sample-description\"),\n\t\t\t\t\tIsOptional:  pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBranding: \u0026auth0.SelfServiceProfileBrandingArgs{\n\t\t\t\tLogoUrl: pulumi.String(\"https://mycompany.org/v2/logo.png\"),\n\t\t\t\tColors: \u0026auth0.SelfServiceProfileBrandingColorsArgs{\n\t\t\t\t\tPrimary: pulumi.String(\"#0059d6\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.SelfServiceProfile;\nimport com.pulumi.auth0.SelfServiceProfileArgs;\nimport com.pulumi.auth0.inputs.SelfServiceProfileUserAttributeArgs;\nimport com.pulumi.auth0.inputs.SelfServiceProfileBrandingArgs;\nimport com.pulumi.auth0.inputs.SelfServiceProfileBrandingColorsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mySelfServiceProfile = new SelfServiceProfile(\"mySelfServiceProfile\", SelfServiceProfileArgs.builder()\n            .userAttributes(SelfServiceProfileUserAttributeArgs.builder()\n                .name(\"sample-name\")\n                .description(\"sample-description\")\n                .isOptional(true)\n                .build())\n            .branding(SelfServiceProfileBrandingArgs.builder()\n                .logoUrl(\"https://mycompany.org/v2/logo.png\")\n                .colors(SelfServiceProfileBrandingColorsArgs.builder()\n                    .primary(\"#0059d6\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mySelfServiceProfile:\n    type: auth0:SelfServiceProfile\n    name: my_self_service_profile\n    properties:\n      userAttributes:\n        - name: sample-name\n          description: sample-description\n          isOptional: true\n      branding:\n        logoUrl: https://mycompany.org/v2/logo.png\n        colors:\n          primary: '#0059d6'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the id\n\nExample:\n\n```sh\n$ pulumi import auth0:index/selfServiceProfile:SelfServiceProfile id \"ssp_32oi5unksja93124\"\n```\n\n",
             "properties": {
+                "allowedStrategies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of IdP strategies that will be shown to users during the Self-Service SSO flow.\n"
+                },
                 "branding": {
                     "$ref": "#/types/auth0:index/SelfServiceProfileBranding:SelfServiceProfileBranding",
                     "description": "Field can be used to customize the look and feel of the wizard.\n"
@@ -12518,6 +12793,14 @@
                 "createdAt": {
                     "type": "string",
                     "description": "The ISO 8601 formatted date the profile was created.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the self-service Profile\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the self-service Profile\n"
                 },
                 "updatedAt": {
                     "type": "string",
@@ -12534,12 +12817,28 @@
             "required": [
                 "branding",
                 "createdAt",
+                "name",
                 "updatedAt"
             ],
             "inputProperties": {
+                "allowedStrategies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of IdP strategies that will be shown to users during the Self-Service SSO flow.\n"
+                },
                 "branding": {
                     "$ref": "#/types/auth0:index/SelfServiceProfileBranding:SelfServiceProfileBranding",
                     "description": "Field can be used to customize the look and feel of the wizard.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the self-service Profile\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the self-service Profile\n"
                 },
                 "userAttributes": {
                     "type": "array",
@@ -12552,6 +12851,13 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering SelfServiceProfile resources.\n",
                 "properties": {
+                    "allowedStrategies": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of IdP strategies that will be shown to users during the Self-Service SSO flow.\n"
+                    },
                     "branding": {
                         "$ref": "#/types/auth0:index/SelfServiceProfileBranding:SelfServiceProfileBranding",
                         "description": "Field can be used to customize the look and feel of the wizard.\n"
@@ -12559,6 +12865,14 @@
                     "createdAt": {
                         "type": "string",
                         "description": "The ISO 8601 formatted date the profile was created.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the self-service Profile\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the self-service Profile\n"
                     },
                     "updatedAt": {
                         "type": "string",
@@ -12570,6 +12884,81 @@
                             "$ref": "#/types/auth0:index/SelfServiceProfileUserAttribute:SelfServiceProfileUserAttribute"
                         },
                         "description": "This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/selfServiceProfileCustomText:SelfServiceProfileCustomText": {
+            "description": "With this resource, you can set custom text for Self-Service Profile\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst ssoCustomText = new auth0.SelfServiceProfileCustomText(\"sso_custom_text\", {\n    ssoId: \"some-sso-id\",\n    language: \"en\",\n    page: \"get-started\",\n    body: JSON.stringify({\n        introduction: \"Welcome! With only a few steps you'll be able to setup your new custom text.\",\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_auth0 as auth0\n\nsso_custom_text = auth0.SelfServiceProfileCustomText(\"sso_custom_text\",\n    sso_id=\"some-sso-id\",\n    language=\"en\",\n    page=\"get-started\",\n    body=json.dumps({\n        \"introduction\": \"Welcome! With only a few steps you'll be able to setup your new custom text.\",\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ssoCustomText = new Auth0.SelfServiceProfileCustomText(\"sso_custom_text\", new()\n    {\n        SsoId = \"some-sso-id\",\n        Language = \"en\",\n        Page = \"get-started\",\n        Body = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n        {\n            [\"introduction\"] = \"Welcome! With only a few steps you'll be able to setup your new custom text.\",\n        }),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"introduction\": \"Welcome! With only a few steps you'll be able to setup your new custom text.\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = auth0.NewSelfServiceProfileCustomText(ctx, \"sso_custom_text\", \u0026auth0.SelfServiceProfileCustomTextArgs{\n\t\t\tSsoId:    pulumi.String(\"some-sso-id\"),\n\t\t\tLanguage: pulumi.String(\"en\"),\n\t\t\tPage:     pulumi.String(\"get-started\"),\n\t\t\tBody:     pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.SelfServiceProfileCustomText;\nimport com.pulumi.auth0.SelfServiceProfileCustomTextArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ssoCustomText = new SelfServiceProfileCustomText(\"ssoCustomText\", SelfServiceProfileCustomTextArgs.builder()\n            .ssoId(\"some-sso-id\")\n            .language(\"en\")\n            .page(\"get-started\")\n            .body(serializeJson(\n                jsonObject(\n                    jsonProperty(\"introduction\", \"Welcome! With only a few steps you'll be able to setup your new custom text.\")\n                )))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ssoCustomText:\n    type: auth0:SelfServiceProfileCustomText\n    name: sso_custom_text\n    properties:\n      ssoId: some-sso-id\n      language: en\n      page: get-started\n      body:\n        fn::toJSON:\n          introduction: Welcome! With only a few steps you'll be able to setup your new custom text.\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the\n\nsso-profile-id, language and page separated by \"::\" (note the double colon)\n\n\u003csso-profile-id\u003e::\u003clanguage\u003e::\u003cpage\u003e\n\n#\n\nExample\n\n```sh\n$ pulumi import auth0:index/selfServiceProfileCustomText:SelfServiceProfileCustomText example \"some-sso-id::en::get-started\"\n```\n\n",
+            "properties": {
+                "body": {
+                    "type": "string",
+                    "description": "The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks\n"
+                },
+                "language": {
+                    "type": "string",
+                    "description": "The language of the custom text\n"
+                },
+                "page": {
+                    "type": "string",
+                    "description": "The page where the custom text is shown\n"
+                },
+                "ssoId": {
+                    "type": "string",
+                    "description": "The id of the self-service profile\n"
+                }
+            },
+            "required": [
+                "body",
+                "language",
+                "page",
+                "ssoId"
+            ],
+            "inputProperties": {
+                "body": {
+                    "type": "string",
+                    "description": "The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks\n"
+                },
+                "language": {
+                    "type": "string",
+                    "description": "The language of the custom text\n"
+                },
+                "page": {
+                    "type": "string",
+                    "description": "The page where the custom text is shown\n"
+                },
+                "ssoId": {
+                    "type": "string",
+                    "description": "The id of the self-service profile\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "body",
+                "language",
+                "page",
+                "ssoId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SelfServiceProfileCustomText resources.\n",
+                "properties": {
+                    "body": {
+                        "type": "string",
+                        "description": "The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks\n"
+                    },
+                    "language": {
+                        "type": "string",
+                        "description": "The language of the custom text\n"
+                    },
+                    "page": {
+                        "type": "string",
+                        "description": "The page where the custom text is shown\n"
+                    },
+                    "ssoId": {
+                        "type": "string",
+                        "description": "The id of the self-service profile\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -13838,6 +14227,13 @@
                         "description": "Indicates whether this client will conform to strict OIDC specifications.\n",
                         "type": "boolean"
                     },
+                    "oidcLogouts": {
+                        "description": "Configure OIDC logout for the Client\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getClientOidcLogout:getClientOidcLogout"
+                        },
+                        "type": "array"
+                    },
                     "organizationRequireBehavior": {
                         "description": "Defines how to proceed during an authentication transaction when `organization_usage = \"require\"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.\n",
                         "type": "string"
@@ -13928,6 +14324,7 @@
                     "nativeSocialLogins",
                     "oidcBackchannelLogoutUrls",
                     "oidcConformant",
+                    "oidcLogouts",
                     "organizationRequireBehavior",
                     "organizationUsage",
                     "refreshTokens",
@@ -13939,6 +14336,66 @@
                     "ssoDisabled",
                     "tokenEndpointAuthMethod",
                     "webOrigins",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "auth0:index/getClients:getClients": {
+            "description": "Data source to retrieve a list of Auth0 application clients with optional filtering.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Auth0 clients with \"External\" in the name\nconst externalApps = auth0.getClients({\n    nameFilter: \"External\",\n});\n// Auth0 clients filtered by non_interactive or spa app type\nconst m2mApps = auth0.getClients({\n    appTypes: [\n        \"non_interactive\",\n        \"spa\",\n    ],\n});\n// Auth0 clients filtered by is_first_party equal to true\nconst firstPartyApps = auth0.getClients({\n    isFirstParty: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Auth0 clients with \"External\" in the name\nexternal_apps = auth0.get_clients(name_filter=\"External\")\n# Auth0 clients filtered by non_interactive or spa app type\nm2m_apps = auth0.get_clients(app_types=[\n    \"non_interactive\",\n    \"spa\",\n])\n# Auth0 clients filtered by is_first_party equal to true\nfirst_party_apps = auth0.get_clients(is_first_party=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Auth0 clients with \"External\" in the name\n    var externalApps = Auth0.GetClients.Invoke(new()\n    {\n        NameFilter = \"External\",\n    });\n\n    // Auth0 clients filtered by non_interactive or spa app type\n    var m2mApps = Auth0.GetClients.Invoke(new()\n    {\n        AppTypes = new[]\n        {\n            \"non_interactive\",\n            \"spa\",\n        },\n    });\n\n    // Auth0 clients filtered by is_first_party equal to true\n    var firstPartyApps = Auth0.GetClients.Invoke(new()\n    {\n        IsFirstParty = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Auth0 clients with \"External\" in the name\n\t\t_, err := auth0.GetClients(ctx, \u0026auth0.GetClientsArgs{\n\t\t\tNameFilter: pulumi.StringRef(\"External\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Auth0 clients filtered by non_interactive or spa app type\n\t\t_, err = auth0.GetClients(ctx, \u0026auth0.GetClientsArgs{\n\t\t\tAppTypes: []string{\n\t\t\t\t\"non_interactive\",\n\t\t\t\t\"spa\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Auth0 clients filtered by is_first_party equal to true\n\t\t_, err = auth0.GetClients(ctx, \u0026auth0.GetClientsArgs{\n\t\t\tIsFirstParty: pulumi.BoolRef(true),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Auth0Functions;\nimport com.pulumi.auth0.inputs.GetClientsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Auth0 clients with \"External\" in the name\n        final var externalApps = Auth0Functions.getClients(GetClientsArgs.builder()\n            .nameFilter(\"External\")\n            .build());\n\n        // Auth0 clients filtered by non_interactive or spa app type\n        final var m2mApps = Auth0Functions.getClients(GetClientsArgs.builder()\n            .appTypes(            \n                \"non_interactive\",\n                \"spa\")\n            .build());\n\n        // Auth0 clients filtered by is_first_party equal to true\n        final var firstPartyApps = Auth0Functions.getClients(GetClientsArgs.builder()\n            .isFirstParty(true)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  # Auth0 clients with \"External\" in the name\n  externalApps:\n    fn::invoke:\n      Function: auth0:getClients\n      Arguments:\n        nameFilter: External\n  # Auth0 clients filtered by non_interactive or spa app type\n  m2mApps:\n    fn::invoke:\n      Function: auth0:getClients\n      Arguments:\n        appTypes:\n          - non_interactive\n          - spa\n  # Auth0 clients filtered by is_first_party equal to true\n  firstPartyApps:\n    fn::invoke:\n      Function: auth0:getClients\n      Arguments:\n        isFirstParty: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getClients.\n",
+                "properties": {
+                    "appTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Filter clients by application types.\n"
+                    },
+                    "isFirstParty": {
+                        "type": "boolean",
+                        "description": "Filter clients by first party status.\n"
+                    },
+                    "nameFilter": {
+                        "type": "string",
+                        "description": "Filter clients by name (partial matches supported).\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getClients.\n",
+                "properties": {
+                    "appTypes": {
+                        "description": "Filter clients by application types.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "clients": {
+                        "description": "List of clients matching the filter criteria.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getClientsClient:getClientsClient"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "isFirstParty": {
+                        "description": "Filter clients by first party status.\n",
+                        "type": "boolean"
+                    },
+                    "nameFilter": {
+                        "description": "Filter clients by name (partial matches supported).\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "clients",
                     "id"
                 ],
                 "type": "object"
@@ -14739,6 +15196,13 @@
             "outputs": {
                 "description": "A collection of values returned by getSelfServiceProfile.\n",
                 "properties": {
+                    "allowedStrategies": {
+                        "description": "List of IdP strategies that will be shown to users during the Self-Service SSO flow.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
                     "brandings": {
                         "description": "Field can be used to customize the look and feel of the wizard.\n",
                         "items": {
@@ -14750,8 +15214,16 @@
                         "description": "The ISO 8601 formatted date the profile was created.\n",
                         "type": "string"
                     },
+                    "description": {
+                        "description": "The description of the self-service Profile\n",
+                        "type": "string"
+                    },
                     "id": {
                         "description": "The id of the Self Service Profile\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the self-service Profile\n",
                         "type": "string"
                     },
                     "updatedAt": {
@@ -14767,9 +15239,12 @@
                     }
                 },
                 "required": [
+                    "allowedStrategies",
                     "brandings",
                     "createdAt",
+                    "description",
                     "id",
+                    "name",
                     "updatedAt",
                     "userAttributes"
                 ],
