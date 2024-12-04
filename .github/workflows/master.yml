@@ -132,6 +132,7 @@ jobs:
     name: test
     needs:
       - prerequisites
+      - build_provider
       - build_sdk
     permissions:
       contents: read
