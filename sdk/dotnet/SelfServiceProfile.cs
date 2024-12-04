@@ -60,6 +60,12 @@ namespace Pulumi.Auth0
     public partial class SelfServiceProfile : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        /// </summary>
+        [Output("allowedStrategies")]
+        public Output<ImmutableArray<string>> AllowedStrategies { get; private set; } = null!;
+
+        /// <summary>
         /// Field can be used to customize the look and feel of the wizard.
         /// </summary>
         [Output("branding")]
@@ -70,6 +76,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the self-service Profile
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the self-service Profile
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// The ISO 8601 formatted date the profile was updated.
@@ -129,11 +147,35 @@ namespace Pulumi.Auth0
 
     public sealed class SelfServiceProfileArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowedStrategies")]
+        private InputList<string>? _allowedStrategies;
+
+        /// <summary>
+        /// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        /// </summary>
+        public InputList<string> AllowedStrategies
+        {
+            get => _allowedStrategies ?? (_allowedStrategies = new InputList<string>());
+            set => _allowedStrategies = value;
+        }
+
         /// <summary>
         /// Field can be used to customize the look and feel of the wizard.
         /// </summary>
         [Input("branding")]
         public Input<Inputs.SelfServiceProfileBrandingArgs>? Branding { get; set; }
+
+        /// <summary>
+        /// The description of the self-service Profile
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The name of the self-service Profile
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("userAttributes")]
         private InputList<Inputs.SelfServiceProfileUserAttributeArgs>? _userAttributes;
@@ -155,6 +197,18 @@ namespace Pulumi.Auth0
 
     public sealed class SelfServiceProfileState : global::Pulumi.ResourceArgs
     {
+        [Input("allowedStrategies")]
+        private InputList<string>? _allowedStrategies;
+
+        /// <summary>
+        /// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        /// </summary>
+        public InputList<string> AllowedStrategies
+        {
+            get => _allowedStrategies ?? (_allowedStrategies = new InputList<string>());
+            set => _allowedStrategies = value;
+        }
+
         /// <summary>
         /// Field can be used to customize the look and feel of the wizard.
         /// </summary>
@@ -166,6 +220,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// The description of the self-service Profile
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The name of the self-service Profile
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The ISO 8601 formatted date the profile was updated.

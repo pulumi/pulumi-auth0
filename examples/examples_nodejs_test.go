@@ -5,10 +5,9 @@
 package examples
 
 import (
+	"encoding/json"
 	"path"
 	"testing"
-
-	"encoding/json"
 
 	"github.com/stretchr/testify/assert"
 
@@ -18,7 +17,10 @@ import (
 func TestAccClient(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir: path.Join(getCwd(t), "client"),
+			Dir:                    path.Join(getCwd(t), "client"),
+			SkipExportImport:       true,
+			SkipEmptyPreviewUpdate: true,
+			SkipRefresh:            true,
 		})
 
 	integration.ProgramTest(t, &test)

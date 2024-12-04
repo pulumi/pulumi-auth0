@@ -129,6 +129,8 @@ type LookupClientResult struct {
 	OidcBackchannelLogoutUrls []string `pulumi:"oidcBackchannelLogoutUrls"`
 	// Indicates whether this client will conform to strict OIDC specifications.
 	OidcConformant bool `pulumi:"oidcConformant"`
+	// Configure OIDC logout for the Client
+	OidcLogouts []GetClientOidcLogout `pulumi:"oidcLogouts"`
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
 	OrganizationRequireBehavior string `pulumi:"organizationRequireBehavior"`
 	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
@@ -356,6 +358,11 @@ func (o LookupClientResultOutput) OidcBackchannelLogoutUrls() pulumi.StringArray
 // Indicates whether this client will conform to strict OIDC specifications.
 func (o LookupClientResultOutput) OidcConformant() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClientResult) bool { return v.OidcConformant }).(pulumi.BoolOutput)
+}
+
+// Configure OIDC logout for the Client
+func (o LookupClientResultOutput) OidcLogouts() GetClientOidcLogoutArrayOutput {
+	return o.ApplyT(func(v LookupClientResult) []GetClientOidcLogout { return v.OidcLogouts }).(GetClientOidcLogoutArrayOutput)
 }
 
 // Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.

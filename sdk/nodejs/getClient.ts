@@ -178,6 +178,10 @@ export interface GetClientResult {
      */
     readonly oidcConformant: boolean;
     /**
+     * Configure OIDC logout for the Client
+     */
+    readonly oidcLogouts: outputs.GetClientOidcLogout[];
+    /**
      * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      */
     readonly organizationRequireBehavior: string;

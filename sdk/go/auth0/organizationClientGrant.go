@@ -13,6 +13,102 @@ import (
 )
 
 // With this resource, you can manage a client grant associated with an organization.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create an Organization
+//			myOrganization, err := auth0.NewOrganization(ctx, "my_organization", &auth0.OrganizationArgs{
+//				Name:        pulumi.String("test-org-acceptance-testing"),
+//				DisplayName: pulumi.String("Test Org Acceptance Testing"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a Resource Server
+//			newResourceServer, err := auth0.NewResourceServer(ctx, "new_resource_server", &auth0.ResourceServerArgs{
+//				Name:       pulumi.String("Example API"),
+//				Identifier: pulumi.String("https://api.travel00123.com/"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a Client by referencing the newly created organisation or by reference an existing one.
+//			myTestClient, err := auth0.NewClient(ctx, "my_test_client", &auth0.ClientArgs{
+//				Name:              pulumi.String("test_client"),
+//				OrganizationUsage: pulumi.String("allow"),
+//				DefaultOrganization: &auth0.ClientDefaultOrganizationArgs{
+//					OrganizationId: myOrganization.ID(),
+//					Flows: pulumi.StringArray{
+//						pulumi.String("client_credentials"),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				myOrganization,
+//				newResourceServer,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// Create a client grant which is associated with the client and resource server.
+//			myClientGrant, err := auth0.NewClientGrant(ctx, "my_client_grant", &auth0.ClientGrantArgs{
+//				ClientId: myTestClient.ID(),
+//				Audience: newResourceServer.Identifier,
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("create:organization_client_grants"),
+//					pulumi.String("create:resource"),
+//				},
+//				AllowAnyOrganization: pulumi.Bool(true),
+//				OrganizationUsage:    pulumi.String("allow"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				newResourceServer,
+//				myTestClient,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// Create the organization and client grant association
+//			_, err = auth0.NewOrganizationClientGrant(ctx, "associate_org_client_grant", &auth0.OrganizationClientGrantArgs{
+//				OrganizationId: myOrganization.ID(),
+//				GrantId:        myClientGrant.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				myClientGrant,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # This resource can be imported by specifying the
+//
+// organization ID and client grant ID separated by "::" (note the double colon)
+//
+// <organizationID>::<clientGrantID>
+//
+// #
+//
+// Example:
+//
+// ```sh
+// $ pulumi import auth0:index/organizationClientGrant:OrganizationClientGrant my_org_client_grant "org_XXXXX::cgr_XXXXX"
+// ```
 type OrganizationClientGrant struct {
 	pulumi.CustomResourceState
 

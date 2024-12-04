@@ -9,6 +9,7 @@ import com.pulumi.auth0.outputs.GetClientDefaultOrganization;
 import com.pulumi.auth0.outputs.GetClientJwtConfiguration;
 import com.pulumi.auth0.outputs.GetClientMobile;
 import com.pulumi.auth0.outputs.GetClientNativeSocialLogin;
+import com.pulumi.auth0.outputs.GetClientOidcLogout;
 import com.pulumi.auth0.outputs.GetClientRefreshToken;
 import com.pulumi.auth0.outputs.GetClientSignedRequestObject;
 import com.pulumi.core.annotations.CustomType;
@@ -179,6 +180,11 @@ public final class GetClientResult {
      * 
      */
     private Boolean oidcConformant;
+    /**
+     * @return Configure OIDC logout for the Client
+     * 
+     */
+    private List<GetClientOidcLogout> oidcLogouts;
     /**
      * @return Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
      * 
@@ -457,6 +463,13 @@ public final class GetClientResult {
         return this.oidcConformant;
     }
     /**
+     * @return Configure OIDC logout for the Client
+     * 
+     */
+    public List<GetClientOidcLogout> oidcLogouts() {
+        return this.oidcLogouts;
+    }
+    /**
      * @return Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
      * 
      */
@@ -575,6 +588,7 @@ public final class GetClientResult {
         private List<GetClientNativeSocialLogin> nativeSocialLogins;
         private List<String> oidcBackchannelLogoutUrls;
         private Boolean oidcConformant;
+        private List<GetClientOidcLogout> oidcLogouts;
         private String organizationRequireBehavior;
         private String organizationUsage;
         private List<GetClientRefreshToken> refreshTokens;
@@ -621,6 +635,7 @@ public final class GetClientResult {
     	      this.nativeSocialLogins = defaults.nativeSocialLogins;
     	      this.oidcBackchannelLogoutUrls = defaults.oidcBackchannelLogoutUrls;
     	      this.oidcConformant = defaults.oidcConformant;
+    	      this.oidcLogouts = defaults.oidcLogouts;
     	      this.organizationRequireBehavior = defaults.organizationRequireBehavior;
     	      this.organizationUsage = defaults.organizationUsage;
     	      this.refreshTokens = defaults.refreshTokens;
@@ -926,6 +941,17 @@ public final class GetClientResult {
             return this;
         }
         @CustomType.Setter
+        public Builder oidcLogouts(List<GetClientOidcLogout> oidcLogouts) {
+            if (oidcLogouts == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "oidcLogouts");
+            }
+            this.oidcLogouts = oidcLogouts;
+            return this;
+        }
+        public Builder oidcLogouts(GetClientOidcLogout... oidcLogouts) {
+            return oidcLogouts(List.of(oidcLogouts));
+        }
+        @CustomType.Setter
         public Builder organizationRequireBehavior(String organizationRequireBehavior) {
             if (organizationRequireBehavior == null) {
               throw new MissingRequiredPropertyException("GetClientResult", "organizationRequireBehavior");
@@ -1056,6 +1082,7 @@ public final class GetClientResult {
             _resultValue.nativeSocialLogins = nativeSocialLogins;
             _resultValue.oidcBackchannelLogoutUrls = oidcBackchannelLogoutUrls;
             _resultValue.oidcConformant = oidcConformant;
+            _resultValue.oidcLogouts = oidcLogouts;
             _resultValue.organizationRequireBehavior = organizationRequireBehavior;
             _resultValue.organizationUsage = organizationUsage;
             _resultValue.refreshTokens = refreshTokens;

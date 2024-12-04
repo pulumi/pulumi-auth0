@@ -155,6 +155,10 @@ __all__ = [
     'ClientNativeSocialLoginAppleArgsDict',
     'ClientNativeSocialLoginFacebookArgs',
     'ClientNativeSocialLoginFacebookArgsDict',
+    'ClientOidcLogoutArgs',
+    'ClientOidcLogoutArgsDict',
+    'ClientOidcLogoutBackchannelLogoutInitiatorsArgs',
+    'ClientOidcLogoutBackchannelLogoutInitiatorsArgsDict',
     'ClientRefreshTokenArgs',
     'ClientRefreshTokenArgsDict',
     'ConnectionOptionsArgs',
@@ -6240,6 +6244,108 @@ class ClientNativeSocialLoginFacebookArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class ClientOidcLogoutArgsDict(TypedDict):
+        backchannel_logout_urls: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        """
+        backchannel_logout_initiators: NotRequired[pulumi.Input['ClientOidcLogoutBackchannelLogoutInitiatorsArgsDict']]
+        """
+        Configure OIDC logout initiators for the Client
+        """
+elif False:
+    ClientOidcLogoutArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClientOidcLogoutArgs:
+    def __init__(__self__, *,
+                 backchannel_logout_urls: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 backchannel_logout_initiators: Optional[pulumi.Input['ClientOidcLogoutBackchannelLogoutInitiatorsArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        :param pulumi.Input['ClientOidcLogoutBackchannelLogoutInitiatorsArgs'] backchannel_logout_initiators: Configure OIDC logout initiators for the Client
+        """
+        pulumi.set(__self__, "backchannel_logout_urls", backchannel_logout_urls)
+        if backchannel_logout_initiators is not None:
+            pulumi.set(__self__, "backchannel_logout_initiators", backchannel_logout_initiators)
+
+    @property
+    @pulumi.getter(name="backchannelLogoutUrls")
+    def backchannel_logout_urls(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        """
+        return pulumi.get(self, "backchannel_logout_urls")
+
+    @backchannel_logout_urls.setter
+    def backchannel_logout_urls(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "backchannel_logout_urls", value)
+
+    @property
+    @pulumi.getter(name="backchannelLogoutInitiators")
+    def backchannel_logout_initiators(self) -> Optional[pulumi.Input['ClientOidcLogoutBackchannelLogoutInitiatorsArgs']]:
+        """
+        Configure OIDC logout initiators for the Client
+        """
+        return pulumi.get(self, "backchannel_logout_initiators")
+
+    @backchannel_logout_initiators.setter
+    def backchannel_logout_initiators(self, value: Optional[pulumi.Input['ClientOidcLogoutBackchannelLogoutInitiatorsArgs']]):
+        pulumi.set(self, "backchannel_logout_initiators", value)
+
+
+if not MYPY:
+    class ClientOidcLogoutBackchannelLogoutInitiatorsArgsDict(TypedDict):
+        mode: pulumi.Input[str]
+        """
+        Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel*logout*selected_initiators set, `all` enables all current and future initiators.
+        """
+        selected_initiators: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Contains the list of initiators to be enabled for the given client.
+        """
+elif False:
+    ClientOidcLogoutBackchannelLogoutInitiatorsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClientOidcLogoutBackchannelLogoutInitiatorsArgs:
+    def __init__(__self__, *,
+                 mode: pulumi.Input[str],
+                 selected_initiators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] mode: Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel*logout*selected_initiators set, `all` enables all current and future initiators.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_initiators: Contains the list of initiators to be enabled for the given client.
+        """
+        pulumi.set(__self__, "mode", mode)
+        if selected_initiators is not None:
+            pulumi.set(__self__, "selected_initiators", selected_initiators)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[str]:
+        """
+        Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel*logout*selected_initiators set, `all` enables all current and future initiators.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="selectedInitiators")
+    def selected_initiators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the list of initiators to be enabled for the given client.
+        """
+        return pulumi.get(self, "selected_initiators")
+
+    @selected_initiators.setter
+    def selected_initiators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "selected_initiators", value)
 
 
 if not MYPY:

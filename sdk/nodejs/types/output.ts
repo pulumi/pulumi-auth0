@@ -1227,6 +1227,28 @@ export interface ClientNativeSocialLoginFacebook {
     enabled?: boolean;
 }
 
+export interface ClientOidcLogout {
+    /**
+     * Configure OIDC logout initiators for the Client
+     */
+    backchannelLogoutInitiators?: outputs.ClientOidcLogoutBackchannelLogoutInitiators;
+    /**
+     * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     */
+    backchannelLogoutUrls: string[];
+}
+
+export interface ClientOidcLogoutBackchannelLogoutInitiators {
+    /**
+     * Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel*logout*selected_initiators set, `all` enables all current and future initiators.
+     */
+    mode: string;
+    /**
+     * Contains the list of initiators to be enabled for the given client.
+     */
+    selectedInitiators?: string[];
+}
+
 export interface ClientRefreshToken {
     /**
      * Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
@@ -3225,6 +3247,28 @@ export interface GetClientNativeSocialLoginFacebook {
     enabled: boolean;
 }
 
+export interface GetClientOidcLogout {
+    /**
+     * Configure OIDC logout initiators for the Client
+     */
+    backchannelLogoutInitiators: outputs.GetClientOidcLogoutBackchannelLogoutInitiator[];
+    /**
+     * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     */
+    backchannelLogoutUrls: string[];
+}
+
+export interface GetClientOidcLogoutBackchannelLogoutInitiator {
+    /**
+     * Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannelLogoutSelectedInitiators set, `all` enables all current and future initiators.
+     */
+    mode: string;
+    /**
+     * Contains the list of initiators to be enabled for the given client.
+     */
+    selectedInitiators: string[];
+}
+
 export interface GetClientRefreshToken {
     /**
      * Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
@@ -3300,6 +3344,88 @@ export interface GetClientSignedRequestObjectCredential {
      * The ISO 8601 formatted date the credential was updated.
      */
     updatedAt: string;
+}
+
+export interface GetClientsClient {
+    /**
+     * List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+     */
+    allowedClients: string[];
+    /**
+     * URLs that Auth0 may redirect to after logout.
+     */
+    allowedLogoutUrls: string[];
+    /**
+     * URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+     */
+    allowedOrigins: string[];
+    /**
+     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     */
+    appType: string;
+    /**
+     * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+     */
+    callbacks: string[];
+    /**
+     * The ID of the client. If not provided, `name` must be set.
+     */
+    clientId?: string;
+    /**
+     * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
+     */
+    clientMetadata: {[key: string]: string};
+    clientSecret: string;
+    /**
+     * Description of the purpose of the client.
+     */
+    description: string;
+    /**
+     * Types of grants that this client is authorized to use.
+     */
+    grantTypes: string[];
+    /**
+     * Indicates whether this client is a first-party client.
+     */
+    isFirstParty: boolean;
+    /**
+     * Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `auth0.ClientCredentials` resource.
+     */
+    isTokenEndpointIpHeaderTrusted: boolean;
+    /**
+     * The name of the client. If not provided, `clientId` must be set.
+     */
+    name?: string;
+    /**
+     * Configure OIDC logout for the Client
+     */
+    oidcLogouts: outputs.GetClientsClientOidcLogout[];
+    /**
+     * URLs that represent valid web origins for use with web message response mode.
+     */
+    webOrigins: string[];
+}
+
+export interface GetClientsClientOidcLogout {
+    /**
+     * Configure OIDC logout initiators for the Client
+     */
+    backchannelLogoutInitiators: outputs.GetClientsClientOidcLogoutBackchannelLogoutInitiator[];
+    /**
+     * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     */
+    backchannelLogoutUrls: string[];
+}
+
+export interface GetClientsClientOidcLogoutBackchannelLogoutInitiator {
+    /**
+     * Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannelLogoutSelectedInitiators set, `all` enables all current and future initiators.
+     */
+    mode: string;
+    /**
+     * Contains the list of initiators to be enabled for the given client.
+     */
+    selectedInitiators: string[];
 }
 
 export interface GetConnectionOption {

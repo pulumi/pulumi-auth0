@@ -96,6 +96,10 @@ namespace Pulumi.Auth0
     public sealed class GetSelfServiceProfileResult
     {
         /// <summary>
+        /// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        /// </summary>
+        public readonly ImmutableArray<string> AllowedStrategies;
+        /// <summary>
         /// Field can be used to customize the look and feel of the wizard.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSelfServiceProfileBrandingResult> Brandings;
@@ -104,9 +108,17 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
+        /// The description of the self-service Profile
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
         /// The id of the Self Service Profile
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of the self-service Profile
+        /// </summary>
+        public readonly string Name;
         /// <summary>
         /// The ISO 8601 formatted date the profile was updated.
         /// </summary>
@@ -118,19 +130,28 @@ namespace Pulumi.Auth0
 
         [OutputConstructor]
         private GetSelfServiceProfileResult(
+            ImmutableArray<string> allowedStrategies,
+
             ImmutableArray<Outputs.GetSelfServiceProfileBrandingResult> brandings,
 
             string createdAt,
 
+            string description,
+
             string id,
+
+            string name,
 
             string updatedAt,
 
             ImmutableArray<Outputs.GetSelfServiceProfileUserAttributeResult> userAttributes)
         {
+            AllowedStrategies = allowedStrategies;
             Brandings = brandings;
             CreatedAt = createdAt;
+            Description = description;
             Id = id;
+            Name = name;
             UpdatedAt = updatedAt;
             UserAttributes = userAttributes;
         }

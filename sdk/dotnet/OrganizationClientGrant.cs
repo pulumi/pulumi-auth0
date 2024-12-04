@@ -11,6 +11,105 @@ namespace Pulumi.Auth0
 {
     /// <summary>
     /// With this resource, you can manage a client grant associated with an organization.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create an Organization
+    ///     var myOrganization = new Auth0.Organization("my_organization", new()
+    ///     {
+    ///         Name = "test-org-acceptance-testing",
+    ///         DisplayName = "Test Org Acceptance Testing",
+    ///     });
+    /// 
+    ///     // Create a Resource Server
+    ///     var newResourceServer = new Auth0.ResourceServer("new_resource_server", new()
+    ///     {
+    ///         Name = "Example API",
+    ///         Identifier = "https://api.travel00123.com/",
+    ///     });
+    /// 
+    ///     // Create a Client by referencing the newly created organisation or by reference an existing one.
+    ///     var myTestClient = new Auth0.Client("my_test_client", new()
+    ///     {
+    ///         Name = "test_client",
+    ///         OrganizationUsage = "allow",
+    ///         DefaultOrganization = new Auth0.Inputs.ClientDefaultOrganizationArgs
+    ///         {
+    ///             OrganizationId = myOrganization.Id,
+    ///             Flows = new[]
+    ///             {
+    ///                 "client_credentials",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             myOrganization,
+    ///             newResourceServer,
+    ///         },
+    ///     });
+    /// 
+    ///     // Create a client grant which is associated with the client and resource server.
+    ///     var myClientGrant = new Auth0.ClientGrant("my_client_grant", new()
+    ///     {
+    ///         ClientId = myTestClient.Id,
+    ///         Audience = newResourceServer.Identifier,
+    ///         Scopes = new[]
+    ///         {
+    ///             "create:organization_client_grants",
+    ///             "create:resource",
+    ///         },
+    ///         AllowAnyOrganization = true,
+    ///         OrganizationUsage = "allow",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             newResourceServer,
+    ///             myTestClient,
+    ///         },
+    ///     });
+    /// 
+    ///     // Create the organization and client grant association
+    ///     var associateOrgClientGrant = new Auth0.OrganizationClientGrant("associate_org_client_grant", new()
+    ///     {
+    ///         OrganizationId = myOrganization.Id,
+    ///         GrantId = myClientGrant.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             myClientGrant,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported by specifying the
+    /// 
+    /// organization ID and client grant ID separated by "::" (note the double colon)
+    /// 
+    /// &lt;organizationID&gt;::&lt;clientGrantID&gt;
+    /// 
+    /// # 
+    /// 
+    /// Example:
+    /// 
+    /// ```sh
+    /// $ pulumi import auth0:index/organizationClientGrant:OrganizationClientGrant my_org_client_grant "org_XXXXX::cgr_XXXXX"
+    /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/organizationClientGrant:OrganizationClientGrant")]
     public partial class OrganizationClientGrant : global::Pulumi.CustomResource

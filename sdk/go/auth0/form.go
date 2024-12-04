@@ -123,6 +123,13 @@ import (
 //				return err
 //			}
 //			json4 := string(tmpJSON4)
+//			tmpJSON5, err := json.Marshal(map[string]interface{}{
+//				"ERR_REQUIRED_PROPERTY": "This field is required for user kyc.",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json5 := string(tmpJSON5)
 //			// Example:
 //			_, err = auth0.NewForm(ctx, "my_form", &auth0.FormArgs{
 //				Name:         pulumi.String("My KYC Form"),
@@ -131,6 +138,11 @@ import (
 //				Ending:       pulumi.String(json2),
 //				Style:        pulumi.String(json3),
 //				Translations: pulumi.String(json4),
+//				Messages: auth0.FormMessageArray{
+//					&auth0.FormMessageArgs{
+//						Errors: pulumi.String(json5),
+//					},
+//				},
 //				Languages: auth0.FormLanguageArray{
 //					&auth0.FormLanguageArgs{
 //						Default: pulumi.String("en"),

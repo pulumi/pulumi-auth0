@@ -86,6 +86,8 @@ __all__ = [
     'ClientNativeSocialLogin',
     'ClientNativeSocialLoginApple',
     'ClientNativeSocialLoginFacebook',
+    'ClientOidcLogout',
+    'ClientOidcLogoutBackchannelLogoutInitiators',
     'ClientRefreshToken',
     'ConnectionOptions',
     'ConnectionOptionsAttribute',
@@ -227,9 +229,14 @@ __all__ = [
     'GetClientNativeSocialLoginResult',
     'GetClientNativeSocialLoginAppleResult',
     'GetClientNativeSocialLoginFacebookResult',
+    'GetClientOidcLogoutResult',
+    'GetClientOidcLogoutBackchannelLogoutInitiatorResult',
     'GetClientRefreshTokenResult',
     'GetClientSignedRequestObjectResult',
     'GetClientSignedRequestObjectCredentialResult',
+    'GetClientsClientResult',
+    'GetClientsClientOidcLogoutResult',
+    'GetClientsClientOidcLogoutBackchannelLogoutInitiatorResult',
     'GetConnectionOptionResult',
     'GetConnectionOptionAttributeResult',
     'GetConnectionOptionAttributeEmailResult',
@@ -4619,6 +4626,102 @@ class ClientNativeSocialLoginFacebook(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClientOidcLogout(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backchannelLogoutUrls":
+            suggest = "backchannel_logout_urls"
+        elif key == "backchannelLogoutInitiators":
+            suggest = "backchannel_logout_initiators"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientOidcLogout. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientOidcLogout.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientOidcLogout.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backchannel_logout_urls: Sequence[str],
+                 backchannel_logout_initiators: Optional['outputs.ClientOidcLogoutBackchannelLogoutInitiators'] = None):
+        """
+        :param Sequence[str] backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        :param 'ClientOidcLogoutBackchannelLogoutInitiatorsArgs' backchannel_logout_initiators: Configure OIDC logout initiators for the Client
+        """
+        pulumi.set(__self__, "backchannel_logout_urls", backchannel_logout_urls)
+        if backchannel_logout_initiators is not None:
+            pulumi.set(__self__, "backchannel_logout_initiators", backchannel_logout_initiators)
+
+    @property
+    @pulumi.getter(name="backchannelLogoutUrls")
+    def backchannel_logout_urls(self) -> Sequence[str]:
+        """
+        Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        """
+        return pulumi.get(self, "backchannel_logout_urls")
+
+    @property
+    @pulumi.getter(name="backchannelLogoutInitiators")
+    def backchannel_logout_initiators(self) -> Optional['outputs.ClientOidcLogoutBackchannelLogoutInitiators']:
+        """
+        Configure OIDC logout initiators for the Client
+        """
+        return pulumi.get(self, "backchannel_logout_initiators")
+
+
+@pulumi.output_type
+class ClientOidcLogoutBackchannelLogoutInitiators(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "selectedInitiators":
+            suggest = "selected_initiators"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientOidcLogoutBackchannelLogoutInitiators. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientOidcLogoutBackchannelLogoutInitiators.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientOidcLogoutBackchannelLogoutInitiators.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mode: str,
+                 selected_initiators: Optional[Sequence[str]] = None):
+        """
+        :param str mode: Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel*logout*selected_initiators set, `all` enables all current and future initiators.
+        :param Sequence[str] selected_initiators: Contains the list of initiators to be enabled for the given client.
+        """
+        pulumi.set(__self__, "mode", mode)
+        if selected_initiators is not None:
+            pulumi.set(__self__, "selected_initiators", selected_initiators)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel*logout*selected_initiators set, `all` enables all current and future initiators.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="selectedInitiators")
+    def selected_initiators(self) -> Optional[Sequence[str]]:
+        """
+        Contains the list of initiators to be enabled for the given client.
+        """
+        return pulumi.get(self, "selected_initiators")
 
 
 @pulumi.output_type
@@ -13390,6 +13493,64 @@ class GetClientNativeSocialLoginFacebookResult(dict):
 
 
 @pulumi.output_type
+class GetClientOidcLogoutResult(dict):
+    def __init__(__self__, *,
+                 backchannel_logout_initiators: Sequence['outputs.GetClientOidcLogoutBackchannelLogoutInitiatorResult'],
+                 backchannel_logout_urls: Sequence[str]):
+        """
+        :param Sequence['GetClientOidcLogoutBackchannelLogoutInitiatorArgs'] backchannel_logout_initiators: Configure OIDC logout initiators for the Client
+        :param Sequence[str] backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        """
+        pulumi.set(__self__, "backchannel_logout_initiators", backchannel_logout_initiators)
+        pulumi.set(__self__, "backchannel_logout_urls", backchannel_logout_urls)
+
+    @property
+    @pulumi.getter(name="backchannelLogoutInitiators")
+    def backchannel_logout_initiators(self) -> Sequence['outputs.GetClientOidcLogoutBackchannelLogoutInitiatorResult']:
+        """
+        Configure OIDC logout initiators for the Client
+        """
+        return pulumi.get(self, "backchannel_logout_initiators")
+
+    @property
+    @pulumi.getter(name="backchannelLogoutUrls")
+    def backchannel_logout_urls(self) -> Sequence[str]:
+        """
+        Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        """
+        return pulumi.get(self, "backchannel_logout_urls")
+
+
+@pulumi.output_type
+class GetClientOidcLogoutBackchannelLogoutInitiatorResult(dict):
+    def __init__(__self__, *,
+                 mode: str,
+                 selected_initiators: Sequence[str]):
+        """
+        :param str mode: Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel_logout_selected_initiators set, `all` enables all current and future initiators.
+        :param Sequence[str] selected_initiators: Contains the list of initiators to be enabled for the given client.
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "selected_initiators", selected_initiators)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel_logout_selected_initiators set, `all` enables all current and future initiators.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="selectedInitiators")
+    def selected_initiators(self) -> Sequence[str]:
+        """
+        Contains the list of initiators to be enabled for the given client.
+        """
+        return pulumi.get(self, "selected_initiators")
+
+
+@pulumi.output_type
 class GetClientRefreshTokenResult(dict):
     def __init__(__self__, *,
                  expiration_type: str,
@@ -13595,6 +13756,234 @@ class GetClientSignedRequestObjectCredentialResult(dict):
         The ISO 8601 formatted date the credential was updated.
         """
         return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetClientsClientResult(dict):
+    def __init__(__self__, *,
+                 allowed_clients: Sequence[str],
+                 allowed_logout_urls: Sequence[str],
+                 allowed_origins: Sequence[str],
+                 app_type: str,
+                 callbacks: Sequence[str],
+                 client_metadata: Mapping[str, str],
+                 client_secret: str,
+                 description: str,
+                 grant_types: Sequence[str],
+                 is_first_party: bool,
+                 is_token_endpoint_ip_header_trusted: bool,
+                 oidc_logouts: Sequence['outputs.GetClientsClientOidcLogoutResult'],
+                 web_origins: Sequence[str],
+                 client_id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param Sequence[str] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        :param Sequence[str] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
+        :param Sequence[str] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        :param str app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param Sequence[str] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        :param Mapping[str, str] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        :param str description: Description of the purpose of the client.
+        :param Sequence[str] grant_types: Types of grants that this client is authorized to use.
+        :param bool is_first_party: Indicates whether this client is a first-party client.
+        :param bool is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
+        :param Sequence['GetClientsClientOidcLogoutArgs'] oidc_logouts: Configure OIDC logout for the Client
+        :param Sequence[str] web_origins: URLs that represent valid web origins for use with web message response mode.
+        :param str client_id: The ID of the client. If not provided, `name` must be set.
+        :param str name: The name of the client. If not provided, `client_id` must be set.
+        """
+        pulumi.set(__self__, "allowed_clients", allowed_clients)
+        pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
+        pulumi.set(__self__, "allowed_origins", allowed_origins)
+        pulumi.set(__self__, "app_type", app_type)
+        pulumi.set(__self__, "callbacks", callbacks)
+        pulumi.set(__self__, "client_metadata", client_metadata)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "grant_types", grant_types)
+        pulumi.set(__self__, "is_first_party", is_first_party)
+        pulumi.set(__self__, "is_token_endpoint_ip_header_trusted", is_token_endpoint_ip_header_trusted)
+        pulumi.set(__self__, "oidc_logouts", oidc_logouts)
+        pulumi.set(__self__, "web_origins", web_origins)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="allowedClients")
+    def allowed_clients(self) -> Sequence[str]:
+        """
+        List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        """
+        return pulumi.get(self, "allowed_clients")
+
+    @property
+    @pulumi.getter(name="allowedLogoutUrls")
+    def allowed_logout_urls(self) -> Sequence[str]:
+        """
+        URLs that Auth0 may redirect to after logout.
+        """
+        return pulumi.get(self, "allowed_logout_urls")
+
+    @property
+    @pulumi.getter(name="allowedOrigins")
+    def allowed_origins(self) -> Sequence[str]:
+        """
+        URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        """
+        return pulumi.get(self, "allowed_origins")
+
+    @property
+    @pulumi.getter(name="appType")
+    def app_type(self) -> str:
+        """
+        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        """
+        return pulumi.get(self, "app_type")
+
+    @property
+    @pulumi.getter
+    def callbacks(self) -> Sequence[str]:
+        """
+        URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        """
+        return pulumi.get(self, "callbacks")
+
+    @property
+    @pulumi.getter(name="clientMetadata")
+    def client_metadata(self) -> Mapping[str, str]:
+        """
+        Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        """
+        return pulumi.get(self, "client_metadata")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> str:
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of the purpose of the client.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="grantTypes")
+    def grant_types(self) -> Sequence[str]:
+        """
+        Types of grants that this client is authorized to use.
+        """
+        return pulumi.get(self, "grant_types")
+
+    @property
+    @pulumi.getter(name="isFirstParty")
+    def is_first_party(self) -> bool:
+        """
+        Indicates whether this client is a first-party client.
+        """
+        return pulumi.get(self, "is_first_party")
+
+    @property
+    @pulumi.getter(name="isTokenEndpointIpHeaderTrusted")
+    def is_token_endpoint_ip_header_trusted(self) -> bool:
+        """
+        Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
+        """
+        return pulumi.get(self, "is_token_endpoint_ip_header_trusted")
+
+    @property
+    @pulumi.getter(name="oidcLogouts")
+    def oidc_logouts(self) -> Sequence['outputs.GetClientsClientOidcLogoutResult']:
+        """
+        Configure OIDC logout for the Client
+        """
+        return pulumi.get(self, "oidc_logouts")
+
+    @property
+    @pulumi.getter(name="webOrigins")
+    def web_origins(self) -> Sequence[str]:
+        """
+        URLs that represent valid web origins for use with web message response mode.
+        """
+        return pulumi.get(self, "web_origins")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        """
+        The ID of the client. If not provided, `name` must be set.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the client. If not provided, `client_id` must be set.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetClientsClientOidcLogoutResult(dict):
+    def __init__(__self__, *,
+                 backchannel_logout_initiators: Sequence['outputs.GetClientsClientOidcLogoutBackchannelLogoutInitiatorResult'],
+                 backchannel_logout_urls: Sequence[str]):
+        """
+        :param Sequence['GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs'] backchannel_logout_initiators: Configure OIDC logout initiators for the Client
+        :param Sequence[str] backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        """
+        pulumi.set(__self__, "backchannel_logout_initiators", backchannel_logout_initiators)
+        pulumi.set(__self__, "backchannel_logout_urls", backchannel_logout_urls)
+
+    @property
+    @pulumi.getter(name="backchannelLogoutInitiators")
+    def backchannel_logout_initiators(self) -> Sequence['outputs.GetClientsClientOidcLogoutBackchannelLogoutInitiatorResult']:
+        """
+        Configure OIDC logout initiators for the Client
+        """
+        return pulumi.get(self, "backchannel_logout_initiators")
+
+    @property
+    @pulumi.getter(name="backchannelLogoutUrls")
+    def backchannel_logout_urls(self) -> Sequence[str]:
+        """
+        Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        """
+        return pulumi.get(self, "backchannel_logout_urls")
+
+
+@pulumi.output_type
+class GetClientsClientOidcLogoutBackchannelLogoutInitiatorResult(dict):
+    def __init__(__self__, *,
+                 mode: str,
+                 selected_initiators: Sequence[str]):
+        """
+        :param str mode: Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel_logout_selected_initiators set, `all` enables all current and future initiators.
+        :param Sequence[str] selected_initiators: Contains the list of initiators to be enabled for the given client.
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "selected_initiators", selected_initiators)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel_logout_selected_initiators set, `all` enables all current and future initiators.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="selectedInitiators")
+    def selected_initiators(self) -> Sequence[str]:
+        """
+        Contains the list of initiators to be enabled for the given client.
+        """
+        return pulumi.get(self, "selected_initiators")
 
 
 @pulumi.output_type

@@ -317,6 +317,26 @@
                     "oidc_backchannel_logout_urls": {
                         "maxItemsOne": false
                     },
+                    "oidc_logout": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "backchannel_logout_initiators": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "selected_initiators": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "backchannel_logout_urls": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "refresh_token": {
                         "maxItemsOne": true
                     },
@@ -881,6 +901,9 @@
                 "current": "auth0:index/selfServiceProfile:SelfServiceProfile",
                 "majorVersion": 3,
                 "fields": {
+                    "allowed_strategies": {
+                        "maxItemsOne": false
+                    },
                     "branding": {
                         "maxItemsOne": true,
                         "elem": {
@@ -895,6 +918,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "auth0_self_service_profile_custom_text": {
+                "current": "auth0:index/selfServiceProfileCustomText:SelfServiceProfileCustomText",
+                "majorVersion": 3
             },
             "auth0_tenant": {
                 "current": "auth0:index/tenant:Tenant",
@@ -1306,6 +1333,26 @@
                     "oidc_backchannel_logout_urls": {
                         "maxItemsOne": false
                     },
+                    "oidc_logout": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "backchannel_logout_initiators": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "selected_initiators": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "backchannel_logout_urls": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "refresh_token": {
                         "maxItemsOne": false
                     },
@@ -1324,6 +1371,60 @@
                     },
                     "web_origins": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_clients": {
+                "current": "auth0:index/getClients:getClients",
+                "majorVersion": 3,
+                "fields": {
+                    "app_types": {
+                        "maxItemsOne": false
+                    },
+                    "clients": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowed_clients": {
+                                    "maxItemsOne": false
+                                },
+                                "allowed_logout_urls": {
+                                    "maxItemsOne": false
+                                },
+                                "allowed_origins": {
+                                    "maxItemsOne": false
+                                },
+                                "callbacks": {
+                                    "maxItemsOne": false
+                                },
+                                "grant_types": {
+                                    "maxItemsOne": false
+                                },
+                                "oidc_logout": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "backchannel_logout_initiators": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "selected_initiators": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "backchannel_logout_urls": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "web_origins": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1628,6 +1729,9 @@
                 "current": "auth0:index/getSelfServiceProfile:getSelfServiceProfile",
                 "majorVersion": 3,
                 "fields": {
+                    "allowed_strategies": {
+                        "maxItemsOne": false
+                    },
                     "branding": {
                         "maxItemsOne": false,
                         "elem": {

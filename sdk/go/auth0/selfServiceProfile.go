@@ -63,10 +63,16 @@ import (
 type SelfServiceProfile struct {
 	pulumi.CustomResourceState
 
+	// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+	AllowedStrategies pulumi.StringArrayOutput `pulumi:"allowedStrategies"`
 	// Field can be used to customize the look and feel of the wizard.
 	Branding SelfServiceProfileBrandingOutput `pulumi:"branding"`
 	// The ISO 8601 formatted date the profile was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The description of the self-service Profile
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The name of the self-service Profile
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The ISO 8601 formatted date the profile was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
@@ -103,10 +109,16 @@ func GetSelfServiceProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SelfServiceProfile resources.
 type selfServiceProfileState struct {
+	// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+	AllowedStrategies []string `pulumi:"allowedStrategies"`
 	// Field can be used to customize the look and feel of the wizard.
 	Branding *SelfServiceProfileBranding `pulumi:"branding"`
 	// The ISO 8601 formatted date the profile was created.
 	CreatedAt *string `pulumi:"createdAt"`
+	// The description of the self-service Profile
+	Description *string `pulumi:"description"`
+	// The name of the self-service Profile
+	Name *string `pulumi:"name"`
 	// The ISO 8601 formatted date the profile was updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
@@ -114,10 +126,16 @@ type selfServiceProfileState struct {
 }
 
 type SelfServiceProfileState struct {
+	// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+	AllowedStrategies pulumi.StringArrayInput
 	// Field can be used to customize the look and feel of the wizard.
 	Branding SelfServiceProfileBrandingPtrInput
 	// The ISO 8601 formatted date the profile was created.
 	CreatedAt pulumi.StringPtrInput
+	// The description of the self-service Profile
+	Description pulumi.StringPtrInput
+	// The name of the self-service Profile
+	Name pulumi.StringPtrInput
 	// The ISO 8601 formatted date the profile was updated.
 	UpdatedAt pulumi.StringPtrInput
 	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
@@ -129,16 +147,28 @@ func (SelfServiceProfileState) ElementType() reflect.Type {
 }
 
 type selfServiceProfileArgs struct {
+	// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+	AllowedStrategies []string `pulumi:"allowedStrategies"`
 	// Field can be used to customize the look and feel of the wizard.
 	Branding *SelfServiceProfileBranding `pulumi:"branding"`
+	// The description of the self-service Profile
+	Description *string `pulumi:"description"`
+	// The name of the self-service Profile
+	Name *string `pulumi:"name"`
 	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
 	UserAttributes []SelfServiceProfileUserAttribute `pulumi:"userAttributes"`
 }
 
 // The set of arguments for constructing a SelfServiceProfile resource.
 type SelfServiceProfileArgs struct {
+	// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+	AllowedStrategies pulumi.StringArrayInput
 	// Field can be used to customize the look and feel of the wizard.
 	Branding SelfServiceProfileBrandingPtrInput
+	// The description of the self-service Profile
+	Description pulumi.StringPtrInput
+	// The name of the self-service Profile
+	Name pulumi.StringPtrInput
 	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
 	UserAttributes SelfServiceProfileUserAttributeArrayInput
 }
@@ -230,6 +260,11 @@ func (o SelfServiceProfileOutput) ToSelfServiceProfileOutputWithContext(ctx cont
 	return o
 }
 
+// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+func (o SelfServiceProfileOutput) AllowedStrategies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SelfServiceProfile) pulumi.StringArrayOutput { return v.AllowedStrategies }).(pulumi.StringArrayOutput)
+}
+
 // Field can be used to customize the look and feel of the wizard.
 func (o SelfServiceProfileOutput) Branding() SelfServiceProfileBrandingOutput {
 	return o.ApplyT(func(v *SelfServiceProfile) SelfServiceProfileBrandingOutput { return v.Branding }).(SelfServiceProfileBrandingOutput)
@@ -238,6 +273,16 @@ func (o SelfServiceProfileOutput) Branding() SelfServiceProfileBrandingOutput {
 // The ISO 8601 formatted date the profile was created.
 func (o SelfServiceProfileOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *SelfServiceProfile) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The description of the self-service Profile
+func (o SelfServiceProfileOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SelfServiceProfile) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the self-service Profile
+func (o SelfServiceProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SelfServiceProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The ISO 8601 formatted date the profile was updated.

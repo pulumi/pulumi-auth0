@@ -1227,6 +1227,28 @@ export interface ClientNativeSocialLoginFacebook {
     enabled?: pulumi.Input<boolean>;
 }
 
+export interface ClientOidcLogout {
+    /**
+     * Configure OIDC logout initiators for the Client
+     */
+    backchannelLogoutInitiators?: pulumi.Input<inputs.ClientOidcLogoutBackchannelLogoutInitiators>;
+    /**
+     * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     */
+    backchannelLogoutUrls: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ClientOidcLogoutBackchannelLogoutInitiators {
+    /**
+     * Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel*logout*selected_initiators set, `all` enables all current and future initiators.
+     */
+    mode: pulumi.Input<string>;
+    /**
+     * Contains the list of initiators to be enabled for the given client.
+     */
+    selectedInitiators?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ClientRefreshToken {
     /**
      * Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.

@@ -21,17 +21,41 @@ __all__ = ['SelfServiceProfileArgs', 'SelfServiceProfile']
 @pulumi.input_type
 class SelfServiceProfileArgs:
     def __init__(__self__, *,
+                 allowed_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  branding: Optional[pulumi.Input['SelfServiceProfileBrandingArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]] = None):
         """
         The set of arguments for constructing a SelfServiceProfile resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_strategies: List of IdP strategies that will be shown to users during the Self-Service SSO flow.
         :param pulumi.Input['SelfServiceProfileBrandingArgs'] branding: Field can be used to customize the look and feel of the wizard.
+        :param pulumi.Input[str] description: The description of the self-service Profile
+        :param pulumi.Input[str] name: The name of the self-service Profile
         :param pulumi.Input[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]] user_attributes: This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
         """
+        if allowed_strategies is not None:
+            pulumi.set(__self__, "allowed_strategies", allowed_strategies)
         if branding is not None:
             pulumi.set(__self__, "branding", branding)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if user_attributes is not None:
             pulumi.set(__self__, "user_attributes", user_attributes)
+
+    @property
+    @pulumi.getter(name="allowedStrategies")
+    def allowed_strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        """
+        return pulumi.get(self, "allowed_strategies")
+
+    @allowed_strategies.setter
+    def allowed_strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_strategies", value)
 
     @property
     @pulumi.getter
@@ -44,6 +68,30 @@ class SelfServiceProfileArgs:
     @branding.setter
     def branding(self, value: Optional[pulumi.Input['SelfServiceProfileBrandingArgs']]):
         pulumi.set(self, "branding", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the self-service Profile
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the self-service Profile
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="userAttributes")
@@ -61,25 +109,49 @@ class SelfServiceProfileArgs:
 @pulumi.input_type
 class _SelfServiceProfileState:
     def __init__(__self__, *,
+                 allowed_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  branding: Optional[pulumi.Input['SelfServiceProfileBrandingArgs']] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]] = None):
         """
         Input properties used for looking up and filtering SelfServiceProfile resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_strategies: List of IdP strategies that will be shown to users during the Self-Service SSO flow.
         :param pulumi.Input['SelfServiceProfileBrandingArgs'] branding: Field can be used to customize the look and feel of the wizard.
         :param pulumi.Input[str] created_at: The ISO 8601 formatted date the profile was created.
+        :param pulumi.Input[str] description: The description of the self-service Profile
+        :param pulumi.Input[str] name: The name of the self-service Profile
         :param pulumi.Input[str] updated_at: The ISO 8601 formatted date the profile was updated.
         :param pulumi.Input[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]] user_attributes: This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
         """
+        if allowed_strategies is not None:
+            pulumi.set(__self__, "allowed_strategies", allowed_strategies)
         if branding is not None:
             pulumi.set(__self__, "branding", branding)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
         if user_attributes is not None:
             pulumi.set(__self__, "user_attributes", user_attributes)
+
+    @property
+    @pulumi.getter(name="allowedStrategies")
+    def allowed_strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        """
+        return pulumi.get(self, "allowed_strategies")
+
+    @allowed_strategies.setter
+    def allowed_strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_strategies", value)
 
     @property
     @pulumi.getter
@@ -104,6 +176,30 @@ class _SelfServiceProfileState:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the self-service Profile
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the self-service Profile
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="updatedAt")
@@ -135,7 +231,10 @@ class SelfServiceProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allowed_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  branding: Optional[pulumi.Input[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict']]]]] = None,
                  __props__=None):
         """
@@ -173,7 +272,10 @@ class SelfServiceProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_strategies: List of IdP strategies that will be shown to users during the Self-Service SSO flow.
         :param pulumi.Input[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']] branding: Field can be used to customize the look and feel of the wizard.
+        :param pulumi.Input[str] description: The description of the self-service Profile
+        :param pulumi.Input[str] name: The name of the self-service Profile
         :param pulumi.Input[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict']]]] user_attributes: This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
         """
         ...
@@ -230,7 +332,10 @@ class SelfServiceProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allowed_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  branding: Optional[pulumi.Input[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -241,7 +346,10 @@ class SelfServiceProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SelfServiceProfileArgs.__new__(SelfServiceProfileArgs)
 
+            __props__.__dict__["allowed_strategies"] = allowed_strategies
             __props__.__dict__["branding"] = branding
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
             __props__.__dict__["user_attributes"] = user_attributes
             __props__.__dict__["created_at"] = None
             __props__.__dict__["updated_at"] = None
@@ -255,8 +363,11 @@ class SelfServiceProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             branding: Optional[pulumi.Input[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
             user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict']]]]] = None) -> 'SelfServiceProfile':
         """
@@ -266,8 +377,11 @@ class SelfServiceProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_strategies: List of IdP strategies that will be shown to users during the Self-Service SSO flow.
         :param pulumi.Input[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']] branding: Field can be used to customize the look and feel of the wizard.
         :param pulumi.Input[str] created_at: The ISO 8601 formatted date the profile was created.
+        :param pulumi.Input[str] description: The description of the self-service Profile
+        :param pulumi.Input[str] name: The name of the self-service Profile
         :param pulumi.Input[str] updated_at: The ISO 8601 formatted date the profile was updated.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict']]]] user_attributes: This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
         """
@@ -275,11 +389,22 @@ class SelfServiceProfile(pulumi.CustomResource):
 
         __props__ = _SelfServiceProfileState.__new__(_SelfServiceProfileState)
 
+        __props__.__dict__["allowed_strategies"] = allowed_strategies
         __props__.__dict__["branding"] = branding
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["user_attributes"] = user_attributes
         return SelfServiceProfile(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allowedStrategies")
+    def allowed_strategies(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        """
+        return pulumi.get(self, "allowed_strategies")
 
     @property
     @pulumi.getter
@@ -296,6 +421,22 @@ class SelfServiceProfile(pulumi.CustomResource):
         The ISO 8601 formatted date the profile was created.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of the self-service Profile
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the self-service Profile
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="updatedAt")

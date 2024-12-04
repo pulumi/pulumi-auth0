@@ -6,6 +6,8 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.GetClientArgs;
 import com.pulumi.auth0.inputs.GetClientPlainArgs;
+import com.pulumi.auth0.inputs.GetClientsArgs;
+import com.pulumi.auth0.inputs.GetClientsPlainArgs;
 import com.pulumi.auth0.inputs.GetConnectionArgs;
 import com.pulumi.auth0.inputs.GetConnectionPlainArgs;
 import com.pulumi.auth0.inputs.GetConnectionScimConfigurationArgs;
@@ -32,6 +34,7 @@ import com.pulumi.auth0.outputs.GetAttackProtectionResult;
 import com.pulumi.auth0.outputs.GetBrandingResult;
 import com.pulumi.auth0.outputs.GetBrandingThemeResult;
 import com.pulumi.auth0.outputs.GetClientResult;
+import com.pulumi.auth0.outputs.GetClientsResult;
 import com.pulumi.auth0.outputs.GetConnectionResult;
 import com.pulumi.auth0.outputs.GetConnectionScimConfigurationResult;
 import com.pulumi.auth0.outputs.GetCustomDomainResult;
@@ -1044,6 +1047,336 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetClientResult> getClientPlain(GetClientPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getClient:getClient", TypeShape.of(GetClientResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a list of Auth0 application clients with optional filtering.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Auth0 clients with "External" in the name
+     *         final var externalApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .nameFilter("External")
+     *             .build());
+     * 
+     *         // Auth0 clients filtered by non_interactive or spa app type
+     *         final var m2mApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .appTypes(            
+     *                 "non_interactive",
+     *                 "spa")
+     *             .build());
+     * 
+     *         // Auth0 clients filtered by is_first_party equal to true
+     *         final var firstPartyApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .isFirstParty(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetClientsResult> getClients() {
+        return getClients(GetClientsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a list of Auth0 application clients with optional filtering.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Auth0 clients with "External" in the name
+     *         final var externalApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .nameFilter("External")
+     *             .build());
+     * 
+     *         // Auth0 clients filtered by non_interactive or spa app type
+     *         final var m2mApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .appTypes(            
+     *                 "non_interactive",
+     *                 "spa")
+     *             .build());
+     * 
+     *         // Auth0 clients filtered by is_first_party equal to true
+     *         final var firstPartyApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .isFirstParty(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetClientsResult> getClientsPlain() {
+        return getClientsPlain(GetClientsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a list of Auth0 application clients with optional filtering.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Auth0 clients with "External" in the name
+     *         final var externalApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .nameFilter("External")
+     *             .build());
+     * 
+     *         // Auth0 clients filtered by non_interactive or spa app type
+     *         final var m2mApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .appTypes(            
+     *                 "non_interactive",
+     *                 "spa")
+     *             .build());
+     * 
+     *         // Auth0 clients filtered by is_first_party equal to true
+     *         final var firstPartyApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .isFirstParty(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetClientsResult> getClients(GetClientsArgs args) {
+        return getClients(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a list of Auth0 application clients with optional filtering.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Auth0 clients with "External" in the name
+     *         final var externalApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .nameFilter("External")
+     *             .build());
+     * 
+     *         // Auth0 clients filtered by non_interactive or spa app type
+     *         final var m2mApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .appTypes(            
+     *                 "non_interactive",
+     *                 "spa")
+     *             .build());
+     * 
+     *         // Auth0 clients filtered by is_first_party equal to true
+     *         final var firstPartyApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .isFirstParty(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetClientsResult> getClientsPlain(GetClientsPlainArgs args) {
+        return getClientsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a list of Auth0 application clients with optional filtering.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Auth0 clients with "External" in the name
+     *         final var externalApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .nameFilter("External")
+     *             .build());
+     * 
+     *         // Auth0 clients filtered by non_interactive or spa app type
+     *         final var m2mApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .appTypes(            
+     *                 "non_interactive",
+     *                 "spa")
+     *             .build());
+     * 
+     *         // Auth0 clients filtered by is_first_party equal to true
+     *         final var firstPartyApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .isFirstParty(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetClientsResult> getClients(GetClientsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getClients:getClients", TypeShape.of(GetClientsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a list of Auth0 application clients with optional filtering.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Auth0 clients with "External" in the name
+     *         final var externalApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .nameFilter("External")
+     *             .build());
+     * 
+     *         // Auth0 clients filtered by non_interactive or spa app type
+     *         final var m2mApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .appTypes(            
+     *                 "non_interactive",
+     *                 "spa")
+     *             .build());
+     * 
+     *         // Auth0 clients filtered by is_first_party equal to true
+     *         final var firstPartyApps = Auth0Functions.getClients(GetClientsArgs.builder()
+     *             .isFirstParty(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetClientsResult> getClientsPlain(GetClientsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getClients:getClients", TypeShape.of(GetClientsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.

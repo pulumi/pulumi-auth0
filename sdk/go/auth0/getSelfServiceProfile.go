@@ -57,12 +57,18 @@ type LookupSelfServiceProfileArgs struct {
 
 // A collection of values returned by getSelfServiceProfile.
 type LookupSelfServiceProfileResult struct {
+	// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+	AllowedStrategies []string `pulumi:"allowedStrategies"`
 	// Field can be used to customize the look and feel of the wizard.
 	Brandings []GetSelfServiceProfileBranding `pulumi:"brandings"`
 	// The ISO 8601 formatted date the profile was created.
 	CreatedAt string `pulumi:"createdAt"`
+	// The description of the self-service Profile
+	Description string `pulumi:"description"`
 	// The id of the Self Service Profile
 	Id string `pulumi:"id"`
+	// The name of the self-service Profile
+	Name string `pulumi:"name"`
 	// The ISO 8601 formatted date the profile was updated.
 	UpdatedAt string `pulumi:"updatedAt"`
 	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
@@ -113,6 +119,11 @@ func (o LookupSelfServiceProfileResultOutput) ToLookupSelfServiceProfileResultOu
 	return o
 }
 
+// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+func (o LookupSelfServiceProfileResultOutput) AllowedStrategies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSelfServiceProfileResult) []string { return v.AllowedStrategies }).(pulumi.StringArrayOutput)
+}
+
 // Field can be used to customize the look and feel of the wizard.
 func (o LookupSelfServiceProfileResultOutput) Brandings() GetSelfServiceProfileBrandingArrayOutput {
 	return o.ApplyT(func(v LookupSelfServiceProfileResult) []GetSelfServiceProfileBranding { return v.Brandings }).(GetSelfServiceProfileBrandingArrayOutput)
@@ -123,9 +134,19 @@ func (o LookupSelfServiceProfileResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSelfServiceProfileResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// The description of the self-service Profile
+func (o LookupSelfServiceProfileResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSelfServiceProfileResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
 // The id of the Self Service Profile
 func (o LookupSelfServiceProfileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSelfServiceProfileResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the self-service Profile
+func (o LookupSelfServiceProfileResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSelfServiceProfileResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The ISO 8601 formatted date the profile was updated.

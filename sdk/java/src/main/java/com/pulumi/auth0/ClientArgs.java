@@ -8,6 +8,7 @@ import com.pulumi.auth0.inputs.ClientDefaultOrganizationArgs;
 import com.pulumi.auth0.inputs.ClientJwtConfigurationArgs;
 import com.pulumi.auth0.inputs.ClientMobileArgs;
 import com.pulumi.auth0.inputs.ClientNativeSocialLoginArgs;
+import com.pulumi.auth0.inputs.ClientOidcLogoutArgs;
 import com.pulumi.auth0.inputs.ClientRefreshTokenArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -418,14 +419,22 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      * 
+     * @deprecated
+     * This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.
+     * 
      */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs. */
     @Import(name="oidcBackchannelLogoutUrls")
     private @Nullable Output<List<String>> oidcBackchannelLogoutUrls;
 
     /**
      * @return Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      * 
+     * @deprecated
+     * This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.
+     * 
      */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs. */
     public Optional<Output<List<String>>> oidcBackchannelLogoutUrls() {
         return Optional.ofNullable(this.oidcBackchannelLogoutUrls);
     }
@@ -443,6 +452,21 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> oidcConformant() {
         return Optional.ofNullable(this.oidcConformant);
+    }
+
+    /**
+     * Configure OIDC logout for the Client
+     * 
+     */
+    @Import(name="oidcLogout")
+    private @Nullable Output<ClientOidcLogoutArgs> oidcLogout;
+
+    /**
+     * @return Configure OIDC logout for the Client
+     * 
+     */
+    public Optional<Output<ClientOidcLogoutArgs>> oidcLogout() {
+        return Optional.ofNullable(this.oidcLogout);
     }
 
     /**
@@ -596,6 +620,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         this.nativeSocialLogin = $.nativeSocialLogin;
         this.oidcBackchannelLogoutUrls = $.oidcBackchannelLogoutUrls;
         this.oidcConformant = $.oidcConformant;
+        this.oidcLogout = $.oidcLogout;
         this.organizationRequireBehavior = $.organizationRequireBehavior;
         this.organizationUsage = $.organizationUsage;
         this.refreshToken = $.refreshToken;
@@ -1235,7 +1260,11 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.
+         * 
          */
+        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs. */
         public Builder oidcBackchannelLogoutUrls(@Nullable Output<List<String>> oidcBackchannelLogoutUrls) {
             $.oidcBackchannelLogoutUrls = oidcBackchannelLogoutUrls;
             return this;
@@ -1246,7 +1275,11 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.
+         * 
          */
+        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs. */
         public Builder oidcBackchannelLogoutUrls(List<String> oidcBackchannelLogoutUrls) {
             return oidcBackchannelLogoutUrls(Output.of(oidcBackchannelLogoutUrls));
         }
@@ -1256,7 +1289,11 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.
+         * 
          */
+        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs. */
         public Builder oidcBackchannelLogoutUrls(String... oidcBackchannelLogoutUrls) {
             return oidcBackchannelLogoutUrls(List.of(oidcBackchannelLogoutUrls));
         }
@@ -1280,6 +1317,27 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder oidcConformant(Boolean oidcConformant) {
             return oidcConformant(Output.of(oidcConformant));
+        }
+
+        /**
+         * @param oidcLogout Configure OIDC logout for the Client
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcLogout(@Nullable Output<ClientOidcLogoutArgs> oidcLogout) {
+            $.oidcLogout = oidcLogout;
+            return this;
+        }
+
+        /**
+         * @param oidcLogout Configure OIDC logout for the Client
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcLogout(ClientOidcLogoutArgs oidcLogout) {
+            return oidcLogout(Output.of(oidcLogout));
         }
 
         /**

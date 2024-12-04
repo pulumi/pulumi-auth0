@@ -6,6 +6,77 @@ import * as utilities from "./utilities";
 
 /**
  * With this resource, you can manage a client grant associated with an organization.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // Create an Organization
+ * const myOrganization = new auth0.Organization("my_organization", {
+ *     name: "test-org-acceptance-testing",
+ *     displayName: "Test Org Acceptance Testing",
+ * });
+ * // Create a Resource Server
+ * const newResourceServer = new auth0.ResourceServer("new_resource_server", {
+ *     name: "Example API",
+ *     identifier: "https://api.travel00123.com/",
+ * });
+ * // Create a Client by referencing the newly created organisation or by reference an existing one.
+ * const myTestClient = new auth0.Client("my_test_client", {
+ *     name: "test_client",
+ *     organizationUsage: "allow",
+ *     defaultOrganization: {
+ *         organizationId: myOrganization.id,
+ *         flows: ["client_credentials"],
+ *     },
+ * }, {
+ *     dependsOn: [
+ *         myOrganization,
+ *         newResourceServer,
+ *     ],
+ * });
+ * // Create a client grant which is associated with the client and resource server.
+ * const myClientGrant = new auth0.ClientGrant("my_client_grant", {
+ *     clientId: myTestClient.id,
+ *     audience: newResourceServer.identifier,
+ *     scopes: [
+ *         "create:organization_client_grants",
+ *         "create:resource",
+ *     ],
+ *     allowAnyOrganization: true,
+ *     organizationUsage: "allow",
+ * }, {
+ *     dependsOn: [
+ *         newResourceServer,
+ *         myTestClient,
+ *     ],
+ * });
+ * // Create the organization and client grant association
+ * const associateOrgClientGrant = new auth0.OrganizationClientGrant("associate_org_client_grant", {
+ *     organizationId: myOrganization.id,
+ *     grantId: myClientGrant.id,
+ * }, {
+ *     dependsOn: [myClientGrant],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported by specifying the
+ *
+ * organization ID and client grant ID separated by "::" (note the double colon)
+ *
+ * <organizationID>::<clientGrantID>
+ *
+ * # 
+ *
+ * Example:
+ *
+ * ```sh
+ * $ pulumi import auth0:index/organizationClientGrant:OrganizationClientGrant my_org_client_grant "org_XXXXX::cgr_XXXXX"
+ * ```
  */
 export class OrganizationClientGrant extends pulumi.CustomResource {
     /**

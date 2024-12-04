@@ -105,6 +105,69 @@ class OrganizationClientGrant(pulumi.CustomResource):
         """
         With this resource, you can manage a client grant associated with an organization.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # Create an Organization
+        my_organization = auth0.Organization("my_organization",
+            name="test-org-acceptance-testing",
+            display_name="Test Org Acceptance Testing")
+        # Create a Resource Server
+        new_resource_server = auth0.ResourceServer("new_resource_server",
+            name="Example API",
+            identifier="https://api.travel00123.com/")
+        # Create a Client by referencing the newly created organisation or by reference an existing one.
+        my_test_client = auth0.Client("my_test_client",
+            name="test_client",
+            organization_usage="allow",
+            default_organization={
+                "organization_id": my_organization.id,
+                "flows": ["client_credentials"],
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    my_organization,
+                    new_resource_server,
+                ]))
+        # Create a client grant which is associated with the client and resource server.
+        my_client_grant = auth0.ClientGrant("my_client_grant",
+            client_id=my_test_client.id,
+            audience=new_resource_server.identifier,
+            scopes=[
+                "create:organization_client_grants",
+                "create:resource",
+            ],
+            allow_any_organization=True,
+            organization_usage="allow",
+            opts = pulumi.ResourceOptions(depends_on=[
+                    new_resource_server,
+                    my_test_client,
+                ]))
+        # Create the organization and client grant association
+        associate_org_client_grant = auth0.OrganizationClientGrant("associate_org_client_grant",
+            organization_id=my_organization.id,
+            grant_id=my_client_grant.id,
+            opts = pulumi.ResourceOptions(depends_on=[my_client_grant]))
+        ```
+
+        ## Import
+
+        This resource can be imported by specifying the
+
+        organization ID and client grant ID separated by "::" (note the double colon)
+
+        <organizationID>::<clientGrantID>
+
+        # 
+
+        Example:
+
+        ```sh
+        $ pulumi import auth0:index/organizationClientGrant:OrganizationClientGrant my_org_client_grant "org_XXXXX::cgr_XXXXX"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] grant_id: A Client Grant ID to add to the organization.
@@ -118,6 +181,69 @@ class OrganizationClientGrant(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can manage a client grant associated with an organization.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # Create an Organization
+        my_organization = auth0.Organization("my_organization",
+            name="test-org-acceptance-testing",
+            display_name="Test Org Acceptance Testing")
+        # Create a Resource Server
+        new_resource_server = auth0.ResourceServer("new_resource_server",
+            name="Example API",
+            identifier="https://api.travel00123.com/")
+        # Create a Client by referencing the newly created organisation or by reference an existing one.
+        my_test_client = auth0.Client("my_test_client",
+            name="test_client",
+            organization_usage="allow",
+            default_organization={
+                "organization_id": my_organization.id,
+                "flows": ["client_credentials"],
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    my_organization,
+                    new_resource_server,
+                ]))
+        # Create a client grant which is associated with the client and resource server.
+        my_client_grant = auth0.ClientGrant("my_client_grant",
+            client_id=my_test_client.id,
+            audience=new_resource_server.identifier,
+            scopes=[
+                "create:organization_client_grants",
+                "create:resource",
+            ],
+            allow_any_organization=True,
+            organization_usage="allow",
+            opts = pulumi.ResourceOptions(depends_on=[
+                    new_resource_server,
+                    my_test_client,
+                ]))
+        # Create the organization and client grant association
+        associate_org_client_grant = auth0.OrganizationClientGrant("associate_org_client_grant",
+            organization_id=my_organization.id,
+            grant_id=my_client_grant.id,
+            opts = pulumi.ResourceOptions(depends_on=[my_client_grant]))
+        ```
+
+        ## Import
+
+        This resource can be imported by specifying the
+
+        organization ID and client grant ID separated by "::" (note the double colon)
+
+        <organizationID>::<clientGrantID>
+
+        # 
+
+        Example:
+
+        ```sh
+        $ pulumi import auth0:index/organizationClientGrant:OrganizationClientGrant my_org_client_grant "org_XXXXX::cgr_XXXXX"
+        ```
 
         :param str resource_name: The name of the resource.
         :param OrganizationClientGrantArgs args: The arguments to use to populate this resource's properties.

@@ -43,6 +43,10 @@ export interface GetSelfServiceProfileArgs {
  */
 export interface GetSelfServiceProfileResult {
     /**
+     * List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+     */
+    readonly allowedStrategies: string[];
+    /**
      * Field can be used to customize the look and feel of the wizard.
      */
     readonly brandings: outputs.GetSelfServiceProfileBranding[];
@@ -51,9 +55,17 @@ export interface GetSelfServiceProfileResult {
      */
     readonly createdAt: string;
     /**
+     * The description of the self-service Profile
+     */
+    readonly description: string;
+    /**
      * The id of the Self Service Profile
      */
     readonly id: string;
+    /**
+     * The name of the self-service Profile
+     */
+    readonly name: string;
     /**
      * The ISO 8601 formatted date the profile was updated.
      */

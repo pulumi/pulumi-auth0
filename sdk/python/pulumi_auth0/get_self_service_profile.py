@@ -27,22 +27,39 @@ class GetSelfServiceProfileResult:
     """
     A collection of values returned by getSelfServiceProfile.
     """
-    def __init__(__self__, brandings=None, created_at=None, id=None, updated_at=None, user_attributes=None):
+    def __init__(__self__, allowed_strategies=None, brandings=None, created_at=None, description=None, id=None, name=None, updated_at=None, user_attributes=None):
+        if allowed_strategies and not isinstance(allowed_strategies, list):
+            raise TypeError("Expected argument 'allowed_strategies' to be a list")
+        pulumi.set(__self__, "allowed_strategies", allowed_strategies)
         if brandings and not isinstance(brandings, list):
             raise TypeError("Expected argument 'brandings' to be a list")
         pulumi.set(__self__, "brandings", brandings)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
         if updated_at and not isinstance(updated_at, str):
             raise TypeError("Expected argument 'updated_at' to be a str")
         pulumi.set(__self__, "updated_at", updated_at)
         if user_attributes and not isinstance(user_attributes, list):
             raise TypeError("Expected argument 'user_attributes' to be a list")
         pulumi.set(__self__, "user_attributes", user_attributes)
+
+    @property
+    @pulumi.getter(name="allowedStrategies")
+    def allowed_strategies(self) -> Sequence[str]:
+        """
+        List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        """
+        return pulumi.get(self, "allowed_strategies")
 
     @property
     @pulumi.getter
@@ -62,11 +79,27 @@ class GetSelfServiceProfileResult:
 
     @property
     @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the self-service Profile
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
     def id(self) -> str:
         """
         The id of the Self Service Profile
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the self-service Profile
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="updatedAt")
@@ -91,9 +124,12 @@ class AwaitableGetSelfServiceProfileResult(GetSelfServiceProfileResult):
         if False:
             yield self
         return GetSelfServiceProfileResult(
+            allowed_strategies=self.allowed_strategies,
             brandings=self.brandings,
             created_at=self.created_at,
+            description=self.description,
             id=self.id,
+            name=self.name,
             updated_at=self.updated_at,
             user_attributes=self.user_attributes)
 
@@ -122,9 +158,12 @@ def get_self_service_profile(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('auth0:index/getSelfServiceProfile:getSelfServiceProfile', __args__, opts=opts, typ=GetSelfServiceProfileResult).value
 
     return AwaitableGetSelfServiceProfileResult(
+        allowed_strategies=pulumi.get(__ret__, 'allowed_strategies'),
         brandings=pulumi.get(__ret__, 'brandings'),
         created_at=pulumi.get(__ret__, 'created_at'),
+        description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         user_attributes=pulumi.get(__ret__, 'user_attributes'))
 def get_self_service_profile_output(id: Optional[pulumi.Input[str]] = None,
@@ -150,8 +189,11 @@ def get_self_service_profile_output(id: Optional[pulumi.Input[str]] = None,
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getSelfServiceProfile:getSelfServiceProfile', __args__, opts=opts, typ=GetSelfServiceProfileResult)
     return __ret__.apply(lambda __response__: GetSelfServiceProfileResult(
+        allowed_strategies=pulumi.get(__response__, 'allowed_strategies'),
         brandings=pulumi.get(__response__, 'brandings'),
         created_at=pulumi.get(__response__, 'created_at'),
+        description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
         updated_at=pulumi.get(__response__, 'updated_at'),
         user_attributes=pulumi.get(__response__, 'user_attributes')))

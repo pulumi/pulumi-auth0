@@ -19,6 +19,21 @@ public final class SelfServiceProfileState extends com.pulumi.resources.Resource
     public static final SelfServiceProfileState Empty = new SelfServiceProfileState();
 
     /**
+     * List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+     * 
+     */
+    @Import(name="allowedStrategies")
+    private @Nullable Output<List<String>> allowedStrategies;
+
+    /**
+     * @return List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+     * 
+     */
+    public Optional<Output<List<String>>> allowedStrategies() {
+        return Optional.ofNullable(this.allowedStrategies);
+    }
+
+    /**
      * Field can be used to customize the look and feel of the wizard.
      * 
      */
@@ -46,6 +61,36 @@ public final class SelfServiceProfileState extends com.pulumi.resources.Resource
      */
     public Optional<Output<String>> createdAt() {
         return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * The description of the self-service Profile
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the self-service Profile
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The name of the self-service Profile
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return The name of the self-service Profile
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -81,8 +126,11 @@ public final class SelfServiceProfileState extends com.pulumi.resources.Resource
     private SelfServiceProfileState() {}
 
     private SelfServiceProfileState(SelfServiceProfileState $) {
+        this.allowedStrategies = $.allowedStrategies;
         this.branding = $.branding;
         this.createdAt = $.createdAt;
+        this.description = $.description;
+        this.name = $.name;
         this.updatedAt = $.updatedAt;
         this.userAttributes = $.userAttributes;
     }
@@ -103,6 +151,37 @@ public final class SelfServiceProfileState extends com.pulumi.resources.Resource
 
         public Builder(SelfServiceProfileState defaults) {
             $ = new SelfServiceProfileState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowedStrategies List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedStrategies(@Nullable Output<List<String>> allowedStrategies) {
+            $.allowedStrategies = allowedStrategies;
+            return this;
+        }
+
+        /**
+         * @param allowedStrategies List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedStrategies(List<String> allowedStrategies) {
+            return allowedStrategies(Output.of(allowedStrategies));
+        }
+
+        /**
+         * @param allowedStrategies List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedStrategies(String... allowedStrategies) {
+            return allowedStrategies(List.of(allowedStrategies));
         }
 
         /**
@@ -145,6 +224,48 @@ public final class SelfServiceProfileState extends com.pulumi.resources.Resource
          */
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param description The description of the self-service Profile
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the self-service Profile
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param name The name of the self-service Profile
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name The name of the self-service Profile
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**
