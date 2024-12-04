@@ -11,6 +11,7 @@ import com.pulumi.auth0.outputs.ClientDefaultOrganization;
 import com.pulumi.auth0.outputs.ClientJwtConfiguration;
 import com.pulumi.auth0.outputs.ClientMobile;
 import com.pulumi.auth0.outputs.ClientNativeSocialLogin;
+import com.pulumi.auth0.outputs.ClientOidcLogout;
 import com.pulumi.auth0.outputs.ClientRefreshToken;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -522,7 +523,11 @@ public class Client extends com.pulumi.resources.CustomResource {
     /**
      * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      * 
+     * @deprecated
+     * This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.
+     * 
      */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs. */
     @Export(name="oidcBackchannelLogoutUrls", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> oidcBackchannelLogoutUrls;
 
@@ -546,6 +551,20 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> oidcConformant() {
         return this.oidcConformant;
+    }
+    /**
+     * Configure OIDC logout for the Client
+     * 
+     */
+    @Export(name="oidcLogout", refs={ClientOidcLogout.class}, tree="[0]")
+    private Output</* @Nullable */ ClientOidcLogout> oidcLogout;
+
+    /**
+     * @return Configure OIDC logout for the Client
+     * 
+     */
+    public Output<Optional<ClientOidcLogout>> oidcLogout() {
+        return Codegen.optional(this.oidcLogout);
     }
     /**
      * Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.

@@ -245,6 +245,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool OidcConformant;
         /// <summary>
+        /// Configure OIDC logout for the Client
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientOidcLogoutResult> OidcLogouts;
+        /// <summary>
         /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         /// </summary>
         public readonly string OrganizationRequireBehavior;
@@ -355,6 +359,8 @@ namespace Pulumi.Auth0
 
             bool oidcConformant,
 
+            ImmutableArray<Outputs.GetClientOidcLogoutResult> oidcLogouts,
+
             string organizationRequireBehavior,
 
             string organizationUsage,
@@ -409,6 +415,7 @@ namespace Pulumi.Auth0
             NativeSocialLogins = nativeSocialLogins;
             OidcBackchannelLogoutUrls = oidcBackchannelLogoutUrls;
             OidcConformant = oidcConformant;
+            OidcLogouts = oidcLogouts;
             OrganizationRequireBehavior = organizationRequireBehavior;
             OrganizationUsage = organizationUsage;
             RefreshTokens = refreshTokens;

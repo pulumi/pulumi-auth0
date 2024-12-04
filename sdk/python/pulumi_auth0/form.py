@@ -392,6 +392,11 @@ class Form(pulumi.CustomResource):
                     },
                 },
             }),
+            messages=[{
+                "errors": json.dumps({
+                    "ERR_REQUIRED_PROPERTY": "This field is required for user kyc.",
+                }),
+            }],
             languages=[{
                 "default": "en",
                 "primary": "en",
@@ -515,6 +520,11 @@ class Form(pulumi.CustomResource):
                     },
                 },
             }),
+            messages=[{
+                "errors": json.dumps({
+                    "ERR_REQUIRED_PROPERTY": "This field is required for user kyc.",
+                }),
+            }],
             languages=[{
                 "default": "en",
                 "primary": "en",

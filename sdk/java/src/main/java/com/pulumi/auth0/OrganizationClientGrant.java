@@ -16,6 +16,112 @@ import javax.annotation.Nullable;
 /**
  * With this resource, you can manage a client grant associated with an organization.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.auth0.Organization;
+ * import com.pulumi.auth0.OrganizationArgs;
+ * import com.pulumi.auth0.ResourceServer;
+ * import com.pulumi.auth0.ResourceServerArgs;
+ * import com.pulumi.auth0.Client;
+ * import com.pulumi.auth0.ClientArgs;
+ * import com.pulumi.auth0.inputs.ClientDefaultOrganizationArgs;
+ * import com.pulumi.auth0.ClientGrant;
+ * import com.pulumi.auth0.ClientGrantArgs;
+ * import com.pulumi.auth0.OrganizationClientGrant;
+ * import com.pulumi.auth0.OrganizationClientGrantArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Create an Organization
+ *         var myOrganization = new Organization("myOrganization", OrganizationArgs.builder()
+ *             .name("test-org-acceptance-testing")
+ *             .displayName("Test Org Acceptance Testing")
+ *             .build());
+ * 
+ *         // Create a Resource Server
+ *         var newResourceServer = new ResourceServer("newResourceServer", ResourceServerArgs.builder()
+ *             .name("Example API")
+ *             .identifier("https://api.travel00123.com/")
+ *             .build());
+ * 
+ *         // Create a Client by referencing the newly created organisation or by reference an existing one.
+ *         var myTestClient = new Client("myTestClient", ClientArgs.builder()
+ *             .name("test_client")
+ *             .organizationUsage("allow")
+ *             .defaultOrganization(ClientDefaultOrganizationArgs.builder()
+ *                 .organizationId(myOrganization.id())
+ *                 .flows("client_credentials")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     myOrganization,
+ *                     newResourceServer)
+ *                 .build());
+ * 
+ *         // Create a client grant which is associated with the client and resource server.
+ *         var myClientGrant = new ClientGrant("myClientGrant", ClientGrantArgs.builder()
+ *             .clientId(myTestClient.id())
+ *             .audience(newResourceServer.identifier())
+ *             .scopes(            
+ *                 "create:organization_client_grants",
+ *                 "create:resource")
+ *             .allowAnyOrganization(true)
+ *             .organizationUsage("allow")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     newResourceServer,
+ *                     myTestClient)
+ *                 .build());
+ * 
+ *         // Create the organization and client grant association
+ *         var associateOrgClientGrant = new OrganizationClientGrant("associateOrgClientGrant", OrganizationClientGrantArgs.builder()
+ *             .organizationId(myOrganization.id())
+ *             .grantId(myClientGrant.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(myClientGrant)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * This resource can be imported by specifying the
+ * 
+ * organization ID and client grant ID separated by &#34;::&#34; (note the double colon)
+ * 
+ * &lt;organizationID&gt;::&lt;clientGrantID&gt;
+ * 
+ * # 
+ * 
+ * Example:
+ * 
+ * ```sh
+ * $ pulumi import auth0:index/organizationClientGrant:OrganizationClientGrant my_org_client_grant &#34;org_XXXXX::cgr_XXXXX&#34;
+ * ```
+ * 
  */
 @ResourceType(type="auth0:index/organizationClientGrant:OrganizationClientGrant")
 public class OrganizationClientGrant extends com.pulumi.resources.CustomResource {

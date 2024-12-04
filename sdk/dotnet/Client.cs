@@ -308,6 +308,12 @@ namespace Pulumi.Auth0
         public Output<bool> OidcConformant { get; private set; } = null!;
 
         /// <summary>
+        /// Configure OIDC logout for the Client
+        /// </summary>
+        [Output("oidcLogout")]
+        public Output<Outputs.ClientOidcLogout?> OidcLogout { get; private set; } = null!;
+
+        /// <summary>
         /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         /// </summary>
         [Output("organizationRequireBehavior")]
@@ -621,6 +627,7 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         /// </summary>
+        [Obsolete(@"This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.")]
         public InputList<string> OidcBackchannelLogoutUrls
         {
             get => _oidcBackchannelLogoutUrls ?? (_oidcBackchannelLogoutUrls = new InputList<string>());
@@ -632,6 +639,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("oidcConformant")]
         public Input<bool>? OidcConformant { get; set; }
+
+        /// <summary>
+        /// Configure OIDC logout for the Client
+        /// </summary>
+        [Input("oidcLogout")]
+        public Input<Inputs.ClientOidcLogoutArgs>? OidcLogout { get; set; }
 
         /// <summary>
         /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
@@ -912,6 +925,7 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         /// </summary>
+        [Obsolete(@"This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.")]
         public InputList<string> OidcBackchannelLogoutUrls
         {
             get => _oidcBackchannelLogoutUrls ?? (_oidcBackchannelLogoutUrls = new InputList<string>());
@@ -923,6 +937,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("oidcConformant")]
         public Input<bool>? OidcConformant { get; set; }
+
+        /// <summary>
+        /// Configure OIDC logout for the Client
+        /// </summary>
+        [Input("oidcLogout")]
+        public Input<Inputs.ClientOidcLogoutGetArgs>? OidcLogout { get; set; }
 
         /// <summary>
         /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.

@@ -28,6 +28,7 @@ from .get_attack_protection import *
 from .get_branding import *
 from .get_branding_theme import *
 from .get_client import *
+from .get_clients import *
 from .get_connection import *
 from .get_connection_scim_configuration import *
 from .get_custom_domain import *
@@ -70,6 +71,7 @@ from .role_permissions import *
 from .rule import *
 from .rule_config import *
 from .self_service_profile import *
+from .self_service_profile_custom_text import *
 from .tenant import *
 from .trigger_action import *
 from .trigger_actions import *
@@ -449,6 +451,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/selfServiceProfile:SelfServiceProfile": "SelfServiceProfile"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/selfServiceProfileCustomText",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/selfServiceProfileCustomText:SelfServiceProfileCustomText": "SelfServiceProfileCustomText"
   }
  },
  {

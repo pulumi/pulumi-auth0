@@ -82,6 +82,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/selfServiceProfile:SelfServiceProfile")
 public class SelfServiceProfile extends com.pulumi.resources.CustomResource {
     /**
+     * List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+     * 
+     */
+    @Export(name="allowedStrategies", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> allowedStrategies;
+
+    /**
+     * @return List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+     * 
+     */
+    public Output<Optional<List<String>>> allowedStrategies() {
+        return Codegen.optional(this.allowedStrategies);
+    }
+    /**
      * Field can be used to customize the look and feel of the wizard.
      * 
      */
@@ -108,6 +122,34 @@ public class SelfServiceProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createdAt() {
         return this.createdAt;
+    }
+    /**
+     * The description of the self-service Profile
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return The description of the self-service Profile
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
+    }
+    /**
+     * The name of the self-service Profile
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return The name of the self-service Profile
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
     }
     /**
      * The ISO 8601 formatted date the profile was updated.

@@ -32,6 +32,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.auth0.Form;
  * import com.pulumi.auth0.FormArgs;
+ * import com.pulumi.auth0.inputs.FormMessageArgs;
  * import com.pulumi.auth0.inputs.FormLanguageArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
@@ -133,6 +134,12 @@ import javax.annotation.Nullable;
  *                         ))
  *                     ))
  *                 )))
+ *             .messages(FormMessageArgs.builder()
+ *                 .errors(serializeJson(
+ *                     jsonObject(
+ *                         jsonProperty("ERR_REQUIRED_PROPERTY", "This field is required for user kyc.")
+ *                     )))
+ *                 .build())
  *             .languages(FormLanguageArgs.builder()
  *                 .default_("en")
  *                 .primary("en")

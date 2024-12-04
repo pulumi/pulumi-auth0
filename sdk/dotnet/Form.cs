@@ -128,6 +128,16 @@ namespace Pulumi.Auth0
     ///                 },
     ///             },
     ///         }),
+    ///         Messages = new[]
+    ///         {
+    ///             new Auth0.Inputs.FormMessageArgs
+    ///             {
+    ///                 Errors = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["ERR_REQUIRED_PROPERTY"] = "This field is required for user kyc.",
+    ///                 }),
+    ///             },
+    ///         },
     ///         Languages = new[]
     ///         {
     ///             new Auth0.Inputs.FormLanguageArgs

@@ -233,12 +233,18 @@ export class Client extends pulumi.CustomResource {
     public readonly nativeSocialLogin!: pulumi.Output<outputs.ClientNativeSocialLogin>;
     /**
      * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
      */
     public readonly oidcBackchannelLogoutUrls!: pulumi.Output<string[] | undefined>;
     /**
      * Indicates whether this client will conform to strict OIDC specifications.
      */
     public readonly oidcConformant!: pulumi.Output<boolean>;
+    /**
+     * Configure OIDC logout for the Client
+     */
+    public readonly oidcLogout!: pulumi.Output<outputs.ClientOidcLogout | undefined>;
     /**
      * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      */
@@ -318,6 +324,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["nativeSocialLogin"] = state ? state.nativeSocialLogin : undefined;
             resourceInputs["oidcBackchannelLogoutUrls"] = state ? state.oidcBackchannelLogoutUrls : undefined;
             resourceInputs["oidcConformant"] = state ? state.oidcConformant : undefined;
+            resourceInputs["oidcLogout"] = state ? state.oidcLogout : undefined;
             resourceInputs["organizationRequireBehavior"] = state ? state.organizationRequireBehavior : undefined;
             resourceInputs["organizationUsage"] = state ? state.organizationUsage : undefined;
             resourceInputs["refreshToken"] = state ? state.refreshToken : undefined;
@@ -357,6 +364,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["nativeSocialLogin"] = args ? args.nativeSocialLogin : undefined;
             resourceInputs["oidcBackchannelLogoutUrls"] = args ? args.oidcBackchannelLogoutUrls : undefined;
             resourceInputs["oidcConformant"] = args ? args.oidcConformant : undefined;
+            resourceInputs["oidcLogout"] = args ? args.oidcLogout : undefined;
             resourceInputs["organizationRequireBehavior"] = args ? args.organizationRequireBehavior : undefined;
             resourceInputs["organizationUsage"] = args ? args.organizationUsage : undefined;
             resourceInputs["refreshToken"] = args ? args.refreshToken : undefined;
@@ -489,12 +497,18 @@ export interface ClientState {
     nativeSocialLogin?: pulumi.Input<inputs.ClientNativeSocialLogin>;
     /**
      * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
      */
     oidcBackchannelLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether this client will conform to strict OIDC specifications.
      */
     oidcConformant?: pulumi.Input<boolean>;
+    /**
+     * Configure OIDC logout for the Client
+     */
+    oidcLogout?: pulumi.Input<inputs.ClientOidcLogout>;
     /**
      * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      */
@@ -643,12 +657,18 @@ export interface ClientArgs {
     nativeSocialLogin?: pulumi.Input<inputs.ClientNativeSocialLogin>;
     /**
      * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     *
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
      */
     oidcBackchannelLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether this client will conform to strict OIDC specifications.
      */
     oidcConformant?: pulumi.Input<boolean>;
+    /**
+     * Configure OIDC logout for the Client
+     */
+    oidcLogout?: pulumi.Input<inputs.ClientOidcLogout>;
     /**
      * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      */

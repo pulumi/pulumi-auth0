@@ -120,6 +120,11 @@ export const getClient: typeof import("./getClient").getClient = null as any;
 export const getClientOutput: typeof import("./getClient").getClientOutput = null as any;
 utilities.lazyLoad(exports, ["getClient","getClientOutput"], () => require("./getClient"));
 
+export { GetClientsArgs, GetClientsResult, GetClientsOutputArgs } from "./getClients";
+export const getClients: typeof import("./getClients").getClients = null as any;
+export const getClientsOutput: typeof import("./getClients").getClientsOutput = null as any;
+utilities.lazyLoad(exports, ["getClients","getClientsOutput"], () => require("./getClients"));
+
 export { GetConnectionArgs, GetConnectionResult, GetConnectionOutputArgs } from "./getConnection";
 export const getConnection: typeof import("./getConnection").getConnection = null as any;
 export const getConnectionOutput: typeof import("./getConnection").getConnectionOutput = null as any;
@@ -330,6 +335,11 @@ export type SelfServiceProfile = import("./selfServiceProfile").SelfServiceProfi
 export const SelfServiceProfile: typeof import("./selfServiceProfile").SelfServiceProfile = null as any;
 utilities.lazyLoad(exports, ["SelfServiceProfile"], () => require("./selfServiceProfile"));
 
+export { SelfServiceProfileCustomTextArgs, SelfServiceProfileCustomTextState } from "./selfServiceProfileCustomText";
+export type SelfServiceProfileCustomText = import("./selfServiceProfileCustomText").SelfServiceProfileCustomText;
+export const SelfServiceProfileCustomText: typeof import("./selfServiceProfileCustomText").SelfServiceProfileCustomText = null as any;
+utilities.lazyLoad(exports, ["SelfServiceProfileCustomText"], () => require("./selfServiceProfileCustomText"));
+
 export { TenantArgs, TenantState } from "./tenant";
 export type Tenant = import("./tenant").Tenant;
 export const Tenant: typeof import("./tenant").Tenant = null as any;
@@ -474,6 +484,8 @@ const _module = {
                 return new RuleConfig(name, <any>undefined, { urn })
             case "auth0:index/selfServiceProfile:SelfServiceProfile":
                 return new SelfServiceProfile(name, <any>undefined, { urn })
+            case "auth0:index/selfServiceProfileCustomText:SelfServiceProfileCustomText":
+                return new SelfServiceProfileCustomText(name, <any>undefined, { urn })
             case "auth0:index/tenant:Tenant":
                 return new Tenant(name, <any>undefined, { urn })
             case "auth0:index/triggerAction:TriggerAction":
@@ -540,6 +552,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/rolePermissions", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/rule", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/ruleConfig", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/selfServiceProfile", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/selfServiceProfileCustomText", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/tenant", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/triggerAction", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/triggerActions", _module)

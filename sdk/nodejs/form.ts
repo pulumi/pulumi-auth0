@@ -93,6 +93,11 @@ import * as utilities from "./utilities";
  *             },
  *         },
  *     }),
+ *     messages: [{
+ *         errors: JSON.stringify({
+ *             ERR_REQUIRED_PROPERTY: "This field is required for user kyc.",
+ *         }),
+ *     }],
  *     languages: [{
  *         "default": "en",
  *         primary: "en",

@@ -12606,6 +12606,320 @@ func (o ClientNativeSocialLoginFacebookPtrOutput) Enabled() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ClientOidcLogout struct {
+	// Configure OIDC logout initiators for the Client
+	BackchannelLogoutInitiators *ClientOidcLogoutBackchannelLogoutInitiators `pulumi:"backchannelLogoutInitiators"`
+	// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+	BackchannelLogoutUrls []string `pulumi:"backchannelLogoutUrls"`
+}
+
+// ClientOidcLogoutInput is an input type that accepts ClientOidcLogoutArgs and ClientOidcLogoutOutput values.
+// You can construct a concrete instance of `ClientOidcLogoutInput` via:
+//
+//	ClientOidcLogoutArgs{...}
+type ClientOidcLogoutInput interface {
+	pulumi.Input
+
+	ToClientOidcLogoutOutput() ClientOidcLogoutOutput
+	ToClientOidcLogoutOutputWithContext(context.Context) ClientOidcLogoutOutput
+}
+
+type ClientOidcLogoutArgs struct {
+	// Configure OIDC logout initiators for the Client
+	BackchannelLogoutInitiators ClientOidcLogoutBackchannelLogoutInitiatorsPtrInput `pulumi:"backchannelLogoutInitiators"`
+	// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+	BackchannelLogoutUrls pulumi.StringArrayInput `pulumi:"backchannelLogoutUrls"`
+}
+
+func (ClientOidcLogoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientOidcLogout)(nil)).Elem()
+}
+
+func (i ClientOidcLogoutArgs) ToClientOidcLogoutOutput() ClientOidcLogoutOutput {
+	return i.ToClientOidcLogoutOutputWithContext(context.Background())
+}
+
+func (i ClientOidcLogoutArgs) ToClientOidcLogoutOutputWithContext(ctx context.Context) ClientOidcLogoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientOidcLogoutOutput)
+}
+
+func (i ClientOidcLogoutArgs) ToClientOidcLogoutPtrOutput() ClientOidcLogoutPtrOutput {
+	return i.ToClientOidcLogoutPtrOutputWithContext(context.Background())
+}
+
+func (i ClientOidcLogoutArgs) ToClientOidcLogoutPtrOutputWithContext(ctx context.Context) ClientOidcLogoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientOidcLogoutOutput).ToClientOidcLogoutPtrOutputWithContext(ctx)
+}
+
+// ClientOidcLogoutPtrInput is an input type that accepts ClientOidcLogoutArgs, ClientOidcLogoutPtr and ClientOidcLogoutPtrOutput values.
+// You can construct a concrete instance of `ClientOidcLogoutPtrInput` via:
+//
+//	        ClientOidcLogoutArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientOidcLogoutPtrInput interface {
+	pulumi.Input
+
+	ToClientOidcLogoutPtrOutput() ClientOidcLogoutPtrOutput
+	ToClientOidcLogoutPtrOutputWithContext(context.Context) ClientOidcLogoutPtrOutput
+}
+
+type clientOidcLogoutPtrType ClientOidcLogoutArgs
+
+func ClientOidcLogoutPtr(v *ClientOidcLogoutArgs) ClientOidcLogoutPtrInput {
+	return (*clientOidcLogoutPtrType)(v)
+}
+
+func (*clientOidcLogoutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientOidcLogout)(nil)).Elem()
+}
+
+func (i *clientOidcLogoutPtrType) ToClientOidcLogoutPtrOutput() ClientOidcLogoutPtrOutput {
+	return i.ToClientOidcLogoutPtrOutputWithContext(context.Background())
+}
+
+func (i *clientOidcLogoutPtrType) ToClientOidcLogoutPtrOutputWithContext(ctx context.Context) ClientOidcLogoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientOidcLogoutPtrOutput)
+}
+
+type ClientOidcLogoutOutput struct{ *pulumi.OutputState }
+
+func (ClientOidcLogoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientOidcLogout)(nil)).Elem()
+}
+
+func (o ClientOidcLogoutOutput) ToClientOidcLogoutOutput() ClientOidcLogoutOutput {
+	return o
+}
+
+func (o ClientOidcLogoutOutput) ToClientOidcLogoutOutputWithContext(ctx context.Context) ClientOidcLogoutOutput {
+	return o
+}
+
+func (o ClientOidcLogoutOutput) ToClientOidcLogoutPtrOutput() ClientOidcLogoutPtrOutput {
+	return o.ToClientOidcLogoutPtrOutputWithContext(context.Background())
+}
+
+func (o ClientOidcLogoutOutput) ToClientOidcLogoutPtrOutputWithContext(ctx context.Context) ClientOidcLogoutPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientOidcLogout) *ClientOidcLogout {
+		return &v
+	}).(ClientOidcLogoutPtrOutput)
+}
+
+// Configure OIDC logout initiators for the Client
+func (o ClientOidcLogoutOutput) BackchannelLogoutInitiators() ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput {
+	return o.ApplyT(func(v ClientOidcLogout) *ClientOidcLogoutBackchannelLogoutInitiators {
+		return v.BackchannelLogoutInitiators
+	}).(ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput)
+}
+
+// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+func (o ClientOidcLogoutOutput) BackchannelLogoutUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientOidcLogout) []string { return v.BackchannelLogoutUrls }).(pulumi.StringArrayOutput)
+}
+
+type ClientOidcLogoutPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientOidcLogoutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientOidcLogout)(nil)).Elem()
+}
+
+func (o ClientOidcLogoutPtrOutput) ToClientOidcLogoutPtrOutput() ClientOidcLogoutPtrOutput {
+	return o
+}
+
+func (o ClientOidcLogoutPtrOutput) ToClientOidcLogoutPtrOutputWithContext(ctx context.Context) ClientOidcLogoutPtrOutput {
+	return o
+}
+
+func (o ClientOidcLogoutPtrOutput) Elem() ClientOidcLogoutOutput {
+	return o.ApplyT(func(v *ClientOidcLogout) ClientOidcLogout {
+		if v != nil {
+			return *v
+		}
+		var ret ClientOidcLogout
+		return ret
+	}).(ClientOidcLogoutOutput)
+}
+
+// Configure OIDC logout initiators for the Client
+func (o ClientOidcLogoutPtrOutput) BackchannelLogoutInitiators() ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput {
+	return o.ApplyT(func(v *ClientOidcLogout) *ClientOidcLogoutBackchannelLogoutInitiators {
+		if v == nil {
+			return nil
+		}
+		return v.BackchannelLogoutInitiators
+	}).(ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput)
+}
+
+// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+func (o ClientOidcLogoutPtrOutput) BackchannelLogoutUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientOidcLogout) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BackchannelLogoutUrls
+	}).(pulumi.StringArrayOutput)
+}
+
+type ClientOidcLogoutBackchannelLogoutInitiators struct {
+	// Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel*logout*selected_initiators set, `all` enables all current and future initiators.
+	Mode string `pulumi:"mode"`
+	// Contains the list of initiators to be enabled for the given client.
+	SelectedInitiators []string `pulumi:"selectedInitiators"`
+}
+
+// ClientOidcLogoutBackchannelLogoutInitiatorsInput is an input type that accepts ClientOidcLogoutBackchannelLogoutInitiatorsArgs and ClientOidcLogoutBackchannelLogoutInitiatorsOutput values.
+// You can construct a concrete instance of `ClientOidcLogoutBackchannelLogoutInitiatorsInput` via:
+//
+//	ClientOidcLogoutBackchannelLogoutInitiatorsArgs{...}
+type ClientOidcLogoutBackchannelLogoutInitiatorsInput interface {
+	pulumi.Input
+
+	ToClientOidcLogoutBackchannelLogoutInitiatorsOutput() ClientOidcLogoutBackchannelLogoutInitiatorsOutput
+	ToClientOidcLogoutBackchannelLogoutInitiatorsOutputWithContext(context.Context) ClientOidcLogoutBackchannelLogoutInitiatorsOutput
+}
+
+type ClientOidcLogoutBackchannelLogoutInitiatorsArgs struct {
+	// Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel*logout*selected_initiators set, `all` enables all current and future initiators.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Contains the list of initiators to be enabled for the given client.
+	SelectedInitiators pulumi.StringArrayInput `pulumi:"selectedInitiators"`
+}
+
+func (ClientOidcLogoutBackchannelLogoutInitiatorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientOidcLogoutBackchannelLogoutInitiators)(nil)).Elem()
+}
+
+func (i ClientOidcLogoutBackchannelLogoutInitiatorsArgs) ToClientOidcLogoutBackchannelLogoutInitiatorsOutput() ClientOidcLogoutBackchannelLogoutInitiatorsOutput {
+	return i.ToClientOidcLogoutBackchannelLogoutInitiatorsOutputWithContext(context.Background())
+}
+
+func (i ClientOidcLogoutBackchannelLogoutInitiatorsArgs) ToClientOidcLogoutBackchannelLogoutInitiatorsOutputWithContext(ctx context.Context) ClientOidcLogoutBackchannelLogoutInitiatorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientOidcLogoutBackchannelLogoutInitiatorsOutput)
+}
+
+func (i ClientOidcLogoutBackchannelLogoutInitiatorsArgs) ToClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput() ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput {
+	return i.ToClientOidcLogoutBackchannelLogoutInitiatorsPtrOutputWithContext(context.Background())
+}
+
+func (i ClientOidcLogoutBackchannelLogoutInitiatorsArgs) ToClientOidcLogoutBackchannelLogoutInitiatorsPtrOutputWithContext(ctx context.Context) ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientOidcLogoutBackchannelLogoutInitiatorsOutput).ToClientOidcLogoutBackchannelLogoutInitiatorsPtrOutputWithContext(ctx)
+}
+
+// ClientOidcLogoutBackchannelLogoutInitiatorsPtrInput is an input type that accepts ClientOidcLogoutBackchannelLogoutInitiatorsArgs, ClientOidcLogoutBackchannelLogoutInitiatorsPtr and ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput values.
+// You can construct a concrete instance of `ClientOidcLogoutBackchannelLogoutInitiatorsPtrInput` via:
+//
+//	        ClientOidcLogoutBackchannelLogoutInitiatorsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientOidcLogoutBackchannelLogoutInitiatorsPtrInput interface {
+	pulumi.Input
+
+	ToClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput() ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput
+	ToClientOidcLogoutBackchannelLogoutInitiatorsPtrOutputWithContext(context.Context) ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput
+}
+
+type clientOidcLogoutBackchannelLogoutInitiatorsPtrType ClientOidcLogoutBackchannelLogoutInitiatorsArgs
+
+func ClientOidcLogoutBackchannelLogoutInitiatorsPtr(v *ClientOidcLogoutBackchannelLogoutInitiatorsArgs) ClientOidcLogoutBackchannelLogoutInitiatorsPtrInput {
+	return (*clientOidcLogoutBackchannelLogoutInitiatorsPtrType)(v)
+}
+
+func (*clientOidcLogoutBackchannelLogoutInitiatorsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientOidcLogoutBackchannelLogoutInitiators)(nil)).Elem()
+}
+
+func (i *clientOidcLogoutBackchannelLogoutInitiatorsPtrType) ToClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput() ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput {
+	return i.ToClientOidcLogoutBackchannelLogoutInitiatorsPtrOutputWithContext(context.Background())
+}
+
+func (i *clientOidcLogoutBackchannelLogoutInitiatorsPtrType) ToClientOidcLogoutBackchannelLogoutInitiatorsPtrOutputWithContext(ctx context.Context) ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput)
+}
+
+type ClientOidcLogoutBackchannelLogoutInitiatorsOutput struct{ *pulumi.OutputState }
+
+func (ClientOidcLogoutBackchannelLogoutInitiatorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientOidcLogoutBackchannelLogoutInitiators)(nil)).Elem()
+}
+
+func (o ClientOidcLogoutBackchannelLogoutInitiatorsOutput) ToClientOidcLogoutBackchannelLogoutInitiatorsOutput() ClientOidcLogoutBackchannelLogoutInitiatorsOutput {
+	return o
+}
+
+func (o ClientOidcLogoutBackchannelLogoutInitiatorsOutput) ToClientOidcLogoutBackchannelLogoutInitiatorsOutputWithContext(ctx context.Context) ClientOidcLogoutBackchannelLogoutInitiatorsOutput {
+	return o
+}
+
+func (o ClientOidcLogoutBackchannelLogoutInitiatorsOutput) ToClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput() ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput {
+	return o.ToClientOidcLogoutBackchannelLogoutInitiatorsPtrOutputWithContext(context.Background())
+}
+
+func (o ClientOidcLogoutBackchannelLogoutInitiatorsOutput) ToClientOidcLogoutBackchannelLogoutInitiatorsPtrOutputWithContext(ctx context.Context) ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientOidcLogoutBackchannelLogoutInitiators) *ClientOidcLogoutBackchannelLogoutInitiators {
+		return &v
+	}).(ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput)
+}
+
+// Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel*logout*selected_initiators set, `all` enables all current and future initiators.
+func (o ClientOidcLogoutBackchannelLogoutInitiatorsOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientOidcLogoutBackchannelLogoutInitiators) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Contains the list of initiators to be enabled for the given client.
+func (o ClientOidcLogoutBackchannelLogoutInitiatorsOutput) SelectedInitiators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientOidcLogoutBackchannelLogoutInitiators) []string { return v.SelectedInitiators }).(pulumi.StringArrayOutput)
+}
+
+type ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientOidcLogoutBackchannelLogoutInitiators)(nil)).Elem()
+}
+
+func (o ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput) ToClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput() ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput {
+	return o
+}
+
+func (o ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput) ToClientOidcLogoutBackchannelLogoutInitiatorsPtrOutputWithContext(ctx context.Context) ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput {
+	return o
+}
+
+func (o ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput) Elem() ClientOidcLogoutBackchannelLogoutInitiatorsOutput {
+	return o.ApplyT(func(v *ClientOidcLogoutBackchannelLogoutInitiators) ClientOidcLogoutBackchannelLogoutInitiators {
+		if v != nil {
+			return *v
+		}
+		var ret ClientOidcLogoutBackchannelLogoutInitiators
+		return ret
+	}).(ClientOidcLogoutBackchannelLogoutInitiatorsOutput)
+}
+
+// Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel*logout*selected_initiators set, `all` enables all current and future initiators.
+func (o ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientOidcLogoutBackchannelLogoutInitiators) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains the list of initiators to be enabled for the given client.
+func (o ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput) SelectedInitiators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientOidcLogoutBackchannelLogoutInitiators) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SelectedInitiators
+	}).(pulumi.StringArrayOutput)
+}
+
 type ClientRefreshToken struct {
 	// Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
 	ExpirationType string `pulumi:"expirationType"`
@@ -34385,6 +34699,220 @@ func (o GetClientNativeSocialLoginFacebookArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetClientNativeSocialLoginFacebookOutput)
 }
 
+type GetClientOidcLogout struct {
+	// Configure OIDC logout initiators for the Client
+	BackchannelLogoutInitiators []GetClientOidcLogoutBackchannelLogoutInitiator `pulumi:"backchannelLogoutInitiators"`
+	// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+	BackchannelLogoutUrls []string `pulumi:"backchannelLogoutUrls"`
+}
+
+// GetClientOidcLogoutInput is an input type that accepts GetClientOidcLogoutArgs and GetClientOidcLogoutOutput values.
+// You can construct a concrete instance of `GetClientOidcLogoutInput` via:
+//
+//	GetClientOidcLogoutArgs{...}
+type GetClientOidcLogoutInput interface {
+	pulumi.Input
+
+	ToGetClientOidcLogoutOutput() GetClientOidcLogoutOutput
+	ToGetClientOidcLogoutOutputWithContext(context.Context) GetClientOidcLogoutOutput
+}
+
+type GetClientOidcLogoutArgs struct {
+	// Configure OIDC logout initiators for the Client
+	BackchannelLogoutInitiators GetClientOidcLogoutBackchannelLogoutInitiatorArrayInput `pulumi:"backchannelLogoutInitiators"`
+	// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+	BackchannelLogoutUrls pulumi.StringArrayInput `pulumi:"backchannelLogoutUrls"`
+}
+
+func (GetClientOidcLogoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientOidcLogout)(nil)).Elem()
+}
+
+func (i GetClientOidcLogoutArgs) ToGetClientOidcLogoutOutput() GetClientOidcLogoutOutput {
+	return i.ToGetClientOidcLogoutOutputWithContext(context.Background())
+}
+
+func (i GetClientOidcLogoutArgs) ToGetClientOidcLogoutOutputWithContext(ctx context.Context) GetClientOidcLogoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientOidcLogoutOutput)
+}
+
+// GetClientOidcLogoutArrayInput is an input type that accepts GetClientOidcLogoutArray and GetClientOidcLogoutArrayOutput values.
+// You can construct a concrete instance of `GetClientOidcLogoutArrayInput` via:
+//
+//	GetClientOidcLogoutArray{ GetClientOidcLogoutArgs{...} }
+type GetClientOidcLogoutArrayInput interface {
+	pulumi.Input
+
+	ToGetClientOidcLogoutArrayOutput() GetClientOidcLogoutArrayOutput
+	ToGetClientOidcLogoutArrayOutputWithContext(context.Context) GetClientOidcLogoutArrayOutput
+}
+
+type GetClientOidcLogoutArray []GetClientOidcLogoutInput
+
+func (GetClientOidcLogoutArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientOidcLogout)(nil)).Elem()
+}
+
+func (i GetClientOidcLogoutArray) ToGetClientOidcLogoutArrayOutput() GetClientOidcLogoutArrayOutput {
+	return i.ToGetClientOidcLogoutArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientOidcLogoutArray) ToGetClientOidcLogoutArrayOutputWithContext(ctx context.Context) GetClientOidcLogoutArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientOidcLogoutArrayOutput)
+}
+
+type GetClientOidcLogoutOutput struct{ *pulumi.OutputState }
+
+func (GetClientOidcLogoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientOidcLogout)(nil)).Elem()
+}
+
+func (o GetClientOidcLogoutOutput) ToGetClientOidcLogoutOutput() GetClientOidcLogoutOutput {
+	return o
+}
+
+func (o GetClientOidcLogoutOutput) ToGetClientOidcLogoutOutputWithContext(ctx context.Context) GetClientOidcLogoutOutput {
+	return o
+}
+
+// Configure OIDC logout initiators for the Client
+func (o GetClientOidcLogoutOutput) BackchannelLogoutInitiators() GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput {
+	return o.ApplyT(func(v GetClientOidcLogout) []GetClientOidcLogoutBackchannelLogoutInitiator {
+		return v.BackchannelLogoutInitiators
+	}).(GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput)
+}
+
+// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+func (o GetClientOidcLogoutOutput) BackchannelLogoutUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientOidcLogout) []string { return v.BackchannelLogoutUrls }).(pulumi.StringArrayOutput)
+}
+
+type GetClientOidcLogoutArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientOidcLogoutArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientOidcLogout)(nil)).Elem()
+}
+
+func (o GetClientOidcLogoutArrayOutput) ToGetClientOidcLogoutArrayOutput() GetClientOidcLogoutArrayOutput {
+	return o
+}
+
+func (o GetClientOidcLogoutArrayOutput) ToGetClientOidcLogoutArrayOutputWithContext(ctx context.Context) GetClientOidcLogoutArrayOutput {
+	return o
+}
+
+func (o GetClientOidcLogoutArrayOutput) Index(i pulumi.IntInput) GetClientOidcLogoutOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientOidcLogout {
+		return vs[0].([]GetClientOidcLogout)[vs[1].(int)]
+	}).(GetClientOidcLogoutOutput)
+}
+
+type GetClientOidcLogoutBackchannelLogoutInitiator struct {
+	// Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannelLogoutSelectedInitiators set, `all` enables all current and future initiators.
+	Mode string `pulumi:"mode"`
+	// Contains the list of initiators to be enabled for the given client.
+	SelectedInitiators []string `pulumi:"selectedInitiators"`
+}
+
+// GetClientOidcLogoutBackchannelLogoutInitiatorInput is an input type that accepts GetClientOidcLogoutBackchannelLogoutInitiatorArgs and GetClientOidcLogoutBackchannelLogoutInitiatorOutput values.
+// You can construct a concrete instance of `GetClientOidcLogoutBackchannelLogoutInitiatorInput` via:
+//
+//	GetClientOidcLogoutBackchannelLogoutInitiatorArgs{...}
+type GetClientOidcLogoutBackchannelLogoutInitiatorInput interface {
+	pulumi.Input
+
+	ToGetClientOidcLogoutBackchannelLogoutInitiatorOutput() GetClientOidcLogoutBackchannelLogoutInitiatorOutput
+	ToGetClientOidcLogoutBackchannelLogoutInitiatorOutputWithContext(context.Context) GetClientOidcLogoutBackchannelLogoutInitiatorOutput
+}
+
+type GetClientOidcLogoutBackchannelLogoutInitiatorArgs struct {
+	// Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannelLogoutSelectedInitiators set, `all` enables all current and future initiators.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Contains the list of initiators to be enabled for the given client.
+	SelectedInitiators pulumi.StringArrayInput `pulumi:"selectedInitiators"`
+}
+
+func (GetClientOidcLogoutBackchannelLogoutInitiatorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientOidcLogoutBackchannelLogoutInitiator)(nil)).Elem()
+}
+
+func (i GetClientOidcLogoutBackchannelLogoutInitiatorArgs) ToGetClientOidcLogoutBackchannelLogoutInitiatorOutput() GetClientOidcLogoutBackchannelLogoutInitiatorOutput {
+	return i.ToGetClientOidcLogoutBackchannelLogoutInitiatorOutputWithContext(context.Background())
+}
+
+func (i GetClientOidcLogoutBackchannelLogoutInitiatorArgs) ToGetClientOidcLogoutBackchannelLogoutInitiatorOutputWithContext(ctx context.Context) GetClientOidcLogoutBackchannelLogoutInitiatorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientOidcLogoutBackchannelLogoutInitiatorOutput)
+}
+
+// GetClientOidcLogoutBackchannelLogoutInitiatorArrayInput is an input type that accepts GetClientOidcLogoutBackchannelLogoutInitiatorArray and GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput values.
+// You can construct a concrete instance of `GetClientOidcLogoutBackchannelLogoutInitiatorArrayInput` via:
+//
+//	GetClientOidcLogoutBackchannelLogoutInitiatorArray{ GetClientOidcLogoutBackchannelLogoutInitiatorArgs{...} }
+type GetClientOidcLogoutBackchannelLogoutInitiatorArrayInput interface {
+	pulumi.Input
+
+	ToGetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput() GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput
+	ToGetClientOidcLogoutBackchannelLogoutInitiatorArrayOutputWithContext(context.Context) GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput
+}
+
+type GetClientOidcLogoutBackchannelLogoutInitiatorArray []GetClientOidcLogoutBackchannelLogoutInitiatorInput
+
+func (GetClientOidcLogoutBackchannelLogoutInitiatorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientOidcLogoutBackchannelLogoutInitiator)(nil)).Elem()
+}
+
+func (i GetClientOidcLogoutBackchannelLogoutInitiatorArray) ToGetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput() GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput {
+	return i.ToGetClientOidcLogoutBackchannelLogoutInitiatorArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientOidcLogoutBackchannelLogoutInitiatorArray) ToGetClientOidcLogoutBackchannelLogoutInitiatorArrayOutputWithContext(ctx context.Context) GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput)
+}
+
+type GetClientOidcLogoutBackchannelLogoutInitiatorOutput struct{ *pulumi.OutputState }
+
+func (GetClientOidcLogoutBackchannelLogoutInitiatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientOidcLogoutBackchannelLogoutInitiator)(nil)).Elem()
+}
+
+func (o GetClientOidcLogoutBackchannelLogoutInitiatorOutput) ToGetClientOidcLogoutBackchannelLogoutInitiatorOutput() GetClientOidcLogoutBackchannelLogoutInitiatorOutput {
+	return o
+}
+
+func (o GetClientOidcLogoutBackchannelLogoutInitiatorOutput) ToGetClientOidcLogoutBackchannelLogoutInitiatorOutputWithContext(ctx context.Context) GetClientOidcLogoutBackchannelLogoutInitiatorOutput {
+	return o
+}
+
+// Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannelLogoutSelectedInitiators set, `all` enables all current and future initiators.
+func (o GetClientOidcLogoutBackchannelLogoutInitiatorOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientOidcLogoutBackchannelLogoutInitiator) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Contains the list of initiators to be enabled for the given client.
+func (o GetClientOidcLogoutBackchannelLogoutInitiatorOutput) SelectedInitiators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientOidcLogoutBackchannelLogoutInitiator) []string { return v.SelectedInitiators }).(pulumi.StringArrayOutput)
+}
+
+type GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientOidcLogoutBackchannelLogoutInitiator)(nil)).Elem()
+}
+
+func (o GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput) ToGetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput() GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput {
+	return o
+}
+
+func (o GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput) ToGetClientOidcLogoutBackchannelLogoutInitiatorArrayOutputWithContext(ctx context.Context) GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput {
+	return o
+}
+
+func (o GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput) Index(i pulumi.IntInput) GetClientOidcLogoutBackchannelLogoutInitiatorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientOidcLogoutBackchannelLogoutInitiator {
+		return vs[0].([]GetClientOidcLogoutBackchannelLogoutInitiator)[vs[1].(int)]
+	}).(GetClientOidcLogoutBackchannelLogoutInitiatorOutput)
+}
+
 type GetClientRefreshToken struct {
 	// Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
 	ExpirationType string `pulumi:"expirationType"`
@@ -34800,6 +35328,440 @@ func (o GetClientSignedRequestObjectCredentialArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientSignedRequestObjectCredential {
 		return vs[0].([]GetClientSignedRequestObjectCredential)[vs[1].(int)]
 	}).(GetClientSignedRequestObjectCredentialOutput)
+}
+
+type GetClientsClient struct {
+	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+	AllowedClients []string `pulumi:"allowedClients"`
+	// URLs that Auth0 may redirect to after logout.
+	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
+	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+	AllowedOrigins []string `pulumi:"allowedOrigins"`
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	AppType string `pulumi:"appType"`
+	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+	Callbacks []string `pulumi:"callbacks"`
+	// The ID of the client. If not provided, `name` must be set.
+	ClientId *string `pulumi:"clientId"`
+	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
+	ClientMetadata map[string]string `pulumi:"clientMetadata"`
+	ClientSecret   string            `pulumi:"clientSecret"`
+	// Description of the purpose of the client.
+	Description string `pulumi:"description"`
+	// Types of grants that this client is authorized to use.
+	GrantTypes []string `pulumi:"grantTypes"`
+	// Indicates whether this client is a first-party client.
+	IsFirstParty bool `pulumi:"isFirstParty"`
+	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
+	IsTokenEndpointIpHeaderTrusted bool `pulumi:"isTokenEndpointIpHeaderTrusted"`
+	// The name of the client. If not provided, `clientId` must be set.
+	Name *string `pulumi:"name"`
+	// Configure OIDC logout for the Client
+	OidcLogouts []GetClientsClientOidcLogout `pulumi:"oidcLogouts"`
+	// URLs that represent valid web origins for use with web message response mode.
+	WebOrigins []string `pulumi:"webOrigins"`
+}
+
+// GetClientsClientInput is an input type that accepts GetClientsClientArgs and GetClientsClientOutput values.
+// You can construct a concrete instance of `GetClientsClientInput` via:
+//
+//	GetClientsClientArgs{...}
+type GetClientsClientInput interface {
+	pulumi.Input
+
+	ToGetClientsClientOutput() GetClientsClientOutput
+	ToGetClientsClientOutputWithContext(context.Context) GetClientsClientOutput
+}
+
+type GetClientsClientArgs struct {
+	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+	AllowedClients pulumi.StringArrayInput `pulumi:"allowedClients"`
+	// URLs that Auth0 may redirect to after logout.
+	AllowedLogoutUrls pulumi.StringArrayInput `pulumi:"allowedLogoutUrls"`
+	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	AppType pulumi.StringInput `pulumi:"appType"`
+	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+	Callbacks pulumi.StringArrayInput `pulumi:"callbacks"`
+	// The ID of the client. If not provided, `name` must be set.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
+	ClientMetadata pulumi.StringMapInput `pulumi:"clientMetadata"`
+	ClientSecret   pulumi.StringInput    `pulumi:"clientSecret"`
+	// Description of the purpose of the client.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Types of grants that this client is authorized to use.
+	GrantTypes pulumi.StringArrayInput `pulumi:"grantTypes"`
+	// Indicates whether this client is a first-party client.
+	IsFirstParty pulumi.BoolInput `pulumi:"isFirstParty"`
+	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
+	IsTokenEndpointIpHeaderTrusted pulumi.BoolInput `pulumi:"isTokenEndpointIpHeaderTrusted"`
+	// The name of the client. If not provided, `clientId` must be set.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Configure OIDC logout for the Client
+	OidcLogouts GetClientsClientOidcLogoutArrayInput `pulumi:"oidcLogouts"`
+	// URLs that represent valid web origins for use with web message response mode.
+	WebOrigins pulumi.StringArrayInput `pulumi:"webOrigins"`
+}
+
+func (GetClientsClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClient)(nil)).Elem()
+}
+
+func (i GetClientsClientArgs) ToGetClientsClientOutput() GetClientsClientOutput {
+	return i.ToGetClientsClientOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientArgs) ToGetClientsClientOutputWithContext(ctx context.Context) GetClientsClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientOutput)
+}
+
+// GetClientsClientArrayInput is an input type that accepts GetClientsClientArray and GetClientsClientArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientArrayInput` via:
+//
+//	GetClientsClientArray{ GetClientsClientArgs{...} }
+type GetClientsClientArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientArrayOutput() GetClientsClientArrayOutput
+	ToGetClientsClientArrayOutputWithContext(context.Context) GetClientsClientArrayOutput
+}
+
+type GetClientsClientArray []GetClientsClientInput
+
+func (GetClientsClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClient)(nil)).Elem()
+}
+
+func (i GetClientsClientArray) ToGetClientsClientArrayOutput() GetClientsClientArrayOutput {
+	return i.ToGetClientsClientArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientArray) ToGetClientsClientArrayOutputWithContext(ctx context.Context) GetClientsClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientArrayOutput)
+}
+
+type GetClientsClientOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClient)(nil)).Elem()
+}
+
+func (o GetClientsClientOutput) ToGetClientsClientOutput() GetClientsClientOutput {
+	return o
+}
+
+func (o GetClientsClientOutput) ToGetClientsClientOutputWithContext(ctx context.Context) GetClientsClientOutput {
+	return o
+}
+
+// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+func (o GetClientsClientOutput) AllowedClients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []string { return v.AllowedClients }).(pulumi.StringArrayOutput)
+}
+
+// URLs that Auth0 may redirect to after logout.
+func (o GetClientsClientOutput) AllowedLogoutUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []string { return v.AllowedLogoutUrls }).(pulumi.StringArrayOutput)
+}
+
+// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+func (o GetClientsClientOutput) AllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+func (o GetClientsClientOutput) AppType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.AppType }).(pulumi.StringOutput)
+}
+
+// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+func (o GetClientsClientOutput) Callbacks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []string { return v.Callbacks }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the client. If not provided, `name` must be set.
+func (o GetClientsClientOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClientsClient) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
+func (o GetClientsClientOutput) ClientMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClientsClient) map[string]string { return v.ClientMetadata }).(pulumi.StringMapOutput)
+}
+
+func (o GetClientsClientOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// Description of the purpose of the client.
+func (o GetClientsClientOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Types of grants that this client is authorized to use.
+func (o GetClientsClientOutput) GrantTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []string { return v.GrantTypes }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether this client is a first-party client.
+func (o GetClientsClientOutput) IsFirstParty() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClient) bool { return v.IsFirstParty }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
+func (o GetClientsClientOutput) IsTokenEndpointIpHeaderTrusted() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClient) bool { return v.IsTokenEndpointIpHeaderTrusted }).(pulumi.BoolOutput)
+}
+
+// The name of the client. If not provided, `clientId` must be set.
+func (o GetClientsClientOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClientsClient) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Configure OIDC logout for the Client
+func (o GetClientsClientOutput) OidcLogouts() GetClientsClientOidcLogoutArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientOidcLogout { return v.OidcLogouts }).(GetClientsClientOidcLogoutArrayOutput)
+}
+
+// URLs that represent valid web origins for use with web message response mode.
+func (o GetClientsClientOutput) WebOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []string { return v.WebOrigins }).(pulumi.StringArrayOutput)
+}
+
+type GetClientsClientArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClient)(nil)).Elem()
+}
+
+func (o GetClientsClientArrayOutput) ToGetClientsClientArrayOutput() GetClientsClientArrayOutput {
+	return o
+}
+
+func (o GetClientsClientArrayOutput) ToGetClientsClientArrayOutputWithContext(ctx context.Context) GetClientsClientArrayOutput {
+	return o
+}
+
+func (o GetClientsClientArrayOutput) Index(i pulumi.IntInput) GetClientsClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClient {
+		return vs[0].([]GetClientsClient)[vs[1].(int)]
+	}).(GetClientsClientOutput)
+}
+
+type GetClientsClientOidcLogout struct {
+	// Configure OIDC logout initiators for the Client
+	BackchannelLogoutInitiators []GetClientsClientOidcLogoutBackchannelLogoutInitiator `pulumi:"backchannelLogoutInitiators"`
+	// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+	BackchannelLogoutUrls []string `pulumi:"backchannelLogoutUrls"`
+}
+
+// GetClientsClientOidcLogoutInput is an input type that accepts GetClientsClientOidcLogoutArgs and GetClientsClientOidcLogoutOutput values.
+// You can construct a concrete instance of `GetClientsClientOidcLogoutInput` via:
+//
+//	GetClientsClientOidcLogoutArgs{...}
+type GetClientsClientOidcLogoutInput interface {
+	pulumi.Input
+
+	ToGetClientsClientOidcLogoutOutput() GetClientsClientOidcLogoutOutput
+	ToGetClientsClientOidcLogoutOutputWithContext(context.Context) GetClientsClientOidcLogoutOutput
+}
+
+type GetClientsClientOidcLogoutArgs struct {
+	// Configure OIDC logout initiators for the Client
+	BackchannelLogoutInitiators GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayInput `pulumi:"backchannelLogoutInitiators"`
+	// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+	BackchannelLogoutUrls pulumi.StringArrayInput `pulumi:"backchannelLogoutUrls"`
+}
+
+func (GetClientsClientOidcLogoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientOidcLogout)(nil)).Elem()
+}
+
+func (i GetClientsClientOidcLogoutArgs) ToGetClientsClientOidcLogoutOutput() GetClientsClientOidcLogoutOutput {
+	return i.ToGetClientsClientOidcLogoutOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientOidcLogoutArgs) ToGetClientsClientOidcLogoutOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientOidcLogoutOutput)
+}
+
+// GetClientsClientOidcLogoutArrayInput is an input type that accepts GetClientsClientOidcLogoutArray and GetClientsClientOidcLogoutArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientOidcLogoutArrayInput` via:
+//
+//	GetClientsClientOidcLogoutArray{ GetClientsClientOidcLogoutArgs{...} }
+type GetClientsClientOidcLogoutArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientOidcLogoutArrayOutput() GetClientsClientOidcLogoutArrayOutput
+	ToGetClientsClientOidcLogoutArrayOutputWithContext(context.Context) GetClientsClientOidcLogoutArrayOutput
+}
+
+type GetClientsClientOidcLogoutArray []GetClientsClientOidcLogoutInput
+
+func (GetClientsClientOidcLogoutArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientOidcLogout)(nil)).Elem()
+}
+
+func (i GetClientsClientOidcLogoutArray) ToGetClientsClientOidcLogoutArrayOutput() GetClientsClientOidcLogoutArrayOutput {
+	return i.ToGetClientsClientOidcLogoutArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientOidcLogoutArray) ToGetClientsClientOidcLogoutArrayOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientOidcLogoutArrayOutput)
+}
+
+type GetClientsClientOidcLogoutOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientOidcLogoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientOidcLogout)(nil)).Elem()
+}
+
+func (o GetClientsClientOidcLogoutOutput) ToGetClientsClientOidcLogoutOutput() GetClientsClientOidcLogoutOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutOutput) ToGetClientsClientOidcLogoutOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutOutput {
+	return o
+}
+
+// Configure OIDC logout initiators for the Client
+func (o GetClientsClientOidcLogoutOutput) BackchannelLogoutInitiators() GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput {
+	return o.ApplyT(func(v GetClientsClientOidcLogout) []GetClientsClientOidcLogoutBackchannelLogoutInitiator {
+		return v.BackchannelLogoutInitiators
+	}).(GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput)
+}
+
+// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+func (o GetClientsClientOidcLogoutOutput) BackchannelLogoutUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClientOidcLogout) []string { return v.BackchannelLogoutUrls }).(pulumi.StringArrayOutput)
+}
+
+type GetClientsClientOidcLogoutArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientOidcLogoutArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientOidcLogout)(nil)).Elem()
+}
+
+func (o GetClientsClientOidcLogoutArrayOutput) ToGetClientsClientOidcLogoutArrayOutput() GetClientsClientOidcLogoutArrayOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutArrayOutput) ToGetClientsClientOidcLogoutArrayOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutArrayOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutArrayOutput) Index(i pulumi.IntInput) GetClientsClientOidcLogoutOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientOidcLogout {
+		return vs[0].([]GetClientsClientOidcLogout)[vs[1].(int)]
+	}).(GetClientsClientOidcLogoutOutput)
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutInitiator struct {
+	// Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannelLogoutSelectedInitiators set, `all` enables all current and future initiators.
+	Mode string `pulumi:"mode"`
+	// Contains the list of initiators to be enabled for the given client.
+	SelectedInitiators []string `pulumi:"selectedInitiators"`
+}
+
+// GetClientsClientOidcLogoutBackchannelLogoutInitiatorInput is an input type that accepts GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs and GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput values.
+// You can construct a concrete instance of `GetClientsClientOidcLogoutBackchannelLogoutInitiatorInput` via:
+//
+//	GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs{...}
+type GetClientsClientOidcLogoutBackchannelLogoutInitiatorInput interface {
+	pulumi.Input
+
+	ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput() GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput
+	ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorOutputWithContext(context.Context) GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs struct {
+	// Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannelLogoutSelectedInitiators set, `all` enables all current and future initiators.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Contains the list of initiators to be enabled for the given client.
+	SelectedInitiators pulumi.StringArrayInput `pulumi:"selectedInitiators"`
+}
+
+func (GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutInitiator)(nil)).Elem()
+}
+
+func (i GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs) ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput() GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput {
+	return i.ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs) ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput)
+}
+
+// GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayInput is an input type that accepts GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray and GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayInput` via:
+//
+//	GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray{ GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs{...} }
+type GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput() GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput
+	ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutputWithContext(context.Context) GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray []GetClientsClientOidcLogoutBackchannelLogoutInitiatorInput
+
+func (GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientOidcLogoutBackchannelLogoutInitiator)(nil)).Elem()
+}
+
+func (i GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray) ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput() GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput {
+	return i.ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray) ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput)
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutInitiator)(nil)).Elem()
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput) ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput() GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput) ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput {
+	return o
+}
+
+// Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannelLogoutSelectedInitiators set, `all` enables all current and future initiators.
+func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientOidcLogoutBackchannelLogoutInitiator) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Contains the list of initiators to be enabled for the given client.
+func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput) SelectedInitiators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClientOidcLogoutBackchannelLogoutInitiator) []string { return v.SelectedInitiators }).(pulumi.StringArrayOutput)
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientOidcLogoutBackchannelLogoutInitiator)(nil)).Elem()
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput) ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput() GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput) ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput) Index(i pulumi.IntInput) GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientOidcLogoutBackchannelLogoutInitiator {
+		return vs[0].([]GetClientsClientOidcLogoutBackchannelLogoutInitiator)[vs[1].(int)]
+	}).(GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput)
 }
 
 type GetConnectionOption struct {
@@ -42171,6 +43133,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientNativeSocialLoginApplePtrInput)(nil)).Elem(), ClientNativeSocialLoginAppleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientNativeSocialLoginFacebookInput)(nil)).Elem(), ClientNativeSocialLoginFacebookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientNativeSocialLoginFacebookPtrInput)(nil)).Elem(), ClientNativeSocialLoginFacebookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcLogoutInput)(nil)).Elem(), ClientOidcLogoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcLogoutPtrInput)(nil)).Elem(), ClientOidcLogoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcLogoutBackchannelLogoutInitiatorsInput)(nil)).Elem(), ClientOidcLogoutBackchannelLogoutInitiatorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcLogoutBackchannelLogoutInitiatorsPtrInput)(nil)).Elem(), ClientOidcLogoutBackchannelLogoutInitiatorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientRefreshTokenInput)(nil)).Elem(), ClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientRefreshTokenPtrInput)(nil)).Elem(), ClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsInput)(nil)).Elem(), ConnectionOptionsArgs{})
@@ -42452,12 +43418,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginAppleArrayInput)(nil)).Elem(), GetClientNativeSocialLoginAppleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginFacebookInput)(nil)).Elem(), GetClientNativeSocialLoginFacebookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginFacebookArrayInput)(nil)).Elem(), GetClientNativeSocialLoginFacebookArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcLogoutInput)(nil)).Elem(), GetClientOidcLogoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcLogoutArrayInput)(nil)).Elem(), GetClientOidcLogoutArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcLogoutBackchannelLogoutInitiatorInput)(nil)).Elem(), GetClientOidcLogoutBackchannelLogoutInitiatorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcLogoutBackchannelLogoutInitiatorArrayInput)(nil)).Elem(), GetClientOidcLogoutBackchannelLogoutInitiatorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientRefreshTokenInput)(nil)).Elem(), GetClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientRefreshTokenArrayInput)(nil)).Elem(), GetClientRefreshTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectInput)(nil)).Elem(), GetClientSignedRequestObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectArrayInput)(nil)).Elem(), GetClientSignedRequestObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectCredentialInput)(nil)).Elem(), GetClientSignedRequestObjectCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectCredentialArrayInput)(nil)).Elem(), GetClientSignedRequestObjectCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientInput)(nil)).Elem(), GetClientsClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientArrayInput)(nil)).Elem(), GetClientsClientArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutInput)(nil)).Elem(), GetClientsClientOidcLogoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutArrayInput)(nil)).Elem(), GetClientsClientOidcLogoutArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutInitiatorInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionInput)(nil)).Elem(), GetConnectionOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionArrayInput)(nil)).Elem(), GetConnectionOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeInput)(nil)).Elem(), GetConnectionOptionAttributeArgs{})
@@ -42712,6 +43688,10 @@ func init() {
 	pulumi.RegisterOutputType(ClientNativeSocialLoginApplePtrOutput{})
 	pulumi.RegisterOutputType(ClientNativeSocialLoginFacebookOutput{})
 	pulumi.RegisterOutputType(ClientNativeSocialLoginFacebookPtrOutput{})
+	pulumi.RegisterOutputType(ClientOidcLogoutOutput{})
+	pulumi.RegisterOutputType(ClientOidcLogoutPtrOutput{})
+	pulumi.RegisterOutputType(ClientOidcLogoutBackchannelLogoutInitiatorsOutput{})
+	pulumi.RegisterOutputType(ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput{})
 	pulumi.RegisterOutputType(ClientRefreshTokenOutput{})
 	pulumi.RegisterOutputType(ClientRefreshTokenPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsOutput{})
@@ -42993,12 +43973,22 @@ func init() {
 	pulumi.RegisterOutputType(GetClientNativeSocialLoginAppleArrayOutput{})
 	pulumi.RegisterOutputType(GetClientNativeSocialLoginFacebookOutput{})
 	pulumi.RegisterOutputType(GetClientNativeSocialLoginFacebookArrayOutput{})
+	pulumi.RegisterOutputType(GetClientOidcLogoutOutput{})
+	pulumi.RegisterOutputType(GetClientOidcLogoutArrayOutput{})
+	pulumi.RegisterOutputType(GetClientOidcLogoutBackchannelLogoutInitiatorOutput{})
+	pulumi.RegisterOutputType(GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput{})
 	pulumi.RegisterOutputType(GetClientRefreshTokenOutput{})
 	pulumi.RegisterOutputType(GetClientRefreshTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetClientSignedRequestObjectOutput{})
 	pulumi.RegisterOutputType(GetClientSignedRequestObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetClientSignedRequestObjectCredentialOutput{})
 	pulumi.RegisterOutputType(GetClientSignedRequestObjectCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientOutput{})
+	pulumi.RegisterOutputType(GetClientsClientArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientOidcLogoutOutput{})
+	pulumi.RegisterOutputType(GetClientsClientOidcLogoutArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput{})
+	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAttributeOutput{})

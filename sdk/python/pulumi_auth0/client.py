@@ -49,6 +49,7 @@ class ClientArgs:
                  native_social_login: Optional[pulumi.Input['ClientNativeSocialLoginArgs']] = None,
                  oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 oidc_logout: Optional[pulumi.Input['ClientOidcLogoutArgs']] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
@@ -87,6 +88,7 @@ class ClientArgs:
         :param pulumi.Input['ClientNativeSocialLoginArgs'] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
+        :param pulumi.Input['ClientOidcLogoutArgs'] oidc_logout: Configure OIDC logout for the Client
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
@@ -151,9 +153,14 @@ class ClientArgs:
         if native_social_login is not None:
             pulumi.set(__self__, "native_social_login", native_social_login)
         if oidc_backchannel_logout_urls is not None:
+            warnings.warn("""This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.""", DeprecationWarning)
+            pulumi.log.warn("""oidc_backchannel_logout_urls is deprecated: This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.""")
+        if oidc_backchannel_logout_urls is not None:
             pulumi.set(__self__, "oidc_backchannel_logout_urls", oidc_backchannel_logout_urls)
         if oidc_conformant is not None:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
+        if oidc_logout is not None:
+            pulumi.set(__self__, "oidc_logout", oidc_logout)
         if organization_require_behavior is not None:
             pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
         if organization_usage is not None:
@@ -485,6 +492,7 @@ class ClientArgs:
 
     @property
     @pulumi.getter(name="oidcBackchannelLogoutUrls")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.""")
     def oidc_backchannel_logout_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
@@ -506,6 +514,18 @@ class ClientArgs:
     @oidc_conformant.setter
     def oidc_conformant(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "oidc_conformant", value)
+
+    @property
+    @pulumi.getter(name="oidcLogout")
+    def oidc_logout(self) -> Optional[pulumi.Input['ClientOidcLogoutArgs']]:
+        """
+        Configure OIDC logout for the Client
+        """
+        return pulumi.get(self, "oidc_logout")
+
+    @oidc_logout.setter
+    def oidc_logout(self, value: Optional[pulumi.Input['ClientOidcLogoutArgs']]):
+        pulumi.set(self, "oidc_logout", value)
 
     @property
     @pulumi.getter(name="organizationRequireBehavior")
@@ -636,6 +656,7 @@ class _ClientState:
                  native_social_login: Optional[pulumi.Input['ClientNativeSocialLoginArgs']] = None,
                  oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 oidc_logout: Optional[pulumi.Input['ClientOidcLogoutArgs']] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
@@ -676,6 +697,7 @@ class _ClientState:
         :param pulumi.Input['ClientNativeSocialLoginArgs'] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
+        :param pulumi.Input['ClientOidcLogoutArgs'] oidc_logout: Configure OIDC logout for the Client
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
@@ -743,9 +765,14 @@ class _ClientState:
         if native_social_login is not None:
             pulumi.set(__self__, "native_social_login", native_social_login)
         if oidc_backchannel_logout_urls is not None:
+            warnings.warn("""This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.""", DeprecationWarning)
+            pulumi.log.warn("""oidc_backchannel_logout_urls is deprecated: This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.""")
+        if oidc_backchannel_logout_urls is not None:
             pulumi.set(__self__, "oidc_backchannel_logout_urls", oidc_backchannel_logout_urls)
         if oidc_conformant is not None:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
+        if oidc_logout is not None:
+            pulumi.set(__self__, "oidc_logout", oidc_logout)
         if organization_require_behavior is not None:
             pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
         if organization_usage is not None:
@@ -1091,6 +1118,7 @@ class _ClientState:
 
     @property
     @pulumi.getter(name="oidcBackchannelLogoutUrls")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.""")
     def oidc_backchannel_logout_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
@@ -1112,6 +1140,18 @@ class _ClientState:
     @oidc_conformant.setter
     def oidc_conformant(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "oidc_conformant", value)
+
+    @property
+    @pulumi.getter(name="oidcLogout")
+    def oidc_logout(self) -> Optional[pulumi.Input['ClientOidcLogoutArgs']]:
+        """
+        Configure OIDC logout for the Client
+        """
+        return pulumi.get(self, "oidc_logout")
+
+    @oidc_logout.setter
+    def oidc_logout(self, value: Optional[pulumi.Input['ClientOidcLogoutArgs']]):
+        pulumi.set(self, "oidc_logout", value)
 
     @property
     @pulumi.getter(name="organizationRequireBehavior")
@@ -1255,6 +1295,7 @@ class Client(pulumi.CustomResource):
                  native_social_login: Optional[pulumi.Input[Union['ClientNativeSocialLoginArgs', 'ClientNativeSocialLoginArgsDict']]] = None,
                  oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 oidc_logout: Optional[pulumi.Input[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict']]] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
@@ -1382,6 +1423,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Union['ClientNativeSocialLoginArgs', 'ClientNativeSocialLoginArgsDict']] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
+        :param pulumi.Input[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict']] oidc_logout: Configure OIDC logout for the Client
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']] refresh_token: Configuration settings for the refresh tokens issued for this client.
@@ -1528,6 +1570,7 @@ class Client(pulumi.CustomResource):
                  native_social_login: Optional[pulumi.Input[Union['ClientNativeSocialLoginArgs', 'ClientNativeSocialLoginArgsDict']]] = None,
                  oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 oidc_logout: Optional[pulumi.Input[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict']]] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
@@ -1575,6 +1618,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["native_social_login"] = native_social_login
             __props__.__dict__["oidc_backchannel_logout_urls"] = oidc_backchannel_logout_urls
             __props__.__dict__["oidc_conformant"] = oidc_conformant
+            __props__.__dict__["oidc_logout"] = oidc_logout
             __props__.__dict__["organization_require_behavior"] = organization_require_behavior
             __props__.__dict__["organization_usage"] = organization_usage
             __props__.__dict__["refresh_token"] = refresh_token
@@ -1626,6 +1670,7 @@ class Client(pulumi.CustomResource):
             native_social_login: Optional[pulumi.Input[Union['ClientNativeSocialLoginArgs', 'ClientNativeSocialLoginArgsDict']]] = None,
             oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             oidc_conformant: Optional[pulumi.Input[bool]] = None,
+            oidc_logout: Optional[pulumi.Input[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict']]] = None,
             organization_require_behavior: Optional[pulumi.Input[str]] = None,
             organization_usage: Optional[pulumi.Input[str]] = None,
             refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
@@ -1671,6 +1716,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Union['ClientNativeSocialLoginArgs', 'ClientNativeSocialLoginArgsDict']] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
+        :param pulumi.Input[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict']] oidc_logout: Configure OIDC logout for the Client
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']] refresh_token: Configuration settings for the refresh tokens issued for this client.
@@ -1714,6 +1760,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["native_social_login"] = native_social_login
         __props__.__dict__["oidc_backchannel_logout_urls"] = oidc_backchannel_logout_urls
         __props__.__dict__["oidc_conformant"] = oidc_conformant
+        __props__.__dict__["oidc_logout"] = oidc_logout
         __props__.__dict__["organization_require_behavior"] = organization_require_behavior
         __props__.__dict__["organization_usage"] = organization_usage
         __props__.__dict__["refresh_token"] = refresh_token
@@ -1943,6 +1990,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oidcBackchannelLogoutUrls")
+    @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.""")
     def oidc_backchannel_logout_urls(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
@@ -1956,6 +2004,14 @@ class Client(pulumi.CustomResource):
         Indicates whether this client will conform to strict OIDC specifications.
         """
         return pulumi.get(self, "oidc_conformant")
+
+    @property
+    @pulumi.getter(name="oidcLogout")
+    def oidc_logout(self) -> pulumi.Output[Optional['outputs.ClientOidcLogout']]:
+        """
+        Configure OIDC logout for the Client
+        """
+        return pulumi.get(self, "oidc_logout")
 
     @property
     @pulumi.getter(name="organizationRequireBehavior")

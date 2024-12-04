@@ -111,6 +111,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RuleConfig{}
 	case "auth0:index/selfServiceProfile:SelfServiceProfile":
 		r = &SelfServiceProfile{}
+	case "auth0:index/selfServiceProfileCustomText:SelfServiceProfileCustomText":
+		r = &SelfServiceProfileCustomText{}
 	case "auth0:index/tenant:Tenant":
 		r = &Tenant{}
 	case "auth0:index/triggerAction:TriggerAction":
@@ -381,6 +383,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/selfServiceProfile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/selfServiceProfileCustomText",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

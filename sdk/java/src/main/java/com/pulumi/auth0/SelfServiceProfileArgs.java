@@ -7,6 +7,7 @@ import com.pulumi.auth0.inputs.SelfServiceProfileBrandingArgs;
 import com.pulumi.auth0.inputs.SelfServiceProfileUserAttributeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class SelfServiceProfileArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SelfServiceProfileArgs Empty = new SelfServiceProfileArgs();
+
+    /**
+     * List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+     * 
+     */
+    @Import(name="allowedStrategies")
+    private @Nullable Output<List<String>> allowedStrategies;
+
+    /**
+     * @return List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+     * 
+     */
+    public Optional<Output<List<String>>> allowedStrategies() {
+        return Optional.ofNullable(this.allowedStrategies);
+    }
 
     /**
      * Field can be used to customize the look and feel of the wizard.
@@ -30,6 +46,36 @@ public final class SelfServiceProfileArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<SelfServiceProfileBrandingArgs>> branding() {
         return Optional.ofNullable(this.branding);
+    }
+
+    /**
+     * The description of the self-service Profile
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the self-service Profile
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The name of the self-service Profile
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return The name of the self-service Profile
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -50,7 +96,10 @@ public final class SelfServiceProfileArgs extends com.pulumi.resources.ResourceA
     private SelfServiceProfileArgs() {}
 
     private SelfServiceProfileArgs(SelfServiceProfileArgs $) {
+        this.allowedStrategies = $.allowedStrategies;
         this.branding = $.branding;
+        this.description = $.description;
+        this.name = $.name;
         this.userAttributes = $.userAttributes;
     }
 
@@ -73,6 +122,37 @@ public final class SelfServiceProfileArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param allowedStrategies List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedStrategies(@Nullable Output<List<String>> allowedStrategies) {
+            $.allowedStrategies = allowedStrategies;
+            return this;
+        }
+
+        /**
+         * @param allowedStrategies List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedStrategies(List<String> allowedStrategies) {
+            return allowedStrategies(Output.of(allowedStrategies));
+        }
+
+        /**
+         * @param allowedStrategies List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedStrategies(String... allowedStrategies) {
+            return allowedStrategies(List.of(allowedStrategies));
+        }
+
+        /**
          * @param branding Field can be used to customize the look and feel of the wizard.
          * 
          * @return builder
@@ -91,6 +171,48 @@ public final class SelfServiceProfileArgs extends com.pulumi.resources.ResourceA
          */
         public Builder branding(SelfServiceProfileBrandingArgs branding) {
             return branding(Output.of(branding));
+        }
+
+        /**
+         * @param description The description of the self-service Profile
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the self-service Profile
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param name The name of the self-service Profile
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name The name of the self-service Profile
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**
