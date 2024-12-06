@@ -111,7 +111,7 @@ export interface GetClientsResult {
  * });
  * ```
  */
-export function getClientsOutput(args?: GetClientsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClientsResult> {
+export function getClientsOutput(args?: GetClientsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClientsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getClients:getClients", {

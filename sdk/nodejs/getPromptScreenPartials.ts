@@ -73,7 +73,7 @@ export interface GetPromptScreenPartialsResult {
  * });
  * ```
  */
-export function getPromptScreenPartialsOutput(args: GetPromptScreenPartialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPromptScreenPartialsResult> {
+export function getPromptScreenPartialsOutput(args: GetPromptScreenPartialsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPromptScreenPartialsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getPromptScreenPartials:getPromptScreenPartials", {
         "promptType": args.promptType,

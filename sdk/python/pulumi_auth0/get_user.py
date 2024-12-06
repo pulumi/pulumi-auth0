@@ -323,7 +323,7 @@ def get_user(user_id: Optional[str] = None,
         username=pulumi.get(__ret__, 'username'),
         verify_email=pulumi.get(__ret__, 'verify_email'))
 def get_user_output(user_id: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     Data source to retrieve a specific Auth0 user by `user_id`.
 
@@ -342,7 +342,7 @@ def get_user_output(user_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['userId'] = user_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
     return __ret__.apply(lambda __response__: GetUserResult(
         app_metadata=pulumi.get(__response__, 'app_metadata'),

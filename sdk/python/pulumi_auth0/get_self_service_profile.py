@@ -167,7 +167,7 @@ def get_self_service_profile(id: Optional[str] = None,
         updated_at=pulumi.get(__ret__, 'updated_at'),
         user_attributes=pulumi.get(__ret__, 'user_attributes'))
 def get_self_service_profile_output(id: Optional[pulumi.Input[str]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSelfServiceProfileResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSelfServiceProfileResult]:
     """
     Data source to retrieve a specific Auth0 Self-Service Profile by `id`
 
@@ -186,7 +186,7 @@ def get_self_service_profile_output(id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getSelfServiceProfile:getSelfServiceProfile', __args__, opts=opts, typ=GetSelfServiceProfileResult)
     return __ret__.apply(lambda __response__: GetSelfServiceProfileResult(
         allowed_strategies=pulumi.get(__response__, 'allowed_strategies'),

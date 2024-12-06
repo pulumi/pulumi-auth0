@@ -137,7 +137,7 @@ export interface GetTenantResult {
  * const myTenant = auth0.getTenant({});
  * ```
  */
-export function getTenantOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetTenantResult> {
+export function getTenantOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTenantResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getTenant:getTenant", {
     }, opts);

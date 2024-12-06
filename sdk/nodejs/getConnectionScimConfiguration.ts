@@ -128,7 +128,7 @@ export interface GetConnectionScimConfigurationResult {
  * });
  * ```
  */
-export function getConnectionScimConfigurationOutput(args: GetConnectionScimConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionScimConfigurationResult> {
+export function getConnectionScimConfigurationOutput(args: GetConnectionScimConfigurationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectionScimConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getConnectionScimConfiguration:getConnectionScimConfiguration", {
         "connectionId": args.connectionId,
