@@ -368,7 +368,7 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
         sessions=pulumi.get(__ret__, 'sessions'),
         support_email=pulumi.get(__ret__, 'support_email'),
         support_url=pulumi.get(__ret__, 'support_url'))
-def get_tenant_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTenantResult]:
+def get_tenant_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTenantResult]:
     """
     Use this data source to access information about the tenant this provider is configured to access.
 
@@ -382,7 +382,7 @@ def get_tenant_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Out
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getTenant:getTenant', __args__, opts=opts, typ=GetTenantResult)
     return __ret__.apply(lambda __response__: GetTenantResult(
         acr_values_supporteds=pulumi.get(__response__, 'acr_values_supporteds'),

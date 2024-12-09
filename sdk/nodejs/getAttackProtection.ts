@@ -57,7 +57,7 @@ export interface GetAttackProtectionResult {
  * const myProtection = auth0.getAttackProtection({});
  * ```
  */
-export function getAttackProtectionOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAttackProtectionResult> {
+export function getAttackProtectionOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAttackProtectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getAttackProtection:getAttackProtection", {
     }, opts);

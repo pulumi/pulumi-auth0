@@ -54,7 +54,7 @@ export interface GetBrandingThemeResult {
  * const myBrandingTheme = auth0.getBrandingTheme({});
  * ```
  */
-export function getBrandingThemeOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetBrandingThemeResult> {
+export function getBrandingThemeOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBrandingThemeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getBrandingTheme:getBrandingTheme", {
     }, opts);

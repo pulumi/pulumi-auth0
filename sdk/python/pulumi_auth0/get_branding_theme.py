@@ -132,7 +132,7 @@ def get_branding_theme(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitable
         id=pulumi.get(__ret__, 'id'),
         page_backgrounds=pulumi.get(__ret__, 'page_backgrounds'),
         widgets=pulumi.get(__ret__, 'widgets'))
-def get_branding_theme_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBrandingThemeResult]:
+def get_branding_theme_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBrandingThemeResult]:
     """
     Use this data source to access information about the tenant's branding theme settings.
 
@@ -146,7 +146,7 @@ def get_branding_theme_output(opts: Optional[pulumi.InvokeOptions] = None) -> pu
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getBrandingTheme:getBrandingTheme', __args__, opts=opts, typ=GetBrandingThemeResult)
     return __ret__.apply(lambda __response__: GetBrandingThemeResult(
         borders=pulumi.get(__response__, 'borders'),

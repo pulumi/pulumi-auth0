@@ -88,7 +88,7 @@ export interface GetFlowVaultConnectionResult {
  * });
  * ```
  */
-export function getFlowVaultConnectionOutput(args: GetFlowVaultConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowVaultConnectionResult> {
+export function getFlowVaultConnectionOutput(args: GetFlowVaultConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlowVaultConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getFlowVaultConnection:getFlowVaultConnection", {
         "id": args.id,

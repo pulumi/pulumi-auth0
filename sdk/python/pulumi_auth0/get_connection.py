@@ -212,7 +212,7 @@ def get_connection(connection_id: Optional[str] = None,
         strategy=pulumi.get(__ret__, 'strategy'))
 def get_connection_output(connection_id: Optional[pulumi.Input[Optional[str]]] = None,
                           name: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionResult]:
     """
     Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
 
@@ -235,7 +235,7 @@ def get_connection_output(connection_id: Optional[pulumi.Input[Optional[str]]] =
     __args__ = dict()
     __args__['connectionId'] = connection_id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getConnection:getConnection', __args__, opts=opts, typ=GetConnectionResult)
     return __ret__.apply(lambda __response__: GetConnectionResult(
         connection_id=pulumi.get(__response__, 'connection_id'),

@@ -94,7 +94,7 @@ export interface GetFormResult {
  * });
  * ```
  */
-export function getFormOutput(args: GetFormOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFormResult> {
+export function getFormOutput(args: GetFormOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFormResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getForm:getForm", {
         "id": args.id,
