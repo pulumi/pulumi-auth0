@@ -59,7 +59,7 @@ export interface GetCustomDomainResult {
 /**
  * Data source to retrieve the custom domain configuration.
  */
-export function getCustomDomainOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomDomainResult> {
+export function getCustomDomainOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomDomainResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getCustomDomain:getCustomDomain", {
     }, opts);

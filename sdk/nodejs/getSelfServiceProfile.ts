@@ -90,7 +90,7 @@ export interface GetSelfServiceProfileResult {
  * });
  * ```
  */
-export function getSelfServiceProfileOutput(args: GetSelfServiceProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSelfServiceProfileResult> {
+export function getSelfServiceProfileOutput(args: GetSelfServiceProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSelfServiceProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getSelfServiceProfile:getSelfServiceProfile", {
         "id": args.id,

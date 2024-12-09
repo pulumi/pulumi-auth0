@@ -61,7 +61,7 @@ export interface GetPagesResult {
  * const myPages = auth0.getPages({});
  * ```
  */
-export function getPagesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPagesResult> {
+export function getPagesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPagesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getPages:getPages", {
     }, opts);
