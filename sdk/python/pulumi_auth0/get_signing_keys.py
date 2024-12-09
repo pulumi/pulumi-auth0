@@ -73,12 +73,12 @@ def get_signing_keys(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     return AwaitableGetSigningKeysResult(
         id=pulumi.get(__ret__, 'id'),
         signing_keys=pulumi.get(__ret__, 'signing_keys'))
-def get_signing_keys_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSigningKeysResult]:
+def get_signing_keys_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSigningKeysResult]:
     """
     Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getSigningKeys:getSigningKeys', __args__, opts=opts, typ=GetSigningKeysResult)
     return __ret__.apply(lambda __response__: GetSigningKeysResult(
         id=pulumi.get(__response__, 'id'),

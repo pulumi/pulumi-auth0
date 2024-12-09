@@ -108,7 +108,7 @@ def get_attack_protection(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
         brute_force_protections=pulumi.get(__ret__, 'brute_force_protections'),
         id=pulumi.get(__ret__, 'id'),
         suspicious_ip_throttlings=pulumi.get(__ret__, 'suspicious_ip_throttlings'))
-def get_attack_protection_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAttackProtectionResult]:
+def get_attack_protection_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAttackProtectionResult]:
     """
     Use this data source to access information about the tenant's attack protection settings.
 
@@ -122,7 +122,7 @@ def get_attack_protection_output(opts: Optional[pulumi.InvokeOptions] = None) ->
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getAttackProtection:getAttackProtection', __args__, opts=opts, typ=GetAttackProtectionResult)
     return __ret__.apply(lambda __response__: GetAttackProtectionResult(
         breached_password_detections=pulumi.get(__response__, 'breached_password_detections'),

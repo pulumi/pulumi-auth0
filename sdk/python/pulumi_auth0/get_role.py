@@ -147,7 +147,7 @@ def get_role(name: Optional[str] = None,
         users=pulumi.get(__ret__, 'users'))
 def get_role_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                     role_id: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRoleResult]:
     """
     Data source to retrieve a specific Auth0 role by `role_id` or `name`.
 
@@ -170,7 +170,7 @@ def get_role_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['roleId'] = role_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getRole:getRole', __args__, opts=opts, typ=GetRoleResult)
     return __ret__.apply(lambda __response__: GetRoleResult(
         description=pulumi.get(__response__, 'description'),

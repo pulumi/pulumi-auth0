@@ -143,7 +143,7 @@ def get_clients(app_types: Optional[Sequence[str]] = None,
 def get_clients_output(app_types: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                        is_first_party: Optional[pulumi.Input[Optional[bool]]] = None,
                        name_filter: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClientsResult]:
     """
     Data source to retrieve a list of Auth0 application clients with optional filtering.
 
@@ -173,7 +173,7 @@ def get_clients_output(app_types: Optional[pulumi.Input[Optional[Sequence[str]]]
     __args__['appTypes'] = app_types
     __args__['isFirstParty'] = is_first_party
     __args__['nameFilter'] = name_filter
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getClients:getClients', __args__, opts=opts, typ=GetClientsResult)
     return __ret__.apply(lambda __response__: GetClientsResult(
         app_types=pulumi.get(__response__, 'app_types'),

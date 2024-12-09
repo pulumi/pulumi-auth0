@@ -65,7 +65,7 @@ export interface GetBrandingResult {
  * const myBranding = auth0.getBranding({});
  * ```
  */
-export function getBrandingOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetBrandingResult> {
+export function getBrandingOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBrandingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getBranding:getBranding", {
     }, opts);
