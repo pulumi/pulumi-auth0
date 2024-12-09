@@ -144,7 +144,7 @@ export interface GetResourceServerResult {
  * });
  * ```
  */
-export function getResourceServerOutput(args?: GetResourceServerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceServerResult> {
+export function getResourceServerOutput(args?: GetResourceServerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResourceServerResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getResourceServer:getResourceServer", {

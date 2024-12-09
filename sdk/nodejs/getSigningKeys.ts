@@ -31,7 +31,7 @@ export interface GetSigningKeysResult {
 /**
  * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
  */
-export function getSigningKeysOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetSigningKeysResult> {
+export function getSigningKeysOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSigningKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getSigningKeys:getSigningKeys", {
     }, opts);

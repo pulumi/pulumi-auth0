@@ -106,7 +106,7 @@ def get_prompt_screen_partials(prompt_type: Optional[str] = None,
         screen_partials=pulumi.get(__ret__, 'screen_partials'))
 def get_prompt_screen_partials_output(prompt_type: Optional[pulumi.Input[str]] = None,
                                       screen_partials: Optional[pulumi.Input[Optional[Sequence[Union['GetPromptScreenPartialsScreenPartialArgs', 'GetPromptScreenPartialsScreenPartialArgsDict']]]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPromptScreenPartialsResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPromptScreenPartialsResult]:
     """
     Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.
 
@@ -126,7 +126,7 @@ def get_prompt_screen_partials_output(prompt_type: Optional[pulumi.Input[str]] =
     __args__ = dict()
     __args__['promptType'] = prompt_type
     __args__['screenPartials'] = screen_partials
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getPromptScreenPartials:getPromptScreenPartials', __args__, opts=opts, typ=GetPromptScreenPartialsResult)
     return __ret__.apply(lambda __response__: GetPromptScreenPartialsResult(
         id=pulumi.get(__response__, 'id'),

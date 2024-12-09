@@ -164,12 +164,12 @@ def get_custom_domain(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
         tls_policy=pulumi.get(__ret__, 'tls_policy'),
         type=pulumi.get(__ret__, 'type'),
         verifications=pulumi.get(__ret__, 'verifications'))
-def get_custom_domain_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCustomDomainResult]:
+def get_custom_domain_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomDomainResult]:
     """
     Data source to retrieve the custom domain configuration.
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getCustomDomain:getCustomDomain', __args__, opts=opts, typ=GetCustomDomainResult)
     return __ret__.apply(lambda __response__: GetCustomDomainResult(
         custom_client_ip_header=pulumi.get(__response__, 'custom_client_ip_header'),
