@@ -303,7 +303,7 @@ def get_resource_server(identifier: Optional[str] = None,
         verification_location=pulumi.get(__ret__, 'verification_location'))
 def get_resource_server_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
                                resource_server_id: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourceServerResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourceServerResult]:
     """
     Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
 
@@ -326,7 +326,7 @@ def get_resource_server_output(identifier: Optional[pulumi.Input[Optional[str]]]
     __args__ = dict()
     __args__['identifier'] = identifier
     __args__['resourceServerId'] = resource_server_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getResourceServer:getResourceServer', __args__, opts=opts, typ=GetResourceServerResult)
     return __ret__.apply(lambda __response__: GetResourceServerResult(
         allow_offline_access=pulumi.get(__response__, 'allow_offline_access'),

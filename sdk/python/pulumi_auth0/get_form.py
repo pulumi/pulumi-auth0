@@ -180,7 +180,7 @@ def get_form(id: Optional[str] = None,
         style=pulumi.get(__ret__, 'style'),
         translations=pulumi.get(__ret__, 'translations'))
 def get_form_output(id: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFormResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFormResult]:
     """
     Data source to retrieve a specific Auth0 Form by `id`
 
@@ -199,7 +199,7 @@ def get_form_output(id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getForm:getForm', __args__, opts=opts, typ=GetFormResult)
     return __ret__.apply(lambda __response__: GetFormResult(
         ending=pulumi.get(__response__, 'ending'),
