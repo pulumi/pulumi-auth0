@@ -22,6 +22,8 @@ import com.pulumi.auth0.inputs.GetOrganizationArgs;
 import com.pulumi.auth0.inputs.GetOrganizationPlainArgs;
 import com.pulumi.auth0.inputs.GetPromptScreenPartialsArgs;
 import com.pulumi.auth0.inputs.GetPromptScreenPartialsPlainArgs;
+import com.pulumi.auth0.inputs.GetPromptScreenRendererArgs;
+import com.pulumi.auth0.inputs.GetPromptScreenRendererPlainArgs;
 import com.pulumi.auth0.inputs.GetResourceServerArgs;
 import com.pulumi.auth0.inputs.GetResourceServerPlainArgs;
 import com.pulumi.auth0.inputs.GetRoleArgs;
@@ -44,6 +46,7 @@ import com.pulumi.auth0.outputs.GetFormResult;
 import com.pulumi.auth0.outputs.GetOrganizationResult;
 import com.pulumi.auth0.outputs.GetPagesResult;
 import com.pulumi.auth0.outputs.GetPromptScreenPartialsResult;
+import com.pulumi.auth0.outputs.GetPromptScreenRendererResult;
 import com.pulumi.auth0.outputs.GetResourceServerResult;
 import com.pulumi.auth0.outputs.GetRoleResult;
 import com.pulumi.auth0.outputs.GetSelfServiceProfileResult;
@@ -3177,6 +3180,34 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetPromptScreenPartialsResult> getPromptScreenPartialsPlain(GetPromptScreenPartialsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getPromptScreenPartials:getPromptScreenPartials", TypeShape.of(GetPromptScreenPartialsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 prompt screen settings by `prompt_type` and `screen_name`
+     * 
+     */
+    public static Output<GetPromptScreenRendererResult> getPromptScreenRenderer(GetPromptScreenRendererArgs args) {
+        return getPromptScreenRenderer(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 prompt screen settings by `prompt_type` and `screen_name`
+     * 
+     */
+    public static CompletableFuture<GetPromptScreenRendererResult> getPromptScreenRendererPlain(GetPromptScreenRendererPlainArgs args) {
+        return getPromptScreenRendererPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 prompt screen settings by `prompt_type` and `screen_name`
+     * 
+     */
+    public static Output<GetPromptScreenRendererResult> getPromptScreenRenderer(GetPromptScreenRendererArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getPromptScreenRenderer:getPromptScreenRenderer", TypeShape.of(GetPromptScreenRendererResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 prompt screen settings by `prompt_type` and `screen_name`
+     * 
+     */
+    public static CompletableFuture<GetPromptScreenRendererResult> getPromptScreenRendererPlain(GetPromptScreenRendererPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getPromptScreenRenderer:getPromptScreenRenderer", TypeShape.of(GetPromptScreenRendererResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.

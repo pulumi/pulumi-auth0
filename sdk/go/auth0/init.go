@@ -93,6 +93,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PromptScreenPartial{}
 	case "auth0:index/promptScreenPartials:PromptScreenPartials":
 		r = &PromptScreenPartials{}
+	case "auth0:index/promptScreenRenderer:PromptScreenRenderer":
+		r = &PromptScreenRenderer{}
 	case "auth0:index/resourceServer:ResourceServer":
 		r = &ResourceServer{}
 	case "auth0:index/resourceServerScope:ResourceServerScope":
@@ -338,6 +340,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/promptScreenPartials",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/promptScreenRenderer",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

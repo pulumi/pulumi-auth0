@@ -170,6 +170,11 @@ export const getPromptScreenPartials: typeof import("./getPromptScreenPartials")
 export const getPromptScreenPartialsOutput: typeof import("./getPromptScreenPartials").getPromptScreenPartialsOutput = null as any;
 utilities.lazyLoad(exports, ["getPromptScreenPartials","getPromptScreenPartialsOutput"], () => require("./getPromptScreenPartials"));
 
+export { GetPromptScreenRendererArgs, GetPromptScreenRendererResult, GetPromptScreenRendererOutputArgs } from "./getPromptScreenRenderer";
+export const getPromptScreenRenderer: typeof import("./getPromptScreenRenderer").getPromptScreenRenderer = null as any;
+export const getPromptScreenRendererOutput: typeof import("./getPromptScreenRenderer").getPromptScreenRendererOutput = null as any;
+utilities.lazyLoad(exports, ["getPromptScreenRenderer","getPromptScreenRendererOutput"], () => require("./getPromptScreenRenderer"));
+
 export { GetResourceServerArgs, GetResourceServerResult, GetResourceServerOutputArgs } from "./getResourceServer";
 export const getResourceServer: typeof import("./getResourceServer").getResourceServer = null as any;
 export const getResourceServerOutput: typeof import("./getResourceServer").getResourceServerOutput = null as any;
@@ -284,6 +289,11 @@ export { PromptScreenPartialsArgs, PromptScreenPartialsState } from "./promptScr
 export type PromptScreenPartials = import("./promptScreenPartials").PromptScreenPartials;
 export const PromptScreenPartials: typeof import("./promptScreenPartials").PromptScreenPartials = null as any;
 utilities.lazyLoad(exports, ["PromptScreenPartials"], () => require("./promptScreenPartials"));
+
+export { PromptScreenRendererArgs, PromptScreenRendererState } from "./promptScreenRenderer";
+export type PromptScreenRenderer = import("./promptScreenRenderer").PromptScreenRenderer;
+export const PromptScreenRenderer: typeof import("./promptScreenRenderer").PromptScreenRenderer = null as any;
+utilities.lazyLoad(exports, ["PromptScreenRenderer"], () => require("./promptScreenRenderer"));
 
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
@@ -466,6 +476,8 @@ const _module = {
                 return new PromptScreenPartial(name, <any>undefined, { urn })
             case "auth0:index/promptScreenPartials:PromptScreenPartials":
                 return new PromptScreenPartials(name, <any>undefined, { urn })
+            case "auth0:index/promptScreenRenderer:PromptScreenRenderer":
+                return new PromptScreenRenderer(name, <any>undefined, { urn })
             case "auth0:index/resourceServer:ResourceServer":
                 return new ResourceServer(name, <any>undefined, { urn })
             case "auth0:index/resourceServerScope:ResourceServerScope":
@@ -543,6 +555,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/promptCustomText", _module
 pulumi.runtime.registerResourceModule("auth0", "index/promptPartials", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptScreenPartial", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptScreenPartials", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/promptScreenRenderer", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServer", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServerScope", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServerScopes", _module)
