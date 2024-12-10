@@ -18,7 +18,7 @@ index 9efdaa08..765b8c57 100644
  		data.Set("family_name", user.GetFamilyName()),
  		data.Set("given_name", user.GetGivenName()),
 diff --git a/internal/auth0/user/resource.go b/internal/auth0/user/resource.go
-index a863e565..4323e099 100644
+index 2ad94a30..e7d451f6 100644
 --- a/internal/auth0/user/resource.go
 +++ b/internal/auth0/user/resource.go
 @@ -175,6 +175,11 @@ func readUser(ctx context.Context, data *schema.ResourceData, meta interface{})
