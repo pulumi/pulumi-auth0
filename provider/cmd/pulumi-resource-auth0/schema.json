@@ -12137,6 +12137,119 @@
                 "type": "object"
             }
         },
+        "auth0:index/promptScreenRenderer:PromptScreenRenderer": {
+            "description": "With this resource, you can Configure the render settings for a specific screen.You can read more about this.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst promptScreenRenderer = new auth0.PromptScreenRenderer(\"prompt_screen_renderer\", {\n    promptType: \"login-id\",\n    screenName: \"login-id\",\n    renderingMode: \"advanced\",\n    defaultHeadTagsDisabled: false,\n    contextConfigurations: [\n        \"branding.settings\",\n        \"branding.themes.default\",\n        \"client.logo_uri\",\n        \"client.description\",\n        \"client.metadata.key\",\n        \"organization.display_name\",\n        \"organization.branding\",\n        \"organization.metadata.key\",\n        \"screen.texts\",\n        \"tenant.name\",\n        \"tenant.friendly_name\",\n        \"tenant.enabled_locales\",\n        \"untrusted_data.submitted_form_data\",\n        \"untrusted_data.authorization_params.login_hint\",\n        \"untrusted_data.authorization_params.screen_hint\",\n        \"untrusted_data.authorization_params.ui_locales\",\n        \"untrusted_data.authorization_params.ext-.key\",\n        \"transaction.connection.metadata.key\",\n    ],\n    headTags: JSON.stringify([{\n        attributes: {\n            async: true,\n            defer: true,\n            integrity: [\"sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==\"],\n            src: \"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js\",\n        },\n        tag: \"script\",\n    }]),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_auth0 as auth0\n\nprompt_screen_renderer = auth0.PromptScreenRenderer(\"prompt_screen_renderer\",\n    prompt_type=\"login-id\",\n    screen_name=\"login-id\",\n    rendering_mode=\"advanced\",\n    default_head_tags_disabled=False,\n    context_configurations=[\n        \"branding.settings\",\n        \"branding.themes.default\",\n        \"client.logo_uri\",\n        \"client.description\",\n        \"client.metadata.key\",\n        \"organization.display_name\",\n        \"organization.branding\",\n        \"organization.metadata.key\",\n        \"screen.texts\",\n        \"tenant.name\",\n        \"tenant.friendly_name\",\n        \"tenant.enabled_locales\",\n        \"untrusted_data.submitted_form_data\",\n        \"untrusted_data.authorization_params.login_hint\",\n        \"untrusted_data.authorization_params.screen_hint\",\n        \"untrusted_data.authorization_params.ui_locales\",\n        \"untrusted_data.authorization_params.ext-.key\",\n        \"transaction.connection.metadata.key\",\n    ],\n    head_tags=json.dumps([{\n        \"attributes\": {\n            \"async\": True,\n            \"defer\": True,\n            \"integrity\": [\"sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==\"],\n            \"src\": \"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js\",\n        },\n        \"tag\": \"script\",\n    }]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var promptScreenRenderer = new Auth0.PromptScreenRenderer(\"prompt_screen_renderer\", new()\n    {\n        PromptType = \"login-id\",\n        ScreenName = \"login-id\",\n        RenderingMode = \"advanced\",\n        DefaultHeadTagsDisabled = false,\n        ContextConfigurations = new[]\n        {\n            \"branding.settings\",\n            \"branding.themes.default\",\n            \"client.logo_uri\",\n            \"client.description\",\n            \"client.metadata.key\",\n            \"organization.display_name\",\n            \"organization.branding\",\n            \"organization.metadata.key\",\n            \"screen.texts\",\n            \"tenant.name\",\n            \"tenant.friendly_name\",\n            \"tenant.enabled_locales\",\n            \"untrusted_data.submitted_form_data\",\n            \"untrusted_data.authorization_params.login_hint\",\n            \"untrusted_data.authorization_params.screen_hint\",\n            \"untrusted_data.authorization_params.ui_locales\",\n            \"untrusted_data.authorization_params.ext-.key\",\n            \"transaction.connection.metadata.key\",\n        },\n        HeadTags = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"attributes\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"async\"] = true,\n                    [\"defer\"] = true,\n                    [\"integrity\"] = new[]\n                    {\n                        \"sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==\",\n                    },\n                    [\"src\"] = \"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js\",\n                },\n                [\"tag\"] = \"script\",\n            },\n        }),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal([]map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"attributes\": map[string]interface{}{\n\t\t\t\t\t\"async\": true,\n\t\t\t\t\t\"defer\": true,\n\t\t\t\t\t\"integrity\": []string{\n\t\t\t\t\t\t\"sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==\",\n\t\t\t\t\t},\n\t\t\t\t\t\"src\": \"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js\",\n\t\t\t\t},\n\t\t\t\t\"tag\": \"script\",\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = auth0.NewPromptScreenRenderer(ctx, \"prompt_screen_renderer\", \u0026auth0.PromptScreenRendererArgs{\n\t\t\tPromptType:              pulumi.String(\"login-id\"),\n\t\t\tScreenName:              pulumi.String(\"login-id\"),\n\t\t\tRenderingMode:           pulumi.String(\"advanced\"),\n\t\t\tDefaultHeadTagsDisabled: pulumi.Bool(false),\n\t\t\tContextConfigurations: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"branding.settings\"),\n\t\t\t\tpulumi.String(\"branding.themes.default\"),\n\t\t\t\tpulumi.String(\"client.logo_uri\"),\n\t\t\t\tpulumi.String(\"client.description\"),\n\t\t\t\tpulumi.String(\"client.metadata.key\"),\n\t\t\t\tpulumi.String(\"organization.display_name\"),\n\t\t\t\tpulumi.String(\"organization.branding\"),\n\t\t\t\tpulumi.String(\"organization.metadata.key\"),\n\t\t\t\tpulumi.String(\"screen.texts\"),\n\t\t\t\tpulumi.String(\"tenant.name\"),\n\t\t\t\tpulumi.String(\"tenant.friendly_name\"),\n\t\t\t\tpulumi.String(\"tenant.enabled_locales\"),\n\t\t\t\tpulumi.String(\"untrusted_data.submitted_form_data\"),\n\t\t\t\tpulumi.String(\"untrusted_data.authorization_params.login_hint\"),\n\t\t\t\tpulumi.String(\"untrusted_data.authorization_params.screen_hint\"),\n\t\t\t\tpulumi.String(\"untrusted_data.authorization_params.ui_locales\"),\n\t\t\t\tpulumi.String(\"untrusted_data.authorization_params.ext-.key\"),\n\t\t\t\tpulumi.String(\"transaction.connection.metadata.key\"),\n\t\t\t},\n\t\t\tHeadTags: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.PromptScreenRenderer;\nimport com.pulumi.auth0.PromptScreenRendererArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var promptScreenRenderer = new PromptScreenRenderer(\"promptScreenRenderer\", PromptScreenRendererArgs.builder()\n            .promptType(\"login-id\")\n            .screenName(\"login-id\")\n            .renderingMode(\"advanced\")\n            .defaultHeadTagsDisabled(false)\n            .contextConfigurations(            \n                \"branding.settings\",\n                \"branding.themes.default\",\n                \"client.logo_uri\",\n                \"client.description\",\n                \"client.metadata.key\",\n                \"organization.display_name\",\n                \"organization.branding\",\n                \"organization.metadata.key\",\n                \"screen.texts\",\n                \"tenant.name\",\n                \"tenant.friendly_name\",\n                \"tenant.enabled_locales\",\n                \"untrusted_data.submitted_form_data\",\n                \"untrusted_data.authorization_params.login_hint\",\n                \"untrusted_data.authorization_params.screen_hint\",\n                \"untrusted_data.authorization_params.ui_locales\",\n                \"untrusted_data.authorization_params.ext-.key\",\n                \"transaction.connection.metadata.key\")\n            .headTags(serializeJson(\n                jsonArray(jsonObject(\n                    jsonProperty(\"attributes\", jsonObject(\n                        jsonProperty(\"async\", true),\n                        jsonProperty(\"defer\", true),\n                        jsonProperty(\"integrity\", jsonArray(\"sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==\")),\n                        jsonProperty(\"src\", \"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js\")\n                    )),\n                    jsonProperty(\"tag\", \"script\")\n                ))))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  promptScreenRenderer:\n    type: auth0:PromptScreenRenderer\n    name: prompt_screen_renderer\n    properties:\n      promptType: login-id\n      screenName: login-id\n      renderingMode: advanced\n      defaultHeadTagsDisabled: false\n      contextConfigurations:\n        - branding.settings\n        - branding.themes.default\n        - client.logo_uri\n        - client.description\n        - client.metadata.key\n        - organization.display_name\n        - organization.branding\n        - organization.metadata.key\n        - screen.texts\n        - tenant.name\n        - tenant.friendly_name\n        - tenant.enabled_locales\n        - untrusted_data.submitted_form_data\n        - untrusted_data.authorization_params.login_hint\n        - untrusted_data.authorization_params.screen_hint\n        - untrusted_data.authorization_params.ui_locales\n        - untrusted_data.authorization_params.ext-.key\n        - transaction.connection.metadata.key\n      headTags:\n        fn::toJSON:\n          - attributes:\n              async: true\n              defer: true\n              integrity:\n                - sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==\n              src: https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js\n            tag: script\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the prompt name and screen_name.\n\n#\n\nAs this is not a resource identifiable by an ID within the Auth0 Management API,\n\nlogin can be imported using the prompt name and screen name using the format:\n\nprompt_name:screen_name\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/promptScreenRenderer:PromptScreenRenderer auth0_prompt_screen_renderer \"login-id:login-id\"\n```\n\n",
+            "properties": {
+                "contextConfigurations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Context values to make available\n"
+                },
+                "defaultHeadTagsDisabled": {
+                    "type": "boolean",
+                    "description": "Override Universal Login default head tags\n"
+                },
+                "headTags": {
+                    "type": "string",
+                    "description": "An array of head tags\n"
+                },
+                "promptType": {
+                    "type": "string",
+                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup`, `signup-password`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`.\n"
+                },
+                "renderingMode": {
+                    "type": "string",
+                    "description": "Rendering modeOptions are: `standard`, `advanced`.\n"
+                },
+                "screenName": {
+                    "type": "string",
+                    "description": "The screen that you are configuring settings for. Options are: `login`, `login-id`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `login-passwordless-email-link`, `login-email-verification`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-recovery-code-challenge`, `reset-password-mfa-sms-challenge`, `reset-password-mfa-voice-challenge`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `custom-form`, `consent`, `customized-consent`, `logout`, `logout-complete`, `logout-aborted`, `mfa-push-welcome`, `mfa-push-enrollment-qr`, `mfa-push-enrollment-code`, `mfa-push-success`, `mfa-push-challenge-push`, `mfa-push-list`, `mfa-otp-enrollment-qr`, `mfa-otp-enrollment-code`, `mfa-otp-challenge`, `mfa-voice-enrollment`, `mfa-voice-challenge`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-enrollment`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-not-available-error`, `mfa-country-codes`, `mfa-sms-enrollment`, `mfa-sms-challenge`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-recovery-code-enrollment`, `mfa-recovery-code-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-login-options`, `mfa-begin-enroll-options`, `status`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `email-verification-result`, `email-otp-challenge`, `organization-selection`, `organization-picker`, `accept-invitation`, `redeem-ticket`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`.\n"
+                },
+                "tenant": {
+                    "type": "string",
+                    "description": "Tenant ID\n"
+                }
+            },
+            "required": [
+                "contextConfigurations",
+                "headTags",
+                "promptType",
+                "screenName",
+                "tenant"
+            ],
+            "inputProperties": {
+                "contextConfigurations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Context values to make available\n"
+                },
+                "defaultHeadTagsDisabled": {
+                    "type": "boolean",
+                    "description": "Override Universal Login default head tags\n"
+                },
+                "headTags": {
+                    "type": "string",
+                    "description": "An array of head tags\n"
+                },
+                "promptType": {
+                    "type": "string",
+                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup`, `signup-password`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`.\n"
+                },
+                "renderingMode": {
+                    "type": "string",
+                    "description": "Rendering modeOptions are: `standard`, `advanced`.\n"
+                },
+                "screenName": {
+                    "type": "string",
+                    "description": "The screen that you are configuring settings for. Options are: `login`, `login-id`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `login-passwordless-email-link`, `login-email-verification`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-recovery-code-challenge`, `reset-password-mfa-sms-challenge`, `reset-password-mfa-voice-challenge`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `custom-form`, `consent`, `customized-consent`, `logout`, `logout-complete`, `logout-aborted`, `mfa-push-welcome`, `mfa-push-enrollment-qr`, `mfa-push-enrollment-code`, `mfa-push-success`, `mfa-push-challenge-push`, `mfa-push-list`, `mfa-otp-enrollment-qr`, `mfa-otp-enrollment-code`, `mfa-otp-challenge`, `mfa-voice-enrollment`, `mfa-voice-challenge`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-enrollment`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-not-available-error`, `mfa-country-codes`, `mfa-sms-enrollment`, `mfa-sms-challenge`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-recovery-code-enrollment`, `mfa-recovery-code-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-login-options`, `mfa-begin-enroll-options`, `status`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `email-verification-result`, `email-otp-challenge`, `organization-selection`, `organization-picker`, `accept-invitation`, `redeem-ticket`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`.\n"
+                }
+            },
+            "requiredInputs": [
+                "promptType",
+                "screenName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PromptScreenRenderer resources.\n",
+                "properties": {
+                    "contextConfigurations": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Context values to make available\n"
+                    },
+                    "defaultHeadTagsDisabled": {
+                        "type": "boolean",
+                        "description": "Override Universal Login default head tags\n"
+                    },
+                    "headTags": {
+                        "type": "string",
+                        "description": "An array of head tags\n"
+                    },
+                    "promptType": {
+                        "type": "string",
+                        "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup`, `signup-password`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`.\n"
+                    },
+                    "renderingMode": {
+                        "type": "string",
+                        "description": "Rendering modeOptions are: `standard`, `advanced`.\n"
+                    },
+                    "screenName": {
+                        "type": "string",
+                        "description": "The screen that you are configuring settings for. Options are: `login`, `login-id`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `login-passwordless-email-link`, `login-email-verification`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-recovery-code-challenge`, `reset-password-mfa-sms-challenge`, `reset-password-mfa-voice-challenge`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `custom-form`, `consent`, `customized-consent`, `logout`, `logout-complete`, `logout-aborted`, `mfa-push-welcome`, `mfa-push-enrollment-qr`, `mfa-push-enrollment-code`, `mfa-push-success`, `mfa-push-challenge-push`, `mfa-push-list`, `mfa-otp-enrollment-qr`, `mfa-otp-enrollment-code`, `mfa-otp-challenge`, `mfa-voice-enrollment`, `mfa-voice-challenge`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-enrollment`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-not-available-error`, `mfa-country-codes`, `mfa-sms-enrollment`, `mfa-sms-challenge`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-recovery-code-enrollment`, `mfa-recovery-code-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-login-options`, `mfa-begin-enroll-options`, `status`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `email-verification-result`, `email-otp-challenge`, `organization-selection`, `organization-picker`, `accept-invitation`, `redeem-ticket`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`.\n"
+                    },
+                    "tenant": {
+                        "type": "string",
+                        "description": "Tenant ID\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "auth0:index/resourceServer:ResourceServer": {
             "description": "With this resource, you can set up APIs that can be consumed from your authorized applications.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myResourceServer = new auth0.ResourceServer(\"my_resource_server\", {\n    name: \"Example Resource Server (Managed by Terraform)\",\n    identifier: \"https://api.example.com\",\n    signingAlg: \"RS256\",\n    allowOfflineAccess: true,\n    tokenLifetime: 8600,\n    skipConsentForVerifiableFirstPartyClients: true,\n    consentPolicy: \"transactional-authorization-with-mfa\",\n    tokenEncryption: {\n        format: \"compact-nested-jwe\",\n        encryptionKey: {\n            name: \"keyname\",\n            algorithm: \"RSA-OAEP-256\",\n            pem: `-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n`,\n        },\n    },\n    authorizationDetails: [\n        {\n            type: \"payment\",\n        },\n        {\n            type: \"non-payment\",\n        },\n    ],\n    proofOfPossession: {\n        mechanism: \"mtls\",\n        required: true,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_resource_server = auth0.ResourceServer(\"my_resource_server\",\n    name=\"Example Resource Server (Managed by Terraform)\",\n    identifier=\"https://api.example.com\",\n    signing_alg=\"RS256\",\n    allow_offline_access=True,\n    token_lifetime=8600,\n    skip_consent_for_verifiable_first_party_clients=True,\n    consent_policy=\"transactional-authorization-with-mfa\",\n    token_encryption={\n        \"format\": \"compact-nested-jwe\",\n        \"encryption_key\": {\n            \"name\": \"keyname\",\n            \"algorithm\": \"RSA-OAEP-256\",\n            \"pem\": \"\"\"-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n\"\"\",\n        },\n    },\n    authorization_details=[\n        {\n            \"type\": \"payment\",\n        },\n        {\n            \"type\": \"non-payment\",\n        },\n    ],\n    proof_of_possession={\n        \"mechanism\": \"mtls\",\n        \"required\": True,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myResourceServer = new Auth0.ResourceServer(\"my_resource_server\", new()\n    {\n        Name = \"Example Resource Server (Managed by Terraform)\",\n        Identifier = \"https://api.example.com\",\n        SigningAlg = \"RS256\",\n        AllowOfflineAccess = true,\n        TokenLifetime = 8600,\n        SkipConsentForVerifiableFirstPartyClients = true,\n        ConsentPolicy = \"transactional-authorization-with-mfa\",\n        TokenEncryption = new Auth0.Inputs.ResourceServerTokenEncryptionArgs\n        {\n            Format = \"compact-nested-jwe\",\n            EncryptionKey = new Auth0.Inputs.ResourceServerTokenEncryptionEncryptionKeyArgs\n            {\n                Name = \"keyname\",\n                Algorithm = \"RSA-OAEP-256\",\n                Pem = @\"-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n\",\n            },\n        },\n        AuthorizationDetails = new[]\n        {\n            new Auth0.Inputs.ResourceServerAuthorizationDetailArgs\n            {\n                Type = \"payment\",\n            },\n            new Auth0.Inputs.ResourceServerAuthorizationDetailArgs\n            {\n                Type = \"non-payment\",\n            },\n        },\n        ProofOfPossession = new Auth0.Inputs.ResourceServerProofOfPossessionArgs\n        {\n            Mechanism = \"mtls\",\n            Required = true,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewResourceServer(ctx, \"my_resource_server\", \u0026auth0.ResourceServerArgs{\n\t\t\tName:               pulumi.String(\"Example Resource Server (Managed by Terraform)\"),\n\t\t\tIdentifier:         pulumi.String(\"https://api.example.com\"),\n\t\t\tSigningAlg:         pulumi.String(\"RS256\"),\n\t\t\tAllowOfflineAccess: pulumi.Bool(true),\n\t\t\tTokenLifetime:      pulumi.Int(8600),\n\t\t\tSkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),\n\t\t\tConsentPolicy: pulumi.String(\"transactional-authorization-with-mfa\"),\n\t\t\tTokenEncryption: \u0026auth0.ResourceServerTokenEncryptionArgs{\n\t\t\t\tFormat: pulumi.String(\"compact-nested-jwe\"),\n\t\t\t\tEncryptionKey: \u0026auth0.ResourceServerTokenEncryptionEncryptionKeyArgs{\n\t\t\t\t\tName:      pulumi.String(\"keyname\"),\n\t\t\t\t\tAlgorithm: pulumi.String(\"RSA-OAEP-256\"),\n\t\t\t\t\tPem:       pulumi.String(\"-----BEGIN CERTIFICATE-----\\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\\n-----END CERTIFICATE-----\\n\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAuthorizationDetails: auth0.ResourceServerAuthorizationDetailArray{\n\t\t\t\t\u0026auth0.ResourceServerAuthorizationDetailArgs{\n\t\t\t\t\tType: pulumi.String(\"payment\"),\n\t\t\t\t},\n\t\t\t\t\u0026auth0.ResourceServerAuthorizationDetailArgs{\n\t\t\t\t\tType: pulumi.String(\"non-payment\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tProofOfPossession: \u0026auth0.ResourceServerProofOfPossessionArgs{\n\t\t\t\tMechanism: pulumi.String(\"mtls\"),\n\t\t\t\tRequired:  pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.ResourceServer;\nimport com.pulumi.auth0.ResourceServerArgs;\nimport com.pulumi.auth0.inputs.ResourceServerTokenEncryptionArgs;\nimport com.pulumi.auth0.inputs.ResourceServerTokenEncryptionEncryptionKeyArgs;\nimport com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;\nimport com.pulumi.auth0.inputs.ResourceServerProofOfPossessionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myResourceServer = new ResourceServer(\"myResourceServer\", ResourceServerArgs.builder()\n            .name(\"Example Resource Server (Managed by Terraform)\")\n            .identifier(\"https://api.example.com\")\n            .signingAlg(\"RS256\")\n            .allowOfflineAccess(true)\n            .tokenLifetime(8600)\n            .skipConsentForVerifiableFirstPartyClients(true)\n            .consentPolicy(\"transactional-authorization-with-mfa\")\n            .tokenEncryption(ResourceServerTokenEncryptionArgs.builder()\n                .format(\"compact-nested-jwe\")\n                .encryptionKey(ResourceServerTokenEncryptionEncryptionKeyArgs.builder()\n                    .name(\"keyname\")\n                    .algorithm(\"RSA-OAEP-256\")\n                    .pem(\"\"\"\n-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n                    \"\"\")\n                    .build())\n                .build())\n            .authorizationDetails(            \n                ResourceServerAuthorizationDetailArgs.builder()\n                    .type(\"payment\")\n                    .build(),\n                ResourceServerAuthorizationDetailArgs.builder()\n                    .type(\"non-payment\")\n                    .build())\n            .proofOfPossession(ResourceServerProofOfPossessionArgs.builder()\n                .mechanism(\"mtls\")\n                .required(true)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myResourceServer:\n    type: auth0:ResourceServer\n    name: my_resource_server\n    properties:\n      name: Example Resource Server (Managed by Terraform)\n      identifier: https://api.example.com\n      signingAlg: RS256\n      allowOfflineAccess: true\n      tokenLifetime: 8600\n      skipConsentForVerifiableFirstPartyClients: true\n      consentPolicy: transactional-authorization-with-mfa\n      tokenEncryption:\n        format: compact-nested-jwe\n        encryptionKey:\n          name: keyname\n          algorithm: RSA-OAEP-256\n          pem: |\n            -----BEGIN CERTIFICATE-----\n            MIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n            -----END CERTIFICATE-----\n      authorizationDetails:\n        - type: payment\n        - type: non-payment\n      proofOfPossession:\n        mechanism: mtls\n        required: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExisting resource servers can be imported using their ID.\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server \"XXXXXXXXXXXXXXXXXXXXXXX\"\n```\n\n",
             "properties": {
@@ -14989,6 +15102,78 @@
                 "required": [
                     "promptType",
                     "screenPartials",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "auth0:index/getPromptScreenRenderer:getPromptScreenRenderer": {
+            "description": "Data source to retrieve a specific Auth0 prompt screen settings by `prompt_type` and `screen_name`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPromptScreenRenderer.\n",
+                "properties": {
+                    "promptType": {
+                        "type": "string",
+                        "description": "The type of prompt to customize.\n"
+                    },
+                    "screenName": {
+                        "type": "string",
+                        "description": "The screen name associated with the prompt type.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "promptType",
+                    "screenName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPromptScreenRenderer.\n",
+                "properties": {
+                    "contextConfigurations": {
+                        "description": "Context values to make available\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "defaultHeadTagsDisabled": {
+                        "description": "Override Universal Login default head tags\n",
+                        "type": "boolean"
+                    },
+                    "headTags": {
+                        "description": "An array of head tags\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "promptType": {
+                        "description": "The type of prompt to customize.\n",
+                        "type": "string"
+                    },
+                    "renderingMode": {
+                        "description": "Rendering modeOptions are: `standard`, `advanced`.\n",
+                        "type": "string"
+                    },
+                    "screenName": {
+                        "description": "The screen name associated with the prompt type.\n",
+                        "type": "string"
+                    },
+                    "tenant": {
+                        "description": "Tenant ID\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "contextConfigurations",
+                    "defaultHeadTagsDisabled",
+                    "headTags",
+                    "promptType",
+                    "renderingMode",
+                    "screenName",
+                    "tenant",
                     "id"
                 ],
                 "type": "object"
