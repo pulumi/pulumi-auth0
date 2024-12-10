@@ -837,6 +837,15 @@
                     }
                 }
             },
+            "auth0_prompt_screen_renderer": {
+                "current": "auth0:index/promptScreenRenderer:PromptScreenRenderer",
+                "majorVersion": 3,
+                "fields": {
+                    "context_configuration": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "auth0_resource_server": {
                 "current": "auth0:index/resourceServer:ResourceServer",
                 "majorVersion": 3,
@@ -1685,6 +1694,15 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "auth0_prompt_screen_renderer": {
+                "current": "auth0:index/getPromptScreenRenderer:getPromptScreenRenderer",
+                "majorVersion": 3,
+                "fields": {
+                    "context_configuration": {
+                        "maxItemsOne": false
                     }
                 }
             },
