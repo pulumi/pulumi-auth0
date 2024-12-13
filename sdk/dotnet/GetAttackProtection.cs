@@ -52,6 +52,27 @@ namespace Pulumi.Auth0
         /// </summary>
         public static Output<GetAttackProtectionResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAttackProtectionResult>("auth0:index/getAttackProtection:getAttackProtection", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to access information about the tenant's attack protection settings.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myProtection = Auth0.GetAttackProtection.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAttackProtectionResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAttackProtectionResult>("auth0:index/getAttackProtection:getAttackProtection", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

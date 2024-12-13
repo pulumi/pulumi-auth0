@@ -102,6 +102,52 @@ namespace Pulumi.Auth0
         /// </summary>
         public static Output<GetConnectionScimConfigurationResult> Invoke(GetConnectionScimConfigurationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionScimConfigurationResult>("auth0:index/getConnectionScimConfiguration:getConnectionScimConfiguration", args ?? new GetConnectionScimConfigurationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myEnterpriseConnection = new Auth0.Connection("my_enterprise_connection", new()
+        ///     {
+        ///         Name = "my-enterprise-connection",
+        ///         DisplayName = "My Enterprise Connection",
+        ///         Strategy = "okta",
+        ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+        ///         {
+        ///             ClientId = "1234567",
+        ///             ClientSecret = "1234567",
+        ///             Issuer = "https://example.okta.com",
+        ///             JwksUri = "https://example.okta.com/oauth2/v1/keys",
+        ///             TokenEndpoint = "https://example.okta.com/oauth2/v1/token",
+        ///             AuthorizationEndpoint = "https://example.okta.com/oauth2/v1/authorize",
+        ///         },
+        ///     });
+        /// 
+        ///     var myConnScimConfiguration = new Auth0.ConnectionScimConfiguration("my_conn_scim_configuration", new()
+        ///     {
+        ///         ConnectionId = myEnterpriseConnection.Id,
+        ///     });
+        /// 
+        ///     // A data source for an Auth0 Connection SCIM Configuration.
+        ///     var myConnScimConfigurationData = Auth0.GetConnectionScimConfiguration.Invoke(new()
+        ///     {
+        ///         ConnectionId = myConnScimConfiguration.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetConnectionScimConfigurationResult> Invoke(GetConnectionScimConfigurationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectionScimConfigurationResult>("auth0:index/getConnectionScimConfiguration:getConnectionScimConfiguration", args ?? new GetConnectionScimConfigurationInvokeArgs(), options.WithDefaults());
     }
 
 

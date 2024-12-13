@@ -91,21 +91,11 @@ type GetClientsResult struct {
 }
 
 func GetClientsOutput(ctx *pulumi.Context, args GetClientsOutputArgs, opts ...pulumi.InvokeOption) GetClientsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetClientsResultOutput, error) {
 			args := v.(GetClientsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetClientsResult
-			secret, err := ctx.InvokePackageRaw("auth0:index/getClients:getClients", args, &rv, "", opts...)
-			if err != nil {
-				return GetClientsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetClientsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetClientsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("auth0:index/getClients:getClients", args, GetClientsResultOutput{}, options).(GetClientsResultOutput), nil
 		}).(GetClientsResultOutput)
 }
 

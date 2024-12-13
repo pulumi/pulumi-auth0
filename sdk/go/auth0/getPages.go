@@ -62,18 +62,8 @@ type LookupPagesResult struct {
 
 func LookupPagesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupPagesResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (LookupPagesResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv LookupPagesResult
-		secret, err := ctx.InvokePackageRaw("auth0:index/getPages:getPages", nil, &rv, "", opts...)
-		if err != nil {
-			return LookupPagesResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(LookupPagesResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(LookupPagesResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("auth0:index/getPages:getPages", nil, LookupPagesResultOutput{}, options).(LookupPagesResultOutput), nil
 	}).(LookupPagesResultOutput)
 }
 

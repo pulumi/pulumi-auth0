@@ -92,6 +92,47 @@ namespace Pulumi.Auth0
         /// </summary>
         public static Output<GetClientsResult> Invoke(GetClientsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClientsResult>("auth0:index/getClients:getClients", args ?? new GetClientsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source to retrieve a list of Auth0 application clients with optional filtering.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Auth0 clients with "External" in the name
+        ///     var externalApps = Auth0.GetClients.Invoke(new()
+        ///     {
+        ///         NameFilter = "External",
+        ///     });
+        /// 
+        ///     // Auth0 clients filtered by non_interactive or spa app type
+        ///     var m2mApps = Auth0.GetClients.Invoke(new()
+        ///     {
+        ///         AppTypes = new[]
+        ///         {
+        ///             "non_interactive",
+        ///             "spa",
+        ///         },
+        ///     });
+        /// 
+        ///     // Auth0 clients filtered by is_first_party equal to true
+        ///     var firstPartyApps = Auth0.GetClients.Invoke(new()
+        ///     {
+        ///         IsFirstParty = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetClientsResult> Invoke(GetClientsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetClientsResult>("auth0:index/getClients:getClients", args ?? new GetClientsInvokeArgs(), options.WithDefaults());
     }
 
 
