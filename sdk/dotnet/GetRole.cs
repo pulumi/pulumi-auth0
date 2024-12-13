@@ -72,6 +72,37 @@ namespace Pulumi.Auth0
         /// </summary>
         public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRoleResult>("auth0:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source to retrieve a specific Auth0 role by `role_id` or `name`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // An Auth0 Role loaded using its name.
+        ///     var some_role_by_name = Auth0.GetRole.Invoke(new()
+        ///     {
+        ///         Name = "my-role",
+        ///     });
+        /// 
+        ///     // An Auth0 Role loaded using its ID.
+        ///     var some_role_by_id = Auth0.GetRole.Invoke(new()
+        ///     {
+        ///         RoleId = "abcdefghkijklmnopqrstuvwxyz0123456789",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRoleResult>("auth0:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
     }
 
 

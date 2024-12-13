@@ -60,6 +60,31 @@ namespace Pulumi.Auth0
         /// </summary>
         public static Output<GetFlowResult> Invoke(GetFlowInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlowResult>("auth0:index/getFlow:getFlow", args ?? new GetFlowInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source to retrieve a specific Auth0 Flow by `id`
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // An Auth0 flow loaded using its ID.
+        ///     var myFlowData = Auth0.GetFlow.Invoke(new()
+        ///     {
+        ///         Id = "af_5CTYdsXHLoLXD7ZVwvFHew",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFlowResult> Invoke(GetFlowInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFlowResult>("auth0:index/getFlow:getFlow", args ?? new GetFlowInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -58,6 +58,30 @@ namespace Pulumi.Auth0
         /// </summary>
         public static Output<GetPromptScreenPartialsResult> Invoke(GetPromptScreenPartialsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPromptScreenPartialsResult>("auth0:index/getPromptScreenPartials:getPromptScreenPartials", args ?? new GetPromptScreenPartialsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var promptScreenPartials = Auth0.GetPromptScreenPartials.Invoke(new()
+        ///     {
+        ///         PromptType = "prompt-name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPromptScreenPartialsResult> Invoke(GetPromptScreenPartialsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPromptScreenPartialsResult>("auth0:index/getPromptScreenPartials:getPromptScreenPartials", args ?? new GetPromptScreenPartialsInvokeArgs(), options.WithDefaults());
     }
 
 

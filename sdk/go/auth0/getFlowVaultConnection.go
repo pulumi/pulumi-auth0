@@ -76,21 +76,11 @@ type LookupFlowVaultConnectionResult struct {
 }
 
 func LookupFlowVaultConnectionOutput(ctx *pulumi.Context, args LookupFlowVaultConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupFlowVaultConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFlowVaultConnectionResultOutput, error) {
 			args := v.(LookupFlowVaultConnectionArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupFlowVaultConnectionResult
-			secret, err := ctx.InvokePackageRaw("auth0:index/getFlowVaultConnection:getFlowVaultConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFlowVaultConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFlowVaultConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFlowVaultConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("auth0:index/getFlowVaultConnection:getFlowVaultConnection", args, LookupFlowVaultConnectionResultOutput{}, options).(LookupFlowVaultConnectionResultOutput), nil
 		}).(LookupFlowVaultConnectionResultOutput)
 }
 

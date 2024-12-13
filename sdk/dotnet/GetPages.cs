@@ -52,6 +52,27 @@ namespace Pulumi.Auth0
         /// </summary>
         public static Output<GetPagesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPagesResult>("auth0:index/getPages:getPages", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPages = Auth0.GetPages.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPagesResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPagesResult>("auth0:index/getPages:getPages", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

@@ -60,6 +60,31 @@ namespace Pulumi.Auth0
         /// </summary>
         public static Output<GetFormResult> Invoke(GetFormInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFormResult>("auth0:index/getForm:getForm", args ?? new GetFormInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source to retrieve a specific Auth0 Form by `id`
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // An Auth0 form loaded using its ID.
+        ///     var myFormData = Auth0.GetForm.Invoke(new()
+        ///     {
+        ///         Id = "ap_31LxRJphZF1Kqzf2zBgmgA",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFormResult> Invoke(GetFormInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFormResult>("auth0:index/getForm:getForm", args ?? new GetFormInvokeArgs(), options.WithDefaults());
     }
 
 

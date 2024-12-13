@@ -64,18 +64,8 @@ type LookupBrandingResult struct {
 
 func LookupBrandingOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupBrandingResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (LookupBrandingResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv LookupBrandingResult
-		secret, err := ctx.InvokePackageRaw("auth0:index/getBranding:getBranding", nil, &rv, "", opts...)
-		if err != nil {
-			return LookupBrandingResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(LookupBrandingResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(LookupBrandingResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("auth0:index/getBranding:getBranding", nil, LookupBrandingResultOutput{}, options).(LookupBrandingResultOutput), nil
 	}).(LookupBrandingResultOutput)
 }
 

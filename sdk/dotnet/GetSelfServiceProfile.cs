@@ -60,6 +60,31 @@ namespace Pulumi.Auth0
         /// </summary>
         public static Output<GetSelfServiceProfileResult> Invoke(GetSelfServiceProfileInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSelfServiceProfileResult>("auth0:index/getSelfServiceProfile:getSelfServiceProfile", args ?? new GetSelfServiceProfileInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source to retrieve a specific Auth0 Self-Service Profile by `id`
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // An Auth0 Self-Service- Profile loaded using it's ID.
+        ///     var auth0SelfServiceProfile = Auth0.GetSelfServiceProfile.Invoke(new()
+        ///     {
+        ///         Id = "some-profile-id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSelfServiceProfileResult> Invoke(GetSelfServiceProfileInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSelfServiceProfileResult>("auth0:index/getSelfServiceProfile:getSelfServiceProfile", args ?? new GetSelfServiceProfileInvokeArgs(), options.WithDefaults());
     }
 
 
