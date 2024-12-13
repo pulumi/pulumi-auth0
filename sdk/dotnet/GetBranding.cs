@@ -52,6 +52,27 @@ namespace Pulumi.Auth0
         /// </summary>
         public static Output<GetBrandingResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBrandingResult>("auth0:index/getBranding:getBranding", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to access information about the tenant's branding settings.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myBranding = Auth0.GetBranding.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBrandingResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBrandingResult>("auth0:index/getBranding:getBranding", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

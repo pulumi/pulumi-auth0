@@ -32,18 +32,8 @@ type GetSigningKeysResult struct {
 
 func GetSigningKeysOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetSigningKeysResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetSigningKeysResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetSigningKeysResult
-		secret, err := ctx.InvokePackageRaw("auth0:index/getSigningKeys:getSigningKeys", nil, &rv, "", opts...)
-		if err != nil {
-			return GetSigningKeysResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetSigningKeysResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetSigningKeysResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("auth0:index/getSigningKeys:getSigningKeys", nil, GetSigningKeysResultOutput{}, options).(GetSigningKeysResultOutput), nil
 	}).(GetSigningKeysResultOutput)
 }
 

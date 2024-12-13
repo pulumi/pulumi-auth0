@@ -67,21 +67,11 @@ type LookupPromptScreenPartialsResult struct {
 }
 
 func LookupPromptScreenPartialsOutput(ctx *pulumi.Context, args LookupPromptScreenPartialsOutputArgs, opts ...pulumi.InvokeOption) LookupPromptScreenPartialsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPromptScreenPartialsResultOutput, error) {
 			args := v.(LookupPromptScreenPartialsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupPromptScreenPartialsResult
-			secret, err := ctx.InvokePackageRaw("auth0:index/getPromptScreenPartials:getPromptScreenPartials", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPromptScreenPartialsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPromptScreenPartialsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPromptScreenPartialsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("auth0:index/getPromptScreenPartials:getPromptScreenPartials", args, LookupPromptScreenPartialsResultOutput{}, options).(LookupPromptScreenPartialsResultOutput), nil
 		}).(LookupPromptScreenPartialsResultOutput)
 }
 

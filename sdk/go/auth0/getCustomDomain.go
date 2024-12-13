@@ -46,18 +46,8 @@ type LookupCustomDomainResult struct {
 
 func LookupCustomDomainOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupCustomDomainResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (LookupCustomDomainResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv LookupCustomDomainResult
-		secret, err := ctx.InvokePackageRaw("auth0:index/getCustomDomain:getCustomDomain", nil, &rv, "", opts...)
-		if err != nil {
-			return LookupCustomDomainResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(LookupCustomDomainResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(LookupCustomDomainResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("auth0:index/getCustomDomain:getCustomDomain", nil, LookupCustomDomainResultOutput{}, options).(LookupCustomDomainResultOutput), nil
 	}).(LookupCustomDomainResultOutput)
 }
 

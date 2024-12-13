@@ -22,6 +22,12 @@ namespace Pulumi.Auth0
         /// </summary>
         public static Output<GetPromptScreenRendererResult> Invoke(GetPromptScreenRendererInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPromptScreenRendererResult>("auth0:index/getPromptScreenRenderer:getPromptScreenRenderer", args ?? new GetPromptScreenRendererInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source to retrieve a specific Auth0 prompt screen settings by `prompt_type` and `screen_name`
+        /// </summary>
+        public static Output<GetPromptScreenRendererResult> Invoke(GetPromptScreenRendererInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPromptScreenRendererResult>("auth0:index/getPromptScreenRenderer:getPromptScreenRenderer", args ?? new GetPromptScreenRendererInvokeArgs(), options.WithDefaults());
     }
 
 

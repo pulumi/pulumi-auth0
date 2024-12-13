@@ -60,6 +60,31 @@ namespace Pulumi.Auth0
         /// </summary>
         public static Output<GetFlowVaultConnectionResult> Invoke(GetFlowVaultConnectionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlowVaultConnectionResult>("auth0:index/getFlowVaultConnection:getFlowVaultConnection", args ?? new GetFlowVaultConnectionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source to retrieve a specific Auth0 Flow Vault Connection by `id`
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // An Auth0 flow vault connection loaded using its ID.
+        ///     var dataConnection = Auth0.GetFlowVaultConnection.Invoke(new()
+        ///     {
+        ///         Id = "ac_9m2uqjHsqs19riN9N6sZQ7",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFlowVaultConnectionResult> Invoke(GetFlowVaultConnectionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFlowVaultConnectionResult>("auth0:index/getFlowVaultConnection:getFlowVaultConnection", args ?? new GetFlowVaultConnectionInvokeArgs(), options.WithDefaults());
     }
 
 

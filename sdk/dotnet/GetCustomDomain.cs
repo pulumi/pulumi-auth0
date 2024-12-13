@@ -22,6 +22,12 @@ namespace Pulumi.Auth0
         /// </summary>
         public static Output<GetCustomDomainResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomDomainResult>("auth0:index/getCustomDomain:getCustomDomain", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Data source to retrieve the custom domain configuration.
+        /// </summary>
+        public static Output<GetCustomDomainResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCustomDomainResult>("auth0:index/getCustomDomain:getCustomDomain", InvokeArgs.Empty, options.WithDefaults());
     }
 
 
