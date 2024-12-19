@@ -6,7 +6,6 @@ package com.pulumi.auth0;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -94,21 +93,6 @@ public final class FlowVaultConnectionArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Indicates if the vault connection is configured.
-     * 
-     */
-    @Import(name="ready")
-    private @Nullable Output<Boolean> ready;
-
-    /**
-     * @return Indicates if the vault connection is configured.
-     * 
-     */
-    public Optional<Output<Boolean>> ready() {
-        return Optional.ofNullable(this.ready);
-    }
-
-    /**
      * Configuration of the vault connection. (Mapping information must be provided as key/value pairs)
      * 
      */
@@ -131,7 +115,6 @@ public final class FlowVaultConnectionArgs extends com.pulumi.resources.Resource
         this.environment = $.environment;
         this.fingerprint = $.fingerprint;
         this.name = $.name;
-        this.ready = $.ready;
         this.setup = $.setup;
     }
 
@@ -256,27 +239,6 @@ public final class FlowVaultConnectionArgs extends com.pulumi.resources.Resource
          */
         public Builder name(String name) {
             return name(Output.of(name));
-        }
-
-        /**
-         * @param ready Indicates if the vault connection is configured.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ready(@Nullable Output<Boolean> ready) {
-            $.ready = ready;
-            return this;
-        }
-
-        /**
-         * @param ready Indicates if the vault connection is configured.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ready(Boolean ready) {
-            return ready(Output.of(ready));
         }
 
         /**

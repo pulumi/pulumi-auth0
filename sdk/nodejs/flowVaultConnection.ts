@@ -89,7 +89,7 @@ export class FlowVaultConnection extends pulumi.CustomResource {
     /**
      * Indicates if the vault connection is configured.
      */
-    public readonly ready!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly ready!: pulumi.Output<boolean>;
     /**
      * Configuration of the vault connection. (Mapping information must be provided as key/value pairs)
      */
@@ -125,8 +125,8 @@ export class FlowVaultConnection extends pulumi.CustomResource {
             resourceInputs["environment"] = args ? args.environment : undefined;
             resourceInputs["fingerprint"] = args ? args.fingerprint : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["ready"] = args ? args.ready : undefined;
             resourceInputs["setup"] = args?.setup ? pulumi.secret(args.setup) : undefined;
+            resourceInputs["ready"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["setup"] };
@@ -193,10 +193,6 @@ export interface FlowVaultConnectionArgs {
      * Name of the vault connection.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Indicates if the vault connection is configured.
-     */
-    ready?: pulumi.Input<boolean>;
     /**
      * Configuration of the vault connection. (Mapping information must be provided as key/value pairs)
      */

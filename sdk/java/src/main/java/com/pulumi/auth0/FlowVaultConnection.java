@@ -153,14 +153,14 @@ public class FlowVaultConnection extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ready", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> ready;
+    private Output<Boolean> ready;
 
     /**
      * @return Indicates if the vault connection is configured.
      * 
      */
-    public Output<Optional<Boolean>> ready() {
-        return Codegen.optional(this.ready);
+    public Output<Boolean> ready() {
+        return this.ready;
     }
     /**
      * Configuration of the vault connection. (Mapping information must be provided as key/value pairs)

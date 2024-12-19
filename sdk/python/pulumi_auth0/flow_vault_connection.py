@@ -24,7 +24,6 @@ class FlowVaultConnectionArgs:
                  environment: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 ready: Optional[pulumi.Input[bool]] = None,
                  setup: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a FlowVaultConnection resource.
@@ -33,7 +32,6 @@ class FlowVaultConnectionArgs:
         :param pulumi.Input[str] environment: Environment of the vault connection.
         :param pulumi.Input[str] fingerprint: Fingerprint of the vault connection.
         :param pulumi.Input[str] name: Name of the vault connection.
-        :param pulumi.Input[bool] ready: Indicates if the vault connection is configured.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] setup: Configuration of the vault connection. (Mapping information must be provided as key/value pairs)
         """
         pulumi.set(__self__, "app_id", app_id)
@@ -45,8 +43,6 @@ class FlowVaultConnectionArgs:
             pulumi.set(__self__, "fingerprint", fingerprint)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if ready is not None:
-            pulumi.set(__self__, "ready", ready)
         if setup is not None:
             pulumi.set(__self__, "setup", setup)
 
@@ -109,18 +105,6 @@ class FlowVaultConnectionArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def ready(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates if the vault connection is configured.
-        """
-        return pulumi.get(self, "ready")
-
-    @ready.setter
-    def ready(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "ready", value)
 
     @property
     @pulumi.getter
@@ -265,7 +249,6 @@ class FlowVaultConnection(pulumi.CustomResource):
                  environment: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 ready: Optional[pulumi.Input[bool]] = None,
                  setup: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -308,7 +291,6 @@ class FlowVaultConnection(pulumi.CustomResource):
         :param pulumi.Input[str] environment: Environment of the vault connection.
         :param pulumi.Input[str] fingerprint: Fingerprint of the vault connection.
         :param pulumi.Input[str] name: Name of the vault connection.
-        :param pulumi.Input[bool] ready: Indicates if the vault connection is configured.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] setup: Configuration of the vault connection. (Mapping information must be provided as key/value pairs)
         """
         ...
@@ -370,7 +352,6 @@ class FlowVaultConnection(pulumi.CustomResource):
                  environment: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 ready: Optional[pulumi.Input[bool]] = None,
                  setup: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -388,8 +369,8 @@ class FlowVaultConnection(pulumi.CustomResource):
             __props__.__dict__["environment"] = environment
             __props__.__dict__["fingerprint"] = fingerprint
             __props__.__dict__["name"] = name
-            __props__.__dict__["ready"] = ready
             __props__.__dict__["setup"] = None if setup is None else pulumi.Output.secret(setup)
+            __props__.__dict__["ready"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["setup"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(FlowVaultConnection, __self__).__init__(
@@ -479,7 +460,7 @@ class FlowVaultConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ready(self) -> pulumi.Output[Optional[bool]]:
+    def ready(self) -> pulumi.Output[bool]:
         """
         Indicates if the vault connection is configured.
         """
