@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * With this resource, you can Configure the render settings for a specific screen.You can read more about this.
+ * With this resource, you can Configure the render settings for a specific screen.You can read more about this [here](https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens).
  *
  * ## Example Usage
  *
@@ -111,7 +111,7 @@ export class PromptScreenRenderer extends pulumi.CustomResource {
      */
     public readonly headTags!: pulumi.Output<string>;
     /**
-     * The prompt that you are configuring settings for. Options are: `signup-id`, `signup`, `signup-password`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`.
+     * The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`.
      */
     public readonly promptType!: pulumi.Output<string>;
     /**
@@ -119,7 +119,7 @@ export class PromptScreenRenderer extends pulumi.CustomResource {
      */
     public readonly renderingMode!: pulumi.Output<string | undefined>;
     /**
-     * The screen that you are configuring settings for. Options are: `login`, `login-id`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `login-passwordless-email-link`, `login-email-verification`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-recovery-code-challenge`, `reset-password-mfa-sms-challenge`, `reset-password-mfa-voice-challenge`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `custom-form`, `consent`, `customized-consent`, `logout`, `logout-complete`, `logout-aborted`, `mfa-push-welcome`, `mfa-push-enrollment-qr`, `mfa-push-enrollment-code`, `mfa-push-success`, `mfa-push-challenge-push`, `mfa-push-list`, `mfa-otp-enrollment-qr`, `mfa-otp-enrollment-code`, `mfa-otp-challenge`, `mfa-voice-enrollment`, `mfa-voice-challenge`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-enrollment`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-not-available-error`, `mfa-country-codes`, `mfa-sms-enrollment`, `mfa-sms-challenge`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-recovery-code-enrollment`, `mfa-recovery-code-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-login-options`, `mfa-begin-enroll-options`, `status`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `email-verification-result`, `email-otp-challenge`, `organization-selection`, `organization-picker`, `accept-invitation`, `redeem-ticket`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`.
+     * The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`.
      */
     public readonly screenName!: pulumi.Output<string>;
     /**
@@ -185,7 +185,7 @@ export interface PromptScreenRendererState {
      */
     headTags?: pulumi.Input<string>;
     /**
-     * The prompt that you are configuring settings for. Options are: `signup-id`, `signup`, `signup-password`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`.
+     * The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`.
      */
     promptType?: pulumi.Input<string>;
     /**
@@ -193,7 +193,7 @@ export interface PromptScreenRendererState {
      */
     renderingMode?: pulumi.Input<string>;
     /**
-     * The screen that you are configuring settings for. Options are: `login`, `login-id`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `login-passwordless-email-link`, `login-email-verification`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-recovery-code-challenge`, `reset-password-mfa-sms-challenge`, `reset-password-mfa-voice-challenge`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `custom-form`, `consent`, `customized-consent`, `logout`, `logout-complete`, `logout-aborted`, `mfa-push-welcome`, `mfa-push-enrollment-qr`, `mfa-push-enrollment-code`, `mfa-push-success`, `mfa-push-challenge-push`, `mfa-push-list`, `mfa-otp-enrollment-qr`, `mfa-otp-enrollment-code`, `mfa-otp-challenge`, `mfa-voice-enrollment`, `mfa-voice-challenge`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-enrollment`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-not-available-error`, `mfa-country-codes`, `mfa-sms-enrollment`, `mfa-sms-challenge`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-recovery-code-enrollment`, `mfa-recovery-code-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-login-options`, `mfa-begin-enroll-options`, `status`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `email-verification-result`, `email-otp-challenge`, `organization-selection`, `organization-picker`, `accept-invitation`, `redeem-ticket`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`.
+     * The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`.
      */
     screenName?: pulumi.Input<string>;
     /**
@@ -219,7 +219,7 @@ export interface PromptScreenRendererArgs {
      */
     headTags?: pulumi.Input<string>;
     /**
-     * The prompt that you are configuring settings for. Options are: `signup-id`, `signup`, `signup-password`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`.
+     * The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`.
      */
     promptType: pulumi.Input<string>;
     /**
@@ -227,7 +227,7 @@ export interface PromptScreenRendererArgs {
      */
     renderingMode?: pulumi.Input<string>;
     /**
-     * The screen that you are configuring settings for. Options are: `login`, `login-id`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `login-passwordless-email-link`, `login-email-verification`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-recovery-code-challenge`, `reset-password-mfa-sms-challenge`, `reset-password-mfa-voice-challenge`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `custom-form`, `consent`, `customized-consent`, `logout`, `logout-complete`, `logout-aborted`, `mfa-push-welcome`, `mfa-push-enrollment-qr`, `mfa-push-enrollment-code`, `mfa-push-success`, `mfa-push-challenge-push`, `mfa-push-list`, `mfa-otp-enrollment-qr`, `mfa-otp-enrollment-code`, `mfa-otp-challenge`, `mfa-voice-enrollment`, `mfa-voice-challenge`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-enrollment`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-not-available-error`, `mfa-country-codes`, `mfa-sms-enrollment`, `mfa-sms-challenge`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-recovery-code-enrollment`, `mfa-recovery-code-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-login-options`, `mfa-begin-enroll-options`, `status`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `email-verification-result`, `email-otp-challenge`, `organization-selection`, `organization-picker`, `accept-invitation`, `redeem-ticket`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`.
+     * The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`.
      */
     screenName: pulumi.Input<string>;
 }
