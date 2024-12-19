@@ -73,7 +73,7 @@ type FlowVaultConnection struct {
 	// Name of the vault connection.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Indicates if the vault connection is configured.
-	Ready pulumi.BoolPtrOutput `pulumi:"ready"`
+	Ready pulumi.BoolOutput `pulumi:"ready"`
 	// Configuration of the vault connection. (Mapping information must be provided as key/value pairs)
 	Setup pulumi.StringMapOutput `pulumi:"setup"`
 }
@@ -166,8 +166,6 @@ type flowVaultConnectionArgs struct {
 	Fingerprint *string `pulumi:"fingerprint"`
 	// Name of the vault connection.
 	Name *string `pulumi:"name"`
-	// Indicates if the vault connection is configured.
-	Ready *bool `pulumi:"ready"`
 	// Configuration of the vault connection. (Mapping information must be provided as key/value pairs)
 	Setup map[string]string `pulumi:"setup"`
 }
@@ -184,8 +182,6 @@ type FlowVaultConnectionArgs struct {
 	Fingerprint pulumi.StringPtrInput
 	// Name of the vault connection.
 	Name pulumi.StringPtrInput
-	// Indicates if the vault connection is configured.
-	Ready pulumi.BoolPtrInput
 	// Configuration of the vault connection. (Mapping information must be provided as key/value pairs)
 	Setup pulumi.StringMapInput
 }
@@ -303,8 +299,8 @@ func (o FlowVaultConnectionOutput) Name() pulumi.StringOutput {
 }
 
 // Indicates if the vault connection is configured.
-func (o FlowVaultConnectionOutput) Ready() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *FlowVaultConnection) pulumi.BoolPtrOutput { return v.Ready }).(pulumi.BoolPtrOutput)
+func (o FlowVaultConnectionOutput) Ready() pulumi.BoolOutput {
+	return o.ApplyT(func(v *FlowVaultConnection) pulumi.BoolOutput { return v.Ready }).(pulumi.BoolOutput)
 }
 
 // Configuration of the vault connection. (Mapping information must be provided as key/value pairs)

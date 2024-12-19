@@ -88,7 +88,7 @@ namespace Pulumi.Auth0
         /// Indicates if the vault connection is configured.
         /// </summary>
         [Output("ready")]
-        public Output<bool?> Ready { get; private set; } = null!;
+        public Output<bool> Ready { get; private set; } = null!;
 
         /// <summary>
         /// Configuration of the vault connection. (Mapping information must be provided as key/value pairs)
@@ -175,12 +175,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Indicates if the vault connection is configured.
-        /// </summary>
-        [Input("ready")]
-        public Input<bool>? Ready { get; set; }
 
         [Input("setup")]
         private InputMap<string>? _setup;
