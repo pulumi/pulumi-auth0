@@ -27,7 +27,6 @@ func server() pulumirpc.ResourceProviderServer {
 	)
 }
 
-// TODO[pulumi/pulumi-auth0#587]: Remove non-prc test after enabling PRC by default.
 func TestConnectionMigration(t *testing.T) {
 	testutils.ReplaySequence(t, server(), `[
         {
@@ -196,6 +195,28 @@ func TestConnectionMigration(t *testing.T) {
                 "detailedDiff": {
                     "options.fieldsMap": {
                         "kind": "DELETE"
+                    },
+                    "options.authParams": {
+                    },
+                    "options.disableSelfServiceChangePassword": {
+                    },
+                    "options.disableSignOut": {
+                    },
+                    "options.enableScriptContext": {
+                    },
+                    "options.fedMetadataXml": {
+                    },
+                    "options.mapUserIdToId": {
+                    },
+                    "options.metadataUrl": {
+                    },
+                    "options.metadataXml": {
+                    },
+                    "options.pingFederateBaseUrl": {
+                    },
+                    "options.pkceEnabled": {
+                    },
+                    "options.upstreamParams": {
                     }
                 },
                 "hasDetailedDiff": true

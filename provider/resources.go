@@ -116,6 +116,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		EnableZeroDefaultSchemaVersion: true,
+		EnableAccurateBridgePreview:    true,
 	}
 
 	prov.MustComputeTokens(tks.SingleModule("auth0_", mainMod,
