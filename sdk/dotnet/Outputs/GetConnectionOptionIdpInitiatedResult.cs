@@ -16,6 +16,7 @@ namespace Pulumi.Auth0.Outputs
         public readonly string ClientAuthorizeQuery;
         public readonly string ClientId;
         public readonly string ClientProtocol;
+        public readonly bool Enabled;
 
         [OutputConstructor]
         private GetConnectionOptionIdpInitiatedResult(
@@ -23,11 +24,14 @@ namespace Pulumi.Auth0.Outputs
 
             string clientId,
 
-            string clientProtocol)
+            string clientProtocol,
+
+            bool enabled)
         {
             ClientAuthorizeQuery = clientAuthorizeQuery;
             ClientId = clientId;
             ClientProtocol = clientProtocol;
+            Enabled = enabled;
         }
     }
 }

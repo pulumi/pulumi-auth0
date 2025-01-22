@@ -104,7 +104,7 @@ type EmailTemplate struct {
 	Subject pulumi.StringOutput `pulumi:"subject"`
 	// Syntax of the template body. You can use either text or HTML with Liquid syntax.
 	Syntax pulumi.StringOutput `pulumi:"syntax"`
-	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
 	Template pulumi.StringOutput `pulumi:"template"`
 	// Number of seconds during which the link within the email will be valid.
 	UrlLifetimeInSeconds pulumi.IntPtrOutput `pulumi:"urlLifetimeInSeconds"`
@@ -172,7 +172,7 @@ type emailTemplateState struct {
 	Subject *string `pulumi:"subject"`
 	// Syntax of the template body. You can use either text or HTML with Liquid syntax.
 	Syntax *string `pulumi:"syntax"`
-	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
 	Template *string `pulumi:"template"`
 	// Number of seconds during which the link within the email will be valid.
 	UrlLifetimeInSeconds *int `pulumi:"urlLifetimeInSeconds"`
@@ -193,7 +193,7 @@ type EmailTemplateState struct {
 	Subject pulumi.StringPtrInput
 	// Syntax of the template body. You can use either text or HTML with Liquid syntax.
 	Syntax pulumi.StringPtrInput
-	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
 	Template pulumi.StringPtrInput
 	// Number of seconds during which the link within the email will be valid.
 	UrlLifetimeInSeconds pulumi.IntPtrInput
@@ -218,7 +218,7 @@ type emailTemplateArgs struct {
 	Subject string `pulumi:"subject"`
 	// Syntax of the template body. You can use either text or HTML with Liquid syntax.
 	Syntax string `pulumi:"syntax"`
-	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
 	Template string `pulumi:"template"`
 	// Number of seconds during which the link within the email will be valid.
 	UrlLifetimeInSeconds *int `pulumi:"urlLifetimeInSeconds"`
@@ -240,7 +240,7 @@ type EmailTemplateArgs struct {
 	Subject pulumi.StringInput
 	// Syntax of the template body. You can use either text or HTML with Liquid syntax.
 	Syntax pulumi.StringInput
-	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
 	Template pulumi.StringInput
 	// Number of seconds during which the link within the email will be valid.
 	UrlLifetimeInSeconds pulumi.IntPtrInput
@@ -368,7 +368,7 @@ func (o EmailTemplateOutput) Syntax() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailTemplate) pulumi.StringOutput { return v.Syntax }).(pulumi.StringOutput)
 }
 
-// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
 func (o EmailTemplateOutput) Template() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailTemplate) pulumi.StringOutput { return v.Template }).(pulumi.StringOutput)
 }

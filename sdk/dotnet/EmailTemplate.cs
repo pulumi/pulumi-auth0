@@ -128,7 +128,7 @@ namespace Pulumi.Auth0
         public Output<string> Syntax { get; private set; } = null!;
 
         /// <summary>
-        /// Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+        /// Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
         /// </summary>
         [Output("template")]
         public Output<string> Template { get; private set; } = null!;
@@ -228,7 +228,7 @@ namespace Pulumi.Auth0
         public Input<string> Syntax { get; set; } = null!;
 
         /// <summary>
-        /// Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+        /// Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
         /// </summary>
         [Input("template", required: true)]
         public Input<string> Template { get; set; } = null!;
@@ -290,7 +290,7 @@ namespace Pulumi.Auth0
         public Input<string>? Syntax { get; set; }
 
         /// <summary>
-        /// Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+        /// Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
         /// </summary>
         [Input("template")]
         public Input<string>? Template { get; set; }

@@ -994,14 +994,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
+     * Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
      * 
      */
     @Import(name="setUserRootAttributes")
     private @Nullable Output<String> setUserRootAttributes;
 
     /**
-     * @return Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
+     * @return Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
      * 
      */
     public Optional<Output<String>> setUserRootAttributes() {
@@ -2953,7 +2953,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param setUserRootAttributes Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
+         * @param setUserRootAttributes Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
          * 
          * @return builder
          * 
@@ -2964,7 +2964,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param setUserRootAttributes Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
+         * @param setUserRootAttributes Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
          * 
          * @return builder
          * 

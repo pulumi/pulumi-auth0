@@ -47,8 +47,7 @@ namespace Pulumi.Auth0
     ///             "untrusted_data.authorization_params.login_hint",
     ///             "untrusted_data.authorization_params.screen_hint",
     ///             "untrusted_data.authorization_params.ui_locales",
-    ///             "untrusted_data.authorization_params.ext-.key",
-    ///             "transaction.connection.metadata.key",
+    ///             "untrusted_data.authorization_params.ext-key",
     ///         },
     ///         HeadTags = JsonSerializer.Serialize(new[]
     ///         {

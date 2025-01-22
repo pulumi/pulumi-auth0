@@ -183,7 +183,7 @@ type Client struct {
 	// Indicates whether this client will conform to strict OIDC specifications.
 	OidcConformant pulumi.BoolOutput `pulumi:"oidcConformant"`
 	// Configure OIDC logout for the Client
-	OidcLogout ClientOidcLogoutPtrOutput `pulumi:"oidcLogout"`
+	OidcLogout ClientOidcLogoutOutput `pulumi:"oidcLogout"`
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
 	OrganizationRequireBehavior pulumi.StringPtrOutput `pulumi:"organizationRequireBehavior"`
 	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
@@ -804,8 +804,8 @@ func (o ClientOutput) OidcConformant() pulumi.BoolOutput {
 }
 
 // Configure OIDC logout for the Client
-func (o ClientOutput) OidcLogout() ClientOidcLogoutPtrOutput {
-	return o.ApplyT(func(v *Client) ClientOidcLogoutPtrOutput { return v.OidcLogout }).(ClientOidcLogoutPtrOutput)
+func (o ClientOutput) OidcLogout() ClientOidcLogoutOutput {
+	return o.ApplyT(func(v *Client) ClientOidcLogoutOutput { return v.OidcLogout }).(ClientOidcLogoutOutput)
 }
 
 // Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.

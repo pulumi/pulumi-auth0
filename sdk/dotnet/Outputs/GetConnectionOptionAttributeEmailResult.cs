@@ -25,6 +25,10 @@ namespace Pulumi.Auth0.Outputs
         /// Defines signup settings for Email attribute
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionOptionAttributeEmailSignupResult> Signups;
+        /// <summary>
+        /// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+        /// </summary>
+        public readonly string VerificationMethod;
 
         [OutputConstructor]
         private GetConnectionOptionAttributeEmailResult(
@@ -32,11 +36,14 @@ namespace Pulumi.Auth0.Outputs
 
             bool profileRequired,
 
-            ImmutableArray<Outputs.GetConnectionOptionAttributeEmailSignupResult> signups)
+            ImmutableArray<Outputs.GetConnectionOptionAttributeEmailSignupResult> signups,
+
+            string verificationMethod)
         {
             Identifiers = identifiers;
             ProfileRequired = profileRequired;
             Signups = signups;
+            VerificationMethod = verificationMethod;
         }
     }
 }

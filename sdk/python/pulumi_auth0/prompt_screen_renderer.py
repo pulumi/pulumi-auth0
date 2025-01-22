@@ -282,8 +282,7 @@ class PromptScreenRenderer(pulumi.CustomResource):
                 "untrusted_data.authorization_params.login_hint",
                 "untrusted_data.authorization_params.screen_hint",
                 "untrusted_data.authorization_params.ui_locales",
-                "untrusted_data.authorization_params.ext-.key",
-                "transaction.connection.metadata.key",
+                "untrusted_data.authorization_params.ext-key",
             ],
             head_tags=json.dumps([{
                 "attributes": {
@@ -363,8 +362,7 @@ class PromptScreenRenderer(pulumi.CustomResource):
                 "untrusted_data.authorization_params.login_hint",
                 "untrusted_data.authorization_params.screen_hint",
                 "untrusted_data.authorization_params.ui_locales",
-                "untrusted_data.authorization_params.ext-.key",
-                "transaction.connection.metadata.key",
+                "untrusted_data.authorization_params.ext-key",
             ],
             head_tags=json.dumps([{
                 "attributes": {

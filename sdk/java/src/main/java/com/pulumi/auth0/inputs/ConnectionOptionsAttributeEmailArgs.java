@@ -8,6 +8,7 @@ import com.pulumi.auth0.inputs.ConnectionOptionsAttributeEmailSignupArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -63,12 +64,28 @@ public final class ConnectionOptionsAttributeEmailArgs extends com.pulumi.resour
         return Optional.ofNullable(this.signups);
     }
 
+    /**
+     * Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+     * 
+     */
+    @Import(name="verificationMethod")
+    private @Nullable Output<String> verificationMethod;
+
+    /**
+     * @return Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+     * 
+     */
+    public Optional<Output<String>> verificationMethod() {
+        return Optional.ofNullable(this.verificationMethod);
+    }
+
     private ConnectionOptionsAttributeEmailArgs() {}
 
     private ConnectionOptionsAttributeEmailArgs(ConnectionOptionsAttributeEmailArgs $) {
         this.identifiers = $.identifiers;
         this.profileRequired = $.profileRequired;
         this.signups = $.signups;
+        this.verificationMethod = $.verificationMethod;
     }
 
     public static Builder builder() {
@@ -170,6 +187,27 @@ public final class ConnectionOptionsAttributeEmailArgs extends com.pulumi.resour
          */
         public Builder signups(ConnectionOptionsAttributeEmailSignupArgs... signups) {
             return signups(List.of(signups));
+        }
+
+        /**
+         * @param verificationMethod Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+         * 
+         * @return builder
+         * 
+         */
+        public Builder verificationMethod(@Nullable Output<String> verificationMethod) {
+            $.verificationMethod = verificationMethod;
+            return this;
+        }
+
+        /**
+         * @param verificationMethod Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+         * 
+         * @return builder
+         * 
+         */
+        public Builder verificationMethod(String verificationMethod) {
+            return verificationMethod(Output.of(verificationMethod));
         }
 
         public ConnectionOptionsAttributeEmailArgs build() {

@@ -13300,7 +13300,7 @@ type ConnectionOptions struct {
 	Scopes []string `pulumi:"scopes"`
 	// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
 	Scripts map[string]string `pulumi:"scripts"`
-	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`. Default value: `onEachLogin`.
+	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
 	SetUserRootAttributes *string `pulumi:"setUserRootAttributes"`
 	// Choose how Auth0 sets the emailVerified field in the user profile.
 	ShouldTrustEmailVerifiedConnection *string `pulumi:"shouldTrustEmailVerifiedConnection"`
@@ -13498,7 +13498,7 @@ type ConnectionOptionsArgs struct {
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 	// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
 	Scripts pulumi.StringMapInput `pulumi:"scripts"`
-	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`. Default value: `onEachLogin`.
+	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
 	SetUserRootAttributes pulumi.StringPtrInput `pulumi:"setUserRootAttributes"`
 	// Choose how Auth0 sets the emailVerified field in the user profile.
 	ShouldTrustEmailVerifiedConnection pulumi.StringPtrInput `pulumi:"shouldTrustEmailVerifiedConnection"`
@@ -13955,7 +13955,7 @@ func (o ConnectionOptionsOutput) Scripts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.Scripts }).(pulumi.StringMapOutput)
 }
 
-// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`. Default value: `onEachLogin`.
+// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
 func (o ConnectionOptionsOutput) SetUserRootAttributes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.SetUserRootAttributes }).(pulumi.StringPtrOutput)
 }
@@ -14759,7 +14759,7 @@ func (o ConnectionOptionsPtrOutput) Scripts() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`. Default value: `onEachLogin`.
+// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
 func (o ConnectionOptionsPtrOutput) SetUserRootAttributes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -15161,6 +15161,8 @@ type ConnectionOptionsAttributeEmail struct {
 	ProfileRequired *bool `pulumi:"profileRequired"`
 	// Defines signup settings for Email attribute
 	Signups []ConnectionOptionsAttributeEmailSignup `pulumi:"signups"`
+	// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+	VerificationMethod *string `pulumi:"verificationMethod"`
 }
 
 // ConnectionOptionsAttributeEmailInput is an input type that accepts ConnectionOptionsAttributeEmailArgs and ConnectionOptionsAttributeEmailOutput values.
@@ -15181,6 +15183,8 @@ type ConnectionOptionsAttributeEmailArgs struct {
 	ProfileRequired pulumi.BoolPtrInput `pulumi:"profileRequired"`
 	// Defines signup settings for Email attribute
 	Signups ConnectionOptionsAttributeEmailSignupArrayInput `pulumi:"signups"`
+	// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+	VerificationMethod pulumi.StringPtrInput `pulumi:"verificationMethod"`
 }
 
 func (ConnectionOptionsAttributeEmailArgs) ElementType() reflect.Type {
@@ -15249,6 +15253,11 @@ func (o ConnectionOptionsAttributeEmailOutput) ProfileRequired() pulumi.BoolPtrO
 // Defines signup settings for Email attribute
 func (o ConnectionOptionsAttributeEmailOutput) Signups() ConnectionOptionsAttributeEmailSignupArrayOutput {
 	return o.ApplyT(func(v ConnectionOptionsAttributeEmail) []ConnectionOptionsAttributeEmailSignup { return v.Signups }).(ConnectionOptionsAttributeEmailSignupArrayOutput)
+}
+
+// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+func (o ConnectionOptionsAttributeEmailOutput) VerificationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeEmail) *string { return v.VerificationMethod }).(pulumi.StringPtrOutput)
 }
 
 type ConnectionOptionsAttributeEmailArrayOutput struct{ *pulumi.OutputState }
@@ -17218,6 +17227,7 @@ type ConnectionOptionsIdpInitiated struct {
 	ClientAuthorizeQuery *string `pulumi:"clientAuthorizeQuery"`
 	ClientId             *string `pulumi:"clientId"`
 	ClientProtocol       *string `pulumi:"clientProtocol"`
+	Enabled              *bool   `pulumi:"enabled"`
 }
 
 // ConnectionOptionsIdpInitiatedInput is an input type that accepts ConnectionOptionsIdpInitiatedArgs and ConnectionOptionsIdpInitiatedOutput values.
@@ -17235,6 +17245,7 @@ type ConnectionOptionsIdpInitiatedArgs struct {
 	ClientAuthorizeQuery pulumi.StringPtrInput `pulumi:"clientAuthorizeQuery"`
 	ClientId             pulumi.StringPtrInput `pulumi:"clientId"`
 	ClientProtocol       pulumi.StringPtrInput `pulumi:"clientProtocol"`
+	Enabled              pulumi.BoolPtrInput   `pulumi:"enabled"`
 }
 
 func (ConnectionOptionsIdpInitiatedArgs) ElementType() reflect.Type {
@@ -17326,6 +17337,10 @@ func (o ConnectionOptionsIdpInitiatedOutput) ClientProtocol() pulumi.StringPtrOu
 	return o.ApplyT(func(v ConnectionOptionsIdpInitiated) *string { return v.ClientProtocol }).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectionOptionsIdpInitiatedOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsIdpInitiated) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
 type ConnectionOptionsIdpInitiatedPtrOutput struct{ *pulumi.OutputState }
 
 func (ConnectionOptionsIdpInitiatedPtrOutput) ElementType() reflect.Type {
@@ -17375,6 +17390,15 @@ func (o ConnectionOptionsIdpInitiatedPtrOutput) ClientProtocol() pulumi.StringPt
 		}
 		return v.ClientProtocol
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsIdpInitiatedPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsIdpInitiated) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ConnectionOptionsMfa struct {
@@ -35893,7 +35917,7 @@ type GetConnectionOption struct {
 	Scopes []string `pulumi:"scopes"`
 	// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
 	Scripts map[string]string `pulumi:"scripts"`
-	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`. Default value: `onEachLogin`.
+	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
 	SetUserRootAttributes string `pulumi:"setUserRootAttributes"`
 	// Choose how Auth0 sets the emailVerified field in the user profile.
 	ShouldTrustEmailVerifiedConnection string `pulumi:"shouldTrustEmailVerifiedConnection"`
@@ -36091,7 +36115,7 @@ type GetConnectionOptionArgs struct {
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 	// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
 	Scripts pulumi.StringMapInput `pulumi:"scripts"`
-	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`. Default value: `onEachLogin`.
+	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
 	SetUserRootAttributes pulumi.StringInput `pulumi:"setUserRootAttributes"`
 	// Choose how Auth0 sets the emailVerified field in the user profile.
 	ShouldTrustEmailVerifiedConnection pulumi.StringInput `pulumi:"shouldTrustEmailVerifiedConnection"`
@@ -36526,7 +36550,7 @@ func (o GetConnectionOptionOutput) Scripts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetConnectionOption) map[string]string { return v.Scripts }).(pulumi.StringMapOutput)
 }
 
-// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`. Default value: `onEachLogin`.
+// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
 func (o GetConnectionOptionOutput) SetUserRootAttributes() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.SetUserRootAttributes }).(pulumi.StringOutput)
 }
@@ -36808,6 +36832,8 @@ type GetConnectionOptionAttributeEmail struct {
 	ProfileRequired bool `pulumi:"profileRequired"`
 	// Defines signup settings for Email attribute
 	Signups []GetConnectionOptionAttributeEmailSignup `pulumi:"signups"`
+	// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+	VerificationMethod string `pulumi:"verificationMethod"`
 }
 
 // GetConnectionOptionAttributeEmailInput is an input type that accepts GetConnectionOptionAttributeEmailArgs and GetConnectionOptionAttributeEmailOutput values.
@@ -36828,6 +36854,8 @@ type GetConnectionOptionAttributeEmailArgs struct {
 	ProfileRequired pulumi.BoolInput `pulumi:"profileRequired"`
 	// Defines signup settings for Email attribute
 	Signups GetConnectionOptionAttributeEmailSignupArrayInput `pulumi:"signups"`
+	// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+	VerificationMethod pulumi.StringInput `pulumi:"verificationMethod"`
 }
 
 func (GetConnectionOptionAttributeEmailArgs) ElementType() reflect.Type {
@@ -36896,6 +36924,11 @@ func (o GetConnectionOptionAttributeEmailOutput) ProfileRequired() pulumi.BoolOu
 // Defines signup settings for Email attribute
 func (o GetConnectionOptionAttributeEmailOutput) Signups() GetConnectionOptionAttributeEmailSignupArrayOutput {
 	return o.ApplyT(func(v GetConnectionOptionAttributeEmail) []GetConnectionOptionAttributeEmailSignup { return v.Signups }).(GetConnectionOptionAttributeEmailSignupArrayOutput)
+}
+
+// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+func (o GetConnectionOptionAttributeEmailOutput) VerificationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmail) string { return v.VerificationMethod }).(pulumi.StringOutput)
 }
 
 type GetConnectionOptionAttributeEmailArrayOutput struct{ *pulumi.OutputState }
@@ -38637,6 +38670,7 @@ type GetConnectionOptionIdpInitiated struct {
 	ClientAuthorizeQuery string `pulumi:"clientAuthorizeQuery"`
 	ClientId             string `pulumi:"clientId"`
 	ClientProtocol       string `pulumi:"clientProtocol"`
+	Enabled              bool   `pulumi:"enabled"`
 }
 
 // GetConnectionOptionIdpInitiatedInput is an input type that accepts GetConnectionOptionIdpInitiatedArgs and GetConnectionOptionIdpInitiatedOutput values.
@@ -38654,6 +38688,7 @@ type GetConnectionOptionIdpInitiatedArgs struct {
 	ClientAuthorizeQuery pulumi.StringInput `pulumi:"clientAuthorizeQuery"`
 	ClientId             pulumi.StringInput `pulumi:"clientId"`
 	ClientProtocol       pulumi.StringInput `pulumi:"clientProtocol"`
+	Enabled              pulumi.BoolInput   `pulumi:"enabled"`
 }
 
 func (GetConnectionOptionIdpInitiatedArgs) ElementType() reflect.Type {
@@ -38717,6 +38752,10 @@ func (o GetConnectionOptionIdpInitiatedOutput) ClientId() pulumi.StringOutput {
 
 func (o GetConnectionOptionIdpInitiatedOutput) ClientProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOptionIdpInitiated) string { return v.ClientProtocol }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionIdpInitiatedOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionIdpInitiated) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 type GetConnectionOptionIdpInitiatedArrayOutput struct{ *pulumi.OutputState }

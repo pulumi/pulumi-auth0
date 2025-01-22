@@ -69,8 +69,7 @@ import (
 //					pulumi.String("untrusted_data.authorization_params.login_hint"),
 //					pulumi.String("untrusted_data.authorization_params.screen_hint"),
 //					pulumi.String("untrusted_data.authorization_params.ui_locales"),
-//					pulumi.String("untrusted_data.authorization_params.ext-.key"),
-//					pulumi.String("transaction.connection.metadata.key"),
+//					pulumi.String("untrusted_data.authorization_params.ext-key"),
 //				},
 //				HeadTags: pulumi.String(json0),
 //			})

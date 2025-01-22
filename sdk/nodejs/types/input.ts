@@ -1538,7 +1538,7 @@ export interface ConnectionOptions {
      */
     scripts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`. Default value: `onEachLogin`.
+     * Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
      */
     setUserRootAttributes?: pulumi.Input<string>;
     /**
@@ -1679,6 +1679,10 @@ export interface ConnectionOptionsAttributeEmail {
      * Defines signup settings for Email attribute
      */
     signups?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeEmailSignup>[]>;
+    /**
+     * Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+     */
+    verificationMethod?: pulumi.Input<string>;
 }
 
 export interface ConnectionOptionsAttributeEmailIdentifier {
@@ -1859,6 +1863,7 @@ export interface ConnectionOptionsIdpInitiated {
     clientAuthorizeQuery?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
     clientProtocol?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface ConnectionOptionsMfa {

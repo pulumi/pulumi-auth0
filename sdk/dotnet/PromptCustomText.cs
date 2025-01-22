@@ -83,7 +83,7 @@ namespace Pulumi.Auth0
         public Output<string> Body { get; private set; } = null!;
 
         /// <summary>
-        /// Language of the custom text. Options include: `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `ms`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sq`, `sr`, `sv`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zh-CN`, `zh-HK`, `zh-TW`.
+        /// Language of the custom text. Options include: `am`, `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bn`, `bs`, `ca-ES`, `cnr`, `cs`, `cy`, `da`, `de`, `el`, `en`, `en-CA`, `es`, `es-419`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `gu`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ka`, `kk`, `kn`, `ko`, `lt`, `lv`, `mk`, `ml`, `mn`, `mr`, `ms`, `my`, `nb`, `nl`, `nn`, `no`, `pa`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `so`, `sq`, `sr`, `sv`, `sw`, `ta`, `te`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zgh`, `zh-CN`, `zh-HK`, `zh-TW`.
         /// </summary>
         [Output("language")]
         public Output<string> Language { get; private set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.Auth0
         public Input<string> Body { get; set; } = null!;
 
         /// <summary>
-        /// Language of the custom text. Options include: `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `ms`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sq`, `sr`, `sv`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zh-CN`, `zh-HK`, `zh-TW`.
+        /// Language of the custom text. Options include: `am`, `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bn`, `bs`, `ca-ES`, `cnr`, `cs`, `cy`, `da`, `de`, `el`, `en`, `en-CA`, `es`, `es-419`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `gu`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ka`, `kk`, `kn`, `ko`, `lt`, `lv`, `mk`, `ml`, `mn`, `mr`, `ms`, `my`, `nb`, `nl`, `nn`, `no`, `pa`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `so`, `sq`, `sr`, `sv`, `sw`, `ta`, `te`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zgh`, `zh-CN`, `zh-HK`, `zh-TW`.
         /// </summary>
         [Input("language", required: true)]
         public Input<string> Language { get; set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumi.Auth0
         public Input<string>? Body { get; set; }
 
         /// <summary>
-        /// Language of the custom text. Options include: `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bs`, `ca-ES`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `ms`, `nb`, `nl`, `nn`, `no`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sq`, `sr`, `sv`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zh-CN`, `zh-HK`, `zh-TW`.
+        /// Language of the custom text. Options include: `am`, `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bn`, `bs`, `ca-ES`, `cnr`, `cs`, `cy`, `da`, `de`, `el`, `en`, `en-CA`, `es`, `es-419`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `gu`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ka`, `kk`, `kn`, `ko`, `lt`, `lv`, `mk`, `ml`, `mn`, `mr`, `ms`, `my`, `nb`, `nl`, `nn`, `no`, `pa`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `so`, `sq`, `sr`, `sv`, `sw`, `ta`, `te`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zgh`, `zh-CN`, `zh-HK`, `zh-TW`.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }

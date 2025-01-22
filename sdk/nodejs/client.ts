@@ -244,7 +244,7 @@ export class Client extends pulumi.CustomResource {
     /**
      * Configure OIDC logout for the Client
      */
-    public readonly oidcLogout!: pulumi.Output<outputs.ClientOidcLogout | undefined>;
+    public readonly oidcLogout!: pulumi.Output<outputs.ClientOidcLogout>;
     /**
      * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      */

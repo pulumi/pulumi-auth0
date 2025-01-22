@@ -6758,7 +6758,7 @@ if not MYPY:
         """
         set_user_root_attributes: NotRequired[pulumi.Input[str]]
         """
-        Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
+        Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
         """
         should_trust_email_verified_connection: NotRequired[pulumi.Input[str]]
         """
@@ -7031,7 +7031,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[bool] requires_username: Indicates whether the user is required to provide a username in addition to an email address.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] scripts: A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
-        :param pulumi.Input[str] set_user_root_attributes: Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
+        :param pulumi.Input[str] set_user_root_attributes: Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
         :param pulumi.Input[str] should_trust_email_verified_connection: Choose how Auth0 sets the email_verified field in the user profile.
         :param pulumi.Input[str] sign_in_endpoint: SAML single login URL for the connection.
         :param pulumi.Input[str] sign_out_endpoint: SAML single logout URL for the connection.
@@ -8017,7 +8017,7 @@ class ConnectionOptionsArgs:
     @pulumi.getter(name="setUserRootAttributes")
     def set_user_root_attributes(self) -> Optional[pulumi.Input[str]]:
         """
-        Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
+        Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
         """
         return pulumi.get(self, "set_user_root_attributes")
 
@@ -8436,6 +8436,10 @@ if not MYPY:
         """
         Defines signup settings for Email attribute
         """
+        verification_method: NotRequired[pulumi.Input[str]]
+        """
+        Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+        """
 elif False:
     ConnectionOptionsAttributeEmailArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -8444,11 +8448,13 @@ class ConnectionOptionsAttributeEmailArgs:
     def __init__(__self__, *,
                  identifiers: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailIdentifierArgs']]]] = None,
                  profile_required: Optional[pulumi.Input[bool]] = None,
-                 signups: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupArgs']]]] = None):
+                 signups: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupArgs']]]] = None,
+                 verification_method: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailIdentifierArgs']]] identifiers: Connection Options Email Attribute Identifier
         :param pulumi.Input[bool] profile_required: Defines whether Profile is required
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupArgs']]] signups: Defines signup settings for Email attribute
+        :param pulumi.Input[str] verification_method: Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
         """
         if identifiers is not None:
             pulumi.set(__self__, "identifiers", identifiers)
@@ -8456,6 +8462,8 @@ class ConnectionOptionsAttributeEmailArgs:
             pulumi.set(__self__, "profile_required", profile_required)
         if signups is not None:
             pulumi.set(__self__, "signups", signups)
+        if verification_method is not None:
+            pulumi.set(__self__, "verification_method", verification_method)
 
     @property
     @pulumi.getter
@@ -8492,6 +8500,18 @@ class ConnectionOptionsAttributeEmailArgs:
     @signups.setter
     def signups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupArgs']]]]):
         pulumi.set(self, "signups", value)
+
+    @property
+    @pulumi.getter(name="verificationMethod")
+    def verification_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+        """
+        return pulumi.get(self, "verification_method")
+
+    @verification_method.setter
+    def verification_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "verification_method", value)
 
 
 if not MYPY:
@@ -9331,6 +9351,7 @@ if not MYPY:
         client_authorize_query: NotRequired[pulumi.Input[str]]
         client_id: NotRequired[pulumi.Input[str]]
         client_protocol: NotRequired[pulumi.Input[str]]
+        enabled: NotRequired[pulumi.Input[bool]]
 elif False:
     ConnectionOptionsIdpInitiatedArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -9339,13 +9360,16 @@ class ConnectionOptionsIdpInitiatedArgs:
     def __init__(__self__, *,
                  client_authorize_query: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
-                 client_protocol: Optional[pulumi.Input[str]] = None):
+                 client_protocol: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None):
         if client_authorize_query is not None:
             pulumi.set(__self__, "client_authorize_query", client_authorize_query)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_protocol is not None:
             pulumi.set(__self__, "client_protocol", client_protocol)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter(name="clientAuthorizeQuery")
@@ -9373,6 +9397,15 @@ class ConnectionOptionsIdpInitiatedArgs:
     @client_protocol.setter
     def client_protocol(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_protocol", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
