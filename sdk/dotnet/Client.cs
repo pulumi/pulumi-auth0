@@ -311,7 +311,7 @@ namespace Pulumi.Auth0
         /// Configure OIDC logout for the Client
         /// </summary>
         [Output("oidcLogout")]
-        public Output<Outputs.ClientOidcLogout?> OidcLogout { get; private set; } = null!;
+        public Output<Outputs.ClientOidcLogout> OidcLogout { get; private set; } = null!;
 
         /// <summary>
         /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.

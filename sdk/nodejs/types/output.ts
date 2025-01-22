@@ -1538,9 +1538,9 @@ export interface ConnectionOptions {
      */
     scripts?: {[key: string]: string};
     /**
-     * Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`. Default value: `onEachLogin`.
+     * Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
      */
-    setUserRootAttributes?: string;
+    setUserRootAttributes: string;
     /**
      * Choose how Auth0 sets the emailVerified field in the user profile.
      */
@@ -1679,6 +1679,10 @@ export interface ConnectionOptionsAttributeEmail {
      * Defines signup settings for Email attribute
      */
     signups?: outputs.ConnectionOptionsAttributeEmailSignup[];
+    /**
+     * Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+     */
+    verificationMethod: string;
 }
 
 export interface ConnectionOptionsAttributeEmailIdentifier {
@@ -1859,6 +1863,7 @@ export interface ConnectionOptionsIdpInitiated {
     clientAuthorizeQuery?: string;
     clientId?: string;
     clientProtocol?: string;
+    enabled?: boolean;
 }
 
 export interface ConnectionOptionsMfa {
@@ -3686,7 +3691,7 @@ export interface GetConnectionOption {
      */
     scripts: {[key: string]: string};
     /**
-     * Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`. Default value: `onEachLogin`.
+     * Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
      */
     setUserRootAttributes: string;
     /**
@@ -3827,6 +3832,10 @@ export interface GetConnectionOptionAttributeEmail {
      * Defines signup settings for Email attribute
      */
     signups: outputs.GetConnectionOptionAttributeEmailSignup[];
+    /**
+     * Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+     */
+    verificationMethod: string;
 }
 
 export interface GetConnectionOptionAttributeEmailIdentifier {
@@ -4007,6 +4016,7 @@ export interface GetConnectionOptionIdpInitiated {
     clientAuthorizeQuery: string;
     clientId: string;
     clientProtocol: string;
+    enabled: boolean;
 }
 
 export interface GetConnectionOptionMfa {

@@ -557,14 +557,14 @@ public class Client extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="oidcLogout", refs={ClientOidcLogout.class}, tree="[0]")
-    private Output</* @Nullable */ ClientOidcLogout> oidcLogout;
+    private Output<ClientOidcLogout> oidcLogout;
 
     /**
      * @return Configure OIDC logout for the Client
      * 
      */
-    public Output<Optional<ClientOidcLogout>> oidcLogout() {
-        return Codegen.optional(this.oidcLogout);
+    public Output<ClientOidcLogout> oidcLogout() {
+        return this.oidcLogout;
     }
     /**
      * Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.

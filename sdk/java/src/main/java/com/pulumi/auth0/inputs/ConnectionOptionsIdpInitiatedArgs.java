@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -36,12 +37,20 @@ public final class ConnectionOptionsIdpInitiatedArgs extends com.pulumi.resource
         return Optional.ofNullable(this.clientProtocol);
     }
 
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
+
     private ConnectionOptionsIdpInitiatedArgs() {}
 
     private ConnectionOptionsIdpInitiatedArgs(ConnectionOptionsIdpInitiatedArgs $) {
         this.clientAuthorizeQuery = $.clientAuthorizeQuery;
         this.clientId = $.clientId;
         this.clientProtocol = $.clientProtocol;
+        this.enabled = $.enabled;
     }
 
     public static Builder builder() {
@@ -87,6 +96,15 @@ public final class ConnectionOptionsIdpInitiatedArgs extends com.pulumi.resource
 
         public Builder clientProtocol(String clientProtocol) {
             return clientProtocol(Output.of(clientProtocol));
+        }
+
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
         }
 
         public ConnectionOptionsIdpInitiatedArgs build() {

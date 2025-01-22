@@ -5163,7 +5163,7 @@ class ConnectionOptions(dict):
         :param bool requires_username: Indicates whether the user is required to provide a username in addition to an email address.
         :param Sequence[str] scopes: Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
         :param Mapping[str, str] scripts: A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
-        :param str set_user_root_attributes: Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
+        :param str set_user_root_attributes: Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
         :param str should_trust_email_verified_connection: Choose how Auth0 sets the email_verified field in the user profile.
         :param str sign_in_endpoint: SAML single login URL for the connection.
         :param str sign_out_endpoint: SAML single logout URL for the connection.
@@ -5893,7 +5893,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="setUserRootAttributes")
     def set_user_root_attributes(self) -> Optional[str]:
         """
-        Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
+        Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
         """
         return pulumi.get(self, "set_user_root_attributes")
 
@@ -6181,6 +6181,8 @@ class ConnectionOptionsAttributeEmail(dict):
         suggest = None
         if key == "profileRequired":
             suggest = "profile_required"
+        elif key == "verificationMethod":
+            suggest = "verification_method"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsAttributeEmail. Access the value via the '{suggest}' property getter instead.")
@@ -6196,11 +6198,13 @@ class ConnectionOptionsAttributeEmail(dict):
     def __init__(__self__, *,
                  identifiers: Optional[Sequence['outputs.ConnectionOptionsAttributeEmailIdentifier']] = None,
                  profile_required: Optional[bool] = None,
-                 signups: Optional[Sequence['outputs.ConnectionOptionsAttributeEmailSignup']] = None):
+                 signups: Optional[Sequence['outputs.ConnectionOptionsAttributeEmailSignup']] = None,
+                 verification_method: Optional[str] = None):
         """
         :param Sequence['ConnectionOptionsAttributeEmailIdentifierArgs'] identifiers: Connection Options Email Attribute Identifier
         :param bool profile_required: Defines whether Profile is required
         :param Sequence['ConnectionOptionsAttributeEmailSignupArgs'] signups: Defines signup settings for Email attribute
+        :param str verification_method: Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
         """
         if identifiers is not None:
             pulumi.set(__self__, "identifiers", identifiers)
@@ -6208,6 +6212,8 @@ class ConnectionOptionsAttributeEmail(dict):
             pulumi.set(__self__, "profile_required", profile_required)
         if signups is not None:
             pulumi.set(__self__, "signups", signups)
+        if verification_method is not None:
+            pulumi.set(__self__, "verification_method", verification_method)
 
     @property
     @pulumi.getter
@@ -6232,6 +6238,14 @@ class ConnectionOptionsAttributeEmail(dict):
         Defines signup settings for Email attribute
         """
         return pulumi.get(self, "signups")
+
+    @property
+    @pulumi.getter(name="verificationMethod")
+    def verification_method(self) -> Optional[str]:
+        """
+        Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+        """
+        return pulumi.get(self, "verification_method")
 
 
 @pulumi.output_type
@@ -6862,13 +6876,16 @@ class ConnectionOptionsIdpInitiated(dict):
     def __init__(__self__, *,
                  client_authorize_query: Optional[str] = None,
                  client_id: Optional[str] = None,
-                 client_protocol: Optional[str] = None):
+                 client_protocol: Optional[str] = None,
+                 enabled: Optional[bool] = None):
         if client_authorize_query is not None:
             pulumi.set(__self__, "client_authorize_query", client_authorize_query)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_protocol is not None:
             pulumi.set(__self__, "client_protocol", client_protocol)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter(name="clientAuthorizeQuery")
@@ -6884,6 +6901,11 @@ class ConnectionOptionsIdpInitiated(dict):
     @pulumi.getter(name="clientProtocol")
     def client_protocol(self) -> Optional[str]:
         return pulumi.get(self, "client_protocol")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -14146,7 +14168,7 @@ class GetConnectionOptionResult(dict):
         :param bool requires_username: Indicates whether the user is required to provide a username in addition to an email address.
         :param Sequence[str] scopes: Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
         :param Mapping[str, str] scripts: A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
-        :param str set_user_root_attributes: Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
+        :param str set_user_root_attributes: Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
         :param str should_trust_email_verified_connection: Choose how Auth0 sets the email_verified field in the user profile.
         :param str sign_in_endpoint: SAML single login URL for the connection.
         :param str sign_out_endpoint: SAML single logout URL for the connection.
@@ -14784,7 +14806,7 @@ class GetConnectionOptionResult(dict):
     @pulumi.getter(name="setUserRootAttributes")
     def set_user_root_attributes(self) -> str:
         """
-        Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
+        Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
         """
         return pulumi.get(self, "set_user_root_attributes")
 
@@ -15050,15 +15072,18 @@ class GetConnectionOptionAttributeEmailResult(dict):
     def __init__(__self__, *,
                  identifiers: Sequence['outputs.GetConnectionOptionAttributeEmailIdentifierResult'],
                  profile_required: bool,
-                 signups: Sequence['outputs.GetConnectionOptionAttributeEmailSignupResult']):
+                 signups: Sequence['outputs.GetConnectionOptionAttributeEmailSignupResult'],
+                 verification_method: str):
         """
         :param Sequence['GetConnectionOptionAttributeEmailIdentifierArgs'] identifiers: Connection Options Email Attribute Identifier
         :param bool profile_required: Defines whether Profile is required
         :param Sequence['GetConnectionOptionAttributeEmailSignupArgs'] signups: Defines signup settings for Email attribute
+        :param str verification_method: Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
         """
         pulumi.set(__self__, "identifiers", identifiers)
         pulumi.set(__self__, "profile_required", profile_required)
         pulumi.set(__self__, "signups", signups)
+        pulumi.set(__self__, "verification_method", verification_method)
 
     @property
     @pulumi.getter
@@ -15083,6 +15108,14 @@ class GetConnectionOptionAttributeEmailResult(dict):
         Defines signup settings for Email attribute
         """
         return pulumi.get(self, "signups")
+
+    @property
+    @pulumi.getter(name="verificationMethod")
+    def verification_method(self) -> str:
+        """
+        Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+        """
+        return pulumi.get(self, "verification_method")
 
 
 @pulumi.output_type
@@ -15555,10 +15588,12 @@ class GetConnectionOptionIdpInitiatedResult(dict):
     def __init__(__self__, *,
                  client_authorize_query: str,
                  client_id: str,
-                 client_protocol: str):
+                 client_protocol: str,
+                 enabled: bool):
         pulumi.set(__self__, "client_authorize_query", client_authorize_query)
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_protocol", client_protocol)
+        pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter(name="clientAuthorizeQuery")
@@ -15574,6 +15609,11 @@ class GetConnectionOptionIdpInitiatedResult(dict):
     @pulumi.getter(name="clientProtocol")
     def client_protocol(self) -> str:
         return pulumi.get(self, "client_protocol")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

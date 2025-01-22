@@ -67,8 +67,7 @@ import javax.annotation.Nullable;
  *                 "untrusted_data.authorization_params.login_hint",
  *                 "untrusted_data.authorization_params.screen_hint",
  *                 "untrusted_data.authorization_params.ui_locales",
- *                 "untrusted_data.authorization_params.ext-.key",
- *                 "transaction.connection.metadata.key")
+ *                 "untrusted_data.authorization_params.ext-key")
  *             .headTags(serializeJson(
  *                 jsonArray(jsonObject(
  *                     jsonProperty("attributes", jsonObject(

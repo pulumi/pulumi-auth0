@@ -42,6 +42,12 @@ namespace Pulumi.Auth0.Inputs
             set => _signups = value;
         }
 
+        /// <summary>
+        /// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+        /// </summary>
+        [Input("verificationMethod")]
+        public Input<string>? VerificationMethod { get; set; }
+
         public ConnectionOptionsAttributeEmailGetArgs()
         {
         }

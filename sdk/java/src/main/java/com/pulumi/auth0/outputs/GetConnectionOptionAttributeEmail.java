@@ -8,6 +8,7 @@ import com.pulumi.auth0.outputs.GetConnectionOptionAttributeEmailSignup;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,6 +29,11 @@ public final class GetConnectionOptionAttributeEmail {
      * 
      */
     private List<GetConnectionOptionAttributeEmailSignup> signups;
+    /**
+     * @return Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+     * 
+     */
+    private String verificationMethod;
 
     private GetConnectionOptionAttributeEmail() {}
     /**
@@ -51,6 +57,13 @@ public final class GetConnectionOptionAttributeEmail {
     public List<GetConnectionOptionAttributeEmailSignup> signups() {
         return this.signups;
     }
+    /**
+     * @return Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+     * 
+     */
+    public String verificationMethod() {
+        return this.verificationMethod;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -64,12 +77,14 @@ public final class GetConnectionOptionAttributeEmail {
         private List<GetConnectionOptionAttributeEmailIdentifier> identifiers;
         private Boolean profileRequired;
         private List<GetConnectionOptionAttributeEmailSignup> signups;
+        private String verificationMethod;
         public Builder() {}
         public Builder(GetConnectionOptionAttributeEmail defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.identifiers = defaults.identifiers;
     	      this.profileRequired = defaults.profileRequired;
     	      this.signups = defaults.signups;
+    	      this.verificationMethod = defaults.verificationMethod;
         }
 
         @CustomType.Setter
@@ -102,11 +117,20 @@ public final class GetConnectionOptionAttributeEmail {
         public Builder signups(GetConnectionOptionAttributeEmailSignup... signups) {
             return signups(List.of(signups));
         }
+        @CustomType.Setter
+        public Builder verificationMethod(String verificationMethod) {
+            if (verificationMethod == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionAttributeEmail", "verificationMethod");
+            }
+            this.verificationMethod = verificationMethod;
+            return this;
+        }
         public GetConnectionOptionAttributeEmail build() {
             final var _resultValue = new GetConnectionOptionAttributeEmail();
             _resultValue.identifiers = identifiers;
             _resultValue.profileRequired = profileRequired;
             _resultValue.signups = signups;
+            _resultValue.verificationMethod = verificationMethod;
             return _resultValue;
         }
     }

@@ -350,7 +350,7 @@ public final class ConnectionOptions {
      */
     private @Nullable Map<String,String> scripts;
     /**
-     * @return Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
+     * @return Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
      * 
      */
     private @Nullable String setUserRootAttributes;
@@ -940,7 +940,7 @@ public final class ConnectionOptions {
         return this.scripts == null ? Map.of() : this.scripts;
     }
     /**
-     * @return Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
+     * @return Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
      * 
      */
     public Optional<String> setUserRootAttributes() {

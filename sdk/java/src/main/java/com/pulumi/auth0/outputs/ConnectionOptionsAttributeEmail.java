@@ -7,6 +7,7 @@ import com.pulumi.auth0.outputs.ConnectionOptionsAttributeEmailIdentifier;
 import com.pulumi.auth0.outputs.ConnectionOptionsAttributeEmailSignup;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +30,11 @@ public final class ConnectionOptionsAttributeEmail {
      * 
      */
     private @Nullable List<ConnectionOptionsAttributeEmailSignup> signups;
+    /**
+     * @return Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+     * 
+     */
+    private @Nullable String verificationMethod;
 
     private ConnectionOptionsAttributeEmail() {}
     /**
@@ -52,6 +58,13 @@ public final class ConnectionOptionsAttributeEmail {
     public List<ConnectionOptionsAttributeEmailSignup> signups() {
         return this.signups == null ? List.of() : this.signups;
     }
+    /**
+     * @return Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+     * 
+     */
+    public Optional<String> verificationMethod() {
+        return Optional.ofNullable(this.verificationMethod);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -65,12 +78,14 @@ public final class ConnectionOptionsAttributeEmail {
         private @Nullable List<ConnectionOptionsAttributeEmailIdentifier> identifiers;
         private @Nullable Boolean profileRequired;
         private @Nullable List<ConnectionOptionsAttributeEmailSignup> signups;
+        private @Nullable String verificationMethod;
         public Builder() {}
         public Builder(ConnectionOptionsAttributeEmail defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.identifiers = defaults.identifiers;
     	      this.profileRequired = defaults.profileRequired;
     	      this.signups = defaults.signups;
+    	      this.verificationMethod = defaults.verificationMethod;
         }
 
         @CustomType.Setter
@@ -97,11 +112,18 @@ public final class ConnectionOptionsAttributeEmail {
         public Builder signups(ConnectionOptionsAttributeEmailSignup... signups) {
             return signups(List.of(signups));
         }
+        @CustomType.Setter
+        public Builder verificationMethod(@Nullable String verificationMethod) {
+
+            this.verificationMethod = verificationMethod;
+            return this;
+        }
         public ConnectionOptionsAttributeEmail build() {
             final var _resultValue = new ConnectionOptionsAttributeEmail();
             _resultValue.identifiers = identifiers;
             _resultValue.profileRequired = profileRequired;
             _resultValue.signups = signups;
+            _resultValue.verificationMethod = verificationMethod;
             return _resultValue;
         }
     }

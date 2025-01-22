@@ -35,7 +35,7 @@ class EmailTemplateArgs:
         :param pulumi.Input[str] from_: Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         :param pulumi.Input[str] subject: Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         :param pulumi.Input[str] syntax: Syntax of the template body. You can use either text or HTML with Liquid syntax.
-        :param pulumi.Input[str] template: Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+        :param pulumi.Input[str] template: Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
         :param pulumi.Input[bool] include_email_in_redirect: Whether the `reset_email` and `verify_email` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
         :param pulumi.Input[str] result_url: URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
         :param pulumi.Input[int] url_lifetime_in_seconds: Number of seconds during which the link within the email will be valid.
@@ -117,7 +117,7 @@ class EmailTemplateArgs:
     @pulumi.getter
     def template(self) -> pulumi.Input[str]:
         """
-        Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+        Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
         """
         return pulumi.get(self, "template")
 
@@ -183,7 +183,7 @@ class _EmailTemplateState:
         :param pulumi.Input[str] result_url: URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
         :param pulumi.Input[str] subject: Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         :param pulumi.Input[str] syntax: Syntax of the template body. You can use either text or HTML with Liquid syntax.
-        :param pulumi.Input[str] template: Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+        :param pulumi.Input[str] template: Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
         :param pulumi.Input[int] url_lifetime_in_seconds: Number of seconds during which the link within the email will be valid.
         """
         if body is not None:
@@ -293,7 +293,7 @@ class _EmailTemplateState:
     @pulumi.getter
     def template(self) -> Optional[pulumi.Input[str]]:
         """
-        Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+        Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
         """
         return pulumi.get(self, "template")
 
@@ -394,7 +394,7 @@ class EmailTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] result_url: URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
         :param pulumi.Input[str] subject: Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         :param pulumi.Input[str] syntax: Syntax of the template body. You can use either text or HTML with Liquid syntax.
-        :param pulumi.Input[str] template: Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+        :param pulumi.Input[str] template: Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
         :param pulumi.Input[int] url_lifetime_in_seconds: Number of seconds during which the link within the email will be valid.
         """
         ...
@@ -546,7 +546,7 @@ class EmailTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] result_url: URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
         :param pulumi.Input[str] subject: Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         :param pulumi.Input[str] syntax: Syntax of the template body. You can use either text or HTML with Liquid syntax.
-        :param pulumi.Input[str] template: Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+        :param pulumi.Input[str] template: Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
         :param pulumi.Input[int] url_lifetime_in_seconds: Number of seconds during which the link within the email will be valid.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -624,7 +624,7 @@ class EmailTemplate(pulumi.CustomResource):
     @pulumi.getter
     def template(self) -> pulumi.Output[str]:
         """
-        Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+        Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
         """
         return pulumi.get(self, "template")
 

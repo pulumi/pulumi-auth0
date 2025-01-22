@@ -21,6 +21,9 @@ namespace Pulumi.Auth0.Inputs
         [Input("clientProtocol")]
         public Input<string>? ClientProtocol { get; set; }
 
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
         public ConnectionOptionsIdpInitiatedGetArgs()
         {
         }
