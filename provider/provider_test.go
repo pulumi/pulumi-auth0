@@ -394,6 +394,7 @@ func TestConnectionMigration(t *testing.T) {
                     "name": "googleOauth2-b68d006",
                     "options": {
                         "attributes": [],
+                        "authenticationMethods": [],
                         "precedences": [],
                         "adfsServer": "",
                         "allowedAudiences": [
@@ -450,6 +451,7 @@ func TestConnectionMigration(t *testing.T) {
                             "ethnicity",
                             "gender"
                         ],
+                        "passkeyOptions": null,
                         "passwordComplexityOptions": null,
                         "passwordDictionary": null,
                         "passwordHistories": [],
