@@ -200,6 +200,8 @@ type Client struct {
 	Sso pulumi.BoolPtrOutput `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
 	SsoDisabled pulumi.BoolPtrOutput `pulumi:"ssoDisabled"`
+	// Allows configuration for token exchange
+	TokenExchange ClientTokenExchangePtrOutput `pulumi:"tokenExchange"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins pulumi.StringArrayOutput `pulumi:"webOrigins"`
 }
@@ -319,6 +321,8 @@ type clientState struct {
 	Sso *bool `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
 	SsoDisabled *bool `pulumi:"ssoDisabled"`
+	// Allows configuration for token exchange
+	TokenExchange *ClientTokenExchange `pulumi:"tokenExchange"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins []string `pulumi:"webOrigins"`
 }
@@ -402,6 +406,8 @@ type ClientState struct {
 	Sso pulumi.BoolPtrInput
 	// Indicates whether or not SSO is disabled.
 	SsoDisabled pulumi.BoolPtrInput
+	// Allows configuration for token exchange
+	TokenExchange ClientTokenExchangePtrInput
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins pulumi.StringArrayInput
 }
@@ -485,6 +491,8 @@ type clientArgs struct {
 	Sso *bool `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
 	SsoDisabled *bool `pulumi:"ssoDisabled"`
+	// Allows configuration for token exchange
+	TokenExchange *ClientTokenExchange `pulumi:"tokenExchange"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins []string `pulumi:"webOrigins"`
 }
@@ -565,6 +573,8 @@ type ClientArgs struct {
 	Sso pulumi.BoolPtrInput
 	// Indicates whether or not SSO is disabled.
 	SsoDisabled pulumi.BoolPtrInput
+	// Allows configuration for token exchange
+	TokenExchange ClientTokenExchangePtrInput
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins pulumi.StringArrayInput
 }
@@ -846,6 +856,11 @@ func (o ClientOutput) Sso() pulumi.BoolPtrOutput {
 // Indicates whether or not SSO is disabled.
 func (o ClientOutput) SsoDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.BoolPtrOutput { return v.SsoDisabled }).(pulumi.BoolPtrOutput)
+}
+
+// Allows configuration for token exchange
+func (o ClientOutput) TokenExchange() ClientTokenExchangePtrOutput {
+	return o.ApplyT(func(v *Client) ClientTokenExchangePtrOutput { return v.TokenExchange }).(ClientTokenExchangePtrOutput)
 }
 
 // URLs that represent valid web origins for use with web message response mode.

@@ -72,6 +72,18 @@ namespace Pulumi.Auth0.Inputs
             set => _authParams = value;
         }
 
+        [Input("authenticationMethods")]
+        private InputList<Inputs.ConnectionOptionsAuthenticationMethodGetArgs>? _authenticationMethods;
+
+        /// <summary>
+        /// Specifies the authentication methods and their configuration (enabled or disabled)
+        /// </summary>
+        public InputList<Inputs.ConnectionOptionsAuthenticationMethodGetArgs> AuthenticationMethods
+        {
+            get => _authenticationMethods ?? (_authenticationMethods = new InputList<Inputs.ConnectionOptionsAuthenticationMethodGetArgs>());
+            set => _authenticationMethods = value;
+        }
+
         /// <summary>
         /// Authorization endpoint.
         /// </summary>
@@ -373,6 +385,12 @@ namespace Pulumi.Auth0.Inputs
             get => _nonPersistentAttrs ?? (_nonPersistentAttrs = new InputList<string>());
             set => _nonPersistentAttrs = value;
         }
+
+        /// <summary>
+        /// Defines options for the passkey authentication method
+        /// </summary>
+        [Input("passkeyOptions")]
+        public Input<Inputs.ConnectionOptionsPasskeyOptionsGetArgs>? PasskeyOptions { get; set; }
 
         /// <summary>
         /// Configuration settings for password complexity.

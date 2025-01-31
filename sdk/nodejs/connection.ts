@@ -12,6 +12,8 @@ import * as utilities from "./utilities";
  * > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
  * creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
  *
+ * > When updating the `options` parameter, ensure that all nested fields within the `options` schema are explicitly defined. Failing to do so may result in the loss of existing configurations.
+ *
  * ## Example Usage
  *
  * ### Auth0 Connection
@@ -79,6 +81,19 @@ import * as utilities from "./utilities";
  *         mfa: {
  *             active: true,
  *             returnEnrollSettings: true,
+ *         },
+ *         authenticationMethods: [{
+ *             passkey: {
+ *                 enabled: true,
+ *             },
+ *             password: {
+ *                 enabled: true,
+ *             },
+ *         }],
+ *         passkeyOptions: {
+ *             challengeUi: "both",
+ *             localEnrollmentEnabled: true,
+ *             progressiveEnrollmentEnabled: true,
  *         },
  *     },
  * });

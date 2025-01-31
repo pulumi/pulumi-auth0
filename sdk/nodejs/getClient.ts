@@ -222,6 +222,10 @@ export interface GetClientResult {
      */
     readonly tokenEndpointAuthMethod: string;
     /**
+     * Allows configuration for token exchange
+     */
+    readonly tokenExchanges: outputs.GetClientTokenExchange[];
+    /**
      * URLs that represent valid web origins for use with web message response mode.
      */
     readonly webOrigins: string[];

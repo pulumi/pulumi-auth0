@@ -13,6 +13,7 @@ import com.pulumi.auth0.outputs.ClientMobile;
 import com.pulumi.auth0.outputs.ClientNativeSocialLogin;
 import com.pulumi.auth0.outputs.ClientOidcLogout;
 import com.pulumi.auth0.outputs.ClientRefreshToken;
+import com.pulumi.auth0.outputs.ClientTokenExchange;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -677,6 +678,20 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> ssoDisabled() {
         return Codegen.optional(this.ssoDisabled);
+    }
+    /**
+     * Allows configuration for token exchange
+     * 
+     */
+    @Export(name="tokenExchange", refs={ClientTokenExchange.class}, tree="[0]")
+    private Output</* @Nullable */ ClientTokenExchange> tokenExchange;
+
+    /**
+     * @return Allows configuration for token exchange
+     * 
+     */
+    public Output<Optional<ClientTokenExchange>> tokenExchange() {
+        return Codegen.optional(this.tokenExchange);
     }
     /**
      * URLs that represent valid web origins for use with web message response mode.

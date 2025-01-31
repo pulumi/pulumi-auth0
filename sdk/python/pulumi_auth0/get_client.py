@@ -27,7 +27,7 @@ class GetClientResult:
     """
     A collection of values returned by getClient.
     """
-    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, signed_request_objects=None, signing_keys=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, web_origins=None):
+    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, signed_request_objects=None, signing_keys=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, token_exchanges=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
@@ -157,6 +157,9 @@ class GetClientResult:
         if token_endpoint_auth_method and not isinstance(token_endpoint_auth_method, str):
             raise TypeError("Expected argument 'token_endpoint_auth_method' to be a str")
         pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
+        if token_exchanges and not isinstance(token_exchanges, list):
+            raise TypeError("Expected argument 'token_exchanges' to be a list")
+        pulumi.set(__self__, "token_exchanges", token_exchanges)
         if web_origins and not isinstance(web_origins, list):
             raise TypeError("Expected argument 'web_origins' to be a list")
         pulumi.set(__self__, "web_origins", web_origins)
@@ -503,6 +506,14 @@ class GetClientResult:
         return pulumi.get(self, "token_endpoint_auth_method")
 
     @property
+    @pulumi.getter(name="tokenExchanges")
+    def token_exchanges(self) -> Sequence['outputs.GetClientTokenExchangeResult']:
+        """
+        Allows configuration for token exchange
+        """
+        return pulumi.get(self, "token_exchanges")
+
+    @property
     @pulumi.getter(name="webOrigins")
     def web_origins(self) -> Sequence[str]:
         """
@@ -560,6 +571,7 @@ class AwaitableGetClientResult(GetClientResult):
             sso=self.sso,
             sso_disabled=self.sso_disabled,
             token_endpoint_auth_method=self.token_endpoint_auth_method,
+            token_exchanges=self.token_exchanges,
             web_origins=self.web_origins)
 
 
@@ -635,6 +647,7 @@ def get_client(client_id: Optional[str] = None,
         sso=pulumi.get(__ret__, 'sso'),
         sso_disabled=pulumi.get(__ret__, 'sso_disabled'),
         token_endpoint_auth_method=pulumi.get(__ret__, 'token_endpoint_auth_method'),
+        token_exchanges=pulumi.get(__ret__, 'token_exchanges'),
         web_origins=pulumi.get(__ret__, 'web_origins'))
 def get_client_output(client_id: Optional[pulumi.Input[Optional[str]]] = None,
                       name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -707,4 +720,5 @@ def get_client_output(client_id: Optional[pulumi.Input[Optional[str]]] = None,
         sso=pulumi.get(__response__, 'sso'),
         sso_disabled=pulumi.get(__response__, 'sso_disabled'),
         token_endpoint_auth_method=pulumi.get(__response__, 'token_endpoint_auth_method'),
+        token_exchanges=pulumi.get(__response__, 'token_exchanges'),
         web_origins=pulumi.get(__response__, 'web_origins')))

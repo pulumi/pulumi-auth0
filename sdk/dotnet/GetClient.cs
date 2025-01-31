@@ -320,6 +320,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string TokenEndpointAuthMethod;
         /// <summary>
+        /// Allows configuration for token exchange
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientTokenExchangeResult> TokenExchanges;
+        /// <summary>
         /// URLs that represent valid web origins for use with web message response mode.
         /// </summary>
         public readonly ImmutableArray<string> WebOrigins;
@@ -412,6 +416,8 @@ namespace Pulumi.Auth0
 
             string tokenEndpointAuthMethod,
 
+            ImmutableArray<Outputs.GetClientTokenExchangeResult> tokenExchanges,
+
             ImmutableArray<string> webOrigins)
         {
             Addons = addons;
@@ -457,6 +463,7 @@ namespace Pulumi.Auth0
             Sso = sso;
             SsoDisabled = ssoDisabled;
             TokenEndpointAuthMethod = tokenEndpointAuthMethod;
+            TokenExchanges = tokenExchanges;
             WebOrigins = webOrigins;
         }
     }

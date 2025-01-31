@@ -17,6 +17,8 @@ import (
 // > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
 // creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
 //
+// > When updating the `options` parameter, ensure that all nested fields within the `options` schema are explicitly defined. Failing to do so may result in the loss of existing configurations.
+//
 // ## Example Usage
 //
 // ### Auth0 Connection
@@ -98,6 +100,21 @@ import (
 //					Mfa: &auth0.ConnectionOptionsMfaArgs{
 //						Active:               pulumi.Bool(true),
 //						ReturnEnrollSettings: pulumi.Bool(true),
+//					},
+//					AuthenticationMethods: auth0.ConnectionOptionsAuthenticationMethodArray{
+//						&auth0.ConnectionOptionsAuthenticationMethodArgs{
+//							Passkey: &auth0.ConnectionOptionsAuthenticationMethodPasskeyArgs{
+//								Enabled: pulumi.Bool(true),
+//							},
+//							Password: &auth0.ConnectionOptionsAuthenticationMethodPasswordArgs{
+//								Enabled: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//					PasskeyOptions: &auth0.ConnectionOptionsPasskeyOptionsArgs{
+//						ChallengeUi:                  pulumi.String("both"),
+//						LocalEnrollmentEnabled:       pulumi.Bool(true),
+//						ProgressiveEnrollmentEnabled: pulumi.Bool(true),
 //					},
 //				},
 //			})

@@ -56,7 +56,7 @@ namespace Pulumi.Auth0
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
+        /// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
         /// </summary>
         [Output("runtime")]
         public Output<string> Runtime { get; private set; } = null!;
@@ -156,7 +156,7 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
+        /// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }
@@ -218,7 +218,7 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
+        /// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }

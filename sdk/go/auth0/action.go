@@ -40,7 +40,7 @@ type Action struct {
 	Deploy pulumi.BoolPtrOutput `pulumi:"deploy"`
 	// The name of the action.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
+	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
 	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
 	Secrets ActionSecretArrayOutput `pulumi:"secrets"`
@@ -94,7 +94,7 @@ type actionState struct {
 	Deploy *bool `pulumi:"deploy"`
 	// The name of the action.
 	Name *string `pulumi:"name"`
-	// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
+	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 	Runtime *string `pulumi:"runtime"`
 	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
 	Secrets []ActionSecret `pulumi:"secrets"`
@@ -113,7 +113,7 @@ type ActionState struct {
 	Deploy pulumi.BoolPtrInput
 	// The name of the action.
 	Name pulumi.StringPtrInput
-	// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
+	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 	Runtime pulumi.StringPtrInput
 	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
 	Secrets ActionSecretArrayInput
@@ -136,7 +136,7 @@ type actionArgs struct {
 	Deploy *bool `pulumi:"deploy"`
 	// The name of the action.
 	Name *string `pulumi:"name"`
-	// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
+	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 	Runtime *string `pulumi:"runtime"`
 	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
 	Secrets []ActionSecret `pulumi:"secrets"`
@@ -154,7 +154,7 @@ type ActionArgs struct {
 	Deploy pulumi.BoolPtrInput
 	// The name of the action.
 	Name pulumi.StringPtrInput
-	// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
+	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 	Runtime pulumi.StringPtrInput
 	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
 	Secrets ActionSecretArrayInput
@@ -269,7 +269,7 @@ func (o ActionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
+// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 func (o ActionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }

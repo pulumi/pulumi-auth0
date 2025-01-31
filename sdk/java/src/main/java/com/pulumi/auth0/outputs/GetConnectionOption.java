@@ -5,11 +5,13 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetConnectionOptionAttribute;
 import com.pulumi.auth0.outputs.GetConnectionOptionAttributeMap;
+import com.pulumi.auth0.outputs.GetConnectionOptionAuthenticationMethod;
 import com.pulumi.auth0.outputs.GetConnectionOptionConnectionSetting;
 import com.pulumi.auth0.outputs.GetConnectionOptionDecryptionKey;
 import com.pulumi.auth0.outputs.GetConnectionOptionGatewayAuthentication;
 import com.pulumi.auth0.outputs.GetConnectionOptionIdpInitiated;
 import com.pulumi.auth0.outputs.GetConnectionOptionMfa;
+import com.pulumi.auth0.outputs.GetConnectionOptionPasskeyOption;
 import com.pulumi.auth0.outputs.GetConnectionOptionPasswordComplexityOption;
 import com.pulumi.auth0.outputs.GetConnectionOptionPasswordDictionary;
 import com.pulumi.auth0.outputs.GetConnectionOptionPasswordHistory;
@@ -63,6 +65,11 @@ public final class GetConnectionOption {
      * 
      */
     private Map<String,String> authParams;
+    /**
+     * @return Specifies the authentication methods and their configuration (enabled or disabled)
+     * 
+     */
+    private List<GetConnectionOptionAuthenticationMethod> authenticationMethods;
     /**
      * @return Authorization endpoint.
      * 
@@ -278,6 +285,11 @@ public final class GetConnectionOption {
      * 
      */
     private List<String> nonPersistentAttrs;
+    /**
+     * @return Defines options for the passkey authentication method
+     * 
+     */
+    private List<GetConnectionOptionPasskeyOption> passkeyOptions;
     /**
      * @return Configuration settings for password complexity.
      * 
@@ -538,6 +550,13 @@ public final class GetConnectionOption {
      */
     public Map<String,String> authParams() {
         return this.authParams;
+    }
+    /**
+     * @return Specifies the authentication methods and their configuration (enabled or disabled)
+     * 
+     */
+    public List<GetConnectionOptionAuthenticationMethod> authenticationMethods() {
+        return this.authenticationMethods;
     }
     /**
      * @return Authorization endpoint.
@@ -839,6 +858,13 @@ public final class GetConnectionOption {
      */
     public List<String> nonPersistentAttrs() {
         return this.nonPersistentAttrs;
+    }
+    /**
+     * @return Defines options for the passkey authentication method
+     * 
+     */
+    public List<GetConnectionOptionPasskeyOption> passkeyOptions() {
+        return this.passkeyOptions;
     }
     /**
      * @return Configuration settings for password complexity.
@@ -1151,6 +1177,7 @@ public final class GetConnectionOption {
         private List<GetConnectionOptionAttributeMap> attributeMaps;
         private List<GetConnectionOptionAttribute> attributes;
         private Map<String,String> authParams;
+        private List<GetConnectionOptionAuthenticationMethod> authenticationMethods;
         private String authorizationEndpoint;
         private Boolean bruteForceProtection;
         private String clientId;
@@ -1194,6 +1221,7 @@ public final class GetConnectionOption {
         private List<GetConnectionOptionMfa> mfas;
         private String name;
         private List<String> nonPersistentAttrs;
+        private List<GetConnectionOptionPasskeyOption> passkeyOptions;
         private List<GetConnectionOptionPasswordComplexityOption> passwordComplexityOptions;
         private List<GetConnectionOptionPasswordDictionary> passwordDictionaries;
         private List<GetConnectionOptionPasswordHistory> passwordHistories;
@@ -1246,6 +1274,7 @@ public final class GetConnectionOption {
     	      this.attributeMaps = defaults.attributeMaps;
     	      this.attributes = defaults.attributes;
     	      this.authParams = defaults.authParams;
+    	      this.authenticationMethods = defaults.authenticationMethods;
     	      this.authorizationEndpoint = defaults.authorizationEndpoint;
     	      this.bruteForceProtection = defaults.bruteForceProtection;
     	      this.clientId = defaults.clientId;
@@ -1289,6 +1318,7 @@ public final class GetConnectionOption {
     	      this.mfas = defaults.mfas;
     	      this.name = defaults.name;
     	      this.nonPersistentAttrs = defaults.nonPersistentAttrs;
+    	      this.passkeyOptions = defaults.passkeyOptions;
     	      this.passwordComplexityOptions = defaults.passwordComplexityOptions;
     	      this.passwordDictionaries = defaults.passwordDictionaries;
     	      this.passwordHistories = defaults.passwordHistories;
@@ -1397,6 +1427,17 @@ public final class GetConnectionOption {
             }
             this.authParams = authParams;
             return this;
+        }
+        @CustomType.Setter
+        public Builder authenticationMethods(List<GetConnectionOptionAuthenticationMethod> authenticationMethods) {
+            if (authenticationMethods == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "authenticationMethods");
+            }
+            this.authenticationMethods = authenticationMethods;
+            return this;
+        }
+        public Builder authenticationMethods(GetConnectionOptionAuthenticationMethod... authenticationMethods) {
+            return authenticationMethods(List.of(authenticationMethods));
         }
         @CustomType.Setter
         public Builder authorizationEndpoint(String authorizationEndpoint) {
@@ -1765,6 +1806,17 @@ public final class GetConnectionOption {
         }
         public Builder nonPersistentAttrs(String... nonPersistentAttrs) {
             return nonPersistentAttrs(List.of(nonPersistentAttrs));
+        }
+        @CustomType.Setter
+        public Builder passkeyOptions(List<GetConnectionOptionPasskeyOption> passkeyOptions) {
+            if (passkeyOptions == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "passkeyOptions");
+            }
+            this.passkeyOptions = passkeyOptions;
+            return this;
+        }
+        public Builder passkeyOptions(GetConnectionOptionPasskeyOption... passkeyOptions) {
+            return passkeyOptions(List.of(passkeyOptions));
         }
         @CustomType.Setter
         public Builder passwordComplexityOptions(List<GetConnectionOptionPasswordComplexityOption> passwordComplexityOptions) {
@@ -2138,6 +2190,7 @@ public final class GetConnectionOption {
             _resultValue.attributeMaps = attributeMaps;
             _resultValue.attributes = attributes;
             _resultValue.authParams = authParams;
+            _resultValue.authenticationMethods = authenticationMethods;
             _resultValue.authorizationEndpoint = authorizationEndpoint;
             _resultValue.bruteForceProtection = bruteForceProtection;
             _resultValue.clientId = clientId;
@@ -2181,6 +2234,7 @@ public final class GetConnectionOption {
             _resultValue.mfas = mfas;
             _resultValue.name = name;
             _resultValue.nonPersistentAttrs = nonPersistentAttrs;
+            _resultValue.passkeyOptions = passkeyOptions;
             _resultValue.passwordComplexityOptions = passwordComplexityOptions;
             _resultValue.passwordDictionaries = passwordDictionaries;
             _resultValue.passwordHistories = passwordHistories;

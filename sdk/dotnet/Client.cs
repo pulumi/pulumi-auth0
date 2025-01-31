@@ -362,6 +362,12 @@ namespace Pulumi.Auth0
         public Output<bool?> SsoDisabled { get; private set; } = null!;
 
         /// <summary>
+        /// Allows configuration for token exchange
+        /// </summary>
+        [Output("tokenExchange")]
+        public Output<Outputs.ClientTokenExchange?> TokenExchange { get; private set; } = null!;
+
+        /// <summary>
         /// URLs that represent valid web origins for use with web message response mode.
         /// </summary>
         [Output("webOrigins")]
@@ -688,6 +694,12 @@ namespace Pulumi.Auth0
         [Input("ssoDisabled")]
         public Input<bool>? SsoDisabled { get; set; }
 
+        /// <summary>
+        /// Allows configuration for token exchange
+        /// </summary>
+        [Input("tokenExchange")]
+        public Input<Inputs.ClientTokenExchangeArgs>? TokenExchange { get; set; }
+
         [Input("webOrigins")]
         private InputList<string>? _webOrigins;
 
@@ -1001,6 +1013,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("ssoDisabled")]
         public Input<bool>? SsoDisabled { get; set; }
+
+        /// <summary>
+        /// Allows configuration for token exchange
+        /// </summary>
+        [Input("tokenExchange")]
+        public Input<Inputs.ClientTokenExchangeGetArgs>? TokenExchange { get; set; }
 
         [Input("webOrigins")]
         private InputList<string>? _webOrigins;

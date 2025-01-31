@@ -200,6 +200,11 @@ export const getTenant: typeof import("./getTenant").getTenant = null as any;
 export const getTenantOutput: typeof import("./getTenant").getTenantOutput = null as any;
 utilities.lazyLoad(exports, ["getTenant","getTenantOutput"], () => require("./getTenant"));
 
+export { GetTokenExchangeProfileArgs, GetTokenExchangeProfileResult, GetTokenExchangeProfileOutputArgs } from "./getTokenExchangeProfile";
+export const getTokenExchangeProfile: typeof import("./getTokenExchangeProfile").getTokenExchangeProfile = null as any;
+export const getTokenExchangeProfileOutput: typeof import("./getTokenExchangeProfile").getTokenExchangeProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getTokenExchangeProfile","getTokenExchangeProfileOutput"], () => require("./getTokenExchangeProfile"));
+
 export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
@@ -355,6 +360,11 @@ export type Tenant = import("./tenant").Tenant;
 export const Tenant: typeof import("./tenant").Tenant = null as any;
 utilities.lazyLoad(exports, ["Tenant"], () => require("./tenant"));
 
+export { TokenExchangeProfileArgs, TokenExchangeProfileState } from "./tokenExchangeProfile";
+export type TokenExchangeProfile = import("./tokenExchangeProfile").TokenExchangeProfile;
+export const TokenExchangeProfile: typeof import("./tokenExchangeProfile").TokenExchangeProfile = null as any;
+utilities.lazyLoad(exports, ["TokenExchangeProfile"], () => require("./tokenExchangeProfile"));
+
 export { TriggerActionArgs, TriggerActionState } from "./triggerAction";
 export type TriggerAction = import("./triggerAction").TriggerAction;
 export const TriggerAction: typeof import("./triggerAction").TriggerAction = null as any;
@@ -500,6 +510,8 @@ const _module = {
                 return new SelfServiceProfileCustomText(name, <any>undefined, { urn })
             case "auth0:index/tenant:Tenant":
                 return new Tenant(name, <any>undefined, { urn })
+            case "auth0:index/tokenExchangeProfile:TokenExchangeProfile":
+                return new TokenExchangeProfile(name, <any>undefined, { urn })
             case "auth0:index/triggerAction:TriggerAction":
                 return new TriggerAction(name, <any>undefined, { urn })
             case "auth0:index/triggerActions:TriggerActions":
@@ -567,6 +579,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/ruleConfig", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/selfServiceProfile", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/selfServiceProfileCustomText", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/tenant", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/tokenExchangeProfile", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/triggerAction", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/triggerActions", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/user", _module)

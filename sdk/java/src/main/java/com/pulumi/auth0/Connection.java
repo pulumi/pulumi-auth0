@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * &gt; The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
  * creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
  * 
+ * &gt; When updating the `options` parameter, ensure that all nested fields within the `options` schema are explicitly defined. Failing to do so may result in the loss of existing configurations.
+ * 
  * ## Example Usage
  * 
  * ### Auth0 Connection
@@ -45,6 +47,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.inputs.ConnectionOptionsValidationArgs;
  * import com.pulumi.auth0.inputs.ConnectionOptionsValidationUsernameArgs;
  * import com.pulumi.auth0.inputs.ConnectionOptionsMfaArgs;
+ * import com.pulumi.auth0.inputs.ConnectionOptionsPasskeyOptionsArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -117,6 +120,19 @@ import javax.annotation.Nullable;
  *                 .mfa(ConnectionOptionsMfaArgs.builder()
  *                     .active(true)
  *                     .returnEnrollSettings(true)
+ *                     .build())
+ *                 .authenticationMethods(ConnectionOptionsAuthenticationMethodArgs.builder()
+ *                     .passkey(ConnectionOptionsAuthenticationMethodPasskeyArgs.builder()
+ *                         .enabled(true)
+ *                         .build())
+ *                     .password(ConnectionOptionsAuthenticationMethodPasswordArgs.builder()
+ *                         .enabled(true)
+ *                         .build())
+ *                     .build())
+ *                 .passkeyOptions(ConnectionOptionsPasskeyOptionsArgs.builder()
+ *                     .challengeUi("both")
+ *                     .localEnrollmentEnabled(true)
+ *                     .progressiveEnrollmentEnabled(true)
  *                     .build())
  *                 .build())
  *             .build());

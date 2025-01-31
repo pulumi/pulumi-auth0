@@ -5,11 +5,13 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.auth0.inputs.ConnectionOptionsAttributeArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsAttributeMapArgs;
+import com.pulumi.auth0.inputs.ConnectionOptionsAuthenticationMethodArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsConnectionSettingsArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsDecryptionKeyArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsGatewayAuthenticationArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsIdpInitiatedArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsMfaArgs;
+import com.pulumi.auth0.inputs.ConnectionOptionsPasskeyOptionsArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsPasswordComplexityOptionsArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsPasswordDictionaryArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsPasswordHistoryArgs;
@@ -136,6 +138,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Map<String,String>>> authParams() {
         return Optional.ofNullable(this.authParams);
+    }
+
+    /**
+     * Specifies the authentication methods and their configuration (enabled or disabled)
+     * 
+     */
+    @Import(name="authenticationMethods")
+    private @Nullable Output<List<ConnectionOptionsAuthenticationMethodArgs>> authenticationMethods;
+
+    /**
+     * @return Specifies the authentication methods and their configuration (enabled or disabled)
+     * 
+     */
+    public Optional<Output<List<ConnectionOptionsAuthenticationMethodArgs>>> authenticationMethods() {
+        return Optional.ofNullable(this.authenticationMethods);
     }
 
     /**
@@ -784,6 +801,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Defines options for the passkey authentication method
+     * 
+     */
+    @Import(name="passkeyOptions")
+    private @Nullable Output<ConnectionOptionsPasskeyOptionsArgs> passkeyOptions;
+
+    /**
+     * @return Defines options for the passkey authentication method
+     * 
+     */
+    public Optional<Output<ConnectionOptionsPasskeyOptionsArgs>> passkeyOptions() {
+        return Optional.ofNullable(this.passkeyOptions);
+    }
+
+    /**
      * Configuration settings for password complexity.
      * 
      */
@@ -1423,6 +1455,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.attributeMap = $.attributeMap;
         this.attributes = $.attributes;
         this.authParams = $.authParams;
+        this.authenticationMethods = $.authenticationMethods;
         this.authorizationEndpoint = $.authorizationEndpoint;
         this.bruteForceProtection = $.bruteForceProtection;
         this.clientId = $.clientId;
@@ -1466,6 +1499,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.mfa = $.mfa;
         this.name = $.name;
         this.nonPersistentAttrs = $.nonPersistentAttrs;
+        this.passkeyOptions = $.passkeyOptions;
         this.passwordComplexityOptions = $.passwordComplexityOptions;
         this.passwordDictionary = $.passwordDictionary;
         this.passwordHistories = $.passwordHistories;
@@ -1693,6 +1727,37 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder authParams(Map<String,String> authParams) {
             return authParams(Output.of(authParams));
+        }
+
+        /**
+         * @param authenticationMethods Specifies the authentication methods and their configuration (enabled or disabled)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authenticationMethods(@Nullable Output<List<ConnectionOptionsAuthenticationMethodArgs>> authenticationMethods) {
+            $.authenticationMethods = authenticationMethods;
+            return this;
+        }
+
+        /**
+         * @param authenticationMethods Specifies the authentication methods and their configuration (enabled or disabled)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authenticationMethods(List<ConnectionOptionsAuthenticationMethodArgs> authenticationMethods) {
+            return authenticationMethods(Output.of(authenticationMethods));
+        }
+
+        /**
+         * @param authenticationMethods Specifies the authentication methods and their configuration (enabled or disabled)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authenticationMethods(ConnectionOptionsAuthenticationMethodArgs... authenticationMethods) {
+            return authenticationMethods(List.of(authenticationMethods));
         }
 
         /**
@@ -2626,6 +2691,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder nonPersistentAttrs(String... nonPersistentAttrs) {
             return nonPersistentAttrs(List.of(nonPersistentAttrs));
+        }
+
+        /**
+         * @param passkeyOptions Defines options for the passkey authentication method
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passkeyOptions(@Nullable Output<ConnectionOptionsPasskeyOptionsArgs> passkeyOptions) {
+            $.passkeyOptions = passkeyOptions;
+            return this;
+        }
+
+        /**
+         * @param passkeyOptions Defines options for the passkey authentication method
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passkeyOptions(ConnectionOptionsPasskeyOptionsArgs passkeyOptions) {
+            return passkeyOptions(Output.of(passkeyOptions));
         }
 
         /**
