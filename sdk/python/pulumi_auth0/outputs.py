@@ -89,6 +89,7 @@ __all__ = [
     'ClientOidcLogout',
     'ClientOidcLogoutBackchannelLogoutInitiators',
     'ClientRefreshToken',
+    'ClientTokenExchange',
     'ConnectionOptions',
     'ConnectionOptionsAttribute',
     'ConnectionOptionsAttributeEmail',
@@ -105,11 +106,15 @@ __all__ = [
     'ConnectionOptionsAttributeUsernameSignup',
     'ConnectionOptionsAttributeUsernameValidation',
     'ConnectionOptionsAttributeUsernameValidationAllowedType',
+    'ConnectionOptionsAuthenticationMethod',
+    'ConnectionOptionsAuthenticationMethodPasskey',
+    'ConnectionOptionsAuthenticationMethodPassword',
     'ConnectionOptionsConnectionSettings',
     'ConnectionOptionsDecryptionKey',
     'ConnectionOptionsGatewayAuthentication',
     'ConnectionOptionsIdpInitiated',
     'ConnectionOptionsMfa',
+    'ConnectionOptionsPasskeyOptions',
     'ConnectionOptionsPasswordComplexityOptions',
     'ConnectionOptionsPasswordDictionary',
     'ConnectionOptionsPasswordHistory',
@@ -234,9 +239,11 @@ __all__ = [
     'GetClientRefreshTokenResult',
     'GetClientSignedRequestObjectResult',
     'GetClientSignedRequestObjectCredentialResult',
+    'GetClientTokenExchangeResult',
     'GetClientsClientResult',
     'GetClientsClientOidcLogoutResult',
     'GetClientsClientOidcLogoutBackchannelLogoutInitiatorResult',
+    'GetClientsClientTokenExchangeResult',
     'GetConnectionOptionResult',
     'GetConnectionOptionAttributeResult',
     'GetConnectionOptionAttributeEmailResult',
@@ -253,11 +260,15 @@ __all__ = [
     'GetConnectionOptionAttributeUsernameSignupResult',
     'GetConnectionOptionAttributeUsernameValidationResult',
     'GetConnectionOptionAttributeUsernameValidationAllowedTypeResult',
+    'GetConnectionOptionAuthenticationMethodResult',
+    'GetConnectionOptionAuthenticationMethodPasskeyResult',
+    'GetConnectionOptionAuthenticationMethodPasswordResult',
     'GetConnectionOptionConnectionSettingResult',
     'GetConnectionOptionDecryptionKeyResult',
     'GetConnectionOptionGatewayAuthenticationResult',
     'GetConnectionOptionIdpInitiatedResult',
     'GetConnectionOptionMfaResult',
+    'GetConnectionOptionPasskeyOptionResult',
     'GetConnectionOptionPasswordComplexityOptionResult',
     'GetConnectionOptionPasswordDictionaryResult',
     'GetConnectionOptionPasswordHistoryResult',
@@ -4841,6 +4852,41 @@ class ClientRefreshToken(dict):
 
 
 @pulumi.output_type
+class ClientTokenExchange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowAnyProfileOfTypes":
+            suggest = "allow_any_profile_of_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientTokenExchange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientTokenExchange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientTokenExchange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_any_profile_of_types: Sequence[str]):
+        """
+        :param Sequence[str] allow_any_profile_of_types: List of allowed profile types for token exchange
+        """
+        pulumi.set(__self__, "allow_any_profile_of_types", allow_any_profile_of_types)
+
+    @property
+    @pulumi.getter(name="allowAnyProfileOfTypes")
+    def allow_any_profile_of_types(self) -> Sequence[str]:
+        """
+        List of allowed profile types for token exchange
+        """
+        return pulumi.get(self, "allow_any_profile_of_types")
+
+
+@pulumi.output_type
 class ConnectionOptions(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4857,6 +4903,8 @@ class ConnectionOptions(dict):
             suggest = "attribute_map"
         elif key == "authParams":
             suggest = "auth_params"
+        elif key == "authenticationMethods":
+            suggest = "authentication_methods"
         elif key == "authorizationEndpoint":
             suggest = "authorization_endpoint"
         elif key == "bruteForceProtection":
@@ -4929,6 +4977,8 @@ class ConnectionOptions(dict):
             suggest = "metadata_xml"
         elif key == "nonPersistentAttrs":
             suggest = "non_persistent_attrs"
+        elif key == "passkeyOptions":
+            suggest = "passkey_options"
         elif key == "passwordComplexityOptions":
             suggest = "password_complexity_options"
         elif key == "passwordDictionary":
@@ -5013,6 +5063,7 @@ class ConnectionOptions(dict):
                  attribute_map: Optional['outputs.ConnectionOptionsAttributeMap'] = None,
                  attributes: Optional[Sequence['outputs.ConnectionOptionsAttribute']] = None,
                  auth_params: Optional[Mapping[str, str]] = None,
+                 authentication_methods: Optional[Sequence['outputs.ConnectionOptionsAuthenticationMethod']] = None,
                  authorization_endpoint: Optional[str] = None,
                  brute_force_protection: Optional[bool] = None,
                  client_id: Optional[str] = None,
@@ -5056,6 +5107,7 @@ class ConnectionOptions(dict):
                  mfa: Optional['outputs.ConnectionOptionsMfa'] = None,
                  name: Optional[str] = None,
                  non_persistent_attrs: Optional[Sequence[str]] = None,
+                 passkey_options: Optional['outputs.ConnectionOptionsPasskeyOptions'] = None,
                  password_complexity_options: Optional['outputs.ConnectionOptionsPasswordComplexityOptions'] = None,
                  password_dictionary: Optional['outputs.ConnectionOptionsPasswordDictionary'] = None,
                  password_histories: Optional[Sequence['outputs.ConnectionOptionsPasswordHistory']] = None,
@@ -5106,6 +5158,7 @@ class ConnectionOptions(dict):
         :param 'ConnectionOptionsAttributeMapArgs' attribute_map: OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
         :param Sequence['ConnectionOptionsAttributeArgs'] attributes: Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
         :param Mapping[str, str] auth_params: Query string parameters to be included as part of the generated passwordless email link.
+        :param Sequence['ConnectionOptionsAuthenticationMethodArgs'] authentication_methods: Specifies the authentication methods and their configuration (enabled or disabled)
         :param str authorization_endpoint: Authorization endpoint.
         :param bool brute_force_protection: Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
         :param str client_id: The strategy's client ID.
@@ -5149,6 +5202,7 @@ class ConnectionOptions(dict):
         :param 'ConnectionOptionsMfaArgs' mfa: Configuration options for multifactor authentication.
         :param str name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         :param Sequence[str] non_persistent_attrs: If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
+        :param 'ConnectionOptionsPasskeyOptionsArgs' passkey_options: Defines options for the passkey authentication method
         :param 'ConnectionOptionsPasswordComplexityOptionsArgs' password_complexity_options: Configuration settings for password complexity.
         :param 'ConnectionOptionsPasswordDictionaryArgs' password_dictionary: Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
         :param Sequence['ConnectionOptionsPasswordHistoryArgs'] password_histories: Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
@@ -5206,6 +5260,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "attributes", attributes)
         if auth_params is not None:
             pulumi.set(__self__, "auth_params", auth_params)
+        if authentication_methods is not None:
+            pulumi.set(__self__, "authentication_methods", authentication_methods)
         if authorization_endpoint is not None:
             pulumi.set(__self__, "authorization_endpoint", authorization_endpoint)
         if brute_force_protection is not None:
@@ -5292,6 +5348,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "name", name)
         if non_persistent_attrs is not None:
             pulumi.set(__self__, "non_persistent_attrs", non_persistent_attrs)
+        if passkey_options is not None:
+            pulumi.set(__self__, "passkey_options", passkey_options)
         if password_complexity_options is not None:
             pulumi.set(__self__, "password_complexity_options", password_complexity_options)
         if password_dictionary is not None:
@@ -5432,6 +5490,14 @@ class ConnectionOptions(dict):
         Query string parameters to be included as part of the generated passwordless email link.
         """
         return pulumi.get(self, "auth_params")
+
+    @property
+    @pulumi.getter(name="authenticationMethods")
+    def authentication_methods(self) -> Optional[Sequence['outputs.ConnectionOptionsAuthenticationMethod']]:
+        """
+        Specifies the authentication methods and their configuration (enabled or disabled)
+        """
+        return pulumi.get(self, "authentication_methods")
 
     @property
     @pulumi.getter(name="authorizationEndpoint")
@@ -5776,6 +5842,14 @@ class ConnectionOptions(dict):
         If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
         """
         return pulumi.get(self, "non_persistent_attrs")
+
+    @property
+    @pulumi.getter(name="passkeyOptions")
+    def passkey_options(self) -> Optional['outputs.ConnectionOptionsPasskeyOptions']:
+        """
+        Defines options for the passkey authentication method
+        """
+        return pulumi.get(self, "passkey_options")
 
     @property
     @pulumi.getter(name="passwordComplexityOptions")
@@ -6730,6 +6804,75 @@ class ConnectionOptionsAttributeUsernameValidationAllowedType(dict):
 
 
 @pulumi.output_type
+class ConnectionOptionsAuthenticationMethod(dict):
+    def __init__(__self__, *,
+                 passkey: Optional['outputs.ConnectionOptionsAuthenticationMethodPasskey'] = None,
+                 password: Optional['outputs.ConnectionOptionsAuthenticationMethodPassword'] = None):
+        """
+        :param 'ConnectionOptionsAuthenticationMethodPasskeyArgs' passkey: Configures passkey authentication
+        :param 'ConnectionOptionsAuthenticationMethodPasswordArgs' password: Configures password authentication
+        """
+        if passkey is not None:
+            pulumi.set(__self__, "passkey", passkey)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+
+    @property
+    @pulumi.getter
+    def passkey(self) -> Optional['outputs.ConnectionOptionsAuthenticationMethodPasskey']:
+        """
+        Configures passkey authentication
+        """
+        return pulumi.get(self, "passkey")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional['outputs.ConnectionOptionsAuthenticationMethodPassword']:
+        """
+        Configures password authentication
+        """
+        return pulumi.get(self, "password")
+
+
+@pulumi.output_type
+class ConnectionOptionsAuthenticationMethodPasskey(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Enables passkey authentication
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enables passkey authentication
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ConnectionOptionsAuthenticationMethodPassword(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Enables password authentication
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enables password authentication
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class ConnectionOptionsConnectionSettings(dict):
     def __init__(__self__, *,
                  pkce: str):
@@ -6954,6 +7097,70 @@ class ConnectionOptionsMfa(dict):
         Indicates whether multifactor authentication enrollment settings will be returned.
         """
         return pulumi.get(self, "return_enroll_settings")
+
+
+@pulumi.output_type
+class ConnectionOptionsPasskeyOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "challengeUi":
+            suggest = "challenge_ui"
+        elif key == "localEnrollmentEnabled":
+            suggest = "local_enrollment_enabled"
+        elif key == "progressiveEnrollmentEnabled":
+            suggest = "progressive_enrollment_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsPasskeyOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionOptionsPasskeyOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionOptionsPasskeyOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 challenge_ui: Optional[str] = None,
+                 local_enrollment_enabled: Optional[bool] = None,
+                 progressive_enrollment_enabled: Optional[bool] = None):
+        """
+        :param str challenge_ui: Controls the UI used to challenge the user for their passkey
+        :param bool local_enrollment_enabled: Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
+        :param bool progressive_enrollment_enabled: Enables or disables progressive enrollment of passkeys for the connection
+        """
+        if challenge_ui is not None:
+            pulumi.set(__self__, "challenge_ui", challenge_ui)
+        if local_enrollment_enabled is not None:
+            pulumi.set(__self__, "local_enrollment_enabled", local_enrollment_enabled)
+        if progressive_enrollment_enabled is not None:
+            pulumi.set(__self__, "progressive_enrollment_enabled", progressive_enrollment_enabled)
+
+    @property
+    @pulumi.getter(name="challengeUi")
+    def challenge_ui(self) -> Optional[str]:
+        """
+        Controls the UI used to challenge the user for their passkey
+        """
+        return pulumi.get(self, "challenge_ui")
+
+    @property
+    @pulumi.getter(name="localEnrollmentEnabled")
+    def local_enrollment_enabled(self) -> Optional[bool]:
+        """
+        Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
+        """
+        return pulumi.get(self, "local_enrollment_enabled")
+
+    @property
+    @pulumi.getter(name="progressiveEnrollmentEnabled")
+    def progressive_enrollment_enabled(self) -> Optional[bool]:
+        """
+        Enables or disables progressive enrollment of passkeys for the connection
+        """
+        return pulumi.get(self, "progressive_enrollment_enabled")
 
 
 @pulumi.output_type
@@ -13781,6 +13988,24 @@ class GetClientSignedRequestObjectCredentialResult(dict):
 
 
 @pulumi.output_type
+class GetClientTokenExchangeResult(dict):
+    def __init__(__self__, *,
+                 allow_any_profile_of_types: Sequence[str]):
+        """
+        :param Sequence[str] allow_any_profile_of_types: List of allowed profile types for token exchange
+        """
+        pulumi.set(__self__, "allow_any_profile_of_types", allow_any_profile_of_types)
+
+    @property
+    @pulumi.getter(name="allowAnyProfileOfTypes")
+    def allow_any_profile_of_types(self) -> Sequence[str]:
+        """
+        List of allowed profile types for token exchange
+        """
+        return pulumi.get(self, "allow_any_profile_of_types")
+
+
+@pulumi.output_type
 class GetClientsClientResult(dict):
     def __init__(__self__, *,
                  allowed_clients: Sequence[str],
@@ -13795,6 +14020,7 @@ class GetClientsClientResult(dict):
                  is_first_party: bool,
                  is_token_endpoint_ip_header_trusted: bool,
                  oidc_logouts: Sequence['outputs.GetClientsClientOidcLogoutResult'],
+                 token_exchanges: Sequence['outputs.GetClientsClientTokenExchangeResult'],
                  web_origins: Sequence[str],
                  client_id: Optional[str] = None,
                  name: Optional[str] = None):
@@ -13810,6 +14036,7 @@ class GetClientsClientResult(dict):
         :param bool is_first_party: Indicates whether this client is a first-party client.
         :param bool is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param Sequence['GetClientsClientOidcLogoutArgs'] oidc_logouts: Configure OIDC logout for the Client
+        :param Sequence['GetClientsClientTokenExchangeArgs'] token_exchanges: Allows configuration for token exchange
         :param Sequence[str] web_origins: URLs that represent valid web origins for use with web message response mode.
         :param str client_id: The ID of the client. If not provided, `name` must be set.
         :param str name: The name of the client. If not provided, `client_id` must be set.
@@ -13826,6 +14053,7 @@ class GetClientsClientResult(dict):
         pulumi.set(__self__, "is_first_party", is_first_party)
         pulumi.set(__self__, "is_token_endpoint_ip_header_trusted", is_token_endpoint_ip_header_trusted)
         pulumi.set(__self__, "oidc_logouts", oidc_logouts)
+        pulumi.set(__self__, "token_exchanges", token_exchanges)
         pulumi.set(__self__, "web_origins", web_origins)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
@@ -13926,6 +14154,14 @@ class GetClientsClientResult(dict):
         return pulumi.get(self, "oidc_logouts")
 
     @property
+    @pulumi.getter(name="tokenExchanges")
+    def token_exchanges(self) -> Sequence['outputs.GetClientsClientTokenExchangeResult']:
+        """
+        Allows configuration for token exchange
+        """
+        return pulumi.get(self, "token_exchanges")
+
+    @property
     @pulumi.getter(name="webOrigins")
     def web_origins(self) -> Sequence[str]:
         """
@@ -14009,6 +14245,24 @@ class GetClientsClientOidcLogoutBackchannelLogoutInitiatorResult(dict):
 
 
 @pulumi.output_type
+class GetClientsClientTokenExchangeResult(dict):
+    def __init__(__self__, *,
+                 allow_any_profile_of_types: Sequence[str]):
+        """
+        :param Sequence[str] allow_any_profile_of_types: List of allowed profile types for token exchange
+        """
+        pulumi.set(__self__, "allow_any_profile_of_types", allow_any_profile_of_types)
+
+    @property
+    @pulumi.getter(name="allowAnyProfileOfTypes")
+    def allow_any_profile_of_types(self) -> Sequence[str]:
+        """
+        List of allowed profile types for token exchange
+        """
+        return pulumi.get(self, "allow_any_profile_of_types")
+
+
+@pulumi.output_type
 class GetConnectionOptionResult(dict):
     def __init__(__self__, *,
                  adfs_server: str,
@@ -14018,6 +14272,7 @@ class GetConnectionOptionResult(dict):
                  attribute_maps: Sequence['outputs.GetConnectionOptionAttributeMapResult'],
                  attributes: Sequence['outputs.GetConnectionOptionAttributeResult'],
                  auth_params: Mapping[str, str],
+                 authentication_methods: Sequence['outputs.GetConnectionOptionAuthenticationMethodResult'],
                  authorization_endpoint: str,
                  brute_force_protection: bool,
                  client_id: str,
@@ -14061,6 +14316,7 @@ class GetConnectionOptionResult(dict):
                  mfas: Sequence['outputs.GetConnectionOptionMfaResult'],
                  name: str,
                  non_persistent_attrs: Sequence[str],
+                 passkey_options: Sequence['outputs.GetConnectionOptionPasskeyOptionResult'],
                  password_complexity_options: Sequence['outputs.GetConnectionOptionPasswordComplexityOptionResult'],
                  password_dictionaries: Sequence['outputs.GetConnectionOptionPasswordDictionaryResult'],
                  password_histories: Sequence['outputs.GetConnectionOptionPasswordHistoryResult'],
@@ -14111,6 +14367,7 @@ class GetConnectionOptionResult(dict):
         :param Sequence['GetConnectionOptionAttributeMapArgs'] attribute_maps: OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
         :param Sequence['GetConnectionOptionAttributeArgs'] attributes: Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
         :param Mapping[str, str] auth_params: Query string parameters to be included as part of the generated passwordless email link.
+        :param Sequence['GetConnectionOptionAuthenticationMethodArgs'] authentication_methods: Specifies the authentication methods and their configuration (enabled or disabled)
         :param str authorization_endpoint: Authorization endpoint.
         :param bool brute_force_protection: Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
         :param str client_id: The strategy's client ID.
@@ -14154,6 +14411,7 @@ class GetConnectionOptionResult(dict):
         :param Sequence['GetConnectionOptionMfaArgs'] mfas: Configuration options for multifactor authentication.
         :param str name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         :param Sequence[str] non_persistent_attrs: If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
+        :param Sequence['GetConnectionOptionPasskeyOptionArgs'] passkey_options: Defines options for the passkey authentication method
         :param Sequence['GetConnectionOptionPasswordComplexityOptionArgs'] password_complexity_options: Configuration settings for password complexity.
         :param Sequence['GetConnectionOptionPasswordDictionaryArgs'] password_dictionaries: Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
         :param Sequence['GetConnectionOptionPasswordHistoryArgs'] password_histories: Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
@@ -14204,6 +14462,7 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "attribute_maps", attribute_maps)
         pulumi.set(__self__, "attributes", attributes)
         pulumi.set(__self__, "auth_params", auth_params)
+        pulumi.set(__self__, "authentication_methods", authentication_methods)
         pulumi.set(__self__, "authorization_endpoint", authorization_endpoint)
         pulumi.set(__self__, "brute_force_protection", brute_force_protection)
         pulumi.set(__self__, "client_id", client_id)
@@ -14247,6 +14506,7 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "mfas", mfas)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "non_persistent_attrs", non_persistent_attrs)
+        pulumi.set(__self__, "passkey_options", passkey_options)
         pulumi.set(__self__, "password_complexity_options", password_complexity_options)
         pulumi.set(__self__, "password_dictionaries", password_dictionaries)
         pulumi.set(__self__, "password_histories", password_histories)
@@ -14345,6 +14605,14 @@ class GetConnectionOptionResult(dict):
         Query string parameters to be included as part of the generated passwordless email link.
         """
         return pulumi.get(self, "auth_params")
+
+    @property
+    @pulumi.getter(name="authenticationMethods")
+    def authentication_methods(self) -> Sequence['outputs.GetConnectionOptionAuthenticationMethodResult']:
+        """
+        Specifies the authentication methods and their configuration (enabled or disabled)
+        """
+        return pulumi.get(self, "authentication_methods")
 
     @property
     @pulumi.getter(name="authorizationEndpoint")
@@ -14689,6 +14957,14 @@ class GetConnectionOptionResult(dict):
         If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
         """
         return pulumi.get(self, "non_persistent_attrs")
+
+    @property
+    @pulumi.getter(name="passkeyOptions")
+    def passkey_options(self) -> Sequence['outputs.GetConnectionOptionPasskeyOptionResult']:
+        """
+        Defines options for the passkey authentication method
+        """
+        return pulumi.get(self, "passkey_options")
 
     @property
     @pulumi.getter(name="passwordComplexityOptions")
@@ -15485,6 +15761,71 @@ class GetConnectionOptionAttributeUsernameValidationAllowedTypeResult(dict):
 
 
 @pulumi.output_type
+class GetConnectionOptionAuthenticationMethodResult(dict):
+    def __init__(__self__, *,
+                 passkeys: Sequence['outputs.GetConnectionOptionAuthenticationMethodPasskeyResult'],
+                 passwords: Sequence['outputs.GetConnectionOptionAuthenticationMethodPasswordResult']):
+        """
+        :param Sequence['GetConnectionOptionAuthenticationMethodPasskeyArgs'] passkeys: Configures passkey authentication
+        :param Sequence['GetConnectionOptionAuthenticationMethodPasswordArgs'] passwords: Configures password authentication
+        """
+        pulumi.set(__self__, "passkeys", passkeys)
+        pulumi.set(__self__, "passwords", passwords)
+
+    @property
+    @pulumi.getter
+    def passkeys(self) -> Sequence['outputs.GetConnectionOptionAuthenticationMethodPasskeyResult']:
+        """
+        Configures passkey authentication
+        """
+        return pulumi.get(self, "passkeys")
+
+    @property
+    @pulumi.getter
+    def passwords(self) -> Sequence['outputs.GetConnectionOptionAuthenticationMethodPasswordResult']:
+        """
+        Configures password authentication
+        """
+        return pulumi.get(self, "passwords")
+
+
+@pulumi.output_type
+class GetConnectionOptionAuthenticationMethodPasskeyResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enables passkey authentication
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enables passkey authentication
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetConnectionOptionAuthenticationMethodPasswordResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enables password authentication
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enables password authentication
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class GetConnectionOptionConnectionSettingResult(dict):
     def __init__(__self__, *,
                  pkce: str):
@@ -15643,6 +15984,46 @@ class GetConnectionOptionMfaResult(dict):
         Indicates whether multifactor authentication enrollment settings will be returned.
         """
         return pulumi.get(self, "return_enroll_settings")
+
+
+@pulumi.output_type
+class GetConnectionOptionPasskeyOptionResult(dict):
+    def __init__(__self__, *,
+                 challenge_ui: str,
+                 local_enrollment_enabled: bool,
+                 progressive_enrollment_enabled: bool):
+        """
+        :param str challenge_ui: Controls the UI used to challenge the user for their passkey
+        :param bool local_enrollment_enabled: Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
+        :param bool progressive_enrollment_enabled: Enables or disables progressive enrollment of passkeys for the connection
+        """
+        pulumi.set(__self__, "challenge_ui", challenge_ui)
+        pulumi.set(__self__, "local_enrollment_enabled", local_enrollment_enabled)
+        pulumi.set(__self__, "progressive_enrollment_enabled", progressive_enrollment_enabled)
+
+    @property
+    @pulumi.getter(name="challengeUi")
+    def challenge_ui(self) -> str:
+        """
+        Controls the UI used to challenge the user for their passkey
+        """
+        return pulumi.get(self, "challenge_ui")
+
+    @property
+    @pulumi.getter(name="localEnrollmentEnabled")
+    def local_enrollment_enabled(self) -> bool:
+        """
+        Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
+        """
+        return pulumi.get(self, "local_enrollment_enabled")
+
+    @property
+    @pulumi.getter(name="progressiveEnrollmentEnabled")
+    def progressive_enrollment_enabled(self) -> bool:
+        """
+        Enables or disables progressive enrollment of passkeys for the connection
+        """
+        return pulumi.get(self, "progressive_enrollment_enabled")
 
 
 @pulumi.output_type

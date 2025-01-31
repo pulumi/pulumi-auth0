@@ -13171,6 +13171,143 @@ func (o ClientRefreshTokenPtrOutput) TokenLifetime() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type ClientTokenExchange struct {
+	// List of allowed profile types for token exchange
+	AllowAnyProfileOfTypes []string `pulumi:"allowAnyProfileOfTypes"`
+}
+
+// ClientTokenExchangeInput is an input type that accepts ClientTokenExchangeArgs and ClientTokenExchangeOutput values.
+// You can construct a concrete instance of `ClientTokenExchangeInput` via:
+//
+//	ClientTokenExchangeArgs{...}
+type ClientTokenExchangeInput interface {
+	pulumi.Input
+
+	ToClientTokenExchangeOutput() ClientTokenExchangeOutput
+	ToClientTokenExchangeOutputWithContext(context.Context) ClientTokenExchangeOutput
+}
+
+type ClientTokenExchangeArgs struct {
+	// List of allowed profile types for token exchange
+	AllowAnyProfileOfTypes pulumi.StringArrayInput `pulumi:"allowAnyProfileOfTypes"`
+}
+
+func (ClientTokenExchangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientTokenExchange)(nil)).Elem()
+}
+
+func (i ClientTokenExchangeArgs) ToClientTokenExchangeOutput() ClientTokenExchangeOutput {
+	return i.ToClientTokenExchangeOutputWithContext(context.Background())
+}
+
+func (i ClientTokenExchangeArgs) ToClientTokenExchangeOutputWithContext(ctx context.Context) ClientTokenExchangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientTokenExchangeOutput)
+}
+
+func (i ClientTokenExchangeArgs) ToClientTokenExchangePtrOutput() ClientTokenExchangePtrOutput {
+	return i.ToClientTokenExchangePtrOutputWithContext(context.Background())
+}
+
+func (i ClientTokenExchangeArgs) ToClientTokenExchangePtrOutputWithContext(ctx context.Context) ClientTokenExchangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientTokenExchangeOutput).ToClientTokenExchangePtrOutputWithContext(ctx)
+}
+
+// ClientTokenExchangePtrInput is an input type that accepts ClientTokenExchangeArgs, ClientTokenExchangePtr and ClientTokenExchangePtrOutput values.
+// You can construct a concrete instance of `ClientTokenExchangePtrInput` via:
+//
+//	        ClientTokenExchangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientTokenExchangePtrInput interface {
+	pulumi.Input
+
+	ToClientTokenExchangePtrOutput() ClientTokenExchangePtrOutput
+	ToClientTokenExchangePtrOutputWithContext(context.Context) ClientTokenExchangePtrOutput
+}
+
+type clientTokenExchangePtrType ClientTokenExchangeArgs
+
+func ClientTokenExchangePtr(v *ClientTokenExchangeArgs) ClientTokenExchangePtrInput {
+	return (*clientTokenExchangePtrType)(v)
+}
+
+func (*clientTokenExchangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientTokenExchange)(nil)).Elem()
+}
+
+func (i *clientTokenExchangePtrType) ToClientTokenExchangePtrOutput() ClientTokenExchangePtrOutput {
+	return i.ToClientTokenExchangePtrOutputWithContext(context.Background())
+}
+
+func (i *clientTokenExchangePtrType) ToClientTokenExchangePtrOutputWithContext(ctx context.Context) ClientTokenExchangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientTokenExchangePtrOutput)
+}
+
+type ClientTokenExchangeOutput struct{ *pulumi.OutputState }
+
+func (ClientTokenExchangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientTokenExchange)(nil)).Elem()
+}
+
+func (o ClientTokenExchangeOutput) ToClientTokenExchangeOutput() ClientTokenExchangeOutput {
+	return o
+}
+
+func (o ClientTokenExchangeOutput) ToClientTokenExchangeOutputWithContext(ctx context.Context) ClientTokenExchangeOutput {
+	return o
+}
+
+func (o ClientTokenExchangeOutput) ToClientTokenExchangePtrOutput() ClientTokenExchangePtrOutput {
+	return o.ToClientTokenExchangePtrOutputWithContext(context.Background())
+}
+
+func (o ClientTokenExchangeOutput) ToClientTokenExchangePtrOutputWithContext(ctx context.Context) ClientTokenExchangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientTokenExchange) *ClientTokenExchange {
+		return &v
+	}).(ClientTokenExchangePtrOutput)
+}
+
+// List of allowed profile types for token exchange
+func (o ClientTokenExchangeOutput) AllowAnyProfileOfTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientTokenExchange) []string { return v.AllowAnyProfileOfTypes }).(pulumi.StringArrayOutput)
+}
+
+type ClientTokenExchangePtrOutput struct{ *pulumi.OutputState }
+
+func (ClientTokenExchangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientTokenExchange)(nil)).Elem()
+}
+
+func (o ClientTokenExchangePtrOutput) ToClientTokenExchangePtrOutput() ClientTokenExchangePtrOutput {
+	return o
+}
+
+func (o ClientTokenExchangePtrOutput) ToClientTokenExchangePtrOutputWithContext(ctx context.Context) ClientTokenExchangePtrOutput {
+	return o
+}
+
+func (o ClientTokenExchangePtrOutput) Elem() ClientTokenExchangeOutput {
+	return o.ApplyT(func(v *ClientTokenExchange) ClientTokenExchange {
+		if v != nil {
+			return *v
+		}
+		var ret ClientTokenExchange
+		return ret
+	}).(ClientTokenExchangeOutput)
+}
+
+// List of allowed profile types for token exchange
+func (o ClientTokenExchangePtrOutput) AllowAnyProfileOfTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientTokenExchange) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowAnyProfileOfTypes
+	}).(pulumi.StringArrayOutput)
+}
+
 type ConnectionOptions struct {
 	// ADFS URL where to fetch the metadata source.
 	AdfsServer *string `pulumi:"adfsServer"`
@@ -13186,6 +13323,8 @@ type ConnectionOptions struct {
 	Attributes []ConnectionOptionsAttribute `pulumi:"attributes"`
 	// Query string parameters to be included as part of the generated passwordless email link.
 	AuthParams map[string]string `pulumi:"authParams"`
+	// Specifies the authentication methods and their configuration (enabled or disabled)
+	AuthenticationMethods []ConnectionOptionsAuthenticationMethod `pulumi:"authenticationMethods"`
 	// Authorization endpoint.
 	AuthorizationEndpoint *string `pulumi:"authorizationEndpoint"`
 	// Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
@@ -13272,6 +13411,8 @@ type ConnectionOptions struct {
 	Name *string `pulumi:"name"`
 	// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
 	NonPersistentAttrs []string `pulumi:"nonPersistentAttrs"`
+	// Defines options for the passkey authentication method
+	PasskeyOptions *ConnectionOptionsPasskeyOptions `pulumi:"passkeyOptions"`
 	// Configuration settings for password complexity.
 	PasswordComplexityOptions *ConnectionOptionsPasswordComplexityOptions `pulumi:"passwordComplexityOptions"`
 	// Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
@@ -13384,6 +13525,8 @@ type ConnectionOptionsArgs struct {
 	Attributes ConnectionOptionsAttributeArrayInput `pulumi:"attributes"`
 	// Query string parameters to be included as part of the generated passwordless email link.
 	AuthParams pulumi.StringMapInput `pulumi:"authParams"`
+	// Specifies the authentication methods and their configuration (enabled or disabled)
+	AuthenticationMethods ConnectionOptionsAuthenticationMethodArrayInput `pulumi:"authenticationMethods"`
 	// Authorization endpoint.
 	AuthorizationEndpoint pulumi.StringPtrInput `pulumi:"authorizationEndpoint"`
 	// Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
@@ -13470,6 +13613,8 @@ type ConnectionOptionsArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
 	NonPersistentAttrs pulumi.StringArrayInput `pulumi:"nonPersistentAttrs"`
+	// Defines options for the passkey authentication method
+	PasskeyOptions ConnectionOptionsPasskeyOptionsPtrInput `pulumi:"passkeyOptions"`
 	// Configuration settings for password complexity.
 	PasswordComplexityOptions ConnectionOptionsPasswordComplexityOptionsPtrInput `pulumi:"passwordComplexityOptions"`
 	// Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
@@ -13666,6 +13811,11 @@ func (o ConnectionOptionsOutput) Attributes() ConnectionOptionsAttributeArrayOut
 // Query string parameters to be included as part of the generated passwordless email link.
 func (o ConnectionOptionsOutput) AuthParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.AuthParams }).(pulumi.StringMapOutput)
+}
+
+// Specifies the authentication methods and their configuration (enabled or disabled)
+func (o ConnectionOptionsOutput) AuthenticationMethods() ConnectionOptionsAuthenticationMethodArrayOutput {
+	return o.ApplyT(func(v ConnectionOptions) []ConnectionOptionsAuthenticationMethod { return v.AuthenticationMethods }).(ConnectionOptionsAuthenticationMethodArrayOutput)
 }
 
 // Authorization endpoint.
@@ -13881,6 +14031,11 @@ func (o ConnectionOptionsOutput) Name() pulumi.StringPtrOutput {
 // If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
 func (o ConnectionOptionsOutput) NonPersistentAttrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectionOptions) []string { return v.NonPersistentAttrs }).(pulumi.StringArrayOutput)
+}
+
+// Defines options for the passkey authentication method
+func (o ConnectionOptionsOutput) PasskeyOptions() ConnectionOptionsPasskeyOptionsPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsPasskeyOptions { return v.PasskeyOptions }).(ConnectionOptionsPasskeyOptionsPtrOutput)
 }
 
 // Configuration settings for password complexity.
@@ -14187,6 +14342,16 @@ func (o ConnectionOptionsPtrOutput) AuthParams() pulumi.StringMapOutput {
 		}
 		return v.AuthParams
 	}).(pulumi.StringMapOutput)
+}
+
+// Specifies the authentication methods and their configuration (enabled or disabled)
+func (o ConnectionOptionsPtrOutput) AuthenticationMethods() ConnectionOptionsAuthenticationMethodArrayOutput {
+	return o.ApplyT(func(v *ConnectionOptions) []ConnectionOptionsAuthenticationMethod {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationMethods
+	}).(ConnectionOptionsAuthenticationMethodArrayOutput)
 }
 
 // Authorization endpoint.
@@ -14617,6 +14782,16 @@ func (o ConnectionOptionsPtrOutput) NonPersistentAttrs() pulumi.StringArrayOutpu
 		}
 		return v.NonPersistentAttrs
 	}).(pulumi.StringArrayOutput)
+}
+
+// Defines options for the passkey authentication method
+func (o ConnectionOptionsPtrOutput) PasskeyOptions() ConnectionOptionsPasskeyOptionsPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsPasskeyOptions {
+		if v == nil {
+			return nil
+		}
+		return v.PasskeyOptions
+	}).(ConnectionOptionsPasskeyOptionsPtrOutput)
 }
 
 // Configuration settings for password complexity.
@@ -16725,6 +16900,390 @@ func (o ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput) Inde
 	}).(ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput)
 }
 
+type ConnectionOptionsAuthenticationMethod struct {
+	// Configures passkey authentication
+	Passkey *ConnectionOptionsAuthenticationMethodPasskey `pulumi:"passkey"`
+	// Configures password authentication
+	Password *ConnectionOptionsAuthenticationMethodPassword `pulumi:"password"`
+}
+
+// ConnectionOptionsAuthenticationMethodInput is an input type that accepts ConnectionOptionsAuthenticationMethodArgs and ConnectionOptionsAuthenticationMethodOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAuthenticationMethodInput` via:
+//
+//	ConnectionOptionsAuthenticationMethodArgs{...}
+type ConnectionOptionsAuthenticationMethodInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAuthenticationMethodOutput() ConnectionOptionsAuthenticationMethodOutput
+	ToConnectionOptionsAuthenticationMethodOutputWithContext(context.Context) ConnectionOptionsAuthenticationMethodOutput
+}
+
+type ConnectionOptionsAuthenticationMethodArgs struct {
+	// Configures passkey authentication
+	Passkey ConnectionOptionsAuthenticationMethodPasskeyPtrInput `pulumi:"passkey"`
+	// Configures password authentication
+	Password ConnectionOptionsAuthenticationMethodPasswordPtrInput `pulumi:"password"`
+}
+
+func (ConnectionOptionsAuthenticationMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAuthenticationMethod)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAuthenticationMethodArgs) ToConnectionOptionsAuthenticationMethodOutput() ConnectionOptionsAuthenticationMethodOutput {
+	return i.ToConnectionOptionsAuthenticationMethodOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAuthenticationMethodArgs) ToConnectionOptionsAuthenticationMethodOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAuthenticationMethodOutput)
+}
+
+// ConnectionOptionsAuthenticationMethodArrayInput is an input type that accepts ConnectionOptionsAuthenticationMethodArray and ConnectionOptionsAuthenticationMethodArrayOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAuthenticationMethodArrayInput` via:
+//
+//	ConnectionOptionsAuthenticationMethodArray{ ConnectionOptionsAuthenticationMethodArgs{...} }
+type ConnectionOptionsAuthenticationMethodArrayInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAuthenticationMethodArrayOutput() ConnectionOptionsAuthenticationMethodArrayOutput
+	ToConnectionOptionsAuthenticationMethodArrayOutputWithContext(context.Context) ConnectionOptionsAuthenticationMethodArrayOutput
+}
+
+type ConnectionOptionsAuthenticationMethodArray []ConnectionOptionsAuthenticationMethodInput
+
+func (ConnectionOptionsAuthenticationMethodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAuthenticationMethod)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAuthenticationMethodArray) ToConnectionOptionsAuthenticationMethodArrayOutput() ConnectionOptionsAuthenticationMethodArrayOutput {
+	return i.ToConnectionOptionsAuthenticationMethodArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAuthenticationMethodArray) ToConnectionOptionsAuthenticationMethodArrayOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAuthenticationMethodArrayOutput)
+}
+
+type ConnectionOptionsAuthenticationMethodOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAuthenticationMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAuthenticationMethod)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAuthenticationMethodOutput) ToConnectionOptionsAuthenticationMethodOutput() ConnectionOptionsAuthenticationMethodOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodOutput) ToConnectionOptionsAuthenticationMethodOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodOutput {
+	return o
+}
+
+// Configures passkey authentication
+func (o ConnectionOptionsAuthenticationMethodOutput) Passkey() ConnectionOptionsAuthenticationMethodPasskeyPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAuthenticationMethod) *ConnectionOptionsAuthenticationMethodPasskey {
+		return v.Passkey
+	}).(ConnectionOptionsAuthenticationMethodPasskeyPtrOutput)
+}
+
+// Configures password authentication
+func (o ConnectionOptionsAuthenticationMethodOutput) Password() ConnectionOptionsAuthenticationMethodPasswordPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAuthenticationMethod) *ConnectionOptionsAuthenticationMethodPassword {
+		return v.Password
+	}).(ConnectionOptionsAuthenticationMethodPasswordPtrOutput)
+}
+
+type ConnectionOptionsAuthenticationMethodArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAuthenticationMethodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsAuthenticationMethod)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAuthenticationMethodArrayOutput) ToConnectionOptionsAuthenticationMethodArrayOutput() ConnectionOptionsAuthenticationMethodArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodArrayOutput) ToConnectionOptionsAuthenticationMethodArrayOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodArrayOutput) Index(i pulumi.IntInput) ConnectionOptionsAuthenticationMethodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsAuthenticationMethod {
+		return vs[0].([]ConnectionOptionsAuthenticationMethod)[vs[1].(int)]
+	}).(ConnectionOptionsAuthenticationMethodOutput)
+}
+
+type ConnectionOptionsAuthenticationMethodPasskey struct {
+	// Enables passkey authentication
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ConnectionOptionsAuthenticationMethodPasskeyInput is an input type that accepts ConnectionOptionsAuthenticationMethodPasskeyArgs and ConnectionOptionsAuthenticationMethodPasskeyOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAuthenticationMethodPasskeyInput` via:
+//
+//	ConnectionOptionsAuthenticationMethodPasskeyArgs{...}
+type ConnectionOptionsAuthenticationMethodPasskeyInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAuthenticationMethodPasskeyOutput() ConnectionOptionsAuthenticationMethodPasskeyOutput
+	ToConnectionOptionsAuthenticationMethodPasskeyOutputWithContext(context.Context) ConnectionOptionsAuthenticationMethodPasskeyOutput
+}
+
+type ConnectionOptionsAuthenticationMethodPasskeyArgs struct {
+	// Enables passkey authentication
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ConnectionOptionsAuthenticationMethodPasskeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAuthenticationMethodPasskey)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAuthenticationMethodPasskeyArgs) ToConnectionOptionsAuthenticationMethodPasskeyOutput() ConnectionOptionsAuthenticationMethodPasskeyOutput {
+	return i.ToConnectionOptionsAuthenticationMethodPasskeyOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAuthenticationMethodPasskeyArgs) ToConnectionOptionsAuthenticationMethodPasskeyOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPasskeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAuthenticationMethodPasskeyOutput)
+}
+
+func (i ConnectionOptionsAuthenticationMethodPasskeyArgs) ToConnectionOptionsAuthenticationMethodPasskeyPtrOutput() ConnectionOptionsAuthenticationMethodPasskeyPtrOutput {
+	return i.ToConnectionOptionsAuthenticationMethodPasskeyPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAuthenticationMethodPasskeyArgs) ToConnectionOptionsAuthenticationMethodPasskeyPtrOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPasskeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAuthenticationMethodPasskeyOutput).ToConnectionOptionsAuthenticationMethodPasskeyPtrOutputWithContext(ctx)
+}
+
+// ConnectionOptionsAuthenticationMethodPasskeyPtrInput is an input type that accepts ConnectionOptionsAuthenticationMethodPasskeyArgs, ConnectionOptionsAuthenticationMethodPasskeyPtr and ConnectionOptionsAuthenticationMethodPasskeyPtrOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAuthenticationMethodPasskeyPtrInput` via:
+//
+//	        ConnectionOptionsAuthenticationMethodPasskeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionOptionsAuthenticationMethodPasskeyPtrInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAuthenticationMethodPasskeyPtrOutput() ConnectionOptionsAuthenticationMethodPasskeyPtrOutput
+	ToConnectionOptionsAuthenticationMethodPasskeyPtrOutputWithContext(context.Context) ConnectionOptionsAuthenticationMethodPasskeyPtrOutput
+}
+
+type connectionOptionsAuthenticationMethodPasskeyPtrType ConnectionOptionsAuthenticationMethodPasskeyArgs
+
+func ConnectionOptionsAuthenticationMethodPasskeyPtr(v *ConnectionOptionsAuthenticationMethodPasskeyArgs) ConnectionOptionsAuthenticationMethodPasskeyPtrInput {
+	return (*connectionOptionsAuthenticationMethodPasskeyPtrType)(v)
+}
+
+func (*connectionOptionsAuthenticationMethodPasskeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsAuthenticationMethodPasskey)(nil)).Elem()
+}
+
+func (i *connectionOptionsAuthenticationMethodPasskeyPtrType) ToConnectionOptionsAuthenticationMethodPasskeyPtrOutput() ConnectionOptionsAuthenticationMethodPasskeyPtrOutput {
+	return i.ToConnectionOptionsAuthenticationMethodPasskeyPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOptionsAuthenticationMethodPasskeyPtrType) ToConnectionOptionsAuthenticationMethodPasskeyPtrOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPasskeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAuthenticationMethodPasskeyPtrOutput)
+}
+
+type ConnectionOptionsAuthenticationMethodPasskeyOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAuthenticationMethodPasskeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAuthenticationMethodPasskey)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAuthenticationMethodPasskeyOutput) ToConnectionOptionsAuthenticationMethodPasskeyOutput() ConnectionOptionsAuthenticationMethodPasskeyOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodPasskeyOutput) ToConnectionOptionsAuthenticationMethodPasskeyOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPasskeyOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodPasskeyOutput) ToConnectionOptionsAuthenticationMethodPasskeyPtrOutput() ConnectionOptionsAuthenticationMethodPasskeyPtrOutput {
+	return o.ToConnectionOptionsAuthenticationMethodPasskeyPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOptionsAuthenticationMethodPasskeyOutput) ToConnectionOptionsAuthenticationMethodPasskeyPtrOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPasskeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsAuthenticationMethodPasskey) *ConnectionOptionsAuthenticationMethodPasskey {
+		return &v
+	}).(ConnectionOptionsAuthenticationMethodPasskeyPtrOutput)
+}
+
+// Enables passkey authentication
+func (o ConnectionOptionsAuthenticationMethodPasskeyOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAuthenticationMethodPasskey) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionOptionsAuthenticationMethodPasskeyPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAuthenticationMethodPasskeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsAuthenticationMethodPasskey)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAuthenticationMethodPasskeyPtrOutput) ToConnectionOptionsAuthenticationMethodPasskeyPtrOutput() ConnectionOptionsAuthenticationMethodPasskeyPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodPasskeyPtrOutput) ToConnectionOptionsAuthenticationMethodPasskeyPtrOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPasskeyPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodPasskeyPtrOutput) Elem() ConnectionOptionsAuthenticationMethodPasskeyOutput {
+	return o.ApplyT(func(v *ConnectionOptionsAuthenticationMethodPasskey) ConnectionOptionsAuthenticationMethodPasskey {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsAuthenticationMethodPasskey
+		return ret
+	}).(ConnectionOptionsAuthenticationMethodPasskeyOutput)
+}
+
+// Enables passkey authentication
+func (o ConnectionOptionsAuthenticationMethodPasskeyPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsAuthenticationMethodPasskey) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionOptionsAuthenticationMethodPassword struct {
+	// Enables password authentication
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ConnectionOptionsAuthenticationMethodPasswordInput is an input type that accepts ConnectionOptionsAuthenticationMethodPasswordArgs and ConnectionOptionsAuthenticationMethodPasswordOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAuthenticationMethodPasswordInput` via:
+//
+//	ConnectionOptionsAuthenticationMethodPasswordArgs{...}
+type ConnectionOptionsAuthenticationMethodPasswordInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAuthenticationMethodPasswordOutput() ConnectionOptionsAuthenticationMethodPasswordOutput
+	ToConnectionOptionsAuthenticationMethodPasswordOutputWithContext(context.Context) ConnectionOptionsAuthenticationMethodPasswordOutput
+}
+
+type ConnectionOptionsAuthenticationMethodPasswordArgs struct {
+	// Enables password authentication
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ConnectionOptionsAuthenticationMethodPasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAuthenticationMethodPassword)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAuthenticationMethodPasswordArgs) ToConnectionOptionsAuthenticationMethodPasswordOutput() ConnectionOptionsAuthenticationMethodPasswordOutput {
+	return i.ToConnectionOptionsAuthenticationMethodPasswordOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAuthenticationMethodPasswordArgs) ToConnectionOptionsAuthenticationMethodPasswordOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAuthenticationMethodPasswordOutput)
+}
+
+func (i ConnectionOptionsAuthenticationMethodPasswordArgs) ToConnectionOptionsAuthenticationMethodPasswordPtrOutput() ConnectionOptionsAuthenticationMethodPasswordPtrOutput {
+	return i.ToConnectionOptionsAuthenticationMethodPasswordPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAuthenticationMethodPasswordArgs) ToConnectionOptionsAuthenticationMethodPasswordPtrOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAuthenticationMethodPasswordOutput).ToConnectionOptionsAuthenticationMethodPasswordPtrOutputWithContext(ctx)
+}
+
+// ConnectionOptionsAuthenticationMethodPasswordPtrInput is an input type that accepts ConnectionOptionsAuthenticationMethodPasswordArgs, ConnectionOptionsAuthenticationMethodPasswordPtr and ConnectionOptionsAuthenticationMethodPasswordPtrOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAuthenticationMethodPasswordPtrInput` via:
+//
+//	        ConnectionOptionsAuthenticationMethodPasswordArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionOptionsAuthenticationMethodPasswordPtrInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAuthenticationMethodPasswordPtrOutput() ConnectionOptionsAuthenticationMethodPasswordPtrOutput
+	ToConnectionOptionsAuthenticationMethodPasswordPtrOutputWithContext(context.Context) ConnectionOptionsAuthenticationMethodPasswordPtrOutput
+}
+
+type connectionOptionsAuthenticationMethodPasswordPtrType ConnectionOptionsAuthenticationMethodPasswordArgs
+
+func ConnectionOptionsAuthenticationMethodPasswordPtr(v *ConnectionOptionsAuthenticationMethodPasswordArgs) ConnectionOptionsAuthenticationMethodPasswordPtrInput {
+	return (*connectionOptionsAuthenticationMethodPasswordPtrType)(v)
+}
+
+func (*connectionOptionsAuthenticationMethodPasswordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsAuthenticationMethodPassword)(nil)).Elem()
+}
+
+func (i *connectionOptionsAuthenticationMethodPasswordPtrType) ToConnectionOptionsAuthenticationMethodPasswordPtrOutput() ConnectionOptionsAuthenticationMethodPasswordPtrOutput {
+	return i.ToConnectionOptionsAuthenticationMethodPasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOptionsAuthenticationMethodPasswordPtrType) ToConnectionOptionsAuthenticationMethodPasswordPtrOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAuthenticationMethodPasswordPtrOutput)
+}
+
+type ConnectionOptionsAuthenticationMethodPasswordOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAuthenticationMethodPasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAuthenticationMethodPassword)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAuthenticationMethodPasswordOutput) ToConnectionOptionsAuthenticationMethodPasswordOutput() ConnectionOptionsAuthenticationMethodPasswordOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodPasswordOutput) ToConnectionOptionsAuthenticationMethodPasswordOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPasswordOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodPasswordOutput) ToConnectionOptionsAuthenticationMethodPasswordPtrOutput() ConnectionOptionsAuthenticationMethodPasswordPtrOutput {
+	return o.ToConnectionOptionsAuthenticationMethodPasswordPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOptionsAuthenticationMethodPasswordOutput) ToConnectionOptionsAuthenticationMethodPasswordPtrOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPasswordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsAuthenticationMethodPassword) *ConnectionOptionsAuthenticationMethodPassword {
+		return &v
+	}).(ConnectionOptionsAuthenticationMethodPasswordPtrOutput)
+}
+
+// Enables password authentication
+func (o ConnectionOptionsAuthenticationMethodPasswordOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAuthenticationMethodPassword) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionOptionsAuthenticationMethodPasswordPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAuthenticationMethodPasswordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsAuthenticationMethodPassword)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAuthenticationMethodPasswordPtrOutput) ToConnectionOptionsAuthenticationMethodPasswordPtrOutput() ConnectionOptionsAuthenticationMethodPasswordPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodPasswordPtrOutput) ToConnectionOptionsAuthenticationMethodPasswordPtrOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPasswordPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodPasswordPtrOutput) Elem() ConnectionOptionsAuthenticationMethodPasswordOutput {
+	return o.ApplyT(func(v *ConnectionOptionsAuthenticationMethodPassword) ConnectionOptionsAuthenticationMethodPassword {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsAuthenticationMethodPassword
+		return ret
+	}).(ConnectionOptionsAuthenticationMethodPasswordOutput)
+}
+
+// Enables password authentication
+func (o ConnectionOptionsAuthenticationMethodPasswordPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsAuthenticationMethodPassword) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ConnectionOptionsConnectionSettings struct {
 	// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
 	Pkce string `pulumi:"pkce"`
@@ -17554,6 +18113,181 @@ func (o ConnectionOptionsMfaPtrOutput) ReturnEnrollSettings() pulumi.BoolPtrOutp
 			return nil
 		}
 		return v.ReturnEnrollSettings
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionOptionsPasskeyOptions struct {
+	// Controls the UI used to challenge the user for their passkey
+	ChallengeUi *string `pulumi:"challengeUi"`
+	// Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
+	LocalEnrollmentEnabled *bool `pulumi:"localEnrollmentEnabled"`
+	// Enables or disables progressive enrollment of passkeys for the connection
+	ProgressiveEnrollmentEnabled *bool `pulumi:"progressiveEnrollmentEnabled"`
+}
+
+// ConnectionOptionsPasskeyOptionsInput is an input type that accepts ConnectionOptionsPasskeyOptionsArgs and ConnectionOptionsPasskeyOptionsOutput values.
+// You can construct a concrete instance of `ConnectionOptionsPasskeyOptionsInput` via:
+//
+//	ConnectionOptionsPasskeyOptionsArgs{...}
+type ConnectionOptionsPasskeyOptionsInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsPasskeyOptionsOutput() ConnectionOptionsPasskeyOptionsOutput
+	ToConnectionOptionsPasskeyOptionsOutputWithContext(context.Context) ConnectionOptionsPasskeyOptionsOutput
+}
+
+type ConnectionOptionsPasskeyOptionsArgs struct {
+	// Controls the UI used to challenge the user for their passkey
+	ChallengeUi pulumi.StringPtrInput `pulumi:"challengeUi"`
+	// Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
+	LocalEnrollmentEnabled pulumi.BoolPtrInput `pulumi:"localEnrollmentEnabled"`
+	// Enables or disables progressive enrollment of passkeys for the connection
+	ProgressiveEnrollmentEnabled pulumi.BoolPtrInput `pulumi:"progressiveEnrollmentEnabled"`
+}
+
+func (ConnectionOptionsPasskeyOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsPasskeyOptions)(nil)).Elem()
+}
+
+func (i ConnectionOptionsPasskeyOptionsArgs) ToConnectionOptionsPasskeyOptionsOutput() ConnectionOptionsPasskeyOptionsOutput {
+	return i.ToConnectionOptionsPasskeyOptionsOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsPasskeyOptionsArgs) ToConnectionOptionsPasskeyOptionsOutputWithContext(ctx context.Context) ConnectionOptionsPasskeyOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsPasskeyOptionsOutput)
+}
+
+func (i ConnectionOptionsPasskeyOptionsArgs) ToConnectionOptionsPasskeyOptionsPtrOutput() ConnectionOptionsPasskeyOptionsPtrOutput {
+	return i.ToConnectionOptionsPasskeyOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsPasskeyOptionsArgs) ToConnectionOptionsPasskeyOptionsPtrOutputWithContext(ctx context.Context) ConnectionOptionsPasskeyOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsPasskeyOptionsOutput).ToConnectionOptionsPasskeyOptionsPtrOutputWithContext(ctx)
+}
+
+// ConnectionOptionsPasskeyOptionsPtrInput is an input type that accepts ConnectionOptionsPasskeyOptionsArgs, ConnectionOptionsPasskeyOptionsPtr and ConnectionOptionsPasskeyOptionsPtrOutput values.
+// You can construct a concrete instance of `ConnectionOptionsPasskeyOptionsPtrInput` via:
+//
+//	        ConnectionOptionsPasskeyOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionOptionsPasskeyOptionsPtrInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsPasskeyOptionsPtrOutput() ConnectionOptionsPasskeyOptionsPtrOutput
+	ToConnectionOptionsPasskeyOptionsPtrOutputWithContext(context.Context) ConnectionOptionsPasskeyOptionsPtrOutput
+}
+
+type connectionOptionsPasskeyOptionsPtrType ConnectionOptionsPasskeyOptionsArgs
+
+func ConnectionOptionsPasskeyOptionsPtr(v *ConnectionOptionsPasskeyOptionsArgs) ConnectionOptionsPasskeyOptionsPtrInput {
+	return (*connectionOptionsPasskeyOptionsPtrType)(v)
+}
+
+func (*connectionOptionsPasskeyOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsPasskeyOptions)(nil)).Elem()
+}
+
+func (i *connectionOptionsPasskeyOptionsPtrType) ToConnectionOptionsPasskeyOptionsPtrOutput() ConnectionOptionsPasskeyOptionsPtrOutput {
+	return i.ToConnectionOptionsPasskeyOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOptionsPasskeyOptionsPtrType) ToConnectionOptionsPasskeyOptionsPtrOutputWithContext(ctx context.Context) ConnectionOptionsPasskeyOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsPasskeyOptionsPtrOutput)
+}
+
+type ConnectionOptionsPasskeyOptionsOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsPasskeyOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsPasskeyOptions)(nil)).Elem()
+}
+
+func (o ConnectionOptionsPasskeyOptionsOutput) ToConnectionOptionsPasskeyOptionsOutput() ConnectionOptionsPasskeyOptionsOutput {
+	return o
+}
+
+func (o ConnectionOptionsPasskeyOptionsOutput) ToConnectionOptionsPasskeyOptionsOutputWithContext(ctx context.Context) ConnectionOptionsPasskeyOptionsOutput {
+	return o
+}
+
+func (o ConnectionOptionsPasskeyOptionsOutput) ToConnectionOptionsPasskeyOptionsPtrOutput() ConnectionOptionsPasskeyOptionsPtrOutput {
+	return o.ToConnectionOptionsPasskeyOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOptionsPasskeyOptionsOutput) ToConnectionOptionsPasskeyOptionsPtrOutputWithContext(ctx context.Context) ConnectionOptionsPasskeyOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsPasskeyOptions) *ConnectionOptionsPasskeyOptions {
+		return &v
+	}).(ConnectionOptionsPasskeyOptionsPtrOutput)
+}
+
+// Controls the UI used to challenge the user for their passkey
+func (o ConnectionOptionsPasskeyOptionsOutput) ChallengeUi() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsPasskeyOptions) *string { return v.ChallengeUi }).(pulumi.StringPtrOutput)
+}
+
+// Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
+func (o ConnectionOptionsPasskeyOptionsOutput) LocalEnrollmentEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsPasskeyOptions) *bool { return v.LocalEnrollmentEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Enables or disables progressive enrollment of passkeys for the connection
+func (o ConnectionOptionsPasskeyOptionsOutput) ProgressiveEnrollmentEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsPasskeyOptions) *bool { return v.ProgressiveEnrollmentEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionOptionsPasskeyOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsPasskeyOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsPasskeyOptions)(nil)).Elem()
+}
+
+func (o ConnectionOptionsPasskeyOptionsPtrOutput) ToConnectionOptionsPasskeyOptionsPtrOutput() ConnectionOptionsPasskeyOptionsPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsPasskeyOptionsPtrOutput) ToConnectionOptionsPasskeyOptionsPtrOutputWithContext(ctx context.Context) ConnectionOptionsPasskeyOptionsPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsPasskeyOptionsPtrOutput) Elem() ConnectionOptionsPasskeyOptionsOutput {
+	return o.ApplyT(func(v *ConnectionOptionsPasskeyOptions) ConnectionOptionsPasskeyOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsPasskeyOptions
+		return ret
+	}).(ConnectionOptionsPasskeyOptionsOutput)
+}
+
+// Controls the UI used to challenge the user for their passkey
+func (o ConnectionOptionsPasskeyOptionsPtrOutput) ChallengeUi() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsPasskeyOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ChallengeUi
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
+func (o ConnectionOptionsPasskeyOptionsPtrOutput) LocalEnrollmentEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsPasskeyOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LocalEnrollmentEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables or disables progressive enrollment of passkeys for the connection
+func (o ConnectionOptionsPasskeyOptionsPtrOutput) ProgressiveEnrollmentEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsPasskeyOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProgressiveEnrollmentEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -35354,6 +36088,103 @@ func (o GetClientSignedRequestObjectCredentialArrayOutput) Index(i pulumi.IntInp
 	}).(GetClientSignedRequestObjectCredentialOutput)
 }
 
+type GetClientTokenExchange struct {
+	// List of allowed profile types for token exchange
+	AllowAnyProfileOfTypes []string `pulumi:"allowAnyProfileOfTypes"`
+}
+
+// GetClientTokenExchangeInput is an input type that accepts GetClientTokenExchangeArgs and GetClientTokenExchangeOutput values.
+// You can construct a concrete instance of `GetClientTokenExchangeInput` via:
+//
+//	GetClientTokenExchangeArgs{...}
+type GetClientTokenExchangeInput interface {
+	pulumi.Input
+
+	ToGetClientTokenExchangeOutput() GetClientTokenExchangeOutput
+	ToGetClientTokenExchangeOutputWithContext(context.Context) GetClientTokenExchangeOutput
+}
+
+type GetClientTokenExchangeArgs struct {
+	// List of allowed profile types for token exchange
+	AllowAnyProfileOfTypes pulumi.StringArrayInput `pulumi:"allowAnyProfileOfTypes"`
+}
+
+func (GetClientTokenExchangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientTokenExchange)(nil)).Elem()
+}
+
+func (i GetClientTokenExchangeArgs) ToGetClientTokenExchangeOutput() GetClientTokenExchangeOutput {
+	return i.ToGetClientTokenExchangeOutputWithContext(context.Background())
+}
+
+func (i GetClientTokenExchangeArgs) ToGetClientTokenExchangeOutputWithContext(ctx context.Context) GetClientTokenExchangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenExchangeOutput)
+}
+
+// GetClientTokenExchangeArrayInput is an input type that accepts GetClientTokenExchangeArray and GetClientTokenExchangeArrayOutput values.
+// You can construct a concrete instance of `GetClientTokenExchangeArrayInput` via:
+//
+//	GetClientTokenExchangeArray{ GetClientTokenExchangeArgs{...} }
+type GetClientTokenExchangeArrayInput interface {
+	pulumi.Input
+
+	ToGetClientTokenExchangeArrayOutput() GetClientTokenExchangeArrayOutput
+	ToGetClientTokenExchangeArrayOutputWithContext(context.Context) GetClientTokenExchangeArrayOutput
+}
+
+type GetClientTokenExchangeArray []GetClientTokenExchangeInput
+
+func (GetClientTokenExchangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientTokenExchange)(nil)).Elem()
+}
+
+func (i GetClientTokenExchangeArray) ToGetClientTokenExchangeArrayOutput() GetClientTokenExchangeArrayOutput {
+	return i.ToGetClientTokenExchangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientTokenExchangeArray) ToGetClientTokenExchangeArrayOutputWithContext(ctx context.Context) GetClientTokenExchangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenExchangeArrayOutput)
+}
+
+type GetClientTokenExchangeOutput struct{ *pulumi.OutputState }
+
+func (GetClientTokenExchangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientTokenExchange)(nil)).Elem()
+}
+
+func (o GetClientTokenExchangeOutput) ToGetClientTokenExchangeOutput() GetClientTokenExchangeOutput {
+	return o
+}
+
+func (o GetClientTokenExchangeOutput) ToGetClientTokenExchangeOutputWithContext(ctx context.Context) GetClientTokenExchangeOutput {
+	return o
+}
+
+// List of allowed profile types for token exchange
+func (o GetClientTokenExchangeOutput) AllowAnyProfileOfTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientTokenExchange) []string { return v.AllowAnyProfileOfTypes }).(pulumi.StringArrayOutput)
+}
+
+type GetClientTokenExchangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientTokenExchangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientTokenExchange)(nil)).Elem()
+}
+
+func (o GetClientTokenExchangeArrayOutput) ToGetClientTokenExchangeArrayOutput() GetClientTokenExchangeArrayOutput {
+	return o
+}
+
+func (o GetClientTokenExchangeArrayOutput) ToGetClientTokenExchangeArrayOutputWithContext(ctx context.Context) GetClientTokenExchangeArrayOutput {
+	return o
+}
+
+func (o GetClientTokenExchangeArrayOutput) Index(i pulumi.IntInput) GetClientTokenExchangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientTokenExchange {
+		return vs[0].([]GetClientTokenExchange)[vs[1].(int)]
+	}).(GetClientTokenExchangeOutput)
+}
+
 type GetClientsClient struct {
 	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
 	AllowedClients []string `pulumi:"allowedClients"`
@@ -35382,6 +36213,8 @@ type GetClientsClient struct {
 	Name *string `pulumi:"name"`
 	// Configure OIDC logout for the Client
 	OidcLogouts []GetClientsClientOidcLogout `pulumi:"oidcLogouts"`
+	// Allows configuration for token exchange
+	TokenExchanges []GetClientsClientTokenExchange `pulumi:"tokenExchanges"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins []string `pulumi:"webOrigins"`
 }
@@ -35425,6 +36258,8 @@ type GetClientsClientArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Configure OIDC logout for the Client
 	OidcLogouts GetClientsClientOidcLogoutArrayInput `pulumi:"oidcLogouts"`
+	// Allows configuration for token exchange
+	TokenExchanges GetClientsClientTokenExchangeArrayInput `pulumi:"tokenExchanges"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins pulumi.StringArrayInput `pulumi:"webOrigins"`
 }
@@ -35547,6 +36382,11 @@ func (o GetClientsClientOutput) Name() pulumi.StringPtrOutput {
 // Configure OIDC logout for the Client
 func (o GetClientsClientOutput) OidcLogouts() GetClientsClientOidcLogoutArrayOutput {
 	return o.ApplyT(func(v GetClientsClient) []GetClientsClientOidcLogout { return v.OidcLogouts }).(GetClientsClientOidcLogoutArrayOutput)
+}
+
+// Allows configuration for token exchange
+func (o GetClientsClientOutput) TokenExchanges() GetClientsClientTokenExchangeArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientTokenExchange { return v.TokenExchanges }).(GetClientsClientTokenExchangeArrayOutput)
 }
 
 // URLs that represent valid web origins for use with web message response mode.
@@ -35788,6 +36628,103 @@ func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput) Index(i
 	}).(GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput)
 }
 
+type GetClientsClientTokenExchange struct {
+	// List of allowed profile types for token exchange
+	AllowAnyProfileOfTypes []string `pulumi:"allowAnyProfileOfTypes"`
+}
+
+// GetClientsClientTokenExchangeInput is an input type that accepts GetClientsClientTokenExchangeArgs and GetClientsClientTokenExchangeOutput values.
+// You can construct a concrete instance of `GetClientsClientTokenExchangeInput` via:
+//
+//	GetClientsClientTokenExchangeArgs{...}
+type GetClientsClientTokenExchangeInput interface {
+	pulumi.Input
+
+	ToGetClientsClientTokenExchangeOutput() GetClientsClientTokenExchangeOutput
+	ToGetClientsClientTokenExchangeOutputWithContext(context.Context) GetClientsClientTokenExchangeOutput
+}
+
+type GetClientsClientTokenExchangeArgs struct {
+	// List of allowed profile types for token exchange
+	AllowAnyProfileOfTypes pulumi.StringArrayInput `pulumi:"allowAnyProfileOfTypes"`
+}
+
+func (GetClientsClientTokenExchangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientTokenExchange)(nil)).Elem()
+}
+
+func (i GetClientsClientTokenExchangeArgs) ToGetClientsClientTokenExchangeOutput() GetClientsClientTokenExchangeOutput {
+	return i.ToGetClientsClientTokenExchangeOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientTokenExchangeArgs) ToGetClientsClientTokenExchangeOutputWithContext(ctx context.Context) GetClientsClientTokenExchangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientTokenExchangeOutput)
+}
+
+// GetClientsClientTokenExchangeArrayInput is an input type that accepts GetClientsClientTokenExchangeArray and GetClientsClientTokenExchangeArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientTokenExchangeArrayInput` via:
+//
+//	GetClientsClientTokenExchangeArray{ GetClientsClientTokenExchangeArgs{...} }
+type GetClientsClientTokenExchangeArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientTokenExchangeArrayOutput() GetClientsClientTokenExchangeArrayOutput
+	ToGetClientsClientTokenExchangeArrayOutputWithContext(context.Context) GetClientsClientTokenExchangeArrayOutput
+}
+
+type GetClientsClientTokenExchangeArray []GetClientsClientTokenExchangeInput
+
+func (GetClientsClientTokenExchangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientTokenExchange)(nil)).Elem()
+}
+
+func (i GetClientsClientTokenExchangeArray) ToGetClientsClientTokenExchangeArrayOutput() GetClientsClientTokenExchangeArrayOutput {
+	return i.ToGetClientsClientTokenExchangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientTokenExchangeArray) ToGetClientsClientTokenExchangeArrayOutputWithContext(ctx context.Context) GetClientsClientTokenExchangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientTokenExchangeArrayOutput)
+}
+
+type GetClientsClientTokenExchangeOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientTokenExchangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientTokenExchange)(nil)).Elem()
+}
+
+func (o GetClientsClientTokenExchangeOutput) ToGetClientsClientTokenExchangeOutput() GetClientsClientTokenExchangeOutput {
+	return o
+}
+
+func (o GetClientsClientTokenExchangeOutput) ToGetClientsClientTokenExchangeOutputWithContext(ctx context.Context) GetClientsClientTokenExchangeOutput {
+	return o
+}
+
+// List of allowed profile types for token exchange
+func (o GetClientsClientTokenExchangeOutput) AllowAnyProfileOfTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClientTokenExchange) []string { return v.AllowAnyProfileOfTypes }).(pulumi.StringArrayOutput)
+}
+
+type GetClientsClientTokenExchangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientTokenExchangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientTokenExchange)(nil)).Elem()
+}
+
+func (o GetClientsClientTokenExchangeArrayOutput) ToGetClientsClientTokenExchangeArrayOutput() GetClientsClientTokenExchangeArrayOutput {
+	return o
+}
+
+func (o GetClientsClientTokenExchangeArrayOutput) ToGetClientsClientTokenExchangeArrayOutputWithContext(ctx context.Context) GetClientsClientTokenExchangeArrayOutput {
+	return o
+}
+
+func (o GetClientsClientTokenExchangeArrayOutput) Index(i pulumi.IntInput) GetClientsClientTokenExchangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientTokenExchange {
+		return vs[0].([]GetClientsClientTokenExchange)[vs[1].(int)]
+	}).(GetClientsClientTokenExchangeOutput)
+}
+
 type GetConnectionOption struct {
 	// ADFS URL where to fetch the metadata source.
 	AdfsServer string `pulumi:"adfsServer"`
@@ -35803,6 +36740,8 @@ type GetConnectionOption struct {
 	Attributes []GetConnectionOptionAttribute `pulumi:"attributes"`
 	// Query string parameters to be included as part of the generated passwordless email link.
 	AuthParams map[string]string `pulumi:"authParams"`
+	// Specifies the authentication methods and their configuration (enabled or disabled)
+	AuthenticationMethods []GetConnectionOptionAuthenticationMethod `pulumi:"authenticationMethods"`
 	// Authorization endpoint.
 	AuthorizationEndpoint string `pulumi:"authorizationEndpoint"`
 	// Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
@@ -35889,6 +36828,8 @@ type GetConnectionOption struct {
 	Name string `pulumi:"name"`
 	// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
 	NonPersistentAttrs []string `pulumi:"nonPersistentAttrs"`
+	// Defines options for the passkey authentication method
+	PasskeyOptions []GetConnectionOptionPasskeyOption `pulumi:"passkeyOptions"`
 	// Configuration settings for password complexity.
 	PasswordComplexityOptions []GetConnectionOptionPasswordComplexityOption `pulumi:"passwordComplexityOptions"`
 	// Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
@@ -36001,6 +36942,8 @@ type GetConnectionOptionArgs struct {
 	Attributes GetConnectionOptionAttributeArrayInput `pulumi:"attributes"`
 	// Query string parameters to be included as part of the generated passwordless email link.
 	AuthParams pulumi.StringMapInput `pulumi:"authParams"`
+	// Specifies the authentication methods and their configuration (enabled or disabled)
+	AuthenticationMethods GetConnectionOptionAuthenticationMethodArrayInput `pulumi:"authenticationMethods"`
 	// Authorization endpoint.
 	AuthorizationEndpoint pulumi.StringInput `pulumi:"authorizationEndpoint"`
 	// Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
@@ -36087,6 +37030,8 @@ type GetConnectionOptionArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
 	NonPersistentAttrs pulumi.StringArrayInput `pulumi:"nonPersistentAttrs"`
+	// Defines options for the passkey authentication method
+	PasskeyOptions GetConnectionOptionPasskeyOptionArrayInput `pulumi:"passkeyOptions"`
 	// Configuration settings for password complexity.
 	PasswordComplexityOptions GetConnectionOptionPasswordComplexityOptionArrayInput `pulumi:"passwordComplexityOptions"`
 	// Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
@@ -36257,6 +37202,11 @@ func (o GetConnectionOptionOutput) Attributes() GetConnectionOptionAttributeArra
 // Query string parameters to be included as part of the generated passwordless email link.
 func (o GetConnectionOptionOutput) AuthParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetConnectionOption) map[string]string { return v.AuthParams }).(pulumi.StringMapOutput)
+}
+
+// Specifies the authentication methods and their configuration (enabled or disabled)
+func (o GetConnectionOptionOutput) AuthenticationMethods() GetConnectionOptionAuthenticationMethodArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionAuthenticationMethod { return v.AuthenticationMethods }).(GetConnectionOptionAuthenticationMethodArrayOutput)
 }
 
 // Authorization endpoint.
@@ -36474,6 +37424,11 @@ func (o GetConnectionOptionOutput) Name() pulumi.StringOutput {
 // If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
 func (o GetConnectionOptionOutput) NonPersistentAttrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectionOption) []string { return v.NonPersistentAttrs }).(pulumi.StringArrayOutput)
+}
+
+// Defines options for the passkey authentication method
+func (o GetConnectionOptionOutput) PasskeyOptions() GetConnectionOptionPasskeyOptionArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionPasskeyOption { return v.PasskeyOptions }).(GetConnectionOptionPasskeyOptionArrayOutput)
 }
 
 // Configuration settings for password complexity.
@@ -38336,6 +39291,310 @@ func (o GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput) In
 	}).(GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput)
 }
 
+type GetConnectionOptionAuthenticationMethod struct {
+	// Configures passkey authentication
+	Passkeys []GetConnectionOptionAuthenticationMethodPasskey `pulumi:"passkeys"`
+	// Configures password authentication
+	Passwords []GetConnectionOptionAuthenticationMethodPassword `pulumi:"passwords"`
+}
+
+// GetConnectionOptionAuthenticationMethodInput is an input type that accepts GetConnectionOptionAuthenticationMethodArgs and GetConnectionOptionAuthenticationMethodOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodArgs{...}
+type GetConnectionOptionAuthenticationMethodInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodOutput() GetConnectionOptionAuthenticationMethodOutput
+	ToGetConnectionOptionAuthenticationMethodOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodOutput
+}
+
+type GetConnectionOptionAuthenticationMethodArgs struct {
+	// Configures passkey authentication
+	Passkeys GetConnectionOptionAuthenticationMethodPasskeyArrayInput `pulumi:"passkeys"`
+	// Configures password authentication
+	Passwords GetConnectionOptionAuthenticationMethodPasswordArrayInput `pulumi:"passwords"`
+}
+
+func (GetConnectionOptionAuthenticationMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethod)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodArgs) ToGetConnectionOptionAuthenticationMethodOutput() GetConnectionOptionAuthenticationMethodOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodArgs) ToGetConnectionOptionAuthenticationMethodOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodOutput)
+}
+
+// GetConnectionOptionAuthenticationMethodArrayInput is an input type that accepts GetConnectionOptionAuthenticationMethodArray and GetConnectionOptionAuthenticationMethodArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodArrayInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodArray{ GetConnectionOptionAuthenticationMethodArgs{...} }
+type GetConnectionOptionAuthenticationMethodArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodArrayOutput() GetConnectionOptionAuthenticationMethodArrayOutput
+	ToGetConnectionOptionAuthenticationMethodArrayOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodArrayOutput
+}
+
+type GetConnectionOptionAuthenticationMethodArray []GetConnectionOptionAuthenticationMethodInput
+
+func (GetConnectionOptionAuthenticationMethodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethod)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodArray) ToGetConnectionOptionAuthenticationMethodArrayOutput() GetConnectionOptionAuthenticationMethodArrayOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodArray) ToGetConnectionOptionAuthenticationMethodArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodArrayOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethod)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodOutput) ToGetConnectionOptionAuthenticationMethodOutput() GetConnectionOptionAuthenticationMethodOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodOutput) ToGetConnectionOptionAuthenticationMethodOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodOutput {
+	return o
+}
+
+// Configures passkey authentication
+func (o GetConnectionOptionAuthenticationMethodOutput) Passkeys() GetConnectionOptionAuthenticationMethodPasskeyArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethod) []GetConnectionOptionAuthenticationMethodPasskey {
+		return v.Passkeys
+	}).(GetConnectionOptionAuthenticationMethodPasskeyArrayOutput)
+}
+
+// Configures password authentication
+func (o GetConnectionOptionAuthenticationMethodOutput) Passwords() GetConnectionOptionAuthenticationMethodPasswordArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethod) []GetConnectionOptionAuthenticationMethodPassword {
+		return v.Passwords
+	}).(GetConnectionOptionAuthenticationMethodPasswordArrayOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethod)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodArrayOutput) ToGetConnectionOptionAuthenticationMethodArrayOutput() GetConnectionOptionAuthenticationMethodArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodArrayOutput) ToGetConnectionOptionAuthenticationMethodArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAuthenticationMethodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAuthenticationMethod {
+		return vs[0].([]GetConnectionOptionAuthenticationMethod)[vs[1].(int)]
+	}).(GetConnectionOptionAuthenticationMethodOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPasskey struct {
+	// Enables passkey authentication
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetConnectionOptionAuthenticationMethodPasskeyInput is an input type that accepts GetConnectionOptionAuthenticationMethodPasskeyArgs and GetConnectionOptionAuthenticationMethodPasskeyOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodPasskeyInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodPasskeyArgs{...}
+type GetConnectionOptionAuthenticationMethodPasskeyInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodPasskeyOutput() GetConnectionOptionAuthenticationMethodPasskeyOutput
+	ToGetConnectionOptionAuthenticationMethodPasskeyOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodPasskeyOutput
+}
+
+type GetConnectionOptionAuthenticationMethodPasskeyArgs struct {
+	// Enables passkey authentication
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetConnectionOptionAuthenticationMethodPasskeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPasskey)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodPasskeyArgs) ToGetConnectionOptionAuthenticationMethodPasskeyOutput() GetConnectionOptionAuthenticationMethodPasskeyOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodPasskeyOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodPasskeyArgs) ToGetConnectionOptionAuthenticationMethodPasskeyOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPasskeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodPasskeyOutput)
+}
+
+// GetConnectionOptionAuthenticationMethodPasskeyArrayInput is an input type that accepts GetConnectionOptionAuthenticationMethodPasskeyArray and GetConnectionOptionAuthenticationMethodPasskeyArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodPasskeyArrayInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodPasskeyArray{ GetConnectionOptionAuthenticationMethodPasskeyArgs{...} }
+type GetConnectionOptionAuthenticationMethodPasskeyArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodPasskeyArrayOutput() GetConnectionOptionAuthenticationMethodPasskeyArrayOutput
+	ToGetConnectionOptionAuthenticationMethodPasskeyArrayOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodPasskeyArrayOutput
+}
+
+type GetConnectionOptionAuthenticationMethodPasskeyArray []GetConnectionOptionAuthenticationMethodPasskeyInput
+
+func (GetConnectionOptionAuthenticationMethodPasskeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethodPasskey)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodPasskeyArray) ToGetConnectionOptionAuthenticationMethodPasskeyArrayOutput() GetConnectionOptionAuthenticationMethodPasskeyArrayOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodPasskeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodPasskeyArray) ToGetConnectionOptionAuthenticationMethodPasskeyArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPasskeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodPasskeyArrayOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPasskeyOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodPasskeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPasskey)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasskeyOutput) ToGetConnectionOptionAuthenticationMethodPasskeyOutput() GetConnectionOptionAuthenticationMethodPasskeyOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasskeyOutput) ToGetConnectionOptionAuthenticationMethodPasskeyOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPasskeyOutput {
+	return o
+}
+
+// Enables passkey authentication
+func (o GetConnectionOptionAuthenticationMethodPasskeyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethodPasskey) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPasskeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodPasskeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethodPasskey)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasskeyArrayOutput) ToGetConnectionOptionAuthenticationMethodPasskeyArrayOutput() GetConnectionOptionAuthenticationMethodPasskeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasskeyArrayOutput) ToGetConnectionOptionAuthenticationMethodPasskeyArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPasskeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasskeyArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAuthenticationMethodPasskeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAuthenticationMethodPasskey {
+		return vs[0].([]GetConnectionOptionAuthenticationMethodPasskey)[vs[1].(int)]
+	}).(GetConnectionOptionAuthenticationMethodPasskeyOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPassword struct {
+	// Enables password authentication
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetConnectionOptionAuthenticationMethodPasswordInput is an input type that accepts GetConnectionOptionAuthenticationMethodPasswordArgs and GetConnectionOptionAuthenticationMethodPasswordOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodPasswordInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodPasswordArgs{...}
+type GetConnectionOptionAuthenticationMethodPasswordInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodPasswordOutput() GetConnectionOptionAuthenticationMethodPasswordOutput
+	ToGetConnectionOptionAuthenticationMethodPasswordOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodPasswordOutput
+}
+
+type GetConnectionOptionAuthenticationMethodPasswordArgs struct {
+	// Enables password authentication
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetConnectionOptionAuthenticationMethodPasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPassword)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodPasswordArgs) ToGetConnectionOptionAuthenticationMethodPasswordOutput() GetConnectionOptionAuthenticationMethodPasswordOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodPasswordOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodPasswordArgs) ToGetConnectionOptionAuthenticationMethodPasswordOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodPasswordOutput)
+}
+
+// GetConnectionOptionAuthenticationMethodPasswordArrayInput is an input type that accepts GetConnectionOptionAuthenticationMethodPasswordArray and GetConnectionOptionAuthenticationMethodPasswordArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodPasswordArrayInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodPasswordArray{ GetConnectionOptionAuthenticationMethodPasswordArgs{...} }
+type GetConnectionOptionAuthenticationMethodPasswordArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodPasswordArrayOutput() GetConnectionOptionAuthenticationMethodPasswordArrayOutput
+	ToGetConnectionOptionAuthenticationMethodPasswordArrayOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodPasswordArrayOutput
+}
+
+type GetConnectionOptionAuthenticationMethodPasswordArray []GetConnectionOptionAuthenticationMethodPasswordInput
+
+func (GetConnectionOptionAuthenticationMethodPasswordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethodPassword)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodPasswordArray) ToGetConnectionOptionAuthenticationMethodPasswordArrayOutput() GetConnectionOptionAuthenticationMethodPasswordArrayOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodPasswordArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodPasswordArray) ToGetConnectionOptionAuthenticationMethodPasswordArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPasswordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodPasswordArrayOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPasswordOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodPasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPassword)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasswordOutput) ToGetConnectionOptionAuthenticationMethodPasswordOutput() GetConnectionOptionAuthenticationMethodPasswordOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasswordOutput) ToGetConnectionOptionAuthenticationMethodPasswordOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPasswordOutput {
+	return o
+}
+
+// Enables password authentication
+func (o GetConnectionOptionAuthenticationMethodPasswordOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethodPassword) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPasswordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodPasswordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethodPassword)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasswordArrayOutput) ToGetConnectionOptionAuthenticationMethodPasswordArrayOutput() GetConnectionOptionAuthenticationMethodPasswordArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasswordArrayOutput) ToGetConnectionOptionAuthenticationMethodPasswordArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPasswordArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasswordArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAuthenticationMethodPasswordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAuthenticationMethodPassword {
+		return vs[0].([]GetConnectionOptionAuthenticationMethodPassword)[vs[1].(int)]
+	}).(GetConnectionOptionAuthenticationMethodPasswordOutput)
+}
+
 type GetConnectionOptionConnectionSetting struct {
 	// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
 	Pkce string `pulumi:"pkce"`
@@ -38882,6 +40141,121 @@ func (o GetConnectionOptionMfaArrayOutput) Index(i pulumi.IntInput) GetConnectio
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionMfa {
 		return vs[0].([]GetConnectionOptionMfa)[vs[1].(int)]
 	}).(GetConnectionOptionMfaOutput)
+}
+
+type GetConnectionOptionPasskeyOption struct {
+	// Controls the UI used to challenge the user for their passkey
+	ChallengeUi string `pulumi:"challengeUi"`
+	// Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
+	LocalEnrollmentEnabled bool `pulumi:"localEnrollmentEnabled"`
+	// Enables or disables progressive enrollment of passkeys for the connection
+	ProgressiveEnrollmentEnabled bool `pulumi:"progressiveEnrollmentEnabled"`
+}
+
+// GetConnectionOptionPasskeyOptionInput is an input type that accepts GetConnectionOptionPasskeyOptionArgs and GetConnectionOptionPasskeyOptionOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasskeyOptionInput` via:
+//
+//	GetConnectionOptionPasskeyOptionArgs{...}
+type GetConnectionOptionPasskeyOptionInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasskeyOptionOutput() GetConnectionOptionPasskeyOptionOutput
+	ToGetConnectionOptionPasskeyOptionOutputWithContext(context.Context) GetConnectionOptionPasskeyOptionOutput
+}
+
+type GetConnectionOptionPasskeyOptionArgs struct {
+	// Controls the UI used to challenge the user for their passkey
+	ChallengeUi pulumi.StringInput `pulumi:"challengeUi"`
+	// Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
+	LocalEnrollmentEnabled pulumi.BoolInput `pulumi:"localEnrollmentEnabled"`
+	// Enables or disables progressive enrollment of passkeys for the connection
+	ProgressiveEnrollmentEnabled pulumi.BoolInput `pulumi:"progressiveEnrollmentEnabled"`
+}
+
+func (GetConnectionOptionPasskeyOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasskeyOption)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasskeyOptionArgs) ToGetConnectionOptionPasskeyOptionOutput() GetConnectionOptionPasskeyOptionOutput {
+	return i.ToGetConnectionOptionPasskeyOptionOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasskeyOptionArgs) ToGetConnectionOptionPasskeyOptionOutputWithContext(ctx context.Context) GetConnectionOptionPasskeyOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasskeyOptionOutput)
+}
+
+// GetConnectionOptionPasskeyOptionArrayInput is an input type that accepts GetConnectionOptionPasskeyOptionArray and GetConnectionOptionPasskeyOptionArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasskeyOptionArrayInput` via:
+//
+//	GetConnectionOptionPasskeyOptionArray{ GetConnectionOptionPasskeyOptionArgs{...} }
+type GetConnectionOptionPasskeyOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasskeyOptionArrayOutput() GetConnectionOptionPasskeyOptionArrayOutput
+	ToGetConnectionOptionPasskeyOptionArrayOutputWithContext(context.Context) GetConnectionOptionPasskeyOptionArrayOutput
+}
+
+type GetConnectionOptionPasskeyOptionArray []GetConnectionOptionPasskeyOptionInput
+
+func (GetConnectionOptionPasskeyOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasskeyOption)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasskeyOptionArray) ToGetConnectionOptionPasskeyOptionArrayOutput() GetConnectionOptionPasskeyOptionArrayOutput {
+	return i.ToGetConnectionOptionPasskeyOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasskeyOptionArray) ToGetConnectionOptionPasskeyOptionArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasskeyOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasskeyOptionArrayOutput)
+}
+
+type GetConnectionOptionPasskeyOptionOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasskeyOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasskeyOption)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasskeyOptionOutput) ToGetConnectionOptionPasskeyOptionOutput() GetConnectionOptionPasskeyOptionOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasskeyOptionOutput) ToGetConnectionOptionPasskeyOptionOutputWithContext(ctx context.Context) GetConnectionOptionPasskeyOptionOutput {
+	return o
+}
+
+// Controls the UI used to challenge the user for their passkey
+func (o GetConnectionOptionPasskeyOptionOutput) ChallengeUi() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasskeyOption) string { return v.ChallengeUi }).(pulumi.StringOutput)
+}
+
+// Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
+func (o GetConnectionOptionPasskeyOptionOutput) LocalEnrollmentEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasskeyOption) bool { return v.LocalEnrollmentEnabled }).(pulumi.BoolOutput)
+}
+
+// Enables or disables progressive enrollment of passkeys for the connection
+func (o GetConnectionOptionPasskeyOptionOutput) ProgressiveEnrollmentEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasskeyOption) bool { return v.ProgressiveEnrollmentEnabled }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionPasskeyOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasskeyOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasskeyOption)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasskeyOptionArrayOutput) ToGetConnectionOptionPasskeyOptionArrayOutput() GetConnectionOptionPasskeyOptionArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasskeyOptionArrayOutput) ToGetConnectionOptionPasskeyOptionArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasskeyOptionArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasskeyOptionArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionPasskeyOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionPasskeyOption {
+		return vs[0].([]GetConnectionOptionPasskeyOption)[vs[1].(int)]
+	}).(GetConnectionOptionPasskeyOptionOutput)
 }
 
 type GetConnectionOptionPasswordComplexityOption struct {
@@ -43178,6 +44552,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcLogoutBackchannelLogoutInitiatorsPtrInput)(nil)).Elem(), ClientOidcLogoutBackchannelLogoutInitiatorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientRefreshTokenInput)(nil)).Elem(), ClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientRefreshTokenPtrInput)(nil)).Elem(), ClientRefreshTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientTokenExchangeInput)(nil)).Elem(), ClientTokenExchangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientTokenExchangePtrInput)(nil)).Elem(), ClientTokenExchangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsInput)(nil)).Elem(), ConnectionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPtrInput)(nil)).Elem(), ConnectionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeInput)(nil)).Elem(), ConnectionOptionsAttributeArgs{})
@@ -43210,6 +44586,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeUsernameValidationArrayInput)(nil)).Elem(), ConnectionOptionsAttributeUsernameValidationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeUsernameValidationAllowedTypeInput)(nil)).Elem(), ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayInput)(nil)).Elem(), ConnectionOptionsAttributeUsernameValidationAllowedTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAuthenticationMethodInput)(nil)).Elem(), ConnectionOptionsAuthenticationMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAuthenticationMethodArrayInput)(nil)).Elem(), ConnectionOptionsAuthenticationMethodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAuthenticationMethodPasskeyInput)(nil)).Elem(), ConnectionOptionsAuthenticationMethodPasskeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAuthenticationMethodPasskeyPtrInput)(nil)).Elem(), ConnectionOptionsAuthenticationMethodPasskeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAuthenticationMethodPasswordInput)(nil)).Elem(), ConnectionOptionsAuthenticationMethodPasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAuthenticationMethodPasswordPtrInput)(nil)).Elem(), ConnectionOptionsAuthenticationMethodPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsConnectionSettingsInput)(nil)).Elem(), ConnectionOptionsConnectionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsConnectionSettingsPtrInput)(nil)).Elem(), ConnectionOptionsConnectionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsDecryptionKeyInput)(nil)).Elem(), ConnectionOptionsDecryptionKeyArgs{})
@@ -43220,6 +44602,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsIdpInitiatedPtrInput)(nil)).Elem(), ConnectionOptionsIdpInitiatedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsMfaInput)(nil)).Elem(), ConnectionOptionsMfaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsMfaPtrInput)(nil)).Elem(), ConnectionOptionsMfaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPasskeyOptionsInput)(nil)).Elem(), ConnectionOptionsPasskeyOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPasskeyOptionsPtrInput)(nil)).Elem(), ConnectionOptionsPasskeyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPasswordComplexityOptionsInput)(nil)).Elem(), ConnectionOptionsPasswordComplexityOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPasswordComplexityOptionsPtrInput)(nil)).Elem(), ConnectionOptionsPasswordComplexityOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPasswordDictionaryInput)(nil)).Elem(), ConnectionOptionsPasswordDictionaryArgs{})
@@ -43467,12 +44851,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectArrayInput)(nil)).Elem(), GetClientSignedRequestObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectCredentialInput)(nil)).Elem(), GetClientSignedRequestObjectCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectCredentialArrayInput)(nil)).Elem(), GetClientSignedRequestObjectCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenExchangeInput)(nil)).Elem(), GetClientTokenExchangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenExchangeArrayInput)(nil)).Elem(), GetClientTokenExchangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientInput)(nil)).Elem(), GetClientsClientArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientArrayInput)(nil)).Elem(), GetClientsClientArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutInput)(nil)).Elem(), GetClientsClientOidcLogoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutArrayInput)(nil)).Elem(), GetClientsClientOidcLogoutArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutInitiatorInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenExchangeInput)(nil)).Elem(), GetClientsClientTokenExchangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenExchangeArrayInput)(nil)).Elem(), GetClientsClientTokenExchangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionInput)(nil)).Elem(), GetConnectionOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionArrayInput)(nil)).Elem(), GetConnectionOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeInput)(nil)).Elem(), GetConnectionOptionAttributeArgs{})
@@ -43505,6 +44893,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidationArrayInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameValidationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidationAllowedTypeInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameValidationAllowedTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodArrayInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPasskeyInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodPasskeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPasskeyArrayInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodPasskeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPasswordInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodPasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPasswordArrayInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodPasswordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionConnectionSettingInput)(nil)).Elem(), GetConnectionOptionConnectionSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionConnectionSettingArrayInput)(nil)).Elem(), GetConnectionOptionConnectionSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionDecryptionKeyInput)(nil)).Elem(), GetConnectionOptionDecryptionKeyArgs{})
@@ -43515,6 +44909,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionIdpInitiatedArrayInput)(nil)).Elem(), GetConnectionOptionIdpInitiatedArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionMfaInput)(nil)).Elem(), GetConnectionOptionMfaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionMfaArrayInput)(nil)).Elem(), GetConnectionOptionMfaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasskeyOptionInput)(nil)).Elem(), GetConnectionOptionPasskeyOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasskeyOptionArrayInput)(nil)).Elem(), GetConnectionOptionPasskeyOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordComplexityOptionInput)(nil)).Elem(), GetConnectionOptionPasswordComplexityOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordComplexityOptionArrayInput)(nil)).Elem(), GetConnectionOptionPasswordComplexityOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordDictionaryInput)(nil)).Elem(), GetConnectionOptionPasswordDictionaryArgs{})
@@ -43733,6 +45129,8 @@ func init() {
 	pulumi.RegisterOutputType(ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput{})
 	pulumi.RegisterOutputType(ClientRefreshTokenOutput{})
 	pulumi.RegisterOutputType(ClientRefreshTokenPtrOutput{})
+	pulumi.RegisterOutputType(ClientTokenExchangeOutput{})
+	pulumi.RegisterOutputType(ClientTokenExchangePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsAttributeOutput{})
@@ -43765,6 +45163,12 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionOptionsAttributeUsernameValidationArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsAttributeUsernameValidationAllowedTypeOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAuthenticationMethodOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAuthenticationMethodArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAuthenticationMethodPasskeyOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAuthenticationMethodPasskeyPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAuthenticationMethodPasswordOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAuthenticationMethodPasswordPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsConnectionSettingsOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsConnectionSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsDecryptionKeyOutput{})
@@ -43775,6 +45179,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionOptionsIdpInitiatedPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsMfaOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsMfaPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsPasskeyOptionsOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsPasskeyOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPasswordComplexityOptionsOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPasswordComplexityOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPasswordDictionaryOutput{})
@@ -44022,12 +45428,16 @@ func init() {
 	pulumi.RegisterOutputType(GetClientSignedRequestObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetClientSignedRequestObjectCredentialOutput{})
 	pulumi.RegisterOutputType(GetClientSignedRequestObjectCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetClientTokenExchangeOutput{})
+	pulumi.RegisterOutputType(GetClientTokenExchangeArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOutput{})
 	pulumi.RegisterOutputType(GetClientsClientArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientTokenExchangeOutput{})
+	pulumi.RegisterOutputType(GetClientsClientTokenExchangeArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAttributeOutput{})
@@ -44060,6 +45470,12 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameValidationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodPasskeyOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodPasskeyArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodPasswordOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodPasswordArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionConnectionSettingOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionConnectionSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionDecryptionKeyOutput{})
@@ -44070,6 +45486,8 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionOptionIdpInitiatedArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionMfaOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionMfaArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasskeyOptionOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasskeyOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionPasswordComplexityOptionOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionPasswordComplexityOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionPasswordDictionaryOutput{})

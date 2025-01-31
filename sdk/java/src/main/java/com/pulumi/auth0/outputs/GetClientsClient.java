@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetClientsClientOidcLogout;
+import com.pulumi.auth0.outputs.GetClientsClientTokenExchange;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -82,6 +83,11 @@ public final class GetClientsClient {
      * 
      */
     private List<GetClientsClientOidcLogout> oidcLogouts;
+    /**
+     * @return Allows configuration for token exchange
+     * 
+     */
+    private List<GetClientsClientTokenExchange> tokenExchanges;
     /**
      * @return URLs that represent valid web origins for use with web message response mode.
      * 
@@ -184,6 +190,13 @@ public final class GetClientsClient {
         return this.oidcLogouts;
     }
     /**
+     * @return Allows configuration for token exchange
+     * 
+     */
+    public List<GetClientsClientTokenExchange> tokenExchanges() {
+        return this.tokenExchanges;
+    }
+    /**
      * @return URLs that represent valid web origins for use with web message response mode.
      * 
      */
@@ -214,6 +227,7 @@ public final class GetClientsClient {
         private Boolean isTokenEndpointIpHeaderTrusted;
         private @Nullable String name;
         private List<GetClientsClientOidcLogout> oidcLogouts;
+        private List<GetClientsClientTokenExchange> tokenExchanges;
         private List<String> webOrigins;
         public Builder() {}
         public Builder(GetClientsClient defaults) {
@@ -232,6 +246,7 @@ public final class GetClientsClient {
     	      this.isTokenEndpointIpHeaderTrusted = defaults.isTokenEndpointIpHeaderTrusted;
     	      this.name = defaults.name;
     	      this.oidcLogouts = defaults.oidcLogouts;
+    	      this.tokenExchanges = defaults.tokenExchanges;
     	      this.webOrigins = defaults.webOrigins;
         }
 
@@ -362,6 +377,17 @@ public final class GetClientsClient {
             return oidcLogouts(List.of(oidcLogouts));
         }
         @CustomType.Setter
+        public Builder tokenExchanges(List<GetClientsClientTokenExchange> tokenExchanges) {
+            if (tokenExchanges == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "tokenExchanges");
+            }
+            this.tokenExchanges = tokenExchanges;
+            return this;
+        }
+        public Builder tokenExchanges(GetClientsClientTokenExchange... tokenExchanges) {
+            return tokenExchanges(List.of(tokenExchanges));
+        }
+        @CustomType.Setter
         public Builder webOrigins(List<String> webOrigins) {
             if (webOrigins == null) {
               throw new MissingRequiredPropertyException("GetClientsClient", "webOrigins");
@@ -388,6 +414,7 @@ public final class GetClientsClient {
             _resultValue.isTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;
             _resultValue.name = name;
             _resultValue.oidcLogouts = oidcLogouts;
+            _resultValue.tokenExchanges = tokenExchanges;
             _resultValue.webOrigins = webOrigins;
             return _resultValue;
         }

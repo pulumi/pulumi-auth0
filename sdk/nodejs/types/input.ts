@@ -1280,6 +1280,13 @@ export interface ClientRefreshToken {
     tokenLifetime?: pulumi.Input<number>;
 }
 
+export interface ClientTokenExchange {
+    /**
+     * List of allowed profile types for token exchange
+     */
+    allowAnyProfileOfTypes: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ConnectionOptions {
     /**
      * ADFS URL where to fetch the metadata source.
@@ -1309,6 +1316,10 @@ export interface ConnectionOptions {
      * Query string parameters to be included as part of the generated passwordless email link.
      */
     authParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Specifies the authentication methods and their configuration (enabled or disabled)
+     */
+    authenticationMethods?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAuthenticationMethod>[]>;
     /**
      * Authorization endpoint.
      */
@@ -1481,6 +1492,10 @@ export interface ConnectionOptions {
      * If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
      */
     nonPersistentAttrs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Defines options for the passkey authentication method
+     */
+    passkeyOptions?: pulumi.Input<inputs.ConnectionOptionsPasskeyOptions>;
     /**
      * Configuration settings for password complexity.
      */
@@ -1824,6 +1839,31 @@ export interface ConnectionOptionsAttributeUsernameValidationAllowedType {
     phoneNumber?: pulumi.Input<boolean>;
 }
 
+export interface ConnectionOptionsAuthenticationMethod {
+    /**
+     * Configures passkey authentication
+     */
+    passkey?: pulumi.Input<inputs.ConnectionOptionsAuthenticationMethodPasskey>;
+    /**
+     * Configures password authentication
+     */
+    password?: pulumi.Input<inputs.ConnectionOptionsAuthenticationMethodPassword>;
+}
+
+export interface ConnectionOptionsAuthenticationMethodPasskey {
+    /**
+     * Enables passkey authentication
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface ConnectionOptionsAuthenticationMethodPassword {
+    /**
+     * Enables password authentication
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
 export interface ConnectionOptionsConnectionSettings {
     /**
      * PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
@@ -1875,6 +1915,21 @@ export interface ConnectionOptionsMfa {
      * Indicates whether multifactor authentication enrollment settings will be returned.
      */
     returnEnrollSettings?: pulumi.Input<boolean>;
+}
+
+export interface ConnectionOptionsPasskeyOptions {
+    /**
+     * Controls the UI used to challenge the user for their passkey
+     */
+    challengeUi?: pulumi.Input<string>;
+    /**
+     * Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
+     */
+    localEnrollmentEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enables or disables progressive enrollment of passkeys for the connection
+     */
+    progressiveEnrollmentEnabled?: pulumi.Input<boolean>;
 }
 
 export interface ConnectionOptionsPasswordComplexityOptions {

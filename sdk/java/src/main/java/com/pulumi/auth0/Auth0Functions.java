@@ -30,6 +30,8 @@ import com.pulumi.auth0.inputs.GetRoleArgs;
 import com.pulumi.auth0.inputs.GetRolePlainArgs;
 import com.pulumi.auth0.inputs.GetSelfServiceProfileArgs;
 import com.pulumi.auth0.inputs.GetSelfServiceProfilePlainArgs;
+import com.pulumi.auth0.inputs.GetTokenExchangeProfileArgs;
+import com.pulumi.auth0.inputs.GetTokenExchangeProfilePlainArgs;
 import com.pulumi.auth0.inputs.GetUserArgs;
 import com.pulumi.auth0.inputs.GetUserPlainArgs;
 import com.pulumi.auth0.outputs.GetAttackProtectionResult;
@@ -52,6 +54,7 @@ import com.pulumi.auth0.outputs.GetRoleResult;
 import com.pulumi.auth0.outputs.GetSelfServiceProfileResult;
 import com.pulumi.auth0.outputs.GetSigningKeysResult;
 import com.pulumi.auth0.outputs.GetTenantResult;
+import com.pulumi.auth0.outputs.GetTokenExchangeProfileResult;
 import com.pulumi.auth0.outputs.GetUserResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -5024,6 +5027,41 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetTenantResult> getTenantPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getTenant:getTenant", TypeShape.of(GetTenantResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
+     * 
+     */
+    public static Output<GetTokenExchangeProfileResult> getTokenExchangeProfile(GetTokenExchangeProfileArgs args) {
+        return getTokenExchangeProfile(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
+     * 
+     */
+    public static CompletableFuture<GetTokenExchangeProfileResult> getTokenExchangeProfilePlain(GetTokenExchangeProfilePlainArgs args) {
+        return getTokenExchangeProfilePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
+     * 
+     */
+    public static Output<GetTokenExchangeProfileResult> getTokenExchangeProfile(GetTokenExchangeProfileArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getTokenExchangeProfile:getTokenExchangeProfile", TypeShape.of(GetTokenExchangeProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
+     * 
+     */
+    public static Output<GetTokenExchangeProfileResult> getTokenExchangeProfile(GetTokenExchangeProfileArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getTokenExchangeProfile:getTokenExchangeProfile", TypeShape.of(GetTokenExchangeProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
+     * 
+     */
+    public static CompletableFuture<GetTokenExchangeProfileResult> getTokenExchangeProfilePlain(GetTokenExchangeProfilePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getTokenExchangeProfile:getTokenExchangeProfile", TypeShape.of(GetTokenExchangeProfileResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a specific Auth0 user by `user_id`.

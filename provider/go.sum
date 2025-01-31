@@ -1414,8 +1414,8 @@ github.com/armon/go-socks5 v0.0.0-20160902184237-e75332964ef5 h1:0CwZNZbxp69SHPd
 github.com/armon/go-socks5 v0.0.0-20160902184237-e75332964ef5/go.mod h1:wHh0iHkYZB8zMSxRWpUBQtwG5a7fFgvEO+odwuTv2gs=
 github.com/atotto/clipboard v0.1.4 h1:EH0zSVneZPSuFR11BlR9YppQTVDbh5+16AmcJi4g1z4=
 github.com/atotto/clipboard v0.1.4/go.mod h1:ZY9tmq7sm5xIbd9bOK4onWV4S6X0u6GY7Vn0Yu86PYI=
-github.com/auth0/go-auth0 v1.14.0 h1:T/wQGIwXylf1DnrDtDEuo/92YBnRizRcw15zXb+e3k4=
-github.com/auth0/go-auth0 v1.14.0/go.mod h1:PjkjJXvHIbGPJgig9lNjlYrK2lsP5pdh3tM+VV4Dmpc=
+github.com/auth0/go-auth0 v1.15.0 h1:tfwbcUO2QrQfrbVQ0qfDGcB3gPQQlZDJU4D0C9w0+OY=
+github.com/auth0/go-auth0 v1.15.0/go.mod h1:lKOp7ooUxEKPRAZziAfN3km1TH0VYVHkCvTMZsfQCS8=
 github.com/aws/aws-sdk-go v1.15.78/go.mod h1:E3/ieXAlvM0XWO57iftYVDLLvQ824smPP3ATZkfNZeM=
 github.com/aws/aws-sdk-go v1.25.3/go.mod h1:KmX6BPdI08NWTb3/sm4ZGu5ShLoqVDhKgpiN924inxo=
 github.com/aws/aws-sdk-go v1.44.122/go.mod h1:y4AeaBuwd2Lk+GepC1E9v0qOiTws0MIWAX4oIKwKHZo=

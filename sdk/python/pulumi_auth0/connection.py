@@ -309,6 +309,8 @@ class Connection(pulumi.CustomResource):
         > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
         creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
 
+        > When updating the `options` parameter, ensure that all nested fields within the `options` schema are explicitly defined. Failing to do so may result in the loss of existing configurations.
+
         ## Example Usage
 
         ### Auth0 Connection
@@ -377,6 +379,19 @@ class Connection(pulumi.CustomResource):
                 "mfa": {
                     "active": True,
                     "return_enroll_settings": True,
+                },
+                "authentication_methods": [{
+                    "passkey": {
+                        "enabled": True,
+                    },
+                    "password": {
+                        "enabled": True,
+                    },
+                }],
+                "passkey_options": {
+                    "challenge_ui": "both",
+                    "local_enrollment_enabled": True,
+                    "progressive_enrollment_enabled": True,
                 },
             })
         ```
@@ -1004,6 +1019,8 @@ class Connection(pulumi.CustomResource):
         > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
         creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
 
+        > When updating the `options` parameter, ensure that all nested fields within the `options` schema are explicitly defined. Failing to do so may result in the loss of existing configurations.
+
         ## Example Usage
 
         ### Auth0 Connection
@@ -1072,6 +1089,19 @@ class Connection(pulumi.CustomResource):
                 "mfa": {
                     "active": True,
                     "return_enroll_settings": True,
+                },
+                "authentication_methods": [{
+                    "passkey": {
+                        "enabled": True,
+                    },
+                    "password": {
+                        "enabled": True,
+                    },
+                }],
+                "passkey_options": {
+                    "challenge_ui": "both",
+                    "local_enrollment_enabled": True,
+                    "progressive_enrollment_enabled": True,
                 },
             })
         ```

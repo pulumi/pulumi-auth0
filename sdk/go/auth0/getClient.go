@@ -151,6 +151,8 @@ type LookupClientResult struct {
 	SsoDisabled bool `pulumi:"ssoDisabled"`
 	// The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic), Managing a client's authentication method can be done via the `ClientCredentials` resource.
 	TokenEndpointAuthMethod string `pulumi:"tokenEndpointAuthMethod"`
+	// Allows configuration for token exchange
+	TokenExchanges []GetClientTokenExchange `pulumi:"tokenExchanges"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins []string `pulumi:"webOrigins"`
 }
@@ -403,6 +405,11 @@ func (o LookupClientResultOutput) SsoDisabled() pulumi.BoolOutput {
 // The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic), Managing a client's authentication method can be done via the `ClientCredentials` resource.
 func (o LookupClientResultOutput) TokenEndpointAuthMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.TokenEndpointAuthMethod }).(pulumi.StringOutput)
+}
+
+// Allows configuration for token exchange
+func (o LookupClientResultOutput) TokenExchanges() GetClientTokenExchangeArrayOutput {
+	return o.ApplyT(func(v LookupClientResult) []GetClientTokenExchange { return v.TokenExchanges }).(GetClientTokenExchangeArrayOutput)
 }
 
 // URLs that represent valid web origins for use with web message response mode.

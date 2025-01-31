@@ -5,11 +5,13 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.ConnectionOptionsAttribute;
 import com.pulumi.auth0.outputs.ConnectionOptionsAttributeMap;
+import com.pulumi.auth0.outputs.ConnectionOptionsAuthenticationMethod;
 import com.pulumi.auth0.outputs.ConnectionOptionsConnectionSettings;
 import com.pulumi.auth0.outputs.ConnectionOptionsDecryptionKey;
 import com.pulumi.auth0.outputs.ConnectionOptionsGatewayAuthentication;
 import com.pulumi.auth0.outputs.ConnectionOptionsIdpInitiated;
 import com.pulumi.auth0.outputs.ConnectionOptionsMfa;
+import com.pulumi.auth0.outputs.ConnectionOptionsPasskeyOptions;
 import com.pulumi.auth0.outputs.ConnectionOptionsPasswordComplexityOptions;
 import com.pulumi.auth0.outputs.ConnectionOptionsPasswordDictionary;
 import com.pulumi.auth0.outputs.ConnectionOptionsPasswordHistory;
@@ -64,6 +66,11 @@ public final class ConnectionOptions {
      * 
      */
     private @Nullable Map<String,String> authParams;
+    /**
+     * @return Specifies the authentication methods and their configuration (enabled or disabled)
+     * 
+     */
+    private @Nullable List<ConnectionOptionsAuthenticationMethod> authenticationMethods;
     /**
      * @return Authorization endpoint.
      * 
@@ -279,6 +286,11 @@ public final class ConnectionOptions {
      * 
      */
     private @Nullable List<String> nonPersistentAttrs;
+    /**
+     * @return Defines options for the passkey authentication method
+     * 
+     */
+    private @Nullable ConnectionOptionsPasskeyOptions passkeyOptions;
     /**
      * @return Configuration settings for password complexity.
      * 
@@ -539,6 +551,13 @@ public final class ConnectionOptions {
      */
     public Map<String,String> authParams() {
         return this.authParams == null ? Map.of() : this.authParams;
+    }
+    /**
+     * @return Specifies the authentication methods and their configuration (enabled or disabled)
+     * 
+     */
+    public List<ConnectionOptionsAuthenticationMethod> authenticationMethods() {
+        return this.authenticationMethods == null ? List.of() : this.authenticationMethods;
     }
     /**
      * @return Authorization endpoint.
@@ -840,6 +859,13 @@ public final class ConnectionOptions {
      */
     public List<String> nonPersistentAttrs() {
         return this.nonPersistentAttrs == null ? List.of() : this.nonPersistentAttrs;
+    }
+    /**
+     * @return Defines options for the passkey authentication method
+     * 
+     */
+    public Optional<ConnectionOptionsPasskeyOptions> passkeyOptions() {
+        return Optional.ofNullable(this.passkeyOptions);
     }
     /**
      * @return Configuration settings for password complexity.
@@ -1152,6 +1178,7 @@ public final class ConnectionOptions {
         private @Nullable ConnectionOptionsAttributeMap attributeMap;
         private @Nullable List<ConnectionOptionsAttribute> attributes;
         private @Nullable Map<String,String> authParams;
+        private @Nullable List<ConnectionOptionsAuthenticationMethod> authenticationMethods;
         private @Nullable String authorizationEndpoint;
         private @Nullable Boolean bruteForceProtection;
         private @Nullable String clientId;
@@ -1195,6 +1222,7 @@ public final class ConnectionOptions {
         private @Nullable ConnectionOptionsMfa mfa;
         private @Nullable String name;
         private @Nullable List<String> nonPersistentAttrs;
+        private @Nullable ConnectionOptionsPasskeyOptions passkeyOptions;
         private @Nullable ConnectionOptionsPasswordComplexityOptions passwordComplexityOptions;
         private @Nullable ConnectionOptionsPasswordDictionary passwordDictionary;
         private @Nullable List<ConnectionOptionsPasswordHistory> passwordHistories;
@@ -1247,6 +1275,7 @@ public final class ConnectionOptions {
     	      this.attributeMap = defaults.attributeMap;
     	      this.attributes = defaults.attributes;
     	      this.authParams = defaults.authParams;
+    	      this.authenticationMethods = defaults.authenticationMethods;
     	      this.authorizationEndpoint = defaults.authorizationEndpoint;
     	      this.bruteForceProtection = defaults.bruteForceProtection;
     	      this.clientId = defaults.clientId;
@@ -1290,6 +1319,7 @@ public final class ConnectionOptions {
     	      this.mfa = defaults.mfa;
     	      this.name = defaults.name;
     	      this.nonPersistentAttrs = defaults.nonPersistentAttrs;
+    	      this.passkeyOptions = defaults.passkeyOptions;
     	      this.passwordComplexityOptions = defaults.passwordComplexityOptions;
     	      this.passwordDictionary = defaults.passwordDictionary;
     	      this.passwordHistories = defaults.passwordHistories;
@@ -1381,6 +1411,15 @@ public final class ConnectionOptions {
 
             this.authParams = authParams;
             return this;
+        }
+        @CustomType.Setter
+        public Builder authenticationMethods(@Nullable List<ConnectionOptionsAuthenticationMethod> authenticationMethods) {
+
+            this.authenticationMethods = authenticationMethods;
+            return this;
+        }
+        public Builder authenticationMethods(ConnectionOptionsAuthenticationMethod... authenticationMethods) {
+            return authenticationMethods(List.of(authenticationMethods));
         }
         @CustomType.Setter
         public Builder authorizationEndpoint(@Nullable String authorizationEndpoint) {
@@ -1648,6 +1687,12 @@ public final class ConnectionOptions {
         }
         public Builder nonPersistentAttrs(String... nonPersistentAttrs) {
             return nonPersistentAttrs(List.of(nonPersistentAttrs));
+        }
+        @CustomType.Setter
+        public Builder passkeyOptions(@Nullable ConnectionOptionsPasskeyOptions passkeyOptions) {
+
+            this.passkeyOptions = passkeyOptions;
+            return this;
         }
         @CustomType.Setter
         public Builder passwordComplexityOptions(@Nullable ConnectionOptionsPasswordComplexityOptions passwordComplexityOptions) {
@@ -1919,6 +1964,7 @@ public final class ConnectionOptions {
             _resultValue.attributeMap = attributeMap;
             _resultValue.attributes = attributes;
             _resultValue.authParams = authParams;
+            _resultValue.authenticationMethods = authenticationMethods;
             _resultValue.authorizationEndpoint = authorizationEndpoint;
             _resultValue.bruteForceProtection = bruteForceProtection;
             _resultValue.clientId = clientId;
@@ -1962,6 +2008,7 @@ public final class ConnectionOptions {
             _resultValue.mfa = mfa;
             _resultValue.name = name;
             _resultValue.nonPersistentAttrs = nonPersistentAttrs;
+            _resultValue.passkeyOptions = passkeyOptions;
             _resultValue.passwordComplexityOptions = passwordComplexityOptions;
             _resultValue.passwordDictionary = passwordDictionary;
             _resultValue.passwordHistories = passwordHistories;

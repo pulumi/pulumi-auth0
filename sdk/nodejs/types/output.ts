@@ -1280,6 +1280,13 @@ export interface ClientRefreshToken {
     tokenLifetime: number;
 }
 
+export interface ClientTokenExchange {
+    /**
+     * List of allowed profile types for token exchange
+     */
+    allowAnyProfileOfTypes: string[];
+}
+
 export interface ConnectionOptions {
     /**
      * ADFS URL where to fetch the metadata source.
@@ -1309,6 +1316,10 @@ export interface ConnectionOptions {
      * Query string parameters to be included as part of the generated passwordless email link.
      */
     authParams?: {[key: string]: string};
+    /**
+     * Specifies the authentication methods and their configuration (enabled or disabled)
+     */
+    authenticationMethods: outputs.ConnectionOptionsAuthenticationMethod[];
     /**
      * Authorization endpoint.
      */
@@ -1481,6 +1492,10 @@ export interface ConnectionOptions {
      * If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
      */
     nonPersistentAttrs: string[];
+    /**
+     * Defines options for the passkey authentication method
+     */
+    passkeyOptions: outputs.ConnectionOptionsPasskeyOptions;
     /**
      * Configuration settings for password complexity.
      */
@@ -1824,6 +1839,31 @@ export interface ConnectionOptionsAttributeUsernameValidationAllowedType {
     phoneNumber: boolean;
 }
 
+export interface ConnectionOptionsAuthenticationMethod {
+    /**
+     * Configures passkey authentication
+     */
+    passkey: outputs.ConnectionOptionsAuthenticationMethodPasskey;
+    /**
+     * Configures password authentication
+     */
+    password: outputs.ConnectionOptionsAuthenticationMethodPassword;
+}
+
+export interface ConnectionOptionsAuthenticationMethodPasskey {
+    /**
+     * Enables passkey authentication
+     */
+    enabled: boolean;
+}
+
+export interface ConnectionOptionsAuthenticationMethodPassword {
+    /**
+     * Enables password authentication
+     */
+    enabled: boolean;
+}
+
 export interface ConnectionOptionsConnectionSettings {
     /**
      * PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
@@ -1875,6 +1915,21 @@ export interface ConnectionOptionsMfa {
      * Indicates whether multifactor authentication enrollment settings will be returned.
      */
     returnEnrollSettings?: boolean;
+}
+
+export interface ConnectionOptionsPasskeyOptions {
+    /**
+     * Controls the UI used to challenge the user for their passkey
+     */
+    challengeUi: string;
+    /**
+     * Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
+     */
+    localEnrollmentEnabled: boolean;
+    /**
+     * Enables or disables progressive enrollment of passkeys for the connection
+     */
+    progressiveEnrollmentEnabled: boolean;
 }
 
 export interface ConnectionOptionsPasswordComplexityOptions {
@@ -3351,6 +3406,13 @@ export interface GetClientSignedRequestObjectCredential {
     updatedAt: string;
 }
 
+export interface GetClientTokenExchange {
+    /**
+     * List of allowed profile types for token exchange
+     */
+    allowAnyProfileOfTypes: string[];
+}
+
 export interface GetClientsClient {
     /**
      * List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
@@ -3406,6 +3468,10 @@ export interface GetClientsClient {
      */
     oidcLogouts: outputs.GetClientsClientOidcLogout[];
     /**
+     * Allows configuration for token exchange
+     */
+    tokenExchanges: outputs.GetClientsClientTokenExchange[];
+    /**
      * URLs that represent valid web origins for use with web message response mode.
      */
     webOrigins: string[];
@@ -3431,6 +3497,13 @@ export interface GetClientsClientOidcLogoutBackchannelLogoutInitiator {
      * Contains the list of initiators to be enabled for the given client.
      */
     selectedInitiators: string[];
+}
+
+export interface GetClientsClientTokenExchange {
+    /**
+     * List of allowed profile types for token exchange
+     */
+    allowAnyProfileOfTypes: string[];
 }
 
 export interface GetConnectionOption {
@@ -3462,6 +3535,10 @@ export interface GetConnectionOption {
      * Query string parameters to be included as part of the generated passwordless email link.
      */
     authParams: {[key: string]: string};
+    /**
+     * Specifies the authentication methods and their configuration (enabled or disabled)
+     */
+    authenticationMethods: outputs.GetConnectionOptionAuthenticationMethod[];
     /**
      * Authorization endpoint.
      */
@@ -3634,6 +3711,10 @@ export interface GetConnectionOption {
      * If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
      */
     nonPersistentAttrs: string[];
+    /**
+     * Defines options for the passkey authentication method
+     */
+    passkeyOptions: outputs.GetConnectionOptionPasskeyOption[];
     /**
      * Configuration settings for password complexity.
      */
@@ -3977,6 +4058,31 @@ export interface GetConnectionOptionAttributeUsernameValidationAllowedType {
     phoneNumber: boolean;
 }
 
+export interface GetConnectionOptionAuthenticationMethod {
+    /**
+     * Configures passkey authentication
+     */
+    passkeys: outputs.GetConnectionOptionAuthenticationMethodPasskey[];
+    /**
+     * Configures password authentication
+     */
+    passwords: outputs.GetConnectionOptionAuthenticationMethodPassword[];
+}
+
+export interface GetConnectionOptionAuthenticationMethodPasskey {
+    /**
+     * Enables passkey authentication
+     */
+    enabled: boolean;
+}
+
+export interface GetConnectionOptionAuthenticationMethodPassword {
+    /**
+     * Enables password authentication
+     */
+    enabled: boolean;
+}
+
 export interface GetConnectionOptionConnectionSetting {
     /**
      * PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
@@ -4028,6 +4134,21 @@ export interface GetConnectionOptionMfa {
      * Indicates whether multifactor authentication enrollment settings will be returned.
      */
     returnEnrollSettings: boolean;
+}
+
+export interface GetConnectionOptionPasskeyOption {
+    /**
+     * Controls the UI used to challenge the user for their passkey
+     */
+    challengeUi: string;
+    /**
+     * Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
+     */
+    localEnrollmentEnabled: boolean;
+    /**
+     * Enables or disables progressive enrollment of passkeys for the connection
+     */
+    progressiveEnrollmentEnabled: boolean;
 }
 
 export interface GetConnectionOptionPasswordComplexityOption {

@@ -44,6 +44,7 @@ from .get_role import *
 from .get_self_service_profile import *
 from .get_signing_keys import *
 from .get_tenant import *
+from .get_token_exchange_profile import *
 from .get_user import *
 from .guardian import *
 from .hook import *
@@ -75,6 +76,7 @@ from .rule_config import *
 from .self_service_profile import *
 from .self_service_profile_custom_text import *
 from .tenant import *
+from .token_exchange_profile import *
 from .trigger_action import *
 from .trigger_actions import *
 from .user import *
@@ -477,6 +479,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/tenant:Tenant": "Tenant"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/tokenExchangeProfile",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/tokenExchangeProfile:TokenExchangeProfile": "TokenExchangeProfile"
   }
  },
  {

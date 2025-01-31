@@ -67,6 +67,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientsClientOidcLogoutResult> OidcLogouts;
         /// <summary>
+        /// Allows configuration for token exchange
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientsClientTokenExchangeResult> TokenExchanges;
+        /// <summary>
         /// URLs that represent valid web origins for use with web message response mode.
         /// </summary>
         public readonly ImmutableArray<string> WebOrigins;
@@ -101,6 +105,8 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<Outputs.GetClientsClientOidcLogoutResult> oidcLogouts,
 
+            ImmutableArray<Outputs.GetClientsClientTokenExchangeResult> tokenExchanges,
+
             ImmutableArray<string> webOrigins)
         {
             AllowedClients = allowedClients;
@@ -117,6 +123,7 @@ namespace Pulumi.Auth0.Outputs
             IsTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;
             Name = name;
             OidcLogouts = oidcLogouts;
+            TokenExchanges = tokenExchanges;
             WebOrigins = webOrigins;
         }
     }

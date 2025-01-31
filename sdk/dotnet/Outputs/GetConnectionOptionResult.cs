@@ -42,6 +42,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> AuthParams;
         /// <summary>
+        /// Specifies the authentication methods and their configuration (enabled or disabled)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectionOptionAuthenticationMethodResult> AuthenticationMethods;
+        /// <summary>
         /// Authorization endpoint.
         /// </summary>
         public readonly string AuthorizationEndpoint;
@@ -213,6 +217,10 @@ namespace Pulumi.Auth0.Outputs
         /// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
         /// </summary>
         public readonly ImmutableArray<string> NonPersistentAttrs;
+        /// <summary>
+        /// Defines options for the passkey authentication method
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectionOptionPasskeyOptionResult> PasskeyOptions;
         /// <summary>
         /// Configuration settings for password complexity.
         /// </summary>
@@ -398,6 +406,8 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableDictionary<string, string> authParams,
 
+            ImmutableArray<Outputs.GetConnectionOptionAuthenticationMethodResult> authenticationMethods,
+
             string authorizationEndpoint,
 
             bool bruteForceProtection,
@@ -483,6 +493,8 @@ namespace Pulumi.Auth0.Outputs
             string name,
 
             ImmutableArray<string> nonPersistentAttrs,
+
+            ImmutableArray<Outputs.GetConnectionOptionPasskeyOptionResult> passkeyOptions,
 
             ImmutableArray<Outputs.GetConnectionOptionPasswordComplexityOptionResult> passwordComplexityOptions,
 
@@ -575,6 +587,7 @@ namespace Pulumi.Auth0.Outputs
             AttributeMaps = attributeMaps;
             Attributes = attributes;
             AuthParams = authParams;
+            AuthenticationMethods = authenticationMethods;
             AuthorizationEndpoint = authorizationEndpoint;
             BruteForceProtection = bruteForceProtection;
             ClientId = clientId;
@@ -618,6 +631,7 @@ namespace Pulumi.Auth0.Outputs
             Mfas = mfas;
             Name = name;
             NonPersistentAttrs = nonPersistentAttrs;
+            PasskeyOptions = passkeyOptions;
             PasswordComplexityOptions = passwordComplexityOptions;
             PasswordDictionaries = passwordDictionaries;
             PasswordHistories = passwordHistories;

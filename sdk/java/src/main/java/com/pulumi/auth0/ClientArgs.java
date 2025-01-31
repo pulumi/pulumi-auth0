@@ -10,6 +10,7 @@ import com.pulumi.auth0.inputs.ClientMobileArgs;
 import com.pulumi.auth0.inputs.ClientNativeSocialLoginArgs;
 import com.pulumi.auth0.inputs.ClientOidcLogoutArgs;
 import com.pulumi.auth0.inputs.ClientRefreshTokenArgs;
+import com.pulumi.auth0.inputs.ClientTokenExchangeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
@@ -575,6 +576,21 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Allows configuration for token exchange
+     * 
+     */
+    @Import(name="tokenExchange")
+    private @Nullable Output<ClientTokenExchangeArgs> tokenExchange;
+
+    /**
+     * @return Allows configuration for token exchange
+     * 
+     */
+    public Optional<Output<ClientTokenExchangeArgs>> tokenExchange() {
+        return Optional.ofNullable(this.tokenExchange);
+    }
+
+    /**
      * URLs that represent valid web origins for use with web message response mode.
      * 
      */
@@ -628,6 +644,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         this.requirePushedAuthorizationRequests = $.requirePushedAuthorizationRequests;
         this.sso = $.sso;
         this.ssoDisabled = $.ssoDisabled;
+        this.tokenExchange = $.tokenExchange;
         this.webOrigins = $.webOrigins;
     }
 
@@ -1485,6 +1502,27 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ssoDisabled(Boolean ssoDisabled) {
             return ssoDisabled(Output.of(ssoDisabled));
+        }
+
+        /**
+         * @param tokenExchange Allows configuration for token exchange
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenExchange(@Nullable Output<ClientTokenExchangeArgs> tokenExchange) {
+            $.tokenExchange = tokenExchange;
+            return this;
+        }
+
+        /**
+         * @param tokenExchange Allows configuration for token exchange
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenExchange(ClientTokenExchangeArgs tokenExchange) {
+            return tokenExchange(Output.of(tokenExchange));
         }
 
         /**

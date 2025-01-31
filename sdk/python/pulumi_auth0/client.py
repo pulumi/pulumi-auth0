@@ -57,6 +57,7 @@ class ClientArgs:
                  require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
+                 token_exchange: Optional[pulumi.Input['ClientTokenExchangeArgs']] = None,
                  web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Client resource.
@@ -96,6 +97,7 @@ class ClientArgs:
         :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
+        :param pulumi.Input['ClientTokenExchangeArgs'] token_exchange: Allows configuration for token exchange
         :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
         """
         if addons is not None:
@@ -175,6 +177,8 @@ class ClientArgs:
             pulumi.set(__self__, "sso", sso)
         if sso_disabled is not None:
             pulumi.set(__self__, "sso_disabled", sso_disabled)
+        if token_exchange is not None:
+            pulumi.set(__self__, "token_exchange", token_exchange)
         if web_origins is not None:
             pulumi.set(__self__, "web_origins", web_origins)
 
@@ -612,6 +616,18 @@ class ClientArgs:
         pulumi.set(self, "sso_disabled", value)
 
     @property
+    @pulumi.getter(name="tokenExchange")
+    def token_exchange(self) -> Optional[pulumi.Input['ClientTokenExchangeArgs']]:
+        """
+        Allows configuration for token exchange
+        """
+        return pulumi.get(self, "token_exchange")
+
+    @token_exchange.setter
+    def token_exchange(self, value: Optional[pulumi.Input['ClientTokenExchangeArgs']]):
+        pulumi.set(self, "token_exchange", value)
+
+    @property
     @pulumi.getter(name="webOrigins")
     def web_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -665,6 +681,7 @@ class _ClientState:
                  signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
+                 token_exchange: Optional[pulumi.Input['ClientTokenExchangeArgs']] = None,
                  web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Client resources.
@@ -706,6 +723,7 @@ class _ClientState:
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
+        :param pulumi.Input['ClientTokenExchangeArgs'] token_exchange: Allows configuration for token exchange
         :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
         """
         if addons is not None:
@@ -789,6 +807,8 @@ class _ClientState:
             pulumi.set(__self__, "sso", sso)
         if sso_disabled is not None:
             pulumi.set(__self__, "sso_disabled", sso_disabled)
+        if token_exchange is not None:
+            pulumi.set(__self__, "token_exchange", token_exchange)
         if web_origins is not None:
             pulumi.set(__self__, "web_origins", web_origins)
 
@@ -1250,6 +1270,18 @@ class _ClientState:
         pulumi.set(self, "sso_disabled", value)
 
     @property
+    @pulumi.getter(name="tokenExchange")
+    def token_exchange(self) -> Optional[pulumi.Input['ClientTokenExchangeArgs']]:
+        """
+        Allows configuration for token exchange
+        """
+        return pulumi.get(self, "token_exchange")
+
+    @token_exchange.setter
+    def token_exchange(self, value: Optional[pulumi.Input['ClientTokenExchangeArgs']]):
+        pulumi.set(self, "token_exchange", value)
+
+    @property
     @pulumi.getter(name="webOrigins")
     def web_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -1303,6 +1335,7 @@ class Client(pulumi.CustomResource):
                  require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
+                 token_exchange: Optional[pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']]] = None,
                  web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -1431,6 +1464,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
+        :param pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']] token_exchange: Allows configuration for token exchange
         :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
         """
         ...
@@ -1578,6 +1612,7 @@ class Client(pulumi.CustomResource):
                  require_pushed_authorization_requests: Optional[pulumi.Input[bool]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
+                 token_exchange: Optional[pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']]] = None,
                  web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1626,6 +1661,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["require_pushed_authorization_requests"] = require_pushed_authorization_requests
             __props__.__dict__["sso"] = sso
             __props__.__dict__["sso_disabled"] = sso_disabled
+            __props__.__dict__["token_exchange"] = token_exchange
             __props__.__dict__["web_origins"] = web_origins
             __props__.__dict__["client_id"] = None
             __props__.__dict__["signing_keys"] = None
@@ -1679,6 +1715,7 @@ class Client(pulumi.CustomResource):
             signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
             sso: Optional[pulumi.Input[bool]] = None,
             sso_disabled: Optional[pulumi.Input[bool]] = None,
+            token_exchange: Optional[pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']]] = None,
             web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Client':
         """
         Get an existing Client resource's state with the given name, id, and optional extra
@@ -1725,6 +1762,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
+        :param pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']] token_exchange: Allows configuration for token exchange
         :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1769,6 +1807,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["signing_keys"] = signing_keys
         __props__.__dict__["sso"] = sso
         __props__.__dict__["sso_disabled"] = sso_disabled
+        __props__.__dict__["token_exchange"] = token_exchange
         __props__.__dict__["web_origins"] = web_origins
         return Client(resource_name, opts=opts, __props__=__props__)
 
@@ -2076,6 +2115,14 @@ class Client(pulumi.CustomResource):
         Indicates whether or not SSO is disabled.
         """
         return pulumi.get(self, "sso_disabled")
+
+    @property
+    @pulumi.getter(name="tokenExchange")
+    def token_exchange(self) -> pulumi.Output[Optional['outputs.ClientTokenExchange']]:
+        """
+        Allows configuration for token exchange
+        """
+        return pulumi.get(self, "token_exchange")
 
     @property
     @pulumi.getter(name="webOrigins")

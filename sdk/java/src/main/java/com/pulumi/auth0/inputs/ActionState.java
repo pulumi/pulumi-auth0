@@ -81,14 +81,14 @@ public final class ActionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
+     * The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
      * 
      */
     @Import(name="runtime")
     private @Nullable Output<String> runtime;
 
     /**
-     * @return The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
+     * @return The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
      * 
      */
     public Optional<Output<String>> runtime() {
@@ -266,7 +266,7 @@ public final class ActionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtime The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
+         * @param runtime The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class ActionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtime The Node runtime. Defaults to `node18`. Possible values are: `node16` (not recommended), or `node18` (recommended).
+         * @param runtime The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
          * 
          * @return builder
          * 

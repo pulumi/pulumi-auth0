@@ -278,6 +278,10 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly ssoDisabled!: pulumi.Output<boolean | undefined>;
     /**
+     * Allows configuration for token exchange
+     */
+    public readonly tokenExchange!: pulumi.Output<outputs.ClientTokenExchange | undefined>;
+    /**
      * URLs that represent valid web origins for use with web message response mode.
      */
     public readonly webOrigins!: pulumi.Output<string[] | undefined>;
@@ -333,6 +337,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["signingKeys"] = state ? state.signingKeys : undefined;
             resourceInputs["sso"] = state ? state.sso : undefined;
             resourceInputs["ssoDisabled"] = state ? state.ssoDisabled : undefined;
+            resourceInputs["tokenExchange"] = state ? state.tokenExchange : undefined;
             resourceInputs["webOrigins"] = state ? state.webOrigins : undefined;
         } else {
             const args = argsOrState as ClientArgs | undefined;
@@ -372,6 +377,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["requirePushedAuthorizationRequests"] = args ? args.requirePushedAuthorizationRequests : undefined;
             resourceInputs["sso"] = args ? args.sso : undefined;
             resourceInputs["ssoDisabled"] = args ? args.ssoDisabled : undefined;
+            resourceInputs["tokenExchange"] = args ? args.tokenExchange : undefined;
             resourceInputs["webOrigins"] = args ? args.webOrigins : undefined;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["signingKeys"] = undefined /*out*/;
@@ -542,6 +548,10 @@ export interface ClientState {
      */
     ssoDisabled?: pulumi.Input<boolean>;
     /**
+     * Allows configuration for token exchange
+     */
+    tokenExchange?: pulumi.Input<inputs.ClientTokenExchange>;
+    /**
      * URLs that represent valid web origins for use with web message response mode.
      */
     webOrigins?: pulumi.Input<pulumi.Input<string>[]>;
@@ -697,6 +707,10 @@ export interface ClientArgs {
      * Indicates whether or not SSO is disabled.
      */
     ssoDisabled?: pulumi.Input<boolean>;
+    /**
+     * Allows configuration for token exchange
+     */
+    tokenExchange?: pulumi.Input<inputs.ClientTokenExchange>;
     /**
      * URLs that represent valid web origins for use with web message response mode.
      */
