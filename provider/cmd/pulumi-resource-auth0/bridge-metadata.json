@@ -343,6 +343,16 @@
                     "signing_keys": {
                         "maxItemsOne": false
                     },
+                    "token_exchange": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allow_any_profile_of_type": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "web_origins": {
                         "maxItemsOne": false
                     }
@@ -487,6 +497,19 @@
                                         }
                                     }
                                 },
+                                "authentication_methods": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "passkey": {
+                                                "maxItemsOne": true
+                                            },
+                                            "password": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
                                 "connection_settings": {
                                     "maxItemsOne": true
                                 },
@@ -510,6 +533,9 @@
                                 },
                                 "non_persistent_attrs": {
                                     "maxItemsOne": false
+                                },
+                                "passkey_options": {
+                                    "maxItemsOne": true
                                 },
                                 "password_complexity_options": {
                                     "maxItemsOne": true
@@ -959,6 +985,10 @@
                     }
                 }
             },
+            "auth0_token_exchange_profile": {
+                "current": "auth0:index/tokenExchangeProfile:TokenExchangeProfile",
+                "majorVersion": 3
+            },
             "auth0_trigger_action": {
                 "current": "auth0:index/triggerAction:TriggerAction",
                 "majorVersion": 3
@@ -1378,6 +1408,16 @@
                     "signing_keys": {
                         "maxItemsOne": false
                     },
+                    "token_exchange": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allow_any_profile_of_type": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "web_origins": {
                         "maxItemsOne": false
                     }
@@ -1424,6 +1464,16 @@
                                                 }
                                             },
                                             "backchannel_logout_urls": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "token_exchange": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "allow_any_profile_of_type": {
                                                 "maxItemsOne": false
                                             }
                                         }
@@ -1524,6 +1574,19 @@
                                         }
                                     }
                                 },
+                                "authentication_methods": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "passkey": {
+                                                "maxItemsOne": false
+                                            },
+                                            "password": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "connection_settings": {
                                     "maxItemsOne": false
                                 },
@@ -1546,6 +1609,9 @@
                                     "maxItemsOne": false
                                 },
                                 "non_persistent_attrs": {
+                                    "maxItemsOne": false
+                                },
+                                "passkey_options": {
                                     "maxItemsOne": false
                                 },
                                 "password_complexity_options": {
@@ -1800,6 +1866,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "auth0_token_exchange_profile": {
+                "current": "auth0:index/getTokenExchangeProfile:getTokenExchangeProfile",
+                "majorVersion": 3
             },
             "auth0_user": {
                 "current": "auth0:index/getUser:getUser",
