@@ -110,11 +110,11 @@ type PromptScreenRenderer struct {
 	DefaultHeadTagsDisabled pulumi.BoolPtrOutput `pulumi:"defaultHeadTagsDisabled"`
 	// An array of head tags
 	HeadTags pulumi.StringOutput `pulumi:"headTags"`
-	// The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`.
+	// The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`.
 	PromptType pulumi.StringOutput `pulumi:"promptType"`
 	// Rendering modeOptions are: `standard`, `advanced`.
 	RenderingMode pulumi.StringPtrOutput `pulumi:"renderingMode"`
-	// The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`.
+	// The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`.
 	ScreenName pulumi.StringOutput `pulumi:"screenName"`
 	// Tenant ID
 	Tenant pulumi.StringOutput `pulumi:"tenant"`
@@ -162,11 +162,11 @@ type promptScreenRendererState struct {
 	DefaultHeadTagsDisabled *bool `pulumi:"defaultHeadTagsDisabled"`
 	// An array of head tags
 	HeadTags *string `pulumi:"headTags"`
-	// The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`.
+	// The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`.
 	PromptType *string `pulumi:"promptType"`
 	// Rendering modeOptions are: `standard`, `advanced`.
 	RenderingMode *string `pulumi:"renderingMode"`
-	// The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`.
+	// The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`.
 	ScreenName *string `pulumi:"screenName"`
 	// Tenant ID
 	Tenant *string `pulumi:"tenant"`
@@ -179,11 +179,11 @@ type PromptScreenRendererState struct {
 	DefaultHeadTagsDisabled pulumi.BoolPtrInput
 	// An array of head tags
 	HeadTags pulumi.StringPtrInput
-	// The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`.
+	// The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`.
 	PromptType pulumi.StringPtrInput
 	// Rendering modeOptions are: `standard`, `advanced`.
 	RenderingMode pulumi.StringPtrInput
-	// The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`.
+	// The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`.
 	ScreenName pulumi.StringPtrInput
 	// Tenant ID
 	Tenant pulumi.StringPtrInput
@@ -200,11 +200,11 @@ type promptScreenRendererArgs struct {
 	DefaultHeadTagsDisabled *bool `pulumi:"defaultHeadTagsDisabled"`
 	// An array of head tags
 	HeadTags *string `pulumi:"headTags"`
-	// The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`.
+	// The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`.
 	PromptType string `pulumi:"promptType"`
 	// Rendering modeOptions are: `standard`, `advanced`.
 	RenderingMode *string `pulumi:"renderingMode"`
-	// The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`.
+	// The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`.
 	ScreenName string `pulumi:"screenName"`
 }
 
@@ -216,11 +216,11 @@ type PromptScreenRendererArgs struct {
 	DefaultHeadTagsDisabled pulumi.BoolPtrInput
 	// An array of head tags
 	HeadTags pulumi.StringPtrInput
-	// The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`.
+	// The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`.
 	PromptType pulumi.StringInput
 	// Rendering modeOptions are: `standard`, `advanced`.
 	RenderingMode pulumi.StringPtrInput
-	// The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`.
+	// The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`.
 	ScreenName pulumi.StringInput
 }
 
@@ -326,7 +326,7 @@ func (o PromptScreenRendererOutput) HeadTags() pulumi.StringOutput {
 	return o.ApplyT(func(v *PromptScreenRenderer) pulumi.StringOutput { return v.HeadTags }).(pulumi.StringOutput)
 }
 
-// The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`.
+// The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`.
 func (o PromptScreenRendererOutput) PromptType() pulumi.StringOutput {
 	return o.ApplyT(func(v *PromptScreenRenderer) pulumi.StringOutput { return v.PromptType }).(pulumi.StringOutput)
 }
@@ -336,7 +336,7 @@ func (o PromptScreenRendererOutput) RenderingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PromptScreenRenderer) pulumi.StringPtrOutput { return v.RenderingMode }).(pulumi.StringPtrOutput)
 }
 
-// The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`.
+// The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`.
 func (o PromptScreenRendererOutput) ScreenName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PromptScreenRenderer) pulumi.StringOutput { return v.ScreenName }).(pulumi.StringOutput)
 }
