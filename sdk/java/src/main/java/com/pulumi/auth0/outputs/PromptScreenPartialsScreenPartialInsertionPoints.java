@@ -12,6 +12,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PromptScreenPartialsScreenPartialInsertionPoints {
     /**
+     * @return Content that goes inside the form
+     * 
+     */
+    private @Nullable String formContent;
+    /**
      * @return Content that goes at the end of the form.
      * 
      */
@@ -43,6 +48,13 @@ public final class PromptScreenPartialsScreenPartialInsertionPoints {
     private @Nullable String secondaryActionsStart;
 
     private PromptScreenPartialsScreenPartialInsertionPoints() {}
+    /**
+     * @return Content that goes inside the form
+     * 
+     */
+    public Optional<String> formContent() {
+        return Optional.ofNullable(this.formContent);
+    }
     /**
      * @return Content that goes at the end of the form.
      * 
@@ -95,6 +107,7 @@ public final class PromptScreenPartialsScreenPartialInsertionPoints {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String formContent;
         private @Nullable String formContentEnd;
         private @Nullable String formContentStart;
         private @Nullable String formFooterEnd;
@@ -104,6 +117,7 @@ public final class PromptScreenPartialsScreenPartialInsertionPoints {
         public Builder() {}
         public Builder(PromptScreenPartialsScreenPartialInsertionPoints defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.formContent = defaults.formContent;
     	      this.formContentEnd = defaults.formContentEnd;
     	      this.formContentStart = defaults.formContentStart;
     	      this.formFooterEnd = defaults.formFooterEnd;
@@ -112,6 +126,12 @@ public final class PromptScreenPartialsScreenPartialInsertionPoints {
     	      this.secondaryActionsStart = defaults.secondaryActionsStart;
         }
 
+        @CustomType.Setter
+        public Builder formContent(@Nullable String formContent) {
+
+            this.formContent = formContent;
+            return this;
+        }
         @CustomType.Setter
         public Builder formContentEnd(@Nullable String formContentEnd) {
 
@@ -150,6 +170,7 @@ public final class PromptScreenPartialsScreenPartialInsertionPoints {
         }
         public PromptScreenPartialsScreenPartialInsertionPoints build() {
             final var _resultValue = new PromptScreenPartialsScreenPartialInsertionPoints();
+            _resultValue.formContent = formContent;
             _resultValue.formContentEnd = formContentEnd;
             _resultValue.formContentStart = formContentStart;
             _resultValue.formFooterEnd = formFooterEnd;

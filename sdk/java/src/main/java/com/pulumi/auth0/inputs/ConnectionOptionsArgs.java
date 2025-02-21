@@ -561,6 +561,36 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+     * 
+     */
+    @Import(name="globalTokenRevocationJwtIss")
+    private @Nullable Output<String> globalTokenRevocationJwtIss;
+
+    /**
+     * @return Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+     * 
+     */
+    public Optional<Output<String>> globalTokenRevocationJwtIss() {
+        return Optional.ofNullable(this.globalTokenRevocationJwtIss);
+    }
+
+    /**
+     * Specifies the subject of the JWT used for global token revocation for the SAML connection.
+     * 
+     */
+    @Import(name="globalTokenRevocationJwtSub")
+    private @Nullable Output<String> globalTokenRevocationJwtSub;
+
+    /**
+     * @return Specifies the subject of the JWT used for global token revocation for the SAML connection.
+     * 
+     */
+    public Optional<Output<String>> globalTokenRevocationJwtSub() {
+        return Optional.ofNullable(this.globalTokenRevocationJwtSub);
+    }
+
+    /**
      * Icon URL.
      * 
      */
@@ -1483,6 +1513,8 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.from = $.from;
         this.gatewayAuthentication = $.gatewayAuthentication;
         this.gatewayUrl = $.gatewayUrl;
+        this.globalTokenRevocationJwtIss = $.globalTokenRevocationJwtIss;
+        this.globalTokenRevocationJwtSub = $.globalTokenRevocationJwtSub;
         this.iconUrl = $.iconUrl;
         this.identityApi = $.identityApi;
         this.idpInitiated = $.idpInitiated;
@@ -2335,6 +2367,48 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder gatewayUrl(String gatewayUrl) {
             return gatewayUrl(Output.of(gatewayUrl));
+        }
+
+        /**
+         * @param globalTokenRevocationJwtIss Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalTokenRevocationJwtIss(@Nullable Output<String> globalTokenRevocationJwtIss) {
+            $.globalTokenRevocationJwtIss = globalTokenRevocationJwtIss;
+            return this;
+        }
+
+        /**
+         * @param globalTokenRevocationJwtIss Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalTokenRevocationJwtIss(String globalTokenRevocationJwtIss) {
+            return globalTokenRevocationJwtIss(Output.of(globalTokenRevocationJwtIss));
+        }
+
+        /**
+         * @param globalTokenRevocationJwtSub Specifies the subject of the JWT used for global token revocation for the SAML connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalTokenRevocationJwtSub(@Nullable Output<String> globalTokenRevocationJwtSub) {
+            $.globalTokenRevocationJwtSub = globalTokenRevocationJwtSub;
+            return this;
+        }
+
+        /**
+         * @param globalTokenRevocationJwtSub Specifies the subject of the JWT used for global token revocation for the SAML connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalTokenRevocationJwtSub(String globalTokenRevocationJwtSub) {
+            return globalTokenRevocationJwtSub(Output.of(globalTokenRevocationJwtSub));
         }
 
         /**

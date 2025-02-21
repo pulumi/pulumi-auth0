@@ -154,6 +154,14 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? GatewayUrl;
         /// <summary>
+        /// Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+        /// </summary>
+        public readonly string? GlobalTokenRevocationJwtIss;
+        /// <summary>
+        /// Specifies the subject of the JWT used for global token revocation for the SAML connection.
+        /// </summary>
+        public readonly string? GlobalTokenRevocationJwtSub;
+        /// <summary>
         /// Icon URL.
         /// </summary>
         public readonly string? IconUrl;
@@ -462,6 +470,10 @@ namespace Pulumi.Auth0.Outputs
 
             string? gatewayUrl,
 
+            string? globalTokenRevocationJwtIss,
+
+            string? globalTokenRevocationJwtSub,
+
             string? iconUrl,
 
             string? identityApi,
@@ -615,6 +627,8 @@ namespace Pulumi.Auth0.Outputs
             From = from;
             GatewayAuthentication = gatewayAuthentication;
             GatewayUrl = gatewayUrl;
+            GlobalTokenRevocationJwtIss = globalTokenRevocationJwtIss;
+            GlobalTokenRevocationJwtSub = globalTokenRevocationJwtSub;
             IconUrl = iconUrl;
             IdentityApi = identityApi;
             IdpInitiated = idpInitiated;

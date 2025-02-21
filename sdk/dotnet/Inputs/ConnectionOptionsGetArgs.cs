@@ -279,6 +279,18 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? GatewayUrl { get; set; }
 
         /// <summary>
+        /// Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+        /// </summary>
+        [Input("globalTokenRevocationJwtIss")]
+        public Input<string>? GlobalTokenRevocationJwtIss { get; set; }
+
+        /// <summary>
+        /// Specifies the subject of the JWT used for global token revocation for the SAML connection.
+        /// </summary>
+        [Input("globalTokenRevocationJwtSub")]
+        public Input<string>? GlobalTokenRevocationJwtSub { get; set; }
+
+        /// <summary>
         /// Icon URL.
         /// </summary>
         [Input("iconUrl")]

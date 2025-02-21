@@ -10,6 +10,8 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetUserResult {
@@ -89,6 +91,11 @@ public final class GetUserResult {
      */
     private String picture;
     /**
+     * @return Lucene Query for retrieving a user.
+     * 
+     */
+    private @Nullable String query;
+    /**
      * @return Set of IDs of roles assigned to the user.
      * 
      */
@@ -97,7 +104,7 @@ public final class GetUserResult {
      * @return ID of the user.
      * 
      */
-    private String userId;
+    private @Nullable String userId;
     /**
      * @return Custom fields that store info about the user that does not impact a user&#39;s core functionality. Examples include work address, home address, and user preferences.
      * 
@@ -221,6 +228,13 @@ public final class GetUserResult {
         return this.picture;
     }
     /**
+     * @return Lucene Query for retrieving a user.
+     * 
+     */
+    public Optional<String> query() {
+        return Optional.ofNullable(this.query);
+    }
+    /**
      * @return Set of IDs of roles assigned to the user.
      * 
      */
@@ -231,8 +245,8 @@ public final class GetUserResult {
      * @return ID of the user.
      * 
      */
-    public String userId() {
-        return this.userId;
+    public Optional<String> userId() {
+        return Optional.ofNullable(this.userId);
     }
     /**
      * @return Custom fields that store info about the user that does not impact a user&#39;s core functionality. Examples include work address, home address, and user preferences.
@@ -280,8 +294,9 @@ public final class GetUserResult {
         private String phoneNumber;
         private Boolean phoneVerified;
         private String picture;
+        private @Nullable String query;
         private List<String> roles;
-        private String userId;
+        private @Nullable String userId;
         private String userMetadata;
         private String username;
         private Boolean verifyEmail;
@@ -303,6 +318,7 @@ public final class GetUserResult {
     	      this.phoneNumber = defaults.phoneNumber;
     	      this.phoneVerified = defaults.phoneVerified;
     	      this.picture = defaults.picture;
+    	      this.query = defaults.query;
     	      this.roles = defaults.roles;
     	      this.userId = defaults.userId;
     	      this.userMetadata = defaults.userMetadata;
@@ -434,6 +450,12 @@ public final class GetUserResult {
             return this;
         }
         @CustomType.Setter
+        public Builder query(@Nullable String query) {
+
+            this.query = query;
+            return this;
+        }
+        @CustomType.Setter
         public Builder roles(List<String> roles) {
             if (roles == null) {
               throw new MissingRequiredPropertyException("GetUserResult", "roles");
@@ -445,10 +467,8 @@ public final class GetUserResult {
             return roles(List.of(roles));
         }
         @CustomType.Setter
-        public Builder userId(String userId) {
-            if (userId == null) {
-              throw new MissingRequiredPropertyException("GetUserResult", "userId");
-            }
+        public Builder userId(@Nullable String userId) {
+
             this.userId = userId;
             return this;
         }
@@ -493,6 +513,7 @@ public final class GetUserResult {
             _resultValue.phoneNumber = phoneNumber;
             _resultValue.phoneVerified = phoneVerified;
             _resultValue.picture = picture;
+            _resultValue.query = query;
             _resultValue.roles = roles;
             _resultValue.userId = userId;
             _resultValue.userMetadata = userMetadata;
