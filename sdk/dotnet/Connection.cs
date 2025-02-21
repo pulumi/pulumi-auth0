@@ -660,6 +660,8 @@ namespace Pulumi.Auth0
     ///             SigningCert = "&lt;signing-certificate&gt;",
     ///             SignInEndpoint = "https://saml.provider/sign_in",
     ///             SignOutEndpoint = "https://saml.provider/sign_out",
+    ///             GlobalTokenRevocationJwtIss = "issuer.example.com",
+    ///             GlobalTokenRevocationJwtSub = "user123",
     ///             DisableSignOut = true,
     ///             StrategyVersion = 2,
     ///             TenantDomain = "example.com",

@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.auth0.inputs.ClientNativeSocialLoginAppleArgs;
 import com.pulumi.auth0.inputs.ClientNativeSocialLoginFacebookArgs;
+import com.pulumi.auth0.inputs.ClientNativeSocialLoginGoogleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.util.Objects;
@@ -30,11 +31,19 @@ public final class ClientNativeSocialLoginArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.facebook);
     }
 
+    @Import(name="google")
+    private @Nullable Output<ClientNativeSocialLoginGoogleArgs> google;
+
+    public Optional<Output<ClientNativeSocialLoginGoogleArgs>> google() {
+        return Optional.ofNullable(this.google);
+    }
+
     private ClientNativeSocialLoginArgs() {}
 
     private ClientNativeSocialLoginArgs(ClientNativeSocialLoginArgs $) {
         this.apple = $.apple;
         this.facebook = $.facebook;
+        this.google = $.google;
     }
 
     public static Builder builder() {
@@ -71,6 +80,15 @@ public final class ClientNativeSocialLoginArgs extends com.pulumi.resources.Reso
 
         public Builder facebook(ClientNativeSocialLoginFacebookArgs facebook) {
             return facebook(Output.of(facebook));
+        }
+
+        public Builder google(@Nullable Output<ClientNativeSocialLoginGoogleArgs> google) {
+            $.google = google;
+            return this;
+        }
+
+        public Builder google(ClientNativeSocialLoginGoogleArgs google) {
+            return google(Output.of(google));
         }
 
         public ClientNativeSocialLoginArgs build() {

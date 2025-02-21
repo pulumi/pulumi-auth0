@@ -205,6 +205,44 @@ class TokenExchangeProfile(pulumi.CustomResource):
         """
         With this resource, you can manage Auth0 Custom Token Exchange Profiles
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # Below action is created with custom-token-exchange as supported_triggers
+        # This action is then linked using the action_id param to the token-exchange profile
+        my_action = auth0.Action("my_action",
+            name="TokenExchange-Action",
+            code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
+        \\x09console.log("foo")
+        };"
+        \"\"\",
+            deploy=True,
+            supported_triggers={
+                "id": "custom-token-exchange",
+                "version": "v1",
+            })
+        my_token_exchange_profile = auth0.TokenExchangeProfile("my_token_exchange_profile",
+            name="token-exchange-prof",
+            subject_token_type="https://acme.com/cis-token",
+            action_id=my_action.id,
+            type="custom_authentication")
+        ```
+
+        ## Import
+
+        This resource can be imported using the token exchange profile ID.
+
+        # 
+
+        Example:
+
+        ```sh
+        $ pulumi import auth0:index/tokenExchangeProfile:TokenExchangeProfile profile "tep_XXXXXXXXXXXXXX"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action_id: Unique identifier of the Action
@@ -220,6 +258,44 @@ class TokenExchangeProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can manage Auth0 Custom Token Exchange Profiles
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        # Below action is created with custom-token-exchange as supported_triggers
+        # This action is then linked using the action_id param to the token-exchange profile
+        my_action = auth0.Action("my_action",
+            name="TokenExchange-Action",
+            code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
+        \\x09console.log("foo")
+        };"
+        \"\"\",
+            deploy=True,
+            supported_triggers={
+                "id": "custom-token-exchange",
+                "version": "v1",
+            })
+        my_token_exchange_profile = auth0.TokenExchangeProfile("my_token_exchange_profile",
+            name="token-exchange-prof",
+            subject_token_type="https://acme.com/cis-token",
+            action_id=my_action.id,
+            type="custom_authentication")
+        ```
+
+        ## Import
+
+        This resource can be imported using the token exchange profile ID.
+
+        # 
+
+        Example:
+
+        ```sh
+        $ pulumi import auth0:index/tokenExchangeProfile:TokenExchangeProfile profile "tep_XXXXXXXXXXXXXX"
+        ```
 
         :param str resource_name: The name of the resource.
         :param TokenExchangeProfileArgs args: The arguments to use to populate this resource's properties.

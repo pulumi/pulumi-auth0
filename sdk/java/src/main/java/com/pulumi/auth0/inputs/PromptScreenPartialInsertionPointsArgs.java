@@ -16,6 +16,21 @@ public final class PromptScreenPartialInsertionPointsArgs extends com.pulumi.res
     public static final PromptScreenPartialInsertionPointsArgs Empty = new PromptScreenPartialInsertionPointsArgs();
 
     /**
+     * Content that goes inside the form
+     * 
+     */
+    @Import(name="formContent")
+    private @Nullable Output<String> formContent;
+
+    /**
+     * @return Content that goes inside the form
+     * 
+     */
+    public Optional<Output<String>> formContent() {
+        return Optional.ofNullable(this.formContent);
+    }
+
+    /**
      * Content that goes at the end of the form.
      * 
      */
@@ -108,6 +123,7 @@ public final class PromptScreenPartialInsertionPointsArgs extends com.pulumi.res
     private PromptScreenPartialInsertionPointsArgs() {}
 
     private PromptScreenPartialInsertionPointsArgs(PromptScreenPartialInsertionPointsArgs $) {
+        this.formContent = $.formContent;
         this.formContentEnd = $.formContentEnd;
         this.formContentStart = $.formContentStart;
         this.formFooterEnd = $.formFooterEnd;
@@ -132,6 +148,27 @@ public final class PromptScreenPartialInsertionPointsArgs extends com.pulumi.res
 
         public Builder(PromptScreenPartialInsertionPointsArgs defaults) {
             $ = new PromptScreenPartialInsertionPointsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param formContent Content that goes inside the form
+         * 
+         * @return builder
+         * 
+         */
+        public Builder formContent(@Nullable Output<String> formContent) {
+            $.formContent = formContent;
+            return this;
+        }
+
+        /**
+         * @param formContent Content that goes inside the form
+         * 
+         * @return builder
+         * 
+         */
+        public Builder formContent(String formContent) {
+            return formContent(Output.of(formContent));
         }
 
         /**

@@ -155,6 +155,8 @@ __all__ = [
     'ClientNativeSocialLoginAppleArgsDict',
     'ClientNativeSocialLoginFacebookArgs',
     'ClientNativeSocialLoginFacebookArgsDict',
+    'ClientNativeSocialLoginGoogleArgs',
+    'ClientNativeSocialLoginGoogleArgsDict',
     'ClientOidcLogoutArgs',
     'ClientOidcLogoutArgsDict',
     'ClientOidcLogoutBackchannelLogoutInitiatorsArgs',
@@ -1240,6 +1242,10 @@ if not MYPY:
         """
         Body text. Defaults to `#1e212a`.
         """
+        captcha_widget_theme: NotRequired[pulumi.Input[str]]
+        """
+        Captcha Widget Theme.
+        """
         error: NotRequired[pulumi.Input[str]]
         """
         Error. Defaults to `#d03c38`.
@@ -1309,6 +1315,7 @@ class BrandingThemeColorsArgs:
                  base_focus_color: Optional[pulumi.Input[str]] = None,
                  base_hover_color: Optional[pulumi.Input[str]] = None,
                  body_text: Optional[pulumi.Input[str]] = None,
+                 captcha_widget_theme: Optional[pulumi.Input[str]] = None,
                  error: Optional[pulumi.Input[str]] = None,
                  header: Optional[pulumi.Input[str]] = None,
                  icons: Optional[pulumi.Input[str]] = None,
@@ -1328,6 +1335,7 @@ class BrandingThemeColorsArgs:
         :param pulumi.Input[str] base_focus_color: Base focus color. Defaults to `#635dff`.
         :param pulumi.Input[str] base_hover_color: Base hover color. Defaults to `#000000`.
         :param pulumi.Input[str] body_text: Body text. Defaults to `#1e212a`.
+        :param pulumi.Input[str] captcha_widget_theme: Captcha Widget Theme.
         :param pulumi.Input[str] error: Error. Defaults to `#d03c38`.
         :param pulumi.Input[str] header: Header. Defaults to `#1e212a`.
         :param pulumi.Input[str] icons: Icons. Defaults to `#65676e`.
@@ -1350,6 +1358,8 @@ class BrandingThemeColorsArgs:
             pulumi.set(__self__, "base_hover_color", base_hover_color)
         if body_text is not None:
             pulumi.set(__self__, "body_text", body_text)
+        if captcha_widget_theme is not None:
+            pulumi.set(__self__, "captcha_widget_theme", captcha_widget_theme)
         if error is not None:
             pulumi.set(__self__, "error", error)
         if header is not None:
@@ -1416,6 +1426,18 @@ class BrandingThemeColorsArgs:
     @body_text.setter
     def body_text(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "body_text", value)
+
+    @property
+    @pulumi.getter(name="captchaWidgetTheme")
+    def captcha_widget_theme(self) -> Optional[pulumi.Input[str]]:
+        """
+        Captcha Widget Theme.
+        """
+        return pulumi.get(self, "captcha_widget_theme")
+
+    @captcha_widget_theme.setter
+    def captcha_widget_theme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "captcha_widget_theme", value)
 
     @property
     @pulumi.getter
@@ -6178,6 +6200,7 @@ if not MYPY:
     class ClientNativeSocialLoginArgsDict(TypedDict):
         apple: NotRequired[pulumi.Input['ClientNativeSocialLoginAppleArgsDict']]
         facebook: NotRequired[pulumi.Input['ClientNativeSocialLoginFacebookArgsDict']]
+        google: NotRequired[pulumi.Input['ClientNativeSocialLoginGoogleArgsDict']]
 elif False:
     ClientNativeSocialLoginArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -6185,11 +6208,14 @@ elif False:
 class ClientNativeSocialLoginArgs:
     def __init__(__self__, *,
                  apple: Optional[pulumi.Input['ClientNativeSocialLoginAppleArgs']] = None,
-                 facebook: Optional[pulumi.Input['ClientNativeSocialLoginFacebookArgs']] = None):
+                 facebook: Optional[pulumi.Input['ClientNativeSocialLoginFacebookArgs']] = None,
+                 google: Optional[pulumi.Input['ClientNativeSocialLoginGoogleArgs']] = None):
         if apple is not None:
             pulumi.set(__self__, "apple", apple)
         if facebook is not None:
             pulumi.set(__self__, "facebook", facebook)
+        if google is not None:
+            pulumi.set(__self__, "google", google)
 
     @property
     @pulumi.getter
@@ -6208,6 +6234,15 @@ class ClientNativeSocialLoginArgs:
     @facebook.setter
     def facebook(self, value: Optional[pulumi.Input['ClientNativeSocialLoginFacebookArgs']]):
         pulumi.set(self, "facebook", value)
+
+    @property
+    @pulumi.getter
+    def google(self) -> Optional[pulumi.Input['ClientNativeSocialLoginGoogleArgs']]:
+        return pulumi.get(self, "google")
+
+    @google.setter
+    def google(self, value: Optional[pulumi.Input['ClientNativeSocialLoginGoogleArgs']]):
+        pulumi.set(self, "google", value)
 
 
 if not MYPY:
@@ -6241,6 +6276,29 @@ elif False:
 
 @pulumi.input_type
 class ClientNativeSocialLoginFacebookArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class ClientNativeSocialLoginGoogleArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+elif False:
+    ClientNativeSocialLoginGoogleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClientNativeSocialLoginGoogleArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
         if enabled is not None:
@@ -6681,6 +6739,14 @@ if not MYPY:
         """
         Defines a custom sms gateway to use instead of Twilio.
         """
+        global_token_revocation_jwt_iss: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+        """
+        global_token_revocation_jwt_sub: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the subject of the JWT used for global token revocation for the SAML connection.
+        """
         icon_url: NotRequired[pulumi.Input[str]]
         """
         Icon URL.
@@ -6958,6 +7024,8 @@ class ConnectionOptionsArgs:
                  from_: Optional[pulumi.Input[str]] = None,
                  gateway_authentication: Optional[pulumi.Input['ConnectionOptionsGatewayAuthenticationArgs']] = None,
                  gateway_url: Optional[pulumi.Input[str]] = None,
+                 global_token_revocation_jwt_iss: Optional[pulumi.Input[str]] = None,
+                 global_token_revocation_jwt_sub: Optional[pulumi.Input[str]] = None,
                  icon_url: Optional[pulumi.Input[str]] = None,
                  identity_api: Optional[pulumi.Input[str]] = None,
                  idp_initiated: Optional[pulumi.Input['ConnectionOptionsIdpInitiatedArgs']] = None,
@@ -7053,6 +7121,8 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[str] from_: Address to use as the sender.
         :param pulumi.Input['ConnectionOptionsGatewayAuthenticationArgs'] gateway_authentication: Defines the parameters used to generate the auth token for the custom gateway.
         :param pulumi.Input[str] gateway_url: Defines a custom sms gateway to use instead of Twilio.
+        :param pulumi.Input[str] global_token_revocation_jwt_iss: Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+        :param pulumi.Input[str] global_token_revocation_jwt_sub: Specifies the subject of the JWT used for global token revocation for the SAML connection.
         :param pulumi.Input[str] icon_url: Icon URL.
         :param pulumi.Input[str] identity_api: Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
         :param pulumi.Input['ConnectionOptionsIdpInitiatedArgs'] idp_initiated: Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
@@ -7183,6 +7253,10 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "gateway_authentication", gateway_authentication)
         if gateway_url is not None:
             pulumi.set(__self__, "gateway_url", gateway_url)
+        if global_token_revocation_jwt_iss is not None:
+            pulumi.set(__self__, "global_token_revocation_jwt_iss", global_token_revocation_jwt_iss)
+        if global_token_revocation_jwt_sub is not None:
+            pulumi.set(__self__, "global_token_revocation_jwt_sub", global_token_revocation_jwt_sub)
         if icon_url is not None:
             pulumi.set(__self__, "icon_url", icon_url)
         if identity_api is not None:
@@ -7721,6 +7795,30 @@ class ConnectionOptionsArgs:
     @gateway_url.setter
     def gateway_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gateway_url", value)
+
+    @property
+    @pulumi.getter(name="globalTokenRevocationJwtIss")
+    def global_token_revocation_jwt_iss(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+        """
+        return pulumi.get(self, "global_token_revocation_jwt_iss")
+
+    @global_token_revocation_jwt_iss.setter
+    def global_token_revocation_jwt_iss(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "global_token_revocation_jwt_iss", value)
+
+    @property
+    @pulumi.getter(name="globalTokenRevocationJwtSub")
+    def global_token_revocation_jwt_sub(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the subject of the JWT used for global token revocation for the SAML connection.
+        """
+        return pulumi.get(self, "global_token_revocation_jwt_sub")
+
+    @global_token_revocation_jwt_sub.setter
+    def global_token_revocation_jwt_sub(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "global_token_revocation_jwt_sub", value)
 
     @property
     @pulumi.getter(name="iconUrl")
@@ -12727,6 +12825,10 @@ class PagesLoginArgs:
 
 if not MYPY:
     class PromptScreenPartialInsertionPointsArgsDict(TypedDict):
+        form_content: NotRequired[pulumi.Input[str]]
+        """
+        Content that goes inside the form
+        """
         form_content_end: NotRequired[pulumi.Input[str]]
         """
         Content that goes at the end of the form.
@@ -12757,6 +12859,7 @@ elif False:
 @pulumi.input_type
 class PromptScreenPartialInsertionPointsArgs:
     def __init__(__self__, *,
+                 form_content: Optional[pulumi.Input[str]] = None,
                  form_content_end: Optional[pulumi.Input[str]] = None,
                  form_content_start: Optional[pulumi.Input[str]] = None,
                  form_footer_end: Optional[pulumi.Input[str]] = None,
@@ -12764,6 +12867,7 @@ class PromptScreenPartialInsertionPointsArgs:
                  secondary_actions_end: Optional[pulumi.Input[str]] = None,
                  secondary_actions_start: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] form_content: Content that goes inside the form
         :param pulumi.Input[str] form_content_end: Content that goes at the end of the form.
         :param pulumi.Input[str] form_content_start: Content that goes at the start of the form.
         :param pulumi.Input[str] form_footer_end: Footer content for the end of the footer.
@@ -12771,6 +12875,8 @@ class PromptScreenPartialInsertionPointsArgs:
         :param pulumi.Input[str] secondary_actions_end: Actions that go at the end of secondary actions.
         :param pulumi.Input[str] secondary_actions_start: Actions that go at the start of secondary actions.
         """
+        if form_content is not None:
+            pulumi.set(__self__, "form_content", form_content)
         if form_content_end is not None:
             pulumi.set(__self__, "form_content_end", form_content_end)
         if form_content_start is not None:
@@ -12783,6 +12889,18 @@ class PromptScreenPartialInsertionPointsArgs:
             pulumi.set(__self__, "secondary_actions_end", secondary_actions_end)
         if secondary_actions_start is not None:
             pulumi.set(__self__, "secondary_actions_start", secondary_actions_start)
+
+    @property
+    @pulumi.getter(name="formContent")
+    def form_content(self) -> Optional[pulumi.Input[str]]:
+        """
+        Content that goes inside the form
+        """
+        return pulumi.get(self, "form_content")
+
+    @form_content.setter
+    def form_content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "form_content", value)
 
     @property
     @pulumi.getter(name="formContentEnd")
@@ -12902,6 +13020,10 @@ class PromptScreenPartialsScreenPartialArgs:
 
 if not MYPY:
     class PromptScreenPartialsScreenPartialInsertionPointsArgsDict(TypedDict):
+        form_content: NotRequired[pulumi.Input[str]]
+        """
+        Content that goes inside the form
+        """
         form_content_end: NotRequired[pulumi.Input[str]]
         """
         Content that goes at the end of the form.
@@ -12932,6 +13054,7 @@ elif False:
 @pulumi.input_type
 class PromptScreenPartialsScreenPartialInsertionPointsArgs:
     def __init__(__self__, *,
+                 form_content: Optional[pulumi.Input[str]] = None,
                  form_content_end: Optional[pulumi.Input[str]] = None,
                  form_content_start: Optional[pulumi.Input[str]] = None,
                  form_footer_end: Optional[pulumi.Input[str]] = None,
@@ -12939,6 +13062,7 @@ class PromptScreenPartialsScreenPartialInsertionPointsArgs:
                  secondary_actions_end: Optional[pulumi.Input[str]] = None,
                  secondary_actions_start: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] form_content: Content that goes inside the form
         :param pulumi.Input[str] form_content_end: Content that goes at the end of the form.
         :param pulumi.Input[str] form_content_start: Content that goes at the start of the form.
         :param pulumi.Input[str] form_footer_end: Footer content for the end of the footer.
@@ -12946,6 +13070,8 @@ class PromptScreenPartialsScreenPartialInsertionPointsArgs:
         :param pulumi.Input[str] secondary_actions_end: Actions that go at the end of secondary actions.
         :param pulumi.Input[str] secondary_actions_start: Actions that go at the start of secondary actions.
         """
+        if form_content is not None:
+            pulumi.set(__self__, "form_content", form_content)
         if form_content_end is not None:
             pulumi.set(__self__, "form_content_end", form_content_end)
         if form_content_start is not None:
@@ -12958,6 +13084,18 @@ class PromptScreenPartialsScreenPartialInsertionPointsArgs:
             pulumi.set(__self__, "secondary_actions_end", secondary_actions_end)
         if secondary_actions_start is not None:
             pulumi.set(__self__, "secondary_actions_start", secondary_actions_start)
+
+    @property
+    @pulumi.getter(name="formContent")
+    def form_content(self) -> Optional[pulumi.Input[str]]:
+        """
+        Content that goes inside the form
+        """
+        return pulumi.get(self, "form_content")
+
+    @form_content.setter
+    def form_content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "form_content", value)
 
     @property
     @pulumi.getter(name="formContentEnd")
@@ -14528,6 +14666,10 @@ class GetPromptScreenPartialsScreenPartialArgs:
 
 if not MYPY:
     class GetPromptScreenPartialsScreenPartialInsertionPointArgsDict(TypedDict):
+        form_content: str
+        """
+        Content that goes inside the form
+        """
         form_content_end: str
         """
         Content that goes at the end of the form.
@@ -14558,6 +14700,7 @@ elif False:
 @pulumi.input_type
 class GetPromptScreenPartialsScreenPartialInsertionPointArgs:
     def __init__(__self__, *,
+                 form_content: str,
                  form_content_end: str,
                  form_content_start: str,
                  form_footer_end: str,
@@ -14565,6 +14708,7 @@ class GetPromptScreenPartialsScreenPartialInsertionPointArgs:
                  secondary_actions_end: str,
                  secondary_actions_start: str):
         """
+        :param str form_content: Content that goes inside the form
         :param str form_content_end: Content that goes at the end of the form.
         :param str form_content_start: Content that goes at the start of the form.
         :param str form_footer_end: Footer content for the end of the footer.
@@ -14572,12 +14716,25 @@ class GetPromptScreenPartialsScreenPartialInsertionPointArgs:
         :param str secondary_actions_end: Actions that go at the end of secondary actions.
         :param str secondary_actions_start: Actions that go at the start of secondary actions.
         """
+        pulumi.set(__self__, "form_content", form_content)
         pulumi.set(__self__, "form_content_end", form_content_end)
         pulumi.set(__self__, "form_content_start", form_content_start)
         pulumi.set(__self__, "form_footer_end", form_footer_end)
         pulumi.set(__self__, "form_footer_start", form_footer_start)
         pulumi.set(__self__, "secondary_actions_end", secondary_actions_end)
         pulumi.set(__self__, "secondary_actions_start", secondary_actions_start)
+
+    @property
+    @pulumi.getter(name="formContent")
+    def form_content(self) -> str:
+        """
+        Content that goes inside the form
+        """
+        return pulumi.get(self, "form_content")
+
+    @form_content.setter
+    def form_content(self, value: str):
+        pulumi.set(self, "form_content", value)
 
     @property
     @pulumi.getter(name="formContentEnd")

@@ -5,9 +5,10 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,23 +16,39 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetUserArgs Empty = new GetUserArgs();
 
     /**
+     * Lucene Query for retrieving a user.
+     * 
+     */
+    @Import(name="query")
+    private @Nullable Output<String> query;
+
+    /**
+     * @return Lucene Query for retrieving a user.
+     * 
+     */
+    public Optional<Output<String>> query() {
+        return Optional.ofNullable(this.query);
+    }
+
+    /**
      * ID of the user.
      * 
      */
-    @Import(name="userId", required=true)
-    private Output<String> userId;
+    @Import(name="userId")
+    private @Nullable Output<String> userId;
 
     /**
      * @return ID of the user.
      * 
      */
-    public Output<String> userId() {
-        return this.userId;
+    public Optional<Output<String>> userId() {
+        return Optional.ofNullable(this.userId);
     }
 
     private GetUserArgs() {}
 
     private GetUserArgs(GetUserArgs $) {
+        this.query = $.query;
         this.userId = $.userId;
     }
 
@@ -54,12 +71,33 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param query Lucene Query for retrieving a user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder query(@Nullable Output<String> query) {
+            $.query = query;
+            return this;
+        }
+
+        /**
+         * @param query Lucene Query for retrieving a user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder query(String query) {
+            return query(Output.of(query));
+        }
+
+        /**
          * @param userId ID of the user.
          * 
          * @return builder
          * 
          */
-        public Builder userId(Output<String> userId) {
+        public Builder userId(@Nullable Output<String> userId) {
             $.userId = userId;
             return this;
         }
@@ -75,9 +113,6 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetUserArgs build() {
-            if ($.userId == null) {
-                throw new MissingRequiredPropertyException("GetUserArgs", "userId");
-            }
             return $;
         }
     }

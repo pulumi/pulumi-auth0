@@ -207,6 +207,16 @@ public final class ConnectionOptions {
      */
     private @Nullable String gatewayUrl;
     /**
+     * @return Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+     * 
+     */
+    private @Nullable String globalTokenRevocationJwtIss;
+    /**
+     * @return Specifies the subject of the JWT used for global token revocation for the SAML connection.
+     * 
+     */
+    private @Nullable String globalTokenRevocationJwtSub;
+    /**
      * @return Icon URL.
      * 
      */
@@ -749,6 +759,20 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.gatewayUrl);
     }
     /**
+     * @return Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+     * 
+     */
+    public Optional<String> globalTokenRevocationJwtIss() {
+        return Optional.ofNullable(this.globalTokenRevocationJwtIss);
+    }
+    /**
+     * @return Specifies the subject of the JWT used for global token revocation for the SAML connection.
+     * 
+     */
+    public Optional<String> globalTokenRevocationJwtSub() {
+        return Optional.ofNullable(this.globalTokenRevocationJwtSub);
+    }
+    /**
      * @return Icon URL.
      * 
      */
@@ -1206,6 +1230,8 @@ public final class ConnectionOptions {
         private @Nullable String from;
         private @Nullable ConnectionOptionsGatewayAuthentication gatewayAuthentication;
         private @Nullable String gatewayUrl;
+        private @Nullable String globalTokenRevocationJwtIss;
+        private @Nullable String globalTokenRevocationJwtSub;
         private @Nullable String iconUrl;
         private @Nullable String identityApi;
         private @Nullable ConnectionOptionsIdpInitiated idpInitiated;
@@ -1303,6 +1329,8 @@ public final class ConnectionOptions {
     	      this.from = defaults.from;
     	      this.gatewayAuthentication = defaults.gatewayAuthentication;
     	      this.gatewayUrl = defaults.gatewayUrl;
+    	      this.globalTokenRevocationJwtIss = defaults.globalTokenRevocationJwtIss;
+    	      this.globalTokenRevocationJwtSub = defaults.globalTokenRevocationJwtSub;
     	      this.iconUrl = defaults.iconUrl;
     	      this.identityApi = defaults.identityApi;
     	      this.idpInitiated = defaults.idpInitiated;
@@ -1584,6 +1612,18 @@ public final class ConnectionOptions {
         public Builder gatewayUrl(@Nullable String gatewayUrl) {
 
             this.gatewayUrl = gatewayUrl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder globalTokenRevocationJwtIss(@Nullable String globalTokenRevocationJwtIss) {
+
+            this.globalTokenRevocationJwtIss = globalTokenRevocationJwtIss;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder globalTokenRevocationJwtSub(@Nullable String globalTokenRevocationJwtSub) {
+
+            this.globalTokenRevocationJwtSub = globalTokenRevocationJwtSub;
             return this;
         }
         @CustomType.Setter
@@ -1992,6 +2032,8 @@ public final class ConnectionOptions {
             _resultValue.from = from;
             _resultValue.gatewayAuthentication = gatewayAuthentication;
             _resultValue.gatewayUrl = gatewayUrl;
+            _resultValue.globalTokenRevocationJwtIss = globalTokenRevocationJwtIss;
+            _resultValue.globalTokenRevocationJwtSub = globalTokenRevocationJwtSub;
             _resultValue.iconUrl = iconUrl;
             _resultValue.identityApi = identityApi;
             _resultValue.idpInitiated = idpInitiated;
