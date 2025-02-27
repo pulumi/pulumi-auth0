@@ -13,18 +13,75 @@ namespace Pulumi.Auth0
     {
         /// <summary>
         /// Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // An Auth0 Token Exchange Profile loaded using its ID.
+        ///     var myProfile = Auth0.GetTokenExchangeProfile.Invoke(new()
+        ///     {
+        ///         Id = "tep_Tnvl88SKv98TkMmr",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetTokenExchangeProfileResult> InvokeAsync(GetTokenExchangeProfileArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTokenExchangeProfileResult>("auth0:index/getTokenExchangeProfile:getTokenExchangeProfile", args ?? new GetTokenExchangeProfileArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // An Auth0 Token Exchange Profile loaded using its ID.
+        ///     var myProfile = Auth0.GetTokenExchangeProfile.Invoke(new()
+        ///     {
+        ///         Id = "tep_Tnvl88SKv98TkMmr",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTokenExchangeProfileResult> Invoke(GetTokenExchangeProfileInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTokenExchangeProfileResult>("auth0:index/getTokenExchangeProfile:getTokenExchangeProfile", args ?? new GetTokenExchangeProfileInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // An Auth0 Token Exchange Profile loaded using its ID.
+        ///     var myProfile = Auth0.GetTokenExchangeProfile.Invoke(new()
+        ///     {
+        ///         Id = "tep_Tnvl88SKv98TkMmr",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTokenExchangeProfileResult> Invoke(GetTokenExchangeProfileInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetTokenExchangeProfileResult>("auth0:index/getTokenExchangeProfile:getTokenExchangeProfile", args ?? new GetTokenExchangeProfileInvokeArgs(), options.WithDefaults());

@@ -494,6 +494,8 @@ import * as utilities from "./utilities";
  *         signingCert: "<signing-certificate>",
  *         signInEndpoint: "https://saml.provider/sign_in",
  *         signOutEndpoint: "https://saml.provider/sign_out",
+ *         globalTokenRevocationJwtIss: "issuer.example.com",
+ *         globalTokenRevocationJwtSub: "user123",
  *         disableSignOut: true,
  *         strategyVersion: 2,
  *         tenantDomain: "example.com",

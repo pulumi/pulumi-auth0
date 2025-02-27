@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,9 @@ import javax.annotation.Nullable;
 
 /**
  * With this resource, you can manage your Auth0 log streams.
+ * 
+ * !&gt; isPriority is a field that can be set while the resource is being created.
+ * This cannot be updated once set. Updating the value might result in a noisy plan.
  * 
  * ## Example Usage
  * 
@@ -116,6 +120,20 @@ public class LogStream extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<Map<String,String>>>> filters() {
         return Codegen.optional(this.filters);
+    }
+    /**
+     * Set True for priority log streams, False for non-priority
+     * 
+     */
+    @Export(name="isPriority", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isPriority;
+
+    /**
+     * @return Set True for priority log streams, False for non-priority
+     * 
+     */
+    public Output<Optional<Boolean>> isPriority() {
+        return Codegen.optional(this.isPriority);
     }
     /**
      * Name of the log stream.

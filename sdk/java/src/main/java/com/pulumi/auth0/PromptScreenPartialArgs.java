@@ -33,14 +33,14 @@ public final class PromptScreenPartialArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
      * 
      */
     @Import(name="promptType", required=true)
     private Output<String> promptType;
 
     /**
-     * @return The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+     * @return The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
      * 
      */
     public Output<String> promptType() {
@@ -110,7 +110,7 @@ public final class PromptScreenPartialArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param promptType The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+         * @param promptType The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class PromptScreenPartialArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param promptType The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+         * @param promptType The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
          * 
          * @return builder
          * 
