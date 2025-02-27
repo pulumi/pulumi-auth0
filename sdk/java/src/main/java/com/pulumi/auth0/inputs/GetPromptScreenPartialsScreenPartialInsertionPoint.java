@@ -14,6 +14,21 @@ public final class GetPromptScreenPartialsScreenPartialInsertionPoint extends co
     public static final GetPromptScreenPartialsScreenPartialInsertionPoint Empty = new GetPromptScreenPartialsScreenPartialInsertionPoint();
 
     /**
+     * Content that goes inside the form
+     * 
+     */
+    @Import(name="formContent", required=true)
+    private String formContent;
+
+    /**
+     * @return Content that goes inside the form
+     * 
+     */
+    public String formContent() {
+        return this.formContent;
+    }
+
+    /**
      * Content that goes at the end of the form.
      * 
      */
@@ -106,6 +121,7 @@ public final class GetPromptScreenPartialsScreenPartialInsertionPoint extends co
     private GetPromptScreenPartialsScreenPartialInsertionPoint() {}
 
     private GetPromptScreenPartialsScreenPartialInsertionPoint(GetPromptScreenPartialsScreenPartialInsertionPoint $) {
+        this.formContent = $.formContent;
         this.formContentEnd = $.formContentEnd;
         this.formContentStart = $.formContentStart;
         this.formFooterEnd = $.formFooterEnd;
@@ -130,6 +146,17 @@ public final class GetPromptScreenPartialsScreenPartialInsertionPoint extends co
 
         public Builder(GetPromptScreenPartialsScreenPartialInsertionPoint defaults) {
             $ = new GetPromptScreenPartialsScreenPartialInsertionPoint(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param formContent Content that goes inside the form
+         * 
+         * @return builder
+         * 
+         */
+        public Builder formContent(String formContent) {
+            $.formContent = formContent;
+            return this;
         }
 
         /**
@@ -199,6 +226,9 @@ public final class GetPromptScreenPartialsScreenPartialInsertionPoint extends co
         }
 
         public GetPromptScreenPartialsScreenPartialInsertionPoint build() {
+            if ($.formContent == null) {
+                throw new MissingRequiredPropertyException("GetPromptScreenPartialsScreenPartialInsertionPoint", "formContent");
+            }
             if ($.formContentEnd == null) {
                 throw new MissingRequiredPropertyException("GetPromptScreenPartialsScreenPartialInsertionPoint", "formContentEnd");
             }

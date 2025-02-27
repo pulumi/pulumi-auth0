@@ -39,6 +39,15 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  * });
+ * const customized_consent = new auth0.PromptScreenPartials("customized-consent", {
+ *     promptType: "customized-consent",
+ *     screenPartials: [{
+ *         screenName: "customized-consent",
+ *         insertionPoints: {
+ *             formContent: "<div>Form Content</div>",
+ *         },
+ *     }],
+ * });
  * ```
  *
  * ## Import
@@ -82,7 +91,7 @@ export class PromptScreenPartials extends pulumi.CustomResource {
     }
 
     /**
-     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
      */
     public readonly promptType!: pulumi.Output<string>;
     public readonly screenPartials!: pulumi.Output<outputs.PromptScreenPartialsScreenPartial[] | undefined>;
@@ -120,7 +129,7 @@ export class PromptScreenPartials extends pulumi.CustomResource {
  */
 export interface PromptScreenPartialsState {
     /**
-     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
      */
     promptType?: pulumi.Input<string>;
     screenPartials?: pulumi.Input<pulumi.Input<inputs.PromptScreenPartialsScreenPartial>[]>;
@@ -131,7 +140,7 @@ export interface PromptScreenPartialsState {
  */
 export interface PromptScreenPartialsArgs {
     /**
-     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
      */
     promptType: pulumi.Input<string>;
     screenPartials?: pulumi.Input<pulumi.Input<inputs.PromptScreenPartialsScreenPartial>[]>;

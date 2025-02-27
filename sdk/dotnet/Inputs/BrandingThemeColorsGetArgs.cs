@@ -31,6 +31,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? BodyText { get; set; }
 
         /// <summary>
+        /// Captcha Widget Theme.
+        /// </summary>
+        [Input("captchaWidgetTheme")]
+        public Input<string>? CaptchaWidgetTheme { get; set; }
+
+        /// <summary>
         /// Error. Defaults to `#d03c38`.
         /// </summary>
         [Input("error")]

@@ -12,6 +12,33 @@ import (
 )
 
 // Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// An Auth0 Token Exchange Profile loaded using its ID.
+//			_, err := auth0.LookupTokenExchangeProfile(ctx, &auth0.LookupTokenExchangeProfileArgs{
+//				Id: "tep_Tnvl88SKv98TkMmr",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupTokenExchangeProfile(ctx *pulumi.Context, args *LookupTokenExchangeProfileArgs, opts ...pulumi.InvokeOption) (*LookupTokenExchangeProfileResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTokenExchangeProfileResult
