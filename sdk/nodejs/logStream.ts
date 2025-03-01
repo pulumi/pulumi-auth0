@@ -9,6 +9,9 @@ import * as utilities from "./utilities";
 /**
  * With this resource, you can manage your Auth0 log streams.
  *
+ * !> isPriority is a field that can be set while the resource is being created.
+ * This cannot be updated once set. Updating the value might result in a noisy plan.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -97,6 +100,10 @@ export class LogStream extends pulumi.CustomResource {
      */
     public readonly filters!: pulumi.Output<{[key: string]: string}[] | undefined>;
     /**
+     * Set True for priority log streams, False for non-priority
+     */
+    public readonly isPriority!: pulumi.Output<boolean | undefined>;
+    /**
      * Name of the log stream.
      */
     public readonly name!: pulumi.Output<string>;
@@ -127,6 +134,7 @@ export class LogStream extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as LogStreamState | undefined;
             resourceInputs["filters"] = state ? state.filters : undefined;
+            resourceInputs["isPriority"] = state ? state.isPriority : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["sink"] = state ? state.sink : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -140,6 +148,7 @@ export class LogStream extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["filters"] = args ? args.filters : undefined;
+            resourceInputs["isPriority"] = args ? args.isPriority : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["sink"] = args ? args.sink : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
@@ -158,6 +167,10 @@ export interface LogStreamState {
      * Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
      */
     filters?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    /**
+     * Set True for priority log streams, False for non-priority
+     */
+    isPriority?: pulumi.Input<boolean>;
     /**
      * Name of the log stream.
      */
@@ -184,6 +197,10 @@ export interface LogStreamArgs {
      * Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
      */
     filters?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    /**
+     * Set True for priority log streams, False for non-priority
+     */
+    isPriority?: pulumi.Input<boolean>;
     /**
      * Name of the log stream.
      */

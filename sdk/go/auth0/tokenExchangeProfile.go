@@ -12,6 +12,61 @@ import (
 )
 
 // With this resource, you can manage Auth0 Custom Token Exchange Profiles
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Below action is created with custom-token-exchange as supported_triggers
+//			// This action is then linked using the action_id param to the token-exchange profile
+//			myAction, err := auth0.NewAction(ctx, "my_action", &auth0.ActionArgs{
+//				Name:   pulumi.String("TokenExchange-Action"),
+//				Code:   pulumi.String("exports.onContinuePostLogin = async (event, api) => {\n	console.log(\"foo\")\n};\"\n"),
+//				Deploy: pulumi.Bool(true),
+//				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
+//					Id:      pulumi.String("custom-token-exchange"),
+//					Version: pulumi.String("v1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewTokenExchangeProfile(ctx, "my_token_exchange_profile", &auth0.TokenExchangeProfileArgs{
+//				Name:             pulumi.String("token-exchange-prof"),
+//				SubjectTokenType: pulumi.String("https://acme.com/cis-token"),
+//				ActionId:         myAction.ID(),
+//				Type:             pulumi.String("custom_authentication"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// This resource can be imported using the token exchange profile ID.
+//
+// #
+//
+// Example:
+//
+// ```sh
+// $ pulumi import auth0:index/tokenExchangeProfile:TokenExchangeProfile profile "tep_XXXXXXXXXXXXXX"
+// ```
 type TokenExchangeProfile struct {
 	pulumi.CustomResourceState
 
