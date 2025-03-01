@@ -94,7 +94,7 @@ type TriggerActions struct {
 
 	// The list of actions bound to this trigger.
 	Actions TriggerActionsActionArrayOutput `pulumi:"actions"`
-	// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`.
+	// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.
 	Trigger pulumi.StringOutput `pulumi:"trigger"`
 }
 
@@ -136,14 +136,14 @@ func GetTriggerActions(ctx *pulumi.Context,
 type triggerActionsState struct {
 	// The list of actions bound to this trigger.
 	Actions []TriggerActionsAction `pulumi:"actions"`
-	// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`.
+	// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.
 	Trigger *string `pulumi:"trigger"`
 }
 
 type TriggerActionsState struct {
 	// The list of actions bound to this trigger.
 	Actions TriggerActionsActionArrayInput
-	// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`.
+	// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.
 	Trigger pulumi.StringPtrInput
 }
 
@@ -154,7 +154,7 @@ func (TriggerActionsState) ElementType() reflect.Type {
 type triggerActionsArgs struct {
 	// The list of actions bound to this trigger.
 	Actions []TriggerActionsAction `pulumi:"actions"`
-	// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`.
+	// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.
 	Trigger string `pulumi:"trigger"`
 }
 
@@ -162,7 +162,7 @@ type triggerActionsArgs struct {
 type TriggerActionsArgs struct {
 	// The list of actions bound to this trigger.
 	Actions TriggerActionsActionArrayInput
-	// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`.
+	// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.
 	Trigger pulumi.StringInput
 }
 
@@ -258,7 +258,7 @@ func (o TriggerActionsOutput) Actions() TriggerActionsActionArrayOutput {
 	return o.ApplyT(func(v *TriggerActions) TriggerActionsActionArrayOutput { return v.Actions }).(TriggerActionsActionArrayOutput)
 }
 
-// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`.
+// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.
 func (o TriggerActionsOutput) Trigger() pulumi.StringOutput {
 	return o.ApplyT(func(v *TriggerActions) pulumi.StringOutput { return v.Trigger }).(pulumi.StringOutput)
 }

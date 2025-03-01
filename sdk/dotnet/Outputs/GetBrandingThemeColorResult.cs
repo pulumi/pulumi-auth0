@@ -26,6 +26,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string BodyText;
         /// <summary>
+        /// Captcha Widget Theme.
+        /// </summary>
+        public readonly string CaptchaWidgetTheme;
+        /// <summary>
         /// Error. Defaults to `#d03c38`.
         /// </summary>
         public readonly string Error;
@@ -94,6 +98,8 @@ namespace Pulumi.Auth0.Outputs
 
             string bodyText,
 
+            string captchaWidgetTheme,
+
             string error,
 
             string header,
@@ -127,6 +133,7 @@ namespace Pulumi.Auth0.Outputs
             BaseFocusColor = baseFocusColor;
             BaseHoverColor = baseHoverColor;
             BodyText = bodyText;
+            CaptchaWidgetTheme = captchaWidgetTheme;
             Error = error;
             Header = header;
             Icons = icons;
