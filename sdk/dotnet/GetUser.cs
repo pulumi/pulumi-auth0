@@ -12,76 +12,19 @@ namespace Pulumi.Auth0
     public static class GetUser
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 user by `user_id`.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Auth0 = Pulumi.Auth0;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     // An Auth0 User loaded using its ID.
-        ///     var myUser = Auth0.GetUser.Invoke(new()
-        ///     {
-        ///         UserId = "auth0|34fdr23fdsfdfsf",
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
         /// </summary>
-        public static Task<GetUserResult> InvokeAsync(GetUserArgs args, InvokeOptions? options = null)
+        public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("auth0:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 user by `user_id`.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Auth0 = Pulumi.Auth0;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     // An Auth0 User loaded using its ID.
-        ///     var myUser = Auth0.GetUser.Invoke(new()
-        ///     {
-        ///         UserId = "auth0|34fdr23fdsfdfsf",
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
         /// </summary>
-        public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetUserResult> Invoke(GetUserInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("auth0:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 user by `user_id`.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Auth0 = Pulumi.Auth0;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     // An Auth0 User loaded using its ID.
-        ///     var myUser = Auth0.GetUser.Invoke(new()
-        ///     {
-        ///         UserId = "auth0|34fdr23fdsfdfsf",
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("auth0:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
@@ -91,10 +34,16 @@ namespace Pulumi.Auth0
     public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Lucene Query for retrieving a user.
+        /// </summary>
+        [Input("query")]
+        public string? Query { get; set; }
+
+        /// <summary>
         /// ID of the user.
         /// </summary>
-        [Input("userId", required: true)]
-        public string UserId { get; set; } = null!;
+        [Input("userId")]
+        public string? UserId { get; set; }
 
         public GetUserArgs()
         {
@@ -105,10 +54,16 @@ namespace Pulumi.Auth0
     public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Lucene Query for retrieving a user.
+        /// </summary>
+        [Input("query")]
+        public Input<string>? Query { get; set; }
+
+        /// <summary>
         /// ID of the user.
         /// </summary>
-        [Input("userId", required: true)]
-        public Input<string> UserId { get; set; } = null!;
+        [Input("userId")]
+        public Input<string>? UserId { get; set; }
 
         public GetUserInvokeArgs()
         {
@@ -181,13 +136,17 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Picture;
         /// <summary>
+        /// Lucene Query for retrieving a user.
+        /// </summary>
+        public readonly string? Query;
+        /// <summary>
         /// Set of IDs of roles assigned to the user.
         /// </summary>
         public readonly ImmutableArray<string> Roles;
         /// <summary>
         /// ID of the user.
         /// </summary>
-        public readonly string UserId;
+        public readonly string? UserId;
         /// <summary>
         /// Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
         /// </summary>
@@ -233,9 +192,11 @@ namespace Pulumi.Auth0
 
             string picture,
 
+            string? query,
+
             ImmutableArray<string> roles,
 
-            string userId,
+            string? userId,
 
             string userMetadata,
 
@@ -258,6 +219,7 @@ namespace Pulumi.Auth0
             PhoneNumber = phoneNumber;
             PhoneVerified = phoneVerified;
             Picture = picture;
+            Query = query;
             Roles = roles;
             UserId = userId;
             UserMetadata = userMetadata;
