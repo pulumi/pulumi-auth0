@@ -14,6 +14,10 @@ namespace Pulumi.Auth0.Outputs
     public sealed class PromptScreenPartialsScreenPartialInsertionPoints
     {
         /// <summary>
+        /// Content that goes inside the form
+        /// </summary>
+        public readonly string? FormContent;
+        /// <summary>
         /// Content that goes at the end of the form.
         /// </summary>
         public readonly string? FormContentEnd;
@@ -40,6 +44,8 @@ namespace Pulumi.Auth0.Outputs
 
         [OutputConstructor]
         private PromptScreenPartialsScreenPartialInsertionPoints(
+            string? formContent,
+
             string? formContentEnd,
 
             string? formContentStart,
@@ -52,6 +58,7 @@ namespace Pulumi.Auth0.Outputs
 
             string? secondaryActionsStart)
         {
+            FormContent = formContent;
             FormContentEnd = formContentEnd;
             FormContentStart = formContentStart;
             FormFooterEnd = formFooterEnd;

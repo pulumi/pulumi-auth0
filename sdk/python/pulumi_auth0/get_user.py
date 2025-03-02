@@ -27,7 +27,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, app_metadata=None, blocked=None, connection_name=None, email=None, email_verified=None, family_name=None, given_name=None, id=None, name=None, nickname=None, password=None, permissions=None, phone_number=None, phone_verified=None, picture=None, roles=None, user_id=None, user_metadata=None, username=None, verify_email=None):
+    def __init__(__self__, app_metadata=None, blocked=None, connection_name=None, email=None, email_verified=None, family_name=None, given_name=None, id=None, name=None, nickname=None, password=None, permissions=None, phone_number=None, phone_verified=None, picture=None, query=None, roles=None, user_id=None, user_metadata=None, username=None, verify_email=None):
         if app_metadata and not isinstance(app_metadata, str):
             raise TypeError("Expected argument 'app_metadata' to be a str")
         pulumi.set(__self__, "app_metadata", app_metadata)
@@ -73,6 +73,9 @@ class GetUserResult:
         if picture and not isinstance(picture, str):
             raise TypeError("Expected argument 'picture' to be a str")
         pulumi.set(__self__, "picture", picture)
+        if query and not isinstance(query, str):
+            raise TypeError("Expected argument 'query' to be a str")
+        pulumi.set(__self__, "query", query)
         if roles and not isinstance(roles, list):
             raise TypeError("Expected argument 'roles' to be a list")
         pulumi.set(__self__, "roles", roles)
@@ -211,6 +214,14 @@ class GetUserResult:
 
     @property
     @pulumi.getter
+    def query(self) -> Optional[str]:
+        """
+        Lucene Query for retrieving a user.
+        """
+        return pulumi.get(self, "query")
+
+    @property
+    @pulumi.getter
     def roles(self) -> Sequence[str]:
         """
         Set of IDs of roles assigned to the user.
@@ -219,7 +230,7 @@ class GetUserResult:
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> str:
+    def user_id(self) -> Optional[str]:
         """
         ID of the user.
         """
@@ -271,6 +282,7 @@ class AwaitableGetUserResult(GetUserResult):
             phone_number=self.phone_number,
             phone_verified=self.phone_verified,
             picture=self.picture,
+            query=self.query,
             roles=self.roles,
             user_id=self.user_id,
             user_metadata=self.user_metadata,
@@ -278,25 +290,18 @@ class AwaitableGetUserResult(GetUserResult):
             verify_email=self.verify_email)
 
 
-def get_user(user_id: Optional[str] = None,
+def get_user(query: Optional[str] = None,
+             user_id: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
-    Data source to retrieve a specific Auth0 user by `user_id`.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_auth0 as auth0
-
-    # An Auth0 User loaded using its ID.
-    my_user = auth0.get_user(user_id="auth0|34fdr23fdsfdfsf")
-    ```
+    Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
 
 
+    :param str query: Lucene Query for retrieving a user.
     :param str user_id: ID of the user.
     """
     __args__ = dict()
+    __args__['query'] = query
     __args__['userId'] = user_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('auth0:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
@@ -317,30 +322,24 @@ def get_user(user_id: Optional[str] = None,
         phone_number=pulumi.get(__ret__, 'phone_number'),
         phone_verified=pulumi.get(__ret__, 'phone_verified'),
         picture=pulumi.get(__ret__, 'picture'),
+        query=pulumi.get(__ret__, 'query'),
         roles=pulumi.get(__ret__, 'roles'),
         user_id=pulumi.get(__ret__, 'user_id'),
         user_metadata=pulumi.get(__ret__, 'user_metadata'),
         username=pulumi.get(__ret__, 'username'),
         verify_email=pulumi.get(__ret__, 'verify_email'))
-def get_user_output(user_id: Optional[pulumi.Input[str]] = None,
+def get_user_output(query: Optional[pulumi.Input[Optional[str]]] = None,
+                    user_id: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
-    Data source to retrieve a specific Auth0 user by `user_id`.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_auth0 as auth0
-
-    # An Auth0 User loaded using its ID.
-    my_user = auth0.get_user(user_id="auth0|34fdr23fdsfdfsf")
-    ```
+    Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
 
 
+    :param str query: Lucene Query for retrieving a user.
     :param str user_id: ID of the user.
     """
     __args__ = dict()
+    __args__['query'] = query
     __args__['userId'] = user_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
@@ -360,6 +359,7 @@ def get_user_output(user_id: Optional[pulumi.Input[str]] = None,
         phone_number=pulumi.get(__response__, 'phone_number'),
         phone_verified=pulumi.get(__response__, 'phone_verified'),
         picture=pulumi.get(__response__, 'picture'),
+        query=pulumi.get(__response__, 'query'),
         roles=pulumi.get(__response__, 'roles'),
         user_id=pulumi.get(__response__, 'user_id'),
         user_metadata=pulumi.get(__response__, 'user_metadata'),
