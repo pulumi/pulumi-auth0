@@ -11,34 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source to retrieve a specific Auth0 user by `userId`.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// An Auth0 User loaded using its ID.
-//			_, err := auth0.LookupUser(ctx, &auth0.LookupUserArgs{
-//				UserId: "auth0|34fdr23fdsfdfsf",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// Data source to retrieve a specific Auth0 user by `userId` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserResult
@@ -51,8 +24,10 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
+	// Lucene Query for retrieving a user.
+	Query *string `pulumi:"query"`
 	// ID of the user.
-	UserId string `pulumi:"userId"`
+	UserId *string `pulumi:"userId"`
 }
 
 // A collection of values returned by getUser.
@@ -87,10 +62,12 @@ type LookupUserResult struct {
 	PhoneVerified bool `pulumi:"phoneVerified"`
 	// Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
 	Picture string `pulumi:"picture"`
+	// Lucene Query for retrieving a user.
+	Query *string `pulumi:"query"`
 	// Set of IDs of roles assigned to the user.
 	Roles []string `pulumi:"roles"`
 	// ID of the user.
-	UserId string `pulumi:"userId"`
+	UserId *string `pulumi:"userId"`
 	// Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
 	UserMetadata string `pulumi:"userMetadata"`
 	// Username of the user. Only valid if the connection requires a username.
@@ -110,8 +87,10 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
+	// Lucene Query for retrieving a user.
+	Query pulumi.StringPtrInput `pulumi:"query"`
 	// ID of the user.
-	UserId pulumi.StringInput `pulumi:"userId"`
+	UserId pulumi.StringPtrInput `pulumi:"userId"`
 }
 
 func (LookupUserOutputArgs) ElementType() reflect.Type {
@@ -208,14 +187,19 @@ func (o LookupUserResultOutput) Picture() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Picture }).(pulumi.StringOutput)
 }
 
+// Lucene Query for retrieving a user.
+func (o LookupUserResultOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupUserResult) *string { return v.Query }).(pulumi.StringPtrOutput)
+}
+
 // Set of IDs of roles assigned to the user.
 func (o LookupUserResultOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
 // ID of the user.
-func (o LookupUserResultOutput) UserId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupUserResult) string { return v.UserId }).(pulumi.StringOutput)
+func (o LookupUserResultOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupUserResult) *string { return v.UserId }).(pulumi.StringPtrOutput)
 }
 
 // Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.

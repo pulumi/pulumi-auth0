@@ -25,7 +25,7 @@ class PromptScreenPartialsArgs:
                  screen_partials: Optional[pulumi.Input[Sequence[pulumi.Input['PromptScreenPartialsScreenPartialArgs']]]] = None):
         """
         The set of arguments for constructing a PromptScreenPartials resource.
-        :param pulumi.Input[str] prompt_type: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+        :param pulumi.Input[str] prompt_type: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         """
         pulumi.set(__self__, "prompt_type", prompt_type)
         if screen_partials is not None:
@@ -35,7 +35,7 @@ class PromptScreenPartialsArgs:
     @pulumi.getter(name="promptType")
     def prompt_type(self) -> pulumi.Input[str]:
         """
-        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         """
         return pulumi.get(self, "prompt_type")
 
@@ -60,7 +60,7 @@ class _PromptScreenPartialsState:
                  screen_partials: Optional[pulumi.Input[Sequence[pulumi.Input['PromptScreenPartialsScreenPartialArgs']]]] = None):
         """
         Input properties used for looking up and filtering PromptScreenPartials resources.
-        :param pulumi.Input[str] prompt_type: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+        :param pulumi.Input[str] prompt_type: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         """
         if prompt_type is not None:
             pulumi.set(__self__, "prompt_type", prompt_type)
@@ -71,7 +71,7 @@ class _PromptScreenPartialsState:
     @pulumi.getter(name="promptType")
     def prompt_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         """
         return pulumi.get(self, "prompt_type")
 
@@ -129,6 +129,14 @@ class PromptScreenPartials(pulumi.CustomResource):
                     },
                 },
             ])
+        customized_consent = auth0.PromptScreenPartials("customized-consent",
+            prompt_type="customized-consent",
+            screen_partials=[{
+                "screen_name": "customized-consent",
+                "insertion_points": {
+                    "form_content": "<div>Form Content</div>",
+                },
+            }])
         ```
 
         ## Import
@@ -145,7 +153,7 @@ class PromptScreenPartials(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] prompt_type: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+        :param pulumi.Input[str] prompt_type: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         """
         ...
     @overload
@@ -185,6 +193,14 @@ class PromptScreenPartials(pulumi.CustomResource):
                     },
                 },
             ])
+        customized_consent = auth0.PromptScreenPartials("customized-consent",
+            prompt_type="customized-consent",
+            screen_partials=[{
+                "screen_name": "customized-consent",
+                "insertion_points": {
+                    "form_content": "<div>Form Content</div>",
+                },
+            }])
         ```
 
         ## Import
@@ -248,7 +264,7 @@ class PromptScreenPartials(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] prompt_type: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+        :param pulumi.Input[str] prompt_type: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -262,7 +278,7 @@ class PromptScreenPartials(pulumi.CustomResource):
     @pulumi.getter(name="promptType")
     def prompt_type(self) -> pulumi.Output[str]:
         """
-        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         """
         return pulumi.get(self, "prompt_type")
 

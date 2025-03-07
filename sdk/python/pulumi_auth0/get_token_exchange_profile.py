@@ -126,6 +126,16 @@ def get_token_exchange_profile(id: Optional[str] = None,
     """
     Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    # An Auth0 Token Exchange Profile loaded using its ID.
+    my_profile = auth0.get_token_exchange_profile(id="tep_Tnvl88SKv98TkMmr")
+    ```
+
 
     :param str id: The id of the Token Exchange Profile
     """
@@ -146,6 +156,16 @@ def get_token_exchange_profile_output(id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTokenExchangeProfileResult]:
     """
     Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    # An Auth0 Token Exchange Profile loaded using its ID.
+    my_profile = auth0.get_token_exchange_profile(id="tep_Tnvl88SKv98TkMmr")
+    ```
 
 
     :param str id: The id of the Token Exchange Profile

@@ -15,15 +15,19 @@ namespace Pulumi.Auth0.Outputs
     {
         public readonly ImmutableArray<Outputs.GetClientNativeSocialLoginAppleResult> Apples;
         public readonly ImmutableArray<Outputs.GetClientNativeSocialLoginFacebookResult> Facebooks;
+        public readonly ImmutableArray<Outputs.GetClientNativeSocialLoginGoogleResult> Googles;
 
         [OutputConstructor]
         private GetClientNativeSocialLoginResult(
             ImmutableArray<Outputs.GetClientNativeSocialLoginAppleResult> apples,
 
-            ImmutableArray<Outputs.GetClientNativeSocialLoginFacebookResult> facebooks)
+            ImmutableArray<Outputs.GetClientNativeSocialLoginFacebookResult> facebooks,
+
+            ImmutableArray<Outputs.GetClientNativeSocialLoginGoogleResult> googles)
         {
             Apples = apples;
             Facebooks = facebooks;
+            Googles = googles;
         }
     }
 }

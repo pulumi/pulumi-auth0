@@ -207,6 +207,10 @@ export interface BrandingThemeColors {
      */
     bodyText?: string;
     /**
+     * Captcha Widget Theme.
+     */
+    captchaWidgetTheme?: string;
+    /**
      * Error. Defaults to `#d03c38`.
      */
     error?: string;
@@ -1217,6 +1221,7 @@ export interface ClientMobileIos {
 export interface ClientNativeSocialLogin {
     apple: outputs.ClientNativeSocialLoginApple;
     facebook: outputs.ClientNativeSocialLoginFacebook;
+    google: outputs.ClientNativeSocialLoginGoogle;
 }
 
 export interface ClientNativeSocialLoginApple {
@@ -1224,6 +1229,10 @@ export interface ClientNativeSocialLoginApple {
 }
 
 export interface ClientNativeSocialLoginFacebook {
+    enabled?: boolean;
+}
+
+export interface ClientNativeSocialLoginGoogle {
     enabled?: boolean;
 }
 
@@ -1428,6 +1437,14 @@ export interface ConnectionOptions {
      * Defines a custom sms gateway to use instead of Twilio.
      */
     gatewayUrl?: string;
+    /**
+     * Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+     */
+    globalTokenRevocationJwtIss?: string;
+    /**
+     * Specifies the subject of the JWT used for global token revocation for the SAML connection.
+     */
+    globalTokenRevocationJwtSub?: string;
     /**
      * Icon URL.
      */
@@ -2349,6 +2366,10 @@ export interface GetBrandingThemeColor {
      * Body text. Defaults to `#1e212a`.
      */
     bodyText: string;
+    /**
+     * Captcha Widget Theme.
+     */
+    captchaWidgetTheme: string;
     /**
      * Error. Defaults to `#d03c38`.
      */
@@ -3297,6 +3318,7 @@ export interface GetClientMobileIo {
 export interface GetClientNativeSocialLogin {
     apples: outputs.GetClientNativeSocialLoginApple[];
     facebooks: outputs.GetClientNativeSocialLoginFacebook[];
+    googles: outputs.GetClientNativeSocialLoginGoogle[];
 }
 
 export interface GetClientNativeSocialLoginApple {
@@ -3304,6 +3326,10 @@ export interface GetClientNativeSocialLoginApple {
 }
 
 export interface GetClientNativeSocialLoginFacebook {
+    enabled: boolean;
+}
+
+export interface GetClientNativeSocialLoginGoogle {
     enabled: boolean;
 }
 
@@ -3647,6 +3673,14 @@ export interface GetConnectionOption {
      * Defines a custom sms gateway to use instead of Twilio.
      */
     gatewayUrl: string;
+    /**
+     * Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+     */
+    globalTokenRevocationJwtIss: string;
+    /**
+     * Specifies the subject of the JWT used for global token revocation for the SAML connection.
+     */
+    globalTokenRevocationJwtSub: string;
     /**
      * Icon URL.
      */
@@ -4344,6 +4378,10 @@ export interface GetPromptScreenPartialsScreenPartial {
 }
 
 export interface GetPromptScreenPartialsScreenPartialInsertionPoint {
+    /**
+     * Content that goes inside the form
+     */
+    formContent: string;
     /**
      * Content that goes at the end of the form.
      */
@@ -5048,6 +5086,10 @@ export interface PagesLogin {
 
 export interface PromptScreenPartialInsertionPoints {
     /**
+     * Content that goes inside the form
+     */
+    formContent?: string;
+    /**
      * Content that goes at the end of the form.
      */
     formContentEnd?: string;
@@ -5082,6 +5124,10 @@ export interface PromptScreenPartialsScreenPartial {
 }
 
 export interface PromptScreenPartialsScreenPartialInsertionPoints {
+    /**
+     * Content that goes inside the form
+     */
+    formContent?: string;
     /**
      * Content that goes at the end of the form.
      */

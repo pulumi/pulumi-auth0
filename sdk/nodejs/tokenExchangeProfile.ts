@@ -6,6 +6,46 @@ import * as utilities from "./utilities";
 
 /**
  * With this resource, you can manage Auth0 Custom Token Exchange Profiles
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // Below action is created with custom-token-exchange as supported_triggers
+ * // This action is then linked using the action_id param to the token-exchange profile
+ * const myAction = new auth0.Action("my_action", {
+ *     name: "TokenExchange-Action",
+ *     code: `exports.onContinuePostLogin = async (event, api) => {
+ * \x09console.log("foo")
+ * };"
+ * `,
+ *     deploy: true,
+ *     supportedTriggers: {
+ *         id: "custom-token-exchange",
+ *         version: "v1",
+ *     },
+ * });
+ * const myTokenExchangeProfile = new auth0.TokenExchangeProfile("my_token_exchange_profile", {
+ *     name: "token-exchange-prof",
+ *     subjectTokenType: "https://acme.com/cis-token",
+ *     actionId: myAction.id,
+ *     type: "custom_authentication",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported using the token exchange profile ID.
+ *
+ * # 
+ *
+ * Example:
+ *
+ * ```sh
+ * $ pulumi import auth0:index/tokenExchangeProfile:TokenExchangeProfile profile "tep_XXXXXXXXXXXXXX"
+ * ```
  */
 export class TokenExchangeProfile extends pulumi.CustomResource {
     /**

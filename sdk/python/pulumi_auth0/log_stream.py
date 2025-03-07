@@ -24,6 +24,7 @@ class LogStreamArgs:
                  sink: pulumi.Input['LogStreamSinkArgs'],
                  type: pulumi.Input[str],
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 is_priority: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
@@ -31,6 +32,7 @@ class LogStreamArgs:
         :param pulumi.Input['LogStreamSinkArgs'] sink: The sink configuration for the log stream.
         :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
+        :param pulumi.Input[bool] is_priority: Set True for priority log streams, False for non-priority
         :param pulumi.Input[str] name: Name of the log stream.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
         """
@@ -38,6 +40,8 @@ class LogStreamArgs:
         pulumi.set(__self__, "type", type)
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
+        if is_priority is not None:
+            pulumi.set(__self__, "is_priority", is_priority)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if status is not None:
@@ -80,6 +84,18 @@ class LogStreamArgs:
         pulumi.set(self, "filters", value)
 
     @property
+    @pulumi.getter(name="isPriority")
+    def is_priority(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set True for priority log streams, False for non-priority
+        """
+        return pulumi.get(self, "is_priority")
+
+    @is_priority.setter
+    def is_priority(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_priority", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -108,6 +124,7 @@ class LogStreamArgs:
 class _LogStreamState:
     def __init__(__self__, *,
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 is_priority: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  sink: Optional[pulumi.Input['LogStreamSinkArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -115,6 +132,7 @@ class _LogStreamState:
         """
         Input properties used for looking up and filtering LogStream resources.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
+        :param pulumi.Input[bool] is_priority: Set True for priority log streams, False for non-priority
         :param pulumi.Input[str] name: Name of the log stream.
         :param pulumi.Input['LogStreamSinkArgs'] sink: The sink configuration for the log stream.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
@@ -122,6 +140,8 @@ class _LogStreamState:
         """
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
+        if is_priority is not None:
+            pulumi.set(__self__, "is_priority", is_priority)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if sink is not None:
@@ -142,6 +162,18 @@ class _LogStreamState:
     @filters.setter
     def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
         pulumi.set(self, "filters", value)
+
+    @property
+    @pulumi.getter(name="isPriority")
+    def is_priority(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set True for priority log streams, False for non-priority
+        """
+        return pulumi.get(self, "is_priority")
+
+    @is_priority.setter
+    def is_priority(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_priority", value)
 
     @property
     @pulumi.getter
@@ -198,6 +230,7 @@ class LogStream(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 is_priority: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  sink: Optional[pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -205,6 +238,9 @@ class LogStream(pulumi.CustomResource):
                  __props__=None):
         """
         With this resource, you can manage your Auth0 log streams.
+
+        !> isPriority is a field that can be set while the resource is being created.
+        This cannot be updated once set. Updating the value might result in a noisy plan.
 
         ## Example Usage
 
@@ -262,6 +298,7 @@ class LogStream(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
+        :param pulumi.Input[bool] is_priority: Set True for priority log streams, False for non-priority
         :param pulumi.Input[str] name: Name of the log stream.
         :param pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']] sink: The sink configuration for the log stream.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
@@ -275,6 +312,9 @@ class LogStream(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can manage your Auth0 log streams.
+
+        !> isPriority is a field that can be set while the resource is being created.
+        This cannot be updated once set. Updating the value might result in a noisy plan.
 
         ## Example Usage
 
@@ -345,6 +385,7 @@ class LogStream(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 is_priority: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  sink: Optional[pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -359,6 +400,7 @@ class LogStream(pulumi.CustomResource):
             __props__ = LogStreamArgs.__new__(LogStreamArgs)
 
             __props__.__dict__["filters"] = filters
+            __props__.__dict__["is_priority"] = is_priority
             __props__.__dict__["name"] = name
             if sink is None and not opts.urn:
                 raise TypeError("Missing required property 'sink'")
@@ -378,6 +420,7 @@ class LogStream(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+            is_priority: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             sink: Optional[pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -390,6 +433,7 @@ class LogStream(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
+        :param pulumi.Input[bool] is_priority: Set True for priority log streams, False for non-priority
         :param pulumi.Input[str] name: Name of the log stream.
         :param pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']] sink: The sink configuration for the log stream.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
@@ -400,6 +444,7 @@ class LogStream(pulumi.CustomResource):
         __props__ = _LogStreamState.__new__(_LogStreamState)
 
         __props__.__dict__["filters"] = filters
+        __props__.__dict__["is_priority"] = is_priority
         __props__.__dict__["name"] = name
         __props__.__dict__["sink"] = sink
         __props__.__dict__["status"] = status
@@ -413,6 +458,14 @@ class LogStream(pulumi.CustomResource):
         Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
         """
         return pulumi.get(self, "filters")
+
+    @property
+    @pulumi.getter(name="isPriority")
+    def is_priority(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Set True for priority log streams, False for non-priority
+        """
+        return pulumi.get(self, "is_priority")
 
     @property
     @pulumi.getter

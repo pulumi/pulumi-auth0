@@ -11,6 +11,56 @@ namespace Pulumi.Auth0
 {
     /// <summary>
     /// With this resource, you can manage Auth0 Custom Token Exchange Profiles
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Below action is created with custom-token-exchange as supported_triggers
+    ///     // This action is then linked using the action_id param to the token-exchange profile
+    ///     var myAction = new Auth0.Action("my_action", new()
+    ///     {
+    ///         Name = "TokenExchange-Action",
+    ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
+    /// 	console.log(""foo"")
+    /// };""
+    /// ",
+    ///         Deploy = true,
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "custom-token-exchange",
+    ///             Version = "v1",
+    ///         },
+    ///     });
+    /// 
+    ///     var myTokenExchangeProfile = new Auth0.TokenExchangeProfile("my_token_exchange_profile", new()
+    ///     {
+    ///         Name = "token-exchange-prof",
+    ///         SubjectTokenType = "https://acme.com/cis-token",
+    ///         ActionId = myAction.Id,
+    ///         Type = "custom_authentication",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported using the token exchange profile ID.
+    /// 
+    /// # 
+    /// 
+    /// Example:
+    /// 
+    /// ```sh
+    /// $ pulumi import auth0:index/tokenExchangeProfile:TokenExchangeProfile profile "tep_XXXXXXXXXXXXXX"
+    /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/tokenExchangeProfile:TokenExchangeProfile")]
     public partial class TokenExchangeProfile : global::Pulumi.CustomResource

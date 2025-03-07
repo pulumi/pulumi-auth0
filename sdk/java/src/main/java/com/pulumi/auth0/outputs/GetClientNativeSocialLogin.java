@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetClientNativeSocialLoginApple;
 import com.pulumi.auth0.outputs.GetClientNativeSocialLoginFacebook;
+import com.pulumi.auth0.outputs.GetClientNativeSocialLoginGoogle;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.Objects;
 public final class GetClientNativeSocialLogin {
     private List<GetClientNativeSocialLoginApple> apples;
     private List<GetClientNativeSocialLoginFacebook> facebooks;
+    private List<GetClientNativeSocialLoginGoogle> googles;
 
     private GetClientNativeSocialLogin() {}
     public List<GetClientNativeSocialLoginApple> apples() {
@@ -21,6 +23,9 @@ public final class GetClientNativeSocialLogin {
     }
     public List<GetClientNativeSocialLoginFacebook> facebooks() {
         return this.facebooks;
+    }
+    public List<GetClientNativeSocialLoginGoogle> googles() {
+        return this.googles;
     }
 
     public static Builder builder() {
@@ -34,11 +39,13 @@ public final class GetClientNativeSocialLogin {
     public static final class Builder {
         private List<GetClientNativeSocialLoginApple> apples;
         private List<GetClientNativeSocialLoginFacebook> facebooks;
+        private List<GetClientNativeSocialLoginGoogle> googles;
         public Builder() {}
         public Builder(GetClientNativeSocialLogin defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apples = defaults.apples;
     	      this.facebooks = defaults.facebooks;
+    	      this.googles = defaults.googles;
         }
 
         @CustomType.Setter
@@ -63,10 +70,22 @@ public final class GetClientNativeSocialLogin {
         public Builder facebooks(GetClientNativeSocialLoginFacebook... facebooks) {
             return facebooks(List.of(facebooks));
         }
+        @CustomType.Setter
+        public Builder googles(List<GetClientNativeSocialLoginGoogle> googles) {
+            if (googles == null) {
+              throw new MissingRequiredPropertyException("GetClientNativeSocialLogin", "googles");
+            }
+            this.googles = googles;
+            return this;
+        }
+        public Builder googles(GetClientNativeSocialLoginGoogle... googles) {
+            return googles(List.of(googles));
+        }
         public GetClientNativeSocialLogin build() {
             final var _resultValue = new GetClientNativeSocialLogin();
             _resultValue.apples = apples;
             _resultValue.facebooks = facebooks;
+            _resultValue.googles = googles;
             return _resultValue;
         }
     }

@@ -7,23 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Data source to retrieve a specific Auth0 user by `userId`.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * // An Auth0 User loaded using its ID.
- * const myUser = auth0.getUser({
- *     userId: "auth0|34fdr23fdsfdfsf",
- * });
- * ```
+ * Data source to retrieve a specific Auth0 user by `userId` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
  */
-export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
+export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getUser:getUser", {
+        "query": args.query,
         "userId": args.userId,
     }, opts);
 }
@@ -33,9 +23,13 @@ export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise
  */
 export interface GetUserArgs {
     /**
+     * Lucene Query for retrieving a user.
+     */
+    query?: string;
+    /**
      * ID of the user.
      */
-    userId: string;
+    userId?: string;
 }
 
 /**
@@ -103,13 +97,17 @@ export interface GetUserResult {
      */
     readonly picture: string;
     /**
+     * Lucene Query for retrieving a user.
+     */
+    readonly query?: string;
+    /**
      * Set of IDs of roles assigned to the user.
      */
     readonly roles: string[];
     /**
      * ID of the user.
      */
-    readonly userId: string;
+    readonly userId?: string;
     /**
      * Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
      */
@@ -124,23 +122,13 @@ export interface GetUserResult {
     readonly verifyEmail: boolean;
 }
 /**
- * Data source to retrieve a specific Auth0 user by `userId`.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * // An Auth0 User loaded using its ID.
- * const myUser = auth0.getUser({
- *     userId: "auth0|34fdr23fdsfdfsf",
- * });
- * ```
+ * Data source to retrieve a specific Auth0 user by `userId` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
  */
-export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserResult> {
+export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getUser:getUser", {
+        "query": args.query,
         "userId": args.userId,
     }, opts);
 }
@@ -150,7 +138,11 @@ export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOutpu
  */
 export interface GetUserOutputArgs {
     /**
+     * Lucene Query for retrieving a user.
+     */
+    query?: pulumi.Input<string>;
+    /**
      * ID of the user.
      */
-    userId: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
 }
