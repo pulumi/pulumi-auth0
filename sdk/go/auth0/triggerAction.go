@@ -81,7 +81,7 @@ type TriggerAction struct {
 	ActionId pulumi.StringOutput `pulumi:"actionId"`
 	// The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`.
+	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.
 	Trigger pulumi.StringOutput `pulumi:"trigger"`
 }
 
@@ -125,7 +125,7 @@ type triggerActionState struct {
 	ActionId *string `pulumi:"actionId"`
 	// The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
 	DisplayName *string `pulumi:"displayName"`
-	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`.
+	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.
 	Trigger *string `pulumi:"trigger"`
 }
 
@@ -134,7 +134,7 @@ type TriggerActionState struct {
 	ActionId pulumi.StringPtrInput
 	// The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
 	DisplayName pulumi.StringPtrInput
-	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`.
+	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.
 	Trigger pulumi.StringPtrInput
 }
 
@@ -147,7 +147,7 @@ type triggerActionArgs struct {
 	ActionId string `pulumi:"actionId"`
 	// The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
 	DisplayName *string `pulumi:"displayName"`
-	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`.
+	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.
 	Trigger string `pulumi:"trigger"`
 }
 
@@ -157,7 +157,7 @@ type TriggerActionArgs struct {
 	ActionId pulumi.StringInput
 	// The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
 	DisplayName pulumi.StringPtrInput
-	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`.
+	// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.
 	Trigger pulumi.StringInput
 }
 
@@ -258,7 +258,7 @@ func (o TriggerActionOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TriggerAction) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`.
+// The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.
 func (o TriggerActionOutput) Trigger() pulumi.StringOutput {
 	return o.ApplyT(func(v *TriggerAction) pulumi.StringOutput { return v.Trigger }).(pulumi.StringOutput)
 }

@@ -14,6 +14,9 @@ import (
 
 // With this resource, you can manage your Auth0 log streams.
 //
+// !> isPriority is a field that can be set while the resource is being created.
+// This cannot be updated once set. Updating the value might result in a noisy plan.
+//
 // ## Example Usage
 //
 // ```go
@@ -93,6 +96,8 @@ type LogStream struct {
 
 	// Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
 	Filters pulumi.StringMapArrayOutput `pulumi:"filters"`
+	// Set True for priority log streams, False for non-priority
+	IsPriority pulumi.BoolPtrOutput `pulumi:"isPriority"`
 	// Name of the log stream.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The sink configuration for the log stream.
@@ -141,6 +146,8 @@ func GetLogStream(ctx *pulumi.Context,
 type logStreamState struct {
 	// Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
 	Filters []map[string]string `pulumi:"filters"`
+	// Set True for priority log streams, False for non-priority
+	IsPriority *bool `pulumi:"isPriority"`
 	// Name of the log stream.
 	Name *string `pulumi:"name"`
 	// The sink configuration for the log stream.
@@ -154,6 +161,8 @@ type logStreamState struct {
 type LogStreamState struct {
 	// Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
 	Filters pulumi.StringMapArrayInput
+	// Set True for priority log streams, False for non-priority
+	IsPriority pulumi.BoolPtrInput
 	// Name of the log stream.
 	Name pulumi.StringPtrInput
 	// The sink configuration for the log stream.
@@ -171,6 +180,8 @@ func (LogStreamState) ElementType() reflect.Type {
 type logStreamArgs struct {
 	// Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
 	Filters []map[string]string `pulumi:"filters"`
+	// Set True for priority log streams, False for non-priority
+	IsPriority *bool `pulumi:"isPriority"`
 	// Name of the log stream.
 	Name *string `pulumi:"name"`
 	// The sink configuration for the log stream.
@@ -185,6 +196,8 @@ type logStreamArgs struct {
 type LogStreamArgs struct {
 	// Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
 	Filters pulumi.StringMapArrayInput
+	// Set True for priority log streams, False for non-priority
+	IsPriority pulumi.BoolPtrInput
 	// Name of the log stream.
 	Name pulumi.StringPtrInput
 	// The sink configuration for the log stream.
@@ -285,6 +298,11 @@ func (o LogStreamOutput) ToLogStreamOutputWithContext(ctx context.Context) LogSt
 // Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
 func (o LogStreamOutput) Filters() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v *LogStream) pulumi.StringMapArrayOutput { return v.Filters }).(pulumi.StringMapArrayOutput)
+}
+
+// Set True for priority log streams, False for non-priority
+func (o LogStreamOutput) IsPriority() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogStream) pulumi.BoolPtrOutput { return v.IsPriority }).(pulumi.BoolPtrOutput)
 }
 
 // Name of the log stream.

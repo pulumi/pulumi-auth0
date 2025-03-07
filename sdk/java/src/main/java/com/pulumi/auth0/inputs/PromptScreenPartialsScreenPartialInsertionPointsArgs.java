@@ -16,6 +16,21 @@ public final class PromptScreenPartialsScreenPartialInsertionPointsArgs extends 
     public static final PromptScreenPartialsScreenPartialInsertionPointsArgs Empty = new PromptScreenPartialsScreenPartialInsertionPointsArgs();
 
     /**
+     * Content that goes inside the form
+     * 
+     */
+    @Import(name="formContent")
+    private @Nullable Output<String> formContent;
+
+    /**
+     * @return Content that goes inside the form
+     * 
+     */
+    public Optional<Output<String>> formContent() {
+        return Optional.ofNullable(this.formContent);
+    }
+
+    /**
      * Content that goes at the end of the form.
      * 
      */
@@ -108,6 +123,7 @@ public final class PromptScreenPartialsScreenPartialInsertionPointsArgs extends 
     private PromptScreenPartialsScreenPartialInsertionPointsArgs() {}
 
     private PromptScreenPartialsScreenPartialInsertionPointsArgs(PromptScreenPartialsScreenPartialInsertionPointsArgs $) {
+        this.formContent = $.formContent;
         this.formContentEnd = $.formContentEnd;
         this.formContentStart = $.formContentStart;
         this.formFooterEnd = $.formFooterEnd;
@@ -132,6 +148,27 @@ public final class PromptScreenPartialsScreenPartialInsertionPointsArgs extends 
 
         public Builder(PromptScreenPartialsScreenPartialInsertionPointsArgs defaults) {
             $ = new PromptScreenPartialsScreenPartialInsertionPointsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param formContent Content that goes inside the form
+         * 
+         * @return builder
+         * 
+         */
+        public Builder formContent(@Nullable Output<String> formContent) {
+            $.formContent = formContent;
+            return this;
+        }
+
+        /**
+         * @param formContent Content that goes inside the form
+         * 
+         * @return builder
+         * 
+         */
+        public Builder formContent(String formContent) {
+            return formContent(Output.of(formContent));
         }
 
         /**

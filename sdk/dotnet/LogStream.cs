@@ -12,6 +12,9 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With this resource, you can manage your Auth0 log streams.
     /// 
+    /// !&gt; isPriority is a field that can be set while the resource is being created.
+    /// This cannot be updated once set. Updating the value might result in a noisy plan.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -93,6 +96,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("filters")]
         public Output<ImmutableArray<ImmutableDictionary<string, string>>> Filters { get; private set; } = null!;
+
+        /// <summary>
+        /// Set True for priority log streams, False for non-priority
+        /// </summary>
+        [Output("isPriority")]
+        public Output<bool?> IsPriority { get; private set; } = null!;
 
         /// <summary>
         /// Name of the log stream.
@@ -177,6 +186,12 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
+        /// Set True for priority log streams, False for non-priority
+        /// </summary>
+        [Input("isPriority")]
+        public Input<bool>? IsPriority { get; set; }
+
+        /// <summary>
         /// Name of the log stream.
         /// </summary>
         [Input("name")]
@@ -219,6 +234,12 @@ namespace Pulumi.Auth0
             get => _filters ?? (_filters = new InputList<ImmutableDictionary<string, string>>());
             set => _filters = value;
         }
+
+        /// <summary>
+        /// Set True for priority log streams, False for non-priority
+        /// </summary>
+        [Input("isPriority")]
+        public Input<bool>? IsPriority { get; set; }
 
         /// <summary>
         /// Name of the log stream.
