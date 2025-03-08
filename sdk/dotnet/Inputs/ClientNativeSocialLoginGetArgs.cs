@@ -18,6 +18,9 @@ namespace Pulumi.Auth0.Inputs
         [Input("facebook")]
         public Input<Inputs.ClientNativeSocialLoginFacebookGetArgs>? Facebook { get; set; }
 
+        [Input("google")]
+        public Input<Inputs.ClientNativeSocialLoginGoogleGetArgs>? Google { get; set; }
+
         public ClientNativeSocialLoginGetArgs()
         {
         }
