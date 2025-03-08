@@ -27,6 +27,11 @@ public final class BrandingThemeColors {
      */
     private @Nullable String bodyText;
     /**
+     * @return Captcha Widget Theme.
+     * 
+     */
+    private @Nullable String captchaWidgetTheme;
+    /**
      * @return Error. Defaults to `#d03c38`.
      * 
      */
@@ -123,6 +128,13 @@ public final class BrandingThemeColors {
      */
     public Optional<String> bodyText() {
         return Optional.ofNullable(this.bodyText);
+    }
+    /**
+     * @return Captcha Widget Theme.
+     * 
+     */
+    public Optional<String> captchaWidgetTheme() {
+        return Optional.ofNullable(this.captchaWidgetTheme);
     }
     /**
      * @return Error. Defaults to `#d03c38`.
@@ -242,6 +254,7 @@ public final class BrandingThemeColors {
         private @Nullable String baseFocusColor;
         private @Nullable String baseHoverColor;
         private @Nullable String bodyText;
+        private @Nullable String captchaWidgetTheme;
         private @Nullable String error;
         private @Nullable String header;
         private @Nullable String icons;
@@ -263,6 +276,7 @@ public final class BrandingThemeColors {
     	      this.baseFocusColor = defaults.baseFocusColor;
     	      this.baseHoverColor = defaults.baseHoverColor;
     	      this.bodyText = defaults.bodyText;
+    	      this.captchaWidgetTheme = defaults.captchaWidgetTheme;
     	      this.error = defaults.error;
     	      this.header = defaults.header;
     	      this.icons = defaults.icons;
@@ -296,6 +310,12 @@ public final class BrandingThemeColors {
         public Builder bodyText(@Nullable String bodyText) {
 
             this.bodyText = bodyText;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder captchaWidgetTheme(@Nullable String captchaWidgetTheme) {
+
+            this.captchaWidgetTheme = captchaWidgetTheme;
             return this;
         }
         @CustomType.Setter
@@ -393,6 +413,7 @@ public final class BrandingThemeColors {
             _resultValue.baseFocusColor = baseFocusColor;
             _resultValue.baseHoverColor = baseHoverColor;
             _resultValue.bodyText = bodyText;
+            _resultValue.captchaWidgetTheme = captchaWidgetTheme;
             _resultValue.error = error;
             _resultValue.header = header;
             _resultValue.icons = icons;

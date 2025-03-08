@@ -6,6 +6,18 @@ import * as utilities from "./utilities";
 
 /**
  * Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // An Auth0 Token Exchange Profile loaded using its ID.
+ * const myProfile = auth0.getTokenExchangeProfile({
+ *     id: "tep_Tnvl88SKv98TkMmr",
+ * });
+ * ```
  */
 export function getTokenExchangeProfile(args: GetTokenExchangeProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetTokenExchangeProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,6 +71,18 @@ export interface GetTokenExchangeProfileResult {
 }
 /**
  * Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // An Auth0 Token Exchange Profile loaded using its ID.
+ * const myProfile = auth0.getTokenExchangeProfile({
+ *     id: "tep_Tnvl88SKv98TkMmr",
+ * });
+ * ```
  */
 export function getTokenExchangeProfileOutput(args: GetTokenExchangeProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTokenExchangeProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

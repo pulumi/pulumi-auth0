@@ -5031,12 +5031,84 @@ public final class Auth0Functions {
     /**
      * Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetTokenExchangeProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Token Exchange Profile loaded using its ID.
+     *         final var myProfile = Auth0Functions.getTokenExchangeProfile(GetTokenExchangeProfileArgs.builder()
+     *             .id("tep_Tnvl88SKv98TkMmr")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetTokenExchangeProfileResult> getTokenExchangeProfile(GetTokenExchangeProfileArgs args) {
         return getTokenExchangeProfile(args, InvokeOptions.Empty);
     }
     /**
      * Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetTokenExchangeProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Token Exchange Profile loaded using its ID.
+     *         final var myProfile = Auth0Functions.getTokenExchangeProfile(GetTokenExchangeProfileArgs.builder()
+     *             .id("tep_Tnvl88SKv98TkMmr")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTokenExchangeProfileResult> getTokenExchangeProfilePlain(GetTokenExchangeProfilePlainArgs args) {
@@ -5045,12 +5117,84 @@ public final class Auth0Functions {
     /**
      * Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetTokenExchangeProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Token Exchange Profile loaded using its ID.
+     *         final var myProfile = Auth0Functions.getTokenExchangeProfile(GetTokenExchangeProfileArgs.builder()
+     *             .id("tep_Tnvl88SKv98TkMmr")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetTokenExchangeProfileResult> getTokenExchangeProfile(GetTokenExchangeProfileArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getTokenExchangeProfile:getTokenExchangeProfile", TypeShape.of(GetTokenExchangeProfileResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetTokenExchangeProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Token Exchange Profile loaded using its ID.
+     *         final var myProfile = Auth0Functions.getTokenExchangeProfile(GetTokenExchangeProfileArgs.builder()
+     *             .id("tep_Tnvl88SKv98TkMmr")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTokenExchangeProfileResult> getTokenExchangeProfile(GetTokenExchangeProfileArgs args, InvokeOutputOptions options) {
@@ -5059,13 +5203,6 @@ public final class Auth0Functions {
     /**
      * Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
      * 
-     */
-    public static CompletableFuture<GetTokenExchangeProfileResult> getTokenExchangeProfilePlain(GetTokenExchangeProfilePlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("auth0:index/getTokenExchangeProfile:getTokenExchangeProfile", TypeShape.of(GetTokenExchangeProfileResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Data source to retrieve a specific Auth0 user by `user_id`.
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -5077,7 +5214,7 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import com.pulumi.auth0.inputs.GetUserArgs;
+     * import com.pulumi.auth0.inputs.GetTokenExchangeProfileArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5091,9 +5228,9 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // An Auth0 User loaded using its ID.
-     *         final var myUser = Auth0Functions.getUser(GetUserArgs.builder()
-     *             .userId("auth0|34fdr23fdsfdfsf")
+     *         // An Auth0 Token Exchange Profile loaded using its ID.
+     *         final var myProfile = Auth0Functions.getTokenExchangeProfile(GetTokenExchangeProfileArgs.builder()
+     *             .id("tep_Tnvl88SKv98TkMmr")
      *             .build());
      * 
      *     }
@@ -5101,178 +5238,55 @@ public final class Auth0Functions {
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetTokenExchangeProfileResult> getTokenExchangeProfilePlain(GetTokenExchangeProfilePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getTokenExchangeProfile:getTokenExchangeProfile", TypeShape.of(GetTokenExchangeProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
+     * 
+     */
+    public static Output<GetUserResult> getUser() {
+        return getUser(GetUserArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
+     * 
+     */
+    public static CompletableFuture<GetUserResult> getUserPlain() {
+        return getUserPlain(GetUserPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args) {
         return getUser(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 user by `user_id`.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import com.pulumi.auth0.inputs.GetUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         // An Auth0 User loaded using its ID.
-     *         final var myUser = Auth0Functions.getUser(GetUserArgs.builder()
-     *             .userId("auth0|34fdr23fdsfdfsf")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
         return getUserPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 user by `user_id`.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import com.pulumi.auth0.inputs.GetUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         // An Auth0 User loaded using its ID.
-     *         final var myUser = Auth0Functions.getUser(GetUserArgs.builder()
-     *             .userId("auth0|34fdr23fdsfdfsf")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 user by `user_id`.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import com.pulumi.auth0.inputs.GetUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         // An Auth0 User loaded using its ID.
-     *         final var myUser = Auth0Functions.getUser(GetUserArgs.builder()
-     *             .userId("auth0|34fdr23fdsfdfsf")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 user by `user_id`.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import com.pulumi.auth0.inputs.GetUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         // An Auth0 User loaded using its ID.
-     *         final var myUser = Auth0Functions.getUser(GetUserArgs.builder()
-     *             .userId("auth0|34fdr23fdsfdfsf")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
