@@ -193,6 +193,10 @@ func TestConnectionMigration(t *testing.T) {
                     "options"
                 ],
                 "detailedDiff": {
+                    "options.globalTokenRevocationJwtIss": {
+                    },
+                    "options.globalTokenRevocationJwtSub": {
+                    },
                     "options.fieldsMap": {
                         "kind": "DELETE"
                     },
@@ -401,6 +405,8 @@ func TestConnectionMigration(t *testing.T) {
                             "api.example.com",
                             "example.com"
                         ],
+                        "globalTokenRevocationJwtIss": "",
+                        "globalTokenRevocationJwtSub": "",
                         "apiEnableUsers": false,
                         "appId": "",
                         "attributeMap": null,

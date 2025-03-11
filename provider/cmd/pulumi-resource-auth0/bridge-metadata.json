@@ -310,6 +310,9 @@
                                 },
                                 "facebook": {
                                     "maxItemsOne": true
+                                },
+                                "google": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -1364,6 +1367,9 @@
                                     "maxItemsOne": false
                                 },
                                 "facebook": {
+                                    "maxItemsOne": false
+                                },
+                                "google": {
                                     "maxItemsOne": false
                                 }
                             }

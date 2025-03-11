@@ -28,7 +28,7 @@ class PromptPartialsArgs:
                  secondary_actions_start: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PromptPartials resource.
-        :param pulumi.Input[str] prompt: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+        :param pulumi.Input[str] prompt: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         :param pulumi.Input[str] form_content_end: Content that goes at the end of the form.
         :param pulumi.Input[str] form_content_start: Content that goes at the start of the form.
         :param pulumi.Input[str] form_footer_end: Footer content for the end of the footer.
@@ -76,7 +76,7 @@ class PromptPartialsArgs:
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def prompt(self) -> pulumi.Input[str]:
         """
-        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         """
         return pulumi.get(self, "prompt")
 
@@ -179,7 +179,7 @@ class _PromptPartialsState:
         :param pulumi.Input[str] form_content_start: Content that goes at the start of the form.
         :param pulumi.Input[str] form_footer_end: Footer content for the end of the footer.
         :param pulumi.Input[str] form_footer_start: Footer content for the start of the footer.
-        :param pulumi.Input[str] prompt: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+        :param pulumi.Input[str] prompt: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         :param pulumi.Input[str] secondary_actions_end: Actions that go at the end of secondary actions.
         :param pulumi.Input[str] secondary_actions_start: Actions that go at the start of secondary actions.
         """
@@ -276,7 +276,7 @@ class _PromptPartialsState:
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def prompt(self) -> Optional[pulumi.Input[str]]:
         """
-        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         """
         return pulumi.get(self, "prompt")
 
@@ -364,7 +364,7 @@ class PromptPartials(pulumi.CustomResource):
         :param pulumi.Input[str] form_content_start: Content that goes at the start of the form.
         :param pulumi.Input[str] form_footer_end: Footer content for the end of the footer.
         :param pulumi.Input[str] form_footer_start: Footer content for the start of the footer.
-        :param pulumi.Input[str] prompt: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+        :param pulumi.Input[str] prompt: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         :param pulumi.Input[str] secondary_actions_end: Actions that go at the end of secondary actions.
         :param pulumi.Input[str] secondary_actions_start: Actions that go at the start of secondary actions.
         """
@@ -476,7 +476,7 @@ class PromptPartials(pulumi.CustomResource):
         :param pulumi.Input[str] form_content_start: Content that goes at the start of the form.
         :param pulumi.Input[str] form_footer_end: Footer content for the end of the footer.
         :param pulumi.Input[str] form_footer_start: Footer content for the start of the footer.
-        :param pulumi.Input[str] prompt: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+        :param pulumi.Input[str] prompt: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         :param pulumi.Input[str] secondary_actions_end: Actions that go at the end of secondary actions.
         :param pulumi.Input[str] secondary_actions_start: Actions that go at the start of secondary actions.
         """
@@ -534,7 +534,7 @@ class PromptPartials(pulumi.CustomResource):
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
     def prompt(self) -> pulumi.Output[str]:
         """
-        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+        The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         """
         return pulumi.get(self, "prompt")
 

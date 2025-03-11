@@ -17,6 +17,75 @@ import javax.annotation.Nullable;
 /**
  * With this resource, you can manage Auth0 Custom Token Exchange Profiles
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.auth0.Action;
+ * import com.pulumi.auth0.ActionArgs;
+ * import com.pulumi.auth0.inputs.ActionSupportedTriggersArgs;
+ * import com.pulumi.auth0.TokenExchangeProfile;
+ * import com.pulumi.auth0.TokenExchangeProfileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Below action is created with custom-token-exchange as supported_triggers
+ *         // This action is then linked using the action_id param to the token-exchange profile
+ *         var myAction = new Action("myAction", ActionArgs.builder()
+ *             .name("TokenExchange-Action")
+ *             .code("""
+ * exports.onContinuePostLogin = async (event, api) => {
+ * 	console.log("foo")
+ * };"
+ *             """)
+ *             .deploy(true)
+ *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
+ *                 .id("custom-token-exchange")
+ *                 .version("v1")
+ *                 .build())
+ *             .build());
+ * 
+ *         var myTokenExchangeProfile = new TokenExchangeProfile("myTokenExchangeProfile", TokenExchangeProfileArgs.builder()
+ *             .name("token-exchange-prof")
+ *             .subjectTokenType("https://acme.com/cis-token")
+ *             .actionId(myAction.id())
+ *             .type("custom_authentication")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * This resource can be imported using the token exchange profile ID.
+ * 
+ * # 
+ * 
+ * Example:
+ * 
+ * ```sh
+ * $ pulumi import auth0:index/tokenExchangeProfile:TokenExchangeProfile profile &#34;tep_XXXXXXXXXXXXXX&#34;
+ * ```
+ * 
  */
 @ResourceType(type="auth0:index/tokenExchangeProfile:TokenExchangeProfile")
 public class TokenExchangeProfile extends com.pulumi.resources.CustomResource {

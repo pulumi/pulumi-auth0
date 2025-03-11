@@ -108,7 +108,7 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
      * 
      * @deprecated
      * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
@@ -119,7 +119,7 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> prompt;
 
     /**
-     * @return The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+     * @return The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
      * 
      * @deprecated
      * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
@@ -323,7 +323,7 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param prompt The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+         * @param prompt The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class PromptPartialsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param prompt The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+         * @param prompt The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
          * 
          * @return builder
          * 

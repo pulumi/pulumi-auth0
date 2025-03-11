@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.ClientNativeSocialLoginApple;
 import com.pulumi.auth0.outputs.ClientNativeSocialLoginFacebook;
+import com.pulumi.auth0.outputs.ClientNativeSocialLoginGoogle;
 import com.pulumi.core.annotations.CustomType;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 public final class ClientNativeSocialLogin {
     private @Nullable ClientNativeSocialLoginApple apple;
     private @Nullable ClientNativeSocialLoginFacebook facebook;
+    private @Nullable ClientNativeSocialLoginGoogle google;
 
     private ClientNativeSocialLogin() {}
     public Optional<ClientNativeSocialLoginApple> apple() {
@@ -21,6 +23,9 @@ public final class ClientNativeSocialLogin {
     }
     public Optional<ClientNativeSocialLoginFacebook> facebook() {
         return Optional.ofNullable(this.facebook);
+    }
+    public Optional<ClientNativeSocialLoginGoogle> google() {
+        return Optional.ofNullable(this.google);
     }
 
     public static Builder builder() {
@@ -34,11 +39,13 @@ public final class ClientNativeSocialLogin {
     public static final class Builder {
         private @Nullable ClientNativeSocialLoginApple apple;
         private @Nullable ClientNativeSocialLoginFacebook facebook;
+        private @Nullable ClientNativeSocialLoginGoogle google;
         public Builder() {}
         public Builder(ClientNativeSocialLogin defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apple = defaults.apple;
     	      this.facebook = defaults.facebook;
+    	      this.google = defaults.google;
         }
 
         @CustomType.Setter
@@ -53,10 +60,17 @@ public final class ClientNativeSocialLogin {
             this.facebook = facebook;
             return this;
         }
+        @CustomType.Setter
+        public Builder google(@Nullable ClientNativeSocialLoginGoogle google) {
+
+            this.google = google;
+            return this;
+        }
         public ClientNativeSocialLogin build() {
             final var _resultValue = new ClientNativeSocialLogin();
             _resultValue.apple = apple;
             _resultValue.facebook = facebook;
+            _resultValue.google = google;
             return _resultValue;
         }
     }

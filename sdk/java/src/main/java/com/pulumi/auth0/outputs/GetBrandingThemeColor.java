@@ -26,6 +26,11 @@ public final class GetBrandingThemeColor {
      */
     private String bodyText;
     /**
+     * @return Captcha Widget Theme.
+     * 
+     */
+    private String captchaWidgetTheme;
+    /**
      * @return Error. Defaults to `#d03c38`.
      * 
      */
@@ -122,6 +127,13 @@ public final class GetBrandingThemeColor {
      */
     public String bodyText() {
         return this.bodyText;
+    }
+    /**
+     * @return Captcha Widget Theme.
+     * 
+     */
+    public String captchaWidgetTheme() {
+        return this.captchaWidgetTheme;
     }
     /**
      * @return Error. Defaults to `#d03c38`.
@@ -241,6 +253,7 @@ public final class GetBrandingThemeColor {
         private String baseFocusColor;
         private String baseHoverColor;
         private String bodyText;
+        private String captchaWidgetTheme;
         private String error;
         private String header;
         private String icons;
@@ -262,6 +275,7 @@ public final class GetBrandingThemeColor {
     	      this.baseFocusColor = defaults.baseFocusColor;
     	      this.baseHoverColor = defaults.baseHoverColor;
     	      this.bodyText = defaults.bodyText;
+    	      this.captchaWidgetTheme = defaults.captchaWidgetTheme;
     	      this.error = defaults.error;
     	      this.header = defaults.header;
     	      this.icons = defaults.icons;
@@ -301,6 +315,14 @@ public final class GetBrandingThemeColor {
               throw new MissingRequiredPropertyException("GetBrandingThemeColor", "bodyText");
             }
             this.bodyText = bodyText;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder captchaWidgetTheme(String captchaWidgetTheme) {
+            if (captchaWidgetTheme == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "captchaWidgetTheme");
+            }
+            this.captchaWidgetTheme = captchaWidgetTheme;
             return this;
         }
         @CustomType.Setter
@@ -428,6 +450,7 @@ public final class GetBrandingThemeColor {
             _resultValue.baseFocusColor = baseFocusColor;
             _resultValue.baseHoverColor = baseHoverColor;
             _resultValue.bodyText = bodyText;
+            _resultValue.captchaWidgetTheme = captchaWidgetTheme;
             _resultValue.error = error;
             _resultValue.header = header;
             _resultValue.icons = icons;

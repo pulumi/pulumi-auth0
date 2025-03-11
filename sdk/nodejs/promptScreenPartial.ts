@@ -28,6 +28,13 @@ import * as utilities from "./utilities";
  *         formContentEnd: "<div>Form Content End</div>",
  *     },
  * });
+ * const customized_consent = new auth0.PromptScreenPartial("customized-consent", {
+ *     promptType: "customized-consent",
+ *     screenName: "customized-consent",
+ *     insertionPoints: {
+ *         formContent: "<div>Form Content</div>",
+ *     },
+ * });
  * ```
  *
  * ## Import
@@ -83,7 +90,7 @@ export class PromptScreenPartial extends pulumi.CustomResource {
      */
     public readonly insertionPoints!: pulumi.Output<outputs.PromptScreenPartialInsertionPoints | undefined>;
     /**
-     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
      */
     public readonly promptType!: pulumi.Output<string>;
     /**
@@ -133,7 +140,7 @@ export interface PromptScreenPartialState {
      */
     insertionPoints?: pulumi.Input<inputs.PromptScreenPartialInsertionPoints>;
     /**
-     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
      */
     promptType?: pulumi.Input<string>;
     /**
@@ -151,7 +158,7 @@ export interface PromptScreenPartialArgs {
      */
     insertionPoints?: pulumi.Input<inputs.PromptScreenPartialInsertionPoints>;
     /**
-     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
      */
     promptType: pulumi.Input<string>;
     /**

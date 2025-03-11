@@ -11,6 +11,11 @@ import java.util.Objects;
 @CustomType
 public final class GetPromptScreenPartialsScreenPartialInsertionPoint {
     /**
+     * @return Content that goes inside the form
+     * 
+     */
+    private String formContent;
+    /**
      * @return Content that goes at the end of the form.
      * 
      */
@@ -42,6 +47,13 @@ public final class GetPromptScreenPartialsScreenPartialInsertionPoint {
     private String secondaryActionsStart;
 
     private GetPromptScreenPartialsScreenPartialInsertionPoint() {}
+    /**
+     * @return Content that goes inside the form
+     * 
+     */
+    public String formContent() {
+        return this.formContent;
+    }
     /**
      * @return Content that goes at the end of the form.
      * 
@@ -94,6 +106,7 @@ public final class GetPromptScreenPartialsScreenPartialInsertionPoint {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String formContent;
         private String formContentEnd;
         private String formContentStart;
         private String formFooterEnd;
@@ -103,6 +116,7 @@ public final class GetPromptScreenPartialsScreenPartialInsertionPoint {
         public Builder() {}
         public Builder(GetPromptScreenPartialsScreenPartialInsertionPoint defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.formContent = defaults.formContent;
     	      this.formContentEnd = defaults.formContentEnd;
     	      this.formContentStart = defaults.formContentStart;
     	      this.formFooterEnd = defaults.formFooterEnd;
@@ -111,6 +125,14 @@ public final class GetPromptScreenPartialsScreenPartialInsertionPoint {
     	      this.secondaryActionsStart = defaults.secondaryActionsStart;
         }
 
+        @CustomType.Setter
+        public Builder formContent(String formContent) {
+            if (formContent == null) {
+              throw new MissingRequiredPropertyException("GetPromptScreenPartialsScreenPartialInsertionPoint", "formContent");
+            }
+            this.formContent = formContent;
+            return this;
+        }
         @CustomType.Setter
         public Builder formContentEnd(String formContentEnd) {
             if (formContentEnd == null) {
@@ -161,6 +183,7 @@ public final class GetPromptScreenPartialsScreenPartialInsertionPoint {
         }
         public GetPromptScreenPartialsScreenPartialInsertionPoint build() {
             final var _resultValue = new GetPromptScreenPartialsScreenPartialInsertionPoint();
+            _resultValue.formContent = formContent;
             _resultValue.formContentEnd = formContentEnd;
             _resultValue.formContentStart = formContentStart;
             _resultValue.formFooterEnd = formFooterEnd;

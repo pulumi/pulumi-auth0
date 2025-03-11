@@ -15,6 +15,21 @@ public final class GetPromptScreenPartialsScreenPartialInsertionPointArgs extend
     public static final GetPromptScreenPartialsScreenPartialInsertionPointArgs Empty = new GetPromptScreenPartialsScreenPartialInsertionPointArgs();
 
     /**
+     * Content that goes inside the form
+     * 
+     */
+    @Import(name="formContent", required=true)
+    private Output<String> formContent;
+
+    /**
+     * @return Content that goes inside the form
+     * 
+     */
+    public Output<String> formContent() {
+        return this.formContent;
+    }
+
+    /**
      * Content that goes at the end of the form.
      * 
      */
@@ -107,6 +122,7 @@ public final class GetPromptScreenPartialsScreenPartialInsertionPointArgs extend
     private GetPromptScreenPartialsScreenPartialInsertionPointArgs() {}
 
     private GetPromptScreenPartialsScreenPartialInsertionPointArgs(GetPromptScreenPartialsScreenPartialInsertionPointArgs $) {
+        this.formContent = $.formContent;
         this.formContentEnd = $.formContentEnd;
         this.formContentStart = $.formContentStart;
         this.formFooterEnd = $.formFooterEnd;
@@ -131,6 +147,27 @@ public final class GetPromptScreenPartialsScreenPartialInsertionPointArgs extend
 
         public Builder(GetPromptScreenPartialsScreenPartialInsertionPointArgs defaults) {
             $ = new GetPromptScreenPartialsScreenPartialInsertionPointArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param formContent Content that goes inside the form
+         * 
+         * @return builder
+         * 
+         */
+        public Builder formContent(Output<String> formContent) {
+            $.formContent = formContent;
+            return this;
+        }
+
+        /**
+         * @param formContent Content that goes inside the form
+         * 
+         * @return builder
+         * 
+         */
+        public Builder formContent(String formContent) {
+            return formContent(Output.of(formContent));
         }
 
         /**
@@ -260,6 +297,9 @@ public final class GetPromptScreenPartialsScreenPartialInsertionPointArgs extend
         }
 
         public GetPromptScreenPartialsScreenPartialInsertionPointArgs build() {
+            if ($.formContent == null) {
+                throw new MissingRequiredPropertyException("GetPromptScreenPartialsScreenPartialInsertionPointArgs", "formContent");
+            }
             if ($.formContentEnd == null) {
                 throw new MissingRequiredPropertyException("GetPromptScreenPartialsScreenPartialInsertionPointArgs", "formContentEnd");
             }
