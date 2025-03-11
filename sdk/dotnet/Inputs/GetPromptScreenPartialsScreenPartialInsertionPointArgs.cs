@@ -13,6 +13,12 @@ namespace Pulumi.Auth0.Inputs
     public sealed class GetPromptScreenPartialsScreenPartialInsertionPointInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Content that goes inside the form
+        /// </summary>
+        [Input("formContent", required: true)]
+        public Input<string> FormContent { get; set; } = null!;
+
+        /// <summary>
         /// Content that goes at the end of the form.
         /// </summary>
         [Input("formContentEnd", required: true)]

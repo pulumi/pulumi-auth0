@@ -61,6 +61,21 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Captcha Widget Theme.
+     * 
+     */
+    @Import(name="captchaWidgetTheme")
+    private @Nullable Output<String> captchaWidgetTheme;
+
+    /**
+     * @return Captcha Widget Theme.
+     * 
+     */
+    public Optional<Output<String>> captchaWidgetTheme() {
+        return Optional.ofNullable(this.captchaWidgetTheme);
+    }
+
+    /**
      * Error. Defaults to `#d03c38`.
      * 
      */
@@ -291,6 +306,7 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         this.baseFocusColor = $.baseFocusColor;
         this.baseHoverColor = $.baseHoverColor;
         this.bodyText = $.bodyText;
+        this.captchaWidgetTheme = $.captchaWidgetTheme;
         this.error = $.error;
         this.header = $.header;
         this.icons = $.icons;
@@ -387,6 +403,27 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
          */
         public Builder bodyText(String bodyText) {
             return bodyText(Output.of(bodyText));
+        }
+
+        /**
+         * @param captchaWidgetTheme Captcha Widget Theme.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder captchaWidgetTheme(@Nullable Output<String> captchaWidgetTheme) {
+            $.captchaWidgetTheme = captchaWidgetTheme;
+            return this;
+        }
+
+        /**
+         * @param captchaWidgetTheme Captcha Widget Theme.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder captchaWidgetTheme(String captchaWidgetTheme) {
+            return captchaWidgetTheme(Output.of(captchaWidgetTheme));
         }
 
         /**

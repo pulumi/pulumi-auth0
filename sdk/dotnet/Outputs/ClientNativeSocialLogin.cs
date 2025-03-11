@@ -15,15 +15,19 @@ namespace Pulumi.Auth0.Outputs
     {
         public readonly Outputs.ClientNativeSocialLoginApple? Apple;
         public readonly Outputs.ClientNativeSocialLoginFacebook? Facebook;
+        public readonly Outputs.ClientNativeSocialLoginGoogle? Google;
 
         [OutputConstructor]
         private ClientNativeSocialLogin(
             Outputs.ClientNativeSocialLoginApple? apple,
 
-            Outputs.ClientNativeSocialLoginFacebook? facebook)
+            Outputs.ClientNativeSocialLoginFacebook? facebook,
+
+            Outputs.ClientNativeSocialLoginGoogle? google)
         {
             Apple = apple;
             Facebook = facebook;
+            Google = google;
         }
     }
 }

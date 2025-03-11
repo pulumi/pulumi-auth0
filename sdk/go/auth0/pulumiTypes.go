@@ -2064,6 +2064,8 @@ type BrandingThemeColors struct {
 	BaseHoverColor *string `pulumi:"baseHoverColor"`
 	// Body text. Defaults to `#1e212a`.
 	BodyText *string `pulumi:"bodyText"`
+	// Captcha Widget Theme.
+	CaptchaWidgetTheme *string `pulumi:"captchaWidgetTheme"`
 	// Error. Defaults to `#d03c38`.
 	Error *string `pulumi:"error"`
 	// Header. Defaults to `#1e212a`.
@@ -2114,6 +2116,8 @@ type BrandingThemeColorsArgs struct {
 	BaseHoverColor pulumi.StringPtrInput `pulumi:"baseHoverColor"`
 	// Body text. Defaults to `#1e212a`.
 	BodyText pulumi.StringPtrInput `pulumi:"bodyText"`
+	// Captcha Widget Theme.
+	CaptchaWidgetTheme pulumi.StringPtrInput `pulumi:"captchaWidgetTheme"`
 	// Error. Defaults to `#d03c38`.
 	Error pulumi.StringPtrInput `pulumi:"error"`
 	// Header. Defaults to `#1e212a`.
@@ -2236,6 +2240,11 @@ func (o BrandingThemeColorsOutput) BaseHoverColor() pulumi.StringPtrOutput {
 // Body text. Defaults to `#1e212a`.
 func (o BrandingThemeColorsOutput) BodyText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BrandingThemeColors) *string { return v.BodyText }).(pulumi.StringPtrOutput)
+}
+
+// Captcha Widget Theme.
+func (o BrandingThemeColorsOutput) CaptchaWidgetTheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeColors) *string { return v.CaptchaWidgetTheme }).(pulumi.StringPtrOutput)
 }
 
 // Error. Defaults to `#d03c38`.
@@ -2364,6 +2373,16 @@ func (o BrandingThemeColorsPtrOutput) BodyText() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.BodyText
+	}).(pulumi.StringPtrOutput)
+}
+
+// Captcha Widget Theme.
+func (o BrandingThemeColorsPtrOutput) CaptchaWidgetTheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BrandingThemeColors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaptchaWidgetTheme
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12195,6 +12214,7 @@ func (o ClientMobileIosPtrOutput) TeamId() pulumi.StringPtrOutput {
 type ClientNativeSocialLogin struct {
 	Apple    *ClientNativeSocialLoginApple    `pulumi:"apple"`
 	Facebook *ClientNativeSocialLoginFacebook `pulumi:"facebook"`
+	Google   *ClientNativeSocialLoginGoogle   `pulumi:"google"`
 }
 
 // ClientNativeSocialLoginInput is an input type that accepts ClientNativeSocialLoginArgs and ClientNativeSocialLoginOutput values.
@@ -12211,6 +12231,7 @@ type ClientNativeSocialLoginInput interface {
 type ClientNativeSocialLoginArgs struct {
 	Apple    ClientNativeSocialLoginApplePtrInput    `pulumi:"apple"`
 	Facebook ClientNativeSocialLoginFacebookPtrInput `pulumi:"facebook"`
+	Google   ClientNativeSocialLoginGooglePtrInput   `pulumi:"google"`
 }
 
 func (ClientNativeSocialLoginArgs) ElementType() reflect.Type {
@@ -12298,6 +12319,10 @@ func (o ClientNativeSocialLoginOutput) Facebook() ClientNativeSocialLoginFaceboo
 	return o.ApplyT(func(v ClientNativeSocialLogin) *ClientNativeSocialLoginFacebook { return v.Facebook }).(ClientNativeSocialLoginFacebookPtrOutput)
 }
 
+func (o ClientNativeSocialLoginOutput) Google() ClientNativeSocialLoginGooglePtrOutput {
+	return o.ApplyT(func(v ClientNativeSocialLogin) *ClientNativeSocialLoginGoogle { return v.Google }).(ClientNativeSocialLoginGooglePtrOutput)
+}
+
 type ClientNativeSocialLoginPtrOutput struct{ *pulumi.OutputState }
 
 func (ClientNativeSocialLoginPtrOutput) ElementType() reflect.Type {
@@ -12338,6 +12363,15 @@ func (o ClientNativeSocialLoginPtrOutput) Facebook() ClientNativeSocialLoginFace
 		}
 		return v.Facebook
 	}).(ClientNativeSocialLoginFacebookPtrOutput)
+}
+
+func (o ClientNativeSocialLoginPtrOutput) Google() ClientNativeSocialLoginGooglePtrOutput {
+	return o.ApplyT(func(v *ClientNativeSocialLogin) *ClientNativeSocialLoginGoogle {
+		if v == nil {
+			return nil
+		}
+		return v.Google
+	}).(ClientNativeSocialLoginGooglePtrOutput)
 }
 
 type ClientNativeSocialLoginApple struct {
@@ -12599,6 +12633,139 @@ func (o ClientNativeSocialLoginFacebookPtrOutput) Elem() ClientNativeSocialLogin
 
 func (o ClientNativeSocialLoginFacebookPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientNativeSocialLoginFacebook) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClientNativeSocialLoginGoogle struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ClientNativeSocialLoginGoogleInput is an input type that accepts ClientNativeSocialLoginGoogleArgs and ClientNativeSocialLoginGoogleOutput values.
+// You can construct a concrete instance of `ClientNativeSocialLoginGoogleInput` via:
+//
+//	ClientNativeSocialLoginGoogleArgs{...}
+type ClientNativeSocialLoginGoogleInput interface {
+	pulumi.Input
+
+	ToClientNativeSocialLoginGoogleOutput() ClientNativeSocialLoginGoogleOutput
+	ToClientNativeSocialLoginGoogleOutputWithContext(context.Context) ClientNativeSocialLoginGoogleOutput
+}
+
+type ClientNativeSocialLoginGoogleArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ClientNativeSocialLoginGoogleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientNativeSocialLoginGoogle)(nil)).Elem()
+}
+
+func (i ClientNativeSocialLoginGoogleArgs) ToClientNativeSocialLoginGoogleOutput() ClientNativeSocialLoginGoogleOutput {
+	return i.ToClientNativeSocialLoginGoogleOutputWithContext(context.Background())
+}
+
+func (i ClientNativeSocialLoginGoogleArgs) ToClientNativeSocialLoginGoogleOutputWithContext(ctx context.Context) ClientNativeSocialLoginGoogleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientNativeSocialLoginGoogleOutput)
+}
+
+func (i ClientNativeSocialLoginGoogleArgs) ToClientNativeSocialLoginGooglePtrOutput() ClientNativeSocialLoginGooglePtrOutput {
+	return i.ToClientNativeSocialLoginGooglePtrOutputWithContext(context.Background())
+}
+
+func (i ClientNativeSocialLoginGoogleArgs) ToClientNativeSocialLoginGooglePtrOutputWithContext(ctx context.Context) ClientNativeSocialLoginGooglePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientNativeSocialLoginGoogleOutput).ToClientNativeSocialLoginGooglePtrOutputWithContext(ctx)
+}
+
+// ClientNativeSocialLoginGooglePtrInput is an input type that accepts ClientNativeSocialLoginGoogleArgs, ClientNativeSocialLoginGooglePtr and ClientNativeSocialLoginGooglePtrOutput values.
+// You can construct a concrete instance of `ClientNativeSocialLoginGooglePtrInput` via:
+//
+//	        ClientNativeSocialLoginGoogleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientNativeSocialLoginGooglePtrInput interface {
+	pulumi.Input
+
+	ToClientNativeSocialLoginGooglePtrOutput() ClientNativeSocialLoginGooglePtrOutput
+	ToClientNativeSocialLoginGooglePtrOutputWithContext(context.Context) ClientNativeSocialLoginGooglePtrOutput
+}
+
+type clientNativeSocialLoginGooglePtrType ClientNativeSocialLoginGoogleArgs
+
+func ClientNativeSocialLoginGooglePtr(v *ClientNativeSocialLoginGoogleArgs) ClientNativeSocialLoginGooglePtrInput {
+	return (*clientNativeSocialLoginGooglePtrType)(v)
+}
+
+func (*clientNativeSocialLoginGooglePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientNativeSocialLoginGoogle)(nil)).Elem()
+}
+
+func (i *clientNativeSocialLoginGooglePtrType) ToClientNativeSocialLoginGooglePtrOutput() ClientNativeSocialLoginGooglePtrOutput {
+	return i.ToClientNativeSocialLoginGooglePtrOutputWithContext(context.Background())
+}
+
+func (i *clientNativeSocialLoginGooglePtrType) ToClientNativeSocialLoginGooglePtrOutputWithContext(ctx context.Context) ClientNativeSocialLoginGooglePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientNativeSocialLoginGooglePtrOutput)
+}
+
+type ClientNativeSocialLoginGoogleOutput struct{ *pulumi.OutputState }
+
+func (ClientNativeSocialLoginGoogleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientNativeSocialLoginGoogle)(nil)).Elem()
+}
+
+func (o ClientNativeSocialLoginGoogleOutput) ToClientNativeSocialLoginGoogleOutput() ClientNativeSocialLoginGoogleOutput {
+	return o
+}
+
+func (o ClientNativeSocialLoginGoogleOutput) ToClientNativeSocialLoginGoogleOutputWithContext(ctx context.Context) ClientNativeSocialLoginGoogleOutput {
+	return o
+}
+
+func (o ClientNativeSocialLoginGoogleOutput) ToClientNativeSocialLoginGooglePtrOutput() ClientNativeSocialLoginGooglePtrOutput {
+	return o.ToClientNativeSocialLoginGooglePtrOutputWithContext(context.Background())
+}
+
+func (o ClientNativeSocialLoginGoogleOutput) ToClientNativeSocialLoginGooglePtrOutputWithContext(ctx context.Context) ClientNativeSocialLoginGooglePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientNativeSocialLoginGoogle) *ClientNativeSocialLoginGoogle {
+		return &v
+	}).(ClientNativeSocialLoginGooglePtrOutput)
+}
+
+func (o ClientNativeSocialLoginGoogleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientNativeSocialLoginGoogle) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClientNativeSocialLoginGooglePtrOutput struct{ *pulumi.OutputState }
+
+func (ClientNativeSocialLoginGooglePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientNativeSocialLoginGoogle)(nil)).Elem()
+}
+
+func (o ClientNativeSocialLoginGooglePtrOutput) ToClientNativeSocialLoginGooglePtrOutput() ClientNativeSocialLoginGooglePtrOutput {
+	return o
+}
+
+func (o ClientNativeSocialLoginGooglePtrOutput) ToClientNativeSocialLoginGooglePtrOutputWithContext(ctx context.Context) ClientNativeSocialLoginGooglePtrOutput {
+	return o
+}
+
+func (o ClientNativeSocialLoginGooglePtrOutput) Elem() ClientNativeSocialLoginGoogleOutput {
+	return o.ApplyT(func(v *ClientNativeSocialLoginGoogle) ClientNativeSocialLoginGoogle {
+		if v != nil {
+			return *v
+		}
+		var ret ClientNativeSocialLoginGoogle
+		return ret
+	}).(ClientNativeSocialLoginGoogleOutput)
+}
+
+func (o ClientNativeSocialLoginGooglePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientNativeSocialLoginGoogle) *bool {
 		if v == nil {
 			return nil
 		}
@@ -13379,6 +13546,10 @@ type ConnectionOptions struct {
 	GatewayAuthentication *ConnectionOptionsGatewayAuthentication `pulumi:"gatewayAuthentication"`
 	// Defines a custom sms gateway to use instead of Twilio.
 	GatewayUrl *string `pulumi:"gatewayUrl"`
+	// Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+	GlobalTokenRevocationJwtIss *string `pulumi:"globalTokenRevocationJwtIss"`
+	// Specifies the subject of the JWT used for global token revocation for the SAML connection.
+	GlobalTokenRevocationJwtSub *string `pulumi:"globalTokenRevocationJwtSub"`
 	// Icon URL.
 	IconUrl *string `pulumi:"iconUrl"`
 	// Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
@@ -13581,6 +13752,10 @@ type ConnectionOptionsArgs struct {
 	GatewayAuthentication ConnectionOptionsGatewayAuthenticationPtrInput `pulumi:"gatewayAuthentication"`
 	// Defines a custom sms gateway to use instead of Twilio.
 	GatewayUrl pulumi.StringPtrInput `pulumi:"gatewayUrl"`
+	// Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+	GlobalTokenRevocationJwtIss pulumi.StringPtrInput `pulumi:"globalTokenRevocationJwtIss"`
+	// Specifies the subject of the JWT used for global token revocation for the SAML connection.
+	GlobalTokenRevocationJwtSub pulumi.StringPtrInput `pulumi:"globalTokenRevocationJwtSub"`
 	// Icon URL.
 	IconUrl pulumi.StringPtrInput `pulumi:"iconUrl"`
 	// Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
@@ -13951,6 +14126,16 @@ func (o ConnectionOptionsOutput) GatewayAuthentication() ConnectionOptionsGatewa
 // Defines a custom sms gateway to use instead of Twilio.
 func (o ConnectionOptionsOutput) GatewayUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.GatewayUrl }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+func (o ConnectionOptionsOutput) GlobalTokenRevocationJwtIss() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.GlobalTokenRevocationJwtIss }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the subject of the JWT used for global token revocation for the SAML connection.
+func (o ConnectionOptionsOutput) GlobalTokenRevocationJwtSub() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.GlobalTokenRevocationJwtSub }).(pulumi.StringPtrOutput)
 }
 
 // Icon URL.
@@ -14621,6 +14806,26 @@ func (o ConnectionOptionsPtrOutput) GatewayUrl() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.GatewayUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+func (o ConnectionOptionsPtrOutput) GlobalTokenRevocationJwtIss() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalTokenRevocationJwtIss
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the subject of the JWT used for global token revocation for the SAML connection.
+func (o ConnectionOptionsPtrOutput) GlobalTokenRevocationJwtSub() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalTokenRevocationJwtSub
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24523,6 +24728,8 @@ func (o PagesLoginPtrOutput) Html() pulumi.StringPtrOutput {
 }
 
 type PromptScreenPartialInsertionPoints struct {
+	// Content that goes inside the form
+	FormContent *string `pulumi:"formContent"`
 	// Content that goes at the end of the form.
 	FormContentEnd *string `pulumi:"formContentEnd"`
 	// Content that goes at the start of the form.
@@ -24549,6 +24756,8 @@ type PromptScreenPartialInsertionPointsInput interface {
 }
 
 type PromptScreenPartialInsertionPointsArgs struct {
+	// Content that goes inside the form
+	FormContent pulumi.StringPtrInput `pulumi:"formContent"`
 	// Content that goes at the end of the form.
 	FormContentEnd pulumi.StringPtrInput `pulumi:"formContentEnd"`
 	// Content that goes at the start of the form.
@@ -24640,6 +24849,11 @@ func (o PromptScreenPartialInsertionPointsOutput) ToPromptScreenPartialInsertion
 	}).(PromptScreenPartialInsertionPointsPtrOutput)
 }
 
+// Content that goes inside the form
+func (o PromptScreenPartialInsertionPointsOutput) FormContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromptScreenPartialInsertionPoints) *string { return v.FormContent }).(pulumi.StringPtrOutput)
+}
+
 // Content that goes at the end of the form.
 func (o PromptScreenPartialInsertionPointsOutput) FormContentEnd() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PromptScreenPartialInsertionPoints) *string { return v.FormContentEnd }).(pulumi.StringPtrOutput)
@@ -24692,6 +24906,16 @@ func (o PromptScreenPartialInsertionPointsPtrOutput) Elem() PromptScreenPartialI
 		var ret PromptScreenPartialInsertionPoints
 		return ret
 	}).(PromptScreenPartialInsertionPointsOutput)
+}
+
+// Content that goes inside the form
+func (o PromptScreenPartialInsertionPointsPtrOutput) FormContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PromptScreenPartialInsertionPoints) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FormContent
+	}).(pulumi.StringPtrOutput)
 }
 
 // Content that goes at the end of the form.
@@ -24860,6 +25084,8 @@ func (o PromptScreenPartialsScreenPartialArrayOutput) Index(i pulumi.IntInput) P
 }
 
 type PromptScreenPartialsScreenPartialInsertionPoints struct {
+	// Content that goes inside the form
+	FormContent *string `pulumi:"formContent"`
 	// Content that goes at the end of the form.
 	FormContentEnd *string `pulumi:"formContentEnd"`
 	// Content that goes at the start of the form.
@@ -24886,6 +25112,8 @@ type PromptScreenPartialsScreenPartialInsertionPointsInput interface {
 }
 
 type PromptScreenPartialsScreenPartialInsertionPointsArgs struct {
+	// Content that goes inside the form
+	FormContent pulumi.StringPtrInput `pulumi:"formContent"`
 	// Content that goes at the end of the form.
 	FormContentEnd pulumi.StringPtrInput `pulumi:"formContentEnd"`
 	// Content that goes at the start of the form.
@@ -24924,6 +25152,11 @@ func (o PromptScreenPartialsScreenPartialInsertionPointsOutput) ToPromptScreenPa
 
 func (o PromptScreenPartialsScreenPartialInsertionPointsOutput) ToPromptScreenPartialsScreenPartialInsertionPointsOutputWithContext(ctx context.Context) PromptScreenPartialsScreenPartialInsertionPointsOutput {
 	return o
+}
+
+// Content that goes inside the form
+func (o PromptScreenPartialsScreenPartialInsertionPointsOutput) FormContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromptScreenPartialsScreenPartialInsertionPoints) *string { return v.FormContent }).(pulumi.StringPtrOutput)
 }
 
 // Content that goes at the end of the form.
@@ -28600,6 +28833,8 @@ type GetBrandingThemeColor struct {
 	BaseHoverColor string `pulumi:"baseHoverColor"`
 	// Body text. Defaults to `#1e212a`.
 	BodyText string `pulumi:"bodyText"`
+	// Captcha Widget Theme.
+	CaptchaWidgetTheme string `pulumi:"captchaWidgetTheme"`
 	// Error. Defaults to `#d03c38`.
 	Error string `pulumi:"error"`
 	// Header. Defaults to `#1e212a`.
@@ -28650,6 +28885,8 @@ type GetBrandingThemeColorArgs struct {
 	BaseHoverColor pulumi.StringInput `pulumi:"baseHoverColor"`
 	// Body text. Defaults to `#1e212a`.
 	BodyText pulumi.StringInput `pulumi:"bodyText"`
+	// Captcha Widget Theme.
+	CaptchaWidgetTheme pulumi.StringInput `pulumi:"captchaWidgetTheme"`
 	// Error. Defaults to `#d03c38`.
 	Error pulumi.StringInput `pulumi:"error"`
 	// Header. Defaults to `#1e212a`.
@@ -28746,6 +28983,11 @@ func (o GetBrandingThemeColorOutput) BaseHoverColor() pulumi.StringOutput {
 // Body text. Defaults to `#1e212a`.
 func (o GetBrandingThemeColorOutput) BodyText() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.BodyText }).(pulumi.StringOutput)
+}
+
+// Captcha Widget Theme.
+func (o GetBrandingThemeColorOutput) CaptchaWidgetTheme() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.CaptchaWidgetTheme }).(pulumi.StringOutput)
 }
 
 // Error. Defaults to `#d03c38`.
@@ -35172,6 +35414,7 @@ func (o GetClientMobileIoArrayOutput) Index(i pulumi.IntInput) GetClientMobileIo
 type GetClientNativeSocialLogin struct {
 	Apples    []GetClientNativeSocialLoginApple    `pulumi:"apples"`
 	Facebooks []GetClientNativeSocialLoginFacebook `pulumi:"facebooks"`
+	Googles   []GetClientNativeSocialLoginGoogle   `pulumi:"googles"`
 }
 
 // GetClientNativeSocialLoginInput is an input type that accepts GetClientNativeSocialLoginArgs and GetClientNativeSocialLoginOutput values.
@@ -35188,6 +35431,7 @@ type GetClientNativeSocialLoginInput interface {
 type GetClientNativeSocialLoginArgs struct {
 	Apples    GetClientNativeSocialLoginAppleArrayInput    `pulumi:"apples"`
 	Facebooks GetClientNativeSocialLoginFacebookArrayInput `pulumi:"facebooks"`
+	Googles   GetClientNativeSocialLoginGoogleArrayInput   `pulumi:"googles"`
 }
 
 func (GetClientNativeSocialLoginArgs) ElementType() reflect.Type {
@@ -35247,6 +35491,10 @@ func (o GetClientNativeSocialLoginOutput) Apples() GetClientNativeSocialLoginApp
 
 func (o GetClientNativeSocialLoginOutput) Facebooks() GetClientNativeSocialLoginFacebookArrayOutput {
 	return o.ApplyT(func(v GetClientNativeSocialLogin) []GetClientNativeSocialLoginFacebook { return v.Facebooks }).(GetClientNativeSocialLoginFacebookArrayOutput)
+}
+
+func (o GetClientNativeSocialLoginOutput) Googles() GetClientNativeSocialLoginGoogleArrayOutput {
+	return o.ApplyT(func(v GetClientNativeSocialLogin) []GetClientNativeSocialLoginGoogle { return v.Googles }).(GetClientNativeSocialLoginGoogleArrayOutput)
 }
 
 type GetClientNativeSocialLoginArrayOutput struct{ *pulumi.OutputState }
@@ -35455,6 +35703,100 @@ func (o GetClientNativeSocialLoginFacebookArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientNativeSocialLoginFacebook {
 		return vs[0].([]GetClientNativeSocialLoginFacebook)[vs[1].(int)]
 	}).(GetClientNativeSocialLoginFacebookOutput)
+}
+
+type GetClientNativeSocialLoginGoogle struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClientNativeSocialLoginGoogleInput is an input type that accepts GetClientNativeSocialLoginGoogleArgs and GetClientNativeSocialLoginGoogleOutput values.
+// You can construct a concrete instance of `GetClientNativeSocialLoginGoogleInput` via:
+//
+//	GetClientNativeSocialLoginGoogleArgs{...}
+type GetClientNativeSocialLoginGoogleInput interface {
+	pulumi.Input
+
+	ToGetClientNativeSocialLoginGoogleOutput() GetClientNativeSocialLoginGoogleOutput
+	ToGetClientNativeSocialLoginGoogleOutputWithContext(context.Context) GetClientNativeSocialLoginGoogleOutput
+}
+
+type GetClientNativeSocialLoginGoogleArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClientNativeSocialLoginGoogleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientNativeSocialLoginGoogle)(nil)).Elem()
+}
+
+func (i GetClientNativeSocialLoginGoogleArgs) ToGetClientNativeSocialLoginGoogleOutput() GetClientNativeSocialLoginGoogleOutput {
+	return i.ToGetClientNativeSocialLoginGoogleOutputWithContext(context.Background())
+}
+
+func (i GetClientNativeSocialLoginGoogleArgs) ToGetClientNativeSocialLoginGoogleOutputWithContext(ctx context.Context) GetClientNativeSocialLoginGoogleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientNativeSocialLoginGoogleOutput)
+}
+
+// GetClientNativeSocialLoginGoogleArrayInput is an input type that accepts GetClientNativeSocialLoginGoogleArray and GetClientNativeSocialLoginGoogleArrayOutput values.
+// You can construct a concrete instance of `GetClientNativeSocialLoginGoogleArrayInput` via:
+//
+//	GetClientNativeSocialLoginGoogleArray{ GetClientNativeSocialLoginGoogleArgs{...} }
+type GetClientNativeSocialLoginGoogleArrayInput interface {
+	pulumi.Input
+
+	ToGetClientNativeSocialLoginGoogleArrayOutput() GetClientNativeSocialLoginGoogleArrayOutput
+	ToGetClientNativeSocialLoginGoogleArrayOutputWithContext(context.Context) GetClientNativeSocialLoginGoogleArrayOutput
+}
+
+type GetClientNativeSocialLoginGoogleArray []GetClientNativeSocialLoginGoogleInput
+
+func (GetClientNativeSocialLoginGoogleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientNativeSocialLoginGoogle)(nil)).Elem()
+}
+
+func (i GetClientNativeSocialLoginGoogleArray) ToGetClientNativeSocialLoginGoogleArrayOutput() GetClientNativeSocialLoginGoogleArrayOutput {
+	return i.ToGetClientNativeSocialLoginGoogleArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientNativeSocialLoginGoogleArray) ToGetClientNativeSocialLoginGoogleArrayOutputWithContext(ctx context.Context) GetClientNativeSocialLoginGoogleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientNativeSocialLoginGoogleArrayOutput)
+}
+
+type GetClientNativeSocialLoginGoogleOutput struct{ *pulumi.OutputState }
+
+func (GetClientNativeSocialLoginGoogleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientNativeSocialLoginGoogle)(nil)).Elem()
+}
+
+func (o GetClientNativeSocialLoginGoogleOutput) ToGetClientNativeSocialLoginGoogleOutput() GetClientNativeSocialLoginGoogleOutput {
+	return o
+}
+
+func (o GetClientNativeSocialLoginGoogleOutput) ToGetClientNativeSocialLoginGoogleOutputWithContext(ctx context.Context) GetClientNativeSocialLoginGoogleOutput {
+	return o
+}
+
+func (o GetClientNativeSocialLoginGoogleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientNativeSocialLoginGoogle) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClientNativeSocialLoginGoogleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientNativeSocialLoginGoogleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientNativeSocialLoginGoogle)(nil)).Elem()
+}
+
+func (o GetClientNativeSocialLoginGoogleArrayOutput) ToGetClientNativeSocialLoginGoogleArrayOutput() GetClientNativeSocialLoginGoogleArrayOutput {
+	return o
+}
+
+func (o GetClientNativeSocialLoginGoogleArrayOutput) ToGetClientNativeSocialLoginGoogleArrayOutputWithContext(ctx context.Context) GetClientNativeSocialLoginGoogleArrayOutput {
+	return o
+}
+
+func (o GetClientNativeSocialLoginGoogleArrayOutput) Index(i pulumi.IntInput) GetClientNativeSocialLoginGoogleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientNativeSocialLoginGoogle {
+		return vs[0].([]GetClientNativeSocialLoginGoogle)[vs[1].(int)]
+	}).(GetClientNativeSocialLoginGoogleOutput)
 }
 
 type GetClientOidcLogout struct {
@@ -36796,6 +37138,10 @@ type GetConnectionOption struct {
 	GatewayAuthentications []GetConnectionOptionGatewayAuthentication `pulumi:"gatewayAuthentications"`
 	// Defines a custom sms gateway to use instead of Twilio.
 	GatewayUrl string `pulumi:"gatewayUrl"`
+	// Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+	GlobalTokenRevocationJwtIss string `pulumi:"globalTokenRevocationJwtIss"`
+	// Specifies the subject of the JWT used for global token revocation for the SAML connection.
+	GlobalTokenRevocationJwtSub string `pulumi:"globalTokenRevocationJwtSub"`
 	// Icon URL.
 	IconUrl string `pulumi:"iconUrl"`
 	// Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
@@ -36998,6 +37344,10 @@ type GetConnectionOptionArgs struct {
 	GatewayAuthentications GetConnectionOptionGatewayAuthenticationArrayInput `pulumi:"gatewayAuthentications"`
 	// Defines a custom sms gateway to use instead of Twilio.
 	GatewayUrl pulumi.StringInput `pulumi:"gatewayUrl"`
+	// Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+	GlobalTokenRevocationJwtIss pulumi.StringInput `pulumi:"globalTokenRevocationJwtIss"`
+	// Specifies the subject of the JWT used for global token revocation for the SAML connection.
+	GlobalTokenRevocationJwtSub pulumi.StringInput `pulumi:"globalTokenRevocationJwtSub"`
 	// Icon URL.
 	IconUrl pulumi.StringInput `pulumi:"iconUrl"`
 	// Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
@@ -37344,6 +37694,16 @@ func (o GetConnectionOptionOutput) GatewayAuthentications() GetConnectionOptionG
 // Defines a custom sms gateway to use instead of Twilio.
 func (o GetConnectionOptionOutput) GatewayUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.GatewayUrl }).(pulumi.StringOutput)
+}
+
+// Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+func (o GetConnectionOptionOutput) GlobalTokenRevocationJwtIss() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.GlobalTokenRevocationJwtIss }).(pulumi.StringOutput)
+}
+
+// Specifies the subject of the JWT used for global token revocation for the SAML connection.
+func (o GetConnectionOptionOutput) GlobalTokenRevocationJwtSub() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.GlobalTokenRevocationJwtSub }).(pulumi.StringOutput)
 }
 
 // Icon URL.
@@ -42348,6 +42708,8 @@ func (o GetPromptScreenPartialsScreenPartialArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetPromptScreenPartialsScreenPartialInsertionPoint struct {
+	// Content that goes inside the form
+	FormContent string `pulumi:"formContent"`
 	// Content that goes at the end of the form.
 	FormContentEnd string `pulumi:"formContentEnd"`
 	// Content that goes at the start of the form.
@@ -42374,6 +42736,8 @@ type GetPromptScreenPartialsScreenPartialInsertionPointInput interface {
 }
 
 type GetPromptScreenPartialsScreenPartialInsertionPointArgs struct {
+	// Content that goes inside the form
+	FormContent pulumi.StringInput `pulumi:"formContent"`
 	// Content that goes at the end of the form.
 	FormContentEnd pulumi.StringInput `pulumi:"formContentEnd"`
 	// Content that goes at the start of the form.
@@ -42437,6 +42801,11 @@ func (o GetPromptScreenPartialsScreenPartialInsertionPointOutput) ToGetPromptScr
 
 func (o GetPromptScreenPartialsScreenPartialInsertionPointOutput) ToGetPromptScreenPartialsScreenPartialInsertionPointOutputWithContext(ctx context.Context) GetPromptScreenPartialsScreenPartialInsertionPointOutput {
 	return o
+}
+
+// Content that goes inside the form
+func (o GetPromptScreenPartialsScreenPartialInsertionPointOutput) FormContent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPromptScreenPartialsScreenPartialInsertionPoint) string { return v.FormContent }).(pulumi.StringOutput)
 }
 
 // Content that goes at the end of the form.
@@ -44546,6 +44915,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientNativeSocialLoginApplePtrInput)(nil)).Elem(), ClientNativeSocialLoginAppleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientNativeSocialLoginFacebookInput)(nil)).Elem(), ClientNativeSocialLoginFacebookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientNativeSocialLoginFacebookPtrInput)(nil)).Elem(), ClientNativeSocialLoginFacebookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientNativeSocialLoginGoogleInput)(nil)).Elem(), ClientNativeSocialLoginGoogleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientNativeSocialLoginGooglePtrInput)(nil)).Elem(), ClientNativeSocialLoginGoogleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcLogoutInput)(nil)).Elem(), ClientOidcLogoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcLogoutPtrInput)(nil)).Elem(), ClientOidcLogoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcLogoutBackchannelLogoutInitiatorsInput)(nil)).Elem(), ClientOidcLogoutBackchannelLogoutInitiatorsArgs{})
@@ -44841,6 +45212,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginAppleArrayInput)(nil)).Elem(), GetClientNativeSocialLoginAppleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginFacebookInput)(nil)).Elem(), GetClientNativeSocialLoginFacebookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginFacebookArrayInput)(nil)).Elem(), GetClientNativeSocialLoginFacebookArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginGoogleInput)(nil)).Elem(), GetClientNativeSocialLoginGoogleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginGoogleArrayInput)(nil)).Elem(), GetClientNativeSocialLoginGoogleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcLogoutInput)(nil)).Elem(), GetClientOidcLogoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcLogoutArrayInput)(nil)).Elem(), GetClientOidcLogoutArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcLogoutBackchannelLogoutInitiatorInput)(nil)).Elem(), GetClientOidcLogoutBackchannelLogoutInitiatorArgs{})
@@ -45123,6 +45496,8 @@ func init() {
 	pulumi.RegisterOutputType(ClientNativeSocialLoginApplePtrOutput{})
 	pulumi.RegisterOutputType(ClientNativeSocialLoginFacebookOutput{})
 	pulumi.RegisterOutputType(ClientNativeSocialLoginFacebookPtrOutput{})
+	pulumi.RegisterOutputType(ClientNativeSocialLoginGoogleOutput{})
+	pulumi.RegisterOutputType(ClientNativeSocialLoginGooglePtrOutput{})
 	pulumi.RegisterOutputType(ClientOidcLogoutOutput{})
 	pulumi.RegisterOutputType(ClientOidcLogoutPtrOutput{})
 	pulumi.RegisterOutputType(ClientOidcLogoutBackchannelLogoutInitiatorsOutput{})
@@ -45418,6 +45793,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClientNativeSocialLoginAppleArrayOutput{})
 	pulumi.RegisterOutputType(GetClientNativeSocialLoginFacebookOutput{})
 	pulumi.RegisterOutputType(GetClientNativeSocialLoginFacebookArrayOutput{})
+	pulumi.RegisterOutputType(GetClientNativeSocialLoginGoogleOutput{})
+	pulumi.RegisterOutputType(GetClientNativeSocialLoginGoogleArrayOutput{})
 	pulumi.RegisterOutputType(GetClientOidcLogoutOutput{})
 	pulumi.RegisterOutputType(GetClientOidcLogoutArrayOutput{})
 	pulumi.RegisterOutputType(GetClientOidcLogoutBackchannelLogoutInitiatorOutput{})

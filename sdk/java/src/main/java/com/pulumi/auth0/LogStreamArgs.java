@@ -7,6 +7,7 @@ import com.pulumi.auth0.inputs.LogStreamSinkArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,21 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<Map<String,String>>>> filters() {
         return Optional.ofNullable(this.filters);
+    }
+
+    /**
+     * Set True for priority log streams, False for non-priority
+     * 
+     */
+    @Import(name="isPriority")
+    private @Nullable Output<Boolean> isPriority;
+
+    /**
+     * @return Set True for priority log streams, False for non-priority
+     * 
+     */
+    public Optional<Output<Boolean>> isPriority() {
+        return Optional.ofNullable(this.isPriority);
     }
 
     /**
@@ -98,6 +114,7 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
 
     private LogStreamArgs(LogStreamArgs $) {
         this.filters = $.filters;
+        this.isPriority = $.isPriority;
         this.name = $.name;
         this.sink = $.sink;
         this.status = $.status;
@@ -151,6 +168,27 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder filters(Map<String,String>... filters) {
             return filters(List.of(filters));
+        }
+
+        /**
+         * @param isPriority Set True for priority log streams, False for non-priority
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isPriority(@Nullable Output<Boolean> isPriority) {
+            $.isPriority = isPriority;
+            return this;
+        }
+
+        /**
+         * @param isPriority Set True for priority log streams, False for non-priority
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isPriority(Boolean isPriority) {
+            return isPriority(Output.of(isPriority));
         }
 
         /**
