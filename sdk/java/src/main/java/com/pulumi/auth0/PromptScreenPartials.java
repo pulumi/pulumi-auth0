@@ -70,6 +70,16 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
+ *         var customized_consent = new PromptScreenPartials("customized-consent", PromptScreenPartialsArgs.builder()
+ *             .promptType("customized-consent")
+ *             .screenPartials(PromptScreenPartialsScreenPartialArgs.builder()
+ *                 .screenName("customized-consent")
+ *                 .insertionPoints(PromptScreenPartialsScreenPartialInsertionPointsArgs.builder()
+ *                     .formContent("<div>Form Content</div>")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -92,14 +102,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/promptScreenPartials:PromptScreenPartials")
 public class PromptScreenPartials extends com.pulumi.resources.CustomResource {
     /**
-     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
      * 
      */
     @Export(name="promptType", refs={String.class}, tree="[0]")
     private Output<String> promptType;
 
     /**
-     * @return The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`.
+     * @return The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
      * 
      */
     public Output<String> promptType() {

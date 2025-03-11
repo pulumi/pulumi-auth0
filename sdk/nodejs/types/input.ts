@@ -207,6 +207,10 @@ export interface BrandingThemeColors {
      */
     bodyText?: pulumi.Input<string>;
     /**
+     * Captcha Widget Theme.
+     */
+    captchaWidgetTheme?: pulumi.Input<string>;
+    /**
      * Error. Defaults to `#d03c38`.
      */
     error?: pulumi.Input<string>;
@@ -1217,6 +1221,7 @@ export interface ClientMobileIos {
 export interface ClientNativeSocialLogin {
     apple?: pulumi.Input<inputs.ClientNativeSocialLoginApple>;
     facebook?: pulumi.Input<inputs.ClientNativeSocialLoginFacebook>;
+    google?: pulumi.Input<inputs.ClientNativeSocialLoginGoogle>;
 }
 
 export interface ClientNativeSocialLoginApple {
@@ -1224,6 +1229,10 @@ export interface ClientNativeSocialLoginApple {
 }
 
 export interface ClientNativeSocialLoginFacebook {
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface ClientNativeSocialLoginGoogle {
     enabled?: pulumi.Input<boolean>;
 }
 
@@ -1428,6 +1437,14 @@ export interface ConnectionOptions {
      * Defines a custom sms gateway to use instead of Twilio.
      */
     gatewayUrl?: pulumi.Input<string>;
+    /**
+     * Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+     */
+    globalTokenRevocationJwtIss?: pulumi.Input<string>;
+    /**
+     * Specifies the subject of the JWT used for global token revocation for the SAML connection.
+     */
+    globalTokenRevocationJwtSub?: pulumi.Input<string>;
     /**
      * Icon URL.
      */
@@ -2243,6 +2260,10 @@ export interface GetPromptScreenPartialsScreenPartialArgs {
 
 export interface GetPromptScreenPartialsScreenPartialInsertionPoint {
     /**
+     * Content that goes inside the form
+     */
+    formContent?: string;
+    /**
      * Content that goes at the end of the form.
      */
     formContentEnd?: string;
@@ -2269,6 +2290,10 @@ export interface GetPromptScreenPartialsScreenPartialInsertionPoint {
 }
 
 export interface GetPromptScreenPartialsScreenPartialInsertionPointArgs {
+    /**
+     * Content that goes inside the form
+     */
+    formContent?: pulumi.Input<string>;
     /**
      * Content that goes at the end of the form.
      */
@@ -2664,6 +2689,10 @@ export interface PagesLogin {
 
 export interface PromptScreenPartialInsertionPoints {
     /**
+     * Content that goes inside the form
+     */
+    formContent?: pulumi.Input<string>;
+    /**
      * Content that goes at the end of the form.
      */
     formContentEnd?: pulumi.Input<string>;
@@ -2698,6 +2727,10 @@ export interface PromptScreenPartialsScreenPartial {
 }
 
 export interface PromptScreenPartialsScreenPartialInsertionPoints {
+    /**
+     * Content that goes inside the form
+     */
+    formContent?: pulumi.Input<string>;
     /**
      * Content that goes at the end of the form.
      */

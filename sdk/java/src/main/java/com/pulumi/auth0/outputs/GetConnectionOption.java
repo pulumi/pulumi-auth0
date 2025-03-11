@@ -206,6 +206,16 @@ public final class GetConnectionOption {
      */
     private String gatewayUrl;
     /**
+     * @return Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+     * 
+     */
+    private String globalTokenRevocationJwtIss;
+    /**
+     * @return Specifies the subject of the JWT used for global token revocation for the SAML connection.
+     * 
+     */
+    private String globalTokenRevocationJwtSub;
+    /**
      * @return Icon URL.
      * 
      */
@@ -748,6 +758,20 @@ public final class GetConnectionOption {
         return this.gatewayUrl;
     }
     /**
+     * @return Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+     * 
+     */
+    public String globalTokenRevocationJwtIss() {
+        return this.globalTokenRevocationJwtIss;
+    }
+    /**
+     * @return Specifies the subject of the JWT used for global token revocation for the SAML connection.
+     * 
+     */
+    public String globalTokenRevocationJwtSub() {
+        return this.globalTokenRevocationJwtSub;
+    }
+    /**
      * @return Icon URL.
      * 
      */
@@ -1205,6 +1229,8 @@ public final class GetConnectionOption {
         private String from;
         private List<GetConnectionOptionGatewayAuthentication> gatewayAuthentications;
         private String gatewayUrl;
+        private String globalTokenRevocationJwtIss;
+        private String globalTokenRevocationJwtSub;
         private String iconUrl;
         private String identityApi;
         private List<GetConnectionOptionIdpInitiated> idpInitiateds;
@@ -1302,6 +1328,8 @@ public final class GetConnectionOption {
     	      this.from = defaults.from;
     	      this.gatewayAuthentications = defaults.gatewayAuthentications;
     	      this.gatewayUrl = defaults.gatewayUrl;
+    	      this.globalTokenRevocationJwtIss = defaults.globalTokenRevocationJwtIss;
+    	      this.globalTokenRevocationJwtSub = defaults.globalTokenRevocationJwtSub;
     	      this.iconUrl = defaults.iconUrl;
     	      this.identityApi = defaults.identityApi;
     	      this.idpInitiateds = defaults.idpInitiateds;
@@ -1665,6 +1693,22 @@ public final class GetConnectionOption {
               throw new MissingRequiredPropertyException("GetConnectionOption", "gatewayUrl");
             }
             this.gatewayUrl = gatewayUrl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder globalTokenRevocationJwtIss(String globalTokenRevocationJwtIss) {
+            if (globalTokenRevocationJwtIss == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "globalTokenRevocationJwtIss");
+            }
+            this.globalTokenRevocationJwtIss = globalTokenRevocationJwtIss;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder globalTokenRevocationJwtSub(String globalTokenRevocationJwtSub) {
+            if (globalTokenRevocationJwtSub == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "globalTokenRevocationJwtSub");
+            }
+            this.globalTokenRevocationJwtSub = globalTokenRevocationJwtSub;
             return this;
         }
         @CustomType.Setter
@@ -2218,6 +2262,8 @@ public final class GetConnectionOption {
             _resultValue.from = from;
             _resultValue.gatewayAuthentications = gatewayAuthentications;
             _resultValue.gatewayUrl = gatewayUrl;
+            _resultValue.globalTokenRevocationJwtIss = globalTokenRevocationJwtIss;
+            _resultValue.globalTokenRevocationJwtSub = globalTokenRevocationJwtSub;
             _resultValue.iconUrl = iconUrl;
             _resultValue.identityApi = identityApi;
             _resultValue.idpInitiateds = idpInitiateds;
