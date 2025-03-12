@@ -2198,6 +2198,39 @@ export interface FormMessage {
     errors?: string;
 }
 
+export interface GetActionDependency {
+    /**
+     * Dependency name, e.g. `lodash`.
+     */
+    name: string;
+    /**
+     * Dependency version, e.g. `latest` or `4.17.21`.
+     */
+    version: string;
+}
+
+export interface GetActionSecret {
+    /**
+     * Secret name.
+     */
+    name: string;
+    /**
+     * Secret value.
+     */
+    value: string;
+}
+
+export interface GetActionSupportedTrigger {
+    /**
+     * The trigger ID.
+     */
+    id: string;
+    /**
+     * The trigger version. This regulates which `runtime` versions are supported.
+     */
+    version: string;
+}
+
 export interface GetAttackProtectionBreachedPasswordDetection {
     /**
      * When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
@@ -3478,7 +3511,7 @@ export interface GetClientsClient {
      */
     grantTypes: string[];
     /**
-     * Indicates whether this client is a first-party client.
+     * Indicates whether this client is a first-party client.Defaults to true from the API
      */
     isFirstParty: boolean;
     /**
@@ -4369,6 +4402,32 @@ export interface GetPagesLogin {
     html: string;
 }
 
+export interface GetPhoneProviderConfiguration {
+    /**
+     * Default sender subject as "from" when no other value is specified.
+     */
+    defaultFrom: string;
+    /**
+     * Media set supported by a given provider to deliver a notification
+     */
+    deliveryMethods: string[];
+    /**
+     * Twilio Messaging Service SID
+     */
+    mssid: string;
+    /**
+     * Twilio Account SID.
+     */
+    sid: string;
+}
+
+export interface GetPhoneProviderCredential {
+    /**
+     * The Auth Token for the phone provider.
+     */
+    authToken: string;
+}
+
 export interface GetPromptScreenPartialsScreenPartial {
     insertionPoints: outputs.GetPromptScreenPartialsScreenPartialInsertionPoint[];
     /**
@@ -5082,6 +5141,32 @@ export interface PagesLogin {
      * Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
      */
     html: string;
+}
+
+export interface PhoneProviderConfiguration {
+    /**
+     * Default sender subject as "from" when no other value is specified.
+     */
+    defaultFrom?: string;
+    /**
+     * Media set supported by a given provider to deliver a notification
+     */
+    deliveryMethods: string[];
+    /**
+     * Twilio Messaging Service SID
+     */
+    mssid?: string;
+    /**
+     * Twilio Account SID.
+     */
+    sid?: string;
+}
+
+export interface PhoneProviderCredentials {
+    /**
+     * The Auth Token for the phone provider.
+     */
+    authToken?: string;
 }
 
 export interface PromptScreenPartialInsertionPoints {

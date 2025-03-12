@@ -142,7 +142,7 @@ export interface GetClientResult {
      */
     readonly initiateLoginUri: string;
     /**
-     * Indicates whether this client is a first-party client.
+     * Indicates whether this client is a first-party client.Defaults to true from the API
      */
     readonly isFirstParty: boolean;
     /**

@@ -51,7 +51,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> GrantTypes;
         /// <summary>
-        /// Indicates whether this client is a first-party client.
+        /// Indicates whether this client is a first-party client.Defaults to true from the API
         /// </summary>
         public readonly bool IsFirstParty;
         /// <summary>

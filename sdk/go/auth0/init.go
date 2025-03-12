@@ -83,6 +83,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrganizationMembers{}
 	case "auth0:index/pages:Pages":
 		r = &Pages{}
+	case "auth0:index/phoneProvider:PhoneProvider":
+		r = &PhoneProvider{}
 	case "auth0:index/prompt:Prompt":
 		r = &Prompt{}
 	case "auth0:index/promptCustomText:PromptCustomText":
@@ -317,6 +319,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/pages",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/phoneProvider",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

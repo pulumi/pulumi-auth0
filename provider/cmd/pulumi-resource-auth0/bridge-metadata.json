@@ -829,6 +829,25 @@
                     }
                 }
             },
+            "auth0_phone_provider": {
+                "current": "auth0:index/phoneProvider:PhoneProvider",
+                "majorVersion": 3,
+                "fields": {
+                    "configuration": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "delivery_methods": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "credentials": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "auth0_prompt": {
                 "current": "auth0:index/prompt:Prompt",
                 "majorVersion": 3
@@ -1037,6 +1056,21 @@
             }
         },
         "datasources": {
+            "auth0_action": {
+                "current": "auth0:index/getAction:getAction",
+                "majorVersion": 3,
+                "fields": {
+                    "dependencies": {
+                        "maxItemsOne": false
+                    },
+                    "secrets": {
+                        "maxItemsOne": false
+                    },
+                    "supported_triggers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "auth0_attack_protection": {
                 "current": "auth0:index/getAttackProtection:getAttackProtection",
                 "majorVersion": 3,
@@ -1749,6 +1783,25 @@
                         "maxItemsOne": false
                     },
                     "login": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_phone_provider": {
+                "current": "auth0:index/getPhoneProvider:getPhoneProvider",
+                "majorVersion": 3,
+                "fields": {
+                    "configuration": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "delivery_methods": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "credentials": {
                         "maxItemsOne": false
                     }
                 }

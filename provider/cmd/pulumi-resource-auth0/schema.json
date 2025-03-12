@@ -3664,6 +3664,43 @@
                 "html"
             ]
         },
+        "auth0:index/PhoneProviderConfiguration:PhoneProviderConfiguration": {
+            "properties": {
+                "defaultFrom": {
+                    "type": "string",
+                    "description": "Default sender subject as \"from\" when no other value is specified.\n"
+                },
+                "deliveryMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Media set supported by a given provider to deliver a notification\n"
+                },
+                "mssid": {
+                    "type": "string",
+                    "description": "Twilio Messaging Service SID\n"
+                },
+                "sid": {
+                    "type": "string",
+                    "description": "Twilio Account SID.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "deliveryMethods"
+            ]
+        },
+        "auth0:index/PhoneProviderCredentials:PhoneProviderCredentials": {
+            "properties": {
+                "authToken": {
+                    "type": "string",
+                    "description": "The Auth Token for the phone provider.\n",
+                    "secret": true
+                }
+            },
+            "type": "object"
+        },
         "auth0:index/PromptScreenPartialInsertionPoints:PromptScreenPartialInsertionPoints": {
             "properties": {
                 "formContent": {
@@ -4173,6 +4210,72 @@
                         "resourceServerIdentifier",
                         "resourceServerName"
                     ]
+                }
+            }
+        },
+        "auth0:index/getActionDependency:getActionDependency": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Dependency name, e.g. `lodash`.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Dependency version, e.g. `latest` or `4.17.21`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "version"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getActionSecret:getActionSecret": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Secret name.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Secret value.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getActionSupportedTrigger:getActionSupportedTrigger": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The trigger ID.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The trigger version. This regulates which `runtime` versions are supported.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "version"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
                 }
             }
         },
@@ -6578,7 +6681,7 @@
                 },
                 "isFirstParty": {
                     "type": "boolean",
-                    "description": "Indicates whether this client is a first-party client.\n"
+                    "description": "Indicates whether this client is a first-party client.Defaults to true from the API\n"
                 },
                 "isTokenEndpointIpHeaderTrusted": {
                     "type": "boolean",
@@ -8286,6 +8389,58 @@
                 }
             }
         },
+        "auth0:index/getPhoneProviderConfiguration:getPhoneProviderConfiguration": {
+            "properties": {
+                "defaultFrom": {
+                    "type": "string",
+                    "description": "Default sender subject as \"from\" when no other value is specified.\n"
+                },
+                "deliveryMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Media set supported by a given provider to deliver a notification\n"
+                },
+                "mssid": {
+                    "type": "string",
+                    "description": "Twilio Messaging Service SID\n"
+                },
+                "sid": {
+                    "type": "string",
+                    "description": "Twilio Account SID.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultFrom",
+                "deliveryMethods",
+                "mssid",
+                "sid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getPhoneProviderCredential:getPhoneProviderCredential": {
+            "properties": {
+                "authToken": {
+                    "type": "string",
+                    "description": "The Auth Token for the phone provider.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "authToken"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getPromptScreenPartialsScreenPartial:getPromptScreenPartialsScreenPartial": {
             "properties": {
                 "insertionPoints": {
@@ -8936,7 +9091,7 @@
     },
     "resources": {
         "auth0:index/action:Action": {
-            "description": "Actions are secure, tenant-specific, versioned functions written in Node.js that execute at certain points during the Auth0 runtime. Actions are used to customize and extend Auth0's capabilities with custom logic.\n\n## Import\n\nThis resource can be imported by specifying the action ID.\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/action:Action my_action \"12f4f21b-017a-319d-92e7-2291c1ca36c4\"\n```\n\n~\u003e For security reasons importing `secrets` is not allowed. Therefore, it is advised to import\n\nthe action without secrets and adding them back after the action has been imported.\n\n",
+            "description": "Actions are secure, tenant-specific, versioned functions written in Node.js that execute at certain points during the Auth0 runtime. Actions are used to customize and extend Auth0's capabilities with custom logic.\n\n\u003e An action bound to a trigger cannot be deleted. To destroy such an action, the trigger binding must first be deleted.\nA binding is usually managed by auth0.TriggerAction resource.\nThe provider also supports a 1:many variant auth0_trigger_actions.\nIf by any means, a binding is missing is the state file, it can be imported to the state and deleted, before attempting to delete the action.\n\n\n## Import\n\nThis resource can be imported by specifying the action ID.\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/action:Action my_action \"12f4f21b-017a-319d-92e7-2291c1ca36c4\"\n```\n\n~\u003e For security reasons importing `secrets` is not allowed. Therefore, it is advised to import\n\nthe action without secrets and adding them back after the action has been imported.\n\n",
             "properties": {
                 "code": {
                     "type": "string",
@@ -9396,7 +9551,7 @@
                 },
                 "isFirstParty": {
                     "type": "boolean",
-                    "description": "Indicates whether this client is a first-party client.\n"
+                    "description": "Indicates whether this client is a first-party client.Defaults to true from the API\n"
                 },
                 "isTokenEndpointIpHeaderTrusted": {
                     "type": "boolean",
@@ -9610,7 +9765,7 @@
                 },
                 "isFirstParty": {
                     "type": "boolean",
-                    "description": "Indicates whether this client is a first-party client.\n"
+                    "description": "Indicates whether this client is a first-party client.Defaults to true from the API\n"
                 },
                 "isTokenEndpointIpHeaderTrusted": {
                     "type": "boolean",
@@ -9802,7 +9957,7 @@
                     },
                     "isFirstParty": {
                         "type": "boolean",
-                        "description": "Indicates whether this client is a first-party client.\n"
+                        "description": "Indicates whether this client is a first-party client.Defaults to true from the API\n"
                     },
                     "isTokenEndpointIpHeaderTrusted": {
                         "type": "boolean",
@@ -10647,7 +10802,7 @@
             }
         },
         "auth0:index/emailProvider:EmailProvider": {
-            "description": "With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// This is an example on how to set up the email provider with Amazon SES.\nconst amazonSesEmailProvider = new auth0.EmailProvider(\"amazon_ses_email_provider\", {\n    name: \"ses\",\n    enabled: true,\n    defaultFromAddress: \"accounts@example.com\",\n    credentials: {\n        accessKeyId: \"AKIAXXXXXXXXXXXXXXXX\",\n        secretAccessKey: \"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        region: \"us-east-1\",\n    },\n});\n// This is an example on how to set up the email provider with SMTP.\nconst smtpEmailProvider = new auth0.EmailProvider(\"smtp_email_provider\", {\n    name: \"smtp\",\n    enabled: true,\n    defaultFromAddress: \"accounts@example.com\",\n    credentials: {\n        smtpHost: \"your.smtp.host.com\",\n        smtpPort: 583,\n        smtpUser: \"SMTP Username\",\n        smtpPass: \"SMTP Password\",\n    },\n});\n// This is an example on how to set up the email provider with Sendgrid.\nconst sendgridEmailProvider = new auth0.EmailProvider(\"sendgrid_email_provider\", {\n    name: \"sendgrid\",\n    enabled: true,\n    defaultFromAddress: \"accounts@example.com\",\n    credentials: {\n        apiKey: \"secretAPIKey\",\n    },\n});\n// This is an example on how to set up the email provider with Azure CS.\nconst azureCsEmailProvider = new auth0.EmailProvider(\"azure_cs_email_provider\", {\n    name: \"azure_cs\",\n    enabled: true,\n    defaultFromAddress: \"accounts@example.com\",\n    credentials: {\n        azureCsConnectionString: \"azure_cs_connection_string\",\n    },\n});\n// This is an example on how to set up the email provider with MS365.\nconst ms365EmailProvider = new auth0.EmailProvider(\"ms365_email_provider\", {\n    name: \"ms365\",\n    enabled: true,\n    defaultFromAddress: \"accounts@example.com\",\n    credentials: {\n        ms365TenantId: \"ms365_tenant_id\",\n        ms365ClientId: \"ms365_client_id\",\n        ms365ClientSecret: \"ms365_client_secret\",\n    },\n});\n// This is an example on how to set up the email provider with a custom action.\n// Make sure a corresponding action exists with custom-email-provider as supported triggers\nconst customEmailProvider = new auth0.EmailProvider(\"custom_email_provider\", {\n    name: \"custom\",\n    enabled: true,\n    defaultFromAddress: \"accounts@example.com\",\n    credentials: {},\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# This is an example on how to set up the email provider with Amazon SES.\namazon_ses_email_provider = auth0.EmailProvider(\"amazon_ses_email_provider\",\n    name=\"ses\",\n    enabled=True,\n    default_from_address=\"accounts@example.com\",\n    credentials={\n        \"access_key_id\": \"AKIAXXXXXXXXXXXXXXXX\",\n        \"secret_access_key\": \"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        \"region\": \"us-east-1\",\n    })\n# This is an example on how to set up the email provider with SMTP.\nsmtp_email_provider = auth0.EmailProvider(\"smtp_email_provider\",\n    name=\"smtp\",\n    enabled=True,\n    default_from_address=\"accounts@example.com\",\n    credentials={\n        \"smtp_host\": \"your.smtp.host.com\",\n        \"smtp_port\": 583,\n        \"smtp_user\": \"SMTP Username\",\n        \"smtp_pass\": \"SMTP Password\",\n    })\n# This is an example on how to set up the email provider with Sendgrid.\nsendgrid_email_provider = auth0.EmailProvider(\"sendgrid_email_provider\",\n    name=\"sendgrid\",\n    enabled=True,\n    default_from_address=\"accounts@example.com\",\n    credentials={\n        \"api_key\": \"secretAPIKey\",\n    })\n# This is an example on how to set up the email provider with Azure CS.\nazure_cs_email_provider = auth0.EmailProvider(\"azure_cs_email_provider\",\n    name=\"azure_cs\",\n    enabled=True,\n    default_from_address=\"accounts@example.com\",\n    credentials={\n        \"azure_cs_connection_string\": \"azure_cs_connection_string\",\n    })\n# This is an example on how to set up the email provider with MS365.\nms365_email_provider = auth0.EmailProvider(\"ms365_email_provider\",\n    name=\"ms365\",\n    enabled=True,\n    default_from_address=\"accounts@example.com\",\n    credentials={\n        \"ms365_tenant_id\": \"ms365_tenant_id\",\n        \"ms365_client_id\": \"ms365_client_id\",\n        \"ms365_client_secret\": \"ms365_client_secret\",\n    })\n# This is an example on how to set up the email provider with a custom action.\n# Make sure a corresponding action exists with custom-email-provider as supported triggers\ncustom_email_provider = auth0.EmailProvider(\"custom_email_provider\",\n    name=\"custom\",\n    enabled=True,\n    default_from_address=\"accounts@example.com\",\n    credentials={})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // This is an example on how to set up the email provider with Amazon SES.\n    var amazonSesEmailProvider = new Auth0.EmailProvider(\"amazon_ses_email_provider\", new()\n    {\n        Name = \"ses\",\n        Enabled = true,\n        DefaultFromAddress = \"accounts@example.com\",\n        Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs\n        {\n            AccessKeyId = \"AKIAXXXXXXXXXXXXXXXX\",\n            SecretAccessKey = \"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n            Region = \"us-east-1\",\n        },\n    });\n\n    // This is an example on how to set up the email provider with SMTP.\n    var smtpEmailProvider = new Auth0.EmailProvider(\"smtp_email_provider\", new()\n    {\n        Name = \"smtp\",\n        Enabled = true,\n        DefaultFromAddress = \"accounts@example.com\",\n        Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs\n        {\n            SmtpHost = \"your.smtp.host.com\",\n            SmtpPort = 583,\n            SmtpUser = \"SMTP Username\",\n            SmtpPass = \"SMTP Password\",\n        },\n    });\n\n    // This is an example on how to set up the email provider with Sendgrid.\n    var sendgridEmailProvider = new Auth0.EmailProvider(\"sendgrid_email_provider\", new()\n    {\n        Name = \"sendgrid\",\n        Enabled = true,\n        DefaultFromAddress = \"accounts@example.com\",\n        Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs\n        {\n            ApiKey = \"secretAPIKey\",\n        },\n    });\n\n    // This is an example on how to set up the email provider with Azure CS.\n    var azureCsEmailProvider = new Auth0.EmailProvider(\"azure_cs_email_provider\", new()\n    {\n        Name = \"azure_cs\",\n        Enabled = true,\n        DefaultFromAddress = \"accounts@example.com\",\n        Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs\n        {\n            AzureCsConnectionString = \"azure_cs_connection_string\",\n        },\n    });\n\n    // This is an example on how to set up the email provider with MS365.\n    var ms365EmailProvider = new Auth0.EmailProvider(\"ms365_email_provider\", new()\n    {\n        Name = \"ms365\",\n        Enabled = true,\n        DefaultFromAddress = \"accounts@example.com\",\n        Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs\n        {\n            Ms365TenantId = \"ms365_tenant_id\",\n            Ms365ClientId = \"ms365_client_id\",\n            Ms365ClientSecret = \"ms365_client_secret\",\n        },\n    });\n\n    // This is an example on how to set up the email provider with a custom action.\n    // Make sure a corresponding action exists with custom-email-provider as supported triggers\n    var customEmailProvider = new Auth0.EmailProvider(\"custom_email_provider\", new()\n    {\n        Name = \"custom\",\n        Enabled = true,\n        DefaultFromAddress = \"accounts@example.com\",\n        Credentials = null,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// This is an example on how to set up the email provider with Amazon SES.\n\t\t_, err := auth0.NewEmailProvider(ctx, \"amazon_ses_email_provider\", \u0026auth0.EmailProviderArgs{\n\t\t\tName:               pulumi.String(\"ses\"),\n\t\t\tEnabled:            pulumi.Bool(true),\n\t\t\tDefaultFromAddress: pulumi.String(\"accounts@example.com\"),\n\t\t\tCredentials: \u0026auth0.EmailProviderCredentialsArgs{\n\t\t\t\tAccessKeyId:     pulumi.String(\"AKIAXXXXXXXXXXXXXXXX\"),\n\t\t\t\tSecretAccessKey: pulumi.String(\"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\t\tRegion:          pulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// This is an example on how to set up the email provider with SMTP.\n\t\t_, err = auth0.NewEmailProvider(ctx, \"smtp_email_provider\", \u0026auth0.EmailProviderArgs{\n\t\t\tName:               pulumi.String(\"smtp\"),\n\t\t\tEnabled:            pulumi.Bool(true),\n\t\t\tDefaultFromAddress: pulumi.String(\"accounts@example.com\"),\n\t\t\tCredentials: \u0026auth0.EmailProviderCredentialsArgs{\n\t\t\t\tSmtpHost: pulumi.String(\"your.smtp.host.com\"),\n\t\t\t\tSmtpPort: pulumi.Int(583),\n\t\t\t\tSmtpUser: pulumi.String(\"SMTP Username\"),\n\t\t\t\tSmtpPass: pulumi.String(\"SMTP Password\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// This is an example on how to set up the email provider with Sendgrid.\n\t\t_, err = auth0.NewEmailProvider(ctx, \"sendgrid_email_provider\", \u0026auth0.EmailProviderArgs{\n\t\t\tName:               pulumi.String(\"sendgrid\"),\n\t\t\tEnabled:            pulumi.Bool(true),\n\t\t\tDefaultFromAddress: pulumi.String(\"accounts@example.com\"),\n\t\t\tCredentials: \u0026auth0.EmailProviderCredentialsArgs{\n\t\t\t\tApiKey: pulumi.String(\"secretAPIKey\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// This is an example on how to set up the email provider with Azure CS.\n\t\t_, err = auth0.NewEmailProvider(ctx, \"azure_cs_email_provider\", \u0026auth0.EmailProviderArgs{\n\t\t\tName:               pulumi.String(\"azure_cs\"),\n\t\t\tEnabled:            pulumi.Bool(true),\n\t\t\tDefaultFromAddress: pulumi.String(\"accounts@example.com\"),\n\t\t\tCredentials: \u0026auth0.EmailProviderCredentialsArgs{\n\t\t\t\tAzureCsConnectionString: pulumi.String(\"azure_cs_connection_string\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// This is an example on how to set up the email provider with MS365.\n\t\t_, err = auth0.NewEmailProvider(ctx, \"ms365_email_provider\", \u0026auth0.EmailProviderArgs{\n\t\t\tName:               pulumi.String(\"ms365\"),\n\t\t\tEnabled:            pulumi.Bool(true),\n\t\t\tDefaultFromAddress: pulumi.String(\"accounts@example.com\"),\n\t\t\tCredentials: \u0026auth0.EmailProviderCredentialsArgs{\n\t\t\t\tMs365TenantId:     pulumi.String(\"ms365_tenant_id\"),\n\t\t\t\tMs365ClientId:     pulumi.String(\"ms365_client_id\"),\n\t\t\t\tMs365ClientSecret: pulumi.String(\"ms365_client_secret\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// This is an example on how to set up the email provider with a custom action.\n\t\t// Make sure a corresponding action exists with custom-email-provider as supported triggers\n\t\t_, err = auth0.NewEmailProvider(ctx, \"custom_email_provider\", \u0026auth0.EmailProviderArgs{\n\t\t\tName:               pulumi.String(\"custom\"),\n\t\t\tEnabled:            pulumi.Bool(true),\n\t\t\tDefaultFromAddress: pulumi.String(\"accounts@example.com\"),\n\t\t\tCredentials:        \u0026auth0.EmailProviderCredentialsArgs{},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.EmailProvider;\nimport com.pulumi.auth0.EmailProviderArgs;\nimport com.pulumi.auth0.inputs.EmailProviderCredentialsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // This is an example on how to set up the email provider with Amazon SES.\n        var amazonSesEmailProvider = new EmailProvider(\"amazonSesEmailProvider\", EmailProviderArgs.builder()\n            .name(\"ses\")\n            .enabled(true)\n            .defaultFromAddress(\"accounts@example.com\")\n            .credentials(EmailProviderCredentialsArgs.builder()\n                .accessKeyId(\"AKIAXXXXXXXXXXXXXXXX\")\n                .secretAccessKey(\"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n                .region(\"us-east-1\")\n                .build())\n            .build());\n\n        // This is an example on how to set up the email provider with SMTP.\n        var smtpEmailProvider = new EmailProvider(\"smtpEmailProvider\", EmailProviderArgs.builder()\n            .name(\"smtp\")\n            .enabled(true)\n            .defaultFromAddress(\"accounts@example.com\")\n            .credentials(EmailProviderCredentialsArgs.builder()\n                .smtpHost(\"your.smtp.host.com\")\n                .smtpPort(583)\n                .smtpUser(\"SMTP Username\")\n                .smtpPass(\"SMTP Password\")\n                .build())\n            .build());\n\n        // This is an example on how to set up the email provider with Sendgrid.\n        var sendgridEmailProvider = new EmailProvider(\"sendgridEmailProvider\", EmailProviderArgs.builder()\n            .name(\"sendgrid\")\n            .enabled(true)\n            .defaultFromAddress(\"accounts@example.com\")\n            .credentials(EmailProviderCredentialsArgs.builder()\n                .apiKey(\"secretAPIKey\")\n                .build())\n            .build());\n\n        // This is an example on how to set up the email provider with Azure CS.\n        var azureCsEmailProvider = new EmailProvider(\"azureCsEmailProvider\", EmailProviderArgs.builder()\n            .name(\"azure_cs\")\n            .enabled(true)\n            .defaultFromAddress(\"accounts@example.com\")\n            .credentials(EmailProviderCredentialsArgs.builder()\n                .azureCsConnectionString(\"azure_cs_connection_string\")\n                .build())\n            .build());\n\n        // This is an example on how to set up the email provider with MS365.\n        var ms365EmailProvider = new EmailProvider(\"ms365EmailProvider\", EmailProviderArgs.builder()\n            .name(\"ms365\")\n            .enabled(true)\n            .defaultFromAddress(\"accounts@example.com\")\n            .credentials(EmailProviderCredentialsArgs.builder()\n                .ms365TenantId(\"ms365_tenant_id\")\n                .ms365ClientId(\"ms365_client_id\")\n                .ms365ClientSecret(\"ms365_client_secret\")\n                .build())\n            .build());\n\n        // This is an example on how to set up the email provider with a custom action.\n        // Make sure a corresponding action exists with custom-email-provider as supported triggers\n        var customEmailProvider = new EmailProvider(\"customEmailProvider\", EmailProviderArgs.builder()\n            .name(\"custom\")\n            .enabled(true)\n            .defaultFromAddress(\"accounts@example.com\")\n            .credentials()\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # This is an example on how to set up the email provider with Amazon SES.\n  amazonSesEmailProvider:\n    type: auth0:EmailProvider\n    name: amazon_ses_email_provider\n    properties:\n      name: ses\n      enabled: true\n      defaultFromAddress: accounts@example.com\n      credentials:\n        accessKeyId: AKIAXXXXXXXXXXXXXXXX\n        secretAccessKey: 7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n        region: us-east-1\n  # This is an example on how to set up the email provider with SMTP.\n  smtpEmailProvider:\n    type: auth0:EmailProvider\n    name: smtp_email_provider\n    properties:\n      name: smtp\n      enabled: true\n      defaultFromAddress: accounts@example.com\n      credentials:\n        smtpHost: your.smtp.host.com\n        smtpPort: 583\n        smtpUser: SMTP Username\n        smtpPass: SMTP Password\n  # This is an example on how to set up the email provider with Sendgrid.\n  sendgridEmailProvider:\n    type: auth0:EmailProvider\n    name: sendgrid_email_provider\n    properties:\n      name: sendgrid\n      enabled: true\n      defaultFromAddress: accounts@example.com\n      credentials:\n        apiKey: secretAPIKey\n  # This is an example on how to set up the email provider with Azure CS.\n  azureCsEmailProvider:\n    type: auth0:EmailProvider\n    name: azure_cs_email_provider\n    properties:\n      name: azure_cs\n      enabled: true\n      defaultFromAddress: accounts@example.com\n      credentials:\n        azureCsConnectionString: azure_cs_connection_string\n  # This is an example on how to set up the email provider with MS365.\n  ms365EmailProvider:\n    type: auth0:EmailProvider\n    name: ms365_email_provider\n    properties:\n      name: ms365\n      enabled: true\n      defaultFromAddress: accounts@example.com\n      credentials:\n        ms365TenantId: ms365_tenant_id\n        ms365ClientId: ms365_client_id\n        ms365ClientSecret: ms365_client_secret\n  # This is an example on how to set up the email provider with a custom action.\n  # Make sure a corresponding action exists with custom-email-provider as supported triggers\n  customEmailProvider:\n    type: auth0:EmailProvider\n    name: custom_email_provider\n    properties:\n      name: custom\n      enabled: true\n      defaultFromAddress: accounts@example.com\n      credentials: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAs this is not a resource identifiable by an ID within the Auth0 Management API,\n\nemail can be imported using a random string.\n\n#\n\nWe recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/emailProvider:EmailProvider my_email_provider \"b4213dc2-2eed-42c3-9516-c6131a9ce0b0\"\n```\n\n",
+            "description": "With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.\n\n!\u003e This resource manages to create a max of 1 email provider for a tenant.\nTo avoid potential issues, it is recommended not to try creating multiple email providers on the same tenant.\n\n!\u003e If you are using the `auth0.EmailProvider` resource to create a `custom` email provider, you must ensure an action is created first with `custom-email-provider` as the supported_triggers\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// This is an example on how to set up the email provider with Amazon SES.\nconst amazonSesEmailProvider = new auth0.EmailProvider(\"amazon_ses_email_provider\", {\n    name: \"ses\",\n    enabled: true,\n    defaultFromAddress: \"accounts@example.com\",\n    credentials: {\n        accessKeyId: \"AKIAXXXXXXXXXXXXXXXX\",\n        secretAccessKey: \"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        region: \"us-east-1\",\n    },\n});\n// This is an example on how to set up the email provider with SMTP.\nconst smtpEmailProvider = new auth0.EmailProvider(\"smtp_email_provider\", {\n    name: \"smtp\",\n    enabled: true,\n    defaultFromAddress: \"accounts@example.com\",\n    credentials: {\n        smtpHost: \"your.smtp.host.com\",\n        smtpPort: 583,\n        smtpUser: \"SMTP Username\",\n        smtpPass: \"SMTP Password\",\n    },\n});\n// This is an example on how to set up the email provider with Sendgrid.\nconst sendgridEmailProvider = new auth0.EmailProvider(\"sendgrid_email_provider\", {\n    name: \"sendgrid\",\n    enabled: true,\n    defaultFromAddress: \"accounts@example.com\",\n    credentials: {\n        apiKey: \"secretAPIKey\",\n    },\n});\n// This is an example on how to set up the email provider with Azure CS.\nconst azureCsEmailProvider = new auth0.EmailProvider(\"azure_cs_email_provider\", {\n    name: \"azure_cs\",\n    enabled: true,\n    defaultFromAddress: \"accounts@example.com\",\n    credentials: {\n        azureCsConnectionString: \"azure_cs_connection_string\",\n    },\n});\n// This is an example on how to set up the email provider with MS365.\nconst ms365EmailProvider = new auth0.EmailProvider(\"ms365_email_provider\", {\n    name: \"ms365\",\n    enabled: true,\n    defaultFromAddress: \"accounts@example.com\",\n    credentials: {\n        ms365TenantId: \"ms365_tenant_id\",\n        ms365ClientId: \"ms365_client_id\",\n        ms365ClientSecret: \"ms365_client_secret\",\n    },\n});\n// Below is an example of how to set up a custom email provider.\n// The action with custom-email-provider as supported_triggers is a prerequisite.\nconst customEmailProviderAction = new auth0.Action(\"custom_email_provider_action\", {\n    name: \"custom-email-provider-action\",\n    runtime: \"node18\",\n    deploy: true,\n    code: `/**\n * Handler to be executed while sending an email notification.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {CustomEmailProviderAPI} api - Methods and utilities to help change the behavior of sending a email notification.\n */\n exports.onExecuteCustomEmailProvider = async (event, api) =\u003e {\n  // Code goes here\n  console.log(event);\n  return;\n };\n`,\n    supportedTriggers: {\n        id: \"custom-email-provider\",\n        version: \"v1\",\n    },\n});\nconst customEmailProvider = new auth0.EmailProvider(\"custom_email_provider\", {\n    name: \"custom\",\n    enabled: true,\n    defaultFromAddress: \"accounts@example.com\",\n    credentials: {},\n}, {\n    dependsOn: [customEmailProviderAction],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# This is an example on how to set up the email provider with Amazon SES.\namazon_ses_email_provider = auth0.EmailProvider(\"amazon_ses_email_provider\",\n    name=\"ses\",\n    enabled=True,\n    default_from_address=\"accounts@example.com\",\n    credentials={\n        \"access_key_id\": \"AKIAXXXXXXXXXXXXXXXX\",\n        \"secret_access_key\": \"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        \"region\": \"us-east-1\",\n    })\n# This is an example on how to set up the email provider with SMTP.\nsmtp_email_provider = auth0.EmailProvider(\"smtp_email_provider\",\n    name=\"smtp\",\n    enabled=True,\n    default_from_address=\"accounts@example.com\",\n    credentials={\n        \"smtp_host\": \"your.smtp.host.com\",\n        \"smtp_port\": 583,\n        \"smtp_user\": \"SMTP Username\",\n        \"smtp_pass\": \"SMTP Password\",\n    })\n# This is an example on how to set up the email provider with Sendgrid.\nsendgrid_email_provider = auth0.EmailProvider(\"sendgrid_email_provider\",\n    name=\"sendgrid\",\n    enabled=True,\n    default_from_address=\"accounts@example.com\",\n    credentials={\n        \"api_key\": \"secretAPIKey\",\n    })\n# This is an example on how to set up the email provider with Azure CS.\nazure_cs_email_provider = auth0.EmailProvider(\"azure_cs_email_provider\",\n    name=\"azure_cs\",\n    enabled=True,\n    default_from_address=\"accounts@example.com\",\n    credentials={\n        \"azure_cs_connection_string\": \"azure_cs_connection_string\",\n    })\n# This is an example on how to set up the email provider with MS365.\nms365_email_provider = auth0.EmailProvider(\"ms365_email_provider\",\n    name=\"ms365\",\n    enabled=True,\n    default_from_address=\"accounts@example.com\",\n    credentials={\n        \"ms365_tenant_id\": \"ms365_tenant_id\",\n        \"ms365_client_id\": \"ms365_client_id\",\n        \"ms365_client_secret\": \"ms365_client_secret\",\n    })\n# Below is an example of how to set up a custom email provider.\n# The action with custom-email-provider as supported_triggers is a prerequisite.\ncustom_email_provider_action = auth0.Action(\"custom_email_provider_action\",\n    name=\"custom-email-provider-action\",\n    runtime=\"node18\",\n    deploy=True,\n    code=\"\"\"/**\n * Handler to be executed while sending an email notification.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {CustomEmailProviderAPI} api - Methods and utilities to help change the behavior of sending a email notification.\n */\n exports.onExecuteCustomEmailProvider = async (event, api) =\u003e {\n  // Code goes here\n  console.log(event);\n  return;\n };\n\"\"\",\n    supported_triggers={\n        \"id\": \"custom-email-provider\",\n        \"version\": \"v1\",\n    })\ncustom_email_provider = auth0.EmailProvider(\"custom_email_provider\",\n    name=\"custom\",\n    enabled=True,\n    default_from_address=\"accounts@example.com\",\n    credentials={},\n    opts = pulumi.ResourceOptions(depends_on=[custom_email_provider_action]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // This is an example on how to set up the email provider with Amazon SES.\n    var amazonSesEmailProvider = new Auth0.EmailProvider(\"amazon_ses_email_provider\", new()\n    {\n        Name = \"ses\",\n        Enabled = true,\n        DefaultFromAddress = \"accounts@example.com\",\n        Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs\n        {\n            AccessKeyId = \"AKIAXXXXXXXXXXXXXXXX\",\n            SecretAccessKey = \"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n            Region = \"us-east-1\",\n        },\n    });\n\n    // This is an example on how to set up the email provider with SMTP.\n    var smtpEmailProvider = new Auth0.EmailProvider(\"smtp_email_provider\", new()\n    {\n        Name = \"smtp\",\n        Enabled = true,\n        DefaultFromAddress = \"accounts@example.com\",\n        Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs\n        {\n            SmtpHost = \"your.smtp.host.com\",\n            SmtpPort = 583,\n            SmtpUser = \"SMTP Username\",\n            SmtpPass = \"SMTP Password\",\n        },\n    });\n\n    // This is an example on how to set up the email provider with Sendgrid.\n    var sendgridEmailProvider = new Auth0.EmailProvider(\"sendgrid_email_provider\", new()\n    {\n        Name = \"sendgrid\",\n        Enabled = true,\n        DefaultFromAddress = \"accounts@example.com\",\n        Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs\n        {\n            ApiKey = \"secretAPIKey\",\n        },\n    });\n\n    // This is an example on how to set up the email provider with Azure CS.\n    var azureCsEmailProvider = new Auth0.EmailProvider(\"azure_cs_email_provider\", new()\n    {\n        Name = \"azure_cs\",\n        Enabled = true,\n        DefaultFromAddress = \"accounts@example.com\",\n        Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs\n        {\n            AzureCsConnectionString = \"azure_cs_connection_string\",\n        },\n    });\n\n    // This is an example on how to set up the email provider with MS365.\n    var ms365EmailProvider = new Auth0.EmailProvider(\"ms365_email_provider\", new()\n    {\n        Name = \"ms365\",\n        Enabled = true,\n        DefaultFromAddress = \"accounts@example.com\",\n        Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs\n        {\n            Ms365TenantId = \"ms365_tenant_id\",\n            Ms365ClientId = \"ms365_client_id\",\n            Ms365ClientSecret = \"ms365_client_secret\",\n        },\n    });\n\n    // Below is an example of how to set up a custom email provider.\n    // The action with custom-email-provider as supported_triggers is a prerequisite.\n    var customEmailProviderAction = new Auth0.Action(\"custom_email_provider_action\", new()\n    {\n        Name = \"custom-email-provider-action\",\n        Runtime = \"node18\",\n        Deploy = true,\n        Code = @\"/**\n * Handler to be executed while sending an email notification.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {CustomEmailProviderAPI} api - Methods and utilities to help change the behavior of sending a email notification.\n */\n exports.onExecuteCustomEmailProvider = async (event, api) =\u003e {\n  // Code goes here\n  console.log(event);\n  return;\n };\n\",\n        SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs\n        {\n            Id = \"custom-email-provider\",\n            Version = \"v1\",\n        },\n    });\n\n    var customEmailProvider = new Auth0.EmailProvider(\"custom_email_provider\", new()\n    {\n        Name = \"custom\",\n        Enabled = true,\n        DefaultFromAddress = \"accounts@example.com\",\n        Credentials = null,\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            customEmailProviderAction,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// This is an example on how to set up the email provider with Amazon SES.\n\t\t_, err := auth0.NewEmailProvider(ctx, \"amazon_ses_email_provider\", \u0026auth0.EmailProviderArgs{\n\t\t\tName:               pulumi.String(\"ses\"),\n\t\t\tEnabled:            pulumi.Bool(true),\n\t\t\tDefaultFromAddress: pulumi.String(\"accounts@example.com\"),\n\t\t\tCredentials: \u0026auth0.EmailProviderCredentialsArgs{\n\t\t\t\tAccessKeyId:     pulumi.String(\"AKIAXXXXXXXXXXXXXXXX\"),\n\t\t\t\tSecretAccessKey: pulumi.String(\"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\t\tRegion:          pulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// This is an example on how to set up the email provider with SMTP.\n\t\t_, err = auth0.NewEmailProvider(ctx, \"smtp_email_provider\", \u0026auth0.EmailProviderArgs{\n\t\t\tName:               pulumi.String(\"smtp\"),\n\t\t\tEnabled:            pulumi.Bool(true),\n\t\t\tDefaultFromAddress: pulumi.String(\"accounts@example.com\"),\n\t\t\tCredentials: \u0026auth0.EmailProviderCredentialsArgs{\n\t\t\t\tSmtpHost: pulumi.String(\"your.smtp.host.com\"),\n\t\t\t\tSmtpPort: pulumi.Int(583),\n\t\t\t\tSmtpUser: pulumi.String(\"SMTP Username\"),\n\t\t\t\tSmtpPass: pulumi.String(\"SMTP Password\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// This is an example on how to set up the email provider with Sendgrid.\n\t\t_, err = auth0.NewEmailProvider(ctx, \"sendgrid_email_provider\", \u0026auth0.EmailProviderArgs{\n\t\t\tName:               pulumi.String(\"sendgrid\"),\n\t\t\tEnabled:            pulumi.Bool(true),\n\t\t\tDefaultFromAddress: pulumi.String(\"accounts@example.com\"),\n\t\t\tCredentials: \u0026auth0.EmailProviderCredentialsArgs{\n\t\t\t\tApiKey: pulumi.String(\"secretAPIKey\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// This is an example on how to set up the email provider with Azure CS.\n\t\t_, err = auth0.NewEmailProvider(ctx, \"azure_cs_email_provider\", \u0026auth0.EmailProviderArgs{\n\t\t\tName:               pulumi.String(\"azure_cs\"),\n\t\t\tEnabled:            pulumi.Bool(true),\n\t\t\tDefaultFromAddress: pulumi.String(\"accounts@example.com\"),\n\t\t\tCredentials: \u0026auth0.EmailProviderCredentialsArgs{\n\t\t\t\tAzureCsConnectionString: pulumi.String(\"azure_cs_connection_string\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// This is an example on how to set up the email provider with MS365.\n\t\t_, err = auth0.NewEmailProvider(ctx, \"ms365_email_provider\", \u0026auth0.EmailProviderArgs{\n\t\t\tName:               pulumi.String(\"ms365\"),\n\t\t\tEnabled:            pulumi.Bool(true),\n\t\t\tDefaultFromAddress: pulumi.String(\"accounts@example.com\"),\n\t\t\tCredentials: \u0026auth0.EmailProviderCredentialsArgs{\n\t\t\t\tMs365TenantId:     pulumi.String(\"ms365_tenant_id\"),\n\t\t\t\tMs365ClientId:     pulumi.String(\"ms365_client_id\"),\n\t\t\t\tMs365ClientSecret: pulumi.String(\"ms365_client_secret\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Below is an example of how to set up a custom email provider.\n\t\t// The action with custom-email-provider as supported_triggers is a prerequisite.\n\t\tcustomEmailProviderAction, err := auth0.NewAction(ctx, \"custom_email_provider_action\", \u0026auth0.ActionArgs{\n\t\t\tName:    pulumi.String(\"custom-email-provider-action\"),\n\t\t\tRuntime: pulumi.String(\"node18\"),\n\t\t\tDeploy:  pulumi.Bool(true),\n\t\t\tCode: pulumi.String(`/**\n * Handler to be executed while sending an email notification.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {CustomEmailProviderAPI} api - Methods and utilities to help change the behavior of sending a email notification.\n */\n exports.onExecuteCustomEmailProvider = async (event, api) =\u003e {\n  // Code goes here\n  console.log(event);\n  return;\n };\n`),\n\t\t\tSupportedTriggers: \u0026auth0.ActionSupportedTriggersArgs{\n\t\t\t\tId:      pulumi.String(\"custom-email-provider\"),\n\t\t\t\tVersion: pulumi.String(\"v1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewEmailProvider(ctx, \"custom_email_provider\", \u0026auth0.EmailProviderArgs{\n\t\t\tName:               pulumi.String(\"custom\"),\n\t\t\tEnabled:            pulumi.Bool(true),\n\t\t\tDefaultFromAddress: pulumi.String(\"accounts@example.com\"),\n\t\t\tCredentials:        \u0026auth0.EmailProviderCredentialsArgs{},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tcustomEmailProviderAction,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.EmailProvider;\nimport com.pulumi.auth0.EmailProviderArgs;\nimport com.pulumi.auth0.inputs.EmailProviderCredentialsArgs;\nimport com.pulumi.auth0.Action;\nimport com.pulumi.auth0.ActionArgs;\nimport com.pulumi.auth0.inputs.ActionSupportedTriggersArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // This is an example on how to set up the email provider with Amazon SES.\n        var amazonSesEmailProvider = new EmailProvider(\"amazonSesEmailProvider\", EmailProviderArgs.builder()\n            .name(\"ses\")\n            .enabled(true)\n            .defaultFromAddress(\"accounts@example.com\")\n            .credentials(EmailProviderCredentialsArgs.builder()\n                .accessKeyId(\"AKIAXXXXXXXXXXXXXXXX\")\n                .secretAccessKey(\"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n                .region(\"us-east-1\")\n                .build())\n            .build());\n\n        // This is an example on how to set up the email provider with SMTP.\n        var smtpEmailProvider = new EmailProvider(\"smtpEmailProvider\", EmailProviderArgs.builder()\n            .name(\"smtp\")\n            .enabled(true)\n            .defaultFromAddress(\"accounts@example.com\")\n            .credentials(EmailProviderCredentialsArgs.builder()\n                .smtpHost(\"your.smtp.host.com\")\n                .smtpPort(583)\n                .smtpUser(\"SMTP Username\")\n                .smtpPass(\"SMTP Password\")\n                .build())\n            .build());\n\n        // This is an example on how to set up the email provider with Sendgrid.\n        var sendgridEmailProvider = new EmailProvider(\"sendgridEmailProvider\", EmailProviderArgs.builder()\n            .name(\"sendgrid\")\n            .enabled(true)\n            .defaultFromAddress(\"accounts@example.com\")\n            .credentials(EmailProviderCredentialsArgs.builder()\n                .apiKey(\"secretAPIKey\")\n                .build())\n            .build());\n\n        // This is an example on how to set up the email provider with Azure CS.\n        var azureCsEmailProvider = new EmailProvider(\"azureCsEmailProvider\", EmailProviderArgs.builder()\n            .name(\"azure_cs\")\n            .enabled(true)\n            .defaultFromAddress(\"accounts@example.com\")\n            .credentials(EmailProviderCredentialsArgs.builder()\n                .azureCsConnectionString(\"azure_cs_connection_string\")\n                .build())\n            .build());\n\n        // This is an example on how to set up the email provider with MS365.\n        var ms365EmailProvider = new EmailProvider(\"ms365EmailProvider\", EmailProviderArgs.builder()\n            .name(\"ms365\")\n            .enabled(true)\n            .defaultFromAddress(\"accounts@example.com\")\n            .credentials(EmailProviderCredentialsArgs.builder()\n                .ms365TenantId(\"ms365_tenant_id\")\n                .ms365ClientId(\"ms365_client_id\")\n                .ms365ClientSecret(\"ms365_client_secret\")\n                .build())\n            .build());\n\n        // Below is an example of how to set up a custom email provider.\n        // The action with custom-email-provider as supported_triggers is a prerequisite.\n        var customEmailProviderAction = new Action(\"customEmailProviderAction\", ActionArgs.builder()\n            .name(\"custom-email-provider-action\")\n            .runtime(\"node18\")\n            .deploy(true)\n            .code(\"\"\"\n/**\n * Handler to be executed while sending an email notification.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {CustomEmailProviderAPI} api - Methods and utilities to help change the behavior of sending a email notification.\n */\n exports.onExecuteCustomEmailProvider = async (event, api) =\u003e {\n  // Code goes here\n  console.log(event);\n  return;\n };\n            \"\"\")\n            .supportedTriggers(ActionSupportedTriggersArgs.builder()\n                .id(\"custom-email-provider\")\n                .version(\"v1\")\n                .build())\n            .build());\n\n        var customEmailProvider = new EmailProvider(\"customEmailProvider\", EmailProviderArgs.builder()\n            .name(\"custom\")\n            .enabled(true)\n            .defaultFromAddress(\"accounts@example.com\")\n            .credentials()\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(customEmailProviderAction)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # This is an example on how to set up the email provider with Amazon SES.\n  amazonSesEmailProvider:\n    type: auth0:EmailProvider\n    name: amazon_ses_email_provider\n    properties:\n      name: ses\n      enabled: true\n      defaultFromAddress: accounts@example.com\n      credentials:\n        accessKeyId: AKIAXXXXXXXXXXXXXXXX\n        secretAccessKey: 7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n        region: us-east-1\n  # This is an example on how to set up the email provider with SMTP.\n  smtpEmailProvider:\n    type: auth0:EmailProvider\n    name: smtp_email_provider\n    properties:\n      name: smtp\n      enabled: true\n      defaultFromAddress: accounts@example.com\n      credentials:\n        smtpHost: your.smtp.host.com\n        smtpPort: 583\n        smtpUser: SMTP Username\n        smtpPass: SMTP Password\n  # This is an example on how to set up the email provider with Sendgrid.\n  sendgridEmailProvider:\n    type: auth0:EmailProvider\n    name: sendgrid_email_provider\n    properties:\n      name: sendgrid\n      enabled: true\n      defaultFromAddress: accounts@example.com\n      credentials:\n        apiKey: secretAPIKey\n  # This is an example on how to set up the email provider with Azure CS.\n  azureCsEmailProvider:\n    type: auth0:EmailProvider\n    name: azure_cs_email_provider\n    properties:\n      name: azure_cs\n      enabled: true\n      defaultFromAddress: accounts@example.com\n      credentials:\n        azureCsConnectionString: azure_cs_connection_string\n  # This is an example on how to set up the email provider with MS365.\n  ms365EmailProvider:\n    type: auth0:EmailProvider\n    name: ms365_email_provider\n    properties:\n      name: ms365\n      enabled: true\n      defaultFromAddress: accounts@example.com\n      credentials:\n        ms365TenantId: ms365_tenant_id\n        ms365ClientId: ms365_client_id\n        ms365ClientSecret: ms365_client_secret\n  # Below is an example of how to set up a custom email provider.\n  # The action with custom-email-provider as supported_triggers is a prerequisite.\n  customEmailProviderAction:\n    type: auth0:Action\n    name: custom_email_provider_action\n    properties:\n      name: custom-email-provider-action\n      runtime: node18\n      deploy: true\n      code: |\n        /**\n         * Handler to be executed while sending an email notification.\n         *\n         * @param {Event} event - Details about the user and the context in which they are logging in.\n         * @param {CustomEmailProviderAPI} api - Methods and utilities to help change the behavior of sending a email notification.\n         */\n         exports.onExecuteCustomEmailProvider = async (event, api) =\u003e {\n          // Code goes here\n          console.log(event);\n          return;\n         };\n      supportedTriggers:\n        id: custom-email-provider\n        version: v1\n  customEmailProvider:\n    type: auth0:EmailProvider\n    name: custom_email_provider\n    properties:\n      name: custom\n      enabled: true\n      defaultFromAddress: accounts@example.com\n      credentials: {}\n    options:\n      dependsOn:\n        - ${customEmailProviderAction}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAs this is not a resource identifiable by an ID within the Auth0 Management API,\n\nemail can be imported using a random string.\n\n#\n\nWe recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/emailProvider:EmailProvider my_email_provider \"b4213dc2-2eed-42c3-9516-c6131a9ce0b0\"\n```\n\n",
             "properties": {
                 "credentials": {
                     "$ref": "#/types/auth0:index/EmailProviderCredentials:EmailProviderCredentials",
@@ -12170,6 +12325,94 @@
                     "login": {
                         "$ref": "#/types/auth0:index/PagesLogin:PagesLogin",
                         "description": "Configuration settings for customizing the Login page.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/phoneProvider:PhoneProvider": {
+            "description": "Auth0 allows you to configure your own phone messaging provider to help you manage, monitor, and troubleshoot your SMS and voice communications. You can only configure one phone provider for all SMS and voice communications per tenant.\n\n!\u003e This resource manages to create a max of 1 phone provider for a tenant.\nTo avoid potential issues, it is recommended not to try creating multiple phone providers on the same tenant.\n\n!\u003e If you are using the `auth0.PhoneProvider` resource to create a `custom` phone provider, you must ensure an action is created first with `custom-phone-provider` as the supported_triggers\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// This is an example on how to set up the phone provider with Twilio.\nconst twilioPhoneProvider = new auth0.PhoneProvider(\"twilio_phone_provider\", {\n    name: \"twilio\",\n    disabled: false,\n    credentials: {\n        authToken: \"secretAuthToken\",\n    },\n    configuration: {\n        deliveryMethods: [\n            \"text\",\n            \"voice\",\n        ],\n        defaultFrom: \"+1234567890\",\n        sid: \"ACXXXXXXXXXXXXXXXX\",\n        mssid: \"MSXXXXXXXXXXXXXXXX\",\n    },\n});\n// This is an example on how to set up the phone provider with a custom action.\n// Make sure a corresponding action exists with custom-phone-provider as supported triggers\nconst sendCustomPhone = new auth0.Action(\"send_custom_phone\", {\n    name: \"Custom Phone Provider\",\n    runtime: \"node18\",\n    deploy: true,\n    code: `/**\n * Handler to be executed while sending a phone notification\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {CustomPhoneProviderAPI} api - Methods and utilities to help change the behavior of sending a phone notification.\n */\nexports.onExecuteCustomPhoneProvider = async (event, api) =\u003e {\n    // Code goes here\n    return;\n};\n`,\n    supportedTriggers: {\n        id: \"custom-phone-provider\",\n        version: \"v1\",\n    },\n});\nconst customPhoneProvider = new auth0.PhoneProvider(\"custom_phone_provider\", {\n    name: \"custom\",\n    disabled: false,\n    configuration: {\n        deliveryMethods: [\n            \"text\",\n            \"voice\",\n        ],\n    },\n    credentials: {},\n}, {\n    dependsOn: [sendCustomPhone],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# This is an example on how to set up the phone provider with Twilio.\ntwilio_phone_provider = auth0.PhoneProvider(\"twilio_phone_provider\",\n    name=\"twilio\",\n    disabled=False,\n    credentials={\n        \"auth_token\": \"secretAuthToken\",\n    },\n    configuration={\n        \"delivery_methods\": [\n            \"text\",\n            \"voice\",\n        ],\n        \"default_from\": \"+1234567890\",\n        \"sid\": \"ACXXXXXXXXXXXXXXXX\",\n        \"mssid\": \"MSXXXXXXXXXXXXXXXX\",\n    })\n# This is an example on how to set up the phone provider with a custom action.\n# Make sure a corresponding action exists with custom-phone-provider as supported triggers\nsend_custom_phone = auth0.Action(\"send_custom_phone\",\n    name=\"Custom Phone Provider\",\n    runtime=\"node18\",\n    deploy=True,\n    code=\"\"\"/**\n * Handler to be executed while sending a phone notification\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {CustomPhoneProviderAPI} api - Methods and utilities to help change the behavior of sending a phone notification.\n */\nexports.onExecuteCustomPhoneProvider = async (event, api) =\u003e {\n    // Code goes here\n    return;\n};\n\"\"\",\n    supported_triggers={\n        \"id\": \"custom-phone-provider\",\n        \"version\": \"v1\",\n    })\ncustom_phone_provider = auth0.PhoneProvider(\"custom_phone_provider\",\n    name=\"custom\",\n    disabled=False,\n    configuration={\n        \"delivery_methods\": [\n            \"text\",\n            \"voice\",\n        ],\n    },\n    credentials={},\n    opts = pulumi.ResourceOptions(depends_on=[send_custom_phone]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // This is an example on how to set up the phone provider with Twilio.\n    var twilioPhoneProvider = new Auth0.PhoneProvider(\"twilio_phone_provider\", new()\n    {\n        Name = \"twilio\",\n        Disabled = false,\n        Credentials = new Auth0.Inputs.PhoneProviderCredentialsArgs\n        {\n            AuthToken = \"secretAuthToken\",\n        },\n        Configuration = new Auth0.Inputs.PhoneProviderConfigurationArgs\n        {\n            DeliveryMethods = new[]\n            {\n                \"text\",\n                \"voice\",\n            },\n            DefaultFrom = \"+1234567890\",\n            Sid = \"ACXXXXXXXXXXXXXXXX\",\n            Mssid = \"MSXXXXXXXXXXXXXXXX\",\n        },\n    });\n\n    // This is an example on how to set up the phone provider with a custom action.\n    // Make sure a corresponding action exists with custom-phone-provider as supported triggers\n    var sendCustomPhone = new Auth0.Action(\"send_custom_phone\", new()\n    {\n        Name = \"Custom Phone Provider\",\n        Runtime = \"node18\",\n        Deploy = true,\n        Code = @\"/**\n * Handler to be executed while sending a phone notification\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {CustomPhoneProviderAPI} api - Methods and utilities to help change the behavior of sending a phone notification.\n */\nexports.onExecuteCustomPhoneProvider = async (event, api) =\u003e {\n    // Code goes here\n    return;\n};\n\",\n        SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs\n        {\n            Id = \"custom-phone-provider\",\n            Version = \"v1\",\n        },\n    });\n\n    var customPhoneProvider = new Auth0.PhoneProvider(\"custom_phone_provider\", new()\n    {\n        Name = \"custom\",\n        Disabled = false,\n        Configuration = new Auth0.Inputs.PhoneProviderConfigurationArgs\n        {\n            DeliveryMethods = new[]\n            {\n                \"text\",\n                \"voice\",\n            },\n        },\n        Credentials = null,\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            sendCustomPhone,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// This is an example on how to set up the phone provider with Twilio.\n\t\t_, err := auth0.NewPhoneProvider(ctx, \"twilio_phone_provider\", \u0026auth0.PhoneProviderArgs{\n\t\t\tName:     pulumi.String(\"twilio\"),\n\t\t\tDisabled: pulumi.Bool(false),\n\t\t\tCredentials: \u0026auth0.PhoneProviderCredentialsArgs{\n\t\t\t\tAuthToken: pulumi.String(\"secretAuthToken\"),\n\t\t\t},\n\t\t\tConfiguration: \u0026auth0.PhoneProviderConfigurationArgs{\n\t\t\t\tDeliveryMethods: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"text\"),\n\t\t\t\t\tpulumi.String(\"voice\"),\n\t\t\t\t},\n\t\t\t\tDefaultFrom: pulumi.String(\"+1234567890\"),\n\t\t\t\tSid:         pulumi.String(\"ACXXXXXXXXXXXXXXXX\"),\n\t\t\t\tMssid:       pulumi.String(\"MSXXXXXXXXXXXXXXXX\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// This is an example on how to set up the phone provider with a custom action.\n\t\t// Make sure a corresponding action exists with custom-phone-provider as supported triggers\n\t\tsendCustomPhone, err := auth0.NewAction(ctx, \"send_custom_phone\", \u0026auth0.ActionArgs{\n\t\t\tName:    pulumi.String(\"Custom Phone Provider\"),\n\t\t\tRuntime: pulumi.String(\"node18\"),\n\t\t\tDeploy:  pulumi.Bool(true),\n\t\t\tCode: pulumi.String(`/**\n * Handler to be executed while sending a phone notification\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {CustomPhoneProviderAPI} api - Methods and utilities to help change the behavior of sending a phone notification.\n */\nexports.onExecuteCustomPhoneProvider = async (event, api) =\u003e {\n    // Code goes here\n    return;\n};\n`),\n\t\t\tSupportedTriggers: \u0026auth0.ActionSupportedTriggersArgs{\n\t\t\t\tId:      pulumi.String(\"custom-phone-provider\"),\n\t\t\t\tVersion: pulumi.String(\"v1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewPhoneProvider(ctx, \"custom_phone_provider\", \u0026auth0.PhoneProviderArgs{\n\t\t\tName:     pulumi.String(\"custom\"),\n\t\t\tDisabled: pulumi.Bool(false),\n\t\t\tConfiguration: \u0026auth0.PhoneProviderConfigurationArgs{\n\t\t\t\tDeliveryMethods: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"text\"),\n\t\t\t\t\tpulumi.String(\"voice\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tCredentials: \u0026auth0.PhoneProviderCredentialsArgs{},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tsendCustomPhone,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.PhoneProvider;\nimport com.pulumi.auth0.PhoneProviderArgs;\nimport com.pulumi.auth0.inputs.PhoneProviderCredentialsArgs;\nimport com.pulumi.auth0.inputs.PhoneProviderConfigurationArgs;\nimport com.pulumi.auth0.Action;\nimport com.pulumi.auth0.ActionArgs;\nimport com.pulumi.auth0.inputs.ActionSupportedTriggersArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // This is an example on how to set up the phone provider with Twilio.\n        var twilioPhoneProvider = new PhoneProvider(\"twilioPhoneProvider\", PhoneProviderArgs.builder()\n            .name(\"twilio\")\n            .disabled(false)\n            .credentials(PhoneProviderCredentialsArgs.builder()\n                .authToken(\"secretAuthToken\")\n                .build())\n            .configuration(PhoneProviderConfigurationArgs.builder()\n                .deliveryMethods(                \n                    \"text\",\n                    \"voice\")\n                .defaultFrom(\"+1234567890\")\n                .sid(\"ACXXXXXXXXXXXXXXXX\")\n                .mssid(\"MSXXXXXXXXXXXXXXXX\")\n                .build())\n            .build());\n\n        // This is an example on how to set up the phone provider with a custom action.\n        // Make sure a corresponding action exists with custom-phone-provider as supported triggers\n        var sendCustomPhone = new Action(\"sendCustomPhone\", ActionArgs.builder()\n            .name(\"Custom Phone Provider\")\n            .runtime(\"node18\")\n            .deploy(true)\n            .code(\"\"\"\n/**\n * Handler to be executed while sending a phone notification\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {CustomPhoneProviderAPI} api - Methods and utilities to help change the behavior of sending a phone notification.\n */\nexports.onExecuteCustomPhoneProvider = async (event, api) =\u003e {\n    // Code goes here\n    return;\n};\n            \"\"\")\n            .supportedTriggers(ActionSupportedTriggersArgs.builder()\n                .id(\"custom-phone-provider\")\n                .version(\"v1\")\n                .build())\n            .build());\n\n        var customPhoneProvider = new PhoneProvider(\"customPhoneProvider\", PhoneProviderArgs.builder()\n            .name(\"custom\")\n            .disabled(false)\n            .configuration(PhoneProviderConfigurationArgs.builder()\n                .deliveryMethods(                \n                    \"text\",\n                    \"voice\")\n                .build())\n            .credentials()\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(sendCustomPhone)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # This is an example on how to set up the phone provider with Twilio.\n  twilioPhoneProvider:\n    type: auth0:PhoneProvider\n    name: twilio_phone_provider\n    properties:\n      name: twilio\n      disabled: false\n      credentials:\n        authToken: secretAuthToken\n      configuration:\n        deliveryMethods:\n          - text\n          - voice\n        defaultFrom: '+1234567890'\n        sid: ACXXXXXXXXXXXXXXXX\n        mssid: MSXXXXXXXXXXXXXXXX\n  # This is an example on how to set up the phone provider with a custom action.\n  # Make sure a corresponding action exists with custom-phone-provider as supported triggers\n  sendCustomPhone:\n    type: auth0:Action\n    name: send_custom_phone\n    properties:\n      name: Custom Phone Provider\n      runtime: node18\n      deploy: true\n      code: |\n        /**\n         * Handler to be executed while sending a phone notification\n         * @param {Event} event - Details about the user and the context in which they are logging in.\n         * @param {CustomPhoneProviderAPI} api - Methods and utilities to help change the behavior of sending a phone notification.\n         */\n        exports.onExecuteCustomPhoneProvider = async (event, api) =\u003e {\n            // Code goes here\n            return;\n        };\n      supportedTriggers:\n        id: custom-phone-provider\n        version: v1\n  customPhoneProvider:\n    type: auth0:PhoneProvider\n    name: custom_phone_provider\n    properties:\n      name: custom\n      disabled: false # Disable the default phone provider\n      configuration:\n        deliveryMethods:\n          - text\n          - voice\n      credentials: {}\n    options:\n      dependsOn:\n        - ${sendCustomPhone}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the phone Provider ID.\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/phoneProvider:PhoneProvider my_phone_provider \"pro_XXXXXXXXXXXXXXXX\"\n```\n\n",
+            "properties": {
+                "channel": {
+                    "type": "string",
+                    "description": "The channel of the phone provider.\n"
+                },
+                "configuration": {
+                    "$ref": "#/types/auth0:index/PhoneProviderConfiguration:PhoneProviderConfiguration",
+                    "description": "Specific phone provider settings.\n"
+                },
+                "credentials": {
+                    "$ref": "#/types/auth0:index/PhoneProviderCredentials:PhoneProviderCredentials",
+                    "description": "Provider credentials required to use authenticate to the provider.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the phone provider is enabled (false) or disabled (true).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the phone provider. Options include `twilio`, `custom`.\n"
+                },
+                "tenant": {
+                    "type": "string",
+                    "description": "The tenant of the phone provider.\n"
+                }
+            },
+            "required": [
+                "channel",
+                "configuration",
+                "credentials",
+                "name",
+                "tenant"
+            ],
+            "inputProperties": {
+                "configuration": {
+                    "$ref": "#/types/auth0:index/PhoneProviderConfiguration:PhoneProviderConfiguration",
+                    "description": "Specific phone provider settings.\n"
+                },
+                "credentials": {
+                    "$ref": "#/types/auth0:index/PhoneProviderCredentials:PhoneProviderCredentials",
+                    "description": "Provider credentials required to use authenticate to the provider.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the phone provider is enabled (false) or disabled (true).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the phone provider. Options include `twilio`, `custom`.\n"
+                }
+            },
+            "requiredInputs": [
+                "configuration",
+                "credentials"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PhoneProvider resources.\n",
+                "properties": {
+                    "channel": {
+                        "type": "string",
+                        "description": "The channel of the phone provider.\n"
+                    },
+                    "configuration": {
+                        "$ref": "#/types/auth0:index/PhoneProviderConfiguration:PhoneProviderConfiguration",
+                        "description": "Specific phone provider settings.\n"
+                    },
+                    "credentials": {
+                        "$ref": "#/types/auth0:index/PhoneProviderCredentials:PhoneProviderCredentials",
+                        "description": "Provider credentials required to use authenticate to the provider.\n"
+                    },
+                    "disabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the phone provider is enabled (false) or disabled (true).\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the phone provider. Options include `twilio`, `custom`.\n"
+                    },
+                    "tenant": {
+                        "type": "string",
+                        "description": "The tenant of the phone provider.\n"
                     }
                 },
                 "type": "object"
@@ -13867,7 +14110,7 @@
                 },
                 "trigger": {
                     "type": "string",
-                    "description": "The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.\n"
+                    "description": "The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.\n"
                 }
             },
             "required": [
@@ -13887,7 +14130,7 @@
                 },
                 "trigger": {
                     "type": "string",
-                    "description": "The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.\n",
+                    "description": "The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -13909,7 +14152,7 @@
                     },
                     "trigger": {
                         "type": "string",
-                        "description": "The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.\n",
+                        "description": "The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -13928,7 +14171,7 @@
                 },
                 "trigger": {
                     "type": "string",
-                    "description": "The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.\n"
+                    "description": "The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.\n"
                 }
             },
             "required": [
@@ -13945,7 +14188,7 @@
                 },
                 "trigger": {
                     "type": "string",
-                    "description": "The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.\n",
+                    "description": "The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -13965,7 +14208,7 @@
                     },
                     "trigger": {
                         "type": "string",
-                        "description": "The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-token-exchange`, `custom-email-provider`.\n",
+                        "description": "The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -14466,6 +14709,83 @@
         }
     },
     "functions": {
+        "auth0:index/getAction:getAction": {
+            "description": "Data source to retrieve a specific Auth0 action by `name`.\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAction.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the action. If not provided, `name` must be set.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the action. If not provided, `id` must be set.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAction.\n",
+                "properties": {
+                    "code": {
+                        "description": "The source code of the action.\n",
+                        "type": "string"
+                    },
+                    "dependencies": {
+                        "description": "List of third party npm modules, and their versions, that this action depends on.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getActionDependency:getActionDependency"
+                        },
+                        "type": "array"
+                    },
+                    "deploy": {
+                        "description": "Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.\n",
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "description": "The ID of the action. If not provided, `name` must be set.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the action. If not provided, `id` must be set.\n",
+                        "type": "string"
+                    },
+                    "runtime": {
+                        "description": "The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`\n",
+                        "type": "string"
+                    },
+                    "secrets": {
+                        "description": "List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getActionSecret:getActionSecret"
+                        },
+                        "type": "array"
+                    },
+                    "supportedTriggers": {
+                        "description": "List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getActionSupportedTrigger:getActionSupportedTrigger"
+                        },
+                        "type": "array"
+                    },
+                    "versionId": {
+                        "description": "Version ID of the action. This value is available if `deploy` is set to true.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "code",
+                    "dependencies",
+                    "deploy",
+                    "runtime",
+                    "secrets",
+                    "supportedTriggers",
+                    "versionId"
+                ],
+                "type": "object"
+            }
+        },
         "auth0:index/getAttackProtection:getAttackProtection": {
             "description": "Use this data source to access information about the tenant's attack protection settings.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myProtection = auth0.getAttackProtection({});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_protection = auth0.get_attack_protection()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myProtection = Auth0.GetAttackProtection.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.LookupAttackProtection(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Auth0Functions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myProtection = Auth0Functions.getAttackProtection();\n\n    }\n}\n```\n```yaml\nvariables:\n  myProtection:\n    fn::invoke:\n      function: auth0:getAttackProtection\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "outputs": {
@@ -14757,7 +15077,7 @@
                         "type": "string"
                     },
                     "isFirstParty": {
-                        "description": "Indicates whether this client is a first-party client.\n",
+                        "description": "Indicates whether this client is a first-party client.Defaults to true from the API\n",
                         "type": "boolean"
                     },
                     "isTokenEndpointIpHeaderTrusted": {
@@ -15526,6 +15846,71 @@
                     "guardianMfas",
                     "logins",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "auth0:index/getPhoneProvider:getPhoneProvider": {
+            "description": "Data source to retrieve a specific Auth0 Phone Provider by `id`.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPhoneProvider.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the Phone Provider.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPhoneProvider.\n",
+                "properties": {
+                    "channel": {
+                        "description": "The channel of the phone provider.\n",
+                        "type": "string"
+                    },
+                    "configurations": {
+                        "description": "Specific phone provider settings.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getPhoneProviderConfiguration:getPhoneProviderConfiguration"
+                        },
+                        "type": "array"
+                    },
+                    "credentials": {
+                        "description": "Provider credentials required to use authenticate to the provider.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getPhoneProviderCredential:getPhoneProviderCredential"
+                        },
+                        "type": "array"
+                    },
+                    "disabled": {
+                        "description": "Indicates whether the phone provider is enabled (false) or disabled (true).\n",
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "description": "The ID of the Phone Provider.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the phone provider. Options include `twilio`, `custom`.\n",
+                        "type": "string"
+                    },
+                    "tenant": {
+                        "description": "The tenant of the phone provider.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "channel",
+                    "configurations",
+                    "credentials",
+                    "disabled",
+                    "id",
+                    "name",
+                    "tenant"
                 ],
                 "type": "object"
             }

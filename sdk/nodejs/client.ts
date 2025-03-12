@@ -130,7 +130,7 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly initiateLoginUri!: pulumi.Output<string | undefined>;
     /**
-     * Indicates whether this client is a first-party client.
+     * Indicates whether this client is a first-party client.Defaults to true from the API
      */
     public readonly isFirstParty!: pulumi.Output<boolean>;
     /**
@@ -400,7 +400,7 @@ export interface ClientState {
      */
     initiateLoginUri?: pulumi.Input<string>;
     /**
-     * Indicates whether this client is a first-party client.
+     * Indicates whether this client is a first-party client.Defaults to true from the API
      */
     isFirstParty?: pulumi.Input<boolean>;
     /**
@@ -564,7 +564,7 @@ export interface ClientArgs {
      */
     initiateLoginUri?: pulumi.Input<string>;
     /**
-     * Indicates whether this client is a first-party client.
+     * Indicates whether this client is a first-party client.Defaults to true from the API
      */
     isFirstParty?: pulumi.Input<boolean>;
     /**

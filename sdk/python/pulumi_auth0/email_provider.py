@@ -206,6 +206,11 @@ class EmailProvider(pulumi.CustomResource):
         """
         With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
 
+        !> This resource manages to create a max of 1 email provider for a tenant.
+        To avoid potential issues, it is recommended not to try creating multiple email providers on the same tenant.
+
+        !> If you are using the `EmailProvider` resource to create a `custom` email provider, you must ensure an action is created first with `custom-email-provider` as the supported_triggers
+
         ## Example Usage
 
         ```python
@@ -259,13 +264,34 @@ class EmailProvider(pulumi.CustomResource):
                 "ms365_client_id": "ms365_client_id",
                 "ms365_client_secret": "ms365_client_secret",
             })
-        # This is an example on how to set up the email provider with a custom action.
-        # Make sure a corresponding action exists with custom-email-provider as supported triggers
+        # Below is an example of how to set up a custom email provider.
+        # The action with custom-email-provider as supported_triggers is a prerequisite.
+        custom_email_provider_action = auth0.Action("custom_email_provider_action",
+            name="custom-email-provider-action",
+            runtime="node18",
+            deploy=True,
+            code=\"\"\"/**
+         * Handler to be executed while sending an email notification.
+         *
+         * @param {Event} event - Details about the user and the context in which they are logging in.
+         * @param {CustomEmailProviderAPI} api - Methods and utilities to help change the behavior of sending a email notification.
+         */
+         exports.onExecuteCustomEmailProvider = async (event, api) => {
+          // Code goes here
+          console.log(event);
+          return;
+         };
+        \"\"\",
+            supported_triggers={
+                "id": "custom-email-provider",
+                "version": "v1",
+            })
         custom_email_provider = auth0.EmailProvider("custom_email_provider",
             name="custom",
             enabled=True,
             default_from_address="accounts@example.com",
-            credentials={})
+            credentials={},
+            opts = pulumi.ResourceOptions(depends_on=[custom_email_provider_action]))
         ```
 
         ## Import
@@ -303,6 +329,11 @@ class EmailProvider(pulumi.CustomResource):
         """
         With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
 
+        !> This resource manages to create a max of 1 email provider for a tenant.
+        To avoid potential issues, it is recommended not to try creating multiple email providers on the same tenant.
+
+        !> If you are using the `EmailProvider` resource to create a `custom` email provider, you must ensure an action is created first with `custom-email-provider` as the supported_triggers
+
         ## Example Usage
 
         ```python
@@ -356,13 +387,34 @@ class EmailProvider(pulumi.CustomResource):
                 "ms365_client_id": "ms365_client_id",
                 "ms365_client_secret": "ms365_client_secret",
             })
-        # This is an example on how to set up the email provider with a custom action.
-        # Make sure a corresponding action exists with custom-email-provider as supported triggers
+        # Below is an example of how to set up a custom email provider.
+        # The action with custom-email-provider as supported_triggers is a prerequisite.
+        custom_email_provider_action = auth0.Action("custom_email_provider_action",
+            name="custom-email-provider-action",
+            runtime="node18",
+            deploy=True,
+            code=\"\"\"/**
+         * Handler to be executed while sending an email notification.
+         *
+         * @param {Event} event - Details about the user and the context in which they are logging in.
+         * @param {CustomEmailProviderAPI} api - Methods and utilities to help change the behavior of sending a email notification.
+         */
+         exports.onExecuteCustomEmailProvider = async (event, api) => {
+          // Code goes here
+          console.log(event);
+          return;
+         };
+        \"\"\",
+            supported_triggers={
+                "id": "custom-email-provider",
+                "version": "v1",
+            })
         custom_email_provider = auth0.EmailProvider("custom_email_provider",
             name="custom",
             enabled=True,
             default_from_address="accounts@example.com",
-            credentials={})
+            credentials={},
+            opts = pulumi.ResourceOptions(depends_on=[custom_email_provider_action]))
         ```
 
         ## Import

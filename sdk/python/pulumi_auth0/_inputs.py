@@ -285,6 +285,10 @@ __all__ = [
     'PagesGuardianMfaArgsDict',
     'PagesLoginArgs',
     'PagesLoginArgsDict',
+    'PhoneProviderConfigurationArgs',
+    'PhoneProviderConfigurationArgsDict',
+    'PhoneProviderCredentialsArgs',
+    'PhoneProviderCredentialsArgsDict',
     'PromptScreenPartialInsertionPointsArgs',
     'PromptScreenPartialInsertionPointsArgsDict',
     'PromptScreenPartialsScreenPartialArgs',
@@ -12821,6 +12825,129 @@ class PagesLoginArgs:
     @html.setter
     def html(self, value: pulumi.Input[str]):
         pulumi.set(self, "html", value)
+
+
+if not MYPY:
+    class PhoneProviderConfigurationArgsDict(TypedDict):
+        delivery_methods: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Media set supported by a given provider to deliver a notification
+        """
+        default_from: NotRequired[pulumi.Input[str]]
+        """
+        Default sender subject as "from" when no other value is specified.
+        """
+        mssid: NotRequired[pulumi.Input[str]]
+        """
+        Twilio Messaging Service SID
+        """
+        sid: NotRequired[pulumi.Input[str]]
+        """
+        Twilio Account SID.
+        """
+elif False:
+    PhoneProviderConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PhoneProviderConfigurationArgs:
+    def __init__(__self__, *,
+                 delivery_methods: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 default_from: Optional[pulumi.Input[str]] = None,
+                 mssid: Optional[pulumi.Input[str]] = None,
+                 sid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delivery_methods: Media set supported by a given provider to deliver a notification
+        :param pulumi.Input[str] default_from: Default sender subject as "from" when no other value is specified.
+        :param pulumi.Input[str] mssid: Twilio Messaging Service SID
+        :param pulumi.Input[str] sid: Twilio Account SID.
+        """
+        pulumi.set(__self__, "delivery_methods", delivery_methods)
+        if default_from is not None:
+            pulumi.set(__self__, "default_from", default_from)
+        if mssid is not None:
+            pulumi.set(__self__, "mssid", mssid)
+        if sid is not None:
+            pulumi.set(__self__, "sid", sid)
+
+    @property
+    @pulumi.getter(name="deliveryMethods")
+    def delivery_methods(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Media set supported by a given provider to deliver a notification
+        """
+        return pulumi.get(self, "delivery_methods")
+
+    @delivery_methods.setter
+    def delivery_methods(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "delivery_methods", value)
+
+    @property
+    @pulumi.getter(name="defaultFrom")
+    def default_from(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default sender subject as "from" when no other value is specified.
+        """
+        return pulumi.get(self, "default_from")
+
+    @default_from.setter
+    def default_from(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_from", value)
+
+    @property
+    @pulumi.getter
+    def mssid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Twilio Messaging Service SID
+        """
+        return pulumi.get(self, "mssid")
+
+    @mssid.setter
+    def mssid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mssid", value)
+
+    @property
+    @pulumi.getter
+    def sid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Twilio Account SID.
+        """
+        return pulumi.get(self, "sid")
+
+    @sid.setter
+    def sid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sid", value)
+
+
+if not MYPY:
+    class PhoneProviderCredentialsArgsDict(TypedDict):
+        auth_token: NotRequired[pulumi.Input[str]]
+        """
+        The Auth Token for the phone provider.
+        """
+elif False:
+    PhoneProviderCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PhoneProviderCredentialsArgs:
+    def __init__(__self__, *,
+                 auth_token: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] auth_token: The Auth Token for the phone provider.
+        """
+        if auth_token is not None:
+            pulumi.set(__self__, "auth_token", auth_token)
+
+    @property
+    @pulumi.getter(name="authToken")
+    def auth_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Auth Token for the phone provider.
+        """
+        return pulumi.get(self, "auth_token")
+
+    @auth_token.setter
+    def auth_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_token", value)
 
 
 if not MYPY:
