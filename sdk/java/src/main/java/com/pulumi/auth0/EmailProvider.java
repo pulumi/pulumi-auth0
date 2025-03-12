@@ -20,6 +20,11 @@ import javax.annotation.Nullable;
 /**
  * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0&#39;s authentication workflows through the supported high-volume email service of your choice.
  * 
+ * !&gt; This resource manages to create a max of 1 email provider for a tenant.
+ * To avoid potential issues, it is recommended not to try creating multiple email providers on the same tenant.
+ * 
+ * !&gt; If you are using the `auth0.EmailProvider` resource to create a `custom` email provider, you must ensure an action is created first with `custom-email-provider` as the supported_triggers
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -33,6 +38,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.EmailProvider;
  * import com.pulumi.auth0.EmailProviderArgs;
  * import com.pulumi.auth0.inputs.EmailProviderCredentialsArgs;
+ * import com.pulumi.auth0.Action;
+ * import com.pulumi.auth0.ActionArgs;
+ * import com.pulumi.auth0.inputs.ActionSupportedTriggersArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -103,14 +112,39 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         // This is an example on how to set up the email provider with a custom action.
- *         // Make sure a corresponding action exists with custom-email-provider as supported triggers
+ *         // Below is an example of how to set up a custom email provider.
+ *         // The action with custom-email-provider as supported_triggers is a prerequisite.
+ *         var customEmailProviderAction = new Action("customEmailProviderAction", ActionArgs.builder()
+ *             .name("custom-email-provider-action")
+ *             .runtime("node18")
+ *             .deploy(true)
+ *             .code("""
+ * /**
+ *  * Handler to be executed while sending an email notification.
+ *  *
+ *  * }{@literal @}{@code param }{{@code Event}}{@code  event - Details about the user and the context in which they are logging in.
+ *  * }{@literal @}{@code param }{{@code CustomEmailProviderAPI}}{@code  api - Methods and utilities to help change the behavior of sending a email notification.
+ *  *}&#47;{@code
+ *  exports.onExecuteCustomEmailProvider = async (event, api) => }{{@code
+ *   // Code goes here
+ *   console.log(event);
+ *   return;
+ *  }}{@code ;
+ *             """)
+ *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
+ *                 .id("custom-email-provider")
+ *                 .version("v1")
+ *                 .build())
+ *             .build());
+ * 
  *         var customEmailProvider = new EmailProvider("customEmailProvider", EmailProviderArgs.builder()
  *             .name("custom")
  *             .enabled(true)
  *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
  *             .credentials()
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(customEmailProviderAction)
+ *                 .build());
  * 
  *     }}{@code
  * }}{@code

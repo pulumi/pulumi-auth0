@@ -288,6 +288,11 @@ class Action(pulumi.CustomResource):
         """
         Actions are secure, tenant-specific, versioned functions written in Node.js that execute at certain points during the Auth0 runtime. Actions are used to customize and extend Auth0's capabilities with custom logic.
 
+        > An action bound to a trigger cannot be deleted. To destroy such an action, the trigger binding must first be deleted.
+        A binding is usually managed by TriggerAction resource.
+        The provider also supports a 1:many variant auth0_trigger_actions.
+        If by any means, a binding is missing is the state file, it can be imported to the state and deleted, before attempting to delete the action.
+
         ## Import
 
         This resource can be imported by specifying the action ID.
@@ -322,6 +327,11 @@ class Action(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Actions are secure, tenant-specific, versioned functions written in Node.js that execute at certain points during the Auth0 runtime. Actions are used to customize and extend Auth0's capabilities with custom logic.
+
+        > An action bound to a trigger cannot be deleted. To destroy such an action, the trigger binding must first be deleted.
+        A binding is usually managed by TriggerAction resource.
+        The provider also supports a 1:many variant auth0_trigger_actions.
+        If by any means, a binding is missing is the state file, it can be imported to the state and deleted, before attempting to delete the action.
 
         ## Import
 

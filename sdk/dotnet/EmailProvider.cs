@@ -12,6 +12,11 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
     /// 
+    /// !&gt; This resource manages to create a max of 1 email provider for a tenant.
+    /// To avoid potential issues, it is recommended not to try creating multiple email providers on the same tenant.
+    /// 
+    /// !&gt; If you are using the `auth0.EmailProvider` resource to create a `custom` email provider, you must ensure an action is created first with `custom-email-provider` as the supported_triggers
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -89,14 +94,44 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
-    ///     // This is an example on how to set up the email provider with a custom action.
-    ///     // Make sure a corresponding action exists with custom-email-provider as supported triggers
+    ///     // Below is an example of how to set up a custom email provider.
+    ///     // The action with custom-email-provider as supported_triggers is a prerequisite.
+    ///     var customEmailProviderAction = new Auth0.Action("custom_email_provider_action", new()
+    ///     {
+    ///         Name = "custom-email-provider-action",
+    ///         Runtime = "node18",
+    ///         Deploy = true,
+    ///         Code = @"/**
+    ///  * Handler to be executed while sending an email notification.
+    ///  *
+    ///  * @param {Event} event - Details about the user and the context in which they are logging in.
+    ///  * @param {CustomEmailProviderAPI} api - Methods and utilities to help change the behavior of sending a email notification.
+    ///  */
+    ///  exports.onExecuteCustomEmailProvider = async (event, api) =&gt; {
+    ///   // Code goes here
+    ///   console.log(event);
+    ///   return;
+    ///  };
+    /// ",
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "custom-email-provider",
+    ///             Version = "v1",
+    ///         },
+    ///     });
+    /// 
     ///     var customEmailProvider = new Auth0.EmailProvider("custom_email_provider", new()
     ///     {
     ///         Name = "custom",
     ///         Enabled = true,
     ///         DefaultFromAddress = "accounts@example.com",
     ///         Credentials = null,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             customEmailProviderAction,
+    ///         },
     ///     });
     /// 
     /// });

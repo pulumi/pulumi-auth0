@@ -14,6 +14,11 @@ import (
 
 // With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
 //
+// !> This resource manages to create a max of 1 email provider for a tenant.
+// To avoid potential issues, it is recommended not to try creating multiple email providers on the same tenant.
+//
+// !> If you are using the `EmailProvider` resource to create a `custom` email provider, you must ensure an action is created first with `custom-email-provider` as the supportedTriggers
+//
 // ## Example Usage
 //
 // ```go
@@ -95,14 +100,42 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// This is an example on how to set up the email provider with a custom action.
-//			// Make sure a corresponding action exists with custom-email-provider as supported triggers
+//			// Below is an example of how to set up a custom email provider.
+//			// The action with custom-email-provider as supported_triggers is a prerequisite.
+//			customEmailProviderAction, err := auth0.NewAction(ctx, "custom_email_provider_action", &auth0.ActionArgs{
+//				Name:    pulumi.String("custom-email-provider-action"),
+//				Runtime: pulumi.String("node18"),
+//				Deploy:  pulumi.Bool(true),
+//				Code: pulumi.String(`/**
+//	 * Handler to be executed while sending an email notification.
+//	 *
+//	 * @param {Event} event - Details about the user and the context in which they are logging in.
+//	 * @param {CustomEmailProviderAPI} api - Methods and utilities to help change the behavior of sending a email notification.
+//	 */
+//	 exports.onExecuteCustomEmailProvider = async (event, api) => {
+//	  // Code goes here
+//	  console.log(event);
+//	  return;
+//	 };
+//
+// `),
+//
+//				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
+//					Id:      pulumi.String("custom-email-provider"),
+//					Version: pulumi.String("v1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = auth0.NewEmailProvider(ctx, "custom_email_provider", &auth0.EmailProviderArgs{
 //				Name:               pulumi.String("custom"),
 //				Enabled:            pulumi.Bool(true),
 //				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //				Credentials:        &auth0.EmailProviderCredentialsArgs{},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				customEmailProviderAction,
+//			}))
 //			if err != nil {
 //				return err
 //			}

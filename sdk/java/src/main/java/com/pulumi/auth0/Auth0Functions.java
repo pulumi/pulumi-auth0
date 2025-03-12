@@ -4,6 +4,8 @@
 package com.pulumi.auth0;
 
 import com.pulumi.auth0.Utilities;
+import com.pulumi.auth0.inputs.GetActionArgs;
+import com.pulumi.auth0.inputs.GetActionPlainArgs;
 import com.pulumi.auth0.inputs.GetClientArgs;
 import com.pulumi.auth0.inputs.GetClientPlainArgs;
 import com.pulumi.auth0.inputs.GetClientsArgs;
@@ -20,6 +22,8 @@ import com.pulumi.auth0.inputs.GetFormArgs;
 import com.pulumi.auth0.inputs.GetFormPlainArgs;
 import com.pulumi.auth0.inputs.GetOrganizationArgs;
 import com.pulumi.auth0.inputs.GetOrganizationPlainArgs;
+import com.pulumi.auth0.inputs.GetPhoneProviderArgs;
+import com.pulumi.auth0.inputs.GetPhoneProviderPlainArgs;
 import com.pulumi.auth0.inputs.GetPromptScreenPartialsArgs;
 import com.pulumi.auth0.inputs.GetPromptScreenPartialsPlainArgs;
 import com.pulumi.auth0.inputs.GetPromptScreenRendererArgs;
@@ -34,6 +38,7 @@ import com.pulumi.auth0.inputs.GetTokenExchangeProfileArgs;
 import com.pulumi.auth0.inputs.GetTokenExchangeProfilePlainArgs;
 import com.pulumi.auth0.inputs.GetUserArgs;
 import com.pulumi.auth0.inputs.GetUserPlainArgs;
+import com.pulumi.auth0.outputs.GetActionResult;
 import com.pulumi.auth0.outputs.GetAttackProtectionResult;
 import com.pulumi.auth0.outputs.GetBrandingResult;
 import com.pulumi.auth0.outputs.GetBrandingThemeResult;
@@ -47,6 +52,7 @@ import com.pulumi.auth0.outputs.GetFlowVaultConnectionResult;
 import com.pulumi.auth0.outputs.GetFormResult;
 import com.pulumi.auth0.outputs.GetOrganizationResult;
 import com.pulumi.auth0.outputs.GetPagesResult;
+import com.pulumi.auth0.outputs.GetPhoneProviderResult;
 import com.pulumi.auth0.outputs.GetPromptScreenPartialsResult;
 import com.pulumi.auth0.outputs.GetPromptScreenRendererResult;
 import com.pulumi.auth0.outputs.GetResourceServerResult;
@@ -65,6 +71,55 @@ import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class Auth0Functions {
+    /**
+     * Data source to retrieve a specific Auth0 action by `name`.
+     * 
+     */
+    public static Output<GetActionResult> getAction() {
+        return getAction(GetActionArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 action by `name`.
+     * 
+     */
+    public static CompletableFuture<GetActionResult> getActionPlain() {
+        return getActionPlain(GetActionPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 action by `name`.
+     * 
+     */
+    public static Output<GetActionResult> getAction(GetActionArgs args) {
+        return getAction(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 action by `name`.
+     * 
+     */
+    public static CompletableFuture<GetActionResult> getActionPlain(GetActionPlainArgs args) {
+        return getActionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 action by `name`.
+     * 
+     */
+    public static Output<GetActionResult> getAction(GetActionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getAction:getAction", TypeShape.of(GetActionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 action by `name`.
+     * 
+     */
+    public static Output<GetActionResult> getAction(GetActionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getAction:getAction", TypeShape.of(GetActionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 action by `name`.
+     * 
+     */
+    public static CompletableFuture<GetActionResult> getActionPlain(GetActionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getAction:getAction", TypeShape.of(GetActionResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Use this data source to access information about the tenant&#39;s attack protection settings.
      * 
@@ -3573,6 +3628,41 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetPagesResult> getPagesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getPages:getPages", TypeShape.of(GetPagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Phone Provider by `id`.
+     * 
+     */
+    public static Output<GetPhoneProviderResult> getPhoneProvider(GetPhoneProviderArgs args) {
+        return getPhoneProvider(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Phone Provider by `id`.
+     * 
+     */
+    public static CompletableFuture<GetPhoneProviderResult> getPhoneProviderPlain(GetPhoneProviderPlainArgs args) {
+        return getPhoneProviderPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Phone Provider by `id`.
+     * 
+     */
+    public static Output<GetPhoneProviderResult> getPhoneProvider(GetPhoneProviderArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getPhoneProvider:getPhoneProvider", TypeShape.of(GetPhoneProviderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Phone Provider by `id`.
+     * 
+     */
+    public static Output<GetPhoneProviderResult> getPhoneProvider(GetPhoneProviderArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getPhoneProvider:getPhoneProvider", TypeShape.of(GetPhoneProviderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Phone Provider by `id`.
+     * 
+     */
+    public static CompletableFuture<GetPhoneProviderResult> getPhoneProviderPlain(GetPhoneProviderPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getPhoneProvider:getPhoneProvider", TypeShape.of(GetPhoneProviderResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.

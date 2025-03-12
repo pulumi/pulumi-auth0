@@ -24,6 +24,7 @@ from .encryption_key_manager import *
 from .flow import *
 from .flow_vault_connection import *
 from .form import *
+from .get_action import *
 from .get_attack_protection import *
 from .get_branding import *
 from .get_branding_theme import *
@@ -37,6 +38,7 @@ from .get_flow_vault_connection import *
 from .get_form import *
 from .get_organization import *
 from .get_pages import *
+from .get_phone_provider import *
 from .get_prompt_screen_partials import *
 from .get_prompt_screen_renderer import *
 from .get_resource_server import *
@@ -58,6 +60,7 @@ from .organization_member_role import *
 from .organization_member_roles import *
 from .organization_members import *
 from .pages import *
+from .phone_provider import *
 from .prompt import *
 from .prompt_custom_text import *
 from .prompt_partials import *
@@ -343,6 +346,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/pages:Pages": "Pages"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/phoneProvider",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/phoneProvider:PhoneProvider": "PhoneProvider"
   }
  },
  {

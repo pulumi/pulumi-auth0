@@ -349,7 +349,7 @@ class GetClientResult:
     @pulumi.getter(name="isFirstParty")
     def is_first_party(self) -> bool:
         """
-        Indicates whether this client is a first-party client.
+        Indicates whether this client is a first-party client.Defaults to true from the API
         """
         return pulumi.get(self, "is_first_party")
 

@@ -24727,6 +24727,337 @@ func (o PagesLoginPtrOutput) Html() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type PhoneProviderConfiguration struct {
+	// Default sender subject as "from" when no other value is specified.
+	DefaultFrom *string `pulumi:"defaultFrom"`
+	// Media set supported by a given provider to deliver a notification
+	DeliveryMethods []string `pulumi:"deliveryMethods"`
+	// Twilio Messaging Service SID
+	Mssid *string `pulumi:"mssid"`
+	// Twilio Account SID.
+	Sid *string `pulumi:"sid"`
+}
+
+// PhoneProviderConfigurationInput is an input type that accepts PhoneProviderConfigurationArgs and PhoneProviderConfigurationOutput values.
+// You can construct a concrete instance of `PhoneProviderConfigurationInput` via:
+//
+//	PhoneProviderConfigurationArgs{...}
+type PhoneProviderConfigurationInput interface {
+	pulumi.Input
+
+	ToPhoneProviderConfigurationOutput() PhoneProviderConfigurationOutput
+	ToPhoneProviderConfigurationOutputWithContext(context.Context) PhoneProviderConfigurationOutput
+}
+
+type PhoneProviderConfigurationArgs struct {
+	// Default sender subject as "from" when no other value is specified.
+	DefaultFrom pulumi.StringPtrInput `pulumi:"defaultFrom"`
+	// Media set supported by a given provider to deliver a notification
+	DeliveryMethods pulumi.StringArrayInput `pulumi:"deliveryMethods"`
+	// Twilio Messaging Service SID
+	Mssid pulumi.StringPtrInput `pulumi:"mssid"`
+	// Twilio Account SID.
+	Sid pulumi.StringPtrInput `pulumi:"sid"`
+}
+
+func (PhoneProviderConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhoneProviderConfiguration)(nil)).Elem()
+}
+
+func (i PhoneProviderConfigurationArgs) ToPhoneProviderConfigurationOutput() PhoneProviderConfigurationOutput {
+	return i.ToPhoneProviderConfigurationOutputWithContext(context.Background())
+}
+
+func (i PhoneProviderConfigurationArgs) ToPhoneProviderConfigurationOutputWithContext(ctx context.Context) PhoneProviderConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhoneProviderConfigurationOutput)
+}
+
+func (i PhoneProviderConfigurationArgs) ToPhoneProviderConfigurationPtrOutput() PhoneProviderConfigurationPtrOutput {
+	return i.ToPhoneProviderConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i PhoneProviderConfigurationArgs) ToPhoneProviderConfigurationPtrOutputWithContext(ctx context.Context) PhoneProviderConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhoneProviderConfigurationOutput).ToPhoneProviderConfigurationPtrOutputWithContext(ctx)
+}
+
+// PhoneProviderConfigurationPtrInput is an input type that accepts PhoneProviderConfigurationArgs, PhoneProviderConfigurationPtr and PhoneProviderConfigurationPtrOutput values.
+// You can construct a concrete instance of `PhoneProviderConfigurationPtrInput` via:
+//
+//	        PhoneProviderConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type PhoneProviderConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToPhoneProviderConfigurationPtrOutput() PhoneProviderConfigurationPtrOutput
+	ToPhoneProviderConfigurationPtrOutputWithContext(context.Context) PhoneProviderConfigurationPtrOutput
+}
+
+type phoneProviderConfigurationPtrType PhoneProviderConfigurationArgs
+
+func PhoneProviderConfigurationPtr(v *PhoneProviderConfigurationArgs) PhoneProviderConfigurationPtrInput {
+	return (*phoneProviderConfigurationPtrType)(v)
+}
+
+func (*phoneProviderConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PhoneProviderConfiguration)(nil)).Elem()
+}
+
+func (i *phoneProviderConfigurationPtrType) ToPhoneProviderConfigurationPtrOutput() PhoneProviderConfigurationPtrOutput {
+	return i.ToPhoneProviderConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *phoneProviderConfigurationPtrType) ToPhoneProviderConfigurationPtrOutputWithContext(ctx context.Context) PhoneProviderConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhoneProviderConfigurationPtrOutput)
+}
+
+type PhoneProviderConfigurationOutput struct{ *pulumi.OutputState }
+
+func (PhoneProviderConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhoneProviderConfiguration)(nil)).Elem()
+}
+
+func (o PhoneProviderConfigurationOutput) ToPhoneProviderConfigurationOutput() PhoneProviderConfigurationOutput {
+	return o
+}
+
+func (o PhoneProviderConfigurationOutput) ToPhoneProviderConfigurationOutputWithContext(ctx context.Context) PhoneProviderConfigurationOutput {
+	return o
+}
+
+func (o PhoneProviderConfigurationOutput) ToPhoneProviderConfigurationPtrOutput() PhoneProviderConfigurationPtrOutput {
+	return o.ToPhoneProviderConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o PhoneProviderConfigurationOutput) ToPhoneProviderConfigurationPtrOutputWithContext(ctx context.Context) PhoneProviderConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PhoneProviderConfiguration) *PhoneProviderConfiguration {
+		return &v
+	}).(PhoneProviderConfigurationPtrOutput)
+}
+
+// Default sender subject as "from" when no other value is specified.
+func (o PhoneProviderConfigurationOutput) DefaultFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhoneProviderConfiguration) *string { return v.DefaultFrom }).(pulumi.StringPtrOutput)
+}
+
+// Media set supported by a given provider to deliver a notification
+func (o PhoneProviderConfigurationOutput) DeliveryMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PhoneProviderConfiguration) []string { return v.DeliveryMethods }).(pulumi.StringArrayOutput)
+}
+
+// Twilio Messaging Service SID
+func (o PhoneProviderConfigurationOutput) Mssid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhoneProviderConfiguration) *string { return v.Mssid }).(pulumi.StringPtrOutput)
+}
+
+// Twilio Account SID.
+func (o PhoneProviderConfigurationOutput) Sid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhoneProviderConfiguration) *string { return v.Sid }).(pulumi.StringPtrOutput)
+}
+
+type PhoneProviderConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (PhoneProviderConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PhoneProviderConfiguration)(nil)).Elem()
+}
+
+func (o PhoneProviderConfigurationPtrOutput) ToPhoneProviderConfigurationPtrOutput() PhoneProviderConfigurationPtrOutput {
+	return o
+}
+
+func (o PhoneProviderConfigurationPtrOutput) ToPhoneProviderConfigurationPtrOutputWithContext(ctx context.Context) PhoneProviderConfigurationPtrOutput {
+	return o
+}
+
+func (o PhoneProviderConfigurationPtrOutput) Elem() PhoneProviderConfigurationOutput {
+	return o.ApplyT(func(v *PhoneProviderConfiguration) PhoneProviderConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret PhoneProviderConfiguration
+		return ret
+	}).(PhoneProviderConfigurationOutput)
+}
+
+// Default sender subject as "from" when no other value is specified.
+func (o PhoneProviderConfigurationPtrOutput) DefaultFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PhoneProviderConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultFrom
+	}).(pulumi.StringPtrOutput)
+}
+
+// Media set supported by a given provider to deliver a notification
+func (o PhoneProviderConfigurationPtrOutput) DeliveryMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PhoneProviderConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// Twilio Messaging Service SID
+func (o PhoneProviderConfigurationPtrOutput) Mssid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PhoneProviderConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mssid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Twilio Account SID.
+func (o PhoneProviderConfigurationPtrOutput) Sid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PhoneProviderConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sid
+	}).(pulumi.StringPtrOutput)
+}
+
+type PhoneProviderCredentials struct {
+	// The Auth Token for the phone provider.
+	AuthToken *string `pulumi:"authToken"`
+}
+
+// PhoneProviderCredentialsInput is an input type that accepts PhoneProviderCredentialsArgs and PhoneProviderCredentialsOutput values.
+// You can construct a concrete instance of `PhoneProviderCredentialsInput` via:
+//
+//	PhoneProviderCredentialsArgs{...}
+type PhoneProviderCredentialsInput interface {
+	pulumi.Input
+
+	ToPhoneProviderCredentialsOutput() PhoneProviderCredentialsOutput
+	ToPhoneProviderCredentialsOutputWithContext(context.Context) PhoneProviderCredentialsOutput
+}
+
+type PhoneProviderCredentialsArgs struct {
+	// The Auth Token for the phone provider.
+	AuthToken pulumi.StringPtrInput `pulumi:"authToken"`
+}
+
+func (PhoneProviderCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhoneProviderCredentials)(nil)).Elem()
+}
+
+func (i PhoneProviderCredentialsArgs) ToPhoneProviderCredentialsOutput() PhoneProviderCredentialsOutput {
+	return i.ToPhoneProviderCredentialsOutputWithContext(context.Background())
+}
+
+func (i PhoneProviderCredentialsArgs) ToPhoneProviderCredentialsOutputWithContext(ctx context.Context) PhoneProviderCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhoneProviderCredentialsOutput)
+}
+
+func (i PhoneProviderCredentialsArgs) ToPhoneProviderCredentialsPtrOutput() PhoneProviderCredentialsPtrOutput {
+	return i.ToPhoneProviderCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i PhoneProviderCredentialsArgs) ToPhoneProviderCredentialsPtrOutputWithContext(ctx context.Context) PhoneProviderCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhoneProviderCredentialsOutput).ToPhoneProviderCredentialsPtrOutputWithContext(ctx)
+}
+
+// PhoneProviderCredentialsPtrInput is an input type that accepts PhoneProviderCredentialsArgs, PhoneProviderCredentialsPtr and PhoneProviderCredentialsPtrOutput values.
+// You can construct a concrete instance of `PhoneProviderCredentialsPtrInput` via:
+//
+//	        PhoneProviderCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PhoneProviderCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToPhoneProviderCredentialsPtrOutput() PhoneProviderCredentialsPtrOutput
+	ToPhoneProviderCredentialsPtrOutputWithContext(context.Context) PhoneProviderCredentialsPtrOutput
+}
+
+type phoneProviderCredentialsPtrType PhoneProviderCredentialsArgs
+
+func PhoneProviderCredentialsPtr(v *PhoneProviderCredentialsArgs) PhoneProviderCredentialsPtrInput {
+	return (*phoneProviderCredentialsPtrType)(v)
+}
+
+func (*phoneProviderCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PhoneProviderCredentials)(nil)).Elem()
+}
+
+func (i *phoneProviderCredentialsPtrType) ToPhoneProviderCredentialsPtrOutput() PhoneProviderCredentialsPtrOutput {
+	return i.ToPhoneProviderCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *phoneProviderCredentialsPtrType) ToPhoneProviderCredentialsPtrOutputWithContext(ctx context.Context) PhoneProviderCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhoneProviderCredentialsPtrOutput)
+}
+
+type PhoneProviderCredentialsOutput struct{ *pulumi.OutputState }
+
+func (PhoneProviderCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhoneProviderCredentials)(nil)).Elem()
+}
+
+func (o PhoneProviderCredentialsOutput) ToPhoneProviderCredentialsOutput() PhoneProviderCredentialsOutput {
+	return o
+}
+
+func (o PhoneProviderCredentialsOutput) ToPhoneProviderCredentialsOutputWithContext(ctx context.Context) PhoneProviderCredentialsOutput {
+	return o
+}
+
+func (o PhoneProviderCredentialsOutput) ToPhoneProviderCredentialsPtrOutput() PhoneProviderCredentialsPtrOutput {
+	return o.ToPhoneProviderCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o PhoneProviderCredentialsOutput) ToPhoneProviderCredentialsPtrOutputWithContext(ctx context.Context) PhoneProviderCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PhoneProviderCredentials) *PhoneProviderCredentials {
+		return &v
+	}).(PhoneProviderCredentialsPtrOutput)
+}
+
+// The Auth Token for the phone provider.
+func (o PhoneProviderCredentialsOutput) AuthToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhoneProviderCredentials) *string { return v.AuthToken }).(pulumi.StringPtrOutput)
+}
+
+type PhoneProviderCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (PhoneProviderCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PhoneProviderCredentials)(nil)).Elem()
+}
+
+func (o PhoneProviderCredentialsPtrOutput) ToPhoneProviderCredentialsPtrOutput() PhoneProviderCredentialsPtrOutput {
+	return o
+}
+
+func (o PhoneProviderCredentialsPtrOutput) ToPhoneProviderCredentialsPtrOutputWithContext(ctx context.Context) PhoneProviderCredentialsPtrOutput {
+	return o
+}
+
+func (o PhoneProviderCredentialsPtrOutput) Elem() PhoneProviderCredentialsOutput {
+	return o.ApplyT(func(v *PhoneProviderCredentials) PhoneProviderCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret PhoneProviderCredentials
+		return ret
+	}).(PhoneProviderCredentialsOutput)
+}
+
+// The Auth Token for the phone provider.
+func (o PhoneProviderCredentialsPtrOutput) AuthToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PhoneProviderCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthToken
+	}).(pulumi.StringPtrOutput)
+}
+
 type PromptScreenPartialInsertionPoints struct {
 	// Content that goes inside the form
 	FormContent *string `pulumi:"formContent"`
@@ -27738,6 +28069,324 @@ func (o UserPermissionsPermissionArrayOutput) Index(i pulumi.IntInput) UserPermi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserPermissionsPermission {
 		return vs[0].([]UserPermissionsPermission)[vs[1].(int)]
 	}).(UserPermissionsPermissionOutput)
+}
+
+type GetActionDependency struct {
+	// Dependency name, e.g. `lodash`.
+	Name string `pulumi:"name"`
+	// Dependency version, e.g. `latest` or `4.17.21`.
+	Version string `pulumi:"version"`
+}
+
+// GetActionDependencyInput is an input type that accepts GetActionDependencyArgs and GetActionDependencyOutput values.
+// You can construct a concrete instance of `GetActionDependencyInput` via:
+//
+//	GetActionDependencyArgs{...}
+type GetActionDependencyInput interface {
+	pulumi.Input
+
+	ToGetActionDependencyOutput() GetActionDependencyOutput
+	ToGetActionDependencyOutputWithContext(context.Context) GetActionDependencyOutput
+}
+
+type GetActionDependencyArgs struct {
+	// Dependency name, e.g. `lodash`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Dependency version, e.g. `latest` or `4.17.21`.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetActionDependencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionDependency)(nil)).Elem()
+}
+
+func (i GetActionDependencyArgs) ToGetActionDependencyOutput() GetActionDependencyOutput {
+	return i.ToGetActionDependencyOutputWithContext(context.Background())
+}
+
+func (i GetActionDependencyArgs) ToGetActionDependencyOutputWithContext(ctx context.Context) GetActionDependencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionDependencyOutput)
+}
+
+// GetActionDependencyArrayInput is an input type that accepts GetActionDependencyArray and GetActionDependencyArrayOutput values.
+// You can construct a concrete instance of `GetActionDependencyArrayInput` via:
+//
+//	GetActionDependencyArray{ GetActionDependencyArgs{...} }
+type GetActionDependencyArrayInput interface {
+	pulumi.Input
+
+	ToGetActionDependencyArrayOutput() GetActionDependencyArrayOutput
+	ToGetActionDependencyArrayOutputWithContext(context.Context) GetActionDependencyArrayOutput
+}
+
+type GetActionDependencyArray []GetActionDependencyInput
+
+func (GetActionDependencyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionDependency)(nil)).Elem()
+}
+
+func (i GetActionDependencyArray) ToGetActionDependencyArrayOutput() GetActionDependencyArrayOutput {
+	return i.ToGetActionDependencyArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionDependencyArray) ToGetActionDependencyArrayOutputWithContext(ctx context.Context) GetActionDependencyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionDependencyArrayOutput)
+}
+
+type GetActionDependencyOutput struct{ *pulumi.OutputState }
+
+func (GetActionDependencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionDependency)(nil)).Elem()
+}
+
+func (o GetActionDependencyOutput) ToGetActionDependencyOutput() GetActionDependencyOutput {
+	return o
+}
+
+func (o GetActionDependencyOutput) ToGetActionDependencyOutputWithContext(ctx context.Context) GetActionDependencyOutput {
+	return o
+}
+
+// Dependency name, e.g. `lodash`.
+func (o GetActionDependencyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionDependency) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Dependency version, e.g. `latest` or `4.17.21`.
+func (o GetActionDependencyOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionDependency) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetActionDependencyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionDependencyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionDependency)(nil)).Elem()
+}
+
+func (o GetActionDependencyArrayOutput) ToGetActionDependencyArrayOutput() GetActionDependencyArrayOutput {
+	return o
+}
+
+func (o GetActionDependencyArrayOutput) ToGetActionDependencyArrayOutputWithContext(ctx context.Context) GetActionDependencyArrayOutput {
+	return o
+}
+
+func (o GetActionDependencyArrayOutput) Index(i pulumi.IntInput) GetActionDependencyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionDependency {
+		return vs[0].([]GetActionDependency)[vs[1].(int)]
+	}).(GetActionDependencyOutput)
+}
+
+type GetActionSecret struct {
+	// Secret name.
+	Name string `pulumi:"name"`
+	// Secret value.
+	Value string `pulumi:"value"`
+}
+
+// GetActionSecretInput is an input type that accepts GetActionSecretArgs and GetActionSecretOutput values.
+// You can construct a concrete instance of `GetActionSecretInput` via:
+//
+//	GetActionSecretArgs{...}
+type GetActionSecretInput interface {
+	pulumi.Input
+
+	ToGetActionSecretOutput() GetActionSecretOutput
+	ToGetActionSecretOutputWithContext(context.Context) GetActionSecretOutput
+}
+
+type GetActionSecretArgs struct {
+	// Secret name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Secret value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetActionSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionSecret)(nil)).Elem()
+}
+
+func (i GetActionSecretArgs) ToGetActionSecretOutput() GetActionSecretOutput {
+	return i.ToGetActionSecretOutputWithContext(context.Background())
+}
+
+func (i GetActionSecretArgs) ToGetActionSecretOutputWithContext(ctx context.Context) GetActionSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionSecretOutput)
+}
+
+// GetActionSecretArrayInput is an input type that accepts GetActionSecretArray and GetActionSecretArrayOutput values.
+// You can construct a concrete instance of `GetActionSecretArrayInput` via:
+//
+//	GetActionSecretArray{ GetActionSecretArgs{...} }
+type GetActionSecretArrayInput interface {
+	pulumi.Input
+
+	ToGetActionSecretArrayOutput() GetActionSecretArrayOutput
+	ToGetActionSecretArrayOutputWithContext(context.Context) GetActionSecretArrayOutput
+}
+
+type GetActionSecretArray []GetActionSecretInput
+
+func (GetActionSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionSecret)(nil)).Elem()
+}
+
+func (i GetActionSecretArray) ToGetActionSecretArrayOutput() GetActionSecretArrayOutput {
+	return i.ToGetActionSecretArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionSecretArray) ToGetActionSecretArrayOutputWithContext(ctx context.Context) GetActionSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionSecretArrayOutput)
+}
+
+type GetActionSecretOutput struct{ *pulumi.OutputState }
+
+func (GetActionSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionSecret)(nil)).Elem()
+}
+
+func (o GetActionSecretOutput) ToGetActionSecretOutput() GetActionSecretOutput {
+	return o
+}
+
+func (o GetActionSecretOutput) ToGetActionSecretOutputWithContext(ctx context.Context) GetActionSecretOutput {
+	return o
+}
+
+// Secret name.
+func (o GetActionSecretOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionSecret) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Secret value.
+func (o GetActionSecretOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionSecret) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetActionSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionSecret)(nil)).Elem()
+}
+
+func (o GetActionSecretArrayOutput) ToGetActionSecretArrayOutput() GetActionSecretArrayOutput {
+	return o
+}
+
+func (o GetActionSecretArrayOutput) ToGetActionSecretArrayOutputWithContext(ctx context.Context) GetActionSecretArrayOutput {
+	return o
+}
+
+func (o GetActionSecretArrayOutput) Index(i pulumi.IntInput) GetActionSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionSecret {
+		return vs[0].([]GetActionSecret)[vs[1].(int)]
+	}).(GetActionSecretOutput)
+}
+
+type GetActionSupportedTrigger struct {
+	// The trigger ID.
+	Id string `pulumi:"id"`
+	// The trigger version. This regulates which `runtime` versions are supported.
+	Version string `pulumi:"version"`
+}
+
+// GetActionSupportedTriggerInput is an input type that accepts GetActionSupportedTriggerArgs and GetActionSupportedTriggerOutput values.
+// You can construct a concrete instance of `GetActionSupportedTriggerInput` via:
+//
+//	GetActionSupportedTriggerArgs{...}
+type GetActionSupportedTriggerInput interface {
+	pulumi.Input
+
+	ToGetActionSupportedTriggerOutput() GetActionSupportedTriggerOutput
+	ToGetActionSupportedTriggerOutputWithContext(context.Context) GetActionSupportedTriggerOutput
+}
+
+type GetActionSupportedTriggerArgs struct {
+	// The trigger ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The trigger version. This regulates which `runtime` versions are supported.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetActionSupportedTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionSupportedTrigger)(nil)).Elem()
+}
+
+func (i GetActionSupportedTriggerArgs) ToGetActionSupportedTriggerOutput() GetActionSupportedTriggerOutput {
+	return i.ToGetActionSupportedTriggerOutputWithContext(context.Background())
+}
+
+func (i GetActionSupportedTriggerArgs) ToGetActionSupportedTriggerOutputWithContext(ctx context.Context) GetActionSupportedTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionSupportedTriggerOutput)
+}
+
+// GetActionSupportedTriggerArrayInput is an input type that accepts GetActionSupportedTriggerArray and GetActionSupportedTriggerArrayOutput values.
+// You can construct a concrete instance of `GetActionSupportedTriggerArrayInput` via:
+//
+//	GetActionSupportedTriggerArray{ GetActionSupportedTriggerArgs{...} }
+type GetActionSupportedTriggerArrayInput interface {
+	pulumi.Input
+
+	ToGetActionSupportedTriggerArrayOutput() GetActionSupportedTriggerArrayOutput
+	ToGetActionSupportedTriggerArrayOutputWithContext(context.Context) GetActionSupportedTriggerArrayOutput
+}
+
+type GetActionSupportedTriggerArray []GetActionSupportedTriggerInput
+
+func (GetActionSupportedTriggerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionSupportedTrigger)(nil)).Elem()
+}
+
+func (i GetActionSupportedTriggerArray) ToGetActionSupportedTriggerArrayOutput() GetActionSupportedTriggerArrayOutput {
+	return i.ToGetActionSupportedTriggerArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionSupportedTriggerArray) ToGetActionSupportedTriggerArrayOutputWithContext(ctx context.Context) GetActionSupportedTriggerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionSupportedTriggerArrayOutput)
+}
+
+type GetActionSupportedTriggerOutput struct{ *pulumi.OutputState }
+
+func (GetActionSupportedTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionSupportedTrigger)(nil)).Elem()
+}
+
+func (o GetActionSupportedTriggerOutput) ToGetActionSupportedTriggerOutput() GetActionSupportedTriggerOutput {
+	return o
+}
+
+func (o GetActionSupportedTriggerOutput) ToGetActionSupportedTriggerOutputWithContext(ctx context.Context) GetActionSupportedTriggerOutput {
+	return o
+}
+
+// The trigger ID.
+func (o GetActionSupportedTriggerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionSupportedTrigger) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The trigger version. This regulates which `runtime` versions are supported.
+func (o GetActionSupportedTriggerOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionSupportedTrigger) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetActionSupportedTriggerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionSupportedTriggerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionSupportedTrigger)(nil)).Elem()
+}
+
+func (o GetActionSupportedTriggerArrayOutput) ToGetActionSupportedTriggerArrayOutput() GetActionSupportedTriggerArrayOutput {
+	return o
+}
+
+func (o GetActionSupportedTriggerArrayOutput) ToGetActionSupportedTriggerArrayOutputWithContext(ctx context.Context) GetActionSupportedTriggerArrayOutput {
+	return o
+}
+
+func (o GetActionSupportedTriggerArrayOutput) Index(i pulumi.IntInput) GetActionSupportedTriggerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionSupportedTrigger {
+		return vs[0].([]GetActionSupportedTrigger)[vs[1].(int)]
+	}).(GetActionSupportedTriggerOutput)
 }
 
 type GetAttackProtectionBreachedPasswordDetection struct {
@@ -36547,7 +37196,7 @@ type GetClientsClient struct {
 	Description string `pulumi:"description"`
 	// Types of grants that this client is authorized to use.
 	GrantTypes []string `pulumi:"grantTypes"`
-	// Indicates whether this client is a first-party client.
+	// Indicates whether this client is a first-party client.Defaults to true from the API
 	IsFirstParty bool `pulumi:"isFirstParty"`
 	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
 	IsTokenEndpointIpHeaderTrusted bool `pulumi:"isTokenEndpointIpHeaderTrusted"`
@@ -36592,7 +37241,7 @@ type GetClientsClientArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// Types of grants that this client is authorized to use.
 	GrantTypes pulumi.StringArrayInput `pulumi:"grantTypes"`
-	// Indicates whether this client is a first-party client.
+	// Indicates whether this client is a first-party client.Defaults to true from the API
 	IsFirstParty pulumi.BoolInput `pulumi:"isFirstParty"`
 	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
 	IsTokenEndpointIpHeaderTrusted pulumi.BoolInput `pulumi:"isTokenEndpointIpHeaderTrusted"`
@@ -36706,7 +37355,7 @@ func (o GetClientsClientOutput) GrantTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClientsClient) []string { return v.GrantTypes }).(pulumi.StringArrayOutput)
 }
 
-// Indicates whether this client is a first-party client.
+// Indicates whether this client is a first-party client.Defaults to true from the API
 func (o GetClientsClientOutput) IsFirstParty() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClientsClient) bool { return v.IsFirstParty }).(pulumi.BoolOutput)
 }
@@ -42602,6 +43251,227 @@ func (o GetPagesLoginArrayOutput) Index(i pulumi.IntInput) GetPagesLoginOutput {
 	}).(GetPagesLoginOutput)
 }
 
+type GetPhoneProviderConfiguration struct {
+	// Default sender subject as "from" when no other value is specified.
+	DefaultFrom string `pulumi:"defaultFrom"`
+	// Media set supported by a given provider to deliver a notification
+	DeliveryMethods []string `pulumi:"deliveryMethods"`
+	// Twilio Messaging Service SID
+	Mssid string `pulumi:"mssid"`
+	// Twilio Account SID.
+	Sid string `pulumi:"sid"`
+}
+
+// GetPhoneProviderConfigurationInput is an input type that accepts GetPhoneProviderConfigurationArgs and GetPhoneProviderConfigurationOutput values.
+// You can construct a concrete instance of `GetPhoneProviderConfigurationInput` via:
+//
+//	GetPhoneProviderConfigurationArgs{...}
+type GetPhoneProviderConfigurationInput interface {
+	pulumi.Input
+
+	ToGetPhoneProviderConfigurationOutput() GetPhoneProviderConfigurationOutput
+	ToGetPhoneProviderConfigurationOutputWithContext(context.Context) GetPhoneProviderConfigurationOutput
+}
+
+type GetPhoneProviderConfigurationArgs struct {
+	// Default sender subject as "from" when no other value is specified.
+	DefaultFrom pulumi.StringInput `pulumi:"defaultFrom"`
+	// Media set supported by a given provider to deliver a notification
+	DeliveryMethods pulumi.StringArrayInput `pulumi:"deliveryMethods"`
+	// Twilio Messaging Service SID
+	Mssid pulumi.StringInput `pulumi:"mssid"`
+	// Twilio Account SID.
+	Sid pulumi.StringInput `pulumi:"sid"`
+}
+
+func (GetPhoneProviderConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPhoneProviderConfiguration)(nil)).Elem()
+}
+
+func (i GetPhoneProviderConfigurationArgs) ToGetPhoneProviderConfigurationOutput() GetPhoneProviderConfigurationOutput {
+	return i.ToGetPhoneProviderConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetPhoneProviderConfigurationArgs) ToGetPhoneProviderConfigurationOutputWithContext(ctx context.Context) GetPhoneProviderConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPhoneProviderConfigurationOutput)
+}
+
+// GetPhoneProviderConfigurationArrayInput is an input type that accepts GetPhoneProviderConfigurationArray and GetPhoneProviderConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetPhoneProviderConfigurationArrayInput` via:
+//
+//	GetPhoneProviderConfigurationArray{ GetPhoneProviderConfigurationArgs{...} }
+type GetPhoneProviderConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetPhoneProviderConfigurationArrayOutput() GetPhoneProviderConfigurationArrayOutput
+	ToGetPhoneProviderConfigurationArrayOutputWithContext(context.Context) GetPhoneProviderConfigurationArrayOutput
+}
+
+type GetPhoneProviderConfigurationArray []GetPhoneProviderConfigurationInput
+
+func (GetPhoneProviderConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPhoneProviderConfiguration)(nil)).Elem()
+}
+
+func (i GetPhoneProviderConfigurationArray) ToGetPhoneProviderConfigurationArrayOutput() GetPhoneProviderConfigurationArrayOutput {
+	return i.ToGetPhoneProviderConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetPhoneProviderConfigurationArray) ToGetPhoneProviderConfigurationArrayOutputWithContext(ctx context.Context) GetPhoneProviderConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPhoneProviderConfigurationArrayOutput)
+}
+
+type GetPhoneProviderConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetPhoneProviderConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPhoneProviderConfiguration)(nil)).Elem()
+}
+
+func (o GetPhoneProviderConfigurationOutput) ToGetPhoneProviderConfigurationOutput() GetPhoneProviderConfigurationOutput {
+	return o
+}
+
+func (o GetPhoneProviderConfigurationOutput) ToGetPhoneProviderConfigurationOutputWithContext(ctx context.Context) GetPhoneProviderConfigurationOutput {
+	return o
+}
+
+// Default sender subject as "from" when no other value is specified.
+func (o GetPhoneProviderConfigurationOutput) DefaultFrom() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPhoneProviderConfiguration) string { return v.DefaultFrom }).(pulumi.StringOutput)
+}
+
+// Media set supported by a given provider to deliver a notification
+func (o GetPhoneProviderConfigurationOutput) DeliveryMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPhoneProviderConfiguration) []string { return v.DeliveryMethods }).(pulumi.StringArrayOutput)
+}
+
+// Twilio Messaging Service SID
+func (o GetPhoneProviderConfigurationOutput) Mssid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPhoneProviderConfiguration) string { return v.Mssid }).(pulumi.StringOutput)
+}
+
+// Twilio Account SID.
+func (o GetPhoneProviderConfigurationOutput) Sid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPhoneProviderConfiguration) string { return v.Sid }).(pulumi.StringOutput)
+}
+
+type GetPhoneProviderConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPhoneProviderConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPhoneProviderConfiguration)(nil)).Elem()
+}
+
+func (o GetPhoneProviderConfigurationArrayOutput) ToGetPhoneProviderConfigurationArrayOutput() GetPhoneProviderConfigurationArrayOutput {
+	return o
+}
+
+func (o GetPhoneProviderConfigurationArrayOutput) ToGetPhoneProviderConfigurationArrayOutputWithContext(ctx context.Context) GetPhoneProviderConfigurationArrayOutput {
+	return o
+}
+
+func (o GetPhoneProviderConfigurationArrayOutput) Index(i pulumi.IntInput) GetPhoneProviderConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPhoneProviderConfiguration {
+		return vs[0].([]GetPhoneProviderConfiguration)[vs[1].(int)]
+	}).(GetPhoneProviderConfigurationOutput)
+}
+
+type GetPhoneProviderCredential struct {
+	// The Auth Token for the phone provider.
+	AuthToken string `pulumi:"authToken"`
+}
+
+// GetPhoneProviderCredentialInput is an input type that accepts GetPhoneProviderCredentialArgs and GetPhoneProviderCredentialOutput values.
+// You can construct a concrete instance of `GetPhoneProviderCredentialInput` via:
+//
+//	GetPhoneProviderCredentialArgs{...}
+type GetPhoneProviderCredentialInput interface {
+	pulumi.Input
+
+	ToGetPhoneProviderCredentialOutput() GetPhoneProviderCredentialOutput
+	ToGetPhoneProviderCredentialOutputWithContext(context.Context) GetPhoneProviderCredentialOutput
+}
+
+type GetPhoneProviderCredentialArgs struct {
+	// The Auth Token for the phone provider.
+	AuthToken pulumi.StringInput `pulumi:"authToken"`
+}
+
+func (GetPhoneProviderCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPhoneProviderCredential)(nil)).Elem()
+}
+
+func (i GetPhoneProviderCredentialArgs) ToGetPhoneProviderCredentialOutput() GetPhoneProviderCredentialOutput {
+	return i.ToGetPhoneProviderCredentialOutputWithContext(context.Background())
+}
+
+func (i GetPhoneProviderCredentialArgs) ToGetPhoneProviderCredentialOutputWithContext(ctx context.Context) GetPhoneProviderCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPhoneProviderCredentialOutput)
+}
+
+// GetPhoneProviderCredentialArrayInput is an input type that accepts GetPhoneProviderCredentialArray and GetPhoneProviderCredentialArrayOutput values.
+// You can construct a concrete instance of `GetPhoneProviderCredentialArrayInput` via:
+//
+//	GetPhoneProviderCredentialArray{ GetPhoneProviderCredentialArgs{...} }
+type GetPhoneProviderCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetPhoneProviderCredentialArrayOutput() GetPhoneProviderCredentialArrayOutput
+	ToGetPhoneProviderCredentialArrayOutputWithContext(context.Context) GetPhoneProviderCredentialArrayOutput
+}
+
+type GetPhoneProviderCredentialArray []GetPhoneProviderCredentialInput
+
+func (GetPhoneProviderCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPhoneProviderCredential)(nil)).Elem()
+}
+
+func (i GetPhoneProviderCredentialArray) ToGetPhoneProviderCredentialArrayOutput() GetPhoneProviderCredentialArrayOutput {
+	return i.ToGetPhoneProviderCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetPhoneProviderCredentialArray) ToGetPhoneProviderCredentialArrayOutputWithContext(ctx context.Context) GetPhoneProviderCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPhoneProviderCredentialArrayOutput)
+}
+
+type GetPhoneProviderCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetPhoneProviderCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPhoneProviderCredential)(nil)).Elem()
+}
+
+func (o GetPhoneProviderCredentialOutput) ToGetPhoneProviderCredentialOutput() GetPhoneProviderCredentialOutput {
+	return o
+}
+
+func (o GetPhoneProviderCredentialOutput) ToGetPhoneProviderCredentialOutputWithContext(ctx context.Context) GetPhoneProviderCredentialOutput {
+	return o
+}
+
+// The Auth Token for the phone provider.
+func (o GetPhoneProviderCredentialOutput) AuthToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPhoneProviderCredential) string { return v.AuthToken }).(pulumi.StringOutput)
+}
+
+type GetPhoneProviderCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPhoneProviderCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPhoneProviderCredential)(nil)).Elem()
+}
+
+func (o GetPhoneProviderCredentialArrayOutput) ToGetPhoneProviderCredentialArrayOutput() GetPhoneProviderCredentialArrayOutput {
+	return o
+}
+
+func (o GetPhoneProviderCredentialArrayOutput) ToGetPhoneProviderCredentialArrayOutputWithContext(ctx context.Context) GetPhoneProviderCredentialArrayOutput {
+	return o
+}
+
+func (o GetPhoneProviderCredentialArrayOutput) Index(i pulumi.IntInput) GetPhoneProviderCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPhoneProviderCredential {
+		return vs[0].([]GetPhoneProviderCredential)[vs[1].(int)]
+	}).(GetPhoneProviderCredentialOutput)
+}
+
 type GetPromptScreenPartialsScreenPartial struct {
 	InsertionPoints []GetPromptScreenPartialsScreenPartialInsertionPoint `pulumi:"insertionPoints"`
 	// The name of the screen associated with the partials
@@ -45045,6 +45915,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesGuardianMfaPtrInput)(nil)).Elem(), PagesGuardianMfaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesLoginInput)(nil)).Elem(), PagesLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesLoginPtrInput)(nil)).Elem(), PagesLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PhoneProviderConfigurationInput)(nil)).Elem(), PhoneProviderConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PhoneProviderConfigurationPtrInput)(nil)).Elem(), PhoneProviderConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PhoneProviderCredentialsInput)(nil)).Elem(), PhoneProviderCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PhoneProviderCredentialsPtrInput)(nil)).Elem(), PhoneProviderCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenPartialInsertionPointsInput)(nil)).Elem(), PromptScreenPartialInsertionPointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenPartialInsertionPointsPtrInput)(nil)).Elem(), PromptScreenPartialInsertionPointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenPartialsScreenPartialInput)(nil)).Elem(), PromptScreenPartialsScreenPartialArgs{})
@@ -45080,6 +45954,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerActionsActionArrayInput)(nil)).Elem(), TriggerActionsActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPermissionsPermissionInput)(nil)).Elem(), UserPermissionsPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPermissionsPermissionArrayInput)(nil)).Elem(), UserPermissionsPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionDependencyInput)(nil)).Elem(), GetActionDependencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionDependencyArrayInput)(nil)).Elem(), GetActionDependencyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionSecretInput)(nil)).Elem(), GetActionSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionSecretArrayInput)(nil)).Elem(), GetActionSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionSupportedTriggerInput)(nil)).Elem(), GetActionSupportedTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionSupportedTriggerArrayInput)(nil)).Elem(), GetActionSupportedTriggerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionArrayInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{})
@@ -45322,6 +46202,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesGuardianMfaArrayInput)(nil)).Elem(), GetPagesGuardianMfaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesLoginInput)(nil)).Elem(), GetPagesLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesLoginArrayInput)(nil)).Elem(), GetPagesLoginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPhoneProviderConfigurationInput)(nil)).Elem(), GetPhoneProviderConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPhoneProviderConfigurationArrayInput)(nil)).Elem(), GetPhoneProviderConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPhoneProviderCredentialInput)(nil)).Elem(), GetPhoneProviderCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPhoneProviderCredentialArrayInput)(nil)).Elem(), GetPhoneProviderCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenPartialsScreenPartialInput)(nil)).Elem(), GetPromptScreenPartialsScreenPartialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenPartialsScreenPartialArrayInput)(nil)).Elem(), GetPromptScreenPartialsScreenPartialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenPartialsScreenPartialInsertionPointInput)(nil)).Elem(), GetPromptScreenPartialsScreenPartialInsertionPointArgs{})
@@ -45626,6 +46510,10 @@ func init() {
 	pulumi.RegisterOutputType(PagesGuardianMfaPtrOutput{})
 	pulumi.RegisterOutputType(PagesLoginOutput{})
 	pulumi.RegisterOutputType(PagesLoginPtrOutput{})
+	pulumi.RegisterOutputType(PhoneProviderConfigurationOutput{})
+	pulumi.RegisterOutputType(PhoneProviderConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(PhoneProviderCredentialsOutput{})
+	pulumi.RegisterOutputType(PhoneProviderCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(PromptScreenPartialInsertionPointsOutput{})
 	pulumi.RegisterOutputType(PromptScreenPartialInsertionPointsPtrOutput{})
 	pulumi.RegisterOutputType(PromptScreenPartialsScreenPartialOutput{})
@@ -45661,6 +46549,12 @@ func init() {
 	pulumi.RegisterOutputType(TriggerActionsActionArrayOutput{})
 	pulumi.RegisterOutputType(UserPermissionsPermissionOutput{})
 	pulumi.RegisterOutputType(UserPermissionsPermissionArrayOutput{})
+	pulumi.RegisterOutputType(GetActionDependencyOutput{})
+	pulumi.RegisterOutputType(GetActionDependencyArrayOutput{})
+	pulumi.RegisterOutputType(GetActionSecretOutput{})
+	pulumi.RegisterOutputType(GetActionSecretArrayOutput{})
+	pulumi.RegisterOutputType(GetActionSupportedTriggerOutput{})
+	pulumi.RegisterOutputType(GetActionSupportedTriggerArrayOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionArrayOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput{})
@@ -45903,6 +46797,10 @@ func init() {
 	pulumi.RegisterOutputType(GetPagesGuardianMfaArrayOutput{})
 	pulumi.RegisterOutputType(GetPagesLoginOutput{})
 	pulumi.RegisterOutputType(GetPagesLoginArrayOutput{})
+	pulumi.RegisterOutputType(GetPhoneProviderConfigurationOutput{})
+	pulumi.RegisterOutputType(GetPhoneProviderConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetPhoneProviderCredentialOutput{})
+	pulumi.RegisterOutputType(GetPhoneProviderCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetPromptScreenPartialsScreenPartialOutput{})
 	pulumi.RegisterOutputType(GetPromptScreenPartialsScreenPartialArrayOutput{})
 	pulumi.RegisterOutputType(GetPromptScreenPartialsScreenPartialInsertionPointOutput{})

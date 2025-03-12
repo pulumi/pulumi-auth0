@@ -111,7 +111,7 @@ type LookupClientResult struct {
 	Id string `pulumi:"id"`
 	// Initiate login URI. Must be HTTPS or an empty string.
 	InitiateLoginUri string `pulumi:"initiateLoginUri"`
-	// Indicates whether this client is a first-party client.
+	// Indicates whether this client is a first-party client.Defaults to true from the API
 	IsFirstParty bool `pulumi:"isFirstParty"`
 	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
 	IsTokenEndpointIpHeaderTrusted bool `pulumi:"isTokenEndpointIpHeaderTrusted"`
@@ -307,7 +307,7 @@ func (o LookupClientResultOutput) InitiateLoginUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.InitiateLoginUri }).(pulumi.StringOutput)
 }
 
-// Indicates whether this client is a first-party client.
+// Indicates whether this client is a first-party client.Defaults to true from the API
 func (o LookupClientResultOutput) IsFirstParty() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClientResult) bool { return v.IsFirstParty }).(pulumi.BoolOutput)
 }

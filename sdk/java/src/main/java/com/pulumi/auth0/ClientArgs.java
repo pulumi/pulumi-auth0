@@ -313,14 +313,14 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether this client is a first-party client.
+     * Indicates whether this client is a first-party client.Defaults to true from the API
      * 
      */
     @Import(name="isFirstParty")
     private @Nullable Output<Boolean> isFirstParty;
 
     /**
-     * @return Indicates whether this client is a first-party client.
+     * @return Indicates whether this client is a first-party client.Defaults to true from the API
      * 
      */
     public Optional<Output<Boolean>> isFirstParty() {
@@ -1126,7 +1126,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isFirstParty Indicates whether this client is a first-party client.
+         * @param isFirstParty Indicates whether this client is a first-party client.Defaults to true from the API
          * 
          * @return builder
          * 
@@ -1137,7 +1137,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isFirstParty Indicates whether this client is a first-party client.
+         * @param isFirstParty Indicates whether this client is a first-party client.Defaults to true from the API
          * 
          * @return builder
          * 

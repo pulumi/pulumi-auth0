@@ -151,6 +151,8 @@ __all__ = [
     'PagesError',
     'PagesGuardianMfa',
     'PagesLogin',
+    'PhoneProviderConfiguration',
+    'PhoneProviderCredentials',
     'PromptScreenPartialInsertionPoints',
     'PromptScreenPartialsScreenPartial',
     'PromptScreenPartialsScreenPartialInsertionPoints',
@@ -169,6 +171,9 @@ __all__ = [
     'TenantSessions',
     'TriggerActionsAction',
     'UserPermissionsPermission',
+    'GetActionDependencyResult',
+    'GetActionSecretResult',
+    'GetActionSupportedTriggerResult',
     'GetAttackProtectionBreachedPasswordDetectionResult',
     'GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationResult',
     'GetAttackProtectionBruteForceProtectionResult',
@@ -290,6 +295,8 @@ __all__ = [
     'GetPagesErrorResult',
     'GetPagesGuardianMfaResult',
     'GetPagesLoginResult',
+    'GetPhoneProviderConfigurationResult',
+    'GetPhoneProviderCredentialResult',
     'GetPromptScreenPartialsScreenPartialResult',
     'GetPromptScreenPartialsScreenPartialInsertionPointResult',
     'GetResourceServerAuthorizationDetailResult',
@@ -9492,6 +9499,115 @@ class PagesLogin(dict):
 
 
 @pulumi.output_type
+class PhoneProviderConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deliveryMethods":
+            suggest = "delivery_methods"
+        elif key == "defaultFrom":
+            suggest = "default_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PhoneProviderConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PhoneProviderConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PhoneProviderConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delivery_methods: Sequence[str],
+                 default_from: Optional[str] = None,
+                 mssid: Optional[str] = None,
+                 sid: Optional[str] = None):
+        """
+        :param Sequence[str] delivery_methods: Media set supported by a given provider to deliver a notification
+        :param str default_from: Default sender subject as "from" when no other value is specified.
+        :param str mssid: Twilio Messaging Service SID
+        :param str sid: Twilio Account SID.
+        """
+        pulumi.set(__self__, "delivery_methods", delivery_methods)
+        if default_from is not None:
+            pulumi.set(__self__, "default_from", default_from)
+        if mssid is not None:
+            pulumi.set(__self__, "mssid", mssid)
+        if sid is not None:
+            pulumi.set(__self__, "sid", sid)
+
+    @property
+    @pulumi.getter(name="deliveryMethods")
+    def delivery_methods(self) -> Sequence[str]:
+        """
+        Media set supported by a given provider to deliver a notification
+        """
+        return pulumi.get(self, "delivery_methods")
+
+    @property
+    @pulumi.getter(name="defaultFrom")
+    def default_from(self) -> Optional[str]:
+        """
+        Default sender subject as "from" when no other value is specified.
+        """
+        return pulumi.get(self, "default_from")
+
+    @property
+    @pulumi.getter
+    def mssid(self) -> Optional[str]:
+        """
+        Twilio Messaging Service SID
+        """
+        return pulumi.get(self, "mssid")
+
+    @property
+    @pulumi.getter
+    def sid(self) -> Optional[str]:
+        """
+        Twilio Account SID.
+        """
+        return pulumi.get(self, "sid")
+
+
+@pulumi.output_type
+class PhoneProviderCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authToken":
+            suggest = "auth_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PhoneProviderCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PhoneProviderCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PhoneProviderCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_token: Optional[str] = None):
+        """
+        :param str auth_token: The Auth Token for the phone provider.
+        """
+        if auth_token is not None:
+            pulumi.set(__self__, "auth_token", auth_token)
+
+    @property
+    @pulumi.getter(name="authToken")
+    def auth_token(self) -> Optional[str]:
+        """
+        The Auth Token for the phone provider.
+        """
+        return pulumi.get(self, "auth_token")
+
+
+@pulumi.output_type
 class PromptScreenPartialInsertionPoints(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -10779,6 +10895,93 @@ class UserPermissionsPermission(dict):
         Name of resource server that the permission is associated with.
         """
         return pulumi.get(self, "resource_server_name")
+
+
+@pulumi.output_type
+class GetActionDependencyResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 version: str):
+        """
+        :param str name: Dependency name, e.g. `lodash`.
+        :param str version: Dependency version, e.g. `latest` or `4.17.21`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Dependency name, e.g. `lodash`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Dependency version, e.g. `latest` or `4.17.21`.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetActionSecretResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        """
+        :param str name: Secret name.
+        :param str value: Secret value.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Secret name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Secret value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetActionSupportedTriggerResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 version: str):
+        """
+        :param str id: The trigger ID.
+        :param str version: The trigger version. This regulates which `runtime` versions are supported.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The trigger ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The trigger version. This regulates which `runtime` versions are supported.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -14156,7 +14359,7 @@ class GetClientsClientResult(dict):
         :param Mapping[str, str] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param str description: Description of the purpose of the client.
         :param Sequence[str] grant_types: Types of grants that this client is authorized to use.
-        :param bool is_first_party: Indicates whether this client is a first-party client.
+        :param bool is_first_party: Indicates whether this client is a first-party client.Defaults to true from the API
         :param bool is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param Sequence['GetClientsClientOidcLogoutArgs'] oidc_logouts: Configure OIDC logout for the Client
         :param Sequence['GetClientsClientTokenExchangeArgs'] token_exchanges: Allows configuration for token exchange
@@ -14256,7 +14459,7 @@ class GetClientsClientResult(dict):
     @pulumi.getter(name="isFirstParty")
     def is_first_party(self) -> bool:
         """
-        Indicates whether this client is a first-party client.
+        Indicates whether this client is a first-party client.Defaults to true from the API
         """
         return pulumi.get(self, "is_first_party")
 
@@ -16673,6 +16876,75 @@ class GetPagesLoginResult(dict):
         Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
         """
         return pulumi.get(self, "html")
+
+
+@pulumi.output_type
+class GetPhoneProviderConfigurationResult(dict):
+    def __init__(__self__, *,
+                 default_from: str,
+                 delivery_methods: Sequence[str],
+                 mssid: str,
+                 sid: str):
+        """
+        :param str default_from: Default sender subject as "from" when no other value is specified.
+        :param Sequence[str] delivery_methods: Media set supported by a given provider to deliver a notification
+        :param str mssid: Twilio Messaging Service SID
+        :param str sid: Twilio Account SID.
+        """
+        pulumi.set(__self__, "default_from", default_from)
+        pulumi.set(__self__, "delivery_methods", delivery_methods)
+        pulumi.set(__self__, "mssid", mssid)
+        pulumi.set(__self__, "sid", sid)
+
+    @property
+    @pulumi.getter(name="defaultFrom")
+    def default_from(self) -> str:
+        """
+        Default sender subject as "from" when no other value is specified.
+        """
+        return pulumi.get(self, "default_from")
+
+    @property
+    @pulumi.getter(name="deliveryMethods")
+    def delivery_methods(self) -> Sequence[str]:
+        """
+        Media set supported by a given provider to deliver a notification
+        """
+        return pulumi.get(self, "delivery_methods")
+
+    @property
+    @pulumi.getter
+    def mssid(self) -> str:
+        """
+        Twilio Messaging Service SID
+        """
+        return pulumi.get(self, "mssid")
+
+    @property
+    @pulumi.getter
+    def sid(self) -> str:
+        """
+        Twilio Account SID.
+        """
+        return pulumi.get(self, "sid")
+
+
+@pulumi.output_type
+class GetPhoneProviderCredentialResult(dict):
+    def __init__(__self__, *,
+                 auth_token: str):
+        """
+        :param str auth_token: The Auth Token for the phone provider.
+        """
+        pulumi.set(__self__, "auth_token", auth_token)
+
+    @property
+    @pulumi.getter(name="authToken")
+    def auth_token(self) -> str:
+        """
+        The Auth Token for the phone provider.
+        """
+        return pulumi.get(self, "auth_token")
 
 
 @pulumi.output_type

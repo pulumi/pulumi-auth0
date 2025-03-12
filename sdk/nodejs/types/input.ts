@@ -2687,6 +2687,32 @@ export interface PagesLogin {
     html: pulumi.Input<string>;
 }
 
+export interface PhoneProviderConfiguration {
+    /**
+     * Default sender subject as "from" when no other value is specified.
+     */
+    defaultFrom?: pulumi.Input<string>;
+    /**
+     * Media set supported by a given provider to deliver a notification
+     */
+    deliveryMethods: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Twilio Messaging Service SID
+     */
+    mssid?: pulumi.Input<string>;
+    /**
+     * Twilio Account SID.
+     */
+    sid?: pulumi.Input<string>;
+}
+
+export interface PhoneProviderCredentials {
+    /**
+     * The Auth Token for the phone provider.
+     */
+    authToken?: pulumi.Input<string>;
+}
+
 export interface PromptScreenPartialInsertionPoints {
     /**
      * Content that goes inside the form

@@ -64,7 +64,7 @@ public final class GetClientsClient {
      */
     private List<String> grantTypes;
     /**
-     * @return Indicates whether this client is a first-party client.
+     * @return Indicates whether this client is a first-party client.Defaults to true from the API
      * 
      */
     private Boolean isFirstParty;
@@ -162,7 +162,7 @@ public final class GetClientsClient {
         return this.grantTypes;
     }
     /**
-     * @return Indicates whether this client is a first-party client.
+     * @return Indicates whether this client is a first-party client.Defaults to true from the API
      * 
      */
     public Boolean isFirstParty() {

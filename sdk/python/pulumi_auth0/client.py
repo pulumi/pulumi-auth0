@@ -80,7 +80,7 @@ class ClientArgs:
         :param pulumi.Input[str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
-        :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
+        :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.Defaults to true from the API
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param pulumi.Input['ClientJwtConfigurationArgs'] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
@@ -414,7 +414,7 @@ class ClientArgs:
     @pulumi.getter(name="isFirstParty")
     def is_first_party(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether this client is a first-party client.
+        Indicates whether this client is a first-party client.Defaults to true from the API
         """
         return pulumi.get(self, "is_first_party")
 
@@ -705,7 +705,7 @@ class _ClientState:
         :param pulumi.Input[str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
-        :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
+        :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.Defaults to true from the API
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param pulumi.Input['ClientJwtConfigurationArgs'] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
@@ -1056,7 +1056,7 @@ class _ClientState:
     @pulumi.getter(name="isFirstParty")
     def is_first_party(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether this client is a first-party client.
+        Indicates whether this client is a first-party client.Defaults to true from the API
         """
         return pulumi.get(self, "is_first_party")
 
@@ -1374,7 +1374,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
-        :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
+        :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.Defaults to true from the API
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param pulumi.Input[Union['ClientJwtConfigurationArgs', 'ClientJwtConfigurationArgsDict']] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
@@ -1598,7 +1598,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
-        :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
+        :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.Defaults to true from the API
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param pulumi.Input[Union['ClientJwtConfigurationArgs', 'ClientJwtConfigurationArgsDict']] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
@@ -1829,7 +1829,7 @@ class Client(pulumi.CustomResource):
     @pulumi.getter(name="isFirstParty")
     def is_first_party(self) -> pulumi.Output[bool]:
         """
-        Indicates whether this client is a first-party client.
+        Indicates whether this client is a first-party client.Defaults to true from the API
         """
         return pulumi.get(self, "is_first_party")
 

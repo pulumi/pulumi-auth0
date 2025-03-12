@@ -324,14 +324,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.initiateLoginUri);
     }
     /**
-     * Indicates whether this client is a first-party client.
+     * Indicates whether this client is a first-party client.Defaults to true from the API
      * 
      */
     @Export(name="isFirstParty", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isFirstParty;
 
     /**
-     * @return Indicates whether this client is a first-party client.
+     * @return Indicates whether this client is a first-party client.Defaults to true from the API
      * 
      */
     public Output<Boolean> isFirstParty() {

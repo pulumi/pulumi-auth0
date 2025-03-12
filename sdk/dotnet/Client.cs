@@ -148,7 +148,7 @@ namespace Pulumi.Auth0
         public Output<string?> InitiateLoginUri { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether this client is a first-party client.
+        /// Indicates whether this client is a first-party client.Defaults to true from the API
         /// </summary>
         [Output("isFirstParty")]
         public Output<bool> IsFirstParty { get; private set; } = null!;
@@ -480,7 +480,7 @@ namespace Pulumi.Auth0
         public Input<string>? InitiateLoginUri { get; set; }
 
         /// <summary>
-        /// Indicates whether this client is a first-party client.
+        /// Indicates whether this client is a first-party client.Defaults to true from the API
         /// </summary>
         [Input("isFirstParty")]
         public Input<bool>? IsFirstParty { get; set; }
@@ -784,7 +784,7 @@ namespace Pulumi.Auth0
         public Input<string>? InitiateLoginUri { get; set; }
 
         /// <summary>
-        /// Indicates whether this client is a first-party client.
+        /// Indicates whether this client is a first-party client.Defaults to true from the API
         /// </summary>
         [Input("isFirstParty")]
         public Input<bool>? IsFirstParty { get; set; }

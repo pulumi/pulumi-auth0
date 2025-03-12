@@ -100,6 +100,11 @@ export type Form = import("./form").Form;
 export const Form: typeof import("./form").Form = null as any;
 utilities.lazyLoad(exports, ["Form"], () => require("./form"));
 
+export { GetActionArgs, GetActionResult, GetActionOutputArgs } from "./getAction";
+export const getAction: typeof import("./getAction").getAction = null as any;
+export const getActionOutput: typeof import("./getAction").getActionOutput = null as any;
+utilities.lazyLoad(exports, ["getAction","getActionOutput"], () => require("./getAction"));
+
 export { GetAttackProtectionResult } from "./getAttackProtection";
 export const getAttackProtection: typeof import("./getAttackProtection").getAttackProtection = null as any;
 export const getAttackProtectionOutput: typeof import("./getAttackProtection").getAttackProtectionOutput = null as any;
@@ -164,6 +169,11 @@ export { GetPagesResult } from "./getPages";
 export const getPages: typeof import("./getPages").getPages = null as any;
 export const getPagesOutput: typeof import("./getPages").getPagesOutput = null as any;
 utilities.lazyLoad(exports, ["getPages","getPagesOutput"], () => require("./getPages"));
+
+export { GetPhoneProviderArgs, GetPhoneProviderResult, GetPhoneProviderOutputArgs } from "./getPhoneProvider";
+export const getPhoneProvider: typeof import("./getPhoneProvider").getPhoneProvider = null as any;
+export const getPhoneProviderOutput: typeof import("./getPhoneProvider").getPhoneProviderOutput = null as any;
+utilities.lazyLoad(exports, ["getPhoneProvider","getPhoneProviderOutput"], () => require("./getPhoneProvider"));
 
 export { GetPromptScreenPartialsArgs, GetPromptScreenPartialsResult, GetPromptScreenPartialsOutputArgs } from "./getPromptScreenPartials";
 export const getPromptScreenPartials: typeof import("./getPromptScreenPartials").getPromptScreenPartials = null as any;
@@ -269,6 +279,11 @@ export { PagesArgs, PagesState } from "./pages";
 export type Pages = import("./pages").Pages;
 export const Pages: typeof import("./pages").Pages = null as any;
 utilities.lazyLoad(exports, ["Pages"], () => require("./pages"));
+
+export { PhoneProviderArgs, PhoneProviderState } from "./phoneProvider";
+export type PhoneProvider = import("./phoneProvider").PhoneProvider;
+export const PhoneProvider: typeof import("./phoneProvider").PhoneProvider = null as any;
+utilities.lazyLoad(exports, ["PhoneProvider"], () => require("./phoneProvider"));
 
 export { PromptArgs, PromptState } from "./prompt";
 export type Prompt = import("./prompt").Prompt;
@@ -476,6 +491,8 @@ const _module = {
                 return new OrganizationMembers(name, <any>undefined, { urn })
             case "auth0:index/pages:Pages":
                 return new Pages(name, <any>undefined, { urn })
+            case "auth0:index/phoneProvider:PhoneProvider":
+                return new PhoneProvider(name, <any>undefined, { urn })
             case "auth0:index/prompt:Prompt":
                 return new Prompt(name, <any>undefined, { urn })
             case "auth0:index/promptCustomText:PromptCustomText":
@@ -562,6 +579,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/organizationMemberRole", _
 pulumi.runtime.registerResourceModule("auth0", "index/organizationMemberRoles", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationMembers", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/pages", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/phoneProvider", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/prompt", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptCustomText", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptPartials", _module)
