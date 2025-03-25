@@ -276,8 +276,6 @@ class FlowVaultConnection(pulumi.CustomResource):
 
         This resource can be imported using the flow vault connection ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -323,8 +321,6 @@ class FlowVaultConnection(pulumi.CustomResource):
         ## Import
 
         This resource can be imported using the flow vault connection ID.
-
-        # 
 
         Example:
 

@@ -214,11 +214,7 @@ class Branding(pulumi.CustomResource):
 
         branding can be imported using a random string.
 
-        # 
-
         We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
-
-        # 
 
         Example:
 
@@ -249,11 +245,7 @@ class Branding(pulumi.CustomResource):
 
         branding can be imported using a random string.
 
-        # 
-
         We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
-
-        # 
 
         Example:
 

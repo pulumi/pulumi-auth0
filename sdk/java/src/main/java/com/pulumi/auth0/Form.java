@@ -156,8 +156,6 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported using the form ID.
  * 
- * # 
- * 
  * Example:
  * 
  * ```sh

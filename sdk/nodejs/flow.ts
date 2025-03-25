@@ -40,8 +40,6 @@ import * as utilities from "./utilities";
  *
  * This resource can be imported using the flow ID.
  *
- * # 
- *
  * Example:
  *
  * ```sh

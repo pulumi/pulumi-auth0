@@ -39,8 +39,6 @@ import * as utilities from "./utilities";
  *
  * <connectionID>::<clientID>
  *
- * # 
- *
  * Example:
  *
  * ```sh

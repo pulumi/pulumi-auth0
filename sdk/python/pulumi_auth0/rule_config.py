@@ -127,8 +127,6 @@ class RuleConfig(pulumi.CustomResource):
 
         Existing rule configs can be imported using their key name.
 
-        # 
-
         Example:
 
         ```sh
@@ -170,8 +168,6 @@ class RuleConfig(pulumi.CustomResource):
         ## Import
 
         Existing rule configs can be imported using their key name.
-
-        # 
 
         Example:
 

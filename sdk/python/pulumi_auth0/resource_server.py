@@ -580,8 +580,6 @@ class ResourceServer(pulumi.CustomResource):
 
         Existing resource servers can be imported using their ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -657,8 +655,6 @@ class ResourceServer(pulumi.CustomResource):
         ## Import
 
         Existing resource servers can be imported using their ID.
-
-        # 
 
         Example:
 

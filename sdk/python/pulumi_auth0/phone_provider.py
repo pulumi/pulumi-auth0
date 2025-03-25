@@ -269,8 +269,6 @@ class PhoneProvider(pulumi.CustomResource):
 
         This resource can be imported by specifying the phone Provider ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -356,8 +354,6 @@ class PhoneProvider(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the phone Provider ID.
-
-        # 
 
         Example:
 

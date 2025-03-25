@@ -99,8 +99,6 @@ import javax.annotation.Nullable;
  * 
  * &lt;organizationID&gt;::&lt;userID&gt;::&lt;roleID&gt;
  * 
- * # 
- * 
  * Example:
  * 
  * ```sh

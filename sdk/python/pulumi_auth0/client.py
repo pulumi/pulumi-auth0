@@ -1345,8 +1345,6 @@ class Client(pulumi.CustomResource):
 
         This resource can be imported by specifying the client ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -1406,8 +1404,6 @@ class Client(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the client ID.
-
-        # 
 
         Example:
 

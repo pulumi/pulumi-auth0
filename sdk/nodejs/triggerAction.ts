@@ -45,8 +45,6 @@ import * as utilities from "./utilities";
  *
  * <trigger>::<actionID>
  *
- * # 
- *
  * Example:
  *
  * ```sh

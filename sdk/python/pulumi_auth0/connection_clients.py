@@ -167,8 +167,6 @@ class ConnectionClients(pulumi.CustomResource):
 
         This resource can be imported by specifying the Connection ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -218,8 +216,6 @@ class ConnectionClients(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the Connection ID.
-
-        # 
 
         Example:
 

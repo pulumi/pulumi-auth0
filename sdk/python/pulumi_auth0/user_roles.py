@@ -134,8 +134,6 @@ class UserRoles(pulumi.CustomResource):
 
         This resource can be imported using the user ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -184,8 +182,6 @@ class UserRoles(pulumi.CustomResource):
         ## Import
 
         This resource can be imported using the user ID.
-
-        # 
 
         Example:
 

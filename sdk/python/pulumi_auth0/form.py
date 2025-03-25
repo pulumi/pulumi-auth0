@@ -407,8 +407,6 @@ class Form(pulumi.CustomResource):
 
         This resource can be imported using the form ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -534,8 +532,6 @@ class Form(pulumi.CustomResource):
         ## Import
 
         This resource can be imported using the form ID.
-
-        # 
 
         Example:
 

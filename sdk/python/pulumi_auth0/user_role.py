@@ -170,8 +170,6 @@ class UserRole(pulumi.CustomResource):
 
         <userID>::<roleID>
 
-        # 
-
         Example:
 
         ```sh
@@ -224,8 +222,6 @@ class UserRole(pulumi.CustomResource):
         user ID and role ID separated by "::" (note the double colon)
 
         <userID>::<roleID>
-
-        # 
 
         Example:
 

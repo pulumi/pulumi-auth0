@@ -269,8 +269,6 @@ class OrganizationConnection(pulumi.CustomResource):
 
         <organizationID>::<connectionID>
 
-        # 
-
         Example:
 
         ```sh
@@ -326,8 +324,6 @@ class OrganizationConnection(pulumi.CustomResource):
         organization ID and connection ID separated by "::" (note the double colon)
 
         <organizationID>::<connectionID>
-
-        # 
 
         Example:
 

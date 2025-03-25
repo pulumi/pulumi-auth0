@@ -150,8 +150,6 @@ class RolePermissions(pulumi.CustomResource):
 
         This resource can be imported by specifying the role ID
 
-        # 
-
         Example:
 
         ```sh
@@ -214,8 +212,6 @@ class RolePermissions(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the role ID
-
-        # 
 
         Example:
 

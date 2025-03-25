@@ -126,8 +126,6 @@ class Role(pulumi.CustomResource):
 
         Existing roles can be imported using their ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -162,8 +160,6 @@ class Role(pulumi.CustomResource):
         ## Import
 
         Existing roles can be imported using their ID.
-
-        # 
 
         Example:
 

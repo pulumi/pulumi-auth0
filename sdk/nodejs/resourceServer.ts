@@ -53,8 +53,6 @@ import * as utilities from "./utilities";
  *
  * Existing resource servers can be imported using their ID.
  *
- * # 
- *
  * Example:
  *
  * ```sh

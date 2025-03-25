@@ -45,8 +45,6 @@ namespace Pulumi.Auth0
     /// 
     /// Existing rule configs can be imported using their key name.
     /// 
-    /// # 
-    /// 
     /// Example:
     /// 
     /// ```sh

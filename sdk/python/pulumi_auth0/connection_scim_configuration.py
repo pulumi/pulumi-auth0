@@ -243,8 +243,6 @@ class ConnectionScimConfiguration(pulumi.CustomResource):
 
         This resource can be imported by specifying the connection ID <connectionID>
 
-        # 
-
         Example:
 
         ```sh
@@ -319,8 +317,6 @@ class ConnectionScimConfiguration(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the connection ID <connectionID>
-
-        # 
 
         Example:
 

@@ -92,8 +92,6 @@ import (
 //
 // <organizationID>::<userID>::<roleID>
 //
-// #
-//
 // Example:
 //
 // ```sh

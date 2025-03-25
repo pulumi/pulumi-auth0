@@ -623,8 +623,6 @@ class User(pulumi.CustomResource):
 
         This resource can be imported using the user ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -681,8 +679,6 @@ class User(pulumi.CustomResource):
         ## Import
 
         This resource can be imported using the user ID.
-
-        # 
 
         Example:
 

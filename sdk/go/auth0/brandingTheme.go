@@ -18,8 +18,6 @@ import (
 //
 // This resource can be imported by specifying the Branding Theme ID.
 //
-// #
-//
 // Example:
 //
 // ```sh

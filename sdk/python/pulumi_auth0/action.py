@@ -297,8 +297,6 @@ class Action(pulumi.CustomResource):
 
         This resource can be imported by specifying the action ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -336,8 +334,6 @@ class Action(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the action ID.
-
-        # 
 
         Example:
 

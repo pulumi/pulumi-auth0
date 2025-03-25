@@ -193,8 +193,6 @@ class Rule(pulumi.CustomResource):
 
         Existing rules can be imported using their ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -237,8 +235,6 @@ class Rule(pulumi.CustomResource):
         ## Import
 
         Existing rules can be imported using their ID.
-
-        # 
 
         Example:
 

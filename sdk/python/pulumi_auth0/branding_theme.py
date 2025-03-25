@@ -200,8 +200,6 @@ class BrandingTheme(pulumi.CustomResource):
 
         This resource can be imported by specifying the Branding Theme ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -224,8 +222,6 @@ class BrandingTheme(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the Branding Theme ID.
-
-        # 
 
         Example:
 

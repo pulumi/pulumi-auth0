@@ -157,8 +157,6 @@ class TriggerActions(pulumi.CustomResource):
 
         This resource can be imported using the bindings trigger ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -228,8 +226,6 @@ class TriggerActions(pulumi.CustomResource):
         ## Import
 
         This resource can be imported using the bindings trigger ID.
-
-        # 
 
         Example:
 

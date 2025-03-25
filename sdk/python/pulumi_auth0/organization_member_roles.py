@@ -172,8 +172,6 @@ class OrganizationMemberRoles(pulumi.CustomResource):
 
         <organizationID>::<userID>
 
-        # 
-
         Example:
 
         ```sh
@@ -229,8 +227,6 @@ class OrganizationMemberRoles(pulumi.CustomResource):
         organization ID and user ID separated by "::" (note the double colon)
 
         <organizationID>::<userID>
-
-        # 
 
         Example:
 

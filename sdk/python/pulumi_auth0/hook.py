@@ -265,8 +265,6 @@ class Hook(pulumi.CustomResource):
 
         This resource can be imported by specifying the hook ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -318,8 +316,6 @@ class Hook(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the hook ID.
-
-        # 
 
         Example:
 

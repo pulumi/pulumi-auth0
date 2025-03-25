@@ -114,8 +114,6 @@ import javax.annotation.Nullable;
  * 
  * &lt;organizationID&gt;::&lt;clientGrantID&gt;
  * 
- * # 
- * 
  * Example:
  * 
  * ```sh

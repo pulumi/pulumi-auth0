@@ -193,8 +193,6 @@ class SelfServiceProfileCustomText(pulumi.CustomResource):
 
         <sso-profile-id>::<language>::<page>
 
-        # 
-
         Example
 
         ```sh
@@ -240,8 +238,6 @@ class SelfServiceProfileCustomText(pulumi.CustomResource):
         sso-profile-id, language and page separated by "::" (note the double colon)
 
         <sso-profile-id>::<language>::<page>
-
-        # 
 
         Example
 

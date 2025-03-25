@@ -167,8 +167,6 @@ class ConnectionClient(pulumi.CustomResource):
 
         <connectionID>::<clientID>
 
-        # 
-
         Example:
 
         ```sh
@@ -218,8 +216,6 @@ class ConnectionClient(pulumi.CustomResource):
         connection ID and client ID separated by "::" (note the double colon)
 
         <connectionID>::<clientID>
-
-        # 
 
         Example:
 

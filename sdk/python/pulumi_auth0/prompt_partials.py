@@ -350,8 +350,6 @@ class PromptPartials(pulumi.CustomResource):
 
         This resource can be imported using the prompt name.
 
-        # 
-
         Example:
 
         ```sh
@@ -399,8 +397,6 @@ class PromptPartials(pulumi.CustomResource):
         ## Import
 
         This resource can be imported using the prompt name.
-
-        # 
 
         Example:
 

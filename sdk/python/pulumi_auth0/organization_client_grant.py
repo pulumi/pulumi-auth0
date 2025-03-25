@@ -160,8 +160,6 @@ class OrganizationClientGrant(pulumi.CustomResource):
 
         <organizationID>::<clientGrantID>
 
-        # 
-
         Example:
 
         ```sh
@@ -236,8 +234,6 @@ class OrganizationClientGrant(pulumi.CustomResource):
         organization ID and client grant ID separated by "::" (note the double colon)
 
         <organizationID>::<clientGrantID>
-
-        # 
 
         Example:
 

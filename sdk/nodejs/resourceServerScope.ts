@@ -39,8 +39,6 @@ import * as utilities from "./utilities";
  *
  * <resourceServerIdentifier>::<scope>
  *
- * # 
- *
  * Example:
  *
  * ```sh

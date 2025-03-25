@@ -167,8 +167,6 @@ class ResourceServerScope(pulumi.CustomResource):
 
         <resourceServerIdentifier>::<scope>
 
-        # 
-
         Example:
 
         ```sh
@@ -218,8 +216,6 @@ class ResourceServerScope(pulumi.CustomResource):
         resource identifier and scope name separated by "::" (note the double colon)
 
         <resourceServerIdentifier>::<scope>
-
-        # 
 
         Example:
 

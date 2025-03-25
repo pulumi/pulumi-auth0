@@ -140,8 +140,6 @@ class Flow(pulumi.CustomResource):
 
         This resource can be imported using the flow ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -194,8 +192,6 @@ class Flow(pulumi.CustomResource):
         ## Import
 
         This resource can be imported using the flow ID.
-
-        # 
 
         Example:
 

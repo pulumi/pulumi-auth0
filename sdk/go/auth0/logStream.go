@@ -84,8 +84,6 @@ import (
 //
 // This resource can be imported by specifying the log stream ID.
 //
-// #
-//
 // Example:
 //
 // ```sh

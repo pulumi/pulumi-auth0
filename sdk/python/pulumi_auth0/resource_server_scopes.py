@@ -131,8 +131,6 @@ class ResourceServerScopes(pulumi.CustomResource):
 
         This resource can be imported by specifying the resource server identifier.
 
-        # 
-
         Example:
 
         ```sh
@@ -183,8 +181,6 @@ class ResourceServerScopes(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the resource server identifier.
-
-        # 
 
         Example:
 

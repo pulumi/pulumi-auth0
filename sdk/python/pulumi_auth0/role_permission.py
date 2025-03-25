@@ -181,8 +181,6 @@ class RolePermission(pulumi.CustomResource):
 
         <roleID>::<resourceServerIdentifier>::<permission>
 
-        # 
-
         Example:
 
         ```sh
@@ -215,8 +213,6 @@ class RolePermission(pulumi.CustomResource):
         role ID, resource identifier, and permission name separated by "::" (note the double colon)
 
         <roleID>::<resourceServerIdentifier>::<permission>
-
-        # 
 
         Example:
 

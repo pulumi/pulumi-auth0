@@ -139,8 +139,6 @@ class OrganizationMembers(pulumi.CustomResource):
 
         This resource can be imported by specifying the organization ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -194,8 +192,6 @@ class OrganizationMembers(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the organization ID.
-
-        # 
 
         Example:
 

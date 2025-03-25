@@ -52,8 +52,6 @@ import (
 //
 // This resource can be imported using the flow vault connection ID.
 //
-// #
-//
 // Example:
 //
 // ```sh

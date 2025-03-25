@@ -105,8 +105,6 @@ class CustomDomainVerification(pulumi.CustomResource):
 
         You can import this resource using the custom domain ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -129,8 +127,6 @@ class CustomDomainVerification(pulumi.CustomResource):
         ## Import
 
         You can import this resource using the custom domain ID.
-
-        # 
 
         Example:
 

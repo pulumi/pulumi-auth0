@@ -80,8 +80,6 @@ import javax.annotation.Nullable;
  * 
  * &lt;connectionID&gt;::&lt;clientID&gt;
  * 
- * # 
- * 
  * Example:
  * 
  * ```sh

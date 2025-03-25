@@ -235,8 +235,6 @@ class TokenExchangeProfile(pulumi.CustomResource):
 
         This resource can be imported using the token exchange profile ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -288,8 +286,6 @@ class TokenExchangeProfile(pulumi.CustomResource):
         ## Import
 
         This resource can be imported using the token exchange profile ID.
-
-        # 
 
         Example:
 

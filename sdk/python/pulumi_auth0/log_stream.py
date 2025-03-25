@@ -287,8 +287,6 @@ class LogStream(pulumi.CustomResource):
 
         This resource can be imported by specifying the log stream ID.
 
-        # 
-
         Example:
 
         ```sh
@@ -360,8 +358,6 @@ class LogStream(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the log stream ID.
-
-        # 
 
         Example:
 

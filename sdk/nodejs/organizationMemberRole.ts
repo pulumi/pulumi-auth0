@@ -48,8 +48,6 @@ import * as utilities from "./utilities";
  *
  * <organizationID>::<userID>::<roleID>
  *
- * # 
- *
  * Example:
  *
  * ```sh

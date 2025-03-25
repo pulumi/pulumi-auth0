@@ -180,8 +180,6 @@ class PromptCustomText(pulumi.CustomResource):
 
         <prompt>::<language>
 
-        # 
-
         Example
 
         ```sh
@@ -245,8 +243,6 @@ class PromptCustomText(pulumi.CustomResource):
         prompt and language separated by "::" (note the double colon)
 
         <prompt>::<language>
-
-        # 
 
         Example
 

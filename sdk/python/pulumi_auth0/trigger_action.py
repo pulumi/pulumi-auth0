@@ -174,8 +174,6 @@ class TriggerAction(pulumi.CustomResource):
 
         <trigger>::<actionID>
 
-        # 
-
         Example:
 
         ```sh
@@ -232,8 +230,6 @@ class TriggerAction(pulumi.CustomResource):
         trigger and action ID separated by "::" (note the double colon)
 
         <trigger>::<actionID>
-
-        # 
 
         Example:
 
