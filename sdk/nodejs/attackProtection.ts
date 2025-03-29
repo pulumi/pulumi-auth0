@@ -53,6 +53,12 @@ import * as utilities from "./utilities";
  *         preUserRegistration: {
  *             shields: ["block"],
  *         },
+ *         preChangePassword: {
+ *             shields: [
+ *                 "block",
+ *                 "admin_notification",
+ *             ],
+ *         },
  *     },
  * });
  * ```

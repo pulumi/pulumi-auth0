@@ -82,6 +82,14 @@ namespace Pulumi.Auth0
     ///                     "block",
     ///                 },
     ///             },
+    ///             PreChangePassword = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs
+    ///             {
+    ///                 Shields = new[]
+    ///                 {
+    ///                     "block",
+    ///                     "admin_notification",
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 

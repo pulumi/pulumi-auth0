@@ -3,8 +3,10 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.TenantErrorPageArgs;
 import com.pulumi.auth0.inputs.TenantFlagsArgs;
 import com.pulumi.auth0.inputs.TenantMtlsArgs;
+import com.pulumi.auth0.inputs.TenantOidcLogoutArgs;
 import com.pulumi.auth0.inputs.TenantSessionCookieArgs;
 import com.pulumi.auth0.inputs.TenantSessionsArgs;
 import com.pulumi.core.Output;
@@ -158,6 +160,21 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for the error page
+     * 
+     */
+    @Import(name="errorPage")
+    private @Nullable Output<TenantErrorPageArgs> errorPage;
+
+    /**
+     * @return Configuration for the error page
+     * 
+     */
+    public Optional<Output<TenantErrorPageArgs>> errorPage() {
+        return Optional.ofNullable(this.errorPage);
+    }
+
+    /**
      * Configuration settings for tenant flags.
      * 
      */
@@ -215,6 +232,21 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<TenantMtlsArgs>> mtls() {
         return Optional.ofNullable(this.mtls);
+    }
+
+    /**
+     * Settings related to OIDC RP-initiated Logout.
+     * 
+     */
+    @Import(name="oidcLogout")
+    private @Nullable Output<TenantOidcLogoutArgs> oidcLogout;
+
+    /**
+     * @return Settings related to OIDC RP-initiated Logout.
+     * 
+     */
+    public Optional<Output<TenantOidcLogoutArgs>> oidcLogout() {
+        return Optional.ofNullable(this.oidcLogout);
     }
 
     /**
@@ -349,10 +381,12 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
         this.defaultRedirectionUri = $.defaultRedirectionUri;
         this.disableAcrValuesSupported = $.disableAcrValuesSupported;
         this.enabledLocales = $.enabledLocales;
+        this.errorPage = $.errorPage;
         this.flags = $.flags;
         this.friendlyName = $.friendlyName;
         this.idleSessionLifetime = $.idleSessionLifetime;
         this.mtls = $.mtls;
+        this.oidcLogout = $.oidcLogout;
         this.pictureUrl = $.pictureUrl;
         this.pushedAuthorizationRequestsSupported = $.pushedAuthorizationRequestsSupported;
         this.sandboxVersion = $.sandboxVersion;
@@ -601,6 +635,27 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param errorPage Configuration for the error page
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errorPage(@Nullable Output<TenantErrorPageArgs> errorPage) {
+            $.errorPage = errorPage;
+            return this;
+        }
+
+        /**
+         * @param errorPage Configuration for the error page
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errorPage(TenantErrorPageArgs errorPage) {
+            return errorPage(Output.of(errorPage));
+        }
+
+        /**
          * @param flags Configuration settings for tenant flags.
          * 
          * @return builder
@@ -682,6 +737,27 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mtls(TenantMtlsArgs mtls) {
             return mtls(Output.of(mtls));
+        }
+
+        /**
+         * @param oidcLogout Settings related to OIDC RP-initiated Logout.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcLogout(@Nullable Output<TenantOidcLogoutArgs> oidcLogout) {
+            $.oidcLogout = oidcLogout;
+            return this;
+        }
+
+        /**
+         * @param oidcLogout Settings related to OIDC RP-initiated Logout.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcLogout(TenantOidcLogoutArgs oidcLogout) {
+            return oidcLogout(Output.of(oidcLogout));
         }
 
         /**

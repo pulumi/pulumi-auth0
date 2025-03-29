@@ -26,6 +26,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? Method;
         /// <summary>
+        /// Configuration options that apply before every password change attempt.
+        /// </summary>
+        public readonly Outputs.AttackProtectionBreachedPasswordDetectionPreChangePassword? PreChangePassword;
+        /// <summary>
         /// Configuration options that apply before every user registration attempt. Only available on public tenants.
         /// </summary>
         public readonly Outputs.AttackProtectionBreachedPasswordDetectionPreUserRegistration? PreUserRegistration;
@@ -42,6 +46,8 @@ namespace Pulumi.Auth0.Outputs
 
             string? method,
 
+            Outputs.AttackProtectionBreachedPasswordDetectionPreChangePassword? preChangePassword,
+
             Outputs.AttackProtectionBreachedPasswordDetectionPreUserRegistration? preUserRegistration,
 
             ImmutableArray<string> shields)
@@ -49,6 +55,7 @@ namespace Pulumi.Auth0.Outputs
             AdminNotificationFrequencies = adminNotificationFrequencies;
             Enabled = enabled;
             Method = method;
+            PreChangePassword = preChangePassword;
             PreUserRegistration = preUserRegistration;
             Shields = shields;
         }
