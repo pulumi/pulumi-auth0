@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.AttackProtectionBreachedPasswordDetectionPreChangePassword;
 import com.pulumi.auth0.outputs.AttackProtectionBreachedPasswordDetectionPreUserRegistration;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -30,6 +31,11 @@ public final class AttackProtectionBreachedPasswordDetection {
      * 
      */
     private @Nullable String method;
+    /**
+     * @return Configuration options that apply before every password change attempt.
+     * 
+     */
+    private @Nullable AttackProtectionBreachedPasswordDetectionPreChangePassword preChangePassword;
     /**
      * @return Configuration options that apply before every user registration attempt. Only available on public tenants.
      * 
@@ -64,6 +70,13 @@ public final class AttackProtectionBreachedPasswordDetection {
         return Optional.ofNullable(this.method);
     }
     /**
+     * @return Configuration options that apply before every password change attempt.
+     * 
+     */
+    public Optional<AttackProtectionBreachedPasswordDetectionPreChangePassword> preChangePassword() {
+        return Optional.ofNullable(this.preChangePassword);
+    }
+    /**
      * @return Configuration options that apply before every user registration attempt. Only available on public tenants.
      * 
      */
@@ -90,6 +103,7 @@ public final class AttackProtectionBreachedPasswordDetection {
         private @Nullable List<String> adminNotificationFrequencies;
         private Boolean enabled;
         private @Nullable String method;
+        private @Nullable AttackProtectionBreachedPasswordDetectionPreChangePassword preChangePassword;
         private @Nullable AttackProtectionBreachedPasswordDetectionPreUserRegistration preUserRegistration;
         private @Nullable List<String> shields;
         public Builder() {}
@@ -98,6 +112,7 @@ public final class AttackProtectionBreachedPasswordDetection {
     	      this.adminNotificationFrequencies = defaults.adminNotificationFrequencies;
     	      this.enabled = defaults.enabled;
     	      this.method = defaults.method;
+    	      this.preChangePassword = defaults.preChangePassword;
     	      this.preUserRegistration = defaults.preUserRegistration;
     	      this.shields = defaults.shields;
         }
@@ -126,6 +141,12 @@ public final class AttackProtectionBreachedPasswordDetection {
             return this;
         }
         @CustomType.Setter
+        public Builder preChangePassword(@Nullable AttackProtectionBreachedPasswordDetectionPreChangePassword preChangePassword) {
+
+            this.preChangePassword = preChangePassword;
+            return this;
+        }
+        @CustomType.Setter
         public Builder preUserRegistration(@Nullable AttackProtectionBreachedPasswordDetectionPreUserRegistration preUserRegistration) {
 
             this.preUserRegistration = preUserRegistration;
@@ -145,6 +166,7 @@ public final class AttackProtectionBreachedPasswordDetection {
             _resultValue.adminNotificationFrequencies = adminNotificationFrequencies;
             _resultValue.enabled = enabled;
             _resultValue.method = method;
+            _resultValue.preChangePassword = preChangePassword;
             _resultValue.preUserRegistration = preUserRegistration;
             _resultValue.shields = shields;
             return _resultValue;

@@ -261,6 +261,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+     * 
+     */
+    @Import(name="customHeaders")
+    private @Nullable Output<List<Map<String,String>>> customHeaders;
+
+    /**
+     * @return Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+     * 
+     */
+    public Optional<Output<List<Map<String,String>>>> customHeaders() {
+        return Optional.ofNullable(this.customHeaders);
+    }
+
+    /**
      * A map of scripts used to integrate with a custom database.
      * 
      */
@@ -1493,6 +1508,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.communityBaseUrl = $.communityBaseUrl;
         this.configuration = $.configuration;
         this.connectionSettings = $.connectionSettings;
+        this.customHeaders = $.customHeaders;
         this.customScripts = $.customScripts;
         this.debug = $.debug;
         this.decryptionKey = $.decryptionKey;
@@ -1937,6 +1953,37 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder connectionSettings(ConnectionOptionsConnectionSettingsArgs connectionSettings) {
             return connectionSettings(Output.of(connectionSettings));
+        }
+
+        /**
+         * @param customHeaders Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customHeaders(@Nullable Output<List<Map<String,String>>> customHeaders) {
+            $.customHeaders = customHeaders;
+            return this;
+        }
+
+        /**
+         * @param customHeaders Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customHeaders(List<Map<String,String>> customHeaders) {
+            return customHeaders(Output.of(customHeaders));
+        }
+
+        /**
+         * @param customHeaders Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customHeaders(Map<String,String>... customHeaders) {
+            return customHeaders(List.of(customHeaders));
         }
 
         /**
