@@ -120,6 +120,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<string> EnabledLocales;
         /// <summary>
+        /// Configuration for the error page
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTenantErrorPageResult> ErrorPages;
+        /// <summary>
         /// Configuration settings for tenant flags.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTenantFlagResult> Flags;
@@ -143,6 +147,10 @@ namespace Pulumi.Auth0
         /// Configuration for mTLS.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTenantMtlResult> Mtls;
+        /// <summary>
+        /// Settings related to OIDC RP-initiated Logout.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTenantOidcLogoutResult> OidcLogouts;
         /// <summary>
         /// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         /// </summary>
@@ -198,6 +206,8 @@ namespace Pulumi.Auth0
 
             ImmutableArray<string> enabledLocales,
 
+            ImmutableArray<Outputs.GetTenantErrorPageResult> errorPages,
+
             ImmutableArray<Outputs.GetTenantFlagResult> flags,
 
             string friendlyName,
@@ -209,6 +219,8 @@ namespace Pulumi.Auth0
             string managementApiIdentifier,
 
             ImmutableArray<Outputs.GetTenantMtlResult> mtls,
+
+            ImmutableArray<Outputs.GetTenantOidcLogoutResult> oidcLogouts,
 
             string pictureUrl,
 
@@ -236,12 +248,14 @@ namespace Pulumi.Auth0
             DisableAcrValuesSupported = disableAcrValuesSupported;
             Domain = domain;
             EnabledLocales = enabledLocales;
+            ErrorPages = errorPages;
             Flags = flags;
             FriendlyName = friendlyName;
             Id = id;
             IdleSessionLifetime = idleSessionLifetime;
             ManagementApiIdentifier = managementApiIdentifier;
             Mtls = mtls;
+            OidcLogouts = oidcLogouts;
             PictureUrl = pictureUrl;
             PushedAuthorizationRequestsSupported = pushedAuthorizationRequestsSupported;
             SandboxVersion = sandboxVersion;

@@ -186,6 +186,12 @@ class AttackProtection(pulumi.CustomResource):
                 "pre_user_registration": {
                     "shields": ["block"],
                 },
+                "pre_change_password": {
+                    "shields": [
+                        "block",
+                        "admin_notification",
+                    ],
+                },
             })
         ```
 
@@ -265,6 +271,12 @@ class AttackProtection(pulumi.CustomResource):
                 ],
                 "pre_user_registration": {
                     "shields": ["block"],
+                },
+                "pre_change_password": {
+                    "shields": [
+                        "block",
+                        "admin_notification",
+                    ],
                 },
             })
         ```

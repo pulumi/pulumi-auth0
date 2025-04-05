@@ -3,8 +3,10 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetTenantErrorPage;
 import com.pulumi.auth0.outputs.GetTenantFlag;
 import com.pulumi.auth0.outputs.GetTenantMtl;
+import com.pulumi.auth0.outputs.GetTenantOidcLogout;
 import com.pulumi.auth0.outputs.GetTenantSession;
 import com.pulumi.auth0.outputs.GetTenantSessionCooky;
 import com.pulumi.core.annotations.CustomType;
@@ -68,6 +70,11 @@ public final class GetTenantResult {
      */
     private List<String> enabledLocales;
     /**
+     * @return Configuration for the error page
+     * 
+     */
+    private List<GetTenantErrorPage> errorPages;
+    /**
      * @return Configuration settings for tenant flags.
      * 
      */
@@ -97,6 +104,11 @@ public final class GetTenantResult {
      * 
      */
     private List<GetTenantMtl> mtls;
+    /**
+     * @return Settings related to OIDC RP-initiated Logout.
+     * 
+     */
+    private List<GetTenantOidcLogout> oidcLogouts;
     /**
      * @return URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      * 
@@ -210,6 +222,13 @@ public final class GetTenantResult {
         return this.enabledLocales;
     }
     /**
+     * @return Configuration for the error page
+     * 
+     */
+    public List<GetTenantErrorPage> errorPages() {
+        return this.errorPages;
+    }
+    /**
      * @return Configuration settings for tenant flags.
      * 
      */
@@ -250,6 +269,13 @@ public final class GetTenantResult {
      */
     public List<GetTenantMtl> mtls() {
         return this.mtls;
+    }
+    /**
+     * @return Settings related to OIDC RP-initiated Logout.
+     * 
+     */
+    public List<GetTenantOidcLogout> oidcLogouts() {
+        return this.oidcLogouts;
     }
     /**
      * @return URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
@@ -327,12 +353,14 @@ public final class GetTenantResult {
         private Boolean disableAcrValuesSupported;
         private String domain;
         private List<String> enabledLocales;
+        private List<GetTenantErrorPage> errorPages;
         private List<GetTenantFlag> flags;
         private String friendlyName;
         private String id;
         private Double idleSessionLifetime;
         private String managementApiIdentifier;
         private List<GetTenantMtl> mtls;
+        private List<GetTenantOidcLogout> oidcLogouts;
         private String pictureUrl;
         private Boolean pushedAuthorizationRequestsSupported;
         private String sandboxVersion;
@@ -354,12 +382,14 @@ public final class GetTenantResult {
     	      this.disableAcrValuesSupported = defaults.disableAcrValuesSupported;
     	      this.domain = defaults.domain;
     	      this.enabledLocales = defaults.enabledLocales;
+    	      this.errorPages = defaults.errorPages;
     	      this.flags = defaults.flags;
     	      this.friendlyName = defaults.friendlyName;
     	      this.id = defaults.id;
     	      this.idleSessionLifetime = defaults.idleSessionLifetime;
     	      this.managementApiIdentifier = defaults.managementApiIdentifier;
     	      this.mtls = defaults.mtls;
+    	      this.oidcLogouts = defaults.oidcLogouts;
     	      this.pictureUrl = defaults.pictureUrl;
     	      this.pushedAuthorizationRequestsSupported = defaults.pushedAuthorizationRequestsSupported;
     	      this.sandboxVersion = defaults.sandboxVersion;
@@ -460,6 +490,17 @@ public final class GetTenantResult {
             return enabledLocales(List.of(enabledLocales));
         }
         @CustomType.Setter
+        public Builder errorPages(List<GetTenantErrorPage> errorPages) {
+            if (errorPages == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "errorPages");
+            }
+            this.errorPages = errorPages;
+            return this;
+        }
+        public Builder errorPages(GetTenantErrorPage... errorPages) {
+            return errorPages(List.of(errorPages));
+        }
+        @CustomType.Setter
         public Builder flags(List<GetTenantFlag> flags) {
             if (flags == null) {
               throw new MissingRequiredPropertyException("GetTenantResult", "flags");
@@ -512,6 +553,17 @@ public final class GetTenantResult {
         }
         public Builder mtls(GetTenantMtl... mtls) {
             return mtls(List.of(mtls));
+        }
+        @CustomType.Setter
+        public Builder oidcLogouts(List<GetTenantOidcLogout> oidcLogouts) {
+            if (oidcLogouts == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "oidcLogouts");
+            }
+            this.oidcLogouts = oidcLogouts;
+            return this;
+        }
+        public Builder oidcLogouts(GetTenantOidcLogout... oidcLogouts) {
+            return oidcLogouts(List.of(oidcLogouts));
         }
         @CustomType.Setter
         public Builder pictureUrl(String pictureUrl) {
@@ -595,12 +647,14 @@ public final class GetTenantResult {
             _resultValue.disableAcrValuesSupported = disableAcrValuesSupported;
             _resultValue.domain = domain;
             _resultValue.enabledLocales = enabledLocales;
+            _resultValue.errorPages = errorPages;
             _resultValue.flags = flags;
             _resultValue.friendlyName = friendlyName;
             _resultValue.id = id;
             _resultValue.idleSessionLifetime = idleSessionLifetime;
             _resultValue.managementApiIdentifier = managementApiIdentifier;
             _resultValue.mtls = mtls;
+            _resultValue.oidcLogouts = oidcLogouts;
             _resultValue.pictureUrl = pictureUrl;
             _resultValue.pushedAuthorizationRequestsSupported = pushedAuthorizationRequestsSupported;
             _resultValue.sandboxVersion = sandboxVersion;

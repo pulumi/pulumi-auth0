@@ -388,6 +388,8 @@ type AttackProtectionBreachedPasswordDetection struct {
 	Enabled bool `pulumi:"enabled"`
 	// The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
 	Method *string `pulumi:"method"`
+	// Configuration options that apply before every password change attempt.
+	PreChangePassword *AttackProtectionBreachedPasswordDetectionPreChangePassword `pulumi:"preChangePassword"`
 	// Configuration options that apply before every user registration attempt. Only available on public tenants.
 	PreUserRegistration *AttackProtectionBreachedPasswordDetectionPreUserRegistration `pulumi:"preUserRegistration"`
 	// Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
@@ -412,6 +414,8 @@ type AttackProtectionBreachedPasswordDetectionArgs struct {
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
 	Method pulumi.StringPtrInput `pulumi:"method"`
+	// Configuration options that apply before every password change attempt.
+	PreChangePassword AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrInput `pulumi:"preChangePassword"`
 	// Configuration options that apply before every user registration attempt. Only available on public tenants.
 	PreUserRegistration AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrInput `pulumi:"preUserRegistration"`
 	// Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
@@ -510,6 +514,13 @@ func (o AttackProtectionBreachedPasswordDetectionOutput) Method() pulumi.StringP
 	return o.ApplyT(func(v AttackProtectionBreachedPasswordDetection) *string { return v.Method }).(pulumi.StringPtrOutput)
 }
 
+// Configuration options that apply before every password change attempt.
+func (o AttackProtectionBreachedPasswordDetectionOutput) PreChangePassword() AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput {
+	return o.ApplyT(func(v AttackProtectionBreachedPasswordDetection) *AttackProtectionBreachedPasswordDetectionPreChangePassword {
+		return v.PreChangePassword
+	}).(AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput)
+}
+
 // Configuration options that apply before every user registration attempt. Only available on public tenants.
 func (o AttackProtectionBreachedPasswordDetectionOutput) PreUserRegistration() AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput {
 	return o.ApplyT(func(v AttackProtectionBreachedPasswordDetection) *AttackProtectionBreachedPasswordDetectionPreUserRegistration {
@@ -576,6 +587,16 @@ func (o AttackProtectionBreachedPasswordDetectionPtrOutput) Method() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Configuration options that apply before every password change attempt.
+func (o AttackProtectionBreachedPasswordDetectionPtrOutput) PreChangePassword() AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionBreachedPasswordDetection) *AttackProtectionBreachedPasswordDetectionPreChangePassword {
+		if v == nil {
+			return nil
+		}
+		return v.PreChangePassword
+	}).(AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput)
+}
+
 // Configuration options that apply before every user registration attempt. Only available on public tenants.
 func (o AttackProtectionBreachedPasswordDetectionPtrOutput) PreUserRegistration() AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput {
 	return o.ApplyT(func(v *AttackProtectionBreachedPasswordDetection) *AttackProtectionBreachedPasswordDetectionPreUserRegistration {
@@ -589,6 +610,143 @@ func (o AttackProtectionBreachedPasswordDetectionPtrOutput) PreUserRegistration(
 // Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
 func (o AttackProtectionBreachedPasswordDetectionPtrOutput) Shields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttackProtectionBreachedPasswordDetection) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Shields
+	}).(pulumi.StringArrayOutput)
+}
+
+type AttackProtectionBreachedPasswordDetectionPreChangePassword struct {
+	// Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
+	Shields []string `pulumi:"shields"`
+}
+
+// AttackProtectionBreachedPasswordDetectionPreChangePasswordInput is an input type that accepts AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs and AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput values.
+// You can construct a concrete instance of `AttackProtectionBreachedPasswordDetectionPreChangePasswordInput` via:
+//
+//	AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs{...}
+type AttackProtectionBreachedPasswordDetectionPreChangePasswordInput interface {
+	pulumi.Input
+
+	ToAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput() AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput
+	ToAttackProtectionBreachedPasswordDetectionPreChangePasswordOutputWithContext(context.Context) AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput
+}
+
+type AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs struct {
+	// Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
+	Shields pulumi.StringArrayInput `pulumi:"shields"`
+}
+
+func (AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionPreChangePassword)(nil)).Elem()
+}
+
+func (i AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs) ToAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput() AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput {
+	return i.ToAttackProtectionBreachedPasswordDetectionPreChangePasswordOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs) ToAttackProtectionBreachedPasswordDetectionPreChangePasswordOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput)
+}
+
+func (i AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs) ToAttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput() AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput {
+	return i.ToAttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs) ToAttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput).ToAttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutputWithContext(ctx)
+}
+
+// AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrInput is an input type that accepts AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs, AttackProtectionBreachedPasswordDetectionPreChangePasswordPtr and AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput values.
+// You can construct a concrete instance of `AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrInput` via:
+//
+//	        AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrInput interface {
+	pulumi.Input
+
+	ToAttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput() AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput
+	ToAttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutputWithContext(context.Context) AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput
+}
+
+type attackProtectionBreachedPasswordDetectionPreChangePasswordPtrType AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs
+
+func AttackProtectionBreachedPasswordDetectionPreChangePasswordPtr(v *AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs) AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrInput {
+	return (*attackProtectionBreachedPasswordDetectionPreChangePasswordPtrType)(v)
+}
+
+func (*attackProtectionBreachedPasswordDetectionPreChangePasswordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionBreachedPasswordDetectionPreChangePassword)(nil)).Elem()
+}
+
+func (i *attackProtectionBreachedPasswordDetectionPreChangePasswordPtrType) ToAttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput() AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput {
+	return i.ToAttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *attackProtectionBreachedPasswordDetectionPreChangePasswordPtrType) ToAttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput)
+}
+
+type AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionPreChangePassword)(nil)).Elem()
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput) ToAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput() AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput {
+	return o
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput) ToAttackProtectionBreachedPasswordDetectionPreChangePasswordOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput {
+	return o
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput) ToAttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput() AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput {
+	return o.ToAttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutputWithContext(context.Background())
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput) ToAttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttackProtectionBreachedPasswordDetectionPreChangePassword) *AttackProtectionBreachedPasswordDetectionPreChangePassword {
+		return &v
+	}).(AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput)
+}
+
+// Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
+func (o AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput) Shields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttackProtectionBreachedPasswordDetectionPreChangePassword) []string { return v.Shields }).(pulumi.StringArrayOutput)
+}
+
+type AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionBreachedPasswordDetectionPreChangePassword)(nil)).Elem()
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput) ToAttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput() AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput {
+	return o
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput) ToAttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput {
+	return o
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput) Elem() AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput {
+	return o.ApplyT(func(v *AttackProtectionBreachedPasswordDetectionPreChangePassword) AttackProtectionBreachedPasswordDetectionPreChangePassword {
+		if v != nil {
+			return *v
+		}
+		var ret AttackProtectionBreachedPasswordDetectionPreChangePassword
+		return ret
+	}).(AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput)
+}
+
+// Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
+func (o AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput) Shields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AttackProtectionBreachedPasswordDetectionPreChangePassword) []string {
 		if v == nil {
 			return nil
 		}
@@ -13506,6 +13664,8 @@ type ConnectionOptions struct {
 	Configuration map[string]string `pulumi:"configuration"`
 	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 	ConnectionSettings *ConnectionOptionsConnectionSettings `pulumi:"connectionSettings"`
+	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+	CustomHeaders []map[string]string `pulumi:"customHeaders"`
 	// A map of scripts used to integrate with a custom database.
 	CustomScripts map[string]string `pulumi:"customScripts"`
 	// When enabled, additional debug information will be generated.
@@ -13712,6 +13872,8 @@ type ConnectionOptionsArgs struct {
 	Configuration pulumi.StringMapInput `pulumi:"configuration"`
 	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 	ConnectionSettings ConnectionOptionsConnectionSettingsPtrInput `pulumi:"connectionSettings"`
+	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+	CustomHeaders pulumi.StringMapArrayInput `pulumi:"customHeaders"`
 	// A map of scripts used to integrate with a custom database.
 	CustomScripts pulumi.StringMapInput `pulumi:"customScripts"`
 	// When enabled, additional debug information will be generated.
@@ -14026,6 +14188,11 @@ func (o ConnectionOptionsOutput) Configuration() pulumi.StringMapOutput {
 // Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 func (o ConnectionOptionsOutput) ConnectionSettings() ConnectionOptionsConnectionSettingsPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsConnectionSettings { return v.ConnectionSettings }).(ConnectionOptionsConnectionSettingsPtrOutput)
+}
+
+// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+func (o ConnectionOptionsOutput) CustomHeaders() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v ConnectionOptions) []map[string]string { return v.CustomHeaders }).(pulumi.StringMapArrayOutput)
 }
 
 // A map of scripts used to integrate with a custom database.
@@ -14607,6 +14774,16 @@ func (o ConnectionOptionsPtrOutput) ConnectionSettings() ConnectionOptionsConnec
 		}
 		return v.ConnectionSettings
 	}).(ConnectionOptionsConnectionSettingsPtrOutput)
+}
+
+// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+func (o ConnectionOptionsPtrOutput) CustomHeaders() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *ConnectionOptions) []map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomHeaders
+	}).(pulumi.StringMapArrayOutput)
 }
 
 // A map of scripts used to integrate with a custom database.
@@ -26810,6 +26987,181 @@ func (o SelfServiceProfileUserAttributeArrayOutput) Index(i pulumi.IntInput) Sel
 	}).(SelfServiceProfileUserAttributeOutput)
 }
 
+type TenantErrorPage struct {
+	// Custom Error HTML (Liquid syntax is supported)
+	Html *string `pulumi:"html"`
+	// Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+	ShowLogLink *bool `pulumi:"showLogLink"`
+	// URL to redirect to when an error occurs instead of showing the default error page
+	Url *string `pulumi:"url"`
+}
+
+// TenantErrorPageInput is an input type that accepts TenantErrorPageArgs and TenantErrorPageOutput values.
+// You can construct a concrete instance of `TenantErrorPageInput` via:
+//
+//	TenantErrorPageArgs{...}
+type TenantErrorPageInput interface {
+	pulumi.Input
+
+	ToTenantErrorPageOutput() TenantErrorPageOutput
+	ToTenantErrorPageOutputWithContext(context.Context) TenantErrorPageOutput
+}
+
+type TenantErrorPageArgs struct {
+	// Custom Error HTML (Liquid syntax is supported)
+	Html pulumi.StringPtrInput `pulumi:"html"`
+	// Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+	ShowLogLink pulumi.BoolPtrInput `pulumi:"showLogLink"`
+	// URL to redirect to when an error occurs instead of showing the default error page
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (TenantErrorPageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantErrorPage)(nil)).Elem()
+}
+
+func (i TenantErrorPageArgs) ToTenantErrorPageOutput() TenantErrorPageOutput {
+	return i.ToTenantErrorPageOutputWithContext(context.Background())
+}
+
+func (i TenantErrorPageArgs) ToTenantErrorPageOutputWithContext(ctx context.Context) TenantErrorPageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantErrorPageOutput)
+}
+
+func (i TenantErrorPageArgs) ToTenantErrorPagePtrOutput() TenantErrorPagePtrOutput {
+	return i.ToTenantErrorPagePtrOutputWithContext(context.Background())
+}
+
+func (i TenantErrorPageArgs) ToTenantErrorPagePtrOutputWithContext(ctx context.Context) TenantErrorPagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantErrorPageOutput).ToTenantErrorPagePtrOutputWithContext(ctx)
+}
+
+// TenantErrorPagePtrInput is an input type that accepts TenantErrorPageArgs, TenantErrorPagePtr and TenantErrorPagePtrOutput values.
+// You can construct a concrete instance of `TenantErrorPagePtrInput` via:
+//
+//	        TenantErrorPageArgs{...}
+//
+//	or:
+//
+//	        nil
+type TenantErrorPagePtrInput interface {
+	pulumi.Input
+
+	ToTenantErrorPagePtrOutput() TenantErrorPagePtrOutput
+	ToTenantErrorPagePtrOutputWithContext(context.Context) TenantErrorPagePtrOutput
+}
+
+type tenantErrorPagePtrType TenantErrorPageArgs
+
+func TenantErrorPagePtr(v *TenantErrorPageArgs) TenantErrorPagePtrInput {
+	return (*tenantErrorPagePtrType)(v)
+}
+
+func (*tenantErrorPagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantErrorPage)(nil)).Elem()
+}
+
+func (i *tenantErrorPagePtrType) ToTenantErrorPagePtrOutput() TenantErrorPagePtrOutput {
+	return i.ToTenantErrorPagePtrOutputWithContext(context.Background())
+}
+
+func (i *tenantErrorPagePtrType) ToTenantErrorPagePtrOutputWithContext(ctx context.Context) TenantErrorPagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantErrorPagePtrOutput)
+}
+
+type TenantErrorPageOutput struct{ *pulumi.OutputState }
+
+func (TenantErrorPageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantErrorPage)(nil)).Elem()
+}
+
+func (o TenantErrorPageOutput) ToTenantErrorPageOutput() TenantErrorPageOutput {
+	return o
+}
+
+func (o TenantErrorPageOutput) ToTenantErrorPageOutputWithContext(ctx context.Context) TenantErrorPageOutput {
+	return o
+}
+
+func (o TenantErrorPageOutput) ToTenantErrorPagePtrOutput() TenantErrorPagePtrOutput {
+	return o.ToTenantErrorPagePtrOutputWithContext(context.Background())
+}
+
+func (o TenantErrorPageOutput) ToTenantErrorPagePtrOutputWithContext(ctx context.Context) TenantErrorPagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantErrorPage) *TenantErrorPage {
+		return &v
+	}).(TenantErrorPagePtrOutput)
+}
+
+// Custom Error HTML (Liquid syntax is supported)
+func (o TenantErrorPageOutput) Html() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TenantErrorPage) *string { return v.Html }).(pulumi.StringPtrOutput)
+}
+
+// Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+func (o TenantErrorPageOutput) ShowLogLink() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantErrorPage) *bool { return v.ShowLogLink }).(pulumi.BoolPtrOutput)
+}
+
+// URL to redirect to when an error occurs instead of showing the default error page
+func (o TenantErrorPageOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TenantErrorPage) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type TenantErrorPagePtrOutput struct{ *pulumi.OutputState }
+
+func (TenantErrorPagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantErrorPage)(nil)).Elem()
+}
+
+func (o TenantErrorPagePtrOutput) ToTenantErrorPagePtrOutput() TenantErrorPagePtrOutput {
+	return o
+}
+
+func (o TenantErrorPagePtrOutput) ToTenantErrorPagePtrOutputWithContext(ctx context.Context) TenantErrorPagePtrOutput {
+	return o
+}
+
+func (o TenantErrorPagePtrOutput) Elem() TenantErrorPageOutput {
+	return o.ApplyT(func(v *TenantErrorPage) TenantErrorPage {
+		if v != nil {
+			return *v
+		}
+		var ret TenantErrorPage
+		return ret
+	}).(TenantErrorPageOutput)
+}
+
+// Custom Error HTML (Liquid syntax is supported)
+func (o TenantErrorPagePtrOutput) Html() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TenantErrorPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Html
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+func (o TenantErrorPagePtrOutput) ShowLogLink() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantErrorPage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ShowLogLink
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URL to redirect to when an error occurs instead of showing the default error page
+func (o TenantErrorPagePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TenantErrorPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
 type TenantFlags struct {
 	// Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
 	AllowLegacyDelegationGrantTypes *bool `pulumi:"allowLegacyDelegationGrantTypes"`
@@ -27564,6 +27916,143 @@ func (o TenantMtlsPtrOutput) EnableEndpointAliases() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.EnableEndpointAliases
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TenantOidcLogout struct {
+	// Enable the end*session*endpoint URL in the .well-known discovery configuration.
+	RpLogoutEndSessionEndpointDiscovery bool `pulumi:"rpLogoutEndSessionEndpointDiscovery"`
+}
+
+// TenantOidcLogoutInput is an input type that accepts TenantOidcLogoutArgs and TenantOidcLogoutOutput values.
+// You can construct a concrete instance of `TenantOidcLogoutInput` via:
+//
+//	TenantOidcLogoutArgs{...}
+type TenantOidcLogoutInput interface {
+	pulumi.Input
+
+	ToTenantOidcLogoutOutput() TenantOidcLogoutOutput
+	ToTenantOidcLogoutOutputWithContext(context.Context) TenantOidcLogoutOutput
+}
+
+type TenantOidcLogoutArgs struct {
+	// Enable the end*session*endpoint URL in the .well-known discovery configuration.
+	RpLogoutEndSessionEndpointDiscovery pulumi.BoolInput `pulumi:"rpLogoutEndSessionEndpointDiscovery"`
+}
+
+func (TenantOidcLogoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantOidcLogout)(nil)).Elem()
+}
+
+func (i TenantOidcLogoutArgs) ToTenantOidcLogoutOutput() TenantOidcLogoutOutput {
+	return i.ToTenantOidcLogoutOutputWithContext(context.Background())
+}
+
+func (i TenantOidcLogoutArgs) ToTenantOidcLogoutOutputWithContext(ctx context.Context) TenantOidcLogoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantOidcLogoutOutput)
+}
+
+func (i TenantOidcLogoutArgs) ToTenantOidcLogoutPtrOutput() TenantOidcLogoutPtrOutput {
+	return i.ToTenantOidcLogoutPtrOutputWithContext(context.Background())
+}
+
+func (i TenantOidcLogoutArgs) ToTenantOidcLogoutPtrOutputWithContext(ctx context.Context) TenantOidcLogoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantOidcLogoutOutput).ToTenantOidcLogoutPtrOutputWithContext(ctx)
+}
+
+// TenantOidcLogoutPtrInput is an input type that accepts TenantOidcLogoutArgs, TenantOidcLogoutPtr and TenantOidcLogoutPtrOutput values.
+// You can construct a concrete instance of `TenantOidcLogoutPtrInput` via:
+//
+//	        TenantOidcLogoutArgs{...}
+//
+//	or:
+//
+//	        nil
+type TenantOidcLogoutPtrInput interface {
+	pulumi.Input
+
+	ToTenantOidcLogoutPtrOutput() TenantOidcLogoutPtrOutput
+	ToTenantOidcLogoutPtrOutputWithContext(context.Context) TenantOidcLogoutPtrOutput
+}
+
+type tenantOidcLogoutPtrType TenantOidcLogoutArgs
+
+func TenantOidcLogoutPtr(v *TenantOidcLogoutArgs) TenantOidcLogoutPtrInput {
+	return (*tenantOidcLogoutPtrType)(v)
+}
+
+func (*tenantOidcLogoutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantOidcLogout)(nil)).Elem()
+}
+
+func (i *tenantOidcLogoutPtrType) ToTenantOidcLogoutPtrOutput() TenantOidcLogoutPtrOutput {
+	return i.ToTenantOidcLogoutPtrOutputWithContext(context.Background())
+}
+
+func (i *tenantOidcLogoutPtrType) ToTenantOidcLogoutPtrOutputWithContext(ctx context.Context) TenantOidcLogoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantOidcLogoutPtrOutput)
+}
+
+type TenantOidcLogoutOutput struct{ *pulumi.OutputState }
+
+func (TenantOidcLogoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantOidcLogout)(nil)).Elem()
+}
+
+func (o TenantOidcLogoutOutput) ToTenantOidcLogoutOutput() TenantOidcLogoutOutput {
+	return o
+}
+
+func (o TenantOidcLogoutOutput) ToTenantOidcLogoutOutputWithContext(ctx context.Context) TenantOidcLogoutOutput {
+	return o
+}
+
+func (o TenantOidcLogoutOutput) ToTenantOidcLogoutPtrOutput() TenantOidcLogoutPtrOutput {
+	return o.ToTenantOidcLogoutPtrOutputWithContext(context.Background())
+}
+
+func (o TenantOidcLogoutOutput) ToTenantOidcLogoutPtrOutputWithContext(ctx context.Context) TenantOidcLogoutPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantOidcLogout) *TenantOidcLogout {
+		return &v
+	}).(TenantOidcLogoutPtrOutput)
+}
+
+// Enable the end*session*endpoint URL in the .well-known discovery configuration.
+func (o TenantOidcLogoutOutput) RpLogoutEndSessionEndpointDiscovery() pulumi.BoolOutput {
+	return o.ApplyT(func(v TenantOidcLogout) bool { return v.RpLogoutEndSessionEndpointDiscovery }).(pulumi.BoolOutput)
+}
+
+type TenantOidcLogoutPtrOutput struct{ *pulumi.OutputState }
+
+func (TenantOidcLogoutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantOidcLogout)(nil)).Elem()
+}
+
+func (o TenantOidcLogoutPtrOutput) ToTenantOidcLogoutPtrOutput() TenantOidcLogoutPtrOutput {
+	return o
+}
+
+func (o TenantOidcLogoutPtrOutput) ToTenantOidcLogoutPtrOutputWithContext(ctx context.Context) TenantOidcLogoutPtrOutput {
+	return o
+}
+
+func (o TenantOidcLogoutPtrOutput) Elem() TenantOidcLogoutOutput {
+	return o.ApplyT(func(v *TenantOidcLogout) TenantOidcLogout {
+		if v != nil {
+			return *v
+		}
+		var ret TenantOidcLogout
+		return ret
+	}).(TenantOidcLogoutOutput)
+}
+
+// Enable the end*session*endpoint URL in the .well-known discovery configuration.
+func (o TenantOidcLogoutPtrOutput) RpLogoutEndSessionEndpointDiscovery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantOidcLogout) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.RpLogoutEndSessionEndpointDiscovery
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -28396,6 +28885,8 @@ type GetAttackProtectionBreachedPasswordDetection struct {
 	Enabled bool `pulumi:"enabled"`
 	// The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
 	Method string `pulumi:"method"`
+	// Configuration options that apply before every password change attempt.
+	PreChangePasswords []GetAttackProtectionBreachedPasswordDetectionPreChangePassword `pulumi:"preChangePasswords"`
 	// Configuration options that apply before every user registration attempt. Only available on public tenants.
 	PreUserRegistrations []GetAttackProtectionBreachedPasswordDetectionPreUserRegistration `pulumi:"preUserRegistrations"`
 	// Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
@@ -28420,6 +28911,8 @@ type GetAttackProtectionBreachedPasswordDetectionArgs struct {
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
 	Method pulumi.StringInput `pulumi:"method"`
+	// Configuration options that apply before every password change attempt.
+	PreChangePasswords GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayInput `pulumi:"preChangePasswords"`
 	// Configuration options that apply before every user registration attempt. Only available on public tenants.
 	PreUserRegistrations GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayInput `pulumi:"preUserRegistrations"`
 	// Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
@@ -28492,6 +28985,13 @@ func (o GetAttackProtectionBreachedPasswordDetectionOutput) Method() pulumi.Stri
 	return o.ApplyT(func(v GetAttackProtectionBreachedPasswordDetection) string { return v.Method }).(pulumi.StringOutput)
 }
 
+// Configuration options that apply before every password change attempt.
+func (o GetAttackProtectionBreachedPasswordDetectionOutput) PreChangePasswords() GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionBreachedPasswordDetection) []GetAttackProtectionBreachedPasswordDetectionPreChangePassword {
+		return v.PreChangePasswords
+	}).(GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput)
+}
+
 // Configuration options that apply before every user registration attempt. Only available on public tenants.
 func (o GetAttackProtectionBreachedPasswordDetectionOutput) PreUserRegistrations() GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput {
 	return o.ApplyT(func(v GetAttackProtectionBreachedPasswordDetection) []GetAttackProtectionBreachedPasswordDetectionPreUserRegistration {
@@ -28522,6 +29022,103 @@ func (o GetAttackProtectionBreachedPasswordDetectionArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionBreachedPasswordDetection {
 		return vs[0].([]GetAttackProtectionBreachedPasswordDetection)[vs[1].(int)]
 	}).(GetAttackProtectionBreachedPasswordDetectionOutput)
+}
+
+type GetAttackProtectionBreachedPasswordDetectionPreChangePassword struct {
+	// Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
+	Shields []string `pulumi:"shields"`
+}
+
+// GetAttackProtectionBreachedPasswordDetectionPreChangePasswordInput is an input type that accepts GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArgs and GetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput values.
+// You can construct a concrete instance of `GetAttackProtectionBreachedPasswordDetectionPreChangePasswordInput` via:
+//
+//	GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArgs{...}
+type GetAttackProtectionBreachedPasswordDetectionPreChangePasswordInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput() GetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput
+	ToGetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutputWithContext(context.Context) GetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput
+}
+
+type GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArgs struct {
+	// Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
+	Shields pulumi.StringArrayInput `pulumi:"shields"`
+}
+
+func (GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionPreChangePassword)(nil)).Elem()
+}
+
+func (i GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArgs) ToGetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput() GetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput {
+	return i.ToGetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArgs) ToGetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutputWithContext(ctx context.Context) GetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput)
+}
+
+// GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayInput is an input type that accepts GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArray and GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput values.
+// You can construct a concrete instance of `GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayInput` via:
+//
+//	GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArray{ GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArgs{...} }
+type GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput() GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput
+	ToGetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutputWithContext(context.Context) GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput
+}
+
+type GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArray []GetAttackProtectionBreachedPasswordDetectionPreChangePasswordInput
+
+func (GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionBreachedPasswordDetectionPreChangePassword)(nil)).Elem()
+}
+
+func (i GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArray) ToGetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput() GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput {
+	return i.ToGetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArray) ToGetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutputWithContext(ctx context.Context) GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput)
+}
+
+type GetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionPreChangePassword)(nil)).Elem()
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput) ToGetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput() GetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput {
+	return o
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput) ToGetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutputWithContext(ctx context.Context) GetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput {
+	return o
+}
+
+// Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
+func (o GetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput) Shields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionBreachedPasswordDetectionPreChangePassword) []string { return v.Shields }).(pulumi.StringArrayOutput)
+}
+
+type GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionBreachedPasswordDetectionPreChangePassword)(nil)).Elem()
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput) ToGetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput() GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput) ToGetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutputWithContext(ctx context.Context) GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput) Index(i pulumi.IntInput) GetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionBreachedPasswordDetectionPreChangePassword {
+		return vs[0].([]GetAttackProtectionBreachedPasswordDetectionPreChangePassword)[vs[1].(int)]
+	}).(GetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput)
 }
 
 type GetAttackProtectionBreachedPasswordDetectionPreUserRegistration struct {
@@ -37747,6 +38344,8 @@ type GetConnectionOption struct {
 	Configuration map[string]string `pulumi:"configuration"`
 	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 	ConnectionSettings []GetConnectionOptionConnectionSetting `pulumi:"connectionSettings"`
+	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+	CustomHeaders []map[string]string `pulumi:"customHeaders"`
 	// A map of scripts used to integrate with a custom database.
 	CustomScripts map[string]string `pulumi:"customScripts"`
 	// When enabled, additional debug information will be generated.
@@ -37953,6 +38552,8 @@ type GetConnectionOptionArgs struct {
 	Configuration pulumi.StringMapInput `pulumi:"configuration"`
 	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 	ConnectionSettings GetConnectionOptionConnectionSettingArrayInput `pulumi:"connectionSettings"`
+	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+	CustomHeaders pulumi.StringMapArrayInput `pulumi:"customHeaders"`
 	// A map of scripts used to integrate with a custom database.
 	CustomScripts pulumi.StringMapInput `pulumi:"customScripts"`
 	// When enabled, additional debug information will be generated.
@@ -38241,6 +38842,11 @@ func (o GetConnectionOptionOutput) Configuration() pulumi.StringMapOutput {
 // Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 func (o GetConnectionOptionOutput) ConnectionSettings() GetConnectionOptionConnectionSettingArrayOutput {
 	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionConnectionSetting { return v.ConnectionSettings }).(GetConnectionOptionConnectionSettingArrayOutput)
+}
+
+// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+func (o GetConnectionOptionOutput) CustomHeaders() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []map[string]string { return v.CustomHeaders }).(pulumi.StringMapArrayOutput)
 }
 
 // A map of scripts used to integrate with a custom database.
@@ -44907,6 +45513,121 @@ func (o GetSigningKeysSigningKeyArrayOutput) Index(i pulumi.IntInput) GetSigning
 	}).(GetSigningKeysSigningKeyOutput)
 }
 
+type GetTenantErrorPage struct {
+	// Custom Error HTML (Liquid syntax is supported)
+	Html string `pulumi:"html"`
+	// Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+	ShowLogLink bool `pulumi:"showLogLink"`
+	// URL to redirect to when an error occurs instead of showing the default error page
+	Url string `pulumi:"url"`
+}
+
+// GetTenantErrorPageInput is an input type that accepts GetTenantErrorPageArgs and GetTenantErrorPageOutput values.
+// You can construct a concrete instance of `GetTenantErrorPageInput` via:
+//
+//	GetTenantErrorPageArgs{...}
+type GetTenantErrorPageInput interface {
+	pulumi.Input
+
+	ToGetTenantErrorPageOutput() GetTenantErrorPageOutput
+	ToGetTenantErrorPageOutputWithContext(context.Context) GetTenantErrorPageOutput
+}
+
+type GetTenantErrorPageArgs struct {
+	// Custom Error HTML (Liquid syntax is supported)
+	Html pulumi.StringInput `pulumi:"html"`
+	// Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+	ShowLogLink pulumi.BoolInput `pulumi:"showLogLink"`
+	// URL to redirect to when an error occurs instead of showing the default error page
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetTenantErrorPageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantErrorPage)(nil)).Elem()
+}
+
+func (i GetTenantErrorPageArgs) ToGetTenantErrorPageOutput() GetTenantErrorPageOutput {
+	return i.ToGetTenantErrorPageOutputWithContext(context.Background())
+}
+
+func (i GetTenantErrorPageArgs) ToGetTenantErrorPageOutputWithContext(ctx context.Context) GetTenantErrorPageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantErrorPageOutput)
+}
+
+// GetTenantErrorPageArrayInput is an input type that accepts GetTenantErrorPageArray and GetTenantErrorPageArrayOutput values.
+// You can construct a concrete instance of `GetTenantErrorPageArrayInput` via:
+//
+//	GetTenantErrorPageArray{ GetTenantErrorPageArgs{...} }
+type GetTenantErrorPageArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantErrorPageArrayOutput() GetTenantErrorPageArrayOutput
+	ToGetTenantErrorPageArrayOutputWithContext(context.Context) GetTenantErrorPageArrayOutput
+}
+
+type GetTenantErrorPageArray []GetTenantErrorPageInput
+
+func (GetTenantErrorPageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantErrorPage)(nil)).Elem()
+}
+
+func (i GetTenantErrorPageArray) ToGetTenantErrorPageArrayOutput() GetTenantErrorPageArrayOutput {
+	return i.ToGetTenantErrorPageArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantErrorPageArray) ToGetTenantErrorPageArrayOutputWithContext(ctx context.Context) GetTenantErrorPageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantErrorPageArrayOutput)
+}
+
+type GetTenantErrorPageOutput struct{ *pulumi.OutputState }
+
+func (GetTenantErrorPageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantErrorPage)(nil)).Elem()
+}
+
+func (o GetTenantErrorPageOutput) ToGetTenantErrorPageOutput() GetTenantErrorPageOutput {
+	return o
+}
+
+func (o GetTenantErrorPageOutput) ToGetTenantErrorPageOutputWithContext(ctx context.Context) GetTenantErrorPageOutput {
+	return o
+}
+
+// Custom Error HTML (Liquid syntax is supported)
+func (o GetTenantErrorPageOutput) Html() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTenantErrorPage) string { return v.Html }).(pulumi.StringOutput)
+}
+
+// Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+func (o GetTenantErrorPageOutput) ShowLogLink() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantErrorPage) bool { return v.ShowLogLink }).(pulumi.BoolOutput)
+}
+
+// URL to redirect to when an error occurs instead of showing the default error page
+func (o GetTenantErrorPageOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTenantErrorPage) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetTenantErrorPageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantErrorPageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantErrorPage)(nil)).Elem()
+}
+
+func (o GetTenantErrorPageArrayOutput) ToGetTenantErrorPageArrayOutput() GetTenantErrorPageArrayOutput {
+	return o
+}
+
+func (o GetTenantErrorPageArrayOutput) ToGetTenantErrorPageArrayOutputWithContext(ctx context.Context) GetTenantErrorPageArrayOutput {
+	return o
+}
+
+func (o GetTenantErrorPageArrayOutput) Index(i pulumi.IntInput) GetTenantErrorPageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantErrorPage {
+		return vs[0].([]GetTenantErrorPage)[vs[1].(int)]
+	}).(GetTenantErrorPageOutput)
+}
+
 type GetTenantFlag struct {
 	// Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
 	AllowLegacyDelegationGrantTypes bool `pulumi:"allowLegacyDelegationGrantTypes"`
@@ -45326,6 +46047,103 @@ func (o GetTenantMtlArrayOutput) Index(i pulumi.IntInput) GetTenantMtlOutput {
 	}).(GetTenantMtlOutput)
 }
 
+type GetTenantOidcLogout struct {
+	// Enable the endSessionEndpoint URL in the .well-known discovery configuration.
+	RpLogoutEndSessionEndpointDiscovery bool `pulumi:"rpLogoutEndSessionEndpointDiscovery"`
+}
+
+// GetTenantOidcLogoutInput is an input type that accepts GetTenantOidcLogoutArgs and GetTenantOidcLogoutOutput values.
+// You can construct a concrete instance of `GetTenantOidcLogoutInput` via:
+//
+//	GetTenantOidcLogoutArgs{...}
+type GetTenantOidcLogoutInput interface {
+	pulumi.Input
+
+	ToGetTenantOidcLogoutOutput() GetTenantOidcLogoutOutput
+	ToGetTenantOidcLogoutOutputWithContext(context.Context) GetTenantOidcLogoutOutput
+}
+
+type GetTenantOidcLogoutArgs struct {
+	// Enable the endSessionEndpoint URL in the .well-known discovery configuration.
+	RpLogoutEndSessionEndpointDiscovery pulumi.BoolInput `pulumi:"rpLogoutEndSessionEndpointDiscovery"`
+}
+
+func (GetTenantOidcLogoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantOidcLogout)(nil)).Elem()
+}
+
+func (i GetTenantOidcLogoutArgs) ToGetTenantOidcLogoutOutput() GetTenantOidcLogoutOutput {
+	return i.ToGetTenantOidcLogoutOutputWithContext(context.Background())
+}
+
+func (i GetTenantOidcLogoutArgs) ToGetTenantOidcLogoutOutputWithContext(ctx context.Context) GetTenantOidcLogoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantOidcLogoutOutput)
+}
+
+// GetTenantOidcLogoutArrayInput is an input type that accepts GetTenantOidcLogoutArray and GetTenantOidcLogoutArrayOutput values.
+// You can construct a concrete instance of `GetTenantOidcLogoutArrayInput` via:
+//
+//	GetTenantOidcLogoutArray{ GetTenantOidcLogoutArgs{...} }
+type GetTenantOidcLogoutArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantOidcLogoutArrayOutput() GetTenantOidcLogoutArrayOutput
+	ToGetTenantOidcLogoutArrayOutputWithContext(context.Context) GetTenantOidcLogoutArrayOutput
+}
+
+type GetTenantOidcLogoutArray []GetTenantOidcLogoutInput
+
+func (GetTenantOidcLogoutArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantOidcLogout)(nil)).Elem()
+}
+
+func (i GetTenantOidcLogoutArray) ToGetTenantOidcLogoutArrayOutput() GetTenantOidcLogoutArrayOutput {
+	return i.ToGetTenantOidcLogoutArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantOidcLogoutArray) ToGetTenantOidcLogoutArrayOutputWithContext(ctx context.Context) GetTenantOidcLogoutArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantOidcLogoutArrayOutput)
+}
+
+type GetTenantOidcLogoutOutput struct{ *pulumi.OutputState }
+
+func (GetTenantOidcLogoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantOidcLogout)(nil)).Elem()
+}
+
+func (o GetTenantOidcLogoutOutput) ToGetTenantOidcLogoutOutput() GetTenantOidcLogoutOutput {
+	return o
+}
+
+func (o GetTenantOidcLogoutOutput) ToGetTenantOidcLogoutOutputWithContext(ctx context.Context) GetTenantOidcLogoutOutput {
+	return o
+}
+
+// Enable the endSessionEndpoint URL in the .well-known discovery configuration.
+func (o GetTenantOidcLogoutOutput) RpLogoutEndSessionEndpointDiscovery() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantOidcLogout) bool { return v.RpLogoutEndSessionEndpointDiscovery }).(pulumi.BoolOutput)
+}
+
+type GetTenantOidcLogoutArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantOidcLogoutArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantOidcLogout)(nil)).Elem()
+}
+
+func (o GetTenantOidcLogoutArrayOutput) ToGetTenantOidcLogoutArrayOutput() GetTenantOidcLogoutArrayOutput {
+	return o
+}
+
+func (o GetTenantOidcLogoutArrayOutput) ToGetTenantOidcLogoutArrayOutputWithContext(ctx context.Context) GetTenantOidcLogoutArrayOutput {
+	return o
+}
+
+func (o GetTenantOidcLogoutArrayOutput) Index(i pulumi.IntInput) GetTenantOidcLogoutOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantOidcLogout {
+		return vs[0].([]GetTenantOidcLogout)[vs[1].(int)]
+	}).(GetTenantOidcLogoutOutput)
+}
+
 type GetTenantSession struct {
 	// When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
 	OidcLogoutPromptEnabled bool `pulumi:"oidcLogoutPromptEnabled"`
@@ -45653,6 +46471,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSupportedTriggersPtrInput)(nil)).Elem(), ActionSupportedTriggersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionInput)(nil)).Elem(), AttackProtectionBreachedPasswordDetectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionPtrInput)(nil)).Elem(), AttackProtectionBreachedPasswordDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionPreChangePasswordInput)(nil)).Elem(), AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrInput)(nil)).Elem(), AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionPreUserRegistrationInput)(nil)).Elem(), AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrInput)(nil)).Elem(), AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBruteForceProtectionInput)(nil)).Elem(), AttackProtectionBruteForceProtectionArgs{})
@@ -45942,10 +46762,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SelfServiceProfileBrandingColorsPtrInput)(nil)).Elem(), SelfServiceProfileBrandingColorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SelfServiceProfileUserAttributeInput)(nil)).Elem(), SelfServiceProfileUserAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SelfServiceProfileUserAttributeArrayInput)(nil)).Elem(), SelfServiceProfileUserAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantErrorPageInput)(nil)).Elem(), TenantErrorPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantErrorPagePtrInput)(nil)).Elem(), TenantErrorPageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantFlagsInput)(nil)).Elem(), TenantFlagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantFlagsPtrInput)(nil)).Elem(), TenantFlagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantMtlsInput)(nil)).Elem(), TenantMtlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantMtlsPtrInput)(nil)).Elem(), TenantMtlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantOidcLogoutInput)(nil)).Elem(), TenantOidcLogoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantOidcLogoutPtrInput)(nil)).Elem(), TenantOidcLogoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantSessionCookieInput)(nil)).Elem(), TenantSessionCookieArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantSessionCookiePtrInput)(nil)).Elem(), TenantSessionCookieArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantSessionsInput)(nil)).Elem(), TenantSessionsArgs{})
@@ -45962,6 +46786,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionSupportedTriggerArrayInput)(nil)).Elem(), GetActionSupportedTriggerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionArrayInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionPreChangePasswordInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBruteForceProtectionInput)(nil)).Elem(), GetAttackProtectionBruteForceProtectionArgs{})
@@ -46230,10 +47056,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileUserAttributeArrayInput)(nil)).Elem(), GetSelfServiceProfileUserAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSigningKeysSigningKeyInput)(nil)).Elem(), GetSigningKeysSigningKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSigningKeysSigningKeyArrayInput)(nil)).Elem(), GetSigningKeysSigningKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantErrorPageInput)(nil)).Elem(), GetTenantErrorPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantErrorPageArrayInput)(nil)).Elem(), GetTenantErrorPageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantFlagInput)(nil)).Elem(), GetTenantFlagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantFlagArrayInput)(nil)).Elem(), GetTenantFlagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantMtlInput)(nil)).Elem(), GetTenantMtlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantMtlArrayInput)(nil)).Elem(), GetTenantMtlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantOidcLogoutInput)(nil)).Elem(), GetTenantOidcLogoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantOidcLogoutArrayInput)(nil)).Elem(), GetTenantOidcLogoutArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionInput)(nil)).Elem(), GetTenantSessionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionArrayInput)(nil)).Elem(), GetTenantSessionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionCookyInput)(nil)).Elem(), GetTenantSessionCookyArgs{})
@@ -46248,6 +47078,8 @@ func init() {
 	pulumi.RegisterOutputType(ActionSupportedTriggersPtrOutput{})
 	pulumi.RegisterOutputType(AttackProtectionBreachedPasswordDetectionOutput{})
 	pulumi.RegisterOutputType(AttackProtectionBreachedPasswordDetectionPtrOutput{})
+	pulumi.RegisterOutputType(AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput{})
+	pulumi.RegisterOutputType(AttackProtectionBreachedPasswordDetectionPreChangePasswordPtrOutput{})
 	pulumi.RegisterOutputType(AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput{})
 	pulumi.RegisterOutputType(AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput{})
 	pulumi.RegisterOutputType(AttackProtectionBruteForceProtectionOutput{})
@@ -46537,10 +47369,14 @@ func init() {
 	pulumi.RegisterOutputType(SelfServiceProfileBrandingColorsPtrOutput{})
 	pulumi.RegisterOutputType(SelfServiceProfileUserAttributeOutput{})
 	pulumi.RegisterOutputType(SelfServiceProfileUserAttributeArrayOutput{})
+	pulumi.RegisterOutputType(TenantErrorPageOutput{})
+	pulumi.RegisterOutputType(TenantErrorPagePtrOutput{})
 	pulumi.RegisterOutputType(TenantFlagsOutput{})
 	pulumi.RegisterOutputType(TenantFlagsPtrOutput{})
 	pulumi.RegisterOutputType(TenantMtlsOutput{})
 	pulumi.RegisterOutputType(TenantMtlsPtrOutput{})
+	pulumi.RegisterOutputType(TenantOidcLogoutOutput{})
+	pulumi.RegisterOutputType(TenantOidcLogoutPtrOutput{})
 	pulumi.RegisterOutputType(TenantSessionCookieOutput{})
 	pulumi.RegisterOutputType(TenantSessionCookiePtrOutput{})
 	pulumi.RegisterOutputType(TenantSessionsOutput{})
@@ -46557,6 +47393,8 @@ func init() {
 	pulumi.RegisterOutputType(GetActionSupportedTriggerArrayOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArrayOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBruteForceProtectionOutput{})
@@ -46825,10 +47663,14 @@ func init() {
 	pulumi.RegisterOutputType(GetSelfServiceProfileUserAttributeArrayOutput{})
 	pulumi.RegisterOutputType(GetSigningKeysSigningKeyOutput{})
 	pulumi.RegisterOutputType(GetSigningKeysSigningKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantErrorPageOutput{})
+	pulumi.RegisterOutputType(GetTenantErrorPageArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantFlagOutput{})
 	pulumi.RegisterOutputType(GetTenantFlagArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantMtlOutput{})
 	pulumi.RegisterOutputType(GetTenantMtlArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantOidcLogoutOutput{})
+	pulumi.RegisterOutputType(GetTenantOidcLogoutArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantSessionOutput{})
 	pulumi.RegisterOutputType(GetTenantSessionArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantSessionCookyOutput{})
