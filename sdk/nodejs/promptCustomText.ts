@@ -50,8 +50,6 @@ import * as utilities from "./utilities";
  *
  * <prompt>::<language>
  *
- * # 
- *
  * Example
  *
  * ```sh

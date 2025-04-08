@@ -79,8 +79,6 @@ import (
 //
 // <prompt>::<language>
 //
-// #
-//
 // # Example
 //
 // ```sh

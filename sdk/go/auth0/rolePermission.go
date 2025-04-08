@@ -26,8 +26,6 @@ import (
 //
 // <roleID>::<resourceServerIdentifier>::<permission>
 //
-// #
-//
 // Example:
 //
 // ```sh

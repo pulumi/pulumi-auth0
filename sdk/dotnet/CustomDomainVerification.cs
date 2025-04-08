@@ -16,8 +16,6 @@ namespace Pulumi.Auth0
     /// 
     /// You can import this resource using the custom domain ID.
     /// 
-    /// # 
-    /// 
     /// Example:
     /// 
     /// ```sh

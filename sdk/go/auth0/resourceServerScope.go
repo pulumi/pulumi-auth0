@@ -67,8 +67,6 @@ import (
 //
 // <resourceServerIdentifier>::<scope>
 //
-// #
-//
 // Example:
 //
 // ```sh

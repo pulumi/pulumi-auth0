@@ -83,8 +83,6 @@ import javax.annotation.Nullable;
  * 
  * &lt;trigger&gt;::&lt;actionID&gt;
  * 
- * # 
- * 
  * Example:
  * 
  * ```sh

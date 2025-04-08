@@ -53,8 +53,6 @@ import (
 //
 // Existing rule configs can be imported using their key name.
 //
-// #
-//
 // Example:
 //
 // ```sh

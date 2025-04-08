@@ -65,8 +65,6 @@ namespace Pulumi.Auth0
     /// 
     /// &lt;prompt&gt;::&lt;language&gt;
     /// 
-    /// # 
-    /// 
     /// Example
     /// 
     /// ```sh

@@ -80,8 +80,6 @@ import javax.annotation.Nullable;
  * 
  * &lt;organizationID&gt;::&lt;userID&gt;
  * 
- * # 
- * 
  * Example:
  * 
  * ```sh

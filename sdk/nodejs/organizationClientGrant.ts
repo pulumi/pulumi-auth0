@@ -70,8 +70,6 @@ import * as utilities from "./utilities";
  *
  * <organizationID>::<clientGrantID>
  *
- * # 
- *
  * Example:
  *
  * ```sh

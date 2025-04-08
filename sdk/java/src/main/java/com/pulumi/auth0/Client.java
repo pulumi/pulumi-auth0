@@ -32,8 +32,6 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported by specifying the client ID.
  * 
- * # 
- * 
  * Example:
  * 
  * ```sh

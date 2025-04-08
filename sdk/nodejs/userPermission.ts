@@ -19,8 +19,6 @@ import * as utilities from "./utilities";
  *
  * <userID>::<resourceServerIdentifier>::<permission>
  *
- * # 
- *
  * Example:
  *
  * ```sh

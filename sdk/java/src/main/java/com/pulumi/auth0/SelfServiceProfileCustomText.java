@@ -66,8 +66,6 @@ import javax.annotation.Nullable;
  * 
  * &lt;sso-profile-id&gt;::&lt;language&gt;::&lt;page&gt;
  * 
- * # 
- * 
  * Example
  * 
  * ```sh

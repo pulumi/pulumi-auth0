@@ -45,8 +45,6 @@ namespace Pulumi.Auth0
     /// 
     /// &lt;sso-profile-id&gt;::&lt;language&gt;::&lt;page&gt;
     /// 
-    /// # 
-    /// 
     /// Example
     /// 
     /// ```sh

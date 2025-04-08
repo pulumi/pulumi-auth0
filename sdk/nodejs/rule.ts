@@ -29,8 +29,6 @@ import * as utilities from "./utilities";
  *
  * Existing rules can be imported using their ID.
  *
- * # 
- *
  * Example:
  *
  * ```sh
