@@ -69,8 +69,6 @@ import (
 //
 // <organizationID>::<userID>
 //
-// #
-//
 // Example:
 //
 // ```sh

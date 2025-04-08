@@ -102,8 +102,6 @@ import (
 //
 // <organizationID>::<clientGrantID>
 //
-// #
-//
 // Example:
 //
 // ```sh

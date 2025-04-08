@@ -85,8 +85,6 @@ import javax.annotation.Nullable;
  * 
  * &lt;prompt&gt;::&lt;language&gt;
  * 
- * # 
- * 
  * Example
  * 
  * ```sh

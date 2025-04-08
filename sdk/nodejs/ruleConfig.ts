@@ -31,8 +31,6 @@ import * as utilities from "./utilities";
  *
  * Existing rule configs can be imported using their key name.
  *
- * # 
- *
  * Example:
  *
  * ```sh

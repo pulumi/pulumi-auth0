@@ -26,8 +26,6 @@ import (
 //
 // <userID>::<resourceServerIdentifier>::<permission>
 //
-// #
-//
 // Example:
 //
 // ```sh

@@ -13,8 +13,6 @@ import * as utilities from "./utilities";
  *
  * You can find this within the Management Dashboard in Application -> APIs -> Expand the required API.
  *
- * # 
- *
  * Example:
  *
  * ```sh

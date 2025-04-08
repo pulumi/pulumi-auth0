@@ -31,8 +31,6 @@ import * as utilities from "./utilities";
  *
  * <sso-profile-id>::<language>::<page>
  *
- * # 
- *
  * Example
  *
  * ```sh

@@ -46,8 +46,6 @@ import * as utilities from "./utilities";
  *
  * <organizationID>::<userID>
  *
- * # 
- *
  * Example:
  *
  * ```sh

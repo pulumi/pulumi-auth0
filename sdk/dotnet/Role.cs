@@ -35,8 +35,6 @@ namespace Pulumi.Auth0
     /// 
     /// Existing roles can be imported using their ID.
     /// 
-    /// # 
-    /// 
     /// Example:
     /// 
     /// ```sh

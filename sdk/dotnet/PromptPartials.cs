@@ -43,8 +43,6 @@ namespace Pulumi.Auth0
     /// 
     /// This resource can be imported using the prompt name.
     /// 
-    /// # 
-    /// 
     /// Example:
     /// 
     /// ```sh

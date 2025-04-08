@@ -107,8 +107,6 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported by specifying the connection ID &lt;connectionID&gt;
  * 
- * # 
- * 
  * Example:
  * 
  * ```sh

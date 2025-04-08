@@ -69,8 +69,6 @@ import (
 //
 // <connectionID>::<clientID>
 //
-// #
-//
 // Example:
 //
 // ```sh

@@ -23,8 +23,6 @@ import (
 //
 // This resource can be imported by specifying the action ID.
 //
-// #
-//
 // Example:
 //
 // ```sh

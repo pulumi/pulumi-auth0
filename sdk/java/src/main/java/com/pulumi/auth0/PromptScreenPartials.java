@@ -90,8 +90,6 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported using the prompt name.
  * 
- * # 
- * 
  * Example:
  * 
  * ```sh

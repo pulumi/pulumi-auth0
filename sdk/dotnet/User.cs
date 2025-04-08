@@ -42,8 +42,6 @@ namespace Pulumi.Auth0
     /// 
     /// This resource can be imported using the user ID.
     /// 
-    /// # 
-    /// 
     /// Example:
     /// 
     /// ```sh

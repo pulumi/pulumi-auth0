@@ -104,7 +104,8 @@ import javax.annotation.Nullable;
  *                     "text",
  *                     "voice")
  *                 .build())
- *             .credentials()
+ *             .credentials(PhoneProviderCredentialsArgs.builder()
+ *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(sendCustomPhone)
  *                 .build());
@@ -118,8 +119,6 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * This resource can be imported by specifying the phone Provider ID.
- * 
- * # 
  * 
  * Example:
  * 
