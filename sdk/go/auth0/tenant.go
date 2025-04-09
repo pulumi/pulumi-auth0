@@ -58,6 +58,11 @@ import (
 //				Sessions: &auth0.TenantSessionsArgs{
 //					OidcLogoutPromptEnabled: pulumi.Bool(false),
 //				},
+//				ErrorPage: &auth0.TenantErrorPageArgs{
+//					Html:        pulumi.String("<html></html>"),
+//					ShowLogLink: pulumi.Bool(false),
+//					Url:         pulumi.String("https://example.com/error"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -102,6 +107,8 @@ type Tenant struct {
 	DisableAcrValuesSupported pulumi.BoolOutput `pulumi:"disableAcrValuesSupported"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales pulumi.StringArrayOutput `pulumi:"enabledLocales"`
+	// Configuration for the error page
+	ErrorPage TenantErrorPagePtrOutput `pulumi:"errorPage"`
 	// Configuration settings for tenant flags.
 	Flags TenantFlagsOutput `pulumi:"flags"`
 	// Friendly name for the tenant.
@@ -110,6 +117,8 @@ type Tenant struct {
 	IdleSessionLifetime pulumi.Float64PtrOutput `pulumi:"idleSessionLifetime"`
 	// Configuration for mTLS.
 	Mtls TenantMtlsOutput `pulumi:"mtls"`
+	// Settings related to OIDC RP-initiated Logout.
+	OidcLogout TenantOidcLogoutOutput `pulumi:"oidcLogout"`
 	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl pulumi.StringOutput `pulumi:"pictureUrl"`
 	// Enable pushed authorization requests.
@@ -176,6 +185,8 @@ type tenantState struct {
 	DisableAcrValuesSupported *bool `pulumi:"disableAcrValuesSupported"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales []string `pulumi:"enabledLocales"`
+	// Configuration for the error page
+	ErrorPage *TenantErrorPage `pulumi:"errorPage"`
 	// Configuration settings for tenant flags.
 	Flags *TenantFlags `pulumi:"flags"`
 	// Friendly name for the tenant.
@@ -184,6 +195,8 @@ type tenantState struct {
 	IdleSessionLifetime *float64 `pulumi:"idleSessionLifetime"`
 	// Configuration for mTLS.
 	Mtls *TenantMtls `pulumi:"mtls"`
+	// Settings related to OIDC RP-initiated Logout.
+	OidcLogout *TenantOidcLogout `pulumi:"oidcLogout"`
 	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl *string `pulumi:"pictureUrl"`
 	// Enable pushed authorization requests.
@@ -221,6 +234,8 @@ type TenantState struct {
 	DisableAcrValuesSupported pulumi.BoolPtrInput
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales pulumi.StringArrayInput
+	// Configuration for the error page
+	ErrorPage TenantErrorPagePtrInput
 	// Configuration settings for tenant flags.
 	Flags TenantFlagsPtrInput
 	// Friendly name for the tenant.
@@ -229,6 +244,8 @@ type TenantState struct {
 	IdleSessionLifetime pulumi.Float64PtrInput
 	// Configuration for mTLS.
 	Mtls TenantMtlsPtrInput
+	// Settings related to OIDC RP-initiated Logout.
+	OidcLogout TenantOidcLogoutPtrInput
 	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl pulumi.StringPtrInput
 	// Enable pushed authorization requests.
@@ -270,6 +287,8 @@ type tenantArgs struct {
 	DisableAcrValuesSupported *bool `pulumi:"disableAcrValuesSupported"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales []string `pulumi:"enabledLocales"`
+	// Configuration for the error page
+	ErrorPage *TenantErrorPage `pulumi:"errorPage"`
 	// Configuration settings for tenant flags.
 	Flags *TenantFlags `pulumi:"flags"`
 	// Friendly name for the tenant.
@@ -278,6 +297,8 @@ type tenantArgs struct {
 	IdleSessionLifetime *float64 `pulumi:"idleSessionLifetime"`
 	// Configuration for mTLS.
 	Mtls *TenantMtls `pulumi:"mtls"`
+	// Settings related to OIDC RP-initiated Logout.
+	OidcLogout *TenantOidcLogout `pulumi:"oidcLogout"`
 	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl *string `pulumi:"pictureUrl"`
 	// Enable pushed authorization requests.
@@ -316,6 +337,8 @@ type TenantArgs struct {
 	DisableAcrValuesSupported pulumi.BoolPtrInput
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales pulumi.StringArrayInput
+	// Configuration for the error page
+	ErrorPage TenantErrorPagePtrInput
 	// Configuration settings for tenant flags.
 	Flags TenantFlagsPtrInput
 	// Friendly name for the tenant.
@@ -324,6 +347,8 @@ type TenantArgs struct {
 	IdleSessionLifetime pulumi.Float64PtrInput
 	// Configuration for mTLS.
 	Mtls TenantMtlsPtrInput
+	// Settings related to OIDC RP-initiated Logout.
+	OidcLogout TenantOidcLogoutPtrInput
 	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl pulumi.StringPtrInput
 	// Enable pushed authorization requests.
@@ -474,6 +499,11 @@ func (o TenantOutput) EnabledLocales() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringArrayOutput { return v.EnabledLocales }).(pulumi.StringArrayOutput)
 }
 
+// Configuration for the error page
+func (o TenantOutput) ErrorPage() TenantErrorPagePtrOutput {
+	return o.ApplyT(func(v *Tenant) TenantErrorPagePtrOutput { return v.ErrorPage }).(TenantErrorPagePtrOutput)
+}
+
 // Configuration settings for tenant flags.
 func (o TenantOutput) Flags() TenantFlagsOutput {
 	return o.ApplyT(func(v *Tenant) TenantFlagsOutput { return v.Flags }).(TenantFlagsOutput)
@@ -492,6 +522,11 @@ func (o TenantOutput) IdleSessionLifetime() pulumi.Float64PtrOutput {
 // Configuration for mTLS.
 func (o TenantOutput) Mtls() TenantMtlsOutput {
 	return o.ApplyT(func(v *Tenant) TenantMtlsOutput { return v.Mtls }).(TenantMtlsOutput)
+}
+
+// Settings related to OIDC RP-initiated Logout.
+func (o TenantOutput) OidcLogout() TenantOidcLogoutOutput {
+	return o.ApplyT(func(v *Tenant) TenantOidcLogoutOutput { return v.OidcLogout }).(TenantOidcLogoutOutput)
 }
 
 // URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.

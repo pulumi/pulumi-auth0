@@ -28,7 +28,7 @@ class GetTenantResult:
     """
     A collection of values returned by getTenant.
     """
-    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, disable_acr_values_supported=None, domain=None, enabled_locales=None, flags=None, friendly_name=None, id=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, picture_url=None, pushed_authorization_requests_supported=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, support_email=None, support_url=None):
+    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, disable_acr_values_supported=None, domain=None, enabled_locales=None, error_pages=None, flags=None, friendly_name=None, id=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, oidc_logouts=None, picture_url=None, pushed_authorization_requests_supported=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, support_email=None, support_url=None):
         if acr_values_supporteds and not isinstance(acr_values_supporteds, list):
             raise TypeError("Expected argument 'acr_values_supporteds' to be a list")
         pulumi.set(__self__, "acr_values_supporteds", acr_values_supporteds)
@@ -59,6 +59,9 @@ class GetTenantResult:
         if enabled_locales and not isinstance(enabled_locales, list):
             raise TypeError("Expected argument 'enabled_locales' to be a list")
         pulumi.set(__self__, "enabled_locales", enabled_locales)
+        if error_pages and not isinstance(error_pages, list):
+            raise TypeError("Expected argument 'error_pages' to be a list")
+        pulumi.set(__self__, "error_pages", error_pages)
         if flags and not isinstance(flags, list):
             raise TypeError("Expected argument 'flags' to be a list")
         pulumi.set(__self__, "flags", flags)
@@ -77,6 +80,9 @@ class GetTenantResult:
         if mtls and not isinstance(mtls, list):
             raise TypeError("Expected argument 'mtls' to be a list")
         pulumi.set(__self__, "mtls", mtls)
+        if oidc_logouts and not isinstance(oidc_logouts, list):
+            raise TypeError("Expected argument 'oidc_logouts' to be a list")
+        pulumi.set(__self__, "oidc_logouts", oidc_logouts)
         if picture_url and not isinstance(picture_url, str):
             raise TypeError("Expected argument 'picture_url' to be a str")
         pulumi.set(__self__, "picture_url", picture_url)
@@ -183,6 +189,14 @@ class GetTenantResult:
         return pulumi.get(self, "enabled_locales")
 
     @property
+    @pulumi.getter(name="errorPages")
+    def error_pages(self) -> Sequence['outputs.GetTenantErrorPageResult']:
+        """
+        Configuration for the error page
+        """
+        return pulumi.get(self, "error_pages")
+
+    @property
     @pulumi.getter
     def flags(self) -> Sequence['outputs.GetTenantFlagResult']:
         """
@@ -229,6 +243,14 @@ class GetTenantResult:
         Configuration for mTLS.
         """
         return pulumi.get(self, "mtls")
+
+    @property
+    @pulumi.getter(name="oidcLogouts")
+    def oidc_logouts(self) -> Sequence['outputs.GetTenantOidcLogoutResult']:
+        """
+        Settings related to OIDC RP-initiated Logout.
+        """
+        return pulumi.get(self, "oidc_logouts")
 
     @property
     @pulumi.getter(name="pictureUrl")
@@ -311,12 +333,14 @@ class AwaitableGetTenantResult(GetTenantResult):
             disable_acr_values_supported=self.disable_acr_values_supported,
             domain=self.domain,
             enabled_locales=self.enabled_locales,
+            error_pages=self.error_pages,
             flags=self.flags,
             friendly_name=self.friendly_name,
             id=self.id,
             idle_session_lifetime=self.idle_session_lifetime,
             management_api_identifier=self.management_api_identifier,
             mtls=self.mtls,
+            oidc_logouts=self.oidc_logouts,
             picture_url=self.picture_url,
             pushed_authorization_requests_supported=self.pushed_authorization_requests_supported,
             sandbox_version=self.sandbox_version,
@@ -355,12 +379,14 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
         disable_acr_values_supported=pulumi.get(__ret__, 'disable_acr_values_supported'),
         domain=pulumi.get(__ret__, 'domain'),
         enabled_locales=pulumi.get(__ret__, 'enabled_locales'),
+        error_pages=pulumi.get(__ret__, 'error_pages'),
         flags=pulumi.get(__ret__, 'flags'),
         friendly_name=pulumi.get(__ret__, 'friendly_name'),
         id=pulumi.get(__ret__, 'id'),
         idle_session_lifetime=pulumi.get(__ret__, 'idle_session_lifetime'),
         management_api_identifier=pulumi.get(__ret__, 'management_api_identifier'),
         mtls=pulumi.get(__ret__, 'mtls'),
+        oidc_logouts=pulumi.get(__ret__, 'oidc_logouts'),
         picture_url=pulumi.get(__ret__, 'picture_url'),
         pushed_authorization_requests_supported=pulumi.get(__ret__, 'pushed_authorization_requests_supported'),
         sandbox_version=pulumi.get(__ret__, 'sandbox_version'),
@@ -396,12 +422,14 @@ def get_tenant_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOu
         disable_acr_values_supported=pulumi.get(__response__, 'disable_acr_values_supported'),
         domain=pulumi.get(__response__, 'domain'),
         enabled_locales=pulumi.get(__response__, 'enabled_locales'),
+        error_pages=pulumi.get(__response__, 'error_pages'),
         flags=pulumi.get(__response__, 'flags'),
         friendly_name=pulumi.get(__response__, 'friendly_name'),
         id=pulumi.get(__response__, 'id'),
         idle_session_lifetime=pulumi.get(__response__, 'idle_session_lifetime'),
         management_api_identifier=pulumi.get(__response__, 'management_api_identifier'),
         mtls=pulumi.get(__response__, 'mtls'),
+        oidc_logouts=pulumi.get(__response__, 'oidc_logouts'),
         picture_url=pulumi.get(__response__, 'picture_url'),
         pushed_authorization_requests_supported=pulumi.get(__response__, 'pushed_authorization_requests_supported'),
         sandbox_version=pulumi.get(__response__, 'sandbox_version'),

@@ -69,6 +69,10 @@ export interface GetTenantResult {
      */
     readonly enabledLocales: string[];
     /**
+     * Configuration for the error page
+     */
+    readonly errorPages: outputs.GetTenantErrorPage[];
+    /**
      * Configuration settings for tenant flags.
      */
     readonly flags: outputs.GetTenantFlag[];
@@ -92,6 +96,10 @@ export interface GetTenantResult {
      * Configuration for mTLS.
      */
     readonly mtls: outputs.GetTenantMtl[];
+    /**
+     * Settings related to OIDC RP-initiated Logout.
+     */
+    readonly oidcLogouts: outputs.GetTenantOidcLogout[];
     /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
