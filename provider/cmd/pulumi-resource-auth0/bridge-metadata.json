@@ -27,6 +27,16 @@
                                 "admin_notification_frequency": {
                                     "maxItemsOne": false
                                 },
+                                "pre_change_password": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "shields": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "pre_user_registration": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -516,6 +526,9 @@
                                 "connection_settings": {
                                     "maxItemsOne": true
                                 },
+                                "custom_headers": {
+                                    "maxItemsOne": false
+                                },
                                 "decryption_key": {
                                     "maxItemsOne": true
                                 },
@@ -993,10 +1006,16 @@
                     "enabled_locales": {
                         "maxItemsOne": false
                     },
+                    "error_page": {
+                        "maxItemsOne": true
+                    },
                     "flags": {
                         "maxItemsOne": true
                     },
                     "mtls": {
+                        "maxItemsOne": true
+                    },
+                    "oidc_logout": {
                         "maxItemsOne": true
                     },
                     "session_cookie": {
@@ -1081,6 +1100,16 @@
                             "fields": {
                                 "admin_notification_frequency": {
                                     "maxItemsOne": false
+                                },
+                                "pre_change_password": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "shields": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "pre_user_registration": {
                                     "maxItemsOne": false,
@@ -1630,6 +1659,9 @@
                                 "connection_settings": {
                                     "maxItemsOne": false
                                 },
+                                "custom_headers": {
+                                    "maxItemsOne": false
+                                },
                                 "decryption_key": {
                                     "maxItemsOne": false
                                 },
@@ -1912,10 +1944,16 @@
                     "enabled_locales": {
                         "maxItemsOne": false
                     },
+                    "error_page": {
+                        "maxItemsOne": false
+                    },
                     "flags": {
                         "maxItemsOne": false
                     },
                     "mtls": {
+                        "maxItemsOne": false
+                    },
+                    "oidc_logout": {
                         "maxItemsOne": false
                     },
                     "session_cookie": {
