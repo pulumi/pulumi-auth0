@@ -52,11 +52,22 @@ export interface AttackProtectionBreachedPasswordDetection {
      */
     method: string;
     /**
+     * Configuration options that apply before every password change attempt.
+     */
+    preChangePassword: outputs.AttackProtectionBreachedPasswordDetectionPreChangePassword;
+    /**
      * Configuration options that apply before every user registration attempt. Only available on public tenants.
      */
     preUserRegistration: outputs.AttackProtectionBreachedPasswordDetectionPreUserRegistration;
     /**
      * Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+     */
+    shields: string[];
+}
+
+export interface AttackProtectionBreachedPasswordDetectionPreChangePassword {
+    /**
+     * Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
      */
     shields: string[];
 }
@@ -1358,6 +1369,10 @@ export interface ConnectionOptions {
      */
     connectionSettings: outputs.ConnectionOptionsConnectionSettings;
     /**
+     * Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+     */
+    customHeaders?: {[key: string]: string}[];
+    /**
      * A map of scripts used to integrate with a custom database.
      */
     customScripts?: {[key: string]: string};
@@ -2245,11 +2260,22 @@ export interface GetAttackProtectionBreachedPasswordDetection {
      */
     method: string;
     /**
+     * Configuration options that apply before every password change attempt.
+     */
+    preChangePasswords: outputs.GetAttackProtectionBreachedPasswordDetectionPreChangePassword[];
+    /**
      * Configuration options that apply before every user registration attempt. Only available on public tenants.
      */
     preUserRegistrations: outputs.GetAttackProtectionBreachedPasswordDetectionPreUserRegistration[];
     /**
      * Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+     */
+    shields: string[];
+}
+
+export interface GetAttackProtectionBreachedPasswordDetectionPreChangePassword {
+    /**
+     * Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
      */
     shields: string[];
 }
@@ -3627,6 +3653,10 @@ export interface GetConnectionOption {
      */
     connectionSettings: outputs.GetConnectionOptionConnectionSetting[];
     /**
+     * Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+     */
+    customHeaders: {[key: string]: string}[];
+    /**
      * A map of scripts used to integrate with a custom database.
      */
     customScripts: {[key: string]: string};
@@ -4629,6 +4659,21 @@ export interface GetSigningKeysSigningKey {
     thumbprint: string;
 }
 
+export interface GetTenantErrorPage {
+    /**
+     * Custom Error HTML (Liquid syntax is supported)
+     */
+    html: string;
+    /**
+     * Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+     */
+    showLogLink: boolean;
+    /**
+     * URL to redirect to when an error occurs instead of showing the default error page
+     */
+    url: string;
+}
+
 export interface GetTenantFlag {
     /**
      * Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
@@ -4741,6 +4786,13 @@ export interface GetTenantMtl {
      * Enable mTLS endpoint aliases.
      */
     enableEndpointAliases: boolean;
+}
+
+export interface GetTenantOidcLogout {
+    /**
+     * Enable the endSessionEndpoint URL in the .well-known discovery configuration.
+     */
+    rpLogoutEndSessionEndpointDiscovery: boolean;
 }
 
 export interface GetTenantSession {
@@ -5362,6 +5414,21 @@ export interface SelfServiceProfileUserAttribute {
     name: string;
 }
 
+export interface TenantErrorPage {
+    /**
+     * Custom Error HTML (Liquid syntax is supported)
+     */
+    html?: string;
+    /**
+     * Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+     */
+    showLogLink?: boolean;
+    /**
+     * URL to redirect to when an error occurs instead of showing the default error page
+     */
+    url?: string;
+}
+
 export interface TenantFlags {
     /**
      * Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
@@ -5476,6 +5543,13 @@ export interface TenantMtls {
      * Enable mTLS endpoint aliases.
      */
     enableEndpointAliases?: boolean;
+}
+
+export interface TenantOidcLogout {
+    /**
+     * Enable the end*session*endpoint URL in the .well-known discovery configuration.
+     */
+    rpLogoutEndSessionEndpointDiscovery: boolean;
 }
 
 export interface TenantSessionCookie {

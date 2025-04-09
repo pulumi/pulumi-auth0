@@ -59,6 +59,12 @@ namespace Pulumi.Auth0
     ///         {
     ///             OidcLogoutPromptEnabled = false,
     ///         },
+    ///         ErrorPage = new Auth0.Inputs.TenantErrorPageArgs
+    ///         {
+    ///             Html = "&lt;html&gt;&lt;/html&gt;",
+    ///             ShowLogLink = false,
+    ///             Url = "https://example.com/error",
+    ///         },
     ///     });
     /// 
     /// });
@@ -136,6 +142,12 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> EnabledLocales { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for the error page
+        /// </summary>
+        [Output("errorPage")]
+        public Output<Outputs.TenantErrorPage?> ErrorPage { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration settings for tenant flags.
         /// </summary>
         [Output("flags")]
@@ -158,6 +170,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("mtls")]
         public Output<Outputs.TenantMtls> Mtls { get; private set; } = null!;
+
+        /// <summary>
+        /// Settings related to OIDC RP-initiated Logout.
+        /// </summary>
+        [Output("oidcLogout")]
+        public Output<Outputs.TenantOidcLogout> OidcLogout { get; private set; } = null!;
 
         /// <summary>
         /// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
@@ -326,6 +344,12 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
+        /// Configuration for the error page
+        /// </summary>
+        [Input("errorPage")]
+        public Input<Inputs.TenantErrorPageArgs>? ErrorPage { get; set; }
+
+        /// <summary>
         /// Configuration settings for tenant flags.
         /// </summary>
         [Input("flags")]
@@ -348,6 +372,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("mtls")]
         public Input<Inputs.TenantMtlsArgs>? Mtls { get; set; }
+
+        /// <summary>
+        /// Settings related to OIDC RP-initiated Logout.
+        /// </summary>
+        [Input("oidcLogout")]
+        public Input<Inputs.TenantOidcLogoutArgs>? OidcLogout { get; set; }
 
         /// <summary>
         /// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
@@ -478,6 +508,12 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
+        /// Configuration for the error page
+        /// </summary>
+        [Input("errorPage")]
+        public Input<Inputs.TenantErrorPageGetArgs>? ErrorPage { get; set; }
+
+        /// <summary>
         /// Configuration settings for tenant flags.
         /// </summary>
         [Input("flags")]
@@ -500,6 +536,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("mtls")]
         public Input<Inputs.TenantMtlsGetArgs>? Mtls { get; set; }
+
+        /// <summary>
+        /// Settings related to OIDC RP-initiated Logout.
+        /// </summary>
+        [Input("oidcLogout")]
+        public Input<Inputs.TenantOidcLogoutGetArgs>? OidcLogout { get; set; }
 
         /// <summary>
         /// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.

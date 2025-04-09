@@ -24,6 +24,8 @@ __all__ = [
     'ActionSupportedTriggersArgsDict',
     'AttackProtectionBreachedPasswordDetectionArgs',
     'AttackProtectionBreachedPasswordDetectionArgsDict',
+    'AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs',
+    'AttackProtectionBreachedPasswordDetectionPreChangePasswordArgsDict',
     'AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs',
     'AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgsDict',
     'AttackProtectionBruteForceProtectionArgs',
@@ -314,10 +316,14 @@ __all__ = [
     'SelfServiceProfileBrandingColorsArgsDict',
     'SelfServiceProfileUserAttributeArgs',
     'SelfServiceProfileUserAttributeArgsDict',
+    'TenantErrorPageArgs',
+    'TenantErrorPageArgsDict',
     'TenantFlagsArgs',
     'TenantFlagsArgsDict',
     'TenantMtlsArgs',
     'TenantMtlsArgsDict',
+    'TenantOidcLogoutArgs',
+    'TenantOidcLogoutArgsDict',
     'TenantSessionCookieArgs',
     'TenantSessionCookieArgsDict',
     'TenantSessionsArgs',
@@ -502,6 +508,10 @@ if not MYPY:
         """
         The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
         """
+        pre_change_password: NotRequired[pulumi.Input['AttackProtectionBreachedPasswordDetectionPreChangePasswordArgsDict']]
+        """
+        Configuration options that apply before every password change attempt.
+        """
         pre_user_registration: NotRequired[pulumi.Input['AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgsDict']]
         """
         Configuration options that apply before every user registration attempt. Only available on public tenants.
@@ -519,12 +529,14 @@ class AttackProtectionBreachedPasswordDetectionArgs:
                  enabled: pulumi.Input[builtins.bool],
                  admin_notification_frequencies: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  method: Optional[pulumi.Input[builtins.str]] = None,
+                 pre_change_password: Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs']] = None,
                  pre_user_registration: Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs']] = None,
                  shields: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         :param pulumi.Input[builtins.bool] enabled: Whether breached password detection is active.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] admin_notification_frequencies: When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
         :param pulumi.Input[builtins.str] method: The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
+        :param pulumi.Input['AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs'] pre_change_password: Configuration options that apply before every password change attempt.
         :param pulumi.Input['AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs'] pre_user_registration: Configuration options that apply before every user registration attempt. Only available on public tenants.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] shields: Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
         """
@@ -533,6 +545,8 @@ class AttackProtectionBreachedPasswordDetectionArgs:
             pulumi.set(__self__, "admin_notification_frequencies", admin_notification_frequencies)
         if method is not None:
             pulumi.set(__self__, "method", method)
+        if pre_change_password is not None:
+            pulumi.set(__self__, "pre_change_password", pre_change_password)
         if pre_user_registration is not None:
             pulumi.set(__self__, "pre_user_registration", pre_user_registration)
         if shields is not None:
@@ -575,6 +589,18 @@ class AttackProtectionBreachedPasswordDetectionArgs:
         pulumi.set(self, "method", value)
 
     @property
+    @pulumi.getter(name="preChangePassword")
+    def pre_change_password(self) -> Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs']]:
+        """
+        Configuration options that apply before every password change attempt.
+        """
+        return pulumi.get(self, "pre_change_password")
+
+    @pre_change_password.setter
+    def pre_change_password(self, value: Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs']]):
+        pulumi.set(self, "pre_change_password", value)
+
+    @property
     @pulumi.getter(name="preUserRegistration")
     def pre_user_registration(self) -> Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs']]:
         """
@@ -591,6 +617,38 @@ class AttackProtectionBreachedPasswordDetectionArgs:
     def shields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+        """
+        return pulumi.get(self, "shields")
+
+    @shields.setter
+    def shields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "shields", value)
+
+
+if not MYPY:
+    class AttackProtectionBreachedPasswordDetectionPreChangePasswordArgsDict(TypedDict):
+        shields: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+        """
+elif False:
+    AttackProtectionBreachedPasswordDetectionPreChangePasswordArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs:
+    def __init__(__self__, *,
+                 shields: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] shields: Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+        """
+        if shields is not None:
+            pulumi.set(__self__, "shields", shields)
+
+    @property
+    @pulumi.getter
+    def shields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
         """
         return pulumi.get(self, "shields")
 
@@ -6664,6 +6722,10 @@ if not MYPY:
         """
         Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
         """
+        custom_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]]]
+        """
+        Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+        """
         custom_scripts: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
         """
         A map of scripts used to integrate with a custom database.
@@ -7009,6 +7071,7 @@ class ConnectionOptionsArgs:
                  community_base_url: Optional[pulumi.Input[builtins.str]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  connection_settings: Optional[pulumi.Input['ConnectionOptionsConnectionSettingsArgs']] = None,
+                 custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]]] = None,
                  custom_scripts: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  debug: Optional[pulumi.Input[builtins.bool]] = None,
                  decryption_key: Optional[pulumi.Input['ConnectionOptionsDecryptionKeyArgs']] = None,
@@ -7106,6 +7169,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[builtins.str] community_base_url: Salesforce community base URL.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         :param pulumi.Input['ConnectionOptionsConnectionSettingsArgs'] connection_settings: Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]] custom_headers: Configure extra headers to the Token endpoint of an OAuth 2.0 provider
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] custom_scripts: A map of scripts used to integrate with a custom database.
         :param pulumi.Input[builtins.bool] debug: When enabled, additional debug information will be generated.
         :param pulumi.Input['ConnectionOptionsDecryptionKeyArgs'] decryption_key: The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
@@ -7218,6 +7282,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "configuration", configuration)
         if connection_settings is not None:
             pulumi.set(__self__, "connection_settings", connection_settings)
+        if custom_headers is not None:
+            pulumi.set(__self__, "custom_headers", custom_headers)
         if custom_scripts is not None:
             pulumi.set(__self__, "custom_scripts", custom_scripts)
         if debug is not None:
@@ -7560,6 +7626,18 @@ class ConnectionOptionsArgs:
     @connection_settings.setter
     def connection_settings(self, value: Optional[pulumi.Input['ConnectionOptionsConnectionSettingsArgs']]):
         pulumi.set(self, "connection_settings", value)
+
+    @property
+    @pulumi.getter(name="customHeaders")
+    def custom_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]]]:
+        """
+        Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+        """
+        return pulumi.get(self, "custom_headers")
+
+    @custom_headers.setter
+    def custom_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]]]):
+        pulumi.set(self, "custom_headers", value)
 
     @property
     @pulumi.getter(name="customScripts")
@@ -13879,6 +13957,78 @@ class SelfServiceProfileUserAttributeArgs:
 
 
 if not MYPY:
+    class TenantErrorPageArgsDict(TypedDict):
+        html: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Custom Error HTML (Liquid syntax is supported)
+        """
+        show_log_link: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+        """
+        url: NotRequired[pulumi.Input[builtins.str]]
+        """
+        URL to redirect to when an error occurs instead of showing the default error page
+        """
+elif False:
+    TenantErrorPageArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TenantErrorPageArgs:
+    def __init__(__self__, *,
+                 html: Optional[pulumi.Input[builtins.str]] = None,
+                 show_log_link: Optional[pulumi.Input[builtins.bool]] = None,
+                 url: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] html: Custom Error HTML (Liquid syntax is supported)
+        :param pulumi.Input[builtins.bool] show_log_link: Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+        :param pulumi.Input[builtins.str] url: URL to redirect to when an error occurs instead of showing the default error page
+        """
+        if html is not None:
+            pulumi.set(__self__, "html", html)
+        if show_log_link is not None:
+            pulumi.set(__self__, "show_log_link", show_log_link)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def html(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Custom Error HTML (Liquid syntax is supported)
+        """
+        return pulumi.get(self, "html")
+
+    @html.setter
+    def html(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "html", value)
+
+    @property
+    @pulumi.getter(name="showLogLink")
+    def show_log_link(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+        """
+        return pulumi.get(self, "show_log_link")
+
+    @show_log_link.setter
+    def show_log_link(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "show_log_link", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        URL to redirect to when an error occurs instead of showing the default error page
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "url", value)
+
+
+if not MYPY:
     class TenantFlagsArgsDict(TypedDict):
         allow_legacy_delegation_grant_types: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -14444,6 +14594,37 @@ class TenantMtlsArgs:
     @enable_endpoint_aliases.setter
     def enable_endpoint_aliases(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "enable_endpoint_aliases", value)
+
+
+if not MYPY:
+    class TenantOidcLogoutArgsDict(TypedDict):
+        rp_logout_end_session_endpoint_discovery: pulumi.Input[builtins.bool]
+        """
+        Enable the end*session*endpoint URL in the .well-known discovery configuration.
+        """
+elif False:
+    TenantOidcLogoutArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TenantOidcLogoutArgs:
+    def __init__(__self__, *,
+                 rp_logout_end_session_endpoint_discovery: pulumi.Input[builtins.bool]):
+        """
+        :param pulumi.Input[builtins.bool] rp_logout_end_session_endpoint_discovery: Enable the end*session*endpoint URL in the .well-known discovery configuration.
+        """
+        pulumi.set(__self__, "rp_logout_end_session_endpoint_discovery", rp_logout_end_session_endpoint_discovery)
+
+    @property
+    @pulumi.getter(name="rpLogoutEndSessionEndpointDiscovery")
+    def rp_logout_end_session_endpoint_discovery(self) -> pulumi.Input[builtins.bool]:
+        """
+        Enable the end*session*endpoint URL in the .well-known discovery configuration.
+        """
+        return pulumi.get(self, "rp_logout_end_session_endpoint_discovery")
+
+    @rp_logout_end_session_endpoint_discovery.setter
+    def rp_logout_end_session_endpoint_discovery(self, value: pulumi.Input[builtins.bool]):
+        pulumi.set(self, "rp_logout_end_session_endpoint_discovery", value)
 
 
 if not MYPY:

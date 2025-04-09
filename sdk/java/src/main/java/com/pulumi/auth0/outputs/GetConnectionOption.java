@@ -106,6 +106,11 @@ public final class GetConnectionOption {
      */
     private List<GetConnectionOptionConnectionSetting> connectionSettings;
     /**
+     * @return Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+     * 
+     */
+    private List<Map<String,String>> customHeaders;
+    /**
      * @return A map of scripts used to integrate with a custom database.
      * 
      */
@@ -616,6 +621,13 @@ public final class GetConnectionOption {
      */
     public List<GetConnectionOptionConnectionSetting> connectionSettings() {
         return this.connectionSettings;
+    }
+    /**
+     * @return Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+     * 
+     */
+    public List<Map<String,String>> customHeaders() {
+        return this.customHeaders;
     }
     /**
      * @return A map of scripts used to integrate with a custom database.
@@ -1209,6 +1221,7 @@ public final class GetConnectionOption {
         private String communityBaseUrl;
         private Map<String,String> configuration;
         private List<GetConnectionOptionConnectionSetting> connectionSettings;
+        private List<Map<String,String>> customHeaders;
         private Map<String,String> customScripts;
         private Boolean debug;
         private List<GetConnectionOptionDecryptionKey> decryptionKeys;
@@ -1308,6 +1321,7 @@ public final class GetConnectionOption {
     	      this.communityBaseUrl = defaults.communityBaseUrl;
     	      this.configuration = defaults.configuration;
     	      this.connectionSettings = defaults.connectionSettings;
+    	      this.customHeaders = defaults.customHeaders;
     	      this.customScripts = defaults.customScripts;
     	      this.debug = defaults.debug;
     	      this.decryptionKeys = defaults.decryptionKeys;
@@ -1525,6 +1539,14 @@ public final class GetConnectionOption {
         }
         public Builder connectionSettings(GetConnectionOptionConnectionSetting... connectionSettings) {
             return connectionSettings(List.of(connectionSettings));
+        }
+        @CustomType.Setter
+        public Builder customHeaders(List<Map<String,String>> customHeaders) {
+            if (customHeaders == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "customHeaders");
+            }
+            this.customHeaders = customHeaders;
+            return this;
         }
         @CustomType.Setter
         public Builder customScripts(Map<String,String> customScripts) {
@@ -2242,6 +2264,7 @@ public final class GetConnectionOption {
             _resultValue.communityBaseUrl = communityBaseUrl;
             _resultValue.configuration = configuration;
             _resultValue.connectionSettings = connectionSettings;
+            _resultValue.customHeaders = customHeaders;
             _resultValue.customScripts = customScripts;
             _resultValue.debug = debug;
             _resultValue.decryptionKeys = decryptionKeys;

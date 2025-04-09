@@ -68,6 +68,8 @@ type LookupTenantResult struct {
 	Domain string `pulumi:"domain"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales []string `pulumi:"enabledLocales"`
+	// Configuration for the error page
+	ErrorPages []GetTenantErrorPage `pulumi:"errorPages"`
 	// Configuration settings for tenant flags.
 	Flags []GetTenantFlag `pulumi:"flags"`
 	// Friendly name for the tenant.
@@ -80,6 +82,8 @@ type LookupTenantResult struct {
 	ManagementApiIdentifier string `pulumi:"managementApiIdentifier"`
 	// Configuration for mTLS.
 	Mtls []GetTenantMtl `pulumi:"mtls"`
+	// Settings related to OIDC RP-initiated Logout.
+	OidcLogouts []GetTenantOidcLogout `pulumi:"oidcLogouts"`
 	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl string `pulumi:"pictureUrl"`
 	// Enable pushed authorization requests.
@@ -170,6 +174,11 @@ func (o LookupTenantResultOutput) EnabledLocales() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupTenantResult) []string { return v.EnabledLocales }).(pulumi.StringArrayOutput)
 }
 
+// Configuration for the error page
+func (o LookupTenantResultOutput) ErrorPages() GetTenantErrorPageArrayOutput {
+	return o.ApplyT(func(v LookupTenantResult) []GetTenantErrorPage { return v.ErrorPages }).(GetTenantErrorPageArrayOutput)
+}
+
 // Configuration settings for tenant flags.
 func (o LookupTenantResultOutput) Flags() GetTenantFlagArrayOutput {
 	return o.ApplyT(func(v LookupTenantResult) []GetTenantFlag { return v.Flags }).(GetTenantFlagArrayOutput)
@@ -198,6 +207,11 @@ func (o LookupTenantResultOutput) ManagementApiIdentifier() pulumi.StringOutput 
 // Configuration for mTLS.
 func (o LookupTenantResultOutput) Mtls() GetTenantMtlArrayOutput {
 	return o.ApplyT(func(v LookupTenantResult) []GetTenantMtl { return v.Mtls }).(GetTenantMtlArrayOutput)
+}
+
+// Settings related to OIDC RP-initiated Logout.
+func (o LookupTenantResultOutput) OidcLogouts() GetTenantOidcLogoutArrayOutput {
+	return o.ApplyT(func(v LookupTenantResult) []GetTenantOidcLogout { return v.OidcLogouts }).(GetTenantOidcLogoutArrayOutput)
 }
 
 // URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
