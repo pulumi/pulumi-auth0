@@ -67,8 +67,6 @@ import (
 //
 // <trigger>::<actionID>
 //
-// #
-//
 // Example:
 //
 // ```sh

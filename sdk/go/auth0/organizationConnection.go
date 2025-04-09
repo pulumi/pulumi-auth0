@@ -71,8 +71,6 @@ import (
 //
 // <organizationID>::<connectionID>
 //
-// #
-//
 // Example:
 //
 // ```sh

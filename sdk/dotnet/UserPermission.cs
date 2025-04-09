@@ -24,8 +24,6 @@ namespace Pulumi.Auth0
     /// 
     /// &lt;userID&gt;::&lt;resourceServerIdentifier&gt;::&lt;permission&gt;
     /// 
-    /// # 
-    /// 
     /// Example:
     /// 
     /// ```sh

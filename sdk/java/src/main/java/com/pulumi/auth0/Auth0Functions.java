@@ -147,7 +147,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myProtection = Auth0Functions.getAttackProtection();
+     *         final var myProtection = Auth0Functions.getAttackProtection(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -186,7 +186,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myProtection = Auth0Functions.getAttackProtection();
+     *         final var myProtection = Auth0Functions.getAttackProtection(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -225,7 +225,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myProtection = Auth0Functions.getAttackProtection();
+     *         final var myProtection = Auth0Functions.getAttackProtection(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -264,7 +264,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myProtection = Auth0Functions.getAttackProtection();
+     *         final var myProtection = Auth0Functions.getAttackProtection(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -303,7 +303,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myProtection = Auth0Functions.getAttackProtection();
+     *         final var myProtection = Auth0Functions.getAttackProtection(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -342,7 +342,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myProtection = Auth0Functions.getAttackProtection();
+     *         final var myProtection = Auth0Functions.getAttackProtection(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -381,7 +381,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myProtection = Auth0Functions.getAttackProtection();
+     *         final var myProtection = Auth0Functions.getAttackProtection(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -420,7 +420,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myBranding = Auth0Functions.getBranding();
+     *         final var myBranding = Auth0Functions.getBranding(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -459,7 +459,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myBranding = Auth0Functions.getBranding();
+     *         final var myBranding = Auth0Functions.getBranding(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -498,7 +498,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myBranding = Auth0Functions.getBranding();
+     *         final var myBranding = Auth0Functions.getBranding(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -537,7 +537,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myBranding = Auth0Functions.getBranding();
+     *         final var myBranding = Auth0Functions.getBranding(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -576,7 +576,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myBranding = Auth0Functions.getBranding();
+     *         final var myBranding = Auth0Functions.getBranding(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -615,7 +615,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myBranding = Auth0Functions.getBranding();
+     *         final var myBranding = Auth0Functions.getBranding(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -654,7 +654,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myBranding = Auth0Functions.getBranding();
+     *         final var myBranding = Auth0Functions.getBranding(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -693,7 +693,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme();
+     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -732,7 +732,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme();
+     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -771,7 +771,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme();
+     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -810,7 +810,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme();
+     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -849,7 +849,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme();
+     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -888,7 +888,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme();
+     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -927,7 +927,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme();
+     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -3383,7 +3383,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myPages = Auth0Functions.getPages();
+     *         final var myPages = Auth0Functions.getPages(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -3422,7 +3422,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myPages = Auth0Functions.getPages();
+     *         final var myPages = Auth0Functions.getPages(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -3461,7 +3461,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myPages = Auth0Functions.getPages();
+     *         final var myPages = Auth0Functions.getPages(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -3500,7 +3500,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myPages = Auth0Functions.getPages();
+     *         final var myPages = Auth0Functions.getPages(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -3539,7 +3539,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myPages = Auth0Functions.getPages();
+     *         final var myPages = Auth0Functions.getPages(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -3578,7 +3578,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myPages = Auth0Functions.getPages();
+     *         final var myPages = Auth0Functions.getPages(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -3617,7 +3617,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myPages = Auth0Functions.getPages();
+     *         final var myPages = Auth0Functions.getPages(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -4872,7 +4872,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myTenant = Auth0Functions.getTenant();
+     *         final var myTenant = Auth0Functions.getTenant(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -4911,7 +4911,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myTenant = Auth0Functions.getTenant();
+     *         final var myTenant = Auth0Functions.getTenant(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -4950,7 +4950,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myTenant = Auth0Functions.getTenant();
+     *         final var myTenant = Auth0Functions.getTenant(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -4989,7 +4989,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myTenant = Auth0Functions.getTenant();
+     *         final var myTenant = Auth0Functions.getTenant(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -5028,7 +5028,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myTenant = Auth0Functions.getTenant();
+     *         final var myTenant = Auth0Functions.getTenant(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -5067,7 +5067,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myTenant = Auth0Functions.getTenant();
+     *         final var myTenant = Auth0Functions.getTenant(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -5106,7 +5106,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myTenant = Auth0Functions.getTenant();
+     *         final var myTenant = Auth0Functions.getTenant(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }

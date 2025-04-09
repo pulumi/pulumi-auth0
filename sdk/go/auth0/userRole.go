@@ -71,8 +71,6 @@ import (
 //
 // <userID>::<roleID>
 //
-// #
-//
 // Example:
 //
 // ```sh

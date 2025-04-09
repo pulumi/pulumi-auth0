@@ -103,8 +103,6 @@ namespace Pulumi.Auth0
     /// 
     /// &lt;organizationID&gt;::&lt;clientGrantID&gt;
     /// 
-    /// # 
-    /// 
     /// Example:
     /// 
     /// ```sh

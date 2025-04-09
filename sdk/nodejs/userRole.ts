@@ -43,8 +43,6 @@ import * as utilities from "./utilities";
  *
  * <userID>::<roleID>
  *
- * # 
- *
  * Example:
  *
  * ```sh

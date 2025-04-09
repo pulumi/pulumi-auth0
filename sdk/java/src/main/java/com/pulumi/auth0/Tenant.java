@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .supportEmail("support}{@literal @}{@code example.com")
  *             .supportUrl("http://example.com/support")
  *             .allowedLogoutUrls("http://example.com/logout")
- *             .sessionLifetime(8760)
+ *             .sessionLifetime(8760.0)
  *             .sandboxVersion("12")
  *             .enabledLocales("en")
  *             .defaultRedirectionUri("https://example.com/login")
@@ -93,11 +93,7 @@ import javax.annotation.Nullable;
  * 
  * tenant can be imported using a random string.
  * 
- * # 
- * 
  * We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
- * 
- * # 
  * 
  * Example:
  * 

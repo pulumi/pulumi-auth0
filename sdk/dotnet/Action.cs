@@ -21,8 +21,6 @@ namespace Pulumi.Auth0
     /// 
     /// This resource can be imported by specifying the action ID.
     /// 
-    /// # 
-    /// 
     /// Example:
     /// 
     /// ```sh

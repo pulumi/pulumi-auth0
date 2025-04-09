@@ -59,8 +59,6 @@ namespace Pulumi.Auth0
     /// 
     /// &lt;organizationID&gt;::&lt;connectionID&gt;
     /// 
-    /// # 
-    /// 
     /// Example:
     /// 
     /// ```sh

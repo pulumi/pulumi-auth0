@@ -16,8 +16,6 @@ namespace Pulumi.Auth0
     /// 
     /// This resource can be imported by specifying the Branding Theme ID.
     /// 
-    /// # 
-    /// 
     /// Example:
     /// 
     /// ```sh

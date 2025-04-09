@@ -38,11 +38,7 @@ namespace Pulumi.Auth0
     /// 
     /// prompts can be imported using a random string.
     /// 
-    /// # 
-    /// 
     /// We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
-    /// 
-    /// # 
     /// 
     /// Example:
     /// 
