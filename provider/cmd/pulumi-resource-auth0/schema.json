@@ -150,6 +150,10 @@
                     "type": "string",
                     "description": "The subscription level for breached password detection methods. Use \"enhanced\" to enable Credential Guard. Possible values: `standard`, `enhanced`.\n"
                 },
+                "preChangePassword": {
+                    "$ref": "#/types/auth0:index/AttackProtectionBreachedPasswordDetectionPreChangePassword:AttackProtectionBreachedPasswordDetectionPreChangePassword",
+                    "description": "Configuration options that apply before every password change attempt.\n"
+                },
                 "preUserRegistration": {
                     "$ref": "#/types/auth0:index/AttackProtectionBreachedPasswordDetectionPreUserRegistration:AttackProtectionBreachedPasswordDetectionPreUserRegistration",
                     "description": "Configuration options that apply before every user registration attempt. Only available on public tenants.\n"
@@ -172,7 +176,27 @@
                         "adminNotificationFrequencies",
                         "enabled",
                         "method",
+                        "preChangePassword",
                         "preUserRegistration",
+                        "shields"
+                    ]
+                }
+            }
+        },
+        "auth0:index/AttackProtectionBreachedPasswordDetectionPreChangePassword:AttackProtectionBreachedPasswordDetectionPreChangePassword": {
+            "properties": {
+                "shields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
                         "shields"
                     ]
                 }
@@ -1951,6 +1975,16 @@
                 "connectionSettings": {
                     "$ref": "#/types/auth0:index/ConnectionOptionsConnectionSettings:ConnectionOptionsConnectionSettings",
                     "description": "Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.\n"
+                },
+                "customHeaders": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "description": "Configure extra headers to the Token endpoint of an OAuth 2.0 provider\n"
                 },
                 "customScripts": {
                     "type": "object",
@@ -3990,6 +4024,23 @@
                 "name"
             ]
         },
+        "auth0:index/TenantErrorPage:TenantErrorPage": {
+            "properties": {
+                "html": {
+                    "type": "string",
+                    "description": "Custom Error HTML (Liquid syntax is supported)\n"
+                },
+                "showLogLink": {
+                    "type": "boolean",
+                    "description": "Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL to redirect to when an error occurs instead of showing the default error page\n"
+                }
+            },
+            "type": "object"
+        },
         "auth0:index/TenantFlags:TenantFlags": {
             "properties": {
                 "allowLegacyDelegationGrantTypes": {
@@ -4139,6 +4190,18 @@
                 }
             },
             "type": "object"
+        },
+        "auth0:index/TenantOidcLogout:TenantOidcLogout": {
+            "properties": {
+                "rpLogoutEndSessionEndpointDiscovery": {
+                    "type": "boolean",
+                    "description": "Enable the end*session*endpoint URL in the .well-known discovery configuration.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rpLogoutEndSessionEndpointDiscovery"
+            ]
         },
         "auth0:index/TenantSessionCookie:TenantSessionCookie": {
             "properties": {
@@ -4296,6 +4359,13 @@
                     "type": "string",
                     "description": "The subscription level for breached password detection methods. Use \"enhanced\" to enable Credential Guard. Possible values: `standard`, `enhanced`.\n"
                 },
+                "preChangePasswords": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getAttackProtectionBreachedPasswordDetectionPreChangePassword:getAttackProtectionBreachedPasswordDetectionPreChangePassword"
+                    },
+                    "description": "Configuration options that apply before every password change attempt.\n"
+                },
                 "preUserRegistrations": {
                     "type": "array",
                     "items": {
@@ -4316,7 +4386,28 @@
                 "adminNotificationFrequencies",
                 "enabled",
                 "method",
+                "preChangePasswords",
                 "preUserRegistrations",
+                "shields"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getAttackProtectionBreachedPasswordDetectionPreChangePassword:getAttackProtectionBreachedPasswordDetectionPreChangePassword": {
+            "properties": {
+                "shields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).\n"
+                }
+            },
+            "type": "object",
+            "required": [
                 "shields"
             ],
             "language": {
@@ -6892,6 +6983,16 @@
                     },
                     "description": "Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.\n"
                 },
+                "customHeaders": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "description": "Configure extra headers to the Token endpoint of an OAuth 2.0 provider\n"
+                },
                 "customScripts": {
                     "type": "object",
                     "additionalProperties": {
@@ -7291,6 +7392,7 @@
                 "communityBaseUrl",
                 "configuration",
                 "connectionSettings",
+                "customHeaders",
                 "customScripts",
                 "debug",
                 "decryptionKeys",
@@ -8803,6 +8905,33 @@
                 }
             }
         },
+        "auth0:index/getTenantErrorPage:getTenantErrorPage": {
+            "properties": {
+                "html": {
+                    "type": "string",
+                    "description": "Custom Error HTML (Liquid syntax is supported)\n"
+                },
+                "showLogLink": {
+                    "type": "boolean",
+                    "description": "Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL to redirect to when an error occurs instead of showing the default error page\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "html",
+                "showLogLink",
+                "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getTenantFlag:getTenantFlag": {
             "properties": {
                 "allowLegacyDelegationGrantTypes": {
@@ -8955,6 +9084,23 @@
             "required": [
                 "disable",
                 "enableEndpointAliases"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getTenantOidcLogout:getTenantOidcLogout": {
+            "properties": {
+                "rpLogoutEndSessionEndpointDiscovery": {
+                    "type": "boolean",
+                    "description": "Enable the end_session_endpoint URL in the .well-known discovery configuration.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rpLogoutEndSessionEndpointDiscovery"
             ],
             "language": {
                 "nodejs": {
@@ -9225,7 +9371,7 @@
             }
         },
         "auth0:index/attackProtection:AttackProtection": {
-            "description": "Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myProtection = new auth0.AttackProtection(\"my_protection\", {\n    suspiciousIpThrottling: {\n        enabled: true,\n        shields: [\n            \"admin_notification\",\n            \"block\",\n        ],\n        allowlists: [\"192.168.1.1\"],\n        preLogin: {\n            maxAttempts: 100,\n            rate: 864000,\n        },\n        preUserRegistration: {\n            maxAttempts: 50,\n            rate: 1200,\n        },\n    },\n    bruteForceProtection: {\n        allowlists: [\"127.0.0.1\"],\n        enabled: true,\n        maxAttempts: 5,\n        mode: \"count_per_identifier_and_ip\",\n        shields: [\n            \"block\",\n            \"user_notification\",\n        ],\n    },\n    breachedPasswordDetection: {\n        adminNotificationFrequencies: [\"daily\"],\n        enabled: true,\n        method: \"standard\",\n        shields: [\n            \"admin_notification\",\n            \"block\",\n        ],\n        preUserRegistration: {\n            shields: [\"block\"],\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_protection = auth0.AttackProtection(\"my_protection\",\n    suspicious_ip_throttling={\n        \"enabled\": True,\n        \"shields\": [\n            \"admin_notification\",\n            \"block\",\n        ],\n        \"allowlists\": [\"192.168.1.1\"],\n        \"pre_login\": {\n            \"max_attempts\": 100,\n            \"rate\": 864000,\n        },\n        \"pre_user_registration\": {\n            \"max_attempts\": 50,\n            \"rate\": 1200,\n        },\n    },\n    brute_force_protection={\n        \"allowlists\": [\"127.0.0.1\"],\n        \"enabled\": True,\n        \"max_attempts\": 5,\n        \"mode\": \"count_per_identifier_and_ip\",\n        \"shields\": [\n            \"block\",\n            \"user_notification\",\n        ],\n    },\n    breached_password_detection={\n        \"admin_notification_frequencies\": [\"daily\"],\n        \"enabled\": True,\n        \"method\": \"standard\",\n        \"shields\": [\n            \"admin_notification\",\n            \"block\",\n        ],\n        \"pre_user_registration\": {\n            \"shields\": [\"block\"],\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myProtection = new Auth0.AttackProtection(\"my_protection\", new()\n    {\n        SuspiciousIpThrottling = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingArgs\n        {\n            Enabled = true,\n            Shields = new[]\n            {\n                \"admin_notification\",\n                \"block\",\n            },\n            Allowlists = new[]\n            {\n                \"192.168.1.1\",\n            },\n            PreLogin = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreLoginArgs\n            {\n                MaxAttempts = 100,\n                Rate = 864000,\n            },\n            PreUserRegistration = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs\n            {\n                MaxAttempts = 50,\n                Rate = 1200,\n            },\n        },\n        BruteForceProtection = new Auth0.Inputs.AttackProtectionBruteForceProtectionArgs\n        {\n            Allowlists = new[]\n            {\n                \"127.0.0.1\",\n            },\n            Enabled = true,\n            MaxAttempts = 5,\n            Mode = \"count_per_identifier_and_ip\",\n            Shields = new[]\n            {\n                \"block\",\n                \"user_notification\",\n            },\n        },\n        BreachedPasswordDetection = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionArgs\n        {\n            AdminNotificationFrequencies = new[]\n            {\n                \"daily\",\n            },\n            Enabled = true,\n            Method = \"standard\",\n            Shields = new[]\n            {\n                \"admin_notification\",\n                \"block\",\n            },\n            PreUserRegistration = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs\n            {\n                Shields = new[]\n                {\n                    \"block\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewAttackProtection(ctx, \"my_protection\", \u0026auth0.AttackProtectionArgs{\n\t\t\tSuspiciousIpThrottling: \u0026auth0.AttackProtectionSuspiciousIpThrottlingArgs{\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\tShields: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"admin_notification\"),\n\t\t\t\t\tpulumi.String(\"block\"),\n\t\t\t\t},\n\t\t\t\tAllowlists: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"192.168.1.1\"),\n\t\t\t\t},\n\t\t\t\tPreLogin: \u0026auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs{\n\t\t\t\t\tMaxAttempts: pulumi.Int(100),\n\t\t\t\t\tRate:        pulumi.Int(864000),\n\t\t\t\t},\n\t\t\t\tPreUserRegistration: \u0026auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{\n\t\t\t\t\tMaxAttempts: pulumi.Int(50),\n\t\t\t\t\tRate:        pulumi.Int(1200),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBruteForceProtection: \u0026auth0.AttackProtectionBruteForceProtectionArgs{\n\t\t\t\tAllowlists: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"127.0.0.1\"),\n\t\t\t\t},\n\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\tMaxAttempts: pulumi.Int(5),\n\t\t\t\tMode:        pulumi.String(\"count_per_identifier_and_ip\"),\n\t\t\t\tShields: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"block\"),\n\t\t\t\t\tpulumi.String(\"user_notification\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBreachedPasswordDetection: \u0026auth0.AttackProtectionBreachedPasswordDetectionArgs{\n\t\t\t\tAdminNotificationFrequencies: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"daily\"),\n\t\t\t\t},\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\tMethod:  pulumi.String(\"standard\"),\n\t\t\t\tShields: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"admin_notification\"),\n\t\t\t\t\tpulumi.String(\"block\"),\n\t\t\t\t},\n\t\t\t\tPreUserRegistration: \u0026auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{\n\t\t\t\t\tShields: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"block\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.AttackProtection;\nimport com.pulumi.auth0.AttackProtectionArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingPreLoginArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionBruteForceProtectionArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myProtection = new AttackProtection(\"myProtection\", AttackProtectionArgs.builder()\n            .suspiciousIpThrottling(AttackProtectionSuspiciousIpThrottlingArgs.builder()\n                .enabled(true)\n                .shields(                \n                    \"admin_notification\",\n                    \"block\")\n                .allowlists(\"192.168.1.1\")\n                .preLogin(AttackProtectionSuspiciousIpThrottlingPreLoginArgs.builder()\n                    .maxAttempts(100)\n                    .rate(864000)\n                    .build())\n                .preUserRegistration(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs.builder()\n                    .maxAttempts(50)\n                    .rate(1200)\n                    .build())\n                .build())\n            .bruteForceProtection(AttackProtectionBruteForceProtectionArgs.builder()\n                .allowlists(\"127.0.0.1\")\n                .enabled(true)\n                .maxAttempts(5)\n                .mode(\"count_per_identifier_and_ip\")\n                .shields(                \n                    \"block\",\n                    \"user_notification\")\n                .build())\n            .breachedPasswordDetection(AttackProtectionBreachedPasswordDetectionArgs.builder()\n                .adminNotificationFrequencies(\"daily\")\n                .enabled(true)\n                .method(\"standard\")\n                .shields(                \n                    \"admin_notification\",\n                    \"block\")\n                .preUserRegistration(AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs.builder()\n                    .shields(\"block\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myProtection:\n    type: auth0:AttackProtection\n    name: my_protection\n    properties:\n      suspiciousIpThrottling:\n        enabled: true\n        shields:\n          - admin_notification\n          - block\n        allowlists:\n          - 192.168.1.1\n        preLogin:\n          maxAttempts: 100\n          rate: 864000\n        preUserRegistration:\n          maxAttempts: 50\n          rate: 1200\n      bruteForceProtection:\n        allowlists:\n          - 127.0.0.1\n        enabled: true\n        maxAttempts: 5\n        mode: count_per_identifier_and_ip\n        shields:\n          - block\n          - user_notification\n      breachedPasswordDetection:\n        adminNotificationFrequencies:\n          - daily\n        enabled: true\n        method: standard\n        shields:\n          - admin_notification\n          - block\n        preUserRegistration:\n          shields:\n            - block\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAs this is not a resource identifiable by an ID within the Auth0 Management API,\n\nattack_protection can be imported using a random string.\n\n#\n\nWe recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/attackProtection:AttackProtection my_protection \"24940d4b-4bd4-44e7-894e-f92e4de36a40\"\n```\n\n",
+            "description": "Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myProtection = new auth0.AttackProtection(\"my_protection\", {\n    suspiciousIpThrottling: {\n        enabled: true,\n        shields: [\n            \"admin_notification\",\n            \"block\",\n        ],\n        allowlists: [\"192.168.1.1\"],\n        preLogin: {\n            maxAttempts: 100,\n            rate: 864000,\n        },\n        preUserRegistration: {\n            maxAttempts: 50,\n            rate: 1200,\n        },\n    },\n    bruteForceProtection: {\n        allowlists: [\"127.0.0.1\"],\n        enabled: true,\n        maxAttempts: 5,\n        mode: \"count_per_identifier_and_ip\",\n        shields: [\n            \"block\",\n            \"user_notification\",\n        ],\n    },\n    breachedPasswordDetection: {\n        adminNotificationFrequencies: [\"daily\"],\n        enabled: true,\n        method: \"standard\",\n        shields: [\n            \"admin_notification\",\n            \"block\",\n        ],\n        preUserRegistration: {\n            shields: [\"block\"],\n        },\n        preChangePassword: {\n            shields: [\n                \"block\",\n                \"admin_notification\",\n            ],\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_protection = auth0.AttackProtection(\"my_protection\",\n    suspicious_ip_throttling={\n        \"enabled\": True,\n        \"shields\": [\n            \"admin_notification\",\n            \"block\",\n        ],\n        \"allowlists\": [\"192.168.1.1\"],\n        \"pre_login\": {\n            \"max_attempts\": 100,\n            \"rate\": 864000,\n        },\n        \"pre_user_registration\": {\n            \"max_attempts\": 50,\n            \"rate\": 1200,\n        },\n    },\n    brute_force_protection={\n        \"allowlists\": [\"127.0.0.1\"],\n        \"enabled\": True,\n        \"max_attempts\": 5,\n        \"mode\": \"count_per_identifier_and_ip\",\n        \"shields\": [\n            \"block\",\n            \"user_notification\",\n        ],\n    },\n    breached_password_detection={\n        \"admin_notification_frequencies\": [\"daily\"],\n        \"enabled\": True,\n        \"method\": \"standard\",\n        \"shields\": [\n            \"admin_notification\",\n            \"block\",\n        ],\n        \"pre_user_registration\": {\n            \"shields\": [\"block\"],\n        },\n        \"pre_change_password\": {\n            \"shields\": [\n                \"block\",\n                \"admin_notification\",\n            ],\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myProtection = new Auth0.AttackProtection(\"my_protection\", new()\n    {\n        SuspiciousIpThrottling = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingArgs\n        {\n            Enabled = true,\n            Shields = new[]\n            {\n                \"admin_notification\",\n                \"block\",\n            },\n            Allowlists = new[]\n            {\n                \"192.168.1.1\",\n            },\n            PreLogin = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreLoginArgs\n            {\n                MaxAttempts = 100,\n                Rate = 864000,\n            },\n            PreUserRegistration = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs\n            {\n                MaxAttempts = 50,\n                Rate = 1200,\n            },\n        },\n        BruteForceProtection = new Auth0.Inputs.AttackProtectionBruteForceProtectionArgs\n        {\n            Allowlists = new[]\n            {\n                \"127.0.0.1\",\n            },\n            Enabled = true,\n            MaxAttempts = 5,\n            Mode = \"count_per_identifier_and_ip\",\n            Shields = new[]\n            {\n                \"block\",\n                \"user_notification\",\n            },\n        },\n        BreachedPasswordDetection = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionArgs\n        {\n            AdminNotificationFrequencies = new[]\n            {\n                \"daily\",\n            },\n            Enabled = true,\n            Method = \"standard\",\n            Shields = new[]\n            {\n                \"admin_notification\",\n                \"block\",\n            },\n            PreUserRegistration = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs\n            {\n                Shields = new[]\n                {\n                    \"block\",\n                },\n            },\n            PreChangePassword = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs\n            {\n                Shields = new[]\n                {\n                    \"block\",\n                    \"admin_notification\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewAttackProtection(ctx, \"my_protection\", \u0026auth0.AttackProtectionArgs{\n\t\t\tSuspiciousIpThrottling: \u0026auth0.AttackProtectionSuspiciousIpThrottlingArgs{\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\tShields: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"admin_notification\"),\n\t\t\t\t\tpulumi.String(\"block\"),\n\t\t\t\t},\n\t\t\t\tAllowlists: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"192.168.1.1\"),\n\t\t\t\t},\n\t\t\t\tPreLogin: \u0026auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs{\n\t\t\t\t\tMaxAttempts: pulumi.Int(100),\n\t\t\t\t\tRate:        pulumi.Int(864000),\n\t\t\t\t},\n\t\t\t\tPreUserRegistration: \u0026auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{\n\t\t\t\t\tMaxAttempts: pulumi.Int(50),\n\t\t\t\t\tRate:        pulumi.Int(1200),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBruteForceProtection: \u0026auth0.AttackProtectionBruteForceProtectionArgs{\n\t\t\t\tAllowlists: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"127.0.0.1\"),\n\t\t\t\t},\n\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\tMaxAttempts: pulumi.Int(5),\n\t\t\t\tMode:        pulumi.String(\"count_per_identifier_and_ip\"),\n\t\t\t\tShields: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"block\"),\n\t\t\t\t\tpulumi.String(\"user_notification\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBreachedPasswordDetection: \u0026auth0.AttackProtectionBreachedPasswordDetectionArgs{\n\t\t\t\tAdminNotificationFrequencies: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"daily\"),\n\t\t\t\t},\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\tMethod:  pulumi.String(\"standard\"),\n\t\t\t\tShields: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"admin_notification\"),\n\t\t\t\t\tpulumi.String(\"block\"),\n\t\t\t\t},\n\t\t\t\tPreUserRegistration: \u0026auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{\n\t\t\t\t\tShields: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"block\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tPreChangePassword: \u0026auth0.AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs{\n\t\t\t\t\tShields: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"block\"),\n\t\t\t\t\t\tpulumi.String(\"admin_notification\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.AttackProtection;\nimport com.pulumi.auth0.AttackProtectionArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingPreLoginArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionBruteForceProtectionArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myProtection = new AttackProtection(\"myProtection\", AttackProtectionArgs.builder()\n            .suspiciousIpThrottling(AttackProtectionSuspiciousIpThrottlingArgs.builder()\n                .enabled(true)\n                .shields(                \n                    \"admin_notification\",\n                    \"block\")\n                .allowlists(\"192.168.1.1\")\n                .preLogin(AttackProtectionSuspiciousIpThrottlingPreLoginArgs.builder()\n                    .maxAttempts(100)\n                    .rate(864000)\n                    .build())\n                .preUserRegistration(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs.builder()\n                    .maxAttempts(50)\n                    .rate(1200)\n                    .build())\n                .build())\n            .bruteForceProtection(AttackProtectionBruteForceProtectionArgs.builder()\n                .allowlists(\"127.0.0.1\")\n                .enabled(true)\n                .maxAttempts(5)\n                .mode(\"count_per_identifier_and_ip\")\n                .shields(                \n                    \"block\",\n                    \"user_notification\")\n                .build())\n            .breachedPasswordDetection(AttackProtectionBreachedPasswordDetectionArgs.builder()\n                .adminNotificationFrequencies(\"daily\")\n                .enabled(true)\n                .method(\"standard\")\n                .shields(                \n                    \"admin_notification\",\n                    \"block\")\n                .preUserRegistration(AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs.builder()\n                    .shields(\"block\")\n                    .build())\n                .preChangePassword(AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs.builder()\n                    .shields(                    \n                        \"block\",\n                        \"admin_notification\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myProtection:\n    type: auth0:AttackProtection\n    name: my_protection\n    properties:\n      suspiciousIpThrottling:\n        enabled: true\n        shields:\n          - admin_notification\n          - block\n        allowlists:\n          - 192.168.1.1\n        preLogin:\n          maxAttempts: 100\n          rate: 864000\n        preUserRegistration:\n          maxAttempts: 50\n          rate: 1200\n      bruteForceProtection:\n        allowlists:\n          - 127.0.0.1\n        enabled: true\n        maxAttempts: 5\n        mode: count_per_identifier_and_ip\n        shields:\n          - block\n          - user_notification\n      breachedPasswordDetection:\n        adminNotificationFrequencies:\n          - daily\n        enabled: true\n        method: standard\n        shields:\n          - admin_notification\n          - block\n        preUserRegistration:\n          shields:\n            - block\n        preChangePassword:\n          shields:\n            - block\n            - admin_notification\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAs this is not a resource identifiable by an ID within the Auth0 Management API,\n\nattack_protection can be imported using a random string.\n\n#\n\nWe recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/attackProtection:AttackProtection my_protection \"24940d4b-4bd4-44e7-894e-f92e4de36a40\"\n```\n\n",
             "properties": {
                 "breachedPasswordDetection": {
                     "$ref": "#/types/auth0:index/AttackProtectionBreachedPasswordDetection:AttackProtectionBreachedPasswordDetection",
@@ -12781,7 +12927,7 @@
                 },
                 "promptType": {
                     "type": "string",
-                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`.\n"
+                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `consent`, `customized-consent`, `mfa-otp`.\n"
                 },
                 "renderingMode": {
                     "type": "string",
@@ -12789,7 +12935,7 @@
                 },
                 "screenName": {
                     "type": "string",
-                    "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`.\n"
+                    "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `consent`, `customized-consent`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`.\n"
                 },
                 "tenant": {
                     "type": "string",
@@ -12821,7 +12967,7 @@
                 },
                 "promptType": {
                     "type": "string",
-                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`.\n"
+                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `consent`, `customized-consent`, `mfa-otp`.\n"
                 },
                 "renderingMode": {
                     "type": "string",
@@ -12829,7 +12975,7 @@
                 },
                 "screenName": {
                     "type": "string",
-                    "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`.\n"
+                    "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `consent`, `customized-consent`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`.\n"
                 }
             },
             "requiredInputs": [
@@ -12856,7 +13002,7 @@
                     },
                     "promptType": {
                         "type": "string",
-                        "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`.\n"
+                        "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `consent`, `customized-consent`, `mfa-otp`.\n"
                     },
                     "renderingMode": {
                         "type": "string",
@@ -12864,7 +13010,7 @@
                     },
                     "screenName": {
                         "type": "string",
-                        "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`.\n"
+                        "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `consent`, `customized-consent`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`.\n"
                     },
                     "tenant": {
                         "type": "string",
@@ -13702,7 +13848,7 @@
             }
         },
         "auth0:index/tenant:Tenant": {
-            "description": "With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error pages, and configuring default tenant behaviors.\n\n\u003e Creating tenants through the Management API is not currently supported. Therefore, this resource can only\nmanage an existing tenant created through the Auth0 dashboard.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myTenant = new auth0.Tenant(\"my_tenant\", {\n    friendlyName: \"Tenant Name\",\n    pictureUrl: \"http://example.com/logo.png\",\n    supportEmail: \"support@example.com\",\n    supportUrl: \"http://example.com/support\",\n    allowedLogoutUrls: [\"http://example.com/logout\"],\n    sessionLifetime: 8760,\n    sandboxVersion: \"12\",\n    enabledLocales: [\"en\"],\n    defaultRedirectionUri: \"https://example.com/login\",\n    flags: {\n        disableClickjackProtectionHeaders: true,\n        enablePublicSignupUserExistsError: true,\n        useScopeDescriptionsForConsent: true,\n        noDiscloseEnterpriseConnections: false,\n        disableManagementApiSmsObfuscation: false,\n        disableFieldsMapFix: false,\n    },\n    sessionCookie: {\n        mode: \"non-persistent\",\n    },\n    sessions: {\n        oidcLogoutPromptEnabled: false,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_tenant = auth0.Tenant(\"my_tenant\",\n    friendly_name=\"Tenant Name\",\n    picture_url=\"http://example.com/logo.png\",\n    support_email=\"support@example.com\",\n    support_url=\"http://example.com/support\",\n    allowed_logout_urls=[\"http://example.com/logout\"],\n    session_lifetime=8760,\n    sandbox_version=\"12\",\n    enabled_locales=[\"en\"],\n    default_redirection_uri=\"https://example.com/login\",\n    flags={\n        \"disable_clickjack_protection_headers\": True,\n        \"enable_public_signup_user_exists_error\": True,\n        \"use_scope_descriptions_for_consent\": True,\n        \"no_disclose_enterprise_connections\": False,\n        \"disable_management_api_sms_obfuscation\": False,\n        \"disable_fields_map_fix\": False,\n    },\n    session_cookie={\n        \"mode\": \"non-persistent\",\n    },\n    sessions={\n        \"oidc_logout_prompt_enabled\": False,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myTenant = new Auth0.Tenant(\"my_tenant\", new()\n    {\n        FriendlyName = \"Tenant Name\",\n        PictureUrl = \"http://example.com/logo.png\",\n        SupportEmail = \"support@example.com\",\n        SupportUrl = \"http://example.com/support\",\n        AllowedLogoutUrls = new[]\n        {\n            \"http://example.com/logout\",\n        },\n        SessionLifetime = 8760,\n        SandboxVersion = \"12\",\n        EnabledLocales = new[]\n        {\n            \"en\",\n        },\n        DefaultRedirectionUri = \"https://example.com/login\",\n        Flags = new Auth0.Inputs.TenantFlagsArgs\n        {\n            DisableClickjackProtectionHeaders = true,\n            EnablePublicSignupUserExistsError = true,\n            UseScopeDescriptionsForConsent = true,\n            NoDiscloseEnterpriseConnections = false,\n            DisableManagementApiSmsObfuscation = false,\n            DisableFieldsMapFix = false,\n        },\n        SessionCookie = new Auth0.Inputs.TenantSessionCookieArgs\n        {\n            Mode = \"non-persistent\",\n        },\n        Sessions = new Auth0.Inputs.TenantSessionsArgs\n        {\n            OidcLogoutPromptEnabled = false,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewTenant(ctx, \"my_tenant\", \u0026auth0.TenantArgs{\n\t\t\tFriendlyName: pulumi.String(\"Tenant Name\"),\n\t\t\tPictureUrl:   pulumi.String(\"http://example.com/logo.png\"),\n\t\t\tSupportEmail: pulumi.String(\"support@example.com\"),\n\t\t\tSupportUrl:   pulumi.String(\"http://example.com/support\"),\n\t\t\tAllowedLogoutUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"http://example.com/logout\"),\n\t\t\t},\n\t\t\tSessionLifetime: pulumi.Float64(8760),\n\t\t\tSandboxVersion:  pulumi.String(\"12\"),\n\t\t\tEnabledLocales: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"en\"),\n\t\t\t},\n\t\t\tDefaultRedirectionUri: pulumi.String(\"https://example.com/login\"),\n\t\t\tFlags: \u0026auth0.TenantFlagsArgs{\n\t\t\t\tDisableClickjackProtectionHeaders:  pulumi.Bool(true),\n\t\t\t\tEnablePublicSignupUserExistsError:  pulumi.Bool(true),\n\t\t\t\tUseScopeDescriptionsForConsent:     pulumi.Bool(true),\n\t\t\t\tNoDiscloseEnterpriseConnections:    pulumi.Bool(false),\n\t\t\t\tDisableManagementApiSmsObfuscation: pulumi.Bool(false),\n\t\t\t\tDisableFieldsMapFix:                pulumi.Bool(false),\n\t\t\t},\n\t\t\tSessionCookie: \u0026auth0.TenantSessionCookieArgs{\n\t\t\t\tMode: pulumi.String(\"non-persistent\"),\n\t\t\t},\n\t\t\tSessions: \u0026auth0.TenantSessionsArgs{\n\t\t\t\tOidcLogoutPromptEnabled: pulumi.Bool(false),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Tenant;\nimport com.pulumi.auth0.TenantArgs;\nimport com.pulumi.auth0.inputs.TenantFlagsArgs;\nimport com.pulumi.auth0.inputs.TenantSessionCookieArgs;\nimport com.pulumi.auth0.inputs.TenantSessionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myTenant = new Tenant(\"myTenant\", TenantArgs.builder()\n            .friendlyName(\"Tenant Name\")\n            .pictureUrl(\"http://example.com/logo.png\")\n            .supportEmail(\"support@example.com\")\n            .supportUrl(\"http://example.com/support\")\n            .allowedLogoutUrls(\"http://example.com/logout\")\n            .sessionLifetime(8760)\n            .sandboxVersion(\"12\")\n            .enabledLocales(\"en\")\n            .defaultRedirectionUri(\"https://example.com/login\")\n            .flags(TenantFlagsArgs.builder()\n                .disableClickjackProtectionHeaders(true)\n                .enablePublicSignupUserExistsError(true)\n                .useScopeDescriptionsForConsent(true)\n                .noDiscloseEnterpriseConnections(false)\n                .disableManagementApiSmsObfuscation(false)\n                .disableFieldsMapFix(false)\n                .build())\n            .sessionCookie(TenantSessionCookieArgs.builder()\n                .mode(\"non-persistent\")\n                .build())\n            .sessions(TenantSessionsArgs.builder()\n                .oidcLogoutPromptEnabled(false)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myTenant:\n    type: auth0:Tenant\n    name: my_tenant\n    properties:\n      friendlyName: Tenant Name\n      pictureUrl: http://example.com/logo.png\n      supportEmail: support@example.com\n      supportUrl: http://example.com/support\n      allowedLogoutUrls:\n        - http://example.com/logout\n      sessionLifetime: 8760\n      sandboxVersion: '12'\n      enabledLocales:\n        - en\n      defaultRedirectionUri: https://example.com/login\n      flags:\n        disableClickjackProtectionHeaders: true\n        enablePublicSignupUserExistsError: true\n        useScopeDescriptionsForConsent: true\n        noDiscloseEnterpriseConnections: false\n        disableManagementApiSmsObfuscation: false\n        disableFieldsMapFix: false\n      sessionCookie:\n        mode: non-persistent\n      sessions:\n        oidcLogoutPromptEnabled: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAs this is not a resource identifiable by an ID within the Auth0 Management API,\n\ntenant can be imported using a random string.\n\n#\n\nWe recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/tenant:Tenant my_tenant \"82f4f21b-017a-319d-92e7-2291c1ca36c4\"\n```\n\n",
+            "description": "With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error pages, and configuring default tenant behaviors.\n\n\u003e Creating tenants through the Management API is not currently supported. Therefore, this resource can only\nmanage an existing tenant created through the Auth0 dashboard.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myTenant = new auth0.Tenant(\"my_tenant\", {\n    friendlyName: \"Tenant Name\",\n    pictureUrl: \"http://example.com/logo.png\",\n    supportEmail: \"support@example.com\",\n    supportUrl: \"http://example.com/support\",\n    allowedLogoutUrls: [\"http://example.com/logout\"],\n    sessionLifetime: 8760,\n    sandboxVersion: \"12\",\n    enabledLocales: [\"en\"],\n    defaultRedirectionUri: \"https://example.com/login\",\n    flags: {\n        disableClickjackProtectionHeaders: true,\n        enablePublicSignupUserExistsError: true,\n        useScopeDescriptionsForConsent: true,\n        noDiscloseEnterpriseConnections: false,\n        disableManagementApiSmsObfuscation: false,\n        disableFieldsMapFix: false,\n    },\n    sessionCookie: {\n        mode: \"non-persistent\",\n    },\n    sessions: {\n        oidcLogoutPromptEnabled: false,\n    },\n    errorPage: {\n        html: \"\u003chtml\u003e\u003c/html\u003e\",\n        showLogLink: false,\n        url: \"https://example.com/error\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_tenant = auth0.Tenant(\"my_tenant\",\n    friendly_name=\"Tenant Name\",\n    picture_url=\"http://example.com/logo.png\",\n    support_email=\"support@example.com\",\n    support_url=\"http://example.com/support\",\n    allowed_logout_urls=[\"http://example.com/logout\"],\n    session_lifetime=8760,\n    sandbox_version=\"12\",\n    enabled_locales=[\"en\"],\n    default_redirection_uri=\"https://example.com/login\",\n    flags={\n        \"disable_clickjack_protection_headers\": True,\n        \"enable_public_signup_user_exists_error\": True,\n        \"use_scope_descriptions_for_consent\": True,\n        \"no_disclose_enterprise_connections\": False,\n        \"disable_management_api_sms_obfuscation\": False,\n        \"disable_fields_map_fix\": False,\n    },\n    session_cookie={\n        \"mode\": \"non-persistent\",\n    },\n    sessions={\n        \"oidc_logout_prompt_enabled\": False,\n    },\n    error_page={\n        \"html\": \"\u003chtml\u003e\u003c/html\u003e\",\n        \"show_log_link\": False,\n        \"url\": \"https://example.com/error\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myTenant = new Auth0.Tenant(\"my_tenant\", new()\n    {\n        FriendlyName = \"Tenant Name\",\n        PictureUrl = \"http://example.com/logo.png\",\n        SupportEmail = \"support@example.com\",\n        SupportUrl = \"http://example.com/support\",\n        AllowedLogoutUrls = new[]\n        {\n            \"http://example.com/logout\",\n        },\n        SessionLifetime = 8760,\n        SandboxVersion = \"12\",\n        EnabledLocales = new[]\n        {\n            \"en\",\n        },\n        DefaultRedirectionUri = \"https://example.com/login\",\n        Flags = new Auth0.Inputs.TenantFlagsArgs\n        {\n            DisableClickjackProtectionHeaders = true,\n            EnablePublicSignupUserExistsError = true,\n            UseScopeDescriptionsForConsent = true,\n            NoDiscloseEnterpriseConnections = false,\n            DisableManagementApiSmsObfuscation = false,\n            DisableFieldsMapFix = false,\n        },\n        SessionCookie = new Auth0.Inputs.TenantSessionCookieArgs\n        {\n            Mode = \"non-persistent\",\n        },\n        Sessions = new Auth0.Inputs.TenantSessionsArgs\n        {\n            OidcLogoutPromptEnabled = false,\n        },\n        ErrorPage = new Auth0.Inputs.TenantErrorPageArgs\n        {\n            Html = \"\u003chtml\u003e\u003c/html\u003e\",\n            ShowLogLink = false,\n            Url = \"https://example.com/error\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewTenant(ctx, \"my_tenant\", \u0026auth0.TenantArgs{\n\t\t\tFriendlyName: pulumi.String(\"Tenant Name\"),\n\t\t\tPictureUrl:   pulumi.String(\"http://example.com/logo.png\"),\n\t\t\tSupportEmail: pulumi.String(\"support@example.com\"),\n\t\t\tSupportUrl:   pulumi.String(\"http://example.com/support\"),\n\t\t\tAllowedLogoutUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"http://example.com/logout\"),\n\t\t\t},\n\t\t\tSessionLifetime: pulumi.Float64(8760),\n\t\t\tSandboxVersion:  pulumi.String(\"12\"),\n\t\t\tEnabledLocales: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"en\"),\n\t\t\t},\n\t\t\tDefaultRedirectionUri: pulumi.String(\"https://example.com/login\"),\n\t\t\tFlags: \u0026auth0.TenantFlagsArgs{\n\t\t\t\tDisableClickjackProtectionHeaders:  pulumi.Bool(true),\n\t\t\t\tEnablePublicSignupUserExistsError:  pulumi.Bool(true),\n\t\t\t\tUseScopeDescriptionsForConsent:     pulumi.Bool(true),\n\t\t\t\tNoDiscloseEnterpriseConnections:    pulumi.Bool(false),\n\t\t\t\tDisableManagementApiSmsObfuscation: pulumi.Bool(false),\n\t\t\t\tDisableFieldsMapFix:                pulumi.Bool(false),\n\t\t\t},\n\t\t\tSessionCookie: \u0026auth0.TenantSessionCookieArgs{\n\t\t\t\tMode: pulumi.String(\"non-persistent\"),\n\t\t\t},\n\t\t\tSessions: \u0026auth0.TenantSessionsArgs{\n\t\t\t\tOidcLogoutPromptEnabled: pulumi.Bool(false),\n\t\t\t},\n\t\t\tErrorPage: \u0026auth0.TenantErrorPageArgs{\n\t\t\t\tHtml:        pulumi.String(\"\u003chtml\u003e\u003c/html\u003e\"),\n\t\t\t\tShowLogLink: pulumi.Bool(false),\n\t\t\t\tUrl:         pulumi.String(\"https://example.com/error\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Tenant;\nimport com.pulumi.auth0.TenantArgs;\nimport com.pulumi.auth0.inputs.TenantFlagsArgs;\nimport com.pulumi.auth0.inputs.TenantSessionCookieArgs;\nimport com.pulumi.auth0.inputs.TenantSessionsArgs;\nimport com.pulumi.auth0.inputs.TenantErrorPageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myTenant = new Tenant(\"myTenant\", TenantArgs.builder()\n            .friendlyName(\"Tenant Name\")\n            .pictureUrl(\"http://example.com/logo.png\")\n            .supportEmail(\"support@example.com\")\n            .supportUrl(\"http://example.com/support\")\n            .allowedLogoutUrls(\"http://example.com/logout\")\n            .sessionLifetime(8760)\n            .sandboxVersion(\"12\")\n            .enabledLocales(\"en\")\n            .defaultRedirectionUri(\"https://example.com/login\")\n            .flags(TenantFlagsArgs.builder()\n                .disableClickjackProtectionHeaders(true)\n                .enablePublicSignupUserExistsError(true)\n                .useScopeDescriptionsForConsent(true)\n                .noDiscloseEnterpriseConnections(false)\n                .disableManagementApiSmsObfuscation(false)\n                .disableFieldsMapFix(false)\n                .build())\n            .sessionCookie(TenantSessionCookieArgs.builder()\n                .mode(\"non-persistent\")\n                .build())\n            .sessions(TenantSessionsArgs.builder()\n                .oidcLogoutPromptEnabled(false)\n                .build())\n            .errorPage(TenantErrorPageArgs.builder()\n                .html(\"\u003chtml\u003e\u003c/html\u003e\")\n                .showLogLink(false)\n                .url(\"https://example.com/error\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myTenant:\n    type: auth0:Tenant\n    name: my_tenant\n    properties:\n      friendlyName: Tenant Name\n      pictureUrl: http://example.com/logo.png\n      supportEmail: support@example.com\n      supportUrl: http://example.com/support\n      allowedLogoutUrls:\n        - http://example.com/logout\n      sessionLifetime: 8760\n      sandboxVersion: '12'\n      enabledLocales:\n        - en\n      defaultRedirectionUri: https://example.com/login\n      flags:\n        disableClickjackProtectionHeaders: true\n        enablePublicSignupUserExistsError: true\n        useScopeDescriptionsForConsent: true\n        noDiscloseEnterpriseConnections: false\n        disableManagementApiSmsObfuscation: false\n        disableFieldsMapFix: false\n      sessionCookie:\n        mode: non-persistent\n      sessions:\n        oidcLogoutPromptEnabled: false\n      errorPage:\n        html: \u003chtml\u003e\u003c/html\u003e\n        showLogLink: false\n        url: https://example.com/error\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAs this is not a resource identifiable by an ID within the Auth0 Management API,\n\ntenant can be imported using a random string.\n\n#\n\nWe recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)\n\n#\n\nExample:\n\n```sh\n$ pulumi import auth0:index/tenant:Tenant my_tenant \"82f4f21b-017a-319d-92e7-2291c1ca36c4\"\n```\n\n",
             "properties": {
                 "acrValuesSupporteds": {
                     "type": "array",
@@ -13749,6 +13895,10 @@
                     },
                     "description": "Supported locales for the user interface. The first locale in the list will be used to set the default locale.\n"
                 },
+                "errorPage": {
+                    "$ref": "#/types/auth0:index/TenantErrorPage:TenantErrorPage",
+                    "description": "Configuration for the error page\n"
+                },
                 "flags": {
                     "$ref": "#/types/auth0:index/TenantFlags:TenantFlags",
                     "description": "Configuration settings for tenant flags.\n"
@@ -13764,6 +13914,10 @@
                 "mtls": {
                     "$ref": "#/types/auth0:index/TenantMtls:TenantMtls",
                     "description": "Configuration for mTLS.\n"
+                },
+                "oidcLogout": {
+                    "$ref": "#/types/auth0:index/TenantOidcLogout:TenantOidcLogout",
+                    "description": "Settings related to OIDC RP-initiated Logout.\n"
                 },
                 "pictureUrl": {
                     "type": "string",
@@ -13811,6 +13965,7 @@
                 "flags",
                 "friendlyName",
                 "mtls",
+                "oidcLogout",
                 "pictureUrl",
                 "pushedAuthorizationRequestsSupported",
                 "sandboxVersion",
@@ -13865,6 +14020,10 @@
                     },
                     "description": "Supported locales for the user interface. The first locale in the list will be used to set the default locale.\n"
                 },
+                "errorPage": {
+                    "$ref": "#/types/auth0:index/TenantErrorPage:TenantErrorPage",
+                    "description": "Configuration for the error page\n"
+                },
                 "flags": {
                     "$ref": "#/types/auth0:index/TenantFlags:TenantFlags",
                     "description": "Configuration settings for tenant flags.\n"
@@ -13880,6 +14039,10 @@
                 "mtls": {
                     "$ref": "#/types/auth0:index/TenantMtls:TenantMtls",
                     "description": "Configuration for mTLS.\n"
+                },
+                "oidcLogout": {
+                    "$ref": "#/types/auth0:index/TenantOidcLogout:TenantOidcLogout",
+                    "description": "Settings related to OIDC RP-initiated Logout.\n"
                 },
                 "pictureUrl": {
                     "type": "string",
@@ -13962,6 +14125,10 @@
                         },
                         "description": "Supported locales for the user interface. The first locale in the list will be used to set the default locale.\n"
                     },
+                    "errorPage": {
+                        "$ref": "#/types/auth0:index/TenantErrorPage:TenantErrorPage",
+                        "description": "Configuration for the error page\n"
+                    },
                     "flags": {
                         "$ref": "#/types/auth0:index/TenantFlags:TenantFlags",
                         "description": "Configuration settings for tenant flags.\n"
@@ -13977,6 +14144,10 @@
                     "mtls": {
                         "$ref": "#/types/auth0:index/TenantMtls:TenantMtls",
                         "description": "Configuration for mTLS.\n"
+                    },
+                    "oidcLogout": {
+                        "$ref": "#/types/auth0:index/TenantOidcLogout:TenantOidcLogout",
+                        "description": "Settings related to OIDC RP-initiated Logout.\n"
                     },
                     "pictureUrl": {
                         "type": "string",
@@ -16371,6 +16542,13 @@
                         },
                         "type": "array"
                     },
+                    "errorPages": {
+                        "description": "Configuration for the error page\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getTenantErrorPage:getTenantErrorPage"
+                        },
+                        "type": "array"
+                    },
                     "flags": {
                         "description": "Configuration settings for tenant flags.\n",
                         "items": {
@@ -16398,6 +16576,13 @@
                         "description": "Configuration for mTLS.\n",
                         "items": {
                             "$ref": "#/types/auth0:index/getTenantMtl:getTenantMtl"
+                        },
+                        "type": "array"
+                    },
+                    "oidcLogouts": {
+                        "description": "Settings related to OIDC RP-initiated Logout.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getTenantOidcLogout:getTenantOidcLogout"
                         },
                         "type": "array"
                     },
@@ -16451,11 +16636,13 @@
                     "disableAcrValuesSupported",
                     "domain",
                     "enabledLocales",
+                    "errorPages",
                     "flags",
                     "friendlyName",
                     "idleSessionLifetime",
                     "managementApiIdentifier",
                     "mtls",
+                    "oidcLogouts",
                     "pictureUrl",
                     "pushedAuthorizationRequestsSupported",
                     "sandboxVersion",
