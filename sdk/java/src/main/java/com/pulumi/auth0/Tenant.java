@@ -6,8 +6,10 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.TenantArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.TenantState;
+import com.pulumi.auth0.outputs.TenantErrorPage;
 import com.pulumi.auth0.outputs.TenantFlags;
 import com.pulumi.auth0.outputs.TenantMtls;
+import com.pulumi.auth0.outputs.TenantOidcLogout;
 import com.pulumi.auth0.outputs.TenantSessionCookie;
 import com.pulumi.auth0.outputs.TenantSessions;
 import com.pulumi.core.Output;
@@ -42,6 +44,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.inputs.TenantFlagsArgs;
  * import com.pulumi.auth0.inputs.TenantSessionCookieArgs;
  * import com.pulumi.auth0.inputs.TenantSessionsArgs;
+ * import com.pulumi.auth0.inputs.TenantErrorPageArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -78,6 +81,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .sessions(TenantSessionsArgs.builder()
  *                 .oidcLogoutPromptEnabled(false)
+ *                 .build())
+ *             .errorPage(TenantErrorPageArgs.builder()
+ *                 .html("<html></html>")
+ *                 .showLogLink(false)
+ *                 .url("https://example.com/error")
  *                 .build())
  *             .build());
  * 
@@ -235,6 +243,20 @@ public class Tenant extends com.pulumi.resources.CustomResource {
         return this.enabledLocales;
     }
     /**
+     * Configuration for the error page
+     * 
+     */
+    @Export(name="errorPage", refs={TenantErrorPage.class}, tree="[0]")
+    private Output</* @Nullable */ TenantErrorPage> errorPage;
+
+    /**
+     * @return Configuration for the error page
+     * 
+     */
+    public Output<Optional<TenantErrorPage>> errorPage() {
+        return Codegen.optional(this.errorPage);
+    }
+    /**
      * Configuration settings for tenant flags.
      * 
      */
@@ -289,6 +311,20 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      */
     public Output<TenantMtls> mtls() {
         return this.mtls;
+    }
+    /**
+     * Settings related to OIDC RP-initiated Logout.
+     * 
+     */
+    @Export(name="oidcLogout", refs={TenantOidcLogout.class}, tree="[0]")
+    private Output<TenantOidcLogout> oidcLogout;
+
+    /**
+     * @return Settings related to OIDC RP-initiated Logout.
+     * 
+     */
+    public Output<TenantOidcLogout> oidcLogout() {
+        return this.oidcLogout;
     }
     /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.

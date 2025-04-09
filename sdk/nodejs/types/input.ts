@@ -52,11 +52,22 @@ export interface AttackProtectionBreachedPasswordDetection {
      */
     method?: pulumi.Input<string>;
     /**
+     * Configuration options that apply before every password change attempt.
+     */
+    preChangePassword?: pulumi.Input<inputs.AttackProtectionBreachedPasswordDetectionPreChangePassword>;
+    /**
      * Configuration options that apply before every user registration attempt. Only available on public tenants.
      */
     preUserRegistration?: pulumi.Input<inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistration>;
     /**
      * Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+     */
+    shields?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AttackProtectionBreachedPasswordDetectionPreChangePassword {
+    /**
+     * Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
      */
     shields?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -1357,6 +1368,10 @@ export interface ConnectionOptions {
      * Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
      */
     connectionSettings?: pulumi.Input<inputs.ConnectionOptionsConnectionSettings>;
+    /**
+     * Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+     */
+    customHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
      * A map of scripts used to integrate with a custom database.
      */
@@ -2906,6 +2921,21 @@ export interface SelfServiceProfileUserAttribute {
     name: pulumi.Input<string>;
 }
 
+export interface TenantErrorPage {
+    /**
+     * Custom Error HTML (Liquid syntax is supported)
+     */
+    html?: pulumi.Input<string>;
+    /**
+     * Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+     */
+    showLogLink?: pulumi.Input<boolean>;
+    /**
+     * URL to redirect to when an error occurs instead of showing the default error page
+     */
+    url?: pulumi.Input<string>;
+}
+
 export interface TenantFlags {
     /**
      * Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
@@ -3020,6 +3050,13 @@ export interface TenantMtls {
      * Enable mTLS endpoint aliases.
      */
     enableEndpointAliases?: pulumi.Input<boolean>;
+}
+
+export interface TenantOidcLogout {
+    /**
+     * Enable the end*session*endpoint URL in the .well-known discovery configuration.
+     */
+    rpLogoutEndSessionEndpointDiscovery: pulumi.Input<boolean>;
 }
 
 export interface TenantSessionCookie {

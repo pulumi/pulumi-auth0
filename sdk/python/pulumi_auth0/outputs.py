@@ -20,6 +20,7 @@ __all__ = [
     'ActionSecret',
     'ActionSupportedTriggers',
     'AttackProtectionBreachedPasswordDetection',
+    'AttackProtectionBreachedPasswordDetectionPreChangePassword',
     'AttackProtectionBreachedPasswordDetectionPreUserRegistration',
     'AttackProtectionBruteForceProtection',
     'AttackProtectionSuspiciousIpThrottling',
@@ -165,8 +166,10 @@ __all__ = [
     'SelfServiceProfileBranding',
     'SelfServiceProfileBrandingColors',
     'SelfServiceProfileUserAttribute',
+    'TenantErrorPage',
     'TenantFlags',
     'TenantMtls',
+    'TenantOidcLogout',
     'TenantSessionCookie',
     'TenantSessions',
     'TriggerActionsAction',
@@ -175,6 +178,7 @@ __all__ = [
     'GetActionSecretResult',
     'GetActionSupportedTriggerResult',
     'GetAttackProtectionBreachedPasswordDetectionResult',
+    'GetAttackProtectionBreachedPasswordDetectionPreChangePasswordResult',
     'GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationResult',
     'GetAttackProtectionBruteForceProtectionResult',
     'GetAttackProtectionSuspiciousIpThrottlingResult',
@@ -309,8 +313,10 @@ __all__ = [
     'GetSelfServiceProfileBrandingColorResult',
     'GetSelfServiceProfileUserAttributeResult',
     'GetSigningKeysSigningKeyResult',
+    'GetTenantErrorPageResult',
     'GetTenantFlagResult',
     'GetTenantMtlResult',
+    'GetTenantOidcLogoutResult',
     'GetTenantSessionResult',
     'GetTenantSessionCookyResult',
     'GetUserPermissionResult',
@@ -410,6 +416,8 @@ class AttackProtectionBreachedPasswordDetection(dict):
         suggest = None
         if key == "adminNotificationFrequencies":
             suggest = "admin_notification_frequencies"
+        elif key == "preChangePassword":
+            suggest = "pre_change_password"
         elif key == "preUserRegistration":
             suggest = "pre_user_registration"
 
@@ -428,12 +436,14 @@ class AttackProtectionBreachedPasswordDetection(dict):
                  enabled: bool,
                  admin_notification_frequencies: Optional[Sequence[str]] = None,
                  method: Optional[str] = None,
+                 pre_change_password: Optional['outputs.AttackProtectionBreachedPasswordDetectionPreChangePassword'] = None,
                  pre_user_registration: Optional['outputs.AttackProtectionBreachedPasswordDetectionPreUserRegistration'] = None,
                  shields: Optional[Sequence[str]] = None):
         """
         :param bool enabled: Whether breached password detection is active.
         :param Sequence[str] admin_notification_frequencies: When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
         :param str method: The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
+        :param 'AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs' pre_change_password: Configuration options that apply before every password change attempt.
         :param 'AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs' pre_user_registration: Configuration options that apply before every user registration attempt. Only available on public tenants.
         :param Sequence[str] shields: Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
         """
@@ -442,6 +452,8 @@ class AttackProtectionBreachedPasswordDetection(dict):
             pulumi.set(__self__, "admin_notification_frequencies", admin_notification_frequencies)
         if method is not None:
             pulumi.set(__self__, "method", method)
+        if pre_change_password is not None:
+            pulumi.set(__self__, "pre_change_password", pre_change_password)
         if pre_user_registration is not None:
             pulumi.set(__self__, "pre_user_registration", pre_user_registration)
         if shields is not None:
@@ -472,6 +484,14 @@ class AttackProtectionBreachedPasswordDetection(dict):
         return pulumi.get(self, "method")
 
     @property
+    @pulumi.getter(name="preChangePassword")
+    def pre_change_password(self) -> Optional['outputs.AttackProtectionBreachedPasswordDetectionPreChangePassword']:
+        """
+        Configuration options that apply before every password change attempt.
+        """
+        return pulumi.get(self, "pre_change_password")
+
+    @property
     @pulumi.getter(name="preUserRegistration")
     def pre_user_registration(self) -> Optional['outputs.AttackProtectionBreachedPasswordDetectionPreUserRegistration']:
         """
@@ -484,6 +504,25 @@ class AttackProtectionBreachedPasswordDetection(dict):
     def shields(self) -> Optional[Sequence[str]]:
         """
         Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+        """
+        return pulumi.get(self, "shields")
+
+
+@pulumi.output_type
+class AttackProtectionBreachedPasswordDetectionPreChangePassword(dict):
+    def __init__(__self__, *,
+                 shields: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] shields: Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+        """
+        if shields is not None:
+            pulumi.set(__self__, "shields", shields)
+
+    @property
+    @pulumi.getter
+    def shields(self) -> Optional[Sequence[str]]:
+        """
+        Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
         """
         return pulumi.get(self, "shields")
 
@@ -4961,6 +5000,8 @@ class ConnectionOptions(dict):
             suggest = "community_base_url"
         elif key == "connectionSettings":
             suggest = "connection_settings"
+        elif key == "customHeaders":
+            suggest = "custom_headers"
         elif key == "customScripts":
             suggest = "custom_scripts"
         elif key == "decryptionKey":
@@ -5119,6 +5160,7 @@ class ConnectionOptions(dict):
                  community_base_url: Optional[str] = None,
                  configuration: Optional[Mapping[str, str]] = None,
                  connection_settings: Optional['outputs.ConnectionOptionsConnectionSettings'] = None,
+                 custom_headers: Optional[Sequence[Mapping[str, str]]] = None,
                  custom_scripts: Optional[Mapping[str, str]] = None,
                  debug: Optional[bool] = None,
                  decryption_key: Optional['outputs.ConnectionOptionsDecryptionKey'] = None,
@@ -5216,6 +5258,7 @@ class ConnectionOptions(dict):
         :param str community_base_url: Salesforce community base URL.
         :param Mapping[str, str] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         :param 'ConnectionOptionsConnectionSettingsArgs' connection_settings: Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+        :param Sequence[Mapping[str, str]] custom_headers: Configure extra headers to the Token endpoint of an OAuth 2.0 provider
         :param Mapping[str, str] custom_scripts: A map of scripts used to integrate with a custom database.
         :param bool debug: When enabled, additional debug information will be generated.
         :param 'ConnectionOptionsDecryptionKeyArgs' decryption_key: The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
@@ -5328,6 +5371,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "configuration", configuration)
         if connection_settings is not None:
             pulumi.set(__self__, "connection_settings", connection_settings)
+        if custom_headers is not None:
+            pulumi.set(__self__, "custom_headers", custom_headers)
         if custom_scripts is not None:
             pulumi.set(__self__, "custom_scripts", custom_scripts)
         if debug is not None:
@@ -5610,6 +5655,14 @@ class ConnectionOptions(dict):
         Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
         """
         return pulumi.get(self, "connection_settings")
+
+    @property
+    @pulumi.getter(name="customHeaders")
+    def custom_headers(self) -> Optional[Sequence[Mapping[str, str]]]:
+        """
+        Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+        """
+        return pulumi.get(self, "custom_headers")
 
     @property
     @pulumi.getter(name="customScripts")
@@ -10305,6 +10358,66 @@ class SelfServiceProfileUserAttribute(dict):
 
 
 @pulumi.output_type
+class TenantErrorPage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "showLogLink":
+            suggest = "show_log_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TenantErrorPage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TenantErrorPage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TenantErrorPage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 html: Optional[str] = None,
+                 show_log_link: Optional[bool] = None,
+                 url: Optional[str] = None):
+        """
+        :param str html: Custom Error HTML (Liquid syntax is supported)
+        :param bool show_log_link: Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+        :param str url: URL to redirect to when an error occurs instead of showing the default error page
+        """
+        if html is not None:
+            pulumi.set(__self__, "html", html)
+        if show_log_link is not None:
+            pulumi.set(__self__, "show_log_link", show_log_link)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def html(self) -> Optional[str]:
+        """
+        Custom Error HTML (Liquid syntax is supported)
+        """
+        return pulumi.get(self, "html")
+
+    @property
+    @pulumi.getter(name="showLogLink")
+    def show_log_link(self) -> Optional[bool]:
+        """
+        Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+        """
+        return pulumi.get(self, "show_log_link")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        URL to redirect to when an error occurs instead of showing the default error page
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
 class TenantFlags(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -10726,6 +10839,41 @@ class TenantMtls(dict):
 
 
 @pulumi.output_type
+class TenantOidcLogout(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rpLogoutEndSessionEndpointDiscovery":
+            suggest = "rp_logout_end_session_endpoint_discovery"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TenantOidcLogout. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TenantOidcLogout.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TenantOidcLogout.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rp_logout_end_session_endpoint_discovery: bool):
+        """
+        :param bool rp_logout_end_session_endpoint_discovery: Enable the end*session*endpoint URL in the .well-known discovery configuration.
+        """
+        pulumi.set(__self__, "rp_logout_end_session_endpoint_discovery", rp_logout_end_session_endpoint_discovery)
+
+    @property
+    @pulumi.getter(name="rpLogoutEndSessionEndpointDiscovery")
+    def rp_logout_end_session_endpoint_discovery(self) -> bool:
+        """
+        Enable the end*session*endpoint URL in the .well-known discovery configuration.
+        """
+        return pulumi.get(self, "rp_logout_end_session_endpoint_discovery")
+
+
+@pulumi.output_type
 class TenantSessionCookie(dict):
     def __init__(__self__, *,
                  mode: Optional[str] = None):
@@ -10990,18 +11138,21 @@ class GetAttackProtectionBreachedPasswordDetectionResult(dict):
                  admin_notification_frequencies: Sequence[str],
                  enabled: bool,
                  method: str,
+                 pre_change_passwords: Sequence['outputs.GetAttackProtectionBreachedPasswordDetectionPreChangePasswordResult'],
                  pre_user_registrations: Sequence['outputs.GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationResult'],
                  shields: Sequence[str]):
         """
         :param Sequence[str] admin_notification_frequencies: When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
         :param bool enabled: Whether breached password detection is active.
         :param str method: The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
+        :param Sequence['GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArgs'] pre_change_passwords: Configuration options that apply before every password change attempt.
         :param Sequence['GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs'] pre_user_registrations: Configuration options that apply before every user registration attempt. Only available on public tenants.
         :param Sequence[str] shields: Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
         """
         pulumi.set(__self__, "admin_notification_frequencies", admin_notification_frequencies)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "method", method)
+        pulumi.set(__self__, "pre_change_passwords", pre_change_passwords)
         pulumi.set(__self__, "pre_user_registrations", pre_user_registrations)
         pulumi.set(__self__, "shields", shields)
 
@@ -11030,6 +11181,14 @@ class GetAttackProtectionBreachedPasswordDetectionResult(dict):
         return pulumi.get(self, "method")
 
     @property
+    @pulumi.getter(name="preChangePasswords")
+    def pre_change_passwords(self) -> Sequence['outputs.GetAttackProtectionBreachedPasswordDetectionPreChangePasswordResult']:
+        """
+        Configuration options that apply before every password change attempt.
+        """
+        return pulumi.get(self, "pre_change_passwords")
+
+    @property
     @pulumi.getter(name="preUserRegistrations")
     def pre_user_registrations(self) -> Sequence['outputs.GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationResult']:
         """
@@ -11042,6 +11201,24 @@ class GetAttackProtectionBreachedPasswordDetectionResult(dict):
     def shields(self) -> Sequence[str]:
         """
         Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+        """
+        return pulumi.get(self, "shields")
+
+
+@pulumi.output_type
+class GetAttackProtectionBreachedPasswordDetectionPreChangePasswordResult(dict):
+    def __init__(__self__, *,
+                 shields: Sequence[str]):
+        """
+        :param Sequence[str] shields: Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+        """
+        pulumi.set(__self__, "shields", shields)
+
+    @property
+    @pulumi.getter
+    def shields(self) -> Sequence[str]:
+        """
+        Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
         """
         return pulumi.get(self, "shields")
 
@@ -14606,6 +14783,7 @@ class GetConnectionOptionResult(dict):
                  community_base_url: str,
                  configuration: Mapping[str, str],
                  connection_settings: Sequence['outputs.GetConnectionOptionConnectionSettingResult'],
+                 custom_headers: Sequence[Mapping[str, str]],
                  custom_scripts: Mapping[str, str],
                  debug: bool,
                  decryption_keys: Sequence['outputs.GetConnectionOptionDecryptionKeyResult'],
@@ -14703,6 +14881,7 @@ class GetConnectionOptionResult(dict):
         :param str community_base_url: Salesforce community base URL.
         :param Mapping[str, str] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         :param Sequence['GetConnectionOptionConnectionSettingArgs'] connection_settings: Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+        :param Sequence[Mapping[str, str]] custom_headers: Configure extra headers to the Token endpoint of an OAuth 2.0 provider
         :param Mapping[str, str] custom_scripts: A map of scripts used to integrate with a custom database.
         :param bool debug: When enabled, additional debug information will be generated.
         :param Sequence['GetConnectionOptionDecryptionKeyArgs'] decryption_keys: The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
@@ -14800,6 +14979,7 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "community_base_url", community_base_url)
         pulumi.set(__self__, "configuration", configuration)
         pulumi.set(__self__, "connection_settings", connection_settings)
+        pulumi.set(__self__, "custom_headers", custom_headers)
         pulumi.set(__self__, "custom_scripts", custom_scripts)
         pulumi.set(__self__, "debug", debug)
         pulumi.set(__self__, "decryption_keys", decryption_keys)
@@ -15001,6 +15181,14 @@ class GetConnectionOptionResult(dict):
         Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
         """
         return pulumi.get(self, "connection_settings")
+
+    @property
+    @pulumi.getter(name="customHeaders")
+    def custom_headers(self) -> Sequence[Mapping[str, str]]:
+        """
+        Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+        """
+        return pulumi.get(self, "custom_headers")
 
     @property
     @pulumi.getter(name="customScripts")
@@ -17490,6 +17678,46 @@ class GetSigningKeysSigningKeyResult(dict):
 
 
 @pulumi.output_type
+class GetTenantErrorPageResult(dict):
+    def __init__(__self__, *,
+                 html: str,
+                 show_log_link: bool,
+                 url: str):
+        """
+        :param str html: Custom Error HTML (Liquid syntax is supported)
+        :param bool show_log_link: Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+        :param str url: URL to redirect to when an error occurs instead of showing the default error page
+        """
+        pulumi.set(__self__, "html", html)
+        pulumi.set(__self__, "show_log_link", show_log_link)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def html(self) -> str:
+        """
+        Custom Error HTML (Liquid syntax is supported)
+        """
+        return pulumi.get(self, "html")
+
+    @property
+    @pulumi.getter(name="showLogLink")
+    def show_log_link(self) -> bool:
+        """
+        Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+        """
+        return pulumi.get(self, "show_log_link")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        URL to redirect to when an error occurs instead of showing the default error page
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
 class GetTenantFlagResult(dict):
     def __init__(__self__, *,
                  allow_legacy_delegation_grant_types: bool,
@@ -17798,6 +18026,24 @@ class GetTenantMtlResult(dict):
         Enable mTLS endpoint aliases.
         """
         return pulumi.get(self, "enable_endpoint_aliases")
+
+
+@pulumi.output_type
+class GetTenantOidcLogoutResult(dict):
+    def __init__(__self__, *,
+                 rp_logout_end_session_endpoint_discovery: bool):
+        """
+        :param bool rp_logout_end_session_endpoint_discovery: Enable the end_session_endpoint URL in the .well-known discovery configuration.
+        """
+        pulumi.set(__self__, "rp_logout_end_session_endpoint_discovery", rp_logout_end_session_endpoint_discovery)
+
+    @property
+    @pulumi.getter(name="rpLogoutEndSessionEndpointDiscovery")
+    def rp_logout_end_session_endpoint_discovery(self) -> bool:
+        """
+        Enable the end_session_endpoint URL in the .well-known discovery configuration.
+        """
+        return pulumi.get(self, "rp_logout_end_session_endpoint_discovery")
 
 
 @pulumi.output_type

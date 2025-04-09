@@ -30,10 +30,12 @@ class TenantArgs:
                  default_redirection_uri: Optional[pulumi.Input[str]] = None,
                  disable_acr_values_supported: Optional[pulumi.Input[bool]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 error_page: Optional[pulumi.Input['TenantErrorPageArgs']] = None,
                  flags: Optional[pulumi.Input['TenantFlagsArgs']] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  idle_session_lifetime: Optional[pulumi.Input[float]] = None,
                  mtls: Optional[pulumi.Input['TenantMtlsArgs']] = None,
+                 oidc_logout: Optional[pulumi.Input['TenantOidcLogoutArgs']] = None,
                  picture_url: Optional[pulumi.Input[str]] = None,
                  pushed_authorization_requests_supported: Optional[pulumi.Input[bool]] = None,
                  sandbox_version: Optional[pulumi.Input[str]] = None,
@@ -53,10 +55,12 @@ class TenantArgs:
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input[bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        :param pulumi.Input['TenantErrorPageArgs'] error_page: Configuration for the error page
         :param pulumi.Input['TenantFlagsArgs'] flags: Configuration settings for tenant flags.
         :param pulumi.Input[str] friendly_name: Friendly name for the tenant.
         :param pulumi.Input[float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input['TenantMtlsArgs'] mtls: Configuration for mTLS.
+        :param pulumi.Input['TenantOidcLogoutArgs'] oidc_logout: Settings related to OIDC RP-initiated Logout.
         :param pulumi.Input[str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
         :param pulumi.Input[str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
@@ -84,6 +88,8 @@ class TenantArgs:
             pulumi.set(__self__, "disable_acr_values_supported", disable_acr_values_supported)
         if enabled_locales is not None:
             pulumi.set(__self__, "enabled_locales", enabled_locales)
+        if error_page is not None:
+            pulumi.set(__self__, "error_page", error_page)
         if flags is not None:
             pulumi.set(__self__, "flags", flags)
         if friendly_name is not None:
@@ -92,6 +98,8 @@ class TenantArgs:
             pulumi.set(__self__, "idle_session_lifetime", idle_session_lifetime)
         if mtls is not None:
             pulumi.set(__self__, "mtls", mtls)
+        if oidc_logout is not None:
+            pulumi.set(__self__, "oidc_logout", oidc_logout)
         if picture_url is not None:
             pulumi.set(__self__, "picture_url", picture_url)
         if pushed_authorization_requests_supported is not None:
@@ -218,6 +226,18 @@ class TenantArgs:
         pulumi.set(self, "enabled_locales", value)
 
     @property
+    @pulumi.getter(name="errorPage")
+    def error_page(self) -> Optional[pulumi.Input['TenantErrorPageArgs']]:
+        """
+        Configuration for the error page
+        """
+        return pulumi.get(self, "error_page")
+
+    @error_page.setter
+    def error_page(self, value: Optional[pulumi.Input['TenantErrorPageArgs']]):
+        pulumi.set(self, "error_page", value)
+
+    @property
     @pulumi.getter
     def flags(self) -> Optional[pulumi.Input['TenantFlagsArgs']]:
         """
@@ -264,6 +284,18 @@ class TenantArgs:
     @mtls.setter
     def mtls(self, value: Optional[pulumi.Input['TenantMtlsArgs']]):
         pulumi.set(self, "mtls", value)
+
+    @property
+    @pulumi.getter(name="oidcLogout")
+    def oidc_logout(self) -> Optional[pulumi.Input['TenantOidcLogoutArgs']]:
+        """
+        Settings related to OIDC RP-initiated Logout.
+        """
+        return pulumi.get(self, "oidc_logout")
+
+    @oidc_logout.setter
+    def oidc_logout(self, value: Optional[pulumi.Input['TenantOidcLogoutArgs']]):
+        pulumi.set(self, "oidc_logout", value)
 
     @property
     @pulumi.getter(name="pictureUrl")
@@ -374,10 +406,12 @@ class _TenantState:
                  default_redirection_uri: Optional[pulumi.Input[str]] = None,
                  disable_acr_values_supported: Optional[pulumi.Input[bool]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 error_page: Optional[pulumi.Input['TenantErrorPageArgs']] = None,
                  flags: Optional[pulumi.Input['TenantFlagsArgs']] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  idle_session_lifetime: Optional[pulumi.Input[float]] = None,
                  mtls: Optional[pulumi.Input['TenantMtlsArgs']] = None,
+                 oidc_logout: Optional[pulumi.Input['TenantOidcLogoutArgs']] = None,
                  picture_url: Optional[pulumi.Input[str]] = None,
                  pushed_authorization_requests_supported: Optional[pulumi.Input[bool]] = None,
                  sandbox_version: Optional[pulumi.Input[str]] = None,
@@ -397,10 +431,12 @@ class _TenantState:
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input[bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        :param pulumi.Input['TenantErrorPageArgs'] error_page: Configuration for the error page
         :param pulumi.Input['TenantFlagsArgs'] flags: Configuration settings for tenant flags.
         :param pulumi.Input[str] friendly_name: Friendly name for the tenant.
         :param pulumi.Input[float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input['TenantMtlsArgs'] mtls: Configuration for mTLS.
+        :param pulumi.Input['TenantOidcLogoutArgs'] oidc_logout: Settings related to OIDC RP-initiated Logout.
         :param pulumi.Input[str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
         :param pulumi.Input[str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
@@ -428,6 +464,8 @@ class _TenantState:
             pulumi.set(__self__, "disable_acr_values_supported", disable_acr_values_supported)
         if enabled_locales is not None:
             pulumi.set(__self__, "enabled_locales", enabled_locales)
+        if error_page is not None:
+            pulumi.set(__self__, "error_page", error_page)
         if flags is not None:
             pulumi.set(__self__, "flags", flags)
         if friendly_name is not None:
@@ -436,6 +474,8 @@ class _TenantState:
             pulumi.set(__self__, "idle_session_lifetime", idle_session_lifetime)
         if mtls is not None:
             pulumi.set(__self__, "mtls", mtls)
+        if oidc_logout is not None:
+            pulumi.set(__self__, "oidc_logout", oidc_logout)
         if picture_url is not None:
             pulumi.set(__self__, "picture_url", picture_url)
         if pushed_authorization_requests_supported is not None:
@@ -562,6 +602,18 @@ class _TenantState:
         pulumi.set(self, "enabled_locales", value)
 
     @property
+    @pulumi.getter(name="errorPage")
+    def error_page(self) -> Optional[pulumi.Input['TenantErrorPageArgs']]:
+        """
+        Configuration for the error page
+        """
+        return pulumi.get(self, "error_page")
+
+    @error_page.setter
+    def error_page(self, value: Optional[pulumi.Input['TenantErrorPageArgs']]):
+        pulumi.set(self, "error_page", value)
+
+    @property
     @pulumi.getter
     def flags(self) -> Optional[pulumi.Input['TenantFlagsArgs']]:
         """
@@ -608,6 +660,18 @@ class _TenantState:
     @mtls.setter
     def mtls(self, value: Optional[pulumi.Input['TenantMtlsArgs']]):
         pulumi.set(self, "mtls", value)
+
+    @property
+    @pulumi.getter(name="oidcLogout")
+    def oidc_logout(self) -> Optional[pulumi.Input['TenantOidcLogoutArgs']]:
+        """
+        Settings related to OIDC RP-initiated Logout.
+        """
+        return pulumi.get(self, "oidc_logout")
+
+    @oidc_logout.setter
+    def oidc_logout(self, value: Optional[pulumi.Input['TenantOidcLogoutArgs']]):
+        pulumi.set(self, "oidc_logout", value)
 
     @property
     @pulumi.getter(name="pictureUrl")
@@ -720,10 +784,12 @@ class Tenant(pulumi.CustomResource):
                  default_redirection_uri: Optional[pulumi.Input[str]] = None,
                  disable_acr_values_supported: Optional[pulumi.Input[bool]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 error_page: Optional[pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']]] = None,
                  flags: Optional[pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  idle_session_lifetime: Optional[pulumi.Input[float]] = None,
                  mtls: Optional[pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']]] = None,
+                 oidc_logout: Optional[pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']]] = None,
                  picture_url: Optional[pulumi.Input[str]] = None,
                  pushed_authorization_requests_supported: Optional[pulumi.Input[bool]] = None,
                  sandbox_version: Optional[pulumi.Input[str]] = None,
@@ -768,6 +834,11 @@ class Tenant(pulumi.CustomResource):
             },
             sessions={
                 "oidc_logout_prompt_enabled": False,
+            },
+            error_page={
+                "html": "<html></html>",
+                "show_log_link": False,
+                "url": "https://example.com/error",
             })
         ```
 
@@ -800,10 +871,12 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input[bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        :param pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']] error_page: Configuration for the error page
         :param pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']] flags: Configuration settings for tenant flags.
         :param pulumi.Input[str] friendly_name: Friendly name for the tenant.
         :param pulumi.Input[float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']] mtls: Configuration for mTLS.
+        :param pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']] oidc_logout: Settings related to OIDC RP-initiated Logout.
         :param pulumi.Input[str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
         :param pulumi.Input[str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
@@ -854,6 +927,11 @@ class Tenant(pulumi.CustomResource):
             },
             sessions={
                 "oidc_logout_prompt_enabled": False,
+            },
+            error_page={
+                "html": "<html></html>",
+                "show_log_link": False,
+                "url": "https://example.com/error",
             })
         ```
 
@@ -899,10 +977,12 @@ class Tenant(pulumi.CustomResource):
                  default_redirection_uri: Optional[pulumi.Input[str]] = None,
                  disable_acr_values_supported: Optional[pulumi.Input[bool]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 error_page: Optional[pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']]] = None,
                  flags: Optional[pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  idle_session_lifetime: Optional[pulumi.Input[float]] = None,
                  mtls: Optional[pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']]] = None,
+                 oidc_logout: Optional[pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']]] = None,
                  picture_url: Optional[pulumi.Input[str]] = None,
                  pushed_authorization_requests_supported: Optional[pulumi.Input[bool]] = None,
                  sandbox_version: Optional[pulumi.Input[str]] = None,
@@ -929,10 +1009,12 @@ class Tenant(pulumi.CustomResource):
             __props__.__dict__["default_redirection_uri"] = default_redirection_uri
             __props__.__dict__["disable_acr_values_supported"] = disable_acr_values_supported
             __props__.__dict__["enabled_locales"] = enabled_locales
+            __props__.__dict__["error_page"] = error_page
             __props__.__dict__["flags"] = flags
             __props__.__dict__["friendly_name"] = friendly_name
             __props__.__dict__["idle_session_lifetime"] = idle_session_lifetime
             __props__.__dict__["mtls"] = mtls
+            __props__.__dict__["oidc_logout"] = oidc_logout
             __props__.__dict__["picture_url"] = picture_url
             __props__.__dict__["pushed_authorization_requests_supported"] = pushed_authorization_requests_supported
             __props__.__dict__["sandbox_version"] = sandbox_version
@@ -960,10 +1042,12 @@ class Tenant(pulumi.CustomResource):
             default_redirection_uri: Optional[pulumi.Input[str]] = None,
             disable_acr_values_supported: Optional[pulumi.Input[bool]] = None,
             enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            error_page: Optional[pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']]] = None,
             flags: Optional[pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
             idle_session_lifetime: Optional[pulumi.Input[float]] = None,
             mtls: Optional[pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']]] = None,
+            oidc_logout: Optional[pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']]] = None,
             picture_url: Optional[pulumi.Input[str]] = None,
             pushed_authorization_requests_supported: Optional[pulumi.Input[bool]] = None,
             sandbox_version: Optional[pulumi.Input[str]] = None,
@@ -988,10 +1072,12 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input[bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        :param pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']] error_page: Configuration for the error page
         :param pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']] flags: Configuration settings for tenant flags.
         :param pulumi.Input[str] friendly_name: Friendly name for the tenant.
         :param pulumi.Input[float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']] mtls: Configuration for mTLS.
+        :param pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']] oidc_logout: Settings related to OIDC RP-initiated Logout.
         :param pulumi.Input[str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
         :param pulumi.Input[str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
@@ -1014,10 +1100,12 @@ class Tenant(pulumi.CustomResource):
         __props__.__dict__["default_redirection_uri"] = default_redirection_uri
         __props__.__dict__["disable_acr_values_supported"] = disable_acr_values_supported
         __props__.__dict__["enabled_locales"] = enabled_locales
+        __props__.__dict__["error_page"] = error_page
         __props__.__dict__["flags"] = flags
         __props__.__dict__["friendly_name"] = friendly_name
         __props__.__dict__["idle_session_lifetime"] = idle_session_lifetime
         __props__.__dict__["mtls"] = mtls
+        __props__.__dict__["oidc_logout"] = oidc_logout
         __props__.__dict__["picture_url"] = picture_url
         __props__.__dict__["pushed_authorization_requests_supported"] = pushed_authorization_requests_supported
         __props__.__dict__["sandbox_version"] = sandbox_version
@@ -1101,6 +1189,14 @@ class Tenant(pulumi.CustomResource):
         return pulumi.get(self, "enabled_locales")
 
     @property
+    @pulumi.getter(name="errorPage")
+    def error_page(self) -> pulumi.Output[Optional['outputs.TenantErrorPage']]:
+        """
+        Configuration for the error page
+        """
+        return pulumi.get(self, "error_page")
+
+    @property
     @pulumi.getter
     def flags(self) -> pulumi.Output['outputs.TenantFlags']:
         """
@@ -1131,6 +1227,14 @@ class Tenant(pulumi.CustomResource):
         Configuration for mTLS.
         """
         return pulumi.get(self, "mtls")
+
+    @property
+    @pulumi.getter(name="oidcLogout")
+    def oidc_logout(self) -> pulumi.Output['outputs.TenantOidcLogout']:
+        """
+        Settings related to OIDC RP-initiated Logout.
+        """
+        return pulumi.get(self, "oidc_logout")
 
     @property
     @pulumi.getter(name="pictureUrl")
