@@ -36,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.inputs.AttackProtectionBruteForceProtectionArgs;
  * import com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionArgs;
  * import com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs;
+ * import com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -83,6 +84,11 @@ import javax.annotation.Nullable;
  *                     "block")
  *                 .preUserRegistration(AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs.builder()
  *                     .shields("block")
+ *                     .build())
+ *                 .preChangePassword(AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs.builder()
+ *                     .shields(                    
+ *                         "block",
+ *                         "admin_notification")
  *                     .build())
  *                 .build())
  *             .build());

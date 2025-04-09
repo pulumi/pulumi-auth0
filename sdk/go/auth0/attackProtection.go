@@ -73,6 +73,12 @@ import (
 //							pulumi.String("block"),
 //						},
 //					},
+//					PreChangePassword: &auth0.AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs{
+//						Shields: pulumi.StringArray{
+//							pulumi.String("block"),
+//							pulumi.String("admin_notification"),
+//						},
+//					},
 //				},
 //			})
 //			if err != nil {

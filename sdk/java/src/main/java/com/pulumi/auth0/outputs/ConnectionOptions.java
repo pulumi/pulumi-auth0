@@ -107,6 +107,11 @@ public final class ConnectionOptions {
      */
     private @Nullable ConnectionOptionsConnectionSettings connectionSettings;
     /**
+     * @return Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+     * 
+     */
+    private @Nullable List<Map<String,String>> customHeaders;
+    /**
      * @return A map of scripts used to integrate with a custom database.
      * 
      */
@@ -617,6 +622,13 @@ public final class ConnectionOptions {
      */
     public Optional<ConnectionOptionsConnectionSettings> connectionSettings() {
         return Optional.ofNullable(this.connectionSettings);
+    }
+    /**
+     * @return Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+     * 
+     */
+    public List<Map<String,String>> customHeaders() {
+        return this.customHeaders == null ? List.of() : this.customHeaders;
     }
     /**
      * @return A map of scripts used to integrate with a custom database.
@@ -1210,6 +1222,7 @@ public final class ConnectionOptions {
         private @Nullable String communityBaseUrl;
         private @Nullable Map<String,String> configuration;
         private @Nullable ConnectionOptionsConnectionSettings connectionSettings;
+        private @Nullable List<Map<String,String>> customHeaders;
         private @Nullable Map<String,String> customScripts;
         private @Nullable Boolean debug;
         private @Nullable ConnectionOptionsDecryptionKey decryptionKey;
@@ -1309,6 +1322,7 @@ public final class ConnectionOptions {
     	      this.communityBaseUrl = defaults.communityBaseUrl;
     	      this.configuration = defaults.configuration;
     	      this.connectionSettings = defaults.connectionSettings;
+    	      this.customHeaders = defaults.customHeaders;
     	      this.customScripts = defaults.customScripts;
     	      this.debug = defaults.debug;
     	      this.decryptionKey = defaults.decryptionKey;
@@ -1489,6 +1503,12 @@ public final class ConnectionOptions {
         public Builder connectionSettings(@Nullable ConnectionOptionsConnectionSettings connectionSettings) {
 
             this.connectionSettings = connectionSettings;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customHeaders(@Nullable List<Map<String,String>> customHeaders) {
+
+            this.customHeaders = customHeaders;
             return this;
         }
         @CustomType.Setter
@@ -2012,6 +2032,7 @@ public final class ConnectionOptions {
             _resultValue.communityBaseUrl = communityBaseUrl;
             _resultValue.configuration = configuration;
             _resultValue.connectionSettings = connectionSettings;
+            _resultValue.customHeaders = customHeaders;
             _resultValue.customScripts = customScripts;
             _resultValue.debug = debug;
             _resultValue.decryptionKey = decryptionKey;

@@ -42,6 +42,11 @@ import * as utilities from "./utilities";
  *     sessions: {
  *         oidcLogoutPromptEnabled: false,
  *     },
+ *     errorPage: {
+ *         html: "<html></html>",
+ *         showLogLink: false,
+ *         url: "https://example.com/error",
+ *     },
  * });
  * ```
  *
@@ -128,6 +133,10 @@ export class Tenant extends pulumi.CustomResource {
      */
     public readonly enabledLocales!: pulumi.Output<string[]>;
     /**
+     * Configuration for the error page
+     */
+    public readonly errorPage!: pulumi.Output<outputs.TenantErrorPage | undefined>;
+    /**
      * Configuration settings for tenant flags.
      */
     public readonly flags!: pulumi.Output<outputs.TenantFlags>;
@@ -143,6 +152,10 @@ export class Tenant extends pulumi.CustomResource {
      * Configuration for mTLS.
      */
     public readonly mtls!: pulumi.Output<outputs.TenantMtls>;
+    /**
+     * Settings related to OIDC RP-initiated Logout.
+     */
+    public readonly oidcLogout!: pulumi.Output<outputs.TenantOidcLogout>;
     /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
@@ -198,10 +211,12 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["defaultRedirectionUri"] = state ? state.defaultRedirectionUri : undefined;
             resourceInputs["disableAcrValuesSupported"] = state ? state.disableAcrValuesSupported : undefined;
             resourceInputs["enabledLocales"] = state ? state.enabledLocales : undefined;
+            resourceInputs["errorPage"] = state ? state.errorPage : undefined;
             resourceInputs["flags"] = state ? state.flags : undefined;
             resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
             resourceInputs["idleSessionLifetime"] = state ? state.idleSessionLifetime : undefined;
             resourceInputs["mtls"] = state ? state.mtls : undefined;
+            resourceInputs["oidcLogout"] = state ? state.oidcLogout : undefined;
             resourceInputs["pictureUrl"] = state ? state.pictureUrl : undefined;
             resourceInputs["pushedAuthorizationRequestsSupported"] = state ? state.pushedAuthorizationRequestsSupported : undefined;
             resourceInputs["sandboxVersion"] = state ? state.sandboxVersion : undefined;
@@ -221,10 +236,12 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["defaultRedirectionUri"] = args ? args.defaultRedirectionUri : undefined;
             resourceInputs["disableAcrValuesSupported"] = args ? args.disableAcrValuesSupported : undefined;
             resourceInputs["enabledLocales"] = args ? args.enabledLocales : undefined;
+            resourceInputs["errorPage"] = args ? args.errorPage : undefined;
             resourceInputs["flags"] = args ? args.flags : undefined;
             resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
             resourceInputs["idleSessionLifetime"] = args ? args.idleSessionLifetime : undefined;
             resourceInputs["mtls"] = args ? args.mtls : undefined;
+            resourceInputs["oidcLogout"] = args ? args.oidcLogout : undefined;
             resourceInputs["pictureUrl"] = args ? args.pictureUrl : undefined;
             resourceInputs["pushedAuthorizationRequestsSupported"] = args ? args.pushedAuthorizationRequestsSupported : undefined;
             resourceInputs["sandboxVersion"] = args ? args.sandboxVersion : undefined;
@@ -280,6 +297,10 @@ export interface TenantState {
      */
     enabledLocales?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Configuration for the error page
+     */
+    errorPage?: pulumi.Input<inputs.TenantErrorPage>;
+    /**
      * Configuration settings for tenant flags.
      */
     flags?: pulumi.Input<inputs.TenantFlags>;
@@ -295,6 +316,10 @@ export interface TenantState {
      * Configuration for mTLS.
      */
     mtls?: pulumi.Input<inputs.TenantMtls>;
+    /**
+     * Settings related to OIDC RP-initiated Logout.
+     */
+    oidcLogout?: pulumi.Input<inputs.TenantOidcLogout>;
     /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
@@ -370,6 +395,10 @@ export interface TenantArgs {
      */
     enabledLocales?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Configuration for the error page
+     */
+    errorPage?: pulumi.Input<inputs.TenantErrorPage>;
+    /**
      * Configuration settings for tenant flags.
      */
     flags?: pulumi.Input<inputs.TenantFlags>;
@@ -385,6 +414,10 @@ export interface TenantArgs {
      * Configuration for mTLS.
      */
     mtls?: pulumi.Input<inputs.TenantMtls>;
+    /**
+     * Settings related to OIDC RP-initiated Logout.
+     */
+    oidcLogout?: pulumi.Input<inputs.TenantOidcLogout>;
     /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
