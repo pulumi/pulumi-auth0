@@ -84,8 +84,6 @@ import javax.annotation.Nullable;
  * 
  * &lt;organizationID&gt;::&lt;connectionID&gt;
  * 
- * # 
- * 
  * Example:
  * 
  * ```sh

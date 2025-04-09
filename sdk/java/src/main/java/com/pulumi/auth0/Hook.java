@@ -70,8 +70,6 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported by specifying the hook ID.
  * 
- * # 
- * 
  * Example:
  * 
  * ```sh

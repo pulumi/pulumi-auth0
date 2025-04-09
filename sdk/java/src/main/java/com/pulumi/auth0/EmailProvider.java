@@ -141,7 +141,8 @@ import javax.annotation.Nullable;
  *             .name("custom")
  *             .enabled(true)
  *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
- *             .credentials()
+ *             .credentials(EmailProviderCredentialsArgs.builder()
+ *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(customEmailProviderAction)
  *                 .build());
@@ -158,11 +159,7 @@ import javax.annotation.Nullable;
  * 
  * email can be imported using a random string.
  * 
- * # 
- * 
  * We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)
- * 
- * # 
  * 
  * Example:
  * 

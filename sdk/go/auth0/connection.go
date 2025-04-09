@@ -999,8 +999,6 @@ import (
 //
 // This resource can be imported by specifying the connection ID.
 //
-// #
-//
 // Example:
 //
 // ```sh

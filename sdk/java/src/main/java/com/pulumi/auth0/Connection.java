@@ -695,7 +695,7 @@ import javax.annotation.Nullable;
  *                 .useWsfed(false)
  *                 .waadProtocol("openid-connect")
  *                 .waadCommonEndpoint(false)
- *                 .maxGroupsToRetrieve(250)
+ *                 .maxGroupsToRetrieve("250")
  *                 .apiEnableUsers(true)
  *                 .scopes(                
  *                     "basic_profile",
@@ -1116,8 +1116,6 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * This resource can be imported by specifying the connection ID.
- * 
- * # 
  * 
  * Example:
  * 

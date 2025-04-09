@@ -55,8 +55,6 @@ namespace Pulumi.Auth0
     /// 
     /// &lt;resourceServerIdentifier&gt;::&lt;scope&gt;
     /// 
-    /// # 
-    /// 
     /// Example:
     /// 
     /// ```sh

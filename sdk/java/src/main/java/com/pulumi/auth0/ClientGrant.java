@@ -30,8 +30,6 @@ import javax.annotation.Nullable;
  * 
  * You can find this within the Management Dashboard in Application -&gt; APIs -&gt; Expand the required API.
  * 
- * # 
- * 
  * Example:
  * 
  * ```sh

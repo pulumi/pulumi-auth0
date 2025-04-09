@@ -22,8 +22,6 @@ import (
 //
 // # This resource can be imported by specifying the role ID
 //
-// #
-//
 // Example:
 //
 // ```sh

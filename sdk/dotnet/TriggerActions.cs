@@ -81,8 +81,6 @@ namespace Pulumi.Auth0
     /// 
     /// This resource can be imported using the bindings trigger ID.
     /// 
-    /// # 
-    /// 
     /// Example:
     /// 
     /// ```sh

@@ -44,8 +44,6 @@ import (
 //
 // Existing roles can be imported using their ID.
 //
-// #
-//
 // Example:
 //
 // ```sh

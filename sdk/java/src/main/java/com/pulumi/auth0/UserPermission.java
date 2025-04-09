@@ -28,8 +28,6 @@ import javax.annotation.Nullable;
  * 
  * &lt;userID&gt;::&lt;resourceServerIdentifier&gt;::&lt;permission&gt;
  * 
- * # 
- * 
  * Example:
  * 
  * ```sh

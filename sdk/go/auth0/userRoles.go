@@ -69,8 +69,6 @@ import (
 //
 // This resource can be imported using the user ID.
 //
-// #
-//
 // Example:
 //
 // ```sh

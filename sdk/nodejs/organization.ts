@@ -38,8 +38,6 @@ import * as utilities from "./utilities";
  *
  * This resource can be imported by specifying the organization ID.
  *
- * # 
- *
  * Example:
  *
  * ```sh

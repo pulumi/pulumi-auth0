@@ -56,8 +56,6 @@ import javax.annotation.Nullable;
  * 
  * Existing roles can be imported using their ID.
  * 
- * # 
- * 
  * Example:
  * 
  * ```sh

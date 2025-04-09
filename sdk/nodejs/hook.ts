@@ -36,8 +36,6 @@ import * as utilities from "./utilities";
  *
  * This resource can be imported by specifying the hook ID.
  *
- * # 
- *
  * Example:
  *
  * ```sh

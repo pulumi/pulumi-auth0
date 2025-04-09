@@ -60,8 +60,6 @@ namespace Pulumi.Auth0
     /// 
     /// &lt;trigger&gt;::&lt;actionID&gt;
     /// 
-    /// # 
-    /// 
     /// Example:
     /// 
     /// ```sh

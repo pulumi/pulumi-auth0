@@ -77,8 +77,6 @@ import javax.annotation.Nullable;
  * 
  * &lt;resourceServerIdentifier&gt;::&lt;scope&gt;
  * 
- * # 
- * 
  * Example:
  * 
  * ```sh
