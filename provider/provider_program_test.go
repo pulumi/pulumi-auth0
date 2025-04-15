@@ -17,8 +17,10 @@ import (
 	"github.com/pulumi/providertest/pulumitest/opttest"
 )
 
-const providerName = "auth0"
-const defaultBaselineVersion = "3.3.1"
+const (
+	providerName           = "auth0"
+	defaultBaselineVersion = "3.3.1"
+)
 
 var programs = []string{
 	"test-programs/index_role",
@@ -74,4 +76,16 @@ func TestProgramsUpgrade(t *testing.T) {
 			testProviderUpgrade(t, p)
 		})
 	}
+}
+
+// Regression test for https://github.com/pulumi/pulumi-auth0/issues/657
+func TestOrganizationConnection(t *testing.T) {
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
+
+	pt := pulumitest.NewPulumiTest(t, "test-programs/organization_connection",
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.SkipInstall(),
+	)
+	pt.Up(t)
 }
