@@ -1,0 +1,18 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Venelin <venelin@pulumi.com>
+Date: Tue, 15 Apr 2025 10:10:45 +0300
+Subject: [PATCH] patch default on organization_connection
+
+
+diff --git a/internal/auth0/organization/resource_connection.go b/internal/auth0/organization/resource_connection.go
+index 85619bb9..297a7bc9 100644
+--- a/internal/auth0/organization/resource_connection.go
++++ b/internal/auth0/organization/resource_connection.go
+@@ -44,7 +44,6 @@ func NewConnectionResource() *schema.Resource {
+ 			"is_signup_enabled": {
+ 				Type:     schema.TypeBool,
+ 				Optional: true,
+-				Default:  false,
+ 				Description: "Determines whether organization sign-up should be enabled for this " +
+ 					"organization connection. Only applicable for database connections. " +
+ 					"Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.",
