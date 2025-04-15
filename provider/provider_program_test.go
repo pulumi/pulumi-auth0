@@ -78,6 +78,7 @@ func TestProgramsUpgrade(t *testing.T) {
 	}
 }
 
+// Regression test for https://github.com/pulumi/pulumi-auth0/issues/657
 func TestOrganizationConnection(t *testing.T) {
 	cwd, err := os.Getwd()
 	require.NoError(t, err)
