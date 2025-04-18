@@ -160,6 +160,11 @@ export const getForm: typeof import("./getForm").getForm = null as any;
 export const getFormOutput: typeof import("./getForm").getFormOutput = null as any;
 utilities.lazyLoad(exports, ["getForm","getFormOutput"], () => require("./getForm"));
 
+export { GetNetworkAclArgs, GetNetworkAclResult, GetNetworkAclOutputArgs } from "./getNetworkAcl";
+export const getNetworkAcl: typeof import("./getNetworkAcl").getNetworkAcl = null as any;
+export const getNetworkAclOutput: typeof import("./getNetworkAcl").getNetworkAclOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkAcl","getNetworkAclOutput"], () => require("./getNetworkAcl"));
+
 export { GetOrganizationArgs, GetOrganizationResult, GetOrganizationOutputArgs } from "./getOrganization";
 export const getOrganization: typeof import("./getOrganization").getOrganization = null as any;
 export const getOrganizationOutput: typeof import("./getOrganization").getOrganizationOutput = null as any;
@@ -234,6 +239,11 @@ export { LogStreamArgs, LogStreamState } from "./logStream";
 export type LogStream = import("./logStream").LogStream;
 export const LogStream: typeof import("./logStream").LogStream = null as any;
 utilities.lazyLoad(exports, ["LogStream"], () => require("./logStream"));
+
+export { NetworkAclArgs, NetworkAclState } from "./networkAcl";
+export type NetworkAcl = import("./networkAcl").NetworkAcl;
+export const NetworkAcl: typeof import("./networkAcl").NetworkAcl = null as any;
+utilities.lazyLoad(exports, ["NetworkAcl"], () => require("./networkAcl"));
 
 export { OrganizationArgs, OrganizationState } from "./organization";
 export type Organization = import("./organization").Organization;
@@ -473,6 +483,8 @@ const _module = {
                 return new Hook(name, <any>undefined, { urn })
             case "auth0:index/logStream:LogStream":
                 return new LogStream(name, <any>undefined, { urn })
+            case "auth0:index/networkAcl:NetworkAcl":
+                return new NetworkAcl(name, <any>undefined, { urn })
             case "auth0:index/organization:Organization":
                 return new Organization(name, <any>undefined, { urn })
             case "auth0:index/organizationClientGrant:OrganizationClientGrant":
@@ -570,6 +582,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/form", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/guardian", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/hook", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/logStream", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/networkAcl", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organization", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationClientGrant", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationConnection", _module)
