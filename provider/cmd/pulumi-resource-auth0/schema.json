@@ -3587,6 +3587,178 @@
                 }
             }
         },
+        "auth0:index/NetworkAclRule:NetworkAclRule": {
+            "properties": {
+                "action": {
+                    "$ref": "#/types/auth0:index/NetworkAclRuleAction:NetworkAclRuleAction",
+                    "description": "The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.\n"
+                },
+                "match": {
+                    "$ref": "#/types/auth0:index/NetworkAclRuleMatch:NetworkAclRuleMatch",
+                    "description": "The configuration for the Network ACL Rule\n"
+                },
+                "notMatch": {
+                    "$ref": "#/types/auth0:index/NetworkAclRuleNotMatch:NetworkAclRuleNotMatch",
+                    "description": "The configuration for the Network ACL Rule\n"
+                },
+                "scope": {
+                    "type": "string",
+                    "description": "The scope of the Network ACL Rule\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "scope"
+            ]
+        },
+        "auth0:index/NetworkAclRuleAction:NetworkAclRuleAction": {
+            "properties": {
+                "allow": {
+                    "type": "boolean",
+                    "description": "If true, allows the request. When using allow action, no other properties should be set.\n"
+                },
+                "block": {
+                    "type": "boolean",
+                    "description": "If true, blocks the request. When using block action, no other properties should be set.\n"
+                },
+                "log": {
+                    "type": "boolean",
+                    "description": "If true, logs the request. When using log action, no other properties should be set.\n"
+                },
+                "redirect": {
+                    "type": "boolean",
+                    "description": "If true, redirects the request. When using redirect action, redirect_uri must also be specified.\n"
+                },
+                "redirectUri": {
+                    "type": "string",
+                    "description": "The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/NetworkAclRuleMatch:NetworkAclRuleMatch": {
+            "properties": {
+                "asns": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "ASNs. Must contain between 1 and 10 unique items.\n"
+                },
+                "geoCountryCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Geo Country Codes. Must contain between 1 and 10 unique items.\n"
+                },
+                "geoSubdivisionCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Geo Subdivision Codes. Must contain between 1 and 10 unique items.\n"
+                },
+                "ipv4Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.\n"
+                },
+                "ipv6Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.\n"
+                },
+                "ja3Fingerprints": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "JA3 Fingerprints. Must contain between 1 and 10 unique items.\n"
+                },
+                "ja4Fingerprints": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "JA4 Fingerprints. Must contain between 1 and 10 unique items.\n"
+                },
+                "userAgents": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "User Agents. Must contain between 1 and 10 unique items.\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/NetworkAclRuleNotMatch:NetworkAclRuleNotMatch": {
+            "properties": {
+                "asns": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "ASNs. Must contain between 1 and 10 unique items.\n"
+                },
+                "geoCountryCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Geo Country Codes. Must contain between 1 and 10 unique items.\n"
+                },
+                "geoSubdivisionCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Geo Subdivision Codes. Must contain between 1 and 10 unique items.\n"
+                },
+                "ipv4Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.\n"
+                },
+                "ipv6Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.\n"
+                },
+                "ja3Fingerprints": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "JA3 Fingerprints. Must contain between 1 and 10 unique items.\n"
+                },
+                "ja4Fingerprints": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "JA4 Fingerprints. Must contain between 1 and 10 unique items.\n"
+                },
+                "userAgents": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "User Agents. Must contain between 1 and 10 unique items.\n"
+                }
+            },
+            "type": "object"
+        },
         "auth0:index/OrganizationBranding:OrganizationBranding": {
             "properties": {
                 "colors": {
@@ -8341,6 +8513,236 @@
                 }
             }
         },
+        "auth0:index/getNetworkAclRule:getNetworkAclRule": {
+            "properties": {
+                "actions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getNetworkAclRuleAction:getNetworkAclRuleAction"
+                    },
+                    "description": "The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.\n"
+                },
+                "matches": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getNetworkAclRuleMatch:getNetworkAclRuleMatch"
+                    },
+                    "description": "The configuration for the Network ACL Rule\n"
+                },
+                "notMatches": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getNetworkAclRuleNotMatch:getNetworkAclRuleNotMatch"
+                    },
+                    "description": "The configuration for the Network ACL Rule\n"
+                },
+                "scope": {
+                    "type": "string",
+                    "description": "The scope of the Network ACL Rule\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "actions",
+                "matches",
+                "notMatches",
+                "scope"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getNetworkAclRuleAction:getNetworkAclRuleAction": {
+            "properties": {
+                "allow": {
+                    "type": "boolean",
+                    "description": "If true, allows the request. When using allow action, no other properties should be set.\n"
+                },
+                "block": {
+                    "type": "boolean",
+                    "description": "If true, blocks the request. When using block action, no other properties should be set.\n"
+                },
+                "log": {
+                    "type": "boolean",
+                    "description": "If true, logs the request. When using log action, no other properties should be set.\n"
+                },
+                "redirect": {
+                    "type": "boolean",
+                    "description": "If true, redirects the request. When using redirect action, redirect_uri must also be specified.\n"
+                },
+                "redirectUri": {
+                    "type": "string",
+                    "description": "The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "allow",
+                "block",
+                "log",
+                "redirect",
+                "redirectUri"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getNetworkAclRuleMatch:getNetworkAclRuleMatch": {
+            "properties": {
+                "asns": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "ASNs. Must contain between 1 and 10 unique items.\n"
+                },
+                "geoCountryCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Geo Country Codes. Must contain between 1 and 10 unique items.\n"
+                },
+                "geoSubdivisionCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Geo Subdivision Codes. Must contain between 1 and 10 unique items.\n"
+                },
+                "ipv4Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.\n"
+                },
+                "ipv6Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.\n"
+                },
+                "ja3Fingerprints": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "JA3 Fingerprints. Must contain between 1 and 10 unique items.\n"
+                },
+                "ja4Fingerprints": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "JA4 Fingerprints. Must contain between 1 and 10 unique items.\n"
+                },
+                "userAgents": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "User Agents. Must contain between 1 and 10 unique items.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "asns",
+                "geoCountryCodes",
+                "geoSubdivisionCodes",
+                "ipv4Cidrs",
+                "ipv6Cidrs",
+                "ja3Fingerprints",
+                "ja4Fingerprints",
+                "userAgents"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getNetworkAclRuleNotMatch:getNetworkAclRuleNotMatch": {
+            "properties": {
+                "asns": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "ASNs. Must contain between 1 and 10 unique items.\n"
+                },
+                "geoCountryCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Geo Country Codes. Must contain between 1 and 10 unique items.\n"
+                },
+                "geoSubdivisionCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Geo Subdivision Codes. Must contain between 1 and 10 unique items.\n"
+                },
+                "ipv4Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.\n"
+                },
+                "ipv6Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.\n"
+                },
+                "ja3Fingerprints": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "JA3 Fingerprints. Must contain between 1 and 10 unique items.\n"
+                },
+                "ja4Fingerprints": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "JA4 Fingerprints. Must contain between 1 and 10 unique items.\n"
+                },
+                "userAgents": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "User Agents. Must contain between 1 and 10 unique items.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "asns",
+                "geoCountryCodes",
+                "geoSubdivisionCodes",
+                "ipv4Cidrs",
+                "ipv6Cidrs",
+                "ja3Fingerprints",
+                "ja4Fingerprints",
+                "userAgents"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getOrganizationBranding:getOrganizationBranding": {
             "properties": {
                 "colors": {
@@ -11871,6 +12273,79 @@
                 "type": "object"
             }
         },
+        "auth0:index/networkAcl:NetworkAcl": {
+            "description": "With this resource, you can create and manage NetworkACLs for a tenant.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Example of auth0_network_acl with match criteria\nconst myNetworkAclMatch = new auth0.NetworkAcl(\"my_network_acl_match\", {\n    description: \"Example with match network ACL\",\n    active: true,\n    priority: 1,\n    rule: {\n        action: {\n            allow: true,\n        },\n        scope: \"management\",\n        match: {\n            geoCountryCodes: [\n                \"US\",\n                \"CA\",\n            ],\n            geoSubdivisionCodes: [\n                \"US-NY\",\n                \"CA-ON\",\n            ],\n        },\n    },\n});\n// Example of auth0_network_acl with not-match criteria\nconst myNetworkAclNotMatch = new auth0.NetworkAcl(\"my_network_acl_not_match\", {\n    description: \"Example with not match network ACL\",\n    active: true,\n    priority: 3,\n    rule: {\n        action: {\n            log: true,\n        },\n        scope: \"authentication\",\n        notMatch: {\n            asns: [9876],\n            ipv4Cidrs: [\n                \"192.168.1.0/24\",\n                \"10.0.0.0/8\",\n            ],\n            ipv6Cidrs: [\"2001:db8::/32\"],\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Example of auth0_network_acl with match criteria\nmy_network_acl_match = auth0.NetworkAcl(\"my_network_acl_match\",\n    description=\"Example with match network ACL\",\n    active=True,\n    priority=1,\n    rule={\n        \"action\": {\n            \"allow\": True,\n        },\n        \"scope\": \"management\",\n        \"match\": {\n            \"geo_country_codes\": [\n                \"US\",\n                \"CA\",\n            ],\n            \"geo_subdivision_codes\": [\n                \"US-NY\",\n                \"CA-ON\",\n            ],\n        },\n    })\n# Example of auth0_network_acl with not-match criteria\nmy_network_acl_not_match = auth0.NetworkAcl(\"my_network_acl_not_match\",\n    description=\"Example with not match network ACL\",\n    active=True,\n    priority=3,\n    rule={\n        \"action\": {\n            \"log\": True,\n        },\n        \"scope\": \"authentication\",\n        \"not_match\": {\n            \"asns\": [9876],\n            \"ipv4_cidrs\": [\n                \"192.168.1.0/24\",\n                \"10.0.0.0/8\",\n            ],\n            \"ipv6_cidrs\": [\"2001:db8::/32\"],\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Example of auth0_network_acl with match criteria\n    var myNetworkAclMatch = new Auth0.NetworkAcl(\"my_network_acl_match\", new()\n    {\n        Description = \"Example with match network ACL\",\n        Active = true,\n        Priority = 1,\n        Rule = new Auth0.Inputs.NetworkAclRuleArgs\n        {\n            Action = new Auth0.Inputs.NetworkAclRuleActionArgs\n            {\n                Allow = true,\n            },\n            Scope = \"management\",\n            Match = new Auth0.Inputs.NetworkAclRuleMatchArgs\n            {\n                GeoCountryCodes = new[]\n                {\n                    \"US\",\n                    \"CA\",\n                },\n                GeoSubdivisionCodes = new[]\n                {\n                    \"US-NY\",\n                    \"CA-ON\",\n                },\n            },\n        },\n    });\n\n    // Example of auth0_network_acl with not-match criteria\n    var myNetworkAclNotMatch = new Auth0.NetworkAcl(\"my_network_acl_not_match\", new()\n    {\n        Description = \"Example with not match network ACL\",\n        Active = true,\n        Priority = 3,\n        Rule = new Auth0.Inputs.NetworkAclRuleArgs\n        {\n            Action = new Auth0.Inputs.NetworkAclRuleActionArgs\n            {\n                Log = true,\n            },\n            Scope = \"authentication\",\n            NotMatch = new Auth0.Inputs.NetworkAclRuleNotMatchArgs\n            {\n                Asns = new[]\n                {\n                    9876,\n                },\n                Ipv4Cidrs = new[]\n                {\n                    \"192.168.1.0/24\",\n                    \"10.0.0.0/8\",\n                },\n                Ipv6Cidrs = new[]\n                {\n                    \"2001:db8::/32\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Example of auth0_network_acl with match criteria\n\t\t_, err := auth0.NewNetworkAcl(ctx, \"my_network_acl_match\", \u0026auth0.NetworkAclArgs{\n\t\t\tDescription: pulumi.String(\"Example with match network ACL\"),\n\t\t\tActive:      pulumi.Bool(true),\n\t\t\tPriority:    pulumi.Int(1),\n\t\t\tRule: \u0026auth0.NetworkAclRuleArgs{\n\t\t\t\tAction: \u0026auth0.NetworkAclRuleActionArgs{\n\t\t\t\t\tAllow: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tScope: pulumi.String(\"management\"),\n\t\t\t\tMatch: \u0026auth0.NetworkAclRuleMatchArgs{\n\t\t\t\t\tGeoCountryCodes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"US\"),\n\t\t\t\t\t\tpulumi.String(\"CA\"),\n\t\t\t\t\t},\n\t\t\t\t\tGeoSubdivisionCodes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"US-NY\"),\n\t\t\t\t\t\tpulumi.String(\"CA-ON\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Example of auth0_network_acl with not-match criteria\n\t\t_, err = auth0.NewNetworkAcl(ctx, \"my_network_acl_not_match\", \u0026auth0.NetworkAclArgs{\n\t\t\tDescription: pulumi.String(\"Example with not match network ACL\"),\n\t\t\tActive:      pulumi.Bool(true),\n\t\t\tPriority:    pulumi.Int(3),\n\t\t\tRule: \u0026auth0.NetworkAclRuleArgs{\n\t\t\t\tAction: \u0026auth0.NetworkAclRuleActionArgs{\n\t\t\t\t\tLog: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tScope: pulumi.String(\"authentication\"),\n\t\t\t\tNotMatch: \u0026auth0.NetworkAclRuleNotMatchArgs{\n\t\t\t\t\tAsns: pulumi.IntArray{\n\t\t\t\t\t\tpulumi.Int(9876),\n\t\t\t\t\t},\n\t\t\t\t\tIpv4Cidrs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"192.168.1.0/24\"),\n\t\t\t\t\t\tpulumi.String(\"10.0.0.0/8\"),\n\t\t\t\t\t},\n\t\t\t\t\tIpv6Cidrs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"2001:db8::/32\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.NetworkAcl;\nimport com.pulumi.auth0.NetworkAclArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleActionArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleMatchArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleNotMatchArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Example of auth0_network_acl with match criteria\n        var myNetworkAclMatch = new NetworkAcl(\"myNetworkAclMatch\", NetworkAclArgs.builder()\n            .description(\"Example with match network ACL\")\n            .active(true)\n            .priority(1)\n            .rule(NetworkAclRuleArgs.builder()\n                .action(NetworkAclRuleActionArgs.builder()\n                    .allow(true)\n                    .build())\n                .scope(\"management\")\n                .match(NetworkAclRuleMatchArgs.builder()\n                    .geoCountryCodes(                    \n                        \"US\",\n                        \"CA\")\n                    .geoSubdivisionCodes(                    \n                        \"US-NY\",\n                        \"CA-ON\")\n                    .build())\n                .build())\n            .build());\n\n        // Example of auth0_network_acl with not-match criteria\n        var myNetworkAclNotMatch = new NetworkAcl(\"myNetworkAclNotMatch\", NetworkAclArgs.builder()\n            .description(\"Example with not match network ACL\")\n            .active(true)\n            .priority(3)\n            .rule(NetworkAclRuleArgs.builder()\n                .action(NetworkAclRuleActionArgs.builder()\n                    .log(true)\n                    .build())\n                .scope(\"authentication\")\n                .notMatch(NetworkAclRuleNotMatchArgs.builder()\n                    .asns(9876)\n                    .ipv4Cidrs(                    \n                        \"192.168.1.0/24\",\n                        \"10.0.0.0/8\")\n                    .ipv6Cidrs(\"2001:db8::/32\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Example of auth0_network_acl with match criteria\n  myNetworkAclMatch:\n    type: auth0:NetworkAcl\n    name: my_network_acl_match\n    properties:\n      description: Example with match network ACL\n      active: true\n      priority: 1\n      rule:\n        action:\n          allow: true\n        scope: management\n        match:\n          geoCountryCodes:\n            - US\n            - CA\n          geoSubdivisionCodes:\n            - US-NY\n            - CA-ON\n  # Example of auth0_network_acl with not-match criteria\n  myNetworkAclNotMatch:\n    type: auth0:NetworkAcl\n    name: my_network_acl_not_match\n    properties:\n      description: Example with not match network ACL\n      active: true\n      priority: 3\n      rule:\n        action:\n          log: true\n        scope: authentication\n        notMatch:\n          asns:\n            - 9876\n          ipv4Cidrs:\n            - 192.168.1.0/24\n            - 10.0.0.0/8\n          ipv6Cidrs:\n            - 2001:db8::/32\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the network acl ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/networkAcl:NetworkAcl my_network_acl \"167f9a50-4444-3333-1111-ndfdaf953ab4\"\n```\n\n",
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Whether the Network ACL is active\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the Network ACL\n"
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "The priority of the Network ACL. Must be unique between 1 and 10.\n"
+                },
+                "rule": {
+                    "$ref": "#/types/auth0:index/NetworkAclRule:NetworkAclRule",
+                    "description": "The rule of the Network ACL\n"
+                }
+            },
+            "required": [
+                "active",
+                "description",
+                "priority",
+                "rule"
+            ],
+            "inputProperties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Whether the Network ACL is active\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the Network ACL\n"
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "The priority of the Network ACL. Must be unique between 1 and 10.\n"
+                },
+                "rule": {
+                    "$ref": "#/types/auth0:index/NetworkAclRule:NetworkAclRule",
+                    "description": "The rule of the Network ACL\n"
+                }
+            },
+            "requiredInputs": [
+                "active",
+                "description",
+                "priority",
+                "rule"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering NetworkAcl resources.\n",
+                "properties": {
+                    "active": {
+                        "type": "boolean",
+                        "description": "Whether the Network ACL is active\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the Network ACL\n"
+                    },
+                    "priority": {
+                        "type": "integer",
+                        "description": "The priority of the Network ACL. Must be unique between 1 and 10.\n"
+                    },
+                    "rule": {
+                        "$ref": "#/types/auth0:index/NetworkAclRule:NetworkAclRule",
+                        "description": "The rule of the Network ACL\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "auth0:index/organization:Organization": {
             "description": "The Organizations feature represents a broad update to the Auth0 platform that allows our business-to-business (B2B) customers to better manage their partners and customers, and to customize the ways that end-users access their applications. Auth0 customers can use Organizations to:\n\n  - Represent their business customers and partners in Auth0 and manage their\n    membership.\n  - Configure branded, federated login flows for each business.\n  - Build administration capabilities into their products, using Organizations\n    APIs, so that those businesses can manage their own organizations.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myOrganization = new auth0.Organization(\"my_organization\", {\n    name: \"auth0-inc\",\n    displayName: \"Auth0 Inc.\",\n    branding: {\n        logoUrl: \"https://example.com/assets/icons/icon.png\",\n        colors: {\n            primary: \"#f2f2f2\",\n            page_background: \"#e1e1e1\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_organization = auth0.Organization(\"my_organization\",\n    name=\"auth0-inc\",\n    display_name=\"Auth0 Inc.\",\n    branding={\n        \"logo_url\": \"https://example.com/assets/icons/icon.png\",\n        \"colors\": {\n            \"primary\": \"#f2f2f2\",\n            \"page_background\": \"#e1e1e1\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myOrganization = new Auth0.Organization(\"my_organization\", new()\n    {\n        Name = \"auth0-inc\",\n        DisplayName = \"Auth0 Inc.\",\n        Branding = new Auth0.Inputs.OrganizationBrandingArgs\n        {\n            LogoUrl = \"https://example.com/assets/icons/icon.png\",\n            Colors = \n            {\n                { \"primary\", \"#f2f2f2\" },\n                { \"page_background\", \"#e1e1e1\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewOrganization(ctx, \"my_organization\", \u0026auth0.OrganizationArgs{\n\t\t\tName:        pulumi.String(\"auth0-inc\"),\n\t\t\tDisplayName: pulumi.String(\"Auth0 Inc.\"),\n\t\t\tBranding: \u0026auth0.OrganizationBrandingArgs{\n\t\t\t\tLogoUrl: pulumi.String(\"https://example.com/assets/icons/icon.png\"),\n\t\t\t\tColors: pulumi.StringMap{\n\t\t\t\t\t\"primary\":         pulumi.String(\"#f2f2f2\"),\n\t\t\t\t\t\"page_background\": pulumi.String(\"#e1e1e1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Organization;\nimport com.pulumi.auth0.OrganizationArgs;\nimport com.pulumi.auth0.inputs.OrganizationBrandingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myOrganization = new Organization(\"myOrganization\", OrganizationArgs.builder()\n            .name(\"auth0-inc\")\n            .displayName(\"Auth0 Inc.\")\n            .branding(OrganizationBrandingArgs.builder()\n                .logoUrl(\"https://example.com/assets/icons/icon.png\")\n                .colors(Map.ofEntries(\n                    Map.entry(\"primary\", \"#f2f2f2\"),\n                    Map.entry(\"page_background\", \"#e1e1e1\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myOrganization:\n    type: auth0:Organization\n    name: my_organization\n    properties:\n      name: auth0-inc\n      displayName: Auth0 Inc.\n      branding:\n        logoUrl: https://example.com/assets/icons/icon.png\n        colors:\n          primary: '#f2f2f2'\n          page_background: '#e1e1e1'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the organization ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/organization:Organization my_organization \"org_XXXXXXXXXXXXXX\"\n```\n\n",
             "properties": {
@@ -12927,7 +13402,7 @@
                 },
                 "promptType": {
                     "type": "string",
-                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `consent`, `customized-consent`, `mfa-otp`.\n"
+                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`.\n"
                 },
                 "renderingMode": {
                     "type": "string",
@@ -12935,7 +13410,7 @@
                 },
                 "screenName": {
                     "type": "string",
-                    "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `consent`, `customized-consent`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`.\n"
+                    "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`.\n"
                 },
                 "tenant": {
                     "type": "string",
@@ -12967,7 +13442,7 @@
                 },
                 "promptType": {
                     "type": "string",
-                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `consent`, `customized-consent`, `mfa-otp`.\n"
+                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`.\n"
                 },
                 "renderingMode": {
                     "type": "string",
@@ -12975,7 +13450,7 @@
                 },
                 "screenName": {
                     "type": "string",
-                    "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `consent`, `customized-consent`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`.\n"
+                    "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`.\n"
                 }
             },
             "requiredInputs": [
@@ -13002,7 +13477,7 @@
                     },
                     "promptType": {
                         "type": "string",
-                        "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `consent`, `customized-consent`, `mfa-otp`.\n"
+                        "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`.\n"
                     },
                     "renderingMode": {
                         "type": "string",
@@ -13010,7 +13485,7 @@
                     },
                     "screenName": {
                         "type": "string",
-                        "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `consent`, `customized-consent`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`.\n"
+                        "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`.\n"
                     },
                     "tenant": {
                         "type": "string",
@@ -15887,6 +16362,58 @@
                     "start",
                     "style",
                     "translations"
+                ],
+                "type": "object"
+            }
+        },
+        "auth0:index/getNetworkAcl:getNetworkAcl": {
+            "description": "Data source to retrieve a specific Auth0 Network ACL by ID.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// An Auth0 network acl loaded using its ID.\nconst myNetworkAcl = auth0.getNetworkAcl({\n    id: \"167f9a50-4444-3333-1111-ndfdaf953ab4\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# An Auth0 network acl loaded using its ID.\nmy_network_acl = auth0.get_network_acl(id=\"167f9a50-4444-3333-1111-ndfdaf953ab4\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // An Auth0 network acl loaded using its ID.\n    var myNetworkAcl = Auth0.GetNetworkAcl.Invoke(new()\n    {\n        Id = \"167f9a50-4444-3333-1111-ndfdaf953ab4\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// An Auth0 network acl loaded using its ID.\n\t\t_, err := auth0.LookupNetworkAcl(ctx, \u0026auth0.LookupNetworkAclArgs{\n\t\t\tId: \"167f9a50-4444-3333-1111-ndfdaf953ab4\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Auth0Functions;\nimport com.pulumi.auth0.inputs.GetNetworkAclArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // An Auth0 network acl loaded using its ID.\n        final var myNetworkAcl = Auth0Functions.getNetworkAcl(GetNetworkAclArgs.builder()\n            .id(\"167f9a50-4444-3333-1111-ndfdaf953ab4\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  # An Auth0 network acl loaded using its ID.\n  myNetworkAcl:\n    fn::invoke:\n      function: auth0:getNetworkAcl\n      arguments:\n        id: 167f9a50-4444-3333-1111-ndfdaf953ab4\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getNetworkAcl.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the Network ACL.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNetworkAcl.\n",
+                "properties": {
+                    "active": {
+                        "description": "Whether the Network ACL is active\n",
+                        "type": "boolean"
+                    },
+                    "description": {
+                        "description": "The description of the Network ACL\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The ID of the Network ACL.\n",
+                        "type": "string"
+                    },
+                    "priority": {
+                        "description": "The priority of the Network ACL. Must be unique between 1 and 10.\n",
+                        "type": "integer"
+                    },
+                    "rules": {
+                        "description": "The rule of the Network ACL\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getNetworkAclRule:getNetworkAclRule"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "active",
+                    "description",
+                    "id",
+                    "priority",
+                    "rules"
                 ],
                 "type": "object"
             }
