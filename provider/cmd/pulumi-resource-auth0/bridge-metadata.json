@@ -772,6 +772,84 @@
                     }
                 }
             },
+            "auth0_network_acl": {
+                "current": "auth0:index/networkAcl:NetworkAcl",
+                "majorVersion": 3,
+                "fields": {
+                    "rule": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "action": {
+                                    "maxItemsOne": true
+                                },
+                                "match": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "asns": {
+                                                "maxItemsOne": false
+                                            },
+                                            "geo_country_codes": {
+                                                "maxItemsOne": false
+                                            },
+                                            "geo_subdivision_codes": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv4_cidrs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv6_cidrs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ja3_fingerprints": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ja4_fingerprints": {
+                                                "maxItemsOne": false
+                                            },
+                                            "user_agents": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "not_match": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "asns": {
+                                                "maxItemsOne": false
+                                            },
+                                            "geo_country_codes": {
+                                                "maxItemsOne": false
+                                            },
+                                            "geo_subdivision_codes": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv4_cidrs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv6_cidrs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ja3_fingerprints": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ja4_fingerprints": {
+                                                "maxItemsOne": false
+                                            },
+                                            "user_agents": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "auth0_organization": {
                 "current": "auth0:index/organization:Organization",
                 "majorVersion": 3,
@@ -1780,6 +1858,84 @@
                     },
                     "messages": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_network_acl": {
+                "current": "auth0:index/getNetworkAcl:getNetworkAcl",
+                "majorVersion": 3,
+                "fields": {
+                    "rule": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "action": {
+                                    "maxItemsOne": false
+                                },
+                                "match": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "asns": {
+                                                "maxItemsOne": false
+                                            },
+                                            "geo_country_codes": {
+                                                "maxItemsOne": false
+                                            },
+                                            "geo_subdivision_codes": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv4_cidrs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv6_cidrs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ja3_fingerprints": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ja4_fingerprints": {
+                                                "maxItemsOne": false
+                                            },
+                                            "user_agents": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "not_match": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "asns": {
+                                                "maxItemsOne": false
+                                            },
+                                            "geo_country_codes": {
+                                                "maxItemsOne": false
+                                            },
+                                            "geo_subdivision_codes": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv4_cidrs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv6_cidrs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ja3_fingerprints": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ja4_fingerprints": {
+                                                "maxItemsOne": false
+                                            },
+                                            "user_agents": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },

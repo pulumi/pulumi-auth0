@@ -20,6 +20,8 @@ import com.pulumi.auth0.inputs.GetFlowVaultConnectionArgs;
 import com.pulumi.auth0.inputs.GetFlowVaultConnectionPlainArgs;
 import com.pulumi.auth0.inputs.GetFormArgs;
 import com.pulumi.auth0.inputs.GetFormPlainArgs;
+import com.pulumi.auth0.inputs.GetNetworkAclArgs;
+import com.pulumi.auth0.inputs.GetNetworkAclPlainArgs;
 import com.pulumi.auth0.inputs.GetOrganizationArgs;
 import com.pulumi.auth0.inputs.GetOrganizationPlainArgs;
 import com.pulumi.auth0.inputs.GetPhoneProviderArgs;
@@ -50,6 +52,7 @@ import com.pulumi.auth0.outputs.GetCustomDomainResult;
 import com.pulumi.auth0.outputs.GetFlowResult;
 import com.pulumi.auth0.outputs.GetFlowVaultConnectionResult;
 import com.pulumi.auth0.outputs.GetFormResult;
+import com.pulumi.auth0.outputs.GetNetworkAclResult;
 import com.pulumi.auth0.outputs.GetOrganizationResult;
 import com.pulumi.auth0.outputs.GetPagesResult;
 import com.pulumi.auth0.outputs.GetPhoneProviderResult;
@@ -3019,6 +3022,221 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetFormResult> getFormPlain(GetFormPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getForm:getForm", TypeShape.of(GetFormResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Network ACL by ID.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetNetworkAclArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 network acl loaded using its ID.
+     *         final var myNetworkAcl = Auth0Functions.getNetworkAcl(GetNetworkAclArgs.builder()
+     *             .id("167f9a50-4444-3333-1111-ndfdaf953ab4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNetworkAclResult> getNetworkAcl(GetNetworkAclArgs args) {
+        return getNetworkAcl(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Network ACL by ID.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetNetworkAclArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 network acl loaded using its ID.
+     *         final var myNetworkAcl = Auth0Functions.getNetworkAcl(GetNetworkAclArgs.builder()
+     *             .id("167f9a50-4444-3333-1111-ndfdaf953ab4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNetworkAclResult> getNetworkAclPlain(GetNetworkAclPlainArgs args) {
+        return getNetworkAclPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Network ACL by ID.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetNetworkAclArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 network acl loaded using its ID.
+     *         final var myNetworkAcl = Auth0Functions.getNetworkAcl(GetNetworkAclArgs.builder()
+     *             .id("167f9a50-4444-3333-1111-ndfdaf953ab4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNetworkAclResult> getNetworkAcl(GetNetworkAclArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getNetworkAcl:getNetworkAcl", TypeShape.of(GetNetworkAclResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Network ACL by ID.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetNetworkAclArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 network acl loaded using its ID.
+     *         final var myNetworkAcl = Auth0Functions.getNetworkAcl(GetNetworkAclArgs.builder()
+     *             .id("167f9a50-4444-3333-1111-ndfdaf953ab4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNetworkAclResult> getNetworkAcl(GetNetworkAclArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getNetworkAcl:getNetworkAcl", TypeShape.of(GetNetworkAclResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Network ACL by ID.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetNetworkAclArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 network acl loaded using its ID.
+     *         final var myNetworkAcl = Auth0Functions.getNetworkAcl(GetNetworkAclArgs.builder()
+     *             .id("167f9a50-4444-3333-1111-ndfdaf953ab4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNetworkAclResult> getNetworkAclPlain(GetNetworkAclPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getNetworkAcl:getNetworkAcl", TypeShape.of(GetNetworkAclResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.

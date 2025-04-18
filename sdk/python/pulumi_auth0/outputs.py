@@ -147,6 +147,10 @@ __all__ = [
     'GuardianWebauthnPlatform',
     'GuardianWebauthnRoaming',
     'LogStreamSink',
+    'NetworkAclRule',
+    'NetworkAclRuleAction',
+    'NetworkAclRuleMatch',
+    'NetworkAclRuleNotMatch',
     'OrganizationBranding',
     'OrganizationConnectionsEnabledConnection',
     'PagesChangePassword',
@@ -294,6 +298,10 @@ __all__ = [
     'GetCustomDomainVerificationResult',
     'GetFormLanguageResult',
     'GetFormMessageResult',
+    'GetNetworkAclRuleResult',
+    'GetNetworkAclRuleActionResult',
+    'GetNetworkAclRuleMatchResult',
+    'GetNetworkAclRuleNotMatchResult',
     'GetOrganizationBrandingResult',
     'GetOrganizationConnectionResult',
     'GetPagesChangePasswordResult',
@@ -9282,6 +9290,424 @@ class LogStreamSink(dict):
 
 
 @pulumi.output_type
+class NetworkAclRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notMatch":
+            suggest = "not_match"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkAclRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkAclRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkAclRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: 'outputs.NetworkAclRuleAction',
+                 scope: builtins.str,
+                 match: Optional['outputs.NetworkAclRuleMatch'] = None,
+                 not_match: Optional['outputs.NetworkAclRuleNotMatch'] = None):
+        """
+        :param 'NetworkAclRuleActionArgs' action: The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+        :param builtins.str scope: The scope of the Network ACL Rule
+        :param 'NetworkAclRuleMatchArgs' match: The configuration for the Network ACL Rule
+        :param 'NetworkAclRuleNotMatchArgs' not_match: The configuration for the Network ACL Rule
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "scope", scope)
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+        if not_match is not None:
+            pulumi.set(__self__, "not_match", not_match)
+
+    @property
+    @pulumi.getter
+    def action(self) -> 'outputs.NetworkAclRuleAction':
+        """
+        The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> builtins.str:
+        """
+        The scope of the Network ACL Rule
+        """
+        return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter
+    def match(self) -> Optional['outputs.NetworkAclRuleMatch']:
+        """
+        The configuration for the Network ACL Rule
+        """
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter(name="notMatch")
+    def not_match(self) -> Optional['outputs.NetworkAclRuleNotMatch']:
+        """
+        The configuration for the Network ACL Rule
+        """
+        return pulumi.get(self, "not_match")
+
+
+@pulumi.output_type
+class NetworkAclRuleAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "redirectUri":
+            suggest = "redirect_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkAclRuleAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkAclRuleAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkAclRuleAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow: Optional[builtins.bool] = None,
+                 block: Optional[builtins.bool] = None,
+                 log: Optional[builtins.bool] = None,
+                 redirect: Optional[builtins.bool] = None,
+                 redirect_uri: Optional[builtins.str] = None):
+        """
+        :param builtins.bool allow: If true, allows the request. When using allow action, no other properties should be set.
+        :param builtins.bool block: If true, blocks the request. When using block action, no other properties should be set.
+        :param builtins.bool log: If true, logs the request. When using log action, no other properties should be set.
+        :param builtins.bool redirect: If true, redirects the request. When using redirect action, redirect_uri must also be specified.
+        :param builtins.str redirect_uri: The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
+        """
+        if allow is not None:
+            pulumi.set(__self__, "allow", allow)
+        if block is not None:
+            pulumi.set(__self__, "block", block)
+        if log is not None:
+            pulumi.set(__self__, "log", log)
+        if redirect is not None:
+            pulumi.set(__self__, "redirect", redirect)
+        if redirect_uri is not None:
+            pulumi.set(__self__, "redirect_uri", redirect_uri)
+
+    @property
+    @pulumi.getter
+    def allow(self) -> Optional[builtins.bool]:
+        """
+        If true, allows the request. When using allow action, no other properties should be set.
+        """
+        return pulumi.get(self, "allow")
+
+    @property
+    @pulumi.getter
+    def block(self) -> Optional[builtins.bool]:
+        """
+        If true, blocks the request. When using block action, no other properties should be set.
+        """
+        return pulumi.get(self, "block")
+
+    @property
+    @pulumi.getter
+    def log(self) -> Optional[builtins.bool]:
+        """
+        If true, logs the request. When using log action, no other properties should be set.
+        """
+        return pulumi.get(self, "log")
+
+    @property
+    @pulumi.getter
+    def redirect(self) -> Optional[builtins.bool]:
+        """
+        If true, redirects the request. When using redirect action, redirect_uri must also be specified.
+        """
+        return pulumi.get(self, "redirect")
+
+    @property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> Optional[builtins.str]:
+        """
+        The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
+        """
+        return pulumi.get(self, "redirect_uri")
+
+
+@pulumi.output_type
+class NetworkAclRuleMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "geoCountryCodes":
+            suggest = "geo_country_codes"
+        elif key == "geoSubdivisionCodes":
+            suggest = "geo_subdivision_codes"
+        elif key == "ipv4Cidrs":
+            suggest = "ipv4_cidrs"
+        elif key == "ipv6Cidrs":
+            suggest = "ipv6_cidrs"
+        elif key == "ja3Fingerprints":
+            suggest = "ja3_fingerprints"
+        elif key == "ja4Fingerprints":
+            suggest = "ja4_fingerprints"
+        elif key == "userAgents":
+            suggest = "user_agents"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkAclRuleMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkAclRuleMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkAclRuleMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 asns: Optional[Sequence[builtins.int]] = None,
+                 geo_country_codes: Optional[Sequence[builtins.str]] = None,
+                 geo_subdivision_codes: Optional[Sequence[builtins.str]] = None,
+                 ipv4_cidrs: Optional[Sequence[builtins.str]] = None,
+                 ipv6_cidrs: Optional[Sequence[builtins.str]] = None,
+                 ja3_fingerprints: Optional[Sequence[builtins.str]] = None,
+                 ja4_fingerprints: Optional[Sequence[builtins.str]] = None,
+                 user_agents: Optional[Sequence[builtins.str]] = None):
+        """
+        :param Sequence[builtins.int] asns: ASNs. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] geo_country_codes: Geo Country Codes. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] geo_subdivision_codes: Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] ipv4_cidrs: IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+        :param Sequence[builtins.str] ipv6_cidrs: IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+        :param Sequence[builtins.str] ja3_fingerprints: JA3 Fingerprints. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] ja4_fingerprints: JA4 Fingerprints. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] user_agents: User Agents. Must contain between 1 and 10 unique items.
+        """
+        if asns is not None:
+            pulumi.set(__self__, "asns", asns)
+        if geo_country_codes is not None:
+            pulumi.set(__self__, "geo_country_codes", geo_country_codes)
+        if geo_subdivision_codes is not None:
+            pulumi.set(__self__, "geo_subdivision_codes", geo_subdivision_codes)
+        if ipv4_cidrs is not None:
+            pulumi.set(__self__, "ipv4_cidrs", ipv4_cidrs)
+        if ipv6_cidrs is not None:
+            pulumi.set(__self__, "ipv6_cidrs", ipv6_cidrs)
+        if ja3_fingerprints is not None:
+            pulumi.set(__self__, "ja3_fingerprints", ja3_fingerprints)
+        if ja4_fingerprints is not None:
+            pulumi.set(__self__, "ja4_fingerprints", ja4_fingerprints)
+        if user_agents is not None:
+            pulumi.set(__self__, "user_agents", user_agents)
+
+    @property
+    @pulumi.getter
+    def asns(self) -> Optional[Sequence[builtins.int]]:
+        """
+        ASNs. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "asns")
+
+    @property
+    @pulumi.getter(name="geoCountryCodes")
+    def geo_country_codes(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Geo Country Codes. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "geo_country_codes")
+
+    @property
+    @pulumi.getter(name="geoSubdivisionCodes")
+    def geo_subdivision_codes(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "geo_subdivision_codes")
+
+    @property
+    @pulumi.getter(name="ipv4Cidrs")
+    def ipv4_cidrs(self) -> Optional[Sequence[builtins.str]]:
+        """
+        IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+        """
+        return pulumi.get(self, "ipv4_cidrs")
+
+    @property
+    @pulumi.getter(name="ipv6Cidrs")
+    def ipv6_cidrs(self) -> Optional[Sequence[builtins.str]]:
+        """
+        IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+        """
+        return pulumi.get(self, "ipv6_cidrs")
+
+    @property
+    @pulumi.getter(name="ja3Fingerprints")
+    def ja3_fingerprints(self) -> Optional[Sequence[builtins.str]]:
+        """
+        JA3 Fingerprints. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "ja3_fingerprints")
+
+    @property
+    @pulumi.getter(name="ja4Fingerprints")
+    def ja4_fingerprints(self) -> Optional[Sequence[builtins.str]]:
+        """
+        JA4 Fingerprints. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "ja4_fingerprints")
+
+    @property
+    @pulumi.getter(name="userAgents")
+    def user_agents(self) -> Optional[Sequence[builtins.str]]:
+        """
+        User Agents. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "user_agents")
+
+
+@pulumi.output_type
+class NetworkAclRuleNotMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "geoCountryCodes":
+            suggest = "geo_country_codes"
+        elif key == "geoSubdivisionCodes":
+            suggest = "geo_subdivision_codes"
+        elif key == "ipv4Cidrs":
+            suggest = "ipv4_cidrs"
+        elif key == "ipv6Cidrs":
+            suggest = "ipv6_cidrs"
+        elif key == "ja3Fingerprints":
+            suggest = "ja3_fingerprints"
+        elif key == "ja4Fingerprints":
+            suggest = "ja4_fingerprints"
+        elif key == "userAgents":
+            suggest = "user_agents"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkAclRuleNotMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkAclRuleNotMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkAclRuleNotMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 asns: Optional[Sequence[builtins.int]] = None,
+                 geo_country_codes: Optional[Sequence[builtins.str]] = None,
+                 geo_subdivision_codes: Optional[Sequence[builtins.str]] = None,
+                 ipv4_cidrs: Optional[Sequence[builtins.str]] = None,
+                 ipv6_cidrs: Optional[Sequence[builtins.str]] = None,
+                 ja3_fingerprints: Optional[Sequence[builtins.str]] = None,
+                 ja4_fingerprints: Optional[Sequence[builtins.str]] = None,
+                 user_agents: Optional[Sequence[builtins.str]] = None):
+        """
+        :param Sequence[builtins.int] asns: ASNs. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] geo_country_codes: Geo Country Codes. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] geo_subdivision_codes: Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] ipv4_cidrs: IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+        :param Sequence[builtins.str] ipv6_cidrs: IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+        :param Sequence[builtins.str] ja3_fingerprints: JA3 Fingerprints. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] ja4_fingerprints: JA4 Fingerprints. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] user_agents: User Agents. Must contain between 1 and 10 unique items.
+        """
+        if asns is not None:
+            pulumi.set(__self__, "asns", asns)
+        if geo_country_codes is not None:
+            pulumi.set(__self__, "geo_country_codes", geo_country_codes)
+        if geo_subdivision_codes is not None:
+            pulumi.set(__self__, "geo_subdivision_codes", geo_subdivision_codes)
+        if ipv4_cidrs is not None:
+            pulumi.set(__self__, "ipv4_cidrs", ipv4_cidrs)
+        if ipv6_cidrs is not None:
+            pulumi.set(__self__, "ipv6_cidrs", ipv6_cidrs)
+        if ja3_fingerprints is not None:
+            pulumi.set(__self__, "ja3_fingerprints", ja3_fingerprints)
+        if ja4_fingerprints is not None:
+            pulumi.set(__self__, "ja4_fingerprints", ja4_fingerprints)
+        if user_agents is not None:
+            pulumi.set(__self__, "user_agents", user_agents)
+
+    @property
+    @pulumi.getter
+    def asns(self) -> Optional[Sequence[builtins.int]]:
+        """
+        ASNs. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "asns")
+
+    @property
+    @pulumi.getter(name="geoCountryCodes")
+    def geo_country_codes(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Geo Country Codes. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "geo_country_codes")
+
+    @property
+    @pulumi.getter(name="geoSubdivisionCodes")
+    def geo_subdivision_codes(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "geo_subdivision_codes")
+
+    @property
+    @pulumi.getter(name="ipv4Cidrs")
+    def ipv4_cidrs(self) -> Optional[Sequence[builtins.str]]:
+        """
+        IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+        """
+        return pulumi.get(self, "ipv4_cidrs")
+
+    @property
+    @pulumi.getter(name="ipv6Cidrs")
+    def ipv6_cidrs(self) -> Optional[Sequence[builtins.str]]:
+        """
+        IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+        """
+        return pulumi.get(self, "ipv6_cidrs")
+
+    @property
+    @pulumi.getter(name="ja3Fingerprints")
+    def ja3_fingerprints(self) -> Optional[Sequence[builtins.str]]:
+        """
+        JA3 Fingerprints. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "ja3_fingerprints")
+
+    @property
+    @pulumi.getter(name="ja4Fingerprints")
+    def ja4_fingerprints(self) -> Optional[Sequence[builtins.str]]:
+        """
+        JA4 Fingerprints. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "ja4_fingerprints")
+
+    @property
+    @pulumi.getter(name="userAgents")
+    def user_agents(self) -> Optional[Sequence[builtins.str]]:
+        """
+        User Agents. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "user_agents")
+
+
+@pulumi.output_type
 class OrganizationBranding(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -16858,6 +17284,309 @@ class GetFormMessageResult(dict):
         Error message for the form. (JSON encoded)
         """
         return pulumi.get(self, "errors")
+
+
+@pulumi.output_type
+class GetNetworkAclRuleResult(dict):
+    def __init__(__self__, *,
+                 actions: Sequence['outputs.GetNetworkAclRuleActionResult'],
+                 matches: Sequence['outputs.GetNetworkAclRuleMatchResult'],
+                 not_matches: Sequence['outputs.GetNetworkAclRuleNotMatchResult'],
+                 scope: builtins.str):
+        """
+        :param Sequence['GetNetworkAclRuleActionArgs'] actions: The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+        :param Sequence['GetNetworkAclRuleMatchArgs'] matches: The configuration for the Network ACL Rule
+        :param Sequence['GetNetworkAclRuleNotMatchArgs'] not_matches: The configuration for the Network ACL Rule
+        :param builtins.str scope: The scope of the Network ACL Rule
+        """
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "matches", matches)
+        pulumi.set(__self__, "not_matches", not_matches)
+        pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Sequence['outputs.GetNetworkAclRuleActionResult']:
+        """
+        The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+        """
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter
+    def matches(self) -> Sequence['outputs.GetNetworkAclRuleMatchResult']:
+        """
+        The configuration for the Network ACL Rule
+        """
+        return pulumi.get(self, "matches")
+
+    @property
+    @pulumi.getter(name="notMatches")
+    def not_matches(self) -> Sequence['outputs.GetNetworkAclRuleNotMatchResult']:
+        """
+        The configuration for the Network ACL Rule
+        """
+        return pulumi.get(self, "not_matches")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> builtins.str:
+        """
+        The scope of the Network ACL Rule
+        """
+        return pulumi.get(self, "scope")
+
+
+@pulumi.output_type
+class GetNetworkAclRuleActionResult(dict):
+    def __init__(__self__, *,
+                 allow: builtins.bool,
+                 block: builtins.bool,
+                 log: builtins.bool,
+                 redirect: builtins.bool,
+                 redirect_uri: builtins.str):
+        """
+        :param builtins.bool allow: If true, allows the request. When using allow action, no other properties should be set.
+        :param builtins.bool block: If true, blocks the request. When using block action, no other properties should be set.
+        :param builtins.bool log: If true, logs the request. When using log action, no other properties should be set.
+        :param builtins.bool redirect: If true, redirects the request. When using redirect action, redirect_uri must also be specified.
+        :param builtins.str redirect_uri: The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
+        """
+        pulumi.set(__self__, "allow", allow)
+        pulumi.set(__self__, "block", block)
+        pulumi.set(__self__, "log", log)
+        pulumi.set(__self__, "redirect", redirect)
+        pulumi.set(__self__, "redirect_uri", redirect_uri)
+
+    @property
+    @pulumi.getter
+    def allow(self) -> builtins.bool:
+        """
+        If true, allows the request. When using allow action, no other properties should be set.
+        """
+        return pulumi.get(self, "allow")
+
+    @property
+    @pulumi.getter
+    def block(self) -> builtins.bool:
+        """
+        If true, blocks the request. When using block action, no other properties should be set.
+        """
+        return pulumi.get(self, "block")
+
+    @property
+    @pulumi.getter
+    def log(self) -> builtins.bool:
+        """
+        If true, logs the request. When using log action, no other properties should be set.
+        """
+        return pulumi.get(self, "log")
+
+    @property
+    @pulumi.getter
+    def redirect(self) -> builtins.bool:
+        """
+        If true, redirects the request. When using redirect action, redirect_uri must also be specified.
+        """
+        return pulumi.get(self, "redirect")
+
+    @property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> builtins.str:
+        """
+        The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
+        """
+        return pulumi.get(self, "redirect_uri")
+
+
+@pulumi.output_type
+class GetNetworkAclRuleMatchResult(dict):
+    def __init__(__self__, *,
+                 asns: Sequence[builtins.int],
+                 geo_country_codes: Sequence[builtins.str],
+                 geo_subdivision_codes: Sequence[builtins.str],
+                 ipv4_cidrs: Sequence[builtins.str],
+                 ipv6_cidrs: Sequence[builtins.str],
+                 ja3_fingerprints: Sequence[builtins.str],
+                 ja4_fingerprints: Sequence[builtins.str],
+                 user_agents: Sequence[builtins.str]):
+        """
+        :param Sequence[builtins.int] asns: ASNs. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] geo_country_codes: Geo Country Codes. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] geo_subdivision_codes: Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] ipv4_cidrs: IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+        :param Sequence[builtins.str] ipv6_cidrs: IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+        :param Sequence[builtins.str] ja3_fingerprints: JA3 Fingerprints. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] ja4_fingerprints: JA4 Fingerprints. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] user_agents: User Agents. Must contain between 1 and 10 unique items.
+        """
+        pulumi.set(__self__, "asns", asns)
+        pulumi.set(__self__, "geo_country_codes", geo_country_codes)
+        pulumi.set(__self__, "geo_subdivision_codes", geo_subdivision_codes)
+        pulumi.set(__self__, "ipv4_cidrs", ipv4_cidrs)
+        pulumi.set(__self__, "ipv6_cidrs", ipv6_cidrs)
+        pulumi.set(__self__, "ja3_fingerprints", ja3_fingerprints)
+        pulumi.set(__self__, "ja4_fingerprints", ja4_fingerprints)
+        pulumi.set(__self__, "user_agents", user_agents)
+
+    @property
+    @pulumi.getter
+    def asns(self) -> Sequence[builtins.int]:
+        """
+        ASNs. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "asns")
+
+    @property
+    @pulumi.getter(name="geoCountryCodes")
+    def geo_country_codes(self) -> Sequence[builtins.str]:
+        """
+        Geo Country Codes. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "geo_country_codes")
+
+    @property
+    @pulumi.getter(name="geoSubdivisionCodes")
+    def geo_subdivision_codes(self) -> Sequence[builtins.str]:
+        """
+        Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "geo_subdivision_codes")
+
+    @property
+    @pulumi.getter(name="ipv4Cidrs")
+    def ipv4_cidrs(self) -> Sequence[builtins.str]:
+        """
+        IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+        """
+        return pulumi.get(self, "ipv4_cidrs")
+
+    @property
+    @pulumi.getter(name="ipv6Cidrs")
+    def ipv6_cidrs(self) -> Sequence[builtins.str]:
+        """
+        IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+        """
+        return pulumi.get(self, "ipv6_cidrs")
+
+    @property
+    @pulumi.getter(name="ja3Fingerprints")
+    def ja3_fingerprints(self) -> Sequence[builtins.str]:
+        """
+        JA3 Fingerprints. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "ja3_fingerprints")
+
+    @property
+    @pulumi.getter(name="ja4Fingerprints")
+    def ja4_fingerprints(self) -> Sequence[builtins.str]:
+        """
+        JA4 Fingerprints. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "ja4_fingerprints")
+
+    @property
+    @pulumi.getter(name="userAgents")
+    def user_agents(self) -> Sequence[builtins.str]:
+        """
+        User Agents. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "user_agents")
+
+
+@pulumi.output_type
+class GetNetworkAclRuleNotMatchResult(dict):
+    def __init__(__self__, *,
+                 asns: Sequence[builtins.int],
+                 geo_country_codes: Sequence[builtins.str],
+                 geo_subdivision_codes: Sequence[builtins.str],
+                 ipv4_cidrs: Sequence[builtins.str],
+                 ipv6_cidrs: Sequence[builtins.str],
+                 ja3_fingerprints: Sequence[builtins.str],
+                 ja4_fingerprints: Sequence[builtins.str],
+                 user_agents: Sequence[builtins.str]):
+        """
+        :param Sequence[builtins.int] asns: ASNs. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] geo_country_codes: Geo Country Codes. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] geo_subdivision_codes: Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] ipv4_cidrs: IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+        :param Sequence[builtins.str] ipv6_cidrs: IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+        :param Sequence[builtins.str] ja3_fingerprints: JA3 Fingerprints. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] ja4_fingerprints: JA4 Fingerprints. Must contain between 1 and 10 unique items.
+        :param Sequence[builtins.str] user_agents: User Agents. Must contain between 1 and 10 unique items.
+        """
+        pulumi.set(__self__, "asns", asns)
+        pulumi.set(__self__, "geo_country_codes", geo_country_codes)
+        pulumi.set(__self__, "geo_subdivision_codes", geo_subdivision_codes)
+        pulumi.set(__self__, "ipv4_cidrs", ipv4_cidrs)
+        pulumi.set(__self__, "ipv6_cidrs", ipv6_cidrs)
+        pulumi.set(__self__, "ja3_fingerprints", ja3_fingerprints)
+        pulumi.set(__self__, "ja4_fingerprints", ja4_fingerprints)
+        pulumi.set(__self__, "user_agents", user_agents)
+
+    @property
+    @pulumi.getter
+    def asns(self) -> Sequence[builtins.int]:
+        """
+        ASNs. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "asns")
+
+    @property
+    @pulumi.getter(name="geoCountryCodes")
+    def geo_country_codes(self) -> Sequence[builtins.str]:
+        """
+        Geo Country Codes. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "geo_country_codes")
+
+    @property
+    @pulumi.getter(name="geoSubdivisionCodes")
+    def geo_subdivision_codes(self) -> Sequence[builtins.str]:
+        """
+        Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "geo_subdivision_codes")
+
+    @property
+    @pulumi.getter(name="ipv4Cidrs")
+    def ipv4_cidrs(self) -> Sequence[builtins.str]:
+        """
+        IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+        """
+        return pulumi.get(self, "ipv4_cidrs")
+
+    @property
+    @pulumi.getter(name="ipv6Cidrs")
+    def ipv6_cidrs(self) -> Sequence[builtins.str]:
+        """
+        IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+        """
+        return pulumi.get(self, "ipv6_cidrs")
+
+    @property
+    @pulumi.getter(name="ja3Fingerprints")
+    def ja3_fingerprints(self) -> Sequence[builtins.str]:
+        """
+        JA3 Fingerprints. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "ja3_fingerprints")
+
+    @property
+    @pulumi.getter(name="ja4Fingerprints")
+    def ja4_fingerprints(self) -> Sequence[builtins.str]:
+        """
+        JA4 Fingerprints. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "ja4_fingerprints")
+
+    @property
+    @pulumi.getter(name="userAgents")
+    def user_agents(self) -> Sequence[builtins.str]:
+        """
+        User Agents. Must contain between 1 and 10 unique items.
+        """
+        return pulumi.get(self, "user_agents")
 
 
 @pulumi.output_type

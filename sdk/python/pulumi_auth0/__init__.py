@@ -37,6 +37,7 @@ from .get_custom_domain import *
 from .get_flow import *
 from .get_flow_vault_connection import *
 from .get_form import *
+from .get_network_acl import *
 from .get_organization import *
 from .get_pages import *
 from .get_phone_provider import *
@@ -52,6 +53,7 @@ from .get_user import *
 from .guardian import *
 from .hook import *
 from .log_stream import *
+from .network_acl import *
 from .organization import *
 from .organization_client_grant import *
 from .organization_connection import *
@@ -275,6 +277,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/logStream:LogStream": "LogStream"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/networkAcl",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/networkAcl:NetworkAcl": "NetworkAcl"
   }
  },
  {

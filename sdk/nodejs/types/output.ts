@@ -4354,6 +4354,118 @@ export interface GetFormMessage {
     errors: string;
 }
 
+export interface GetNetworkAclRule {
+    /**
+     * The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+     */
+    actions: outputs.GetNetworkAclRuleAction[];
+    /**
+     * The configuration for the Network ACL Rule
+     */
+    matches: outputs.GetNetworkAclRuleMatch[];
+    /**
+     * The configuration for the Network ACL Rule
+     */
+    notMatches: outputs.GetNetworkAclRuleNotMatch[];
+    /**
+     * The scope of the Network ACL Rule
+     */
+    scope: string;
+}
+
+export interface GetNetworkAclRuleAction {
+    /**
+     * If true, allows the request. When using allow action, no other properties should be set.
+     */
+    allow: boolean;
+    /**
+     * If true, blocks the request. When using block action, no other properties should be set.
+     */
+    block: boolean;
+    /**
+     * If true, logs the request. When using log action, no other properties should be set.
+     */
+    log: boolean;
+    /**
+     * If true, redirects the request. When using redirect action, redirectUri must also be specified.
+     */
+    redirect: boolean;
+    /**
+     * The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
+     */
+    redirectUri: string;
+}
+
+export interface GetNetworkAclRuleMatch {
+    /**
+     * ASNs. Must contain between 1 and 10 unique items.
+     */
+    asns: number[];
+    /**
+     * Geo Country Codes. Must contain between 1 and 10 unique items.
+     */
+    geoCountryCodes: string[];
+    /**
+     * Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+     */
+    geoSubdivisionCodes: string[];
+    /**
+     * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+     */
+    ipv4Cidrs: string[];
+    /**
+     * IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+     */
+    ipv6Cidrs: string[];
+    /**
+     * JA3 Fingerprints. Must contain between 1 and 10 unique items.
+     */
+    ja3Fingerprints: string[];
+    /**
+     * JA4 Fingerprints. Must contain between 1 and 10 unique items.
+     */
+    ja4Fingerprints: string[];
+    /**
+     * User Agents. Must contain between 1 and 10 unique items.
+     */
+    userAgents: string[];
+}
+
+export interface GetNetworkAclRuleNotMatch {
+    /**
+     * ASNs. Must contain between 1 and 10 unique items.
+     */
+    asns: number[];
+    /**
+     * Geo Country Codes. Must contain between 1 and 10 unique items.
+     */
+    geoCountryCodes: string[];
+    /**
+     * Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+     */
+    geoSubdivisionCodes: string[];
+    /**
+     * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+     */
+    ipv4Cidrs: string[];
+    /**
+     * IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+     */
+    ipv6Cidrs: string[];
+    /**
+     * JA3 Fingerprints. Must contain between 1 and 10 unique items.
+     */
+    ja3Fingerprints: string[];
+    /**
+     * JA4 Fingerprints. Must contain between 1 and 10 unique items.
+     */
+    ja4Fingerprints: string[];
+    /**
+     * User Agents. Must contain between 1 and 10 unique items.
+     */
+    userAgents: string[];
+}
+
 export interface GetOrganizationBranding {
     /**
      * Color scheme used to customize the login pages.
@@ -5115,6 +5227,118 @@ export interface LogStreamSink {
      * Generated URL for your defined HTTP source in Sumo Logic for collecting streaming data from Auth0.
      */
     sumoSourceAddress?: string;
+}
+
+export interface NetworkAclRule {
+    /**
+     * The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+     */
+    action: outputs.NetworkAclRuleAction;
+    /**
+     * The configuration for the Network ACL Rule
+     */
+    match?: outputs.NetworkAclRuleMatch;
+    /**
+     * The configuration for the Network ACL Rule
+     */
+    notMatch?: outputs.NetworkAclRuleNotMatch;
+    /**
+     * The scope of the Network ACL Rule
+     */
+    scope: string;
+}
+
+export interface NetworkAclRuleAction {
+    /**
+     * If true, allows the request. When using allow action, no other properties should be set.
+     */
+    allow?: boolean;
+    /**
+     * If true, blocks the request. When using block action, no other properties should be set.
+     */
+    block?: boolean;
+    /**
+     * If true, logs the request. When using log action, no other properties should be set.
+     */
+    log?: boolean;
+    /**
+     * If true, redirects the request. When using redirect action, redirectUri must also be specified.
+     */
+    redirect?: boolean;
+    /**
+     * The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
+     */
+    redirectUri?: string;
+}
+
+export interface NetworkAclRuleMatch {
+    /**
+     * ASNs. Must contain between 1 and 10 unique items.
+     */
+    asns?: number[];
+    /**
+     * Geo Country Codes. Must contain between 1 and 10 unique items.
+     */
+    geoCountryCodes?: string[];
+    /**
+     * Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+     */
+    geoSubdivisionCodes?: string[];
+    /**
+     * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+     */
+    ipv4Cidrs?: string[];
+    /**
+     * IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+     */
+    ipv6Cidrs?: string[];
+    /**
+     * JA3 Fingerprints. Must contain between 1 and 10 unique items.
+     */
+    ja3Fingerprints?: string[];
+    /**
+     * JA4 Fingerprints. Must contain between 1 and 10 unique items.
+     */
+    ja4Fingerprints?: string[];
+    /**
+     * User Agents. Must contain between 1 and 10 unique items.
+     */
+    userAgents?: string[];
+}
+
+export interface NetworkAclRuleNotMatch {
+    /**
+     * ASNs. Must contain between 1 and 10 unique items.
+     */
+    asns?: number[];
+    /**
+     * Geo Country Codes. Must contain between 1 and 10 unique items.
+     */
+    geoCountryCodes?: string[];
+    /**
+     * Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+     */
+    geoSubdivisionCodes?: string[];
+    /**
+     * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+     */
+    ipv4Cidrs?: string[];
+    /**
+     * IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+     */
+    ipv6Cidrs?: string[];
+    /**
+     * JA3 Fingerprints. Must contain between 1 and 10 unique items.
+     */
+    ja3Fingerprints?: string[];
+    /**
+     * JA4 Fingerprints. Must contain between 1 and 10 unique items.
+     */
+    ja4Fingerprints?: string[];
+    /**
+     * User Agents. Must contain between 1 and 10 unique items.
+     */
+    userAgents?: string[];
 }
 
 export interface OrganizationBranding {

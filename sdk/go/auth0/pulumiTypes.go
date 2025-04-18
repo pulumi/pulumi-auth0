@@ -23981,6 +23981,953 @@ func (o LogStreamSinkPtrOutput) SumoSourceAddress() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type NetworkAclRule struct {
+	// The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+	Action NetworkAclRuleAction `pulumi:"action"`
+	// The configuration for the Network ACL Rule
+	Match *NetworkAclRuleMatch `pulumi:"match"`
+	// The configuration for the Network ACL Rule
+	NotMatch *NetworkAclRuleNotMatch `pulumi:"notMatch"`
+	// The scope of the Network ACL Rule
+	Scope string `pulumi:"scope"`
+}
+
+// NetworkAclRuleInput is an input type that accepts NetworkAclRuleArgs and NetworkAclRuleOutput values.
+// You can construct a concrete instance of `NetworkAclRuleInput` via:
+//
+//	NetworkAclRuleArgs{...}
+type NetworkAclRuleInput interface {
+	pulumi.Input
+
+	ToNetworkAclRuleOutput() NetworkAclRuleOutput
+	ToNetworkAclRuleOutputWithContext(context.Context) NetworkAclRuleOutput
+}
+
+type NetworkAclRuleArgs struct {
+	// The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+	Action NetworkAclRuleActionInput `pulumi:"action"`
+	// The configuration for the Network ACL Rule
+	Match NetworkAclRuleMatchPtrInput `pulumi:"match"`
+	// The configuration for the Network ACL Rule
+	NotMatch NetworkAclRuleNotMatchPtrInput `pulumi:"notMatch"`
+	// The scope of the Network ACL Rule
+	Scope pulumi.StringInput `pulumi:"scope"`
+}
+
+func (NetworkAclRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclRule)(nil)).Elem()
+}
+
+func (i NetworkAclRuleArgs) ToNetworkAclRuleOutput() NetworkAclRuleOutput {
+	return i.ToNetworkAclRuleOutputWithContext(context.Background())
+}
+
+func (i NetworkAclRuleArgs) ToNetworkAclRuleOutputWithContext(ctx context.Context) NetworkAclRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclRuleOutput)
+}
+
+func (i NetworkAclRuleArgs) ToNetworkAclRulePtrOutput() NetworkAclRulePtrOutput {
+	return i.ToNetworkAclRulePtrOutputWithContext(context.Background())
+}
+
+func (i NetworkAclRuleArgs) ToNetworkAclRulePtrOutputWithContext(ctx context.Context) NetworkAclRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclRuleOutput).ToNetworkAclRulePtrOutputWithContext(ctx)
+}
+
+// NetworkAclRulePtrInput is an input type that accepts NetworkAclRuleArgs, NetworkAclRulePtr and NetworkAclRulePtrOutput values.
+// You can construct a concrete instance of `NetworkAclRulePtrInput` via:
+//
+//	        NetworkAclRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkAclRulePtrInput interface {
+	pulumi.Input
+
+	ToNetworkAclRulePtrOutput() NetworkAclRulePtrOutput
+	ToNetworkAclRulePtrOutputWithContext(context.Context) NetworkAclRulePtrOutput
+}
+
+type networkAclRulePtrType NetworkAclRuleArgs
+
+func NetworkAclRulePtr(v *NetworkAclRuleArgs) NetworkAclRulePtrInput {
+	return (*networkAclRulePtrType)(v)
+}
+
+func (*networkAclRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAclRule)(nil)).Elem()
+}
+
+func (i *networkAclRulePtrType) ToNetworkAclRulePtrOutput() NetworkAclRulePtrOutput {
+	return i.ToNetworkAclRulePtrOutputWithContext(context.Background())
+}
+
+func (i *networkAclRulePtrType) ToNetworkAclRulePtrOutputWithContext(ctx context.Context) NetworkAclRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclRulePtrOutput)
+}
+
+type NetworkAclRuleOutput struct{ *pulumi.OutputState }
+
+func (NetworkAclRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclRule)(nil)).Elem()
+}
+
+func (o NetworkAclRuleOutput) ToNetworkAclRuleOutput() NetworkAclRuleOutput {
+	return o
+}
+
+func (o NetworkAclRuleOutput) ToNetworkAclRuleOutputWithContext(ctx context.Context) NetworkAclRuleOutput {
+	return o
+}
+
+func (o NetworkAclRuleOutput) ToNetworkAclRulePtrOutput() NetworkAclRulePtrOutput {
+	return o.ToNetworkAclRulePtrOutputWithContext(context.Background())
+}
+
+func (o NetworkAclRuleOutput) ToNetworkAclRulePtrOutputWithContext(ctx context.Context) NetworkAclRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkAclRule) *NetworkAclRule {
+		return &v
+	}).(NetworkAclRulePtrOutput)
+}
+
+// The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+func (o NetworkAclRuleOutput) Action() NetworkAclRuleActionOutput {
+	return o.ApplyT(func(v NetworkAclRule) NetworkAclRuleAction { return v.Action }).(NetworkAclRuleActionOutput)
+}
+
+// The configuration for the Network ACL Rule
+func (o NetworkAclRuleOutput) Match() NetworkAclRuleMatchPtrOutput {
+	return o.ApplyT(func(v NetworkAclRule) *NetworkAclRuleMatch { return v.Match }).(NetworkAclRuleMatchPtrOutput)
+}
+
+// The configuration for the Network ACL Rule
+func (o NetworkAclRuleOutput) NotMatch() NetworkAclRuleNotMatchPtrOutput {
+	return o.ApplyT(func(v NetworkAclRule) *NetworkAclRuleNotMatch { return v.NotMatch }).(NetworkAclRuleNotMatchPtrOutput)
+}
+
+// The scope of the Network ACL Rule
+func (o NetworkAclRuleOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkAclRule) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+type NetworkAclRulePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkAclRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAclRule)(nil)).Elem()
+}
+
+func (o NetworkAclRulePtrOutput) ToNetworkAclRulePtrOutput() NetworkAclRulePtrOutput {
+	return o
+}
+
+func (o NetworkAclRulePtrOutput) ToNetworkAclRulePtrOutputWithContext(ctx context.Context) NetworkAclRulePtrOutput {
+	return o
+}
+
+func (o NetworkAclRulePtrOutput) Elem() NetworkAclRuleOutput {
+	return o.ApplyT(func(v *NetworkAclRule) NetworkAclRule {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkAclRule
+		return ret
+	}).(NetworkAclRuleOutput)
+}
+
+// The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+func (o NetworkAclRulePtrOutput) Action() NetworkAclRuleActionPtrOutput {
+	return o.ApplyT(func(v *NetworkAclRule) *NetworkAclRuleAction {
+		if v == nil {
+			return nil
+		}
+		return &v.Action
+	}).(NetworkAclRuleActionPtrOutput)
+}
+
+// The configuration for the Network ACL Rule
+func (o NetworkAclRulePtrOutput) Match() NetworkAclRuleMatchPtrOutput {
+	return o.ApplyT(func(v *NetworkAclRule) *NetworkAclRuleMatch {
+		if v == nil {
+			return nil
+		}
+		return v.Match
+	}).(NetworkAclRuleMatchPtrOutput)
+}
+
+// The configuration for the Network ACL Rule
+func (o NetworkAclRulePtrOutput) NotMatch() NetworkAclRuleNotMatchPtrOutput {
+	return o.ApplyT(func(v *NetworkAclRule) *NetworkAclRuleNotMatch {
+		if v == nil {
+			return nil
+		}
+		return v.NotMatch
+	}).(NetworkAclRuleNotMatchPtrOutput)
+}
+
+// The scope of the Network ACL Rule
+func (o NetworkAclRulePtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkAclRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkAclRuleAction struct {
+	// If true, allows the request. When using allow action, no other properties should be set.
+	Allow *bool `pulumi:"allow"`
+	// If true, blocks the request. When using block action, no other properties should be set.
+	Block *bool `pulumi:"block"`
+	// If true, logs the request. When using log action, no other properties should be set.
+	Log *bool `pulumi:"log"`
+	// If true, redirects the request. When using redirect action, redirectUri must also be specified.
+	Redirect *bool `pulumi:"redirect"`
+	// The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
+	RedirectUri *string `pulumi:"redirectUri"`
+}
+
+// NetworkAclRuleActionInput is an input type that accepts NetworkAclRuleActionArgs and NetworkAclRuleActionOutput values.
+// You can construct a concrete instance of `NetworkAclRuleActionInput` via:
+//
+//	NetworkAclRuleActionArgs{...}
+type NetworkAclRuleActionInput interface {
+	pulumi.Input
+
+	ToNetworkAclRuleActionOutput() NetworkAclRuleActionOutput
+	ToNetworkAclRuleActionOutputWithContext(context.Context) NetworkAclRuleActionOutput
+}
+
+type NetworkAclRuleActionArgs struct {
+	// If true, allows the request. When using allow action, no other properties should be set.
+	Allow pulumi.BoolPtrInput `pulumi:"allow"`
+	// If true, blocks the request. When using block action, no other properties should be set.
+	Block pulumi.BoolPtrInput `pulumi:"block"`
+	// If true, logs the request. When using log action, no other properties should be set.
+	Log pulumi.BoolPtrInput `pulumi:"log"`
+	// If true, redirects the request. When using redirect action, redirectUri must also be specified.
+	Redirect pulumi.BoolPtrInput `pulumi:"redirect"`
+	// The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
+	RedirectUri pulumi.StringPtrInput `pulumi:"redirectUri"`
+}
+
+func (NetworkAclRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclRuleAction)(nil)).Elem()
+}
+
+func (i NetworkAclRuleActionArgs) ToNetworkAclRuleActionOutput() NetworkAclRuleActionOutput {
+	return i.ToNetworkAclRuleActionOutputWithContext(context.Background())
+}
+
+func (i NetworkAclRuleActionArgs) ToNetworkAclRuleActionOutputWithContext(ctx context.Context) NetworkAclRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclRuleActionOutput)
+}
+
+func (i NetworkAclRuleActionArgs) ToNetworkAclRuleActionPtrOutput() NetworkAclRuleActionPtrOutput {
+	return i.ToNetworkAclRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkAclRuleActionArgs) ToNetworkAclRuleActionPtrOutputWithContext(ctx context.Context) NetworkAclRuleActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclRuleActionOutput).ToNetworkAclRuleActionPtrOutputWithContext(ctx)
+}
+
+// NetworkAclRuleActionPtrInput is an input type that accepts NetworkAclRuleActionArgs, NetworkAclRuleActionPtr and NetworkAclRuleActionPtrOutput values.
+// You can construct a concrete instance of `NetworkAclRuleActionPtrInput` via:
+//
+//	        NetworkAclRuleActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkAclRuleActionPtrInput interface {
+	pulumi.Input
+
+	ToNetworkAclRuleActionPtrOutput() NetworkAclRuleActionPtrOutput
+	ToNetworkAclRuleActionPtrOutputWithContext(context.Context) NetworkAclRuleActionPtrOutput
+}
+
+type networkAclRuleActionPtrType NetworkAclRuleActionArgs
+
+func NetworkAclRuleActionPtr(v *NetworkAclRuleActionArgs) NetworkAclRuleActionPtrInput {
+	return (*networkAclRuleActionPtrType)(v)
+}
+
+func (*networkAclRuleActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAclRuleAction)(nil)).Elem()
+}
+
+func (i *networkAclRuleActionPtrType) ToNetworkAclRuleActionPtrOutput() NetworkAclRuleActionPtrOutput {
+	return i.ToNetworkAclRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (i *networkAclRuleActionPtrType) ToNetworkAclRuleActionPtrOutputWithContext(ctx context.Context) NetworkAclRuleActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclRuleActionPtrOutput)
+}
+
+type NetworkAclRuleActionOutput struct{ *pulumi.OutputState }
+
+func (NetworkAclRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclRuleAction)(nil)).Elem()
+}
+
+func (o NetworkAclRuleActionOutput) ToNetworkAclRuleActionOutput() NetworkAclRuleActionOutput {
+	return o
+}
+
+func (o NetworkAclRuleActionOutput) ToNetworkAclRuleActionOutputWithContext(ctx context.Context) NetworkAclRuleActionOutput {
+	return o
+}
+
+func (o NetworkAclRuleActionOutput) ToNetworkAclRuleActionPtrOutput() NetworkAclRuleActionPtrOutput {
+	return o.ToNetworkAclRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkAclRuleActionOutput) ToNetworkAclRuleActionPtrOutputWithContext(ctx context.Context) NetworkAclRuleActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkAclRuleAction) *NetworkAclRuleAction {
+		return &v
+	}).(NetworkAclRuleActionPtrOutput)
+}
+
+// If true, allows the request. When using allow action, no other properties should be set.
+func (o NetworkAclRuleActionOutput) Allow() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkAclRuleAction) *bool { return v.Allow }).(pulumi.BoolPtrOutput)
+}
+
+// If true, blocks the request. When using block action, no other properties should be set.
+func (o NetworkAclRuleActionOutput) Block() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkAclRuleAction) *bool { return v.Block }).(pulumi.BoolPtrOutput)
+}
+
+// If true, logs the request. When using log action, no other properties should be set.
+func (o NetworkAclRuleActionOutput) Log() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkAclRuleAction) *bool { return v.Log }).(pulumi.BoolPtrOutput)
+}
+
+// If true, redirects the request. When using redirect action, redirectUri must also be specified.
+func (o NetworkAclRuleActionOutput) Redirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkAclRuleAction) *bool { return v.Redirect }).(pulumi.BoolPtrOutput)
+}
+
+// The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
+func (o NetworkAclRuleActionOutput) RedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAclRuleAction) *string { return v.RedirectUri }).(pulumi.StringPtrOutput)
+}
+
+type NetworkAclRuleActionPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkAclRuleActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAclRuleAction)(nil)).Elem()
+}
+
+func (o NetworkAclRuleActionPtrOutput) ToNetworkAclRuleActionPtrOutput() NetworkAclRuleActionPtrOutput {
+	return o
+}
+
+func (o NetworkAclRuleActionPtrOutput) ToNetworkAclRuleActionPtrOutputWithContext(ctx context.Context) NetworkAclRuleActionPtrOutput {
+	return o
+}
+
+func (o NetworkAclRuleActionPtrOutput) Elem() NetworkAclRuleActionOutput {
+	return o.ApplyT(func(v *NetworkAclRuleAction) NetworkAclRuleAction {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkAclRuleAction
+		return ret
+	}).(NetworkAclRuleActionOutput)
+}
+
+// If true, allows the request. When using allow action, no other properties should be set.
+func (o NetworkAclRuleActionPtrOutput) Allow() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkAclRuleAction) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Allow
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, blocks the request. When using block action, no other properties should be set.
+func (o NetworkAclRuleActionPtrOutput) Block() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkAclRuleAction) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Block
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, logs the request. When using log action, no other properties should be set.
+func (o NetworkAclRuleActionPtrOutput) Log() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkAclRuleAction) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Log
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, redirects the request. When using redirect action, redirectUri must also be specified.
+func (o NetworkAclRuleActionPtrOutput) Redirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkAclRuleAction) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Redirect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
+func (o NetworkAclRuleActionPtrOutput) RedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkAclRuleAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkAclRuleMatch struct {
+	// ASNs. Must contain between 1 and 10 unique items.
+	Asns []int `pulumi:"asns"`
+	// Geo Country Codes. Must contain between 1 and 10 unique items.
+	GeoCountryCodes []string `pulumi:"geoCountryCodes"`
+	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+	GeoSubdivisionCodes []string `pulumi:"geoSubdivisionCodes"`
+	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+	Ipv4Cidrs []string `pulumi:"ipv4Cidrs"`
+	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+	Ipv6Cidrs []string `pulumi:"ipv6Cidrs"`
+	// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja3Fingerprints []string `pulumi:"ja3Fingerprints"`
+	// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja4Fingerprints []string `pulumi:"ja4Fingerprints"`
+	// User Agents. Must contain between 1 and 10 unique items.
+	UserAgents []string `pulumi:"userAgents"`
+}
+
+// NetworkAclRuleMatchInput is an input type that accepts NetworkAclRuleMatchArgs and NetworkAclRuleMatchOutput values.
+// You can construct a concrete instance of `NetworkAclRuleMatchInput` via:
+//
+//	NetworkAclRuleMatchArgs{...}
+type NetworkAclRuleMatchInput interface {
+	pulumi.Input
+
+	ToNetworkAclRuleMatchOutput() NetworkAclRuleMatchOutput
+	ToNetworkAclRuleMatchOutputWithContext(context.Context) NetworkAclRuleMatchOutput
+}
+
+type NetworkAclRuleMatchArgs struct {
+	// ASNs. Must contain between 1 and 10 unique items.
+	Asns pulumi.IntArrayInput `pulumi:"asns"`
+	// Geo Country Codes. Must contain between 1 and 10 unique items.
+	GeoCountryCodes pulumi.StringArrayInput `pulumi:"geoCountryCodes"`
+	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+	GeoSubdivisionCodes pulumi.StringArrayInput `pulumi:"geoSubdivisionCodes"`
+	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+	Ipv4Cidrs pulumi.StringArrayInput `pulumi:"ipv4Cidrs"`
+	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+	Ipv6Cidrs pulumi.StringArrayInput `pulumi:"ipv6Cidrs"`
+	// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja3Fingerprints pulumi.StringArrayInput `pulumi:"ja3Fingerprints"`
+	// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja4Fingerprints pulumi.StringArrayInput `pulumi:"ja4Fingerprints"`
+	// User Agents. Must contain between 1 and 10 unique items.
+	UserAgents pulumi.StringArrayInput `pulumi:"userAgents"`
+}
+
+func (NetworkAclRuleMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclRuleMatch)(nil)).Elem()
+}
+
+func (i NetworkAclRuleMatchArgs) ToNetworkAclRuleMatchOutput() NetworkAclRuleMatchOutput {
+	return i.ToNetworkAclRuleMatchOutputWithContext(context.Background())
+}
+
+func (i NetworkAclRuleMatchArgs) ToNetworkAclRuleMatchOutputWithContext(ctx context.Context) NetworkAclRuleMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclRuleMatchOutput)
+}
+
+func (i NetworkAclRuleMatchArgs) ToNetworkAclRuleMatchPtrOutput() NetworkAclRuleMatchPtrOutput {
+	return i.ToNetworkAclRuleMatchPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkAclRuleMatchArgs) ToNetworkAclRuleMatchPtrOutputWithContext(ctx context.Context) NetworkAclRuleMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclRuleMatchOutput).ToNetworkAclRuleMatchPtrOutputWithContext(ctx)
+}
+
+// NetworkAclRuleMatchPtrInput is an input type that accepts NetworkAclRuleMatchArgs, NetworkAclRuleMatchPtr and NetworkAclRuleMatchPtrOutput values.
+// You can construct a concrete instance of `NetworkAclRuleMatchPtrInput` via:
+//
+//	        NetworkAclRuleMatchArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkAclRuleMatchPtrInput interface {
+	pulumi.Input
+
+	ToNetworkAclRuleMatchPtrOutput() NetworkAclRuleMatchPtrOutput
+	ToNetworkAclRuleMatchPtrOutputWithContext(context.Context) NetworkAclRuleMatchPtrOutput
+}
+
+type networkAclRuleMatchPtrType NetworkAclRuleMatchArgs
+
+func NetworkAclRuleMatchPtr(v *NetworkAclRuleMatchArgs) NetworkAclRuleMatchPtrInput {
+	return (*networkAclRuleMatchPtrType)(v)
+}
+
+func (*networkAclRuleMatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAclRuleMatch)(nil)).Elem()
+}
+
+func (i *networkAclRuleMatchPtrType) ToNetworkAclRuleMatchPtrOutput() NetworkAclRuleMatchPtrOutput {
+	return i.ToNetworkAclRuleMatchPtrOutputWithContext(context.Background())
+}
+
+func (i *networkAclRuleMatchPtrType) ToNetworkAclRuleMatchPtrOutputWithContext(ctx context.Context) NetworkAclRuleMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclRuleMatchPtrOutput)
+}
+
+type NetworkAclRuleMatchOutput struct{ *pulumi.OutputState }
+
+func (NetworkAclRuleMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclRuleMatch)(nil)).Elem()
+}
+
+func (o NetworkAclRuleMatchOutput) ToNetworkAclRuleMatchOutput() NetworkAclRuleMatchOutput {
+	return o
+}
+
+func (o NetworkAclRuleMatchOutput) ToNetworkAclRuleMatchOutputWithContext(ctx context.Context) NetworkAclRuleMatchOutput {
+	return o
+}
+
+func (o NetworkAclRuleMatchOutput) ToNetworkAclRuleMatchPtrOutput() NetworkAclRuleMatchPtrOutput {
+	return o.ToNetworkAclRuleMatchPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkAclRuleMatchOutput) ToNetworkAclRuleMatchPtrOutputWithContext(ctx context.Context) NetworkAclRuleMatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkAclRuleMatch) *NetworkAclRuleMatch {
+		return &v
+	}).(NetworkAclRuleMatchPtrOutput)
+}
+
+// ASNs. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleMatchOutput) Asns() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleMatch) []int { return v.Asns }).(pulumi.IntArrayOutput)
+}
+
+// Geo Country Codes. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleMatchOutput) GeoCountryCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleMatch) []string { return v.GeoCountryCodes }).(pulumi.StringArrayOutput)
+}
+
+// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleMatchOutput) GeoSubdivisionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleMatch) []string { return v.GeoSubdivisionCodes }).(pulumi.StringArrayOutput)
+}
+
+// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+func (o NetworkAclRuleMatchOutput) Ipv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleMatch) []string { return v.Ipv4Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+func (o NetworkAclRuleMatchOutput) Ipv6Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleMatch) []string { return v.Ipv6Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleMatchOutput) Ja3Fingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleMatch) []string { return v.Ja3Fingerprints }).(pulumi.StringArrayOutput)
+}
+
+// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleMatchOutput) Ja4Fingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleMatch) []string { return v.Ja4Fingerprints }).(pulumi.StringArrayOutput)
+}
+
+// User Agents. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleMatchOutput) UserAgents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleMatch) []string { return v.UserAgents }).(pulumi.StringArrayOutput)
+}
+
+type NetworkAclRuleMatchPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkAclRuleMatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAclRuleMatch)(nil)).Elem()
+}
+
+func (o NetworkAclRuleMatchPtrOutput) ToNetworkAclRuleMatchPtrOutput() NetworkAclRuleMatchPtrOutput {
+	return o
+}
+
+func (o NetworkAclRuleMatchPtrOutput) ToNetworkAclRuleMatchPtrOutputWithContext(ctx context.Context) NetworkAclRuleMatchPtrOutput {
+	return o
+}
+
+func (o NetworkAclRuleMatchPtrOutput) Elem() NetworkAclRuleMatchOutput {
+	return o.ApplyT(func(v *NetworkAclRuleMatch) NetworkAclRuleMatch {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkAclRuleMatch
+		return ret
+	}).(NetworkAclRuleMatchOutput)
+}
+
+// ASNs. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleMatchPtrOutput) Asns() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleMatch) []int {
+		if v == nil {
+			return nil
+		}
+		return v.Asns
+	}).(pulumi.IntArrayOutput)
+}
+
+// Geo Country Codes. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleMatchPtrOutput) GeoCountryCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GeoCountryCodes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleMatchPtrOutput) GeoSubdivisionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GeoSubdivisionCodes
+	}).(pulumi.StringArrayOutput)
+}
+
+// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+func (o NetworkAclRuleMatchPtrOutput) Ipv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4Cidrs
+	}).(pulumi.StringArrayOutput)
+}
+
+// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+func (o NetworkAclRuleMatchPtrOutput) Ipv6Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6Cidrs
+	}).(pulumi.StringArrayOutput)
+}
+
+// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleMatchPtrOutput) Ja3Fingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ja3Fingerprints
+	}).(pulumi.StringArrayOutput)
+}
+
+// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleMatchPtrOutput) Ja4Fingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ja4Fingerprints
+	}).(pulumi.StringArrayOutput)
+}
+
+// User Agents. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleMatchPtrOutput) UserAgents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAgents
+	}).(pulumi.StringArrayOutput)
+}
+
+type NetworkAclRuleNotMatch struct {
+	// ASNs. Must contain between 1 and 10 unique items.
+	Asns []int `pulumi:"asns"`
+	// Geo Country Codes. Must contain between 1 and 10 unique items.
+	GeoCountryCodes []string `pulumi:"geoCountryCodes"`
+	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+	GeoSubdivisionCodes []string `pulumi:"geoSubdivisionCodes"`
+	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+	Ipv4Cidrs []string `pulumi:"ipv4Cidrs"`
+	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+	Ipv6Cidrs []string `pulumi:"ipv6Cidrs"`
+	// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja3Fingerprints []string `pulumi:"ja3Fingerprints"`
+	// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja4Fingerprints []string `pulumi:"ja4Fingerprints"`
+	// User Agents. Must contain between 1 and 10 unique items.
+	UserAgents []string `pulumi:"userAgents"`
+}
+
+// NetworkAclRuleNotMatchInput is an input type that accepts NetworkAclRuleNotMatchArgs and NetworkAclRuleNotMatchOutput values.
+// You can construct a concrete instance of `NetworkAclRuleNotMatchInput` via:
+//
+//	NetworkAclRuleNotMatchArgs{...}
+type NetworkAclRuleNotMatchInput interface {
+	pulumi.Input
+
+	ToNetworkAclRuleNotMatchOutput() NetworkAclRuleNotMatchOutput
+	ToNetworkAclRuleNotMatchOutputWithContext(context.Context) NetworkAclRuleNotMatchOutput
+}
+
+type NetworkAclRuleNotMatchArgs struct {
+	// ASNs. Must contain between 1 and 10 unique items.
+	Asns pulumi.IntArrayInput `pulumi:"asns"`
+	// Geo Country Codes. Must contain between 1 and 10 unique items.
+	GeoCountryCodes pulumi.StringArrayInput `pulumi:"geoCountryCodes"`
+	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+	GeoSubdivisionCodes pulumi.StringArrayInput `pulumi:"geoSubdivisionCodes"`
+	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+	Ipv4Cidrs pulumi.StringArrayInput `pulumi:"ipv4Cidrs"`
+	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+	Ipv6Cidrs pulumi.StringArrayInput `pulumi:"ipv6Cidrs"`
+	// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja3Fingerprints pulumi.StringArrayInput `pulumi:"ja3Fingerprints"`
+	// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja4Fingerprints pulumi.StringArrayInput `pulumi:"ja4Fingerprints"`
+	// User Agents. Must contain between 1 and 10 unique items.
+	UserAgents pulumi.StringArrayInput `pulumi:"userAgents"`
+}
+
+func (NetworkAclRuleNotMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclRuleNotMatch)(nil)).Elem()
+}
+
+func (i NetworkAclRuleNotMatchArgs) ToNetworkAclRuleNotMatchOutput() NetworkAclRuleNotMatchOutput {
+	return i.ToNetworkAclRuleNotMatchOutputWithContext(context.Background())
+}
+
+func (i NetworkAclRuleNotMatchArgs) ToNetworkAclRuleNotMatchOutputWithContext(ctx context.Context) NetworkAclRuleNotMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclRuleNotMatchOutput)
+}
+
+func (i NetworkAclRuleNotMatchArgs) ToNetworkAclRuleNotMatchPtrOutput() NetworkAclRuleNotMatchPtrOutput {
+	return i.ToNetworkAclRuleNotMatchPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkAclRuleNotMatchArgs) ToNetworkAclRuleNotMatchPtrOutputWithContext(ctx context.Context) NetworkAclRuleNotMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclRuleNotMatchOutput).ToNetworkAclRuleNotMatchPtrOutputWithContext(ctx)
+}
+
+// NetworkAclRuleNotMatchPtrInput is an input type that accepts NetworkAclRuleNotMatchArgs, NetworkAclRuleNotMatchPtr and NetworkAclRuleNotMatchPtrOutput values.
+// You can construct a concrete instance of `NetworkAclRuleNotMatchPtrInput` via:
+//
+//	        NetworkAclRuleNotMatchArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkAclRuleNotMatchPtrInput interface {
+	pulumi.Input
+
+	ToNetworkAclRuleNotMatchPtrOutput() NetworkAclRuleNotMatchPtrOutput
+	ToNetworkAclRuleNotMatchPtrOutputWithContext(context.Context) NetworkAclRuleNotMatchPtrOutput
+}
+
+type networkAclRuleNotMatchPtrType NetworkAclRuleNotMatchArgs
+
+func NetworkAclRuleNotMatchPtr(v *NetworkAclRuleNotMatchArgs) NetworkAclRuleNotMatchPtrInput {
+	return (*networkAclRuleNotMatchPtrType)(v)
+}
+
+func (*networkAclRuleNotMatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAclRuleNotMatch)(nil)).Elem()
+}
+
+func (i *networkAclRuleNotMatchPtrType) ToNetworkAclRuleNotMatchPtrOutput() NetworkAclRuleNotMatchPtrOutput {
+	return i.ToNetworkAclRuleNotMatchPtrOutputWithContext(context.Background())
+}
+
+func (i *networkAclRuleNotMatchPtrType) ToNetworkAclRuleNotMatchPtrOutputWithContext(ctx context.Context) NetworkAclRuleNotMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclRuleNotMatchPtrOutput)
+}
+
+type NetworkAclRuleNotMatchOutput struct{ *pulumi.OutputState }
+
+func (NetworkAclRuleNotMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclRuleNotMatch)(nil)).Elem()
+}
+
+func (o NetworkAclRuleNotMatchOutput) ToNetworkAclRuleNotMatchOutput() NetworkAclRuleNotMatchOutput {
+	return o
+}
+
+func (o NetworkAclRuleNotMatchOutput) ToNetworkAclRuleNotMatchOutputWithContext(ctx context.Context) NetworkAclRuleNotMatchOutput {
+	return o
+}
+
+func (o NetworkAclRuleNotMatchOutput) ToNetworkAclRuleNotMatchPtrOutput() NetworkAclRuleNotMatchPtrOutput {
+	return o.ToNetworkAclRuleNotMatchPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkAclRuleNotMatchOutput) ToNetworkAclRuleNotMatchPtrOutputWithContext(ctx context.Context) NetworkAclRuleNotMatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkAclRuleNotMatch) *NetworkAclRuleNotMatch {
+		return &v
+	}).(NetworkAclRuleNotMatchPtrOutput)
+}
+
+// ASNs. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleNotMatchOutput) Asns() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleNotMatch) []int { return v.Asns }).(pulumi.IntArrayOutput)
+}
+
+// Geo Country Codes. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleNotMatchOutput) GeoCountryCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleNotMatch) []string { return v.GeoCountryCodes }).(pulumi.StringArrayOutput)
+}
+
+// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleNotMatchOutput) GeoSubdivisionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleNotMatch) []string { return v.GeoSubdivisionCodes }).(pulumi.StringArrayOutput)
+}
+
+// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+func (o NetworkAclRuleNotMatchOutput) Ipv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleNotMatch) []string { return v.Ipv4Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+func (o NetworkAclRuleNotMatchOutput) Ipv6Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleNotMatch) []string { return v.Ipv6Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleNotMatchOutput) Ja3Fingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleNotMatch) []string { return v.Ja3Fingerprints }).(pulumi.StringArrayOutput)
+}
+
+// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleNotMatchOutput) Ja4Fingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleNotMatch) []string { return v.Ja4Fingerprints }).(pulumi.StringArrayOutput)
+}
+
+// User Agents. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleNotMatchOutput) UserAgents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleNotMatch) []string { return v.UserAgents }).(pulumi.StringArrayOutput)
+}
+
+type NetworkAclRuleNotMatchPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkAclRuleNotMatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAclRuleNotMatch)(nil)).Elem()
+}
+
+func (o NetworkAclRuleNotMatchPtrOutput) ToNetworkAclRuleNotMatchPtrOutput() NetworkAclRuleNotMatchPtrOutput {
+	return o
+}
+
+func (o NetworkAclRuleNotMatchPtrOutput) ToNetworkAclRuleNotMatchPtrOutputWithContext(ctx context.Context) NetworkAclRuleNotMatchPtrOutput {
+	return o
+}
+
+func (o NetworkAclRuleNotMatchPtrOutput) Elem() NetworkAclRuleNotMatchOutput {
+	return o.ApplyT(func(v *NetworkAclRuleNotMatch) NetworkAclRuleNotMatch {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkAclRuleNotMatch
+		return ret
+	}).(NetworkAclRuleNotMatchOutput)
+}
+
+// ASNs. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleNotMatchPtrOutput) Asns() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleNotMatch) []int {
+		if v == nil {
+			return nil
+		}
+		return v.Asns
+	}).(pulumi.IntArrayOutput)
+}
+
+// Geo Country Codes. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleNotMatchPtrOutput) GeoCountryCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleNotMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GeoCountryCodes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleNotMatchPtrOutput) GeoSubdivisionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleNotMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GeoSubdivisionCodes
+	}).(pulumi.StringArrayOutput)
+}
+
+// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+func (o NetworkAclRuleNotMatchPtrOutput) Ipv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleNotMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4Cidrs
+	}).(pulumi.StringArrayOutput)
+}
+
+// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+func (o NetworkAclRuleNotMatchPtrOutput) Ipv6Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleNotMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6Cidrs
+	}).(pulumi.StringArrayOutput)
+}
+
+// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleNotMatchPtrOutput) Ja3Fingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleNotMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ja3Fingerprints
+	}).(pulumi.StringArrayOutput)
+}
+
+// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleNotMatchPtrOutput) Ja4Fingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleNotMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ja4Fingerprints
+	}).(pulumi.StringArrayOutput)
+}
+
+// User Agents. Must contain between 1 and 10 unique items.
+func (o NetworkAclRuleNotMatchPtrOutput) UserAgents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleNotMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAgents
+	}).(pulumi.StringArrayOutput)
+}
+
 type OrganizationBranding struct {
 	// Color scheme used to customize the login pages.
 	Colors map[string]string `pulumi:"colors"`
@@ -43194,6 +44141,583 @@ func (o GetFormMessageArrayOutput) Index(i pulumi.IntInput) GetFormMessageOutput
 	}).(GetFormMessageOutput)
 }
 
+type GetNetworkAclRule struct {
+	// The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+	Actions []GetNetworkAclRuleAction `pulumi:"actions"`
+	// The configuration for the Network ACL Rule
+	Matches []GetNetworkAclRuleMatch `pulumi:"matches"`
+	// The configuration for the Network ACL Rule
+	NotMatches []GetNetworkAclRuleNotMatch `pulumi:"notMatches"`
+	// The scope of the Network ACL Rule
+	Scope string `pulumi:"scope"`
+}
+
+// GetNetworkAclRuleInput is an input type that accepts GetNetworkAclRuleArgs and GetNetworkAclRuleOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleInput` via:
+//
+//	GetNetworkAclRuleArgs{...}
+type GetNetworkAclRuleInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleOutput() GetNetworkAclRuleOutput
+	ToGetNetworkAclRuleOutputWithContext(context.Context) GetNetworkAclRuleOutput
+}
+
+type GetNetworkAclRuleArgs struct {
+	// The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+	Actions GetNetworkAclRuleActionArrayInput `pulumi:"actions"`
+	// The configuration for the Network ACL Rule
+	Matches GetNetworkAclRuleMatchArrayInput `pulumi:"matches"`
+	// The configuration for the Network ACL Rule
+	NotMatches GetNetworkAclRuleNotMatchArrayInput `pulumi:"notMatches"`
+	// The scope of the Network ACL Rule
+	Scope pulumi.StringInput `pulumi:"scope"`
+}
+
+func (GetNetworkAclRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRule)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleArgs) ToGetNetworkAclRuleOutput() GetNetworkAclRuleOutput {
+	return i.ToGetNetworkAclRuleOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleArgs) ToGetNetworkAclRuleOutputWithContext(ctx context.Context) GetNetworkAclRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleOutput)
+}
+
+// GetNetworkAclRuleArrayInput is an input type that accepts GetNetworkAclRuleArray and GetNetworkAclRuleArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleArrayInput` via:
+//
+//	GetNetworkAclRuleArray{ GetNetworkAclRuleArgs{...} }
+type GetNetworkAclRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleArrayOutput() GetNetworkAclRuleArrayOutput
+	ToGetNetworkAclRuleArrayOutputWithContext(context.Context) GetNetworkAclRuleArrayOutput
+}
+
+type GetNetworkAclRuleArray []GetNetworkAclRuleInput
+
+func (GetNetworkAclRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRule)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleArray) ToGetNetworkAclRuleArrayOutput() GetNetworkAclRuleArrayOutput {
+	return i.ToGetNetworkAclRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleArray) ToGetNetworkAclRuleArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleArrayOutput)
+}
+
+type GetNetworkAclRuleOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRule)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleOutput) ToGetNetworkAclRuleOutput() GetNetworkAclRuleOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleOutput) ToGetNetworkAclRuleOutputWithContext(ctx context.Context) GetNetworkAclRuleOutput {
+	return o
+}
+
+// The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+func (o GetNetworkAclRuleOutput) Actions() GetNetworkAclRuleActionArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRule) []GetNetworkAclRuleAction { return v.Actions }).(GetNetworkAclRuleActionArrayOutput)
+}
+
+// The configuration for the Network ACL Rule
+func (o GetNetworkAclRuleOutput) Matches() GetNetworkAclRuleMatchArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRule) []GetNetworkAclRuleMatch { return v.Matches }).(GetNetworkAclRuleMatchArrayOutput)
+}
+
+// The configuration for the Network ACL Rule
+func (o GetNetworkAclRuleOutput) NotMatches() GetNetworkAclRuleNotMatchArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRule) []GetNetworkAclRuleNotMatch { return v.NotMatches }).(GetNetworkAclRuleNotMatchArrayOutput)
+}
+
+// The scope of the Network ACL Rule
+func (o GetNetworkAclRuleOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclRule) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+type GetNetworkAclRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRule)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleArrayOutput) ToGetNetworkAclRuleArrayOutput() GetNetworkAclRuleArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleArrayOutput) ToGetNetworkAclRuleArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleArrayOutput) Index(i pulumi.IntInput) GetNetworkAclRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAclRule {
+		return vs[0].([]GetNetworkAclRule)[vs[1].(int)]
+	}).(GetNetworkAclRuleOutput)
+}
+
+type GetNetworkAclRuleAction struct {
+	// If true, allows the request. When using allow action, no other properties should be set.
+	Allow bool `pulumi:"allow"`
+	// If true, blocks the request. When using block action, no other properties should be set.
+	Block bool `pulumi:"block"`
+	// If true, logs the request. When using log action, no other properties should be set.
+	Log bool `pulumi:"log"`
+	// If true, redirects the request. When using redirect action, redirectUri must also be specified.
+	Redirect bool `pulumi:"redirect"`
+	// The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
+	RedirectUri string `pulumi:"redirectUri"`
+}
+
+// GetNetworkAclRuleActionInput is an input type that accepts GetNetworkAclRuleActionArgs and GetNetworkAclRuleActionOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleActionInput` via:
+//
+//	GetNetworkAclRuleActionArgs{...}
+type GetNetworkAclRuleActionInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleActionOutput() GetNetworkAclRuleActionOutput
+	ToGetNetworkAclRuleActionOutputWithContext(context.Context) GetNetworkAclRuleActionOutput
+}
+
+type GetNetworkAclRuleActionArgs struct {
+	// If true, allows the request. When using allow action, no other properties should be set.
+	Allow pulumi.BoolInput `pulumi:"allow"`
+	// If true, blocks the request. When using block action, no other properties should be set.
+	Block pulumi.BoolInput `pulumi:"block"`
+	// If true, logs the request. When using log action, no other properties should be set.
+	Log pulumi.BoolInput `pulumi:"log"`
+	// If true, redirects the request. When using redirect action, redirectUri must also be specified.
+	Redirect pulumi.BoolInput `pulumi:"redirect"`
+	// The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
+	RedirectUri pulumi.StringInput `pulumi:"redirectUri"`
+}
+
+func (GetNetworkAclRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleAction)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleActionArgs) ToGetNetworkAclRuleActionOutput() GetNetworkAclRuleActionOutput {
+	return i.ToGetNetworkAclRuleActionOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleActionArgs) ToGetNetworkAclRuleActionOutputWithContext(ctx context.Context) GetNetworkAclRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleActionOutput)
+}
+
+// GetNetworkAclRuleActionArrayInput is an input type that accepts GetNetworkAclRuleActionArray and GetNetworkAclRuleActionArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleActionArrayInput` via:
+//
+//	GetNetworkAclRuleActionArray{ GetNetworkAclRuleActionArgs{...} }
+type GetNetworkAclRuleActionArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleActionArrayOutput() GetNetworkAclRuleActionArrayOutput
+	ToGetNetworkAclRuleActionArrayOutputWithContext(context.Context) GetNetworkAclRuleActionArrayOutput
+}
+
+type GetNetworkAclRuleActionArray []GetNetworkAclRuleActionInput
+
+func (GetNetworkAclRuleActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleAction)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleActionArray) ToGetNetworkAclRuleActionArrayOutput() GetNetworkAclRuleActionArrayOutput {
+	return i.ToGetNetworkAclRuleActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleActionArray) ToGetNetworkAclRuleActionArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleActionArrayOutput)
+}
+
+type GetNetworkAclRuleActionOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleAction)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleActionOutput) ToGetNetworkAclRuleActionOutput() GetNetworkAclRuleActionOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleActionOutput) ToGetNetworkAclRuleActionOutputWithContext(ctx context.Context) GetNetworkAclRuleActionOutput {
+	return o
+}
+
+// If true, allows the request. When using allow action, no other properties should be set.
+func (o GetNetworkAclRuleActionOutput) Allow() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleAction) bool { return v.Allow }).(pulumi.BoolOutput)
+}
+
+// If true, blocks the request. When using block action, no other properties should be set.
+func (o GetNetworkAclRuleActionOutput) Block() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleAction) bool { return v.Block }).(pulumi.BoolOutput)
+}
+
+// If true, logs the request. When using log action, no other properties should be set.
+func (o GetNetworkAclRuleActionOutput) Log() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleAction) bool { return v.Log }).(pulumi.BoolOutput)
+}
+
+// If true, redirects the request. When using redirect action, redirectUri must also be specified.
+func (o GetNetworkAclRuleActionOutput) Redirect() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleAction) bool { return v.Redirect }).(pulumi.BoolOutput)
+}
+
+// The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
+func (o GetNetworkAclRuleActionOutput) RedirectUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleAction) string { return v.RedirectUri }).(pulumi.StringOutput)
+}
+
+type GetNetworkAclRuleActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleAction)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleActionArrayOutput) ToGetNetworkAclRuleActionArrayOutput() GetNetworkAclRuleActionArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleActionArrayOutput) ToGetNetworkAclRuleActionArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleActionArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleActionArrayOutput) Index(i pulumi.IntInput) GetNetworkAclRuleActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAclRuleAction {
+		return vs[0].([]GetNetworkAclRuleAction)[vs[1].(int)]
+	}).(GetNetworkAclRuleActionOutput)
+}
+
+type GetNetworkAclRuleMatch struct {
+	// ASNs. Must contain between 1 and 10 unique items.
+	Asns []int `pulumi:"asns"`
+	// Geo Country Codes. Must contain between 1 and 10 unique items.
+	GeoCountryCodes []string `pulumi:"geoCountryCodes"`
+	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+	GeoSubdivisionCodes []string `pulumi:"geoSubdivisionCodes"`
+	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+	Ipv4Cidrs []string `pulumi:"ipv4Cidrs"`
+	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+	Ipv6Cidrs []string `pulumi:"ipv6Cidrs"`
+	// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja3Fingerprints []string `pulumi:"ja3Fingerprints"`
+	// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja4Fingerprints []string `pulumi:"ja4Fingerprints"`
+	// User Agents. Must contain between 1 and 10 unique items.
+	UserAgents []string `pulumi:"userAgents"`
+}
+
+// GetNetworkAclRuleMatchInput is an input type that accepts GetNetworkAclRuleMatchArgs and GetNetworkAclRuleMatchOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleMatchInput` via:
+//
+//	GetNetworkAclRuleMatchArgs{...}
+type GetNetworkAclRuleMatchInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleMatchOutput() GetNetworkAclRuleMatchOutput
+	ToGetNetworkAclRuleMatchOutputWithContext(context.Context) GetNetworkAclRuleMatchOutput
+}
+
+type GetNetworkAclRuleMatchArgs struct {
+	// ASNs. Must contain between 1 and 10 unique items.
+	Asns pulumi.IntArrayInput `pulumi:"asns"`
+	// Geo Country Codes. Must contain between 1 and 10 unique items.
+	GeoCountryCodes pulumi.StringArrayInput `pulumi:"geoCountryCodes"`
+	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+	GeoSubdivisionCodes pulumi.StringArrayInput `pulumi:"geoSubdivisionCodes"`
+	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+	Ipv4Cidrs pulumi.StringArrayInput `pulumi:"ipv4Cidrs"`
+	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+	Ipv6Cidrs pulumi.StringArrayInput `pulumi:"ipv6Cidrs"`
+	// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja3Fingerprints pulumi.StringArrayInput `pulumi:"ja3Fingerprints"`
+	// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja4Fingerprints pulumi.StringArrayInput `pulumi:"ja4Fingerprints"`
+	// User Agents. Must contain between 1 and 10 unique items.
+	UserAgents pulumi.StringArrayInput `pulumi:"userAgents"`
+}
+
+func (GetNetworkAclRuleMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleMatch)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleMatchArgs) ToGetNetworkAclRuleMatchOutput() GetNetworkAclRuleMatchOutput {
+	return i.ToGetNetworkAclRuleMatchOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleMatchArgs) ToGetNetworkAclRuleMatchOutputWithContext(ctx context.Context) GetNetworkAclRuleMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleMatchOutput)
+}
+
+// GetNetworkAclRuleMatchArrayInput is an input type that accepts GetNetworkAclRuleMatchArray and GetNetworkAclRuleMatchArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleMatchArrayInput` via:
+//
+//	GetNetworkAclRuleMatchArray{ GetNetworkAclRuleMatchArgs{...} }
+type GetNetworkAclRuleMatchArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleMatchArrayOutput() GetNetworkAclRuleMatchArrayOutput
+	ToGetNetworkAclRuleMatchArrayOutputWithContext(context.Context) GetNetworkAclRuleMatchArrayOutput
+}
+
+type GetNetworkAclRuleMatchArray []GetNetworkAclRuleMatchInput
+
+func (GetNetworkAclRuleMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleMatch)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleMatchArray) ToGetNetworkAclRuleMatchArrayOutput() GetNetworkAclRuleMatchArrayOutput {
+	return i.ToGetNetworkAclRuleMatchArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleMatchArray) ToGetNetworkAclRuleMatchArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleMatchArrayOutput)
+}
+
+type GetNetworkAclRuleMatchOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleMatch)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleMatchOutput) ToGetNetworkAclRuleMatchOutput() GetNetworkAclRuleMatchOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleMatchOutput) ToGetNetworkAclRuleMatchOutputWithContext(ctx context.Context) GetNetworkAclRuleMatchOutput {
+	return o
+}
+
+// ASNs. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleMatchOutput) Asns() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []int { return v.Asns }).(pulumi.IntArrayOutput)
+}
+
+// Geo Country Codes. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleMatchOutput) GeoCountryCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.GeoCountryCodes }).(pulumi.StringArrayOutput)
+}
+
+// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleMatchOutput) GeoSubdivisionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.GeoSubdivisionCodes }).(pulumi.StringArrayOutput)
+}
+
+// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+func (o GetNetworkAclRuleMatchOutput) Ipv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.Ipv4Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+func (o GetNetworkAclRuleMatchOutput) Ipv6Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.Ipv6Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleMatchOutput) Ja3Fingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.Ja3Fingerprints }).(pulumi.StringArrayOutput)
+}
+
+// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleMatchOutput) Ja4Fingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.Ja4Fingerprints }).(pulumi.StringArrayOutput)
+}
+
+// User Agents. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleMatchOutput) UserAgents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.UserAgents }).(pulumi.StringArrayOutput)
+}
+
+type GetNetworkAclRuleMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleMatch)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleMatchArrayOutput) ToGetNetworkAclRuleMatchArrayOutput() GetNetworkAclRuleMatchArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleMatchArrayOutput) ToGetNetworkAclRuleMatchArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleMatchArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleMatchArrayOutput) Index(i pulumi.IntInput) GetNetworkAclRuleMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAclRuleMatch {
+		return vs[0].([]GetNetworkAclRuleMatch)[vs[1].(int)]
+	}).(GetNetworkAclRuleMatchOutput)
+}
+
+type GetNetworkAclRuleNotMatch struct {
+	// ASNs. Must contain between 1 and 10 unique items.
+	Asns []int `pulumi:"asns"`
+	// Geo Country Codes. Must contain between 1 and 10 unique items.
+	GeoCountryCodes []string `pulumi:"geoCountryCodes"`
+	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+	GeoSubdivisionCodes []string `pulumi:"geoSubdivisionCodes"`
+	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+	Ipv4Cidrs []string `pulumi:"ipv4Cidrs"`
+	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+	Ipv6Cidrs []string `pulumi:"ipv6Cidrs"`
+	// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja3Fingerprints []string `pulumi:"ja3Fingerprints"`
+	// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja4Fingerprints []string `pulumi:"ja4Fingerprints"`
+	// User Agents. Must contain between 1 and 10 unique items.
+	UserAgents []string `pulumi:"userAgents"`
+}
+
+// GetNetworkAclRuleNotMatchInput is an input type that accepts GetNetworkAclRuleNotMatchArgs and GetNetworkAclRuleNotMatchOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleNotMatchInput` via:
+//
+//	GetNetworkAclRuleNotMatchArgs{...}
+type GetNetworkAclRuleNotMatchInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleNotMatchOutput() GetNetworkAclRuleNotMatchOutput
+	ToGetNetworkAclRuleNotMatchOutputWithContext(context.Context) GetNetworkAclRuleNotMatchOutput
+}
+
+type GetNetworkAclRuleNotMatchArgs struct {
+	// ASNs. Must contain between 1 and 10 unique items.
+	Asns pulumi.IntArrayInput `pulumi:"asns"`
+	// Geo Country Codes. Must contain between 1 and 10 unique items.
+	GeoCountryCodes pulumi.StringArrayInput `pulumi:"geoCountryCodes"`
+	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+	GeoSubdivisionCodes pulumi.StringArrayInput `pulumi:"geoSubdivisionCodes"`
+	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+	Ipv4Cidrs pulumi.StringArrayInput `pulumi:"ipv4Cidrs"`
+	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+	Ipv6Cidrs pulumi.StringArrayInput `pulumi:"ipv6Cidrs"`
+	// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja3Fingerprints pulumi.StringArrayInput `pulumi:"ja3Fingerprints"`
+	// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja4Fingerprints pulumi.StringArrayInput `pulumi:"ja4Fingerprints"`
+	// User Agents. Must contain between 1 and 10 unique items.
+	UserAgents pulumi.StringArrayInput `pulumi:"userAgents"`
+}
+
+func (GetNetworkAclRuleNotMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleNotMatch)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleNotMatchArgs) ToGetNetworkAclRuleNotMatchOutput() GetNetworkAclRuleNotMatchOutput {
+	return i.ToGetNetworkAclRuleNotMatchOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleNotMatchArgs) ToGetNetworkAclRuleNotMatchOutputWithContext(ctx context.Context) GetNetworkAclRuleNotMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleNotMatchOutput)
+}
+
+// GetNetworkAclRuleNotMatchArrayInput is an input type that accepts GetNetworkAclRuleNotMatchArray and GetNetworkAclRuleNotMatchArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleNotMatchArrayInput` via:
+//
+//	GetNetworkAclRuleNotMatchArray{ GetNetworkAclRuleNotMatchArgs{...} }
+type GetNetworkAclRuleNotMatchArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleNotMatchArrayOutput() GetNetworkAclRuleNotMatchArrayOutput
+	ToGetNetworkAclRuleNotMatchArrayOutputWithContext(context.Context) GetNetworkAclRuleNotMatchArrayOutput
+}
+
+type GetNetworkAclRuleNotMatchArray []GetNetworkAclRuleNotMatchInput
+
+func (GetNetworkAclRuleNotMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleNotMatch)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleNotMatchArray) ToGetNetworkAclRuleNotMatchArrayOutput() GetNetworkAclRuleNotMatchArrayOutput {
+	return i.ToGetNetworkAclRuleNotMatchArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleNotMatchArray) ToGetNetworkAclRuleNotMatchArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleNotMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleNotMatchArrayOutput)
+}
+
+type GetNetworkAclRuleNotMatchOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleNotMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleNotMatch)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleNotMatchOutput) ToGetNetworkAclRuleNotMatchOutput() GetNetworkAclRuleNotMatchOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleNotMatchOutput) ToGetNetworkAclRuleNotMatchOutputWithContext(ctx context.Context) GetNetworkAclRuleNotMatchOutput {
+	return o
+}
+
+// ASNs. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleNotMatchOutput) Asns() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []int { return v.Asns }).(pulumi.IntArrayOutput)
+}
+
+// Geo Country Codes. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleNotMatchOutput) GeoCountryCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.GeoCountryCodes }).(pulumi.StringArrayOutput)
+}
+
+// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleNotMatchOutput) GeoSubdivisionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.GeoSubdivisionCodes }).(pulumi.StringArrayOutput)
+}
+
+// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+func (o GetNetworkAclRuleNotMatchOutput) Ipv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.Ipv4Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+func (o GetNetworkAclRuleNotMatchOutput) Ipv6Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.Ipv6Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleNotMatchOutput) Ja3Fingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.Ja3Fingerprints }).(pulumi.StringArrayOutput)
+}
+
+// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleNotMatchOutput) Ja4Fingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.Ja4Fingerprints }).(pulumi.StringArrayOutput)
+}
+
+// User Agents. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleNotMatchOutput) UserAgents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.UserAgents }).(pulumi.StringArrayOutput)
+}
+
+type GetNetworkAclRuleNotMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleNotMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleNotMatch)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleNotMatchArrayOutput) ToGetNetworkAclRuleNotMatchArrayOutput() GetNetworkAclRuleNotMatchArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleNotMatchArrayOutput) ToGetNetworkAclRuleNotMatchArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleNotMatchArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleNotMatchArrayOutput) Index(i pulumi.IntInput) GetNetworkAclRuleNotMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAclRuleNotMatch {
+		return vs[0].([]GetNetworkAclRuleNotMatch)[vs[1].(int)]
+	}).(GetNetworkAclRuleNotMatchOutput)
+}
+
 type GetOrganizationBranding struct {
 	// Color scheme used to customize the login pages.
 	Colors map[string]string `pulumi:"colors"`
@@ -46723,6 +48247,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianWebauthnRoamingPtrInput)(nil)).Elem(), GuardianWebauthnRoamingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamSinkInput)(nil)).Elem(), LogStreamSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamSinkPtrInput)(nil)).Elem(), LogStreamSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclRuleInput)(nil)).Elem(), NetworkAclRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclRulePtrInput)(nil)).Elem(), NetworkAclRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclRuleActionInput)(nil)).Elem(), NetworkAclRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclRuleActionPtrInput)(nil)).Elem(), NetworkAclRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclRuleMatchInput)(nil)).Elem(), NetworkAclRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclRuleMatchPtrInput)(nil)).Elem(), NetworkAclRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclRuleNotMatchInput)(nil)).Elem(), NetworkAclRuleNotMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclRuleNotMatchPtrInput)(nil)).Elem(), NetworkAclRuleNotMatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBrandingInput)(nil)).Elem(), OrganizationBrandingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBrandingPtrInput)(nil)).Elem(), OrganizationBrandingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationConnectionsEnabledConnectionInput)(nil)).Elem(), OrganizationConnectionsEnabledConnectionArgs{})
@@ -47016,6 +48548,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFormLanguageArrayInput)(nil)).Elem(), GetFormLanguageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFormMessageInput)(nil)).Elem(), GetFormMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFormMessageArrayInput)(nil)).Elem(), GetFormMessageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleInput)(nil)).Elem(), GetNetworkAclRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleArrayInput)(nil)).Elem(), GetNetworkAclRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleActionInput)(nil)).Elem(), GetNetworkAclRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleActionArrayInput)(nil)).Elem(), GetNetworkAclRuleActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleMatchInput)(nil)).Elem(), GetNetworkAclRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleMatchArrayInput)(nil)).Elem(), GetNetworkAclRuleMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleNotMatchInput)(nil)).Elem(), GetNetworkAclRuleNotMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleNotMatchArrayInput)(nil)).Elem(), GetNetworkAclRuleNotMatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBrandingInput)(nil)).Elem(), GetOrganizationBrandingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBrandingArrayInput)(nil)).Elem(), GetOrganizationBrandingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationConnectionTypeInput)(nil)).Elem(), GetOrganizationConnectionTypeArgs{})
@@ -47330,6 +48870,14 @@ func init() {
 	pulumi.RegisterOutputType(GuardianWebauthnRoamingPtrOutput{})
 	pulumi.RegisterOutputType(LogStreamSinkOutput{})
 	pulumi.RegisterOutputType(LogStreamSinkPtrOutput{})
+	pulumi.RegisterOutputType(NetworkAclRuleOutput{})
+	pulumi.RegisterOutputType(NetworkAclRulePtrOutput{})
+	pulumi.RegisterOutputType(NetworkAclRuleActionOutput{})
+	pulumi.RegisterOutputType(NetworkAclRuleActionPtrOutput{})
+	pulumi.RegisterOutputType(NetworkAclRuleMatchOutput{})
+	pulumi.RegisterOutputType(NetworkAclRuleMatchPtrOutput{})
+	pulumi.RegisterOutputType(NetworkAclRuleNotMatchOutput{})
+	pulumi.RegisterOutputType(NetworkAclRuleNotMatchPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationBrandingOutput{})
 	pulumi.RegisterOutputType(OrganizationBrandingPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationConnectionsEnabledConnectionOutput{})
@@ -47623,6 +49171,14 @@ func init() {
 	pulumi.RegisterOutputType(GetFormLanguageArrayOutput{})
 	pulumi.RegisterOutputType(GetFormMessageOutput{})
 	pulumi.RegisterOutputType(GetFormMessageArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleActionOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleActionArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleMatchOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleMatchArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleNotMatchOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleNotMatchArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBrandingOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBrandingArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationConnectionTypeOutput{})

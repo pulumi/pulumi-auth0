@@ -2624,6 +2624,118 @@ export interface LogStreamSink {
     sumoSourceAddress?: pulumi.Input<string>;
 }
 
+export interface NetworkAclRule {
+    /**
+     * The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+     */
+    action: pulumi.Input<inputs.NetworkAclRuleAction>;
+    /**
+     * The configuration for the Network ACL Rule
+     */
+    match?: pulumi.Input<inputs.NetworkAclRuleMatch>;
+    /**
+     * The configuration for the Network ACL Rule
+     */
+    notMatch?: pulumi.Input<inputs.NetworkAclRuleNotMatch>;
+    /**
+     * The scope of the Network ACL Rule
+     */
+    scope: pulumi.Input<string>;
+}
+
+export interface NetworkAclRuleAction {
+    /**
+     * If true, allows the request. When using allow action, no other properties should be set.
+     */
+    allow?: pulumi.Input<boolean>;
+    /**
+     * If true, blocks the request. When using block action, no other properties should be set.
+     */
+    block?: pulumi.Input<boolean>;
+    /**
+     * If true, logs the request. When using log action, no other properties should be set.
+     */
+    log?: pulumi.Input<boolean>;
+    /**
+     * If true, redirects the request. When using redirect action, redirectUri must also be specified.
+     */
+    redirect?: pulumi.Input<boolean>;
+    /**
+     * The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
+     */
+    redirectUri?: pulumi.Input<string>;
+}
+
+export interface NetworkAclRuleMatch {
+    /**
+     * ASNs. Must contain between 1 and 10 unique items.
+     */
+    asns?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Geo Country Codes. Must contain between 1 and 10 unique items.
+     */
+    geoCountryCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+     */
+    geoSubdivisionCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+     */
+    ipv4Cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+     */
+    ipv6Cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * JA3 Fingerprints. Must contain between 1 and 10 unique items.
+     */
+    ja3Fingerprints?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * JA4 Fingerprints. Must contain between 1 and 10 unique items.
+     */
+    ja4Fingerprints?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * User Agents. Must contain between 1 and 10 unique items.
+     */
+    userAgents?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface NetworkAclRuleNotMatch {
+    /**
+     * ASNs. Must contain between 1 and 10 unique items.
+     */
+    asns?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Geo Country Codes. Must contain between 1 and 10 unique items.
+     */
+    geoCountryCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+     */
+    geoSubdivisionCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+     */
+    ipv4Cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+     */
+    ipv6Cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * JA3 Fingerprints. Must contain between 1 and 10 unique items.
+     */
+    ja3Fingerprints?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * JA4 Fingerprints. Must contain between 1 and 10 unique items.
+     */
+    ja4Fingerprints?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * User Agents. Must contain between 1 and 10 unique items.
+     */
+    userAgents?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface OrganizationBranding {
     /**
      * Color scheme used to customize the login pages.
