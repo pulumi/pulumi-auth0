@@ -93,6 +93,9 @@ class _CustomDomainVerificationState:
 
 
 class CustomDomainVerification(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/customDomainVerification:CustomDomainVerification"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -194,6 +194,9 @@ class _EmailProviderState:
 
 
 class EmailProvider(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/emailProvider:EmailProvider"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

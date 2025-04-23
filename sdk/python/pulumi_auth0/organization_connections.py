@@ -98,6 +98,9 @@ class _OrganizationConnectionsState:
 
 
 class OrganizationConnections(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/organizationConnections:OrganizationConnections"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

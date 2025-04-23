@@ -159,6 +159,9 @@ class _UserPermissionState:
 
 
 class UserPermission(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/userPermission:UserPermission"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

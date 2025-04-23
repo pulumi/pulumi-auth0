@@ -194,6 +194,9 @@ class _PhoneProviderState:
 
 
 class PhoneProvider(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/phoneProvider:PhoneProvider"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
