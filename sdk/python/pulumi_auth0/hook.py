@@ -224,6 +224,9 @@ class _HookState:
 
 
 class Hook(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/hook:Hook"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

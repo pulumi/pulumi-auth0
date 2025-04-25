@@ -128,6 +128,9 @@ class _TriggerActionState:
 
 
 class TriggerAction(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/triggerAction:TriggerAction"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

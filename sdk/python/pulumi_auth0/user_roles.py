@@ -96,6 +96,9 @@ class _UserRolesState:
 
 
 class UserRoles(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/userRoles:UserRoles"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

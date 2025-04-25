@@ -194,6 +194,9 @@ class _TokenExchangeProfileState:
 
 
 class TokenExchangeProfile(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/tokenExchangeProfile:TokenExchangeProfile"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

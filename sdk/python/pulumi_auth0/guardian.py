@@ -323,6 +323,9 @@ class _GuardianState:
 
 
 class Guardian(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/guardian:Guardian"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -96,6 +96,9 @@ class _OrganizationClientGrantState:
 
 
 class OrganizationClientGrant(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/organizationClientGrant:OrganizationClientGrant"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

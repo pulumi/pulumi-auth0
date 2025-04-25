@@ -132,6 +132,9 @@ class _AttackProtectionState:
 
 
 class AttackProtection(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/attackProtection:AttackProtection"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
