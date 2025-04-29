@@ -107,7 +107,8 @@ namespace Pulumi.Auth0
         public Input<string>? ClientSecret { get; set; }
 
         /// <summary>
-        /// Indicates whether to turn on debug mode.
+        /// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
+        /// environment variable.
         /// </summary>
         [Input("debug", json: true)]
         public Input<bool>? Debug { get; set; }
@@ -117,6 +118,9 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
+
+        [Input("dynamicCredentials", json: true)]
+        public Input<bool>? DynamicCredentials { get; set; }
 
         public ProviderArgs()
         {

@@ -34,7 +34,7 @@ type Branding struct {
 	// URL for the favicon.
 	FaviconUrl pulumi.StringOutput `pulumi:"faviconUrl"`
 	// Configuration settings to customize the font.
-	Font BrandingFontOutput `pulumi:"font"`
+	Font BrandingFontPtrOutput `pulumi:"font"`
 	// URL of logo for branding.
 	LogoUrl pulumi.StringOutput `pulumi:"logoUrl"`
 	// Configuration settings for Universal Login.
@@ -225,8 +225,8 @@ func (o BrandingOutput) FaviconUrl() pulumi.StringOutput {
 }
 
 // Configuration settings to customize the font.
-func (o BrandingOutput) Font() BrandingFontOutput {
-	return o.ApplyT(func(v *Branding) BrandingFontOutput { return v.Font }).(BrandingFontOutput)
+func (o BrandingOutput) Font() BrandingFontPtrOutput {
+	return o.ApplyT(func(v *Branding) BrandingFontPtrOutput { return v.Font }).(BrandingFontPtrOutput)
 }
 
 // URL of logo for branding.

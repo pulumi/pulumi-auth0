@@ -16,10 +16,10 @@ namespace Pulumi.Auth0.Outputs
         /// <summary>
         /// URL for the custom font.
         /// </summary>
-        public readonly string? Url;
+        public readonly string Url;
 
         [OutputConstructor]
-        private BrandingFont(string? url)
+        private BrandingFont(string url)
         {
             Url = url;
         }

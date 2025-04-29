@@ -66,10 +66,12 @@ type providerArgs struct {
 	ClientId *string `pulumi:"clientId"`
 	// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
 	ClientSecret *string `pulumi:"clientSecret"`
-	// Indicates whether to turn on debug mode.
+	// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
+	// environment variable.
 	Debug *bool `pulumi:"debug"`
 	// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
-	Domain *string `pulumi:"domain"`
+	Domain             *string `pulumi:"domain"`
+	DynamicCredentials *bool   `pulumi:"dynamicCredentials"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -85,10 +87,12 @@ type ProviderArgs struct {
 	ClientId pulumi.StringPtrInput
 	// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
 	ClientSecret pulumi.StringPtrInput
-	// Indicates whether to turn on debug mode.
+	// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
+	// environment variable.
 	Debug pulumi.BoolPtrInput
 	// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
-	Domain pulumi.StringPtrInput
+	Domain             pulumi.StringPtrInput
+	DynamicCredentials pulumi.BoolPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {

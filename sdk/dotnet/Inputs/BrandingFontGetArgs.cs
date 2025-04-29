@@ -15,8 +15,8 @@ namespace Pulumi.Auth0.Inputs
         /// <summary>
         /// URL for the custom font.
         /// </summary>
-        [Input("url")]
-        public Input<string>? Url { get; set; }
+        [Input("url", required: true)]
+        public Input<string> Url { get; set; } = null!;
 
         public BrandingFontGetArgs()
         {

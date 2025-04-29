@@ -162,7 +162,7 @@ export interface BrandingFont {
     /**
      * URL for the custom font.
      */
-    url?: pulumi.Input<string>;
+    url: pulumi.Input<string>;
 }
 
 export interface BrandingThemeBorders {

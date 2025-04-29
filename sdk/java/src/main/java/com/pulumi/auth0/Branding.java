@@ -70,14 +70,14 @@ public class Branding extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="font", refs={BrandingFont.class}, tree="[0]")
-    private Output<BrandingFont> font;
+    private Output</* @Nullable */ BrandingFont> font;
 
     /**
      * @return Configuration settings to customize the font.
      * 
      */
-    public Output<BrandingFont> font() {
-        return this.font;
+    public Output<Optional<BrandingFont>> font() {
+        return Codegen.optional(this.font);
     }
     /**
      * URL of logo for branding.

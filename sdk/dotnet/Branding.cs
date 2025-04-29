@@ -45,7 +45,7 @@ namespace Pulumi.Auth0
         /// Configuration settings to customize the font.
         /// </summary>
         [Output("font")]
-        public Output<Outputs.BrandingFont> Font { get; private set; } = null!;
+        public Output<Outputs.BrandingFont?> Font { get; private set; } = null!;
 
         /// <summary>
         /// URL of logo for branding.

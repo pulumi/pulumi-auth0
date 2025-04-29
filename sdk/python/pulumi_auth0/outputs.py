@@ -870,16 +870,15 @@ class BrandingColors(dict):
 @pulumi.output_type
 class BrandingFont(dict):
     def __init__(__self__, *,
-                 url: Optional[builtins.str] = None):
+                 url: builtins.str):
         """
         :param builtins.str url: URL for the custom font.
         """
-        if url is not None:
-            pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
-    def url(self) -> Optional[builtins.str]:
+    def url(self) -> builtins.str:
         """
         URL for the custom font.
         """

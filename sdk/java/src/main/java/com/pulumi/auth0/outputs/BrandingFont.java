@@ -4,10 +4,9 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class BrandingFont {
@@ -15,15 +14,15 @@ public final class BrandingFont {
      * @return URL for the custom font.
      * 
      */
-    private @Nullable String url;
+    private String url;
 
     private BrandingFont() {}
     /**
      * @return URL for the custom font.
      * 
      */
-    public Optional<String> url() {
-        return Optional.ofNullable(this.url);
+    public String url() {
+        return this.url;
     }
 
     public static Builder builder() {
@@ -35,7 +34,7 @@ public final class BrandingFont {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String url;
+        private String url;
         public Builder() {}
         public Builder(BrandingFont defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,8 +42,10 @@ public final class BrandingFont {
         }
 
         @CustomType.Setter
-        public Builder url(@Nullable String url) {
-
+        public Builder url(String url) {
+            if (url == null) {
+              throw new MissingRequiredPropertyException("BrandingFont", "url");
+            }
             this.url = url;
             return this;
         }

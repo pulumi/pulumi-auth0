@@ -55,7 +55,8 @@ Object.defineProperty(exports, "clientSecret", {
 });
 
 /**
- * Indicates whether to turn on debug mode.
+ * Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
+ * environment variable.
  */
 export declare const debug: boolean | undefined;
 Object.defineProperty(exports, "debug", {
@@ -72,6 +73,14 @@ export declare const domain: string | undefined;
 Object.defineProperty(exports, "domain", {
     get() {
         return __config.get("domain");
+    },
+    enumerable: true,
+});
+
+export declare const dynamicCredentials: boolean | undefined;
+Object.defineProperty(exports, "dynamicCredentials", {
+    get() {
+        return __config.getObject<boolean>("dynamicCredentials");
     },
     enumerable: true,
 });

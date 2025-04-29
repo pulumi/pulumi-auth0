@@ -34,7 +34,8 @@ func GetClientSecret(ctx *pulumi.Context) string {
 	return config.Get(ctx, "auth0:clientSecret")
 }
 
-// Indicates whether to turn on debug mode.
+// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
+// environment variable.
 func GetDebug(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "auth0:debug")
 	if err == nil {
@@ -50,4 +51,7 @@ func GetDebug(ctx *pulumi.Context) bool {
 // Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
 func GetDomain(ctx *pulumi.Context) string {
 	return config.Get(ctx, "auth0:domain")
+}
+func GetDynamicCredentials(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "auth0:dynamicCredentials")
 }
