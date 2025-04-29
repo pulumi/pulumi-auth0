@@ -55,7 +55,8 @@ class _ExportableConfig(types.ModuleType):
     @property
     def debug(self) -> Optional[bool]:
         """
-        Indicates whether to turn on debug mode.
+        Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
+        environment variable.
         """
         return __config__.get_bool('debug') or _utilities.get_env_bool('AUTH0_DEBUG')
 
@@ -65,4 +66,8 @@ class _ExportableConfig(types.ModuleType):
         Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
         """
         return __config__.get('domain')
+
+    @property
+    def dynamic_credentials(self) -> Optional[bool]:
+        return __config__.get_bool('dynamicCredentials')
 

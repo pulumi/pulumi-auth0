@@ -77,7 +77,8 @@ namespace Pulumi.Auth0
 
         private static readonly __Value<bool?> _debug = new __Value<bool?>(() => __config.GetBoolean("debug") ?? Utilities.GetEnvBoolean("AUTH0_DEBUG"));
         /// <summary>
-        /// Indicates whether to turn on debug mode.
+        /// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
+        /// environment variable.
         /// </summary>
         public static bool? Debug
         {
@@ -93,6 +94,13 @@ namespace Pulumi.Auth0
         {
             get => _domain.Get();
             set => _domain.Set(value);
+        }
+
+        private static readonly __Value<bool?> _dynamicCredentials = new __Value<bool?>(() => __config.GetBoolean("dynamicCredentials"));
+        public static bool? DynamicCredentials
+        {
+            get => _dynamicCredentials.Get();
+            set => _dynamicCredentials.Set(value);
         }
 
     }

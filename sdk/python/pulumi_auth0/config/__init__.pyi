@@ -40,11 +40,14 @@ Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` 
 
 debug: Optional[bool]
 """
-Indicates whether to turn on debug mode.
+Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
+environment variable.
 """
 
 domain: Optional[str]
 """
 Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
 """
+
+dynamicCredentials: Optional[bool]
 

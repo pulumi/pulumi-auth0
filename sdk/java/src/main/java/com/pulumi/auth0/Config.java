@@ -43,7 +43,8 @@ public final class Config {
         return Codegen.stringProp("clientSecret").config(config).get();
     }
 /**
- * Indicates whether to turn on debug mode.
+ * Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
+ * environment variable.
  * 
  */
     public Optional<Boolean> debug() {
@@ -55,5 +56,8 @@ public final class Config {
  */
     public Optional<String> domain() {
         return Codegen.stringProp("domain").config(config).get();
+    }
+    public Optional<Boolean> dynamicCredentials() {
+        return Codegen.booleanProp("dynamicCredentials").config(config).get();
     }
 }

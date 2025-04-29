@@ -1077,7 +1077,7 @@ class BrandingColorsArgs:
 
 if not MYPY:
     class BrandingFontArgsDict(TypedDict):
-        url: NotRequired[pulumi.Input[builtins.str]]
+        url: pulumi.Input[builtins.str]
         """
         URL for the custom font.
         """
@@ -1087,23 +1087,22 @@ elif False:
 @pulumi.input_type
 class BrandingFontArgs:
     def __init__(__self__, *,
-                 url: Optional[pulumi.Input[builtins.str]] = None):
+                 url: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] url: URL for the custom font.
         """
-        if url is not None:
-            pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[builtins.str]]:
+    def url(self) -> pulumi.Input[builtins.str]:
         """
         URL for the custom font.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[builtins.str]]):
+    def url(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "url", value)
 
 

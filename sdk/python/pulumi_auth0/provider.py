@@ -25,7 +25,8 @@ class ProviderArgs:
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
                  debug: Optional[pulumi.Input[builtins.bool]] = None,
-                 domain: Optional[pulumi.Input[builtins.str]] = None):
+                 domain: Optional[pulumi.Input[builtins.str]] = None,
+                 dynamic_credentials: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[builtins.str] api_token: Your Auth0 [management api access
@@ -35,7 +36,8 @@ class ProviderArgs:
         :param pulumi.Input[builtins.str] audience: Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
         :param pulumi.Input[builtins.str] client_id: Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
         :param pulumi.Input[builtins.str] client_secret: Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
-        :param pulumi.Input[builtins.bool] debug: Indicates whether to turn on debug mode.
+        :param pulumi.Input[builtins.bool] debug: Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
+               environment variable.
         :param pulumi.Input[builtins.str] domain: Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
         """
         if api_token is not None:
@@ -52,6 +54,8 @@ class ProviderArgs:
             pulumi.set(__self__, "debug", debug)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
+        if dynamic_credentials is not None:
+            pulumi.set(__self__, "dynamic_credentials", dynamic_credentials)
 
     @property
     @pulumi.getter(name="apiToken")
@@ -108,7 +112,8 @@ class ProviderArgs:
     @pulumi.getter
     def debug(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Indicates whether to turn on debug mode.
+        Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
+        environment variable.
         """
         return pulumi.get(self, "debug")
 
@@ -128,6 +133,15 @@ class ProviderArgs:
     def domain(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "domain", value)
 
+    @property
+    @pulumi.getter(name="dynamicCredentials")
+    def dynamic_credentials(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "dynamic_credentials")
+
+    @dynamic_credentials.setter
+    def dynamic_credentials(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "dynamic_credentials", value)
+
 
 class Provider(pulumi.ProviderResource):
     @overload
@@ -140,6 +154,7 @@ class Provider(pulumi.ProviderResource):
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
                  debug: Optional[pulumi.Input[builtins.bool]] = None,
                  domain: Optional[pulumi.Input[builtins.str]] = None,
+                 dynamic_credentials: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         """
         The provider type for the auth0 package. By default, resources use package-wide configuration
@@ -156,7 +171,8 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[builtins.str] audience: Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
         :param pulumi.Input[builtins.str] client_id: Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
         :param pulumi.Input[builtins.str] client_secret: Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
-        :param pulumi.Input[builtins.bool] debug: Indicates whether to turn on debug mode.
+        :param pulumi.Input[builtins.bool] debug: Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
+               environment variable.
         :param pulumi.Input[builtins.str] domain: Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
         """
         ...
@@ -192,6 +208,7 @@ class Provider(pulumi.ProviderResource):
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
                  debug: Optional[pulumi.Input[builtins.bool]] = None,
                  domain: Optional[pulumi.Input[builtins.str]] = None,
+                 dynamic_credentials: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -209,6 +226,7 @@ class Provider(pulumi.ProviderResource):
                 debug = _utilities.get_env_bool('AUTH0_DEBUG')
             __props__.__dict__["debug"] = pulumi.Output.from_input(debug).apply(pulumi.runtime.to_json) if debug is not None else None
             __props__.__dict__["domain"] = domain
+            __props__.__dict__["dynamic_credentials"] = pulumi.Output.from_input(dynamic_credentials).apply(pulumi.runtime.to_json) if dynamic_credentials is not None else None
         super(Provider, __self__).__init__(
             'auth0',
             resource_name,

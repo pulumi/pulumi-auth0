@@ -66,6 +66,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
             resourceInputs["debug"] = pulumi.output((args ? args.debug : undefined) ?? utilities.getEnvBoolean("AUTH0_DEBUG")).apply(JSON.stringify);
             resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["dynamicCredentials"] = pulumi.output(args ? args.dynamicCredentials : undefined).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
@@ -96,11 +97,13 @@ export interface ProviderArgs {
      */
     clientSecret?: pulumi.Input<string>;
     /**
-     * Indicates whether to turn on debug mode.
+     * Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
+     * environment variable.
      */
     debug?: pulumi.Input<boolean>;
     /**
      * Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
      */
     domain?: pulumi.Input<string>;
+    dynamicCredentials?: pulumi.Input<boolean>;
 }

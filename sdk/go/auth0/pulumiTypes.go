@@ -1791,7 +1791,7 @@ func (o BrandingColorsPtrOutput) Primary() pulumi.StringPtrOutput {
 
 type BrandingFont struct {
 	// URL for the custom font.
-	Url *string `pulumi:"url"`
+	Url string `pulumi:"url"`
 }
 
 // BrandingFontInput is an input type that accepts BrandingFontArgs and BrandingFontOutput values.
@@ -1807,7 +1807,7 @@ type BrandingFontInput interface {
 
 type BrandingFontArgs struct {
 	// URL for the custom font.
-	Url pulumi.StringPtrInput `pulumi:"url"`
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (BrandingFontArgs) ElementType() reflect.Type {
@@ -1888,8 +1888,8 @@ func (o BrandingFontOutput) ToBrandingFontPtrOutputWithContext(ctx context.Conte
 }
 
 // URL for the custom font.
-func (o BrandingFontOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BrandingFont) *string { return v.Url }).(pulumi.StringPtrOutput)
+func (o BrandingFontOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v BrandingFont) string { return v.Url }).(pulumi.StringOutput)
 }
 
 type BrandingFontPtrOutput struct{ *pulumi.OutputState }
@@ -1922,7 +1922,7 @@ func (o BrandingFontPtrOutput) Url() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.Url
+		return &v.Url
 	}).(pulumi.StringPtrOutput)
 }
 

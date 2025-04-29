@@ -84,14 +84,16 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether to turn on debug mode.
+     * Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
+     * environment variable.
      * 
      */
     @Import(name="debug", json=true)
     private @Nullable Output<Boolean> debug;
 
     /**
-     * @return Indicates whether to turn on debug mode.
+     * @return Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
+     * environment variable.
      * 
      */
     public Optional<Output<Boolean>> debug() {
@@ -113,6 +115,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.domain);
     }
 
+    @Import(name="dynamicCredentials", json=true)
+    private @Nullable Output<Boolean> dynamicCredentials;
+
+    public Optional<Output<Boolean>> dynamicCredentials() {
+        return Optional.ofNullable(this.dynamicCredentials);
+    }
+
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
@@ -122,6 +131,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.clientSecret = $.clientSecret;
         this.debug = $.debug;
         this.domain = $.domain;
+        this.dynamicCredentials = $.dynamicCredentials;
     }
 
     public static Builder builder() {
@@ -233,7 +243,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param debug Indicates whether to turn on debug mode.
+         * @param debug Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
+         * environment variable.
          * 
          * @return builder
          * 
@@ -244,7 +255,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param debug Indicates whether to turn on debug mode.
+         * @param debug Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
+         * environment variable.
          * 
          * @return builder
          * 
@@ -272,6 +284,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
+        }
+
+        public Builder dynamicCredentials(@Nullable Output<Boolean> dynamicCredentials) {
+            $.dynamicCredentials = dynamicCredentials;
+            return this;
+        }
+
+        public Builder dynamicCredentials(Boolean dynamicCredentials) {
+            return dynamicCredentials(Output.of(dynamicCredentials));
         }
 
         public ProviderArgs build() {

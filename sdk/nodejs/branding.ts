@@ -62,7 +62,7 @@ export class Branding extends pulumi.CustomResource {
     /**
      * Configuration settings to customize the font.
      */
-    public readonly font!: pulumi.Output<outputs.BrandingFont>;
+    public readonly font!: pulumi.Output<outputs.BrandingFont | undefined>;
     /**
      * URL of logo for branding.
      */

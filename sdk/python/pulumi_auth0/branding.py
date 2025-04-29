@@ -345,7 +345,7 @@ class Branding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def font(self) -> pulumi.Output['outputs.BrandingFont']:
+    def font(self) -> pulumi.Output[Optional['outputs.BrandingFont']]:
         """
         Configuration settings to customize the font.
         """

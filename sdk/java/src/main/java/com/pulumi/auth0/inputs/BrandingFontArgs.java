@@ -5,10 +5,9 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class BrandingFontArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,15 +18,15 @@ public final class BrandingFontArgs extends com.pulumi.resources.ResourceArgs {
      * URL for the custom font.
      * 
      */
-    @Import(name="url")
-    private @Nullable Output<String> url;
+    @Import(name="url", required=true)
+    private Output<String> url;
 
     /**
      * @return URL for the custom font.
      * 
      */
-    public Optional<Output<String>> url() {
-        return Optional.ofNullable(this.url);
+    public Output<String> url() {
+        return this.url;
     }
 
     private BrandingFontArgs() {}
@@ -60,7 +59,7 @@ public final class BrandingFontArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder url(@Nullable Output<String> url) {
+        public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
@@ -76,6 +75,9 @@ public final class BrandingFontArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BrandingFontArgs build() {
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("BrandingFontArgs", "url");
+            }
             return $;
         }
     }
