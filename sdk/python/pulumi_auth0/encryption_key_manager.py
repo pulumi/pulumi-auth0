@@ -116,6 +116,9 @@ class _EncryptionKeyManagerState:
 
 
 class EncryptionKeyManager(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/encryptionKeyManager:EncryptionKeyManager"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

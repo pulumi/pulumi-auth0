@@ -158,6 +158,9 @@ class _SelfServiceProfileCustomTextState:
 
 
 class SelfServiceProfileCustomText(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/selfServiceProfileCustomText:SelfServiceProfileCustomText"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

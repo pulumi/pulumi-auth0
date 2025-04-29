@@ -160,6 +160,9 @@ class _NetworkAclState:
 
 
 class NetworkAcl(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/networkAcl:NetworkAcl"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
