@@ -179,6 +179,9 @@ class _ConnectionScimConfigurationState:
 
 
 class ConnectionScimConfiguration(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/connectionScimConfiguration:ConnectionScimConfiguration"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

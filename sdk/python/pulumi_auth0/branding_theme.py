@@ -183,6 +183,9 @@ class _BrandingThemeState:
 
 
 class BrandingTheme(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/brandingTheme:BrandingTheme"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

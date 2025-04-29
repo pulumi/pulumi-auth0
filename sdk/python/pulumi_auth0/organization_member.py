@@ -96,6 +96,9 @@ class _OrganizationMemberState:
 
 
 class OrganizationMember(pulumi.CustomResource):
+
+    pulumi_type = "auth0:index/organizationMember:OrganizationMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
