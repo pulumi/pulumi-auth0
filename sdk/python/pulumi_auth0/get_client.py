@@ -28,7 +28,7 @@ class GetClientResult:
     """
     A collection of values returned by getClient.
     """
-    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, signed_request_objects=None, signing_keys=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, token_exchanges=None, web_origins=None):
+    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, session_transfers=None, signed_request_objects=None, signing_keys=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, token_exchanges=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
@@ -143,6 +143,9 @@ class GetClientResult:
         if require_pushed_authorization_requests and not isinstance(require_pushed_authorization_requests, bool):
             raise TypeError("Expected argument 'require_pushed_authorization_requests' to be a bool")
         pulumi.set(__self__, "require_pushed_authorization_requests", require_pushed_authorization_requests)
+        if session_transfers and not isinstance(session_transfers, list):
+            raise TypeError("Expected argument 'session_transfers' to be a list")
+        pulumi.set(__self__, "session_transfers", session_transfers)
         if signed_request_objects and not isinstance(signed_request_objects, list):
             raise TypeError("Expected argument 'signed_request_objects' to be a list")
         pulumi.set(__self__, "signed_request_objects", signed_request_objects)
@@ -467,6 +470,11 @@ class GetClientResult:
         return pulumi.get(self, "require_pushed_authorization_requests")
 
     @property
+    @pulumi.getter(name="sessionTransfers")
+    def session_transfers(self) -> Sequence['outputs.GetClientSessionTransferResult']:
+        return pulumi.get(self, "session_transfers")
+
+    @property
     @pulumi.getter(name="signedRequestObjects")
     def signed_request_objects(self) -> Sequence['outputs.GetClientSignedRequestObjectResult']:
         """
@@ -567,6 +575,7 @@ class AwaitableGetClientResult(GetClientResult):
             refresh_tokens=self.refresh_tokens,
             require_proof_of_possession=self.require_proof_of_possession,
             require_pushed_authorization_requests=self.require_pushed_authorization_requests,
+            session_transfers=self.session_transfers,
             signed_request_objects=self.signed_request_objects,
             signing_keys=self.signing_keys,
             sso=self.sso,
@@ -643,6 +652,7 @@ def get_client(client_id: Optional[builtins.str] = None,
         refresh_tokens=pulumi.get(__ret__, 'refresh_tokens'),
         require_proof_of_possession=pulumi.get(__ret__, 'require_proof_of_possession'),
         require_pushed_authorization_requests=pulumi.get(__ret__, 'require_pushed_authorization_requests'),
+        session_transfers=pulumi.get(__ret__, 'session_transfers'),
         signed_request_objects=pulumi.get(__ret__, 'signed_request_objects'),
         signing_keys=pulumi.get(__ret__, 'signing_keys'),
         sso=pulumi.get(__ret__, 'sso'),
@@ -716,6 +726,7 @@ def get_client_output(client_id: Optional[pulumi.Input[Optional[builtins.str]]] 
         refresh_tokens=pulumi.get(__response__, 'refresh_tokens'),
         require_proof_of_possession=pulumi.get(__response__, 'require_proof_of_possession'),
         require_pushed_authorization_requests=pulumi.get(__response__, 'require_pushed_authorization_requests'),
+        session_transfers=pulumi.get(__response__, 'session_transfers'),
         signed_request_objects=pulumi.get(__response__, 'signed_request_objects'),
         signing_keys=pulumi.get(__response__, 'signing_keys'),
         sso=pulumi.get(__response__, 'sso'),

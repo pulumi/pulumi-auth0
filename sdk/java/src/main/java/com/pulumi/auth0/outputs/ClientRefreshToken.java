@@ -3,11 +3,13 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.ClientRefreshTokenPolicy;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -39,6 +41,11 @@ public final class ClientRefreshToken {
      * 
      */
     private @Nullable Integer leeway;
+    /**
+     * @return A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+     * 
+     */
+    private @Nullable List<ClientRefreshTokenPolicy> policies;
     /**
      * @return Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
      * 
@@ -87,6 +94,13 @@ public final class ClientRefreshToken {
         return Optional.ofNullable(this.leeway);
     }
     /**
+     * @return A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+     * 
+     */
+    public List<ClientRefreshTokenPolicy> policies() {
+        return this.policies == null ? List.of() : this.policies;
+    }
+    /**
      * @return Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
      * 
      */
@@ -115,6 +129,7 @@ public final class ClientRefreshToken {
         private @Nullable Boolean infiniteIdleTokenLifetime;
         private @Nullable Boolean infiniteTokenLifetime;
         private @Nullable Integer leeway;
+        private @Nullable List<ClientRefreshTokenPolicy> policies;
         private String rotationType;
         private @Nullable Integer tokenLifetime;
         public Builder() {}
@@ -125,6 +140,7 @@ public final class ClientRefreshToken {
     	      this.infiniteIdleTokenLifetime = defaults.infiniteIdleTokenLifetime;
     	      this.infiniteTokenLifetime = defaults.infiniteTokenLifetime;
     	      this.leeway = defaults.leeway;
+    	      this.policies = defaults.policies;
     	      this.rotationType = defaults.rotationType;
     	      this.tokenLifetime = defaults.tokenLifetime;
         }
@@ -162,6 +178,15 @@ public final class ClientRefreshToken {
             return this;
         }
         @CustomType.Setter
+        public Builder policies(@Nullable List<ClientRefreshTokenPolicy> policies) {
+
+            this.policies = policies;
+            return this;
+        }
+        public Builder policies(ClientRefreshTokenPolicy... policies) {
+            return policies(List.of(policies));
+        }
+        @CustomType.Setter
         public Builder rotationType(String rotationType) {
             if (rotationType == null) {
               throw new MissingRequiredPropertyException("ClientRefreshToken", "rotationType");
@@ -182,6 +207,7 @@ public final class ClientRefreshToken {
             _resultValue.infiniteIdleTokenLifetime = infiniteIdleTokenLifetime;
             _resultValue.infiniteTokenLifetime = infiniteTokenLifetime;
             _resultValue.leeway = leeway;
+            _resultValue.policies = policies;
             _resultValue.rotationType = rotationType;
             _resultValue.tokenLifetime = tokenLifetime;
             return _resultValue;

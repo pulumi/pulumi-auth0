@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetClientsClientOidcLogout;
+import com.pulumi.auth0.outputs.GetClientsClientSessionTransfer;
 import com.pulumi.auth0.outputs.GetClientsClientTokenExchange;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -83,6 +84,7 @@ public final class GetClientsClient {
      * 
      */
     private List<GetClientsClientOidcLogout> oidcLogouts;
+    private List<GetClientsClientSessionTransfer> sessionTransfers;
     /**
      * @return Allows configuration for token exchange
      * 
@@ -189,6 +191,9 @@ public final class GetClientsClient {
     public List<GetClientsClientOidcLogout> oidcLogouts() {
         return this.oidcLogouts;
     }
+    public List<GetClientsClientSessionTransfer> sessionTransfers() {
+        return this.sessionTransfers;
+    }
     /**
      * @return Allows configuration for token exchange
      * 
@@ -227,6 +232,7 @@ public final class GetClientsClient {
         private Boolean isTokenEndpointIpHeaderTrusted;
         private @Nullable String name;
         private List<GetClientsClientOidcLogout> oidcLogouts;
+        private List<GetClientsClientSessionTransfer> sessionTransfers;
         private List<GetClientsClientTokenExchange> tokenExchanges;
         private List<String> webOrigins;
         public Builder() {}
@@ -246,6 +252,7 @@ public final class GetClientsClient {
     	      this.isTokenEndpointIpHeaderTrusted = defaults.isTokenEndpointIpHeaderTrusted;
     	      this.name = defaults.name;
     	      this.oidcLogouts = defaults.oidcLogouts;
+    	      this.sessionTransfers = defaults.sessionTransfers;
     	      this.tokenExchanges = defaults.tokenExchanges;
     	      this.webOrigins = defaults.webOrigins;
         }
@@ -377,6 +384,17 @@ public final class GetClientsClient {
             return oidcLogouts(List.of(oidcLogouts));
         }
         @CustomType.Setter
+        public Builder sessionTransfers(List<GetClientsClientSessionTransfer> sessionTransfers) {
+            if (sessionTransfers == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "sessionTransfers");
+            }
+            this.sessionTransfers = sessionTransfers;
+            return this;
+        }
+        public Builder sessionTransfers(GetClientsClientSessionTransfer... sessionTransfers) {
+            return sessionTransfers(List.of(sessionTransfers));
+        }
+        @CustomType.Setter
         public Builder tokenExchanges(List<GetClientsClientTokenExchange> tokenExchanges) {
             if (tokenExchanges == null) {
               throw new MissingRequiredPropertyException("GetClientsClient", "tokenExchanges");
@@ -414,6 +432,7 @@ public final class GetClientsClient {
             _resultValue.isTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;
             _resultValue.name = name;
             _resultValue.oidcLogouts = oidcLogouts;
+            _resultValue.sessionTransfers = sessionTransfers;
             _resultValue.tokenExchanges = tokenExchanges;
             _resultValue.webOrigins = webOrigins;
             return _resultValue;
