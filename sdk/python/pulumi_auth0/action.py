@@ -273,10 +273,8 @@ class _ActionState:
         pulumi.set(self, "version_id", value)
 
 
+@pulumi.type_token("auth0:index/action:Action")
 class Action(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/action:Action"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

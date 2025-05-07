@@ -158,10 +158,8 @@ class _UserPermissionState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("auth0:index/userPermission:UserPermission")
 class UserPermission(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/userPermission:UserPermission"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

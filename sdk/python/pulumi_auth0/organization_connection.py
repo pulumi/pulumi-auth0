@@ -223,10 +223,8 @@ class _OrganizationConnectionState:
         pulumi.set(self, "strategy", value)
 
 
+@pulumi.type_token("auth0:index/organizationConnection:OrganizationConnection")
 class OrganizationConnection(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/organizationConnection:OrganizationConnection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

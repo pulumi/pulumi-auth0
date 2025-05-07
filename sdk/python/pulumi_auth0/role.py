@@ -101,10 +101,8 @@ class _RoleState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("auth0:index/role:Role")
 class Role(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/role:Role"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -127,10 +127,8 @@ class _ConnectionClientsState:
         pulumi.set(self, "strategy", value)
 
 
+@pulumi.type_token("auth0:index/connectionClients:ConnectionClients")
 class ConnectionClients(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/connectionClients:ConnectionClients"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -159,10 +159,8 @@ class _NetworkAclState:
         pulumi.set(self, "rule", value)
 
 
+@pulumi.type_token("auth0:index/networkAcl:NetworkAcl")
 class NetworkAcl(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/networkAcl:NetworkAcl"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -1295,10 +1295,8 @@ class _ClientState:
         pulumi.set(self, "web_origins", value)
 
 
+@pulumi.type_token("auth0:index/client:Client")
 class Client(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/client:Client"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

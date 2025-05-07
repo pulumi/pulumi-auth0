@@ -195,10 +195,8 @@ class _BrandingState:
         pulumi.set(self, "universal_login", value)
 
 
+@pulumi.type_token("auth0:index/branding:Branding")
 class Branding(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/branding:Branding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

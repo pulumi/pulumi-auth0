@@ -182,10 +182,8 @@ class _BrandingThemeState:
         pulumi.set(self, "widget", value)
 
 
+@pulumi.type_token("auth0:index/brandingTheme:BrandingTheme")
 class BrandingTheme(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/brandingTheme:BrandingTheme"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

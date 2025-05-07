@@ -97,10 +97,8 @@ class _FlowState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("auth0:index/flow:Flow")
 class Flow(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/flow:Flow"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

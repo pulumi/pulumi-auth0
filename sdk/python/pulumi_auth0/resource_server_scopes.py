@@ -89,10 +89,8 @@ class _ResourceServerScopesState:
         pulumi.set(self, "scopes", value)
 
 
+@pulumi.type_token("auth0:index/resourceServerScopes:ResourceServerScopes")
 class ResourceServerScopes(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/resourceServerScopes:ResourceServerScopes"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

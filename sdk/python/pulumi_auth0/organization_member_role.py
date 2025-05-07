@@ -158,10 +158,8 @@ class _OrganizationMemberRoleState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("auth0:index/organizationMemberRole:OrganizationMemberRole")
 class OrganizationMemberRole(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/organizationMemberRole:OrganizationMemberRole"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

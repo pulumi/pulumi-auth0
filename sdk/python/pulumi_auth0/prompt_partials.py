@@ -312,10 +312,8 @@ class _PromptPartialsState:
         pulumi.set(self, "secondary_actions_start", value)
 
 
+@pulumi.type_token("auth0:index/promptPartials:PromptPartials")
 class PromptPartials(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/promptPartials:PromptPartials"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
