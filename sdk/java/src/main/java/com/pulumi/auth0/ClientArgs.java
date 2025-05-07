@@ -10,6 +10,7 @@ import com.pulumi.auth0.inputs.ClientMobileArgs;
 import com.pulumi.auth0.inputs.ClientNativeSocialLoginArgs;
 import com.pulumi.auth0.inputs.ClientOidcLogoutArgs;
 import com.pulumi.auth0.inputs.ClientRefreshTokenArgs;
+import com.pulumi.auth0.inputs.ClientSessionTransferArgs;
 import com.pulumi.auth0.inputs.ClientTokenExchangeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -545,6 +546,13 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.requirePushedAuthorizationRequests);
     }
 
+    @Import(name="sessionTransfer")
+    private @Nullable Output<ClientSessionTransferArgs> sessionTransfer;
+
+    public Optional<Output<ClientSessionTransferArgs>> sessionTransfer() {
+        return Optional.ofNullable(this.sessionTransfer);
+    }
+
     /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      * 
@@ -642,6 +650,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         this.refreshToken = $.refreshToken;
         this.requireProofOfPossession = $.requireProofOfPossession;
         this.requirePushedAuthorizationRequests = $.requirePushedAuthorizationRequests;
+        this.sessionTransfer = $.sessionTransfer;
         this.sso = $.sso;
         this.ssoDisabled = $.ssoDisabled;
         this.tokenExchange = $.tokenExchange;
@@ -1460,6 +1469,15 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder requirePushedAuthorizationRequests(Boolean requirePushedAuthorizationRequests) {
             return requirePushedAuthorizationRequests(Output.of(requirePushedAuthorizationRequests));
+        }
+
+        public Builder sessionTransfer(@Nullable Output<ClientSessionTransferArgs> sessionTransfer) {
+            $.sessionTransfer = sessionTransfer;
+            return this;
+        }
+
+        public Builder sessionTransfer(ClientSessionTransferArgs sessionTransfer) {
+            return sessionTransfer(Output.of(sessionTransfer));
         }
 
         /**

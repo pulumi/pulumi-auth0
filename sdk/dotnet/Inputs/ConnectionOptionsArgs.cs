@@ -489,6 +489,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? Provider { get; set; }
 
         /// <summary>
+        /// Allows configuration if connections*realm*fallback flag is enabled for the tenant
+        /// </summary>
+        [Input("realmFallback")]
+        public Input<bool>? RealmFallback { get; set; }
+
+        /// <summary>
         /// Template that formats the SAML request.
         /// </summary>
         [Input("requestTemplate")]

@@ -13256,6 +13256,8 @@ type ClientRefreshToken struct {
 	InfiniteTokenLifetime *bool `pulumi:"infiniteTokenLifetime"`
 	// The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
 	Leeway *int `pulumi:"leeway"`
+	// A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+	Policies []ClientRefreshTokenPolicy `pulumi:"policies"`
 	// Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
 	RotationType string `pulumi:"rotationType"`
 	// The absolute lifetime of a refresh token in seconds.
@@ -13284,6 +13286,8 @@ type ClientRefreshTokenArgs struct {
 	InfiniteTokenLifetime pulumi.BoolPtrInput `pulumi:"infiniteTokenLifetime"`
 	// The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
 	Leeway pulumi.IntPtrInput `pulumi:"leeway"`
+	// A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+	Policies ClientRefreshTokenPolicyArrayInput `pulumi:"policies"`
 	// Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
 	RotationType pulumi.StringInput `pulumi:"rotationType"`
 	// The absolute lifetime of a refresh token in seconds.
@@ -13392,6 +13396,11 @@ func (o ClientRefreshTokenOutput) Leeway() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClientRefreshToken) *int { return v.Leeway }).(pulumi.IntPtrOutput)
 }
 
+// A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+func (o ClientRefreshTokenOutput) Policies() ClientRefreshTokenPolicyArrayOutput {
+	return o.ApplyT(func(v ClientRefreshToken) []ClientRefreshTokenPolicy { return v.Policies }).(ClientRefreshTokenPolicyArrayOutput)
+}
+
 // Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
 func (o ClientRefreshTokenOutput) RotationType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientRefreshToken) string { return v.RotationType }).(pulumi.StringOutput)
@@ -13476,6 +13485,16 @@ func (o ClientRefreshTokenPtrOutput) Leeway() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+func (o ClientRefreshTokenPtrOutput) Policies() ClientRefreshTokenPolicyArrayOutput {
+	return o.ApplyT(func(v *ClientRefreshToken) []ClientRefreshTokenPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.Policies
+	}).(ClientRefreshTokenPolicyArrayOutput)
+}
+
 // Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
 func (o ClientRefreshTokenPtrOutput) RotationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientRefreshToken) *string {
@@ -13494,6 +13513,283 @@ func (o ClientRefreshTokenPtrOutput) TokenLifetime() pulumi.IntPtrOutput {
 		}
 		return v.TokenLifetime
 	}).(pulumi.IntPtrOutput)
+}
+
+type ClientRefreshTokenPolicy struct {
+	// The identifier of the resource server to which the Multi Resource Refresh Token Policy applies
+	Audience string `pulumi:"audience"`
+	// The resource server permissions granted under the Multi Resource Refresh Token Policy, defining the context in which an access token can be used
+	Scopes []string `pulumi:"scopes"`
+}
+
+// ClientRefreshTokenPolicyInput is an input type that accepts ClientRefreshTokenPolicyArgs and ClientRefreshTokenPolicyOutput values.
+// You can construct a concrete instance of `ClientRefreshTokenPolicyInput` via:
+//
+//	ClientRefreshTokenPolicyArgs{...}
+type ClientRefreshTokenPolicyInput interface {
+	pulumi.Input
+
+	ToClientRefreshTokenPolicyOutput() ClientRefreshTokenPolicyOutput
+	ToClientRefreshTokenPolicyOutputWithContext(context.Context) ClientRefreshTokenPolicyOutput
+}
+
+type ClientRefreshTokenPolicyArgs struct {
+	// The identifier of the resource server to which the Multi Resource Refresh Token Policy applies
+	Audience pulumi.StringInput `pulumi:"audience"`
+	// The resource server permissions granted under the Multi Resource Refresh Token Policy, defining the context in which an access token can be used
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+}
+
+func (ClientRefreshTokenPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientRefreshTokenPolicy)(nil)).Elem()
+}
+
+func (i ClientRefreshTokenPolicyArgs) ToClientRefreshTokenPolicyOutput() ClientRefreshTokenPolicyOutput {
+	return i.ToClientRefreshTokenPolicyOutputWithContext(context.Background())
+}
+
+func (i ClientRefreshTokenPolicyArgs) ToClientRefreshTokenPolicyOutputWithContext(ctx context.Context) ClientRefreshTokenPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientRefreshTokenPolicyOutput)
+}
+
+// ClientRefreshTokenPolicyArrayInput is an input type that accepts ClientRefreshTokenPolicyArray and ClientRefreshTokenPolicyArrayOutput values.
+// You can construct a concrete instance of `ClientRefreshTokenPolicyArrayInput` via:
+//
+//	ClientRefreshTokenPolicyArray{ ClientRefreshTokenPolicyArgs{...} }
+type ClientRefreshTokenPolicyArrayInput interface {
+	pulumi.Input
+
+	ToClientRefreshTokenPolicyArrayOutput() ClientRefreshTokenPolicyArrayOutput
+	ToClientRefreshTokenPolicyArrayOutputWithContext(context.Context) ClientRefreshTokenPolicyArrayOutput
+}
+
+type ClientRefreshTokenPolicyArray []ClientRefreshTokenPolicyInput
+
+func (ClientRefreshTokenPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientRefreshTokenPolicy)(nil)).Elem()
+}
+
+func (i ClientRefreshTokenPolicyArray) ToClientRefreshTokenPolicyArrayOutput() ClientRefreshTokenPolicyArrayOutput {
+	return i.ToClientRefreshTokenPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ClientRefreshTokenPolicyArray) ToClientRefreshTokenPolicyArrayOutputWithContext(ctx context.Context) ClientRefreshTokenPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientRefreshTokenPolicyArrayOutput)
+}
+
+type ClientRefreshTokenPolicyOutput struct{ *pulumi.OutputState }
+
+func (ClientRefreshTokenPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientRefreshTokenPolicy)(nil)).Elem()
+}
+
+func (o ClientRefreshTokenPolicyOutput) ToClientRefreshTokenPolicyOutput() ClientRefreshTokenPolicyOutput {
+	return o
+}
+
+func (o ClientRefreshTokenPolicyOutput) ToClientRefreshTokenPolicyOutputWithContext(ctx context.Context) ClientRefreshTokenPolicyOutput {
+	return o
+}
+
+// The identifier of the resource server to which the Multi Resource Refresh Token Policy applies
+func (o ClientRefreshTokenPolicyOutput) Audience() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientRefreshTokenPolicy) string { return v.Audience }).(pulumi.StringOutput)
+}
+
+// The resource server permissions granted under the Multi Resource Refresh Token Policy, defining the context in which an access token can be used
+func (o ClientRefreshTokenPolicyOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientRefreshTokenPolicy) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+type ClientRefreshTokenPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ClientRefreshTokenPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientRefreshTokenPolicy)(nil)).Elem()
+}
+
+func (o ClientRefreshTokenPolicyArrayOutput) ToClientRefreshTokenPolicyArrayOutput() ClientRefreshTokenPolicyArrayOutput {
+	return o
+}
+
+func (o ClientRefreshTokenPolicyArrayOutput) ToClientRefreshTokenPolicyArrayOutputWithContext(ctx context.Context) ClientRefreshTokenPolicyArrayOutput {
+	return o
+}
+
+func (o ClientRefreshTokenPolicyArrayOutput) Index(i pulumi.IntInput) ClientRefreshTokenPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClientRefreshTokenPolicy {
+		return vs[0].([]ClientRefreshTokenPolicy)[vs[1].(int)]
+	}).(ClientRefreshTokenPolicyOutput)
+}
+
+type ClientSessionTransfer struct {
+	AllowedAuthenticationMethods []string `pulumi:"allowedAuthenticationMethods"`
+	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
+	CanCreateSessionTransferToken *bool `pulumi:"canCreateSessionTransferToken"`
+	// Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
+	EnforceDeviceBinding *string `pulumi:"enforceDeviceBinding"`
+}
+
+// ClientSessionTransferInput is an input type that accepts ClientSessionTransferArgs and ClientSessionTransferOutput values.
+// You can construct a concrete instance of `ClientSessionTransferInput` via:
+//
+//	ClientSessionTransferArgs{...}
+type ClientSessionTransferInput interface {
+	pulumi.Input
+
+	ToClientSessionTransferOutput() ClientSessionTransferOutput
+	ToClientSessionTransferOutputWithContext(context.Context) ClientSessionTransferOutput
+}
+
+type ClientSessionTransferArgs struct {
+	AllowedAuthenticationMethods pulumi.StringArrayInput `pulumi:"allowedAuthenticationMethods"`
+	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
+	CanCreateSessionTransferToken pulumi.BoolPtrInput `pulumi:"canCreateSessionTransferToken"`
+	// Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
+	EnforceDeviceBinding pulumi.StringPtrInput `pulumi:"enforceDeviceBinding"`
+}
+
+func (ClientSessionTransferArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientSessionTransfer)(nil)).Elem()
+}
+
+func (i ClientSessionTransferArgs) ToClientSessionTransferOutput() ClientSessionTransferOutput {
+	return i.ToClientSessionTransferOutputWithContext(context.Background())
+}
+
+func (i ClientSessionTransferArgs) ToClientSessionTransferOutputWithContext(ctx context.Context) ClientSessionTransferOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientSessionTransferOutput)
+}
+
+func (i ClientSessionTransferArgs) ToClientSessionTransferPtrOutput() ClientSessionTransferPtrOutput {
+	return i.ToClientSessionTransferPtrOutputWithContext(context.Background())
+}
+
+func (i ClientSessionTransferArgs) ToClientSessionTransferPtrOutputWithContext(ctx context.Context) ClientSessionTransferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientSessionTransferOutput).ToClientSessionTransferPtrOutputWithContext(ctx)
+}
+
+// ClientSessionTransferPtrInput is an input type that accepts ClientSessionTransferArgs, ClientSessionTransferPtr and ClientSessionTransferPtrOutput values.
+// You can construct a concrete instance of `ClientSessionTransferPtrInput` via:
+//
+//	        ClientSessionTransferArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientSessionTransferPtrInput interface {
+	pulumi.Input
+
+	ToClientSessionTransferPtrOutput() ClientSessionTransferPtrOutput
+	ToClientSessionTransferPtrOutputWithContext(context.Context) ClientSessionTransferPtrOutput
+}
+
+type clientSessionTransferPtrType ClientSessionTransferArgs
+
+func ClientSessionTransferPtr(v *ClientSessionTransferArgs) ClientSessionTransferPtrInput {
+	return (*clientSessionTransferPtrType)(v)
+}
+
+func (*clientSessionTransferPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientSessionTransfer)(nil)).Elem()
+}
+
+func (i *clientSessionTransferPtrType) ToClientSessionTransferPtrOutput() ClientSessionTransferPtrOutput {
+	return i.ToClientSessionTransferPtrOutputWithContext(context.Background())
+}
+
+func (i *clientSessionTransferPtrType) ToClientSessionTransferPtrOutputWithContext(ctx context.Context) ClientSessionTransferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientSessionTransferPtrOutput)
+}
+
+type ClientSessionTransferOutput struct{ *pulumi.OutputState }
+
+func (ClientSessionTransferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientSessionTransfer)(nil)).Elem()
+}
+
+func (o ClientSessionTransferOutput) ToClientSessionTransferOutput() ClientSessionTransferOutput {
+	return o
+}
+
+func (o ClientSessionTransferOutput) ToClientSessionTransferOutputWithContext(ctx context.Context) ClientSessionTransferOutput {
+	return o
+}
+
+func (o ClientSessionTransferOutput) ToClientSessionTransferPtrOutput() ClientSessionTransferPtrOutput {
+	return o.ToClientSessionTransferPtrOutputWithContext(context.Background())
+}
+
+func (o ClientSessionTransferOutput) ToClientSessionTransferPtrOutputWithContext(ctx context.Context) ClientSessionTransferPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientSessionTransfer) *ClientSessionTransfer {
+		return &v
+	}).(ClientSessionTransferPtrOutput)
+}
+
+func (o ClientSessionTransferOutput) AllowedAuthenticationMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientSessionTransfer) []string { return v.AllowedAuthenticationMethods }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
+func (o ClientSessionTransferOutput) CanCreateSessionTransferToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientSessionTransfer) *bool { return v.CanCreateSessionTransferToken }).(pulumi.BoolPtrOutput)
+}
+
+// Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
+func (o ClientSessionTransferOutput) EnforceDeviceBinding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientSessionTransfer) *string { return v.EnforceDeviceBinding }).(pulumi.StringPtrOutput)
+}
+
+type ClientSessionTransferPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientSessionTransferPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientSessionTransfer)(nil)).Elem()
+}
+
+func (o ClientSessionTransferPtrOutput) ToClientSessionTransferPtrOutput() ClientSessionTransferPtrOutput {
+	return o
+}
+
+func (o ClientSessionTransferPtrOutput) ToClientSessionTransferPtrOutputWithContext(ctx context.Context) ClientSessionTransferPtrOutput {
+	return o
+}
+
+func (o ClientSessionTransferPtrOutput) Elem() ClientSessionTransferOutput {
+	return o.ApplyT(func(v *ClientSessionTransfer) ClientSessionTransfer {
+		if v != nil {
+			return *v
+		}
+		var ret ClientSessionTransfer
+		return ret
+	}).(ClientSessionTransferOutput)
+}
+
+func (o ClientSessionTransferPtrOutput) AllowedAuthenticationMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientSessionTransfer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedAuthenticationMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
+func (o ClientSessionTransferPtrOutput) CanCreateSessionTransferToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientSessionTransfer) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CanCreateSessionTransferToken
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
+func (o ClientSessionTransferPtrOutput) EnforceDeviceBinding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientSessionTransfer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnforceDeviceBinding
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClientTokenExchange struct {
@@ -13764,6 +14060,8 @@ type ConnectionOptions struct {
 	ProtocolBinding *string `pulumi:"protocolBinding"`
 	// Defines the custom `smsGateway` provider.
 	Provider *string `pulumi:"provider"`
+	// Allows configuration if connections*realm*fallback flag is enabled for the tenant
+	RealmFallback *bool `pulumi:"realmFallback"`
 	// Template that formats the SAML request.
 	RequestTemplate *string `pulumi:"requestTemplate"`
 	// Indicates whether the user is required to provide a username in addition to an email address.
@@ -13972,6 +14270,8 @@ type ConnectionOptionsArgs struct {
 	ProtocolBinding pulumi.StringPtrInput `pulumi:"protocolBinding"`
 	// Defines the custom `smsGateway` provider.
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
+	// Allows configuration if connections*realm*fallback flag is enabled for the tenant
+	RealmFallback pulumi.BoolPtrInput `pulumi:"realmFallback"`
 	// Template that formats the SAML request.
 	RequestTemplate pulumi.StringPtrInput `pulumi:"requestTemplate"`
 	// Indicates whether the user is required to provide a username in addition to an email address.
@@ -14440,6 +14740,11 @@ func (o ConnectionOptionsOutput) ProtocolBinding() pulumi.StringPtrOutput {
 // Defines the custom `smsGateway` provider.
 func (o ConnectionOptionsOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.Provider }).(pulumi.StringPtrOutput)
+}
+
+// Allows configuration if connections*realm*fallback flag is enabled for the tenant
+func (o ConnectionOptionsOutput) RealmFallback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *bool { return v.RealmFallback }).(pulumi.BoolPtrOutput)
 }
 
 // Template that formats the SAML request.
@@ -15274,6 +15579,16 @@ func (o ConnectionOptionsPtrOutput) Provider() pulumi.StringPtrOutput {
 		}
 		return v.Provider
 	}).(pulumi.StringPtrOutput)
+}
+
+// Allows configuration if connections*realm*fallback flag is enabled for the tenant
+func (o ConnectionOptionsPtrOutput) RealmFallback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RealmFallback
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Template that formats the SAML request.
@@ -38217,6 +38532,8 @@ type GetClientRefreshToken struct {
 	InfiniteTokenLifetime bool `pulumi:"infiniteTokenLifetime"`
 	// The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
 	Leeway int `pulumi:"leeway"`
+	// A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+	Policies []GetClientRefreshTokenPolicy `pulumi:"policies"`
 	// Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
 	RotationType string `pulumi:"rotationType"`
 	// The absolute lifetime of a refresh token in seconds.
@@ -38245,6 +38562,8 @@ type GetClientRefreshTokenArgs struct {
 	InfiniteTokenLifetime pulumi.BoolInput `pulumi:"infiniteTokenLifetime"`
 	// The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
 	Leeway pulumi.IntInput `pulumi:"leeway"`
+	// A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+	Policies GetClientRefreshTokenPolicyArrayInput `pulumi:"policies"`
 	// Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
 	RotationType pulumi.StringInput `pulumi:"rotationType"`
 	// The absolute lifetime of a refresh token in seconds.
@@ -38327,6 +38646,11 @@ func (o GetClientRefreshTokenOutput) Leeway() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClientRefreshToken) int { return v.Leeway }).(pulumi.IntOutput)
 }
 
+// A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+func (o GetClientRefreshTokenOutput) Policies() GetClientRefreshTokenPolicyArrayOutput {
+	return o.ApplyT(func(v GetClientRefreshToken) []GetClientRefreshTokenPolicy { return v.Policies }).(GetClientRefreshTokenPolicyArrayOutput)
+}
+
 // Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
 func (o GetClientRefreshTokenOutput) RotationType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientRefreshToken) string { return v.RotationType }).(pulumi.StringOutput)
@@ -38355,6 +38679,224 @@ func (o GetClientRefreshTokenArrayOutput) Index(i pulumi.IntInput) GetClientRefr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientRefreshToken {
 		return vs[0].([]GetClientRefreshToken)[vs[1].(int)]
 	}).(GetClientRefreshTokenOutput)
+}
+
+type GetClientRefreshTokenPolicy struct {
+	// The identifier of the resource server to which the Multi Resource Refresh Token Policy applies
+	Audience string `pulumi:"audience"`
+	// The resource server permissions granted under the Multi Resource Refresh Token Policy, defining the context in which an access token can be used
+	Scopes []string `pulumi:"scopes"`
+}
+
+// GetClientRefreshTokenPolicyInput is an input type that accepts GetClientRefreshTokenPolicyArgs and GetClientRefreshTokenPolicyOutput values.
+// You can construct a concrete instance of `GetClientRefreshTokenPolicyInput` via:
+//
+//	GetClientRefreshTokenPolicyArgs{...}
+type GetClientRefreshTokenPolicyInput interface {
+	pulumi.Input
+
+	ToGetClientRefreshTokenPolicyOutput() GetClientRefreshTokenPolicyOutput
+	ToGetClientRefreshTokenPolicyOutputWithContext(context.Context) GetClientRefreshTokenPolicyOutput
+}
+
+type GetClientRefreshTokenPolicyArgs struct {
+	// The identifier of the resource server to which the Multi Resource Refresh Token Policy applies
+	Audience pulumi.StringInput `pulumi:"audience"`
+	// The resource server permissions granted under the Multi Resource Refresh Token Policy, defining the context in which an access token can be used
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+}
+
+func (GetClientRefreshTokenPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientRefreshTokenPolicy)(nil)).Elem()
+}
+
+func (i GetClientRefreshTokenPolicyArgs) ToGetClientRefreshTokenPolicyOutput() GetClientRefreshTokenPolicyOutput {
+	return i.ToGetClientRefreshTokenPolicyOutputWithContext(context.Background())
+}
+
+func (i GetClientRefreshTokenPolicyArgs) ToGetClientRefreshTokenPolicyOutputWithContext(ctx context.Context) GetClientRefreshTokenPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientRefreshTokenPolicyOutput)
+}
+
+// GetClientRefreshTokenPolicyArrayInput is an input type that accepts GetClientRefreshTokenPolicyArray and GetClientRefreshTokenPolicyArrayOutput values.
+// You can construct a concrete instance of `GetClientRefreshTokenPolicyArrayInput` via:
+//
+//	GetClientRefreshTokenPolicyArray{ GetClientRefreshTokenPolicyArgs{...} }
+type GetClientRefreshTokenPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetClientRefreshTokenPolicyArrayOutput() GetClientRefreshTokenPolicyArrayOutput
+	ToGetClientRefreshTokenPolicyArrayOutputWithContext(context.Context) GetClientRefreshTokenPolicyArrayOutput
+}
+
+type GetClientRefreshTokenPolicyArray []GetClientRefreshTokenPolicyInput
+
+func (GetClientRefreshTokenPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientRefreshTokenPolicy)(nil)).Elem()
+}
+
+func (i GetClientRefreshTokenPolicyArray) ToGetClientRefreshTokenPolicyArrayOutput() GetClientRefreshTokenPolicyArrayOutput {
+	return i.ToGetClientRefreshTokenPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientRefreshTokenPolicyArray) ToGetClientRefreshTokenPolicyArrayOutputWithContext(ctx context.Context) GetClientRefreshTokenPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientRefreshTokenPolicyArrayOutput)
+}
+
+type GetClientRefreshTokenPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetClientRefreshTokenPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientRefreshTokenPolicy)(nil)).Elem()
+}
+
+func (o GetClientRefreshTokenPolicyOutput) ToGetClientRefreshTokenPolicyOutput() GetClientRefreshTokenPolicyOutput {
+	return o
+}
+
+func (o GetClientRefreshTokenPolicyOutput) ToGetClientRefreshTokenPolicyOutputWithContext(ctx context.Context) GetClientRefreshTokenPolicyOutput {
+	return o
+}
+
+// The identifier of the resource server to which the Multi Resource Refresh Token Policy applies
+func (o GetClientRefreshTokenPolicyOutput) Audience() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientRefreshTokenPolicy) string { return v.Audience }).(pulumi.StringOutput)
+}
+
+// The resource server permissions granted under the Multi Resource Refresh Token Policy, defining the context in which an access token can be used
+func (o GetClientRefreshTokenPolicyOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientRefreshTokenPolicy) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+type GetClientRefreshTokenPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientRefreshTokenPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientRefreshTokenPolicy)(nil)).Elem()
+}
+
+func (o GetClientRefreshTokenPolicyArrayOutput) ToGetClientRefreshTokenPolicyArrayOutput() GetClientRefreshTokenPolicyArrayOutput {
+	return o
+}
+
+func (o GetClientRefreshTokenPolicyArrayOutput) ToGetClientRefreshTokenPolicyArrayOutputWithContext(ctx context.Context) GetClientRefreshTokenPolicyArrayOutput {
+	return o
+}
+
+func (o GetClientRefreshTokenPolicyArrayOutput) Index(i pulumi.IntInput) GetClientRefreshTokenPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientRefreshTokenPolicy {
+		return vs[0].([]GetClientRefreshTokenPolicy)[vs[1].(int)]
+	}).(GetClientRefreshTokenPolicyOutput)
+}
+
+type GetClientSessionTransfer struct {
+	AllowedAuthenticationMethods []string `pulumi:"allowedAuthenticationMethods"`
+	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
+	CanCreateSessionTransferToken bool `pulumi:"canCreateSessionTransferToken"`
+	// Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
+	EnforceDeviceBinding string `pulumi:"enforceDeviceBinding"`
+}
+
+// GetClientSessionTransferInput is an input type that accepts GetClientSessionTransferArgs and GetClientSessionTransferOutput values.
+// You can construct a concrete instance of `GetClientSessionTransferInput` via:
+//
+//	GetClientSessionTransferArgs{...}
+type GetClientSessionTransferInput interface {
+	pulumi.Input
+
+	ToGetClientSessionTransferOutput() GetClientSessionTransferOutput
+	ToGetClientSessionTransferOutputWithContext(context.Context) GetClientSessionTransferOutput
+}
+
+type GetClientSessionTransferArgs struct {
+	AllowedAuthenticationMethods pulumi.StringArrayInput `pulumi:"allowedAuthenticationMethods"`
+	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
+	CanCreateSessionTransferToken pulumi.BoolInput `pulumi:"canCreateSessionTransferToken"`
+	// Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
+	EnforceDeviceBinding pulumi.StringInput `pulumi:"enforceDeviceBinding"`
+}
+
+func (GetClientSessionTransferArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientSessionTransfer)(nil)).Elem()
+}
+
+func (i GetClientSessionTransferArgs) ToGetClientSessionTransferOutput() GetClientSessionTransferOutput {
+	return i.ToGetClientSessionTransferOutputWithContext(context.Background())
+}
+
+func (i GetClientSessionTransferArgs) ToGetClientSessionTransferOutputWithContext(ctx context.Context) GetClientSessionTransferOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientSessionTransferOutput)
+}
+
+// GetClientSessionTransferArrayInput is an input type that accepts GetClientSessionTransferArray and GetClientSessionTransferArrayOutput values.
+// You can construct a concrete instance of `GetClientSessionTransferArrayInput` via:
+//
+//	GetClientSessionTransferArray{ GetClientSessionTransferArgs{...} }
+type GetClientSessionTransferArrayInput interface {
+	pulumi.Input
+
+	ToGetClientSessionTransferArrayOutput() GetClientSessionTransferArrayOutput
+	ToGetClientSessionTransferArrayOutputWithContext(context.Context) GetClientSessionTransferArrayOutput
+}
+
+type GetClientSessionTransferArray []GetClientSessionTransferInput
+
+func (GetClientSessionTransferArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientSessionTransfer)(nil)).Elem()
+}
+
+func (i GetClientSessionTransferArray) ToGetClientSessionTransferArrayOutput() GetClientSessionTransferArrayOutput {
+	return i.ToGetClientSessionTransferArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientSessionTransferArray) ToGetClientSessionTransferArrayOutputWithContext(ctx context.Context) GetClientSessionTransferArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientSessionTransferArrayOutput)
+}
+
+type GetClientSessionTransferOutput struct{ *pulumi.OutputState }
+
+func (GetClientSessionTransferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientSessionTransfer)(nil)).Elem()
+}
+
+func (o GetClientSessionTransferOutput) ToGetClientSessionTransferOutput() GetClientSessionTransferOutput {
+	return o
+}
+
+func (o GetClientSessionTransferOutput) ToGetClientSessionTransferOutputWithContext(ctx context.Context) GetClientSessionTransferOutput {
+	return o
+}
+
+func (o GetClientSessionTransferOutput) AllowedAuthenticationMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientSessionTransfer) []string { return v.AllowedAuthenticationMethods }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
+func (o GetClientSessionTransferOutput) CanCreateSessionTransferToken() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientSessionTransfer) bool { return v.CanCreateSessionTransferToken }).(pulumi.BoolOutput)
+}
+
+// Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
+func (o GetClientSessionTransferOutput) EnforceDeviceBinding() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientSessionTransfer) string { return v.EnforceDeviceBinding }).(pulumi.StringOutput)
+}
+
+type GetClientSessionTransferArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientSessionTransferArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientSessionTransfer)(nil)).Elem()
+}
+
+func (o GetClientSessionTransferArrayOutput) ToGetClientSessionTransferArrayOutput() GetClientSessionTransferArrayOutput {
+	return o
+}
+
+func (o GetClientSessionTransferArrayOutput) ToGetClientSessionTransferArrayOutputWithContext(ctx context.Context) GetClientSessionTransferArrayOutput {
+	return o
+}
+
+func (o GetClientSessionTransferArrayOutput) Index(i pulumi.IntInput) GetClientSessionTransferOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientSessionTransfer {
+		return vs[0].([]GetClientSessionTransfer)[vs[1].(int)]
+	}).(GetClientSessionTransferOutput)
 }
 
 type GetClientSignedRequestObject struct {
@@ -38747,7 +39289,8 @@ type GetClientsClient struct {
 	// The name of the client. If not provided, `clientId` must be set.
 	Name *string `pulumi:"name"`
 	// Configure OIDC logout for the Client
-	OidcLogouts []GetClientsClientOidcLogout `pulumi:"oidcLogouts"`
+	OidcLogouts      []GetClientsClientOidcLogout      `pulumi:"oidcLogouts"`
+	SessionTransfers []GetClientsClientSessionTransfer `pulumi:"sessionTransfers"`
 	// Allows configuration for token exchange
 	TokenExchanges []GetClientsClientTokenExchange `pulumi:"tokenExchanges"`
 	// URLs that represent valid web origins for use with web message response mode.
@@ -38792,7 +39335,8 @@ type GetClientsClientArgs struct {
 	// The name of the client. If not provided, `clientId` must be set.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Configure OIDC logout for the Client
-	OidcLogouts GetClientsClientOidcLogoutArrayInput `pulumi:"oidcLogouts"`
+	OidcLogouts      GetClientsClientOidcLogoutArrayInput      `pulumi:"oidcLogouts"`
+	SessionTransfers GetClientsClientSessionTransferArrayInput `pulumi:"sessionTransfers"`
 	// Allows configuration for token exchange
 	TokenExchanges GetClientsClientTokenExchangeArrayInput `pulumi:"tokenExchanges"`
 	// URLs that represent valid web origins for use with web message response mode.
@@ -38917,6 +39461,10 @@ func (o GetClientsClientOutput) Name() pulumi.StringPtrOutput {
 // Configure OIDC logout for the Client
 func (o GetClientsClientOutput) OidcLogouts() GetClientsClientOidcLogoutArrayOutput {
 	return o.ApplyT(func(v GetClientsClient) []GetClientsClientOidcLogout { return v.OidcLogouts }).(GetClientsClientOidcLogoutArrayOutput)
+}
+
+func (o GetClientsClientOutput) SessionTransfers() GetClientsClientSessionTransferArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientSessionTransfer { return v.SessionTransfers }).(GetClientsClientSessionTransferArrayOutput)
 }
 
 // Allows configuration for token exchange
@@ -39163,6 +39711,118 @@ func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput) Index(i
 	}).(GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput)
 }
 
+type GetClientsClientSessionTransfer struct {
+	AllowedAuthenticationMethods []string `pulumi:"allowedAuthenticationMethods"`
+	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
+	CanCreateSessionTransferToken bool `pulumi:"canCreateSessionTransferToken"`
+	// Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
+	EnforceDeviceBinding string `pulumi:"enforceDeviceBinding"`
+}
+
+// GetClientsClientSessionTransferInput is an input type that accepts GetClientsClientSessionTransferArgs and GetClientsClientSessionTransferOutput values.
+// You can construct a concrete instance of `GetClientsClientSessionTransferInput` via:
+//
+//	GetClientsClientSessionTransferArgs{...}
+type GetClientsClientSessionTransferInput interface {
+	pulumi.Input
+
+	ToGetClientsClientSessionTransferOutput() GetClientsClientSessionTransferOutput
+	ToGetClientsClientSessionTransferOutputWithContext(context.Context) GetClientsClientSessionTransferOutput
+}
+
+type GetClientsClientSessionTransferArgs struct {
+	AllowedAuthenticationMethods pulumi.StringArrayInput `pulumi:"allowedAuthenticationMethods"`
+	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
+	CanCreateSessionTransferToken pulumi.BoolInput `pulumi:"canCreateSessionTransferToken"`
+	// Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
+	EnforceDeviceBinding pulumi.StringInput `pulumi:"enforceDeviceBinding"`
+}
+
+func (GetClientsClientSessionTransferArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientSessionTransfer)(nil)).Elem()
+}
+
+func (i GetClientsClientSessionTransferArgs) ToGetClientsClientSessionTransferOutput() GetClientsClientSessionTransferOutput {
+	return i.ToGetClientsClientSessionTransferOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientSessionTransferArgs) ToGetClientsClientSessionTransferOutputWithContext(ctx context.Context) GetClientsClientSessionTransferOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientSessionTransferOutput)
+}
+
+// GetClientsClientSessionTransferArrayInput is an input type that accepts GetClientsClientSessionTransferArray and GetClientsClientSessionTransferArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientSessionTransferArrayInput` via:
+//
+//	GetClientsClientSessionTransferArray{ GetClientsClientSessionTransferArgs{...} }
+type GetClientsClientSessionTransferArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientSessionTransferArrayOutput() GetClientsClientSessionTransferArrayOutput
+	ToGetClientsClientSessionTransferArrayOutputWithContext(context.Context) GetClientsClientSessionTransferArrayOutput
+}
+
+type GetClientsClientSessionTransferArray []GetClientsClientSessionTransferInput
+
+func (GetClientsClientSessionTransferArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientSessionTransfer)(nil)).Elem()
+}
+
+func (i GetClientsClientSessionTransferArray) ToGetClientsClientSessionTransferArrayOutput() GetClientsClientSessionTransferArrayOutput {
+	return i.ToGetClientsClientSessionTransferArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientSessionTransferArray) ToGetClientsClientSessionTransferArrayOutputWithContext(ctx context.Context) GetClientsClientSessionTransferArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientSessionTransferArrayOutput)
+}
+
+type GetClientsClientSessionTransferOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientSessionTransferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientSessionTransfer)(nil)).Elem()
+}
+
+func (o GetClientsClientSessionTransferOutput) ToGetClientsClientSessionTransferOutput() GetClientsClientSessionTransferOutput {
+	return o
+}
+
+func (o GetClientsClientSessionTransferOutput) ToGetClientsClientSessionTransferOutputWithContext(ctx context.Context) GetClientsClientSessionTransferOutput {
+	return o
+}
+
+func (o GetClientsClientSessionTransferOutput) AllowedAuthenticationMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClientSessionTransfer) []string { return v.AllowedAuthenticationMethods }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
+func (o GetClientsClientSessionTransferOutput) CanCreateSessionTransferToken() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientSessionTransfer) bool { return v.CanCreateSessionTransferToken }).(pulumi.BoolOutput)
+}
+
+// Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
+func (o GetClientsClientSessionTransferOutput) EnforceDeviceBinding() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientSessionTransfer) string { return v.EnforceDeviceBinding }).(pulumi.StringOutput)
+}
+
+type GetClientsClientSessionTransferArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientSessionTransferArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientSessionTransfer)(nil)).Elem()
+}
+
+func (o GetClientsClientSessionTransferArrayOutput) ToGetClientsClientSessionTransferArrayOutput() GetClientsClientSessionTransferArrayOutput {
+	return o
+}
+
+func (o GetClientsClientSessionTransferArrayOutput) ToGetClientsClientSessionTransferArrayOutputWithContext(ctx context.Context) GetClientsClientSessionTransferArrayOutput {
+	return o
+}
+
+func (o GetClientsClientSessionTransferArrayOutput) Index(i pulumi.IntInput) GetClientsClientSessionTransferOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientSessionTransfer {
+		return vs[0].([]GetClientsClientSessionTransfer)[vs[1].(int)]
+	}).(GetClientsClientSessionTransferOutput)
+}
+
 type GetClientsClientTokenExchange struct {
 	// List of allowed profile types for token exchange
 	AllowAnyProfileOfTypes []string `pulumi:"allowAnyProfileOfTypes"`
@@ -39391,6 +40051,8 @@ type GetConnectionOption struct {
 	ProtocolBinding string `pulumi:"protocolBinding"`
 	// Defines the custom `smsGateway` provider.
 	Provider string `pulumi:"provider"`
+	// Allows configuration if connectionsRealmFallback flag is enabled for the tenant
+	RealmFallback bool `pulumi:"realmFallback"`
 	// Template that formats the SAML request.
 	RequestTemplate string `pulumi:"requestTemplate"`
 	// Indicates whether the user is required to provide a username in addition to an email address.
@@ -39599,6 +40261,8 @@ type GetConnectionOptionArgs struct {
 	ProtocolBinding pulumi.StringInput `pulumi:"protocolBinding"`
 	// Defines the custom `smsGateway` provider.
 	Provider pulumi.StringInput `pulumi:"provider"`
+	// Allows configuration if connectionsRealmFallback flag is enabled for the tenant
+	RealmFallback pulumi.BoolInput `pulumi:"realmFallback"`
 	// Template that formats the SAML request.
 	RequestTemplate pulumi.StringInput `pulumi:"requestTemplate"`
 	// Indicates whether the user is required to provide a username in addition to an email address.
@@ -40045,6 +40709,11 @@ func (o GetConnectionOptionOutput) ProtocolBinding() pulumi.StringOutput {
 // Defines the custom `smsGateway` provider.
 func (o GetConnectionOptionOutput) Provider() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.Provider }).(pulumi.StringOutput)
+}
+
+// Allows configuration if connectionsRealmFallback flag is enabled for the tenant
+func (o GetConnectionOptionOutput) RealmFallback() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.RealmFallback }).(pulumi.BoolOutput)
 }
 
 // Template that formats the SAML request.
@@ -48137,6 +48806,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcLogoutBackchannelLogoutInitiatorsPtrInput)(nil)).Elem(), ClientOidcLogoutBackchannelLogoutInitiatorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientRefreshTokenInput)(nil)).Elem(), ClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientRefreshTokenPtrInput)(nil)).Elem(), ClientRefreshTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientRefreshTokenPolicyInput)(nil)).Elem(), ClientRefreshTokenPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientRefreshTokenPolicyArrayInput)(nil)).Elem(), ClientRefreshTokenPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientSessionTransferInput)(nil)).Elem(), ClientSessionTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientSessionTransferPtrInput)(nil)).Elem(), ClientSessionTransferArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTokenExchangeInput)(nil)).Elem(), ClientTokenExchangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTokenExchangePtrInput)(nil)).Elem(), ClientTokenExchangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsInput)(nil)).Elem(), ConnectionOptionsArgs{})
@@ -48458,6 +49131,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcLogoutBackchannelLogoutInitiatorArrayInput)(nil)).Elem(), GetClientOidcLogoutBackchannelLogoutInitiatorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientRefreshTokenInput)(nil)).Elem(), GetClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientRefreshTokenArrayInput)(nil)).Elem(), GetClientRefreshTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientRefreshTokenPolicyInput)(nil)).Elem(), GetClientRefreshTokenPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientRefreshTokenPolicyArrayInput)(nil)).Elem(), GetClientRefreshTokenPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSessionTransferInput)(nil)).Elem(), GetClientSessionTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSessionTransferArrayInput)(nil)).Elem(), GetClientSessionTransferArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectInput)(nil)).Elem(), GetClientSignedRequestObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectArrayInput)(nil)).Elem(), GetClientSignedRequestObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectCredentialInput)(nil)).Elem(), GetClientSignedRequestObjectCredentialArgs{})
@@ -48470,6 +49147,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutArrayInput)(nil)).Elem(), GetClientsClientOidcLogoutArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutInitiatorInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientSessionTransferInput)(nil)).Elem(), GetClientsClientSessionTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientSessionTransferArrayInput)(nil)).Elem(), GetClientsClientSessionTransferArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenExchangeInput)(nil)).Elem(), GetClientsClientTokenExchangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenExchangeArrayInput)(nil)).Elem(), GetClientsClientTokenExchangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionInput)(nil)).Elem(), GetConnectionOptionArgs{})
@@ -48760,6 +49439,10 @@ func init() {
 	pulumi.RegisterOutputType(ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput{})
 	pulumi.RegisterOutputType(ClientRefreshTokenOutput{})
 	pulumi.RegisterOutputType(ClientRefreshTokenPtrOutput{})
+	pulumi.RegisterOutputType(ClientRefreshTokenPolicyOutput{})
+	pulumi.RegisterOutputType(ClientRefreshTokenPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ClientSessionTransferOutput{})
+	pulumi.RegisterOutputType(ClientSessionTransferPtrOutput{})
 	pulumi.RegisterOutputType(ClientTokenExchangeOutput{})
 	pulumi.RegisterOutputType(ClientTokenExchangePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsOutput{})
@@ -49081,6 +49764,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput{})
 	pulumi.RegisterOutputType(GetClientRefreshTokenOutput{})
 	pulumi.RegisterOutputType(GetClientRefreshTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetClientRefreshTokenPolicyOutput{})
+	pulumi.RegisterOutputType(GetClientRefreshTokenPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetClientSessionTransferOutput{})
+	pulumi.RegisterOutputType(GetClientSessionTransferArrayOutput{})
 	pulumi.RegisterOutputType(GetClientSignedRequestObjectOutput{})
 	pulumi.RegisterOutputType(GetClientSignedRequestObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetClientSignedRequestObjectCredentialOutput{})
@@ -49093,6 +49780,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientSessionTransferOutput{})
+	pulumi.RegisterOutputType(GetClientsClientSessionTransferArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientTokenExchangeOutput{})
 	pulumi.RegisterOutputType(GetClientsClientTokenExchangeArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionOutput{})

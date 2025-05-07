@@ -11,6 +11,7 @@ import com.pulumi.auth0.outputs.GetClientMobile;
 import com.pulumi.auth0.outputs.GetClientNativeSocialLogin;
 import com.pulumi.auth0.outputs.GetClientOidcLogout;
 import com.pulumi.auth0.outputs.GetClientRefreshToken;
+import com.pulumi.auth0.outputs.GetClientSessionTransfer;
 import com.pulumi.auth0.outputs.GetClientSignedRequestObject;
 import com.pulumi.auth0.outputs.GetClientTokenExchange;
 import com.pulumi.core.annotations.CustomType;
@@ -211,6 +212,7 @@ public final class GetClientResult {
      * 
      */
     private Boolean requirePushedAuthorizationRequests;
+    private List<GetClientSessionTransfer> sessionTransfers;
     /**
      * @return Configuration for JWT-secured Authorization Requests(JAR).
      * 
@@ -510,6 +512,9 @@ public final class GetClientResult {
     public Boolean requirePushedAuthorizationRequests() {
         return this.requirePushedAuthorizationRequests;
     }
+    public List<GetClientSessionTransfer> sessionTransfers() {
+        return this.sessionTransfers;
+    }
     /**
      * @return Configuration for JWT-secured Authorization Requests(JAR).
      * 
@@ -607,6 +612,7 @@ public final class GetClientResult {
         private List<GetClientRefreshToken> refreshTokens;
         private Boolean requireProofOfPossession;
         private Boolean requirePushedAuthorizationRequests;
+        private List<GetClientSessionTransfer> sessionTransfers;
         private List<GetClientSignedRequestObject> signedRequestObjects;
         private List<Map<String,String>> signingKeys;
         private Boolean sso;
@@ -655,6 +661,7 @@ public final class GetClientResult {
     	      this.refreshTokens = defaults.refreshTokens;
     	      this.requireProofOfPossession = defaults.requireProofOfPossession;
     	      this.requirePushedAuthorizationRequests = defaults.requirePushedAuthorizationRequests;
+    	      this.sessionTransfers = defaults.sessionTransfers;
     	      this.signedRequestObjects = defaults.signedRequestObjects;
     	      this.signingKeys = defaults.signingKeys;
     	      this.sso = defaults.sso;
@@ -1010,6 +1017,17 @@ public final class GetClientResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sessionTransfers(List<GetClientSessionTransfer> sessionTransfers) {
+            if (sessionTransfers == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "sessionTransfers");
+            }
+            this.sessionTransfers = sessionTransfers;
+            return this;
+        }
+        public Builder sessionTransfers(GetClientSessionTransfer... sessionTransfers) {
+            return sessionTransfers(List.of(sessionTransfers));
+        }
+        @CustomType.Setter
         public Builder signedRequestObjects(List<GetClientSignedRequestObject> signedRequestObjects) {
             if (signedRequestObjects == null) {
               throw new MissingRequiredPropertyException("GetClientResult", "signedRequestObjects");
@@ -1114,6 +1132,7 @@ public final class GetClientResult {
             _resultValue.refreshTokens = refreshTokens;
             _resultValue.requireProofOfPossession = requireProofOfPossession;
             _resultValue.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
+            _resultValue.sessionTransfers = sessionTransfers;
             _resultValue.signedRequestObjects = signedRequestObjects;
             _resultValue.signingKeys = signingKeys;
             _resultValue.sso = sso;

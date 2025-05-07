@@ -66,6 +66,7 @@ namespace Pulumi.Auth0.Outputs
         /// Configure OIDC logout for the Client
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientsClientOidcLogoutResult> OidcLogouts;
+        public readonly ImmutableArray<Outputs.GetClientsClientSessionTransferResult> SessionTransfers;
         /// <summary>
         /// Allows configuration for token exchange
         /// </summary>
@@ -105,6 +106,8 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<Outputs.GetClientsClientOidcLogoutResult> oidcLogouts,
 
+            ImmutableArray<Outputs.GetClientsClientSessionTransferResult> sessionTransfers,
+
             ImmutableArray<Outputs.GetClientsClientTokenExchangeResult> tokenExchanges,
 
             ImmutableArray<string> webOrigins)
@@ -123,6 +126,7 @@ namespace Pulumi.Auth0.Outputs
             IsTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;
             Name = name;
             OidcLogouts = oidcLogouts;
+            SessionTransfers = sessionTransfers;
             TokenExchanges = tokenExchanges;
             WebOrigins = webOrigins;
         }
