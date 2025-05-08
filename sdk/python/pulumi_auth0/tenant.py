@@ -771,10 +771,8 @@ class _TenantState:
         pulumi.set(self, "support_url", value)
 
 
+@pulumi.type_token("auth0:index/tenant:Tenant")
 class Tenant(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/tenant:Tenant"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

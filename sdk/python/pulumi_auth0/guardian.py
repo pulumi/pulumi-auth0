@@ -322,10 +322,8 @@ class _GuardianState:
         pulumi.set(self, "webauthn_roaming", value)
 
 
+@pulumi.type_token("auth0:index/guardian:Guardian")
 class Guardian(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/guardian:Guardian"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -127,10 +127,8 @@ class _UserRoleState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("auth0:index/userRole:UserRole")
 class UserRole(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/userRole:UserRole"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

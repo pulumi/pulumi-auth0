@@ -92,10 +92,8 @@ class _CustomDomainVerificationState:
         pulumi.set(self, "origin_domain_name", value)
 
 
+@pulumi.type_token("auth0:index/customDomainVerification:CustomDomainVerification")
 class CustomDomainVerification(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/customDomainVerification:CustomDomainVerification"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

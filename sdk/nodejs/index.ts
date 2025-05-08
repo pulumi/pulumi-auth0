@@ -325,10 +325,8 @@ export type PromptScreenRenderer = import("./promptScreenRenderer").PromptScreen
 export const PromptScreenRenderer: typeof import("./promptScreenRenderer").PromptScreenRenderer = null as any;
 utilities.lazyLoad(exports, ["PromptScreenRenderer"], () => require("./promptScreenRenderer"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { ResourceServerArgs, ResourceServerState } from "./resourceServer";
 export type ResourceServer = import("./resourceServer").ResourceServer;

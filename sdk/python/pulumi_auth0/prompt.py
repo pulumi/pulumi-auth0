@@ -129,10 +129,8 @@ class _PromptState:
         pulumi.set(self, "webauthn_platform_first_factor", value)
 
 
+@pulumi.type_token("auth0:index/prompt:Prompt")
 class Prompt(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/prompt:Prompt"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

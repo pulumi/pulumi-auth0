@@ -250,10 +250,8 @@ class _ClientCredentialsState:
         pulumi.set(self, "tls_client_auth", value)
 
 
+@pulumi.type_token("auth0:index/clientCredentials:ClientCredentials")
 class ClientCredentials(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/clientCredentials:ClientCredentials"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

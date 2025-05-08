@@ -225,10 +225,8 @@ class _LogStreamState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("auth0:index/logStream:LogStream")
 class LogStream(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/logStream:LogStream"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

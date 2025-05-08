@@ -223,10 +223,8 @@ class _HookState:
         pulumi.set(self, "trigger_id", value)
 
 
+@pulumi.type_token("auth0:index/hook:Hook")
 class Hook(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/hook:Hook"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

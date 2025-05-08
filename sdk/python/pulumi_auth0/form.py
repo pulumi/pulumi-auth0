@@ -291,10 +291,8 @@ class _FormState:
         pulumi.set(self, "translations", value)
 
 
+@pulumi.type_token("auth0:index/form:Form")
 class Form(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/form:Form"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
