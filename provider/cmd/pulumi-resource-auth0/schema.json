@@ -9640,6 +9640,9 @@
             "dynamicCredentials": {
                 "type": "boolean"
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:auth0/terraformConfig"
         }
     },
     "resources": {
@@ -17376,6 +17379,35 @@
                     "username",
                     "verifyEmail",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "pulumi:providers:auth0/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:auth0"
+                    }
+                },
+                "type": "pulumi:providers:auth0/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
                 ],
                 "type": "object"
             }
