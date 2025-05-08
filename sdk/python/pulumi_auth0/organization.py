@@ -163,10 +163,8 @@ class _OrganizationState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("auth0:index/organization:Organization")
 class Organization(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/organization:Organization"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

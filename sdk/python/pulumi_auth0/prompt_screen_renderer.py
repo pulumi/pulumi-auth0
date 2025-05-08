@@ -239,10 +239,8 @@ class _PromptScreenRendererState:
         pulumi.set(self, "tenant", value)
 
 
+@pulumi.type_token("auth0:index/promptScreenRenderer:PromptScreenRenderer")
 class PromptScreenRenderer(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/promptScreenRenderer:PromptScreenRenderer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

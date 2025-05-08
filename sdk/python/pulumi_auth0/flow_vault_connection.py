@@ -240,10 +240,8 @@ class _FlowVaultConnectionState:
         pulumi.set(self, "setup", value)
 
 
+@pulumi.type_token("auth0:index/flowVaultConnection:FlowVaultConnection")
 class FlowVaultConnection(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/flowVaultConnection:FlowVaultConnection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

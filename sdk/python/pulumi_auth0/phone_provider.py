@@ -193,10 +193,8 @@ class _PhoneProviderState:
         pulumi.set(self, "tenant", value)
 
 
+@pulumi.type_token("auth0:index/phoneProvider:PhoneProvider")
 class PhoneProvider(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/phoneProvider:PhoneProvider"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

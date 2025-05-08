@@ -160,10 +160,8 @@ class _RuleState:
         pulumi.set(self, "script", value)
 
 
+@pulumi.type_token("auth0:index/rule:Rule")
 class Rule(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/rule:Rule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

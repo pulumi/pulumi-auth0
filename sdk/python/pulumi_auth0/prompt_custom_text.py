@@ -126,10 +126,8 @@ class _PromptCustomTextState:
         pulumi.set(self, "prompt", value)
 
 
+@pulumi.type_token("auth0:index/promptCustomText:PromptCustomText")
 class PromptCustomText(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/promptCustomText:PromptCustomText"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

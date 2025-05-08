@@ -190,10 +190,8 @@ class _ClientGrantState:
         pulumi.set(self, "scopes", value)
 
 
+@pulumi.type_token("auth0:index/clientGrant:ClientGrant")
 class ClientGrant(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/clientGrant:ClientGrant"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

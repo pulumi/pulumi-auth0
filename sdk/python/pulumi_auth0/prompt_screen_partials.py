@@ -90,10 +90,8 @@ class _PromptScreenPartialsState:
         pulumi.set(self, "screen_partials", value)
 
 
+@pulumi.type_token("auth0:index/promptScreenPartials:PromptScreenPartials")
 class PromptScreenPartials(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/promptScreenPartials:PromptScreenPartials"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

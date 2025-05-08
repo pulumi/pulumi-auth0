@@ -163,10 +163,8 @@ class _PagesState:
         pulumi.set(self, "login", value)
 
 
+@pulumi.type_token("auth0:index/pages:Pages")
 class Pages(pulumi.CustomResource):
-
-    pulumi_type = "auth0:index/pages:Pages"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
