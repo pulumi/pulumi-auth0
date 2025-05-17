@@ -644,6 +644,9 @@ import * as utilities from "./utilities";
  *
  * ### Okta Connection
  *
+ * !> When configuring an Okta Workforce connection, the `scopes` attribute must be explicitly set. If omitted, the connection may not function correctly.
+ * To ensure proper behavior, always specify:  `scopes = ["openid", "profile", "email"]`
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -666,6 +669,7 @@ import * as utilities from "./utilities";
  *         authorizationEndpoint: "https://example.okta.com/oauth2/v1/authorize",
  *         scopes: [
  *             "openid",
+ *             "profile",
  *             "email",
  *         ],
  *         setUserRootAttributes: "on_first_login",

@@ -274,6 +274,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? Provider;
         /// <summary>
+        /// Allows configuration if connections*realm*fallback flag is enabled for the tenant
+        /// </summary>
+        public readonly bool? RealmFallback;
+        /// <summary>
         /// Template that formats the SAML request.
         /// </summary>
         public readonly string? RequestTemplate;
@@ -534,6 +538,8 @@ namespace Pulumi.Auth0.Outputs
 
             string? provider,
 
+            bool? realmFallback,
+
             string? requestTemplate,
 
             bool? requiresUsername,
@@ -663,6 +669,7 @@ namespace Pulumi.Auth0.Outputs
             Precedences = precedences;
             ProtocolBinding = protocolBinding;
             Provider = provider;
+            RealmFallback = realmFallback;
             RequestTemplate = requestTemplate;
             RequiresUsername = requiresUsername;
             Scopes = scopes;

@@ -42,6 +42,18 @@ namespace Pulumi.Auth0.Inputs
         [Input("leeway")]
         public Input<int>? Leeway { get; set; }
 
+        [Input("policies")]
+        private InputList<Inputs.ClientRefreshTokenPolicyGetArgs>? _policies;
+
+        /// <summary>
+        /// A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+        /// </summary>
+        public InputList<Inputs.ClientRefreshTokenPolicyGetArgs> Policies
+        {
+            get => _policies ?? (_policies = new InputList<Inputs.ClientRefreshTokenPolicyGetArgs>());
+            set => _policies = value;
+        }
+
         /// <summary>
         /// Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
         /// </summary>

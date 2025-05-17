@@ -934,6 +934,9 @@ class Connection(pulumi.CustomResource):
 
         ### Okta Connection
 
+        !> When configuring an Okta Workforce connection, the `scopes` attribute must be explicitly set. If omitted, the connection may not function correctly.
+        To ensure proper behavior, always specify:  `scopes = ["openid", "profile", "email"]`
+
         ```python
         import pulumi
         import json
@@ -957,6 +960,7 @@ class Connection(pulumi.CustomResource):
                 "authorization_endpoint": "https://example.okta.com/oauth2/v1/authorize",
                 "scopes": [
                     "openid",
+                    "profile",
                     "email",
                 ],
                 "set_user_root_attributes": "on_first_login",
@@ -1644,6 +1648,9 @@ class Connection(pulumi.CustomResource):
 
         ### Okta Connection
 
+        !> When configuring an Okta Workforce connection, the `scopes` attribute must be explicitly set. If omitted, the connection may not function correctly.
+        To ensure proper behavior, always specify:  `scopes = ["openid", "profile", "email"]`
+
         ```python
         import pulumi
         import json
@@ -1667,6 +1674,7 @@ class Connection(pulumi.CustomResource):
                 "authorization_endpoint": "https://example.okta.com/oauth2/v1/authorize",
                 "scopes": [
                     "openid",
+                    "profile",
                     "email",
                 ],
                 "set_user_root_attributes": "on_first_login",

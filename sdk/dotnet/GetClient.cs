@@ -299,6 +299,7 @@ namespace Pulumi.Auth0
         /// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         /// </summary>
         public readonly bool RequirePushedAuthorizationRequests;
+        public readonly ImmutableArray<Outputs.GetClientSessionTransferResult> SessionTransfers;
         /// <summary>
         /// Configuration for JWT-secured Authorization Requests(JAR).
         /// </summary>
@@ -406,6 +407,8 @@ namespace Pulumi.Auth0
 
             bool requirePushedAuthorizationRequests,
 
+            ImmutableArray<Outputs.GetClientSessionTransferResult> sessionTransfers,
+
             ImmutableArray<Outputs.GetClientSignedRequestObjectResult> signedRequestObjects,
 
             ImmutableArray<ImmutableDictionary<string, string>> signingKeys,
@@ -458,6 +461,7 @@ namespace Pulumi.Auth0
             RefreshTokens = refreshTokens;
             RequireProofOfPossession = requireProofOfPossession;
             RequirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
+            SessionTransfers = sessionTransfers;
             SignedRequestObjects = signedRequestObjects;
             SigningKeys = signingKeys;
             Sso = sso;

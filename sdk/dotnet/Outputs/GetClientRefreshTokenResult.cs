@@ -34,6 +34,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly int Leeway;
         /// <summary>
+        /// A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientRefreshTokenPolicyResult> Policies;
+        /// <summary>
         /// Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
         /// </summary>
         public readonly string RotationType;
@@ -54,6 +58,8 @@ namespace Pulumi.Auth0.Outputs
 
             int leeway,
 
+            ImmutableArray<Outputs.GetClientRefreshTokenPolicyResult> policies,
+
             string rotationType,
 
             int tokenLifetime)
@@ -63,6 +69,7 @@ namespace Pulumi.Auth0.Outputs
             InfiniteIdleTokenLifetime = infiniteIdleTokenLifetime;
             InfiniteTokenLifetime = infiniteTokenLifetime;
             Leeway = leeway;
+            Policies = policies;
             RotationType = rotationType;
             TokenLifetime = tokenLifetime;
         }

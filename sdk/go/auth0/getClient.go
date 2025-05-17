@@ -140,7 +140,8 @@ type LookupClientResult struct {
 	// Makes the use of Proof-of-Possession mandatory for this client.
 	RequireProofOfPossession bool `pulumi:"requireProofOfPossession"`
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
-	RequirePushedAuthorizationRequests bool `pulumi:"requirePushedAuthorizationRequests"`
+	RequirePushedAuthorizationRequests bool                       `pulumi:"requirePushedAuthorizationRequests"`
+	SessionTransfers                   []GetClientSessionTransfer `pulumi:"sessionTransfers"`
 	// Configuration for JWT-secured Authorization Requests(JAR).
 	SignedRequestObjects []GetClientSignedRequestObject `pulumi:"signedRequestObjects"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
@@ -380,6 +381,10 @@ func (o LookupClientResultOutput) RequireProofOfPossession() pulumi.BoolOutput {
 // Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 func (o LookupClientResultOutput) RequirePushedAuthorizationRequests() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClientResult) bool { return v.RequirePushedAuthorizationRequests }).(pulumi.BoolOutput)
+}
+
+func (o LookupClientResultOutput) SessionTransfers() GetClientSessionTransferArrayOutput {
+	return o.ApplyT(func(v LookupClientResult) []GetClientSessionTransfer { return v.SessionTransfers }).(GetClientSessionTransferArrayOutput)
 }
 
 // Configuration for JWT-secured Authorization Requests(JAR).

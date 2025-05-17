@@ -92,6 +92,8 @@ __all__ = [
     'ClientOidcLogout',
     'ClientOidcLogoutBackchannelLogoutInitiators',
     'ClientRefreshToken',
+    'ClientRefreshTokenPolicy',
+    'ClientSessionTransfer',
     'ClientTokenExchange',
     'ConnectionOptions',
     'ConnectionOptionsAttribute',
@@ -253,12 +255,15 @@ __all__ = [
     'GetClientOidcLogoutResult',
     'GetClientOidcLogoutBackchannelLogoutInitiatorResult',
     'GetClientRefreshTokenResult',
+    'GetClientRefreshTokenPolicyResult',
+    'GetClientSessionTransferResult',
     'GetClientSignedRequestObjectResult',
     'GetClientSignedRequestObjectCredentialResult',
     'GetClientTokenExchangeResult',
     'GetClientsClientResult',
     'GetClientsClientOidcLogoutResult',
     'GetClientsClientOidcLogoutBackchannelLogoutInitiatorResult',
+    'GetClientsClientSessionTransferResult',
     'GetClientsClientTokenExchangeResult',
     'GetConnectionOptionResult',
     'GetConnectionOptionAttributeResult',
@@ -4862,6 +4867,7 @@ class ClientRefreshToken(dict):
                  infinite_idle_token_lifetime: Optional[builtins.bool] = None,
                  infinite_token_lifetime: Optional[builtins.bool] = None,
                  leeway: Optional[builtins.int] = None,
+                 policies: Optional[Sequence['outputs.ClientRefreshTokenPolicy']] = None,
                  token_lifetime: Optional[builtins.int] = None):
         """
         :param builtins.str expiration_type: Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
@@ -4870,6 +4876,7 @@ class ClientRefreshToken(dict):
         :param builtins.bool infinite_idle_token_lifetime: Whether inactive refresh tokens should remain valid indefinitely.
         :param builtins.bool infinite_token_lifetime: Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
         :param builtins.int leeway: The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+        :param Sequence['ClientRefreshTokenPolicyArgs'] policies: A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
         :param builtins.int token_lifetime: The absolute lifetime of a refresh token in seconds.
         """
         pulumi.set(__self__, "expiration_type", expiration_type)
@@ -4882,6 +4889,8 @@ class ClientRefreshToken(dict):
             pulumi.set(__self__, "infinite_token_lifetime", infinite_token_lifetime)
         if leeway is not None:
             pulumi.set(__self__, "leeway", leeway)
+        if policies is not None:
+            pulumi.set(__self__, "policies", policies)
         if token_lifetime is not None:
             pulumi.set(__self__, "token_lifetime", token_lifetime)
 
@@ -4934,12 +4943,109 @@ class ClientRefreshToken(dict):
         return pulumi.get(self, "leeway")
 
     @property
+    @pulumi.getter
+    def policies(self) -> Optional[Sequence['outputs.ClientRefreshTokenPolicy']]:
+        """
+        A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+        """
+        return pulumi.get(self, "policies")
+
+    @property
     @pulumi.getter(name="tokenLifetime")
     def token_lifetime(self) -> Optional[builtins.int]:
         """
         The absolute lifetime of a refresh token in seconds.
         """
         return pulumi.get(self, "token_lifetime")
+
+
+@pulumi.output_type
+class ClientRefreshTokenPolicy(dict):
+    def __init__(__self__, *,
+                 audience: builtins.str,
+                 scopes: Sequence[builtins.str]):
+        """
+        :param builtins.str audience: The identifier of the resource server to which the Multi Resource Refresh Token Policy applies
+        :param Sequence[builtins.str] scopes: The resource server permissions granted under the Multi Resource Refresh Token Policy, defining the context in which an access token can be used
+        """
+        pulumi.set(__self__, "audience", audience)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def audience(self) -> builtins.str:
+        """
+        The identifier of the resource server to which the Multi Resource Refresh Token Policy applies
+        """
+        return pulumi.get(self, "audience")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[builtins.str]:
+        """
+        The resource server permissions granted under the Multi Resource Refresh Token Policy, defining the context in which an access token can be used
+        """
+        return pulumi.get(self, "scopes")
+
+
+@pulumi.output_type
+class ClientSessionTransfer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedAuthenticationMethods":
+            suggest = "allowed_authentication_methods"
+        elif key == "canCreateSessionTransferToken":
+            suggest = "can_create_session_transfer_token"
+        elif key == "enforceDeviceBinding":
+            suggest = "enforce_device_binding"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientSessionTransfer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientSessionTransfer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientSessionTransfer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_authentication_methods: Optional[Sequence[builtins.str]] = None,
+                 can_create_session_transfer_token: Optional[builtins.bool] = None,
+                 enforce_device_binding: Optional[builtins.str] = None):
+        """
+        :param builtins.bool can_create_session_transfer_token: Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
+        :param builtins.str enforce_device_binding: Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
+        """
+        if allowed_authentication_methods is not None:
+            pulumi.set(__self__, "allowed_authentication_methods", allowed_authentication_methods)
+        if can_create_session_transfer_token is not None:
+            pulumi.set(__self__, "can_create_session_transfer_token", can_create_session_transfer_token)
+        if enforce_device_binding is not None:
+            pulumi.set(__self__, "enforce_device_binding", enforce_device_binding)
+
+    @property
+    @pulumi.getter(name="allowedAuthenticationMethods")
+    def allowed_authentication_methods(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "allowed_authentication_methods")
+
+    @property
+    @pulumi.getter(name="canCreateSessionTransferToken")
+    def can_create_session_transfer_token(self) -> Optional[builtins.bool]:
+        """
+        Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
+        """
+        return pulumi.get(self, "can_create_session_transfer_token")
+
+    @property
+    @pulumi.getter(name="enforceDeviceBinding")
+    def enforce_device_binding(self) -> Optional[builtins.str]:
+        """
+        Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
+        """
+        return pulumi.get(self, "enforce_device_binding")
 
 
 @pulumi.output_type
@@ -5092,6 +5198,8 @@ class ConnectionOptions(dict):
             suggest = "pkce_enabled"
         elif key == "protocolBinding":
             suggest = "protocol_binding"
+        elif key == "realmFallback":
+            suggest = "realm_fallback"
         elif key == "requestTemplate":
             suggest = "request_template"
         elif key == "requiresUsername":
@@ -5218,6 +5326,7 @@ class ConnectionOptions(dict):
                  precedences: Optional[Sequence[builtins.str]] = None,
                  protocol_binding: Optional[builtins.str] = None,
                  provider: Optional[builtins.str] = None,
+                 realm_fallback: Optional[builtins.bool] = None,
                  request_template: Optional[builtins.str] = None,
                  requires_username: Optional[builtins.bool] = None,
                  scopes: Optional[Sequence[builtins.str]] = None,
@@ -5316,6 +5425,7 @@ class ConnectionOptions(dict):
         :param Sequence[builtins.str] precedences: Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
         :param builtins.str protocol_binding: The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
         :param builtins.str provider: Defines the custom `sms_gateway` provider.
+        :param builtins.bool realm_fallback: Allows configuration if connections*realm*fallback flag is enabled for the tenant
         :param builtins.str request_template: Template that formats the SAML request.
         :param builtins.bool requires_username: Indicates whether the user is required to provide a username in addition to an email address.
         :param Sequence[builtins.str] scopes: Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
@@ -5479,6 +5589,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "protocol_binding", protocol_binding)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
+        if realm_fallback is not None:
+            pulumi.set(__self__, "realm_fallback", realm_fallback)
         if request_template is not None:
             pulumi.set(__self__, "request_template", request_template)
         if requires_username is not None:
@@ -6063,6 +6175,14 @@ class ConnectionOptions(dict):
         Defines the custom `sms_gateway` provider.
         """
         return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter(name="realmFallback")
+    def realm_fallback(self) -> Optional[builtins.bool]:
+        """
+        Allows configuration if connections*realm*fallback flag is enabled for the tenant
+        """
+        return pulumi.get(self, "realm_fallback")
 
     @property
     @pulumi.getter(name="requestTemplate")
@@ -14716,6 +14836,7 @@ class GetClientRefreshTokenResult(dict):
                  infinite_idle_token_lifetime: builtins.bool,
                  infinite_token_lifetime: builtins.bool,
                  leeway: builtins.int,
+                 policies: Sequence['outputs.GetClientRefreshTokenPolicyResult'],
                  rotation_type: builtins.str,
                  token_lifetime: builtins.int):
         """
@@ -14724,6 +14845,7 @@ class GetClientRefreshTokenResult(dict):
         :param builtins.bool infinite_idle_token_lifetime: Whether inactive refresh tokens should remain valid indefinitely.
         :param builtins.bool infinite_token_lifetime: Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
         :param builtins.int leeway: The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+        :param Sequence['GetClientRefreshTokenPolicyArgs'] policies: A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
         :param builtins.str rotation_type: Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
         :param builtins.int token_lifetime: The absolute lifetime of a refresh token in seconds.
         """
@@ -14732,6 +14854,7 @@ class GetClientRefreshTokenResult(dict):
         pulumi.set(__self__, "infinite_idle_token_lifetime", infinite_idle_token_lifetime)
         pulumi.set(__self__, "infinite_token_lifetime", infinite_token_lifetime)
         pulumi.set(__self__, "leeway", leeway)
+        pulumi.set(__self__, "policies", policies)
         pulumi.set(__self__, "rotation_type", rotation_type)
         pulumi.set(__self__, "token_lifetime", token_lifetime)
 
@@ -14776,6 +14899,14 @@ class GetClientRefreshTokenResult(dict):
         return pulumi.get(self, "leeway")
 
     @property
+    @pulumi.getter
+    def policies(self) -> Sequence['outputs.GetClientRefreshTokenPolicyResult']:
+        """
+        A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+        """
+        return pulumi.get(self, "policies")
+
+    @property
     @pulumi.getter(name="rotationType")
     def rotation_type(self) -> builtins.str:
         """
@@ -14790,6 +14921,71 @@ class GetClientRefreshTokenResult(dict):
         The absolute lifetime of a refresh token in seconds.
         """
         return pulumi.get(self, "token_lifetime")
+
+
+@pulumi.output_type
+class GetClientRefreshTokenPolicyResult(dict):
+    def __init__(__self__, *,
+                 audience: builtins.str,
+                 scopes: Sequence[builtins.str]):
+        """
+        :param builtins.str audience: The identifier of the resource server to which the Multi Resource Refresh Token Policy applies
+        :param Sequence[builtins.str] scopes: The resource server permissions granted under the Multi Resource Refresh Token Policy, defining the context in which an access token can be used
+        """
+        pulumi.set(__self__, "audience", audience)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def audience(self) -> builtins.str:
+        """
+        The identifier of the resource server to which the Multi Resource Refresh Token Policy applies
+        """
+        return pulumi.get(self, "audience")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[builtins.str]:
+        """
+        The resource server permissions granted under the Multi Resource Refresh Token Policy, defining the context in which an access token can be used
+        """
+        return pulumi.get(self, "scopes")
+
+
+@pulumi.output_type
+class GetClientSessionTransferResult(dict):
+    def __init__(__self__, *,
+                 allowed_authentication_methods: Sequence[builtins.str],
+                 can_create_session_transfer_token: builtins.bool,
+                 enforce_device_binding: builtins.str):
+        """
+        :param builtins.bool can_create_session_transfer_token: Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
+        :param builtins.str enforce_device_binding: Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.
+        """
+        pulumi.set(__self__, "allowed_authentication_methods", allowed_authentication_methods)
+        pulumi.set(__self__, "can_create_session_transfer_token", can_create_session_transfer_token)
+        pulumi.set(__self__, "enforce_device_binding", enforce_device_binding)
+
+    @property
+    @pulumi.getter(name="allowedAuthenticationMethods")
+    def allowed_authentication_methods(self) -> Sequence[builtins.str]:
+        return pulumi.get(self, "allowed_authentication_methods")
+
+    @property
+    @pulumi.getter(name="canCreateSessionTransferToken")
+    def can_create_session_transfer_token(self) -> builtins.bool:
+        """
+        Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
+        """
+        return pulumi.get(self, "can_create_session_transfer_token")
+
+    @property
+    @pulumi.getter(name="enforceDeviceBinding")
+    def enforce_device_binding(self) -> builtins.str:
+        """
+        Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.
+        """
+        return pulumi.get(self, "enforce_device_binding")
 
 
 @pulumi.output_type
@@ -14949,6 +15145,7 @@ class GetClientsClientResult(dict):
                  is_first_party: builtins.bool,
                  is_token_endpoint_ip_header_trusted: builtins.bool,
                  oidc_logouts: Sequence['outputs.GetClientsClientOidcLogoutResult'],
+                 session_transfers: Sequence['outputs.GetClientsClientSessionTransferResult'],
                  token_exchanges: Sequence['outputs.GetClientsClientTokenExchangeResult'],
                  web_origins: Sequence[builtins.str],
                  client_id: Optional[builtins.str] = None,
@@ -14982,6 +15179,7 @@ class GetClientsClientResult(dict):
         pulumi.set(__self__, "is_first_party", is_first_party)
         pulumi.set(__self__, "is_token_endpoint_ip_header_trusted", is_token_endpoint_ip_header_trusted)
         pulumi.set(__self__, "oidc_logouts", oidc_logouts)
+        pulumi.set(__self__, "session_transfers", session_transfers)
         pulumi.set(__self__, "token_exchanges", token_exchanges)
         pulumi.set(__self__, "web_origins", web_origins)
         if client_id is not None:
@@ -15083,6 +15281,11 @@ class GetClientsClientResult(dict):
         return pulumi.get(self, "oidc_logouts")
 
     @property
+    @pulumi.getter(name="sessionTransfers")
+    def session_transfers(self) -> Sequence['outputs.GetClientsClientSessionTransferResult']:
+        return pulumi.get(self, "session_transfers")
+
+    @property
     @pulumi.getter(name="tokenExchanges")
     def token_exchanges(self) -> Sequence['outputs.GetClientsClientTokenExchangeResult']:
         """
@@ -15174,6 +15377,42 @@ class GetClientsClientOidcLogoutBackchannelLogoutInitiatorResult(dict):
 
 
 @pulumi.output_type
+class GetClientsClientSessionTransferResult(dict):
+    def __init__(__self__, *,
+                 allowed_authentication_methods: Sequence[builtins.str],
+                 can_create_session_transfer_token: builtins.bool,
+                 enforce_device_binding: builtins.str):
+        """
+        :param builtins.bool can_create_session_transfer_token: Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
+        :param builtins.str enforce_device_binding: Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.
+        """
+        pulumi.set(__self__, "allowed_authentication_methods", allowed_authentication_methods)
+        pulumi.set(__self__, "can_create_session_transfer_token", can_create_session_transfer_token)
+        pulumi.set(__self__, "enforce_device_binding", enforce_device_binding)
+
+    @property
+    @pulumi.getter(name="allowedAuthenticationMethods")
+    def allowed_authentication_methods(self) -> Sequence[builtins.str]:
+        return pulumi.get(self, "allowed_authentication_methods")
+
+    @property
+    @pulumi.getter(name="canCreateSessionTransferToken")
+    def can_create_session_transfer_token(self) -> builtins.bool:
+        """
+        Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
+        """
+        return pulumi.get(self, "can_create_session_transfer_token")
+
+    @property
+    @pulumi.getter(name="enforceDeviceBinding")
+    def enforce_device_binding(self) -> builtins.str:
+        """
+        Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.
+        """
+        return pulumi.get(self, "enforce_device_binding")
+
+
+@pulumi.output_type
 class GetClientsClientTokenExchangeResult(dict):
     def __init__(__self__, *,
                  allow_any_profile_of_types: Sequence[builtins.str]):
@@ -15259,6 +15498,7 @@ class GetConnectionOptionResult(dict):
                  precedences: Sequence[builtins.str],
                  protocol_binding: builtins.str,
                  provider: builtins.str,
+                 realm_fallback: builtins.bool,
                  request_template: builtins.str,
                  requires_username: builtins.bool,
                  scopes: Sequence[builtins.str],
@@ -15357,6 +15597,7 @@ class GetConnectionOptionResult(dict):
         :param Sequence[builtins.str] precedences: Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
         :param builtins.str protocol_binding: The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
         :param builtins.str provider: Defines the custom `sms_gateway` provider.
+        :param builtins.bool realm_fallback: Allows configuration if connections_realm_fallback flag is enabled for the tenant
         :param builtins.str request_template: Template that formats the SAML request.
         :param builtins.bool requires_username: Indicates whether the user is required to provide a username in addition to an email address.
         :param Sequence[builtins.str] scopes: Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
@@ -15455,6 +15696,7 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "precedences", precedences)
         pulumi.set(__self__, "protocol_binding", protocol_binding)
         pulumi.set(__self__, "provider", provider)
+        pulumi.set(__self__, "realm_fallback", realm_fallback)
         pulumi.set(__self__, "request_template", request_template)
         pulumi.set(__self__, "requires_username", requires_username)
         pulumi.set(__self__, "scopes", scopes)
@@ -16007,6 +16249,14 @@ class GetConnectionOptionResult(dict):
         Defines the custom `sms_gateway` provider.
         """
         return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter(name="realmFallback")
+    def realm_fallback(self) -> builtins.bool:
+        """
+        Allows configuration if connections_realm_fallback flag is enabled for the tenant
+        """
+        return pulumi.get(self, "realm_fallback")
 
     @property
     @pulumi.getter(name="requestTemplate")

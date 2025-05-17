@@ -1031,6 +1031,9 @@ import javax.annotation.Nullable;
  * 
  * ### Okta Connection
  * 
+ * !&gt; When configuring an Okta Workforce connection, the `scopes` attribute must be explicitly set. If omitted, the connection may not function correctly.
+ * To ensure proper behavior, always specify:  `scopes = [&#34;openid&#34;, &#34;profile&#34;, &#34;email&#34;]`
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -1076,6 +1079,7 @@ import javax.annotation.Nullable;
  *                 .authorizationEndpoint("https://example.okta.com/oauth2/v1/authorize")
  *                 .scopes(                
  *                     "openid",
+ *                     "profile",
  *                     "email")
  *                 .setUserRootAttributes("on_first_login")
  *                 .nonPersistentAttrs(                

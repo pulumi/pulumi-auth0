@@ -3,12 +3,14 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.ClientRefreshTokenPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -94,6 +96,21 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+     * 
+     */
+    @Import(name="policies")
+    private @Nullable Output<List<ClientRefreshTokenPolicyArgs>> policies;
+
+    /**
+     * @return A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+     * 
+     */
+    public Optional<Output<List<ClientRefreshTokenPolicyArgs>>> policies() {
+        return Optional.ofNullable(this.policies);
+    }
+
+    /**
      * Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
      * 
      */
@@ -131,6 +148,7 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         this.infiniteIdleTokenLifetime = $.infiniteIdleTokenLifetime;
         this.infiniteTokenLifetime = $.infiniteTokenLifetime;
         this.leeway = $.leeway;
+        this.policies = $.policies;
         this.rotationType = $.rotationType;
         this.tokenLifetime = $.tokenLifetime;
     }
@@ -256,6 +274,37 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
          */
         public Builder leeway(Integer leeway) {
             return leeway(Output.of(leeway));
+        }
+
+        /**
+         * @param policies A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policies(@Nullable Output<List<ClientRefreshTokenPolicyArgs>> policies) {
+            $.policies = policies;
+            return this;
+        }
+
+        /**
+         * @param policies A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policies(List<ClientRefreshTokenPolicyArgs> policies) {
+            return policies(Output.of(policies));
+        }
+
+        /**
+         * @param policies A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policies(ClientRefreshTokenPolicyArgs... policies) {
+            return policies(List.of(policies));
         }
 
         /**
